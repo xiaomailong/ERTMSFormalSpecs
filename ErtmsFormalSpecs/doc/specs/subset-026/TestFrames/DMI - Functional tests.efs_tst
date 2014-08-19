@@ -45546,6 +45546,7 @@ DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DisplayRequested  &lt;- Fal
  Name="OUT Plain text information"
  Guid="3ebc07e7-7f32-4d37-a9e4-ff0126874d4a"
 >
+<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"
@@ -46343,6 +46344,7 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  Name="OUT Radio Network registration failed"
  Guid="3a62ee7b-380d-4e3d-826b-a00d2c3b582b"
 >
+<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"
@@ -46396,13 +46398,13 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="OUT Radio Network registration failed"
- Guid="6d4219b0-1696-40af-b16f-f53ebcb66cad"
+ Name="OUT RadioNetworkRegistrationFailed"
+ Guid="7cd07d96-434d-4760-bc50-f4aef58b339d"
 >
 <ReqRef
  Id="e739c6d0-7c43-4cfb-a67e-f3caf8c8586c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="593da6ea-c2d3-4352-9acd-316329e0102d"
+ Guid="f5296f1e-e173-4c8f-a635-37fc690b38ec"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -46414,24 +46416,40 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="76f4e675-2c73-488c-ba1d-47e83c301da3"
+ Guid="300e2425-9de1-4ff9-8e8e-503bd944f513"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ca80b440-78df-4df2-b4a8-9637c78995e4"
+ Guid="1ee2b895-02fd-4790-a3c7-74f87dfbecba"
 >
 <Actions>
 <Action
- Guid="9b7920c8-0f0a-43ab-a4f7-54651fe66aee"
+ Guid="778bc4f0-5a28-417a-97c8-d660466b8734"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="0a5b53c6-123a-4031-be8f-372dff3106f4"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="4d93b0da-2e8d-4ed9-b27e-32c6bf9b6c57"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="96231b85-a1e2-4db4-9d34-51a86616d238"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="af18311b-23fb-4f23-a04c-f093b46dcb26"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ Guid="f42dad42-f6fc-4297-8c62-ae90fb95667d"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="685433bd-48ec-4656-9dbc-a6fef4bc9b4c"
+>
+<Actions>
+<Action
+ Guid="39a3d9b7-da1e-4ef2-a96e-73b923fecd85"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="ef81a1bd-3bc6-41fd-8e76-69fbd9e72e56"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46440,24 +46458,41 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="010be8e3-16dc-4c4a-afa2-ceebac70b6c5"
+ Guid="6607247a-49c5-4e85-a73d-68c7195cce79"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="47865bfc-8114-49c8-b769-b579ab2900c1"
+ Guid="c089c669-a186-471c-afec-f4781f73da6e"
 >
 <Actions>
 <Action
- Guid="8a6fe567-93b0-4a63-8999-678114abcc7a"
+ Guid="f896a0e8-2878-44e2-8fca-b49bb8cf4ad0"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="a5429f50-661c-4154-80cf-3686b6cf2f6a"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="5ae3ac4f-e3a1-4aea-afde-a4f6d2427c30"
+>Kernel.PowerOn &lt;- True</Action><Action
+ Guid="2f98a930-e9cf-4494-91d7-a4eee5249e36"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="78fc446a-5c35-4e25-ba49-eb81deb9f9da"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="054b99da-6457-4ce1-99df-d9271aafbc9c"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="778eca18-e224-405e-a0e6-3e908ddd8396"
+>
+<Actions>
+<Action
+ Guid="6fb248db-17d6-48eb-b49f-d2669bcf8edd"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="7e044afc-4d8f-4344-9897-e0ab51dde7e0"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46466,22 +46501,39 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="a8236952-7e66-4466-ac52-feb72655e247"
+ Guid="87418581-3982-4382-87d5-c05d9b48688e"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="861d687b-aeca-4153-8bf9-765ecd5c8871"
+ Guid="d92082b6-f71d-463d-9e4e-d3e2714c4a78"
 >
 <Actions>
 <Action
- Guid="90131bda-8dc4-4298-b9ba-b675b31addbc"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="c4c99771-6a41-4f2a-9cfc-b7a516570c0f"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="b18f3550-ff4a-42aa-a1bf-6efe5fc8e92c"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="673d0481-ffc0-416c-9771-41ec8c619b54"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="ad500cca-8abb-47ca-8a60-d00f668599ab"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="a2867bac-695f-40f3-b821-75be8e4d38f2"
+>
+<Actions>
+<Action
+ Guid="101a3bfb-0fad-4eaa-914a-62226c7aedc2"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="7b52943b-9284-4f26-b1e1-442c340d61b1"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46490,24 +46542,41 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="a8345611-b68f-47fa-b8cf-60ea164af391"
+ Guid="7a529c51-6dbb-4b53-95ef-7df065a9f6a5"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="fb0f6759-734f-4389-be2f-b52f006b699e"
+ Guid="fa37dc04-3086-43c6-a5f2-4ebaf4b8905f"
 >
 <Actions>
 <Action
- Guid="7d657ffe-f1d3-4de4-83e5-f553bb5e5b97"
+ Guid="0617cb51-3c78-44a1-b2c3-c459ea9cf8d1"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="396ccf19-5902-45f8-9b83-4a586ab4ca3e"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="1e3ea2f4-0bd2-4b7c-8efb-ed3053fab4c2"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="b471df3e-3371-45dd-81ce-700841c31a37"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="9e38b0a0-8c02-4f58-9074-d5fba8a8353a"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="90134188-41c6-480f-89eb-36ef10089bcf"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="130442b2-7a54-4531-87bf-5fbf437dd6db"
+>
+<Actions>
+<Action
+ Guid="60f088d1-0476-4cfe-817b-99eb20a1505c"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="daa186a6-5b43-4040-ab6f-10ab557b0327"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46516,24 +46585,43 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="e194b479-721e-4723-b701-5534f0e3f1e1"
+ Guid="34e6f6d6-dad0-4475-bfdf-509975b15c99"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="9bbda8e9-ba7c-4636-a3ed-3571b3dc95a6"
+ Guid="bca1abef-725c-41c4-b466-a24c9e31841f"
 >
 <Actions>
 <Action
- Guid="83745d56-c63e-4810-b036-ff275aa9df6d"
+ Guid="ac265b62-24e9-4d2f-abc2-659363678214"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="d4d9f567-79af-46f9-b5dd-3e994bd3e736"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="6d321ec9-38b6-4726-affe-fc33ed6657f0"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="68adf27e-a85c-4b69-ba20-fbf891fb40c7"
+><Comment></Comment>
+
+DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="063d6ff3-8e3d-4fae-a1f9-007171ea0c8d"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="01dca176-46a1-4db8-b56c-3a7b03abfb4d"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="7873285f-a0e3-4fec-9ef5-02561482b4f6"
+>
+<Actions>
+<Action
+ Guid="3eef7d2b-f872-4a61-a256-67d624b44b75"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="7b6ccceb-95fe-47bf-93f9-494fb0f32006"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46542,22 +46630,39 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="7771461b-149b-4236-9be4-3235a1529279"
+ Guid="3294a205-1ed0-4a7d-912c-fe903ad3d969"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e6189841-382e-4059-97f9-547dc144e97e"
+ Guid="75e60946-acdf-4c0f-831a-3e1d3fd7d780"
 >
 <Actions>
 <Action
- Guid="ee93fdf9-c9ad-412b-806a-2e4a03ba961a"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="3d795705-a6de-477a-8748-a0e3e125b94f"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="22ee352d-f236-4904-b871-3e2b7bb0929e"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="bda4a8e4-d045-49e1-8411-5f509fb4064e"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="9a1f4cc3-4032-4e49-8bd2-1fcd02c1bca5"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d33f45db-3bd9-4db9-9d9d-f901bd19cceb"
+>
+<Actions>
+<Action
+ Guid="bd2e5bf8-8884-4d87-b187-ff61e9ed5156"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="9a196c71-e812-4261-9b03-feff1fbe9cef"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46566,22 +46671,39 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="b08e3ef7-2ef4-424e-af91-ae2ee3f0af87"
+ Guid="fa22e442-8ba2-4431-85d2-d134ccbefc51"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ae749356-feed-4562-ba04-dfc677bb9ab0"
+ Guid="d483bcc3-1780-4f7f-b453-901e7f93bbb6"
 >
 <Actions>
 <Action
- Guid="08d94129-d30b-4b7d-8342-da6cfcca7b99"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="c8c4a1a4-ed98-40b7-84ef-7879e4a80bda"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="5d14899d-a84d-4cb4-bacc-09576531340d"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="5e6de11f-a9fe-4e76-96a2-60a8bdfd74c3"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="9913b1da-4e4d-4e88-b4e7-e1d8beef4880"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="af1618f5-bc5c-4508-acbe-243801b1a93b"
+>
+<Actions>
+<Action
+ Guid="e5989f91-7c01-47dc-b789-5369a6967fe4"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="fe71b243-aedb-40ba-b869-2dfeddf80a06"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46590,22 +46712,39 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="14bc3bdd-95b5-438d-bd72-d19b24d96aef"
+ Guid="c3555e79-8fbe-4858-ac77-c8b8028aba52"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="28b0b2b4-dcf6-4bfc-ae54-de4558e43728"
+ Guid="23e2e161-c407-4052-9fc9-e06c70e7bf6b"
 >
 <Actions>
 <Action
- Guid="8e8234ab-efe1-4059-a55f-4d5c23e090ac"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="c0a598d4-25d7-4f64-9019-b911bf4a0164"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="c49d34af-eb11-4e96-b27d-227b99304dee"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="042f349a-486c-48ab-8f70-182e44fd4ba5"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="9537bd90-d82d-4b57-9375-e19d5c2f2f4c"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="fec180ed-ca44-4d17-a92b-0edc426e62f4"
+>
+<Actions>
+<Action
+ Guid="6aafd82e-4630-404b-ae23-58e5678583f5"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="c650a8da-9a76-422f-874e-1571e63c58d0"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46614,26 +46753,43 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="7f453a24-3b2a-477f-9534-bfec2bbcc6d8"
+ Guid="356ebf08-f815-425a-b634-dbc249df6e90"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="6265800d-666b-4190-9df5-e1bb004addd8"
+ Guid="571ea21b-97df-4d3b-ad58-93a30423904f"
 >
 <Actions>
 <Action
- Guid="cfb053ba-90de-41b8-8cb1-c31d9277a641"
+ Guid="c2dcbabf-ae07-4c06-93af-e30853f8a883"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="68504dea-e781-42e4-9d28-0368fb8355fd"
+ Guid="a67799b0-ac20-4a4d-ab5c-4e61c145980b"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="f3eb0106-eaea-4a94-b9fd-6f9457c1ca95"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="e7cf0947-32e3-4f23-a476-d82b4156392c"
+>TIU.SleepingRequested  &lt;- True</Action><Action
+ Guid="3ce5dcd4-a48a-4048-9d28-1b643203ba92"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="47403e72-f3c7-4765-86db-13e46544a893"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="211c2156-acd6-46e6-98c8-e219e727c8c1"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="10d6963c-82e7-4124-a4d4-3243fec77c8d"
+>
+<Actions>
+<Action
+ Guid="92114897-c3d8-406f-8ed5-039dd36cde70"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="e539a5ff-2eea-43e2-8224-9286d8a005e1"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46642,24 +46798,41 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="ab4514be-5a51-43ef-8c67-bdfb98f967f3"
+ Guid="f618e16f-90c6-4df6-a3c8-012037d0c00d"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="7eb89542-dedd-42d4-b2ea-959ed05d6827"
+ Guid="b13e3d64-a0db-439a-adbb-6180b50ed688"
 >
 <Actions>
 <Action
- Guid="69a4514b-e1d3-4dc1-a596-4d44a7cfedbf"
+ Guid="68f17db8-8536-44a1-bb72-52d3eb57154c"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="e7bc5700-68be-4465-b1c2-a64a74906d2b"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="edaa0468-5521-4dce-823e-668f88a71052"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="35b0773b-fc9b-405b-851c-3b97a1df9f01"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="d53ad78c-cee6-4b4f-b220-9db0f5f07ddc"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="815d06cf-3268-4102-81a2-82b5c2aee346"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="a2e66c2b-131f-4a3f-89cc-0e1ead0d1388"
+>
+<Actions>
+<Action
+ Guid="44dfb8a7-8b8b-4e46-b9fa-b699b1381d28"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="49c6ed01-4964-41a0-b8b5-d6c4701ab019"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46668,24 +46841,41 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="52a5cf68-7282-4f41-828a-869ace159d0d"
+ Guid="7b996a86-9019-4f10-b982-9a83bc67233e"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="937d7474-ad73-4ac1-8ca4-5655265cf613"
+ Guid="5c9b798f-1783-4237-9e40-eae4e88c551a"
 >
 <Actions>
 <Action
- Guid="b4084262-71c9-4147-a40d-85c4d7351557"
+ Guid="69622230-6f1f-43e4-b33c-d1ecef5def55"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="bec565fb-37f6-4d7e-949f-e096e0ec9c6a"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="8fa65cc0-2c8b-4692-adf4-e9fae84a3a98"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="2428da2b-8626-4a98-aa22-7c59fd7ecf3a"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="4a039585-616f-403f-a97f-300b2b5c287d"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="99cece42-c77f-42ef-bd26-43215ed8bb61"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="b02fcd3e-7cf4-4519-99ec-d399e6e52556"
+>
+<Actions>
+<Action
+ Guid="b1b7c900-23c1-424f-ad05-44f78abd6777"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="a4961646-8e30-4b68-bc47-7cc94f6bc0fb"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46694,22 +46884,39 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="40774a39-c946-4dc2-9ea0-c5f283c585dc"
+ Guid="cd9ce4f0-c116-4f3a-88c0-be472186f1a4"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="bfd4a92f-2a2e-47bc-a814-79a35d503327"
+ Guid="84d01d00-9fd3-4d9b-ae8c-2cc55bc9818f"
 >
 <Actions>
 <Action
- Guid="2c21a9b4-5888-4881-9b77-e0709ab0efb0"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="34c3914d-beb1-4506-8890-1766afedd301"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="56f86296-6d9b-4ba0-a31a-3e76370c9cf8"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="acbbbfbe-0083-469c-a7eb-d1df6ff1e7e2"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="da4d4418-344f-47df-b9ae-ffd775b1bff2"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="2a3214a5-97f3-4792-85a7-ba5a55c5bcab"
+>
+<Actions>
+<Action
+ Guid="7a8d22a9-6968-43e7-b6b4-c4d14bc422f9"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="2c32b943-37eb-4481-93a3-82102300441b"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46718,22 +46925,39 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="9d47b741-6015-43b1-b52c-405acbc7e037"
+ Guid="be9b3333-8d15-43d9-b877-389b93909b07"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e70f28f6-5009-422f-95d5-83d3d8d120b7"
+ Guid="b2e92413-99fe-4f49-8528-99bc73f22a7f"
 >
 <Actions>
 <Action
- Guid="42d1addc-cb15-4ba4-aab0-19c7d99db8a5"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="09af9c41-e828-4513-a724-1d1cc41392c9"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="0bfbd691-297a-4b6a-8393-ffc26a5c2765"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="238c9d50-37aa-445a-b184-2948c9cc92d6"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="630e8d27-0b2f-47c3-899a-17ee614cba76"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="4affa24b-3115-4001-96ba-0470809bdc93"
+>
+<Actions>
+<Action
+ Guid="106d4aba-bdd2-409b-be09-39a99a54cb5d"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="541c6420-4b56-46a7-b18f-683f71e4944e"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46742,22 +46966,39 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="5132dcfb-9a89-4d59-998d-0605b81f5219"
+ Guid="04745749-a783-480b-b5c6-35e9d95739f6"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="58781e6d-e3ea-4086-bd0d-b7329c60ffe1"
+ Guid="a7743983-5b3c-421b-84a6-e1a3d1094cae"
 >
 <Actions>
 <Action
- Guid="cb6bff05-c3f4-4209-ab31-110451301402"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="459e2272-b3e7-44a0-a846-b030aee5a24e"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="33bc5cf7-7a00-4722-85c2-a7adffc5f3d8"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="05ac100c-66b3-4d66-a4d1-f2e71ad72560"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="7ff5d2cc-1332-486a-8e1e-8d50cbf9a40c"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="2781c017-55eb-4a6f-b036-68d698f3ff58"
+>
+<Actions>
+<Action
+ Guid="ca9eb96f-bfd9-45f4-bda8-acf26c29c50d"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="d3b2459d-54c8-45b0-afd7-5c33d5c105a5"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46766,22 +47007,39 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="fcbc12fe-ab98-4dc3-bb20-d21ee61f4311"
+ Guid="1c1eb9aa-09b4-4531-85c5-799adce39687"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="c1f018d2-b490-4526-a339-f3d116fa7210"
+ Guid="103eb92e-0502-45c0-ae99-7800278750cc"
 >
 <Actions>
 <Action
- Guid="8c45af88-d82d-4b35-849b-a95007127353"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="ba427e26-faa2-4d8a-bb90-ee0934cbcb28"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="12bc396c-5bed-4624-bc9d-efe3451ced17"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="c6d8b1ec-34e3-4e74-987f-700bad0d32c6"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="2b443382-99b4-4fb0-b6d2-981a85bea1e5"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="73dd4d18-471d-4ef0-bf58-e2e2e6b9595c"
+>
+<Actions>
+<Action
+ Guid="1774ca64-ce20-43ab-a834-5b7437e552c0"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="7a368e37-97e4-445f-867d-5a8ed4de6bd9"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46790,26 +47048,43 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="2c8f60d3-91f2-481c-8824-e4191aafc6b9"
+ Guid="46915dd8-1ab8-40cb-bf22-3f6b8a9c4ee2"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="37dd68ed-d829-4362-be0c-a1d1cef8a012"
+ Guid="1311b4e9-a6ec-4159-8b0e-c7d572b2207d"
 >
 <Actions>
 <Action
- Guid="e5f2086c-0386-491c-8bee-829580e9354c"
+ Guid="7f1177fb-b54e-4cd1-ba35-7f4cafcf7e10"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="772d2d9d-3927-473a-800c-89d6d6949621"
+ Guid="d96f9835-6fe9-4a9f-8454-95ee900c5848"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="a169a07e-2820-4867-a699-56aca796715c"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="8c9dfe2f-0e68-4ea8-a7a4-b2016b9f7403"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="9eb240f4-2c88-476c-9558-5bd98f830ce6"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="a5da6ba9-3750-4a32-ae68-f80bfb9eaa95"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="65bc2856-67c2-44cf-aafe-2622b6d3d6d5"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="dbc9f939-2909-4252-aeaa-ae6958f4c466"
+>
+<Actions>
+<Action
+ Guid="aba26e2a-5ab8-4a14-b6cc-fb7eb3825f16"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f234334e-5c5f-499d-816b-054454f6bbca"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -46818,22 +47093,39 @@ DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="2535780f-d6fb-466f-a44a-5acfe74a19eb"
+ Guid="88810bfd-f38a-40b7-a2a8-4bf7f57e0e81"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="d43b741a-84ac-4113-a494-b5054a75724e"
+ Guid="0a76b8d2-abef-4baa-a21c-1f6e8d740f1f"
 >
 <Actions>
 <Action
- Guid="77c5bd5b-170f-49e2-a526-be0260e3fd6c"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="4ce419b9-0964-4539-9913-a16134443b67"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="73f0b69b-dfb4-4079-8b4c-c38c95b3e03d"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="9f50af4d-dc4f-4ceb-b8a7-cd153b2804a2"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.ProcedureOut in DMI.OUT.RadioNetworkRegistrationFailed.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="39cfb783-8d44-40d7-9b3b-ca210b255991"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="ecfa2ab4-74c2-442c-970c-99625ca6174e"
+>
+<Actions>
+<Action
+ Guid="588db41f-42c6-431f-a30f-3e3e1f6d6c84"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="9940c6ee-3455-4649-9d75-0bb75e492394"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
