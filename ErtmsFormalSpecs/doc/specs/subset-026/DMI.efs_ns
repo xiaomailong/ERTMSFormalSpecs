@@ -740,66 +740,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="DisplayLocalTime"
- Guid="353a0968-d119-4f7a-a983-8ae13946a9ce"
->
-<Comment></Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="ab0f181a-8f66-47e1-8e0d-d25741527913"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="722fdb01-d1a6-4b7e-8a2d-07c09a18c261"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="86cea268-171d-4c18-846d-cb99c8ca2453"
->
-<PreConditions>
-<PreCondition
- Guid="1eaa22a4-cfd8-4f94-8693-3ad748d8c5eb"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="08f821df-b363-4af9-a0a5-d9ebfa2209b6"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayInformation"
- Guid="200e9cbe-000c-4364-97ed-74b5ab1c666e"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayInformation"
- Guid="996f77ed-78f5-4abd-8482-2075d09438a9"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="0f83fe66-a18e-42fa-b801-9a1e5937d07e"
->Out_LocalTime.OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="DisplayNotificationOfTrainDataChangeFromOtherSource"
  Guid="839709c1-a9b5-40e7-a8d6-245c6679d7c1"
 >
@@ -2483,8 +2423,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RadioNetworkRegistrationFailed.ProcedureOut &lt;- Out_RadioNetworkRegistrationFailed.ProcedureOut.NotAvailable</Action><Action
  Guid="772e357a-9321-4753-8192-ad657f71dfc0"
 >Out_SafeRadioConnectionIndication.ProcedureOut &lt;- Out_SafeRadioConnectionIndication.ProcedureOut.NotAvailable</Action><Action
- Guid="8849811a-3e7d-4ed8-a1ef-4fc5a1826d1f"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.NotAvailable</Action><Action
  Guid="4f00a7aa-b62d-40cf-9c75-46908917ab43"
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.NotAvailable</Action><Action
  Guid="d8c748ee-3ccd-4977-adb2-64312a5adc7d"
@@ -2551,8 +2489,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RadioNetworkRegistrationFailed.ProcedureOut &lt;- Out_RadioNetworkRegistrationFailed.ProcedureOut.Available</Action><Action
  Guid="b9c43c34-1257-47c7-aa5d-35c71b7042d6"
 >Out_SafeRadioConnectionIndication.ProcedureOut &lt;- Out_SafeRadioConnectionIndication.ProcedureOut.Available</Action><Action
- Guid="d9dddd75-375f-4072-baf3-a8c4740baeba"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Available</Action><Action
  Guid="86a20167-da08-4174-8a5f-4f9163895ebc"
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.Available</Action><Action
  Guid="e25afb7e-e16c-45c1-ba28-fe804efa6dee"
@@ -2611,8 +2547,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 <Action
  Guid="d7a8b852-152d-4193-b817-bd82b0711b83"
 >Out_TrainSpeed.ProcedureOut &lt;- Out_TrainSpeed.ProcedureOut.Active</Action><Action
- Guid="6d494f26-c99c-44fe-a466-98fb2266e7d5"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
  Guid="e3ae5203-1f58-4509-845c-0a199c030c80"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="d78d4569-aab8-424a-b6bc-f1afa73c8169"
@@ -2707,8 +2641,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrainSpeed.ProcedureOut &lt;- Out_TrainSpeed.ProcedureOut.Active</Action><Action
  Guid="8d5c0384-c334-453d-a59f-af0bdaae223f"
 >Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.Active</Action><Action
- Guid="fbbbc9cb-8011-48f0-885f-dcd0588c3884"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
  Guid="37d01685-32ed-47c2-8804-f4ec552d7e5e"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
  Guid="3ed031e8-2ed2-4859-b483-3a9b6ea57d56"
@@ -2797,8 +2729,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 <Action
  Guid="113bcec8-ee05-4598-b13d-b1a02fec4199"
 >Out_TrainSpeed.ProcedureOut &lt;- Out_TrainSpeed.ProcedureOut.Active</Action><Action
- Guid="336616cc-8300-4053-b126-66909a2069d8"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
  Guid="722d1170-c882-4050-b78c-4bd662bf0027"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
  Guid="bf3e0a0d-a2fa-48fc-a59a-7356109dfb29"
@@ -2841,8 +2771,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RadioNetworkRegistrationFailed.ProcedureOut &lt;- Out_RadioNetworkRegistrationFailed.ProcedureOut.Available</Action><Action
  Guid="d7301175-89b0-4c1b-a40d-d974c64a8e5d"
 >Out_SafeRadioConnectionIndication.ProcedureOut &lt;- Out_SafeRadioConnectionIndication.ProcedureOut.Available</Action><Action
- Guid="7096d357-0ae9-4c1c-9af0-081b2aa0b4d8"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Available</Action><Action
  Guid="f4c2ffab-b21c-446d-ad47-d96b87b34e6d"
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.Available</Action><Action
  Guid="aacb9183-7784-4164-b17f-899af2b6f5e3"
@@ -2891,8 +2819,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 <Action
  Guid="e1201361-be6f-48c0-9675-226febaf1eae"
 >Out_TrainSpeed.ProcedureOut &lt;- Out_TrainSpeed.ProcedureOut.Active</Action><Action
- Guid="019915f0-965e-4b7e-af43-5029f9bd49d3"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
  Guid="11e1ae27-5648-4968-8d95-fcc9396dca1c"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
  Guid="66ade492-df78-4e82-9fed-33abac896efa"
@@ -2983,8 +2909,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 <Action
  Guid="21d551d5-29aa-475f-8f23-5e18fa71faad"
 >Out_TrainSpeed.ProcedureOut &lt;- Out_TrainSpeed.ProcedureOut.Active</Action><Action
- Guid="488f1b90-b7c2-4d44-b0b5-449908a06c23"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
  Guid="26c7b33a-f429-4945-8931-7c9e3b16018e"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
  Guid="c7055034-77a9-4d79-9a84-ed1c1550850d"
@@ -3029,8 +2953,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RadioNetworkRegistrationFailed.ProcedureOut &lt;- Out_RadioNetworkRegistrationFailed.ProcedureOut.Available</Action><Action
  Guid="1259397d-4bfc-499b-bded-cd34305db25c"
 >Out_SafeRadioConnectionIndication.ProcedureOut &lt;- Out_SafeRadioConnectionIndication.ProcedureOut.Available</Action><Action
- Guid="bd6d142e-bcdc-444c-9ea8-44405de2ed96"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Available</Action><Action
  Guid="cc03060b-31e1-4cc5-a1f9-4d3feeae6b48"
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.Available</Action><Action
  Guid="4dd05707-826f-43c3-80b5-4697d978642b"
@@ -3077,8 +2999,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 <Action
  Guid="ea29981a-c5ba-45ca-94ef-773690b240d7"
 >Out_TrainSpeed.ProcedureOut &lt;- Out_TrainSpeed.ProcedureOut.Active</Action><Action
- Guid="5f8bfac6-4d62-4c17-b0d2-82b03de13930"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
  Guid="9b2f2f86-6e95-4942-8f90-1f20726acf6b"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="1c7c88cb-f5fa-4c38-82c2-df5b7438e813"
@@ -3169,8 +3089,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 <Action
  Guid="bcae1972-91fd-4977-8bab-085dda47c842"
 >Out_TrainSpeed.ProcedureOut &lt;- Out_TrainSpeed.ProcedureOut.Active</Action><Action
- Guid="1cb8b728-5b80-4132-94fd-5791b72265c2"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
  Guid="10a39e2b-b457-402b-bce2-8bed9f3fdef5"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
  Guid="1ff7fcfb-3e32-48a9-9eb4-639eb9386f13"
@@ -3281,8 +3199,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_OperatedSystemVersion.ProcedureOut &lt;- Out_OperatedSystemVersion.ProcedureOut.Available</Action><Action
  Guid="269091cf-a728-433f-9259-aa733f0fb8f4"
 >Out_SafeRadioConnectionIndication.ProcedureOut &lt;- Out_SafeRadioConnectionIndication.ProcedureOut.Available</Action><Action
- Guid="0e95b747-dba4-486e-969a-4bd4d45d44b9"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Available</Action><Action
  Guid="f2e79e5b-fd9b-4fd0-aef6-bc34815840f2"
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.Available</Action><Action
  Guid="02ba214e-4bd5-4bcf-8582-4e02dc23fa31"
@@ -3353,8 +3269,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 <Action
  Guid="33f70201-6c94-4888-9127-066e41c38e4f"
 >Out_TrainSpeed.ProcedureOut &lt;- Out_TrainSpeed.ProcedureOut.Active</Action><Action
- Guid="c228eb99-d49d-4fc2-8f0c-aa4c210a166b"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
  Guid="babb6752-510d-4983-b5b3-057136b0c104"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
  Guid="1f43f846-1e20-48af-9b8a-bdc2e0fef0b4"
@@ -3501,8 +3415,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RadioNetworkRegistrationFailed.ProcedureOut &lt;- Out_RadioNetworkRegistrationFailed.ProcedureOut.NotApplicable</Action><Action
  Guid="115cae80-af2c-4396-8692-f59481e5f4ea"
 >Out_SafeRadioConnectionIndication.ProcedureOut &lt;- Out_SafeRadioConnectionIndication.ProcedureOut.NotApplicable</Action><Action
- Guid="09b968f5-8a87-415d-a596-812b51aac3ff"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.NotApplicable</Action><Action
  Guid="91136c29-434e-4490-9843-dc38f22b7e9c"
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.NotApplicable</Action><Action
  Guid="152c1089-ccfb-4d7d-9a4f-4083b5b8cef2"
@@ -3593,8 +3505,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_RadioNetworkRegistrationFailed.ProcedureOut &lt;- Out_RadioNetworkRegistrationFailed.ProcedureOut.NotApplicable</Action><Action
  Guid="8fa72398-fca4-4554-bceb-9aea8eb56ffa"
 >Out_SafeRadioConnectionIndication.ProcedureOut &lt;- Out_SafeRadioConnectionIndication.ProcedureOut.NotApplicable</Action><Action
- Guid="517ea55f-d1e1-4cae-b32d-b88a2704ba3b"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.NotApplicable</Action><Action
  Guid="6492f04f-9aee-4e00-af03-a7a79d3ba200"
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.NotApplicable</Action><Action
  Guid="778f1b12-6752-42f4-80b6-54b3a70a54d9"
@@ -3645,8 +3555,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_OperatedSystemVersion.ProcedureOut &lt;- Out_OperatedSystemVersion.ProcedureOut.Available</Action><Action
  Guid="a5a376cf-a139-428c-9476-29c35c879dea"
 >Out_SafeRadioConnectionIndication.ProcedureOut &lt;- Out_SafeRadioConnectionIndication.ProcedureOut.Available</Action><Action
- Guid="5ce292d2-21a5-40aa-a50e-96021058d3b6"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Available</Action><Action
  Guid="531a9fae-a04a-4ec1-bfeb-f35335f59b4c"
 >Out_TracksideNotCompatible.ProcedureOut &lt;- Out_TracksideNotCompatible.ProcedureOut.Available</Action><Action
  Guid="0dde7898-5c56-4cb7-866f-4d42f24f8dec"
@@ -3725,8 +3633,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.Active</Action><Action
  Guid="11732102-4ce7-4c2e-85e8-66084182c3d3"
 >Out_TargetDistance.ProcedureOut &lt;- Out_TargetDistance.ProcedureOut.Active</Action><Action
- Guid="aff4678f-2da3-4010-ae44-9f4dd09e2262"
->Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
  Guid="1cd276f8-f1fc-4197-8f7c-76b26a3ee16f"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
  Guid="b8575ec0-b2cc-41d4-a749-2f064b0c72bf"
@@ -4109,7 +4015,9 @@ In_TrackAheadFree.TrackMode()</Action><Action
  Guid="96555ce2-6ee4-4384-94d1-526d83f6ead4"
 >Out_IndicationLocationAtMrspSpeed.TrackMode()</Action><Action
  Guid="8dfec0d8-d2a3-485b-b240-d2c5631909b0"
->Out_LevelTransitionAnnouncement.TrackMode()</Action></Actions>
+>Out_LevelTransitionAnnouncement.TrackMode()</Action><Action
+ Guid="f699681d-72b2-4cef-92bd-a3b54662a674"
+>Out_LocalTime.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
