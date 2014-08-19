@@ -791,65 +791,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 </Procedure><Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="DisplayDriverId"
- Guid="4389cc1b-1dab-4768-b608-48126a1c4467"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="d678d409-5b25-4389-9289-916c068fd118"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bbc0b5f7-7c68-41f3-ab23-c9e3e6d5b216"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="74c87946-5f39-4b8e-a1c1-834fb4ffc55d"
->
-<PreConditions>
-<PreCondition
- Guid="8e084aa1-1cbb-4b04-b46d-5ae52d579889"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="d800ba87-b982-45b7-b801-7c245e6f88db"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayInformation"
- Guid="9d5b4e34-5e2f-4c45-a14f-e7f0c61c5d16"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayInformation"
- Guid="5dbbd58d-5bf7-4362-bf9c-74a6dcdb3049"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="a76e4cd0-de4b-4650-b2b4-793a7416d484"
->Out_DriverId.OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="DisplayIndicationLocationAtMrspSpeed"
  Guid="21a80cea-34e6-4786-a34b-8168054bb2d3"
 >
@@ -2968,8 +2909,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 <Action
  Guid="da29b9eb-ab3b-4ab8-bca7-1a62cad5e1e3"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.NotAvailable</Action><Action
- Guid="9676eb03-65b9-483b-b2ab-156a78f4801f"
->Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.NotAvailable</Action><Action
  Guid="e88b6f87-479a-4064-9412-1652259ee3cf"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.NotAvailable</Action><Action
  Guid="95552dcc-d23b-4076-819d-4eb536da90b1"
@@ -3079,8 +3018,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 <Action
  Guid="e2ee7dd9-f0ee-480e-b266-1cb8d49058f4"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
- Guid="ad0a1d94-28e2-47a7-a735-ad8bd4658828"
->Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="f6ecb2e7-3455-4aee-9dfb-136e2041294c"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="b104dcd8-9c62-4617-bd57-424fdfe33390"
@@ -3193,8 +3130,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrainSpeed.ProcedureOut &lt;- Out_TrainSpeed.ProcedureOut.Active</Action><Action
  Guid="6d494f26-c99c-44fe-a466-98fb2266e7d5"
 >Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
- Guid="d9657620-e83c-4b7d-b229-d4bf84af0645"
->Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="e3ae5203-1f58-4509-845c-0a199c030c80"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="d78d4569-aab8-424a-b6bc-f1afa73c8169"
@@ -3309,8 +3244,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
  Guid="37d01685-32ed-47c2-8804-f4ec552d7e5e"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
- Guid="5f83581d-b692-4eee-b4b4-796929575df2"
->Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="3ed031e8-2ed2-4859-b483-3a9b6ea57d56"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="a6a29c28-c07c-4073-89af-37e37835b413"
@@ -3417,8 +3350,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
  Guid="722d1170-c882-4050-b78c-4bd662bf0027"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
- Guid="ff4271dd-865d-4ed1-8d36-2b9166f6349e"
->Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="bf3e0a0d-a2fa-48fc-a59a-7356109dfb29"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="f799029d-7fea-43e5-888d-83a52a5194bb"
@@ -3529,8 +3460,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
  Guid="11e1ae27-5648-4968-8d95-fcc9396dca1c"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
- Guid="9f1e90d4-5252-4cfe-89ee-da6afd63d1af"
->Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="66ade492-df78-4e82-9fed-33abac896efa"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="15bbe280-d1e2-4fd0-be1d-099cf2121e4d"
@@ -3639,8 +3568,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
  Guid="26c7b33a-f429-4945-8931-7c9e3b16018e"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
- Guid="5320315d-f5c1-48a8-a794-a03221d7e8eb"
->Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="c7055034-77a9-4d79-9a84-ed1c1550850d"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="5e4f9ce3-8bfa-4768-860c-cd4a6e3d8632"
@@ -3749,8 +3676,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_TrainSpeed.ProcedureOut &lt;- Out_TrainSpeed.ProcedureOut.Active</Action><Action
  Guid="5f8bfac6-4d62-4c17-b0d2-82b03de13930"
 >Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
- Guid="82a8d158-51d8-4185-bb93-0d49f98dd2f1"
->Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="9b2f2f86-6e95-4942-8f90-1f20726acf6b"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="1c7c88cb-f5fa-4c38-82c2-df5b7438e813"
@@ -3861,8 +3786,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
  Guid="10a39e2b-b457-402b-bce2-8bed9f3fdef5"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
- Guid="1f5c3228-cd5d-480b-9ff5-ad50e39457d3"
->Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="1ff7fcfb-3e32-48a9-9eb4-639eb9386f13"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="43bd43ee-9699-45ad-8c4c-b43d56ce9422"
@@ -3965,8 +3888,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 <Action
  Guid="3d1463d0-7f03-406c-a364-f702e90aa0bc"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
- Guid="4fd782b5-28d6-439d-b6d9-77dc91bfeebc"
->Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="85cb545e-2cea-4fd7-a85e-8432a0457da8"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="c579a2b2-8c0a-4d7b-b3a5-5cccadff52e1"
@@ -4081,8 +4002,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
  Guid="babb6752-510d-4983-b5b3-057136b0c104"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
- Guid="6378f447-b19f-40ba-87ec-f4ea628f1b7e"
->Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="1f43f846-1e20-48af-9b8a-bdc2e0fef0b4"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="54b11ec2-960c-44ef-be12-30775074328a"
@@ -4187,8 +4106,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_ErtmsEtcsMode.ProcedureOut &lt;- Out_ErtmsEtcsMode.ProcedureOut.Available</Action><Action
  Guid="3bbed180-f8d1-4850-9e7d-9e04e157fbe7"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.NotApplicable</Action><Action
- Guid="1c8151c6-5bc3-4aa4-ac6f-d4c6921c0547"
->Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.NotApplicable</Action><Action
  Guid="857ab929-f9ab-4947-a5d3-18bd82273042"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.NotApplicable</Action><Action
  Guid="e28d90ea-b185-4539-804a-d998bf9af800"
@@ -4297,8 +4214,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_ErtmsEtcsMode.ProcedureOut &lt;- Out_ErtmsEtcsMode.ProcedureOut.Active</Action><Action
  Guid="0ca2a103-d46e-41fc-ae7e-f40e282aa00b"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.NotApplicable</Action><Action
- Guid="6a2541c3-1135-4e36-930c-b7e79a12d109"
->Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.NotApplicable</Action><Action
  Guid="6ba6f141-f9c6-4697-88ca-8dd136dcf999"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.NotApplicable</Action><Action
  Guid="0e9ce2e2-3b86-47dd-bd97-0304079e93d3"
@@ -4407,8 +4322,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_ErtmsEtcsMode.ProcedureOut &lt;- Out_ErtmsEtcsMode.ProcedureOut.Active</Action><Action
  Guid="60765038-7e47-4a20-b9c6-899c793da642"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
- Guid="a3ee3cb9-182f-48fe-9fb2-ffe8642b75ee"
->Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="48393064-b7e8-4405-a8c0-2aa9d559b4b6"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="1b4bd290-480a-4d4f-b972-2be121ca0f53"
@@ -4525,8 +4438,6 @@ Out_PermittedSpeed.ProcedureOut &lt;- Out_PermittedSpeed.ProcedureOut.NotAvailab
 >Out_LocalTime.ProcedureOut &lt;- Out_LocalTime.ProcedureOut.Active</Action><Action
  Guid="1cd276f8-f1fc-4197-8f7c-76b26a3ee16f"
 >Out_TrainData.ProcedureOut &lt;- Out_TrainData.ProcedureOut.Available</Action><Action
- Guid="444c6878-4a4f-4528-b31d-c7b5a21370ed"
->Out_DriverId.ProcedureOut &lt;- Out_DriverId.ProcedureOut.Available</Action><Action
  Guid="b8575ec0-b2cc-41d4-a749-2f064b0c72bf"
 >Out_TrainRunningNumber.ProcedureOut &lt;- Out_TrainRunningNumber.ProcedureOut.Available</Action><Action
  Guid="9e6242a4-3728-4924-8f02-e923f150def6"
@@ -4903,7 +4814,9 @@ In_TrackAheadFree.TrackMode()</Action><Action
  Guid="45000620-88e3-43a0-9117-cb2b5728d0ed"
 >Out_BrakeReason.TrackMode()</Action><Action
  Guid="f68c03a4-90b9-43e9-bc79-872d7ddb171b"
->Out_CurrentErtmsEtcsLevel.TrackMode()</Action></Actions>
+>Out_CurrentErtmsEtcsLevel.TrackMode()</Action><Action
+ Guid="062ea526-44c2-4346-b1f7-988e5d44a86b"
+>Out_DriverId.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

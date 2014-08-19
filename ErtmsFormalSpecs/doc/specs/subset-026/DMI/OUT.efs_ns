@@ -714,9 +714,9 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="0a10175a-ddb1-4ae4-8f31-017af5e934fc"
 >
 <ReqRef
- Id="166e123f-f57c-4045-af2e-915a4c4e849b"
+ Id="8de0ac4e-25fd-4dbb-985d-725e7eb5f9ab"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="31e3a095-1dcc-4457-9a91-c12e8d6f9597"
+ Guid="1f13ddf4-b39e-41c1-a3d9-8739780a4c89"
 >
 </ReqRef><Comment>Handles display of information relative to the driver ID.</Comment>
 <Rules>
@@ -739,7 +739,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="76ce8e08-b372-452c-a978-83f32c2a88dc"
->ProcedureOut in [ProcedureOutSM.Active, ProcedureOutSM.Available]</PreCondition><PreCondition
+>OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="a36e66ff-5d2d-4af7-a3b9-882281399754"
 ><Comment></Comment>
 Kernel.DriverId.DataState == Default.DataState.Valid</PreCondition></PreConditions>
@@ -748,7 +748,97 @@ Kernel.DriverId.DataState == Default.DataState.Valid</PreCondition></PreConditio
  Guid="3a7adecc-6646-4d3a-ab14-8b07e02c0e6f"
 >Id &lt;- Kernel.DriverId.Value</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Output when mandatory"
+ Guid="bb8cf8b8-f543-45c4-861f-5908e37de4ab"
+>
+<Comment>Outputs the value of this element when mandatory</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Output when mandatory"
+ Guid="9b2e434f-43c1-43dd-8004-347136508d31"
+>
+<PreConditions>
+<PreCondition
+ Guid="d3540884-3532-48cf-b5ce-bdec7d09b20a"
+><Comment></Comment>
+DriverIdMandatory()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="aa206122-312c-46f3-ad57-47748241b2f4"
+>Display()</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ Name="Display"
+ Guid="50452e6b-0e02-4375-9271-2caa3e947cda"
+>
+<Comment>Requests to display the corresponding information</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Updates the request status"
+ Guid="0cea22ca-1fa0-45ee-a6c4-ae6530a473ef"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Updates the request status"
+ Guid="30bec30c-104a-461b-b201-a77ee04535d2"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="1890816c-118f-40ff-a9b2-b9df7cb5c901"
+>DriverIdAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a3708dae-7d41-442f-b0b8-2e8cb7a9e939"
+><Comment></Comment>
+
+THIS.OutputInformation.RequestDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="257704e3-c8d8-4703-9673-a7934bf3431d"
+>
+<Comment>Tracks the changes of the mode</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Updates the status of the request according to the mode"
+ Guid="ff1d5ad0-1b79-438c-bc42-3b10824c3200"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Updates the status of the request according to the mode"
+ Guid="febc6952-f4fa-48b2-9e86-3a4486eac69c"
+>
+<PreConditions>
+<PreCondition
+ Guid="9c84b9c4-794a-4272-9aec-ff003da3c171"
+>NOT DriverIdAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="84d44023-4a48-404b-9cf1-17c83992a7f2"
+>THIS.OutputInformation.DoNotDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <StructureElement
  TypeName="OutputInformation"
  Default=""
@@ -769,437 +859,7 @@ Kernel.DriverId.DataState == Default.DataState.Valid</PreCondition></PreConditio
  Guid="2c6dafda-c7f4-4dda-80b1-382647ce47f7"
 >
 <Comment>The driver&apos;s ID number</Comment>
-</StructureElement><StructureElement
- TypeName="ProcedureOutSM"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="ProcedureOut"
- Guid="e9aabf93-ba46-4057-8e0c-66e46fa4ac6c"
->
-<Comment>State machine handling the availability of information</Comment>
-</StructureElement><StateMachines>
-<StateMachine
- Default="NotAvailable"
- Implemented="TRUE"
- Name="ProcedureOutSM"
- Guid="50d8899c-40e5-47e1-9e52-d647409b4455"
->
-<Comment>The state machine handling the output information.</Comment>
-<States>
-<State
- X="230"
- Y="20"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="NotAvailable"
- Guid="f67713b3-09c1-4a31-b820-558719ca82c3"
->
-<Comment>Not available: in this mode, the output information is not displayed.</Comment>
-<StateMachine
- Default="InitialState"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="a3fad614-85bf-4f66-b6c9-16b61fbd52cd"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="InitialState"
- Guid="62467550-477f-45d1-810b-790bb3a1d415"
->
-<Comment>In this state, the information cannot be displayed.</Comment>
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="5bc17bc7-73c7-4863-a9bd-dafded137a4a"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
- Guid="ad7c5f6d-f980-49db-94d7-32243be47920"
->
-<Comment>In this state, the information cannot be displayed.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
- Guid="cda6ba2d-ef20-4f60-96ea-9d1d9f41f4d4"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="b1db17f3-9b20-45ab-a794-35ba6a4b619d"
->THIS &lt;- NotAvailable.Idle</Action><Action
- Guid="7121d655-b809-4abd-a626-af9bfb85f39e"
->OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Idle"
- Guid="dc9cc137-3945-4118-a76c-4c42eb6cf7c5"
->
-<Comment>In this state, the information cannot be displayed.</Comment>
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="d4945187-c09a-4916-8428-6f555047ed5b"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="120"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="NationalSystemAvailability"
- Guid="0445d47d-066a-4948-ba8e-139e6176aaf0"
->
-<Comment>National system availability: availability and meaning defined by national system.</Comment>
-<StateMachine
- Default="InitialState"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="c618c0a8-315a-4b85-99e3-606d841a2444"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="InitialState"
- Guid="10bcba59-426b-42fd-b983-29a430df4959"
->
-<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="55df0c22-410f-47bc-a557-c49a0d7e0cb8"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
- Guid="49584762-461a-48e8-bd73-18cf90f16a1b"
->
-<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
- Guid="4159d74a-df4c-4aa7-b992-10535c6cabc5"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="0f835516-2868-487e-b34d-c7240fb23ec8"
->THIS &lt;- NationalSystemAvailability.Idle</Action><Action
- Guid="acb20538-a85d-4d96-8502-3035166665a2"
->OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Idle"
- Guid="ca2a4831-fcad-4208-a730-f74251760fde"
->
-<Comment>Currently, the national system availability is not handled =&gt; nothing is displayed.</Comment>
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="bad60494-b7c8-43b1-a4d3-5beff3fe4cfa"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="120"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="NotApplicable"
- Guid="fb554d12-c2e5-48a5-b902-89dfff894a9d"
->
-<Comment>Not applicable: in this state the output information cannot be determined and nothing is displayed.</Comment>
-<StateMachine
- Default="InitialState"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="138cacf9-7bda-41e9-a94e-2fe7ab54292c"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="InitialState"
- Guid="0353bfb3-fd10-4b2d-bc8c-94a6ab1a3c34"
->
-<Comment>In this state, the information cannot be displayed.</Comment>
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="8bed3921-f137-4e22-a8dc-5d189f4eb73d"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
- Guid="dd5d5363-3a70-455c-a0f5-46e0eb4dc12c"
->
-<Comment>In this state, the information cannot be displayed.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
- Guid="8540f073-b722-41b9-b080-3f90613c8163"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="af171fda-8817-45ba-a28c-47ec1c26225c"
->THIS &lt;- NotApplicable.Idle</Action><Action
- Guid="78dda8d8-4edd-439a-9d15-59d7c27b5ca9"
->OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Idle"
- Guid="e6538b41-f305-4fb2-a219-1e8190b8ed65"
->
-<Comment>In this state, the information cannot be displayed.</Comment>
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="e0dee118-c969-43a2-8687-ecf6acd5a777"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="50"
- Y="230"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="Active"
- Guid="163aafcc-355b-4feb-bd83-a5b6d78c155b"
->
-<Comment>Active: in this mode, the output information is always displayed to the driver.</Comment>
-<StateMachine
- Default="InitialState"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="cd59865d-c5ac-4f44-9949-4f8f58317d62"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="InitialState"
- Guid="9869a95a-7b1e-4770-be19-d8d93a150753"
->
-<Comment>Initial state: the display is requested.</Comment>
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="01adbecd-2c29-4e50-aa43-0ce8ac8d8e5b"
->
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariables"
- Guid="012e7d10-7ed8-47dd-81fa-a2ca72f14050"
->
-<Comment>Display is requested.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateVariable"
- Guid="2329c119-5946-4e02-86a6-fb6ebe55db36"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="aeae4b58-1feb-48b4-b74c-1bc29b2c3020"
->THIS &lt;- Active.Send</Action><Action
- Guid="f5f80882-8eea-4988-a0c8-3c81c2ea0dca"
->OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Send"
- Guid="d3798a65-a8f7-4892-98b1-1769d7c2f7c9"
->
-<Comment>Nothing to do, the display is always requested.</Comment>
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="7dfceb50-2c3a-4cbb-ac08-0a2462e77573"
->
-</StateMachine></State></States>
-</StateMachine></State><State
- X="410"
- Y="230"
- Width="140"
- Height="50"
- Implemented="TRUE"
- Name="Available"
- Guid="723c1798-7dcc-4f43-9a61-819e962384d8"
->
-<Comment>Available: in this mode, the output information is displayed only if certain conditions are fulfilled.</Comment>
-<StateMachine
- Default="Idle"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="7f9609c5-cb34-4985-9504-e04f68e2d595"
->
-<States>
-<State
- X="40"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Idle"
- Guid="12792d81-fc23-4423-b787-3a587ab10a96"
->
-<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="56bb0fe2-9651-4247-855d-a92cab69ebf9"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestActivated"
- Guid="69249e92-c8b7-485c-830d-2bb86ed1b1e7"
->
-<Comment>When the display is requested, the output variable is updated and the state is changed to Send.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RequestActivated"
- Guid="a202f8d5-71cd-42eb-a1ee-dcc4430c0fe4"
->
-<PreConditions>
-<PreCondition
- Guid="d47e3601-8c40-4413-8081-c0c95cf679b9"
->OutputInformation.ShowRequestStatus == Request.Request</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="5066ca6c-7da2-4e16-a7a9-598466e7ed1b"
->THIS &lt;- Available.Send</Action><Action
- Guid="cb8b6190-cc80-4a21-9e6c-7da4e1292318"
->OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
- Guid="edf723f4-8909-44a4-bd4c-039c410d25ef"
->OutputInformation.ShowRequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="300"
- Y="50"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="Send"
- Guid="5a80c9fa-79ca-485b-9b26-277893fec4c5"
->
-<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="b8c4e57f-48e6-40fb-9f54-0f84eec2ed6f"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisableRequestActivated"
- Guid="56c68fee-8b11-44d2-9de7-4ae1d4c9cd4d"
->
-<Comment>If the display has to stop, the output variable is put to false and the state is changed to Idle.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisableRequestActivated"
- Guid="b1d8b345-971e-44cd-ba8d-2efd46ed4a8c"
->
-<PreConditions>
-<PreCondition
- Guid="b89ff625-18d9-4fef-9d1a-cfb25d6eb182"
->OutputInformation.HideRequestStatus == Request.Request</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="24bddfb7-b0b2-4ff7-bb31-0aa1756a4cc0"
->THIS &lt;- Available.Idle</Action><Action
- Guid="554567a2-54c4-4d2a-a78d-5d49f80fe1ac"
->OutputInformation.DisplayRequested &lt;- Boolean.False</Action><Action
- Guid="4df1b96b-876f-48a7-bf50-01fb063863f7"
->OutputInformation.HideRequestStatus &lt;- Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-</StateMachine></State></States>
-</StateMachine></StateMachines>
-</Structure><Structure
+</StructureElement></Structure><Structure
  Default=""
  X="110"
  Y="60"
@@ -21033,6 +20693,53 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 >
 <Comment></Comment>
 <Expression>Kernel.Mode in [Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.PT, Mode.SN, Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DriverIdAvailable"
+ Guid="07f6cb12-27aa-4492-9f81-b648b1293dae"
+>
+<ReqRef
+ Id="8de0ac4e-25fd-4dbb-985d-725e7eb5f9ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="87aa1ac6-f46a-41ff-bb44-8142ecbef69d"
+>
+<Comment></Comment>
+</ReqRef><Comment>Identifies the modes where the output is available</Comment>
+<Cases>
+<Case
+ Name="Enumerates the cases where the request is available"
+ Guid="c72585be-367d-461e-88a5-58f221664e5d"
+>
+<Expression>Kernel.Mode in [Mode.SB, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DriverIdMandatory"
+ Guid="97f001e0-6119-461e-87f6-7486a3838a16"
+>
+<ReqRef
+ Id="8de0ac4e-25fd-4dbb-985d-725e7eb5f9ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="24b38ce3-2f4e-455d-960d-633adbd9ee05"
+>
+<Comment></Comment>
+</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
+<Cases>
+<Case
+ Name="Enumerates the cases where the request is mandatory"
+ Guid="e107271a-41f7-49b2-80df-a509e9930dea"
+>
+<Comment></Comment>
+<Expression>False</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
