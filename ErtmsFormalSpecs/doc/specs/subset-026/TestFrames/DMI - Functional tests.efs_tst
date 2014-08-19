@@ -42333,6 +42333,7 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  Name="OUT Operated system version"
  Guid="bd52dadd-f334-4867-911b-40072620b3a3"
 >
+<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"
@@ -42386,13 +42387,13 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="OUT Operated system version"
- Guid="4f122681-9af2-4a85-a247-8233208b8ed0"
+ Name="OUT OperatedSystemVersion"
+ Guid="afe71354-1a3e-45aa-95a6-36ee52d4d275"
 >
 <ReqRef
  Id="24ae3ea6-e8c3-4608-9c0f-f8939770807a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="124d843d-6537-418e-80a8-ef952f21c377"
+ Guid="767ee412-32f0-4b41-b328-394b6ba1fe22"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -42404,24 +42405,40 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="34d8f6f7-738e-40b2-90f8-03115f294ad1"
+ Guid="a2d133a4-29a8-413b-97f0-4e219dc6c823"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="4d7cb115-ae54-4c70-86e4-93a9ca2adc20"
+ Guid="f22db778-4b42-46f5-b2fa-5e087c73b7ae"
 >
 <Actions>
 <Action
- Guid="fc87b141-6085-470f-af06-6d8a138c4a16"
+ Guid="ac49d43b-8254-4fa9-b4db-bcb6d8055b2b"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="dd607d1f-90b2-402f-adc6-70942af30df1"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="b4b3bcd7-2202-4828-ab86-e3983119b56b"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="0383fbde-9c56-45ba-9022-5f4696e57f9e"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="f40cf6f3-e10f-42fe-a405-1334f16b813d"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.NotAvailable</Expectation></Expectations>
+ Guid="95deabc9-4b4b-449f-a061-43356c90cf8e"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="50125697-022c-4cf7-9682-9e399af1bb98"
+>
+<Actions>
+<Action
+ Guid="47c2b728-23ca-4ac8-aea5-e357d755a5b3"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="d653effc-9c18-4dee-a2c9-4f44127ca326"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42430,24 +42447,41 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="2527f482-34fb-430c-abf6-92e18df3aad8"
+ Guid="7ada611c-6ea3-4f15-9e22-ba33a4a2ac89"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="cb03b805-3ab0-4946-afae-2a81a32a5721"
+ Guid="d3689582-0377-49ba-b68e-8c09561064f1"
 >
 <Actions>
 <Action
- Guid="c8cb6481-1cd0-46ac-a733-fd9f510d034d"
+ Guid="b5341db3-885a-462d-816d-727e6f7ea77d"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="66024ae9-2b17-419c-abd2-831dd8928b2c"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="f0d4863c-d3eb-47fa-a4c4-720546cd5415"
+>Kernel.PowerOn &lt;- True</Action><Action
+ Guid="680b5dac-0b67-4ff5-ae27-66d4680b219e"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="a0b7d6e4-2a1b-49b1-bcf5-837c33ae85d5"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="40d760e2-cdab-4454-9a33-ad75f5583350"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="1cf1f324-54d5-4144-b949-eb970016e673"
+>
+<Actions>
+<Action
+ Guid="f51a4885-6038-4700-9ede-a934b904355d"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="686be88e-95f1-4311-8313-d05978e4fb18"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42456,22 +42490,39 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="aeb22522-3cc1-4636-8e51-5a4b9f1ae9df"
+ Guid="47987f43-67dd-4786-bae5-c35cc0ce34fb"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="bba7093b-f566-4447-b8c6-cfd6fe3289ac"
+ Guid="3774be88-0d5d-41b5-ba5a-82c582775dac"
 >
 <Actions>
 <Action
- Guid="6db6206b-040f-4f3f-84db-3cf1bd844058"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="9f8b6a71-9877-4a4b-9b97-ac49ff5e6469"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="57a192fa-abcc-4e6b-a99e-5019c666fefd"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="11a19f90-e8d7-408f-bd29-dfdb0383a38d"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="0c672df8-4d26-48b7-99ba-65703df8b078"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="8b202f2c-39b3-4e55-9074-0c7d1ffa6c4b"
+>
+<Actions>
+<Action
+ Guid="7a112588-cf40-42dd-bed1-55355ce4af58"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="77aa03b5-12de-498e-a539-38528b0c7fc4"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42480,24 +42531,41 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="d55d7825-06d5-4f2f-9132-685d45652f69"
+ Guid="d0b7c384-166a-4b2f-81da-40204046e2bf"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="bff7b320-83ee-4245-b39c-3ff0ffea9928"
+ Guid="62829a69-4bf9-403b-b1fb-03ac7606cd2b"
 >
 <Actions>
 <Action
- Guid="e6a1f91e-f13b-45bb-b328-9de31c3b13d0"
+ Guid="6e55fe9a-c314-474e-a6c1-caf6dbcc6c0c"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="f2f9648d-4996-42d8-9b49-47a4f599679b"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="2301c951-6aca-4fc9-8730-56300dc3fee3"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="318a7c0a-7751-43b3-85e4-486c6d0b698b"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="624779a9-cc61-4d2f-8bf4-05db9c5c39dc"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="d5a34722-6820-4488-884d-20d67da14cd1"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d3ba4166-8ea2-4ec6-b1fc-e3f543ddf015"
+>
+<Actions>
+<Action
+ Guid="d944b5ee-7869-4ab3-b2e4-d7d49cca64e0"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f57818f3-41b7-4924-b329-c66543b4c083"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42506,24 +42574,43 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="732b435f-23a0-40de-a156-a0a1e86a240f"
+ Guid="58da086f-6373-4cf2-b2e9-bd75f30fdb57"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="884be000-c698-45a3-926c-44ef9391e9a4"
+ Guid="2c26b58f-b2d8-408c-aff6-d99e55e304c5"
 >
 <Actions>
 <Action
- Guid="6c76714d-dc08-42bf-a966-255291c705a7"
+ Guid="4f8a3c5a-bca9-4351-8f87-88da42099d2e"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="8442f172-58f5-46dd-bb2b-ce520fbda5d2"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="8ee66bd1-1d36-4d12-b2bd-3c107ef316da"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="cf04b7db-1e82-461f-9010-97e5409a2a90"
+><Comment></Comment>
+
+DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="11923d4c-6567-4f83-aff0-b52508b4f408"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="2f983909-d250-40f6-aff8-ea71f54e5f24"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="a18442df-acea-4663-a588-5b2ace613b18"
+>
+<Actions>
+<Action
+ Guid="b0ca1fab-1b22-452f-8eaa-7d68089712a6"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="b1473bca-6e12-4239-9c04-ddf6895eb89b"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42532,22 +42619,39 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="945c63a8-2786-48ce-bc62-2786a6461362"
+ Guid="46e25966-545d-41d7-bef7-d1838d905010"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="4b06a9a7-2c4f-4b64-9c58-ee60b0a69757"
+ Guid="1654c728-dd0f-4a65-a4b7-c26497968bca"
 >
 <Actions>
 <Action
- Guid="98a5378a-9b1d-41e8-809a-191f35326bf9"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="3b8a70f3-25ae-4667-8ec2-8610afa265b2"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="fa80f97a-eb73-480d-a1cc-92b55bb06810"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="5949dfea-cfce-4615-bfb5-de5fea5a9466"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="6973915f-83ba-40dc-9aad-3b98932240e7"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e42228ad-19cc-49f8-a627-84338b22770c"
+>
+<Actions>
+<Action
+ Guid="0fd8f6f6-a48d-45e0-a77e-7b17c4f8a139"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="1a391820-f515-43ee-bd40-c46f8e753084"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42556,22 +42660,39 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="13966f1a-e80c-4e7a-aec5-33740789ae2e"
+ Guid="a77884cd-1e24-45f1-98aa-57eb28829969"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="8519cbb6-59bf-425f-8ac5-5ea4fbc5eaa1"
+ Guid="ce6a0771-ee1e-483b-9941-c3decd8884c9"
 >
 <Actions>
 <Action
- Guid="6255cf21-0f1f-43bf-b03a-a0d03e5c2d16"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="133e73b3-b4a0-4964-9566-5ac58d53f428"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="1d52b871-4b2d-4b5b-a12c-f60c7d314817"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="ff619d32-3d9f-497c-810f-b06619568dbd"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="2b3af6ad-9193-4da3-b32b-3b2ce6ea96be"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d1d91bc7-990c-4304-88b1-689c4d3b85ae"
+>
+<Actions>
+<Action
+ Guid="61bd7fbf-133b-4bf9-8871-ddf62cbfcc2e"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="37a18e39-312e-4b77-8ab4-5908588e1fb8"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42580,22 +42701,39 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="05dad8ee-1a34-4a81-9f6e-1c77e786df64"
+ Guid="fc118c76-05a5-431f-9b28-f29912950470"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="b4e05197-b2ea-45e5-802d-f82f32457856"
+ Guid="a6382501-7736-4a10-af29-aa11bad29431"
 >
 <Actions>
 <Action
- Guid="0bd07e8a-356b-4099-ae6c-9114b48d9079"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="ae1f431a-d82c-4b35-82e9-fdfdaf2a6205"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="5d02c047-5590-4bc6-9699-eed6a9a7a182"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="3a5de80e-4548-40fe-a6d1-0d9ccbbb55ad"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="c8fd3f80-edc3-4368-8054-593f6cd37681"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="3cb1df4e-a4b1-4103-bba9-2e7c27b264f7"
+>
+<Actions>
+<Action
+ Guid="6268ae86-181e-4913-843b-3cb8580e0d90"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="b6597ef2-ca13-49c2-96cc-2e30ca177176"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42604,26 +42742,43 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="403b179e-eec7-4627-9a32-56b44b4d2a8b"
+ Guid="0eb28298-282a-4b85-be78-932cdbf2bfa9"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="58940456-740f-47a9-b745-53ecd94d1d3a"
+ Guid="16a17611-2b11-41eb-a2d4-9896e3575fff"
 >
 <Actions>
 <Action
- Guid="4b5b90cb-6308-44ab-afeb-d3b507e61a79"
+ Guid="dabbc84b-da5a-4e76-a907-74275c658f48"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="8eee9163-9049-4ab9-936c-7fe98417eb04"
+ Guid="79154e4e-a47c-4f3f-a0f4-3b00c981c5df"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="e7f06b2c-2430-4f5b-b1ba-1a89e925e79f"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="1c11012f-7f25-4a67-9c1a-57b85ad2ff44"
+>TIU.SleepingRequested  &lt;- True</Action><Action
+ Guid="0684d02a-7fc4-45de-9ac7-e512674fd8bb"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="921ccfc3-3c17-4ba7-897d-6e2285d041ee"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="2498fbf1-e77d-4548-83ec-05b2a7395a3c"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="977778e4-3bf8-41e0-86b7-7dc96317172a"
+>
+<Actions>
+<Action
+ Guid="976db703-77b7-4a3a-9657-a8aad86a9679"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="2812f5a5-ab83-4496-bed5-c0883d90f14f"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42632,24 +42787,41 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="a9979959-7a81-49a5-aa2f-c301c2c6e88d"
+ Guid="77969015-c825-43fe-874d-a49d44ae5fea"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e9117d40-c923-4379-a56d-76300423e90a"
+ Guid="775cbccd-63a8-4ba7-b92e-09b28a81960b"
 >
 <Actions>
 <Action
- Guid="37a24002-5ff3-428f-8908-5f4f20b46247"
+ Guid="751efcc2-81ce-4a32-9966-92a6f2e48147"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="0103a6bb-1ee2-4e02-a681-f7f8bbb8de43"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="24a2405f-37f9-4bbd-af6a-bdd33485bac1"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="731a06f9-5e61-42e1-94f5-c0c473381bd0"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="cb8e0155-768f-4214-b042-08bb74961443"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="f0a37cea-5e15-42ea-92c7-59ed7529bc45"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="8c6eac3e-c8ec-4c4e-b7db-c6080bb1e377"
+>
+<Actions>
+<Action
+ Guid="14fa8e18-7973-4ded-b8e4-45fc2226ea60"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="196be74b-0632-417a-8d44-98adfa790e83"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42658,24 +42830,41 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="2df59596-30d2-4e5f-b9b2-18faad5c57a5"
+ Guid="4a0504dc-9402-48a4-b8a0-3701c0428629"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="f0d05be7-454d-40c1-b2a1-24c5d4b7e146"
+ Guid="7f0189d7-df10-4b14-b60e-c78c3db87957"
 >
 <Actions>
 <Action
- Guid="c954cfd6-17d3-4b56-9169-4dd69f30fbf0"
+ Guid="98cf9197-8183-4afd-81d5-e9c2a87051ea"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="a7c67b81-a093-4769-8149-950a418c7bb2"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="5fc86d7d-a0f6-4561-8cfe-04ca6ba23f6f"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="f449d0db-a464-46f6-8824-d6317e5d01b9"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="1eb2c99b-5bc6-4838-b58e-86ec138391ee"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="b678a6dc-2b0e-4831-8c15-b2bf50a9f4cb"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="2e9f2164-4f41-479c-9ae0-2e9042c81aea"
+>
+<Actions>
+<Action
+ Guid="89d472c2-2311-4aab-b39a-97c8abba2213"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="74890238-c327-4d51-93a2-04a500c22730"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42684,22 +42873,39 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="e2b21718-a687-4f04-ba57-016ca781e2e7"
+ Guid="ece7ba1c-e4f4-491b-9f94-dbd8258057e8"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="15054470-c250-48ce-80e6-1186bbcab13f"
+ Guid="d552ea38-b89f-45ee-b240-fa58b266fa08"
 >
 <Actions>
 <Action
- Guid="4f6878eb-32eb-4ec2-81f6-e86fd1ce8267"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="be4983a0-2e84-4a4c-a5f8-f770d1fc7b25"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="0623cacf-02cb-42a2-a658-5d25841f2a19"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="d5a033cf-1394-4fa5-9539-e217e2d23c46"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="8f548b78-6bff-4e87-9a73-d502c63d73b6"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="0b9e9e42-4fc1-4371-b2c6-f91c061eeb43"
+>
+<Actions>
+<Action
+ Guid="7c64540d-34a9-4c55-b2db-08d623a1d2ef"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="56e01431-08fc-43f6-aa1e-76fc47585bb8"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42708,22 +42914,39 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="c3fac7c9-b677-45e5-aae0-dc26fbcf8885"
+ Guid="de084a2a-94e6-4143-8ad0-0d0c23a06ccc"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="3a3a733f-0d65-4211-97a1-29ec89cbb8b4"
+ Guid="89dd05e9-8e1c-4104-ae59-095077c8111f"
 >
 <Actions>
 <Action
- Guid="2a141053-0ca2-4c13-9098-3a9dd19f6403"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="de62be35-1090-4b8a-996b-8feb4fa9cddf"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="ef5e2432-473b-4e55-adc6-ab83a1420b10"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="b4e516d3-bf62-4442-b310-33fee7e6525b"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="759fd291-158e-42be-ba0a-d565ed618335"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="5130f271-b614-4955-b134-6f06f868280c"
+>
+<Actions>
+<Action
+ Guid="22032c11-c852-4308-be30-f87e6ac88048"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="24085a37-e6f9-48ec-84f1-ef319bb79d85"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42732,22 +42955,39 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="7fc93daa-7e4e-4d9b-8e65-24a46a995eee"
+ Guid="c41476da-1221-43c1-9a80-53d471e0d193"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="06fd77d3-e1fa-4555-ab38-0b11b53656c8"
+ Guid="1cb1a45d-b2e5-4297-9b97-b76265bd4114"
 >
 <Actions>
 <Action
- Guid="9b656cfd-02a7-498e-bc94-3003888c9c20"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="a87fbef6-9286-4cad-8f1b-9326823186e9"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="38a1e4ba-ccfb-4d0d-b193-0aafd30258b7"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7b00fc9a-0d50-4c5d-bfb9-75b4e0269cb2"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="0efee3f2-b2b8-4719-9335-b19e5f82696a"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="3a75aa16-6486-42fd-9ff0-a9a93aa07aac"
+>
+<Actions>
+<Action
+ Guid="9e288095-23e2-48c2-b7dd-076713b2c116"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="08565617-1057-4c2e-a358-55e2f91f425f"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42756,22 +42996,39 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="fff4c4f2-b48f-4547-910a-f6a701a11249"
+ Guid="7ee266fd-7bf3-498b-a96f-0246b93690a6"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="5fe03950-03e1-4418-806e-c9151bb21acb"
+ Guid="a85d4bfb-c1b7-4b18-ad62-8f1559865afa"
 >
 <Actions>
 <Action
- Guid="4966f79e-cec9-4499-bb5d-9d6e859549ce"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="26e5a1db-f818-4b32-823c-a75eed7faef3"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="244258a7-e514-452d-9c25-59fecc01c919"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="e728fb9d-30b6-4ada-a957-4b7006580430"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="b73a4d91-6ed5-44bb-8a0a-aaa0b1226d3c"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e633d011-f1b6-4b8f-bb26-9ad85a590350"
+>
+<Actions>
+<Action
+ Guid="728dfd93-8551-4e12-97bf-ebc269f6842b"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="56715e78-db8f-4e70-8810-48ecf553468d"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42780,26 +43037,43 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="056b8881-78ee-4234-a01c-3db0c778f98f"
+ Guid="b7fc12f6-1c1c-42fa-a965-985ad64ff844"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="0ebe98dd-46f6-4c96-8803-adcff1fca2fd"
+ Guid="bbafc52e-96ee-41da-857e-4c6345ba2d4e"
 >
 <Actions>
 <Action
- Guid="8c9d8d88-53d1-48ba-868e-7ed595f995c6"
+ Guid="54f37369-a7d3-4799-9abe-ee3341990a74"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="77a4e0c3-bb92-4120-b034-18e138e8dcc2"
+ Guid="d26294c2-cbc8-42d5-9144-ec74bd38462f"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="db2c5c4e-a859-49b0-a34c-47c9aa6a909f"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="38d1c37f-45a0-464e-9fd3-334242d40af5"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="5dfc00ac-f95d-4782-b9e2-1ef93210bde6"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="cde43b40-12a0-444d-b6d3-5676f5e7db29"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="bc35e05c-1f76-470d-9982-c0c250aab839"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="ac6463f0-f040-4fbb-9560-f2cb9c8edbe1"
+>
+<Actions>
+<Action
+ Guid="4f7e7e97-8592-47b2-a18b-1c87c1c20e1e"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="8efb0e52-2dc1-4083-b461-0f0383ccaa01"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -42808,22 +43082,39 @@ DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformati
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="077a5ca0-0091-44f3-ba9d-3041e27204fb"
+ Guid="dcce8944-5ae4-4472-becd-02d7d10a91a7"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e608bd35-0cee-45f6-9f3d-d3889fbedbf7"
+ Guid="a332ebb3-a36a-4df7-b0e9-8c866c74b478"
 >
 <Actions>
 <Action
- Guid="664c4764-45a8-4148-abf3-9010149c0ada"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="f5fc1048-c9ae-4d7c-977d-d8cc3d10675f"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="65dea077-cfdb-4916-b86f-1caa576916a7"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="8373b23e-0fae-4e76-b881-db76872cf888"
->DMI.MasterDMI().Out_OperatedSystemVersion.ProcedureOut in DMI.OUT.OperatedSystemVersion.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="fc44fba7-e07e-45e0-aad5-c1c3fb6af6a7"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="a05f922c-74b6-466a-bd46-9a0a2f8b6090"
+>
+<Actions>
+<Action
+ Guid="c9f5a651-73ba-4979-86e3-dbcc8b262597"
+>DMI.MasterDMI().Out_OperatedSystemVersion.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="18c1ec7e-0b17-4419-a1b7-30c715adf82c"
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
