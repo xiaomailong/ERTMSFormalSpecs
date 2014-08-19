@@ -29627,13 +29627,13 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="OUT Brake indication"
- Guid="d6c50d75-cd16-4ca1-85f8-38f796f71d59"
+ Name="OUT BrakeIndication"
+ Guid="2bedd798-c2fb-418b-acac-b012721d6a3e"
 >
 <ReqRef
  Id="af77864f-0a33-496f-a874-1ebab99a0c4e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1030b07d-5ac7-4875-9d17-8ea22c522584"
+ Guid="ca125404-6968-4095-892b-c74c7f20e30d"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -29645,24 +29645,40 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="cc6ba377-bd17-4a14-a8ed-ba758e66b3f4"
+ Guid="5e379c2d-1b23-43be-8a46-75b7b20235ad"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ff5b038c-e341-4cb7-99f8-7dd67747746b"
+ Guid="44600f49-06f2-4f4b-9a30-76e96fd15fd5"
 >
 <Actions>
 <Action
- Guid="c06d397a-2200-4f4a-a9b2-90a405a67e0f"
+ Guid="d4bfef05-6f1d-461f-bad3-832d887f690d"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="6fe70ed6-9585-4229-bd03-4c038dda94f0"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="df6db583-4284-4531-a659-b685697ebdcd"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="31c43257-6303-48b9-a7ac-3b6803021603"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="831b3ce5-4d22-4cef-a349-d5f33ce63455"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.NotAvailable</Expectation></Expectations>
+ Guid="1bb96e22-86ad-4f53-8b2e-8fe181c5f988"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="bb98f84c-8af4-4473-a3a1-008e91519ef5"
+>
+<Actions>
+<Action
+ Guid="d11a3ca0-6fa7-4911-905e-dacbe50f7481"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="b38105bb-f844-4c12-96c6-76d683c1b2b5"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -29671,24 +29687,41 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="c6afc491-49a0-4fb5-99b9-c8e579ceb112"
+ Guid="9202d4fa-aa90-49c4-80db-b0b9cd99f691"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="b87eb2db-563e-44bf-90b8-f996bbc018ed"
+ Guid="c6a47ab8-9e2c-4973-b9ea-a813bb909df5"
 >
 <Actions>
 <Action
- Guid="745c6f0a-c687-4d61-8f77-300273fd2a8d"
+ Guid="2c6555c3-1e00-40e9-861c-cb83ba16bfec"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="e722a14e-52d4-4c2d-b26b-03229b019c8c"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="24d83abd-82c9-475b-975d-733e0166d9c1"
+>Kernel.PowerOn &lt;- True</Action><Action
+ Guid="c2b406c1-fad5-4f44-b2d5-2c940a505575"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="45a5fd21-d9ff-4137-8889-aa4237283828"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="6b8eec3f-0cd6-4e90-a2b4-a448219f742a"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="da166a90-d76c-4536-9a60-536ae8cfa335"
+>
+<Actions>
+<Action
+ Guid="a423bd09-148e-4dab-b208-81ab10400306"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="50a3cbc5-c5a1-4d02-a51b-19ed107e7e91"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -29697,22 +29730,39 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="53c8479a-fbe5-47c4-b57a-79c5ba28b3f0"
+ Guid="1373b84b-7872-458b-8bbf-9e3f6add6202"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="c670b381-2357-49ec-8867-600898a755d0"
+ Guid="ab6febfa-3ab0-4a01-9769-18846d0667cc"
 >
 <Actions>
 <Action
- Guid="d2cc4e28-decd-4d6b-8c8e-0f0a899aa96a"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="00496bee-a3f3-4a06-8cef-bad8fef0e56e"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="ce4b0619-cf25-459b-a80e-382daad35c75"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="bab1fff6-da19-4187-afd0-80145adc18e4"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="f3a49b5b-67b1-4184-864b-86c40a056370"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="31df658d-e992-4e35-8452-7dd09a7f65a1"
+>
+<Actions>
+<Action
+ Guid="d74069cd-c28a-4844-a2b1-d71fba8e8b24"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="a37fde50-206d-420d-8d4d-1eff5a019bd3"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -29721,24 +29771,41 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="63705cb7-504a-4928-a605-3c49fc1cc22d"
+ Guid="1a8d8fae-7ebf-44ed-8538-a58e8935271f"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="c7ce6eba-7485-4f59-bf4c-f89c4637397f"
+ Guid="df009999-b903-44b7-a55b-8942006cd215"
 >
 <Actions>
 <Action
- Guid="1d394711-890a-4e2a-b764-5a5bf2d25367"
+ Guid="9814703c-aaa4-4d8f-9d72-f66e94cf5edf"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="1d771dc4-c23b-4f78-a594-09a191ff82ce"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="24531276-1172-4546-876a-2967c6d35ee2"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="689048fe-0cf4-45a3-9233-9e3e40aaf8a5"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="2536b7cc-a0ad-4eaf-b70f-b43c5fe4a504"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="ce77e2e7-c149-45c7-95b3-0d408e1ce30b"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="9f5f58dc-fa2b-4cc8-96b4-c2d0db216ea9"
+>
+<Actions>
+<Action
+ Guid="09c2ca4f-f731-4905-8727-3502fe45163e"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="bb4c4409-a1ed-4244-b19e-f342f0b8082c"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -29747,24 +29814,43 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="b47d4446-8003-4a2d-8ccb-79615f629fbb"
+ Guid="ae62ddcc-65f2-4657-866d-f9ee5c071304"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="d4047ebd-c001-41c0-b6ea-597fbebc9eba"
+ Guid="0ca20622-6a98-48ef-b2a4-88f5934038b4"
 >
 <Actions>
 <Action
- Guid="55ff680f-023f-4be1-a190-ff1a744db021"
+ Guid="dbf461f8-3c38-4e96-947a-88db5bb72c6e"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="d61074af-6341-48e2-a7dd-cdae49758945"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="f17dfdc2-627b-4416-a8dc-de02411440f0"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="d6077c89-0dbd-421e-b3e3-2383924f4ec7"
+><Comment></Comment>
+
+DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="726ae67e-2bd9-4947-b131-fdf9ac7fa60f"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="2fe85d94-a634-4a07-a543-0368568bb23b"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="5a440829-a28e-4b80-adb6-78cccc981e54"
+>
+<Actions>
+<Action
+ Guid="3099ed11-ec95-42fe-a1c0-e3e80ab8bbf0"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="a8b6f5ce-81eb-47db-b679-5066497e8eda"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -29773,22 +29859,39 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="c8285670-63b4-450b-b23d-163c4f276027"
+ Guid="f1bf09ea-8a0f-4892-a17c-edd0934d0252"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="7439f9cc-6a01-4461-bf48-9c8a6c0384e6"
+ Guid="9bcaea48-61b8-4958-8d05-888987bebc09"
 >
 <Actions>
 <Action
- Guid="71402fb3-cd8d-4e2e-81ee-c1d1894b3fc6"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="94d6deca-2160-4824-913e-694ba7c154f7"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="14b0cc3a-6a43-4af4-b102-c8dbae4c62d9"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="dc541152-0738-4995-956c-3606f0371d4e"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="39fc757b-2138-47f8-9223-df1864ac83f3"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="2ece6700-399e-4f66-b9b5-5d38a419ca4e"
+>
+<Actions>
+<Action
+ Guid="cd8ee984-7823-4168-ac5d-9231655c3e6b"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="0751cd46-d6b5-49c9-8af3-523345e5fdc5"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -29797,22 +29900,39 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="119575c1-5c4a-42a7-a610-2f5c446543d2"
+ Guid="4c96d213-13f4-47fc-89e7-b4ecd3c5fb70"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="59e5f05f-9c4d-46f3-b22f-f7a15d7a2274"
+ Guid="764b1cd2-7355-42bb-9437-88e276281c8f"
 >
 <Actions>
 <Action
- Guid="d0ec67cc-b8b0-4727-a46f-e08cc867dc6b"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="5b396e01-85d3-4f3b-ae49-3307ab01789f"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="53f69981-7109-40b1-9792-11d6f9504214"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="6669d773-420f-4719-9653-f8da42f31831"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="0eeeec99-9666-4cba-a3d7-b6ddcc0f0a83"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="064cc363-03b4-4cc3-97ce-7b039e52d6c2"
+>
+<Actions>
+<Action
+ Guid="aef1948b-adc4-49ac-8a42-3fd55c956286"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="a4e4904b-cefb-4f7d-94e7-c44f5c9dda4e"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -29821,22 +29941,39 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="0e0bbb38-076b-44de-81fc-c2a60acae20a"
+ Guid="6c41f36f-7427-4a4b-9d1e-29b91ab21c80"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="5afff8b6-3a20-4b7e-b959-1ee18bd7f4f9"
+ Guid="c75f3917-5a46-4d76-9709-6155e695aaa5"
 >
 <Actions>
 <Action
- Guid="94252986-192d-450e-a58e-30fc321e564f"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="39571847-39e8-4239-91c6-c21d3fbd4638"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="714c463b-3873-4705-9bec-03f993a89491"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="20991f8d-0fda-4e38-ac75-a907702a286a"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="a62619dd-1e81-46c7-a9f6-b6f735ded87d"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="69d2069f-2866-4001-b54d-1318b24186a6"
+>
+<Actions>
+<Action
+ Guid="2fc82826-6f8e-46c2-bee4-21aad63f7b12"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="3b0746f2-fa42-459a-b4b7-3f8aee988bc7"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -29845,26 +29982,43 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="2ffdf190-7edf-4b8a-840f-8307bc4646ab"
+ Guid="33f63baf-51dd-4b57-9875-2ce1948c144f"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="d1fdf481-bb93-45c1-96c2-3dbe90531e8e"
+ Guid="35cf37ab-656a-40b6-a85f-bb4e1588b716"
 >
 <Actions>
 <Action
- Guid="fd652f48-cd4d-4a62-bd68-1aa237ef9cfa"
+ Guid="96d3a92b-1ee5-42dc-9d4d-05656eb18104"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="0f25d3dd-1d91-46c4-8957-386b61d35efe"
+ Guid="31ca1453-6860-41e1-a379-7e9612f6fbe1"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="883ab6d2-de1b-43e2-b3f2-6164f8a423cb"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="550d02f5-5a5d-47cb-b5a4-b44efc6c5f9d"
+>TIU.SleepingRequested  &lt;- True</Action><Action
+ Guid="52b7e8fd-7dca-4a11-a27b-4e4fa61b58fb"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="6606200d-63d6-4087-b815-72533aa82890"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="cf2bcaeb-16f2-40bd-9e66-251162efa31a"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="630aa616-6713-47bb-8ee7-4427f3eb3615"
+>
+<Actions>
+<Action
+ Guid="33b4212d-9523-47d6-b69a-075acd1bf843"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f0f75f41-25c4-44d3-ae8c-8e432234324a"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -29873,24 +30027,41 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="6905f52a-f047-4850-b0ad-c93d2c017a4d"
+ Guid="ef148d29-54e4-4f6b-bbf6-21cba6908589"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="24bb2d22-d4ca-4d3c-a8f3-b43a7180e6c7"
+ Guid="69655682-df5a-464a-98db-7a79da82cadd"
 >
 <Actions>
 <Action
- Guid="42a7024f-afdd-4fca-8f6e-94031eaca471"
+ Guid="2791f2fd-c97f-4b15-9e13-264907aa53b5"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="6c90d596-9243-485f-b08f-0ac279626eb4"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="ff5f00b9-7412-4dbc-b315-1f5aef9cc254"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="0dd5e4e5-9480-4f4d-9a9f-a73c3f996eb9"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7dee95b3-cc45-45d5-be82-d1efe3da56a5"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="3497088a-76aa-4249-89de-ba28222d06aa"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="371a3660-a607-4b5b-8ec6-1b5995d5819e"
+>
+<Actions>
+<Action
+ Guid="430f36c7-100b-43c0-b787-0d2eb6b6a9b8"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="45b8fea3-9ef6-4f82-929e-b1eb3f1a83e6"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -29899,24 +30070,41 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="3b8f6bcb-74dc-4625-960b-e01ed0de94f1"
+ Guid="401468e8-4c17-4f2c-b28f-4885725db2e5"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="7ebb67cb-6d54-4fcd-bb24-87ac4e5a559a"
+ Guid="52786901-9ead-42e4-b3b8-acc9bd6b6302"
 >
 <Actions>
 <Action
- Guid="a060b3da-314d-4a8e-b70e-221965cd1d22"
+ Guid="fb407f6e-ca61-4cf4-b916-dca95fcfee29"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="72d6a8f1-f437-45b7-91ec-1038dbfbfec4"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="00ba8862-75ca-4f03-b182-540a4316ea82"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="92b65439-0a45-4181-bf96-5dbc244211d4"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="e5a48e1c-4b0c-44d2-bb33-b63bd8140132"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="61f43e85-8ccf-46a1-a101-372b44fca4d4"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="26c89f4f-fa97-476d-b35e-7e1dc7cfaffd"
+>
+<Actions>
+<Action
+ Guid="ee67f423-4077-40e9-b744-ebfe72748984"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="49cce95e-b517-4d81-b3d2-cec319b59a30"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -29925,22 +30113,39 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="8d7972e9-d838-4bd7-b2bb-a133aa348468"
+ Guid="5f4c9f9c-5c6d-47f6-9524-c399b89f327c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="29f04c23-d12c-4f26-82cb-ed2253c46a58"
+ Guid="f3f1e114-69bb-4fce-83c8-d07bf0ab4068"
 >
 <Actions>
 <Action
- Guid="b40cfe0c-7e71-4c61-a5c2-7a63452ed17d"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="1ce82597-263a-4df0-8b35-5d3c2e2f43dc"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="45ae99d8-6301-40d0-afa2-f749a0602b06"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="3d97a0fa-62b0-4719-8b88-47b035924650"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="1941da88-51ad-44e6-a66a-800f0810aea8"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="10db5d28-3a0b-4ff5-bcb3-c77df7e8b4a9"
+>
+<Actions>
+<Action
+ Guid="f6bb193c-a43a-484d-be5a-1d33f548617f"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f590d93d-75d6-44dc-9325-67d57ede0f0a"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -29949,22 +30154,39 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="e2a76799-cf19-47f6-b3d2-a41d8f388266"
+ Guid="d44af258-e73d-4b4c-beb1-acb2ea071796"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="444ee66f-2ff3-452f-aefc-498298ae388a"
+ Guid="4f0523a6-efbf-49cc-8e1a-d4c8d3e0aa15"
 >
 <Actions>
 <Action
- Guid="c1c2d7aa-0b85-4e30-b2db-ced996cebd41"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="b8c07f81-298b-4d9b-9d9c-e44d1bc312a9"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="2eb97b5e-4b43-40e1-bec2-5b4867288b63"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="52cda8fc-f53b-4b6f-8dc8-6c1ea6203ac9"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="7a5ed792-d65c-4056-abed-96e383b1572c"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="13e8d9a1-4ca4-4713-82ad-1ade08db5b43"
+>
+<Actions>
+<Action
+ Guid="0f1c155a-015e-43e9-ac8e-60f926dec9c9"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="257fb9b2-63e0-49fb-82bd-c87252b268d4"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -29973,22 +30195,39 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="4a84bc33-f799-482d-932c-848be83112fa"
+ Guid="0016c43f-d947-4a10-bcd5-a4cd669787b9"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ee190614-3beb-4f78-9911-ceae750bd380"
+ Guid="0095e4f6-c285-4dd1-b4d9-fc3032245c83"
 >
 <Actions>
 <Action
- Guid="86c6c349-c74a-428f-b10d-cb6369219cdc"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="08b8b901-993f-458c-be0b-4fcb56022ed5"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="e2f5cbe6-c63b-4eda-9a76-4cf56e5ab20e"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="f9cbc046-d3f6-4b45-9f75-392aa57e32b7"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="abb2b32d-9afb-4b38-bd96-0a5089b9e3d8"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="2dade860-b470-4352-97ef-b44eee510d3c"
+>
+<Actions>
+<Action
+ Guid="f3b3a69f-bf54-4487-bb8b-68bed7ad36b5"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="66980159-81da-403d-830c-df4ca7f3dab9"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -29997,22 +30236,39 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="e1dd50c1-03b4-499e-97df-5860e52a09bb"
+ Guid="ed9dd831-c7d1-41d8-bff6-23928c860b9e"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="add3b671-99d6-4b90-a2e7-4fec2d771a0f"
+ Guid="cae3ffaa-76ae-450c-a0cc-ced96477cca4"
 >
 <Actions>
 <Action
- Guid="0ad718d3-87f3-41e4-ab7d-db85a29254de"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="c4c40dc9-514d-475a-8f10-ab673326fcd8"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="c38f070c-2cb9-4c4b-8614-735a3c493bc7"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="9f1c75eb-7925-4499-b507-89955cf5e70c"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="51a7de10-c97a-4543-a7e9-516b248c3354"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="bb5db86c-e02f-4326-b857-d51d0576b089"
+>
+<Actions>
+<Action
+ Guid="4dfe9312-aeb2-4ac8-92ae-80b635f7ffac"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="1d516754-6942-484b-a611-45c8e1e09c9b"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -30021,26 +30277,43 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="a6ccccac-9083-41b9-9393-c5746ac7dda5"
+ Guid="e85fb1e9-c1fa-4a48-a541-5bd410f060d0"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="0c406164-0260-4376-a5e5-a204fef74b97"
+ Guid="ec136d72-3c84-4d89-b265-767d0ad4c376"
 >
 <Actions>
 <Action
- Guid="3371a8db-3391-46fc-8b9d-40d35a7ce380"
+ Guid="1ba3b88d-d258-45f2-9ebc-0162085db6d3"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="5731f595-79e2-4667-9337-afc07b4d770a"
+ Guid="cb2c346c-59c6-4eeb-989c-7c8b917145c1"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="65e18e11-bc26-4fc5-9d78-3f9930b2b368"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="d8a81e36-b5c5-4096-8b30-f9fa9d81cb31"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="dbf46a0b-5268-48df-a66f-dbc05000f34b"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="8615bbce-49ca-48b5-b42d-4d19c448b9a9"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="eb875cf2-b834-4382-a640-cfc8f988cf32"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="afaa9106-6bb6-4796-98e6-d30b889c176c"
+>
+<Actions>
+<Action
+ Guid="895d806a-5dbb-478f-8476-bde3940ed5bb"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6ae55526-cf82-4746-9d09-5fca6a442690"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -30049,22 +30322,39 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="92fb2fcc-3476-4465-96fa-01cddd94d273"
+ Guid="48c70a97-83e1-4af6-abf6-7992b0aaa9e1"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="8407f47f-46a9-4ba3-bf8a-a5ce7163fa44"
+ Guid="a566073e-3a63-4652-a26d-800022f2150f"
 >
 <Actions>
 <Action
- Guid="0dc4bf27-9be0-4d33-8c97-2e0186650a9b"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="9f69180d-2fe0-46fa-8e66-003d179ac357"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="ba894115-e2bd-4bb6-bbbe-5f04526ed19f"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="2bebb6db-abcd-47e3-b02a-0fa756985408"
->DMI.MasterDMI().Out_BrakeIndication.ProcedureOut in DMI.OUT.BrakeIndication.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="3d8b6f42-06ed-4c16-8ac0-3402b57b66da"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="a6040232-64ff-4cce-abba-aa98718fd2f6"
+>
+<Actions>
+<Action
+ Guid="549e55bc-33e3-4310-a54a-e3219251e5a2"
+>DMI.MasterDMI().Out_BrakeIndication.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="51e8ac67-b61f-4fcf-a4ec-32387ee3ff9a"
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
