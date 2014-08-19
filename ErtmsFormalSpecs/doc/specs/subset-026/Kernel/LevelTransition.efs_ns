@@ -823,7 +823,8 @@ Packet.Sequence1</Action></Actions>
 <Actions>
 <Action
  Guid="fd368ae9-0601-449f-b2c9-e3ef3f7370e8"
->DMI.MasterDMI().DisplayLevelTransitionAnnouncement(LTOtoProcess.TRLevel.Value)</Action></Actions>
+><Comment></Comment>
+DMI.MasterDMI().Out_LevelTransitionAnnouncement.Display(LTOtoProcess.TRLevel.Value)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
