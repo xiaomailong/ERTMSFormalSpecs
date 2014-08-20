@@ -14,36 +14,27 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Several LXs received"
- Guid="0bffb302-d194-418c-a3f8-13540031539f"
+ Name="LX data storage"
+ Guid="b93713bd-ac07-4b8b-b6c4-bc446ebbcd73"
 >
+<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"
  Case="0"
  Implemented="TRUE"
- Name="Several LXs received"
- Guid="ede582d8-e7e6-4633-be62-15bdf669bdb8"
+ Name="protected + non-protected LX"
+ Guid="8ca00f61-51b5-44ca-88e9-419ebf658e63"
 >
 <ReqRef
- Id="f80261a5-4553-4c43-ab09-2cf0da750a7e"
+ Id="06213f41-1d21-4d8e-bed7-9f24274f7f14"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="50c26647-19f3-4e0a-a062-1744b6c3ac65"
+ Guid="49a6aa50-f78c-4088-8d84-281fc233765f"
 >
 </ReqRef><ReqRef
- Id="6caaedb4-a566-4536-a6c7-b958f8c96d03"
+ Id="127b4102-89de-4c50-9c52-b1bead79aa18"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="87580f9c-71a3-4ecc-835e-66f9e8911280"
->
-</ReqRef><ReqRef
- Id="0f039a3b-873b-484c-913f-292a6031b162"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fe2de281-f9c3-40ef-8763-55e5ebc030c0"
->
-</ReqRef><ReqRef
- Id="09955e19-89e5-4073-8a7b-b17cb637603a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3645a3a5-8947-4e73-8a0a-9d5d8660c8b1"
+ Guid="d6b1bb76-15ed-4bf5-bff5-c898a0775f93"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -55,388 +46,17 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
- Guid="7dd2bcdf-d88c-4a97-abaf-651b086e1482"
+ Guid="f820b901-b6f7-47f2-84e1-2fd26a163be3"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="a55b1634-6bc5-4a6e-9515-32e09aecb00f"
+ Guid="0e0ac788-d237-4802-beca-68b4aaff07f8"
 >
 <Actions>
 <Action
- Guid="0f557603-b73d-488e-8612-8a48f856c34b"
+ Guid="addd8cbf-0ce9-472f-9df4-00fdfcb2c66e"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 - A protected level crossing is received"
- Guid="6422613d-f6e9-4b3a-9cd0-ff245a68e672"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="72af5c0b-8520-4f72-9538-5925a106f0f5"
->
-<Actions>
-<Action
- Guid="f6432060-d051-4c76-b8c3-21b708a48663"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
-    [
-        Messages.EUROBALISE.SubStructure1
-        {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
-                {
-                    NID_PACKET=&gt;88,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    NID_LX=&gt;18,
-                    D_LX=&gt;3000,
-                    L_LX=&gt;50,
-                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_protected,
-                    V_LX=&gt;0,
-                    Q_STOPLX=&gt;Messages.Q_STOPLX.No_stop_required,
-                    L_STOPLX=&gt;0
-                }
-            }
-        }
-    ]
-}</Action><Action
- Guid="00d62fa8-cb2c-4102-a704-b0a12e0f1db7"
->Kernel.LX.LevelCrossings &lt;- []</Action><Action
- Guid="0ad66d6d-325c-4a25-9b8d-0e99811cd9de"
->BTM.LRBG &lt;- BTM.BaliseGroup
-{
-    NID =&gt; 9621,
-    Orientation =&gt; Orientation.Nominal,
-    Position =&gt; BTM.Position
-    {
-        OverReadingAmountOdo =&gt; 27.0,
-        Position =&gt; 3000.0,
-        UnderReadingAmountOdo =&gt; 24.0
-    }
-}</Action><Action
- Guid="94df64b6-d357-4641-a52c-f65d38758dba"
->Odometry.NominalDistance &lt;- 3500.0</Action><Action
- Guid="3e6e8e74-30af-4549-b1e4-dd613d2c8fa5"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action><Action
- Guid="0b959333-20b5-40d1-b689-a2e1aafd03e6"
->Odometry.Accuracy &lt;- Odometry.OdometerAccuracy 
-{
-    D_ura =&gt; 42.0,
-    D_ora =&gt; 38.0,
-    V_ora =&gt; 0.0,
-    V_ura =&gt; 0.0
-}</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="c8f217e4-3385-4793-8135-dcb906795115"
->Kernel.LX.LevelCrossings != []</Expectation><Expectation
- Kind="Instantaneous"
- Guid="65595750-2561-4276-bf5a-045522809e0f"
->Kernel.LX.SpeedRestrictions ( 1000.0 ) &gt;= 150.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="37a6e80b-e721-406a-b08c-7bc0be781a9c"
->Kernel.LX.SpeedRestrictions ( 3000.0 ) &gt;= 150.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="d945d918-814a-41b2-9c66-fcf18b7de193"
->Kernel.LX.SpeedRestrictions ( 3020.0 ) &gt;= 150.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="c89abb87-bb38-4c4e-990c-865aebb376e6"
->Kernel.LX.SpeedRestrictions ( 4000.0 ) &gt;= 150.0</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step3 - A non protected level crossing is received"
- Guid="31f7a90b-16bf-4b8d-8386-019cbcf3fb89"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="c4cf3041-00c5-490e-8169-a2183f161558"
->
-<Actions>
-<Action
- Guid="862c0251-2ccb-4782-b6ad-be71179747bf"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2126,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
-    [
-        Messages.EUROBALISE.SubStructure1
-        {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
-                {
-                    NID_PACKET=&gt;88,
-                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    NID_LX=&gt;20,
-                    D_LX=&gt;2000,
-                    L_LX=&gt;100,
-                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_not_protected,
-                    V_LX=&gt;8,
-                    Q_STOPLX=&gt;Messages.Q_STOPLX.No_stop_required,
-                    L_STOPLX=&gt;0
-                }
-            }
-        }
-    ]
-}</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="fee415b7-ad32-4025-8918-8e18692f50c5"
->Kernel.LX.SpeedRestrictions ( 1000.0 ) &gt;= 150.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="743c713d-2c61-412b-a4e6-41af129e1926"
->Kernel.LX.SpeedRestrictions ( 2000.0 ) == 40.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="a3dfef0a-43a6-4ad7-8c58-b6e266b16530"
->Kernel.LX.SpeedRestrictions ( 2099.0 ) == 40.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="68614665-fe53-447e-93c5-bf11d5933ea5"
->Kernel.LX.SpeedRestrictions ( 3000.0 ) &gt;= 150.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="912c578c-566d-47ea-8bb1-72ba745eb810"
->Kernel.LX.SpeedRestrictions ( 3020.0 ) &gt;= 150.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="e44a57f3-bb19-4b0e-9d2d-df129e949112"
->Kernel.LX.SpeedRestrictions ( 4000.0 ) &gt;= 150.0</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step4 - A non protected level crossing is received"
- Guid="d446ee50-80e2-4fd0-b6f1-9d692df27b1a"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="cb287f3a-895b-49c5-a74e-0505f30bd7c1"
->
-<Actions>
-<Action
- Guid="97a1991a-7d50-40b6-8bff-5c6a6d5e3a2a"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2128,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
-    [
-        Messages.EUROBALISE.SubStructure1
-        {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
-                {
-                    NID_PACKET=&gt;88,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    NID_LX=&gt;22,
-                    D_LX=&gt;2500,
-                    L_LX=&gt;40,
-                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_not_protected,
-                    V_LX=&gt;4,
-                    Q_STOPLX=&gt;Messages.Q_STOPLX.Stop_required,
-                    L_STOPLX=&gt;50
-                }
-            }
-        }
-    ]
-}</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="33a4c9a7-3d00-4f01-ac3e-00426a2827d5"
->Kernel.LX.SpeedRestrictions ( 1000.0 ) &gt;= 150.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="275d6ba0-a101-466b-8447-3fcebabdbef5"
->Kernel.LX.SpeedRestrictions ( 2000.0 ) == 40.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="9a0ca218-e1a1-46bf-a04f-681a7fafe2c8"
->Kernel.LX.SpeedRestrictions ( 2099.0 ) == 40.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="a40d11fd-4818-4799-87af-05b29e9af373"
->Kernel.LX.SpeedRestrictions ( 2450.0 ) == 0.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="bba3a0ec-d438-4a27-b0c3-3871f7d5e2c1"
->Kernel.LX.SpeedRestrictions ( 2500.0 ) == 20.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="a501ec06-a4eb-438a-b9ff-56aa67287409"
->Kernel.LX.SpeedRestrictions ( 2539.0 ) == 20.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="28c9acaa-04f9-44ab-9b53-a5ef2f7c0be1"
->Kernel.LX.SpeedRestrictions ( 2540.0 ) &gt;= 150.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="0161ecb4-1a4f-4bc7-b3c9-fbc049f0e491"
->Kernel.LX.SpeedRestrictions ( 3000.0 ) &gt;= 150.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="4a124efe-72c4-4aaa-8cbb-2081ca5ebebb"
->Kernel.LX.SpeedRestrictions ( 3020.0 ) &gt;= 150.0</Expectation><Expectation
- Kind="Instantaneous"
- Guid="f36796d1-bb7a-4285-a82f-a84d25effd13"
->Kernel.LX.SpeedRestrictions ( 4000.0 ) &gt;= 150.0</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="New LX information with same id replaces old information"
- Guid="104cc260-43e7-4c31-ad96-ec714ab22251"
->
-<ReqRef
- Id="1db11ec4-063b-4b77-b176-cba385f8f886"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9a648f59-1019-4e6b-852a-8ec535a54c52"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step1 - Setup"
- Guid="0889c8e6-9d7e-4275-9949-3588e00cb386"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="5cce217f-da45-4dcf-a95e-b893cba7895b"
->
-<Actions>
-<Action
- Guid="9360bbb4-a208-47ed-843b-7f74d73c909e"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step2 - A protected level crossing is received"
- Guid="1a4ec4db-5359-4fc6-8f78-e5d939eb87d9"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="5e12570e-8c2b-49df-b849-79fa7caeef93"
->
-<Actions>
-<Action
- Guid="81c61bcd-825a-46b3-b1d7-b2bd657d16fe"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
-    [
-        Messages.EUROBALISE.SubStructure1
-        {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
-                {
-                    NID_PACKET=&gt;88,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    NID_LX=&gt;18,
-                    D_LX=&gt;3000,
-                    L_LX=&gt;50,
-                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_protected,
-                    V_LX=&gt;0,
-                    Q_STOPLX=&gt;Messages.Q_STOPLX.No_stop_required,
-                    L_STOPLX=&gt;0
-                }
-            }
-        }
-    ]
-}</Action><Action
- Guid="4b8a39f5-c467-4921-8300-4488b65c53f6"
->Kernel.LX.LevelCrossings &lt;- []</Action><Action
- Guid="ca555052-cf67-40f5-8a7d-c2c32d54b6c1"
->BTM.LRBG &lt;- BTM.BaliseGroup
-{
-    NID =&gt; 9621,
-    Orientation =&gt; Orientation.Nominal,
-    Position =&gt; BTM.Position
-    {
-        OverReadingAmountOdo =&gt; 7.0,
-        Position =&gt; 3000.0,
-        UnderReadingAmountOdo =&gt; 4.0
-    }
-}</Action><Action
- Guid="217d6e92-7077-4389-9f5b-6aebf8540631"
->Odometry.NominalDistance &lt;- 3500.0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="41295b1e-b242-4786-ba70-35a957080035"
->(COUNT Kernel.LX.LevelCrossings) == 1</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="c651b657-25e9-42b8-b633-3411f356327b"
->(FIRST_IN Kernel.LX.LevelCrossings).Location == 3000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -445,23 +65,43 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step3 - Another protected level crossing is received which should overwrite the old one"
- Guid="97f62329-14ba-4537-98b3-d4331b82d953"
+ Name="Step2 - Initialize test-data"
+ Guid="cc8dd2c2-d8b9-448f-a238-ccafd9632e5b"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="dbf6beac-f12e-4aa7-995f-466b862e390e"
+ Guid="c34b9f35-ea13-4a40-88b9-703477bd1103"
 >
 <Actions>
 <Action
- Guid="aba0d07b-857b-4d0e-a087-d126df5fa8c9"
+ Guid="dfe1d05b-ebbd-4507-8676-dd46043c7df8"
+><Comment></Comment>
+Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - A protected level crossing is received"
+ Guid="76fe4ed0-98dd-4c32-99ae-38df0b473d5b"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="75609b54-1ae3-47d8-a473-fdaeb7530b65"
+>
+<Actions>
+<Action
+ Guid="1c3cb215-03b0-4b30-a717-73dd58153397"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
+    N_PIG=&gt;0,
     N_TOTAL=&gt;0,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
@@ -481,7 +121,7 @@
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     NID_LX=&gt;18,
-                    D_LX=&gt;4000,
+                    D_LX=&gt;1000,
                     L_LX=&gt;50,
                     Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_protected,
                     V_LX=&gt;0,
@@ -492,20 +132,357 @@
         }
     ]
 }</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2"
- Guid="4b79971a-e3c4-456c-84a0-2c36ea97d4bc"
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4 - A non-protected level crossing is received"
+ Guid="08d82367-8f36-46fe-baa8-73f7fd9be69e"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="ebebb776-8e35-442d-ac05-fa4ae7e446fa"
+>
+<Actions>
+<Action
+ Guid="540a104a-dfb8-4045-a9b9-f910a505a5af"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
+                {
+                    NID_PACKET=&gt;88,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    NID_LX=&gt;19,
+                    D_LX=&gt;2000,
+                    L_LX=&gt;100,
+                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_not_protected,
+                    V_LX=&gt;0,
+                    Q_STOPLX=&gt;Messages.Q_STOPLX.No_stop_required,
+                    L_STOPLX=&gt;0
+                }
+            }
+        }
+    ]
+}</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step5 - Check if the information is correctly stored"
+ Guid="9d9627b4-a2a1-4f22-a30d-59b92428bad8"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="2510d8c2-ed58-406b-98fa-a94f4cf4db50"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="f1037c8e-2029-44ac-af92-0eb94392a32e"
->(COUNT Kernel.LX.LevelCrossings) == 1</Expectation><Expectation
+ Guid="caa19e33-5788-46b6-aed0-7b9e71f2fe32"
+>(FIRST_IN Kernel.LX.LevelCrossings).Id == 18</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="8a6b9ada-22f8-4cf0-a12f-aed3fccb9034"
->(FIRST_IN Kernel.LX.LevelCrossings).Location == 4000.0</Expectation></Expectations>
+ Guid="6b89b352-a342-4913-981f-fb015bb3c1bf"
+>(FIRST_IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_protected</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f93665be-ee1f-4bba-8fb4-462d0c5096ca"
+>(FIRST_IN Kernel.LX.LevelCrossings).Length == 50.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="5e426661-0e63-4b57-bed2-949b7dbe8bd9"
+>(FIRST_IN Kernel.LX.LevelCrossings).Location == 1000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="adc7a78a-07f8-4e8b-a125-dec74cf9b379"
+>(LAST_IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="bdd7b2bd-7788-4d3f-bb97-f54bfc0180bc"
+>(LAST_IN Kernel.LX.LevelCrossings).Length == 100.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="82c6804f-9299-4266-b7e8-e12a2a33cd3c"
+>(LAST_IN Kernel.LX.LevelCrossings).Location == 2000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="216e9293-2f37-4a3d-b507-3249f2ee26cc"
+>(LAST_IN Kernel.LX.LevelCrossings).Id == 19</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b8d04d84-5a4f-4ec9-b44a-d09d8cb8dc4f"
+>(COUNT Kernel.LX.LevelCrossings) == 2</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="non-protected LX"
+ Guid="a4b43398-8834-43cc-a076-e6cb06d4ad6b"
+>
+<ReqRef
+ Id="36b7b2d7-fafa-4229-b0da-4e4d149ed7c7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9747bd14-2958-4ed9-9bdb-a17737daa77d"
+>
+</ReqRef><ReqRef
+ Id="25ba8ee8-fa61-47e2-acbd-df1d8614ed6a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8432db40-9b0c-43f8-86dc-495073f46776"
+>
+</ReqRef><ReqRef
+ Id="4b756e9d-4e0d-4fd1-81a8-9244618a8547"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3f0a1304-fdea-48f9-aaa6-42dc5b25a1fa"
+>
+</ReqRef><ReqRef
+ Id="4be474be-fe70-49b2-8c94-d7383e9539e8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eedee535-3860-41d7-92b9-f623de4ee171"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+ Guid="0dcc890b-b772-43ba-9083-7bbc615d6b13"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="f979e986-40f0-4c14-9bb6-0ede40966f75"
+>
+<Actions>
+<Action
+ Guid="b6e47baa-fc5b-4dc3-b612-77c42e028871"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Initialize test-data"
+ Guid="0673b3a2-b0bd-4703-aa96-b8e386575c1d"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="74f48a09-93d1-4edc-be48-3a2adbab9c67"
+>
+<Actions>
+<Action
+ Guid="f05eeef2-065e-4072-a0b2-3a1cb6d7b6dd"
+>Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - A non-protected level crossing is received"
+ Guid="cbfffd0a-5dc4-42e5-8427-76355793231b"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="2c3ec93d-0394-433c-b034-74672b34c168"
+>
+<Actions>
+<Action
+ Guid="126a9a4d-4159-48fd-9a2c-cf9dd75ffa20"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
+                {
+                    NID_PACKET=&gt;88,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    NID_LX=&gt;20,
+                    D_LX=&gt;2000,
+                    L_LX=&gt;100,
+                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_not_protected,
+                    V_LX=&gt;4,
+                    Q_STOPLX=&gt;Messages.Q_STOPLX.No_stop_required,
+                    L_STOPLX=&gt;0
+                }
+            }
+        }
+    ]
+}</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4 - Check for speed and absence of stopping requirement"
+ Guid="cf89f8cd-768a-4c02-b948-1bb2beba2aa8"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="7b5a1c6a-9e5d-4df2-ba00-8f4e1e158fd1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="18c47b39-a7d0-4c77-9842-94edf96c337b"
+>(FIRST_IN Kernel.LX.LevelCrossings).Speed == 20.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="03f4f493-e78d-4c56-b8e7-bc0c5ca64dbb"
+>(FIRST_IN Kernel.LX.LevelCrossings).StoppingRequired == Messages.Q_STOPLX.No_stop_required</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="0dc55a3b-5bbc-4b43-8db9-46b05bff7413"
+>(FIRST_IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step5 - Another non-protected level crossing is received"
+ Guid="4ebc9416-3d53-435d-ac9c-9e20fdf940fe"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="c4bdb933-ffe4-4fe9-9b88-238b6c6ad382"
+>
+<Actions>
+<Action
+ Guid="18c51bbb-58eb-4f45-8a54-538deb916dea"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
+                {
+                    NID_PACKET=&gt;88,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    NID_LX=&gt;20,
+                    D_LX=&gt;2000,
+                    L_LX=&gt;100,
+                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_not_protected,
+                    V_LX=&gt;10,
+                    Q_STOPLX=&gt;Messages.Q_STOPLX.Stop_required,
+                    L_STOPLX=&gt;100
+                }
+            }
+        }
+    ]
+}</Action><Action
+ Guid="79b36933-aea1-4bfd-94ab-5d1f29227b4c"
+>Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step6 - Check for presence of stopping requirement and associated stopping area"
+ Guid="ee6de384-81e6-4486-a7d1-742f16afdd15"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="68a72c00-8634-454e-9017-adbd71a086d1"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ec0080d8-4519-4e33-adb4-0ed54e819adb"
+>(FIRST_IN Kernel.LX.LevelCrossings).StoppingRequired == Messages.Q_STOPLX.Stop_required</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b9f7e729-0742-41d8-aaac-a955dc560991"
+>(FIRST_IN Kernel.LX.LevelCrossings).StoppingAreaLength == 100.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4634ba8a-1512-431a-af2b-1e0693b84617"
+>(FIRST_IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -599,7 +576,7 @@
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
+    N_PIG=&gt;0,
     N_TOTAL=&gt;0,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
@@ -821,7 +798,7 @@
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
+    N_PIG=&gt;0,
     N_TOTAL=&gt;0,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
@@ -1047,7 +1024,7 @@
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
+    N_PIG=&gt;0,
     N_TOTAL=&gt;0,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
@@ -1180,27 +1157,36 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="LX data storage"
- Guid="b93713bd-ac07-4b8b-b6c4-bc446ebbcd73"
+ Name="Several LXs received"
+ Guid="0bffb302-d194-418c-a3f8-13540031539f"
 >
-<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"
  Case="0"
  Implemented="TRUE"
- Name="protected + non-protected LX"
- Guid="8ca00f61-51b5-44ca-88e9-419ebf658e63"
+ Name="Several LXs received"
+ Guid="ede582d8-e7e6-4633-be62-15bdf669bdb8"
 >
 <ReqRef
- Id="06213f41-1d21-4d8e-bed7-9f24274f7f14"
+ Id="f80261a5-4553-4c43-ab09-2cf0da750a7e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="49a6aa50-f78c-4088-8d84-281fc233765f"
+ Guid="50c26647-19f3-4e0a-a062-1744b6c3ac65"
 >
 </ReqRef><ReqRef
- Id="127b4102-89de-4c50-9c52-b1bead79aa18"
+ Id="6caaedb4-a566-4536-a6c7-b958f8c96d03"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d6b1bb76-15ed-4bf5-bff5-c898a0775f93"
+ Guid="87580f9c-71a3-4ecc-835e-66f9e8911280"
+>
+</ReqRef><ReqRef
+ Id="0f039a3b-873b-484c-913f-292a6031b162"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fe2de281-f9c3-40ef-8763-55e5ebc030c0"
+>
+</ReqRef><ReqRef
+ Id="09955e19-89e5-4073-8a7b-b17cb637603a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3645a3a5-8947-4e73-8a0a-9d5d8660c8b1"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -1212,16 +1198,16 @@
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
- Guid="f820b901-b6f7-47f2-84e1-2fd26a163be3"
+ Guid="7dd2bcdf-d88c-4a97-abaf-651b086e1482"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="0e0ac788-d237-4802-beca-68b4aaff07f8"
+ Guid="a55b1634-6bc5-4a6e-9515-32e09aecb00f"
 >
 <Actions>
 <Action
- Guid="addd8cbf-0ce9-472f-9df4-00fdfcb2c66e"
+ Guid="0f557603-b73d-488e-8612-8a48f856c34b"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -1230,44 +1216,23 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step2 - Initialize test-data"
- Guid="cc8dd2c2-d8b9-448f-a238-ccafd9632e5b"
+ Name="Step2 - A protected level crossing is received"
+ Guid="6422613d-f6e9-4b3a-9cd0-ff245a68e672"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="c34b9f35-ea13-4a40-88b9-703477bd1103"
+ Guid="72af5c0b-8520-4f72-9538-5925a106f0f5"
 >
 <Actions>
 <Action
- Guid="dfe1d05b-ebbd-4507-8676-dd46043c7df8"
-><Comment></Comment>
-Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- Name="Step3 - A protected level crossing is received"
- Guid="76fe4ed0-98dd-4c32-99ae-38df0b473d5b"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="75609b54-1ae3-47d8-a473-fdaeb7530b65"
->
-<Actions>
-<Action
- Guid="1c3cb215-03b0-4b30-a717-73dd58153397"
+ Guid="f6432060-d051-4c76-b8c3-21b708a48663"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;7,
+    N_PIG=&gt;0,
     N_TOTAL=&gt;0,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
@@ -1287,7 +1252,7 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     NID_LX=&gt;18,
-                    D_LX=&gt;1000,
+                    D_LX=&gt;3000,
                     L_LX=&gt;50,
                     Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_protected,
                     V_LX=&gt;0,
@@ -1297,7 +1262,50 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
             }
         }
     ]
+}</Action><Action
+ Guid="00d62fa8-cb2c-4102-a704-b0a12e0f1db7"
+>Kernel.LX.LevelCrossings &lt;- []</Action><Action
+ Guid="0ad66d6d-325c-4a25-9b8d-0e99811cd9de"
+>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 9621,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 27.0,
+        Position =&gt; 3000.0,
+        UnderReadingAmountOdo =&gt; 24.0
+    }
+}</Action><Action
+ Guid="94df64b6-d357-4641-a52c-f65d38758dba"
+>Odometry.NominalDistance &lt;- 3500.0</Action><Action
+ Guid="3e6e8e74-30af-4549-b1e4-dd613d2c8fa5"
+>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action><Action
+ Guid="0b959333-20b5-40d1-b689-a2e1aafd03e6"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy 
+{
+    D_ura =&gt; 42.0,
+    D_ora =&gt; 38.0,
+    V_ora =&gt; 0.0,
+    V_ura =&gt; 0.0
 }</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="c8f217e4-3385-4793-8135-dcb906795115"
+>Kernel.LX.LevelCrossings != []</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="65595750-2561-4276-bf5a-045522809e0f"
+>Kernel.LX.SpeedRestrictions ( 1000.0 ) &gt;= 150.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="37a6e80b-e721-406a-b08c-7bc0be781a9c"
+>Kernel.LX.SpeedRestrictions ( 3000.0 ) &gt;= 150.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="d945d918-814a-41b2-9c66-fcf18b7de193"
+>Kernel.LX.SpeedRestrictions ( 3020.0 ) &gt;= 150.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="c89abb87-bb38-4c4e-990c-865aebb376e6"
+>Kernel.LX.SpeedRestrictions ( 4000.0 ) &gt;= 150.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1305,29 +1313,102 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step4 - A non-protected level crossing is received"
- Guid="08d82367-8f36-46fe-baa8-73f7fd9be69e"
+ Name="Step3 - A non protected level crossing is received"
+ Guid="31f7a90b-16bf-4b8d-8386-019cbcf3fb89"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ebebb776-8e35-442d-ac05-fa4ae7e446fa"
+ Guid="c4cf3041-00c5-490e-8169-a2183f161558"
 >
 <Actions>
 <Action
- Guid="540a104a-dfb8-4045-a9b9-f910a505a5af"
+ Guid="862c0251-2ccb-4782-b6ad-be71179747bf"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
+    N_PIG=&gt;0,
     N_TOTAL=&gt;0,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
-    NID_BG=&gt;2124,
+    NID_BG=&gt;2126,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
+                {
+                    NID_PACKET=&gt;88,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    NID_LX=&gt;20,
+                    D_LX=&gt;2000,
+                    L_LX=&gt;100,
+                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_not_protected,
+                    V_LX=&gt;8,
+                    Q_STOPLX=&gt;Messages.Q_STOPLX.No_stop_required,
+                    L_STOPLX=&gt;0
+                }
+            }
+        }
+    ]
+}</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="fee415b7-ad32-4025-8918-8e18692f50c5"
+>Kernel.LX.SpeedRestrictions ( 1000.0 ) &gt;= 150.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="743c713d-2c61-412b-a4e6-41af129e1926"
+>Kernel.LX.SpeedRestrictions ( 2000.0 ) == 40.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="a3dfef0a-43a6-4ad7-8c58-b6e266b16530"
+>Kernel.LX.SpeedRestrictions ( 2099.0 ) == 40.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="68614665-fe53-447e-93c5-bf11d5933ea5"
+>Kernel.LX.SpeedRestrictions ( 3000.0 ) &gt;= 150.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="912c578c-566d-47ea-8bb1-72ba745eb810"
+>Kernel.LX.SpeedRestrictions ( 3020.0 ) &gt;= 150.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="e44a57f3-bb19-4b0e-9d2d-df129e949112"
+>Kernel.LX.SpeedRestrictions ( 4000.0 ) &gt;= 150.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - A non protected level crossing is received"
+ Guid="d446ee50-80e2-4fd0-b6f1-9d692df27b1a"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="cb287f3a-895b-49c5-a74e-0505f30bd7c1"
+>
+<Actions>
+<Action
+ Guid="97a1991a-7d50-40b6-8bff-5c6a6d5e3a2a"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2128,
     Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt;
     [
@@ -1341,100 +1422,63 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
                     Q_DIR=&gt;Messages.Q_DIR.Nominal,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    NID_LX=&gt;19,
-                    D_LX=&gt;2000,
-                    L_LX=&gt;100,
+                    NID_LX=&gt;22,
+                    D_LX=&gt;2500,
+                    L_LX=&gt;40,
                     Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_not_protected,
-                    V_LX=&gt;0,
-                    Q_STOPLX=&gt;Messages.Q_STOPLX.No_stop_required,
-                    L_STOPLX=&gt;0
+                    V_LX=&gt;4,
+                    Q_STOPLX=&gt;Messages.Q_STOPLX.Stop_required,
+                    L_STOPLX=&gt;50
                 }
             }
         }
     ]
 }</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step5 - Check if the information is correctly stored"
- Guid="9d9627b4-a2a1-4f22-a30d-59b92428bad8"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="2510d8c2-ed58-406b-98fa-a94f4cf4db50"
->
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1"
- Guid="caa19e33-5788-46b6-aed0-7b9e71f2fe32"
->(FIRST_IN Kernel.LX.LevelCrossings).Id == 18</Expectation><Expectation
+ Guid="33a4c9a7-3d00-4f01-ac3e-00426a2827d5"
+>Kernel.LX.SpeedRestrictions ( 1000.0 ) &gt;= 150.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1"
- Guid="6b89b352-a342-4913-981f-fb015bb3c1bf"
->(FIRST_IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_protected</Expectation><Expectation
+ Guid="275d6ba0-a101-466b-8447-3fcebabdbef5"
+>Kernel.LX.SpeedRestrictions ( 2000.0 ) == 40.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1"
- Guid="f93665be-ee1f-4bba-8fb4-462d0c5096ca"
->(FIRST_IN Kernel.LX.LevelCrossings).Length == 50.0</Expectation><Expectation
+ Guid="9a0ca218-e1a1-46bf-a04f-681a7fafe2c8"
+>Kernel.LX.SpeedRestrictions ( 2099.0 ) == 40.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1"
- Guid="5e426661-0e63-4b57-bed2-949b7dbe8bd9"
->(FIRST_IN Kernel.LX.LevelCrossings).Location == 1000.0</Expectation><Expectation
+ Guid="a40d11fd-4818-4799-87af-05b29e9af373"
+>Kernel.LX.SpeedRestrictions ( 2450.0 ) == 0.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1"
- Guid="adc7a78a-07f8-4e8b-a125-dec74cf9b379"
->(LAST_IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation><Expectation
+ Guid="bba3a0ec-d438-4a27-b0c3-3871f7d5e2c1"
+>Kernel.LX.SpeedRestrictions ( 2500.0 ) == 20.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1"
- Guid="bdd7b2bd-7788-4d3f-bb97-f54bfc0180bc"
->(LAST_IN Kernel.LX.LevelCrossings).Length == 100.0</Expectation><Expectation
+ Guid="a501ec06-a4eb-438a-b9ff-56aa67287409"
+>Kernel.LX.SpeedRestrictions ( 2539.0 ) == 20.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1"
- Guid="82c6804f-9299-4266-b7e8-e12a2a33cd3c"
->(LAST_IN Kernel.LX.LevelCrossings).Location == 2000.0</Expectation><Expectation
+ Guid="28c9acaa-04f9-44ab-9b53-a5ef2f7c0be1"
+>Kernel.LX.SpeedRestrictions ( 2540.0 ) &gt;= 150.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1"
- Guid="216e9293-2f37-4a3d-b507-3249f2ee26cc"
->(LAST_IN Kernel.LX.LevelCrossings).Id == 19</Expectation><Expectation
+ Guid="0161ecb4-1a4f-4bc7-b3c9-fbc049f0e491"
+>Kernel.LX.SpeedRestrictions ( 3000.0 ) &gt;= 150.0</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1"
- Guid="b8d04d84-5a4f-4ec9-b44a-d09d8cb8dc4f"
->(COUNT Kernel.LX.LevelCrossings) == 2</Expectation></Expectations>
+ Guid="4a124efe-72c4-4aaa-8cbb-2081ca5ebebb"
+>Kernel.LX.SpeedRestrictions ( 3020.0 ) &gt;= 150.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="f36796d1-bb7a-4285-a82f-a84d25effd13"
+>Kernel.LX.SpeedRestrictions ( 4000.0 ) &gt;= 150.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
  Feature="0"
  Case="0"
  Implemented="TRUE"
- Name="non-protected LX"
- Guid="a4b43398-8834-43cc-a076-e6cb06d4ad6b"
+ Name="New LX information with same id replaces old information"
+ Guid="104cc260-43e7-4c31-ad96-ec714ab22251"
 >
 <ReqRef
- Id="36b7b2d7-fafa-4229-b0da-4e4d149ed7c7"
+ Id="1db11ec4-063b-4b77-b176-cba385f8f886"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9747bd14-2958-4ed9-9bdb-a17737daa77d"
->
-</ReqRef><ReqRef
- Id="25ba8ee8-fa61-47e2-acbd-df1d8614ed6a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8432db40-9b0c-43f8-86dc-495073f46776"
->
-</ReqRef><ReqRef
- Id="4b756e9d-4e0d-4fd1-81a8-9244618a8547"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3f0a1304-fdea-48f9-aaa6-42dc5b25a1fa"
->
-</ReqRef><ReqRef
- Id="4be474be-fe70-49b2-8c94-d7383e9539e8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="eedee535-3860-41d7-92b9-f623de4ee171"
+ Guid="9a648f59-1019-4e6b-852a-8ec535a54c52"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -1446,16 +1490,16 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - Setup"
- Guid="0dcc890b-b772-43ba-9083-7bbc615d6b13"
+ Guid="0889c8e6-9d7e-4275-9949-3588e00cb386"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="f979e986-40f0-4c14-9bb6-0ede40966f75"
+ Guid="5cce217f-da45-4dcf-a95e-b893cba7895b"
 >
 <Actions>
 <Action
- Guid="b6e47baa-fc5b-4dc3-b612-77c42e028871"
+ Guid="9360bbb4-a208-47ed-843b-7f74d73c909e"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -1464,44 +1508,23 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step2 - Initialize test-data"
- Guid="0673b3a2-b0bd-4703-aa96-b8e386575c1d"
+ Name="Step2 - A protected level crossing is received"
+ Guid="1a4ec4db-5359-4fc6-8f78-e5d939eb87d9"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="74f48a09-93d1-4edc-be48-3a2adbab9c67"
+ Guid="5e12570e-8c2b-49df-b849-79fa7caeef93"
 >
 <Actions>
 <Action
- Guid="f05eeef2-065e-4072-a0b2-3a1cb6d7b6dd"
->Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step3 - A non-protected level crossing is received"
- Guid="cbfffd0a-5dc4-42e5-8427-76355793231b"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="2c3ec93d-0394-433c-b034-74672b34c168"
->
-<Actions>
-<Action
- Guid="126a9a4d-4159-48fd-9a2c-cf9dd75ffa20"
+ Guid="81c61bcd-825a-46b3-b1d7-b2bd657d16fe"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
+    N_PIG=&gt;0,
     N_TOTAL=&gt;0,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
@@ -1520,11 +1543,91 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
                     Q_DIR=&gt;Messages.Q_DIR.Nominal,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    NID_LX=&gt;20,
-                    D_LX=&gt;2000,
-                    L_LX=&gt;100,
-                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_not_protected,
-                    V_LX=&gt;4,
+                    NID_LX=&gt;18,
+                    D_LX=&gt;3000,
+                    L_LX=&gt;50,
+                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_protected,
+                    V_LX=&gt;0,
+                    Q_STOPLX=&gt;Messages.Q_STOPLX.No_stop_required,
+                    L_STOPLX=&gt;0
+                }
+            }
+        }
+    ]
+}</Action><Action
+ Guid="4b8a39f5-c467-4921-8300-4488b65c53f6"
+>Kernel.LX.LevelCrossings &lt;- []</Action><Action
+ Guid="ca555052-cf67-40f5-8a7d-c2c32d54b6c1"
+>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 9621,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 7.0,
+        Position =&gt; 3000.0,
+        UnderReadingAmountOdo =&gt; 4.0
+    }
+}</Action><Action
+ Guid="217d6e92-7077-4389-9f5b-6aebf8540631"
+>Odometry.NominalDistance &lt;- 3500.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="41295b1e-b242-4786-ba70-35a957080035"
+>(COUNT Kernel.LX.LevelCrossings) == 1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="c651b657-25e9-42b8-b633-3411f356327b"
+>(FIRST_IN Kernel.LX.LevelCrossings).Location == 3000.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Another protected level crossing is received which should overwrite the old one"
+ Guid="97f62329-14ba-4537-98b3-d4331b82d953"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="dbf6beac-f12e-4aa7-995f-466b862e390e"
+>
+<Actions>
+<Action
+ Guid="aba0d07b-857b-4d0e-a087-d126df5fa8c9"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;0,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
+                {
+                    NID_PACKET=&gt;88,
+                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    L_PACKET=&gt;400,
+                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    NID_LX=&gt;18,
+                    D_LX=&gt;4000,
+                    L_LX=&gt;50,
+                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_protected,
+                    V_LX=&gt;0,
                     Q_STOPLX=&gt;Messages.Q_STOPLX.No_stop_required,
                     L_STOPLX=&gt;0
                 }
@@ -1532,123 +1635,20 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
         }
     ]
 }</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step4 - Check for speed and absence of stopping requirement"
- Guid="cf89f8cd-768a-4c02-b948-1bb2beba2aa8"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="7b5a1c6a-9e5d-4df2-ba00-8f4e1e158fd1"
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="4b79971a-e3c4-456c-84a0-2c36ea97d4bc"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="18c47b39-a7d0-4c77-9842-94edf96c337b"
->(FIRST_IN Kernel.LX.LevelCrossings).Speed == 20.0</Expectation><Expectation
+ Guid="f1037c8e-2029-44ac-af92-0eb94392a32e"
+>(COUNT Kernel.LX.LevelCrossings) == 1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="03f4f493-e78d-4c56-b8e7-bc0c5ca64dbb"
->(FIRST_IN Kernel.LX.LevelCrossings).StoppingRequired == Messages.Q_STOPLX.No_stop_required</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="0dc55a3b-5bbc-4b43-8db9-46b05bff7413"
->(FIRST_IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step5 - Another non-protected level crossing is received"
- Guid="4ebc9416-3d53-435d-ac9c-9e20fdf940fe"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="c4bdb933-ffe4-4fe9-9b88-238b6c6ad382"
->
-<Actions>
-<Action
- Guid="18c51bbb-58eb-4f45-8a54-538deb916dea"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;8,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
-    [
-        Messages.EUROBALISE.SubStructure1
-        {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
-                {
-                    NID_PACKET=&gt;88,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    NID_LX=&gt;20,
-                    D_LX=&gt;2000,
-                    L_LX=&gt;100,
-                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_not_protected,
-                    V_LX=&gt;10,
-                    Q_STOPLX=&gt;Messages.Q_STOPLX.Stop_required,
-                    L_STOPLX=&gt;100
-                }
-            }
-        }
-    ]
-}</Action><Action
- Guid="79b36933-aea1-4bfd-94ab-5d1f29227b4c"
->Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step6 - Check for presence of stopping requirement and associated stopping area"
- Guid="ee6de384-81e6-4486-a7d1-742f16afdd15"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="68a72c00-8634-454e-9017-adbd71a086d1"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="ec0080d8-4519-4e33-adb4-0ed54e819adb"
->(FIRST_IN Kernel.LX.LevelCrossings).StoppingRequired == Messages.Q_STOPLX.Stop_required</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="b9f7e729-0742-41d8-aaac-a955dc560991"
->(FIRST_IN Kernel.LX.LevelCrossings).StoppingAreaLength == 100.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="4634ba8a-1512-431a-af2b-1e0693b84617"
->(FIRST_IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation></Expectations>
+ Guid="8a6b9ada-22f8-4cf0-a12f-aed3fccb9034"
+>(FIRST_IN Kernel.LX.LevelCrossings).Location == 4000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

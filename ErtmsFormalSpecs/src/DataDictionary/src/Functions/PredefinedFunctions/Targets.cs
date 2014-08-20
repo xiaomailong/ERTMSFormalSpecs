@@ -156,7 +156,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
                 Graph graph = function.Graph;
                 if (graph != null && graph.Segments.Count > 1)
                 {
-                    double prevSpeed = Double.MaxValue;
+                    double prevSpeed = graph.Segments[0].Val(graph.Segments[0].Start);
                     for (int i = 1; i < graph.Segments.Count; i++)
                     {
                         Graph.Segment s = graph.Segments[i];
@@ -190,10 +190,12 @@ namespace DataDictionary.Functions.PredefinedFunctions
                         length.Value = new Values.DoubleValue(EFSSystem.DoubleType, s.End);
                         value.set(length);
 
+                        // Only add the target for the current segment to the collection if it brings a reduction in permitted speed
                         if (s.Val(s.Start) < prevSpeed)
                         {
                             collection.Val.Add(value);
                         }
+                        // But even if it is not added to the collection of targets, this segment is now the reference speed
                         prevSpeed = s.Val(s.Start);
                     }
                 }

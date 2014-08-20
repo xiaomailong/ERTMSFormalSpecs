@@ -684,6 +684,7 @@ Odometry.NominalDistance &lt;- 11100.0</Action></Actions>
  Name="Check that PBD message has overwritten old values"
  Guid="256f617e-0216-48d6-bc8d-99fb293b6a11"
 >
+<Comment></Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
@@ -840,7 +841,8 @@ Odometry.NominalDistance &lt;- 11100.0</Action></Actions>
 <Actions>
 <Action
  Guid="4525eeb3-1472-4070-93c8-f5233f063b9e"
->BTM.Message &lt;- Messages.EUROBALISE.Message
+><Comment></Comment>
+BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
     M_VERSION =&gt; 0,
