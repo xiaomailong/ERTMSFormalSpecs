@@ -51961,13 +51961,13 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="OUT Shunting refused by RBC"
- Guid="86b17111-bb16-467d-a37e-d1a04da5a4c4"
+ Name="OUT ShuntingRefusedByRbc"
+ Guid="fc129cc2-3277-41a5-afbf-7d09fed196b5"
 >
 <ReqRef
  Id="1176c931-9bec-4873-af7b-4bc2a1e73232"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="77f51cbe-f855-4f6e-894c-1256a77495c3"
+ Guid="655d1d2e-4c97-44b7-be71-c7618eba6c7c"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -51979,24 +51979,40 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="a48c4f77-39b7-4b9a-b26d-5ad1ef1d6c4b"
+ Guid="6a873dda-7a73-40f9-a7e0-58d070dbe670"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e3d3f435-0671-4d1c-8082-76d7eaf376d5"
+ Guid="f04d21fd-f608-4336-b7fd-2f4d47e9b0d0"
 >
 <Actions>
 <Action
- Guid="7d90d5cc-dd22-4ddc-9128-00e4ae66d636"
+ Guid="0018bd00-5771-42ec-bfaf-401d2677f32b"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="1c36bb2d-d684-46fe-9437-e469aff9f830"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="b994eb27-dad0-4be3-b4f4-4fa9cf8203cd"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="a27989e0-f4b2-4f4b-a62d-b089dad79107"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="ee9131d1-70af-4cbc-8eb2-2011ad599da4"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.NotAvailable</Expectation></Expectations>
+ Guid="fa76f888-2250-4afc-a96a-b71fc36276ed"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="070b9fe8-23b5-4eae-822f-4acf776e4bee"
+>
+<Actions>
+<Action
+ Guid="9da46424-84f4-488b-8da3-01bdf60e2225"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="099c51be-3a5f-45f3-aa60-d1976797f47d"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -52005,24 +52021,41 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="7c5e901f-9078-44c4-aeaa-92b39e816c59"
+ Guid="8080905c-58fa-4da0-b9e3-8ccc7f76e196"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="f1023577-5cce-4b1a-8a3b-a24fe133c126"
+ Guid="d1c483a2-c7e9-412c-9506-9028e13b2501"
 >
 <Actions>
 <Action
- Guid="f6c3eea4-2a1b-4baf-8b73-d9a7116fa1f4"
+ Guid="05402ab1-6261-4d44-a864-d780857f76fb"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="f67815c5-e3e3-4397-b05b-2addbda13e58"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="27c1be1f-6f86-48af-864b-51be544bd54f"
+>Kernel.PowerOn &lt;- True</Action><Action
+ Guid="460d5891-15a9-4dcc-918a-228274b4d4d4"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="1beff738-3f06-4f8e-8d5d-6bc7f3a6c04f"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="0259d6df-e150-4c44-9591-b4b4a8c1fc40"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="789536fe-9d6a-464a-8753-24f4adcc212d"
+>
+<Actions>
+<Action
+ Guid="f53b74bd-ebe9-48d5-b43c-25ae87d763ba"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="546dedc9-f8dd-47bf-ac9d-c547fa880907"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -52031,22 +52064,39 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="e8d0443f-eba1-41ba-839b-99e237b526a4"
+ Guid="b896c3d4-930c-4b7b-b9c3-19cf3e7ae53c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="8446067f-2b29-4e8c-9143-92014756ca40"
+ Guid="76c15993-ae1a-4239-aa0b-1e5974260b9a"
 >
 <Actions>
 <Action
- Guid="17649da2-c5b8-4257-9fdf-d8197dc63fe6"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="862a8625-78cf-4322-b771-e795e3d9eeb0"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="d53f6919-2b6c-48e4-a66f-11749c30e9ad"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="ebde6327-1a85-4018-a9dc-b2b1d50d7613"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="f381fc7d-ee35-47de-b06e-389039f16b6e"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="af1c8eae-8e00-430e-b957-48c9a4666287"
+>
+<Actions>
+<Action
+ Guid="7226ee6a-28dd-496e-8833-432e13b440d1"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="46455fff-83a0-4f47-904b-46b983fa7e85"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -52055,24 +52105,41 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="65c773bf-efa3-44ae-b3ad-f134e41e376e"
+ Guid="c3e34ba5-3618-47b8-a48a-a82b38d6eb02"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="6dcc1837-2687-486e-98bb-0c172ff5d9c3"
+ Guid="8bed375a-8408-4fd5-839e-23df26526cd9"
 >
 <Actions>
 <Action
- Guid="8bfc6f64-19a4-4138-8aea-139143b1ca41"
+ Guid="0adf1ba0-6730-4598-8ebd-33a8137eb1e8"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="05ef4a3d-1e05-4399-9c02-602f6cf0f61c"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="6b9c61bf-ea35-42ae-97e5-643937210a2f"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="08faccb3-42e5-4db9-b751-130b5a106637"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="8dfb0e6f-a5c7-490f-b0d2-76c9d929e1bb"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="516e8a70-240f-4ad6-934a-15017181699c"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e139cbee-89db-4393-8de6-37e18bb9c0f5"
+>
+<Actions>
+<Action
+ Guid="bbee7113-4a49-481e-b720-624e19b00be1"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="04c3a9c0-e68d-4644-9f9b-27806362b243"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -52081,24 +52148,43 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="19eb4566-e827-49f4-9556-b14caf3c125e"
+ Guid="429a3655-4250-4069-9a87-b92afe3afaef"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="c1b6b48c-fbc9-4304-b4f5-d4ef59abbf86"
+ Guid="f79f09c8-bccb-4e34-ad4b-7700000ba51d"
 >
 <Actions>
 <Action
- Guid="d2b8e730-4e03-49f3-bb0b-3f9618d95ca9"
+ Guid="a820ae2a-6604-46f0-a45f-78bc6fa94b01"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="b1ec20f3-7ee8-4b71-a2d1-3c2bea219708"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="40ab8709-99de-479a-acb0-b9bfbaf6329c"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="6e289749-cce1-404f-bf92-96d5d1c99515"
+><Comment></Comment>
+
+DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="1a635c2a-491d-45a9-aa1a-0887982aaee5"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="6a571be0-49ff-4518-9d20-cbee3c9dd228"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="eaeba1d7-a89b-465c-8d01-07872d1e2f12"
+>
+<Actions>
+<Action
+ Guid="c5e722cf-d5f8-4af7-b390-eaa90937fafe"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="824d41fb-8272-4aa6-9221-c0850542a0a5"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -52107,22 +52193,39 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="163c3508-5d9a-48b4-84e1-289bd4e64434"
+ Guid="a2c936d6-99de-4805-8a85-309d99f2f5ce"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="386160cc-2188-42bb-b061-80b5da0f5a62"
+ Guid="0de1ff20-a454-4e7d-9742-d56b136c772b"
 >
 <Actions>
 <Action
- Guid="addb491b-e9e3-420c-8858-c2b7a065766a"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="d6d47db5-bd4d-41e7-9f49-4e9d9e8beb54"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="e93c61b3-3ddb-4754-81f7-09387019e297"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="a955a82e-396a-4a10-83e4-4f1beceee78e"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="f33d88fc-dd20-4e20-a8b7-4324ef28bb4a"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="c1f46a26-e50d-445a-bcd8-fdf4d04aad28"
+>
+<Actions>
+<Action
+ Guid="a4f2f853-16cb-44b8-87ea-3ef021c2a0e2"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="19dd38b5-1bfd-46d8-841a-c2c88f72678e"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -52131,22 +52234,39 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="6c7bfb64-a56e-43b8-9585-5db02a91b7fc"
+ Guid="680d6afc-d8b0-4028-b7d8-fd35bf080df4"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="47c838c2-9d1f-4f2b-9d1d-2e2d60bba3e2"
+ Guid="c4a23c05-b3fb-4dd3-8622-45cd5bac8ef2"
 >
 <Actions>
 <Action
- Guid="a921a21b-dc43-4187-a1ff-772f9327ce5c"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="35dc5560-832e-45aa-b593-563e56eb5a9d"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="545e388e-4ae8-4bd6-a6fd-46e3146385bb"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="c2d90cd0-5ad2-433e-a194-98460900c40f"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="9a35f577-ba49-462c-87fd-cdd12d2605a3"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="07d904d7-89d3-4567-8508-32c820cab216"
+>
+<Actions>
+<Action
+ Guid="abc04b7d-5773-46eb-92f9-14d41116ebb3"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="3ccb057b-afc5-4c48-a979-ac80265ad843"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -52155,22 +52275,39 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="f2a87eb3-f59f-48d4-8a85-6d0651c87d7e"
+ Guid="0ea09425-02ad-442e-956a-b289faa16a84"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="70d72c60-ff0f-4b70-b448-66d141f97756"
+ Guid="9c79dd4d-2067-450e-9b8f-0cab47cd14a2"
 >
 <Actions>
 <Action
- Guid="627e686c-4880-4dd7-a8e0-374dcf1061db"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="95a3b42e-ac9c-469c-ae35-ad086f7aa3ee"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="ec412bb8-5488-4f7b-9dfc-021ccaf4bde8"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="c945ab1f-38a3-45af-8c92-e51ad0b33d7d"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="5b4f6756-2c65-4e4a-ac3e-e28cb11fec03"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="445f0066-61a6-467a-a37b-fa1ea95280d0"
+>
+<Actions>
+<Action
+ Guid="35bc5e6a-4edd-43f7-b3ae-befead8af1aa"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="d605e734-5457-437f-9e2e-4ad5aa693c28"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -52179,26 +52316,43 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="900ac6f4-7ecf-4dfd-82e6-02c2baad32e7"
+ Guid="62334100-424b-489e-9d3d-3a1a614c16dd"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="1a3bd62f-5e0f-456c-abf8-ccf9f543a284"
+ Guid="7bf308f4-a632-42c1-9440-898b5018ff52"
 >
 <Actions>
 <Action
- Guid="4147f855-11e9-4aff-a08d-de7cf50308ba"
+ Guid="d3f100b3-1ac7-4f9b-a46e-bf6ae1d0542a"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="10f90e27-02ca-4a0f-a441-51b44f73c958"
+ Guid="f02e3c21-5912-4b24-8b1e-fd099afd8cdc"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="f4c61cbb-2203-4d83-8706-c572c769bcf0"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="00f27df6-a6d0-48bb-bae8-bad8db7c44b2"
+>TIU.SleepingRequested  &lt;- True</Action><Action
+ Guid="5901cd98-23c3-4d93-9b99-a221332825c6"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="2e44580e-aa29-4418-bf80-a5a583b1c39f"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="db2e839e-e65a-425e-aa49-8a0eaf53c7ef"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="74d608df-2c00-4121-b10d-a78867e96aa0"
+>
+<Actions>
+<Action
+ Guid="73e78462-ca24-40c0-9ef3-610813889537"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="be38545b-a81c-4044-baa3-5263cdba58f2"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -52207,24 +52361,41 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="b8ef4955-cfd9-4207-8533-ef4215716b1a"
+ Guid="9c930dc2-e323-4041-9744-3cf16ed0b800"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ee7840e0-91cb-4fc0-a341-01a301575b6f"
+ Guid="53139ada-4697-4c3f-a576-499f9ba01dbf"
 >
 <Actions>
 <Action
- Guid="d4a7942d-904c-4ff8-a60a-fa498e355d31"
+ Guid="675107ea-4300-4939-bd9c-1aa74f8d62ba"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="64090e93-fc3a-4366-8012-978e9727cb44"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="8d77a547-1e4a-4b6e-8c52-233e7c211889"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="4a45f0c5-878f-48db-a8c0-8063d50964b5"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7691eb69-5707-4e2e-a813-84a240dab70c"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="f34e2a36-18ac-4d66-8e0f-7c2778cedd87"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="7cf144ab-4c3a-4045-ba9c-d4d1e998fb89"
+>
+<Actions>
+<Action
+ Guid="29871df6-9765-4afe-adf8-219e5a495262"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="3bedc7f6-450b-42c5-9c15-1a50fb367947"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -52233,24 +52404,41 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="4f446740-fa52-4d8e-bb02-be7e772668e0"
+ Guid="81a87856-224b-4c15-88b1-c94bed73d9c2"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="697440b5-3d98-424a-9a44-0585dcb860c9"
+ Guid="92b27387-fcf0-48c4-a23d-92761c674b52"
 >
 <Actions>
 <Action
- Guid="ae28417f-b4c1-4fd5-a428-1d5bf660e55c"
+ Guid="8b3d1fe0-94e5-4489-904b-25557967f411"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="7d4c94bf-5db1-473e-bf4a-789f3a0f88f9"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="3abaa120-8726-4bf3-9b9c-51b257419c00"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="ef33223f-71c0-4573-b196-4eec88bc9ad3"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="a0a8cc7c-845c-4a2d-912e-e01a8fb3083f"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="dcaafdd8-88f9-4827-a816-8cd162b6e60a"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="6d0e9761-64ab-4699-b657-103e9d396e10"
+>
+<Actions>
+<Action
+ Guid="6d3a47a6-c7bb-42b8-89ce-af79201e52e4"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f5ebf4b9-908c-4334-8145-5d68b42053f2"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -52259,22 +52447,39 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="80dd4015-3815-4263-9703-49f7d0c0d5bc"
+ Guid="8ee8efdf-8048-46d1-b755-5faa821b4b09"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="7b0a8e3f-a2a5-4ab2-933e-8b7f16ad69ad"
+ Guid="bbfd9356-d6e2-441d-9ebd-e9de41d8bba0"
 >
 <Actions>
 <Action
- Guid="d6fcdae4-8615-4940-a1d6-97facd62e3f8"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="5ab9aaeb-a127-4ab9-adc2-05314275c93e"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="c893e2e0-20f0-449b-a77d-a92a01abd9f1"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="dacf7807-8107-485b-950d-44d1c4ddffdd"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="5ce6f3d3-b2ed-4eca-a53b-8d374e8957c3"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="a36be669-9fd1-4db6-8c1d-b2647292c17a"
+>
+<Actions>
+<Action
+ Guid="4bd29efc-6412-40b7-8b4c-d8274bf64c08"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="49801942-151b-47a4-863d-54ae4a00154b"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -52283,22 +52488,39 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="b14fbf8b-aa46-421b-8bb4-6f77217403d9"
+ Guid="5a3801b7-220a-44fe-bb10-7449b314f67c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="22d9edd1-f771-454b-b88a-d2399836cfa3"
+ Guid="a6e0c21a-a0ff-40a6-8094-e7407ce4b2da"
 >
 <Actions>
 <Action
- Guid="651fc5b7-a72a-433b-9446-a873abb01196"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="1e073724-5db4-4ac7-9274-2af322d8038a"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="c1bf2eee-d603-446a-8e70-f9c0b48b6762"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="98dddb36-23cf-4036-a96f-22f6f62e3e66"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="2392a5c4-0e0d-4379-ac1d-09110dd81f7c"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="9167ae9a-bc52-4643-ba1d-f7c2a131b40e"
+>
+<Actions>
+<Action
+ Guid="0cc3d88c-21a7-4709-9e65-29beaa6a7d07"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="48e3960a-2cd2-4baa-a213-46570016a194"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -52307,22 +52529,39 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="40d74961-2abd-49d3-9ac8-496b8daa33ba"
+ Guid="272ed3e4-774e-4b34-8565-af1c046fcc76"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="f68b9d57-ba4d-4d89-93cd-2f224c4eacbc"
+ Guid="2e5fcb47-f007-402f-9e43-cd3e600e6eaf"
 >
 <Actions>
 <Action
- Guid="403b0c2f-925d-4d65-8245-ea36ecaa3cb8"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="8d386beb-965c-40d8-8c09-9c61d2b682b9"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="6cddd9d1-3bec-42b2-8238-37fbb9681deb"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="d94301ae-20ae-4efd-9a1b-469a00ad49de"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="f1c75be8-0310-4b2e-a15a-49494de34af5"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="2e31caea-469f-4a10-91af-f9f4af7ba5a9"
+>
+<Actions>
+<Action
+ Guid="5e4e86e3-9eab-4670-9a06-e2541b7e489c"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="9bd21c64-db35-48e0-ba30-ac2f86e37bec"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -52331,22 +52570,39 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="6a9e9214-9544-4940-ba0e-da3e7f83ba1a"
+ Guid="55d9512c-dace-4f8b-b8bc-312bd7107317"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="a50cb87e-4461-47f6-a315-8ed90e2f4ab5"
+ Guid="cbfc612a-f1f0-476e-8332-59662febc6f9"
 >
 <Actions>
 <Action
- Guid="dfa691a5-7d9a-4fb4-a85b-b30dfc9939f9"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="a678f7d6-17b6-48e8-be2a-5ae21ec1efd2"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="d6f06b0d-9a90-4eae-af0b-ab2bc2ada900"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="c09378c7-e9b5-4299-8b25-c0426a977615"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="e817a69b-915e-46ba-b385-61efcbc2acf8"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="2ed54a00-64f0-462e-8dfa-05ae19614038"
+>
+<Actions>
+<Action
+ Guid="3a7852a6-d222-431f-9d65-3398882e8a77"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="0bdd3b2a-c383-4cd7-bf68-c3e2f83064b2"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -52355,26 +52611,43 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="674a433d-d2ca-4a64-8e23-e9e75b515b83"
+ Guid="5807ca12-dff9-4b8a-b78e-1db8cc695d3c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="42a77e1d-4472-4799-b114-0adfce31be9c"
+ Guid="a302dd13-a1ae-43d1-88da-1b7dd53694eb"
 >
 <Actions>
 <Action
- Guid="485dc6d3-fbe3-475c-b7ad-fbd9fd476c86"
+ Guid="daeb97c7-8555-449b-bef9-11584333395a"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="20939cea-1566-4b3d-8860-a2658f385292"
+ Guid="de98a0c7-d698-44b5-a297-e0dcf0a5120f"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="3e2b029e-e353-4ec2-8070-7a535b7a700c"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="b5535e54-24a3-44a6-8e4b-858f1ed11bcd"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="dadbde20-4afb-4f88-b4e1-c28407f62b13"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="84523879-c4e1-49b2-a5ff-c6c654f1f060"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="df21d84b-e58a-4c4b-809c-bf577b4e2ed3"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="18e847d5-45b4-463d-b9ac-157143dd1442"
+>
+<Actions>
+<Action
+ Guid="230e284b-77a6-47df-900c-0e5a35c8f94f"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="d952cccf-99e1-4f6d-a25f-8f418d6e6285"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -52383,22 +52656,39 @@ DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayReque
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="cf283e1b-de2a-486d-b115-6048ea1ad3df"
+ Guid="ec8ba89e-3e8f-47e4-8f1a-3284b1d67c18"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="09d71b41-30d6-4534-95e0-1c3a1e1a4889"
+ Guid="edeff175-5508-40a5-bab3-db5d00196853"
 >
 <Actions>
 <Action
- Guid="8084022b-01e4-4aa9-9603-83c06573327a"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="dae3984f-63a2-480f-886d-c7faa2d7b9ed"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="fba8836a-0874-4567-aa3b-257f0711bdd6"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="63716905-fc8b-420e-91b7-048603190f0d"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.ProcedureOut in DMI.OUT.ShuntingRefusedByRbc.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="2213c62f-5d48-4223-92a6-f4a290168c62"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="f7b78d31-8304-49ec-8c4e-a128da85366a"
+>
+<Actions>
+<Action
+ Guid="547bcd30-d14d-459a-836f-e3827c5b0fc7"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="d2af6656-39d7-46fb-b3e2-35734e0d468d"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
