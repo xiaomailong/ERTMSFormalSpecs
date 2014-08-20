@@ -2653,7 +2653,6 @@ SpeedAndDistanceMonitoringSupervisionStatusMandatory()</PreCondition></PreCondit
 <Action
  Guid="7f4d8513-d902-4aca-adc5-1b869878345f"
 ><Comment></Comment>
-
 THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5588,7 +5587,6 @@ ShuntingRefusedByRbcMandatory()</PreCondition></PreConditions>
 <Action
  Guid="3760cd6b-eb73-4edb-b32c-c009bec05ecf"
 ><Comment></Comment>
-
 THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5714,7 +5712,6 @@ ShuntingRequestNotAnsweredByRbcMandatory()</PreCondition></PreConditions>
 <Action
  Guid="6b7140f5-6446-42c9-b1e8-1954d25f7d48"
 ><Comment></Comment>
-
 THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -8220,7 +8217,6 @@ SafeRadioConnectionIndicationMandatory()</PreCondition></PreConditions>
 <Action
  Guid="4bcacc83-6f10-4d4d-8f58-c7eb913b9aeb"
 ><Comment></Comment>
-
 THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -12306,7 +12302,6 @@ RVModeProposedMandatory()</PreCondition></PreConditions>
 <Action
  Guid="c93feb76-9f2f-4824-89cc-cdf8b0eab526"
 ><Comment></Comment>
-
 THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -12435,7 +12430,6 @@ SNModeProposedMandatory()</PreCondition></PreConditions>
 <Action
  Guid="e38df24f-91b3-4340-9189-2b5985454dc4"
 ><Comment></Comment>
-
 THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -12488,6 +12482,133 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Implemented="TRUE"
  Name="Mode"
  Guid="1871d7ee-0ea5-45c5-b3b1-06fb74ee7daa"
+>
+<Comment>The mode proposed to the driver</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ X="110"
+ Y="780"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SRModeProposed"
+ Guid="144672ae-fbdb-4b88-9b4e-e27a3fe208ff"
+>
+<ReqRef
+ Id="ab35ab1a-b0ef-4158-a6ea-e5e4b77dd326"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="63d2d991-6837-40ce-b18b-45489713a8b2"
+>
+</ReqRef><Comment>Indicates that the SR mode has been proposed to the driver</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Output when mandatory"
+ Guid="74da67dd-8359-4e3b-8ec3-be7d649828a1"
+>
+<Comment>Outputs the value of this element when mandatory</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Output when mandatory"
+ Guid="d194ab1f-ab27-400e-a5c4-970124bebe26"
+>
+<PreConditions>
+<PreCondition
+ Guid="d35d1325-6a58-4ec2-8816-3c0bac5ad794"
+><Comment></Comment>
+SRModeProposedMandatory()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5df41f63-99fa-4215-8786-dbb9edf5df4d"
+>Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ Name="Display"
+ Guid="bca68e84-7ccd-451d-a183-459619f66a4e"
+>
+<Comment>Requests to display the corresponding information</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Updates the request status"
+ Guid="44b73ed9-d740-4178-b8e3-cb2805e8563c"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Updates the request status"
+ Guid="3fa01a56-5e89-49e1-91b1-8a6ad6bdd09b"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="08835343-c693-4006-809f-f6b4569c7f24"
+>SRModeProposedAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ffd22eef-0c9b-44d4-98a2-37633a0eaee9"
+><Comment></Comment>
+
+THIS.OutputInformation.RequestDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="fe8f2035-38e4-421a-a7cc-37e241a7c08c"
+>
+<Comment>Tracks the changes of the mode</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Updates the status of the request according to the mode"
+ Guid="98787c02-e45d-47a2-b1d3-fc1d298a949b"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Updates the status of the request according to the mode"
+ Guid="4bad8588-5c76-482b-9846-eabdf707e164"
+>
+<PreConditions>
+<PreCondition
+ Guid="4d68fea4-63d6-49ee-999d-cfe9e39d44c7"
+>NOT SRModeProposedAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="95f95b94-79e3-4b88-ac4a-bb6ee1391f5e"
+>THIS.OutputInformation.DoNotDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="OutputInformation"
+ Default=""
+ Mode="Outgoing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="OutputInformation"
+ Guid="7081dfe3-4417-48a7-8eef-6d08156a54d5"
+>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Default.Mode"
+ Default="Default.Mode.UN"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Mode"
+ Guid="e03ca7c0-3e74-4cb9-8e1b-4a2888a99394"
 >
 <Comment>The mode proposed to the driver</Comment>
 </StructureElement></Structure></Structures>
@@ -14147,6 +14268,53 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 <Case
  Name="Enumerates the cases where the request is mandatory"
  Guid="3d6aec61-c2f9-4806-aa23-86fddcc25f67"
+>
+<Comment></Comment>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SRModeProposedAvailable"
+ Guid="75c4c3c0-a079-4b91-9563-13cad657278b"
+>
+<ReqRef
+ Id="ab35ab1a-b0ef-4158-a6ea-e5e4b77dd326"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="58f2993a-e07a-4e96-9ca2-bed5139fb226"
+>
+<Comment></Comment>
+</ReqRef><Comment>Identifies the modes where the output is available</Comment>
+<Cases>
+<Case
+ Name="Enumerates the cases where the request is available"
+ Guid="2016c4c4-ba52-440f-b77d-4b1dd0d2f104"
+>
+<Expression>Kernel.Mode in [Mode.SB, Mode.PT]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SRModeProposedMandatory"
+ Guid="2b3398bf-1bd9-4912-9d92-90ae93dc4e3d"
+>
+<ReqRef
+ Id="ab35ab1a-b0ef-4158-a6ea-e5e4b77dd326"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9c8d1295-2b23-4c84-a051-54e73210fed0"
+>
+<Comment></Comment>
+</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
+<Cases>
+<Case
+ Name="Enumerates the cases where the request is mandatory"
+ Guid="aa8d40fc-8492-4e46-942d-63babb46fc3b"
 >
 <Comment></Comment>
 <Expression>False</Expression>
