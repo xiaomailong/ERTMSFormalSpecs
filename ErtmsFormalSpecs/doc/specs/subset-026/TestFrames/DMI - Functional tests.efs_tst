@@ -64668,6 +64668,7 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  Name="OUT Trip reason"
  Guid="901d03bf-8b43-4dea-ad19-16b11d2eabb0"
 >
+<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"
@@ -64721,13 +64722,13 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="OUT Trip reason"
- Guid="9ed4ede8-29c6-4f12-a9df-141052287c0e"
+ Name="OUT TripReason"
+ Guid="fe4d30a2-e992-4daf-a7a8-cf5a703ce0de"
 >
 <ReqRef
  Id="8bf47cec-0b77-42d2-b42f-49c0c29dbcec"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="aa75f3c6-3f75-4f82-8324-59561ba5f5b7"
+ Guid="92c3e124-0e86-4913-b4d3-6ae3a35753c0"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -64739,24 +64740,40 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="dbe79ef5-f4e2-4a69-ae1e-8d3fcaf38f9b"
+ Guid="0d05e8b8-f072-471b-b927-47e9b91f3659"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="afa4cd5d-c9b2-41de-ba69-51f61e6ded74"
+ Guid="1485cffd-c56b-4a01-96ed-9b0e38f230b3"
 >
 <Actions>
 <Action
- Guid="9ec45ed5-f535-430f-843a-93c1585d41d7"
+ Guid="ba623ee0-e170-4bc3-b95b-ec048850a52e"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="bfa11305-68a0-493f-8f91-6c58da09a238"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="f387afd7-fbdb-491a-9be2-bf5b55e865cf"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="eaee5b5a-1f36-4e8a-a2ed-2c66c03b5eea"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="9f1484dd-afaf-4757-9a17-e36766a45143"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.NotAvailable</Expectation></Expectations>
+ Guid="ad0c92a5-5b26-479e-be88-dedd457c90a5"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="7bf08506-5e46-4daf-b8c5-5c485be1df71"
+>
+<Actions>
+<Action
+ Guid="365666e3-1af7-4747-8896-730238f6d9ee"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="58b4cbd2-133a-47af-9b59-4f63907a1e8d"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -64765,24 +64782,41 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="3bc41b3f-8a28-4ff2-b7fa-aa8cc29acf05"
+ Guid="43cf0b96-cf19-49c0-9057-526702f62d0f"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="dc88b0eb-2994-46ff-b3c3-effd7ff500c7"
+ Guid="4ecab001-b368-4c8b-9cab-13b80e70eab9"
 >
 <Actions>
 <Action
- Guid="c960d191-d343-4dc6-a5de-9e018988b808"
+ Guid="e874ff26-3610-40c3-9119-601bb8cc124e"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="7e19eda8-56dc-4d87-aff3-f143e3cb9745"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="b0dd5413-d3c4-461b-8968-5b82ac8844e3"
+>Kernel.PowerOn &lt;- True</Action><Action
+ Guid="fc40464b-19b0-4d65-a4fb-9a3abee054f3"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="c3e681e2-38c0-4ca1-a39c-100c2d78985a"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="16593dc8-b68c-45ed-ad5d-640b72683723"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="b556a3d2-c3c4-4ccc-810e-32685fb4d45d"
+>
+<Actions>
+<Action
+ Guid="ae39565d-2967-4151-a0c1-fe319dc438f8"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="3df47ca0-927d-484b-aafc-875d6e021c92"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -64791,22 +64825,39 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="a0b8dc9d-37c9-4f7b-951e-48d248b35754"
+ Guid="2d922d11-9cc8-4ab5-99e0-7f361f422643"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="52576b85-062b-4b0e-b077-349957e5d618"
+ Guid="df3a789c-c740-4858-b667-9212221cf032"
 >
 <Actions>
 <Action
- Guid="c156424c-f095-4220-8a1c-d5adbdd7c4c2"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="1bc23d6e-37ac-4800-976e-b89733c564a3"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="6520889f-d1d3-4954-b270-4ecc5c7f5478"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="982d6c92-0254-4b96-a855-4b5835f498da"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="a25a8902-165e-4914-9e66-14048dc7912a"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="f3300fdc-d6e9-4c09-b9e4-12821d796944"
+>
+<Actions>
+<Action
+ Guid="cae821e7-1496-4612-823f-f5ee7c56b937"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6a0ba87f-1f92-4b52-810b-ad5d62b1ea92"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -64815,24 +64866,41 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="ddc6ed0f-0bbf-42cf-ad0d-041072f3823e"
+ Guid="631b5866-5185-4246-b929-8c6ce0696fff"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ff89c5c6-2b4e-4356-a971-9bb6fad948d3"
+ Guid="63fc95d2-a714-40fe-929d-c63fdfff8a40"
 >
 <Actions>
 <Action
- Guid="d7d5088c-3ecb-4008-80a0-5288f3b2cefd"
+ Guid="960250bd-3af6-4f6a-917c-a481dc7772ec"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="36ac9099-3395-45b1-b6a9-fa16312d34df"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="3b49296c-d6e5-477c-87f7-56b600174b67"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="4902e279-4bfb-4966-b50d-3d872cba064c"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="f720b2d6-e96a-476c-a5b3-b77d3b30c5cf"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="481a7662-45c5-430a-aa23-482672c4a6e4"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="60b54410-77b1-48c6-b6dc-e344aad0bde8"
+>
+<Actions>
+<Action
+ Guid="795a3485-1eba-46c6-a082-15dfd9b68586"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="fe7f0298-ca15-4b5b-8040-5d1be368ecef"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -64841,24 +64909,43 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="5db39e49-d012-4f98-bca2-d6ef25ecdbdf"
+ Guid="4aa47b88-8718-4633-aa29-a160b431f2b5"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="45464353-a724-4958-9765-16b57ec6f3fc"
+ Guid="773e8353-a34e-40bf-bf1a-7917e6324ea0"
 >
 <Actions>
 <Action
- Guid="3c638869-42eb-454d-9a38-214ca5ee7a2b"
+ Guid="4abfc296-a86a-404d-a675-9d4d5455605c"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="a4aabbb8-ba73-4f3e-a302-0c773e536831"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="569c7978-c169-4ce4-bd30-7fb24f8d7a9d"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="22553d3d-5d92-4dc5-82d6-3016c9471bf5"
+><Comment></Comment>
+
+DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="d4b593c8-af07-4218-a75b-88a42c673e0d"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="fafd598d-d9b3-47c1-9184-bb784aad40ae"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="29140fc1-5e8e-49f0-ba60-df1c0c1e00f7"
+>
+<Actions>
+<Action
+ Guid="444ff2d8-0478-4c3a-b1d7-948570b16315"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="836f513e-468b-4191-bc39-a3893fc07469"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -64867,22 +64954,39 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="30f0b4e7-a66a-47e8-9244-299d1da6e6b5"
+ Guid="992f81f5-2c33-4214-acda-270447c09562"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="a692b2f8-fa22-4f40-baa5-11463cc3d788"
+ Guid="dbce8c02-0082-4a56-85ed-fa94dc3d4088"
 >
 <Actions>
 <Action
- Guid="73a50b29-f728-4bbc-9ab9-55bcc9b78f0d"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="fd8deb73-cf08-4528-a383-b48c77ac9a83"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="2423b1c7-530d-4ac1-b85f-24eef4a5504a"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="1fbf50b5-032a-43f3-bfa0-ca68f72da333"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="5f0fd0ab-1ad0-43e7-846d-f132af2cec71"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="784ae7b4-3b72-4500-95e1-d8b1ea435dc8"
+>
+<Actions>
+<Action
+ Guid="e9aec8d8-65b5-4f2e-8e31-91eec5fb17a0"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="12e74861-b4c5-4b84-9fc0-d351ff278541"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -64891,22 +64995,39 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="f6721442-b622-409c-a2c5-a62537f892a7"
+ Guid="50a300b5-c4d9-4f62-880a-5816ea5e4d70"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="10369268-8c62-4b3f-8409-2aeed9198bb9"
+ Guid="e69c0eda-c782-4559-807c-2a185beaa5ec"
 >
 <Actions>
 <Action
- Guid="4bf1f3bf-8990-4ce4-8764-c5fcb80c4063"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="b19ba4ea-1b2f-44df-9b28-411087c388be"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="176c4636-bf99-407b-89a7-e685a1873659"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="537aea55-b1f8-4860-8625-0f1415c81bfd"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="3a6c1781-d0ca-41f2-b431-62a80840de51"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="80db106e-9d56-41ea-8fcc-a7feba111f22"
+>
+<Actions>
+<Action
+ Guid="83f2bed3-2f33-4f54-86ba-3cfd48d7259d"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f810f1ed-6134-479c-bf46-d054e0c6cc5d"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -64915,22 +65036,39 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="46585d27-690b-43f9-b6b5-ce2f8bb72345"
+ Guid="0ff5ac26-3248-45a6-b463-8a4cf3002263"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="83be53a2-5a98-4189-8134-7d9f3e369254"
+ Guid="be509593-149d-42a4-84fc-34b4d609acfe"
 >
 <Actions>
 <Action
- Guid="2ed7a789-ff96-4329-aa53-cb93460283ae"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="6b44da22-7720-4e07-a524-502505570fa9"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="f6f9c87e-a5cc-4fe1-af7c-618e9abbeac7"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="f9537abf-5927-4b17-bf7b-6b34fb49a862"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="9a2ef03e-db38-45be-810b-342384e4ee7a"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="c77662da-9e6a-4f64-a1e6-d41e4f6b273f"
+>
+<Actions>
+<Action
+ Guid="0720fa51-8dac-4ba8-8916-b96cb0355b78"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="b6a9e1f5-bb4a-4ad9-a662-7a6bcd3e72db"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -64939,26 +65077,43 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="4f186432-a1fb-4244-8059-6bc1ebc58833"
+ Guid="79ccad69-54a4-4485-94e9-d880d212bf0a"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="5e71c1c3-81de-488f-9b70-f51b741be688"
+ Guid="e78663f3-e2d8-4d9b-8f7d-2f1f757db910"
 >
 <Actions>
 <Action
- Guid="40dfa998-819e-49fc-b4f1-58e21e39ccd7"
+ Guid="6b14c7d3-f850-4a24-a333-69d622ff2e9d"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="e2b2c2e4-a458-4e43-b686-5b6faa711fbd"
+ Guid="2dc0812b-9f67-4552-90b0-b64be3176dbe"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="378eff54-303f-4ec3-beb6-7b0adac2a001"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="f242779d-62df-4386-bfbe-d8f6d46cc01d"
+>TIU.SleepingRequested  &lt;- True</Action><Action
+ Guid="8f209503-d853-46a8-a3d7-919bb997cc4e"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="c0035efe-e3f5-4a86-92c3-fea76be73f92"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="1d85d520-7eff-4172-b5ef-a73ea456382e"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="9bafc48a-9ff1-4062-aa59-bac119aa77d8"
+>
+<Actions>
+<Action
+ Guid="e00b87f6-1981-40c9-944a-8957c22bbd26"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="c9094b4f-8ba5-4939-9c47-bbd5e33e1695"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -64967,24 +65122,41 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="1847c89e-5c57-430f-96b1-200773ed8fe5"
+ Guid="0bf8db8b-5584-41e3-a18b-20396a84baae"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="910bb03c-e21b-4b81-b6f1-419e819dc3ee"
+ Guid="4962f94f-2a5c-4033-89cc-76233637fc86"
 >
 <Actions>
 <Action
- Guid="20e34492-3c9e-42f5-bbd4-c3dbe48f41d3"
+ Guid="f55bfcd7-9cb1-41e2-a619-3bf7719047b4"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="123505e2-a59d-4d79-9560-99dcda1cd6bd"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="1d785894-9d39-4689-acac-55a73c4ee34c"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="ca94dc0b-3d62-4565-98c9-b8552d8b9952"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="3ebce767-e337-4ec9-9365-456c8f6095a1"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="03bd98d6-5e47-4e35-bf6e-b55fbe1009c8"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d87d9666-d92c-4230-9194-185d2fdbb043"
+>
+<Actions>
+<Action
+ Guid="7b89cd0f-a367-4727-b90e-ac5b20b795b6"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="151c17d3-9b73-4867-83ff-88f36154fc23"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -64993,24 +65165,41 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="01f9cd03-1793-4150-bfa7-8b445d27494c"
+ Guid="0b2b8567-c62e-442a-a4e7-9965c6a18b19"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="2725c710-a4e0-47c3-a8d8-79efbfbd2288"
+ Guid="0006dbc6-ef07-4192-852b-600cea8d964e"
 >
 <Actions>
 <Action
- Guid="b12d342f-46a3-4652-a0b1-9eabb07b9024"
+ Guid="747a1721-fb65-44dc-ae6e-437d30aba439"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="75e80a22-4dab-4757-8edc-492c8a22036b"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="9bf6b168-e27a-436c-b843-e61132935df1"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="5a05f1d1-cf12-4de3-a240-a079039fd636"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="13b9a5c7-c553-49ab-82a6-edc0362a3f1c"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="6e25ba3b-2502-43d4-b608-ab2c2b00575f"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="285ff4b3-c874-41d1-8720-93e0e606f252"
+>
+<Actions>
+<Action
+ Guid="f5553959-4f71-4a58-a239-4d1909883958"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="fe892c3c-8d58-4ff0-ba29-f49735a48528"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -65019,22 +65208,39 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="c089b06f-0a41-4604-9f5a-abc8581f90b8"
+ Guid="0b0d9c14-0558-446b-b885-8c9200d243d3"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="5d1089bc-146d-49be-b199-144b620819e9"
+ Guid="8a09ee49-9a4d-40b8-a418-f6f00c6a04de"
 >
 <Actions>
 <Action
- Guid="1fbdefb9-3781-44d4-95ba-62bc70fad598"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="3ce47baa-5e42-4224-bebd-4ae50e70b5b9"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="c71679b3-6cfc-4078-a7a0-496a75960f7e"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="23d236f5-40f8-4bf4-b5e6-1b70aa787346"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="e2a9e081-35e3-4458-80e6-00bd44e8c21e"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="179697c6-1692-4a1e-95ef-37b60200a238"
+>
+<Actions>
+<Action
+ Guid="a30d1b29-d647-4b24-8c4c-0540f640a601"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="43353107-0171-430f-8519-137372e7c169"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -65043,22 +65249,39 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="04a3d4ad-e717-48e7-8db0-c8e200c65c3a"
+ Guid="bb0209fc-d4de-4a9f-9414-7dcd56e2df88"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="46aabef2-7e96-430d-8421-0e1afb5bca87"
+ Guid="2e855d2d-d690-47aa-884f-8d080aa80b80"
 >
 <Actions>
 <Action
- Guid="80b5ebe9-93ba-42a9-91f4-015e614f374b"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="d9ea5f0b-a36b-40f6-ae70-4ab9fa77b865"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="b35635e4-aeb3-41ab-9356-5b0d4d5a4fbd"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="50eda9ff-0d54-4e21-a8c5-c5113c8d5a3c"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="2488d6b3-7cce-44a7-bf51-22ad4a0aeac2"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="0e69c465-438f-4d60-a3b4-e5a91bf73aab"
+>
+<Actions>
+<Action
+ Guid="414eeba4-9d55-49f4-b51f-1b826f2dfabd"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="ccf511dd-c04d-4877-a665-e5bef98dbddd"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -65067,22 +65290,39 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="95d3b391-e3b5-4aba-857d-665dde864fc2"
+ Guid="3ab50f29-07ca-4137-9d91-2f51c8b7ace9"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="645abe94-0e38-4fd8-bf74-1a97fd2c2a6a"
+ Guid="9774c04a-9764-4e67-a96c-0ef4917ad083"
 >
 <Actions>
 <Action
- Guid="db0a0060-eb6e-46f8-88a6-d56b9bd22d8c"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="867d5a06-81fe-47dc-8e69-66dcd322b9eb"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="0435d11e-1f43-4db6-81fe-d78cfb580492"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="3da82b3e-dd27-4bf9-b154-c9e4d23ffdad"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="c4b87afc-7883-4846-886b-133f63c84bab"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="2386b54d-7c06-49d0-958e-0d9a3a8486c0"
+>
+<Actions>
+<Action
+ Guid="5ed34054-4970-41cb-9502-f621456f2c26"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="4f9ab8a8-9bf3-47e7-b3ef-08dacfdc6af4"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -65091,22 +65331,39 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="0551ca7e-5503-4f35-9d27-3a811ddfe70c"
+ Guid="b1c0b2f8-6070-4a8f-b8f6-87e86d35f615"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="4702b901-b05c-4f98-a651-7264bb1df7c3"
+ Guid="70c31cc6-326e-4451-8fdc-2b274d55a3b6"
 >
 <Actions>
 <Action
- Guid="5b0806b5-bfcb-42c8-b101-bd40fa69106b"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="5f0da7f9-a12e-4dc6-82e6-1d5dfa4f0e2a"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="99b7b19f-019e-437f-b068-c4bcf23729e8"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="115dc2a3-184d-43fa-9637-04a77a062774"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="2c43cc4c-b13f-4043-8c05-5b8fb999013a"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="ca7e92fd-3138-4151-a194-fe5c7757b81a"
+>
+<Actions>
+<Action
+ Guid="10af1f1b-110d-452f-a641-cddfae28c762"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="7ce88c1f-8588-4ab4-90e0-107af511991b"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -65115,26 +65372,43 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="1814b85d-64b0-4343-a133-4b5841c1fd55"
+ Guid="85fd490f-ff15-40a0-84aa-42943bab0dae"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="0006538a-48dc-4dc8-a277-c62d9604a782"
+ Guid="44925257-0b43-4251-8bc1-2db30da3c4a2"
 >
 <Actions>
 <Action
- Guid="53ddcd8b-1338-4a5e-97f7-eafead82b1cf"
+ Guid="78593940-c8d3-4225-8c4e-6430452f7aa9"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="32c1aa8f-5524-40c7-be35-176d1dfe04bf"
+ Guid="b688c54a-fdb4-4a0b-96a1-234d56e4c7ab"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="55dae5f3-98bc-4d88-9e97-ba156c2ab8a2"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="15dd5791-773d-492d-98a8-43803dff481f"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="6102aae7-eacc-4530-b5fe-72a73d49509e"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="ba8efaa8-64af-4814-9890-abdfd848e353"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="84c3215c-8438-49c9-a8c7-1e5e0dd590b3"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="39a3a5d3-ee65-483f-ab79-afc7967e4dd7"
+>
+<Actions>
+<Action
+ Guid="c5590baf-be74-41c0-8f61-d439714839e7"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="9e1bc8ae-1c7d-48be-b223-ad129244d2a1"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -65143,22 +65417,39 @@ DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="1f429627-bc26-4a91-8f80-7298889067bc"
+ Guid="78d7956a-b9f4-4a7e-8153-9687b5e3a563"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="4ce913a6-4b35-460f-91dc-07b55c77a120"
+ Guid="7fb03d78-c5f9-45b3-8d09-6a13f6bfcd70"
 >
 <Actions>
 <Action
- Guid="15fb2749-5ece-4dfc-8a05-73efa7e797cb"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="af8f90b9-b468-47eb-9465-f2142e4496bc"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="0459d03b-c7c6-41dc-a106-48646b8a74af"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="b5ddefb4-6c92-4200-b1c5-a5fdca273878"
->DMI.MasterDMI().Out_TripReason.ProcedureOut in DMI.OUT.TripReason.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="b9653855-2756-4924-8f63-1576efa3d6ee"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="144b7aa9-5e6a-4c6e-ba8c-d8d1e896043e"
+>
+<Actions>
+<Action
+ Guid="34a4cf7f-52e7-45df-9bf9-934a02af787f"
+>DMI.MasterDMI().Out_TripReason.Display(&apos;Trip reason&apos;)</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="595babf5-faf3-424d-9396-cdafb5e56a56"
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
