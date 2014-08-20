@@ -66251,5 +66251,1600 @@ DMI.MasterDMI().Out_UNModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="OUT FLOI Speed"
+ Guid="bd961820-dcc9-4a61-bd03-718503dad04c"
+>
+<Comment></Comment>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Initialisation"
+ Guid="2d4c6707-bfee-4d35-a058-935945a2ecd3"
+>
+<Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+ Guid="9361a2c4-134a-420c-85a1-d9a4660e5d22"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="57a046eb-a3a2-4739-986e-8bae4777c0ab"
+>
+<Actions>
+<Action
+ Guid="89dedfe7-cb58-4dc0-b549-3c523bda46bd"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="d622a835-8598-4129-8423-191fd206e0e2"
+>DMI.MasterDMI() == DMI.DMI1</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="0458d7f6-19f5-4903-9b57-a91d373a702b"
+>DMI.SlaveDMI() == DMI.DMI2</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="78bacf57-4941-4eab-85b0-215faf912c84"
+>
+<Actions>
+<Action
+ Guid="e091765e-a135-442f-8fcb-072be54ffa75"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="OUT FLOI"
+ Guid="6b440379-17c5-4ade-94b7-ef78af241f41"
+>
+<ReqRef
+ Id="9427a791-5126-401a-8a4c-c22ac729a3c7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="76406d41-6285-43f2-ab77-0f6149e561ab"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - NP"
+ Guid="d9c7a8e2-1ed2-4724-b0d1-0a1d5c2fb9d9"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="ba1cb24a-c9a6-4812-b316-1d6fbed2ba64"
+>
+<Actions>
+<Action
+ Guid="dbb5e31c-bca2-42eb-972f-2fa19ffa3483"
+>Kernel.Mode &lt;- Default.Mode.NP</Action><Action
+ Guid="a9c81ca7-ad0c-4de5-9124-042b01f11400"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="6ce46ca7-7396-4ce6-92d4-e5ace05a773a"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="a0c37f2c-1588-42d1-a9ba-e98a8ef4b7de"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d23dec5d-91b3-4637-89cd-fd2525b8ebd2"
+>
+<Actions>
+<Action
+ Guid="53b02e36-327d-41bc-bbb7-b526af091afe"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="855f9d99-dfeb-4ca4-b923-1069378b98df"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - SB"
+ Guid="9976213c-b090-4b78-a69b-7e70434a6d1e"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="0d22541a-692a-4eb1-967f-28289500ccfa"
+>
+<Actions>
+<Action
+ Guid="48f1e73f-a6ad-47df-877b-bc0de86d8820"
+>Kernel.Mode &lt;- Default.Mode.SB</Action><Action
+ Guid="cbbe9811-0e93-4f3e-9e75-b67632c6774c"
+>Kernel.PowerOn &lt;- True</Action><Action
+ Guid="d217392c-6151-48d6-975b-9bd199505ec8"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="e434f804-87ce-4356-87bf-d6884076580c"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="5f6fd795-54da-4f3a-9339-0c4ecd53a3ff"
+>
+<Actions>
+<Action
+ Guid="e1b9d649-9c1b-4587-b4c4-70e010406c05"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="bb2050cb-6e70-448f-9d5e-078748ace233"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - PS"
+ Guid="18552bd1-a09d-4613-bb81-396e4bda455a"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="7e0e012c-9460-4862-99cb-5967c0a859d6"
+>
+<Actions>
+<Action
+ Guid="9e8be577-eb60-4d81-9dd2-bb7699273add"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="1ffd4ff1-1c10-49b6-8150-94d2a17a010b"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6c95c226-e99f-483d-9d49-16538fb6a55d"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="8dcfef73-f356-4229-a276-d92c2ad64bd0"
+>
+<Actions>
+<Action
+ Guid="7a3791fc-3366-4f3a-9cf1-67072e0a9a91"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="4768fbe7-a98d-4b25-939f-2dfacd33c0b5"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - SH"
+ Guid="6c096675-800d-4e99-8638-2dabdda12a3f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="1efc7000-2b86-4293-b7e7-265f0d26f580"
+>
+<Actions>
+<Action
+ Guid="79fc1090-03a9-4c59-a07c-a62a6f1b72c6"
+>Kernel.Mode &lt;- Default.Mode.SH</Action><Action
+ Guid="cd8a8411-7208-413f-ada9-49beebd64d8d"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="b370078b-edd7-40d9-ae1e-7feb043abefb"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="70bf07e3-3513-43f4-95aa-eacf3147b417"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="4bd37460-3802-43f0-bfb8-ee8f830a9fad"
+>
+<Actions>
+<Action
+ Guid="85b8bb86-c461-40c5-93f3-2d9e09599806"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="fdcb1f36-54a3-470a-a417-b39f2242c987"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - FS"
+ Guid="45c35f33-d58c-4fa1-958b-dc4da6b69414"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="991b8ab8-d986-4e0b-8849-c879bc43c57e"
+>
+<Actions>
+<Action
+ Guid="565b015f-4ed9-415b-823e-db5fa744b5b8"
+>Kernel.Mode &lt;- Default.Mode.FS</Action><Action
+ Guid="3c29a6c2-4ff5-4544-b6ee-f31bbbe5b7be"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="03251bc5-4079-4c12-b49e-7288994c6b07"
+><Comment></Comment>
+
+DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="08994789-016a-4006-ac65-5c22efb84b63"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="6c8f097f-6963-4576-a733-b2b615d480c9"
+>
+<Actions>
+<Action
+ Guid="6056d46a-ac0f-4800-b148-f7b3aab6386d"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="22535523-6dfb-4b9b-966c-65a2a3938c96"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step6 - LS"
+ Guid="29eff028-9f54-4871-b0bb-b4d86dcb712f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="7362738d-bca9-4b73-aa70-a814021aa78d"
+>
+<Actions>
+<Action
+ Guid="287e342d-e41f-4e81-bf9e-c24644e64263"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="f6e4ffce-efde-413b-ac18-6fb2b6b31d80"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="27e9b221-e469-4d81-b4d1-3b64b1634d1b"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="db41746c-6bbd-4c4c-b63e-49a6a5b55c6e"
+>
+<Actions>
+<Action
+ Guid="531fa5d0-e783-4e54-aa2e-893a6bf9cb90"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="0e896d92-212d-492d-b78d-0ddff1dad957"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step7 - SR"
+ Guid="15e64ec6-16f3-4122-942e-18706bb46806"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="7e07b614-6e59-45d2-b71e-47ea74b370ab"
+>
+<Actions>
+<Action
+ Guid="dd936964-bd66-4f94-8535-cb794ee4db76"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="94c04b09-1907-4524-88e9-8e85ea806c04"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="d84245de-4ea0-40a0-a22c-28ff877e67bd"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="4377c72d-535d-4bdb-8e71-ffe32ea63c1a"
+>
+<Actions>
+<Action
+ Guid="0f16e469-f0c5-437c-b43f-6f360cb4e9e6"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="dc855cd9-d72e-49c3-8256-a792c8a1e2a8"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step8 - OS"
+ Guid="ff9151cf-6809-4cc3-9d65-8d9a06395239"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="cdba78d9-a701-4cb7-a829-ed1302655361"
+>
+<Actions>
+<Action
+ Guid="7ae6c6a0-3c68-461a-98e8-0d44afe73a0e"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="cb884ac9-e3f9-40b0-8aa1-4cbfd391c155"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6d178183-bdbd-4494-9377-dd96015e6979"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="b450c4b1-946f-40a1-af26-c10c7e73cb9f"
+>
+<Actions>
+<Action
+ Guid="e2b38cdd-23b8-4809-be3d-7c21c86cfee9"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="c83dd679-2808-42e2-99b2-38af328da5d4"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step9 - SL"
+ Guid="4930ea8a-6ced-4f26-aa3f-43e7e327a64c"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="d2cd88d3-d2c2-4ab0-b2b6-bd90c83907f1"
+>
+<Actions>
+<Action
+ Guid="25ff5f71-17dd-4c22-80e9-b156108dcfcb"
+>Kernel.Mode &lt;- Default.Mode.SL</Action><Action
+ Guid="491ed8d5-8a65-491b-b543-4d04ec784307"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
+ Guid="5ec5517a-0e0f-44fa-805d-a3a4d14c505d"
+>TIU.SleepingRequested  &lt;- True</Action><Action
+ Guid="b4e94b77-074e-43dd-8b5a-7e579092afa3"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f7239089-82a4-4c63-a38e-35acc66481e4"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="252ffa0d-3743-4d57-93f3-c90584fc6237"
+>
+<Actions>
+<Action
+ Guid="4ab14f6d-4f29-425c-ae7f-0dc77073c177"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6dfd58be-995e-4d96-9c09-c0aec75f4acc"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step10 - NL"
+ Guid="4a501f02-1187-4ffc-a2c3-b41f7ea55fff"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="89c2e6d8-18f1-4564-b70c-bb86fbe1f929"
+>
+<Actions>
+<Action
+ Guid="f044b90f-7d00-4e7a-a5d6-89c841d62fe6"
+>Kernel.Mode &lt;- Default.Mode.NL</Action><Action
+ Guid="bb376235-bc73-45fb-9e60-a49c6e77a8eb"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="7366f005-f391-48a4-8c53-18054433651a"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f21d6480-8ca8-464e-945c-831f11a01651"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="c814aaa4-3dc1-45c0-9e55-beef87088ed9"
+>
+<Actions>
+<Action
+ Guid="f82a9f49-6185-476a-8f68-89ca4d9a39e9"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="59686111-1436-4ffe-b139-fe4486e04fb6"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step11 - UN"
+ Guid="836828d5-8e4d-4d3b-bb89-51dffc9aea57"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="b493dac9-94b5-45ce-ba0c-ba3329d24739"
+>
+<Actions>
+<Action
+ Guid="7cbc52e6-8be9-49d2-9b5b-eb2f5e1990cc"
+>Kernel.Mode &lt;- Default.Mode.UN</Action><Action
+ Guid="c6408c43-f9f9-4fed-9b24-2546e2a553a5"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="79aed255-6b01-4c77-aa02-5967c2d5902b"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="002a050f-9cc6-4a5c-8fae-743f9ac5d460"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e4b2d8dc-e801-4d90-aefc-c1244725595d"
+>
+<Actions>
+<Action
+ Guid="a46e2d2b-32c9-4291-b2ef-7220480fc75a"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="431681a4-9809-40f7-8364-5e320c288766"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step12 - TR"
+ Guid="f2b5e598-9292-4816-ab3b-07c55f891966"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="b1abb998-073e-4319-af32-7a8d33307248"
+>
+<Actions>
+<Action
+ Guid="554a9e5d-fbf1-4818-a6c1-29bd44e5f046"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="9bbd6643-9507-4ab9-9757-2f854c9473b2"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="d19d2db3-eefb-4bae-9773-57b3ce0a3ae7"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="105b692f-17f0-4359-ad44-cb4f31163e1d"
+>
+<Actions>
+<Action
+ Guid="95c32bc0-b5e6-49fc-be45-a73ab4355247"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="39bc0439-804a-4552-aaef-7c62893f6d26"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step13 - PT"
+ Guid="8e600faa-cb8a-4b83-99cd-64a466825ef3"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="4422f483-77cb-4443-b3cb-4644a0500697"
+>
+<Actions>
+<Action
+ Guid="3df67ea4-42ba-4555-8b12-2c3a4ba55d65"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="b188d64a-d1d1-462c-bcd7-79a22bc6682c"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="16af76ae-e07f-4112-8720-cdee15416578"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="968f71b2-79ad-4a6f-b763-ab8f5e04b5fb"
+>
+<Actions>
+<Action
+ Guid="88f6d016-5154-49e1-a023-1cf9d1e1b693"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="1c58c269-5a96-4796-bdee-e06ccb3a3584"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step14 - SF"
+ Guid="541d233c-cb9f-482c-9517-64f65257ca00"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="43e787a0-84a1-45d6-8309-1483f0dc651e"
+>
+<Actions>
+<Action
+ Guid="98abd8b8-6472-47a1-b237-d880e11d3f01"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="d727621f-955f-46d8-8c70-ebd301e184aa"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="a885f5c9-da28-4037-8cca-2b012187b2b2"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="1fc124bd-1331-4713-bc53-ae1f8d8c5fc9"
+>
+<Actions>
+<Action
+ Guid="57c7108c-93ad-48b6-b38b-58749d31439f"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="cd18e13f-cd84-4934-85c6-ddec3c0e3a04"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step15 - IS"
+ Guid="75ddbe2b-c2b6-4fa6-9dbb-edde7d939cfd"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="095d14ce-2230-4ac2-9716-38e6baa98ca2"
+>
+<Actions>
+<Action
+ Guid="e5d45b48-c708-4553-87e7-6d1b3592f169"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="563afc1d-6ddc-4a54-8309-8da945ef5fd3"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="ab247d8a-2209-4a69-b58a-bbc52100defd"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="6be66625-6136-41ad-ae2d-7da48a30f451"
+>
+<Actions>
+<Action
+ Guid="567a0c7e-0961-43dc-8762-50931b658602"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f2a79181-0213-49f6-a3e5-6c4cd2e79923"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step16 - SN"
+ Guid="a84d389b-e63e-4802-8317-db4ae6c8cf1e"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="55831d56-f89e-415c-b3d3-fb8888c4ce8b"
+>
+<Actions>
+<Action
+ Guid="d1f0f07c-2dd0-4f82-bbc6-ffffc41c0e04"
+>Kernel.Mode &lt;- Default.Mode.SN</Action><Action
+ Guid="cacc742b-713c-4a1c-bb6f-5e337018d3f3"
+>Kernel.Level.Value &lt;- Level.LNTC</Action><Action
+ Guid="83916c0f-00c7-4cdd-9328-e3e58e87f17c"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="7ce403a6-78ee-4fca-a80b-e2d5c6e36af3"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="ac1f923d-2022-440c-b666-f1c100225eff"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e1f10a9c-ab66-4d55-9358-8065cabd2c0c"
+>
+<Actions>
+<Action
+ Guid="7d9f3863-4709-4812-9906-ab758c7562a2"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="dc9130bc-bc2e-445b-a78a-f4c8bc400531"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step17 - RV"
+ Guid="46830172-cd8a-4baa-98ef-3481f74e7339"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="13e3fa71-f0c7-47fd-a1a7-cd1367571267"
+>
+<Actions>
+<Action
+ Guid="d1570e5e-63b6-406d-a880-89785a8deeaf"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="ba7bd8c9-3132-4339-8f96-d3c7d2ddc650"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="aa934186-e6d8-47e0-bf95-1d79535c793d"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="2cef0c10-aa41-400c-88ab-8ddcc58de7f5"
+>
+<Actions>
+<Action
+ Guid="52e258b3-4059-47f1-b0ff-60fba32db112"
+>DMI.MasterDMI().Out_FLOI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6448d861-8fc5-4039-bed2-cf358a445816"
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="OUT Virtual balise cover"
+ Guid="07b108e6-928e-4cf7-88d6-9fa4d5008f75"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Initialisation"
+ Guid="35249b99-261d-45bf-9df1-c99b49061fc3"
+>
+<Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - Setup"
+ Guid="5305182f-cd37-4c2a-83d6-255592aded69"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="99f0abfa-b724-461d-94e8-40cda41c6818"
+>
+<Actions>
+<Action
+ Guid="7269a017-f78f-4cb7-b66a-219c9829a947"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="3a92a789-aa02-4c58-81e1-9f269c90a2d5"
+>DMI.MasterDMI() == DMI.DMI1</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="1960c8c5-c2bf-414e-8980-3560b623b0bf"
+>DMI.SlaveDMI() == DMI.DMI2</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="70106e1e-70e8-490e-ab73-161d6ed8157d"
+>
+<Actions>
+<Action
+ Guid="c8bd002f-a026-4db7-9ec1-d3f1a3368058"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="OUT VirtualBaliseCovers"
+ Guid="71e56944-c93b-4f90-9941-02c0a168b953"
+>
+<ReqRef
+ Id="d707ce86-136b-4d15-825e-ea898b0408ad"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="865d0ad1-2b39-477a-8c32-fd7953b516e7"
+>
+</ReqRef><Comment></Comment>
+<Comment></Comment>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step1 - NP"
+ Guid="0b4ca163-69cc-4463-8a7c-0c023b07de66"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="0c47f51a-e6ee-49af-98e2-94765fe7f19c"
+>
+<Actions>
+<Action
+ Guid="628a598b-2cc9-4c80-948e-38ec26d029fe"
+>Kernel.Mode &lt;- Default.Mode.NP</Action><Action
+ Guid="d5690a54-2312-46e2-abc5-8afc78c2455d"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="a527d4b6-2b1a-463c-999d-f4b550563696"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="3870f363-6cf7-4ee9-b4a6-32e9c1068ef4"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="c90186b3-8466-449c-a7a5-b74a131de99b"
+>
+<Actions>
+<Action
+ Guid="9b82d1a0-7805-4412-ab3e-081432b72a15"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="a2dfaf21-85d3-4a98-8a7b-dfbd5700ab3f"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step2 - SB"
+ Guid="fb34a8f7-95f6-450d-8f68-6fb9abf5ebbf"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="6792a860-c363-42c7-aa74-6890f0fbd2c2"
+>
+<Actions>
+<Action
+ Guid="7b98d26b-5c44-4364-a1fc-1dd5318d673a"
+>Kernel.Mode &lt;- Default.Mode.SB</Action><Action
+ Guid="00079286-2f09-43f2-b516-96dfacc42c5e"
+>Kernel.PowerOn &lt;- True</Action><Action
+ Guid="7fb85de1-2a5f-4317-a709-1be5e01dd63b"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="5ebed1c6-f95c-42c7-b134-4d059ea25603"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="4191a1e6-31bd-41ce-b4b2-24399c794eca"
+>
+<Actions>
+<Action
+ Guid="87f4e30c-df99-4233-8559-5b24998d71f9"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="e06c80b9-b1cb-4a11-bf3c-c453858e3f88"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - PS"
+ Guid="69dc9001-0005-4149-bc15-660a31359423"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="d1e9503b-cbe9-4562-a476-c57c6f0f0359"
+>
+<Actions>
+<Action
+ Guid="04e7780a-7e6e-4ee4-8145-1e2b8916cbe9"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="3c867733-95ff-4e8d-82fc-3711d895d2f4"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="69eabbc3-aa6e-48e2-beaf-5fc5969597fd"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d6241c5a-c403-4cc6-85ab-66d54dd5598f"
+>
+<Actions>
+<Action
+ Guid="8edd3fdb-4bc2-462d-8f3e-2b5578fae64c"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="149bae2c-65a0-428e-9e81-f86753403db2"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step4 - SH"
+ Guid="bda1d3a5-2b1d-49e5-afad-e1036e52d392"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="f7204d63-b35b-4ff5-a130-69e8da66da49"
+>
+<Actions>
+<Action
+ Guid="61b2cb06-7fab-4069-b0a0-04d0b486da0c"
+>Kernel.Mode &lt;- Default.Mode.SH</Action><Action
+ Guid="caf30a6b-a693-4619-bf16-7bb970523e7b"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="aab5bc08-8d2e-4784-9247-46f055966326"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="9b736a54-a7ce-40a0-9e75-f22a03e86f1c"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="c3497569-33a3-4229-98c2-08c486326802"
+>
+<Actions>
+<Action
+ Guid="642dd903-d476-4483-a95c-8708440c08ee"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="c9a4c46d-25d7-4b73-9bb2-3fa49276cf38"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - FS"
+ Guid="db32a84e-f5d8-41a8-aabb-b175526f9231"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="7703bd12-7bc0-48e6-b4d9-f286e4c0623e"
+>
+<Actions>
+<Action
+ Guid="9db5bc80-ca58-4e77-a680-fad317e56535"
+>Kernel.Mode &lt;- Default.Mode.FS</Action><Action
+ Guid="91887cdf-593b-4dd9-ace0-f252e41e955b"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="47d53cba-f644-489c-aff9-a625b29f8de6"
+><Comment></Comment>
+
+DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="5580aa56-5932-4106-b6a4-33132dd72634"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="01e9385e-fdba-42cd-b8a2-f636e7dc2331"
+>
+<Actions>
+<Action
+ Guid="b40d95d4-10df-49d3-a900-ccf56cabe0aa"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="a2e3f43d-b005-4458-a79b-826174119b46"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step6 - LS"
+ Guid="071b2aa7-27cb-4620-9e68-7308a6664edc"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="f96dba90-4778-4a09-8199-af66ebaa2fdf"
+>
+<Actions>
+<Action
+ Guid="c421b2b9-76b0-4e99-9d3b-6fd96812f4a5"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="24f32dc4-9099-47c5-8c4d-8391f6032626"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6af60f30-8f13-47a1-b2c9-3b4d7ab54961"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="97d5bf68-ae53-43de-a9b1-2bcf77b24bb9"
+>
+<Actions>
+<Action
+ Guid="8b49862e-c262-4970-98f8-130a370f7d04"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="b4858428-e98b-4f45-9295-e3d3a751cbdb"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step7 - SR"
+ Guid="0daec835-8f4d-4336-8d4a-ac40c9f1adbc"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="c6d47a70-b4b4-42c3-862e-3efd1644ac1b"
+>
+<Actions>
+<Action
+ Guid="8ed77000-169a-473e-8fec-da420069163b"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="ef8cd31f-b50a-4483-98ab-0d90e7543b0f"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="79371e2c-0109-434f-afe3-2d8f17b08499"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="fb532340-a82a-472e-9093-33571e79873e"
+>
+<Actions>
+<Action
+ Guid="9a2dcfdb-570d-47b4-af23-2d75e9cd99d2"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="fb7ef49c-15ce-4af5-89d5-b65b352428ea"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step8 - OS"
+ Guid="caffa272-e86c-4acb-b60a-9b086a0e98b6"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="7d2c6775-13a9-4c30-8223-ee193b3abdfb"
+>
+<Actions>
+<Action
+ Guid="baf38e46-aae5-42fb-b0b0-84fba26c62df"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="f8214d4b-08ad-43ed-8e28-2b3d8360a73a"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6cde5b74-68b2-475e-9f0e-8d2e900114d4"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="9c84ac82-fe69-4a58-90c1-f3637752576e"
+>
+<Actions>
+<Action
+ Guid="530fde6c-3f7c-4d30-ada8-74daee0a7d1f"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="c596554e-fade-446c-9161-ca7688eb2b97"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step9 - SL"
+ Guid="bada6316-4f87-4f1f-8d88-49b70ce2de2a"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="a9bf1edf-d0ea-4235-a9d7-9edd95b22dd9"
+>
+<Actions>
+<Action
+ Guid="216a0686-d845-473f-b90d-ddf0f98ef95c"
+>Kernel.Mode &lt;- Default.Mode.SL</Action><Action
+ Guid="f9e166c6-5a6a-4d65-95c4-bcea0b2028d4"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
+ Guid="6ced473b-f7e5-425d-a3d8-3ee4ee01d28a"
+>TIU.SleepingRequested  &lt;- True</Action><Action
+ Guid="6f152c53-c61c-4c8b-a5cb-587cc77c06a6"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="89f358c6-f42f-4956-a95e-21d68d0552ae"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="bbf7f39c-6da1-4914-b986-c31788c0db65"
+>
+<Actions>
+<Action
+ Guid="d5f51d28-cb96-4dde-83ff-d42016ff3df1"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="52f4d446-31e4-48d9-aa79-dc3dc5d11bde"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step10 - NL"
+ Guid="af0c4cbe-a788-4518-99cb-485f02709a83"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="94d60ef1-40ee-4c29-a721-92e2238b2369"
+>
+<Actions>
+<Action
+ Guid="7617a9bb-943b-4e3e-a382-ee76b3088980"
+>Kernel.Mode &lt;- Default.Mode.NL</Action><Action
+ Guid="861e3740-3243-4f09-8331-37be7e3cac7a"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="4b82bdc6-23f3-4708-b927-23e62940aef2"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="07e00dd5-286c-4877-b8bb-68787c0d2304"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="000e54ba-8da2-423a-ad3c-3c4baa02e01a"
+>
+<Actions>
+<Action
+ Guid="beaa9034-6d61-476c-8944-9e50ae53885b"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="e72caeb9-085a-4c25-9a09-fd4622b7bbab"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step11 - UN"
+ Guid="5f073815-b9a0-4257-9110-e2c558baaedf"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="1212694c-3388-4b70-a2f3-dadc4cc13fd6"
+>
+<Actions>
+<Action
+ Guid="e94a37b5-d31a-4170-b6c6-5d60b754dadb"
+>Kernel.Mode &lt;- Default.Mode.UN</Action><Action
+ Guid="ba9ef4ad-a202-41d0-9810-dd65fc3317dc"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="42405eb6-46d0-4191-8a93-db08fb84c836"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="1d22377d-d50a-4365-b73a-87c1785af625"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="8b212f22-13a5-43a3-95af-224d6cf0d1b1"
+>
+<Actions>
+<Action
+ Guid="8117bee3-dafe-4b9e-9fe5-aa1cc880a02c"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="7e97ca7c-5295-4e21-be28-1fbc79662cfd"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step12 - TR"
+ Guid="c2f7fae8-3689-4f68-a3dc-c25e6bcd149a"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="906f5564-1ed6-4e85-883c-a6aae82a379a"
+>
+<Actions>
+<Action
+ Guid="bb602ffc-1cbb-4950-af42-3798f3801dd0"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="65df43df-235b-4dfa-a3c3-e5e9d0386113"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="5944d496-8e8e-44e6-a6cd-f964ab5b84c5"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="929b4ede-f5dc-47d0-9ba7-8ddbce7cf2df"
+>
+<Actions>
+<Action
+ Guid="0cf333b0-9473-4c60-8c19-f6f336019d39"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="88ee14fc-8895-4c1e-9ab3-c4103d40664a"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step13 - PT"
+ Guid="8cb616b3-b3a1-4e54-b4c4-c3c46522da25"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="ead9468f-1680-4151-a5e5-0a5fb5ce9219"
+>
+<Actions>
+<Action
+ Guid="4efead66-eb14-4388-92ff-b5d05a36b562"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="873e2130-373a-4a21-affa-137ab110c6e2"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="eeca8fa5-48fb-4b2f-9196-5373bfba4c24"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="42ba9f4a-2b11-4853-9a3c-51109d2cfeec"
+>
+<Actions>
+<Action
+ Guid="fb6c7361-8c22-452c-9eb4-3f41ff8aa497"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="aa700f38-da9e-4917-a3a8-3813af629697"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step14 - SF"
+ Guid="03b719fb-87a7-4d76-97f7-acaba550e809"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="aa50edda-f4aa-4954-8dc7-5d53ce49b024"
+>
+<Actions>
+<Action
+ Guid="248c4233-fd23-419e-bbac-8576c2b1249f"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="819a9421-7b9f-4043-94cd-58f167206c5b"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="d7f0785e-776f-4a98-bc3e-21e1ae3619bc"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e16686df-fb17-46cd-8eea-4fc41c335529"
+>
+<Actions>
+<Action
+ Guid="f277274f-0290-4aa6-ac7a-20964f3277aa"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="2a556769-2a20-47ec-90a5-198cf42214d4"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step15 - IS"
+ Guid="46adbc55-1d6d-4e00-a9c6-c505d4badd0e"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="2fe4ed84-d2a4-4724-ada8-b598265f09fe"
+>
+<Actions>
+<Action
+ Guid="26088ff8-3767-4b36-9a09-09083a82017b"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="8bb8c5b2-4027-4118-963f-d914514a809c"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="60d9585f-978a-44b5-b502-96a7f2eeb277"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="ba38f52a-fcbf-4f5e-9bf9-2c3339f15d76"
+>
+<Actions>
+<Action
+ Guid="96c85646-4aaf-4eb6-90ef-af277186d73c"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="1a965520-ff91-45df-8c1c-635299a58449"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step16 - SN"
+ Guid="8b069501-e44a-4ea7-9f7e-5bc94032ff39"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="d485a11f-7f1f-4d52-ae81-c389dae161f4"
+>
+<Actions>
+<Action
+ Guid="efe6a091-e71c-44d8-a0de-e50a31ba70ff"
+>Kernel.Mode &lt;- Default.Mode.SN</Action><Action
+ Guid="097e3771-c451-4a7b-83c7-8a3bb3cca2f1"
+>Kernel.Level.Value &lt;- Level.LNTC</Action><Action
+ Guid="8b4c7c21-075f-4d7d-95be-c2770dc36925"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="60c125f2-8ec1-488b-90e3-ec9afda11783"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f67d2cbe-e151-4b10-98e2-235a60896dfe"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e249fdee-6c48-4bd0-b078-99e74cac8afe"
+>
+<Actions>
+<Action
+ Guid="2786202a-1dd8-48c7-8db5-60215200e2aa"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="1f9e3da8-a959-493d-bfd1-1f2719be0514"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step17 - RV"
+ Guid="b3e59af4-794d-4b10-93c1-706c7366b80c"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="4eb782af-d862-4c65-9007-1de55ae1559b"
+>
+<Actions>
+<Action
+ Guid="056cf92e-588f-460f-be66-3ed52b2fe860"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="d62ebc06-05a9-4b05-8b9e-e5eced21a995"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="37801d9b-a0c2-4c30-be78-98c4f5eaca6b"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="a33827fc-5908-4044-8eda-a09992500b67"
+>
+<Actions>
+<Action
+ Guid="2a4c063c-a4fd-49cc-8cc9-973245e070a7"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="d583d82a-5126-49d4-9f62-04e1ab32fee8"
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
