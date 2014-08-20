@@ -59880,6 +59880,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayReques
  Name="OUT Trackside malfunction"
  Guid="5605d36a-161d-4718-b976-c03513c00bcc"
 >
+<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"
@@ -61475,6 +61476,7 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  Name="OUT Train data"
  Guid="7794948f-e8b3-4daa-8cdc-08bef8a06366"
 >
+<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"
@@ -61528,13 +61530,13 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="OUT Train data"
- Guid="07fc16de-a890-4393-a391-25368cc19117"
+ Name="OUT TrainData"
+ Guid="b51bf6c2-ac19-42a9-80ea-fd1c9f00b370"
 >
 <ReqRef
  Id="3304c4da-5fe0-433e-b102-e0133ee3c22e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ed97a60d-0fc7-40a8-b500-726648764171"
+ Guid="effcad70-b39f-46d0-948b-8293fd82efdb"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -61546,24 +61548,40 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="a834660c-a5a4-42c0-a0e2-2c5d3c279cec"
+ Guid="80470aae-169e-4ca8-bb28-71b6adb1608c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ed3f8544-afb0-4bb3-8fca-1ec67117a8a4"
+ Guid="a5074c13-1aff-4315-a78a-e30d9dcddb76"
 >
 <Actions>
 <Action
- Guid="69f7fae6-920a-46e5-9c2e-2bcdbe081c36"
+ Guid="23a7e243-f38c-4a04-90f6-9ecb9abcf014"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="c0c27ff8-4006-497a-aa05-db99d9fea0f1"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="e3fc7bec-bea0-4992-a0f2-1fe71b86ab25"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="1644fdb5-fa5f-46a8-9236-f35de36a8448"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="90974ab5-5e1d-4298-926b-3522412c5497"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.NotAvailable</Expectation></Expectations>
+ Guid="e6ac3b81-3175-42e9-adf5-d3ba4ac7fa3b"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="da5e407d-776d-4a64-9eb9-23ca51a8c283"
+>
+<Actions>
+<Action
+ Guid="9d19fc36-03c5-4016-aeb6-8fbf9cd89de3"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="9f585c54-62c8-4cd7-96ef-498804793585"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61572,24 +61590,41 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="d888ac10-1025-4a50-a735-03d02a4366e5"
+ Guid="277348eb-7af1-4518-88c2-f57ff0657225"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="fa99c55b-c967-4505-b9a5-790a21f7bc16"
+ Guid="f23dc43b-3118-4be1-abce-685d01a6fb04"
 >
 <Actions>
 <Action
- Guid="a5790f2c-5009-4374-bfff-4290cfceb848"
+ Guid="ffc0f3f6-19b8-479f-b29d-84d8717e3d08"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="956ebe13-1e29-422c-8127-e8077210572e"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="910b3ddb-8548-45a1-8723-b95f323c46b6"
+>Kernel.PowerOn &lt;- True</Action><Action
+ Guid="25b3745e-5d5c-4b02-87b5-fda95d2499c6"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="c999459b-0f63-466c-a82b-cf87e400eb60"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="dd1e7eec-2be2-42bc-93f6-1040d0efa6b6"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="0da6ee39-a9f4-4dcf-8fd5-b42064d088ce"
+>
+<Actions>
+<Action
+ Guid="83b5009b-1f02-40e0-ab8d-d04eaf983a96"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="bc8022df-05a3-4a38-a998-aac5a72a1714"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61598,22 +61633,39 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="2f94874c-fef9-42a2-8950-3314f8af8643"
+ Guid="c7bbed50-5524-4285-88fb-c65295fe72c4"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="931b5a06-08e8-41fe-8040-9da1e2f2e675"
+ Guid="09603279-9ddc-4f34-a2e1-cd2a81570068"
 >
 <Actions>
 <Action
- Guid="b1bcbf65-f094-4b2d-b46e-3ccbf8688127"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="0af319ad-87bc-4fd1-a7e1-a6ecc34970e6"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="f50ee3f7-d2d8-455e-aedd-fdc4835355d2"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="79102e0a-c8f9-4905-8df8-75fa51f3d48b"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="3a21f9db-3dfe-4bbc-a6fd-b9fdeffdf2b3"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="21b5cf00-f583-41f5-8f5b-f32c89c89b83"
+>
+<Actions>
+<Action
+ Guid="96a64b95-040d-4d2a-a46e-49cb9df5149d"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="eb7062da-55ff-4bd1-ae43-6b32908b6368"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61622,24 +61674,41 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="5b858a39-1948-4aa0-bb2b-3cd5c42d7491"
+ Guid="53c2734a-96a9-4be5-97bf-46ad7676bf84"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="3fa52b4a-1efe-4fc8-a276-8c6946f00c58"
+ Guid="1acd2cdf-6fab-49d8-8c45-13073d3141fe"
 >
 <Actions>
 <Action
- Guid="2e3c4aff-8cf4-4a2f-97f6-de6faa4907e9"
+ Guid="ee7b8036-69a3-4620-ac3b-b4a62371ff04"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="38f61b78-49c6-427f-a0da-bc27ae4e5e52"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="ecbc7316-52d9-4ec1-add0-36fe1a860d80"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="4e7a76a9-d3c7-4a47-aeba-cc77f3eb8d52"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="daa32b42-a5f1-4a84-a036-dc2087ef3c8f"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="8ee142f2-f2bd-456e-bcb3-24da5554aae4"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="72b5a250-5e88-4ec6-a8b9-8f3e7edbc9e2"
+>
+<Actions>
+<Action
+ Guid="7202002a-2e93-4700-af24-a91f2aa4698a"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="1d83e1bd-f100-405d-acc3-4df2b5c4f5e8"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61648,24 +61717,43 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="0df2a7a1-a8f7-435a-833c-7a2a069edf23"
+ Guid="86a38c83-6a6e-47ae-88b6-a9240d8b2616"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="3014715b-07f9-48c8-bf60-b947fcc3a3ce"
+ Guid="02e7d4d8-8195-41db-9f2f-6b66f8f05282"
 >
 <Actions>
 <Action
- Guid="d883ce03-2abf-4864-af97-d8714989d548"
+ Guid="cb3ce9a1-005e-4310-bea0-b5cdc635d0c3"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="d322a2c4-3a05-4853-bef3-0c5c3fcca60b"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="0d906a7d-0a61-42f9-ad37-c90d47691357"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="de7141ca-8702-4286-b638-7a2c0773e796"
+><Comment></Comment>
+
+DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="631118ba-dd23-4325-8125-bd38735b191b"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="3b298ba7-a0eb-4480-88fa-14219997e763"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="fe9fbd6f-1eb4-4a8c-b498-83c17b93c0d3"
+>
+<Actions>
+<Action
+ Guid="b253d78c-c223-4a67-bbdd-3160b83022a7"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="5418f7c8-fca5-42e5-ae9a-81919b89b8b4"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61674,22 +61762,39 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="910d9e2e-a3ac-4d36-ab87-3ff7f434bf65"
+ Guid="0a4b4608-91bb-45d0-8e23-414274e12528"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="90981519-acd8-4039-a161-b49cc105c1a4"
+ Guid="29ae34a5-06c6-447b-82ca-79dab7ea7dfd"
 >
 <Actions>
 <Action
- Guid="8c30caaf-7125-4829-bdaa-821396dea25e"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="e19939f9-9a06-4b17-a99d-b90681bea03a"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="f661ffdc-894c-4225-9744-9de1e1f76d5d"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="4828ddc0-0ec8-45ec-a37d-2ff71bf9a0fa"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="0603d1ce-e3fe-4948-b295-d945670d5120"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="f96a3753-6c81-4304-a921-47008cfabdde"
+>
+<Actions>
+<Action
+ Guid="f576c5eb-5d92-4535-ab37-da6c055526d5"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="ba8f76ad-b377-4810-a141-694124815cca"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61698,22 +61803,39 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="97d4b0ed-a132-4147-a833-92ec29d3c770"
+ Guid="256cb494-c229-40aa-b3ea-99821dea51c3"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="d9f786cd-4cff-4848-ae5d-f09b91c32248"
+ Guid="868e00c9-cfcb-4e4d-a037-7610c67724f1"
 >
 <Actions>
 <Action
- Guid="1b41a3be-5bbf-45ed-8e32-46d49c320b01"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="263d7200-447c-48d5-a4ca-65a2b38a37d2"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="8c008f13-f1e4-43bd-87c6-ff167f957868"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7de5f6a5-aac6-4dc2-a222-6c3e40bd93ee"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="bf2df73b-b7c9-4134-ae72-67c35790852d"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="45245f4b-4071-4016-a124-1a5807fc83bb"
+>
+<Actions>
+<Action
+ Guid="43f9cb5a-d007-4e44-a750-8c880b0bd186"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="8483759e-c631-430c-96bc-45ebc4d03caa"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61722,22 +61844,39 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="b166b089-9b2b-4a2f-9069-6260b7e3eacf"
+ Guid="b8a6577e-19eb-49c4-bb7b-1796d8ed938c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="107b8817-96ab-4099-9f5d-e3c23ebba7b5"
+ Guid="2848a8af-7584-4c60-abbd-75232b032019"
 >
 <Actions>
 <Action
- Guid="91f70439-0110-4005-a38d-3790431e09df"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="1187eac6-456f-4591-b9e6-961057a78431"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="b74eb374-1650-4e98-b788-9d0762d86fed"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="f295a92b-fb55-4d4b-9e39-c618dde78a20"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="3cffff39-fc97-4815-aa33-896b960a50e7"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="b2a5549c-8e5c-4b23-ba33-502b2c17e94a"
+>
+<Actions>
+<Action
+ Guid="f7940b6f-29ca-4ab8-81b1-babacb489524"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="5f4459e1-8f2e-40ef-8947-b6401d0c6c8c"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61746,26 +61885,43 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="ac112be7-b97d-4642-81b5-273eb72a5ed7"
+ Guid="4eb10eb6-0208-4bbf-a3a6-a1d8b1bafdf8"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="65424c50-ce4c-4884-85e3-b3683a50a7b1"
+ Guid="943e49f6-d358-4303-a562-1b52e9463d6e"
 >
 <Actions>
 <Action
- Guid="6f3e7c93-006a-4a95-a332-127945f6547a"
+ Guid="4ed38dde-4515-422d-acd5-4315112f726e"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="1d135b6c-3c69-48fd-884f-5f1536c2ff2e"
+ Guid="6e8deb0f-eef1-428d-9161-2b945bd433d3"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="6455a11f-3dad-4bec-92da-07d935e1930b"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="9f3025f0-b303-4a2b-9656-c4907313919d"
+>TIU.SleepingRequested  &lt;- True</Action><Action
+ Guid="d7bc2df4-1907-4046-9cf8-d23cb17b9d15"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="11dfcbd6-e381-4ca6-8be5-701852efa3c4"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="4829262b-3009-412f-9cad-42b89bbeba94"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="0710e098-5e6a-4add-810e-dc0cbde12758"
+>
+<Actions>
+<Action
+ Guid="503908c2-1443-41b6-8382-9fac03dee859"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="49bdab0b-d93f-4538-8719-61c507da2446"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61774,24 +61930,41 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="b5db3a8e-45f3-40b8-8c04-1ac5eca957c0"
+ Guid="c1dd81a7-df11-4021-84f8-04615950ff49"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="8bbde140-c4d5-4edf-aeff-e6db90913093"
+ Guid="c81536ea-28bc-461b-9abb-ae13b4da96d5"
 >
 <Actions>
 <Action
- Guid="23bb9086-9416-48ca-b013-d191bf201c47"
+ Guid="c3711e1d-0b42-4679-82f0-425a804f9938"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="73b78dfb-7165-4a9e-82f1-a75d71529ef5"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="af3ebb24-4fd4-4876-ad74-6bdf8bd72b62"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="9c994457-8cd5-44f9-b146-b2f2e3abc2a7"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="36dbd3b9-6607-4863-9939-5fca5e8f93bd"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="f9b76bfd-e5e7-407a-8f28-56d892125d56"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="4d65477a-3377-430d-a270-c871583d2e26"
+>
+<Actions>
+<Action
+ Guid="502a24fc-5b5d-4a73-86b9-6904cf73ff1e"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="c258f295-92c0-4be6-a42c-0f62287e1c8e"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61800,24 +61973,41 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="ce7bc58f-84a2-4d13-ab99-96fe99396dbc"
+ Guid="2d30d68b-8c31-4438-8f22-fdb241051314"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="eb06d9ee-b827-4da6-ad27-b8cfcfab31a3"
+ Guid="09642a64-04a6-423c-82ff-dd543e3cf998"
 >
 <Actions>
 <Action
- Guid="6c429052-0cba-4905-997e-ebe255a6d2d3"
+ Guid="ae32170e-3124-416f-be63-5c0ec739aa61"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="4de4f49d-6c2e-420a-85f9-4ba2b397006b"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="b96ff87c-bf3c-41ef-a21e-20acbe3e1555"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="85834fed-857f-426a-811d-f714cfd5d47e"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="077e269a-66a5-44d4-83e9-584db9650c70"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="a539046e-9749-4ed3-9208-70a9ccbb964d"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="da68b31d-7a62-4e13-82ef-89842ff32aa5"
+>
+<Actions>
+<Action
+ Guid="c125b55c-9471-44dd-9471-83c3029ba09c"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="59db52e9-c6f6-47d4-a85d-f760706b167f"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61826,22 +62016,39 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="4a77ee02-bff7-4bd7-beb6-e5844c1fbe94"
+ Guid="17e39c52-9e94-4d8e-ac6d-c271279f8271"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="0a0524af-a215-47e7-aa2a-4f28df52a1cc"
+ Guid="7111a0a3-db39-4e50-9194-53affd6d207e"
 >
 <Actions>
 <Action
- Guid="72aaf851-5aea-40ee-ab0f-f776f125eacd"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="70b54662-9574-48d2-ba48-c385ebf3c0e1"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="b6eadee3-b90c-48c7-aba0-36647ef5b8bd"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="3a09c784-6193-4659-998e-6227b7e5274b"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="0fbae187-9e48-4fb5-a289-196dbc6a5738"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="5e06d2d5-bcea-4898-bf55-ad8db922800d"
+>
+<Actions>
+<Action
+ Guid="a022e6e9-31df-4ff0-9a1d-40bd1be27444"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="b71878da-83c4-4bb2-90a2-8a7aa2e068d7"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61850,22 +62057,39 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="abdbec8e-1023-450c-b725-9e06aa704dfa"
+ Guid="75f10bdd-71a4-43d1-a65e-ec439e196bd4"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="572a804a-c5f4-4a0e-ad38-2ecf66dc8a5d"
+ Guid="974cb87f-6f3a-468a-a326-4204a1f470f1"
 >
 <Actions>
 <Action
- Guid="951c6d41-e702-4b24-8688-33b468bfebfd"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="316429cd-280f-412b-9ac6-fd29e6190233"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="f9a4e231-426d-4e33-80be-da0f99a15672"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="e54df857-f83c-4871-8b5a-f452bac3ce33"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="2e42c78c-e415-4a49-aa02-b49bfc3ecdb5"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e63d99e5-c7ba-44d5-a479-ba99e8ed4c97"
+>
+<Actions>
+<Action
+ Guid="6dd5fc6d-569c-4061-833e-14dc7a25d73b"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="9342e4b7-1766-43e6-826b-99caa4014749"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61874,22 +62098,39 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="fae1fa71-7bbb-4d45-8b35-75be570a7366"
+ Guid="d98c59df-c4d0-4e9a-b39d-d69e4778e30c"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="0a75907c-f518-4e13-8dd4-6967ddd9c0e3"
+ Guid="f6c1e492-41ea-474e-8bfe-9b705be08191"
 >
 <Actions>
 <Action
- Guid="863e261f-ce1d-4f76-aa7d-b031e3504b27"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="5513a3ac-c1ca-421a-90a7-d443f43c9690"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="983898cc-f2b3-4b52-8034-b93d924b4ebd"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7a908965-2160-47cb-b670-bea911b38cc2"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="b136f96f-418a-4fe0-8ebc-ce4a5a71b142"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="261e2e09-24fe-450c-a278-045b155ecad3"
+>
+<Actions>
+<Action
+ Guid="a2d24a54-66a2-46ab-ab6e-3452218c72fd"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="13999429-990d-413f-9ccc-1d4eef435961"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61898,22 +62139,39 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="c0879b62-b49e-49ca-9c3a-1c4993d5d0da"
+ Guid="eccfaaf4-f8d2-46b0-8dd1-bfae274c3343"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="824498bc-d716-4769-99f0-655f30b24497"
+ Guid="570767e9-d56b-469b-985e-79bdca8a0901"
 >
 <Actions>
 <Action
- Guid="be867459-3b2f-4cd4-84a9-523d320902ab"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="40e54e7b-e48b-4fe3-81b6-a6c73f90598d"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="05006030-eceb-49d1-af17-fdc332a3f1b4"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="f8bfbcd7-6527-4d46-95ed-f2c405ff380e"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="43c0566f-2ece-4cd7-81a1-02ef7cf82f3c"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="335bee2b-9ec2-4207-8424-d839c15dfe3c"
+>
+<Actions>
+<Action
+ Guid="1f923eb4-2343-4f53-910c-dde3d933d9c4"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="25a9273b-f7ce-4f27-9301-69c85a925ffb"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61922,26 +62180,43 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="96ddfaee-b3d6-41fd-bbe9-622a02f43ef0"
+ Guid="dd6bc5e3-f289-4479-a438-0dc709af2533"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="44bab30d-0067-4695-81d9-dbd765e83ecf"
+ Guid="623593bd-6f70-46da-93b5-e75d7bd720d7"
 >
 <Actions>
 <Action
- Guid="daf7a5ac-7476-4523-b516-4908859c147c"
+ Guid="5564767f-4438-40d1-87af-583275b255fb"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="ca1bf998-f4f0-4cde-88d0-09af8d4dff7a"
+ Guid="0d4884d2-fe5c-400a-9772-5a5d1d3d8549"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="9e367a6e-e8c8-491e-8b96-f23241d106c4"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="8626c8f1-4420-4619-9af6-9d3930bdc7fe"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="85934326-d0f4-46b1-968d-92a0efa87691"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="5410266e-9ed7-4543-b60e-fd6383354051"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="0314c0f0-0ab9-46c3-80e3-2c1e5fc4bc9a"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="94871907-26ed-492d-b687-6e2a1b4a6060"
+>
+<Actions>
+<Action
+ Guid="39b954f2-dc0d-433f-bb63-f258c072c615"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="afe17e1d-9d18-4c65-b38a-d0e7dee5453b"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -61950,22 +62225,39 @@ DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="778f9477-800c-46c5-b2cb-0909b3d65f0a"
+ Guid="2cf7c49b-cdd4-46d9-bee2-fc8800981610"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="89618654-77fe-49c3-ad9e-e35a790e3fbf"
+ Guid="521e6b7d-5054-49d2-b5b0-987f2e45d4bc"
 >
 <Actions>
 <Action
- Guid="b1d4d2d7-73d7-4997-8395-c00c9b50faab"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="de1f1460-4cd7-4c2a-b687-49c9040fcb43"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="2f0d2d43-64f5-4b56-8617-b4bbce97cb60"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="c4ddcd6f-0cd9-47eb-b7e7-16ffe75ebd7a"
->DMI.MasterDMI().Out_TrainData.ProcedureOut in DMI.OUT.TrainData.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="24181488-76a6-4160-b5c3-d3a8718b52be"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="16af0e70-c2d1-4c3c-a309-38584833b0b2"
+>
+<Actions>
+<Action
+ Guid="4d143fbb-41cc-4fad-ae25-235b9bdbb7a7"
+>DMI.MasterDMI().Out_TrainData.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6e937409-38d7-4ee5-8118-195ace19018a"
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
