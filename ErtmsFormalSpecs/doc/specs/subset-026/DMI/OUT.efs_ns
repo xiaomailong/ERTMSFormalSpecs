@@ -12679,6 +12679,133 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="1120c2d0-6812-4bc0-a6cc-7437561bbee6"
 >
 <Comment>The mode proposed to the driver</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ X="110"
+ Y="780"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SNModeProposed"
+ Guid="df3dfafd-d474-4971-960d-926efa1511ad"
+>
+<ReqRef
+ Id="ebf19bbb-1136-41ba-92fe-0aa6cddb639b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="df0c091b-b54f-4ce8-bf8b-7fdfef8ff571"
+>
+</ReqRef><Comment>Indicates that the mode SN has been proposed to the driver</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Output when mandatory"
+ Guid="41bbf856-8448-4342-875e-cf5e8fa668f8"
+>
+<Comment>Outputs the value of this element when mandatory</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Output when mandatory"
+ Guid="74a5c537-d67f-4e4b-bf9f-fe09d98a7d43"
+>
+<PreConditions>
+<PreCondition
+ Guid="ac0c1e1e-340c-4f02-88f5-a2a520d5262f"
+><Comment></Comment>
+SNModeProposedMandatory()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="73b9e6ba-2fd0-4d41-98b6-cd9110269e8b"
+>Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ Name="Display"
+ Guid="3cb29a30-1e0c-4331-aca9-c1d08ab7f418"
+>
+<Comment>Requests to display the corresponding information</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Updates the request status"
+ Guid="b388589d-2abc-427b-beaa-24de7f6c8723"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Updates the request status"
+ Guid="3344a026-aed2-46b8-b173-ef34dcf42065"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="4f214030-13a4-49b2-acb8-4931564cd197"
+>SNModeProposedAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e38df24f-91b3-4340-9189-2b5985454dc4"
+><Comment></Comment>
+
+THIS.OutputInformation.RequestDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="8aa4d32a-b031-4936-b637-0b3713794c5d"
+>
+<Comment>Tracks the changes of the mode</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Updates the status of the request according to the mode"
+ Guid="2e82d027-373d-4d58-bcff-987f2bd45508"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Updates the status of the request according to the mode"
+ Guid="832ddbe0-f7ac-4936-96f8-65eee4c8963f"
+>
+<PreConditions>
+<PreCondition
+ Guid="bd5c5886-b780-4a50-8744-8d32ba36d0bb"
+>NOT SNModeProposedAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9bf887cf-e907-48f2-ab85-16e102ccd2fe"
+>THIS.OutputInformation.DoNotDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="OutputInformation"
+ Default=""
+ Mode="Outgoing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="OutputInformation"
+ Guid="5bad47c8-f713-4d15-8b49-abbe2fbcb0eb"
+>
+<Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="Default.Mode"
+ Default="Default.Mode.UN"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Mode"
+ Guid="1871d7ee-0ea5-45c5-b3b1-06fb74ee7daa"
+>
+<Comment>The mode proposed to the driver</Comment>
 </StructureElement></Structure></Structures>
 <Functions>
 <Function
@@ -14242,6 +14369,53 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 <Case
  Name="Enumerates the cases where the request is mandatory"
  Guid="b7084cb4-dece-433c-bfcf-7cd3c2efb2e7"
+>
+<Comment></Comment>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SNModeProposedAvailable"
+ Guid="e4f81048-36e5-46bb-b11a-570f85b61dc3"
+>
+<ReqRef
+ Id="ebf19bbb-1136-41ba-92fe-0aa6cddb639b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7f5af17-91e9-4ae4-8a6b-a8bd6628772f"
+>
+<Comment></Comment>
+</ReqRef><Comment>Identifies the modes where the output is available</Comment>
+<Cases>
+<Case
+ Name="Enumerates the cases where the request is available"
+ Guid="9fb72de7-e768-4ce2-b793-b7a62767b977"
+>
+<Expression>Kernel.Mode in [Mode.SB]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SNModeProposedMandatory"
+ Guid="c60b8104-6701-4b14-83e3-f80e365593fd"
+>
+<ReqRef
+ Id="ebf19bbb-1136-41ba-92fe-0aa6cddb639b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2f8a06d4-c0aa-448c-aad1-0c657b6bacbe"
+>
+<Comment></Comment>
+</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
+<Cases>
+<Case
+ Name="Enumerates the cases where the request is mandatory"
+ Guid="c93eb10e-1838-4396-a94a-b2601f06a633"
 >
 <Comment></Comment>
 <Expression>False</Expression>
