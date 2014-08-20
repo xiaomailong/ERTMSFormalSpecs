@@ -55943,13 +55943,13 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="OUT Target distance"
- Guid="16a7a232-178d-4126-959d-7e3bf0cb1460"
+ Name="OUT TargetDistance"
+ Guid="d4893364-3454-4235-acd4-9669673efd38"
 >
 <ReqRef
  Id="c5c3fd28-41ac-4ad2-a5ea-ba3e63205382"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f2cdb3ea-0879-4eb2-814f-0efefc990af2"
+ Guid="a9f47802-c0c3-4ffd-aaa3-b7aee4d07eae"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -55961,24 +55961,40 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step1 - NP"
- Guid="9c5e8243-26ed-46e3-9f81-56a12633a49f"
+ Guid="ee09b9a1-e12f-4c61-8522-5b0b70bd77ac"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="0a11a42c-7b92-40b5-aaa2-162ab175c705"
+ Guid="4f9bcf2f-f65d-4965-aa2a-eeb94c9404fd"
 >
 <Actions>
 <Action
- Guid="24ee2049-e590-459c-bfa1-b0a38be7ab4b"
+ Guid="32503534-59fe-401f-bad1-d84119b68a7f"
 >Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="9b614f4f-1e0e-48f8-a859-50211ee46c14"
->Kernel.PowerOn &lt;- False</Action></Actions>
+ Guid="878e7865-e6d1-4f2a-b13c-b681cdb3ac10"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="a32da815-2496-42bb-a6fc-731611500cd2"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="ceaf1a5b-1c57-4b15-af76-aa20b6c26ed3"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.NotAvailable</Expectation></Expectations>
+ Guid="68f95b9a-0d40-4dea-b076-55714d369e81"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e013bd63-be26-4883-9679-5b611ce67674"
+>
+<Actions>
+<Action
+ Guid="7cdd5624-8ab6-4d8c-bd20-f07a5227d347"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="0a7ec417-23a9-461f-a812-289b395ca714"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -55987,24 +56003,41 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step2 - SB"
- Guid="5735bc9c-1b05-4ae9-b4ed-56e80299ece8"
+ Guid="e7af23dc-3d6a-42c6-a3c8-8ab5b5464564"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="288fc927-bbe5-4343-bc9f-7b5e75ed7ead"
+ Guid="797af4b9-98ea-4707-b2e2-d842165a6d43"
 >
 <Actions>
 <Action
- Guid="4f4d81b0-23bb-401c-acbc-36b3707ed4f0"
+ Guid="cbc8b7e3-41d4-48f4-8edc-d25d593a319e"
 >Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="52e05d21-0c03-4b7d-b14e-68b223c2a6c1"
->Kernel.PowerOn &lt;- True</Action></Actions>
+ Guid="9ecf703a-2599-4362-b87e-2563ed38ac66"
+>Kernel.PowerOn &lt;- True</Action><Action
+ Guid="6f2f0789-fa42-46d7-b85e-3fa6dcb6370a"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7e9b145b-cd93-4cfe-aa96-b12a97d0bce5"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="97ddc182-d0ff-4bd1-84b9-2833f33535ba"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="63e78505-b6e8-4a9a-b7ae-f04b892c108f"
+>
+<Actions>
+<Action
+ Guid="c3ec810c-0f16-4b1c-9d46-a1b4f1ee0914"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="bb8a8f17-0171-4ab5-957e-81089187c218"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -56013,22 +56046,39 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step3 - PS"
- Guid="a8a5e92c-6a44-4c44-9f9c-c88437f086b0"
+ Guid="cde6ad6c-0c35-4d50-a580-39c0fd87f703"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="f6a83061-2a06-4fa6-a209-db4e94cfb1d8"
+ Guid="128a91d5-9e6f-4178-b87b-f7d9237bbfee"
 >
 <Actions>
 <Action
- Guid="64cf99e7-aef1-4e19-9f7d-30e893461c73"
->Kernel.Mode &lt;- Default.Mode.PS</Action></Actions>
+ Guid="58670625-35f9-424e-9c73-87cbaf510989"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="3572e4bc-9c6b-4191-8dc9-75cf7a7d3bd2"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="2a9f2f91-47e4-4847-881f-5de14b4d3d10"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="3b56f6b0-3044-45b3-a632-d5b5e73c1e79"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e5b43e88-9acb-40bb-bed7-739bd334fd4b"
+>
+<Actions>
+<Action
+ Guid="e3d93b5f-4338-442d-ad7e-7fa8ca0aa748"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="0b6bfd18-cc6b-4fd9-8029-b6ced01fe329"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -56037,24 +56087,41 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step4 - SH"
- Guid="0c82481d-a5b3-4cd2-b26b-3527315e4f29"
+ Guid="58ecdf2d-a28c-47f2-adc0-e05b09221b73"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="eebf301d-59fb-4b8f-8590-c0fb7872aefb"
+ Guid="f2740432-2484-4042-a335-d898cc45cb57"
 >
 <Actions>
 <Action
- Guid="7a1b1140-01dd-4da5-8fc8-17036e68faf8"
+ Guid="3980f492-3747-4746-b2f5-083fa733d7dd"
 >Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="39cfa690-11c3-4091-ae05-625eb79cc80f"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="bfe761df-9d19-4fae-b840-72efd3eb1dba"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="aad9ecc9-e489-406a-8b1c-da094b613a6c"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7f2bee03-cd0f-4e2f-9136-e5f259db003a"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="821121c5-86e6-4d83-b4b4-ddc52ef6087f"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="ec810176-3f7f-4ee9-9552-9bd832cad333"
+>
+<Actions>
+<Action
+ Guid="0bd792fe-60b8-4edc-b624-0d019fe0b5e5"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="3e0dc9a0-5c7f-4855-ac4f-6db745c0c413"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -56063,24 +56130,43 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step5 - FS"
- Guid="91768a4f-d365-4d12-82f2-5bf4bcc54fd3"
+ Guid="50f25034-e079-4f3a-9dd4-9802a9eaae99"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ef20e495-6afa-4d2f-a054-067e8c24e47f"
+ Guid="4547703d-c3c1-4407-9138-184f09b7726e"
 >
 <Actions>
 <Action
- Guid="a2409741-6ee2-4b94-a6b8-937f2955897d"
+ Guid="c8d66685-98df-443c-a3b2-35245910bdb8"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="0ab68bfc-ebe2-405a-a22b-64972d7b80fa"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+ Guid="58745fd1-9f15-44d0-854e-ee67eb91a3d8"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="89e1b5f0-fdf3-4cfb-bef5-c01e867b857f"
+><Comment></Comment>
+
+DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="b55302f9-a02c-4cdb-b937-c66227741c19"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="fbaab208-8af2-4c89-bee5-0a56d2a68540"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="2fa09f04-1353-4bb7-97d7-f7465f4d0e86"
+>
+<Actions>
+<Action
+ Guid="6f0ad8ad-dbba-4775-a27a-1f0bdf3186aa"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6aae488a-8bc4-493d-a900-bb73689eacab"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -56089,22 +56175,39 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step6 - LS"
- Guid="3335f16e-b040-41be-903b-372543e9f23c"
+ Guid="9c7ac5c8-0441-4fad-8562-852affb03ba0"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="651d9eef-a9d5-4320-bbf6-c49c62886460"
+ Guid="8bc65457-67df-4979-a833-71075a25f25a"
 >
 <Actions>
 <Action
- Guid="9045b621-5e98-4f55-8ad4-9de4331aff9e"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="ccb2cb14-6328-497c-b768-0a38753a2c9c"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="1742766c-733f-4905-a7e1-f01d6c8980c1"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="786ca6c4-81e9-4f11-bf6d-cd82154473ad"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="df2db1f5-3ca1-40e0-bae4-f3486f6a4bae"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="3ad0d91a-ea60-4655-820f-18e1f3b0864e"
+>
+<Actions>
+<Action
+ Guid="cad453bb-e6f9-4529-b5de-4da5a2cd57a8"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="9c003acf-2be0-44a0-85db-4e8e86437458"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -56113,22 +56216,39 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step7 - SR"
- Guid="0bf57ee0-8cad-46a1-bf41-a2f274f7f244"
+ Guid="101f7f61-3b0b-49bc-b4aa-0d3606264651"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="49cbe821-6b69-4e5b-a582-d4a6ae2d392e"
+ Guid="f85d68f0-37e6-4254-b5f6-cb53f3a7ae9b"
 >
 <Actions>
 <Action
- Guid="f61e5c8b-4ec8-4709-ae29-365a653f406e"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="c83d6845-8380-4453-b76b-70c2873a2102"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="48e99ba5-0e44-4145-98bd-c96ec4074b96"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="b09fa427-5cf5-4648-b9c6-b34df5174b32"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="1c75299a-5312-4ae6-9abb-d07bf6b1c2f0"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="fa37a5f5-eaa3-4604-9512-07a66c8c3598"
+>
+<Actions>
+<Action
+ Guid="c5f08d82-68e5-4428-9a8e-552ba0be4969"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="62473cd9-bab7-4d34-8382-eff8632888f7"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -56137,22 +56257,39 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step8 - OS"
- Guid="93ed61c4-6b2c-4016-8d08-86e58ea08d1f"
+ Guid="6728206a-1173-4b38-b1bd-a4c4cf4f19d7"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="97b8c318-94f9-41d2-ab70-33b60d872a81"
+ Guid="4f4bfc47-ad2d-4222-874c-cad6bc813c20"
 >
 <Actions>
 <Action
- Guid="658cfdd3-d77c-40a3-be28-f5e67d220349"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="b89976de-4ba5-40cc-b6bf-083e0f8a8a9a"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="082230ae-81f6-46fb-835b-256a4a5b96e0"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="86e210de-f0a2-4a1f-9864-18d42ca8d75f"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.Available</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="f19bea63-5106-4574-b124-4439d8d473cd"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="aedbd8c4-3850-4768-863b-cddc95c601b6"
+>
+<Actions>
+<Action
+ Guid="5fd613bf-6be2-4029-a7bb-2794b24708e9"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="be86ff55-afc5-4798-9f6d-baf298006a53"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -56161,26 +56298,43 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step9 - SL"
- Guid="e01bcefc-b671-4718-808d-d4f27a7c2c07"
+ Guid="6269459d-f4ae-4c29-8de9-90883d028f1f"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="df6f121b-24f6-4d61-8e96-7c81e59dd05c"
+ Guid="567adc0b-3b36-405d-87b6-db949eaa508f"
 >
 <Actions>
 <Action
- Guid="9f618888-8cb8-48fc-bf0f-2ca45195ee13"
+ Guid="5b594c87-d503-4d3f-bfba-a7b25239df6a"
 >Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="bee905eb-71a6-4c70-be58-8c4cb7e575c4"
+ Guid="1871cfe2-37d9-4493-bbc4-4188a31bb5f9"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="696bca94-2b17-467d-a440-9436f2c4622c"
->TIU.SleepingRequested &lt;- True</Action></Actions>
+ Guid="480b4cd7-d20d-456c-a844-3d43d5bf9020"
+>TIU.SleepingRequested  &lt;- True</Action><Action
+ Guid="2490e04f-835d-4df6-b98b-273dcdc3205f"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="d3b587d1-f481-48b4-92c3-f7b402ed2091"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="1f3ab8f6-b1da-42c9-868d-89409b262b24"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="8f1e750b-9869-4851-bdb3-6f4f0a897cbe"
+>
+<Actions>
+<Action
+ Guid="57e558cb-5b31-4715-b6ae-93651bab3c03"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="ee0a611e-0395-44fc-9e32-7b15e55383c2"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -56189,24 +56343,41 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step10 - NL"
- Guid="e6dbebf4-d58d-42c0-8241-2ff436083e4d"
+ Guid="29835b57-c613-49da-ad42-f637a271a8bf"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="8f907488-3260-44c9-bebc-0431ec8fb52e"
+ Guid="8e92f650-6898-41e2-bcdc-4257d7fe1399"
 >
 <Actions>
 <Action
- Guid="d35a2547-ed4f-405a-9bb5-2c6c38bee31b"
+ Guid="67af14fb-e0f0-4dd1-b2e4-592acb804909"
 >Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="e207efea-47c8-4f3b-b07f-52469d9a6e52"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="6b030708-9554-4615-81c6-2889842ea31b"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="826f1268-e896-4131-9e80-77fc5997ac94"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="b8bd14d2-624f-4b05-8ec9-4ca85cdb0f6d"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="8ddee21e-24ca-4037-9a69-10910011012e"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="157718f4-26e1-46ed-881e-9e32c4168607"
+>
+<Actions>
+<Action
+ Guid="c4939d93-a0c0-400d-95f0-b0329ba1e7d2"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="d588c577-2f0b-4ce2-970c-b8e936a8f3c0"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -56215,24 +56386,41 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step11 - UN"
- Guid="6f2fc53a-4364-4818-bc9f-1a057ff3a94b"
+ Guid="1d466a08-3c4b-4dd3-b8b4-4e9eed2214c4"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="83604c93-534e-4e12-8ff4-aead33e49b1d"
+ Guid="f5dd751e-ddeb-4604-98db-fbf5b1f4947b"
 >
 <Actions>
 <Action
- Guid="11f8832a-3167-427a-8154-6c4f020f3cec"
+ Guid="847350f3-260f-4a8e-b4b9-5f38fe1733ad"
 >Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="e7f6a872-6323-4cae-a3c6-1736c51b4911"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
+ Guid="93fd0ca7-828e-4fe6-90dd-18ad6f9a08a5"
+>Kernel.Level.Value &lt;- Level.L0</Action><Action
+ Guid="e9827ef8-5ffd-4fdc-bc36-4320b9843683"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="10635dd1-cabe-4046-a154-a6f39863c52a"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="3e1be58d-ddd7-4ad3-84c8-1822aacd8988"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="22d9fa4c-2c68-41e1-ae12-141d4cbaed29"
+>
+<Actions>
+<Action
+ Guid="c086c3df-2d0b-4794-8dcd-7896963f93fd"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="13ac8497-983d-429f-91dc-71aa1d40cba8"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -56241,22 +56429,39 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step12 - TR"
- Guid="47b400c9-0e73-4506-a345-9f92aba17241"
+ Guid="ed33eeb7-1fa9-4694-9889-5ad192c37f2d"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="ee99d5ec-9f9c-4ae9-8b50-630fb0158fc0"
+ Guid="bcfc9fcc-4a4e-431e-9086-76cbed8f2dd0"
 >
 <Actions>
 <Action
- Guid="3882f126-8f78-481a-b8a0-5ff482905905"
->Kernel.Mode &lt;- Default.Mode.TR</Action></Actions>
+ Guid="eb8ba03d-141a-4411-8632-a733ebe9aa70"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="a21b83dc-79ff-41a6-b757-16762123854c"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="b2de40a3-3f3f-4136-a197-b7793bed705a"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="31f7d911-b75d-464e-adee-c2c4f6938ee2"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="2247cf16-852d-4870-806b-2043741608c4"
+>
+<Actions>
+<Action
+ Guid="25ae3417-866a-46f1-8c2f-1497b99bc95d"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="288df751-b936-4eec-99c8-ed54afa2d415"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -56265,22 +56470,39 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step13 - PT"
- Guid="a2a1544d-4086-4006-903e-09625a8f1edd"
+ Guid="8db266fc-2954-4613-b151-a291c90b0ef7"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="9702da1f-9a5b-43dc-9f7c-cb1cc4417c89"
+ Guid="f2a336a7-9c9c-4e9c-b542-afe5213851ac"
 >
 <Actions>
 <Action
- Guid="1a3296db-51e2-43bc-af23-b08d1b96c8e1"
->Kernel.Mode &lt;- Default.Mode.PT</Action></Actions>
+ Guid="107ad386-f45a-4a2e-865a-999be8c71790"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="67ee3fc1-933c-464e-849d-cb88c47ad1a9"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="7b80131f-c08c-4736-bd5e-90967443987b"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.NotAvailable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="05b67ad9-6df2-4b07-9cec-ce62721f12be"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="c4dc027a-9c79-4b7f-8eb4-d8dfa99fb1db"
+>
+<Actions>
+<Action
+ Guid="4563632c-71fb-481d-b975-86e538d0db52"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="24496528-4003-46b9-93b1-6cc19c6567ba"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -56289,22 +56511,39 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step14 - SF"
- Guid="788402fa-5340-4c2d-a3ca-aaea0080897a"
+ Guid="1a2e815f-ae06-42d5-afeb-ad9032d3f8b7"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="fa484cb8-0dfd-48ff-a7e9-af36b915ea6c"
+ Guid="a8111390-3772-4c91-8b3c-871c39244f7c"
 >
 <Actions>
 <Action
- Guid="d98114b8-2715-4ad3-8640-d1c36d0e103c"
->Kernel.Mode &lt;- Default.Mode.SF</Action></Actions>
+ Guid="f18fe855-5111-4004-82a9-a6835140caf3"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="379bd108-e695-4f88-adc3-ea7f042e9311"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="77a67261-d414-4b1f-b993-1500485381ef"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="7b063cf7-8013-48cb-ad7b-9ea6e2b0f8f4"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="ecfaaaeb-fffe-4d63-ada8-7b8f217bbd4c"
+>
+<Actions>
+<Action
+ Guid="b37c5e68-c0d3-4f4a-9e0a-5eccbb7f47ca"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="8c6663f8-8611-4426-a357-08dec104f61f"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -56313,22 +56552,39 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step15 - IS"
- Guid="2f7471d8-0c0b-485e-bd47-eec1d854aeed"
+ Guid="060f0fb5-38b7-48e6-9e0f-2c1b6c52ac72"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="852f9aa4-7713-48bb-9914-bdf1763cc4ad"
+ Guid="a096ec5c-dcb0-4f7e-9a2b-3f3ff67e65ed"
 >
 <Actions>
 <Action
- Guid="b4024d92-9895-4a4b-9899-8507761bb0a1"
->Kernel.Mode &lt;- Default.Mode.IS</Action></Actions>
+ Guid="8b24fd7d-8ff9-4da0-b716-fc76a546ac11"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="109b9746-4836-4c9f-96eb-6502ba2deed6"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="5ea71c6f-52f2-4548-b62a-76871dcb21a5"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.NotApplicable</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="453f3da6-4ca9-4f84-89fd-6ef48a591c6a"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="6452af94-62ee-476b-b4fa-d5b0f5a2af71"
+>
+<Actions>
+<Action
+ Guid="7d0a7476-da14-40a6-80fb-6ac8fb9ee17e"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="cc81f769-d31e-4d7b-8c16-959c647e4884"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -56337,26 +56593,43 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step16 - SN"
- Guid="4e122e64-ac3b-47a8-b485-0e702f74fd76"
+ Guid="5dd7c102-fede-4b68-8897-0d6c5d17e7e2"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="e50d5f18-11df-4bba-9dd5-9ac6e50b5949"
+ Guid="1bb6ebd8-885d-4b26-a0e5-fb36dd9bd55a"
 >
 <Actions>
 <Action
- Guid="eca47063-0c13-4dd5-a19a-9cdd0b42e28d"
+ Guid="8da6e2d5-55a1-4dfe-92d6-316f5ac26605"
 >Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="ddaa8657-1e9e-4f4a-aba0-b16e64db6e34"
+ Guid="2d1fd0e0-9bc8-4661-9e5a-6d70c0639aa4"
 >Kernel.Level.Value &lt;- Level.LNTC</Action><Action
- Guid="d31a010a-c1de-4279-8a08-46689d4807a6"
->Kernel.NationalSystemId &lt;- 254</Action></Actions>
+ Guid="9b82c2ed-ae89-43b8-9a12-5e1ce75918a5"
+>Kernel.NationalSystemId &lt;- 254</Action><Action
+ Guid="c32927db-362d-423d-bb87-8e1512517483"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="82ee13ed-3e09-4b88-a384-a6b4bd6a96de"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.NationalSystemAvailability</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="034fb599-5bee-46a0-b2e7-3ace8133f61f"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d35627cb-8cff-490e-b599-6c582a5955e3"
+>
+<Actions>
+<Action
+ Guid="cc436069-3ad6-4ff0-a169-c31b94f40190"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="ff377951-1197-4b1f-ac66-ff3e83c44452"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -56365,22 +56638,39 @@ DMI.MasterDMI().Out_SRModeProposed.OutputInformation.DisplayRequested  &lt;- Tru
  ModeIN="NA"
  ModeOUT="NA"
  Name="Step17 - RV"
- Guid="c1238f5b-a1fa-4dc9-b121-23bf2c6411bb"
+ Guid="0e234240-bd95-4e83-a3ba-fd63acce8aff"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="1c1901bc-b07a-427e-896a-be6f060ec594"
+ Guid="45a442e6-1756-4579-a012-e6db470d0bc3"
 >
 <Actions>
 <Action
- Guid="d973c7bc-ebba-4533-81d1-df35279e1b08"
->Kernel.Mode &lt;- Default.Mode.RV</Action></Actions>
+ Guid="ea9e28e9-1f21-4122-970a-b109821a79e5"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="b023a20e-f7d1-4ba3-977c-8f32a67ab519"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="1c4f4909-2ed9-4857-8fc9-2d5f8e446441"
->DMI.MasterDMI().Out_TargetDistance.ProcedureOut in DMI.OUT.TargetDistance.ProcedureOut.Active</Expectation></Expectations>
+ CyclePhase="Processing"
+ Guid="df36f16a-ca06-4db0-b9c9-9526654a2f47"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="9d3efb66-f7b9-46d3-81d3-8377541d5884"
+>
+<Actions>
+<Action
+ Guid="de9efcef-981e-4afa-9a08-9c244a0de997"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="551f11eb-f561-49d2-a933-b6cba1afe4a0"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
