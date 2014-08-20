@@ -196,65 +196,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 <Procedure
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="DisplayTrainIsRejected"
- Guid="c4b3cc18-f1ce-4ffd-b447-cd352848aa4d"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="25609298-b125-4f12-9d9f-12a1791c6978"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4328bc7b-c867-4c47-ae33-7c9307e377cf"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check mode change"
- Guid="76981026-910a-4866-9588-7da672be1acb"
->
-<PreConditions>
-<PreCondition
- Guid="838a79ea-9574-4115-b7bc-f00a990d4d01"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="dd586589-7ae9-449c-9ecd-8e9099e78f97"
->HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayInformation"
- Guid="53d7f01c-e5a3-45ed-9e5e-3df829fc2252"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayInformation"
- Guid="3351898e-83f0-4afe-9b86-c03448382a16"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="ecbabfcf-f2ca-4e94-86f2-f0e19b7cd37c"
->Out_TrainIsRejected.OutputInformation.ShowRequestStatus &lt;- Request.Request</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="DisplayTrainRunningNumber"
  Guid="d48ba242-9914-424a-9a64-bfe41ef21e32"
 >
@@ -931,8 +872,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="ec8250a8-dfcb-47bc-a15a-629444a66d7d"
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.NotAvailable</Action><Action
- Guid="d8c748ee-3ccd-4977-adb2-64312a5adc7d"
->Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotAvailable</Action><Action
  Guid="6b1b4722-e4a6-4530-84b3-fdc522aa3646"
 >Out_FLOI.ProcedureOut &lt;- Out_FLOI.ProcedureOut.NotAvailable</Action><Action
  Guid="85b044d5-5802-4055-9097-f73503ccdc76"
@@ -965,8 +904,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TrainSpeed.ProcedureOut &lt;- Out_TrainSpeed.ProcedureOut.Available</Action><Action
  Guid="612f9754-bc58-49d9-badd-2e13a75edda2"
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.Available</Action><Action
- Guid="e25afb7e-e16c-45c1-ba28-fe804efa6dee"
->Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.Available</Action><Action
  Guid="f09385ca-419b-491d-a6d5-5b302b6f32f3"
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="b1d06889-741d-4aa3-9e4a-eda4f33b15e3"
@@ -1003,8 +940,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="1c3c99ba-3f54-4f1e-8ad0-89a319e5700b"
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.NotAvailable</Action><Action
- Guid="3d8da2d7-47e7-4bf3-aae1-d58a5b1d09bf"
->Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotAvailable</Action><Action
  Guid="48939d2b-a7ac-4b6c-9989-05515fd892d6"
 >Out_FLOI.ProcedureOut &lt;- Out_FLOI.ProcedureOut.NotAvailable</Action><Action
  Guid="ff5e87cc-5fd8-464e-a601-4db8da6811f3"
@@ -1041,8 +976,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="8b4609e3-0f1a-4660-a747-27c89ca7af76"
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.NotAvailable</Action><Action
- Guid="b2b5203a-4a3e-4bf2-938a-c03436bddbd0"
->Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotAvailable</Action><Action
  Guid="175eda26-0e4a-4f81-84ba-9e2ab7762acf"
 >Out_FLOI.ProcedureOut &lt;- Out_FLOI.ProcedureOut.Available</Action><Action
  Guid="9b25e25d-c5c6-4b78-9546-a8cd2d7a0de9"
@@ -1077,8 +1010,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="d8de4471-970c-44fc-95d1-c753e4f30e9e"
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.NotAvailable</Action><Action
- Guid="9b56463c-9356-4cbb-9517-4442985fa027"
->Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotAvailable</Action><Action
  Guid="e1bea6fa-2f07-42a1-be0c-ea674e0922f7"
 >Out_FLOI.ProcedureOut &lt;- Out_FLOI.ProcedureOut.NotAvailable</Action><Action
  Guid="51fabb4c-9da4-4ece-9458-d9cd72076685"
@@ -1113,8 +1044,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="3ac93eab-2529-4e41-9bf8-a403390d597d"
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.NotAvailable</Action><Action
- Guid="cfd9563b-a99b-42c3-8ffb-b48d2a7b79ee"
->Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotAvailable</Action><Action
  Guid="7e1e3e0f-0056-4187-be9f-167269ba9c03"
 >Out_FLOI.ProcedureOut &lt;- Out_FLOI.ProcedureOut.NotAvailable</Action><Action
  Guid="d08af991-f8c3-4142-94c7-d9690fddd3c1"
@@ -1149,8 +1078,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="b4226b5e-e90c-4ee4-b11f-a37904b256ac"
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.NotAvailable</Action><Action
- Guid="56f36b51-842b-4d5f-ab9d-f0e28f6dcce4"
->Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotAvailable</Action><Action
  Guid="fe480279-30c4-4299-b0f1-053c72ced023"
 >Out_FLOI.ProcedureOut &lt;- Out_FLOI.ProcedureOut.NotAvailable</Action><Action
  Guid="b8adac24-18f5-4917-8736-ae6c3f343734"
@@ -1185,8 +1112,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="d4bf3bbf-f3e3-42d1-b9d8-2e87a3ed71f9"
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.NotAvailable</Action><Action
- Guid="438cf00f-9769-4f92-b66f-094066e54263"
->Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotAvailable</Action><Action
  Guid="917ec0ee-11dd-417e-b333-d47932309e6e"
 >Out_FLOI.ProcedureOut &lt;- Out_FLOI.ProcedureOut.NotAvailable</Action><Action
  Guid="ab74f71d-5827-48e0-aa4d-995e32d02e20"
@@ -1221,8 +1146,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="7e1150a8-813b-4746-826a-c3bbcc8d1e1a"
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.NotAvailable</Action><Action
- Guid="7112e686-0568-4db7-84d0-bc25f40df47a"
->Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotAvailable</Action><Action
  Guid="c20aaec6-5e0a-40ae-ba7e-231637555936"
 >Out_FLOI.ProcedureOut &lt;- Out_FLOI.ProcedureOut.NotAvailable</Action><Action
  Guid="27ff8a2b-e36f-4f73-8ce1-0f564291362c"
@@ -1257,8 +1180,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.Available</Action><Action
  Guid="9bea3ab8-8da1-444c-b373-44095a515743"
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.NotAvailable</Action><Action
- Guid="43e2b7f8-679a-4da8-a6cf-747658f6e133"
->Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotAvailable</Action><Action
  Guid="1b73d2fd-f7e8-48c9-8308-6c263af6df90"
 >Out_FLOI.ProcedureOut &lt;- Out_FLOI.ProcedureOut.NotAvailable</Action><Action
  Guid="edc6599e-9cec-43e9-95e8-1d4ab1c3cf52"
@@ -1293,8 +1214,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="1a473747-a5ef-46d6-be7b-28e78fe5bac6"
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.NotAvailable</Action><Action
- Guid="6dd778b8-bb64-4e31-9c17-b6884ab4ba73"
->Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotAvailable</Action><Action
  Guid="63c6f547-355c-4df8-86f6-46d488d414c6"
 >Out_FLOI.ProcedureOut &lt;- Out_FLOI.ProcedureOut.NotAvailable</Action><Action
  Guid="035030f2-74dd-4c5d-b390-cfe315549389"
@@ -1329,8 +1248,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotApplicable</Action><Action
  Guid="73c1c196-5ffb-443b-98a1-861a1934e5ac"
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.NotApplicable</Action><Action
- Guid="152c1089-ccfb-4d7d-9a4f-4083b5b8cef2"
->Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotApplicable</Action><Action
  Guid="cec46063-e8f5-47a5-af08-1add91b1303a"
 >Out_FLOI.ProcedureOut &lt;- Out_FLOI.ProcedureOut.NotApplicable</Action><Action
  Guid="b14e91ac-c408-4407-af98-b777c2213c89"
@@ -1365,8 +1282,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotApplicable</Action><Action
  Guid="9ae9eab0-3db2-4bff-b546-a900e399948b"
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.NotApplicable</Action><Action
- Guid="778f1b12-6752-42f4-80b6-54b3a70a54d9"
->Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotApplicable</Action><Action
  Guid="825deddd-03be-4b13-8cf0-18c6294c232c"
 >Out_FLOI.ProcedureOut &lt;- Out_FLOI.ProcedureOut.NotApplicable</Action><Action
  Guid="fbcc725b-b1d9-4ca9-b299-71e593dfe028"
@@ -1401,8 +1316,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="407f5927-b757-4b88-b5e4-d73bbc6c303b"
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.NotAvailable</Action><Action
- Guid="522a15e4-afe5-4cba-9e72-ab51efc72b19"
->Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotAvailable</Action><Action
  Guid="6a41822c-a966-4e35-9500-b9dbf91bc169"
 >Out_FLOI.ProcedureOut &lt;- Out_FLOI.ProcedureOut.NotAvailable</Action><Action
  Guid="dca27c65-6154-468c-a548-e2731d2f7b54"
@@ -1437,8 +1350,6 @@ Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition
 >Out_TripReason.ProcedureOut &lt;- Out_TripReason.ProcedureOut.NotAvailable</Action><Action
  Guid="d008669a-5620-449d-8d7e-2e8cd59bdb4c"
 >Out_UNModeProposed.ProcedureOut &lt;- Out_UNModeProposed.ProcedureOut.NotAvailable</Action><Action
- Guid="9c5a4fab-0dc6-4bdb-b051-c1d8aed63454"
->Out_TrainIsRejected.ProcedureOut &lt;- Out_TrainIsRejected.ProcedureOut.NotAvailable</Action><Action
  Guid="dc6fba6a-afbd-4ccd-afaf-797f14112a2e"
 >Out_FLOI.ProcedureOut &lt;- Out_FLOI.ProcedureOut.NotAvailable</Action><Action
  Guid="b7d36289-8dba-418d-b8eb-cc57844f780a"
@@ -1819,7 +1730,9 @@ In_TrackAheadFree.TrackMode()</Action><Action
  Guid="fe259013-9967-4a34-a0c2-445b2a1617f7"
 >Out_TracksideNotCompatible.TrackMode()</Action><Action
  Guid="1fe98895-22f2-4112-9c29-f2143c4b63c7"
->Out_TrainData.TrackMode()</Action></Actions>
+>Out_TrainData.TrackMode()</Action><Action
+ Guid="db4ad0ca-e698-42ed-be2b-090d7c94eac4"
+>Out_TrainIsRejected.TrackMode()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
