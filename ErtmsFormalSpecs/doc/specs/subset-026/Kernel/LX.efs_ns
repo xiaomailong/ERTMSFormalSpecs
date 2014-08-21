@@ -666,7 +666,7 @@ NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
  Guid="b1346c7a-ac41-44d2-b6a3-b7c844cda78d"
 >
 <Comment></Comment>
-<Expression>BaseTypes.MinDistance ( X1 =&gt; d_FLOI_ForLX ( aLX ) - BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.GUI, Speed =&gt; aLX.Speed ) )</Expression>
+<Expression>BaseTypes.MinDistance ( X1 =&gt; d_FLOI_ForLX ( aLX ) - BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; SpeedAndDistanceMonitoring.DecelerationCurves.GUI, Speed =&gt; aLX.Speed ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"

@@ -246,7 +246,7 @@ THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreC
   INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
- Type="General.TCDisplay.TCTypeEnum"
+ Type="TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum"
  Default=""
  Width="100"
  Height="50"
@@ -321,7 +321,7 @@ THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreC
 <Expression>General.TCDisplay.TCTypeEnum.TractionSystem__DC600_750V</Expression>
 </Case></Cases>
 </Function><Function
- Type="General.TCDisplay.TCStructWithSoundHorn"
+ Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn"
  Default=""
  Width="100"
  Height="50"
@@ -333,7 +333,7 @@ THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreC
 <Comment>Takes a change of traction system information and provides it as DMI information</Comment>
 <Parameters>
 <Parameter
- Type="TractionSystemInformation"
+ Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformation"
  Name="TractionSystem"
  Guid="0c0a19c4-86c3-4674-b1d0-68c1838d55fd"
 >

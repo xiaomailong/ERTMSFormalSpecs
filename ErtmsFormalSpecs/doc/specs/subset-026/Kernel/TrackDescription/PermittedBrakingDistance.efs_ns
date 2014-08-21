@@ -481,8 +481,8 @@
  Name="Value"
  Guid="626b0f44-abec-4e4e-a2e4-67111dc5b3c1"
 >
-<Expression>BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Vdelta1() / 2.0, X2 =&gt; Vtarget ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_traction() +
-( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Vdelta1(), X2 =&gt; Vtarget ) + SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Vdelta2() / 2.0 ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_berem()</Expression>
+<Expression>BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta1() / 2.0, X2 =&gt; Vtarget ) * SpeedAndDistanceMonitoring.DecelerationCurves.T_traction() +
+( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta1(), X2 =&gt; Vtarget ) + SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta2() / 2.0 ) * SpeedAndDistanceMonitoring.DecelerationCurves.T_berem()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"

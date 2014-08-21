@@ -922,7 +922,7 @@ Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( Train
 <Expression>KnMin ( V ) * GradientInfoProfileSummary_NonCompensated ( d )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Gradient.CorrectionFactor"
+ Type="TrackDescription.Gradient.CorrectionFactor"
  Default=""
  X="220"
  Y="420"
@@ -1011,7 +1011,7 @@ Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( Train
 <Expression>aCorrectionFactor.Val4.Factor</Expression>
 </Case></Cases>
 </Function><Function
- Type="Gradient.CorrectionFactor"
+ Type="TrackDescription.Gradient.CorrectionFactor"
  Default=""
  X="330"
  Y="420"
@@ -1042,7 +1042,7 @@ Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( Train
 <Expression>CorrectionFactorFunction ( aCorrectionFactor =&gt; KnPlus, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Gradient.CorrectionFactor"
+ Type="TrackDescription.Gradient.CorrectionFactor"
  Default=""
  X="440"
  Y="420"
@@ -1073,7 +1073,7 @@ Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( Train
 <Expression>CorrectionFactorFunction ( aCorrectionFactor =&gt; KnMin, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
- Type="GradientInfo"
+ Type="Kernel.TrackDescription.Gradient.GradientInfo"
  Default=""
  Width="100"
  Height="50"
@@ -1082,7 +1082,7 @@ Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( Train
 >
 <Parameters>
 <Parameter
- Type="GradientInfo"
+ Type="Kernel.TrackDescription.Gradient.GradientInfo"
  Name="aGradient"
  Guid="31c5c86b-208b-4776-8d65-cfb429e2f3af"
 >

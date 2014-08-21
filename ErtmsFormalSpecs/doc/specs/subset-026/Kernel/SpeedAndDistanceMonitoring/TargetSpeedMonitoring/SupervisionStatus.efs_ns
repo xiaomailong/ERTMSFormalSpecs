@@ -72,7 +72,7 @@
 >Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition><PreCondition
  Guid="522edb9f-b6a7-4746-a2bb-beb31e76cec5"
 ><Comment></Comment>
-FLOIComparedDistance () &lt;= d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
+DecelerationCurves.FLOIComparedDistance () &lt;= d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -115,7 +115,7 @@ FLOIComparedDistance () &lt;= d_I ( Odometry.EstimatedSpeed )</PreCondition></Pr
 >SpeedOfTarget() &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
  Guid="33dc0227-89ad-43e9-a44d-6490c5959c43"
 ><Comment></Comment>
-FLOIComparedDistance () &gt; d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
+DecelerationCurves.FLOIComparedDistance () &gt; d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -157,7 +157,7 @@ FLOIComparedDistance () &gt; d_I ( Odometry.EstimatedSpeed )</PreCondition></Pre
 >Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition><PreCondition
  Guid="0ed05306-8475-4f3f-acea-a2d6579df2ae"
 ><Comment></Comment>
-FLOIComparedDistance () &gt; d_P ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
+DecelerationCurves.FLOIComparedDistance () &gt; d_P ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
  Guid="792c9f4e-dec9-43d5-ad6d-038c3737a93f"
 >SpeedOfTarget() &lt; Odometry.EstimatedSpeed</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -204,7 +204,7 @@ MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) &lt
 Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="79d1c420-2608-4faa-a10d-461c0d543deb"
 ><Comment></Comment>
-FLOIComparedDistance () &lt;= d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition></PreConditions>
+DecelerationCurves.FLOIComparedDistance () &lt;= d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -247,10 +247,10 @@ FLOIComparedDistance () &lt;= d_I ( MRSP.SpeedRestrictions ( TrainPosition.Front
 >Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="19bb6ad6-bb93-4162-91b8-887f69b2f0c8"
 ><Comment></Comment>
-d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; FLOIComparedDistance ()</PreCondition><PreCondition
+d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; DecelerationCurves.FLOIComparedDistance ()</PreCondition><PreCondition
  Guid="c4d9e3c3-4232-47e2-9094-a10709e346c4"
 ><Comment></Comment>
-FLOIComparedDistance () &lt;= d_W ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
+DecelerationCurves.FLOIComparedDistance () &lt;= d_W ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -294,7 +294,7 @@ FLOIComparedDistance () &lt;= d_W ( Odometry.EstimatedSpeed )</PreCondition></Pr
 >Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="39d15eb8-2682-4398-b90f-e09db7a20150"
 ><Comment></Comment>
-FLOIComparedDistance () &gt; d_W ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
+DecelerationCurves.FLOIComparedDistance () &gt; d_W ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -338,7 +338,7 @@ FLOIComparedDistance () &gt; d_W ( Odometry.EstimatedSpeed )</PreCondition></Pre
 >Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="bedb0b95-76c5-450c-8d99-e36eae71a2e9"
 ><Comment></Comment>
-FLOIComparedDistance () &lt;= d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
+DecelerationCurves.FLOIComparedDistance () &lt;= d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -382,10 +382,10 @@ FLOIComparedDistance () &lt;= d_I ( Odometry.EstimatedSpeed )</PreCondition></Pr
 >Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="13c85266-668b-4739-b924-950683628d85"
 ><Comment></Comment>
-d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; FLOIComparedDistance ()</PreCondition><PreCondition
+d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; DecelerationCurves.FLOIComparedDistance ()</PreCondition><PreCondition
  Guid="6ec66168-2c16-4b1f-9a3e-efb6cdd7af1c"
 ><Comment></Comment>
-FLOIComparedDistance () &lt;= d_FLOI ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
+DecelerationCurves.FLOIComparedDistance () &lt;= d_FLOI ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -431,7 +431,7 @@ FLOIComparedDistance () &lt;= d_FLOI ( Odometry.EstimatedSpeed )</PreCondition><
 Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="6f49276c-a3e2-41fc-9e18-5d1b5d445b04"
 ><Comment></Comment>
-FLOIComparedDistance () &gt; d_FLOI ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
+DecelerationCurves.FLOIComparedDistance () &gt; d_FLOI ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -686,7 +686,7 @@ SpeedOfTarget() &lt; Odometry.EstimatedSpeed</PreCondition><PreCondition
 >Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition><PreCondition
  Guid="2fe191b7-05bf-423e-8c02-23fb4922371c"
 ><Comment></Comment>
-FLOIComparedDistance () &lt;= d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
+DecelerationCurves.FLOIComparedDistance () &lt;= d_I ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -723,7 +723,7 @@ FLOIComparedDistance () &lt;= d_I ( Odometry.EstimatedSpeed )</PreCondition></Pr
 >Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition><PreCondition
  Guid="99cc373c-4cb4-4cfa-8fdc-4a2e6db789d1"
 ><Comment></Comment>
-FLOIComparedDistance () &gt; d_P ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
+DecelerationCurves.FLOIComparedDistance () &gt; d_P ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
  Guid="921109d5-9f2e-45b3-9505-de5e3b69c405"
 >MRDT().Speed &lt; Odometry.EstimatedSpeed</PreCondition></PreConditions>
 <Expression>True</Expression>

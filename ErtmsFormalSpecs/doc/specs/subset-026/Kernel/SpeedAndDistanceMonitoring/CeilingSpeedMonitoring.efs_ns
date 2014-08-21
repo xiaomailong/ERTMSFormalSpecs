@@ -48,7 +48,8 @@
  Name="Always"
  Guid="a6ca2df8-da52-427a-b7f7-28931cba0cb5"
 >
-<Expression>( CeilingSpeedMonitoring.dV_ebi_max - CeilingSpeedMonitoring.dV_ebi_min ) / ( CeilingSpeedMonitoring.V_ebi_max - CeilingSpeedMonitoring.V_ebi_min )</Expression>
+<Comment></Comment>
+<Expression>( dV_ebi_max - dV_ebi_min ) / ( V_ebi_max - V_ebi_min )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -84,7 +85,8 @@
  Name="Always"
  Guid="4cd4822e-4db0-42c0-9a92-4efa7ff57757"
 >
-<Expression>( CeilingSpeedMonitoring.dV_sbi_max - CeilingSpeedMonitoring.dV_sbi_min ) / ( CeilingSpeedMonitoring.V_sbi_max - CeilingSpeedMonitoring.V_sbi_min )</Expression>
+<Comment></Comment>
+<Expression>( dV_sbi_max - dV_sbi_min ) / ( V_sbi_max - V_sbi_min )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -121,7 +123,7 @@
  Guid="46ab034c-51f8-4828-950e-823da37a4bd7"
 >
 <Comment></Comment>
-<Expression>( CeilingSpeedMonitoring.dV_warning_max - CeilingSpeedMonitoring.dV_warning_min ) / ( CeilingSpeedMonitoring.V_warning_max - CeilingSpeedMonitoring.V_warning_min )</Expression>
+<Expression>( dV_warning_max - dV_warning_min ) / ( V_warning_max - V_warning_min )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -165,16 +167,17 @@
  Name="V &gt; V_warning_min"
  Guid="c435126f-18b0-4d6b-9139-7c854938a68c"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="5f96f091-76ec-436e-97e2-191fcebebc1e"
->V &gt; CeilingSpeedMonitoring.V_warning_min</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.MinSpeed ( CeilingSpeedMonitoring.dV_warning_min + CeilingSpeedMonitoring.C_warning() * ( V - CeilingSpeedMonitoring.V_warning_min ), CeilingSpeedMonitoring.dV_warning_max )</Expression>
+>V &gt; V_warning_min</PreCondition></PreConditions>
+<Expression>BaseTypes.MinSpeed ( dV_warning_min + C_warning() * ( V - V_warning_min ), dV_warning_max )</Expression>
 </Case><Case
  Name="V &lt;= V_warning_min"
  Guid="69b02327-f93e-48b1-9e66-f3c0fe3ce8c9"
 >
-<Expression>CeilingSpeedMonitoring.dV_warning_min</Expression>
+<Expression>dV_warning_min</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -222,14 +225,14 @@
 <PreConditions>
 <PreCondition
  Guid="dea57d2f-dc75-4bfa-abc4-08d829d0fdaf"
->V &gt; CeilingSpeedMonitoring.V_ebi_min</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.MinSpeed ( CeilingSpeedMonitoring.dV_ebi_min + CeilingSpeedMonitoring.C_ebi() * ( V - CeilingSpeedMonitoring.V_ebi_min ), CeilingSpeedMonitoring.dV_ebi_max )</Expression>
+>V &gt; V_ebi_min</PreCondition></PreConditions>
+<Expression>BaseTypes.MinSpeed ( dV_ebi_min + C_ebi() * ( V - V_ebi_min ), dV_ebi_max )</Expression>
 </Case><Case
  Name="V &lt;= V_ebi_min"
  Guid="605c01a1-da95-4901-a26e-86f35aa22b66"
 >
 <Comment></Comment>
-<Expression>CeilingSpeedMonitoring.dV_ebi_min</Expression>
+<Expression>dV_ebi_min</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -273,16 +276,17 @@
  Name="V &gt; V_sbi_min"
  Guid="8954063e-1866-41c6-909c-a2d01e29cd3a"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="261b8cfe-5c4b-4a62-8deb-003a51a21e89"
->V &gt; CeilingSpeedMonitoring.V_sbi_min</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.MinSpeed ( CeilingSpeedMonitoring.dV_sbi_min + CeilingSpeedMonitoring.C_sbi() * ( V - CeilingSpeedMonitoring.V_sbi_min ), CeilingSpeedMonitoring.dV_sbi_max )</Expression>
+>V &gt; V_sbi_min</PreCondition></PreConditions>
+<Expression>BaseTypes.MinSpeed ( dV_sbi_min + C_sbi() * ( V - V_sbi_min ), dV_sbi_max )</Expression>
 </Case><Case
  Name="V &lt;= V_sbi_min"
  Guid="fd3cbb6e-d144-4cdf-bf4d-a45e176fe5e7"
 >
-<Expression>CeilingSpeedMonitoring.dV_sbi_min</Expression>
+<Expression>dV_sbi_min</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -390,8 +394,8 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="270"
- Y="190"
+ X="160"
+ Y="10"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -422,13 +426,14 @@
  Name="Permitted speed is not zero"
  Guid="3bc715af-e544-40e0-916a-0781ba8daa31"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="06ac8f78-3db7-48f6-9384-4a9f597d0b2b"
->CeilingSpeedMonitoring.P ( distance ) &gt; 0.0</PreCondition></PreConditions>
+>P ( distance ) &gt; 0.0</PreCondition></PreConditions>
 <Expression>AddIncrement (
-  Function =&gt; CeilingSpeedMonitoring.P, 
-  Increment =&gt; CeilingSpeedMonitoring.dV_warning
+  Function =&gt; P, 
+  Increment =&gt; dV_warning
 ) (distance)</Expression>
 </Case><Case
  Name="Otherwise"
@@ -439,8 +444,8 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="50"
- Y="270"
+ X="630"
+ Y="140"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -474,20 +479,20 @@
 <PreCondition
  Guid="579e1045-ba4d-4041-ba9c-804884d9ca61"
 ><Comment></Comment>
-MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) ) &gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition></PreConditions>
-<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) )</Expression>
+MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) ) &gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</PreCondition></PreConditions>
+<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) )</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="a737ca4f-968e-416a-badb-330077e71a71"
 >
 <Comment></Comment>
-<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</Expression>
+<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="270"
- Y="130"
+ X="380"
+ Y="10"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -518,16 +523,17 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  Name="Value"
  Guid="abe701e4-9e3e-4857-806a-07f43f56fb7e"
 >
+<Comment></Comment>
 <Expression>AddIncrement (
-  Function =&gt; CeilingSpeedMonitoring.P, 
-  Increment =&gt; CeilingSpeedMonitoring.dV_sbi
+  Function =&gt; P, 
+  Increment =&gt; dV_sbi
 ) ( Distance )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
  X="270"
- Y="70"
+ Y="10"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -583,10 +589,10 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
 <PreConditions>
 <PreCondition
  Guid="0e5ea181-31f6-4423-93dd-5e7adf2f9157"
->CeilingSpeedMonitoring.P ( Distance ) &gt; 0.0</PreCondition></PreConditions>
+>P ( Distance ) &gt; 0.0</PreCondition></PreConditions>
 <Expression>AddIncrement (
-  Function =&gt; CeilingSpeedMonitoring.P, 
-  Increment =&gt; CeilingSpeedMonitoring.dV_ebi
+  Function =&gt; P, 
+  Increment =&gt; dV_ebi
 ) ( Distance )</Expression>
 </Case><Case
  Name="Otherwise"
@@ -600,8 +606,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  Type="Default.BaseTypes.Speed"
  DefaultValue="210.0"
  VariableMode="Internal"
- X="290"
- Y="360"
+ X="160"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -635,8 +641,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  Type="Default.BaseTypes.Speed"
  DefaultValue="5.0"
  VariableMode="Internal"
- X="680"
- Y="360"
+ X="550"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -670,8 +676,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  Type="Default.BaseTypes.Speed"
  DefaultValue="110.0"
  VariableMode="Internal"
- X="290"
- Y="470"
+ X="160"
+ Y="420"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -705,8 +711,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  Type="Default.BaseTypes.Speed"
  DefaultValue="7.5"
  VariableMode="Internal"
- X="180"
- Y="470"
+ X="50"
+ Y="420"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -740,8 +746,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  Type="Default.BaseTypes.Speed"
  DefaultValue="4.0"
  VariableMode="Internal"
- X="680"
- Y="470"
+ X="550"
+ Y="420"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -775,8 +781,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  Type="Default.BaseTypes.Speed"
  DefaultValue="15.0"
  VariableMode="Internal"
- X="180"
- Y="360"
+ X="50"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -810,8 +816,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  Type="Default.BaseTypes.Speed"
  DefaultValue="140.0"
  VariableMode="Internal"
- X="790"
- Y="360"
+ X="660"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -845,8 +851,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  Type="Default.BaseTypes.Speed"
  DefaultValue="110.0"
  VariableMode="Internal"
- X="790"
- Y="470"
+ X="660"
+ Y="420"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -880,8 +886,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  Type="Default.BaseTypes.Speed"
  DefaultValue="10.0"
  VariableMode="Internal"
- X="430"
- Y="360"
+ X="300"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -915,8 +921,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  Type="Default.BaseTypes.Speed"
  DefaultValue="5.5"
  VariableMode="Internal"
- X="430"
- Y="470"
+ X="300"
+ Y="420"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -950,8 +956,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  Type="Default.BaseTypes.Speed"
  DefaultValue="210.0"
  VariableMode="Internal"
- X="540"
- Y="360"
+ X="410"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -985,8 +991,8 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterv
  Type="Default.BaseTypes.Speed"
  DefaultValue="110.0"
  VariableMode="Internal"
- X="540"
- Y="470"
+ X="410"
+ Y="420"
  Width="100"
  Height="50"
  Pinned="TRUE"

@@ -18,7 +18,7 @@
  Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
- Y="60"
+ X="440"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -50,20 +50,20 @@
 ><Comment></Comment>
 TargetSpeedMonitoring.SBI1BelowSBI2(
     d_SBI1=&gt; TargetSpeedMonitoring.d_SBI1 ( V ),
-    d_SBI2=&gt; ReleaseSpeedMonitoring.d_SBI2 ( V )
+    d_SBI2=&gt; d_SBI2 ( V )
 )</PreCondition></PreConditions>
 <Expression>TargetSpeedMonitoring.d_SBI1 ( V )</Expression>
 </Case><Case
  Name="d_SBI2"
  Guid="d5c865b3-e560-45db-b300-a9fac42ae0b1"
 >
-<Expression>ReleaseSpeedMonitoring.d_SBI2 ( V )</Expression>
+<Expression>d_SBI2 ( V )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="110"
- Y="60"
+ X="660"
+ Y="140"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -102,7 +102,6 @@ STOP_CONDITION
  Cacheable="TRUE"
  Default=""
  X="220"
- Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -137,17 +136,18 @@ STOP_CONDITION
  Name="Value"
  Guid="1d0d3250-0301-4809-915d-d662a0e65dcd"
 >
+<Comment></Comment>
 <Expression>DistanceForSpeed (
-    Function =&gt; TargetSpeedMonitoring.EBD,
+    Function =&gt; DecelerationCurves.EBD,
     Speed =&gt; Vrelease + f41 ( Vrelease ) )
-- Default.BaseTypes.SpeedToMS ( ( Vrelease + f41 ( Vrelease ) ) ) * ( TargetSpeedMonitoring.T_berem() + TargetSpeedMonitoring.T_traction() )</Expression>
+- BaseTypes.SpeedToMS (Vrelease + f41(Vrelease)) * ( DecelerationCurves.T_berem() + DecelerationCurves.T_traction() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
- X="330"
- Y="60"
+ X="660"
+ Y="210"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -178,13 +178,13 @@ STOP_CONDITION
  Guid="17beface-fcb0-4eb8-b204-80baed457e28"
 >
 <Comment></Comment>
-<Expression>( Vrelease + Vdelta0rsob ( Vrelease ) ) * ( TargetSpeedMonitoring.T_traction() + TargetSpeedMonitoring.T_berem() )</Expression>
+<Expression>BaseTypes.SpeedToMS( Vrelease + Vdelta0rsob ( Vrelease ) ) * ( DecelerationCurves.T_traction() + DecelerationCurves.T_berem() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
  X="440"
- Y="60"
+ Y="70"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -219,7 +219,7 @@ STOP_CONDITION
 <PreCondition
  Guid="13f4ccc3-2ef6-4202-bfa6-444572980157"
 >NOT NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.MaxSpeed ( X1 =&gt;  f41 ( Vrelease) , X2 =&gt; Odometry.Accuracy.V_ura )</Expression>
+<Expression>BaseTypes.MaxSpeed ( X1 =&gt;  f41 ( Vrelease) , X2 =&gt; Odometry.Accuracy.V_ura )</Expression>
 </Case><Case
  Name="Compensation of inaccuracy inhibited"
  Guid="64753fd5-b08f-42dd-b63d-986faf9dcf85"
@@ -230,8 +230,7 @@ STOP_CONDITION
  Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
- X="550"
- Y="60"
+ X="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -249,21 +248,20 @@ STOP_CONDITION
  Name="Value"
  Guid="9746676d-2b14-4bef-813d-dd69f85e4882"
 >
-<Expression>ReleaseSpeedMonitoring.d_EOA()
+<Comment></Comment>
+<Expression>d_EOA()
   +
-ReleaseSpeedMonitoring.alpha() * BTM.AntennaPosition ( Default.DistanceInterval.Nom )
+alpha() * BTM.AntennaPosition ( DistanceInterval.Nom )
   +
-Default.BaseTypes.MaxDistance
-(
-    X1 =&gt; ( 2.0 * BTM.BGLocationAccuracy() + 10.0 + 0.1 * ReleaseSpeedMonitoring.d_EOA() ),
-    X2 =&gt; ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Min ) ) )</Expression>
+BaseTypes.MaxDistance(
+    X1 =&gt; ( 2.0 * BTM.BGLocationAccuracy() + 10.0 + 0.1 * d_EOA() ),
+    X2 =&gt; ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Min ) ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
- X="660"
- Y="60"
+ X="330"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -289,13 +287,13 @@ Default.BaseTypes.MaxDistance
  Guid="994729c8-aa58-4667-98b0-90ca2b055199"
 >
 <Comment></Comment>
-<Expression>ReleaseSpeedMonitoring.d_EBI ( Vrelease )  - Default.BaseTypes.SpeedToMS ( Vrelease ) * TargetSpeedMonitoring.T_bs2</Expression>
+<Expression>d_EBI ( Vrelease )  - BaseTypes.SpeedToMS ( Vrelease ) * TargetSpeedMonitoring.T_bs2</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="770"
- Y="60"
+ X="330"
+ Y="70"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -329,10 +327,10 @@ Default.BaseTypes.MaxDistance
 <PreConditions>
 <PreCondition
  Guid="af631487-52d1-4c71-a33c-05b2ff35e1b4"
->d_tripEOA() + Dbec ( Vrelease_prev ) &lt; DistanceForSpeed ( Function =&gt; TargetSpeedMonitoring.EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition
+>d_tripEOA() + Dbec ( Vrelease_prev ) &lt; DistanceForSpeed ( Function =&gt; DecelerationCurves.EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition
  Guid="b7339d74-9848-460e-b4e5-8cb15e9f1566"
->TargetSpeedMonitoring.EBD ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob ( Vrelease_prev ) ) &gt; Vtarget</PreCondition></PreConditions>
-<Expression>TargetSpeedMonitoring.EBD ( d_tripEOA () + Dbec ( Vrelease_prev ) ) - Vdelta0rsob ( Vrelease_prev )</Expression>
+>DecelerationCurves.EBD ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob ( Vrelease_prev ) ) &gt; Vtarget</PreCondition></PreConditions>
+<Expression>DecelerationCurves.EBD ( d_tripEOA () + Dbec ( Vrelease_prev ) ) - Vdelta0rsob ( Vrelease_prev )</Expression>
 </Case><Case
  Name="Second case"
  Guid="40790e04-db87-45cd-b756-ba399d78f25b"
@@ -342,8 +340,8 @@ Default.BaseTypes.MaxDistance
 </Function><Function
  Type="Boolean"
  Default=""
- X="880"
- Y="60"
+ X="330"
+ Y="140"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -368,11 +366,12 @@ Default.BaseTypes.MaxDistance
  Name="MA available"
  Guid="4b6a7f82-b4ff-44e2-b744-58bde204ac28"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="866eeedb-a5c6-4e3c-8ebd-dc36fd0b41d8"
 >Available ( MA.MA )</PreCondition></PreConditions>
-<Expression>ReleaseSpeedMonitoring.ReleaseSpeed != 0.0 AND ( MA.IsSvL ( aTarget ) OR MA.IsEOA ( aTarget) )</Expression>
+<Expression>ReleaseSpeed != 0.0 AND ( MA.IsSvL ( aTarget ) OR MA.IsEOA ( aTarget) )</Expression>
 </Case><Case
  Name="No MA available"
  Guid="adc1392e-9efe-4722-8768-64a0c90b707b"
@@ -383,7 +382,8 @@ Default.BaseTypes.MaxDistance
  Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
- Y="120"
+ X="220"
+ Y="140"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -412,20 +412,19 @@ Default.BaseTypes.MaxDistance
 <PreConditions>
 <PreCondition
  Guid="c1f1f85a-a876-4042-a38d-3b2ed6628245"
->ReleaseSpeedMonitoring.d_FLOI ( Vrelease ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+>d_FLOI ( Vrelease ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="0b1798da-f019-46e0-b3b0-7e38f14c1cbd"
 >
-<Expression>ReleaseSpeedMonitoring.d_FLOI ( Vrelease )</Expression>
+<Expression>d_FLOI ( Vrelease )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
- X="110"
- Y="120"
+ X="550"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -443,11 +442,12 @@ Default.BaseTypes.MaxDistance
  Name="EOA is not passed"
  Guid="84b3a91b-2eaa-41b9-b009-38522929c69a"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="89ee1741-d547-4a82-847a-692db2e737da"
->MA.EndOfMovementAuthority().Location - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) &gt;= 0.0</PreCondition></PreConditions>
-<Expression>MA.EndOfMovementAuthority().Location - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )</Expression>
+>MA.EndOfMovementAuthority().Location - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &gt;= 0.0</PreCondition></PreConditions>
+<Expression>MA.EndOfMovementAuthority().Location - TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</Expression>
 </Case><Case
  Name="EOA is passed"
  Guid="890f1525-e043-407f-a393-2f0ddeac1f0b"
@@ -459,7 +459,7 @@ Default.BaseTypes.MaxDistance
  Cacheable="TRUE"
  Default=""
  X="220"
- Y="120"
+ Y="70"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -493,16 +493,16 @@ Default.BaseTypes.MaxDistance
 <PreConditions>
 <PreCondition
  Guid="285f2e84-9cb5-4250-a4ba-f84e839b607e"
->Vrel == Default.BaseTypes.Speed.ComputeReleaseSpeedOnBoard</PreCondition></PreConditions>
+>Vrel == BaseTypes.Speed.ComputeReleaseSpeedOnBoard</PreCondition></PreConditions>
 <Expression>REDUCE
     TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) |
-        ReleaseSpeedMonitoring.StartRSM ( ReleaseSpeedMonitoring.ComputeReleaseSpeed () ) &lt;= X.Location AND X.Location &lt;= ReleaseSpeedMonitoring.d_tripEOA() OR
-        ReleaseSpeedMonitoring.StartRSM ( ReleaseSpeedMonitoring.ComputeReleaseSpeed () ) &lt;= X.Location + Default.BaseTypes.LengthToDistance ( X.Length ) AND X.Location + Default.BaseTypes.LengthToDistance ( X.Length ) &lt;= ReleaseSpeedMonitoring.d_tripEOA() OR
-        X.Location &lt;= ReleaseSpeedMonitoring.StartRSM ( ReleaseSpeedMonitoring.ComputeReleaseSpeed () ) AND ReleaseSpeedMonitoring.d_tripEOA() &lt;= X.Location + Default.BaseTypes.LengthToDistance ( X.Length )
+        StartRSM ( ComputeReleaseSpeed () ) &lt;= X.Location AND X.Location &lt;= d_tripEOA() OR
+        StartRSM ( ComputeReleaseSpeed () ) &lt;= X.Location + BaseTypes.LengthToDistance ( X.Length ) AND X.Location + BaseTypes.LengthToDistance ( X.Length ) &lt;= ReleaseSpeedMonitoring.d_tripEOA() OR
+        X.Location &lt;= StartRSM ( ComputeReleaseSpeed () ) AND d_tripEOA() &lt;= X.Location + BaseTypes.LengthToDistance ( X.Length )
 USING
-    Default.BaseTypes.MinSpeed ( X1 =&gt; X.Speed, X2 =&gt; RESULT )
+    BaseTypes.MinSpeed ( X1 =&gt; X.Speed, X2 =&gt; RESULT )
 INITIAL_VALUE
-    ReleaseSpeedMonitoring.ComputeReleaseSpeed ()</Expression>
+    ComputeReleaseSpeed ()</Expression>
 </Case><Case
  Name="UseNV"
  Guid="473ac93a-a231-4196-ad90-c6d9f673cf56"
@@ -510,7 +510,7 @@ INITIAL_VALUE
 <PreConditions>
 <PreCondition
  Guid="a57188f2-6ae9-4e5f-8e9e-95878dfeab23"
->Vrel == Default.BaseTypes.Speed.UseNVForReleaseSpeed</PreCondition></PreConditions>
+>Vrel == BaseTypes.Speed.UseNVForReleaseSpeed</PreCondition></PreConditions>
 <Expression>NationalValues.ReleaseSpeed()</Expression>
 </Case><Case
  Name="FixedValue"
@@ -521,8 +521,8 @@ INITIAL_VALUE
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="330"
- Y="120"
+ X="550"
+ Y="140"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -548,17 +548,17 @@ INITIAL_VALUE
 <Comment></Comment>
 <Expression>REDUCE
     TargetsList() |
-        ReleaseSpeedMonitoring.d_tripEOA() &lt;= X.Location AND X.Location &lt; MA.SvL().Location
+        d_tripEOA() &lt;= X.Location AND X.Location &lt; MA.SvL().Location
 USING
-    Default.BaseTypes.MinSpeed ( X1 =&gt; ReleaseSpeedMonitoring.ComputeReleaseSpeedForTarget ( X.Speed ), X2 =&gt; RESULT )
+    BaseTypes.MinSpeed ( X1 =&gt; ComputeReleaseSpeedForTarget ( X.Speed ), X2 =&gt; RESULT )
 INITIAL_VALUE
     Default.BaseTypes.Speed.Infinity</Expression>
 </Case></Cases>
 </Function><Function
  Type="Double"
  Default=""
- X="440"
- Y="120"
+ X="550"
+ Y="210"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -595,7 +595,7 @@ Kernel.Level.Value == Default.Level.L1</PreCondition></PreConditions>
 </Function></Functions>
 <Procedures>
 <Procedure
- Y="180"
+ Y="140"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -713,6 +713,8 @@ ReleaseSpeedMonitoring.ReleaseSpeed &lt;- ReleaseSpeedMonitoring.ReleaseSpeedVal
  Type="Default.BaseTypes.Speed"
  DefaultValue="1.0"
  VariableMode="Constant"
+ X="60"
+ Y="330"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -730,7 +732,8 @@ ReleaseSpeedMonitoring.ReleaseSpeed &lt;- ReleaseSpeedMonitoring.ReleaseSpeedVal
  Type="Default.BaseTypes.Speed"
  DefaultValue="0.0"
  VariableMode="Internal"
- X="110"
+ X="190"
+ Y="340"
  Width="100"
  Height="50"
  Implemented="TRUE"

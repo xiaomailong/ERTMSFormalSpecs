@@ -565,7 +565,7 @@
  Guid="00bb0340-e1cd-4be5-b2b5-ee143c7846bf"
 >
 </Parameter><Parameter
- Type="TrackCondition"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackCondition"
  Name="TrackCondition"
  Guid="a48b6dcd-1f31-433c-8089-6568a0810217"
 >
@@ -702,7 +702,7 @@ Returns the time required by the driver to performs the necessary tasks before a
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="TCStructWithSoundHorn"
+ Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn"
  Default=""
  Width="100"
  Height="50"
@@ -714,7 +714,7 @@ Returns the time required by the driver to performs the necessary tasks before a
 <Comment>Maps the track condition profile to the format of the sound horn group of track conditions in the DMI</Comment>
 <Parameters>
 <Parameter
- Type="TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Name="TCPoint"
  Guid="cc645dd6-0bc6-4bba-aa94-47d870925bde"
 >
@@ -733,7 +733,7 @@ Returns the time required by the driver to performs the necessary tasks before a
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="TCStructWithBrakeInhibition"
+ Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithBrakeInhibition"
  Default=""
  X="110"
  Width="100"
@@ -746,7 +746,7 @@ Returns the time required by the driver to performs the necessary tasks before a
 <Comment>Maps the track condition profile to the format of the brake inhibition group of track conditions in the DMI</Comment>
 <Parameters>
 <Parameter
- Type="TrackConditionInformation"
+ Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation"
  Name="TCPoint"
  Guid="debb0542-1259-4574-a905-b88be24dd6f6"
 >
@@ -826,7 +826,7 @@ Condition == TCTypeEnum.TractionSystem__DC1_5kV
 Condition == TCTypeEnum.TractionSystem__DC600_750V</Expression>
 </Case></Cases>
 </Function><Function
- Type="TCAnnouncementStruct"
+ Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct"
  Default=""
  X="110"
  Y="60"
@@ -869,7 +869,7 @@ Condition == TCTypeEnum.TractionSystem__DC600_750V</Expression>
 </ReqRef><Comment>Modifies the announcement structures to include end conditions</Comment>
 <Parameters>
 <Parameter
- Type="TCAnnouncementStruct"
+ Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct"
  Name="Announcement"
  Guid="5dd0b869-a7c9-435f-80b3-b38a724e8314"
 >
@@ -972,7 +972,7 @@ Announcement.Type == TCTypeEnum.RegenerativeBrake</PreCondition></PreConditions>
 </ReqRef><Comment>Determines whether the train&apos;s front end has passed the end of the announcement (depending on the track condition announced and whether the announcement is at the start or the end of a track condition)</Comment>
 <Parameters>
 <Parameter
- Type="TCAnnouncementStruct"
+ Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct"
  Name="Announcement"
  Guid="4044d402-5eb4-4458-a9c9-4b9900c9ce58"
 >
@@ -1091,7 +1091,7 @@ Announcement.Type == TCTypeEnum.RegenerativeBrake</PreCondition></PreConditions>
 </ReqRef><Comment>Indicates whether the train has reached the location where the given announcement should start to be displayed</Comment>
 <Parameters>
 <Parameter
- Type="TCAnnouncementStruct"
+ Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct"
  Name="Announcement"
  Guid="ea64b366-1b29-4689-830c-ea6c019f7f83"
 >
@@ -1233,7 +1233,7 @@ Announcement.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions
  Guid="70e22ed7-0c40-4621-b333-d82e16d3ef6e"
 >
 </Parameter><Parameter
- Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="Target"
  Guid="9c3765ad-4033-4e59-bb97-622b108f95b0"
 >
@@ -1301,7 +1301,7 @@ USING Default.BaseTypes.MinDistance(
 INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
- Type="TCStructWithSoundHorn"
+ Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn"
  Default=""
  X="110"
  Width="100"
@@ -1323,7 +1323,7 @@ INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
  Guid="f7c2579a-aaa5-4a0b-aa28-ac3d48ef713b"
 >
 </Parameter><Parameter
- Type="TCStructWithSoundHorn"
+ Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn"
  Name="ProfilePoint"
  Guid="98e51548-5b4f-4bf6-8a04-04f775eaa648"
 >
@@ -1731,7 +1731,7 @@ IN Announcements</Action></Actions>
 </ReqRef><Comment>Send announcements from the kernel to the DMI when they become applicable</Comment>
 <Parameters>
 <Parameter
- Type="TCAnnouncementStruct"
+ Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct"
  Name="Announcement"
  Guid="9113456c-036b-4dc3-994b-521224d97b0f"
 >

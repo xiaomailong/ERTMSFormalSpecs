@@ -1086,7 +1086,8 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosit
 <PreConditions>
 <PreCondition
  Guid="a5cf71eb-33aa-4c38-ae2d-b57bf8296310"
->NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
+><Comment></Comment>
+NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="a3545fc4-9dac-4808-a823-56c23197224d"
 >PermittedSpeedAvailable()</PreCondition></PreConditions>
 <Actions>
@@ -4218,7 +4219,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>Requests to display the corresponding information</Comment>
 <Parameters>
 <Parameter
- Type="Mode"
+ Type="Default.Mode"
  Name="mode"
  Guid="0abc15fc-e2a9-46f5-87a8-d130281eb6c5"
 >
@@ -7092,7 +7093,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Expression>Kernel.Mode in [Mode.FS]</Expression>
 </Case></Cases>
 </Function><Function
- Type="MonitoringType"
+ Type="DMI.OUT.MonitoringType"
  Cacheable="TRUE"
  Default=""
  Y="60"
@@ -7729,6 +7730,7 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Name="Enumerates the cases where the request is available"
  Guid="f4fef2f4-3937-4c0d-beea-4f28ea039295"
 >
+<Comment></Comment>
 <Expression>Kernel.Mode in [Mode.SH, Mode.LS, Mode.SR, Mode.OS, Mode.FS, Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function

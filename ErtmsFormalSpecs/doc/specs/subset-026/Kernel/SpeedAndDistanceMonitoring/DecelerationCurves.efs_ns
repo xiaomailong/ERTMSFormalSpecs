@@ -1,0 +1,753 @@
+<NameSpace
+ Width="100"
+ Height="50"
+ Name="DecelerationCurves"
+ Guid="c42809f7-cbe8-4377-b058-7b294c828107"
+>
+<Comment></Comment>
+<NameSpaces>
+<NameSpaceRef
+ Name="GUI"
+ Guid="ca162c39-085e-48b3-bc8d-3cad43f08aa7"
+>
+</NameSpaceRef></NameSpaces>
+<Functions>
+<Function
+ Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ X="220"
+ Y="600"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="EBD"
+ Guid="052db52b-a60c-4335-91da-4767174b220c"
+>
+<ReqRef
+ Id="690e9583-3caf-46eb-b721-bed7b3d89e9b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a5eb3ba-4906-4655-9c79-4783d815de91"
+>
+</ReqRef><ReqRef
+ Id="2b4c3cb7-6f06-408a-bfd7-85f5c5069e00"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68f14742-6767-4b1f-9971-9b0f7ecba953"
+>
+</ReqRef><ReqRef
+ Id="2c3d2e5e-98aa-4eda-9eb9-f2fd1ee0a60d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a8b8f6ca-6729-4300-afd9-72b0c6146013"
+>
+</ReqRef><Comment>We don&apos;t explicitely compute the location of EBD foot since we don&apos;t need it (our curves are computed entirely, going until the speed 0 even for MRPS or LOA targets).</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="9b6ab90f-d49d-4413-a659-70c7065d3852"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="1529fd2f-2eb1-49c8-94c8-feb16efd487c"
+>
+<Comment></Comment>
+<Expression>DecelerationProfile ( 
+  SpeedRestrictions =&gt; CeilingSpeedMonitoring.EBI, 
+  DecelerationFactor =&gt; TrainData.BrakingParameters.A_safe )
+( Distance )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="330"
+ Y="600"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="EBD_Target"
+ Guid="ffb70553-e106-43d7-b1e5-c21f7695ad93"
+>
+<ReqRef
+ Id="690e9583-3caf-46eb-b721-bed7b3d89e9b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ebc8bdf9-5022-49ba-ae82-773a0bd150ba"
+>
+</ReqRef><ReqRef
+ Id="2b4c3cb7-6f06-408a-bfd7-85f5c5069e00"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5f02a6d9-f2d2-4ef6-bbc2-d9c3eca2525a"
+>
+</ReqRef><ReqRef
+ Id="2c3d2e5e-98aa-4eda-9eb9-f2fd1ee0a60d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="259d882f-5dd2-4bb4-a437-3331f5bb3c3d"
+>
+</ReqRef><Comment>We don&apos;t explicitely compute the location of EBD foot since we don&apos;t need it (our curves are computed entirely, going until the speed 0 even for MRPS or LOA targets).</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="cd5be458-075b-4dc4-815b-076a138762c0"
+>
+</Parameter><Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="8501f4ac-1027-438f-8b73-554bf6ce8129"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="e744ba80-63dc-46f3-837d-ede2f1c0ffb4"
+>
+<Comment></Comment>
+<Expression>DecelerationProfile ( 
+  SpeedRestrictions =&gt; FUNCTION d : BaseTypes.Distance =&gt; TargetToGraph ( aTarget =&gt; aTarget, Distance =&gt; d ),
+  DecelerationFactor =&gt; TrainData.BrakingParameters.A_safe )
+( Distance )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EBD_TargetForSpeed"
+ Guid="1aa2111c-aee2-4ef9-bb29-e7a13ed20259"
+>
+<Comment>Returns the distance at which the EBD deceleration curve for a given target has the given speed</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vest"
+ Guid="7ebdcb56-85ff-439b-999d-e866f2c509e9"
+>
+</Parameter><Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="a587ea44-f686-4370-9a34-89bf21378e98"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="bca2d71f-a08b-43dc-8b35-801a1a0befca"
+>
+<Comment></Comment>
+<Expression>DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; EBD_Target ( Distance =&gt; d, aTarget =&gt; aTarget ),
+        Speed =&gt; Vbec ( Vest =&gt; Vest, Vtarget =&gt; aTarget.Speed ) )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EBDForSpeed"
+ Guid="51ac520b-1931-4b19-acb8-77932301e35f"
+>
+<Comment>Returns the point where the EBD has the speed provided</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Speed"
+ Guid="cd53fdd3-c973-4de1-83df-8546db46127d"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="e5a1aca8-13d7-47b4-a901-6eafb11d3c44"
+>
+<Comment></Comment>
+<Expression>DistanceForSpeed(
+    Function=&gt;EBD,
+    Speed=&gt;Speed
+)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ Y="600"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="GUI"
+ Guid="25a50d8a-67be-4a4a-8e2a-528242187c9d"
+>
+<ReqRef
+ Id="74a35017-250f-4c6f-948c-0c08da4f4b05"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="01ef46e8-37ec-45c1-9168-9e32ad197ff8"
+>
+</ReqRef><Comment>Provides the deceleration profile based on the MRSP and deceleration factors</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="c3670b74-352d-430b-803c-4d5ac09619e9"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Always"
+ Guid="97d73dd3-41c1-41ad-b682-8ea8dfad5174"
+>
+<Expression>DecelerationProfile ( 
+  SpeedRestrictions =&gt; GUI.SpeedRestrictions 
+  DecelerationFactor =&gt; TrainData.BrakingParameters.A_normal_service ) 
+( Distance )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="110"
+ Y="210"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Vbec"
+ Guid="5def626f-c8b9-4fdd-bdaa-a819a582a64b"
+>
+<ReqRef
+ Id="327d187c-a17c-486f-b724-d1f714f552fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3f8bd0f0-7140-4043-8bab-ed3e0c65861d"
+>
+</ReqRef><Comment>Provides the compensated speed during the time elapsed between the Emergency brake intervention and the full application of the braking effort.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vest"
+ Guid="71cc6d66-bbc7-41bc-ba70-27313e68520d"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vtarget"
+ Guid="824c9500-7f29-4dc0-9a3b-3d7c71c8a180"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="6a8616f4-c654-41eb-8c0b-dd85faaf713e"
+>
+<Comment></Comment>
+<Expression>Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(), X2 =&gt; Vtarget ) + Vdelta2()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Default=""
+ X="220"
+ Y="210"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Dbec"
+ Guid="c944e947-d8e2-47b1-978a-27f775b4aec5"
+>
+<ReqRef
+ Id="327d187c-a17c-486f-b724-d1f714f552fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="571a7c77-32aa-426f-baee-3cc08e42c894"
+>
+</ReqRef><ReqRef
+ Id="afcddd77-8cf6-4e60-8d18-2663f4121206"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d3234a29-9682-4410-bbdd-4d249c9db6a1"
+>
+</ReqRef><Comment>Provides the distance travelled during the time elapsed between the Emergency brake intervention and the full application of the braking effort.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vest"
+ Guid="f798737c-2c3a-49e1-8c10-d823d19612a7"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vtarget"
+ Guid="485fb655-b7f7-4830-89fa-be6dfdf1c3dd"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="65053d1d-56ea-40c0-958e-a23368d66654"
+>
+<Comment></Comment>
+<Expression>BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1() / 2.0, X2 =&gt; Vtarget ) ) * T_traction() +
+BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(), X2 =&gt; Vtarget ) + Vdelta2() / 2.0 )  * T_berem()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Cacheable="TRUE"
+ Default=""
+ Y="80"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Aest2"
+ Guid="97367189-da40-44f4-ac7f-d5acf60c5074"
+>
+<ReqRef
+ Id="26a7d347-fac4-479e-a5fd-a9644eed93c4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="43d9699b-8e1c-470c-a352-7e7aad2d57f2"
+>
+</ReqRef><Comment>Provides the estimated acceleration to be used during T_berem.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="17f1ca46-76c5-4135-a9e6-bf0e63dddd19"
+>
+<Comment></Comment>
+<Expression>Default.BaseTypes.MinAcceleration ( X1 =&gt; 0.4, X2 =&gt; Default.BaseTypes.MaxAcceleration ( X1 =&gt; 0.0, X2 =&gt; Odometry.EstimatedAcceleration ) )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Cacheable="TRUE"
+ Default=""
+ X="110"
+ Y="80"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Aest1"
+ Guid="319e4074-e09c-430f-a41a-23a0389fb042"
+>
+<ReqRef
+ Id="80f69d28-8302-44ad-9dfd-d98c75cda9d8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dd35b3bd-252c-4c95-816b-3f26c3f122dd"
+>
+</ReqRef><Comment>Provides the estimated acceleration to be used during T_traction.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="f959681c-c0e0-4fc4-825d-87d54c4eaf68"
+>
+<Expression>Odometry.EstimatedAcceleration</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ X="330"
+ Y="660"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="FLOIComparedDistance"
+ Guid="8a094575-9b75-4b4a-8646-29612c3c547c"
+>
+<ReqRef
+ Id="49cb1ac1-74b3-4afe-865d-d6b4401719da"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d4dfc9f7-edcc-4513-b37a-a65a8088398b"
+>
+</ReqRef><ReqRef
+ Id="235a2d43-f1f5-49b1-8517-1f6b17a29a4c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="13822346-cb3f-42e7-85c4-2f8b889ed2e3"
+>
+</ReqRef><ReqRef
+ Id="fda34875-06ef-46a2-b272-8fdf00368ad5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="293932e8-7595-4f36-9376-9dcdd802044a"
+>
+</ReqRef><ReqRef
+ Id="81b045fa-67f4-4abe-9d72-380cb0687a1d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="71897192-3c67-4601-aa22-6c12358008ba"
+>
+</ReqRef><ReqRef
+ Id="366c7bc8-9a83-43fb-b4e8-f41812946c97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d8702cde-33fe-424d-9e93-254257445b8a"
+>
+</ReqRef><ReqRef
+ Id="ac2002ec-cc04-4e25-8344-d90765ce4d29"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0f34b2ae-c9d6-4df4-9158-d2f9ee355e4b"
+>
+</ReqRef><ReqRef
+ Id="d394cede-dff2-4764-b72a-288ee8d5617c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e5e3cb91-30e1-44ac-a399-b43795d278b7"
+>
+</ReqRef><ReqRef
+ Id="d916181f-d7a1-4043-9617-e814b97ae7b4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a7cfcf13-82e9-48c3-9d13-adf89d3a2670"
+>
+</ReqRef><ReqRef
+ Id="0342251f-d656-4d41-8ece-bde758fbfadf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="52a5d05b-f8e8-4d2b-a807-315d4cfd1200"
+>
+</ReqRef><Comment>Determines whether the FLOI should be calculated from the EBD or the SBD, depending on which provides the closer FLOI. Depending on which one is used, distances are compared to either the max safe front end of the train or the estimated front end of the train.</Comment>
+<Cases>
+<Case
+ Name="d_SBI1 and d_SBI2_MREBDT unknown"
+ Guid="a0f56999-394f-4b00-b423-9c6440c834cc"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="7377911b-f405-40f5-a39e-636a7d591d5f"
+><Comment></Comment>
+TargetSpeedMonitoring.d_SBI1 ( Odometry.EstimatedSpeed ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+ Guid="341f5ca9-bbd4-4d97-bbbd-a8d5307c471c"
+>TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.EstimatedSpeed ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Infinity</Expression>
+</Case><Case
+ Name="SBI1"
+ Guid="8c95a8f9-eadc-47e4-84e8-3420e2c4a336"
+>
+<PreConditions>
+<PreCondition
+ Guid="e862b7cc-9cf5-4c3a-afa3-53925d18277e"
+><Comment></Comment>
+TargetSpeedMonitoring.SBI1BelowSBI2(
+    d_SBI1=&gt; TargetSpeedMonitoring.d_SBI1 ( Odometry.EstimatedSpeed ),
+    d_SBI2=&gt; TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.EstimatedSpeed )
+)</PreCondition></PreConditions>
+<Expression>TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )</Expression>
+</Case><Case
+ Name="SBI2"
+ Guid="5ffb4c20-ad36-48ae-b178-60417aa361bb"
+>
+<Expression>TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ X="330"
+ Y="80"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Vdelta0"
+ Guid="a710f39d-04d1-40fd-8f6f-1a6749f4884b"
+>
+<ReqRef
+ Id="327d187c-a17c-486f-b724-d1f714f552fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d0f20d4a-973c-4a45-9c23-c8acdf83492b"
+>
+</ReqRef><ReqRef
+ Id="45c6ab5d-cd00-4092-b7fb-002e30ca1337"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="469c2955-2e18-4803-b0cb-f28e8e9a1c1f"
+>
+</ReqRef><ReqRef
+ Id="28e8fd74-8da8-4c8d-9d0b-2b3de6dea1ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="91d70d13-5f09-48e7-bf24-5064cf60316f"
+>
+</ReqRef><Comment>The compensation of the speed inaccuracy used in calculating the EBI supervision limit. It can be disabled by a national value.</Comment>
+<Cases>
+<Case
+ Name="Compensation of speed inaccuracy is inhibited by NV"
+ Guid="38db12e7-afec-4eb8-b777-3199e0fbe422"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="8b5d2ce3-87d4-4330-8e56-082dd50bbaef"
+>NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.Yes</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Compensation of speed inaccuracy is not inhibited by NV"
+ Guid="803786b2-2e2c-431a-8f9a-060502f81401"
+>
+<Expression>Odometry.Accuracy.V_ura</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ X="440"
+ Y="80"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Vdelta1"
+ Guid="9e4076d6-9f68-4408-92a7-d7e2ecbe89c5"
+>
+<ReqRef
+ Id="327d187c-a17c-486f-b724-d1f714f552fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="525f8e3a-4272-47b9-82ca-59b9b2f1e8d0"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="80f69d28-8302-44ad-9dfd-d98c75cda9d8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9fc270a9-39d3-43be-8697-b26835593b34"
+>
+</ReqRef><Comment>Provides the speed during T_traction.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="5065369d-4e58-4287-b086-1723c2fa31b5"
+>
+<Comment></Comment>
+<Expression>Aest1() * T_traction()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ X="550"
+ Y="80"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Vdelta2"
+ Guid="c0ddea96-f7af-44a3-8df5-f303a4402b42"
+>
+<ReqRef
+ Id="26a7d347-fac4-479e-a5fd-a9644eed93c4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eccc1787-5b4e-4c2d-b807-4200e606b794"
+>
+</ReqRef><ReqRef
+ Id="327d187c-a17c-486f-b724-d1f714f552fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26f33adb-f9a7-43d1-b011-2d31430443ed"
+>
+</ReqRef><Comment>Provides the speed during T_berem.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="32aacacd-a015-4db8-9358-18b1f08b683a"
+>
+<Comment></Comment>
+<Expression>Aest2() * T_berem()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ Y="660"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TargetToGraph"
+ Guid="e183fd14-f530-4069-afed-589b8ac7849f"
+>
+<Comment>Creates a speed restriction associated to a given target, by adding the increment dV_ebi if the target speed is different from 0.</Comment>
+<Parameters>
+<Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="5566a9f8-2b1f-4cec-a053-8f5c6b9f5b76"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="6c241985-66a6-48a8-b2e0-4e8ecc3418a9"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="MaxSpeed"
+ Guid="7b2b7b2c-d41a-486f-b55a-1c5d66dffdb4"
+>
+<PreConditions>
+<PreCondition
+ Guid="b5012344-b47b-4a0b-acf0-2a242533a19d"
+>Distance &lt; aTarget.Location</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+</Case><Case
+ Name="Speed = 0"
+ Guid="492d0aa2-1798-4d43-9896-da4b5ef20929"
+>
+<PreConditions>
+<PreCondition
+ Guid="3795932e-96a7-4e28-b6a0-3900f0458011"
+>aTarget.Speed == 0.0</PreCondition></PreConditions>
+<Expression>aTarget.Speed</Expression>
+</Case><Case
+ Name="Speed &gt; 0"
+ Guid="7f7aa717-9fff-4fcd-ac65-637cd46d5a2c"
+>
+<Expression>aTarget.Speed + CeilingSpeedMonitoring.dV_ebi ( aTarget.Speed )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Time"
+ Cacheable="TRUE"
+ Default=""
+ X="550"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="T_traction"
+ Guid="c0301ef5-7b18-4b59-b64f-366563d7736a"
+>
+<ReqRef
+ Id="096ce475-1a17-4f39-a9ff-e1838d27439c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="acfe0600-4f4f-46fa-84c6-ab6ed3f905f2"
+>
+</ReqRef><ReqRef
+ Id="51a4071c-6949-4a0d-8483-6299d2128b0e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="10bfc127-7b27-43fa-996f-7066bfb6140a"
+>
+</ReqRef><ReqRef
+ Id="162a1af4-0262-4370-9baf-76c6abf7cc8d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="390b51d6-d950-4ede-af1c-9939e5b1e241"
+>
+</ReqRef><ReqRef
+ Id="10fe2e3f-8542-4568-b3a4-e79100a4daa6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="72bdc0d8-f0a4-4e01-aa8e-d18d3a9a5c94"
+>
+</ReqRef><ReqRef
+ Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c55e93ed-6fc9-412e-a97a-067093a6fe2f"
+>
+</ReqRef><ReqRef
+ Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5634b0c6-40b9-4086-a7f8-b69a4a926cbf"
+>
+</ReqRef><Comment>Once a brake command has been issued, T_traction is the time it takes for the train to cut off the traction.</Comment>
+<Cases>
+<Case
+ Name="Traction cut-off is implemented"
+ Guid="ba5abac1-815c-4cc0-9ead-c4348eab951d"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="cf6f9fc7-ccd1-4d65-a066-2ba3eebe0aad"
+>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; ( TrainData.BrakingParameters.T_traction_cut_off () - ( TargetSpeedMonitoring.T_warning + TargetSpeedMonitoring.T_bs2 ) ), X2 =&gt; 0.0 )</Expression>
+</Case><Case
+ Name="Traction cut-off is not implemented"
+ Guid="804ac0bb-4c17-41aa-97a4-accc7affd282"
+>
+<Expression>TrainData.BrakingParameters.T_traction_cut_off ()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Time"
+ Cacheable="TRUE"
+ Default=""
+ X="440"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="T_indication"
+ Guid="c7e8f32b-2ab1-45c9-b974-f8940e9a501a"
+>
+<ReqRef
+ Id="4ee7ede5-dbce-484e-b14b-72b516c33ba5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cefd610a-698a-4454-8fd1-d9cc9f54bef6"
+>
+</ReqRef><ReqRef
+ Id="5bf06f42-4784-4fb0-b8fe-19280822dd54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="da520021-0490-4b58-9d73-454841b43284"
+>
+</ReqRef><ReqRef
+ Id="a651727b-67a1-4e0c-99d6-89af31425c35"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="00403a97-909c-42ef-87ea-31461f32b7cc"
+>
+</ReqRef><Comment>Time used to calculate the distance between the indication supervision limit and the permitted speed supervision limit.</Comment>
+<Cases>
+<Case
+ Name="SB feedback interface available"
+ Guid="c148aa95-1337-4c59-8850-b90875ac3c5c"
+>
+<PreConditions>
+<PreCondition
+ Guid="d7618572-5cc7-4892-84a7-af2d85d657e2"
+>ServiceBrakeFeedbackAvailable ()</PreCondition></PreConditions>
+<Expression>5.0</Expression>
+</Case><Case
+ Name="SB feedback interface not available"
+ Guid="b91d6f8c-55b0-4316-b754-68a920fca082"
+>
+<Comment></Comment>
+<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; 0.8 * TrainData.BrakingParameters.T_bs(), X2 =&gt; 5.0 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Time"
+ Cacheable="TRUE"
+ Default=""
+ X="330"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="T_berem"
+ Guid="d25c38fd-2621-49db-b165-50862f9393b5"
+>
+<ReqRef
+ Id="65b04918-43f6-4fba-8062-128c5f2766d5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ccbcdc8d-dcb6-4110-b2e0-771891ae67fc"
+>
+</ReqRef><ReqRef
+ Id="9ebfc8da-a239-4e8c-a8a6-d80253fe7838"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6e9ca8fd-f111-4f92-b2b3-477b7075f563"
+>
+</ReqRef><Comment>Used in the calculation of the EBI curve from the EBD curve. T_berem is the time remaining in the safe brake build up time, T_be, after the traction has been fully cut off (which takes a time T_traction).</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="aeee2a9d-0dc9-46c1-819a-97c42f1e0772"
+>
+<Comment></Comment>
+<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; TrainData.BrakingParameters.T_be () - T_traction (), X2 =&gt; 0.0 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Cacheable="TRUE"
+ Default=""
+ X="440"
+ Y="210"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="ServiceBrakeFeedbackAvailable"
+ Guid="465a5792-5c1e-404e-abf1-9c2053dfac35"
+>
+<ReqRef
+ Id="d28bcfb0-9f8e-4a7d-9176-05886075d090"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6f7d85cb-e136-4ec6-9e5a-d3ed93e423d4"
+>
+</ReqRef><ReqRef
+ Id="a651727b-67a1-4e0c-99d6-89af31425c35"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7edb4b2a-3e03-48a4-a13c-e31280181264"
+>
+</ReqRef><Comment>Determines whether the service brake feedback is available for use.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="71109ff6-fbb8-4107-af8e-80f3dc312afd"
+>
+<Comment></Comment>
+<Expression>TrainData.TrainData.Value.SBFeedbackIsImplemented AND NationalValues.UseOfSBFeedbackIsPermitted()</Expression>
+</Case></Cases>
+</Function></Functions>
+</NameSpace>
