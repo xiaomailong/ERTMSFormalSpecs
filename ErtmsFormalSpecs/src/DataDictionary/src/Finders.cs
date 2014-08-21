@@ -402,6 +402,28 @@ namespace DataDictionary
         /// </summary>
         public static OverallFunctionFinder INSTANCE = new OverallFunctionFinder();
     }
+
+    /// <summary>
+    /// Finds the procedure in the dictionary, based on the name provided
+    /// </summary>
+    public class OverallProcedureFinder : Utils.OverallFinder<Functions.Procedure>
+    {
+        /// <summary>
+        /// A static instance used to execute this finder
+        /// </summary>
+        public static OverallProcedureFinder INSTANCE = new OverallProcedureFinder();
+    }
+
+    /// <summary>
+    /// Finds the Rule in the dictionary, based on the name provided
+    /// </summary>
+    public class OverallRuleFinder : Utils.OverallFinder<Rules.Rule>
+    {
+        /// <summary>
+        /// A static instance used to execute this finder
+        /// </summary>
+        public static OverallRuleFinder INSTANCE = new OverallRuleFinder();
+    }
 }
 
 
