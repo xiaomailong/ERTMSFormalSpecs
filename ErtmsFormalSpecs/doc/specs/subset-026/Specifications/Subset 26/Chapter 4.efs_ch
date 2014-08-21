@@ -13876,7 +13876,8 @@ Virtual Balise Cover; A: SB; NA: SF, IS<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="5b029318-c61a-4114-9f05-56c6b9bcc981"
->ERTMS/ETCS Mode; A: SB, TR, SF; X: SH, FS, LS, SR, OS, NL, UN, PT, IS, SN, RV<RequirementSets>
+><Comment></Comment>
+ERTMS/ETCS Mode; A: SB, TR, SF; X: SH, FS, LS, SR, OS, NL, UN, PT, IS, SN, RV<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a5550985-2ad0-48d6-a210-62ba164a9443"
@@ -13892,10 +13893,12 @@ Virtual Balise Cover; A: SB; NA: SF, IS<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
+ infoRequired="TRUE"
  functionalBlockName=""
  Name=""
  Guid="188cee00-39ba-43f0-aee9-2e1042e38194"
->Current ERTMS/ETCS level; A: SB, TR; X: SH, FS, LS, SR, OS, NL, UN, PT, SN, RV; NA: SF, IS<RequirementSets>
+><Comment>Current level shall always be sent to the DMI, when available. The DMI will use this information, if requested</Comment>
+Current ERTMS/ETCS level; A: SB, TR; X: SH, FS, LS, SR, OS, NL, UN, PT, SN, RV; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="63ddb0ec-b370-4731-9a05-930aeff524ef"
@@ -13956,7 +13959,8 @@ Permitted Speed; A: SH, LS, SR, OS; X: FS, RV; GREYED: SN; NA: SF, IS<Requiremen
  functionalBlockName=""
  Name=""
  Guid="9427a791-5126-401a-8a4c-c22ac729a3c7"
->FLOI Speed; A: FS; GREYED: SN; NA: SF, IS<RequirementSets>
+><Comment>FLOI shall always be sent to the DMI, when available. The DMI will use this information, if requested</Comment>
+FLOI Speed; A: FS; GREYED: SN; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="e5fa91cd-b484-469b-8151-844039b73dd4"
@@ -13975,7 +13979,8 @@ Permitted Speed; A: SH, LS, SR, OS; X: FS, RV; GREYED: SN; NA: SF, IS<Requiremen
  functionalBlockName=""
  Name=""
  Guid="b2d1ec0c-6179-487e-8bd5-c648d7a87f56"
->Target Speed; A: FS, LS, SR,OS; GREYED: SN; NA: SF, IS<RequirementSets>
+><Comment>Target speed shall always be sent to the DMI, when available. The DMI will use this information, if requested</Comment>
+Target Speed; A: FS, LS, SR,OS; GREYED: SN; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="343291dd-cb96-42bf-b82e-a996ed21d510"
@@ -13991,10 +13996,11 @@ Permitted Speed; A: SH, LS, SR, OS; X: FS, RV; GREYED: SN; NA: SF, IS<Requiremen
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
+ infoRequired="TRUE"
  functionalBlockName=""
  Name=""
  Guid="c5c3fd28-41ac-4ad2-a5ea-ba3e63205382"
-><Comment></Comment>
+><Comment>Target distance shall always be sent to the DMI, when available. The DMI will use this information, if requested</Comment>
 Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -14033,7 +14039,8 @@ Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="10645ba3-8d86-41ad-9956-71f5be85b4c1"
->Speed and distance monitoring supervision status; A: SH, FS, LS, SR, OS, UN, PT, RV; GREYED: SN; NA: SF, IS<RequirementSets>
+><Comment></Comment>
+Speed and distance monitoring supervision status; A: SH, FS, LS, SR, OS, UN, PT, RV; GREYED: SN; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="9c080b96-0b91-4375-9508-30100e1dfbd1"
@@ -14292,7 +14299,8 @@ Track conditions sound horn, non stopping areas, tunnel stopping areas; A: FS, L
  functionalBlockName=""
  Name=""
  Guid="faadbf28-32da-48eb-96d8-48c5eb6c86e0"
->Geographical position; A: SB, FS, LS, SR, OS, NL, UN, TR, PT; NA: SF, IS<RequirementSets>
+><Comment>Geographical position shall always be sent to the DMI, when available. The DMI will use this information, if requested</Comment>
+Geographical position; A: SB, FS, LS, SR, OS, NL, UN, TR, PT; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="4d97d485-2050-4942-baa2-4080d3cb2f28"
@@ -14734,10 +14742,12 @@ Local time; A: SB, TR, SN; X: SH, FS, LS, SR, OS, NL, UN, PT, RV; NA: SF, IS<Req
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
+ infoRequired="TRUE"
  functionalBlockName=""
  Name=""
  Guid="abc0e167-3d30-443d-b62a-963a5228be72"
->Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS<RequirementSets>
+><Comment>Target speed shall always be sent to the DMI, when available. The DMI will use this information, if requested</Comment>
+Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="98747972-4b44-4954-8514-b6974970cabf"
