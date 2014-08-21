@@ -3154,7 +3154,7 @@ EBSpecified &lt;- True</Action></Actions>
 <Actions>
 <Action
  Guid="1709bbc3-d1c3-4518-a266-9a4254cc44b2"
->DMI.MasterDMI().Out_TargetSpeed.OutputInformation.ShowRequestStatus &lt;- Default.Request.Disabled</Action><Action
+>DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DoNotDisplay()</Action><Action
  Guid="d2c5794a-5883-4ee1-8e52-ebd219f23fe2"
 >DMI.MasterDMI().HandleModeChange()</Action></Actions>
 </RuleCondition></Conditions>
@@ -3256,7 +3256,7 @@ DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DoNotDisplay()</Action><Act
 <Actions>
 <Action
  Guid="53869879-c357-4adb-a03f-398226aa0667"
->DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.ShowRequestStatus &lt;- Default.Request.Disabled</Action><Action
+>DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DoNotDisplay()</Action><Action
  Guid="bb81eedc-e932-43d8-b872-87369b680b70"
 >DMI.MasterDMI().HandleModeChange()</Action></Actions>
 </RuleCondition></Conditions>
@@ -3307,7 +3307,7 @@ DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DoNotDisplay()</Action><Act
 <Actions>
 <Action
  Guid="1496f63a-bb54-443c-ac91-76f9568b7f08"
->DMI.MasterDMI().Out_FLOI.OutputInformation.ShowRequestStatus &lt;- Default.Request.Disabled</Action><Action
+>DMI.MasterDMI().Out_FLOI.OutputInformation.DoNotDisplay()</Action><Action
  Guid="0a8260ed-5ee8-4faf-8645-ddafa4c90a3d"
 >DMI.MasterDMI().HandleModeChange()</Action></Actions>
 </RuleCondition></Conditions>

@@ -643,744 +643,215 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Mode tracker"
- Guid="30dc699e-32a6-4461-8091-67d30110dcfd"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="e5a3e049-8a1e-4057-88d5-186c28f36bf4"
->IsMaster == True</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="a2712db3-84fd-4a13-8dfe-168f8bcd01ba"
->PreviousMode &lt;- Kernel.Mode</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="NP, PS, SL"
- Guid="8bb868c3-7da7-47ca-af7f-2db858676891"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="NP, PS, SL"
- Guid="97c09650-cdf2-4ee8-acdd-0b93563fbab8"
->
-<PreConditions>
-<PreCondition
- Guid="4309bd58-236e-49d0-85a7-ee389c29df5e"
-><Comment></Comment>
-Kernel.Mode in [Default.Mode.NP, Default.Mode.PS, Default.Mode.SL]</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="SB"
- Guid="a227eca6-2efb-4f83-938d-cd1b3e62c4be"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="SB"
- Guid="7f61af47-5632-4424-9cf1-d1a99fe37ca6"
->
-<PreConditions>
-<PreCondition
- Guid="d5d1b387-e082-4195-b7bb-e53a5d9d0633"
->Kernel.Mode == Default.Mode.SB</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="SH"
- Guid="a4d93ad4-e5d0-4feb-9832-e61a3d74d34d"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="SH"
- Guid="afe38ada-b069-47c5-b93e-e0ea28dc5107"
->
-<PreConditions>
-<PreCondition
- Guid="0f80c50d-70ea-47c5-9360-0b5b500c837f"
->Kernel.Mode == Default.Mode.SH</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="FS"
- Guid="8e047ff6-7cd3-4c09-91e4-9249951675ae"
->
-<Comment></Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="FS"
- Guid="20bc25b2-74ee-4f50-8ffa-11a0034ff413"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="fdc00ee3-472e-454c-a099-40afeb3783f3"
->Kernel.Mode == Default.Mode.FS</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="LS"
- Guid="2fa0635c-5f96-4fb4-906c-80e16c1493ce"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="LS"
- Guid="9ab739ee-0155-4444-9882-3e5b0c9299f9"
->
-<PreConditions>
-<PreCondition
- Guid="01f5cd84-91f9-4f40-82b8-d99fecf85401"
->Kernel.Mode == Default.Mode.LS</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="SR"
- Guid="e8878f77-77e2-4488-a840-a6087f707854"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="SR"
- Guid="d9b0f01c-8bb6-4756-b5cc-a2cabb445315"
->
-<PreConditions>
-<PreCondition
- Guid="20aaa6a6-cddc-4969-a5e6-59c38114a5c9"
->Kernel.Mode == Default.Mode.SR</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="OS"
- Guid="e4ee2d07-d87d-471c-8667-744fc7b5cd57"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="OS"
- Guid="1ce00bf5-8f19-44de-a716-3f63d1053815"
->
-<PreConditions>
-<PreCondition
- Guid="e6e76499-bb47-4844-8313-2d9d96872107"
->Kernel.Mode == Default.Mode.OS</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="NL"
- Guid="8ca97468-dfe0-48c9-a13d-2a42fad627ce"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="NL"
- Guid="b11f9d87-7c73-4b86-ae4d-a1916c4ccc18"
->
-<PreConditions>
-<PreCondition
- Guid="8a45addc-e453-4056-8a67-d7d10a397076"
->Kernel.Mode == Default.Mode.NL</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UN"
- Guid="e795ac95-9037-411e-833a-22fc7e322114"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UN"
- Guid="85a47c03-d874-4070-abe4-841a08574b2b"
->
-<PreConditions>
-<PreCondition
- Guid="3639dcc0-edc8-4d0b-b448-a14447f659f5"
->Kernel.Mode == Default.Mode.UN</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TR"
- Guid="a5c8932b-9598-45a9-8c96-5cdd1b25e82c"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TR"
- Guid="5fb36786-2d72-416b-93b3-172673d7c0ea"
->
-<PreConditions>
-<PreCondition
- Guid="f9e8ceef-6468-4705-b543-df05a8693c5c"
->Kernel.Mode == Default.Mode.TR</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="PT"
- Guid="44409160-ee77-4bdc-8519-439ab62f5054"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="PT"
- Guid="9e73092b-faea-4207-a0bc-089d0d76b08c"
->
-<PreConditions>
-<PreCondition
- Guid="8d400947-da9f-4a21-908b-5fa35067e290"
->Kernel.Mode == Default.Mode.PT</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="SF"
- Guid="685ad8e3-3136-4c10-9ece-09ca5bccd6e0"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="SF"
- Guid="993ecf60-76e2-4fe3-b406-56bc8b9cc443"
->
-<PreConditions>
-<PreCondition
- Guid="8ef3d71b-db21-4092-a30b-f6e589d17a73"
->Kernel.Mode == Default.Mode.SF</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="IS"
- Guid="2d7cec0c-a6fe-49d7-827d-5cc84d1f565a"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="IS"
- Guid="f7f97852-278e-4b18-ac63-f1769c87887f"
->
-<PreConditions>
-<PreCondition
- Guid="faea4283-e514-462c-97ba-e1e1f3d30a8b"
->Kernel.Mode == Default.Mode.IS</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="SN"
- Guid="5cd0410c-03dc-4622-9cac-bb8d45c4bb59"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="SN"
- Guid="1e1c738c-911c-49b4-af98-6c38c7fe4cb4"
->
-<PreConditions>
-<PreCondition
- Guid="4cc5d4fe-2cdc-417e-9497-42709640caa5"
->Kernel.Mode == Default.Mode.SN</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RV"
- Guid="3970a39f-cf1c-4dd6-8025-523814a4b871"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RV"
- Guid="88b19566-944a-4101-bf26-475c1e3cf878"
->
-<PreConditions>
-<PreCondition
- Guid="83fc21bc-1182-45ba-9c68-ffd75e8bad46"
->Kernel.Mode == Default.Mode.RV</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Track mode change"
- Guid="7afc886f-cd49-46f5-a66c-0e4b2482448c"
->
-<ReqRef
- Id="4efd390e-2e07-4c18-88e9-b389b64cd144"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b20764b7-ef76-4e55-b13d-bee9e3c98cf0"
->
-<Comment></Comment>
-</ReqRef><ReqRef
- Id="63c4543b-5430-4f3e-a524-ce48d640aead"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="19906745-7441-4855-bcf9-8b5f73542d8f"
->
-</ReqRef><ReqRef
- Id="cc8be0e3-4edb-46d4-a4e4-a00714d90fc4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3702c875-21c1-42dd-a2af-f5b8e6f89825"
->
-</ReqRef><ReqRef
- Id="166e123f-f57c-4045-af2e-915a4c4e849b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f0d919bb-fff2-432a-a7e5-7aae9f74fa8f"
->
-</ReqRef><ReqRef
- Id="57ceb9c6-48ae-4809-8630-70941e264ded"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="43e51961-0fdd-4ea4-b987-7d592de01494"
->
-</ReqRef><ReqRef
- Id="0f95b99b-d98f-4189-b6f9-d0a3699f36a7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5280bc2f-5389-4e5a-9fd2-719c4b9120aa"
->
-</ReqRef><ReqRef
- Id="bb2f7a44-df6e-4902-a634-5c2e49678710"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="46673c64-9b53-48fc-a7ea-b1b70116a246"
->
-</ReqRef><ReqRef
- Id="641a1733-782b-41d1-8db8-443710ef091a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4f0ef0a3-ce20-4554-b89f-c43d703a9364"
->
-</ReqRef><ReqRef
- Id="99735e12-128e-4cc9-8fa2-368230a0e2df"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="790027a3-0ff6-4ea3-936f-fa8cbec22d0b"
->
-</ReqRef><ReqRef
- Id="d76d9d7e-5ca9-42ac-9562-effe483642f8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2ddb30da-779b-4680-bbac-8553ba2c42a9"
->
-</ReqRef><ReqRef
- Id="5dc7196e-3533-4c27-99ef-6bb45c62aaaf"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a411c1df-afba-4ca9-b3d7-6598b4255f1c"
->
-</ReqRef><ReqRef
- Id="bb550af5-d30a-44f7-a6d0-e396e895d87c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b6fd1196-0799-46df-8cad-157c3d3a899f"
->
-</ReqRef><ReqRef
- Id="bca41785-82f0-407d-9873-a1feaf619619"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8e99bf1c-0e8f-4b88-8e91-ab974f0a0f8e"
->
-</ReqRef><ReqRef
- Id="b3e1c3fa-135d-4573-9b99-1ce66b471a4f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6f24c312-ec15-47b0-b661-928507109923"
->
-</ReqRef><ReqRef
- Id="a8974387-814c-4e26-a7a4-5001e32c4554"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9321cc5e-1b76-4919-9d83-fddb860e1f76"
->
-</ReqRef><ReqRef
- Id="2c5e9152-5512-4523-8116-03489439ff69"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ebc2b043-8635-4c84-9d43-d7dc40ff3bfb"
->
-</ReqRef><ReqRef
- Id="421ee868-5461-4591-b27c-3e641637cc98"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4dd3d66f-74bf-4e4f-9391-c7db41a9b800"
->
-</ReqRef><ReqRef
- Id="2ed9a3a8-ad0b-4699-b42d-1c5e17be22af"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="76cd9dab-6619-4ece-aa01-bb786e0d6602"
->
-</ReqRef><ReqRef
- Id="e6a8a09c-e6ba-4a3c-b777-6acb88ac835b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9dbd248b-6097-49f0-bcf8-5f26a828a5b4"
->
-</ReqRef><ReqRef
- Id="b6c67586-24a9-45f1-8716-2ebbbf63edc2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9d3b490a-990e-44e2-9a36-84d7cb45865a"
->
-</ReqRef><ReqRef
- Id="b6b52185-52d6-42da-9273-5c484d092e08"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="59efb8aa-fbac-4b6f-9acb-ebd12949664f"
->
-</ReqRef><ReqRef
- Id="16331b43-cfa0-4f60-88dd-55bf3bd6e93e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5faeb11a-cee4-4e17-8bd3-daecf72d0463"
->
-</ReqRef><ReqRef
- Id="2dd0cb88-9abd-4a28-9cf2-6cb53656287f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ffcf18bf-d845-4b26-bd96-e07110ac6afc"
->
-</ReqRef><ReqRef
- Id="c5fa7369-35e6-43ac-a64b-f7a48afc50da"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="99c22e78-91cc-4548-b73c-a97e9bfc981b"
->
-</ReqRef><ReqRef
- Id="0cf0e5ee-5c2a-42b6-8389-ca77ab74368b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b18c27da-8c45-411d-983f-af0f6a44b60f"
->
-</ReqRef><ReqRef
- Id="7625fa65-c451-4b57-83e0-fa8f4ebf7336"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="814cabc6-89a4-459e-9316-76fb70d856f1"
->
-</ReqRef><ReqRef
- Id="2799a8e9-fa29-467e-8323-c5845b7416dd"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="aa2caa26-0431-4739-ba3d-a5b74f243479"
->
-</ReqRef><ReqRef
- Id="aca297a1-7d62-42ac-ab7e-6c8c590c5637"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="22e73e8d-fbd2-48c3-a308-97f49773e9b3"
->
-</ReqRef><ReqRef
- Id="dfcc8430-5256-4624-9c6a-7c5884b42bdb"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="cb6cc166-8d95-458b-8d84-e2b07d6380b5"
->
-</ReqRef><ReqRef
- Id="c49c8e4d-2c96-4314-a79e-904b090becb1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d3581541-ffe5-4b78-a84c-2703676e04d5"
->
-</ReqRef><ReqRef
- Id="7ae1bf11-7b11-466d-abd7-fcec9dee2465"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9f1bf643-1b81-4c82-b9e6-1c539471ab47"
->
-</ReqRef><ReqRef
- Id="dc327dea-a3eb-4081-ac8b-06d8c12f1ea7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="20864666-d6a4-4480-8370-660b31da38da"
->
-</ReqRef><ReqRef
- Id="25a833cc-7385-4baf-a092-22c94d1cafe5"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f241ee11-fcdf-4205-ad65-f5f7e18873da"
->
-</ReqRef><ReqRef
- Id="b097af96-5a86-448c-a47a-c1f0866d272b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="90699b21-22ae-423a-b9c1-f5eaa0dac634"
->
-</ReqRef><ReqRef
- Id="5f1173da-1cfe-4f41-aa4f-5c394c12e77f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="21f5c0d9-3b69-43e8-93c8-929ffcdfcedc"
->
-</ReqRef><Comment>Updates the requests according to the mode change</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="Track mode change"
  Guid="f22d9ee6-a4fc-4a0a-b5d4-e15f3a23bfce"
 >
 <Comment>Tracks the mode change</Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="e5a3e049-8a1e-4057-88d5-186c28f36bf4"
+>IsMaster == True</PreCondition><PreCondition
+ Guid="92d72bbd-a467-46fc-93b9-80133492c1b5"
+><Comment></Comment>
+PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3f187d6a-e7e5-4287-aed5-a4fe32ff7e96"
 ><Comment></Comment>
-In_ErtmsEtcsLevel.TrackMode()</Action><Action
+THIS.In_ErtmsEtcsLevel.TrackMode()</Action><Action
  Guid="3a357883-dbd6-4d62-bc9c-894eb3407d42"
->In_DriverId.TrackMode()</Action><Action
+>THIS.In_DriverId.TrackMode()</Action><Action
  Guid="c4124830-b14b-4a4a-8148-0bda2a440b7d"
 ><Comment></Comment>
-In_TrainData.TrackMode()</Action><Action
+THIS.In_TrainData.TrackMode()</Action><Action
  Guid="7ec7436d-c9d5-4c45-9474-2b702ea7b28d"
->In_TrainDataEntryRequest.TrackMode()</Action><Action
+>THIS.In_TrainDataEntryRequest.TrackMode()</Action><Action
  Guid="a4edbcfb-504e-419a-88f5-9a55b16db104"
 ><Comment></Comment>
-In_TrainRunningNumber.TrackMode()</Action><Action
+THIS.In_TrainRunningNumber.TrackMode()</Action><Action
  Guid="aa1571fb-1de5-4a65-bbc6-0f64a55d3aa9"
->In_Start.TrackMode()</Action><Action
+>THIS.In_Start.TrackMode()</Action><Action
  Guid="10c97c94-5e60-4899-8e8c-9f9176d5f30e"
 ><Comment></Comment>
-In_AcknOfFixedTextInformation.TrackMode()</Action><Action
+THIS.In_AcknOfFixedTextInformation.TrackMode()</Action><Action
  Guid="f1e0a4a1-8f3e-4eba-aa8c-f8afa797b9d8"
 ><Comment></Comment>
-In_AcknOfLevelTransition.TrackMode()</Action><Action
+THIS.In_AcknOfLevelTransition.TrackMode()</Action><Action
  Guid="43028746-5ad9-4296-bca7-432aba463ecd"
 ><Comment></Comment>
-In_AcknOfPlainTextInformation.TrackMode()</Action><Action
+THIS.In_AcknOfPlainTextInformation.TrackMode()</Action><Action
  Guid="d338fcb5-0227-40a3-bc6f-630272233913"
 ><Comment></Comment>
-In_AcknOfSNMode.TrackMode()</Action><Action
+THIS.In_AcknOfSNMode.TrackMode()</Action><Action
  Guid="c6453655-0182-4133-8b85-870eb384205b"
 ><Comment></Comment>
-In_AcknOfTrainDataChangeFromOtherSource.TrackMode()</Action><Action
+THIS.In_AcknOfTrainDataChangeFromOtherSource.TrackMode()</Action><Action
  Guid="25cc49eb-10cf-4452-a5d0-fa5bd4918b31"
 ><Comment></Comment>
-In_AcknOfLSMode.TrackMode()</Action><Action
+THIS.In_AcknOfLSMode.TrackMode()</Action><Action
  Guid="6666e546-59da-4db8-af37-9ae57449d1b7"
 ><Comment></Comment>
-In_AcknOfOSMode.TrackMode()</Action><Action
+THIS.In_AcknOfOSMode.TrackMode()</Action><Action
  Guid="6d31cdde-815c-415e-9ed5-5d4da38c9cd6"
 ><Comment></Comment>
-In_AcknOfSHMode.TrackMode()</Action><Action
+THIS.In_AcknOfSHMode.TrackMode()</Action><Action
  Guid="edb1fc71-3f49-40b8-a315-6089e42d058f"
->In_AcknOfSRMode.TrackMode()</Action><Action
+>THIS.In_AcknOfSRMode.TrackMode()</Action><Action
  Guid="42ca96b1-1c03-467c-9a22-15e28737d238"
 ><Comment></Comment>
-In_AcknOfUNMode.TrackMode()</Action><Action
+THIS.In_AcknOfUNMode.TrackMode()</Action><Action
  Guid="710ad436-5190-4107-8dd8-1cc4ca6528b9"
 ><Comment></Comment>
-In_AcknOfRVMode.TrackMode()</Action><Action
+THIS.In_AcknOfRVMode.TrackMode()</Action><Action
  Guid="384bc6de-dc39-473c-bc4e-8fcf0b12deb3"
 ><Comment></Comment>
-In_AcknOfTrainTrip.TrackMode()</Action><Action
+THIS.In_AcknOfTrainTrip.TrackMode()</Action><Action
  Guid="b6f378c4-a98c-4e3a-8369-e518e4510737"
->In_AcknForRollAwayProtection.TrackMode()</Action><Action
+>THIS.In_AcknForRollAwayProtection.TrackMode()</Action><Action
  Guid="d01b3389-9c4b-49d7-b173-535fe7215790"
->In_AcknForReverseMovementProtection.TrackMode()</Action><Action
+>THIS.In_AcknForReverseMovementProtection.TrackMode()</Action><Action
  Guid="2faeed4b-7ab9-4173-9ab3-7f2dba27d340"
 ><Comment></Comment>
-In_AcknForStandstillSupervision.TrackMode()</Action><Action
+THIS.In_AcknForStandstillSupervision.TrackMode()</Action><Action
  Guid="d90fc1d5-c91e-458d-ab74-fee176b2a72a"
 ><Comment></Comment>
-In_AcknForPostTripDistanceExceeded.TrackMode()</Action><Action
+THIS.In_AcknForPostTripDistanceExceeded.TrackMode()</Action><Action
  Guid="2dd4342f-2852-4e68-97de-8354cdf20225"
 ><Comment></Comment>
-In_AcknForReversingDistanceExceeded.TrackMode()</Action><Action
+THIS.In_AcknForReversingDistanceExceeded.TrackMode()</Action><Action
  Guid="54c4c54d-2b8e-4900-8670-852643ce9ec5"
 ><Comment></Comment>
-In_ContinueShuntingOnDeskClosureRequest.TrackMode()</Action><Action
+THIS.In_ContinueShuntingOnDeskClosureRequest.TrackMode()</Action><Action
  Guid="3e82c310-33e7-4a58-9784-2bb8a04359d8"
 ><Comment></Comment>
-In_ExitOfShuntingRequest.TrackMode()</Action><Action
+THIS.In_ExitOfShuntingRequest.TrackMode()</Action><Action
  Guid="731ad583-ccff-46b7-a8f6-c94daf946a56"
 ><Comment></Comment>
-In_Isolation.TrackMode()</Action><Action
+THIS.In_Isolation.TrackMode()</Action><Action
  Guid="45f2221b-307c-42e5-9e8c-1fa4a1faa127"
->In_NonLeadingRequest.TrackMode()</Action><Action
+>THIS.In_NonLeadingRequest.TrackMode()</Action><Action
  Guid="8c04f658-d524-4c19-9de7-f16c73c1354e"
 ><Comment></Comment>
-In_OverrideRequest.TrackMode()</Action><Action
+THIS.In_OverrideRequest.TrackMode()</Action><Action
  Guid="72db7a1c-51f5-4a68-9854-2620811006f9"
->In_RBCContactInformation.TrackMode()</Action><Action
+>THIS.In_RBCContactInformation.TrackMode()</Action><Action
  Guid="82cd3c7d-24b4-4b8e-b9bc-26cf2d5d8b6e"
->In_SelectionOfLanguage.TrackMode()</Action><Action
+>THIS.In_SelectionOfLanguage.TrackMode()</Action><Action
  Guid="8f025d47-834e-43f9-9c57-4c108a9548b3"
->In_ShuntingRequest.TrackMode()</Action><Action
+>THIS.In_ShuntingRequest.TrackMode()</Action><Action
  Guid="ace861ab-d2c7-4aea-8ac7-c194d87e2fbf"
->In_SRModeSpeedLimitAndDistance.TrackMode()</Action><Action
+>THIS.In_SRModeSpeedLimitAndDistance.TrackMode()</Action><Action
  Guid="c64ebd35-8f33-4964-9fba-5329d6bf5f90"
->In_TrackAdhesionFactor.TrackMode()</Action><Action
+>THIS.In_TrackAdhesionFactor.TrackMode()</Action><Action
  Guid="83a2996f-7c64-4a56-94ab-7463268a9ff3"
 ><Comment></Comment>
-In_TrackAheadFree.TrackMode()</Action><Action
+THIS.In_TrackAheadFree.TrackMode()</Action><Action
  Guid="ffc49356-a342-4f80-a304-eaebd1b9cd89"
->In_TrainIntegrity.TrackMode()</Action><Action
+>THIS.In_TrainIntegrity.TrackMode()</Action><Action
  Guid="a146884b-c77b-4030-aa93-3458ef154f52"
->In_VirtualBaliseCover.TrackMode()</Action><Action
+>THIS.In_VirtualBaliseCover.TrackMode()</Action><Action
  Guid="d852eb4f-3cb6-4961-a0e6-3f5b4b6d01cd"
->Out_MRSP.TrackMode()</Action><Action
+>THIS.Out_MRSP.TrackMode()</Action><Action
  Guid="8c218d18-6e1a-4665-a809-355eb5571dd0"
->Out_AcceptedEmergencyStops.TrackMode()</Action><Action
+>THIS.Out_AcceptedEmergencyStops.TrackMode()</Action><Action
  Guid="8bbfa427-c545-4076-b222-ae0c3210c7df"
->Out_AdhesionFactorSlipperyRail.TrackMode()</Action><Action
+>THIS.Out_AdhesionFactorSlipperyRail.TrackMode()</Action><Action
  Guid="042106b7-fdfd-4e11-8e09-d2986f1315a8"
->Out_BrakeIndication.TrackMode()</Action><Action
+>THIS.Out_BrakeIndication.TrackMode()</Action><Action
  Guid="45000620-88e3-43a0-9117-cb2b5728d0ed"
->Out_BrakeReason.TrackMode()</Action><Action
+>THIS.Out_BrakeReason.TrackMode()</Action><Action
  Guid="f68c03a4-90b9-43e9-bc79-872d7ddb171b"
->Out_CurrentErtmsEtcsLevel.TrackMode()</Action><Action
+>THIS.Out_CurrentErtmsEtcsLevel.TrackMode()</Action><Action
  Guid="062ea526-44c2-4346-b1f7-988e5d44a86b"
->Out_DriverId.TrackMode()</Action><Action
+>THIS.Out_DriverId.TrackMode()</Action><Action
  Guid="1fdf7ee3-48d1-4a96-ae78-84099797bcde"
->Out_EntryInFsOs.TrackMode()</Action><Action
+>THIS.Out_EntryInFsOs.TrackMode()</Action><Action
  Guid="31b14d80-1ef1-4203-9fc2-ced3921a3ff1"
->Out_ErtmsEtcsMode.TrackMode()</Action><Action
+>THIS.Out_ErtmsEtcsMode.TrackMode()</Action><Action
  Guid="85ad9882-0296-4858-8f01-6e12d1075623"
->Out_FirstTargetAtZeroSpeed.TrackMode()</Action><Action
+>THIS.Out_FirstTargetAtZeroSpeed.TrackMode()</Action><Action
  Guid="c0479f1d-03c0-4c2f-8fb6-af0820e6044d"
->Out_FixedTextInformation.TrackMode()</Action><Action
+>THIS.Out_FixedTextInformation.TrackMode()</Action><Action
  Guid="cd0372bf-91e0-4630-916b-0430fc7b18c1"
->Out_GeographicalPosition.TrackMode()</Action><Action
+>THIS.Out_GeographicalPosition.TrackMode()</Action><Action
  Guid="4f91802d-a5c3-4b2f-9778-98f17b0e2186"
->Out_Gradient.TrackMode()</Action><Action
+>THIS.Out_Gradient.TrackMode()</Action><Action
  Guid="96555ce2-6ee4-4384-94d1-526d83f6ead4"
->Out_IndicationLocationAtMrspSpeed.TrackMode()</Action><Action
+>THIS.Out_IndicationLocationAtMrspSpeed.TrackMode()</Action><Action
  Guid="8dfec0d8-d2a3-485b-b240-d2c5631909b0"
->Out_LevelTransitionAnnouncement.TrackMode()</Action><Action
+>THIS.Out_LevelTransitionAnnouncement.TrackMode()</Action><Action
  Guid="f699681d-72b2-4cef-92bd-a3b54662a674"
->Out_LocalTime.TrackMode()</Action><Action
+>THIS.Out_LocalTime.TrackMode()</Action><Action
  Guid="197cadce-fb88-4e14-9586-c18083dd1162"
->Out_LXStatusNotProtected.TrackMode()</Action><Action
+>THIS.Out_LXStatusNotProtected.TrackMode()</Action><Action
  Guid="ae0f59e2-6447-4297-affe-b00ae53ac637"
->Out_NotificationOfTrainDataChangeFromOtherSource.TrackMode()</Action><Action
+>THIS.Out_NotificationOfTrainDataChangeFromOtherSource.TrackMode()</Action><Action
  Guid="7727ce62-a381-4f28-96fe-d2d2897141d8"
->Out_OperatedSystemVersion.TrackMode()</Action><Action
+>THIS.Out_OperatedSystemVersion.TrackMode()</Action><Action
  Guid="c4c760b8-cd70-4a01-9e29-bb77b6511d35"
->Out_OsLsShModeProposed.TrackMode()</Action><Action
+>THIS.Out_OsLsShModeProposed.TrackMode()</Action><Action
  Guid="b0f9922d-af5b-40a8-8d7a-6df9fa087bcd"
->Out_OverrideStatus.TrackMode()</Action><Action
+>THIS.Out_OverrideStatus.TrackMode()</Action><Action
  Guid="d6e0e3c9-6372-44ff-8b93-7afe40a0703b"
->Out_PermittedSpeed.TrackMode()</Action><Action
+>THIS.Out_PermittedSpeed.TrackMode()</Action><Action
  Guid="6c6217f2-a5c9-44cb-8cef-553ffbb3a6ea"
->Out_PlainTextInformation.TrackMode()</Action><Action
+>THIS.Out_PlainTextInformation.TrackMode()</Action><Action
  Guid="a1bc5cf3-b5cc-4a90-8920-a37c0b7fad68"
->Out_RadioNetworkRegistrationFailed.TrackMode()</Action><Action
+>THIS.Out_RadioNetworkRegistrationFailed.TrackMode()</Action><Action
  Guid="7909e2db-ed68-4a49-b7c1-e357046c5ae7"
->Out_RBCContactInformation.TrackMode()</Action><Action
+>THIS.Out_RBCContactInformation.TrackMode()</Action><Action
  Guid="e5640c9a-8864-41e5-b376-8a99daa110f2"
->Out_ReleaseSpeed.TrackMode()</Action><Action
+>THIS.Out_ReleaseSpeed.TrackMode()</Action><Action
  Guid="5da6f1e4-0362-4306-96e8-c7681d204e79"
->Out_ReversingAllowed.TrackMode()</Action><Action
+>THIS.Out_ReversingAllowed.TrackMode()</Action><Action
  Guid="7071aeec-bba2-4d98-a334-baf8334d1208"
->Out_RouteUnsuitabilities.TrackMode()</Action><Action
+>THIS.Out_RouteUnsuitabilities.TrackMode()</Action><Action
  Guid="df87ba56-5992-4bfe-acaa-3e403437a8eb"
->Out_RVModeProposed.TrackMode()</Action><Action
+>THIS.Out_RVModeProposed.TrackMode()</Action><Action
  Guid="7ad075eb-0e89-43b6-9cba-7a575c1fd29a"
->Out_SafeRadioConnectionIndication.TrackMode()</Action><Action
+>THIS.Out_SafeRadioConnectionIndication.TrackMode()</Action><Action
  Guid="d3650b36-2cf9-44d1-bba5-706196765f03"
->Out_ShuntingRefusedByRbc.TrackMode()</Action><Action
+>THIS.Out_ShuntingRefusedByRbc.TrackMode()</Action><Action
  Guid="9fc762fd-5a11-4e13-81b9-948d98ad1f9a"
->Out_ShuntingRequestNotAnsweredByRbc.TrackMode()</Action><Action
+>THIS.Out_ShuntingRequestNotAnsweredByRbc.TrackMode()</Action><Action
  Guid="b21019a3-e0fb-401a-8a3b-cb545fee6c13"
->Out_SNModeProposed.TrackMode()</Action><Action
+>THIS.Out_SNModeProposed.TrackMode()</Action><Action
  Guid="a49125f3-0f88-4cf1-a775-9dc16a6e04dc"
->Out_SpeedAndDistanceMonitoringSupervisionStatus.TrackMode()</Action><Action
+>THIS.Out_SpeedAndDistanceMonitoringSupervisionStatus.TrackMode()</Action><Action
  Guid="b40fb024-c490-471f-b261-b0dd78a3d486"
->Out_SRModeProposed.TrackMode()</Action><Action
+>THIS.Out_SRModeProposed.TrackMode()</Action><Action
  Guid="33d5f49d-3de7-4896-9bff-1ca617eeeabd"
->Out_TargetDistance.TrackMode()</Action><Action
+>THIS.Out_TargetDistance.TrackMode()</Action><Action
  Guid="5af26028-8d93-4f51-a389-b5f9ce3d32fe"
->Out_TargetSpeed.TrackMode()</Action><Action
+>THIS.Out_TargetSpeed.TrackMode()</Action><Action
  Guid="aa3b37a4-6a3f-4c58-94fc-5284ce552cf7"
->Out_TrackAheadFreeRequest.TrackMode()</Action><Action
+>THIS.Out_TrackAheadFreeRequest.TrackMode()</Action><Action
  Guid="60fd6ba3-a1bc-44f3-a855-90a2d5f8b6e4"
->Out_TrackConditionsWithoutSoundHorn.TrackMode()</Action><Action
+>THIS.Out_TrackConditionsWithoutSoundHorn.TrackMode()</Action><Action
  Guid="d2d840ea-756a-4bfa-9863-27cd67362370"
->Out_TrackConditionsWithSoundHorn.TrackMode()</Action><Action
+>THIS.Out_TrackConditionsWithSoundHorn.TrackMode()</Action><Action
  Guid="f0a8e8e9-7aa7-4fa2-9733-30f533452393"
->Out_TracksideMalfunction.TrackMode()</Action><Action
+>THIS.Out_TracksideMalfunction.TrackMode()</Action><Action
  Guid="fe259013-9967-4a34-a0c2-445b2a1617f7"
->Out_TracksideNotCompatible.TrackMode()</Action><Action
+>THIS.Out_TracksideNotCompatible.TrackMode()</Action><Action
  Guid="1fe98895-22f2-4112-9c29-f2143c4b63c7"
->Out_TrainData.TrackMode()</Action><Action
+>THIS.Out_TrainData.TrackMode()</Action><Action
  Guid="db4ad0ca-e698-42ed-be2b-090d7c94eac4"
->Out_TrainIsRejected.TrackMode()</Action><Action
+>THIS.Out_TrainIsRejected.TrackMode()</Action><Action
  Guid="de43c62b-339a-4946-b496-4297d500b9ae"
->Out_TrainRunningNumber.TrackMode()</Action><Action
+>THIS.Out_TrainRunningNumber.TrackMode()</Action><Action
  Guid="513ef903-82ae-48e6-a9a5-dab5d6c61842"
->Out_TrainSpeed.TrackMode()</Action><Action
+>THIS.Out_TrainSpeed.TrackMode()</Action><Action
  Guid="8b5d961a-2752-4946-bba3-a1dff33a1664"
->Out_TripReason.TrackMode()</Action><Action
+>THIS.Out_TripReason.TrackMode()</Action><Action
  Guid="ef94bb4a-025e-4138-b699-77bfe491ac57"
->Out_UNModeProposed.TrackMode()</Action><Action
+>THIS.Out_UNModeProposed.TrackMode()</Action><Action
  Guid="d64c9513-c7c2-421a-8c2c-e4cfaff16cae"
->Out_FLOI.TrackMode()</Action><Action
+>THIS.Out_FLOI.TrackMode()</Action><Action
  Guid="cb821b2a-3540-441c-9f2e-7d9972f6b7bf"
->Out_VirtualBaliseCovers.TrackMode()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+>THIS.Out_VirtualBaliseCovers.TrackMode()</Action><Action
+ Guid="a2712db3-84fd-4a13-8dfe-168f8bcd01ba"
+>PreviousMode &lt;- Kernel.Mode</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3052,6 +2523,7 @@ DriverAnswered &lt;- False</Action><Action
 - DisplayRequested (of type Boolean) is the out variable. The information shall be displayed on DMI while DisplayRequested = true.</Comment>
 <Procedures>
 <Procedure
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RequestDisplay"
  Guid="4a21aee6-e985-4b26-b372-70d78ba4d03d"
@@ -3060,6 +2532,7 @@ DriverAnswered &lt;- False</Action><Action
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Changes the status of the request"
  Guid="0bee721d-e5ac-421a-b1ca-6b4fb4c82849"
@@ -3068,6 +2541,7 @@ DriverAnswered &lt;- False</Action><Action
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Changes the status of the request"
  Guid="985d2421-01d8-4815-a0aa-533e377eed9b"
@@ -3081,6 +2555,7 @@ DriverAnswered &lt;- False</Action><Action
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DoNotDisplay"
  Guid="5b9cd0e2-59d2-42b7-9023-27cd73df37c8"
@@ -3089,6 +2564,7 @@ DriverAnswered &lt;- False</Action><Action
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Changes the status of the request"
  Guid="380005ae-c1cd-4a9b-a7f0-69b549f81a64"
@@ -3097,6 +2573,7 @@ DriverAnswered &lt;- False</Action><Action
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Changes the status of the request"
  Guid="d16af881-7606-4147-af9a-a3f42b984032"
@@ -3120,25 +2597,6 @@ DriverAnswered &lt;- False</Action><Action
  Guid="45ad9df0-52e3-44cf-a6ba-25102de45002"
 >
 <Comment>Indicates that the request should be displayed to the driver</Comment>
-</StructureElement><StructureElement
- TypeName="Default.Request"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ShowRequestStatus"
- Guid="d8842951-27a7-49b1-a873-05c9c6d8a81d"
->
-<Comment></Comment>
-</StructureElement><StructureElement
- TypeName="Default.Request"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="HideRequestStatus"
- Guid="6c189f2e-c00e-4abd-b10f-05a935d98f15"
->
 </StructureElement></Structure><Structure
  Default=""
  X="590"
@@ -3179,85 +2637,6 @@ DriverAnswered &lt;- False</Action><Action
  Guid="051b7121-12e3-4987-90bc-2bc9840446e9"
 >
 <Comment>Indicates that the drvier should re validate the proposed data</Comment>
-</StructureElement></Structure><Structure
- Default=""
- X="590"
- Y="130"
- Width="100"
- Height="50"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InhibitionAction"
- Guid="783572e5-9285-4f88-bf49-0fec13709879"
->
-<Comment>Describes the inhibition action that can be executed by the driver.</Comment>
-<StructureElement
- TypeName="Boolean"
- Default=""
- Mode="Outgoing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RemoveExistingInhibition"
- Guid="e68d474e-90aa-4f81-8af5-f39ec258f72a"
->
-<Comment>Indicates that the inhibition should be removed</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default=""
- Mode="Outgoing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InhibitLevel"
- Guid="80b24576-e2e7-4b1a-9f7b-8fa2670edeeb"
->
-<Comment>Indicates that the level should be inhibited</Comment>
-</StructureElement></Structure><Structure
- Default=""
- X="590"
- Y="70"
- Width="100"
- Height="50"
- NeedsRequirement="FALSE"
- Name="RbcIdNumberChoice"
- Guid="66eb7be5-8ed1-4123-a7e6-fd29a32f4100"
->
-<Comment>Describes the action that can be executed by the driver for the choice of RBC Id Number.</Comment>
-<StructureElement
- TypeName="Boolean"
- Default=""
- Mode="Outgoing"
- NeedsRequirement="FALSE"
- Name="Enter"
- Guid="961d8f78-6924-4df4-acf0-c9c0669ca6ba"
->
-<Comment>Indicates that the RBC ID should be provided by the driver</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default=""
- Mode="Outgoing"
- NeedsRequirement="FALSE"
- Name="ReEnter"
- Guid="463eea80-1a66-4977-b9a9-f5f3715617ae"
->
-<Comment>Indicates that the RBC ID is proposed to the driver and should be validated or reentered</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default=""
- Mode="Outgoing"
- NeedsRequirement="FALSE"
- Name="UseEirene"
- Guid="015be929-091e-4894-8bfb-3819cd89aff2"
->
-<Comment>Indicates to the driver to used the EIRENE id</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default=""
- Mode="Outgoing"
- NeedsRequirement="FALSE"
- Name="UseLastStored"
- Guid="1a024936-e626-43f0-b95b-fca512490227"
->
-<Comment>Indicates that the last stored RBC id should be used</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="470"
@@ -3649,17 +3028,20 @@ DMI.MasterDMI().HandleModeChange()</Action></Actions>
  Y="570"
  Width="100"
  Height="50"
+ NeedsRequirement="FALSE"
  Name="Update system state"
  Guid="67b54514-2cec-4d9e-a928-313c0f8d49ca"
 >
-<Comment></Comment>
+<Comment>Updates the state of the system according to the driver&apos;s response</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Update system state"
  Guid="f1841b69-51d6-4354-b40e-5576fd069eb1"
 >
-<Comment></Comment>
+<Comment>Updates the state of the system according to the driver&apos;s response</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>

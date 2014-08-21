@@ -274,7 +274,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="d3c15e47-c4d6-468f-93db-bc2d765f81bf"
->OutputInformation.ShowRequestStatus &lt;- Default.Request.Request</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -430,30 +430,6 @@ Kernel.DriverId.DataState == Default.DataState.Valid</PreCondition></PreConditio
  Guid="3a7adecc-6646-4d3a-ab14-8b07e02c0e6f"
 >Id &lt;- Kernel.DriverId.Value</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="bb8cf8b8-f543-45c4-861f-5908e37de4ab"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="9b2e434f-43c1-43dd-8004-347136508d31"
->
-<PreConditions>
-<PreCondition
- Guid="d3540884-3532-48cf-b5ce-bdec7d09b20a"
-><Comment></Comment>
-DriverIdMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="aa206122-312c-46f3-ad57-47748241b2f4"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
@@ -583,30 +559,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 >RBCContactInformation &lt;- EURORADIO.LastKnownRBC</Action><Action
  Guid="a0d2451b-237c-4d9c-bf90-12ec94387235"
 >NetworkId &lt;- EURORADIO.LastKnownNetworkId</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="c9781aa1-ee60-4496-a95d-988be33a2e69"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="252a6a02-8670-4d0e-8234-0dd30d00009b"
->
-<PreConditions>
-<PreCondition
- Guid="6fba3132-619f-4c62-9fe4-4d21aac40885"
-><Comment></Comment>
-RBCContactInformationMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="0e2944d0-5746-4b07-9d0f-2aa350d79ce7"
->Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -742,30 +694,6 @@ OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Action
  Guid="f3a9d8ce-e6a1-4172-b66b-5be711d63c3b"
 >Number &lt;- Kernel.TrainRunningNumber.Value</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="cdbb1308-02f4-4ca9-942d-46bb3e166c24"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="c72d495e-05cd-40d8-bc42-f0ccddc613b4"
->
-<PreConditions>
-<PreCondition
- Guid="a3a20f75-03b6-4d58-9ea4-82bbbfb1c948"
-><Comment></Comment>
-TrainRunningNumberMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="19fc4b63-a6d4-4ace-a907-4bde8790f7b8"
->Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -1291,30 +1219,6 @@ OutputInformation.DisplayRequested</PreCondition><PreCondition
 ><Comment></Comment>
 Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="b8caaaf8-9f0f-433a-8ae9-31887f11c7ab"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="8202cc01-65c8-4d74-b06a-a8dcd563aa21"
->
-<PreConditions>
-<PreCondition
- Guid="20f3c117-d8ad-45a0-8b47-691b2c4e30bb"
-><Comment></Comment>
-TargetSpeedMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ed55c12f-5f4b-4e81-98de-3d670d116473"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
@@ -1447,30 +1351,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Action
  Guid="ac88bf52-f540-44c2-8c94-930fb08165ef"
 >Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedMonitoring.ReleaseSpeed</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="ebfd4a0d-a04d-42f2-8fbc-ddecc939ced7"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="d0c33730-0012-47a4-8def-0b9d50feed88"
->
-<PreConditions>
-<PreCondition
- Guid="7abd1af9-b6d0-4cd6-8d34-7abe73a982a7"
-><Comment></Comment>
-ReleaseSpeedMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="8048d6e5-c38b-4510-a6fb-6bced7454a9b"
->Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -1606,30 +1486,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 >SupervisionStatus &lt;- Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</Action><Action
  Guid="975c42a9-7e96-48dd-99bb-ee51294679d3"
 >Monitoring &lt;- GetMonitoringType()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="9dc1e10c-3156-4434-80a8-5029da52039c"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="a46c79d4-f4f3-4fe5-b845-42a5fe240b29"
->
-<PreConditions>
-<PreCondition
- Guid="ea9a30e8-e6ea-4a78-9366-888fb970e01f"
-><Comment></Comment>
-SpeedAndDistanceMonitoringSupervisionStatusMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="8c20c993-1f19-4642-b18d-2825e76831f3"
->Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -1850,32 +1706,6 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
  Guid="bd518ebb-a594-48a2-9310-a6e8882d9a25"
 >
 </ReqRef><Comment>Handles display of brake indication</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="91e7ffbc-28ed-40a9-9dbf-202ff2e63595"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="426bc57c-e656-4a1e-b1ba-58136f187cc5"
->
-<PreConditions>
-<PreCondition
- Guid="0d88c15c-0c8f-48b8-9567-faaae44056ec"
-><Comment></Comment>
-BrakeIndicationMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="3a81af1a-b902-4026-b529-cf55bd02cc05"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -2190,32 +2020,6 @@ Text &lt;- text</Action></Actions>
  Guid="f690ca99-451b-4d00-b294-4aaeef376fad"
 >
 </ReqRef><Comment>Indicates whether reversing is allowed</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="ccf16630-18d7-4342-afeb-acb9b7c1124e"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="90cb74d5-33f9-4993-be50-05c6db9c35ac"
->
-<PreConditions>
-<PreCondition
- Guid="c891d32e-cc5e-4280-bf77-059a779cf533"
-><Comment></Comment>
-ReversingAllowedMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="5d037259-a282-4280-aa7e-3ec4786f608b"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -2505,30 +2309,6 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
   USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="844bca7b-74f1-4561-b060-909ba9a18957"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="b8aa0f80-bd5d-458a-b9c4-9e8be574754c"
->
-<PreConditions>
-<PreCondition
- Guid="3aaca881-11a5-4ae4-b9ab-0f2e529bc783"
-><Comment></Comment>
-TrackConditionsWithoutSoundHornMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7f37c96a-e37c-409e-a411-f5a3d4e71342"
->Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -2892,30 +2672,6 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="63957ae5-6f10-4c7d-bcf1-3c76f4c385d6"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="aabb6c91-dbe4-4a84-905a-e495d5cc467b"
->
-<PreConditions>
-<PreCondition
- Guid="5b2d31b4-f8c8-4929-a4a2-f3219ad52033"
-><Comment></Comment>
-TrackConditionsWithSoundHornMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="21ef3e06-0a34-49da-993c-2ad36b7cd62a"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
@@ -3133,32 +2889,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="adfd6398-ecdd-4ebd-bb41-098c31d8657f"
 >
 </ReqRef><Comment>Provides the geographical position of the train</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="0520902f-7310-426c-8473-eacef4ac344b"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="edba6c8c-cba0-4dae-a8a0-eaf79ca9ec28"
->
-<PreConditions>
-<PreCondition
- Guid="1c82f921-9f10-4b02-900e-6988bcab8551"
-><Comment></Comment>
-GeographicalPositionMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="aedb0891-8413-4652-a824-8eafe0c8243e"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -3257,32 +2987,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="29f9335f-ec2c-4210-958a-827a37510bb8"
 >
 </ReqRef><Comment>Provides the override status</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="ffdd6089-0d6f-4a3a-9537-68ea37ba2cf4"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="748bb71c-827b-4ca3-a2fd-cd554c1b0a02"
->
-<PreConditions>
-<PreCondition
- Guid="0d584847-ed14-4cdf-b297-8cc2e10056c0"
-><Comment></Comment>
-OverrideStatusMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ed7c3723-fbcf-45a5-b6a5-03c1e310c777"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -3382,32 +3086,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="a1555b6a-9c27-4289-9a13-7fb7e564c6a0"
 >
 </ReqRef><Comment>Indicates whether a level crossing is not protected</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="1546ce80-8ac2-4371-bf5a-c45601fe635f"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="3f83365c-51a0-4a7a-ae9c-fc8242b6dbd3"
->
-<PreConditions>
-<PreCondition
- Guid="8ba9fbc2-2324-4044-a5a7-c563409bb7c9"
-><Comment></Comment>
-LXStatusNotProtectedMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="80237b54-a03b-4033-8cde-75ff429e0f6d"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -3506,32 +3184,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="aaf79d6c-33e1-4a34-bf73-044a35515109"
 >
 </ReqRef><Comment>Indicates that shunting has been refused by RBC</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="57b74321-fce6-47f4-94b6-3c1f37ec99b4"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="17f3c10e-bda8-4d4d-a696-cfc5d862d473"
->
-<PreConditions>
-<PreCondition
- Guid="11147a50-e191-49f1-ab5e-ab3e2539991d"
-><Comment></Comment>
-ShuntingRefusedByRbcMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="48edfc91-b908-4406-91b0-25de488ecd20"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -3631,32 +3283,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="c93568d0-52d1-4fac-9fb6-c882d83a119e"
 >
 </ReqRef><Comment>Indicates that the shunting request has not been answered by the RBC</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="a63178e1-f269-428e-ae12-da0522326d93"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="180fdc9b-b9c5-42d4-acd3-0f15abea87c1"
->
-<PreConditions>
-<PreCondition
- Guid="9db4d7e0-e79e-4ee3-aa26-a7610c5144db"
-><Comment></Comment>
-ShuntingRequestNotAnsweredByRbcMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="89e3c643-3e1d-4b77-bdd8-d943b9ae0663"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -3787,30 +3413,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="9815ae9e-cf79-4c63-8626-c190486f58da"
 >EmergencyStops &lt;- Kernel.EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="37822615-2377-4cbd-9098-eb41a8c94a9d"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="0db0dfba-8b9d-4e7a-9dcf-5ca20f068adf"
->
-<PreConditions>
-<PreCondition
- Guid="fe551189-785f-4869-bfa8-c477175eebf9"
-><Comment></Comment>
-AcceptedEmergencyStopsMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="cb1f25b9-f1fc-4f90-a099-5e53e261e667"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
@@ -3914,32 +3516,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 >
 <Comment></Comment>
 </ReqRef><Comment>Handles display of information relative to fact that the mode is entered in FS/OS</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="21757936-d5a4-4804-9558-dd768ae03e58"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="b5c00715-d209-44fc-973b-9cc65057390f"
->
-<PreConditions>
-<PreCondition
- Guid="e4a2ffb6-d671-4879-a1ac-1483741c1231"
-><Comment></Comment>
-EntryInFsOsMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f60150fe-b4c0-48fd-a07b-ae0539e5c243"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -4147,32 +3723,6 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
  Guid="8cd39df8-b416-4ca5-9934-a7e2aecd876b"
 >
 </ReqRef><Comment>Provides track ahead free information</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="0b062d4f-d43b-4ab9-b45b-5e2ae4052329"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="bdb675a0-74f4-448c-ba45-057f8a436176"
->
-<PreConditions>
-<PreCondition
- Guid="9ae096cf-8f65-40d6-858b-fa3b9bed8f26"
-><Comment></Comment>
-TrackAheadFreeRequestMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="fbe9d1f4-045b-4bca-b7e2-f489bdd67011"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -4272,32 +3822,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="da9aae09-aa16-4c2f-89ae-eebff6dd652d"
 >
 </ReqRef><Comment>Handles display of slippery rail conditions</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="9b650d61-f6e0-470b-85b9-ef7a145dc33b"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="94929c29-9772-4fcf-a689-93fae804e159"
->
-<PreConditions>
-<PreCondition
- Guid="5bf605c6-a738-4ab6-b76a-7a6362ddc8b7"
-><Comment></Comment>
-AdhesionFactorSlipperyRailMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="2e45078d-d6f6-4d0b-b7a5-933259ae0eb6"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -4397,32 +3921,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="9f04e80b-3ca0-4083-8cb2-bf7331e43b76"
 >
 </ReqRef><Comment>Indicates that the UN mode has been proposed</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="c856220a-7862-4800-b6fc-67b22d144cfb"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="f9df405b-46ee-427c-9bef-300fe712b1fc"
->
-<PreConditions>
-<PreCondition
- Guid="69eace97-9121-4042-bf02-751e48cb85e9"
-><Comment></Comment>
-UNModeProposedMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="29ccb8ac-eac6-4a40-bcaf-d021e0911856"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -4631,32 +4129,6 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
  Guid="920ff8ac-bcde-4a49-921c-d76d63346356"
 >
 </ReqRef><Comment>Indicates a trackside malfunction</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="91747915-a517-417a-932d-13f477cf61ff"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="8cd62c49-74a2-41b1-b8f6-e4673b22b8e2"
->
-<PreConditions>
-<PreCondition
- Guid="7f5a1906-7d2b-4ad4-a12c-a9274d1f4a4d"
-><Comment></Comment>
-TracksideMalfunctionMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="8333d81a-90ad-4f59-9795-65d3f8593b16"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -4756,32 +4228,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="bcb696cc-d93b-4398-9ceb-68a7bbfd16e1"
 >
 </ReqRef><Comment>Indicates the fact that the train data changed from other source than the driver</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="9b9d692a-e2da-4fca-a300-5e37f28c7e27"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="dd04f0c5-f901-47f3-bf6e-20b07e85e2ff"
->
-<PreConditions>
-<PreCondition
- Guid="ff2066c8-0cbf-4837-b411-1fc8338b03d3"
-><Comment></Comment>
-NotificationOfTrainDataChangeFromOtherSourceMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="33c4df4f-2a6d-4207-b78b-581a280236e1"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -4881,32 +4327,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="8f60ca0e-0d63-49ba-9242-e2dea62949a0"
 >
 </ReqRef><Comment>Provides the system version</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="23eea70d-853c-41f3-84c6-cac1f5bfce6e"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="3f6e75f9-a035-4a18-9a24-9fe8a0228d76"
->
-<PreConditions>
-<PreCondition
- Guid="ba12b719-f86d-44d7-8345-57c2973a0454"
-><Comment></Comment>
-OperatedSystemVersionMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="e6de31d9-e617-4b16-9b1b-9a8434588ed3"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -5006,32 +4426,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="a9970116-9a26-4431-bb76-a6b003e10f29"
 >
 </ReqRef><Comment>Indicates that the radion connection failed</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="4932623b-617d-4e6c-986b-91e70bb4cfba"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="b4a264a1-6695-4e87-bee8-145b1a403748"
->
-<PreConditions>
-<PreCondition
- Guid="c2f5dd11-f814-4efd-aba5-368440797501"
-><Comment></Comment>
-RadioNetworkRegistrationFailedMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="037a71b7-7cdc-4e11-9b84-66c6eb65f32f"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -5177,30 +4571,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="6c795dd9-cfd6-4c71-9695-cc2210c5bcaf"
 ><Comment></Comment>
 ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="5f9b6b05-5cbf-4908-9097-20715ce54768"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="2d7a1119-0b88-498c-a0af-5c6803466851"
->
-<PreConditions>
-<PreCondition
- Guid="7b04e447-62e7-4e13-8bac-aa339523a600"
-><Comment></Comment>
-SafeRadioConnectionIndicationMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="59dd6791-5f51-4af6-9862-98eabb58f063"
->Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -5894,30 +5264,6 @@ IN MRSP</Action></Actions>
  Guid="3b03cbd3-6227-48c2-89d6-d091e5d898dc"
 >Location &lt;- Kernel.IndicationLocationAtMrspSpeed</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="27d31506-34de-435d-af8f-a3ab976616a6"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="94eb0ee7-b913-48ba-94bc-ce8dfe263ddb"
->
-<PreConditions>
-<PreCondition
- Guid="914bd00c-bb53-4283-8289-4b6266205329"
-><Comment></Comment>
-IndicationLocationAtMrspSpeedMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="b8f41499-5d08-45c4-95c9-aac583e89ff8"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
@@ -6043,30 +5389,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="48b28eb0-1034-4e06-9c8e-4bc9d9fd35b3"
 >Target &lt;- Kernel.FirstTargetAtZeroSpeed</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="0272f3ba-4bda-4ee3-a0cd-54d26ec2579f"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="c8abeec1-af35-40f1-9c2a-aa4b15391216"
->
-<PreConditions>
-<PreCondition
- Guid="3ac9b8cd-bfee-4d48-b814-e2b26cdc8e59"
-><Comment></Comment>
-FirstTargetAtZeroSpeedMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="909a4e04-464f-4270-ba6a-f0ea4eadd2a4"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
@@ -6168,32 +5490,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 >
 <Comment></Comment>
 </ReqRef><Comment>Handles display of information relative to the brake reason.</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="a1eff65b-33f7-4f5b-99e7-ef8cd121623a"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="e088cd45-8c6c-4bf3-82b5-d189b689a2dd"
->
-<PreConditions>
-<PreCondition
- Guid="4599d81b-6357-4283-993b-ef48d503ebd6"
-><Comment></Comment>
-BrakeReasonMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="297126f3-e4b7-4fc4-b85b-9093f914d611"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -6296,32 +5592,6 @@ The brake reason.</Comment>
  Guid="02e6cc97-868d-46a6-b95c-12b09214c467"
 >
 </ReqRef><Comment>Indicates that the trackside is not compatible</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="e6884735-5b4e-4ee4-9f4c-5e13c9a3c2ed"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="6431da6b-28d7-4fa0-9199-ca2de1e2f59f"
->
-<PreConditions>
-<PreCondition
- Guid="cbae1bfa-f525-46cb-b7ee-bec4d759ce4e"
-><Comment></Comment>
-TracksideNotCompatibleMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="fc712a32-9bb9-431a-864b-4c4b989eaa69"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -6422,32 +5692,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="09244aa5-f821-450c-8607-d52892f18a36"
 >
 </ReqRef><Comment>Indicates that the train has been rejected</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="10ca34fe-0c05-462d-b125-58f6452bd4ab"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="415c9c09-5999-4641-9d02-26ea75b2d7ec"
->
-<PreConditions>
-<PreCondition
- Guid="7fae6490-e7f2-4a9a-8d6a-b87cecd2381b"
-><Comment></Comment>
-TrainIsRejectedMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="b2871130-3a4b-4622-8c0f-b7af7bc48bd0"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -6549,28 +5793,32 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the route unsuitabilities</Comment>
 <Rules>
 <Rule
- Priority="Processing"
+ Priority="UpdateOUT"
  Implemented="TRUE"
- Name="Output when mandatory"
- Guid="53307c45-bbd1-42f1-ac15-8289af25e076"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="26f442dc-e1a5-4e18-a2a9-90408ed6900e"
 >
-<Comment>Outputs the value of this element when mandatory</Comment>
+<Comment>Updates the output value when display is requested</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Output when mandatory"
- Guid="43b23852-f1a7-4ba0-97af-4b2c37dcd88c"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="a764d9c3-bfe8-4a80-a0c8-20818543f5d4"
 >
 <PreConditions>
 <PreCondition
- Guid="7aa40c66-2b2a-4f38-8240-806ad61b0eae"
-><Comment></Comment>
-RouteUnsuitabilitiesMandatory()</PreCondition></PreConditions>
+ Guid="d4d0f968-0c62-4881-8b31-4c3aa53e38a3"
+>OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="02103ad1-59b6-4991-8a41-9d0b4d5374d8"
+>Available(Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile)</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="c15b4298-8d0d-49f9-9a25-6baebf0a86d2"
->Display()</Action></Actions>
+ Guid="9a64b1f3-c744-4797-951b-c1f9247a26c6"
+>RouteUnsuitabilities &lt;- 
+MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable (X) USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -6858,30 +6106,6 @@ OutputInformation.DisplayRequested</PreCondition></PreConditions>
 ><Comment></Comment>
 Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="797762d3-ea32-45be-82f3-b1285cdb2aef"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="9b98d79a-4529-49ac-8741-42c0be449173"
->
-<PreConditions>
-<PreCondition
- Guid="be4aa0aa-f278-4679-8a13-2ab35bdad9e6"
-><Comment></Comment>
-TrainDataMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="69edde07-c8ef-48c3-b0f8-73e383c434b6"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
@@ -7042,30 +6266,6 @@ Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() != Kernel.SupervisionStatu
 Speed &lt;- Kernel.SpeedAndDistanceMonitoring.FLOISpeed(
 Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="e828d571-c7d2-4601-8c76-e79bf90ab150"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="a030e550-77b1-46ca-ac89-a0e86739d42e"
->
-<PreConditions>
-<PreCondition
- Guid="0874bb61-8d8f-406f-8aa8-46da820ed8cc"
-><Comment></Comment>
-FLOIMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="aae2ef57-d563-4526-a3dd-8c35cb79b54b"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
@@ -7166,32 +6366,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="7eb35b2d-181b-4894-b723-fea055d82961"
 >
 </ReqRef><Comment>Provides the virtual balise cover information</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="89ca64c8-30bb-411b-85b5-6b00cf71ca13"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="c131e55c-55ce-4b5b-8460-aee71856a4c0"
->
-<PreConditions>
-<PreCondition
- Guid="ea97e267-df29-4b62-9e2a-58c46c530688"
-><Comment></Comment>
-VirtualBaliseCoversMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="2abb4656-1523-4260-9a4a-f78459b08217"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -7284,32 +6458,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="167ca475-f079-4356-8437-bbfa8134e1b0"
 >
 </ReqRef><Comment>Indicates that the mode RV has been proposed</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="a2fb073c-b6e1-4c4a-82fd-4ebb6a443873"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="da517400-ba44-4156-8626-ae7077ba5561"
->
-<PreConditions>
-<PreCondition
- Guid="e467d201-7835-4d0d-ae25-8e709ebd90ad"
-><Comment></Comment>
-RVModeProposedMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="299b9260-6fd6-472f-a3c1-d9a027116b0d"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -7412,32 +6560,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="df0c091b-b54f-4ce8-bf8b-7fdfef8ff571"
 >
 </ReqRef><Comment>Indicates that the mode SN has been proposed to the driver</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="41bbf856-8448-4342-875e-cf5e8fa668f8"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="74a5c537-d67f-4e4b-bf9f-fe09d98a7d43"
->
-<PreConditions>
-<PreCondition
- Guid="ac0c1e1e-340c-4f02-88f5-a2a520d5262f"
-><Comment></Comment>
-SNModeProposedMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="73b9e6ba-2fd0-4d41-98b6-cd9110269e8b"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -7538,32 +6660,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="63d2d991-6837-40ce-b18b-45489713a8b2"
 >
 </ReqRef><Comment>Indicates that the SR mode has been proposed to the driver</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="74da67dd-8359-4e3b-8ec3-be7d649828a1"
->
-<Comment>Outputs the value of this element when mandatory</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Output when mandatory"
- Guid="d194ab1f-ab27-400e-a5c4-970124bebe26"
->
-<PreConditions>
-<PreCondition
- Guid="d35d1325-6a58-4ec2-8816-3c0bac5ad794"
-><Comment></Comment>
-SRModeProposedMandatory()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="5df41f63-99fa-4215-8786-dbb9edf5df4d"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -7788,30 +6884,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="AcceptedEmergencyStopsMandatory"
- Guid="605dc661-7187-45c2-8ca7-d32ab8a5fa35"
->
-<ReqRef
- Id="2fe0de25-c551-4115-a76b-4b3c6804a58b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ec5a8b5f-6941-4043-a477-b4993a962cd5"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="1a7c7037-c5cc-4164-a734-41b4202b07f4"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="AdhesionFactorSlipperyRailAvailable"
  Guid="b7bd02c6-17fa-44b0-bd05-9004f9d87465"
 >
@@ -7828,30 +6900,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="f4a984da-8246-411f-8829-a8d426758367"
 >
 <Expression>Kernel.Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="AdhesionFactorSlipperyRailMandatory"
- Guid="7cfea4bd-c157-423b-8103-982d124244ec"
->
-<ReqRef
- Id="6d776e50-b3e1-4d29-8ead-bfb688e39099"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f09e5ee2-230e-4710-84de-21363a50ade2"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="32d3fc7d-ff78-4ab2-acf5-2520fa2191cf"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -7882,30 +6930,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="BrakeIndicationMandatory"
- Guid="5bf97fc8-0550-42ea-bfbb-68bffb1921ef"
->
-<ReqRef
- Id="af77864f-0a33-496f-a874-1ebab99a0c4e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="599fbdb0-ca29-495e-bc4e-aa6326a16498"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="ba3cfc48-d15b-4f89-b7da-426c8807563c"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="BrakeReasonAvailable"
  Guid="9a7ade25-ca03-4709-a3ab-bc1fc397c5a6"
 >
@@ -7922,30 +6946,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="b5fec236-3d95-4e04-b915-c62d69ac4903"
 >
 <Expression>Kernel.Mode in [Mode.SB, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.UN, Mode.PT, Mode.SN, Mode.RV]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="BrakeReasonMandatory"
- Guid="f71e8716-6d2a-4cbf-9e75-401dc934eb2a"
->
-<ReqRef
- Id="ce7d1ef1-5c76-4031-a912-dd0416fd0924"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5af6b9d7-9b5c-423a-80d4-041686e3e1fb"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="3ba0e784-a9a0-4dcc-a12c-b65351466f24"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -8023,30 +7023,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="DriverIdMandatory"
- Guid="97f001e0-6119-461e-87f6-7486a3838a16"
->
-<ReqRef
- Id="8de0ac4e-25fd-4dbb-985d-725e7eb5f9ab"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="24b38ce3-2f4e-455d-960d-633adbd9ee05"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="e107271a-41f7-49b2-80df-a509e9930dea"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="EntryInFsOsAvailable"
  Guid="2d8eaf98-0f6f-44b2-a9a3-0a8a037f0c6d"
 >
@@ -8063,30 +7039,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="360b9d1e-71ce-41a7-8446-d8b5dd4547d1"
 >
 <Expression>Kernel.Mode in [Mode.FS, Mode.OS]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="EntryInFsOsMandatory"
- Guid="7654945a-2df7-45a1-8528-548bd3e64bc7"
->
-<ReqRef
- Id="d3c5c2fa-1d94-436a-9c37-457cf5e63194"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d5e5f1d8-f3bc-4a4d-9741-5504d7ddc109"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="2de1e142-4948-4600-bb92-287e597aea8f"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -8164,30 +7116,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="FirstTargetAtZeroSpeedMandatory"
- Guid="17dc135f-c624-4b72-8883-fe1adcb67f07"
->
-<ReqRef
- Id="2cd466ba-aedb-4f3e-8661-ae10ee1737c9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3a988a07-c073-4d47-916c-982857bca60f"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="1b85542b-6c77-44a8-ac27-79aa77425ab6"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="FixedTextInformationAvailable"
  Guid="f0fa6ebd-16d0-4161-bf7a-40c651311e9f"
 >
@@ -8204,30 +7132,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="7359c598-f412-43f5-a20b-4f32ab83c6cd"
 >
 <Expression>Kernel.Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.RV]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="FixedTextInformationMandatory"
- Guid="5ca72e85-b80e-434d-b97d-1ed892b0500f"
->
-<ReqRef
- Id="3dabcead-8429-46f3-a39b-10515ea26748"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6a8f6389-6757-436e-94ca-e50045c86826"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="1091c02a-0472-48c5-ac05-c6e4aeca9720"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -8258,30 +7162,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="GeographicalPositionMandatory"
- Guid="02ae607e-6f8b-4b04-98ca-824f3f33cb52"
->
-<ReqRef
- Id="faadbf28-32da-48eb-96d8-48c5eb6c86e0"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="87d6cbd7-7ba2-4a02-a4e7-d6dfa2502c3c"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="3ebcb8ba-09b0-4e58-a7a1-1b0f41716cae"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="GradientAvailable"
  Guid="cc7242a2-c6fd-4bee-8567-e330538b0ab8"
 >
@@ -8298,30 +7178,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="5f5a9231-4f9d-447c-9328-3b597e6e180a"
 >
 <Expression>Kernel.Mode in [Mode.FS]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="GradientMandatory"
- Guid="be757784-c325-4f52-9101-ec7b8ec9208f"
->
-<ReqRef
- Id="e3651d57-b080-418d-95b4-1c194b24a9f7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="aaf725fd-b330-4b52-995b-0bc7dfc16269"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="8022ad20-346e-403c-8edd-dac7a27daa5e"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -8352,30 +7208,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="IndicationLocationAtMrspSpeedMandatory"
- Guid="18399fc4-5027-447c-944d-9c9fea16ed06"
->
-<ReqRef
- Id="abc0e167-3d30-443d-b62a-963a5228be72"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="911a915f-a8af-4dd9-8268-d11df936f995"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="d6324be1-460a-4d7f-a635-f8f2f8d3de70"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="LevelTransitionAnnouncementAvailable"
  Guid="6d462a6a-322c-4fe2-8d14-c2aaf43da38f"
 >
@@ -8392,30 +7224,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="e4d7b102-327b-4290-b147-ca3bf090a21e"
 >
 <Expression>Kernel.Mode in [Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="LevelTransitionAnnouncementMandatory"
- Guid="da19871c-68bf-47e8-a475-49443539a63d"
->
-<ReqRef
- Id="5e2ed22b-9e71-4788-8e67-a9aa26c8a51c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f40f4a1b-44d0-46f0-9caa-e7f2561aaa80"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="1b355a1e-b483-4b85-997b-6f87cae53ab8"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -8493,30 +7301,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="LXStatusNotProtectedMandatory"
- Guid="2511c5af-621f-4973-a757-3337fff68dac"
->
-<ReqRef
- Id="1d72dec1-b4fc-4847-815b-496fc6b78d91"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c28293a3-ca2d-4de8-8bbb-b4f0c6677fe8"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="297cd063-df7a-451b-a3bb-0d7266988037"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="NotificationOfTrainDataChangeFromOtherSourceAvailable"
  Guid="340f1531-1beb-4fdc-87ee-81c72c27c8ae"
 >
@@ -8533,30 +7317,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="8ddea9fa-b284-40a1-bf16-9d22c59a6571"
 >
 <Expression>Kernel.Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="NotificationOfTrainDataChangeFromOtherSourceMandatory"
- Guid="f49dc1e1-5f6d-4c24-b763-17b6d7341597"
->
-<ReqRef
- Id="cde58d6c-c5d2-4ee2-8363-fb89efc1fcd7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3a683a80-de68-4a9e-be4b-0d01ba1b616d"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="3400466f-604e-4855-a729-d0e61512f3e4"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -8587,30 +7347,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="OperatedSystemVersionMandatory"
- Guid="741c0d7d-3eba-4b9f-9fe3-1a7eae054f0b"
->
-<ReqRef
- Id="24ae3ea6-e8c3-4608-9c0f-f8939770807a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="84a63d4d-4eae-4e98-a1ba-7021475d50b3"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="756eee49-9589-4a4f-877a-f26237b67018"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="OsLsShModeProposedAvailable"
  Guid="64fd4d34-fa3f-4db6-8453-0bc0b6dbe8fd"
 >
@@ -8634,30 +7370,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="OsLsShModeProposedMandatory"
- Guid="7374fb73-eaba-4baa-aeec-299c22cf3b87"
->
-<ReqRef
- Id="fa0a8ced-0f55-4b05-8937-d1c28bd730e6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c9ea9a6b-8213-4d19-86d5-0208a326306c"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="968d9a00-4501-4365-84c9-1cc6fa50e529"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="OverrideStatusAvailable"
  Guid="f331d78b-8654-439d-9212-6ac14a344f52"
 >
@@ -8674,30 +7386,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="feb59168-80b3-448c-a0c2-bf4e67ac8ece"
 >
 <Expression>Kernel.Mode in [Mode.SH, Mode.SR, Mode.UN, Mode.SN]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="OverrideStatusMandatory"
- Guid="cfff47fb-576a-4abe-a759-ec46af4c4948"
->
-<ReqRef
- Id="af821537-961a-4150-9dc5-29f506b0d734"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a4acf56d-5d3c-4248-bbb2-3a7ecff9c5ee"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="edbc1d63-a75d-4609-b2f7-ca5ced9b91ee"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -8775,30 +7463,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="PlainTextInformationMandatory"
- Guid="57ec9ee1-1094-4fbd-93c7-4f4ee2f02384"
->
-<ReqRef
- Id="f0cc2cfd-d829-4944-aa8e-524a7291260d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d358397d-4faf-4234-9eba-4e396fd05a39"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="53cb77b0-b4ee-46a9-b49d-2d829c5d72cc"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="RadioNetworkRegistrationFailedAvailable"
  Guid="dd44ff1a-d469-40d9-994c-17fcaf0dc494"
 >
@@ -8815,30 +7479,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="102d56c3-4ab5-4e6d-8af8-f393c05371b3"
 >
 <Expression>Kernel.Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.PT]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="RadioNetworkRegistrationFailedMandatory"
- Guid="2aa0a07c-1e8f-4659-a641-31840b9a8fc1"
->
-<ReqRef
- Id="e739c6d0-7c43-4cfb-a67e-f3caf8c8586c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bfb2fb56-3725-4ae1-b4c5-245007a18449"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="4cd49e75-f0fa-41b0-8326-b18f80f21b81"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -8869,30 +7509,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="RBCContactInformationMandatory"
- Guid="fbd0e893-61d4-4881-ac6a-a9dcac15c201"
->
-<ReqRef
- Id="f6cda523-6b70-489d-a6dd-e29b33d2a772"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="cb003e3d-c337-42ee-83d4-5a5997eb74c4"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="bd461b5f-1d20-459b-a780-772fe1b8d10a"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="ReleaseSpeedAvailable"
  Guid="9063f2af-88c3-4803-a680-5691d630a195"
 >
@@ -8909,30 +7525,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="bb839338-6cbc-4412-8d65-495378fe39b0"
 >
 <Expression>Kernel.Mode in [Mode.FS, Mode.LS, Mode.OS]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="ReleaseSpeedMandatory"
- Guid="f23c2a8b-2b41-4f27-99b8-29523a4d0540"
->
-<ReqRef
- Id="76a41522-e0f9-4aab-b8fc-267f771b125b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8d7c385a-d8a8-48b9-9a11-7d1385b5506a"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="32145788-8a37-492e-9b01-bc43cbd660c8"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -8963,30 +7555,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="ReversingAllowedMandatory"
- Guid="02bdf017-076f-487b-bfbc-a207486b2361"
->
-<ReqRef
- Id="484415c8-ad35-4b77-af44-1748cd2e57a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="928a378b-e242-4eee-b32e-c9ad7715da41"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="d647e9ce-a560-45d4-9095-053c06a8cd9d"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="RouteUnsuitabilitiesAvailable"
  Guid="710b8762-593b-4ae0-9fd4-7369efc26b46"
 >
@@ -9003,30 +7571,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="5d9348f6-557d-44b8-97cd-b0956fea6089"
 >
 <Expression>Kernel.Mode in [Mode.FS, Mode.LS, Mode.OS]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="RouteUnsuitabilitiesMandatory"
- Guid="bc1f9698-9123-44aa-9253-3b5e1887a9ba"
->
-<ReqRef
- Id="3a7bc83f-7d2f-4338-92a7-ee27e856b0a4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b1b1eee9-39ec-4484-8c94-84d6d974013f"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="d7d11624-2a5e-4db8-aa77-5160347a56ed"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -9057,30 +7601,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="RVModeProposedMandatory"
- Guid="ee59331e-3877-4c70-9547-c7cd456316cb"
->
-<ReqRef
- Id="3f9544be-2db6-47dc-99aa-0019955b7d6d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d5b471c9-1cbd-43e7-aa51-e9ca58f07399"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="a7913200-b53a-43cb-a628-f9fda4907384"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="SafeRadioConnectionIndicationAvailable"
  Guid="f5941a7b-dbee-4683-9fa4-36e19cc0ef80"
 >
@@ -9097,30 +7617,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="aef1c327-7fe4-46a2-8fe2-8881c639cfb7"
 >
 <Expression>Kernel.Mode in [Mode.SB, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="SafeRadioConnectionIndicationMandatory"
- Guid="db28f001-c4c6-4014-b4ea-aae0d37541ae"
->
-<ReqRef
- Id="1ace4af7-4f9a-421e-8b9b-43323ba4a8ef"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f16292d1-d1d1-4203-8d85-2c53e1e805f2"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="da8aa29a-ff5a-43ed-9c8a-f9d682737101"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -9151,30 +7647,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="ShuntingRefusedByRbcMandatory"
- Guid="aa17a077-0f26-460a-9f9e-345dadbcce57"
->
-<ReqRef
- Id="1176c931-9bec-4873-af7b-4bc2a1e73232"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bd105f24-8954-4388-aae0-48347c35c78c"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="20b35055-683b-4486-a303-4c81be89e47d"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="ShuntingRequestNotAnsweredByRbcAvailable"
  Guid="31ee81ed-5503-4d73-85ab-bf117aaab19d"
 >
@@ -9191,30 +7663,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="1f43dbb7-dcb7-48ba-8d9b-2cc433188a2d"
 >
 <Expression>Kernel.Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.PT]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="ShuntingRequestNotAnsweredByRbcMandatory"
- Guid="8cd5603b-210f-4b68-a18b-def1dc1f777f"
->
-<ReqRef
- Id="9bdd5161-d03a-424d-9e1d-a77f29b69351"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="097a2be5-6506-4595-9414-cfa3f6e4856c"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="b7084cb4-dece-433c-bfcf-7cd3c2efb2e7"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -9245,30 +7693,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="SNModeProposedMandatory"
- Guid="c60b8104-6701-4b14-83e3-f80e365593fd"
->
-<ReqRef
- Id="ebf19bbb-1136-41ba-92fe-0aa6cddb639b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2f8a06d4-c0aa-448c-aad1-0c657b6bacbe"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="c93eb10e-1838-4396-a94a-b2601f06a633"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="SpeedAndDistanceMonitoringSupervisionStatusAvailable"
  Guid="3a63bbaf-5fc0-4ff6-a5bc-02f7ab61a780"
 >
@@ -9292,30 +7716,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="SpeedAndDistanceMonitoringSupervisionStatusMandatory"
- Guid="3fe31378-92ff-42cc-b53b-77e9e396a8b7"
->
-<ReqRef
- Id="10645ba3-8d86-41ad-9956-71f5be85b4c1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4778bc17-01d2-4af5-a639-f44ad215b133"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="3d6aec61-c2f9-4806-aa23-86fddcc25f67"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="SRModeProposedAvailable"
  Guid="75c4c3c0-a079-4b91-9563-13cad657278b"
 >
@@ -9332,30 +7732,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="2016c4c4-ba52-440f-b77d-4b1dd0d2f104"
 >
 <Expression>Kernel.Mode in [Mode.SB, Mode.PT]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="SRModeProposedMandatory"
- Guid="2b3398bf-1bd9-4912-9d92-90ae93dc4e3d"
->
-<ReqRef
- Id="ab35ab1a-b0ef-4158-a6ea-e5e4b77dd326"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9c8d1295-2b23-4c84-a051-54e73210fed0"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="aa8d40fc-8492-4e46-942d-63babb46fc3b"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -9433,30 +7809,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="TargetSpeedMandatory"
- Guid="f0590062-129b-43d8-934b-1ec34f8400c4"
->
-<ReqRef
- Id="b2d1ec0c-6179-487e-8bd5-c648d7a87f56"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="02ee2464-141d-42b6-acca-8c79268cf2cf"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="d6d17bcd-9b12-4edc-9385-4954c4b06fc7"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="TrackAheadFreeRequestAvailable"
  Guid="df587eb3-662e-4c1c-8bbe-c1a929ab33bf"
 >
@@ -9473,30 +7825,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="a6b4b9f0-5bde-46b2-ba19-c06db12c45eb"
 >
 <Expression>Kernel.Mode in [Mode.SB, Mode.LS, Mode.SR, Mode.OS, Mode.PT]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="TrackAheadFreeRequestMandatory"
- Guid="9849e769-c706-4714-9d4f-3ba455a27685"
->
-<ReqRef
- Id="c1520a4d-814d-4bf0-addc-1002d8a5a2a3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="13682b88-ef15-42dd-90fc-6ce7ad2ca87b"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="164b471f-6d38-4d97-be51-3a362c423808"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -9527,30 +7855,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="TrackConditionsWithoutSoundHornMandatory"
- Guid="44df54e7-8b8a-4f86-b88c-a04e0df12f62"
->
-<ReqRef
- Id="88a9ba90-6c1e-47f7-bced-85484113e0fa"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5107cb51-8551-4926-91bb-26c1069b2587"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="9fcf0279-297a-417d-9b3d-586a1785d867"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="TrackConditionsWithSoundHornAvailable"
  Guid="915c282f-1b21-4aa3-b5c5-beac573fcc47"
 >
@@ -9567,30 +7871,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="a1a3a8e0-e203-4a78-b52d-36cd0548ffe7"
 >
 <Expression>Kernel.Mode in [Mode.FS, Mode.LS, Mode.OS]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="TrackConditionsWithSoundHornMandatory"
- Guid="5583de94-a14b-4243-b1a6-3387c2857b9b"
->
-<ReqRef
- Id="72d98796-7871-4e90-85df-298a95950478"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0b84458a-b460-4bb7-b1e6-49deb5621b88"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="658d581b-5f0e-4473-ba5d-45f25d9fb352"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -9621,30 +7901,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="TracksideMalfunctionMandatory"
- Guid="be384c97-66b8-48fe-a64c-d5b6cd0106b7"
->
-<ReqRef
- Id="84e5c5a8-0d3b-4bfa-81c7-81966a31f2e5"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ca262865-d5eb-49ad-b74f-75c254e8f284"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="55d4b338-f8d3-4793-806a-529d1176edbd"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="TracksideNotCompatibleAvailable"
  Guid="6b51ec01-5c50-4593-b387-aec5e8a7fce0"
 >
@@ -9661,30 +7917,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="ea8776b6-6cb7-42cf-bbc5-d8a92ad93950"
 >
 <Expression>Kernel.Mode in [Mode.SB, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="TracksideNotCompatibleMandatory"
- Guid="c7fc857a-dc71-4614-9fcc-562c4399f1aa"
->
-<ReqRef
- Id="e28641fe-d20c-42ee-a1e3-a02d73f37d4a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2f010cea-058e-41ec-ae62-9bf3c4415dc3"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="31d4870d-4006-4616-9ca2-5385afaf69c1"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -9715,30 +7947,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="TrainDataMandatory"
- Guid="a243943a-6732-4638-91b1-1272aa6016df"
->
-<ReqRef
- Id="3304c4da-5fe0-433e-b102-e0133ee3c22e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4391f5bc-b0b9-495d-a08b-3a6ab94914dc"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="8f86fae7-f4bd-4fd0-a383-f49424d163ef"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="TrainIsRejectedAvailable"
  Guid="69e10fda-0853-4b28-8f10-27c91510cb0f"
 >
@@ -9762,30 +7970,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="TrainIsRejectedMandatory"
- Guid="87da52cf-c775-4d06-80aa-e8d79f6643d9"
->
-<ReqRef
- Id="ab6dbc23-b7e2-4748-96b1-5478c3ca68c9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="683d2225-bc7c-4b58-8b7f-2fa718c0f245"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="1bb6b620-aa96-4a33-b609-740186f1c1bf"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="TrainRunningNumberAvailable"
  Guid="88e1e510-9d50-42c8-a250-42ed0c311063"
 >
@@ -9802,30 +7986,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="23448439-2f4b-4bd2-b3ba-6591cb4d035c"
 >
 <Expression>Kernel.Mode in [Mode.SB, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="TrainRunningNumberMandatory"
- Guid="c763a693-1622-4e26-9218-fe93aa8243b0"
->
-<ReqRef
- Id="47e76500-ce7e-48be-9414-97b01bbaaf74"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="79efcc1b-79fe-4ed6-af37-7cf2dce6ebb2"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="d8890c6f-0031-4149-8dfd-966805bcc483"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -9903,30 +8063,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="TripReasonMandatory"
- Guid="55d80624-de56-419e-9473-a6253f50ab97"
->
-<ReqRef
- Id="8bf47cec-0b77-42d2-b42f-49c0c29dbcec"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ab3c5792-2a5b-40d1-a0d9-d2a6aab5e27f"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="e37b26ec-b073-4900-b44e-cdcef20ae1be"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="UNModeProposedAvailable"
  Guid="46967466-5562-4139-81ef-0c552f131441"
 >
@@ -9943,30 +8079,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="09365d5f-51bc-429d-8d6b-00c84416d12b"
 >
 <Expression>Kernel.Mode in [Mode.SB]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="UNModeProposedMandatory"
- Guid="f75c114b-b486-418b-a87d-5f5f763d18a9"
->
-<ReqRef
- Id="8f221bd9-37f1-4b7b-90bf-7ced1a3e6840"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="95394675-847d-4bed-ab7a-50a4d18f4d22"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="33357860-7323-47a6-9cf4-d59562f51c0b"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -9997,30 +8109,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="FLOIMandatory"
- Guid="c411c611-eab4-4758-80ea-acd255da1008"
->
-<ReqRef
- Id="9427a791-5126-401a-8a4c-c22ac729a3c7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e11fb0b6-3deb-496f-a1c1-49b57cbfc24c"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="3e9993d7-4ed1-4573-a47e-6b2094e44580"
->
-<Comment></Comment>
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
  Name="VirtualBaliseCoversAvailable"
  Guid="f3788bcd-a163-492b-ba70-f5a27ca48411"
 >
@@ -10037,30 +8125,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Guid="2c5a07d0-3570-49ca-abfc-22e367e9ab86"
 >
 <Expression>Kernel.Mode in [Mode.SB, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="VirtualBaliseCoversMandatory"
- Guid="7d969226-31f2-4a53-be09-171cb4465713"
->
-<ReqRef
- Id="d707ce86-136b-4d15-825e-ea898b0408ad"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8465c162-53a3-4baa-9104-c5bef977b84d"
->
-<Comment></Comment>
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="fce76589-2beb-4678-9464-28b37f3ea23c"
->
-<Comment></Comment>
-<Expression>False</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
