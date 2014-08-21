@@ -232,7 +232,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="98be8cf9-aec5-4781-85e6-0227fe3a9894"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Vdelta0() == 0.0</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta0() == 0.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -256,7 +256,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="5785dfa6-f276-4028-b49c-1729e900f0ae"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Vdelta0() == 4.0</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta0() == 4.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -377,7 +377,7 @@
 >Kernel.TrainData.BrakingParameters.T_traction_cut_off () == 11.8</Expectation><Expectation
  Kind="Instantaneous"
  Guid="e40f004b-3a0a-48ee-ad45-306c5dc39fc3"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_traction() == 11.8</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_traction() == 11.8</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -401,7 +401,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="57c8950f-d394-4977-8ef4-f76209647122"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_traction () == 7.4</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_traction () == 7.4</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -490,13 +490,13 @@
 <Expectation
  Kind="Instantaneous"
  Guid="276db86d-1c0c-4f0f-9f71-caecf789e9e5"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_traction () == 7.4</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_traction () == 7.4</Expectation><Expectation
  Kind="Instantaneous"
  Guid="ee87cacc-2d83-4a54-bd5c-e91929bee271"
 >Kernel.TrainData.BrakingParameters.T_be() == 0.6</Expectation><Expectation
  Kind="Instantaneous"
  Guid="58e701df-5e97-4a4a-a90d-4e2edd429b92"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_berem() == 0.0</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_berem() == 0.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -537,13 +537,13 @@
 <Expectation
  Kind="Instantaneous"
  Guid="69bf0cd5-6dab-454f-a68b-d188f1dfd717"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_traction () == 7.4</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_traction () == 7.4</Expectation><Expectation
  Kind="Instantaneous"
  Guid="92aaf9b2-3546-49dc-aaea-94ec4f08c348"
 >Kernel.TrainData.BrakingParameters.T_be() == 9.12</Expectation><Expectation
  Kind="Instantaneous"
  Guid="04bb3692-a689-469b-ae88-31e490563541"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_berem() == 1.72</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_berem() == 1.72</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -585,13 +585,13 @@
 <Expectation
  Kind="Instantaneous"
  Guid="c239d47b-ba66-43cc-94aa-b608dd8c1413"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Vdelta1() == 5.18</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta1() == 5.18</Expectation><Expectation
  Kind="Instantaneous"
  Guid="f9b29942-77ba-4f71-b9d7-617ef9e35532"
 >Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Aest1() == 0.7</Expectation><Expectation
  Kind="Instantaneous"
  Guid="bf303684-84a4-4604-a3b3-b5f07b905bce"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_traction () == 7.4</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_traction () == 7.4</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -633,13 +633,13 @@
 <Expectation
  Kind="Instantaneous"
  Guid="96ac9dd7-791f-4ab9-bd51-420a92e1c222"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Vdelta2() == 0.688</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta2() == 0.688</Expectation><Expectation
  Kind="Instantaneous"
  Guid="e630564e-6b0d-4985-94b9-08939e5c3900"
 >Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Aest2() == 0.4</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2067cfd8-952c-47e2-8232-e8559c4bab80"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_berem() == 1.72</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_berem() == 1.72</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -663,13 +663,13 @@
 <Expectation
  Kind="Instantaneous"
  Guid="80b0fcff-1b8b-49a7-b65a-ab3dd28dbbb7"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Vdelta2() == 0.0</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta2() == 0.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="aed8cd42-263f-4799-ae88-48cf79aadc33"
 >Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Aest2() == 0.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="626bc708-1321-4175-99a0-1c13b3949832"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_berem() == 9.12</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_berem() == 9.12</Expectation><Expectation
  Kind="Instantaneous"
  Guid="44629eb2-ae8b-448a-989a-ff0a7855da0e"
 >Kernel.TrainData.BrakingParameters.A_traction ( EstimatedTrainAcceleration =&gt; Odometry.EstimatedAcceleration, Gradient =&gt; Kernel.TrackDescription.Gradient.A_gradient ( Odometry.NominalDistance ) ) == 0.0</Expectation><Expectation
@@ -678,7 +678,7 @@
 >Kernel.TrainData.BrakingParameters.T_traction_cut_off () == 2.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="c8cb2688-3d56-4613-a704-6f3855ac52bf"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_traction () == 0.0</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_traction () == 0.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="1fee24c5-ef21-49c2-9870-395a52936d47"
 >Kernel.TrainData.BrakingParameters.T_be () == 9.12</Expectation></Expectations>
@@ -705,13 +705,13 @@
 <Expectation
  Kind="Instantaneous"
  Guid="e9f1c50c-1d7b-4076-827e-1de7e0e6bbf9"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Vdelta2() == 1.744</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta2() == 1.744</Expectation><Expectation
  Kind="Instantaneous"
  Guid="587546dc-0947-4cbe-af95-37e189e5bee0"
 >Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Aest2() == 0.2</Expectation><Expectation
  Kind="Instantaneous"
  Guid="5360bf77-9246-4823-86d4-269be996651b"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_berem() == 8.72</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_berem() == 8.72</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1033,13 +1033,13 @@
 <Expectation
  Kind="Instantaneous"
  Guid="1e4a6242-7793-416a-bef7-9359d8bcdd7e"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Vdelta1() == 0.416</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta1() == 0.416</Expectation><Expectation
  Kind="Instantaneous"
  Guid="cf54f42f-f872-4b49-bfa0-1432bdfc5a2f"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Vdelta0() == 4.0</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta0() == 4.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="fe1ba999-8387-474a-89ca-11e014ccb1c5"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Vdelta2() == 1.408</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta2() == 1.408</Expectation><Expectation
  Kind="Instantaneous"
  Guid="70592364-d03c-4cb3-90ee-c05bfe5c1dce"
 >Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Vbec ( Vest =&gt; 88.0, Vtarget =&gt; 90.0 ) == 93.824</Expectation><Expectation
@@ -1048,10 +1048,10 @@
 >Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Vbec ( Vest =&gt; 75.0, Vtarget =&gt; 90.0 ) == 91.408</Expectation><Expectation
  Kind="Instantaneous"
  Guid="91a7ca12-b2da-458c-b1cf-05ea4e19b40a"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_berem() == 7.04</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_berem() == 7.04</Expectation><Expectation
  Kind="Instantaneous"
  Guid="821b8dcf-ec0e-49a6-a9bd-3fda97b83774"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_traction () == 2.08</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_traction () == 2.08</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2464,7 +2464,7 @@ Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Dbec ( Vest =&gt; 100.0, Vt
 <Expectation
  Kind="Instantaneous"
  Guid="2ca6af39-d13e-4caa-9bf5-c17ca925b29f"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_indication() == 5.0</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_indication() == 5.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2488,7 +2488,7 @@ Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Dbec ( Vest =&gt; 100.0, Vt
 <Expectation
  Kind="Instantaneous"
  Guid="cbb3629b-d4ae-4de0-906d-2d773ec58d0c"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_indication() == 5.6</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_indication() == 5.6</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
