@@ -516,7 +516,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 0.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 0.0 )
 )</Expectation><Expectation
@@ -526,7 +526,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 5.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1.19 )
 )</Expectation><Expectation
@@ -536,7 +536,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 10.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 4.75 )
 )</Expectation><Expectation
@@ -546,7 +546,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 15.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 10.69 )
 )</Expectation><Expectation
@@ -556,7 +556,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 20.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 19.01 )
 )</Expectation><Expectation
@@ -566,7 +566,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 25.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 29.7 )
 )</Expectation><Expectation
@@ -576,7 +576,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 30.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 42.76 )
 )</Expectation><Expectation
@@ -586,7 +586,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 35.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 58.2 )
 )</Expectation><Expectation
@@ -596,7 +596,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 40.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 76.02 )
 )</Expectation><Expectation
@@ -606,7 +606,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 45.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 96.21 )
 )</Expectation><Expectation
@@ -616,7 +616,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 50.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 118.78 )
 )</Expectation><Expectation
@@ -626,7 +626,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 55.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 143.73 )
 )</Expectation><Expectation
@@ -636,7 +636,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 60.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 171.05 )
 )</Expectation><Expectation
@@ -646,7 +646,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 65.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 200.74 )
 )</Expectation><Expectation
@@ -656,7 +656,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 70.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 232.82 )
 )</Expectation><Expectation
@@ -666,7 +666,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 75.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 267.26 )
 )</Expectation><Expectation
@@ -676,7 +676,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 80.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 304.09 )
 )</Expectation><Expectation
@@ -686,7 +686,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 85.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 343.28 )
 )</Expectation><Expectation
@@ -696,7 +696,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 90.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 384.86 )
 )</Expectation><Expectation
@@ -706,7 +706,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 95.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 428.81 )
 )</Expectation><Expectation
@@ -716,7 +716,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 100.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 475.13 )
 )</Expectation><Expectation
@@ -726,7 +726,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 105.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 523.64 )
 )</Expectation><Expectation
@@ -736,7 +736,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 110.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 574.28 )
 )</Expectation><Expectation
@@ -746,7 +746,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 115.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 627.28 )
 )</Expectation><Expectation
@@ -756,7 +756,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 120.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 682.63 )
 )</Expectation><Expectation
@@ -766,7 +766,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 125.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 756.21 )
 )</Expectation><Expectation
@@ -776,7 +776,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 130.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 836.83 )
 )</Expectation><Expectation
@@ -786,7 +786,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 135.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 920.62 )
 )</Expectation><Expectation
@@ -796,7 +796,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 140.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1007.39 )
 )</Expectation><Expectation
@@ -806,7 +806,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 145.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1094.51 )
 )</Expectation><Expectation
@@ -816,7 +816,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 150.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1184.67 )
 )</Expectation><Expectation
@@ -826,7 +826,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 155.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1281.84 )
 )</Expectation><Expectation
@@ -836,7 +836,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 160.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1382.19 )
 )</Expectation><Expectation
@@ -846,7 +846,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 165.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1485.72 )
 )</Expectation><Expectation
@@ -856,7 +856,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 170.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1592.45 )
 )</Expectation><Expectation
@@ -866,7 +866,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 175.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1702.36 )
 )</Expectation><Expectation
@@ -876,7 +876,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 180.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1815.45 )
 )</Expectation><Expectation
@@ -886,7 +886,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 185.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1933.64 )
 )</Expectation><Expectation
@@ -896,7 +896,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
         Speed =&gt; 190.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 2055.06 )
 )</Expectation></Expectations>
