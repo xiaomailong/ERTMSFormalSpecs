@@ -187,7 +187,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
                         length.Mode = Generated.acceptor.VariableModeEnumType.aInternal;
                         length.Default = "0.0";
                         length.Enclosing = value;
-                        length.Value = new Values.DoubleValue(EFSSystem.DoubleType, s.End);
+                        length.Value = SegmentLength(s.End);
                         value.set(length);
 
                         // Only add the target for the current segment to the collection if it brings a reduction in permitted speed
@@ -201,5 +201,27 @@ namespace DataDictionary.Functions.PredefinedFunctions
                 }
             }
         }
+
+        /// <summary>
+        /// Ensures that the length of the section is consistent with EFS's length scale
+        /// </summary>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        private Values.IValue SegmentLength(double length)
+        {
+            Values.IValue retVal = new Values.DoubleValue(EFSSystem.DoubleType, length);
+
+            Types.NameSpace defaultNameSpace = OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default.BaseTypes");
+            Types.Range LengthType = defaultNameSpace.findTypeByName("Length") as Types.Range;
+
+            Constants.EnumValue infinity = LengthType.findEnumValue("Infinity");
+            if (!LengthType.Less(retVal, infinity))
+            {
+                retVal = infinity;
+            }
+
+            return retVal;
+        }
+
     }
 }
