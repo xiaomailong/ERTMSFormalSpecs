@@ -5677,7 +5677,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <States>
 <State
  X="10"
- Y="10"
+ Y="60"
  Width="80"
  Height="40"
  Implemented="TRUE"
@@ -6527,7 +6527,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="9dc5b1d9-05dc-49e3-89a1-97efd85b048c"
->Kernel.EmergencyStops == []</PreCondition></PreConditions>
+>EmergencyStops == []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6369faef-bf0e-4161-8a3d-8873f1c1f0ac"
@@ -6557,7 +6557,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="8ea2e2cc-f1f2-415b-bca4-fe21fb4e80bb"
->Kernel.EmergencyStops != []</PreCondition></PreConditions>
+>EmergencyStops != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="bb6f0559-f476-4f61-8234-749ad0a46b84"
@@ -6610,7 +6610,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="b3a80965-8ba1-411b-bbcd-61295bb0c42b"
->Kernel.EmergencyStops == []</PreCondition></PreConditions>
+>EmergencyStops == []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c4b36227-358d-4f92-822b-c239e4063ec8"
@@ -10048,7 +10048,7 @@ CreateEmergencyStop (
  )
 
 IN
-Kernel.EmergencyStops</Action></Actions>
+EmergencyStops</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Add Unconditional Emergency Stop"
@@ -10069,7 +10069,7 @@ CreateEmergencyStop (
  )
 
 IN
-Kernel.EmergencyStops</Action></Actions>
+EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -10134,7 +10134,7 @@ Kernel.EmergencyStops</Action></Actions>
 <Actions>
 <Action
  Guid="eb928e38-b0ef-4a1d-8bc9-6a68b0de2c13"
->EmergencyStops &lt;- MAP Kernel.EmergencyStops | (X.Id != aId)
+>EmergencyStops &lt;- MAP EmergencyStops | (X.Id != aId)
     USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -10153,7 +10153,7 @@ Kernel.EmergencyStops</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="ed27c8f0-85f6-4b6b-a0a1-49ed462fa9b1"
->NOT( THERE_IS_IN Kernel.EmergencyStops | X.Reason == Kernel.BrakeReason.OrderFromRBC)</PreCondition></PreConditions>
+>NOT( THERE_IS_IN EmergencyStops | X.Reason == Kernel.BrakeReason.OrderFromRBC)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e2602b9e-3c0d-4aac-a5bf-d0678874da0e"

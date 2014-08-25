@@ -2620,7 +2620,8 @@ MA will be updated in the following rules, but to avoid resetting EndSectionTime
   ) &lt; TrainPosition.FrontEndPosition(DistanceInterval.Max)
 )</PreCondition><PreCondition
  Guid="2eb5bee8-0a84-4928-96bd-1290fec0a7ee"
->Available(EndSectionTimerStart)</PreCondition></PreConditions>
+><Comment></Comment>
+Available(EndSectionTimerStart)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="759bb3f8-8a7e-4408-bf25-979e943d2a5f"
@@ -3578,7 +3579,8 @@ IN EOAs</Action><Action
 <PreConditions>
 <PreCondition
  Guid="7c58a301-5e31-4d0c-91de-e2e64df6d1f7"
->Available(MA)
+><Comment></Comment>
+Available(MA)
   AND  
 Available(MA.MA.EndSection)
   AND  

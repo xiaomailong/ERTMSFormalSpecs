@@ -423,6 +423,7 @@
  Name="SB"
  Guid="e94a30d4-4c1e-4d97-a556-fb5305537c4c"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1272a550-6204-449a-a256-468ef4216b1f"
@@ -873,7 +874,8 @@
 <PreConditions>
 <PreCondition
  Guid="0fdc4648-093d-4db8-a89e-ed9a3c288bb9"
->( SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2 * Odometry.EstimatedSpeed + Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0 ) ) + ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) &lt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1 * Odometry.EstimatedSpeed</PreCondition></PreConditions>
+><Comment></Comment>
+( SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2 * Odometry.EstimatedSpeed + Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0 ) ) + ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) &lt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1 * Odometry.EstimatedSpeed</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1 * Odometry.EstimatedSpeed</Expression>
 </Case><Case
  Name="SBI2"
@@ -1323,7 +1325,8 @@ ON
 <Actions>
 <Action
  Guid="728d9949-d0ea-46e5-b08d-330bc6a880d3"
->INSERT CreateNewSpeedRestriction ( Location =&gt; Location, Length =&gt; Length, PermittedBrakingDistance =&gt; PermittedBrakingDistance, Gradient =&gt; Gradient, BrakeType =&gt; BrakeType )
+><Comment></Comment>
+INSERT CreateNewSpeedRestriction ( Location =&gt; Location, Length =&gt; Length, PermittedBrakingDistance =&gt; PermittedBrakingDistance, Gradient =&gt; Gradient, BrakeType =&gt; BrakeType )
 IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>

@@ -1238,7 +1238,8 @@ IN
 <Actions>
 <Action
  Guid="bef1dd94-9db8-4d2d-86e9-aa0a15bb0913"
->REMOVE ALL RemoveMode ( X ) IN  Profile</Action></Actions>
+><Comment></Comment>
+REMOVE ALL RemoveMode ( X ) IN  Profile</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1477,7 +1478,7 @@ IN
         StopLocation =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom )
     }
 IN
-    Kernel.EmergencyStops</Action></Actions>
+    EmergencyStops</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Driver ack timeout for LS"
@@ -1514,7 +1515,7 @@ IN
         StopLocation =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom )
     }
 IN
-    Kernel.EmergencyStops</Action><Action
+    EmergencyStops</Action><Action
  Guid="2c54df9e-310b-4ba6-a35c-bbd10d789e58"
 >TIU.EmergencyBrakeCommanded &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
@@ -1555,7 +1556,7 @@ IN
         StopLocation =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom )
     }
 IN
-    Kernel.EmergencyStops</Action></Actions>
+    EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
