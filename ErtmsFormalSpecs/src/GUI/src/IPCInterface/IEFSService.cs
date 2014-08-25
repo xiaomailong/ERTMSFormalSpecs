@@ -120,9 +120,10 @@ namespace GUI.IPCInterface
         /// </summary>
         /// <param name="clientId">The id of the client</param>
         /// <param name="step">The cycle step to execute</param>
+        /// <returns>true if cycle execution is successful, false when the client is asked not to perform his work</returns>
         [OperationContract]
         [FaultContractAttribute(typeof(EFSServiceFault))]
-        void Cycle(int clientId, Step step);
+        bool Cycle(int clientId, Step step);
 
         /// <summary>
         /// Restarts the engine with default values

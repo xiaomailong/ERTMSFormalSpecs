@@ -166,6 +166,11 @@ namespace DataDictionary.Tests.Runner
         }
 
         /// <summary>
+        /// Indicates that clients should wait
+        /// </summary>
+        public bool PleaseWait { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="subSequence"></param>
@@ -313,6 +318,8 @@ namespace DataDictionary.Tests.Runner
                     Values.IValue value = expression.GetValue(new InterpretationContext(SubSequence.Frame));
                     Step = Functions.Function.getDoubleValue(value);
                 }
+
+                PleaseWait = false;
             }
             finally
             {

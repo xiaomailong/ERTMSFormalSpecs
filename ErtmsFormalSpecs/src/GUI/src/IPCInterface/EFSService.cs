@@ -368,18 +368,30 @@ namespace GUI.IPCInterface
         /// </summary>
         /// <param name="clientId">The id of the client</param>
         /// <param name="step">The cycle step to execute</param>
-        public void Cycle(int clientId, Step step)
+        /// <returns>true if cycle execution is successful, false when the client is asked not to perform his work</returns>
+        public bool Cycle(int clientId, Step step)
         {
-            checkClient(clientId);
+            bool retVal = !Runner.PleaseWait;
 
-            Connections[clientId].LastCycleRequest = DateTime.Now;
-            Connections[clientId].LastCycleResume = DateTime.MinValue;
-            Connections[clientId].ExpectedStep = step;
+            if (retVal)
+            {
+                checkClient(clientId);
 
-            StepAccess[step].WaitOne();
+                Connections[clientId].LastCycleRequest = DateTime.Now;
+                Connections[clientId].LastCycleResume = DateTime.MinValue;
+                Connections[clientId].ExpectedStep = step;
 
-            Connections[clientId].LastCycleResume = DateTime.Now;
-            StepAccess[step].ReleaseMutex();
+                StepAccess[step].WaitOne();
+
+                Connections[clientId].LastCycleResume = DateTime.Now;
+                StepAccess[step].ReleaseMutex();
+            }
+            else
+            {
+                Thread.Sleep(300);
+            }
+
+            return retVal;
         }
 
         /// <summary>

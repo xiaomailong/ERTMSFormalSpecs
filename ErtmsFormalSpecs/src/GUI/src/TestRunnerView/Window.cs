@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DataDictionary;
+using DataDictionary.Tests.Runner;
 
 namespace GUI.TestRunnerView
 {
@@ -69,13 +70,9 @@ namespace GUI.TestRunnerView
         {
             if (EFSSystem.Runner == null)
             {
-                foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+                if (subSequence != null)
                 {
-                    if (subSequence != null)
-                    {
-                        EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(subSequence, false, false);
-                        break;
-                    }
+                    EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(subSequence, false, false);
                 }
             }
 
@@ -463,6 +460,15 @@ namespace GUI.TestRunnerView
         {
             tabControl1.SelectedTab = testExecutionTabPage;
             MiniStep();
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            Runner runner = EFSSystem.Runner;
+            if (runner != null)
+            {
+                runner.PleaseWait = !runner.PleaseWait;
+            }
         }
     }
 }
