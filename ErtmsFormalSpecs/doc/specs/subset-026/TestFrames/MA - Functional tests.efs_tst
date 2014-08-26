@@ -3,6 +3,7 @@
  Name="MA - Functional tests"
  Guid="08fc3910-ee2f-4697-bdad-f5e16ee308b9"
 >
+<Comment></Comment>
 <SubSequences>
 <SubSequence
  D_LRBG=""
@@ -166,7 +167,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
                  LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
                 {
                     NID_PACKET=&gt;12,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     V_MAIN=&gt;16,
@@ -380,7 +381,8 @@ BTM.Linking.Linkings</Action></Actions>
  Guid="fa793573-b25e-4dcf-9aa6-68ecc128a38d"
 >Kernel.SpeedAndDistanceMonitoring.TrainTripped &lt;- True</Action><Action
  Guid="c4f646dc-b220-4ca0-af54-2ba4318f54ca"
->BTM.Message &lt;- Messages.EUROBALISE.Message
+><Comment></Comment>
+BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -526,7 +528,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
                           NID_BG=&gt;2126,
                           NID_C=&gt;140,
                           NID_PACKET=&gt;136,
-                          Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                          Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                           Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows
                      }
                  }
@@ -709,7 +711,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
                 LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
                 {
                     NID_PACKET=&gt;12,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     V_MAIN=&gt;20,
@@ -1056,7 +1058,7 @@ BTM.Linking.Linkings</Action></Actions>
                 LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
                 {
                     NID_PACKET=&gt;12,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     V_MAIN=&gt;20,
@@ -1706,7 +1708,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
                 LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
                 {
                     NID_PACKET=&gt;8,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     V_MAIN=&gt;16,
@@ -1852,7 +1854,15 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 <Actions>
 <Action
  Guid="c775fd1f-50f5-4b00-a2e6-dd4430de2f30"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.MA.InitializeElementsForMA()</Action><Action
+ Guid="0c55b435-dbd7-4eb8-bfbc-3b6cb9b5fe6a"
+>BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 100.0,
+    BaliseGroupIdentifier =&gt; 2124
+}]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2105,7 +2115,15 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 <Actions>
 <Action
  Guid="30196bf2-8e59-4d75-96a6-a9e4f4add9f6"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.MA.InitializeElementsForMA()</Action><Action
+ Guid="79625563-7378-4962-8641-5e0d4e2bde41"
+>BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 2.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 120.0,
+    BaliseGroupIdentifier =&gt; 2124
+}]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2183,7 +2201,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
     Position =&gt; BTM.Position
     {
         OverReadingAmountOdo =&gt; 44.0,
-        Position =&gt; 2500.0,
+        Position =&gt; 2400.0,
         UnderReadingAmountOdo =&gt; 44.0
     }
 }</Action><Action
@@ -2245,10 +2263,10 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 <Expectation
  Kind="Instantaneous"
  Guid="874298d7-b3f1-42d8-b595-2e673dab943f"
->Kernel.MA.EndOfMovementAuthority().Location == 1000.0</Expectation><Expectation
+>Kernel.MA.ClosestEOA().Location == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="c975384d-562c-4c31-86cd-4b037f7b8004"
->Kernel.MA.EndOfMovementAuthority().Speed == 40.0</Expectation></Expectations>
+>Kernel.MA.ClosestEOA().Speed == 40.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2349,10 +2367,10 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 <Expectation
  Kind="Instantaneous"
  Guid="26468b1a-dae7-4c99-a79e-0f3c781eb085"
->Kernel.MA.EndOfMovementAuthority().Location == 800.0</Expectation><Expectation
+>Kernel.MA.ClosestEOA().Location == 800.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="4bfc2e05-3f9f-4404-b802-fca0c588b94c"
->Kernel.MA.EndOfMovementAuthority().Speed == 25.0</Expectation></Expectations>
+>Kernel.MA.ClosestEOA().Speed == 25.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -2420,7 +2438,15 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 <Actions>
 <Action
  Guid="a7e0273b-f9d3-4439-93ee-cfe19c713768"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.MA.InitializeElementsForMA()</Action><Action
+ Guid="6f1cbb03-caad-480d-b652-61e6815e98a1"
+>BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 150.0,
+    BaliseGroupIdentifier =&gt; 2124
+}]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2511,7 +2537,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
     V_ura =&gt; 0.0
 }</Action><Action
  Guid="33d986f2-7b09-44ce-99e4-3c66247769f6"
->Odometry.NominalDistance &lt;- 3050.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 3150.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2667,7 +2693,15 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 <Actions>
 <Action
  Guid="4c640555-2e59-4098-a650-bd431e0f102c"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.MA.InitializeElementsForMA()</Action><Action
+ Guid="60d475a1-a0af-4782-82d7-bdd5f86df42f"
+>BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 270.0,
+    BaliseGroupIdentifier =&gt; 2124
+}]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2745,7 +2779,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
     Position =&gt; BTM.Position
     {
         OverReadingAmountOdo =&gt; 24.0,
-        Position =&gt; 3500.0,
+        Position =&gt; 3300.0,
         UnderReadingAmountOdo =&gt; 21.0
     }
 }</Action><Action
@@ -2945,7 +2979,15 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 <Actions>
 <Action
  Guid="7025c03c-594a-4a68-9089-ed15fb7c1721"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.MA.InitializeElementsForMA()</Action><Action
+ Guid="b9cb4289-750c-418a-9d74-eb7b202e37b7"
+>BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 320.0,
+    BaliseGroupIdentifier =&gt; 2124
+}]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3066,7 +3108,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
     V_ura =&gt; 0.0
 }</Action><Action
  Guid="c1fffee5-f070-42d7-ace5-cd0cca7bddd7"
->Odometry.NominalDistance &lt;- 4020.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 4320.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3094,7 +3136,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 <Expectation
  Kind="Instantaneous"
  Guid="91132c8a-74f9-4fab-b865-d0af9554d552"
->Kernel.MA.EndOfMovementAuthority().Location == 1500.0</Expectation><Expectation
+>Kernel.MA.ClosestEOA().Location == 1500.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="4451f42d-584c-4e32-a56c-a11b581cb192"
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 120.0</Expectation><Expectation
@@ -3109,7 +3151,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 >Available ( ( FIRST_IN Kernel.MA.MA.Sections ).TimeOut )</Expectation><Expectation
  Kind="Instantaneous"
  Guid="400ea3a5-1406-4786-aea7-cd5b05e483f4"
->Kernel.MA.EndOfMovementAuthority().Speed == 40.0</Expectation></Expectations>
+>Kernel.MA.ClosestEOA().Speed == 40.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3215,7 +3257,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 <Expectation
  Kind="Instantaneous"
  Guid="a43d58e2-c473-45b5-8448-a3550beef338"
->Kernel.MA.EndOfMovementAuthority().Location == 1310.0</Expectation><Expectation
+>Kernel.MA.ClosestEOA().Location == 1310.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="3413f504-eac7-4dd4-800d-f49b1424ab9c"
 >(FIRST_IN Kernel.MA.MA.Sections).TimeOut == EMPTY</Expectation><Expectation
@@ -3224,7 +3266,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 >(FIRST_IN Kernel.MA.MA.Sections).Length == 170.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="1d43c373-49f0-4bea-8f95-4d38983c3755"
->Kernel.MA.EndOfMovementAuthority().Speed == 25.0</Expectation></Expectations>
+>Kernel.MA.ClosestEOA().Speed == 25.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -3834,7 +3876,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ecab0443-4a87-44b3-ba16-07b5003782bc"
->Kernel.MA.EndOfMovementAuthority().Location == 4000.0</Expectation></Expectations>
+>Kernel.MA.ClosestEOA().Location == 4000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3945,11 +3987,11 @@ BTM.Message &lt;- Messages.EUROBALISE.Message {
  Kind="Instantaneous"
  DeadLine="1"
  Guid="9b8972f0-5fbd-42ae-9899-b9e58e9f9e87"
->Kernel.MA.EndOfMovementAuthority().Location != 4000.0</Expectation><Expectation
+>Kernel.MA.ClosestEOA().Location != 4000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="96952592-c2fe-471c-b3a6-79ad816e5b2f"
->Kernel.MA.EndOfMovementAuthority().Location == 2105.0</Expectation></Expectations>
+>Kernel.MA.ClosestEOA().Location == 2105.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4051,7 +4093,7 @@ IN BTM.Linking.Linkings</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f08475a0-4c8f-499f-952b-561eb8ed83fa"
->Kernel.MA.EndOfMovementAuthority().Location == 2105.0</Expectation><Expectation
+>Kernel.MA.ClosestEOA().Location == 2105.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="fca6b8cd-7015-4b19-96b2-d51a5c5f498f"
@@ -4123,7 +4165,7 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="120b8188-f9e4-46ea-807f-a30b9099ae41"
->Kernel.MA.EndOfMovementAuthority().Location == 1000.0</Expectation><Expectation
+>Kernel.MA.ClosestEOA().Location == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="6a57f29c-8976-47bf-8cab-6e2799f3a91f"
@@ -4189,7 +4231,7 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ed206680-d69c-4700-9be9-b4c62e8abd72"
->Kernel.MA.EndOfMovementAuthority().Location == 1305.0</Expectation><Expectation
+>Kernel.MA.ClosestEOA().Location == 1305.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="c6a2665c-6283-4b4b-b5f7-5f8a7dced41b"
@@ -4335,7 +4377,15 @@ BTM.Linking.Linkings</Action><Action
     V_ura =&gt; 0.0
 }</Action><Action
  Guid="97c7363b-626d-46de-90c8-55219bf90d9e"
->Odometry.NominalDistance &lt;- 2200.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 2200.0</Action><Action
+ Guid="cf7a5940-570c-4233-8976-5cff1c0842c8"
+>BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 200.0,
+    BaliseGroupIdentifier =&gt; 9618
+}]</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="f07d95bd-475d-44ce-94dc-2bd76309c56d"
@@ -4468,7 +4518,21 @@ BTM.Linking.Linkings</Action><Action
     }
 }</Action><Action
  Guid="07464e37-9fb6-4d99-9632-ac33af524195"
->Odometry.NominalDistance &lt;- 3010.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 3110.0</Action><Action
+ Guid="ef45b23a-9079-4309-93fb-0c6af0f0f99c"
+>BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 110.0,
+    BaliseGroupIdentifier =&gt; 9619
+}, BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 110.0,
+    BaliseGroupIdentifier =&gt; 9620
+}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5728,7 +5792,15 @@ BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="fc32d9c8-f8d1-46e6-b902-58ea286b51a0"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.MA.InitializeElementsForMA()</Action><Action
+ Guid="64041f3f-3b36-48bd-8da5-6ec588990713"
+>BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 120.0,
+    BaliseGroupIdentifier =&gt; 2124
+}]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -5804,7 +5876,7 @@ BTM.Linking.Linkings</Action><Action
     Position =&gt; BTM.Position
     {
         OverReadingAmountOdo =&gt; 21.0,
-        Position =&gt; 4500.0,
+        Position =&gt; 4400.0,
         UnderReadingAmountOdo =&gt; 21.0
     }
 }</Action><Action
@@ -5978,7 +6050,7 @@ BTM.Linking.Linkings</Action><Action
                 LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
                 {
                     NID_PACKET=&gt;8,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._10_cm_scaleC,
                     V_MAIN=&gt;80,
@@ -6190,7 +6262,15 @@ BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="8e3f718f-9542-4d0d-b444-9f9ff5abc1e5"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.MA.InitializeElementsForMA()</Action><Action
+ Guid="19fe8fda-fcd0-4a29-9b26-aceced1861e2"
+>BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 100.0,
+    BaliseGroupIdentifier =&gt; 2124
+}]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6367,7 +6447,33 @@ BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="865d7d8c-ef57-43e4-bbb1-af19291b23cb"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.MA.InitializeElementsForMA()</Action><Action
+ Guid="c4892bfc-e3e4-47dc-8797-5e10e23eea1e"
+>BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 100.0,
+    BaliseGroupIdentifier =&gt; 2124
+}, BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 100.0,
+    BaliseGroupIdentifier =&gt; 2125
+}, BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 100.0,
+    BaliseGroupIdentifier =&gt; 2126
+}, BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 100.0,
+    BaliseGroupIdentifier =&gt; 2127
+}]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6487,7 +6593,7 @@ BTM.Linking.Linkings</Action><Action
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
-    NID_BG=&gt;2124,
+    NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt;
     [
@@ -6577,7 +6683,7 @@ BTM.Linking.Linkings</Action><Action
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
-    NID_BG=&gt;2124,
+    NID_BG=&gt;2126,
     Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt;
     [
@@ -6629,7 +6735,7 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="a580ac02-fcf7-404e-89f0-675a3d1a6a44"
->Kernel.MA.SvL().Location == Kernel.MA.EndOfMovementAuthority().Location</Expectation><Expectation
+>Kernel.MA.SvL().Location == Kernel.MA.ClosestEOA().Location</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b0c789c4-ba6d-4d4e-8d2f-a70ce9bfe1b9"
@@ -6682,7 +6788,7 @@ BTM.Linking.Linkings</Action><Action
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
-    NID_BG=&gt;2124,
+    NID_BG=&gt;2127,
     Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt;
     [
@@ -6791,7 +6897,15 @@ BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="d2e9c961-b4ec-4961-9d9b-792c7ef57205"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Kernel.MA.InitializeElementsForMA()</Action><Action
+ Guid="35d2cea9-b0a1-415b-850f-4a9b80cd2b32"
+>BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 100.0,
+    BaliseGroupIdentifier =&gt; 2124
+}]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

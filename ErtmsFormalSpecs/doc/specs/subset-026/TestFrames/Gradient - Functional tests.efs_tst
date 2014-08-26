@@ -139,7 +139,7 @@
  Guid="b3ceed3e-10fd-44d2-8244-442969f18f37"
 >Kernel.TrainData.TrainData.Value.TrainLength &lt;- 100.0</Action><Action
  Guid="244132c9-abab-4ab2-af2f-8ec46b19189b"
->Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action></Actions>
+>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -153,6 +153,27 @@
 <SubSteps>
 <SubStep
  Name="Sub-step1"
+ Guid="719acfde-43d9-497a-8142-23557b3c9c9f"
+>
+<Actions>
+<Action
+ Guid="8f625a88-5fab-4b6e-b66a-edb88847b7cb"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt;[]
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Message"
  Guid="fb3b4c26-1f3d-4170-8b96-60c2f8907b72"
 >
 <Actions>
@@ -164,7 +185,7 @@
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -380,7 +401,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -418,6 +439,27 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
             }
         }
     ]
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="2a8f922a-6de2-4d3a-b4d0-f8baa9f363e9"
+>
+<Actions>
+<Action
+ Guid="204d4adb-37ef-4293-be8f-2042af38adaf"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;0,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2126,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt;[]
 }</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -796,14 +838,35 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 >
 <Actions>
 <Action
- Guid="7f46cfd8-f083-44a5-aeed-44dcc4ee1625"
+ Guid="303d305b-845e-4ea3-9a6c-3f2ce78c1270"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2126,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1=&gt;[]
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="53bf45d7-1ef8-42b4-b99c-c170d8a9dece"
+>
+<Actions>
+<Action
+ Guid="7f46cfd8-f083-44a5-aeed-44dcc4ee1625"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -830,11 +893,11 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="a673d41d-6e86-4e9c-9883-07181e26492a"
->Kernel.TrackDescription.Gradient.DefaultGradientForTSR.Gradient == -40.0</Expectation><Expectation
- Kind="Instantaneous"
  Guid="1b57a19f-99e9-4701-b8ac-7eef22837da5"
->Kernel.TrackDescription.Gradient.GradientProfile ( Distance =&gt; 1000.0 ) == -40.0</Expectation></Expectations>
+>Kernel.TrackDescription.Gradient.GradientProfile ( Distance =&gt; 1000.0 ) == -40.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="a673d41d-6e86-4e9c-9883-07181e26492a"
+>Kernel.TrackDescription.Gradient.DefaultGradientForTSR.Gradient == -40.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -918,7 +981,23 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     Position=&gt;4000.0,
     UnderReadingAmountOdo=&gt;7.0
   }
-}</Action></Actions>
+}</Action><Action
+ Guid="71584a08-9d51-4078-8aae-11fb3807b069"
+>BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 200.0,
+    BaliseGroupIdentifier =&gt; 2124
+},BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 200.0,
+    BaliseGroupIdentifier =&gt; 2125
+}]</Action><Action
+ Guid="6c15cf15-c9c0-477d-9287-0fa89d93a264"
+>Odometry.NominalDistance &lt;- 4200.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -949,7 +1028,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
     NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt;
     [
         Messages.EUROBALISE.SubStructure1
@@ -1032,8 +1111,8 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt;
     [
         Messages.EUROBALISE.SubStructure1
@@ -1144,7 +1223,23 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     Position=&gt;4000.0,
     UnderReadingAmountOdo=&gt;7.0
   }
-}</Action></Actions>
+}</Action><Action
+ Guid="f16b91b2-d8cf-46e7-950e-2e79dfd1b450"
+>Odometry.NominalDistance &lt;- 4200.0</Action><Action
+ Guid="f447faed-0f45-4a41-88e4-a7a3d27a0e89"
+>BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 200.0,
+    BaliseGroupIdentifier =&gt; 2124
+},BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 200.0,
+    BaliseGroupIdentifier =&gt; 2125
+}]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1175,7 +1270,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
     NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt;
     [
         Messages.EUROBALISE.SubStructure1
@@ -1257,8 +1352,8 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt;
     [
         Messages.EUROBALISE.SubStructure1
@@ -1369,7 +1464,23 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     Position=&gt;4000.0,
     UnderReadingAmountOdo=&gt;7.0
   }
-}</Action></Actions>
+}</Action><Action
+ Guid="604da6bb-b7a7-4d93-8ea8-9a68a6a24a1a"
+>Odometry.NominalDistance &lt;- 4200.0</Action><Action
+ Guid="95418f96-4a2f-41eb-af18-19e738efdad7"
+>BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 200.0,
+    BaliseGroupIdentifier =&gt; 2124
+},BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 200.0,
+    BaliseGroupIdentifier =&gt; 2125
+}]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1400,7 +1511,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
     NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt;
     [
         Messages.EUROBALISE.SubStructure1
@@ -1482,8 +1593,8 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt;
     [
         Messages.EUROBALISE.SubStructure1

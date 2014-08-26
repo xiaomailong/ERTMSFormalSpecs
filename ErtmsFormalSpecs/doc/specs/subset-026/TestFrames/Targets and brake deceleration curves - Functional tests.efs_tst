@@ -849,7 +849,7 @@ Kernel.TrackDescription.TrackConditions.General.TCProfile&lt;-
                 LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
                 {
                     NID_PACKET=&gt;8,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     V_MAIN=&gt;14,
@@ -980,7 +980,7 @@ Kernel.TrackDescription.TrackConditions.General.TCProfile&lt;-
                 TEMPORARY_SPEED_RESTRICTION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message
                 {
                     NID_PACKET=&gt;8,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     D_TSR =&gt; 4000,
@@ -1065,7 +1065,7 @@ Kernel.TrackDescription.TrackConditions.General.TCProfile&lt;-
                 LEVEL_CROSSING_INFORMATION =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
                 {
                     NID_PACKET=&gt;88,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     NID_LX=&gt;20,
@@ -1137,10 +1137,10 @@ Odometry.EstimatedAcceleration &lt;- 0.4</Action><Action
 >Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta0() == 0.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="bbd88c51-5e68-49ad-9160-b09c3fa025b5"
->Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta2() == 0.0</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta2(EstimatedAccelerationSetToZero =&gt; False) == 0.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="dc090427-607e-4c96-8a02-c9700e706a4f"
->Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_berem() == 0.0</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_berem(EstimatedAccelerationSetToZero=&gt;False) == 0.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

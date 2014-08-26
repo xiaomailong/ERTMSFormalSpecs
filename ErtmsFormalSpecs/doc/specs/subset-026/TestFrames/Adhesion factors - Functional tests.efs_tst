@@ -86,7 +86,16 @@
  Guid="d9422de3-2313-4e53-9f60-0b55e446f488"
 >Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action><Action
  Guid="c4eb67d0-cbae-46e8-b9c4-ae580febeac2"
->Odometry.NominalDistance &lt;- 600.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 600.0</Action><Action
+ Guid="6a35ce9d-2acc-4ac8-bbcc-8fcbc0e6d3aa"
+>INSERT BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 0.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 100.0,
+    BaliseGroupIdentifier =&gt; 2100
+}
+IN BTM.Linking.Linkings</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -290,7 +299,7 @@
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -330,6 +339,27 @@
 }</Action><Action
  Guid="8f49d8a5-0dd5-4b89-93c8-d95abd90af56"
 >Odometry.NominalDistance &lt;- 1100.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="2c193a98-3cf1-41fa-85b1-559ba046517c"
+>
+<Actions>
+<Action
+ Guid="e7e96654-4d07-443f-90e7-dfd9d7ba70e7"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2100,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;[]
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

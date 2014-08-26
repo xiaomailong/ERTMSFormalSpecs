@@ -680,9 +680,10 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 <PreConditions>
 <PreCondition
  Guid="9395d930-3de6-407a-9481-58901353982a"
->( (FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier)
+><Comment></Comment>
+( (FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier)
   AND  
-(BGLocationReference.Position + BGLocationReference.UnderReadingAmountOdo &lt; (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)</PreCondition></PreConditions>
+(BGLocationReference.Position + BGLocationReference.UnderReadingAmountOdo &lt; (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy + LRBG.Position.Position)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="BG encountered after expectation window"
@@ -692,9 +693,10 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 <PreConditions>
 <PreCondition
  Guid="1ca081c2-aa92-4133-9d3f-f95d293eff35"
->( (FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier)
+><Comment></Comment>
+( (FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier)
   AND  
-(BGLocationReference.Position - BGLocationReference.OverReadingAmountOdo &gt; (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</PreCondition></PreConditions>
+(BGLocationReference.Position - BGLocationReference.OverReadingAmountOdo &gt; (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy + LRBG.Position.Position)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Later BG found first"
@@ -704,7 +706,8 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 <PreConditions>
 <PreCondition
  Guid="eefad305-9f3a-4973-a898-0f076af71e89"
->(THERE_IS_IN Linkings | 
+><Comment></Comment>
+(THERE_IS_IN Linkings | 
     ((X != FIRST_IN Linkings) AND ( (FIRST_IN CurrentBaliseGroup).NID_BG == X.BaliseGroupIdentifier))
 )
   AND  

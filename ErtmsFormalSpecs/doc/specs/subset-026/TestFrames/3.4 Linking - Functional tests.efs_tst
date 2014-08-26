@@ -87,7 +87,7 @@
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -141,6 +141,27 @@ Q_LOCACC=&gt;1
 }</Action><Action
  Guid="5ece8d6d-5edd-476c-8cea-8dcb3a050d93"
 >Odometry.NominalDistance &lt;- 3000.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="1cde2cfe-f7ff-432b-9924-5a861bc9ff18"
+>
+<Actions>
+<Action
+ Guid="24676d16-ce49-43f0-903d-7629c302bbba"
+>BTM.Message &lt;- Messages.EUROBALISE.Message{
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; 1,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 1,
+    N_TOTAL =&gt; 1,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 9618,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; [],
+    BitField =&gt; &apos;&apos;
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -148,20 +169,20 @@ Q_LOCACC=&gt;1
 >(COUNT BTM.Linking.Linkings) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="376625c1-2d7f-4289-ac89-fa310fbf3b45"
->(FIRST_IN BTM.Linking.Linkings).Distance == 3500.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="32e37fc4-5bfa-450e-a98a-ded68c5767a5"
->(LAST_IN BTM.Linking.Linkings).Distance == 4500.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
  Guid="ccd5446e-d7c7-4349-a34c-7c5ca7fc9a07"
 >(FIRST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9620</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
+ Guid="376625c1-2d7f-4289-ac89-fa310fbf3b45"
+>(FIRST_IN BTM.Linking.Linkings).Distance == 3500.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
  Guid="ff87e43b-29f9-4878-9f35-7cea303ce6e5"
->(LAST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9622</Expectation></Expectations>
+>(LAST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9622</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="32e37fc4-5bfa-450e-a98a-ded68c5767a5"
+>(LAST_IN BTM.Linking.Linkings).Distance == 4500.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -368,7 +389,7 @@ N_ITER=&gt;0
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -412,11 +433,36 @@ N_ITER=&gt;0
 }</Action><Action
  Guid="988dd34c-be71-42d0-8399-f40b0ecf11d4"
 >Odometry.NominalDistance &lt;- 3000.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="627bfed2-a205-43b7-af8a-a356bfe9c36d"
+>
+<Actions>
+<Action
+ Guid="d7113b38-81dd-4411-b0fb-0ee544e12feb"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;1,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;9618,
+    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt;[]
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="8a2cdf6d-f120-454d-9787-f4300a1fd6c6"
+ Guid="d9d16e77-dedb-4781-8a4c-3034802e35b5"
 >(COUNT BTM.Linking.Linkings) == 1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="660889e5-0898-4010-ae5e-5222bf612bae"
+>(FIRST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 10000</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="a78d19da-81f2-4f58-8976-0ca814646265"
@@ -425,10 +471,6 @@ N_ITER=&gt;0
  DeadLine="1"
  Guid="e0da2041-3d45-4b05-bfe0-2fcc742e9004"
 >(FIRST_IN BTM.Linking.Linkings).LocationAccuracy == 1.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="660889e5-0898-4010-ae5e-5222bf612bae"
->(FIRST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 10000</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="50fc6586-6213-4ac8-9c17-858650f5ca98"

@@ -197,7 +197,7 @@
                 LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
                 {
                     NID_PACKET=&gt;8,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     V_MAIN=&gt;14,
@@ -328,7 +328,7 @@
                 {
                     NID_PACKET =&gt; 3,
                     L_PACKET =&gt; 200,
-                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    Q_DIR =&gt; Messages.Q_DIR.Both_directions,
                     Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
                     D_VALIDNV =&gt; 0,
                     Q_NVDRIVER_ADHES =&gt; Messages.Q_NVDRIVER_ADHES.Allowed,
@@ -513,7 +513,7 @@
                 TEMPORARY_SPEED_RESTRICTION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message
                 {
                     NID_PACKET=&gt;8,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     D_TSR =&gt; 4000,
@@ -596,7 +596,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
                 LEVEL_CROSSING_INFORMATION =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
                 {
                     NID_PACKET=&gt;88,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     NID_LX=&gt;20,
@@ -832,7 +832,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
                 AXLE_LOAD_SPEED_PROFILE=&gt;Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Message
                 {
                     NID_PACKET =&gt; 88,
-                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    Q_DIR =&gt; Messages.Q_DIR.Both_directions,
                     L_PACKET =&gt; 400,
                     Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
                     Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
@@ -963,7 +963,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
                 GRADIENT_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Message
                 {
                     NID_PACKET=&gt;21,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     D_GRADIENT =&gt; 4000,
@@ -1042,7 +1042,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
                 INTERNATIONAL_STATIC_SPEED_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Message
                 {
                     NID_PACKET=&gt;27,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     D_STATIC =&gt; 4500,
@@ -1397,7 +1397,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 >Kernel.TrainData.BrakingParameters.A_traction ( Odometry.EstimatedAcceleration, Kernel.TrackDescription.Gradient.A_gradient ( Odometry.NominalDistance ) ) == 1.2</Expectation><Expectation
  Kind="Instantaneous"
  Guid="3c57883e-b3e7-4378-94f2-ddde4334df73"
->Kernel.TrainData.BrakingParameters.T_traction_cut_off () == 18.8</Expectation></Expectations>
+>Kernel.TrainData.BrakingParameters.T_traction_cut_off (EstimatedAccelerationSetToZero=&gt;False) == 18.8</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1421,7 +1421,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 <Expectation
  Kind="Instantaneous"
  Guid="7e869450-72eb-41e9-9e86-6005f28f6bc1"
->Kernel.TrainData.BrakingParameters.T_traction_cut_off () == 19.34936</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.T_traction_cut_off (EstimatedAccelerationSetToZero=&gt;False) == 19.34936</Expectation><Expectation
  Kind="Instantaneous"
  Guid="489c1a90-e5f1-4e19-98b4-a9a2eb24e158"
 >Kernel.TrainData.BrakingParameters.A_traction ( Odometry.EstimatedAcceleration, Kernel.TrackDescription.Gradient.A_gradient ( Odometry.NominalDistance ) ) == 1.23924</Expectation><Expectation

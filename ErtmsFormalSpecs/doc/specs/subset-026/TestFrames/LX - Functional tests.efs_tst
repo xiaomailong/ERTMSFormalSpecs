@@ -102,7 +102,7 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -156,8 +156,8 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -310,7 +310,21 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
 <Actions>
 <Action
  Guid="f05eeef2-065e-4072-a0b2-3a1cb6d7b6dd"
->Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
+>Kernel.LX.LevelCrossings &lt;- []</Action><Action
+ Guid="6defe287-a0ef-4383-b734-f27439b493b0"
+>BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 100.0,
+    BaliseGroupIdentifier =&gt; 2124
+}, BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; 5.0,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
+    Distance =&gt; 100.0,
+    BaliseGroupIdentifier =&gt; 2125
+}]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -425,7 +439,7 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
-    NID_BG=&gt;2124,
+    NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Linked,
     Sequence1=&gt;
     [
@@ -814,7 +828,7 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
                 LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
                 {
                     NID_PACKET=&gt;88,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     NID_LX=&gt;22,
@@ -1040,7 +1054,7 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
                 LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
                 {
                     NID_PACKET=&gt;88,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     NID_LX=&gt;18,
@@ -1248,7 +1262,7 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
                 LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
                 {
                     NID_PACKET=&gt;88,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     NID_LX=&gt;18,
@@ -1419,7 +1433,7 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
                 LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
                 {
                     NID_PACKET=&gt;88,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     NID_LX=&gt;22,
@@ -1540,7 +1554,7 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
                 LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
                 {
                     NID_PACKET=&gt;88,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     NID_LX=&gt;18,
@@ -1620,7 +1634,7 @@ Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
                 LEVEL_CROSSING_INFORMATION=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
                 {
                     NID_PACKET=&gt;88,
-                    Q_DIR=&gt;Messages.Q_DIR.Nominal,
+                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
                     L_PACKET=&gt;400,
                     Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
                     NID_LX=&gt;18,

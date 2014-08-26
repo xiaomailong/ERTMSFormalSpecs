@@ -157,7 +157,7 @@ DecelerationCurves.FLOIComparedDistance () &gt; d_I ( Odometry.EstimatedSpeed )<
 >Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition><PreCondition
  Guid="0ed05306-8475-4f3f-acea-a2d6579df2ae"
 ><Comment></Comment>
-DecelerationCurves.FLOIComparedDistance () &gt; d_P ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
+DecelerationCurves.FLOIComparedDistance () &gt; d_P ( Odometry.EstimatedSpeed, False )</PreCondition><PreCondition
  Guid="792c9f4e-dec9-43d5-ad6d-038c3737a93f"
 >SpeedOfTarget() &lt; Odometry.EstimatedSpeed</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -250,7 +250,7 @@ DecelerationCurves.FLOIComparedDistance () &lt;= d_I ( MRSP.SpeedRestrictions ( 
 d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; DecelerationCurves.FLOIComparedDistance ()</PreCondition><PreCondition
  Guid="c4d9e3c3-4232-47e2-9094-a10709e346c4"
 ><Comment></Comment>
-DecelerationCurves.FLOIComparedDistance () &lt;= d_W ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
+DecelerationCurves.FLOIComparedDistance () &lt;= d_W ( Odometry.EstimatedSpeed, False )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -294,7 +294,7 @@ DecelerationCurves.FLOIComparedDistance () &lt;= d_W ( Odometry.EstimatedSpeed )
 >Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="39d15eb8-2682-4398-b90f-e09db7a20150"
 ><Comment></Comment>
-DecelerationCurves.FLOIComparedDistance () &gt; d_W ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
+DecelerationCurves.FLOIComparedDistance () &gt; d_W ( Odometry.EstimatedSpeed, False )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -385,7 +385,7 @@ DecelerationCurves.FLOIComparedDistance () &lt;= d_I ( Odometry.EstimatedSpeed )
 d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; DecelerationCurves.FLOIComparedDistance ()</PreCondition><PreCondition
  Guid="6ec66168-2c16-4b1f-9a3e-efb6cdd7af1c"
 ><Comment></Comment>
-DecelerationCurves.FLOIComparedDistance () &lt;= d_FLOI ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
+DecelerationCurves.FLOIComparedDistance () &lt;= d_FLOI ( Odometry.EstimatedSpeed, False )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -431,7 +431,7 @@ DecelerationCurves.FLOIComparedDistance () &lt;= d_FLOI ( Odometry.EstimatedSpee
 Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="6f49276c-a3e2-41fc-9e18-5d1b5d445b04"
 ><Comment></Comment>
-DecelerationCurves.FLOIComparedDistance () &gt; d_FLOI ( Odometry.EstimatedSpeed )</PreCondition></PreConditions>
+DecelerationCurves.FLOIComparedDistance () &gt; d_FLOI ( Odometry.EstimatedSpeed, False )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -723,7 +723,7 @@ DecelerationCurves.FLOIComparedDistance () &lt;= d_I ( Odometry.EstimatedSpeed )
 >Odometry.EstimatedSpeed &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition><PreCondition
  Guid="99cc373c-4cb4-4cfa-8fdc-4a2e6db789d1"
 ><Comment></Comment>
-DecelerationCurves.FLOIComparedDistance () &gt; d_P ( Odometry.EstimatedSpeed )</PreCondition><PreCondition
+DecelerationCurves.FLOIComparedDistance () &gt; d_P ( Odometry.EstimatedSpeed, False )</PreCondition><PreCondition
  Guid="921109d5-9f2e-45b3-9505-de5e3b69c405"
 >MRDT().Speed &lt; Odometry.EstimatedSpeed</PreCondition></PreConditions>
 <Expression>True</Expression>
