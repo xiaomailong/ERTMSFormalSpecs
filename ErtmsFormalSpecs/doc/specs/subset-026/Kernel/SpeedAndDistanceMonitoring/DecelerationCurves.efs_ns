@@ -523,7 +523,17 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Value"
+ Name="Estimated acceleration is set to zero"
+ Guid="1165e1a5-e897-4434-a8a8-85b58ff0b826"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="6ef512bf-6455-43f5-9b5d-d1b175676860"
+>EstimatedAccelerationSetToZero</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Otherwise"
  Guid="5065369d-4e58-4287-b086-1723c2fa31b5"
 >
 <Comment></Comment>
@@ -561,7 +571,17 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Value"
+ Name="Estimated acceleration is set to zero"
+ Guid="d6f65e85-c35e-4f51-aee2-1508d14748fa"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="0ffe17f9-af49-4031-a9ba-b82ba36693e1"
+>EstimatedAccelerationSetToZero</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Otherwise"
  Guid="32aacacd-a015-4db8-9358-18b1f08b683a"
 >
 <Comment></Comment>
