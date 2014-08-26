@@ -37,6 +37,11 @@
  Name="V"
  Guid="f36c3bfb-eb83-4d92-a95e-e434b8adbd72"
 >
+</Parameter><Parameter
+ Type="Boolean"
+ Name="EstimatedAccelerationSetToZero"
+ Guid="ecf5e368-67c1-4775-98bb-38c9cf4501c0"
+>
 </Parameter></Parameters>
 <Cases>
 <Case
@@ -49,15 +54,16 @@
  Guid="abbce78f-6895-49a0-a931-84443bad052d"
 ><Comment></Comment>
 TargetSpeedMonitoring.SBI1BelowSBI2(
-    d_SBI1=&gt; TargetSpeedMonitoring.d_SBI1 ( V ),
-    d_SBI2=&gt; d_SBI2 ( V )
+    d_SBI1=&gt; TargetSpeedMonitoring.d_SBI1 ( V, EstimatedAccelerationSetToZero ),
+    d_SBI2=&gt; d_SBI2 ( V, EstimatedAccelerationSetToZero )
 )</PreCondition></PreConditions>
-<Expression>TargetSpeedMonitoring.d_SBI1 ( V )</Expression>
+<Expression>TargetSpeedMonitoring.d_SBI1 ( V, EstimatedAccelerationSetToZero )</Expression>
 </Case><Case
  Name="d_SBI2"
  Guid="d5c865b3-e560-45db-b300-a9fac42ae0b1"
 >
-<Expression>d_SBI2 ( V )</Expression>
+<Comment></Comment>
+<Expression>d_SBI2 ( V, EstimatedAccelerationSetToZero )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -76,6 +82,11 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Guid="adabca0e-b12c-4050-94f6-9573c79ef922"
 >
 <Comment></Comment>
+</ReqRef><ReqRef
+ Id="5b7d2c0d-92d5-4743-bbe3-847b2546e103"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="85c7798c-59e3-47d5-8ff7-8df3688ecc58"
+>
 </ReqRef><Comment>Computes the value of the release speed, by iterating the function VreleaseFunction.</Comment>
 <Parameters>
 <Parameter
@@ -130,6 +141,11 @@ STOP_CONDITION
  Name="Vrelease"
  Guid="2668f18b-5764-40a5-abb1-6a5717bbc939"
 >
+</Parameter><Parameter
+ Type="Boolean"
+ Name="EstimatedAccelerationSetToZero"
+ Guid="ca0dae3f-9c52-4098-9a92-385c71b8e619"
+>
 </Parameter></Parameters>
 <Cases>
 <Case
@@ -140,7 +156,7 @@ STOP_CONDITION
 <Expression>DistanceForSpeed (
     Function =&gt; DecelerationCurves.EBD,
     Speed =&gt; Vrelease + f41 ( Vrelease ) )
-- BaseTypes.SpeedToMS (Vrelease + f41(Vrelease)) * ( DecelerationCurves.T_berem() + DecelerationCurves.T_traction() )</Expression>
+- BaseTypes.SpeedToMS (Vrelease + f41(Vrelease)) * ( DecelerationCurves.T_berem(EstimatedAccelerationSetToZero) + DecelerationCurves.T_traction(EstimatedAccelerationSetToZero) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -178,7 +194,7 @@ STOP_CONDITION
  Guid="17beface-fcb0-4eb8-b204-80baed457e28"
 >
 <Comment></Comment>
-<Expression>BaseTypes.SpeedToMS( Vrelease + Vdelta0rsob ( Vrelease ) ) * ( DecelerationCurves.T_traction() + DecelerationCurves.T_berem() )</Expression>
+<Expression>BaseTypes.SpeedToMS( Vrelease + Vdelta0rsob ( Vrelease ) ) * ( DecelerationCurves.T_traction(EstimatedAccelerationSetToZero=&gt;True) + DecelerationCurves.T_berem(EstimatedAccelerationSetToZero=&gt;True) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -280,6 +296,11 @@ BaseTypes.MaxDistance(
  Name="Vrelease"
  Guid="11bc7ff3-8547-485e-96c3-bda20f990caa"
 >
+</Parameter><Parameter
+ Type="Boolean"
+ Name="EstimatedAccelerationSetToZero"
+ Guid="9f92f8f6-b695-4857-b144-f800e36bfc2e"
+>
 </Parameter></Parameters>
 <Cases>
 <Case
@@ -287,7 +308,7 @@ BaseTypes.MaxDistance(
  Guid="994729c8-aa58-4667-98b0-90ca2b055199"
 >
 <Comment></Comment>
-<Expression>d_EBI ( Vrelease )  - BaseTypes.SpeedToMS ( Vrelease ) * TargetSpeedMonitoring.T_bs2</Expression>
+<Expression>d_EBI ( Vrelease, EstimatedAccelerationSetToZero )  - BaseTypes.SpeedToMS ( Vrelease ) * TargetSpeedMonitoring.T_bs2</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -304,6 +325,11 @@ BaseTypes.MaxDistance(
  Id="14bf6840-9762-4d5e-9a4c-58c8aad11768"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4dec8cf2-95ad-4692-a59d-0c9a0574890c"
+>
+</ReqRef><ReqRef
+ Id="5b7d2c0d-92d5-4743-bbe3-847b2546e103"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4ff7598e-7279-469c-b037-f3dee348c885"
 >
 </ReqRef><Comment>Used to compute the release speed on-board.</Comment>
 <Parameters>
@@ -327,9 +353,11 @@ BaseTypes.MaxDistance(
 <PreConditions>
 <PreCondition
  Guid="af631487-52d1-4c71-a33c-05b2ff35e1b4"
->d_tripEOA() + Dbec ( Vrelease_prev ) &lt; DistanceForSpeed ( Function =&gt; DecelerationCurves.EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition
+><Comment></Comment>
+d_tripEOA() + Dbec ( Vrelease_prev ) &lt; DistanceForSpeed ( Function =&gt; DecelerationCurves.EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition
  Guid="b7339d74-9848-460e-b4e5-8cb15e9f1566"
->DecelerationCurves.EBD ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob ( Vrelease_prev ) ) &gt; Vtarget</PreCondition></PreConditions>
+><Comment></Comment>
+DecelerationCurves.EBD ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob ( Vrelease_prev ) ) &gt; Vtarget</PreCondition></PreConditions>
 <Expression>DecelerationCurves.EBD ( d_tripEOA () + Dbec ( Vrelease_prev ) ) - Vdelta0rsob ( Vrelease_prev )</Expression>
 </Case><Case
  Name="Second case"
@@ -412,13 +440,15 @@ BaseTypes.MaxDistance(
 <PreConditions>
 <PreCondition
  Guid="c1f1f85a-a876-4042-a38d-3b2ed6628245"
->d_FLOI ( Vrelease ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+><Comment></Comment>
+d_FLOI ( Vrelease, False ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="0b1798da-f019-46e0-b3b0-7e38f14c1cbd"
 >
-<Expression>d_FLOI ( Vrelease )</Expression>
+<Comment></Comment>
+<Expression>d_FLOI ( Vrelease, False )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -446,8 +476,8 @@ BaseTypes.MaxDistance(
 <PreConditions>
 <PreCondition
  Guid="89ee1741-d547-4a82-847a-692db2e737da"
->MA.EndOfMovementAuthority().Location - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &gt;= 0.0</PreCondition></PreConditions>
-<Expression>MA.EndOfMovementAuthority().Location - TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</Expression>
+>MA.ClosestEOA().Location - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &gt;= 0.0</PreCondition></PreConditions>
+<Expression>MA.ClosestEOA().Location - TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</Expression>
 </Case><Case
  Name="EOA is passed"
  Guid="890f1525-e043-407f-a393-2f0ddeac1f0b"
@@ -538,6 +568,11 @@ INITIAL_VALUE
  Id="d2f07368-a40f-4418-bf3c-74e928e6bbcf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5ec9229d-097b-4bd6-a01f-036dd3c6658d"
+>
+</ReqRef><ReqRef
+ Id="5b7d2c0d-92d5-4743-bbe3-847b2546e103"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b61a63ed-85b8-4ce8-8c83-1a84d95f9f9d"
 >
 </ReqRef><Comment>Computes the value of the release speed for all the EBI targets situated between d_tripEOA and the SvL.</Comment>
 <Cases>

@@ -2060,13 +2060,39 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
  Guid="50f48f40-31d2-40d3-a6a1-241de99ba487"
 >
 <Comment></Comment>
+</ReqRef><ReqRef
+ Id="972b621c-2a9e-4a94-8256-ae008ed01869"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="734be4fe-b288-4b75-8a85-beed996e8810"
+>
+</ReqRef><ReqRef
+ Id="ca227156-e277-48d0-ade5-408ee404622f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="35620367-f633-4879-842d-95adba31a8a4"
+>
 </ReqRef><Comment>Computes the time delay T_traction_cut_off from the traction cut-off command by the on-board to the moment the acceleration due to traction (A_traction) is guaranteed to be zero.</Comment>
+<Parameters>
+<Parameter
+ Type="Boolean"
+ Name="EstimatedAccelerationSetToZero"
+ Guid="06fa82cb-9f33-433a-b744-224af19080a1"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
- Name="Value"
+ Name="Estimated acceleration is set to zero"
  Guid="2b332e63-506d-494a-9fa7-cf6be6e69223"
 >
 <Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="824adb2b-e2ef-4e5f-be90-7f73efad4943"
+>EstimatedAccelerationSetToZero</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Time ( TrainData.Value.TractionModel.Coefficient * A_traction ( EstimatedTrainAcceleration=&gt;0.0, Gradient=&gt;Kernel.TrackDescription.Gradient.A_gradient ( Odometry.NominalDistance ) ) + TrainData.Value.TractionModel.Constant )</Expression>
+</Case><Case
+ Name="Estimated acceleration is considered"
+ Guid="7a0aa919-0a81-41f0-9817-1990ef82106d"
+>
 <Expression>Default.BaseTypes.Time ( TrainData.Value.TractionModel.Coefficient * A_traction ( EstimatedTrainAcceleration=&gt;Odometry.EstimatedAcceleration, Gradient=&gt;Kernel.TrackDescription.Gradient.A_gradient ( Odometry.NominalDistance ) ) + TrainData.Value.TractionModel.Constant )</Expression>
 </Case></Cases>
 </Function><Function

@@ -28,6 +28,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a5a3aad7-3724-4f34-a921-68c7560ea50a"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="0a156077-932d-4831-b7d8-8cb0350879e1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -62,7 +63,7 @@
  Guid="372b9a78-c790-4590-90ae-5fc9ed1a311e"
 >
 <Comment></Comment>
-<Expression>DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget + f41 ( Vtarget ) ) - ( Vtarget + f41 (Vtarget ) ) * ( T_berem() + T_traction() )</Expression>
+<Expression>DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget + f41 ( Vtarget ) ) - ( Vtarget + f41 (Vtarget ) ) * ( T_berem(EstimatedAccelerationSetToZero=&gt;True) + T_traction(EstimatedAccelerationSetToZero=&gt;True) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -206,7 +207,8 @@ INITIAL_VALUE Default.BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <PreConditions>
 <PreCondition
  Guid="7502e25f-c02c-4e9e-b3a2-eae5695cfd08"
->d_P ( aTarget.Speed) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+><Comment></Comment>
+d_P ( aTarget.Speed) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="fad51a65-a643-4377-96b9-5aad3caf9b5d"
 >Distance &lt; aTarget.Location + Default.BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition></PreConditions>
 <Expression>0.0</Expression>
@@ -219,7 +221,8 @@ INITIAL_VALUE Default.BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Guid="2a171c82-b995-4704-b3ec-b1b9353cbc2d"
 >Distance &lt; aTarget.Location + Default.BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition><PreCondition
  Guid="e1eb0537-a61d-41fb-96e6-629c3dfd32d6"
->d_P ( aTarget.Speed ) &lt;= Distance</PreCondition></PreConditions>
+><Comment></Comment>
+d_P ( aTarget.Speed ) &lt;= Distance</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case><Case
  Name="Outside"

@@ -721,7 +721,7 @@ Location stores the previous End of Movement Authority location.</Comment>
  Pinned="TRUE"
  Implemented="TRUE"
  Verified="TRUE"
- Name="EndOfMovementAuthority"
+ Name="ClosestEOA"
  Guid="5a294ee6-8877-47bf-a4eb-c4de4cd6ab32"
 >
 <ReqRef
@@ -950,7 +950,7 @@ INITIAL_VALUE CreateTarget (
 <PreCondition
  Guid="7efeaf2c-b67d-4232-90aa-091ac69f21f2"
 >Available ( MA.EndSection.DangerPoint )</PreCondition></PreConditions>
-<Expression>EndOfMovementAuthority().Location + MA.EndSection.DangerPoint.Distance</Expression>
+<Expression>ClosestEOA().Location + MA.EndSection.DangerPoint.Distance</Expression>
 </Case><Case
  Name="Danger point not available"
  Guid="c4d696f2-00fb-44bb-9e6e-1eeef034a072"
@@ -981,7 +981,7 @@ INITIAL_VALUE CreateTarget (
 <PreCondition
  Guid="925708df-b37c-401d-8a24-1a988c5dd27b"
 >Available ( MA.EndSection.Overlap )</PreCondition></PreConditions>
-<Expression>EndOfMovementAuthority().Location + MA.EndSection.Overlap.Distance</Expression>
+<Expression>ClosestEOA().Location + MA.EndSection.Overlap.Distance</Expression>
 </Case><Case
  Name="Overlap not available"
  Guid="f11f62bb-41ff-4755-a94f-be95cf5beea9"
@@ -1144,7 +1144,7 @@ INITIAL_VALUE CreateTarget (
  Guid="2217fe28-281b-4814-8139-79c47dc4b92c"
 >MA.TargetSpeed == 0.0</PreCondition><PreCondition
  Guid="bdd0dd49-4e89-48c7-ac0a-a7fabcb2b107"
->Distance &lt; EndOfMovementAuthority().Location</PreCondition></PreConditions>
+>Distance &lt; ClosestEOA().Location</PreCondition></PreConditions>
 <Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case><Case
  Name="Otherwise"
@@ -1233,7 +1233,7 @@ INITIAL_VALUE CreateTarget (
 <PreCondition
  Guid="61aaf608-32c4-4026-a55c-a9828eaacc69"
 ><Comment></Comment>
-Distance &lt; EndOfMovementAuthority().Location</PreCondition></PreConditions>
+Distance &lt; ClosestEOA().Location</PreCondition></PreConditions>
 <Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case><Case
  Name="After LOA"
@@ -1244,7 +1244,7 @@ Distance &lt; EndOfMovementAuthority().Location</PreCondition></PreConditions>
  Guid="22b40574-308e-4350-b8cc-9b21682fd64e"
 >MA.TargetSpeed != 0.0</PreCondition><PreCondition
  Guid="788808e3-5b2d-4dcf-a6ba-96961f01f422"
->EndOfMovementAuthority().Location &lt;= Distance</PreCondition></PreConditions>
+>ClosestEOA().Location &lt;= Distance</PreCondition></PreConditions>
 <Expression>MA.TargetSpeed</Expression>
 </Case><Case
  Name="Otherwise"
@@ -1411,7 +1411,7 @@ Distance &lt; EndOfMovementAuthority().Location</PreCondition></PreConditions>
 >MA.EndSection.Overlap == EMPTY</PreCondition><PreCondition
  Guid="6381d018-885c-4985-b83c-b453a20ee559"
 >MA.TargetSpeed == 0.0</PreCondition></PreConditions>
-<Expression>aTarget.Location == EndOfMovementAuthority().Location AND aTarget.Speed == 0.0</Expression>
+<Expression>aTarget.Location == ClosestEOA().Location AND aTarget.Speed == 0.0</Expression>
 </Case><Case
  Name="Danger point"
  Guid="d6d4cbe1-70bd-4bc9-a89c-9d45c55ff73e"
@@ -1476,7 +1476,7 @@ Distance &lt; EndOfMovementAuthority().Location</PreCondition></PreConditions>
 <PreCondition
  Guid="a7bbbdad-720b-4304-9e62-657988c6fd3f"
 >MA.TargetSpeed == 0.0</PreCondition></PreConditions>
-<Expression>aTarget.Speed == 0.0 AND aTarget.Location == EndOfMovementAuthority().Location</Expression>
+<Expression>aTarget.Speed == 0.0 AND aTarget.Location == ClosestEOA().Location</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="09357f4d-8e1d-4b43-8c43-65824ded4969"
@@ -3473,7 +3473,7 @@ IN EOAs</Action></Actions>
 ><Comment></Comment>
 LX.NearestNonProtectedNonStoppingLX() != EMPTY
   AND  
-(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P(LX.NearestNonProtectedNonStoppingLX().Speed) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
+(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P( Vest =&gt; LX.NearestNonProtectedNonStoppingLX().Speed, EstimatedAccelerationSetToZero =&gt; True ) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5d428056-d867-4dff-bc94-633a9ba1c635"
@@ -4005,7 +4005,7 @@ IN SvLs</Action></Actions>
 <Action
  Guid="3bf7458d-7f9b-4188-94f9-8c6a0c847b12"
 >INSERT CreateTarget(
-    aLocation =&gt; EndOfMovementAuthority().Location,
+    aLocation =&gt; ClosestEOA().Location,
     aSpeed =&gt; 0.0,
     aLength =&gt; BaseTypes.Length.Infinity
 )
@@ -4043,7 +4043,7 @@ IN SvLs</Action></Actions>
 ><Comment></Comment>
 LX.NearestNonProtectedNonStoppingLX() != EMPTY
   AND  
-(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P(LX.NearestNonProtectedNonStoppingLX().Speed) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
+(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P( Vest =&gt; LX.NearestNonProtectedNonStoppingLX().Speed, EstimatedAccelerationSetToZero =&gt; True ) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9274d1c1-4a76-4102-970e-4758a11502ca"
@@ -4444,7 +4444,8 @@ Note that the &quot;TimeOut&quot; here is not the End Section time-out value, bu
 <PreConditions>
 <PreCondition
  Guid="6ca30b00-39b9-4c23-b458-4088373dd895"
->Available(Element=&gt;MA)
+><Comment></Comment>
+Available(Element=&gt;MA)
   AND  
 Available(Element=&gt;MA.MA.EndSection)
   AND  

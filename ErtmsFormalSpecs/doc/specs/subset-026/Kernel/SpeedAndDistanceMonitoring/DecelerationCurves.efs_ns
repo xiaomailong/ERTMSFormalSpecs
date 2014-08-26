@@ -131,6 +131,11 @@
  Name="aTarget"
  Guid="a587ea44-f686-4370-9a34-89bf21378e98"
 >
+</Parameter><Parameter
+ Type="Boolean"
+ Name="EstimatedAccelerationSetToZero"
+ Guid="d26ac90a-7c32-4398-9b35-4f8e11a76abd"
+>
 </Parameter></Parameters>
 <Cases>
 <Case
@@ -141,7 +146,7 @@
 <Expression>DistanceForSpeed (
     Function =&gt;
         FUNCTION d : Default.BaseTypes.Distance =&gt; EBD_Target ( Distance =&gt; d, aTarget =&gt; aTarget ),
-        Speed =&gt; Vbec ( Vest =&gt; Vest, Vtarget =&gt; aTarget.Speed ) )</Expression>
+        Speed =&gt; Vbec ( Vest =&gt; Vest, Vtarget =&gt; aTarget.Speed, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -202,6 +207,7 @@
  Name="Always"
  Guid="97d73dd3-41c1-41ad-b682-8ea8dfad5174"
 >
+<Comment></Comment>
 <Expression>DecelerationProfile ( 
   SpeedRestrictions =&gt; GUI.SpeedRestrictions 
   DecelerationFactor =&gt; TrainData.BrakingParameters.A_normal_service ) 
@@ -235,6 +241,11 @@
  Name="Vtarget"
  Guid="824c9500-7f29-4dc0-9a3b-3d7c71c8a180"
 >
+</Parameter><Parameter
+ Type="Boolean"
+ Name="EstimatedAccelerationSetToZero"
+ Guid="5ac7cc7b-97c1-42f3-8c15-fbca6319dea1"
+>
 </Parameter></Parameters>
 <Cases>
 <Case
@@ -242,7 +253,7 @@
  Guid="6a8616f4-c654-41eb-8c0b-dd85faaf713e"
 >
 <Comment></Comment>
-<Expression>Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(), X2 =&gt; Vtarget ) + Vdelta2()</Expression>
+<Expression>Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(EstimatedAccelerationSetToZero), X2 =&gt; Vtarget ) + Vdelta2(EstimatedAccelerationSetToZero)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -277,6 +288,11 @@
  Name="Vtarget"
  Guid="485fb655-b7f7-4830-89fa-be6dfdf1c3dd"
 >
+</Parameter><Parameter
+ Type="Boolean"
+ Name="EstimatedAccelerationSetToZero"
+ Guid="05e24a61-faec-41fc-abdc-c21c4fadf142"
+>
 </Parameter></Parameters>
 <Cases>
 <Case
@@ -284,8 +300,8 @@
  Guid="65053d1d-56ea-40c0-958e-a23368d66654"
 >
 <Comment></Comment>
-<Expression>BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1() / 2.0, X2 =&gt; Vtarget ) ) * T_traction() +
-BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(), X2 =&gt; Vtarget ) + Vdelta2() / 2.0 )  * T_berem()</Expression>
+<Expression>BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(EstimatedAccelerationSetToZero) / 2.0, X2 =&gt; Vtarget ) ) * T_traction(EstimatedAccelerationSetToZero) +
+BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(EstimatedAccelerationSetToZero), X2 =&gt; Vtarget ) + Vdelta2(EstimatedAccelerationSetToZero) / 2.0 )  * T_berem(EstimatedAccelerationSetToZero)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
@@ -405,9 +421,10 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1()
 <PreCondition
  Guid="7377911b-f405-40f5-a39e-636a7d591d5f"
 ><Comment></Comment>
-TargetSpeedMonitoring.d_SBI1 ( Odometry.EstimatedSpeed ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+TargetSpeedMonitoring.d_SBI1 ( Odometry.EstimatedSpeed, False ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="341f5ca9-bbd4-4d97-bbbd-a8d5307c471c"
->TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.EstimatedSpeed ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+><Comment></Comment>
+TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.EstimatedSpeed, False ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Infinity</Expression>
 </Case><Case
  Name="SBI1"
@@ -418,8 +435,8 @@ TargetSpeedMonitoring.d_SBI1 ( Odometry.EstimatedSpeed ) == Default.BaseTypes.Di
  Guid="e862b7cc-9cf5-4c3a-afa3-53925d18277e"
 ><Comment></Comment>
 TargetSpeedMonitoring.SBI1BelowSBI2(
-    d_SBI1=&gt; TargetSpeedMonitoring.d_SBI1 ( Odometry.EstimatedSpeed ),
-    d_SBI2=&gt; TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.EstimatedSpeed )
+    d_SBI1=&gt; TargetSpeedMonitoring.d_SBI1 ( Odometry.EstimatedSpeed, False ),
+    d_SBI2=&gt; TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.EstimatedSpeed, False )
 )</PreCondition></PreConditions>
 <Expression>TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )</Expression>
 </Case><Case
@@ -497,13 +514,20 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Guid="9fc270a9-39d3-43be-8697-b26835593b34"
 >
 </ReqRef><Comment>Provides the speed during T_traction.</Comment>
+<Parameters>
+<Parameter
+ Type="Boolean"
+ Name="EstimatedAccelerationSetToZero"
+ Guid="3b358f8f-8f6e-4b7f-a25f-287e4c509665"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
  Guid="5065369d-4e58-4287-b086-1723c2fa31b5"
 >
 <Comment></Comment>
-<Expression>Aest1() * T_traction()</Expression>
+<Expression>Aest1() * T_traction(EstimatedAccelerationSetToZero)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -528,13 +552,20 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Guid="26f33adb-f9a7-43d1-b011-2d31430443ed"
 >
 </ReqRef><Comment>Provides the speed during T_berem.</Comment>
+<Parameters>
+<Parameter
+ Type="Boolean"
+ Name="EstimatedAccelerationSetToZero"
+ Guid="34b4be94-cad1-425f-addf-5e509ca200dd"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
  Guid="32aacacd-a015-4db8-9358-18b1f08b683a"
 >
 <Comment></Comment>
-<Expression>Aest2() * T_berem()</Expression>
+<Expression>Aest2() * T_berem(EstimatedAccelerationSetToZero)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -627,6 +658,13 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Guid="5634b0c6-40b9-4086-a7f8-b69a4a926cbf"
 >
 </ReqRef><Comment>Once a brake command has been issued, T_traction is the time it takes for the train to cut off the traction.</Comment>
+<Parameters>
+<Parameter
+ Type="Boolean"
+ Name="EstimatedAccelerationSetToZero"
+ Guid="624f53b7-f6fe-461e-a2ff-b2f9682e7dd5"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="Traction cut-off is implemented"
@@ -637,12 +675,12 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
 <PreCondition
  Guid="cf6f9fc7-ccd1-4d65-a066-2ba3eebe0aad"
 >Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; ( TrainData.BrakingParameters.T_traction_cut_off () - ( TargetSpeedMonitoring.T_warning + TargetSpeedMonitoring.T_bs2 ) ), X2 =&gt; 0.0 )</Expression>
+<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; ( TrainData.BrakingParameters.T_traction_cut_off (EstimatedAccelerationSetToZero) - ( TargetSpeedMonitoring.T_warning + TargetSpeedMonitoring.T_bs2 ) ), X2 =&gt; 0.0 )</Expression>
 </Case><Case
  Name="Traction cut-off is not implemented"
  Guid="804ac0bb-4c17-41aa-97a4-accc7affd282"
 >
-<Expression>TrainData.BrakingParameters.T_traction_cut_off ()</Expression>
+<Expression>TrainData.BrakingParameters.T_traction_cut_off (EstimatedAccelerationSetToZero)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Time"
@@ -710,13 +748,20 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Guid="6e9ca8fd-f111-4f92-b2b3-477b7075f563"
 >
 </ReqRef><Comment>Used in the calculation of the EBI curve from the EBD curve. T_berem is the time remaining in the safe brake build up time, T_be, after the traction has been fully cut off (which takes a time T_traction).</Comment>
+<Parameters>
+<Parameter
+ Type="Boolean"
+ Name="EstimatedAccelerationSetToZero"
+ Guid="28528b1d-f7fa-4baf-9ebc-b193b79dfdca"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
  Guid="aeee2a9d-0dc9-46c1-819a-97c42f1e0772"
 >
 <Comment></Comment>
-<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; TrainData.BrakingParameters.T_be () - T_traction (), X2 =&gt; 0.0 )</Expression>
+<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; TrainData.BrakingParameters.T_be () - T_traction (EstimatedAccelerationSetToZero), X2 =&gt; 0.0 )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"

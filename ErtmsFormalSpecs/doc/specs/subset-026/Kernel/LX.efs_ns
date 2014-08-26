@@ -641,7 +641,17 @@ INITIAL_VALUE Kernel.LX.LevelCrossing{Location =&gt; Default.BaseTypes.Distance.
  Name="d_P_ForLX"
  Guid="d671db7a-c99d-4216-a51f-557be12ddeab"
 >
-<Comment>Calculates the permitted speed deceleration curve for a given level crossing. This is not performed in the TargetSupervision namespace because the calculation requires a target with zero speed at the level crossing start location.</Comment>
+<ReqRef
+ Id="c6aacc41-0ade-4c43-a0c5-e212f9a6a52f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="490f488c-d7bf-4634-9201-e096958b4900"
+>
+</ReqRef><ReqRef
+ Id="59bae633-99ce-4f69-992a-cec56e0b4c41"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0a4077c8-0f18-479a-9bd6-bd466ca23755"
+>
+</ReqRef><Comment>Calculates the permitted speed deceleration curve for a given level crossing. This is not performed in the TargetSupervision namespace because the calculation requires a target with zero speed at the level crossing start location.</Comment>
 <Parameters>
 <Parameter
  Type="Kernel.LX.LevelCrossing"
@@ -660,13 +670,13 @@ INITIAL_VALUE Kernel.LX.LevelCrossing{Location =&gt; Default.BaseTypes.Distance.
  Guid="d4f210eb-abe8-409f-82c1-dcd63fef0895"
 ><Comment></Comment>
 NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
-<Expression>d_FLOI_ForLX ( aLX ) - BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_driver</Expression>
+<Expression>d_FLOI_ForLX ( aLX, True ) - BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
  Guid="b1346c7a-ac41-44d2-b6a3-b7c844cda78d"
 >
 <Comment></Comment>
-<Expression>BaseTypes.MinDistance ( X1 =&gt; d_FLOI_ForLX ( aLX ) - BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; SpeedAndDistanceMonitoring.DecelerationCurves.GUI, Speed =&gt; aLX.Speed ) )</Expression>
+<Expression>BaseTypes.MinDistance ( X1 =&gt; d_FLOI_ForLX ( aLX, True ) - BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; SpeedAndDistanceMonitoring.DecelerationCurves.GUI, Speed =&gt; aLX.Speed ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -686,6 +696,11 @@ NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
  Name="aLX"
  Guid="0fa87647-5df9-499f-b0a7-9daf55bf044b"
 >
+</Parameter><Parameter
+ Type="Boolean"
+ Name="EstimatedAccelerationSetToZero"
+ Guid="4e4f9f41-5009-466c-8d75-43061952d721"
+>
 </Parameter></Parameters>
 <Cases>
 <Case
@@ -696,16 +711,16 @@ NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 <PreCondition
  Guid="c96572f1-d44c-4039-8be6-1eb9c3f44363"
 ><Comment></Comment>
-SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1 ( aLX.Speed ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )
+SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1 ( aLX.Speed, EstimatedAccelerationSetToZero ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )
  &lt;= 
-d_SBI2LX(aLX) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</PreCondition></PreConditions>
-<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1 ( aLX.Speed )</Expression>
+d_SBI2LX(aLX, EstimatedAccelerationSetToZero) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</PreCondition></PreConditions>
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1 ( aLX.Speed, EstimatedAccelerationSetToZero )</Expression>
 </Case><Case
  Name="d_SBI2"
  Guid="5b780a39-26ea-4c85-870c-c287b12e58f7"
 >
 <Comment></Comment>
-<Expression>d_SBI2LX(aLX)</Expression>
+<Expression>d_SBI2LX(aLX, EstimatedAccelerationSetToZero)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -723,6 +738,11 @@ d_SBI2LX(aLX) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )<
  Name="aLX"
  Guid="af1b6d14-7233-4b8a-9198-5d02fed78e62"
 >
+</Parameter><Parameter
+ Type="Boolean"
+ Name="EstimatedAccelerationSetToZero"
+ Guid="5fb7c84b-c68c-43c4-9826-7b33b6ec57f3"
+>
 </Parameter></Parameters>
 <Cases>
 <Case
@@ -738,18 +758,23 @@ d_SBI2LX(aLX) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )<
     Location =&gt; aLX.Location,
     Speed =&gt; 0.0,
     Length =&gt; aLX.Length
-  }
+  },
+    EstimatedAccelerationSetToZero=&gt;EstimatedAccelerationSetToZero
 ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="e0098e0c-aa02-466a-aef7-a55cc93835e7"
 >
-<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBIvalue ( Vest =&gt; aLX.Speed, aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+<Comment></Comment>
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBIvalue (
+    Vest =&gt; aLX.Speed,
+    aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
     Location =&gt; aLX.Location,
     Speed =&gt; 0.0,
     Length =&gt; aLX.Length
-  } )  - Default.BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2</Expression>
+  },
+    EstimatedAccelerationSetToZero=&gt;EstimatedAccelerationSetToZero )  - Default.BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

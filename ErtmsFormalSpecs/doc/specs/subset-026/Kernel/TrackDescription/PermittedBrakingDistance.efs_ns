@@ -288,7 +288,8 @@
 <PreConditions>
 <PreCondition
  Guid="104659de-a2d2-4f67-a02f-1b251160a453"
->d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0 )</PreCondition><PreCondition
+><Comment></Comment>
+d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, EstimatedAccelerationSetToZero =&gt; False )</PreCondition><PreCondition
  Guid="3891d176-4d7b-40b3-b804-77f1889d16bb"
 >0.0 &lt;= d</PreCondition></PreConditions>
 <Expression>BaseTypes.Speed.MaxSpeed</Expression>
@@ -299,7 +300,7 @@
 <PreConditions>
 <PreCondition
  Guid="08d03f34-367b-475c-8e4f-c1175164676b"
->PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0 ) &lt;= d</PreCondition></PreConditions>
+>PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, EstimatedAccelerationSetToZero =&gt; False ) &lt;= d</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function><Function
@@ -476,14 +477,20 @@
  Name="Vtarget"
  Guid="c63c5f83-4265-43ba-9a78-ae1feaeefee7"
 >
+</Parameter><Parameter
+ Type="Boolean"
+ Name="EstimatedAccelerationSetToZero"
+ Guid="8f2b1abe-76d1-417c-96f7-beedd377b6d1"
+>
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
  Guid="626b0f44-abec-4e4e-a2e4-67111dc5b3c1"
 >
-<Expression>BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta1() / 2.0, X2 =&gt; Vtarget ) * SpeedAndDistanceMonitoring.DecelerationCurves.T_traction() +
-( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta1(), X2 =&gt; Vtarget ) + SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta2() / 2.0 ) * SpeedAndDistanceMonitoring.DecelerationCurves.T_berem()</Expression>
+<Comment></Comment>
+<Expression>BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta1(EstimatedAccelerationSetToZero) / 2.0, X2 =&gt; Vtarget ) * SpeedAndDistanceMonitoring.DecelerationCurves.T_traction(EstimatedAccelerationSetToZero) +
+( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta1(EstimatedAccelerationSetToZero), X2 =&gt; Vtarget ) + SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta2(EstimatedAccelerationSetToZero) / 2.0 ) * SpeedAndDistanceMonitoring.DecelerationCurves.T_berem(EstimatedAccelerationSetToZero)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -838,7 +845,7 @@
  Guid="3778642d-2ad3-4bb5-846d-9cebbcac9a61"
 >0.0 &lt;= d</PreCondition><PreCondition
  Guid="4c02d1d5-54b9-4506-b278-57f123705cf6"
->d &lt; PermittedBrakingDistance - SB_PBD ()</PreCondition></PreConditions>
+>d &lt; PermittedBrakingDistance - SB_PBD ( EstimatedAccelerationSetToZero =&gt; True )</PreCondition></PreConditions>
 <Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case><Case
  Name="After permitted braking distance"
@@ -847,7 +854,7 @@
 <PreConditions>
 <PreCondition
  Guid="7df22ab8-0234-4eb3-94c3-e7b321626e01"
->PermittedBrakingDistance - SB_PBD () &lt;= d</PreCondition></PreConditions>
+>PermittedBrakingDistance - SB_PBD ( EstimatedAccelerationSetToZero =&gt; False ) &lt;= d</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function><Function
@@ -866,7 +873,15 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="28e488f9-c17b-45ac-8a6c-d25b1e2186e9"
 >
-</ReqRef><Cases>
+</ReqRef><Comment></Comment>
+<Parameters>
+<Parameter
+ Type="Boolean"
+ Name="EstimatedAccelerationSetToZero"
+ Guid="9aa8f36c-efeb-42b4-8e4d-fbb45bcf5134"
+>
+</Parameter></Parameters>
+<Cases>
 <Case
  Name="SBI1"
  Guid="a3bdc837-fad8-4b38-98d7-846b87ef16de"
@@ -875,13 +890,14 @@
 <PreCondition
  Guid="0fdc4648-093d-4db8-a89e-ed9a3c288bb9"
 ><Comment></Comment>
-( SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2 * Odometry.EstimatedSpeed + Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0 ) ) + ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) &lt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1 * Odometry.EstimatedSpeed</PreCondition></PreConditions>
+( SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2 * Odometry.EstimatedSpeed + Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) ) + ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) &lt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1 * Odometry.EstimatedSpeed</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1 * Odometry.EstimatedSpeed</Expression>
 </Case><Case
  Name="SBI2"
  Guid="5712aee3-b427-40aa-aae6-94724f375a2d"
 >
-<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2 * Odometry.EstimatedSpeed + Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0 )</Expression>
+<Comment></Comment>
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2 * Odometry.EstimatedSpeed + Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
