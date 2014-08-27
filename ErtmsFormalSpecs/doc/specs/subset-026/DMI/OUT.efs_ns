@@ -1561,6 +1561,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="UpdateValue"
  Guid="ee8f8820-7a3e-488c-940c-9b5393756831"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="63b462dd-77eb-421b-b645-7b971238f6ec"
@@ -5453,14 +5454,20 @@ IN MRSP</Action></Actions>
  Name="UpdateValue"
  Guid="dedfc75e-8039-4cb5-b1a4-25400560f247"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e7e23d27-d75d-4817-b027-fee6a8e4b996"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
+>OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="5bced455-e7ba-4ce4-8b8c-d71ad9d9f0b7"
+>GetMonitoringType() == MonitoringType.CSM
+  OR  
+GetMonitoringType() == MonitoringType.PIM</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3b03cbd3-6227-48c2-89d6-d091e5d898dc"
->Location &lt;- Kernel.IndicationLocationAtMrspSpeed</Action></Actions>
+><Comment></Comment>
+Location &lt;- Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.IndicationLocation(Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT())</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -5575,6 +5582,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Location"
  Guid="15b9d3f6-0aeb-4f95-af2b-16e03acf4ff1"
 >
+<Comment></Comment>
 </StructureElement></Structure><Structure
  Default=""
  Y="1140"

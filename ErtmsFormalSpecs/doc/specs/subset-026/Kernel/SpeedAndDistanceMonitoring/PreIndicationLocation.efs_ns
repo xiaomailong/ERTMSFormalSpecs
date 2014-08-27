@@ -679,7 +679,7 @@ INITIAL_VALUE TargetSpeedMonitoring.Target{
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Target is the first supervised target"
+ Name="Target is the supervised target"
  Guid="7fa1ab9f-ed7c-4578-b42e-3a4f230aaf9e"
 >
 <Comment></Comment>
@@ -687,7 +687,7 @@ INITIAL_VALUE TargetSpeedMonitoring.Target{
 <PreCondition
  Guid="6c89e2c5-c672-4783-b6b8-0d417cf0f735"
 ><Comment></Comment>
-Target == PreIndicationLocation.FirstTargetFromLocation(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition></PreConditions>
+Target == TargetSpeedMonitoring.MRDT()</PreCondition></PreConditions>
 <Expression>MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</Expression>
 </Case><Case
  Name="The section ending at the target is not speed restricted"
@@ -798,6 +798,43 @@ MRSPnTarget == PreIndicationLocation.FirstTargetFromLocation(TrainPosition.Front
 >
 <Comment>Dist is measured from the LRBG</Comment>
 <Expression>THERE_IS_IN TargetsList() |  (X.Location &lt; Dist) AND (X.Location + Default.BaseTypes.LengthToDistance(X.Length) &gt;= Dist)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Speed"
+ Default=""
+ Name="IndicationLocation"
+ Guid="9c99dc6f-90d1-40a8-8f36-618768e23a53"
+>
+<ReqRef
+ Id="615ccbef-ab0a-4f6f-9624-9ace6361ea83"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c1d660be-4df4-4aa1-af88-684d71829ff5"
+>
+</ReqRef><Comment></Comment>
+<Parameters>
+<Parameter
+ Type="TargetSpeedMonitoring.Target"
+ Name="Target"
+ Guid="3ece7368-2ba7-434f-8935-7a9e1fd466d9"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="The target is the EOA or the SvL"
+ Guid="2d7b4d78-e0c2-4eca-a426-4c460d8b1599"
+>
+<PreConditions>
+<PreCondition
+ Guid="2aac3ae2-f418-460d-aaeb-f270e8019b10"
+>MA.IsEOA(Target)
+  OR  
+MA.IsSvL(Target)</PreCondition></PreConditions>
+<Expression>d_I_EOA( TargetSpeed(Target) ) </Expression>
+</Case><Case
+ Name="It is another target"
+ Guid="8bdffb03-588c-4283-94e4-00ae6887a869"
+>
+<Expression>d_I( TargetSpeed(Target) )</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>
