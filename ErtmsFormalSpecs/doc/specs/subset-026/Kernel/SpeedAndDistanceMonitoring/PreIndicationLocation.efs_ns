@@ -802,6 +802,8 @@ MRSPnTarget == PreIndicationLocation.FirstTargetFromLocation(TrainPosition.Front
 </Function><Function
  Type="BaseTypes.Speed"
  Default=""
+ Width="100"
+ Height="50"
  Name="IndicationLocation"
  Guid="9c99dc6f-90d1-40a8-8f36-618768e23a53"
 >
@@ -829,7 +831,7 @@ MRSPnTarget == PreIndicationLocation.FirstTargetFromLocation(TrainPosition.Front
 >MA.IsEOA(Target)
   OR  
 MA.IsSvL(Target)</PreCondition></PreConditions>
-<Expression>d_I_EOA( TargetSpeed(Target) ) </Expression>
+<Expression>d_I_EOA( TargetSpeed(Target) )</Expression>
 </Case><Case
  Name="It is another target"
  Guid="8bdffb03-588c-4283-94e4-00ae6887a869"
