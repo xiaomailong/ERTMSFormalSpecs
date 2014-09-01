@@ -5729,17 +5729,77 @@ All location and profile data transmitted from the RBC shall refer to the locati
  Name=""
  Guid="50574953-3247-4859-8de2-1049ab46e862"
 ><Comment>&quot;Linking information is used&quot; is defined in 3.4.4.2.1.1 #morido, 14/01/20</Comment>
-For the LRBG the following requirements have to be met:
-	a) The on-board equipment shall use the last balise group passed as a reference when reporting its position to the RBC (in the following termed as LRBGONB). Only
-	- balise groups marked as linked and contained in the previously received linking
-	information, if linking information is used on-board
-	or
-	- the last balise group not marked as unlinked, if no linking was used when this balise group was passed
-	shall be regarded.
-	b) The RBC shall use the last relevant balise group which was reported by the onboard equipment as a reference (in the following termed as LRBGRBC). At a certain
-	moment LRBGRBC and LRBGONB can be different.
-	c) The on-board equipment shall be able to accept information referring to one of at least eight LRBGONB last reported to the RBC.<Sub>
+For the LRBG the following requirements have to be met:<Sub>
 <Paragraph
+ id="3.6.2.2.2.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="18834f9f-2f32-40fe-9d9a-97c8e2991f93"
+><Comment></Comment>
+The on-board equipment shall use the last balise group passed as a reference when reporting its position to the RBC (in the following termed as LRBGONB). Only
+	- balise groups marked as linked and contained in the previously received linking information, if linking information is used on-board
+	or
+	- the last balise group not marked as unlinked, if no linking was used when this balise group was passed shall be regarded.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="52aa51a4-cf5d-4d58-8cd2-a16be455e925"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="738e41c7-87d4-48d3-b823-588f64575df9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.6.2.2.2.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="59b298a9-850d-49a0-951e-800b41e5878a"
+><Comment></Comment>
+The RBC shall use the last relevant balise group which was reported by the onboard equipment as a reference (in the following termed as LRBGRBC). At a certain moment LRBGRBC and LRBGONB can be different.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="78f5b7cb-6763-44cd-8af5-19b16b91031f"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="852ed907-d7ff-480b-b8a4-15887726db3d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.6.2.2.2.c"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="f7fc46b2-db95-4d3a-8dcc-19f1948d1fff"
+><Comment></Comment>
+The on-board equipment shall be able to accept information referring to one of at least eight LRBGONB last reported to the RBC.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="bfb04d97-a04a-483b-9ebb-ed1cd4d13151"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="c1eaefbf-cafb-41ff-adaf-7d7e95e52e36"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.6.2.2.2.1"
  guid=""
  type="REQUIREMENT"
@@ -34541,12 +34601,73 @@ With regards to the MRSP, the track conditions, the indication location at MRSP 
  functionalBlockName=""
  Name=""
  Guid="2acfcc15-b52e-4162-a72e-a4ff1e9f43e1"
->The on-board shall not consider a message transmitted from the trackside if any of the following criteria is not fulfilled.
-	a) Correctness of the received message: the whole message shall be complete and respect the ETCS language; variables shall not have invalid values
-	b) The message shall be received in due time.
-	c) The message shall be received at the right expected location.
-	as stated below.<Sub>
+><Comment></Comment>
+The on-board shall not consider a message transmitted from the trackside if any of the following criteria is not fulfilled.
+[...]	as stated below.<Sub>
 <Paragraph
+ id="3.16.1.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="da9f0886-9eda-4e06-91e4-41094a7a488f"
+>Correctness of the received message: the whole message shall be complete and respect the ETCS language; variables shall not have invalid values<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5ab7d301-39cc-46d0-ba7b-eec91b79145c"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="dc0d422c-ab29-440c-8c73-a8c7ff4be7ec"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.1.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="0b314991-9ddf-4e48-bbbc-ef8083339ea7"
+>The message shall be received in due time.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="db234ed2-d3b6-4819-999a-bd7e13719c0f"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="2e24f8a3-5f72-4266-bdd9-6317194fdfde"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.1.1.c"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="cc65b517-2625-4019-bbbf-8b6f317ae84f"
+>The message shall be received at the right expected location.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="85174e62-1209-4942-8331-78397b5795a8"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="d0530c3b-290d-4dae-96a7-e842c7c5ce8f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.16.1.1.1"
  guid=""
  type="REQUIREMENT"

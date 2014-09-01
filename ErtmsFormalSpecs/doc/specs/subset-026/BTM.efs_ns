@@ -640,6 +640,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f5ae238c-42d9-470d-8cd7-2d31ad14f2a0"
 >
+</ReqRef><ReqRef
+ Id="18834f9f-2f32-40fe-9d9a-97c8e2991f93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2cc92b31-5b34-4951-abfe-3f489a768dbf"
+>
 </ReqRef><Comment>Indicates whether the Current Balise Group is a candidate for LRBG</Comment>
 <Cases>
 <Case
@@ -1953,6 +1958,12 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ADHESION_FACTOR.Q
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6beac18d-82e2-426e-b617-0411fdd220dd"
 >
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="18834f9f-2f32-40fe-9d9a-97c8e2991f93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="99c46e2f-d424-4e5f-86e4-0f6601827b8e"
+>
 </ReqRef><Comment>This procedure is used when the train detects a new LRBG, in order to update information relative to its LRBG.</Comment>
 <Parameters>
 <Parameter
@@ -2132,6 +2143,12 @@ LRBG &lt;- BaliseGroup {
  Id="50574953-3247-4859-8de2-1049ab46e862"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9b6ea606-21f9-4e4f-9f72-a903cbde27f5"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="18834f9f-2f32-40fe-9d9a-97c8e2991f93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="efc732f9-78d2-41f5-91fb-c7f777171a27"
 >
 </ReqRef><Comment>If the current balise group is a candidate to become a new LRBG, then it is stored as a new LRBG.</Comment>
 <SubRules></SubRules>
@@ -2838,6 +2855,11 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
  Guid="ceae857b-172a-46d7-96a7-5cf2bd79689b"
 >
 <Comment>Even if in the requiremets, the previous LRBG are decribed in the train position, it seemed more structured to place this list in the BTM namespace, near the LRBG</Comment>
+</ReqRef><ReqRef
+ Id="f7fc46b2-db95-4d3a-8dcc-19f1948d1fff"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="07beb723-31eb-4427-82db-90278134c80b"
+>
 </ReqRef><Comment>Holds the LRBG that have been processed before</Comment>
 </Variable><Variable
  Type="BaliseGroupMessages"

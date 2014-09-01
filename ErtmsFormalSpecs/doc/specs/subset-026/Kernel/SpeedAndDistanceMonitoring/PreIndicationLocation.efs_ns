@@ -801,9 +801,11 @@ MRSPnTarget == PreIndicationLocation.FirstTargetFromLocation(TrainPosition.Front
 </Case></Cases>
 </Function><Function
  Type="BaseTypes.Speed"
+ Cacheable="TRUE"
  Default=""
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="IndicationLocation"
  Guid="9c99dc6f-90d1-40a8-8f36-618768e23a53"
 >
@@ -812,7 +814,7 @@ MRSPnTarget == PreIndicationLocation.FirstTargetFromLocation(TrainPosition.Front
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c1d660be-4df4-4aa1-af88-684d71829ff5"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Provides the indication location at MRSP speed for the DMI</Comment>
 <Parameters>
 <Parameter
  Type="TargetSpeedMonitoring.Target"
