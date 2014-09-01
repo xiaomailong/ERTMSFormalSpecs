@@ -22,7 +22,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFSDriver", "EFSDriver\EFSD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INOUTVariables", "INOUTVariables\INOUTVariables.csproj", "{C2A4C1C3-8D4C-43C7-A0A4-2C65C1D32B87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErtmsSolutions.tests", "ErtmsSolutions.test\ErtmsSolutions.tests.csproj", "{D7061C25-D1BD-4495-B152-FB1112E6EFF8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BCB935C4-B06E-46F9-941B-5E7C73557F66}"
+	ProjectSection(SolutionItems) = preProject
+		ertmsFormalSpec.vsmdi = ertmsFormalSpec.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ertmsFormalSpec.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -142,6 +154,16 @@ Global
 		{C2A4C1C3-8D4C-43C7-A0A4-2C65C1D32B87}.Release|Mixed Platforms.Build.0 = Release|x86
 		{C2A4C1C3-8D4C-43C7-A0A4-2C65C1D32B87}.Release|x86.ActiveCfg = Release|x86
 		{C2A4C1C3-8D4C-43C7-A0A4-2C65C1D32B87}.Release|x86.Build.0 = Release|x86
+		{D7061C25-D1BD-4495-B152-FB1112E6EFF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7061C25-D1BD-4495-B152-FB1112E6EFF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7061C25-D1BD-4495-B152-FB1112E6EFF8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D7061C25-D1BD-4495-B152-FB1112E6EFF8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D7061C25-D1BD-4495-B152-FB1112E6EFF8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D7061C25-D1BD-4495-B152-FB1112E6EFF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7061C25-D1BD-4495-B152-FB1112E6EFF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7061C25-D1BD-4495-B152-FB1112E6EFF8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D7061C25-D1BD-4495-B152-FB1112E6EFF8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D7061C25-D1BD-4495-B152-FB1112E6EFF8}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
