@@ -529,7 +529,7 @@
  Name="Always"
  Guid="d615b552-1523-4e37-9f1f-bfd4a9de8af3"
 >
-<Expression>Position
+<Expression>BTM.Position
 {
   OverReadingAmountOdo =&gt; Odometry.Accuracy.D_ora,
   Position =&gt; Odometry.NominalDistance,
@@ -1121,6 +1121,33 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 >
 <Expression>FIRST_IN aTelegram.Sequence1 | X.TRACK_TO_TRAIN.MODE_PROFILE  != EMPTY</Expression>
 </Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Default=""
+ Name="RelocateDistance"
+ Guid="0270b107-3066-4ea5-a2c2-42f0462504a0"
+>
+<ReqRef
+ Id="afb44275-4d8c-4d1d-9caf-212e30e4ec9b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7cfe948-0ca2-42c7-bb1a-ed5e53eba0a5"
+>
+</ReqRef><Comment>Takes a distance and removes the separation between the old and new LRBG</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="Distance"
+ Guid="3dc9f988-a7d0-4c6d-8c07-aa7ad1e34fb6"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="3a033bdc-a838-4880-a8d5-9e67646044d2"
+>
+<Comment></Comment>
+<Expression>Distance - ( BGLocationReference.Position - LRBG.Position.Position )</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -1259,7 +1286,8 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INF
 <Actions>
 <Action
  Guid="11ff0426-7369-4b98-8ea9-b7674aadda0c"
->Kernel.MA.RepositioningInformationReceived ( Packet =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION, DistanceToBG =&gt; Linking.CurrentLinking().Distance )</Action></Actions>
+><Comment></Comment>
+Kernel.MA.RepositioningInformationReceived ( Packet =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION, DistanceToBG =&gt; Linking.CurrentLinking().Distance )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Gradient available"
@@ -1766,7 +1794,8 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ADHESION_FACTOR.Q
 <Actions>
 <Action
  Guid="961a9459-5891-48f0-8de2-eddc845ec82f"
->Kernel.LX.LXReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION, NID_BG=&gt;NID_BG )</Action></Actions>
+><Comment></Comment>
+Kernel.LX.LXReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION, NID_BG=&gt;NID_BG )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="RBC Transition Order available"
@@ -1867,7 +1896,8 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ADHESION_FACTOR.Q
 <PreConditions>
 <PreCondition
  Guid="229f8b76-fd9c-43fc-9e81-d3eeef35a300"
->ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</PreCondition><PreCondition
+><Comment></Comment>
+ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</PreCondition><PreCondition
  Guid="63b7ef27-bbc6-42a7-8bf2-d97a8e0a60c8"
 >THERE_IS_IN CurrentBaliseGroup | HasRevSupervisionInfo(Message=&gt;X)</PreCondition></PreConditions>
 <Actions>
@@ -1964,6 +1994,16 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ADHESION_FACTOR.Q
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="99c46e2f-d424-4e5f-86e4-0f6601827b8e"
 >
+</ReqRef><ReqRef
+ Id="afb44275-4d8c-4d1d-9caf-212e30e4ec9b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2dd1f0f7-51f7-4705-b8b0-c0080a3c892e"
+>
+</ReqRef><ReqRef
+ Id="ee60d01b-a74d-40b9-88b2-c24f3198e572"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="853255a2-6e72-4c1c-9a59-93811a66b6d3"
+>
 </ReqRef><Comment>This procedure is used when the train detects a new LRBG, in order to update information relative to its LRBG.</Comment>
 <Parameters>
 <Parameter
@@ -2008,6 +2048,646 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ADHESION_FACTOR.Q
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="Relocate trackside information"
+ Guid="ba44542d-5f85-4e5c-9be1-449daf9f1059"
+>
+<Comment>Since all distances are measured from the reference location of the LRBG, all distances saved the kernel must be relocated when the EVC accepts a new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update all distances"
+ Guid="a7a697f6-8f4f-4e63-b505-36a910508835"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Linkings"
+ Guid="6391d67f-aa92-4901-a868-f12fce891513"
+>
+<Comment>Change the distances in the stored Linkings to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Linkings"
+ Guid="0ced51a0-3d53-4e53-a2d3-98f869207d58"
+>
+<PreConditions>
+<PreCondition
+ Guid="21e9c91f-d2ef-4a40-9ebf-d73a8504d7fb"
+>Linking.Linkings != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e19e9f97-4a83-40a3-b263-332abbb1b16b"
+><Comment></Comment>
+Linking.Linkings &lt;- MAP Linking.Linkings USING BTM.Linking.LinkingData{
+    LocationAccuracy =&gt; X.LocationAccuracy,
+    Orientation =&gt; X.Orientation,
+    Reaction =&gt; X.Reaction,
+    Distance =&gt; RelocateDistance(X.Distance),
+    BaliseGroupIdentifier =&gt; X.BaliseGroupIdentifier
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Emergency Stops"
+ Guid="90e8fa4c-3bf9-4d41-8f3c-49a12c49c220"
+>
+<Comment>Change the distances in the stored Emergency Stops to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Emergency Stops"
+ Guid="af10bbbb-d841-4245-a21b-fc3250b3e532"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="2d7660db-7e10-4467-b71a-c7944f926f7b"
+>Kernel.EmergencyStops != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="64a5b203-43ab-41ec-b698-757a66aa1143"
+><Comment></Comment>
+Kernel.EmergencyStops &lt;- MAP Kernel.EmergencyStops USING Kernel.EmergencyStop{
+    IsConditional =&gt; X.IsConditional,
+    Id =&gt; X.Id,
+    StopLocation =&gt; RelocateDistance(X.StopLocation),
+    Reason =&gt; X.Reason
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Level Transition Order"
+ Guid="2d7003a0-cb6f-468e-a417-912506442457"
+>
+<Comment>Change the distances in the stored Level Transition Order to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Level Transition Order"
+ Guid="ebcb0b12-130b-4dee-87c0-ada7622ac891"
+>
+<PreConditions>
+<PreCondition
+ Guid="4c9c049a-53ca-42d0-a56d-1436780c837b"
+>Available (Kernel.LevelTransition.LevelTransitionOrder)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2d236efe-6978-4ec0-880b-fa0d4befa336"
+>Kernel.LevelTransition.LevelTransitionOrder.Distance &lt;- RelocateDistance(Kernel.LevelTransition.LevelTransitionOrder.Distance)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Level Crossings"
+ Guid="289a329e-dd2d-494d-9874-0a0f6afd15a5"
+>
+<Comment>Change the distances in the stored Level Crossings to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Level Crossings"
+ Guid="09d19112-dc11-4041-a25f-96533bf073a9"
+>
+<PreConditions>
+<PreCondition
+ Guid="45bd8711-149c-4bbd-a43b-1659bf13a9d7"
+>Kernel.LX.LevelCrossings != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="50ba0696-fc68-4e62-bbec-364e5d782455"
+><Comment></Comment>
+Kernel.LX.LevelCrossings &lt;- MAP Kernel.LX.LevelCrossings USING Kernel.LX.LevelCrossing{
+    Id =&gt; X.Id,
+    Location =&gt; RelocateDistance(X.Location),
+    Length =&gt; X.Length,
+    IsProtected =&gt; X.IsProtected,
+    Speed =&gt; X.Speed,
+    StoppingRequired =&gt; X.StoppingRequired,
+    StoppingAreaLength =&gt; X.StoppingAreaLength
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Mode Profile"
+ Guid="ec02eab3-53e2-4ff9-8ae8-0e416e45f9e1"
+>
+<Comment>Change the distances in the stored Mode Profile to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Mode Profile"
+ Guid="0ce29d2d-f443-4dae-8828-0887df89bbb4"
+>
+<PreConditions>
+<PreCondition
+ Guid="a6ff2a03-930f-4f27-bfc8-b2bcac100179"
+>Kernel.MA.ModeProfile.Profile != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="15547961-832e-4dd5-84bb-b39085614a1e"
+>Kernel.MA.ModeProfile.Profile &lt;- MAP Kernel.MA.ModeProfile.Profile USING Kernel.MA.ModeProfile.ModeProfileStruct{
+    Distance =&gt; RelocateDistance(X.Distance),
+    Mode =&gt; X.Mode,
+    Speed =&gt; X.Speed,
+    Length =&gt; X.Length,
+    AcknLength =&gt; X.AcknLength,
+    SupervisionQualifier =&gt; X.SupervisionQualifier
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update SR Authorisation"
+ Guid="49559908-53df-46da-942b-d6c1cfb7660a"
+>
+<Comment>Change the distances in the stored Staff Responsible Mode Authorisation to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update SR Authorisation"
+ Guid="64e19da1-18aa-4dc7-ba6e-4485a8cfc96a"
+>
+<PreConditions>
+<PreCondition
+ Guid="f0617975-0e2a-4844-9d27-166b80175975"
+>Available(Kernel.SR.SRAuthorisation)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3e93b105-dd0c-4ddb-93ee-34c23ce710f6"
+>Kernel.SR.SRAuthorisation.Distance &lt;- RelocateDistance(Kernel.SR.SRAuthorisation.Distance)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Adhesion Factors"
+ Guid="fe95f853-8149-4972-879a-6b9bd5be4766"
+>
+<Comment>Change the distances in the stored Adhesion Factors to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Adhesion Factors"
+ Guid="17b32be8-2947-4325-8612-8e2e6ed254c1"
+>
+<PreConditions>
+<PreCondition
+ Guid="41425123-2b7a-4a35-955f-bbc92e8e7c77"
+><Comment></Comment>
+Kernel.TrackDescription.AdhesionFactors.AdhFactors != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0db1043e-a8ac-4926-bc7b-8c94101570dc"
+>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;- MAP Kernel.TrackDescription.AdhesionFactors.AdhFactors USING Kernel.TrackDescription.AdhesionFactors.AdhesionFactor{
+    Distance =&gt; RelocateDistance(X.Distance),
+    Length =&gt; X.Length,
+    Value =&gt; X.Value
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Axle Load Profile"
+ Guid="f8d308ef-5265-4686-ad4d-5294a4566e3b"
+>
+<Comment>Change the distances in the stored Axle Load Profile to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Axle Load Profile"
+ Guid="00430644-e90d-4db9-9e01-41fb826fc190"
+>
+<PreConditions>
+<PreCondition
+ Guid="2f7fe40b-0801-4095-9dd0-cb0e00b3bdf3"
+><Comment></Comment>
+Available(Kernel.TrackDescription.AxleLoad.ASP)
+  AND  
+Kernel.TrackDescription.AxleLoad.ASP.ALs != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="dbdbc531-b34a-4bb5-a79b-4fa70867c086"
+><Comment></Comment>
+Kernel.TrackDescription.AxleLoad.ASP.ALs &lt;- MAP Kernel.TrackDescription.AxleLoad.ASP.ALs USING Kernel.TrackDescription.AxleLoad.AxleLoad{
+    Length =&gt; X.Length,
+    TrainLengthDelay =&gt; X.TrainLengthDelay,
+    Distance =&gt; RelocateDistance(X.Distance),
+    Values =&gt; X.Values
+}</Action><Action
+ Guid="a4823d58-e3d0-44d3-a8cb-d3da749c766f"
+><Comment></Comment>
+Kernel.TrackDescription.AxleLoad.ASP.EmptyProfileDistance &lt;- RelocateDistance(Kernel.TrackDescription.AxleLoad.ASP.EmptyProfileDistance)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Gradients"
+ Guid="f7f414c2-591e-4528-a588-0cc21c39ead8"
+>
+<Comment>Change the distances in the stored Gradient Profile to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Gradients"
+ Guid="cbbb196a-7ea3-4458-bc02-f1da27944a69"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="e4097af4-c04d-423c-927c-7319de7a8656"
+>Kernel.TrackDescription.Gradient.Gradients != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8b54a180-6453-4856-bc6e-1d0e953f63a0"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING Kernel.TrackDescription.Gradient.GradientInfo{
+    Distance =&gt; RelocateDistance(X.Distance),
+    Gradient =&gt; X.Gradient
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Speed Restrictions related to Permitted Braking Distance"
+ Guid="e7c1a09f-a872-4e77-86cd-d2b491bf2de0"
+>
+<Comment>Change the distances in the stored Permitted Braking Distance Speed Restrictions to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Speed Restrictions related to Permitted Braking Distance"
+ Guid="33c81bf0-8af0-4505-ab27-66a226f39992"
+>
+<PreConditions>
+<PreCondition
+ Guid="9a1fd2e9-f993-486b-8b1f-498af59e3337"
+>Available(Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile)
+  AND  
+Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c600d873-49dc-44dd-8a1a-0bbd72c7bab8"
+>Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.EmptyProfileDistance &lt;- RelocateDistance(Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.EmptyProfileDistance)</Action><Action
+ Guid="bb71241b-e532-4f32-913e-0e64a7e53c01"
+><Comment></Comment>
+Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions &lt;- MAP Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions USING Kernel.TrackDescription.PermittedBrakingDistance.SRPB{
+    Location =&gt; RelocateDistance(X.Location),
+    Length =&gt; X.Length,
+    Speed =&gt; X.Speed,
+    Gradient =&gt; X.Gradient,
+    BrakeType =&gt; X.BrakeType,
+    BrakingDistance =&gt; X.BrakingDistance
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Reversing Area"
+ Guid="40f6dbf9-6100-4db6-beff-bd7529c2fc66"
+>
+<Comment>Change the distances in the stored Reversing Area to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Reversing Area"
+ Guid="3892aad8-b058-44b5-a0c5-14570e2859ba"
+>
+<PreConditions>
+<PreCondition
+ Guid="41c693e8-3a1f-44fe-9e7d-2ba5e5ff9cc7"
+><Comment></Comment>
+Available(Kernel.TrackDescription.ReversingArea.ReversingAreaProfile)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a3d612c5-11b4-4469-9b37-1d7eb6af342f"
+>Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance &lt;- RelocateDistance(Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Route Suitability"
+ Guid="0b020469-27eb-4625-b877-4adae11f6957"
+>
+<Comment>Change the distances in the stored Route Suitability Profile to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Route Suitability"
+ Guid="a5be2b3f-1457-427a-90f2-79f2abbabf07"
+>
+<PreConditions>
+<PreCondition
+ Guid="813e5a1f-ee48-4adb-b25a-ec57b8ff7b73"
+>Available(Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile)
+  AND  
+Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d6659a82-85cc-4d35-960a-16813e7c869c"
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.EmptyProfileDistance &lt;- RelocateDistance(Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.EmptyProfileDistance)</Action><Action
+ Guid="2c519ddc-d31a-4a25-a641-3e51f3099427"
+><Comment></Comment>
+Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items &lt;- MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items USING Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItem{
+    Type =&gt; X.Type,
+    Distance =&gt; RelocateDistance(X.Distance),
+    LineGauge =&gt; X.LineGauge,
+    MaxAxleLoad =&gt; X.MaxAxleLoad,
+    TractionSystem =&gt; X.TractionSystem,
+    NidCTraction =&gt; X.NidCTraction
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Static Speed Profile"
+ Guid="159dcb11-7560-463b-9cb3-5f73613e9ebc"
+>
+<Comment>Change the distances in the stored Static Speed Profile to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Static Speed Profile"
+ Guid="871d0f9f-7751-4b29-8db5-56a927cf04e3"
+>
+<PreConditions>
+<PreCondition
+ Guid="e247a056-3579-487e-b4b1-2b6785beddbe"
+><Comment></Comment>
+Kernel.TrackDescription.StaticSpeedProfile.SSP != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8bb2f7b7-e5ec-4f3b-8166-f68ba0fd7f42"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- MAP Kernel.TrackDescription.StaticSpeedProfile.SSP USING Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
+    Distance =&gt; RelocateDistance(X.Distance),
+    BasicSpeed =&gt; X.BasicSpeed,
+    TrainLengthDelay =&gt; X.TrainLengthDelay,
+    Categories =&gt; X.Categories
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Applicable National Values"
+ Guid="2a660229-50de-4b68-92f6-f70369884777"
+>
+<Comment>Change the distances in the stored Applicable National Values to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Applicable National Values"
+ Guid="27b09058-e67a-4b1e-89ac-253403802463"
+>
+<PreConditions>
+<PreCondition
+ Guid="64e59923-1c88-40d5-afc4-e3f85142f563"
+>Available(Kernel.NationalValues.ApplicableNationalValues)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="266b0e21-033c-4f94-9e7e-7d0ac5fc523a"
+>Kernel.NationalValues.ApplicableNationalValues.ApplicableDistance &lt;- RelocateDistance(Kernel.NationalValues.ApplicableNationalValues.ApplicableDistance)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Not Applicable National Values"
+ Guid="d0df7f00-ee99-4021-aa9c-6bfd54a481fc"
+>
+<Comment>Change the distances in the stored Not Yet Applicable National Values to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Not Applicable National Values"
+ Guid="955bacb3-d3aa-4c13-a998-48a2fafa9fa1"
+>
+<PreConditions>
+<PreCondition
+ Guid="0bf1ef85-b63e-416e-b98c-e4d827fb057f"
+>Available(Kernel.NationalValues.NotApplicableNationalValues)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c7f41cd1-a886-4f3c-989f-baaee038bcae"
+>Kernel.NationalValues.NotApplicableNationalValues.ApplicableDistance &lt;- RelocateDistance(Kernel.NationalValues.NotApplicableNationalValues.ApplicableDistance)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update General Track Conditions"
+ Guid="74748e63-f2b2-4d43-9d6f-5fdcdf4a5699"
+>
+<Comment>Change the distances in the stored General Track Conditions to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update General Track Conditions"
+ Guid="99412497-4af5-43b3-94cb-113c14171d73"
+>
+<PreConditions>
+<PreCondition
+ Guid="14074785-1a5d-418d-9041-9c7593105abe"
+>Kernel.TrackDescription.TrackConditions.General.TCProfile != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="56b280f3-d732-44db-bec8-8860b3143772"
+><Comment></Comment>
+Kernel.TrackDescription.TrackConditions.General.TCProfile &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation{
+    Distance =&gt; RelocateDistance(X.Distance),
+    Value =&gt; X.Value
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update TC Announcements"
+ Guid="8061f8db-05a5-46ac-9d17-29343b248247"
+>
+<Comment>Change the distances in the stored Track Condition Announcements to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update TC Announcements"
+ Guid="8bd7601d-8dcf-43b4-96c6-0f0ea98d0ab5"
+>
+<PreConditions>
+<PreCondition
+ Guid="ebba61da-3562-456e-88a1-6206c6260185"
+><Comment></Comment>
+Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="bd58a81a-7bbc-4de8-89de-d6b278982120"
+>Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct{
+    Type =&gt; X.Type,
+    Distance =&gt; RelocateDistance(X.Distance),
+    Length =&gt; X.Length,
+    Time =&gt; X.Time,
+    Automatic =&gt; X.Automatic
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Big Metal Masses TC"
+ Guid="be414430-2f9e-44b2-b1ce-5826957d25c7"
+>
+<Comment>Change the distances in the stored Big Metal Masses Track Conditions to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Big Metal Masses TC"
+ Guid="e5fb4843-b5ed-4e32-8761-1dbe159bb14b"
+>
+<PreConditions>
+<PreCondition
+ Guid="b9b6a50e-d1e1-4e3a-92b6-08f05ff2a3ea"
+>Kernel.TrackDescription.TrackConditions.BigMetalMasses.TCBigMetalMasses != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9d9fef57-643a-4b84-b837-ad28e39b6281"
+>Kernel.TrackDescription.TrackConditions.BigMetalMasses.TCBigMetalMasses &lt;- MAP Kernel.TrackDescription.TrackConditions.BigMetalMasses.TCBigMetalMasses USING Kernel.TrackDescription.TrackConditions.BigMetalMasses.BigMetalMassesInformation{
+    Distance =&gt; RelocateDistance(X.Distance),
+    Value =&gt; X.Value
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Traction Systems TC"
+ Guid="896650ab-4ed1-4aa1-867a-7d82c0e82861"
+>
+<Comment>Change the distances in the stored Traction Systems Track Conditions to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Traction Systems TC"
+ Guid="56ddb3aa-ed8b-408b-a373-e1b372ebd16f"
+>
+<PreConditions>
+<PreCondition
+ Guid="36e03490-2ba0-4871-b56f-189cb6d23be2"
+>Kernel.TrackDescription.TrackConditions.TractionSystems.TCTractionSystems != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="258441de-c699-470f-9917-e55505621d5b"
+>Kernel.TrackDescription.TrackConditions.TractionSystems.TCTractionSystems &lt;- MAP Kernel.TrackDescription.TrackConditions.TractionSystems.TCTractionSystems USING Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformation{
+    Value =&gt; X.Value,
+    Distance =&gt; RelocateDistance(X.Distance)
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Current Consumption TC"
+ Guid="8606bf00-03d8-496d-85ec-6b5db8da9fb3"
+>
+<Comment>Change the distances in the stored Current Consumption Track Conditions to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Current Consumption TC"
+ Guid="1758b124-b2d4-42c1-92b8-55048196ca72"
+>
+<PreConditions>
+<PreCondition
+ Guid="e83ae76a-58b0-4c70-99e8-4350402eea0b"
+>Kernel.TrackDescription.TrackConditions.CurrentConsumption.TCCurrentConsumption != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="da1176e3-6902-43c5-b859-107b862032f8"
+>Kernel.TrackDescription.TrackConditions.CurrentConsumption.TCCurrentConsumption &lt;- MAP  Kernel.TrackDescription.TrackConditions.CurrentConsumption.TCCurrentConsumption USING Kernel.TrackDescription.TrackConditions.CurrentConsumption.CurrentConsumptionInformation{
+    Value =&gt; X.Value,
+    Distance =&gt; RelocateDistance(X.Distance)
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Station Platforms TC"
+ Guid="8cb19b29-72d4-4ccf-be2c-11912354856f"
+>
+<Comment>Change the distances in the stored Station Platforms Track Conditions to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Station Platforms TC"
+ Guid="53553fb3-60ad-490b-8652-3647cef4974d"
+>
+<PreConditions>
+<PreCondition
+ Guid="206bc261-19cb-42b8-8ad1-7fc5913f2a9b"
+>Kernel.TrackDescription.TrackConditions.StationPlatform.TCStationPlatforms != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0f8acd4b-a756-4258-8ade-9df77a5f3e38"
+>Kernel.TrackDescription.TrackConditions.StationPlatform.TCStationPlatforms &lt;- MAP Kernel.TrackDescription.TrackConditions.StationPlatform.TCStationPlatforms USING Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformation{
+    Distance =&gt; RelocateDistance(X.Distance),
+    Value =&gt; X.Value
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Temporary Speed Restrictions"
+ Guid="e69bd495-d46b-4c68-914b-e787e3a651fe"
+>
+<Comment>Change the distances in the stored TSRs to be measured from the new LRBG</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Temporary Speed Restrictions"
+ Guid="e492bde1-52d6-4277-b88d-b606c2d36115"
+>
+<PreConditions>
+<PreCondition
+ Guid="4b2a4a49-edfd-4b4b-ae0b-76d6df8079fe"
+>Kernel.TSR.TSRs != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2f3fc0ef-d564-4b97-b378-0177fc65da81"
+><Comment></Comment>
+Kernel.TSR.TSRs &lt;- MAP Kernel.TSR.TSRs USING Kernel.TSR.TemporarySpeedRestriction{
+    Location =&gt; RelocateDistance(X.Location),
+    Length =&gt; X.Length,
+    Speed =&gt; X.Speed,
+    Id =&gt; X.Id,
+    TrainLengthDelay =&gt; X.TrainLengthDelay
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Update LRBG values"
  Guid="952f0bc7-e6f8-412b-95b9-788d6a207d38"
@@ -2039,7 +2719,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ADHESION_FACTOR.Q
 <Action
  Guid="0ed7fcdc-0c4d-4e64-b329-3a748a11b5b8"
 ><Comment></Comment>
-LRBG &lt;- BaliseGroup { 
+LRBG &lt;- BTM.BaliseGroup { 
   NID =&gt; Nid_BG,
   Position =&gt; BGLocationReference,
   Orientation =&gt; BaliseGroupOrientation()

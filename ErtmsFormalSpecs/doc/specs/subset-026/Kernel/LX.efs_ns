@@ -27,6 +27,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ac807194-ff85-4c2c-afab-ada1d79de657"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="f694242d-ad4f-45aa-a715-677610005bcb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -72,16 +73,6 @@
  Guid="05703681-a3d5-4897-8a17-3090af21e8cc"
 >
 </ReqRef><Comment>The identity number of the level crossing.</Comment>
-</StructureElement><StructureElement
- TypeName="Messages.NID_BG"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="LRBG"
- Guid="165bbb56-3f64-4a74-bde9-8c9c5a0d5552"
->
-<Comment>Indicates the id of the balise group to which is related the distance of the level crossing.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
@@ -525,6 +516,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="SameId"
  Guid="3c7d1422-3ee4-4419-ad6e-520b797ab236"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="fe8a1ccd-112a-435e-bfef-c05500940864"
@@ -537,8 +529,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
     IsProtected =&gt; Packet.Q_LXSTATUS,
     Speed =&gt; MessageTypes.SpeedResolution ( Packet.V_LX, 5.0 ),
     StoppingRequired =&gt; Packet.Q_STOPLX,
-    StoppingAreaLength =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_STOPLX, scale =&gt; Packet.Q_SCALE),
-    LRBG=&gt;NID_BG
+    StoppingAreaLength =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_STOPLX, scale =&gt; Packet.Q_SCALE)
 }</Expression>
 </Case><Case
  Name="DifferentId"
@@ -835,7 +826,8 @@ d_SBI2LX(aLX, EstimatedAccelerationSetToZero) - TrainPosition.FrontEndPosition (
 <Actions>
 <Action
  Guid="c3074af9-ea7f-46b8-a94a-efca00745de7"
->LevelCrossings &lt;- MAP LevelCrossings USING CreateLevelCrossing(aLevelCrossing=&gt;X, Packet=&gt;Packet, NID_BG=&gt;NID_BG)</Action></Actions>
+><Comment></Comment>
+LevelCrossings &lt;- MAP LevelCrossings USING CreateLevelCrossing(aLevelCrossing=&gt;X, Packet=&gt;Packet, NID_BG=&gt;NID_BG)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="NewLevelCrossing"
@@ -881,8 +873,7 @@ LevelCrossing
     IsProtected=&gt;Packet.Q_LXSTATUS,
     Speed=&gt;MessageTypes.SpeedResolution ( Packet.V_LX, 5.0 ),
     StoppingRequired=&gt;Packet.Q_STOPLX,
-    StoppingAreaLength=&gt;MessageTypes.QScaleLength ( length =&gt; Packet.L_STOPLX, scale =&gt; Packet.Q_SCALE ),
-    LRBG=&gt;NID_BG
+    StoppingAreaLength=&gt;MessageTypes.QScaleLength ( length =&gt; Packet.L_STOPLX, scale =&gt; Packet.Q_SCALE )
 }
 IN LevelCrossings</Action></Actions>
 </RuleCondition></Conditions>
@@ -907,6 +898,7 @@ IN LevelCrossings</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7298fc20-057d-4d65-ab47-bce3d6280257"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="6caaedb4-a566-4536-a6c7-b958f8c96d03"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"

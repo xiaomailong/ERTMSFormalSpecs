@@ -369,6 +369,7 @@
  Name="Step3 - New reversing area + supervision information"
  Guid="93aa4790-473f-4dad-9f89-151072b57e57"
 >
+<Comment></Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
@@ -377,7 +378,8 @@
 <Actions>
 <Action
  Guid="dea17cba-d529-4024-adef-f537a4fc9fc8"
->EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message{
+><Comment></Comment>
+EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message{
     GENERAL_MESSAGE =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.GENERAL_MESSAGE.Message{
         NID_MESSAGE =&gt; 24,
         L_MESSAGE =&gt; 0,
@@ -472,10 +474,12 @@
  Name="Sub-step2 - Second balise in group"
  Guid="be352d56-ee43-4fc4-9389-414b6e12f84f"
 >
+<Comment>Once the full balise group is received, it becomes the LRBG and all stored distances are modified accordingmly</Comment>
 <Actions>
 <Action
  Guid="5317ecdf-a9fe-43c8-a9bc-4900d13f24e7"
->BTM.Message &lt;- Messages.EUROBALISE.Message{
+><Comment></Comment>
+BTM.Message &lt;- Messages.EUROBALISE.Message{
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
     Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
@@ -495,7 +499,7 @@
  DeadLine="1"
  Guid="a96dee9d-9c0a-438f-b66b-c02a024032ba"
 >Kernel.TrackDescription.ReversingArea.ReversingAreaProfile == Kernel.TrackDescription.ReversingArea.ReversingAreaInformation{
-    Distance =&gt; 1800.0,
+    Distance =&gt; 1700.0,
     Length =&gt; 500.0,
     MaxDistance =&gt; 630.0,
     Speed =&gt; 40.0
@@ -534,7 +538,7 @@
  DeadLine="1"
  Guid="7062d687-4c66-47ba-abd9-514cc8550063"
 >Kernel.TrackDescription.ReversingArea.ReversingAreaProfile == Kernel.TrackDescription.ReversingArea.ReversingAreaInformation{
-    Distance =&gt; 1800.0,
+    Distance =&gt; 1700.0,
     Length =&gt; 500.0,
     MaxDistance =&gt; 630.0,
     Speed =&gt; 40.0
@@ -601,7 +605,7 @@
  DeadLine="1"
  Guid="ebd96b51-d51f-458c-b70f-a03df6ff3768"
 >Kernel.TrackDescription.ReversingArea.ReversingAreaProfile == Kernel.TrackDescription.ReversingArea.ReversingAreaInformation{
-    Distance =&gt; 1800.0,
+    Distance =&gt; 1700.0,
     Length =&gt; 500.0,
     MaxDistance =&gt; 580.0,
     Speed =&gt; 25.0
@@ -636,7 +640,7 @@
 <Actions>
 <Action
  Guid="e08fbbbe-23ff-4554-807d-7ded416f000a"
->Odometry.NominalDistance &lt;- 1940.0</Action><Action
+>Odometry.NominalDistance &lt;- 1840.0</Action><Action
  Guid="09627ea4-8ee6-438b-bb9a-21717de3f7e4"
 >Odometry.Accuracy.D_ora &lt;- 24.0</Action><Action
  Guid="4a9a6620-7dfa-4163-8e6f-eda43a0f346a"
@@ -662,11 +666,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="59e33ba2-0798-4a34-8b3f-bdf80d68b6ee"
->Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance == 1800.0</Expectation><Expectation
+>Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance == 1700.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e1f0fd5e-637f-4c8a-aceb-26498844e934"
->(BTM.LRBG.Position.Position + Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance) == 1950.0</Expectation></Expectations>
+>(BTM.LRBG.Position.Position + Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance) == 1850.0</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2 - Estimated front end passes start"
  Guid="9ebcf0e0-30c3-4fd9-9cc6-0c2e528c0a9b"
@@ -674,7 +678,7 @@
 <Actions>
 <Action
  Guid="81ca8e16-8cd5-45ca-9274-dcc322aa80e1"
->Odometry.NominalDistance &lt;- 1960.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 1860.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -772,7 +776,7 @@ DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DoNotDisplay()</Action></
  Kind="Instantaneous"
  DeadLine="1"
  Guid="d9f9e45d-b757-4ccd-ac4d-eea8d0db7efa"
->Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance == 1800.0</Expectation></Expectations>
+>Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance == 1700.0</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2 - Driver tries reversing"
  Guid="32a1a9bc-a5c6-47c0-a142-4536a5fa2ac0"
@@ -819,11 +823,11 @@ DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DoNotDisplay()</Action></
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e1da8f4e-d2bf-4e27-b6cd-b07097d37728"
->Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance == 1800.0</Expectation><Expectation
+>Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance == 1700.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5047b596-4e75-45eb-a526-edd0bfa23f65"
->Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance + Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Length == 2300.0</Expectation></Expectations>
+>Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance + Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Length == 2200.0</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2 - Driver tries reversing"
  Guid="7bc2e46c-1ec7-4918-9985-b41ce2dc0d06"

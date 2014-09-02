@@ -137,16 +137,6 @@
  Guid="3e7092a5-d2d4-40ef-9c8e-24e19617f628"
 >
 </ReqRef><Comment>Indicates if a speed limit given for a profile element is to be applied until the front end of the train or the end of the train has left the element.</Comment>
-</StructureElement><StructureElement
- TypeName="Messages.NID_BG"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="LRBG"
- Guid="983450d1-9e76-46d7-a986-2ba9fa71105b"
->
-<Comment>Indicates the id of the balise group to which is related the distance of the temporary speed restriction.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -364,7 +354,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d904c16f-7993-4a46-b8ea-b6b6f451d3b5"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Removes the specified temporary speed restrictions from the list monitored by the EVC</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.Message"
@@ -419,7 +409,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="99c4878e-3131-4643-813e-5251c1bb6d38"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Adds the temporary speed restrictions received to the list monitored by the EVC</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message"
@@ -460,7 +450,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="49ab9cd5-dedc-4a6e-9aaf-5bcd140be261"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment></Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -477,7 +468,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fdc1c04d-f990-4f99-80d2-62603dfd385f"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>There exists a restriction in the list with the same ID</Comment>
+<PreConditions>
 <PreCondition
  Guid="713b3f3c-98bb-481a-8a50-d873d96e317d"
 >THERE_IS_IN TSRs | X.Id == Packet.NID_TSR</PreCondition><PreCondition
@@ -486,12 +478,12 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <Actions>
 <Action
  Guid="6aae0012-7c33-43ab-9241-2cf3ed58635a"
->REPLACE X.Id == Packet.NID_TSR IN TSRs BY TemporarySpeedRestriction
+><Comment></Comment>
+REPLACE X.Id == Packet.NID_TSR IN TSRs BY TemporarySpeedRestriction
 {
     Id =&gt; Packet.NID_TSR,
     Length =&gt; Default.MessageTypes.QScaleLength ( length =&gt; Packet.L_TSR, scale =&gt; Packet.Q_SCALE ),
     Location =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TSR, scale =&gt; Packet.Q_SCALE ),
-    LRBG =&gt; NID_BG,
     Speed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_TSR, resolution =&gt; 5.0 ),
     TrainLengthDelay =&gt; Packet.Q_FRONT
 }</Action></Actions>
@@ -510,7 +502,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4fdf45bf-2024-4a67-a634-432dd197133b"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>There is no restriction with this ID in the list</Comment>
+<PreConditions>
 </PreConditions>
 <Actions>
 <Action
@@ -520,7 +513,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
     Id =&gt; Packet.NID_TSR,
     Length =&gt; Default.MessageTypes.QScaleLength ( length =&gt; Packet.L_TSR, scale =&gt; Packet.Q_SCALE ),
     Location =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TSR, scale =&gt; Packet.Q_SCALE ),
-    LRBG =&gt; NID_BG,
     Speed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_TSR, resolution =&gt; 5.0 ),
     TrainLengthDelay =&gt; Packet.Q_FRONT
 }
