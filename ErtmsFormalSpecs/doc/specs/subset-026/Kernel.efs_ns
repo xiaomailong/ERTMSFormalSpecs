@@ -9466,6 +9466,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
  Name="Return the closest conditional ES"
  Guid="6504658f-9677-4b71-97ed-e60c579ccab0"
 >
+<Comment></Comment>
 <Expression>REDUCE aESCol | ( X.Reason == Kernel.BrakeReason.OrderFromRBC AND X.IsConditional )
     USING Kernel.MinEmergencyStopDistance( EmergencyStop1 =&gt; X, EmergencyStop2 =&gt; RESULT )
 INITIAL_VALUE EmergencyStop
@@ -9503,6 +9504,7 @@ INITIAL_VALUE EmergencyStop
  Name="First emergency stop is closer"
  Guid="b6da9bf5-c399-43a3-9512-93fc756fa03f"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d6a8ab20-c3ba-4803-81b5-94d9115414fd"
