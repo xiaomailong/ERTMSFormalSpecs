@@ -14,13 +14,27 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         {
             // TODO : Fill the acceleration surface
             AccelerationSpeedDistanceSurface acceleration = new AccelerationSpeedDistanceSurface();
-            acceleration.Tiles.Add(new SurfaceTile(
-                new SiUnits.SiDistance(0), 
-                new SiUnits.SiDistance(5000), 
-                new SiUnits.SiSpeed(0), 
-                new SiUnits.SiSpeed(600), 
-                new SiUnits.SiAcceleration(-1)
-            ));
+                        
+            for (int i = 0; i < 5; i++)
+            {
+                double StartDistance = i * 1000;
+                double EndDistance = StartDistance + 1000;
+
+                for (int j = 0; j < 4; j++)
+                {
+                    double StartSpeed = j * 60;
+                    double EndSpeed = StartSpeed + 60;
+
+                    acceleration.Tiles.Add(new SurfaceTile(
+                        new SiUnits.SiDistance(StartDistance),
+                        new SiUnits.SiDistance(EndDistance),
+                        new SiUnits.SiSpeed(StartSpeed, SiUnits.SiSpeed_SubUnits.KiloMeter_per_Hour),
+                        new SiUnits.SiSpeed(EndSpeed, SiUnits.SiSpeed_SubUnits.KiloMeter_per_Hour),
+                        new SiUnits.SiAcceleration(-(0.5 + (i-j)/2))
+                    ));
+                }
+            }
+
 
             // TODO : Fill the mrsp
             FlatSpeedDistanceCurve mrsp = new FlatSpeedDistanceCurve();
@@ -40,14 +54,14 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
             // Compute the deceleration curve using the new algorithm
             // TODO : Implement the new algorithm and use it
-            QuadraticSpeedDistanceCurve deceleration2 =EtcsBrakingCurveBuilder.Build_A_Safe_Backward(acceleration, mrsp);
+            QuadraticSpeedDistanceCurve deceleration2 = EtcsBrakingCurveBuilder_NT.Build_A_Safe_Backward(acceleration, mrsp);
 
             // Compare the deceleration curves
-            for (double d = 0.0; d < 2000.0; d += 1)
+            for (double d = 0.0; d < 5000.0; d += 1)
             {
                 Assert.AreEqual(
-                    deceleration.GetValueAt(new SiUnits.SiDistance(0.0)), 
-                    deceleration2.GetValueAt(new SiUnits.SiDistance(0.0)), 
+                    deceleration.GetValueAt(new SiUnits.SiDistance(0.0 + d)), 
+                    deceleration2.GetValueAt(new SiUnits.SiDistance(0.0 + d)), 
                     "Value at " + d + " should be equal"
                 );
             }
