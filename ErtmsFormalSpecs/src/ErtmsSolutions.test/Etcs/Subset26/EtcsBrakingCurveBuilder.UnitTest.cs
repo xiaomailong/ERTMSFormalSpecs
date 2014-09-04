@@ -40,11 +40,26 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             FlatSpeedDistanceCurve mrsp = new FlatSpeedDistanceCurve();
             mrsp.AddSegment(new ConstantCurveSegment<SiUnits.SiDistance,SiUnits.SiSpeed>(
                 new SiUnits.SiDistance(0), 
-                new SiUnits.SiDistance(1000), 
+                new SiUnits.SiDistance(650), 
+                new SiUnits.SiSpeed(80, SiUnits.SiSpeed_SubUnits.KiloMeter_per_Hour)
+            ));
+            mrsp.AddSegment(new ConstantCurveSegment<SiUnits.SiDistance, SiUnits.SiSpeed>(
+                new SiUnits.SiDistance(650),
+                new SiUnits.SiDistance(1500),
+                new SiUnits.SiSpeed(60, SiUnits.SiSpeed_SubUnits.KiloMeter_per_Hour)
+            ));
+            mrsp.AddSegment(new ConstantCurveSegment<SiUnits.SiDistance, SiUnits.SiSpeed>(
+                new SiUnits.SiDistance(1500),
+                new SiUnits.SiDistance(2500),
                 new SiUnits.SiSpeed(120, SiUnits.SiSpeed_SubUnits.KiloMeter_per_Hour)
             ));
+            mrsp.AddSegment(new ConstantCurveSegment<SiUnits.SiDistance, SiUnits.SiSpeed>(
+                new SiUnits.SiDistance(2500),
+                new SiUnits.SiDistance(4000),
+                new SiUnits.SiSpeed(55, SiUnits.SiSpeed_SubUnits.KiloMeter_per_Hour)
+            ));
             mrsp.AddSegment(new ConstantCurveSegment<SiUnits.SiDistance,SiUnits.SiSpeed>(
-                new SiUnits.SiDistance(1000), 
+                new SiUnits.SiDistance(4000), 
                 new SiUnits.SiDistance(5000),
                 new SiUnits.SiSpeed(0)
             ));
