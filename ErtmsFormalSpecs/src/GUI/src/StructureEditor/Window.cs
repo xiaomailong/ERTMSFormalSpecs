@@ -30,11 +30,6 @@ namespace GUI.StructureValueEditor
     public partial class Window : BaseForm
     {
         /// <summary>
-        /// The struture value to edit
-        /// </summary>
-        private StructureValue Model { get; set; }
-
-        /// <summary>
         /// Constructor
         /// </summary>
         public Window()
@@ -64,12 +59,26 @@ namespace GUI.StructureValueEditor
         /// Sets the model for this tree view
         /// </summary>
         /// <param name="model"></param>
-        public void SetModel(StructureValue model)
+        public void SetModel(IValue model)
         {
-            Model = model;
+            List<IValue> ObjectModel = new List<IValue>();
 
-            List<StructureValue> ObjectModel = new List<StructureValue>();
-            ObjectModel.Add(Model);
+            ListValue listValue = model as ListValue;
+            if (listValue != null)
+            {
+                foreach (IValue value in listValue.Val)
+                {
+                    if (value != DataDictionary.EFSSystem.INSTANCE.EmptyValue)
+                    {
+                        ObjectModel.Add(value);
+                    }
+                }
+            }
+            else
+            {
+                ObjectModel.Add(model);
+            }
+
             structureTreeListView.SetObjects(ObjectModel);
         }
     }

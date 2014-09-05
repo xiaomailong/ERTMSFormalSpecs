@@ -20,6 +20,7 @@ using System.Windows.Forms;
 using DataDictionary;
 using DataDictionary.Types;
 using System.Drawing.Design;
+using DataDictionary.Values;
 
 namespace GUI.DataDictionaryView
 {
@@ -216,6 +217,11 @@ namespace GUI.DataDictionaryView
                     }
                 }
             }
+            else if ( Item.Type is DataDictionary.Types.Structure )
+            {
+                retVal.Insert(5, new MenuItem("-"));
+                retVal.Insert(6, new MenuItem("Display", new EventHandler(DisplayHandler)));
+            }
 
             if (Item.Type is StateMachine)
             {
@@ -236,6 +242,12 @@ namespace GUI.DataDictionaryView
                 GUIUtils.MDIWindow.AddChildWindow(view);
                 view.Functions.Add(function);
                 view.Refresh();
+            }
+            else
+            {
+                StructureValueEditor.Window window = new StructureValueEditor.Window();
+                window.SetModel(Item.Value);
+                window.ShowDialog();
             }
         }
     }
