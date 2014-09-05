@@ -28,7 +28,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The literal value of this designator
         /// </summary>
-        public Expression LiteralValue { get; private set; }
+        public Expression LiteralValue { get; set; }
 
         /// <summary>
         /// Constructor

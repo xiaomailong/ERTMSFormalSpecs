@@ -1294,13 +1294,13 @@ namespace GUI
 
 
         /// <summary>
-        /// Edits a structure value expression and provides the edited expression after user has performed his changes
+        /// Edits a value expression and provides the edited expression after user has performed his changes
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
-        private StructExpression EditStructureExpression(StructExpression expression)
+        private Expression EditExpression(Expression expression)
         {
-            StructExpression retVal = expression;
+            Expression retVal = expression;
 
             if (expression != null)
             {
@@ -1311,7 +1311,7 @@ namespace GUI
 
                     InterpretationContext context = new InterpretationContext(Instance);
                     context.UseDefaultValue = false;
-                    StructureValue value = expression.GetValue(context) as StructureValue;
+                    IValue value = expression.GetValue(context);
                     if (value != null)
                     {
                         StructureValueEditor.Window window = new StructureValueEditor.Window();
@@ -1321,7 +1321,7 @@ namespace GUI
                         string newExpression = value.ToExpressionWithDefault();
                         bool doSemanticalAnalysis = true;
                         bool silent = true;
-                        retVal = EFSSystem.INSTANCE.Parser.Expression((ModelElement)Instance, newExpression, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent) as StructExpression;
+                        retVal = EFSSystem.INSTANCE.Parser.Expression(expression.Root, newExpression, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent);
                     }
                 }
                 finally
@@ -1334,7 +1334,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Browses through the expression to find the structure value to edit
+        /// Browses through the expression to find the value to edit
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -1356,15 +1356,31 @@ namespace GUI
                 {
                     unaryExpression.Expression = VisitExpression(unaryExpression.Expression);
                 }
+                else if (unaryExpression.Term != null)
+                {
+                    visitTerm(unaryExpression.Term);
+                }
             }
 
             StructExpression structExpression = expression as StructExpression;
             if (structExpression != null)
             {
-                retVal = EditStructureExpression(structExpression);
+                retVal = EditExpression(structExpression);
             }
 
             return retVal;
+        }
+
+        /// <summary>
+        /// Browse through the Term to find the value to edit
+        /// </summary>
+        /// <param name="term"></param>
+        private void visitTerm(Term term)
+        {
+            if (term.LiteralValue != null)
+            {
+                term.LiteralValue = EditExpression(term.LiteralValue);
+            }
         }
 
         /// <summary>
