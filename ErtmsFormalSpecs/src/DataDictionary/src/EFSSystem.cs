@@ -673,6 +673,22 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// The predefined Full Deceleration For Target function
+        /// </summary>
+        private Functions.PredefinedFunctions.FullDecelerationForTarget fullDecelerationForTargetPredefinedFunction;
+        public Functions.PredefinedFunctions.FullDecelerationForTarget FullDecelerationForTargetPredefinedFunction
+        {
+            get
+            {
+                if (fullDecelerationForTargetPredefinedFunction == null)
+                {
+                    fullDecelerationForTargetPredefinedFunction = new Functions.PredefinedFunctions.FullDecelerationForTarget(this);
+                }
+                return fullDecelerationForTargetPredefinedFunction;
+            }
+        }
+
+        /// <summary>
         /// The predefined functions
         /// </summary>
         private Dictionary<string, Functions.PredefinedFunctions.PredefinedFunction> predefinedFunctions;
@@ -700,6 +716,7 @@ namespace DataDictionary
                     predefinedFunctions[OverridePredefinedFunction.Name] = OverridePredefinedFunction;
                     predefinedFunctions[DistanceForSpeedPredefinedFunction.Name] = DistanceForSpeedPredefinedFunction;
                     predefinedFunctions[IntersectAtFunction.Name] = IntersectAtFunction;
+                    predefinedFunctions[FullDecelerationForTargetPredefinedFunction.Name] = FullDecelerationForTargetPredefinedFunction;
                 }
                 return predefinedFunctions;
             }

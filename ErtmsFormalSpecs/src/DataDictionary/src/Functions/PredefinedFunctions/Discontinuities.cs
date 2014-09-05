@@ -19,7 +19,7 @@ using System.Collections.Generic;
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
-    /// 
+    /// Calculates the discontinuities in the MRSP and returns them as a list of targets to EFS
     /// </summary>
     public class Discontinuities : PredefinedFunction
     {
@@ -95,7 +95,6 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="collection">Collection to be filled with targets</param>
         private void ComputeTargets(Function function, Values.ListValue collection)
         {
-            bool retVal = true;
             if (function != null)
             {
                 Graph graph = function.Graph;

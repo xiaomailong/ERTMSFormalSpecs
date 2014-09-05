@@ -298,7 +298,7 @@ TargetSpeedMonitoring.EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget, Estimat
 <PreCondition
  Guid="bde98596-9ac7-46ec-90e4-42cd4ac651a0"
 >Destfront + BaseTypes.SpeedToMS(Odometry.EstimatedSpeed) * T_bs1 &lt; MA.ClosestEOA().Location</PreCondition></PreConditions>
-<Expression>SBD ( Destfront + BaseTypes.SpeedToMS(Odometry.EstimatedSpeed) * T_bs1 )</Expression>
+<Expression>DecelerationCurves.SBD ( Destfront + BaseTypes.SpeedToMS(Odometry.EstimatedSpeed) * T_bs1 )</Expression>
 </Case><Case
  Name="After EOA"
  Guid="f573b2a7-2c7b-41d0-b632-c6954262beea"
@@ -422,6 +422,7 @@ SBI1BelowSBI2(
  Name="d_SBI2_MREBDT"
  Guid="50743961-25e5-4e27-8517-242f090e2b32"
 >
+<Comment></Comment>
 <Expression>d_SBI2_MREBDT ( Vest, EstimatedAccelerationSetToZero )</Expression>
 </Case></Cases>
 </Function><Function
@@ -487,7 +488,7 @@ SBI1BelowSBI2(
 d_estfront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs1 ) &lt; MA.ClosestEOA().Location</PreCondition><PreCondition
  Guid="8b332ee1-e275-4c1d-b11c-5aaaf0880d71"
 >NOT NationalValues.ComputationOfGUIIsEnabled ()</PreCondition></PreConditions>
-<Expression>SBD ( d_estfront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs1) )</Expression>
+<Expression>DecelerationCurves.SBD ( d_estfront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs1) )</Expression>
 </Case><Case
  Name="GUI is enabled, first case"
  Guid="0c8c1aab-75c3-4d07-b159-af8a7433a06f"
@@ -500,7 +501,7 @@ d_estfront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs1 ) &lt; MA.ClosestEOA
  Guid="ae292cb2-e670-4c12-9ec0-b9244a86f5d1"
 >d_estfront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs1 ) &lt; MA.ClosestEOA().Location</PreCondition></PreConditions>
 <Expression>BaseTypes.MinDistance(
-    X1 =&gt; SBD ( d_estfront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs1 ) ),
+    X1 =&gt; DecelerationCurves.SBD ( d_estfront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs1 ) ),
     X2 =&gt; DecelerationCurves.GUI ( d_estfront ) )</Expression>
 </Case><Case
  Name="Second case"
@@ -605,66 +606,6 @@ DecelerationCurves.EBDForSpeed( Speed =&gt; Vtarget )</PreCondition></PreConditi
 >
 <Comment></Comment>
 <Expression>Vtarget</Expression>
-</Case></Cases>
-</Function><Function
- Type="Default.BaseTypes.Speed"
- Cacheable="TRUE"
- Default=""
- X="180"
- Y="350"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="SBD"
- Guid="fcea94f1-cd48-473c-9b64-4604dffa4a9a"
->
-<ReqRef
- Id="7525f72a-3b46-498c-8c48-1ed3ad888b1a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="588ebd53-ca31-4d92-9ccf-6760902d4dfa"
->
-</ReqRef><ReqRef
- Id="02854410-9ddb-4b94-993c-b26498a498bf"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3d289781-e0c4-4b22-9693-7dcbb0ee3d9d"
->
-</ReqRef><ReqRef
- Id="50a11b55-dc19-4427-b0fd-d81384417f79"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8df34be1-b4eb-40da-a519-bda48c7f6c2d"
->
-</ReqRef><ReqRef
- Id="cb22befd-4969-4fdf-9f68-f6b39ec1abe3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f4a93269-26e4-4ff4-a36c-2506881cad3c"
->
-</ReqRef><Comment>Provides the deceleration profile based on the MRSP and deceleration factors</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Distance"
- Name="Distance"
- Guid="2ab6fab5-89f4-44a9-8172-4bcfb6e76d33"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Supervising LOA - no SBD"
- Guid="8a69aae7-09da-458a-927c-b4d2e0e65039"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="53634c1c-2959-451a-949d-2699a79a286d"
->NOT MA.EOADefined()</PreCondition></PreConditions>
-<Expression>BaseTypes.Speed.NA</Expression>
-</Case><Case
- Name="Value"
- Guid="0a8f603f-54a4-4931-a14b-bc70a2d89895"
->
-<Expression>DecelerationProfile ( 
-  SpeedRestrictions =&gt; MA.EOASpeedRestriction, 
-  DecelerationFactor =&gt; TrainData.BrakingParameters.A_expected ) 
-( Distance )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -995,7 +936,7 @@ MA.IsEOA ( MRDT() ) OR MA.IsSvL ( MRDT() )</PreCondition></PreConditions>
 <PreCondition
  Guid="8ccbaeff-7580-487f-bed3-10470968e535"
 ><Comment></Comment>
-SBD(
+DecelerationCurves.SBD(
     Distance=&gt; TrainPosition.FrontEndPosition(
     PointOfInterest=&gt;DistanceInterval.Nom
 )) == BaseTypes.Speed.NA</PreCondition></PreConditions>
@@ -1010,7 +951,7 @@ SBD(
  Guid="9e1abeb5-4d09-483c-8f53-24d85fe1e9da"
 ><Comment></Comment>
 DistanceForSpeed(
-    Function=&gt; SBD,
+    Function=&gt; DecelerationCurves.SBD,
     Speed=&gt; Vest
 ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
@@ -1018,7 +959,7 @@ DistanceForSpeed(
  Name="Value"
  Guid="38aef605-7d44-466d-a6ca-9d9140f030b8"
 >
-<Expression>DistanceForSpeed ( Function =&gt; SBD, Speed =&gt; Vest )  - BaseTypes.SpeedToMS ( Vest ) * T_bs1</Expression>
+<Expression>DistanceForSpeed ( Function =&gt; DecelerationCurves.SBD, Speed =&gt; Vest )  - BaseTypes.SpeedToMS ( Vest ) * T_bs1</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
