@@ -25,6 +25,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         public static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static bool debug = false;
         private static int debugging_counter = 0;
+        private static SiSpeed minimal_speed_threshold = new SiSpeed(0.01);
+        private static SiDistance minimal_distance_threshold = new SiDistance(0.1);
 
         /// <summary>
         /// Enum that contains the direction in which the braking curves
@@ -130,8 +132,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
             // Build a MRSP for this target
             FlatSpeedDistanceCurve mrsp = new FlatSpeedDistanceCurve();
-            mrsp.Add(SiDistance.Zero, TargetDistance, SiSpeed.MaxValue);
-            mrsp.Add(TargetDistance, SiDistance.MaxValue, TargetSpeed);
+            mrsp.Add(SiDistance.Zero, TargetDistance, new SiSpeed(180, SiSpeed_SubUnits.KiloMeter_per_Hour));
+            mrsp.Add(TargetDistance, new SiDistance(20000), TargetSpeed);
 
             // Add to result by calculating backwards then forwards
 
@@ -158,9 +160,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             current_speed = TargetSpeed;
             dir = BrakingCurveDirectionEnum.Forwards;
 
-            SiSpeed end_speed = SiSpeed.Zero;
-
-            while (current_speed > end_speed)
+            while (current_speed > minimal_speed_threshold)
             {
                 Compute_Curve(A_V_D, result, mrsp, ref current_position, ref next_position, ref current_speed, dir);
 
@@ -168,9 +168,40 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                    We do not need to update current_acceleration because
                    it is done at the beginning of the loop*/
                 current_position = next_position;
-                current_speed = result.GetValueAt(current_position);
+                current_speed = Get_Result_At(current_position, result, dir);
             }
 
+            result.Add(current_position, mrsp[mrsp.SegmentCount - 1].X.X1, SiAcceleration.Zero, SiSpeed.Zero, current_position);
+
+            return result;
+        }
+
+
+        private static SiSpeed Get_Result_At(SiDistance result_position, QuadraticSpeedDistanceCurve full_curve, BrakingCurveDirectionEnum dir)
+        {
+            SiSpeed result = new SiSpeed();
+
+            switch (dir)
+            {
+                case BrakingCurveDirectionEnum.Backwards:
+                    result = full_curve.GetValueAt(result_position);
+                    break;
+                case BrakingCurveDirectionEnum.Forwards:
+                    for (int i = 0; i < full_curve.SegmentCount; i++)
+                    {
+                        QuadraticCurveSegment S  = full_curve[i];
+                        if (S.X.X0 < result_position && result_position <= S.X.X1)
+                        {
+                            result = S.Get(result_position);
+                            if (result == null)
+                            {
+                                throw new ArgumentException();
+                            }
+                        }
+                    }
+                    break;
+            }
+            
             return result;
         }
 
@@ -194,8 +225,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         {
             int Direction = Get_Direction(dir);
 
-            SiSpeed speed_step = (-1) * Direction * 0.01 * new SiSpeed(1);
-            SiDistance distance_step = Direction * 0.1 * new SiDistance(1);
+            SiSpeed speed_step = (-1) * Direction * minimal_speed_threshold;
+            SiDistance distance_step = Direction * minimal_distance_threshold;
 
 
             if (debug)
@@ -231,7 +262,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             SiAcceleration current_acceleration = current_curve.A;
 
             /* Finally we can add the segment because next_position has been computed. */
-            result.Add(next_position, current_position, current_acceleration, current_speed, current_position);
+            result.Add(current_curve.X.X0, current_curve.X.X1, current_acceleration, current_speed, current_position);
 
             result.Dump("result so far ");
         }
@@ -274,9 +305,25 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         {
 
             SiAcceleration current_acceleration = current_tile.V.Y;
+            SiDistance MRSP_end = MRSP[MRSP.SegmentCount - 1].X.X1;
 
-            QuadraticCurveSegment current_curve = new QuadraticCurveSegment(SiDistance.Zero,
-                                                                        current_position,
+            SiDistance curve_start = new SiDistance();
+            SiDistance curve_end = new SiDistance();
+            switch (dir)
+            {
+                case BrakingCurveDirectionEnum.Backwards:
+                    curve_start = SiDistance.Zero;
+                    curve_end = current_position;
+                    break;
+                case BrakingCurveDirectionEnum.Forwards:
+                    curve_start = current_position;
+                    curve_end = MRSP_end;
+                    break;
+            }
+            
+
+            QuadraticCurveSegment current_curve = new QuadraticCurveSegment(curve_start,
+                                                                        curve_end,
                                                                         current_acceleration,
                                                                         current_speed,
                                                                         current_position);
@@ -327,9 +374,23 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                 }
             }
 
+            SiDistance result_start = new SiDistance();
+            SiDistance result_end = new SiDistance();
 
-            QuadraticCurveSegment result = new QuadraticCurveSegment(next_position,
-                                                                        current_position,
+            switch (dir)
+            {
+                case BrakingCurveDirectionEnum.Backwards:
+                    result_start = next_position;
+                    result_end = current_position;
+                    break;
+                case BrakingCurveDirectionEnum.Forwards:
+                    result_start = current_position;
+                    result_end = next_position;
+                    break;
+            }
+
+            QuadraticCurveSegment result = new QuadraticCurveSegment(result_start,
+                                                                        result_end,
                                                                         current_acceleration,
                                                                         current_speed,
                                                                         current_position);

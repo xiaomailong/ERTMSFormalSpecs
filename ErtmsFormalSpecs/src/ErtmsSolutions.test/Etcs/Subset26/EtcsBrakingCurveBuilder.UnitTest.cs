@@ -9,6 +9,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
     [TestClass]
     public class EtcsBrakingCurveBuilder_UnitTest
     {
+        private StringBuilder TestOutput;
         [TestMethod]
         public void Build_A_Safe_BackwardTestMethod()
         {
@@ -30,7 +31,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                         new SiUnits.SiDistance(EndDistance),
                         new SiUnits.SiSpeed(StartSpeed, SiUnits.SiSpeed_SubUnits.KiloMeter_per_Hour),
                         new SiUnits.SiSpeed(EndSpeed, SiUnits.SiSpeed_SubUnits.KiloMeter_per_Hour),
-                        new SiUnits.SiAcceleration(-(0.5 + (i-j)/2))
+                        new SiUnits.SiAcceleration(-(0.5 + (i-j)/8))
                     ));
                 }
             }
@@ -71,6 +72,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             // TODO : Implement the new algorithm and use it
             QuadraticSpeedDistanceCurve deceleration2 = EtcsBrakingCurveBuilder_NT.Build_A_Safe_Backward(acceleration, mrsp);
 
+            TestOutput = new StringBuilder();
+
             // Compare the deceleration curves
             for (double d = 0.0; d < 5000.0; d += 1)
             {
@@ -79,7 +82,66 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                     deceleration2.GetValueAt(new SiUnits.SiDistance(0.0 + d)), 
                     "Value at " + d + " should be equal"
                 );
+                TestOutput.Append(d.ToString());
+                TestOutput.Append("\t");
+                TestOutput.Append(mrsp.GetValueAt(new SiUnits.SiDistance(d)).Value);
+                TestOutput.Append("\t");
+                TestOutput.Append(deceleration.GetValueAt(new SiUnits.SiDistance(d)).Value);
+                TestOutput.Append("\t");
+                TestOutput.Append(deceleration2.GetValueAt(new SiUnits.SiDistance(d)).Value);
+                TestOutput.Append("\n");
             }
+            System.IO.File.WriteAllText("ResultsCompare.csv", TestOutput.ToString());
+        }
+
+        [TestMethod]
+        public void Build_Deceleration_CurveTestMethod()
+        {
+            // TODO : Fill the acceleration surface
+            AccelerationSpeedDistanceSurface acceleration = new AccelerationSpeedDistanceSurface();
+
+            for (int i = 0; i < 8; i++)
+            {
+                double StartDistance = i * 625;
+                double EndDistance = StartDistance + 625;
+
+                for (int j = 0; j < 6; j++)
+                {
+                    double StartSpeed = j * 35;
+                    double EndSpeed = StartSpeed + 35;
+
+                    acceleration.Tiles.Add(new SurfaceTile(
+                        new SiUnits.SiDistance(StartDistance),
+                        new SiUnits.SiDistance(EndDistance),
+                        new SiUnits.SiSpeed(StartSpeed, SiUnits.SiSpeed_SubUnits.KiloMeter_per_Hour),
+                        new SiUnits.SiSpeed(EndSpeed, SiUnits.SiSpeed_SubUnits.KiloMeter_per_Hour),
+                        new SiUnits.SiAcceleration(-Math.Abs(0.5* ( 1.2 + Math.Pow(-1, i - j) ) ))
+                    ));
+                }
+            }
+
+
+            // the target
+            SiUnits.SiSpeed TargetSpeed = new SiUnits.SiSpeed(50, SiUnits.SiSpeed_SubUnits.KiloMeter_per_Hour);
+            SiUnits.SiDistance TargetDistance = new SiUnits.SiDistance(2250);
+
+            // Compute the deceleration curve using the previous algorithm
+            QuadraticSpeedDistanceCurve deceleration = EtcsBrakingCurveBuilder_NT.Build_Deceleration_Curve(acceleration, TargetSpeed, TargetDistance);
+
+            TestOutput = new StringBuilder();
+
+            // Compare the deceleration curves
+            for (double d = 0.0; d < 5000.0; d += 1)
+            {
+                double spd = deceleration.GetValueAt(new SiUnits.SiDistance(d)).Value;
+                TestOutput.Append(d.ToString());
+                TestOutput.Append("\t");
+                TestOutput.Append(spd.ToString());
+                TestOutput.Append("\t");
+                TestOutput.Append(acceleration.GetTileAt(new SiUnits.SiSpeed(spd), new SiUnits.SiDistance(d)).V.Y.Value);
+                TestOutput.Append("\n");
+            }
+            System.IO.File.WriteAllText("Results.csv", TestOutput.ToString());
         }
     }
 }
