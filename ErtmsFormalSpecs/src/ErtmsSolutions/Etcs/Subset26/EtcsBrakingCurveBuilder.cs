@@ -47,6 +47,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         /// <returns></returns>
         public static QuadraticSpeedDistanceCurve Build_A_Safe_Backward(AccelerationSpeedDistanceSurface A_V_D, FlatSpeedDistanceCurve MRSP)
         {
+            debugging_counter = 0;
+
             if (debug)
             {
                 Log.InfoFormat("#######################################################");
@@ -128,6 +130,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         /// <returns></returns>
         public static QuadraticSpeedDistanceCurve Build_Deceleration_Curve (AccelerationSpeedDistanceSurface A_V_D, SiSpeed TargetSpeed, SiDistance TargetDistance)
         {
+            debugging_counter = 0;
+
             QuadraticSpeedDistanceCurve result = new QuadraticSpeedDistanceCurve();
 
             // Build a MRSP for this target
@@ -246,9 +250,9 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             /* If at previous loop wi did 'hit' the vertical part of the MRSP,
                we might have a speed above the current MRSP segment.*/
             /***************************************************************************/
-            if (current_speed > mrsp.GetValueAt(current_position - new SiDistance(0.1)))
+            if (current_speed > mrsp.GetValueAt(current_position - minimal_distance_threshold))
             {
-                current_speed = mrsp.GetValueAt(current_position - new SiDistance(0.1));
+                current_speed = mrsp.GetValueAt(current_position - minimal_distance_threshold);
             }
 
             /******************************************************************* 
