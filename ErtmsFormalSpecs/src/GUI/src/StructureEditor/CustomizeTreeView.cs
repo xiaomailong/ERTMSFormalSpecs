@@ -74,6 +74,17 @@ namespace GUI.StructureValueEditor
                 else
                 {
                     retVal = structureValue.Type.Name;
+
+                    IVariable name = structureValue.getVariable("Name");
+                    if (name == null)
+                    {
+                        name = structureValue.getVariable("Id");
+                    }
+
+                    if (name != null)
+                    {
+                        retVal = retVal + " " + name.Value.Name;
+                    }
                 }
             }
 
