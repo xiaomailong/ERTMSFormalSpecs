@@ -636,6 +636,28 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
+        /// Applies a specific statement on the model
+        /// </summary>
+        /// <param name="statementText"></param>
+        public void ApplyStatement(string statementText)
+        {
+            bool silent = true;
+            DataDictionary.Interpreter.Statement.Statement statement = EFSSystem.INSTANCE.Parser.Statement(EFSSystem.INSTANCE.Dictionaries[0], statementText, silent);
+
+            if (statement != null)
+            {
+                DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
+                action.ExpressionText = statementText;
+                DataDictionary.Tests.Runner.Events.VariableUpdate variableUpdate = new DataDictionary.Tests.Runner.Events.VariableUpdate(action, null, null);
+                Runner.EventTimeLine.AddModelEvent(variableUpdate, Runner);
+            }
+            else
+            {
+                throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot create statement for " + statementText));
+            }
+        }
+
+        /// <summary>
         /// Converts an interface priority to a Runner priority
         /// </summary>
         /// <param name="priority"></param>

@@ -116,6 +116,15 @@ namespace GUI.IPCInterface
         void SetVariableValue(string variableName, Values.Value value);
 
         /// <summary>
+        /// Applies a specific statement on the model
+        /// </summary>
+        /// <param name="variableName"></param>
+        /// <param name="value"></param>
+        [OperationContract]
+        [FaultContractAttribute(typeof(EFSServiceFault))]
+        void ApplyStatement(string statement);
+
+        /// <summary>
         /// Activates the execution of a single cycle, as the given priority level
         /// </summary>
         /// <param name="clientId">The id of the client</param>
