@@ -99,12 +99,27 @@
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Target is SvL"
+ Guid="89965c75-54ea-4943-a28e-90a2bf3c3c74"
+>
+<PreConditions>
+<PreCondition
+ Guid="ac0d0078-99a7-4f27-80e8-3a0377e0a324"
+><Comment></Comment>
+MA.IsSvL(aTarget)
+  OR  
+IsMaxDistToRunInSR(aTarget)</PreCondition></PreConditions>
+<Expression>FullDecelerationForTarget (
+    Target=&gt; aTarget,
+    DecelerationFactor=&gt;TrainData.BrakingParameters.A_safe
+)(Distance)</Expression>
+</Case><Case
  Name="Value"
  Guid="e744ba80-63dc-46f3-837d-ede2f1c0ffb4"
 >
 <Comment></Comment>
 <Expression>FullDecelerationForTarget (
-    Target=&gt;TargetSpeedMonitoring.Target{
+    Target=&gt;Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
     Location =&gt; aTarget.Location,
     Speed =&gt; aTarget.Speed + CeilingSpeedMonitoring.dV_ebi(aTarget.Speed),
     Length =&gt; aTarget.Length
@@ -179,7 +194,7 @@
 <Comment></Comment>
 <Expression>DistanceForSpeed(
     Function=&gt;EBD,
-    Speed=&gt;Speed
+    Speed=&gt;Speed + CeilingSpeedMonitoring.dV_ebi(Speed)
 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -906,6 +921,46 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
     Distance =&gt; Distance,
     aTarget =&gt; TargetSpeedMonitoring.MRDT()
 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="IsMaxDistToRunInSR"
+ Guid="ce7864ff-b025-4387-a283-b312b512a3ef"
+>
+<ReqRef
+ Id="2c3d2e5e-98aa-4eda-9eb9-f2fd1ee0a60d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bfe86b8b-15a7-4790-9977-26a8ba6057dd"
+>
+</ReqRef><Comment>Determines whether the target is the target corresponding to th emaximum distance permitted to run in SR mode</Comment>
+<Parameters>
+<Parameter
+ Type="TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="ba615372-f957-4517-b63d-b9f2700fbf68"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="In SR mode"
+ Guid="00405261-a797-4662-b1be-36b7d2b5ec67"
+>
+<PreConditions>
+<PreCondition
+ Guid="47e945e0-0d82-416d-8a82-055c5554df35"
+>Mode == Mode.SR</PreCondition></PreConditions>
+<Expression>aTarget.Location == NationalValues.ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode
+  AND  
+aTarget.Speed == 0.0</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="a4d5a76f-96ff-4cd5-b4aa-81d1f9d49a7b"
+>
+<Expression>False</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
