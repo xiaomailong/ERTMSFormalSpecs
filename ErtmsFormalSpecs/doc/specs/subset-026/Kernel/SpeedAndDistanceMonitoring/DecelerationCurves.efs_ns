@@ -883,11 +883,29 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Default=""
  Width="100"
  Height="50"
- Name="SBD_Target"
- Guid="4e213116-5c7e-4dbe-9123-d3902c6e93ba"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EBD_MRDT"
+ Guid="4697a15e-4449-4560-a730-a353a31c4b73"
+>
+<Comment>Calls EBD_Target for the MRDT. This function is used to display the EBD curve for the MRDT (for users of the model).</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="8d0a8ab1-6bac-4fcf-a5ed-969745473ed6"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="167cb83d-97c6-43f7-b793-91755f658801"
 >
 <Comment></Comment>
-<Cases>
-</Cases>
+<Expression>EBD_Target(
+    Distance =&gt; Distance,
+    aTarget =&gt; TargetSpeedMonitoring.MRDT()
+)</Expression>
+</Case></Cases>
 </Function></Functions>
 </NameSpace>
