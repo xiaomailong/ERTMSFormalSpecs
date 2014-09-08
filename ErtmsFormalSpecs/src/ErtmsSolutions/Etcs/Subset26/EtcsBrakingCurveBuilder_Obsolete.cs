@@ -92,9 +92,9 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                 /* If at previous loop wi did 'hit' the vertical part of the MRSP,
                    we might have a speed above the current MRSP segment.*/
                 /***************************************************************************/
-                if (current_speed > MRSP.GetValueAt(current_position - new SiDistance(0.1)))
+                if (current_speed > MRSP.GetValueAt(current_position - new SiDistance(0.1), BrakingCurveDirectionEnum.Backwards))
                 {
-                    current_speed = MRSP.GetValueAt(current_position - new SiDistance(0.1));
+                    current_speed = MRSP.GetValueAt(current_position - new SiDistance(0.1), BrakingCurveDirectionEnum.Backwards);
                 }
 
 
@@ -202,7 +202,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                    We do not need to update current_acceleration because
                    it is done at the beginning of the loop*/
                 current_position = next_position;
-                current_speed = result.GetValueAt(current_position);
+                current_speed = result.GetValueAt(current_position, BrakingCurveDirectionEnum.Backwards);
 
 
                 /*************************************************************/

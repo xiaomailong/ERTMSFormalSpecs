@@ -67,9 +67,9 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         public S this[int idx] { get { return mySegments[idx]; } }
 
         /**@brief Return the value Y at any position X inside the curve segments. Throws if x is outside curve domain.*/
-        public YUnit GetValueAt(XUnit x)
+        public YUnit GetValueAt(XUnit x, BrakingCurveDirectionEnum dir)
         {
-            S theSegment = GetSegmentAt(x);
+            S theSegment = GetSegmentAt(x, dir);
             if (theSegment != null)
             {
                 return theSegment.Get(x);
@@ -82,14 +82,29 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /**@brief Return segment that contains X or null */
-        public S GetSegmentAt(XUnit x)
+        public S GetSegmentAt(XUnit x, BrakingCurveDirectionEnum dir)
         {
-            foreach (S s in mySegments)
+            switch (dir)
             {
-                if (s.X.Contains(x))
-                {
-                    return s;
-                }
+                case BrakingCurveDirectionEnum.Backwards:
+                    foreach (S s in mySegments)
+                    {
+                        if (s.X.Contains(x))
+                        {
+                            return s;
+                        }
+                    }
+                    break;
+                case BrakingCurveDirectionEnum.Forwards:
+                    foreach (S s in mySegments)
+                    {
+                        if (s.X.X0.ToUnits() < x.ToUnits() && x.ToUnits() <= s.X.X1.ToUnits())
+                        {
+                            return s;
+                        }
+                    }
+                    break;
+
             }
             return null;
         }
