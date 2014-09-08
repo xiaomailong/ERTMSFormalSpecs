@@ -78,17 +78,17 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             for (double d = 0.0; d < 5000.0; d += 1)
             {
                 Assert.AreEqual(
-                    deceleration.GetValueAt(new SiUnits.SiDistance(0.0 + d)), 
-                    deceleration2.GetValueAt(new SiUnits.SiDistance(0.0 + d)), 
+                    deceleration.GetValueAt(new SiUnits.SiDistance(0.0 + d), BrakingCurveDirectionEnum.Backwards),
+                    deceleration2.GetValueAt(new SiUnits.SiDistance(0.0 + d), BrakingCurveDirectionEnum.Backwards), 
                     "Value at " + d + " should be equal"
                 );
                 TestOutput.Append(d.ToString());
                 TestOutput.Append("\t");
-                TestOutput.Append(mrsp.GetValueAt(new SiUnits.SiDistance(d)).Value);
+                TestOutput.Append(mrsp.GetValueAt(new SiUnits.SiDistance(d), BrakingCurveDirectionEnum.Backwards).Value);
                 TestOutput.Append("\t");
-                TestOutput.Append(deceleration.GetValueAt(new SiUnits.SiDistance(d)).Value);
+                TestOutput.Append(deceleration.GetValueAt(new SiUnits.SiDistance(d), BrakingCurveDirectionEnum.Backwards).Value);
                 TestOutput.Append("\t");
-                TestOutput.Append(deceleration2.GetValueAt(new SiUnits.SiDistance(d)).Value);
+                TestOutput.Append(deceleration2.GetValueAt(new SiUnits.SiDistance(d), BrakingCurveDirectionEnum.Backwards).Value);
                 TestOutput.Append("\n");
             }
             System.IO.File.WriteAllText("ResultsCompare.csv", TestOutput.ToString());
@@ -133,7 +133,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             // Compare the deceleration curves
             for (double d = 0.0; d < 5000.0; d += 1)
             {
-                double spd = deceleration.GetValueAt(new SiUnits.SiDistance(d)).Value;
+                double spd = deceleration.GetValueAt(new SiUnits.SiDistance(d), BrakingCurveDirectionEnum.Backwards).Value;
                 TestOutput.Append(d.ToString());
                 TestOutput.Append("\t");
                 TestOutput.Append(spd.ToString());

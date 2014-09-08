@@ -62,7 +62,12 @@ namespace DataDictionary.Functions.PredefinedFunctions
             CheckFunctionalParameter(root, context, actualParameters[DecelerationFactor.Name], 2);
         }
 
-
+        /// <summary>
+        /// Creates a graph for the function
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override Graph createGraph(Interpreter.InterpretationContext context, Parameter parameter)
         {
             Graph retVal = new Graph();
