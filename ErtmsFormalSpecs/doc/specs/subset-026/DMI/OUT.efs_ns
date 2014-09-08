@@ -1073,7 +1073,12 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosit
  Name="Display when available"
  Guid="145c7463-b315-40b7-8f2a-6946bb278561"
 >
-<Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
+<ReqRef
+ Id="d71c157f-0723-4ca1-a3ca-bd2eb1e89ec3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ec8fb5bc-626d-4c96-ba1b-56eb9fd3c1d6"
+>
+</ReqRef><Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -5620,6 +5625,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="UpdateValue"
  Guid="948831e8-2473-4708-875e-c8da74322cd8"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="ed8d828e-dac1-4e26-b829-678024c3a785"
