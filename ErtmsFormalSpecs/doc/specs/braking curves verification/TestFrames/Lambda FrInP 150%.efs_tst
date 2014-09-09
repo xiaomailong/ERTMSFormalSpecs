@@ -495,7 +495,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 0.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 0.0 )
 )</Expectation><Expectation
@@ -505,7 +505,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 5.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 0.83 )
 )</Expectation><Expectation
@@ -515,7 +515,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 10.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 3.31 )
 )</Expectation><Expectation
@@ -525,7 +525,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 15.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 7.45 )
 )</Expectation><Expectation
@@ -535,7 +535,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 20.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 13.25 )
 )</Expectation><Expectation
@@ -545,7 +545,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 25.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 20.7 )
 )</Expectation><Expectation
@@ -555,7 +555,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 30.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 29.81 )
 )</Expectation><Expectation
@@ -565,7 +565,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 35.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 40.57 )
 )</Expectation><Expectation
@@ -575,7 +575,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 40.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 52.99 )
 )</Expectation><Expectation
@@ -585,7 +585,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 45.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 67.06 )
 )</Expectation><Expectation
@@ -595,7 +595,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 50.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 82.79 )
 )</Expectation><Expectation
@@ -605,7 +605,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 55.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 100.18 )
 )</Expectation><Expectation
@@ -615,7 +615,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 60.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 119.22 )
 )</Expectation><Expectation
@@ -625,7 +625,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 65.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 139.92 )
 )</Expectation><Expectation
@@ -635,7 +635,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 70.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 162.27 )
 )</Expectation><Expectation
@@ -645,7 +645,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 75.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 186.28 )
 )</Expectation><Expectation
@@ -655,7 +655,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 80.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 211.95 )
 )</Expectation><Expectation
@@ -665,7 +665,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 85.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 239.27 )
 )</Expectation><Expectation
@@ -675,7 +675,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 90.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 268.25 )
 )</Expectation><Expectation
@@ -685,7 +685,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 95.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 298.88 )
 )</Expectation><Expectation
@@ -695,7 +695,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 100.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 331.17 )
 )</Expectation><Expectation
@@ -705,7 +705,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 105.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 365.11 )
 )</Expectation><Expectation
@@ -715,7 +715,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 110.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 400.72 )
 )</Expectation><Expectation
@@ -725,7 +725,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 115.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 437.97 )
 )</Expectation><Expectation
@@ -735,7 +735,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 120.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 476.88 )
 )</Expectation><Expectation
@@ -745,7 +745,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 125.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 517.45 )
 )</Expectation><Expectation
@@ -755,7 +755,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 130.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 559.68 )
 )</Expectation><Expectation
@@ -765,7 +765,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 135.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 603.56 )
 )</Expectation><Expectation
@@ -775,7 +775,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 140.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 649.09 )
 )</Expectation><Expectation
@@ -785,7 +785,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 145.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 698.99 )
 )</Expectation><Expectation
@@ -795,7 +795,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 150.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 760.38 )
 )</Expectation><Expectation
@@ -805,7 +805,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 155.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 828.48 )
 )</Expectation><Expectation
@@ -815,7 +815,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 160.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 898.82 )
 )</Expectation><Expectation
@@ -825,7 +825,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 165.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 971.38 )
 )</Expectation><Expectation
@@ -835,7 +835,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 170.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1046.19 )
 )</Expectation><Expectation
@@ -845,7 +845,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 175.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1123.22 )
 )</Expectation><Expectation
@@ -855,7 +855,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 180.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1202.49 )
 )</Expectation><Expectation
@@ -865,7 +865,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 185.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1286.58 )
 )</Expectation><Expectation
@@ -875,7 +875,7 @@ IN
 (
     Val1 =&gt; DistanceForSpeed (
     Function =&gt;
-        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.EndOfMovementAuthority() ),
+        FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; Kernel.MA.ClosestEOA() ),
         Speed =&gt; 190.0 ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1372.98 )
 )</Expectation></Expectations>
@@ -901,7 +901,7 @@ IN
  Guid="b4c0c704-4775-4b55-bb00-5820b0dd9e91"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 0.0 )
     ),
@@ -911,7 +911,7 @@ IN
  Guid="52f7e73f-7b35-4d9a-b2fd-84e59e94f0ed"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 0.89 )
     ),
@@ -921,7 +921,7 @@ IN
  Guid="db0c9d0c-9175-4534-9bd1-56f691e42265"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 3.54 )
     ),
@@ -931,7 +931,7 @@ IN
  Guid="4c2f05e4-c1a3-4039-a13a-6fae4ca0d1a0"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 7.97 )
     ),
@@ -941,7 +941,7 @@ IN
  Guid="10e55a96-5f51-4728-b51e-b6da56324325"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 14.18 )
     ),
@@ -951,7 +951,7 @@ IN
  Guid="4b8d9ed4-e761-4299-8ab0-bc10add7d3af"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 22.15 )
     ),
@@ -961,7 +961,7 @@ IN
  Guid="8a8e24d5-eca3-41b4-8fea-5a448fadf405"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 31.9 )
     ),
@@ -971,7 +971,7 @@ IN
  Guid="b36b0872-ea88-46a0-8de4-d0b2e29c70c4"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 43.42 )
     ),
@@ -981,7 +981,7 @@ IN
  Guid="1ec0f1c1-8c5a-48dd-959a-952fe095007a"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 56.71 )
     ),
@@ -991,7 +991,7 @@ IN
  Guid="08e8e59d-6483-4539-a6cc-95f047b2ee4a"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 71.77 )
     ),
@@ -1001,7 +1001,7 @@ IN
  Guid="c1893618-b366-4d27-bd2c-b1fe73389004"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 88.61 )
     ),
@@ -1011,7 +1011,7 @@ IN
  Guid="5fde4c51-b704-4732-a84b-04ef78a9180a"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 107.22 )
     ),
@@ -1021,7 +1021,7 @@ IN
  Guid="f1f09904-334c-4761-b217-43c98bc3aa73"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 127.6 )
     ),
@@ -1031,7 +1031,7 @@ IN
  Guid="94e148bc-a7b3-497f-96a8-339226272fcb"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 149.75 )
     ),
@@ -1041,7 +1041,7 @@ IN
  Guid="1a800da4-1408-42d1-9619-2c6eb0a23822"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 173.67 )
     ),
@@ -1051,7 +1051,7 @@ IN
  Guid="5292a803-15f5-4f67-a691-6c0f52c7fc6d"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 199.37 )
     ),
@@ -1061,7 +1061,7 @@ IN
  Guid="c14843b5-7c52-4218-adc0-2b1f3685d10d"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 226.84 )
     ),
@@ -1071,7 +1071,7 @@ IN
  Guid="25cab8d7-cb0e-48cf-b05f-1067faffc8e3"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 256.08 )
     ),
@@ -1081,7 +1081,7 @@ IN
  Guid="dfb4bc30-db66-4b8b-9e09-f8f8fda71ed2"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 287.09 )
     ),
@@ -1091,7 +1091,7 @@ IN
  Guid="d8763261-f233-47d9-8adc-7903701858ba"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 319.88 )
     ),
@@ -1101,7 +1101,7 @@ IN
  Guid="7fa3e2d4-4727-4ba0-84aa-abc28fdc9afb"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 354.43 )
     ),
@@ -1111,7 +1111,7 @@ IN
  Guid="14a50668-af53-4726-8ebe-683278c7a673"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 390.76 )
     ),
@@ -1121,7 +1121,7 @@ IN
  Guid="93cab04e-e513-4572-b8cd-d72281ed7209"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 428.87 )
     ),
@@ -1131,7 +1131,7 @@ IN
  Guid="05f6419b-9115-4b9a-be5c-0b715f0a207f"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 468.74 )
     ),
@@ -1141,7 +1141,7 @@ IN
  Guid="b1ee74ed-6c52-4ebc-a6a7-d74606375a94"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 510.39 )
     ),
@@ -1151,7 +1151,7 @@ IN
  Guid="7ab9eace-a1dc-445c-b052-881011868a2a"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 553.8 )
     ),
@@ -1161,7 +1161,7 @@ IN
  Guid="31ffeb26-fb72-4df6-9fa3-e06242af96aa"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 599.0 )
     ),
@@ -1171,7 +1171,7 @@ IN
  Guid="2c2c08df-b45e-4d56-aeee-2f01e9e5e132"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 645.96 )
     ),
@@ -1181,7 +1181,7 @@ IN
  Guid="279ccb72-78db-4ca5-a5ad-e09db1740bfb"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 701.45 )
     ),
@@ -1191,7 +1191,7 @@ IN
  Guid="f7da9ce4-b49e-4d1a-b3e1-847970756406"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 766.41 )
     ),
@@ -1201,7 +1201,7 @@ IN
  Guid="5d3367df-8e9e-4126-8b92-2d933531431a"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 833.65 )
     ),
@@ -1211,7 +1211,7 @@ IN
  Guid="fd08b50b-0b36-4365-b2cf-1aacf1862107"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 907.48 )
     ),
@@ -1221,7 +1221,7 @@ IN
  Guid="f459398a-6439-4af2-a0ed-74daf67897b1"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 983.74 )
     ),
@@ -1231,7 +1231,7 @@ IN
  Guid="f5558e32-bfae-4cc9-89c6-761bd1b077cf"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1062.41 )
     ),
@@ -1241,7 +1241,7 @@ IN
  Guid="7a1744bc-f822-4e38-a4d1-b4b6c1592ae9"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1143.51 )
     ),
@@ -1251,7 +1251,7 @@ IN
  Guid="76250973-d278-450d-b5ec-fcf6ebd4760f"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1227.03 )
     ),
@@ -1261,7 +1261,7 @@ IN
  Guid="4f7d35ad-f433-4814-b2ec-81407a7ba61a"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1312.97 )
     ),
@@ -1271,7 +1271,7 @@ IN
  Guid="884a4fac-0a79-4683-baf3-e687817f5730"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1400.54 )
     ),
@@ -1281,7 +1281,7 @@ IN
  Guid="b880d441-321e-4ebe-8cdb-c00c0f25542e"
 >ERA_BrakingCurvesVerification.Compare
 (
-    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SBD
+    Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.SBD
     (
         Distance =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1498.35 )
     ),
@@ -1312,7 +1312,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 30.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 118.39 )
 )</Expectation><Expectation
@@ -1323,7 +1323,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 35.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 143.92 )
 )</Expectation><Expectation
@@ -1334,7 +1334,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 40.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 171.1 )
 )</Expectation><Expectation
@@ -1345,7 +1345,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 45.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 199.94 )
 )</Expectation><Expectation
@@ -1356,7 +1356,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 50.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 230.43 )
 )</Expectation><Expectation
@@ -1367,7 +1367,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 55.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 262.58 )
 )</Expectation><Expectation
@@ -1378,7 +1378,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 60.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 296.39 )
 )</Expectation><Expectation
@@ -1389,7 +1389,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 65.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 331.85 )
 )</Expectation><Expectation
@@ -1400,7 +1400,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 70.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 368.97 )
 )</Expectation><Expectation
@@ -1411,7 +1411,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 75.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 407.74 )
 )</Expectation><Expectation
@@ -1422,7 +1422,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 80.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 448.17 )
 )</Expectation><Expectation
@@ -1433,7 +1433,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 85.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 490.26 )
 )</Expectation><Expectation
@@ -1444,7 +1444,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 90.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 534.0 )
 )</Expectation><Expectation
@@ -1455,7 +1455,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 95.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 579.39 )
 )</Expectation><Expectation
@@ -1466,7 +1466,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 100.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 626.45 )
 )</Expectation><Expectation
@@ -1477,7 +1477,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 105.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 675.16 )
 )</Expectation><Expectation
@@ -1488,7 +1488,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 110.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 725.52 )
 )</Expectation><Expectation
@@ -1499,7 +1499,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 115.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 777.54 )
 )</Expectation><Expectation
@@ -1510,7 +1510,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 120.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 831.22 )
 )</Expectation><Expectation
@@ -1521,7 +1521,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 125.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 886.55 )
 )</Expectation><Expectation
@@ -1532,7 +1532,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 130.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 943.54 )
 )</Expectation><Expectation
@@ -1543,7 +1543,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 135.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1002.18 )
 )</Expectation><Expectation
@@ -1554,7 +1554,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 140.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1062.48 )
 )</Expectation><Expectation
@@ -1565,7 +1565,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 145.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1127.14 )
 )</Expectation><Expectation
@@ -1576,7 +1576,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 150.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1203.29 )
 )</Expectation><Expectation
@@ -1587,7 +1587,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 155.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1286.16 )
 )</Expectation><Expectation
@@ -1598,7 +1598,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 160.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1371.26 )
 )</Expectation><Expectation
@@ -1609,7 +1609,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 165.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1458.59 )
 )</Expectation><Expectation
@@ -1620,7 +1620,7 @@ IN
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI
     (
         Vest  =&gt; 170.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA()
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1548.16 )
 )</Expectation></Expectations>
@@ -1647,7 +1647,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 60.0
+        Vest  =&gt; 60.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 127.6 )
 )</Expectation><Expectation
@@ -1656,7 +1657,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 65.0
+        Vest  =&gt; 65.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 149.75 )
 )</Expectation><Expectation
@@ -1665,7 +1667,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 70.0
+        Vest  =&gt; 70.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 173.67 )
 )</Expectation><Expectation
@@ -1674,7 +1677,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 75.0
+        Vest  =&gt; 75.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 199.37 )
 )</Expectation><Expectation
@@ -1683,7 +1687,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 80.0
+        Vest  =&gt; 80.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 226.84 )
 )</Expectation><Expectation
@@ -1692,7 +1697,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 85.0
+        Vest  =&gt; 85.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 256.08 )
 )</Expectation><Expectation
@@ -1701,7 +1707,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 90.0
+        Vest  =&gt; 90.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 287.09 )
 )</Expectation><Expectation
@@ -1710,7 +1717,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 95.0
+        Vest  =&gt; 95.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 319.88 )
 )</Expectation><Expectation
@@ -1719,7 +1727,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 100.0
+        Vest  =&gt; 100.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 354.43 )
 )</Expectation><Expectation
@@ -1728,7 +1737,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 105.0
+        Vest  =&gt; 105.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 390.76 )
 )</Expectation><Expectation
@@ -1737,7 +1747,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 110.0
+        Vest  =&gt; 110.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 428.87 )
 )</Expectation><Expectation
@@ -1746,7 +1757,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 115.0
+        Vest  =&gt; 115.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 468.74 )
 )</Expectation><Expectation
@@ -1755,7 +1767,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 120.0
+        Vest  =&gt; 120.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 510.39 )
 )</Expectation><Expectation
@@ -1764,7 +1777,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 125.0
+        Vest  =&gt; 125.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 553.8 )
 )</Expectation><Expectation
@@ -1773,7 +1787,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 130.0
+        Vest  =&gt; 130.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 599.0 )
 )</Expectation><Expectation
@@ -1782,7 +1797,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 135.0
+        Vest  =&gt; 135.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 645.96 )
 )</Expectation><Expectation
@@ -1791,7 +1807,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 140.0
+        Vest  =&gt; 140.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 701.45 )
 )</Expectation><Expectation
@@ -1800,7 +1817,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 145.0
+        Vest  =&gt; 145.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 766.41 )
 )</Expectation><Expectation
@@ -1809,7 +1827,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 150.0
+        Vest  =&gt; 150.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 833.65 )
 )</Expectation><Expectation
@@ -1818,7 +1837,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 155.0
+        Vest  =&gt; 155.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 907.48 )
 )</Expectation><Expectation
@@ -1827,7 +1847,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 160.0
+        Vest  =&gt; 160.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 983.74 )
 )</Expectation><Expectation
@@ -1836,7 +1857,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1    (
-        Vest  =&gt; 165.0
+        Vest  =&gt; 165.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1062.41 )
 )</Expectation></Expectations>
@@ -1864,7 +1886,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 30.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 118.39 )
 )</Expectation><Expectation
@@ -1874,7 +1897,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 35.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 143.92 )
 )</Expectation><Expectation
@@ -1884,7 +1908,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 40.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 171.1 )
 )</Expectation><Expectation
@@ -1894,7 +1919,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 45.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 199.94 )
 )</Expectation><Expectation
@@ -1904,7 +1930,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 50.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 230.43 )
 )</Expectation><Expectation
@@ -1914,7 +1941,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 55.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 262.58 )
 )</Expectation><Expectation
@@ -1924,7 +1952,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 60.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 296.39 )
 )</Expectation><Expectation
@@ -1934,7 +1963,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 65.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 331.85 )
 )</Expectation><Expectation
@@ -1944,7 +1974,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 70.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 368.97 )
 )</Expectation><Expectation
@@ -1954,7 +1985,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 75.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 407.74 )
 )</Expectation><Expectation
@@ -1964,7 +1996,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 80.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 448.17 )
 )</Expectation><Expectation
@@ -1974,7 +2007,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 85.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 490.26 )
 )</Expectation><Expectation
@@ -1984,7 +2018,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 90.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 534.0 )
 )</Expectation><Expectation
@@ -1994,7 +2029,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 95.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 579.39 )
 )</Expectation><Expectation
@@ -2004,7 +2040,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 100.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 626.45 )
 )</Expectation><Expectation
@@ -2014,7 +2051,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 105.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 675.16 )
 )</Expectation><Expectation
@@ -2024,7 +2062,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 110.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 725.52 )
 )</Expectation><Expectation
@@ -2034,7 +2073,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 115.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 777.54 )
 )</Expectation><Expectation
@@ -2044,7 +2084,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 120.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 831.22 )
 )</Expectation><Expectation
@@ -2054,7 +2095,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 125.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 886.55 )
 )</Expectation><Expectation
@@ -2064,7 +2106,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 130.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 943.54 )
 )</Expectation><Expectation
@@ -2074,7 +2117,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 135.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1002.18 )
 )</Expectation><Expectation
@@ -2084,7 +2128,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 140.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1062.48 )
 )</Expectation><Expectation
@@ -2094,7 +2139,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 145.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1127.14 )
 )</Expectation><Expectation
@@ -2104,7 +2150,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 150.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1203.29 )
 )</Expectation><Expectation
@@ -2114,7 +2161,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 155.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1286.16 )
 )</Expectation><Expectation
@@ -2124,7 +2172,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 160.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1371.26 )
 )</Expectation><Expectation
@@ -2134,7 +2183,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2    (
         Vest  =&gt; 165.0,
-        aTarget =&gt; Kernel.MA.EndOfMovementAuthority()
+        aTarget =&gt; Kernel.MA.ClosestEOA(),
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1458.59 )
 )</Expectation></Expectations>
@@ -2161,7 +2211,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 30.0
+        Vest  =&gt; 30.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 118.39 )
 )</Expectation><Expectation
@@ -2170,7 +2221,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 35.0
+        Vest  =&gt; 35.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 143.92 )
 )</Expectation><Expectation
@@ -2179,7 +2231,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 40.0
+        Vest  =&gt; 40.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 171.1 )
 )</Expectation><Expectation
@@ -2188,7 +2241,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 45.0
+        Vest  =&gt; 45.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 199.94 )
 )</Expectation><Expectation
@@ -2197,7 +2251,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 50.0
+        Vest  =&gt; 50.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 230.43 )
 )</Expectation><Expectation
@@ -2206,7 +2261,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 55.0
+        Vest  =&gt; 55.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 262.58 )
 )</Expectation><Expectation
@@ -2215,7 +2271,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 60.0
+        Vest  =&gt; 60.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 296.39 )
 )</Expectation><Expectation
@@ -2224,7 +2281,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 65.0
+        Vest  =&gt; 65.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 331.85 )
 )</Expectation><Expectation
@@ -2233,7 +2291,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 70.0
+        Vest  =&gt; 70.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 368.97 )
 )</Expectation><Expectation
@@ -2242,7 +2301,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 75.0
+        Vest  =&gt; 75.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 407.74 )
 )</Expectation><Expectation
@@ -2251,7 +2311,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 80.0
+        Vest  =&gt; 80.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 448.17 )
 )</Expectation><Expectation
@@ -2260,7 +2321,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 85.0
+        Vest  =&gt; 85.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 490.26 )
 )</Expectation><Expectation
@@ -2269,7 +2331,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 90.0
+        Vest  =&gt; 90.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 534.0 )
 )</Expectation><Expectation
@@ -2278,7 +2341,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 95.0
+        Vest  =&gt; 95.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 579.39 )
 )</Expectation><Expectation
@@ -2287,7 +2351,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 100.0
+        Vest  =&gt; 100.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 626.45 )
 )</Expectation><Expectation
@@ -2296,7 +2361,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 105.0
+        Vest  =&gt; 105.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 675.16 )
 )</Expectation><Expectation
@@ -2305,7 +2371,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 110.0
+        Vest  =&gt; 110.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 725.52 )
 )</Expectation><Expectation
@@ -2314,7 +2381,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 115.0
+        Vest  =&gt; 115.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 777.54 )
 )</Expectation><Expectation
@@ -2323,7 +2391,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 120.0
+        Vest  =&gt; 120.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 831.22 )
 )</Expectation><Expectation
@@ -2332,7 +2401,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 125.0
+        Vest  =&gt; 125.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 886.55 )
 )</Expectation><Expectation
@@ -2341,7 +2411,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 130.0
+        Vest  =&gt; 130.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 943.54 )
 )</Expectation><Expectation
@@ -2350,7 +2421,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 135.0
+        Vest  =&gt; 135.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1002.18 )
 )</Expectation><Expectation
@@ -2359,7 +2431,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 140.0
+        Vest  =&gt; 140.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1062.48 )
 )</Expectation><Expectation
@@ -2368,7 +2441,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 145.0
+        Vest  =&gt; 145.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1127.14 )
 )</Expectation><Expectation
@@ -2377,7 +2451,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 150.0
+        Vest  =&gt; 150.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1203.29 )
 )</Expectation><Expectation
@@ -2386,7 +2461,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 155.0
+        Vest  =&gt; 155.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1286.16 )
 )</Expectation><Expectation
@@ -2395,7 +2471,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 160.0
+        Vest  =&gt; 160.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1371.26 )
 )</Expectation><Expectation
@@ -2404,7 +2481,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI    (
-        Vest  =&gt; 165.0
+        Vest  =&gt; 165.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1458.59 )
 )</Expectation></Expectations>
@@ -2432,7 +2510,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 30.0
+        Vest  =&gt; 30.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 135.06 )
 )</Expectation><Expectation
@@ -2442,7 +2521,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 35.0
+        Vest  =&gt; 35.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 163.36 )
 )</Expectation><Expectation
@@ -2452,7 +2532,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 40.0
+        Vest  =&gt; 40.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 193.32 )
 )</Expectation><Expectation
@@ -2462,7 +2543,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 45.0
+        Vest  =&gt; 45.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 224.94 )
 )</Expectation><Expectation
@@ -2472,7 +2554,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 50.0
+        Vest  =&gt; 50.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 258.21 )
 )</Expectation><Expectation
@@ -2482,7 +2565,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 55.0
+        Vest  =&gt; 55.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 293.14 )
 )</Expectation><Expectation
@@ -2492,7 +2576,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 60.0
+        Vest  =&gt; 60.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 329.72 )
 )</Expectation><Expectation
@@ -2502,7 +2587,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 65.0
+        Vest  =&gt; 65.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 367.96 )
 )</Expectation><Expectation
@@ -2512,7 +2598,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 70.0
+        Vest  =&gt; 70.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 407.86 )
 )</Expectation><Expectation
@@ -2522,7 +2609,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 75.0
+        Vest  =&gt; 75.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 449.41 )
 )</Expectation><Expectation
@@ -2532,7 +2620,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 80.0
+        Vest  =&gt; 80.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 492.62 )
 )</Expectation><Expectation
@@ -2542,7 +2631,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 85.0
+        Vest  =&gt; 85.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 537.48 )
 )</Expectation><Expectation
@@ -2552,7 +2642,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 90.0
+        Vest  =&gt; 90.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 584.0 )
 )</Expectation><Expectation
@@ -2562,7 +2653,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 95.0
+        Vest  =&gt; 95.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 632.17 )
 )</Expectation><Expectation
@@ -2572,7 +2664,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 100.0
+        Vest  =&gt; 100.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 682.0 )
 )</Expectation><Expectation
@@ -2582,7 +2675,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 105.0
+        Vest  =&gt; 105.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 733.49 )
 )</Expectation><Expectation
@@ -2592,7 +2686,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 110.0
+        Vest  =&gt; 110.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 786.63 )
 )</Expectation><Expectation
@@ -2602,7 +2697,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 115.0
+        Vest  =&gt; 115.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 841.43 )
 )</Expectation><Expectation
@@ -2612,7 +2708,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 120.0
+        Vest  =&gt; 120.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 897.88 )
 )</Expectation><Expectation
@@ -2622,7 +2719,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 125.0
+        Vest  =&gt; 125.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 955.99 )
 )</Expectation><Expectation
@@ -2632,7 +2730,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 130.0
+        Vest  =&gt; 130.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1015.76 )
 )</Expectation><Expectation
@@ -2642,7 +2741,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 135.0
+        Vest  =&gt; 135.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1077.18 )
 )</Expectation><Expectation
@@ -2652,7 +2752,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 140.0
+        Vest  =&gt; 140.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1140.26 )
 )</Expectation><Expectation
@@ -2662,7 +2763,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 145.0
+        Vest  =&gt; 145.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1207.69 )
 )</Expectation><Expectation
@@ -2672,7 +2774,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 150.0
+        Vest  =&gt; 150.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1286.63 )
 )</Expectation><Expectation
@@ -2682,7 +2785,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 155.0
+        Vest  =&gt; 155.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1372.27 )
 )</Expectation><Expectation
@@ -2692,7 +2796,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 160.0
+        Vest  =&gt; 160.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1460.15 )
 )</Expectation><Expectation
@@ -2702,7 +2807,8 @@ IN
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W
     (
-        Vest  =&gt; 165.0
+        Vest  =&gt; 165.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1550.26 )
 )</Expectation></Expectations>
@@ -2729,7 +2835,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 30.0
+        Vest  =&gt; 30.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 151.72 )
 )</Expectation><Expectation
@@ -2738,7 +2845,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 35.0
+        Vest  =&gt; 35.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 182.8 )
 )</Expectation><Expectation
@@ -2747,7 +2855,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 40.0
+        Vest  =&gt; 40.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 215.54 )
 )</Expectation><Expectation
@@ -2756,7 +2865,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 45.0
+        Vest  =&gt; 45.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 249.94 )
 )</Expectation><Expectation
@@ -2765,7 +2875,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 50.0
+        Vest  =&gt; 50.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 285.99 )
 )</Expectation><Expectation
@@ -2774,7 +2885,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 55.0
+        Vest  =&gt; 55.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 323.69 )
 )</Expectation><Expectation
@@ -2783,7 +2895,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 60.0
+        Vest  =&gt; 60.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 363.05 )
 )</Expectation><Expectation
@@ -2792,7 +2905,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 65.0
+        Vest  =&gt; 65.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 404.07 )
 )</Expectation><Expectation
@@ -2801,7 +2915,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 70.0
+        Vest  =&gt; 70.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 446.75 )
 )</Expectation><Expectation
@@ -2810,7 +2925,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 75.0
+        Vest  =&gt; 75.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 491.07 )
 )</Expectation><Expectation
@@ -2819,7 +2935,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 80.0
+        Vest  =&gt; 80.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 537.06 )
 )</Expectation><Expectation
@@ -2828,7 +2945,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 85.0
+        Vest  =&gt; 85.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 584.7 )
 )</Expectation><Expectation
@@ -2837,7 +2955,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 90.0
+        Vest  =&gt; 90.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 634.0 )
 )</Expectation><Expectation
@@ -2846,7 +2965,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 95.0
+        Vest  =&gt; 95.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 684.95 )
 )</Expectation><Expectation
@@ -2855,7 +2975,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 100.0
+        Vest  =&gt; 100.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 737.56 )
 )</Expectation><Expectation
@@ -2864,7 +2985,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 105.0
+        Vest  =&gt; 105.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 791.82 )
 )</Expectation><Expectation
@@ -2873,7 +2995,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 110.0
+        Vest  =&gt; 110.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 847.74 )
 )</Expectation><Expectation
@@ -2882,7 +3005,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 115.0
+        Vest  =&gt; 115.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 905.32 )
 )</Expectation><Expectation
@@ -2891,7 +3015,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 120.0
+        Vest  =&gt; 120.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 964.55 )
 )</Expectation><Expectation
@@ -2900,7 +3025,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 125.0
+        Vest  =&gt; 125.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1025.44 )
 )</Expectation><Expectation
@@ -2909,7 +3035,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 130.0
+        Vest  =&gt; 130.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1087.98 )
 )</Expectation><Expectation
@@ -2918,7 +3045,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 135.0
+        Vest  =&gt; 135.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1152.18 )
 )</Expectation><Expectation
@@ -2927,7 +3055,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 140.0
+        Vest  =&gt; 140.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1218.04 )
 )</Expectation><Expectation
@@ -2936,7 +3065,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 145.0
+        Vest  =&gt; 145.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1288.25 )
 )</Expectation><Expectation
@@ -2945,7 +3075,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 150.0
+        Vest  =&gt; 150.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1369.96 )
 )</Expectation><Expectation
@@ -2954,7 +3085,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 155.0
+        Vest  =&gt; 155.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1458.38 )
 )</Expectation><Expectation
@@ -2963,7 +3095,8 @@ IN
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P    (
-        Vest  =&gt; 160.0
+        Vest  =&gt; 160.0,
+        EstimatedAccelerationSetToZero => False
     ),
     Val2 =&gt; ERA_BrakingCurvesVerification.ConvertTargetDistance ( 1549.04 )
 )</Expectation></Expectations>
