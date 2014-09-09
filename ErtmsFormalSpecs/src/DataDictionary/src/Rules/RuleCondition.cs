@@ -364,17 +364,17 @@ namespace DataDictionary.Rules
                 retVal = retVal + TextualExplainUtilities.Pad("{\\cf11//" + Name + "}\\cf1\\par", indentLevel + subIndent);
             }
 
+            foreach (Action action in Actions)
+            {
+                retVal = retVal + "{ " + TextualExplainUtilities.Pad(action.getExplain() + "\\par}", indentLevel + subIndent);
+            }
+
             if (getExplain)
             {
                 foreach (Rule subRule in SubRules)
                 {
                     retVal = retVal + subRule.getExplain(indentLevel + subIndent, true);
                 }
-            }
-
-            foreach (Action action in Actions)
-            {
-                retVal = retVal + "{ " + TextualExplainUtilities.Pad(action.getExplain() + "\\par}", indentLevel + subIndent);
             }
 
             return retVal;
