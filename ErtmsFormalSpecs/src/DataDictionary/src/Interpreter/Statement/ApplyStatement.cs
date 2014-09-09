@@ -232,30 +232,33 @@ namespace DataDictionary.Interpreter.Statement
             Variables.IVariable variable = ListExpression.GetVariable(context);
             if (variable != null)
             {
-                // HacK : ensure that the value is a correct rigth side
-                // and keep the result of the right side operation
-                Values.ListValue listValue = variable.Value.RightSide(variable, false, false) as Values.ListValue;
-                variable.Value = listValue;
-                if (listValue != null)
+                if (variable.Value != EFSSystem.EmptyValue)
                 {
-                    int token = context.LocalScope.PushContext();
-                    context.LocalScope.setVariable(IteratorVariable);
-                    foreach (Values.IValue value in listValue.Val)
+                    // HacK : ensure that the value is a correct rigth side
+                    // and keep the result of the right side operation
+                    Values.ListValue listValue = variable.Value.RightSide(variable, false, false) as Values.ListValue;
+                    variable.Value = listValue;
+                    if (listValue != null)
                     {
-                        if (value != EFSSystem.EmptyValue)
+                        int token = context.LocalScope.PushContext();
+                        context.LocalScope.setVariable(IteratorVariable);
+                        foreach (Values.IValue value in listValue.Val)
                         {
-                            IteratorVariable.Value = value;
-                            if (conditionSatisfied(context))
+                            if (value != EFSSystem.EmptyValue)
                             {
-                                AppliedStatement.GetChanges(context, changes, explanation, apply, runner);
+                                IteratorVariable.Value = value;
+                                if (conditionSatisfied(context))
+                                {
+                                    AppliedStatement.GetChanges(context, changes, explanation, apply, runner);
+                                }
                             }
                         }
+                        context.LocalScope.PopContext(token);
                     }
-                    context.LocalScope.PopContext(token);
-                }
-                else
-                {
-                    Root.AddError("List expression does not evaluate to a list value");
+                    else
+                    {
+                        Root.AddError("List expression does not evaluate to a list value");
+                    }
                 }
             }
             else
