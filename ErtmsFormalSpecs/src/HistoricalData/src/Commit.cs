@@ -61,7 +61,20 @@ namespace HistoricalData
         /// </summary>
         public DateTime Date
         {
-            get { return DateTime.Parse(getDate()); }
+            get 
+            {
+                DateTime retVal = DateTime.MinValue;
+
+                try
+                {
+                    retVal = DateTime.Parse(getDate());
+                }
+                catch (Exception)
+                {
+                }
+
+                return retVal;
+            }
         }
 
         /// <summary>
