@@ -493,7 +493,8 @@ The confidence level (K) is defined as a level of probability that the true posi
  Guid="63cfd51a-a706-4c38-bf84-6496ef309c84"
 >Odometry.EstimatedSpeed &lt;- Message.V_NOM</Action><Action
  Guid="24d8010e-c271-4470-96c1-5303813aaafe"
->Odometry.EstimatedAcceleration &lt;- Default.BaseTypes.Acceleration ( Message.V_NOM
+><Comment></Comment>
+Odometry.EstimatedAcceleration &lt;- Default.BaseTypes.Acceleration ( Message.V_NOM
 -  Odometry.PreviousSpeed ) / Default.BaseTypes.Acceleration (  Message.T_ODO - PreviousTime)</Action><Action
  Guid="be1750f6-f121-4bb4-9192-25785d00bc32"
 >Odometry.Accuracy.V_ora &lt;- Message.V_NOM - Message.V_MIN</Action><Action
