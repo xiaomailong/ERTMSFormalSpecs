@@ -1410,18 +1410,34 @@ namespace GUI
                 root = EFSSystem.INSTANCE.Dictionaries[0];
             }
 
-            Expression expression = EFSSystem.INSTANCE.Parser.Expression(root, EditionTextBox.Text, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent);
+            // HaCK : remove the Action prefix from the text because this corresponds to the explanation of an action
+            // The rest of the text is the statement performed by the action
+            string text = EditionTextBox.Text;
+            bool hacked = false;
+            if (text.StartsWith("Action "))
+            {
+                text = text.Substring(7, text.Length - 7);
+                hacked = true;
+            }
+
+            Expression expression = EFSSystem.INSTANCE.Parser.Expression(root, text, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent);
             if (expression != null)
             {
                 expression = VisitExpression(expression);
-                EditionTextBox.Text = expression.ToString();
+                if (!hacked)
+                {
+                    EditionTextBox.Text = expression.ToString();
+                }
             }
 
-            Statement statement = EFSSystem.INSTANCE.Parser.Statement(root, EditionTextBox.Text, silent);
+            Statement statement = EFSSystem.INSTANCE.Parser.Statement(root, text, silent);
             if (statement != null)
             {
                 statement = VisitStatement(statement);
-                EditionTextBox.Text = statement.ToString();
+                if (!hacked)
+                {
+                    EditionTextBox.Text = statement.ToString();
+                }
             }
         }
     }
