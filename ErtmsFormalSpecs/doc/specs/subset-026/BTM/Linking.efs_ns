@@ -306,9 +306,9 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  Guid="0bfe0cf6-52e4-46b8-a258-00e1f3aa67c4"
 >
 <Comment></Comment>
-<Expression>(BGLocationReference.Position + BGLocationReference.UnderReadingAmountOdo &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
+<Expression>(BGLocationReference.Position - LRBG.Position.Position + BGLocationReference.UnderReadingAmountOdo + LRBG.Position.UnderReadingAmountOdo &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
 AND
-(BGLocationReference.Position - BGLocationReference.OverReadingAmountOdo &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</Expression>
+(BGLocationReference.Position - LRBG.Position.Position - BGLocationReference.OverReadingAmountOdo - LRBG.Position.OverReadingAmountOdo &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</Expression>
 </Case></Cases>
 </Function><Function
  Type="BTM.Linking.LinkingData"
