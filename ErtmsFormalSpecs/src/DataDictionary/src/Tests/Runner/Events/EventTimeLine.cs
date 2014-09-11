@@ -156,6 +156,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// <param name="time">the time to step back</param>
         public void StepBack(double time)
         {
+            Changed = true;
             CurrentTime = CurrentTime - time;
             if (CurrentTime < 0)
             {
