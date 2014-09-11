@@ -124,8 +124,8 @@
 >
 </EnumValue></SpecialValues>
 </Range><Range
- MinValue="0.0"
- MaxValue="100.0"
+ MinValue="-255.0"
+ MaxValue="256.0"
  Precision="DoublePrecision"
  Default="0.0"
  X="440"
@@ -138,9 +138,14 @@
 <Comment>Represents a gradient, expressed in 1m per thousand</Comment>
 <SpecialValues>
 <EnumValue
- Value="100.0"
+ Value="256.0"
  Name="Indefinite"
  Guid="b7431095-4d31-4cb1-9069-9b6e912bb446"
+>
+</EnumValue><EnumValue
+ Value="255.0"
+ Name="GradientEnd"
+ Guid="c4fd0dbc-08bb-480a-9427-dc6293f742f6"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -293,6 +298,7 @@
  Name="Value"
  Guid="21116bb2-22ab-4d51-9e24-7de250c19200"
 >
+<Comment></Comment>
 <Expression>Gradient.Indefinite</Expression>
 </Case></Cases>
 </Function><Function

@@ -42,7 +42,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3d6f4a6a-3f71-4a13-a4da-7d7770f0d060"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment></Comment>
+<StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
  Mode="Internal"
@@ -230,6 +231,7 @@
  Name="Indefinite gradient profile"
  Guid="a498e59a-2790-42bc-82ee-dd3271d9287f"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="2c28578c-3152-4b9f-bf25-f9c2f2ed7d7f"
@@ -239,6 +241,7 @@
  Name="Otherwise"
  Guid="1df22536-c1fa-466a-a2c1-93da402a800e"
 >
+<Comment></Comment>
 <Expression>GradientInfoProfileSummary (Distance)</Expression>
 </Case></Cases>
 </Function><Function
@@ -633,7 +636,7 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
  Name="Always"
  Guid="d239d564-57e7-49e1-92c2-8228c5e08254"
 >
-<Expression>BaseTypes.Acceleration.g * GradientProfile( Distance )</Expression>
+<Expression>Default.BaseTypes.Acceleration.g * GradientProfile( Distance )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Gradient"
@@ -714,6 +717,7 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
  Name="Default Gradient for a TSR is available and the default target is due to a TSR"
  Guid="206cd443-c08a-4d0c-8d14-9eac0282f5b5"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="bba83cb2-adbd-488a-89ac-d23c7f8cb2df"

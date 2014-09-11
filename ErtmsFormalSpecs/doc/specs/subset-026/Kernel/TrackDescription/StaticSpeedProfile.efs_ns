@@ -263,7 +263,7 @@
 <PreCondition
  Guid="7f6dc22b-756b-4bbd-a279-def78e406e66"
 >aSSP.TrainLengthDelay == Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element</PreCondition></PreConditions>
-<Expression>SSPEnd(aSSP) - Default.BaseTypes.LengthToDistance(aSSP.Distance) + Kernel.TrainData.TrainData.Value.TrainLength</Expression>
+<Expression>SSPEnd(aSSP) - aSSP.Distance + Kernel.TrainData.TrainData.Value.TrainLength</Expression>
 </Case><Case
  Name="NoTrainLengthDelay"
  Guid="e5943792-4cfa-46ac-befd-3c30fe17d42b"
@@ -657,6 +657,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="EndOfSSP"
  Guid="70ac4f93-7f04-4a90-9bda-e749e2574e2d"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f61d368f-d291-45c0-8bc4-1c445008961b"
