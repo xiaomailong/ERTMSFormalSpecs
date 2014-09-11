@@ -152,15 +152,27 @@ namespace DataDictionary.Interpreter
         /// <returns></returns>
         public override Values.IValue GetValue(InterpretationContext context)
         {
+            ExplanationPart previous = SetupExplanation();
+
             LastIteration.Value = InitialValue.GetValue(context);
 
+            int i = 0;
             bool stop = false;
             while (!stop)
             {
+                i = i + 1;
+                ExplanationPart previous2 = SetupExplanation();
+
+                ExplanationPart value = SetupExplanation();
                 int token = context.LocalScope.PushContext();
                 context.LocalScope.setVariable(LastIteration);
                 CurrentIteration.Value = Expression.GetValue(context);
+                if (explain)
+                {
+                    CompleteExplanation(value, "Iteration expression value = ", CurrentIteration.Value);
+                }
 
+                ExplanationPart stopExpression = SetupExplanation();
                 context.LocalScope.setVariable(CurrentIteration);
                 Values.BoolValue stopCondition = Condition.GetValue(context) as Values.BoolValue;
                 if (stopCondition != null)
@@ -172,8 +184,21 @@ namespace DataDictionary.Interpreter
                     AddError("Cannot evaluate condition " + Condition.ToString());
                     stop = true;
                 }
+                if (explain)
+                {
+                    CompleteExplanation(stopExpression, "Stop expression value = ", stopCondition);
+                }
                 context.LocalScope.PopContext(token);
                 LastIteration.Value = CurrentIteration.Value;
+                if (explain)
+                {
+                    CompleteExplanation(previous2, "Iteration " + i);
+                }
+            }
+
+            if (explain)
+            {
+                CompleteExplanation(previous, ToString() + " = ", CurrentIteration.Value);
             }
 
             return CurrentIteration.Value;
