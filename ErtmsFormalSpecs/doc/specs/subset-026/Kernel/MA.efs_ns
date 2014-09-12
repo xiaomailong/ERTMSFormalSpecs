@@ -88,7 +88,7 @@
 >
 </ReqRef><Comment>The target speed represents the permitted speed at the EOA.</Comment>
 </StructureElement><StructureElement
- TypeName="Sections"
+ TypeName="SectionsCol"
  Default="[]"
  Mode="Internal"
  Implemented="TRUE"
@@ -148,46 +148,6 @@
  Guid="8e1ccf55-ac6f-46d9-ba7d-2d3cf8103f1c"
 >
 </ReqRef><Comment>The time-out associated to the target speed, if any.</Comment>
-</StructureElement><StructureElement
- TypeName="Messages.NID_BG"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="ReferenceBG"
- Guid="29c8a2ac-c392-452c-923f-f4ab14b7c1b1"
->
-<ReqRef
- Id="ab5117d0-92b0-4488-9084-9e07dba02cec"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4260416d-0145-4fc3-a634-260af7f8a49a"
->
-</ReqRef><ReqRef
- Id="948cdca7-999f-4b57-8b4a-7ffc1873927f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7906d5a1-c68a-4d8e-9661-859fc63f26cc"
->
-</ReqRef><Comment>Represents the LRBG to which refers the first section.</Comment>
-</StructureElement><StructureElement
- TypeName="Default.BaseTypes.Distance"
- Default="0.0"
- Mode="Internal"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ReferenceBGLocation"
- Guid="9cd310ec-84ec-4c5f-8cee-5ebc0cd558a8"
->
-<ReqRef
- Id="ab5117d0-92b0-4488-9084-9e07dba02cec"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="912a9d8c-474f-41ee-beaa-faf9e3a9a138"
->
-<Comment></Comment>
-</ReqRef><ReqRef
- Id="948cdca7-999f-4b57-8b4a-7ffc1873927f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c500a717-7b30-4c97-8a92-4ea4383116b6"
->
-</ReqRef><Comment>The Location of the ReferenceBG</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="620"
@@ -677,7 +637,7 @@ Location stores the previous End of Movement Authority location.</Comment>
  Height="50"
  Implemented="TRUE"
  Verified="TRUE"
- Name="Sections"
+ Name="SectionsCol"
  Guid="03331e1a-0a7c-414b-bdf9-0041a6d8266a"
 >
 <ReqRef
@@ -792,7 +752,7 @@ Location stores the previous End of Movement Authority location.</Comment>
 INITIAL_VALUE CreateTarget (
     aSpeed =&gt; 0.0,
     aLocation =&gt; Default.BaseTypes.Distance.Infinity,
-    aLength =&gt; Default.BaseTypes.Distance.Infinity
+    aLength =&gt; Default.BaseTypes.Length.Infinity
  )</Expression>
 </Case></Cases>
 </Function><Function
@@ -947,11 +907,12 @@ INITIAL_VALUE CreateTarget (
  Name="Danger Point available"
  Guid="f169e84e-11ae-4f9f-b851-937f23e52430"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="7efeaf2c-b67d-4232-90aa-091ac69f21f2"
 >Available ( MA.EndSection.DangerPoint )</PreCondition></PreConditions>
-<Expression>ClosestEOA().Location + MA.EndSection.DangerPoint.Distance</Expression>
+<Expression>EndOfMA() + MA.EndSection.DangerPoint.Distance</Expression>
 </Case><Case
  Name="Danger point not available"
  Guid="c4d696f2-00fb-44bb-9e6e-1eeef034a072"
@@ -1022,7 +983,8 @@ INITIAL_VALUE CreateTarget (
 <PreConditions>
 <PreCondition
  Guid="e87e2f4b-7885-494e-9e6c-2a02d454fea0"
->Available ( MA )</PreCondition></PreConditions>
+><Comment></Comment>
+Available ( MA )</PreCondition></PreConditions>
 <Expression>MA.EndSection.Length</Expression>
 </Case></Cases>
 </Function><Function
@@ -1221,6 +1183,7 @@ INITIAL_VALUE CreateTarget (
  Name="No MA available"
  Guid="116fae04-3eb4-4678-9caa-e8684037bc76"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="765c0674-3659-40da-b982-66fd686466df"
@@ -1620,6 +1583,7 @@ INITIAL_VALUE CreateTarget (
  Name="Value"
  Guid="4f07055e-9131-4099-bcbf-9f8192604aeb"
 >
+<Comment></Comment>
 <Expression>SUM
     MA.Sections |
         Before ( ExpectedFirst =&gt; X, ExpectedSecond =&gt; aSection, Collection =&gt; MA.Sections)
@@ -2032,17 +1996,11 @@ Available(MA.EndSection.TimeOut)
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Section has a time-out"
+ Name="Value"
  Guid="65bba70d-e974-4519-b326-f1d8b12a131e"
 >
 <Comment>Returns the distance if the section has a time-out</Comment>
-<PreConditions>
-<PreCondition
- Guid="4eac2e45-7574-4136-bb08-8a29aea90f05"
->Available(aSection.TimeOut)</PreCondition></PreConditions>
-<Expression>MA.ReferenceBGLocation
-+ 
-BaseTypes.LengthToDistance
+<Expression>BaseTypes.LengthToDistance
 (
     SUM MA.Sections | 
         Before(
@@ -2052,12 +2010,6 @@ BaseTypes.LengthToDistance
         )
     USING X.Length
 )</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="829dec25-32aa-482b-9bc2-38ede5dc94c4"
->
-<Comment>If the section has no time-out, returns unknown</Comment>
-<Expression>BaseTypes.Distance.Unknown</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -2081,6 +2033,7 @@ BaseTypes.LengthToDistance
  Name="Value"
  Guid="4f7b33ad-902b-457a-89ac-0bb702f70a92"
 >
+<Comment></Comment>
 <Expression>SectionStartLocation(TimedOutSection())</Expression>
 </Case></Cases>
 </Function><Function
@@ -2105,7 +2058,8 @@ BaseTypes.LengthToDistance
 <PreConditions>
 <PreCondition
  Guid="fee6d219-56c8-47c9-b840-bc9541b651d5"
->Available(MA.Sections)</PreCondition></PreConditions>
+><Comment></Comment>
+Available(MA.Sections)</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.LengthToDistance ( (SUM MA.Sections USING X.Length) + MA.EndSection.Length )</Expression>
 </Case><Case
  Name="No sections"
@@ -2113,6 +2067,145 @@ BaseTypes.LengthToDistance
 >
 <Comment>There is only an End Section</Comment>
 <Expression>BaseTypes.LengthToDistance(MA.EndSection.Length)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EndSectionStart"
+ Guid="1775d84c-6222-482b-bc55-76a46dfdb7fd"
+>
+<Comment>Returns the distance of the start of the end section</Comment>
+<Cases>
+<Case
+ Name="There are sections"
+ Guid="3f457220-852f-400d-81b0-85c02da4c0ea"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="d56e2714-804f-45b5-a3b2-be9833877d97"
+><Comment></Comment>
+MA.Sections != []</PreCondition></PreConditions>
+<Expression>BaseTypes.LengthToDistance(SUM MA.Sections
+  USING X.Length)</Expression>
+</Case><Case
+ Name="Only an end section"
+ Guid="9c09af30-c90b-4397-82e8-dcfddda6ba1e"
+>
+<Expression>0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Kernel.MA.SectionsCol"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RelocatedSections"
+ Guid="d95b4db7-7716-4b40-8a5d-2045455498dc"
+>
+<Comment>When the reference location changes (by a certain distance), the sections in the MA need to be recalculated</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="Distance"
+ Guid="df02a9b9-bdac-465f-a47f-c5af4e50fbe3"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="8c82922c-9f10-4433-adf3-04bd582af2fc"
+>
+<Expression>MAP MA.Sections | IsAfterDistance(X, Distance)
+  USING MakeRelocatedSection(X, Distance)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="220"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="IsAfterDistance"
+ Guid="c845997e-9449-4208-a0c9-3063804c1993"
+>
+<Comment>Check that the end of the section is further than the distance</Comment>
+<Parameters>
+<Parameter
+ Type="Section"
+ Name="aSection"
+ Guid="e9c0973e-2bda-49a4-bd8d-8b25469d6b1d"
+>
+</Parameter><Parameter
+ Type="BaseTypes.Distance"
+ Name="Distance"
+ Guid="7c259d6c-ba86-4d39-a9fa-403e0cb0db97"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="2d9c3618-569f-4260-b93b-ecd826d333d9"
+>
+<Expression>SectionStartLocation(aSection) + BaseTypes.LengthToDistance(aSection.Length) &gt; Distance</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Section"
+ Default=""
+ X="330"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MakeRelocatedSection"
+ Guid="cb565818-cd4f-4c44-a599-87c781003075"
+>
+<Comment>Adjusts the length of the section if needed.
+This is used for when a new reference location is received and the MA is relocated to this nex reference location.</Comment>
+<Parameters>
+<Parameter
+ Type="Section"
+ Name="aSection"
+ Guid="95813a59-766c-4336-830b-b3c083326ab7"
+>
+</Parameter><Parameter
+ Type="BaseTypes.Distance"
+ Name="Distance"
+ Guid="0d77381d-892c-4be0-b256-adb4bcf4eaf7"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Is the new first section"
+ Guid="b5a656f5-558b-4131-a8d6-a61ab01b1d42"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="3377ed4c-7c63-4b30-a765-879d60dee192"
+><Comment></Comment>
+SectionStartLocation(aSection) &lt; Distance</PreCondition><PreCondition
+ Guid="ec823700-cb99-43ab-9553-ef7bd611d85a"
+>IsAfterDistance(
+    aSection=&gt;aSection,
+    Distance=&gt;Distance
+)</PreCondition></PreConditions>
+<Expression>Section{
+    Length =&gt; aSection.Length - BaseTypes.DistanceToLength ( Distance - SectionStartLocation(aSection) ),
+    TimeOut =&gt; aSection.TimeOut
+}</Expression>
+</Case><Case
+ Name="Is another section"
+ Guid="f1575324-1ceb-4946-b4cf-227f99c0b679"
+>
+<Expression>aSection</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -2529,11 +2622,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action
- Guid="3baf875d-5b52-460f-9792-c22789aeb05c"
->MA.ReferenceBG &lt;- NID_BG</Action><Action
- Guid="7014766d-5cef-4baf-94a3-d76e49893fe0"
->MA.ReferenceBGLocation &lt;- Odometry.NominalDistance</Action></Actions>
+</Actions>
 <SubRules>
 <Rule
  Priority="UpdateINTERNAL"
@@ -3079,7 +3168,8 @@ SpeedAndDistanceMonitoring.ReleaseSpeedMonitoring.UpdateReleaseSpeed()</Action><
 <Actions>
 <Action
  Guid="7fb541c1-0d75-45be-a1ef-915b09be7db9"
->INSERT
+><Comment></Comment>
+INSERT
 Section
 {
     Length =&gt; MA.EndSection.Length,
@@ -3124,12 +3214,14 @@ IN MA.Sections</Action></Actions>
  Name="Insert new sections"
  Guid="ea3fb038-4a0b-46a0-932d-633093c19c71"
 >
+<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="1b412fd4-760c-48a0-b2de-253d03b01b87"
->APPLY ExtendSections ( aSection =&gt; X, Scale =&gt; Packet.Q_SCALE ) ON Packet.Sequence1</Action></Actions>
+><Comment></Comment>
+APPLY ExtendSections ( aSection =&gt; X, Scale =&gt; Packet.Q_SCALE ) ON Packet.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3460,6 +3552,7 @@ IN EOAs</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2e28949e-c78f-4f2d-a422-1533aec5f79b"
 >
+<Comment></Comment>
 </ReqRef><Comment>The start location of  a non protected level crossing with no stopping area shall be considered as both EOA and SvL until the train brakes to the LX permitted speed</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -3480,7 +3573,7 @@ LX.NearestNonProtectedNonStoppingLX() != EMPTY
  Guid="5d428056-d867-4dff-bc94-633a9ba1c635"
 ><Comment></Comment>
 INSERT CreateTarget(
-    aLength=&gt;LX.NearestNonProtectedNonStoppingLX().Length,
+    aLength=&gt;BaseTypes.Length.Infinity,
     aLocation=&gt;LX.NearestNonProtectedNonStoppingLX().Location,
     aSpeed=&gt;0.0
 )
@@ -3532,7 +3625,8 @@ IN EOAs</Action></Actions>
 <Actions>
 <Action
  Guid="5f20e14d-76f0-46f6-a32a-fe2c3ff671d7"
->INSERT CreateTarget(
+><Comment></Comment>
+INSERT CreateTarget(
     aLength=&gt;Default.BaseTypes.Length.Infinity,
     aLocation=&gt;TimeOutSectionStart(),
     aSpeed=&gt;0.0
@@ -3652,6 +3746,7 @@ IN EOAs</Action><Action
  Name="Sections are defined in the MA"
  Guid="53902d05-920e-4e51-85a9-88455db09318"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="a779a5e2-a7b0-4b37-b922-68e77593783c"
@@ -3661,11 +3756,12 @@ IN EOAs</Action><Action
 <Actions>
 <Action
  Guid="02a0d872-3ea1-48ef-a8ac-d2b605a7ef3b"
->INSERT
+><Comment></Comment>
+INSERT
 CreateTarget (
     aSpeed =&gt; MA.TargetSpeed,
-    aLocation =&gt; Default.BaseTypes.LengthToDistance ( (SUM MA.Sections USING X.Length) + MA.EndSection.Length ),
-    aLength =&gt; Default.BaseTypes.Distance.Infinity
+    aLocation =&gt; Default.BaseTypes.LengthToDistance ( (SUM MA.Sections USING X.Length) + MA.EndSection.Length),
+    aLength =&gt; Default.BaseTypes.Length.Infinity
 )
 IN EOAs</Action></Actions>
 </RuleCondition></Conditions>
@@ -3683,6 +3779,7 @@ IN EOAs</Action></Actions>
  Name="No sections are defined in the MA"
  Guid="4cc58661-4b9d-4c01-8b53-b6546fa5a4f7"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="dfcefb13-769a-429a-977d-4dcc97933ad3"
@@ -3692,10 +3789,11 @@ IN EOAs</Action></Actions>
 <Actions>
 <Action
  Guid="27ea72e8-4e70-4326-b736-bd2fb8e26a62"
->INSERT CreateTarget (
+><Comment></Comment>
+INSERT CreateTarget (
     aSpeed =&gt; MA.TargetSpeed,
-    aLocation =&gt; Default.BaseTypes.LengthToDistance( MA.EndSection.Length ),
-    aLength =&gt; Default.BaseTypes.Distance.Infinity
+    aLocation =&gt; Default.BaseTypes.LengthToDistance( MA.EndSection.Length),
+    aLength =&gt; Default.BaseTypes.Length.Infinity
  )
 IN EOAs</Action></Actions>
 </RuleCondition></Conditions>
@@ -3713,6 +3811,7 @@ IN EOAs</Action></Actions>
  Name="No EOA Received"
  Guid="bcf932ff-b89d-40c6-86c4-5c6d922897f9"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="fc363c6b-90b4-4cba-b409-5fcabbca8ef5"
@@ -3723,7 +3822,7 @@ IN EOAs</Action></Actions>
 >INSERT CreateTarget (
     aSpeed =&gt; 0.0,
     aLocation =&gt; Default.BaseTypes.Distance.Infinity,
-    aLength =&gt; Default.BaseTypes.Distance.Infinity
+    aLength =&gt; Default.BaseTypes.Length.Infinity
  )
 IN EOAs</Action></Actions>
 </RuleCondition></Conditions>
@@ -3967,7 +4066,8 @@ IN SvLs</Action></Actions>
 <Actions>
 <Action
  Guid="34b23ee0-eb06-43b4-834f-1245e46fcd95"
->INSERT CreateTarget (
+><Comment></Comment>
+INSERT CreateTarget (
     aLocation =&gt; DangerPointLocation(),
     aSpeed =&gt; 0.0,
     aLength =&gt; BaseTypes.Length.Infinity
@@ -4190,6 +4290,74 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
         ]
     }
 ]</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RelocateMAinEndSection"
+ Guid="8e61013b-1ca2-4f82-96aa-b10e0fd7aecb"
+>
+<Comment>Procedure for changing the MA&apos;s reference location when the train is in the end section of an MA that included sections (other cases are handled directly in BTM.HandleNewLRBG)</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="Distance"
+ Guid="d48bf562-1a9b-4f42-8727-2757f7487fb3"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update end section length"
+ Guid="831464f9-d18c-4fd0-9345-87b8a8ffa310"
+>
+<Comment>The first step is to update the end section length</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update end section length"
+ Guid="040e9133-3abd-4f75-acb6-76467a44bcc7"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="04789b87-d062-4c84-a0db-e72332a49ffb"
+><Comment></Comment>
+MA.EndSection.Length &lt;- MA.EndSection.Length - BaseTypes.DistanceToLength(Distance - EndSectionStart())</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Remove previous sections"
+ Guid="55842685-15a9-4ae6-9e0a-7c522ad44b46"
+>
+<Comment>Then, since they have been passed, delete all the sections in the MA</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Remove previous sections"
+ Guid="5f6737a2-57d5-4500-8da3-2f2479b48b6b"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3a327ab0-2da8-409a-93eb-dccb9bfd2696"
+>MA.Sections &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
