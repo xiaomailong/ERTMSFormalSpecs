@@ -90,8 +90,8 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
 </ReqRef><Comment>Computes the value of the release speed, by iterating the function VreleaseFunction.</Comment>
 <Parameters>
 <Parameter
- Type="Default.BaseTypes.Speed"
- Name="Vtarget"
+ Type="TargetSpeedMonitoring.Target"
+ Name="aTarget"
  Guid="8809f63d-2e33-47d3-b643-a3629f325926"
 >
 </Parameter></Parameters>
@@ -102,9 +102,9 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
 >
 <Comment></Comment>
 <Expression>STABILIZE
-    VreleaseFunction ( Vrelease_prev =&gt; PREVIOUS, Vtarget =&gt; Vtarget )
+    VreleaseFunction ( Vrelease_prev =&gt; PREVIOUS, aTarget =&gt; aTarget )
 INITIAL_VALUE
-    Vtarget
+    aTarget.Speed
 STOP_CONDITION
     BaseTypes.AbsoluteSpeed ( CURRENT - PREVIOUS ) &lt;= epsilon</Expression>
 </Case></Cases>
@@ -339,8 +339,8 @@ BaseTypes.MaxDistance(
  Guid="1805aa0c-0d02-4572-98ea-abed7e76dbd5"
 >
 </Parameter><Parameter
- Type="Default.BaseTypes.Speed"
- Name="Vtarget"
+ Type="TargetSpeedMonitoring.Target"
+ Name="aTarget"
  Guid="31c4457c-faad-4bcb-be68-c2dbf699fceb"
 >
 </Parameter></Parameters>
@@ -354,16 +354,21 @@ BaseTypes.MaxDistance(
 <PreCondition
  Guid="af631487-52d1-4c71-a33c-05b2ff35e1b4"
 ><Comment></Comment>
-d_tripEOA() + Dbec ( Vrelease_prev ) &lt; DistanceForSpeed ( Function =&gt; DecelerationCurves.EBD, Speed =&gt; Vtarget )</PreCondition><PreCondition
+d_tripEOA() + Dbec ( Vrelease_prev ) &lt; DecelerationCurves.EBD_TargetForSpeed
+(
+    Vest =&gt; Odometry.EstimatedSpeed,
+    aTarget =&gt; aTarget,
+    EstimatedAccelerationSetToZero =&gt; True
+)</PreCondition><PreCondition
  Guid="b7339d74-9848-460e-b4e5-8cb15e9f1566"
 ><Comment></Comment>
-DecelerationCurves.EBD ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob ( Vrelease_prev ) ) &gt; Vtarget</PreCondition></PreConditions>
+DecelerationCurves.EBD ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob ( Vrelease_prev ) ) &gt; aTarget.Speed</PreCondition></PreConditions>
 <Expression>DecelerationCurves.EBD ( d_tripEOA () + Dbec ( Vrelease_prev ) ) - Vdelta0rsob ( Vrelease_prev )</Expression>
 </Case><Case
  Name="Second case"
  Guid="40790e04-db87-45cd-b756-ba399d78f25b"
 >
-<Expression>Vtarget</Expression>
+<Expression>aTarget.Speed</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -482,6 +487,7 @@ d_FLOI ( Vrelease, False ) == BaseTypes.Distance.Unknown</PreCondition></PreCond
  Name="EOA is passed"
  Guid="890f1525-e043-407f-a393-2f0ddeac1f0b"
 >
+<Comment></Comment>
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function><Function
@@ -585,7 +591,7 @@ INITIAL_VALUE
     TargetsList() |
         d_tripEOA() &lt;= X.Location AND X.Location &lt; MA.SvL().Location
 USING
-    BaseTypes.MinSpeed ( X1 =&gt; ComputeReleaseSpeedForTarget ( X.Speed ), X2 =&gt; RESULT )
+    BaseTypes.MinSpeed ( X1 =&gt; ComputeReleaseSpeedForTarget ( X ), X2 =&gt; RESULT )
 INITIAL_VALUE
     Default.BaseTypes.Speed.Infinity</Expression>
 </Case></Cases>
