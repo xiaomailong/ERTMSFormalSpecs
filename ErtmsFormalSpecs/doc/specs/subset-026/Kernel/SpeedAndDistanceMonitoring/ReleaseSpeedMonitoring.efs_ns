@@ -362,8 +362,8 @@ d_tripEOA() + Dbec ( Vrelease_prev ) &lt; DecelerationCurves.EBD_TargetForSpeed
 )</PreCondition><PreCondition
  Guid="b7339d74-9848-460e-b4e5-8cb15e9f1566"
 ><Comment></Comment>
-DecelerationCurves.EBD ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob ( Vrelease_prev ) ) &gt; aTarget.Speed</PreCondition></PreConditions>
-<Expression>DecelerationCurves.EBD ( d_tripEOA () + Dbec ( Vrelease_prev ) ) - Vdelta0rsob ( Vrelease_prev )</Expression>
+DecelerationCurves.EBD_Target ( Distance =&gt; ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob ( Vrelease_prev ) ), aTarget =&gt; aTarget ) &gt; aTarget.Speed</PreCondition></PreConditions>
+<Expression>DecelerationCurves.EBD_Target ( Distance =&gt; ( d_tripEOA () + Dbec ( Vrelease_prev ) ), aTarget =&gt; aTarget ) - Vdelta0rsob ( Vrelease_prev )</Expression>
 </Case><Case
  Name="Second case"
  Guid="40790e04-db87-45cd-b756-ba399d78f25b"
