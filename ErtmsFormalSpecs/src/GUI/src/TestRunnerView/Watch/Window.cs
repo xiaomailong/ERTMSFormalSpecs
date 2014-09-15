@@ -22,6 +22,7 @@ using System;
 using DataDictionary.Values;
 using System.Drawing;
 using DataDictionary.Variables;
+using System.ComponentModel;
 
 namespace GUI.TestRunnerView.Watch
 {
@@ -74,7 +75,7 @@ namespace GUI.TestRunnerView.Watch
             /// <summary>
             /// The expression supervised by this change handler
             /// </summary>
-            public WatchedExpression Watch { get; private set; }
+            private WatchedExpression Watch { get; set; }
 
             /// <summary>
             /// The column that is edited
@@ -349,6 +350,7 @@ namespace GUI.TestRunnerView.Watch
             /// Provides the expression which corresponds to the Expression text.
             /// Returns null if the expression could not be parsed
             /// </summary>
+            [Browsable(false)]
             public Expression ExpressionTree
             {
                 get
