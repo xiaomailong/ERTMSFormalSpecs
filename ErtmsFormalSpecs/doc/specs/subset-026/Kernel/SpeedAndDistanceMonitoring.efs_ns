@@ -1389,7 +1389,8 @@ TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9a2c4b84-2ba8-4c56-b740-29d7470e73e0"
->THIS &lt;- Target.Indication</Action><Action
+><Comment></Comment>
+THIS &lt;- Target.Indication</Action><Action
  Guid="a1760c3c-11b0-4b10-b444-07aad0f08be6"
 ><Comment></Comment>
 TCOTriggered &lt;- False</Action><Action
@@ -1983,13 +1984,6 @@ SelectMonitoringType()</Action></Actions>
  Guid="dce28774-413f-472c-ac6f-6a203e4c010c"
 >
 </ReqRef><Comment>Provides the current permitted speed of the train, accounting for the speed and distance monitoring.</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Distance"
- Name="Distance"
- Guid="222e9cd5-53f5-47e5-967c-cffd85c89a74"
->
-</Parameter></Parameters>
 <Cases>
 <Case
  Name="CeilingSpeedMonitoring_P"
@@ -2001,7 +1995,9 @@ SelectMonitoringType()</Action></Actions>
  Guid="5394d167-a030-4b1d-a096-b176e1075237"
 ><Comment></Comment>
 Monitoring in MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
-<Expression>CeilingSpeedMonitoring.P ( Distance )</Expression>
+<Expression>CeilingSpeedMonitoring.P ( TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;DistanceInterval.Nom
+) )</Expression>
 </Case><Case
  Name="Other monitoring types"
  Guid="c121bdd5-4b33-48ef-b069-9a042e43983d"
@@ -2064,7 +2060,7 @@ Monitoring in MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
 <PreCondition
  Guid="a9cf64fe-934f-41fc-b58b-190b853ccc0d"
 ><Comment></Comment>
-PreIndicationLocation.d_preindication(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+PreIndicationLocation.d_preindication() == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Train passed pre-indication location"
@@ -2075,7 +2071,7 @@ PreIndicationLocation.d_preindication(TrainPosition.FrontEndPosition(Default.Dis
 <PreCondition
  Guid="699a6b10-e831-4c8a-a3ed-591f85155457"
 ><Comment></Comment>
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; PreIndicationLocation.d_preindication(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition></PreConditions>
+TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; PreIndicationLocation.d_preindication()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"

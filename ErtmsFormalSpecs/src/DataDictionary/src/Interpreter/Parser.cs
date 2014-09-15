@@ -444,16 +444,24 @@ namespace DataDictionary.Interpreter
                             if (id != null)
                             {
                                 Designator designator = new Designator(Root, RootLog, id, startId, startId + id.Length);
-                                Match("=>");
-                                Expression expression = Expression(0);
-                                if (expression != null)
+                                string assignOp = LookAhead(ASSIGN_OPS);
+                                if (assignOp != null)
                                 {
-                                    associations[designator] = expression;
+                                    Match(assignOp);
+                                    Expression expression = Expression(0);
+                                    if (expression != null)
+                                    {
+                                        associations[designator] = expression;
+                                    }
+                                    else
+                                    {
+                                        RootLog.AddError("Cannot parse expression after " + id + " " + assignOp + " ");
+                                        break;
+                                    }
                                 }
                                 else
                                 {
-                                    RootLog.AddError("Cannot parse expression after " + id + " => ");
-                                    break;
+                                    throw new ParseErrorException("<- or => expected", Index, Buffer);
                                 }
                             }
                             else
@@ -794,9 +802,10 @@ namespace DataDictionary.Interpreter
                         Designator parameter = null;
                         if (id != null)
                         {
-                            if (LookAhead("=>"))
+                            string assignOp = LookAhead(ASSIGN_OPS);
+                            if (assignOp != null)
                             {
-                                Match("=>");
+                                Match(assignOp);
                                 parameter = new Designator(Root, RootLog, id, current2, current2 + id.Length);
                             }
                             else
@@ -1037,15 +1046,23 @@ namespace DataDictionary.Interpreter
                 }
 
                 skipWhiteSpaces();
-                Match("=>");
-                Expression expression = Expression(0);
-                if (expression != null)
+                string assignOp = LookAhead(ASSIGN_OPS);
+                if (assignOp != null)
                 {
-                    retVal = new FunctionExpression(Root, RootLog, parameters, expression, start, Index);
+                    Match(assignOp);
+                    Expression expression = Expression(0);
+                    if (expression != null)
+                    {
+                        retVal = new FunctionExpression(Root, RootLog, parameters, expression, start, Index);
+                    }
+                    else
+                    {
+                        throw new ParseErrorException("Function expression expected", Index, Buffer);
+                    }
                 }
                 else
                 {
-                    throw new ParseErrorException("Function expression expected", Index, Buffer);
+                    throw new ParseErrorException("=> or <- expected", Index, Buffer);
                 }
             }
 
@@ -1127,6 +1144,11 @@ namespace DataDictionary.Interpreter
 
             return retVal;
         }
+
+        /// <summary>
+        /// The assignment operators
+        /// </summary>
+        private static string[] ASSIGN_OPS = new string[] { "<-", "=>" };
 
         /// <summary>
         /// Parses a statement
@@ -1224,10 +1246,11 @@ namespace DataDictionary.Interpreter
                 Expression expression = Expression(0);
                 if (expression != null)
                 {
-                    if (LookAhead("<-"))
+                    string assignOp = LookAhead(ASSIGN_OPS);
+                    if (assignOp != null)
                     {
                         // This is a variable update
-                        Match("<-");
+                        Match(assignOp);
                         if (LookAhead("%"))
                         {
                             Match("%");

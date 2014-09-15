@@ -2013,11 +2013,6 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_IN
  Name="Nid_BG"
  Guid="73175fa3-6e28-4a7d-af6d-805fb341b09c"
 >
-</Parameter><Parameter
- Type="Default.BaseTypes.Distance"
- Name="TravelledDistance"
- Guid="692e2005-156e-4d1a-823c-536a7a7c7bda"
->
 </Parameter></Parameters>
 <Rules>
 <Rule
@@ -2685,6 +2680,114 @@ Kernel.TSR.TSRs &lt;- MAP Kernel.TSR.TSRs USING Kernel.TSR.TemporarySpeedRestric
     TrainLengthDelay =&gt; X.TrainLengthDelay
 }</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update SupervisedTargets"
+ Guid="61e43490-4472-4e12-83e6-aa18238410bb"
+>
+<Comment>Update the list of supervised targets calculated at the last cycle.
+This variable is used to chaeck if the list of targets has been updated (and therefore if the speed and distance monitoring type and status need to re-evaluated).
+The list is updated in case two LRBGs provide the same MRSP, this should count as the list of supervised targets being updated.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update SupervisedTargets"
+ Guid="2e9ad671-d70f-4899-89f1-42f7f9bc6430"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="c84d8a44-5988-4408-b72a-3fa217e5cdbc"
+>Kernel.SpeedAndDistanceMonitoring.SupervisedTargets != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="48f28414-15b8-407c-9ccc-7b7bbb265b2f"
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.SupervisedTargets &lt;- MAP Kernel.SpeedAndDistanceMonitoring.SupervisedTargets USING Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+    Location =&gt; RelocateDistance(X.Location),
+    Speed =&gt; X.Speed,
+    Length =&gt; X.Length
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update MA"
+ Guid="a85e6bda-11f6-4977-97e6-70bd3b3538c4"
+>
+<Comment>Change the lengths in the MA</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update MA"
+ Guid="0aa9b271-0ff4-434d-afd2-abf96c4bdbfb"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="9f7ce8dd-40cf-4439-b67e-a01b25e77e7d"
+>Available(Kernel.MA.MA)</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Check for sections"
+ Guid="9c4103b1-b279-450a-83cb-7c03b9cae1b8"
+>
+<Comment>Depending on where the train is, with reference to the MA, and on the specific structure of the MA, the relocation must be handled differently</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="No sections in the MA"
+ Guid="74808d55-fe3e-49c0-9639-08778e4cff88"
+>
+<Comment>If there are no sections in the MA, the length of the end section must be reduced</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5657558a-1a05-418b-a764-acf8a7450bcc"
+>Kernel.MA.MA.Sections == []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1a79f6be-8cd7-40c6-9975-e855cdded2c5"
+><Comment></Comment>
+Kernel.MA.MA.EndSection.Length &lt;- Kernel.MA.MA.EndSection.Length - BaseTypes.DistanceToLength( BGLocationReference.Position - LRBG.Position.Position )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="There are sections - train is in the end section"
+ Guid="d06b3a80-263d-4bb9-b9c8-543ed912a38d"
+>
+<Comment>If the train has passed all the sections and is in the end section, the sections must be removed and the length of the end section updated</Comment>
+<PreConditions>
+<PreCondition
+ Guid="d424a96a-5c7d-4c07-b419-e3cf71806b66"
+><Comment></Comment>
+BGLocationReference.Position - LRBG.Position.Position &gt;= Kernel.MA.EndSectionStart()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b9ea2e9d-59d1-4ef8-88df-d51843437f9e"
+><Comment></Comment>
+Kernel.MA.RelocateMAinEndSection(BGLocationReference.Position - LRBG.Position.Position)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Train is in one of the sections"
+ Guid="e5c30d3b-cb6a-41bd-b0ef-98cafdcd885a"
+>
+<Comment>If the train is in a section that is not the end section, previous sections are removed and the current one is updated</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="ed0099d6-3ed8-4657-b337-6d58e3914acb"
+>Kernel.MA.MA.Sections &lt;- Kernel.MA.RelocatedSections( BGLocationReference.Position - LRBG.Position.Position )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -2867,10 +2970,7 @@ LRBGCandidate( )</PreCondition></PreConditions>
 <Action
  Guid="3c939d6a-99af-451a-b12d-368fece30c2a"
 ><Comment></Comment>
-HandleNewLRBG(
-  Nid_BG=&gt;BG_To_LRBG(Message.NID_BG), 
-  TravelledDistance=&gt;TravelledDistanceFromLRBG()
-)</Action></Actions>
+HandleNewLRBG(BG_To_LRBG(Message.NID_BG))</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

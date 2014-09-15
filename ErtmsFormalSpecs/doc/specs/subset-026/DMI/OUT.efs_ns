@@ -1063,7 +1063,7 @@ Kernel.SpeedAndDistanceMonitoring.Monitoring in  [Kernel.SpeedAndDistanceMonitor
 <Action
  Guid="abfe8af1-6df4-4510-9e27-17aa6e1e711a"
 ><Comment></Comment>
-Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed ( Kernel.TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</Action></Actions>
+Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -5472,7 +5472,7 @@ GetMonitoringType() == MonitoringType.PIM</PreCondition></PreConditions>
 <Action
  Guid="3b03cbd3-6227-48c2-89d6-d091e5d898dc"
 ><Comment></Comment>
-Location &lt;- Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.IndicationLocation(Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT())</Action></Actions>
+Location &lt;- Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.IndicationLocation()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -5502,6 +5502,21 @@ IndicationLocationAtMrspSpeedAvailable()</PreCondition></PreConditions>
  Guid="4383da9f-ab69-4fe3-84cf-1b0c583c86e3"
 ><Comment></Comment>
 Display()</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Hide when in wrong monitoring types"
+ Guid="7989786c-a6c8-4293-895c-a857c4c914a8"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="1327a651-9c4d-45c4-92b2-6f966039e538"
+>GetMonitoringType() == MonitoringType.TSM
+  OR  
+GetMonitoringType() == MonitoringType.RSM</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="37b1dbea-580c-4478-b8f1-7dc089611c49"
+>THIS.OutputInformation.DoNotDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -7151,7 +7166,9 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 >Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target</PreCondition><PreCondition
  Guid="ed3001e2-668d-4ae2-8381-1d7db8b7173e"
 ><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)</PreCondition></PreConditions>
+Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)</PreCondition><PreCondition
+ Guid="0390c7de-4a8c-40ee-b77b-e09a11a4ac1b"
+>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))) != Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>MonitoringType.PIM</Expression>
 </Case><Case
  Name="TSM"
@@ -7535,10 +7552,22 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
- Name="Enumerates the cases where the request is available"
+ Name="In FS mode"
  Guid="d9077400-ab58-4c57-91b0-5093988dae04"
 >
-<Expression>Kernel.Mode in [Mode.FS]</Expression>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="6171e686-f3f7-443d-bd7d-fc66cb60ad9f"
+>Kernel.Mode in [Mode.FS]</PreCondition></PreConditions>
+<Expression>GetMonitoringType() == MonitoringType.CSM
+  OR  
+GetMonitoringType() == MonitoringType.PIM</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="3f596a9c-bbf4-4dc7-bfd2-b5cb10cf708c"
+>
+<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"

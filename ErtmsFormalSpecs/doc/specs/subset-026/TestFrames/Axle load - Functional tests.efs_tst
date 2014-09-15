@@ -990,7 +990,7 @@ IN BTM.Linking.Linkings</Action><Action
  Feature="0"
  Case="0"
  Implemented="TRUE"
- Name="Axle load profile received with categories lower than the train&apos;s category"
+ Name="Axle load profile received with categories higher than the train&apos;s category"
  Guid="cbbd74e2-61ce-4b6a-8888-badcf022e2c0"
 >
 <ReqRef
@@ -1018,7 +1018,8 @@ IN BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="f00d5ea8-9dc5-4efa-9dc1-9a5fd3ac5327"
->BTM.Message &lt;- Messages.EUROBALISE.Message
+><Comment></Comment>
+BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -1044,7 +1045,7 @@ IN BTM.Linking.Linkings</Action><Action
                     Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
                     Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
                     D_TRACKINIT =&gt; 0,
-                    D_AXLELOAD =&gt; 700,
+                    D_AXLELOAD =&gt; 350,
                     L_AXLELOAD =&gt; 40,
                     Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
                     Sequence1 =&gt;
@@ -1147,7 +1148,8 @@ IN BTM.Linking.Linkings</Action><Action
     ]
 }</Action><Action
  Guid="5ef86813-2cc1-4212-a7da-28c652809b70"
->Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.A</Action></Actions>
+><Comment></Comment>
+Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.A</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
