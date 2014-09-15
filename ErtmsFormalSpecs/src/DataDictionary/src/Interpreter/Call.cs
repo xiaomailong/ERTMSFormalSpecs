@@ -432,7 +432,6 @@ namespace DataDictionary.Interpreter
 
                     if (explain)
                     {
-                        AddParameterValuesToExplanation(parameterValues);
                         CompleteExplanation(previous, function.Name + " (...) returned ", retVal);
                     }
                 }
@@ -443,25 +442,6 @@ namespace DataDictionary.Interpreter
             }
 
             return retVal;
-        }
-
-        /// <summary>
-        /// Provides the parameter's values along with their name
-        /// </summary>
-        /// <param name="parameterValues"></param>
-        /// <returns></returns>
-        private void AddParameterValuesToExplanation(Dictionary<Variables.Actual, Values.IValue> parameterValues)
-        {
-            if (EFSSystem.Runner == null || EFSSystem.Runner.Explain)
-            {
-                if (currentExplanation != null && parameterValues != null)
-                {
-                    foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in parameterValues)
-                    {
-                        currentExplanation.SubExplanations.Add(new ExplanationPart(pair.Key.Parameter, pair.Key.Parameter.Name, pair.Value));
-                    }
-                }
-            }
         }
 
         /// <summary>
@@ -534,6 +514,8 @@ namespace DataDictionary.Interpreter
                 int i = 0;
                 foreach (Expression expression in ActualParameters)
                 {
+                    ExplanationPart previous = SetupExplanation();
+
                     Parameter parameter = callable.FormalParameters[i] as Parameter;
                     Values.IValue val = expression.GetValue(context);
                     if (val != null)
@@ -547,11 +529,19 @@ namespace DataDictionary.Interpreter
                         AddError("Cannot evaluate value for parameter " + i + " (" + expression.ToString() + ") of function " + callable.Name);
                         throw new Exception("Evaluation of parameters failed");
                     }
+
+                    if (explain)
+                    {
+                        CompleteExplanation(previous, "parameter " + parameter.Name + " = ", val);
+                    }
+
                     i = i + 1;
                 }
 
                 foreach (KeyValuePair<Designator, Expression> pair in NamedActualParameters)
                 {
+                    ExplanationPart previous = SetupExplanation();
+
                     Parameter parameter = callable.getFormalParameter(pair.Key.Image);
                     Values.IValue val = pair.Value.GetValue(context);
                     if (val != null)
@@ -565,6 +555,11 @@ namespace DataDictionary.Interpreter
                     {
                         AddError("Cannot evaluate value for parameter " + pair.Key + " of function " + callable.Name);
                         throw new Exception("Evaluation of parameters failed");
+                    }
+
+                    if (explain)
+                    {
+                        CompleteExplanation(previous, "parameter " + parameter.Name + " = ", val);
                     }
                 }
             }
