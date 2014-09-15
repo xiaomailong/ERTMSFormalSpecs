@@ -67,6 +67,7 @@ namespace GUI.TestRunnerView
                     {
                         GUIUtils.MDIWindow.Select(Explanation.Element, true);
                     }
+                    ExplainBox.explainRichTextBox.Instance = Explanation;
                     ExplainBox.explainRichTextBox.Text = Explanation.Message;
                 }
             }

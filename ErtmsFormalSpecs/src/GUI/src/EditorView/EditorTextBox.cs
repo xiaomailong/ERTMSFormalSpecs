@@ -62,12 +62,12 @@ namespace GUI
             }
         }
 
-        private Utils.IModelElement __instance = null;
+        private object __instance = null;
 
         /// <summary>
         /// Provides the instance on which this editor is based
         /// </summary>
-        public Utils.IModelElement Instance
+        public object Instance
         {
             get
             {
@@ -82,6 +82,12 @@ namespace GUI
                 __instance = value;
             }
         }
+
+        /// <summary>
+        /// The instance viewed as a model element
+        /// </summary>
+        public Utils.IModelElement Model { get { return Instance as Utils.IModelElement; } }
+
 
         /// <summary>
         /// Provides the EFSSystem 
@@ -180,7 +186,7 @@ namespace GUI
         {
             List<Utils.INamable> retVal = new List<Utils.INamable>();
 
-            if (Instance != null)
+            if (Model != null)
             {
                 int index = EditionTextBox.GetCharIndexFromPosition(location);
 
@@ -217,7 +223,7 @@ namespace GUI
                         else
                         {
                             bool last = end == EditionTextBox.Text.Length || EditionTextBox.Text[end] != '.';
-                            ReturnValue returnValue = expression.getReferences(Instance, AllMatches.INSTANCE, last);
+                            ReturnValue returnValue = expression.getReferences(Model, AllMatches.INSTANCE, last);
                             foreach (ReturnValueElement element in returnValue.Values)
                             {
                                 retVal.Add(element.Value);
@@ -815,7 +821,7 @@ namespace GUI
                     }
                     else
                     {
-                        retVal.Instances.Add(Instance);
+                        retVal.Instances.Add(Model);
                     }
                 }
 
@@ -823,7 +829,7 @@ namespace GUI
             }
             else
             {
-                retVal.Instances.Add(Instance);
+                retVal.Instances.Add(Model);
                 retVal.EnclosingName = null;
                 retVal.Prefix = text;
                 retVal.ConsiderTemplates = true;
@@ -1076,7 +1082,7 @@ namespace GUI
                     if (variableNode != null)
                     {
                         StringBuilder text = new StringBuilder();
-                        text.Append(StripUseless(SourceNode.Model.FullName, Instance) + " <- ");
+                        text.Append(StripUseless(SourceNode.Model.FullName, Model) + " <- ");
 
                         DataDictionary.Variables.Variable variable = variableNode.Item;
                         DataDictionary.Types.Structure structure = variable.Type as DataDictionary.Types.Structure;
@@ -1103,7 +1109,7 @@ namespace GUI
                         }
                         else
                         {
-                            EditionTextBox.SelectedText = StripUseless(SourceNode.Model.FullName, Instance);
+                            EditionTextBox.SelectedText = StripUseless(SourceNode.Model.FullName, Model);
                         }
                     }
                 }
@@ -1114,7 +1120,7 @@ namespace GUI
         {
             if (displayStructureName)
             {
-                text.Append(StripUseless(structure.FullName, Instance) + "{\n");
+                text.Append(StripUseless(structure.FullName, Model) + "{\n");
             }
 
             bool first = true;
@@ -1160,7 +1166,7 @@ namespace GUI
             if (structure != null)
             {
                 indent = indent + 4;
-                text.Append(StripUseless(structure.FullName, Instance) + "{\n");
+                text.Append(StripUseless(structure.FullName, Model) + "{\n");
                 bool first = true;
                 foreach (DataDictionary.Types.StructureElement subElement in structure.Elements)
                 {
@@ -1304,12 +1310,12 @@ namespace GUI
 
             if (expression != null)
             {
-                bool silentMode = ModelElement.BeSilent;
+                bool silentMode = DataDictionary.ModelElement.BeSilent;
                 try
                 {
-                    ModelElement.BeSilent = true;
+                    DataDictionary.ModelElement.BeSilent = true;
 
-                    InterpretationContext context = new InterpretationContext(Instance);
+                    InterpretationContext context = new InterpretationContext(Model);
                     context.UseDefaultValue = false;
                     IValue value = expression.GetValue(context);
                     if (value != null)
@@ -1326,7 +1332,7 @@ namespace GUI
                 }
                 finally
                 {
-                    ModelElement.BeSilent = silentMode;
+                    DataDictionary.ModelElement.BeSilent = silentMode;
                 }
             }
 
@@ -1402,40 +1408,39 @@ namespace GUI
 
         private void openStructureEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bool doSemanticalAnalysis = true;
-            bool silent = true;
-            ModelElement root = Instance as ModelElement;
-            if (root == null)
+            ExplanationPart part = Instance as ExplanationPart;
+            if (part != null)
             {
-                root = EFSSystem.INSTANCE.Dictionaries[0];
-            }
-
-            // HaCK : remove the Action prefix from the text because this corresponds to the explanation of an action
-            // The rest of the text is the statement performed by the action
-            string text = EditionTextBox.Text;
-            bool hacked = false;
-            if (text.StartsWith("Action "))
-            {
-                text = text.Substring(7, text.Length - 7);
-                hacked = true;
-            }
-
-            Expression expression = EFSSystem.INSTANCE.Parser.Expression(root, text, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent);
-            if (expression != null)
-            {
-                expression = VisitExpression(expression);
-                if (!hacked)
+                IValue value = part.Namable as IValue;
+                if (value != null)
                 {
-                    EditionTextBox.Text = expression.ToString();
+                    StructureValueEditor.Window window = new StructureValueEditor.Window();
+                    window.SetModel(value);
+                    window.ShowDialog();
                 }
             }
-
-            Statement statement = EFSSystem.INSTANCE.Parser.Statement(root, text, silent);
-            if (statement != null)
+            else
             {
-                statement = VisitStatement(statement);
-                if (!hacked)
+                bool doSemanticalAnalysis = true;
+                bool silent = true;
+                ModelElement root = Instance as ModelElement;
+                if (root == null)
                 {
+                    root = EFSSystem.INSTANCE.Dictionaries[0];
+                }
+
+                string text = EditionTextBox.Text;
+                Expression expression = EFSSystem.INSTANCE.Parser.Expression(root, text, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent);
+                if (expression != null)
+                {
+                    expression = VisitExpression(expression);
+                    EditionTextBox.Text = expression.ToString();
+                }
+
+                Statement statement = EFSSystem.INSTANCE.Parser.Statement(root, text, silent);
+                if (statement != null)
+                {
+                    statement = VisitStatement(statement);
                     EditionTextBox.Text = statement.ToString();
                 }
             }
