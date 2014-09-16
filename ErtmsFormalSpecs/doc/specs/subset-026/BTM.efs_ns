@@ -1122,33 +1122,99 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 <Expression>FIRST_IN aTelegram.Sequence1 | X.TRACK_TO_TRAIN.MODE_PROFILE  != EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Messages.M_MCOUNT"
+ Cacheable="TRUE"
  Default=""
  Width="100"
  Height="50"
- Name="RelocateDistance"
- Guid="0270b107-3066-4ea5-a2c2-42f0462504a0"
+ Name="CurrentBGM_MCOUNT"
+ Guid="92c7afe7-4312-43dc-895b-83398317885e"
 >
 <ReqRef
- Id="afb44275-4d8c-4d1d-9caf-212e30e4ec9b"
+ Id="44ee1586-bb5c-42b3-b64d-c63e870d4d0e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f7cfe948-0ca2-42c7-bb1a-ed5e53eba0a5"
+ Guid="9a542252-5ed4-4c4f-bcd2-8cf008e65181"
 >
-</ReqRef><Comment>Takes a distance and removes the separation between the old and new LRBG</Comment>
-<Parameters>
-<Parameter
- Type="BaseTypes.Distance"
- Name="Distance"
- Guid="3dc9f988-a7d0-4c6d-8c07-aa7ad1e34fb6"
+</ReqRef><ReqRef
+ Id="5b83898b-9d38-4194-ba39-282256776162"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7b19e98b-24d0-477a-8a2c-0627590e9816"
 >
-</Parameter></Parameters>
+</ReqRef><ReqRef
+ Id="ff4a7424-8900-4f28-bd9d-78e5d8d68a96"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1c73dec3-a299-4bc8-8cd6-1add7609a0ad"
+>
+</ReqRef><Comment>Returns the current balise group&apos;s M_MCOUNT value by taking the first one that</Comment>
 <Cases>
 <Case
  Name="Value"
- Guid="3a033bdc-a838-4880-a8d5-9e67646044d2"
+ Guid="b6221c53-5616-4adf-a085-1fad71644c39"
 >
 <Comment></Comment>
-<Expression>Distance - ( BGLocationReference.Position - LRBG.Position.Position )</Expression>
+<Expression>(FIRST_IN CurrentBaliseGroup | (X.M_MCOUNT != 255 AND X.M_MCOUNT != 254)).M_MCOUNT</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Name="BGMessageCountersAllFit"
+ Guid="1df728ea-f633-4b9b-afd9-64c849022c95"
+>
+<ReqRef
+ Id="8df559d7-4427-47e1-8a05-f0f049023f96"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bd4a0f42-866c-4693-99fd-9ecc7c59dbd2"
+>
+</ReqRef><ReqRef
+ Id="5b83898b-9d38-4194-ba39-282256776162"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a2270781-43b4-4660-acfb-ef1d3a9541dc"
+>
+</ReqRef><ReqRef
+ Id="ff4a7424-8900-4f28-bd9d-78e5d8d68a96"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="647a0a24-36ec-42d6-8869-94836b3fac0b"
+>
+</ReqRef><ReqRef
+ Id="44ee1586-bb5c-42b3-b64d-c63e870d4d0e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a33e2098-002c-4de6-81cb-da3d25b00576"
+>
+</ReqRef><ReqRef
+ Id="d3960249-edd7-4e75-8c50-ba27a4b4af49"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6723ba96-0a63-4764-9d14-e04a9e2f534a"
+>
+</ReqRef><Comment>Returns True if all the current balise group&apos;s M_MCOUNT values are the same (or 255), and if none of them are 254.
+This is a check for message consistency errors.</Comment>
+<Cases>
+<Case
+ Name="There is a telegram that does not fit"
+ Guid="a175f1e6-5eaa-4597-b226-a8c565f1774e"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="3a2f7881-1d46-4fd1-97b8-44f8b393e60e"
+>THERE_IS_IN CurrentBaliseGroup | X.M_MCOUNT == 254</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="All telegrams fit with all other telegrams by default"
+ Guid="71b377f9-2ed6-4d2b-a739-071f55ff4689"
+>
+<PreConditions>
+<PreCondition
+ Guid="11da024b-eb6b-42b4-82f1-1d802dd613f8"
+>FORALL_IN CurrentBaliseGroup | X.M_MCOUNT == 255</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Standard case"
+ Guid="1f2dd18d-fd20-4be5-98ad-a38e4d73bb6f"
+>
+<Expression>FORALL_IN CurrentBaliseGroup | (X.M_MCOUNT == CurrentBGM_MCOUNT() OR X.M_MCOUNT == 255)</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -1549,7 +1615,8 @@ Kernel.MA.RepositioningInformationReceived ( Packet =&gt; Packet.TRACK_TO_TRAIN.
 <Actions>
 <Action
  Guid="d6ca9514-566f-4887-a3f1-0764c122aa72"
->Kernel.TrackDescription.AxleLoad.AxleLoadProfileReceived ( Packet.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE )</Action></Actions>
+><Comment></Comment>
+Kernel.TrackDescription.AxleLoad.AxleLoadProfileReceived ( Packet.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Permitted Braking Distance Information available"
@@ -2013,6 +2080,11 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_IN
  Name="Nid_BG"
  Guid="73175fa3-6e28-4a7d-af6d-805fb341b09c"
 >
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="DistanceFromLRBG"
+ Guid="de3e8c92-4f0c-455c-bda5-61148adb4598"
+>
 </Parameter></Parameters>
 <Rules>
 <Rule
@@ -2065,36 +2137,6 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_IN
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Update Linkings"
- Guid="6391d67f-aa92-4901-a868-f12fce891513"
->
-<Comment>Change the distances in the stored Linkings to be measured from the new LRBG</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Update Linkings"
- Guid="0ced51a0-3d53-4e53-a2d3-98f869207d58"
->
-<PreConditions>
-<PreCondition
- Guid="21e9c91f-d2ef-4a40-9ebf-d73a8504d7fb"
->Linking.Linkings != []</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="e19e9f97-4a83-40a3-b263-332abbb1b16b"
-><Comment></Comment>
-Linking.Linkings &lt;- MAP Linking.Linkings USING BTM.Linking.LinkingData{
-    LocationAccuracy =&gt; X.LocationAccuracy,
-    Orientation =&gt; X.Orientation,
-    Reaction =&gt; X.Reaction,
-    Distance =&gt; RelocateDistance(X.Distance),
-    BaliseGroupIdentifier =&gt; X.BaliseGroupIdentifier
-}</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
  Name="Update Emergency Stops"
  Guid="90e8fa4c-3bf9-4d41-8f3c-49a12c49c220"
 >
@@ -2118,7 +2160,7 @@ Linking.Linkings &lt;- MAP Linking.Linkings USING BTM.Linking.LinkingData{
 Kernel.EmergencyStops &lt;- MAP Kernel.EmergencyStops USING Kernel.EmergencyStop{
     IsConditional =&gt; X.IsConditional,
     Id =&gt; X.Id,
-    StopLocation =&gt; RelocateDistance(X.StopLocation),
+    StopLocation =&gt; X.StopLocation - DistanceFromLRBG,
     Reason =&gt; X.Reason
 }</Action></Actions>
 </RuleCondition></Conditions>
@@ -2143,7 +2185,7 @@ Kernel.EmergencyStops &lt;- MAP Kernel.EmergencyStops USING Kernel.EmergencyStop
 <Actions>
 <Action
  Guid="2d236efe-6978-4ec0-880b-fa0d4befa336"
->Kernel.LevelTransition.LevelTransitionOrder.Distance &lt;- RelocateDistance(Kernel.LevelTransition.LevelTransitionOrder.Distance)</Action></Actions>
+>Kernel.LevelTransition.LevelTransitionOrder.Distance &lt;- Kernel.LevelTransition.LevelTransitionOrder.Distance - DistanceFromLRBG</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2169,7 +2211,7 @@ Kernel.EmergencyStops &lt;- MAP Kernel.EmergencyStops USING Kernel.EmergencyStop
 ><Comment></Comment>
 Kernel.LX.LevelCrossings &lt;- MAP Kernel.LX.LevelCrossings USING Kernel.LX.LevelCrossing{
     Id =&gt; X.Id,
-    Location =&gt; RelocateDistance(X.Location),
+    Location =&gt; X.Location - DistanceFromLRBG,
     Length =&gt; X.Length,
     IsProtected =&gt; X.IsProtected,
     Speed =&gt; X.Speed,
@@ -2199,7 +2241,7 @@ Kernel.LX.LevelCrossings &lt;- MAP Kernel.LX.LevelCrossings USING Kernel.LX.Leve
 <Action
  Guid="15547961-832e-4dd5-84bb-b39085614a1e"
 >Kernel.MA.ModeProfile.Profile &lt;- MAP Kernel.MA.ModeProfile.Profile USING Kernel.MA.ModeProfile.ModeProfileStruct{
-    Distance =&gt; RelocateDistance(X.Distance),
+    Distance =&gt; X.Distance - DistanceFromLRBG,
     Mode =&gt; X.Mode,
     Speed =&gt; X.Speed,
     Length =&gt; X.Length,
@@ -2228,7 +2270,7 @@ Kernel.LX.LevelCrossings &lt;- MAP Kernel.LX.LevelCrossings USING Kernel.LX.Leve
 <Actions>
 <Action
  Guid="3e93b105-dd0c-4ddb-93ee-34c23ce710f6"
->Kernel.SR.SRAuthorisation.Distance &lt;- RelocateDistance(Kernel.SR.SRAuthorisation.Distance)</Action></Actions>
+>Kernel.SR.SRAuthorisation.Distance &lt;- Kernel.SR.SRAuthorisation.Distance - DistanceFromLRBG</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2244,6 +2286,7 @@ Kernel.LX.LevelCrossings &lt;- MAP Kernel.LX.LevelCrossings USING Kernel.LX.Leve
  Name="Update Adhesion Factors"
  Guid="17b32be8-2947-4325-8612-8e2e6ed254c1"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="41425123-2b7a-4a35-955f-bbc92e8e7c77"
@@ -2252,8 +2295,9 @@ Kernel.TrackDescription.AdhesionFactors.AdhFactors != []</PreCondition></PreCond
 <Actions>
 <Action
  Guid="0db1043e-a8ac-4926-bc7b-8c94101570dc"
->Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;- MAP Kernel.TrackDescription.AdhesionFactors.AdhFactors USING Kernel.TrackDescription.AdhesionFactors.AdhesionFactor{
-    Distance =&gt; RelocateDistance(X.Distance),
+><Comment></Comment>
+Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;- MAP Kernel.TrackDescription.AdhesionFactors.AdhFactors USING Kernel.TrackDescription.AdhesionFactors.AdhesionFactor{
+    Distance =&gt; X.Distance - DistanceFromLRBG,
     Length =&gt; X.Length,
     Value =&gt; X.Value
 }</Action></Actions>
@@ -2286,12 +2330,12 @@ Kernel.TrackDescription.AxleLoad.ASP.ALs != []</PreCondition></PreConditions>
 Kernel.TrackDescription.AxleLoad.ASP.ALs &lt;- MAP Kernel.TrackDescription.AxleLoad.ASP.ALs USING Kernel.TrackDescription.AxleLoad.AxleLoad{
     Length =&gt; X.Length,
     TrainLengthDelay =&gt; X.TrainLengthDelay,
-    Distance =&gt; RelocateDistance(X.Distance),
+    Distance =&gt; X.Distance - DistanceFromLRBG,
     Values =&gt; X.Values
 }</Action><Action
  Guid="a4823d58-e3d0-44d3-a8cb-d3da749c766f"
 ><Comment></Comment>
-Kernel.TrackDescription.AxleLoad.ASP.EmptyProfileDistance &lt;- RelocateDistance(Kernel.TrackDescription.AxleLoad.ASP.EmptyProfileDistance)</Action></Actions>
+Kernel.TrackDescription.AxleLoad.ASP.EmptyProfileDistance &lt;- Kernel.TrackDescription.AxleLoad.ASP.EmptyProfileDistance - DistanceFromLRBG</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2316,7 +2360,7 @@ Kernel.TrackDescription.AxleLoad.ASP.EmptyProfileDistance &lt;- RelocateDistance
 <Action
  Guid="8b54a180-6453-4856-bc6e-1d0e953f63a0"
 >Kernel.TrackDescription.Gradient.Gradients &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING Kernel.TrackDescription.Gradient.GradientInfo{
-    Distance =&gt; RelocateDistance(X.Distance),
+    Distance =&gt; X.Distance - DistanceFromLRBG,
     Gradient =&gt; X.Gradient
 }</Action></Actions>
 </RuleCondition></Conditions>
@@ -2343,11 +2387,11 @@ Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedR
 <Actions>
 <Action
  Guid="c600d873-49dc-44dd-8a1a-0bbd72c7bab8"
->Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.EmptyProfileDistance &lt;- RelocateDistance(Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.EmptyProfileDistance)</Action><Action
+>Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.EmptyProfileDistance &lt;- Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.EmptyProfileDistance - DistanceFromLRBG</Action><Action
  Guid="bb71241b-e532-4f32-913e-0e64a7e53c01"
 ><Comment></Comment>
 Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions &lt;- MAP Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions USING Kernel.TrackDescription.PermittedBrakingDistance.SRPB{
-    Location =&gt; RelocateDistance(X.Location),
+    Location =&gt; X.Location - DistanceFromLRBG,
     Length =&gt; X.Length,
     Speed =&gt; X.Speed,
     Gradient =&gt; X.Gradient,
@@ -2377,7 +2421,7 @@ Available(Kernel.TrackDescription.ReversingArea.ReversingAreaProfile)</PreCondit
 <Actions>
 <Action
  Guid="a3d612c5-11b4-4469-9b37-1d7eb6af342f"
->Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance &lt;- RelocateDistance(Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance)</Action></Actions>
+>Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance &lt;- Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance - DistanceFromLRBG</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2402,12 +2446,12 @@ Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items != []</Pr
 <Actions>
 <Action
  Guid="d6659a82-85cc-4d35-960a-16813e7c869c"
->Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.EmptyProfileDistance &lt;- RelocateDistance(Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.EmptyProfileDistance)</Action><Action
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.EmptyProfileDistance &lt;- Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.EmptyProfileDistance - DistanceFromLRBG</Action><Action
  Guid="2c519ddc-d31a-4a25-a641-3e51f3099427"
 ><Comment></Comment>
 Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items &lt;- MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items USING Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItem{
     Type =&gt; X.Type,
-    Distance =&gt; RelocateDistance(X.Distance),
+    Distance =&gt; X.Distance - DistanceFromLRBG,
     LineGauge =&gt; X.LineGauge,
     MaxAxleLoad =&gt; X.MaxAxleLoad,
     TractionSystem =&gt; X.TractionSystem,
@@ -2437,7 +2481,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP != []</PreCondition></PreConditio
 <Action
  Guid="8bb2f7b7-e5ec-4f3b-8166-f68ba0fd7f42"
 >Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- MAP Kernel.TrackDescription.StaticSpeedProfile.SSP USING Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
-    Distance =&gt; RelocateDistance(X.Distance),
+    Distance =&gt; X.Distance - DistanceFromLRBG,
     BasicSpeed =&gt; X.BasicSpeed,
     TrainLengthDelay =&gt; X.TrainLengthDelay,
     Categories =&gt; X.Categories
@@ -2464,7 +2508,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP != []</PreCondition></PreConditio
 <Actions>
 <Action
  Guid="266b0e21-033c-4f94-9e7e-7d0ac5fc523a"
->Kernel.NationalValues.ApplicableNationalValues.ApplicableDistance &lt;- RelocateDistance(Kernel.NationalValues.ApplicableNationalValues.ApplicableDistance)</Action></Actions>
+>Kernel.NationalValues.ApplicableNationalValues.ApplicableDistance &lt;- Kernel.NationalValues.ApplicableNationalValues.ApplicableDistance - DistanceFromLRBG</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2487,7 +2531,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP != []</PreCondition></PreConditio
 <Actions>
 <Action
  Guid="c7f41cd1-a886-4f3c-989f-baaee038bcae"
->Kernel.NationalValues.NotApplicableNationalValues.ApplicableDistance &lt;- RelocateDistance(Kernel.NationalValues.NotApplicableNationalValues.ApplicableDistance)</Action></Actions>
+>Kernel.NationalValues.NotApplicableNationalValues.ApplicableDistance &lt;- Kernel.NationalValues.NotApplicableNationalValues.ApplicableDistance - DistanceFromLRBG</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2512,7 +2556,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP != []</PreCondition></PreConditio
  Guid="56b280f3-d732-44db-bec8-8860b3143772"
 ><Comment></Comment>
 Kernel.TrackDescription.TrackConditions.General.TCProfile &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation{
-    Distance =&gt; RelocateDistance(X.Distance),
+    Distance =&gt; X.Distance - DistanceFromLRBG,
     Value =&gt; X.Value
 }</Action></Actions>
 </RuleCondition></Conditions>
@@ -2540,7 +2584,7 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements != []</P
  Guid="bd58a81a-7bbc-4de8-89de-d6b278982120"
 >Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct{
     Type =&gt; X.Type,
-    Distance =&gt; RelocateDistance(X.Distance),
+    Distance =&gt; X.Distance - DistanceFromLRBG,
     Length =&gt; X.Length,
     Time =&gt; X.Time,
     Automatic =&gt; X.Automatic
@@ -2568,7 +2612,7 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements != []</P
 <Action
  Guid="9d9fef57-643a-4b84-b837-ad28e39b6281"
 >Kernel.TrackDescription.TrackConditions.BigMetalMasses.TCBigMetalMasses &lt;- MAP Kernel.TrackDescription.TrackConditions.BigMetalMasses.TCBigMetalMasses USING Kernel.TrackDescription.TrackConditions.BigMetalMasses.BigMetalMassesInformation{
-    Distance =&gt; RelocateDistance(X.Distance),
+    Distance =&gt; X.Distance - DistanceFromLRBG,
     Value =&gt; X.Value
 }</Action></Actions>
 </RuleCondition></Conditions>
@@ -2595,7 +2639,7 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements != []</P
  Guid="258441de-c699-470f-9917-e55505621d5b"
 >Kernel.TrackDescription.TrackConditions.TractionSystems.TCTractionSystems &lt;- MAP Kernel.TrackDescription.TrackConditions.TractionSystems.TCTractionSystems USING Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformation{
     Value =&gt; X.Value,
-    Distance =&gt; RelocateDistance(X.Distance)
+    Distance =&gt; X.Distance - DistanceFromLRBG
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -2621,7 +2665,7 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements != []</P
  Guid="da1176e3-6902-43c5-b859-107b862032f8"
 >Kernel.TrackDescription.TrackConditions.CurrentConsumption.TCCurrentConsumption &lt;- MAP  Kernel.TrackDescription.TrackConditions.CurrentConsumption.TCCurrentConsumption USING Kernel.TrackDescription.TrackConditions.CurrentConsumption.CurrentConsumptionInformation{
     Value =&gt; X.Value,
-    Distance =&gt; RelocateDistance(X.Distance)
+    Distance =&gt; X.Distance - DistanceFromLRBG
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -2646,7 +2690,7 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements != []</P
 <Action
  Guid="0f8acd4b-a756-4258-8ade-9df77a5f3e38"
 >Kernel.TrackDescription.TrackConditions.StationPlatform.TCStationPlatforms &lt;- MAP Kernel.TrackDescription.TrackConditions.StationPlatform.TCStationPlatforms USING Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformation{
-    Distance =&gt; RelocateDistance(X.Distance),
+    Distance =&gt; X.Distance - DistanceFromLRBG,
     Value =&gt; X.Value
 }</Action></Actions>
 </RuleCondition></Conditions>
@@ -2673,7 +2717,7 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements != []</P
  Guid="2f3fc0ef-d564-4b97-b378-0177fc65da81"
 ><Comment></Comment>
 Kernel.TSR.TSRs &lt;- MAP Kernel.TSR.TSRs USING Kernel.TSR.TemporarySpeedRestriction{
-    Location =&gt; RelocateDistance(X.Location),
+    Location =&gt; X.Location - DistanceFromLRBG,
     Length =&gt; X.Length,
     Speed =&gt; X.Speed,
     Id =&gt; X.Id,
@@ -2706,7 +2750,7 @@ The list is updated in case two LRBGs provide the same MRSP, this should count a
  Guid="48f28414-15b8-407c-9ccc-7b7bbb265b2f"
 ><Comment></Comment>
 Kernel.SpeedAndDistanceMonitoring.SupervisedTargets &lt;- MAP Kernel.SpeedAndDistanceMonitoring.SupervisedTargets USING Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
-    Location =&gt; RelocateDistance(X.Location),
+    Location =&gt; X.Location - DistanceFromLRBG,
     Speed =&gt; X.Speed,
     Length =&gt; X.Length
 }</Action></Actions>
@@ -2916,6 +2960,11 @@ LRBG &lt;- BTM.BaliseGroup {
  Name="Message"
  Guid="a26ba75b-6d2a-41ca-ab13-bd5ff4eb3365"
 >
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="DistanceFromLRBG"
+ Guid="1710621e-09dd-41b0-bcb5-76def8b0b4e3"
+>
 </Parameter></Parameters>
 <Rules>
 <Rule
@@ -2970,7 +3019,7 @@ LRBGCandidate( )</PreCondition></PreConditions>
 <Action
  Guid="3c939d6a-99af-451a-b12d-368fece30c2a"
 ><Comment></Comment>
-HandleNewLRBG(BG_To_LRBG(Message.NID_BG))</Action></Actions>
+HandleNewLRBG(Default.BG_To_LRBG(Nid_BG =&gt; Message.NID_BG), DistanceFromLRBG =&gt; DistanceFromLRBG)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2992,6 +3041,7 @@ HandleNewLRBG(BG_To_LRBG(Message.NID_BG))</Action></Actions>
  Name="Unlinked BG"
  Guid="51d206fc-d4b1-42ee-8e76-c5ffeea965a5"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1f80f179-74aa-465e-b6d3-e15aba062a97"
@@ -3144,6 +3194,7 @@ ON Message.Sequence1</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="963564c8-210c-4f35-a865-6a5933adacd1"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="122fc267-0025-4f6a-8684-93c445b0a545"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -3265,9 +3316,8 @@ BGLocationReference &lt;- PositionFromOdometry()</Action></Actions>
 ><Comment></Comment>
 (COUNT CurrentBaliseGroup) == Message.N_TOTAL + 1</PreCondition><PreCondition
  Guid="5c234098-e0ba-4346-af26-d08a73a3f179"
->FORALL_IN CurrentBaliseGroup |  
-  (     X.M_MCOUNT == ( FIRST_IN CurrentBaliseGroup ).M_MCOUNT 
-  OR X.M_MCOUNT == Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group )</PreCondition></PreConditions>
+><Comment></Comment>
+BGMessageCountersAllFit()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e7bdbad0-03e6-4eab-af45-686bb9024af6"
@@ -3373,7 +3423,16 @@ Linking.CheckBGBeforeHandling()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="317e2736-b0b7-47c7-9014-449ecf227483"
 >
-</ReqRef><Comment>Movement authority has to be considered after all other packets of a message have been processed, since some preconditions to accept MA can be transmitted in the same message.</Comment>
+</ReqRef><Comment>Movement authority has to be considered after all other packets of a message have been processed, since some preconditions to accept MA can be transmitted in the same message.
+
+The parameter DistanceFromLRBG is needed for the case when the handled BG will become the new LRBG. All stored distances in the EVC will need to be updated by this distance.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="DistanceFromLRBG"
+ Guid="00cc1678-5c47-4c30-bd58-4999361f7398"
+>
+</Parameter></Parameters>
 <Rules>
 <Rule
  Priority="Processing"
@@ -3395,7 +3454,7 @@ Linking.CheckBGBeforeHandling()</Action></Actions>
 <Action
  Guid="71fe05ea-2e2a-441e-a4c5-fa8e04162cb8"
 ><Comment></Comment>
-APPLY HandleBaliseTelegram ( X ) ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( Message =&gt; X )</Action></Actions>
+APPLY HandleBaliseTelegram ( Message =&gt; X, DistanceFromLRBG =&gt; DistanceFromLRBG ) ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( Message =&gt; X )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

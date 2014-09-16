@@ -9602,7 +9602,8 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 <Actions>
 <Action
  Guid="d3d59ef2-1780-4145-90f8-d8a3cf0dfbcc"
->BTM.Linking.ApplyLinkingReaction()</Action></Actions>
+><Comment></Comment>
+BTM.Linking.HandleLinkingError()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9628,7 +9629,8 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 <Actions>
 <Action
  Guid="96ddb3ee-57c1-40a0-bc68-2be6f515660e"
->BTM.StoreBaliseGroupMessage ( BTM.Message )</Action></Actions>
+><Comment></Comment>
+BTM.StoreBaliseGroupMessage ( BTM.Message )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9717,39 +9719,41 @@ TrainPosition.UpdatePositionState()</Action></Actions>
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Update kernel mode"
- Guid="45b9c95e-9f54-4abe-bbff-0871fc9b2d19"
+ Guid="1a1cd1dd-0c51-4447-a723-dd7bf141569d"
 >
+<Comment>Updates the mode of the kernel according to the new information.</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="8652d86c-0773-4542-973d-ff53846170a7"
+ Guid="4e99e841-916b-4771-9cbe-a7999f9bbdbb"
 ><Comment></Comment>
 ModeTransitions.UpdateMode()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Speed and distance monitoring"
- Guid="6855b834-d5db-4cd4-8134-71e646ae5bdd"
+ Guid="afe72577-3fb0-4582-8bd7-509a0bd1b795"
 >
+<Comment>After the mode is updated, check the speed and distance monitoring</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Start monitoring if required"
- Guid="79423c20-147c-41ac-819b-6a7e42e43874"
+ Guid="ee02abe1-f4e4-43e6-9173-89fd8a75b37e"
 >
+<Comment>If a mode was entered where the speed and distance monitoring is active, the correct type and status must be selected</Comment>
 <PreConditions>
 <PreCondition
- Guid="1259a90a-34f0-4615-8fdf-2fb95b569326"
-><Comment></Comment>
-ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
- Guid="ee4d3703-e480-48f3-87e0-63c40fc3770d"
->SpeedAndDistanceMonitoring.Monitoring in SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle</PreCondition></PreConditions>
+ Guid="7a9bc363-3120-4ac9-8dd9-c9e77819a97c"
+>ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="f58ff8d3-2659-4992-92c1-4aa6cfb46808"
-><Comment></Comment>
-SpeedAndDistanceMonitoring.SelectMonitoringType()</Action></Actions>
+ Guid="1ea62aa3-6056-40d4-8b5a-3eb7fbfb176b"
+>SpeedAndDistanceMonitoring.SelectMonitoringType()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

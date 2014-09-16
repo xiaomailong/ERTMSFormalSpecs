@@ -335,7 +335,7 @@ IN BTM.Linking.Linkings</Action><Action
     LocationAccuracy =&gt; 5.0,
     Orientation =&gt; Default.Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
-    Distance =&gt; 150.0,
+    Distance =&gt; 100.0,
     BaliseGroupIdentifier =&gt; 2120
 },BTM.Linking.LinkingData{
     LocationAccuracy =&gt; 5.0,
@@ -782,7 +782,9 @@ IN BTM.Linking.Linkings</Action><Action
             }
         }
     ]
-}</Action></Actions>
+}</Action><Action
+ Guid="6939f694-96e9-4d2f-b588-b2545babdd6a"
+>Odometry.NominalDistance &lt;- 300.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -805,16 +807,16 @@ IN BTM.Linking.Linkings</Action><Action
 >Kernel.TrackDescription.AxleLoad.ASP.InitialState == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</Expectation><Expectation
  Kind="Instantaneous"
  Guid="1bd678f4-1aeb-4a94-b873-40b426b39657"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 699.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 599.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="035d18ee-5628-4314-be2d-4400ee038ad4"
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 700.0 ) == 60.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="39129e31-8426-41bf-b783-c0f12cc034e3"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 799.0 ) == 60.0</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 699.0 ) == 60.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="527c2f69-c476-493f-bb13-e6945a39c3b0"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 859.0 ) == 60.0</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 759.0 ) == 60.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="8713232e-e9d3-48d2-806d-bbc83b9f2513"
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 860.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
@@ -835,10 +837,10 @@ IN BTM.Linking.Linkings</Action><Action
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 819.0 ) == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="8b04b1d1-b1ee-405f-a86c-6cd2056991af"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 820.0 ) == 60.0</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 720.0 ) == 60.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="1ee13a2d-88ad-4bd9-ae11-ecfa274fe4ab"
->(FIRST_IN Kernel.TrackDescription.AxleLoad.ASP.ALs).Distance == 700.0</Expectation></Expectations>
+>(FIRST_IN Kernel.TrackDescription.AxleLoad.ASP.ALs).Distance == 600.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -909,7 +911,9 @@ IN BTM.Linking.Linkings</Action><Action
             }
         }
     ]
-}</Action></Actions>
+}</Action><Action
+ Guid="455bc42f-20c4-4adc-bdd0-2faaeaf0b965"
+>Odometry.NominalDistance &lt;- 450.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -932,10 +936,10 @@ IN BTM.Linking.Linkings</Action><Action
 >Kernel.TrackDescription.AxleLoad.ASP.InitialState == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="49e9d6f1-db40-4934-a2ce-e64560ff19e1"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 800.0 ) == 40.0</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 650.0 ) == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="ec89777e-212c-4716-9a7d-584bf28b1c57"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 860.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 610.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="cd0d192b-6d39-40df-8bb5-76688aaad20d"
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1000.0 ) == 80.0</Expectation></Expectations>
@@ -957,7 +961,8 @@ IN BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="8d0fd2cb-d00d-4354-9e99-c1650151411d"
->Odometry.NominalDistance &lt;- 550.0</Action></Actions>
+><Comment></Comment>
+Odometry.NominalDistance &lt;- 850.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -977,7 +982,7 @@ IN BTM.Linking.Linkings</Action><Action
 <Expectation
  Kind="Instantaneous"
  Guid="dbec41fd-e171-4e9c-8a08-6887d83ee0d1"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 600.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 450.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="50edf28a-1fd7-4513-91d4-2fdee126938f"
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 460.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation

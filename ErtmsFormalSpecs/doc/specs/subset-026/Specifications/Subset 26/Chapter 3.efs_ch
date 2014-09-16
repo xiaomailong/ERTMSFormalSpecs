@@ -10768,7 +10768,8 @@ The end of an overlap (if used in the existing interlocking system) is a locatio
  functionalBlockName=""
  Name=""
  Guid="449dd28a-989e-41c0-988c-b23f2a1af6ab"
->Note: the End Section and Overlap timer start locations may be outside their corresponding section. One example can be seen referring to figure 22c: An infill MA towards a signal at stop will replace the previous End Section by a new short End Section starting at the infill location reference and ending at the next main signal, however the End Section and Overlap timer start locations still have to be consistent with the Interlocking timer start locations. Another example is when a timer start location is in rear of the LRBG.<RequirementSets>
+><Comment></Comment>
+Note: the End Section and Overlap timer start locations may be outside their corresponding section. One example can be seen referring to figure 22c: An infill MA towards a signal at stop will replace the previous End Section by a new short End Section starting at the infill location reference and ending at the next main signal, however the End Section and Overlap timer start locations still have to be consistent with the Interlocking timer start locations. Another example is when a timer start location is in rear of the LRBG.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="04c1166c-0fcc-455f-86d0-4e3ec30aca1d"
@@ -34945,7 +34946,8 @@ The on-board shall not consider a message transmitted from the trackside if any 
  functionalBlockName=""
  Name=""
  Guid="6b7f8a31-57fa-4871-8339-9dad81eeaa05"
->Linking Consistency<Sub>
+><Comment></Comment>
+Linking Consistency<Sub>
 <Paragraph
  id="3.16.2.3.1"
  guid=""
@@ -34975,7 +34977,8 @@ If linking information is used the on-board shall react according to the linking
  functionalBlockName=""
  Name=""
  Guid="7ec28cec-f043-4430-802b-8219033d9a4f"
->The ERTMS/ETCS on-board equipment shall ignore (i.e. it will not consider as LRBG) a balise group found with its location reference outside its expectation window.<RequirementSets>
+><Comment></Comment>
+The ERTMS/ETCS on-board equipment shall ignore (i.e. it will not consider as LRBG) a balise group found with its location reference outside its expectation window.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="f2eb8f24-d21d-49f0-94b2-e841a99cd471"
@@ -35008,7 +35011,8 @@ If linking information is used the on-board shall react according to the linking
  functionalBlockName=""
  Name=""
  Guid="3520c91c-8938-4bdf-b683-bc1fd7071fd7"
->The on-board shall reject the message from the expected group and trip the train if the balise group is passed in the unexpected direction.<Sub>
+><Comment></Comment>
+The on-board shall reject the message from the expected group and trip the train if the balise group is passed in the unexpected direction.<Sub>
 <Paragraph
  id="3.16.2.3.2.1"
  guid=""
@@ -35402,7 +35406,8 @@ A message counter shall be attached to each balise telegram indicating which bal
  functionalBlockName=""
  Name=""
  Guid="44ee1586-bb5c-42b3-b64d-c63e870d4d0e"
->Comparing message counters of the received telegrams of a balise group message, excluding the ones complying with 3.16.2.4.6, if their values are not all identical, or at least one of them complies with 3.16.2.4.6.1, this shall be considered as a message consistency error. The balise group can, however, be used for location information.<Sub>
+><Comment></Comment>
+Comparing message counters of the received telegrams of a balise group message, excluding the ones complying with 3.16.2.4.6, if their values are not all identical, or at least one of them complies with 3.16.2.4.6.1, this shall be considered as a message consistency error. The balise group can, however, be used for location information.<Sub>
 <Paragraph
  id="3.16.2.4.7.1"
  guid=""

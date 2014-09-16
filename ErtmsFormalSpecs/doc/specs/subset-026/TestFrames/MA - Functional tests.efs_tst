@@ -1325,11 +1325,15 @@ BTM.Linking.Linkings</Action></Actions>
  Guid="04d18e63-f531-47e5-9530-3d1987d063f8"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="6288ada8-1333-4efc-9670-030a94154b22"
->Kernel.Level &lt;- Kernel.LevelData
+><Comment></Comment>
+Kernel.Level &lt;- Kernel.LevelData
  {
     Value =&gt; Default.Level.L1,
     DataState =&gt; Default.DataState.Valid
- }</Action></Actions>
+ }</Action><Action
+ Guid="2bad1577-28d2-4d6b-9969-9bd14ba3af8b"
+><Comment></Comment>
+Odometry.EstimatedSpeed &lt;- 65.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 4 - Set up a simple MA to work with"
  Guid="5008faa4-a6ce-48ed-8504-c50e85563b9b"
@@ -1337,7 +1341,8 @@ BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="991b559c-ac47-4c61-ad4b-a9aa6953c133"
->Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
+><Comment></Comment>
+Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
     TargetSpeed =&gt; 0.0,
     Sections =&gt; [],
@@ -4085,7 +4090,7 @@ IN BTM.Linking.Linkings</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f08475a0-4c8f-499f-952b-561eb8ed83fa"
->Kernel.MA.ClosestEOA().Location == 2105.0</Expectation><Expectation
+>Kernel.MA.ClosestEOA().Location == 2005.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="fca6b8cd-7015-4b19-96b2-d51a5c5f498f"
@@ -6428,19 +6433,19 @@ BTM.Linking.Linkings</Action><Action
     LocationAccuracy =&gt; 5.0,
     Orientation =&gt; Default.Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
-    Distance =&gt; 100.0,
+    Distance =&gt; 0.0,
     BaliseGroupIdentifier =&gt; 2125
 }, BTM.Linking.LinkingData{
     LocationAccuracy =&gt; 5.0,
     Orientation =&gt; Default.Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
-    Distance =&gt; 100.0,
+    Distance =&gt; 0.0,
     BaliseGroupIdentifier =&gt; 2126
 }, BTM.Linking.LinkingData{
     LocationAccuracy =&gt; 5.0,
     Orientation =&gt; Default.Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
-    Distance =&gt; 100.0,
+    Distance =&gt; 0.0,
     BaliseGroupIdentifier =&gt; 2127
 }]</Action></Actions>
 </SubStep></SubSteps>

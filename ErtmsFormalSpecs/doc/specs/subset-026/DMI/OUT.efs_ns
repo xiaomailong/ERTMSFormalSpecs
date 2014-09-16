@@ -5489,7 +5489,7 @@ Location &lt;- Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.Indicatio
  Name="Display when available"
  Guid="56a67571-e3cb-4850-820e-eb1cb4b3cdfb"
 >
-<Comment></Comment>
+<Comment>The indistaion location should only be displayed when the speed and distance monitoring is in Ceiling Speed Monitoring or and the start of Target Speed Monitoring (PIM)</Comment>
 <PreConditions>
 <PreCondition
  Guid="1d45c12e-77d3-4f4f-9acd-e4c5dac2285c"
@@ -5503,10 +5503,12 @@ IndicationLocationAtMrspSpeedAvailable()</PreCondition></PreConditions>
 ><Comment></Comment>
 Display()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Hide when in wrong monitoring types"
  Guid="7989786c-a6c8-4293-895c-a857c4c914a8"
 >
-<Comment></Comment>
+<Comment>When the speed and distance monitoring is in TSM or RSM, the indication location should not be displayed</Comment>
 <PreConditions>
 <PreCondition
  Guid="1327a651-9c4d-45c4-92b2-6f966039e538"
@@ -6697,6 +6699,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="OutputInformation"
  Guid="31d3637e-2796-43d4-9c8c-15f91e8ab818"
 >
+<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default=""

@@ -2124,7 +2124,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; PreIndicationL
 ><Comment></Comment>
 ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable(TargetSpeedMonitoring.MRDT())
 AND
-ReleaseSpeedMonitoring.StartRSM(TargetSpeedMonitoring.MRDT().Speed) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+ReleaseSpeedMonitoring.StartRSM(ReleaseSpeedMonitoring.ReleaseSpeed) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Front end passed RSM start location"
@@ -2137,7 +2137,7 @@ ReleaseSpeedMonitoring.StartRSM(TargetSpeedMonitoring.MRDT().Speed) == Default.B
 ><Comment></Comment>
 ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable(TargetSpeedMonitoring.MRDT())
 AND
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedMonitoring.StartRSM(TargetSpeedMonitoring.MRDT().Speed)</PreCondition></PreConditions>
+TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedMonitoring.StartRSM(ReleaseSpeedMonitoring.ReleaseSpeed)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -2146,7 +2146,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedM
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
- Type="TargetSpeedMonitoring.Targets"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets"
  Cacheable="TRUE"
  Default=""
  X="90"

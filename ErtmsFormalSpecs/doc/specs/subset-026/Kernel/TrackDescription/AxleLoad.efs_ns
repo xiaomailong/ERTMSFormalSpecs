@@ -6,6 +6,7 @@
  Name="AxleLoad"
  Guid="2bb7594e-aee3-45d5-bcb6-092282828fe2"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
@@ -307,6 +308,7 @@
  Name="SpeedRestriction"
  Guid="22c57881-cbe1-4a7d-9121-ccd4179f1296"
 >
+<Comment></Comment>
 <Expression>(REDUCE ASP.ALs
     USING  
         MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; AxleLoadSpeedRestriction ( anAxleLoad =&gt; X, Distance =&gt; d ), 
@@ -998,9 +1000,13 @@ ON
 <PreConditions>
 <PreCondition
  Guid="72e1f556-901a-48d1-b07e-569a772e86e3"
->BTM.TravelledDistanceFromLRBG() &gt;= ASP.EmptyProfileDistance</PreCondition><PreCondition
+><Comment></Comment>
+TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;DistanceInterval.Nom
+) &gt;= ASP.EmptyProfileDistance</PreCondition><PreCondition
  Guid="89824f4b-7e4f-4726-9dc5-ebe40aec7187"
->ASP.InitialState == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition></PreConditions>
+><Comment></Comment>
+ASP.InitialState == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4ad3347b-ced2-45bb-a7e7-f5c8c12d4901"
