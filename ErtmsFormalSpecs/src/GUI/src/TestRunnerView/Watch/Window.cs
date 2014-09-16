@@ -22,6 +22,7 @@ using System;
 using DataDictionary.Values;
 using System.Drawing;
 using DataDictionary.Variables;
+using System.ComponentModel;
 
 namespace GUI.TestRunnerView.Watch
 {
@@ -74,7 +75,7 @@ namespace GUI.TestRunnerView.Watch
             /// <summary>
             /// The expression supervised by this change handler
             /// </summary>
-            public WatchedExpression Watch { get; private set; }
+            private WatchedExpression Watch { get; set; }
 
             /// <summary>
             /// The column that is edited
@@ -154,16 +155,25 @@ namespace GUI.TestRunnerView.Watch
                 if (selected != null)
                 {
                     DataGridViewCell selectedCell = watchDataGridView.SelectedCells[0];
-                    EditorView.Window form = new EditorView.Window();
-                    form.AutoComplete = true;
-                    TextChangeHandler handler = new TextChangeHandler(Instance, selected, selectedCell.OwningColumn.Name);
-                    form.setChangeHandler(handler);
-                    form.ShowDialog();
+                    if (selectedCell.ColumnIndex == 0)
+                    {
+                        EditorView.Window form = new EditorView.Window();
+                        form.AutoComplete = true;
+                        TextChangeHandler handler = new TextChangeHandler(Instance, selected, selectedCell.OwningColumn.Name);
+                        form.setChangeHandler(handler);
+                        form.ShowDialog();
 
-                    watchDataGridView.DataSource = null;
-                    watchDataGridView.DataSource = watches;
-                    EnsureEmptyRoom();
-                    Refresh();
+                        watchDataGridView.DataSource = null;
+                        watchDataGridView.DataSource = watches;
+                        EnsureEmptyRoom();
+                        Refresh();
+                    }
+                    else if (selectedCell.ColumnIndex == 1)
+                    {
+                        ExplainBox explainTextBox = new ExplainBox();
+                        explainTextBox.setExplanation(selected.ExpressionTree.Explain());
+                        GUIUtils.MDIWindow.AddChildWindow(explainTextBox);
+                    }
                 }
             }
             finally
@@ -340,7 +350,8 @@ namespace GUI.TestRunnerView.Watch
             /// Provides the expression which corresponds to the Expression text.
             /// Returns null if the expression could not be parsed
             /// </summary>
-            private Expression ExpressionTree
+            [Browsable(false)]
+            public Expression ExpressionTree
             {
                 get
                 {

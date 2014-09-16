@@ -1077,11 +1077,15 @@ namespace DataDictionary.Functions
                         }
 
                         // Evaluate the function
-                        if (aCase.EvaluatePreConditions(context))
+                        ExplanationPart previous = aCase.Expression.SetupExplanation();
+                        bool val = aCase.EvaluatePreConditions(context);
+                        if (val)
                         {
                             retVal = aCase.Expression.GetValue(context);
                             break;
                         }
+                        Values.IValue condValue = val ? EFSSystem.BoolType.True : EFSSystem.BoolType.False;
+                        aCase.Expression.CompleteExplanation(previous, "Case " + aCase.Name + " : ", condValue );
                     }
                 }
                 else if (Surface != null && FormalParameters.Count == 2)

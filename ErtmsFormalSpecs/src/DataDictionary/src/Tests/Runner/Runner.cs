@@ -189,6 +189,7 @@ namespace DataDictionary.Tests.Runner
             EFSSystem.ShouldRebuild = false;
 
             Setup();
+            PleaseWait = true;
         }
 
         /// <summary>

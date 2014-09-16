@@ -598,7 +598,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="previous">The previous explanation to store</param>
         /// <returns>The previous explanation (the one for which this is setup)</returns>
-        protected ExplanationPart SetupExplanation()
+        public ExplanationPart SetupExplanation()
         {
             ExplanationPart retVal = currentExplanation;
 
@@ -624,7 +624,7 @@ namespace DataDictionary.Interpreter
         /// <param name="previous">the explanation for which this one is created</param>
         /// <param name="message">the message to set to the current explanation</param>
         /// <param name="value">the optional value to reference</param>
-        protected void CompleteExplanation(ExplanationPart previous, string message, Utils.INamable namable = null)
+        public void CompleteExplanation(ExplanationPart previous, string message, Utils.INamable namable = null)
         {
             if (currentExplanation != null)
             {
