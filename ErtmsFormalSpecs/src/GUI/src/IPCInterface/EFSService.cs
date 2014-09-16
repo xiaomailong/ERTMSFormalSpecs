@@ -74,6 +74,11 @@ namespace GUI.IPCInterface
             public Step ExpectedStep { get; set; }
 
             /// <summary>
+            /// Indicates that the client is a listener, and should not create a runner
+            /// </summary>
+            public bool Listener { get; set; }
+
+            /// <summary>
             /// The last time a cycle request has been performed
             /// </summary>
             public DateTime LastCycleRequest { get; set; }
@@ -86,9 +91,11 @@ namespace GUI.IPCInterface
             /// <summary>
             /// Constructor
             /// </summary>
-            public ConnectionStatus()
+            /// <param name="listener"></param>
+            public ConnectionStatus(bool listener)
             {
                 Active = true;
+                Listener = listener;
                 LastCycleRequest = DateTime.MinValue;
                 LastCycleResume = DateTime.MinValue;
             }
@@ -152,12 +159,13 @@ namespace GUI.IPCInterface
         /// <summary>
         /// Adds a client for this server
         /// </summary>
+        /// <param name="listener"></param>
         /// <returns>The client id</returns>
-        private int AddClient()
+        private int AddClient(bool listener)
         {
             int retVal = Connections.Count;
 
-            Connections.Add(new ConnectionStatus());
+            Connections.Add(new ConnectionStatus(listener));
 
             return retVal;
         }
@@ -165,24 +173,32 @@ namespace GUI.IPCInterface
         /// <summary>
         /// Connects to the service 
         /// </summary>
+        /// <param name="listener">Indicates that the client is a listener</param>
         /// <returns>The client identifier</returns>
-        public int ConnectUsingDefaultValues()
+        public int ConnectUsingDefaultValues(bool listener)
         {
-            return AddClient();
+            int clientId;
+
+            EFSAccess.WaitOne();
+            clientId = AddClient(listener);
+            EFSAccess.ReleaseMutex();
+
+            return clientId;
         }
 
         /// <summary>
         /// Connects to the service 
         /// </summary>
+        /// <param name="listener">Indicates that the client is a listener</param>
         /// <param name="explain">Indicates that the explain view should be updated according to the scenario execution</param>
         /// <param name="logEvents">Indicates that the events should be logged</param>
         /// <param name="cycleDuration">The duration (in ms) of an execution cycle</param>
         /// <param name="keepEventCount">The number of events that should be kept in memory</param>
-        public int Connect(bool explain, bool logEvents, int cycleDuration, int keepEventCount)
+        public int Connect(bool listener, bool explain, bool logEvents, int cycleDuration, int keepEventCount)
         {
             EFSAccess.WaitOne();
 
-            int clientId = AddClient();
+            int clientId = AddClient(listener);
 
             Explain = explain;
             LogEvents = logEvents;
@@ -298,10 +314,21 @@ namespace GUI.IPCInterface
                 while (checkLaunch())
                 {
                     LastStep = NextStep(LastStep);
-                    Runner.ExecuteOnePriority(convertStep2Priority(LastStep));
-                    if (LastStep == Step.CleanUp)
+
+                    if (Runner != null)
                     {
-                        GUIUtils.MDIWindow.Invoke((MethodInvoker)delegate { GUIUtils.MDIWindow.RefreshAfterStep(); });
+                        try
+                        {
+                            Runner.ExecuteOnePriority(convertStep2Priority(LastStep));
+                            if (LastStep == Step.CleanUp)
+                            {
+                                GUIUtils.MDIWindow.Invoke((MethodInvoker)delegate { GUIUtils.MDIWindow.RefreshAfterStep(); });
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            // Ignore
+                        }
                     }
 
                     while (pendingClients(LastStep))
@@ -371,10 +398,13 @@ namespace GUI.IPCInterface
         /// <returns>true if cycle execution is successful, false when the client is asked not to perform his work</returns>
         public bool Cycle(int clientId, Step step)
         {
-            bool retVal = !Runner.PleaseWait;
-
-            if (retVal)
+            bool retVal = false;
+            
+            Runner runner = Runner;
+            if (runner != null && !runner.PleaseWait)
             {
+                retVal = true;
+
                 checkClient(clientId);
 
                 Connections[clientId].LastCycleRequest = DateTime.Now;
@@ -414,7 +444,18 @@ namespace GUI.IPCInterface
             get
             {
                 EFSSystem efsSystem = EFSSystem.INSTANCE;
-                if (efsSystem.Runner == null)
+
+                bool allListeners = true;
+                foreach (ConnectionStatus status in Connections)
+                {
+                    if (status.Active && !status.Listener)
+                    {
+                        allListeners = false;
+                        break;
+                    }
+                }
+
+                if (efsSystem.Runner == null && !allListeners)
                 {
                     EFSSystem.INSTANCE.Runner = new Runner(Explain, LogEvents, CycleDuration, KeepEventCount);
                 }
@@ -621,17 +662,20 @@ namespace GUI.IPCInterface
         /// <param name="value"></param>
         public void SetVariableValue(string variableName, Values.Value value)
         {
-            DataDictionary.Variables.IVariable variable = Runner.EFSSystem.findByFullName(variableName) as DataDictionary.Variables.IVariable;
+            if (Runner != null)
+            {
+                DataDictionary.Variables.IVariable variable = Runner.EFSSystem.findByFullName(variableName) as DataDictionary.Variables.IVariable;
 
-            if (variable != null)
-            {
-                SyntheticVariableUpdateAction action = new SyntheticVariableUpdateAction(variable, value.convertBack(variable.Type));
-                DataDictionary.Tests.Runner.Events.VariableUpdate variableUpdate = new DataDictionary.Tests.Runner.Events.VariableUpdate(action, null, null);
-                Runner.EventTimeLine.AddModelEvent(variableUpdate, Runner);
-            }
-            else
-            {
-                throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot find variable " + variableName));
+                if (variable != null)
+                {
+                    SyntheticVariableUpdateAction action = new SyntheticVariableUpdateAction(variable, value.convertBack(variable.Type));
+                    DataDictionary.Tests.Runner.Events.VariableUpdate variableUpdate = new DataDictionary.Tests.Runner.Events.VariableUpdate(action, null, null);
+                    Runner.EventTimeLine.AddModelEvent(variableUpdate, Runner);
+                }
+                else
+                {
+                    throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot find variable " + variableName));
+                }
             }
         }
 
@@ -641,19 +685,22 @@ namespace GUI.IPCInterface
         /// <param name="statementText"></param>
         public void ApplyStatement(string statementText)
         {
-            bool silent = true;
-            DataDictionary.Interpreter.Statement.Statement statement = EFSSystem.INSTANCE.Parser.Statement(EFSSystem.INSTANCE.Dictionaries[0], statementText, silent);
+            if (Runner != null)
+            {
+                bool silent = true;
+                DataDictionary.Interpreter.Statement.Statement statement = EFSSystem.INSTANCE.Parser.Statement(EFSSystem.INSTANCE.Dictionaries[0], statementText, silent);
 
-            if (statement != null)
-            {
-                DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
-                action.ExpressionText = statementText;
-                DataDictionary.Tests.Runner.Events.VariableUpdate variableUpdate = new DataDictionary.Tests.Runner.Events.VariableUpdate(action, null, null);
-                Runner.EventTimeLine.AddModelEvent(variableUpdate, Runner);
-            }
-            else
-            {
-                throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot create statement for " + statementText));
+                if (statement != null)
+                {
+                    DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
+                    action.ExpressionText = statementText;
+                    DataDictionary.Tests.Runner.Events.VariableUpdate variableUpdate = new DataDictionary.Tests.Runner.Events.VariableUpdate(action, null, null);
+                    Runner.EventTimeLine.AddModelEvent(variableUpdate, Runner);
+                }
+                else
+                {
+                    throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot create statement for " + statementText));
+                }
             }
         }
 

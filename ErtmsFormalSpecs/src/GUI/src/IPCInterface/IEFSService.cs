@@ -73,14 +73,16 @@ namespace GUI.IPCInterface
         /// <summary>
         /// Connects to the service using the default parameters
         /// </summary>
+        /// <param name="listener">Indicates that the client is a listener</param>
         /// <returns>The client identifier</returns>
         [OperationContract]
         [FaultContractAttribute(typeof(EFSServiceFault))]
-        int ConnectUsingDefaultValues();
+        int ConnectUsingDefaultValues(bool listener);
 
         /// <summary>
         /// Connects to the service 
         /// </summary>
+        /// <param name="listener">Indicates that the client is a listener</param>
         /// <param name="explain">Indicates that the explain view should be updated according to the scenario execution</param>
         /// <param name="logEvents">Indicates that the events should be logged</param>
         /// <param name="cycleDuration">The duration (in ms) of an execution cycle</param>
@@ -88,7 +90,7 @@ namespace GUI.IPCInterface
         /// <returns>The client identifier</returns>
         [OperationContract]
         [FaultContractAttribute(typeof(EFSServiceFault))]
-        int Connect(bool explain, bool logEvents, int cycleDuration, int keepEventCount);
+        int Connect(bool listener, bool explain, bool logEvents, int cycleDuration, int keepEventCount);
 
         /// <summary>
         /// Provides the value of a specific variable
