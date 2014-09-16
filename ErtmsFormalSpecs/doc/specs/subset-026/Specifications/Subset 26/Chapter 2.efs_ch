@@ -151,11 +151,85 @@ The present chapter gives the basic description of the ERTMS/ETCS system propose
  functionalBlockName=""
  Name=""
  Guid="3cef6c9b-e65d-4b29-a7d0-2d9d78ca4a82"
->The environment of ERTMS/ETCS system is composed of:
-	a) the train, which will then be considered in the train interface specification;
-	b) the driver, which will then be considered via the driver interface specification;
-	c) other onboard interfaces (see architecture drawing in 2.5.3),
-	d) external trackside systems (interlockings, control centres, etc.), for which no interoperability requirement will be established.<RequirementSets>
+>The environment of ERTMS/ETCS system is composed of:<Sub>
+<Paragraph
+ id="2.4.1.3.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="6fd54340-7492-4cb3-b13d-97a0d9b0eeff"
+>the train, which will then be considered in the train interface specification;<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8767e8bb-1e8a-4325-81f1-09eef3b054c9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="2.4.1.3.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="20a5de5f-5dce-4b46-8dda-d71d85c4447d"
+>the driver, which will then be considered via the driver interface specification;<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="59eee2af-ac1f-4614-8ef5-5b4efd202c57"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="2.4.1.3.c"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="1c02c4ed-16c2-4d7d-8097-8c8aa8bb27fe"
+>other onboard interfaces (see architecture drawing in 2.5.3),<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4c739dab-1964-4fd1-a088-cf63c7b206e2"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="a15ba09d-0cb0-4108-bfbb-3e9c65ceac91"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="2.4.1.3.d"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="4e2200dc-5ece-4499-8126-7149deca1cc0"
+>external trackside systems (interlockings, control centres, etc.), for which no interoperability requirement will be established.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="b56d862a-fd80-4957-9b21-cb7b0c0bacab"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="707d3d4f-2659-4fdb-a1a1-01f8c8653e3f"
@@ -871,9 +945,45 @@ The role of the KMC is to manage the cryptographic keys, which are used to secur
  functionalBlockName=""
  Name=""
  Guid="51a7158a-6a57-4455-bbb0-8d8c67e1d486"
->Depending of the application level (see further sections), the on-board sub-system can be composed of:
-	a) the ERTMS/ETCS on-board equipment;
-	b) the on-board part of the GSM-R radio system;<RequirementSets>
+>Depending of the application level (see further sections), the on-board sub-system can be composed of:<Sub>
+<Paragraph
+ id="2.5.2.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="16b94cfb-8d2a-4be5-a5ad-8ae9a5be0975"
+>the ERTMS/ETCS on-board equipment;<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="be615b8f-4172-46bc-b63d-0e592030f685"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="2.5.2.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="28e8718a-9239-4875-9bc7-d336c5fbf038"
+>the on-board part of the GSM-R radio system;<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="86ddd0f7-50e9-4639-ac11-6c9f3ffd25a7"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="e1589156-935f-4129-9da8-98e0abb75c78"
@@ -925,10 +1035,63 @@ The role of the KMC is to manage the cryptographic keys, which are used to secur
  functionalBlockName=""
  Name=""
  Guid="273de53d-ade9-45d3-8a3a-1ce93b93bc56"
->The interoperability requirements for the ERTMS/ETCS on-board equipment are related to the functionality and the data exchange between the trackside sub-systems and the on-board sub-system and to the functional data exchange between the onboard sub-system and:
-	a) the driver;
-	b) the train;
-	c) the onboard part of the existing national train control system(s).<RequirementSets>
+>The interoperability requirements for the ERTMS/ETCS on-board equipment are related to the functionality and the data exchange between the trackside sub-systems and the on-board sub-system and to the functional data exchange between the onboard sub-system and:<Sub>
+<Paragraph
+ id="2.5.2.2.2.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="2b78e950-f45d-4b17-acb5-ff6bc320bb2f"
+>the driver;<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="71623fd2-b46c-4920-8782-f6584c7c70a9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="2.5.2.2.2.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="8a064b43-7596-40f8-8af3-8d9cff09f0b7"
+>the train;<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="cf0a38ec-aac5-43cf-93c6-1860b0f69f66"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="2.5.2.2.2.c"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="da64759c-44be-4d05-8183-3b01878ecb71"
+>the onboard part of the existing national train control system(s).<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="94176616-0b67-4583-998e-7b876883e934"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d27cc509-aae7-4914-a937-48bc52fd7490"
