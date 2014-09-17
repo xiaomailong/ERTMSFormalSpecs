@@ -16848,7 +16848,8 @@ Note: The train front end position, when this information disappears is shown as
  functionalBlockName=""
  Name=""
  Guid="f5039759-7490-46fa-83d0-bfff1fe9e989"
->This procedure is dealing with the announcement and indication to the driver of an area where stopping is not be permitted.<RequirementSets>
+><Comment></Comment>
+This procedure is dealing with the announcement and indication to the driver of an area where stopping is not be permitted.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="b0272cde-7392-4bd2-a091-82de9b16665d"
@@ -16871,7 +16872,8 @@ Note: The train front end position, when this information disappears is shown as
  functionalBlockName=""
  Name=""
  Guid="a155d204-c214-45ff-a2b4-045e5aa12ba8"
->As long as there are non stopping areas stored on-board, the ERTMS/ETCS on-board equipment shall continuously check the current speed and position of the train whether a full service brake command would stop the train within the closest non stopping area. This shall be achieved taking into account two virtual SBI supervision limits (SBID and SBIG), calculated at the estimated speed from two SBD curves of which the feet are the start location of the non stopping area (point D) and a location (point G) at train length distance in advance of the end location of the non stopping area:
+><Comment></Comment>
+As long as there are non stopping areas stored on-board, the ERTMS/ETCS on-board equipment shall continuously check the current speed and position of the train whether a full service brake command would stop the train within the closest non stopping area. This shall be achieved taking into account two virtual SBI supervision limits (SBID and SBIG), calculated at the estimated speed from two SBD curves of which the feet are the start location of the non stopping area (point D) and a location (point G) at train length distance in advance of the end location of the non stopping area:
 	a) If the max safe front end is in rear of the first SBI supervision limit (SBID) no information related to this non stopping area shall be displayed
 	b) If the max safe front end is in advance of first SBI supervision limit and the min safe front end in rear of the second SBI supervision limit, the non stopping area related information shall be displayed to the driver.
 	c) If the min safe front end is in advance of the second SBI supervision limit (SBIG), no information related to this non stopping area shall be displayed and the next non stopping area stored on-board, if any, shall be checked.<RequirementSets>
@@ -16947,7 +16949,8 @@ When the max safe front end reaches the start location (point D) of the non stop
  functionalBlockName=""
  Name=""
  Guid="3f38b783-07e2-4c8a-bfd3-a5e8de65d29b"
->When the min safe front end reaches the second SBI supervision limit (point F), the non stopping area information shall no longer be displayed.<RequirementSets>
+><Comment></Comment>
+When the min safe front end reaches the second SBI supervision limit (point F), the non stopping area information shall no longer be displayed.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="54fccb09-9c6f-43fa-a41c-be3462197cfb"

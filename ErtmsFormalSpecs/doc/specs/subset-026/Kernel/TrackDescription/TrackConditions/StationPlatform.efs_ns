@@ -1,6 +1,5 @@
 <NameSpace
- X="280"
- Y="60"
+ X="440"
  Width="100"
  Height="50"
  Name="StationPlatform"
@@ -11,8 +10,6 @@
 <Structures>
 <Structure
  Default=""
- X="590"
- Y="50"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -69,8 +66,7 @@
 </ReqRef><Comment>Is True if the train needs to account for platform information</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="400"
- Y="50"
+ X="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -137,8 +133,7 @@
  TypeName="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformation"
  MaxSize="20"
  Default="[]"
- X="200"
- Y="50"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -156,7 +151,6 @@
 <Function
  Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformation"
  Default=""
- X="30"
  Y="180"
  Width="100"
  Height="50"
@@ -217,7 +211,7 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="140"
+ X="110"
  Y="180"
  Width="100"
  Height="50"
@@ -264,7 +258,7 @@
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatform"
  Default=""
- X="250"
+ X="220"
  Y="180"
  Width="100"
  Height="50"
@@ -308,7 +302,7 @@
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatform"
  Default=""
- X="360"
+ X="330"
  Y="180"
  Width="100"
  Height="50"
@@ -344,7 +338,7 @@ SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)).Enabl
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="470"
+ X="440"
  Y="180"
  Width="100"
  Height="50"
@@ -376,8 +370,7 @@ SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)).Enabl
 </Function></Functions>
 <Procedures>
 <Procedure
- X="30"
- Y="290"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -475,8 +468,8 @@ IN
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="140"
- Y="290"
+ X="110"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -586,8 +579,8 @@ ON
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="250"
- Y="290"
+ X="220"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -691,8 +684,7 @@ IN
 <Variable
  Type="StationPlatforms"
  VariableMode="Internal"
- X="20"
- Y="50"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
