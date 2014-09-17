@@ -649,7 +649,20 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
 >THERE_IS_IN TCProfile | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
 <Expression>REDUCE TCProfile| (X.Distance == ProfileStartLocation(Distance=&gt;Distance) )
     USING X.Value
-  INITIAL_VALUE EMPTY</Expression>
+  INITIAL_VALUE TrackCondition
+{
+    NonStoppingArea =&gt; False,
+    TunnelStoppingArea =&gt; False,
+    SoundHorn =&gt; False,
+    PowerlessSection_LowerPantograph =&gt; False,
+    RadioHole =&gt; False,
+    AirTightness =&gt; False,
+    SwitchOffRegenerativeBrake =&gt; False,
+    SwitchOffEddyCurrentBrakeForSB =&gt; False,
+    SwitchOffMagneticShoeBrake =&gt; False,
+    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; False,
+    SwitchOffEddyCurrentBrakeForEB =&gt; False
+}</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="264e9b1f-172c-4ce9-9266-3c27430f3c9f"

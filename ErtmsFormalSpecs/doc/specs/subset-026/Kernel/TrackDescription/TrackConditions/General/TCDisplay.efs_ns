@@ -1114,13 +1114,29 @@ Announcement.Type == TCTypeEnum.RegenerativeBrake</PreCondition></PreConditions>
 <Cases>
 <Case
  Name="Non stopping area - start"
+ Guid="2380f02e-c029-43df-a6fa-e2201a597584"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="0bc54b56-072f-421b-b498-fe11e372c0de"
+><Comment></Comment>
+Announcement.IsAnnouncement == False</PreCondition><PreCondition
+ Guid="16856320-3b2a-4716-be02-9be9642746af"
+><Comment></Comment>
+
+Announcement.Type == TCTypeEnum.NonStoppingArea</PreCondition></PreConditions>
+<Expression>TrainPosition.FrontEndPosition( PointOfInterest=&gt;DistanceInterval.Max ) &gt;= Announcement.Distance</Expression>
+</Case><Case
+ Name="Non stopping area Announcement - start"
  Guid="873ea663-7256-4f44-89ec-fd78b96620ff"
 >
 <Comment>This case is for the start of the &quot;Non Stopping Area&quot; announcement. A SBI curve is calculated ending at the start of the non stopping area (at Announcement.Distance + Announcement.Length). If the train&apos;s current speed is greater than the curve at the train&apos;s current position, then the announcement should be displayed</Comment>
 <PreConditions>
 <PreCondition
  Guid="f6afee15-fc7a-47e4-a6f5-05176ac7fa9e"
->Announcement.Type == TCTypeEnum.NonStoppingArea</PreCondition></PreConditions>
+><Comment></Comment>
+Announcement.Type == TCTypeEnum.NonStoppingArea</PreCondition></PreConditions>
 <Expression>Odometry.EstimatedSpeed &gt;= VirtualSBIForTarget(
     Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Max),
     Target=&gt;Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
@@ -1704,9 +1720,8 @@ INSERT NewAnnouncement(
 IN Announcements</Action><Action
  Guid="92eeda56-7c92-46f5-b9f7-1cfe1c744808"
 ><Comment></Comment>
-
 INSERT NewAnnouncement(
-    TCType=&gt;TCTypeEnum.AirTightness,
+    TCType=&gt;TCTypeEnum.NonStoppingArea,
     Distance=&gt; Distance,
     Length=&gt;Length,
     Announcement =&gt; False

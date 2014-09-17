@@ -2777,12 +2777,17 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
  Name="Remove announcements past their end condition"
  Guid="d8e69cc4-5f84-4777-8303-85bb7247e847"
 >
+<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="2a2107fb-0b0d-4ba0-a97a-e44c76c7df83"
->ActiveConditions &lt;- MAP ActiveConditions | (X.Distance + Default.BaseTypes.LengthToDistance(X.Length) &gt; Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)  AND  X.Time &gt; Kernel.DateAndTime.CurrentTime)
+><Comment></Comment>
+ActiveConditions &lt;-
+  MAP ActiveConditions | ( NOT Kernel.TrackDescription.TrackConditions.General.TCDisplay.TrainIsAtTCStartLocation ( Announcement =&gt; X)
+                             AND
+                           X.Time &gt; Kernel.DateAndTime.CurrentTime )
   USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
