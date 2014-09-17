@@ -1,4 +1,5 @@
 <NameSpace
+ X="790"
  Width="100"
  Height="50"
  Name="TCDisplay"
@@ -10,6 +11,8 @@
 <Enumerations>
 <Enum
  Default="TCTypeEnum.LowerPantograph"
+ X="520"
+ Y="230"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -109,7 +112,8 @@
 <Structures>
 <Structure
  Default=""
- X="110"
+ X="520"
+ Y="20"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -250,6 +254,8 @@
 </ReqRef><Comment>The eddy current brake should be disabled for the service brake</Comment>
 </StructureElement></Structure><Structure
  Default=""
+ X="520"
+ Y="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -334,7 +340,8 @@
 </ReqRef><Comment>Traction system in application</Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="60"
+ X="350"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -439,7 +446,8 @@
  TypeName="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithBrakeInhibition"
  MaxSize="20"
  Default="[]"
- Y="60"
+ X="360"
+ Y="20"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -456,8 +464,8 @@
  TypeName="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn"
  MaxSize="20"
  Default="[]"
- X="110"
- Y="60"
+ X="360"
+ Y="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -474,7 +482,8 @@
  TypeName="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct"
  MaxSize="20"
  Default="[]"
- Y="120"
+ X="190"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -488,7 +497,8 @@
 <Function
  Type="Default.BaseTypes.Distance"
  Default=""
- Y="120"
+ X="860"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -581,6 +591,7 @@
 </Function><Function
  Type="Default.BaseTypes.Time"
  Default=""
+ X="750"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -664,6 +675,8 @@ Returns the time required by the driver to performs the necessary tasks before a
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct"
  Default=""
+ X="750"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -704,6 +717,8 @@ Returns the time required by the driver to performs the necessary tasks before a
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn"
  Default=""
+ X="750"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -735,7 +750,8 @@ Returns the time required by the driver to performs the necessary tasks before a
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithBrakeInhibition"
  Default=""
- X="110"
+ X="860"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -772,7 +788,8 @@ Returns the time required by the driver to performs the necessary tasks before a
 </Function><Function
  Type="Boolean"
  Default=""
- Y="60"
+ X="750"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -828,8 +845,8 @@ Condition == TCTypeEnum.TractionSystem__DC600_750V</Expression>
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct"
  Default=""
- X="110"
- Y="60"
+ X="750"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -923,6 +940,8 @@ Announcement.Type == TCTypeEnum.RegenerativeBrake</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="750"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1016,6 +1035,8 @@ Announcement.Type == TCTypeEnum.RegenerativeBrake</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="750"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1151,7 +1172,8 @@ Announcement.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="110"
+ X="860"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1209,6 +1231,7 @@ Announcement.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="860"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1258,6 +1281,8 @@ Announcement.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions
  Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
+ X="860"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1303,7 +1328,8 @@ INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn"
  Default=""
- X="110"
+ X="860"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1375,7 +1401,8 @@ INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 </Function></Functions>
 <Procedures>
 <Procedure
- Y="60"
+ X="50"
+ Y="20"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1716,7 +1743,8 @@ IN Announcements</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- Y="120"
+ X="50"
+ Y="80"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1801,7 +1829,8 @@ IN Announcements</Action></Actions>
  Type="TCAnnouncementCol"
  DefaultValue="[]"
  VariableMode="Internal"
- Y="180"
+ X="40"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1818,6 +1847,8 @@ IN Announcements</Action></Actions>
  Type="Default.BaseTypes.Time"
  DefaultValue="5.0"
  VariableMode="Internal"
+ X="40"
+ Y="320"
  Width="100"
  Height="50"
  Implemented="TRUE"

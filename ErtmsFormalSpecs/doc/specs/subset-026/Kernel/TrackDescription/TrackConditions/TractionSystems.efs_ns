@@ -1,15 +1,19 @@
 <NameSpace
- X="220"
+ X="170"
+ Y="60"
  Width="100"
  Height="50"
  Name="TractionSystems"
  Guid="58374065-177d-4411-b299-d4bbda072366"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
 <Structure
  Default=""
+ X="610"
+ Y="70"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -52,7 +56,8 @@
 </ReqRef><Comment>Traction system to be used</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
+ X="430"
+ Y="70"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -114,7 +119,8 @@
  TypeName="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformation"
  MaxSize="20"
  Default="[]"
- Y="60"
+ X="250"
+ Y="70"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -132,7 +138,8 @@
 <Function
  Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystem"
  Default=""
- Y="180"
+ X="40"
+ Y="220"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -158,8 +165,8 @@
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystem"
  Default=""
- X="110"
- Y="180"
+ X="150"
+ Y="220"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -216,8 +223,8 @@ THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreC
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="220"
- Y="180"
+ X="260"
+ Y="220"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -248,6 +255,8 @@ THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreC
 </Function><Function
  Type="TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum"
  Default=""
+ X="370"
+ Y="220"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -323,6 +332,8 @@ THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreC
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn"
  Default=""
+ X="480"
+ Y="220"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -355,7 +366,8 @@ THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreC
 </Function></Functions>
 <Procedures>
 <Procedure
- Y="240"
+ X="40"
+ Y="310"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -567,7 +579,8 @@ IN General.TCDisplay.Announcements</Action></Actions>
  Type="TractionSystems"
  DefaultValue=""
  VariableMode="Internal"
- Y="120"
+ X="80"
+ Y="70"
  Width="100"
  Height="50"
  Implemented="TRUE"

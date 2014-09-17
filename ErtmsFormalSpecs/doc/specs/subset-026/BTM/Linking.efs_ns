@@ -13,8 +13,8 @@
 <Enumerations>
 <Enum
  Default="LinkingReaction.NoReaction"
- X="840"
- Y="420"
+ X="680"
+ Y="410"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -50,8 +50,8 @@
 <Structures>
 <Structure
  Default=""
- X="670"
- Y="420"
+ X="500"
+ Y="410"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -169,8 +169,8 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  TypeName="BTM.Linking.LinkingData"
  MaxSize="30"
  Default="[]"
- X="500"
- Y="420"
+ X="330"
+ Y="410"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -844,6 +844,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
  Type="BTM.Linking.LinkingData"
  Cacheable="TRUE"
  Default=""
+ X="390"
+ Y="210"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -862,6 +864,10 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="BTM.Linking.LinkingData"
  Default=""
+ X="500"
+ Y="30"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="GetLinkingFromNidBG"
@@ -888,7 +894,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function></Functions>
 <Procedures>
 <Procedure
- X="640"
+ X="860"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1137,7 +1144,7 @@ REMOVE ALL (X == FIRST_IN Linkings)
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="640"
+ X="750"
  Y="60"
  Width="100"
  Height="50"
@@ -1594,8 +1601,8 @@ StopExpectingCurrentBG()</Action></Actions>
  Type="Linkings"
  DefaultValue="[]"
  VariableMode="Internal"
- X="500"
- Y="320"
+ X="330"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -1620,8 +1627,8 @@ StopExpectingCurrentBG()</Action></Actions>
  Type="Boolean"
  DefaultValue=""
  VariableMode="Internal"
- X="260"
- Y="320"
+ X="70"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -1635,8 +1642,8 @@ StopExpectingCurrentBG()</Action></Actions>
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
- X="380"
- Y="320"
+ X="190"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -1654,8 +1661,8 @@ StopExpectingCurrentBG()</Action></Actions>
 <Rules>
 <Rule
  Priority="CleanUp"
- X="60"
- Y="510"
+ X="70"
+ Y="520"
  Width="100"
  Height="50"
  Pinned="TRUE"
