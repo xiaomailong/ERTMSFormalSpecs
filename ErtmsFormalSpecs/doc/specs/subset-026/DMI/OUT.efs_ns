@@ -2277,7 +2277,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="bd6cd321-da85-4d70-822f-1231c228bd65"
->TrackConditions &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToBrakeInhibition(X)</Action></Actions>
+>PlanningInformation &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToBrakeInhibition(X)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2426,7 +2426,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 <Actions>
 <Action
  Guid="d6e48ca9-23d7-4be2-bcea-1f16889186b1"
->Announcements &lt;- MAP Announcements | (X.Distance + Default.BaseTypes.LengthToDistance(X.Length) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)  AND  X.Time &gt; Kernel.DateAndTime.CurrentTime)
+>ActiveConditions &lt;- MAP ActiveConditions | (X.Distance + Default.BaseTypes.LengthToDistance(X.Length) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)  AND  X.Time &gt; Kernel.DateAndTime.CurrentTime)
   USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
@@ -2512,7 +2512,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="TrackConditions"
+ Name="PlanningInformation"
  Guid="13896f19-7cb7-45e3-857c-b739dc0cee8e"
 >
 <Comment></Comment>
@@ -2521,7 +2521,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="Announcements"
+ Name="ActiveConditions"
  Guid="88d93cbd-0c71-4469-a119-d4da984bb569"
 >
 <ReqRef
@@ -2598,10 +2598,12 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Update the TCProfile with sound horn"
  Guid="0dc169fd-41cd-4887-b5e0-520154065a58"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="0968cf56-3b93-437d-90cc-aec24193b7f2"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
+><Comment></Comment>
+OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -2624,6 +2626,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b9f81081-46d8-499a-bfd1-3df9809e2580"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="3f38b783-07e2-4c8a-bfd3-a5e8de65d29b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -2635,19 +2638,13 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="691fc000-d2fe-48d0-9fc6-d895fc19d014"
 >Kernel.TrackDescription.TrackConditions.General.CurrentConditions().NonStoppingArea</PreCondition><PreCondition
  Guid="5080e5c2-603b-46a0-a9b2-7232074165df"
->Odometry.EstimatedSpeed &gt;= Kernel.TrackDescription.TrackConditions.General.TCDisplay.VirtualSBIForTarget(
-    Distance=&gt; Kernel.TrainPosition.FrontEndPosition(
-    PointOfInterest=&gt;DistanceInterval.Min),
-    Target=&gt;Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
-    Location =&gt; Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea),
-    Speed =&gt; 0.0,
-    Length =&gt; 1.0
-}
-)</PreCondition></PreConditions>
+><Comment></Comment>
+Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndStoppingAreaDisplay(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="21498138-871c-4035-8eda-ed138b81aa0f"
->TrackConditions &lt;- MAP TrackConditions USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
+><Comment></Comment>
+PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
     Distance=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea),
     ProfilePoint=&gt;X,
     TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea
@@ -2662,25 +2659,20 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f70936f8-66a1-4f27-b571-bd19c4b9e9dc"
 >
+<Comment></Comment>
 </ReqRef><Comment>Check for the end of a tunnel stopping area, if applicable</Comment>
 <PreConditions>
 <PreCondition
  Guid="1c2819f1-c12c-4704-ad29-dac614ed2b7c"
 >Kernel.TrackDescription.TrackConditions.General.CurrentConditions().TunnelStoppingArea</PreCondition><PreCondition
  Guid="3e93c69a-15df-4c15-a84f-a47dda49ee72"
->Odometry.EstimatedSpeed &gt;= Kernel.TrackDescription.TrackConditions.General.TCDisplay.VirtualSBIForTarget(
-    Distance=&gt; Kernel.TrainPosition.FrontEndPosition(
-    PointOfInterest=&gt;DistanceInterval.Nom),
-    Target=&gt;Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
-    Location =&gt; Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea),
-    Speed =&gt; 0.0,
-    Length =&gt; 1.0
-}
-)</PreCondition></PreConditions>
+><Comment></Comment>
+Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndStoppingAreaDisplay(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="dd8c664b-f24f-4112-8314-a0df1cd21574"
->TrackConditions &lt;- MAP TrackConditions USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
+><Comment></Comment>
+PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
     Distance=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea),
     ProfilePoint=&gt;X,
     TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea
@@ -2723,10 +2715,12 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Update displayed announcements"
  Guid="ea7c2cff-4b92-444f-bfbd-20e26d0ba90f"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="eadfd07e-2750-432a-8857-64ddd5f0db76"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
+><Comment></Comment>
+OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -2744,6 +2738,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Copy relevant announcements to Announcements"
  Guid="c3ee7985-d1ba-4ee5-bd00-3185dd3fe4e8"
 >
+<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -2787,7 +2782,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 <Actions>
 <Action
  Guid="2a2107fb-0b0d-4ba0-a97a-e44c76c7df83"
->Announcements &lt;- MAP Announcements | (X.Distance + Default.BaseTypes.LengthToDistance(X.Length) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)  AND  X.Time &gt; Kernel.DateAndTime.CurrentTime)
+>ActiveConditions &lt;- MAP ActiveConditions | (X.Distance + Default.BaseTypes.LengthToDistance(X.Length) &gt; Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)  AND  X.Time &gt; Kernel.DateAndTime.CurrentTime)
   USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
@@ -2822,7 +2817,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 <Action
  Guid="848f8401-d665-400b-b48d-be8bbfa8d170"
 ><Comment></Comment>
-TrackConditions &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToSoundHorn(X)</Action></Actions>
+PlanningInformation &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToSoundHorn(X)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2882,7 +2877,7 @@ ON Kernel.TrackDescription.TrackConditions.TractionSystems.TCTractionSystems</Ac
 <Action
  Guid="8789d6b0-a839-4feb-8fdf-f3584bd08942"
 >INSERT Kernel.TrackDescription.TrackConditions.TractionSystems.MapToSoundHorn(TractionSystem)
-IN TrackConditions</Action></Actions>
+IN PlanningInformation</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2909,7 +2904,8 @@ IN TrackConditions</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="1bdc9c78-0559-44ac-82a4-5796f7c00f15"
->TrackConditionsWithSoundHornAvailable()</PreCondition></PreConditions>
+><Comment></Comment>
+TrackConditionsWithSoundHornAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6eb7b085-68c9-4cc1-a257-1a0b570f47c7"
@@ -2964,7 +2960,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="TrackConditions"
+ Name="PlanningInformation"
  Guid="d173d1dc-fa75-4e91-8d2b-b378f6a9607a"
 >
 <Comment></Comment>
@@ -2973,7 +2969,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="Announcements"
+ Name="ActiveConditions"
  Guid="3e9fd95b-9a3e-4052-b64f-1c991c3f9517"
 >
 <ReqRef
