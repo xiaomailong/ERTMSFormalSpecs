@@ -1572,7 +1572,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="63b462dd-77eb-421b-b645-7b971238f6ec"
 >OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="7488f13c-8a6e-4cf8-8931-dd021c1574b6"
->Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+>Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ff5f5c50-07e9-4fef-b3f1-354e16f8124b"
@@ -2293,6 +2293,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Update displayed announcements"
  Guid="aa272eda-c845-48e0-91f9-d146e2f3bc97"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d65673f7-4589-4d1a-9cd3-d6ba89f8e929"
@@ -2359,7 +2360,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 (
   NOT Kernel.TrackDescription.TrackConditions.General.TCDisplay.IsInSoundHornGroup(X.Type)
     AND  
-  Kernel.TrackDescription.TrackConditions.General.TCDisplay.TrainIsAtAnnouncementStart(X)
+  Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionStart(X)
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -2421,12 +2422,13 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
  Name="Remove announcements past their end condition"
  Guid="6b494b2e-2c53-4705-8eec-6522ca03e158"
 >
+<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="d6e48ca9-23d7-4be2-bcea-1f16889186b1"
->ActiveConditions &lt;- MAP ActiveConditions | (X.Distance + Default.BaseTypes.LengthToDistance(X.Length) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)  AND  X.Time &gt; Kernel.DateAndTime.CurrentTime)
+>ActiveConditions &lt;- MAP ActiveConditions | (NOT Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd ( Condition =&gt; X)  AND  X.Time &gt; Kernel.DateAndTime.CurrentTime)
   USING X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
@@ -2635,11 +2637,15 @@ OutputInformation.DisplayRequested</PreCondition></PreConditions>
 </ReqRef><Comment>Check for the end of a non stopping area, if applicable</Comment>
 <PreConditions>
 <PreCondition
- Guid="691fc000-d2fe-48d0-9fc6-d895fc19d014"
->Kernel.TrackDescription.TrackConditions.General.CurrentConditions().NonStoppingArea</PreCondition><PreCondition
- Guid="5080e5c2-603b-46a0-a9b2-7232074165df"
+ Guid="964f9fc5-b40c-408d-9d98-427f9b0c536c"
 ><Comment></Comment>
-Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndStoppingAreaDisplay(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea)</PreCondition></PreConditions>
+THERE_IS_IN ActiveConditions |(
+X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea
+  AND  
+NOT X.IsAnnouncement
+  AND  
+Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndStoppingAreaDisplay(X)
+)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="21498138-871c-4035-8eda-ed138b81aa0f"
@@ -2648,7 +2654,10 @@ PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.
     Distance=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea),
     ProfilePoint=&gt;X,
     TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea
-)</Action></Actions>
+)</Action><Action
+ Guid="0c59a23b-9bff-4f4f-8b51-e37116b90346"
+>REMOVE ALL (X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea)
+IN ActiveConditions</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="In tunnel stopping area"
@@ -2663,11 +2672,15 @@ PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.
 </ReqRef><Comment>Check for the end of a tunnel stopping area, if applicable</Comment>
 <PreConditions>
 <PreCondition
- Guid="1c2819f1-c12c-4704-ad29-dac614ed2b7c"
->Kernel.TrackDescription.TrackConditions.General.CurrentConditions().TunnelStoppingArea</PreCondition><PreCondition
- Guid="3e93c69a-15df-4c15-a84f-a47dda49ee72"
+ Guid="137dac50-09d6-4b1d-98e7-03f2cbc17a0c"
 ><Comment></Comment>
-Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndStoppingAreaDisplay(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea)</PreCondition></PreConditions>
+THERE_IS_IN ActiveConditions | (
+X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea
+  AND  
+NOT X.IsAnnouncement
+  AND  
+Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndStoppingAreaDisplay(X)
+)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="dd8c664b-f24f-4112-8314-a0df1cd21574"
@@ -2676,7 +2689,10 @@ PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.
     Distance=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea),
     ProfilePoint=&gt;X,
     TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea
-)</Action></Actions>
+)</Action><Action
+ Guid="65eabe63-ba01-4021-bbed-1a1a581aa062"
+>REMOVE ALL (X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea)
+IN ActiveConditions</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2750,7 +2766,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 (
   Kernel.TrackDescription.TrackConditions.General.TCDisplay.IsInSoundHornGroup(X.Type)
     AND  
-  Kernel.TrackDescription.TrackConditions.General.TCDisplay.TrainIsAtAnnouncementStart(X)
+  Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionStart(X)
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -2785,7 +2801,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
  Guid="2a2107fb-0b0d-4ba0-a97a-e44c76c7df83"
 ><Comment></Comment>
 ActiveConditions &lt;-
-  MAP ActiveConditions | ( NOT Kernel.TrackDescription.TrackConditions.General.TCDisplay.TrainIsAtTCStartLocation ( Announcement =&gt; X)
+  MAP ActiveConditions | ( NOT Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd ( Condition =&gt; X)
                              AND
                            X.Time &gt; Kernel.DateAndTime.CurrentTime )
   USING X</Action></Actions>
