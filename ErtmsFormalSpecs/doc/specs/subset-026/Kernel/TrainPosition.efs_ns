@@ -12,8 +12,8 @@
 <Structures>
 <Structure
  Default=""
- X="190"
- Y="10"
+ X="230"
+ Y="40"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -67,8 +67,8 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 </ReqRef><Comment>The data state of the train position.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="190"
- Y="100"
+ X="230"
+ Y="130"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -129,8 +129,8 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
- X="130"
- Y="190"
+ X="180"
+ Y="260"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -198,8 +198,8 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
- X="20"
- Y="190"
+ X="70"
+ Y="260"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -275,8 +275,8 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 </Function></Functions>
 <Procedures>
 <Procedure
- X="20"
- Y="300"
+ X="70"
+ Y="340"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -284,6 +284,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Name="UpdatePositionState"
  Guid="6cdf2a34-87f3-4959-908b-9ba4ff2dda70"
 >
+<Comment></Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -334,7 +335,8 @@ Available ( BTM.LRBG )</PreCondition></PreConditions>
  Type="Kernel.TrainPosition.TrainPosition"
  DefaultValue=""
  VariableMode="Internal"
- X="10"
+ X="60"
+ Y="40"
  Width="100"
  Height="50"
  Implemented="TRUE"
