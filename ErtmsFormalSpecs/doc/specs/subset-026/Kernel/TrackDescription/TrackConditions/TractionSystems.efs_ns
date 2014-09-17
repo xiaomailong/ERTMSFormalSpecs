@@ -1,6 +1,5 @@
 <NameSpace
- X="170"
- Y="60"
+ X="220"
  Width="100"
  Height="50"
  Name="TractionSystems"
@@ -12,8 +11,6 @@
 <Structures>
 <Structure
  Default=""
- X="610"
- Y="70"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -56,8 +53,7 @@
 </ReqRef><Comment>Traction system to be used</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="430"
- Y="70"
+ X="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -119,8 +115,7 @@
  TypeName="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformation"
  MaxSize="20"
  Default="[]"
- X="250"
- Y="70"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -138,8 +133,7 @@
 <Function
  Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystem"
  Default=""
- X="40"
- Y="220"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -165,8 +159,8 @@
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystem"
  Default=""
- X="150"
- Y="220"
+ X="110"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -223,8 +217,8 @@ THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreC
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="260"
- Y="220"
+ X="220"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -255,8 +249,6 @@ THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreC
 </Function><Function
  Type="TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum"
  Default=""
- X="370"
- Y="220"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -332,8 +324,6 @@ THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreC
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn"
  Default=""
- X="480"
- Y="220"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -366,8 +356,7 @@ THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreC
 </Function></Functions>
 <Procedures>
 <Procedure
- X="40"
- Y="310"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -501,7 +490,8 @@ IN
 <Actions>
 <Action
  Guid="29585674-2fa6-4a76-9dbd-4686d3916b49"
->DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Display()</Action></Actions>
+><Comment></Comment>
+DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Display()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -537,7 +527,8 @@ INSERT General.TCDisplay.NewAnnouncement(
                      TrackCondition =&gt; General.TrackCondition{},
                      Distance=&gt;Default.MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACTION, scale=&gt;Packet.Q_SCALE)
                  )
-        )
+        ),
+     Announcement =&gt; True
 )
 IN General.TCDisplay.Announcements</Action></Actions>
 </RuleCondition></Conditions>
@@ -560,13 +551,15 @@ IN General.TCDisplay.Announcements</Action></Actions>
 <Actions>
 <Action
  Guid="83db5426-16ea-4334-b486-8690bf014ba2"
->INSERT General.TCDisplay.NewAnnouncement(
+><Comment></Comment>
+INSERT General.TCDisplay.NewAnnouncement(
     TCType=&gt; PacketToAnnouncement(Packet.M_VOLTAGE),
     Distance=&gt; Default.MessageTypes.QScaleDistance(
             distance=&gt;Packet.D_TRACTION,
             scale=&gt;Packet.Q_SCALE
         ),
-    Length=&gt; Default.BaseTypes.Length.NA
+    Length=&gt; Default.BaseTypes.Length.NA,
+    Announcement =&gt; False
 )
 IN General.TCDisplay.Announcements</Action></Actions>
 </RuleCondition></Conditions>
@@ -579,8 +572,7 @@ IN General.TCDisplay.Announcements</Action></Actions>
  Type="TractionSystems"
  DefaultValue=""
  VariableMode="Internal"
- X="80"
- Y="70"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"

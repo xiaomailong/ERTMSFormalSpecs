@@ -1,5 +1,4 @@
 <NameSpace
- X="790"
  Width="100"
  Height="50"
  Name="TCDisplay"
@@ -11,8 +10,6 @@
 <Enumerations>
 <Enum
  Default="TCTypeEnum.LowerPantograph"
- X="520"
- Y="230"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -112,8 +109,7 @@
 <Structures>
 <Structure
  Default=""
- X="520"
- Y="20"
+ X="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -254,8 +250,6 @@
 </ReqRef><Comment>The eddy current brake should be disabled for the service brake</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="520"
- Y="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -340,8 +334,7 @@
 </ReqRef><Comment>Traction system in application</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="350"
- Y="240"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -441,21 +434,20 @@
 >
 </ReqRef><Comment>Indicates whether the announced condition requires manual action or the train will handle it automatically</Comment>
 </StructureElement><StructureElement
- TypeName=""
- Default=""
+ TypeName="Boolean"
+ Default="False"
  Mode="Internal"
  Name="IsAnnouncement"
  Guid="b17eebed-bc9a-4c23-81a0-ffbcf01a9a10"
 >
-<Comment></Comment>
+<Comment>Indicates whether it is an announced condition or a current condition</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithBrakeInhibition"
  MaxSize="20"
  Default="[]"
- X="360"
- Y="20"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -472,8 +464,8 @@
  TypeName="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn"
  MaxSize="20"
  Default="[]"
- X="360"
- Y="110"
+ X="110"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -490,8 +482,7 @@
  TypeName="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct"
  MaxSize="20"
  Default="[]"
- X="190"
- Y="240"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -505,8 +496,7 @@
 <Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="860"
- Y="300"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -599,7 +589,6 @@
 </Function><Function
  Type="Default.BaseTypes.Time"
  Default=""
- X="750"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -683,8 +672,6 @@ Returns the time required by the driver to performs the necessary tasks before a
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct"
  Default=""
- X="750"
- Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -710,7 +697,7 @@ Returns the time required by the driver to performs the necessary tasks before a
  Guid="319d953c-72c3-4efb-9f7f-a2c2b4c35c27"
 >
 </Parameter><Parameter
- Type=""
+ Type="Boolean"
  Name="Announcement"
  Guid="597c9b78-8617-457c-9358-eee342e32281"
 >
@@ -732,8 +719,6 @@ Returns the time required by the driver to performs the necessary tasks before a
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn"
  Default=""
- X="750"
- Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -765,8 +750,7 @@ Returns the time required by the driver to performs the necessary tasks before a
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithBrakeInhibition"
  Default=""
- X="860"
- Y="120"
+ X="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -803,8 +787,7 @@ Returns the time required by the driver to performs the necessary tasks before a
 </Function><Function
  Type="Boolean"
  Default=""
- X="750"
- Y="360"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -860,8 +843,8 @@ Condition == TCTypeEnum.TractionSystem__DC600_750V</Expression>
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementStruct"
  Default=""
- X="750"
- Y="300"
+ X="110"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -955,8 +938,6 @@ Announcement.Type == TCTypeEnum.RegenerativeBrake</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
- X="750"
- Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1050,8 +1031,6 @@ Announcement.Type == TCTypeEnum.RegenerativeBrake</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
- X="750"
- Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1188,8 +1167,7 @@ Announcement.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="860"
- Y="180"
+ X="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1247,7 +1225,6 @@ Announcement.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="860"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1297,8 +1274,6 @@ Announcement.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions
  Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
- X="860"
- Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1344,8 +1319,7 @@ INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn"
  Default=""
- X="860"
- Y="240"
+ X="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1489,8 +1463,7 @@ TCType == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions>
 </Function></Functions>
 <Procedures>
 <Procedure
- X="50"
- Y="20"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1927,8 +1900,7 @@ IN Announcements</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="50"
- Y="80"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -2014,8 +1986,7 @@ INSERT AnnouncementWithEnd(Announcement) IN DMI.MasterDMI().Out_TrackConditionsW
  Type="TCAnnouncementCol"
  DefaultValue="[]"
  VariableMode="Internal"
- X="40"
- Y="240"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -2032,8 +2003,6 @@ INSERT AnnouncementWithEnd(Announcement) IN DMI.MasterDMI().Out_TrackConditionsW
  Type="Default.BaseTypes.Time"
  DefaultValue="5.0"
  VariableMode="Internal"
- X="40"
- Y="320"
  Width="100"
  Height="50"
  Implemented="TRUE"
