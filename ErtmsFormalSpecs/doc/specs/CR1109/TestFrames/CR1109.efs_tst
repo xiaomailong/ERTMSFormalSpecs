@@ -332,7 +332,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions != []
 <Actions>
 <Action
  Guid="48a7add8-956c-499b-85d4-453b3741ef1b"
->Odometry.NominalDistance &lt;- 2769.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 2789.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -340,7 +340,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions != []
  Guid="9a3d6a59-3dee-4677-8ebd-e4bdc3781542"
 >Kernel.TrackDescription.TrackConditions.General.TCDisplay.VirtualSBIForTarget
 (
-    Distance =&gt; Kernel.TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Max ),
+    Distance =&gt; Kernel.TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Min ),
     Target =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
     {
         Location =&gt; 2000.0 + 400.0 + Kernel.TrainData.TrainData.Value.TrainLength,
@@ -367,7 +367,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions != []
 <Actions>
 <Action
  Guid="3ff6bfa5-d60d-4842-a774-48aa9baf0481"
->Odometry.NominalDistance &lt;- 2770.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 2790.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -375,7 +375,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions != []
  Guid="1298078d-64d2-4ac5-b98b-2f3e471606e6"
 >Kernel.TrackDescription.TrackConditions.General.TCDisplay.VirtualSBIForTarget
 (
-    Distance =&gt; Kernel.TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Max ),
+    Distance =&gt; Kernel.TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Min ),
     Target =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
     {
         Location =&gt; 2000.0 + 400.0 + Kernel.TrainData.TrainData.Value.TrainLength,
@@ -416,7 +416,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
  Guid="47ad158c-3bcf-4ff0-b5b8-8d8be733c679"
 >Kernel.TrackDescription.TrackConditions.General.TCDisplay.VirtualSBIForTarget
 (
-    Distance =&gt; Kernel.TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Max ),
+    Distance =&gt; Kernel.TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Min ),
     Target =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
     {
         Location =&gt; 2000.0 + 400.0 + Kernel.TrainData.TrainData.Value.TrainLength,
