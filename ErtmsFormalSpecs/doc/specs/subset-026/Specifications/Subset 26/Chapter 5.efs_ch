@@ -16166,6 +16166,7 @@ Introduction<Sub>
 This set of procedures specifies the sequences of driver indications related to the following track-conditions:<Sub>
 <Paragraph
  id="5.18.1.1.a"
+ guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -16188,6 +16189,7 @@ This set of procedures specifies the sequences of driver indications related to 
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.18.1.1.b"
+ guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -16210,6 +16212,7 @@ This set of procedures specifies the sequences of driver indications related to 
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.18.1.1.c"
+ guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -16232,6 +16235,7 @@ This set of procedures specifies the sequences of driver indications related to 
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.18.1.1.d"
+ guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -16254,6 +16258,7 @@ This set of procedures specifies the sequences of driver indications related to 
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.18.1.1.e"
+ guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -16276,6 +16281,7 @@ This set of procedures specifies the sequences of driver indications related to 
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.18.1.1.f"
+ guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -16298,6 +16304,7 @@ This set of procedures specifies the sequences of driver indications related to 
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.18.1.1.g"
+ guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -16320,6 +16327,7 @@ This set of procedures specifies the sequences of driver indications related to 
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.18.1.1.h"
+ guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -16342,6 +16350,7 @@ This set of procedures specifies the sequences of driver indications related to 
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.18.1.1.i"
+ guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -17058,15 +17067,16 @@ Note: The train front end position, when this information disappears is shown as
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="a155d204-c214-45ff-a2b4-045e5aa12ba8"
 ><Comment></Comment>
-As long as there are non stopping areas stored on-board, the ERTMS/ETCS on-board equipment shall continuously check the current speed and position of the train whether a full service brake command would stop the train within the closest non stopping area. This shall be achieved taking into account two virtual SBI supervision limits (SBID and SBIG), calculated at the estimated speed from two SBD curves of which the feet are the start location of the non stopping area (point D) and a location (point G) at train length distance in advance of the end location of the non stopping area:<Sub>
+As long as there are non stopping areas stored on-board, the ERTMS/ETCS on-board equipment shall continuously check the current speed and position of the train whether a full service brake command would stop the train within any of the stored non stopping areas. This shall be achieved taking into account for each non stopping area, two virtual SBI supervision limits (SBID and SBIG), calculated at the estimated speed from two SBD curves of which the feet are the start location of the non stopping area (point D) and a location (point G) at train length distance in advance of the end location of the non stopping area:<Sub>
 <Paragraph
  id="5.18.4.2.a"
+ guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -17090,18 +17100,19 @@ If the max safe front end is in rear of the first SBI supervision limit (SBID) n
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.18.4.2.b"
+ guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="22cbd162-caa0-4e5a-a581-176fc2b4b8bb"
 ><Comment></Comment>
-If the max safe front end is in advance of first SBI supervision limit and the min safe front end in rear of the second SBI supervision limit, the non stopping area related information shall be displayed to the driver.<RequirementSets>
+If the max safe front end is in advance of first SBI supervision limit (SBID) and the min safe front end in rear of the second SBI supervision limit (SBIG), the non stopping area related information shall be displayed to the driver according to the following clauses 5.18.4.3, 5.18.4.4.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="20cfbe14-205d-4c48-806e-edb9fbb865e8"
@@ -17113,17 +17124,18 @@ If the max safe front end is in advance of first SBI supervision limit and the m
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.18.4.2.c"
+ guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="555c0388-8b13-4052-acc3-48e9e785af1a"
->If the min safe front end is in advance of the second SBI supervision limit (SBIG), no information related to this non stopping area shall be displayed and the next non stopping area stored on-board, if any, shall be checked.<RequirementSets>
+>If the min safe front end is in advance of the second SBI supervision limit (SBIG), no information related to this non stopping area shall be displayed.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="e4ce8796-8f1d-46ee-90de-19b90c927611"
@@ -17152,13 +17164,13 @@ If the max safe front end is in advance of first SBI supervision limit and the m
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="728d48f2-61c9-4dad-9800-8a9daa1cfbf9"
 ><Comment></Comment>
-When the max safe front end reaches the first SBI supervision limit  (point C), the &quot;Non stopping area announcement&quot; shall be displayed to the driver.<RequirementSets>
+When the max safe front end is in rear of the start location (point D) of the non stopping area, the &quot;Non stopping area announcement&quot; shall be displayed to the driver.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a7619303-fc0b-495c-957f-e2e8e4cd14f2"
@@ -17176,14 +17188,14 @@ When the max safe front end reaches the first SBI supervision limit  (point C), 
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="3622dce7-f18b-4dc7-8539-e2f01da0803b"
 ><Comment></Comment>
-When the max safe front end reaches the start location (point D) of the non stopping area:
-	- &quot;Non stopping area announcement&quot; shall no longer be displayed
+When the max safe front end is in advance of the start location (point D) of the non stopping area:
+	- &quot;Non stopping area announcement&quot;, if any, shall no longer be displayed
 	- &quot;Non stopping area&quot; information shall be displayed to the driver.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -17202,12 +17214,12 @@ When the max safe front end reaches the start location (point D) of the non stop
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="3f38b783-07e2-4c8a-bfd3-a5e8de65d29b"
->When the min safe front end reaches the second SBI supervision limit (point F), the non stopping area information shall no longer be displayed.<RequirementSets>
+>Intentionnally deleted.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="54fccb09-9c6f-43fa-a41c-be3462197cfb"
@@ -17987,6 +17999,7 @@ On driver request, the ERTMS/ETCS on-board equipment shall enable/disable the di
 As long as the display of the tunnel stopping areas is enabled (point C) and there are tunnel stopping areas stored on-board, the ERTMS/ETCS on-board equipment shall continuously check the current speed and position of the train to determine whether the driver can stop the train with the full service brake before reaching the end of the closest tunnel stopping area. This shall be achieved taking into account a virtual Permitted supervision limit (with no contribution of the GUI curve, if any), calculated at the estimated speed from an SBD curve of which the foot is the end location of the tunnel stopping area:<Sub>
 <Paragraph
  id="5.18.8.3.a"
+ guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -18010,6 +18023,7 @@ If the train front end is in rear of the Permitted supervision limit, the tunnel
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.18.8.3.b"
+ guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
