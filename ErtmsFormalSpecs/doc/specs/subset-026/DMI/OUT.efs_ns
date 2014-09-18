@@ -2738,7 +2738,7 @@ IN ActiveConditions</Action></Actions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
- Priority="Processing"
+ Priority="UpdateOUT"
  Implemented="TRUE"
  Name="Update displayed announcements"
  Guid="86095bc2-31aa-41c5-98bf-710505a4ee5e"
@@ -2787,6 +2787,8 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
   Kernel.TrackDescription.TrackConditions.General.TCDisplay.IsInSoundHornGroup(X.Type)
     AND  
   Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionStart(X)
+    AND
+  NOT Kernel.TrackDescription.TrackConditions.General.TCDisplay.ConditionAlreadyDisplayed ( ActiveCondition =&gt; X)
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
