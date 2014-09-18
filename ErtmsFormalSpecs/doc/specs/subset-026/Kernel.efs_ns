@@ -10172,6 +10172,38 @@ EmergencyStops</Action></Actions>
 >DMI.MasterDMI().Out_AcceptedEmergencyStops.OutputInformation.DoNotDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Width="100"
+ Height="50"
+ Name="DeleteStoredInformation"
+ Guid="61a66ca5-ccb7-4bee-9247-0cfc049ea418"
+>
+<ReqRef
+ Id="a0239fb6-709c-4818-9907-463b7c24e661"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="be7eb453-55cd-4ead-8b6a-83453154e125"
+>
+</ReqRef><Comment>Deletes the stored information that is no more used.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="TrackConditions"
+ Guid="05eabbf7-6301-4b6e-93cb-01d43c28c50c"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="TrackConditions"
+ Guid="1d6a001d-3d50-49a2-aa24-9436f3d1660f"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="c1dbce32-b039-4ab7-afd7-fa7c1061d3bd"
+>TrackDescription.TrackConditions.TCMonitor()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
