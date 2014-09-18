@@ -622,7 +622,8 @@ TIU.TrainIntegrity.Status == Messages.Q_LENGTH.Train_integrity_lost</Expression>
  Name="Value"
  Guid="9067bdff-9b40-4532-9e37-c911b007f3db"
 >
-<Expression>PositionReportEventsTracker.Speed != Odometry.EstimatedSpeed AND Odometry.EstimatedSpeed == 0.0</Expression>
+<Comment></Comment>
+<Expression>PositionReportEventsTracker.Speed != Odometry.TrainSpeed() AND Odometry.TrainSpeed() == 0.0</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1165,7 +1166,7 @@ TIU.TrainIntegrity.Status in [
         L_DOUBTUNDER =&gt; MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER), Messages.Q_SCALE._1_m_scaleC ),
         Q_LENGTH =&gt; TIU.TrainIntegrity.Status,
         L_TRAININT =&gt; MessageTypes.UnScaleLength ( FillTrainIntegrityInformation(), Messages.Q_SCALE._1_m_scaleC),
-        V_TRAIN =&gt; MessageTypes.UnResolveSpeed ( Odometry.EstimatedSpeed, 5.0 ),
+        V_TRAIN =&gt; MessageTypes.UnResolveSpeed ( Odometry.TrainSpeed(), 5.0 ),
         Q_DIRTRAIN =&gt; Default.Q_DIRTRAIN ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection ),
         M_MODE =&gt; FillModeInformation(),
         M_LEVEL =&gt; FillLevelInformation()
@@ -1190,7 +1191,7 @@ TIU.TrainIntegrity.Status in [
         L_DOUBTUNDER =&gt; MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval ( Default.ConfidenceInterval.L_DOUBTUNDER ), scale =&gt; Messages.Q_SCALE._1_m_scaleC ),
         Q_LENGTH =&gt; TIU.TrainIntegrity.Status,
         L_TRAININT =&gt; MessageTypes.UnScaleLength ( FillTrainIntegrityInformation(), Messages.Q_SCALE._1_m_scaleC),
-        V_TRAIN =&gt; MessageTypes.UnResolveSpeed ( Odometry.EstimatedSpeed, 5.0 ),
+        V_TRAIN =&gt; MessageTypes.UnResolveSpeed ( Odometry.TrainSpeed(), 5.0 ),
         Q_DIRTRAIN =&gt; Default.Q_DIRTRAIN ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection ),
         M_MODE =&gt; FillModeInformation(),
         M_LEVEL =&gt; FillLevelInformation()
@@ -1894,11 +1895,11 @@ ON
 <PreConditions>
 <PreCondition
  Guid="4ff8ab1e-553f-4bc5-9e31-9cdf9c890e0a"
->PositionReportEventsTracker.Speed != Odometry.EstimatedSpeed</PreCondition></PreConditions>
+>PositionReportEventsTracker.Speed != Odometry.TrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f06ea1a9-ebb0-4f14-89bd-3d61fbc07ba2"
->PositionReportEventsTracker.Speed &lt;- Odometry.EstimatedSpeed</Action></Actions>
+>PositionReportEventsTracker.Speed &lt;- Odometry.TrainSpeed()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"

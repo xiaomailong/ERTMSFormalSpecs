@@ -32,7 +32,7 @@
  Guid="a45de51a-2cdb-43ce-af0c-7d30ef04454f"
 >
 <Comment></Comment>
-<Expression>Odometry.EstimatedSpeed &lt;= SupervisedSpeed()</Expression>
+<Expression>Odometry.TrainSpeed() &lt;= SupervisedSpeed()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -57,7 +57,7 @@
  Guid="550c9e75-4b89-4b21-a557-1bf0d4875789"
 >
 <Comment></Comment>
-<Expression>Odometry.EstimatedSpeed &gt; SupervisedSpeed()</Expression>
+<Expression>Odometry.TrainSpeed() &gt; SupervisedSpeed()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -82,7 +82,7 @@
  Guid="a2c9398a-8bb6-442d-9e2e-f3981504da32"
 >
 <Comment></Comment>
-<Expression>Odometry.EstimatedSpeed &gt; SupervisedSpeed() + dV_warning ( SupervisedSpeed() )</Expression>
+<Expression>Odometry.TrainSpeed() &gt; SupervisedSpeed() + dV_warning ( SupervisedSpeed() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -107,7 +107,7 @@
  Guid="b37debbc-15cc-4177-96a7-797e5f1ec294"
 >
 <Comment></Comment>
-<Expression>Odometry.EstimatedSpeed &gt; SupervisedSpeed() + dV_sbi ( SupervisedSpeed() )</Expression>
+<Expression>Odometry.TrainSpeed() &gt; SupervisedSpeed() + dV_sbi ( SupervisedSpeed() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -132,7 +132,7 @@
  Guid="c9346591-bf37-47ce-8e2f-cc5d1c1b71d8"
 >
 <Comment></Comment>
-<Expression>Odometry.EstimatedSpeed &gt; SupervisedSpeed() + dV_ebi ( SupervisedSpeed() )</Expression>
+<Expression>Odometry.TrainSpeed() &gt; SupervisedSpeed() + dV_ebi ( SupervisedSpeed() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -180,7 +180,7 @@
  Guid="d3c6f79a-9516-49bf-9eea-6c0b902d4e03"
 >
 <Comment></Comment>
-<Expression>Odometry.EstimatedSpeed &lt;= SupervisedSpeed()</Expression>
+<Expression>Odometry.TrainSpeed() &lt;= SupervisedSpeed()</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

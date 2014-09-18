@@ -1282,7 +1282,7 @@ TIU.PassiveShuntingPermitted</Expression>
  Guid="40ef8477-1d9b-4987-9d49-7ca23018349e"
 >
 <Expression>DMI.MasterDMI().In_ExitOfShuntingRequest.InputInformation.RequestStatus == Request.Response AND
-Odometry.EstimatedSpeed == 0.0</Expression>
+Odometry.TrainSpeed() == 0.0</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"

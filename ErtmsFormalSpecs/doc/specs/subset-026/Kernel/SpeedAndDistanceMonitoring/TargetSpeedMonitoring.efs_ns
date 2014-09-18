@@ -256,10 +256,10 @@ TargetSpeedMonitoring.EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget, Estimat
 <PreCondition
  Guid="af655905-681c-467c-8a8c-2b474bb03a43"
 ><Comment></Comment>
-Dmaxsafefrontend + BaseTypes.SpeedToMS(Odometry.EstimatedSpeed) * T_bs2 + DecelerationCurves.Dbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero )
+Dmaxsafefrontend + BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs2 + DecelerationCurves.Dbec ( Vest =&gt; Odometry.TrainSpeed(), Vtarget =&gt; Vtarget, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero )
  &lt; 
 DecelerationCurves.EBDForSpeed(Vtarget)</PreCondition></PreConditions>
-<Expression>DecelerationCurves.EBD ( Dmaxsafefrontend + BaseTypes.SpeedToMS(Odometry.EstimatedSpeed) * T_bs2 + DecelerationCurves.Dbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) ) - ( DecelerationCurves.Vbec ( Vest =&gt; Odometry.EstimatedSpeed, Vtarget =&gt; Vtarget, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) - Odometry.EstimatedSpeed )</Expression>
+<Expression>DecelerationCurves.EBD ( Dmaxsafefrontend + BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs2 + DecelerationCurves.Dbec ( Vest =&gt; Odometry.TrainSpeed(), Vtarget =&gt; Vtarget, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) ) - ( DecelerationCurves.Vbec ( Vest =&gt; Odometry.TrainSpeed(), Vtarget =&gt; Vtarget, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) - Odometry.TrainSpeed() )</Expression>
 </Case><Case
  Name="After EBD(Vtarget)"
  Guid="4284e6e0-7eb5-4a62-8c8f-0cbc28530501"
@@ -299,8 +299,8 @@ DecelerationCurves.EBDForSpeed(Vtarget)</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="bde98596-9ac7-46ec-90e4-42cd4ac651a0"
->Destfront + BaseTypes.SpeedToMS(Odometry.EstimatedSpeed) * T_bs1 &lt; MA.ClosestEOA().Location</PreCondition></PreConditions>
-<Expression>DecelerationCurves.SBD ( Destfront + BaseTypes.SpeedToMS(Odometry.EstimatedSpeed) * T_bs1 )</Expression>
+>Destfront + BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs1 &lt; MA.ClosestEOA().Location</PreCondition></PreConditions>
+<Expression>DecelerationCurves.SBD ( Destfront + BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs1 )</Expression>
 </Case><Case
  Name="After EOA"
  Guid="f573b2a7-2c7b-41d0-b632-c6954262beea"
@@ -637,7 +637,7 @@ DecelerationCurves.EBDForSpeed(Vtarget)</PreCondition></PreConditions>
 <PreCondition
  Guid="178905dd-ce63-4fba-8a0b-3c4f22c9b159"
 >MA.IsEOA(MRDT())</PreCondition></PreConditions>
-<Expression>V_P_EOA(d_estfront=&gt;TrainPosition.FrontEndPosition(DistanceInterval.Nom), Vest=&gt;Odometry.EstimatedSpeed)</Expression>
+<Expression>V_P_EOA(d_estfront=&gt;TrainPosition.FrontEndPosition(DistanceInterval.Nom), Vest=&gt;Odometry.TrainSpeed())</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="ce69f6f0-25b3-421d-b722-f59a85591ca8"
@@ -646,7 +646,7 @@ DecelerationCurves.EBDForSpeed(Vtarget)</PreCondition></PreConditions>
 <Expression>V_P_EBD_Target(
     d_maxsafefront =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Max),
     Vtarget =&gt; MRDT().Speed,
-    Vest =&gt; Odometry.EstimatedSpeed
+    Vest =&gt; Odometry.TrainSpeed()
 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -722,12 +722,12 @@ INITIAL_VALUE
 ><Comment></Comment>
 V_P_EOA(
     d_estfront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom ),
-    Vest =&gt; Odometry.EstimatedSpeed )
+    Vest =&gt; Odometry.TrainSpeed() )
  &lt;= 
 V_P_EBD_Target(
     d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ),
     Vtarget =&gt; X2.Speed,
-    Vest =&gt; Odometry.EstimatedSpeed )</PreCondition></PreConditions>
+    Vest =&gt; Odometry.TrainSpeed() )</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X1 is EOA, X1 &gt; X2"
@@ -751,11 +751,11 @@ V_P_EBD_Target(
 V_P_EBD_Target(
     d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ),
     Vtarget =&gt; X1.Speed,
-    Vest =&gt; Odometry.EstimatedSpeed )
+    Vest =&gt; Odometry.TrainSpeed() )
  &lt;= 
 V_P_EOA(
     d_estfront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Nom ),
-    Vest =&gt; Odometry.EstimatedSpeed )</PreCondition></PreConditions>
+    Vest =&gt; Odometry.TrainSpeed() )</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case
  Name="X2 is EOA, X1 &gt; X2"
@@ -778,14 +778,14 @@ V_P_EBD_Target
     (
         d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ),
         Vtarget =&gt; X1.Speed,
-        Vest =&gt; Odometry.EstimatedSpeed
+        Vest =&gt; Odometry.TrainSpeed()
     )
   &lt;=
 V_P_EBD_Target
     (
         d_maxsafefront =&gt; TrainPosition.FrontEndPosition ( DistanceInterval.Max ),
         Vtarget =&gt; X2.Speed,
-        Vest =&gt; Odometry.EstimatedSpeed
+        Vest =&gt; Odometry.TrainSpeed()
     )</PreCondition></PreConditions>
 <Expression>X1</Expression>
 </Case><Case

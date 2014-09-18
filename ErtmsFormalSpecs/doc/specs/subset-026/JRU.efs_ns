@@ -2091,8 +2091,8 @@ ModeInkernel == Default.Mode.PS</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="e82be393-fc78-4c8d-894b-118829d6b2b8"
->Odometry.EstimatedSpeed != 0.0</PreCondition></PreConditions>
-<Expression>Default.MessageTypes.UnResolveSpeed( Odometry.EstimatedSpeed, 5.0)</Expression>
+>Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
+<Expression>Default.MessageTypes.UnResolveSpeed( Odometry.TrainSpeed(), 5.0)</Expression>
 </Case><Case
  Name="StandStill"
  Guid="33ecabf8-f71b-43ed-87b4-c2f157db86e0"
@@ -6457,7 +6457,7 @@ V_RELEASE =&gt; ToMessagesSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed)
 <PreConditions>
 <PreCondition
  Guid="17dff9fa-9166-4ad4-a897-53f45ff796f8"
->Odometry.EstimatedSpeed != 0.0</PreCondition></PreConditions>
+>Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
 <Expression>Default.MessageTypes.UnResolveSpeed( Speed, 5.0)</Expression>
 </Case><Case
  Name="StandStill"

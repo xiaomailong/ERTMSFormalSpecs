@@ -588,7 +588,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="f097029e-3632-4604-b040-f143b4e70439"
 >Kernel.Mode in [Mode.FS, Mode.LS, Mode.OS, Mode.SR, Mode.SN, Mode.UN]</PreCondition><PreCondition
  Guid="0e6c7970-716e-45ef-885d-d5d5bab3e44b"
->Odometry.EstimatedSpeed == 0.0</PreCondition><PreCondition
+>Odometry.TrainSpeed() == 0.0</PreCondition><PreCondition
  Guid="843273e5-f17b-4806-a9fa-6d0c8af67f3a"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
@@ -5938,7 +5938,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="bd912c80-b11d-4383-8f47-334482455281"
->Odometry.EstimatedSpeed == 0.0</PreCondition></PreConditions>
+>Odometry.TrainSpeed() == 0.0</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="35e98016-41c6-4108-9083-ca69fceae8ce"

@@ -352,7 +352,7 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(E
  Guid="17f1ca46-76c5-4135-a9e6-bf0e63dddd19"
 >
 <Comment></Comment>
-<Expression>Default.BaseTypes.MinAcceleration ( X1 =&gt; 0.4, X2 =&gt; Default.BaseTypes.MaxAcceleration ( X1 =&gt; 0.0, X2 =&gt; Odometry.EstimatedAcceleration ) )</Expression>
+<Expression>Default.BaseTypes.MinAcceleration ( X1 =&gt; 0.4, X2 =&gt; Default.BaseTypes.MaxAcceleration ( X1 =&gt; 0.0, X2 =&gt; Odometry.TrainAcceleration() ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
@@ -378,7 +378,7 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(E
  Guid="f959681c-c0e0-4fc4-825d-87d54c4eaf68"
 >
 <Comment></Comment>
-<Expression>Odometry.EstimatedAcceleration</Expression>
+<Expression>Odometry.TrainAcceleration()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -448,10 +448,10 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(E
 <PreCondition
  Guid="7377911b-f405-40f5-a39e-636a7d591d5f"
 ><Comment></Comment>
-TargetSpeedMonitoring.d_SBI1 ( Odometry.EstimatedSpeed, False ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+TargetSpeedMonitoring.d_SBI1 ( Odometry.TrainSpeed(), False ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="341f5ca9-bbd4-4d97-bbbd-a8d5307c471c"
 ><Comment></Comment>
-TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.EstimatedSpeed, False ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.TrainSpeed(), False ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Infinity</Expression>
 </Case><Case
  Name="SBI1"
@@ -462,8 +462,8 @@ TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.EstimatedSpeed, False ) == Defaul
  Guid="e862b7cc-9cf5-4c3a-afa3-53925d18277e"
 ><Comment></Comment>
 TargetSpeedMonitoring.SBI1BelowSBI2(
-    d_SBI1=&gt; TargetSpeedMonitoring.d_SBI1 ( Odometry.EstimatedSpeed, False ),
-    d_SBI2=&gt; TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.EstimatedSpeed, False )
+    d_SBI1=&gt; TargetSpeedMonitoring.d_SBI1 ( Odometry.TrainSpeed(), False ),
+    d_SBI2=&gt; TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.TrainSpeed(), False )
 )</PreCondition></PreConditions>
 <Expression>TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )</Expression>
 </Case><Case

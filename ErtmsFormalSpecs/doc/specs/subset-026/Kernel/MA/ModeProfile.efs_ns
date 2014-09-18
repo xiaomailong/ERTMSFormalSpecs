@@ -1310,7 +1310,7 @@ REMOVE ALL RemoveMode ( X ) IN  Profile</Action></Actions>
  Guid="5047ee70-4096-4857-a378-73f6b22a865d"
 >AcknAreaReached ( FIRST_IN Profile | X.Mode == Mode.OS )</PreCondition><PreCondition
  Guid="66b2c6ba-7c31-4c87-9718-93a1cb7db83d"
->ModeRelatedSpeedLimits.OSModeSpeedLimit() &gt; Odometry.EstimatedSpeed</PreCondition><PreCondition
+>ModeRelatedSpeedLimits.OSModeSpeedLimit() &gt; Odometry.TrainSpeed()</PreCondition><PreCondition
  Guid="9c07352e-7368-4267-b097-8f8ae8201d4d"
 >NOT DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
@@ -1371,7 +1371,7 @@ REMOVE ALL RemoveMode ( X ) IN  Profile</Action></Actions>
  Guid="04fb07e1-e2e4-434a-a085-60940cd1d683"
 >AcknAreaReached ( FIRST_IN Profile | X.Mode == Mode.LS )</PreCondition><PreCondition
  Guid="961a9514-325f-4dd3-8288-f7f5c316bf3b"
->ModeRelatedSpeedLimits.LSModeSpeedLimit() &gt; Odometry.EstimatedSpeed</PreCondition><PreCondition
+>ModeRelatedSpeedLimits.LSModeSpeedLimit() &gt; Odometry.TrainSpeed()</PreCondition><PreCondition
  Guid="3da0d65b-0e2b-4020-8afd-97fbbee5539f"
 >NOT (DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus  == Request.Request)</PreCondition></PreConditions>
 <Actions>
@@ -1417,7 +1417,7 @@ REMOVE ALL RemoveMode ( X ) IN  Profile</Action></Actions>
  Guid="3e3576fb-239d-486e-8039-2fb033696845"
 >AcknAreaReached ( FIRST_IN Profile | X.Mode == Mode.SH )</PreCondition><PreCondition
  Guid="b7041bbe-293e-4a65-9f11-1f7ea8cd24b3"
->ModeRelatedSpeedLimits.SHModeSpeedLimit() &gt; Odometry.EstimatedSpeed</PreCondition><PreCondition
+>ModeRelatedSpeedLimits.SHModeSpeedLimit() &gt; Odometry.TrainSpeed()</PreCondition><PreCondition
  Guid="778ffeec-9d0d-4cc8-9cdb-a9b312b12afe"
 >NOT (DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Request)</PreCondition></PreConditions>
 <Actions>

@@ -29,7 +29,7 @@
  Name="Value"
  Guid="d05d8ee9-8d74-43cf-beb1-fbefcc2b09f4"
 >
-<Expression>Odometry.EstimatedSpeed &lt;= ReleaseSpeed</Expression>
+<Expression>Odometry.TrainSpeed() &lt;= ReleaseSpeed</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -53,7 +53,7 @@
  Name="Value"
  Guid="e87ff07c-96e8-4624-84ad-c0161d738821"
 >
-<Expression>Odometry.EstimatedSpeed &gt; ReleaseSpeed</Expression>
+<Expression>Odometry.TrainSpeed() &gt; ReleaseSpeed</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -101,7 +101,7 @@
  Name="Value"
  Guid="4d585853-7421-49b1-afc2-fef58639721d"
 >
-<Expression>Odometry.EstimatedSpeed &lt;= ReleaseSpeed</Expression>
+<Expression>Odometry.TrainSpeed() &lt;= ReleaseSpeed</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

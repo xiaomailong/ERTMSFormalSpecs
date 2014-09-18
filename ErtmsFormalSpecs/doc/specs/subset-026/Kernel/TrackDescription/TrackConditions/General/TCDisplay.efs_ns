@@ -597,7 +597,7 @@
  Guid="9a9bfe54-98fb-4549-b01b-8d6d86f4ac13"
 >
 <Comment></Comment>
-<Expression>Distance - Odometry.EstimatedSpeed * DriverReactionTime(TrackCondition)</Expression>
+<Expression>Distance - BaseTypes.SpeedToMS( Odometry.TrainSpeed() ) * DriverReactionTime(TrackCondition)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Time"
@@ -1272,7 +1272,7 @@ NOT Condition.IsAnnouncement</PreCondition></PreConditions>
  Guid="f6afee15-fc7a-47e4-a6f5-05176ac7fa9e"
 ><Comment></Comment>
 Condition.Type == TCTypeEnum.NonStoppingArea</PreCondition></PreConditions>
-<Expression>Odometry.EstimatedSpeed &gt;= VirtualSBIForTarget(
+<Expression>Odometry.TrainSpeed() &gt;= VirtualSBIForTarget(
     Distance=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Max),
     Target=&gt;Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
         Location =&gt; Condition.Distance + Default.BaseTypes.LengthToDistance(Condition.Length),
@@ -1368,7 +1368,7 @@ Condition.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions>
 <Comment></Comment>
 <Expression>DecelerationProfile(
     SpeedRestrictions=&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; VirtualSpeedRestriction(Distance=&gt;d, Target=&gt;SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
-    Location =&gt; Target.Location - Default.BaseTypes.SpeedToMS ( Odometry.EstimatedSpeed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1,
+    Location =&gt; Target.Location - Default.BaseTypes.SpeedToMS ( Odometry.TrainSpeed() ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1,
     Speed =&gt; 0.0,
     Length =&gt; 0.0
 }),
@@ -1658,7 +1658,7 @@ INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 <PreCondition
  Guid="7ed23257-5205-44a7-af4d-48da79eb3071"
 >Condition.Type == TCTypeEnum.NonStoppingArea</PreCondition></PreConditions>
-<Expression>Odometry.EstimatedSpeed &gt;= VirtualSBIForTarget(
+<Expression>Odometry.TrainSpeed() &gt;= VirtualSBIForTarget(
     Distance=&gt; TrainPosition.FrontEndPosition(DistanceInterval.Min),
     Target=&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
         Location =&gt; Condition.Distance + BaseTypes.LengthToDistance(Condition.Length),
@@ -1675,7 +1675,7 @@ INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
  Guid="0e831f00-68f6-4d87-ba12-9e8859198773"
 ><Comment></Comment>
 Condition.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions>
-<Expression>Odometry.EstimatedSpeed &gt;= VirtualSBIForTarget(
+<Expression>Odometry.TrainSpeed() &gt;= VirtualSBIForTarget(
     Distance=&gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     Target=&gt;SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
         Location =&gt; Condition.Distance + BaseTypes.LengthToDistance(Condition.Length),
