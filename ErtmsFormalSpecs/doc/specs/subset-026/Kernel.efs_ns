@@ -9568,6 +9568,7 @@ INITIAL_VALUE EmergencyStop
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e85cef6e-1d30-442a-97a5-9a68693eb207"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="c534dda4-ea81-40b7-a27b-c229e935a20e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -9582,6 +9583,11 @@ INITIAL_VALUE EmergencyStop
  Id="2c84de1b-61c3-4555-b485-6b4eae58ae90"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b09ca036-7e41-41e9-9050-8e7a8d242004"
+>
+</ReqRef><ReqRef
+ Id="d5925ae4-bfc1-4822-9b11-3d735360e691"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="96338666-9918-4249-9a25-f2283f6f12a9"
 >
 </ReqRef><Comment>Handles the linking consistency error when a train reaches the end of the currently expected balise&apos;s expectation window without encountering it</Comment>
 <SubRules></SubRules>
@@ -9749,7 +9755,7 @@ ModeTransitions.UpdateMode()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="7a9bc363-3120-4ac9-8dd9-c9e77819a97c"
->ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+>ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1ea62aa3-6056-40d4-8b5a-3eb7fbfb176b"

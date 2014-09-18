@@ -946,7 +946,7 @@ ADDITIONAL_BRAKE_STATUS =&gt; CreateJruAditionalBrakeStatusMessage()
 SendSpeedAndDistanceMonitoringInformationMessage(THIS)</PreCondition><PreCondition
  Guid="bd5ee00b-aacc-49ba-9111-eb883e795db7"
 ><Comment></Comment>
-Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e0adc517-5b2f-4309-ab4b-821bd1fbaf57"
@@ -1094,7 +1094,7 @@ PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonito
 <PreConditions>
 <PreCondition
  Guid="e4223728-87c9-42d3-9260-16f943874a4a"
->Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+>Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e147e5df-e42d-47f4-b4b4-bfe04454a4d4"
@@ -6545,7 +6545,7 @@ jru.SpeedAndDistanceSupervisionTypeChanged</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="0f85d667-58cc-4f06-9c3a-6a0eea33498d"
->Kernel.ActiveFunctions.SuperviseTrainSpeed()
+>Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()
   AND  
 jru.PreviousSpeedAndDistanceSupervisionStatus != Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</PreCondition></PreConditions>
 <Expression>True</Expression>

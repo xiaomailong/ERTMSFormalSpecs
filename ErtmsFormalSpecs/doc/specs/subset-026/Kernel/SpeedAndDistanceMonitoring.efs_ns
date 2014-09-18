@@ -1714,7 +1714,7 @@ JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
 <PreCondition
  Guid="6bee5e64-dd3e-4190-b0cc-b9fecd7c8aa1"
 ><Comment></Comment>
-ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="351c9b66-e0cc-4a58-9b1c-f39028235a8a"
@@ -1779,7 +1779,7 @@ TargetsList()
 !=
 SupervisedTargets</PreCondition><PreCondition
  Guid="6f2cc5a3-3453-4c20-acb8-221630d71332"
->ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
+>ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="774ac772-0f2b-46db-99c0-8963f899bb81"
@@ -1812,7 +1812,7 @@ SelectMonitoringType()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="d2c4fbd4-aea7-44fe-bab3-9fdd15bbb7be"
->NOT ActiveFunctions.SuperviseTrainSpeed()</PreCondition><PreCondition
+>NOT ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition><PreCondition
  Guid="28929f8b-8c89-4755-a7ef-914db92b35d2"
 >THIS not in Idle</PreCondition></PreConditions>
 <Actions>

@@ -7,6 +7,7 @@
  Name="ActiveFunctions"
  Guid="2e084590-0115-4ff8-b512-b2ed5a60fd7e"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Functions>
@@ -24,7 +25,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f54e3851-9e43-41c1-9a2c-fbb018d7ad83"
 >
-</ReqRef><Cases>
+</ReqRef><Comment></Comment>
+<Cases>
 <Case
  Name="Inactive"
  Guid="5a4e46d4-c352-4073-b31f-de19d1fb69f4"
@@ -75,7 +77,7 @@
  Default=""
  Width="100"
  Height="50"
- Name="SuperviseTrainSpeed"
+ Name="SuperviseTrainSpeed_All_Information"
  Guid="1e9a81a1-aa84-4ed9-9823-0441a00a0943"
 >
 <ReqRef
@@ -89,6 +91,570 @@
  Guid="ad9f6da4-b125-47f1-91d6-f5dfb320a6e4"
 >
 <Expression>Kernel.Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="CheckLinkingConsistency"
+ Guid="f691144b-c2c2-485d-8bf7-f1c2c6e4cb0c"
+>
+<ReqRef
+ Id="21a0ae2b-0594-4a82-bcb1-13fdda48901c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="71f057b9-1fc6-46bd-98b3-b8f2d3fd88ce"
+>
+</ReqRef><Cases>
+<Case
+ Name="Value"
+ Guid="9e09b5c0-8188-445c-98ac-bba6dafbe29f"
+>
+<Expression>Mode in [Mode.FS, Mode.LS, Mode.OS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Name="CheckBGMessageIfLinking"
+ Guid="416037ac-b893-475b-ab2c-306bcd18e5b3"
+>
+<ReqRef
+ Id="c3e16444-1771-45e4-aed8-a538b89ed2b3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="da289077-d4a4-4ad4-94cb-ad62294e0b1a"
+>
+</ReqRef><Comment>Check Balise Group Message Consistency if linking consistency is checked</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="6b6de77d-f5d4-4c3e-9372-412bed5cbe3c"
+>
+<Comment></Comment>
+<Expression>Mode in [Mode.FS, Mode.LS, Mode.OS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="220"
+ Width="100"
+ Height="50"
+ Name="CheckBGMessageIfNotLinking"
+ Guid="f81ca6ac-93b2-4a08-b333-0453b253ab5c"
+>
+<ReqRef
+ Id="b0ca9451-479b-42b3-93a6-3c7089a0b7be"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9b6517f8-2493-4e75-8fbd-715f15bc379c"
+>
+</ReqRef><Comment>Check Balise Group Message Consistency if no linking consistency is checked</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="986c2662-cfc8-4e28-9772-e381f0573aae"
+>
+<Comment>This is true for all but the modes NP, SF and IS</Comment>
+<Expression>Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="330"
+ Width="100"
+ Height="50"
+ Name="CheckUnlinkedBGMessage"
+ Guid="d83fbf65-dbb7-48b8-a774-863b2e265a38"
+>
+<ReqRef
+ Id="2a18f48f-66f4-459f-bda8-f71f367705d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="619edf15-842f-4eb9-8bb8-967accd2cf1a"
+>
+</ReqRef><Comment>Check Unlinked Balise Group Message Consistency</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="888d3070-2b56-445a-8ec6-7e9afb954556"
+>
+<Comment>This is true for all but the modes NP, SF and IS</Comment>
+<Expression>Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="440"
+ Width="100"
+ Height="50"
+ Name="CheckRadioMessage"
+ Guid="fc266123-b219-4ce6-ae69-ce79e8a8dfed"
+>
+<ReqRef
+ Id="32b19cf7-49e4-4104-adb6-9015c15794fc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d54e7d53-192b-4718-abb4-8aca8cad93fd"
+>
+</ReqRef><Comment>Check correctness of radio messages</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="ec4c8f9a-ef76-4e3c-9b76-17b1fa44ff5e"
+>
+<Comment>This is true for all but the modes NP, SF and IS</Comment>
+<Expression>Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="550"
+ Width="100"
+ Height="50"
+ Name="CheckRadioSequence"
+ Guid="bfc47931-e886-4b8b-90dd-5c01d2eae3c1"
+>
+<ReqRef
+ Id="e4d36115-94a0-4ddb-9c53-0fb21351ca06"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="16332109-9e3e-49e8-b46e-8dd330e560a6"
+>
+</ReqRef><Comment></Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="09116cdd-9f28-4f91-a563-632a7b447483"
+>
+<Comment>This is true for all but the modes NP, SF and IS</Comment>
+<Expression>Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="CheckSafeRadioConnection"
+ Guid="c064306b-83ac-41a0-afd9-fdd533b4e3d3"
+>
+<ReqRef
+ Id="d39de5d9-4405-4479-93ad-df0ffa6af35e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="817fdd0f-ffad-4a99-862b-7c07d47768dc"
+>
+</ReqRef><Cases>
+<Case
+ Name="In level 2/3"
+ Guid="f7895505-b1ca-4b62-9fbf-b23ca0d76ab1"
+>
+<PreConditions>
+<PreCondition
+ Guid="b5195f57-8d82-4126-a16f-7c1c0e7e4643"
+><Comment></Comment>
+Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+<Expression>Mode in [Mode.FS, Mode.LS, Mode.OS]</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="daea39a7-33bf-4053-8840-bec50f81f707"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="DeterminePositionFromLRBG"
+ Guid="0f393a83-c8b4-43b2-9d6f-0f11614a7b67"
+>
+<ReqRef
+ Id="7f983c70-20d5-4b88-a730-df724d8526c5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b88b8311-73b3-418b-b68f-676cd0d8bb28"
+>
+</ReqRef><Comment>Determine train position referenced to LRBG</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="e3e6cd4e-3d2d-4e6a-8606-cd523b5169d8"
+>
+<Comment>This is true for all but the modes NP, SF and IS</Comment>
+<Expression>Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="220"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="DetermineSpeedAccelerationStandstill"
+ Guid="0a9f52ea-babe-4092-a43b-883d62f946b5"
+>
+<ReqRef
+ Id="dd8fb768-3cd7-45da-9d24-6b006ac002a0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d69d0d28-54d8-498e-b96d-c04e9c541ae8"
+>
+</ReqRef><Comment>Determine train speed, train acceleration, train standstill</Comment>
+<Cases>
+<Case
+ Name="Active"
+ Guid="268e9240-1f32-4233-82de-812a02613330"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="39825e2d-4543-4170-8e3d-00650c59c6c4"
+><Comment></Comment>
+Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Optional"
+ Guid="f9a28199-8024-4713-a379-057ffbca89d4"
+>
+<PreConditions>
+<PreCondition
+ Guid="efbb3c91-5fe4-4149-bec2-cfb3fcedff28"
+>Mode in [Mode.IS]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Inactive"
+ Guid="219566b3-a491-4468-9ec1-72c927378dd6"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="330"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="DetermineGeographicalPosition"
+ Guid="98b519a7-c320-4468-b608-3d50652bfa4c"
+>
+<ReqRef
+ Id="025dbbdb-b1ef-4f64-87f0-2a29a960ed7e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b9cec21b-d60a-4822-b3fa-f2db76f877c6"
+>
+</ReqRef><Comment></Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="62dae707-940c-4a0a-8425-03ed52f145b0"
+>
+<Expression>Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="440"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="ReportPositionAtStandstill"
+ Guid="bc39324e-bc57-4cd0-b9e3-1765ee551b44"
+>
+<ReqRef
+ Id="118fd0d0-1180-401c-8a1d-5582607a2c96"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9afcc3f1-36dd-4c07-a815-faf178905881"
+>
+</ReqRef><Comment>Report train position when train reaches standstill</Comment>
+<Cases>
+<Case
+ Name="Active"
+ Guid="48f87853-590c-472c-9fd8-4b0bbef9e1c7"
+>
+<PreConditions>
+<PreCondition
+ Guid="a3ff780b-47dd-4f24-97a9-29ed5b45f4c3"
+>Mode in [Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.RV]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Optional"
+ Guid="b2e46a51-9950-40ed-aee0-5f4d800a3835"
+>
+<PreConditions>
+<PreCondition
+ Guid="0449000a-07e7-465d-8c32-51e3d660730c"
+>Mode in [Mode.IS]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Inactive"
+ Guid="2c15234d-721c-4136-9ef8-17fa58d90d5c"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="550"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="ReportPositionWhenModeBecomes"
+ Guid="87cc43f5-216c-4e1b-a8cc-daf8330ca83a"
+>
+<ReqRef
+ Id="b20455fc-19b8-4a09-a69c-73c585d7f5c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6e8e7dcd-1e0b-402b-9027-38968b6c3e54"
+>
+</ReqRef><Comment>Report train position when mode changes to</Comment>
+<Cases>
+<Case
+ Name="Report"
+ Guid="346c00fe-dcbc-400d-a8db-22628df93f8a"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="5aee2c1d-a0f6-4b37-be3e-c55a9aa8261d"
+><Comment>All but NP, PS and SF.</Comment>
+Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SF, Mode.SN, Mode.RV]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Report for SH"
+ Guid="bde7547a-260a-4865-ba7a-f9f3c4621452"
+>
+<Comment>The transition PS =&gt; SH shall not be reported</Comment>
+<PreConditions>
+<PreCondition
+ Guid="295d32ba-f59a-4ad3-a7ae-7d3d0550c322"
+><Comment></Comment>
+Mode in [Mode.SH]</PreCondition><PreCondition
+ Guid="884d5621-9ca3-442a-ba99-a5d01e44b3d7"
+><Comment></Comment>
+ModeTransitions.PrevMode in [Mode.PS]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Optional"
+ Guid="7ea0ebb6-1b79-4800-8c36-077b3dc41198"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="efb4d79a-dcad-4d61-90f6-f130708ecfce"
+><Comment></Comment>
+Mode in [Default.Mode.IS]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Do not report"
+ Guid="7d307393-174f-465b-b11c-e4d30f6d47e0"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="ReportPosition_DriverConfirmedIntegrity"
+ Guid="32ea0a07-eab2-4e43-923d-3b11e9cd5061"
+>
+<ReqRef
+ Id="6e703d5c-ef9b-46dc-a38a-635f876f61a4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bb1edd5e-7b0f-421d-9280-9a4672702f9e"
+>
+</ReqRef><Comment>Report train position when train integrity confirmed by driver</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="4a804765-dac0-423c-9281-b96cc52d5d1b"
+>
+<Comment></Comment>
+<Expression>Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.PT]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="ReportPosition_LossOfTrainIntegrity"
+ Guid="0652d09f-42fc-4388-af2f-3902c02c0998"
+>
+<ReqRef
+ Id="f8506e8e-2623-41d3-bcef-41eb8b9df819"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f2d0f83b-c528-43bc-9808-c21d19689a09"
+>
+</ReqRef><Comment>Report train position when loss of train integrity is detected</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="f5a22321-70b0-4942-bb5b-11e5813aa508"
+>
+<Expression>Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.TR, Mode.PT, Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="220"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="ReportPosition_PassRBCBorder"
+ Guid="66df0d83-fa69-4da0-8f0b-d810032b2b53"
+>
+<ReqRef
+ Id="a01edd74-f4d3-4a07-8343-70da2d14f426"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="41bd28c3-8a1b-401b-8c6e-f2b234bfa0ae"
+>
+</ReqRef><Comment>Report train position when train front/rear passes RBC/RBC border</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="afcb7a41-3124-491c-90d2-e6cd20062eab"
+>
+<Comment></Comment>
+<Expression>Mode in [Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.TR]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="330"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="ReportPosition_PassLevelTransition"
+ Guid="2ff91f11-2f17-42e9-8df1-b49e7593041e"
+>
+<ReqRef
+ Id="6ba8948f-12e6-4276-a69a-8e9e1ee29135"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="58bc0155-98d1-4607-a193-01f242c29ee0"
+>
+</ReqRef><Comment>Report train position when train rear passes a level transition border</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="784790e5-a6f8-41cf-bbff-8a2c81ac1f1f"
+>
+<Comment></Comment>
+<Expression>Mode in [Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.UN, Mode.TR, Mode.SN]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="ReportPosition_LevelChangeTrackside"
+ Guid="304fd27c-5a67-46f9-8be3-27eb7aacdd96"
+>
+<ReqRef
+ Id="d6900e28-e6fc-445f-92d8-c3802e42e6d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="af745172-28d5-4337-bc9c-f57fec168713"
+>
+</ReqRef><Comment>Report train position when change of level due to trackside order</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="437c19f2-074e-4717-bd26-b4c56b2dba79"
+>
+<Comment></Comment>
+<Expression>Mode in [Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.TR]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Name="ReportPostion_LevelChangeDriver"
+ Guid="be937185-84e0-4a37-8c28-99c5bf33e2d9"
+>
+<ReqRef
+ Id="3873b246-0ac3-43bf-a16c-1a3e9a10c976"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ca9158a9-1394-4fad-a288-7c6513b833ce"
+>
+</ReqRef><Comment>Report train position when change of level due to driver request</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="0fdb4d61-5a19-46a1-a4e0-a1ab86a8d481"
+>
+<Comment></Comment>
+<Expression>Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="220"
+ Width="100"
+ Height="50"
+ Name="ReportPosition_RBCEstablished"
+ Guid="bef27af9-fe89-4041-ab9b-9f5bc76cea82"
+>
+<ReqRef
+ Id="554b5b3f-67a0-4f6a-9954-b114beb1eae2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f9180e0c-92c4-4db8-9faf-ff74da7592a5"
+>
+</ReqRef><Comment>Report train position when establishing a session with RBC</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="995a5e36-c10e-40bf-b184-2b14c8749249"
+>
+<Comment></Comment>
+<Expression>Mode in [Mode.SB, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="330"
+ Width="100"
+ Height="50"
+ Name="ReportPosition_RBCRequest"
+ Guid="1c231b16-f0f6-445d-b3b2-e1e02142d9a3"
+>
+<ReqRef
+ Id="030c1ff8-a021-4325-967f-3c4c7f6f18e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7be47d1c-3b56-427f-8a72-bba1c925beed"
+>
+</ReqRef><Comment>Report train position as requested by RBC</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="cb14d851-a4ed-4294-99f3-222043d485e9"
+>
+<Comment></Comment>
+<Expression>Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="ReportPosition_BGPassage"
+ Guid="a025bdb7-c93d-41d3-8d6c-c7aaa828330c"
+>
+<ReqRef
+ Id="13c6767e-3561-4e5b-a17f-1d622cd06dfe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a631ef1a-01e2-4d50-86ca-10e021a42541"
+>
+</ReqRef><Comment>Report train position at every balise group passage</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="4ae75180-8373-4ea8-bc39-e6dd83d53325"
+>
+<Comment></Comment>
+<Expression>Mode in [Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
