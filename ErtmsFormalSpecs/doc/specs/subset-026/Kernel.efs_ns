@@ -10639,7 +10639,32 @@ HandleInputs()</Action></Actions>
 <Actions>
 <Action
  Guid="5255382c-3be3-4546-b1f7-379dad85f82b"
->DateAndTime.CurrentTime &lt;- DateAndTime.CurrentTime + CycleDuration</Action></Actions>
+><Comment></Comment>
+DateAndTime.CurrentTime &lt;- DateAndTime.CurrentTime + CycleDuration</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="CleanUp"
+ Name="Clean Up"
+ Guid="5ede8ba9-0011-4a3b-878f-702096c02b6a"
+>
+<ReqRef
+ Id="a0239fb6-709c-4818-9907-463b7c24e661"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eba28f24-d4a4-4294-bacf-3bd78a1d9cb1"
+>
+</ReqRef><Comment>Performs the cleaning of the information which is not needed by the Kernel anymore.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Clean Up"
+ Guid="6a50ba6d-d851-464b-b12e-3e85b0608b73"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="4496b919-4e23-477b-8857-4b9c591f4202"
+>DeleteStoredInformation()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
