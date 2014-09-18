@@ -986,6 +986,26 @@ Announcement.Type == TCTypeEnum.RegenerativeBrake</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ed8122fd-c9c8-49a6-ae08-bd97ec5d66d4"
 >
+</ReqRef><ReqRef
+ Id="22cbd162-caa0-4e5a-a581-176fc2b4b8bb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ecc4b27-fdaf-46a9-91f5-f1401b021e4e"
+>
+</ReqRef><ReqRef
+ Id="555c0388-8b13-4052-acc3-48e9e785af1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3ce2cd62-0f37-4d92-a60e-d50c1c25a350"
+>
+</ReqRef><ReqRef
+ Id="280a63e0-22df-4f00-8510-44fdf99aa05f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ba4f0096-64b2-4bec-8c41-0bbc282e4833"
+>
+</ReqRef><ReqRef
+ Id="ac29655f-87cc-4309-b3bc-4d0736a743ad"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d5282b15-6932-4fc2-b604-a2521f12b76e"
+>
 </ReqRef><Comment>Determines whether the train&apos;s front end has passed the end of the announcement (depending on the track condition announced and whether the announcement is at the start or the end of a track condition)</Comment>
 <Parameters>
 <Parameter
@@ -1132,6 +1152,22 @@ Condition.Type != TCTypeEnum.TractionSystem__none</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bf7cb675-2148-4d17-943f-c78c67ecdc9b"
 >
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="46ca4ea8-b495-4b75-8ec7-60ccf9444a55"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cd305909-2cec-40bc-9bb3-5c4f63621c6b"
+>
+</ReqRef><ReqRef
+ Id="22cbd162-caa0-4e5a-a581-176fc2b4b8bb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="24f43caf-abc8-43d4-b564-482d85b3a19c"
+>
+</ReqRef><ReqRef
+ Id="280a63e0-22df-4f00-8510-44fdf99aa05f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2a830669-29b5-4751-91ce-02804b497e19"
+>
 </ReqRef><Comment>Indicates whether the train has reached the location where the given announcement should start to be displayed</Comment>
 <Parameters>
 <Parameter
@@ -1166,7 +1202,6 @@ Condition.Type == TCTypeEnum.SoundHorn</PreCondition></PreConditions>
 <PreCondition
  Guid="c63e9068-9937-4bfe-9fee-b359faad97a5"
 ><Comment></Comment>
-
 NOT Condition.IsAnnouncement</PreCondition></PreConditions>
 <Expression>TrainPosition.FrontEndPosition( PointOfInterest=&gt;Default.DistanceInterval.Max ) &gt;= Condition.Distance</Expression>
 </Case><Case
@@ -1350,6 +1385,26 @@ Condition.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e573e0df-0292-4fdd-a38b-1cf97ed0c721"
 >
+</ReqRef><ReqRef
+ Id="ac29655f-87cc-4309-b3bc-4d0736a743ad"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fbb0de79-19e8-4803-8e89-1650fac6b9eb"
+>
+</ReqRef><ReqRef
+ Id="a155d204-c214-45ff-a2b4-045e5aa12ba8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3d3a2d85-dbf2-4f24-bb4d-d234ad9221a7"
+>
+</ReqRef><ReqRef
+ Id="22cbd162-caa0-4e5a-a581-176fc2b4b8bb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="30d98990-505e-475e-8a14-1636b3f25adb"
+>
+</ReqRef><ReqRef
+ Id="555c0388-8b13-4052-acc3-48e9e785af1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d4353b0a-634d-4643-b9f8-c658d2496764"
+>
 </ReqRef><Comment>Returns the end distance of a currently active track condition</Comment>
 <Parameters>
 <Parameter
@@ -1367,13 +1422,35 @@ Condition.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="85fce91e-776f-4f8e-9eb4-16352c6f1505"
->TCType == TCTypeEnum.NonStoppingArea</PreCondition></PreConditions>
+><Comment></Comment>
+TCType == TCTypeEnum.NonStoppingArea</PreCondition></PreConditions>
 <Expression>REDUCE TCProfile | (NOT X.Value.NonStoppingArea)
 USING Default.BaseTypes.MinDistance(
     X1=&gt;X.Distance,
     X2=&gt;RESULT
 )
 INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
+</Case><Case
+ Name="Return distance at end of tunnel stopping area"
+ Guid="cf4151e9-81f1-4fb2-90a8-e7e43e1d67b0"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="f091ee4d-ca51-40a7-8b31-d640d6048e68"
+>TCType == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions>
+<Expression>REDUCE TCProfile | (NOT X.Value.TunnelStoppingArea)
+USING Default.BaseTypes.MinDistance(
+    X1=&gt;X.Distance,
+    X2=&gt;RESULT
+)
+INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="8c66f8c2-3fc8-4236-947e-f995fe044d7f"
+>
+<Comment></Comment>
+<Expression>Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn"
@@ -1465,6 +1542,7 @@ INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="02700e95-9f4b-4549-a9df-20da51e1c9f4"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="3f38b783-07e2-4c8a-bfd3-a5e8de65d29b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -1474,6 +1552,26 @@ INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
  Id="3c13572d-5841-4b36-8f01-b73857688c4b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="75ef57de-ba6d-476a-ad14-cd0bda27a2fe"
+>
+</ReqRef><ReqRef
+ Id="22cbd162-caa0-4e5a-a581-176fc2b4b8bb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="02272ef0-0de5-46f3-96cf-3570f197ae01"
+>
+</ReqRef><ReqRef
+ Id="555c0388-8b13-4052-acc3-48e9e785af1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fd96d313-85ca-4f73-9249-6f018a8687bc"
+>
+</ReqRef><ReqRef
+ Id="ac29655f-87cc-4309-b3bc-4d0736a743ad"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="76edba4e-adcd-4666-9c0b-a2d81c340787"
+>
+</ReqRef><ReqRef
+ Id="280a63e0-22df-4f00-8510-44fdf99aa05f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="70549c5a-da7f-44ef-8e32-57f723013e7e"
 >
 </ReqRef><Comment>Checks that the current &quot;Non Stopping Area&quot; or &quot;Tunnel Stopping Area&quot; conditions should no longer be displayed to the driver</Comment>
 <Parameters>
@@ -2127,6 +2225,22 @@ IN Announcements</Action></Actions>
  Id="a155d204-c214-45ff-a2b4-045e5aa12ba8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0de8f4ac-1d81-4c26-b4e4-3074af3b6db4"
+>
+<Comment></Comment>
+</ReqRef><ReqRef
+ Id="46ca4ea8-b495-4b75-8ec7-60ccf9444a55"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="900ebec0-5251-44d6-a7c8-d6dc14202edf"
+>
+</ReqRef><ReqRef
+ Id="22cbd162-caa0-4e5a-a581-176fc2b4b8bb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="635b8b9b-1826-4f51-a694-bef3e83e4376"
+>
+</ReqRef><ReqRef
+ Id="555c0388-8b13-4052-acc3-48e9e785af1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="648eadef-2a87-4ff5-9815-de8d5c2c23b4"
 >
 </ReqRef><Comment>Send announcements from the kernel to the DMI when they become applicable</Comment>
 <Parameters>
