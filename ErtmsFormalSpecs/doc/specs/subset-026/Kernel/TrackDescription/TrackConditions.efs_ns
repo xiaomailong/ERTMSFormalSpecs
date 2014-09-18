@@ -109,6 +109,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d6bd2952-809e-427a-977a-aac6d694728a"
 >
+<Comment></Comment>
 </ReqRef><Comment>Returns True if the TCProfile point is no longer applicable, ie. if there is a more recent profile point that is applied</Comment>
 <Parameters>
 <Parameter
@@ -219,11 +220,15 @@ b) a different combination of enabled braking systems</Comment>
  Width="100"
  Height="50"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="TCMonitor"
  Guid="c4d95f01-be78-4e69-b31e-495bb2fd4152"
 >
-<Comment>Deletes all the track conditions that are no longer applicable</Comment>
+<ReqRef
+ Id="a0239fb6-709c-4818-9907-463b7c24e661"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1cf860dd-3710-4620-b569-ed1ba3d8c4b6"
+>
+</ReqRef><Comment>Deletes all the track conditions that are no longer applicable</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -358,33 +363,4 @@ REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, Trac
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
-<Rules>
-<Rule
- Priority="Processing"
- Y="240"
- Width="100"
- Height="50"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TrackConditionsMonitor"
- Guid="cc34139d-3070-45e8-a515-b8e0e7c2fc14"
->
-<Comment>Delete obsolete track conditions</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TrackConditionsMonitor"
- Guid="ab84c24e-d637-40ba-9e76-579978f3f293"
->
-<Comment>Call the procedure that will monitor each track condition type</Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="05b6fdf8-a1d0-40e9-a0ab-4ac23a6e5ba9"
->TCMonitor()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 </NameSpace>
