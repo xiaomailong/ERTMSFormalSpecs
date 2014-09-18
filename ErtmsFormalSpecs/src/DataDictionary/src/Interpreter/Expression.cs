@@ -19,6 +19,7 @@ namespace DataDictionary.Interpreter
     using DataDictionary.Interpreter.Filter;
     using System;
     using DataDictionary.Values;
+    using System.Threading;
 
     /// <summary>
     /// Stores the association between a interpreter tree node and a value
@@ -582,182 +583,37 @@ namespace DataDictionary.Interpreter
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
         public abstract Types.Type GetExpressionType();
-
-        /// <summary>
-        /// Indicates that all the steps related to the evaluation of the expression should be provided
-        /// </summary>
-        public static bool explain = false;
-
-        /// <summary>
-        /// The part of the explanation that is being explained
-        /// </summary>
-        protected static ExplanationPart currentExplanation;
-
-        /// <summary>
-        /// Setups the explanation
-        /// </summary>
-        /// <param name="previous">The previous explanation to store</param>
-        /// <returns>The previous explanation (the one for which this is setup)</returns>
-        public ExplanationPart SetupExplanation()
-        {
-            ExplanationPart retVal = currentExplanation;
-
-            if (explain)
-            {
-                if (EFSSystem.Runner == null || EFSSystem.Runner.Explain)
-                {
-                    if (currentExplanation != null)
-                    {
-                        ExplanationPart part = new ExplanationPart(Root, ToString());
-                        currentExplanation.SubExplanations.Add(part);
-                        currentExplanation = part;
-                    }
-                }
-            }
-
-            return retVal;
-        }
-
-        /// <summary>
-        /// Completes the explanation
-        /// </summary>
-        /// <param name="previous">the explanation for which this one is created</param>
-        /// <param name="message">the message to set to the current explanation</param>
-        /// <param name="value">the optional value to reference</param>
-        public void CompleteExplanation(ExplanationPart previous, string message, Utils.INamable namable = null)
-        {
-            if (currentExplanation != null)
-            {
-                currentExplanation.Message = message;
-                currentExplanation.Namable = namable;
-                currentExplanation = previous;
-            }
-        }
-
-        /// <summary>
-        /// Sets up a new explanation
-        /// </summary>
-        /// <param name="force"></param>
-        /// <returns></returns>
-        public ExplanationPart SetupNewExplanation(bool force)
-        {
-            ExplanationPart retVal = currentExplanation;
-
-            if (EFSSystem.Runner == null || EFSSystem.Runner.Explain || force)
-            {
-                currentExplanation = new ExplanationPart(Root, this);
-                explain = true;
-            }
-
-            return retVal;
-        }
-
-        /// <summary>
-        /// Completes the explanation and returns its
-        /// </summary>
-        /// <param name="previousExplanation"></param>
-        /// <returns></returns>
-        public ExplanationPart CompleteNewExplanation(ExplanationPart previousExplanation)
-        {
-            ExplanationPart retVal = currentExplanation;
-
-            if (retVal != null)
-            {
-                if (retVal.SubExplanations.Count == 1)
-                {
-                    // The current explanation is just a placeholder
-                    retVal = retVal.SubExplanations[0];
-                }
-
-                currentExplanation = previousExplanation;
-                explain = currentExplanation != null;
-            }
-            else
-            {
-                retVal = previousExplanation;
-            }
-
-            return retVal;
-        }
-
+        
         /// <summary>
         /// Provides all the steps used to get the value of the expression
         /// </summary>
+        /// <param name="context"></param>
         /// <returns></returns>
-        public ExplanationPart Explain(InterpretationContext context)
+        public ExplanationPart Explain(InterpretationContext context = null)
         {
-            ExplanationPart retVal = null;
-            ExplanationPart previous = SetupNewExplanation(true);
+            ExplanationPart retVal = new ExplanationPart(Root, this);
 
-            Values.IValue value = null;
-            try
+            if (context == null)
             {
-                value = GetValue(context);
+                context = new InterpretationContext();
             }
-            catch (Exception)
-            {
-            }
-            finally
-            {
-                retVal = CompleteNewExplanation(previous);
-
-                if (value != null)
-                {
-                    retVal.Expression = this;
-                    retVal.Namable = value;
-                }
-                else
-                {
-                    retVal.Message = "Cannot evaluate value for " + ToString();
-                }
-            }
+            Values.IValue value = GetValue(context, retVal);
 
             return retVal;
         }
-
-        /// <summary>
-        /// Provides all the steps used to get the value of the expression
-        /// </summary>
-        /// <returns></returns>
-        public ExplanationPart Explain()
-        {
-            return Explain(new InterpretationContext());
-        }
-
-        /// <summary>
-        /// Indicates whether we are currently explaining an error.
-        /// When true, AddErrorAndExplain should not try to explain _again_ the error.
-        /// </summary>
-        private static bool ExplainingError = false;
 
         /// <summary>
         /// Adds an error message to the root element and explains it
         /// </summary>
         /// <param name="message"></param>
-        public override void AddErrorAndExplain(string message, InterpretationContext context)
+        public override void AddErrorAndExplain(string message, ExplanationPart explain)
         {
-            if (!ExplainingError)
+            if (RootLog != null)
             {
-                try
-                {
-                    ExplainingError = true;
-                    if (RootLog != null)
-                    {
-                        ExplanationPart explain = Explain(context);
-                        RootLog.AddErrorAndExplain(message, explain);
-                    }
-                }
-                catch (Exception)
-                {
-                    RootLog.AddError(message);
-                }
-                finally
-                {
-                    ExplainingError = false;
-                }
+                ExplanationPart.CreateSubExplanation(explain, message);
+                RootLog.AddErrorAndExplain(message, explain);
             }
         }
-
 
         /// <summary>
         /// Provides the variable referenced by this expression, if any
@@ -773,8 +629,9 @@ namespace DataDictionary.Interpreter
         /// Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public virtual Values.IValue GetValue(InterpretationContext context)
+        public virtual Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
             return null;
         }
@@ -782,9 +639,10 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Provides the callable that is called by this expression
         /// </summary>
-        /// <param name="namable"></param>
+        /// <param name="context"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public virtual ICallable getCalled(InterpretationContext context)
+        public virtual ICallable getCalled(InterpretationContext context, ExplanationPart explain)
         {
             return null;
         }
@@ -880,8 +738,9 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public virtual Functions.Graph createGraph(InterpretationContext context, Parameter parameter)
+        public virtual Functions.Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
             Functions.Graph retVal = null;
 
@@ -894,8 +753,9 @@ namespace DataDictionary.Interpreter
         /// <param name="context">the context used to create the surface</param>
         /// <param name="xParam">The X axis of this surface</param>
         /// <param name="yParam">The Y axis of this surface</param>
+        /// <param name="explain"></param>
         /// <returns>The surface which corresponds to this expression</returns>
-        public virtual Functions.Surface createSurface(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam)
+        public virtual Functions.Surface createSurface(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
         {
             Functions.Surface retVal = null;
 

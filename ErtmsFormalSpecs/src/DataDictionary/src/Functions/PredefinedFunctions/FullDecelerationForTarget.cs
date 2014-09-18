@@ -16,6 +16,7 @@
 using System.Collections.Generic;
 using ErtmsSolutions.Etcs.Subset26.BrakingCurves;
 using ErtmsSolutions.SiUnits;
+using DataDictionary.Interpreter;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -67,8 +68,9 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// </summary>
         /// <param name="context"></param>
         /// <param name="parameter"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public override Graph createGraph(Interpreter.InterpretationContext context, Parameter parameter)
+        public override Graph createGraph(Interpreter.InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
             Graph retVal = new Graph();
 
@@ -87,7 +89,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
                 Function decelerationFactor = context.findOnStack(DecelerationFactor).Value as Function;
                 if (decelerationFactor != null)
                 {
-                    Surface DecelerationSurface = decelerationFactor.createSurface(context);
+                    Surface DecelerationSurface = decelerationFactor.createSurface(context, explain);
                     if (DecelerationSurface != null)
                     {
                         AccelerationSpeedDistanceSurface accelerationSurface = DecelerationSurface.createAccelerationSpeedDistanceSurface(double.MaxValue, double.MaxValue);
@@ -129,10 +131,11 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// Provides the value of the function
         /// </summary>
-        /// <param name="context">The evaluation context</param>
-        /// <param name="actuals">The parametes applied to this function call</param>
-        /// <returns></returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals)
+        /// <param name="context"></param>
+        /// <param name="actuals">the actual parameters values</param>
+        /// <param name="explain"></param>
+        /// <returns>The value for the function application</returns>
+        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
         {
             Values.IValue retVal = null;
 
@@ -147,7 +150,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
             parameter.Type = EFSSystem.DoubleType;
             function.appendParameters(parameter);
             function.ReturnType = EFSSystem.DoubleType;
-            function.Graph = createGraph(context, parameter);
+            function.Graph = createGraph(context, parameter, explain);
 
             retVal = function;
             context.LocalScope.PopContext(token);

@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
+using DataDictionary.Interpreter;
 
 
 namespace DataDictionary.Functions.PredefinedFunctions
@@ -78,11 +79,11 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// </summary>
         /// <param name="context">the context used to create the graph</param>
         /// <returns></returns>
-        public override Graph createGraph(Interpreter.InterpretationContext context, Parameter parameter)
+        public override Graph createGraph(Interpreter.InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
             Graph retVal = null;
 
-            Graph graph = createGraphForValue(context, context.findOnStack(Function).Value, parameter);
+            Graph graph = createGraphForValue(context, context.findOnStack(Function).Value, explain, parameter);
             if (graph != null)
             {
                 double speed = Functions.Function.getDoubleValue(context.findOnStack(Speed).Value);
@@ -111,11 +112,11 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// Provides the value of the function
         /// </summary>
-        /// <param name="instance">the instance on which the function is evaluated</param>
+        /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
-        /// <param name="localScope">the values of local variables</param>
+        /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals)
+        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
         {
             Values.IValue retVal = null;
 
@@ -129,7 +130,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
                 Parameter parameter = (Parameter)function.FormalParameters[0];
                 int token2 = context.LocalScope.PushContext();
                 context.LocalScope.setGraphParameter(parameter);
-                Graph graph = function.createGraph(context, (Parameter)function.FormalParameters[0]);
+                Graph graph = function.createGraph(context, (Parameter)function.FormalParameters[0], explain);
                 context.LocalScope.PopContext(token2);
                 double solutionX = graph.SolutionX(speed);
                 if ( solutionX == double.MaxValue )

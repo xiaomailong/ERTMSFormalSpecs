@@ -136,28 +136,35 @@ namespace DataDictionary.Interpreter
             return retVal;
         }
 
-        public override ICallable getCalled(InterpretationContext context)
+        /// <summary>
+        /// Provides the callable that is called by this expression
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="explain"></param>
+        /// <returns></returns>
+        public override ICallable getCalled(InterpretationContext context, ExplanationPart explain)
         {
-            return GetValue(context) as ICallable;
+            return GetValue(context, explain) as ICallable;
         }
 
         /// <summary>
         /// Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
+        /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context)
+        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
             Values.IValue retVal = null;
 
-            ExplanationPart previous = SetupExplanation();
+            ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, Name + " = ");
             try
             {
                 if (Parameters.Count == 1)
                 {
                     int token = context.LocalScope.PushContext();
                     context.LocalScope.setGraphParameter(Parameters[0]);
-                    Functions.Graph graph = createGraph(context, Parameters[0]);
+                    Functions.Graph graph = createGraph(context, Parameters[0], subExplanation);
                     context.LocalScope.PopContext(token);
                     if (graph != null)
                     {
@@ -168,7 +175,7 @@ namespace DataDictionary.Interpreter
                 {
                     int token = context.LocalScope.PushContext();
                     context.LocalScope.setSurfaceParameters(Parameters[0], Parameters[1]);
-                    Functions.Surface surface = createSurface(context, Parameters[0], Parameters[1]);
+                    Functions.Surface surface = createSurface(context, Parameters[0], Parameters[1], subExplanation);
                     context.LocalScope.PopContext(token);
                     if (surface != null)
                     {
@@ -184,10 +191,7 @@ namespace DataDictionary.Interpreter
             }
             finally
             {
-                if (explain)
-                {
-                    CompleteExplanation(previous, Name + " = ", retVal);
-                }
+                ExplanationPart.SetNamable(subExplanation, retVal); 
             }
 
             return retVal;
@@ -253,14 +257,15 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public override Functions.Graph createGraph(InterpretationContext context, Parameter parameter)
+        public override Functions.Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
-            Functions.Graph retVal = base.createGraph(context, parameter);
+            Functions.Graph retVal = base.createGraph(context, parameter, explain);
 
             if (parameter == Parameters[0] || parameter == Parameters[1])
             {
-                retVal = Expression.createGraph(context, parameter);
+                retVal = Expression.createGraph(context, parameter, explain);
             }
             else
             {
@@ -276,10 +281,11 @@ namespace DataDictionary.Interpreter
         /// <param name="context">the context used to create the surface</param>
         /// <param name="xParam">The X axis of this surface</param>
         /// <param name="yParam">The Y axis of this surface</param>
+        /// <param name="explain"></param>
         /// <returns>The surface which corresponds to this expression</returns>
-        public override Functions.Surface createSurface(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam)
+        public override Functions.Surface createSurface(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
         {
-            Functions.Surface retVal = base.createSurface(context, xParam, yParam);
+            Functions.Surface retVal = base.createSurface(context, xParam, yParam, explain);
 
             if (xParam == null || yParam == null)
             {
@@ -291,7 +297,7 @@ namespace DataDictionary.Interpreter
                 Parameter xAxis = Parameters[0];
                 Parameter yAxis = Parameters[1];
                 context.LocalScope.setSurfaceParameters(xAxis, yAxis);
-                retVal = Expression.createSurface(context, xAxis, yAxis);
+                retVal = Expression.createSurface(context, xAxis, yAxis, explain);
                 context.LocalScope.PopContext(token);
             }
             retVal.XParameter = xParam;

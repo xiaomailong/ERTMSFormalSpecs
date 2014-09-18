@@ -133,13 +133,15 @@ namespace DataDictionary.Functions
         /// <summary>
         /// Expression of the case
         /// </summary>
-        public bool EvaluatePreConditions(InterpretationContext context)
+        /// <param name="context"></param>
+        /// <param name="explain"></param>
+        public bool EvaluatePreConditions(InterpretationContext context, ExplanationPart explain)
         {
             bool retVal = true;
             foreach (DataDictionary.Rules.PreCondition preCondition in PreConditions)
             {
                 Interpreter.Expression expression = preCondition.Expression;
-                Values.BoolValue value = expression.GetValue(context) as Values.BoolValue;
+                Values.BoolValue value = expression.GetValue(context, explain) as Values.BoolValue;
 
                 if (value != null)
                 {

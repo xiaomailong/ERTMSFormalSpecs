@@ -324,7 +324,7 @@ namespace DataDictionary.Variables
                         // The variable defines a default value, try to interpret it
                         if (Expression != null)
                         {
-                            retVal = Expression.GetValue(new Interpreter.InterpretationContext(Type));
+                            retVal = Expression.GetValue(new Interpreter.InterpretationContext(Type), null);
                             if (retVal != null && !Type.Match(retVal.Type))
                             {
                                 AddError("Default value type (" + retVal.Type.Name + ")does not match variable type (" + Type.Name + ")");

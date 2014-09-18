@@ -198,14 +198,16 @@ namespace DataDictionary.Interpreter.Statement
         /// Indicates whether the condition is satisfied with the value provided
         /// Hyp : the value of the iterator variable has been assigned before
         /// </summary>
+        /// <param name="context"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public bool conditionSatisfied(InterpretationContext context)
+        public bool conditionSatisfied(InterpretationContext context, ExplanationPart explain)
         {
             bool retVal = true;
 
             if (ConditionExpression != null)
             {
-                Values.BoolValue b = ConditionExpression.GetValue(context) as Values.BoolValue;
+                Values.BoolValue b = ConditionExpression.GetValue(context, explain) as Values.BoolValue;
                 if (b == null)
                 {
                     retVal = false;
@@ -247,7 +249,7 @@ namespace DataDictionary.Interpreter.Statement
                             if (value != EFSSystem.EmptyValue)
                             {
                                 IteratorVariable.Value = value;
-                                if (conditionSatisfied(context))
+                                if (conditionSatisfied(context, explanation))
                                 {
                                     AppliedStatement.GetChanges(context, changes, explanation, apply, runner);
                                 }

@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
+using DataDictionary.Interpreter;
 
 
 namespace DataDictionary.Functions.PredefinedFunctions
@@ -64,20 +65,19 @@ namespace DataDictionary.Functions.PredefinedFunctions
             get { return EFSSystem.DoubleType; }
         }
 
-
         /// <summary>
         /// Provides the value of the function
         /// </summary>
-        /// <param name="instance">the instance on which the function is evaluated</param>
+        /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
-        /// <param name="localScope">the values of local variables</param>
+        /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals)
+        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
         {
             Values.IValue retVal = null;
 
             AssignParameters(context, actuals);
-            Graph graph = createGraphForValue(context, context.findOnStack(FunctionA).Value);
+            Graph graph = createGraphForValue(context, context.findOnStack(FunctionA).Value, explain);
             if (graph != null)
             {
                 foreach (Graph.Segment segment in graph.Segments)
@@ -94,7 +94,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
                             actual.Value = new Values.DoubleValue(EFSSystem.DoubleType, speed);
                             Dictionary<Variables.Actual, Values.IValue> values = new Dictionary<Variables.Actual, Values.IValue>();
                             values[actual] = new Values.DoubleValue(EFSSystem.DoubleType, speed);
-                            Values.IValue solution = function.Evaluate(context, values);
+                            Values.IValue solution = function.Evaluate(context, values, explain);
                             double doubleValue = getDoubleValue(solution);
 
                             if (doubleValue >= segment.Start && doubleValue <= segment.End)

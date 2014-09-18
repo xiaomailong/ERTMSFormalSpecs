@@ -498,7 +498,7 @@ namespace GUI.IPCInterface
             DataDictionary.Interpreter.Expression expressionTree = EFSSystem.INSTANCE.Parser.Expression(EFSSystem.INSTANCE.Dictionaries[0], expression);
             if (expressionTree != null)
             {
-                retVal = convertOut(expressionTree.GetValue(new DataDictionary.Interpreter.InterpretationContext()));
+                retVal = convertOut(expressionTree.GetValue(new DataDictionary.Interpreter.InterpretationContext(), null));
             }
             else
             {

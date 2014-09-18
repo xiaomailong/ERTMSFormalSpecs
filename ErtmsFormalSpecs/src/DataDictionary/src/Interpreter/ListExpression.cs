@@ -126,13 +126,14 @@ namespace DataDictionary.Interpreter
         /// Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
+        /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context)
+        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
             List<IValue> elements = new List<IValue>();
             foreach (Expression expr in ListElements)
             {
-                IValue val = expr.GetValue(context);
+                IValue val = expr.GetValue(context, explain);
                 if (val != null)
                 {
                     elements.Add(val);

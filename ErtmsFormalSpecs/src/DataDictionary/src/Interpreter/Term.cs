@@ -201,8 +201,9 @@ namespace DataDictionary.Interpreter
         /// Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public Values.IValue GetValue(InterpretationContext context)
+        public Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
             Values.IValue retVal = null;
 
@@ -212,7 +213,7 @@ namespace DataDictionary.Interpreter
             }
             else if (LiteralValue != null)
             {
-                retVal = LiteralValue.GetValue(context);
+                retVal = LiteralValue.GetValue(context, explain);
             }
 
             return retVal;
@@ -222,8 +223,9 @@ namespace DataDictionary.Interpreter
         /// Provides the element called by this term, if any
         /// </summary>
         /// <param name="context">The context on which the variable must be found</param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public ICallable getCalled(InterpretationContext context)
+        public ICallable getCalled(InterpretationContext context, ExplanationPart explain)
         {
             ICallable retVal = null;
 

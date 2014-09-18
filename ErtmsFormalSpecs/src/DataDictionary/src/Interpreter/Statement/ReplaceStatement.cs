@@ -175,14 +175,16 @@ namespace DataDictionary.Interpreter.Statement
         /// Indicates whether the condition is satisfied with the value provided
         /// Hyp : the value of the iterator variable has been assigned before
         /// </summary>
+        /// <param name="context"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public bool conditionSatisfied(InterpretationContext context)
+        public bool conditionSatisfied(InterpretationContext context, ExplanationPart explain)
         {
             bool retVal = true;
 
             if (Condition != null)
             {
-                Values.BoolValue b = Condition.GetValue(context) as Values.BoolValue;
+                Values.BoolValue b = Condition.GetValue(context, explain) as Values.BoolValue;
                 if (b == null)
                 {
                     retVal = false;
@@ -259,7 +261,7 @@ namespace DataDictionary.Interpreter.Statement
                     foreach (Values.IValue current in newListValue.Val)
                     {
                         IteratorVariable.Value = current;
-                        if (conditionSatisfied(context))
+                        if (conditionSatisfied(context, explanation))
                         {
                             break;
                         }
@@ -268,7 +270,7 @@ namespace DataDictionary.Interpreter.Statement
 
                     if (i < newListValue.Val.Count)
                     {
-                        Values.IValue value = Value.GetValue(context);
+                        Values.IValue value = Value.GetValue(context, explanation);
                         if (value != null)
                         {
                             newListValue.Val[i] = value;

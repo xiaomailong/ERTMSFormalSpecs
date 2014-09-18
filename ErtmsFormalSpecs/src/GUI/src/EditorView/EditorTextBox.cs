@@ -1317,7 +1317,7 @@ namespace GUI
 
                     InterpretationContext context = new InterpretationContext(Model);
                     context.UseDefaultValue = false;
-                    IValue value = expression.GetValue(context);
+                    IValue value = expression.GetValue(context, null);
                     if (value != null)
                     {
                         StructureValueEditor.Window window = new StructureValueEditor.Window();
@@ -1408,6 +1408,7 @@ namespace GUI
 
         private void openStructureEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            bool dialogShown = false;
             ExplanationPart part = Instance as ExplanationPart;
             if (part != null)
             {
@@ -1417,9 +1418,25 @@ namespace GUI
                     StructureValueEditor.Window window = new StructureValueEditor.Window();
                     window.SetModel(value);
                     window.ShowDialog();
+                    dialogShown = true;
+                }
+
+                DataDictionary.Rules.Action action = part.Element as DataDictionary.Rules.Action;
+                if (!dialogShown && action != null )
+                {
+                    VisitStatement(action.Statement);
+                    dialogShown = true;
+                }
+
+                DataDictionary.Tests.Expectation expectation = part.Element as DataDictionary.Tests.Expectation;
+                if (!dialogShown && expectation != null)
+                {
+                    VisitExpression(expectation.Expression);
+                    dialogShown = true;
                 }
             }
-            else
+
+            if (!dialogShown)
             {
                 bool doSemanticalAnalysis = true;
                 bool silent = true;

@@ -70,10 +70,10 @@ namespace DataDictionary.Interpreter.Statement
         {
             get
             {
-                InterpretationContext ctxt = getContext(new InterpretationContext(Root));
+                InterpretationContext ctxt = getContext(new InterpretationContext(Root), null);
                 if (Call != null)
                 {
-                    Functions.Procedure procedure = Call.getProcedure(ctxt);
+                    Functions.Procedure procedure = Call.getProcedure(ctxt, null);
                     if (procedure != null)
                     {
                         return procedure.Rules;
@@ -181,15 +181,16 @@ namespace DataDictionary.Interpreter.Statement
         /// Provides the context on which function evaluation should be performed
         /// </summary>
         /// <param name="context"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        private InterpretationContext getContext(InterpretationContext context)
+        private InterpretationContext getContext(InterpretationContext context, ExplanationPart explain)
         {
             InterpretationContext retVal = context;
 
             DerefExpression deref = Call.Called as DerefExpression;
             if (deref != null)
             {
-                Values.IValue value = deref.GetPrefixValue(context, deref.Arguments.Count - 1) as Values.IValue;
+                Values.IValue value = deref.GetPrefixValue(context, deref.Arguments.Count - 1, explain) as Values.IValue;
                 if (value != null)
                 {
                     retVal = new InterpretationContext(context, value);
@@ -254,8 +255,8 @@ namespace DataDictionary.Interpreter.Statement
         {
             if (Call != null)
             {
-                InterpretationContext ctxt = getContext(context);
-                Functions.Procedure procedure = Call.getProcedure(ctxt);
+                InterpretationContext ctxt = getContext(context, explanation);
+                Functions.Procedure procedure = Call.getProcedure(ctxt, explanation);
                 if (procedure != null)
                 {
                     ctxt.HasSideEffects = true;
@@ -296,7 +297,7 @@ namespace DataDictionary.Interpreter.Statement
                     }
 
                     int token = ctxt.LocalScope.PushContext();
-                    foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in Call.AssignParameterValues(context, procedure, true))
+                    foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in Call.AssignParameterValues(context, procedure, true, explanation))
                     {
                         ctxt.LocalScope.setVariable(pair.Key, pair.Value);
                     }

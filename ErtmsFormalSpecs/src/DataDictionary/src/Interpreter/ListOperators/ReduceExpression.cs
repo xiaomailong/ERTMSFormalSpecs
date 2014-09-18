@@ -98,26 +98,27 @@ namespace DataDictionary.Interpreter.ListOperators
         /// Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
+        /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context)
+        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
             Values.IValue retVal = null;
 
-            Values.ListValue value = ListExpression.GetValue(context) as Values.ListValue;
+            Values.ListValue value = ListExpression.GetValue(context, explain) as Values.ListValue;
             if (value != null)
             {
                 int token = PrepareIteration(context);
                 context.LocalScope.setVariable(AccumulatorVariable);
-                AccumulatorVariable.Value = InitialValue.GetValue(context);
+                AccumulatorVariable.Value = InitialValue.GetValue(context, explain);
 
                 foreach (Values.IValue v in value.Val)
                 {
                     if (v != EFSSystem.EmptyValue)
                     {
                         IteratorVariable.Value = v;
-                        if (conditionSatisfied(context))
+                        if (conditionSatisfied(context, explain))
                         {
-                            AccumulatorVariable.Value = IteratorExpression.GetValue(context);
+                            AccumulatorVariable.Value = IteratorExpression.GetValue(context, explain);
                         }
                     }
                     NextIteration();
@@ -136,16 +137,17 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <summary>
         /// Provides the callable that is called by this expression
         /// </summary>
-        /// <param name="namable"></param>
+        /// <param name="context"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public override ICallable getCalled(InterpretationContext context)
+        public override ICallable getCalled(InterpretationContext context, ExplanationPart explain)
         {
             ICallable retVal = null;
 
             Functions.Function function = InitialValue.Ref as Functions.Function;
             if (function == null)
             {
-                function = InitialValue.getCalled(context) as Functions.Function;
+                function = InitialValue.getCalled(context, explain) as Functions.Function;
             }
 
             if (function != null)
@@ -154,7 +156,7 @@ namespace DataDictionary.Interpreter.ListOperators
                 {
                     int token = context.LocalScope.PushContext();
                     context.LocalScope.setGraphParameter((Parameter)function.FormalParameters[0]);
-                    Functions.Graph graph = createGraph(context, (Parameter)function.FormalParameters[0]);
+                    Functions.Graph graph = createGraph(context, (Parameter)function.FormalParameters[0], explain);
                     context.LocalScope.PopContext(token);
                     if (graph != null)
                     {
@@ -165,7 +167,7 @@ namespace DataDictionary.Interpreter.ListOperators
                 {
                     int token = context.LocalScope.PushContext();
                     context.LocalScope.setSurfaceParameters((Parameter)function.FormalParameters[0], (Parameter)function.FormalParameters[1]);
-                    Functions.Surface surface = createSurface(context, (Parameter)function.FormalParameters[0], (Parameter)function.FormalParameters[1]);
+                    Functions.Surface surface = createSurface(context, (Parameter)function.FormalParameters[0], (Parameter)function.FormalParameters[1], explain);
                     context.LocalScope.PopContext(token);
                     if (surface != null)
                     {
@@ -243,15 +245,16 @@ namespace DataDictionary.Interpreter.ListOperators
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public override Functions.Graph createGraph(InterpretationContext context, Parameter parameter)
+        public override Functions.Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
-            Functions.Graph retVal = base.createGraph(context, parameter);
+            Functions.Graph retVal = base.createGraph(context, parameter, explain);
 
-            Functions.Graph graph = InitialValue.createGraph(context, parameter);
+            Functions.Graph graph = InitialValue.createGraph(context, parameter, explain);
             if (graph != null)
             {
-                Values.ListValue value = ListExpression.GetValue(context) as Values.ListValue;
+                Values.ListValue value = ListExpression.GetValue(context, explain) as Values.ListValue;
                 if (value != null)
                 {
                     int token = PrepareIteration(context);
@@ -262,9 +265,9 @@ namespace DataDictionary.Interpreter.ListOperators
                         if (v != EFSSystem.EmptyValue)
                         {
                             IteratorVariable.Value = v;
-                            if (conditionSatisfied(context))
+                            if (conditionSatisfied(context, explain))
                             {
-                                AccumulatorVariable.Value = IteratorExpression.GetValue(context);
+                                AccumulatorVariable.Value = IteratorExpression.GetValue(context, explain);
                             }
                         }
                         NextIteration();
@@ -295,15 +298,16 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="context">the context used to create the surface</param>
         /// <param name="xParam">The X axis of this surface</param>
         /// <param name="yParam">The Y axis of this surface</param>
+        /// <param name="explain"></param>
         /// <returns>The surface which corresponds to this expression</returns>
-        public override Functions.Surface createSurface(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam)
+        public override Functions.Surface createSurface(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
         {
-            Functions.Surface retVal = base.createSurface(context, xParam, yParam);
+            Functions.Surface retVal = base.createSurface(context, xParam, yParam, explain);
 
-            Functions.Surface surface = InitialValue.createSurface(context, xParam, yParam);
+            Functions.Surface surface = InitialValue.createSurface(context, xParam, yParam, explain);
             if (surface != null)
             {
-                Values.ListValue value = ListExpression.GetValue(context) as Values.ListValue;
+                Values.ListValue value = ListExpression.GetValue(context, explain) as Values.ListValue;
                 if (value != null)
                 {
                     int token = PrepareIteration(context);
@@ -314,9 +318,9 @@ namespace DataDictionary.Interpreter.ListOperators
                         if (v != EFSSystem.EmptyValue)
                         {
                             IteratorVariable.Value = v;
-                            if (conditionSatisfied(context))
+                            if (conditionSatisfied(context, explain))
                             {
-                                AccumulatorVariable.Value = IteratorExpression.GetValue(context);
+                                AccumulatorVariable.Value = IteratorExpression.GetValue(context, explain);
                             }
                         }
                         NextIteration();

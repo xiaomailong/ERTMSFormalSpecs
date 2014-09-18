@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
+using DataDictionary.Interpreter;
 
 
 namespace DataDictionary.Functions.PredefinedFunctions
@@ -103,15 +104,16 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// Provides the surface of this function if it has been statically defined
         /// </summary>
         /// <param name="context">the context used to create the surface</param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public override Surface createSurface(Interpreter.InterpretationContext context)
+        public override Surface createSurface(Interpreter.InterpretationContext context, ExplanationPart explain)
         {
             Surface retVal = null;
 
-            Surface defaultSurface = createSurfaceForValue(context, context.findOnStack(DefaultFunction).Value);
+            Surface defaultSurface = createSurfaceForValue(context, context.findOnStack(DefaultFunction).Value, explain);
             if (defaultSurface != null)
             {
-                Surface overrideSurface = createSurfaceForValue(context, context.findOnStack(OverrideFunction).Value);
+                Surface overrideSurface = createSurfaceForValue(context, context.findOnStack(OverrideFunction).Value, explain);
                 if (overrideSurface != null)
                 {
                     retVal = defaultSurface.Override(overrideSurface);
@@ -132,11 +134,11 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// Provides the value of the function
         /// </summary>
-        /// <param name="instance">the instance on which the function is evaluated</param>
+        /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
-        /// <param name="localScope">the values of local variables</param>
+        /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals)
+        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
         {
             Values.IValue retVal = null;
 
@@ -146,7 +148,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
             Function function = (Function)Generated.acceptor.getFactory().createFunction();
             function.Name = "Override ( Default => " + getName(DefaultFunction) + ", Override => " + getName(OverrideFunction) + ")";
             function.Enclosing = EFSSystem;
-            function.Surface = createSurface(context);
+            function.Surface = createSurface(context, explain);
 
             Parameter parameter = (Parameter)Generated.acceptor.getFactory().createParameter();
             parameter.Name = "X";

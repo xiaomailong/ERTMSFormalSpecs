@@ -115,9 +115,8 @@ namespace GUI.TestRunnerView.TimeLineControl
 
                 if (expectation != null)
                 {
-                    DataDictionary.Interpreter.ExplanationPart explain = expectation.Expression.Explain();
                     ExplainBox explainTextBox = new ExplainBox();
-                    explainTextBox.setExplanation(explain);
+                    explainTextBox.setExplanation(expect.Explanation);
                     GUIUtils.MDIWindow.AddChildWindow(explainTextBox);
                 }
             }

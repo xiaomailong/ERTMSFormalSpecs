@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using ErtmsSolutions.Etcs.Subset26.BrakingCurves;
 using ErtmsSolutions.SiUnits;
+using DataDictionary.Interpreter;
 
 namespace DataDictionary.Functions
 {
@@ -853,15 +854,17 @@ namespace DataDictionary.Functions
         /// Provides the graph associated to the namable
         /// </summary>
         /// <param name="namable"></param>
+        /// <param name="parameter"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public static Graph createGraph(Utils.INamable namable, Parameter parameter)
+        public static Graph createGraph(Utils.INamable namable, Parameter parameter, ExplanationPart explain)
         {
             Graph retVal = null;
 
             Functions.Function function = namable as Functions.Function;
             if (function != null)
             {
-                retVal = function.createGraphForParameter(new Interpreter.InterpretationContext(), parameter);
+                retVal = function.createGraphForParameter(new Interpreter.InterpretationContext(), parameter, explain);
             }
 
             if (retVal == null)
@@ -1275,7 +1278,7 @@ namespace DataDictionary.Functions
         /// <param name="context">the context used to evaluate the function</param>
         /// <param name="increment">The increment function do add</param>
         /// <returns></returns>
-        public Graph AddIncrement(Interpreter.InterpretationContext context, Functions.Function increment)
+        public Graph AddIncrement(Interpreter.InterpretationContext context, Functions.Function increment, ExplanationPart explain)
         {
             Graph retVal = new Graph();
 
@@ -1287,7 +1290,7 @@ namespace DataDictionary.Functions
                     Dictionary<Variables.Actual, Values.IValue> actuals = new Dictionary<Variables.Actual, Values.IValue>();
                     Variables.Actual actual = parameter.createActual();
                     actuals[actual] = new Values.DoubleValue(increment.EFSSystem.DoubleType, segment.Expression.v0);
-                    Values.IValue result = increment.Evaluate(context, actuals);
+                    Values.IValue result = increment.Evaluate(context, actuals, explain);
                     Segment newSegment = new Segment(segment);
                     newSegment.Expression.v0 = segment.Expression.v0 + Function.getDoubleValue(result);
                     retVal.addSegment(newSegment);

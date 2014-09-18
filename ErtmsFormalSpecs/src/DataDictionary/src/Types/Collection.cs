@@ -180,7 +180,7 @@ namespace DataDictionary.Types
             Interpreter.Expression expression = EFSSystem.Parser.Expression(this, image);
             if (expression != null)
             {
-                retVal = expression.GetValue(new Interpreter.InterpretationContext(this));
+                retVal = expression.GetValue(new Interpreter.InterpretationContext(this), null);
             }
 
             return retVal;

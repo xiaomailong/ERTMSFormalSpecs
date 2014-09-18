@@ -274,13 +274,7 @@ namespace DataDictionary.Rules
                 {
                     Interpreter.Expression expression = preCondition.Expression;
 
-                    ExplanationPart previous = null;
-                    if (explanation != null)
-                    {
-                        previous = expression.SetupNewExplanation(false);
-                    }
-
-                    Values.BoolValue value = expression.GetValue(context) as Values.BoolValue;
+                    Values.BoolValue value = expression.GetValue(context, ExplanationPart.CreateSubExplanation(explanation, expression)) as Values.BoolValue;
                     if (value != null)
                     {
                         retVal = retVal && value.Val;
@@ -291,13 +285,6 @@ namespace DataDictionary.Rules
                         // TODO : Handle Error
                     }
 
-                    // Log.InfoFormat("Precondition {0} value {1}", preCondition.ExpressionText, retVal);
-
-                    if (previous != null && explanation != null)
-                    {
-                        explanation.SubExplanations.Add(expression.CompleteNewExplanation(previous));
-                    }
-
                     if (!retVal)
                     {
                         break;
@@ -305,7 +292,7 @@ namespace DataDictionary.Rules
                 }
                 catch (Exception e)
                 {
-                    preCondition.Expression.AddErrorAndExplain(e.Message, context);
+                    preCondition.Expression.AddErrorAndExplain(e.Message, explanation);
                     retVal = false;
                     break;
                 }

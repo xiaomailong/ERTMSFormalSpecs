@@ -189,45 +189,45 @@ namespace DataDictionary.Interpreter.Statement
                 variable.Value = listValue;
                 if (listValue != null)
                 {
-                    Values.IValue value = Value.GetValue(context);
+                    Values.IValue value = Value.GetValue(context, explanation);
                     if (value != null)
                     {
                         if (!listValue.Val.Contains(value))
                         {
-                            Values.ListValue newListValue = new Values.ListValue(listValue);
-                            int index = newListValue.Val.IndexOf(EFSSystem.EmptyValue);
-                            if (index >= 0)
+                        Values.ListValue newListValue = new Values.ListValue(listValue);
+                        int index = newListValue.Val.IndexOf(EFSSystem.EmptyValue);
+                        if (index >= 0)
+                        {
+                            newListValue.Val[index] = value;
+                        }
+                        else
+                        {
+                            // List is full, try to remove an element before inserting the new element
+                            if (ReplaceElement != null)
                             {
-                                newListValue.Val[index] = value;
-                            }
-                            else
-                            {
-                                // List is full, try to remove an element before inserting the new element
-                                if (ReplaceElement != null)
+                                Values.IValue removeValue = ReplaceElement.GetValue(context, explanation);
+                                index = newListValue.Val.IndexOf(removeValue);
+                                if (index >= 0)
                                 {
-                                    Values.IValue removeValue = ReplaceElement.GetValue(context);
-                                    index = newListValue.Val.IndexOf(removeValue);
-                                    if (index >= 0)
-                                    {
-                                        newListValue.Val[index] = value;
-                                    }
-                                    else
-                                    {
-                                        Root.AddError("Cannot remove replacing element " + removeValue.Name);
-                                    }
+                                    newListValue.Val[index] = value;
                                 }
                                 else
                                 {
-                                    Root.AddError("Cannot add new element in list value : list is full");
+                                    Root.AddError("Cannot remove replacing element " + removeValue.Name);
                                 }
                             }
-
-                            Rules.Change change = new Rules.Change(variable, variable.Value, newListValue);
-                            changes.Add(change, apply, runner);
-
-                            if (explanation != null)
+                            else
                             {
-                                explanation.SubExplanations.Add(new ExplanationPart(Root, change));
+                                Root.AddError("Cannot add new element in list value : list is full");
+                            }
+                        }
+
+                        Rules.Change change = new Rules.Change(variable, variable.Value, newListValue);
+                        changes.Add(change, apply, runner);
+
+                        if (explanation != null)
+                        {
+                            explanation.SubExplanations.Add(new ExplanationPart(Root, change));
                             }
                         }
                         else 
