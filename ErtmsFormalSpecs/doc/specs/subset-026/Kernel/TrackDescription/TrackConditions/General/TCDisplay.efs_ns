@@ -1639,6 +1639,26 @@ Condition.Type == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions>
 <Comment></Comment>
 <Expression>False</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="ConditionAlreadyDisplayed"
+ Guid="55717b3d-4688-43f3-901d-b91ff5369b7a"
+>
+<Parameters>
+<Parameter
+ Type="TCAnnouncementStruct"
+ Name="ActiveCondition"
+ Guid="250972e6-7d19-4b63-912b-a0a8b6968b8f"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="b04c773d-417d-42de-9197-c9bcb0efaf28"
+>
+<Expression>THERE_IS_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions | X == ActiveCondition</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -2255,6 +2275,7 @@ IN Announcements</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="635b8b9b-1826-4f51-a694-bef3e83e4376"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="555c0388-8b13-4052-acc3-48e9e785af1a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -2312,7 +2333,7 @@ INSERT AnnouncementWithEnd(Announcement) IN DMI.MasterDMI().Out_TrackConditionsW
  Name="Delete from kernel"
  Guid="bbc867a3-01c7-47fd-80bb-1275e6e04a7b"
 >
-<Comment>Once announcements have been sent to the DMI, remove them from the kernel</Comment>
+<Comment>Once announcements have been sent to the DMI, remove them from the kernel (except for non stopping areas, that can be reentered again).</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2321,7 +2342,9 @@ INSERT AnnouncementWithEnd(Announcement) IN DMI.MasterDMI().Out_TrackConditionsW
  Guid="3715044b-c160-453c-93cd-15c1b635532f"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="8a1f08d8-a146-4a20-af38-f7e7d06722fa"
+>Announcement.Type != Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8f67b1c5-2634-4c7c-a000-65b01cbdb10e"
@@ -2387,4 +2410,47 @@ INSERT AnnouncementWithEnd(Announcement) IN DMI.MasterDMI().Out_TrackConditionsW
 >
 </ReqRef><Comment></Comment>
 </Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ X="520"
+ Y="520"
+ Width="100"
+ Height="50"
+ Name="Clean Up"
+ Guid="19632b85-a2c5-49cd-b803-115197611003"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Clean Up"
+ Guid="9c908f4d-f402-49f8-9904-d869841396eb"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="9678f43b-d766-46d5-9b45-61b783218aa8"
+><Comment></Comment>
+REMOVE ALL
+  X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea
+    AND
+  (  
+    (
+      NOT X.IsAnnouncement
+        AND  
+      ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackConditionType=&gt;ConditionType.Conditions) 
+    )
+    OR
+    (
+      X.IsAnnouncement
+        AND  
+      Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd ( Condition =&gt; X)
+    )
+  )
+IN
+  Announcements</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>
