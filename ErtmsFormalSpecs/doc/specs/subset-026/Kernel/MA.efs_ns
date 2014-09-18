@@ -2084,7 +2084,7 @@ Available(MA.Sections)</PreCondition></PreConditions>
 <Expression>BaseTypes.LengthToDistance(MA.EndSection.Length)</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Default=""
  X="580"
  Y="130"
@@ -2116,7 +2116,7 @@ MA.Sections != []</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.MA.SectionsCol"
+ Type="MA.SectionsCol"
  Default=""
  X="580"
  Y="190"
@@ -2130,7 +2130,7 @@ MA.Sections != []</PreCondition></PreConditions>
 <Comment>When the reference location changes (by a certain distance), the sections in the MA need to be recalculated</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="Distance"
  Guid="df02a9b9-bdac-465f-a47f-c5af4e50fbe3"
 >
@@ -2158,12 +2158,12 @@ MA.Sections != []</PreCondition></PreConditions>
 <Comment>Check that the end of the section is further than the distance</Comment>
 <Parameters>
 <Parameter
- Type="Section"
+ Type="Kernel.MA.Section"
  Name="aSection"
  Guid="e9c0973e-2bda-49a4-bd8d-8b25469d6b1d"
 >
 </Parameter><Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="Distance"
  Guid="7c259d6c-ba86-4d39-a9fa-403e0cb0db97"
 >
@@ -2176,7 +2176,7 @@ MA.Sections != []</PreCondition></PreConditions>
 <Expression>SectionStartLocation(aSection) + BaseTypes.LengthToDistance(aSection.Length) &gt; Distance</Expression>
 </Case></Cases>
 </Function><Function
- Type="Section"
+ Type="Kernel.MA.Section"
  Default=""
  X="690"
  Y="10"
@@ -2191,12 +2191,12 @@ MA.Sections != []</PreCondition></PreConditions>
 This is used for when a new reference location is received and the MA is relocated to this nex reference location.</Comment>
 <Parameters>
 <Parameter
- Type="Section"
+ Type="Kernel.MA.Section"
  Name="aSection"
  Guid="95813a59-766c-4336-830b-b3c083326ab7"
 >
 </Parameter><Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="Distance"
  Guid="0d77381d-892c-4be0-b256-adb4bcf4eaf7"
 >
@@ -4340,7 +4340,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 <Comment>Procedure for changing the MA&apos;s reference location when the train is in the end section of an MA that included sections (other cases are handled directly in BTM.HandleNewLRBG)</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="Distance"
  Guid="d48bf562-1a9b-4f42-8727-2757f7487fb3"
 >
