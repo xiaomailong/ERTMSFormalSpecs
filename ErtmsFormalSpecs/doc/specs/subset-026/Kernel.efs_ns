@@ -9589,6 +9589,11 @@ INITIAL_VALUE EmergencyStop
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="96338666-9918-4249-9a25-f2283f6f12a9"
 >
+</ReqRef><ReqRef
+ Id="21a0ae2b-0594-4a82-bcb1-13fdda48901c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="56863e88-2d0f-44cc-baef-a12a658b7044"
+>
 </ReqRef><Comment>Handles the linking consistency error when a train reaches the end of the currently expected balise&apos;s expectation window without encountering it</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -9604,7 +9609,10 @@ INITIAL_VALUE EmergencyStop
 ><Comment></Comment>
 BTM.Linking.LinkingApplicable()
   AND  
-BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLinking().Distance + BTM.Linking.CurrentLinking().LocationAccuracy)</PreCondition></PreConditions>
+BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLinking().Distance + BTM.Linking.CurrentLinking().LocationAccuracy)</PreCondition><PreCondition
+ Guid="c890d07b-a440-4ec6-ba9a-57aec6e3798e"
+><Comment></Comment>
+ActiveFunctions.CheckLinkingConsistency()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d3d59ef2-1780-4145-90f8-d8a3cf0dfbcc"

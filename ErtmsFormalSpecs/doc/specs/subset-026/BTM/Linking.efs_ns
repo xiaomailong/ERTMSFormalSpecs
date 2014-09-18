@@ -380,17 +380,31 @@ AND
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="05114846-8886-40e7-9147-4b7339d43065"
 >
+</ReqRef><ReqRef
+ Id="21a0ae2b-0594-4a82-bcb1-13fdda48901c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="49a0f15f-753a-4b28-adc4-b971e6631605"
+>
 </ReqRef><Comment>If the current balise group was announced by linking as &quot;unknown&quot;, then it will only be considered if it contains the repositioning information valid for the train orientation.</Comment>
 <Cases>
 <Case
- Name="Value"
+ Name="Check linking consistency"
  Guid="a793ac49-0e4c-4a69-8191-d2bc8465948a"
 >
+<PreConditions>
+<PreCondition
+ Guid="6d48fca6-212c-4d31-bab3-19b6f87595cc"
+>Kernel.ActiveFunctions.CheckLinkingConsistency()</PreCondition></PreConditions>
 <Expression>CurrentLinking().BaliseGroupIdentifier == Messages.NID_BG.NID_UNKNOWN
   AND
 THERE_IS_IN CurrentBaliseGroup | TelegramContainsRepositioningInformation ( X )
   AND
 BaliseGroupOrientation() == CurrentLinking().Orientation</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="785236bb-e746-4b79-a351-c6484432eced"
+>
+<Expression>True</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -599,13 +613,28 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a48c851e-877d-4fad-b7b5-f72c210ad634"
 >
+</ReqRef><ReqRef
+ Id="21a0ae2b-0594-4a82-bcb1-13fdda48901c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="071565c3-97a5-424f-a42e-cbf0777f632c"
+>
 </ReqRef><Comment>Verifies that the identifier of the current BG was announced by the linking (or that the linking has announced that the following balise group&apos;s identifier is unknown).</Comment>
 <Cases>
 <Case
- Name="Value"
+ Name="Check linking consistency"
  Guid="1389d65e-f43e-4c52-bbc2-a0b9bff9a25c"
 >
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="82df884c-19da-40cc-b3b1-5c5365462f5f"
+>Kernel.ActiveFunctions.CheckLinkingConsistency()</PreCondition></PreConditions>
 <Expression>THERE_IS_IN Linkings | X.BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="09df7dbf-e9d8-4952-aa0d-0c4b26e9dd18"
+>
+<Expression>True</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -682,9 +711,24 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0b70602c-61bd-463a-9f13-183f6e08ea24"
 >
+</ReqRef><ReqRef
+ Id="21a0ae2b-0594-4a82-bcb1-13fdda48901c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="22e18a0d-2808-49d0-be62-e0cf4ebba616"
+>
 </ReqRef><Comment>Returns true if there is a linking consistency error with the BG</Comment>
 <Cases>
 <Case
+ Name="Do not check Linking consistency"
+ Guid="f4ac2675-53c5-4283-a91c-176a224a1377"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="ce09c9a6-abf0-436c-93bc-dc574f1e6d2c"
+>NOT Kernel.ActiveFunctions.CheckLinkingConsistency()</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
  Name="BG encountered before expectation window"
  Guid="f75ed45e-36a7-4447-9107-f0fd905886ed"
 >
@@ -843,6 +887,7 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
  Name="Current BG linked and announced"
  Guid="54f3f434-61f2-4ee5-9648-c6727de839f9"
 >
+<Comment></Comment>
 <Expression>(LinkingApplicable())
   AND  
 (CurrentBGIsLinked())
@@ -1500,7 +1545,8 @@ If the BG was passed in the right direction, handle the message. If not, the tra
  Guid="64a649af-e04e-4e87-9f05-10155fb800fd"
 >NOT ConsistencyError()</PreCondition><PreCondition
  Guid="8a07516f-5e49-4e7f-9fb9-ca69da857f66"
->BGOrientationIsValid()</PreCondition><PreCondition
+><Comment></Comment>
+BGOrientationIsValid()</PreCondition><PreCondition
  Guid="ece8fce6-b40d-40dc-bf42-8979cd157cb4"
 >ConsiderBGWithLinking()</PreCondition></PreConditions>
 <Actions>

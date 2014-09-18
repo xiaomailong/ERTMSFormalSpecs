@@ -25,7 +25,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f54e3851-9e43-41c1-9a2c-fbb018d7ad83"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Provide Juridical Data</Comment>
 <Cases>
 <Case
  Name="Inactive"
@@ -34,7 +34,7 @@
 <PreConditions>
 <PreCondition
  Guid="3f2f8909-bc7a-4ee7-bada-9912b601be9c"
->Kernel.Mode in  [
+>Mode in  [
   Default.Mode.NP]</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
@@ -44,12 +44,12 @@
 <PreConditions>
 <PreCondition
  Guid="069dcb3e-5bb3-4de3-9eb8-1198dbfb924b"
->Kernel.Mode in  [
+>Mode in  [
   Default.Mode.SB, 
   Default.Mode.PS, 
   Default.Mode.SH, 
   Default.Mode.FS, 
-  Default.Mode. LS, 
+  Default.Mode.LS, 
   Default.Mode.SR, 
   Default.Mode.OS, 
   Default.Mode.SL, 
@@ -67,7 +67,7 @@
 <PreConditions>
 <PreCondition
  Guid="d646faaf-d267-4986-ad6e-69cf49285d27"
->Kernel.Mode in  [
+>Mode in  [
   Default.Mode.SF, 
   Default.Mode.IS]</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -85,18 +85,20 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f5df70ff-f7bf-4b28-90c3-5ad46b83f2fa"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Speed and Distance Monitoring based on MRSP, MA, release speed, gradient, mode profile, non protected LX start location, and route unsuitability location</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="ad9f6da4-b125-47f1-91d6-f5dfb320a6e4"
 >
-<Expression>Kernel.Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Default=""
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="CheckLinkingConsistency"
  Guid="f691144b-c2c2-485d-8bf7-f1c2c6e4cb0c"
 >
@@ -105,12 +107,13 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="71f057b9-1fc6-46bd-98b3-b8f2d3fd88ce"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Check linking consistency</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="9e09b5c0-8188-445c-98ac-bba6dafbe29f"
 >
-<Expression>Mode in [Mode.FS, Mode.LS, Mode.OS]</Expression>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -133,7 +136,7 @@
  Guid="6b6de77d-f5d4-4c3e-9372-412bed5cbe3c"
 >
 <Comment></Comment>
-<Expression>Mode in [Mode.FS, Mode.LS, Mode.OS]</Expression>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -156,7 +159,7 @@
  Guid="986c2662-cfc8-4e28-9772-e381f0573aae"
 >
 <Comment>This is true for all but the modes NP, SF and IS</Comment>
-<Expression>Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -179,7 +182,7 @@
  Guid="888d3070-2b56-445a-8ec6-7e9afb954556"
 >
 <Comment>This is true for all but the modes NP, SF and IS</Comment>
-<Expression>Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -202,7 +205,7 @@
  Guid="ec4c8f9a-ef76-4e3c-9b76-17b1fa44ff5e"
 >
 <Comment>This is true for all but the modes NP, SF and IS</Comment>
-<Expression>Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -218,14 +221,14 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="16332109-9e3e-49e8-b46e-8dd330e560a6"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Check radio sequence</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="09116cdd-9f28-4f91-a563-632a7b447483"
 >
 <Comment>This is true for all but the modes NP, SF and IS</Comment>
-<Expression>Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -241,7 +244,9 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="817fdd0f-ffad-4a99-862b-7c07d47768dc"
 >
-</ReqRef><Cases>
+<Comment></Comment>
+</ReqRef><Comment>Check radio safe connection (only level 2/3)</Comment>
+<Cases>
 <Case
  Name="In level 2/3"
  Guid="f7895505-b1ca-4b62-9fbf-b23ca0d76ab1"
@@ -251,7 +256,7 @@
  Guid="b5195f57-8d82-4126-a16f-7c1c0e7e4643"
 ><Comment></Comment>
 Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
-<Expression>Mode in [Mode.FS, Mode.LS, Mode.OS]</Expression>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="daea39a7-33bf-4053-8840-bec50f81f707"
@@ -280,7 +285,7 @@ Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreCondition
  Guid="e3e6cd4e-3d2d-4e6a-8606-cd523b5169d8"
 >
 <Comment>This is true for all but the modes NP, SF and IS</Comment>
-<Expression>Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -308,7 +313,7 @@ Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreCondition
 <PreCondition
  Guid="39825e2d-4543-4170-8e3d-00650c59c6c4"
 ><Comment></Comment>
-Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</PreCondition></PreConditions>
+Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Optional"
@@ -317,7 +322,7 @@ Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL,
 <PreConditions>
 <PreCondition
  Guid="efbb3c91-5fe4-4149-bec2-cfb3fcedff28"
->Mode in [Mode.IS]</PreCondition></PreConditions>
+>Mode in [Default.Mode.IS]</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Inactive"
@@ -340,13 +345,13 @@ Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL,
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b9cec21b-d60a-4822-b3fa-f2db76f877c6"
 >
-</ReqRef><Comment></Comment>
+</ReqRef><Comment>Determine Geographical Position</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="62dae707-940c-4a0a-8425-03ed52f145b0"
 >
-<Expression>Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT]</Expression>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -372,7 +377,7 @@ Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL,
 <PreConditions>
 <PreCondition
  Guid="a3ff780b-47dd-4f24-97a9-29ed5b45f4c3"
->Mode in [Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.RV]</PreCondition></PreConditions>
+>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.RV]</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Optional"
@@ -381,7 +386,7 @@ Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL,
 <PreConditions>
 <PreCondition
  Guid="0449000a-07e7-465d-8c32-51e3d660730c"
->Mode in [Mode.IS]</PreCondition></PreConditions>
+>Mode in [Default.Mode.IS]</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Inactive"
@@ -415,7 +420,7 @@ Mode in [Mode.SB, Mode.PS, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL,
 <PreCondition
  Guid="5aee2c1d-a0f6-4b37-be3e-c55a9aa8261d"
 ><Comment>All but NP, PS and SF.</Comment>
-Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SF, Mode.SN, Mode.RV]</PreCondition></PreConditions>
+Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SF, Default.Mode.SN, Default.Mode.RV]</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Report for SH"
@@ -426,10 +431,10 @@ Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN,
 <PreCondition
  Guid="295d32ba-f59a-4ad3-a7ae-7d3d0550c322"
 ><Comment></Comment>
-Mode in [Mode.SH]</PreCondition><PreCondition
+Mode in [Default.Mode.SH]</PreCondition><PreCondition
  Guid="884d5621-9ca3-442a-ba99-a5d01e44b3d7"
 ><Comment></Comment>
-ModeTransitions.PrevMode in [Mode.PS]</PreCondition></PreConditions>
+ModeTransitions.PrevMode in [Default.Mode.PS]</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Optional"
@@ -469,7 +474,7 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Guid="4a804765-dac0-423c-9281-b96cc52d5d1b"
 >
 <Comment></Comment>
-<Expression>Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.PT]</Expression>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.PT]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -492,7 +497,7 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="f5a22321-70b0-4942-bb5b-11e5813aa508"
 >
-<Expression>Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.TR, Mode.PT, Mode.RV]</Expression>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.TR, Default.Mode.PT, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -516,7 +521,7 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Guid="afcb7a41-3124-491c-90d2-e6cd20062eab"
 >
 <Comment></Comment>
-<Expression>Mode in [Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.TR]</Expression>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.TR]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -540,7 +545,7 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Guid="784790e5-a6f8-41cf-bbff-8a2c81ac1f1f"
 >
 <Comment></Comment>
-<Expression>Mode in [Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.UN, Mode.TR, Mode.SN]</Expression>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN, Default.Mode.TR, Default.Mode.SN]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -562,7 +567,7 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Guid="437c19f2-074e-4717-bd26-b4c56b2dba79"
 >
 <Comment></Comment>
-<Expression>Mode in [Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.TR]</Expression>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.NL, Default.Mode.TR]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -585,7 +590,7 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Guid="0fdb4d61-5a19-46a1-a4e0-a1ab86a8d481"
 >
 <Comment></Comment>
-<Expression>Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL]</Expression>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.NL]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -608,7 +613,7 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Guid="995a5e36-c10e-40bf-b184-2b14c8749249"
 >
 <Comment></Comment>
-<Expression>Mode in [Mode.SB, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -631,7 +636,7 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Guid="cb14d851-a4ed-4294-99f3-222043d485e9"
 >
 <Comment></Comment>
-<Expression>Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -654,7 +659,1337 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Guid="4ae75180-8373-4ea8-bc39-e6dd83d53325"
 >
 <Comment></Comment>
-<Expression>Mode in [Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="RequestMA_IndicationPointOrTimer"
+ Guid="27a49e9d-d574-4f1e-8bca-8ffd6f92d86e"
+>
+<ReqRef
+ Id="c56e042a-fcc0-4daf-aca2-08a8cc075275"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2ce98b3c-6932-4da0-b7c2-887590d15dff"
+>
+<Comment></Comment>
+</ReqRef><Comment>Request MA Cyclically respect to approach of target indication point (T_MAR) or MA timer elapsing (T_TIMEOUTRQST) (only level 2/3)</Comment>
+<Cases>
+<Case
+ Name="In level 2/3"
+ Guid="1b7d8be5-c2d6-405d-8183-6f2a1173bfc0"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="78dbd150-714b-4f89-8d21-2f96f136d7a3"
+>Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="0c0c4bbe-534e-4563-9e69-1c4ee75cd08f"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Name="RequestMA_StartSelected"
+ Guid="86c009f1-1a2d-4aeb-8658-a133373a7615"
+>
+<ReqRef
+ Id="2ac2d446-1ee9-4dbb-90d3-7ae063cd2925"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c29ef4eb-52e2-4071-9471-3b98e5c3f721"
+>
+</ReqRef><Comment>Request MA Cyclically when &quot;Start&quot; is selected (only level 2/3)</Comment>
+<Cases>
+<Case
+ Name="In level 2/3"
+ Guid="e5cbf369-590f-4380-86e8-d4c544f1e7c1"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="fefc211f-8a6a-43e8-b94a-50b4eca03913"
+>Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.SR, Default.Mode.PT]</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="03251d25-4c7a-4d0f-9023-a7024fbae815"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="220"
+ Width="100"
+ Height="50"
+ Name="RequestMA_TrackAheadFreeUpToL2_3"
+ Guid="3b68f3b5-6c43-412a-90da-e0f15d91e10b"
+>
+<ReqRef
+ Id="f119af99-2c5a-4a79-9d1f-bad360c248ca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0a61f513-3d7f-4375-991d-47671e964e07"
+>
+</ReqRef><Comment>Request MA on reception of &quot;track ahead free up to the level 2/3 transition location&quot; (only level 0,1,NTC)</Comment>
+<Cases>
+<Case
+ Name="Level 1/2/NTC"
+ Guid="842e9e9c-407a-433e-b5cf-f91b7ca418c2"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="2399483d-9b07-4b1a-ac53-bb018b4801c1"
+>Level.Value not in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN]</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="6f0847a1-8925-46cc-a43b-a3a66a796001"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="330"
+ Width="100"
+ Height="50"
+ Name="RequestMA_TrackDescriptionDeleted"
+ Guid="904cb2cd-74d3-4aec-b80f-5c3737e93b42"
+>
+<ReqRef
+ Id="a83c8c95-a9b6-4806-9f5b-cc4657a53284"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6ee54346-005f-47a0-a297-e09667096d38"
+>
+</ReqRef><Comment>Request MA on track description deletion</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="18bc53ab-5f85-4714-921b-a6ec3fa1a48e"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="440"
+ Width="100"
+ Height="50"
+ Name="DetermineEOA_SvL_etc"
+ Guid="cc8c4b94-e8ab-48a2-9e45-89a1ca5fcd45"
+>
+<ReqRef
+ Id="b8339f99-503e-4b4e-a901-758d69ad1139"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3e69fc01-700c-4f9d-9c99-d5bda4c27886"
+>
+</ReqRef><Comment>Determine EOA/LOA, SvL, Danger Point, etc..</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="3b30ce0a-b68c-4a6c-bc86-2cfbcf89eae0"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="550"
+ Width="100"
+ Height="50"
+ Name="HandleCoOperativeMARevocation"
+ Guid="d3b9a812-6078-4506-9f1a-4b2e61cf67a9"
+>
+<ReqRef
+ Id="7c1c6cfb-0855-4d9a-95fc-7ee84622b5ba"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb6cd46e-41a0-4b2a-8a41-476f14eca1cc"
+>
+</ReqRef><Comment>Handle Co-operative MA revocation</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="8b36e6fd-5711-4a40-879d-0ded2a88b240"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="660"
+ Width="100"
+ Height="50"
+ Name="ManageUnconditionalEmergencyStop"
+ Guid="e8a3c2de-2d37-43dc-8b14-73f15959700f"
+>
+<ReqRef
+ Id="562e7a97-e32b-4ab7-aa2a-be203bda68f7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6784a780-2861-45f1-92f9-b704bbeb33d2"
+>
+</ReqRef><Comment>Manage Unconditional Emergency Stop</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="83ca11e1-42ed-4d2f-b304-00debb4e297d"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.PT]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="770"
+ Width="100"
+ Height="50"
+ Name="ManageConditionalEmergencyStop"
+ Guid="53183831-5cea-47dc-967a-5c8a996a866d"
+>
+<ReqRef
+ Id="bc320eeb-6eb1-4cb8-a15d-72281a99dbc3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3c43f717-1a23-4e5f-a2f0-ce8ab7736305"
+>
+</ReqRef><Comment>Manage Conditional Emergency Stop</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="9e61cbbc-feae-450e-9cc1-76581cf47468"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS, Default.Mode.PT]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="DetermineMRSP_SSP"
+ Guid="6dfd0fe2-befe-4d39-9a05-307070f5610d"
+>
+<ReqRef
+ Id="17d2fc17-9c74-4023-89f7-70fa5b6baa44"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2247040b-de12-45c7-8a34-b19a378821d8"
+>
+</ReqRef><Comment>SSP</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="19748c77-9f71-434b-9046-ddf0ee2530d7"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="DetermineMRSP_ASP"
+ Guid="69fb05a4-c5a4-4de6-bfb6-0bbf98ec3f4f"
+>
+<ReqRef
+ Id="4cf37699-f0e2-4e3e-a1ef-3a1aea8ab8c4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3779eee5-93e9-44a4-8c6b-fffdeae64037"
+>
+</ReqRef><Comment>ASP</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="bfd4329e-e777-4a97-afd8-bfaf7022a487"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="220"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="DetermineMRSP_TSR"
+ Guid="81416a91-93a1-48c3-9324-27ccdbef6c32"
+>
+<ReqRef
+ Id="026b002d-138f-435c-9682-ff5ff4bf848f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9db49496-1cd7-441d-9110-7dcd9b72364a"
+>
+</ReqRef><Comment>TSR</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="2e8130c7-d1b7-4c80-bf2d-2ebeea5d4cb9"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="330"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="DetermineMRSP_SignallingSpeedRestriction"
+ Guid="b0113123-1d3b-474d-9bb5-21ed0cfac7b5"
+>
+<ReqRef
+ Id="52c6602a-87c2-45d3-8081-379df7d8c12d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4fc3f37e-8487-424f-a0b8-4fa26c115b49"
+>
+<Comment></Comment>
+</ReqRef><Comment>Signalling related speed restriction when evaluated as a speed limit</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="3960fd86-644a-4b8e-8d3e-f80d0684536f"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="440"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="DetermineMRSP_ModeRelatedSpeedRestriction"
+ Guid="89afca5a-cf3c-4a3f-89f5-85e11f48e818"
+>
+<ReqRef
+ Id="13a2f9eb-3a87-4ed5-a23d-74d70b56770e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="436e3653-216f-44e8-954c-19be35a29eed"
+>
+<Comment></Comment>
+</ReqRef><Comment>Mode related speed restriction</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="270a6c39-0ee7-4fc6-a2c3-f784202bc6a8"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.SH, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN, Default.Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="550"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="DetermineMRSP_TrainRelatedSpeedRestrictions"
+ Guid="f3f94fc8-e235-47dc-887e-467617ee19d4"
+>
+<ReqRef
+ Id="e402d9f2-dca9-4e92-a4ce-876ba07ce324"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="980b4439-7197-4e73-bf9c-5cc1fd4f5da4"
+>
+</ReqRef><Comment>Train related speed restriction</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="eec91ca0-e76e-477e-a370-40a0a1b2fa3f"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN, Default.Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="660"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="DetermineMRSP_STMMaxSpeed"
+ Guid="912f4d26-ddd3-4287-8f79-4e088a47d0bd"
+>
+<ReqRef
+ Id="2aa5f509-4651-4dd4-a3fe-1aca62c7e1a9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a45bbfff-96be-485e-b34e-106d62ea3d81"
+>
+</ReqRef><Comment>STM max speed</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="8c7b80ba-268e-455c-9c3a-e48711d7af6f"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="770"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="DetermineMRSP_STMSystemSpeed"
+ Guid="978f3810-daa8-4350-b8a0-cdc763b35dc3"
+>
+<ReqRef
+ Id="990c13fc-a328-4478-8d10-92f524b401f1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c1a40a8c-495e-45ea-a9cf-940946240594"
+>
+<Comment></Comment>
+</ReqRef><Comment>STM system speed</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="659528aa-f1e2-476f-ae44-133334695023"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="DetermineMRSP_LXSpeed"
+ Guid="addd2168-0f75-4fde-8286-cb4c3416e0bc"
+>
+<ReqRef
+ Id="e9b3c91e-9583-46f0-90d8-f49c8b6e4ff7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d17df870-d040-476d-a5ac-315322afc6cd"
+>
+</ReqRef><Comment>LX speed</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="3b3e2100-eefe-40b5-aebf-381aff6de46d"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="DetermineMRSP_PermittedBrakingDistance"
+ Guid="35d286e0-0b27-4567-b90d-b1065f4a3601"
+>
+<ReqRef
+ Id="43276136-8bff-4532-be60-47b0198243cb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="23d8e4ac-2f6f-409a-8c45-17cba1a828d5"
+>
+</ReqRef><Comment>Speed restriction to ensure a given permitted braking distance</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="2b647cee-d918-4a83-9092-58f960a99a6c"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="220"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="DetermineMRSP_Override"
+ Guid="daf0e936-cd3f-4073-8901-8c2d422baa06"
+>
+<ReqRef
+ Id="350a21bf-f1b0-4d21-8bf1-1127680b24e3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e07cfe7a-59b1-4ae1-93b2-45c2c90d39f2"
+>
+</ReqRef><Comment>Override related speed restriction</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="cd04337d-db02-4176-879c-531856a1f199"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.SH, Default.Mode.SR, Default.Mode.UN]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="330"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="SuperviseTrainSpeed_MRSP"
+ Guid="75472300-152b-4112-8c4f-0ee5b9305fab"
+>
+<ReqRef
+ Id="a918b4eb-359d-45fd-bed4-173ac8763338"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4acbc235-838c-4a72-a23c-fc77f66d47e0"
+>
+</ReqRef><Comment>Speed and Distance Monitoring based on MRSP</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="97653598-0583-4364-826b-45073e47b1a7"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.UN]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="440"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="SuperviseTrainSpeed_MRSP_DistInSRMode"
+ Guid="b090c19a-ae3d-4b1e-8115-1aa4723e01f0"
+>
+<ReqRef
+ Id="4ae5a0a3-fed2-4e03-ad35-c2ff8b81332b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ee8a50ab-0c7f-4406-906c-a33f5a5281d2"
+>
+</ReqRef><Comment>Speed and Distance Monitoring based on MRSP, allowed distance to run in Staff Resp. mode</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="603ee7db-465f-498f-8124-2a0a42355123"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.SR]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="550"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="SuperviseTrainSpeed_CSM"
+ Guid="4cfcf28d-3742-499f-8c43-020ad7fd0716"
+>
+<ReqRef
+ Id="0f683037-458a-40b9-90d5-f5e9f1c3d70f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cfd0c370-3f94-441f-a610-80af733430a4"
+>
+</ReqRef><Comment>Ceiling Speed Monitoring only (no braking curve) based on MRSP</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="78c34474-81fe-422c-9294-aea7ce2eb836"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.SH]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="660"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="MonitorBackwardsDistance"
+ Guid="d51c1dab-d199-4dda-b3c8-6613050b2808"
+>
+<ReqRef
+ Id="8df3fa60-f1b7-4c4d-a9f1-8b5a960229df"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="952c9408-a88a-411f-9b83-f378e7402957"
+>
+</ReqRef><Comment>Backwards Distance Monitoring</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="b66de40c-60ed-4f24-bbf3-447d10bbbec8"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.PT, Default.Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="770"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="ProtectAgainstRollAway"
+ Guid="584d5b8a-cfd3-4091-aaa9-219ced4878a9"
+>
+<ReqRef
+ Id="113af954-791c-4090-b814-4fa35e86a862"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7d86779e-e422-4dc0-8fdc-53ce038e2ab5"
+>
+</ReqRef><Comment>Roll Away Protection</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="acde9d82-0c38-48c2-bee1-0e9b296d91b9"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN, Default.Mode.PT, Default.Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Y="180"
+ Width="100"
+ Height="50"
+ Name="ProtectAgainstReverseMovement"
+ Guid="c11516ff-2742-4044-b11d-d01c3f9f3e8f"
+>
+<ReqRef
+ Id="d06b1417-2992-44ee-a953-726b27df2d4f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2d60fe00-fde0-43f0-a992-cfacf991b092"
+>
+</ReqRef><Comment>Reverse Movement Protection</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="957ea5da-a994-4eae-8022-9c959c1c2d2f"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.PT, Default.Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Y="180"
+ Width="100"
+ Height="50"
+ Name="SuperviseStandstill"
+ Guid="49a7ba04-f02b-4733-9d5b-06f3e7aebb02"
+>
+<ReqRef
+ Id="0c3e4a15-d05b-4bc4-af75-f6733855f370"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="143e4cc2-f4ed-4386-9ef5-4b74cb7ddd42"
+>
+</ReqRef><Comment>Standstill Supervision</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="814ee622-32dd-4c30-bf00-3bf6fa979540"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.SB]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="220"
+ Y="180"
+ Width="100"
+ Height="50"
+ Name="SuperviseBalisesForShunting"
+ Guid="b2317cb1-0173-47eb-9703-68aeb41df3de"
+>
+<ReqRef
+ Id="2a6e883b-d32c-4121-afc3-9fa40790509f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="456f57d4-665c-4869-b7a5-656b82b7d494"
+>
+</ReqRef><Comment>Supervise &quot;danger for shunting&quot; information and list of expected balises for shunting</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="3aaffc4f-88db-4a51-8bcb-736449196dda"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.SH]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="330"
+ Y="180"
+ Width="100"
+ Height="50"
+ Name="SuperviseBalisesForSR"
+ Guid="c913a618-9b3d-410c-908a-358917598635"
+>
+<ReqRef
+ Id="fdc26bac-f5ff-4fec-8edd-8ebe350709d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3ccb1bce-7987-4534-9d20-8ad7e7ffd36f"
+>
+</ReqRef><Comment>Supervise &quot;Stop if in SR&quot; information and list of expected balises for Staff Responsible</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="90e90bf0-d3b2-4303-8c23-00f1d2a7de69"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.SR]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="440"
+ Y="180"
+ Width="100"
+ Height="50"
+ Name="SuperviseSignallingRelatedSRAsTripOrder"
+ Guid="5ede454e-9815-4472-af09-224d5bda7b04"
+>
+<ReqRef
+ Id="d02b5697-8523-47ed-9f3d-54d43b9021a7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b23c07d4-b30e-440c-8fa1-48756050ed6b"
+>
+</ReqRef><Comment>Supervise signalling related speed restriction when evaluated as a trip order</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="4e6ba67b-cd36-4d9f-90d5-f97898439c64"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="550"
+ Y="180"
+ Width="100"
+ Height="50"
+ Name="CommandEmergencyBrake"
+ Guid="f2682aa0-2961-469c-b4e0-19306cf99b55"
+>
+<ReqRef
+ Id="8aacc5c1-b1bc-4b80-b068-82d6acb6bc59"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f76687f4-0cb0-4598-883b-59c71c971c3d"
+>
+</ReqRef><Comment>Command Emergency Brake</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="f0122b7b-080b-4d30-b39f-c38816fd322b"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.NP, Default.Mode.TR, Default.Mode.SF]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="660"
+ Y="180"
+ Width="100"
+ Height="50"
+ Name="DetermineMode"
+ Guid="c132c54c-a871-46a4-9313-090d5ee9e046"
+>
+<ReqRef
+ Id="fcc0e481-867b-4267-8817-bfcb4ba2cde9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="570010c8-a0e1-4dcc-80fd-4d4f0d14068b"
+>
+</ReqRef><Comment>Determine ERTMS/ETCS Mode</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="3967f0d1-d736-41db-9b18-19092b9d7f14"
+>
+<Comment>In all modes, the ERTMS/ETCS mode is determined.</Comment>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="770"
+ Y="180"
+ Width="100"
+ Height="50"
+ Name="DetermineLevel"
+ Guid="4193aff4-1550-4ad6-b963-276dba57068b"
+>
+<ReqRef
+ Id="bf604c7d-9c8f-468b-857f-738215257a31"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26e70612-19e7-4de7-bc92-28358f60492b"
+>
+</ReqRef><Comment>Determine ERTMS/ETCS level</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="9d83a4f1-fe95-482e-975d-735cb7383189"
+>
+<Comment>All but NP and SF.</Comment>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.IS, Default.Mode.SN, Default.Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Y="240"
+ Width="100"
+ Height="50"
+ Name="ManageSystemVersion"
+ Guid="a8007ae6-3d34-4a60-921c-092cf5f6385b"
+>
+<ReqRef
+ Id="7e3dc7ef-40bf-420f-967b-2c787923fbc5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="93e53dea-27b2-4b59-91b8-54793e4e7397"
+>
+</ReqRef><Comment>System Version Management</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="be98bd12-86ec-45a1-ab46-be132aae53f9"
+>
+<Comment>This is true for all but the modes NP, SF and IS</Comment>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Y="240"
+ Width="100"
+ Height="50"
+ Name="ManageCommunicationSession"
+ Guid="d31b2cdf-5e85-4088-8e84-6002b84e6bf0"
+>
+<ReqRef
+ Id="49ac5c2f-c76c-4903-a7c8-2a28ea61c09c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eef8182b-2364-42ec-8404-8701263713fa"
+>
+</ReqRef><Comment>Manage Communication Session</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="3aa39b29-a233-4f46-aa42-eb28c75e5b6a"
+>
+<Comment>This is true for all but the modes NP, SF and IS</Comment>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="220"
+ Y="240"
+ Width="100"
+ Height="50"
+ Name="DeleteRevokedTSR"
+ Guid="5f29b139-2e9b-4267-97af-11f0431bb918"
+>
+<ReqRef
+ Id="8a51c8a5-71ad-49fa-88d6-f67fa8d71e0e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2aa0bfbb-cf2f-4562-aec5-2362353d3156"
+>
+</ReqRef><Comment>Delete Revoked TSR</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="de188a60-1501-4e1a-b438-e3ddaec23e42"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="330"
+ Y="240"
+ Width="100"
+ Height="50"
+ Name="EnableOverride"
+ Guid="834c2dbc-6b20-40f4-9c01-300b01f7dd50"
+>
+<ReqRef
+ Id="367acb62-7870-4387-9a8f-345d0059c752"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="94b4f081-9541-43c9-9f43-02cb743324e1"
+>
+</ReqRef><Comment>Override (Trip inhibition)</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="a797ccde-e072-455b-b485-4217d5c2a6d0"
+>
+<Comment>For UN and SN there are conditions for re-activation of trip mode that shall be supervised</Comment>
+<Expression>Mode in [Default.Mode.SH, Default.Mode.SR, Default.Mode.UN, Default.Mode.SN]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="440"
+ Y="240"
+ Width="100"
+ Height="50"
+ Name="ManageTrackConditions_BrakeInhibition"
+ Guid="3830bce7-fe31-4558-8d22-42df2f908193"
+>
+<ReqRef
+ Id="f6e6d494-3cd0-4177-92c5-a445af1573e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="27543378-3e0c-44d1-8cd5-504c73b8455b"
+>
+</ReqRef><Comment>Manage Track Conditions excluding Sound Horn, Non Stopping Areas, Tunnel Stopping Areas and Big Metal Masses</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="c3679ede-fd90-4f12-b118-2d5a3ef7f628"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS, Default.Mode.NL, Default.Mode.TR, Default.Mode.PT]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="550"
+ Y="240"
+ Width="100"
+ Height="50"
+ Name="ManageTrackConditions_SoundHorn"
+ Guid="04472b9d-10d4-4bbb-b8d2-bf83cff34d28"
+>
+<ReqRef
+ Id="dea5ad72-243c-4480-8ff6-90cbcdd3665d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="15f6df6d-ce94-4661-a211-d0f354d537b9"
+>
+</ReqRef><Comment>Manage Track Conditions Sound Horn, Non Stopping Areas, Tunnel Stopping Areas</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="642795a5-e067-41f2-9e79-c2fc22b0352c"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="660"
+ Y="240"
+ Width="100"
+ Height="50"
+ Name="ManageTrackConditions_BigMetalMAsses"
+ Guid="0fd88f90-1d86-4865-bfcf-2982462fb556"
+>
+<ReqRef
+ Id="4c3a5dfc-859e-4fc5-9f8f-ea5ad72f7452"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="599c73a2-6c49-4923-bbdc-0a0a81bcc473"
+>
+</ReqRef><Comment>Manage Track Condition Big Metal Masses</Comment>
+<Cases>
+<Case
+ Name="Active"
+ Guid="09090894-f777-4992-906c-bb3c5be0ce3d"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="6daeb51c-15d2-4237-a78f-f8474a3ec7fe"
+>Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Optional"
+ Guid="e9ba9d84-36ce-4d38-abda-31a92f01511b"
+>
+<PreConditions>
+<PreCondition
+ Guid="f82034a7-dd5e-42c2-a992-aa147b8bf42b"
+>Mode in [Default.Mode.SF]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Inactive"
+ Guid="9ae9530f-c5ec-4729-8320-cdacc4454351"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="770"
+ Y="240"
+ Width="100"
+ Height="50"
+ Name="ManageRouteSuitability"
+ Guid="b7e9daa5-7f69-4bf4-9b0e-ee87545ee84b"
+>
+<ReqRef
+ Id="b1a87414-d10e-41cb-92fb-ea1602ab1345"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5ed98569-489c-440c-9da6-aecd3628c0df"
+>
+</ReqRef><Comment>Manage Route Suitability</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="22b80bfe-4430-4271-9ffc-7ead41fd318f"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Y="300"
+ Width="100"
+ Height="50"
+ Name="ManageTextDisplay"
+ Guid="ca02a786-bd78-4130-902c-08191b46a310"
+>
+<ReqRef
+ Id="090e8bca-4a28-4a45-9caf-6bdfefa07f16"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e06faf69-b04a-4ce0-8ca8-85cab3843148"
+>
+</ReqRef><Comment>Manage Text Display to the driver</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="c0bafc6e-5900-4262-9610-5729450aab1d"
+>
+<Comment></Comment>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Y="300"
+ Width="100"
+ Height="50"
+ Name="ManageRBC_RBCHandover"
+ Guid="1bafb843-a59e-4587-b606-287dd650bf95"
+>
+<ReqRef
+ Id="3f711d5b-c833-40aa-95b9-3e30c6d795a0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="460a688d-1065-433c-9867-c78b96a1deb2"
+>
+</ReqRef><Comment>Manage RBC/RBC Handover</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="56636f6c-f6fd-430c-b845-27254575bf1d"
+>
+<Comment></Comment>
+<Expression>Mode in [Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.TR]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="220"
+ Y="300"
+ Width="100"
+ Height="50"
+ Name="ManageTrackAheadFreeRequest"
+ Guid="b3c99f8a-a984-4772-b308-5c80ab862d69"
+>
+<ReqRef
+ Id="725d78fe-c10d-4ae1-b98d-6b5b229f63bf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3ecfbf87-1d2d-4719-aa7f-6bf5a5fba0e2"
+>
+</ReqRef><Comment>Manage Track Ahead Free Request</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="3559484a-0a4a-4144-9c77-a41ed22d9564"
+>
+<Comment></Comment>
+<Expression>Mode in [Mode.SB, Mode.LS, Mode.SR, Mode.OS, Mode.PT]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="330"
+ Y="300"
+ Width="100"
+ Height="50"
+ Name="ProvideFixed_Default_NationalValues"
+ Guid="dba0b7ad-54e0-45b6-adca-4b3bdebcd83f"
+>
+<ReqRef
+ Id="09495642-3996-4e74-9614-abd41a6ca991"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9d5dae02-0dc5-44b7-bdc8-143061e42f7e"
+>
+</ReqRef><Comment>Provide Fixed Values, and Default/National Values</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="14637b06-20e2-4f1c-88f2-8069866c33f3"
+>
+<Comment>This is true for all but the modes NP, SF and IS</Comment>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="440"
+ Y="300"
+ Width="100"
+ Height="50"
+ Name="ManageTrainDataChange_ExternalSource"
+ Guid="6ea062a2-4c9a-40bd-841f-aa98a5756131"
+>
+<ReqRef
+ Id="84565b26-aaea-4784-a576-684170215ea2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="849caf11-20b3-4d8a-8849-07852ba6f535"
+>
+</ReqRef><Comment>Manage change of Train Data from external sources</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="75f16b67-5342-48e7-9380-f834d9d8fa83"
+>
+<Comment></Comment>
+<Expression>Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.UN, Mode.TR, Mode.PT, Mode.SN]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="550"
+ Y="300"
+ Width="100"
+ Height="50"
+ Name="ProvideDateAndTime"
+ Guid="dd09b5fd-a8fb-4667-a33d-0005752bd3c2"
+>
+<ReqRef
+ Id="dbd4c840-dff3-4e99-91ea-bc4db0b14fe2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1e39d53-1a27-459e-9500-f0d79121d152"
+>
+</ReqRef><Comment>Provide Date and Time</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="8330766f-596d-4167-96ae-f39d4f3adbde"
+>
+<Comment>This is true for all but the modes NP, SF and IS</Comment>
+<Expression>Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="660"
+ Y="300"
+ Width="100"
+ Height="50"
+ Name="InhibitRevocableTSRFromBalises"
+ Guid="7e51e53b-caa1-4847-9a61-a32d1b25a201"
+>
+<ReqRef
+ Id="3f12e472-3191-4494-b5a4-56e1dd31d609"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="93685d9e-dd20-4e68-9f58-b161b4ffd1c6"
+>
+</ReqRef><Comment>Inhibition of revocable TSRs from balises(only level 2/3)</Comment>
+<Cases>
+<Case
+ Name="Level 2/3"
+ Guid="871aa872-894f-493a-8fe4-8438d13938f2"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="6db09e5f-5add-4e3b-90dd-144374d16ee8"
+>Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+<Expression>Mode in [Mode.FS, Mode.LS, Mode.OS, Mode.TR, Mode.PT]</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="9da327ee-a9b8-42c9-a718-729a804a79c4"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="770"
+ Y="300"
+ Width="100"
+ Height="50"
+ Name="DetectColdMovement"
+ Guid="2d6cff83-4fb8-4d79-9ee4-ec5022699532"
+>
+<ReqRef
+ Id="7280400a-c7c1-460b-8556-295a8d721fc8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e5a46fbf-6245-467c-89bc-faac35204d9e"
+>
+</ReqRef><Comment>Cold Movement Detection</Comment>
+<Cases>
+<Case
+ Name="Optional"
+ Guid="03310ff3-febe-42c0-bccc-b34c4984acd5"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="66b3435b-65a0-49ee-bec6-8eba5c2e438e"
+>Mode in [Mode.NP]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Inactive"
+ Guid="a0904178-2718-40fd-b42d-98eb0fa15dea"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Y="360"
+ Width="100"
+ Height="50"
+ Name="ContinueShuntingOnDeskClosure"
+ Guid="c1f6a9bc-6dbd-4488-b6b1-e374e1c461a9"
+>
+<ReqRef
+ Id="4668ce52-f6ff-4f98-a719-c64502fd3bd0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1876b82f-98a1-46f1-9c62-c67b120c9ec6"
+>
+</ReqRef><Comment>Continue Shunting on desk closure (Enabling transition to Passive Shunting mode)</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="316b407a-993f-42b3-ba55-864ac60a8304"
+>
+<Comment></Comment>
+<Expression>Mode in [Mode.SH]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Y="360"
+ Width="100"
+ Height="50"
+ Name="ManageStopShunting_DeskOpened"
+ Guid="eb94c8a0-5160-4d0d-9f02-1af643b97151"
+>
+<ReqRef
+ Id="2bfc3479-cd21-4e31-9968-349719cb0d7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0999191b-6252-45a0-ab73-54d589bd6daa"
+>
+</ReqRef><Comment>Manage &quot;Stop Shunting on desk opening&quot; information</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="87433685-0677-4d64-8d99-31e5aa31c24d"
+>
+<Comment></Comment>
+<Expression>Mode in [Mode.PS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="220"
+ Y="360"
+ Width="100"
+ Height="50"
+ Name="ManageVirtualBaliseCovers"
+ Guid="2f1909da-e2dc-4e3e-bdeb-350c1ae2bd00"
+>
+<ReqRef
+ Id="325f20da-5bb8-48c5-8709-2d85152d43f7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b4914320-6ebb-4247-ac67-eebbec422717"
+>
+</ReqRef><Comment>Manage &quot;Virtual Balise Covers&quot;</Comment>
+<Cases>
+<Case
+ Name="Active"
+ Guid="c9e7aaf3-7f3a-4721-ad4b-76e43f9478c7"
+>
+<Comment>This is true for all but the modes NP, SF and IS</Comment>
+<PreConditions>
+<PreCondition
+ Guid="afed15c0-21be-471d-9002-1b581d022304"
+><Comment></Comment>
+Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Optional"
+ Guid="62dba384-d989-4be4-88f1-465ac72c695d"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="b85f251e-a2f8-4eb9-b720-a875773efd61"
+><Comment></Comment>
+Mode in [Mode.SF, Mode.IS]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Inactive"
+ Guid="b404a2b1-fd4e-48de-9f38-7cd97277796f"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="330"
+ Y="360"
+ Width="100"
+ Height="50"
+ Name="DisplayRouteInformationInAdvance"
+ Guid="bdfa28b1-4a26-490f-9e12-8a0a66f770c5"
+>
+<ReqRef
+ Id="c8d20e16-9995-448d-bc67-0f4cb59ffafa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aceb5310-f3f8-4a1f-b4d1-e9c3a98fa934"
+>
+</ReqRef><Comment>Advance display of route related information</Comment>
+<Cases>
+<Case
+ Name="Optional"
+ Guid="cd489bfa-7e4a-4673-b4ac-55058bb56563"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="8a08d78d-ecb2-4bc8-8080-f1d1e6fc21d9"
+>Mode in [Mode.FS]</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Inactive"
+ Guid="ba22f63a-a0d0-4dc0-86cf-cb06f5b01179"
+>
+<Expression>False</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
