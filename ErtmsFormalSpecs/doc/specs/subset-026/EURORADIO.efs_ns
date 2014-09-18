@@ -21,6 +21,8 @@
 <Enumerations>
 <Enum
  Default="SafeRadioConnectionStatusEnum.NoConnection"
+ X="480"
+ Y="210"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -52,7 +54,8 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="ContactActionEnum.Establish"
- X="110"
+ X="130"
+ Y="390"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -84,7 +87,8 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="SystemVersionEnum.Version2_0"
- X="220"
+ X="480"
+ Y="310"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -121,7 +125,8 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="ContactOptionEnum.ContactLastKnownRBC"
- X="330"
+ X="930"
+ Y="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -163,7 +168,8 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="DoNotEstablish"
- X="440"
+ X="480"
+ Y="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -207,7 +213,8 @@
 <Structures>
 <Structure
  Default=""
- Y="120"
+ X="270"
+ Y="210"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3421,8 +3428,8 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="110"
- Y="120"
+ X="10"
+ Y="210"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3533,8 +3540,8 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </ReqRef><Comment>Indicates whether the order applies also to Sleeping units.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="220"
- Y="120"
+ X="10"
+ Y="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3567,8 +3574,8 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 <Comment>Identifier of the RIU.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="330"
- Y="120"
+ X="270"
+ Y="390"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3712,8 +3719,8 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </ReqRef><Comment>Indicates if the trackside has sent the Initiation of a communication session message.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="440"
- Y="120"
+ X="10"
+ Y="310"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3746,7 +3753,8 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 <Comment>Identifier of the RBC.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="180"
+ X="10"
+ Y="390"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3810,8 +3818,8 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 </ReqRef><Comment>Data state of the contact information.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="180"
+ X="270"
+ Y="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4298,8 +4306,8 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 </StateMachine></StateMachines>
 </Structure><Structure
  Default=""
- X="220"
- Y="180"
+ X="780"
+ Y="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4334,8 +4342,8 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 <Comment>Collection of available and allowed networks.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="330"
- Y="180"
+ X="480"
+ Y="390"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4371,7 +4379,8 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 <Collection
  TypeName="String"
  Default="[]"
- Y="240"
+ X="780"
+ Y="200"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4388,8 +4397,8 @@ After that, if an order to contact an Accepting RBC was received, it will be han
  TypeName="SystemVersionEnum"
  MaxSize="3"
  Default="[]"
- X="110"
- Y="240"
+ X="680"
+ Y="310"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4410,8 +4419,8 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 </Collection><Collection
  TypeName="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
  Default="[]"
- X="220"
- Y="240"
+ X="630"
+ Y="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8095,7 +8104,7 @@ NOT
 </Parameter></Parameters>
 </Procedure><Procedure
  X="440"
- Y="900"
+ Y="720"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8143,7 +8152,8 @@ NOT
  Type="Default.BaseTypes.Time"
  DefaultValue="15.0"
  VariableMode="Constant"
- Y="300"
+ X="880"
+ Y="390"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8160,8 +8170,8 @@ NOT
  Type="Integer"
  DefaultValue="3"
  VariableMode="Constant"
- X="110"
- Y="300"
+ X="760"
+ Y="390"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8176,9 +8186,10 @@ NOT
 </ReqRef><Comment>Indicates the number of repetitions of radio messages (i.e. excluding the first sending).</Comment>
 </Variable><Variable
  Type="EURORADIO.RIUStruct"
+ DefaultValue=""
  VariableMode="InOut"
- X="220"
- Y="300"
+ X="10"
+ Y="20"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8195,8 +8206,8 @@ NOT
  Type="EURORADIO.RBCContactStruct"
  DefaultValue=""
  VariableMode="Internal"
- X="330"
- Y="300"
+ X="10"
+ Y="470"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8223,8 +8234,8 @@ NOT
  Type="String"
  DefaultValue="&apos;&apos;"
  VariableMode="Internal"
- X="440"
- Y="300"
+ X="760"
+ Y="510"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8251,9 +8262,11 @@ NOT
  Type="String"
  DefaultValue="&apos;&apos;"
  VariableMode="Internal"
- Y="360"
+ X="880"
+ Y="510"
  Width="100"
  Height="50"
+ Pinned="TRUE"
  Implemented="TRUE"
  Name="LastKnownNetworkId"
  Guid="4c27382c-64a2-4c88-8d58-ff66b400ad51"
@@ -8268,8 +8281,8 @@ NOT
  Type="EURORADIO.AvailableNetworksStruct"
  DefaultValue=""
  VariableMode="InOut"
- X="110"
- Y="360"
+ X="780"
+ Y="20"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8284,9 +8297,10 @@ NOT
 </ReqRef><Comment>Allows to request the list of available and allowed networks.</Comment>
 </Variable><Variable
  Type="EURORADIO.TerminalStruct"
+ DefaultValue=""
  VariableMode="InOut"
- X="220"
- Y="360"
+ X="190"
+ Y="20"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8301,9 +8315,10 @@ NOT
 </ReqRef><Comment>First terminal struct.</Comment>
 </Variable><Variable
  Type="EURORADIO.TerminalStruct"
+ DefaultValue=""
  VariableMode="InOut"
- X="330"
- Y="360"
+ X="350"
+ Y="20"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8320,8 +8335,8 @@ NOT
  Type="ContactOptionEnum"
  DefaultValue="ContactOptionEnum.ContactLastKnownRBC"
  VariableMode="Internal"
- X="440"
- Y="360"
+ X="930"
+ Y="20"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8348,7 +8363,8 @@ NOT
  Type="String"
  DefaultValue="&apos;&apos;"
  VariableMode="Internal"
- Y="420"
+ X="640"
+ Y="510"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8370,8 +8386,8 @@ NOT
  Type="SystemVersionsCol"
  DefaultValue="[SystemVersionEnum.Version2_0]"
  VariableMode="Internal"
- X="110"
- Y="420"
+ X="850"
+ Y="310"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8393,8 +8409,8 @@ NOT
  Type="Default.BaseTypes.Time"
  DefaultValue="300.0"
  VariableMode="Constant"
- X="220"
- Y="420"
+ X="1000"
+ Y="390"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8416,8 +8432,8 @@ NOT
  Type="Default.BaseTypes.Time"
  DefaultValue="45.0"
  VariableMode="Constant"
- X="330"
- Y="420"
+ X="640"
+ Y="390"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8439,8 +8455,8 @@ NOT
  Type="IncomingMessagesCol"
  DefaultValue="[]"
  VariableMode="Internal"
- X="440"
- Y="420"
+ X="620"
+ Y="20"
  Width="100"
  Height="50"
  Implemented="TRUE"
