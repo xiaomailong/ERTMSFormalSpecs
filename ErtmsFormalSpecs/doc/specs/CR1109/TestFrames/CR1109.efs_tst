@@ -437,6 +437,45 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions != []
   AND
 ( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation></Expectations>
 </SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step5 - Check the passed track conditions is removed"
+ Guid="ae78e486-026d-4137-8241-a2be96a1cc44"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="539843a0-7b62-4c3f-be69-debb7085cc4f"
+>
+<Actions>
+<Action
+ Guid="b100338b-57a5-4341-baa3-a420b4fab7fe"
+>Odometry.NominalDistance &lt;- 2909.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f6f6a3ac-088f-4bf3-ba69-d1b4dd6392e4"
+>Kernel.TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Min ) == 2800.0</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="2a4dec1d-36ad-4cb8-8cc9-d642eacfb8aa"
+>
+<Actions>
+<Action
+ Guid="5e194df3-5841-4d41-b775-033d700b3ea0"
+>Odometry.NominalDistance &lt;- 2910.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="18efae93-5c27-4f7d-a7ca-af84a9a9dcaf"
+>Kernel.TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Min ) &gt; 2800.0</Expectation></Expectations>
+</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>
