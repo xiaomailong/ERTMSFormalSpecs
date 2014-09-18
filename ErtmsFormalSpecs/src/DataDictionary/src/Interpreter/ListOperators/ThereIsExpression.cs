@@ -50,12 +50,13 @@ namespace DataDictionary.Interpreter.ListOperators
         /// Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
+        /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context)
+        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
             Values.IValue retVal = null;
 
-            Values.ListValue value = ListExpression.GetValue(context) as Values.ListValue;
+            Values.ListValue value = ListExpression.GetValue(context, explain) as Values.ListValue;
             if (value != null)
             {
                 int token = PrepareIteration(context);
@@ -67,7 +68,7 @@ namespace DataDictionary.Interpreter.ListOperators
                         IteratorVariable.Value = v;
                         if (Condition != null)
                         {
-                            Values.BoolValue b = Condition.GetValue(context) as Values.BoolValue;
+                            Values.BoolValue b = Condition.GetValue(context, explain) as Values.BoolValue;
                             if (b != null && b.Val)
                             {
                                 retVal = EFSSystem.BoolType.True;

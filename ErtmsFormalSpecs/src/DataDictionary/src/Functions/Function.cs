@@ -229,8 +229,10 @@ namespace DataDictionary.Functions
         /// Provides the graph of this function if it has been statically defined
         /// </summary>
         /// <param name="context">the context used to create the graph</param>
+        /// <param name="parameter"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public virtual Graph createGraph(Interpreter.InterpretationContext context, Parameter parameter)
+        public virtual Graph createGraph(Interpreter.InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
             Graph retVal = Graph;
 
@@ -244,8 +246,8 @@ namespace DataDictionary.Functions
                         // For now, just create graphs for functions using 0 or 1 parameter.
                         if (FormalParameters.Count == 0)
                         {
-                            Values.IValue value = Evaluate(ctxt, new Dictionary<Variables.Actual, Values.IValue>());
-                            retVal = Graph.createGraph(value, parameter);
+                            Values.IValue value = Evaluate(ctxt, new Dictionary<Variables.Actual, Values.IValue>(), explain);
+                            retVal = Graph.createGraph(value, parameter, explain);
                         }
                         else if (FormalParameters.Count == 1)
                         {
@@ -266,7 +268,7 @@ namespace DataDictionary.Functions
 
                                 ctxt.LocalScope.setParameter(param, actualValue);
                             }
-                            retVal = createGraphForParameter(ctxt, param);
+                            retVal = createGraphForParameter(ctxt, param, explain);
 
                             if (getCacheable() && actualValue is Values.PlaceHolder)
                             {
@@ -277,8 +279,8 @@ namespace DataDictionary.Functions
                         }
                         else
                         {
-                            Values.IValue value = Evaluate(ctxt, new Dictionary<Variables.Actual, Values.IValue>());
-                            retVal = Graph.createGraph(value, parameter);
+                            Values.IValue value = Evaluate(ctxt, new Dictionary<Variables.Actual, Values.IValue>(), explain);
+                            retVal = Graph.createGraph(value, parameter, explain);
                         }
                     }
                 }
@@ -296,8 +298,9 @@ namespace DataDictionary.Functions
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <param name="parameter">The parameter for the X axis</param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public virtual Graph createGraphForParameter(Interpreter.InterpretationContext context, Parameter parameter)
+        public virtual Graph createGraphForParameter(Interpreter.InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
             Graph retVal = Graph;
 
@@ -307,10 +310,10 @@ namespace DataDictionary.Functions
 
                 foreach (Case cas in Cases)
                 {
-                    if (PreconditionSatisfied(context, cas, parameter))
+                    if (PreconditionSatisfied(context, cas, parameter, explain))
                     {
-                        Graph subGraph = cas.Expression.createGraph(context, parameter);
-                        ReduceGraph(context, subGraph, cas, parameter);
+                        Graph subGraph = cas.Expression.createGraph(context, parameter, explain);
+                        ReduceGraph(context, subGraph, cas, parameter, explain);
                         retVal.Merge(subGraph);
                     }
                 }
@@ -366,8 +369,9 @@ namespace DataDictionary.Functions
         /// <param name="context">The interpretation context</param>
         /// <param name="cas">The case to evaluate</param>
         /// <param name="parameter"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        private bool PreconditionSatisfied(Interpreter.InterpretationContext context, Case cas, Parameter parameter)
+        private bool PreconditionSatisfied(Interpreter.InterpretationContext context, Case cas, Parameter parameter, ExplanationPart explain)
         {
             bool retVal = true;
 
@@ -375,7 +379,7 @@ namespace DataDictionary.Functions
             {
                 if (!ExpressionBasedOnParameter(parameter, preCondition.Expression))
                 {
-                    Values.BoolValue boolValue = preCondition.Expression.GetValue(context) as Values.BoolValue;
+                    Values.BoolValue boolValue = preCondition.Expression.GetValue(context, explain) as Values.BoolValue;
                     if (boolValue == null)
                     {
                         throw new Exception("Cannot evaluate precondition " + preCondition.Name);
@@ -448,8 +452,9 @@ namespace DataDictionary.Functions
         /// <param name="context">The context used to evaluate the precondition and segment value</param>
         /// <param name="preCondition">The precondition to evaluate the range</param>
         /// <param name="parameter"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        private List<Graph.Segment> EvaluateBoundaries(Interpreter.InterpretationContext context, Rules.PreCondition preCondition, Parameter parameter)
+        private List<Graph.Segment> EvaluateBoundaries(Interpreter.InterpretationContext context, Rules.PreCondition preCondition, Parameter parameter, ExplanationPart explain)
         {
             List<Graph.Segment> retVal = new List<Graph.Segment>();
 
@@ -462,7 +467,7 @@ namespace DataDictionary.Functions
                     if (expression.Right.Ref == parameter)
                     {
                         // Expression like xxx <= Parameter
-                        val = expression.Left.GetValue(context);
+                        val = expression.Left.GetValue(context, explain);
                         switch (expression.Operation)
                         {
                             case Interpreter.BinaryExpression.OPERATOR.LESS:
@@ -484,7 +489,7 @@ namespace DataDictionary.Functions
                         if (expression.Left.Ref == parameter)
                         {
                             // Expression like Parameter <= xxx
-                            val = expression.Right.GetValue(context);
+                            val = expression.Right.GetValue(context, explain);
                             switch (expression.Operation)
                             {
                                 case Interpreter.BinaryExpression.OPERATOR.LESS:
@@ -505,11 +510,11 @@ namespace DataDictionary.Functions
                         {
                             if (FunctionCallOnParameter(expression.Right, parameter))
                             {
-                                Graph graph = expression.Right.createGraph(context, parameter);
+                                Graph graph = expression.Right.createGraph(context, parameter, explain);
                                 if (graph != null)
                                 {
                                     // Expression like xxx <= f(Parameter)
-                                    val = expression.Left.GetValue(context);
+                                    val = expression.Left.GetValue(context, explain);
                                     retVal = graph.GetSegments(Interpreter.BinaryExpression.Inverse(expression.Operation), getDoubleValue(val));
                                 }
                                 else
@@ -519,11 +524,11 @@ namespace DataDictionary.Functions
                             }
                             else
                             {
-                                Graph graph = expression.Left.createGraph(context, parameter);
+                                Graph graph = expression.Left.createGraph(context, parameter, explain);
                                 if (graph != null)
                                 {
                                     // Expression like f(Parameter) <= xxx
-                                    val = expression.Right.GetValue(context);
+                                    val = expression.Right.GetValue(context, explain);
                                     retVal = graph.GetSegments(expression.Operation, getDoubleValue(val));
                                 }
                                 else
@@ -538,7 +543,7 @@ namespace DataDictionary.Functions
                 {
                     if (!ExpressionBasedOnPlaceHolder(context, expression))
                     {
-                        Values.BoolValue value = preCondition.Expression.GetValue(context) as Values.BoolValue;
+                        Values.BoolValue value = preCondition.Expression.GetValue(context, explain) as Values.BoolValue;
                         if (value != null && value.Val)
                         {
                             retVal.Add(new Graph.Segment(0, double.MaxValue, new Graph.Segment.Curve()));
@@ -596,12 +601,13 @@ namespace DataDictionary.Functions
         /// <param name="graph">The graph to reduce</param>
         /// <param name="cas">The case which is used to reduce the graph</param>
         /// <param name="parameter"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        private void ReduceGraph(Interpreter.InterpretationContext context, Graph graph, Case cas, Parameter parameter)
+        private void ReduceGraph(Interpreter.InterpretationContext context, Graph graph, Case cas, Parameter parameter, ExplanationPart explain)
         {
             foreach (Rules.PreCondition preCondition in cas.PreConditions)
             {
-                List<Graph.Segment> boundaries = EvaluateBoundaries(context, preCondition, parameter);
+                List<Graph.Segment> boundaries = EvaluateBoundaries(context, preCondition, parameter, explain);
                 graph.Reduce(boundaries);
             }
         }
@@ -631,8 +637,9 @@ namespace DataDictionary.Functions
         /// Provides the surface of this function if it has been statically defined
         /// </summary>
         /// <param name="context">the context used to create the graph</param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public virtual Surface createSurface(Interpreter.InterpretationContext context)
+        public virtual Surface createSurface(Interpreter.InterpretationContext context, ExplanationPart explain)
         {
             Surface retVal = Surface;
 
@@ -649,7 +656,7 @@ namespace DataDictionary.Functions
                         {
                             int token = context.LocalScope.PushContext();
                             context.LocalScope.setSurfaceParameters(Xparameter, Yparameter);
-                            retVal = createSurfaceForParameters(context, Xparameter, Yparameter);
+                            retVal = createSurfaceForParameters(context, Xparameter, Yparameter, explain);
                             context.LocalScope.PopContext(token);
                         }
                     }
@@ -704,7 +711,7 @@ namespace DataDictionary.Functions
         /// <param name="Xparameter">The parameter used for the X axis</param>
         /// <param name="Yparameter">The parameter used for the Y axis</param>
         /// <returns></returns>
-        public virtual Surface createSurfaceForParameters(Interpreter.InterpretationContext context, Parameter Xparameter, Parameter Yparameter)
+        public virtual Surface createSurfaceForParameters(Interpreter.InterpretationContext context, Parameter Xparameter, Parameter Yparameter, ExplanationPart explain)
         {
             Surface retVal = Surface;
 
@@ -720,13 +727,13 @@ namespace DataDictionary.Functions
 
                             foreach (Case cas in Cases)
                             {
-                                if (PreconditionSatisfied(context, cas, Xparameter, Yparameter))
+                                if (PreconditionSatisfied(context, cas, Xparameter, Yparameter, explain))
                                 {
-                                    Surface surface = cas.Expression.createSurface(context, Xparameter, Yparameter);
+                                    Surface surface = cas.Expression.createSurface(context, Xparameter, Yparameter, explain);
                                     if (surface != null)
                                     {
                                         Parameter parameter = null;
-                                        surface = ReduceSurface(context, cas, surface, out parameter);
+                                        surface = ReduceSurface(context, cas, surface, out parameter, explain);
 
                                         if (parameter == null || parameter == surface.XParameter)
                                         {
@@ -764,7 +771,7 @@ namespace DataDictionary.Functions
                     {
                         // Function with 1 parameter that ranges over the Xaxis
                         retVal = new Surface(Xparameter, Yparameter);
-                        Functions.Graph graph = createGraphForParameter(context, Xparameter);
+                        Functions.Graph graph = createGraphForParameter(context, Xparameter, explain);
                         foreach (Graph.Segment segment in graph.Segments)
                         {
                             Graph newGraph = Graph.createGraph(segment.Expression.v0);
@@ -777,7 +784,7 @@ namespace DataDictionary.Functions
                 {
                     // Function with 1 parameter that ranges over the Yaxis
                     retVal = new Surface(Xparameter, Yparameter);
-                    Graph graph = createGraphForParameter(context, Yparameter);
+                    Graph graph = createGraphForParameter(context, Yparameter, explain);
                     Surface.Segment segment = new Functions.Surface.Segment(0, double.MaxValue, graph);
                     retVal.AddSegment(segment);
                 }
@@ -800,8 +807,9 @@ namespace DataDictionary.Functions
         /// <param name="cas">The case to evaluate</param>
         /// <param name="x">First parameter</param>
         /// <param name="y">Second parameter</param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        private bool PreconditionSatisfied(Interpreter.InterpretationContext context, Case cas, Parameter x, Parameter y)
+        private bool PreconditionSatisfied(Interpreter.InterpretationContext context, Case cas, Parameter x, Parameter y, ExplanationPart explain)
         {
             bool retVal = true;
 
@@ -809,7 +817,7 @@ namespace DataDictionary.Functions
             {
                 if (!ExpressionBasedOnParameter(x, preCondition.Expression) && !ExpressionBasedOnParameter(y, preCondition.Expression))
                 {
-                    Values.BoolValue boolValue = preCondition.Expression.GetValue(context) as Values.BoolValue;
+                    Values.BoolValue boolValue = preCondition.Expression.GetValue(context, explain) as Values.BoolValue;
                     if (boolValue == null)
                     {
                         throw new Exception("Cannot evaluate precondition " + preCondition.Name);
@@ -843,7 +851,7 @@ namespace DataDictionary.Functions
         /// <param name="surface">The surface to reduce</param>
         /// <param name="parameter">The parameter for which the reduction has been performed</param>
         /// <returns>The reduced surface</returns>
-        private Surface ReduceSurface(Interpreter.InterpretationContext context, Case cas, Surface surface, out Parameter parameter)
+        private Surface ReduceSurface(Interpreter.InterpretationContext context, Case cas, Surface surface, out Parameter parameter, ExplanationPart explain)
         {
             Surface retVal;
 
@@ -851,7 +859,7 @@ namespace DataDictionary.Functions
             parameter = null;
             foreach (Rules.PreCondition preCondition in cas.PreConditions)
             {
-                List<Graph.Segment> boundaries = EvaluateBoundaries(context, preCondition, surface.XParameter);
+                List<Graph.Segment> boundaries = EvaluateBoundaries(context, preCondition, surface.XParameter, explain);
                 if (boundaries.Count != 0 && !fullRange(boundaries))
                 {
                     if (parameter != surface.YParameter)
@@ -865,7 +873,7 @@ namespace DataDictionary.Functions
                 }
                 else
                 {
-                    boundaries = EvaluateBoundaries(context, preCondition, surface.YParameter);
+                    boundaries = EvaluateBoundaries(context, preCondition, surface.YParameter, explain);
                     if (boundaries.Count != 0 && !fullRange(boundaries))
                     {
                         if (parameter != surface.XParameter)
@@ -892,7 +900,7 @@ namespace DataDictionary.Functions
                 // Reduces the segments according to this preconditions
                 foreach (Rules.PreCondition preCondition in cas.PreConditions)
                 {
-                    List<Graph.Segment> boundaries = EvaluateBoundaries(context, preCondition, surface.XParameter);
+                    List<Graph.Segment> boundaries = EvaluateBoundaries(context, preCondition, surface.XParameter, explain);
                     retVal.Reduce(boundaries);
                 }
             }
@@ -905,7 +913,7 @@ namespace DataDictionary.Functions
                     // Reduces the segments according to this preconditions
                     foreach (Rules.PreCondition preCondition in cas.PreConditions)
                     {
-                        List<Graph.Segment> boundaries = EvaluateBoundaries(context, preCondition, surface.YParameter);
+                        List<Graph.Segment> boundaries = EvaluateBoundaries(context, preCondition, surface.YParameter, explain);
                         segment.Graph.Reduce(boundaries);
                     }
                     if (!segment.Empty())
@@ -1032,10 +1040,11 @@ namespace DataDictionary.Functions
         /// <summary>
         /// Provides the value of the function
         /// </summary>
-        /// <param name="instance">the instance on which the function is evaluated</param>
-        /// <param name="localScope">the values of local variables</param>
+        /// <param name="context"></param>
+        /// <param name="actuals"></param>
+        /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public virtual Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals)
+        public virtual Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
         {
             Values.IValue retVal = CachedValue;
 
@@ -1071,21 +1080,20 @@ namespace DataDictionary.Functions
                             {
                                 if (call.CachedFunction == null)
                                 {
-                                    call.CachedFunction = call.getFunction(context);
+                                    call.CachedFunction = call.getFunction(context, explain);
                                 }
                             }
                         }
 
                         // Evaluate the function
-                        ExplanationPart previous = aCase.Expression.SetupExplanation();
-                        bool val = aCase.EvaluatePreConditions(context);
+                        ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, "Case " + aCase.Name + " : ");
+                        bool val = aCase.EvaluatePreConditions(context, subExplanation);
                         if (val)
                         {
-                            retVal = aCase.Expression.GetValue(context);
+                            retVal = aCase.Expression.GetValue(context, subExplanation);
                             break;
                         }
-                        Values.IValue condValue = val ? EFSSystem.BoolType.True : EFSSystem.BoolType.False;
-                        aCase.Expression.CompleteExplanation(previous, "Case " + aCase.Name + " : ", condValue );
+                        ExplanationPart.SetNamable(subExplanation, val ? EFSSystem.BoolType.True : EFSSystem.BoolType.False);
                     }
                 }
                 else if (Surface != null && FormalParameters.Count == 2)

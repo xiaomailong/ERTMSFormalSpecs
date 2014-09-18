@@ -102,7 +102,8 @@ namespace DataDictionary.Interpreter
         /// Adds an error message to the root element and explains it
         /// </summary>
         /// <param name="message"></param>
-        public virtual void AddErrorAndExplain(string message, InterpretationContext context)
+        /// <param name="explain"></param>
+        public virtual void AddErrorAndExplain(string message, ExplanationPart explain)
         {
             if (RootLog != null)
             {

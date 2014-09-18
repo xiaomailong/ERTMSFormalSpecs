@@ -16,6 +16,7 @@
 using System.Collections.Generic;
 using ErtmsSolutions.Etcs.Subset26.BrakingCurves;
 using ErtmsSolutions.SiUnits;
+using DataDictionary.Interpreter;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -71,8 +72,10 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// Provides the graph of this function if it has been statically defined
         /// </summary>
         /// <param name="context">the context used to create the graph</param>
+        /// <param name="parameter"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public override Graph createGraph(Interpreter.InterpretationContext context, Parameter parameter)
+        public override Graph createGraph(Interpreter.InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
             Graph retVal = null;
 
@@ -84,7 +87,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
 
                 int token = context.LocalScope.PushContext();
                 context.LocalScope.setGraphParameter(p);
-                MRSPGraph = createGraphForValue(context, context.findOnStack(SpeedRestrictions).Value, p);
+                MRSPGraph = createGraphForValue(context, context.findOnStack(SpeedRestrictions).Value, explain, p);
                 context.LocalScope.PopContext(token);
             }
 
@@ -93,7 +96,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
                 Function deceleratorFactor = context.findOnStack(DecelerationFactor).Value as Function;
                 if (deceleratorFactor != null)
                 {
-                    Surface DecelerationSurface = deceleratorFactor.createSurface(context);
+                    Surface DecelerationSurface = deceleratorFactor.createSurface(context, explain);
                     if (DecelerationSurface != null)
                     {
                         FlatSpeedDistanceCurve MRSPCurve = MRSPGraph.FlatSpeedDistanceCurve(MRSPGraph.ExpectedEndX());
@@ -174,11 +177,11 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// Provides the value of the function
         /// </summary>
-        /// <param name="instance">the instance on which the function is evaluated</param>
+        /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
-        /// <param name="localScope">the values of local variables</param>
+        /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals)
+        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
         {
             Values.IValue retVal = null;
 
@@ -193,7 +196,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
             parameter.Type = EFSSystem.DoubleType;
             function.appendParameters(parameter);
             function.ReturnType = EFSSystem.DoubleType;
-            function.Graph = createGraph(context, parameter);
+            function.Graph = createGraph(context, parameter, explain);
 
             retVal = function;
             context.LocalScope.PopContext(token);

@@ -204,6 +204,7 @@ namespace DataDictionary.Interpreter
         /// Provides the variable referenced by this expression, if any
         /// </summary>
         /// <param name="context">The context on which the variable must be found</param>
+        /// <param name="explain"></param>
         /// <returns></returns>
         public override Variables.IVariable GetVariable(InterpretationContext context)
         {
@@ -221,7 +222,7 @@ namespace DataDictionary.Interpreter
                 current = Arguments[i].GetVariable(ctxt);
                 if (current == null)
                 {
-                    current = Arguments[i].GetValue(ctxt);
+                    current = Arguments[i].GetValue(ctxt, null);
                 }
             }
 
@@ -232,8 +233,9 @@ namespace DataDictionary.Interpreter
         /// Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
+        /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context)
+        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
             INamable retVal = Ref as Values.IValue;
 
@@ -246,7 +248,7 @@ namespace DataDictionary.Interpreter
                     {
                         ctxt.Instance = retVal;
                     }
-                    retVal = Arguments[i].GetValue(ctxt);
+                    retVal = Arguments[i].GetValue(ctxt, explain);
 
                     if (retVal == EFSSystem.EmptyValue)
                     {
@@ -268,8 +270,9 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="elementCount">The number of elements to consider</param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public INamable GetPrefixValue(InterpretationContext context, int elementCount)
+        public INamable GetPrefixValue(InterpretationContext context, int elementCount, ExplanationPart explain)
         {
             INamable retVal = null;
 
@@ -280,7 +283,7 @@ namespace DataDictionary.Interpreter
                 {
                     ctxt.Instance = retVal;
                 }
-                retVal = Arguments[i].GetValue(ctxt);
+                retVal = Arguments[i].GetValue(ctxt, explain);
                 if (retVal == null)
                 {
                     retVal = Arguments[i].Ref;
@@ -303,9 +306,10 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Provides the callable that is called by this expression
         /// </summary>
-        /// <param name="namable"></param>
+        /// <param name="context"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public override ICallable getCalled(InterpretationContext context)
+        public override ICallable getCalled(InterpretationContext context, ExplanationPart explain)
         {
             ICallable retVal = Called;
 
@@ -372,12 +376,13 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public override Functions.Graph createGraph(InterpretationContext context, Parameter parameter)
+        public override Functions.Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
-            Functions.Graph retVal = base.createGraph(context, parameter);
+            Functions.Graph retVal = base.createGraph(context, parameter, explain);
 
-            retVal = Functions.Graph.createGraph(GetValue(context), parameter);
+            retVal = Functions.Graph.createGraph(GetValue(context, explain), parameter, explain);
 
             if (retVal == null)
             {
@@ -394,12 +399,13 @@ namespace DataDictionary.Interpreter
         /// <param name="context">the context used to create the surface</param>
         /// <param name="xParam">The X axis of this surface</param>
         /// <param name="yParam">The Y axis of this surface</param>
+        /// <param name="explain"></param>
         /// <returns>The surface which corresponds to this expression</returns>
-        public override Functions.Surface createSurface(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam)
+        public override Functions.Surface createSurface(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
         {
-            Functions.Surface retVal = base.createSurface(context, xParam, yParam);
+            Functions.Surface retVal = base.createSurface(context, xParam, yParam, explain);
 
-            retVal = Functions.Surface.createSurface(GetValue(context), xParam, yParam);
+            retVal = Functions.Surface.createSurface(GetValue(context, explain), xParam, yParam);
 
             if (retVal == null)
             {

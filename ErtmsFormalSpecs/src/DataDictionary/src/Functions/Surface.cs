@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using ErtmsSolutions.Etcs.Subset26.BrakingCurves;
 using ErtmsSolutions.SiUnits;
+using DataDictionary.Interpreter;
 
 namespace DataDictionary.Functions
 {
@@ -582,8 +583,9 @@ namespace DataDictionary.Functions
         /// <param name="xParam"></param>
         /// <param name="yParam"></param>
         /// <param name="iValue"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public static Surface createSurface(Parameter xParam, Parameter yParam, Values.IValue iValue)
+        public static Surface createSurface(Parameter xParam, Parameter yParam, Values.IValue iValue, ExplanationPart explain)
         {
             Surface retVal = null;
 
@@ -609,7 +611,7 @@ namespace DataDictionary.Functions
             if (retVal == null)
             {
                 retVal = new Surface(xParam, yParam);
-                Segment segment = new Segment(0, double.MaxValue, Graph.createGraph(iValue, yParam));
+                Segment segment = new Segment(0, double.MaxValue, Graph.createGraph(iValue, yParam, explain));
                 retVal.AddSegment(segment);
             }
 

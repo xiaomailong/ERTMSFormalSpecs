@@ -393,7 +393,7 @@ namespace GUI.TestRunnerView.Watch
                         Expression expression = ExpressionTree;
                         if (expression != null)
                         {
-                            IValue value = expression.GetValue(new InterpretationContext());
+                            IValue value = expression.GetValue(new InterpretationContext(), null);
                             if (value != null)
                             {
                                 retVal = value.LiteralName;

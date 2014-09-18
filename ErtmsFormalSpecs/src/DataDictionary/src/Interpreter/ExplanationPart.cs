@@ -167,5 +167,58 @@ namespace DataDictionary.Interpreter
 
             return retVal;
         }
+
+        /// <summary>
+        /// Creates a sub explanation for the explain provided as parameter
+        /// </summary>
+        /// <param name="explain"></param>
+        /// <param name="subExpression"></param>
+        /// <returns></returns>
+        public static ExplanationPart CreateSubExplanation(ExplanationPart explain, Expression subExpression)
+        {
+            ExplanationPart retVal = null;
+
+            if (explain != null)
+            {
+                retVal = new ExplanationPart(explain.Element, subExpression);
+                explain.SubExplanations.Add(retVal);
+            }
+
+            return retVal;
+        }
+
+
+        /// <summary>
+        /// Creates a sub explanation for the explain provided as parameter
+        /// </summary>
+        /// <param name="explain"></param>
+        /// <param name="name"></param>
+        /// <param name="namable"></param>
+        /// <returns></returns>
+        public static ExplanationPart CreateSubExplanation(ExplanationPart explain, string name)
+        {
+            ExplanationPart retVal = null;
+
+            if (explain != null)
+            {
+                retVal = new ExplanationPart(explain.Element, name);
+                explain.SubExplanations.Add(retVal);
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Sets the value associated to the explanation
+        /// </summary>
+        /// <param name="explain"></param>
+        /// <param name="namable"></param>
+        public static void SetNamable(ExplanationPart explain, Utils.INamable namable)
+        {
+            if (explain != null)
+            {
+                explain.Namable = namable;
+            }
+        }
     }
 }

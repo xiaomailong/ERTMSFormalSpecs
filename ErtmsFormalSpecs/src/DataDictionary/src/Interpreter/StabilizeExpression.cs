@@ -149,32 +149,30 @@ namespace DataDictionary.Interpreter
         /// Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
+        /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context)
+        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
-            ExplanationPart previous = SetupExplanation();
+            ExplanationPart stabilizeExpressionExplanation = ExplanationPart.CreateSubExplanation(explain, ToString() + " = ");
 
-            LastIteration.Value = InitialValue.GetValue(context);
+            LastIteration.Value = InitialValue.GetValue(context, explain);
 
             int i = 0;
             bool stop = false;
             while (!stop)
             {
                 i = i + 1;
-                ExplanationPart previous2 = SetupExplanation();
-
-                ExplanationPart value = SetupExplanation();
+                ExplanationPart iterationExplanation = ExplanationPart.CreateSubExplanation(stabilizeExpressionExplanation, "Iteration " + i);
+                ExplanationPart iteratorValueExplanation = ExplanationPart.CreateSubExplanation(iterationExplanation, "Iteration expression value = ");
                 int token = context.LocalScope.PushContext();
                 context.LocalScope.setVariable(LastIteration);
-                CurrentIteration.Value = Expression.GetValue(context);
-                if (explain)
-                {
-                    CompleteExplanation(value, "Iteration expression value = ", CurrentIteration.Value);
-                }
+                CurrentIteration.Value = Expression.GetValue(context, iteratorValueExplanation);
+                ExplanationPart.SetNamable(iteratorValueExplanation, CurrentIteration.Value);
 
-                ExplanationPart stopExpression = SetupExplanation();
+                ExplanationPart stopValueExplanation = ExplanationPart.CreateSubExplanation(iterationExplanation, "Stop expression value = ");
                 context.LocalScope.setVariable(CurrentIteration);
-                Values.BoolValue stopCondition = Condition.GetValue(context) as Values.BoolValue;
+                Values.BoolValue stopCondition = Condition.GetValue(context, stopValueExplanation) as Values.BoolValue;
+                ExplanationPart.SetNamable(stopValueExplanation, stopCondition);
                 if (stopCondition != null)
                 {
                     stop = stopCondition.Val;
@@ -184,22 +182,12 @@ namespace DataDictionary.Interpreter
                     AddError("Cannot evaluate condition " + Condition.ToString());
                     stop = true;
                 }
-                if (explain)
-                {
-                    CompleteExplanation(stopExpression, "Stop expression value = ", stopCondition);
-                }
+
                 context.LocalScope.PopContext(token);
                 LastIteration.Value = CurrentIteration.Value;
-                if (explain)
-                {
-                    CompleteExplanation(previous2, "Iteration " + i);
-                }
             }
 
-            if (explain)
-            {
-                CompleteExplanation(previous, ToString() + " = ", CurrentIteration.Value);
-            }
+            ExplanationPart.SetNamable(stabilizeExpressionExplanation, CurrentIteration.Value);
 
             return CurrentIteration.Value;
         }
@@ -273,15 +261,17 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the graph of this function if it has been statically defined
+        /// Creates the graph associated to this expression, when the given parameter ranges over the X axis
         /// </summary>
-        /// <param name="context">the context used to create the graph</param>
+        /// <param name="context">The interpretation context</param>
+        /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public override Functions.Graph createGraph(Interpreter.InterpretationContext context, Parameter parameter)
+        public override Functions.Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
-            Functions.Graph retVal = base.createGraph(context, parameter);
+            Functions.Graph retVal = base.createGraph(context, parameter, explain);
 
-            retVal = Functions.Graph.createGraph(GetValue(context), parameter);
+            retVal = Functions.Graph.createGraph(GetValue(context, explain), parameter, explain);
 
             return retVal;
         }

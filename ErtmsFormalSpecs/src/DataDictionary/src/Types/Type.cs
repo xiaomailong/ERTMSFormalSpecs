@@ -218,7 +218,7 @@ namespace DataDictionary.Types
                         {
                             if (Expression != null)
                             {
-                                retVal = Expression.GetValue(new InterpretationContext(this));
+                                retVal = Expression.GetValue(new InterpretationContext(this), null);
                             }
                         }
                     }

@@ -314,25 +314,26 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the value associated to this Term
+        /// Provides the value associated to this Expression
         /// </summary>
-        /// <param name="instance">The instance on which the value is computed</param>
-        /// <param name="globalFind">Indicates that the search should be performed globally</param>
+        /// <param name="context">The context on which the value must be found</param>
+        /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context)
+        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
             Values.IValue retVal = null;
-            ExplanationPart previous = SetupExplanation();
+
+            ExplanationPart binaryExpressionExplanation = ExplanationPart.CreateSubExplanation(explain, Name + " = ");
 
             Values.IValue leftValue = null;
             Values.IValue rightValue = null;
             try
             {
-                leftValue = Left.GetValue(context);
+                leftValue = Left.GetValue(context, binaryExpressionExplanation);
             }
             catch (Exception e)
             {
-                AddErrorAndExplain("Cannot evaluate " + Left + ". Reason is " + e.Message, context);
+                AddErrorAndExplain("Cannot evaluate " + Left + ". Reason is " + e.Message, binaryExpressionExplanation);
                 throw new Exception("inner evaluation failed");
             }
 
@@ -348,7 +349,7 @@ namespace DataDictionary.Interpreter
                         case OPERATOR.SUB:
                         case OPERATOR.DIV:
                             {
-                                rightValue = Right.GetValue(context);
+                                rightValue = Right.GetValue(context, binaryExpressionExplanation);
                                 if (rightValue != null)
                                 {
                                     retVal = leftValue.Type.PerformArithmericOperation(context, leftValue, Operation, rightValue);
@@ -368,7 +369,7 @@ namespace DataDictionary.Interpreter
 
                                     if (lb.Val)
                                     {
-                                        rightValue = Right.GetValue(context);
+                                        rightValue = Right.GetValue(context, binaryExpressionExplanation);
                                         if (rightValue != null)
                                         {
                                             if (rightValue.Type == EFSSystem.BoolType)
@@ -405,7 +406,7 @@ namespace DataDictionary.Interpreter
 
                                     if (!lb.Val)
                                     {
-                                        rightValue = Right.GetValue(context);
+                                        rightValue = Right.GetValue(context, binaryExpressionExplanation);
                                         if (rightValue != null)
                                         {
                                             if (rightValue.Type == EFSSystem.BoolType)
@@ -436,7 +437,7 @@ namespace DataDictionary.Interpreter
 
                         case OPERATOR.LESS:
                             {
-                                rightValue = Right.GetValue(context);
+                                rightValue = Right.GetValue(context, binaryExpressionExplanation);
                                 if (rightValue != null)
                                 {
                                     retVal = EFSSystem.GetBoolean(leftValue.Type.Less(leftValue, rightValue));
@@ -450,7 +451,7 @@ namespace DataDictionary.Interpreter
 
                         case OPERATOR.LESS_OR_EQUAL:
                             {
-                                rightValue = Right.GetValue(context);
+                                rightValue = Right.GetValue(context, binaryExpressionExplanation);
                                 if (rightValue != null)
                                 {
                                     retVal = EFSSystem.GetBoolean(leftValue.Type.CompareForEquality(leftValue, rightValue) || leftValue.Type.Less(leftValue, rightValue));
@@ -464,7 +465,7 @@ namespace DataDictionary.Interpreter
 
                         case OPERATOR.GREATER:
                             {
-                                rightValue = Right.GetValue(context);
+                                rightValue = Right.GetValue(context, binaryExpressionExplanation);
                                 if (rightValue != null)
                                 {
                                     retVal = EFSSystem.GetBoolean(leftValue.Type.Greater(leftValue, rightValue));
@@ -478,7 +479,7 @@ namespace DataDictionary.Interpreter
 
                         case OPERATOR.GREATER_OR_EQUAL:
                             {
-                                rightValue = Right.GetValue(context);
+                                rightValue = Right.GetValue(context, binaryExpressionExplanation);
                                 if (rightValue != null)
                                 {
                                     retVal = EFSSystem.GetBoolean(leftValue.Type.CompareForEquality(leftValue, rightValue) || leftValue.Type.Greater(leftValue, rightValue));
@@ -492,7 +493,7 @@ namespace DataDictionary.Interpreter
 
                         case OPERATOR.EQUAL:
                             {
-                                rightValue = Right.GetValue(context);
+                                rightValue = Right.GetValue(context, binaryExpressionExplanation);
                                 if (rightValue != null)
                                 {
                                     retVal = EFSSystem.GetBoolean(leftValue.Type.CompareForEquality(leftValue, rightValue));
@@ -506,7 +507,7 @@ namespace DataDictionary.Interpreter
 
                         case OPERATOR.NOT_EQUAL:
                             {
-                                rightValue = Right.GetValue(context);
+                                rightValue = Right.GetValue(context, binaryExpressionExplanation);
                                 if (rightValue != null)
                                 {
                                     retVal = EFSSystem.GetBoolean(!leftValue.Type.CompareForEquality(leftValue, rightValue));
@@ -520,7 +521,7 @@ namespace DataDictionary.Interpreter
 
                         case OPERATOR.IN:
                             {
-                                rightValue = Right.GetValue(context);
+                                rightValue = Right.GetValue(context, binaryExpressionExplanation);
                                 if (rightValue != null)
                                 {
                                     retVal = EFSSystem.GetBoolean(rightValue.Type.Contains(rightValue, leftValue));
@@ -534,7 +535,7 @@ namespace DataDictionary.Interpreter
 
                         case OPERATOR.NOT_IN:
                             {
-                                rightValue = Right.GetValue(context);
+                                rightValue = Right.GetValue(context, binaryExpressionExplanation);
                                 if (rightValue != null)
                                 {
                                     retVal = EFSSystem.GetBoolean(!rightValue.Type.Contains(rightValue, leftValue));
@@ -554,15 +555,12 @@ namespace DataDictionary.Interpreter
             }
             catch (Exception e)
             {
-                AddErrorAndExplain("Cannot evaluate " + Right + ". Reason is " + e.Message, context);
+                AddErrorAndExplain("Cannot evaluate " + Right + ". Reason is " + e.Message, binaryExpressionExplanation);
                 throw new Exception("inner evaluation failed");
             }
             finally
             {
-                if (explain)
-                {
-                    CompleteExplanation(previous, Name + " = ", retVal);
-                }
+                ExplanationPart.SetNamable(binaryExpressionExplanation, retVal);
             }
 
             return retVal;
@@ -624,27 +622,28 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the called function
+        /// Provides the callable that is called by this expression
         /// </summary>
         /// <param name="context"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public override ICallable getCalled(InterpretationContext context)
+        public override ICallable getCalled(InterpretationContext context, ExplanationPart explain)
         {
             ICallable retVal = null;
 
-            Function leftFunction = Left.getCalled(context) as Functions.Function;
+            Function leftFunction = Left.getCalled(context, explain) as Functions.Function;
             List<Parameter> unboundLeft = getUnboundParameter(context, leftFunction);
             if (leftFunction == null || unboundLeft.Count == 0)
             {
-                leftFunction = Left.GetValue(context) as Function;
+                leftFunction = Left.GetValue(context, explain) as Function;
                 unboundLeft = getUnboundParametersFromValue(leftFunction);
             }
 
-            Functions.Function rightFunction = Right.getCalled(context) as Functions.Function;
+            Functions.Function rightFunction = Right.getCalled(context, explain) as Functions.Function;
             List<Parameter> unboundRight = getUnboundParameter(context, rightFunction);
             if (rightFunction == null || unboundRight.Count == 0)
             {
-                rightFunction = Right.GetValue(context) as Function;
+                rightFunction = Right.GetValue(context, explain) as Function;
                 unboundRight = getUnboundParametersFromValue(rightFunction);
             }
 
@@ -655,21 +654,21 @@ namespace DataDictionary.Interpreter
                 {
                     if (rightFunction == null)
                     {
-                        retVal = GetValue(context) as ICallable;
+                        retVal = GetValue(context, explain) as ICallable;
                     }
                     else
                     {
                         if (rightFunction.FormalParameters.Count == 1)
                         {
-                            retVal = createGraphResult(context, leftFunction, unboundLeft, rightFunction, unboundRight);
+                            retVal = createGraphResult(context, leftFunction, unboundLeft, rightFunction, unboundRight, explain);
                         }
                         else if (rightFunction.FormalParameters.Count == 2)
                         {
-                            retVal = createSurfaceResult(context, leftFunction, unboundLeft, rightFunction, unboundRight);
+                            retVal = createSurfaceResult(context, leftFunction, unboundLeft, rightFunction, unboundRight, explain);
                         }
                         else
                         {
-                            retVal = GetValue(context) as ICallable;
+                            retVal = GetValue(context, explain) as ICallable;
                         }
                     }
                 }
@@ -677,20 +676,20 @@ namespace DataDictionary.Interpreter
                 {
                     if (leftFunction.FormalParameters.Count == 1)
                     {
-                        retVal = createGraphResult(context, leftFunction, unboundLeft, rightFunction, unboundRight);
+                        retVal = createGraphResult(context, leftFunction, unboundLeft, rightFunction, unboundRight, explain);
                     }
                     else if (leftFunction.FormalParameters.Count == 2)
                     {
-                        retVal = createSurfaceResult(context, leftFunction, unboundLeft, rightFunction, unboundRight);
+                        retVal = createSurfaceResult(context, leftFunction, unboundLeft, rightFunction, unboundRight, explain);
                     }
                     else
                     {
-                        retVal = GetValue(context) as ICallable;
+                        retVal = GetValue(context, explain) as ICallable;
                     }
                 }
                 else
                 {
-                    retVal = GetValue(context) as ICallable;
+                    retVal = GetValue(context, explain) as ICallable;
                 }
 
                 if (retVal == null)
@@ -700,11 +699,11 @@ namespace DataDictionary.Interpreter
             }
             else if (max == 1)
             {
-                retVal = createGraphResult(context, leftFunction, unboundLeft, rightFunction, unboundRight);
+                retVal = createGraphResult(context, leftFunction, unboundLeft, rightFunction, unboundRight, explain);
             }
             else if (max == 2)
             {
-                retVal = createSurfaceResult(context, leftFunction, unboundLeft, rightFunction, unboundRight);
+                retVal = createSurfaceResult(context, leftFunction, unboundLeft, rightFunction, unboundRight, explain);
             }
             else
             {
@@ -722,15 +721,16 @@ namespace DataDictionary.Interpreter
         /// <param name="unboundLeft"></param>
         /// <param name="rightFunction"></param>
         /// <param name="unboundRight"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        private ICallable createGraphResult(InterpretationContext context, Functions.Function leftFunction, List<Parameter> unboundLeft, Functions.Function rightFunction, List<Parameter> unboundRight)
+        private ICallable createGraphResult(InterpretationContext context, Functions.Function leftFunction, List<Parameter> unboundLeft, Functions.Function rightFunction, List<Parameter> unboundRight, ExplanationPart explain)
         {
             ICallable retVal = null;
 
-            Functions.Graph leftGraph = createGraphForUnbound(context, Left, leftFunction, unboundLeft);
+            Functions.Graph leftGraph = createGraphForUnbound(context, Left, leftFunction, unboundLeft, explain);
             if (leftGraph != null)
             {
-                Functions.Graph rightGraph = createGraphForUnbound(context, Right, rightFunction, unboundRight);
+                Functions.Graph rightGraph = createGraphForUnbound(context, Right, rightFunction, unboundRight, explain);
 
                 if (rightGraph != null)
                 {
@@ -757,15 +757,16 @@ namespace DataDictionary.Interpreter
         /// <param name="unboundLeft"></param>
         /// <param name="rightFunction"></param>
         /// <param name="unboundRight"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        private ICallable createSurfaceResult(InterpretationContext context, Functions.Function leftFunction, List<Parameter> unboundLeft, Functions.Function rightFunction, List<Parameter> unboundRight)
+        private ICallable createSurfaceResult(InterpretationContext context, Functions.Function leftFunction, List<Parameter> unboundLeft, Functions.Function rightFunction, List<Parameter> unboundRight, ExplanationPart explain)
         {
             ICallable retVal = null;
 
-            Functions.Surface leftSurface = createSurfaceForUnbound(context, Left, leftFunction, unboundLeft);
+            Functions.Surface leftSurface = createSurfaceForUnbound(context, Left, leftFunction, unboundLeft, explain);
             if (leftSurface != null)
             {
-                Functions.Surface rightSurface = createSurfaceForUnbound(context, Right, rightFunction, unboundRight);
+                Functions.Surface rightSurface = createSurfaceForUnbound(context, Right, rightFunction, unboundRight, explain);
                 if (rightSurface != null)
                 {
                     retVal = combineSurface(leftSurface, rightSurface).Function;
@@ -790,8 +791,9 @@ namespace DataDictionary.Interpreter
         /// <param name="expression"></param>
         /// <param name="function"></param>
         /// <param name="unbound"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        private Graph createGraphForUnbound(InterpretationContext context, Expression expression, Function function, List<Parameter> unbound)
+        private Graph createGraphForUnbound(InterpretationContext context, Expression expression, Function function, List<Parameter> unbound, ExplanationPart explain)
         {
             Graph retVal = null;
 
@@ -799,22 +801,22 @@ namespace DataDictionary.Interpreter
             {
                 if (function != null && function.FormalParameters.Count > 0)
                 {
-                    retVal = function.createGraph(context, (Parameter)function.FormalParameters[0]);
+                    retVal = function.createGraph(context, (Parameter)function.FormalParameters[0], explain);
                 }
                 else
                 {
-                    retVal = Graph.createGraph(expression.GetValue(context), null);
+                    retVal = Graph.createGraph(expression.GetValue(context, explain), null, explain);
                 }
             }
             else
             {
                 if (function == null)
                 {
-                    retVal = expression.createGraph(context, unbound[0]);
+                    retVal = expression.createGraph(context, unbound[0], explain);
                 }
                 else
                 {
-                    retVal = function.createGraph(context, unbound[0]);
+                    retVal = function.createGraph(context, unbound[0], explain);
                 }
             }
 
@@ -828,8 +830,9 @@ namespace DataDictionary.Interpreter
         /// <param name="expression"></param>
         /// <param name="function"></param>
         /// <param name="unbound"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        private Surface createSurfaceForUnbound(InterpretationContext context, Expression expression, Function function, List<Parameter> unbound)
+        private Surface createSurfaceForUnbound(InterpretationContext context, Expression expression, Function function, List<Parameter> unbound, ExplanationPart explain)
         {
             Surface retVal = null;
 
@@ -848,27 +851,27 @@ namespace DataDictionary.Interpreter
                     {
                         yAxis = (Parameter)function.FormalParameters[1];
                     }
-                    retVal = function.createSurfaceForParameters(context, xAxis, yAxis);
+                    retVal = function.createSurfaceForParameters(context, xAxis, yAxis, explain);
                 }
                 else
                 {
-                    retVal = Surface.createSurface(expression.GetValue(context), null, null);
+                    retVal = Surface.createSurface(expression.GetValue(context, explain), null, null);
                 }
             }
             else if (unbound.Count == 1)
             {
-                Graph graph = createGraphForUnbound(context, expression, function, unbound);
+                Graph graph = createGraphForUnbound(context, expression, function, unbound, explain);
                 retVal = Surface.createSurface(graph.Function, unbound[0], null);
             }
             else
             {
                 if (function == null)
                 {
-                    retVal = expression.createSurface(context, unbound[0], unbound[1]);
+                    retVal = expression.createSurface(context, unbound[0], unbound[1], explain);
                 }
                 else
                 {
-                    retVal = function.createSurfaceForParameters(context, unbound[0], unbound[1]);
+                    retVal = function.createSurfaceForParameters(context, unbound[0], unbound[1], explain);
                 }
             }
             return retVal;
@@ -1087,15 +1090,16 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public override Functions.Graph createGraph(InterpretationContext context, Parameter parameter)
+        public override Functions.Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
-            Functions.Graph retVal = base.createGraph(context, parameter);
+            Functions.Graph retVal = base.createGraph(context, parameter, explain);
 
-            Graph leftGraph = Left.createGraph(context, parameter);
+            Graph leftGraph = Left.createGraph(context, parameter, explain);
             if (leftGraph != null)
             {
-                Graph rightGraph = Right.createGraph(context, parameter);
+                Graph rightGraph = Right.createGraph(context, parameter, explain);
 
                 if (rightGraph != null)
                 {
@@ -1112,15 +1116,16 @@ namespace DataDictionary.Interpreter
         /// <param name="context">the context used to create the surface</param>
         /// <param name="xParam">The X axis of this surface</param>
         /// <param name="yParam">The Y axis of this surface</param>
+        /// <param name="explain"></param>
         /// <returns>The surface which corresponds to this expression</returns>
-        public override Functions.Surface createSurface(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam)
+        public override Functions.Surface createSurface(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
         {
-            Surface retVal = base.createSurface(context, xParam, yParam);
+            Surface retVal = base.createSurface(context, xParam, yParam, explain);
 
-            Surface leftSurface = Left.createSurface(context, xParam, yParam);
+            Surface leftSurface = Left.createSurface(context, xParam, yParam, explain);
             if (leftSurface != null)
             {
-                Surface rightSurface = Right.createSurface(context, xParam, yParam);
+                Surface rightSurface = Right.createSurface(context, xParam, yParam, explain);
 
                 if (rightSurface != null)
                 {

@@ -236,20 +236,13 @@ namespace DataDictionary.Interpreter.Statement
             if (var != null)
             {
                 string tmp = var.FullName;
-                Values.IValue value = Expression.GetValue(context);
+                Values.IValue value = Expression.GetValue(context, explanation);
                 if (value != null)
                 {
                     value = value.RightSide(var, true, true);
                 }
                 Rules.Change change = new Rules.Change(var, var.Value, value);
                 changes.Add(change, apply, runner);
-
-                if (explanation != null)
-                {
-                    ExplanationPart part = new ExplanationPart(Root, change);
-                    part.SubExplanations.Add(Expression.Explain(context));
-                    explanation.SubExplanations.Add(part);
-                }
             }
             else
             {

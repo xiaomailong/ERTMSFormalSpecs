@@ -112,7 +112,7 @@ namespace GUI.TestRunnerView.TimeLineControl
                             {
                                 InterpretationContext context = new InterpretationContext();
                                 context.UseDefaultValue = false;
-                                value = expression.GetValue(context);
+                                value = expression.GetValue(context, null);
                             }
 
                             if (value == null || value is EmptyValue)

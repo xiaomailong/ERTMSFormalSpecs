@@ -75,14 +75,14 @@ namespace GUI.GraphView
                 DataDictionaryView.FunctionTreeNode functionTreeNode = SourceNode as DataDictionaryView.FunctionTreeNode;
                 if (functionTreeNode != null)
                 {
-                    AddFunction(functionTreeNode.Item);
+                    AddFunction(functionTreeNode.Item, null);
                 }
                 else
                 {
                     Shortcuts.ShortcutTreeNode shortcutTreeNode = SourceNode as Shortcuts.ShortcutTreeNode;
                     if (shortcutTreeNode != null)
                     {
-                        AddFunction(shortcutTreeNode.Item.GetReference() as Function);
+                        AddFunction(shortcutTreeNode.Item.GetReference() as Function, null);
                     }
                 }
             }
@@ -92,7 +92,8 @@ namespace GUI.GraphView
         /// Adds a new function to this graph
         /// </summary>
         /// <param name="function"></param>
-        private void AddFunction(Function function)
+        /// <param name="explain"></param>
+        private void AddFunction(Function function, ExplanationPart explain)
         {
             if (function != null)
             {
@@ -100,7 +101,7 @@ namespace GUI.GraphView
                 if (function.FormalParameters.Count == 1)
                 {
                     Parameter parameter = (Parameter)function.FormalParameters[0];
-                    Graph graph = function.createGraph(context, parameter);
+                    Graph graph = function.createGraph(context, parameter, explain);
                     if (graph != null)
                     {
                         Functions.Add(function);
@@ -109,7 +110,7 @@ namespace GUI.GraphView
                 }
                 else if (function.FormalParameters.Count == 2)
                 {
-                    Surface surface = function.createSurface(context);
+                    Surface surface = function.createSurface(context, explain);
                     if (surface != null)
                     {
                         Functions.Add(function);
@@ -221,7 +222,7 @@ namespace GUI.GraphView
                 if (function.FormalParameters.Count == 1)
                 {
                     Parameter parameter = (Parameter)function.FormalParameters[0];
-                    Graph graph = function.createGraph(context, parameter);
+                    Graph graph = function.createGraph(context, parameter, null);
                     if (graph != null)
                     {
                         expectedEndX = Math.Max(expectedEndX, graph.ExpectedEndX());
@@ -237,7 +238,7 @@ namespace GUI.GraphView
                 InterpretationContext context = new InterpretationContext(function);
                 if (function.FormalParameters.Count == 2)
                 {
-                    Surface surface = function.createSurface(context);
+                    Surface surface = function.createSurface(context, null);
                     if (surface != null)
                     {
                         expectedEndX = Math.Max(expectedEndX, surface.ExpectedEndX());

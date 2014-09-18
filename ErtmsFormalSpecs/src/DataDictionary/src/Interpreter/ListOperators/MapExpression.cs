@@ -68,12 +68,13 @@ namespace DataDictionary.Interpreter.ListOperators
         /// Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
+        /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context)
+        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
             Values.ListValue retVal = null;
 
-            Values.ListValue value = ListExpression.GetValue(context) as Values.ListValue;
+            Values.ListValue value = ListExpression.GetValue(context, explain) as Values.ListValue;
             if (value != null)
             {
                 int token = PrepareIteration(context);
@@ -84,9 +85,9 @@ namespace DataDictionary.Interpreter.ListOperators
                     {
                         IteratorVariable.Value = v;
 
-                        if (conditionSatisfied(context))
+                        if (conditionSatisfied(context, explain))
                         {
-                            retVal.Val.Add(IteratorExpression.GetValue(context));
+                            retVal.Val.Add(IteratorExpression.GetValue(context, explain));
                         }
                     }
                     NextIteration();

@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using DataDictionary.Interpreter;
 
 
 namespace DataDictionary.Functions.PredefinedFunctions
@@ -101,10 +102,11 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// Provides the value of the function
         /// </summary>
-        /// <param name="instance">the instance on which the function is evaluated</param>
+        /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
+        /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals)
+        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
         {
             Values.IValue retVal = null;
 
@@ -118,7 +120,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
             Function function1 = context.findOnStack(Targets1).Value as Functions.Function;
             if (function1 != null && !function1.Name.Equals("EMPTY"))
             {
-                Graph graph1 = createGraphForValue(context, function1);
+                Graph graph1 = createGraphForValue(context, function1, explain);
                 ComputeTargets(graph1.Function, collection);
             }
 
@@ -126,7 +128,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
             Function function2 = context.findOnStack(Targets2).Value as Functions.Function;
             if (function2 != null && !function2.Name.Equals("EMPTY"))
             {
-                Graph graph2 = createGraphForValue(context, function2);
+                Graph graph2 = createGraphForValue(context, function2, explain);
                 ComputeTargets(graph2.Function, collection);
             }
 
@@ -134,7 +136,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
             Function function3 = context.findOnStack(Targets3).Value as Functions.Function;
             if (function3 != null && !function3.Name.Equals("EMPTY"))
             {
-                Graph graph3 = createGraphForValue(context, function3);
+                Graph graph3 = createGraphForValue(context, function3, explain);
                 ComputeTargets(graph3.Function, collection);
             }
 

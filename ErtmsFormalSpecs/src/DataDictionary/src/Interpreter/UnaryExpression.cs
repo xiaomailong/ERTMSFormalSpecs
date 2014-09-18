@@ -275,20 +275,21 @@ namespace DataDictionary.Interpreter
         /// Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
+        /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context)
+        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
             Values.IValue retVal = null;
 
             if (Term != null)
             {
-                retVal = Term.GetValue(context);
+                retVal = Term.GetValue(context, explain);
             }
             else
             {
                 if (NOT.CompareTo(UnaryOp) == 0)
                 {
-                    Values.BoolValue b = Expression.GetValue(context) as Values.BoolValue;
+                    Values.BoolValue b = Expression.GetValue(context, explain) as Values.BoolValue;
                     if (b != null)
                     {
                         if (b.Val)
@@ -307,7 +308,7 @@ namespace DataDictionary.Interpreter
                 }
                 else if (MINUS.CompareTo(UnaryOp) == 0)
                 {
-                    Values.IValue val = Expression.GetValue(context);
+                    Values.IValue val = Expression.GetValue(context, explain);
                     Values.IntValue intValue = val as Values.IntValue;
                     if (intValue != null)
                     {
@@ -329,7 +330,7 @@ namespace DataDictionary.Interpreter
                 }
                 else
                 {
-                    retVal = Expression.GetValue(context);
+                    retVal = Expression.GetValue(context, explain);
                 }
             }
 
@@ -339,25 +340,26 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Provides the callable that is called by this expression
         /// </summary>
-        /// <param name="namable"></param>
+        /// <param name="context"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public override ICallable getCalled(InterpretationContext context)
+        public override ICallable getCalled(InterpretationContext context, ExplanationPart explain)
         {
             ICallable retVal = null;
 
             if (Term != null)
             {
-                retVal = Term.getCalled(context);
+                retVal = Term.getCalled(context, explain);
             }
             else if (Expression != null)
             {
-                retVal = Expression.getCalled(context);
+                retVal = Expression.getCalled(context, explain);
             }
 
             // TODO : Investigate why this 
             if (retVal == null)
             {
-                retVal = GetValue(context) as ICallable;
+                retVal = GetValue(context, explain) as ICallable;
             }
 
             return retVal;
@@ -425,24 +427,25 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        public override Functions.Graph createGraph(InterpretationContext context, Parameter parameter)
+        public override Functions.Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
-            Functions.Graph retVal = base.createGraph(context, parameter);
+            Functions.Graph retVal = base.createGraph(context, parameter, explain);
 
             if (Term != null)
             {
-                retVal = Functions.Graph.createGraph(GetValue(context), parameter);
+                retVal = Functions.Graph.createGraph(GetValue(context, explain), parameter, explain);
             }
             else if (Expression != null)
             {
                 if (UnaryOp == null)
                 {
-                    retVal = Expression.createGraph(context, parameter);
+                    retVal = Expression.createGraph(context, parameter, explain);
                 }
                 else if (UnaryOp == MINUS)
                 {
-                    retVal = Expression.createGraph(context, parameter);
+                    retVal = Expression.createGraph(context, parameter, explain);
                     retVal.Negate();
                 }
                 else
@@ -460,26 +463,27 @@ namespace DataDictionary.Interpreter
         /// <param name="context">the context used to create the surface</param>
         /// <param name="xParam">The X axis of this surface</param>
         /// <param name="yParam">The Y axis of this surface</param>
+        /// <param name="explain"></param>
         /// <returns>The surface which corresponds to this expression</returns>
-        public override Functions.Surface createSurface(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam)
+        public override Functions.Surface createSurface(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
         {
-            Functions.Surface retVal = base.createSurface(context, xParam, yParam);
+            Functions.Surface retVal = base.createSurface(context, xParam, yParam, explain);
 
             if (Term != null)
             {
-                retVal = Functions.Surface.createSurface(xParam, yParam, GetValue(context));
+                retVal = Functions.Surface.createSurface(xParam, yParam, GetValue(context, explain), explain);
             }
             else if (Expression != null)
             {
                 if (UnaryOp == null)
                 {
-                    retVal = Expression.createSurface(context, xParam, yParam);
+                    retVal = Expression.createSurface(context, xParam, yParam, explain);
                 }
                 else
                 {
                     if (UnaryOp == MINUS)
                     {
-                        retVal = Expression.createSurface(context, xParam, yParam);
+                        retVal = Expression.createSurface(context, xParam, yParam, explain);
                         retVal.Negate();
                     }
                     else

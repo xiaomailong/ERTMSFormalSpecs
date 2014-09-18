@@ -189,7 +189,7 @@ namespace DataDictionary.Interpreter.Statement
                 variable.Value = listValue;
                 if (listValue != null)
                 {
-                    Values.IValue value = Value.GetValue(context);
+                    Values.IValue value = Value.GetValue(context, explanation);
                     if (value != null)
                     {
                         Values.ListValue newListValue = new Values.ListValue(listValue);
@@ -203,7 +203,7 @@ namespace DataDictionary.Interpreter.Statement
                             // List is full, try to remove an element before inserting the new element
                             if (ReplaceElement != null)
                             {
-                                Values.IValue removeValue = ReplaceElement.GetValue(context);
+                                Values.IValue removeValue = ReplaceElement.GetValue(context, explanation);
                                 index = newListValue.Val.IndexOf(removeValue);
                                 if (index >= 0)
                                 {

@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Interpreter;
 namespace DataDictionary.Tests.Runner.Events
 {
     public class ExpectationStateChange : ModelEvent
@@ -21,12 +22,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The corresponding expect
         /// </summary>
-        private Expect expect;
-        public Expect Expect
-        {
-            get { return expect; }
-            private set { expect = value; }
-        }
+        public Expect Expect { get; private set; }
 
         /// <summary>
         /// The namespace associated to this event
@@ -36,22 +32,12 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The new expectation state
         /// </summary>
-        private Expect.EventState newState;
-        public Expect.EventState NewState
-        {
-            get { return newState; }
-            private set { newState = value; }
-        }
+        public Expect.EventState NewState {get; set;}
 
         /// <summary>
         /// The previous expectation state
         /// </summary>
-        private Expect.EventState prevState;
-        public Expect.EventState PrevState
-        {
-            get { return prevState; }
-            private set { prevState = value; }
-        }
+        private Expect.EventState PrevState { get; set; }
 
         /// <summary>
         /// Constructor
@@ -60,10 +46,11 @@ namespace DataDictionary.Tests.Runner.Events
         /// <param name="newState">the new expectation state</param>
         /// <param name="prevState">the previous expectation state</param>
         /// <param name="message">the message associated to this expectation state change</param>
-        public ExpectationStateChange(Expect expect, Generated.acceptor.RulePriority? priority)
+        public ExpectationStateChange(Expect expect, Generated.acceptor.RulePriority? priority, ExplanationPart explain)
             : base("Expectation state change", expect.Expectation, priority)
         {
             Expect = expect;
+            Explanation = explain;
         }
 
         /// <summary>
@@ -83,7 +70,7 @@ namespace DataDictionary.Tests.Runner.Events
         {
             base.RollBack();
 
-            Expect.State = prevState;
+            Expect.State = PrevState;
         }
     }
 
@@ -103,8 +90,10 @@ namespace DataDictionary.Tests.Runner.Events
         /// Constructor
         /// </summary>
         /// <param name="expect"></param>
-        public FailedExpectation(Expect expect, Generated.acceptor.RulePriority? priority)
-            : base(expect, priority)
+        /// <param name="priority"></param>
+        /// <param name="explain"></param>
+        public FailedExpectation(Expect expect, Generated.acceptor.RulePriority? priority, ExplanationPart explain)
+            : base(expect, priority, explain)
         {
             Message = "Failed expectation : " + Expect.Expectation.Name;
         }
@@ -118,6 +107,7 @@ namespace DataDictionary.Tests.Runner.Events
             base.Apply(runner);
 
             Expect.State = Events.Expect.EventState.TimeOut;
+            Expect.Explanation = Explanation;
             TimeLine.ActiveExpectations.Remove(Expect);
             ElementLog = Expect.Expectation.AddError(Message, true);
         }
@@ -141,8 +131,10 @@ namespace DataDictionary.Tests.Runner.Events
         /// Constructor
         /// </summary>
         /// <param name="expect"></param>
-        public ExpectationReached(Expect expect, Generated.acceptor.RulePriority? priority)
-            : base(expect, priority)
+        /// <param name="priority"></param>
+        /// <param name="explain"></param>
+        public ExpectationReached(Expect expect, Generated.acceptor.RulePriority? priority, ExplanationPart explain)
+            : base(expect, priority, explain)
         {
             Message = "Expectation reached : " + Expect.Expectation.Name;
         }
@@ -156,6 +148,7 @@ namespace DataDictionary.Tests.Runner.Events
             base.Apply(runner);
 
             Expect.State = Events.Expect.EventState.Fullfilled;
+            Expect.Explanation = Explanation;
             TimeLine.ActiveExpectations.Remove(Expect);
         }
 

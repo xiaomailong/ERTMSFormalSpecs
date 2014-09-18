@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Interpreter;
 namespace DataDictionary.Tests.Runner.Events
 {
     public class Expect : ModelEvent

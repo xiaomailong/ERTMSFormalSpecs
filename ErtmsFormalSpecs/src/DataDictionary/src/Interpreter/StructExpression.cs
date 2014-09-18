@@ -94,11 +94,10 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Provides the value associated to this Expression
         /// </summary>
-        /// <param name="instance">The instance on which the value is computed</param>
-        /// <param name="localScope">The local scope used to compute the value of this expression</param>
-        /// <param name="globalFind">Indicates that the search should be performed globally</param>
+        /// <param name="context">The context on which the value must be found</param>
+        /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context)
+        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
             Values.StructureValue retVal = null;
 
@@ -112,7 +111,7 @@ namespace DataDictionary.Interpreter
                     DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
                     foreach (KeyValuePair<Designator, Expression> pair in Associations)
                     {
-                        Values.IValue val = pair.Value.GetValue(new InterpretationContext(context));
+                        Values.IValue val = pair.Value.GetValue(new InterpretationContext(context), explain);
                         if (val != null)
                         {
                             Variables.Variable var = (Variables.Variable)Generated.acceptor.getFactory().createVariable();

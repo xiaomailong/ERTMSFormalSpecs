@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
+using DataDictionary.Interpreter;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -50,7 +51,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="localScope">the values of local variables</param>
         /// <returns>The value for the function application</returns>
-        public override abstract Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals);
+        public override abstract Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain);
 
 
         /// <summary>
@@ -111,9 +112,12 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// Creates the graph associated to the parameter provided
         /// </summary>
-        /// <param name="value">The value for which the graph must be created</param>
+        /// <param name="context"></param>
+        /// <param name="value"></param>
+        /// <param name="parameter"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        protected Graph createGraphForValue(Interpreter.InterpretationContext context, Values.IValue value, Parameter parameter = null)
+        protected Graph createGraphForValue(Interpreter.InterpretationContext context, Values.IValue value, ExplanationPart explain, Parameter parameter = null)
         {
             Graph retVal = new Graph();
 
@@ -125,12 +129,12 @@ namespace DataDictionary.Functions.PredefinedFunctions
                     parameter = (Parameter)function.FormalParameters[0];
                     int token = context.LocalScope.PushContext();
                     context.LocalScope.setGraphParameter(parameter);
-                    retVal = function.createGraph(context, parameter);
+                    retVal = function.createGraph(context, parameter, explain);
                     context.LocalScope.PopContext(token);
                 }
                 else
                 {
-                    retVal = function.createGraph(context, parameter);
+                    retVal = function.createGraph(context, parameter, explain);
                 }
             }
             else
@@ -145,16 +149,18 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// Creates the surface associated to the value provided
         /// </summary>
+        /// <param name="context"></param>
         /// <param name="value"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        protected Surface createSurfaceForValue(Interpreter.InterpretationContext context, Values.IValue value)
+        protected Surface createSurfaceForValue(Interpreter.InterpretationContext context, Values.IValue value, ExplanationPart explain)
         {
             Surface retVal = null;
 
             Function function = value as Function;
             if (function != null)
             {
-                retVal = function.createSurface(context);
+                retVal = function.createSurface(context, explain);
             }
             else
             {

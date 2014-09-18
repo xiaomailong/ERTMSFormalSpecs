@@ -316,7 +316,7 @@ namespace DataDictionary.Tests.Runner
                 if (SubSequence != null)
                 {
                     Expression expression = SubSequence.Frame.CycleDuration;
-                    Values.IValue value = expression.GetValue(new InterpretationContext(SubSequence.Frame));
+                    Values.IValue value = expression.GetValue(new InterpretationContext(SubSequence.Frame), null);
                     Step = Functions.Function.getDoubleValue(value);
                 }
 
@@ -802,12 +802,12 @@ namespace DataDictionary.Tests.Runner
                         case Generated.acceptor.ExpectationKind.aInstantaneous:
                         case Generated.acceptor.ExpectationKind.defaultExpectationKind:
                             // Instantaneous expectation who raised its deadling
-                            EventTimeLine.AddModelEvent(new FailedExpectation(expect, CurrentPriority), this);
+                            EventTimeLine.AddModelEvent(new FailedExpectation(expect, CurrentPriority, null), this);
                             break;
 
                         case Generated.acceptor.ExpectationKind.aContinuous:
                             // Continuous expectation who raised its deadline
-                            EventTimeLine.AddModelEvent(new ExpectationReached(expect, CurrentPriority), this);
+                            EventTimeLine.AddModelEvent(new ExpectationReached(expect, CurrentPriority, null), this);
                             break;
                     }
                 }
@@ -817,40 +817,41 @@ namespace DataDictionary.Tests.Runner
                     {
                         if (expectation.getCyclePhase() == Generated.acceptor.RulePriority.defaultRulePriority || expectation.getCyclePhase() == priority)
                         {
+                            ExplanationPart explanation = new ExplanationPart(expectation, "Expectation " + expectation.Expression);
                             switch (expectation.getKind())
                             {
                                 case Generated.acceptor.ExpectationKind.aInstantaneous:
                                 case Generated.acceptor.ExpectationKind.defaultExpectationKind:
-                                    if (getBoolValue(expectation, expectation.Expression))
+                                    if (getBoolValue(expectation, expectation.Expression, explanation))
                                     {
                                         // An instantaneous expectation who reached its satisfactory condition
-                                        EventTimeLine.AddModelEvent(new ExpectationReached(expect, priority), this);
+                                        EventTimeLine.AddModelEvent(new ExpectationReached(expect, priority, explanation), this);
                                     }
                                     break;
 
                                 case Generated.acceptor.ExpectationKind.aContinuous:
                                     if (expectation.getCondition() != null)
                                     {
-                                        if (!getBoolValue(expectation, expectation.ConditionTree))
+                                        if (!getBoolValue(expectation, expectation.ConditionTree, explanation))
                                         {
                                             // An continuous expectation who reached its satisfactory condition
-                                            EventTimeLine.AddModelEvent(new ExpectationReached(expect, priority), this);
+                                            EventTimeLine.AddModelEvent(new ExpectationReached(expect, priority, explanation), this);
                                         }
                                         else
                                         {
-                                            if (!getBoolValue(expectation, expectation.Expression))
+                                            if (!getBoolValue(expectation, expectation.Expression, explanation))
                                             {
                                                 // A continuous expectation who reached a case where it is not satisfied
-                                                EventTimeLine.AddModelEvent(new FailedExpectation(expect, priority), this);
+                                                EventTimeLine.AddModelEvent(new FailedExpectation(expect, priority, explanation), this);
                                             }
                                         }
                                     }
                                     else
                                     {
-                                        if (!getBoolValue(expectation, expectation.Expression))
+                                        if (!getBoolValue(expectation, expectation.Expression, explanation))
                                         {
                                             // A continuous expectation who reached a case where it is not satisfied
-                                            EventTimeLine.AddModelEvent(new FailedExpectation(expect, priority), this);
+                                            EventTimeLine.AddModelEvent(new FailedExpectation(expect, priority, explanation), this);
                                         }
                                     }
                                     break;
@@ -868,14 +869,16 @@ namespace DataDictionary.Tests.Runner
         /// <summary>
         /// Provides the value of the expression provided
         /// </summary>
-        /// <param name="expect"></param>
+        /// <param name="instance"></param>
+        /// <param name="expression"></param>
+        /// <param name="explain"></param>
         /// <returns></returns>
-        private bool getBoolValue(ModelElement instance, Expression expression)
+        private bool getBoolValue(ModelElement instance, Expression expression, ExplanationPart explain)
         {
             bool retVal = false;
 
             Interpreter.InterpretationContext context = new Interpreter.InterpretationContext(instance);
-            BoolValue val = expression.GetValue(context) as BoolValue;
+            BoolValue val = expression.GetValue(context, explain) as BoolValue;
 
             if (val != null)
             {
