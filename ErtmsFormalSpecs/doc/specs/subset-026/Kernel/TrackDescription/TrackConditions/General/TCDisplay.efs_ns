@@ -1047,19 +1047,54 @@ Announcement.Type == TCTypeEnum.RegenerativeBrake</PreCondition></PreConditions>
 >Condition.Length == Default.BaseTypes.Length.NA</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="Tunnel stopping area, sound horn - TC"
+ Name="sound horn - TC"
  Guid="16793590-aa89-4df2-92d4-d4200df02408"
 >
 <Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="4d55a5a0-252b-40d7-aca2-f250e5eea64c"
->Condition.Type == TCTypeEnum.SoundHorn
-  OR  
-Condition.Type == TCTypeEnum.TunnelStoppingArea</PreCondition><PreCondition
+>Condition.Type == TCTypeEnum.SoundHorn</PreCondition><PreCondition
  Guid="056f2b1c-6b4a-4e87-947f-ccd35902b247"
 >NOT Condition.IsAnnouncement</PreCondition></PreConditions>
 <Expression>TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt;= Condition.Distance + Default.BaseTypes.LengthToDistance(Condition.Length)</Expression>
+</Case><Case
+ Name="Tunnel Stopping area - TC"
+ Guid="b03c3fd7-a86f-4497-b8c2-f990764fa024"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="46a2309e-001b-4157-9b58-eefd870ff7bf"
+>Condition.Type == TCTypeEnum.TunnelStoppingArea</PreCondition><PreCondition
+ Guid="3858c210-5ab7-48a1-a21e-9e326ba91909"
+>NOT Condition.IsAnnouncement</PreCondition></PreConditions>
+<Expression>Odometry.EstimatedSpeed &gt;= VirtualSBIForTarget(
+    Distance=&gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom),
+    Target=&gt;SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+        Location =&gt; Condition.Distance + BaseTypes.LengthToDistance(Condition.Length),
+        Speed =&gt; 0.0,
+        Length =&gt; 1.0
+    }
+)</Expression>
+</Case><Case
+ Name="Non stopping area - TC"
+ Guid="3df70146-82dc-4145-83ac-5d66b4842495"
+>
+<PreConditions>
+<PreCondition
+ Guid="dd6e476a-075d-4b5c-8f3d-6ba637e97a50"
+>Condition.Type == TCTypeEnum.NonStoppingArea</PreCondition><PreCondition
+ Guid="bc57717c-4d76-47cc-850f-da6f12062c99"
+>NOT Condition.IsAnnouncement</PreCondition></PreConditions>
+<Expression>Odometry.EstimatedSpeed &gt;= VirtualSBIForTarget(
+    Distance=&gt; TrainPosition.FrontEndPosition(DistanceInterval.Min),
+    Target=&gt;SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+        Location =&gt; Condition.Distance + BaseTypes.LengthToDistance(Condition.Length + TrainData.TrainData.Value.TrainLength),
+        Speed =&gt; 0.0,
+        Length =&gt; 1.0
+    }
+)</Expression>
 </Case><Case
  Name="Other conditions, except traction system - TC"
  Guid="9d2833cb-4955-4eb4-bb97-3b63e2f99ae9"
