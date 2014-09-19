@@ -125,12 +125,72 @@
     MIN (
         MIN (
             TrackDescription.AxleLoad.SpeedRestrictions,
-            TrackDescription.StaticSpeedProfile.SpeedRestrictions
+            SSP
         ),
         TrackDescription.PermittedBrakingDistance.SpeedRestrictions
     )
 )
 (distance)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="110"
+ Y="240"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SSP"
+ Guid="756910e4-3fd6-4d61-8bda-69ed47605cd0"
+>
+<ReqRef
+ Id="3e4a183c-969d-4574-ac8c-666dd8215c79"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c0f56a8d-be15-45f9-bfbe-57378d50d225"
+>
+</ReqRef><ReqRef
+ Id="bfa09769-fb03-456f-b92b-14ab4cf7977b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="13492f43-590f-4b59-98d5-d5ecaafd710c"
+>
+</ReqRef><ReqRef
+ Id="b2a3ff3a-3f41-4dde-9bf8-ee649ce14d86"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9376a060-b8a8-40ba-ac3f-fed88f92a573"
+>
+</ReqRef><ReqRef
+ Id="17d2fc17-9c74-4023-89f7-70fa5b6baa44"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ac60a7da-bc04-4971-91a8-bb3ac3fd8033"
+>
+</ReqRef><Comment>Provides the speed restrictions profile due to static speed profile.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="5e2f7104-f18c-4796-aef0-b1d9f05fa0a9"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Determine MRSP based on SSP"
+ Guid="a56d8310-6088-4c84-901e-802ee6a51411"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="9c611a6f-df2e-4e2f-bf8f-20997d5882ce"
+><Comment></Comment>
+ActiveFunctions.DetermineMRSP_SSP()</PreCondition></PreConditions>
+<Expression>TrackDescription.StaticSpeedProfile.SpeedRestrictions(
+    Distance=&gt;Distance
+)</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="21c6f6ca-ebc7-4d7e-bc18-dff3dbf19563"
+>
+<Comment></Comment>
+<Expression>TrainData.TrainData.Value.MaximumSpeed</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
