@@ -119,7 +119,7 @@
         ),
         MIN (
             MIN ( NationalValues.OverrideRelatedSpeedRestrictions, TrainSpeedRestrictions ),
-            MIN ( STM.MaxSpeedRestrictions, STM.SystemSpeedRestrictions )
+            MIN ( STMMaxSpeed, STM.SystemSpeedRestrictions )
         )
     ),
     MIN (
@@ -359,6 +359,7 @@ ActiveFunctions.DetermineMRSP_ModeRelatedSpeedRestriction()</PreCondition></PreC
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="00238622-7093-4aa8-b357-013dc1191ea4"
 >
+<Comment></Comment>
 </ReqRef><Comment>Provides the speed restrictions profile due to train characteristics.</Comment>
 <Parameters>
 <Parameter
@@ -382,6 +383,46 @@ ActiveFunctions.DetermineMRSP_TrainRelatedSpeedRestrictions()</PreCondition></Pr
 </Case><Case
  Name="Otherwise"
  Guid="98942360-17db-494c-9f88-4d04649ad934"
+>
+<Comment></Comment>
+<Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ Implemented="TRUE"
+ Name="STMMaxSpeed"
+ Guid="54b934f6-fbce-47d2-a8db-3484b0cb25ad"
+>
+<ReqRef
+ Id="2aa5f509-4651-4dd4-a3fe-1aca62c7e1a9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3ebeac8e-b168-448c-a02c-fa77a5d9d4a6"
+>
+<Comment></Comment>
+</ReqRef><Comment>Provides the speed restrictions profile due to STM max speed.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="f57a562b-c920-4e03-ac27-e1dc8c80a38b"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Determine MRSP based on STM max speed"
+ Guid="681ec411-f2d8-4efb-8cf2-34c45c035446"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="2755f693-13d4-4b3d-965c-1e0e971dd153"
+><Comment></Comment>
+ActiveFunctions.DetermineMRSP_STMMaxSpeed()</PreCondition></PreConditions>
+<Expression>STM.MaxSpeedRestrictions(Distance)</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="9472b77b-7266-4341-aa1a-512b1073a79a"
 >
 <Comment></Comment>
 <Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
