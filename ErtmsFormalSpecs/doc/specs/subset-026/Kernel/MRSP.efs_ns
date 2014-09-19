@@ -124,7 +124,7 @@
     ),
     MIN (
         MIN ( ASP, SSP),
-        TrackDescription.PermittedBrakingDistance.SpeedRestrictions
+        PermittedBrakingDistance
     )
 )
 (distance)</Expression>
@@ -502,6 +502,45 @@ ActiveFunctions.DetermineMRSP_LXSpeed()</PreCondition></PreConditions>
 </Case><Case
  Name="Otherwise"
  Guid="fe3e9470-2855-4370-be07-819c816aa197"
+>
+<Comment></Comment>
+<Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ Implemented="TRUE"
+ Name="PermittedBrakingDistance"
+ Guid="ef681195-f161-41bc-a1a4-06aa670e8a53"
+>
+<ReqRef
+ Id="43276136-8bff-4532-be60-47b0198243cb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2f1db9e4-b6fd-45da-9143-653dea0cacf4"
+>
+</ReqRef><Comment>Provides the speed restrictions profile due to speed restrictions to esure permitted braking distances.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="0bce4a55-c5be-4eb6-beb6-e66eed4bbe03"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Determine MRSP based on LX"
+ Guid="a51be4c2-3902-4fd0-a9d1-768366a7e88a"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="d2179e9a-ccd3-4ca6-b2fa-2fc6f66c21bf"
+><Comment></Comment>
+ActiveFunctions.DetermineMRSP_PermittedBrakingDistance()</PreCondition></PreConditions>
+<Expression>TrackDescription.PermittedBrakingDistance.SpeedRestrictions(Distance)</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="12bd886d-b409-48db-9953-70c1864244cb"
 >
 <Comment></Comment>
 <Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
