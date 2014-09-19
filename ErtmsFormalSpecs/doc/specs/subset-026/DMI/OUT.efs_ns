@@ -5246,11 +5246,18 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <PreCondition
  Guid="2d7e3394-01bd-4312-9c4f-39bae5bbbb99"
 ><Comment></Comment>
-THIS.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+THIS.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="97e87b9c-6423-492a-ab35-7e0f036e1158"
+>Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()
+  OR  
+Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()
+  OR  
+Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1be84e29-e3d9-42a7-b772-c8c4ffef7f37"
->GetMRSP()</Action></Actions>
+><Comment></Comment>
+GetMRSP()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -5399,7 +5406,7 @@ MRSP &lt;- MAP DISCONT(MIN(First=&gt;  MIN(First=&gt; Kernel.MRSP.SpeedRestricti
                   Second=&gt; Kernel.NationalValues.MaxDistInSRSpeedRestriction
                   )) | (X.Location &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))
   USING Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
-    Location =&gt; X.Location - Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom),
+    Location =&gt; BaseTypes.OffsetDistance(Distance =&gt; X.Location, Offset =&gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom) ),
     Speed =&gt; X.Speed,
     Length =&gt; X.Length
 }</Action></Actions>

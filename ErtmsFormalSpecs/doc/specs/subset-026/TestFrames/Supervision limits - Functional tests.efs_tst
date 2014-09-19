@@ -1593,7 +1593,11 @@ Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
                     }
                 }
             }
-        }</Action></Actions>
+        }</Action><Action
+ Guid="762c291e-9b89-469c-ada8-ab649609d840"
+>Kernel.Mode &lt;- Mode.FS</Action><Action
+ Guid="39383703-45b4-42f3-9805-e8dea5012820"
+>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2309,12 +2313,34 @@ Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P  ( Vest =&gt; 25.0, 
 <Actions>
 <Action
  Guid="e7913efe-2cae-4620-b3f5-5ac2a5025790"
->Odometry.NominalDistance &lt;- 11000.0</Action></Actions>
+><Comment></Comment>
+Odometry.NominalDistance &lt;- 11000.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="01d99d0a-c589-4a9b-8974-cb70ad5c929a"
 >Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_P_EOA ( d_estfront =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Nom ), Vest =&gt; 88.0 ) &lt;= 0.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ Name="Step3 - Cleanup, train goes into trip procedure in step 2"
+ Guid="95637b59-4e10-4553-8694-3c41dcf5b745"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="c26adfbb-a619-4977-bac9-0811121374d8"
+>
+<Actions>
+<Action
+ Guid="379d2618-afba-4200-bf3b-c2ff53384670"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.NoProcedure</Action><Action
+ Guid="047e5d96-20fe-4e3c-8b70-75db90e929c4"
+>Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2428,7 +2454,8 @@ Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Dbec ( Vest =&gt; 100.0, Vt
 <Actions>
 <Action
  Guid="83c1fdb6-9578-4c3f-bf43-194db1a04d0b"
->Odometry.NominalDistance &lt;- 8000.0</Action></Actions>
+><Comment></Comment>
+Odometry.NominalDistance &lt;- 8000.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

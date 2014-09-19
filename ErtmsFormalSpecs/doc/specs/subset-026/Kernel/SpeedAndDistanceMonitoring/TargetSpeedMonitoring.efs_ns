@@ -305,6 +305,7 @@ DecelerationCurves.EBDForSpeed(Vtarget)</PreCondition></PreConditions>
  Name="After EOA"
  Guid="f573b2a7-2c7b-41d0-b632-c6954262beea"
 >
+<Comment></Comment>
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function><Function
@@ -1019,12 +1020,15 @@ DistanceForSpeed(
 <PreCondition
  Guid="b4b68ec6-cf44-41c5-b78d-2b39ad896f98"
 ><Comment></Comment>
-Vest &lt;= CeilingSpeedMonitoring.P ( InterventionValue ( Vest ) )</PreCondition></PreConditions>
+Vest &lt;= CeilingSpeedMonitoring.P ( InterventionValue ( Vest ) )
+  OR  
+d_P(Vest, False) == BaseTypes.Distance.Infinity</PreCondition></PreConditions>
 <Expression>InterventionValue ( Vest )</Expression>
 </Case><Case
  Name="Above P"
  Guid="877d9731-6bca-451c-84b9-8f9445c63e6d"
 >
+<Comment></Comment>
 <Expression>IntersectAt ( FunctionA =&gt; CeilingSpeedMonitoring.P, FunctionB =&gt; InterventionValue )</Expression>
 </Case></Cases>
 </Function><Function
@@ -1095,6 +1099,16 @@ Vest &lt;= CeilingSpeedMonitoring.P ( InterventionValue ( Vest ) )</PreCondition
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="d_FLOI in rear of train"
+ Guid="f955f1cb-2df5-425b-828b-608682ab1994"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="6f874a20-49c9-4672-a9ba-93696406b474"
+>d_FLOI(Vest, EstimatedAccelerationSetToZero ) == BaseTypes.Distance.Infinity</PreCondition></PreConditions>
+<Expression>BaseTypes.Distance.Infinity</Expression>
+</Case><Case
  Name="GUI is inhibited"
  Guid="bc1cd155-ba13-42c9-ad91-23841c16a0d6"
 >
@@ -1103,14 +1117,14 @@ Vest &lt;= CeilingSpeedMonitoring.P ( InterventionValue ( Vest ) )</PreCondition
 <PreCondition
  Guid="70659c39-2759-4cb5-b0d4-fd30a601fc38"
 >NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
-<Expression>d_FLOI ( Vest, EstimatedAccelerationSetToZero ) - BaseTypes.SpeedToMS ( Vest ) * T_driver</Expression>
+<Expression>d_FLOI ( Vest, EstimatedAccelerationSetToZero ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
  Guid="a2617cac-24b8-462a-b50f-024412f2faa6"
 >
 <Comment></Comment>
-<Expression>BaseTypes.MinDistance (
-    X1 =&gt; d_FLOI ( Vest, EstimatedAccelerationSetToZero ) - BaseTypes.SpeedToMS ( Vest ) * T_driver,
+<Expression>Default.BaseTypes.MinDistance (
+    X1 =&gt; d_FLOI ( Vest, EstimatedAccelerationSetToZero ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver,
     X2 =&gt; DistanceForSpeed ( Function =&gt; DecelerationCurves.GUI, Speed =&gt; Vest ) )</Expression>
 </Case></Cases>
 </Function><Function
@@ -1377,10 +1391,10 @@ d_SBI2 - TrainPosition.FrontEndPosition(DistanceInterval.Max)</Expression>
 MA.IsEOA(MRDT())
   OR  
 MA.IsSvL(MRDT())</PreCondition></PreConditions>
-<Expression>BaseTypes.MaxDistance(
-    X1=&gt;BaseTypes.MinDistance(
-        X1=&gt;MA.ClosestEOA().Location - TrainPosition.FrontEndPosition(DistanceInterval.Nom),
-        X2=&gt;MA.SvL().Location - TrainPosition.FrontEndPosition(DistanceInterval.Max)
+<Expression>Default.BaseTypes.MaxDistance(
+    X1=&gt;Default.BaseTypes.MinDistance(
+        X1=&gt;MA.ClosestEOA().Location - TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+        X2=&gt;MA.SvL().Location - TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)
     ),
     X2=&gt;0.0
 )</Expression>
@@ -1389,8 +1403,8 @@ MA.IsSvL(MRDT())</PreCondition></PreConditions>
  Guid="0ca3e6c9-dd75-4e99-834a-cff3a97950d4"
 >
 <Comment></Comment>
-<Expression>BaseTypes.MaxDistance(
-    X1=&gt; d_P(MRDT().Speed, True)-TrainPosition.FrontEndPosition(DistanceInterval.Max),
+<Expression>Default.BaseTypes.MaxDistance(
+    X1=&gt; d_P(MRDT().Speed, True)-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max),
     X2=&gt;0.0
 )</Expression>
 </Case></Cases>

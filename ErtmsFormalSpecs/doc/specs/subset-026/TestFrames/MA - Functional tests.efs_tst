@@ -2133,7 +2133,17 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step 1"
+ Guid="16c00f04-1727-48e0-88a7-0ca829444883"
+>
+<Actions>
+<Action
+ Guid="92001f51-3b2c-4986-9a98-8412bc237f1e"
+>Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+ Guid="af142765-f0e1-4187-b996-0cc94758e735"
+>Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2"
  Guid="94d83dd7-f04f-4ec6-a21c-a598fec59ae4"
 >
 <Actions>
@@ -2997,7 +3007,17 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step 1"
+ Guid="10465356-fbed-498e-94cb-69044ee276d4"
+>
+<Actions>
+<Action
+ Guid="5c0fc31d-0099-4d68-8946-9b33733ac6c4"
+>Kernel.Mode &lt;- Mode.LS</Action><Action
+ Guid="1c538c2e-d8ec-498c-af97-9573ba0010a5"
+>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 2"
  Guid="98d3d91c-0a0e-4b3f-87d1-a14d1ea2d29a"
 >
 <Actions>
@@ -6463,6 +6483,16 @@ BTM.Linking.Linkings</Action><Action
     Distance =&gt; 0.0,
     BaliseGroupIdentifier =&gt; 2127
 }]</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3"
+ Guid="fc7e5cdc-cb0a-447a-8c20-14b9c686a55f"
+>
+<Actions>
+<Action
+ Guid="8d6d74a0-0283-48f8-ad4e-82f0c849bcd3"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="a2808c0e-5962-4fa7-b793-ed3d30a4d231"
+>Kernel.Mode &lt;- Mode.LS</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

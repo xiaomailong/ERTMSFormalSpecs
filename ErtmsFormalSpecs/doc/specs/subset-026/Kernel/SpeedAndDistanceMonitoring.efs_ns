@@ -720,7 +720,7 @@ TargetSpeedMonitoring.SupervisionStatus.t10()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f8dbb2b7-3bb9-4241-9ff0-d2a33c0ac9a1"
->THIS &lt;- Target.Intervention</Action></Actions>
+>THIS &lt;- Intervention</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -799,7 +799,7 @@ TargetSpeedMonitoring.SupervisionStatus.t9()</PreCondition></PreConditions>
 <Action
  Guid="f1abbb09-b10c-4d7f-b671-6d839b9e1c6b"
 ><Comment></Comment>
-THIS &lt;- Target.Warning</Action><Action
+THIS &lt;- Warning</Action><Action
  Guid="b620c0fd-2bf7-463e-b8a9-52495ddd7756"
 >TCOTriggered &lt;- False</Action></Actions>
 </RuleCondition><RuleCondition
@@ -825,7 +825,7 @@ TargetSpeedMonitoring.SupervisionStatus.t6()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b3c54d10-3d95-4bbc-80aa-855845e9ef32"
->THIS &lt;- Target.Overspeed</Action></Actions>
+>THIS &lt;- Overspeed</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="To indication status"
@@ -844,7 +844,7 @@ TargetSpeedMonitoring.SupervisionStatus.t6()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f2de064d-6a15-442d-b0fc-154e011cf094"
->THIS &lt;- Target.Indication</Action></Actions>
+>THIS &lt;- Indication</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1789,37 +1789,6 @@ SupervisedTargets &lt;- TargetsList()</Action><Action
 ><Comment></Comment>
 SelectMonitoringType()</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="StopMonitoring"
- Guid="428969a2-8771-4192-8c43-af7a7ffe185c"
->
-<ReqRef
- Id="464dd6eb-f8c7-42fe-b8d9-c416ee775f1a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b80ddb73-fa13-48fb-ba41-96b6721d9048"
->
-</ReqRef><Comment>If the train no longer needs to handle the speed and distance monitoring, go to Idle state</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="StopMonitoring"
- Guid="07a58c8a-35cc-4601-b3dd-e3ddd30c61aa"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="d2c4fbd4-aea7-44fe-bab3-9fdd15bbb7be"
->NOT ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition><PreCondition
- Guid="28929f8b-8c89-4755-a7ef-914db92b35d2"
->THIS not in Idle</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="71258306-011a-4ab1-9a0a-397404946f9f"
->THIS &lt;- Idle</Action></Actions>
-</RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></StateMachines>
 <Functions>
@@ -2391,7 +2360,8 @@ Monitoring in [MonitoringTypeSM.Ceiling.Normal, MonitoringTypeSM.Target.Normal]<
 <PreConditions>
 <PreCondition
  Guid="f0a73956-72ca-4e2a-833d-c64917c04a3d"
->Condition2()</PreCondition><PreCondition
+><Comment></Comment>
+Condition2()</PreCondition><PreCondition
  Guid="d0936740-8827-4152-93cf-3722e478afc0"
 >Monitoring not in MonitoringTypeSM.Release</PreCondition></PreConditions>
 <Actions>
@@ -2883,6 +2853,43 @@ ReleaseSpeedMonitoring.SupervisionStatus.RSMStatusTriggers()</Action></Actions>
  Guid="07dd4121-f8b5-4cd2-926b-3e6778eb77b2"
 ><Comment></Comment>
 EBSpecified &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Width="100"
+ Height="50"
+ Name="StopMonitoring"
+ Guid="48b4ed23-a3f4-48eb-8f3f-452d661c18f6"
+>
+<ReqRef
+ Id="464dd6eb-f8c7-42fe-b8d9-c416ee775f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="78c6771a-1677-419b-bece-86e3731c8320"
+>
+</ReqRef><Comment>Cuts off the speed and distance monitoring if the mode changes</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Stop monitoring"
+ Guid="d7656454-9a47-4789-9492-17126a0230bc"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Stop monitoring"
+ Guid="ed6f0713-b80f-4f62-9939-55378975c820"
+>
+<PreConditions>
+<PreCondition
+ Guid="32ca5a8e-3e3a-4109-82c7-f43c4deb007e"
+>Monitoring not in MonitoringTypeSM.Idle</PreCondition><PreCondition
+ Guid="3949a806-a2cc-4c53-b7d8-c00f2a2b444e"
+>NOT ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="bb283a6b-d672-40a0-9fa5-e027239cb8ed"
+>Monitoring &lt;- MonitoringTypeSM.Idle</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

@@ -1016,9 +1016,6 @@ InitializeMessage()</Action></Actions>
 PreviousPermittedSpeed &lt;- DMI.MasterDMI().Out_PermittedSpeed.Speed</Action><Action
  Guid="d461f9a5-7f7b-482b-8ffa-2ca4aed6d474"
 >PreviousTargetSpeed &lt;- DMI.MasterDMI().Out_TargetSpeed.Speed</Action><Action
- Guid="cc02b5bb-d96c-46dd-a3bf-abe2b314c992"
-><Comment></Comment>
-PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</Action><Action
  Guid="0eb30b56-c6ab-4c4d-800f-f09532b1c04c"
 >PreviousReleaseSpeed &lt;- DMI.MasterDMI().Out_ReleaseSpeed.Speed</Action><Action
  Guid="ac4c4305-a3dd-45af-9761-831aaa483ba3"
@@ -1098,7 +1095,30 @@ PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonito
 <Actions>
 <Action
  Guid="e147e5df-e42d-47f4-b4b4-bfe04454a4d4"
->PreviousSpeedAndDistanceSupervisionStatus &lt;- Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</Action></Actions>
+><Comment></Comment>
+PreviousSpeedAndDistanceSupervisionStatus &lt;- Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Track target distance"
+ Guid="4965b523-a100-4fbb-b2ec-aa7970845590"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Record target distance"
+ Guid="5ddcc799-4214-453e-9ab4-f776756fae05"
+>
+<PreConditions>
+<PreCondition
+ Guid="a9d0116c-bec2-4c66-8958-683f02e837bc"
+>Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="cc02b5bb-d96c-46dd-a3bf-abe2b314c992"
+><Comment></Comment>
+PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2091,7 +2111,8 @@ ModeInkernel == Default.Mode.PS</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="e82be393-fc78-4c8d-894b-118829d6b2b8"
->Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
+><Comment></Comment>
+Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
 <Expression>Default.MessageTypes.UnResolveSpeed( Odometry.TrainSpeed(), 5.0)</Expression>
 </Case><Case
  Name="StandStill"
@@ -6585,8 +6606,10 @@ jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.FLOISpeed(Kernel.Tra
 >
 <PreConditions>
 <PreCondition
- Guid="c720d35c-be42-4990-831b-743cec7e607b"
+ Guid="61b693b3-b918-4266-982a-5c8129294984"
 ><Comment></Comment>
+Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()
+  AND
 jru.PreviousTargetDistance != Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case

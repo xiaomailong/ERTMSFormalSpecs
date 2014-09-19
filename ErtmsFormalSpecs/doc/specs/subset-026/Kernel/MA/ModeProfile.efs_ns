@@ -1413,7 +1413,8 @@ REMOVE ALL RemoveMode ( X ) IN  Profile</Action></Actions>
  Guid="a6b8a37e-3e25-40ae-ba2c-da28116ece59"
 >Mode not in [Mode.SB, Mode.PT]</PreCondition><PreCondition
  Guid="55cf8108-eb50-4bee-ad58-f34d699f55d3"
->( FIRST_IN Profile | X.Mode == Mode.SH ) != EMPTY</PreCondition><PreCondition
+><Comment></Comment>
+( FIRST_IN Profile | X.Mode == Mode.SH ) != EMPTY</PreCondition><PreCondition
  Guid="3e3576fb-239d-486e-8039-2fb033696845"
 >AcknAreaReached ( FIRST_IN Profile | X.Mode == Mode.SH )</PreCondition><PreCondition
  Guid="b7041bbe-293e-4a65-9f11-1f7ea8cd24b3"

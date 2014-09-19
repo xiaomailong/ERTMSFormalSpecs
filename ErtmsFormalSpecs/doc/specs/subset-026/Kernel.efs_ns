@@ -5855,6 +5855,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
  Name="A035"
  Guid="e173bef1-be81-43b7-bfbc-1b99ffc6d707"
 >
+<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -9768,6 +9769,19 @@ ModeTransitions.UpdateMode()</Action></Actions>
 <Action
  Guid="1ea62aa3-6056-40d4-8b5a-3eb7fbfb176b"
 >SpeedAndDistanceMonitoring.SelectMonitoringType()</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Stop monitoring if required"
+ Guid="cdeb8310-91de-414d-8e5e-657e42672fe8"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="5a06828f-3ad3-414d-a5d5-e64ce6ce5964"
+>SpeedAndDistanceMonitoring.Monitoring not in [SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5298da62-c34c-4732-a368-5c9e79af8089"
+>SpeedAndDistanceMonitoring.StopMonitoring()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -9787,15 +9801,29 @@ ModeTransitions.UpdateMode()</Action></Actions>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Update EOA"
+ Name="Determine EOAs"
  Guid="d7ab7899-fe7e-4f3d-963b-654c6a62edda"
 >
+<Comment>The EOA must only be calculated in FS, LS and OS modes</Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="c1218ff1-6980-4500-805c-654cfe700308"
+>ActiveFunctions.DetermineEOA_SvL_etc()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c6f59ebe-03a7-4ee2-aea3-8fe999bbfc7a"
 >MA.HandleEOAs()</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Do not determine EOAs"
+ Guid="2148e8ee-a189-429b-81e3-85bc23711606"
+>
+<Comment>Otherwise, The train must not determine the EOA or the SvL</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="4e010b0f-76c5-416b-a2d0-24a151314402"
+>Kernel.MA.EOAs &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9813,15 +9841,29 @@ ModeTransitions.UpdateMode()</Action></Actions>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Update SvL"
+ Name="Determine SvL"
  Guid="06bdb857-818e-49a7-9717-5767e306582a"
 >
+<Comment>The SvL must only be calculated in FS, LS and OS modes</Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="7c2c7437-68f3-4930-ac92-dfdf371a0be9"
+>ActiveFunctions.DetermineEOA_SvL_etc()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="64c5dc89-646c-46a1-8e8c-b24814da8ae4"
 >MA.HandleSvLs()</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Do not determine SvL"
+ Guid="d54acc72-a081-4808-8d9e-6d3d9b11a28f"
+>
+<Comment>Otherwise, The train must not determine the EOA or the SvL</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="dd0e1c87-80d0-467b-98af-67be26d63786"
+>MA.SvLs &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

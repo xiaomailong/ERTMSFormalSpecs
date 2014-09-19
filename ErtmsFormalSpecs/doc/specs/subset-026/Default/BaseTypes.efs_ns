@@ -1062,6 +1062,44 @@
 <Comment></Comment>
 <Expression>Val * 3.6</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Distance"
+ Default=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="OffsetDistance"
+ Guid="8c5a529f-51d6-4042-a2d4-9c01ce530be5"
+>
+<Comment>Returns the distance minus the offset, accounting for special values</Comment>
+<Parameters>
+<Parameter
+ Type="Distance"
+ Name="Distance"
+ Guid="bc5a046b-87c3-44dc-8aa0-bbb40d6e4847"
+>
+</Parameter><Parameter
+ Type="Distance"
+ Name="Offset"
+ Guid="fa8dc317-afc6-41f6-9344-11ce0c048835"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Infinity"
+ Guid="8eb6bb75-c09b-4f46-a5ed-6f006270ef34"
+>
+<PreConditions>
+<PreCondition
+ Guid="a45877e2-2cab-458f-bab4-74893a258e4f"
+>Distance == Distance.Infinity</PreCondition></PreConditions>
+<Expression>Distance.Infinity</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="c5b3cb62-f4e1-4c68-a0a2-83d8c0439499"
+>
+<Comment></Comment>
+<Expression>Distance - Offset</Expression>
+</Case></Cases>
 </Function></Functions>
 <Variables>
 <Variable
