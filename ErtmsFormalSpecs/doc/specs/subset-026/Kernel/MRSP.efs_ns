@@ -118,7 +118,7 @@
             MIN ( TSR, ModeSpeedRestrictions )
         ),
         MIN (
-            MIN ( NationalValues.OverrideRelatedSpeedRestrictions, TrainData.TrainData.Value.MaximumSpeed ),
+            MIN ( NationalValues.OverrideRelatedSpeedRestrictions, TrainSpeedRestrictions ),
             MIN ( STM.MaxSpeedRestrictions, STM.SystemSpeedRestrictions )
         )
     ),
@@ -186,7 +186,7 @@ ActiveFunctions.DetermineMRSP_SSP()</PreCondition></PreConditions>
  Guid="21c6f6ca-ebc7-4d7e-bc18-dff3dbf19563"
 >
 <Comment></Comment>
-<Expression>TrainData.TrainData.Value.MaximumSpeed</Expression>
+<Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -225,7 +225,7 @@ ActiveFunctions.DetermineMRSP_ASP()</PreCondition></PreConditions>
  Guid="d201c15f-2c29-44eb-b391-908c3d0a7c09"
 >
 <Comment></Comment>
-<Expression>TrainData.TrainData.Value.MaximumSpeed</Expression>
+<Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -265,7 +265,7 @@ ActiveFunctions.DetermineMRSP_TSR()</PreCondition></PreConditions>
  Guid="6c286171-2a14-477e-91e7-2c8cfc4a4a9a"
 >
 <Comment></Comment>
-<Expression>TrainData.TrainData.Value.MaximumSpeed</Expression>
+<Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -290,7 +290,7 @@ ActiveFunctions.DetermineMRSP_TSR()</PreCondition></PreConditions>
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Determine MRSP based on ASP"
+ Name="Determine MRSP based on signalling"
  Guid="cfca811a-1a30-4e6e-a4e1-492d48f8d0de"
 >
 <Comment></Comment>
@@ -305,7 +305,7 @@ ActiveFunctions.DetermineMRSP_SignallingSpeedRestriction()</PreCondition></PreCo
  Guid="221845fc-c05a-4673-afc4-cce2ff7d7bdc"
 >
 <Comment></Comment>
-<Expression>TrainData.TrainData.Value.MaximumSpeed</Expression>
+<Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -330,7 +330,7 @@ ActiveFunctions.DetermineMRSP_SignallingSpeedRestriction()</PreCondition></PreCo
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Determine MRSP based on ASP"
+ Name="Determine MRSP based on mode"
  Guid="1efe70ec-c255-40bb-a621-ca7aca342ef7"
 >
 <Comment></Comment>
@@ -345,7 +345,46 @@ ActiveFunctions.DetermineMRSP_ModeRelatedSpeedRestriction()</PreCondition></PreC
  Guid="d56efae3-4440-4565-90fd-ea184918e4ac"
 >
 <Comment></Comment>
+<Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ Implemented="TRUE"
+ Name="TrainSpeedRestrictions"
+ Guid="d2547a72-e9c7-4531-a128-c8fc52319edb"
+>
+<ReqRef
+ Id="e402d9f2-dca9-4e92-a4ce-876ba07ce324"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="00238622-7093-4aa8-b357-013dc1191ea4"
+>
+</ReqRef><Comment>Provides the speed restrictions profile due to train characteristics.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="8fa5617e-5734-46bf-96eb-5bdb4247fad7"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Determine MRSP based on train characteristics"
+ Guid="8e298c71-a2d4-4e89-98bb-c7a037aec930"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="d97d46cb-74ec-4da7-9fb3-68af9fa91f66"
+><Comment></Comment>
+ActiveFunctions.DetermineMRSP_TrainRelatedSpeedRestrictions()</PreCondition></PreConditions>
 <Expression>TrainData.TrainData.Value.MaximumSpeed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="98942360-17db-494c-9f88-4d04649ad934"
+>
+<Comment></Comment>
+<Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
