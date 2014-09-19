@@ -114,7 +114,7 @@
 <Expression>MIN (
     MIN (
         MIN (
-            MIN ( LX.SpeedRestrictions, SignallingRelatedSpeedRestrictions),
+            MIN ( LX, SignallingRelatedSpeedRestrictions),
             MIN ( TSR, ModeSpeedRestrictions )
         ),
         MIN (
@@ -463,6 +463,45 @@ ActiveFunctions.DetermineMRSP_STMSystemSpeed()</PreCondition></PreConditions>
 </Case><Case
  Name="Otherwise"
  Guid="2b277c4e-9c14-424b-b1bc-f9a37db0155e"
+>
+<Comment></Comment>
+<Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ Implemented="TRUE"
+ Name="LX"
+ Guid="441c38fb-645b-40f8-a2de-d6b1c2e89a02"
+>
+<ReqRef
+ Id="e9b3c91e-9583-46f0-90d8-f49c8b6e4ff7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a25a97dc-1989-45fa-aec5-382698a72b17"
+>
+</ReqRef><Comment>Provides the speed restrictions profile due to level crossings.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="73ebebcf-5006-4da6-8e61-3dcc165a2032"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Determine MRSP based on LX"
+ Guid="f39163ac-3c70-42f3-8531-030c375ae501"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="36b4cc3f-3353-4a68-b38b-cf419ffc0209"
+><Comment></Comment>
+ActiveFunctions.DetermineMRSP_LXSpeed()</PreCondition></PreConditions>
+<Expression>LX.SpeedRestrictions(Distance)</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="fe3e9470-2855-4370-be07-819c816aa197"
 >
 <Comment></Comment>
 <Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
