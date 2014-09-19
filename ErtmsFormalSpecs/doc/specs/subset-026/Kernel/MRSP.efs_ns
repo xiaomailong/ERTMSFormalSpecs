@@ -191,6 +191,8 @@ ActiveFunctions.DetermineMRSP_SSP()</PreCondition></PreConditions>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ASP"
  Guid="7ca01db3-9970-4d39-9993-37103fde3ee2"
@@ -230,6 +232,9 @@ ActiveFunctions.DetermineMRSP_ASP()</PreCondition></PreConditions>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="110"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TSR"
  Guid="f6c24106-1f33-4b53-9e88-f3575ad86cfa"
@@ -270,6 +275,9 @@ ActiveFunctions.DetermineMRSP_TSR()</PreCondition></PreConditions>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="220"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SignallingRelatedSpeedRestrictions"
  Guid="796fae98-ed13-46e3-9f5c-47eee5e0baf9"
@@ -310,6 +318,9 @@ ActiveFunctions.DetermineMRSP_SignallingSpeedRestriction()</PreCondition></PreCo
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="330"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ModeSpeedRestrictions"
  Guid="b7402cd3-4c2c-4916-9c94-5eb887d8e92a"
@@ -350,6 +361,9 @@ ActiveFunctions.DetermineMRSP_ModeRelatedSpeedRestriction()</PreCondition></PreC
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="440"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TrainSpeedRestrictions"
  Guid="d2547a72-e9c7-4531-a128-c8fc52319edb"
@@ -390,6 +404,9 @@ ActiveFunctions.DetermineMRSP_TrainRelatedSpeedRestrictions()</PreCondition></Pr
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="STMMaxSpeed"
  Guid="54b934f6-fbce-47d2-a8db-3484b0cb25ad"
@@ -430,6 +447,10 @@ ActiveFunctions.DetermineMRSP_STMMaxSpeed()</PreCondition></PreConditions>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="STMSystemSpeed"
  Guid="6c62e24f-8aa9-4a2a-9c8e-6cd59713c91f"
@@ -470,6 +491,10 @@ ActiveFunctions.DetermineMRSP_STMSystemSpeed()</PreCondition></PreConditions>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="220"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="LX"
  Guid="441c38fb-645b-40f8-a2de-d6b1c2e89a02"
@@ -509,6 +534,10 @@ ActiveFunctions.DetermineMRSP_LXSpeed()</PreCondition></PreConditions>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
+ X="330"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="PermittedBrakingDistance"
  Guid="ef681195-f161-41bc-a1a4-06aa670e8a53"
@@ -518,6 +547,7 @@ ActiveFunctions.DetermineMRSP_LXSpeed()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2f1db9e4-b6fd-45da-9143-653dea0cacf4"
 >
+<Comment></Comment>
 </ReqRef><Comment>Provides the speed restrictions profile due to speed restrictions to esure permitted braking distances.</Comment>
 <Parameters>
 <Parameter

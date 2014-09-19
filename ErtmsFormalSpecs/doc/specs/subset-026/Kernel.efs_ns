@@ -9727,7 +9727,12 @@ TrainPosition.UpdatePositionState()</Action></Actions>
  Name="Update kernel mode"
  Guid="5ef397e3-af33-402c-99eb-ed9d13e71490"
 >
-<Comment>Updates the mode of the kernel according to the new information.</Comment>
+<ReqRef
+ Id="fcc0e481-867b-4267-8817-bfcb4ba2cde9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2f4c6248-85e9-46df-ab0a-165b43e3f6ec"
+>
+</ReqRef><Comment>Updates the mode of the kernel according to the new information.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -9738,7 +9743,9 @@ TrainPosition.UpdatePositionState()</Action></Actions>
 >
 <Comment>Updates the mode of the kernel according to the new information.</Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="24729d0d-2a5d-4cca-80e7-4b9d8b4130f4"
+>ActiveFunctions.DetermineMode()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4e99e841-916b-4771-9cbe-a7999f9bbdbb"
