@@ -115,7 +115,7 @@
     MIN (
         MIN (
             MIN ( LX.SpeedRestrictions, MA.SignallingRelatedSpeedRestrictions ),
-            MIN ( TSR.SpeedRestrictions, ModeRelatedSpeedLimits.SpeedRestrictions )
+            MIN ( TSR, ModeRelatedSpeedLimits.SpeedRestrictions )
         ),
         MIN (
             MIN ( NationalValues.OverrideRelatedSpeedRestrictions, TrainData.TrainData.Value.MaximumSpeed ),
@@ -123,10 +123,7 @@
         )
     ),
     MIN (
-        MIN (
-            TrackDescription.AxleLoad.SpeedRestrictions,
-            SSP
-        ),
+        MIN ( ASP, SSP),
         TrackDescription.PermittedBrakingDistance.SpeedRestrictions
     )
 )
@@ -163,6 +160,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ac60a7da-bc04-4971-91a8-bb3ac3fd8033"
 >
+<Comment></Comment>
 </ReqRef><Comment>Provides the speed restrictions profile due to static speed profile.</Comment>
 <Parameters>
 <Parameter
@@ -188,6 +186,87 @@ ActiveFunctions.DetermineMRSP_SSP()</PreCondition></PreConditions>
 </Case><Case
  Name="Otherwise"
  Guid="21c6f6ca-ebc7-4d7e-bc18-dff3dbf19563"
+>
+<Comment></Comment>
+<Expression>TrainData.TrainData.Value.MaximumSpeed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ Implemented="TRUE"
+ Name="ASP"
+ Guid="7ca01db3-9970-4d39-9993-37103fde3ee2"
+>
+<ReqRef
+ Id="4cf37699-f0e2-4e3e-a1ef-3a1aea8ab8c4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ce51029d-02d7-43c2-b312-cceac34b5e68"
+>
+</ReqRef><Comment>Provides the speed restrictions profile due to Axle Load speed profile.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="dd710535-5543-468a-892a-16573f16d9b0"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Determine MRSP based on ASP"
+ Guid="ff1572ce-8a3b-441e-aa40-aaf9e448a45b"
+>
+<PreConditions>
+<PreCondition
+ Guid="fbca48e8-6e6d-42e1-a98f-0dd50873b093"
+><Comment></Comment>
+ActiveFunctions.DetermineMRSP_ASP()</PreCondition></PreConditions>
+<Expression>TrackDescription.AxleLoad.SpeedRestrictions(
+    Distance=&gt;Distance
+)</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="d201c15f-2c29-44eb-b391-908c3d0a7c09"
+>
+<Comment></Comment>
+<Expression>TrainData.TrainData.Value.MaximumSpeed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ Implemented="TRUE"
+ Name="TSR"
+ Guid="f6c24106-1f33-4b53-9e88-f3575ad86cfa"
+>
+<ReqRef
+ Id="026b002d-138f-435c-9682-ff5ff4bf848f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb921fce-8a8b-4d42-83bc-3370b89ba015"
+>
+<Comment></Comment>
+</ReqRef><Comment>Provides the speed restrictions profile due to Temporary Speed Restrictions.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="98d2cb7c-8456-4d01-8b9d-92155f5396f5"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Determine MRSP based on TSR"
+ Guid="938f00dd-f664-4047-a0e9-f0bd46c6a6b8"
+>
+<PreConditions>
+<PreCondition
+ Guid="4d666a6e-3351-4086-a912-787a938d6df7"
+><Comment></Comment>
+ActiveFunctions.DetermineMRSP_TSR()</PreCondition></PreConditions>
+<Expression>TSR.SpeedRestrictions(
+    Distance=&gt;Distance
+)</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="6c286171-2a14-477e-91e7-2c8cfc4a4a9a"
 >
 <Comment></Comment>
 <Expression>TrainData.TrainData.Value.MaximumSpeed</Expression>
