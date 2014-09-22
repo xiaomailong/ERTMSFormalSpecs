@@ -89,14 +89,18 @@
 >
 <Expectations>
 <Expectation
- Kind="Instantaneous"
- DeadLine="1"
+ Kind="Continuous"
+ DeadLine="-1"
+ CyclePhase="UpdateOUT"
  Guid="959d4840-5439-42a4-8d50-68cf57c9ff0c"
->DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.SB</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
+>DMI.MasterDMI().Out_ErtmsEtcsMode.Mode == Mode.SB<Condition>Kernel.Mode == Mode.SB</Condition>
+</Expectation><Expectation
+ Kind="Continuous"
+ DeadLine="-1"
+ CyclePhase="UpdateOUT"
  Guid="be8f19b8-709e-4d4b-954e-156d0a03690b"
->DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</Expectation></Expectations>
+>DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested<Condition>Kernel.Mode == Mode.SB</Condition>
+</Expectation></Expectations>
 </SubStep></SubSteps>
 <Comment>We cannot express permanent expectations rigth now -&gt; to be modified.</Comment>
 </Translation><Translation

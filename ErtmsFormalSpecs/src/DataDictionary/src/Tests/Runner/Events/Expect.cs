@@ -26,7 +26,14 @@ namespace DataDictionary.Tests.Runner.Events
         {
             get
             {
-                return Time + Expectation.DeadLine;
+                double retVal = double.MaxValue;
+
+                if (Expectation.DeadLine >= 0)
+                {
+                    retVal = Time + Expectation.DeadLine;
+                }
+
+                return retVal;
             }
         }
 

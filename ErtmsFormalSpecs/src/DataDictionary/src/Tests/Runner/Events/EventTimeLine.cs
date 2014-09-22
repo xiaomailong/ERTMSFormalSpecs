@@ -95,7 +95,7 @@ namespace DataDictionary.Tests.Runner.Events
 
             foreach (Expect expect in ActiveExpectations)
             {
-                if (expect.State == DataDictionary.Tests.Runner.Events.Expect.EventState.Active && expect.Expectation.Blocking)
+                if (expect.State == DataDictionary.Tests.Runner.Events.Expect.EventState.Active && expect.Expectation.Blocking && expect.Expectation.getKind() == Generated.acceptor.ExpectationKind.aInstantaneous)
                 {
                     retVal.Add(expect);
                 }
