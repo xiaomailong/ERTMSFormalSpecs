@@ -758,32 +758,26 @@ namespace GUI
                             MoreInfoWindow.Show(RequirementsWindow.Pane, DockAlignment.Right, 0.66);
                         }
 
-                        GenericWindowHandling<EditorView.ExpressionWindow>.AddOrShow(this, ExpressionEditorWindow, DockAreas.DockBottom);
+                        GenericWindowHandling<EditorView.CommentWindow>.AddOrShow(this, CommentEditorWindow, DockAreas.DockBottom);
                         if (shouldPlace)
                         {
-                            ExpressionEditorWindow.Show(MoreInfoWindow.Pane, DockAlignment.Right, 0.5);
+                            CommentEditorWindow.Show(MoreInfoWindow.Pane, DockAlignment.Right, 0.5);
                         }
-                        GenericWindowHandling<EditorView.CommentWindow>.AddOrShow(this, CommentEditorWindow, DockAreas.DockBottom);
                         GenericWindowHandling<TestRunnerView.Watch.Window>.AddOrShow(this, WatchWindow, DockAreas.DockBottom);
-                        ExpressionEditorWindow.Show();
+                        CommentEditorWindow.Show();
 
                         // Display the views in the right pane
                         GenericWindowHandling<PropertyView.Window>.AddOrShow(this, PropertyWindow, DockAreas.DockRight);
+                        GenericWindowHandling<EditorView.ExpressionWindow>.AddOrShow(this, ExpressionEditorWindow, DockAreas.DockRight);
+                        if (shouldPlace)
+                        {
+                            ExpressionEditorWindow.Show(PropertyWindow.Pane, DockAlignment.Bottom, 0.6);
+                        }
                         GenericWindowHandling<HistoryView.Window>.AddOrShow(this, HistoryWindow, DockAreas.DockRight);
-                        if (shouldPlace)
-                        {
-                            HistoryWindow.Show(PropertyWindow.Pane, DockAlignment.Bottom, 0.6);
-                        }
                         GenericWindowHandling<Shortcuts.Window>.AddOrShow(this, ShortcutsWindow, DockAreas.DockRight);
-                        if (shouldPlace)
-                        {
-                            ShortcutsWindow.Show(HistoryWindow.Pane, HistoryWindow);
-                        }
                         GenericWindowHandling<SelectionHistory.Window>.AddOrShow(this, SelectionHistoryWindow, DockAreas.DockRight);
-                        if (shouldPlace)
-                        {
-                            SelectionHistoryWindow.Show(ShortcutsWindow.Pane, ShortcutsWindow);
-                        }
+                        SelectionHistoryWindow.Show(ShortcutsWindow.Pane, ShortcutsWindow);
+                        ExpressionEditorWindow.Show();
 
                         GenericWindowHandling<MessagesView.Window>.AddOrShow(this, MessagesWindow, DockAreas.DockRight);
                         if (shouldPlace)
