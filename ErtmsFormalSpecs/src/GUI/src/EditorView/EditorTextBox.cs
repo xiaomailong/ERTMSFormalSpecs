@@ -447,63 +447,7 @@ namespace GUI
             {
                 bool type = false;
 
-                Utils.ISubDeclarator subDeclarator = element as Utils.ISubDeclarator;
-                if (subDeclarator == null)
-                {
-                    DataDictionary.Types.ITypedElement typedElement = element as DataDictionary.Types.ITypedElement;
-                    if (typedElement != null)
-                    {
-                        type = true;
-                        subDeclarator = typedElement.Type as Utils.ISubDeclarator;
-                    }
-                }
-
-                DataDictionary.Variables.IVariable variable = subDeclarator as DataDictionary.Variables.IVariable;
-                if (variable != null)
-                {
-                    type = true;
-                    subDeclarator = variable.Type as Utils.ISubDeclarator;
-                }
-
-                if (subDeclarator != null)
-                {
-                    subDeclarator.InitDeclaredElements();
-                    foreach (KeyValuePair<string, List<Utils.INamable>> pair in subDeclarator.DeclaredElements)
-                    {
-                        string subElem = pair.Key;
-                        if (subElem.StartsWith(searchOptions.Prefix))
-                        {
-                            if (searchOptions.EnclosingName != null)
-                            {
-                                foreach (Utils.INamable namable in subDeclarator.DeclaredElements[subElem])
-                                {
-                                    if (namable.FullName.EndsWith(searchOptions.EnclosingName + "." + subElem) || type || subDeclarator is StructureElement)
-                                    {
-                                        if (ConsiderOnlyTypes)
-                                        {
-                                            if (namable is DataDictionary.Types.Type || namable is DataDictionary.Types.NameSpace)
-                                            {
-                                                if (!(namable is DataDictionary.Functions.Function))
-                                                {
-                                                    retVal.Add(new ObjectReference(pair.Key, pair.Value));
-                                                }
-                                            }
-                                        }
-                                        else
-                                        {
-                                            retVal.Add(new ObjectReference(pair.Key, pair.Value));
-                                        }
-                                        break;
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                retVal.Add(new ObjectReference(pair.Key, pair.Value));
-                            }
-                        }
-                    }
-                }
+                type = ConsiderElement(element, searchOptions, retVal, type);
 
                 if (searchOptions.ConsiderEnclosing)
                 {
@@ -515,7 +459,76 @@ namespace GUI
                 }
             }
 
+            // Considers all dictionaries in the system to find the expected element
+            foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+            {
+                ConsiderElement(dictionary, searchOptions, retVal, false);
+            }
+
             return retVal;
+        }
+
+        private bool ConsiderElement(Utils.IModelElement element, SearchOptions searchOptions, HashSet<ObjectReference> retVal, bool type)
+        {
+            Utils.ISubDeclarator subDeclarator = element as Utils.ISubDeclarator;
+            if (subDeclarator == null)
+            {
+                DataDictionary.Types.ITypedElement typedElement = element as DataDictionary.Types.ITypedElement;
+                if (typedElement != null)
+                {
+                    type = true;
+                    subDeclarator = typedElement.Type as Utils.ISubDeclarator;
+                }
+            }
+
+            DataDictionary.Variables.IVariable variable = subDeclarator as DataDictionary.Variables.IVariable;
+            if (variable != null)
+            {
+                type = true;
+                subDeclarator = variable.Type as Utils.ISubDeclarator;
+            }
+
+            if (subDeclarator != null)
+            {
+                subDeclarator.InitDeclaredElements();
+                foreach (KeyValuePair<string, List<Utils.INamable>> pair in subDeclarator.DeclaredElements)
+                {
+                    string subElem = pair.Key;
+                    if (subElem.StartsWith(searchOptions.Prefix))
+                    {
+                        if (searchOptions.EnclosingName != null)
+                        {
+                            foreach (Utils.INamable namable in subDeclarator.DeclaredElements[subElem])
+                            {
+                                if (namable.FullName.EndsWith(searchOptions.EnclosingName + "." + subElem) || type || subDeclarator is StructureElement)
+                                {
+                                    if (ConsiderOnlyTypes)
+                                    {
+                                        if (namable is DataDictionary.Types.Type || namable is DataDictionary.Types.NameSpace)
+                                        {
+                                            if (!(namable is DataDictionary.Functions.Function))
+                                            {
+                                                retVal.Add(new ObjectReference(pair.Key, pair.Value));
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        retVal.Add(new ObjectReference(pair.Key, pair.Value));
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            retVal.Add(new ObjectReference(pair.Key, pair.Value));
+                        }
+                    }
+                }
+            }
+
+            return type;
         }
 
         /// <summary>
