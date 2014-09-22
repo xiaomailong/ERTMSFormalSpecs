@@ -1088,10 +1088,10 @@ namespace DataDictionary.Interpreter
         {
             Expression retVal = null;
 
+            NoReentrance.WaitOne();
             bool previousSilentMode = ModelElement.BeSilent;
             try
             {
-                NoReentrance.WaitOne();
                 Generated.ControllersManager.DesactivateAllNotifications();
                 ModelElement.BeSilent = silent;
 
