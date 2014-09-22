@@ -224,24 +224,32 @@ namespace DataDictionary.Tests.Translations
         {
             string result = "";
 
-            if (!explainSubElements)
+            // The source textes for this translation
+            if (SourceTexts.Count > 1)
             {
-                if (SourceTexts.Count > 1)
+                int i = 1;
+                result += TextualExplainUtilities.Pad("{\\b SOURCE TEXTS}\\par", indent);
+                foreach (SourceText sourceText in SourceTexts)
                 {
-                    result += TextualExplainUtilities.Pad("{\\b SOURCE TEXTS}\\par", indent);
+                    result += TextualExplainUtilities.Pad("{\\b SOURCE TEXT "+i+"}\\par", indent);
+                    result += sourceText.getExplain(explainSubElements, indent + 2) + "\\par";
+                    i += 1;
                 }
-                else
-                {
-                    result += TextualExplainUtilities.Pad("{\\b SOURCE TEXT}\\par", indent);
-                }
-
+            }
+            else
+            {
+                result += TextualExplainUtilities.Pad("{\\b SOURCE TEXT}\\par", indent);
                 foreach (SourceText sourceText in SourceTexts)
                 {
                     result += sourceText.getExplain(explainSubElements, indent + 2) + "\\par";
                 }
             }
-            else
+
+            // The translation itself
+            if (explainSubElements)
             {
+                result += TextualExplainUtilities.Pad("\\par{\\b TRANSLATION }\\par", indent);
+
                 foreach (SubStep subStep in SubSteps)
                 {
                     result += subStep.getExplain(indent + 2, explainSubElements) + "\\par";

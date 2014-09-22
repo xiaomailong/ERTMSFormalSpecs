@@ -348,8 +348,10 @@ namespace GUI.IPCInterface
             {
                 System.Diagnostics.Debugger.Break();
             }
-
-            EFSAccess.ReleaseMutex();
+            finally
+            {
+                EFSAccess.ReleaseMutex();
+            }
         }
 
         /// <summary>
@@ -473,14 +475,22 @@ namespace GUI.IPCInterface
         {
             Values.Value retVal = null;
 
-            DataDictionary.Variables.IVariable variable = EFSSystem.INSTANCE.findByFullName(variableName) as DataDictionary.Variables.IVariable;
-            if (variable != null)
+            EFSAccess.WaitOne();
+            try
             {
-                retVal = convertOut(variable.Value);
+                DataDictionary.Variables.IVariable variable = EFSSystem.INSTANCE.findByFullName(variableName) as DataDictionary.Variables.IVariable;
+                if (variable != null)
+                {
+                    retVal = convertOut(variable.Value);
+                }
+                else
+                {
+                    throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot find variable " + variableName));
+                }
             }
-            else
+            finally
             {
-                throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot find variable " + variableName));
+                EFSAccess.ReleaseMutex();
             }
 
             return retVal;
@@ -495,14 +505,22 @@ namespace GUI.IPCInterface
         {
             Values.Value retVal = null;
 
-            DataDictionary.Interpreter.Expression expressionTree = EFSSystem.INSTANCE.Parser.Expression(EFSSystem.INSTANCE.Dictionaries[0], expression);
-            if (expressionTree != null)
+            EFSAccess.WaitOne();
+            try
             {
-                retVal = convertOut(expressionTree.GetValue(new DataDictionary.Interpreter.InterpretationContext(), null));
+                DataDictionary.Interpreter.Expression expressionTree = EFSSystem.INSTANCE.Parser.Expression(EFSSystem.INSTANCE.Dictionaries[0], expression);
+                if (expressionTree != null)
+                {
+                    retVal = convertOut(expressionTree.GetValue(new DataDictionary.Interpreter.InterpretationContext(), null));
+                }
+                else
+                {
+                    throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot evaluate expression " + expression));
+                }
             }
-            else
+            finally
             {
-                throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot evaluate expression " + expression));
+                EFSAccess.ReleaseMutex();
             }
 
             return retVal;
@@ -662,20 +680,29 @@ namespace GUI.IPCInterface
         /// <param name="value"></param>
         public void SetVariableValue(string variableName, Values.Value value)
         {
-            if (Runner != null)
+            EFSAccess.WaitOne();
+            try
             {
-                DataDictionary.Variables.IVariable variable = Runner.EFSSystem.findByFullName(variableName) as DataDictionary.Variables.IVariable;
 
-                if (variable != null)
+                if (Runner != null)
                 {
-                    SyntheticVariableUpdateAction action = new SyntheticVariableUpdateAction(variable, value.convertBack(variable.Type));
-                    DataDictionary.Tests.Runner.Events.VariableUpdate variableUpdate = new DataDictionary.Tests.Runner.Events.VariableUpdate(action, null, null);
-                    Runner.EventTimeLine.AddModelEvent(variableUpdate, Runner);
+                    DataDictionary.Variables.IVariable variable = Runner.EFSSystem.findByFullName(variableName) as DataDictionary.Variables.IVariable;
+
+                    if (variable != null)
+                    {
+                        SyntheticVariableUpdateAction action = new SyntheticVariableUpdateAction(variable, value.convertBack(variable.Type));
+                        DataDictionary.Tests.Runner.Events.VariableUpdate variableUpdate = new DataDictionary.Tests.Runner.Events.VariableUpdate(action, null, null);
+                        Runner.EventTimeLine.AddModelEvent(variableUpdate, Runner);
+                    }
+                    else
+                    {
+                        throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot find variable " + variableName));
+                    }
                 }
-                else
-                {
-                    throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot find variable " + variableName));
-                }
+            }
+            finally
+            {
+                EFSAccess.ReleaseMutex();
             }
         }
 
@@ -685,22 +712,31 @@ namespace GUI.IPCInterface
         /// <param name="statementText"></param>
         public void ApplyStatement(string statementText)
         {
-            if (Runner != null)
+            EFSAccess.WaitOne();
+            try
             {
-                bool silent = true;
-                DataDictionary.Interpreter.Statement.Statement statement = EFSSystem.INSTANCE.Parser.Statement(EFSSystem.INSTANCE.Dictionaries[0], statementText, silent);
 
-                if (statement != null)
+                if (Runner != null)
                 {
-                    DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
-                    action.ExpressionText = statementText;
-                    DataDictionary.Tests.Runner.Events.VariableUpdate variableUpdate = new DataDictionary.Tests.Runner.Events.VariableUpdate(action, null, null);
-                    Runner.EventTimeLine.AddModelEvent(variableUpdate, Runner);
+                    bool silent = true;
+                    DataDictionary.Interpreter.Statement.Statement statement = EFSSystem.INSTANCE.Parser.Statement(EFSSystem.INSTANCE.Dictionaries[0], statementText, silent);
+
+                    if (statement != null)
+                    {
+                        DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
+                        action.ExpressionText = statementText;
+                        DataDictionary.Tests.Runner.Events.VariableUpdate variableUpdate = new DataDictionary.Tests.Runner.Events.VariableUpdate(action, null, null);
+                        Runner.EventTimeLine.AddModelEvent(variableUpdate, Runner);
+                    }
+                    else
+                    {
+                        throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot create statement for " + statementText));
+                    }
                 }
-                else
-                {
-                    throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot create statement for " + statementText));
-                }
+            }
+            finally
+            {
+                EFSAccess.ReleaseMutex();
             }
         }
 
