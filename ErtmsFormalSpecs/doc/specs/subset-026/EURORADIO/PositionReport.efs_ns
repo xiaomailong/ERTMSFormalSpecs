@@ -2162,10 +2162,16 @@ ON
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="89670bb6-f102-4efa-b638-117a6c86ef7c"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="09eeadf1-fd15-4f7c-8f52-fb0f04b31d9c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b592b6c3-ada5-4b51-809b-9f3237e9b88a"
+>
+</ReqRef><ReqRef
+ Id="3f711d5b-c833-40aa-95b9-3e30c6d795a0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2dc9d0cd-2cc7-4fbe-a2f7-15a71cef9e1f"
 >
 </ReqRef><Comment>During the RBC/RBC handover, the first position report has to be sent when the max safe front end of the train passes the transition border location.</Comment>
 <SubRules></SubRules>
@@ -2175,6 +2181,7 @@ ON
  Name="Handle first RBC/RBC handover position report"
  Guid="c18aa449-79fa-4a8c-94bb-9d212e2a9fc6"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="8759fa6c-ccb2-4799-901c-da387590d178"
@@ -2182,11 +2189,14 @@ ON
   AND
 Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.Max ) &gt;= RBCTransitionLocation</PreCondition><PreCondition
  Guid="8ddbf2b5-1a20-4b70-abcd-734965454ea6"
->RBCTransitionLocation != BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>RBCTransitionLocation != BaseTypes.Distance.Unknown</PreCondition><PreCondition
+ Guid="9180eede-7378-46a7-8bf8-a4dc3cd4677c"
+>Kernel.ActiveFunctions.ManageRBC_RBCHandover()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="daf467de-6386-457f-8555-9fbf8706549b"
->SendFirstRBCHandoverPositionReport()</Action></Actions>
+><Comment></Comment>
+SendFirstRBCHandoverPositionReport()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2268,6 +2278,11 @@ Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.M
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8f78d90c-bc0b-45ac-b8c5-2d9aa3a216e7"
 >
+</ReqRef><ReqRef
+ Id="3f711d5b-c833-40aa-95b9-3e30c6d795a0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8776342b-20e7-4274-860d-94cdd52452fa"
+>
 </ReqRef><Comment>During the RBC/RBC handover, the second position report has to be sent when the min safe rear end of the train passes the transition border location.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -2280,15 +2295,20 @@ Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.M
 <PreConditions>
 <PreCondition
  Guid="2e4c2276-a2dd-4f4c-8fcb-9857d72cb4c8"
->RBCTransitionLocation != Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+><Comment></Comment>
+RBCTransitionLocation != Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="9e01e492-5354-4383-a8cf-c25c076c9526"
 >NumberOfReportsSentToHandingOverRBC == 1
   AND
-Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; Default.DistanceInterval.Min ) &gt;= RBCTransitionLocation</PreCondition></PreConditions>
+Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; Default.DistanceInterval.Min ) &gt;= RBCTransitionLocation</PreCondition><PreCondition
+ Guid="3c744592-d68e-46b8-bcab-764b7e40c095"
+><Comment></Comment>
+Kernel.ActiveFunctions.ManageRBC_RBCHandover()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6c6ff4dc-2494-496b-b9bf-11fe670cc4b7"
->SendSecondRBCHandoverPositionReport()</Action></Actions>
+><Comment></Comment>
+SendSecondRBCHandoverPositionReport()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Handing Over RBC has sent an order to terminate the session"
@@ -2298,11 +2318,17 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; Default.DistanceInt
 <PreConditions>
 <PreCondition
  Guid="56ed0c09-a13a-456e-b5ed-fc884e8b4f3f"
->EURORADIO.OrderToTerminateHandingOverRBCIsReceived()</PreCondition></PreConditions>
+><Comment></Comment>
+EURORADIO.OrderToTerminateHandingOverRBCIsReceived()</PreCondition><PreCondition
+ Guid="85df0276-9b30-495c-b2f1-717a0afd4934"
+><Comment></Comment>
+
+Kernel.ActiveFunctions.ManageRBC_RBCHandover()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="56171646-7f3d-4717-8553-731700087a4f"
->NumberOfReportsSentToHandingOverRBC &lt;- 0</Action></Actions>
+><Comment></Comment>
+NumberOfReportsSentToHandingOverRBC &lt;- 0</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No order to terminate the session received from Handing Over RBC before the timeout =&gt; send a new position report."
@@ -2321,11 +2347,15 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; Default.DistanceInt
  Guid="bb5277e0-aa5c-48e6-a9b9-1ef76c7ff93a"
 >SecondRBCHandoverPositionReportTime + TimeBeforeMessageRepetition &lt; Kernel.DateAndTime.CurrentTime</PreCondition><PreCondition
  Guid="aa7bc635-025b-4bfa-b27c-d05d3984511b"
->NumberOfSentReportRepetitions &lt; NumberOfMessageRepetitions</PreCondition></PreConditions>
+>NumberOfSentReportRepetitions &lt; NumberOfMessageRepetitions</PreCondition><PreCondition
+ Guid="cb496351-7929-4a7e-ab9a-14bf9a5bdbf8"
+><Comment></Comment>
+Kernel.ActiveFunctions.ManageRBC_RBCHandover()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2dd104eb-cbba-403c-96ba-4318538874a7"
->SendSecondRBCHandoverPositionReport()</Action></Actions>
+><Comment></Comment>
+SendSecondRBCHandoverPositionReport()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No order to terminate the session received from Handing Over RBC, max number of requests reached"
@@ -2344,7 +2374,13 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; Default.DistanceInt
  Guid="22623cd7-98dd-4219-a3da-8d0a348c1178"
 >NumberOfReportsSentToHandingOverRBC &gt; 0</PreCondition><PreCondition
  Guid="d30495ba-3762-4c19-96f3-456143f7ae70"
->SecondRBCHandoverPositionReportTime + TimeBeforeMessageRepetition &lt; Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
+>SecondRBCHandoverPositionReportTime + TimeBeforeMessageRepetition &lt; Kernel.DateAndTime.CurrentTime</PreCondition><PreCondition
+ Guid="770bd4c3-89dd-445f-b09b-7dc617030f18"
+><Comment></Comment>
+
+
+
+Kernel.ActiveFunctions.ManageRBC_RBCHandover()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="17311951-1bd7-40ab-9779-aee39c8727f4"
