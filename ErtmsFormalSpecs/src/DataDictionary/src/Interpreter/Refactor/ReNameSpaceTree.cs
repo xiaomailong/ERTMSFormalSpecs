@@ -37,24 +37,27 @@ namespace DataDictionary.Interpreter.Refactor
             if (!(derefExpression.Ref is Types.StructureElement))
             {
                 ModelElement model = derefExpression.Ref as ModelElement;
-                if (model != null)
+                ModelElement enclosingModel = derefExpression.Arguments[derefExpression.Arguments.Count-2].Ref as ModelElement;
+                if (model != null && enclosingModel != null)
                 {
                     ReplaceText(model.ReferenceName(BaseLocation), derefExpression.Start, derefExpression.End);
                     replaced = true;
                 }
                 else
                 {
+                    enclosingModel = null;
                     foreach (Expression expression in derefExpression.Arguments)
                     {
                         if (expression != null)
                         {
                             model = expression.Ref as ModelElement;
-                            if (model != null)
+                            if (model != null && enclosingModel != null)
                             {
                                 ReplaceText(model.ReferenceName(BaseLocation), derefExpression.Start, expression.End);
                                 replaced = true;
                                 break;
                             }
+                            enclosingModel = model;
                         }
                     }
                 }
