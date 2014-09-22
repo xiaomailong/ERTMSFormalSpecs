@@ -326,13 +326,17 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions != []
  Guid="b510dad6-aa16-4bc9-80d4-597c5f30ef9f"
 >Kernel.TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Max ) == 2000.0</Expectation></Expectations>
 </SubStep><SubStep
- Name="Sub-step5 - The second SBI is not crossed yet =&gt; the track conditions is displayed"
+ Name="Sub-step5 - The second SBI is not crossed yet"
  Guid="8c4ca5d0-6630-413c-a1f7-c247ed5e0683"
 >
 <Actions>
 <Action
  Guid="48a7add8-956c-499b-85d4-453b3741ef1b"
 >Odometry.NominalDistance &lt;- 2789.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step6 =&gt; the track conditions is displayed"
+ Guid="f78b98f9-2fc9-4c09-b6b8-7a60d36a338b"
+>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -361,13 +365,17 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions != []
   AND
 ( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation></Expectations>
 </SubStep><SubStep
- Name="Sub-step6 - The second SBI is crossed =&gt; nothing is displayed"
- Guid="f78b98f9-2fc9-4c09-b6b8-7a60d36a338b"
+ Name="Sub-step7 - The second SBI is crossed"
+ Guid="d8677fcc-960b-4472-92c6-50cced4ec60d"
 >
 <Actions>
 <Action
  Guid="3ff6bfa5-d60d-4842-a774-48aa9baf0481"
 >Odometry.NominalDistance &lt;- 2790.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step8 =&gt; nothing is displayed"
+ Guid="86b1c4e5-ed66-4339-9072-2ccf1033a34f"
+>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
