@@ -412,13 +412,30 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
  Name="Sub-step1 - The driver uses the brakes =&gt; the speed descreases and the train enters the area between the first and the second SBI"
  Guid="4a01ed4f-c623-40ef-9178-c1388af38be1"
 >
-<Comment>The driver uses brakes and the train speed decreases to 51.0, so the train enters the area between the first and the second SBI again, but nothing is displayed.</Comment>
+<Comment>The driver uses brakes and the train speed decreases to 51.0, so the train enters the area between the first and the second SBI again.</Comment>
 <Actions>
 <Action
  Guid="9910e75f-b279-4cff-9592-5cb3e9364737"
 >Odometry.EstimatedSpeed &lt;- 51.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Non stopping area is displayed again"
+ Guid="a7fb2df7-a4da-433d-be93-608176e02ddb"
+>
+<Comment></Comment>
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1b4e9e32-326d-416d-b009-50e30e8186a4"
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested == True
+  AND
+DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions != []
+  AND
+( COUNT DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ) == 1
+  AND
+( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).IsAnnouncement == False
+  AND
+( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="47ad158c-3bcf-4ff0-b5b8-8d8be733c679"
@@ -431,19 +448,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
         Speed =&gt; 0.0,
         Length =&gt; 0.0
     }
-) &gt; Odometry.EstimatedSpeed</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="1b4e9e32-326d-416d-b009-50e30e8186a4"
->DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested == True
-  AND
-DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions != []
-  AND
-( COUNT DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ) == 1
-  AND
-( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).IsAnnouncement == False
-  AND
-( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation></Expectations>
+) &gt; Odometry.EstimatedSpeed</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -456,33 +461,59 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions != []
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - The second SBI is not crossed yet"
  Guid="539843a0-7b62-4c3f-be69-debb7085cc4f"
 >
 <Actions>
 <Action
  Guid="b100338b-57a5-4341-baa3-a420b4fab7fe"
 >Odometry.NominalDistance &lt;- 2909.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 =&gt; the non stopping area is still displayed"
+ Guid="2a4dec1d-36ad-4cb8-8cc9-d642eacfb8aa"
+>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f6f6a3ac-088f-4bf3-ba69-d1b4dd6392e4"
->Kernel.TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Min ) == 2800.0</Expectation></Expectations>
+>Kernel.TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Min ) == 2800.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="84d838e0-0e26-48d5-86e9-1ee4037b2bed"
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested == True
+  AND
+DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions != []
+  AND
+( COUNT DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ) == 1
+  AND
+( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).IsAnnouncement == False
+  AND
+( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation></Expectations>
 </SubStep><SubStep
- Name="Sub-step2"
- Guid="2a4dec1d-36ad-4cb8-8cc9-d642eacfb8aa"
+ Name="Sub-step3 - The second SBI is crossed"
+ Guid="95164d7e-bf58-4475-881e-bc2754ed4789"
 >
 <Actions>
 <Action
  Guid="5e194df3-5841-4d41-b775-033d700b3ea0"
 >Odometry.NominalDistance &lt;- 2910.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step4 =&gt; nothing is displayed"
+ Guid="ae64f3cf-1b31-4c20-abe9-3df7d72669cd"
+>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="18efae93-5c27-4f7d-a7ca-af84a9a9dcaf"
->Kernel.TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Min ) &gt; 2800.0</Expectation></Expectations>
+>Kernel.TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Min ) &gt; 2800.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f8258aa9-affb-44a6-98fa-0deda8d047ea"
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested == True
+  AND
+DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
