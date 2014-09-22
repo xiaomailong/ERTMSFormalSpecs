@@ -1875,7 +1875,7 @@ namespace GUI
 
         private void showExpressionEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GenericWindowHandling<EditorView.ExpressionWindow>.AddOrShow(this, ExpressionEditorWindow, DockAreas.DockBottom);
+            GenericWindowHandling<EditorView.ExpressionWindow>.AddOrShow(this, ExpressionEditorWindow, DockAreas.DockRight);
         }
 
         private void showCommentEditorToolStripMenuItem_Click(object sender, EventArgs e)
