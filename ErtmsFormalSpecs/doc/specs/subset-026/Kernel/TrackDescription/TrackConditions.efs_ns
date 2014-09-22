@@ -134,7 +134,7 @@
  Guid="63f5b8e4-1c3f-4267-a7e6-bfb62588b3c1"
 ><Comment></Comment>
 TrackConditionType == ConditionType.Conditions</PreCondition></PreConditions>
-<Expression>THERE_IS_IN General.TCProfile| (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
+<Expression>THERE_IS_IN General.TCProfile| (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt;= TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
 </Case><Case
  Name="Metal masses are passed"
  Guid="b3adf906-b3aa-4a78-a2ef-cbfeae7a1c8e"
