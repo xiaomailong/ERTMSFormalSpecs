@@ -1693,11 +1693,13 @@ Kernel.TrackDescription.AxleLoad.AxleLoadProfileReceived ( Packet.TRACK_TO_TRAIN
 <PreConditions>
 <PreCondition
  Guid="673297fe-8eba-443e-93e0-6cde374acf93"
->ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.Q_DIR )</PreCondition></PreConditions>
+><Comment></Comment>
+ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.Q_DIR )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e619da6c-cc31-4f62-be09-57e9632df39f"
->Kernel.TSR.TemporarySpeedRestrictionRevocationReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION,NID_BG=&gt;NID_BG )</Action></Actions>
+><Comment></Comment>
+Kernel.TSR.TemporarySpeedRestrictionRevocationReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION,NID_BG=&gt;NID_BG )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Track Condition Big Metal Masses available"

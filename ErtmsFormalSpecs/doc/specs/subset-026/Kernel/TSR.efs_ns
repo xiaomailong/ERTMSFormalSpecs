@@ -354,6 +354,12 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d904c16f-7993-4a46-b8ea-b6b6f451d3b5"
 >
+</ReqRef><ReqRef
+ Id="8a51c8a5-71ad-49fa-88d6-f67fa8d71e0e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a1d03220-b8d7-4018-9cb5-363f55704b62"
+>
+<Comment></Comment>
 </ReqRef><Comment>Removes the specified temporary speed restrictions from the list monitored by the EVC</Comment>
 <Parameters>
 <Parameter
@@ -375,6 +381,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="RemoveTSR"
  Guid="2ed732d8-f4d7-4bbc-9d28-fe407a288f7b"
 >
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -382,8 +389,12 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="RemoveTSR"
  Guid="ae999234-404f-4b6b-bf03-b11484dcb1fb"
 >
+<Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="ac57a8af-1931-41ec-a4a6-3e591cb1a63f"
+><Comment></Comment>
+ActiveFunctions.DeleteRevokedTSR()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="04d2a1fb-9dda-4174-9850-8ac8872b486a"

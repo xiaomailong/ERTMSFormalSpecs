@@ -3,6 +3,7 @@
  Name="Route suitability - Functional tests"
  Guid="2064d644-0aa2-4ee7-b226-1cad2774a63b"
 >
+<Comment></Comment>
 <SubSequences>
 <SubSequence
  D_LRBG=""
@@ -64,49 +65,82 @@
 <Actions>
 <Action
  Guid="e133f5c0-5e8a-443e-b277-0244b0d5c7e9"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="ea916ee3-73cd-4b96-99de-100d21ecd3a7"
+>Kernel.MA.InitializeElementsForMA()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 2 - Setup for the BG"
  Guid="84f95230-a464-4ee2-a32b-192336f1348d"
 >
+<Comment></Comment>
 <Actions>
 <Action
  Guid="305f1322-2269-4d9b-b834-9acaafa09a60"
->BTM.LRBG &lt;- EMPTY</Action><Action
+>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 255,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 2.0,
+        Position =&gt; 0.0,
+        UnderReadingAmountOdo =&gt; 2.0
+
+    }
+}</Action><Action
  Guid="2b15a820-9a66-447f-970b-968844ce68c8"
 >BTM.PreviousLRBGs &lt;- []</Action><Action
  Guid="dc249aaf-f113-4dfc-bb75-315b6e2c9ddb"
->Odometry.NominalDistance &lt;- 0.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 0.0</Action><Action
+ Guid="a7ca5e3a-5697-4cea-b978-536d61c541de"
+>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 2000.0
+    }
+}</Action><Action
+ Guid="2bcf037a-a4cf-4f6b-94a7-d23dd91fcb36"
+>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 3 - Give the train some data"
  Guid="98b20a29-94b2-4dcb-ac8c-6a9689be478d"
 >
 <Actions>
 <Action
- Guid="252fc30e-ed5b-49de-b921-175f24c80da3"
->Kernel.TrainData.TrainData &lt;- Kernel.TrainData.TrainDataStruct
- {
-    DataState =&gt; DataState.Valid,
-    Value =&gt; Kernel.TrainData.TrainDataValues
-     {
-        AxleLoadCategory =&gt; Messages.M_AXLELOADCAT.C3,
-        LoadingGauge =&gt; Messages.M_LOADINGGAUGE.GA,
-        TractionSystems =&gt;
-         [
-            Kernel.TrainData.TractionSystem
-             {
-                Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
-                Country =&gt; 80
-             }
-            ,
-            Kernel.TrainData.TractionSystem
-             {
-                Voltage =&gt; Messages.M_VOLTAGE.AC_15_kV_16_7_Hz,
-                Country =&gt; 80
-             }
-         ]
-     }
- }</Action></Actions>
+ Guid="87ce4717-0c73-4279-9609-29ca2f59c631"
+>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action
+ Guid="3aaf456d-edaa-4f48-b345-fb0b1db94915"
+>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.C3</Action><Action
+ Guid="7e5e7f85-d6db-4a29-b173-8dc81b7d21a0"
+>Kernel.TrainData.TrainData.Value.LoadingGauge &lt;- Messages.M_LOADINGGAUGE.GA</Action><Action
+ Guid="3ee62c26-5981-4b2c-89d0-bb83c9c7deee"
+>Kernel.TrainData.TrainData.Value.TractionSystems &lt;- 
+[
+    Kernel.TrainData.TractionSystem
+    {
+        Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
+        Country =&gt; 80
+    }
+    ,
+    Kernel.TrainData.TractionSystem
+    {
+        Voltage =&gt; Messages.M_VOLTAGE.AC_15_kV_16_7_Hz,
+        Country =&gt; 80
+    }
+]</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 4 - Set mode"
+ Guid="e58ff3fb-107c-4fe0-a5cc-b214439f4d24"
+>
+<Actions>
+<Action
+ Guid="7dc895b6-09f8-461d-8cfc-3782b47e905c"
+>Kernel.Mode &lt;- Mode.OS</Action><Action
+ Guid="ade92216-05a7-41af-87da-438f508e9cd7"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="88a4c24d-98d5-4990-bb07-aab8c362f785"
+>Kernel.ModeTransitions.PrevMode &lt;- Mode.SB</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -123,6 +157,7 @@
  Name="SubStep 1 - Receive the information from balise"
  Guid="47035008-26b2-436c-8156-d5ae9f623f20"
 >
+<Comment></Comment>
 <Actions>
 <Action
  Guid="5d03feed-a1b7-484f-9fb1-4607ad39e390"
@@ -174,7 +209,9 @@
         UnderReadingAmountOdo =&gt; 2.0
 
     }
-}</Action></Actions>
+}</Action><Action
+ Guid="b7e1c3b5-d3da-4098-bad0-95b3d38feb34"
+>Odometry.NominalDistance &lt;- 250.0</Action></Actions>
 </SubStep><SubStep
  Name="SubStep 2 - Expectations _ incorrect loading gauge"
  Guid="f126ee4d-ff56-49e2-9b61-441a9157aca0"
@@ -639,47 +676,83 @@
  Guid="7bd1c3e7-2578-4737-bc35-7bf501ee8089"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 2 - Setup for the BG"
+ Name="Sub-step 2 - Initialize elements for MA"
+ Guid="541187c4-5598-48b3-90ab-d35ac17c4909"
+>
+<Actions>
+<Action
+ Guid="1837e72a-c7ed-4d04-93b1-a8ad46bd2184"
+>Kernel.MA.InitializeElementsForMA()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 3 - Setup for the BG"
  Guid="b7fc74df-4aa7-47f0-8ab5-43cd83d7857e"
 >
 <Actions>
 <Action
  Guid="f12bf86a-c22c-4e25-aea2-a43022dae57e"
->BTM.LRBG &lt;- EMPTY</Action><Action
+>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    NID =&gt; 255,
+    Orientation =&gt; Default.Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 2.0,
+        Position =&gt; 0.0,
+        UnderReadingAmountOdo =&gt; 2.0
+
+    }
+}</Action><Action
  Guid="da854a71-291c-446c-bf14-78cd1f1c1eb5"
 >BTM.PreviousLRBGs &lt;- []</Action><Action
  Guid="c52d0e63-7526-4e71-a8e0-641715e2cf29"
->Odometry.NominalDistance &lt;- 0.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 0.0</Action><Action
+ Guid="eb190964-e518-4aeb-bae4-0c3b08a8f883"
+>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action
+ Guid="68694749-8398-4c95-9322-2a9b00a2c988"
+>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{
+    TargetSpeed =&gt; 0.0,
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 2000.0
+    },
+    TargetSpeedTimeOut =&gt; 0.0
+}</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 3 - Give the train some data"
+ Name="Sub-step 4 - Give the train some data"
  Guid="f0647dbf-6179-479c-8cf4-151604f7a58b"
 >
 <Actions>
 <Action
- Guid="f27084da-845a-4e90-9519-8ecdff61273d"
->Kernel.TrainData.TrainData &lt;- Kernel.TrainData.TrainDataStruct
- {
-    DataState =&gt; DataState.Valid,
-    Value =&gt; Kernel.TrainData.TrainDataValues
-     {
-        AxleLoadCategory =&gt; Messages.M_AXLELOADCAT.D4,
-        LoadingGauge =&gt; Messages.M_LOADINGGAUGE.GB,
-        TractionSystems =&gt;
-         [
-            Kernel.TrainData.TractionSystem
-             {
-                Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
-                Country =&gt; 80
-             }
-            ,
-            Kernel.TrainData.TractionSystem
-             {
-                Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
-                Country =&gt; 80
-             }
-         ]
-     }
- }</Action></Actions>
+ Guid="4a8b4b3e-a45f-48ad-8df6-3a8862266f37"
+>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action
+ Guid="722323b2-b5ba-419c-a481-e6b98dac8c44"
+>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.D4</Action><Action
+ Guid="367c0892-ecdd-4210-b20a-afd00e09c83a"
+>Kernel.TrainData.TrainData.Value.LoadingGauge &lt;- Messages.M_LOADINGGAUGE.GB</Action><Action
+ Guid="8fd4a764-f3e7-4020-8ebd-8925a572d831"
+>Kernel.TrainData.TrainData.Value.TractionSystems &lt;- 
+[
+    Kernel.TrainData.TractionSystem
+    {
+        Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
+        Country =&gt; 80
+    }
+    ,
+    Kernel.TrainData.TractionSystem
+    {
+        Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
+        Country =&gt; 80
+    }
+]</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 5 - Set up level and mode"
+ Guid="bcd3953c-43a7-41dd-9a24-47d8d49b1216"
+>
+<Actions>
+<Action
+ Guid="5796fcd2-5cb0-4f88-9345-3cf70db5df2f"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="a468a3dd-6809-4e75-bcce-36dd44b64f7a"
+>Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -878,7 +951,15 @@
  Guid="882a70a3-530c-49fd-83fb-ac3c41115c89"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 2 - Setup"
+ Name="Sub-step 2 - Inuitialize elements for MA"
+ Guid="28da8ff6-7e96-4068-aed7-ba3e6c2edc5c"
+>
+<Actions>
+<Action
+ Guid="e085f193-8bbf-4fcc-95ce-f649f5f22f45"
+>Kernel.MA.InitializeElementsForMA()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 3 - Setup"
  Guid="25de3e75-cca1-4b0b-91a1-f2eead292cdf"
 >
 <Actions>
@@ -897,45 +978,55 @@
         UnderReadingAmountOdo =&gt; 2.0
 
     }
-}</Action></Actions>
+}</Action><Action
+ Guid="b8a91470-c604-4a5e-8de8-2a72db649698"
+>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 2000.0
+    },
+    TargetSpeedTimeOut =&gt; 0.0
+}</Action><Action
+ Guid="0e4d0fe2-aaf1-42a3-9e4a-4510680612dc"
+>Kernel.Mode &lt;- Mode.OS</Action><Action
+ Guid="9c032315-6052-4830-b5f3-fd8e1ff5d237"
+>Kernel.Level.Value &lt;- Level.L1</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 3 - Start radio connection"
+ Name="Sub-step 4 - Start radio connection"
  Guid="b1b911c1-96d3-48bf-8a50-ac706ce508b2"
 >
 <Actions>
 <Action
  Guid="7d20c1d7-70a0-4e59-9dc6-0e6a66d18c06"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- Default.DataState.Valid</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 4 - Give the train some data"
+ Name="Sub-step 5 - Give the train some data"
  Guid="811864bb-cbae-464b-8121-49f1f6002fd9"
 >
 <Actions>
 <Action
- Guid="5364a381-1a5e-4b02-846d-655fba78dfdb"
->Kernel.TrainData.TrainData &lt;- Kernel.TrainData.TrainDataStruct
- {
-    DataState =&gt; DataState.Valid,
-    Value =&gt; Kernel.TrainData.TrainDataValues
-     {
-        AxleLoadCategory =&gt; Messages.M_AXLELOADCAT.D4,
-        LoadingGauge =&gt; Messages.M_LOADINGGAUGE.GB,
-        TractionSystems =&gt;
-         [
-            Kernel.TrainData.TractionSystem
-             {
-                Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
-                Country =&gt; 80
-             }
-            ,
-            Kernel.TrainData.TractionSystem
-             {
-                Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
-                Country =&gt; 80
-             }
-         ]
-     }
- }</Action></Actions>
+ Guid="e4b13975-bd1c-4427-867d-89ad02c55add"
+>Kernel.TrainData.TrainData.Value.TractionSystems &lt;- 
+[
+    Kernel.TrainData.TractionSystem
+    {
+        Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
+        Country =&gt; 80
+    }
+    ,
+    Kernel.TrainData.TractionSystem
+    {
+        Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
+        Country =&gt; 80
+    }
+]</Action><Action
+ Guid="aeb5b994-c5ce-427b-ab7e-7887ffc94d36"
+>Kernel.TrainData.TrainData.Value.LoadingGauge &lt;- Messages.M_LOADINGGAUGE.GB</Action><Action
+ Guid="7cdad4cd-ff08-4d14-a1ab-be02dd044adb"
+>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.D4</Action><Action
+ Guid="d2f645ca-9f29-4a7c-a67c-537525a6ba59"
+>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1128,7 +1219,15 @@
 <Actions>
 <Action
  Guid="1134eeeb-14ab-4aed-a508-614fadfe8e2f"
->BTM.LRBG &lt;- EMPTY</Action><Action
+>BTM.LRBG &lt;- BTM.BaliseGroup{
+    Position =&gt; BTM.Position{
+        Position =&gt; 0.0,
+        UnderReadingAmountOdo =&gt; 2.0,
+        OverReadingAmountOdo =&gt; 2.0
+    },
+    NID =&gt; 255,
+    Orientation =&gt; Default.Orientation.Nominal
+}</Action><Action
  Guid="174be167-0da3-4c8a-ad9a-b44ec1e3e0a3"
 >BTM.PreviousLRBGs &lt;- []</Action><Action
  Guid="7406e63d-5f24-45be-a27e-037c5831b2ea"
@@ -1139,30 +1238,37 @@
 >
 <Actions>
 <Action
- Guid="bb577aa2-8403-42bb-bc95-01934947128e"
->Kernel.TrainData.TrainData &lt;- Kernel.TrainData.TrainDataStruct
- {
-    DataState =&gt; DataState.Valid,
-    Value =&gt; Kernel.TrainData.TrainDataValues
-     {
-        AxleLoadCategory =&gt; Messages.M_AXLELOADCAT.C3,
-        LoadingGauge =&gt; Messages.M_LOADINGGAUGE.GA,
-        TractionSystems =&gt;
-         [
-            Kernel.TrainData.TractionSystem
-             {
-                Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
-                Country =&gt; 80
-             }
-            ,
-            Kernel.TrainData.TractionSystem
-             {
-                Voltage =&gt; Messages.M_VOLTAGE.AC_15_kV_16_7_Hz,
-                Country =&gt; 80
-             }
-         ]
-     }
- }</Action></Actions>
+ Guid="71f03a7b-ff8d-4ebf-a7bc-015004a6326a"
+>Kernel.TrainData.TrainData.Value.TractionSystems &lt;- 
+[
+    Kernel.TrainData.TractionSystem
+    {
+        Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
+        Country =&gt; 80
+    }
+    ,
+    Kernel.TrainData.TractionSystem
+    {
+        Voltage =&gt; Messages.M_VOLTAGE.AC_15_kV_16_7_Hz,
+        Country =&gt; 80
+    }
+]</Action><Action
+ Guid="d5ff80a8-12d2-4b04-9ff4-455b37f8d143"
+>Kernel.TrainData.TrainData.Value.LoadingGauge &lt;- Messages.M_LOADINGGAUGE.GA</Action><Action
+ Guid="905ffffc-20cc-4180-abdb-4dca8e908575"
+>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.C3</Action><Action
+ Guid="9270577f-542b-430d-9189-443a2ec3e31e"
+>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 4 - Set mode and level"
+ Guid="b3d6363e-834c-4d09-8782-02ffda5ee5a8"
+>
+<Actions>
+<Action
+ Guid="f5ec612f-224a-456f-8f63-ae611b6ddd5e"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="c9494d0d-925d-4351-8b9f-2ce0a25bf95e"
+>Kernel.Mode &lt;- Mode.OS</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1419,7 +1525,15 @@
 <Actions>
 <Action
  Guid="9620d730-ab38-4e28-af37-3c59c973d834"
->BTM.LRBG &lt;- EMPTY</Action><Action
+>BTM.LRBG &lt;- BTM.BaliseGroup{
+    Position =&gt; BTM.Position{
+        Position =&gt; 0.0,
+        UnderReadingAmountOdo =&gt; 2.0,
+        OverReadingAmountOdo =&gt; 2.0
+    },
+    NID =&gt; 255,
+    Orientation =&gt; Default.Orientation.Nominal
+}</Action><Action
  Guid="0f4eb182-db69-42e8-a6d3-4816e7a41410"
 >BTM.PreviousLRBGs &lt;- []</Action><Action
  Guid="e795c3ea-2e2d-45a2-b3c0-2ae3dc050eeb"
@@ -1430,30 +1544,37 @@
 >
 <Actions>
 <Action
- Guid="37790215-0cde-4be5-ba4b-b0e17d21c924"
->Kernel.TrainData.TrainData &lt;- Kernel.TrainData.TrainDataStruct
- {
-    DataState =&gt; DataState.Valid,
-    Value =&gt; Kernel.TrainData.TrainDataValues
-     {
-        AxleLoadCategory =&gt; Messages.M_AXLELOADCAT.C3,
-        LoadingGauge =&gt; Messages.M_LOADINGGAUGE.GA,
-        TractionSystems =&gt;
-         [
-            Kernel.TrainData.TractionSystem
-             {
-                Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
-                Country =&gt; 85
-             }
-            ,
-            Kernel.TrainData.TractionSystem
-             {
-                Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
-                Country =&gt; 85
-             }
-         ]
-     }
- }</Action></Actions>
+ Guid="333fe891-907f-4205-8f6a-78d645510e00"
+>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="c45d08de-9d7b-41e5-b642-9829181a5acc"
+>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.C3</Action><Action
+ Guid="90eb17dd-eff2-436b-9c08-bdcd36921f26"
+>Kernel.TrainData.TrainData.Value.LoadingGauge &lt;- Messages.M_LOADINGGAUGE.GA</Action><Action
+ Guid="0407ce1a-0376-4201-b7a3-0a15ecb0ec3b"
+>Kernel.TrainData.TrainData.Value.TractionSystems &lt;- 
+[
+    Kernel.TrainData.TractionSystem
+    {
+        Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
+        Country =&gt; 80
+    }
+    ,
+    Kernel.TrainData.TractionSystem
+    {
+        Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
+        Country =&gt; 80
+    }
+]</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 4 - Set mode and level"
+ Guid="8dabdaff-1832-44c6-ad81-f96c8cb5a029"
+>
+<Actions>
+<Action
+ Guid="752db0d0-6e9c-4543-9499-06f2fcb1c2b2"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="b92c3db1-aa85-4a54-a209-45e5cf395c23"
+>Kernel.Mode &lt;- Mode.OS</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1669,7 +1790,15 @@
 <Actions>
 <Action
  Guid="0a09021d-6b1d-4f6f-b7db-8bff77ab550e"
->BTM.LRBG &lt;- EMPTY</Action><Action
+>BTM.LRBG &lt;- BTM.BaliseGroup{
+    Position =&gt; BTM.Position{
+        Position =&gt; 0.0,
+        UnderReadingAmountOdo =&gt; 2.0,
+        OverReadingAmountOdo =&gt; 2.0
+    },
+    NID =&gt; 255,
+    Orientation =&gt; Default.Orientation.Nominal
+}</Action><Action
  Guid="2713bb78-2132-4e5b-9b35-3a869ad82086"
 >BTM.PreviousLRBGs &lt;- []</Action><Action
  Guid="628726d0-d32d-4548-9379-623dc2d8b88f"
@@ -1680,30 +1809,37 @@
 >
 <Actions>
 <Action
- Guid="f85d40fe-f1f5-468c-98ee-ca3bfa3c0e5a"
->Kernel.TrainData.TrainData &lt;- Kernel.TrainData.TrainDataStruct
- {
-    DataState =&gt; DataState.Valid,
-    Value =&gt; Kernel.TrainData.TrainDataValues
-     {
-        AxleLoadCategory =&gt; Messages.M_AXLELOADCAT.C3,
-        LoadingGauge =&gt; Messages.M_LOADINGGAUGE.GA,
-        TractionSystems =&gt;
-         [
-            Kernel.TrainData.TractionSystem
-             {
-                Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
-                Country =&gt; 85
-             }
-            ,
-            Kernel.TrainData.TractionSystem
-             {
-                Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
-                Country =&gt; 85
-             }
-         ]
-     }
- }</Action></Actions>
+ Guid="686215c7-c52b-4166-9885-ca719ff93889"
+>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="57273a80-8d3d-4754-a3e8-8ad9167e4f9e"
+>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.C3</Action><Action
+ Guid="47f2f561-a43f-4c02-ac57-a67e12dd83bc"
+>Kernel.TrainData.TrainData.Value.LoadingGauge &lt;- Messages.M_LOADINGGAUGE.GA</Action><Action
+ Guid="cbdebaec-8eb2-4028-83bc-0089003ce284"
+>Kernel.TrainData.TrainData.Value.TractionSystems &lt;- 
+[
+    Kernel.TrainData.TractionSystem
+    {
+        Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
+        Country =&gt; 85
+    }
+    ,
+    Kernel.TrainData.TractionSystem
+    {
+        Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
+        Country =&gt; 85
+    }
+]</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step 4 - Set mode and level"
+ Guid="fefb25f3-5830-4579-bf3a-4afdcd003ea9"
+>
+<Actions>
+<Action
+ Guid="3b83027a-ac95-41e8-9055-678a9dbdd410"
+>Kernel.Level.Value &lt;- Level.L1</Action><Action
+ Guid="f7dbc432-c6d0-4c68-b1ea-6fdcbfc1d5ce"
+>Kernel.Mode &lt;- Mode.OS</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

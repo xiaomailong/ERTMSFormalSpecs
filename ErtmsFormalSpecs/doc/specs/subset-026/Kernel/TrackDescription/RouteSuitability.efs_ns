@@ -6,6 +6,7 @@
  Name="RouteSuitability"
  Guid="b86b1882-436b-4c40-9f56-ad92c5c35b66"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
@@ -307,6 +308,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4a6646bd-32d6-4a58-a569-4b1be1ed138e"
 >
+</ReqRef><ReqRef
+ Id="b1a87414-d10e-41cb-92fb-ea1602ab1345"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="93062da7-6439-4089-8683-3557e6b2cdc9"
+>
 </ReqRef><Comment>Indicates if the provided route suitability item is unsuitable.</Comment>
 <Parameters>
 <Parameter
@@ -317,9 +323,21 @@
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Do not manage route suitability"
+ Guid="a01ec8fb-2553-415f-aae9-fabf1c4570fc"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="11eec0e9-dc5c-4c3d-94bc-28b5fcd9d8fc"
+><Comment></Comment>
+NOT ActiveFunctions.ManageRouteSuitability()</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
  Name="Line gauge"
  Guid="621c7c64-a3e9-48d1-913d-cd2e9bb5720d"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="a29186e6-0ce9-4d0e-88ca-76d6d250028a"
@@ -400,6 +418,11 @@ NOT THERE_IS_IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ecbfffbc-2a9a-4130-871c-759f2e5e0092"
 >
+</ReqRef><ReqRef
+ Id="b1a87414-d10e-41cb-92fb-ea1602ab1345"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5410bb8a-c1d2-43ce-b7c8-9c4b5801418a"
+>
 </ReqRef><Comment>Provides the End of Authority associated to route unsuitabilities.</Comment>
 <Cases>
 <Case
@@ -415,7 +438,9 @@ RouteSuitabilityProfile != EMPTY
   AND
 RouteSuitabilityProfile.Items != []
   AND
-THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></PreConditions>
+THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition><PreCondition
+ Guid="3082a207-3a50-4aef-8222-4d01347f6929"
+>ActiveFunctions.ManageRouteSuitability()</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
 {
     Length =&gt; BaseTypes.Length.Infinity,
@@ -591,6 +616,11 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fa601cb1-7fff-4af5-a434-ba1823678614"
 >
+</ReqRef><ReqRef
+ Id="b1a87414-d10e-41cb-92fb-ea1602ab1345"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="331412bf-8211-4487-a6bd-64ed26fd7012"
+>
 </ReqRef><Comment>Handles a new route suitability information.</Comment>
 <Parameters>
 <Parameter
@@ -630,13 +660,16 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="c739346b-2d76-4838-9ef7-d353adce26df"
->Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition><PreCondition
- Guid="7ba25a20-76f2-4c81-a606-193e56409134"
->Mode != Mode.TR</PreCondition></PreConditions>
+><Comment></Comment>
+Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition><PreCondition
+ Guid="c329f295-00fe-4e86-8080-c201382a02a3"
+><Comment></Comment>
+ActiveFunctions.ManageRouteSuitability()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="568dbbb3-66aa-4aaf-b3ae-569b14b7f9a8"
->RouteSuitabilityProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action><Action
+><Comment></Comment>
+RouteSuitabilityProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action><Action
  Guid="469b32be-fde5-4ba4-a8fe-823dc9ae9e97"
 >RouteSuitabilityProfile.EmptyProfileDistance &lt;- Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKINIT, scale =&gt; Packet.Q_SCALE )</Action></Actions>
 </RuleCondition><RuleCondition
@@ -650,8 +683,9 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
 <PreCondition
  Guid="d49260da-af2e-4fca-9d32-9f48b35a6b24"
 >Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition><PreCondition
- Guid="51f2213c-d3b3-4dc5-aedb-ae7e1ddae272"
->Mode != Mode.TR</PreCondition></PreConditions>
+ Guid="00fb82d7-40d1-4839-81e3-b375d182a85d"
+><Comment></Comment>
+ActiveFunctions.ManageRouteSuitability()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9acb85b7-b135-46ee-a759-4b7a46b7022f"
