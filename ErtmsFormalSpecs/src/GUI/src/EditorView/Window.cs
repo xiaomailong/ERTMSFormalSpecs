@@ -77,8 +77,12 @@ namespace GUI.EditorView
             switch (e.KeyCode)
             {
                 case Keys.Escape:
-                    Close();
-                    e.Handled = true;
+                    if (DockState == WeifenLuo.WinFormsUI.Docking.DockState.Float || DockState == WeifenLuo.WinFormsUI.Docking.DockState.Unknown)
+                    {
+                        __textChangeHandler.SetText(editorTextBox.TextBox.Text);
+                        Close();
+                        e.Handled = true;
+                    }
                     break;
 
                 default:
