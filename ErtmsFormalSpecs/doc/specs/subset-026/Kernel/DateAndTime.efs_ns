@@ -21,13 +21,42 @@
  Name="Now"
  Guid="8e0c24f2-9a34-4cd0-8304-237a2858e295"
 >
-<Comment>Provides the current time in UTC</Comment>
+<ReqRef
+ Id="c786347b-7daa-4026-94f2-b1dfc195823c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7f46f59d-e106-456a-acb8-17d499ddc87f"
+>
+</ReqRef><ReqRef
+ Id="57c8cd45-54ca-4d5e-b07f-37b9b1efab54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3266ae8a-50cf-4637-bf5f-22063cea0512"
+>
+</ReqRef><Comment>Provides the current time in UTC</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="54eb9656-94b5-40e1-a556-99cc60fb22a9"
 >
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="c21057e4-4c17-437c-a093-3e0a0ab170ea"
+>ActiveFunctions.ProvideDateAndTime()</PreCondition></PreConditions>
 <Expression>AddToDate(StartDate=&gt;StartDate, Increment=&gt;CurrentTime)</Expression>
+</Case><Case
+ Name="Not provided"
+ Guid="8264cf87-b338-420e-ad41-7889f5f82267"
+>
+<Comment></Comment>
+<Expression>DateAndTime{
+    Year =&gt; 0,
+    Month =&gt; 0,
+    Day =&gt; 0,
+    Hour =&gt; 0,
+    Minute =&gt; 0,
+    Second =&gt; 0,
+    TTS =&gt; 0
+}</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.DateAndTime"
@@ -39,7 +68,17 @@
  Name="LocalTime"
  Guid="140c5d9a-2fff-47ba-ab84-8593a80d55d6"
 >
-<Comment>TODO create a proper implementation of local time
+<ReqRef
+ Id="c786347b-7daa-4026-94f2-b1dfc195823c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="466a9789-9ab9-45d8-b2d2-1c067d92ace6"
+>
+</ReqRef><ReqRef
+ Id="57c8cd45-54ca-4d5e-b07f-37b9b1efab54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7df1b567-92e4-4fdb-99a7-d4c16197ad49"
+>
+</ReqRef><Comment>TODO create a proper implementation of local time
 
 Converts the UTC time to local time using a country identifier</Comment>
 <Parameters>
@@ -54,6 +93,7 @@ Converts the UTC time to local time using a country identifier</Comment>
  Name="Value"
  Guid="3ed56381-f9fc-4762-8aa6-f264651d7b07"
 >
+<Comment></Comment>
 <Expression>Now()</Expression>
 </Case></Cases>
 </Function></Functions>

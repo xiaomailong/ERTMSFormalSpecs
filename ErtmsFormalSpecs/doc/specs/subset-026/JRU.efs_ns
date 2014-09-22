@@ -1811,6 +1811,11 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="e3eead21-5ec9-4840-bbda-a49371496f2f"
 >
+</ReqRef><ReqRef
+ Id="57c8cd45-54ca-4d5e-b07f-37b9b1efab54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2a8f928d-a91f-4e42-b521-974ac0ca0f4e"
+>
 </ReqRef><Comment>Function use to fullfill the common fields of a JRU message</Comment>
 <Parameters>
 <Parameter
@@ -1824,6 +1829,7 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  Name="JRUHeader"
  Guid="26f17d21-e797-4d30-972c-e9d5567392a3"
 >
+<Comment></Comment>
 <Expression>Messages.JRU.HEADER.Message
      {
         NID_MESSAGE =&gt; MessageId,
