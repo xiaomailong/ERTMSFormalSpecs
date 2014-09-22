@@ -37,6 +37,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="08247f18-1f97-4fc3-ae1c-01fe9dd99775"
 >
+</ReqRef><ReqRef
+ Id="1e4ca98b-fcef-4737-b4e3-38bfc4715927"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e34b92ec-5333-4274-9b58-7e46d5f4e405"
+>
 </ReqRef><Comment>This will call the procedure to send, update the internal variables involve in sending a JRU Message and cleaning up at the end of the cycle</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -50,7 +55,10 @@
 <PreCondition
  Guid="c7be3f63-444c-4d7c-8b71-dd667a30c684"
 ><Comment></Comment>
-SendNewMessage(THIS) == True</PreCondition></PreConditions>
+SendNewMessage(THIS) == True</PreCondition><PreCondition
+ Guid="4eee2492-c631-4d93-a805-94ebed355f6c"
+><Comment></Comment>
+Kernel.ActiveFunctions.ProvideJuridicalData()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ceacc66c-5e57-4024-81f9-daf7d248fcdf"
