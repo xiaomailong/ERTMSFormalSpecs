@@ -724,6 +724,8 @@ namespace GUI
                 {
                     HandlingSelection = true;
                     bool allowErrors = false;
+                    bool shouldPlace = EFSSystem.Dictionaries.Count == 0;
+
                     OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, EFSSystem, allowErrors, true);
                     openFileOperation.ExecuteUsingProgressDialog("Opening file", true);
 
@@ -751,10 +753,16 @@ namespace GUI
                         GenericWindowHandling<UsageView.Window>.AddOrShow(this, UsageWindow, DockAreas.DockBottom);
 
                         GenericWindowHandling<MoreInfoView.Window>.AddOrShow(this, MoreInfoWindow, DockAreas.DockBottom);
-                        MoreInfoWindow.Show(RequirementsWindow.Pane, DockAlignment.Right, 0.66);
+                        if (shouldPlace)
+                        {
+                            MoreInfoWindow.Show(RequirementsWindow.Pane, DockAlignment.Right, 0.66);
+                        }
 
                         GenericWindowHandling<EditorView.ExpressionWindow>.AddOrShow(this, ExpressionEditorWindow, DockAreas.DockBottom);
-                        ExpressionEditorWindow.Show(MoreInfoWindow.Pane, DockAlignment.Right, 0.5);
+                        if (shouldPlace)
+                        {
+                            ExpressionEditorWindow.Show(MoreInfoWindow.Pane, DockAlignment.Right, 0.5);
+                        }
                         GenericWindowHandling<EditorView.CommentWindow>.AddOrShow(this, CommentEditorWindow, DockAreas.DockBottom);
                         GenericWindowHandling<TestRunnerView.Watch.Window>.AddOrShow(this, WatchWindow, DockAreas.DockBottom);
                         ExpressionEditorWindow.Show();
@@ -762,14 +770,26 @@ namespace GUI
                         // Display the views in the right pane
                         GenericWindowHandling<PropertyView.Window>.AddOrShow(this, PropertyWindow, DockAreas.DockRight);
                         GenericWindowHandling<HistoryView.Window>.AddOrShow(this, HistoryWindow, DockAreas.DockRight);
-                        HistoryWindow.Show(PropertyWindow.Pane, DockAlignment.Bottom, 0.6);
+                        if (shouldPlace)
+                        {
+                            HistoryWindow.Show(PropertyWindow.Pane, DockAlignment.Bottom, 0.6);
+                        }
                         GenericWindowHandling<Shortcuts.Window>.AddOrShow(this, ShortcutsWindow, DockAreas.DockRight);
-                        ShortcutsWindow.Show(HistoryWindow.Pane, HistoryWindow);
+                        if (shouldPlace)
+                        {
+                            ShortcutsWindow.Show(HistoryWindow.Pane, HistoryWindow);
+                        }
                         GenericWindowHandling<SelectionHistory.Window>.AddOrShow(this, SelectionHistoryWindow, DockAreas.DockRight);
-                        SelectionHistoryWindow.Show(ShortcutsWindow.Pane, ShortcutsWindow);
+                        if (shouldPlace)
+                        {
+                            SelectionHistoryWindow.Show(ShortcutsWindow.Pane, ShortcutsWindow);
+                        }
 
                         GenericWindowHandling<MessagesView.Window>.AddOrShow(this, MessagesWindow, DockAreas.DockRight);
-                        MessagesWindow.Show(HistoryWindow.Pane, DockAlignment.Bottom, 0.3);
+                        if (shouldPlace)
+                        {
+                            MessagesWindow.Show(HistoryWindow.Pane, DockAlignment.Bottom, 0.3);
+                        }
 
                         if (modelWindow != null)
                         {
