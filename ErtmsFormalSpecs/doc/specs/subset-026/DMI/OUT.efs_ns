@@ -2654,7 +2654,7 @@ X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.N
   AND  
 NOT X.IsAnnouncement
   AND  
-Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndStoppingAreaDisplay(X)
+Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd(X)
 )</PreCondition></PreConditions>
 <Actions>
 <Action
@@ -2664,10 +2664,7 @@ PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.
     Distance=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea),
     ProfilePoint=&gt;X,
     TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea
-)</Action><Action
- Guid="0c59a23b-9bff-4f4f-8b51-e37116b90346"
->REMOVE ALL (X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea)
-IN ActiveConditions</Action></Actions>
+)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="In tunnel stopping area"
@@ -2699,7 +2696,7 @@ X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.T
   AND  
 NOT X.IsAnnouncement
   AND  
-Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndStoppingAreaDisplay(X)
+Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd(X)
 )</PreCondition></PreConditions>
 <Actions>
 <Action
@@ -2709,10 +2706,7 @@ PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.
     Distance=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea),
     ProfilePoint=&gt;X,
     TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea
-)</Action><Action
- Guid="65eabe63-ba01-4021-bbed-1a1a581aa062"
->REMOVE ALL (X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea)
-IN ActiveConditions</Action></Actions>
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2733,7 +2727,8 @@ IN ActiveConditions</Action></Actions>
 <Actions>
 <Action
  Guid="120e50dc-b447-40f5-9e72-762c0b86a068"
->MapToDMI()</Action></Actions>
+><Comment></Comment>
+MapToDMI()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
