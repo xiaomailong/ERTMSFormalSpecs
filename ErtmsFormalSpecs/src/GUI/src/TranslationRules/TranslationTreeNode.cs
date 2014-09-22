@@ -187,6 +187,12 @@ namespace GUI.TranslationRules
                     {
                         baseForm.RequirementsTextBox.Text = Item.getSourceTextExplain();
                     }
+
+                    Window window = baseForm as Window;
+                    if (window != null)
+                    {
+                        window.SetSelection(Item);
+                    }
                 }
             }
         }

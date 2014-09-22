@@ -17,6 +17,7 @@ using System;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 using DataDictionary;
+using DataDictionary.Tests.Translations;
 
 namespace GUI.TranslationRules
 {
@@ -24,29 +25,29 @@ namespace GUI.TranslationRules
     {
         public override MyPropertyGrid Properties
         {
-            get { return propertyGrid; }
+            get { return null; }
         }
 
         public override EditorTextBox RequirementsTextBox
         {
-            get { return sourceTextBox; }
+            get { return null; }
         }
 
         public override EditorTextBox ExpressionEditorTextBox
         {
-            get { return expressionEditorTextBox; }
+            get { return null; }
         }
 
         public override ExplainTextBox ExplainTextBox
         {
-            get { return explainTextBox; }
+            get { return null; }
         }
 
         public override BaseTreeView TreeView
         {
             get { return translationTreeView; }
         }
-
+    
         /// <summary>
         /// Constructor
         /// </summary>
@@ -55,30 +56,12 @@ namespace GUI.TranslationRules
         {
             InitializeComponent();
 
-            sourceTextBox.AutoComplete = false;
-            explainTextBox.AutoComplete = false;
-
-            sourceTextBox.ReadOnly = true;
-            explainTextBox.ReadOnly = true;
-
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
-            expressionEditorTextBox.TextBox.TextChanged += new EventHandler(TextBox_TextChanged);
             Visible = false;
             translationTreeView.Root = dictionary;
             Text = dictionary.Dictionary.Name + " test translation view";
 
-            ResizeDescriptionArea(propertyGrid, 20);
-
             Refresh();
-        }
-
-        void TextBox_TextChanged(object sender, EventArgs e)
-        {
-            IExpressionable expressionable = Selected as IExpressionable;
-            if (expressionable != null && expressionable == expressionEditorTextBox.Instance)
-            {
-                expressionable.ExpressionText = expressionEditorTextBox.TextBox.Text;
-            }
         }
 
         /// <summary>
@@ -96,6 +79,7 @@ namespace GUI.TranslationRules
         override public void Refresh()
         {
             translationTreeView.Refresh();
+            staticTimeLineControl.Refresh();
 
             testBrowserStatusLabel.Text = translationTreeView.Root.TranslationsCount + " translation rule(s) loaded";
             base.Refresh();
@@ -146,6 +130,16 @@ namespace GUI.TranslationRules
         private void nextInfoToolStripButton_Click(object sender, EventArgs e)
         {
             TreeView.SelectNext(Utils.ElementLog.LevelEnum.Info);
+        }
+
+        /// <summary>
+        /// Selects the current translation
+        /// </summary>
+        /// <param name="translation"></param>
+        public void SetSelection(Translation translation)
+        {
+            staticTimeLineControl.Translation = translation;
+            staticTimeLineControl.Refresh();
         }
     }
 }

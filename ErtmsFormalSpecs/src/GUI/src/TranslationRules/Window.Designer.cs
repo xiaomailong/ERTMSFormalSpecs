@@ -52,27 +52,14 @@ namespace GUI.TranslationRules
             this.nextErrortoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.nextWarningToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.nextInfoToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.translationTreeView = new GUI.TranslationRules.TranslationTreeView();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.propertyGrid = new GUI.MyPropertyGrid();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.sourceTextBox = new GUI.EditorTextBox();
-            this.explainTextBox = new GUI.ExplainTextBox();
-            this.expressionEditorTextBox = new GUI.EditorTextBox();
+            this.staticTimeLineControl = new GUI.TestRunnerView.TimeLineControl.StaticTimeLineControl();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip2
@@ -86,7 +73,7 @@ namespace GUI.TranslationRules
             this.nextInfoToolStripButton});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(926, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(815, 25);
             this.toolStrip2.TabIndex = 2;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -136,25 +123,6 @@ namespace GUI.TranslationRules
             this.nextInfoToolStripButton.Text = "Next info";
             this.nextInfoToolStripButton.Click += new System.EventHandler(this.nextInfoToolStripButton_Click);
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.translationTreeView);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(926, 548);
-            this.splitContainer1.SplitterDistance = 306;
-            this.splitContainer1.SplitterWidth = 3;
-            this.splitContainer1.TabIndex = 5;
-            // 
             // translationTreeView
             // 
             this.translationTreeView.AllowDrop = true;
@@ -167,104 +135,42 @@ namespace GUI.TranslationRules
             this.translationTreeView.Root = null;
             this.translationTreeView.Selected = null;
             this.translationTreeView.SelectedImageIndex = 0;
-            this.translationTreeView.Size = new System.Drawing.Size(306, 548);
+            this.translationTreeView.Size = new System.Drawing.Size(271, 548);
             this.translationTreeView.TabIndex = 1;
             // 
-            // splitContainer2
+            // staticTimeLineControl
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.staticTimeLineControl.AllowDrop = true;
+            this.staticTimeLineControl.AutoScroll = true;
+            this.staticTimeLineControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.staticTimeLineControl.Location = new System.Drawing.Point(0, 0);
+            this.staticTimeLineControl.Name = "staticTimeLineControl";
+            this.staticTimeLineControl.Size = new System.Drawing.Size(540, 548);
+            this.staticTimeLineControl.TabIndex = 3;
+            this.staticTimeLineControl.TestCase = null;
             // 
-            // splitContainer2.Panel1
+            // splitContainer1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.propertyGrid);
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
+            this.splitContainer1.Name = "splitContainer1";
             // 
-            // splitContainer2.Panel2
+            // splitContainer1.Panel1
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(617, 548);
-            this.splitContainer2.SplitterDistance = 216;
-            this.splitContainer2.TabIndex = 1;
+            this.splitContainer1.Panel1.Controls.Add(this.translationTreeView);
             // 
-            // propertyGrid
+            // splitContainer1.Panel2
             // 
-            this.propertyGrid.AllowDrop = true;
-            this.propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGrid.Location = new System.Drawing.Point(0, 0);
-            this.propertyGrid.Margin = new System.Windows.Forms.Padding(2);
-            this.propertyGrid.Name = "propertyGrid";
-            this.propertyGrid.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-            this.propertyGrid.Size = new System.Drawing.Size(617, 216);
-            this.propertyGrid.TabIndex = 0;
-            // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.sourceTextBox);
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.explainTextBox);
-            this.splitContainer3.Panel2.Controls.Add(this.expressionEditorTextBox);
-            this.splitContainer3.Size = new System.Drawing.Size(617, 328);
-            this.splitContainer3.SplitterDistance = 300;
-            this.splitContainer3.TabIndex = 0;
-            // 
-            // sourceTextBox
-            // 
-            this.sourceTextBox.AutoComplete = true;
-            this.sourceTextBox.BackColor = System.Drawing.Color.Transparent;
-            this.sourceTextBox.ConsiderOnlyTypes = false;
-            this.sourceTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sourceTextBox.Instance = null;
-            this.sourceTextBox.Location = new System.Drawing.Point(0, 0);
-            this.sourceTextBox.Name = "sourceTextBox";
-            this.sourceTextBox.ReadOnly = false;
-            this.sourceTextBox.Rtf = resources.GetString("sourceTextBox.Rtf");
-            this.sourceTextBox.Size = new System.Drawing.Size(300, 328);
-            this.sourceTextBox.TabIndex = 0;
-            // 
-            // explainTextBox
-            // 
-            this.explainTextBox.AutoComplete = true;
-            this.explainTextBox.BackColor = System.Drawing.Color.Transparent;
-            this.explainTextBox.ConsiderOnlyTypes = false;
-            this.explainTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.explainTextBox.Instance = null;
-            this.explainTextBox.Location = new System.Drawing.Point(0, 0);
-            this.explainTextBox.Name = "explainTextBox";
-            this.explainTextBox.ReadOnly = false;
-            this.explainTextBox.Rtf = resources.GetString("explainTextBox.Rtf");
-            this.explainTextBox.Size = new System.Drawing.Size(313, 328);
-            this.explainTextBox.TabIndex = 1;
-            // 
-            // expressionEditorTextBox
-            // 
-            this.expressionEditorTextBox.AutoComplete = true;
-            this.expressionEditorTextBox.BackColor = System.Drawing.Color.Transparent;
-            this.expressionEditorTextBox.ConsiderOnlyTypes = false;
-            this.expressionEditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.expressionEditorTextBox.Instance = null;
-            this.expressionEditorTextBox.Location = new System.Drawing.Point(0, 0);
-            this.expressionEditorTextBox.Name = "expressionEditorTextBox";
-            this.expressionEditorTextBox.ReadOnly = false;
-            this.expressionEditorTextBox.Rtf = resources.GetString("expressionEditorTextBox.Rtf");
-            this.expressionEditorTextBox.Size = new System.Drawing.Size(313, 328);
-            this.expressionEditorTextBox.TabIndex = 0;
-            this.expressionEditorTextBox.Visible = false;
+            this.splitContainer1.Panel2.Controls.Add(this.staticTimeLineControl);
+            this.splitContainer1.Size = new System.Drawing.Size(815, 548);
+            this.splitContainer1.SplitterDistance = 271;
+            this.splitContainer1.TabIndex = 4;
             // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 573);
+            this.ClientSize = new System.Drawing.Size(815, 573);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip2);
             this.DoubleBuffered = true;
@@ -279,14 +185,6 @@ namespace GUI.TranslationRules
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,17 +196,12 @@ namespace GUI.TranslationRules
         private System.Windows.Forms.ToolStripLabel testBrowserStatusLabel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private TranslationTreeView translationTreeView;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private MyPropertyGrid propertyGrid;
         private System.Windows.Forms.ToolStripButton nextErrortoolStripButton;
         private System.Windows.Forms.ToolStripButton nextWarningToolStripButton;
         private System.Windows.Forms.ToolStripButton nextInfoToolStripButton;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.SplitContainer splitContainer3;
-        private EditorTextBox sourceTextBox;
-        private EditorTextBox expressionEditorTextBox;
-        private ExplainTextBox explainTextBox;
+        private TestRunnerView.TimeLineControl.StaticTimeLineControl staticTimeLineControl;
+        private System.Windows.Forms.SplitContainer splitContainer1;
 
     }
 }

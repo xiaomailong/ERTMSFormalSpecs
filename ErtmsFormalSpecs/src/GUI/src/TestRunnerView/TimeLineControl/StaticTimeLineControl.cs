@@ -29,6 +29,7 @@ namespace GUI.TestRunnerView.TimeLineControl
     using DataDictionary.Interpreter;
     using DataDictionary.Values;
     using GUI.EditorView;
+    using DataDictionary.Tests.Translations;
 
     /// <summary>
     /// The static time line according to a test case
@@ -43,7 +44,59 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// <summary>
         /// The test case for which this time line is built
         /// </summary>
-        public TestCase TestCase { get { return __testCase; } set { __testCase = value; CleanEventPositions(); } }
+        public TestCase TestCase
+        {
+            get
+            {
+                return __testCase;
+            }
+            set
+            {
+                __testCase = value;
+                __translation = null; 
+                CleanEventPositions();
+            }
+        }
+
+        /// <summary>
+        /// The translation currently being displayed
+        /// </summary>
+        public Translation __translation = null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Translation Translation
+        {
+            get
+            {
+                return __translation;
+            }
+            set
+            {
+                __translation = value;
+                __testCase = null;
+                CleanEventPositions();
+            }
+        }
+
+        /// <summary>
+        /// The steps to be displayed
+        /// </summary>
+        public ArrayList Steps
+        {
+            get
+            {
+                ArrayList retVal = null;
+
+                if ( TestCase != null)
+                {
+                    retVal = TestCase.Steps;
+                }
+
+                return retVal;
+            }
+        }
 
         /// <summary>
         /// Constructor
@@ -174,9 +227,9 @@ namespace GUI.TestRunnerView.TimeLineControl
                 }
             }
 
-            if (retVal == null && TestCase.Steps.Count > 0)
+            if (retVal == null && Steps != null && Steps.Count > 0)
             {
-                Step step = (Step)TestCase.Steps[TestCase.Steps.Count - 1];
+                Step step = (Step)Steps[Steps.Count - 1];
                 if (step.SubSteps.Count > 0)
                 {
                     retVal = (SubStep)step.SubSteps[step.SubSteps.Count - 1];
@@ -192,8 +245,10 @@ namespace GUI.TestRunnerView.TimeLineControl
         private void RefreshTimeLineAndWindow()
         {
             HandledEvents = -1;
-            Window.RefreshModel();
-            Window.Refresh();
+            IBaseForm enclosingForm = FormsUtils.EnclosingIBaseForm(this);
+            
+            enclosingForm.RefreshModel();
+            enclosingForm.Refresh();
         }
 
         /// <summary>
@@ -207,14 +262,9 @@ namespace GUI.TestRunnerView.TimeLineControl
             protected ModelEvent Selected { get; private set; }
 
             /// <summary>
-            /// The test case in which the action occurs
-            /// </summary>
-            protected TestCase TestCase { get; private set; }
-
-            /// <summary>
             /// The time line control for which this menu item is built
             /// </summary>
-            private StaticTimeLineControl TimeLineControl { get; set; }
+            protected StaticTimeLineControl TimeLineControl { get; set; }
 
             /// <summary>
             /// Constructor
@@ -223,12 +273,11 @@ namespace GUI.TestRunnerView.TimeLineControl
             /// <param name="modelEvent"></param>
             /// <param name="testCase"></param>
             /// <param name="caption"></param>
-            public BaseToolStripButton(StaticTimeLineControl timeLineControl, ModelEvent modelEvent, TestCase testCase, string caption)
+            public BaseToolStripButton(StaticTimeLineControl timeLineControl, ModelEvent modelEvent, string caption)
                 : base(caption)
             {
                 TimeLineControl = timeLineControl;
                 Selected = modelEvent;
-                TestCase = testCase;
             }
 
             /// <summary>
@@ -288,9 +337,8 @@ namespace GUI.TestRunnerView.TimeLineControl
             /// </summary>
             /// <param name="timeLineControl"></param>
             /// <param name="modelEvent"></param>
-            /// <param name="testCase"></param>
-            public DeleteMenuItem(StaticTimeLineControl timeLineControl, ModelEvent modelEvent, TestCase testCase)
-                : base(timeLineControl, modelEvent, testCase, "Delete")
+            public DeleteMenuItem(StaticTimeLineControl timeLineControl, ModelEvent modelEvent)
+                : base(timeLineControl, modelEvent, "Delete")
             {
                 Enabled = modelEvent != null;
             }
@@ -324,10 +372,10 @@ namespace GUI.TestRunnerView.TimeLineControl
             /// </summary>
             /// <param name="timeLineControl"></param>
             /// <param name="modelEvent"></param>
-            /// <param name="testCase"></param>
-            public AddStepMenuItem(StaticTimeLineControl timeLineControl, ModelEvent modelEvent, TestCase testCase)
-                : base(timeLineControl, modelEvent, testCase, "Add step")
+            public AddStepMenuItem(StaticTimeLineControl timeLineControl, ModelEvent modelEvent)
+                : base(timeLineControl, modelEvent, "Add step")
             {
+                Enabled = TimeLineControl.TestCase != null;
             }
 
             /// <summary>
@@ -337,7 +385,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             protected override void OnClick(EventArgs e)
             {
                 Step newStep = (Step)DataDictionary.Generated.acceptor.getFactory().createStep();
-                newStep.Enclosing = TestCase;
+                newStep.Enclosing = TimeLineControl.TestCase;
 
                 SubStep subStep = (SubStep)DataDictionary.Generated.acceptor.getFactory().createSubStep();
                 subStep.Name = "Substep 1";
@@ -346,20 +394,21 @@ namespace GUI.TestRunnerView.TimeLineControl
                 if (Step != null)
                 {
                     newStep.Name = "NewStep";
-                    int index = TestCase.Steps.IndexOf(Step);
-                    TestCase.Steps.Insert(index + 1, newStep);
+                    int index = TimeLineControl.Steps.IndexOf(Step);
+                    TimeLineControl.TestCase.Steps.Insert(index + 1, newStep);
                 }
                 else
                 {
-                    newStep.Name = "Step " + (TestCase.Steps.Count + 1);
-                    TestCase.Steps.Add(newStep);
+                    newStep.Name = "Step " + (TimeLineControl.Steps.Count + 1);
+                    TimeLineControl.TestCase.Steps.Add(newStep);
                 }
+
                 base.OnClick(e);
             }
         }
 
         /// <summary>
-        /// Adds a step after the selected step
+        /// Adds a substep or the selected step
         /// </summary>
         private class AddSubStepMenuItem : BaseToolStripButton
         {
@@ -368,11 +417,10 @@ namespace GUI.TestRunnerView.TimeLineControl
             /// </summary>
             /// <param name="timeLineControl"></param>
             /// <param name="modelEvent"></param>
-            /// <param name="testCase"></param>
-            public AddSubStepMenuItem(StaticTimeLineControl timeLineControl, ModelEvent modelEvent, TestCase testCase)
-                : base(timeLineControl, modelEvent, testCase, "Add substep")
+            public AddSubStepMenuItem(StaticTimeLineControl timeLineControl, ModelEvent modelEvent)
+                : base(timeLineControl, modelEvent, "Add substep")
             {
-                Enabled = Step != null;
+                Enabled = Step != null || TimeLineControl.Translation != null;
             }
 
             /// <summary>
@@ -382,18 +430,37 @@ namespace GUI.TestRunnerView.TimeLineControl
             protected override void OnClick(EventArgs e)
             {
                 SubStep newSubStep = (SubStep)DataDictionary.Generated.acceptor.getFactory().createSubStep();
-                newSubStep.Enclosing = Step;
+                if (Step != null)
+                {
+                    newSubStep.Enclosing = Step;
 
-                if (SubStep != null)
-                {
-                    newSubStep.Name = "NewSubStep";
-                    int index = Step.SubSteps.IndexOf(SubStep);
-                    Step.SubSteps.Insert(index + 1, newSubStep);
+                    if (SubStep != null)
+                    {
+                        newSubStep.Name = "NewSubStep";
+                        int index = Step.SubSteps.IndexOf(SubStep);
+                        Step.SubSteps.Insert(index + 1, newSubStep);
+                    }
+                    else
+                    {
+                        newSubStep.Name = "SubStep " + (Step.SubSteps.Count + 1);
+                        Step.SubSteps.Add(newSubStep);
+                    }
                 }
-                else
+                else if ( TimeLineControl.Translation != null )
                 {
-                    newSubStep.Name = "SubStep " + (Step.SubSteps.Count + 1);
-                    Step.SubSteps.Add(newSubStep);
+                    newSubStep.Enclosing = TimeLineControl.Translation;
+
+                    if (SubStep != null)
+                    {
+                        newSubStep.Name = "NewSubStep";
+                        int index = TimeLineControl.Translation.SubSteps.IndexOf(SubStep);
+                        TimeLineControl.Translation.SubSteps.Insert(index + 1, newSubStep);
+                    }
+                    else
+                    {
+                        newSubStep.Name = "SubStep " + (TimeLineControl.Translation.SubSteps.Count + 1);
+                        TimeLineControl.Translation.SubSteps.Add(newSubStep);
+                    }
                 }
                 base.OnClick(e);
             }
@@ -409,9 +476,8 @@ namespace GUI.TestRunnerView.TimeLineControl
             /// </summary>
             /// <param name="timeLineControl"></param>
             /// <param name="modelEvent"></param>
-            /// <param name="testCase"></param>
-            public AddChangeMenuItem(StaticTimeLineControl timeLineControl, ModelEvent modelEvent, TestCase testCase)
-                : base(timeLineControl, modelEvent, testCase, "Add change")
+            public AddChangeMenuItem(StaticTimeLineControl timeLineControl, ModelEvent modelEvent)
+                : base(timeLineControl, modelEvent, "Add change")
             {
                 Enabled = SubStep != null;
             }
@@ -442,9 +508,8 @@ namespace GUI.TestRunnerView.TimeLineControl
             /// </summary>
             /// <param name="timeLineControl"></param>
             /// <param name="modelEvent"></param>
-            /// <param name="testCase"></param>
-            public AddExpectationMenuItem(StaticTimeLineControl timeLineControl, ModelEvent modelEvent, TestCase testCase)
-                : base(timeLineControl, modelEvent, testCase, "Add expectation")
+            public AddExpectationMenuItem(StaticTimeLineControl timeLineControl, ModelEvent modelEvent)
+                : base(timeLineControl, modelEvent, "Add expectation")
             {
                 Enabled = SubStep != null;
             }
@@ -475,12 +540,12 @@ namespace GUI.TestRunnerView.TimeLineControl
             ContextMenu = new ContextMenu();
 
             ModelEvent evt = GetEventUnderMouse();
-            ContextMenu.MenuItems.Add(new AddStepMenuItem(this, evt, TestCase));
-            ContextMenu.MenuItems.Add(new AddSubStepMenuItem(this, evt, TestCase));
-            ContextMenu.MenuItems.Add(new AddChangeMenuItem(this, evt, TestCase));
-            ContextMenu.MenuItems.Add(new AddExpectationMenuItem(this, evt, TestCase));
+            ContextMenu.MenuItems.Add(new AddStepMenuItem(this, evt));
+            ContextMenu.MenuItems.Add(new AddSubStepMenuItem(this, evt));
+            ContextMenu.MenuItems.Add(new AddChangeMenuItem(this, evt));
+            ContextMenu.MenuItems.Add(new AddExpectationMenuItem(this, evt));
             ContextMenu.MenuItems.Add("-");
-            ContextMenu.MenuItems.Add(new DeleteMenuItem(this, evt, TestCase));
+            ContextMenu.MenuItems.Add(new DeleteMenuItem(this, evt));
         }
 
         /// <summary>
@@ -543,6 +608,7 @@ namespace GUI.TestRunnerView.TimeLineControl
                 GUIUtils.MDIWindow.AddChildWindow(form, WeifenLuo.WinFormsUI.Docking.DockAreas.Float);
             }
         }
+
         /// <summary>
         /// Refreshes the view according to the test case
         /// </summary>
@@ -554,6 +620,12 @@ namespace GUI.TestRunnerView.TimeLineControl
                 UpdatePanelSize();
                 HandledEvents = TestCase.ActionCount;
             }
+            else if (Translation != null)
+            {
+                UpdatePositionHandler();
+                UpdatePanelSize();
+            }
+
             base.Refresh();
         }
 
@@ -566,26 +638,13 @@ namespace GUI.TestRunnerView.TimeLineControl
             if (TestCase != null)
             {
                 double currentTime = 0.0;
-                foreach (Step step in TestCase.Steps)
+                foreach (Step step in Steps)
                 {
                     if (step.SubSteps.Count > 0)
                     {
                         foreach (SubStep subStep in step.SubSteps)
                         {
-                            SubStepActivated subStepActivated = new SubStepActivated(subStep, null);
-                            subStepActivated.Time = currentTime;
-                            PositionHandler.RegisterEvent(subStepActivated);
-                            foreach (DataDictionary.Rules.Action action in subStep.Actions)
-                            {
-                                VariableUpdate variableUpdate = new VariableUpdate(action, action, null);
-                                PositionHandler.RegisterEvent(variableUpdate);
-                            }
-                            foreach (Expectation expectation in subStep.Expectations)
-                            {
-                                Expect expect = new Expect(expectation, null);
-                                PositionHandler.RegisterEvent(expect);
-                            }
-
+                            PositionSubStep(currentTime, subStep);
                             currentTime += 1;
                         }
                     }
@@ -598,7 +657,41 @@ namespace GUI.TestRunnerView.TimeLineControl
                     }
                 }
             }
+            else if (Translation != null)
+            {
+                double currentTime = 0.0;
+                if (Translation.SubSteps.Count > 0)
+                {
+                    foreach (SubStep subStep in Translation.SubSteps)
+                    {
+                        PositionSubStep(currentTime, subStep);
+                        currentTime += 1;
+                    }
+                }
+            }
         }
 
+        /// <summary>
+        /// Positions a substep in the time line
+        /// </summary>
+        /// <param name="currentTime"></param>
+        /// <param name="subStep"></param>
+        /// <returns></returns>
+        private void PositionSubStep(double currentTime, SubStep subStep)
+        {
+            SubStepActivated subStepActivated = new SubStepActivated(subStep, null);
+            subStepActivated.Time = currentTime;
+            PositionHandler.RegisterEvent(subStepActivated);
+            foreach (DataDictionary.Rules.Action action in subStep.Actions)
+            {
+                VariableUpdate variableUpdate = new VariableUpdate(action, action, null);
+                PositionHandler.RegisterEvent(variableUpdate);
+            }
+            foreach (Expectation expectation in subStep.Expectations)
+            {
+                Expect expect = new Expect(expectation, null);
+                PositionHandler.RegisterEvent(expect);
+            }
+        }
     }
 }

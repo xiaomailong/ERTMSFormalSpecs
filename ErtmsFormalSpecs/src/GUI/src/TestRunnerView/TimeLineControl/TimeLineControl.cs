@@ -36,14 +36,6 @@ namespace GUI.TestRunnerView.TimeLineControl
         private System.ComponentModel.IContainer components;
 
         /// <summary>
-        /// The enclosing window
-        /// </summary>
-        public Window Window
-        {
-            get { return FormsUtils.EnclosingIBaseForm(this) as Window; }
-        }
-
-        /// <summary>
         /// This label is used to allow auto scrolling by positionning it at the botton right bounds of the visible rectangle
         /// </summary>
         protected Label AutoScrollEnabler { get; set; }
@@ -124,11 +116,24 @@ namespace GUI.TestRunnerView.TimeLineControl
                 {
                     treeNode = GUIUtils.MDIWindow.DataDictionaryWindow.TreeView.Select(variableUpdate.Action);
                 }
+
                 if (treeNode == null)
                 {
                     if (GUIUtils.MDIWindow.TestWindow != null)
                     {
-                        GUIUtils.MDIWindow.TestWindow.TreeView.Select(variableUpdate.Action);
+                        treeNode = GUIUtils.MDIWindow.TestWindow.TreeView.Select(variableUpdate.Action);
+                    }
+                }
+
+                if (treeNode == null)
+                {
+                    foreach (Form form in GUIUtils.MDIWindow.SubWindows)
+                    {
+                        TranslationRules.Window translationWindow = form as TranslationRules.Window;
+                        if (translationWindow != null)
+                        {
+                            translationWindow.TreeView.Select(variableUpdate.Action);
+                        }
                     }
                 }
             }
@@ -139,6 +144,15 @@ namespace GUI.TestRunnerView.TimeLineControl
                 if (GUIUtils.MDIWindow.TestWindow != null)
                 {
                     GUIUtils.MDIWindow.TestWindow.TreeView.Select(expect.Expectation);
+                }
+
+                foreach (Form form in GUIUtils.MDIWindow.SubWindows)
+                {
+                    TranslationRules.Window translationWindow = form as TranslationRules.Window;
+                    if (translationWindow != null)
+                    {
+                        translationWindow.TreeView.Select(expect.Expectation);
+                    }
                 }
             }
 
@@ -360,22 +374,25 @@ namespace GUI.TestRunnerView.TimeLineControl
                     SubStepActivated currentSubStepActivation = evt as SubStepActivated;
                     if (currentSubStepActivation != null)
                     {
-                        if (LastSubStepActivation != null && LastSubStepActivation.SubStep.Step == currentSubStepActivation.SubStep.Step)
+                        if (currentSubStepActivation.SubStep.Step != null)
                         {
-                            // Extends the step size
-                            Rectangle lastRectangle = EventPositions[LastStepActivation];
-                            lastRectangle.Width = lastRectangle.Width + EVENT_MARGING.Width + STEP_SIZE.Width;
-                            EventPositions[LastStepActivation] = lastRectangle;
+                            if (LastSubStepActivation != null && LastSubStepActivation.SubStep.Step == currentSubStepActivation.SubStep.Step)
+                            {
+                                // Extends the step size
+                                Rectangle lastRectangle = EventPositions[LastStepActivation];
+                                lastRectangle.Width = lastRectangle.Width + EVENT_MARGING.Width + STEP_SIZE.Width;
+                                EventPositions[LastStepActivation] = lastRectangle;
+                            }
+                            else 
+                            {
+                                // Create a new step activation
+                                LastStepActivation = new StepActivation(currentSubStepActivation.SubStep.Step);
+                                Point location = new Point((AllocatedPositions.Count - 1) * (STEP_SIZE.Width + EVENT_MARGING.Width), NextY);
+                                events.Add(LastStepActivation);
+                                EventPositions.Add(LastStepActivation, new Rectangle(location, STEP_SIZE));
+                            }
+                            NextY += STEP_SIZE.Height;
                         }
-                        else
-                        {
-                            // Create a new step activation
-                            LastStepActivation = new StepActivation(currentSubStepActivation.SubStep.Step);
-                            Point location = new Point((AllocatedPositions.Count - 1) * (STEP_SIZE.Width + EVENT_MARGING.Width), NextY);
-                            events.Add(LastStepActivation);
-                            EventPositions.Add(LastStepActivation, new Rectangle(location, STEP_SIZE));
-                        }
-                        NextY += STEP_SIZE.Height;
 
                         // Setup the substep activation size
                         if (LastSubStepActivation != null && LastSubStepActivation.SubStep.Step == currentSubStepActivation.SubStep.Step)

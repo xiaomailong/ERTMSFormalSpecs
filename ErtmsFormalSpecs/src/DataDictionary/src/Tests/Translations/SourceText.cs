@@ -14,9 +14,10 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Interpreter;
 namespace DataDictionary.Tests.Translations
 {
-    public class SourceText : Generated.SourceText
+    public class SourceText : Generated.SourceText, IExpressionable 
     {
         /// <summary>
         /// The enclosing translation, if any
@@ -55,6 +56,41 @@ namespace DataDictionary.Tests.Translations
         public string getExplain(bool explainSubElements, int indent)
         {
             return TextualExplainUtilities.Pad(Name, indent);
+        }
+
+        /// <summary>
+        /// The expression text for this expressionable
+        /// </summary>
+        public override string ExpressionText { get { return Name; } set { Name = value; } }
+
+        /// <summary>
+        /// The corresponding expression tree
+        /// </summary>
+        public Interpreter.InterpreterTreeNode Tree { get { return null; } }
+
+        /// <summary>
+        /// Indicates that the expression is valid for this IExpressionable
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public bool checkValidExpression(string expression)
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// Clears the expression tree to ensure new compilation
+        /// </summary>
+        public void CleanCompilation()
+        {
+        }
+
+        /// <summary>
+        /// Creates the tree according to the expression text
+        /// </summary>
+        public InterpreterTreeNode Compile()
+        {
+            return null;
         }
     }
 }

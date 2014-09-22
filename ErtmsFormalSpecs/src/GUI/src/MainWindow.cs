@@ -297,7 +297,7 @@ namespace GUI
         /// <summary>
         /// The translation window
         /// </summary>
-        private TranslationRules.Window TranslationWindow
+        public TranslationRules.Window TranslationWindow
         {
             get
             {
@@ -744,6 +744,13 @@ namespace GUI
                             AddChildWindow(modelWindow, DockAreas.Document);
                         }
                         GenericWindowHandling<TestRunnerView.Window>.AddOrShow(this, TestWindow, DockAreas.Document);
+
+                        TranslationRules.Window translationWindow = null;
+                        if (dictionary.TranslationDictionary != null && dictionary.TranslationDictionary.Translations.Count > 0)
+                        {
+                            translationWindow = new TranslationRules.Window(dictionary.TranslationDictionary);
+                            AddChildWindow(translationWindow, DockAreas.Document);
+                        }
 
                         // Display the views in the left pane
                         GenericWindowHandling<SpecificationView.Window>.AddOrShow(this, SpecificationWindow, DockAreas.DockLeft);
