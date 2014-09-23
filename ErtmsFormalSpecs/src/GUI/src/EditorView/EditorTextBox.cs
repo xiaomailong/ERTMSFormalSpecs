@@ -1095,7 +1095,7 @@ namespace GUI
                     if (variableNode != null)
                     {
                         StringBuilder text = new StringBuilder();
-                        text.Append(StripUseless(SourceNode.Model.FullName, Model) + " <- ");
+                        text.Append(StripUseless(SourceNode.Model.FullName, writingContext()) + " <- ");
 
                         DataDictionary.Variables.Variable variable = variableNode.Item;
                         DataDictionary.Types.Structure structure = variable.Type as DataDictionary.Types.Structure;
@@ -1122,7 +1122,7 @@ namespace GUI
                         }
                         else
                         {
-                            EditionTextBox.SelectedText = StripUseless(SourceNode.Model.FullName, Model);
+                            EditionTextBox.SelectedText = StripUseless(SourceNode.Model.FullName, writingContext());
                         }
                     }
                 }
@@ -1133,7 +1133,7 @@ namespace GUI
         {
             if (displayStructureName)
             {
-                text.Append(StripUseless(structure.FullName, Model) + "{\n");
+                text.Append(StripUseless(structure.FullName, writingContext()) + "{\n");
             }
 
             bool first = true;
@@ -1179,7 +1179,7 @@ namespace GUI
             if (structure != null)
             {
                 indent = indent + 4;
-                text.Append(StripUseless(structure.FullName, Model) + "{\n");
+                text.Append(StripUseless(structure.FullName, writingContext()) + "{\n");
                 bool first = true;
                 foreach (DataDictionary.Types.StructureElement subElement in structure.Elements)
                 {
@@ -1216,6 +1216,22 @@ namespace GUI
                     text.Append(value.FullName);
                 }
             }
+        }
+
+        /// <summary>
+        /// Provides the writing context of this edition
+        /// </summary>
+        /// <returns></returns>
+        private Utils.IModelElement writingContext()
+        {
+            Utils.IModelElement retVal = Model;
+
+            if (retVal is DataDictionary.Rules.Action || retVal is DataDictionary.Tests.Expectation)
+            {
+                retVal = retVal.Enclosing as Utils.IModelElement;
+            }
+
+            return retVal;
         }
 
         /// <summary>
