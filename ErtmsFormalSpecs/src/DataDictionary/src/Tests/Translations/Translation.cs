@@ -186,6 +186,7 @@ namespace DataDictionary.Tests.Translations
             {
                 SubStep newSubStep = (SubStep)Generated.acceptor.getFactory().createSubStep();
                 newSubStep.Name = "Sub-step" + subStepCounter;
+                newSubStep.setSkipEngine(subStep.getSkipEngine());
                 step.appendSubSteps(newSubStep);
 
                 foreach (Rules.Action action in subStep.Actions)
