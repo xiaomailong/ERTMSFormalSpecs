@@ -192,40 +192,47 @@ namespace DataDictionary.Interpreter.Statement
                     Values.IValue value = Value.GetValue(context, explanation);
                     if (value != null)
                     {
-                        Values.ListValue newListValue = new Values.ListValue(listValue);
-                        int index = newListValue.Val.IndexOf(EFSSystem.EmptyValue);
-                        if (index >= 0)
+                        if (!listValue.Val.Contains(value))
                         {
-                            newListValue.Val[index] = value;
-                        }
-                        else
-                        {
-                            // List is full, try to remove an element before inserting the new element
-                            if (ReplaceElement != null)
+                            Values.ListValue newListValue = new Values.ListValue(listValue);
+                            int index = newListValue.Val.IndexOf(EFSSystem.EmptyValue);
+                            if (index >= 0)
                             {
-                                Values.IValue removeValue = ReplaceElement.GetValue(context, explanation);
-                                index = newListValue.Val.IndexOf(removeValue);
-                                if (index >= 0)
-                                {
-                                    newListValue.Val[index] = value;
-                                }
-                                else
-                                {
-                                    Root.AddError("Cannot remove replacing element " + removeValue.Name);
-                                }
+                                newListValue.Val[index] = value;
                             }
                             else
                             {
-                                Root.AddError("Cannot add new element in list value : list is full");
+                                // List is full, try to remove an element before inserting the new element
+                                if (ReplaceElement != null)
+                                {
+                                    Values.IValue removeValue = ReplaceElement.GetValue(context, explanation);
+                                    index = newListValue.Val.IndexOf(removeValue);
+                                    if (index >= 0)
+                                    {
+                                        newListValue.Val[index] = value;
+                                    }
+                                    else
+                                    {
+                                        Root.AddError("Cannot remove replacing element " + removeValue.Name);
+                                    }
+                                }
+                                else
+                                {
+                                    Root.AddError("Cannot add new element in list value : list is full");
+                                }
+                            }
+
+                            Rules.Change change = new Rules.Change(variable, variable.Value, newListValue);
+                            changes.Add(change, apply, runner);
+
+                            if (explanation != null)
+                            {
+                                explanation.SubExplanations.Add(new ExplanationPart(Root, change));
                             }
                         }
-
-                        Rules.Change change = new Rules.Change(variable, variable.Value, newListValue);
-                        changes.Add(change, apply, runner);
-
-                        if (explanation != null)
+                        else
                         {
-                            explanation.SubExplanations.Add(new ExplanationPart(Root, change));
+                            AddError("Value " + value.LiteralName + " already present in list. It has not been added");
                         }
                     }
                     else
