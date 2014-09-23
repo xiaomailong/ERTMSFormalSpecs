@@ -116,7 +116,7 @@ namespace GUI.TranslationRules
             TranslationTreeNode retVal;
 
             Item.appendTranslations(translation);
-            retVal = new TranslationTreeNode(translation, false);
+            retVal = new TranslationTreeNode(translation, true);
             Nodes.Add(retVal);
             SortSubNodes();
 
