@@ -236,7 +236,10 @@ namespace DataDictionary
             }
         }
 
-        private class TranslateTestCases : Generated.Visitor
+        /// <summary>
+        /// This visitor is used to automatically translated test cases
+        /// </summary>
+        public class TranslateTestCases : Generated.Visitor
         {
             public override void visit(Generated.Step obj, bool visitSubNodes)
             {

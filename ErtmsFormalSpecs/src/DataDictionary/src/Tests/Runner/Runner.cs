@@ -184,6 +184,10 @@ namespace DataDictionary.Tests.Runner
             LogEvents = logEvents;
             Explain = explain;
 
+            // Translate the steps automatically
+            Dictionary.TranslateTestCases translator = new Dictionary.TranslateTestCases();
+            translator.visit(subSequence);
+
             // Compile everything
             EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
             EFSSystem.ShouldRebuild = false;
