@@ -198,13 +198,25 @@
       <FIELD NAME="Variables"           REFTYPE="Variable"      MODE="DEFAULT">
       </FIELD>
       <FIELD NAME="Rules"               REFTYPE="Rule"          MODE="DEFAULT"/>
-      <FIELD NAME="Width"               TYPE="INTEGER" />
-      <FIELD NAME="Height"              TYPE="INTEGER" />
-      <FIELD NAME="X"                   TYPE="INTEGER" />
-      <FIELD NAME="Y"                   TYPE="INTEGER" />
-      <FIELD NAME="Hidden"              TYPE="BOOLEAN" />
-      <FIELD NAME="Pinned"              TYPE="BOOLEAN" />
-      <FIELD NAME="Comment"             TYPE="PCHAR"   />
+      <FIELD NAME="Width"               TYPE="INTEGER">
+        <META NAME="DoNotCompare"/>
+      </FIELD>
+      <FIELD NAME="Height"              TYPE="INTEGER">
+        <META NAME="DoNotCompare"/>
+      </FIELD>
+      <FIELD NAME="X"                   TYPE="INTEGER">
+        <META NAME="DoNotCompare"/>
+      </FIELD>
+      <FIELD NAME="Y"                   TYPE="INTEGER">
+        <META NAME="DoNotCompare"/>
+      </FIELD>
+      <FIELD NAME="Hidden"              TYPE="BOOLEAN">
+        <META NAME="DoNotCompare"/>
+      </FIELD>
+      <FIELD NAME="Pinned"              TYPE="BOOLEAN">
+        <META NAME="DoNotCompare"/>
+      </FIELD>
+      <FIELD NAME="Comment"             TYPE="PCHAR"/>
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="X"      TARGET="X"      OPTIONAL="TRUE" DEFAULT="0" />

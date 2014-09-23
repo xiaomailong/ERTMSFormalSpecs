@@ -70,7 +70,7 @@ namespace DataDictionary.Compare
                     break;
 
                 case HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange:
-                    Model.AddInfo("CHANGED " + Field + "\nFROM : " + Before + "\nTO : " + After + "\n");
+                    Model.AddInfo("CHANGED " + Field + " \nFROM : " + Before + " \nTO : " + After + "\n");
                     break;
             }
         }
