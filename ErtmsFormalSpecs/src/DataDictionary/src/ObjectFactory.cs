@@ -196,7 +196,7 @@ namespace DataDictionary
             obj.setLevelOUT(Generated.acceptor.ST_LEVEL.StLevel_NA);
             obj.setModeIN(Generated.acceptor.ST_MODE.Mode_NA);
             obj.setModeOUT(Generated.acceptor.ST_MODE.Mode_NA);
-            obj.setTranslationRequired(true);
+            obj.setTranslationRequired(false);
             obj.setTranslated(false);
 
             base.visit(obj, visitSubNodes);

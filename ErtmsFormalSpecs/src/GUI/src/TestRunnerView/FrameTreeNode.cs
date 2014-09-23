@@ -19,6 +19,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using Utils;
 using System.Collections;
+using DataDictionary.Tests;
 
 namespace GUI.TestRunnerView
 {

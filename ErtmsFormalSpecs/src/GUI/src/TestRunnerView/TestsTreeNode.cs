@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using DataDictionary;
 using System.Collections;
+using DataDictionary.Tests;
 
 namespace GUI.TestRunnerView
 {
@@ -208,6 +209,7 @@ namespace GUI.TestRunnerView
             retVal.Add(new MenuItem("Add frame", new EventHandler(AddHandler)));
             retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Import braking curves verification set", new EventHandler(ImportBrakingCurvesHandler)));
+            retVal.Add(new MenuItem("Mark as not translatable", new EventHandler(DoNotTranslateHandler)));
             retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Execute", new EventHandler(RunHandler)));
             retVal.Add(new MenuItem("Create report", new EventHandler(ReportHandler)));
@@ -215,6 +217,28 @@ namespace GUI.TestRunnerView
             return retVal;
         }
 
+
+        /// <summary>
+        /// Indicates that the steps of this frame should not be translated
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void DoNotTranslateHandler(object sender, EventArgs args)
+        {
+            foreach (Frame frame in Item.Tests)
+            {
+                foreach (SubSequence subSequence in frame.SubSequences)
+                {
+                    foreach (TestCase testCase in subSequence.TestCases)
+                    {
+                        foreach (Step step in testCase.Steps)
+                        {
+                            step.setTranslationRequired(false);
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// Imports a test scenario from the ERA braking curves simulation tool

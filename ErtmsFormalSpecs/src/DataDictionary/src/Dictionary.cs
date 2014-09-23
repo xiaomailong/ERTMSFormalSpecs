@@ -51,9 +51,9 @@ namespace DataDictionary
         private class Updater : Generated.Visitor
         {
             /// <summary>
-            /// Indicates if the update is from the elements to references or from references to elements
+            /// Indicates if the update operation is performed before saving or after
             /// </summary>
-            private bool elementsToRefs;
+            private bool beforeSave;
 
             /// <summary>
             /// The base path used to save files
@@ -64,11 +64,12 @@ namespace DataDictionary
             /// Constructor
             /// </summary>
             /// <param name="basePath"></param>
-            public Updater(string basePath, bool elementsToRefs)
+            /// <param name="beforeSave"></param>
+            public Updater(string basePath, bool beforeSave)
                 : base()
             {
                 BasePath = basePath;
-                this.elementsToRefs = elementsToRefs;
+                this.beforeSave = beforeSave;
             }
 
             public override void visit(Generated.Dictionary obj, bool visitSubNodes)
@@ -77,7 +78,7 @@ namespace DataDictionary
 
                 Dictionary dictionary = (Dictionary)obj;
 
-                if (elementsToRefs)
+                if (beforeSave)
                 {
                     dictionary.ClearTempFiles();
                     dictionary.allNameSpaceRefs().Clear();
@@ -112,7 +113,7 @@ namespace DataDictionary
 
                 NameSpace nameSpace = (NameSpace)obj;
 
-                if (elementsToRefs)
+                if (beforeSave)
                 {
                     nameSpace.ClearTempFiles();
                     nameSpace.allNameSpaceRefs().Clear();
@@ -138,7 +139,7 @@ namespace DataDictionary
 
                 Specification.Specification specification = (Specification.Specification)obj;
 
-                if (elementsToRefs)
+                if (beforeSave)
                 {
                     specification.ClearTempFiles();
                     specification.allChapterRefs().Clear();
@@ -206,6 +207,48 @@ namespace DataDictionary
                 return retVal;
             }
 
+            /// <summary>
+            /// Removes the actions and expectation from translated steps because they may cause conflicts
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Step obj, bool visitSubNodes)
+            {
+                Step step = (Step)obj;
+
+                if (beforeSave)
+                {
+                    if (step.getTranslationRequired())
+                    {
+                        step.SubSteps.Clear();
+                        step.setTranslated(false);
+                    }
+                }
+                else
+                {
+                    if (step.getTranslationRequired())
+                    {
+                        step.Translate(step.Dictionary.TranslationDictionary);
+                    }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
+        private class TranslateTestCases : Generated.Visitor
+        {
+            public override void visit(Generated.Step obj, bool visitSubNodes)
+            {
+                Step step = (Step)obj;
+
+                if (step.getTranslationRequired())
+                {
+                    step.Translate(step.Dictionary.TranslationDictionary);
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
         }
 
         /// <summary>
@@ -230,6 +273,9 @@ namespace DataDictionary
 
             updater = new Updater(BasePath, false);
             updater.visit(this);
+
+            TranslateTestCases translator = new TranslateTestCases();
+            translator.visit(this);
         }
 
         /// <summary>

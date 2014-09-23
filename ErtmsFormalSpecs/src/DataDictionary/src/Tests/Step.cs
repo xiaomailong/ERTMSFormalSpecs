@@ -150,7 +150,7 @@ namespace DataDictionary.Tests
         /// <param name="translationDictionary"></param>
         public void Translate(Translations.TranslationDictionary translationDictionary)
         {
-            if (getTranslationRequired())
+            if (getTranslationRequired() && translationDictionary != null)
             {
                 SubSteps.Clear();
 
