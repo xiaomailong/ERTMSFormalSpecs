@@ -181,6 +181,7 @@
  Name="JRU Telegram From Balise when a Telegram From Balise has been received"
  Guid="d19b41d9-c0a1-488e-b7c7-e41b56e7b0f6"
 >
+<Comment></Comment>
 <TestCases>
 <TestCase
  Implemented="TRUE"
@@ -1136,7 +1137,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ae6e6aa4-69a1-48a0-882c-06189b466e0f"
->THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.SYSTEM_VERSION == JRU.ToJruSystemVersion(
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.SYSTEM_VERSION == JRU.TypeConvertors.ToJRUSystemVersion(
     SystemVersion=&gt; Kernel.OperatedSystemVersion
 )</Expectation><Expectation
  Kind="Instantaneous"
@@ -1447,13 +1448,13 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="6c7dc48a-0568-4238-aeb6-9b6c790886f0"
->THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.TypeConvertors.ToJRUMode(
     ModeInkernel=&gt;Kernel.Mode
 )</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="417e6087-bb5e-4888-a6cc-0fbe90fe6a7b"
->THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.ToJruMode(
+>THERE_IS_IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE.HEADER.MODE == JRU.TypeConvertors.ToJRUMode(
     ModeInkernel=&gt;Default.Mode.FS
 )</Expectation></Expectations>
 </SubStep></SubSteps>
