@@ -386,6 +386,7 @@ TO_RBC =&gt; CreateMessageToRbcMessage(EURORADIO.CurrentRBCConnection(), EURORAD
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Send Drivers Actions message"
  Guid="2042dc30-2a73-495e-b17a-6cae21e66977"
 >
@@ -403,6 +404,7 @@ TO_RBC =&gt; CreateMessageToRbcMessage(EURORADIO.CurrentRBCConnection(), EURORAD
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Send Drivers Actions message"
  Guid="028b2931-f378-4d18-873e-dbde829cfb19"
 >
@@ -4978,19 +4980,19 @@ DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.DriverAnswered</Expressio
  Guid="2f192c9b-5d15-43f6-aa87-db07b23dea7a"
 >
 <ReqRef
- Id="6f2bb22b-a705-4170-8cc3-7a555b3e22ff"
+ Id="25160c5b-3bb8-434a-9861-1110353238a2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="168e22a3-ddbf-487a-aa83-5bfa6bf4b5ad"
+ Guid="fab88163-91a3-4f56-8782-8ba615271dc7"
 >
 </ReqRef><ReqRef
- Id="a19dec60-626e-4544-a65b-13b1160bf0b7"
+ Id="0fcf9f57-8c5b-4beb-88e2-c8f43ec6f8bd"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="769230af-8411-4714-a2d1-30fc9b667f08"
+ Guid="a928b8eb-5515-4669-98db-1115e5a04326"
 >
 </ReqRef><ReqRef
- Id="9a6a7946-fcd0-4097-be45-9a8168506afd"
+ Id="b514977c-b206-4e0e-9ba2-ddc83ccb09fb"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="5e67f73c-4537-4bee-8dc5-a3300c937963"
+ Guid="56d0b161-803f-459b-b8b8-cee9a79809af"
 >
 </ReqRef><Comment>Will fill the necessary fields to generate the SLEEPING_INPUT message</Comment>
 <Cases>
@@ -5002,7 +5004,7 @@ DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.DriverAnswered</Expressio
 <Expression>Messages.JRU.MESSAGE.DRIVER_S_ACTIONS.Message
 {
     HEADER =&gt; CreateHeader(11),
-    M_DRIVERACTIONS =&gt; 0
+    M_DRIVERACTIONS =&gt; TypeConvertors.ToJRUDriversAction()
 }</Expression>
 </Case></Cases>
 </Function></Functions>
