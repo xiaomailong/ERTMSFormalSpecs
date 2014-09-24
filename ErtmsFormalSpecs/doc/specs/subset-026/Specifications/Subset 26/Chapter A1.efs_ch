@@ -1529,6 +1529,46 @@ Requirements 3.13.10.2.6 and 3.13.10.2.7 specify that the train has to be trippe
  Guid="b3d31030-a216-41c5-b7be-b1f463e0e5c5"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.18.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="adba163d-bf9a-438f-a3b8-ea22437b14ef"
+><Comment></Comment>
+The possible DMI inputs described in Table 4.7 of Subset-026 don&apos;t match the possible DMI inputs described in paragraph 4.2.4.11 of Subset-027. If the driver executes an action which is not described in the Subset-027, the model will send a JRU message with value &quot;Spare&quot; corresponding to the field M_DRIVERACTIONS.
+The non-matching elements defined in Subset-026 are:
+- acknowledgement for post trip distance exceeded
+- acknowledgement for reverse movement protection
+- acknowledgement for reversing distance exceeded
+- acknowledgement for roll away protection
+- acknowledgement for standstill supervision
+- acknowledgement of train data change from other source
+- driver id
+- RBC contact information
+- SR mode speed limit and distance
+- track adhesion factor
+- virtual balise cover
+The non-matching elements defined in Subset-027 are:
+- brake release
+- request to hide geographical information
+- request to hide supervision limits
+- request to hide tunnel stopping area information
+- request to show supervision limits
+- request to show geographical position
+- request to show tunnel stopping area information
+- scroll up button activated
+- scroll down button activaged<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="45de49a5-1cd9-41a2-a51b-8ee2f9e44906"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
