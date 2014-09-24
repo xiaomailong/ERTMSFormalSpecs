@@ -367,7 +367,8 @@ PAGE:29<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="0c320b0b-218e-4a78-9fad-488fdb0e6902"
->NID_MESSAGE:10
+><Comment></Comment>
+NID_MESSAGE:10
 MESSAGE:MESSAGE TO RBC
 PAGE:29<RequirementSets>
 <RequirementSetReference
@@ -388,7 +389,8 @@ PAGE:29<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="25160c5b-3bb8-434a-9861-1110353238a2"
->NID_MESSAGE:11
+><Comment></Comment>
+NID_MESSAGE:11
 MESSAGE:DRIVER.S ACTIONS
 PAGE:29<RequirementSets>
 <RequirementSetReference
@@ -787,7 +789,8 @@ PAGE:45<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="a19dec60-626e-4544-a65b-13b1160bf0b7"
->NID_MESSAGE:30
+><Comment></Comment>
+NID_MESSAGE:30
 MESSAGE:SLEEPING INPUT
 PAGE:45<RequirementSets>
 <RequirementSetReference
@@ -4781,6 +4784,126 @@ Comment:Defined in Chapter 7 of [1]. ETCS identity (NID_C + NID_RBC) of the RBC 
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
+ id="4.2.4.11"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ specIssue="TRUE"
+ functionalBlockName=""
+ Name=""
+ Guid="0fcf9f57-8c5b-4beb-88e2-c8f43ec6f8bd"
+><ReqRef
+ Id="adba163d-bf9a-438f-a3b8-ea22437b14ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="efa9729d-7974-4d77-97a6-3ecbcb5580cf"
+>
+</ReqRef><Comment></Comment>
+DRIVER.S ACTIONS
+Description
+This message is sent whenever the driver acts on the on board system via the ERTMS/ETCS DMI.<Sub>
+<Paragraph
+ id="4.2.4.11.1"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="d82c6cc4-21a5-45da-a6c6-68ef205c3623"
+>Complementary Variable:M_DRIVER_ACTION
+Length:8
+Comment:<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ffa1a7df-6430-4fe8-890f-c3caf2593f6d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.2.4.11.2"
+ guid=""
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="17d1d25c-06cf-4f97-b5ab-31e6ed708170"
+>Name              : Driver&apos;s action
+Description       : This variable contains the driver&apos;s action
+Definition        : 
+Length            : 8 bits
+Minimum value     : 
+Maximum value     : 
+Resolution formula: 
+Special values
+  - BitValue = 0000 0000, Value = Ack of On Sight mode
+  - BitValue = 0000 0001, Value = Ack of Shunting mode
+  - BitValue = 0000 0010, Value = Ack of Train Trip
+  - BitValue = 0000 0011, Value = Ack of Staff Responsible mode
+  - BitValue = 0000 0100, Value = Ack of Unfitted mode
+  - BitValue = 0000 0101, Value = Ack of Reversing mode
+  - BitValue = 0000 0110, Value = Ack level 0
+  - BitValue = 0000 0111, Value = Ack level 1
+  - BitValue = 0000 1000, Value = Ack level 2
+  - BitValue = 0000 1001, Value = Ack level 3
+  - BitValue = 0000 1010, Value = Ack level NTC
+  - BitValue = 0000 1011, Value = Shunting selected
+  - BitValue = 0000 1100, Value = Non Leading selected
+  - BitValue = 0000 1101, Value = Ack of Limited Supervision mode
+  - BitValue = 0000 1110, Value = Override selected
+  - BitValue = 0000 1111, Value = “Continue Shunting on desk closure” selected
+  - BitValue = 0001 0000, Value = Brake release acknowledgement
+  - BitValue = 0001 0001, Value = Exit of Shunting selected
+  - BitValue = 0001 0010, Value = Isolation selected
+  - BitValue = 0001 0011, Value = Start selected
+  - BitValue = 0001 0100, Value = Train Data Entry requested
+  - BitValue = 0001 0101, Value = Validation of train data
+  - BitValue = 0001 0110, Value = Confirmation of Track Ahead Free
+  - BitValue = 0001 0111, Value = Ack of Plain Text information
+  - BitValue = 0001 1000, Value = Ack of Fixed Text information
+  - BitValue = 0001 1001, Value = Request to hide supervision limits
+  - BitValue = 0001 1010, Value = Train integrity confirmation
+  - BitValue = 0001 1011, Value = Request to show supervision limits
+  - BitValue = 0001 1100, Value = Ack of SN mode
+  - BitValue = 0001 1101, Value = Selection of Language
+  - BitValue = 0001 1110, Value = Request to show geographical position
+  - BitValue = 0001 1111, Value = Spare
+  - BitValue = 0010 0000, Value = Spare
+  - BitValue = 0010 0001, Value = Request to hide geographical position
+  - BitValue = 0010 0010, Value = Level 0 selected
+  - BitValue = 0010 0011, Value = Level 1 selected
+  - BitValue = 0010 0100, Value = Level 2 selected
+  - BitValue = 0010 0101, Value = Level 3 selected
+  - BitValue = 0010 0110, Value = Level NTC selected
+  - BitValue = 0010 0111, Value = Request to show tunnel stopping area information
+  - BitValue = 0010 1000, Value = Request to hide tunnel stopping area information
+  - BitValue = 0010 1001, Value = Scroll up button activated
+  - BitValue = 0010 1010, Value = Scroll down button activated<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8b5cf5e0-6e08-41fc-8652-91076cd08d27"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f255a8d5-9ff8-41c3-8594-8cf6941025c7"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="4.2.4.12"
  guid=""
  type="REQUIREMENT"
@@ -6980,7 +7103,8 @@ Comment:Defined in Chapter 7 of [1].<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="6f2bb22b-a705-4170-8cc3-7a555b3e22ff"
->SLEEPING INPUT
+><Comment></Comment>
+SLEEPING INPUT
 Description
 This message allows to transmit the state of the sleeping input (see [4] 2.2.1).<Sub>
 <Paragraph
@@ -8218,119 +8342,6 @@ This message allows to record information that is specific to an ETCS on- board 
  Guid="011ac5ad-dc80-4679-89c0-a1d2b7846bb6"
 >
 </RequirementSetReference></RequirementSets>
-</Paragraph><Paragraph
- id="4.2.4.11"
- guid=""
- type="REQUIREMENT"
- scope="FLAGS"
- bl=""
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
- Guid="0fcf9f57-8c5b-4beb-88e2-c8f43ec6f8bd"
->DRIVER.S ACTIONS
-Description
-This message is sent whenever the driver acts on the on board system via the ERTMS/ETCS DMI.<Sub>
-<Paragraph
- id="4.2.4.11.1"
- guid=""
- type="REQUIREMENT"
- scope="FLAGS"
- bl=""
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
- Guid="d82c6cc4-21a5-45da-a6c6-68ef205c3623"
->Complementary Variable:M_DRIVER_ACTION
-Length:8
-Comment:<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="ffa1a7df-6430-4fe8-890f-c3caf2593f6d"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph><Paragraph
- id="4.2.4.11.2"
- guid=""
- type="REQUIREMENT"
- scope="FLAGS"
- bl=""
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- functionalBlockName=""
- Name=""
- Guid="17d1d25c-06cf-4f97-b5ab-31e6ed708170"
->Name              : Driver&apos;s action
-Description       : This variable contains the driver&apos;s action
-Definition        : 
-Length            : 8 bits
-Minimum value     : 
-Maximum value     : 
-Resolution formula: 
-Special values
-  - BitValue = 0000 0000, Value = Ack of On Sight mode
-  - BitValue = 0000 0001, Value = Ack of Shunting mode
-  - BitValue = 0000 0010, Value = Ack of Train Trip
-  - BitValue = 0000 0011, Value = Ack of Staff Responsible mode
-  - BitValue = 0000 0100, Value = Ack of Unfitted mode
-  - BitValue = 0000 0101, Value = Ack of Reversing mode
-  - BitValue = 0000 0110, Value = Ack level 0
-  - BitValue = 0000 0111, Value = Ack level 1
-  - BitValue = 0000 1000, Value = Ack level 2
-  - BitValue = 0000 1001, Value = Ack level 3
-  - BitValue = 0000 1010, Value = Ack level NTC
-  - BitValue = 0000 1011, Value = Shunting selected
-  - BitValue = 0000 1100, Value = Non Leading selected
-  - BitValue = 0000 1101, Value = Ack of Limited Supervision mode
-  - BitValue = 0000 1110, Value = Override selected
-  - BitValue = 0000 1111, Value = “Continue Shunting on desk closure” selected
-  - BitValue = 0001 0000, Value = Brake release acknowledgement
-  - BitValue = 0001 0001, Value = Exit of Shunting selected
-  - BitValue = 0001 0010, Value = Isolation selected
-  - BitValue = 0001 0011, Value = Start selected
-  - BitValue = 0001 0100, Value = Train Data Entry requested
-  - BitValue = 0001 0101, Value = Validation of train data
-  - BitValue = 0001 0110, Value = Confirmation of Track Ahead Free
-  - BitValue = 0001 0111, Value = Ack of Plain Text information
-  - BitValue = 0001 1000, Value = Ack of Fixed Text information
-  - BitValue = 0001 1001, Value = Request to hide supervision limits
-  - BitValue = 0001 1010, Value = Train integrity confirmation
-  - BitValue = 0001 1011, Value = Request to show supervision limits
-  - BitValue = 0001 1100, Value = Ack of SN mode
-  - BitValue = 0001 1101, Value = Selection of Language
-  - BitValue = 0001 1110, Value = Request to show geographical position
-  - BitValue = 0001 1111, Value = Spare
-  - BitValue = 0010 0000, Value = Spare
-  - BitValue = 0010 0001, Value = Request to hide geographical position
-  - BitValue = 0010 0010, Value = Level 0 selected
-  - BitValue = 0010 0011, Value = Level 1 selected
-  - BitValue = 0010 0100, Value = Level 2 selected
-  - BitValue = 0010 0101, Value = Level 3 selected
-  - BitValue = 0010 0110, Value = Level NTC selected
-  - BitValue = 0010 0111, Value = Request to show tunnel stopping area information
-  - BitValue = 0010 1000, Value = Request to hide tunnel stopping area information
-  - BitValue = 0010 1001, Value = Scroll up button activated
-  - BitValue = 0010 1010, Value = Scroll down button activated<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="8b5cf5e0-6e08-41fc-8652-91076cd08d27"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph></Sub>
-<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="f255a8d5-9ff8-41c3-8594-8cf6941025c7"
->
-</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -8651,7 +8662,8 @@ NID_MESSAGE:9<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="2ffe0674-1645-4793-9d44-f0cc0a540f2e"
->TRIGGERING EVENT:When a message to a RBC is sent
+><Comment></Comment>
+TRIGGERING EVENT:When a message to a RBC is sent
 NID_MESSAGE:10<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -8751,7 +8763,8 @@ NID_MESSAGE:15<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="b514977c-b206-4e0e-9ba2-ddc83ccb09fb"
->TRIGGERING EVENT:When the driver acts on the on-board system through the DMI
+><Comment></Comment>
+TRIGGERING EVENT:When the driver acts on the on-board system through the DMI
 NID_MESSAGE:11<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -9031,7 +9044,8 @@ NID_MESSAGE:29<RequirementSets>
  functionalBlockName=""
  Name=""
  Guid="9a6a7946-fcd0-4097-be45-9a8168506afd"
->TRIGGERING EVENT:In any of the following events
+><Comment></Comment>
+TRIGGERING EVENT:In any of the following events
   - At start up
   - When the sleeping input state changes
 NID_MESSAGE:30<RequirementSets>
