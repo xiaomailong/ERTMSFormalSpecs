@@ -611,7 +611,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2f6560f9-adcf-4938-b4d9-fc4a2b5a1aea"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment></Comment>
+<StateMachine
  Default="S0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3264,7 +3265,8 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <Actions>
 <Action
  Guid="a59bd1e1-eb5a-476d-9a84-03cc15848aba"
->DMI.MasterDMI().In_TrainDataEntryRequest.AcceptDriverResponse()</Action><Action
+><Comment></Comment>
+DMI.MasterDMI().In_TrainDataEntryRequest.AcceptDriverResponse()</Action><Action
  Guid="a4ac237c-1c31-4a32-b94b-4140748d8b8b"
 >THIS &lt;- S12</Action></Actions>
 </RuleCondition></Conditions>
@@ -3369,6 +3371,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  Name="Shunting not yet proposed to driver"
  Guid="92bea7f0-aafd-412b-b5ba-44052a613683"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="27a382ca-0787-4ca5-86b0-b911ad8c8c23"
@@ -3376,7 +3379,8 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <Actions>
 <Action
  Guid="47ea6985-2b83-4d62-8bdb-f5b4faa5fd71"
->DMI.MasterDMI().In_ShuntingRequest.InitiateRequest()</Action></Actions>
+><Comment></Comment>
+DMI.MasterDMI().In_ShuntingRequest.InitiateRequest()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -6691,7 +6695,8 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
  Guid="823d4bf3-7fa5-47a2-b989-00c45f07221f"
 >THIS &lt;- HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action><Action
  Guid="7a3cf90e-21db-4389-9eed-ba4477662811"
->DMI.MasterDMI().In_ShuntingRequest.InitiateRequest()</Action></Actions>
+><Comment></Comment>
+DMI.MasterDMI().In_ShuntingRequest.InitiateRequest()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
