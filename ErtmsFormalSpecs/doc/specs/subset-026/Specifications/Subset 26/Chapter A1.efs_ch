@@ -29,7 +29,7 @@ Design choices<Sub>
  Name=""
  Guid="750e9130-01ae-4988-a364-e8ebcf67eb84"
 ><Comment></Comment>
-Intelligent DMI<Sub>
+DMI<Sub>
 <Paragraph
  id="A1.1.1.1"
  guid=""
@@ -42,7 +42,8 @@ Intelligent DMI<Sub>
  functionalBlockName=""
  Name=""
  Guid="8b8ea3a5-12ac-4d39-a0c7-11e4836910a0"
->The DMI shall only send information that alter the DMI display. If the same information is provided over the cycles, it shall only be provided once.<RequirementSets>
+><Comment></Comment>
+The DMI shall only send information that alter the DMI display. If the same information is provided over the cycles, it shall only be provided once.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="0ffc5b70-cb08-4243-af5e-f9b4e253f741"
@@ -50,6 +51,23 @@ Intelligent DMI<Sub>
 </RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="9c448ba7-16b9-4856-b59e-447389b09884"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.1.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="Implemented"
+ version="3.0.0"
+ functionalBlockName=""
+ Name=""
+ Guid="8704b1d9-4c80-4e31-8cc7-cd9a1df1b7c8"
+>Subset-027 Paragraph 4.2.4.21 defines the message that shall be sent each time the symbols on the DMI appear and disappear. Since these symbols aren&apos;t described in Subset-026, the document ETCS Driver Machine Interface (ERA_ERTMS_015560) v3.3.0 Chapter 13 was taken as reference for implementing these symbols.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="6cf189aa-a864-4a25-8d73-057623ed2889"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
