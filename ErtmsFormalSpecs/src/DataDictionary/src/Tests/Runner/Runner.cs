@@ -935,7 +935,7 @@ namespace DataDictionary.Tests.Runner
                 Cycle();
             }
 
-            while (ActiveExpectations().Count > 0)
+            while (ActiveBlockingExpectations().Count > 0)
             {
                 Cycle();
             }
