@@ -13,6 +13,10 @@
  Name="TypeConvertors"
  Guid="622d659b-9694-4693-87ca-540a3bdadf37"
 >
+</NameSpaceRef><NameSpaceRef
+ Name="DMISymbolsConvertors"
+ Guid="3ac2c6af-92ae-4ea1-8912-a230283d8428"
+>
 </NameSpaceRef></NameSpaces>
 <Structures>
 <Structure
@@ -3375,6 +3379,7 @@ AND
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="c99125b4-a2a8-4ab1-8c40-1635c6b5b113"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="d9784eba-d7cd-4aaa-8499-40da415462f9"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -5102,6 +5107,143 @@ DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.DriverAnswered</Expressio
 {
     HEADER =&gt; CreateHeader(11),
     M_DRIVERACTIONS =&gt; TypeConvertors.ToJRUDriversAction()
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.DMI_SYMB_STATUS.Message"
+ Default=""
+ X="770"
+ Y="300"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="CreateDMISymbolStatusChangeMessage"
+ Guid="95307c51-dead-4626-8851-3f17c070de39"
+>
+<ReqRef
+ Id="5d7e131f-83a0-4fc1-bf3c-5b67a6141d3e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="208a4a1e-074a-493f-8dba-12754547aee1"
+>
+</ReqRef><ReqRef
+ Id="ab27f58b-6aaf-4a89-addc-8ba7947449d2"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="130d3f5c-8732-47a5-8156-94f2c262e6eb"
+>
+</ReqRef><ReqRef
+ Id="44c3230d-cbf7-40f5-9717-9bc3001a24d8"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ad95d842-a6ee-4212-9571-78f2ec23df67"
+>
+</ReqRef><ReqRef
+ Id="ea927b78-50a4-4f02-a8a4-27ab74a61398"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b965052b-831b-4d52-80f6-d5c61bc73fbb"
+>
+</ReqRef><ReqRef
+ Id="e89b6661-751c-4a92-abcb-bd2ff6a5ea1e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="88de53bb-d9e0-4e08-9c8c-ee1bb77be90c"
+>
+</ReqRef><Comment>Creates the message containing all the DMI symbols currently displayed.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="ea253938-e458-4f2e-a96b-33cbf5258224"
+>
+<Comment></Comment>
+<Expression>Messages.JRU.MESSAGE.DMI_SYMB_STATUS.Message
+{
+    HEADER =&gt; CreateHeader(21),
+    DMI_SYMBOL_STATUS =&gt; Messages.JRU.MESSAGE.DMI_SYMBOL_STATUS.Message
+    {
+        DMI_SYMB_STATUS_LE01 =&gt; DMISymbolsConvertors.LE01Activated(),
+        DMI_SYMB_STATUS_LE02 =&gt; DMISymbolsConvertors.LE02Activated(),
+        DMI_SYMB_STATUS_LE03 =&gt; DMISymbolsConvertors.LE03Activated(),
+        DMI_SYMB_STATUS_LE04 =&gt; DMISymbolsConvertors.LE04Activated(),
+        DMI_SYMB_STATUS_LE05 =&gt; DMISymbolsConvertors.LE05Activated(),
+        DMI_SYMB_STATUS_LE06 =&gt; DMISymbolsConvertors.LE06Activated(),
+        DMI_SYMB_STATUS_LE07 =&gt; DMISymbolsConvertors.LE07Activated(),
+        DMI_SYMB_STATUS_LE08 =&gt; DMISymbolsConvertors.LE08Activated(),
+        DMI_SYMB_STATUS_LE09 =&gt; DMISymbolsConvertors.LE09Activated(),
+        DMI_SYMB_STATUS_LE10 =&gt; DMISymbolsConvertors.LE10Activated(),
+        DMI_SYMB_STATUS_LE11 =&gt; DMISymbolsConvertors.LE11Activated(),
+        DMI_SYMB_STATUS_LE12 =&gt; DMISymbolsConvertors.LE12Activated(),
+        DMI_SYMB_STATUS_LE13 =&gt; DMISymbolsConvertors.LE13Activated(),
+        DMI_SYMB_STATUS_LE14 =&gt; DMISymbolsConvertors.LE14Activated(),
+        DMI_SYMB_STATUS_LE15 =&gt; DMISymbolsConvertors.LE15Activated(),
+        DMI_SYMB_STATUS_MO01 =&gt; DMISymbolsConvertors.MO01Activated(),
+        DMI_SYMB_STATUS_MO02 =&gt; DMISymbolsConvertors.MO02Activated(),
+        DMI_SYMB_STATUS_MO03 =&gt; DMISymbolsConvertors.MO03Activated(),
+        DMI_SYMB_STATUS_MO04 =&gt; DMISymbolsConvertors.MO04Activated(),
+        DMI_SYMB_STATUS_MO05 =&gt; DMISymbolsConvertors.MO05Activated(),
+        DMI_SYMB_STATUS_MO06 =&gt; DMISymbolsConvertors.MO06Activated(),
+        DMI_SYMB_STATUS_MO07 =&gt; DMISymbolsConvertors.MO07Activated(),
+        DMI_SYMB_STATUS_MO08 =&gt; DMISymbolsConvertors.MO08Activated(),
+        DMI_SYMB_STATUS_MO09 =&gt; DMISymbolsConvertors.MO09Activated(),
+        DMI_SYMB_STATUS_MO10 =&gt; DMISymbolsConvertors.MO10Activated(),
+        DMI_SYMB_STATUS_MO11 =&gt; DMISymbolsConvertors.MO11Activated(),
+        DMI_SYMB_STATUS_MO12 =&gt; DMISymbolsConvertors.MO12Activated(),
+        DMI_SYMB_STATUS_MO13 =&gt; DMISymbolsConvertors.MO13Activated(),
+        DMI_SYMB_STATUS_MO14 =&gt; DMISymbolsConvertors.MO14Activated(),
+        DMI_SYMB_STATUS_MO15 =&gt; DMISymbolsConvertors.MO15Activated(),
+        DMI_SYMB_STATUS_MO16 =&gt; DMISymbolsConvertors.MO16Activated(),
+        DMI_SYMB_STATUS_MO17 =&gt; DMISymbolsConvertors.MO17Activated(),
+        DMI_SYMB_STATUS_MO18 =&gt; DMISymbolsConvertors.MO18Activated(),
+        DMI_SYMB_STATUS_MO19 =&gt; DMISymbolsConvertors.MO19Activated(),
+        DMI_SYMB_STATUS_MO20 =&gt; DMISymbolsConvertors.MO20Activated(),
+        DMI_SYMB_STATUS_MO21 =&gt; DMISymbolsConvertors.MO21Activated(),
+        DMI_SYMB_STATUS_MO22 =&gt; DMISymbolsConvertors.MO22Activated(),
+        DMI_SYMB_STATUS_ST01 =&gt; DMISymbolsConvertors.ST01Activated(),
+        DMI_SYMB_STATUS_ST02 =&gt; DMISymbolsConvertors.ST02Activated(),
+        DMI_SYMB_STATUS_ST03 =&gt; DMISymbolsConvertors.ST03Activated(),
+        DMI_SYMB_STATUS_ST04 =&gt; DMISymbolsConvertors.ST04Activated(),
+        DMI_SYMB_STATUS_ST05 =&gt; DMISymbolsConvertors.ST05Activated(),
+        DMI_SYMB_STATUS_ST06 =&gt; DMISymbolsConvertors.ST06Activated(),
+        DMI_SYMB_STATUS_TC01 =&gt; DMISymbolsConvertors.TC01Activated(),
+        DMI_SYMB_STATUS_TC02 =&gt; DMISymbolsConvertors.TC02Activated(),
+        DMI_SYMB_STATUS_TC03 =&gt; DMISymbolsConvertors.TC03Activated(),
+        DMI_SYMB_STATUS_TC04 =&gt; DMISymbolsConvertors.TC04Activated(),
+        DMI_SYMB_STATUS_TC05 =&gt; DMISymbolsConvertors.TC05Activated(),
+        DMI_SYMB_STATUS_TC06 =&gt; DMISymbolsConvertors.TC06Activated(),
+        DMI_SYMB_STATUS_TC07 =&gt; DMISymbolsConvertors.TC07Activated(),
+        DMI_SYMB_STATUS_TC08 =&gt; DMISymbolsConvertors.TC08Activated(),
+        DMI_SYMB_STATUS_TC09 =&gt; DMISymbolsConvertors.TC09Activated(),
+        DMI_SYMB_STATUS_TC10 =&gt; DMISymbolsConvertors.TC10Activated(),
+        DMI_SYMB_STATUS_TC11 =&gt; DMISymbolsConvertors.TC11Activated(),
+        DMI_SYMB_STATUS_TC12 =&gt; DMISymbolsConvertors.TC12Activated(),
+        DMI_SYMB_STATUS_TC13 =&gt; DMISymbolsConvertors.TC13Activated(),
+        DMI_SYMB_STATUS_TC14 =&gt; DMISymbolsConvertors.TC14Activated(),
+        DMI_SYMB_STATUS_TC15 =&gt; DMISymbolsConvertors.TC15Activated(),
+        DMI_SYMB_STATUS_TC16 =&gt; DMISymbolsConvertors.TC16Activated(),
+        DMI_SYMB_STATUS_TC17 =&gt; DMISymbolsConvertors.TC17Activated(),
+        DMI_SYMB_STATUS_TC18 =&gt; DMISymbolsConvertors.TC18Activated(),
+        DMI_SYMB_STATUS_TC19 =&gt; DMISymbolsConvertors.TC19Activated(),
+        DMI_SYMB_STATUS_TC20 =&gt; DMISymbolsConvertors.TC20Activated(),
+        DMI_SYMB_STATUS_TC21 =&gt; DMISymbolsConvertors.TC21Activated(),
+        DMI_SYMB_STATUS_TC22 =&gt; DMISymbolsConvertors.TC22Activated(),
+        DMI_SYMB_STATUS_TC23 =&gt; DMISymbolsConvertors.TC23Activated(),
+        DMI_SYMB_STATUS_TC24 =&gt; DMISymbolsConvertors.TC24Activated(),
+        DMI_SYMB_STATUS_TC25 =&gt; DMISymbolsConvertors.TC25Activated(),
+        DMI_SYMB_STATUS_TC26 =&gt; DMISymbolsConvertors.TC26Activated(),
+        DMI_SYMB_STATUS_TC27 =&gt; DMISymbolsConvertors.TC27Activated(),
+        DMI_SYMB_STATUS_TC28 =&gt; DMISymbolsConvertors.TC28Activated(),
+        DMI_SYMB_STATUS_TC29 =&gt; DMISymbolsConvertors.TC29Activated(),
+        DMI_SYMB_STATUS_TC30 =&gt; DMISymbolsConvertors.TC30Activated(),
+        DMI_SYMB_STATUS_TC31 =&gt; DMISymbolsConvertors.TC31Activated(),
+        DMI_SYMB_STATUS_TC32 =&gt; DMISymbolsConvertors.TC32Activated(),
+        DMI_SYMB_STATUS_TC33 =&gt; DMISymbolsConvertors.TC33Activated(),
+        DMI_SYMB_STATUS_TC34 =&gt; DMISymbolsConvertors.TC34Activated(),
+        DMI_SYMB_STATUS_TC35 =&gt; DMISymbolsConvertors.TC35Activated(),
+        DMI_SYMB_STATUS_TC36 =&gt; DMISymbolsConvertors.TC36Activated(),
+        DMI_SYMB_STATUS_TC37 =&gt; DMISymbolsConvertors.TC37Activated(),
+        DMI_SYMB_STATUS_DR01 =&gt; DMISymbolsConvertors.DR01Activated(),
+        DMI_SYMB_STATUS_DR02 =&gt; DMISymbolsConvertors.DR02Activated(),
+        DMI_SYMB_STATUS_DR03 =&gt; DMISymbolsConvertors.DR03Activated(),
+        DMI_SYMB_STATUS_DR04 =&gt; DMISymbolsConvertors.DR04Activated(),
+        DMI_SYMB_STATUS_DR05 =&gt; DMISymbolsConvertors.DR05Activated(),
+        DMI_SYMB_STATUS_LX01 =&gt; DMISymbolsConvertors.LX01Activated()
+    }
 }</Expression>
 </Case></Cases>
 </Function></Functions>
