@@ -1139,6 +1139,9 @@ namespace DataDictionary.Functions
 
                 if (useCache)
                 {
+                    ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, "Cached result = ");
+                    ExplanationPart.SetNamable(subExplanation, retVal);
+                    ExplanationPart.SetNamable(explain, retVal);
                     if (actuals.Count == 0)
                     {
                         CachedValue = retVal;

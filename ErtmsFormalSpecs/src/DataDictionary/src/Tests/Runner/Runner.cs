@@ -19,6 +19,7 @@ using DataDictionary.Interpreter;
 using DataDictionary.Rules;
 using DataDictionary.Tests.Runner.Events;
 using DataDictionary.Values;
+using Utils;
 
 namespace DataDictionary.Tests.Runner
 {
@@ -817,11 +818,11 @@ namespace DataDictionary.Tests.Runner
                 }
                 else
                 {
+                    ExplanationPart explanation = new ExplanationPart(expectation, "Expectation " + expectation.Expression);
                     try
                     {
                         if (expectation.getCyclePhase() == Generated.acceptor.RulePriority.defaultRulePriority || expectation.getCyclePhase() == priority)
                         {
-                            ExplanationPart explanation = new ExplanationPart(expectation, "Expectation " + expectation.Expression);
                             switch (expectation.getKind())
                             {
                                 case Generated.acceptor.ExpectationKind.aInstantaneous:
@@ -830,6 +831,10 @@ namespace DataDictionary.Tests.Runner
                                     {
                                         // An instantaneous expectation who reached its satisfactory condition
                                         EventTimeLine.AddModelEvent(new ExpectationReached(expect, priority, explanation), this);
+                                    }
+                                    else
+                                    {
+                                        expectation.Explain = explanation;
                                     }
                                     break;
 
@@ -848,6 +853,10 @@ namespace DataDictionary.Tests.Runner
                                                 // A continuous expectation who reached a case where it is not satisfied
                                                 EventTimeLine.AddModelEvent(new FailedExpectation(expect, priority, explanation), this);
                                             }
+                                            else
+                                            {
+                                                expectation.Explain = explanation;
+                                            }
                                         }
                                     }
                                     else
@@ -857,6 +866,10 @@ namespace DataDictionary.Tests.Runner
                                             // A continuous expectation who reached a case where it is not satisfied
                                             EventTimeLine.AddModelEvent(new FailedExpectation(expect, priority, explanation), this);
                                         }
+                                        else
+                                        {
+                                            expectation.Explain = explanation;
+                                        }
                                     }
                                     break;
                             }
@@ -864,7 +877,7 @@ namespace DataDictionary.Tests.Runner
                     }
                     catch (Exception e)
                     {
-                        expect.Expectation.AddException(e);
+                        expectation.AddErrorAndExplain (e.Message, explanation);
                     }
                 }
             }
