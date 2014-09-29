@@ -1,0 +1,1667 @@
+<NameSpace
+ X="870"
+ Y="10"
+ Width="100"
+ Height="50"
+ Name="DMISymbolsConvertors"
+ Guid="4577627d-97c1-4347-9989-f470a7eb5ef4"
+>
+<Comment></Comment>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_LE01"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LE01Activated"
+ Guid="6d7c5ecb-373f-4e62-93fe-fe580ab7cdf1"
+>
+<ReqRef
+ Id="8704b1d9-4c80-4e31-8cc7-cd9a1df1b7c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d3a25061-2e8e-400b-a7a6-83d0549fefb0"
+>
+</ReqRef><Comment>Indicates if the symbol LE01 (corresponding to level 0) is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Activated"
+ Guid="e621cbdd-0023-479f-a54d-f76f6e9b588e"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="efad7130-b116-4d82-9d95-64862fe8f909"
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="06a133a0-369c-476a-be9b-8d276d388523"
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level == Level.L0</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE01.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="0569ff9e-cd15-4755-ab4c-50649f7c8957"
+>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE01.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_LE02"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LE02Activated"
+ Guid="a61f06a8-d024-4ce3-9fba-cdf507a3e8f5"
+>
+<ReqRef
+ Id="8704b1d9-4c80-4e31-8cc7-cd9a1df1b7c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0c1140c0-4c6c-4dbc-9ba0-f9396ace7d6c"
+>
+</ReqRef><Comment>Indicates if the symbol LE02 (corresponding to level NTC) is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Activated"
+ Guid="14887db0-94fc-4a7b-b25c-824c8c2e2057"
+>
+<PreConditions>
+<PreCondition
+ Guid="854b165a-c582-44a2-996f-89b71e74e774"
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level == Level.LNTC</PreCondition><PreCondition
+ Guid="6ec5615c-892f-453f-a159-fad62cd682ef"
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE02.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="2433e5a0-f34e-489e-9c53-eaf167116a72"
+>
+<Comment></Comment>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE02.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_LE03"
+ Default=""
+ X="220"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LE03Activated"
+ Guid="60488004-5588-4a3b-aae2-bbe4f35442ac"
+>
+<ReqRef
+ Id="8704b1d9-4c80-4e31-8cc7-cd9a1df1b7c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1ece1272-3d73-4c5d-abe0-c5511dfe7362"
+>
+</ReqRef><Comment>Indicates if the symbol LE03 (corresponding to level 1) is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Activated"
+ Guid="4759edac-87d5-4f0e-8f8f-947c07677e5c"
+>
+<PreConditions>
+<PreCondition
+ Guid="a8b56fbb-33fd-445a-ab0c-52bebc1a2e50"
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level == Level.L1</PreCondition><PreCondition
+ Guid="3a8b4bfe-a7b0-435c-a405-b5be64c0532e"
+><Comment></Comment>
+DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE03.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="5dae5bf8-e65d-4001-bdef-9114f5b04a94"
+>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE03.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_LE07"
+ Default=""
+ X="660"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LE07Activated"
+ Guid="72eb6b67-52a2-466d-97b5-06be67d2d9d8"
+>
+<ReqRef
+ Id="8704b1d9-4c80-4e31-8cc7-cd9a1df1b7c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4194b5b4-8477-42fa-a040-399fb7528bae"
+>
+</ReqRef><Comment>Indicates if the symbol LE07 (corresponding to acknowledgement of level 0 announcement) is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Activated"
+ Guid="08f91950-e741-4e42-8780-eca761d2253e"
+>
+<PreConditions>
+<PreCondition
+ Guid="0b8f51df-0547-49e2-9bf5-a3c082f3f914"
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level == Level.L0</PreCondition><PreCondition
+ Guid="f03e1f41-ce46-42a4-9a8b-42a448cca21d"
+><Comment></Comment>
+DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE07.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="24d48ae2-599c-4ebf-9297-fb1404fbefe5"
+>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE07.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_LE08"
+ Default=""
+ X="770"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LE08Activated"
+ Guid="ec098c9b-ad4c-416a-9173-69fb88f1aed3"
+>
+<ReqRef
+ Id="8704b1d9-4c80-4e31-8cc7-cd9a1df1b7c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f61910b1-ccdb-4dbd-8ebf-2bdeece37c63"
+>
+</ReqRef><Comment>Indicates if the symbol LE08 (corresponding to announcement of level NTC) is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Activated"
+ Guid="cd6faf7b-fbc8-41e0-992d-3205082ff8d3"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="65147de0-f77c-482c-a938-b75b6baf0540"
+>DMI.MasterDMI().Out_LevelTransitionAnnouncement.Level == Level.LNTC</PreCondition><PreCondition
+ Guid="287b03ea-cc0f-4ef8-9bec-b75db7d06942"
+>DMI.MasterDMI().Out_LevelTransitionAnnouncement.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE08.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="5f05664a-0a29-43c6-a014-39f6c0f7c42c"
+>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE08.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_LE09"
+ Default=""
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LE09Activated"
+ Guid="f5bbbcfc-cf20-40d1-88b0-9d26a5573d2f"
+>
+<ReqRef
+ Id="8704b1d9-4c80-4e31-8cc7-cd9a1df1b7c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7dd0beb4-bb67-4744-af95-271a439f5594"
+>
+</ReqRef><Comment>Indicates if the symbol LE09 (corresponding to acknowledgement of level NTC announcement) is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Activated"
+ Guid="97850d2f-1205-47fc-9cc8-2618ee5e97e8"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="2057c217-5f13-4463-943b-d1a678469aa7"
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level == Level.LNTC</PreCondition><PreCondition
+ Guid="da383b83-7151-496a-b9d4-ad0630a12f5d"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE09.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="0f8f4feb-bc34-40c8-9608-5e16fd685b06"
+>
+<Comment></Comment>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE09.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_LE10"
+ Default=""
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LE10Activated"
+ Guid="9cccbf11-4bc7-4ab8-90d4-8cb208821b38"
+>
+<ReqRef
+ Id="8704b1d9-4c80-4e31-8cc7-cd9a1df1b7c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="06b1cf22-2530-45eb-b524-1ce53fe397ec"
+>
+</ReqRef><Comment>Indicates if the symbol LE10 (corresponding to announcement of level 1) is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Activated"
+ Guid="9a3b03f7-cc65-400d-9d5f-f50c083ac5c8"
+>
+<PreConditions>
+<PreCondition
+ Guid="239afb58-994d-4171-bc25-0c94aee599f2"
+>DMI.MasterDMI().Out_LevelTransitionAnnouncement.Level == Level.L1</PreCondition><PreCondition
+ Guid="bb056622-98f8-44e2-a053-dedfad2f480f"
+>DMI.MasterDMI().Out_LevelTransitionAnnouncement.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE10.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="9928adae-ebb2-4f3b-b330-3abad70c794e"
+>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE10.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_LE11"
+ Default=""
+ X="220"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LE11Activated"
+ Guid="d5420701-ae52-4cf0-bdb9-3f2935ce6784"
+>
+<ReqRef
+ Id="8704b1d9-4c80-4e31-8cc7-cd9a1df1b7c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eaa2e6db-1778-49cb-9cc2-a25482147840"
+>
+</ReqRef><Comment>Indicates if the symbol LE11 (corresponding to acknowledgement of level 1 announcement) is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Activated"
+ Guid="f1524acd-9cb7-4ea0-bfe3-2771be43310d"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="015e5b94-1152-4474-b1ae-e73540d11b08"
+><Comment></Comment>
+DMI.MasterDMI().In_AcknOfLevelTransition.Level == Level.L1</PreCondition><PreCondition
+ Guid="e5635f2b-0453-43a4-bacb-060c147bdac5"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE11.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="32fc0b5d-50ca-48ff-b47c-2c882c2804e4"
+>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE11.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_LE12"
+ Default=""
+ X="330"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="LE12Activated"
+ Guid="133fef65-e879-42f5-ab1a-df3e929c1bed"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="d79e0a6a-794f-47d3-9b6c-c2b4d4390d63"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_LE13"
+ Default=""
+ X="440"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="LE13Activated"
+ Guid="b4f7e8e1-6e75-4999-866a-c3b0fe48a79f"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="f670312c-4d9d-4ee3-89e0-f0da1594e4f7"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_LE14"
+ Default=""
+ X="550"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="LE14Activated"
+ Guid="1f15268c-7c9b-42cb-a5d2-7e5e0b212525"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="053a4cf3-1ca3-4c72-9060-1dafa6158417"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_LE04"
+ Default=""
+ X="330"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LE04Activated"
+ Guid="bc74163c-9f59-42f9-a034-44444d29187e"
+>
+<ReqRef
+ Id="8704b1d9-4c80-4e31-8cc7-cd9a1df1b7c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="72a139c1-1db6-4b5b-86e9-886b9359853d"
+>
+</ReqRef><Comment>Indicates if the symbol LE04 (corresponding to level 2) is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Activated"
+ Guid="1d36246b-d801-4ced-a1d8-e06e174e6be0"
+>
+<PreConditions>
+<PreCondition
+ Guid="b384b1fd-a1c4-41c4-b5c1-3b4823905860"
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level == Level.L2</PreCondition><PreCondition
+ Guid="816ffce8-e33c-44b9-9b37-5c8d2b6c5205"
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE04.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="69b7c24b-c276-485a-8152-6c49b1cc2176"
+>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE04.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_LE05"
+ Default=""
+ X="440"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LE05Activated"
+ Guid="0cd49955-8379-4079-82cb-8b6dbef30f4e"
+>
+<ReqRef
+ Id="8704b1d9-4c80-4e31-8cc7-cd9a1df1b7c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ddbe0425-f26b-4ed1-b2a5-5ca6e949cc1e"
+>
+</ReqRef><Comment>Indicates if the symbol LE05 (corresponding to level 3) is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Activated"
+ Guid="bc8e18a0-4f9b-4c75-aaa1-145855493b24"
+>
+<PreConditions>
+<PreCondition
+ Guid="047f9e7e-f105-4672-9f2b-e029279dc614"
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level == Level.L3</PreCondition><PreCondition
+ Guid="792897fc-27b7-4eb8-b85b-97a421464deb"
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE05.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="d7a2feb5-4002-4b12-b505-13120ed25e6c"
+>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE05.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_LE06"
+ Default=""
+ X="550"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LE06Activated"
+ Guid="b748a7d9-63e2-48fa-b166-4780c8c3f2eb"
+>
+<ReqRef
+ Id="8704b1d9-4c80-4e31-8cc7-cd9a1df1b7c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e87de9e1-3268-470b-a8a5-9e0a06015562"
+>
+</ReqRef><Comment>Indicates if the symbol LE06 (corresponding to announcement of level 0) is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Activated"
+ Guid="845a9aa3-337f-4556-bb37-9e2dbf9a8b64"
+>
+<PreConditions>
+<PreCondition
+ Guid="b7a38d8b-7d49-4d44-b0f7-47a89e1d8161"
+>DMI.MasterDMI().Out_LevelTransitionAnnouncement.Level == Level.L0</PreCondition><PreCondition
+ Guid="439bbdbc-ccf9-4343-859f-e7f02bef715b"
+><Comment></Comment>
+DMI.MasterDMI().Out_LevelTransitionAnnouncement.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE06.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="77e822d1-a9d3-4641-8947-8594e88adb3a"
+>
+<Expression>Messages.JRU.DMI_SYMB_STATUS_LE06.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_LE15"
+ Default=""
+ X="660"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="LE15Activated"
+ Guid="dbc97f6f-449d-436b-b6c4-ab1d2ecb4251"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="0c28fe8e-d2a0-47c6-b6b5-3fe4f4a79588"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO01"
+ Default=""
+ Y="140"
+ Width="100"
+ Height="50"
+ Name="MO01Activated"
+ Guid="5305a401-05e3-4013-8643-0d2ab56ea2f9"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="1bbde342-3f52-4037-a0e5-21578ddd0ca3"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO02"
+ Default=""
+ X="110"
+ Y="140"
+ Width="100"
+ Height="50"
+ Name="MO02Activated"
+ Guid="eaa1b330-005a-4910-9c8c-dbb2626162da"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="9bf3e85b-14ae-480b-8f61-0977ccd41e2d"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO13"
+ Default=""
+ X="440"
+ Y="200"
+ Width="100"
+ Height="50"
+ Name="MO13Activated"
+ Guid="cc5787d9-02f4-43b8-b0b8-f0d4e5dafa13"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="dd193d36-1157-412b-bff1-3f97f02b21ef"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO16"
+ Default=""
+ X="770"
+ Y="200"
+ Width="100"
+ Height="50"
+ Name="MO16Activated"
+ Guid="7fe8afd4-fcba-424e-8d90-d62721ff8bf9"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="55d28ab4-73ff-4649-8d25-966ed5f98e02"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO17"
+ Default=""
+ Y="260"
+ Width="100"
+ Height="50"
+ Name="MO17Activated"
+ Guid="888bee65-7d7f-43ea-88ec-95d71c439ba7"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="06130394-1ed4-4d43-8680-a9ac37ecfef2"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO18"
+ Default=""
+ X="110"
+ Y="260"
+ Width="100"
+ Height="50"
+ Name="MO18Activated"
+ Guid="8ccf1a08-3a68-4547-b81f-f09f4a1052a9"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="a0e9d657-a166-47ea-b41b-b39aaa36a5a7"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO19"
+ Default=""
+ X="220"
+ Y="260"
+ Width="100"
+ Height="50"
+ Name="MO19Activated"
+ Guid="d3ead2c5-f28d-41d0-a0de-ad9a50abcc10"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="00570dda-a7ba-4df3-ac79-1e51908235df"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO20"
+ Default=""
+ X="330"
+ Y="260"
+ Width="100"
+ Height="50"
+ Name="MO20Activated"
+ Guid="25c634d3-242d-4b4b-9881-fbe327321aec"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="cd7183fd-6c7c-4679-a270-c96b8ef7552a"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO21"
+ Default=""
+ X="440"
+ Y="260"
+ Width="100"
+ Height="50"
+ Name="MO21Activated"
+ Guid="c9a08268-7a09-4777-abb6-6385c5f9ff20"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="23fd76cf-71af-48f4-9432-3d5dcd129bec"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO22"
+ Default=""
+ X="550"
+ Y="260"
+ Width="100"
+ Height="50"
+ Name="MO22Activated"
+ Guid="0f3483cc-d0d0-42c9-b85a-a600cf97f359"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="fbf14f9a-f252-4513-9a4e-abe19b11c8d1"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO03"
+ Default=""
+ X="220"
+ Y="140"
+ Width="100"
+ Height="50"
+ Name="MO03Activated"
+ Guid="9d021faa-a57e-4f1c-86c8-eede97aa2a91"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="2a90fe74-f93c-47af-bdd7-7e128e25c71c"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO04"
+ Default=""
+ X="330"
+ Y="140"
+ Width="100"
+ Height="50"
+ Name="MO04Activated"
+ Guid="8199539a-efe6-476e-9dc7-3af2737d45e7"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="1526624b-e377-4acb-9248-a05a25413d56"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO05"
+ Default=""
+ X="440"
+ Y="140"
+ Width="100"
+ Height="50"
+ Name="MO05Activated"
+ Guid="211dd166-d2df-4f24-a076-9db0cccacfec"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="75958a98-1832-48a9-862a-95647dceb8d1"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO06"
+ Default=""
+ X="550"
+ Y="140"
+ Width="100"
+ Height="50"
+ Name="MO06Activated"
+ Guid="3116b559-9626-41eb-90e9-e06527f196e2"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="91264e12-ab05-4f50-a22f-c33d5728f913"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO07"
+ Default=""
+ X="660"
+ Y="140"
+ Width="100"
+ Height="50"
+ Name="MO07Activated"
+ Guid="8f0f0391-db23-4e7b-854c-d28d0321d510"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="11f36200-d02e-47f4-96af-202e690a6dab"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO08"
+ Default=""
+ X="770"
+ Y="140"
+ Width="100"
+ Height="50"
+ Name="MO08Activated"
+ Guid="ca8540e4-392e-48b5-87e2-815ce8a63309"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="c2af6c7f-aafb-4236-80ee-48f062f16001"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO09"
+ Default=""
+ Y="200"
+ Width="100"
+ Height="50"
+ Name="MO09Activated"
+ Guid="dbfaac45-4693-435a-8ee9-76b7b2b34ede"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="5b38a430-559f-4d01-86ca-6257538e7354"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO10"
+ Default=""
+ X="110"
+ Y="200"
+ Width="100"
+ Height="50"
+ Name="MO10Activated"
+ Guid="82843f9b-e5e5-48ec-bee9-d691736cdf27"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="26dc027b-fa94-4a60-8b17-bbb161580999"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO11"
+ Default=""
+ X="220"
+ Y="200"
+ Width="100"
+ Height="50"
+ Name="MO11Activated"
+ Guid="30af0a98-03de-4960-8247-d3e75cbdc938"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="8b13dd07-3c4c-4fcc-83c1-23c9579bedd2"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO12"
+ Default=""
+ X="330"
+ Y="200"
+ Width="100"
+ Height="50"
+ Name="MO12Activated"
+ Guid="629c52b0-c0b9-4561-9a1e-f74d0a2663f5"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="4adeabf1-6d89-48a6-87cf-d72d2cc5eb0e"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO14"
+ Default=""
+ X="550"
+ Y="200"
+ Width="100"
+ Height="50"
+ Name="MO14Activated"
+ Guid="e4be2ffc-8306-4bfa-b92b-d132666b8eda"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="292546b9-ad6f-41bc-b8c4-103d2a98dd6d"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_MO15"
+ Default=""
+ X="660"
+ Y="200"
+ Width="100"
+ Height="50"
+ Name="MO15Activated"
+ Guid="23077321-a1c4-42bb-b58c-01dab5bc67ac"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="184875d9-5fe5-459c-a013-73e6e6250eb2"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_ST01"
+ Default=""
+ Y="340"
+ Width="100"
+ Height="50"
+ Name="ST01Activated"
+ Guid="ae8eb9b0-f02e-45dc-8874-b70ee8534df7"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="9087a44f-f051-41bb-851a-80a1f358788a"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_ST02"
+ Default=""
+ X="110"
+ Y="340"
+ Width="100"
+ Height="50"
+ Name="ST02Activated"
+ Guid="f6a09053-8899-44cb-8f0f-e9657a8575f0"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="e9b39c5b-9cf1-43d3-a5cf-6d3cce9faa14"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_ST03"
+ Default=""
+ X="220"
+ Y="340"
+ Width="100"
+ Height="50"
+ Name="ST03Activated"
+ Guid="df7787d6-d729-433b-b19c-d638c9b9df26"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="e10010b2-aa62-481e-8ab9-9df38351d0c2"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_ST04"
+ Default=""
+ X="330"
+ Y="340"
+ Width="100"
+ Height="50"
+ Name="ST04Activated"
+ Guid="3792a1e5-9ec6-474b-b4f5-341468670df6"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="5ecc6ecf-891e-468c-98d5-909d0a43f132"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_ST05"
+ Default=""
+ X="440"
+ Y="340"
+ Width="100"
+ Height="50"
+ Name="ST05Activated"
+ Guid="30721195-284d-485c-827e-b74847dc60f9"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="e760012b-4f2b-4d71-ae9a-64688eddefa6"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_ST06"
+ Default=""
+ X="550"
+ Y="340"
+ Width="100"
+ Height="50"
+ Name="ST06Activated"
+ Guid="45d4be3e-ac50-4f51-adbd-30c6e6672f0c"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="6a7566c9-bbe6-4e6c-9bce-e78ba68b79d3"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC01"
+ Default=""
+ Y="420"
+ Width="100"
+ Height="50"
+ Name="TC01Activated"
+ Guid="19d003e5-9538-4559-9ebe-f56fd9cd5022"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="2aee7fd0-139d-40c3-a89d-8ae3779228fb"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC02"
+ Default=""
+ X="110"
+ Y="420"
+ Width="100"
+ Height="50"
+ Name="TC02Activated"
+ Guid="d50298ba-966f-403d-b048-9cd221a21fea"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="75b0dcfa-cc69-4331-b83c-bb0a0b63e438"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC13"
+ Default=""
+ X="440"
+ Y="480"
+ Width="100"
+ Height="50"
+ Name="TC13Activated"
+ Guid="4e48e238-0021-4e87-b256-3cb13052b7a8"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="2df25e5c-9404-40d7-8025-246f3a72027d"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC24"
+ Default=""
+ X="770"
+ Y="540"
+ Width="100"
+ Height="50"
+ Name="TC24Activated"
+ Guid="a7b98d26-9dd2-44e4-acca-7b672b8f657f"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="80873571-3e51-44d5-9928-1b88cacf920d"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC32"
+ Default=""
+ X="770"
+ Y="600"
+ Width="100"
+ Height="50"
+ Name="TC32Activated"
+ Guid="f726af98-feeb-4fe5-96e0-47a672a6a519"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="b801dbf5-a3d0-4514-bb1e-f14d996b3aea"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC33"
+ Default=""
+ Y="660"
+ Width="100"
+ Height="50"
+ Name="TC33Activated"
+ Guid="331e0fe4-a963-42fc-a38d-968e6986a391"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="45b4eb55-5916-42d3-ba3c-4afa0680de1a"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC34"
+ Default=""
+ X="110"
+ Y="660"
+ Width="100"
+ Height="50"
+ Name="TC34Activated"
+ Guid="39bd0b0c-7f9d-45af-ba5c-4b7a852b8c9a"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="6fe33cc9-8936-4c58-9661-b5f1cc94c523"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC35"
+ Default=""
+ X="220"
+ Y="660"
+ Width="100"
+ Height="50"
+ Name="TC35Activated"
+ Guid="a5979aa2-91e9-4ad7-8301-d78c095f03d2"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="325f4ddf-4b8d-40bd-8f79-023545ed7686"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC36"
+ Default=""
+ X="330"
+ Y="660"
+ Width="100"
+ Height="50"
+ Name="TC36Activated"
+ Guid="749cc71e-52ad-474f-9824-937a1ce7808c"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="cdd974d8-7d7c-44c1-a824-d7fcf8d0b1f0"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC37"
+ Default=""
+ X="440"
+ Y="660"
+ Width="100"
+ Height="50"
+ Name="TC37Activated"
+ Guid="2b90d9eb-cbcc-45c1-9db3-f6e09affbb63"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="6355a906-ec4d-4d9c-b1d7-94f3bfb32a5d"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC03"
+ Default=""
+ X="220"
+ Y="420"
+ Width="100"
+ Height="50"
+ Name="TC03Activated"
+ Guid="903bc3d4-8de8-47eb-91d3-5e5a4cd4b82f"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="45349b40-ad3c-4f92-9d64-5b2dc301c920"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC04"
+ Default=""
+ X="330"
+ Y="420"
+ Width="100"
+ Height="50"
+ Name="TC04Activated"
+ Guid="961c6fbc-eb72-45ad-82a3-6c50173e3f01"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="766bd37a-eec2-4d80-907e-95148c472c00"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC05"
+ Default=""
+ X="440"
+ Y="420"
+ Width="100"
+ Height="50"
+ Name="TC05Activated"
+ Guid="72097efe-3400-4dde-b96a-694f5157507f"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="85398cf4-6dbc-4b59-be1b-ddb744bcfe0f"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC06"
+ Default=""
+ X="550"
+ Y="420"
+ Width="100"
+ Height="50"
+ Name="TC06Activated"
+ Guid="8a391c9e-826a-4105-8ad9-fff4e9ebed63"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="85c19e83-156b-4f54-8492-2f948668dc86"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC07"
+ Default=""
+ X="660"
+ Y="420"
+ Width="100"
+ Height="50"
+ Name="TC07Activated"
+ Guid="84bad594-1c2d-4a5c-857f-a4419146f9f5"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="655e91bb-a3bb-41b3-a3c5-e1e93e47975d"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC08"
+ Default=""
+ X="770"
+ Y="420"
+ Width="100"
+ Height="50"
+ Name="TC08Activated"
+ Guid="2e168a07-44cd-48d8-9849-13bff0102593"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="221779fa-6a2a-49cd-8828-19a1f31d3bb7"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC09"
+ Default=""
+ Y="480"
+ Width="100"
+ Height="50"
+ Name="TC09Activated"
+ Guid="46234dae-262d-4913-8527-da556a4b3a7b"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="cee0acf9-32fa-4332-954b-194967fc117e"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC10"
+ Default=""
+ X="110"
+ Y="480"
+ Width="100"
+ Height="50"
+ Name="TC10Activated"
+ Guid="255f23b6-5e39-4883-af86-0dbb04c33ba9"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="89f34ad7-1da8-4ba3-b9ad-36c2eadb5880"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC11"
+ Default=""
+ X="220"
+ Y="480"
+ Width="100"
+ Height="50"
+ Name="TC11Activated"
+ Guid="df236151-f162-4dd3-a91a-4919d85ba9c4"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="c2d3615b-2232-4d48-bb21-79ef85024f09"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC12"
+ Default=""
+ X="330"
+ Y="480"
+ Width="100"
+ Height="50"
+ Name="TC12Activated"
+ Guid="5a60e378-bf1e-429f-8786-58472c157446"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="220d857d-fe5b-41c3-bbec-449361915801"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC14"
+ Default=""
+ X="550"
+ Y="480"
+ Width="100"
+ Height="50"
+ Name="TC14Activated"
+ Guid="59c150fb-2a18-490f-ad8d-a20d9c6bd608"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="d72811cb-bb42-40c7-88a5-d0bc2465d3e4"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC15"
+ Default=""
+ X="660"
+ Y="480"
+ Width="100"
+ Height="50"
+ Name="TC15Activated"
+ Guid="e61b4efb-71b0-4c5b-8854-d6d7cc30e36a"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="701f18f7-2d6c-4680-8492-185c756b6a00"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC16"
+ Default=""
+ X="770"
+ Y="480"
+ Width="100"
+ Height="50"
+ Name="TC16Activated"
+ Guid="2b51956f-e018-46a5-96ae-e9c144601e45"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="0856174c-7bd1-461d-862b-43c57b253a84"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC17"
+ Default=""
+ Y="540"
+ Width="100"
+ Height="50"
+ Name="TC17Activated"
+ Guid="0b129cdc-0c3f-42eb-a348-5ff97c5243e1"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="c2c6d719-a66d-44cf-bade-3b7e18125dc8"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC18"
+ Default=""
+ X="110"
+ Y="540"
+ Width="100"
+ Height="50"
+ Name="TC18Activated"
+ Guid="fb8c7a10-dc60-4f06-9ec7-fcf1f17ad2eb"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="e9d9392b-6cde-4cb0-8335-f85729402889"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC19"
+ Default=""
+ X="220"
+ Y="540"
+ Width="100"
+ Height="50"
+ Name="TC19Activated"
+ Guid="03732526-e0ad-4241-8486-7d5a8dbf08d7"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="9484ae9a-dbbf-471d-a933-976f4739e120"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC20"
+ Default=""
+ X="330"
+ Y="540"
+ Width="100"
+ Height="50"
+ Name="TC20Activated"
+ Guid="2b8badfc-a03e-4315-8294-34243b1afa9d"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="e04d88d4-03f5-4b5d-9186-037aef6c68e5"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC21"
+ Default=""
+ X="440"
+ Y="540"
+ Width="100"
+ Height="50"
+ Name="TC21Activated"
+ Guid="6d491ed9-19f1-4ac2-b0fe-1c4293bc3c1b"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="f5b27a43-c763-460e-949d-d76dd4c4d22d"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC22"
+ Default=""
+ X="550"
+ Y="540"
+ Width="100"
+ Height="50"
+ Name="TC22Activated"
+ Guid="f2abc61c-b686-40e0-aeaa-19d74e14d58b"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="a41635d9-23a7-46e1-8538-24b5bae97c67"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC23"
+ Default=""
+ X="660"
+ Y="540"
+ Width="100"
+ Height="50"
+ Name="TC23Activated"
+ Guid="ed4e5cfe-8757-4be8-a41f-a603563786ba"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="77f9b656-d87f-4c71-8f93-714a0fd0311f"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC25"
+ Default=""
+ Y="600"
+ Width="100"
+ Height="50"
+ Name="TC25Activated"
+ Guid="f82362a8-91b5-45d5-9f55-85caf1b439a4"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="8780b9f5-37bf-4c68-93a1-c8e077e36936"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC26"
+ Default=""
+ X="110"
+ Y="600"
+ Width="100"
+ Height="50"
+ Name="TC26Activated"
+ Guid="9b0dfe53-6a40-46bb-8e1c-e8bf995419e1"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="797f88d9-561d-4835-9979-fa06c9411885"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC27"
+ Default=""
+ X="220"
+ Y="600"
+ Width="100"
+ Height="50"
+ Name="TC27Activated"
+ Guid="4682f0b1-f7c3-45d4-a0d7-c5d94f95ecfd"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="563699ee-c9bc-4223-8cac-6dd47498990d"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC28"
+ Default=""
+ X="330"
+ Y="600"
+ Width="100"
+ Height="50"
+ Name="TC28Activated"
+ Guid="a44f66c1-be9e-421d-ace8-0e0c916796e0"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="8ded3397-da4b-4435-b45a-d6536dce14bf"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC29"
+ Default=""
+ X="440"
+ Y="600"
+ Width="100"
+ Height="50"
+ Name="TC29Activated"
+ Guid="aef20556-0dce-41e3-85a5-a9c605334e46"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="bfd755c3-4e87-4848-ad10-a3aea37ae355"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC30"
+ Default=""
+ X="550"
+ Y="600"
+ Width="100"
+ Height="50"
+ Name="TC30Activated"
+ Guid="d88b3a7e-c9ed-4d45-8298-c56bab36a3f2"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="bf84fed8-5392-4738-8d3c-ea1db4b5d436"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_TC31"
+ Default=""
+ X="660"
+ Y="600"
+ Width="100"
+ Height="50"
+ Name="TC31Activated"
+ Guid="7da31df2-6d75-4792-abe8-12901c899189"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="6a82f40a-d25d-4424-95c4-96118e09ab77"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_DR01"
+ Default=""
+ Y="740"
+ Width="100"
+ Height="50"
+ Name="DR01Activated"
+ Guid="e325ca78-1909-4751-9a55-d8dd51a3a4b8"
+>
+<Comment></Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="29457cb2-f3f9-488c-b9af-5c694403262e"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_DR02"
+ Default=""
+ X="110"
+ Y="740"
+ Width="100"
+ Height="50"
+ Name="DR02Activated"
+ Guid="cb344483-4d69-4789-9961-7d515d5adb71"
+>
+<Comment></Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="6681ea8d-e6f3-4463-8643-b933e94c3a8e"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_DR03"
+ Default=""
+ X="220"
+ Y="740"
+ Width="100"
+ Height="50"
+ Name="DR03Activated"
+ Guid="7fea219b-968c-4bfa-93ac-7dddddc5aca6"
+>
+<Comment></Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="c28d6eea-582b-4f8c-90b4-0adf0a86b410"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_DR04"
+ Default=""
+ X="330"
+ Y="740"
+ Width="100"
+ Height="50"
+ Name="DR04Activated"
+ Guid="89667ecc-f5c2-483b-9e10-e1ebf261144c"
+>
+<Comment></Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="7213a43f-5b4e-4995-ab22-b10312d07b1f"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_DR05"
+ Default=""
+ X="440"
+ Y="740"
+ Width="100"
+ Height="50"
+ Name="DR05Activated"
+ Guid="1e6df6a9-5b1c-4611-8701-cea155230f0b"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="394f4a2f-0b1c-4354-a91e-8149d90f8c7e"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYMB_STATUS_LX01"
+ Default=""
+ Y="820"
+ Width="100"
+ Height="50"
+ Name="LX01Activated"
+ Guid="5d58df7e-73de-435f-a1e8-700b86dbc3b4"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="3b7fdacf-accb-4149-983c-a6e416c84f71"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function></Functions>
+</NameSpace>
