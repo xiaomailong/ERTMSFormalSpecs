@@ -2101,7 +2101,7 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
 <Expression>Default.BaseTypes.Time ( TrainData.Value.TractionModel.Coefficient * A_traction ( EstimatedTrainAcceleration=&gt;Odometry.TrainAcceleration(), Gradient=&gt;TrackDescription.Gradient.A_gradient ( Odometry.NominalDistance ) ) + TrainData.Value.TractionModel.Constant )</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrainData.BrakingParameters.CorrectionFactor"
+ Type="Kernel.TrainData.BrakingParameters.CorrectionFactor"
  Default=""
  X="140"
  Y="440"
@@ -2938,7 +2938,7 @@ TIU.AdditionalBrakesActive
 <Expression>aModelSet.NoBrake</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrainData.BrakingParameters.CorrectionFactor"
+ Type="Kernel.TrainData.BrakingParameters.CorrectionFactor"
  Default=""
  X="1320"
  Y="500"
@@ -3439,7 +3439,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 (d, V)</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrainData.BrakingParameters.CorrectionFactor"
+ Type="Kernel.TrainData.BrakingParameters.CorrectionFactor"
  Cacheable="TRUE"
  Default=""
  X="760"

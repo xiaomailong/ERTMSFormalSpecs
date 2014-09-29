@@ -3251,7 +3251,8 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <Actions>
 <Action
  Guid="923ea094-6be5-481e-94d1-8cdc8568db9d"
->DMI.MasterDMI().In_TrainDataEntryRequest.InitiateRequest()</Action></Actions>
+><Comment></Comment>
+DMI.MasterDMI().In_TrainDataEntryRequest.InitiateRequest()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -4476,7 +4477,8 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2b36da43-0b7a-4792-b9f6-4e90a8ce706b"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment></Comment>
+<PreConditions>
 <PreCondition
  Guid="2b33748d-d204-4162-af58-ac54b3c897fd"
 >DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
