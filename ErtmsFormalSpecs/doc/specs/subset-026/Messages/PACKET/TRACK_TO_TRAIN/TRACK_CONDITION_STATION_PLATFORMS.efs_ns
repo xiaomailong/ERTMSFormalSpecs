@@ -1,8 +1,4 @@
 <NameSpace
- X="220"
- Y="180"
- Width="100"
- Height="50"
  Name="TRACK_CONDITION_STATION_PLATFORMS"
  Guid="cf15155a-b1e6-489e-93b9-adb08ff4c2e5"
 >
@@ -16,14 +12,14 @@
  Guid="97677114-4f79-4c6c-90a3-f9521d264170"
 >
 <ReqRef
- Id="275e3334-82a3-444d-8ca5-4d7482268ea0"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="65544ff1-8e36-448e-93fd-260e5f09b40e"
->
-</ReqRef><ReqRef
  Id="0be2ea06-0c8b-4622-9a32-bd8954c01555"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0f53bf31-0ba3-4da5-9779-55b40994ec86"
+>
+</ReqRef><ReqRef
+ Id="275e3334-82a3-444d-8ca5-4d7482268ea0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="65544ff1-8e36-448e-93fd-260e5f09b40e"
 >
 </ReqRef><Comment>The packet gives details concerning the location and height of station platforms for use by the train’s door control system</Comment>
 <StructureElement
@@ -53,7 +49,7 @@
  Guid="2da197ea-3746-4782-b916-153559c19523"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -92,7 +88,7 @@
  Guid="1bde4b61-6418-4c32-a93f-3f9986815e77"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -100,7 +96,7 @@
  Guid="f60ade4a-4403-4eeb-88c5-61acbdd93b5c"
 >
 </StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -108,7 +104,7 @@
  Guid="82d8bcd4-6f9e-4d35-a606-799c49d8168c"
 >
 </StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -159,7 +155,7 @@
  Guid="e9a5806a-7830-4b07-badf-468d0ebf13fa"
 >
 </ReqRef><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -167,7 +163,7 @@
  Guid="edfd788e-6145-4c19-a634-0a2f348fed53"
 >
 </StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -193,7 +189,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_STATION_PLATFORMS.SubStructure1"
+ TypeName="SubStructure1"
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"

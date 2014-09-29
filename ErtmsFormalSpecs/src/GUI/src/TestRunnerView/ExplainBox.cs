@@ -42,7 +42,7 @@ namespace GUI.TestRunnerView
                 if (explanation != null)
                 {
                     Text = explanation.Message;
-                }
+                }             
             }
 
             /// <summary>
@@ -81,6 +81,17 @@ namespace GUI.TestRunnerView
             InitializeComponent();
 
             explainTreeView.AfterSelect += new TreeViewEventHandler(explainTreeView_AfterSelect);
+            explainTreeView.BeforeExpand += new TreeViewCancelEventHandler(explainTreeView_BeforeExpand);
+        }
+
+        void explainTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+        {
+            ExplainTreeNode node = e.Node as ExplainTreeNode;
+            foreach ( ExplainTreeNode subNode in node.Nodes )
+            {
+                subNode.Nodes.Clear();
+                innerSetExplanation(subNode.Explanation, subNode, 1);
+            }
         }
 
         /// <summary>
@@ -93,18 +104,12 @@ namespace GUI.TestRunnerView
         {
             foreach (DataDictionary.Interpreter.ExplanationPart subPart in part.SubExplanations)
             {
-                ExplainTreeNode subNode = new ExplainTreeNode(subPart);
-                innerSetExplanation(subPart, subNode, level + 1);
-                node.Nodes.Add(subNode);
-            }
-
-            if (level <= 2)
-            {
-                node.Expand();
-            }
-            else
-            {
-                node.Collapse();
+                if (level < 2)
+                {
+                    ExplainTreeNode subNode = new ExplainTreeNode(subPart);
+                    innerSetExplanation(subPart, subNode, level + 1);
+                    node.Nodes.Add(subNode);
+                }
             }
         }
 

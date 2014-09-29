@@ -1,8 +1,4 @@
 <NameSpace
- X="220"
- Y="120"
- Width="100"
- Height="50"
  Name="SOM_POSITION_REPORT"
  Guid="cf2e8261-6fb8-45f6-8611-35187124d1ec"
 >
@@ -30,7 +26,7 @@
  Guid="1ab8711d-ee5c-48c7-a77f-6e9d115db4a7"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -43,7 +39,7 @@
  Guid="06976b13-6a34-4e79-a23b-4b518a37045e"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Time"
+ TypeName="MessageTypes.Time"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
@@ -134,7 +130,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Messages.MESSAGE.TRAIN_TO_TRACK.SOM_POSITION_REPORT.SubStructure1"
+ TypeName="SubStructure1"
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
