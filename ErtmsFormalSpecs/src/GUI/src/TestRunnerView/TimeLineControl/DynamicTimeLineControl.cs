@@ -22,6 +22,7 @@ namespace GUI.TestRunnerView.TimeLineControl
     using DataDictionary.Tests.Runner.Events;
     using DataDictionary.Tests.Runner;
     using System.Windows.Forms;
+    using DataDictionary.Interpreter;
 
     /// <summary>
     /// The static time line according to a TimeLine
@@ -115,8 +116,14 @@ namespace GUI.TestRunnerView.TimeLineControl
 
                 if (expectation != null)
                 {
+                    ExplanationPart explanation = expect.Explanation;
+                    if (explanation == null)
+                    {
+                        explanation = expectation.Explain;
+                    }
+
                     ExplainBox explainTextBox = new ExplainBox();
-                    explainTextBox.setExplanation(expect.Explanation);
+                    explainTextBox.setExplanation(explanation);
                     GUIUtils.MDIWindow.AddChildWindow(explainTextBox);
                 }
             }
