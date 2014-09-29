@@ -2362,6 +2362,32 @@ THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
 - RequestStatus (of type Request) is used to request begin displaying of some information that needs user&apos;s input.
 - DisplayRequested (of type Boolean) is the out variable. The information shall be displayed on DMI while DisplayRequested = true.
 - DriverAnswered (of type Boolean) is the in variable. DriverAnswered = true means that driver answered on the displayed request.</Comment>
+<Rules>
+<Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CleanUp"
+ Guid="f4fed9cd-163c-4bd7-81f4-d0c4574180ed"
+>
+<Comment>At clean up time, clears the flags indicating that the driver answered or the display is requested</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CleanUp"
+ Guid="0da5a9f9-fab4-4903-9da1-3ea6b61ae9b2"
+>
+<Comment></Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3b144618-b030-4ca2-9831-f6a8a6a2223d"
+>DriverAnswered &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -2392,8 +2418,6 @@ THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
 </PreConditions>
 <Actions>
 <Action
- Guid="0400a25c-46b3-4880-b87e-b8c4e9859910"
->DisplayRequested &lt;- False</Action><Action
  Guid="1ffe3487-ce94-44ef-a4fa-c404ad3237e0"
 ><Comment></Comment>
 DriverAnswered &lt;- True</Action><Action
@@ -2435,9 +2459,7 @@ DriverAnswered &lt;- True</Action><Action
 RequestStatus &lt;- Request.Request</Action><Action
  Guid="ec6b86e3-9e3e-42f2-ae1b-a06e09ba44da"
 ><Comment></Comment>
-DriverAnswered &lt;- False</Action><Action
- Guid="967f4590-4fab-41ad-b6de-6e8943cd8c6c"
->DisplayRequested &lt;- True</Action></Actions>
+DriverAnswered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2472,26 +2494,14 @@ DriverAnswered &lt;- False</Action><Action
  Guid="2ae47445-50c6-45fe-a4ba-6e9b00b07435"
 >RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="3e7f0cb1-d54b-47ad-8b54-6a523ac6fb6b"
->DriverAnswered &lt;- False</Action><Action
- Guid="e3ffba61-3770-4924-a78b-36a40de67aa8"
->DisplayRequested &lt;- False</Action></Actions>
+>DriverAnswered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
- TypeName="Boolean"
- Default=""
- Mode="Outgoing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayRequested"
- Guid="d7bee549-de45-4daf-a804-722f7584add7"
->
-<Comment>Indicates whether this request should be displayed on the DMI</Comment>
-</StructureElement><StructureElement
  TypeName="Default.Request"
  Default=""
- Mode="Internal"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RequestStatus"
@@ -2501,7 +2511,7 @@ DriverAnswered &lt;- False</Action><Action
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
- Mode="Incoming"
+ Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DriverAnswered"

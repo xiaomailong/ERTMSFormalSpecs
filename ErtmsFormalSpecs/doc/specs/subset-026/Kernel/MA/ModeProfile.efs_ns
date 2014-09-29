@@ -1312,7 +1312,8 @@ REMOVE ALL RemoveMode ( X ) IN  Profile</Action></Actions>
  Guid="66b2c6ba-7c31-4c87-9718-93a1cb7db83d"
 >ModeRelatedSpeedLimits.OSModeSpeedLimit() &gt; Odometry.TrainSpeed()</PreCondition><PreCondition
  Guid="9c07352e-7368-4267-b097-8f8ae8201d4d"
->NOT DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested</PreCondition></PreConditions>
+><Comment></Comment>
+NOT (DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus != Request.Request)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="82ba23e0-1820-477a-9003-f622746b0571"
@@ -1459,7 +1460,7 @@ REMOVE ALL RemoveMode ( X ) IN  Profile</Action></Actions>
 </ReqRef><PreConditions>
 <PreCondition
  Guid="1af308aa-11fd-4159-a0ff-6063b49cf8c5"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested</PreCondition><PreCondition
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Request</PreCondition><PreCondition
  Guid="70cd1e0f-c048-41cd-8dd3-f02be417fabf"
 >DriverAckTimer + Tack &gt;= DateAndTime.CurrentTime</PreCondition><PreCondition
  Guid="605c2a3c-b14b-4de0-b95c-62732be2bb6b"
@@ -1469,7 +1470,8 @@ REMOVE ALL RemoveMode ( X ) IN  Profile</Action></Actions>
 <Actions>
 <Action
  Guid="3b3023f7-80d9-48c3-a8e0-f3fd51dea270"
->TIU.EmergencyBrakeCommanded &lt;- True</Action><Action
+><Comment></Comment>
+TIU.EmergencyBrakeCommanded &lt;- True</Action><Action
  Guid="2339a3ad-fa96-46a4-a713-5c7326273104"
 >INSERT
     Kernel.EmergencyStop

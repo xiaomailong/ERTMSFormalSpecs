@@ -805,7 +805,7 @@ DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DoNotDisplay()</Action></
  Kind="Instantaneous"
  DeadLine="1"
  Guid="181e2062-4c34-4873-9f33-7733d7e1b1fa"
->NOT (DMI.MasterDMI().In_AcknOfRVMode.InputInformation.DisplayRequested)</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -853,7 +853,7 @@ DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DoNotDisplay()</Action></
  Kind="Instantaneous"
  DeadLine="1"
  Guid="2eb779f0-a826-4746-8c18-92e56602f6a7"
->DMI.MasterDMI().In_AcknOfRVMode.InputInformation.DisplayRequested</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step3 - Driver acknowledges RV"
  Guid="1b26efba-4d42-4234-bf10-eba63267f251"
@@ -913,7 +913,7 @@ Odometry.EstimatedSpeed &lt;- 50.0</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="fad9323a-3235-4c3d-8d88-41219b50c0b1"
->NOT (DMI.MasterDMI().In_AcknOfRVMode.InputInformation.DisplayRequested)</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
