@@ -117,22 +117,22 @@ namespace DataDictionary.Interpreter.ListOperators
                 if (resultType != null)
                 {
                     AccumulatorVariable.Value = resultType.getValue("0");
-
                     foreach (Values.IValue v in value.Val)
                     {
                         if (v != EFSSystem.EmptyValue)
                         {
+                            ElementFound = true;
                             IteratorVariable.Value = v;
                             if (conditionSatisfied(context, explain))
                             {
+                                MatchingElementFound = true;
                                 AccumulatorVariable.Value = Accumulator.GetValue(context, explain);
                             }
                         }
                         NextIteration();
                     }
                 }
-
-                EndIteration(context, token);
+                EndIteration(context, explain, token);
 
                 retVal = AccumulatorVariable.Value;
             }

@@ -66,9 +66,11 @@ namespace DataDictionary.Interpreter.ListOperators
                     {
                         if (v != EFSSystem.EmptyValue)
                         {
+                            ElementFound = true;
                             IteratorVariable.Value = v;
                             if (!conditionSatisfied(context, explain))
                             {
+                                MatchingElementFound = true;
                                 retVal = EFSSystem.BoolType.False;
                                 break;
                             }
@@ -76,7 +78,7 @@ namespace DataDictionary.Interpreter.ListOperators
                         NextIteration();
                     }
                 }
-                EndIteration(context, token);
+                EndIteration(context, explain, token);
             }
 
             return retVal;

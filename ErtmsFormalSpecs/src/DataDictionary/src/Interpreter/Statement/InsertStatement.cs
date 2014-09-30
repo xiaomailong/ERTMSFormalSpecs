@@ -224,11 +224,7 @@ namespace DataDictionary.Interpreter.Statement
 
                             Rules.Change change = new Rules.Change(variable, variable.Value, newListValue);
                             changes.Add(change, apply, runner);
-
-                            if (explanation != null)
-                            {
-                                explanation.SubExplanations.Add(new ExplanationPart(Root, change));
-                            }
+                            ExplanationPart.CreateSubExplanation(explanation, Root, change);
                         }
                         else
                         {

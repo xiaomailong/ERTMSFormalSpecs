@@ -337,12 +337,7 @@ namespace DataDictionary.Interpreter.Statement
         {
             foreach (Rules.RuleCondition condition in rule.RuleConditions)
             {
-                ExplanationPart conditionExplanation = null;
-                if (explanation != null)
-                {
-                    conditionExplanation = new ExplanationPart(condition, condition.Name);
-                    explanation.SubExplanations.Add(conditionExplanation);
-                }
+                ExplanationPart conditionExplanation = ExplanationPart.CreateSubExplanation(explanation, condition.Name);
 
                 if (condition.EvaluatePreConditions(ctxt, conditionExplanation, runner))
                 {

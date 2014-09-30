@@ -388,6 +388,7 @@ namespace DataDictionary.Interpreter
                                     }
                                     else
                                     {
+                                        ExplanationPart.CreateSubExplanation(binaryExpressionExplanation, "Right part not evaluated");
                                         retVal = lb;
                                     }
                                 }
@@ -425,6 +426,7 @@ namespace DataDictionary.Interpreter
                                     }
                                     else
                                     {
+                                        ExplanationPart.CreateSubExplanation(binaryExpressionExplanation, "Right part not evaluated");
                                         retVal = lb;
                                     }
                                 }

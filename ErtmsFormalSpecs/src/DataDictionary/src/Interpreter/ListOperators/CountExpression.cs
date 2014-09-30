@@ -63,15 +63,17 @@ namespace DataDictionary.Interpreter.ListOperators
                 {
                     if (v != EFSSystem.EmptyValue)
                     {
+                        ElementFound = true;
                         IteratorVariable.Value = v;
                         if (conditionSatisfied(context, explain))
                         {
+                            MatchingElementFound = true;
                             count += 1;
                         }
                     }
                     NextIteration();
                 }
-                EndIteration(context, token);
+                EndIteration(context, explain, token);
             }
 
             return new Values.IntValue(EFSSystem.IntegerType, count); ;

@@ -243,6 +243,7 @@ namespace DataDictionary.Interpreter.Statement
                 }
                 Rules.Change change = new Rules.Change(var, var.Value, value);
                 changes.Add(change, apply, runner);
+                ExplanationPart.CreateSubExplanation(explanation, Root, change);
             }
             else
             {

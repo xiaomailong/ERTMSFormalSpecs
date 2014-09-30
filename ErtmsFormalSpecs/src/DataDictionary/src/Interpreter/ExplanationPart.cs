@@ -18,6 +18,7 @@ using System.Text;
 using Utils;
 using DataDictionary.Functions;
 using DataDictionary.Values;
+using DataDictionary.Rules;
 namespace DataDictionary.Interpreter
 {
     /// <summary>
@@ -187,6 +188,24 @@ namespace DataDictionary.Interpreter
             return retVal;
         }
 
+        /// <summary>
+        /// Creates a sub explanation for the explain provided as parameter
+        /// </summary>
+        /// <param name="explain"></param>
+        /// <param name="change"></param>
+        /// <returns></returns>
+        public static ExplanationPart CreateSubExplanation(ExplanationPart explain, ModelElement root, Change change)
+        {
+            ExplanationPart retVal = null;
+
+            if (explain != null)
+            {
+                retVal = new ExplanationPart(root, change);
+                explain.SubExplanations.Add(retVal);
+            }
+
+            return retVal;
+        }
 
         /// <summary>
         /// Creates a sub explanation for the explain provided as parameter
