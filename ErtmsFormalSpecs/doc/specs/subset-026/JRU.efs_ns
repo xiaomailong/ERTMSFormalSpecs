@@ -235,7 +235,8 @@ TRAIN_DATA =&gt; CreateTrainDataMessage()
 <Actions>
 <Action
  Guid="7c9857ea-ccb4-413f-9701-363e864e468a"
->INSERT Messages.JRU.MESSAGE.Message {
+><Comment></Comment>
+INSERT Messages.JRU.MESSAGE.Message {
 EMERGENCY_BRAKE_COMMAND_STATE =&gt; CreateEBCommandStateMessage()
 } IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
@@ -474,6 +475,45 @@ SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateSpeedAndDistanceMonitoring
 }IN JRUMessages</Action><Action
  Guid="1e73cc9f-11c6-4599-a75a-6acda1ef7430"
 >SpeedAndDistanceSupervisionTypeChanged &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Send DMI Symbol Status message"
+ Guid="7298416e-4041-48c6-8be5-38f670cb9773"
+>
+<ReqRef
+ Id="ab27f58b-6aaf-4a89-addc-8ba7947449d2"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="f7c5305d-d1a1-4311-8948-c89f01bb6006"
+>
+</ReqRef><ReqRef
+ Id="e89b6661-751c-4a92-abcb-bd2ff6a5ea1e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="fe4dca18-d982-4332-8502-5140253dace4"
+>
+</ReqRef><Comment>Sends a new DMI Symbol Status message, if one of DMI symbols appears or disappears.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send DMI Symbol Status message"
+ Guid="37c8b723-6afe-4f69-8f9b-d90c7cc82321"
+>
+<PreConditions>
+<PreCondition
+ Guid="0f591e23-902d-4181-945b-e3f6adf41fab"
+><Comment></Comment>
+SendDMIStatusMessage(THIS)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1c2b2d52-5507-4511-96f0-a88dc56c7347"
+>INSERT Messages.JRU.MESSAGE.Message
+{
+    DMI_SYMB_STATUS =&gt;  CreateDMISymbolStatusChangeMessage()
+}
+  IN
+JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1526,6 +1566,7 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="a4fc8cde-c81c-42fc-bcb3-080aacc0b88e"
 >
+<Comment></Comment>
 </ReqRef><Comment>Will store the previous additional brakes status</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
@@ -1666,6 +1707,20 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  Guid="e2131815-7b35-46f3-9dac-611fa6f135a2"
 >
 </ReqRef><Comment>This will store the previous release speed value</Comment>
+</StructureElement><StructureElement
+ TypeName="Messages.JRU.MESSAGE.DMI_SYMB_STATUS.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="PreviousDMISymbolStatusMessage"
+ Guid="168c1a6c-afe8-4a28-9ea5-08dfd77d08d2"
+>
+<ReqRef
+ Id="ab27f58b-6aaf-4a89-addc-8ba7947449d2"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="51c2b789-50ce-4597-b843-09c63e92e724"
+>
+</ReqRef><Comment>Stores the last DMI Symbols message sent to the JRU. Used to determine if a new one has to be sent (in case any of its values changes).</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -5245,6 +5300,34 @@ DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.DriverAnswered</Expressio
         DMI_SYMB_STATUS_LX01 =&gt; DMISymbolsConvertors.LX01Activated()
     }
 }</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Implemented="TRUE"
+ Name="SendDMIStatusMessage"
+ Guid="390feed8-f3a6-4312-b8f1-ef0135355102"
+>
+<ReqRef
+ Id="e89b6661-751c-4a92-abcb-bd2ff6a5ea1e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ec34c4bb-bdc2-4fba-b677-41da912fb73d"
+>
+</ReqRef><Comment>Indicates if a new DMI Symbol Message has to be sent (if any of the DMI symbols has appeared or disappeared).</Comment>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="aJRU"
+ Guid="82b93ed5-4516-4755-9da6-c318f6a0e7c7"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="a63d0040-4a3f-4924-bcf5-ae58e0be31f3"
+>
+<Comment></Comment>
+<Expression>aJRU.PreviousDMISymbolStatusMessage != CreateDMISymbolStatusChangeMessage()</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>
