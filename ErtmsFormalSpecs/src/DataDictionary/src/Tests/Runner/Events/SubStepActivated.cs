@@ -89,13 +89,13 @@ namespace DataDictionary.Tests.Runner.Events
             TimeLine.SubStepActivationCache[SubStep] = this;
             foreach (VariableUpdate update in Updates)
             {
-                TimeLine.AddModelEvent(update, runner);
+                TimeLine.AddModelEvent(update, runner, true);
             }
 
             // Store the step corresponding expectations
             foreach (Expectation expectation in subStep.Expectations)
             {
-                TimeLine.AddModelEvent(new Events.Expect(expectation, runner.CurrentPriority), runner);
+                TimeLine.AddModelEvent(new Events.Expect(expectation, runner.CurrentPriority), runner, true);
             }
         }
 

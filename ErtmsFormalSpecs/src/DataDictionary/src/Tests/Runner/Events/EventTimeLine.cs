@@ -76,13 +76,17 @@ namespace DataDictionary.Tests.Runner.Events
         /// </summary>
         /// <param name="modelEvent"></param>
         /// <param name="runner"></param>
-        public void AddModelEvent(ModelEvent modelEvent, Runner runner)
+        /// <param name="apply">indicates whether the event should be applied on the model</param>
+        public void AddModelEvent(ModelEvent modelEvent, Runner runner, bool apply)
         {
             modelEvent.Time = CurrentTime;
             modelEvent.TimeLine = this;
             Events.Add(modelEvent);
             Changed = true;
-            modelEvent.Apply(runner);
+            if (apply)
+            {
+                modelEvent.Apply(runner);
+            }
         }
 
         /// <summary>
