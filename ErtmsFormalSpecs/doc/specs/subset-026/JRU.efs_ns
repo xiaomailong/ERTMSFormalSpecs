@@ -1711,7 +1711,7 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
 >
 </ReqRef><Comment>This will store the previous release speed value</Comment>
 </StructureElement><StructureElement
- TypeName="Messages.JRU.MESSAGE.DMI_SYMB_STATUS.Message"
+ TypeName="Messages.JRU.MESSAGE.DMI_SYMBOL_STATUS.Message"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
@@ -5338,7 +5338,7 @@ DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.DriverAnswered</Expressio
  Guid="a63d0040-4a3f-4924-bcf5-ae58e0be31f3"
 >
 <Comment></Comment>
-<Expression>aJRU.PreviousDMISymbolStatusMessage != CreateDMISymbolStatusChangeMessage()</Expression>
+<Expression>aJRU.PreviousDMISymbolStatusMessage != CreateDMISymbolStatusChangeMessage().DMI_SYMBOL_STATUS</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>
