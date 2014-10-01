@@ -10284,6 +10284,36 @@ EmergencyStops</Action></Actions>
 >TrackDescription.TrackConditions.TCMonitor()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Name="HandleOutputs"
+ Guid="51ad2f80-5fab-4b86-85f9-818dea2864b4"
+>
+<Comment></Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Update the DMI"
+ Guid="e8739a21-082d-428f-a5d3-c595a9e5d364"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Update system state"
+ Guid="ebebbf9f-4cd7-4212-aa33-5cca4c0f6ddf"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Send JRU messages"
+ Guid="76dea100-7f32-46de-bfa5-7c1e4f8d34d5"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
