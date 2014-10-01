@@ -197,7 +197,7 @@ GENERAL_MESSAGE =&gt; CreateGeneralMessage()
 <Actions>
 <Action
  Guid="53c8185c-b1db-4c4c-9778-c8c65d4d4c47"
->Kernel.TrainDataVerified &lt;- False</Action><Action
+>Kernel.TrainDataValidated &lt;- False</Action><Action
  Guid="9c53e3cd-d6e0-4d3b-8990-9e9c536431b7"
 >INSERT Messages.JRU.MESSAGE.Message {
 TRAIN_DATA =&gt; CreateTrainDataMessage()
@@ -420,7 +420,8 @@ TO_RBC =&gt; CreateMessageToRbcMessage(EURORADIO.CurrentRBCConnection(), EURORAD
 <PreConditions>
 <PreCondition
  Guid="f02eecba-036a-4cca-b8c4-60599b02f0cc"
->DriverActed()</PreCondition></PreConditions>
+><Comment></Comment>
+DriverActed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f5f5fe71-29ba-4927-b45c-fd8ea8e75cca"
@@ -2202,7 +2203,7 @@ ModeChanged(jru)
   OR
 SystemVersionChanged(jru)
   OR
-( JRU.TrainDataHaveChanged(jru) ) OR (TrainDataVerified() == True )
+( JRU.TrainDataHaveChanged(jru) ) OR (Kernel.TrainDataValidated)
   OR
 JRU.EmergencyBrakeStatusChanged(jru)
   OR
@@ -2600,40 +2601,6 @@ M_AIRTIGHT =&gt; TypeConvertors.ToJRUMAirTight(Kernel.TrainData.TrainData.Value.
 </Function><Function
  Type="Boolean"
  Default=""
- X="440"
- Y="600"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="TrainDataVerified"
- Guid="e6117187-60a6-4ac3-9012-2fed71d768e2"
->
-<ReqRef
- Id="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="ce0198b3-598d-4df0-a481-71ce08c29b75"
->
-<Comment></Comment>
-</ReqRef><Comment>When the train data are verified during the Start Of Mission this function will return true. Otherwise it will return False</Comment>
-<Cases>
-<Case
- Name="Verified"
- Guid="20d74b0a-e18e-45c9-ab9e-432607ed1a44"
->
-<PreConditions>
-<PreCondition
- Guid="e7a94299-37e9-40fc-a411-c3172dc4f678"
->Kernel.TrainDataVerified == True</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="16c91101-7797-4334-bf97-87485397c6b9"
->
-<Expression>False</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
  X="660"
  Y="660"
  Width="100"
@@ -2794,7 +2761,8 @@ M_BRAKE_COMMAND_STATE=&gt;TypeConvertors.ToJRUEBCommanded()
 <PreConditions>
 <PreCondition
  Guid="f9f43f6c-751d-4f20-8dd4-15c9cf58523e"
->(TrainDataHaveChanged(jru) == True) OR (TrainDataVerified() == True)</PreCondition></PreConditions>
+><Comment></Comment>
+(TrainDataHaveChanged(jru) == True) OR (Kernel.TrainDataValidated)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"

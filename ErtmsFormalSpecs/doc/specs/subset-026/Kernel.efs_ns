@@ -4490,7 +4490,8 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Guid="ebe4a3f4-a674-43d8-92d3-2b6166113fa2"
 >DMI.MasterDMI().In_TrainData.AcceptDriverResponse()</Action><Action
  Guid="07087530-74d1-4e08-bd95-86f3e2c4cf0d"
->Kernel.TrainDataVerified &lt;- True</Action></Actions>
+><Comment></Comment>
+Kernel.TrainDataValidated &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -10674,10 +10675,16 @@ EmergencyStops</Action></Actions>
  Width="100"
  Height="50"
  Pinned="TRUE"
- Name="TrainDataVerified"
+ Implemented="TRUE"
+ Name="TrainDataValidated"
  Guid="8fa81bf4-0f19-4ae8-b2e3-1f0480008ce9"
 >
-<Comment></Comment>
+<ReqRef
+ Id="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="22b2e428-944c-4d61-934f-b7d281f548a5"
+>
+</ReqRef><Comment>Indicates if the train data was validated by the driver.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Distance"
  DefaultValue="300.0"
@@ -10784,6 +10791,8 @@ DateAndTime.CurrentTime &lt;- DateAndTime.CurrentTime + CycleDuration</Action></
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateOUT"
+ Width="100"
+ Height="50"
  Name="Handle Outputs"
  Guid="1b0fb1e9-77a2-4126-9b66-9882bd304dcf"
 >
