@@ -1268,6 +1268,10 @@ namespace DataDictionary.Tests.Runner
                 }
                 else
                 {
+                    if (subStep.getSkipEngine())
+                    {
+                        CheckExpectationsState(Generated.acceptor.RulePriority.aCleanUp);
+                    }
                     EventTimeLine.CurrentTime += Step;
                 }
             }
