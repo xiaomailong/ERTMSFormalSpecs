@@ -895,13 +895,13 @@ namespace DataDictionary
                             scopeFound = true;
                         }
 
-                        if ((!paragraph.BelongsToRequirementSet(requirementSet)) && paragraph.SubParagraphBelongsToRequirementSet(requirementSet))
+                        if ((!requirementSet.getRecursiveSelection()) && (!paragraph.BelongsToRequirementSet(requirementSet)) && paragraph.SubParagraphBelongsToRequirementSet(requirementSet))
                         {
                             paragraph.AddWarning("Paragraph scope should be " + requirementSet.Name + ", according to its sub-paragraphs");
                         }
                     }
 
-                    if (!scopeFound && !(paragraph.getType() == Generated.acceptor.Paragraph_type.aDELETED))
+                    if ((!scopeFound) && (paragraph.getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT))
                     {
                         paragraph.AddWarning("Paragraph scope not set");
                     }
