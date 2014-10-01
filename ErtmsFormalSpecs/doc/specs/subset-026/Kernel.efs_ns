@@ -9379,6 +9379,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
  Name="StandBy"
  Guid="9bd23c26-d905-4f49-b5f4-f76ffd9894db"
 >
+<Comment></Comment>
 <StateMachine
  NeedsRequirement="FALSE"
  Guid="c54cff8a-4385-4478-9a68-bc48992a82c4"
@@ -10285,6 +10286,8 @@ EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Width="100"
+ Height="50"
  Name="HandleOutputs"
  Guid="51ad2f80-5fab-4b86-85f9-818dea2864b4"
 >
@@ -10778,6 +10781,25 @@ DateAndTime.CurrentTime &lt;- DateAndTime.CurrentTime + CycleDuration</Action></
 <Action
  Guid="4496b919-4e23-477b-8857-4b9c591f4202"
 >DeleteStoredInformation()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Name="Handle Outputs"
+ Guid="1b0fb1e9-77a2-4126-9b66-9882bd304dcf"
+>
+<Comment>Performs the actions related to the update of output variables in the order DMI -&gt; JRU</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Handle Outputs"
+ Guid="a454a9ef-1994-48a4-81d4-45675bde5a04"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="64fdc2b6-5a0c-4668-8243-6d9c40b99a78"
+>HandleOutputs()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
