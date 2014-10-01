@@ -1403,6 +1403,15 @@ namespace GUI
                 retVal = EditExpression(structExpression);
             }
 
+            Call call = expression as Call;
+            if (call != null)
+            {
+                foreach (Expression subExpression in call.AllParameters)
+                {
+                    VisitExpression(subExpression);
+                }
+            }
+
             return retVal;
         }
 
