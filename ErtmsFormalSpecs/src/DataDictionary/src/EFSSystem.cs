@@ -1316,7 +1316,10 @@ namespace DataDictionary
                 }
                 else if (paragraph.getImplementationStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented && paragraph.getImplementationStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable)
                 {
-                    paragraph.AddInfo("Belongs to Requirement set" + RequirementSet.Name + " but is not implemented");
+                    if (paragraph.getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT)
+                    {
+                        paragraph.AddInfo("Belongs to Requirement set" + RequirementSet.Name + " but is not implemented");
+                    }
                 }
 
                 if (recursively)
