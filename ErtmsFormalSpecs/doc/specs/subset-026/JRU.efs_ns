@@ -1166,10 +1166,11 @@ PreviousPermittedSpeed &lt;- DMI.MasterDMI().Out_PermittedSpeed.Speed</Action><A
  Name="Track speed and distance monitoring supervision status"
  Guid="af1305d0-ad22-4ad8-ab01-4a070ddb4fb7"
 >
-<Comment></Comment>
+<Comment>If the speed and monitoring is active, track the previous values of the monitoring type and the supervision status.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Track supervision status"
  Guid="6167afb7-3ff4-407b-bbd0-d020c5fba3cb"
 >
@@ -1186,13 +1187,15 @@ PreviousSpeedAndDistanceSupervisionStatus &lt;- Kernel.SpeedAndDistanceMonitorin
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Track target distance"
  Guid="4965b523-a100-4fbb-b2ec-aa7970845590"
 >
-<Comment></Comment>
+<Comment>If the speed and distance monitoring is active, track the status of the distance to target location.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Record target distance"
  Guid="5ddcc799-4214-453e-9ab4-f776756fae05"
 >
