@@ -102,13 +102,16 @@ namespace GUI.TestRunnerView
         /// <param param name="level">the level in which the explanation is inserted</param>
         private void innerSetExplanation(DataDictionary.Interpreter.ExplanationPart part, ExplainTreeNode node, int level)
         {
-            foreach (DataDictionary.Interpreter.ExplanationPart subPart in part.SubExplanations)
+            if (part != null)
             {
-                if (level < 2)
+                foreach (DataDictionary.Interpreter.ExplanationPart subPart in part.SubExplanations)
                 {
-                    ExplainTreeNode subNode = new ExplainTreeNode(subPart);
-                    innerSetExplanation(subPart, subNode, level + 1);
-                    node.Nodes.Add(subNode);
+                    if (level < 2)
+                    {
+                        ExplainTreeNode subNode = new ExplainTreeNode(subPart);
+                        innerSetExplanation(subPart, subNode, level + 1);
+                        node.Nodes.Add(subNode);
+                    }
                 }
             }
         }
