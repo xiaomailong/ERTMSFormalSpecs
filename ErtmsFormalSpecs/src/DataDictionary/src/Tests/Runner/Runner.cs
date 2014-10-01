@@ -688,6 +688,7 @@ namespace DataDictionary.Tests.Runner
                         if (action.Statement != null)
                         {
                             Events.VariableUpdate variableUpdate = new Events.VariableUpdate(action, activation.Instance, priority);
+                            variableUpdate.ComputeChanges(false, this);
                             EventTimeLine.AddModelEvent(variableUpdate, this, false);
                             ruleFired.AddVariableUpdate(variableUpdate);
                             if (changesExplanation != null)
