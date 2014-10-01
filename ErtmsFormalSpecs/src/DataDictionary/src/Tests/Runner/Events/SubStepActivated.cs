@@ -15,6 +15,9 @@
 // ------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using System;
 namespace DataDictionary.Tests.Runner.Events
 {
     public class SubStepActivated : ModelEvent
@@ -95,7 +98,29 @@ namespace DataDictionary.Tests.Runner.Events
             // Store the step corresponding expectations
             foreach (Expectation expectation in subStep.Expectations)
             {
-                TimeLine.AddModelEvent(new Events.Expect(expectation, runner.CurrentPriority), runner, true);
+                bool addExpectation = true;
+
+                if (expectation.getKind() == Generated.acceptor.ExpectationKind.aInstantaneous)
+                {
+                    if (!String.IsNullOrEmpty(expectation.getCondition()))
+                    {
+                        Expression expression = EFSSystem.INSTANCE.Parser.Expression(expectation ,expectation.getCondition());
+                        BoolValue value = expression.GetValue(new InterpretationContext(expectation), null) as BoolValue;
+                        if (value != null)
+                        {
+                            addExpectation = value.Val;
+                        }
+                        else
+                        {
+                            throw new Exception("Cannot evaluate " + expectation.getCondition() + " as a boolean value");
+                        }
+                    }
+                }
+
+                if (addExpectation)
+                {
+                    TimeLine.AddModelEvent(new Events.Expect(expectation, runner.CurrentPriority), runner, true);
+                }
             }
         }
 

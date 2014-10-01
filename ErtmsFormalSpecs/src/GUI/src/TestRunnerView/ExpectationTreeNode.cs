@@ -69,8 +69,8 @@ namespace GUI.TestRunnerView
                 }
             }
 
-            [Category("Description"), DisplayName("While condition"), Editor(typeof(MultilineStringEditor), typeof(UITypeEditor))]
-            [ReadOnly(true)]
+            [Category("Description"), DisplayName("Condition"), Editor(typeof(MultilineStringEditor), typeof(UITypeEditor))]
+            [ReadOnly(false)]
             public string Condition
             {
                 get { return Item.getCondition(); }
@@ -93,15 +93,6 @@ namespace GUI.TestRunnerView
                 get { return Item.getCyclePhase(); }
                 set { Item.setCyclePhase(value); }
             }
-
-            /// <summary>
-            /// Updates the activation state of each entry, according to the values of the edited element
-            /// </summary>
-            protected override void UpdateActivation()
-            {
-                UpdateFieldActivation("Condition", Item.getKind() != DataDictionary.Generated.acceptor.ExpectationKind.aContinuous);
-            }
-
         }
 
         /// <summary>
