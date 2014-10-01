@@ -2241,7 +2241,11 @@ SendTrainDataEntry(jru)
   OR
 SendNationalSystemIsolationMessage(jru)
   OR
-SendMTCOMessage(jru)</PreCondition><PreCondition
+SendMTCOMessage(jru)
+  OR
+SendDMIStatusMessage(jru)
+  OR
+DriverActed()</PreCondition><PreCondition
  Guid="07a9b9fc-3c5f-4545-acc0-68ead56b0325"
 >Kernel.ActiveFunctions.ProvideJuridicalData()</PreCondition></PreConditions>
 <Expression>True</Expression>
