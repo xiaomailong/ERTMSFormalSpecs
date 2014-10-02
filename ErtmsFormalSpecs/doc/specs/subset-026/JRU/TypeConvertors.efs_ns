@@ -6,6 +6,7 @@
  Name="TypeConvertors"
  Guid="c4d6598e-066c-4b99-97fe-9fd8190cadd7"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Functions>
@@ -2386,6 +2387,55 @@ Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
  Guid="5b4d5b81-1c4c-4a60-ac55-eb2784e3fbfa"
 >DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Spare_1</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.Q_RBCENTRY"
+ Default=""
+ X="400"
+ Y="500"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ToJRUContactRBCOption"
+ Guid="3034e25f-5a4d-4431-9f5e-c37a3cac9501"
+>
+<Comment>Converts the RBC contact option stored onboard into the corresponding type to be sent to the JRU.</Comment>
+<Parameters>
+<Parameter
+ Type="EURORADIO.ContactOptionEnum"
+ Name="aContactOption"
+ Guid="0e63a5d1-d5eb-4b7a-8bde-982e4d8f3c76"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Last known RBC"
+ Guid="043c91c6-08ab-4b56-b33b-c24bcbee824d"
+>
+<PreConditions>
+<PreCondition
+ Guid="ee6e2512-53cf-4d33-b17a-0d8defd71341"
+>aContactOption == EURORADIO.ContactOptionEnum.ContactLastKnownRBC</PreCondition></PreConditions>
+<Expression>Messages.JRU.Q_RBCENTRY.Contact_last_unknown_RBC</Expression>
+</Case><Case
+ Name="RBC Id and Phone Number"
+ Guid="15bb8ff1-195f-4522-b05c-e1bef9647f0d"
+>
+<PreConditions>
+<PreCondition
+ Guid="a32f99a9-6c49-4f9d-a746-a005751067c3"
+>aContactOption == EURORADIO.ContactOptionEnum.RBCIdAndPhoneNumber</PreCondition></PreConditions>
+<Expression>Messages.JRU.Q_RBCENTRY.Enter_RBC_data</Expression>
+</Case><Case
+ Name="Onboard stored short number"
+ Guid="2cdfd6a0-1360-4abe-8cae-69b5afce2517"
+>
+<PreConditions>
+<PreCondition
+ Guid="b74926ce-5e94-438d-8c03-3270c6e9a8d6"
+>aContactOption == EURORADIO.ContactOptionEnum.UseOnBoardStoredShortNumber</PreCondition></PreConditions>
+<Expression>Messages.JRU.Q_RBCENTRY.Use_short_number</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>

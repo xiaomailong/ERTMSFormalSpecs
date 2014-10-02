@@ -480,6 +480,44 @@ JRUMessages</Action></Actions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="Send Additional Data message"
+ Guid="5c262d55-d1ca-4d94-8eb3-33c1cb33d512"
+>
+<ReqRef
+ Id="d1066713-c8af-44ac-abb4-93bef7fbff31"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="41e40e7c-b2fe-443d-9899-7261c422fda7"
+>
+</ReqRef><ReqRef
+ Id="49e57c03-ad42-4d56-9434-6dda17872a1e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="5aaddfd8-468b-45b4-8483-f9d8449a3da7"
+>
+</ReqRef><Comment>Sends a new Additional Data message, if one of its components has changed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send Additional Data message"
+ Guid="455df8d1-ed9f-47d2-b215-f56bd2998675"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="ba8f918a-a5e1-4c1a-996b-e692f5aa9f7c"
+><Comment></Comment>
+SendAdditionalDataMessage(aJRU =&gt; THIS)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="cf7de8a9-741d-4a0d-a4d0-96d6b9408045"
+>INSERT Messages.JRU.MESSAGE.Message
+{
+    ADDITIONAL_DATA =&gt; CreateAdditionalDataMessage()
+} IN JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="Send NTC Selected message"
  Guid="a7724310-6cd0-40c6-ab61-706120e7b4f4"
 >
@@ -488,6 +526,7 @@ JRUMessages</Action></Actions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="15c6b870-8320-4a8b-9b40-2cedf14acd9a"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -510,7 +549,8 @@ JRUMessages</Action></Actions>
 <Actions>
 <Action
  Guid="1f156b86-5ad4-4f71-b713-b90d2220acf4"
->INSERT Messages.JRU.MESSAGE.Message {
+><Comment></Comment>
+INSERT Messages.JRU.MESSAGE.Message {
 NTC_SELECTED =&gt; CreateNtcSelectedMessage()
 } IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
@@ -1691,6 +1731,20 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  Guid="51c2b789-50ce-4597-b843-09c63e92e724"
 >
 </ReqRef><Comment>Stores the last DMI Symbols message sent to the JRU. Used to determine if a new one has to be sent (in case any of its values changes).</Comment>
+</StructureElement><StructureElement
+ TypeName="Messages.JRU.MESSAGE.ADDITIONAL_DATA.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="PreviousAdditionalDataMessage"
+ Guid="8130497b-1a3f-4703-aadb-838b4caae24f"
+>
+<ReqRef
+ Id="15ca85fa-d695-4b98-8f58-a5acfc827e9f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="c223a079-b7df-4bc7-924a-a6527543de2a"
+>
+</ReqRef><Comment>Stores the last additinoal data message sent to the JRU. Used to determine if a new one has to be sent (in case any of its values changes).</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -2214,6 +2268,8 @@ SendNationalSystemIsolationMessage(jru)
 SendMTCOMessage(jru)
   OR
 SendDMIStatusMessage(jru)
+  OR
+SendAdditionalDataMessage(jru)
   OR
 DriverActed()</PreCondition><PreCondition
  Guid="07a9b9fc-3c5f-4545-acc0-68ead56b0325"
@@ -4806,7 +4862,8 @@ jru.PreviousReleaseSpeed != DMI.MasterDMI().Out_ReleaseSpeed.Speed</PreCondition
 </Function><Function
  Type="Boolean"
  Default=""
- Y="720"
+ X="440"
+ Y="600"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5273,6 +5330,100 @@ DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.DriverAnswered</Expressio
 >
 <Comment></Comment>
 <Expression>aJRU.PreviousDMISymbolStatusMessage != CreateDMISymbolStatusChangeMessage().DMI_SYMBOL_STATUS</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.ADDITIONAL_DATA.Message"
+ Default=""
+ X="880"
+ Y="300"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="CreateAdditionalDataMessage"
+ Guid="327199eb-5c60-458c-98b7-9adbb71f58a4"
+>
+<ReqRef
+ Id="d1066713-c8af-44ac-abb4-93bef7fbff31"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="2f76f769-4754-4f28-9dcb-15f821f4a228"
+>
+</ReqRef><ReqRef
+ Id="15ca85fa-d695-4b98-8f58-a5acfc827e9f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="da5246e5-a13b-4cfe-b741-4c9910b9d577"
+>
+</ReqRef><ReqRef
+ Id="49e57c03-ad42-4d56-9434-6dda17872a1e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="ad7075fa-2568-46c9-a9a6-d6490452f5ba"
+>
+</ReqRef><Comment>Creates a new additional data message.</Comment>
+<Cases>
+<Case
+ Name="Enter RBC data"
+ Guid="b923de40-ca35-47af-aa65-debcbb0c9940"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="2b82547a-fcc6-4d1d-998e-f24c32080b18"
+>EURORADIO.ContactOption == EURORADIO.ContactOptionEnum.RBCIdAndPhoneNumber</PreCondition></PreConditions>
+<Expression>Messages.JRU.MESSAGE.ADDITIONAL_DATA.Message
+{
+    HEADER =&gt; CreateHeader(24),
+    M_ADHESION =&gt; Kernel.TrackDescription.AdhesionFactors.SlipperyRailSelectedByDriver,
+    NID_MN =&gt; EURORADIO.CurrentTerminal().NetworkId,
+    Q_RBCENTRY =&gt; TypeConvertors.ToJRUContactRBCOption (EURORADIO.ContactOption),
+    NID_C =&gt; EURORADIO.CurrentRBCConnection().ContactData.Id.Country,
+    NID_RBC =&gt; EURORADIO.CurrentRBCConnection().ContactData.Id.Id,
+    NID_RADIO =&gt; EURORADIO.CurrentRBCConnection().ContactData.PhoneNumber,
+    NID_OPERATIONAL =&gt; Kernel.TrainRunningNumber.Value
+}</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="d4b0d8ad-7032-472c-8cba-7118793d6056"
+>
+<Comment></Comment>
+<Expression>Messages.JRU.MESSAGE.ADDITIONAL_DATA.Message
+{
+    HEADER =&gt; CreateHeader(24),
+    M_ADHESION =&gt; Kernel.TrackDescription.AdhesionFactors.SlipperyRailSelectedByDriver,
+    NID_MN =&gt; EURORADIO.CurrentTerminal().NetworkId,
+    Q_RBCENTRY =&gt; TypeConvertors.ToJRUContactRBCOption (EURORADIO.ContactOption),
+    NID_OPERATIONAL =&gt; Kernel.TrainRunningNumber.Value
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="330"
+ Y="510"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SendAdditionalDataMessage"
+ Guid="ff515466-5b84-4130-84b8-249294612776"
+>
+<ReqRef
+ Id="49e57c03-ad42-4d56-9434-6dda17872a1e"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="71b36e23-b8b9-437c-bb2a-acca725d03ce"
+>
+</ReqRef><Comment>Indicates if the additional data JRU message has to be sent.</Comment>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="aJRU"
+ Guid="960be61d-fab5-46aa-bf8d-237b13a25de8"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="b6f1ee97-eb90-45fb-b6f8-20eb24cc8d90"
+>
+<Comment></Comment>
+<Expression>aJRU.PreviousAdditionalDataMessage != CreateAdditionalDataMessage()</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>
