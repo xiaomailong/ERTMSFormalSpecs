@@ -256,7 +256,7 @@
 <PreCondition
  Guid="b5195f57-8d82-4126-a16f-7c1c0e7e4643"
 ><Comment></Comment>
-Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case><Case
  Name="Otherwise"
@@ -687,7 +687,7 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="78dbd150-714b-4f89-8d21-2f96f136d7a3"
->Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case><Case
  Name="Otherwise"
@@ -719,7 +719,7 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="fefc211f-8a6a-43e8-b94a-50b4eca03913"
->Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
 <Expression>Mode in [Default.Mode.SB, Default.Mode.SR, Default.Mode.PT]</Expression>
 </Case><Case
  Name="Otherwise"
@@ -751,7 +751,7 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="2399483d-9b07-4b1a-ac53-bb018b4801c1"
->Level.Value not in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value not in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
 <Expression>Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN]</Expression>
 </Case><Case
  Name="Otherwise"
@@ -1846,7 +1846,7 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="6db09e5f-5add-4e3b-90dd-144374d16ee8"
->Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Expression>Mode in [Mode.FS, Mode.LS, Mode.OS, Mode.TR, Mode.PT]</Expression>
 </Case><Case
  Name="Otherwise"

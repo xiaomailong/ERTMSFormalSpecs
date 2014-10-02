@@ -36,7 +36,7 @@
  Guid="efad7130-b116-4d82-9d95-64862fe8f909"
 >DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="06a133a0-369c-476a-be9b-8d276d388523"
->DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level == Level.L0</PreCondition></PreConditions>
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level.Value == Level.L0</PreCondition></PreConditions>
 <Expression>Messages.JRU.DMI_SYMB_STATUS.displayed</Expression>
 </Case><Case
  Name="Otherwise"
@@ -68,7 +68,7 @@
 <PreConditions>
 <PreCondition
  Guid="854b165a-c582-44a2-996f-89b71e74e774"
->DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level == Level.LNTC</PreCondition><PreCondition
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level.Value == Level.LNTC</PreCondition><PreCondition
  Guid="6ec5615c-892f-453f-a159-fad62cd682ef"
 >DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Expression>Messages.JRU.DMI_SYMB_STATUS.displayed</Expression>
@@ -103,7 +103,7 @@
 <PreConditions>
 <PreCondition
  Guid="a8b56fbb-33fd-445a-ab0c-52bebc1a2e50"
->DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level == Level.L1</PreCondition><PreCondition
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level.Value == Level.L1</PreCondition><PreCondition
  Guid="3a8b4bfe-a7b0-435c-a405-b5be64c0532e"
 ><Comment></Comment>
 DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested</PreCondition></PreConditions>
@@ -424,7 +424,7 @@ DMI.MasterDMI().In_AcknOfLevelTransition.Level == Level.L1</PreCondition><PreCon
 <PreConditions>
 <PreCondition
  Guid="b384b1fd-a1c4-41c4-b5c1-3b4823905860"
->DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level == Level.L2</PreCondition><PreCondition
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level.Value == Level.L2</PreCondition><PreCondition
  Guid="816ffce8-e33c-44b9-9b37-5c8d2b6c5205"
 >DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Expression>Messages.JRU.DMI_SYMB_STATUS.displayed</Expression>
@@ -458,7 +458,7 @@ DMI.MasterDMI().In_AcknOfLevelTransition.Level == Level.L1</PreCondition><PreCon
 <PreConditions>
 <PreCondition
  Guid="047f9e7e-f105-4672-9f2b-e029279dc614"
->DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level == Level.L3</PreCondition><PreCondition
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.Level.Value == Level.L3</PreCondition><PreCondition
  Guid="792897fc-27b7-4eb8-b85b-97a421464deb"
 >DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Expression>Messages.JRU.DMI_SYMB_STATUS.displayed</Expression>

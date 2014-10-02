@@ -2197,7 +2197,7 @@ Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
  Guid="0192a6c6-7f9a-47b7-84f2-cafac173bc35"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="ee44435f-ccf9-4210-adfd-dd094f118b13"
->DMI.MasterDMI().In_ErtmsEtcsLevel.Level == Default.Level.L0</PreCondition></PreConditions>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value == Default.Level.L0</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Level_0_selected</Expression>
 </Case><Case
  Name="ErtmsEtcsLevel1"
@@ -2208,7 +2208,7 @@ Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
  Guid="522efc47-aad1-468e-9211-4b28b4089448"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="49900b07-6840-4060-8cb5-44f5dbb017f0"
->DMI.MasterDMI().In_ErtmsEtcsLevel.Level == Default.Level.L1</PreCondition></PreConditions>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value == Default.Level.L1</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Level_1_selected</Expression>
 </Case><Case
  Name="ErtmsEtcsLevel2"
@@ -2219,7 +2219,7 @@ Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
  Guid="492285ee-f401-4e55-a5e2-0ee34e30331d"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="df66b5e4-9219-4be0-af14-17f491392fc0"
->DMI.MasterDMI().In_ErtmsEtcsLevel.Level == Default.Level.L2</PreCondition></PreConditions>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value == Default.Level.L2</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Level_2_selected</Expression>
 </Case><Case
  Name="ErtmsEtcsLevel3"
@@ -2230,7 +2230,7 @@ Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
  Guid="ae2d0c74-80a3-4def-95fd-c867633254b9"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="1faf338e-6335-4158-b587-19e9fd031190"
->DMI.MasterDMI().In_ErtmsEtcsLevel.Level == Default.Level.L3</PreCondition></PreConditions>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value == Default.Level.L3</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Level_3_selected</Expression>
 </Case><Case
  Name="ErtmsEtcsLevelNTC"
@@ -2241,7 +2241,7 @@ Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
  Guid="40466f46-3994-442e-b3d7-a8da5ecef9f7"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="ee20a7a7-6c95-4127-a98e-0f53f79a6e53"
->DMI.MasterDMI().In_ErtmsEtcsLevel.Level == Default.Level.LNTC</PreCondition></PreConditions>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value == Default.Level.LNTC</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Level_NTC_selected</Expression>
 </Case><Case
  Name="ExitOfShuntingRequest"

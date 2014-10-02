@@ -653,7 +653,7 @@ Packet.Sequence1</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="7432ff75-4a66-4ae6-9aae-3df6be9e372b"
->NOT (THERE_IS_IN LevelTransitionOrder.LevelAndLength | X.TRLevel.Value == Kernel.Level.Value)</PreCondition></PreConditions>
+>NOT (THERE_IS_IN LevelTransitionOrder.LevelAndLength | X.TRLevel.Value == Kernel.Level.Value.Value)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1a6bdf17-071d-4c6b-921d-d6e6833e5395"
@@ -699,13 +699,14 @@ Packet.Sequence1</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="bd1a1f4f-348c-43d7-a708-6fbb5d523280"
->Kernel.Level.Value == Default.Level.L0</PreCondition><PreCondition
+>Kernel.Level.Value.Value == Default.Level.L0</PreCondition><PreCondition
  Guid="691dd9ff-515f-4c67-a0d5-1cf2ea537d1c"
->LTOtoProcess.TRLevel.Value == Default.Level.L1</PreCondition></PreConditions>
+><Comment></Comment>
+LTOtoProcess.TRLevel.Value == Default.Level.L1</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="04cbcfde-a8bc-4ce4-af15-db2cd46487b5"
->Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -940,7 +941,7 @@ DMI.MasterDMI().Out_LevelTransitionAnnouncement.Display(LTOtoProcess.TRLevel.Val
 <Actions>
 <Action
  Guid="097a357d-a5c2-47af-a6ac-050fe94ed1ed"
->Kernel.Level.Value &lt;- LTOtoProcess.TRLevel.Value</Action></Actions>
+>Kernel.Level.Value.Value &lt;- LTOtoProcess.TRLevel.Value</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

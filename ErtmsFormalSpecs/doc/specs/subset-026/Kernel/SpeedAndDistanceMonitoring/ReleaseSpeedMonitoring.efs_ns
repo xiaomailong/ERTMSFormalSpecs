@@ -621,7 +621,7 @@ INITIAL_VALUE
 <PreCondition
  Guid="6987e771-1b6a-40d7-86d1-6ee0972c1e4a"
 ><Comment></Comment>
-Kernel.Level.Value == Default.Level.L1</PreCondition></PreConditions>
+Level.Value.Value == Default.Level.L1</PreCondition></PreConditions>
 <Expression>1.0</Expression>
 </Case><Case
  Name="Level 2 or 3"
@@ -630,7 +630,7 @@ Kernel.Level.Value == Default.Level.L1</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="c2818a11-3cd6-4d37-9f07-66a869d1737c"
->Kernel.Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function></Functions>

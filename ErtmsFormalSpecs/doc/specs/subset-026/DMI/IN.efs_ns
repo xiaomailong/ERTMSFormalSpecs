@@ -57,7 +57,8 @@
  Guid="899257bb-ad06-4587-a62f-242a76900e2d"
 >InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="6f929bf6-4cae-4324-9cc4-cb3773da8e8d"
->Level in [Level.L2, Level.L3]</PreCondition><PreCondition
+><Comment></Comment>
+Level.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
  Guid="816bea88-f7c1-4116-8b88-2ca3a0ad554b"
 >NOT EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
@@ -120,7 +121,7 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <Comment>Initiate the ERTMS ETCS Level request</Comment>
 <Parameters>
 <Parameter
- Type="Default.Level"
+ Type="Default.LevelDataStruct"
  Name="Level"
  Guid="0c2d6225-8fb1-4915-8f1c-716d41ef8e54"
 >
@@ -220,9 +221,9 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment>Provides information about this request status</Comment>
 </StructureElement><StructureElement
- TypeName="Default.Level"
+ TypeName="Default.LevelDataStruct"
  Default=""
- Mode="InOut"
+ Mode="Incoming"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Level"
@@ -239,6 +240,15 @@ THIS.InputInformation.Disable()</Action></Actions>
  Guid="09607d95-2143-4b10-bb46-973612eb2817"
 >
 <Comment>Provides the available driver actions (enter / revalidate)</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.Levels"
+ Default="[]"
+ Mode="Outgoing"
+ Implemented="TRUE"
+ Name="NTCLevels"
+ Guid="3216b59e-3842-4a8d-868e-895cb7b81290"
+>
+<Comment>Provides the NTC levels available onboard.</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="670"

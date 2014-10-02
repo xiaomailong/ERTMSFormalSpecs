@@ -215,7 +215,7 @@
   AND
 TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distance + BaseTypes.LengthToDistance ( aModeProfile.Length )
   AND
-Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</Expression>
+Kernel.Level.Value.Value in [Level.L1, Level.L2, Level.L3]</Expression>
 </Case><Case
  Name="LS"
  Guid="8c23abbf-e779-492b-8354-f7f9276a904a"

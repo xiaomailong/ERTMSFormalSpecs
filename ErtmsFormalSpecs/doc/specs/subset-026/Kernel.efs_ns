@@ -237,8 +237,12 @@
 >
 </ReqRef><Comment>Represents the ERTMS/ETCS level of the train.</Comment>
 <StructureElement
- TypeName="Default.Level"
- Default="Level.L0"
+ TypeName="Default.LevelDataStruct"
+ Default="Default.LevelDataStruct
+{
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L0
+}"
  Mode="Internal"
  Implemented="TRUE"
  Name="Value"
@@ -1451,7 +1455,7 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
 <PreConditions>
 <PreCondition
  Guid="0f957329-38e7-44b9-98b2-ca2eee1cafdd"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5a6f963a-16cd-4609-bed1-858ca9cfd148"
@@ -1479,7 +1483,7 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
 <PreConditions>
 <PreCondition
  Guid="977f4119-da69-4ac1-b7db-8f5760be498c"
->Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9918c991-5fc3-42c5-829a-128ec7aa4531"
@@ -1561,7 +1565,11 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
 >THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action
  Guid="e3a60529-bb36-4ba8-9e25-407becd12d5c"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest(
-  Level =&gt; Level.Unknown, 
+  Level =&gt; Default.LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Default.Level.Unknown
+  },
   Enter =&gt; True, 
   ReValidate =&gt; False
 )</Action></Actions>
@@ -2618,7 +2626,7 @@ THIS &lt;- S12</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="c4df8dcf-f178-42b9-9807-fb70c26e333d"
->Level.Value == Default.Level.L0</PreCondition></PreConditions>
+>Level.Value.Value == Default.Level.L0</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f0015543-7d59-4953-84d7-173971398225"
@@ -2632,7 +2640,7 @@ THIS &lt;- S12</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="39318056-06b5-454e-84e2-951f64c30df1"
->Level.Value == Default.Level.LNTC</PreCondition></PreConditions>
+>Level.Value.Value == Default.Level.LNTC</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ae24502b-c0ff-497a-89bd-769ee164563d"
@@ -2646,7 +2654,7 @@ THIS &lt;- S12</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="7cdd4b04-cfc8-4daa-9ec8-4b5561935578"
->Level.Value in [ Default.Level.L1, Default.Level.L2, Default.Level.L3 ]</PreCondition></PreConditions>
+>Level.Value.Value in [ Default.Level.L1, Default.Level.L2, Default.Level.L3 ]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f119d8e6-ecd4-47a5-8eba-966ecc41f707"
@@ -3094,7 +3102,7 @@ THIS &lt;- S12</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="0f38f13d-2c67-44af-8eb6-f2324414f31b"
->Kernel.Level.Value == Level.LNTC</PreCondition><PreCondition
+>Level.Value.Value == Level.LNTC</PreCondition><PreCondition
  Guid="cfb38227-d19a-4b36-ae2a-324e7cf659f2"
 >DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
@@ -3126,7 +3134,7 @@ THIS &lt;- S12</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="6394cd31-5792-4a11-8901-bc6470b22cc0"
->Kernel.Level.Value == Level.L0</PreCondition><PreCondition
+>Level.Value.Value == Level.L0</PreCondition><PreCondition
  Guid="c26c8e48-5aa0-4674-a52b-a1b1609aa2c3"
 >DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
@@ -3158,7 +3166,7 @@ THIS &lt;- S12</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="56862dda-61a7-4c31-a336-34047a5b7f23"
->Kernel.Level.Value == Level.L1</PreCondition><PreCondition
+>Level.Value.Value == Level.L1</PreCondition><PreCondition
  Guid="48f3282c-3599-46fe-884c-848cb1162acd"
 >DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
@@ -3190,7 +3198,7 @@ THIS &lt;- S12</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="706c846d-4108-450f-bad8-e0279061baf0"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
  Guid="9a3b9345-3449-4f77-ab60-d7dba536fd75"
 >DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
@@ -3834,7 +3842,7 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 </ReqRef><PreConditions>
 <PreCondition
  Guid="e1776ee6-dd5a-4584-b343-30546176c388"
->Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1efe5702-7f1f-4e39-a22e-9531d71a4a47"
@@ -3853,7 +3861,7 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 </ReqRef><PreConditions>
 <PreCondition
  Guid="a7dc56b4-90af-4847-945c-0b57cb9f870b"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5bd67b8a-f71d-4afb-90a9-cd1740b1f74f"
@@ -4646,7 +4654,7 @@ Kernel.TrainDataValidated &lt;- True</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="b4d05191-93b3-49f5-9435-423c10c560ac"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e962fbb8-4429-4ad3-957c-5b8d3e3589e8"
@@ -4674,7 +4682,7 @@ Kernel.TrainDataValidated &lt;- True</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="d9550d4a-f9e8-4206-8be8-bfcc14f22415"
->Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="79cc65b2-97ed-4bfc-bff5-eea2a40f3f50"
@@ -5309,7 +5317,7 @@ DMI.MasterDMI().In_AcknOfSNMode.InitiateRequest(Kernel.NationalSystemId)</Action
  Guid="fd484513-2142-4fc1-a53f-75f77823e65b"
 >NOT EURORADIO.HasActiveSession()</PreCondition><PreCondition
  Guid="5a6cd26a-dc17-41a4-9901-491292f3ded0"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3ad2ea3b-68ed-4ad8-bbdf-04351bd7290f"
@@ -6177,7 +6185,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="381346b4-42d5-4491-a5ee-33979319c657"
->Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L1, Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="42aef285-00ea-4612-9353-fe273c39f732"
@@ -6212,7 +6220,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="c304e2bd-7f2c-40b5-87de-07ac74c29513"
->Kernel.Level.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="cf9c0c8e-5d6f-458e-9576-fd09a3dc7b9e"
@@ -6328,7 +6336,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="7ca85845-8383-49a3-b1ec-5c52d0b7fb35"
->Kernel.Level.Value == Level.L1</PreCondition></PreConditions>
+>Level.Value.Value == Level.L1</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8b629f15-44a4-4733-a3f6-6316b6dd92d7"
@@ -6358,7 +6366,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="9043dfd8-e25e-4e73-a46b-6aefb6c438f9"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="880dd603-8c02-48bd-a1fc-aeea0c049095"
@@ -6817,7 +6825,7 @@ DMI.MasterDMI().In_ShuntingRequest.InitiateRequest()</Action></Actions>
  Guid="8748e903-765c-482a-b060-e24a8c012a8e"
 >DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="16f83256-478c-4f7c-9056-b8097c00fbda"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="08f650ec-16ac-4ddd-bd1f-a112069dd4aa"
@@ -6851,7 +6859,7 @@ DMI.MasterDMI().In_ShuntingRequest.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="22c8f914-81c5-45ec-98e4-85fec0186b89"
->Kernel.Level.Value == Level.L1</PreCondition><PreCondition
+>Level.Value.Value == Level.L1</PreCondition><PreCondition
  Guid="bcbf278e-7248-4a02-9580-06002d14112f"
 >DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
@@ -7423,7 +7431,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="c589396e-0e09-4cae-a8c6-118f0936d888"
->Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="27ae36c8-f87e-448e-b4d6-15ccb4a6be4d"
@@ -7451,7 +7459,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="0edfb4da-90b2-4a06-92f7-ecc4c3072690"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d38f0a8d-0ca2-4bf0-a8fd-b330fdc6bfc5"
@@ -7661,7 +7669,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="e310a442-e50c-450e-b592-b583920672ac"
->Kernel.Level.Value == Default.Level.L0</PreCondition></PreConditions>
+>Level.Value.Value == Default.Level.L0</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="dd60d7fc-8555-4d2d-8699-72ff8b2617a4"
@@ -7696,7 +7704,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="91457cfd-d5e2-4eab-937d-a0c20b543156"
->Kernel.Level.Value == Default.Level.LNTC</PreCondition></PreConditions>
+>Level.Value.Value == Default.Level.LNTC</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="cc7d4ceb-1e1a-4a4e-869e-7e75a2f8c68e"
@@ -7813,7 +7821,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="8c1e2769-86c8-4300-9e20-b03a15486023"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
  Guid="a20f6e13-1dca-41c0-9034-0684b14f90db"
 >NOT EURORADIO.HasActiveSession()</PreCondition><PreCondition
  Guid="fe2f1b03-ffc7-44cd-ab00-daa877c92ff5"
@@ -7898,7 +7906,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="ffa853eb-8045-483c-9238-3d411219528f"
->Level.Value in [Level.L0, Level.L1]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L0, Level.L1]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="bef78fa3-f5bd-4faa-862c-979a5667c472"
@@ -7917,7 +7925,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="b2001e67-4fe2-4c52-881b-dea065f7d31c"
->Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="952278d9-3147-4c88-843a-dc3b5e96cb2e"
@@ -7936,7 +7944,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="bf16d39f-ea6c-48cc-a0c0-d6cf34945793"
->Level.Value == Level.LNTC</PreCondition></PreConditions>
+>Level.Value.Value == Level.LNTC</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="393eaa91-d1d2-4d4c-ab2b-351100032613"
@@ -8701,7 +8709,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="772df137-5869-413e-a9ca-58bca24c175a"
->Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3d435f88-5421-4d23-8d6f-5570b672d01f"
@@ -8720,7 +8728,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="bd217358-4b3b-44c5-a07e-ff50d034ca15"
->Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a389ba71-4c64-4e42-9753-52ab865d444d"

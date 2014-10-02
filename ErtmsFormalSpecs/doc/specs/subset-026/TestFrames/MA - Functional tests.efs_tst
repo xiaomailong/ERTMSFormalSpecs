@@ -96,7 +96,7 @@
  Guid="b4e1d9e5-0242-4859-82cf-c382e93985f5"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="57ed2d6d-5444-4fa6-a577-2e40ab498dcd"
->Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="8254375b-a829-4a96-8138-f881096667b6"
@@ -652,7 +652,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
  Guid="1bfda77d-1448-44b5-bdfe-c80edd013a94"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="06694a08-b3cb-4eaf-b49b-889af96a480d"
->Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="851e79be-bb39-4eb2-9bfa-d90c79f36350"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="be2ff6e5-079e-4d29-88fb-a16e9e845175"
@@ -1004,7 +1004,7 @@ BTM.Linking.Linkings</Action></Actions>
  Guid="8de5b060-aff5-4c4e-992c-1852db1fec77"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="c46c77f6-53f1-4476-8e14-45326cfb44cc"
->Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="8334c3df-4f78-4b96-a4da-819f0cee7b11"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="1c28a5ce-cbb9-483d-a6fa-e70bc6df00f4"
@@ -1340,7 +1340,11 @@ BTM.Linking.Linkings</Action></Actions>
 ><Comment></Comment>
 Kernel.Level &lt;- Kernel.LevelData
  {
-    Value =&gt; Default.Level.L1,
+    Value =&gt; Default.LevelDataStruct
+    {
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L1
+    },
     DataState =&gt; Default.DataState.Valid
  }</Action><Action
  Guid="2bad1577-28d2-4d6b-9969-9bd14ba3af8b"
@@ -2159,7 +2163,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 <Actions>
 <Action
  Guid="92001f51-3b2c-4986-9a98-8412bc237f1e"
->Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="af142765-f0e1-4187-b996-0cc94758e735"
 >Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
 </SubStep><SubStep
@@ -3046,7 +3050,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
  Guid="5c0fc31d-0099-4d68-8946-9b33733ac6c4"
 >Kernel.Mode &lt;- Mode.LS</Action><Action
  Guid="1c538c2e-d8ec-498c-af97-9573ba0010a5"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 2"
  Guid="98d3d91c-0a0e-4b3f-87d1-a14d1ea2d29a"
@@ -3423,7 +3427,11 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="9095ba07-56a6-4140-a281-e6626f992559"
 >Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; Default.Level.L1,
+    Value =&gt; Default.LevelDataStruct
+    {
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L1
+    },
     DataState =&gt; Default.DataState.Valid
 }</Action></Actions>
 </SubStep></SubSteps>
@@ -3912,7 +3920,11 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 <Action
  Guid="5b6ff883-5f83-4e2d-919e-83298256212d"
 >Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; Default.Level.L1,
+    Value =&gt; Default.LevelDataStruct
+    {
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L1
+    },
     DataState =&gt; Default.DataState.Valid
 }</Action><Action
  Guid="5a4fa7bb-ecea-4d51-9777-bf5e5d5c7ab9"
@@ -4383,7 +4395,7 @@ BTM.Linking.Linkings</Action><Action
  Guid="215ca8ee-6912-4cc3-a3ac-46373b4a3a4b"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="31e2e050-eb59-4912-8df4-bffe34880384"
->Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="4291347a-5072-4875-b465-8d92c534fbdc"
 >Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
 </SubStep><SubStep
@@ -4902,7 +4914,7 @@ BTM.Linking.Linkings</Action><Action
  Guid="ebb8a841-08e8-44be-b297-53cd0c43135a"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="1340d3bf-a5d6-44d3-8183-df4cab6f1e24"
->Kernel.Level.Value &lt;- Default.Level.L2</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L2</Action><Action
  Guid="1298054f-8256-4fc6-9dff-bffcfe6642cf"
 >Kernel.Mode &lt;- Default.Mode.OS</Action><Action
  Guid="e84974d8-8a82-4055-82bf-da0b1d0c4ba6"
@@ -5356,7 +5368,7 @@ BTM.Linking.Linkings</Action><Action
  Guid="82385b4a-05f4-4719-b506-c757f5bfca42"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="ce6b8e51-a4bb-462f-a82b-2b0c32791a17"
->Kernel.Level.Value &lt;- Default.Level.L2</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L2</Action><Action
  Guid="07775d8d-84e3-40af-a42a-e9eca411f3bb"
 >Kernel.Mode &lt;- Default.Mode.OS</Action><Action
  Guid="e4034b1b-9aac-4fcf-8055-6f149ba6ca62"
@@ -6400,7 +6412,7 @@ BTM.Linking.Linkings</Action><Action
     ]
 }</Action><Action
  Guid="26ad6f63-5699-4e59-a2f1-d2734f07d84b"
->Kernel.Level.Value &lt;- Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="76ac5283-c32d-4181-a348-382e77050531"
 >BTM.LRBG &lt;- BTM.BaliseGroup
 {
@@ -6447,7 +6459,7 @@ BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="07658e46-0aac-48bb-93cd-273625139cce"
->Kernel.Level.Value &lt;- Level.L2</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6559,7 +6571,7 @@ BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="8d6d74a0-0283-48f8-ad4e-82f0c849bcd3"
->Kernel.Level.Value &lt;- Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="a2808c0e-5962-4fa7-b793-ed3d30a4d231"
 >Kernel.Mode &lt;- Mode.LS</Action></Actions>
 </SubStep></SubSteps>

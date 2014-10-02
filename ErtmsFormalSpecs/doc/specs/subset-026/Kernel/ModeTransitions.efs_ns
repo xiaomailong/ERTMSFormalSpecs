@@ -53,7 +53,7 @@
 >
 <Expression>TrainPosition.Position.DataState == DataState.Valid AND
   MA.ClosestEOA().Location &lt;= BTM.AntennaPosition ( DistanceInterval.Min ) AND
-  Kernel.Level.Value == Level.L1</Expression>
+  Kernel.Level.Value.Value == Level.L1</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -174,7 +174,7 @@ NOT MA.ModeProfile.ModeProfileIsApplicable()</Expression>
 >
 <Expression>TrainPosition.Position.DataState == DataState.Valid AND
   MA.ClosestEOA().Location &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Min ) AND
-  Kernel.Level.Value in [Level.L2, Level.L3]</Expression>
+  Kernel.Level.Value.Value in [Level.L2, Level.L3]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -850,7 +850,7 @@ MA.ModeProfile.CurrentMode() == Mode.ModeProfile.SH</Expression>
   AND
 MA.ModeProfile.CurrentMode() == Mode.ModeProfile.SH
   AND
-Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</Expression>
+Level.Value.Value in [Level.L1, Level.L2, Level.L3]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -873,7 +873,7 @@ Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</Expression>
  Name="Value"
  Guid="ec0576c6-5e8d-4205-8a1a-5c5ee771fd68"
 >
-<Expression>Kernel.Level.Value == Level.LNTC</Expression>
+<Expression>Level.Value.Value == Level.LNTC</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1082,7 +1082,7 @@ DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus == Request.Respon
  Name="Value"
  Guid="e1e5a254-55f8-496c-8269-0f2331f0b6f2"
 >
-<Expression>Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]
+<Expression>Kernel.Level.Value.Value in [Level.L1, Level.L2, Level.L3]
   AND
 Available ( MA.MA )
   AND
@@ -1336,7 +1336,7 @@ Kernel.Shunting.StopShuntingOnDeskOpening</Expression>
  Name="Value"
  Guid="352b596a-a555-4dcb-8e37-9775c7755e6a"
 >
-<Expression>Kernel.Level.Value == Level.L0</Expression>
+<Expression>Kernel.Level.Value.Value == Level.L0</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1557,7 +1557,7 @@ MA.ModeProfile.CurrentMode() == Mode.ModeProfile.OS</Expression>
  Name="Value"
  Guid="9f989227-1a5b-40c0-bdc9-f6354a483985"
 >
-<Expression>Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]
+<Expression>Level.Value.Value in [Level.L1, Level.L2, Level.L3]
   AND
 MA.MA == EMPTY</Expression>
 </Case></Cases>
@@ -1614,7 +1614,7 @@ TrackDescription.Gradient.Gradients != []
   AND
 MA.ModeProfile.Profile == []
   AND
-Kernel.Level.Value == Level.L1
+Level.Value.Value == Level.L1
   AND
 SpeedAndDistanceMonitoring.TrainTripped == False</Expression>
 </Case></Cases>
@@ -1672,7 +1672,7 @@ TrackDescription.Gradient.Gradients != []
   AND
 NOT MA.ModeProfile.ModeProfileIsApplicable()
   AND
-Level.Value in [Level.L2, Level.L3]</Expression>
+Level.Value.Value in [Level.L2, Level.L3]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1989,7 +1989,7 @@ MA.ModeProfile.CurrentMode() == Mode.ModeProfile.LS</Expression>
   AND
 MA.ModeProfile.CurrentMode() == Mode.ModeProfile.LS
   AND
-Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</Expression>
+Level.Value.Value in [Level.L1, Level.L2, Level.L3]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2380,7 +2380,7 @@ NOT MA.ModeProfile.ModeProfileIsApplicable()</Expression>
 >
 <Expression>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip
   AND
-Kernel.Level.Value in [Level.L2, Level.L3]
+Level.Value.Value in [Level.L2, Level.L3]
   AND
 DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Response</Expression>
 </Case></Cases>

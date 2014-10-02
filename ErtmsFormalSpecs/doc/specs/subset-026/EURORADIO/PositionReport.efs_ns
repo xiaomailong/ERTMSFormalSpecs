@@ -444,7 +444,7 @@
  Name="Value"
  Guid="2267941e-218a-4012-9fe6-34f016f07663"
 >
-<Expression>PositionReportEventsTracker.Level != Kernel.Level.Value</Expression>
+<Expression>PositionReportEventsTracker.Level != Kernel.Level.Value.Value</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -960,7 +960,7 @@ TIU.TrainIntegrity.Status in [
 <PreCondition
  Guid="616052db-8451-4c18-a036-b9769e06293d"
 >SendReportDueToLevelChange()</PreCondition></PreConditions>
-<Expression>Default.EFSLevelConverter ( Kernel.Level.Value )</Expression>
+<Expression>Default.EFSLevelConverter ( Kernel.Level.Value.Value )</Expression>
 </Case><Case
  Name="LevelUnchanged"
  Guid="739b61cf-28cc-4829-8d66-31c0f7ba8dd3"
@@ -1821,11 +1821,11 @@ ON
 <PreConditions>
 <PreCondition
  Guid="49677e46-1ad5-40a9-af59-160a893d7fa9"
->PositionReportEventsTracker.Level != Kernel.Level.Value</PreCondition></PreConditions>
+>PositionReportEventsTracker.Level != Kernel.Level.Value.Value</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="515acf5a-9876-4a6f-a73b-ca4bf8d4188f"
->PositionReportEventsTracker.Level &lt;- Kernel.Level.Value</Action></Actions>
+>PositionReportEventsTracker.Level &lt;- Kernel.Level.Value.Value</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"

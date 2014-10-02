@@ -1288,7 +1288,7 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
 >
 </ReqRef><Comment>Used to determine whether the status of Kernel Mode has changed or not</Comment>
 </StructureElement><StructureElement
- TypeName="Default.Level"
+ TypeName="Default.LevelDataStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1993,7 +1993,7 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
         DRIVER_ID =&gt; Kernel.DriverId.Value,
         NID_ENGINE =&gt; Kernel.NidEngine,
         SYSTEM_VERSION =&gt; TypeConvertors.ToJRUSystemVersion(Kernel.OperatedSystemVersion),
-        LEVEL =&gt; TypeConvertors.ToJRULevel(Kernel.Level.Value),
+        LEVEL =&gt; TypeConvertors.ToJRULevel(Kernel.Level.Value.Value),
         MODE =&gt; TypeConvertors.ToJRUMode(Kernel.Mode)
     }</Expression>
 </Case></Cases>
@@ -2030,6 +2030,7 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  Name="Value"
  Guid="ce5aefc3-a18f-41b1-a8da-6e52ca3038fb"
 >
+<Comment></Comment>
 <Expression>Messages.JRU.MESSAGE.NTC_SELECTED.Message{
 HEADER =&gt; CreateHeader(MessageId=&gt;26),
 NID_NTC =&gt; TypeConvertors.ToJRUNidNTC((Kernel.NationalSystemId))
@@ -2484,7 +2485,7 @@ DriverActed()</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="ad4690a4-8546-41d1-9df7-10d96bf53ab3"
->( LevelChanged(jru) ) AND ( Kernel.Level.Value == Default.Level.LNTC )</PreCondition></PreConditions>
+>( LevelChanged(jru) ) AND ( Kernel.Level.Value.Value == Default.Level.LNTC )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="LevelNotChangedToNtc"
@@ -3872,7 +3873,7 @@ M_TRAIN_DATA_ENTRY=&gt;TypeConvertors.ToJRUTrainDataEntry()
 <PreConditions>
 <PreCondition
  Guid="f6cc93d5-391e-49ec-996b-60113667e0b0"
->(IsStartUp(jru) == True ) AND ( Kernel.Level.Value == Default.Level.LNTC )</PreCondition></PreConditions>
+>(IsStartUp(jru) == True ) AND ( Kernel.Level.Value.Value == Default.Level.LNTC )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="NationalSystemIsolationHasChanged"

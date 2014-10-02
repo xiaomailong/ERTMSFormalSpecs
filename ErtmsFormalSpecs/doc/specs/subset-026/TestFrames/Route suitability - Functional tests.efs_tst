@@ -139,7 +139,7 @@
  Guid="7dc895b6-09f8-461d-8cfc-3782b47e905c"
 >Kernel.Mode &lt;- Mode.OS</Action><Action
  Guid="ade92216-05a7-41af-87da-438f508e9cd7"
->Kernel.Level.Value &lt;- Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="88a4c24d-98d5-4990-bb07-aab8c362f785"
 >Kernel.ModeTransitions.PrevMode &lt;- Mode.SB</Action></Actions>
 </SubStep></SubSteps>
@@ -483,7 +483,11 @@
 >Kernel.Level &lt;- Kernel.LevelData
  {
     DataState =&gt; Default.DataState.Valid,
-    Value =&gt; Default.Level.L1
+    Value =&gt; Default.LevelDataStruct
+    {
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L1
+    }
  }</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -760,7 +764,7 @@
  Guid="5796fcd2-5cb0-4f88-9345-3cf70db5df2f"
 >Kernel.Mode &lt;- Default.Mode.OS</Action><Action
  Guid="a468a3dd-6809-4e75-bcce-36dd44b64f7a"
->Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1002,7 +1006,7 @@
  Guid="0e4d0fe2-aaf1-42a3-9e4a-4510680612dc"
 >Kernel.Mode &lt;- Mode.OS</Action><Action
  Guid="9c032315-6052-4830-b5f3-fd8e1ff5d237"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 4 - Start radio connection"
  Guid="b1b911c1-96d3-48bf-8a50-ac706ce508b2"
@@ -1280,7 +1284,7 @@
 <Actions>
 <Action
  Guid="f5ec612f-224a-456f-8f63-ae611b6ddd5e"
->Kernel.Level.Value &lt;- Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="c9494d0d-925d-4351-8b9f-2ce0a25bf95e"
 >Kernel.Mode &lt;- Mode.OS</Action></Actions>
 </SubStep></SubSteps>
@@ -1590,7 +1594,7 @@
 <Actions>
 <Action
  Guid="752db0d0-6e9c-4543-9499-06f2fcb1c2b2"
->Kernel.Level.Value &lt;- Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="b92c3db1-aa85-4a54-a209-45e5cf395c23"
 >Kernel.Mode &lt;- Mode.OS</Action></Actions>
 </SubStep></SubSteps>
@@ -1858,7 +1862,7 @@
 <Actions>
 <Action
  Guid="3b83027a-ac95-41e8-9055-678a9dbdd410"
->Kernel.Level.Value &lt;- Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="f7dbc432-c6d0-4c68-b1ea-6fdcbfc1d5ce"
 >Kernel.Mode &lt;- Mode.OS</Action></Actions>
 </SubStep></SubSteps>
