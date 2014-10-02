@@ -2031,9 +2031,10 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  Guid="ce5aefc3-a18f-41b1-a8da-6e52ca3038fb"
 >
 <Comment></Comment>
-<Expression>Messages.JRU.MESSAGE.NTC_SELECTED.Message{
-HEADER =&gt; CreateHeader(MessageId=&gt;26),
-NID_NTC =&gt; TypeConvertors.ToJRUNidNTC((Kernel.NationalSystemId))
+<Expression>Messages.JRU.MESSAGE.NTC_SELECTED.Message
+{
+    HEADER =&gt; CreateHeader(MessageId=&gt;26),
+    NID_NTC =&gt; TypeConvertors.ToJRUNidNTC((Kernel.Level.Value.NTC))
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -3835,7 +3836,7 @@ M_TRAIN_DATA_ENTRY=&gt;TypeConvertors.ToJRUTrainDataEntry()
 <Expression>Messages.JRU.MESSAGE.NATIONAL_SYSTEM_ISOLATION.Message
 {
     HEADER =&gt; CreateHeader(42),
-    NID_NTC =&gt; TypeConvertors.ToJRUNidNTC(Kernel.NationalSystemId),
+    NID_NTC =&gt; TypeConvertors.ToJRUNidNTC(Kernel.Level.Value.NTC),
     M_NATIONAL_SYSTEM_ISOLATION =&gt; TypeConvertors.ToJRUNtcIsolated()
 }</Expression>
 </Case></Cases>

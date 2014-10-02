@@ -4949,7 +4949,7 @@ Kernel.TrainDataValidated &lt;- True</Action></Actions>
 <Action
  Guid="053b80eb-e5c1-42a5-953b-40dae4c23ec6"
 ><Comment></Comment>
-DMI.MasterDMI().In_AcknOfSNMode.InitiateRequest(Kernel.NationalSystemId)</Action></Actions>
+DMI.MasterDMI().In_AcknOfSNMode.InitiateRequest(Kernel.Level.Value.NTC)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -10558,25 +10558,6 @@ JRU.JRU1.HandleMessagesOut()</Action></Actions>
  Guid="e1871b26-ed36-4255-a022-ac8dbfbd3c3a"
 >
 </ReqRef><Comment></Comment>
-</Variable><Variable
- Type="Default.NID_NTC"
- DefaultValue="NID_NTC.NOT_APPLICABLE"
- VariableMode="Internal"
- X="40"
- Y="350"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- Name="NationalSystemId"
- Guid="d779be35-e181-4d80-bff0-fc43fc35d682"
->
-<ReqRef
- Id="25de9975-544f-48ba-8ed8-aa2ade8433e7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="cb70b7cd-2026-4431-bb62-0c77b6561008"
->
-</ReqRef><Comment>Represents the id of the current national system.</Comment>
 </Variable><Variable
  Type="Kernel.OperatedSystemVersion"
  DefaultValue=""
