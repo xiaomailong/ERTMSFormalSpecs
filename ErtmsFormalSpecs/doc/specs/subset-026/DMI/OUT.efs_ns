@@ -69,33 +69,6 @@
 </ReqRef><Comment>Handles display of the current mode</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="161762a7-1189-433c-a31c-8c85f84f08cb"
->
-<Comment>Updates the value of the mode that should be displayed according to the Kernel mode</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="2844d155-0eb3-4eb9-b635-aeca4b1f7cb9"
->
-<PreConditions>
-<PreCondition
- Guid="7ee49310-9903-44ff-b7f4-90784f4c01d5"
-><Comment></Comment>
-OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="03ff2494-fd28-4b4b-80f1-40ae76f3d84b"
-><Comment></Comment>
-Mode &lt;- Kernel.Mode</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Output when mandatory"
@@ -222,32 +195,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Handles display of information relative to the brake reason.</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="945b1885-0932-43f4-9b04-1e92e0410356"
->
-<Comment>If the information is either available or active, keep the value up to date for display</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="f1a8852d-f15e-4a82-92a1-85b041cf5239"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="195b2dbf-22d7-4c63-b11d-4378c05d6123"
->THIS.OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ae406ba3-7f28-4ecf-936e-37bb2932406f"
->Level &lt;- Kernel.Level.Value</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -411,36 +358,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="1f13ddf4-b39e-41c1-a3d9-8739780a4c89"
 >
 </ReqRef><Comment>Handles display of information relative to the driver ID.</Comment>
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="cbbce177-844e-4242-8172-23497e4a05f9"
->
-<Comment>Keep the value of EmergencyStops up-to-date, but only if this information can be displayed</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="7079e769-b475-4285-8e8a-cf7d6e80e8ef"
->
-<PreConditions>
-<PreCondition
- Guid="76ce8e08-b372-452c-a978-83f32c2a88dc"
->OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="a36e66ff-5d2d-4af7-a3b9-882281399754"
-><Comment></Comment>
-Kernel.DriverId.DataState == Default.DataState.Valid</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="3a7adecc-6646-4d3a-ab14-8b07e02c0e6f"
->Id &lt;- Kernel.DriverId.Value</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -542,35 +459,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="37b00acc-091e-47f2-8236-e3a3909fe368"
 >
 </ReqRef><Comment>Display the RBC contact information</Comment>
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="ab4d9f1c-831d-4ef2-813d-d551c05ef25b"
->
-<Comment>Update the output value when display is requested</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="74904580-ca74-4c2d-92d4-6e8639786244"
->
-<PreConditions>
-<PreCondition
- Guid="03aa01ef-5c7e-41c1-adb9-bfa449a0ac08"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7856aaad-190f-4795-b48c-e29b2d53f82c"
->RBCContactInformation &lt;- EURORADIO.LastKnownRBC</Action><Action
- Guid="a0d2451b-237c-4d9c-bf90-12ec94387235"
->NetworkId &lt;- EURORADIO.LastKnownNetworkId</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -678,34 +566,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="58ad1909-3f6a-4674-82b3-ba72cb307bd6"
 >
 </ReqRef><Comment>Provides the train running number</Comment>
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="e292de65-b455-469c-be9d-489b6335420b"
->
-<Comment>Updates the value when display is requested</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="ea6f4be3-180c-4a57-81eb-85a5919853f3"
->
-<PreConditions>
-<PreCondition
- Guid="8d1575a9-91fc-45c8-8f7e-c00f834120fe"
-><Comment></Comment>
-OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f3a9d8ce-e6a1-4172-b66b-5be711d63c3b"
->Number &lt;- Kernel.TrainRunningNumber.Value</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -813,32 +673,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the train speed</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="79f4ac7a-9c67-4ffd-87a8-7a42e4c88cd1"
->
-<Comment>Updates the value when display is requested</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="2390984d-fd81-4f13-9e63-70ec1f9db39c"
->
-<PreConditions>
-<PreCondition
- Guid="18c0d73a-086d-4660-a053-8eabb5aef21d"
-><Comment></Comment>
-OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ef7b5877-7325-4951-994a-7959661cf001"
->Speed &lt;- Odometry.TrainSpeed()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Output when mandatory"
@@ -979,98 +813,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Handles display of information relative to the train permitted speed.</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="21946124-3d50-4855-864d-53a5845df7ba"
->
-<ReqRef
- Id="09e9b21f-a204-44c7-9829-f4221f5ff7a6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="437dece3-cb84-449c-b094-c7141761144d"
->
-<Comment></Comment>
-</ReqRef><ReqRef
- Id="74e64307-2966-461e-a976-9a0194ca8514"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5c101f1a-5c44-4522-96fa-a040dc6b3fac"
->
-<Comment></Comment>
-</ReqRef><Comment>Keep the value of Speed up-to-date, but only if this information can be displayed</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="6b84c2b1-233e-4c52-8153-692db15d6835"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="27f43f3b-9d33-4f93-8af9-d46bf9c93913"
->Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
- Guid="6419b761-6bf8-4aa3-af63-9c94abdb9795"
-><Comment></Comment>
-OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- Name="Update variable"
- Guid="074eb3af-d97b-455d-bf4b-735c57352494"
->
-<Comment>Updates the permitted speed according to the mode</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Train in SR, PT, SH, SN or RV modes"
- Guid="ceca03bb-563c-40a7-be1e-2646f21d018b"
->
-<Comment>Mode SR, PT, SH, SN or RV</Comment>
-<PreConditions>
-<PreCondition
- Guid="04868972-8866-4251-934f-1527923ad496"
->Kernel.Mode == Default.Mode.SR
-  OR  
-Kernel.Mode == Default.Mode.PT
-  OR  
-Kernel.Mode == Default.Mode.SH
-  OR  
-Kernel.Mode == Default.Mode.SN
-  OR  
-Kernel.Mode == Default.Mode.RV</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f6842f02-0829-4aa9-8f87-595353483595"
-><Comment></Comment>
-Speed &lt;- Kernel.ModeRelatedSpeedLimits.SRModeSpeedLimit()</Action><Action
- Guid="fa977fee-280c-40d9-8961-ac5e8494d9ef"
->OutputInformation.DisplayRequested &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Otherwise"
- Guid="3c0e9560-e579-4971-87cc-9fb0389c9b3a"
->
-<Comment>Otherwise</Comment>
-<PreConditions>
-<PreCondition
- Guid="a9971c0e-2925-4453-b4c7-43b5a9104e12"
-><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring in  [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="abfe8af1-6df4-4510-9e27-17aa6e1e711a"
-><Comment></Comment>
-Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -1218,36 +960,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the target speed</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="0cc4030a-fa8f-4691-b6e3-a19fe4187f41"
->
-<Comment>TODO: currently this rule is not executed, otherwise EFS gets errors while computing intersection of a target with EBD curve. Its seems to be a problem in the specification. See the comment for paragraph 3.13.9.3.5.7, marked as a spec issue.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="192abb43-8a6c-4da5-8120-07c256ce6121"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="cfab63ee-7d53-4866-889d-af9c47e77295"
-><Comment></Comment>
-OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="718632bd-e801-4c45-95f0-2a3479af5bb4"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target]</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="c312fe49-c752-4ce5-8361-a09bc8d7ecab"
-><Comment></Comment>
-Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -1382,38 +1094,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the release speed</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="a3647c5d-ea1f-4e03-949a-5ac784053d50"
->
-<ReqRef
- Id="ee7b5ecc-20f6-480c-aa0a-7836d5308d32"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="86bbfe66-d3c6-4d04-a7f4-b54c35c31b93"
->
-</ReqRef><Comment>Updates the output value when display is requested</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="93030fc8-cde7-4a29-a4cb-79d4d8d45e7a"
->
-<PreConditions>
-<PreCondition
- Guid="bfda245f-e56b-40df-b3fd-b22f703f58a4"
->OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="8038d0e6-78ca-47b8-8610-07535136491d"
->Kernel.SpeedAndDistanceMonitoring.DisplayReleaseSpeed()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ac88bf52-f540-44c2-8c94-930fb08165ef"
->Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedMonitoring.ReleaseSpeed</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -1554,36 +1234,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the speed and distance monitoring supervision status</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="f3d07897-bef3-4e2c-8e5b-60b429981a77"
->
-<Comment>Updates the output value when the status need be sent to the DMI</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="ee8f8820-7a3e-488c-940c-9b5393756831"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="63b462dd-77eb-421b-b645-7b971238f6ec"
->OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="7488f13c-8a6e-4cf8-8931-dd021c1574b6"
->Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ff5f5c50-07e9-4fef-b3f1-354e16f8124b"
->SupervisionStatus &lt;- Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</Action><Action
- Guid="975c42a9-7e96-48dd-99bb-ee51294679d3"
->Monitoring &lt;- GetMonitoringType()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -3055,49 +2705,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the geographical position of the train</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="01247fa8-470b-4a14-9241-cf02fc4cca79"
->
-<ReqRef
- Id="09e9b21f-a204-44c7-9829-f4221f5ff7a6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1336ab23-b79c-48ef-b95e-83539594069c"
->
-<Comment></Comment>
-</ReqRef><ReqRef
- Id="74e64307-2966-461e-a976-9a0194ca8514"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fcfd55aa-d453-4e93-affa-fddb95e0225c"
->
-<Comment></Comment>
-</ReqRef><Comment>Keep the value of Speed up-to-date, but only if this information can be displayed</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="7fb4cb71-6874-4f28-9075-6001303250e9"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="66e26df1-3de2-482f-ad92-f12fbf0ec8d8"
->Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
- Guid="d875d4e5-c722-4867-8ff4-13b0df014c5c"
-><Comment></Comment>
-OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="8294da13-c432-41af-8af5-7ba212f240de"
->Position &lt;- Kernel.TrainPosition.FrontEndPosition(
-    PointOfInterest=&gt;DistanceInterval.Nom
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -3624,33 +3231,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="f1a79f31-d740-4203-86e2-3d320b24e047"
 >
 </ReqRef><Comment>Handles display of information relative to the list of accepted emergency stops.</Comment>
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="6ec43584-7fdc-4e7d-bceb-2d951aee4e6a"
->
-<Comment>Keep the value of EmergencyStops up-to-date, but only if this information can be displayed</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="fb6d5e14-ea87-4906-99e1-2df7aeefb8e4"
->
-<PreConditions>
-<PreCondition
- Guid="a137a28a-4a6e-47ee-aa22-6ac9d63eb392"
->THIS.OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="9815ae9e-cf79-4c63-8626-c190486f58da"
->EmergencyStops &lt;- Kernel.EmergencyStops</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -4764,49 +4344,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="b5c07d4a-6d7e-4492-bfff-b7d693c8aac8"
 >
 </ReqRef><Comment>Handles display of information relative to the Safe Radio Connection Status.</Comment>
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Update value"
- Guid="1eb433e9-8925-4864-a554-9b79504a5128"
->
-<ReqRef
- Id="03c854a9-637b-42ee-b747-173045437dd6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fc5becfa-9fb3-4f50-836a-6afc30bc1725"
->
-</ReqRef><ReqRef
- Id="a5a3cbff-14ec-43ba-afca-63c2734d0414"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8536a165-0d62-4bd5-8086-20124c86ce76"
->
-</ReqRef><ReqRef
- Id="2be2d035-b42d-4e1b-9788-dded559e7f64"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="69ae7903-774a-47f8-9ad7-64d0e933cd7f"
->
-</ReqRef><Comment>Updates the values that have to be displayed to the driver.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Update value"
- Guid="af3fa51f-52af-4310-a35c-6eab9998c825"
->
-<PreConditions>
-<PreCondition
- Guid="6fa32aae-e870-4175-8902-27fd2d816f22"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="6c795dd9-cfd6-4c71-9695-cc2210c5bcaf"
-><Comment></Comment>
-ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -4909,42 +4446,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the local time</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="5377a14c-ba9e-4abd-a157-7dbaab76f803"
->
-<ReqRef
- Id="57c8cd45-54ca-4d5e-b07f-37b9b1efab54"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="cde65c3a-b10e-400f-95cc-c84240fa4e96"
->
-</ReqRef><Comment>Updates the local time value when display is requested</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="1ac88761-f8d9-459f-8ec8-217a6c6f500f"
->
-<Comment>TODO Get the NID_C from the appropriate location
-
-Fetches the time from the kernel and adjusts according to the current country identifier</Comment>
-<PreConditions>
-<PreCondition
- Guid="a3218da3-d4c8-4875-9c10-08223c2b7e82"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="1142b13c-b3ac-4642-81b5-5adb7963db43"
-><Comment></Comment>
-Time &lt;- Kernel.DateAndTime.LocalTime(
-    Country=&gt;0
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Output when mandatory"
@@ -5076,32 +4577,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Handles display of information relative to the gradient profile.</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="683c281e-ae16-43e4-b502-619de00f9967"
->
-<Comment>Keep the value of GradientValues up-to-date, but only if this information can be displayed.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="073eeb23-c47b-4f9c-b3d5-8e928445f9f4"
->
-<PreConditions>
-<PreCondition
- Guid="b728deb1-78dd-4c6b-9369-824d0ce59ec2"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="bd5f6858-eb55-4cc7-a633-8479451bf90c"
-><Comment></Comment>
-GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING Kernel.TrackDescription.Gradient.CompensateForTrainPosition(X)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -5234,40 +4709,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Handles display of information relative to the MRSP.</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="cf4083fe-c449-42b7-8f20-0a7a21fef28d"
->
-<Comment>Keep the value of the MRSP up-to-date, but only if this information can be displayed.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="64a50690-ad9b-41f6-94b9-8b44fe30b7d7"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="2d7e3394-01bd-4312-9c4f-39bae5bbbb99"
-><Comment></Comment>
-THIS.OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="97e87b9c-6423-492a-ab35-7e0f036e1158"
->Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()
-  OR  
-Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()
-  OR  
-Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="1be84e29-e3d9-42a7-b772-c8c4ffef7f37"
-><Comment></Comment>
-GetMRSP()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Output when mandatory"
@@ -5306,6 +4747,7 @@ MRSPMandatory()</PreCondition></PreConditions>
  Name="Updates the request status"
  Guid="90fd9169-822d-4620-b731-27b42a590c6f"
 >
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -5353,7 +4795,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="a5340098-34e5-4d50-8ae9-026a9f014a3f"
->THIS.OutputInformation.DoNotDisplay()</Action></Actions>
+><Comment></Comment>
+THIS.OutputInformation.DoNotDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5496,37 +4939,6 @@ IN MRSP</Action></Actions>
 </ReqRef><Comment>Provides the indication location at the MRSP speed</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="06aae74d-8f94-4a47-8db4-c3a7016c6ebf"
->
-<Comment>Updates the value when needed to be displayed</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="dedfc75e-8039-4cb5-b1a4-25400560f247"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="e7e23d27-d75d-4817-b027-fee6a8e4b996"
->OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="5bced455-e7ba-4ce4-8b8c-d71ad9d9f0b7"
->GetMonitoringType() == MonitoringType.CSM
-  OR  
-GetMonitoringType() == MonitoringType.PIM</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="3b03cbd3-6227-48c2-89d6-d091e5d898dc"
-><Comment></Comment>
-Location &lt;- Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.IndicationLocation()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -5679,33 +5091,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the first target at speed 0</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="edfe3c9b-4bce-4c4a-839e-f0a62bb2f8da"
->
-<Comment>Updates the value of the first target at 0 speed</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="948831e8-2473-4708-875e-c8da74322cd8"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="ed8d828e-dac1-4e26-b829-678024c3a785"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="48b28eb0-1034-4e06-9c8e-4bc9d9fd35b3"
-><Comment></Comment>
-Target &lt;- Kernel.FirstTargetAtZeroSpeed</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -6134,36 +5519,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="8b256034-106e-4b6e-978f-c1dbcc4afcde"
 >
 </ReqRef><Comment>Provides the route unsuitabilities</Comment>
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="26f442dc-e1a5-4e18-a2a9-90408ed6900e"
->
-<Comment>Updates the output value when display is requested</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="a764d9c3-bfe8-4a80-a0c8-20818543f5d4"
->
-<PreConditions>
-<PreCondition
- Guid="d4d0f968-0c62-4881-8b31-4c3aa53e38a3"
->OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="02103ad1-59b6-4991-8a41-9d0b4d5374d8"
->Available(Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="9a64b1f3-c744-4797-951b-c1f9247a26c6"
->RouteUnsuitabilities &lt;- 
-MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable (X) USING X</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -6274,35 +5629,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the target distance</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="d6207bc0-a23b-41d2-b0f8-66717cd383fa"
->
-<Comment>Updates the target distance when requested to display on the DMI</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="463e57c3-09a7-4c0a-9506-917d7b2b22a0"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="08961521-d25e-4e1e-b5ab-f956b5d776fd"
->OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="f4fa4704-a159-4fbe-9c68-7429576b316f"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="4ec9e0a0-7cd1-4cc2-b31f-830372a7fab2"
-><Comment></Comment>
-Distance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Output when mandatory"
@@ -6455,35 +5781,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="804a0dff-a212-44f5-a927-87b204dafc86"
 >
 </ReqRef><Comment>Provides the train data for output</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="edd0e154-3bff-4bd1-9a9e-f57319af18df"
->
-<Comment>Updates the train data value when display is requested</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="546af9fd-4098-4427-994b-8d9473c046b0"
->
-<PreConditions>
-<PreCondition
- Guid="30046cbc-d85c-44a1-8a6d-6eaa4cb1a866"
-><Comment></Comment>
-OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7c4571e4-a3ac-499c-9dc9-b1dd1f630b2a"
-><Comment></Comment>
-Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -6603,51 +5900,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the FLOI value</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- Name="UpdateValue"
- Guid="f035b068-151b-4ba4-9e1c-eaeedd2641a4"
->
-<ReqRef
- Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="37110a05-aaaf-4cab-bbc5-5d6b6e30b84c"
->
-</ReqRef><ReqRef
- Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="54f47ae7-00d8-4ecd-b05e-7342ca703f88"
->
-</ReqRef><Comment>Updates the FLOI value when displayed</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="84111a24-c1b5-4ecc-9522-559cc279d396"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="b2656408-99e7-4f0c-bc3a-526060dfebca"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target]</PreCondition><PreCondition
- Guid="859e941a-b30f-46f2-9d7b-1cc226cc0fbe"
->Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() != Kernel.SupervisionStatus.Normal
-  AND  
-Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() != Kernel.SupervisionStatus.Indication</PreCondition><PreCondition
- Guid="d5634a7b-6cad-4c6f-9dc8-a6a83557e821"
->Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
- Guid="104bfae1-3091-47e6-b63e-77df74bc368a"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f0c8976c-c957-4f3d-a0a5-3295db9e7317"
-><Comment></Comment>
-Speed &lt;- Kernel.SpeedAndDistanceMonitoring.FLOISpeed(
-Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"

@@ -1156,6 +1156,745 @@ THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
 >THIS.In_VirtualBaliseCover.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateOUTVariables"
+ Guid="5bc782b5-76bb-4d4b-ab44-9bcd2cddeec6"
+>
+<Comment>Handles the update of all the output variables displayed on the DMI</Comment>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update accepted emergency stops"
+ Guid="076da07e-1c15-4e7d-b483-f4ea56aa180c"
+>
+<Comment>Updates the displayed list of accepted emergency stops</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update accepted emergency stops"
+ Guid="f3f773a0-88d3-4a43-85b5-f664051554fd"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="3ae0271e-a782-4f4e-a474-dce7c4b0b89d"
+>Out_AcceptedEmergencyStops.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9815ae9e-cf79-4c63-8626-c190486f58da"
+><Comment></Comment>
+Out_AcceptedEmergencyStops.EmergencyStops &lt;- Kernel.EmergencyStops</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update Level"
+ Guid="cae9704d-2daa-42fb-bf5e-8c90f72905a9"
+>
+<Comment>Updates the displayed ERTMS/ETCS Level</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update Level"
+ Guid="4c913cb4-87c2-4e9e-9219-53f8296466c6"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="195b2dbf-22d7-4c63-b11d-4378c05d6123"
+>Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ae406ba3-7f28-4ecf-936e-37bb2932406f"
+>Out_CurrentErtmsEtcsLevel.Level &lt;- Kernel.Level.Value</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update Driver ID"
+ Guid="f68431be-1330-4646-bd89-866a8d08dfcc"
+>
+<Comment>Updates the displayed driver ID</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update Driver ID"
+ Guid="79ef86c8-e8d6-4444-8f5b-0e875efd6f06"
+>
+<PreConditions>
+<PreCondition
+ Guid="76ce8e08-b372-452c-a978-83f32c2a88dc"
+>Out_DriverId.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="a36e66ff-5d2d-4af7-a3b9-882281399754"
+><Comment></Comment>
+Kernel.DriverId.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3a7adecc-6646-4d3a-ab14-8b07e02c0e6f"
+>Out_DriverId.Id &lt;- Kernel.DriverId.Value</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update Mode"
+ Guid="23f8cd15-1e37-451f-866e-eac416698acf"
+>
+<Comment>Updates the displayed ERTMS/ETCS Mode</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update Mode"
+ Guid="caec3181-8487-4d20-887f-01fa668459c1"
+>
+<PreConditions>
+<PreCondition
+ Guid="20dbf228-0aea-40f7-82c6-ce8596d5090a"
+><Comment></Comment>
+Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="03ff2494-fd28-4b4b-80f1-40ae76f3d84b"
+><Comment></Comment>
+Out_ErtmsEtcsMode.Mode &lt;- Kernel.Mode</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update first target at zero speed"
+ Guid="0208baca-5fd6-4136-9149-e3198c042f74"
+>
+<Comment>Updates the display of the first target at zero speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update first target at zero speed"
+ Guid="fb8362ae-d794-497a-9820-071afc48eeb0"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="ed8d828e-dac1-4e26-b829-678024c3a785"
+><Comment></Comment>
+Out_FirstTargetAtZeroSpeed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="48b28eb0-1034-4e06-9c8e-4bc9d9fd35b3"
+><Comment></Comment>
+Out_FirstTargetAtZeroSpeed.Target &lt;- Kernel.FirstTargetAtZeroSpeed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update FLOI"
+ Guid="a884fe23-0d45-44d7-bf19-ab6221b4198c"
+>
+<ReqRef
+ Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="95a12ba6-b718-4591-8059-d6e3028b7324"
+>
+</ReqRef><ReqRef
+ Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a828dd44-f6e2-4d30-891e-5f32db33110c"
+>
+</ReqRef><Comment>Updates the displayed FLOI speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="84111a24-c1b5-4ecc-9522-559cc279d396"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="b2656408-99e7-4f0c-bc3a-526060dfebca"
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target]</PreCondition><PreCondition
+ Guid="859e941a-b30f-46f2-9d7b-1cc226cc0fbe"
+>Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() != Kernel.SupervisionStatus.Normal
+  AND  
+Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() != Kernel.SupervisionStatus.Indication</PreCondition><PreCondition
+ Guid="d5634a7b-6cad-4c6f-9dc8-a6a83557e821"
+>Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
+ Guid="104bfae1-3091-47e6-b63e-77df74bc368a"
+>Out_FLOI.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f0c8976c-c957-4f3d-a0a5-3295db9e7317"
+><Comment></Comment>
+Out_FLOI.Speed &lt;- Kernel.SpeedAndDistanceMonitoring.FLOISpeed(
+Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update geographical position"
+ Guid="a623c088-3546-40cf-a0f8-812cdca1e577"
+>
+<Comment>Updates the displayed geographical position</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="7fb4cb71-6874-4f28-9075-6001303250e9"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="66e26df1-3de2-482f-ad92-f12fbf0ec8d8"
+>Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
+ Guid="d875d4e5-c722-4867-8ff4-13b0df014c5c"
+><Comment></Comment>
+Out_GeographicalPosition.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8294da13-c432-41af-8af5-7ba212f240de"
+>Out_GeographicalPosition.Position &lt;- Kernel.TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;Default.DistanceInterval.Nom
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update gradient"
+ Guid="b40e4820-4169-4019-8297-4d530bed35c5"
+>
+<Comment>Updates the displayed gradients</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="073eeb23-c47b-4f9c-b3d5-8e928445f9f4"
+>
+<PreConditions>
+<PreCondition
+ Guid="b728deb1-78dd-4c6b-9369-824d0ce59ec2"
+><Comment></Comment>
+Out_Gradient.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="bd5f6858-eb55-4cc7-a633-8479451bf90c"
+><Comment></Comment>
+Out_Gradient.GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING Kernel.TrackDescription.Gradient.CompensateForTrainPosition(X)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update indication location at MSRP speed"
+ Guid="d461d908-93cf-4d82-a982-20fbe7ea7ecf"
+>
+<Comment>Updates the displayed indication location at MRSP speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="dedfc75e-8039-4cb5-b1a4-25400560f247"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="e7e23d27-d75d-4817-b027-fee6a8e4b996"
+>Out_IndicationLocationAtMrspSpeed.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="5bced455-e7ba-4ce4-8b8c-d71ad9d9f0b7"
+>OUT.GetMonitoringType() == OUT.MonitoringType.CSM
+  OR  
+OUT.GetMonitoringType() == OUT.MonitoringType.PIM</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3b03cbd3-6227-48c2-89d6-d091e5d898dc"
+><Comment></Comment>
+Out_IndicationLocationAtMrspSpeed.Location &lt;- Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.IndicationLocation()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update local time"
+ Guid="77d00604-ba2f-4d60-b3d1-57d9d34afebf"
+>
+<ReqRef
+ Id="57c8cd45-54ca-4d5e-b07f-37b9b1efab54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6f2d8ff7-483e-4ab1-a1ff-18bfd602fdc5"
+>
+</ReqRef><Comment>Updates the displayed local time</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="1ac88761-f8d9-459f-8ec8-217a6c6f500f"
+>
+<Comment>TODO Get the NID_C from the appropriate location
+
+Fetches the time from the kernel and adjusts according to the current country identifier</Comment>
+<PreConditions>
+<PreCondition
+ Guid="a3218da3-d4c8-4875-9c10-08223c2b7e82"
+>Out_LocalTime.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1142b13c-b3ac-4642-81b5-5adb7963db43"
+><Comment></Comment>
+Out_LocalTime.Time &lt;- Kernel.DateAndTime.LocalTime(
+    Country=&gt;0
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update MRSP"
+ Guid="6a704f40-9de7-4007-a2c3-af80257131d1"
+>
+<Comment>Updates the displayed MRSP</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="64a50690-ad9b-41f6-94b9-8b44fe30b7d7"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="2d7e3394-01bd-4312-9c4f-39bae5bbbb99"
+><Comment></Comment>
+Out_MRSP.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="97e87b9c-6423-492a-ab35-7e0f036e1158"
+>Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()
+  OR  
+Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()
+  OR  
+Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1be84e29-e3d9-42a7-b772-c8c4ffef7f37"
+><Comment></Comment>
+Out_MRSP.GetMRSP()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update permitted speed"
+ Guid="b9ba7f08-be55-4923-982f-f5872439af94"
+>
+<ReqRef
+ Id="09e9b21f-a204-44c7-9829-f4221f5ff7a6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fffeb489-e055-4142-846d-a686a47ec7fa"
+>
+</ReqRef><ReqRef
+ Id="74e64307-2966-461e-a976-9a0194ca8514"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b437f784-ec34-4cc9-91ca-fc8594023a1d"
+>
+</ReqRef><Comment>Updates the displayed permitted speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="6b84c2b1-233e-4c52-8153-692db15d6835"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="27f43f3b-9d33-4f93-8af9-d46bf9c93913"
+>Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
+ Guid="6419b761-6bf8-4aa3-af63-9c94abdb9795"
+><Comment></Comment>
+Out_PermittedSpeed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ Name="Update variable"
+ Guid="074eb3af-d97b-455d-bf4b-735c57352494"
+>
+<Comment>Updates the permitted speed according to the mode</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Train in SR, PT, SH, SN or RV modes"
+ Guid="ceca03bb-563c-40a7-be1e-2646f21d018b"
+>
+<Comment>Mode SR, PT, SH, SN or RV</Comment>
+<PreConditions>
+<PreCondition
+ Guid="04868972-8866-4251-934f-1527923ad496"
+>Kernel.Mode == Default.Mode.SR
+  OR  
+Kernel.Mode == Default.Mode.PT
+  OR  
+Kernel.Mode == Default.Mode.SH
+  OR  
+Kernel.Mode == Default.Mode.SN
+  OR  
+Kernel.Mode == Default.Mode.RV</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f6842f02-0829-4aa9-8f87-595353483595"
+><Comment></Comment>
+Out_PermittedSpeed.Speed &lt;- Kernel.ModeRelatedSpeedLimits.SRModeSpeedLimit()</Action><Action
+ Guid="fa977fee-280c-40d9-8961-ac5e8494d9ef"
+>Out_PermittedSpeed.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Otherwise"
+ Guid="3c0e9560-e579-4971-87cc-9fb0389c9b3a"
+>
+<Comment>Otherwise</Comment>
+<PreConditions>
+<PreCondition
+ Guid="a9971c0e-2925-4453-b4c7-43b5a9104e12"
+><Comment></Comment>
+Kernel.SpeedAndDistanceMonitoring.Monitoring in  [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="abfe8af1-6df4-4510-9e27-17aa6e1e711a"
+><Comment></Comment>
+Out_PermittedSpeed.Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update RBC contact information"
+ Guid="8ca3d038-333d-4b0d-acf4-183ac9b16b65"
+>
+<Comment>Updates the displayed RBC contact information</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="74904580-ca74-4c2d-92d4-6e8639786244"
+>
+<PreConditions>
+<PreCondition
+ Guid="03aa01ef-5c7e-41c1-adb9-bfa449a0ac08"
+>Out_RBCContactInformation.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7856aaad-190f-4795-b48c-e29b2d53f82c"
+>Out_RBCContactInformation.RBCContactInformation &lt;- EURORADIO.LastKnownRBC</Action><Action
+ Guid="a0d2451b-237c-4d9c-bf90-12ec94387235"
+>Out_RBCContactInformation.NetworkId &lt;- EURORADIO.LastKnownNetworkId</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update release speed"
+ Guid="e6fab11f-5dac-4a05-9f51-3ddbf23d6936"
+>
+<ReqRef
+ Id="ee7b5ecc-20f6-480c-aa0a-7836d5308d32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3bf2721b-395c-4392-9343-397ebcb2f7d0"
+>
+</ReqRef><Comment>Updates the displayed release speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="93030fc8-cde7-4a29-a4cb-79d4d8d45e7a"
+>
+<PreConditions>
+<PreCondition
+ Guid="bfda245f-e56b-40df-b3fd-b22f703f58a4"
+>Out_ReleaseSpeed.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="8038d0e6-78ca-47b8-8610-07535136491d"
+>Kernel.SpeedAndDistanceMonitoring.DisplayReleaseSpeed()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ac88bf52-f540-44c2-8c94-930fb08165ef"
+>Out_ReleaseSpeed.Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedMonitoring.ReleaseSpeed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update route unsuitabilities"
+ Guid="24eee975-7cab-45b8-b645-0108f62ec075"
+>
+<Comment>Updates the displayed route unsuitabilities</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="a764d9c3-bfe8-4a80-a0c8-20818543f5d4"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="d4d0f968-0c62-4881-8b31-4c3aa53e38a3"
+>Out_RouteUnsuitabilities.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="02103ad1-59b6-4991-8a41-9d0b4d5374d8"
+>Available(Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9a64b1f3-c744-4797-951b-c1f9247a26c6"
+>Out_RouteUnsuitabilities.RouteUnsuitabilities &lt;- 
+MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable (X) USING X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update safe radio connection indication"
+ Guid="adeefdd3-81c9-4cff-b6d6-baf1a02bd751"
+>
+<ReqRef
+ Id="03c854a9-637b-42ee-b747-173045437dd6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5cded5d6-a573-4f3f-b538-05230c8fb7d2"
+>
+</ReqRef><ReqRef
+ Id="a5a3cbff-14ec-43ba-afca-63c2734d0414"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3e0bb719-35a7-40ef-8425-ae1a9a39b446"
+>
+</ReqRef><ReqRef
+ Id="2be2d035-b42d-4e1b-9788-dded559e7f64"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ecbd88a8-9e98-4001-9c19-83d6f8663ea3"
+>
+</ReqRef><Comment>Updates the displayed safe radio connection status</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update value"
+ Guid="af3fa51f-52af-4310-a35c-6eab9998c825"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="6fa32aae-e870-4175-8902-27fd2d816f22"
+>Out_SafeRadioConnectionIndication.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6c795dd9-cfd6-4c71-9695-cc2210c5bcaf"
+><Comment></Comment>
+Out_SafeRadioConnectionIndication.ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update speed and distance monitoring and supervision status"
+ Guid="52d482c3-5968-4ffd-b59a-22a5a195af0f"
+>
+<Comment>Updates the displayed speed and distance monitoring type and the supervision status</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="ee8f8820-7a3e-488c-940c-9b5393756831"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="63b462dd-77eb-421b-b645-7b971238f6ec"
+>Out_SpeedAndDistanceMonitoringSupervisionStatus.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="7488f13c-8a6e-4cf8-8931-dd021c1574b6"
+>Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ff5f5c50-07e9-4fef-b3f1-354e16f8124b"
+>Out_SpeedAndDistanceMonitoringSupervisionStatus.SupervisionStatus &lt;- Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</Action><Action
+ Guid="975c42a9-7e96-48dd-99bb-ee51294679d3"
+>Out_SpeedAndDistanceMonitoringSupervisionStatus.Monitoring &lt;- OUT.GetMonitoringType()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update target distance"
+ Guid="975d61c0-380d-467c-9f56-cee47458be1b"
+>
+<Comment>Updates the displayed distance to target</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="463e57c3-09a7-4c0a-9506-917d7b2b22a0"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="08961521-d25e-4e1e-b5ab-f956b5d776fd"
+>Out_TargetDistance.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="f4fa4704-a159-4fbe-9c68-7429576b316f"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="4ec9e0a0-7cd1-4cc2-b31f-830372a7fab2"
+><Comment></Comment>
+Out_TargetDistance.Distance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update target speed"
+ Guid="a8a43592-998b-47a2-9c66-d85a5ca4e7c4"
+>
+<Comment>Updates the displayed target speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="192abb43-8a6c-4da5-8120-07c256ce6121"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="cfab63ee-7d53-4866-889d-af9c47e77295"
+><Comment></Comment>
+Out_TargetSpeed.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="718632bd-e801-4c45-95f0-2a3479af5bb4"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c312fe49-c752-4ce5-8361-a09bc8d7ecab"
+><Comment></Comment>
+Out_TargetSpeed.Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update train data"
+ Guid="358297e0-46fe-4c59-8a59-700a2527bd90"
+>
+<Comment>Updates the displayed train data</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="546af9fd-4098-4427-994b-8d9473c046b0"
+>
+<PreConditions>
+<PreCondition
+ Guid="30046cbc-d85c-44a1-8a6d-6eaa4cb1a866"
+><Comment></Comment>
+Out_TrainData.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7c4571e4-a3ac-499c-9dc9-b1dd1f630b2a"
+><Comment></Comment>
+Out_TrainData.Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update train running number"
+ Guid="9f34dfca-a33b-4a9f-8086-0d6696620d3e"
+>
+<Comment>Updates the displayed train running number</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="ea6f4be3-180c-4a57-81eb-85a5919853f3"
+>
+<PreConditions>
+<PreCondition
+ Guid="8d1575a9-91fc-45c8-8f7e-c00f834120fe"
+><Comment></Comment>
+Out_TrainRunningNumber.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f3a9d8ce-e6a1-4172-b66b-5be711d63c3b"
+>Out_TrainRunningNumber.Number &lt;- Kernel.TrainRunningNumber.Value</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update train speed"
+ Guid="52451ff8-713a-4f4a-8dfd-482516db9c52"
+>
+<Comment>Updates the displayed current speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="2390984d-fd81-4f13-9e63-70ec1f9db39c"
+>
+<PreConditions>
+<PreCondition
+ Guid="18c0d73a-086d-4660-a053-8eabb5aef21d"
+><Comment></Comment>
+Out_TrainSpeed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ef7b5877-7325-4951-994a-7959661cf001"
+>Out_TrainSpeed.Speed &lt;- Odometry.TrainSpeed()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="IN.TrainDataEntryRequest"

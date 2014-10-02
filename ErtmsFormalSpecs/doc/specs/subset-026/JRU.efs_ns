@@ -37,45 +37,6 @@
 </ReqRef><Comment>It will represent the JRU structure for all its elements</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- Name="SendMessage"
- Guid="5b350aa5-3c13-4952-ab53-44c7d5822a49"
->
-<ReqRef
- Id="d2655cc5-21f7-4522-96f9-bdfb23f40c80"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="08247f18-1f97-4fc3-ae1c-01fe9dd99775"
->
-</ReqRef><ReqRef
- Id="1e4ca98b-fcef-4737-b4e3-38bfc4715927"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e34b92ec-5333-4274-9b58-7e46d5f4e405"
->
-</ReqRef><Comment>This will call the procedure to send, update the internal variables involve in sending a JRU Message and cleaning up at the end of the cycle</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="SendMessage"
- Guid="a7f33512-4c80-4318-90a3-c8d22b05e9af"
->
-<Comment>If it is necessary to send a new JRU Message, it will be created, filled and sent. And the involved variables will be updated</Comment>
-<PreConditions>
-<PreCondition
- Guid="c7be3f63-444c-4d7c-8b71-dd667a30c684"
-><Comment></Comment>
-SendNewMessage(THIS) == True</PreCondition><PreCondition
- Guid="4eee2492-c631-4d93-a805-94ebed355f6c"
-><Comment></Comment>
-Kernel.ActiveFunctions.ProvideJuridicalData()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ceacc66c-5e57-4024-81f9-daf7d248fcdf"
-><Comment></Comment>
-HandleMessagesOut()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="CleanUp"
  Implemented="TRUE"
  Name="DeleteStoredMessages"
@@ -1050,7 +1011,12 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Name="HandleMessagesOut"
  Guid="4af08c47-2a93-44e8-b46d-1aefdd295edd"
 >
-<Comment>This procedure will manage all the necessary operations for sending, cleaning and updating all the related elements in sending a JRU Message</Comment>
+<ReqRef
+ Id="d2655cc5-21f7-4522-96f9-bdfb23f40c80"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="15920dfc-646c-4cdd-b7c8-62ba679f668f"
+>
+</ReqRef><Comment>This procedure will manage all the necessary operations for sending, cleaning and updating all the related elements in sending a JRU Message</Comment>
 <Rules>
 <Rule
  Priority="Processing"
