@@ -492,47 +492,39 @@ namespace DataDictionary.Tests.Translations
             Variables.IVariable subSequenceVariable;
             if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable))
             {
-                // will contain the list of all packets of the message and then be added to the structure packetValue
-                ArrayList subStructures = new ArrayList();
+                Types.Collection collectionType = (Types.Collection)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.Collection1");
+                Types.Structure subStructure1Type = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.SubStructure1");
+                Types.Structure packetStructure = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.PACKET.TRACK_TO_TRAIN.Message");
+
+                // The collection of the message packets is copied to the structure packetValue
+                Values.ListValue collection = new Values.ListValue(collectionType, new List<Values.IValue>());
+
+                // Try to append all substructure, each one in a new packet 
                 foreach (DBElements.DBPacket packet in message.Packets)
                 {
                     Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
-
                     if (nidPacketField.Value != 255)  // 255 means "end of information"
                     {
                         Values.StructureValue subStructure = FindStructure(nidPacketField.Value);
 
                         index = 0;
                         FillStructure(nameSpace, packet.Fields, ref index, subStructure);
+                        Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
+                        Values.StructureValue packetValue = new Values.StructureValue(packetStructure);
+                        subStructure1.SubVariables.ElementAt(0).Value.Value = packetValue;
+                        collection.Val.Add(subStructure1);
 
-                        subStructures.Add(subStructure);
-                    }
-                }
-
-                // the collection of the message packets is copied to the structure packetValue
-                Types.Collection collectionType = (Types.Collection)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.Collection1");
-                Values.ListValue collection = new Values.ListValue(collectionType, new List<Values.IValue>());
-
-                Types.Structure subStructure1Type = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.SubStructure1");
-                Types.Structure packetStructure = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.PACKET.TRACK_TO_TRAIN.Message");
-
-                // Try to append all substructure, each one in a new packet 
-                foreach (Values.StructureValue structureValue in subStructures)
-                {
-                    Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
-                    Values.StructureValue packetValue = new Values.StructureValue(packetStructure);
-                    subStructure1.SubVariables.ElementAt(0).Value.Value = packetValue;
-                    collection.Val.Add(subStructure1);
-
-                    foreach (KeyValuePair<string, Variables.IVariable> pair in packetValue.SubVariables)
-                    {
-                        string variableName = pair.Key;
-                        if (structureValue.Structure.FullName.Contains(variableName))
+                        // Find the right variable in the packet to add the structure we just created
+                        foreach (KeyValuePair<string, Variables.IVariable> pair in packetValue.SubVariables)
                         {
-                            Variables.IVariable variable = pair.Value;
-                            variable.Value = structureValue;
+                            string variableName = pair.Key;
+                            if (subStructure.Structure.FullName.Contains(variableName))
+                            {
+                                Variables.IVariable variable = pair.Value;
+                                variable.Value = subStructure;
 
-                            break;
+                                break;
+                            }
                         }
                     }
                 }
