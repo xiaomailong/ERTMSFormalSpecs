@@ -5,11 +5,14 @@
  Name="PermittedBrakingDistance"
  Guid="04dc141f-d4cc-4fa5-881e-4b2bbd65f769"
 >
+<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
 <Structure
  Default=""
+ X="420"
+ Y="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -102,7 +105,8 @@
 >
 </ReqRef></StructureElement></Structure><Structure
  Default=""
- X="110"
+ X="200"
+ Y="10"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -152,7 +156,8 @@
  TypeName="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
  MaxSize="20"
  Default="[]"
- Y="60"
+ X="410"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -171,7 +176,8 @@
 <Function
  Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
  Default=""
- Y="180"
+ X="560"
+ Y="250"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -249,8 +255,8 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="110"
- Y="180"
+ X="450"
+ Y="250"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -306,8 +312,8 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="220"
- Y="180"
+ X="10"
+ Y="310"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -375,8 +381,8 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="330"
- Y="180"
+ X="120"
+ Y="310"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -437,8 +443,8 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="440"
- Y="180"
+ X="340"
+ Y="310"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -495,7 +501,8 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- Y="240"
+ X="230"
+ Y="310"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -552,8 +559,8 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
- X="660"
- Y="180"
+ X="10"
+ Y="190"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -635,8 +642,8 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
- X="110"
- Y="240"
+ X="230"
+ Y="190"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -743,8 +750,8 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
- X="110"
- Y="240"
+ X="120"
+ Y="190"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -804,8 +811,8 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="220"
- Y="240"
+ X="120"
+ Y="250"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -860,8 +867,8 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="330"
- Y="240"
+ X="230"
+ Y="250"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -902,8 +909,8 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
  Default=""
- X="440"
- Y="240"
+ X="340"
+ Y="190"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -982,8 +989,8 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="550"
- Y="240"
+ X="10"
+ Y="250"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1032,8 +1039,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="660"
- Y="240"
+ X="340"
+ Y="250"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1075,7 +1082,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 </Function></Functions>
 <Procedures>
 <Procedure
- Y="360"
+ X="10"
+ Y="410"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1283,8 +1291,8 @@ ON
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="110"
- Y="360"
+ X="120"
+ Y="410"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1347,8 +1355,8 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="220"
- Y="360"
+ X="230"
+ Y="410"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1360,7 +1368,8 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="51148404-10ab-4f54-87e0-2580ced2d56d"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment></Comment>
+<Parameters>
 <Parameter
  Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
  Name="aSRPB"
@@ -1403,7 +1412,8 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
     SpeedRestrictions =&gt; []
 }"
  VariableMode="Internal"
- Y="120"
+ X="10"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1430,8 +1440,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
  Type="Kernel.TrainData.BrakingParameters.EBModelSet"
  DefaultValue=""
  VariableMode="Internal"
- X="110"
- Y="120"
+ X="570"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1448,8 +1457,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
  Type="Kernel.TrainData.BrakingParameters.SBModelSet"
  DefaultValue=""
  VariableMode="Internal"
- X="220"
- Y="120"
+ X="690"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1466,7 +1474,8 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 <Rules>
 <Rule
  Priority="CleanUp"
- Y="420"
+ X="10"
+ Y="530"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1510,8 +1519,8 @@ ON
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- X="110"
- Y="420"
+ X="120"
+ Y="530"
  Width="100"
  Height="50"
  Implemented="TRUE"
