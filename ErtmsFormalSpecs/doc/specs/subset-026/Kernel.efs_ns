@@ -2225,9 +2225,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  Guid="978fcd38-2d1b-41c9-b067-c2a86949f9ce"
 >DMI.MasterDMI().In_RBCContactInformation.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
-<Action
- Guid="cb908036-5e2d-4e2c-8653-de885b3210a0"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.Disable()</Action></Actions>
+</Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2441,9 +2439,8 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <Actions>
 <Action
  Guid="95ad63ec-6c25-4487-9483-5761e7f0231f"
->THIS &lt;- S12</Action><Action
- Guid="b09e766e-1670-49d6-8d52-64c5a287a287"
->DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.Disable()</Action></Actions>
+><Comment></Comment>
+THIS &lt;- S12</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2487,8 +2484,6 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <Action
  Guid="787e9a72-addd-4f4c-83f6-45bc400408a6"
 >HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action><Action
- Guid="38d2526d-d9bb-46c0-9a33-4fd93a5f5b7a"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action><Action
  Guid="4f8db88e-3165-4661-bdc5-92c554074578"
 >DMI.MasterDMI().In_NonLeadingRequest.InputInformation.Disable()</Action><Action
  Guid="85d5c94d-3176-4321-980a-89906a0a0b71"
@@ -3402,8 +3397,6 @@ DMI.MasterDMI().In_ShuntingRequest.InitiateRequest()</Action></Actions>
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="af060c8f-33de-49e1-ab6b-daee80936480"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action><Action
  Guid="fcbf15da-671f-480a-b77c-ed25a0c97f53"
 >THIS &lt;- ShuntingInitiatedByDriver</Action></Actions>
 <SubRules>
