@@ -158,7 +158,8 @@ GENERAL_MESSAGE =&gt; CreateGeneralMessage()
 <Actions>
 <Action
  Guid="53c8185c-b1db-4c4c-9778-c8c65d4d4c47"
->Kernel.TrainDataValidated &lt;- False</Action><Action
+><Comment></Comment>
+Kernel.TrainDataValidated &lt;- False</Action><Action
  Guid="9c53e3cd-d6e0-4d3b-8990-9e9c536431b7"
 >INSERT Messages.JRU.MESSAGE.Message {
 TRAIN_DATA =&gt; CreateTrainDataMessage()
@@ -2782,6 +2783,7 @@ M_BRAKE_COMMAND_STATE=&gt;TypeConvertors.ToJRUEBCommanded()
  Name="Send"
  Guid="b1a189b5-34a9-4b21-b90a-fa8cbcd25387"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f9f43f6c-751d-4f20-8dd4-15c9cf58523e"

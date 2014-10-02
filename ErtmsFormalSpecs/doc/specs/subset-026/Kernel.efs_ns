@@ -4431,7 +4431,8 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Guid="7bd24a23-aedd-4739-8b1a-2c72fed5e334"
 >THIS &lt;- HandleModeChange.StartOfMission.S12.TrainDataRequested</Action><Action
  Guid="b31bdb03-0a0c-4c13-b1d6-f32f94ef9601"
->DMI.MasterDMI().In_TrainData.InitiateRequest()</Action><Action
+><Comment></Comment>
+DMI.MasterDMI().In_TrainData.InitiateRequest()</Action><Action
  Guid="64561bba-163c-4270-bb88-1af4a286e579"
 >Kernel.TrainData.TrainData.DataState &lt;- DataState.Unknown</Action></Actions>
 </RuleCondition></Conditions>
@@ -10014,6 +10015,7 @@ BTM.LRBG &lt;- BTM.BaliseGroup
  Name="Train data"
  Guid="5e656b5e-7ed2-486d-996f-eaadfee75e20"
 >
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -10832,6 +10834,7 @@ DateAndTime.CurrentTime &lt;- DateAndTime.CurrentTime + CycleDuration</Action></
  Name="Handle Outputs"
  Guid="a454a9ef-1994-48a4-81d4-45675bde5a04"
 >
+<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
