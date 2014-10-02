@@ -3231,9 +3231,7 @@ DriverAnswered &lt;- False</Action></Actions>
 <Actions>
 <Action
  Guid="2ae47445-50c6-45fe-a4ba-6e9b00b07435"
->RequestStatus &lt;- Request.Disabled</Action><Action
- Guid="3e7f0cb1-d54b-47ad-8b54-6a523ac6fb6b"
->DriverAnswered &lt;- False</Action></Actions>
+>RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -3773,34 +3771,6 @@ ModeChanged()</PreCondition></PreConditions>
  Guid="7b57277f-e2ab-45c2-a612-f14d23efda3a"
 ><Comment></Comment>
 DMI.MasterDMI().HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="UpdateINTERNAL"
- X="130"
- Y="570"
- Width="100"
- Height="50"
- NeedsRequirement="FALSE"
- Name="Update system state"
- Guid="67b54514-2cec-4d9e-a928-313c0f8d49ca"
->
-<Comment>Updates the state of the system according to the driver&apos;s response</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Update system state"
- Guid="f1841b69-51d6-4354-b40e-5576fd069eb1"
->
-<Comment>Updates the state of the system according to the driver&apos;s response</Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="5cf758f0-3851-438d-8ac5-21ad961d5169"
-><Comment></Comment>
-MasterDMI().AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
