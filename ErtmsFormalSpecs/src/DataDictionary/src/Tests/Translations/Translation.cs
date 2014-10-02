@@ -492,18 +492,8 @@ namespace DataDictionary.Tests.Translations
             Variables.IVariable subSequenceVariable;
             if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable))
             {
-                Types.Collection collectionType = (Types.Collection)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.Collection1");
-                Values.ListValue collection = new Values.ListValue(collectionType, new List<Values.IValue>());
-
-                Types.Structure subStructure1Type = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.SubStructure1");
-                Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
-
-                Types.Structure packetStructure = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.PACKET.TRACK_TO_TRAIN.Message");
-                Values.StructureValue packetValue = new Values.StructureValue(packetStructure);
-
                 // will contain the list of all packets of the message and then be added to the structure packetValue
                 ArrayList subStructures = new ArrayList();
-
                 foreach (DBElements.DBPacket packet in message.Packets)
                 {
                     Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
@@ -520,25 +510,33 @@ namespace DataDictionary.Tests.Translations
                 }
 
                 // the collection of the message packets is copied to the structure packetValue
-                int i = 0;
-                foreach (KeyValuePair<string, Variables.IVariable> pair in packetValue.SubVariables)
+                Types.Collection collectionType = (Types.Collection)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.Collection1");
+                Values.ListValue collection = new Values.ListValue(collectionType, new List<Values.IValue>());
+
+                Types.Structure subStructure1Type = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.SubStructure1");
+                Types.Structure packetStructure = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.PACKET.TRACK_TO_TRAIN.Message");
+
+                // Try to append all substructure, each one in a new packet 
+                foreach (Values.StructureValue structureValue in subStructures)
                 {
-                    if (i == subStructures.Count)
+                    Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
+                    Values.StructureValue packetValue = new Values.StructureValue(packetStructure);
+                    subStructure1.SubVariables.ElementAt(0).Value.Value = packetValue;
+                    collection.Val.Add(subStructure1);
+
+                    foreach (KeyValuePair<string, Variables.IVariable> pair in packetValue.SubVariables)
                     {
-                        break;
-                    }
-                    string variableName = pair.Key;
-                    Values.StructureValue structureValue = subStructures[i] as Values.StructureValue;
-                    if (structureValue.Structure.FullName.Contains(variableName))
-                    {
-                        Variables.IVariable variable = pair.Value;
-                        variable.Value = structureValue;
-                        i++;
+                        string variableName = pair.Key;
+                        if (structureValue.Structure.FullName.Contains(variableName))
+                        {
+                            Variables.IVariable variable = pair.Value;
+                            variable.Value = structureValue;
+
+                            break;
+                        }
                     }
                 }
 
-                subStructure1.SubVariables.ElementAt(0).Value.Value = packetValue;
-                collection.Val.Add(subStructure1);
                 subSequenceVariable.Value = collection;
             }
             else
