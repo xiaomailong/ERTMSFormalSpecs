@@ -5166,7 +5166,8 @@ DMI.MasterDMI().In_AcknOfSNMode.InitiateRequest(Kernel.Level.Value.NTC)</Action>
 <Actions>
 <Action
  Guid="a543721a-2e37-4dfe-b555-ddfcb90b379e"
->HandleModeChange &lt;- HandleModeChange.NoProcedure</Action></Actions>
+><Comment></Comment>
+HandleModeChange &lt;- HandleModeChange.NoProcedure</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9643,6 +9644,26 @@ ActiveFunctions.CheckLinkingConsistency()</PreCondition></PreConditions>
 BTM.Linking.HandleLinkingError()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
+ Priority="UpdateINTERNAL"
+ NeedsRequirement="FALSE"
+ Name="Handle DMI inputs"
+ Guid="3f4a21e9-b96b-4111-9e6e-f43307cb9ac5"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Handle DMI inputs"
+ Guid="40fea73a-1a08-48d3-b25f-8f98327e08f2"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="0cad42a7-d40a-4922-983f-e8acadc41b1e"
+>DMI.MasterDMI().AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -9858,7 +9879,7 @@ ActiveFunctions.DetermineEOA_SvL_etc()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4e010b0f-76c5-416b-a2d0-24a151314402"
->Kernel.MA.EOAs &lt;- []</Action></Actions>
+>MA.EOAs &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
