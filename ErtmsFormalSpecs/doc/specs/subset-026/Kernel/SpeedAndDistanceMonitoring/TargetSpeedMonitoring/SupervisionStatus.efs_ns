@@ -568,10 +568,12 @@ TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &lt;= d_EBI ( Ve
  Name="Trigger condition fulfilled"
  Guid="34e8f5f0-20b8-4ee6-84b1-5371fbbcad32"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="2b674f83-60e8-4bf2-9ca9-9ff7d7efb02f"
->Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_ebi ( V =&gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
+><Comment></Comment>
+Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_ebi ( V =&gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="a2979878-4587-4102-82af-d8c3263abac5"
 ><Comment></Comment>
 TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &gt; d_EBI ( Vest =&gt; Odometry.TrainSpeed(), aTarget =&gt; MRDT() )</PreCondition><PreCondition
