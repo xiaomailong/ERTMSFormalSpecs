@@ -147,6 +147,11 @@ namespace GUI
         protected bool KeepTrackOfSelection { get; set; }
 
         /// <summary>
+        /// Indicates whether refactoring should occur during drag & drop
+        /// </summary>
+        protected bool Refactor { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         protected BaseTreeView()
@@ -198,6 +203,7 @@ namespace GUI
             DoubleBuffered = true;
 
             Selecting = false;
+            Refactor = true;
         }
 
         void BaseTreeView_KeyUp(object sender, KeyEventArgs e)
@@ -334,7 +340,10 @@ namespace GUI
 
                         compiler.Compile_Synchronous(false, true);
                         DestinationNode.AcceptDrop(SourceNode);
-                        compiler.RefactorAndRelocate(SourceNode.Model as DataDictionary.ModelElement);
+                        if (Refactor)
+                        {
+                            compiler.RefactorAndRelocate(SourceNode.Model as DataDictionary.ModelElement);
+                        }
                     }
                 }
             }

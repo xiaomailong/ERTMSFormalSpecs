@@ -115,10 +115,28 @@ namespace GUI.TranslationRules
         {
             TranslationTreeNode retVal;
 
-            Item.appendTranslations(translation);
-            retVal = new TranslationTreeNode(translation, true);
-            Nodes.Add(retVal);
-            SortSubNodes();
+            DataDictionary.Tests.Translations.Translation existingTranslation = null;
+            foreach (DataDictionary.Tests.Translations.SourceText sourceText in translation.SourceTexts)
+            {
+                existingTranslation = Item.Dictionary.TranslationDictionary.findTranslation(sourceText.Name);
+                if (existingTranslation != null)
+                {
+                    break;
+                }
+            }
+
+            if (existingTranslation != null)
+            {
+                MessageBox.Show("Translation already exists. It has been selected in the tree view", "Already existing translation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                retVal = (TranslationTreeNode)BaseTreeView.Select(existingTranslation);
+            }
+            else
+            {
+                Item.appendTranslations(translation);
+                retVal = new TranslationTreeNode(translation, true);
+                Nodes.Add(retVal);
+                SortSubNodes();
+            }
 
             return retVal;
         }
@@ -196,12 +214,9 @@ namespace GUI.TranslationRules
             else if (SourceNode is TranslationTreeNode)
             {
                 TranslationTreeNode translation = SourceNode as TranslationTreeNode;
-
-                DataDictionary.Tests.Translations.Translation otherTranslation = (DataDictionary.Tests.Translations.Translation)DataDictionary.Generated.acceptor.getFactory().createTranslation();
-                translation.Item.copyTo(otherTranslation);
-                createTranslation(otherTranslation);
-
+                DataDictionary.Tests.Translations.Translation otherTranslation = translation.Item;
                 translation.Delete();
+                createTranslation(otherTranslation);
             }
         }
     }

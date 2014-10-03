@@ -21,7 +21,15 @@ namespace GUI.TranslationRules
         /// <summary>
         /// The tests tree node
         /// </summary>
-        TranslationDictionaryTreeNode dictionary;
+        private TranslationDictionaryTreeNode dictionary;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public TranslationTreeView() : base()
+        {
+            Refactor = false;
+        }
 
         /// <summary>
         /// Builds the tree model according to the root node
