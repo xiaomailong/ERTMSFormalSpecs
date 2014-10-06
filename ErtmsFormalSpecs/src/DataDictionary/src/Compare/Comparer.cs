@@ -4052,7 +4052,7 @@ namespace DataDictionary.Compare
                 return;
             }
 
-            compareNamable (obj, other, diff);
+            compareReferencesParagraph (obj, other, diff);
 
             if ( obj.allSourceTexts() != null )
             {
@@ -10652,7 +10652,7 @@ namespace DataDictionary.Compare
                 }
             }
 
-            ensureGuidNamable (obj, other);
+            ensureGuidReferencesParagraph (obj, other);
 
             if ( obj.allSourceTexts() != null )
             {
@@ -13269,7 +13269,7 @@ namespace DataDictionary.Compare
         /// <param name="occurences">The list of model elements which hold the searched string</param>
         public static void searchTranslation(Generated.Translation obj, string searchString, List<ModelElement> occurences)
         {
-            searchNamable (obj, searchString, occurences);
+            searchReferencesParagraph (obj, searchString, occurences);
 
             if ( obj.allSourceTexts() != null )
             {

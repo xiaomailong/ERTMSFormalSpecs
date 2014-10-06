@@ -28515,7 +28515,7 @@ for (int i = 0; i < countTranslations(); i++) {
 
 }
 public partial class Translation
-: DataDictionary.Namable
+: DataDictionary.ReferencesParagraph
 {
 public  override  bool find(Object search){
 if (search is String ) {
@@ -45660,12 +45660,33 @@ break;
 case 'T':
 {
 ctxt.advance();
-if (ctxt.lookAheadString("estCase")){
+switch (ctxt.current()) {
+case 'r':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("anslation")){
+ctxt.accept(quoteChar);
+res = lAccept_Translation(ctxt, endingTag);
+} else {
+res = null;
+} // If
+break;
+} // Case
+case 'e':
+{
+ctxt.advance();
+if (ctxt.lookAheadString("stCase")){
 ctxt.accept(quoteChar);
 res = lAccept_TestCase(ctxt, endingTag);
 } else {
 res = null;
 } // If
+break;
+} // Case
+default:
+res = null;
+break;
+} // Switch
 break;
 } // Case
 case 'S':
@@ -47024,28 +47045,28 @@ case 'q':
 {
 ctxt.advance();
 ctxt.acceptString ("uot;");
-indicator = 2355;
+indicator = 2357;
 break;
 } // Case
 case 'n':
 {
 ctxt.advance();
 ctxt.acceptString ("bsp;");
-indicator = 2354;
+indicator = 2356;
 break;
 } // Case
 case 'l':
 {
 ctxt.advance();
 ctxt.accept2('t',';');
-indicator = 2352;
+indicator = 2354;
 break;
 } // Case
 case 'g':
 {
 ctxt.advance();
 ctxt.accept2('t',';');
-indicator = 2353;
+indicator = 2355;
 break;
 } // Case
 case 'a':
@@ -47056,18 +47077,18 @@ case 'p':
 {
 ctxt.advance();
 ctxt.accept3('o','s',';');
-indicator = 2356;
+indicator = 2358;
 break;
 } // Case
 case 'm':
 {
 ctxt.advance();
 ctxt.accept2('p',';');
-indicator = 2351;
+indicator = 2353;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2364)");
+ctxt.recoverableFail ("Other character expected (2366)");
 break;
 } // Switch
 break;
@@ -47076,39 +47097,39 @@ case '#':
 {
 ctxt.advance();
 ctxt.accept('x');
-indicator = 2357;
+indicator = 2359;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2366)");
+ctxt.recoverableFail ("Other character expected (2368)");
 break;
 } // Switch
 switch (indicator) {
-case 2351: {
+case 2353: {
 c = XMLB_AMPERSAND;
 break;
 } // End of dispatch label
-case 2352: {
+case 2354: {
 c = XMLB_LESS;
 break;
 } // End of dispatch label
-case 2353: {
+case 2355: {
 c = XMLB_GREATER;
 break;
 } // End of dispatch label
-case 2354: {
+case 2356: {
 c = XMLB_NBSP;
 break;
 } // End of dispatch label
-case 2355: {
+case 2357: {
 c = XMLB_QUOT;
 break;
 } // End of dispatch label
-case 2356: {
+case 2358: {
 c = XMLB_APOS;
 break;
 } // End of dispatch label
-case 2357: {
+case 2359: {
 c = (char) ctxt.acceptHexa();
 ctxt.accept(';');
 break;
@@ -48714,7 +48735,7 @@ ctxt.acceptString ("stCase");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2374)");
+ctxt.recoverableFail ("Other character expected (2376)");
 break;
 } // Switch
 break;
@@ -48743,7 +48764,7 @@ ctxt.acceptString ("quence");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2379)");
+ctxt.recoverableFail ("Other character expected (2381)");
 break;
 } // Switch
 break;
@@ -48802,7 +48823,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2386)");
+ctxt.recoverableFail ("Other character expected (2388)");
 break;
 } // Switch
 break;
@@ -48853,7 +48874,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2392)");
+ctxt.recoverableFail ("Other character expected (2394)");
 break;
 } // Switch
 break;
@@ -48937,7 +48958,7 @@ ctxt.accept2('e','f');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2402)");
+ctxt.recoverableFail ("Other character expected (2404)");
 break;
 } // Switch
 break;
@@ -48950,7 +48971,7 @@ ctxt.accept3('n','g','e');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2404)");
+ctxt.recoverableFail ("Other character expected (2406)");
 break;
 } // Switch
 break;
@@ -48978,7 +48999,7 @@ ctxt.acceptString ("Condition");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2409)");
+ctxt.recoverableFail ("Other character expected (2411)");
 break;
 } // Switch
 break;
@@ -49017,13 +49038,13 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2414)");
+ctxt.recoverableFail ("Other character expected (2416)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2415)");
+ctxt.recoverableFail ("Other character expected (2417)");
 break;
 } // Switch
 break;
@@ -49089,7 +49110,7 @@ ctxt.acceptString ("lder");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2423)");
+ctxt.recoverableFail ("Other character expected (2425)");
 break;
 } // Switch
 break;
@@ -49127,7 +49148,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2428)");
+ctxt.recoverableFail ("Other character expected (2430)");
 break;
 } // Switch
 break;
@@ -49169,13 +49190,13 @@ ctxt.acceptString ("ield");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2435)");
+ctxt.recoverableFail ("Other character expected (2437)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2436)");
+ctxt.recoverableFail ("Other character expected (2438)");
 break;
 } // Switch
 break;
@@ -49220,7 +49241,7 @@ ctxt.accept2('s','e');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2442)");
+ctxt.recoverableFail ("Other character expected (2444)");
 break;
 } // Switch
 break;
@@ -49233,13 +49254,13 @@ ctxt.acceptString ("ction");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2444)");
+ctxt.recoverableFail ("Other character expected (2446)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2445)");
+ctxt.recoverableFail ("Other character expected (2447)");
 break;
 } // Switch
 return res;
@@ -50062,7 +50083,7 @@ public virtual void visit(Translation obj)
 
 public virtual void visit(Translation obj, bool visitSubNodes)
 {
-visit ((Namable) obj, false);
+visit ((ReferencesParagraph) obj, false);
 if (visitSubNodes){
 IXmlBBase[] Subs  = acceptor.subElements((IXmlBBase)obj);
 if (Subs != null){
