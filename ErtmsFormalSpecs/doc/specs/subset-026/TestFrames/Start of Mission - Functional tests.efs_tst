@@ -5077,17 +5077,9 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="cd7678ac-df7d-4512-a472-d462360d36d0"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
- Kind="Instantaneous"
- Guid="5b84ffc5-685a-427c-a6b5-d3d1f6cf1f41"
->DMI.MasterDMI().In_TrainRunningNumber.Number == &apos;5645&apos;</Expectation><Expectation
- Kind="Instantaneous"
- Guid="51680d09-5ff9-4689-b168-98b867a274c8"
->DMI.MasterDMI().In_TrainRunningNumber.DriverAction.Enter == True</Expectation><Expectation
- Kind="Instantaneous"
- Guid="7fb1ce76-65f0-4125-817c-a8350b8ddf86"
->DMI.MasterDMI().In_TrainRunningNumber.DriverAction.ReValidate == False</Expectation></Expectations>
+ DeadLine="1"
+ Guid="7321186a-009f-4010-8a57-05a201c40c41"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -5096,7 +5088,46 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - Driver elects to re-enter train running number"
+ Name="Step2 - Driver elects to re-enter train running number =&gt; train running number screen is displayed"
+ Guid="5e777a37-0183-4351-8a2f-9fd165ad0b7d"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="fac6e779-d810-4578-a1db-8553b88fc0fa"
+>
+<Actions>
+<Action
+ Guid="33c6e2a3-8340-41c4-b2d7-83bcc0ed88a0"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="a739ce62-5060-4f4e-8929-8f804a6d176f"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="53b6a55a-5ccc-4077-856d-e6d287d45b4e"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="51680d09-5ff9-4689-b168-98b867a274c8"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="7fb1ce76-65f0-4125-817c-a8350b8ddf86"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.ReValidate == False</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="5b84ffc5-685a-427c-a6b5-d3d1f6cf1f41"
+>DMI.MasterDMI().In_TrainRunningNumber.Number == &apos;5645&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Driver enters the train running number information"
  Guid="6e874d1d-b44a-48a1-865b-83d09192f918"
 >
 <SubSteps>
@@ -5109,7 +5140,8 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
  Guid="36b30bed-5ece-4f93-bd62-a40660d994fc"
 >DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="6fa8c9ca-fa0e-4921-8b37-28a964c0d4f2"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action
+><Comment></Comment>
+Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Action><Action
  Guid="0f1a8140-3e20-495c-862e-5e89ed0639b7"
 >DMI.MasterDMI().In_TrainRunningNumber.Number &lt;- &apos;1234&apos;</Action></Actions>
 <Expectations>
@@ -5128,7 +5160,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step3 - We are still in S10"
+ Name="Step4 - We are still in S10"
  Guid="cc91b9d2-c089-413d-aa47-4f09f0d011cf"
 >
 <SubSteps>
@@ -5148,12 +5180,12 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
  Case="0"
  Implemented="TRUE"
  Name="Propose to re-enter train running number in S20"
- Guid="a95be06e-2e05-4085-9996-e4736bc48f0a"
+ Guid="a48df7a6-d3f0-47ea-83b9-3fc3fd46e21b"
 >
 <ReqRef
  Id="b9721346-42ac-4a79-8f62-10d5ff6a5abb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="aff9605a-3ac1-412a-8b76-5768ff533305"
+ Guid="8735e9bc-711b-45d2-962e-94b81ea00453"
 >
 </ReqRef><Comment></Comment>
 <Comment></Comment>
@@ -5166,41 +5198,31 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
  ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step1 - Re-enter train running number is proposed in S20"
- Guid="a8f2a3d3-ce44-43a7-930b-d9d5b32cb996"
+ Guid="02e6ee01-8411-4ec7-b65e-e51ebbcf0a87"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="8de65a75-9087-4c3f-b450-09cc3a58c820"
+ Guid="f0726edf-7ba7-4dae-ac54-51eac8ec6d13"
 >
 <Actions>
 <Action
- Guid="dedc70b3-38a5-4ad5-ac60-8d92e05c5e72"
+ Guid="51a3b134-7cab-4a0f-b5e6-8f27d6decd46"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action
- Guid="51b91478-fc29-407e-9db3-d7c4f67ef534"
+ Guid="d0c9e79e-ef72-41ed-9f83-b31ee1a7d16d"
 >Kernel.Mode &lt;- Mode.SB</Action><Action
- Guid="a7fa8f01-dc0f-40c4-9997-1f4124665d25"
+ Guid="034eb403-4126-459d-b81b-2cd2d91e754e"
 >Kernel.TrainRunningNumber.Value &lt;- &apos;5645&apos;</Action><Action
- Guid="ffafde2d-8bcd-4c37-86ff-192f9b386190"
+ Guid="1a70330a-cc2d-40c0-a56b-8a2466c274db"
 >Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action><Action
- Guid="1100a712-5c02-4b92-8648-66fbbb37de44"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
- Guid="baf51efb-b574-437f-8b86-4345b35e728b"
->EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
+ Guid="9bd98b3d-5e15-47ff-a287-792aab00286e"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="fd336225-75f5-4aec-aa57-1bded71f0ae2"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
- Kind="Instantaneous"
- Guid="a18b24f3-a28b-402f-b5b7-5ca31715d9f7"
->DMI.MasterDMI().In_TrainRunningNumber.Number == &apos;5645&apos;</Expectation><Expectation
- Kind="Instantaneous"
- Guid="0c4bbec7-42dd-4465-a40e-8ca297eb176e"
->DMI.MasterDMI().In_TrainRunningNumber.DriverAction.Enter == True</Expectation><Expectation
- Kind="Instantaneous"
- Guid="f9a9b15c-2b66-4737-a9da-c9520481c057"
->DMI.MasterDMI().In_TrainRunningNumber.DriverAction.ReValidate == False</Expectation></Expectations>
+ DeadLine="1"
+ Guid="8c32430c-83b3-459f-8cac-a68c9229f2b0"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -5209,29 +5231,66 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - Driver elects to re-enter train running number"
- Guid="72f25173-063e-43d6-bfff-e977b4c78d5a"
+ Name="Step2 - Driver elects to re-enter train running number =&gt; train running number screen is displayed"
+ Guid="7f243672-bf0d-4d4d-9bf6-923feabc65e4"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="d52f18ce-c5d1-48ea-a4cc-16ff2f775aac"
+ Guid="d97dd8ff-89fe-4920-99f5-add203097db4"
 >
 <Actions>
 <Action
- Guid="0e64b5d3-8399-4956-aa60-c3ef9e1fb565"
+ Guid="53f39f2a-38f9-4f31-9868-faa99f500722"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="62549d48-f45a-4772-8804-d7e69f1a9851"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f9985021-02ac-49aa-8d98-061696b6e13b"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="f05ba71b-434f-4e68-b3e9-683ee8b6bf70"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="506a20c0-815e-483f-af27-25c184d411be"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.ReValidate == False</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="0fd3faa4-7be6-4c25-97f9-6086092a00c7"
+>DMI.MasterDMI().In_TrainRunningNumber.Number == &apos;5645&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Driver enters the train running number information"
+ Guid="6233bc4e-e26e-4a0d-ac5b-58c4c654ce5f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="51ffb692-7f71-4eb8-8e56-205b22fa912a"
+>
+<Actions>
+<Action
+ Guid="6f1d9192-016f-41e7-b267-3d41a970a33a"
 >DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
- Guid="42789839-ffc1-4b02-adfd-666ddd7ea228"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action><Action
- Guid="14405ecf-5173-4336-94d2-52f0dde0b7e3"
+ Guid="370d7ec0-3b03-49a8-a8bf-196eb7731465"
 >DMI.MasterDMI().In_TrainRunningNumber.Number &lt;- &apos;1234&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="aa8bbe10-8996-4d87-ba3b-6c1e4bf29cb6"
+ Guid="b97b808b-ab56-485b-aadc-dbbe5b58731e"
 >Kernel.TrainRunningNumber.Value == &apos;1234&apos;</Expectation><Expectation
  Kind="Instantaneous"
- Guid="9f3b044e-53e1-4472-afca-8eb43b237bbc"
+ Guid="cbe5ce37-955c-41e0-8d7a-39efcd8e0d3a"
 >DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -5241,18 +5300,18 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step3 - We are still in S20"
- Guid="9a027459-b48b-4283-bead-9fbfad862fbf"
+ Name="Step4 - We are still in S20"
+ Guid="82d665b7-c476-481f-a637-12370bb6fd80"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="4c2fd64d-7a07-4866-b7fd-fdc9af35f120"
+ Guid="9bc6dfd0-f4fe-4ec8-824b-2c08217d4fd4"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="11c71d72-095a-48da-aebb-56ad4ff6e2d5"
+ Guid="a041b0b2-1c1b-41e2-9bef-a3021365a63b"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S20</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>

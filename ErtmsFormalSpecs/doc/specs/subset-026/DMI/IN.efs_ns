@@ -5394,6 +5394,140 @@ THIS.InputInformation.Disable()</Action></Actions>
  Guid="42a5b38a-c042-4152-b33d-be49f5d170ff"
 >
 <Comment>The status of the request</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ X="10"
+ Y="280"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="TrainRunningNumberEntryRequest"
+ Guid="9dc62aa0-e3fe-4443-b9b8-1ba2eda5b8ae"
+>
+<ReqRef
+ Id="cc8be0e3-4edb-46d4-a4e4-a00714d90fc4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55e28fa1-8fe9-4e56-b961-2ff525ffe28c"
+>
+</ReqRef><Comment>Allows to enter the train running number</Comment>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="187ed81d-62c2-4532-9991-c1f920e67240"
+>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="bc2e7418-88a0-4eaa-ad6f-7403a1de6f6b"
+>
+<Comment>Accepts the data and updates the system state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Accepts data from the driver"
+ Guid="23902fc9-c326-44b9-ad5a-307da6178d44"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="20200d18-c9a3-4d32-89aa-d5e0cc8d28fe"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition><PreCondition
+ Guid="f512c54f-b7e8-430e-b642-e68bc3d8ca02"
+><Comment></Comment>
+TrainRunningNumberAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="393a025a-fa0e-48a1-b130-0a528e09e8b4"
+><Comment></Comment>
+THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="9d0e63ad-3433-4b6e-a9a2-1726f0c185d3"
+>
+<Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="46f63f3d-638b-49f0-a69a-e4c82433d2b8"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="f5b4657a-3d03-4a0c-83fb-6f814a9a66eb"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="8ca0bc05-45c1-4258-a848-218c479ae81b"
+><Comment></Comment>
+NOT TrainRunningNumberAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="dff3acf6-51aa-4af7-bf40-f91aa4b6f42f"
+><Comment></Comment>
+THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="1b569536-a978-492e-8451-eada77b46c3c"
+>
+<Comment>Initiates a driver ID request</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="186e22e5-bdce-449b-b384-049a01acb67e"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="8e4202cd-8b7e-42d9-96eb-73096c42f180"
+>
+<PreConditions>
+<PreCondition
+ Guid="94902be4-471e-4371-8cb5-e378545cf7d8"
+>TrainRunningNumberAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="025ab55d-552a-4339-b991-d35bfe5e9491"
+><Comment></Comment>
+THIS.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="InputInformation"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InputInformation"
+ Guid="778bf4ea-950f-430d-9700-4be5f00c6fe2"
+>
+<Comment>Provides the status of the request</Comment>
 </StructureElement></Structure></Structures>
 <Functions>
 <Function

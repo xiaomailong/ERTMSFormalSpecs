@@ -1151,9 +1151,13 @@ THIS.In_OverrideRequest.AcceptDriverResponse()</Action><Action
 ><Comment></Comment>
 THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
  Guid="32fa69b6-994c-46b8-85e2-1190d43407dd"
->THIS.In_TrainIntegrity.AcceptDriverResponse()</Action><Action
+><Comment></Comment>
+THIS.In_TrainIntegrity.AcceptDriverResponse()</Action><Action
  Guid="216a978b-051d-42e3-ba33-a5d67b52054a"
->THIS.In_VirtualBaliseCover.AcceptDriverResponse()</Action></Actions>
+>THIS.In_VirtualBaliseCover.AcceptDriverResponse()</Action><Action
+ Guid="e7ec39fa-e874-4856-95cf-31e8369db25b"
+><Comment></Comment>
+THIS.In_TrainRunningNumberEntryRequest.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1923,7 +1927,8 @@ Out_TrainSpeed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="43fe1d04-c3ff-4257-99ee-8094e3f83e16"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment></Comment>
+</StructureElement><StructureElement
  TypeName="IN.ErtmsEtcsLevel"
  Default=""
  Mode="InOut"
@@ -3086,7 +3091,21 @@ Out_TrainSpeed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ce7a5712-d89f-413e-b4fc-4b8c9a3c4c3d"
 >
-</ReqRef></StructureElement></Structure><Structure
+</ReqRef></StructureElement><StructureElement
+ TypeName="IN.TrainRunningNumberEntryRequest"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="In_TrainRunningNumberEntryRequest"
+ Guid="a176dabf-1e73-46e5-8f69-aa20eb24db14"
+>
+<ReqRef
+ Id="cc8be0e3-4edb-46d4-a4e4-a00714d90fc4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="deda8162-50eb-4c19-a288-cf1746d84489"
+>
+</ReqRef><Comment></Comment>
+</StructureElement></Structure><Structure
  Default=""
  X="280"
  Y="10"

@@ -5497,7 +5497,8 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="80a29dd1-bad8-4b8e-a0d6-abc17b92fa15"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment></Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5519,6 +5520,7 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  Name="Allow Re-enter train running number"
  Guid="003ca651-8587-49e3-9004-9252a13a5874"
 >
+<Comment>Handles the entry of train running number.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -5527,13 +5529,40 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  Name="Reenter train running number not yet proposed to driver"
  Guid="862ffd2c-fba8-4ab0-a32c-b49f4e0b0de4"
 >
+<Comment>If the entry of train running number is not proposed to the driver yet =&gt; propose it.</Comment>
 <PreConditions>
 <PreCondition
  Guid="70d7809e-9779-4fdf-9c3a-9aaf8d7d045e"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
+ Guid="31973ab2-57b1-4431-a284-6d3f8e52c678"
+><Comment></Comment>
+DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
+ Guid="1076b164-9860-4218-a3bb-30339f00bd4b"
+>NOT DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.DriverAnswered</PreCondition><PreCondition
+ Guid="eb6a75ab-35db-4c39-9176-bbd2d109cafb"
+>NOT DMI.MasterDMI().In_TrainRunningNumber.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5e0fd3ed-60e6-4b96-b48c-0786ee77e557"
+><Comment></Comment>
+DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver selected to reenter the train runnning number =&gt; display the train running number screen"
+ Guid="b9b89b25-5a2a-4f08-b970-f3124ede34b6"
+>
+<Comment>If the driver selected to reenter the train running number =&gt; display the screen allowing to do it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="56f56742-f706-4692-9865-2e18807bb9df"
+><Comment></Comment>
+DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5b72fd24-bc2f-4ef6-84bc-99e04d9917fe"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.AcceptDriverResponse()</Action><Action
+ Guid="96f1e7f3-a2c8-465d-a517-6b57b7261814"
 >DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
   Number =&gt; TrainRunningNumber.Value, 
   Enter =&gt; True,
@@ -5541,17 +5570,17 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Driver selected to reenter the train runnning number"
- Guid="b9b89b25-5a2a-4f08-b970-f3124ede34b6"
+ Name="Driver reentered the train running number"
+ Guid="4722c094-0128-4e11-b5be-c384283a9d0c"
 >
+<Comment>When the driver has entered the new data, it is stored.</Comment>
 <PreConditions>
 <PreCondition
- Guid="56f56742-f706-4692-9865-2e18807bb9df"
+ Guid="688bdac2-027d-4411-ae1c-aad556028a47"
 >DMI.MasterDMI().In_TrainRunningNumber.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="5b72fd24-bc2f-4ef6-84bc-99e04d9917fe"
+ Guid="0fb5bd08-8c72-40dd-a189-ee355411ac99"
 >DMI.MasterDMI().In_TrainRunningNumber.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
@@ -9947,7 +9976,7 @@ ActiveFunctions.DetermineEOA_SvL_etc()</PreCondition></PreConditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="30"
- Y="270"
+ Y="330"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -10303,8 +10332,8 @@ EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="180"
- Y="270"
+ X="30"
+ Y="390"
  Width="100"
  Height="50"
  Name="DeleteStoredInformation"
@@ -10337,6 +10366,8 @@ EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="30"
+ Y="270"
  Width="100"
  Height="50"
  Name="HandleOutputs"
@@ -10462,7 +10493,7 @@ JRU.JRU1.HandleMessagesOut()</Action></Actions>
  Type="Default.Mode"
  DefaultValue="Mode.NP"
  VariableMode="Internal"
- X="370"
+ X="480"
  Y="350"
  Width="100"
  Height="50"
@@ -10481,7 +10512,7 @@ JRU.JRU1.HandleMessagesOut()</Action></Actions>
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
- X="260"
+ X="370"
  Y="350"
  Width="100"
  Height="50"
@@ -10623,7 +10654,7 @@ JRU.JRU1.HandleMessagesOut()</Action></Actions>
  Type="Boolean"
  DefaultValue="Boolean.False"
  VariableMode="Internal"
- X="150"
+ X="260"
  Y="350"
  Width="100"
  Height="50"
@@ -10692,7 +10723,7 @@ JRU.JRU1.HandleMessagesOut()</Action></Actions>
  Type="Messages.NID_ENGINE"
  DefaultValue="0"
  VariableMode="Internal"
- X="480"
+ X="590"
  Y="350"
  Width="100"
  Height="50"
@@ -10707,8 +10738,8 @@ JRU.JRU1.HandleMessagesOut()</Action></Actions>
  Type="String"
  DefaultValue=""
  VariableMode="Internal"
- X="590"
- Y="350"
+ X="370"
+ Y="470"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -10805,7 +10836,7 @@ HandleInputs()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
- X="140"
+ X="360"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -10861,6 +10892,7 @@ DateAndTime.CurrentTime &lt;- DateAndTime.CurrentTime + CycleDuration</Action></
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateOUT"
+ X="140"
  Width="100"
  Height="50"
  Name="Handle Outputs"
