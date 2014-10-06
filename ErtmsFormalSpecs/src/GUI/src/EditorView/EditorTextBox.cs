@@ -558,7 +558,7 @@ namespace GUI
 
                 if (parenthesis == 0)
                 {
-                    if (Char.IsLetterOrDigit(current) || current == '.')
+                    if (Char.IsLetterOrDigit(current) || current == '.' || current == '_')
                     {
                         // Continue on
                     }
