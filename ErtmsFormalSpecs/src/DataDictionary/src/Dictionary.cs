@@ -220,6 +220,7 @@ namespace DataDictionary
                 {
                     if (step.getTranslationRequired())
                     {
+                        step.Requirements.Clear();
                         step.SubSteps.Clear();
                         step.setTranslated(false);
                     }
