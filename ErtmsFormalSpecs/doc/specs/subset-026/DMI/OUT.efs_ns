@@ -4956,8 +4956,6 @@ IN MRSP</Action></Actions>
 <Comment>The indistaion location should only be displayed when the speed and distance monitoring is in Ceiling Speed Monitoring or and the start of Target Speed Monitoring (PIM)</Comment>
 <PreConditions>
 <PreCondition
- Guid="1d45c12e-77d3-4f4f-9acd-e4c5dac2285c"
->NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="6e65a2c2-85fa-4312-9e7d-1843726e27b7"
 ><Comment></Comment>
 IndicationLocationAtMrspSpeedAvailable()</PreCondition></PreConditions>
@@ -4974,11 +4972,7 @@ Display()</Action></Actions>
 >
 <Comment>When the speed and distance monitoring is in TSM or RSM, the indication location should not be displayed</Comment>
 <PreConditions>
-<PreCondition
- Guid="1327a651-9c4d-45c4-92b2-6f966039e538"
->GetMonitoringType() == MonitoringType.TSM
-  OR  
-GetMonitoringType() == MonitoringType.RSM</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
 <Action
  Guid="37b1dbea-580c-4478-b8f1-7dc089611c49"
