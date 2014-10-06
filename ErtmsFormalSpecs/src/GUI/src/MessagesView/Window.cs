@@ -27,6 +27,31 @@ namespace GUI.MessagesView
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
             DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight;
+
+            messagesDataGridView.DoubleClick += new EventHandler(messagesDataGridView_DoubleClick);
+        }
+
+        /// <summary>
+        /// Handles a double click event on an element of the messages data grid view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void messagesDataGridView_DoubleClick(object sender, EventArgs e)
+        {
+            MessageEntry selected = null;
+
+            if (messagesDataGridView.SelectedCells.Count == 1)
+            {
+                List<MessageEntry> messages = (List<MessageEntry>)messagesDataGridView.DataSource;
+                selected = messages[messagesDataGridView.SelectedCells[0].OwningRow.Index];
+            }
+
+            if (selected != null)
+            {
+                MessageDetail detail = new MessageDetail();
+                detail.SetMessage(selected.Log);
+                detail.ShowDialog();
+            }
         }
 
         /// <summary>

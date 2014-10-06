@@ -44,6 +44,7 @@
             this.messagesDataGridView.Location = new System.Drawing.Point(0, 0);
             this.messagesDataGridView.Name = "messagesDataGridView";
             this.messagesDataGridView.ReadOnly = true;
+            this.messagesDataGridView.RowHeadersVisible = false;
             this.messagesDataGridView.Size = new System.Drawing.Size(1004, 165);
             this.messagesDataGridView.TabIndex = 0;
             // 
