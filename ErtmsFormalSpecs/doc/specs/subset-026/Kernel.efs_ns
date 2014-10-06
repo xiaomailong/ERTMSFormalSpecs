@@ -1167,6 +1167,24 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set/Remove Virtual Balise Cover"
+ Guid="b85dd727-24cc-4b21-835a-b3d2f1fa9126"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Change Virtual Balise Cover"
+ Guid="a87718ca-e86d-444b-9ee7-06b474e2db3c"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="902ff0c6-3fef-4526-86ad-2a619d2be853"
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1261,12 +1279,7 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
  Name="E1 : Valid ID &amp; Train running number"
  Guid="0893f37a-cce8-42d9-87cb-56f5f5a41f30"
 >
-<ReqRef
- Id="7ef55f6e-2855-44c2-9bf0-ba1f05c5574c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fd9908b7-00f0-4c14-9632-4ee0967b8930"
->
-</ReqRef><SubRules></SubRules>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1277,13 +1290,15 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
 <PreConditions>
 <PreCondition
  Guid="60f30bae-564a-4fdd-aafb-e3573d0cbdf8"
->Kernel.DriverId.DataState == DataState.Valid</PreCondition><PreCondition
- Guid="c3320bec-cf48-4405-8275-2d248a55b338"
->Kernel.TrainRunningNumber.DataState == DataState.Valid</PreCondition></PreConditions>
+>Kernel.DriverId.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5e31eb20-f81b-480a-b45d-8ffcdb87aa64"
->THIS &lt;- HandleModeChange.StartOfMission.D2</Action></Actions>
+>THIS &lt;- HandleModeChange.StartOfMission.D2</Action><Action
+ Guid="a3bab10c-9ff5-4f28-b348-9e7157d0acae"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus&lt;- Request.Disabled</Action><Action
+ Guid="6042798b-1723-45ee-b3c5-d3c31a38a1cf"
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
