@@ -42,13 +42,6 @@ namespace DataDictionary.Tests
             }
         }
 
-        public string Comment
-        {
-            get { return getComment(); }
-            set { setComment(value); }
-        }
-
-
         public ArrayList SubSteps
         {
             get

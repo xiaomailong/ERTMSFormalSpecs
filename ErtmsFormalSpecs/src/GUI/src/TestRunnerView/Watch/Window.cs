@@ -273,6 +273,8 @@ namespace GUI.TestRunnerView.Watch
             e.Effect = DragDropEffects.Move;
         }
 
+        private const int CTRL = 8;
+
         /// <summary>
         /// Handles a drop event
         /// </summary>

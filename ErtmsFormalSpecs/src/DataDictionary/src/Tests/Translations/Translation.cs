@@ -53,12 +53,6 @@ namespace DataDictionary.Tests.Translations
             }
         }
 
-        public string Comment
-        {
-            get { return getComment(); }
-            set { setComment(value); }
-        }
-
         /// <summary>
         /// Provides the source texts for this dictionary
         /// </summary>
@@ -181,6 +175,12 @@ namespace DataDictionary.Tests.Translations
         /// <param name="step"></param>
         public void UpdateStep(Step step)
         {
+            step.Requirements.Clear();
+            foreach (ReqRef reqRef in Requirements)
+            {
+                step.appendRequirements((ReqRef)reqRef.Duplicate());
+            }
+
             int subStepCounter = 1;
             foreach (SubStep subStep in SubSteps)
             {

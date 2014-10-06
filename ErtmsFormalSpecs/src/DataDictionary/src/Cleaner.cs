@@ -528,9 +528,9 @@ namespace DataDictionary
           {
             obj.setDescription(obj.getDescription().Trim());
           }
-          if ( obj.getComment() != null )
+          if ( obj.getObsoleteComment() != null )
           {
-            obj.setComment(obj.getComment().Trim());
+            obj.setObsoleteComment(obj.getObsoleteComment().Trim());
           }
           if ( obj.getUserComment() != null )
           {
@@ -644,9 +644,9 @@ namespace DataDictionary
         /// <param name="visitSubNodes"></param>
         public override void visit(Generated.Translation obj, bool visitSubNodes)
         {
-          if ( obj.getComment() != null )
+          if ( obj.getObsoleteComment() != null )
           {
-            obj.setComment(obj.getComment().Trim());
+            obj.setObsoleteComment(obj.getObsoleteComment().Trim());
           }
 
           base.visit(obj, visitSubNodes);

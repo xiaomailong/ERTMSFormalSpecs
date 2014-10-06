@@ -940,7 +940,7 @@
   <!-- ---- -->
   <!-- Step -->
   <!-- ---- -->
-  <ELEMENT NAME="Step" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
+  <ELEMENT NAME="Step"  BASEELEMENT="ReferencesParagraph" MAIN="TRUE" BASECLASS="DataDictionary.ReferencesParagraph">
     <META NAME="Package">test</META>
     <FIELDS>
       <FIELD NAME="TCS_Order"           TYPE="INTEGER">
@@ -948,7 +948,7 @@
       </FIELD>
       <FIELD NAME="Distance"            TYPE="INTEGER" />
       <FIELD NAME="Description"         TYPE="PCHAR" />
-      <FIELD NAME="Comment"             TYPE="PCHAR" />
+      <FIELD NAME="ObsoleteComment"     TYPE="PCHAR" />
       <FIELD NAME="UserComment"         TYPE="PCHAR" />
       <FIELD NAME="IO"                  ENUMTYPE="ST_IO" >
         <META NAME="TargetName">Io</META>
@@ -988,7 +988,7 @@
           <PCDATA TARGET="Description" />
         </ENCLOSED>
         <ENCLOSED NAME="Comment" OPTIONAL="TRUE">
-          <PCDATA TARGET="Comment" />
+          <PCDATA TARGET="ObsoleteComment" />
         </ENCLOSED>
         <ENCLOSED NAME="UserComment" OPTIONAL="TRUE">
           <PCDATA TARGET="UserComment" />
@@ -998,7 +998,7 @@
             <ELEMENTREF NAME="SubStep"/>
           </REPEAT>
         </ENCLOSED>
-	<ENCLOSED NAME="Messsages" OPTIONAL="TRUE">
+        <ENCLOSED NAME="Messsages" OPTIONAL="TRUE">
           <REPEAT TARGET="Messages">
             <ELEMENTREF NAME="DBMessage"/>
           </REPEAT>
@@ -1212,12 +1212,14 @@
   <ELEMENT NAME="Translation" BASEELEMENT="ReferencesParagraph" MAIN="TRUE" BASECLASS="DataDictionary.ReferencesParagraph">
     <META NAME="Package">translation</META>
     <FIELDS>
-      <FIELD NAME="SourceTexts"   REFTYPE="SourceText" >
+      <FIELD NAME="SourceTexts"     REFTYPE="SourceText" >
         <META NAME="TargetName">Sources</META>
       </FIELD>
-      <FIELD NAME="Implemented"   TYPE="BOOLEAN" />
-      <FIELD NAME="SubSteps"      REFTYPE="SubStep" />
-      <FIELD NAME="Comment"       TYPE="PCHAR" />
+      <FIELD NAME="ObsoleteComment" TYPE="PCHAR">
+        <META NAME="DoNotCompare" />
+      </FIELD>
+      <FIELD NAME="Implemented"     TYPE="BOOLEAN" />
+      <FIELD NAME="SubSteps"        REFTYPE="SubStep" />
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="Implemented" TARGET="Implemented" OPTIONAL="TRUE" DEFAULT="FALSE" />
@@ -1229,13 +1231,13 @@
             <ELEMENTREF NAME="SourceText"/>
           </REPEAT>
         </ENCLOSED>
-	<ENCLOSED NAME="SubSteps" OPTIONAL="TRUE">
+        <ENCLOSED NAME="SubSteps" OPTIONAL="TRUE">
           <REPEAT TARGET="SubSteps">
             <ELEMENTREF NAME="SubStep"/>
           </REPEAT>
         </ENCLOSED>
-	<ENCLOSED NAME="Comment" OPTIONAL="TRUE">
-          <PCDATA TARGET="Comment" />
+        <ENCLOSED NAME="Comment" OPTIONAL="TRUE">
+          <PCDATA TARGET="ObsoleteComment" />
         </ENCLOSED>
       </CONCAT>
     </FORMULA>

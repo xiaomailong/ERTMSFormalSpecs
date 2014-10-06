@@ -26,7 +26,7 @@ namespace GUI.TranslationRules
 {
     public class TranslationTreeNode : ReferencesParagraphTreeNode<DataDictionary.Tests.Translations.Translation>
     {
-        private class ItemEditor : CommentableEditor
+        private class ItemEditor : ReferencesParagraphEditor
         {
             /// <summary>
             /// Constructor

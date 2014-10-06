@@ -1332,6 +1332,12 @@ namespace GUI
             DataDictionary.Dictionary dictionary = GetActiveDictionary();
             if (dictionary != null)
             {
+                // Apply translation rule to get the spec issues from the translated steps
+                foreach (DataDictionary.Tests.Frame frame in dictionary.Tests)
+                {
+                    frame.Translate(dictionary.TranslationDictionary);
+                }
+
                 Report.SpecIssuesReport aReport = new Report.SpecIssuesReport(dictionary);
                 aReport.ShowDialog(this);
             }

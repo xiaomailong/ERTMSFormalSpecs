@@ -21,12 +21,12 @@ using System.Drawing.Design;
 
 namespace GUI.TestRunnerView
 {
-    public class StepTreeNode : ModelElementTreeNode<DataDictionary.Tests.Step>
+    public class StepTreeNode : ReferencesParagraphTreeNode<DataDictionary.Tests.Step>
     {
         /// <summary>
         /// The value editor
         /// </summary>
-        private class ItemEditor : CommentableEditor
+        private class ItemEditor : ReferencesParagraphEditor
         {
             /// <summary>
             /// Constructor

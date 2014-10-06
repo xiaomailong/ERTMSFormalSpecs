@@ -3199,7 +3199,7 @@ namespace DataDictionary.Compare
                 return;
             }
 
-            compareNamable (obj, other, diff);
+            compareReferencesParagraph (obj, other, diff);
 
             if ( obj.getTCS_Order() != other.getTCS_Order() )
             {
@@ -3213,9 +3213,9 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Description", other.getDescription(), obj.getDescription()) );
             }
-            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getObsoleteComment(), other.getObsoleteComment()) )
             {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ObsoleteComment", other.getObsoleteComment(), obj.getObsoleteComment()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getUserComment(), other.getUserComment()) )
             {
@@ -4175,10 +4175,6 @@ namespace DataDictionary.Compare
                         diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "SubSteps", otherElement.Name) );
                     }
                 }
-            }
-            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
-            {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
             }
         }
 
@@ -9507,7 +9503,7 @@ namespace DataDictionary.Compare
                 }
             }
 
-            ensureGuidNamable (obj, other);
+            ensureGuidReferencesParagraph (obj, other);
 
             if ( obj.allSubSteps() != null )
             {
@@ -13056,13 +13052,13 @@ namespace DataDictionary.Compare
         /// <param name="occurences">The list of model elements which hold the searched string</param>
         public static void searchStep(Generated.Step obj, string searchString, List<ModelElement> occurences)
         {
-            searchNamable (obj, searchString, occurences);
+            searchReferencesParagraph (obj, searchString, occurences);
 
             if ( obj.getDescription() != null && obj.getDescription().Contains (searchString) ) 
             {
                 occurences.Add ( obj );
             }
-            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
+            if ( obj.getObsoleteComment() != null && obj.getObsoleteComment().Contains (searchString) ) 
             {
                 occurences.Add ( obj );
             }
@@ -13278,16 +13274,16 @@ namespace DataDictionary.Compare
                     searchSourceText ( subElement, searchString, occurences );
                 }
             }
+            if ( obj.getObsoleteComment() != null && obj.getObsoleteComment().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
             if ( obj.allSubSteps() != null )
             {
                 foreach ( Generated.SubStep subElement in obj.allSubSteps() )
                 {
                     searchSubStep ( subElement, searchString, occurences );
                 }
-            }
-            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
-            {
-                occurences.Add ( obj );
             }
         }
 

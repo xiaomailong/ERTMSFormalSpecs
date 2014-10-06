@@ -22927,12 +22927,12 @@ for (int i = 0; i < countSteps(); i++) {
 
 }
 public partial class Step
-: DataDictionary.Namable
+: DataDictionary.ReferencesParagraph
 {
 public  override  bool find(Object search){
 if (search is String ) {
 if(getDescription().CompareTo((String) search) == 0)return true;
-if(getComment().CompareTo((String) search) == 0)return true;
+if(getObsoleteComment().CompareTo((String) search) == 0)return true;
 if(getUserComment().CompareTo((String) search) == 0)return true;
 }
 return false;
@@ -22975,12 +22975,12 @@ public  void setDescription( string  v) {
 }
 
 
-private   string  aComment;
+private   string  aObsoleteComment;
 
-public   string  getComment() { return aComment;}
+public   string  getObsoleteComment() { return aObsoleteComment;}
 
-public  void setComment( string  v) {
-  aComment = v;
+public  void setObsoleteComment( string  v) {
+  aObsoleteComment = v;
   __setDirty(true);
   NotifyControllers(null);
 }
@@ -23515,7 +23515,7 @@ Step obj = this;
 aTCS_Order=(0);
 aDistance=(0);
 aDescription=(null);
-aComment=(null);
+aObsoleteComment=(null);
 aUserComment=(null);
 aIO=(0);
 aInterface=(0);
@@ -23535,7 +23535,7 @@ base.copyTo(other);
 other.aTCS_Order = aTCS_Order;
 other.aDistance = aDistance;
 other.aDescription = aDescription;
-other.aComment = aComment;
+other.aObsoleteComment = aObsoleteComment;
 other.aUserComment = aUserComment;
 other.aIO = aIO;
 other.aInterface = aInterface;
@@ -23621,7 +23621,7 @@ fl1203 = false ;
 ctxt.accept('>');
 // Indicator
 // Parse PC data
-this.setComment(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
+this.setObsoleteComment(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
 // Regexp
 ctxt.skipWhiteSpace();
 ctxt.acceptString ("</Comment>");
@@ -24267,16 +24267,16 @@ pw.Write('\n');
 } // If
 // After Testing for empty content: Description
 // Unparsing Enclosed
-// Testing for empty content: Comment
-if (this.getComment() != null){
+// Testing for empty content: ObsoleteComment
+if (this.getObsoleteComment() != null){
 pw.Write("<Comment>");
 // Unparsing PcData
-acceptor.unParsePcData(pw, this.getComment());
+acceptor.unParsePcData(pw, this.getObsoleteComment());
 pw.Write("</Comment>");
 // Father is not a mixed
 pw.Write('\n');
 } // If
-// After Testing for empty content: Comment
+// After Testing for empty content: ObsoleteComment
 // Unparsing Enclosed
 // Testing for empty content: UserComment
 if (this.getUserComment() != null){
@@ -28519,7 +28519,7 @@ public partial class Translation
 {
 public  override  bool find(Object search){
 if (search is String ) {
-if(getComment().CompareTo((String) search) == 0)return true;
+if(getObsoleteComment().CompareTo((String) search) == 0)return true;
 }
 return false;
 }
@@ -28688,6 +28688,17 @@ public SourceText getSourceTexts(int idx)
 {
   return (SourceText) ( allSourceTexts()[idx]);
 }
+
+private   string  aObsoleteComment;
+
+public   string  getObsoleteComment() { return aObsoleteComment;}
+
+public  void setObsoleteComment( string  v) {
+  aObsoleteComment = v;
+  __setDirty(true);
+  NotifyControllers(null);
+}
+
 
 private  bool aImplemented;
 
@@ -28861,33 +28872,22 @@ public SubStep getSubSteps(int idx)
   return (SubStep) ( allSubSteps()[idx]);
 }
 
-private   string  aComment;
-
-public   string  getComment() { return aComment;}
-
-public  void setComment( string  v) {
-  aComment = v;
-  __setDirty(true);
-  NotifyControllers(null);
-}
-
-
 public Translation()
 {
 Translation obj = this;
 aSourceTexts=(null);
+aObsoleteComment=(null);
 aImplemented=(false);
 aSubSteps=(null);
-aComment=(null);
 }
 
 public void copyTo(Translation other)
 {
 base.copyTo(other);
 other.aSourceTexts = aSourceTexts;
+other.aObsoleteComment = aObsoleteComment;
 other.aImplemented = aImplemented;
 other.aSubSteps = aSubSteps;
-other.aComment = aComment;
 }
 
 /// <remarks>This method is used by XMLBooster-generated code
@@ -29008,7 +29008,7 @@ fl1473 = false ;
 ctxt.accept('>');
 // Indicator
 // Parse PC data
-this.setComment(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
+this.setObsoleteComment(acceptor.lAcceptPcData(ctxt, -1, '<',XmlBContext.WS_PRESERVE));
 // Regexp
 ctxt.skipWhiteSpace();
 ctxt.acceptString ("</Comment>");
@@ -29236,16 +29236,16 @@ pw.Write('\n');
 } // If
 // After Testing for empty content: SubSteps
 // Unparsing Enclosed
-// Testing for empty content: Comment
-if (this.getComment() != null){
+// Testing for empty content: ObsoleteComment
+if (this.getObsoleteComment() != null){
 pw.Write("<Comment>");
 // Unparsing PcData
-acceptor.unParsePcData(pw, this.getComment());
+acceptor.unParsePcData(pw, this.getObsoleteComment());
 pw.Write("</Comment>");
 // Father is not a mixed
 pw.Write('\n');
 } // If
-// After Testing for empty content: Comment
+// After Testing for empty content: ObsoleteComment
 }
 public  override  void dispatch(XmlBBaseVisitor v)
 {
@@ -45721,6 +45721,17 @@ res = null;
 } // If
 break;
 } // Case
+case 'e':
+{
+ctxt.advance();
+if (ctxt.lookAhead1('p')){
+ctxt.accept(quoteChar);
+res = lAccept_Step(ctxt, endingTag);
+} else {
+res = null;
+} // If
+break;
+} // Case
 case 'a':
 {
 ctxt.advance();
@@ -47045,28 +47056,28 @@ case 'q':
 {
 ctxt.advance();
 ctxt.acceptString ("uot;");
-indicator = 2357;
+indicator = 2358;
 break;
 } // Case
 case 'n':
 {
 ctxt.advance();
 ctxt.acceptString ("bsp;");
-indicator = 2356;
+indicator = 2357;
 break;
 } // Case
 case 'l':
 {
 ctxt.advance();
 ctxt.accept2('t',';');
-indicator = 2354;
+indicator = 2355;
 break;
 } // Case
 case 'g':
 {
 ctxt.advance();
 ctxt.accept2('t',';');
-indicator = 2355;
+indicator = 2356;
 break;
 } // Case
 case 'a':
@@ -47077,18 +47088,18 @@ case 'p':
 {
 ctxt.advance();
 ctxt.accept3('o','s',';');
-indicator = 2358;
+indicator = 2359;
 break;
 } // Case
 case 'm':
 {
 ctxt.advance();
 ctxt.accept2('p',';');
-indicator = 2353;
+indicator = 2354;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2366)");
+ctxt.recoverableFail ("Other character expected (2367)");
 break;
 } // Switch
 break;
@@ -47097,39 +47108,39 @@ case '#':
 {
 ctxt.advance();
 ctxt.accept('x');
-indicator = 2359;
+indicator = 2360;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2368)");
+ctxt.recoverableFail ("Other character expected (2369)");
 break;
 } // Switch
 switch (indicator) {
-case 2353: {
+case 2354: {
 c = XMLB_AMPERSAND;
 break;
 } // End of dispatch label
-case 2354: {
+case 2355: {
 c = XMLB_LESS;
 break;
 } // End of dispatch label
-case 2355: {
+case 2356: {
 c = XMLB_GREATER;
 break;
 } // End of dispatch label
-case 2356: {
+case 2357: {
 c = XMLB_NBSP;
 break;
 } // End of dispatch label
-case 2357: {
+case 2358: {
 c = XMLB_QUOT;
 break;
 } // End of dispatch label
-case 2358: {
+case 2359: {
 c = XMLB_APOS;
 break;
 } // End of dispatch label
-case 2359: {
+case 2360: {
 c = (char) ctxt.acceptHexa();
 ctxt.accept(';');
 break;
@@ -48735,7 +48746,7 @@ ctxt.acceptString ("stCase");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2376)");
+ctxt.recoverableFail ("Other character expected (2377)");
 break;
 } // Switch
 break;
@@ -48764,7 +48775,7 @@ ctxt.acceptString ("quence");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2381)");
+ctxt.recoverableFail ("Other character expected (2382)");
 break;
 } // Switch
 break;
@@ -48823,7 +48834,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2388)");
+ctxt.recoverableFail ("Other character expected (2389)");
 break;
 } // Switch
 break;
@@ -48874,7 +48885,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2394)");
+ctxt.recoverableFail ("Other character expected (2395)");
 break;
 } // Switch
 break;
@@ -48958,7 +48969,7 @@ ctxt.accept2('e','f');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2404)");
+ctxt.recoverableFail ("Other character expected (2405)");
 break;
 } // Switch
 break;
@@ -48971,7 +48982,7 @@ ctxt.accept3('n','g','e');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2406)");
+ctxt.recoverableFail ("Other character expected (2407)");
 break;
 } // Switch
 break;
@@ -48999,7 +49010,7 @@ ctxt.acceptString ("Condition");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2411)");
+ctxt.recoverableFail ("Other character expected (2412)");
 break;
 } // Switch
 break;
@@ -49038,13 +49049,13 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2416)");
+ctxt.recoverableFail ("Other character expected (2417)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2417)");
+ctxt.recoverableFail ("Other character expected (2418)");
 break;
 } // Switch
 break;
@@ -49110,7 +49121,7 @@ ctxt.acceptString ("lder");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2425)");
+ctxt.recoverableFail ("Other character expected (2426)");
 break;
 } // Switch
 break;
@@ -49148,7 +49159,7 @@ break;
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2430)");
+ctxt.recoverableFail ("Other character expected (2431)");
 break;
 } // Switch
 break;
@@ -49190,13 +49201,13 @@ ctxt.acceptString ("ield");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2437)");
+ctxt.recoverableFail ("Other character expected (2438)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2438)");
+ctxt.recoverableFail ("Other character expected (2439)");
 break;
 } // Switch
 break;
@@ -49241,7 +49252,7 @@ ctxt.accept2('s','e');
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2444)");
+ctxt.recoverableFail ("Other character expected (2445)");
 break;
 } // Switch
 break;
@@ -49254,13 +49265,13 @@ ctxt.acceptString ("ction");
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2446)");
+ctxt.recoverableFail ("Other character expected (2447)");
 break;
 } // Switch
 break;
 } // Case
 default:
-ctxt.recoverableFail ("Other character expected (2447)");
+ctxt.recoverableFail ("Other character expected (2448)");
 break;
 } // Switch
 return res;
@@ -49939,7 +49950,7 @@ public virtual void visit(Step obj)
 
 public virtual void visit(Step obj, bool visitSubNodes)
 {
-visit ((Namable) obj, false);
+visit ((ReferencesParagraph) obj, false);
 if (visitSubNodes){
 IXmlBBase[] Subs  = acceptor.subElements((IXmlBBase)obj);
 if (Subs != null){
