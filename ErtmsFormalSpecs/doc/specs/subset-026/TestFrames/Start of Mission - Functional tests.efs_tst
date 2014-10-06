@@ -5833,11 +5833,13 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
 <Actions>
 <Action
  Guid="b1f1a06b-20eb-455d-832a-83e27ef8ad76"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S1</Action><Action
  Guid="e9343543-d8d8-43a4-a4aa-8fa2dd621a37"
->Kernel.TrainRunningNumber.DataState &lt;- DataState.Unknown</Action><Action
+>Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Unknown</Action><Action
  Guid="58e05f23-d313-4d79-89a5-5ba48e343e18"
->Kernel.TrainRunningNumber.Value &lt;- &apos;1234&apos;</Action></Actions>
+>Kernel.TrainRunningNumber.Value &lt;- &apos;1234&apos;</Action><Action
+ Guid="e0143b60-7803-43ab-8130-5b4e7cf616b9"
+>Kernel.DriverId.DataState &lt;- DataState.Invalid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
