@@ -211,7 +211,8 @@ namespace GUI.TestRunnerView.TimeLineControl
         private const int InOutImageIndex = 11;
         private const int InternalImageIndex = 12;
         private const int CallImageIndex = 13;
-
+        private const int CircularArrowIndex = 14;
+        private const int DownArrowIndex = 15;
 
         /// <summary>
         /// Constructor
@@ -237,6 +238,8 @@ namespace GUI.TestRunnerView.TimeLineControl
             Images.Images.Add(GUI.Properties.Resources.in_out_icon);
             Images.Images.Add(GUI.Properties.Resources.internal_icon);
             Images.Images.Add(GUI.Properties.Resources.call);
+            Images.Images.Add(GUI.Properties.Resources.circular_arrow);
+            Images.Images.Add(GUI.Properties.Resources.down_arrow);
         }
 
         /// <summary>
@@ -575,6 +578,11 @@ namespace GUI.TestRunnerView.TimeLineControl
             public int RightIconImageIndex { get; private set; }
 
             /// <summary>
+            /// The icons to display on the top right of the event
+            /// </summary>
+            public List<int> TopRightIconImageIndex { get; private set; }
+
+            /// <summary>
             /// The icon to display near the RightIcon
             /// </summary>
             public int RightIconModifierImageIndex { get; private set; }
@@ -596,6 +604,7 @@ namespace GUI.TestRunnerView.TimeLineControl
                 LeftIconImageIndex = leftIcon;
                 RightIconImageIndex = rightIcon;
                 RightIconModifierImageIndex = rightIconModifier;
+                TopRightIconImageIndex = new List<int>();
             }
         }
 
@@ -629,6 +638,15 @@ namespace GUI.TestRunnerView.TimeLineControl
                         case Expect.EventState.TimeOut:
                             retVal = new EventDisplayAttributes(Color.Red, new Pen(Color.DarkRed), name, ErrorImageIndex, GetImageIndex(expect.Expectation), -1);
                             break;
+                    }
+
+                    if (expect.Expectation.getKind() == DataDictionary.Generated.acceptor.ExpectationKind.aContinuous)
+                    {
+                        retVal.TopRightIconImageIndex.Add(CircularArrowIndex);
+                    }
+                    if (expect.Expectation.Blocking)
+                    {
+                        retVal.TopRightIconImageIndex.Add(DownArrowIndex);
                     }
                 }
 
@@ -830,6 +848,13 @@ namespace GUI.TestRunnerView.TimeLineControl
                     if (attributes.RightIconImageIndex >= 0 && attributes.RightIconModifierImageIndex >= 0)
                     {
                         pe.Graphics.DrawImage(Images.Images[attributes.RightIconModifierImageIndex], bounds.Right - 4 - 30, bounds.Top + 10, 16, 16);
+                    }
+
+                    int shift = 0;
+                    foreach ( int index in attributes.TopRightIconImageIndex )
+                    {
+                        pe.Graphics.DrawImage(Images.Images[index], bounds.Right - 16 + shift, bounds.Top, 16, 16);
+                        shift = shift - 16;
                     }
                 }
             }
