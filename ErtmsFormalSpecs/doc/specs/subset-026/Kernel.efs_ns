@@ -3102,8 +3102,9 @@ THIS &lt;- S12</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1dd1f9bb-0aba-40e9-ad88-26a5240e1a7b"
 >
-</ReqRef><StateMachine
- Default="AskTrainRunningNumber"
+</ReqRef><Comment>State S13: The on-board equipments proposes to the driver to reenter or validate the train running number.</Comment>
+<StateMachine
+ Default="ProposeTrainRunningNumberEntry"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="8cc41f15-ec07-48f2-a770-e3f31cc1011d"
@@ -3115,7 +3116,8 @@ THIS &lt;- S12</Action></Actions>
  Width="250"
  Height="50"
  Implemented="TRUE"
- Name="AskTrainRunningNumber"
+ NeedsRequirement="FALSE"
+ Name="ProposeTrainRunningNumberEntry"
  Guid="67746203-79a7-4442-a25d-a3ac52989d59"
 >
 <ReqRef
@@ -3123,7 +3125,9 @@ THIS &lt;- S12</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e140997e-9645-49f5-82b9-052a5c855268"
 >
-</ReqRef><StateMachine
+<Comment></Comment>
+</ReqRef><Comment>The on-board equipment proposes to enter the train running number.</Comment>
+<StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="e9b2610a-3e37-42be-9866-39395468612a"
@@ -3136,6 +3140,7 @@ THIS &lt;- S12</Action></Actions>
  Name="Request train running number"
  Guid="0be64240-8b8b-4de7-a9b0-f2554315a0f7"
 >
+<Comment>The on-board equipment proposes to enter the train running number.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3151,7 +3156,94 @@ THIS &lt;- S12</Action></Actions>
 <Actions>
 <Action
  Guid="d893db47-bd02-44d1-8892-0223a092758d"
->THIS &lt;- HandleModeChange.StartOfMission.S13.TrainRunningNumberAsked</Action></Actions>
+>THIS &lt;- HandleModeChange.StartOfMission.S13.TrainRunningNumberEntryProposed</Action><Action
+ Guid="1f7439c5-76bb-4203-8e33-f0a404163b26"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="110"
+ Y="210"
+ Width="250"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TrainRunningNumberEntryProposed"
+ Guid="3cb0a181-a0b4-4211-b9c5-f0e7ed9bd867"
+>
+<Comment>The driver selected to enter the train running number. Once the data is entered and validated, the process goes to D10.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="666b37b1-112b-4834-97d3-77bd1dd1b4d2"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver entered the train running number"
+ Guid="a36f1137-f7be-48fa-aee7-c2f2bde3b31e"
+>
+<ReqRef
+ Id="b73d7793-cf2f-4c3f-92ea-d8c2b081c744"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6d5b82a9-b92b-49cd-866c-a229a96aec96"
+>
+</ReqRef><ReqRef
+ Id="bb40e241-378f-4872-9823-6f03bbc2d2e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1bd92e62-8b96-4191-89fe-c032d30ecf23"
+>
+</ReqRef><ReqRef
+ Id="4549d882-b756-48ca-9591-ed094820a8d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="54846eaa-ccad-46e2-88ad-fe06b12465c3"
+>
+</ReqRef><Comment>When the driver enters the train running number, it is stored on-board.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver entered the train running number"
+ Guid="b0a0e1ad-5a84-4dd0-9f6f-b581edd3d3e0"
+>
+<PreConditions>
+<PreCondition
+ Guid="f230c550-3d26-43f2-ada0-aeeabf01879d"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="72254dd4-eeef-4c2f-98f6-897b4aa95a53"
+>DMI.MasterDMI().In_TrainRunningNumber.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Driver selected to enter train running number"
+ Guid="0fc55ec3-0ee1-403c-8454-76d82640a6d3"
+>
+<ReqRef
+ Id="4549d882-b756-48ca-9591-ed094820a8d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9af79982-584f-41ee-9538-4687e22b8183"
+>
+</ReqRef><Comment>The driver selected to enter the train running number =&gt; the train running number entry is displayed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Driver selected to enter train running number"
+ Guid="51e7a3c8-09c3-4dfc-a732-5bf5837cfbbe"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="10ca63be-c728-4f77-ae2f-a7b29f9d316f"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+</Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -3160,6 +3252,7 @@ THIS &lt;- S12</Action></Actions>
  Name="Invalid train running number"
  Guid="1c912556-cc36-438e-b863-3aebb0b7dfc6"
 >
+<Comment>If the train running number is invalid, the on-board equipments asks the driver to reenter or revalidate it.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3175,7 +3268,8 @@ THIS &lt;- S12</Action></Actions>
 <Actions>
 <Action
  Guid="0ac8622f-25d6-4e3a-acd0-dc80b595016a"
->DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
+>DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest
+(
   Number =&gt; Kernel.TrainRunningNumber.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; True
@@ -3188,6 +3282,7 @@ THIS &lt;- S12</Action></Actions>
  Name="Unknown train running number"
  Guid="45486070-7d31-48e8-8059-c9071d873654"
 >
+<Comment>If the train running number is unknown, the on-board equipments asks the driver to enter it.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3203,72 +3298,19 @@ THIS &lt;- S12</Action></Actions>
 <Actions>
 <Action
  Guid="27775e3f-6a9f-41e7-bba5-77290d1190ec"
->DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
-  Number =&gt; Kernel.TrainRunningNumber.Value, 
+>DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest
+(
+  Number =&gt; &apos;&apos;, 
   Enter =&gt; True, 
   ReValidate =&gt; False
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="110"
- Y="210"
- Width="250"
- Height="50"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TrainRunningNumberAsked"
- Guid="3cb0a181-a0b4-4211-b9c5-f0e7ed9bd867"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="666b37b1-112b-4834-97d3-77bd1dd1b4d2"
->
-<Rules>
-<Rule
+</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Receive driver response"
- Guid="a36f1137-f7be-48fa-aee7-c2f2bde3b31e"
->
-<ReqRef
- Id="b73d7793-cf2f-4c3f-92ea-d8c2b081c744"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6d5b82a9-b92b-49cd-866c-a229a96aec96"
->
-</ReqRef><ReqRef
- Id="bb40e241-378f-4872-9823-6f03bbc2d2e2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1bd92e62-8b96-4191-89fe-c032d30ecf23"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Receive driver response"
- Guid="b0a0e1ad-5a84-4dd0-9f6f-b581edd3d3e0"
->
-<PreConditions>
-<PreCondition
- Guid="f230c550-3d26-43f2-ada0-aeeabf01879d"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.DriverAnswered</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="72254dd4-eeef-4c2f-98f6-897b4aa95a53"
->DMI.MasterDMI().In_TrainRunningNumber.AcceptDriverResponse()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="E18"
+ Name="E18: train running number is valid"
  Guid="1bb65cd2-5e95-4563-a2f6-da183dd9b410"
 >
 <ReqRef
@@ -3276,7 +3318,8 @@ THIS &lt;- S12</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c49fff60-18c0-40ab-8a0f-517dff3eec9e"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>When the train running number status becomes valid, the procedure goes to D10.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -3291,9 +3334,10 @@ THIS &lt;- S12</Action></Actions>
 <Actions>
 <Action
  Guid="445c53d3-c0ee-4c2d-b180-eae97d2f0316"
->THIS &lt;- HandleModeChange.StartOfMission.D10</Action></Actions>
+>THIS &lt;- D10</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</StateMachine></State></States>
 </StateMachine></State><State
  X="860"
  Y="680"
@@ -11204,6 +11248,8 @@ JRU.JRU1.HandleMessagesOut()</Action></Actions>
  Type="Boolean"
  DefaultValue=""
  VariableMode="Internal"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="VirtualBaliseCoverIsSet"
  Guid="2e98aba5-0302-4c0d-ada4-c4d0275519f5"
