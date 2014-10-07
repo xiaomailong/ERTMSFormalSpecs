@@ -459,7 +459,7 @@ namespace DataDictionary.Tests.Translations
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        private string format_message(DBElements.DBMessage message)
+        public static string format_message(DBElements.DBMessage message)
         {
             string retVal = "";
             switch (message.MessageType)
@@ -477,11 +477,12 @@ namespace DataDictionary.Tests.Translations
             return retVal;
         }
 
-
-        private string format_eurobalise_message(DBElements.DBMessage message)
+        private static string format_eurobalise_message(DBElements.DBMessage message)
         {
-            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Messages");
-            Types.Structure structureType = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.Message");
+            EFSSystem system = EFSSystem.INSTANCE;
+
+            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages");
+            Types.Structure structureType = (Types.Structure)system.findType(nameSpace, "Messages.EUROBALISE.Message");
             Values.StructureValue structure = new Values.StructureValue(structureType);
 
             int index = 0;
@@ -492,9 +493,9 @@ namespace DataDictionary.Tests.Translations
             Variables.IVariable subSequenceVariable;
             if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable))
             {
-                Types.Collection collectionType = (Types.Collection)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.Collection1");
-                Types.Structure subStructure1Type = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.SubStructure1");
-                Types.Structure packetStructure = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.PACKET.TRACK_TO_TRAIN.Message");
+                Types.Collection collectionType = (Types.Collection)system.findType(nameSpace, "Messages.EUROBALISE.Collection1");
+                Types.Structure subStructure1Type = (Types.Structure)system.findType(nameSpace, "Messages.EUROBALISE.SubStructure1");
+                Types.Structure packetStructure = (Types.Structure)system.findType(nameSpace, "Messages.PACKET.TRACK_TO_TRAIN.Message");
 
                 // The collection of the message packets is copied to the structure packetValue
                 Values.ListValue collection = new Values.ListValue(collectionType, new List<Values.IValue>());
@@ -546,17 +547,18 @@ namespace DataDictionary.Tests.Translations
         /// <param name="nameSpace">The namespace where the type has to be found</param>
         /// <param name="nidPacket">The id of the packet</param>
         /// <returns></returns>
-        private Values.StructureValue FindStructure(int nidPacket)
+        private static Values.StructureValue FindStructure(int nidPacket)
         {
+            EFSSystem system = EFSSystem.INSTANCE;
             Types.Structure structure = null;
             DataDictionary.Types.NameSpace nameSpace;
 
             if (nidPacket != 44)
             {
-                nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Messages.PACKET.TRACK_TO_TRAIN");
+                nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages.PACKET.TRACK_TO_TRAIN");
                 foreach (DataDictionary.Types.NameSpace subNameSpace in nameSpace.NameSpaces)
                 {
-                    Types.Structure structureType = (Types.Structure)EFSSystem.findType(subNameSpace, subNameSpace.FullName + ".Message");
+                    Types.Structure structureType = (Types.Structure)system.findType(subNameSpace, subNameSpace.FullName + ".Message");
                     Values.StructureValue structureValue = new Values.StructureValue(structureType);
 
                     foreach (KeyValuePair<string, Variables.IVariable> pair in structureValue.SubVariables)
@@ -579,8 +581,8 @@ namespace DataDictionary.Tests.Translations
             }
             else
             {
-                nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Messages.PACKET.DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM");
-                structure = (Types.Structure)EFSSystem.findType(nameSpace, nameSpace.FullName + ".Message");
+                nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages.PACKET.DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM");
+                structure = (Types.Structure)system.findType(nameSpace, nameSpace.FullName + ".Message");
             }
 
             Values.StructureValue retVal = null;
@@ -600,8 +602,10 @@ namespace DataDictionary.Tests.Translations
         /// <param name="fields">Fields to be copied into the structure</param>
         /// <param name="index">Index (of fields list) from which we have to start copying</param>
         /// <param name="aStructure">The structure to be filled</param>
-        private void FillStructure(Types.NameSpace aNameSpace, ArrayList fields, ref int index, Values.StructureValue aStructure)
+        private static void FillStructure(Types.NameSpace aNameSpace, ArrayList fields, ref int index, Values.StructureValue aStructure)
         {
+            EFSSystem system = EFSSystem.INSTANCE;
+
             int j = 0;
             for (int i = index; i < fields.Count; i++)
             {
@@ -640,12 +644,12 @@ namespace DataDictionary.Tests.Translations
                     {
                         KeyValuePair<string, Variables.IVariable> sequencePair = aStructure.SubVariables.ElementAt(j);
                         Variables.IVariable sequenceVariable = sequencePair.Value;
-                        Types.Collection collectionType = (Types.Collection)EFSSystem.findType(aNameSpace, sequenceVariable.TypeName);
+                        Types.Collection collectionType = (Types.Collection)system.findType(aNameSpace, sequenceVariable.TypeName);
                         Values.ListValue sequence = new Values.ListValue(collectionType, new List<Values.IValue>());
 
                         for (int k = 0; k < field.Value; k++)
                         {
-                            Types.Structure structureType = (Types.Structure)EFSSystem.findType(aNameSpace, sequence.CollectionType.Type.FullName);
+                            Types.Structure structureType = (Types.Structure)system.findType(aNameSpace, sequence.CollectionType.Type.FullName);
                             Values.StructureValue structureValue = new Values.StructureValue(structureType);
                             FillStructure(aNameSpace, fields, ref index, structureValue);
                             sequence.Val.Add(structureValue);
@@ -665,14 +669,13 @@ namespace DataDictionary.Tests.Translations
         }
 
 
-        private string format_euroloop_message(DBElements.DBMessage message)
+        private static string format_euroloop_message(DBElements.DBMessage message)
         {
             string retVal = "";
             return retVal;
         }
 
-
-        private string format_euroradio_message(DBElements.DBMessage message)
+        private static string format_euroradio_message(DBElements.DBMessage message)
         {
             string retVal = "";
             return retVal;
