@@ -5633,7 +5633,7 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="S1 : Enter driver ID and train running number"
+ Name="S1 : Enter driver id, train running number and virtual balise cover"
  Guid="a954b61d-a32e-4869-8d6e-2f499e7bbc49"
 >
 <TestCases>
@@ -6254,7 +6254,9 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
 <Actions>
 <Action
  Guid="b2c4d530-ebda-448c-8e4b-f81130fad425"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S1</Action></Actions>
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S1</Action><Action
+ Guid="c39e9938-ce5e-4b5b-b408-436749cee1b6"
+>Kernel.VirtualBaliseCoverIsSet &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6289,7 +6291,15 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
 >DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  Guid="c1a6d11f-c542-4437-83cd-895b08d26403"
->DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="34fd67cf-0c15-41d9-8026-d1f055e5e5d1"
+>DMI.MasterDMI().In_VirtualBaliseCover.VirtualBaliseCoverIsSet == False</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="9de3d903-4264-416a-b606-431f032cec1c"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6309,13 +6319,19 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
 <Actions>
 <Action
  Guid="a18c6409-4f98-478a-ae4b-34b5a58c7c64"
->DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
+ Guid="b98af2ac-5156-465d-b578-4ff472b3603c"
+>DMI.MasterDMI().In_VirtualBaliseCover.VirtualBaliseCoverIsSet &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b6d1590a-0d7b-41cb-a6c7-dd27c6e3cc94"
->Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S1.AskToEnterValues</Expectation></Expectations>
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S1.AskToEnterValues</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4a4e8218-327e-4964-b577-530042c252a6"
+>Kernel.VirtualBaliseCoverIsSet == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

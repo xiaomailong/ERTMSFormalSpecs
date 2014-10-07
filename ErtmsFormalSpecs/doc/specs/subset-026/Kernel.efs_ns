@@ -1439,7 +1439,6 @@ DMI.MasterDMI().In_DriverId.InitiateRequest
 >
 <Comment>The driver asked to enter the driver id and the on-board equipments waits for the driver id data. Once it is entered, the driver id status becomes valid and the procedure goes to D2 (transition E1).</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="354d157c-7bec-454e-9c00-23df5dce375e"
 >
@@ -1531,7 +1530,6 @@ DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreC
 >
 <Comment>The driver asked to enter the virtual balise cover and the on-board equipments waits for the virtual balise cover data. Once it is entered, the procedure goes back to the initial state S1.AskToEnterValues.</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="5e0c4851-cabe-4cae-a1a2-7d555f9529a5"
 >
@@ -1547,6 +1545,7 @@ DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreC
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f3cf903a-3ff8-49f7-b974-38c8126a79e9"
 >
+<Comment></Comment>
 </ReqRef><Comment>When the driver enters the virtual balise cover information, it is stored on-board and the procedure goes back to S1.AskToEnterValues.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -11201,6 +11200,20 @@ JRU.JRU1.HandleMessagesOut()</Action></Actions>
  Guid="9d85b957-d0a8-4d57-89ff-6c96551ff133"
 >
 </ReqRef><Comment></Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue=""
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="VirtualBaliseCoverIsSet"
+ Guid="2e98aba5-0302-4c0d-ada4-c4d0275519f5"
+>
+<ReqRef
+ Id="079c6696-ff46-4b49-b30c-23ad82da6fd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5cdf255f-c85e-4037-b9d3-7b4e2da78924"
+>
+</ReqRef><Comment>Indicates if the virtual bailse cover is set or removed.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule

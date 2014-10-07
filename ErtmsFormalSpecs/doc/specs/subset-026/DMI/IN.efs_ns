@@ -3714,7 +3714,10 @@ RBCContactInformationAvailable()</PreCondition></PreConditions>
 <Action
  Guid="9484037f-ae8c-4c61-ac5d-d77f23a6c203"
 ><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="29f0eb50-b4fd-485f-add0-03585d769c39"
+><Comment></Comment>
+Kernel.VirtualBaliseCoverIsSet &lt;- THIS.VirtualBaliseCoverIsSet</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3724,6 +3727,13 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
  Guid="ff1f2d51-6435-4cde-9750-6985f783f71b"
 >
 <Comment>Initiates train data entry request</Comment>
+<Parameters>
+<Parameter
+ Type="Boolean"
+ Name="VirtualBaliseCoverIsSet"
+ Guid="bbfdb2d4-fd02-4e95-98f8-2d3cbad7a0f1"
+>
+</Parameter></Parameters>
 <Rules>
 <Rule
  Priority="Processing"
@@ -3750,7 +3760,9 @@ VirtualBaliseCoverAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="fd488683-6118-4073-8f08-3d8d37ab3e7a"
->THIS.InputInformation.InitiateRequest()</Action></Actions>
+>THIS.InputInformation.InitiateRequest()</Action><Action
+ Guid="d98c8987-f0f6-407a-8bf2-9d0ae3658a9e"
+>THIS.VirtualBaliseCoverIsSet &lt;- VirtualBaliseCoverIsSet</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3798,6 +3810,20 @@ THIS.InputInformation.Disable()</Action></Actions>
  Guid="acbda029-1504-4ea3-bebe-1ab21813cd63"
 >
 <Comment>The request status</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="VirtualBaliseCoverIsSet"
+ Guid="cae556c2-f308-4e87-a580-0c1684d76478"
+>
+<ReqRef
+ Id="079c6696-ff46-4b49-b30c-23ad82da6fd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cd72a3c7-0eea-41db-8c0d-93311ad4a10b"
+>
+</ReqRef><Comment>Indicates if the virtual balise cover is set.</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="450"
