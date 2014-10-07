@@ -659,8 +659,13 @@ PreviousMode != Kernel.Mode</PreCondition></PreConditions>
  Guid="3f187d6a-e7e5-4287-aed5-a4fe32ff7e96"
 ><Comment></Comment>
 THIS.In_ErtmsEtcsLevel.TrackMode()</Action><Action
+ Guid="4118ac64-ad5c-4eb3-8acf-9f79e9689162"
+><Comment></Comment>
+THIS.In_ErtmsEtcsLevelEntryRequest.TrackMode()</Action><Action
  Guid="3a357883-dbd6-4d62-bc9c-894eb3407d42"
 >THIS.In_DriverId.TrackMode()</Action><Action
+ Guid="db5df32f-20b7-4152-98f3-3ef9b1f9ba8e"
+>THIS.In_DriverIdEntryRequest.TrackMode()</Action><Action
  Guid="c4124830-b14b-4a4a-8148-0bda2a440b7d"
 ><Comment></Comment>
 THIS.In_TrainData.TrackMode()</Action><Action
@@ -669,6 +674,8 @@ THIS.In_TrainData.TrackMode()</Action><Action
  Guid="a4edbcfb-504e-419a-88f5-9a55b16db104"
 ><Comment></Comment>
 THIS.In_TrainRunningNumber.TrackMode()</Action><Action
+ Guid="05e0d6f8-faf1-4547-be7b-f59a95e4e1cb"
+>THIS.In_TrainRunningNumberEntryRequest.TrackMode()</Action><Action
  Guid="aa1571fb-1de5-4a65-bbc6-0f64a55d3aa9"
 >THIS.In_Start.TrackMode()</Action><Action
  Guid="10c97c94-5e60-4899-8e8c-9f9176d5f30e"
@@ -750,6 +757,8 @@ THIS.In_TrackAheadFree.TrackMode()</Action><Action
 >THIS.In_TrainIntegrity.TrackMode()</Action><Action
  Guid="a146884b-c77b-4030-aa93-3458ef154f52"
 >THIS.In_VirtualBaliseCover.TrackMode()</Action><Action
+ Guid="df0f55a8-1469-4a69-92ce-dc051554bb23"
+>THIS.In_VirtualBaliseCoverEntryRequest.TrackMode()</Action><Action
  Guid="d852eb4f-3cb6-4961-a0e6-3f5b4b6d01cd"
 >THIS.Out_MRSP.TrackMode()</Action><Action
  Guid="8c218d18-6e1a-4665-a809-355eb5571dd0"
@@ -1063,8 +1072,12 @@ THIS.Out_PermittedSpeed.TrackMode()</Action><Action
  Guid="b302e313-c04d-49df-9d1a-d51c5307b11f"
 ><Comment></Comment>
 THIS.In_ErtmsEtcsLevel.AcceptDriverResponse()</Action><Action
+ Guid="b17f7913-3180-47a7-a91e-84411761bbf4"
+>THIS.In_ErtmsEtcsLevelEntryRequest.AcceptDriverResponse()</Action><Action
  Guid="9c329640-f88c-404a-931e-8c5f25cf779c"
 >THIS.In_DriverId.AcceptDriverResponse()</Action><Action
+ Guid="c361ed51-efd9-4018-a52f-1dfc1cadc49f"
+>THIS.In_DriverIdEntryRequest.AcceptDriverResponse()</Action><Action
  Guid="fd0e8a79-223e-4a1e-b032-d5c5cf3cf509"
 ><Comment></Comment>
 THIS.In_TrainData.AcceptDriverResponse()</Action><Action
@@ -1073,6 +1086,9 @@ THIS.In_TrainData.AcceptDriverResponse()</Action><Action
  Guid="c02b72b9-a46b-45e5-aea2-51f52d275b06"
 ><Comment></Comment>
 THIS.In_TrainRunningNumber.AcceptDriverResponse()</Action><Action
+ Guid="e7ec39fa-e874-4856-95cf-31e8369db25b"
+><Comment></Comment>
+THIS.In_TrainRunningNumberEntryRequest.AcceptDriverResponse()</Action><Action
  Guid="afe89900-4ed1-4a67-9dd6-58bc777e8c95"
 >THIS.In_Start.AcceptDriverResponse()</Action><Action
  Guid="075c7e3d-a7b6-48e7-8d83-d0317434457a"
@@ -1155,9 +1171,8 @@ THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
 THIS.In_TrainIntegrity.AcceptDriverResponse()</Action><Action
  Guid="216a978b-051d-42e3-ba33-a5d67b52054a"
 >THIS.In_VirtualBaliseCover.AcceptDriverResponse()</Action><Action
- Guid="e7ec39fa-e874-4856-95cf-31e8369db25b"
-><Comment></Comment>
-THIS.In_TrainRunningNumberEntryRequest.AcceptDriverResponse()</Action></Actions>
+ Guid="243ab72a-b96b-4196-a725-712460511989"
+>THIS.In_VirtualBaliseCoverEntryRequest.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3105,7 +3120,47 @@ Out_TrainSpeed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
  Guid="deda8162-50eb-4c19-a288-cf1746d84489"
 >
 </ReqRef><Comment></Comment>
-</StructureElement></Structure><Structure
+</StructureElement><StructureElement
+ TypeName="IN.VirtualBaliseCoverEntryRequest"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="In_VirtualBaliseCoverEntryRequest"
+ Guid="e5333778-9d57-404d-96b4-4d909fcfd919"
+>
+<ReqRef
+ Id="5f1173da-1cfe-4f41-aa4f-5c394c12e77f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="596fe3de-9578-4f0b-ac59-0b281dfd393b"
+>
+</ReqRef><Comment></Comment>
+</StructureElement><StructureElement
+ TypeName="IN.ErtmsEtcsLevelEntryRequest"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="In_ErtmsEtcsLevelEntryRequest"
+ Guid="ab0c1a36-a1a6-4657-b8fb-d0d8c6bcde0f"
+>
+<ReqRef
+ Id="4efd390e-2e07-4c18-88e9-b389b64cd144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="92e5663d-5c05-49e1-a5bc-cd193a77bfb1"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="IN.DriverIdEntryRequest"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="In_DriverIdEntryRequest"
+ Guid="13fba8cc-b54c-4d40-a987-19a85adb7a4e"
+>
+<ReqRef
+ Id="166e123f-f57c-4045-af2e-915a4c4e849b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1ef390ee-8426-4e7b-9a70-aabd9bcdded3"
+>
+</ReqRef></StructureElement></Structure><Structure
  Default=""
  X="280"
  Y="10"

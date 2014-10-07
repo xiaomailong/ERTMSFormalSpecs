@@ -135,6 +135,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
  Name="ReValidate"
  Guid="8c30120f-4f34-4693-bb84-825087b2c539"
 >
+</Parameter><Parameter
+ Type="Default.Levels"
+ Name="NTCLevels"
+ Guid="6bac262c-8687-468e-a35d-a0d9954f82d8"
+>
 </Parameter></Parameters>
 <Rules>
 <Rule
@@ -167,7 +172,9 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
  Guid="ca58d464-3738-42c5-a904-145687e1b58c"
 >DriverAction.ReValidate &lt;- ReValidate</Action><Action
  Guid="eee0ff88-2014-46c3-b2db-534f41156c06"
->THIS.Level &lt;- Level</Action></Actions>
+>THIS.Level &lt;- Level</Action><Action
+ Guid="18cc2b82-1c18-4013-a8b1-f1dcd346b36f"
+>THIS.NTCLevels &lt;- NTCLevels</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -246,9 +253,9 @@ THIS.InputInformation.Disable()</Action></Actions>
  Mode="Outgoing"
  Implemented="TRUE"
  Name="NTCLevels"
- Guid="3216b59e-3842-4a8d-868e-895cb7b81290"
+ Guid="24d94d05-1bbc-49f1-89a6-1793c9900948"
 >
-<Comment>Provides the NTC levels available onboard.</Comment>
+<Comment></Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="670"
@@ -5528,6 +5535,438 @@ THIS.InputInformation.InitiateRequest()</Action></Actions>
  Guid="778bf4ea-950f-430d-9700-4be5f00c6fe2"
 >
 <Comment>Provides the status of the request</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ X="450"
+ Y="400"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="VirtualBaliseCoverEntryRequest"
+ Guid="d62208cc-e56c-4d3c-aa96-3c4c95f0a263"
+>
+<ReqRef
+ Id="5f1173da-1cfe-4f41-aa4f-5c394c12e77f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cf93f17e-fd0b-4ade-a8cf-189515a4cf11"
+>
+<Comment></Comment>
+</ReqRef><Comment>Acknowledgement of the virtual balise cover</Comment>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="314f2a93-a573-4812-be11-2c1f002e80fe"
+>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="8505b010-d2ba-4892-b61b-af060b084991"
+>
+<Comment>Accepts the data and updates the system state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Accepts data from the driver"
+ Guid="062fab32-b2e3-4195-92b2-55114a867bec"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="85ba86ad-387c-4405-a27b-9342e6896c10"
+>VirtualBaliseCoverAvailable()</PreCondition><PreCondition
+ Guid="109fd754-6f1b-4416-8951-2d2552e9fe8f"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="db267b0a-5c9a-4ef3-92aa-12ab011e6f2f"
+><Comment></Comment>
+THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="5c3f0909-64e9-4d8f-acb4-5b2f5d227a8b"
+>
+<Comment>Initiates train data entry request</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="4d744b20-4f9f-41dc-bfb4-8a6b437d4037"
+>
+<Comment>Initiates request</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="4a2dd4f1-6854-4d60-b142-08d060e64a69"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="b4f80d80-bdba-4dfa-a12c-120f69b3c36f"
+><Comment></Comment>
+VirtualBaliseCoverAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0f3854ce-b452-4e09-985d-4458b6ace545"
+>THIS.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="267b49f1-8c2e-41b7-8682-98217322f057"
+>
+<Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="1ad7bd46-04d2-4a1a-ba9e-d020a3db8bd0"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="cb475c0f-3d59-4609-b381-53dbaea3b0d8"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="50a7d616-3f2b-4f06-ac0d-f10d2b0a39c1"
+><Comment></Comment>
+NOT VirtualBaliseCoverAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="becde018-6cd7-4a22-9dbc-f3237c0f2c13"
+><Comment></Comment>
+THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="InputInformation"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InputInformation"
+ Guid="41d5ac3c-a074-4151-ad31-3e6e6857be60"
+>
+<Comment>The request status</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ X="120"
+ Y="400"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DriverIdEntryRequest"
+ Guid="08537a9d-6924-416b-8966-2fc15db84828"
+>
+<ReqRef
+ Id="166e123f-f57c-4045-af2e-915a4c4e849b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8abca582-aaea-4baf-8414-04da6ee76544"
+>
+</ReqRef><Comment>Allow to enter the driver Id</Comment>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="4ddc25bc-a0e2-4dc8-a83e-66e449626417"
+>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="f441acc5-bd57-43da-862c-b9736dd272a7"
+>
+<Comment>Accepts the data and updates the system state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Accepts data from the driver"
+ Guid="40bc0853-79ce-4471-a8fd-3f5f6a376f60"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="98f5b3e5-46a7-47c9-9473-df788dee1cf1"
+>DriverIdAvailable()</PreCondition><PreCondition
+ Guid="09c1fb1f-ae4a-4ec6-b860-3d254cbc29ef"
+><Comment></Comment>
+THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="528423a2-3558-4b80-83c2-a89b03dfae6e"
+><Comment></Comment>
+THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="98f4d414-4177-4f4e-9c93-8c0fac1f9a2e"
+>
+<Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="c994f585-8f82-4e15-b4f7-0d4af579d501"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="21cb3ceb-0aad-4e2f-ac83-38c4259ab171"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="faf2e7d6-7cb9-4d83-899b-75c1972b883f"
+><Comment></Comment>
+NOT DriverIdAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="fd972ba6-3e31-49e5-b527-8c3e9b2412b3"
+><Comment></Comment>
+THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="5cdb9eb2-66fe-4d25-8112-6d41eaf0ace6"
+>
+<Comment>Initiates a driver ID request</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="18aaf906-ddb4-4a8d-93c3-ac86fbf8d13a"
+>
+<Comment></Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="10d382fa-dc27-4888-9f92-724abc049198"
+>
+<PreConditions>
+<PreCondition
+ Guid="faf02e15-d63d-43be-ae23-925abd22d381"
+>DriverIdAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e8d2d4ab-322c-465e-b4f7-2b8d5d008ac0"
+>THIS.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="InputInformation"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InputInformation"
+ Guid="f0a0b318-0c99-4350-a2b5-41a8608b8ed9"
+>
+<Comment>The current status of the request</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ X="10"
+ Y="400"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="ErtmsEtcsLevelEntryRequest"
+ Guid="e7576663-5f87-452c-9b52-bee0614af97f"
+>
+<ReqRef
+ Id="4efd390e-2e07-4c18-88e9-b389b64cd144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7b31310f-e41b-4fd7-8640-ca27a7e92b37"
+>
+</ReqRef><ReqRef
+ Id="1e7f3c89-d89b-4d31-b758-514c92ae3bf1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="05988353-74fb-4bdd-ae25-5052798abcef"
+>
+</ReqRef><Comment>Allow to enter the Level</Comment>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="46da21f4-349e-460f-8751-a16d2a73bbd7"
+>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="07e4245d-7978-4c9f-b2ba-8c88b77f97ce"
+>
+<Comment>Accepts the data and updates the system state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Accepts data from the driver"
+ Guid="1ade1a6d-a1c7-4620-bdc5-8fc3b9d7511f"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="851e5f13-c576-435c-8507-16eb479a30bf"
+>ErtmsEtcsLevelAvailable()</PreCondition><PreCondition
+ Guid="83fb3682-da57-4408-9f95-52d81553afa1"
+><Comment></Comment>
+THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8e1db983-940e-4c27-90dd-eb9c418e948d"
+><Comment></Comment>
+THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="91fafc07-26c7-4140-b512-d58cd42b23f0"
+>
+<Comment>Initiate the ERTMS ETCS Level request</Comment>
+<Parameters>
+<Parameter
+ Type="Default.LevelDataStruct"
+ Name="Level"
+ Guid="95e63f1f-973f-4616-a579-d44978e22d47"
+>
+</Parameter><Parameter
+ Type="Boolean"
+ Name="Enter"
+ Guid="404fb142-1a03-42e3-bbca-31871861b078"
+>
+</Parameter><Parameter
+ Type="Boolean"
+ Name="ReValidate"
+ Guid="351f636d-2e87-4097-8f83-f3832c7b6244"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="11a1b4a1-d0fc-470c-8993-927f150abbda"
+>
+<Comment>Initiates the level request</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="911f2f7b-8735-4a25-ad10-86904b2ce266"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="807a3bf6-839b-410c-9cd5-89965ea3a35d"
+>ErtmsEtcsLevelAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="68bdaacb-196a-4a7e-840a-afe2c8eab7e3"
+>THIS.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="ba443fc0-df28-4721-b184-571ed7e51b9a"
+>
+<ReqRef
+ Id="4efd390e-2e07-4c18-88e9-b389b64cd144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b21ae5c2-8c47-4cc4-b6ca-19fe89737f05"
+>
+</ReqRef><Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="26ab6a51-1c06-410d-9843-216805c44114"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="29bdb37c-113a-47b7-97c7-b69909b165d0"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="3da45d56-5a25-4e7c-b6e0-8bef97dd7d84"
+><Comment></Comment>
+NOT ErtmsEtcsLevelAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="4c0aefea-8b1f-46cd-91a7-6f7ef34c846b"
+><Comment></Comment>
+THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="InputInformation"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InputInformation"
+ Guid="cc2d7f44-6a96-4b5f-870f-127d92c1896e"
+>
+<Comment>Provides information about this request status</Comment>
 </StructureElement></Structure></Structures>
 <Functions>
 <Function
