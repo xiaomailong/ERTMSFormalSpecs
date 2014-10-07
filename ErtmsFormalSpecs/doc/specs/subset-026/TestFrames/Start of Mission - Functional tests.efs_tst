@@ -7311,6 +7311,7 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  Name="Step1 - Unknown train running number"
  Guid="0861a999-6f1f-4113-b99d-e298ca63c70d"
 >
+<Comment></Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
@@ -7321,12 +7322,14 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  Guid="7793d158-ccee-43d1-8888-5dd312122803"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S13</Action><Action
  Guid="870c8336-710c-4c89-9842-0f37d733250c"
->Kernel.TrainRunningNumber.DataState &lt;- DataState.Unknown</Action></Actions>
+>Kernel.TrainRunningNumber.DataState &lt;- DataState.Unknown</Action><Action
+ Guid="dd70fc54-efaa-40a7-a80a-f348be7ba735"
+>Kernel.TrainRunningNumber.Value &lt;- &apos;1234&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="e2cc8aaa-7661-49d0-ab85-d3291b4ffa4c"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -7335,7 +7338,45 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - Train data validated(E16)"
+ Name="Step2 - Driver asks to enter the train running number"
+ Guid="84166183-6a1d-4e49-b6b0-8e73845bf57c"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="736f4f38-afa3-4fb7-a233-3fc924132507"
+>
+<Actions>
+<Action
+ Guid="f0f2616f-1507-4f79-a176-d2847694491a"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="eb90db53-0e7a-44f9-b3be-21de9e309c54"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="99a4eeba-60a4-4781-8526-bf1145bf1516"
+>DMI.MasterDMI().In_TrainRunningNumber.Number == &apos;&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="edca2116-84b9-4dfd-93e9-d949c6f901ae"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.ReValidate == False</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="41b6323e-cf3e-446c-b8bf-5c1f8c96f8c2"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.Enter == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Train data validated(E16)"
  Guid="c6802d85-7226-406a-83be-09cea681e72f"
 >
 <SubSteps>
@@ -7407,12 +7448,14 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  Guid="98ae0dfc-f0b8-4f3d-ae24-4466c9a9c8ad"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S13</Action><Action
  Guid="f56f990c-a29e-419c-9a78-c5389974ea97"
->Kernel.TrainRunningNumber.DataState &lt;- DataState.Invalid</Action></Actions>
+>Kernel.TrainRunningNumber.DataState &lt;- DataState.Invalid</Action><Action
+ Guid="c3043821-a737-43b3-b782-7d44126f537f"
+>Kernel.TrainRunningNumber.Value &lt;- &apos;1234&apos;</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="0bc8f57e-68cf-4a97-b460-59908fcdb5f5"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -7421,7 +7464,45 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - Train data validated(E16)"
+ Name="Step2 - Driver asks to enter the train running number"
+ Guid="54ef2921-b9bc-4743-8d46-c3e475bbec94"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="694d87d7-a972-4e5f-b7c4-2b437d5aa523"
+>
+<Actions>
+<Action
+ Guid="6d18176b-25f7-4031-9b99-1109cdfa9166"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="61c3d7a2-82f2-4a67-b6df-fbf4dabbcd4c"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="207f5fd1-0020-4566-a168-ef2f3e415bfd"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.ReValidate == True</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="064f5505-4a96-496e-861d-e2bd6a6a7e6c"
+>DMI.MasterDMI().In_TrainRunningNumber.Number == &apos;1234&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4ca07078-32a1-46f8-a5c4-77c8ada3a7b8"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.Enter == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Train data validated(E16)"
  Guid="00dd5cf8-4784-4efb-ba07-760620551721"
 >
 <SubSteps>
@@ -7445,79 +7526,6 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  Kind="Instantaneous"
  Guid="06ada8c8-428d-4906-addb-87493e43a858"
 >DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Valid train running number"
- Guid="54d04afb-fdd0-49b4-b09b-af77451def8d"
->
-<ReqRef
- Id="4549d882-b756-48ca-9591-ed094820a8d6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7d6bd655-319f-4f9f-a2bd-c2de809d3675"
->
-</ReqRef><ReqRef
- Id="f4b839b3-d1ea-4c3b-8a2b-8bda94f934c3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9a3a96d4-8c5f-443e-9fc1-4b5b00b38c01"
->
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Valid train running number"
- Guid="44f9c33d-a022-4468-a1a3-56428369119d"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="44a36d56-d7bd-4702-8d43-d17736b4d989"
->
-<Actions>
-<Action
- Guid="a21c10f4-8ccf-408c-8b1c-9c01f4dcccb9"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S13</Action><Action
- Guid="5074bf85-5eb2-48db-89cb-9f08c3a9e89a"
->Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="9c93cdd6-1859-48f0-9ea8-613c2cc2d511"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step2 - Train data validated(E16)"
- Guid="b68bfc71-147f-4568-897c-c0286867667e"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="ecfb9145-934c-4c5c-ae52-a37227152d9b"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="58f7a9c2-0c49-4547-a71b-a94bd2a2c41b"
->Kernel.TrainRunningNumber.DataState == DataState.Valid</Expectation><Expectation
- Kind="Instantaneous"
- Guid="beed7cd1-7803-495c-baab-2a2e63dcaef6"
->Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D10</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
