@@ -5674,11 +5674,67 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
+ Implemented="TRUE"
+ Name="Initial state: data entry proposed"
+ Guid="d0096dd1-e234-46c2-9678-ee4bfd9e2bfb"
+>
+<ReqRef
+ Id="3dec40a2-4a61-4a9c-9c92-1d115e8e1756"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8e8c87da-3350-4b2d-9808-08443fba4229"
+>
+</ReqRef><ReqRef
+ Id="b5adeff5-835f-415a-a6c0-4bdaee8b3cb8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="759bc8f3-6f49-4da3-9989-35813ba03312"
+>
+</ReqRef><ReqRef
+ Id="079c6696-ff46-4b49-b30c-23ad82da6fd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf2b5f6e-2cbe-49b7-9d93-629aa19374a6"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Data entry is proposed"
+ Guid="55daec4c-d271-4fdd-b230-400e2d6737d6"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="94cbed00-e5cb-44ef-ab74-24f6e5d4dd3f"
+>
+<Actions>
+<Action
+ Guid="d18867e9-84f9-4f6b-80d6-c22af14ddfe1"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="66aade52-023e-4647-9085-218806937ed8"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b514c98b-a2c7-44e7-a543-0eca3bfba308"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="cc32de1a-626c-4145-9cd1-4c1241e02806"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
  Feature="0"
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Update unknown driver ID"
+ Name="Entry of unknown driver id"
  Guid="b0ce6843-daaf-4757-9baa-a2ab8eff4624"
 >
 <ReqRef
@@ -5701,7 +5757,7 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step1 - Unknown driver ID"
+ Name="Step1 - Driver id is unknown"
  Guid="0877622b-282f-4738-af2f-76b1ed3cfe9e"
 >
 <SubSteps>
@@ -5711,26 +5767,12 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
 >
 <Actions>
 <Action
- Guid="8f436be8-ac11-41ff-a9a7-d44043ab20d8"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action><Action
  Guid="40cf9d72-db0e-44aa-871b-fa72a596f3ed"
 >Kernel.DriverId.DataState &lt;- DataState.Unknown</Action><Action
  Guid="d5cc8246-db0e-44a5-a3a0-4b70de3b88ce"
->Kernel.DriverId.Value &lt;- &apos;Hans&apos;</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="5f61b175-eac7-4408-8da3-dd3f0c50aae7"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
- Kind="Instantaneous"
- Guid="59108eeb-e23d-40b3-b62a-ac83cabc9bdc"
->DMI.MasterDMI().In_DriverId.Id == &apos;Hans&apos;</Expectation><Expectation
- Kind="Instantaneous"
- Guid="58920f84-7789-4431-a1f4-ecfc1f53147f"
->DMI.MasterDMI().In_DriverId.DriverAction.Enter == True</Expectation><Expectation
- Kind="Instantaneous"
- Guid="e00ad1a9-27f8-48a9-aec4-e44f4a9e6a70"
->DMI.MasterDMI().In_DriverId.DriverAction.ReValidate == False</Expectation></Expectations>
+>Kernel.DriverId.Value &lt;- &apos;Hans&apos;</Action><Action
+ Guid="f6153cf3-bc76-4b85-9e97-0b260653caee"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -5739,7 +5781,49 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - Retrieve validated driver ID"
+ Name="Step2 - Driver asks to enter the driver id"
+ Guid="cc29695e-ac8d-4ba0-aeff-d950fcf86964"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="d893c7d2-fb52-4df7-9412-683a9acb602a"
+>
+<Actions>
+<Action
+ Guid="6a5916ae-34e2-4c6d-9129-5f183a3f0255"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="58920f84-7789-4431-a1f4-ecfc1f53147f"
+>DMI.MasterDMI().In_DriverId.DriverAction.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="e00ad1a9-27f8-48a9-aec4-e44f4a9e6a70"
+>DMI.MasterDMI().In_DriverId.DriverAction.ReValidate == False</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="59108eeb-e23d-40b3-b62a-ac83cabc9bdc"
+>DMI.MasterDMI().In_DriverId.Id == &apos;&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="5f61b175-eac7-4408-8da3-dd3f0c50aae7"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1343b88d-7782-4fbf-9fd9-7ed245360d6a"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e8a62db2-495c-4635-986b-ecf2265056a5"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Drivers enters the data =&gt; driver id is validated and stored on board, the procedure goes to D2"
  Guid="7beb9917-6be9-4d25-9da0-6ec246bd1fee"
 >
 <SubSteps>
@@ -5760,7 +5844,11 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
 >Kernel.DriverId.DataState == DataState.Valid</Expectation><Expectation
  Kind="Instantaneous"
  Guid="4b204790-93bd-41d4-ae89-aaeeb03ca6ac"
->Kernel.DriverId.Value == &apos;Fred&apos;</Expectation></Expectations>
+>Kernel.DriverId.Value == &apos;Fred&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="c445acb5-5fe1-4cec-a771-711a9dc46e1f"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D2</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -5768,7 +5856,7 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Update invalid driver ID"
+ Name="Entry of invalid driver id"
  Guid="4d8be36b-8628-4000-be8e-9239fb0975b5"
 >
 <ReqRef
@@ -5791,7 +5879,7 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step1 - Invalid driver ID"
+ Name="Step1 - Driver id is invalid"
  Guid="2df27a2b-70aa-4ea1-8998-820bc8350829"
 >
 <SubSteps>
@@ -5807,20 +5895,6 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
 >Kernel.DriverId.DataState &lt;- DataState.Invalid</Action><Action
  Guid="12b452bd-e4fe-4278-86bb-397a1ab42a32"
 >Kernel.DriverId.Value &lt;- &apos;Hans&apos;</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="4d460e01-dd52-482c-bc79-b3238fad902b"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
- Kind="Instantaneous"
- Guid="1f8d26af-bd73-4055-9757-d82bf41d404d"
->DMI.MasterDMI().In_DriverId.Id == &apos;Hans&apos;</Expectation><Expectation
- Kind="Instantaneous"
- Guid="4a0d1fd0-661d-4b1b-bcfe-da39118d8220"
->DMI.MasterDMI().In_DriverId.DriverAction.Enter == True</Expectation><Expectation
- Kind="Instantaneous"
- Guid="c297635f-488f-45bd-81f5-66d786887dca"
->DMI.MasterDMI().In_DriverId.DriverAction.ReValidate == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -5829,7 +5903,53 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - Retrieve validated driver ID"
+ Name="Step2 - Driver asks to enter the driver id"
+ Guid="b519579b-1e36-4dfc-972c-c591859391c8"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="71cc620f-b32d-4138-b023-84fd01c44f2a"
+>
+<Actions>
+<Action
+ Guid="5e7f6140-697b-4dd3-9a70-25e73e6869f4"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f0c33e60-2c82-49cd-96f8-eb595452b425"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="63f6903c-f712-4b57-b4a9-4688206cddaf"
+>DMI.MasterDMI().In_DriverId.DriverAction.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="58cdecf9-d4da-4410-88f0-830f4c86015b"
+>DMI.MasterDMI().In_DriverId.Id == &apos;Hans&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="97963fbe-c924-450c-a7a9-ecd35e86d59d"
+>DMI.MasterDMI().In_DriverId.DriverAction.ReValidate == True</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="c50a1674-1380-4909-aa12-adff65b2489f"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="d96f1ea3-44d3-480d-80dc-acde664d3000"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Drivers enters the data =&gt; driver id is validated and stored on board, the procedure goes to D2"
  Guid="a7f89317-5856-450f-8fa5-8c8204ca0780"
 >
 <SubSteps>
@@ -5850,7 +5970,11 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
 >Kernel.DriverId.DataState == DataState.Valid</Expectation><Expectation
  Kind="Instantaneous"
  Guid="e3898371-2975-4db2-972e-80dd4d249d71"
->Kernel.DriverId.Value == &apos;Fred&apos;</Expectation></Expectations>
+>Kernel.DriverId.Value == &apos;Fred&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="d4efd540-6cb0-4b5a-a243-8ac2f1db3adb"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D2</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -5858,7 +5982,7 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Update unknown train running number"
+ Name="Entry of unknown train running number"
  Guid="5946c287-1a3d-49dd-9d71-65ef444a6503"
 >
 <ReqRef
@@ -5881,7 +6005,7 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step1 - Unknown train running number"
+ Name="Step1 - Train running number is unknown"
  Guid="ecf1fc0d-9a72-49e6-9f8f-1e5605dac689"
 >
 <SubSteps>
@@ -5896,23 +6020,7 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  Guid="e9343543-d8d8-43a4-a4aa-8fa2dd621a37"
 >Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Unknown</Action><Action
  Guid="58e05f23-d313-4d79-89a5-5ba48e343e18"
->Kernel.TrainRunningNumber.Value &lt;- &apos;1234&apos;</Action><Action
- Guid="e0143b60-7803-43ab-8130-5b4e7cf616b9"
->Kernel.DriverId.DataState &lt;- DataState.Invalid</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="a5e16d24-6a03-42bd-bb34-2bc179258d40"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
- Kind="Instantaneous"
- Guid="e2d67ebb-34da-4558-bea7-ac933b14583b"
->DMI.MasterDMI().In_TrainRunningNumber.Number == &apos;1234&apos;</Expectation><Expectation
- Kind="Instantaneous"
- Guid="d9fd9cf6-0971-439e-be87-ebfce7f7d641"
->DMI.MasterDMI().In_TrainRunningNumber.DriverAction.Enter == True</Expectation><Expectation
- Kind="Instantaneous"
- Guid="40dc8cbd-b0da-49f3-91e1-389f10a6bff1"
->DMI.MasterDMI().In_TrainRunningNumber.DriverAction.ReValidate == False</Expectation></Expectations>
+>Kernel.TrainRunningNumber.Value &lt;- &apos;1234&apos;</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -5921,7 +6029,49 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - Retrieve validated train running number"
+ Name="Step2 - Driver asks to enter the train running number"
+ Guid="4a4332cf-6f55-473d-a0a2-c37686c89b7d"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="f71dd45f-c167-42bd-b263-a55cdcd09a53"
+>
+<Actions>
+<Action
+ Guid="49e11fa7-69f6-4d56-bd82-d5a5dd87df5a"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ee3caf94-2d41-4d58-9897-a02d9aebc4dd"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="0350e793-a64d-4344-8437-0ee5345e823f"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="d9fd9cf6-0971-439e-be87-ebfce7f7d641"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="40dc8cbd-b0da-49f3-91e1-389f10a6bff1"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.ReValidate == False</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="a5e16d24-6a03-42bd-bb34-2bc179258d40"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="e2d67ebb-34da-4558-bea7-ac933b14583b"
+>DMI.MasterDMI().In_TrainRunningNumber.Number == &apos;&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Drivers enters the data =&gt; train running number is validated and stored on board, the procedure goes back to the initial state"
  Guid="245f6bfd-09e4-4958-beef-aed5774b7bf3"
 >
 <SubSteps>
@@ -5942,7 +6092,11 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
 >Kernel.TrainRunningNumber.DataState == DataState.Valid</Expectation><Expectation
  Kind="Instantaneous"
  Guid="356b83b2-47b3-4f6b-b1a4-531cddc3aea5"
->Kernel.TrainRunningNumber.Value == &apos;4567&apos;</Expectation></Expectations>
+>Kernel.TrainRunningNumber.Value == &apos;4567&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="96405901-29d3-4803-8d1a-55f48f28d275"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S1.AskToEnterValues</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -5950,7 +6104,7 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Update invalid train running number"
+ Name="Entry of invalid train running number"
  Guid="22f81f53-746c-405a-b336-33faa589a4ef"
 >
 <ReqRef
@@ -5973,7 +6127,7 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step1 - Invalid train running number"
+ Name="Step1 - Train running number is invalid"
  Guid="837ba07d-1b0c-40e7-833f-154f9142c12d"
 >
 <SubSteps>
@@ -5989,20 +6143,6 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
 >Kernel.TrainRunningNumber.DataState &lt;- DataState.Invalid</Action><Action
  Guid="beed574e-46b2-4ce8-98bc-fbcb28d29095"
 >Kernel.TrainRunningNumber.Value &lt;- &apos;1234&apos;</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="dbcb2c0c-71a1-46bb-b312-eb69ad2bc046"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
- Kind="Instantaneous"
- Guid="887d302d-533e-4e08-9f49-f27d6d9f450b"
->DMI.MasterDMI().In_TrainRunningNumber.Number == &apos;1234&apos;</Expectation><Expectation
- Kind="Instantaneous"
- Guid="2ea53ce2-f1f1-40f3-b897-b50d7aa4eada"
->DMI.MasterDMI().In_TrainRunningNumber.DriverAction.Enter == True</Expectation><Expectation
- Kind="Instantaneous"
- Guid="c42a5b3f-6b72-48cc-b8ba-a56f56a1d80a"
->DMI.MasterDMI().In_TrainRunningNumber.DriverAction.ReValidate == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6011,7 +6151,49 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - Retrieve validated train running number"
+ Name="Step2 - Driver asks to enter the train running number"
+ Guid="f969cb93-ff7f-47f6-856e-a76990980a18"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="f1c4d758-806f-4f04-bdfe-2549f648b737"
+>
+<Actions>
+<Action
+ Guid="bb514312-3c34-4cbe-9d38-0f44bd0eb134"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="af81a695-57ec-42ae-9b82-695b83d6aeae"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="9f5e93b4-22ef-4235-b529-ea6992b3d762"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="132efdaf-3e1a-4f7f-b23b-c1380b7c37e4"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.Enter == True</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="a3ab9506-b9bf-4222-a104-bfc01948f42d"
+>DMI.MasterDMI().In_TrainRunningNumber.DriverAction.ReValidate == True</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="42194796-6c06-41a8-9489-fa4467b22181"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="7a4bd0d3-53d6-4b8a-b951-8459dc2a51c8"
+>DMI.MasterDMI().In_TrainRunningNumber.Number == &apos;1234&apos;</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Drivers enters the data =&gt; train running number is validated and stored on board, the procedure goes back to the initial state"
  Guid="c0e7d867-f9b0-4887-bee6-a644b16ef659"
 >
 <SubSteps>
@@ -6032,18 +6214,26 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
 >Kernel.TrainRunningNumber.DataState == DataState.Valid</Expectation><Expectation
  Kind="Instantaneous"
  Guid="9567866b-9dee-49f5-a05a-3f7d9f6f37af"
->Kernel.TrainRunningNumber.Value == &apos;4567&apos;</Expectation></Expectations>
+>Kernel.TrainRunningNumber.Value == &apos;4567&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4739fb35-135f-4bd2-b0f3-bba88180c8f7"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S1.AskToEnterValues</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
  Feature="0"
  Case="0"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Valid data available"
- Guid="0ce295bd-0695-4ae0-9e45-83e1d3db0bfd"
+ Name="Entry of virtual balise cover"
+ Guid="88460e01-689d-4803-8419-794cf881b925"
 >
-<Comment></Comment>
+<ReqRef
+ Id="079c6696-ff46-4b49-b30c-23ad82da6fd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6caf6d88-9a22-4f13-8ebb-061fd30273a4"
+>
+</ReqRef><Comment></Comment>
 <Comment></Comment>
 <Steps>
 <Step
@@ -6053,31 +6243,79 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step1"
- Guid="777fd0b7-2347-4396-855b-a08ad53e5071"
+ Name="Step1 - Virtual balise cover entry is proposed"
+ Guid="ffdaae94-2f69-42ff-8933-32d23404ba8d"
 >
 <SubSteps>
 <SubStep
  Name="Sub-step1"
- Guid="82e30b1f-8a43-47cc-b7e6-3a186fa6c7f5"
+ Guid="4dd1c473-3d13-461e-8407-01c7530a8ae7"
 >
 <Actions>
 <Action
- Guid="ff7cbf63-1977-4e6b-9c2c-a00babdcca29"
->Kernel.DriverId.DataState &lt;- DataState.Valid</Action><Action
- Guid="9a20f38f-0783-47c7-8c4a-35cb43f6ef8a"
->Kernel.DriverId.Value &lt;- &apos;Johan&apos;</Action><Action
- Guid="9a54f30b-b8b6-4e31-8955-bff9408c9277"
->Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action><Action
- Guid="5691fa18-bee3-4013-8889-35fd006ca120"
->Kernel.TrainRunningNumber.Value &lt;- &apos;4321&apos;</Action><Action
- Guid="99b52924-0207-4b10-8e53-eb11ed148573"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S1</Action></Actions>
+ Guid="b2c4d530-ebda-448c-8e4b-f81130fad425"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="8c3b9f0d-e4aa-42f2-a3ee-da5d3fb6e06f"
->Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D2</Expectation></Expectations>
+ DeadLine="1"
+ Guid="ce588348-06d6-40e9-aaee-b22123ca7204"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Driver asks to enter the virtual balise cover"
+ Guid="5d3f612f-a433-42fc-a33b-4d7e731bac73"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="2b3a2974-76c8-4fc5-ac54-2918066d0137"
+>
+<Actions>
+<Action
+ Guid="6c8503f2-ee26-42b0-8066-b1ba15abd2fe"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b8af0743-ec2e-448b-b38d-b68417ea5432"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="c1a6d11f-c542-4437-83cd-895b08d26403"
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Drivers enters the data =&gt; virtual balise cover is stored on board, the procedure goes back to the initial state"
+ Guid="2efdd684-e3d9-492b-ae51-de2ebe2f0276"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="be9cb5b0-ae36-4252-89ba-76074ef25723"
+>
+<Actions>
+<Action
+ Guid="a18c6409-4f98-478a-ae4b-34b5a58c7c64"
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b6d1590a-0d7b-41cb-a6c7-dd27c6e3cc94"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S1.AskToEnterValues</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
