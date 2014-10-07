@@ -69,12 +69,16 @@ namespace GUI.TestRunnerView
                 }
             }
 
-            [Category("Description"), DisplayName("Condition"), Editor(typeof(MultilineStringEditor), typeof(UITypeEditor))]
-            [ReadOnly(false)]
-            public string Condition
+            [Category("Description"), DisplayName("Condition")]
+            [System.ComponentModel.Editor(typeof(Converters.ConditionUITypedEditor), typeof(UITypeEditor))]
+            [System.ComponentModel.TypeConverter(typeof(Converters.ConditionUITypeConverter))]
+            public DataDictionary.Tests.Expectation Condition
             {
-                get { return Item.getCondition(); }
-                set { Item.setCondition(value); }
+                get { return Item; }
+                set {
+                    Item = value;
+                    RefreshNode();
+                }
             }
 
             [Category("Description")]

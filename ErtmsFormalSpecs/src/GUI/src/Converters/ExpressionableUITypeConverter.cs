@@ -22,6 +22,7 @@ namespace GUI.Converters
     using System.ComponentModel;
     using System.Globalization;
     using DataDictionary;
+    using DataDictionary.Tests;
 
     /// <summary>
     /// Converts IExpressionable to string, by getting the Expression property
@@ -65,6 +66,77 @@ namespace GUI.Converters
                 if (expressionable.ExpressionText != null)
                 {
                     retVal = expressionable.ExpressionText.Trim();
+                    if (retVal != null)
+                    {
+                        int index = retVal.IndexOf("\n");
+                        if (index > 0)
+                        {
+                            retVal = retVal.Substring(0, index) + "...";
+                        }
+                    }
+                    else
+                    {
+                        retVal = "";
+                    }
+                }
+                else
+                {
+                    retVal = "";
+                }
+            }
+
+            return retVal;
+        }
+
+        public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
+        {
+            return true;
+        }
+    }
+
+
+    /// <summary>
+    /// Converts and expectation into a string, by getting the Condition property
+    /// </summary>
+    public class ConditionUITypeConverter : StringConverter
+    {
+        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+        {
+            return true;
+        }
+
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            BaseTreeNode.BaseEditor editor = context.Instance as BaseTreeNode.BaseEditor;
+            string text = value as string;
+            if (editor != null && text != null)
+            {
+                Expectation expectation = editor.Model as Expectation;
+                if (expectation != null)
+                {
+                    expectation.setCondition(text);
+                    return expectation;
+                }
+                else
+                {
+                    return base.ConvertFrom(context, culture, value);
+                }
+            }
+            else
+            {
+                return base.ConvertFrom(context, culture, value);
+            }
+        }
+
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        {
+            string retVal = "<unknown>";
+            Expectation expectation = value as Expectation;
+            if (expectation != null)
+            {
+                if (expectation.getCondition() != null)
+                {
+                    retVal = expectation.getCondition().Trim();
                     if (retVal != null)
                     {
                         int index = retVal.IndexOf("\n");

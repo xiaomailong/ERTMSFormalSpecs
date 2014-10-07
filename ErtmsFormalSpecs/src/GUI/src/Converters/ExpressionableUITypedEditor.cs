@@ -25,6 +25,7 @@ namespace GUI.Converters
     using DataDictionary;
     using System.Windows.Forms;
     using GUI.EditorView;
+    using DataDictionary.Tests;
 
     /// <summary>
     /// TODO: Update summary.
@@ -46,6 +47,35 @@ namespace GUI.Converters
                 {
                     EditorView.Window form = new EditorView.Window();                   
                     ExpressionableTextChangeHandler handler = new ExpressionableTextChangeHandler(expressionable as ModelElement);
+                    form.setChangeHandler(handler);
+                    GUIUtils.MDIWindow.AddChildWindow(form, WeifenLuo.WinFormsUI.Docking.DockAreas.Float);
+                }
+            }
+
+            return value;
+        }
+    }
+
+    /// <summary>
+    /// TODO: Update summary.
+    /// </summary>
+    public class ConditionUITypedEditor : UITypeEditor
+    {
+        public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
+        {
+            return UITypeEditorEditStyle.Modal;
+        }
+
+        public override object EditValue(ITypeDescriptorContext context, System.IServiceProvider provider, object value)
+        {
+            IWindowsFormsEditorService svc = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
+            if (svc != null)
+            {
+                Expectation expectation = value as Expectation;
+                if (expectation != null)
+                {
+                    EditorView.Window form = new EditorView.Window();
+                    ConditionTextChangeHandler handler = new ConditionTextChangeHandler(expectation);
                     form.setChangeHandler(handler);
                     GUIUtils.MDIWindow.AddChildWindow(form, WeifenLuo.WinFormsUI.Docking.DockAreas.Float);
                 }

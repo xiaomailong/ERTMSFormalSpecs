@@ -20,6 +20,7 @@ namespace GUI.EditorView
     using System.Linq;
     using System.Text;
     using DataDictionary;
+    using DataDictionary.Tests;
 
     /// <summary>
     /// Sets the string value into the right property
@@ -64,6 +65,54 @@ namespace GUI.EditorView
             if (expressionable != null)
             {
                 expressionable.ExpressionText = text;
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// Sets the string value into the right property
+    /// </summary>
+    /// <param name="instance"></param>
+    /// <param name="value"></param>
+    public class ConditionTextChangeHandler : Window.HandleTextChange
+    {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="instance"></param>
+        public ConditionTextChangeHandler(ModelElement instance)
+            : base(instance, "Condition")
+        {
+        }
+
+        /// <summary>
+        /// The way text is retrieved from the instance
+        /// </summary>
+        /// <returns></returns>
+        public override string GetText()
+        {
+            string retVal = "";
+            Expectation expectation = Instance as Expectation;
+
+            if (expectation != null)
+            {
+                retVal = expectation.getCondition();
+            }
+            return retVal;
+        }
+
+        /// <summary>
+        /// The way text is set back in the instance
+        /// </summary>
+        /// <returns></returns>
+        public override void SetText(string text)
+        {
+            Expectation expectation = Instance as Expectation;
+
+            if (expectation != null)
+            {
+                expectation.setCondition(text);
             }
         }
     }
