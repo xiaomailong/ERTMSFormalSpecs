@@ -5756,7 +5756,8 @@ HandleModeChange &lt;- HandleModeChange.NoProcedure</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d257674f-62e1-4cdd-8ca7-1c851605f403"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment></Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5856,7 +5857,7 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Allow reenter driver ID"
+ Name="Allow reenter driver id"
  Guid="eecffdff-c38a-4e86-8625-e1b7be52a479"
 >
 <ReqRef
@@ -5864,14 +5865,16 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ea2a433c-5e13-44a6-9972-eacf2d1e1a36"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles the degraded situation where the driver is allowed to reenter the driver id in states S10 and S20.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Allow reenter driver ID for states S10 and S20"
+ Name="Allow reenter driver id for states S10 and S20"
  Guid="c612bac0-47eb-4c50-a8d4-048633cda15e"
 >
+<Comment>Handles the degraded situation where the driver is allowed to reenter the driver id in states S10 and S20.</Comment>
 <PreConditions>
 <PreCondition
  Guid="f7bcca77-5a28-4e46-8ce1-2317bbe5a0e5"
@@ -5883,42 +5886,68 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Allow Re-enter driver ID"
+ Name="Allow reenter driver id for states S10 and S20"
  Guid="82683e26-8514-4be7-9371-97fc5ead2446"
 >
+<Comment>Handles the degraded situation where the driver is allowed to reenter the driver id in states S10 and S20.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Reenter driver ID not yet proposed to driver"
+ Name="Reenter driver id not yet proposed to driver"
  Guid="f053d594-c9b1-46c5-a6a1-aa54a17b9b21"
 >
+<Comment>If the entry of driver id is not proposed to the driver yet =&gt; propose it.</Comment>
 <PreConditions>
 <PreCondition
  Guid="91fa802b-ff28-476b-a651-8c633651cded"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
+ Guid="1ec0dda5-1942-462f-9631-61e215d6d028"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
+ Guid="f6f2b953-6391-49ef-8bc7-0b5a994f79c2"
+>NOT DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.DriverAnswered</PreCondition><PreCondition
+ Guid="53e96de6-3f2e-4e4d-b3e0-b25670cce139"
+>NOT DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9ebd91fb-b6f2-4d28-b3f7-6fb87e037047"
->DMI.MasterDMI().In_DriverId.InitiateRequest(
+>DMI.MasterDMI().In_DriverIdEntryRequest.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver selected to reenter its driver id"
+ Guid="c967c30b-e87c-4ea0-8a8e-fba01a0d8b09"
+>
+<Comment>If the driver selected to reenter the driver id =&gt; display the screen allowing to do it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="d9868451-925b-400e-b61d-041840d8e282"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ea9038aa-42bd-4dc0-a9bd-f3fef9b1d975"
+>DMI.MasterDMI().In_DriverIdEntryRequest.AcceptDriverResponse()</Action><Action
+ Guid="5ea06ddc-7a49-47d1-bc71-2d49bca52b14"
+>DMI.MasterDMI().In_DriverId.InitiateRequest
+(
   Id =&gt; DriverId.Value, 
   Enter =&gt; True,
   ReValidate =&gt; False
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Driver selected to reenter its driver ID"
- Guid="c967c30b-e87c-4ea0-8a8e-fba01a0d8b09"
+ Name="Driver reentered its driver id"
+ Guid="0d07430c-b44e-4ed6-959e-db1a4b73c300"
 >
+<Comment>When the driver has entered the new data, it is stored.</Comment>
 <PreConditions>
 <PreCondition
- Guid="d9868451-925b-400e-b61d-041840d8e282"
+ Guid="70b4805b-0b2a-445d-883a-7171029a7383"
 >DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="ea9038aa-42bd-4dc0-a9bd-f3fef9b1d975"
+ Guid="959b05e1-e6de-45d3-9a34-984461be3467"
 >DMI.MasterDMI().In_DriverId.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
