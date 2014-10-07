@@ -602,7 +602,8 @@ Procedure<Sub>
  functionalBlockName=""
  Name=""
  Guid="b6e9adeb-37b8-4110-a14b-ede647eeec14"
-><Sub>
+><Comment></Comment>
+<Sub>
 <Paragraph
  id="Entry 5.4.3.2.S1.1"
  guid=""
@@ -635,7 +636,8 @@ Procedure<Sub>
  functionalBlockName=""
  Name=""
  Guid="b5adeff5-835f-415a-a6c0-4bdaee8b3cb8"
->The ERTMS/ETCS on-board equipment shall offer the driver the possibility to enter/re-validate (depending on the status) the Train running number.<RequirementSets>
+><Comment></Comment>
+The ERTMS/ETCS on-board equipment shall offer the driver the possibility to enter/re-validate (depending on the status) the Train running number.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="43cedbca-13ff-4d10-b52a-fd5d02603d9a"
@@ -648,12 +650,18 @@ Procedure<Sub>
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="Implemented"
  version="3.0.0"
  functionalBlockName=""
  Name=""
  Guid="079c6696-ff46-4b49-b30c-23ad82da6fd7"
->The ERTMS/ETCS on-board equipment shall offer the driver the possibility to set/remove a Virtual Balise Cover.</Paragraph><Paragraph
+>The ERTMS/ETCS on-board equipment shall offer the driver the possibility to set/remove a Virtual Balise Cover.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1d7b6676-dc26-48e7-abca-62228ed44fc5"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Entry 5.4.3.2.S1.4"
  guid=""
  type="REQUIREMENT"
@@ -2736,7 +2744,8 @@ Status of On-board Variables Affected by Start of Mission Procedure<Sub>
  functionalBlockName=""
  Name=""
  Guid="ab1d5732-e882-44e5-82c4-b3366adc105e"
->Following S1 : Driver has entered Train running number; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; LEAVES Train Running Number - Unknown; ; REACH Train Running Number - Valid;<RequirementSets>
+><Comment></Comment>
+Following S1 : Driver has entered Train running number; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; LEAVES Train Running Number - Unknown; ; REACH Train Running Number - Valid;<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2e6e4763-85be-41b2-86cb-6d8302048e6c"
