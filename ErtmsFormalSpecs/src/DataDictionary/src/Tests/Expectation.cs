@@ -252,7 +252,16 @@ namespace DataDictionary.Tests
         {
             string retVal = "";
 
-            retVal = getExplain(0, explainSubElements);
+            if (!string.IsNullOrEmpty(getCondition()))
+            {
+                retVal += " {\\b IF }" + getCondition() + " {\\b THEN }\\par";
+                retVal += getExplain(2, explainSubElements);
+                retVal += "\\par {\\b END IF}\\par";
+            }
+            else
+            {
+                retVal = getExplain(0, explainSubElements);
+            }
 
             return retVal;
         }
