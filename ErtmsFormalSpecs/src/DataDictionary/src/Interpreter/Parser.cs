@@ -1093,7 +1093,7 @@ namespace DataDictionary.Interpreter
             try
             {
                 Generated.ControllersManager.DesactivateAllNotifications();
-                ModelElement.BeSilent = silent;
+                ModelElement.BeSilent = ModelElement.BeSilent || silent;
 
                 // Setup context
                 Root = root;

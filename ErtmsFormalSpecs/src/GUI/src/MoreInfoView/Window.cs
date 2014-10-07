@@ -60,13 +60,22 @@ namespace GUI.MoreInfoView
         /// </summary>
         public override void RefreshModel()
         {
-            moreInfoRichTextBox.Rtf = EmptyRTF;
-            if (Model != null)
+            bool silent = DataDictionary.ModelElement.BeSilent;
+            try
             {
-                moreInfoRichTextBox.Instance = Model as DataDictionary.ModelElement;
-                moreInfoRichTextBox.Rtf = TextualExplainUtilities.Encapsule(Model.getExplain(true));
+                DataDictionary.ModelElement.BeSilent = true;
+                moreInfoRichTextBox.Rtf = EmptyRTF;
+                if (Model != null)
+                {
+                    moreInfoRichTextBox.Instance = Model as DataDictionary.ModelElement;
+                    moreInfoRichTextBox.Rtf = TextualExplainUtilities.Encapsule(Model.getExplain(true));
+                }
+                Refresh();
             }
-            Refresh();
+            finally
+            {
+                DataDictionary.ModelElement.BeSilent = silent;
+            }
         }
     }
 }
