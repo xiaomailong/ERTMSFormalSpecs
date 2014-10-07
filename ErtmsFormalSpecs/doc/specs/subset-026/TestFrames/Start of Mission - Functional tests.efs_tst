@@ -5848,7 +5848,19 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  Kind="Instantaneous"
  DeadLine="1"
  Guid="c445acb5-5fe1-4cec-a771-711a9dc46e1f"
->Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D2</Expectation></Expectations>
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D2</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e38fe4f5-ec4c-4571-9aa8-d1aa683de14c"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1015c97d-a4d5-4776-9d1d-0251e0c4a083"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="156de325-706a-430b-92b6-b324f1a61e32"
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -5974,7 +5986,19 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
  Kind="Instantaneous"
  DeadLine="1"
  Guid="d4efd540-6cb0-4b5a-a243-8ac2f1db3adb"
->Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D2</Expectation></Expectations>
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.D2</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="95ebe00e-2b6e-4899-a98c-ab1536b3cc6b"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="35462a64-e5e2-4eb2-8fe6-a3d31c3ec896"
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="a211056f-ab83-4c50-ad87-26456f5ae6a2"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
