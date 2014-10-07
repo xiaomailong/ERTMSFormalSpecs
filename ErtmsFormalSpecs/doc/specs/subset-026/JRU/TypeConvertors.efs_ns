@@ -2189,6 +2189,15 @@ Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
 >DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Spare_1</Expression>
 </Case><Case
+ Name="DriverIdEntryRequest"
+ Guid="1c3e1576-875b-4cb8-aa5e-01e9096a5bfb"
+>
+<PreConditions>
+<PreCondition
+ Guid="e1eb3e67-aea2-4423-9b58-f2d9c8ec924d"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_DRIVERACTIONS.Spare_1</Expression>
+</Case><Case
  Name="ErtmsEtcsLevel0"
  Guid="e097d5e3-3f6c-4dad-b423-d8c410d6875c"
 >
@@ -2243,6 +2252,15 @@ Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
  Guid="ee20a7a7-6c95-4127-a98e-0f53f79a6e53"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value == Default.Level.LNTC</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Level_NTC_selected</Expression>
+</Case><Case
+ Name="ErtmsEtcsLevelEntryRequest"
+ Guid="a9948b03-9359-421d-ae67-9427afce772c"
+>
+<PreConditions>
+<PreCondition
+ Guid="8ed29a2c-d214-4c54-9778-dee713cc6e41"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_DRIVERACTIONS.Spare_1</Expression>
 </Case><Case
  Name="ExitOfShuntingRequest"
  Guid="fc1ee7f1-40bf-4fdd-91a0-8c6d5ba8f472"
@@ -2379,6 +2397,15 @@ Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
 >DMI.MasterDMI().In_TrainRunningNumber.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Spare_1</Expression>
 </Case><Case
+ Name="TrainRunningNumberEntryRequest"
+ Guid="905b27e5-1eb0-4e96-964c-7fff66f565eb"
+>
+<PreConditions>
+<PreCondition
+ Guid="0bd31010-617c-445d-b27a-5e04eeaf4a4e"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_DRIVERACTIONS.Spare_1</Expression>
+</Case><Case
  Name="VirtualBaliseCover"
  Guid="9c186e6b-028a-4ed3-917e-5a284422d828"
 >
@@ -2386,6 +2413,15 @@ Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
 <PreCondition
  Guid="5b4d5b81-1c4c-4a60-ac55-eb2784e3fbfa"
 >DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_DRIVERACTIONS.Spare_1</Expression>
+</Case><Case
+ Name="VirtualBaliseCoverEntryRequest"
+ Guid="b9080e13-58d6-4bb7-9337-a5722497b27e"
+>
+<PreConditions>
+<PreCondition
+ Guid="a0d20c3c-5c04-4193-969c-ef719fedfe74"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Spare_1</Expression>
 </Case></Cases>
 </Function><Function
