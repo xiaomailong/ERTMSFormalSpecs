@@ -1886,7 +1886,6 @@ THIS &lt;- ExitState</Action></Actions>
 >
 <Comment>The on-board equipment waits until the driver asks to enter/revalidate the level.</Comment>
 <StateMachine
- Default=""
  Implemented="TRUE"
  Guid="56fd41bb-5456-4a7f-9bf0-2a4636fc0783"
 >
@@ -2440,9 +2439,12 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <Actions>
 <Action
  Guid="3b851bc8-f02a-48ec-a13a-15b99c736f16"
->EURORADIO.CurrentRBCConnection().ContactData &lt;- DMI.MasterDMI().In_RBCContactInformation.SelectedRBCContactInformation</Action><Action
- Guid="a45b4d49-8fda-4862-b9d2-5cfd2d0bdd2f"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action></Actions>
+><Comment></Comment>
+EURORADIO.CurrentRBCConnection().ContactData &lt;- EURORADIO.RBCContactStruct {
+    Id =&gt; DMI.MasterDMI().In_RBCContactInformation.SelectedRBCContactInformation.Id,
+    PhoneNumber =&gt; DMI.MasterDMI().In_RBCContactInformation.SelectedRBCContactInformation.PhoneNumber,
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
