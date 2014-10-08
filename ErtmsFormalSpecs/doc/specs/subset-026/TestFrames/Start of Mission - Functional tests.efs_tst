@@ -4650,7 +4650,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step1 - Re-enter level is proposed in S10"
+ Name="Step1 - Re-enter level is proposed in S10, level is valid, RBC data is valid"
  Guid="07c28863-1365-45a1-bffe-9caca3e251f5"
 >
 <SubSteps>
@@ -4669,12 +4669,14 @@
  Guid="528d31e6-e5f0-4e56-8dc9-6dda9cded754"
 >Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="6c4eb403-de74-4da1-9ab5-45751f9500a2"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+ Guid="e590bf4a-fe0e-46cd-83ce-5eb0364b5b14"
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- Default.DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="aece57a4-94ca-49bd-bfdb-51dfd57b9915"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4683,7 +4685,44 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - Driver elects to re-enter level, valid level, valid RBC Contact information"
+ Name="Step2 - Driver elects to re-enter the level =&gt; level and RBC data become invalid"
+ Guid="9f4a8d99-a612-4def-9370-c282a3bcd010"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="93217843-d242-4e9c-9ac5-2c9d809933a4"
+>
+<Actions>
+<Action
+ Guid="2261e575-518f-49a1-8016-59d3c0f6a838"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="3f1103d4-0b2c-48c8-a3e9-4695ed507d77"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="68625dbf-738d-46d8-ba8a-66504f54e20c"
+>EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Invalid</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="617d807d-9059-40a9-9a53-94d4794467b9"
+>Kernel.Level.DataState == DataState.Invalid</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="ab543742-dd74-4ecd-9f86-f06599528dbc"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Driver enters the level data"
  Guid="c1e274ee-8a0f-4414-a0a1-080ae0098f2e"
 >
 <SubSteps>
@@ -4697,18 +4736,9 @@
  Guid="76284da9-d3b1-446d-a5f1-2f5d18b06a8a"
 ><Comment>This indicates that the driver has already selected a new Level</Comment>
 DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
- Guid="85ca8425-2f10-48b6-8ff5-e03a099d98e1"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action
- Guid="ec6507d5-8101-44ab-acef-d9675b4cfae1"
-><Comment></Comment>
-Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
- Guid="e590bf4a-fe0e-46cd-83ce-5eb0364b5b14"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
  Guid="518e2686-7bc1-426e-a1a0-c07ee771796b"
 ><Comment></Comment>
-DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
- Guid="55c47cb3-5353-49c1-b423-829f07b90e3b"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4718,12 +4748,9 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
  Guid="2b7a7356-fb4b-47d6-9718-1b1f52b3fa1f"
 >Kernel.Level.DataState == DataState.Valid</Expectation><Expectation
  Kind="Instantaneous"
- Guid="68625dbf-738d-46d8-ba8a-66504f54e20c"
->EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Invalid</Expectation><Expectation
- Kind="Instantaneous"
  DeadLine="1"
  Guid="c9cd264b-e2c1-41be-aaf6-c2a6fe0ac685"
->Kernel.Level.Value.Value == Level.L0</Expectation></Expectations>
+>Kernel.Level.Value.Value == Level.L1</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4732,7 +4759,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step3 - We reach S2"
+ Name="Step4 - We reach S2"
  Guid="e8ea976b-26dd-46a8-9c05-456863d53bc8"
 >
 <SubSteps>
@@ -4753,7 +4780,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step4 - Driver elects to re-enter level, unknown level, valid RBC Contact information"
+ Name="Step5 - Re-enter level is proposed in S10, level is unknown, RBC data is valid"
  Guid="d231ce20-f947-4747-8a71-ae1d1ca17f2d"
 >
 <SubSteps>
@@ -4764,18 +4791,50 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
 <Actions>
 <Action
  Guid="6b196797-6412-4577-ad66-a89909681aed"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="6befd417-0746-44a2-a638-812decf08a96"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action
  Guid="27679987-ed1f-4ab9-b04f-bbe801c59d65"
 >Kernel.Level.DataState &lt;- DataState.Unknown</Action><Action
  Guid="5afe9a54-68ea-405e-a92b-116def8d5e78"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
+ Guid="330dda1b-9911-47fb-a910-5fd3d223f223"
+>Kernel.Level.Value.Value &lt;- Level.L0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="674ed061-d1b0-4b3f-80ac-1c0974ccefcd"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step6 - Driver elects to re-enter the level =&gt; RBC data become invalid"
+ Guid="eba78401-6110-41f5-ac91-2368430065bc"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="6c4bf75f-07a8-4d2e-bb2f-bf75259163f5"
+>
+<Actions>
+<Action
+ Guid="e4e1a6ae-7a72-4f18-81fe-aa7d200fd262"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="b99c9438-aa12-4a4a-aa6d-6514e4f3fe84"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="18d9b1b7-7b24-4f61-a514-d9ab3148c58b"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"
  Guid="38b8678e-7c6d-4765-9ce1-92ce8500f60e"
 >Kernel.Level.DataState == DataState.Unknown</Expectation><Expectation
@@ -4790,7 +4849,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step5 - Driver elects to re-enter level, unknown level, unknown RBC Contact information"
+ Name="Step6 - Driver enters the level data"
  Guid="0f2c7cfc-3dca-441b-a75f-04839384ae17"
 >
 <SubSteps>
@@ -4802,12 +4861,10 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
 <Action
  Guid="5fc773d5-275a-4fce-b1cf-891c66db9341"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
- Guid="d85c680d-9109-48d8-b248-fe617064135b"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action
  Guid="5b0ecb24-6b35-4487-a902-ee0ac9c0550e"
 >Kernel.Level.DataState &lt;- DataState.Unknown</Action><Action
- Guid="c8d7613c-300f-4126-8abe-4f5f65b3f669"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Unknown</Action></Actions>
+ Guid="2b884246-8630-4e53-9588-eeddb9ffaecb"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4815,10 +4872,33 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a2af3c24-0c23-4772-a2b7-55931b2f991b"
->Kernel.Level.DataState == DataState.Unknown</Expectation><Expectation
+>Kernel.Level.DataState == DataState.Valid</Expectation><Expectation
  Kind="Instantaneous"
- Guid="28dc904a-44ef-4299-837c-499f2b41b457"
->EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Unknown</Expectation></Expectations>
+ DeadLine="1"
+ Guid="fb02365e-3620-430b-89dd-fcbc89be0b3f"
+>Kernel.Level.Value.Value == Level.L1</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step8 - We reach S2"
+ Guid="cea18705-597e-4221-92f0-92481919e97c"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="4e9ad00b-5f04-44b5-b10d-aebe1d960c04"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="a840e45d-ffc9-44f4-9ea5-79669e10afb2"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S2</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -4869,7 +4949,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
 <Expectation
  Kind="Instantaneous"
  Guid="9c37d1fd-8fd1-4cc7-a4bc-80763eb2d500"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4889,17 +4969,45 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.Level.Value &lt;- Level.L0</Action><Action
 <Actions>
 <Action
  Guid="a6c101bd-3794-4a98-a526-e980681d8725"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
- Guid="7b7bd3c3-c99e-4e3c-9f81-c826cf30c853"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S20</Action></Actions>
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="cec40e85-0d77-40a1-ac7d-324bff40289e"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="9a170f23-64f6-4268-ab27-946d18ce5182"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Driver enters the level data"
+ Guid="074bfe43-1465-44c4-b865-ba8f1cfb1027"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="2c8aa390-1725-4f9a-bf50-44f2e96cbd7c"
+>
+<Actions>
+<Action
+ Guid="72e3975b-e2bd-4abc-a24d-6b31dfbf13a6"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+<Expectations>
+<Expectation
  Kind="Instantaneous"
  Guid="4efefae8-5c01-494c-8e77-d768e53a6b8c"
->Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S2</Expectation></Expectations>
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S2</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="9da083f9-5eb6-434d-bbf8-befabbfd81f7"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
