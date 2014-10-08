@@ -302,9 +302,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  Guid="0bfe0cf6-52e4-46b8-a258-00e1f3aa67c4"
 >
 <Comment></Comment>
-<Expression>(BGLocationReference.Position - LRBG.Position.Position + BGLocationReference.UnderReadingAmountOdo + LRBG.Position.UnderReadingAmountOdo &gt;= (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy)
-AND
-(BGLocationReference.Position - LRBG.Position.Position - BGLocationReference.OverReadingAmountOdo - LRBG.Position.OverReadingAmountOdo &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy)</Expression>
+<Expression>BGinExpectationWindow( FIRST_IN Linkings )</Expression>
 </Case></Cases>
 </Function><Function
  Type="BTM.Linking.LinkingData"
@@ -729,30 +727,17 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 >NOT Kernel.ActiveFunctions.CheckLinkingConsistency()</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="BG encountered before expectation window"
+ Name="BG encountered outside expectation window"
  Guid="f75ed45e-36a7-4447-9107-f0fd905886ed"
 >
-<Comment>The location reference of the linked BG is found before its expectation window, corresponding to req. 3.16.2.3.1.a)</Comment>
+<Comment>The location reference of the linked BG is found outside its expectation window, corresponding to reqs. 3.16.2.3.1.a) and 3.16.2.3.1.b)</Comment>
 <PreConditions>
 <PreCondition
  Guid="9395d930-3de6-407a-9481-58901353982a"
 ><Comment></Comment>
-( (FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier)
+(FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier
   AND  
-(BGLocationReference.Position + BGLocationReference.UnderReadingAmountOdo &lt; (FIRST_IN Linkings).Distance - (FIRST_IN Linkings).LocationAccuracy + LRBG.Position.Position)</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="BG encountered after expectation window"
- Guid="00b17942-d650-4e86-8076-43a6e460ab8d"
->
-<Comment>The location reference of the expected BG is found after the end of its expectation window, corresponding to req. 3.16.2.3.1.b)...</Comment>
-<PreConditions>
-<PreCondition
- Guid="1ca081c2-aa92-4133-9d3f-f95d293eff35"
-><Comment></Comment>
-( (FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier)
-  AND  
-(BGLocationReference.Position - BGLocationReference.OverReadingAmountOdo &gt; (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy + LRBG.Position.Position)</PreCondition></PreConditions>
+NOT CurrentBGWithinFrame()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Later BG found first"
@@ -763,9 +748,8 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 <PreCondition
  Guid="eefad305-9f3a-4973-a898-0f076af71e89"
 ><Comment></Comment>
-(THERE_IS_IN Linkings | 
+THERE_IS_IN Linkings | 
     ((X != FIRST_IN Linkings) AND ( (FIRST_IN CurrentBaliseGroup).NID_BG == X.BaliseGroupIdentifier))
-)
   AND  
 CurrentBGWithinFrame()</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -773,6 +757,7 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
  Name="Otherwise"
  Guid="dcf583f1-b5ed-4a68-a8eb-3b35040387c8"
 >
+<Comment></Comment>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
@@ -898,7 +883,6 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Case></Cases>
 </Function><Function
  Type="BTM.Linking.LinkingData"
- Cacheable="TRUE"
  Default=""
  Width="100"
  Height="50"
@@ -913,7 +897,13 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
  Guid="973e721c-5881-4502-b5ba-5956531d9a1d"
 >
 <Comment></Comment>
-<Expression>FIRST_IN Linkings | X != (FIRST_IN Linkings)</Expression>
+<Expression>LinkingData{
+    LocationAccuracy =&gt; (FIRST_IN Linkings | X != (FIRST_IN Linkings)).LocationAccuracy,
+    Orientation =&gt; (FIRST_IN Linkings | X != (FIRST_IN Linkings)).Orientation,
+    Reaction =&gt; (FIRST_IN Linkings | X != (FIRST_IN Linkings)).Reaction,
+    Distance =&gt; (FIRST_IN Linkings | X != (FIRST_IN Linkings)).Distance + (FIRST_IN Linkings).Distance,
+    BaliseGroupIdentifier =&gt; (FIRST_IN Linkings | X != (FIRST_IN Linkings)).BaliseGroupIdentifier
+}</Expression>
 </Case></Cases>
 </Function><Function
  Type="BTM.Linking.LinkingData"
@@ -942,6 +932,94 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 <Expression>REDUCE Linkings | X.BaliseGroupIdentifier == NID_BG
   USING X
   INITIAL_VALUE LAST_IN Linkings</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="IsSecondExpectedBG"
+ Guid="7af71208-c772-4e89-aa2d-8e2fe4f7fc43"
+>
+<ReqRef
+ Id="85c84a18-90d4-4035-90e4-abdba8729120"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="35ef26bf-e3dc-4ac9-bc12-45f796ae4cd3"
+>
+</ReqRef><Comment>Tells whether a Balise Group with the provided BG Identifier is currently expected</Comment>
+<Cases>
+<Case
+ Name="There are at least two linked BGs"
+ Guid="68c23152-454c-481a-82e3-6a70960513aa"
+>
+<Comment></Comment>
+<PreConditions>
+<PreCondition
+ Guid="635d9b2a-2563-4d44-bd10-0be315054859"
+>(COUNT Linkings) &gt;= 2</PreCondition></PreConditions>
+<Expression>SecondLinking().BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="99459508-b95a-4115-8e05-d07664deffa4"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="BGinExpectationWindow"
+ Guid="bc073612-7beb-4876-ba83-6c868455d95a"
+>
+<ReqRef
+ Id="2a179500-0c97-46fb-975e-2dda45df541e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8695d3e3-6ed2-47a7-9747-1587c5573dec"
+>
+</ReqRef><ReqRef
+ Id="d5925ae4-bfc1-4822-9b11-3d735360e691"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f1cb4a21-215c-4362-8104-35596a0894ce"
+>
+</ReqRef><Comment>Checks whether the linked BG was found inside its expectation window</Comment>
+<Parameters>
+<Parameter
+ Type="LinkingData"
+ Name="LinkedBG"
+ Guid="a5522054-89ca-44b5-b236-35449029ff8e"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Before expectation window"
+ Guid="15156248-d7f5-45c8-bc33-312c95c69ec8"
+>
+<Comment>The BG location reference is before the start of the linking expectation window</Comment>
+<PreConditions>
+<PreCondition
+ Guid="4b2c047b-90a3-49e7-b4f9-8ff093ea90a3"
+>BGLocationReference.Position + BGLocationReference.UnderReadingAmountOdo &lt; LinkedBG.Distance - LinkedBG.LocationAccuracy + LRBG.Position.Position</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="After expectation window"
+ Guid="0869f5e3-d8b3-4ac5-bc93-5184d0d0bea6"
+>
+<Comment>The BG location reference is after the start of the linking expectation window</Comment>
+<PreConditions>
+<PreCondition
+ Guid="a13d9a26-6872-475a-b2a5-b2e0d9cf137e"
+>BGLocationReference.Position - BGLocationReference.OverReadingAmountOdo &gt; LinkedBG.Distance + LinkedBG.LocationAccuracy + LRBG.Position.Position</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Inside expectation window"
+ Guid="9515b36a-18f1-4e88-96cb-278e802e919a"
+>
+<Comment>The BG is encountered inside the linking expectation window</Comment>
+<Expression>True</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -999,11 +1077,13 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="16d28157-dce0-492f-a815-20adf48b5991"
->Kernel.Infill.Data == EMPTY</PreCondition></PreConditions>
+><Comment></Comment>
+Kernel.Infill.Data == EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f4ed0c9f-1c84-4195-bc54-3ce40d23cbb2"
->Linkings &lt;- []</Action></Actions>
+><Comment></Comment>
+Linkings &lt;- []</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Infill, remove information after infill location"
@@ -1028,8 +1108,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
  Guid="739997f0-0a9a-42ec-8b3b-8856cdc14a17"
 ><Comment></Comment>
 Linkings &lt;- MAP Linkings | NOT Before(
-    ExpectedFirst=&gt;X,
-    ExpectedSecond=&gt;GetLinkingFromNidBG(Kernel.Infill.Data.NID_BG),
+    ExpectedFirst=&gt;GetLinkingFromNidBG(Kernel.Infill.Data.NID_BG),
+    ExpectedSecond=&gt;X,
     Collection=&gt;Linkings
 )
   USING X</Action></Actions>
@@ -1155,7 +1235,7 @@ IN Linkings</Action></Actions>
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="StopExpectingCurrentBG"
+ Name="StopExpectingBG"
  Guid="daa0e49f-223d-401a-b2e6-4c43a5fed628"
 >
 <ReqRef
@@ -1170,6 +1250,13 @@ IN Linkings</Action></Actions>
 >
 </ReqRef><Comment>BGs are only considered in the order the linking was given to the train. This means that only the first element should ever be deleted.
 This function is called whenever it is appropriate, so it does not need any preconditions to its action.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.NID_BG"
+ Name="ID"
+ Guid="2450dcce-e7ee-44d9-93ca-ea4ca2416dcc"
+>
+</Parameter></Parameters>
 <Rules>
 <Rule
  Priority="Processing"
@@ -1177,6 +1264,7 @@ This function is called whenever it is appropriate, so it does not need any prec
  Name="Stop expecting current BG"
  Guid="662b3dc5-53fd-490d-9fa5-d31299970ac2"
 >
+<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1184,14 +1272,16 @@ This function is called whenever it is appropriate, so it does not need any prec
  Name="Stop expecting current BG"
  Guid="09f3424d-b8ae-43d8-904d-a185c3e22c58"
 >
+<Comment></Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="891bb526-64cc-4560-ba32-6a73d706b12a"
+>(FIRST_IN Linkings).BaliseGroupIdentifier == ID</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f5e1d966-d547-4ac0-9400-f7ab8627a792"
 ><Comment></Comment>
-REMOVE ALL (X == FIRST_IN Linkings)
-  IN Linkings</Action></Actions>
+REMOVE FIRST IN Linkings</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1269,7 +1359,8 @@ REMOVE ALL (X == FIRST_IN Linkings)
 <PreConditions>
 <PreCondition
  Guid="225b3eaa-79f0-47b8-8242-2b45e9e0c7bf"
->CurrentLinking().Reaction == Linking.LinkingReaction.CommandServiceBrake</PreCondition></PreConditions>
+><Comment></Comment>
+CurrentLinking().Reaction == Linking.LinkingReaction.CommandServiceBrake</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c25a0dde-94bd-4b8a-b757-7297f7ccdab2"
@@ -1317,6 +1408,7 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
  Name="Update the second linking distance"
  Guid="b7baf7df-7836-45d5-beb6-2a740c450202"
 >
+<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="547b565c-1141-4dd6-b6be-2780271a682f"
@@ -1324,8 +1416,8 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
 <Actions>
 <Action
  Guid="e340c660-827d-428f-b31a-bd1433093346"
-><Comment></Comment>
-SecondLinking().Distance &lt;- SecondLinking().Distance + (FIRST_IN Linkings).Distance</Action></Actions>
+><Comment>The SecondLinking function provides the second expected BG, but with the distance measured from the LRBG (instead of from the first expected BG)</Comment>
+(FIRST_IN Linkings | X != FIRST_IN Linkings).Distance &lt;- SecondLinking().Distance</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1341,13 +1433,14 @@ SecondLinking().Distance &lt;- SecondLinking().Distance + (FIRST_IN Linkings).Di
  Name="Stop expecting the inconsistent BG"
  Guid="008d8432-2e3a-47d2-afeb-308763c39c36"
 >
+<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="3d1509f7-2827-41ac-8a3b-3b3057810dd2"
 ><Comment></Comment>
-StopExpectingCurrentBG()</Action></Actions>
+StopExpectingBG( (FIRST_IN Linkings).BaliseGroupIdentifier )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1437,7 +1530,7 @@ StopExpectingCurrentBG()</Action></Actions>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="No Linking"
+ Name="Check Linking"
  Guid="03c7adad-c5f2-4e0c-b75a-fc95323fbc0e"
 >
 <ReqRef
@@ -1445,11 +1538,13 @@ StopExpectingCurrentBG()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="11686a8a-2e17-4465-98bb-16877dd16273"
 >
+<Comment></Comment>
 </ReqRef><ReqRef
  Id="45b975c5-6f3a-47c9-9f18-741bdd280f36"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="613f2ef2-9b75-4bce-ab3b-9e42b280c042"
 >
+<Comment></Comment>
 </ReqRef><Comment>This handles the case where there is no linking information available or the received message is unlinked</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1458,7 +1553,7 @@ StopExpectingCurrentBG()</Action></Actions>
  Name="No Linking"
  Guid="1674753e-32b6-4435-b722-c9d87cf7a490"
 >
-<Comment></Comment>
+<Comment>Linking is not applicable in this case</Comment>
 <PreConditions>
 <PreCondition
  Guid="e42b64dc-30a7-4d68-85ec-69e259afc79d"
@@ -1469,27 +1564,12 @@ ConsiderBGWithoutLinking()</PreCondition></PreConditions>
  Guid="da1b995b-2801-473b-9756-c1fe996e68d4"
 ><Comment></Comment>
 HandleBaliseMessage(DistanceFromLRBG =&gt; Odometry.NominalDistance - LRBG.Position.Position)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
+</RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Linking"
- Guid="a34daf3f-5d78-4486-8a90-fbd006834d65"
+ Guid="1fb15c41-3215-4765-a3ec-e3745a94adb7"
 >
-<ReqRef
- Id="45b975c5-6f3a-47c9-9f18-741bdd280f36"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="351cc5da-9d13-4671-91f7-4626df77a1fd"
->
-</ReqRef><Comment>Linking is being used and the current BG is linked</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Linking"
- Guid="44f432c7-3c22-4907-ac59-75fb41010478"
->
-<Comment></Comment>
+<Comment>Consider the BG with linking</Comment>
 <PreConditions>
 <PreCondition
  Guid="5f6b30d6-5215-4d2b-bd11-4191bbad5d7f"
@@ -1543,12 +1623,14 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 <PreConditions>
 <PreCondition
  Guid="64a649af-e04e-4e87-9f05-10155fb800fd"
->NOT ConsistencyError()</PreCondition><PreCondition
+><Comment></Comment>
+NOT ConsistencyError()</PreCondition><PreCondition
  Guid="8a07516f-5e49-4e7f-9fb9-ca69da857f66"
 ><Comment></Comment>
 BGOrientationIsValid()</PreCondition><PreCondition
  Guid="ece8fce6-b40d-40dc-bf42-8979cd157cb4"
->ConsiderBGWithLinking()</PreCondition></PreConditions>
+><Comment></Comment>
+ConsiderBGWithLinking()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6f9ef685-68b5-4cf8-ab5b-fe3765ff7cb1"
@@ -1556,7 +1638,7 @@ BGOrientationIsValid()</PreCondition><PreCondition
 HandleBaliseMessage(DistanceFromLRBG =&gt; (FIRST_IN Linkings).Distance)</Action><Action
  Guid="73f60427-194a-4f61-9082-16f71fa2409d"
 ><Comment></Comment>
-StopExpectingCurrentBG()</Action></Actions>
+StopExpectingBG( (FIRST_IN CurrentBaliseGroup).NID_BG )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="There is an error in the linking consistency of the current BG"
@@ -1570,22 +1652,69 @@ StopExpectingCurrentBG()</Action></Actions>
 ConsistencyError()</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="d500b496-dbe7-4910-a496-022d1d5989a4"
+ Guid="4dd4bc3d-0771-48b0-8b36-200f331fbb16"
 ><Comment></Comment>
-HandleLinkingError()</Action></Actions>
-<SubRules>
+HandleConsistencyError()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="HandleConsistencyError"
+ Guid="bfee8779-6323-4330-8e80-2d2d54322199"
+>
+<ReqRef
+ Id="0547edfa-b17d-4b79-8cad-2fba135b2d95"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c91ae43-c72a-4c3a-9710-9300ed5342c7"
+>
+</ReqRef><Comment>Procedure that handles the case where the received BG is linked, but there is a linking consistency error</Comment>
+<Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Action depends on the type of linking consistency error"
- Guid="156f49ae-60a2-4118-ad8e-42febd1b45df"
+ Name="Apply linking reaction"
+ Guid="f07d5a05-8583-4a98-a5f2-1464ad307db7"
 >
-<Comment>If the BG is not found in its expectation window, reject the message (so do nothing). If the wrong BG is found in the window, it&apos;s a little more complicated</Comment>
+<Comment>Apply the linking reaction of the first expected BG in all cases</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Early reception of a BG expected later"
+ NeedsRequirement="FALSE"
+ Name="Apply linking reaction"
+ Guid="1e54cf59-c9c9-464a-950b-5f5fb8ceebf8"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="d500b496-dbe7-4910-a496-022d1d5989a4"
+><Comment></Comment>
+HandleLinkingError()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Check recceived BG is the second expected BG"
+ Guid="b84f47c1-6ac0-4dd1-bee1-1b95b875e026"
+>
+<ReqRef
+ Id="85c84a18-90d4-4035-90e4-abdba8729120"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1f9f293c-ca8a-4996-a3b9-239e6af6d0ce"
+>
+</ReqRef><Comment>If the consistency error is that the BG is in the linking data, but is not the first BG expected, handle it normally (after the linking reaction has been applied).
+
+As the first part of this procedure deletes the first (inconsistent) BG from the Linking data, we are now checking the first linked BG a second time</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Early reception of the second expected BG"
  Guid="4da56af9-9b8a-454e-a404-65c99ce4372f"
 >
 <Comment>This is the application of req. 3.4.4.4.6.1</Comment>
@@ -1593,89 +1722,53 @@ HandleLinkingError()</Action></Actions>
 <PreCondition
  Guid="5f012522-0de0-4446-8302-6097ee955f4d"
 ><Comment></Comment>
-(THERE_IS_IN Linkings | 
-    ((X != FIRST_IN Linkings) AND ( (FIRST_IN CurrentBaliseGroup).NID_BG == X.BaliseGroupIdentifier))
-)
-
+Linkings != []
   AND  
-
-(NOT (THERE_IS_IN Linkings |
-    ((X != FIRST_IN Linkings)
-      AND  
-    (X.Distance &lt; (REDUCE Linkings | (X.BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG )
-                            USING X.Distance
-                           INITIAL_VALUE 0.0) )
-    )
-))</PreCondition></PreConditions>
+(FIRST_IN CurrentBaliseGroup).NID_BG == CurrentLinking().BaliseGroupIdentifier</PreCondition></PreConditions>
 <Actions>
-<Action
- Guid="43a335c8-94a6-4436-82bc-a96910c20f5a"
-><Comment></Comment>
-EarlyReception &lt;- True</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Linked BG received was not the first"
- Guid="b385214d-dfb9-43be-9f27-27202b5df4db"
->
-<ReqRef
- Id="85c84a18-90d4-4035-90e4-abdba8729120"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="cc2e363c-dc39-4fee-8d9b-390ce52f66be"
->
-</ReqRef><Comment>If the received BG was linked and announced, but was not the first expected BG, check the second</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Linked BG received was not the first"
- Guid="f3bc2f76-4ee1-4eb9-927b-aaa9e0aadd29"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="bde9f4d3-b94e-4029-992c-55ad6fda20d6"
-><Comment></Comment>
-EarlyReception</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="1edfe423-26b8-44bf-ac53-0aac737c469b"
->EarlyReception &lt;- False</Action></Actions>
+</Actions>
 <SubRules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Check the received BG was second"
- Guid="4a701008-3e27-4a98-9e83-7e2a7c31b9a1"
+ Name="Check the new first linked BG"
+ Guid="087cea16-6a8a-40b8-b9ab-6551b1eb0ffa"
 >
-<Comment>If the BG received was announced to be just after the expected BG, check the linking consistency and handle the message accordingly</Comment>
+<Comment>Check the expectation window of the new first linked BG</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Received BG was second expected"
- Guid="3884fc5e-0337-428f-bcfa-1b8b9486d329"
+ Name="The second expected BG is received in its expectation window"
+ Guid="eec56773-c85c-4885-b2db-49ccbf50d10c"
 >
-<Comment></Comment>
+<Comment>If it is inside its expectation window, handle the message normally</Comment>
 <PreConditions>
 <PreCondition
- Guid="7e620188-f22c-418e-a368-8154fbdf1a1a"
->( (FIRST_IN Linkings).BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG )
-  AND
-(NOT ConsistencyError() )</PreCondition></PreConditions>
+ Guid="4763c511-acc0-4a63-804e-33272d25fac6"
+>BGinExpectationWindow( CurrentLinking() )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="df96badb-3bc3-40d3-b767-aa2ff7b5b2be"
 ><Comment></Comment>
-HandleBaliseMessage(DistanceFromLRBG =&gt; (FIRST_IN Linkings).Distance)</Action><Action
- Guid="dfd4bb34-7648-44dd-8e1c-13528b2072da"
+HandleBaliseMessage(CurrentLinking().Distance)</Action><Action
+ Guid="b1dfce5d-66ae-4d4d-a99a-2708b3c6650f"
 ><Comment></Comment>
-StopExpectingCurrentBG()</Action></Actions>
+StopExpectingBG( (FIRST_IN CurrentBaliseGroup).NID_BG )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Second expected BG outside expectation window"
+ Guid="8ebd686c-0953-4d10-906f-adf6bfdcc6cf"
+>
+<Comment>Apply the linking reaction</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="763423de-7f3b-4c67-9767-b9011d7707f8"
+><Comment></Comment>
+
+HandleLinkingError()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1683,47 +1776,6 @@ StopExpectingCurrentBG()</Action></Actions>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="Linkings"
- DefaultValue="[]"
- VariableMode="Internal"
- X="500"
- Y="320"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="Linkings"
- Guid="0eba6fac-cb5c-4709-a3df-b9a398dedae4"
->
-<ReqRef
- Id="4ae178ee-6db4-474c-aa88-d5f8bd8ea1d7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="04216c23-661e-417d-83f6-9414d867e5d3"
->
-</ReqRef><ReqRef
- Id="5e8ed861-509f-4d98-8c04-8bea3a8cd6c6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b46e08a6-2387-4cc6-a9e0-55c6e04acb72"
->
-</ReqRef><Comment>Stores the next linking data as provided by the balises</Comment>
-</Variable><Variable
- Type="Boolean"
- DefaultValue=""
- VariableMode="Internal"
- X="260"
- Y="320"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="EarlyReception"
- Guid="a1513d6f-1d74-495a-aacc-e2a73cfc5ad0"
->
-<Comment>Used when a received BG is the second one announced, and so should be handled after the expected BG&apos;s linking</Comment>
-</Variable><Variable
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
@@ -1742,6 +1794,39 @@ StopExpectingCurrentBG()</Action></Actions>
  Guid="7bd42be7-80a5-4df1-b521-8ca1a2e61a97"
 >
 </ReqRef><Comment>Indicates that the train should be tripped due to a linking consistency error (mode transition condition 17)</Comment>
+</Variable><Variable
+ Type="Linkings"
+ DefaultValue="[]"
+ VariableMode="Internal"
+ X="500"
+ Y="320"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Linkings"
+ Guid="0eba6fac-cb5c-4709-a3df-b9a398dedae4"
+>
+<ReqRef
+ Id="4ae178ee-6db4-474c-aa88-d5f8bd8ea1d7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="04216c23-661e-417d-83f6-9414d867e5d3"
+>
+</ReqRef><ReqRef
+ Id="5e8ed861-509f-4d98-8c04-8bea3a8cd6c6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b46e08a6-2387-4cc6-a9e0-55c6e04acb72"
+>
+</ReqRef><Comment>Stores the next linking data as provided by the balises</Comment>
+</Variable><Variable
+ Type="BaseTypes.Distance"
+ DefaultValue="0.0"
+ VariableMode="Internal"
+ Name="LinkingDistance"
+ Guid="48c1d6a1-5031-4c22-bab2-69694215371c"
+>
+<Comment>When a consistent linked BG is received, it is removed from the list of linkings </Comment>
 </Variable></Variables>
 <Rules>
 <Rule
