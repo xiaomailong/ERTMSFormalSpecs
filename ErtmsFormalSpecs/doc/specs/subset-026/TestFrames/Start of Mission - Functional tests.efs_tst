@@ -7665,15 +7665,29 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Level entry is proposed"
+ Guid="8a824cb4-688c-4f70-8b08-83d5c657b827"
+>
+<Actions>
+<Action
+ Guid="c4842799-1a56-4ba3-8e9d-168e52f895f3"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S2</Action><Action
+ Guid="223225c3-f94a-40ee-af63-d3e4592c687f"
+>Kernel.Level.DataState &lt;- Default.DataState.Unknown</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="acf32318-7eeb-4c23-9921-b3d6fdb46dc0"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2 - The driver enters the level"
  Guid="c7fcfc14-8955-4fe2-8e37-e7b867289334"
 >
 <Actions>
 <Action
- Guid="223225c3-f94a-40ee-af63-d3e4592c687f"
->Kernel.Level.DataState &lt;- DataState.Unknown</Action><Action
- Guid="c4842799-1a56-4ba3-8e9d-168e52f895f3"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.OfferLevelSelection</Action></Actions>
+ Guid="1c64d6d9-32b1-45bc-9ca9-0008770a8c3f"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7701,17 +7715,31 @@ Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10</Acti
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - Level entry is proposed"
+ Guid="b69d21d5-3398-4990-a777-8e8aa3f50237"
+>
+<Actions>
+<Action
+ Guid="2fad90b1-7106-4f9a-8706-0fcb7b7af91b"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S2</Action><Action
+ Guid="715350f9-2077-4b42-b6ab-fa466db077af"
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
+ Guid="ad2ab152-5ada-4c72-a5cc-8726b9a011c0"
+>Kernel.Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b57c047b-ab5f-406f-b4ba-7001e803acf0"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step1 - The driver validates the level"
  Guid="2af43a12-32bb-4bde-8851-559c7ed0ad75"
 >
 <Actions>
 <Action
- Guid="ad2ab152-5ada-4c72-a5cc-8726b9a011c0"
->Kernel.Level.DataState &lt;- Default.DataState.Invalid</Action><Action
- Guid="2fad90b1-7106-4f9a-8706-0fcb7b7af91b"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.OfferLevelSelection</Action><Action
- Guid="715350f9-2077-4b42-b6ab-fa466db077af"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+ Guid="6b113260-55af-4cb1-9f03-4de1e4b84d52"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
