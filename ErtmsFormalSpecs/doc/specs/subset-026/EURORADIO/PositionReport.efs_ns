@@ -6,7 +6,6 @@
  Name="PositionReport"
  Guid="e7cf5843-ef46-4028-aa51-d0dc661e9005"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Enumerations>
@@ -490,7 +489,6 @@ TIU.TrainIntegrity.Status == Messages.Q_LENGTH.Train_integrity_lost</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="77b85189-1394-485f-b51b-729b18896fb8"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="9f9eccce-90aa-4339-8dff-74915b041b83"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -622,7 +620,6 @@ TIU.TrainIntegrity.Status == Messages.Q_LENGTH.Train_integrity_lost</Expression>
  Name="Value"
  Guid="9067bdff-9b40-4532-9e37-c911b007f3db"
 >
-<Comment></Comment>
 <Expression>PositionReportEventsTracker.Speed != Odometry.TrainSpeed() AND Odometry.TrainSpeed() == 0.0</Expression>
 </Case></Cases>
 </Function><Function
@@ -1489,8 +1486,7 @@ TIU.TrainIntegrity.Status in [
 ON
   MessagesToHandle</Action><Action
  Guid="6ea871df-0227-4589-bad1-f3714cb01665"
-><Comment></Comment>
-APPLY
+>APPLY
   ProcessIncomingMessages( aMessage =&gt; X )
 ON
   MessagesToHandle</Action><Action
@@ -1771,7 +1767,6 @@ ON
  Name="Clean up"
  Guid="5a196179-422d-4e6b-becf-bf5ada482ed1"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -2057,7 +2052,6 @@ ON
  Name="Send position report"
  Guid="da2401e1-0c86-4c1f-88d9-c40eb40850f0"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="c0cd5727-43a9-490a-adb3-b7ab7cfac417"
@@ -2162,7 +2156,6 @@ ON
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="89670bb6-f102-4efa-b638-117a6c86ef7c"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="09eeadf1-fd15-4f7c-8f52-fb0f04b31d9c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -2181,7 +2174,6 @@ ON
  Name="Handle first RBC/RBC handover position report"
  Guid="c18aa449-79fa-4a8c-94bb-9d212e2a9fc6"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="8759fa6c-ccb2-4799-901c-da387590d178"
@@ -2195,8 +2187,7 @@ Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.M
 <Actions>
 <Action
  Guid="daf467de-6386-457f-8555-9fbf8706549b"
-><Comment></Comment>
-SendFirstRBCHandoverPositionReport()</Action></Actions>
+>SendFirstRBCHandoverPositionReport()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2295,20 +2286,17 @@ SendFirstRBCHandoverPositionReport()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="2e4c2276-a2dd-4f4c-8fcb-9857d72cb4c8"
-><Comment></Comment>
-RBCTransitionLocation != Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+>RBCTransitionLocation != Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="9e01e492-5354-4383-a8cf-c25c076c9526"
 >NumberOfReportsSentToHandingOverRBC == 1
   AND
 Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; Default.DistanceInterval.Min ) &gt;= RBCTransitionLocation</PreCondition><PreCondition
  Guid="3c744592-d68e-46b8-bcab-764b7e40c095"
-><Comment></Comment>
-Kernel.ActiveFunctions.ManageRBC_RBCHandover()</PreCondition></PreConditions>
+>Kernel.ActiveFunctions.ManageRBC_RBCHandover()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6c6ff4dc-2494-496b-b9bf-11fe670cc4b7"
-><Comment></Comment>
-SendSecondRBCHandoverPositionReport()</Action></Actions>
+>SendSecondRBCHandoverPositionReport()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Handing Over RBC has sent an order to terminate the session"
@@ -2318,16 +2306,13 @@ SendSecondRBCHandoverPositionReport()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="56ed0c09-a13a-456e-b5ed-fc884e8b4f3f"
-><Comment></Comment>
-EURORADIO.OrderToTerminateHandingOverRBCIsReceived()</PreCondition><PreCondition
+>EURORADIO.OrderToTerminateHandingOverRBCIsReceived()</PreCondition><PreCondition
  Guid="85df0276-9b30-495c-b2f1-717a0afd4934"
-><Comment></Comment>
-Kernel.ActiveFunctions.ManageRBC_RBCHandover()</PreCondition></PreConditions>
+>Kernel.ActiveFunctions.ManageRBC_RBCHandover()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="56171646-7f3d-4717-8553-731700087a4f"
-><Comment></Comment>
-NumberOfReportsSentToHandingOverRBC &lt;- 0</Action></Actions>
+>NumberOfReportsSentToHandingOverRBC &lt;- 0</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No order to terminate the session received from Handing Over RBC before the timeout =&gt; send a new position report."
@@ -2348,13 +2333,11 @@ NumberOfReportsSentToHandingOverRBC &lt;- 0</Action></Actions>
  Guid="aa7bc635-025b-4bfa-b27c-d05d3984511b"
 >NumberOfSentReportRepetitions &lt; NumberOfMessageRepetitions</PreCondition><PreCondition
  Guid="cb496351-7929-4a7e-ab9a-14bf9a5bdbf8"
-><Comment></Comment>
-Kernel.ActiveFunctions.ManageRBC_RBCHandover()</PreCondition></PreConditions>
+>Kernel.ActiveFunctions.ManageRBC_RBCHandover()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2dd104eb-cbba-403c-96ba-4318538874a7"
-><Comment></Comment>
-SendSecondRBCHandoverPositionReport()</Action></Actions>
+>SendSecondRBCHandoverPositionReport()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No order to terminate the session received from Handing Over RBC, max number of requests reached"
@@ -2375,8 +2358,7 @@ SendSecondRBCHandoverPositionReport()</Action></Actions>
  Guid="d30495ba-3762-4c19-96f3-456143f7ae70"
 >SecondRBCHandoverPositionReportTime + TimeBeforeMessageRepetition &lt; Kernel.DateAndTime.CurrentTime</PreCondition><PreCondition
  Guid="770bd4c3-89dd-445f-b09b-7dc617030f18"
-><Comment></Comment>
-Kernel.ActiveFunctions.ManageRBC_RBCHandover()</PreCondition></PreConditions>
+>Kernel.ActiveFunctions.ManageRBC_RBCHandover()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="17311951-1bd7-40ab-9779-aee39c8727f4"

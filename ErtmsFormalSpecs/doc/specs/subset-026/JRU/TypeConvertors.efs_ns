@@ -6,7 +6,6 @@
  Name="TypeConvertors"
  Guid="c4d6598e-066c-4b99-97fe-9fd8190cadd7"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Functions>
@@ -659,7 +658,6 @@ AND
  Name="Applicable"
  Guid="4a7cd6a3-b392-4e90-b513-402f4c54d9a1"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1bb2cf33-1d6c-4c74-85c6-b47085324c2d"
@@ -1036,8 +1034,7 @@ AND
 <PreConditions>
 <PreCondition
  Guid="2c957db7-0de7-4ed7-a4e0-00cc2dc23fbe"
-><Comment></Comment>
-ModeInkernel == Default.Mode.PS</PreCondition></PreConditions>
+>ModeInkernel == Default.Mode.PS</PreCondition></PreConditions>
 <Expression>Messages.M_MODE.Passive_Shunting</Expression>
 </Case><Case
  Name="JruModePosttrip"
@@ -1367,7 +1364,6 @@ ModeInkernel == Default.Mode.PS</PreCondition></PreConditions>
  Name="Active"
  Guid="b9179eb4-8f5e-4e3f-828b-49c142149569"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="46aa8461-c646-41a6-8f03-5997a7f2e9ab"
@@ -1401,12 +1397,10 @@ ModeInkernel == Default.Mode.PS</PreCondition></PreConditions>
  Name="NormalStatus"
  Guid="a7e2039a-a33b-4611-aab6-c3e6252b1712"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="07ac1eae-7593-4e1e-a3da-e63d16ac8bcc"
-><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() == Kernel.SupervisionStatus.Normal</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() == Kernel.SupervisionStatus.Normal</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_SDMSUPSTAT.Normal_status</Expression>
 </Case><Case
  Name="InticationsStatus"
@@ -1868,8 +1862,7 @@ Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() == Kernel.SupervisionStatu
 <PreConditions>
 <PreCondition
  Guid="e82be393-fc78-4c8d-894b-118829d6b2b8"
-><Comment></Comment>
-Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
+>Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
 <Expression>Default.MessageTypes.UnResolveSpeed( Odometry.TrainSpeed(), 5.0)</Expression>
 </Case><Case
  Name="StandStill"
@@ -1940,7 +1933,6 @@ Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
  Name="Available"
  Guid="9cc95c12-9865-4286-a8c3-683d2e34e245"
 >
-<Comment></Comment>
 <Expression>Default.MessageTypes.UnScaleDistance(
     distance=&gt;distance,
     scale=&gt;scale
@@ -1973,7 +1965,6 @@ Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
  Name="AcknForPostTripDistanceExceeded"
  Guid="85a2ff52-95f2-4c57-a6ab-80af3000c86b"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="9b14a350-8581-49bd-9277-600d5bb18696"
@@ -2173,7 +2164,6 @@ Odometry.TrainSpeed() != 0.0</PreCondition></PreConditions>
  Name="ContinueShuntingOnDeskClosureRequest"
  Guid="fa16fbd8-5099-41c5-b9ce-3fae858af6a5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="43cf84e5-bf19-462e-9c49-b4f5978fab58"

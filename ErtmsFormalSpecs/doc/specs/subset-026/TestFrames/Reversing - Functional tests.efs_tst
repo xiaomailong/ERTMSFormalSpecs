@@ -379,7 +379,6 @@
  Name="Step3 - New reversing area + supervision information"
  Guid="93aa4790-473f-4dad-9f89-151072b57e57"
 >
-<Comment></Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
@@ -388,8 +387,7 @@
 <Actions>
 <Action
  Guid="dea17cba-d529-4024-adef-f537a4fc9fc8"
-><Comment></Comment>
-EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message{
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message{
     GENERAL_MESSAGE =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.GENERAL_MESSAGE.Message{
         NID_MESSAGE =&gt; 24,
         L_MESSAGE =&gt; 0,
@@ -489,8 +487,7 @@ EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN
 <Actions>
 <Action
  Guid="5317ecdf-a9fe-43c8-a9bc-4900d13f24e7"
-><Comment></Comment>
-BTM.Message &lt;- Messages.EUROBALISE.Message{
+>BTM.Message &lt;- Messages.EUROBALISE.Message{
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
     Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
@@ -774,7 +771,6 @@ BTM.Message &lt;- Messages.EUROBALISE.Message{
  Name="Sub-step1 - At standstill outside of accepted area"
  Guid="71d3f0fe-6a7c-47e9-b755-5c05fd70895e"
 >
-<Comment></Comment>
 <Actions>
 <Action
  Guid="391337fe-714a-46ce-8987-27c997236ecd"
@@ -865,8 +861,7 @@ DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DoNotDisplay()</Action></
 <Actions>
 <Action
  Guid="f88146f5-3122-4970-9caf-38c8384c9025"
-><Comment></Comment>
-DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+>DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -892,8 +887,7 @@ DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus &lt;- Request.Res
 <Actions>
 <Action
  Guid="e1f65c08-0f2a-46a3-befa-8ade3d73e6a4"
-><Comment></Comment>
-Odometry.EstimatedSpeed &lt;- 50.0</Action><Action
+>Odometry.EstimatedSpeed &lt;- 50.0</Action><Action
  Guid="62f760d1-0d53-43aa-85b5-c21581e3db84"
 >Odometry.NominalDistance &lt;- 2100.0</Action><Action
  Guid="7ec4d4ae-5632-4675-b048-dafb8d059777"

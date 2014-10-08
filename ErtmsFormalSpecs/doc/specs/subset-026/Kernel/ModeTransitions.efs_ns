@@ -8,7 +8,6 @@
  Name="ModeTransitions"
  Guid="19ea2d70-2e6d-45f4-9d4f-bf0d09e19e4c"
 >
-<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="ModeRules"
@@ -1281,7 +1280,6 @@ TIU.PassiveShuntingPermitted</Expression>
  Name="Value"
  Guid="40ef8477-1d9b-4987-9d49-7ca23018349e"
 >
-<Comment></Comment>
 <Expression>DMI.MasterDMI().In_ExitOfShuntingRequest.InputInformation.DriverAnswered AND
 Odometry.TrainSpeed() == 0.0</Expression>
 </Case></Cases>
@@ -2663,7 +2661,6 @@ TIU.NonLeadingPermitted</Expression>
  Name="Update mode"
  Guid="cb9bee43-a1ca-465a-96a0-ed1fdbbb6026"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2686,7 +2683,6 @@ TIU.NonLeadingPermitted</Expression>
  Name="NP"
  Guid="a7292d7a-3fe6-4781-ae3b-4583c8072d7b"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2727,8 +2723,7 @@ TIU.NonLeadingPermitted</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9222388e-fdf5-45f2-b290-28f029cea192"
 >
-</ReqRef><Comment></Comment>
-<PreConditions>
+</ReqRef><PreConditions>
 <PreCondition
  Guid="4eb9f7ab-f9ff-4968-b61c-35120ed8e96b"
 >Condition4()</PreCondition></PreConditions>
@@ -2745,7 +2740,6 @@ TIU.NonLeadingPermitted</Expression>
  Name="SB"
  Guid="69f62779-e596-4f71-a363-c4bd65348a81"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="8a69d0e4-714f-41a4-ab4a-0bffeaf5ccd0"
@@ -3723,7 +3717,6 @@ TIU.NonLeadingPermitted</Expression>
  Name="FS"
  Guid="8da14eb5-bd44-414b-8e21-06963c27ba89"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="36e7f05f-671b-4eb0-bdbc-ae2ca938a6af"

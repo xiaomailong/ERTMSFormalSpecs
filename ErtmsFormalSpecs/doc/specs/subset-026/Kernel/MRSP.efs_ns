@@ -7,7 +7,6 @@
  Name="MRSP"
  Guid="f0c4da0d-ec84-47ac-bd70-102fbca865c0"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Functions>
@@ -44,13 +43,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3d189dd3-8f3f-4487-a032-e6ab1b430923"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="34c41066-5e35-4d22-8ff2-bded60983243"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b966760f-b56a-42e7-90e4-0e5d46eb6c60"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="0a69aa11-8088-4606-a5c6-521d3d7074c8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -71,7 +68,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7c615486-3830-4c73-8cf7-321adb28ac3e"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="bfa09769-fb03-456f-b92b-14ab4cf7977b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -110,7 +106,6 @@
  Name="Value"
  Guid="0ef9f3fa-fd51-4d90-bee3-3b0b79a43bba"
 >
-<Comment></Comment>
 <Expression>MIN (
     MIN (
         MIN (
@@ -160,7 +155,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ac60a7da-bc04-4971-91a8-bb3ac3fd8033"
 >
-<Comment></Comment>
 </ReqRef><Comment>Provides the speed restrictions profile due to static speed profile.</Comment>
 <Parameters>
 <Parameter
@@ -174,18 +168,15 @@
  Name="Determine MRSP based on SSP"
  Guid="a56d8310-6088-4c84-901e-802ee6a51411"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="9c611a6f-df2e-4e2f-bf8f-20997d5882ce"
-><Comment></Comment>
-ActiveFunctions.DetermineMRSP_SSP()</PreCondition></PreConditions>
+>ActiveFunctions.DetermineMRSP_SSP()</PreCondition></PreConditions>
 <Expression>TrackDescription.StaticSpeedProfile.SpeedRestrictions(Distance)</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="21c6f6ca-ebc7-4d7e-bc18-dff3dbf19563"
 >
-<Comment></Comment>
 <Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
 </Case></Cases>
 </Function><Function
@@ -215,18 +206,15 @@ ActiveFunctions.DetermineMRSP_SSP()</PreCondition></PreConditions>
  Name="Determine MRSP based on ASP"
  Guid="ff1572ce-8a3b-441e-aa40-aaf9e448a45b"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="fbca48e8-6e6d-42e1-a98f-0dd50873b093"
-><Comment></Comment>
-ActiveFunctions.DetermineMRSP_ASP()</PreCondition></PreConditions>
+>ActiveFunctions.DetermineMRSP_ASP()</PreCondition></PreConditions>
 <Expression>TrackDescription.AxleLoad.SpeedRestrictions(Distance)</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="d201c15f-2c29-44eb-b391-908c3d0a7c09"
 >
-<Comment></Comment>
 <Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
 </Case></Cases>
 </Function><Function
@@ -244,7 +232,6 @@ ActiveFunctions.DetermineMRSP_ASP()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fb921fce-8a8b-4d42-83bc-3370b89ba015"
 >
-<Comment></Comment>
 </ReqRef><Comment>Provides the speed restrictions profile due to Temporary Speed Restrictions.</Comment>
 <Parameters>
 <Parameter
@@ -258,18 +245,15 @@ ActiveFunctions.DetermineMRSP_ASP()</PreCondition></PreConditions>
  Name="Determine MRSP based on TSR"
  Guid="938f00dd-f664-4047-a0e9-f0bd46c6a6b8"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="4d666a6e-3351-4086-a912-787a938d6df7"
-><Comment></Comment>
-ActiveFunctions.DetermineMRSP_TSR()</PreCondition></PreConditions>
+>ActiveFunctions.DetermineMRSP_TSR()</PreCondition></PreConditions>
 <Expression>TSR.SpeedRestrictions(Distance)</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="6c286171-2a14-477e-91e7-2c8cfc4a4a9a"
 >
-<Comment></Comment>
 <Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
 </Case></Cases>
 </Function><Function
@@ -287,7 +271,6 @@ ActiveFunctions.DetermineMRSP_TSR()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6a6c42ce-741e-4c83-81fa-d65099d43c89"
 >
-<Comment></Comment>
 </ReqRef><Comment>Provides the speed restrictions profile due to Signalling Related Speed Restrictions.</Comment>
 <Parameters>
 <Parameter
@@ -301,18 +284,15 @@ ActiveFunctions.DetermineMRSP_TSR()</PreCondition></PreConditions>
  Name="Determine MRSP based on signalling"
  Guid="cfca811a-1a30-4e6e-a4e1-492d48f8d0de"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="217c0fac-2ade-4f20-b580-dad8d6de33fb"
-><Comment></Comment>
-ActiveFunctions.DetermineMRSP_SignallingSpeedRestriction()</PreCondition></PreConditions>
+>ActiveFunctions.DetermineMRSP_SignallingSpeedRestriction()</PreCondition></PreConditions>
 <Expression>MA.SignallingRelatedSpeedRestrictions(Distance)</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="221845fc-c05a-4673-afc4-cce2ff7d7bdc"
 >
-<Comment></Comment>
 <Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
 </Case></Cases>
 </Function><Function
@@ -330,7 +310,6 @@ ActiveFunctions.DetermineMRSP_SignallingSpeedRestriction()</PreCondition></PreCo
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4583eabc-297b-479c-9f2f-bcade095eeef"
 >
-<Comment></Comment>
 </ReqRef><Comment>Provides the speed restrictions profile due to Mode related speed restrictions.</Comment>
 <Parameters>
 <Parameter
@@ -344,18 +323,15 @@ ActiveFunctions.DetermineMRSP_SignallingSpeedRestriction()</PreCondition></PreCo
  Name="Determine MRSP based on mode"
  Guid="1efe70ec-c255-40bb-a621-ca7aca342ef7"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="0f4d6de6-55c4-4b6b-9888-52cd44617230"
-><Comment></Comment>
-ActiveFunctions.DetermineMRSP_ModeRelatedSpeedRestriction()</PreCondition></PreConditions>
+>ActiveFunctions.DetermineMRSP_ModeRelatedSpeedRestriction()</PreCondition></PreConditions>
 <Expression>ModeRelatedSpeedLimits.SpeedRestrictions(Distance)</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="d56efae3-4440-4565-90fd-ea184918e4ac"
 >
-<Comment></Comment>
 <Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
 </Case></Cases>
 </Function><Function
@@ -373,7 +349,6 @@ ActiveFunctions.DetermineMRSP_ModeRelatedSpeedRestriction()</PreCondition></PreC
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="00238622-7093-4aa8-b357-013dc1191ea4"
 >
-<Comment></Comment>
 </ReqRef><Comment>Provides the speed restrictions profile due to train characteristics.</Comment>
 <Parameters>
 <Parameter
@@ -387,18 +362,15 @@ ActiveFunctions.DetermineMRSP_ModeRelatedSpeedRestriction()</PreCondition></PreC
  Name="Determine MRSP based on train characteristics"
  Guid="8e298c71-a2d4-4e89-98bb-c7a037aec930"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d97d46cb-74ec-4da7-9fb3-68af9fa91f66"
-><Comment></Comment>
-ActiveFunctions.DetermineMRSP_TrainRelatedSpeedRestrictions()</PreCondition></PreConditions>
+>ActiveFunctions.DetermineMRSP_TrainRelatedSpeedRestrictions()</PreCondition></PreConditions>
 <Expression>TrainData.TrainData.Value.MaximumSpeed</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="98942360-17db-494c-9f88-4d04649ad934"
 >
-<Comment></Comment>
 <Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
 </Case></Cases>
 </Function><Function
@@ -416,7 +388,6 @@ ActiveFunctions.DetermineMRSP_TrainRelatedSpeedRestrictions()</PreCondition></Pr
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3ebeac8e-b168-448c-a02c-fa77a5d9d4a6"
 >
-<Comment></Comment>
 </ReqRef><Comment>Provides the speed restrictions profile due to STM max speed.</Comment>
 <Parameters>
 <Parameter
@@ -430,18 +401,15 @@ ActiveFunctions.DetermineMRSP_TrainRelatedSpeedRestrictions()</PreCondition></Pr
  Name="Determine MRSP based on STM max speed"
  Guid="681ec411-f2d8-4efb-8cf2-34c45c035446"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="2755f693-13d4-4b3d-965c-1e0e971dd153"
-><Comment></Comment>
-ActiveFunctions.DetermineMRSP_STMMaxSpeed()</PreCondition></PreConditions>
+>ActiveFunctions.DetermineMRSP_STMMaxSpeed()</PreCondition></PreConditions>
 <Expression>STM.MaxSpeedRestrictions(Distance)</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="9472b77b-7266-4341-aa1a-512b1073a79a"
 >
-<Comment></Comment>
 <Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
 </Case></Cases>
 </Function><Function
@@ -460,7 +428,6 @@ ActiveFunctions.DetermineMRSP_STMMaxSpeed()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ce9b0373-349c-49da-883b-9a01bbe0f756"
 >
-<Comment></Comment>
 </ReqRef><Comment>Provides the speed restrictions profile due to STM system speed.</Comment>
 <Parameters>
 <Parameter
@@ -474,18 +441,15 @@ ActiveFunctions.DetermineMRSP_STMMaxSpeed()</PreCondition></PreConditions>
  Name="Determine MRSP based on STM max speed"
  Guid="90481baa-a29d-4d43-8ee3-aa902eed7a4b"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1b82e7a7-ee5e-4cd6-a51c-6272ba4f6eb8"
-><Comment></Comment>
-ActiveFunctions.DetermineMRSP_STMSystemSpeed()</PreCondition></PreConditions>
+>ActiveFunctions.DetermineMRSP_STMSystemSpeed()</PreCondition></PreConditions>
 <Expression>STM.SystemSpeedRestrictions(Distance)</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="2b277c4e-9c14-424b-b1bc-f9a37db0155e"
 >
-<Comment></Comment>
 <Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
 </Case></Cases>
 </Function><Function
@@ -517,18 +481,15 @@ ActiveFunctions.DetermineMRSP_STMSystemSpeed()</PreCondition></PreConditions>
  Name="Determine MRSP based on LX"
  Guid="f39163ac-3c70-42f3-8531-030c375ae501"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="36b4cc3f-3353-4a68-b38b-cf419ffc0209"
-><Comment></Comment>
-ActiveFunctions.DetermineMRSP_LXSpeed()</PreCondition></PreConditions>
+>ActiveFunctions.DetermineMRSP_LXSpeed()</PreCondition></PreConditions>
 <Expression>LX.SpeedRestrictions(Distance)</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="fe3e9470-2855-4370-be07-819c816aa197"
 >
-<Comment></Comment>
 <Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
 </Case></Cases>
 </Function><Function
@@ -547,7 +508,6 @@ ActiveFunctions.DetermineMRSP_LXSpeed()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2f1db9e4-b6fd-45da-9143-653dea0cacf4"
 >
-<Comment></Comment>
 </ReqRef><Comment>Provides the speed restrictions profile due to speed restrictions to esure permitted braking distances.</Comment>
 <Parameters>
 <Parameter
@@ -561,18 +521,15 @@ ActiveFunctions.DetermineMRSP_LXSpeed()</PreCondition></PreConditions>
  Name="Determine MRSP based on LX"
  Guid="a51be4c2-3902-4fd0-a9d1-768366a7e88a"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d2179e9a-ccd3-4ca6-b2fa-2fc6f66c21bf"
-><Comment></Comment>
-ActiveFunctions.DetermineMRSP_PermittedBrakingDistance()</PreCondition></PreConditions>
+>ActiveFunctions.DetermineMRSP_PermittedBrakingDistance()</PreCondition></PreConditions>
 <Expression>TrackDescription.PermittedBrakingDistance.SpeedRestrictions(Distance)</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="12bd886d-b409-48db-9953-70c1864244cb"
 >
-<Comment></Comment>
 <Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
 </Case></Cases>
 </Function></Functions>

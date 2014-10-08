@@ -3,7 +3,6 @@
  Name="MA - Functional tests"
  Guid="08fc3910-ee2f-4697-bdad-f5e16ee308b9"
 >
-<Comment></Comment>
 <SubSequences>
 <SubSequence
  D_LRBG=""
@@ -67,7 +66,6 @@
  Name="Sub-step2 - Initialize elements to accept MA"
  Guid="a8e878a4-b34a-44a8-9f91-0428a0d27cd3"
 >
-<Comment></Comment>
 <Actions>
 <Action
  Guid="881401de-e9c9-4a2d-a021-44857c77c981"
@@ -131,8 +129,7 @@
 <Actions>
 <Action
  Guid="c83a2621-036e-462a-be45-6d00c0a84b10"
-><Comment></Comment>
-BTM.Message &lt;- Messages.EUROBALISE.Message
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -382,8 +379,7 @@ BTM.Linking.Linkings</Action></Actions>
  Guid="fa793573-b25e-4dcf-9aa6-68ecc128a38d"
 >Kernel.SpeedAndDistanceMonitoring.TrainTripped &lt;- True</Action><Action
  Guid="c4f646dc-b220-4ca0-af54-2ba4318f54ca"
-><Comment></Comment>
-BTM.Message &lt;- Messages.EUROBALISE.Message
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -454,8 +450,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 <Actions>
 <Action
  Guid="4e31be74-040c-42b3-992d-e01fe3320239"
-><Comment></Comment>
-BTM.Message &lt;- Messages.EUROBALISE.Message
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
     M_VERSION=&gt;1,
@@ -600,8 +595,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b744d588-3820-4a2e-94b9-328d68163640"
 >
-</ReqRef><Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -952,8 +946,7 @@ BTM.Linking.Linkings</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f9b2c9e9-e69f-4826-9a49-70dd98de3d71"
 >
-</ReqRef><Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1337,8 +1330,7 @@ BTM.Linking.Linkings</Action></Actions>
  Guid="04d18e63-f531-47e5-9530-3d1987d063f8"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="6288ada8-1333-4efc-9670-030a94154b22"
-><Comment></Comment>
-Kernel.Level &lt;- Kernel.LevelData
+>Kernel.Level &lt;- Kernel.LevelData
  {
     Value =&gt; Default.LevelDataStruct
     {
@@ -1348,8 +1340,7 @@ Kernel.Level &lt;- Kernel.LevelData
     DataState =&gt; Default.DataState.Valid
  }</Action><Action
  Guid="2bad1577-28d2-4d6b-9969-9bd14ba3af8b"
-><Comment></Comment>
-Odometry.EstimatedSpeed &lt;- 65.0</Action></Actions>
+>Odometry.EstimatedSpeed &lt;- 65.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 4 - Set up a simple MA to work with"
  Guid="5008faa4-a6ce-48ed-8504-c50e85563b9b"
@@ -1357,8 +1348,7 @@ Odometry.EstimatedSpeed &lt;- 65.0</Action></Actions>
 <Actions>
 <Action
  Guid="991b559c-ac47-4c61-ad4b-a9aa6953c133"
-><Comment></Comment>
-Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
+>Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
 {
     TargetSpeed =&gt; 0.0,
     Sections =&gt; [],
@@ -1426,8 +1416,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="8f0a47fd-16ea-4427-9196-d3cc52540867"
-><Comment></Comment>
-BTM.Message &lt;- Messages.EUROBALISE.Message{
+>BTM.Message &lt;- Messages.EUROBALISE.Message{
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
     M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
     Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
@@ -1447,8 +1436,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message{
 <Actions>
 <Action
  Guid="990281b0-10d9-4719-9a91-9a9674fa64d6"
-><Comment></Comment>
-BTM.Message &lt;- Messages.EUROBALISE.Message
+>BTM.Message &lt;- Messages.EUROBALISE.Message
  {
 
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
@@ -1561,8 +1549,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="053d0b3e-9d5a-42f0-9cd7-c08cb5523959"
 >
-</ReqRef><Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1843,8 +1830,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1893db6b-fee3-4c92-a8a5-683bb6d94f08"
 >
-</ReqRef><Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2107,8 +2093,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6e6edcbc-a693-453c-b078-7406c8de5456"
 >
-</ReqRef><Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2445,8 +2430,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fba892cf-ed9a-4326-aeee-22ade5bc8152"
 >
-</ReqRef><Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2703,8 +2687,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f01f9c34-ef81-4e34-b4b3-1bc5cb97690d"
 >
-</ReqRef><Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2992,8 +2975,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="877fdff8-7e2f-4ebe-acee-31b39494af95"
 >
-</ReqRef><Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -3839,7 +3821,6 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
  Name="MA update - Repositioning information"
  Guid="6cdaf262-3ade-4d1d-ba52-e007f09eb2cb"
 >
-<Comment></Comment>
 <TestCases>
 <TestCase
  Implemented="TRUE"
@@ -3861,7 +3842,6 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c2d68e5b-2285-4170-abfe-8c617020e8b9"
 >
-<Comment></Comment>
 </ReqRef><Comment>Tests for 3.8.5.2, 3.8.5.2.2 and some of 3.8.5.2.4</Comment>
 <Steps>
 <Step
@@ -3989,8 +3969,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="f20b49c7-665d-4ffb-b9fb-8bf7578cf669"
-><Comment></Comment>
-BTM.Message &lt;- Messages.EUROBALISE.Message {
+>BTM.Message &lt;- Messages.EUROBALISE.Message {
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
     M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
     Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
@@ -4343,8 +4322,7 @@ BTM.Linking.Linkings</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c9b8fcbb-54da-48d3-af91-cff50dd685ef"
 >
-</ReqRef><Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -4862,8 +4840,7 @@ BTM.Linking.Linkings</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="affb68ac-0f12-4fc8-933c-da03fec89cf7"
 >
-</ReqRef><Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -5809,7 +5786,6 @@ BTM.Linking.Linkings</Action><Action
  Name="Release speed"
  Guid="b1afaba2-cea0-4917-ac80-d3e541200d17"
 >
-<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"
@@ -5828,8 +5804,7 @@ BTM.Linking.Linkings</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7c8a9cfc-46ce-425c-8e17-49fb9eb749f3"
 >
-</ReqRef><Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6177,8 +6152,7 @@ BTM.Linking.Linkings</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bb2ceae2-6ab3-4dbd-bdd3-3912e6782dde"
 >
-</ReqRef><Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6306,8 +6280,7 @@ BTM.Linking.Linkings</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fa0b12c4-1e23-45e3-984e-8796b818b4fc"
 >
-</ReqRef><Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6509,8 +6482,7 @@ BTM.Linking.Linkings</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7dd1815f-5b30-4960-a35a-44755027cb68"
 >
-</ReqRef><Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6858,8 +6830,7 @@ BTM.Linking.Linkings</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1b5e02ad-5ed8-4a59-a703-d81da105a4ff"
 >
-</ReqRef><Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -6970,8 +6941,7 @@ BTM.Linking.Linkings</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4e2de457-67bf-4374-8224-1c7736dd4990"
 >
-</ReqRef><Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"

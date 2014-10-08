@@ -17,7 +17,6 @@
  Name="AckLevel1"
  Guid="50923bff-f322-48a7-a3d8-3d5a8643d264"
 >
-<Comment></Comment>
 <TestCases>
 <TestCase
  Implemented="TRUE"
@@ -39,9 +38,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2f5be83f-d924-40b8-8776-5c71b788c49d"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -370,9 +367,7 @@ Messages.EUROBALISE.SubStructure1
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="db4ec8ab-d885-4167-97a1-fdd6aae626c3"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -450,8 +445,7 @@ Messages.EUROBALISE.SubStructure1
 <Actions>
 <Action
  Guid="8048d974-8d79-4ccd-a45c-69c329066a0a"
-><Comment></Comment>
-EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
 {
     MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
@@ -567,8 +561,7 @@ EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN
 <Actions>
 <Action
  Guid="8061d583-1e43-4cca-a541-fc2e1f0cefbf"
-><Comment></Comment>
-Odometry.EstimatedSpeed &lt;- 60.0</Action><Action
+>Odometry.EstimatedSpeed &lt;- 60.0</Action><Action
  Guid="70cf7ff9-be6f-41f0-a81f-d6a2bd7c0d35"
 >EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
@@ -688,9 +681,7 @@ Odometry.EstimatedSpeed &lt;- 60.0</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a216048c-88eb-445a-8a59-ddb433d540cd"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1031,12 +1022,10 @@ Messages.EUROBALISE.SubStructure1
  Name="Sub-step4"
  Guid="0bc3cacf-8620-4431-a94f-49bcaa324700"
 >
-<Comment></Comment>
 <Actions>
 <Action
  Guid="0ed1c5ee-e80a-4bc5-9c90-9f5e86cd369e"
-><Comment></Comment>
-EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
 {
     MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message

@@ -7,7 +7,6 @@
  Name="JRU"
  Guid="eb4c743a-9cf0-4670-ae78-1c658e68b69d"
 >
-<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="TypeConvertors"
@@ -56,8 +55,7 @@
 <Actions>
 <Action
  Guid="dbfb4ce6-6e75-4ec4-9570-7ba16fe4a050"
-><Comment></Comment>
-JRUMessages &lt;- []</Action></Actions>
+>JRUMessages &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -84,13 +82,11 @@ JRUMessages &lt;- []</Action></Actions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="5f9619f8-9917-43ea-9156-cee34480f769"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="f8567e2d-6ea5-4117-b986-b2d639154f71"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -158,8 +154,7 @@ GENERAL_MESSAGE =&gt; CreateGeneralMessage()
 <Actions>
 <Action
  Guid="53c8185c-b1db-4c4c-9778-c8c65d4d4c47"
-><Comment></Comment>
-Kernel.TrainDataValidated &lt;- False</Action><Action
+>Kernel.TrainDataValidated &lt;- False</Action><Action
  Guid="9c53e3cd-d6e0-4d3b-8990-9e9c536431b7"
 >INSERT Messages.JRU.MESSAGE.Message {
 TRAIN_DATA =&gt; CreateTrainDataMessage()
@@ -197,8 +192,7 @@ TRAIN_DATA =&gt; CreateTrainDataMessage()
 <Actions>
 <Action
  Guid="7c9857ea-ccb4-413f-9701-363e864e468a"
-><Comment></Comment>
-INSERT Messages.JRU.MESSAGE.Message {
+>INSERT Messages.JRU.MESSAGE.Message {
 EMERGENCY_BRAKE_COMMAND_STATE =&gt; CreateEBCommandStateMessage()
 } IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
@@ -231,7 +225,6 @@ EMERGENCY_BRAKE_COMMAND_STATE =&gt; CreateEBCommandStateMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="4ea03b7b-5d5e-43e1-a6d1-e444c1c733df"
 >
-<Comment></Comment>
 </ReqRef><Comment>This will insert the SB_COMMAND_STATE JRU Message into the collection of messages</Comment>
 <PreConditions>
 <PreCondition
@@ -327,13 +320,11 @@ FROM_RBC =&gt; CreateMessageFromRbcMessage(EURORADIO.CurrentRBCConnection(), EUR
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="f26e024c-bdf8-491c-81e5-f6e8ef85c46a"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="0c320b0b-218e-4a78-9fad-488fdb0e6902"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="98b50f9d-1c23-497d-af4e-6c7f96065291"
 >
-<Comment></Comment>
 </ReqRef><Comment>This will create the TO RBC JRU Message</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -378,17 +369,14 @@ TO_RBC =&gt; CreateMessageToRbcMessage(EURORADIO.CurrentRBCConnection(), EURORAD
  Name="Send Drivers Actions message"
  Guid="028b2931-f378-4d18-873e-dbde829cfb19"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f02eecba-036a-4cca-b8c4-60599b02f0cc"
-><Comment></Comment>
-DriverActed()</PreCondition></PreConditions>
+>DriverActed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f5f5fe71-29ba-4927-b45c-fd8ea8e75cca"
-><Comment></Comment>
-INSERT Messages.JRU.MESSAGE.Message
+>INSERT Messages.JRU.MESSAGE.Message
 {
   DRIVER_S_ACTIONS =&gt; JRU.CreateDriversActionsMessage()
 }
@@ -406,7 +394,6 @@ IN
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="6f2ee733-5e48-4478-af91-50e6fb3a7c45"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="8491a296-8069-4da8-bc6f-4c239e5d91bd"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -424,16 +411,13 @@ IN
 <PreConditions>
 <PreCondition
  Guid="b68fe90d-3f7f-4f71-be23-059f5f67cf38"
-><Comment></Comment>
-SendSpeedAndDistanceMonitoringInformationMessage(THIS)</PreCondition><PreCondition
+>SendSpeedAndDistanceMonitoringInformationMessage(THIS)</PreCondition><PreCondition
  Guid="bd5ee00b-aacc-49ba-9111-eb883e795db7"
-><Comment></Comment>
-Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
+>Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e0adc517-5b2f-4309-ab4b-821bd1fbaf57"
-><Comment></Comment>
-INSERT Messages.JRU.MESSAGE.Message{
+>INSERT Messages.JRU.MESSAGE.Message{
 SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateSpeedAndDistanceMonitoringInformationMessage()
 }IN JRUMessages</Action><Action
  Guid="1e73cc9f-11c6-4599-a75a-6acda1ef7430"
@@ -466,8 +450,7 @@ SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateSpeedAndDistanceMonitoring
 <PreConditions>
 <PreCondition
  Guid="0f591e23-902d-4181-945b-e3f6adf41fab"
-><Comment></Comment>
-SendDMIStatusMessage(THIS)</PreCondition></PreConditions>
+>SendDMIStatusMessage(THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1c2b2d52-5507-4511-96f0-a88dc56c7347"
@@ -502,12 +485,10 @@ JRUMessages</Action></Actions>
  Name="Send Additional Data message"
  Guid="455df8d1-ed9f-47d2-b215-f56bd2998675"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="ba8f918a-a5e1-4c1a-996b-e692f5aa9f7c"
-><Comment></Comment>
-SendAdditionalDataMessage(aJRU =&gt; THIS)</PreCondition></PreConditions>
+>SendAdditionalDataMessage(aJRU =&gt; THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="cf7de8a9-741d-4a0d-a4d0-96d6b9408045"
@@ -527,13 +508,11 @@ SendAdditionalDataMessage(aJRU =&gt; THIS)</PreCondition></PreConditions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="15c6b870-8320-4a8b-9b40-2cedf14acd9a"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="48201353-8238-4cc8-b85b-0c65d42b1260"
 >
-<Comment></Comment>
 </ReqRef><Comment>This will send the JRU MESSAGE NTC_SELECTED</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -550,8 +529,7 @@ SendAdditionalDataMessage(aJRU =&gt; THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1f156b86-5ad4-4f71-b713-b90d2220acf4"
-><Comment></Comment>
-INSERT Messages.JRU.MESSAGE.Message {
+>INSERT Messages.JRU.MESSAGE.Message {
 NTC_SELECTED =&gt; CreateNtcSelectedMessage()
 } IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
@@ -583,8 +561,7 @@ NTC_SELECTED =&gt; CreateNtcSelectedMessage()
 <PreConditions>
 <PreCondition
  Guid="6149369f-d154-4348-a74b-b0f2bc89ff3b"
-><Comment></Comment>
-JRU.SendSleepingInput(
+>JRU.SendSleepingInput(
     jru=&gt;THIS
 )</PreCondition></PreConditions>
 <Actions>
@@ -805,7 +782,6 @@ ELECTRO_PNEUMATIC_BRAKE_STATUS =&gt; CreateElectroPneumaticBrakeStatusMessage()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="f9c0dcc6-0414-4604-af8b-03ec2e440545"
 >
-<Comment></Comment>
 </ReqRef><Comment>This will verify if the conditions are satisfied and will create the EDDY_CURRENT_BRAKE_STATUS Message</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1003,8 +979,7 @@ CAB_STATUS =&gt; JRU.CreateCabStatusJruMessage()
 <Actions>
 <Action
  Guid="04b8fac6-2aaf-4551-8f5a-01d7436bab4e"
-><Comment></Comment>
-INSERT Messages.JRU.MESSAGE.Message{
+>INSERT Messages.JRU.MESSAGE.Message{
 NATIONAL_SYSTEM_ISOLATION =&gt; CreateNationalSystemsIsolationMessage()
 }IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
@@ -1079,8 +1054,7 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
 <Actions>
 <Action
  Guid="95a5ddb2-ef62-4681-a427-9aa9b06202c7"
-><Comment></Comment>
-InitializeMessage()</Action></Actions>
+>InitializeMessage()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1106,8 +1080,7 @@ InitializeMessage()</Action></Actions>
  Guid="f986b9dc-68c2-48f4-aa19-15bc06d987e7"
 >PreviousAdditionalBrakeStatus &lt;- TIU.AdditionalBrakesActive</Action><Action
  Guid="58633a81-4072-494e-a17d-19e34b04acc0"
-><Comment></Comment>
-PreviousPermittedSpeed &lt;- DMI.MasterDMI().Out_PermittedSpeed.Speed</Action><Action
+>PreviousPermittedSpeed &lt;- DMI.MasterDMI().Out_PermittedSpeed.Speed</Action><Action
  Guid="d461f9a5-7f7b-482b-8ffa-2ca4aed6d474"
 >PreviousTargetSpeed &lt;- DMI.MasterDMI().Out_TargetSpeed.Speed</Action><Action
  Guid="0eb30b56-c6ab-4c4d-800f-f09532b1c04c"
@@ -1182,7 +1155,6 @@ PreviousPermittedSpeed &lt;- DMI.MasterDMI().Out_PermittedSpeed.Speed</Action><A
  Name="Track supervision status"
  Guid="6167afb7-3ff4-407b-bbd0-d020c5fba3cb"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e4223728-87c9-42d3-9260-16f943874a4a"
@@ -1190,8 +1162,7 @@ PreviousPermittedSpeed &lt;- DMI.MasterDMI().Out_PermittedSpeed.Speed</Action><A
 <Actions>
 <Action
  Guid="e147e5df-e42d-47f4-b4b4-bfe04454a4d4"
-><Comment></Comment>
-PreviousSpeedAndDistanceSupervisionStatus &lt;- Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</Action></Actions>
+>PreviousSpeedAndDistanceSupervisionStatus &lt;- Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1214,8 +1185,7 @@ PreviousSpeedAndDistanceSupervisionStatus &lt;- Kernel.SpeedAndDistanceMonitorin
 <Actions>
 <Action
  Guid="cc02b5bb-d96c-46dd-a3bf-abe2b314c992"
-><Comment></Comment>
-PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</Action></Actions>
+>PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1237,8 +1207,7 @@ PreviousTargetDistance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonito
 <PreConditions>
 <PreCondition
  Guid="bd5e4bf2-8113-464b-8859-58726f368827"
-><Comment></Comment>
-SendMessagePeriodically(THIS)</PreCondition></PreConditions>
+>SendMessagePeriodically(THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1dd375f4-1c36-44bc-8f3f-fbd3204b191e"
@@ -1577,7 +1546,6 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="a4fc8cde-c81c-42fc-bcb3-080aacc0b88e"
 >
-<Comment></Comment>
 </ReqRef><Comment>Will store the previous additional brakes status</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
@@ -1611,7 +1579,6 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="62e762c4-356b-4c0c-a97c-2525af7788a2"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="8491a296-8069-4da8-bc6f-4c239e5d91bd"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -1636,7 +1603,6 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="124c76f6-c85e-4d28-987c-3276b64a920a"
 >
-<Comment></Comment>
 </ReqRef><Comment>This will store the previous value of the permitted speed</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
@@ -1656,7 +1622,6 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="e6fb501f-75fa-4df6-8fb6-c53ceb6737a7"
 >
-<Comment></Comment>
 </ReqRef><Comment>It will store the previous value of the first line of intervention variable</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
@@ -1671,7 +1636,6 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="a84c8dbc-5ac3-43ec-b3d6-c44bebada28b"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="8491a296-8069-4da8-bc6f-4c239e5d91bd"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -1696,7 +1660,6 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="290a7753-b981-4607-ab73-ed0509eeb755"
 >
-<Comment></Comment>
 </ReqRef><Comment>This will store the previous value of the TargetDistance variable</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
@@ -1711,7 +1674,6 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="f962fef2-922e-47df-8dc0-5d8e851c3954"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="8491a296-8069-4da8-bc6f-4c239e5d91bd"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -1848,19 +1810,16 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="5abe90bb-cef5-43a8-899e-40a45d6d071d"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="cd952cbc-e5cf-452b-83ad-6c098d096165"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="e16ef091-6c86-4ef5-9207-df2d4a231ea6"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="69f8e98d-1f04-42cd-bf44-eb4421190f26"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -1965,7 +1924,6 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  Name="JRUHeader"
  Guid="26f17d21-e797-4d30-972c-e9d5567392a3"
 >
-<Comment></Comment>
 <Expression>Messages.JRU.HEADER.Message
      {
         NID_MESSAGE =&gt; MessageId,
@@ -2014,7 +1972,6 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="d677c4db-5d59-4468-98d8-d494170c96aa"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="bb9c8dd1-462d-4fc9-94dc-a4d02d2f1420"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -2031,7 +1988,6 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  Name="Value"
  Guid="ce5aefc3-a18f-41b1-a8da-6e52ca3038fb"
 >
-<Comment></Comment>
 <Expression>Messages.JRU.MESSAGE.NTC_SELECTED.Message
 {
     HEADER =&gt; CreateHeader(MessageId=&gt;26),
@@ -2053,79 +2009,66 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="6cd40855-680a-4baf-8962-be1e79cabc77"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="7cddabe5-a666-47fb-849b-93219d624ad7"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="0c66d0c2-4189-4bdd-9a59-f8fb5da1dc72"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="63f141dc-10ff-404f-a48f-49d1c52f86e3"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="089434c4-9c48-438a-9c6e-1dc3af77e9db"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="ac57644f-e0ca-4d34-b7a3-89948e2a7251"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="2775cdfc-7d3f-4adc-b431-79d473f86272"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="d003af52-cdca-4fd2-a4d1-2adc9748cce9"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="84bf492b-1e66-4c4d-94d6-59903b6b0efc"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="698317da-c91e-44fe-ad12-8c6ac2d7488f"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="c38498eb-d65b-4a3c-8541-55946726f660"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="52149532-7fd4-4e01-90f2-a8f64267dad2"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="69f8e98d-1f04-42cd-bf44-eb4421190f26"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="fc0efca8-f7ad-4172-8974-98ded7535e1f"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="a71ad63d-ce07-4898-a796-68cabe1767bc"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="4eb95bf4-c64f-4691-ac59-5d89c15b642d"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="2ffe0674-1645-4793-9d44-f0cc0a540f2e"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="8764dc22-7b77-4cc8-8712-f748da7855d4"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="bdd0c87f-c020-42d5-8bca-0adcf401e0a7"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="3bb3967f-db28-4167-b353-f01d4d5fe2a9"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="9a6a7946-fcd0-4097-be45-9a8168506afd"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="1bd67501-06a6-49b3-8d6a-25e0082dd2db"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="f23150cb-df63-4352-837f-3c563876913f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -2156,7 +2099,6 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="4db5ed1a-2f07-4539-8aa8-85937758cb67"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="0c351b25-94d2-4d44-86a4-3fe7611f6582"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -2167,7 +2109,6 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="bda1fe09-f793-4dc9-9182-1fe87984d050"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="1d66e852-98d7-42e9-ac5a-f63774661b64"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -2183,13 +2124,11 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="aa188900-d2f9-4b89-b039-6f872017b8d4"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="06030586-dcc2-49e6-bf66-b0650c069a4d"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="1d0493ee-770c-4c5c-b06f-f2b060a66944"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="1e4ca98b-fcef-4737-b4e3-38bfc4715927"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -2213,12 +2152,10 @@ SendMessagePeriodically(THIS)</PreCondition></PreConditions>
  Name="SendMessage"
  Guid="367b9bad-5565-4488-957d-849ab291e91d"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e932afe8-ba36-4cdd-b2b8-0c4a04bebf4e"
-><Comment></Comment>
-LevelChanged(jru)
+>LevelChanged(jru)
   OR
 SendMessagePeriodically(jru)
   OR
@@ -2301,7 +2238,6 @@ DriverActed()</PreCondition><PreCondition
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="ce7b4acc-e3b2-4a2e-aac5-3ad5e291da7c"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function to determine if the ERTMS Level has changed</Comment>
 <Parameters>
 <Parameter
@@ -2343,7 +2279,6 @@ DriverActed()</PreCondition><PreCondition
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="7ce4c537-3253-41b1-9ddc-ba4d1cf58a3f"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function which will determine if it is necessary to send a GENERAL JRU Message because the elapsed time is bigger or erqual to the requirement to send a periodical message</Comment>
 <Parameters>
 <Parameter
@@ -2357,7 +2292,6 @@ DriverActed()</PreCondition><PreCondition
  Name="Period Has Passed"
  Guid="b301eb6a-e5a2-4959-98dc-d35c98b846f5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f1ed7a82-bc2e-4196-b866-904859861fa1"
@@ -2386,7 +2320,6 @@ DriverActed()</PreCondition><PreCondition
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="ffdfd30f-16f2-4108-8b8e-8a45e6908559"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function used to determine if the ERTMS mode has changed</Comment>
 <Parameters>
 <Parameter
@@ -2428,7 +2361,6 @@ DriverActed()</PreCondition><PreCondition
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="44a4658c-97d3-4ed3-a104-6e886f975427"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function which will determine if the System Version Changed</Comment>
 <Parameters>
 <Parameter
@@ -2470,7 +2402,6 @@ DriverActed()</PreCondition><PreCondition
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="01436b8e-f6c8-4258-a3b5-73608eb8a1f2"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function used to determine if the ERTMS Level has changed to NTC Level</Comment>
 <Parameters>
 <Parameter
@@ -2511,25 +2442,21 @@ DriverActed()</PreCondition><PreCondition
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="82521370-58ea-42bd-8601-8ba4040a1d79"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="7cfedb1f-05cb-40f2-8244-6b8ff358c13f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="82fe8ced-0ff6-4ccd-a8b7-f585108c09fd"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="7f57b812-cf8f-4798-ad1d-c4325c5f3cb2"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="2f0c69d1-8912-426c-ada9-7ea44cc97493"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="69f8e98d-1f04-42cd-bf44-eb4421190f26"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="00204030-765f-46c2-a8bd-0659f44bbef3"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function which will determine if a new GENERAL_MESSAGE has to be sent</Comment>
 <Parameters>
 <Parameter
@@ -2576,13 +2503,11 @@ OR
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="74ea51a5-6a7c-4f8d-a8ed-b69c4c0fc674"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="01d4f032-ef51-4284-91f0-15bdd0f1fafe"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="c3d28fdc-8d64-4f02-b5b1-5d6f528d7ff2"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="8623ab63-7b21-4ea0-8ae5-1f6cbb90a9b5"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -2599,7 +2524,6 @@ OR
  Name="Value"
  Guid="85511fe5-eca8-424c-912c-81356d0d5acc"
 >
-<Comment></Comment>
 <Expression>Messages.JRU.MESSAGE.TRAIN_DATA.Message{
 HEADER =&gt; CreateHeader(2),
  V_MAXTRAIN =&gt; MessageTypes.UnResolveSpeed ( speed =&gt; Kernel.TrainData.TrainData.Value.MaximumSpeed, resolution =&gt; 5.0 ),
@@ -2639,7 +2563,6 @@ M_AIRTIGHT =&gt; TypeConvertors.ToJRUMAirTight(Kernel.TrainData.TrainData.Value.
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="de717f1b-3bfb-41e7-8e83-c8142b39d466"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function used to determine if the EB Status has changed</Comment>
 <Parameters>
 <Parameter
@@ -2690,7 +2613,6 @@ M_AIRTIGHT =&gt; TypeConvertors.ToJRUMAirTight(Kernel.TrainData.TrainData.Value.
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="b3aaf575-2681-420b-9b33-b095714c9564"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function used to create the EBCommandState JRU Messages</Comment>
 <Cases>
 <Case
@@ -2718,7 +2640,6 @@ M_BRAKE_COMMAND_STATE=&gt;TypeConvertors.ToJRUEBCommanded()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="5259170f-35bf-46ec-b2b4-a743996ccdfa"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function which determines if the train data have changed</Comment>
 <Parameters>
 <Parameter
@@ -2763,13 +2684,11 @@ M_BRAKE_COMMAND_STATE=&gt;TypeConvertors.ToJRUEBCommanded()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="155d8936-616b-4d70-be67-6baf27384bf3"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="bb30484f-663f-4cdf-8ffd-b693f604e079"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function which will determine if it is necessary to send a new TRAIN_DATA JRU Message</Comment>
 <Parameters>
 <Parameter
@@ -2783,12 +2702,10 @@ M_BRAKE_COMMAND_STATE=&gt;TypeConvertors.ToJRUEBCommanded()
  Name="Send"
  Guid="b1a189b5-34a9-4b21-b90a-fa8cbcd25387"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f9f43f6c-751d-4f20-8dd4-15c9cf58523e"
-><Comment></Comment>
-(TrainDataHaveChanged(jru) == True) OR (Kernel.TrainDataValidated)</PreCondition></PreConditions>
+>(TrainDataHaveChanged(jru) == True) OR (Kernel.TrainDataValidated)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -2812,7 +2729,6 @@ M_BRAKE_COMMAND_STATE=&gt;TypeConvertors.ToJRUEBCommanded()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="c98f4f34-e733-413c-8fc8-a13033669014"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="a12a618a-7473-4e20-8fec-78804b7db646"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -2850,7 +2766,6 @@ M_BRAKE_COMMAND_STATE=&gt;TypeConvertors.ToJRUSBCommanded()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="b8a2933a-a08b-4fd2-90f5-4f0ada2eb0d4"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function which will determine if the SB Status has changed</Comment>
 <Parameters>
 <Parameter
@@ -2891,7 +2806,6 @@ M_BRAKE_COMMAND_STATE=&gt;TypeConvertors.ToJRUSBCommanded()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="acf5415f-b6c0-4289-b1cb-a389f15244cd"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function which will determine if it is necessary to send a new TELEGRAM_FROM_BALISE JRU Message</Comment>
 <Cases>
 <Case
@@ -2925,7 +2839,6 @@ M_BRAKE_COMMAND_STATE=&gt;TypeConvertors.ToJRUSBCommanded()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="ea87baf7-066e-4326-81bb-0ee3d6fff027"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="3879a47b-14de-4665-bd8e-48684c7716d8"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -2968,7 +2881,6 @@ TELEGRAM=&gt; BTM.Message
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="6e60cc76-93b5-4615-a226-1f532b77872e"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="0fa7965c-d9e6-452a-92fb-83e6e336171d"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -3025,7 +2937,6 @@ TELEGRAM =&gt; RbcInfo.MessageIn
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="c9d60793-eca5-4386-9bf3-5fd14d28437b"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function used to create the MessageToRbc JRU Messages</Comment>
 <Parameters>
 <Parameter
@@ -3068,7 +2979,6 @@ TELEGRAM =&gt; RbcInfo.MessageOut
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="284be170-9d19-4036-983f-9a8d4caff000"
 >
-<Comment></Comment>
 </ReqRef><Comment>This function will be used when a To Rbc message will be ready to be sent.</Comment>
 <Parameters>
 <Parameter
@@ -3109,7 +3019,6 @@ TELEGRAM =&gt; RbcInfo.MessageOut
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="465af54f-2f9b-498b-80de-f6bda347fb36"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function to determine when a new Message From RBC has arrived</Comment>
 <Parameters>
 <Parameter
@@ -3150,7 +3059,6 @@ TELEGRAM =&gt; RbcInfo.MessageOut
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="fd5ae704-89a3-4abc-a36d-c55e7e2f5258"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="7275722c-79c3-4be4-aa59-792d2628c3ac"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -3192,7 +3100,6 @@ M_CAB_A_STATUS =&gt;TypeConvertors.ToJRUCabAStatus(),
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="3425c871-7ebc-4f23-9353-fa471575e91d"
 >
-<Comment></Comment>
 </ReqRef><Comment>Functio which will determine if there is a second Cab connected to the ERTMS/ETCS System</Comment>
 <Cases>
 <Case
@@ -3226,7 +3133,6 @@ M_CAB_A_STATUS =&gt;TypeConvertors.ToJRUCabAStatus(),
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="cf3231bb-fc1f-4ec2-9caf-8ea505708969"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function used to determine which value will fill the Q_Cab field on a CabStatus JRU Message</Comment>
 <Cases>
 <Case
@@ -3259,7 +3165,6 @@ M_CAB_A_STATUS =&gt;TypeConvertors.ToJRUCabAStatus(),
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="146964dc-7e8a-4257-9ccc-5a1eebc9f6e9"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function used to determine whether the CabA status has changed</Comment>
 <Parameters>
 <Parameter
@@ -3306,7 +3211,6 @@ OR
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="c9c77042-4bc7-48e5-9f49-0de070a67fd8"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function used to determine whether the CabB status has changed</Comment>
 <Parameters>
 <Parameter
@@ -3388,7 +3292,6 @@ OR
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="457e84bd-3a60-4f93-b688-05a250b482fe"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function used to determine which value will fill the Q_SINGLEDESK field on a CabStatus JRU Message</Comment>
 <Cases>
 <Case
@@ -3435,7 +3338,6 @@ AND
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="c99125b4-a2a8-4ab1-8c40-1635c6b5b113"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="d9784eba-d7cd-4aaa-8499-40da415462f9"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -3446,7 +3348,6 @@ AND
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="a4c95fb7-bc6e-4e46-9f79-e6ab54383dc5"
 >
-<Comment></Comment>
 </ReqRef><Comment>This will generate the DIRECTION_CONTROLLER_POSITION JRU Message</Comment>
 <Cases>
 <Case
@@ -3475,7 +3376,6 @@ M_DIRECTION_CONTROLLER =&gt; TypeConvertors.ToJRUDirectionController(
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="e3240867-b585-4105-8e70-eed41dccf569"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function which will determine if it is necessary to send a new TRAIN_DIRECTION_CONTROLLER JRU Message</Comment>
 <Parameters>
 <Parameter
@@ -3540,7 +3440,6 @@ OR
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="ee607a3f-e4c4-42a1-87d0-f4d094f295ec"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function which will determine when is necessary to send a CAB_STATUS JRU Message</Comment>
 <Parameters>
 <Parameter
@@ -3592,7 +3491,6 @@ OR
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="e7987fe0-4f3b-414c-8741-13a2dd146a0b"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="8244b69a-230d-41b4-b7bb-0890ff2ccc7b"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -3629,7 +3527,6 @@ M_TRACTION_STATUS=&gt;TypeConvertors.ToJRUTractionStatus()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="361741f0-998f-49b6-9768-f9fdc5b29237"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function used to determine when the TRACTION_STATUS JRU Message should be sent</Comment>
 <Parameters>
 <Parameter
@@ -3679,7 +3576,6 @@ M_TRACTION_STATUS=&gt;TypeConvertors.ToJRUTractionStatus()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="7ae34844-4c76-47fd-9758-e80f9e0b3128"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function which will translate the incoming TIU value into an understandable JRU value</Comment>
 <Parameters>
 <Parameter
@@ -3730,7 +3626,6 @@ M_TRACTION_STATUS=&gt;TypeConvertors.ToJRUTractionStatus()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="7078dce5-ce1c-4f4a-8bf4-66bb4cf57173"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function used to generate the TRAIN_DATA_ENTRY_TYPE JRU Message</Comment>
 <Cases>
 <Case
@@ -3759,7 +3654,6 @@ M_TRAIN_DATA_ENTRY=&gt;TypeConvertors.ToJRUTrainDataEntry()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="d7e28695-c982-48e2-bf4e-b9d524006265"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function used to determine if it is necessary to send a TRAIN_DATA_ENTRY_TYPE JRU Message</Comment>
 <Parameters>
 <Parameter
@@ -3823,7 +3717,6 @@ M_TRAIN_DATA_ENTRY=&gt;TypeConvertors.ToJRUTrainDataEntry()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="6754c0a4-0767-4d79-ae9f-bbc6d3355aa5"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="38cad2be-d09c-43a1-9db5-be152ea6c56f"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -3858,7 +3751,6 @@ M_TRAIN_DATA_ENTRY=&gt;TypeConvertors.ToJRUTrainDataEntry()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="64320302-d920-48a1-9478-71a1e3f1e8df"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function used to determine when a NTC_SIOLATION JRU Message should be sent</Comment>
 <Parameters>
 <Parameter
@@ -3872,7 +3764,6 @@ M_TRAIN_DATA_ENTRY=&gt;TypeConvertors.ToJRUTrainDataEntry()
  Name="AtStartUp"
  Guid="fcc3e04f-9f3e-4aa8-bc03-256709cbfb03"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f6cc93d5-391e-49ec-996b-60113667e0b0"
@@ -3919,7 +3810,6 @@ M_TRAIN_DATA_ENTRY=&gt;TypeConvertors.ToJRUTrainDataEntry()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="c0a3abc0-41ba-4352-b219-54eece0a14f4"
 >
-<Comment></Comment>
 </ReqRef><Comment>Function used to create the TRACTION_CUT_OFF_COMMAND_STATUS JRU Message</Comment>
 <Cases>
 <Case
@@ -3948,7 +3838,6 @@ M_TRAIN_DATA_ENTRY=&gt;TypeConvertors.ToJRUTrainDataEntry()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="55018002-d5e0-4278-a11b-24610b1077d7"
 >
-<Comment></Comment>
 </ReqRef><Comment>This function will determine when should be sent the TractionCutOffMessage</Comment>
 <Parameters>
 <Parameter
@@ -3999,7 +3888,6 @@ M_TRAIN_DATA_ENTRY=&gt;TypeConvertors.ToJRUTrainDataEntry()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="832adcbe-8c63-4dba-9ff5-3324fe336b1b"
 >
-<Comment></Comment>
 </ReqRef><Comment>Will fill the necessary fields to generate the SLEEPING_INPUT message</Comment>
 <Cases>
 <Case
@@ -4027,7 +3915,6 @@ M_SLEEPING =&gt; TypeConvertors.ToJRUSleepingInput()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="a10dc0f6-3c6f-41e0-8e0a-0ac876df496b"
 >
-<Comment></Comment>
 </ReqRef><Comment>Will determine if the conditions to send the JRU SLEEPING_INPUT are satisfied</Comment>
 <Parameters>
 <Parameter
@@ -4077,7 +3964,6 @@ M_SLEEPING =&gt; TypeConvertors.ToJRUSleepingInput()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="4d43616b-1df7-4b59-858a-dbd3026c52fe"
 >
-<Comment></Comment>
 </ReqRef><Comment>Will determine if it is necessary to send a new JRU PASSIVE_SHUNTING_INPUT message</Comment>
 <Parameters>
 <Parameter
@@ -4132,7 +4018,6 @@ M_SLEEPING =&gt; TypeConvertors.ToJRUSleepingInput()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="6f82c93a-e446-4f66-be6e-81be41e72993"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="47837469-0336-4422-9df6-737a6a575b2b"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -4224,7 +4109,6 @@ M_PASSIVE_SHUNTTING =&gt; TypeConvertors.ToJRUPassiveShunting()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="23ae1a23-3ff0-46d9-955a-dc67bac4036f"
 >
-<Comment></Comment>
 </ReqRef><Comment>Will fill all the necessary fields to create a NON_LEADIN_INPUT Message</Comment>
 <Cases>
 <Case
@@ -4289,7 +4173,6 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="94b89667-2740-473b-8aec-6ed73173dff9"
 >
-<Comment></Comment>
 </ReqRef><Comment>Will determine if it is necessary to create and send a JRU RegenerativeBrakeStatus message</Comment>
 <Parameters>
 <Parameter
@@ -4374,7 +4257,6 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="1cfb5c3d-35cc-4b78-80da-c0330ed3c923"
 >
-<Comment></Comment>
 </ReqRef><Comment>Will determine when will necessary to send the MagneticShoeBrakeStatus JRU Message</Comment>
 <Parameters>
 <Parameter
@@ -4434,7 +4316,6 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="e4373f57-a726-43e2-9160-379be1c31f92"
 >
-<Comment></Comment>
 </ReqRef><Comment>Will fill the fields of a MAGNETIC_SHOE_BRAKE_STATUS JRU Message</Comment>
 <Cases>
 <Case
@@ -4510,7 +4391,6 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="b69cb3f7-36b3-41e7-baa2-15ca6070a28b"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="6b6aed3a-e263-4d03-ba9e-ac96c0f5e38a"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -4558,7 +4438,6 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="0afbefad-b6ba-4a4b-ab5b-f72e0ce9e4e3"
 >
-<Comment></Comment>
 </ReqRef><Comment>Will fill all the necessary fields to create a JRU ELECTRO_PNEUMATIC_BRAKE_STATUS Message</Comment>
 <Cases>
 <Case
@@ -4586,7 +4465,6 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="e1448efd-96e4-4088-81b8-fede1863fc64"
 >
-<Comment></Comment>
 </ReqRef><Comment>Will determine if it is necessary to send the ElectroPneumaticBrakeStatus JRU Message</Comment>
 <Parameters>
 <Parameter
@@ -4673,7 +4551,6 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="153ddef7-05c6-4324-9ef8-0fdabce18f43"
 >
-<Comment></Comment>
 </ReqRef><Comment>Will determine if it is necessary to send the ADDITIONAL_BRKAE_STATUS JRU Message</Comment>
 <Parameters>
 <Parameter
@@ -4699,8 +4576,7 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="617453d8-d19a-4e51-89b6-7b316b442dae"
-><Comment></Comment>
-jru.PreviousAdditionalBrakeStatus != TIU.AdditionalBrakesActive</PreCondition></PreConditions>
+>jru.PreviousAdditionalBrakeStatus != TIU.AdditionalBrakesActive</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -4729,7 +4605,6 @@ jru.PreviousAdditionalBrakeStatus != TIU.AdditionalBrakesActive</PreCondition></
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="9acba52b-59be-427c-8be5-99f4f270c2eb"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="4cdf0755-19a1-4d3e-a1e2-7bd20ece14de"
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
@@ -4741,7 +4616,6 @@ jru.PreviousAdditionalBrakeStatus != TIU.AdditionalBrakesActive</PreCondition></
  Name="Value"
  Guid="393b633c-2c88-4500-8f99-25bf3690af5e"
 >
-<Comment></Comment>
 <Expression>Messages.JRU.MESSAGE.SPEED_AND_DISTANCE_MONITORING_INFORMATION.Message
 {
     HEADER =&gt; CreateHeader(20),
@@ -4773,7 +4647,6 @@ jru.PreviousAdditionalBrakeStatus != TIU.AdditionalBrakesActive</PreCondition></
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="56b9b3b4-7420-46d9-a10a-3b642ca66e7d"
 >
-<Comment></Comment>
 </ReqRef><Comment>This will determine if the necessary conditions to send the SpeedAndDistanceMonitoringInformation JRU message have to be sent</Comment>
 <Parameters>
 <Parameter
@@ -4787,18 +4660,15 @@ jru.PreviousAdditionalBrakeStatus != TIU.AdditionalBrakesActive</PreCondition></
  Name="MonitoringTypeChanged"
  Guid="cf3ed2ff-72a6-4688-bbf1-7817e23712db"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="cf7bc0f9-44ef-4ed0-8243-19b3e15e0791"
-><Comment></Comment>
-jru.SpeedAndDistanceSupervisionTypeChanged</PreCondition></PreConditions>
+>jru.SpeedAndDistanceSupervisionTypeChanged</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="MonitoringSupervisionStatusChanged"
  Guid="67eb6523-2d63-4f30-a601-a58145e999cb"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="0f85d667-58cc-4f06-9c3a-6a0eea33498d"
@@ -4822,8 +4692,7 @@ jru.PreviousSpeedAndDistanceSupervisionStatus != Kernel.SpeedAndDistanceMonitori
 <PreConditions>
 <PreCondition
  Guid="13358226-042e-4eb7-a8e9-c752639ee537"
-><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling]
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling]
   AND
 jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.FLOISpeed(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -4843,8 +4712,7 @@ jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.FLOISpeed(Kernel.Tra
 <PreConditions>
 <PreCondition
  Guid="61b693b3-b918-4266-982a-5c8129294984"
-><Comment></Comment>
-Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()
+>Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()
   AND
 jru.PreviousTargetDistance != Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -4855,8 +4723,7 @@ jru.PreviousTargetDistance != Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonit
 <PreConditions>
 <PreCondition
  Guid="4fb5f380-6cb1-436f-ba6f-2de471ea9771"
-><Comment></Comment>
-jru.PreviousReleaseSpeed != DMI.MasterDMI().Out_ReleaseSpeed.Speed</PreCondition></PreConditions>
+>jru.PreviousReleaseSpeed != DMI.MasterDMI().Out_ReleaseSpeed.Speed</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -5056,7 +4923,6 @@ jru.PreviousReleaseSpeed != DMI.MasterDMI().Out_ReleaseSpeed.Speed</PreCondition
  Name="Value"
  Guid="61417ebf-eded-4cdd-8055-fd1808a1ee75"
 >
-<Comment></Comment>
 <Expression>DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.DriverAnswered
   OR
 DMI.MasterDMI().In_AcknForReverseMovementProtection.InputInformation.DriverAnswered
@@ -5168,7 +5034,6 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
  Name="Value"
  Guid="3bc367d4-24c2-448c-a6c2-e0d472bd412b"
 >
-<Comment></Comment>
 <Expression>Messages.JRU.MESSAGE.DRIVER_S_ACTIONS.Message
 {
     HEADER =&gt; CreateHeader(11),
@@ -5217,7 +5082,6 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
  Name="Value"
  Guid="ea253938-e458-4f2e-a96b-33cbf5258224"
 >
-<Comment></Comment>
 <Expression>Messages.JRU.MESSAGE.DMI_SYMB_STATUS.Message
 {
     HEADER =&gt; CreateHeader(21),
@@ -5341,7 +5205,6 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
  Name="Value"
  Guid="a63d0040-4a3f-4924-bcf5-ae58e0be31f3"
 >
-<Comment></Comment>
 <Expression>aJRU.PreviousDMISymbolStatusMessage != CreateDMISymbolStatusChangeMessage().DMI_SYMBOL_STATUS</Expression>
 </Case></Cases>
 </Function><Function
@@ -5376,7 +5239,6 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
  Name="Enter RBC data"
  Guid="b923de40-ca35-47af-aa65-debcbb0c9940"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="2b82547a-fcc6-4d1d-998e-f24c32080b18"
@@ -5396,7 +5258,6 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
  Name="Otherwise"
  Guid="d4b0d8ad-7032-472c-8cba-7118793d6056"
 >
-<Comment></Comment>
 <Expression>Messages.JRU.MESSAGE.ADDITIONAL_DATA.Message
 {
     HEADER =&gt; CreateHeader(24),
@@ -5435,7 +5296,6 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
  Name="Value"
  Guid="b6f1ee97-eb90-45fb-b6f8-20eb24cc8d90"
 >
-<Comment></Comment>
 <Expression>aJRU.PreviousAdditionalDataMessage != CreateAdditionalDataMessage()</Expression>
 </Case></Cases>
 </Function></Functions>

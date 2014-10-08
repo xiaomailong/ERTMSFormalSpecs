@@ -25,13 +25,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c6c6f4db-0a3a-40f5-b1d1-70aec200120a"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="2d4205fe-a62e-4306-88c0-fa8ed50b9d93"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2e010dff-05cf-4954-b8f4-2b876b8a1745"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="d925afa7-0975-42ee-8f81-820493dda041"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -61,7 +59,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1e4364f6-faa5-4a22-962c-91ca6283a51e"
 >
-<Comment></Comment>
 </ReqRef><Comment>Distance to beginning of temporary speed restriction.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Length"
@@ -105,7 +102,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4ca85d24-1df1-437b-a998-1e2d1757dc54"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="791d81bb-d47e-4805-901f-1ced394ba425"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -130,7 +126,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c4311166-5b6f-4c69-bdba-92cbb2199306"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -161,8 +156,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="68c47679-d687-4647-a45d-93d4d3d8640c"
 >
-</ReqRef><Comment></Comment>
-</Collection></Collections>
+</ReqRef></Collection></Collections>
 <Functions>
 <Function
  Type="Default.BaseTypes.Length"
@@ -330,7 +324,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="Always"
  Guid="5ebe6a9a-6fe4-4578-b828-6c0b14bd1b4a"
 >
-<Comment></Comment>
 <Expression>THERE_IS_IN TSRs</Expression>
 </Case></Cases>
 </Function></Functions>
@@ -359,7 +352,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a1d03220-b8d7-4018-9cb5-363f55704b62"
 >
-<Comment></Comment>
 </ReqRef><Comment>Removes the specified temporary speed restrictions from the list monitored by the EVC</Comment>
 <Parameters>
 <Parameter
@@ -381,7 +373,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="RemoveTSR"
  Guid="2ed732d8-f4d7-4bbc-9d28-fe407a288f7b"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -389,12 +380,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="RemoveTSR"
  Guid="ae999234-404f-4b6b-bf03-b11484dcb1fb"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="ac57a8af-1931-41ec-a4a6-3e591cb1a63f"
-><Comment></Comment>
-ActiveFunctions.DeleteRevokedTSR()</PreCondition></PreConditions>
+>ActiveFunctions.DeleteRevokedTSR()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="04d2a1fb-9dda-4174-9850-8ac8872b486a"
@@ -461,8 +450,7 @@ ActiveFunctions.DeleteRevokedTSR()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="49ab9cd5-dedc-4a6e-9aaf-5bcd140be261"
 >
-</ReqRef><Comment></Comment>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -489,8 +477,7 @@ ActiveFunctions.DeleteRevokedTSR()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6aae0012-7c33-43ab-9241-2cf3ed58635a"
-><Comment></Comment>
-REPLACE X.Id == Packet.NID_TSR IN TSRs BY TemporarySpeedRestriction
+>REPLACE X.Id == Packet.NID_TSR IN TSRs BY TemporarySpeedRestriction
 {
     Id =&gt; Packet.NID_TSR,
     Length =&gt; Default.MessageTypes.QScaleLength ( length =&gt; Packet.L_TSR, scale =&gt; Packet.Q_SCALE ),
@@ -591,7 +578,6 @@ IN TSRs</Action></Actions>
  Name="RevokeTSR"
  Guid="dfdab89f-e5d8-4c7d-bf15-649d47078a07"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="8e101bfa-646f-443f-983c-1f79b9e26a10"

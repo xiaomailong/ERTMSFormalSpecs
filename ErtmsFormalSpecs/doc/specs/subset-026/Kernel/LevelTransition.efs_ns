@@ -8,7 +8,6 @@
  Name="LevelTransition"
  Guid="c7686458-322b-4861-9f8c-de43b74bb2c3"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
@@ -38,8 +37,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ea4e2c95-0a5b-4441-b32c-26918ed088b7"
 >
-</ReqRef><Comment></Comment>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default=""
  Mode="Internal"
@@ -70,8 +68,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="166e5b58-4865-45e1-a493-cbdd0f15b840"
 >
-</ReqRef><Comment></Comment>
-</StructureElement></Structure><Structure
+</ReqRef></StructureElement></Structure><Structure
  Default=""
  X="260"
  Y="290"
@@ -102,8 +99,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ebc998ec-0df9-4167-afbe-ee3b42ff2856"
 >
-</ReqRef><Comment></Comment>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Internal"
@@ -129,8 +125,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="93b3e829-47db-4fdf-aa99-a5d0304a65e1"
 >
-</ReqRef><Comment></Comment>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
  Mode="Internal"
@@ -159,8 +154,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1da9d143-d07f-490c-98a3-ed1e9d19f02e"
 >
-</ReqRef><Comment></Comment>
-</Collection></Collections>
+</ReqRef></Collection></Collections>
 <Functions>
 <Function
  Type="Default.Level"
@@ -179,8 +173,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="deda796a-0385-4be7-90e2-3d0b343d6564"
 >
-</ReqRef><Comment></Comment>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.M_LEVELTR"
  Name="LevelT"
@@ -425,7 +418,6 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="05acd2a5-8f46-436c-9a1a-5cbe371fef62"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="b14e5210-48d3-4eed-89e3-4d03324dd8f6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -468,7 +460,6 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
  Name="NewLevelTransition"
  Guid="80f02659-3e0a-4140-9113-61a38c5b8fcf"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -502,7 +493,6 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
  Name="NextLevelTransition"
  Guid="7915a4ef-dfb9-4e29-998c-3d273019ad3e"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -553,8 +543,7 @@ Packet.Sequence1</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="338336d3-0344-4b2f-8380-68db927b7096"
 >
-</ReqRef><Comment></Comment>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER.Message"
  Name="Packet"
@@ -701,8 +690,7 @@ Packet.Sequence1</Action></Actions>
  Guid="bd1a1f4f-348c-43d7-a708-6fbb5d523280"
 >Kernel.Level.Value.Value == Default.Level.L0</PreCondition><PreCondition
  Guid="691dd9ff-515f-4c67-a0d5-1cf2ea537d1c"
-><Comment></Comment>
-LTOtoProcess.TRLevel.Value == Default.Level.L1</PreCondition></PreConditions>
+>LTOtoProcess.TRLevel.Value == Default.Level.L1</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="04cbcfde-a8bc-4ce4-af15-db2cd46487b5"
@@ -742,7 +730,6 @@ LTOtoProcess.TRLevel.Value == Default.Level.L1</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fbb1473a-f0aa-4110-908c-b391112b8736"
 >
-<Comment></Comment>
 </ReqRef><Comment>We now prepare the level-transition. I.e. all relevant data has been received and we will now filter out the one single transition which shall be performed</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -750,7 +737,6 @@ LTOtoProcess.TRLevel.Value == Default.Level.L1</PreCondition></PreConditions>
  Name="ReduceLTOtoOne"
  Guid="f4557bca-d63c-4099-88fe-7af1e08de1c5"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -769,7 +755,6 @@ LTOtoProcess.TRLevel.Value == Default.Level.L1</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2a66ddbd-1775-4be9-872c-7381d0d40473"
 >
-<Comment></Comment>
 </ReqRef><Comment>This is only executed if the previous step (&quot;ReduceLTOtoOne&quot;) failed (i,e, nothing is available)</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -777,7 +762,6 @@ LTOtoProcess.TRLevel.Value == Default.Level.L1</PreCondition></PreConditions>
  Name="FallbackIfNothingAvailable"
  Guid="ab6c5d8f-4fea-4400-b8c1-34b13a2785bf"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="aea1dfa9-f22d-41e6-b71f-28c16a37d8ab"
@@ -812,8 +796,7 @@ LTOtoProcess.TRLevel.Value == Default.Level.L1</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9eb81320-eade-44b5-b9b0-46d61d2f7258"
 >
-</ReqRef><Comment></Comment>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="InformDriver"
@@ -824,8 +807,7 @@ LTOtoProcess.TRLevel.Value == Default.Level.L1</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="fd368ae9-0601-449f-b2c9-e3ef3f7370e8"
-><Comment></Comment>
-DMI.MasterDMI().Out_LevelTransitionAnnouncement.Display(LTOtoProcess.TRLevel.Value)</Action></Actions>
+>DMI.MasterDMI().Out_LevelTransitionAnnouncement.Display(LTOtoProcess.TRLevel.Value)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -868,7 +850,6 @@ DMI.MasterDMI().Out_LevelTransitionAnnouncement.Display(LTOtoProcess.TRLevel.Val
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="37a8549c-70e7-40db-81f0-196e5f56600a"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="6b26f38c-d98d-4eee-a314-ae6b48256d36"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -917,14 +898,12 @@ DMI.MasterDMI().Out_LevelTransitionAnnouncement.Display(LTOtoProcess.TRLevel.Val
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5479e312-51ed-4bcd-84c0-79c01422495c"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="569b9466-f366-4f5e-b29a-47dbd42081e2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d9242104-b92f-4824-9f1e-e35e3bb21582"
 >
-</ReqRef><Comment></Comment>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"

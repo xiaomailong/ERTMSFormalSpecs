@@ -82,7 +82,6 @@
  Name="CreateBaliseGroups"
  Guid="f9550a10-747b-4726-934e-39d8fbcbc99a"
 >
-<Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.MESSAGE.TRACK_TO_TRAIN.SR_AUTHORISATION.Collection1"
@@ -157,7 +156,6 @@
  Name="Value"
  Guid="50859194-b6d5-4fe7-89f9-ed0b242b30b3"
 >
-<Comment></Comment>
 <Expression>Available ( SRAuthorisation )
   AND
 SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max )</Expression>

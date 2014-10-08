@@ -6,7 +6,6 @@
  Name="BTM"
  Guid="abe3c9de-4d7b-4a03-a327-8f85ce216c28"
 >
-<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="Linking"
@@ -189,7 +188,6 @@
  Name="LinkingAvailable"
  Guid="66f967b2-9ea2-4470-830c-40f7d1dc1e60"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="fa49fa02-cf11-45fe-ad90-3229a3860cd5"
@@ -208,7 +206,6 @@
  Name="DefaultValue"
  Guid="639ec4cf-d197-42c9-a803-47a931faf986"
 >
-<Comment></Comment>
 <Expression>Default.BaseTypes.Length(Kernel.NationalValues.DefaultValues.DefaultLocationAccuracyOfABaliseGroup)</Expression>
 </Case></Cases>
 </Function><Function
@@ -272,7 +269,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9e92dc5b-c0e4-432e-bab4-2c9a2ab3e362"
 >
-<Comment></Comment>
 </ReqRef><Comment>Provides the previous LRBG, if any.</Comment>
 <Cases>
 <Case
@@ -498,7 +494,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="17bfb0c0-9d46-49c4-ae57-2b48d16ed23d"
 >
-<Comment></Comment>
 </ReqRef><Comment>Provides the previous LRBG, if any.</Comment>
 <Cases>
 <Case
@@ -588,7 +583,6 @@
  Name="Less than two balises in the balise group, valid linking information"
  Guid="f8c55f68-ab50-4409-988b-f66afe23e264"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="682a9ec8-f37d-4d87-8dd6-9a4ca0648099"
@@ -637,7 +631,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="779fe215-3bf2-4c8f-a832-1ed8d5d0f6b2"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="675394d7-4475-4a7f-9846-627ae90086d9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -654,12 +647,10 @@
  Name="Linking available"
  Guid="e5500388-7ed0-4a1d-9efb-de0e559d6fd3"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d6f19038-6d40-4e3d-ba91-773dab02a05a"
-><Comment></Comment>
-Linking.LinkingApplicable()</PreCondition></PreConditions>
+>Linking.LinkingApplicable()</PreCondition></PreConditions>
 <Expression>Linking.CurrentBGWithinFrame()</Expression>
 </Case><Case
  Name="Linking not available"
@@ -684,7 +675,6 @@ Linking.LinkingApplicable()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="92c95d15-1f94-473b-beb0-144ef51692e3"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="55ed41db-cdd9-49da-80a2-b84fd2b4c659"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -753,7 +743,6 @@ Linking.LinkingApplicable()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="677c3283-928f-487a-b70b-5d93061ef40b"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="1918ec5c-54a5-4240-8cd2-5f860383b37c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -801,7 +790,6 @@ If the train direction is unknown, this function returns true only if the packet
  Name="Empty orientation"
  Guid="a74508a2-aed1-4cc4-9e6e-a2a30fcccc99"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="177c2d52-1519-43c6-bdba-f47ef81b1e79"
@@ -811,7 +799,6 @@ If the train direction is unknown, this function returns true only if the packet
  Name="Infill information but no infill transmission media"
  Guid="6afeb3c0-afbb-40ca-bd6b-e2bcb2619c8d"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="91243480-4428-4ba5-93ca-e72252c044da"
@@ -821,7 +808,6 @@ If the train direction is unknown, this function returns true only if the packet
  Name="Value"
  Guid="8ecc0b19-4add-4c5e-82e5-c56868836734"
 >
-<Comment></Comment>
 <Expression>PacketOrientation == EFSOrientationConverter ( BaliseGroupOrientation() )
   OR
 PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
@@ -856,7 +842,6 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Name="Value"
  Guid="d62cbab2-876b-43a9-b9ef-9ab243cac385"
 >
-<Comment></Comment>
 <Expression>Kernel.TrainPosition.FrontEndPosition ( PointOfInterest ) - ActiveAntennaPosition</Expression>
 </Case></Cases>
 </Function><Function
@@ -1154,7 +1139,6 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Name="Value"
  Guid="b6221c53-5616-4adf-a085-1fad71644c39"
 >
-<Comment></Comment>
 <Expression>(FIRST_IN CurrentBaliseGroup | (X.M_MCOUNT != 255 AND X.M_MCOUNT != 254)).M_MCOUNT</Expression>
 </Case></Cases>
 </Function><Function
@@ -1198,7 +1182,6 @@ This is a check for message consistency errors.</Comment>
  Name="There is a telegram that does not fit"
  Guid="a175f1e6-5eaa-4597-b226-a8c565f1774e"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="3a2f7881-1d46-4fd1-97b8-44f8b393e60e"
@@ -1236,7 +1219,6 @@ This is a check for message consistency errors.</Comment>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7d1a8168-b8bc-4b96-af40-5b9e285f9491"
 >
-<Comment></Comment>
 </ReqRef><Comment>This procedure is called for each packet received with a balise telegram.</Comment>
 <Parameters>
 <Parameter
@@ -1267,7 +1249,6 @@ This is a check for message consistency errors.</Comment>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b1bac924-6dc6-4d14-bacc-59c1d6247393"
 >
-<Comment></Comment>
 </ReqRef><Comment>We suppose that an element of type Messages.EUROBALISE.SubStructure1 can only contain one field defined, representing a single packet. The rule looks for the first available element and when it is found, calls the corresponding routing to store the received information.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1290,8 +1271,7 @@ This is a check for message consistency errors.</Comment>
 <PreConditions>
 <PreCondition
  Guid="5ba39e2d-0d86-4404-b853-53b808070955"
-><Comment></Comment>
-ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.NATIONAL_VALUES.Q_DIR )</PreCondition></PreConditions>
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.NATIONAL_VALUES.Q_DIR )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2719277d-f12f-479c-8278-abb173a2d862"
@@ -1324,8 +1304,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.NATIONAL_VALUES.Q
 <Actions>
 <Action
  Guid="250427e6-8ddb-431d-a76d-b4432281374f"
-><Comment></Comment>
-Linking.LinkingInformationReceived ( Packet.TRACK_TO_TRAIN.LINKING )</Action></Actions>
+>Linking.LinkingInformationReceived ( Packet.TRACK_TO_TRAIN.LINKING )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Repositioning Information available"
@@ -1350,15 +1329,13 @@ Linking.LinkingInformationReceived ( Packet.TRACK_TO_TRAIN.LINKING )</Action></A
 <PreConditions>
 <PreCondition
  Guid="a5ae63f6-8d36-44a3-bbd2-212a49b20d81"
-><Comment></Comment>
-ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR )</PreCondition><PreCondition
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR )</PreCondition><PreCondition
  Guid="d86ad34c-f29d-4680-8d17-fef9ba598939"
 >Linking.CurrentLinking().BaliseGroupIdentifier == Messages.NID_BG.NID_UNKNOWN</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="11ff0426-7369-4b98-8ea9-b7674aadda0c"
-><Comment></Comment>
-Kernel.MA.RepositioningInformationReceived ( Packet =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION, DistanceToBG =&gt; Linking.CurrentLinking().Distance )</Action></Actions>
+>Kernel.MA.RepositioningInformationReceived ( Packet =&gt; Packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION, DistanceToBG =&gt; Linking.CurrentLinking().Distance )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Gradient available"
@@ -1618,8 +1595,7 @@ Kernel.MA.RepositioningInformationReceived ( Packet =&gt; Packet.TRACK_TO_TRAIN.
 <Actions>
 <Action
  Guid="d6ca9514-566f-4887-a3f1-0764c122aa72"
-><Comment></Comment>
-Kernel.TrackDescription.AxleLoad.AxleLoadProfileReceived ( Packet.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE )</Action></Actions>
+>Kernel.TrackDescription.AxleLoad.AxleLoadProfileReceived ( Packet.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Permitted Braking Distance Information available"
@@ -1692,13 +1668,11 @@ Kernel.TrackDescription.AxleLoad.AxleLoadProfileReceived ( Packet.TRACK_TO_TRAIN
 <PreConditions>
 <PreCondition
  Guid="673297fe-8eba-443e-93e0-6cde374acf93"
-><Comment></Comment>
-ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.Q_DIR )</PreCondition></PreConditions>
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.Q_DIR )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e619da6c-cc31-4f62-be09-57e9632df39f"
-><Comment></Comment>
-Kernel.TSR.TemporarySpeedRestrictionRevocationReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION,NID_BG=&gt;NID_BG )</Action></Actions>
+>Kernel.TSR.TemporarySpeedRestrictionRevocationReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION,NID_BG=&gt;NID_BG )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Track Condition Big Metal Masses available"
@@ -1839,8 +1813,7 @@ Kernel.TSR.TemporarySpeedRestrictionRevocationReceived ( Packet=&gt;Packet.TRACK
 <PreConditions>
 <PreCondition
  Guid="3df15a50-e4cd-4343-8a41-cb8d3cec0b37"
-><Comment></Comment>
-ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ADHESION_FACTOR.Q_DIR )</PreCondition></PreConditions>
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ADHESION_FACTOR.Q_DIR )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="962f5801-f0a9-42c3-a4c0-6ea2c50f0797"
@@ -1868,8 +1841,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.ADHESION_FACTOR.Q
 <Actions>
 <Action
  Guid="961a9459-5891-48f0-8de2-eddc845ec82f"
-><Comment></Comment>
-Kernel.LX.LXReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION, NID_BG=&gt;NID_BG )</Action></Actions>
+>Kernel.LX.LXReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION, NID_BG=&gt;NID_BG )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="RBC Transition Order available"
@@ -1970,8 +1942,7 @@ Kernel.LX.LXReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATI
 <PreConditions>
 <PreCondition
  Guid="229f8b76-fd9c-43fc-9e81-d3eeef35a300"
-><Comment></Comment>
-ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</PreCondition><PreCondition
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</PreCondition><PreCondition
  Guid="63b7ef27-bbc6-42a7-8bf2-d97a8e0a60c8"
 >THERE_IS_IN CurrentBaliseGroup | HasRevSupervisionInfo(Message=&gt;X)</PreCondition></PreConditions>
 <Actions>
@@ -2062,7 +2033,6 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6beac18d-82e2-426e-b617-0411fdd220dd"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="18834f9f-2f32-40fe-9d9a-97c8e2991f93"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -2108,7 +2078,6 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_IN
  Name="LRBG is available"
  Guid="3b1afa6d-b6ec-451b-95aa-0a2cc16bd7ad"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="c15177bc-4a7d-42a5-a6ac-6d3d2c37f2c0"
@@ -2133,7 +2102,6 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_IN
  Name="Update all distances"
  Guid="a7a697f6-8f4f-4e63-b505-36a910508835"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -2153,7 +2121,6 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_IN
  Name="Update Emergency Stops"
  Guid="af10bbbb-d841-4245-a21b-fc3250b3e532"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="2d7660db-7e10-4467-b71a-c7944f926f7b"
@@ -2161,8 +2128,7 @@ ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_IN
 <Actions>
 <Action
  Guid="64a5b203-43ab-41ec-b698-757a66aa1143"
-><Comment></Comment>
-Kernel.EmergencyStops &lt;- MAP Kernel.EmergencyStops USING Kernel.EmergencyStop{
+>Kernel.EmergencyStops &lt;- MAP Kernel.EmergencyStops USING Kernel.EmergencyStop{
     IsConditional =&gt; X.IsConditional,
     Id =&gt; X.Id,
     StopLocation =&gt; X.StopLocation - DistanceFromLRBG,
@@ -2213,8 +2179,7 @@ Kernel.EmergencyStops &lt;- MAP Kernel.EmergencyStops USING Kernel.EmergencyStop
 <Actions>
 <Action
  Guid="50ba0696-fc68-4e62-bbec-364e5d782455"
-><Comment></Comment>
-Kernel.LX.LevelCrossings &lt;- MAP Kernel.LX.LevelCrossings USING Kernel.LX.LevelCrossing{
+>Kernel.LX.LevelCrossings &lt;- MAP Kernel.LX.LevelCrossings USING Kernel.LX.LevelCrossing{
     Id =&gt; X.Id,
     Location =&gt; X.Location - DistanceFromLRBG,
     Length =&gt; X.Length,
@@ -2291,17 +2256,14 @@ Kernel.LX.LevelCrossings &lt;- MAP Kernel.LX.LevelCrossings USING Kernel.LX.Leve
  Name="Update Adhesion Factors"
  Guid="17b32be8-2947-4325-8612-8e2e6ed254c1"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="41425123-2b7a-4a35-955f-bbc92e8e7c77"
-><Comment></Comment>
-Kernel.TrackDescription.AdhesionFactors.AdhFactors != []</PreCondition></PreConditions>
+>Kernel.TrackDescription.AdhesionFactors.AdhFactors != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0db1043e-a8ac-4926-bc7b-8c94101570dc"
-><Comment></Comment>
-Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;- MAP Kernel.TrackDescription.AdhesionFactors.AdhFactors USING Kernel.TrackDescription.AdhesionFactors.AdhesionFactor{
+>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;- MAP Kernel.TrackDescription.AdhesionFactors.AdhFactors USING Kernel.TrackDescription.AdhesionFactors.AdhesionFactor{
     Distance =&gt; X.Distance - DistanceFromLRBG,
     Length =&gt; X.Length,
     Value =&gt; X.Value
@@ -2324,23 +2286,20 @@ Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;- MAP Kernel.TrackDescrip
 <PreConditions>
 <PreCondition
  Guid="2f7fe40b-0801-4095-9dd0-cb0e00b3bdf3"
-><Comment></Comment>
-Available(Kernel.TrackDescription.AxleLoad.ASP)
+>Available(Kernel.TrackDescription.AxleLoad.ASP)
   AND  
 Kernel.TrackDescription.AxleLoad.ASP.ALs != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="dbdbc531-b34a-4bb5-a79b-4fa70867c086"
-><Comment></Comment>
-Kernel.TrackDescription.AxleLoad.ASP.ALs &lt;- MAP Kernel.TrackDescription.AxleLoad.ASP.ALs USING Kernel.TrackDescription.AxleLoad.AxleLoad{
+>Kernel.TrackDescription.AxleLoad.ASP.ALs &lt;- MAP Kernel.TrackDescription.AxleLoad.ASP.ALs USING Kernel.TrackDescription.AxleLoad.AxleLoad{
     Length =&gt; X.Length,
     TrainLengthDelay =&gt; X.TrainLengthDelay,
     Distance =&gt; X.Distance - DistanceFromLRBG,
     Values =&gt; X.Values
 }</Action><Action
  Guid="a4823d58-e3d0-44d3-a8cb-d3da749c766f"
-><Comment></Comment>
-Kernel.TrackDescription.AxleLoad.ASP.EmptyProfileDistance &lt;- Kernel.TrackDescription.AxleLoad.ASP.EmptyProfileDistance - DistanceFromLRBG</Action></Actions>
+>Kernel.TrackDescription.AxleLoad.ASP.EmptyProfileDistance &lt;- Kernel.TrackDescription.AxleLoad.ASP.EmptyProfileDistance - DistanceFromLRBG</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2356,7 +2315,6 @@ Kernel.TrackDescription.AxleLoad.ASP.EmptyProfileDistance &lt;- Kernel.TrackDesc
  Name="Update Gradients"
  Guid="cbbb196a-7ea3-4458-bc02-f1da27944a69"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e4097af4-c04d-423c-927c-7319de7a8656"
@@ -2394,8 +2352,7 @@ Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedR
  Guid="c600d873-49dc-44dd-8a1a-0bbd72c7bab8"
 >Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.EmptyProfileDistance &lt;- Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.EmptyProfileDistance - DistanceFromLRBG</Action><Action
  Guid="bb71241b-e532-4f32-913e-0e64a7e53c01"
-><Comment></Comment>
-Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions &lt;- MAP Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions USING Kernel.TrackDescription.PermittedBrakingDistance.SRPB{
+>Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions &lt;- MAP Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions USING Kernel.TrackDescription.PermittedBrakingDistance.SRPB{
     Location =&gt; X.Location - DistanceFromLRBG,
     Length =&gt; X.Length,
     Speed =&gt; X.Speed,
@@ -2421,8 +2378,7 @@ Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedR
 <PreConditions>
 <PreCondition
  Guid="41c693e8-3a1f-44fe-9e7d-2ba5e5ff9cc7"
-><Comment></Comment>
-Available(Kernel.TrackDescription.ReversingArea.ReversingAreaProfile)</PreCondition></PreConditions>
+>Available(Kernel.TrackDescription.ReversingArea.ReversingAreaProfile)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a3d612c5-11b4-4469-9b37-1d7eb6af342f"
@@ -2453,8 +2409,7 @@ Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items != []</Pr
  Guid="d6659a82-85cc-4d35-960a-16813e7c869c"
 >Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.EmptyProfileDistance &lt;- Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.EmptyProfileDistance - DistanceFromLRBG</Action><Action
  Guid="2c519ddc-d31a-4a25-a641-3e51f3099427"
-><Comment></Comment>
-Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items &lt;- MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items USING Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItem{
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items &lt;- MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items USING Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItem{
     Type =&gt; X.Type,
     Distance =&gt; X.Distance - DistanceFromLRBG,
     LineGauge =&gt; X.LineGauge,
@@ -2480,8 +2435,7 @@ Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items &lt;- MAP
 <PreConditions>
 <PreCondition
  Guid="e247a056-3579-487e-b4b1-2b6785beddbe"
-><Comment></Comment>
-Kernel.TrackDescription.StaticSpeedProfile.SSP != []</PreCondition></PreConditions>
+>Kernel.TrackDescription.StaticSpeedProfile.SSP != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8bb2f7b7-e5ec-4f3b-8166-f68ba0fd7f42"
@@ -2559,8 +2513,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP != []</PreCondition></PreConditio
 <Actions>
 <Action
  Guid="56b280f3-d732-44db-bec8-8860b3143772"
-><Comment></Comment>
-Kernel.TrackDescription.TrackConditions.General.TCProfile &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation{
+>Kernel.TrackDescription.TrackConditions.General.TCProfile &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation{
     Distance =&gt; X.Distance - DistanceFromLRBG,
     Value =&gt; X.Value
 }</Action></Actions>
@@ -2579,12 +2532,10 @@ Kernel.TrackDescription.TrackConditions.General.TCProfile &lt;- MAP Kernel.Track
  Name="Update TC Announcements"
  Guid="8bd7601d-8dcf-43b4-96c6-0f0ea98d0ab5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="ebba61da-3562-456e-88a1-6206c6260185"
-><Comment></Comment>
-Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements != []</PreCondition></PreConditions>
+>Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="bd58a81a-7bbc-4de8-89de-d6b278982120"
@@ -2721,8 +2672,7 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements != []</P
 <Actions>
 <Action
  Guid="2f3fc0ef-d564-4b97-b378-0177fc65da81"
-><Comment></Comment>
-Kernel.TSR.TSRs &lt;- MAP Kernel.TSR.TSRs USING Kernel.TSR.TemporarySpeedRestriction{
+>Kernel.TSR.TSRs &lt;- MAP Kernel.TSR.TSRs USING Kernel.TSR.TemporarySpeedRestriction{
     Location =&gt; X.Location - DistanceFromLRBG,
     Length =&gt; X.Length,
     Speed =&gt; X.Speed,
@@ -2746,7 +2696,6 @@ The list is updated in case two LRBGs provide the same MRSP, this should count a
  Name="Update SupervisedTargets"
  Guid="2e9ad671-d70f-4899-89f1-42f7f9bc6430"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="c84d8a44-5988-4408-b72a-3fa217e5cdbc"
@@ -2754,8 +2703,7 @@ The list is updated in case two LRBGs provide the same MRSP, this should count a
 <Actions>
 <Action
  Guid="48f28414-15b8-407c-9ccc-7b7bbb265b2f"
-><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.SupervisedTargets &lt;- MAP Kernel.SpeedAndDistanceMonitoring.SupervisedTargets USING Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+>Kernel.SpeedAndDistanceMonitoring.SupervisedTargets &lt;- MAP Kernel.SpeedAndDistanceMonitoring.SupervisedTargets USING Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
     Location =&gt; X.Location - DistanceFromLRBG,
     Speed =&gt; X.Speed,
     Length =&gt; X.Length
@@ -2775,7 +2723,6 @@ Kernel.SpeedAndDistanceMonitoring.SupervisedTargets &lt;- MAP Kernel.SpeedAndDis
  Name="Update MA"
  Guid="0aa9b271-0ff4-434d-afd2-abf96c4bdbfb"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="9f7ce8dd-40cf-4439-b67e-a01b25e77e7d"
@@ -2805,8 +2752,7 @@ Kernel.SpeedAndDistanceMonitoring.SupervisedTargets &lt;- MAP Kernel.SpeedAndDis
 <Actions>
 <Action
  Guid="1a79f6be-8cd7-40c6-9975-e855cdded2c5"
-><Comment></Comment>
-Kernel.MA.MA.EndSection.Length &lt;- Kernel.MA.MA.EndSection.Length - BaseTypes.DistanceToLength( BGLocationReference.Position - LRBG.Position.Position )</Action></Actions>
+>Kernel.MA.MA.EndSection.Length &lt;- Kernel.MA.MA.EndSection.Length - BaseTypes.DistanceToLength( BGLocationReference.Position - LRBG.Position.Position )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="There are sections - train is in the end section"
@@ -2816,13 +2762,11 @@ Kernel.MA.MA.EndSection.Length &lt;- Kernel.MA.MA.EndSection.Length - BaseTypes.
 <PreConditions>
 <PreCondition
  Guid="d424a96a-5c7d-4c07-b419-e3cf71806b66"
-><Comment></Comment>
-BGLocationReference.Position - LRBG.Position.Position &gt;= Kernel.MA.EndSectionStart()</PreCondition></PreConditions>
+>BGLocationReference.Position - LRBG.Position.Position &gt;= Kernel.MA.EndSectionStart()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b9ea2e9d-59d1-4ef8-88df-d51843437f9e"
-><Comment></Comment>
-Kernel.MA.RelocateMAinEndSection(BGLocationReference.Position - LRBG.Position.Position)</Action></Actions>
+>Kernel.MA.RelocateMAinEndSection(BGLocationReference.Position - LRBG.Position.Position)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Train is in one of the sections"
@@ -2852,7 +2796,6 @@ Kernel.MA.RelocateMAinEndSection(BGLocationReference.Position - LRBG.Position.Po
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e90a4163-5b91-4747-8052-0602b8d6cd03"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="2296310f-3ab8-4332-9af3-424d5a85eb88"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -2867,14 +2810,12 @@ Kernel.MA.RelocateMAinEndSection(BGLocationReference.Position - LRBG.Position.Po
  Name="Update LRBG values"
  Guid="a8fe89c4-6f5d-4d9a-92eb-f96ffbf1883e"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="0ed7fcdc-0c4d-4e64-b329-3a748a11b5b8"
-><Comment></Comment>
-LRBG &lt;- BTM.BaliseGroup { 
+>LRBG &lt;- BTM.BaliseGroup { 
   NID =&gt; Nid_BG,
   Position =&gt; BGLocationReference,
   Orientation =&gt; BaliseGroupOrientation()
@@ -2984,7 +2925,6 @@ LRBG &lt;- BTM.BaliseGroup {
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9b6ea606-21f9-4e4f-9f72-a903cbde27f5"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="18834f9f-2f32-40fe-9d9a-97c8e2991f93"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -3004,23 +2944,18 @@ LRBG &lt;- BTM.BaliseGroup {
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="936076b4-52d1-470d-adbe-5d793f0c72ac"
 >
-</ReqRef><Comment></Comment>
-<PreConditions>
+</ReqRef><PreConditions>
 <PreCondition
  Guid="f59f7d3d-8d42-4bdd-bbd8-4c554420d5a0"
-><Comment></Comment>
-LRBG.NID != BG_To_LRBG(Message.NID_BG)</PreCondition><PreCondition
+>LRBG.NID != BG_To_LRBG(Message.NID_BG)</PreCondition><PreCondition
  Guid="cb8a8653-84b9-4caf-ae7e-a410b15b64ea"
-><Comment></Comment>
-Message.N_PIG == 0</PreCondition><PreCondition
+>Message.N_PIG == 0</PreCondition><PreCondition
  Guid="9a0cc237-370c-4dcb-b53c-9bf804dd2a0d"
-><Comment></Comment>
-LRBGCandidate( )</PreCondition></PreConditions>
+>LRBGCandidate( )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3c939d6a-99af-451a-b12d-368fece30c2a"
-><Comment></Comment>
-HandleNewLRBG(Default.BG_To_LRBG(Nid_BG =&gt; Message.NID_BG), DistanceFromLRBG =&gt; DistanceFromLRBG)</Action></Actions>
+>HandleNewLRBG(Default.BG_To_LRBG(Nid_BG =&gt; Message.NID_BG), DistanceFromLRBG =&gt; DistanceFromLRBG)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3042,7 +2977,6 @@ HandleNewLRBG(Default.BG_To_LRBG(Nid_BG =&gt; Message.NID_BG), DistanceFromLRBG 
  Name="Unlinked BG"
  Guid="51d206fc-d4b1-42ee-8e76-c5ffeea965a5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1f80f179-74aa-465e-b6d3-e15aba062a97"
@@ -3154,7 +3088,6 @@ HandleNewLRBG(Default.BG_To_LRBG(Nid_BG =&gt; Message.NID_BG), DistanceFromLRBG 
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="84b9cb4b-0d98-4456-ba5b-3d807059f356"
 >
-<Comment></Comment>
 </ReqRef><Comment>Handles the packets received within the current balise telegram and applies the linking reaction, if any.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -3164,14 +3097,12 @@ HandleNewLRBG(Default.BG_To_LRBG(Nid_BG =&gt; Message.NID_BG), DistanceFromLRBG 
  Name="Handle balise telegram"
  Guid="fe32348d-91f9-476a-97ec-c3c2f59fcb40"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="feca666a-c800-4808-8ad5-6479427df552"
-><Comment></Comment>
-APPLY HandleNewPacket(
+>APPLY HandleNewPacket(
   Packet=&gt;X, 
   NID_BG=&gt;Message.NID_BG,
   NID_C=&gt;Message.NID_C
@@ -3195,7 +3126,6 @@ ON Message.Sequence1</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="963564c8-210c-4f35-a865-6a5933adacd1"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="122fc267-0025-4f6a-8684-93c445b0a545"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -3236,7 +3166,6 @@ If all the messages of the current balise group have been received, calls Handle
  Name="Keep time of first encountered balise in the group"
  Guid="93775a88-0ffa-44f4-a42b-82fc8503f81f"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="8fe19c66-0b4c-4f8b-9c03-95f752905437"
@@ -3244,8 +3173,7 @@ If all the messages of the current balise group have been received, calls Handle
 <Actions>
 <Action
  Guid="a11e1a7b-5620-4f84-b0a8-20ae6f967732"
-><Comment></Comment>
-Kernel.MA.CurrentBGTimeOfPassage &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
+>Kernel.MA.CurrentBGTimeOfPassage &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -3268,8 +3196,7 @@ Kernel.MA.CurrentBGTimeOfPassage &lt;- Kernel.DateAndTime.CurrentTime</Action></
 <Actions>
 <Action
  Guid="989096bd-3294-40f5-81b7-908279de9c8e"
-><Comment></Comment>
-INSERT Message IN CurrentBaliseGroup</Action></Actions>
+>INSERT Message IN CurrentBaliseGroup</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -3294,8 +3221,7 @@ INSERT Message IN CurrentBaliseGroup</Action></Actions>
 <Actions>
 <Action
  Guid="2b0bea2f-701c-4d39-b9fb-f12ed87bc4e4"
-><Comment></Comment>
-BGLocationReference &lt;- PositionFromOdometry()</Action></Actions>
+>BGLocationReference &lt;- PositionFromOdometry()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -3317,16 +3243,13 @@ BGLocationReference &lt;- PositionFromOdometry()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="4c98c872-6bf7-41f9-b74a-be01dbe0b55c"
-><Comment></Comment>
-(COUNT CurrentBaliseGroup) == Message.N_TOTAL + 1</PreCondition><PreCondition
+>(COUNT CurrentBaliseGroup) == Message.N_TOTAL + 1</PreCondition><PreCondition
  Guid="5c234098-e0ba-4346-af26-d08a73a3f179"
-><Comment></Comment>
-BGMessageCountersAllFit()</PreCondition></PreConditions>
+>BGMessageCountersAllFit()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e7bdbad0-03e6-4eab-af45-686bb9024af6"
-><Comment></Comment>
-Linking.CheckBGBeforeHandling()</Action></Actions>
+>Linking.CheckBGBeforeHandling()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3452,14 +3375,12 @@ The parameter DistanceFromLRBG is needed for the case when the handled BG will b
  Name="Handle packets in balise telegrams"
  Guid="e7516273-ac16-4172-b145-c531401e38e3"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="71fe05ea-2e2a-441e-a4c5-fa8e04162cb8"
-><Comment></Comment>
-APPLY HandleBaliseTelegram ( Message =&gt; X, DistanceFromLRBG =&gt; DistanceFromLRBG ) ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( Message =&gt; X )</Action></Actions>
+>APPLY HandleBaliseTelegram ( Message =&gt; X, DistanceFromLRBG =&gt; DistanceFromLRBG ) ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( Message =&gt; X )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3615,7 +3536,6 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7a1dc460-abb3-4c24-8dd5-8632271e5b79"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="29095085-0fb7-4b73-9d32-ae4ead9cd37e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -3680,7 +3600,6 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="af50a432-2fa9-4cc0-9306-cbc8cfac4344"
 >
-<Comment></Comment>
 </ReqRef><Comment>Saves the information provided by the odometry at the moment where an unlinked balise group is passed. Used to compute the position, over and under reading amount relative to that unlinked balise. Can be deleted by setting its State sub variable to DataState.Unknown.</Comment>
 </Variable><Variable
  Type="BaliseGroups"
@@ -3797,7 +3716,6 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
  Name="Clear just received balise telegram"
  Guid="e91bd168-b15b-4d39-9118-f43381b943f2"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="4132dda5-2120-4cda-bde2-a390d3213f78"
@@ -3825,7 +3743,6 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
  Name="Clear current balises from current balise group"
  Guid="9942d5a4-ca09-49f3-8cdd-781b0dc75e3e"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="80faa721-59ed-4ef4-a364-af49f0e5d159"

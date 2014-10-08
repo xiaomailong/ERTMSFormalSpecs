@@ -6,7 +6,6 @@
  Name="ConversionModel"
  Guid="785a0e41-5ce3-4f0e-9075-e9d56cee7e2a"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Functions>
@@ -41,7 +40,6 @@
  Name="ConversionModelIsUsed"
  Guid="833a0587-3a60-4c33-84c4-eddbf6afd905"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="34841063-c56b-4747-8a29-d4ee8c1f936e"
@@ -63,7 +61,6 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
  Name="ConversionModelIsNotUsed"
  Guid="1eca3392-96f6-4459-a717-0e52d880c305"
 >
-<Comment></Comment>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
@@ -82,7 +79,6 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4245918f-1c95-45b6-87ea-da5d85513d53"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="bd14268e-c4d0-44f2-a9dd-817a03791b18"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -477,7 +473,6 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
  Name="Target speed equals 0"
  Guid="86c08acc-12f8-44a1-b519-534f657b3400"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="354a7837-4c74-424d-9cdd-f4e2490818b8"
@@ -487,7 +482,6 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
  Name="Target speed different from 0"
  Guid="6b630290-2b75-4b96-beab-6b264324be77"
 >
-<Comment></Comment>
 <Expression>T_brake_emergency_cmt</Expression>
 </Case></Cases>
 </Function><Function
@@ -1209,8 +1203,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fb4d281f-b47b-4380-93c7-3913eba9c2c9"
 >
-</ReqRef><Comment></Comment>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
@@ -1323,11 +1316,9 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
 <Actions>
 <Action
  Guid="a302e1a2-0224-4cba-929a-d8b95dae5eaf"
-><Comment></Comment>
-A_brake_service &lt;- BrakingModel{}</Action><Action
+>A_brake_service &lt;- BrakingModel{}</Action><Action
  Guid="2f647c3e-ddf5-4d59-ae49-e30c06c092d7"
-><Comment></Comment>
-ComputeA_safe ( aBrakingModel =&gt; A_brake_service, aBrakePercentage =&gt; MinPercentage ( TrainData.Value.BrakePercentage, 135.0 ) )</Action></Actions>
+>ComputeA_safe ( aBrakingModel =&gt; A_brake_service, aBrakePercentage =&gt; MinPercentage ( TrainData.Value.BrakePercentage, 135.0 ) )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1521,7 +1512,6 @@ ComputeA_safe ( aBrakingModel =&gt; A_brake_service, aBrakePercentage =&gt; MinP
  Name="Initialize"
  Guid="37fb9f96-056f-470d-9256-419a57f6de37"
 >
-<Comment></Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -1539,8 +1529,7 @@ ComputeA_safe ( aBrakingModel =&gt; A_brake_service, aBrakePercentage =&gt; MinP
 <PreConditions>
 <PreCondition
  Guid="9d9968f1-7c51-4c22-b2be-1cdd9bf7a9ac"
-><Comment></Comment>
-Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed()</PreCondition></PreConditions>
+>Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="035b7c8e-f585-4eba-90ae-4a8d9791308c"
@@ -1588,7 +1577,6 @@ Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed()</PreC
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9a7f8631-9335-4841-951d-5a522667a85f"
 >
-<Comment></Comment>
 </ReqRef><Comment>The value of the equivalent emergency brake build up time to be used when the target speed (V_target) is equal to zero.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
@@ -1771,7 +1759,6 @@ Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed()</PreC
  Name="ConversionModelWasUsed"
  Guid="78c4e9b2-8599-4ea9-8ddc-6c0286912d95"
 >
-<Comment></Comment>
 </Variable></Variables>
 <Rules>
 <Rule

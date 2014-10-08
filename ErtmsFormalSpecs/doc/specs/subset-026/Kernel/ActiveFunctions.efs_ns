@@ -7,7 +7,6 @@
  Name="ActiveFunctions"
  Guid="2e084590-0115-4ff8-b512-b2ed5a60fd7e"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Functions>
@@ -25,7 +24,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f54e3851-9e43-41c1-9a2c-fbb018d7ad83"
 >
-<Comment></Comment>
 </ReqRef><Comment>Provide Juridical Data</Comment>
 <Cases>
 <Case
@@ -136,7 +134,6 @@
  Name="Value"
  Guid="6b6de77d-f5d4-4c3e-9372-412bed5cbe3c"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
@@ -245,7 +242,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="817fdd0f-ffad-4a99-862b-7c07d47768dc"
 >
-<Comment></Comment>
 </ReqRef><Comment>Check radio safe connection (only level 2/3)</Comment>
 <Cases>
 <Case
@@ -255,8 +251,7 @@
 <PreConditions>
 <PreCondition
  Guid="b5195f57-8d82-4126-a16f-7c1c0e7e4643"
-><Comment></Comment>
-Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case><Case
  Name="Otherwise"
@@ -310,12 +305,10 @@ Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreCon
  Name="Active"
  Guid="268e9240-1f32-4233-82de-812a02613330"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="39825e2d-4543-4170-8e3d-00650c59c6c4"
-><Comment></Comment>
-Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</PreCondition></PreConditions>
+>Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Optional"
@@ -417,7 +410,6 @@ Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Def
  Name="Report"
  Guid="346c00fe-dcbc-400d-a8db-22628df93f8a"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="5aee2c1d-a0f6-4b37-be3e-c55a9aa8261d"
@@ -432,22 +424,18 @@ Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Def
 <PreConditions>
 <PreCondition
  Guid="295d32ba-f59a-4ad3-a7ae-7d3d0550c322"
-><Comment></Comment>
-Mode in [Default.Mode.SH]</PreCondition><PreCondition
+>Mode in [Default.Mode.SH]</PreCondition><PreCondition
  Guid="884d5621-9ca3-442a-ba99-a5d01e44b3d7"
-><Comment></Comment>
-ModeTransitions.PrevMode in [Default.Mode.PS]</PreCondition></PreConditions>
+>ModeTransitions.PrevMode in [Default.Mode.PS]</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Optional"
  Guid="7ea0ebb6-1b79-4800-8c36-077b3dc41198"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="efb4d79a-dcad-4d61-90f6-f130708ecfce"
-><Comment></Comment>
-Mode in [Default.Mode.IS]</PreCondition></PreConditions>
+>Mode in [Default.Mode.IS]</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Do not report"
@@ -475,7 +463,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="4a804765-dac0-423c-9281-b96cc52d5d1b"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.PT]</Expression>
 </Case></Cases>
 </Function><Function
@@ -522,7 +509,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="afcb7a41-3124-491c-90d2-e6cd20062eab"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.TR]</Expression>
 </Case></Cases>
 </Function><Function
@@ -546,7 +532,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="784790e5-a6f8-41cf-bbff-8a2c81ac1f1f"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN, Default.Mode.TR, Default.Mode.SN]</Expression>
 </Case></Cases>
 </Function><Function
@@ -568,7 +553,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="437c19f2-074e-4717-bd26-b4c56b2dba79"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.NL, Default.Mode.TR]</Expression>
 </Case></Cases>
 </Function><Function
@@ -591,7 +575,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="0fdb4d61-5a19-46a1-a4e0-a1ab86a8d481"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.NL]</Expression>
 </Case></Cases>
 </Function><Function
@@ -614,7 +597,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="995a5e36-c10e-40bf-b184-2b14c8749249"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.SB, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
@@ -637,7 +619,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="cb14d851-a4ed-4294-99f3-222043d485e9"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
@@ -660,7 +641,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="4ae75180-8373-4ea8-bc39-e6dd83d53325"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
@@ -676,14 +656,12 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2ce98b3c-6932-4da0-b7c2-887590d15dff"
 >
-<Comment></Comment>
 </ReqRef><Comment>Request MA Cyclically respect to approach of target indication point (T_MAR) or MA timer elapsing (T_TIMEOUTRQST) (only level 2/3)</Comment>
 <Cases>
 <Case
  Name="In level 2/3"
  Guid="1b7d8be5-c2d6-405d-8183-6f2a1173bfc0"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="78dbd150-714b-4f89-8d21-2f96f136d7a3"
@@ -715,7 +693,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="In level 2/3"
  Guid="e5cbf369-590f-4380-86e8-d4c544f1e7c1"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="fefc211f-8a6a-43e8-b94a-50b4eca03913"
@@ -747,7 +724,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Level 1/2/NTC"
  Guid="842e9e9c-407a-433e-b5cf-f91b7ca418c2"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="2399483d-9b07-4b1a-ac53-bb018b4801c1"
@@ -779,7 +755,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="18bc53ab-5f85-4714-921b-a6ec3fa1a48e"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
@@ -797,14 +772,12 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3e69fc01-700c-4f9d-9c99-d5bda4c27886"
 >
-<Comment></Comment>
 </ReqRef><Comment>Determine EOA/LOA, SvL, Danger Point, etc..</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="3b30ce0a-b68c-4a6c-bc86-2cfbcf89eae0"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
@@ -827,7 +800,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="8b36e6fd-5711-4a40-879d-0ded2a88b240"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
@@ -850,7 +822,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="83ca11e1-42ed-4d2f-b304-00debb4e297d"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.PT]</Expression>
 </Case></Cases>
 </Function><Function
@@ -873,7 +844,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="9e61cbbc-feae-450e-9cc1-76581cf47468"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS, Default.Mode.PT]</Expression>
 </Case></Cases>
 </Function><Function
@@ -891,14 +861,12 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2247040b-de12-45c7-8a34-b19a378821d8"
 >
-<Comment></Comment>
 </ReqRef><Comment>SSP</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="19748c77-9f71-434b-9046-ddf0ee2530d7"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
@@ -923,7 +891,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="bfd4329e-e777-4a97-afd8-bfaf7022a487"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
@@ -948,7 +915,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="2e8130c7-d1b7-4c80-bf2d-2ebeea5d4cb9"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN]</Expression>
 </Case></Cases>
 </Function><Function
@@ -967,14 +933,12 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4fc3f37e-8487-424f-a0b8-4fa26c115b49"
 >
-<Comment></Comment>
 </ReqRef><Comment>Signalling related speed restriction when evaluated as a speed limit</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="3960fd86-644a-4b8e-8d3e-f80d0684536f"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
@@ -993,14 +957,12 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="436e3653-216f-44e8-954c-19be35a29eed"
 >
-<Comment></Comment>
 </ReqRef><Comment>Mode related speed restriction</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="270a6c39-0ee7-4fc6-a2c3-f784202bc6a8"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.SH, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1025,7 +987,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="eec91ca0-e76e-477e-a370-40a0a1b2fa3f"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1044,14 +1005,12 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a45bbfff-96be-485e-b34e-106d62ea3d81"
 >
-<Comment></Comment>
 </ReqRef><Comment>STM max speed</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="8c7b80ba-268e-455c-9c3a-e48711d7af6f"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1070,14 +1029,12 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c1a40a8c-495e-45ea-a9cf-940946240594"
 >
-<Comment></Comment>
 </ReqRef><Comment>STM system speed</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="659528aa-f1e2-476f-ae44-133334695023"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1101,7 +1058,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="3b3e2100-eefe-40b5-aebf-381aff6de46d"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1120,14 +1076,12 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="23d8e4ac-2f6f-409a-8c45-17cba1a828d5"
 >
-<Comment></Comment>
 </ReqRef><Comment>Speed restriction to ensure a given permitted braking distance</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="2b647cee-d918-4a83-9092-58f960a99a6c"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1151,7 +1105,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="cd04337d-db02-4176-879c-531856a1f199"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.SH, Default.Mode.SR, Default.Mode.UN]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1175,7 +1128,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="97653598-0583-4364-826b-45073e47b1a7"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.UN]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1199,7 +1151,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="603ee7db-465f-498f-8124-2a0a42355123"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.SR]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1223,7 +1174,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="78c34474-81fe-422c-9294-aea7ce2eb836"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.SH]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1247,7 +1197,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="b66de40c-60ed-4f24-bbf3-447d10bbbec8"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.PT, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1271,7 +1220,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="acde9d82-0c38-48c2-bee1-0e9b296d91b9"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN, Default.Mode.PT, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1294,7 +1242,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="957ea5da-a994-4eae-8022-9c959c1c2d2f"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.PT, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1318,7 +1265,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="814ee622-32dd-4c30-bf00-3bf6fa979540"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.SB]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1342,7 +1288,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="3aaffc4f-88db-4a51-8bcb-736449196dda"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.SH]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1366,7 +1311,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="90e90bf0-d3b2-4303-8c23-00f1d2a7de69"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.SR]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1390,7 +1334,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="4e6ba67b-cd36-4d9f-90d5-f97898439c64"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1414,7 +1357,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="f0122b7b-080b-4d30-b39f-c38816fd322b"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.NP, Default.Mode.TR, Default.Mode.SF]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1535,7 +1477,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="de188a60-1501-4e1a-b438-e3ddaec23e42"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1583,7 +1524,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="c3679ede-fd90-4f12-b118-2d5a3ef7f628"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS, Default.Mode.NL, Default.Mode.TR, Default.Mode.PT]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1607,7 +1547,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="642795a5-e067-41f2-9e79-c2fc22b0352c"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1631,7 +1570,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Active"
  Guid="09090894-f777-4992-906c-bb3c5be0ce3d"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="6daeb51c-15d2-4237-a78f-f8474a3ec7fe"
@@ -1674,7 +1612,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="22b80bfe-4430-4271-9ffc-7ead41fd318f"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.FS, Default.Mode.LS, Default.Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1697,7 +1634,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="c0bafc6e-5900-4262-9610-5729450aab1d"
 >
-<Comment></Comment>
 <Expression>Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1722,7 +1658,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="56636f6c-f6fd-430c-b845-27254575bf1d"
 >
-<Comment></Comment>
 <Expression>Mode in [Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.SL, Mode.NL, Mode.TR]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1746,7 +1681,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="3559484a-0a4a-4144-9c77-a41ed22d9564"
 >
-<Comment></Comment>
 <Expression>Mode in [Mode.SB, Mode.LS, Mode.SR, Mode.OS, Mode.PT]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1794,7 +1728,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="75f16b67-5342-48e7-9380-f834d9d8fa83"
 >
-<Comment></Comment>
 <Expression>Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.UN, Mode.TR, Mode.PT, Mode.SN]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1842,7 +1775,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Level 2/3"
  Guid="871aa872-894f-493a-8fe4-8438d13938f2"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="6db09e5f-5add-4e3b-90dd-144374d16ee8"
@@ -1875,7 +1807,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Optional"
  Guid="03310ff3-febe-42c0-bccc-b34c4984acd5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="66b3435b-65a0-49ee-bec6-8eba5c2e438e"
@@ -1907,7 +1838,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="316b407a-993f-42b3-ba55-864ac60a8304"
 >
-<Comment></Comment>
 <Expression>Mode in [Mode.SH]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1931,7 +1861,6 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
  Name="Value"
  Guid="87433685-0677-4d64-8d99-31e5aa31c24d"
 >
-<Comment></Comment>
 <Expression>Mode in [Mode.PS]</Expression>
 </Case></Cases>
 </Function><Function
@@ -1959,19 +1888,16 @@ Mode in [Default.Mode.IS]</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="afed15c0-21be-471d-9002-1b581d022304"
-><Comment></Comment>
-Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</PreCondition></PreConditions>
+>Mode in [Default.Mode.SB, Default.Mode.PS, Default.Mode.SH, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Default.Mode.OS, Default.Mode.SL, Default.Mode.NL, Default.Mode.UN, Default.Mode.TR, Default.Mode.PT, Default.Mode.SN, Default.Mode.RV]</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Optional"
  Guid="62dba384-d989-4be4-88f1-465ac72c695d"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="b85f251e-a2f8-4eb9-b720-a875773efd61"
-><Comment></Comment>
-Mode in [Mode.SF, Mode.IS]</PreCondition></PreConditions>
+>Mode in [Mode.SF, Mode.IS]</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Inactive"
@@ -2000,7 +1926,6 @@ Mode in [Mode.SF, Mode.IS]</PreCondition></PreConditions>
  Name="Optional"
  Guid="cd489bfa-7e4a-4673-b4ac-55058bb56563"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="8a08d78d-ecb2-4bc8-8080-f1d1e6fc21d9"

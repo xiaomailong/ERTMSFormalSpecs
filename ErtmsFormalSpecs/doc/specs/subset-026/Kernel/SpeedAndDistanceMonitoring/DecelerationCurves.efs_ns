@@ -5,7 +5,6 @@
  Name="DecelerationCurves"
  Guid="c42809f7-cbe8-4377-b058-7b294c828107"
 >
-<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="GUI"
@@ -53,7 +52,6 @@
  Name="Value"
  Guid="1529fd2f-2eb1-49c8-94c8-feb16efd487c"
 >
-<Comment></Comment>
 <Expression>DecelerationProfile ( 
   SpeedRestrictions =&gt; CeilingSpeedMonitoring.EBI, 
   DecelerationFactor =&gt; TrainData.BrakingParameters.A_safe )
@@ -103,12 +101,10 @@
  Name="Target is SvL"
  Guid="89965c75-54ea-4943-a28e-90a2bf3c3c74"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="ac0d0078-99a7-4f27-80e8-3a0377e0a324"
-><Comment></Comment>
-MA.IsSvL(aTarget)
+>MA.IsSvL(aTarget)
   OR  
 IsMaxDistToRunInSR(aTarget)</PreCondition></PreConditions>
 <Expression>FullDecelerationForTarget (
@@ -119,7 +115,6 @@ IsMaxDistToRunInSR(aTarget)</PreCondition></PreConditions>
  Name="Value"
  Guid="e744ba80-63dc-46f3-837d-ede2f1c0ffb4"
 >
-<Comment></Comment>
 <Expression>FullDecelerationForTarget (
     Target=&gt;Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
     Location =&gt; aTarget.Location,
@@ -164,7 +159,6 @@ IsMaxDistToRunInSR(aTarget)</PreCondition></PreConditions>
  Name="Value"
  Guid="bca2d71f-a08b-43dc-8b35-801a1a0befca"
 >
-<Comment></Comment>
 <Expression>DistanceForSpeed (
     Function =&gt;
         FUNCTION d : Default.BaseTypes.Distance =&gt; EBD_Target ( Distance =&gt; d, aTarget =&gt; aTarget ),
@@ -196,7 +190,6 @@ IsMaxDistToRunInSR(aTarget)</PreCondition></PreConditions>
  Name="Value"
  Guid="e5a1aca8-13d7-47b4-a901-6eafb11d3c44"
 >
-<Comment></Comment>
 <Expression>DistanceForSpeed(
     Function=&gt;EBD,
     Speed=&gt;Speed + CeilingSpeedMonitoring.dV_ebi(Speed)
@@ -232,7 +225,6 @@ IsMaxDistToRunInSR(aTarget)</PreCondition></PreConditions>
  Name="Always"
  Guid="97d73dd3-41c1-41ad-b682-8ea8dfad5174"
 >
-<Comment></Comment>
 <Expression>DecelerationProfile ( 
   SpeedRestrictions =&gt; GUI.SpeedRestrictions 
   DecelerationFactor =&gt; TrainData.BrakingParameters.A_normal_service ) 
@@ -277,7 +269,6 @@ IsMaxDistToRunInSR(aTarget)</PreCondition></PreConditions>
  Name="Value"
  Guid="6a8616f4-c654-41eb-8c0b-dd85faaf713e"
 >
-<Comment></Comment>
 <Expression>Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(EstimatedAccelerationSetToZero), X2 =&gt; Vtarget ) + Vdelta2(EstimatedAccelerationSetToZero)</Expression>
 </Case></Cases>
 </Function><Function
@@ -324,7 +315,6 @@ IsMaxDistToRunInSR(aTarget)</PreCondition></PreConditions>
  Name="Value"
  Guid="65053d1d-56ea-40c0-958e-a23368d66654"
 >
-<Comment></Comment>
 <Expression>BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(EstimatedAccelerationSetToZero) / 2.0, X2 =&gt; Vtarget ) ) * T_traction(EstimatedAccelerationSetToZero) +
 BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(EstimatedAccelerationSetToZero), X2 =&gt; Vtarget ) + Vdelta2(EstimatedAccelerationSetToZero) / 2.0 )  * T_berem(EstimatedAccelerationSetToZero)</Expression>
 </Case></Cases>
@@ -351,7 +341,6 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(E
  Name="Value"
  Guid="17f1ca46-76c5-4135-a9e6-bf0e63dddd19"
 >
-<Comment></Comment>
 <Expression>Default.BaseTypes.MinAcceleration ( X1 =&gt; 0.4, X2 =&gt; Default.BaseTypes.MaxAcceleration ( X1 =&gt; 0.0, X2 =&gt; Odometry.TrainAcceleration() ) )</Expression>
 </Case></Cases>
 </Function><Function
@@ -377,7 +366,6 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(E
  Name="Value"
  Guid="f959681c-c0e0-4fc4-825d-87d54c4eaf68"
 >
-<Comment></Comment>
 <Expression>Odometry.TrainAcceleration()</Expression>
 </Case></Cases>
 </Function><Function
@@ -443,15 +431,12 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(E
  Name="d_SBI1 and d_SBI2_MREBDT unknown"
  Guid="a0f56999-394f-4b00-b423-9c6440c834cc"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="7377911b-f405-40f5-a39e-636a7d591d5f"
-><Comment></Comment>
-TargetSpeedMonitoring.d_SBI1 ( Odometry.TrainSpeed(), False ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+>TargetSpeedMonitoring.d_SBI1 ( Odometry.TrainSpeed(), False ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="341f5ca9-bbd4-4d97-bbbd-a8d5307c471c"
-><Comment></Comment>
-TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.TrainSpeed(), False ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.TrainSpeed(), False ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Infinity</Expression>
 </Case><Case
  Name="SBI1"
@@ -460,8 +445,7 @@ TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.TrainSpeed(), False ) == Default.
 <PreConditions>
 <PreCondition
  Guid="e862b7cc-9cf5-4c3a-afa3-53925d18277e"
-><Comment></Comment>
-TargetSpeedMonitoring.SBI1BelowSBI2(
+>TargetSpeedMonitoring.SBI1BelowSBI2(
     d_SBI1=&gt; TargetSpeedMonitoring.d_SBI1 ( Odometry.TrainSpeed(), False ),
     d_SBI2=&gt; TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.TrainSpeed(), False )
 )</PreCondition></PreConditions>
@@ -470,7 +454,6 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Name="SBI2"
  Guid="5ffb4c20-ad36-48ae-b178-60417aa361bb"
 >
-<Comment></Comment>
 <Expression>TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</Expression>
 </Case></Cases>
 </Function><Function
@@ -506,7 +489,6 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Name="Compensation of speed inaccuracy is inhibited by NV"
  Guid="38db12e7-afec-4eb8-b777-3199e0fbe422"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="8b5d2ce3-87d4-4330-8e56-082dd50bbaef"
@@ -535,7 +517,6 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="525f8e3a-4272-47b9-82ca-59b9b2f1e8d0"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="80f69d28-8302-44ad-9dfd-d98c75cda9d8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -554,7 +535,6 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Name="Estimated acceleration is set to zero"
  Guid="1165e1a5-e897-4434-a8a8-85b58ff0b826"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="6ef512bf-6455-43f5-9b5d-d1b175676860"
@@ -564,7 +544,6 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Name="Otherwise"
  Guid="5065369d-4e58-4287-b086-1723c2fa31b5"
 >
-<Comment></Comment>
 <Expression>Aest1() * T_traction(EstimatedAccelerationSetToZero)</Expression>
 </Case></Cases>
 </Function><Function
@@ -602,7 +581,6 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Name="Estimated acceleration is set to zero"
  Guid="d6f65e85-c35e-4f51-aee2-1508d14748fa"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="0ffe17f9-af49-4031-a9ba-b82ba36693e1"
@@ -612,7 +590,6 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Name="Otherwise"
  Guid="32aacacd-a015-4db8-9358-18b1f08b683a"
 >
-<Comment></Comment>
 <Expression>Aest2() * T_berem(EstimatedAccelerationSetToZero)</Expression>
 </Case></Cases>
 </Function><Function
@@ -719,7 +696,6 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Name="Traction cut-off is implemented"
  Guid="ba5abac1-815c-4cc0-9ead-c4348eab951d"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="cf6f9fc7-ccd1-4d65-a066-2ba3eebe0aad"
@@ -772,7 +748,6 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Name="SB feedback interface not available"
  Guid="b91d6f8c-55b0-4316-b754-68a920fca082"
 >
-<Comment></Comment>
 <Expression>Default.BaseTypes.MaxTime ( X1 =&gt; 0.8 * TrainData.BrakingParameters.T_bs(), X2 =&gt; 5.0 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -809,7 +784,6 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Name="Value"
  Guid="aeee2a9d-0dc9-46c1-819a-97c42f1e0772"
 >
-<Comment></Comment>
 <Expression>Default.BaseTypes.MaxTime ( X1 =&gt; TrainData.BrakingParameters.T_be () - T_traction (EstimatedAccelerationSetToZero), X2 =&gt; 0.0 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -840,7 +814,6 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Name="Value"
  Guid="71109ff6-fbb8-4107-af8e-80f3dc312afd"
 >
-<Comment></Comment>
 <Expression>TrainData.TrainData.Value.SBFeedbackIsImplemented AND NationalValues.UseOfSBFeedbackIsPermitted()</Expression>
 </Case></Cases>
 </Function><Function
@@ -888,7 +861,6 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Name="Supervising LOA - no SBD"
  Guid="8a69aae7-09da-458a-927c-b4d2e0e65039"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="53634c1c-2959-451a-949d-2699a79a286d"
@@ -928,7 +900,6 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Name="Value"
  Guid="167cb83d-97c6-43f7-b793-91755f658801"
 >
-<Comment></Comment>
 <Expression>EBD_Target(
     Distance =&gt; Distance,
     aTarget =&gt; TargetSpeedMonitoring.MRDT()

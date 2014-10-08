@@ -5,7 +5,6 @@
  Name="Gradient"
  Guid="c4a131aa-b4c3-4fd7-b091-fe0519c58d94"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Ranges>
@@ -42,8 +41,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3d6f4a6a-3f71-4a13-a4da-7d7770f0d060"
 >
-</ReqRef><Comment></Comment>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
  Mode="Internal"
@@ -72,7 +70,6 @@
  Name="DefaultGradientForTSR"
  Guid="26e1494d-8a46-41b8-8572-edc8cc4cb510"
 >
-<Comment></Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Gradient"
  Default="0.0"
@@ -93,7 +90,6 @@
  Name="CorFactValue"
  Guid="3678f4c9-a256-4fcc-a817-027f4c276928"
 >
-<Comment></Comment>
 <StructureElement
  TypeName="CorrectionFactor"
  Default="0.0"
@@ -103,7 +99,6 @@
  Name="Factor"
  Guid="ea248163-79c1-4392-bc84-cc0d35c0c5d8"
 >
-<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default="Default.BaseTypes.Speed.Infinity"
@@ -129,8 +124,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e6e1e97e-dee3-46cf-9dce-8cb360ac6a30"
 >
-</ReqRef><Comment></Comment>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="CorFactValue"
  Default=""
  Mode="Internal"
@@ -139,7 +133,6 @@
  Name="Val3"
  Guid="26341e31-91dd-4bf6-a34a-d463a6e50704"
 >
-<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="CorFactValue"
  Default=""
@@ -149,7 +142,6 @@
  Name="Val4"
  Guid="7bc5525d-c7ba-4eff-8566-7737a7535ce3"
 >
-<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="CorFactValue"
  Default=""
@@ -159,7 +151,6 @@
  Name="Val2"
  Guid="bc9aafd6-1112-45a8-9b13-068fbd70ca1e"
 >
-<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="CorFactValue"
  Default=""
@@ -169,7 +160,6 @@
  Name="Val0"
  Guid="b3e12edd-0f2e-4eda-9539-06513d28704c"
 >
-<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="CorFactValue"
  Default=""
@@ -179,7 +169,6 @@
  Name="Val1"
  Guid="dc38e2e1-24ea-46b2-a1ce-096272c16a00"
 >
-<Comment></Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -199,8 +188,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="039009b7-2b11-4a42-ae95-11b628f26871"
 >
-</ReqRef><Comment></Comment>
-</Collection></Collections>
+</ReqRef></Collection></Collections>
 <Functions>
 <Function
  Type="Default.BaseTypes.Gradient"
@@ -231,7 +219,6 @@
  Name="Indefinite gradient profile"
  Guid="a498e59a-2790-42bc-82ee-dd3271d9287f"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="2c28578c-3152-4b9f-bf25-f9c2f2ed7d7f"
@@ -241,7 +228,6 @@
  Name="Otherwise"
  Guid="1df22536-c1fa-466a-a2c1-93da402a800e"
 >
-<Comment></Comment>
 <Expression>GradientInfoProfileSummary (Distance)</Expression>
 </Case></Cases>
 </Function><Function
@@ -300,7 +286,6 @@
  Name="Otherwise"
  Guid="57b006b4-2aa4-4cf0-bdb7-fadb3a1a0a54"
 >
-<Comment></Comment>
 <Expression>REDUCE
     Gradients | X.Distance &gt; Current.Distance
 USING
@@ -371,7 +356,6 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="Within gradient info"
  Guid="ccb33418-3a7a-400d-80de-f558fe76b9f4"
 >
-<Comment></Comment>
 <Expression>GradientInfo.Gradient</Expression>
 </Case></Cases>
 </Function><Function
@@ -460,7 +444,6 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="AbsoluteDistance"
  Guid="f76759ab-9143-4839-8633-d1956d28e22a"
 >
-<Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Collection1"
@@ -483,7 +466,6 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="Value"
  Guid="1312bbb8-8336-43b7-b0ad-aad728fe5af2"
 >
-<Comment></Comment>
 <Expression>SUM
     Gradients |
         Before(ExpectedFirst =&gt; X, ExpectedSecond =&gt; Gradient, Collection =&gt; Gradients) OR ( X == Gradient )
@@ -540,7 +522,6 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
  Name="M_rotating_nom is unknown, uphill"
  Guid="562e5197-0770-41f3-8b37-6b24b3224ce8"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="c251abd5-ae0b-4546-9370-af15eefc6a37"
@@ -623,8 +604,7 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="42112ce9-1cf3-4dc3-8873-eda44cbebd92"
 >
-</ReqRef><Comment></Comment>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
@@ -693,7 +673,6 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dff6911f-750e-4b73-ad29-a7191c1ef721"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="1103bf93-0534-41aa-a8dc-d09b48c38d5e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -717,7 +696,6 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
  Name="Default Gradient for a TSR is available and the default target is due to a TSR"
  Guid="206cd443-c08a-4d0c-8d14-9eac0282f5b5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="bba83cb2-adbd-488a-89ac-d23c7f8cb2df"
@@ -803,14 +781,12 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <PreConditions>
 <PreCondition
  Guid="55d1dd43-8bdd-4519-b0f6-3ff74b3c4c3c"
-><Comment></Comment>
-Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( TrainLength )</PreCondition></PreConditions>
+>Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( TrainLength )</PreCondition></PreConditions>
 <Expression>BaseTypes.Gradient.Indefinite</Expression>
 </Case><Case
  Name="Within gradient info"
  Guid="4be41a32-e76a-4d41-a8f6-2b8b4b455590"
 >
-<Comment></Comment>
 <Expression>CompensateGradientWithRotatingMass( GradientInfo.Gradient )</Expression>
 </Case></Cases>
 </Function><Function
@@ -842,7 +818,6 @@ Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( Train
  Name="Always"
  Guid="0690ccc9-34ff-4b71-8628-e586415e8cbd"
 >
-<Comment></Comment>
 <Expression>(REDUCE Gradients 
     USING  MIN ( RESULT, FUNCTION d : BaseTypes.Distance =&gt; GradientInfoProfile( GradientInfo =&gt; X, Distance =&gt; d, TrainLength =&gt; TrainData.TrainData.Value.TrainLength ) )
   INITIAL_VALUE BaseTypes.IndefiniteGradientFunction) (Distance)</Expression>
@@ -1132,8 +1107,7 @@ Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( Train
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5623e850-def6-45cb-a9e2-5e764d1a8387"
 >
-</ReqRef><Comment></Comment>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Message"
  Name="Packet"
@@ -1297,8 +1271,7 @@ ON Packet.Sequence1</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d34eea09-5fd7-48c9-8500-77ebef108d65"
 >
-</ReqRef><Comment></Comment>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION.Message"
  Name="Packet"
@@ -1465,7 +1438,6 @@ ON Packet.Sequence1</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9c36490e-9758-4279-ac49-05c3fa57b2ec"
 >
-<Comment></Comment>
 </ReqRef><Comment>Represents the speed dependent correction factor for positive gradient on the normal service brake.</Comment>
 </Variable><Variable
  Type="Kernel.TrackDescription.Gradient.CorFact"

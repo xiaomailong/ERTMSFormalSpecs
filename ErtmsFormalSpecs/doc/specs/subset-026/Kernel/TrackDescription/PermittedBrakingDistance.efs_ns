@@ -5,7 +5,6 @@
  Name="PermittedBrakingDistance"
  Guid="04dc141f-d4cc-4fa5-881e-4b2bbd65f769"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
@@ -25,7 +24,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="47130d6d-d31a-46c2-aeb2-bddffa9cb33d"
 >
-<Comment></Comment>
 </ReqRef><Comment>Represents a speed restriction to ensure permitted braking distance.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -75,8 +73,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="018eaa4c-e82c-4237-bcc1-82dc5efca6ac"
 >
-</ReqRef><Comment></Comment>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Messages.Q_PBDSR"
  Default="Messages.Q_PBDSR.EB_intervention_requested"
  Mode="Internal"
@@ -89,8 +86,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="95fc612c-34ff-4545-873c-4092264fa4e3"
 >
-</ReqRef><Comment></Comment>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
  Mode="Internal"
@@ -127,8 +123,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0f9f8452-842e-4f9a-9b11-e4082079edcc"
 >
-</ReqRef><Comment></Comment>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
  Mode="Internal"
@@ -169,7 +164,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2d029bbe-638e-4f49-9f27-da66a1b530d2"
 >
-<Comment></Comment>
 </ReqRef><Comment>Represents the speed restrictions to ensure permitted braking distance.</Comment>
 </Collection></Collections>
 <Functions>
@@ -294,8 +288,7 @@
 <PreConditions>
 <PreCondition
  Guid="104659de-a2d2-4f67-a02f-1b251160a453"
-><Comment></Comment>
-d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, EstimatedAccelerationSetToZero =&gt; False )</PreCondition><PreCondition
+>d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, EstimatedAccelerationSetToZero =&gt; False )</PreCondition><PreCondition
  Guid="3891d176-4d7b-40b3-b804-77f1889d16bb"
 >0.0 &lt;= d</PreCondition></PreConditions>
 <Expression>BaseTypes.Speed.MaxSpeed</Expression>
@@ -368,7 +361,6 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
  Name="Value"
  Guid="cf62ff4f-7221-4e5b-8d1f-ed2445553643"
 >
-<Comment></Comment>
 <Expression>RoundToMultiple (
     Value =&gt; ComputeSBCeilingSpeedIntervention (
         PermittedBrakingDistance =&gt; PermittedBrakingDistance,
@@ -417,7 +409,6 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
  Name="EB"
  Guid="841502a3-0e6b-4f5f-aec8-6400ad81e86a"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="7c338b96-eb1e-4447-a229-f3bf88472e15"
@@ -430,7 +421,6 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
  Name="SB"
  Guid="e94a30d4-4c1e-4d97-a556-fb5305537c4c"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1272a550-6204-449a-a256-468ef4216b1f"
@@ -494,7 +484,6 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
  Name="Value"
  Guid="626b0f44-abec-4e4e-a2e4-67111dc5b3c1"
 >
-<Comment></Comment>
 <Expression>BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta1(EstimatedAccelerationSetToZero) / 2.0, X2 =&gt; Vtarget ) * SpeedAndDistanceMonitoring.DecelerationCurves.T_traction(EstimatedAccelerationSetToZero) +
 ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta1(EstimatedAccelerationSetToZero), X2 =&gt; Vtarget ) + SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta2(EstimatedAccelerationSetToZero) / 2.0 ) * SpeedAndDistanceMonitoring.DecelerationCurves.T_berem(EstimatedAccelerationSetToZero)</Expression>
 </Case></Cases>
@@ -880,8 +869,7 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="28e488f9-c17b-45ac-8a6c-d25b1e2186e9"
 >
-</ReqRef><Comment></Comment>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Boolean"
  Name="EstimatedAccelerationSetToZero"
@@ -896,14 +884,12 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
 <PreConditions>
 <PreCondition
  Guid="0fdc4648-093d-4db8-a89e-ed9a3c288bb9"
-><Comment></Comment>
-( SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2 * BaseTypes.SpeedToMS( Odometry.TrainSpeed() ) + Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) ) + ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) &lt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1 * Odometry.TrainSpeed()</PreCondition></PreConditions>
+>( SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2 * BaseTypes.SpeedToMS( Odometry.TrainSpeed() ) + Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) ) + ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) &lt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1 * Odometry.TrainSpeed()</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1 * BaseTypes.SpeedToMS( Odometry.TrainSpeed() )</Expression>
 </Case><Case
  Name="SBI2"
  Guid="5712aee3-b427-40aa-aae6-94724f375a2d"
 >
-<Comment></Comment>
 <Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2 * BaseTypes.SpeedToMS( Odometry.TrainSpeed() ) + Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero )</Expression>
 </Case></Cases>
 </Function><Function
@@ -937,7 +923,6 @@ d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, Esti
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3c29343e-3a35-4f16-a9e6-094e2c35b5d3"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="c7a43456-5326-4c4d-b89f-23b71a0240bf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -1095,7 +1080,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="807e0661-cab5-4902-bf68-0b2c988ef10e"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="18e66d36-7f79-47c5-92e4-d8b744a4513d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -1133,8 +1117,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="10705933-efb1-49f5-bb56-6c651f95a2c4"
 >
-</ReqRef><Comment></Comment>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1225,8 +1208,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8102c187-84c0-480f-b14f-19377ca61467"
 >
-</ReqRef><Comment></Comment>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1269,8 +1251,7 @@ ON
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a624c9c3-3940-48f5-bec7-bb0862f254ba"
 >
-</ReqRef><Comment></Comment>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1349,8 +1330,7 @@ ON
 <Actions>
 <Action
  Guid="728d9949-d0ea-46e5-b08d-330bc6a880d3"
-><Comment></Comment>
-INSERT CreateNewSpeedRestriction ( Location =&gt; Location, Length =&gt; Length, PermittedBrakingDistance =&gt; PermittedBrakingDistance, Gradient =&gt; Gradient, BrakeType =&gt; BrakeType )
+>INSERT CreateNewSpeedRestriction ( Location =&gt; Location, Length =&gt; Length, PermittedBrakingDistance =&gt; PermittedBrakingDistance, Gradient =&gt; Gradient, BrakeType =&gt; BrakeType )
 IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1368,8 +1348,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="51148404-10ab-4f54-87e0-2580ced2d56d"
 >
-</ReqRef><Comment></Comment>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
  Name="aSRPB"
@@ -1392,7 +1371,6 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
  Name="UpdateSpeedRestriction"
  Guid="00a4fb9f-c75a-43bd-ab25-2608ba8419f4"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -1496,7 +1474,6 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
  Name="Train brake characteristics change"
  Guid="62c68afa-4797-4cc2-b999-e0b345689ec5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="87412dc3-a473-4513-ac75-4058b021c9b2"

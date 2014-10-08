@@ -208,13 +208,19 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Removes the actions and expectation from translated steps because they may cause conflicts
+            /// Removes the actions and expectation from translated steps because they may cause conflicts.
+            /// Remove obsolete comments
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
             public override void visit(Generated.Step obj, bool visitSubNodes)
             {
                 Step step = (Step)obj;
+
+                if (step.getObsoleteComment() == "")
+                {
+                    step.setObsoleteComment(null);
+                }
 
                 if (beforeSave)
                 {
@@ -231,6 +237,65 @@ namespace DataDictionary
                     {
                         step.Translate(step.Dictionary.TranslationDictionary);
                     }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Ensure that empty comments are not stored in the XML file
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+            {
+                ICommentable commentable = obj as ICommentable;
+                if (commentable != null)
+                {
+                    if (commentable.Comment == "")
+                    {
+                        commentable.Comment = null;
+                    }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Remove obsolete fields from XML file
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.TestCase obj, bool visitSubNodes)
+            {
+                TestCase testCase = (TestCase)obj;
+
+                if (testCase.getObsoleteComment() == "")
+                {
+                    testCase.setObsoleteComment(null);
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            
+            /// <summary>
+            /// Remove obsolete fields from XML file
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Paragraph obj, bool visitSubNodes)
+            {
+                Paragraph paragraph = (Paragraph)obj;
+
+                if (paragraph.getObsoleteFunctionalBlockName() == "" )
+                {
+                    paragraph.setObsoleteFunctionalBlockName(null);
+                }
+
+                if (paragraph.getObsoleteGuid() == "")
+                {
+                    paragraph.setObsoleteGuid(null);
                 }
 
                 base.visit(obj, visitSubNodes);

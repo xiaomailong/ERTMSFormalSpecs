@@ -7,7 +7,6 @@
  Name="EURORADIO"
  Guid="e1153af3-3878-4752-bfdb-9a6c11411de4"
 >
-<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="PositionReport"
@@ -1391,8 +1390,7 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 <Actions>
 <Action
  Guid="7ffe8131-5392-4ec9-a32e-1ad7d3cb2dcd"
-><Comment></Comment>
-ProcessIncomingMessages ( MessageIn )</Action></Actions>
+>ProcessIncomingMessages ( MessageIn )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Handle acknowledgement of termination of a communication session"
@@ -2349,7 +2347,6 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Name="&quot;Connection status&quot; timer expires"
  Guid="6a118501-cac0-4a06-805f-b587d3b07391"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="051b7c73-d993-4246-ac2a-5099ddc3c5a1"
@@ -2690,7 +2687,6 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Name="Handle termination of communication session"
  Guid="88edf8c0-ea11-4695-9842-ab183cddd0df"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e1c7b5e8-4fb5-4603-b585-16bee501b09c"
@@ -3064,7 +3060,6 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Name="Loss of the safe radio connection is detected"
  Guid="8779a660-1dd0-4176-80b8-c172f1e2b5ba"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="6222ed14-9c42-42d5-b29f-2e5222369f8c"
@@ -3115,8 +3110,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <PreConditions>
 <PreCondition
  Guid="98dfced5-c8e3-4402-9c30-42e6826e38b0"
-><Comment></Comment>
-Kernel.TrackDescription.TrackConditions.General.IsInsideRadioHole()</PreCondition></PreConditions>
+>Kernel.TrackDescription.TrackConditions.General.IsInsideRadioHole()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="31e5f409-b9e6-446b-867c-b18a87681e9d"
@@ -4264,7 +4258,6 @@ After that, if an order to contact an Accepting RBC was received, it will be han
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="84188ebf-17d5-4d9f-af9e-cea78f940fcb"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="68a814aa-d977-4ba8-8329-54aaaec00081"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -5183,7 +5176,6 @@ The only one case where the status to display is that of the secondary connectio
  Name="Status of secondary RBC connection"
  Guid="bf82c512-40c9-460b-ad10-85f4fe30d0c5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="514190b9-00d9-4441-8105-a81690a45408"
@@ -5265,7 +5257,6 @@ The only one case where the status to display is that of the secondary connectio
  Name="Select RBC"
  Guid="0e5a581a-1201-405e-b00a-40ae760b28f2"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="8df44f1d-8bc6-47ea-9994-67dde1dc64c4"
@@ -5621,7 +5612,6 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  Name="Close the session"
  Guid="b37006ef-5ce5-4c15-9dd8-55ec01214286"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition

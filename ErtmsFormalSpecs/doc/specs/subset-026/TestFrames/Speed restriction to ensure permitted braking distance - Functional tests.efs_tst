@@ -35,9 +35,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="181f0ecb-0c8f-499f-91ed-196c07950c7a"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -125,7 +123,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e9c13844-389e-46e3-a23f-65a6a4f80be9"
 >
-<Comment></Comment>
 </ReqRef><Comment>packets 65 and 141 are relevant? NO
 we need packet number 52
 pbd sr</Comment>
@@ -140,7 +137,6 @@ pbd sr</Comment>
  Name="Step1 - Setup"
  Guid="f1f409f3-38bd-4298-a035-c96ba88f0aa5"
 >
-<Comment></Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
@@ -182,8 +178,7 @@ pbd sr</Comment>
     }
 }</Action><Action
  Guid="0cfcefa8-0c14-4e51-b2aa-688b9eb8b584"
-><Comment></Comment>
-Odometry.NominalDistance &lt;- 11100.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 11100.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -338,9 +333,7 @@ Odometry.NominalDistance &lt;- 11100.0</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="abdefdae-05a0-4dab-a943-6c514e6df776"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -533,9 +526,7 @@ Odometry.NominalDistance &lt;- 11100.0</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b31e842c-bc14-4504-92d1-27964879d5d3"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -684,7 +675,6 @@ Odometry.NominalDistance &lt;- 11100.0</Action></Actions>
  Name="Check that PBD message has overwritten old values"
  Guid="256f617e-0216-48d6-bc8d-99fb293b6a11"
 >
-<Comment></Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
@@ -841,8 +831,7 @@ Odometry.NominalDistance &lt;- 11100.0</Action></Actions>
 <Actions>
 <Action
  Guid="4525eeb3-1472-4070-93c8-f5233f063b9e"
-><Comment></Comment>
-BTM.Message &lt;- Messages.EUROBALISE.Message
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
     M_VERSION =&gt; 0,

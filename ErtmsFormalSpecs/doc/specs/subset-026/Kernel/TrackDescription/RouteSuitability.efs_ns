@@ -6,7 +6,6 @@
  Name="RouteSuitability"
  Guid="b86b1882-436b-4c40-9f56-ad92c5c35b66"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
@@ -326,18 +325,15 @@
  Name="Do not manage route suitability"
  Guid="a01ec8fb-2553-415f-aae9-fabf1c4570fc"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="11eec0e9-dc5c-4c3d-94bc-28b5fcd9d8fc"
-><Comment></Comment>
-NOT ActiveFunctions.ManageRouteSuitability()</PreCondition></PreConditions>
+>NOT ActiveFunctions.ManageRouteSuitability()</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Line gauge"
  Guid="621c7c64-a3e9-48d1-913d-cd2e9bb5720d"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="a29186e6-0ce9-4d0e-88ca-76d6d250028a"
@@ -429,12 +425,10 @@ NOT THERE_IS_IN
  Name="EOA defined"
  Guid="68d67405-caf7-4094-b3e4-7f0058728b8e"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="cb68af68-0cb6-4298-98b1-fe36a552f264"
-><Comment></Comment>
-RouteSuitabilityProfile != EMPTY
+>RouteSuitabilityProfile != EMPTY
   AND
 RouteSuitabilityProfile.Items != []
   AND
@@ -637,7 +631,6 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
  Name="UpdateRouteSuitabilityProfile"
  Guid="1b1ddae1-28d6-407c-b269-49c44c9aca3f"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -660,16 +653,13 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="c739346b-2d76-4838-9ef7-d353adce26df"
-><Comment></Comment>
-Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition><PreCondition
+>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition><PreCondition
  Guid="c329f295-00fe-4e86-8080-c201382a02a3"
-><Comment></Comment>
-ActiveFunctions.ManageRouteSuitability()</PreCondition></PreConditions>
+>ActiveFunctions.ManageRouteSuitability()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="568dbbb3-66aa-4aaf-b3ae-569b14b7f9a8"
-><Comment></Comment>
-RouteSuitabilityProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action><Action
+>RouteSuitabilityProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action><Action
  Guid="469b32be-fde5-4ba4-a8fe-823dc9ae9e97"
 >RouteSuitabilityProfile.EmptyProfileDistance &lt;- Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKINIT, scale =&gt; Packet.Q_SCALE )</Action></Actions>
 </RuleCondition><RuleCondition
@@ -684,8 +674,7 @@ RouteSuitabilityProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action><Action
  Guid="d49260da-af2e-4fca-9d32-9f48b35a6b24"
 >Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition><PreCondition
  Guid="00fb82d7-40d1-4839-81e3-b375d182a85d"
-><Comment></Comment>
-ActiveFunctions.ManageRouteSuitability()</PreCondition></PreConditions>
+>ActiveFunctions.ManageRouteSuitability()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9acb85b7-b135-46ee-a759-4b7a46b7022f"
@@ -992,7 +981,6 @@ ON
  Name="Add Route Suitability"
  Guid="5f43f128-d336-4248-827b-a4f6f03b7849"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1035,7 +1023,6 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="341c0957-3c31-4602-bcc7-26eb33b21500"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="352086ee-e08d-456c-a884-d2ee94aec4e9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -1064,7 +1051,6 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="74c30960-f9cf-4133-9570-6f9fe5bd4b20"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="35ef498a-1c12-4203-b283-26436d281f11"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -1089,7 +1075,6 @@ IN
  Name="Resume initial states"
  Guid="288a2ffb-523b-4cf2-8ceb-33c442aed2bb"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="2e30c98e-8b97-443a-8e75-46bd26ebae25"

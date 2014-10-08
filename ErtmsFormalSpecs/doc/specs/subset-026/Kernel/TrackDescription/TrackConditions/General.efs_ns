@@ -5,7 +5,6 @@
  Name="General"
  Guid="001c183d-5aef-4e1a-8af5-a5486825cba9"
 >
-<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="TCDisplay"
@@ -740,8 +739,7 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
 <PreConditions>
 <PreCondition
  Guid="a1f5b781-33c7-4df7-bebc-eee2ce7afa09"
-><Comment></Comment>
-Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition></PreConditions>
+>Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition></PreConditions>
 <Expression>REDUCE Packet.Sequence1
   USING Default.BaseTypes.MinDistance(
     X1=&gt; Default.MessageTypes.QScaleDistance(distance=&gt;X.D_TRACKCOND, scale=&gt;Packet.Q_SCALE),
@@ -798,7 +796,6 @@ The use of profile points and the functions in this namespace can be found in Er
  Name="AirTightness"
  Guid="8ed96d02-188e-4ec2-ba78-3772ab0d0247"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="158d39b3-532d-4194-ade2-b55879fde745"
@@ -1140,8 +1137,7 @@ If there is already a point at the start of the section, its conditions will be 
 <Actions>
 <Action
  Guid="be8dab85-6e95-4b9e-b7b4-0a9c8968a606"
-><Comment></Comment>
-INSERT MakeTCProfilePoint(
+>INSERT MakeTCProfilePoint(
     TCType=&gt;TCType,
     Distance=&gt;Distance,
     EndOfSection=&gt;False
@@ -1263,7 +1259,6 @@ The handling of track conditions is decribed in  ErtmsFormalSpecs/doc/specs/Mode
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2114f3d4-5e6c-4a8e-941e-7c8d23133337"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="1cb531d4-2809-484c-bf3f-445bebb332ef"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -1283,18 +1278,15 @@ The handling of track conditions is decribed in  ErtmsFormalSpecs/doc/specs/Mode
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d95e8494-eba9-4371-a5cb-ebaaef8a68b7"
 >
-</ReqRef><Comment></Comment>
-<PreConditions>
+</ReqRef><PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="e442a836-0892-422d-9982-9577731091f3"
-><Comment></Comment>
-REMOVE ALL X.Distance &gt;= NewInfoStartLocation(Packet) 
+>REMOVE ALL X.Distance &gt;= NewInfoStartLocation(Packet) 
     IN TCProfile</Action><Action
  Guid="ad4e2691-c733-4e4d-8db1-ff6fd0667df6"
-><Comment></Comment>
-REMOVE ALL X.Distance &gt;= TCDisplay.AnnouncementLocation(TrackCondition=&gt;TrackCondition{}, Distance =&gt; NewInfoStartLocation(Packet))
+>REMOVE ALL X.Distance &gt;= TCDisplay.AnnouncementLocation(TrackCondition=&gt;TrackCondition{}, Distance =&gt; NewInfoStartLocation(Packet))
     IN TCDisplay.Announcements</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -1353,8 +1345,7 @@ REMOVE ALL X.Distance &gt;= TCDisplay.AnnouncementLocation(TrackCondition=&gt;Tr
     TCType=&gt;Packet.M_TRACKCOND
 )</Action><Action
  Guid="476cb606-a0af-42f5-b297-1cf9bb8e1672"
-><Comment></Comment>
-TCDisplay.MakeAnnouncement(
+>TCDisplay.MakeAnnouncement(
     TCType=&gt;Packet.M_TRACKCOND,
     Distance=&gt;Default.MessageTypes.QScaleDistance(
         distance=&gt;Packet.D_TRACKCOND,
@@ -1392,8 +1383,7 @@ TCDisplay.MakeAnnouncement(
 ON
     Packet.Sequence1</Action><Action
  Guid="afebcc0b-73d8-47ef-b24b-7b726330c6b0"
-><Comment></Comment>
-APPLY
+>APPLY
     TCDisplay.MakeAnnouncement(
         TCType=&gt;X.M_TRACKCOND
         ,
@@ -1451,7 +1441,6 @@ ON
  Name="UpdateTrackConditions"
  Guid="90a94ff8-c2f4-4bd8-ac3c-65c786db514b"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1534,7 +1523,6 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="edc4183d-a273-4327-9256-6b9409ec4747"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="0d1804a4-9b7c-406f-bb28-e8e42df86344"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
