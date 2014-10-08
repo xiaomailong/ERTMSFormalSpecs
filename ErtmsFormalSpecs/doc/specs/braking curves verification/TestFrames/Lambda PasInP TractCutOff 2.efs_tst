@@ -47,7 +47,9 @@
  Guid="da33b5d2-c271-44e3-8a9a-652759ca1a43"
 >Kernel.Level &lt;- Kernel.LevelData
 {
-    Value =&gt; Level.L1,
+    Value =&gt; LevelDataStruct{
+      Value =&gt; Level.L1
+    },
     DataState =&gt; DataState.Valid
 }</Action><Action
  Guid="fda55961-5170-439d-8861-af5d76614234"
