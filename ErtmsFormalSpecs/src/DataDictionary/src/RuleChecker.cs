@@ -20,6 +20,7 @@ using DataDictionary.Functions;
 using System.Collections;
 using DataDictionary.Interpreter;
 using DataDictionary.Specification;
+using DataDictionary.Tests.Translations;
 
 namespace DataDictionary
 {
@@ -1028,6 +1029,27 @@ namespace DataDictionary
                     }
                     valuesFound.Add(enumValue);
                 }
+            }
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        private Dictionary<string, Translation> Translations = new Dictionary<string, Translation>();
+
+        public override void visit(Generated.Translation obj, bool visitSubNodes)
+        {
+            Translation translation = (Translation)obj;
+
+            foreach (SourceText source in translation.SourceTexts)
+            {
+                Translation other = null;
+                if ( Translations.TryGetValue(source.Name, out other) )
+                {
+                    translation.AddError("Found translation with duplicate source text " + source.Name);
+                    other.AddError("Found translation with duplicate source text " + source.Name);
+                }
+
+                Translations[source.Name] = translation;
             }
 
             base.visit(obj, visitSubNodes);
