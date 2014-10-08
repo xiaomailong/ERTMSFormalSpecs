@@ -128,6 +128,53 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
+        /// Finds all steps that are translated using a specific translation rule
+        /// </summary>
+        private class MarkUsageVisitor : DataDictionary.Generated.Visitor
+        {
+            /// <summary>
+            /// The translation to be found
+            /// </summary>
+            public Translation Translation { get; private set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="translation"></param>
+            public MarkUsageVisitor(Translation translation)
+            {
+                Translation = translation;
+            }
+
+            public override void  visit(DataDictionary.Generated.Step obj, bool visitSubNodes)
+            {
+                Step step = (Step) obj;
+
+                if ( Translation == Translation.TranslationDictionary.findTranslation(step.getDescription()))
+                {
+                    step.AddInfo("Translation "+Translation.Name+" used");
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
+        /// <summary>
+        /// Marks all steps that use this translation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void MarkUsageHandler(object sender, EventArgs args)
+        {
+            GUIUtils.MDIWindow.ClearMarks();
+            MarkUsageVisitor finder = new MarkUsageVisitor(Item);
+            foreach ( DataDictionary.Dictionary dictionary in DataDictionary.EFSSystem.INSTANCE.Dictionaries)
+            {
+                finder.visit(dictionary);
+            }
+        }
+
+        /// <summary>
         /// The menu items for this tree node
         /// </summary>
         /// <returns></returns>
@@ -137,6 +184,8 @@ namespace GUI.TranslationRules
 
             retVal.Add(new MenuItem("Add source text", new EventHandler(AddSourceHandler)));
             retVal.Add(new MenuItem("Add sub-step", new EventHandler(AddSubStepHandler)));
+            retVal.Add(new MenuItem("-"));
+            retVal.Add(new MenuItem("Mark usages", new EventHandler(MarkUsageHandler)));
             retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
 
