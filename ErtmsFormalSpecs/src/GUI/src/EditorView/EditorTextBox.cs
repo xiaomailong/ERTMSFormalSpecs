@@ -460,9 +460,12 @@ namespace GUI
             }
 
             // Considers all dictionaries in the system to find the expected element
-            foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+            if (searchOptions.ConsiderEnclosing)
             {
-                ConsiderElement(dictionary, searchOptions, retVal, false);
+                foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+                {
+                    ConsiderElement(dictionary, searchOptions, retVal, false);
+                }
             }
 
             return retVal;
@@ -757,6 +760,8 @@ namespace GUI
             int lastDot = text.LastIndexOf('.');
             if (lastDot > 0)
             {
+                int previousDot = text.Substring(0, lastDot).LastIndexOf('.');
+
                 // Default values for search options
                 retVal.EnclosingName = text.Substring(0, lastDot);
                 retVal.ConsiderTemplates = string.IsNullOrEmpty(retVal.EnclosingName);
@@ -827,20 +832,21 @@ namespace GUI
                         }
                     }
                 }
-                else if (retVal.EnclosingName.Contains('('))
+                else if (retVal.EnclosingName.LastIndexOf('(')>previousDot)
                 {
+                    retVal.ConsiderTemplates = false;
+                    retVal.ConsiderEnclosing = false;
+
                     // Is this a function call ? 
-                    int parentIndex = retVal.EnclosingName.IndexOf('(');
+                    int parentIndex = retVal.EnclosingName.LastIndexOf('(');
                     string functionName = retVal.EnclosingName.Substring(0, parentIndex);
 
                     Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, functionName, AllMatches.INSTANCE);
                     DataDictionary.Functions.Function function = expression.Ref as DataDictionary.Functions.Function;
-                    if (function != null)
+                     if (function != null)
                     {
                         retVal.Instances.Add(function.ReturnType);
                         retVal.EnclosingName = "";
-                        retVal.ConsiderTemplates = false;
-                        retVal.ConsiderEnclosing = false;
                     }
                 }
                 else
