@@ -3041,7 +3041,8 @@ THIS &lt;- S12</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2d407d46-bb27-4db3-9cc6-31a4ab975b7e"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment></Comment>
+<StateMachine
  Default="SendTrainData"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -5918,7 +5919,7 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Allow reenter driver id"
+ Name="Allow reenter driver id for states S10 and S20"
  Guid="eecffdff-c38a-4e86-8625-e1b7be52a479"
 >
 <ReqRef
@@ -5956,7 +5957,7 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Reenter driver id not yet proposed to driver"
+ Name="Reenter driver id not proposed to driver yet"
  Guid="f053d594-c9b1-46c5-a6a1-aa54a17b9b21"
 >
 <Comment>If the entry of driver id is not proposed to the driver yet =&gt; propose it.</Comment>
@@ -6054,7 +6055,7 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Reenter train running number not yet proposed to driver"
+ Name="Reenter train running number not proposed to driver yet"
  Guid="862ffd2c-fba8-4ab0-a32c-b49f4e0b0de4"
 >
 <Comment>If the entry of train running number is not proposed to the driver yet =&gt; propose it.</Comment>
@@ -6116,7 +6117,7 @@ DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.DriverAnswere
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Allow reenter level"
+ Name="Allow reenter level for states S10 and S20"
  Guid="8339b88a-c46f-47fe-96cd-9399b62676a2"
 >
 <ReqRef
@@ -6124,7 +6125,8 @@ DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.DriverAnswere
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="70438859-26ed-41db-9c54-2694284d764e"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles the degraded situation where the driver is allowed to reenter the level in states S10 and S20.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6132,6 +6134,7 @@ DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.DriverAnswere
  Name="Allow reenter level for states S10 and S20"
  Guid="da5aced7-8b86-4e15-8dd8-6801094743e1"
 >
+<Comment>Handles the degraded situation where the driver is allowed to reenter the level in states S10 and S20.</Comment>
 <PreConditions>
 <PreCondition
  Guid="e387c081-c5c9-4dd7-93cb-9d18d9a4790c"
@@ -6143,26 +6146,47 @@ DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.DriverAnswere
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Allow Re-enter level"
+ Name="Allow reenter level for states S10 and S20"
  Guid="b0d2b632-9991-4298-9b63-09f827cd4ec7"
 >
+<Comment>Handles the degraded situation where the driver is allowed to reenter the level in states S10 and S20.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Reenter level not yet proposed to driver"
+ Name="Reenter level not proposed to driver yet"
  Guid="23ce7013-f6dc-4b1b-8e82-f7766a74842f"
 >
+<Comment>If the entry of level is not proposed to the driver yet =&gt; propose it.</Comment>
 <PreConditions>
 <PreCondition
  Guid="752efb16-fd0d-4e3a-a8d4-514912453887"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
  Guid="08d52ea0-e4d2-4759-977a-72f373654097"
->NOT DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered</PreCondition></PreConditions>
+>NOT DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered</PreCondition><PreCondition
+ Guid="de6fa6e4-a90c-4813-b140-e440384d79de"
+>NOT DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.DriverAnswered</PreCondition><PreCondition
+ Guid="b8c45ab5-430c-4ec5-a887-5875f78d37f3"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="eff502a6-8c0a-43e4-9cf9-693106460776"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver selected to reenter the level"
+ Guid="a141fb86-7873-4806-8c02-bb5cedef0402"
+>
+<Comment>If the driver selected to reenter the level =&gt; display the screen allowing to do it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="e74820b3-2ae5-4ac7-852b-a21b93c3e667"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d14b80ef-581e-4c38-8b74-c8b07ec40db7"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
 (
     Level =&gt; Kernel.Level.Value,
@@ -6170,21 +6194,6 @@ DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.DriverAnswere
     ReValidate =&gt; False,
     NTCLevels =&gt; Kernel.TrainData.TrainData.Value.LevelsSupportedOnBoard
 )</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Driver selected to reenter the level"
- Guid="a141fb86-7873-4806-8c02-bb5cedef0402"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="ae7ab92d-f97e-4ee2-b50a-3137e1b17946"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="d43762ba-cc41-48b3-be35-302b460560c2"
->THIS &lt;- S2.ExitState</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -6197,7 +6206,8 @@ DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.DriverAnswere
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dae673a9-17eb-40fb-833c-c306d4f85623"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the driver has chosen to reenter the level, its status becomes invalid.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6209,12 +6219,12 @@ DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.DriverAnswere
 <PreConditions>
 <PreCondition
  Guid="3a4dbcb3-3293-404d-8e83-459ce1685e89"
->Level.DataState == DataState.Valid</PreCondition></PreConditions>
+>Level.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c5962eb5-d1d6-4cc7-9baa-8d1ca3f31595"
 ><Comment></Comment>
-Level.DataState &lt;- DataState.Invalid</Action></Actions>
+Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -6227,7 +6237,8 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="550c5d29-cf3c-49a1-a0b3-027ad3415dee"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the driver has chosen to reenter the level, the status of RBC ID/phone number becomes invalid.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6238,13 +6249,28 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="5ff6cb13-22d1-46ea-950a-2b03de192d9f"
->EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Valid</PreCondition></PreConditions>
+>EURORADIO.CurrentRBCConnection().ContactData.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="57a12587-e7e5-458c-bdd6-5d19303cadef"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Invalid</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Driver reentered the level"
+ Guid="4b00a48c-db1f-45e9-8358-ae8d38e4f518"
+>
+<Comment>When the driver has entered the new data, it is stored.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="ae7ab92d-f97e-4ee2-b50a-3137e1b17946"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d43762ba-cc41-48b3-be35-302b460560c2"
+><Comment></Comment>
+THIS &lt;- S2.ExitState</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
