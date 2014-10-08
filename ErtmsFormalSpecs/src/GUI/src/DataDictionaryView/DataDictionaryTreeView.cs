@@ -21,8 +21,8 @@ namespace GUI.DataDictionaryView
         protected override void BuildModel()
         {
             Nodes.Clear();
-            Nodes.Add(new RuleDisablingsTreeNode(Root, true));
             Nodes.Add(new NameSpacesTreeNode(Root, true));
+            Nodes.Add(new RuleDisablingsTreeNode(Root, true));
         }
     }
 }
