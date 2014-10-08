@@ -4255,7 +4255,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Degraded situation - Propose to re-enter driver ID in S10 and S20"
+ Name="Degraded situation - Propose to re-enter driver id in S10 and S20"
  Guid="a2d5dac7-9ca3-46b3-93e5-d63307308dd6"
 >
 <TestCases>
@@ -4299,7 +4299,7 @@
  Feature="0"
  Case="0"
  Implemented="TRUE"
- Name="Propose to re-enter driver ID in S10"
+ Name="Propose to re-enter driver id in S10"
  Guid="80e46334-de0e-4db6-a558-8f411068caf7"
 >
 <ReqRef
@@ -4317,7 +4317,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step1 - Re-enter Driver ID is proposed in S10"
+ Name="Step1 - Re-enter driver id is proposed in S10"
  Guid="4e586640-097e-4cd3-97b2-40e003c36f69"
 >
 <SubSteps>
@@ -4340,17 +4340,9 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="c7934142-38bc-4e1d-9b97-ff8bea3e1c82"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
- Kind="Instantaneous"
- Guid="fcd6b913-b0b8-44b7-a991-415650f1291d"
->DMI.MasterDMI().In_DriverId.Id == &apos;Paul&apos;</Expectation><Expectation
- Kind="Instantaneous"
- Guid="7d383aa3-12d1-4ec3-b3e0-a94d5e637c5c"
->DMI.MasterDMI().In_DriverId.DriverAction.Enter == True</Expectation><Expectation
- Kind="Instantaneous"
- Guid="9ef5c214-6788-4cc8-a037-d543b7554192"
->DMI.MasterDMI().In_DriverId.DriverAction.ReValidate == False</Expectation></Expectations>
+ DeadLine="1"
+ Guid="2cac6a79-a865-4dfa-9340-153cd083be27"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4359,7 +4351,41 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - Driver elects to re-enter driver ID"
+ Name="Step2 - Driver elects to re-enter the driver id =&gt; driver id screen is displayed"
+ Guid="06d65bca-1552-4a71-b35a-be82a7fe1d91"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="531d04e9-db47-4bc7-9f0f-d90406c116fe"
+>
+<Actions>
+<Action
+ Guid="c656b814-d5d7-4633-90a5-0ccb1ec3d009"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="c7934142-38bc-4e1d-9b97-ff8bea3e1c82"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="fcd6b913-b0b8-44b7-a991-415650f1291d"
+>DMI.MasterDMI().In_DriverId.Id == &apos;Paul&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="9ef5c214-6788-4cc8-a037-d543b7554192"
+>DMI.MasterDMI().In_DriverId.DriverAction.ReValidate == False</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="7d383aa3-12d1-4ec3-b3e0-a94d5e637c5c"
+>DMI.MasterDMI().In_DriverId.DriverAction.Enter == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Driver elects to re-enter driver id"
  Guid="ea0f6ef6-cf1e-4279-a448-baa922a9a484"
 >
 <SubSteps>
@@ -4391,7 +4417,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step3 - We are still in S10"
+ Name="Step4 - We are still in S10"
  Guid="fb67eff9-5d93-45d1-89f9-d3ae35fcc420"
 >
 <SubSteps>
@@ -4410,7 +4436,7 @@
  Feature="0"
  Case="0"
  Implemented="TRUE"
- Name="Propose to re-enter driver ID in S20"
+ Name="Propose to re-enter driver id in S20"
  Guid="7e41df3f-e404-4012-b9d6-17061d6546ba"
 >
 <ReqRef
@@ -4428,7 +4454,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step1 - Re-enter Driver ID is proposed in S20"
+ Name="Step1 - Re-enter Driver id is proposed in S20"
  Guid="772b84d5-e54d-42dc-bf27-fe74370a3793"
 >
 <SubSteps>
@@ -4453,17 +4479,9 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- Guid="166efff1-6aa9-4e5a-859c-04ef476719a2"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
- Kind="Instantaneous"
- Guid="25ed23a1-972d-40f9-bfee-12a044606ed8"
->DMI.MasterDMI().In_DriverId.Id == &apos;Paul&apos;</Expectation><Expectation
- Kind="Instantaneous"
- Guid="cb6dbbd7-d2ea-4ac3-9bf2-2dc114ad64ee"
->DMI.MasterDMI().In_DriverId.DriverAction.Enter == True</Expectation><Expectation
- Kind="Instantaneous"
- Guid="35e52df0-da18-47b1-bcc6-0693433b946e"
->DMI.MasterDMI().In_DriverId.DriverAction.ReValidate == False</Expectation></Expectations>
+ DeadLine="1"
+ Guid="afd62142-9c98-45d2-a661-1e64fcf6ffa0"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4472,7 +4490,42 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - Driver elects to re-enter driver ID"
+ Name="Step2 - Driver elects to re-enter driver id =&gt; driver id screen is displayed"
+ Guid="6f67fd93-f96c-4e9b-83b4-26636a922dfd"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="f865cc96-ae2e-4546-b68a-6a436432ec88"
+>
+<Actions>
+<Action
+ Guid="4c10582f-d888-4a19-9a96-c0e220d8e710"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="166efff1-6aa9-4e5a-859c-04ef476719a2"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="25ed23a1-972d-40f9-bfee-12a044606ed8"
+>DMI.MasterDMI().In_DriverId.Id == &apos;Paul&apos;</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="35e52df0-da18-47b1-bcc6-0693433b946e"
+>DMI.MasterDMI().In_DriverId.DriverAction.ReValidate == False</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="cb6dbbd7-d2ea-4ac3-9bf2-2dc114ad64ee"
+>DMI.MasterDMI().In_DriverId.DriverAction.Enter == True<Condition></Condition>
+</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Driver elects to re-enter driver id"
  Guid="e3bc4ca0-954c-44e7-8217-362c2f99b506"
 >
 <SubSteps>
@@ -4504,7 +4557,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step3 - We are still in S20"
+ Name="Step4 - We are still in S20"
  Guid="a671fe6b-651a-4f90-a0b3-5b46cade6867"
 >
 <SubSteps>
