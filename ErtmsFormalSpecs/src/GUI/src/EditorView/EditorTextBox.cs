@@ -648,7 +648,12 @@ namespace GUI
             CountExpression.OPERATOR + " <collection> | <condition>", 
             MapExpression.OPERATOR + " <collection> | <condition> USING <map_expression>",
             SumExpression.OPERATOR + " <collection> | <condition> USING <map_expression>", 
-            ReduceExpression.OPERATOR + " <collection> | <condition> USING <map_expression> INITIAL_VALUE <expression>" 
+            ReduceExpression.OPERATOR + " <collection> | <condition> USING <map_expression> INITIAL_VALUE <expression>", 
+            "STABILIZE <expression> INITIAL_VALUE <expression> STOP_CONDITION <condition>",
+            "APPLY <statement> ON <collection> | <condition>",
+            "INSERT <expression> IN <collection> WHEN FULL REPLACE <condition>",
+            "REMOVE [FIRST|LAST|ALL] <condition> IN <collection>", 
+            "REPLACE <condition> IN <collection> BY <expression>",  
         };
 
         /// <summary>
@@ -752,9 +757,33 @@ namespace GUI
             int lastDot = text.LastIndexOf('.');
             if (lastDot > 0)
             {
+                // Default values for search options
                 retVal.EnclosingName = text.Substring(0, lastDot);
                 retVal.ConsiderTemplates = string.IsNullOrEmpty(retVal.EnclosingName);
-                if (text.StartsWith("X."))
+
+                // Specific cases
+                if (text.StartsWith("THIS."))
+                {
+                    retVal.EnclosingName = "";
+                    retVal.ConsiderTemplates = false;
+                    retVal.ConsiderEnclosing = false;
+                    ModelElement modelElement = Instance as ModelElement;
+                    while (modelElement != null)
+                    {
+                        Structure structure = modelElement as Structure;
+                        if (structure != null)
+                        {
+                            retVal.Instances.Add(structure);
+                            modelElement = null;
+                        }
+
+                        if (modelElement != null)
+                        {
+                            modelElement = modelElement.Enclosing as ModelElement;
+                        }
+                    }
+                }
+                else if (text.StartsWith("X."))
                 {
                     // Computes the location of the IN keyword
                     int start = EditionTextBox.SelectionStart;
