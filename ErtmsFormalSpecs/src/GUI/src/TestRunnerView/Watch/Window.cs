@@ -284,8 +284,8 @@ namespace GUI.TestRunnerView.Watch
         {
             if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
             {
-                BaseTreeNode SourceNode = (BaseTreeNode)e.Data.GetData("WindowsForms10PersistentObject");
-
+                object data = e.Data.GetData("WindowsForms10PersistentObject");
+                BaseTreeNode SourceNode = data as BaseTreeNode;
                 if (SourceNode != null)
                 {
                     Variable variable = SourceNode.Model as Variable;
@@ -300,14 +300,29 @@ namespace GUI.TestRunnerView.Watch
 
                     if (variable != null)
                     {
-                        List<WatchedExpression> watches = (List<WatchedExpression>)watchDataGridView.DataSource;
-                        watches.Insert(watches.Count - 1, new WatchedExpression(Instance, variable.FullName));
-                        watchDataGridView.DataSource = null;
-                        watchDataGridView.DataSource = watches;
-                        Refresh();
+                        AddVariable(variable);
+                    }
+                }
+
+                BrightIdeasSoftware.OLVListItem item = data as BrightIdeasSoftware.OLVListItem;
+                if ( item != null )
+                {
+                    Variable variable = item.RowObject as Variable;
+                    if (variable != null)
+                    {
+                        AddVariable(variable);
                     }
                 }
             }
+        }
+
+        private void AddVariable(Variable variable)
+        {
+            List<WatchedExpression> watches = (List<WatchedExpression>)watchDataGridView.DataSource;
+            watches.Insert(watches.Count - 1, new WatchedExpression(Instance, variable.FullName));
+            watchDataGridView.DataSource = null;
+            watchDataGridView.DataSource = watches;
+            Refresh();
         }
 
         /// <summary>

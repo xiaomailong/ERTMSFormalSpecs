@@ -30,6 +30,11 @@ namespace GUI.StructureValueEditor
     public partial class Window : BaseForm
     {
         /// <summary>
+        /// The variable currently being displayed, if any
+        /// </summary>
+        private IVariable Variable { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public Window()
@@ -53,6 +58,20 @@ namespace GUI.StructureValueEditor
             structureTreeListView.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(CustomizeTreeView.HandleCellEditStarting);
             structureTreeListView.CellEditValidating += new BrightIdeasSoftware.CellEditEventHandler(CustomizeTreeView.HandleCellEditValidating);
             structureTreeListView.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(CustomizeTreeView.HandleCellEditFinishing);
+
+            structureTreeListView.ItemDrag += new ItemDragEventHandler(structureTreeListView_ItemDrag);
+
+            FormClosed += new FormClosedEventHandler(Window_FormClosed);
+        }
+
+        void structureTreeListView_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            DoDragDrop(e.Item, DragDropEffects.Move);
+        }
+
+        void Window_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
 
         /// <summary>
@@ -80,6 +99,30 @@ namespace GUI.StructureValueEditor
             }
 
             structureTreeListView.SetObjects(ObjectModel);
+        }
+
+        /// <summary>
+        /// Sets the variable as data source for this window
+        /// </summary>
+        /// <param name="variable"></param>
+        public void SetVariable(IVariable variable)
+        {
+            Variable = variable;
+
+            Text = Variable.FullName;
+            List<IVariable> ObjectModel = new List<IVariable>();
+            ObjectModel.Add(variable);
+            structureTreeListView.SetObjects(ObjectModel);
+        }
+
+        /// <summary>
+        /// Refresh the window contents when the model may have changed
+        /// </summary>
+        public void RefreshAfterStep()
+        {
+            // structureTreeListView.CheckObject(Variable);
+            structureTreeListView.RefreshObject(Variable);
+            structureTreeListView.Refresh();
         }
     }
 }

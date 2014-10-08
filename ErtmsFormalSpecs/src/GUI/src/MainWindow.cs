@@ -108,16 +108,26 @@ namespace GUI
             }
         }
 
+        /// <summary>
+        /// Handles the fact that a sub window has been closed
+        /// </summary>
+        /// <param name="form"></param>
         public void HandleSubWindowClosed(Form form)
         {
-            SubForms.Remove(form);
+            try
+            {
+                SubForms.Remove(form);
+            }
+            catch (Exception)
+            {
+            }
         }
 
         /// <summary>
         /// Finds a  specific window in a collection of windows
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        private static class GenericWindowHandling<T>
+        public static class GenericWindowHandling<T>
             where T : Form, new()
         {
             /// <summary>
@@ -1562,6 +1572,10 @@ namespace GUI
                     if (form is TestRunnerView.Watch.Window)
                     {
                         ((TestRunnerView.Watch.Window)form).RefreshAfterStep();
+                    }
+                    if (form is StructureValueEditor.Window)
+                    {
+                        ((StructureValueEditor.Window)form).RefreshAfterStep();
                     }
                 }
             }
