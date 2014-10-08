@@ -1584,7 +1584,8 @@ DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreC
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e0334c2e-1372-452d-9df0-162e035bd4d9"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>State S2: the driver is asked to enter/validate the level.</Comment>
+<StateMachine
  Default="OfferLevelSelection"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1592,11 +1593,12 @@ DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreC
 >
 <States>
 <State
- X="80"
- Y="310"
+ X="480"
+ Y="320"
  Width="140"
  Height="50"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="LevelSelectionOffered"
  Guid="e0a57b25-5fcf-4e07-b21c-6104193745b4"
 >
@@ -1610,7 +1612,8 @@ DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreC
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="eaef04bc-7feb-4bee-8d6e-fd4a2b38af86"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>When the driver asks to enter the level, the level entry screen is displayed.</Comment>
+<StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="32dd5a32-966a-4051-9e20-9d7566e1133e"
@@ -1652,7 +1655,8 @@ DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreC
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c0230ef7-b190-4f95-bb55-4ef5c0bc33a8"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>When the driver enters/revalidates the level, its value is stored.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1673,11 +1677,12 @@ DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreC
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="370"
- Y="310"
+ X="90"
+ Y="320"
  Width="140"
  Height="50"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ExitState"
  Guid="e0e90648-167d-4e55-a0ab-446cd624334b"
 >
@@ -1691,7 +1696,8 @@ DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreC
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d27b2d5c-65a4-4c96-a374-c4c75201a8a9"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Once the driver has entered/validated the level, the process goes to the next state.</Comment>
+<StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="571b634b-6f42-40df-a232-90dc666082e8"
@@ -1704,6 +1710,7 @@ DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreC
  Name="Exit state"
  Guid="e010fe5d-0559-49b0-8799-0714a4dcb378"
 >
+<Comment>If new level value is 0, 1 or NTC, the procedure goes to the state 10. Otherwise it goes to the state S3.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1728,7 +1735,8 @@ DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreC
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="56a28257-0aa3-423f-ac92-cc6a15f93fbe"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the new level value is 2 or 3, the procedure goes to the state S3.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1756,7 +1764,8 @@ DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreC
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dd019a05-de34-4fbd-ab5e-99f3ac23189e"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If new level value is 0, 1 or NTC, the procedure goes to the state 10.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1782,6 +1791,7 @@ DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreC
  Width="140"
  Height="50"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="OfferLevelSelection"
  Guid="3f3b2e02-66c1-4072-a86e-254a8ce8dad6"
 >
@@ -1795,7 +1805,8 @@ DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreC
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="cea57749-93e5-4c04-928a-5b93288cf59b"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Initial state: the on-board equipment proposes to the driver to enter/revalidate the level.</Comment>
+<StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="62fac64e-8bec-44c9-99bb-1130aa988d11"
@@ -1808,60 +1819,105 @@ DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreC
  Name="Select level"
  Guid="036667bb-40cc-4017-a38f-1528d58a0bb3"
 >
+<Comment>If the level is unknown or invali, the driver is asked to enter/revalidate it. Otherwise, the procedure goes further.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="SelectLevel"
+ Name="Unknown or invalid level"
  Guid="bc8ad033-d4bd-471c-bcb5-239576468166"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Unknown level"
- Guid="5d66a02b-c359-4ca0-bb43-a38dc7a05ad8"
 >
 <ReqRef
  Id="44711e45-24b9-4434-8eef-30cd89f623a4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6584845c-dee6-4466-b45b-1c0cdd3b3257"
+ Guid="c718f4ab-9f67-4f45-94ef-58dcdd55ba86"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><ReqRef
+ Id="7c664288-2b36-410e-9dce-05703e002b8e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8e5aacbf-b209-4ce9-8a60-eca1788eeb5a"
+>
+</ReqRef><Comment>If the level is unknown or invalid, the driver is asked to enter/revalidate it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="8f083773-5b95-4f4c-9ae7-4b797ae0481c"
+>Kernel.Level.DataState in [Default.DataState.Invalid, Default.DataState.Unknown]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2d42d2f5-4319-4560-8681-755772d37629"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InitiateRequest()</Action><Action
+ Guid="9030cc13-551e-4fc6-b9f6-61ebe760b06a"
+>THIS &lt;- WaitForDriverRequest</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Valid level"
+ Guid="10069c33-4a62-4354-8a13-f2d7ae1e306d"
+>
+<ReqRef
+ Id="1cc13002-553c-49af-a2a8-f528a7778ad8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="caf0c06d-cdd7-421e-858a-cc072a026e18"
+>
+</ReqRef><ReqRef
+ Id="a4dec848-a075-4e4a-bd28-b22b5228bb83"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2d77fa4e-212f-4bb9-af16-4cb86a7aa6ff"
+>
+</ReqRef><Comment>If the level is valid, the procedure goes further.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="9a6416c5-bf25-499e-820e-ec747eebc0e6"
+><Comment></Comment>
+THIS &lt;- ExitState</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="470"
+ Y="60"
+ Width="140"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="WaitForDriverRequest"
+ Guid="397db79c-ac99-4a86-89f9-17482fb7e2e8"
+>
+<Comment>The on-board equipment waits until the driver asks to enter/revalidate the level.</Comment>
+<StateMachine
+ Default=""
+ Implemented="TRUE"
+ Guid="56fd41bb-5456-4a7f-9bf0-2a4636fc0783"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Wait until the driver asks to enter/validate the level"
+ Guid="200031a5-640e-45c5-8b81-11465eed2cbc"
+>
+<Comment>The on-board equipment waits until the driver asks to enter/revalidate the level.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Unknown level"
- Guid="71b9b496-2692-41e6-868d-bc83370bf72d"
+ Name="Wait until the driver asks to enter/validate the level"
+ Guid="e08c4c45-476d-4ff1-9955-01dd2503344f"
 >
 <PreConditions>
 <PreCondition
- Guid="ca461923-7027-48ea-a301-66f336d29791"
->Kernel.Level.DataState == DataState.Unknown</PreCondition></PreConditions>
+ Guid="36792e40-27c4-47f9-9629-1ed2140dd176"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="c97b8401-32c1-4239-bb8d-54f862ebb584"
->THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action
- Guid="e3a60529-bb36-4ba8-9e25-407becd12d5c"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
-(
-  Level =&gt; Default.LevelDataStruct
-  {
-    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-    Value =&gt; Default.Level.Unknown
-  },
-  Enter =&gt; True, 
-  ReValidate =&gt; False,
-  NTCLevels =&gt; Kernel.TrainData.TrainData.Value.LevelsSupportedOnBoard
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
+ Guid="957c7945-9062-4681-95bd-c5d6c52967a7"
+><Comment></Comment>
+THIS &lt;- LevelSelectionOffered</Action></Actions>
+<SubRules>
+<Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Invalid level"
@@ -1872,7 +1928,8 @@ DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreC
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a04875b2-420b-4609-9c9d-344706167e5d"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the level is invalid, the driver is asked to revalidate it.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1883,12 +1940,9 @@ DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreC
 <PreConditions>
 <PreCondition
  Guid="cf8193d4-30b6-4bc3-bbd4-45a591192f5f"
->Kernel.Level.DataState == DataState.Invalid</PreCondition></PreConditions>
+>Kernel.Level.DataState == Default.DataState.Invalid</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="957c7945-9062-4681-95bd-c5d6c52967a7"
-><Comment></Comment>
-THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action
  Guid="24019dfa-3cfc-4da4-a643-b1fc2e787e44"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
 (
@@ -1901,35 +1955,41 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Valid level"
- Guid="41f5f9d1-3e22-4a42-9171-a8f56b58782e"
+ Name="Unknown level"
+ Guid="5d66a02b-c359-4ca0-bb43-a38dc7a05ad8"
 >
 <ReqRef
- Id="1cc13002-553c-49af-a2a8-f528a7778ad8"
+ Id="44711e45-24b9-4434-8eef-30cd89f623a4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d8196737-1fdb-46a4-bfb7-e6cc5ca4b5e8"
+ Guid="6584845c-dee6-4466-b45b-1c0cdd3b3257"
 >
-</ReqRef><ReqRef
- Id="a4dec848-a075-4e4a-bd28-b22b5228bb83"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="856df792-aee8-43f8-a397-42978174325c"
->
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the level is unknown, the driver is asked to enter it.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Valid level"
- Guid="fd487a85-9b71-4ebc-8388-f30b1defe9c3"
+ Name="Unknown level"
+ Guid="71b9b496-2692-41e6-868d-bc83370bf72d"
 >
 <PreConditions>
 <PreCondition
- Guid="329182f9-e5d0-41d5-8949-b86b38d7f1a4"
->Kernel.Level.DataState == DataState.Valid</PreCondition></PreConditions>
+ Guid="ca461923-7027-48ea-a301-66f336d29791"
+>Kernel.Level.DataState == Default.DataState.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="9a6416c5-bf25-499e-820e-ec747eebc0e6"
->THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action></Actions>
+ Guid="e3a60529-bb36-4ba8-9e25-407becd12d5c"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+  Level =&gt; Default.LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Default.Level.Unknown
+  },
+  Enter =&gt; True, 
+  ReValidate =&gt; False,
+  NTCLevels =&gt; Kernel.TrainData.TrainData.Value.LevelsSupportedOnBoard
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -5457,7 +5517,8 @@ DMI.MasterDMI().In_AcknOfSNMode.InitiateRequest(Kernel.Level.Value.NTC)</Action>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="96b82c62-6a98-469b-b0d9-459c160b3f2e"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment></Comment>
+<StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="99be0b2e-85bf-4098-abf6-45e43aaf154f"
