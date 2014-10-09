@@ -200,8 +200,7 @@ namespace GUI.Shortcuts
 
                 if (shortcut.Item.Dictionary == Item.Dictionary)
                 {
-                    DataDictionary.Shortcuts.Shortcut otherShortcut = (DataDictionary.Shortcuts.Shortcut)DataDictionary.Generated.acceptor.getFactory().createShortcut();
-                    shortcut.Item.copyTo(otherShortcut);
+                    DataDictionary.Shortcuts.Shortcut otherShortcut = (DataDictionary.Shortcuts.Shortcut)shortcut.Item.Duplicate();
                     createShortcut(otherShortcut);
 
                     shortcut.Delete();
@@ -213,8 +212,7 @@ namespace GUI.Shortcuts
 
                 if (folder.Item.Dictionary == Item.Dictionary)
                 {
-                    DataDictionary.Shortcuts.ShortcutFolder otherFolder = (DataDictionary.Shortcuts.ShortcutFolder)DataDictionary.Generated.acceptor.getFactory().createShortcutFolder();
-                    folder.Item.copyTo(otherFolder);
+                    DataDictionary.Shortcuts.ShortcutFolder otherFolder = (DataDictionary.Shortcuts.ShortcutFolder)folder.Item.Duplicate();
                     createFolder(otherFolder);
 
                     folder.Delete();

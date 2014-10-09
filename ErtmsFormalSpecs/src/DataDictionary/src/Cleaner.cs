@@ -668,6 +668,17 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="visitSubNodes"></param>
+        public override void visit(Generated.SourceTextComment obj, bool visitSubNodes)
+        {
+
+          base.visit(obj, visitSubNodes);
+        }
+
+        /// <summary>
+        /// Cleans all text fields in this element
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="visitSubNodes"></param>
         public override void visit(Generated.ShortcutDictionary obj, bool visitSubNodes)
         {
 

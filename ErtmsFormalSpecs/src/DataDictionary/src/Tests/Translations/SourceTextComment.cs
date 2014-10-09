@@ -16,37 +16,22 @@
 
 using DataDictionary.Interpreter;
 using System.Collections;
+
 namespace DataDictionary.Tests.Translations
 {
-    public class SourceText : Generated.SourceText, IExpressionable
+    public class SourceTextComment : Generated.SourceTextComment, IExpressionable
     {
-        public ArrayList Comments
-        {
-            get
-            {
-                ArrayList retVal = allComments();
-
-                if (retVal == null)
-                {
-                    retVal = new ArrayList();
-                    setAllComments(retVal);
-                }
-
-                return retVal;
-            }
-        }
-
         /// <summary>
-        /// The enclosing translation, if any
+        /// The enclosing source text, if any
         /// </summary>
-        public Tests.Translations.Translation Translation
+        public Tests.Translations.SourceText SourceText
         {
-            get { return Enclosing as Tests.Translations.Translation; }
+            get { return Enclosing as Tests.Translations.SourceText; }
         }
 
         public override System.Collections.ArrayList EnclosingCollection
         {
-            get { return Translation.SourceTexts; }
+            get { return SourceText.Comments; }
         }
 
         /// <summary>

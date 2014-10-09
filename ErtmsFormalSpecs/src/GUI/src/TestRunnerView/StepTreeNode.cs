@@ -256,7 +256,7 @@ namespace GUI.TestRunnerView
 
             if (translationDictionary != null)
             {
-                Translation translation = translationDictionary.findTranslation(Item.getDescription());
+                Translation translation = translationDictionary.findTranslation(Item.getDescription(), Item.Comment);
                 if (translation != null)
                 {
                     bool getFocus = true;

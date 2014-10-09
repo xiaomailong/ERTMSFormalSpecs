@@ -112,7 +112,7 @@ namespace DataDictionary.Tests.Translations
                     retVal = retVal + "Source texts\n";
                 }
                 indent = "  ";
-                foreach (DataDictionary.Tests.Translations.SourceText text in SourceTexts)
+                foreach (SourceText text in SourceTexts)
                 {
                     retVal = retVal + indent + text.Name + "\n";
                 }

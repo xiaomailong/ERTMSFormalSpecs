@@ -147,7 +147,7 @@ namespace DataDictionary.Tests
             {
                 SubSteps.Clear();
 
-                Translations.Translation translation = translationDictionary.findTranslation(getDescription());
+                Translations.Translation translation = translationDictionary.findTranslation(getDescription(), Comment);
                 if (translation != null)
                 {
                     translation.UpdateStep(this);

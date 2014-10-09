@@ -150,7 +150,7 @@ namespace GUI.TranslationRules
             {
                 Step step = (Step) obj;
 
-                if ( Translation == Translation.TranslationDictionary.findTranslation(step.getDescription()))
+                if ( Translation == Translation.TranslationDictionary.findTranslation(step.getDescription(), step.Comment))
                 {
                     step.AddInfo("Translation "+Translation.Name+" used");
                 }
@@ -213,8 +213,7 @@ namespace GUI.TranslationRules
             {
                 SourceTextTreeNode text = SourceNode as SourceTextTreeNode;
 
-                DataDictionary.Tests.Translations.SourceText otherText = (DataDictionary.Tests.Translations.SourceText)DataDictionary.Generated.acceptor.getFactory().createSourceText();
-                text.Item.copyTo(otherText);
+                DataDictionary.Tests.Translations.SourceText otherText = (DataDictionary.Tests.Translations.SourceText) text.Item.Duplicate();
                 translationTreeNode.createSourceText(otherText);
                 text.Delete();
             }
@@ -230,6 +229,11 @@ namespace GUI.TranslationRules
                 {
                     DataDictionary.Tests.Translations.SourceText sourceText = (DataDictionary.Tests.Translations.SourceText)DataDictionary.Generated.acceptor.getFactory().createSourceText();
                     sourceText.Name = step.Item.getDescription();
+                    if (!string.IsNullOrEmpty(step.Item.Comment))
+                    {
+                        SourceTextComment comment = (SourceTextComment)DataDictionary.Generated.acceptor.getFactory().createSourceTextComment();
+                        sourceText.appendComments(comment);
+                    }
                     translationTreeNode.createSourceText(sourceText);
                 }
             }

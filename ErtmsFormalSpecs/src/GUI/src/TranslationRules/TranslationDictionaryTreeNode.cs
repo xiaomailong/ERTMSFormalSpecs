@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Tests.Translations;
 
 namespace GUI.TranslationRules
 {
@@ -101,10 +102,10 @@ namespace GUI.TranslationRules
         {
             TranslationTreeNode retVal;
 
-            DataDictionary.Tests.Translations.Translation existingTranslation = null;
-            foreach (DataDictionary.Tests.Translations.SourceText sourceText in translation.SourceTexts)
+            Translation existingTranslation = null;
+            foreach (SourceText sourceText in translation.SourceTexts)
             {
-                existingTranslation = Item.Dictionary.TranslationDictionary.findTranslation(sourceText.Name);
+                existingTranslation = Item.FindExistingTranslation(sourceText);
                 if (existingTranslation != null)
                 {
                     break;
@@ -188,10 +189,15 @@ namespace GUI.TranslationRules
         /// <param name="step"></param>
         private void createTranslation(DataDictionary.Tests.Step step)
         {
-            DataDictionary.Tests.Translations.Translation translation = (DataDictionary.Tests.Translations.Translation)DataDictionary.Generated.acceptor.getFactory().createTranslation();
-            DataDictionary.Tests.Translations.SourceText sourceText = (DataDictionary.Tests.Translations.SourceText)DataDictionary.Generated.acceptor.getFactory().createSourceText();
+            Translation translation = (Translation)DataDictionary.Generated.acceptor.getFactory().createTranslation();
+            SourceText sourceText = (SourceText)DataDictionary.Generated.acceptor.getFactory().createSourceText();
 
             sourceText.Name = step.getDescription();
+            if (!string.IsNullOrEmpty(step.Comment))
+            {
+                SourceTextComment comment = (SourceTextComment)DataDictionary.Generated.acceptor.getFactory().createSourceTextComment();
+                sourceText.appendComments(comment);
+            }
             translation.appendSourceTexts(sourceText);
             createTranslation(translation);
         }

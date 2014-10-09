@@ -1248,6 +1248,26 @@
   <!-- ----------- -->
   <ELEMENT NAME="SourceText" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">translation</META>
+    <FIELDS>
+      <FIELD NAME="Comments"     REFTYPE="SourceTextComment" >
+      </FIELD>
+    </FIELDS>
+    <FORMULA>
+      <CONCAT>
+        <ENCLOSED NAME="Comments" OPTIONAL="TRUE">
+          <REPEAT TARGET="Comments" ATLEASTONE="FALSE">
+            <ELEMENTREF NAME="SourceTextComment" />
+          </REPEAT>
+        </ENCLOSED>
+      </CONCAT>
+    </FORMULA>
+  </ELEMENT>
+
+  <!-- ------------------- -->
+  <!-- Source text comment -->
+  <!-- ------------------- -->
+  <ELEMENT NAME="SourceTextComment" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
+    <META NAME="Package">translation</META>
   </ELEMENT>
 
   <!-- ------------------- -->

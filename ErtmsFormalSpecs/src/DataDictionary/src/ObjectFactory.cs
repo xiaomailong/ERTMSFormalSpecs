@@ -802,6 +802,15 @@ namespace DataDictionary
             return retVal;
         }
 
+        public override Generated.SourceTextComment createSourceTextComment()
+        {
+            Generated.SourceTextComment retVal = new Tests.Translations.SourceTextComment();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
+        }
+
         public override Generated.ShortcutDictionary createShortcutDictionary()
         {
             Generated.ShortcutDictionary retVal = new Shortcuts.ShortcutDictionary();

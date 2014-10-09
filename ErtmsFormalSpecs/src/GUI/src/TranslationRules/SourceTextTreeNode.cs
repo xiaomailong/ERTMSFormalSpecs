@@ -16,12 +16,13 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Tests.Translations;
 
 namespace GUI.TranslationRules
 {
     public class SourceTextTreeNode : ModelElementTreeNode<DataDictionary.Tests.Translations.SourceText>
     {
-        private class ItemEditor : NamedEditor
+        private class ItemEditor : CommentableEditor
         {
             /// <summary>
             /// Constructor
@@ -32,6 +33,8 @@ namespace GUI.TranslationRules
             }
         }
 
+        SourceTextCommentsTreeNode comments = null;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -39,7 +42,30 @@ namespace GUI.TranslationRules
         public SourceTextTreeNode(DataDictionary.Tests.Translations.SourceText item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
+            if (item.countComments() > 0)
+            {
+                comments = new SourceTextCommentsTreeNode(item, buildSubNodes);
+            }
         }
+
+        /// <summary>
+        /// Creates a new source text
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public SourceTextCommentTreeNode createComment(SourceTextComment comment)
+        {
+            SourceTextCommentTreeNode retVal;
+
+            if (comments == null)
+            {
+                comments = new SourceTextCommentsTreeNode(Item, true);
+            }
+
+            retVal = comments.createComment(comment);
+            return retVal;
+        }
+
 
         /// <summary>
         /// Handles a selection change event
@@ -84,6 +110,23 @@ namespace GUI.TranslationRules
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
 
             return retVal;
+        }
+
+        /// <summary>
+        /// Accepts the drop event
+        /// </summary>
+        /// <param name="sourceTextTreeNode"></param>
+        /// <param name="SourceNode"></param>
+        public static void AcceptDropForSourceText(SourceTextTreeNode sourceTextTreeNode, BaseTreeNode SourceNode)
+        {
+            if (SourceNode is SourceTextCommentTreeNode)
+            {
+                SourceTextCommentTreeNode comment = SourceNode as SourceTextCommentTreeNode;
+
+                SourceTextComment otherText = (SourceTextComment)comment.Item.Duplicate();
+                sourceTextTreeNode.createComment(otherText);
+                comment.Delete();
+            }
         }
     }
 }

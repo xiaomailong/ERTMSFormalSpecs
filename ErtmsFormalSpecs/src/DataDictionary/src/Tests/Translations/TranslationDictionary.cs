@@ -90,36 +90,43 @@ namespace DataDictionary.Tests.Translations
         /// <returns></returns>
         public static string StripText(string text)
         {
-            char[] source = text.ToCharArray();
-            char[] retVal = new char[source.Length];
+            string retVal = "";
 
-            int i = 0;
-            int j = 0;
-            while (i < source.Length)
+            if (!string.IsNullOrEmpty(text))
             {
-                if (Char.IsLetterOrDigit(source[i]))
+                char[] source = text.ToCharArray();
+                char[] tmp = new char[source.Length];
+
+                int i = 0;
+                int j = 0;
+                while (i < source.Length)
                 {
-                    retVal[j] = source[i];
-                    j += 1;
+                    if (Char.IsLetterOrDigit(source[i]))
+                    {
+                        tmp[j] = source[i];
+                        j += 1;
+                    }
+
+                    i += 1;
                 }
 
-                i += 1;
+                retVal = new string(tmp, 0, j); 
             }
 
-            return new string(retVal, 0, j);
+            return retVal;
         }
 
         /// <summary>
         /// The cache
         /// </summary>
-        private Dictionary<string, Translation> theCache = null;
-        public Dictionary<string, Translation> TheCache
+        private Dictionary<string, Dictionary<string, Translation>> theCache = null;
+        public Dictionary<string, Dictionary<string, Translation>> TheCache
         {
             get
             {
                 if (theCache == null)
                 {
-                    theCache = new Dictionary<string, Translation>();
+                    theCache = new Dictionary<string, Dictionary<string, Translation>>();
                     foreach (Folder folder in Folders)
                     {
                         StoreTranslationsInFolder(folder);
@@ -147,21 +154,48 @@ namespace DataDictionary.Tests.Translations
             }
         }
 
+        /// <summary>
+        /// Indicates that the source text is applicable for any comment
+        /// </summary>
+        private static string NO_SPECIFIC_COMMENT = "___NOSPECIFICCOMMENT___";
+
         private void storeTranslationInCache(Translation translation)
         {
             foreach (SourceText sourceText in translation.SourceTexts)
             {
                 string textDescription = StripText(sourceText.Name);
-                theCache[textDescription] = translation;
+
+                Dictionary<string, Translation> tmp;
+                if (!theCache.TryGetValue(textDescription, out tmp))
+                {
+                    tmp = new Dictionary<string, Translation>();
+                    theCache[textDescription] = tmp;
+                }
+
+                if (sourceText.Comments.Count > 0)
+                {
+                    foreach (SourceTextComment comment in sourceText.Comments)
+                    {
+                        string commentValue  = StripText(comment.Name);
+                        tmp[commentValue] = translation;
+                    }
+                }
+                else
+                {
+                    tmp[NO_SPECIFIC_COMMENT] = translation;
+                }
             }
         }
 
         /// <summary>
-        /// Provides the translation which matches the description provided
+        /// Provides the translation which matches the description provided. Matching is performed the following way
+        ///   1.  First try to find a translation whose source text corresponds to the step description
+        ///   2.  If that source text holds any associated comment, ensure that the step comment matches one of them
         /// </summary>
         /// <param name="description"></param>
+        /// <param name="comment">the comment associated to the step</param>
         /// <returns></returns>
-        public Translation findTranslation(string description)
+        public Translation findTranslation(string description, string comment)
         {
             Translation retVal = null;
 
@@ -170,7 +204,13 @@ namespace DataDictionary.Tests.Translations
                 string text = StripText(description);
                 if (TheCache.ContainsKey(text))
                 {
-                    retVal = TheCache[text];
+                    Dictionary<string, Translation> tmp = TheCache[text];
+
+                    string commentValue = StripText(comment);
+                    if (!tmp.TryGetValue(commentValue, out retVal))
+                    {
+                        tmp.TryGetValue(NO_SPECIFIC_COMMENT, out retVal);
+                    }
                 }
             }
 
@@ -206,5 +246,32 @@ namespace DataDictionary.Tests.Translations
             }
         }
 
+        /// <summary>
+        /// Provides the existing translation corresponding to the source text provided
+        /// </summary>
+        /// <param name="sourceText"></param>
+        /// <returns></returns>
+        public Translation FindExistingTranslation(SourceText sourceText)
+        {
+            Translation existingTranslation = null;
+
+            if (sourceText.Comments.Count > 0)
+            {
+                foreach (SourceTextComment comment in sourceText.Comments)
+                {
+                    existingTranslation = findTranslation(sourceText.Name, comment.Name);
+                    if (existingTranslation != null)
+                    {
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                existingTranslation = findTranslation(sourceText.Name, "");
+            }
+
+            return existingTranslation;
+        }
     }
 }
