@@ -227,14 +227,7 @@ namespace GUI.TranslationRules
                 }
                 else
                 {
-                    DataDictionary.Tests.Translations.SourceText sourceText = (DataDictionary.Tests.Translations.SourceText)DataDictionary.Generated.acceptor.getFactory().createSourceText();
-                    sourceText.Name = step.Item.getDescription();
-                    if (!string.IsNullOrEmpty(step.Item.Comment))
-                    {
-                        SourceTextComment comment = (SourceTextComment)DataDictionary.Generated.acceptor.getFactory().createSourceTextComment();
-                        sourceText.appendComments(comment);
-                    }
-                    translationTreeNode.createSourceText(sourceText);
+                    translationTreeNode.createSourceText(step.Item.createSourceText());
                 }
             }
         }

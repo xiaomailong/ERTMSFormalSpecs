@@ -100,15 +100,7 @@ namespace GUI.TranslationRules
         private void createTranslation(DataDictionary.Tests.Step step)
         {
             Translation translation = (Translation)DataDictionary.Generated.acceptor.getFactory().createTranslation();
-            SourceText sourceText = (SourceText)DataDictionary.Generated.acceptor.getFactory().createSourceText();
-
-            sourceText.Name = step.getDescription();
-            if (!string.IsNullOrEmpty(step.Comment))
-            {
-                SourceTextComment comment = (SourceTextComment)DataDictionary.Generated.acceptor.getFactory().createSourceTextComment();
-                sourceText.appendComments(comment);
-            }
-            translation.appendSourceTexts(sourceText);
+            translation.appendSourceTexts(step.createSourceText());
             createTranslation(translation);
         }
 
@@ -119,7 +111,7 @@ namespace GUI.TranslationRules
         /// <returns></returns>
         public TranslationTreeNode createTranslation(DataDictionary.Tests.Translations.Translation translation)
         {
-            TranslationTreeNode retVal;
+            TranslationTreeNode retVal = null;
 
             DataDictionary.Tests.Translations.Translation existingTranslation = null;
             foreach (DataDictionary.Tests.Translations.SourceText sourceText in translation.SourceTexts)
@@ -133,10 +125,18 @@ namespace GUI.TranslationRules
 
             if (existingTranslation != null)
             {
-                MessageBox.Show("Translation already exists. It has been selected in the tree view", "Already existing translation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                retVal = (TranslationTreeNode)BaseTreeView.Select(existingTranslation);
+                DialogResult dialogResult = MessageBox.Show("Translation already exists. Do you want to create a new one (Cancel will select the existing translation) ?", "Already existing translation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (dialogResult == DialogResult.OK)
+                {
+                    existingTranslation = null;
+                }
+                else
+                {
+                    retVal = (TranslationTreeNode) BaseTreeView.Select(existingTranslation);
+                }
             }
-            else
+
+            if (existingTranslation == null)
             {
                 Item.appendTranslations(translation);
                 retVal = new TranslationTreeNode(translation, true);

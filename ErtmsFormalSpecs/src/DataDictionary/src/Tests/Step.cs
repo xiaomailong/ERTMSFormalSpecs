@@ -14,7 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections;
-
+using DataDictionary.Tests.Translations;
 
 namespace DataDictionary.Tests
 {
@@ -235,6 +235,25 @@ namespace DataDictionary.Tests
             string retVal = "";
 
             retVal = getExplain(0, explainSubElements);
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Creates the source text which corresponds to this step
+        /// </summary>
+        /// <returns></returns>
+        public SourceText createSourceText()
+        {
+            SourceText retVal = (SourceText) Generated.acceptor.getFactory().createSourceText();
+            retVal.Name = getDescription();
+
+            if (!string.IsNullOrEmpty(Comment))
+            {
+                SourceTextComment comment = (SourceTextComment) Generated.acceptor.getFactory().createSourceTextComment();
+                comment.Name = Comment;
+                retVal.appendComments(comment);
+            }
 
             return retVal;
         }
