@@ -142,6 +142,8 @@ namespace GUI.TranslationRules
                 retVal = new TranslationTreeNode(translation, true);
                 Nodes.Add(retVal);
                 SortSubNodes();
+
+                BaseTreeView.Select(retVal.Item);
             }
 
             return retVal;

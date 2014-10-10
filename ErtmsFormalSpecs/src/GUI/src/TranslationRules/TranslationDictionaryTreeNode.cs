@@ -132,7 +132,7 @@ namespace GUI.TranslationRules
                 Nodes.Add(retVal);
                 SortSubNodes();
 
-                BaseTreeView.Select(retVal);
+                BaseTreeView.Select(retVal.Item);
             }
 
             return retVal;
