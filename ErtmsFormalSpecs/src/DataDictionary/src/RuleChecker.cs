@@ -16,11 +16,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DataDictionary.Functions;
 using System.Collections;
 using DataDictionary.Interpreter;
-using DataDictionary.Specification;
+using DataDictionary.Tests;
 using DataDictionary.Tests.Translations;
+using DataDictionary.Specification;
+using DataDictionary.Functions;
 
 namespace DataDictionary
 {
@@ -171,6 +172,28 @@ namespace DataDictionary
                             step.AddWarning("First step of the first test case of a subsequence should be used to setup the system, and should hold 'Setup' or 'Initialize' in its name");
                         }
                     }
+                }
+            }
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        /// <summary>
+        /// Ensure that all step that should be automatically translated have a translation
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="visitSubNodes"></param>
+        public override void visit(Generated.Step obj, bool visitSubNodes)
+        {
+            Step step = (Step) obj;
+
+            TranslationDictionary translationDictionary = step.Dictionary.TranslationDictionary;
+            if (step.getTranslationRequired() && translationDictionary != null)
+            {
+                Translation translation = translationDictionary.findTranslation(step.getDescription(), step.Comment);
+                if (translation != null)
+                {
+                    step.AddWarning("Cannot find translation for this step");
                 }
             }
 
@@ -1050,6 +1073,22 @@ namespace DataDictionary
                 }
 
                 Translations[source.Name] = translation;
+            }
+
+            if (translation.Requirements.Count == 0 || string.IsNullOrEmpty(translation.Comment))
+            {
+                int countActions = 0;
+                int countExpectations = 0;
+                foreach (SubStep subStep in translation.SubSteps)
+                {
+                    countActions += subStep.Actions.Count;
+                    countExpectations += subStep.Expectations.Count;
+                }
+                if (countActions == 0 && countExpectations == 0)
+                {
+                    translation.AddWarning(
+                        "Empty translation which is not linked to a requirement, or does not hold any comment");
+                }
             }
 
             base.visit(obj, visitSubNodes);

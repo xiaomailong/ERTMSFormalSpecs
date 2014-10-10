@@ -143,15 +143,24 @@ namespace DataDictionary.Tests
         /// <param name="translationDictionary"></param>
         public void Translate(Translations.TranslationDictionary translationDictionary)
         {
-            if (getTranslationRequired() && translationDictionary != null)
+            if (getTranslationRequired())
             {
                 SubSteps.Clear();
 
-                Translations.Translation translation = translationDictionary.findTranslation(getDescription(), Comment);
+                Translations.Translation translation = null;
+                if (translationDictionary != null)
+                {
+                    translation = translationDictionary.findTranslation(getDescription(), Comment);
+                }
+
                 if (translation != null)
                 {
                     translation.UpdateStep(this);
                     setTranslated(true);
+                }
+                else
+                {
+                    AddWarning("Cannot find translation for this step");
                 }
             }
         }
