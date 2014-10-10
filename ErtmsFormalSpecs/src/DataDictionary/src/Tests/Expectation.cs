@@ -234,9 +234,21 @@ namespace DataDictionary.Tests
         {
             string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
-            if (Expression != null)
+            if (!string.IsNullOrEmpty(getCondition()))
             {
-                retVal += TextualExplainUtilities.Pad(Expression.ToString(), indentLevel);
+                retVal += " {\\b IF }" + getCondition() + " {\\b THEN }\\par";
+                if (Expression != null)
+                {
+                    retVal += TextualExplainUtilities.Pad(Expression.ToString(), indentLevel + 2);                    
+                }
+                retVal += "\\par {\\b END IF}\\par";
+            }
+            else
+            {
+                if (Expression != null)
+                {
+                    retVal += TextualExplainUtilities.Pad(Expression.ToString(), indentLevel);
+                }
             }
 
             return retVal;
@@ -250,18 +262,7 @@ namespace DataDictionary.Tests
         /// <returns></returns>
         public string getExplain(bool explainSubElements)
         {
-            string retVal = "";
-
-            if (!string.IsNullOrEmpty(getCondition()))
-            {
-                retVal += " {\\b IF }" + getCondition() + " {\\b THEN }\\par";
-                retVal += getExplain(2, explainSubElements);
-                retVal += "\\par {\\b END IF}\\par";
-            }
-            else
-            {
-                retVal = getExplain(0, explainSubElements);
-            }
+            string retVal = getExplain(0, explainSubElements);
 
             return retVal;
         }
