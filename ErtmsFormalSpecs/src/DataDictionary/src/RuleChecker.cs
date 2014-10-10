@@ -187,11 +187,16 @@ namespace DataDictionary
         {
             Step step = (Step) obj;
 
-            TranslationDictionary translationDictionary = step.Dictionary.TranslationDictionary;
-            if (step.getTranslationRequired() && translationDictionary != null)
+            if (step.getTranslationRequired())
             {
-                Translation translation = translationDictionary.findTranslation(step.getDescription(), step.Comment);
-                if (translation != null)
+                Translation translation = null;
+                TranslationDictionary translationDictionary = step.Dictionary.TranslationDictionary;
+                if (translationDictionary != null)
+                {
+                    translation = translationDictionary.findTranslation(step.getDescription(), step.Comment);
+                }
+
+                if (translation == null)
                 {
                     step.AddWarning("Cannot find translation for this step");
                 }
