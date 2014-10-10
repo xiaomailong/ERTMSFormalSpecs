@@ -26,6 +26,9 @@ using DataDictionary.Interpreter.ListOperators;
 using DataDictionary.Interpreter.Filter;
 using DataDictionary.Interpreter.Statement;
 using DataDictionary.Values;
+using DataDictionary.Variables;
+using GUI.DataDictionaryView;
+
 namespace GUI
 {
     public partial class EditorTextBox : UserControl
@@ -1123,30 +1126,18 @@ namespace GUI
         {
             if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
             {
-                BaseTreeNode SourceNode = (BaseTreeNode)e.Data.GetData("WindowsForms10PersistentObject");
-                if (SourceNode != null)
+                object data = e.Data.GetData("WindowsForms10PersistentObject");                 
+                BaseTreeNode sourceNode = data as BaseTreeNode;
+                if (sourceNode != null)
                 {
-                    DataDictionaryView.VariableTreeNode variableNode = SourceNode as DataDictionaryView.VariableTreeNode;
+                    DataDictionaryView.VariableTreeNode variableNode = sourceNode as DataDictionaryView.VariableTreeNode;
                     if (variableNode != null)
                     {
-                        StringBuilder text = new StringBuilder();
-                        text.Append(StripUseless(SourceNode.Model.FullName, writingContext()) + " <- ");
-
-                        DataDictionary.Variables.Variable variable = variableNode.Item;
-                        DataDictionary.Types.Structure structure = variable.Type as DataDictionary.Types.Structure;
-                        if (structure != null)
-                        {
-                            createDefaultStructureValue(text, structure);
-                        }
-                        else
-                        {
-                            text.Append(variable.DefaultValue.FullName);
-                        }
-                        EditionTextBox.SelectedText = text.ToString();
+                        EditionTextBox.SelectedText = setVariable(variableNode.Item);
                     }
                     else
                     {
-                        DataDictionaryView.StructureTreeNode structureTreeNode = SourceNode as DataDictionaryView.StructureTreeNode;
+                        DataDictionaryView.StructureTreeNode structureTreeNode = sourceNode as DataDictionaryView.StructureTreeNode;
                         if (structureTreeNode != null)
                         {
                             StringBuilder text = new StringBuilder();
@@ -1157,11 +1148,43 @@ namespace GUI
                         }
                         else
                         {
-                            EditionTextBox.SelectedText = StripUseless(SourceNode.Model.FullName, writingContext());
+                            EditionTextBox.SelectedText = StripUseless(sourceNode.Model.FullName, writingContext());
                         }
                     }
                 }
+
+                BrightIdeasSoftware.OLVListItem item = data as BrightIdeasSoftware.OLVListItem;
+                if (item != null)
+                {
+                    Variable variable = item.RowObject as Variable;
+                    if (variable != null)
+                    {
+                        EditionTextBox.SelectedText = setVariable(variable);
+                    }
+                }
             }
+        }
+
+        /// <summary>
+        /// Sets the variable in the editor
+        /// </summary>
+        /// <param name="variable"></param>
+        private string setVariable(Variable variable)
+        {
+            StringBuilder text = new StringBuilder();
+
+            text.Append(StripUseless(variable.FullName, writingContext()) + " <- ");
+            DataDictionary.Types.Structure structure = variable.Type as DataDictionary.Types.Structure;
+            if (structure != null)
+            {
+                createDefaultStructureValue(text, structure);
+            }
+            else
+            {
+                text.Append(variable.DefaultValue.FullName);
+            }
+
+            return text.ToString();
         }
 
         private void createDefaultStructureValue(StringBuilder text, DataDictionary.Types.Structure structure, bool displayStructureName = true)

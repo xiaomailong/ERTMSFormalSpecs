@@ -285,13 +285,13 @@ namespace GUI.TestRunnerView.Watch
             if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
             {
                 object data = e.Data.GetData("WindowsForms10PersistentObject");
-                BaseTreeNode SourceNode = data as BaseTreeNode;
-                if (SourceNode != null)
+                BaseTreeNode sourceNode = data as BaseTreeNode;
+                if (sourceNode != null)
                 {
-                    Variable variable = SourceNode.Model as Variable;
+                    Variable variable = sourceNode.Model as Variable;
                     if (variable == null)
                     {
-                        DataDictionary.Shortcuts.Shortcut shortCut = SourceNode.Model as DataDictionary.Shortcuts.Shortcut;
+                        DataDictionary.Shortcuts.Shortcut shortCut = sourceNode.Model as DataDictionary.Shortcuts.Shortcut;
                         if (shortCut != null)
                         {
                             variable = shortCut.GetReference() as Variable;

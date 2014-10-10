@@ -141,10 +141,10 @@ namespace GUI.TestRunnerView.TimeLineControl
         {
             if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
             {
-                BaseTreeNode SourceNode = (BaseTreeNode)e.Data.GetData("WindowsForms10PersistentObject");
-                if (SourceNode != null)
+                BaseTreeNode sourceNode = e.Data.GetData("WindowsForms10PersistentObject") as BaseTreeNode;
+                if (sourceNode != null)
                 {
-                    DataDictionaryView.VariableTreeNode variableNode = SourceNode as DataDictionaryView.VariableTreeNode;
+                    DataDictionaryView.VariableTreeNode variableNode = sourceNode as DataDictionaryView.VariableTreeNode;
                     if (variableNode != null)
                     {
                         SubStep subStep = SubStepRelatedToMousePosition();
@@ -156,8 +156,8 @@ namespace GUI.TestRunnerView.TimeLineControl
                             string defaultValue = variableNode.Item.GetDefaultValueText();
                             if (defaultValue != null)
                             {
-                                bool doSemanticalAnalysis = true;
-                                bool silent = true;
+                                const bool doSemanticalAnalysis = true;
+                                const bool silent = true;
                                 expression = EFSSystem.INSTANCE.Parser.Expression(variableNode.Item, defaultValue, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent);
                             }
 
@@ -173,7 +173,7 @@ namespace GUI.TestRunnerView.TimeLineControl
                                 DataDictionary.Types.Structure structureType = variableNode.Item.Type as DataDictionary.Types.Structure;
                                 if (structureType != null)
                                 {
-                                    bool setDefaultValue = false;
+                                    const bool setDefaultValue = false;
                                     value = new StructureValue(structureType, setDefaultValue);
                                 }
                             }

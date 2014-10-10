@@ -71,18 +71,21 @@ namespace GUI.GraphView
         {
             if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
             {
-                BaseTreeNode SourceNode = (BaseTreeNode)e.Data.GetData("WindowsForms10PersistentObject");
-                DataDictionaryView.FunctionTreeNode functionTreeNode = SourceNode as DataDictionaryView.FunctionTreeNode;
-                if (functionTreeNode != null)
+                BaseTreeNode sourceNode = e.Data.GetData("WindowsForms10PersistentObject") as BaseTreeNode;
+                if (sourceNode != null)
                 {
-                    AddFunction(functionTreeNode.Item, null);
-                }
-                else
-                {
-                    Shortcuts.ShortcutTreeNode shortcutTreeNode = SourceNode as Shortcuts.ShortcutTreeNode;
-                    if (shortcutTreeNode != null)
+                    DataDictionaryView.FunctionTreeNode functionTreeNode = sourceNode as DataDictionaryView.FunctionTreeNode;
+                    if (functionTreeNode != null)
                     {
-                        AddFunction(shortcutTreeNode.Item.GetReference() as Function, null);
+                        AddFunction(functionTreeNode.Item, null);
+                    }
+                    else
+                    {
+                        Shortcuts.ShortcutTreeNode shortcutTreeNode = sourceNode as Shortcuts.ShortcutTreeNode;
+                        if (shortcutTreeNode != null)
+                        {
+                            AddFunction(shortcutTreeNode.Item.GetReference() as Function, null);
+                        }
                     }
                 }
             }
