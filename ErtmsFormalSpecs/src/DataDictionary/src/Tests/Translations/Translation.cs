@@ -485,8 +485,8 @@ namespace DataDictionary.Tests.Translations
             Types.Structure structureType = (Types.Structure)system.findType(nameSpace, "Messages.EUROBALISE.Message");
             Values.StructureValue structure = new Values.StructureValue(structureType);
 
-            int index = 0;
-            FillStructure(nameSpace, message.Fields, ref index, structure); // fills the message fields
+            int currentIndex = 0;
+            FillStructure(nameSpace, message.Fields, ref currentIndex, structure); // fills the message fields
 
 
             // then we fill the packets
@@ -509,8 +509,8 @@ namespace DataDictionary.Tests.Translations
                         int packetId = int.Parse(nidPacketField.Value);
                         Values.StructureValue subStructure = FindStructure(packetId);
 
-                        index = 0;
-                        FillStructure(nameSpace, packet.Fields, ref index, subStructure);
+                        currentIndex = 0;
+                        FillStructure(nameSpace, packet.Fields, ref currentIndex, subStructure);
                         Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
                         Values.StructureValue packetValue = new Values.StructureValue(packetStructure);
                         subStructure1.SubVariables.ElementAt(0).Value.Value = packetValue;
@@ -595,7 +595,6 @@ namespace DataDictionary.Tests.Translations
             return retVal;
         }
 
-
         /// <summary>
         /// Fills the given structure with the values provided from the database
         /// </summary>
@@ -603,14 +602,14 @@ namespace DataDictionary.Tests.Translations
         /// <param name="fields">Fields to be copied into the structure</param>
         /// <param name="index">Index (of fields list) from which we have to start copying</param>
         /// <param name="aStructure">The structure to be filled</param>
-        private static void FillStructure(Types.NameSpace aNameSpace, ArrayList fields, ref int index, Values.StructureValue aStructure)
+        private static void FillStructure(Types.NameSpace aNameSpace, ArrayList fields, ref int currentIndex, Values.StructureValue aStructure)
         {
             EFSSystem system = EFSSystem.INSTANCE;
 
             int j = 0;
-            for (int i = index; i < fields.Count; i++)
+            while ( currentIndex < fields.Count )
             {
-                Tests.DBElements.DBField field = fields[i] as Tests.DBElements.DBField;
+                Tests.DBElements.DBField field = fields[currentIndex] as Tests.DBElements.DBField;
 
                 KeyValuePair<string, Variables.IVariable> pair = aStructure.SubVariables.ElementAt(j);
                 Variables.IVariable variable = pair.Value;
@@ -662,7 +661,7 @@ namespace DataDictionary.Tests.Translations
                         {
                             Types.Structure structureType = (Types.Structure)system.findType(aNameSpace, sequence.CollectionType.Type.FullName);
                             Values.StructureValue structureValue = new Values.StructureValue(structureType);
-                            FillStructure(aNameSpace, fields, ref index, structureValue);
+                            FillStructure(aNameSpace, fields, ref currentIndex, structureValue);
                             sequence.Val.Add(structureValue);
                         }
                         sequenceVariable.Value = sequence;
@@ -673,8 +672,11 @@ namespace DataDictionary.Tests.Translations
                 // if all the fields of the structue are filled, we terminated
                 if (j == aStructure.SubVariables.Count)
                 {
-                    index = i;
                     break;
+                }
+                else 
+                {
+                    currentIndex += 1;
                 }
             }
         }

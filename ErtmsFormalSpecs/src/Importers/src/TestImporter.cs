@@ -415,7 +415,7 @@ namespace Importers
         /// <param name="aMessage"></param>
         private void importPackets(DataDictionary.Tests.DBElements.DBMessage aMessage, int TCS_order)
         {
-            string sql = "SELECT TCSOrder, MessageOrder, Pac_ID, Var_Name, Var_Value FROM TSW_MessageBody ORDER BY MessageOrder, Var_Row";
+            string sql = "SELECT Pac_ID, Var_Name, Var_Value FROM TSW_MessageBody WHERE (TCSOrder = "+TCS_order+") AND (MessageOrder = "+aMessage.MessageOrder+") ORDER BY Var_Row";
 
             OleDbDataAdapter adapter = new OleDbDataAdapter(sql, Connection);
             DataSet dataSet = new DataSet();
@@ -429,33 +429,28 @@ namespace Importers
                 foreach (DataRow dataRow in dataSet.Tables[0].Rows)
                 {
                     object[] items = dataRow.ItemArray;
-                    int order = (int)items[0];
-                    short messageOrder = (short)items[1];
-                    if (order == TCS_order && messageOrder == aMessage.MessageOrder)
+                    short pacId = (short)items[0];
+                    if (packetNumber != pacId)
                     {
-                        short pacId = (short)items[2];
-                        if (packetNumber != pacId)
+                        if (packetNumber != 0)
                         {
-                            if (packetNumber != 0)
-                            {
-                                aMessage.AddPacket(packet);
-                            }
-                            packet = (DataDictionary.Tests.DBElements.DBPacket)DataDictionary.Generated.acceptor.getFactory().createDBPacket();
-                            packetNumber = pacId;
+                            aMessage.AddPacket(packet);
                         }
-                        DataDictionary.Tests.DBElements.DBField field = (DataDictionary.Tests.DBElements.DBField)DataDictionary.Generated.acceptor.getFactory().createDBField();
-                        string variable = items[3] as string;
-                        if (variable != null)
-                        {
-                            field.Variable = variable;
-                        }
-                        string value = items[4] as string;
-                        if (value != null)
-                        {
-                            field.Value = DataDictionary.Tests.Translations.Translation.format_decimal(value).ToString();
-                        }
-                        packet.AddField(field);
+                        packet = (DataDictionary.Tests.DBElements.DBPacket)DataDictionary.Generated.acceptor.getFactory().createDBPacket();
+                        packetNumber = pacId;
                     }
+                    DataDictionary.Tests.DBElements.DBField field = (DataDictionary.Tests.DBElements.DBField)DataDictionary.Generated.acceptor.getFactory().createDBField();
+                    string variable = items[1] as string;
+                    if (variable != null)
+                    {
+                        field.Variable = variable;
+                    }
+                    string value = items[2] as string;
+                    if (value != null)
+                    {
+                        field.Value = DataDictionary.Tests.Translations.Translation.format_decimal(value).ToString();
+                    }
+                    packet.AddField(field);
                 }
                 if (packet != null)
                 {
