@@ -228,7 +228,7 @@ namespace DataDictionary
 
         public override void visit(Generated.DBField obj, bool visitSubNodes)
         {
-            obj.setValue(0);
+            obj.setValue("");
 
             base.visit(obj, visitSubNodes);
         }

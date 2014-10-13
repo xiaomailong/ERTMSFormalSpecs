@@ -504,9 +504,10 @@ namespace DataDictionary.Tests.Translations
                 foreach (DBElements.DBPacket packet in message.Packets)
                 {
                     Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
-                    if (nidPacketField.Value != 255)  // 255 means "end of information"
+                    if (nidPacketField.Value != "255")  // 255 means "end of information"
                     {
-                        Values.StructureValue subStructure = FindStructure(nidPacketField.Value);
+                        int packetId = int.Parse(nidPacketField.Value);
+                        Values.StructureValue subStructure = FindStructure(packetId);
 
                         index = 0;
                         FillStructure(nameSpace, packet.Fields, ref index, subStructure);
@@ -621,8 +622,9 @@ namespace DataDictionary.Tests.Translations
                         Types.Enum type = variable.Type as Types.Enum;
                         foreach (DataDictionary.Constants.EnumValue enumValue in type.Values)
                         {
-                            int value = Int32.Parse(enumValue.getValue());
-                            if (value == field.Value)
+                            int value = int.Parse(enumValue.getValue());
+                            int other = int.Parse(field.Value);
+                            if (value == other)
                             {
                                 variable.Value = enumValue;
                                 j++;
@@ -633,8 +635,16 @@ namespace DataDictionary.Tests.Translations
                     else if (variable.Type is Types.Range)
                     {
                         Types.Range type = variable.Type as Types.Range;
-                        variable.Value = new Values.IntValue(type, (decimal)field.Value);
+                        decimal val = decimal.Parse(field.Value);
+                        variable.Value = new Values.IntValue(type, val);
                         j++;
+                    }
+                    else if (variable.Type is Types.StringType)
+                    {
+                        Types.StringType type = variable.Type as Types.StringType;
+                        variable.Value = new Values.StringValue(type, field.Value);
+                        j++;
+
                     }
                     else
                     {
@@ -647,7 +657,8 @@ namespace DataDictionary.Tests.Translations
                         Types.Collection collectionType = (Types.Collection)system.findType(aNameSpace, sequenceVariable.TypeName);
                         Values.ListValue sequence = new Values.ListValue(collectionType, new List<Values.IValue>());
 
-                        for (int k = 0; k < field.Value; k++)
+                        int value = int.Parse(field.Value);
+                        for (int k = 0; k < value; k++)
                         {
                             Types.Structure structureType = (Types.Structure)system.findType(aNameSpace, sequence.CollectionType.Type.FullName);
                             Values.StructureValue structureValue = new Values.StructureValue(structureType);

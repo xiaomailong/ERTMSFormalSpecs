@@ -228,7 +228,7 @@ namespace Importers
                     manualSetupStep.setTCS_Order(0);
                     manualSetupStep.setDistance(0);
                     manualSetupStep.setDescription("Manual setup test sequence");
-                    manualSetupStep.setTranslationRequired(true);
+                    manualSetupStep.setTranslationRequired(false);
                     testCase.appendSteps(manualSetupStep);
                 }
             }
@@ -395,7 +395,7 @@ namespace Importers
                         string value = items[4] as string;
                         if (value != null)
                         {
-                            field.Value = DataDictionary.Tests.Translations.Translation.format_decimal(value);
+                            field.Value = DataDictionary.Tests.Translations.Translation.format_decimal(value).ToString();
                         }
                         message.AddField(field);
                     }
@@ -452,7 +452,7 @@ namespace Importers
                         string value = items[4] as string;
                         if (value != null)
                         {
-                            field.Value = DataDictionary.Tests.Translations.Translation.format_decimal(value);
+                            field.Value = DataDictionary.Tests.Translations.Translation.format_decimal(value).ToString();
                         }
                         packet.AddField(field);
                     }

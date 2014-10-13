@@ -611,6 +611,10 @@ namespace DataDictionary
           {
             obj.setVariable(obj.getVariable().Trim());
           }
+          if ( obj.getValue() != null )
+          {
+            obj.setValue(obj.getValue().Trim());
+          }
 
           base.visit(obj, visitSubNodes);
         }

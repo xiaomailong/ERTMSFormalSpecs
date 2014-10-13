@@ -26886,6 +26886,7 @@ public partial class DBField
 public  override  bool find(Object search){
 if (search is String ) {
 if(getVariable().CompareTo((String) search) == 0)return true;
+if(getValue().CompareTo((String) search) == 0)return true;
 }
 return false;
 }
@@ -26905,11 +26906,11 @@ public  void setVariable( string  v) {
 }
 
 
-private  int aValue;
+private   string  aValue;
 
-public  int getValue() { return aValue;}
+public   string  getValue() { return aValue;}
 
-public  void setValue(int v) {
+public  void setValue( string  v) {
   aValue = v;
   __setDirty(true);
   NotifyControllers(null);
@@ -26920,7 +26921,7 @@ public DBField()
 {
 DBField obj = this;
 aVariable=(null);
-aValue=(0);
+aValue=(null);
 }
 
 public void copyTo(DBField other)
@@ -27047,7 +27048,7 @@ ctxt.fail ("Duplicate attribute: Value");
 } // If
 fl1372 = true ; 
 quoteChar = ctxt.acceptQuote();
-this.setValue(ctxt.fetchInteger());
+this.setValue((acceptor.lAcceptPcData(ctxt,-1, quoteChar, XmlBContext.WS_PRESERVE)));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
@@ -27091,7 +27092,7 @@ ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 } else {
 if (!fl1372){
-this.setValue(0);
+this.setValue("");
 } // If
 fl1375 = false ; 
 } // If
@@ -27134,7 +27135,7 @@ if (typeId){
 pw.Write(" xsi:type=\"DBField\"");
 } // If
 pw.Write('\n');
-if (this.getValue() != 0){
+if (this.getValue() != null){
 pw.Write(" Value=\"");
 acceptor.unParsePcData(pw, this.getValue());
 pw.Write('"');

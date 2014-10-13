@@ -1138,14 +1138,14 @@
     <META NAME="Class">TestField</META>
     <FIELDS>
       <FIELD NAME="Variable" TYPE="PCHAR" />
-      <FIELD NAME="Value"    TYPE="INTEGER" />
+      <FIELD NAME="Value"    TYPE="PCHAR" />
     </FIELDS>
     <ATTRIBUTES>
-      <ATTR NAME="Value" TARGET="Value" OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Value" TARGET="Value" OPTIONAL="TRUE" DEFAULT=""/>
     </ATTRIBUTES>
     <FORMULA>
       <ENCLOSED NAME="Variable" OPTIONAL="TRUE">
-	<PCDATA TARGET="Variable" />
+	    <PCDATA TARGET="Variable" />
       </ENCLOSED>
     </FORMULA>
   </ELEMENT>

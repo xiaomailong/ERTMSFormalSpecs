@@ -3763,9 +3763,9 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Variable", other.getVariable(), obj.getVariable()) );
             }
-            if ( obj.getValue() != other.getValue() )
+            if ( !CompareUtil.canonicalStringEquality(obj.getValue(), other.getValue()) )
             {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Value", other.getValue().ToString(), obj.getValue().ToString()) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Value", other.getValue(), obj.getValue()) );
             }
         }
 
@@ -13396,6 +13396,10 @@ namespace DataDictionary.Compare
             searchNamable (obj, searchString, occurences);
 
             if ( obj.getVariable() != null && obj.getVariable().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
+            if ( obj.getValue() != null && obj.getValue().Contains (searchString) ) 
             {
                 occurences.Add ( obj );
             }
