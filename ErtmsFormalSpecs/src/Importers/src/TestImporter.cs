@@ -418,7 +418,7 @@ namespace Importers
 
             int packetNumber = 0;
             DataDictionary.Tests.DBElements.DBPacket packet = (DataDictionary.Tests.DBElements.DBPacket)DataDictionary.Generated.acceptor.getFactory().createDBPacket();
-            if (dataSet.Tables.Count > 0)
+            if (dataSet.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow dataRow in dataSet.Tables[0].Rows)
                 {
