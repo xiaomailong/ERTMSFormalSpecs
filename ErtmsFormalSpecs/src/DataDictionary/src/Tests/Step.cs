@@ -270,7 +270,7 @@ namespace DataDictionary.Tests
             SourceText retVal = (SourceText) Generated.acceptor.getFactory().createSourceText();
             retVal.Name = getDescription();
 
-            if (!string.IsNullOrEmpty(Comment))
+            if (!string.IsNullOrEmpty(Comment) && Comment.Trim() != "-")
             {
                 SourceTextComment comment = (SourceTextComment) Generated.acceptor.getFactory().createSourceTextComment();
                 comment.Name = Comment;
