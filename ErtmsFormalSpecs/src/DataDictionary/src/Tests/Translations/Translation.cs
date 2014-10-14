@@ -690,10 +690,240 @@ namespace DataDictionary.Tests.Translations
 
         private static string format_euroradio_message(DBElements.DBMessage message)
         {
-            string retVal = "";
-            return retVal;
+            EFSSystem system = EFSSystem.INSTANCE;
+
+            DataDictionary.Types.NameSpace rbcRoot = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages.MESSAGE");
+
+            // Get the EFS namespace corresponding to the message 
+            // Select the appropriate message type, tracktotrain or traintotrack
+            Tests.DBElements.DBField nidMessage = message.Fields[0] as Tests.DBElements.DBField;
+            string msg_id = get_namespace_from_ID( nidMessage.Value );
+            string msgName = "Message";
+
+
+            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(rbcRoot, msg_id);
+
+            if (nameSpace == null)
+            {
+                throw new Exception("Message type not found in EFS");
+            }
+
+            // The EURORADIO messages are defined in the namespaces TRACK_TO_TRAIN and TRAIN_TO_TRACK, which enclose the specific message namespaces
+            // So we get the message type from nameSpace.EnclosingNameSpace and the actual structure corresponding to the message in nameSpace
+            Types.Structure enclosingStructureType = (Types.Structure)system.findType(nameSpace.EnclosingNameSpace, msgName);
+            Values.StructureValue Message = new Values.StructureValue(enclosingStructureType);
+
+
+            // Within the message, get the appropriate field and get that structure
+            Types.Structure structureType = (Types.Structure)system.findType(nameSpace, msgName);
+            Values.StructureValue structure = new Values.StructureValue(structureType);
+
+
+            // Fill the structure
+            int currentIndex = 0;
+            FillStructure(nameSpace, message.Fields, ref currentIndex, structure);
+
+
+            // and fill the packets
+            Variables.IVariable subSequenceVariable;
+            if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable))
+            {
+                Types.Collection collectionType = (Types.Collection)system.findType(nameSpace, "Collection1");
+                Types.Structure subStructure1Type = (Types.Structure)system.findType(nameSpace, "SubStructure1");
+                Types.Structure packetStructure;
+
+                // Get the packet type, depending on the message type
+                if (nameSpace.FullName.Contains("TRACK_TO_TRAIN"))
+                {
+                    packetStructure = (Types.Structure)system.findType(nameSpace, "Messages.PACKET.TRACK_TO_TRAIN.Message");
+                }
+                else if (nameSpace.FullName.Contains("TRAIN_TO_TRACK"))
+                {
+                    packetStructure = (Types.Structure)system.findType(nameSpace, "Messages.PACKET.TRAIN_TO_TRACK.Message");
+                }
+                else
+                {
+                    throw new Exception("Could not find packet namespace");
+                }
+
+                // The collection of the message packets is copied to the structure packetValue
+                Values.ListValue collection = new Values.ListValue(collectionType, new List<Values.IValue>());
+
+                // Try to append all substructure, each one in a new packet 
+                foreach (DBElements.DBPacket packet in message.Packets)
+                {
+                    Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
+                    if (nidPacketField.Value != "255")  // 255 means "end of information"
+                    {
+                        int packetId = int.Parse(nidPacketField.Value);
+                        Values.StructureValue subStructure = FindStructure(packetId);
+
+                        currentIndex = 0;
+                        FillStructure(nameSpace, packet.Fields, ref currentIndex, subStructure);
+                        Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
+                        Values.StructureValue packetValue = new Values.StructureValue(packetStructure);
+                        subStructure1.SubVariables.ElementAt(0).Value.Value = packetValue;
+                        collection.Val.Add(subStructure1);
+
+                        // Find the right variable in the packet to add the structure we just created
+                        foreach (KeyValuePair<string, Variables.IVariable> pair in packetValue.SubVariables)
+                        {
+                            string variableName = pair.Key;
+                            if (subStructure.Structure.FullName.Contains(variableName))
+                            {
+                                Variables.IVariable variable = pair.Value;
+                                variable.Value = subStructure;
+
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                subSequenceVariable.Value = collection;
+
+            }
+
+            return structure.Name;
         }
 
+
+        /// <summary>
+        /// Takes the string provided and returns the corresponding RBC message
+        /// </summary>
+        /// <param name="NID_MESSAGE"></param>
+        /// <returns></returns>
+        private static string get_namespace_from_ID(string str)
+        {
+            string retVal = "";
+            if (format_decimal(str) < 100)
+            {
+                retVal = "TRACK_TO_TRAIN.";
+            }
+            else
+            {
+                retVal = "TRAIN_TO_TRACK.";
+            }
+            switch (format_decimal(str))
+            {
+                case 2:
+                    retVal += "SR_AUTHORISATION";
+                    break;
+                case 3:
+                    retVal += "MOVEMENT_AUTHORITY";
+                    break;
+                case 6:
+                    retVal += "RECOGNITION_OF_EXIT_FROM_TRIP_MODE";
+                    break;
+                case 8:
+                    retVal += "ACKNOWLEDGEMENT_OF_TRAIN_DATA";
+                    break;
+                case 9:
+                    retVal += "REQUEST_TO_SHORTEN_MA";
+                    break;
+                case 15:
+                    retVal += "CONDITIONAL_EMERGENCY_STOP";
+                    break;
+                case 16:
+                    retVal += "UNCONDITIONAL_EMERGENCY_STOP";
+                    break;
+                case 18:
+                    retVal += "REVOCATION_OF_EMERGENCY_STOP";
+                    break;
+                case 24:
+                    retVal += "GENERAL_MESSAGE";
+                    break;
+                case 27:
+                    retVal += "SH_REFUSED";
+                    break;
+                case 28:
+                    retVal += "SH_AUTHORISED";
+                    break;
+                case 32:
+                    retVal += "RIU_SYSTEM_VERSION";
+                    break;
+                case 33:
+                    retVal += "MA_WITH_SHIFTED_LOCATION_REFERENCE";
+                    break;
+                case 34:
+                    retVal += "TRACK_AHEAD_FREE_REQUEST";
+                    break;
+                case 37:
+                    retVal += "INFILL_MA";
+                    break;
+                case 38:
+                    retVal += "INITIATION_OF_A_COMMUNICATION_SESSION";
+                    break;
+                case 39:
+                    retVal += "ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION";
+                    break;
+                case 40:
+                    retVal += "TRAIN_REJECTED";
+                    break;
+                case 41:
+                    retVal += "TRAIN_ACCEPTED";
+                    break;
+                case 43:
+                    retVal += "SOM_POSITION_REPORT_CONFIRMED_BY_RBC";
+                    break;
+                case 45:
+                    retVal += "ASSIGNMENT_OF_COORDINATE_SYSTEM";
+                    break;
+                case 129:
+                    retVal += "VALIDATED_TRAIN_DATA";
+                    break;
+                case 130:
+                    retVal += "REQUEST_FOR_SHUNTING";
+                    break;
+                case 132:
+                    retVal += "MA_REQUEST";
+                    break;
+                case 136:
+                    retVal += "TRAIN_POSITION_REPORT";
+                    break;
+                case 137:
+                    retVal += "REQUEST_TO_SHORTEN_MA_IS_GRANTED";
+                    break;
+                case 138:
+                    retVal += "REQUEST_TO_SHORTEN_MA_IS_REJECTED";
+                    break;
+                case 146:
+                    retVal += "ACKNOWLEDGEMENT";
+                    break;
+                case 147:
+                    retVal += "ACKNOWLEDGEMENT_OF_EMERGENCY_STOP";
+                    break;
+                case 149:
+                    retVal += "TRACK_AHEAD_FREE_GRANTED";
+                    break;
+                case 150:
+                    retVal += "END_OF_MISSION";
+                    break;
+                case 153:
+                    retVal += "RADIO_INFILL_REQUEST";
+                    break;
+                case 154:
+                    retVal += "NO_COMPATIBLE_VERSION_SUPPORTED";
+                    break;
+                case 155:
+                    retVal += "INITIATION_OF_A_COMMUNICATION_SESSION";
+                    break;
+                case 156:
+                    retVal += "TERMINATION_OF_A_COMMUNICATION_SESSION";
+                    break;
+                case 157:
+                    retVal += "SOM_POSITION_REPORT";
+                    break;
+                case 158:
+                    retVal += "TEXT_MESSAGE_ACKNOWLEDGED_BY_DRIVER";
+                    break;
+                case 159:
+                    retVal += "SESSION_ESTABLISHED";
+                    break;
+            }
+
+            return retVal;
+        }
 
         /// <summary>
         /// Takes the string provided and returns the corresponding Level enum
