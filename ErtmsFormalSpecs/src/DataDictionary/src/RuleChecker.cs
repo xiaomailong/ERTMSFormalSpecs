@@ -200,7 +200,16 @@ namespace DataDictionary
                 {
                     step.AddWarning("Cannot find translation for this step");
                 }
+
+                if (( step.getDescription().IndexOf("balise group", StringComparison.InvariantCultureIgnoreCase) != -1 ) && step.getDescription().Contains("is received"))
+                {
+                    if (step.StepMessages.Count == 0)
+                    {
+                        step.AddWarning("Cannot for Balise messages for this step");
+                    }
+                }
             }
+
 
             base.visit(obj, visitSubNodes);
         }
