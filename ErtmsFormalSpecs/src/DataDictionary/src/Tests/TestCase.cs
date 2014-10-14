@@ -101,6 +101,7 @@ namespace DataDictionary.Tests
         {
             if (aTestCase != null)
             {
+                setGuid(aTestCase.getGuid());
                 foreach (Step step in Steps)
                 {
                     Step oldStep = null;

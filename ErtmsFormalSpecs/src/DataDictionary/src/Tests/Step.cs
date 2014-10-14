@@ -14,7 +14,9 @@
 // --
 // ------------------------------------------------------------------------------
 using System.Collections;
-using DataDictionary.Tests.Translations;
+using SourceText = DataDictionary.Tests.Translations.SourceText;
+using SourceTextComment = DataDictionary.Tests.Translations.SourceTextComment;
+using DataDictionary.Tests.DBElements;
 
 namespace DataDictionary.Tests
 {
@@ -187,9 +189,20 @@ namespace DataDictionary.Tests
         {
             setAllSubSteps(aStep.SubSteps);
 
+            setGuid(aStep.getGuid());
             setComment(aStep.Comment);
             setTranslated(aStep.getTranslated());
             setTranslationRequired(aStep.getTranslationRequired());
+
+            int cnt = 0;
+            foreach (DBMessage message in StepMessages)
+            {
+                if (cnt < aStep.StepMessages.Count )
+                {
+                    message.Merge((DBMessage)aStep.StepMessages[cnt]);
+                }
+                cnt += 1;
+            }
         }
 
         /// <summary>

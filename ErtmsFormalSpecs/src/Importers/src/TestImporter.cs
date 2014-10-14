@@ -131,6 +131,7 @@ namespace Importers
                     DataDictionary.Tests.SubSequence oldSubSequence = frame.findSubSequence(subSequenceName);
                     if (oldSubSequence != null)
                     {
+                        newSubSequence.setGuid(oldSubSequence.getGuid());
                         int cnt = 0;
                         foreach (DataDictionary.Tests.TestCase oldTestCase in oldSubSequence.TestCases)
                         {

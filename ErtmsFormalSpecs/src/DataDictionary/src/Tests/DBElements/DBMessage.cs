@@ -88,5 +88,26 @@ namespace DataDictionary.Tests.DBElements
         {
             allPackets().Add(aPacket);
         }
+
+        /// <summary>
+        /// Merges two DBmessages
+        /// </summary>
+        /// <param name="other"></param>
+        public void Merge(DBMessage other)
+        {
+            if (getMessageOrder() == other.getMessageOrder() && getMessageType() == other.getMessageType())
+            {
+                setGuid(other.getGuid());
+                int cnt = 0;
+                foreach (DBField field in Fields)
+                {
+                    if (cnt < other.Fields.Count )
+                    {
+                        field.Merge((DBField) other.Fields[cnt]);
+                    }
+                    cnt = cnt + 1;
+                }
+            }
+        }
     }
 }

@@ -46,5 +46,17 @@ namespace DataDictionary.Tests.DBElements
                 setValue(value);
             }
         }
+
+        /// <summary>
+        /// Merges two fields
+        /// </summary>
+        /// <param name="p"></param>
+        public void Merge(DBField other)
+        {
+            if (getVariable() == other.getVariable())
+            {
+                setGuid(other.getGuid());    
+            }
+        }
     }
 }
