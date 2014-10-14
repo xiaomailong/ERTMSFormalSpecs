@@ -98,9 +98,7 @@ namespace GUI.TranslationRules
         {
             List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
-            retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.Add(new MenuItem("Add comment", new EventHandler(AddHandler)));
 
             return retVal;
         }
