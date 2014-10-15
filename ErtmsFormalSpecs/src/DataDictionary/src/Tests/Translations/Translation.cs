@@ -300,7 +300,14 @@ namespace DataDictionary.Tests.Translations
         /// <param name="action"></param>
         private void Review(Rules.Action action)
         {
-            action.ExpressionText = ReviewExpression(action.Step, action.ExpressionText);
+            try
+            {
+                action.ExpressionText = ReviewExpression(action.Step, action.ExpressionText);
+            }
+            catch (Exception e)
+            {
+                action.AddException(e);
+            }
         }
 
         /// <summary>
