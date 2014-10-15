@@ -488,8 +488,8 @@ namespace DataDictionary.Tests.Translations
         {
             EFSSystem system = EFSSystem.INSTANCE;
 
-            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages");
-            Types.Structure structureType = (Types.Structure)system.findType(nameSpace, "Messages.EUROBALISE.Message");
+            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages.EUROBALISE");
+            Types.Structure structureType = (Types.Structure)system.findType(nameSpace, "Message");
             Values.StructureValue structure = new Values.StructureValue(structureType);
 
             int currentIndex = 0;
@@ -500,45 +500,7 @@ namespace DataDictionary.Tests.Translations
             Variables.IVariable subSequenceVariable;
             if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable))
             {
-                Types.Collection collectionType = (Types.Collection)system.findType(nameSpace, "Messages.EUROBALISE.Collection1");
-                Types.Structure subStructure1Type = (Types.Structure)system.findType(nameSpace, "Messages.EUROBALISE.SubStructure1");
-                Types.Structure packetStructure = (Types.Structure)system.findType(nameSpace, "Messages.PACKET.TRACK_TO_TRAIN.Message");
-
-                // The collection of the message packets is copied to the structure packetValue
-                Values.ListValue collection = new Values.ListValue(collectionType, new List<Values.IValue>());
-
-                // Try to append all substructure, each one in a new packet 
-                foreach (DBElements.DBPacket packet in message.Packets)
-                {
-                    Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
-                    if (nidPacketField.Value != "255")  // 255 means "end of information"
-                    {
-                        int packetId = int.Parse(nidPacketField.Value);
-                        Values.StructureValue subStructure = FindStructure(packetId);
-
-                        currentIndex = 0;
-                        FillStructure(nameSpace, packet.Fields, ref currentIndex, subStructure);
-                        Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
-                        Values.StructureValue packetValue = new Values.StructureValue(packetStructure);
-                        subStructure1.SubVariables.ElementAt(0).Value.Value = packetValue;
-                        collection.Val.Add(subStructure1);
-
-                        // Find the right variable in the packet to add the structure we just created
-                        foreach (KeyValuePair<string, Variables.IVariable> pair in packetValue.SubVariables)
-                        {
-                            string variableName = pair.Key;
-                            if (subStructure.Structure.FullName.Contains(variableName))
-                            {
-                                Variables.IVariable variable = pair.Value;
-                                variable.Value = subStructure;
-
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                subSequenceVariable.Value = collection;
+                subSequenceVariable.Value = get_message_packets(message, nameSpace, system);
             }
             else
             {
@@ -546,6 +508,62 @@ namespace DataDictionary.Tests.Translations
             }
 
             return structure.Name;
+        }
+
+
+
+        static Values.ListValue get_message_packets(DBElements.DBMessage message, DataDictionary.Types.NameSpace nameSpace, EFSSystem system)
+        {
+            Values.ListValue retVal;
+
+            Types.Collection collectionType = (Types.Collection)system.findType(nameSpace, "Collection1");
+            Types.Structure subStructure1Type = (Types.Structure)system.findType(nameSpace, "SubStructure1");
+
+            string packetLocation = "Messages.PACKET.";
+            if (nameSpace.FullName.Contains("TRAIN_TO_TRACK"))
+            {
+                packetLocation += "TRAIN_TO_TRACK.Message";
+            }
+            else
+            {
+                packetLocation += "TRACK_TO_TRAIN.Message";
+            }
+
+            Types.Structure packetStructure = (Types.Structure)system.findType(nameSpace, packetLocation);
+
+            retVal = new Values.ListValue(collectionType, new List<Values.IValue>());
+
+            foreach (DBElements.DBPacket packet in message.Packets)
+            {
+                Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
+                if (nidPacketField.Value != "255")  // 255 means "end of information"
+                {
+                    int packetId = int.Parse(nidPacketField.Value);
+                    Values.StructureValue subStructure = FindStructure(packetId);
+
+                    int currentIndex = 0;
+                    FillStructure(nameSpace, packet.Fields, ref currentIndex, subStructure);
+                    Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
+                    Values.StructureValue packetValue = new Values.StructureValue(packetStructure);
+                    subStructure1.SubVariables.ElementAt(0).Value.Value = packetValue;
+                    retVal.Val.Add(subStructure1);
+
+                    // Find the right variable in the packet to add the structure we just created
+                    foreach (KeyValuePair<string, Variables.IVariable> pair in packetValue.SubVariables)
+                    {
+                        string variableName = pair.Key;
+                        if (subStructure.Structure.FullName.Contains(variableName))
+                        {
+                            Variables.IVariable variable = pair.Value;
+                            variable.Value = subStructure;
+
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return retVal;
         }
 
 
@@ -705,45 +723,7 @@ namespace DataDictionary.Tests.Translations
             Variables.IVariable subSequenceVariable;
             if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable))
             {
-                Types.Collection collectionType = (Types.Collection)system.findType(nameSpace, "Messages.EUROLOOP.Collection1");
-                Types.Structure subStructure1Type = (Types.Structure)system.findType(nameSpace, "Messages.EUROLOOP.SubStructure1");
-                Types.Structure packetStructure = (Types.Structure)system.findType(nameSpace, "Messages.PACKET.TRACK_TO_TRAIN.Message");
-
-                // The collection of the message packets is copied to the structure packetValue
-                Values.ListValue collection = new Values.ListValue(collectionType, new List<Values.IValue>());
-
-                // Try to append all substructure, each one in a new packet 
-                foreach (DBElements.DBPacket packet in message.Packets)
-                {
-                    Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
-                    if (nidPacketField.Value != "255")  // 255 means "end of information"
-                    {
-                        int packetId = int.Parse(nidPacketField.Value);
-                        Values.StructureValue subStructure = FindStructure(packetId);
-
-                        currentIndex = 0;
-                        FillStructure(nameSpace, packet.Fields, ref currentIndex, subStructure);
-                        Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
-                        Values.StructureValue packetValue = new Values.StructureValue(packetStructure);
-                        subStructure1.SubVariables.ElementAt(0).Value.Value = packetValue;
-                        collection.Val.Add(subStructure1);
-
-                        // Find the right variable in the packet to add the structure we just created
-                        foreach (KeyValuePair<string, Variables.IVariable> pair in packetValue.SubVariables)
-                        {
-                            string variableName = pair.Key;
-                            if (subStructure.Structure.FullName.Contains(variableName))
-                            {
-                                Variables.IVariable variable = pair.Value;
-                                variable.Value = subStructure;
-
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                subSequenceVariable.Value = collection;
+                  subSequenceVariable.Value = get_message_packets(message, nameSpace, system);
             }
             else
             {
@@ -789,66 +769,22 @@ namespace DataDictionary.Tests.Translations
 
             // and fill the packets
             Variables.IVariable subSequenceVariable;
-            if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable))
+            if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable)
+                && message.Packets.Count > 0)
             {
-                Types.Collection collectionType = (Types.Collection)system.findType(nameSpace, "Collection1");
-                Types.Structure subStructure1Type = (Types.Structure)system.findType(nameSpace, "SubStructure1");
-                Types.Structure packetStructure;
-
-                // Get the packet type, depending on the message type
-                if (nameSpace.FullName.Contains("TRACK_TO_TRAIN"))
-                {
-                    packetStructure = (Types.Structure)system.findType(nameSpace, "Messages.PACKET.TRACK_TO_TRAIN.Message");
-                }
-                else if (nameSpace.FullName.Contains("TRAIN_TO_TRACK"))
-                {
-                    packetStructure = (Types.Structure)system.findType(nameSpace, "Messages.PACKET.TRAIN_TO_TRACK.Message");
-                }
-                else
-                {
-                    throw new Exception("Could not find packet namespace for the current Euroradio message");
-                }
-
-                // The collection of the message packets is copied to the structure packetValue
-                Values.ListValue collection;
-                collection = new Values.ListValue(collectionType, new List<Values.IValue>());
-
-                // Try to append all substructure, each one in a new packet 
-                foreach (DBElements.DBPacket packet in message.Packets)
-                {
-                    Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
-                    if (nidPacketField.Value != "255")  // 255 means "end of information"
-                    {
-                        int packetId = int.Parse(nidPacketField.Value);
-                        Values.StructureValue subStructure = FindStructure(packetId);
-
-                        currentIndex = 0;
-                        FillStructure(nameSpace, packet.Fields, ref currentIndex, subStructure);
-                        Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
-                        Values.StructureValue packetValue = new Values.StructureValue(packetStructure);
-                        subStructure1.SubVariables.ElementAt(0).Value.Value = packetValue;
-                        collection.Val.Add(subStructure1);
-
-                        // Find the right variable in the packet to add the structure we just created
-                        foreach (KeyValuePair<string, Variables.IVariable> pair in packetValue.SubVariables)
-                        {
-                            string variableName = pair.Key;
-                            if (subStructure.Structure.FullName.Contains(variableName))
-                            {
-                                Variables.IVariable variable = pair.Value;
-                                variable.Value = subStructure;
-
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                subSequenceVariable.Value = collection;
-
+                subSequenceVariable.Value = get_message_packets(message, nameSpace, system);
             }
 
-            return structure.Name;
+            foreach (KeyValuePair<string, Variables.IVariable> pair in Message.SubVariables)
+            {
+                if (msg_id.EndsWith(pair.Key))
+                {
+                    pair.Value.Type = structureType;
+                    pair.Value.Value = structure;
+                }
+            }
+
+            return Message.Name;
         }
 
 
