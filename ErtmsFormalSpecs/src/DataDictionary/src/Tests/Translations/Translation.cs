@@ -904,7 +904,7 @@ namespace DataDictionary.Tests.Translations
                     retVal += "SH_AUTHORISED";
                     break;
                 case 32:
-                    retVal += "RIU_SYSTEM_VERSION";
+                    retVal += "RBC.RIU_SYSTEM_VERSION";
                     break;
                 case 33:
                     retVal += "MA_WITH_SHIFTED_LOCATION_REFERENCE";
