@@ -203,11 +203,19 @@ namespace DataDictionary
                     step.AddWarning("Cannot find translation for this step");
                 }
 
-                if (( step.getDescription().IndexOf("balise group", StringComparison.InvariantCultureIgnoreCase) != -1 ) && step.getDescription().Contains("is received"))
+                if ((step.getDescription().IndexOf("balise group", StringComparison.InvariantCultureIgnoreCase) != -1) && step.getDescription().Contains("is received"))
                 {
                     if (step.StepMessages.Count == 0)
                     {
                         step.AddWarning("Cannot find Balise messages for this step");
+                    }
+                }
+
+                if ((step.getDescription().IndexOf("euroloop message", StringComparison.InvariantCultureIgnoreCase) != -1) && step.getDescription().Contains("is received"))
+                {
+                    if (step.StepMessages.Count == 0)
+                    {
+                        step.AddWarning("Cannot find Euroloop messages for this step");
                     }
                 }
 

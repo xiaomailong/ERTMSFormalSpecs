@@ -691,8 +691,66 @@ namespace DataDictionary.Tests.Translations
 
         private static string format_euroloop_message(DBElements.DBMessage message)
         {
-            string retVal = "";
-            return retVal;
+            EFSSystem system = EFSSystem.INSTANCE;
+
+            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages.EUROLOOP");
+            Types.Structure structureType = (Types.Structure)system.findType(nameSpace, "Message");
+            Values.StructureValue structure = new Values.StructureValue(structureType);
+
+            int currentIndex = 0;
+            FillStructure(nameSpace, message.Fields, ref currentIndex, structure);
+
+
+            // then we fill the packets
+            Variables.IVariable subSequenceVariable;
+            if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable))
+            {
+                Types.Collection collectionType = (Types.Collection)system.findType(nameSpace, "Messages.EUROLOOP.Collection1");
+                Types.Structure subStructure1Type = (Types.Structure)system.findType(nameSpace, "Messages.EUROLOOP.SubStructure1");
+                Types.Structure packetStructure = (Types.Structure)system.findType(nameSpace, "Messages.PACKET.TRACK_TO_TRAIN.Message");
+
+                // The collection of the message packets is copied to the structure packetValue
+                Values.ListValue collection = new Values.ListValue(collectionType, new List<Values.IValue>());
+
+                // Try to append all substructure, each one in a new packet 
+                foreach (DBElements.DBPacket packet in message.Packets)
+                {
+                    Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
+                    if (nidPacketField.Value != "255")  // 255 means "end of information"
+                    {
+                        int packetId = int.Parse(nidPacketField.Value);
+                        Values.StructureValue subStructure = FindStructure(packetId);
+
+                        currentIndex = 0;
+                        FillStructure(nameSpace, packet.Fields, ref currentIndex, subStructure);
+                        Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
+                        Values.StructureValue packetValue = new Values.StructureValue(packetStructure);
+                        subStructure1.SubVariables.ElementAt(0).Value.Value = packetValue;
+                        collection.Val.Add(subStructure1);
+
+                        // Find the right variable in the packet to add the structure we just created
+                        foreach (KeyValuePair<string, Variables.IVariable> pair in packetValue.SubVariables)
+                        {
+                            string variableName = pair.Key;
+                            if (subStructure.Structure.FullName.Contains(variableName))
+                            {
+                                Variables.IVariable variable = pair.Value;
+                                variable.Value = subStructure;
+
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                subSequenceVariable.Value = collection;
+            }
+            else
+            {
+                throw new Exception("Cannot find SubSequence in variable");
+            }
+
+            return structure.Name;
         }
 
         private static string format_euroradio_message(DBElements.DBMessage message)
@@ -705,8 +763,6 @@ namespace DataDictionary.Tests.Translations
             // Select the appropriate message type, tracktotrain or traintotrack
             Tests.DBElements.DBField nidMessage = message.Fields[0] as Tests.DBElements.DBField;
             string msg_id = get_namespace_from_ID( nidMessage.Value );
-            string msgName = "Message";
-
 
             DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(rbcRoot, msg_id);
 
@@ -717,12 +773,12 @@ namespace DataDictionary.Tests.Translations
 
             // The EURORADIO messages are defined in the namespaces TRACK_TO_TRAIN and TRAIN_TO_TRACK, which enclose the specific message namespaces
             // So we get the message type from nameSpace.EnclosingNameSpace and the actual structure corresponding to the message in nameSpace
-            Types.Structure enclosingStructureType = (Types.Structure)system.findType(nameSpace.EnclosingNameSpace, msgName);
+            Types.Structure enclosingStructureType = (Types.Structure)system.findType(nameSpace.EnclosingNameSpace, "Message");
             Values.StructureValue Message = new Values.StructureValue(enclosingStructureType);
 
 
             // Within the message, get the appropriate field and get that structure
-            Types.Structure structureType = (Types.Structure)system.findType(nameSpace, msgName);
+            Types.Structure structureType = (Types.Structure)system.findType(nameSpace, "Message");
             Values.StructureValue structure = new Values.StructureValue(structureType);
 
 
@@ -750,11 +806,12 @@ namespace DataDictionary.Tests.Translations
                 }
                 else
                 {
-                    throw new Exception("Could not find packet namespace");
+                    throw new Exception("Could not find packet namespace for the current Euroradio message");
                 }
 
                 // The collection of the message packets is copied to the structure packetValue
-                Values.ListValue collection = new Values.ListValue(collectionType, new List<Values.IValue>());
+                Values.ListValue collection;
+                collection = new Values.ListValue(collectionType, new List<Values.IValue>());
 
                 // Try to append all substructure, each one in a new packet 
                 foreach (DBElements.DBPacket packet in message.Packets)
