@@ -343,17 +343,20 @@ namespace DataDictionary.Tests.Translations
                 int max_step_messages = 8;
                 for (int i = 0; i < max_step_messages; i++)
                 {
-                    if (step.StepMessages.Count > i)
+                    if (retVal.IndexOf("%Step_Messages_" + i) >= 0)
                     {
-                        DBElements.DBMessage message = step.StepMessages[i] as DBElements.DBMessage;
-                        if (message != null)
+                        if (step.StepMessages.Count > i)
                         {
-                            retVal = retVal.Replace("%Step_Messages_" + i, format_message(message));
+                            DBElements.DBMessage message = step.StepMessages[i] as DBElements.DBMessage;
+                            if (message != null)
+                            {
+                                retVal = retVal.Replace("%Step_Messages_" + i, format_message(message));
+                            }
                         }
-                    }
-                    else
-                    {
-                        retVal = retVal.Replace("%Step_Messages_" + i, format_default_message(expression));
+                        else
+                        {
+                            retVal = retVal.Replace("%Step_Messages_" + i, format_default_message(expression));
+                        }
                     }
                 }
 
@@ -688,8 +691,8 @@ namespace DataDictionary.Tests.Translations
                     else if (variable.Type is Types.Range)
                     {
                         Types.Range type = variable.Type as Types.Range;
-                        decimal val = decimal.Parse(field.Value);
-                        variable.Value = new Values.IntValue(type, val);
+                        object v = VariableConverter.INSTANCE.Convert(variable.Name, field.Value);
+                        variable.Value = new Values.IntValue(type, (int) v);
                         j++;
                     }
                     else if (variable.Type is Types.StringType)

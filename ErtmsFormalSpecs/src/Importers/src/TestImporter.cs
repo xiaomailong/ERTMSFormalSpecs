@@ -16,6 +16,7 @@
 using System;
 using System.Data;
 using System.Data.OleDb;
+using DataDictionary.Tests.Translations;
 
 namespace Importers
 {
@@ -389,7 +390,7 @@ namespace Importers
                         string value = items[4] as string;
                         if (value != null)
                         {
-                            field.Value = DataDictionary.Tests.Translations.Translation.format_decimal(value).ToString();
+                            field.Value = VariableConverter.INSTANCE.Convert(variable, value).ToString();
                         }
                         message.AddField(field);
                     }
@@ -442,7 +443,7 @@ namespace Importers
                     string value = items[2] as string;
                     if (value != null)
                     {
-                        field.Value = DataDictionary.Tests.Translations.Translation.format_decimal(value).ToString();
+                        field.Value = VariableConverter.INSTANCE.Convert(variable, value).ToString(); 
                     }
                     packet.AddField(field);
                 }
