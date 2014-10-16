@@ -196,13 +196,6 @@ namespace DataDictionary
                     translation = translationDictionary.findTranslation(step.getDescription(), step.Comment);
                 }
 
-                bool DeactivateRule = false;
-
-                if (translation == null && DeactivateRule)
-                {
-                    step.AddWarning("Cannot find translation for this step");
-                }
-
                 if ((step.getDescription().IndexOf("balise group", StringComparison.InvariantCultureIgnoreCase) != -1) && step.getDescription().Contains("is received"))
                 {
                     if (step.StepMessages.Count == 0)
