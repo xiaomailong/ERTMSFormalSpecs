@@ -90,7 +90,10 @@ namespace DataDictionary.Tests.Translations
             // There is a special case where all the characters are F
             if (val == "")
             {
-                val = value.Substring(0, value.Length - 2);
+                if (value.Length > 2)
+                {
+                    val = value.Substring(0, value.Length - 2);
+                }
             }
             // Just return the number preceding the FF
             return val;
