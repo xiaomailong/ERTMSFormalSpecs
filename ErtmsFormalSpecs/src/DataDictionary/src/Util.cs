@@ -647,9 +647,6 @@ namespace DataDictionary
                     {
                         Generated.ControllersManager.ActivateAllNotifications();
                     }
-
-                    Dictionary.TranslateTestCases tranlator = new Dictionary.TranslateTestCases();
-                    tranlator.visit(retVal);
                 }
             }
             finally

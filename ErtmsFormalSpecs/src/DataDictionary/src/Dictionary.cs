@@ -286,24 +286,6 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// This visitor is used to automatically translated test cases
-        /// </summary>
-        public class TranslateTestCases : Generated.Visitor
-        {
-            public override void visit(Generated.Step obj, bool visitSubNodes)
-            {
-                Step step = (Step)obj;
-
-                if (step.getTranslationRequired())
-                {
-                    step.Translate(step.Dictionary.TranslationDictionary);
-                }
-
-                base.visit(obj, visitSubNodes);
-            }
-        }
-
-        /// <summary>
         /// The base path for accessing files of this dictionary
         /// </summary>
         public string BasePath
