@@ -1522,9 +1522,8 @@ namespace GUI
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Options.Options optionForm = new Options.Options();
-            optionForm.Setup(EFSSystem);
             optionForm.ShowDialog(this);
-            optionForm.UpdateSystem(EFSSystem);
+            Options.Options.setSettings(EFSSystem.INSTANCE);
         }
 
         private void compareWithGitRevisionToolStripMenuItem_Click(object sender, EventArgs e)

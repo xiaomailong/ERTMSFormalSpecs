@@ -13,6 +13,9 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using GUI.Properties;
+
 namespace GUI.StructureValueEditor
 {
     using System;
@@ -218,7 +221,7 @@ namespace GUI.StructureValueEditor
                     {
                         if (!(subVariable.Value is DefaultValue))
                         {
-                            if (subVariable.Value != EFSSystem.INSTANCE.EmptyValue)
+                            if (subVariable.Value != EFSSystem.INSTANCE.EmptyValue || Settings.Default.DisplayAllVariablesInStructureEditor)
                             {
                                 retVal = true;
                                 break;
@@ -272,7 +275,7 @@ namespace GUI.StructureValueEditor
                     }
                     else
                     {
-                        if (subVariable.Value != EFSSystem.INSTANCE.EmptyValue)
+                        if (subVariable.Value != EFSSystem.INSTANCE.EmptyValue || Settings.Default.DisplayAllVariablesInStructureEditor)
                         {
                             list.Add(subVariable);
                         }
