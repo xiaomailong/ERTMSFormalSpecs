@@ -13,7 +13,10 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
 using System.Collections;
+using System.IO;
 using SourceText = DataDictionary.Tests.Translations.SourceText;
 using SourceTextComment = DataDictionary.Tests.Translations.SourceTextComment;
 using DataDictionary.Tests.DBElements;
@@ -278,6 +281,39 @@ namespace DataDictionary.Tests
             }
 
             return retVal;
+        }
+
+        /// <summary>
+        /// !!! Clean HacK !!! 
+        /// Do not save the substeps when the step requires automatic translation
+        /// !!! Clean HaCk !!!
+        /// </summary>
+        /// <param name="pw"></param>
+        /// <param name="typeId"></param>
+        /// <param name="headingTag"></param>
+        /// <param name="endingTag"></param>
+        public override void unParse(TextWriter pw, bool typeId, string headingTag, string endingTag)
+        {
+            if (getTranslationRequired())
+            {
+                ArrayList tmp = allSubSteps();
+                ArrayList tmp2 = allRequirements();
+                bool translated = getTranslated();
+
+                setAllSubSteps(null);
+                setAllRequirements(null);
+                setTranslated(false);
+
+                base.unParse(pw, typeId, headingTag, endingTag);
+
+                setAllSubSteps(tmp);
+                setAllRequirements(tmp2);
+                setTranslated(translated);
+            }
+            else
+            {
+                base.unParse(pw, typeId, headingTag, endingTag);
+            }
         }
     }
 }

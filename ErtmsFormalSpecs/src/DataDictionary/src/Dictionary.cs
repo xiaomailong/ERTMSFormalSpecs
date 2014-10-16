@@ -222,23 +222,6 @@ namespace DataDictionary
                     step.setObsoleteComment(null);
                 }
 
-                if (beforeSave)
-                {
-                    if (step.getTranslationRequired())
-                    {
-                        step.Requirements.Clear();
-                        step.SubSteps.Clear();
-                        step.setTranslated(false);
-                    }
-                }
-                else
-                {
-                    if (step.getTranslationRequired())
-                    {
-                        step.Translate(step.Dictionary.TranslationDictionary);
-                    }
-                }
-
                 base.visit(obj, visitSubNodes);
             }
 
@@ -342,9 +325,6 @@ namespace DataDictionary
 
             updater = new Updater(BasePath, false);
             updater.visit(this);
-
-            TranslateTestCases translator = new TranslateTestCases();
-            translator.visit(this);
         }
 
         /// <summary>
