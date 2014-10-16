@@ -339,12 +339,21 @@ namespace DataDictionary.Tests.Translations
                 retVal = retVal.Replace("%Step_LevelOUT", format_level(step.getLevelOUT()));
                 retVal = retVal.Replace("%Step_ModeIN", format_mode(step.getModeOUT()));
                 retVal = retVal.Replace("%Step_ModeOUT", format_mode(step.getModeOUT()));
-                for (int i = 0; i < step.StepMessages.Count; i++)
+
+                int max_step_messages = 8;
+                for (int i = 0; i < max_step_messages; i++)
                 {
-                    DBElements.DBMessage message = step.StepMessages[i] as DBElements.DBMessage;
-                    if (message != null)
+                    if (step.StepMessages.Count > i)
                     {
-                        retVal = retVal.Replace("%Step_Messages_" + i, format_message(message));
+                        DBElements.DBMessage message = step.StepMessages[i] as DBElements.DBMessage;
+                        if (message != null)
+                        {
+                            retVal = retVal.Replace("%Step_Messages_" + i, format_message(message));
+                        }
+                    }
+                    else
+                    {
+                        retVal = retVal.Replace("%Step_Messages_" + i, format_default_message(expression));
                     }
                 }
 
@@ -481,6 +490,26 @@ namespace DataDictionary.Tests.Translations
                     retVal = format_euroradio_message(message);
                     break;
             }
+            return retVal;
+        }
+
+
+        public string format_default_message(string expression)
+        {
+            string retVal = "<not a structure type>";
+
+            int index = expression.IndexOf("<-");
+            if ( index > 0 )
+            {
+                string variableText = expression.Substring(0, index).Trim();
+                Interpreter.Expression expressionTree = EFSSystem.Parser.Expression(Dictionary, variableText);
+                if (expressionTree != null)
+                {
+                    Types.Structure structureType = expressionTree.GetExpressionType() as Types.Structure;
+                    retVal = structureType.DefaultValue.LiteralName;
+                }
+            }
+            
             return retVal;
         }
 
@@ -775,6 +804,7 @@ namespace DataDictionary.Tests.Translations
                 subSequenceVariable.Value = get_message_packets(message, nameSpace, system);
             }
 
+            // Fill the correct field in Message with the structure.
             foreach (KeyValuePair<string, Variables.IVariable> pair in Message.SubVariables)
             {
                 if (msg_id.EndsWith(pair.Key))
