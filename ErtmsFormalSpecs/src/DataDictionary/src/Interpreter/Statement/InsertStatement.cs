@@ -125,12 +125,28 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         public override void CheckStatement()
         {
-            if (ListExpression.Ref is Parameter)
+            if (ListExpression != null)
             {
-                Root.AddError("Cannot change the list value which is a parameter (" + ListExpression.ToString() + ")");
+                ListExpression.checkExpression();
+
+                if (ListExpression.Ref is Parameter)
+                {
+                    Root.AddError("Cannot change the list value which is a parameter (" + ListExpression.ToString() + ")");
+                }
+            }
+            else
+            {
+                Root.AddError("List should be specified");
             }
 
-            Value.checkExpression();
+            if (Value != null)
+            {
+                Value.checkExpression();
+            }
+            else
+            {
+                Root.AddError("Value should be specified");
+            }
 
             Types.Collection targetListType = ListExpression.GetExpressionType() as Types.Collection;
             if (targetListType != null)
@@ -148,6 +164,8 @@ namespace DataDictionary.Interpreter.Statement
 
             if (ReplaceElement != null)
             {
+                ReplaceElement.checkExpression();
+
                 Types.Type replaceElementType = ReplaceElement.GetExpressionType();
                 if (replaceElementType != null)
                 {
