@@ -339,10 +339,7 @@ namespace GUI.StructureValueEditor
                 : base(text)
             {
                 Args = args;
-                if (Text.Length < 10)
-                {
-                    Width = Text.Length * 8;
-                }
+                Width = Text.Length * 8;
             }
 
             /// <summary>
@@ -545,6 +542,41 @@ namespace GUI.StructureValueEditor
             }
         }
 
+        /// <summary>
+        /// Shows the state machine which corresponds to the variable
+        /// </summary>
+        private class ToolStripShowStateMachine : BaseToolStripButton
+        {
+            /// <summary>
+            /// The variable that holds the list value
+            /// </summary>
+            private Variable Variable { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="args"></param>
+            /// <param name="variable"></param>
+            public ToolStripShowStateMachine(CellRightClickEventArgs args, Variable variable)
+                : base(args, "Show state machine")
+            {
+                Variable = variable;
+            }
+
+            /// <summary>
+            /// Executes the action requested by this tool strip button
+            /// </summary>
+            protected override void OnClick(EventArgs e)
+            {
+                StateDiagram.StateDiagramWindow window = new StateDiagram.StateDiagramWindow();
+                GUIUtils.MDIWindow.AddChildWindow(window);
+                window.SetStateMachine(Variable);
+                window.Text = Variable.Name + " state diagram";
+
+                base.OnClick(e);
+            }
+        }
+
         public static void CreateContextualMenu(object obj, CellRightClickEventArgs args)
         {
             ContextMenuStrip menuStrip = new ContextMenuStrip();
@@ -604,6 +636,12 @@ namespace GUI.StructureValueEditor
                     }
                 }
             }
+
+            if (enclosingVariable.Type is StateMachine)
+            {
+                items.Add(new ToolStripShowStateMachine(args, enclosingVariable));
+            }
+
             items.Sort(delegate(BaseToolStripButton b1, BaseToolStripButton b2)
             {
                 return b1.Text.CompareTo(b2.Text);
