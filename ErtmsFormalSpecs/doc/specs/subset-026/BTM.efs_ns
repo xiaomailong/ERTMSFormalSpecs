@@ -261,7 +261,7 @@
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="FartherLRBG"
+ Name="FarthestLRBG"
  Guid="1a488722-6327-48c3-b7d2-acf35d480352"
 >
 <ReqRef
@@ -2089,7 +2089,7 @@ This is a check for message consistency errors.</Comment>
 <Action
  Guid="7f5ae40b-0a9f-4e16-9b84-8f08ea7564dc"
 >INSERT LRBG IN PreviousLRBGs
-  WHEN FULL REPLACE SelectFartherBG()</Action></Actions>
+  WHEN FULL REPLACE FarthestLRBG()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
