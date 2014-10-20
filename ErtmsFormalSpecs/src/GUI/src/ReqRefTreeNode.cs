@@ -95,17 +95,39 @@ namespace GUI
 
             MainWindow mainWindow = GUIUtils.MDIWindow;
 
-            if (mainWindow.DataDictionaryWindow != null)
+            foreach (Form form in mainWindow.SubWindows)
             {
-                mainWindow.DataDictionaryWindow.TreeView.Select(Item.Model);
-            }
-            if (mainWindow.SpecificationWindow != null)
-            {
-                mainWindow.SpecificationWindow.TreeView.Select(Item.Paragraph);
-            }
-            if (mainWindow.TestWindow != null)
-            {
-                mainWindow.TestWindow.TreeView.Select(Item.Model);
+                {
+                    DataDictionaryView.Window window = form as DataDictionaryView.Window;
+                    if (window != null)
+                    {
+                        window.TreeView.Select(Item.Model);                        
+                    }                   
+                }
+
+                {
+                    SpecificationView.Window window = form as SpecificationView.Window;
+                    if (window != null)
+                    {
+                        window.TreeView.Select(Item.Model);                        
+                    }                   
+                }
+
+                {
+                    TestRunnerView.Window window = form as TestRunnerView.Window;
+                    if (window != null)
+                    {
+                        window.TreeView.Select(Item.Model);
+                    }
+                }
+
+                {
+                    TranslationRules.Window window = form as TranslationRules.Window;
+                    if (window != null)
+                    {
+                        window.TreeView.Select(Item.Model);
+                    }
+                }                
             }
         }
 
