@@ -576,18 +576,17 @@ namespace DataDictionary.Tests.Translations
                     int currentIndex = 0;
                     FillStructure(nameSpace, packet.Fields, ref currentIndex, subStructure);
                     Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
-                    Values.StructureValue packetValue = new Values.StructureValue(packetStructure);
-                    subStructure1.SubVariables.ElementAt(0).Value.Value = packetValue;
-                    retVal.Val.Add(subStructure1);
 
                     // Find the right variable in the packet to add the structure we just created
-                    foreach (KeyValuePair<string, Variables.IVariable> pair in packetValue.SubVariables)
+                    foreach (KeyValuePair<string, Variables.IVariable> pair in subStructure1.SubVariables)
                     {
                         string variableName = pair.Key;
                         if (subStructure.Structure.FullName.Contains(variableName))
                         {
                             Variables.IVariable variable = pair.Value;
                             variable.Value = subStructure;
+
+                            retVal.Val.Add(subStructure1);
 
                             break;
                         }
@@ -798,14 +797,45 @@ namespace DataDictionary.Tests.Translations
             int currentIndex = 0;
             FillStructure(nameSpace, message.Fields, ref currentIndex, structure);
 
+            // Fill the default packets
+            int translatedPackets = 0;
+            foreach (KeyValuePair<string, Variables.IVariable> subVariable in structure.SubVariables)
+            {
+                if (subVariable.Value.TypeName.EndsWith("Message"))
+                {
+                    Types.Structure defaultPacketType = (Types.Structure)subVariable.Value.Type;
+                    Values.StructureValue defaultPacket = new Values.StructureValue(defaultPacketType);
+
+                    Types.NameSpace packetNameSpace = subVariable.Value.NameSpace;
+
+                    foreach (DBElements.DBPacket packet in message.Packets)
+                    {
+                        Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
+                        int packetID = int.Parse(nidPacketField.Value);
+
+                        Types.Structure packetType = (Types.Structure)FindStructure(packetID).Type;
+
+                        if (packetType == defaultPacketType)
+                        {
+                            int defaultPacketIndex = 0;
+                            FillStructure(packetNameSpace, packet.Fields, ref defaultPacketIndex, defaultPacket);
+
+                            subVariable.Value.Value = defaultPacket;
+
+                            translatedPackets++;
+                        }
+                    }
+                }
+            }
 
             // and fill the packets
             Variables.IVariable subSequenceVariable;
             if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable)
-                && message.Packets.Count > 0)
+                && message.Packets.Count > translatedPackets)
             {
                 subSequenceVariable.Value = get_message_packets(message, nameSpace, system);
             }
+            
 
             // Fill the correct field in Message with the structure.
             foreach (KeyValuePair<string, Variables.IVariable> pair in Message.SubVariables)
