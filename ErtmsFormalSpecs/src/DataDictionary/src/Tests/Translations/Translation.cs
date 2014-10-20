@@ -532,6 +532,7 @@ namespace DataDictionary.Tests.Translations
             Variables.IVariable subSequenceVariable;
             if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable))
             {
+                
                 subSequenceVariable.Value = get_message_packets(message, nameSpace, system);
             }
             else
@@ -544,7 +545,7 @@ namespace DataDictionary.Tests.Translations
 
 
 
-        static Values.ListValue get_message_packets(DBElements.DBMessage message, DataDictionary.Types.NameSpace nameSpace, EFSSystem system)
+        static Values.ListValue get_message_packets(DBElements.DBMessage message, Types.NameSpace nameSpace, EFSSystem system)
         {
             Values.ListValue retVal;
 
@@ -561,7 +562,7 @@ namespace DataDictionary.Tests.Translations
                 packetLocation += "TRACK_TO_TRAIN.Message";
             }
 
-            Types.Structure packetStructure = (Types.Structure)system.findType(nameSpace, packetLocation);
+            Types.Structure packetStructureType = (Types.Structure)system.findType(nameSpace, packetLocation);
 
             retVal = new Values.ListValue(collectionType, new List<Values.IValue>());
 
@@ -575,16 +576,32 @@ namespace DataDictionary.Tests.Translations
 
                     int currentIndex = 0;
                     FillStructure(nameSpace, packet.Fields, ref currentIndex, subStructure);
+
                     Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
 
+                    // For Balise messages, we have an extra level of information to fill, so here we define StructureVal in one of two ways
+                    Values.StructureValue structureVal;
+                    if (subStructure1.SubVariables.Count == 1 && subStructure1.SubVariables.ContainsKey("TRACK_TO_TRAIN"))
+                    {
+                        // For a Balise message, we have an extra level of structures for TRACK_TO_TRAIN
+                        structureVal = new Values.StructureValue(packetStructureType);
+                        
+                        subStructure1.SubVariables["TRACK_TO_TRAIN"].Value = structureVal;
+                    }
+                    else
+                    {
+                        // For RBC, the collection directly holds the different packet types
+                        structureVal = new Values.StructureValue(subStructure1Type);
+                        subStructure1 = structureVal;
+                    }
+
                     // Find the right variable in the packet to add the structure we just created
-                    foreach (KeyValuePair<string, Variables.IVariable> pair in subStructure1.SubVariables)
+                    foreach (KeyValuePair<string, Variables.IVariable> pair in structureVal.SubVariables)
                     {
                         string variableName = pair.Key;
                         if (subStructure.Structure.FullName.Contains(variableName))
                         {
-                            Variables.IVariable variable = pair.Value;
-                            variable.Value = subStructure;
+                            pair.Value.Value = subStructure;
 
                             retVal.Val.Add(subStructure1);
 
@@ -608,14 +625,13 @@ namespace DataDictionary.Tests.Translations
         {
             EFSSystem system = EFSSystem.INSTANCE;
             Types.Structure structure = null;
-            DataDictionary.Types.NameSpace nameSpace;
+            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages.PACKET");
 
-            if (nidPacket != 44)
+            foreach (Types.NameSpace subNameSpace in nameSpace.NameSpaces)
             {
-                nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages.PACKET.TRACK_TO_TRAIN");
-                foreach (DataDictionary.Types.NameSpace subNameSpace in nameSpace.NameSpaces)
+                foreach (DataDictionary.Types.NameSpace packetNameSpace in subNameSpace.NameSpaces)
                 {
-                    Types.Structure structureType = (Types.Structure)system.findType(subNameSpace, subNameSpace.FullName + ".Message");
+                    Types.Structure structureType = (Types.Structure)system.findType(packetNameSpace, packetNameSpace.FullName + ".Message");
                     Values.StructureValue structureValue = new Values.StructureValue(structureType);
 
                     foreach (KeyValuePair<string, Variables.IVariable> pair in structureValue.SubVariables)
@@ -635,11 +651,6 @@ namespace DataDictionary.Tests.Translations
                         }
                     }
                 }
-            }
-            else
-            {
-                nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages.PACKET.DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM");
-                structure = (Types.Structure)system.findType(nameSpace, nameSpace.FullName + ".Message");
             }
 
             Values.StructureValue retVal = null;
