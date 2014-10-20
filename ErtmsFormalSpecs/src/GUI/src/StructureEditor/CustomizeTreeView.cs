@@ -637,9 +637,12 @@ namespace GUI.StructureValueEditor
                 }
             }
 
-            if (enclosingVariable.Type is StateMachine)
+            if (enclosingVariable != null)
             {
-                items.Add(new ToolStripShowStateMachine(args, enclosingVariable));
+                if (enclosingVariable.Type is StateMachine)
+                {
+                    items.Add(new ToolStripShowStateMachine(args, enclosingVariable));
+                }
             }
 
             items.Sort(delegate(BaseToolStripButton b1, BaseToolStripButton b2)
