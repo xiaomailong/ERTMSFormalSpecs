@@ -646,7 +646,9 @@
       <FIELD NAME="Height"       TYPE="INTEGER" />
       <FIELD NAME="X"            TYPE="INTEGER" />
       <FIELD NAME="Y"            TYPE="INTEGER" />
-      <FIELD NAME="Pinned"              TYPE="BOOLEAN" />
+      <FIELD NAME="Pinned"       TYPE="BOOLEAN" />
+      <FIELD NAME="EnterAction"  REFTYPE="Rule" />
+      <FIELD NAME="LeaveAction"  REFTYPE="Rule" />
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="X"      TARGET="X"      OPTIONAL="TRUE" DEFAULT="0" />
@@ -658,6 +660,12 @@
     <FORMULA>
       <CONCAT>
         <ELEMENTREF NAME="StateMachine" TARGET="StateMachine" OPTIONAL="TRUE" />
+        <ENCLOSED NAME="EnterAction" OPTIONAL="TRUE">
+          <ELEMENTREF NAME="Rule" TARGET="EnterAction"/>
+        </ENCLOSED>
+        <ENCLOSED NAME="LeaveAction" OPTIONAL="TRUE">
+          <ELEMENTREF NAME="Rule" TARGET="LeaveAction"/>
+        </ENCLOSED>
       </CONCAT>
     </FORMULA>
   </ELEMENT>

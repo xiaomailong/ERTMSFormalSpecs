@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using DataDictionary.Rules;
 
 namespace GUI.DataDictionaryView
 {
@@ -83,6 +84,15 @@ namespace GUI.DataDictionaryView
             Nodes.Add(SubStates);
             Rules = new StateRulesTreeNode(Item, buildSubNodes);
             Nodes.Add(Rules);
+
+            if (Item.getEnterAction() != null)
+            {
+                Nodes.Add(new RuleTreeNode((Rule)Item.getEnterAction(), buildSubNodes));
+            }
+            if (Item.getLeaveAction() != null)
+            {
+                Nodes.Add(new RuleTreeNode((Rule)Item.getLeaveAction(), buildSubNodes));
+            }
         }
 
         /// <summary>
@@ -100,6 +110,24 @@ namespace GUI.DataDictionaryView
             state.Name = "State" + (GetNodeCount(true) + 1);
             Item.StateMachine.appendStates(state);
             Nodes.Add(new StateTreeNode(state, true));
+            SortSubNodes();
+        }
+
+        public void AddEnterActionHandler(object sender, EventArgs args)
+        {
+            DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)DataDictionary.Generated.acceptor.getFactory().createRule();
+            rule.Name = "Enter action";
+            Item.setEnterAction(rule);
+            Nodes.Add(new RuleTreeNode(rule, true));
+            SortSubNodes();
+        }
+
+        public void AddLeaveActionHandler(object sender, EventArgs args)
+        {
+            DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)DataDictionary.Generated.acceptor.getFactory().createRule();
+            rule.Name = "Leave action";
+            Item.setLeaveAction(rule);
+            Nodes.Add(new RuleTreeNode(rule, true));
             SortSubNodes();
         }
 
@@ -163,7 +191,10 @@ namespace GUI.DataDictionaryView
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
             retVal.AddRange(base.GetMenuItems());
             retVal.Insert(6, new MenuItem("-"));
-            retVal.Insert(7, new MenuItem("View state diagram", new EventHandler(ViewStateDiagramHandler)));
+            retVal.Insert(7, new MenuItem("Add enter action", new EventHandler(AddEnterActionHandler)));
+            retVal.Insert(8, new MenuItem("Add leave action", new EventHandler(AddLeaveActionHandler)));
+            retVal.Insert(9, new MenuItem("-"));
+            retVal.Insert(10, new MenuItem("View state diagram", new EventHandler(ViewStateDiagramHandler)));
 
             return retVal;
         }

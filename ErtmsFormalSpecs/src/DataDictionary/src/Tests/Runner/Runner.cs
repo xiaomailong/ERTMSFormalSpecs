@@ -20,6 +20,8 @@ using DataDictionary.Rules;
 using DataDictionary.Tests.Runner.Events;
 using DataDictionary.Values;
 using Utils;
+using DataDictionary.Types;
+using DataDictionary.Constants;
 
 namespace DataDictionary.Tests.Runner
 {
@@ -81,14 +83,9 @@ namespace DataDictionary.Tests.Runner
         }
 
         /// <summary>
-        /// The current time
+        /// The last time when activation has been performed
         /// </summary>
-        private double lastActivationTime;
-        public double LastActivationTime
-        {
-            get { return lastActivationTime; }
-            set { lastActivationTime = value; }
-        }
+        public double LastActivationTime { get; set; }
 
         /// <summary>
         /// Visitor used to clean caches of functions (graphs, surfaces)
@@ -484,7 +481,9 @@ namespace DataDictionary.Tests.Runner
                 }
             }
 
-            ApplyActivations(activations, priority);
+            List<VariableUpdate> updates = new List<VariableUpdate>();
+            EvaluateActivations(activations, priority, updates);
+            ApplyUpdates(updates);
             CheckExpectationsState(priority);
 
             // Indicates that the execution of this cycle priority is complete
@@ -659,12 +658,11 @@ namespace DataDictionary.Tests.Runner
         /// Applies the selected actions and update the system state
         /// </summary>
         /// <param name="updates"></param>
-        public void ApplyActivations(HashSet<Activation> activations, Generated.acceptor.RulePriority priority)
+        public void EvaluateActivations(HashSet<Activation> activations, Generated.acceptor.RulePriority priority, List<Events.VariableUpdate> updates)
         {
             Dictionary<Variables.IVariable, Change> changes = new Dictionary<Variables.IVariable, Change>();
-            Dictionary<Change, VariableUpdate> traceBack = new Dictionary<Change,VariableUpdate>();
+            Dictionary<Change, VariableUpdate> traceBack = new Dictionary<Change, VariableUpdate>();
 
-            List<Events.VariableUpdate> updates = new List<VariableUpdate>();
             foreach (Activation activation in activations)
             {
                 if (LogEvents)
@@ -742,6 +740,96 @@ namespace DataDictionary.Tests.Runner
                 }
             }
 
+            // Handles the leave & enter state rules
+            List<VariableUpdate> updatesToProcess = updates;
+            updates = new List<VariableUpdate>();
+
+            while (updatesToProcess.Count > 0)
+            {
+                List<VariableUpdate> newUpdates = new List<VariableUpdate>();
+
+                foreach (VariableUpdate update in updatesToProcess)
+                {
+                    updates.Add(update);
+
+                    foreach (Change change in update.Changes.Changes)
+                    {
+                        if (change.Variable.Type is StateMachine)
+                        {
+                            HandleLeaveState(priority, newUpdates, change.Variable, (State)change.Variable.Value, (State)change.NewValue);
+                            HandleEnterState(priority, newUpdates, change.Variable, (State)change.Variable.Value, (State)change.NewValue);
+                        }
+                    }
+                }
+
+                updatesToProcess = newUpdates;
+            }
+        }
+
+        /// <summary>
+        /// Add actions when entering a state
+        /// </summary>
+        /// <param name="priority"></param>
+        /// <param name="updates"></param>
+        /// <param name="leaveState"></param>
+        /// <param name="enterState"></param>
+        private void HandleEnterState(Generated.acceptor.RulePriority priority, List<VariableUpdate> updates, Variables.IVariable variable, State leaveState, State enterState)
+        {
+            if (!enterState.getStateMachine().Contains(enterState, leaveState))
+            {
+                if (enterState.getEnterAction() != null)
+                {
+                    Rule rule = (Rule)enterState.getEnterAction();
+                    ExplanationPart explanation = new ExplanationPart(rule, "Rule evaluation");
+                    HashSet<Activation> newActivations = new HashSet<Activation>();
+                    List<VariableUpdate> newUpdates = new List<VariableUpdate>();
+                    rule.Evaluate(this, priority, variable, newActivations, explanation);
+                    EvaluateActivations(newActivations, priority, newUpdates);
+                    updates.AddRange(newUpdates);
+                }
+
+                if (enterState.EnclosingState != null)
+                {
+                    HandleEnterState(priority, updates, variable, leaveState, enterState.EnclosingState);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Add actions when leaving a state
+        /// </summary>
+        /// <param name="priority"></param>
+        /// <param name="updates"></param>
+        /// <param name="leaveState"></param>
+        /// <param name="enterState"></param>
+        private void HandleLeaveState(Generated.acceptor.RulePriority priority, List<VariableUpdate> updates, Variables.IVariable variable, State leaveState, State enterState)
+        {
+            if (!leaveState.getStateMachine().Contains(leaveState, enterState))
+            {
+                if (leaveState.getLeaveAction() != null)
+                {
+                    Rule rule = (Rule)leaveState.getLeaveAction();
+                    ExplanationPart explanation = new ExplanationPart(rule, "Rule evaluation");
+                    HashSet<Activation> newActivations = new HashSet<Activation>();
+                    List<VariableUpdate> newUpdates = new List<VariableUpdate>();
+                    rule.Evaluate(this, priority, variable, newActivations, explanation);
+                    EvaluateActivations(newActivations, priority, newUpdates);
+                    updates.AddRange(newUpdates);
+                }
+
+                if (leaveState.EnclosingState != null)
+                {
+                    HandleLeaveState(priority, updates, variable, leaveState.EnclosingState, enterState);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Applies the updates on the system
+        /// </summary>
+        /// <param name="updates"></param>
+        private void ApplyUpdates(List<VariableUpdate> updates)
+        {
             foreach (VariableUpdate update in updates)
             {
                 update.Apply(this);

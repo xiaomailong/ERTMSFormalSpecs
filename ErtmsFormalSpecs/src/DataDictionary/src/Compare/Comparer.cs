@@ -2463,6 +2463,28 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Pinned", other.getPinned().ToString(), obj.getPinned().ToString()) );
             }
+            if ( obj.getEnterAction() == null )
+            {
+                if ( other.getEnterAction() != null )
+                {
+                    diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "EnterAction", "" ) );
+                }
+            }
+            else
+            {
+                compareRule ( obj.getEnterAction(), other.getEnterAction(), diff );
+            }
+            if ( obj.getLeaveAction() == null )
+            {
+                if ( other.getLeaveAction() != null )
+                {
+                    diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "LeaveAction", "" ) );
+                }
+            }
+            else
+            {
+                compareRule ( obj.getLeaveAction(), other.getLeaveAction(), diff );
+            }
         }
 
         /// <summary>
@@ -8569,6 +8591,8 @@ namespace DataDictionary.Compare
             ensureGuidReqRelated (obj, other);
 
             ensureGuidStateMachine ( obj.getStateMachine(), other.getStateMachine() );
+            ensureGuidRule ( obj.getEnterAction(), other.getEnterAction() );
+            ensureGuidRule ( obj.getLeaveAction(), other.getLeaveAction() );
         }
 
         /// <summary>
@@ -12994,6 +13018,14 @@ namespace DataDictionary.Compare
             if ( obj.getStateMachine() != null )
             {
                 searchStateMachine ( obj.getStateMachine(), searchString, occurences );
+            }
+            if ( obj.getEnterAction() != null )
+            {
+                searchRule ( obj.getEnterAction(), searchString, occurences );
+            }
+            if ( obj.getLeaveAction() != null )
+            {
+                searchRule ( obj.getLeaveAction(), searchString, occurences );
             }
         }
 
