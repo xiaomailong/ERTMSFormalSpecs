@@ -21,9 +21,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DataDictionary;
 using DataDictionary.Values;
 using System.Collections;
 using DataDictionary.Variables;
+using DataDictionary.Interpreter;
 
 namespace GUI.StructureValueEditor
 {
@@ -120,9 +122,20 @@ namespace GUI.StructureValueEditor
         /// </summary>
         public void RefreshAfterStep()
         {
-            // structureTreeListView.CheckObject(Variable);
-            structureTreeListView.RefreshObject(Variable);
-            structureTreeListView.Refresh();
+            if (Variable != null)
+            {
+                Expression expression = EFSSystem.INSTANCE.Parser.Expression(Utils.EnclosingFinder<Dictionary>.find(Variable), Variable.FullName);
+                IVariable variable = expression.GetVariable(new InterpretationContext());
+                if (variable != Variable)
+                {
+                    SetVariable(variable);
+                }
+                else
+                {
+                    structureTreeListView.RefreshObject(Variable);
+                    structureTreeListView.Refresh();
+                }
+            }
         }
     }
 }
