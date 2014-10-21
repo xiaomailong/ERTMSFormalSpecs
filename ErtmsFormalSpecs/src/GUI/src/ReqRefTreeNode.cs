@@ -109,7 +109,7 @@ namespace GUI
                     SpecificationView.Window window = form as SpecificationView.Window;
                     if (window != null)
                     {
-                        window.TreeView.Select(Item.Model);                        
+                        window.TreeView.Select(Item.Paragraph);                        
                     }                   
                 }
 
