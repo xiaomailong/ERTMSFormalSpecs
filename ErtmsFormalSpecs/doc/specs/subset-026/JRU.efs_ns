@@ -2163,11 +2163,11 @@ ModeChanged(jru)
   OR
 SystemVersionChanged(jru)
   OR
-( JRU.TrainDataHaveChanged(jru) ) OR (Kernel.TrainDataValidated)
+( TrainDataHaveChanged(jru) ) OR (Kernel.TrainDataValidated)
   OR
-JRU.EmergencyBrakeStatusChanged(jru)
+EmergencyBrakeStatusChanged(jru)
   OR
-JRU.ServiceBrakeStatusChanged(jru)
+ServiceBrakeStatusChanged(jru)
   OR
 TelegramFromBaliseRecieved()
   OR
