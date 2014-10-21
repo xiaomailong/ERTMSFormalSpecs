@@ -196,27 +196,31 @@ namespace DataDictionary
                     translation = translationDictionary.findTranslation(step.getDescription(), step.Comment);
                 }
 
-                if ((step.getDescription().IndexOf("balise group", StringComparison.InvariantCultureIgnoreCase) != -1) && step.getDescription().Contains("is received"))
+                if (step.getDescription() != null)
                 {
-                    if (step.StepMessages.Count == 0)
+                    // Specific checks for subset-076
+                    if ((step.getDescription().IndexOf("balise group", StringComparison.InvariantCultureIgnoreCase) != -1) && step.getDescription().Contains("is received"))
                     {
-                        step.AddWarning("Cannot find Balise messages for this step");
+                        if (step.StepMessages.Count == 0)
+                        {
+                            step.AddWarning("Cannot find Balise messages for this step");
+                        }
                     }
-                }
 
-                if ((step.getDescription().IndexOf("euroloop message", StringComparison.InvariantCultureIgnoreCase) != -1) && step.getDescription().Contains("is received"))
-                {
-                    if (step.StepMessages.Count == 0)
+                    if ((step.getDescription().IndexOf("euroloop message", StringComparison.InvariantCultureIgnoreCase) != -1) && step.getDescription().Contains("is received"))
                     {
-                        step.AddWarning("Cannot find Euroloop messages for this step");
+                        if (step.StepMessages.Count == 0)
+                        {
+                            step.AddWarning("Cannot find Euroloop messages for this step");
+                        }
                     }
-                }
 
-                if (step.getDescription().Contains("SA-DATA") && step.getDescription().Contains("is received"))
-                {
-                    if (step.StepMessages.Count == 0)
+                    if (step.getDescription().Contains("SA-DATA") && step.getDescription().Contains("is received"))
                     {
-                        step.AddWarning("Cannot find RBC message for this step");
+                        if (step.StepMessages.Count == 0)
+                        {
+                            step.AddWarning("Cannot find RBC message for this step");
+                        }
                     }
                 }
             }
