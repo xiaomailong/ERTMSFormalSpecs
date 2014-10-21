@@ -64,7 +64,7 @@
  Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="PositionReportEventsTracker"
+ Name="PositionReportEventsTrackerStruct"
  Guid="e4d7d885-b4b0-4a2f-84fe-fd83278d8dac"
 >
 <Comment>Keeps the information that can provode the sending of a new position report.</Comment>
@@ -418,7 +418,9 @@
  Name="Value"
  Guid="38910f57-eaaa-45c2-8562-0f00ec822b4b"
 >
-<Expression>PositionReportEventsTracker.HasActiveSession == Boolean.False</Expression>
+<Expression>PositionReportEventsTracker.HasActiveSession != EURORADIO.HasActiveSession()
+  AND
+EURORADIO.HasActiveSession()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1589,7 +1591,7 @@ ON
 >
 </ReqRef><Comment>This variable contains the position report parameters given by the RBC.</Comment>
 </Variable><Variable
- Type="EURORADIO.PositionReport.PositionReportEventsTracker"
+ Type="EURORADIO.PositionReport.PositionReportEventsTrackerStruct"
  DefaultValue=""
  VariableMode="Internal"
  X="110"
@@ -2004,7 +2006,7 @@ ON
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
- Priority="Processing"
+ Priority="UpdateOUT"
  X="110"
  Y="480"
  Width="100"
@@ -2062,7 +2064,7 @@ ON
 >CurrentRBCConnection().SendPositionReport()</Action></Actions>
 <SubRules>
 <Rule
- Priority="Processing"
+ Priority="UpdateOUT"
  Implemented="TRUE"
  Name="Two RBC connections available"
  Guid="8b99bed5-d9ad-4a6f-85b4-838f1489bd2d"
