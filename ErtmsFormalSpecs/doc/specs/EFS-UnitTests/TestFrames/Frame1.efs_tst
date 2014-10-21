@@ -32,23 +32,6 @@
  Name="Step1"
  Guid="da4c7b3d-ab06-454a-a766-06e1afd2d39e"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="baf507e0-1e40-4b2e-9bdb-62cf96ae3d09"
->
-<Actions>
-<Action
- Guid="848b0920-d927-4697-8b02-75c34ea2cb14"
->Test.val_stm &lt;- Test.stateMachine2.e1</Action><Action
- Guid="b9b07960-7685-4742-a822-9f218a5d96ca"
->Test.val_struct &lt;- Test.struct{
-    str_stm =&gt; Test.struct.stateMachine2.State1,
-    str_b =&gt; Boolean.False,
-    str_enum =&gt; Test.enum1.v1,
-    str_r =&gt; 1
-}</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>
