@@ -2991,7 +2991,79 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</StateMachine></State><State
+</StateMachine><LeaveAction>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Leave action"
+ Guid="feb61fde-0cda-4c1d-8da7-064275b10a7f"
+>
+<ReqRef
+ Id="c01d4cc9-6034-43bf-ba70-4d4fe10dffd9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="301f0be2-55bb-4943-ad61-22ddd9084dbe"
+>
+</ReqRef><ReqRef
+ Id="b9721346-42ac-4a79-8f62-10d5ff6a5abb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2d7ddca6-5e75-4caf-a9cd-3586b20e5b6a"
+>
+</ReqRef><ReqRef
+ Id="1e7f3c89-d89b-4d31-b758-514c92ae3bf1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47a6ecc9-9e7e-403c-80ee-4a8dde58949a"
+>
+</ReqRef><ReqRef
+ Id="aba0e684-4967-4fc6-850e-d080a2909bc5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6235a17c-27bc-4bfa-ac67-dde5ba1ae340"
+>
+</ReqRef><ReqRef
+ Id="28015708-3b6f-4bfb-87a2-4901cf481c50"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d6af73d-7732-40f6-a19e-0fb8843d1766"
+>
+</ReqRef><ReqRef
+ Id="414a7ad9-32f1-4118-b34f-18656d60445f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="014f5ea7-4a22-41b9-978b-e558ac8c98a5"
+>
+</ReqRef><ReqRef
+ Id="2812be46-6d39-4894-be55-c728964a7c49"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d0870146-e7b9-4677-9254-54c747cadca6"
+>
+</ReqRef><Comment>Actions to reset the data entry options upon leaving state S10</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Cancel DMI input requests"
+ Guid="7227be0b-4eb7-48cc-957e-0fb861292fab"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="44d5b949-e56c-4db5-888d-5bf8d1757150"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.Disable()</Action><Action
+ Guid="c3eb797f-cdda-4842-97dd-ba697f8dd605"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.Disable()</Action><Action
+ Guid="c487150b-f3a6-4ae1-9293-049b58b096f9"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.Disable()</Action><Action
+ Guid="2538a003-68f5-48d1-927d-d5d3aa7b5d26"
+>DMI.MasterDMI().In_Start.InputInformation.Disable()</Action><Action
+ Guid="f9d715f4-3bc8-4161-9869-b5c42e708111"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.Disable()</Action><Action
+ Guid="3faf2dd7-45fa-40b8-966f-f206552cb0f9"
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.Disable()</Action><Action
+ Guid="28a3453f-a59a-46eb-a76f-b672c9f3c4b2"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action><Action
+ Guid="ee563fbd-36f5-4979-8fe7-260fd7fa2414"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></LeaveAction>
+</State><State
  X="910"
  Y="360"
  Width="100"
@@ -3824,7 +3896,84 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</StateMachine></State><State
+</StateMachine><LeaveAction>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Leave action"
+ Guid="e070b6e3-269c-4c46-b526-78c9e3e98c6e"
+>
+<ReqRef
+ Id="2812be46-6d39-4894-be55-c728964a7c49"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6b8203c9-1be6-4296-add6-5daac242b656"
+>
+</ReqRef><ReqRef
+ Id="c01d4cc9-6034-43bf-ba70-4d4fe10dffd9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="829495d0-8955-41ae-8386-b321b61b4e2c"
+>
+</ReqRef><ReqRef
+ Id="b9721346-42ac-4a79-8f62-10d5ff6a5abb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f6ac66e3-4ef8-45ce-91bd-d3555d8c2224"
+>
+</ReqRef><ReqRef
+ Id="5aca3d45-a3d1-4286-a5a4-f451779e43d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cc3dc298-8823-4fe3-9864-908bb61d386e"
+>
+</ReqRef><ReqRef
+ Id="1e7f3c89-d89b-4d31-b758-514c92ae3bf1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="87da6fae-ba78-4a40-a310-ec70b638c4bc"
+>
+</ReqRef><ReqRef
+ Id="aba0e684-4967-4fc6-850e-d080a2909bc5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5a15b33e-a467-4304-89af-85ff8061246e"
+>
+</ReqRef><ReqRef
+ Id="60a884ee-664d-4031-988d-f9da13132152"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5b33304b-0c76-4787-9088-d682f5ea5c3a"
+>
+</ReqRef><ReqRef
+ Id="414a7ad9-32f1-4118-b34f-18656d60445f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d98b98bf-2a4b-480c-b5fd-ce1f23907001"
+>
+</ReqRef><Comment>Actions to reset the data entry options upon leaving state S20</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Leave action"
+ Guid="fae572dc-9d41-43a6-b7dc-44514bc9c15f"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3d8e65d5-bccf-458d-a86c-4605e9085cf9"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action><Action
+ Guid="950de50f-a730-4f40-bd1c-34639abee1aa"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.Disable()</Action><Action
+ Guid="ef24a316-cfce-4797-891b-c2b06b2f73b6"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.Disable()</Action><Action
+ Guid="e5c29bfe-3fb6-4fbd-b3a2-79267ae2e132"
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.Disable()</Action><Action
+ Guid="1727bba5-110f-4204-b1f2-70bbf289650f"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.Disable()</Action><Action
+ Guid="edac98b4-65ce-4af3-bdbf-722b384b1410"
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.Disable()</Action><Action
+ Guid="ab1200c6-542a-4aa7-b56a-8c4b36759f42"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action><Action
+ Guid="f9e8b85d-95f2-40bc-aca4-0dcc38eb2432"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></LeaveAction>
+</State><State
  X="550"
  Y="880"
  Width="100"
@@ -10167,10 +10316,12 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
  Name="Handle DMI inputs"
  Guid="3f4a21e9-b96b-4111-9e6e-f43307cb9ac5"
 >
+<Comment>Accept all the driver responses</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Handle DMI inputs"
  Guid="40fea73a-1a08-48d3-b25f-8f98327e08f2"
 >
@@ -10334,9 +10485,11 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 >SpeedAndDistanceMonitoring.SelectMonitoringType()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Stop monitoring if required"
  Guid="cdeb8310-91de-414d-8e5e-657e42672fe8"
 >
+<Comment>If a mode was entered where the speed and distance monitoring is inactive, the speed and distance monitoring must be set to idle</Comment>
 <PreConditions>
 <PreCondition
  Guid="5a06828f-3ad3-414d-a5d5-e64ce6ce5964"
@@ -10657,6 +10810,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Add emergency stop"
  Guid="7482b271-0036-4a99-8046-791fdabca1e8"
 >
+<Comment>Received emergency stops are added to a list containing the ID and reason or each emergency stop</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -10664,6 +10818,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Add Conditional Emergency Stop"
  Guid="17059008-89b6-4e10-a7e3-9938cfc666eb"
 >
+<Comment>Adds the conditional emergency stop received in the RBC message</Comment>
 <PreConditions>
 <PreCondition
  Guid="e240d531-4475-416c-bb30-c3574d5dcda4"
@@ -10688,6 +10843,7 @@ EmergencyStops</Action></Actions>
  Name="Add Unconditional Emergency Stop"
  Guid="ca987d81-cf62-4efd-b7b6-f4b669f0f48e"
 >
+<Comment>Adds the unconditional emergency stop received in the RBC message</Comment>
 <PreConditions>
 <PreCondition
  Guid="ba56b109-d68e-48b6-8d69-8c00d3011ebf"
@@ -10716,7 +10872,8 @@ EmergencyStops</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="124f7681-01bf-4cba-ad11-122aa21910a8"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>The received emergency stops are displayed to the driver</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -10767,8 +10924,7 @@ EmergencyStops</Action></Actions>
 <Actions>
 <Action
  Guid="eb928e38-b0ef-4a1d-8bc9-6a68b0de2c13"
->EmergencyStops &lt;- MAP EmergencyStops | (X.Id != aId)
-    USING X</Action></Actions>
+>REMOVE ALL X.Id == aId IN EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -10786,7 +10942,7 @@ EmergencyStops</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="ed27c8f0-85f6-4b6b-a0a1-49ed462fa9b1"
->NOT( THERE_IS_IN EmergencyStops | X.Reason == Kernel.BrakeReason.OrderFromRBC)</PreCondition></PreConditions>
+>FORALL_IN EmergencyStops | X.Reason != Kernel.BrakeReason.OrderFromRBC</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e2602b9e-3c0d-4aac-a5bf-d0678874da0e"
