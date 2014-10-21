@@ -410,10 +410,16 @@ namespace GUI.TestRunnerView.Watch
                         Expression expression = ExpressionTree;
                         if (expression != null)
                         {
-                            IValue value = expression.GetValue(new InterpretationContext(), null);
-                            if (value != null)
+                            try
                             {
-                                retVal = value.LiteralName;
+                                IValue value = expression.GetValue(new InterpretationContext(), null);
+                                if (value != null)
+                                {
+                                    retVal = value.LiteralName;
+                                }
+                            }
+                            catch (Exception)
+                            {
                             }
                         }
 
