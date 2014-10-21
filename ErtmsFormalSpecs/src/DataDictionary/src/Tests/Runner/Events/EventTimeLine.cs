@@ -371,6 +371,27 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
+        /// Indicates whether we need to keep this event during garbage collection
+        /// </summary>
+        /// <param name="evt"></param>
+        /// <returns></returns>
+        private bool KeepEvent(ModelEvent evt)
+        {
+            bool retVal = evt is Expect
+                          || evt is ModelInterpretationFailure
+                          || evt is SubStepActivated;
+
+            VariableUpdate update = evt as VariableUpdate;
+            if (update != null)
+            {
+                retVal = Utils.EnclosingFinder<DataDictionary.Types.NameSpace>.find(update.Action) == null;
+            }
+
+            return retVal;
+        }
+
+
+        /// <summary>
         /// Cleans up the time line by removing the events exceeding the maximum number of events in the time line, 
         /// not counting the Expects.
         /// </summary>
@@ -384,7 +405,7 @@ namespace DataDictionary.Tests.Runner.Events
 
                 foreach (ModelEvent modelEvent in Events)
                 {
-                    if (modelEvent is Expect || modelEvent is ModelInterpretationFailure)
+                    if (KeepEvent(modelEvent))
                     {
                         // We keep expectations in the event list
                         newEvents.Add(modelEvent);
