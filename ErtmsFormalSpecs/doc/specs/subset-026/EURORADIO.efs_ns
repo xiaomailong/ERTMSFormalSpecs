@@ -248,6 +248,28 @@
  Guid="0271d2ba-8432-4ab8-9751-21368dd80660"
 >MessageIn &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Verification"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Clear output message"
+ Guid="0339f48d-dd3c-4427-bb71-c2b0692813a5"
+>
+<Comment>In the beginning of the cycle, the previously sent message is erazed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Clear output message"
+ Guid="b8277cd5-cb64-43eb-b93c-592bf2cbe729"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a88d3410-4254-4ea2-b4be-62c09e71fb63"
+>MessageOut &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
@@ -1309,7 +1331,7 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 <PreConditions>
 <PreCondition
  Guid="4b25cc29-6b61-46d2-b51e-3caa2964d74f"
->MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
+>ConnectionState in RBCStruct.ConnectionStateSM.Connecting</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5e12d8df-0bef-46ba-98ed-6197ab27501a"
@@ -2510,7 +2532,9 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Guid="b4f25d0d-6815-4c2d-ae03-b9c5f4fe9298"
 >THIS &lt;- Connected</Action><Action
  Guid="14daf0db-62ec-4f22-8031-4c28c232386d"
->SendSessionEstablishmentReport()</Action></Actions>
+>SendSessionEstablishmentReport()</Action><Action
+ Guid="34a43062-7ec6-473d-9e19-755099d35942"
+>ContactRBCOrder &lt;- EMPTY</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2725,22 +2749,44 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Handle train data if accepting RBC"
+ Name="Handle validated train data"
  Guid="3e9be6b6-c794-4dc2-8864-ee20b5c44ad8"
 >
 <ReqRef
- Id="1d0a9f3a-05b9-496f-808f-1dc1ece5338f"
+ Id="3e290fa7-299c-4897-91e4-dbcb5702edbf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ded1d920-0161-49e4-91f9-46f9b8a328e6"
+ Guid="5bdc8f39-44a2-4d9e-8fb9-df822fa48600"
 >
 </ReqRef><Comment>If the current RBC is an accepting RBC, the on-board sends its train data.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
+ Name="Handle validated train data"
+ Guid="657834c9-feef-4ac1-a572-58a06727f940"
+>
+<Comment>If the connection with RBC is established and valid train data is present onboard, the message Validated Train Data is sent.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="2b26b73e-2b41-4741-8f2b-9b3ebe6994aa"
+>Kernel.TrainData.TrainData.DataState == Default.DataState.Valid</PreCondition><PreCondition
+ Guid="1885385a-2aa3-4151-8396-e579fca7bd78"
+>IsMainConnection</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="25272c57-44ec-4c93-9595-68bf6e2fc054"
+>SendValidatedTrainData()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Handle train data if accepting RBC"
  Guid="5d62b306-19d5-492b-81e6-ca0e07ed8f8b"
 >
+<ReqRef
+ Id="1d0a9f3a-05b9-496f-808f-1dc1ece5338f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="73803e17-bb68-4c62-b844-3883bd115e34"
+>
+</ReqRef><Comment>As soon as the on-oard equipment has established the session with the Accepting RBC, it shends its Train Data.</Comment>
 <PreConditions>
 <PreCondition
  Guid="07e657aa-3707-4bda-a4f4-a6d13481015f"
@@ -3182,11 +3228,6 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  Guid="345712ec-f586-4161-a260-7c2b7c4eb719"
 >
 </ReqRef><ReqRef
- Id="84374b3d-739e-4c5f-909d-4c138dedec38"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="64d1fe74-9c45-451b-8b5e-74c20552440e"
->
-</ReqRef><ReqRef
  Id="bc41e5e5-6fff-4b96-a901-9bc45f108b16"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8f56dd0f-e588-4cc0-9e6b-bd50c23eb281"
@@ -3206,12 +3247,17 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7a3a6f67-69f6-4260-8fdb-bfadfe6a3987"
 >
+</ReqRef><ReqRef
+ Id="84374b3d-739e-4c5f-909d-4c138dedec38"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4c02cdf5-6671-4822-b77c-666272117319"
+>
 </ReqRef><Comment>Handle orders to contact an RBC.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Order to contact an RBC is received"
+ Name="Order to contact another RBC is received"
  Guid="63fe5c9c-8eee-4877-90ab-bc7187858c4a"
 >
 <Comment>When a connection to the RBC is established and a request to contact an RBC is received, the on-board sends the Termination of communication session message to the RBC and goes to Terminating state.</Comment>
@@ -5256,7 +5302,14 @@ The only one case where the status to display is that of the secondary connectio
 <Actions>
 <Action
  Guid="fb0c323a-04ee-47a6-86cd-341b24a90ee3"
->SelectRBCToContact().ContactRBCOrder &lt;- anOrder</Action></Actions>
+>SelectRBCToContact().ContactRBCOrder &lt;- anOrder</Action><Action
+ Guid="10e5e739-aca5-4fb6-814f-e45da2fe4dde"
+>LastKnownRBC &lt;- EURORADIO.RBCContactStruct
+{
+    Id =&gt; anOrder.Id,
+    PhoneNumber =&gt; anOrder.PhoneNumber,
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
