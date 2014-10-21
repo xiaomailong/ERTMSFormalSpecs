@@ -249,7 +249,7 @@
 >MessageIn &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
- Priority="Verification"
+ Priority="UpdateINTERNAL"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Clear output message"
@@ -8180,6 +8180,41 @@ NOT
 <Action
  Guid="0afb9105-bdf8-47d2-9a68-8ec3761547af"
 >aMessage.ACKNOWLEDGEMENT_OF_TRAIN_DATA &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ProcessOutgoingMessages"
+ Guid="c36b656b-aa9b-4f02-a9d4-d503cfa217a4"
+>
+<Comment>The outgoing messages are sent when specific actions are performed by the on-board equipment.
+
+But at the end of the cycle the conditions required for sending of position report can become satisfied =&gt; they are evaluated and if satisfied, the position report is sent.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send position report"
+ Guid="72736422-33d7-492a-81ac-6cfd6cf0eefd"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send position report"
+ Guid="30a80c20-5a69-4859-9aba-ef425f481c6d"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="506f0d2b-e726-4168-92cc-489acdd72744"
+>PositionReport.SendPositionReport()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

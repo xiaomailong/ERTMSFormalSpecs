@@ -10162,6 +10162,7 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Handle DMI inputs"
  Guid="3f4a21e9-b96b-4111-9e6e-f43307cb9ac5"
@@ -10169,6 +10170,7 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Handle DMI inputs"
  Guid="40fea73a-1a08-48d3-b25f-8f98327e08f2"
 >
@@ -10331,6 +10333,7 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
  Guid="1ea62aa3-6056-40d4-8b5a-3eb7fbfb176b"
 >SpeedAndDistanceMonitoring.SelectMonitoringType()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Stop monitoring if required"
  Guid="cdeb8310-91de-414d-8e5e-657e42672fe8"
 >
@@ -10379,6 +10382,7 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
  Guid="c6f59ebe-03a7-4ee2-aea3-8fe999bbfc7a"
 >MA.HandleEOAs()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Do not determine EOAs"
  Guid="2148e8ee-a189-429b-81e3-85bc23711606"
 >
@@ -10424,6 +10428,7 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
  Guid="64c5dc89-646c-46a1-8e8c-b24814da8ae4"
 >MA.HandleSvLs()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Do not determine SvL"
  Guid="d54acc72-a081-4808-8d9e-6d3d9b11a28f"
 >
@@ -10827,9 +10832,12 @@ EmergencyStops</Action></Actions>
  Y="270"
  Width="100"
  Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="HandleOutputs"
  Guid="51ad2f80-5fab-4b86-85f9-818dea2864b4"
 >
+<Comment>This procedure handles the outputs to the driver or the trackside according to the state of internal variables.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -10859,6 +10867,29 @@ EmergencyStops</Action></Actions>
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
+ Name="Send Euroradio messages"
+ Guid="ac8673bb-364c-4a24-9f76-1336fba2daed"
+>
+<Comment>Send Euroradio messages if needed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send Euroradio messages"
+ Guid="ed1de417-3707-4ba9-bffd-d5211659dd20"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="0d578cf9-1386-4e3d-acce-888906447d6c"
+>EURORADIO.ProcessOutgoingMessages()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Send JRU messages"
  Guid="76dea100-7f32-46de-bfa5-7c1e4f8d34d5"
 >
@@ -10876,6 +10907,7 @@ EmergencyStops</Action></Actions>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Send JRU messages"
  Guid="bdba5cda-8ba3-4fec-ad67-7e7b89118e77"
 >
@@ -11353,6 +11385,8 @@ EmergencyStops</Action></Actions>
  X="140"
  Width="100"
  Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Handle Outputs"
  Guid="1b0fb1e9-77a2-4126-9b66-9882bd304dcf"
 >
@@ -11360,6 +11394,8 @@ EmergencyStops</Action></Actions>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Handle Outputs"
  Guid="a454a9ef-1994-48a4-81d4-45675bde5a04"
 >
