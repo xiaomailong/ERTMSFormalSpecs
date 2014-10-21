@@ -197,13 +197,22 @@ namespace DataDictionary.Interpreter.ListOperators
         /// Checks the expression and appends errors to the root tree node when inconsistencies are found
         /// </summary>
         public override void checkExpression()
-        {
+        {            
             base.checkExpression();
 
-            Types.Type listExpressionType = ListExpression.GetExpressionType();
-            if (!(listExpressionType is Types.Collection))
+            if (ListExpression != null)
             {
-                AddError("List expression " + ListExpression.ToString() + " should hold a collection");
+                ListExpression.checkExpression();
+
+                Types.Type listExpressionType = ListExpression.GetExpressionType();
+                if (!(listExpressionType is Types.Collection))
+                {
+                    AddError("List expression " + ListExpression.ToString() + " should hold a collection");
+                }
+            }
+            else
+            {
+                AddError("List expression should be provided");
             }
         }
 
