@@ -279,6 +279,7 @@
 [
   BTM.BaliseGroup
   {
+    Timestamp =&gt; 2.0 * Kernel.CycleDuration,
     NID =&gt; 2124,
     Orientation =&gt; Orientation.Unknown,
     Position =&gt; BTM.Position
@@ -388,6 +389,7 @@
 [
   BTM.BaliseGroup
   {
+    Timestamp =&gt; 2.0 * Kernel.CycleDuration,
     NID =&gt; 2124,
     Orientation =&gt; Orientation.Unknown,
     Position =&gt; BTM.Position
@@ -480,20 +482,27 @@
 <Expectation
  Kind="Instantaneous"
  Guid="11b12127-cfc8-4ace-b8f3-7800fbd1a1d1"
->BTM.PreviousLRBGs == [
-  BTM.BaliseGroup {
+>BTM.PreviousLRBGs ==
+[
+  BTM.BaliseGroup
+  {
+    Timestamp =&gt; 2.0 * Kernel.CycleDuration,
     NID =&gt; 2124,
     Orientation =&gt; Orientation.Unknown,
-    Position =&gt; BTM.Position {
+    Position =&gt; BTM.Position
+    {
       OverReadingAmountOdo =&gt; 0.0,
       Position =&gt; 24510.0,
       UnderReadingAmountOdo =&gt; 0.0
     }
   },
-  BTM.BaliseGroup {
+  BTM.BaliseGroup
+  {
+    Timestamp =&gt; 5.0 * Kernel.CycleDuration,
     NID =&gt; 2125,
     Orientation =&gt; Orientation.Nominal,
-    Position =&gt; BTM.Position {
+    Position =&gt; BTM.Position
+    {
       OverReadingAmountOdo =&gt; 0.0,
       Position =&gt; 25620.0,
       UnderReadingAmountOdo =&gt; 0.0
@@ -1167,249 +1176,6 @@
  Kind="Instantaneous"
  Guid="a90a5241-f3ef-4abc-a215-a6f2eff1951f"
 >( COUNT BTM.CurrentBaliseGroup ) == 1</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="Previous balises handling"
- Guid="29244f12-6fa8-4b04-ba74-b62b16da0a47"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- NeedsRequirement="FALSE"
- Name="Initial configuration"
- Guid="272a9d5b-fdf9-4f72-9c4b-8b7a0dca4a6f"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="80e648a4-1d51-4257-b1a1-008450c0da38"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="95d1936f-d7cb-4b22-b72f-1b61cc765229"
->
-<Actions>
-<Action
- Guid="d90f89c2-aacc-4da1-8d18-294ec2c2d68c"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2"
- Guid="9141a182-98e5-4e3c-b3b8-2ffb26fdaa17"
->
-<Actions>
-<Action
- Guid="173313b0-29ce-4662-a8d5-7b6dbb1aafcc"
->BTM.PreviousLRBGs &lt;- 
-[
-  BTM.BaliseGroup {
-    NID =&gt; 2121,
-    Orientation =&gt; Orientation.Nominal,
-    Position =&gt; BTM.Position {
-      Position =&gt; 34321.0
-    }
-  },
-  BTM.BaliseGroup {
-    NID =&gt; 2122,
-    Orientation =&gt; Orientation.Nominal,
-    Position =&gt; BTM.Position {
-      Position =&gt; 36532.0
-    }
-  },
-  BTM.BaliseGroup {
-    NID =&gt; 2123,
-    Orientation =&gt; Orientation.Nominal,
-    Position =&gt; BTM.Position {
-      Position =&gt; 37432.0
-    }
-  }
-]</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- NeedsRequirement="FALSE"
- Name="Previous balise"
- Guid="07aaa55e-6bd4-4200-8b85-c318f459c8e8"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Nominal train orientation"
- Guid="a28e110f-e17c-4686-8ad9-0b390763a14b"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="269c8cc8-fb9c-4eaf-a4df-92b3ad7c5927"
->
-<Actions>
-<Action
- Guid="14f9447d-6425-49ff-9975-327aff2749b2"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="b93b18de-9564-48ff-85ec-f3ac9ed5e9d1"
->BTM.PreviousLRBG().NID == 2123</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step2 - Reverse train orientation"
- Guid="db146960-619c-48de-bc7c-065c139e6cd4"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="cc2839b1-ff68-49c1-935b-a0e8d4e1e7f6"
->
-<Actions>
-<Action
- Guid="28ec8c2c-0496-4202-a519-eee459821de5"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Reverse</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="016701a1-cb8a-43f6-bdea-193da6da926a"
->BTM.PreviousLRBG().NID == 2121</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step3 - Unknown train orientation"
- Guid="5b542107-5463-4f7d-a844-2f02d6b874ea"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="e4e3c01d-0c12-4df6-8d3c-f39dcf0c4612"
->
-<Actions>
-<Action
- Guid="1ff97f59-b3b1-44ff-b1b3-1adc6710a6d4"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Unknown</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="9925eccf-6683-4251-9cd3-1a2dfa912928"
->NOT Available ( BTM.PreviousLRBG() )</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- NeedsRequirement="FALSE"
- Name="Farther balise"
- Guid="0d7a4f46-1f14-486e-8a7a-1045a819c8ee"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Nominal train orientation"
- Guid="279c0a89-fc4e-4e1a-a4a7-1fe209994b8b"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="cb21f470-cadf-415f-9027-3a34a8cc2488"
->
-<Actions>
-<Action
- Guid="31c9b4e7-85b9-4fdf-b4e6-240b454f3c6a"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="711f5b9f-5107-4c88-9dc8-09d1c1205940"
->BTM.FarthestLRBG().NID == 2121</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step2 - Reverse train orientation"
- Guid="568a549e-b419-4463-b0b7-a95f6228c0ed"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="ce26c9ef-3b00-4310-9452-eb15e5dfb69b"
->
-<Actions>
-<Action
- Guid="c9ebb614-acc9-4b30-8f98-0a4ae026f277"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Reverse</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="1ff52594-f7eb-4a9a-8564-85e388ede547"
->BTM.FarthestLRBG().NID == 2123</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step3 - Unknown train orientation"
- Guid="3cbed44f-1d30-4172-ba1f-4959320a1f49"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="bcf0c98b-60c0-4d46-ab58-61b10241e185"
->
-<Actions>
-<Action
- Guid="87f8180f-f86b-4c34-83e7-2b32e5c556cc"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Unknown</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="cb652ca0-955c-4db4-922a-6c9d907a2621"
->NOT Available ( BTM.FarthestLRBG() )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
