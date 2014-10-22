@@ -74,6 +74,16 @@
  Guid="d5f7e229-1874-48ab-96ec-ccf2cb4e9d75"
 >
 </ReqRef><Comment>Indicates of the orientation of the LRBG can be determined.</Comment>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Time"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Timestamp"
+ Guid="2f0be26b-32d3-46b2-a2d7-00768d0f2af2"
+>
+<Comment>The moment when the balise group was received by the train. Used to retrieve the most recent balise group.</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="500"
@@ -307,15 +317,6 @@
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Unknown train orientation"
- Guid="66985a03-b262-4226-a416-9c5d1859e751"
->
-<PreConditions>
-<PreCondition
- Guid="1d5bfb3c-95de-43fc-a7b3-8dcd12a46b4f"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Unknown</PreCondition></PreConditions>
-<Expression>EMPTY</Expression>
-</Case><Case
  Name="Empty bg1"
  Guid="fd17fe25-b13f-43b7-ac23-1234806bcb16"
 >
@@ -334,49 +335,19 @@
 >NOT Available ( bg2 )</PreCondition></PreConditions>
 <Expression>bg1</Expression>
 </Case><Case
- Name="Nominal and bg1.Position &lt;= bg2.Position"
+ Name="bg1 is the oldest"
  Guid="6500b8d8-aa19-4146-a096-2d8753a7760f"
 >
 <PreConditions>
 <PreCondition
- Guid="09d82ea7-9663-494a-b922-4a1790419143"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Nominal</PreCondition><PreCondition
  Guid="ca98163b-74ba-48e2-b24b-35a21cb85d6f"
->bg1.Position.Position &lt;= bg2.Position.Position</PreCondition></PreConditions>
+>bg1.Timestamp &lt;= bg2.Timestamp</PreCondition></PreConditions>
 <Expression>bg1</Expression>
 </Case><Case
- Name="Nominal and bg1.Position &gt; bg2.Position"
+ Name="bg2 is the oldest"
  Guid="a430f7b8-6f5f-4c7f-b0bf-805f91f8c444"
 >
-<PreConditions>
-<PreCondition
- Guid="0f4a84c2-5870-498a-868c-e07f38e09188"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Nominal</PreCondition><PreCondition
- Guid="b25f128a-31d2-4108-9be4-f31e451d4e39"
->bg1.Position.Position &gt; bg2.Position.Position</PreCondition></PreConditions>
 <Expression>bg2</Expression>
-</Case><Case
- Name="Reverse and bg1.Position &lt;= bg2.Position"
- Guid="493fdaa3-5c65-4966-9072-8e29b57cc19e"
->
-<PreConditions>
-<PreCondition
- Guid="818c9d54-ab82-4adc-bcb6-0b79a3389a43"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Reverse</PreCondition><PreCondition
- Guid="0b38a941-0cd8-4291-a7d6-6eb6776a7fc1"
->bg1.Position.Position &lt;= bg2.Position.Position</PreCondition></PreConditions>
-<Expression>bg2</Expression>
-</Case><Case
- Name="Reverse and bg1.Position &gt; bg2.Position"
- Guid="6941372b-bec8-422f-a405-eacea2c57619"
->
-<PreConditions>
-<PreCondition
- Guid="49b097fa-7fb9-4cbd-a930-13104713690f"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Reverse</PreCondition><PreCondition
- Guid="168a8dee-98e4-4b3d-9d85-b19f5d43702a"
->bg1.Position.Position &gt; bg2.Position.Position</PreCondition></PreConditions>
-<Expression>bg1</Expression>
 </Case></Cases>
 </Function><Function
  Type="BTM.BaliseGroup"
@@ -406,15 +377,6 @@
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Unknown train orientation"
- Guid="ac22d457-11bc-47b3-a6c3-c87f2200fad0"
->
-<PreConditions>
-<PreCondition
- Guid="95e5d57c-bc71-4d08-b9dd-16f84d8721bb"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Unknown</PreCondition></PreConditions>
-<Expression>EMPTY</Expression>
-</Case><Case
  Name="Empty bg1"
  Guid="f3c35d97-e93e-446b-980c-13e34bf183d2"
 >
@@ -433,49 +395,19 @@
 >NOT Available ( bg2 )</PreCondition></PreConditions>
 <Expression>bg1</Expression>
 </Case><Case
- Name="Nominal and bg1.Position &gt; bg2.Position"
+ Name="bg1 is more recent"
  Guid="794009f7-5d86-40b9-bdc3-acd7d06aafaf"
 >
 <PreConditions>
 <PreCondition
- Guid="fc6c8cf3-605e-49f9-bf4e-04cb2e7e6284"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Nominal</PreCondition><PreCondition
  Guid="7cbc332d-8834-435a-9c08-ada4f2d15ea5"
->bg1.Position.Position &gt; bg2.Position.Position</PreCondition></PreConditions>
+>bg1.Timestamp &gt;= bg2.Timestamp</PreCondition></PreConditions>
 <Expression>bg1</Expression>
 </Case><Case
- Name="Nominal and bg1.Position &lt;= bg2.Position"
+ Name="bg2 is more recent"
  Guid="9b6c6061-1000-432f-aa53-8c4ce5e77484"
 >
-<PreConditions>
-<PreCondition
- Guid="833e7768-2f0a-431c-bbdf-c411b88fb8f9"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Nominal</PreCondition><PreCondition
- Guid="c0432fa7-dacc-43be-af56-9514fc9eb50f"
->bg1.Position.Position &lt;= bg2.Position.Position</PreCondition></PreConditions>
 <Expression>bg2</Expression>
-</Case><Case
- Name="Reverse and bg1.Position &gt; bg2.Position"
- Guid="1a0c6960-89aa-40e1-95a2-3de45a8e3fed"
->
-<PreConditions>
-<PreCondition
- Guid="908eb6e5-fc51-4c7a-8fa6-59010ee1f7c1"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Reverse</PreCondition><PreCondition
- Guid="633f0609-ab08-4485-8925-11a9479fd5c4"
->bg1.Position.Position &gt; bg2.Position.Position</PreCondition></PreConditions>
-<Expression>bg2</Expression>
-</Case><Case
- Name="Reverse and bg1.Position &lt;= bg2.Position"
- Guid="60a49058-d072-49ef-85ee-a28665ada591"
->
-<PreConditions>
-<PreCondition
- Guid="36190f7c-1228-49e1-befc-5d009b285baf"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation == Orientation.Reverse</PreCondition><PreCondition
- Guid="036cf492-d635-4c9c-a36a-f8fd06ea2f0a"
->bg1.Position.Position &lt;= bg2.Position.Position</PreCondition></PreConditions>
-<Expression>bg1</Expression>
 </Case></Cases>
 </Function><Function
  Type="BTM.BaliseGroup"
@@ -2818,7 +2750,9 @@ The list is updated in case two LRBGs provide the same MRSP, this should count a
 <Actions>
 <Action
  Guid="0ed7fcdc-0c4d-4e64-b329-3a748a11b5b8"
->LRBG &lt;- BTM.BaliseGroup { 
+>LRBG &lt;- BTM.BaliseGroup
+{
+  Timestamp =&gt; Kernel.DateAndTime.CurrentTime,
   NID =&gt; Nid_BG,
   Position =&gt; BGLocationReference,
   Orientation =&gt; BaliseGroupOrientation()
