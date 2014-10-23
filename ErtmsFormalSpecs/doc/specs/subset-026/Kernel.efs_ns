@@ -3268,7 +3268,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Driver selected to enter train running number"
+ Name="Driver responded"
  Guid="0fc55ec3-0ee1-403c-8454-76d82640a6d3"
 >
 <ReqRef
@@ -3352,6 +3352,24 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver closed the window"
+ Guid="176386ad-94e3-4681-b27f-87bf09f7997e"
+>
+<PreConditions>
+<PreCondition
+ Guid="c8bdc772-3686-480b-8186-02a614b4aa15"
+>Kernel.TrainRunningNumber.DataState != Default.DataState.Valid</PreCondition><PreCondition
+ Guid="5cca0c9d-d3cb-4563-88da-4902c33524e8"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Default.Request.Disabled</PreCondition><PreCondition
+ Guid="e87adf10-ace6-4b7c-ae31-27bff02ec62c"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus == Default.Request.Disabled</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ab922002-922f-478a-b549-891214039c25"
+>THIS &lt;- ProposeTrainRunningNumberEntry</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3381,33 +3399,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Action
  Guid="445c53d3-c0ee-4c2d-b180-eae97d2f0316"
 >THIS &lt;- D10</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Driver closed Train Running Number entry window"
- Guid="124326f4-baf7-4a55-b2a4-6e2c22447c76"
->
-<Comment>If the driver closes the Train Running Number window, return to the initial state (ie. initiate the request again)</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Re-open the window"
- Guid="176386ad-94e3-4681-b27f-87bf09f7997e"
->
-<PreConditions>
-<PreCondition
- Guid="c8bdc772-3686-480b-8186-02a614b4aa15"
->Kernel.TrainRunningNumber.DataState != Default.DataState.Valid</PreCondition><PreCondition
- Guid="5cca0c9d-d3cb-4563-88da-4902c33524e8"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ab922002-922f-478a-b549-891214039c25"
->THIS &lt;- S13.ProposeTrainRunningNumberEntry</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
