@@ -1648,7 +1648,7 @@ USING
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a3599a2e-5b3f-4ae4-b506-f7fb8e2fc079"
 >
-</ReqRef><Comment>&quot;given together with the MA&quot; is not considered here because A1.1.6.2 ensures all relevant information has been processed at the time of evaluation of this function.</Comment>
+</ReqRef><Comment>Indicates if the full track description (SSP + grandient) is available for the newly received MA. &quot;given together with the MA&quot; is not considered here because A1.1.6.2 ensures all relevant information has been processed at the time of evaluation of this function.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
@@ -1658,45 +1658,17 @@ USING
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="SSP does not cover required length"
+ Name="Value"
  Guid="d5333f4d-b410-46c7-95c6-2a1a5b3bee9b"
 >
-<PreConditions>
-<PreCondition
- Guid="2a52d006-db65-4f7d-aa97-b4d9a80e2788"
->Kernel.TrackDescription.StaticSpeedProfile.SSP == []
-OR
-( Kernel.TrackDescription.StaticSpeedProfile.SSPEnd ( Current =&gt; LAST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP ) )
-&lt; 
-Default.BaseTypes.LengthToDistance(
-   Default.MessageTypes.QScaleLength(
-      length =&gt; (SUM Packet.Sequence1 USING X.L_SECTION) + Packet.L_ENDSECTION,
-      scale =&gt; Packet.Q_SCALE
-      )
-   )</PreCondition></PreConditions>
-<Expression>False</Expression>
-</Case><Case
- Name="Gradient information does not cover required length"
- Guid="f9a2a105-dc30-41d3-affb-7dd12f764070"
->
-<PreConditions>
-<PreCondition
- Guid="db3e68bd-5f4c-4ad6-b1c4-ae90ae31ab00"
->Kernel.TrackDescription.Gradient.Gradients == []
-OR
-Kernel.TrackDescription.Gradient.GradientEnd(Current =&gt; LAST_IN Kernel.TrackDescription.Gradient.Gradients) &lt;
-Default.BaseTypes.LengthToDistance(
-   Default.MessageTypes.QScaleLength(
-      length =&gt; (SUM Packet.Sequence1 USING X.L_SECTION) + Packet.L_ENDSECTION,
-      scale =&gt; Packet.Q_SCALE
-      )
-   )</PreCondition></PreConditions>
-<Expression>False</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="655a8eec-8adf-40b1-9c4a-40d0c3a1fb2c"
->
-<Expression>True</Expression>
+<Expression>FullTrackDescriptionAvailableForDistanceInterval
+(
+  Default.MessageTypes.QScaleLength
+  (
+    length =&gt; (SUM Packet.Sequence1 USING X.L_SECTION) + Packet.L_ENDSECTION,
+    scale =&gt; Packet.Q_SCALE
+  )
+)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2195,6 +2167,68 @@ This is used for when a new reference location is received and the MA is relocat
 >
 <Expression>aSection</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="470"
+ Y="250"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="FullTrackDescriptionAvailableForDistanceInterval"
+ Guid="36b5a937-717f-4f60-a667-3fd84cdda4a0"
+>
+<ReqRef
+ Id="63f87a6b-8c3e-4333-b97e-9e417e3623d8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b404fca5-2ab2-493c-baaf-a8eeddc1d8a6"
+>
+</ReqRef><ReqRef
+ Id="5fff9a06-3432-4ce9-b8e0-9b36de116805"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0f07c7f8-8b1d-4794-81b9-c1d261b4aa3e"
+>
+</ReqRef><Comment>Indicates if the distance interval provided as parameter is fully covered by the track description (SSP + gradient).</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Length"
+ Name="aDistanceInterval"
+ Guid="1e8c4f20-5a79-4fda-9dd3-56eb3051e2f7"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SSP does not cover required length"
+ Guid="b29c3310-7396-4241-abfd-98a86531a0f0"
+>
+<PreConditions>
+<PreCondition
+ Guid="f924c4c6-4cde-4b20-af66-c70d48f076d4"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP == []
+  OR
+Kernel.TrackDescription.StaticSpeedProfile.SSPEnd ( Current =&gt; LAST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP )
+  &lt; 
+Default.BaseTypes.LengthToDistance( aDistanceInterval )</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Gradient information does not cover required length"
+ Guid="cea59c88-cd6c-410d-a2d8-b65efc841bc6"
+>
+<PreConditions>
+<PreCondition
+ Guid="7a11d20e-5b84-4027-b9dc-cdcb8e629093"
+>Kernel.TrackDescription.Gradient.Gradients == []
+  OR
+Kernel.TrackDescription.Gradient.GradientEnd(Current =&gt; LAST_IN Kernel.TrackDescription.Gradient.Gradients)
+  &lt;
+Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="65d1b600-ae05-4297-a75f-69ba7f8415ab"
+>
+<Expression>True</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -2371,6 +2405,7 @@ SectionTimerStart &lt;- CurrentBGTimeOfPassage</Action><Action
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Trip order received"
  Guid="e8d13251-e995-4b36-99fa-c6063c1bbd42"
@@ -2455,6 +2490,7 @@ The information about the type of supervised target (SvL or LOA) is also stored,
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="SvL"
  Guid="1bdb0b15-38b6-4e9f-9a51-94ff2db10a46"
 >
@@ -2474,6 +2510,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
     IsSvL =&gt; True
 }</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="LOA"
  Guid="12c3d848-e54b-474a-b939-e0c4b8b27b38"
 >
@@ -2557,6 +2594,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Handle information according to infill status"
  Guid="9dd23dbd-a238-4098-830f-ac2d73d2bea4"
 >
@@ -2779,6 +2817,7 @@ In this case, the EOA should be moved to the train&apos;s current position with 
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Update end section"
  Guid="6ff5e3f5-a719-4136-814e-5b1c80484e3e"
@@ -3084,6 +3123,7 @@ In this case, the EOA should be moved to the train&apos;s current position with 
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Update release speed"
  Guid="1c7c9190-8e7a-44af-bd6b-0d937cb8c93a"
@@ -3138,6 +3178,7 @@ In this case, the EOA should be moved to the train&apos;s current position with 
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Add end section to the list of sections"
  Guid="69aefd4b-eae4-47dc-8675-b500ce866345"
@@ -3168,6 +3209,7 @@ IN MA.Sections</Action></Actions>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Remove sections after infill location"
  Guid="c6fa7ae4-6313-4793-9c4f-af7d118498a4"
@@ -3190,6 +3232,7 @@ IN MA.Sections</Action></Actions>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Insert new sections"
  Guid="ea3fb038-4a0b-46a0-932d-633093c19c71"
@@ -3291,6 +3334,7 @@ IN
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Update current section"
  Guid="eef0555f-d0cf-4c18-84b4-f03f1b1ee5df"
@@ -3298,6 +3342,7 @@ IN
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Several sections available"
  Guid="68bfc695-8f5c-428c-85b1-2a1023991c62"
@@ -3317,6 +3362,7 @@ IN
  Guid="3611dfd8-ce76-44f9-b77d-2ed6793b73c7"
 >(FIRST_IN MA.Sections).Length &lt;- DistanceToBG + MessageTypes.QScaleLength ( length =&gt; Packet.L_SECTION, scale =&gt; Packet.Q_SCALE )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="One section available"
  Guid="6ca58f29-f4a7-4e32-8bd5-772a34ecc1f5"
