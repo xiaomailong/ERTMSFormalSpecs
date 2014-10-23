@@ -1367,7 +1367,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Driver entered the train running number"
+ Name="Received a response"
  Guid="9a523d7b-fc5a-4b37-86f5-5eff0946a0a7"
 >
 <ReqRef
@@ -1390,17 +1390,15 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Driver entered the train running number"
+ Name="The Train Running Number window was closed on the DMI"
  Guid="a6032afa-5d9b-4f8c-85a3-61a55a84d570"
 >
 <PreConditions>
 <PreCondition
  Guid="305e6fb3-3687-4004-8b83-33bdeb7665fd"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.DriverAnswered</PreCondition></PreConditions>
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="8aaa5ada-2c26-48de-bef3-0fecc8a76beb"
->DMI.MasterDMI().In_TrainRunningNumber.AcceptDriverResponse()</Action><Action
  Guid="9ccf74a9-66b4-4c3e-9735-a12acd9f8d3e"
 >THIS &lt;- HandleModeChange.StartOfMission.S1.AskToEnterValues</Action></Actions>
 </RuleCondition></Conditions>
@@ -1424,45 +1422,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Driver entered the driver id"
- Guid="db7bbb59-830a-4a20-affc-8022c744cf1a"
->
-<ReqRef
- Id="fdd34be2-081f-4fd2-81c7-d31750a434b6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3a8ee374-29d8-42de-909e-59020dd221db"
->
-</ReqRef><ReqRef
- Id="4498594e-f543-4aac-a645-51b5961b91b3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e13f6210-a7f5-42b4-9302-a5bde33e8c57"
->
-</ReqRef><ReqRef
- Id="3dec40a2-4a61-4a9c-9c92-1d115e8e1756"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="26f673cd-6ef0-4c0a-aee4-09ccb6465797"
->
-</ReqRef><Comment>When the driver enters the driver id information, it is stored on-board.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Driver entered the driver id"
- Guid="6b792a33-3efd-4705-927c-a0b98d1e903a"
->
-<PreConditions>
-<PreCondition
- Guid="ef0bf26c-d78a-42a2-b167-09729298bc3e"
->DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="e13bfb0d-d488-432d-a1fe-c8a6504f4ea6"
->DMI.MasterDMI().In_DriverId.AcceptDriverResponse()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="E1 : Valid ID"
+ Name="Received a response"
  Guid="0893f37a-cce8-42d9-87cb-56f5f5a41f30"
 >
 <ReqRef
@@ -1479,6 +1439,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="E1 : Valid ID"
  Guid="4df6d5a8-0802-48f3-813b-1e10805fb099"
 >
+<Comment>Once the driver has provided a valid ID, the procedure may continue</Comment>
 <PreConditions>
 <PreCondition
  Guid="60f30bae-564a-4fdd-aafb-e3573d0cbdf8"
@@ -1491,6 +1452,21 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus&lt;- Default.Request.Disabled</Action><Action
  Guid="6042798b-1723-45ee-b3c5-d3c31a38a1cf"
 >DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver canceled input"
+ Guid="6e1ee4cb-c008-4535-bcb7-adc6036fab0f"
+>
+<Comment>If the driver closes the Driver ID entry window, return to the initial state</Comment>
+<PreConditions>
+<PreCondition
+ Guid="d120bb97-bab9-4490-82d7-ce6e602329b8"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="27a87601-18ea-4fbb-9140-921d90d79429"
+>THIS &lt;- S1.AskToEnterValues</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -1637,16 +1613,32 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="Driver has selected a level"
  Guid="13a3d3c0-989d-47f6-b88c-39f05b8a5c10"
 >
+<Comment>Once the driver has selected a level, the procedure will continue</Comment>
 <PreConditions>
 <PreCondition
  Guid="dcabb4e8-a0e4-463f-9a76-5052d6b10372"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered</PreCondition></PreConditions>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered</PreCondition><PreCondition
+ Guid="6c43bac6-cc00-4267-9209-fa6ce1306ef0"
+>Kernel.Level.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="599fb195-5633-44a5-8c59-8f7a5d7cc211"
->THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action><Action
- Guid="adf83d32-c975-419e-9883-ea64d4a80521"
->DMI.MasterDMI().In_ErtmsEtcsLevel.AcceptDriverResponse()</Action></Actions>
+>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver returned to Main Window"
+ Guid="b3f83648-247a-4438-8a3c-421d6918db8f"
+>
+<Comment>If the driver closes the Level entry window without entering any data, return to the initial state</Comment>
+<PreConditions>
+<PreCondition
+ Guid="db4027ff-8ba1-45c3-a3c1-dc402c55366e"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f42dc015-2fa0-49f9-8a14-5ec22f23b8e3"
+>THIS &lt;- S2.OfferLevelSelection</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -3277,46 +3269,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Driver entered the train running number"
- Guid="a36f1137-f7be-48fa-aee7-c2f2bde3b31e"
->
-<ReqRef
- Id="b73d7793-cf2f-4c3f-92ea-d8c2b081c744"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6d5b82a9-b92b-49cd-866c-a229a96aec96"
->
-</ReqRef><ReqRef
- Id="bb40e241-378f-4872-9823-6f03bbc2d2e2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1bd92e62-8b96-4191-89fe-c032d30ecf23"
->
-</ReqRef><ReqRef
- Id="4549d882-b756-48ca-9591-ed094820a8d6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="54846eaa-ccad-46e2-88ad-fe06b12465c3"
->
-</ReqRef><Comment>When the driver enters the train running number, it is stored on-board.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Driver entered the train running number"
- Guid="b0a0e1ad-5a84-4dd0-9f6f-b581edd3d3e0"
->
-<PreConditions>
-<PreCondition
- Guid="f230c550-3d26-43f2-ada0-aeeabf01879d"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.DriverAnswered</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="72254dd4-eeef-4c2f-98f6-897b4aa95a53"
->DMI.MasterDMI().In_TrainRunningNumber.AcceptDriverResponse()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
  Name="Driver selected to enter train running number"
  Guid="0fc55ec3-0ee1-403c-8454-76d82640a6d3"
 >
@@ -3430,6 +3382,33 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Action
  Guid="445c53d3-c0ee-4c2d-b180-eae97d2f0316"
 >THIS &lt;- D10</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver closed Train Running Number entry window"
+ Guid="124326f4-baf7-4a55-b2a4-6e2c22447c76"
+>
+<Comment>If the driver closes the Train Running Number window, return to the initial state (ie. initiate the request again)</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Re-open the window"
+ Guid="176386ad-94e3-4681-b27f-87bf09f7997e"
+>
+<PreConditions>
+<PreCondition
+ Guid="c8bdc772-3686-480b-8186-02a614b4aa15"
+>Kernel.TrainRunningNumber.DataState != Default.DataState.Valid</PreCondition><PreCondition
+ Guid="5cca0c9d-d3cb-4563-88da-4902c33524e8"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ab922002-922f-478a-b549-891214039c25"
+>THIS &lt;- S13.ProposeTrainRunningNumberEntry</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -5068,6 +5047,37 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >DMI.MasterDMI().In_TrainData.AcceptDriverResponse()</Action><Action
  Guid="07087530-74d1-4e08-bd95-86f3e2c4cf0d"
 >Kernel.TrainDataValidated &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver closed the Train Data entry window"
+ Guid="d35849ff-4f2f-4ee4-a851-b23419ce44e5"
+>
+<ReqRef
+ Id="73975a0c-4870-4121-b56e-3c68ce047051"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6614e79d-3f24-47f3-9500-e306079feb3a"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver closed window"
+ Guid="a14fe722-424f-4dc4-a993-c65ca10ad344"
+>
+<PreConditions>
+<PreCondition
+ Guid="ce1ab44e-d0f7-48a7-ae25-c80ffd65e042"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Default.Request.Disabled</PreCondition><PreCondition
+ Guid="ab790024-9e0a-42c2-be46-c6e98482506c"
+>TrainData.TrainData.DataState != DataState.Valid</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="cc9df94f-1f51-4398-bbf0-ca4d8820a9d9"
+>THIS &lt;- S10</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
