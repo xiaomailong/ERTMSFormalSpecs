@@ -4003,6 +4003,36 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
  Guid="8f60ca0e-0d63-49ba-9242-e2dea62949a0"
 >
 </ReqRef><Comment>Provides the system version</Comment>
+<Rules>
+<Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ Name="Handle display requested by driver"
+ Guid="92d04a13-a457-456c-82b0-c82f75d50b17"
+>
+<ReqRef
+ Id="0bab7f80-e1a8-411c-8eb9-8487f9dea6bf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4b579892-f6b0-4427-98eb-85a2fcd730c7"
+>
+</ReqRef><Comment>If the driver asks to display the Operated System Version, the on-board displays it if allowed by the current mode.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle display requested by driver"
+ Guid="1fdd3940-8696-469f-8eb2-a538b750c352"
+>
+<PreConditions>
+<PreCondition
+ Guid="cf6c3af7-dcc5-4665-83f8-555af0ec4417"
+>DisplayRequestedByDriver == True</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="410e9ab5-f1ec-4904-9c5f-900d9eb5a1ca"
+>Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -4084,6 +4114,20 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
  Guid="78f05cc1-5cc0-4b44-a7b7-59e574fe6977"
 >
 <Comment>The system version</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="DisplayRequestedByDriver"
+ Guid="95183351-c2d8-462f-8d72-9493baf223ac"
+>
+<ReqRef
+ Id="0bab7f80-e1a8-411c-8eb9-8487f9dea6bf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ad7421a0-92a8-4c63-8eff-d51721cf9a6a"
+>
+</ReqRef><Comment>According to the document ERA_ERTMS_015560, the driver can ask the display of operated system version. This variable reflects the status of the driver&apos;s request.</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="330"
