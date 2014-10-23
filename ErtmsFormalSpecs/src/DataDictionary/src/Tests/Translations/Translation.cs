@@ -591,8 +591,7 @@ namespace DataDictionary.Tests.Translations
                     else
                     {
                         // For RBC, the collection directly holds the different packet types
-                        structureVal = new Values.StructureValue(subStructure1Type);
-                        subStructure1 = structureVal;
+                        structureVal = subStructure1;
                     }
 
                     // Find the right variable in the packet to add the structure we just created
@@ -814,28 +813,11 @@ namespace DataDictionary.Tests.Translations
             {
                 if (subVariable.Value.TypeName.EndsWith("Message"))
                 {
-                    Types.Structure defaultPacketType = (Types.Structure)subVariable.Value.Type;
-                    Values.StructureValue defaultPacket = new Values.StructureValue(defaultPacketType);
+                    // The structure of packets will always be a Message, but in some cases, it is a message that contains
+                    // the different options for a single field in the message
+                    structure.getVariable(subVariable.Value.Name).Value = FillDefaultPacket(message, subVariable.Value);
 
-                    Types.NameSpace packetNameSpace = subVariable.Value.NameSpace;
-
-                    foreach (DBElements.DBPacket packet in message.Packets)
-                    {
-                        Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
-                        int packetID = int.Parse(nidPacketField.Value);
-
-                        Types.Structure packetType = (Types.Structure)FindStructure(packetID).Type;
-
-                        if (packetType == defaultPacketType)
-                        {
-                            int defaultPacketIndex = 0;
-                            FillStructure(packetNameSpace, packet.Fields, ref defaultPacketIndex, defaultPacket);
-
-                            subVariable.Value.Value = defaultPacket;
-
-                            translatedPackets++;
-                        }
-                    }
+                    translatedPackets++;
                 }
             }
 
@@ -859,6 +841,96 @@ namespace DataDictionary.Tests.Translations
             }
 
             return Message.Name;
+        }
+
+        private static Values.IValue FillDefaultPacket(DBElements.DBMessage message, Variables.IVariable structure)
+        {
+            Values.IValue retVal = structure.Value;
+
+            if (isPacket(structure))
+            {
+                Types.Structure defaultPacketType = (Types.Structure)structure.Value.Type;
+                Values.StructureValue defaultPacket = new Values.StructureValue(defaultPacketType);
+
+                Types.NameSpace packetNameSpace = structure.NameSpace;
+
+                foreach (DBElements.DBPacket packet in message.Packets)
+                {
+                    Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
+                    int packetID = int.Parse(nidPacketField.Value);
+
+                    Types.Structure packetType = (Types.Structure)FindStructure(packetID).Type;
+
+                    if (packetType == defaultPacketType)
+                    {
+                        int defaultPacketIndex = 0;
+                        FillStructure(packetNameSpace, packet.Fields, ref defaultPacketIndex, defaultPacket);
+
+                        retVal = defaultPacket;
+                    }
+                }
+            }
+            else
+            {
+                Types.Structure structureType = structure.Type as Types.Structure;
+                Values.StructureValue Structure = new Values.StructureValue(structureType);
+                if (Structure != null)
+                {
+                    foreach (KeyValuePair<string, Variables.IVariable> subVariable in Structure.SubVariables)
+                    {
+                        if (isPacket(subVariable.Value))
+                        {
+                            Types.Structure defaultPacketType = (Types.Structure)subVariable.Value.Type;
+                            Values.StructureValue defaultPacket = new Values.StructureValue(defaultPacketType);
+
+                            Types.NameSpace packetNameSpace = subVariable.Value.NameSpace;
+
+                            foreach (DBElements.DBPacket packet in message.Packets)
+                            {
+                                Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
+                                int packetID = int.Parse(nidPacketField.Value);
+
+                                Types.Structure packetType = (Types.Structure)FindStructure(packetID).Type;
+
+                                if (packetType == defaultPacketType)
+                                {
+                                    int defaultPacketIndex = 0;
+                                    FillStructure(packetNameSpace, packet.Fields, ref defaultPacketIndex, defaultPacket);
+
+                                    Structure.getVariable(subVariable.Value.Name).Value = defaultPacket;
+                                }
+                            }
+                        }
+                    }
+                    retVal = Structure;
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Determines whether a EFS structure corresponds to a packet
+        /// </summary>
+        /// <param name="structure"></param>
+        /// <returns></returns>
+        private static bool isPacket(Variables.IVariable structure)
+        {
+            bool retVal = false;
+
+            foreach (ModelElement element in structure.Type.SubElements)
+            {
+                Types.StructureElement subElement = element as Types.StructureElement;
+                if (subElement != null)
+                {
+                    if (subElement.Name == "NID_PACKET")
+                    {
+                        retVal = true;
+                    }
+                }
+            }
+
+            return retVal;
         }
 
 
