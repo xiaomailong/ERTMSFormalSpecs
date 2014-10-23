@@ -7735,16 +7735,12 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="1ba3133a-d773-4c35-99f9-1fff5698675d"
 >An order to connect to the RBC with a given id and telephone number shall be given via balise group in rear of the border location.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="3f89d7e6-bbc7-4656-a90a-ca9ca999af3d"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="dd9d6358-4279-42f7-b12f-c0c62ef57572"
 >
@@ -7755,13 +7751,56 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="d2dba6ab-f150-4940-8d2c-e5e0f78544e3"
->For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either:
-	a) as an MA and track description information into the new area, or
-	b) as a target speed at the border location i.e. as an LOA.<RequirementSets>
+>For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either:<Sub>
+<Paragraph
+ id="5.10.3.1.2.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="10de7e67-23c3-4a05-8dea-663895728a95"
+>as an MA and track description information into the new area, or<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a9ba37e0-fd75-4d62-8cd7-3e09e5e77cb3"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="e0414d13-0742-4f39-90bc-d8c0b1bed046"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.10.3.1.2.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ Name=""
+ Guid="d8c87e49-f79a-4070-b451-f8fdcc8c1071"
+>as a target speed at the border location i.e. as an LOA.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="083188f8-9c03-407b-b2ad-e93e447bf206"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="c01ab897-433f-4c43-b917-f20e11260f04"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="25d78d95-b4ad-454c-945e-e8662fc619b4"
@@ -7777,7 +7816,8 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="4a5cfdeb-9d79-4d58-8d37-5073de473751"
@@ -7797,7 +7837,8 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="f56df936-9ada-4149-91ce-4742fb123bbb"
@@ -7817,7 +7858,8 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="917e038b-c314-4423-b3a6-c0131f148410"
