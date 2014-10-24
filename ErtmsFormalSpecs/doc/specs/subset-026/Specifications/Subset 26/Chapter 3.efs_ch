@@ -34,7 +34,7 @@
  bl=""
  name=""
  reviewed="TRUE"
- status="NewRevisionAvailable"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="a8e367b9-2fe2-4f4b-bdf7-cbc6e2a79876"
@@ -16131,7 +16131,13 @@ A train shall always belong to one and only one &quot;Cant Deficiency&quot; trai
  version="3.0.0"
  Name=""
  Guid="08b9f07e-b517-412e-8ea3-adc1aa89cba0"
->- The safe deceleration shall be computed as in 3.13.6.2.1 but without considering the adhesion profiles, the track conditions related to brake inhibition and the track conditions related to powerless section given by trackside.</Paragraph><Paragraph
+>- The safe deceleration shall be computed as in 3.13.6.2.1 but without considering the adhesion profiles, the track conditions related to brake inhibition and the track conditions related to powerless section given by trackside.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3829f09d-e9de-4975-a7c8-775567704112"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.4.c"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16142,7 +16148,13 @@ A train shall always belong to one and only one &quot;Cant Deficiency&quot; trai
  version="3.0.0"
  Name=""
  Guid="59b55377-5f37-4420-adf5-c0ce7ad42db1"
->- The expected deceleration shall be computed as in 3.13.6.3.1 but without considering the track conditions related to brake inhibition and the track conditions related to powerless section given by trackside.</Paragraph><Paragraph
+>- The expected deceleration shall be computed as in 3.13.6.3.1 but without considering the track conditions related to brake inhibition and the track conditions related to powerless section given by trackside.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fee20912-6239-4a76-86ea-bef12d568db5"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.4.d"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16153,7 +16165,13 @@ A train shall always belong to one and only one &quot;Cant Deficiency&quot; trai
  version="3.0.0"
  Name=""
  Guid="8c7db48b-2e9f-4028-9811-c07cc373b1cc"
->- The ERTMS/ETCS on-board equipment shall calculate an Emergency Brake Deceleration (EBD) curve based on the safe deceleration and that reaches zero speed at a distance equal to the permitted braking distance.</Paragraph><Paragraph
+>- The ERTMS/ETCS on-board equipment shall calculate an Emergency Brake Deceleration (EBD) curve based on the safe deceleration and that reaches zero speed at a distance equal to the permitted braking distance.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="09f8347a-1bfe-4d3d-8bf2-c5c54b52feed"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.4.e"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16164,7 +16182,13 @@ A train shall always belong to one and only one &quot;Cant Deficiency&quot; trai
  version="3.0.0"
  Name=""
  Guid="bb553624-3428-4035-ae99-df4bea6282e6"
->- If the permitted braking distance is to be achieved with the service brake, the ERTMS/ETCS on-board equipment shall also calculate a Service Brake Deceleration (SBD) curve based on the expected deceleration and that reaches zero speed at a distance equal to the permitted braking distance.</Paragraph><Paragraph
+>- If the permitted braking distance is to be achieved with the service brake, the ERTMS/ETCS on-board equipment shall also calculate a Service Brake Deceleration (SBD) curve based on the expected deceleration and that reaches zero speed at a distance equal to the permitted braking distance.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4e7ad3db-99f5-4ed0-9162-978c67e558f6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.4.f"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16247,7 +16271,13 @@ A train shall always belong to one and only one &quot;Cant Deficiency&quot; trai
  version="3.0.0"
  Name=""
  Guid="65d02fe9-a4ea-4559-ace6-1ccd322f7860"
->- Regardless of how the traction cut-off interface is actually configured (see 3.13.2.2.8), T_traction (see 3.13.9.3.2) shall be defined as if the traction cut-off was not implemented.</Paragraph><Paragraph
+>- Regardless of how the traction cut-off interface is actually configured (see 3.13.2.2.8), T_traction (see 3.13.9.3.2) shall be defined as if the traction cut-off was not implemented.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="80d65ab2-80a3-457f-9bda-0fad3798036f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.4.1"
  type="NOTE"
  scope="FLAGS"
@@ -16317,8 +16347,7 @@ A train shall always belong to one and only one &quot;Cant Deficiency&quot; trai
  version="3.0.0"
  Name=""
  Guid="6b0803c4-fc83-41dd-bcfd-d53de1634680"
->ABS{(V_PBD + dV_ebi)-(V_EBD(d_offset + D_bec) - V_delta_0_PBD)} &lt;= 1km/h
-<RequirementSets>
+>ABS{(V_PBD + dV_ebi)-(V_EBD(d_offset + D_bec) - V_delta_0_PBD)} &lt;= 1km/h<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="40ada475-f886-4b63-903d-65f1499c0b32"
@@ -16353,7 +16382,13 @@ A train shall always belong to one and only one &quot;Cant Deficiency&quot; trai
  version="3.0.0"
  Name=""
  Guid="63a450f4-bf5b-4d7a-86d3-0d58f01de1b8"
->With dV_ebi as defined in 3.13.9.2.3 by substituting V_MRSP with V_PBD</Paragraph><Paragraph
+>With dV_ebi as defined in 3.13.9.2.3 by substituting V_MRSP with V_PBD<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="629195e1-293b-41fa-a3ea-d94367f36e14"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.6.4"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16364,7 +16399,13 @@ A train shall always belong to one and only one &quot;Cant Deficiency&quot; trai
  version="3.0.0"
  Name=""
  Guid="603addf7-8a2f-4b2c-8e61-6c2de3f220f7"
->With V_delta_0_PBD = f_41(V_PBD + dV_ebi) or V_delta_0_PBD = 0 (if compensation of speed inaccuracy is inhibited by National Value)</Paragraph><Paragraph
+>With V_delta_0_PBD = f_41(V_PBD + dV_ebi) or V_delta_0_PBD = 0 (if compensation of speed inaccuracy is inhibited by National Value)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="21e4f331-71e2-432a-9f66-c715deff36c1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.6.5"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16375,7 +16416,13 @@ A train shall always belong to one and only one &quot;Cant Deficiency&quot; trai
  version="3.0.0"
  Name=""
  Guid="4486b27f-175f-416b-966b-36a45f3533dd"
->With D_bec = (V_PBD + dV_ebi + V_delta_0_PBD)*(T_traction + T_berem)</Paragraph><Paragraph
+>With D_bec = (V_PBD + dV_ebi + V_delta_0_PBD)*(T_traction + T_berem)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="56616d4a-ea0d-4e7e-be76-2817b3696f9b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.6.6"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16386,7 +16433,13 @@ A train shall always belong to one and only one &quot;Cant Deficiency&quot; trai
  version="3.0.0"
  Name=""
  Guid="d4a81249-71de-4107-8751-642bb154bb84"
->With T_traction and T_berem as defined in 3.13.9.3.2</Paragraph><Paragraph
+>With T_traction and T_berem as defined in 3.13.9.3.2<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="440e525f-7995-4c4b-9623-843865c5c637"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.6.7"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16397,7 +16450,13 @@ A train shall always belong to one and only one &quot;Cant Deficiency&quot; trai
  version="3.0.0"
  Name=""
  Guid="256eb4d5-6af7-4f58-b1ad-b1fd498be1d7"
->With d_PBD being the permitted braking distance given by trackside</Paragraph><Paragraph
+>With d_PBD being the permitted braking distance given by trackside<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5906b216-a86b-45a4-b1b0-de4e50240089"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.6.8"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16408,7 +16467,13 @@ A train shall always belong to one and only one &quot;Cant Deficiency&quot; trai
  version="3.0.0"
  Name=""
  Guid="473066ff-b109-4dc9-bca2-85967286256b"
->With V_EBD(d) being the EBD curve that reaches zero speed at d_PBD</Paragraph><Paragraph
+>With V_EBD(d) being the EBD curve that reaches zero speed at d_PBD<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="85936b6b-f879-42a0-b574-02416c45e085"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.6.9"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16419,7 +16484,13 @@ A train shall always belong to one and only one &quot;Cant Deficiency&quot; trai
  version="3.0.0"
  Name=""
  Guid="cc8e8e02-60fb-4417-9393-4dff7314e3ba"
->With d_offset = L_antenna-front + T_41*(V_PBD + dV_ebi + V_delta_0_PBD)</Paragraph><Paragraph
+>With d_offset = L_antenna-front + T_41*(V_PBD + dV_ebi + V_delta_0_PBD)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="11ee3f28-d998-46de-adac-17db438c5732"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.6.10"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16431,7 +16502,13 @@ A train shall always belong to one and only one &quot;Cant Deficiency&quot; trai
  Name=""
  Guid="ed856630-b669-4f24-8abb-18ff6b70c623"
 >If no speed value fulfils the above inequalities, then:
-V_PBD = 0</Paragraph></Sub>
+V_PBD = 0<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d6f179b9-d4be-4cd7-b32b-740e09a2c08d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -16449,7 +16526,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="033c7194-4880-4392-826b-611b7e266476"
->If the permitted braking distance is to be achieved with the service brake, the PBD speed restriction (V_PBD) shall be equal to the most restrictive value amongst the one computed from the EBD (see 3.11.11.8) and the one computed from the SBD (see 3.11.11.9). The resulting value shall then be rounded down to the next lower multiple of 5km/h.</Paragraph><Paragraph
+>If the permitted braking distance is to be achieved with the service brake, the PBD speed restriction (V_PBD) shall be equal to the most restrictive value amongst the one computed from the EBD (see 3.11.11.8) and the one computed from the SBD (see 3.11.11.9). The resulting value shall then be rounded down to the next lower multiple of 5km/h.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fb68a794-58b7-474f-8452-ddbab71e90a8"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.8"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16472,7 +16555,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="deacc74e-fbfb-47dd-b349-9315987b0dd1"
->ABS{(V_PBD + dV_sbi) - (V_EBD(d_offset + D_bec + (V_PBD + dV_sbi)*T_bs2) - V_delta_0_PBD)} &lt;= 1km/h</Paragraph><Paragraph
+>ABS{(V_PBD + dV_sbi) - (V_EBD(d_offset + D_bec + (V_PBD + dV_sbi)*T_bs2) - V_delta_0_PBD)} &lt;= 1km/h<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1426c4ac-1822-4936-b4dc-06f32210c616"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.8.2"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16483,7 +16572,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="f4554793-dd91-466a-a509-694c2b4ae126"
->d_offset + D_bec + (V_PBD + dV_sbi)*T_bs2 &lt;= d_PBD</Paragraph><Paragraph
+>d_offset + D_bec + (V_PBD + dV_sbi)*T_bs2 &lt;= d_PBD<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7d540e98-6ec9-48c9-a0b5-8c8eb6f6acfc"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.8.3"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16494,7 +16589,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="156a802d-6e3a-40b4-a563-5ed0e0e269cd"
->With dV_sbi as defined in 3.13.9.2.5 by substituting V_MRSP with V_PBD</Paragraph><Paragraph
+>With dV_sbi as defined in 3.13.9.2.5 by substituting V_MRSP with V_PBD<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8f7c191c-cd42-4d59-8fad-7ad52655c6af"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.8.4"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16505,7 +16606,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="7b334033-590c-4e04-b98a-1973062cc426"
->With V_delta_0_PBD = f41(V_PBD + dV_sbi) or V_delta_0_PBD = 0 (if compensation of speed inaccuracy is inhibited by National Value)</Paragraph><Paragraph
+>With V_delta_0_PBD = f41(V_PBD + dV_sbi) or V_delta_0_PBD = 0 (if compensation of speed inaccuracy is inhibited by National Value)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b1fb4302-8243-4791-acac-27f861a13f28"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.8.5"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16516,7 +16623,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="e87f780e-c98b-4fa1-8fc6-fa1095bf905f"
->With D_bec = (V_PBD + dV_sbi + V_delta_0_OBD)*(T_traction + T_berem)</Paragraph><Paragraph
+>With D_bec = (V_PBD + dV_sbi + V_delta_0_OBD)*(T_traction + T_berem)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0b565eb0-0e31-4cbf-bc5b-cb4f1c6a048f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.8.6"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16527,7 +16640,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="cdc5e973-dc65-4303-890a-517186db0e7c"
->With T_traction and T_berem as defined in 3.13.9.3.2</Paragraph><Paragraph
+>With T_traction and T_berem as defined in 3.13.9.3.2<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c3bdd1ff-24fc-4d46-9c1f-54844af6e582"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.8.7"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16538,7 +16657,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="0c20dbe8-5365-4828-825d-2a5c1fc0168b"
->With T_bs2 as defined in 3.13.9.3.3</Paragraph><Paragraph
+>With T_bs2 as defined in 3.13.9.3.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5b01e2b4-e690-42f3-88bd-2fc088cadcf8"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.8.8"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16549,7 +16674,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="a4dbcf91-f014-4372-ad47-2cc7f9f411b3"
->With d_PBD being the permitted braking distance given by trackside</Paragraph><Paragraph
+>With d_PBD being the permitted braking distance given by trackside<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7a232306-444a-4711-ac9c-99c2ce5f3587"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.8.9"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16560,7 +16691,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="fa888c61-602c-43d3-8f0f-cf5fa57f409a"
->With V_EBD(d) being the EBD curve that reaches zero speed at d_PBD</Paragraph><Paragraph
+>With V_EBD(d) being the EBD curve that reaches zero speed at d_PBD<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ed8e358b-4d81-4768-ab68-2c178b85fd53"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.8.10"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16571,7 +16708,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="5d67617c-2424-460f-9d50-a7309f98b878"
->With d_offset = L_antenna-front + T_41*(V_PBD + dV_sbi + V_delta_0_PBD)</Paragraph><Paragraph
+>With d_offset = L_antenna-front + T_41*(V_PBD + dV_sbi + V_delta_0_PBD)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a5484353-e81b-4c5f-b742-9a63a0324501"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.8.11"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16583,7 +16726,19 @@ V_PBD = 0</Paragraph></Sub>
  Name=""
  Guid="193a1397-5f2b-4b18-b842-b525e8403c19"
 >If no speed value fulfils the above inequalities, then:
-V_PBD = 0</Paragraph></Sub>
+V_PBD = 0<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="97d3c5c1-97a6-4be1-8697-bb6a2e6c3019"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c49323ea-24f6-4b7d-9062-88ceafd7e598"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.11.11.9"
  type="REQUIREMENT"
@@ -16607,7 +16762,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="25263057-31b7-4226-b0de-0bec0c132acd"
->ABS{(V_PBD + dV_sbi) - (V_SBD(d_offset + (V_PBD + dV_sbi)*T_bs1))} &lt;= 1km/h</Paragraph><Paragraph
+>ABS{(V_PBD + dV_sbi) - (V_SBD(d_offset + (V_PBD + dV_sbi)*T_bs1))} &lt;= 1km/h<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e6a84835-2e14-430c-830a-4e34460f56f0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.9.2"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16618,7 +16779,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="297da4a9-ce33-4638-bc80-e3abd77a4290"
->d_offset + (V_PBD + dV_sbi)*T_bs1 &lt;= d_PBD</Paragraph><Paragraph
+>d_offset + (V_PBD + dV_sbi)*T_bs1 &lt;= d_PBD<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="13afa6b9-8119-473c-a8c8-75252725417f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.9.3"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16629,7 +16796,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="93577eaa-8d60-44e6-95a3-acd9c3b352be"
->With dV_sbi as defined in 3.13.9.2.5 by substituting V_MRSP with V_PBD</Paragraph><Paragraph
+>With dV_sbi as defined in 3.13.9.2.5 by substituting V_MRSP with V_PBD<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8cb9d8fb-8e39-4b46-9b12-ecb40f536680"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.9.4"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16640,7 +16813,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="449495a1-f9a0-42cc-ad9e-f524e9331789"
->With T_bs1 as defined in 3.13.9.3.3</Paragraph><Paragraph
+>With T_bs1 as defined in 3.13.9.3.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a8355990-5c46-4cca-9b4e-122e157e90ef"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.9.5"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16651,7 +16830,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="ecaef0c1-337e-4102-b161-13c39f7e619f"
->With d_PBD being the permitted braking distance given by trackside</Paragraph><Paragraph
+>With d_PBD being the permitted braking distance given by trackside<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="00c0126c-bbfd-4699-aac9-f8113ac2c4d3"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.9.6"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16662,7 +16847,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="3f9b09ee-3df8-4f92-b36a-36d94b76f9dd"
->With V_SBD(d) being the SBD curve that reaches zero speed at d_PBD</Paragraph><Paragraph
+>With V_SBD(d) being the SBD curve that reaches zero speed at d_PBD<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="df3fe6fc-c195-4218-a2bc-96fcd7f79ab1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.9.7"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16673,7 +16864,13 @@ V_PBD = 0</Paragraph></Sub>
  version="3.0.0"
  Name=""
  Guid="669805bd-0d39-4992-b803-87fa5d6b2c44"
->With d_offset = L_antenna-front + T_41*(V_PBD + dV_sbi)</Paragraph><Paragraph
+>With d_offset = L_antenna-front + T_41*(V_PBD + dV_sbi)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4a6fc7db-a324-4fb6-9369-a6badbd55d14"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.11.11.9.8"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -16685,7 +16882,19 @@ V_PBD = 0</Paragraph></Sub>
  Name=""
  Guid="6d439db1-f485-4c3a-bfc9-bcede4b4eab3"
 >If no speed value fulfils the above inequalities, then:
-V_PBD = 0</Paragraph></Sub>
+V_PBD = 0<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="bec68dfc-91f5-48b6-a2f1-e0bdb77d5d69"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="64b400b2-ec84-45db-a48f-3dbe4d962c43"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.11.11.10"
  type="NOTE"
@@ -18181,7 +18390,7 @@ Route suitability data defines which values concerning loading gauge, traction s
  Name=""
  Guid="ef3c351f-025b-4a91-a937-bc68d0970984"
 >The following data shall be included in a text message:
-	- Class of message
+	- Class of message (auxiliary or important information)
 	- Plain text message or fixed message number
 	- Conditions for start of indication
 	- Conditions for end of indication
@@ -18236,7 +18445,7 @@ Route suitability data defines which values concerning loading gauge, traction s
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.12.3.2"
- type="TITLE"
+ type="DELETED"
  scope="FLAGS"
  bl=""
  name=""
@@ -18245,10 +18454,10 @@ Route suitability data defines which values concerning loading gauge, traction s
  version="3.0.0"
  Name=""
  Guid="45d9fd46-1f15-43df-9420-fa3fcdfdc134"
->Text Message Classes<Sub>
+>Intentionally deleted<Sub>
 <Paragraph
  id="Table 3.12.3.2.1"
- type="TABLE_HEADER"
+ type="DELETED"
  scope="FLAGS"
  bl=""
  name=""
@@ -18257,55 +18466,7 @@ Route suitability data defines which values concerning loading gauge, traction s
  version="3.0.0"
  Name=""
  Guid="98a7b229-2a81-45b1-b00a-c53f68ad5e2c"
->Text messages shall be classified according to the following scheme: Class; Characteristics/Appearance; Use<Sub>
-<Paragraph
- id="Entry 3.12.3.2.1.1"
- type="REQUIREMENT"
- scope="FLAGS"
- bl=""
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- Name=""
- Guid="259596fd-e386-41c3-b4cd-3130b493cdb4"
->Auxiliary Information;
-Displayed and deleted when specified conditions are met. May be hidden behind a message of another class.;
-Auxiliary operational information (e.g. station announcement etc.)<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="559bd96c-6779-49d6-b395-eceeba957664"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="e7558e65-ce7c-4a37-9347-df6c896eb729"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph><Paragraph
- id="Entry 3.12.3.2.1.2"
- type="REQUIREMENT"
- scope="FLAGS"
- bl=""
- name=""
- reviewed="TRUE"
- status="NA"
- version="3.0.0"
- Name=""
- Guid="888da27d-6968-4e8c-a200-635cd6d645c9"
->Important Information;
-Displayed and deleted when specified conditions are met. Shall never be hidden behind a message of another class.;
-Important operational information (e.g. information about workers on the line etc.).<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="8663164e-a4d8-4350-a479-5499181a5140"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="e133e1f9-1ae7-4a1d-b6bd-13c2991133e3"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph></Sub>
-<RequirementSets>
+>Intentionally deleted<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="ef746209-5c0d-46e7-b6a1-f37facbe4c97"
@@ -22883,7 +23044,7 @@ The speed and distance monitoring shall take into account the following types of
  version="3.0.0"
  Name=""
  Guid="a611b24a-cae4-4c3a-abe1-f83752cce43f"
->two values of the equivalent brake build up time to be used when the target speed (V_target) is equal to zero, one value for the emergency brake and one for the full service brake:
+>two values of the equivalent brake build up time to be used when the target speed (Vtarget) is equal to zero, one value for the emergency brake and one for the full service brake:
 T_brake_emergency_cm0 as defined for emergency brake in A3.8
 T_brake_service_cm0 as defined for service brake in A3.9<RequirementSets>
 <RequirementSetReference
@@ -22903,7 +23064,7 @@ T_brake_service_cm0 as defined for service brake in A3.9<RequirementSets>
  version="3.0.0"
  Name=""
  Guid="c1352e10-31a1-42f0-91d6-9607590f3cd7"
->two values of the equivalent brake build up time to be used when the target speed (V_target) is different from zero, one value for the emergency brake and one for the full service brake:
+>two values of the equivalent brake build up time to be used when the target speed (Vtarget) is different from zero, one value for the emergency brake and one for the full service brake:
 T_brake_emergency_cmt as defined for emergency brake in A3.8
 T_brake_service_cmt as defined for service brake in A3.9<RequirementSets>
 <RequirementSetReference
@@ -25206,7 +25367,7 @@ If a target belongs to the MRSP or is an LOA, the on-board shall calculate an EB
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.13.9.2.8"
- type="NOTE"
+ type="DELETED"
  scope="FLAGS"
  bl="3.1.0"
  name=""
@@ -25215,7 +25376,7 @@ If a target belongs to the MRSP or is an LOA, the on-board shall calculate an EB
  version="3.0.0"
  Name=""
  Guid="c86e0d2b-436a-4ed0-9ad2-aa3f0d1e42a9"
->The SBI supervision limit is also referred as the FLOI (First Line Of Intervention) supervision limit.<RequirementSets>
+>Intentionally deleted<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="5393ee2a-08c0-4f28-92fe-01b216de15e2"
@@ -25541,11 +25702,11 @@ If a target belongs to the MRSP or is an LOA, the on-board shall calculate an EB
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="80f69d28-8302-44ad-9dfd-d98c75cda9d8"
->During T_traction, the estimated acceleration/deceleration (A_est1), which is measured at the moment when the calculation is made, shall be taken into account.<RequirementSets>
+>During T_traction, the estimated acceleration (A_est1), hsall be the one measured at the moment when the calculation is made, but limited to positive or null values.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="c6b6c7ea-ee8e-4212-b3a6-c06f032feca2"
@@ -25580,8 +25741,8 @@ If a target belongs to the MRSP or is an LOA, the on-board shall calculate an EB
  Name=""
  Guid="327d187c-a17c-486f-b724-d1f714f552fe"
 >The compensated speed and the distance travelled during the time elapsed between the Emergency brake intervention and the full application of the braking effort is reached shall be derived as follows (see Figure 45):
-V_bec = max { (V_est + V_delta0 + V_delta1 ), V_target } + V_delta2
-D_bec = max { ( V_est + V_delta0 + V_delta1 / 2 ), V_target } x T_traction + ( max { ( V_est + V_delta0 + V_delta1 ), V_target } + V_delta2 / 2 ) x T_berem
+V_bec = max { (V_est + V_delta0 + V_delta1 ), Vtarget } + V_delta2
+D_bec = max { ( V_est + V_delta0 + V_delta1 / 2 ), Vtarget } x T_traction + ( max { ( V_est + V_delta0 + V_delta1 ), Vtarget } + V_delta2 / 2 ) x T_berem
 with V_delta0 = V_ura or V_delta0 = 0 (if compensation of speed inaccuracy is inhibited by National Value)
 with V_delta1 = A_est1 x T_traction and V_delta2 = A_est2 x T_berem<RequirementSets>
 <RequirementSetReference
@@ -25600,7 +25761,7 @@ with V_delta1 = A_est1 x T_traction and V_delta2 = A_est2 x T_berem<RequirementS
  version="3.0.0"
  Name=""
  Guid="6e42d30d-eac1-4915-8b71-6df300e3b682"
->Note: The formula avoids that, in case A_est1 &lt; 0, V_bec would become lower than V_target.<RequirementSets>
+>Note: The formula avoids that V_bec is lower than Vtarget.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="da51f4b1-8d5e-4613-abf0-d7cb11c7e3e6"
@@ -25789,14 +25950,15 @@ V_SBI1 (d_estfront) = 0 if d_estfront + V_est x T_bs1 &gt;= d_EoA<RequirementSet
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="5222ef04-36ae-4dc3-a10f-a31139e5b7ac"
 >For display purpose only, the SBI2 speed for the max safe front end of the train shall be calculated as follows (see Figure 48):
-V_SBI2 (d_maxsafefront) = V_EBD ( d_maxsafefront + V_est x T_bs2 + D_bec ) - ( V_bec - V_est )
-V_SBI2 (d_maxsafefront) = V_target if d_maxsafefront + V_est x T_bs2 + D_bec &gt;= d_EBD (V_target)
-With D_bec and V_bec calculated according to 3.13.9.3.2.10<Sub>
+V_SBI2 (d_maxsafefront) = max{(V_EBD ( d_maxsafefront + V_est * T_bs2 + D_be_display ) - ( V_delta0 + V_delta1 + V_delta2)),(Vtarget + dV_sbi(Vtarget))}
+V_SBI2 (d_maxsafefront) = Vtarget + dV_sbi(Vtarget) if d_maxsafefront + V_est * T_bs2 + D_be_display &gt;= d_EBD (Vtarget)
+With V_delta0, V_delta1 and V_delta2 calculated according to 3.13.9.3.2.10
+With D_be_display = (V_est + V_delta0 + V_delta1 / 2)*T_traction + (V_est + V_delta0 + V_delta1 + V_delta2 / 2)*T_berem<Sub>
 <Paragraph
  id="3.13.9.3.3.8.1"
  type="NOTE"
@@ -25823,20 +25985,16 @@ With D_bec and V_bec calculated according to 3.13.9.3.2.10<Sub>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.13.9.3.3.9"
- type="REQUIREMENT"
+ type="DELETED"
  scope="FLAGS"
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="d542f99e-9462-4bb6-9087-35da9a233e06"
->The FLOI (First Line Of Intervention) supervision limit, valid for estimated speed, shall be defined as the SBI supervision limit, of which the location is the closest to the train front, taking into account the max safe train front end for the SBI2 supervision limit(s) and the estimated train front end for the SBI1.
-d_FLOI (V_est) = d_SBI1 (V_est) if d_SBI1 (V_est) - d_estfront &lt;= d_SBI2 (V_est)_MREBDT - d_maxsafefront
-d_FLOI (V_est) = d_SBI2 (V_est)_MREBDT if d_SBI2 (V_est)_MREBDT - d_maxsafefront &lt; d_SBI1 (V_est) - d_estfront
-With d_SBI2 (V_est)_MREBDT = min { d_SBI2 (V_est)_Target_1, ..., d_SBI2 (V_est)_Target_n }
-MREBDT = Most Restrictive Target amongst the EBD based targets<RequirementSets>
+>Intentionally deleted<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="5c9305f8-6fe6-4d4b-b51f-f88b26de7ab6"
@@ -25868,12 +26026,13 @@ MREBDT = Most Restrictive Target amongst the EBD based targets<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="489ea7da-1016-4fd4-8a89-0ce129ff23a5"
->The on-board shall calculate the location of the Warning supervision limit valid for the estimated speed, assuming that this latter remains constant during the interval T_warning until the location of the FLOI supervision limit is reached.
-d_W (V_est) = d_FLOI (V_est) - V_est x T_warning<RequirementSets>
+>The on-board shall calculate the location of the Warning supervision limit valid for the estimated speed, assuming that this latter remains constant during the interval T_warning until the location of the SBI1 (for the EOA) or the SBI2 (for an EBD based target) supervision limit is reached.
+d_W (V_est) = d_SBI1 (V_est) - V_est * T_warning for the EOA
+d_W (V_est) = d_SBI2 (V_est) - V_est * T_warning for an EBD based target<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="71772aa7-4028-4aef-8091-8c8512647584"
@@ -25922,12 +26081,13 @@ d_W (V_est) = d_FLOI (V_est) - V_est x T_warning<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="10386bb3-4703-4007-bc8f-0d0904eb986f"
->In case the calculation of the GUI curve is inhibited, the on-board shall calculate the location of the Permitted speed supervision limit valid for the estimated speed, assuming that this latter remains constant during the interval T_driver until the location of the FLOI supervision limit is reached.
-d_P (V_est) = d_FLOI (V_est) - V_est * T_driver<RequirementSets>
+>In case the calculation of the GUI curve is inhibited, the on-board shall calculate the location of the Permitted speed supervision limit valid for the estimated speed, assuming that this latter remains constant during the interval T_driver until the location of the SBI1 (for the EOA) or the SBI2 (for an EBD based target) supervision limit is reached.
+d_P (V_est) = d_SBI1 (V_est) - V_est * T_driver for the EOA
+d_P (V_est) = d_SBI2 (V_est) - V_est * T_driver for an EBD based target<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="c3fe753d-afa8-4e63-b650-5a4ef542b2fe"
@@ -25961,7 +26121,7 @@ d_P (V_est) = d_FLOI (V_est) - V_est * T_driver<RequirementSets>
  version="3.0.0"
  Name=""
  Guid="f3444e4b-f0a6-47c5-8ae0-49074ee09a45"
->Note: The reference for the Permitted speed supervision limit is the FLOI supervision limit and not the Warning supervision limit. As a result the permitted and warning supervision limits are clearly separated and do not affect each other. In this way it is clear that the warning is not part of the critical performance interval.<RequirementSets>
+>Note: The reference for the Permitted speed supervision limit is the SBI supervision limit and not the Warning supervision limit. As a result the permitted and warning supervision limits are clearly separated and do not affect each other. In this way it is clear that the warning is not part of the critical performance interval.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2c4e3a75-fb5d-4fad-a955-0d09ef1e57fc"
@@ -25982,7 +26142,8 @@ d_P (V_est) = d_FLOI (V_est) - V_est * T_driver<RequirementSets>
  Guid="2c11a715-c52a-4168-b8fb-64484d1fd6d5"
 ><Comment>d_GUI_FLOI (Vest) = ?</Comment>
 In case the calculation of the Guidance curve is enabled, the on-board shall calculate the location of the Permitted speed supervision limit valid for the estimated speed, as follows:
-d_P (Vest) = min { d_FLOI (Vest) - Vest * T_driver), d_GUI_FLOI (V_est) }<RequirementSets>
+d_P (V_est) = min { (d_SBI1 (V_est) - V_est * T_driver), d_GUI (V_est) } for the EOA
+d_P (V_est) = min { (d_SBI2 (V_est) - V_est * T_driver), d_GUI (V_est) } for an EBD based target<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="e89f0b23-af25-49e3-8953-51dbb56e3818"
@@ -26036,16 +26197,17 @@ V_P_EOA (d_estfront) = 0 if d_estfront + Vest * ( T_driver + T_bs1 ) &gt;= d_EOA
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  specIssue="TRUE"
  Name=""
  Guid="07eb8e7a-b28f-4fcc-96e6-2042d5ca7980"
 ><Comment>d_EBD is undefined for Vtarget (will always return Infinity), because for each EBD based target (except SvL or SR distance) the EBD curve crosses the ceiling speed EBI supervision limit at the target location (see 3.13.8.3.1). EBI = P + dV_EBI (see 3.13.9.2.2), so d_EBD is undefined for Vtarget (= P).</Comment>
 In case the calculation of the GUI curve is inhibited, for display purpose only, the P speed related to EBD, shall be calculated for the max safe front end of the train as follows (see Figure 49):
-V_P_EBD_Target (d_maxsafefront) = V_EBD ( d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ) - ( Vbec - Vest )
-V_P_EBD_Target (d_maxsafefront) = Vtarget if d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec &gt;= d_EBD (Vtarget)
-With D_bec and V_bec calculated according to 3.13.9.3.2.10<Sub>
+V_P_EBD_Target (d_maxsafefront) = max{ V_EBD ( d_maxsafefront + Vest * ( T_driver + T_bs2 ) + D_be_display ) - ( V_delta0 + V_delta1 + V_delta2 ), Vtarget}
+V_P_EBD_Target (d_maxsafefront) = Vtarget if d_maxsafefront + Vest * ( T_driver + T_bs2 ) + D_be_display &gt;= d_EBD (Vtarget)
+With V_delta0, V_delta1 and V_delta2 calculated according to 3.13.9.3.2.10
+With D_be_display = ( Vest + V_delta0 + V_delta1 / 2 ) * T_traction + ( Vest + V_delta0 + V_delta1 + V_delta2 / 2 ) * T_berem<Sub>
 <Paragraph
  id="3.13.9.3.5.7.1"
  type="NOTE"
@@ -26077,7 +26239,7 @@ With D_bec and V_bec calculated according to 3.13.9.3.2.10<Sub>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  infoRequired="TRUE"
  specIssue="TRUE"
@@ -26085,9 +26247,10 @@ With D_bec and V_bec calculated according to 3.13.9.3.2.10<Sub>
  Guid="18ac7a51-42e7-45d9-b16c-290a09782304"
 ><Comment>V_GUI_EBD_Target ( d_maxsafefront ) = ?</Comment>
 In case the calculation of the GUI curve is enabled, for display purpose only, the P speed related to EBD, shall be calculated for the max safe front end of the train as follows:
-V_P_EBD_Target (d_maxsafefront) = min { ( V_EBD ( d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec ) - ( Vbec - Vest ) ), V_GUI_EBD_Target ( d_maxsafefront ) }
-V_P_EBD_Target ( d_maxsafefront ) = Vtarget if d_maxsafefront + Vest * ( T_driver + T_bs2 ) + Dbec &gt;= d_EBD ( Vtarget ) or if d_maxsafefront &gt;= d_GUI ( Vtarget )
-With Dbec and Vbec calculated according to 3.13.9.3.2.10<RequirementSets>
+V_P_EBD_Target (d_maxsafefront) = max { min { ( V_EBD ( d_maxsafefront + Vest * ( T_driver + T_bs2 ) + D_be_display ) - ( V_delta0 + V_delta1 + V_delta2 ) ), V_GUI_EBD_Target ( d_maxsafefront ) } ,  Vtarget }
+V_P_EBD_Target ( d_maxsafefront ) = Vtarget if d_maxsafefront + Vest * ( T_driver + T_bs2 ) + D_be_display &gt;= d_EBD ( Vtarget ) or if d_maxsafefront &gt;= d_GUI ( Vtarget )
+With V_delta0, V_delta1 and V_delta2 calculated according to 3.13.9.3.2.10
+With D_be_display = ( Vest + V_delta0 + V_delta1 / 2 ) * T_traction + ( Vest + V_delta0 + V_delta1 + V_delta2 / 2 ) * T_berem<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="383a09c1-9535-49dc-87a1-1175daeb6afc"
@@ -26136,7 +26299,7 @@ the estimated acceleration shall be set to &quot;zero&quot;<RequirementSets>
  version="3.0.0"
  Name=""
  Guid="0a156077-932d-4831-b7d8-8cb0350879e1"
->if not inhibited by National Value, the compensation of the inaccuracy of the speed measurement shall be set to a value calculated from the target speed, as defined in SUBSET-041 paragraph 5.3.1.2: V_delta0t = f41(V_target)<RequirementSets>
+>if not inhibited by National Value, the compensation of the inaccuracy of the speed measurement shall be set to a value calculated from the target speed, as defined in SUBSET-041 paragraph 5.3.1.2: V_delta0t = f41(Vtarget)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="bcabd242-cf37-4e94-9c01-7ff44465c9a5"
@@ -26160,7 +26323,7 @@ the estimated acceleration shall be set to &quot;zero&quot;<RequirementSets>
  version="3.0.0"
  Name=""
  Guid="12a5c7bd-200a-4b46-8d0a-e8dfd9f2cdda"
->To do so, the same formulas defined above with V_est and V_delta0 shall be applied, by substituting V_est with V_target and V_delta0 with V_delta0t.
+>To do so, the same formulas defined above with V_est and V_delta0 shall be applied, by substituting V_est with Vtarget and V_delta0 with V_delta0t.
 d_EBI ( Vtarget ) = d_EBD ( Vtarget + Vdelta0t ) - ( Vtarget + Vdelta0t ) * ( T_berem + T_traction )
 d_P ( Vtarget ) = d_EBI ( Vtarget ) - Vtarget * ( T_driver + T_bs2 )<Sub>
 <Paragraph
@@ -26198,7 +26361,7 @@ d_P ( Vtarget ) = d_EBI ( Vtarget ) - Vtarget * ( T_driver + T_bs2 )<Sub>
  version="3.0.0"
  Name=""
  Guid="59bae633-99ce-4f69-992a-cec56e0b4c41"
->In case a non protected LX start location is supervised as both the EOA and SvL and the stopping in rear of LX is not required, the location of the Permitted speed supervision limit, valid for the LX speed shall be used in order to determine the location where the supervision of the LX start location is substituted by the supervision of the LX speed (see section 5.16.3). This location shall be calculated taking into account the following assumptions:<Sub>
+>In case a non protected LX start location is supervised as both the EOA and SvL and the stopping in rear of LX is not required, the location of the most restrictive Permitted speed supervision limit, valid for the LX speed shall be used in order to determine the location where the supervision of the LX start location is substituted by the supervision of the LX speed (see section 5.16.3). This location shall be calculated taking into account the following assumptions:<Sub>
 <Paragraph
  id="3.13.9.3.5.11.a"
  type="REQUIREMENT"
@@ -26249,7 +26412,7 @@ d_P ( Vtarget ) = d_EBI ( Vtarget ) - Vtarget * ( T_driver + T_bs2 )<Sub>
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="6d961621-89b1-4280-8bd7-11d37e4b3f6c"
@@ -26257,10 +26420,10 @@ d_P ( Vtarget ) = d_EBI ( Vtarget ) - Vtarget * ( T_driver + T_bs2 )<Sub>
 d_SBI1 (V_LX) = d_SBD (V_LX) - V_LX * T_bs1
 d_SBI2 (V_LX) = d_EBI (V_LX) - V_LX * T_bs2
 with d_EBI (V_LX) = d_EBD ( V_LX + Vdelta0lx ) - ( V_LX + V_delta0lx ) * ( T_berem + T_traction )
-d_FLOI (V_LX) = d_SBI1 (V_LX) if d_SBI2 (V_LX) - d_SBI1 (V_LX) &gt;= d_maxsafefront - d_estfront
-Or d_FLOI (V_LX) = d_SBI2 (V_LX) if d_SBI2 (V_LX) - d_SBI1 (V_LX) &lt; d_maxsafefront - d_estfront
-In case the GUI curve is inhibited: d_P (V_LX) = d_FLOI (V_LX) - V_LX * T_driver
-In case the GUI curve is enabled: d_P (V_LX) = min { ( d_FLOI (V_LX) - V_LX * T_driver ), d_GUI_FLOI (V_LX) }<RequirementSets>
+In case the GUI curve is inhibited: d_P (V_LX) = d_SBI1 (V_LX) - V_LX * T_driver if d_SBI2 (V_LX) - d_SBI1 (V_LX) &gt;= d_maxsafefront - d_estfront
+Or d_P (V_LX) = d_SBI2 (V_LX) - V_LX * T_driver if d_SBI2 (V_LX) - d_SBI1 (V_LX) &lt; d_maxsafefront - d_estfront
+In case the GUI curve is enabled: d_P (V_LX) = min { ( d_SBI1 (V_LX) - V_LX * T_driver ), d_GUI (V_LX) } if d_SBI2 (V_LX) - d_SBI1 (V_LX) &gt;= d_maxsafefront - d_estfront
+Or d_P (V_LX) = min { ( d_SBI2 (V_LX) - V_LX * T_driver ), d_GUI (V_LX) } if d_SBI2 (V_LX) - d_SBI1 (V_LX) &lt; d_maxsafefront - d_estfront<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="c9b00b58-2e1d-49b1-8950-be92eba000c0"
@@ -26476,11 +26639,11 @@ Tindication = max { ( 0.8 * Tbs ) , 5s }<RequirementSets>
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="a387bd06-4306-436c-ae73-a3faa509f059"
->The start location of the release speed monitoring (i.e. where the EBI supervision limit related to EBD is replaced with an EBI supervision limit equal to the release speed value) shall be the location of the FLOI supervision limit, calculated for the Release Speed value, taking into account the following assumptions:<Sub>
+>The start location of the release speed monitoring (i.e. where the EBI supervision limit related to EBD is replaced with an EBI supervision limit equal to the release speed value) shall be the location of the most restrictive SBI supervision limit among the SBI1 related to the EOA, the SBI2 related to the SvL and, when the Release Speed is calculated on-board, the SBI2 supervision limit(s) related to the other target(s), if any, between the Trip location related to the EOA and the SvL, calculated for the Release Speed value, taking into account the following assumptions:<Sub>
 <Paragraph
  id="3.13.9.4.6.a"
  type="REQUIREMENT"
@@ -26531,16 +26694,17 @@ Tindication = max { ( 0.8 * Tbs ) , 5s }<RequirementSets>
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="faa860d4-6ec0-42c7-921a-65ae72f044ad"
->To do so, the same formulas defined above with V_est and V_delta0 shall be applied, by substituting V_est with V_release and V_delta0 with V_delta0rs.
+>To do so, the same formulas defined above with Vest and V_delta0 shall be applied, by substituting Vest with Vrelease and V_delta0 with V_delta0rs.
 d_SBI1(Vrelease) = d_SBD(Vrelease) - Vrelease * Tbs1
-d_SBI2(Vrelease) = d_EBI(Vrelease) - Vrelease * Tbs2
-with d_EBI(Vrelease) = d_EBD(Vrelease + Vdelta0rs) - (Vrelease + Vdelta0rs) * (Tberem + Ttraction)
-d_FLOI(Vrelease) = d_SBI1(Vrelease) if d_SBI2(Vrelease) - d_SBI1(Vrelease) &gt;= d_maxsafefront - d_estfront
-Or d_FLOI(Vrelease) = d_SBI2(Vrelease) if d_SBI2(Vrelease) - d_SBI1(Vrelease) &lt; d_maxsafefront - destfront<RequirementSets>
+d_SBI2_Target_n (Vrelease) = d_EBI_Target_n (Vrelease) - Vrelease * Tbs2
+with d_EBI_Target_n (Vrelease) = d_EBD_Target_n (Vrelease + Vdelta0rs) - (Vrelease + Vdelta0rs) * (T_berem + T_traction)
+with Target_n being any EBD based target between the trip location related to the EOA and the SvL(included)
+d_SBI2_MREBDT (Vrelease) = min { d_SBI2_Target_1 (Vrelease), ... , d_SBI2_Target_n (Vrelease) }
+with MREBDT = Most Restrictive Target amongst the EBD based targets between the Trip location related to the EOA and the SvL (included)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="425c28ba-ae1c-4373-b236-779b3d8a4edf"
@@ -26582,22 +26746,20 @@ Or d_FLOI(Vrelease) = d_SBI2(Vrelease) if d_SBI2(Vrelease) - d_SBI1(Vrelease) &l
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.2.0"
  Name=""
  Guid="14bf6840-9762-4d5e-9a4c-58c8aad11768"
->The release speed shall be iteratively calculated as follows:
-V^(n+1)_release = V_EBD ( d_tripEoA + D^n_bec ) - V^n_delta0rsob
-With V^n_delta0rsob = max { f_41 (V^n_release), V_ura } or V^n_delta0rsob = 0 (if compensation of speed inaccuracy is inhibited by National Value)
-With D^n_bec = (V^n_release + V^n_delta0rsob) * (T_traction + T_berem)
+>The on-board equipment shall seek for each target referred to in clause 3.13.9.4.8 a release speed value which satisfies the two following inequalities:
+ABS { Vrelease - (V_EBD(d_tripEOA + D_bec) - V_delta0rsob) } &lt;= 1km/h
+d_tripEOA + D_bec &lt;= d_EBD (Vtarget)
+With V_delta0rsob = max { f41(Vrelease), V_ura } or V_delta0rsob = 0 (if compensation of speed inaccuracy is inhibited by National Value)
+With D_bec = (V_release + V_delta0rsob) * (T_traction + T_berem)
 With d_tripEoA = d_EoA + alpha * L_antenna-front + max { (2 * Q_locacc_refBG + 10m + 10% * d_EOA), (d_maxsafefront - d_minsafefront) }
 And with alpha = 1 if level = 1
 alpha = 0 if level = 2 or 3
-V^(n+1)_release = V_target if d_tripEoA + D^n_bec &gt;= d_EBD (V_target)
-or if V_EBD (d_tripoEoA + D^n_bec) - V^n_delta0rsob &lt;= V_target
-V^0_release = V_target
-V_release = V^(n+1)_release as soon as ABS (V^(n+1)_release - V^n_release) &lt;= epsilon
-with epsilon = 1km/h<Sub>
+If no speed value higher than V_target fulfils the above inequalities then:
+Vrelease = Vtarget<Sub>
 <Paragraph
  id="3.13.9.4.8.2.1"
  type="REQUIREMENT"
@@ -26620,7 +26782,18 @@ Whenever the on-board reference location is updated (e.g. new LRBG), the release
  Guid="6bcb697c-f218-49bf-92b2-f531cfef9def"
 >
 </RequirementSetReference></RequirementSets>
-</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="3.13.9.4.8.2.2"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0d7ce812-ad62-41c8-907b-801b0449c6ef"
+>Note: The method chosen (e.g. iterative algorithm) to compute the release speed is an implementation issue.</Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -26762,6 +26935,23 @@ Whenever the on-board reference location is updated (e.g. new LRBG), the release
  Guid="0cff74c4-0c8f-4019-b197-57e05588946e"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.13.9.5.3.c"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="34cc7c55-4b52-4330-8d40-2770e48f3cd0"
+>If available for use, the service brake feedback shall not have any effect: T_bs1ind and T_bs2ind shall be set to T_bs if the service brake command is available for use, otherwise they shall be set to “zero”. T_tractionind and T_beremind shall be defined as in 3.13.9.3.2 for T_traction and T_berem by substituting T_bs2 with T_bs2ind<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5033b7e9-0f53-4a69-8748-55e7d0452b1e"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -26776,13 +26966,13 @@ Whenever the on-board reference location is updated (e.g. new LRBG), the release
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="0c5eaae4-4be7-4f73-ba4d-93cbbc028872"
->To calculate the EBI supervision limit, the same formulas defined above with V_est and V_delta0 shall be applied, by substituting V_est with V_MRSP-n and V_delta0 with V_delta0ind.
-d_EBI(V_MRSP-n) = d_EBD(V_MRSP-n + Vdelta0ind) - (V_MRSP-n + Vdelta0ind) * (Tberem + Ttraction)
-d_SBI2(V_MRSP-n) = d_EBI(V_MRSP-n) - V_MRSP-n * Tbs2
+>To calculate the EBI supervision limit, the same formulas defined above with V_est, T_traction, T_berem and V_delta0 shall be applied, by substituting V_est with V_MRSP-n, T_traction with T_tractionind, T_berem with T_beremind and V_delta0 with V_delta0ind.
+d_EBI(V_MRSP-n) = d_EBD(V_MRSP-n + Vdelta0ind) - (V_MRSP-n + Vdelta0ind) * (Tberemind + Ttractionind)
+d_SBI2(V_MRSP-n) = d_EBI(V_MRSP-n) - V_MRSP-n * Tbs2ind
 d_I(V_MRSP-n) = d_P(V_MRSP-n) - V_MRSP-n * Tindication
 With d_P(V_MRSP-n) = d_SBI2(V_MRSP-n) - V_MRSP-n * Tdriver if the GUI curve is inhibited
 Or d_P(V_MRSP-n) = min { ( d_SBI2(V_MRSP-n) - V_MRSP-n * Tdriver ), d_GUI(V_MRSP-n)) } if the GUI curve is enabled.<RequirementSets>
@@ -26853,12 +27043,12 @@ Then d_preindication = d_MRSP-n^b - V_MRSP-n * Tpreindication<RequirementSets>
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="c2747f10-3553-4ce9-9fc1-61bbf23b7f0b"
 >For the EOA, the on-board shall calculate its pre-indication location in the same way as for an EBD based target, except that the formulas to calculate the distance between the location of the Indication supervision limit and the SBD shall be:
-d_SBI1(V_MRSP-n) = d_SBD(V_MRSP-n) - V_MRSP-n * Tbs1
+d_SBI1(V_MRSP-n) = d_SBD(V_MRSP-n) - V_MRSP-n * Tbs1ind
 d_I(V_MRSP-n) = d_P(V_MRSP-n) - V_MRSP-n * Tindication
 With d_P(V_MRSP-n) = d_SBI1(V_MRSP-n) - V_MRSP-n * Tdriver if the GUI curve is inhibited
 Or d_P(V_MRSP-n) = min { ( d_SBI1(V_MRSP-n) - V_MRSP-n * Tdriver ), d_GUI(V_MRSP-n) } if the GUI curve is enabled<RequirementSets>
@@ -26937,16 +27127,16 @@ Or d_P(V_MRSP-n) = min { ( d_SBI1(V_MRSP-n) - V_MRSP-n * Tdriver ), d_GUI(V_MRSP
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.13.9.5.13"
- type="REQUIREMENT"
+ type="DELETED"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="3ca3f276-f7a0-4c16-8b02-755e929a4ae3"
->For display purpose only: when the pre-indication location of the target is derived from the location of the Indication supervision limit, this latter is used in order to discriminate, for estimated speeds higher than the MRSP speed, whether the on-board considers that the Indication supervision limit is exceeded (see section 3.13.10.4.11).<RequirementSets>
+>Intentionally deleted<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="6228b874-7286-4b03-98cf-767da3ff1094"
@@ -27162,11 +27352,11 @@ Or d_P(V_MRSP-n) = min { ( d_SBI1(V_MRSP-n) - V_MRSP-n * Tdriver ), d_GUI(V_MRSP
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="46fa293d-249a-454b-bbda-cdc527f79dc7"
->The train speed indicated to the driver shall be identical to the speed used for the speed monitoring (i.e. the estimated speed).<RequirementSets>
+>The train speed indicated to the driver shall be identical to the speed used for the speed monitoring. This shall be the estimated speed.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="616ffaed-083d-420f-92b6-fd0667c2f29b"
@@ -27278,6 +27468,23 @@ In Level 1: Train Trip shall be initiated if the on-board equipment detects that
  Guid="b80d0b12-fb02-4c3e-9ab8-f903a20e21ee"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.13.10.2.8"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="7da2c959-4215-45b4-b239-3b315d76277c"
+>In the following sections, the term V_MRSP (together with the derived ceiling supervision limits) refers to the lowest MRSP element encountered between the min safe front end and the max safe front end of the train.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a84e2053-7be1-4f7b-b147-260ae39e524a"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -27325,7 +27532,7 @@ In Level 1: Train Trip shall be initiated if the on-board equipment detects that
  version="3.0.0"
  Name=""
  Guid="d5f24a7e-2926-4921-9498-c6e5c16964e4"
->When the supervision status is Overspeed, Warning or Intervention, the on-board equipment shall display the SBI speed (i.e. the FLOI speed).<RequirementSets>
+>When the supervision status is Overspeed, Warning or Intervention, the on-board equipment shall display the SBI speed.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="4dcb13a2-e290-4140-99b8-9897765ecf2c"
@@ -27668,16 +27875,16 @@ Revocation condition #; Estimated speed; Location; TI Command revoked; Supervisi
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.13.10.3.7"
- type="REQUIREMENT"
+ type="DELETED"
  scope="FLAGS"
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="26d27752-70b9-46bf-ada7-95ba7bb47a3c"
->The locations corresponding to a speed increase of the MRSP shall be supervised by the on-board equipment taking into account the min safe front end of the train.<RequirementSets>
+>Intentionally deleted<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1528d9f7-2d0b-4a6c-8de5-cd6cbe34d423"
@@ -27726,11 +27933,11 @@ Revocation condition #; Estimated speed; Location; TI Command revoked; Supervisi
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="96719821-5827-4475-bf1c-8200e9c230e4"
->The on-board equipment shall display to the driver the information related to one target at a time: the Most Restrictive Displayed Target (MRDT). The MRDT shall be defined as the target of which the braking to target Permitted speed supervision limit (refer to section 3.13.9.3.5), calculated for the current position of the train, is the lowest one amongst the supervised targets:
+>The on-board equipment shall display to the driver the target information (target speed and distance to target) related to one target at a time: the Most Restrictive Displayed Target (MRDT). The MRDT shall be defined as the target of which the braking to target Permitted speed supervision limit (refer to section 3.13.9.3.5), calculated for the current position of the train, is the lowest one amongst the supervised targets:
 V_P_MRDT = min { V_P_EOA (d_estfront), V_P_SvL (d_maxsafefront), V_P_Target1 (d_maxsafefront), ..., V_P_Targetn (d_maxsafefront) }<Sub>
 <Paragraph
  id="3.13.10.4.2.1"
@@ -27763,16 +27970,15 @@ V_P_MRDT = min { V_P_EOA (d_estfront), V_P_SvL (d_maxsafefront), V_P_Target1 (d_
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  infoRequired="TRUE"
  specIssue="TRUE"
  Name=""
  Guid="74e64307-2966-461e-a976-9a0194ca8514"
-><Comment>What is V_target_MRDT?
-For which distance is computed the value of MRSP?</Comment>
+><Comment>What is Vtarget_MRDT?...</Comment>
 The on-board equipment shall display the Permitted speed, according to following formula:
-V_P_DMI = min { max { V_P_MRDT, V_Target_MRDT }, V_MRSP }<RequirementSets>
+V_P_DMI = min { V_P_MRDT, V_MRSP }<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="7ba980dc-b94f-4987-bd75-96e6796414fe"
@@ -27785,13 +27991,13 @@ V_P_DMI = min { max { V_P_MRDT, V_Target_MRDT }, V_MRSP }<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
->When the supervision status is Overspeed, Warning or Intervention, the on-board equipment shall display the FLOI speed, according to the following formulas:
-V_FLOI_DMI = min { max { V_SBI_MRDT, Vtarget_MRDT + dV_SBI_MRDT (Vtarget) }, V_MRSP + dV_SBI (V_MRSP) } in case of MRSP target or LOA
-V_FLOI_DMI = min { max { V_SBI_MRDT, Vrelease }, V_MRSP + dV_SBI (V_MRSP) } in case of EOA or SvL<RequirementSets>
+>When the supervision status is Overspeed, Warning or Intervention, the on-board equipment shall display the most restrictive SBI speed, according to the following formulas:
+V_SBI_DMI = min { max { V_SBI1_EOA (d_estfront), Vrelease }, max { V_SBI2_SvL (d_maxsafefront), Vrelease }, 
+V_SBI2_Target_1 (d_maxsafefront), ... , V_SBI2_Target_n (d_maxsafefront), V_MRSP + dV_sbi (V_MRSP) }<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="702b9210-9bca-46c5-8835-557cc1dab6e7"
@@ -27799,7 +28005,7 @@ V_FLOI_DMI = min { max { V_SBI_MRDT, Vrelease }, V_MRSP + dV_SBI (V_MRSP) } in c
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.13.10.4.5"
- type="NOTE"
+ type="DELETED"
  scope="FLAGS"
  bl=""
  name=""
@@ -27808,7 +28014,7 @@ V_FLOI_DMI = min { max { V_SBI_MRDT, Vrelease }, V_MRSP + dV_SBI (V_MRSP) } in c
  version="3.0.0"
  Name=""
  Guid="8d4fab49-4037-4cfa-8f33-33feb439c687"
->Note: the MRDT is needed to avoid jumps of displayed Permitted speed, when the SBD intersects an EBD or when the target to which the FLOI is related suddenly changes, due to the growth of the train position confidence interval. As a result the MRDT may temporarily not correspond to the target to which the FLOI is related, but this will never be the case when the train speed/location is reaching the supervision limit.<RequirementSets>
+>Intentionally deleted<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="7af2ed39-0b3a-49ee-8864-68d4b88be526"
@@ -27916,8 +28122,25 @@ Target distance = max { min { ( d_EOA - d_estfront ), ( d_SvL - d_maxsafefront )
  version="3.0.0"
  Name=""
  Guid="e0714dd3-9891-467d-9584-cfde98bcc4fc"
->The on-board equipment shall compare the estimated speed and train position with the ceiling and braking to target supervision limits and shall trigger/revoke commands to the train interface (traction cut-off if implemented, service brake if available for use or emergency brake) and supervision statuses, as described in Table 8 and Table 10 (for target related to a MRSP speed decrease or LOA), and as described in Table 9 and Table 11 (for target EOA/SvL with release speed).<Sub>
+>The on-board equipment shall compare the estimated speed and train position with the ceiling and braking to target supervision limits and shall trigger/revoke commands to the train interface (traction cut-off if implemented, service brake if available for use or emergency brake) and supervision statuses, by evaluating and taking into account the conditions as specified in clause 3.13.10.4.10.1.<Sub>
 <Paragraph
+ id="3.13.10.4.10.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="3af8138b-bed5-48ed-ab3a-33ce3d950e16"
+>The conditions in Table 8 and table 10 shall be evaluated for each target related to an RSP speed decrease or LOA, the conditions in Table 9 and Table 11 shall be evaluated for the targets EOA and SvL and for the end of the maximum permitted distance to run in Staff Responsible. The triggering conditions shall be taken into account, if the supervision limits for any target satisfy the specified conditions. The revocation conditions shall only be taken into account, if the supervision limits for all targets satisfy the specified conditions.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1f503890-a419-45d6-ba27-71fb1bccded9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="Table 3.13.10.4.10.1"
  type="TABLE_HEADER"
  scope="FLAGS"
@@ -27929,7 +28152,7 @@ Target distance = max { min { ( d_EOA - d_estfront ), ( d_SvL - d_maxsafefront )
  Name=""
  Guid="6906d216-b324-44e4-b228-b5ba8d7e9317"
 >Table 8: Triggering of Train Interface commands and supervision statuses in target speed monitoring, MRSP target or LOA
-Triggering condition #; Estimated speed; Train front end position (estimated and max safe); TI Command triggered; Supervision status triggered<Sub>
+Triggering condition #; Estimated speed; Train front end position (max safe); TI Command triggered; Supervision status triggered<Sub>
 <Paragraph
  id="Entry 3.13.10.4.10.1.1"
  type="REQUIREMENT"
@@ -27957,7 +28180,7 @@ t1; Vest &lt;= Vtarget; Not relevant; -; Normal Status<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  infoRequired="TRUE"
  specIssue="TRUE"
@@ -27965,8 +28188,7 @@ t1; Vest &lt;= Vtarget; Not relevant; -; Normal Status<RequirementSets>
  Guid="235a2d43-f1f5-49b1-8517-1f6b17a29a4c"
 ><Comment>For which distance is computed V_MRSP?
 What is Vtarget?</Comment>
-t2; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_I(Vest) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &lt;= d_I(Vest) if FLOI(Vest)=SBI1(Vest); -; Normal Status<RequirementSets>
+t2; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_I(Vest);-; Normal Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="c6302ae3-3e01-4c1c-a536-9e5c65208cb1"
@@ -27979,7 +28201,7 @@ t2; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_I(Vest) if FLOI(Vest)
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  infoRequired="TRUE"
  specIssue="TRUE"
@@ -27987,8 +28209,7 @@ t2; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_I(Vest) if FLOI(Vest)
  Guid="fda34875-06ef-46a2-b272-8fdf00368ad5"
 ><Comment>For which distance is computed V_MRSP?
 What is Vtarget?</Comment>
-t3; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_I(Vest) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &gt; d_I(Vest) if FLOI(Vest)=SBI1(Vest); -; Indication Status<RequirementSets>
+t3; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_I(Vest); -; Indication Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="7adbf236-b9f7-42a4-a295-e31b771220fe"
@@ -28001,7 +28222,7 @@ t3; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_I(Vest) if FLOI(Vest)=
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  infoRequired="TRUE"
  specIssue="TRUE"
@@ -28009,8 +28230,7 @@ t3; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_I(Vest) if FLOI(Vest)=
  Guid="81b045fa-67f4-4abe-9d72-380cb0687a1d"
 ><Comment>For which distance is computed V_MRSP?
 What is Vtarget?</Comment>
-t4; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_P(Vest) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &gt; d_P(Vest) if FLOI(Vest)=SBI1(Vest); -; Overspeed Status<RequirementSets>
+t4; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_P(Vest); -; Overspeed Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="f01efe81-fd2e-4fb0-a661-ec671ea2ff63"
@@ -28023,15 +28243,14 @@ t4; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_P(Vest) if FLOI(Vest)=
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  infoRequired="TRUE"
  specIssue="TRUE"
  Name=""
  Guid="366c7bc8-9a83-43fb-b4e8-f41812946c97"
 ><Comment>For which distance is computed V_MRSP?</Comment>
-t5; V MRSP &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &lt;= d_I(V MRSP) if FLOI(Vest)=SBI1(Vest); -; Overspeed Status(Pre-indication display area)<RequirementSets>
+t5; V MRSP &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP); -; Overspeed Status(Pre-indication display area)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="56143e92-5587-47f9-8a85-87d610a03625"
@@ -28044,15 +28263,14 @@ t5; V MRSP &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_maxsafefront &lt;= d_I(
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  infoRequired="TRUE"
  specIssue="TRUE"
  Name=""
  Guid="ac2002ec-cc04-4e25-8344-d90765ce4d29"
 ><Comment>For which distance is computed V_MRSP?</Comment>
-t6; V_MRSP &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_W(Vest) if FLOI(Vest)=SBI2(Vest)
-	OR d_I(V_MRSP) &lt; destfront &lt;= d_W(Vest) if FLOI(Vest)=SBI1(Vest); -; Overspeed Status<RequirementSets>
+t6; V_MRSP &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_W(Vest); -; Overspeed Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="8e437c99-3913-43d7-af42-12016ce6183d"
@@ -28065,7 +28283,7 @@ t6; V_MRSP &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_I(V_MRSP) &lt; d_maxsaf
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  infoRequired="TRUE"
  specIssue="TRUE"
@@ -28073,8 +28291,7 @@ t6; V_MRSP &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_I(V_MRSP) &lt; d_maxsaf
  Guid="d394cede-dff2-4764-b72a-288ee8d5617c"
 ><Comment>For which distance is computed V_MRSP?
 What is Vtarget?</Comment>
-t7; Vtarget + d_Vwarning(Vtarget) &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_maxsafefront &gt; d_W(Vest) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &gt; d_W(Vest) if FLOI(Vest)=SBI1(Vest); TCO; Warning Status<RequirementSets>
+t7; Vtarget + d_Vwarning(Vtarget) &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_maxsafefront &gt; d_W(Vest); TCO; Warning Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d0077084-971f-4f88-805e-83f20b508e31"
@@ -28087,15 +28304,14 @@ t7; Vtarget + d_Vwarning(Vtarget) &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  infoRequired="TRUE"
  specIssue="TRUE"
  Name=""
  Guid="d916181f-d7a1-4043-9617-e814b97ae7b4"
 ><Comment>For which distance is computed V_MRSP?</Comment>
-t8; V_MSRP + d_Vwarning(V MSRP) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); dmaxsafefront &lt;= d_I(V_MRSP) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &lt;= d_I(V_MRSP) if FLOI(Vest)=SBI1(Vest); TCO; Warning Status(Pre-indication display area)<RequirementSets>
+t8; V_MSRP + d_Vwarning(V MSRP) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); dmaxsafefront &lt;= d_I(V_MRSP); TCO; Warning Status(Pre-indication display area)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1671b1b8-a74d-49e3-8fb4-ec3bdaefc730"
@@ -28108,17 +28324,14 @@ t8; V_MSRP + d_Vwarning(V MSRP) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); dmaxsafe
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  infoRequired="TRUE"
  specIssue="TRUE"
  Name=""
  Guid="0342251f-d656-4d41-8ece-bde758fbfadf"
 ><Comment>For which distance is computed V_MRSP?</Comment>
-t9; V_MSRP + dVwarning(V_MSRP) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_FLOI(Vest)
-	if FLOI(Vest)=SBI2(Vest)
-	OR d_I(V_MRSP) &lt; destfront &lt;= d_FLOI(Vest)
-	if FLOI(Vest)=SBI1(Vest); TCO; Warning Status<RequirementSets>
+t9; V_MSRP + dVwarning(V_MSRP) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_SBI2(Vest); TCO; Warning Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1577ba30-14b6-466b-a037-a946c64e4826"
@@ -28131,7 +28344,7 @@ t9; V_MSRP + dVwarning(V_MSRP) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); d_I(V_MRS
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  infoRequired="TRUE"
  specIssue="TRUE"
@@ -28139,8 +28352,7 @@ t9; V_MSRP + dVwarning(V_MSRP) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); d_I(V_MRS
  Guid="49cb1ac1-74b3-4afe-865d-d6b4401719da"
 ><Comment>For which distance is computed V_MRSP?
 What is Vtarget?</Comment>
-t10; Vtarget + dVsbi(Vtarget) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); d_maxsafefront &gt; d_FLOI(Vest) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &gt; d_FLOI(Vest) if FLOI(Vest)=SBI1(Vest); SB; Intervention Status<RequirementSets>
+t10; Vtarget + dVsbi(Vtarget) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); d_maxsafefront &gt; d_SBI2(Vest); SB; Intervention Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="7547d5fa-3f9e-481f-bd7c-2a736846287a"
@@ -28215,17 +28427,34 @@ t13; Vtarget + dVebi(Vtarget) &lt; Vest &lt;= V_MSRP + dVebi(V_MRSP); d_maxsafef
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  infoRequired="TRUE"
  specIssue="TRUE"
  Name=""
  Guid="a77d9b43-ca07-4b88-99c9-aee4aac78473"
 ><Comment>For which distance is computed V_MRSP?</Comment>
-t14; Vest &gt; V_MRSP + dVebi(V_MRSP); Not relevant; EB; Intervention Status<RequirementSets>
+t14; Vest &gt; V_MRSP + dVebi(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP); EB; Intervention Status(Pre-indication display area)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1c14d564-7efb-44a6-b360-422fdff6fe3b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.13.10.4.10.1.15"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="17f454b2-95a3-43f9-9580-b68b6c425861"
+>t15; Vest &gt; V_MRSP + dVebi(V_MRSP); d_maxsafefront &gt; d_I(V_MRSP); EB; Intervention Status<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9e910f3e-565e-422c-a9a4-ddd37be16cb0"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -28272,12 +28501,12 @@ Triggering condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="1900c77e-8d93-44ae-a0c6-75c7b767420f"
->t2; Vrelease &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_I(Vest) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &lt;= d_I(Vest) if FLOI(Vest)=SBI1(Vest); -; Normal Status<RequirementSets>
+>t2; Vrelease &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_I(Vest) for SvL
+	AND d_estfront &lt;= d_I(Vest) for EOA; -; Normal Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="69ae01b4-d5cc-4583-83b0-7dcc668eaf64"
@@ -28290,12 +28519,12 @@ Triggering condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="3b4965fd-7899-4aeb-8759-571b7de8121d"
->t3; Vrelease &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_I(Vest) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &gt; d_I(Vest) if FLOI(Vest)=SBI1(Vest); -; Indication Status<RequirementSets>
+>t3; Vrelease &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_I(Vest) for SvL
+	OR d_estfront &gt; d_I(Vest) for EOA; -; Indication Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="f5d606a0-79dc-4403-81dd-a9efad42de26"
@@ -28308,12 +28537,12 @@ Triggering condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="7ea3bac1-7296-4790-a939-f6100738c30a"
->t4; Vrelease &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_P(Vest) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &gt; d_P(Vest) if FLOI(Vest)=SBI1(Vest); -; Overspeed Status<RequirementSets>
+>t4; Vrelease &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_P(Vest) for SvL
+	OR d_estfront &gt; d_P(Vest) for EOA; -; Overspeed Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="b57b881d-4445-4b60-a405-61e34eb80bbc"
@@ -28326,12 +28555,12 @@ Triggering condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="f528e538-4118-4426-920e-582f6cf5c8ec"
->t5; V_MRSP &lt; Vest &lt;= V_MRSP + d_Vwarning(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &lt;= d_I(V_MRSP) if FLOI(Vest)=SBI1(Vest); -; Overspeed Status(Pre-indication display area)<RequirementSets>
+>t5; V_MRSP &lt; Vest &lt;= V_MRSP + d_Vwarning(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP) for SvL
+	AND d_estfront &lt;= d_I(V_MRSP) for EOA; -; Overspeed Status(Pre-indication display area)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="29e3fd48-c27a-4f7e-b526-1598cfe9bf41"
@@ -28344,14 +28573,15 @@ Triggering condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="e54412a7-2129-4360-a62a-d2fccfd74679"
->t6; V_MRSP &lt; Vest &lt;= V_MRSP + d_Vwarning(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_W(Vest)
-	if FLOI(Vest)=SBI2(Vest)
-	OR d_I(V_MRSP) &lt; d_estfront &lt;= d_W(Vest)
-	if FLOI(Vest)=SBI1(Vest); -; Overspeed Status<RequirementSets>
+>t6; V_MRSP &lt; Vest &lt;= V_MRSP + d_Vwarning(V_MRSP); ( d_maxsafefront &lt;= d_I (V_MRSP) for SvL
+	OR d_estfront &gt; d_I (V_MRSP) for EOA )
+    AND
+	( d_maxsafefront &lt;= d_W (Vest) for SvL
+	AND d_estfront &lt;= d_W (Vest) for EOA ); -; Overspeed Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1aa2b02c-7f54-4846-a4d7-f55ce1a7a6bf"
@@ -28364,12 +28594,12 @@ Triggering condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="024d5773-00f6-4c63-83dd-29b47ad8e8ff"
->t7; Vrelease &lt; Vest &lt;= V_MRSP + d_Vwarning(V_MRSP); d_maxsafefront &gt; d_W(Vest) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &gt; d_W(Vest) if FLOI(Vest)=SBI1(Vest); TCO; Warning Status<RequirementSets>
+>t7; Vrelease &lt; Vest &lt;= V_MRSP + d_Vwarning(V_MRSP); d_maxsafefront &gt; d_W(Vest) for SvL
+	OR d_estfront &gt; d_W(Vest) for EOA; TCO; Warning Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="029da1c7-b258-42da-99cc-30c52ad776a9"
@@ -28382,12 +28612,12 @@ Triggering condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="14be9c17-d5ca-40d8-ae7f-15b68df84b13"
->t8; V_MRSP + d_Vwarning(V_MRSP) &lt; Vest &lt;= V_MRSP + d_Vsbi(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &lt;= d_I(V_MRSP) if FLOI(Vest)=SBI1(Vest); TCO; Warning Status(Pre-indication display area)<RequirementSets>
+>t8; V_MRSP + d_Vwarning(V_MRSP) &lt; Vest &lt;= V_MRSP + d_Vsbi(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP) for SvL
+	OR d_estfront &lt;= d_I(V_MRSP) for EOA; TCO; Warning Status(Pre-indication display area)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="e7ef90d8-641e-4b73-b2cf-a0c9b2407cf6"
@@ -28400,14 +28630,15 @@ Triggering condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="01550cfd-1b51-4675-b2c3-6dae7cf1ea0d"
->t9; V_MRSP + d_Vwarning(V_MRSP) &lt; Vest &lt;= V_MRSP + d_Vsbi(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_FLOI(Vest)
-	if FLOI(Vest)=SBI2(Vest)
-	OR d_I(V_MRSP) &lt; destfront &lt;= d_FLOI(Vest)
-	if FLOI(Vest)=SBI1(Vest); TCO; Warning Status<RequirementSets>
+>t9; V_MRSP + d_Vwarning(V_MRSP) &lt; Vest &lt;= V_MRSP + d_Vsbi(V_MRSP); ( d_maxsafefront &gt; d_I (V_MRSP) for SvL
+	OR d_estfront &gt; d_I (V_MRSP) for EOA )
+    AND
+	( d_maxsafefront &lt;= d_SBI2 (Vest) for SvL
+	AND d_estfront &lt;= d_SBI1 (Vest) for EOA ); TCO; Warning Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="9ceca08b-4623-47d8-9feb-a20b427e0410"
@@ -28420,12 +28651,12 @@ Triggering condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="8cbd8d63-d690-46a3-949e-0118624c0bda"
->t10; Vrelease &lt; Vest &lt;= V_MRSP + d_Vsbi(V_MRSP); d_maxsafefront &gt; d_FLOI(Vest) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &gt;= d_FLOI(Vest) if FLOI(Vest)=SBI1(Vest); SB; Intervention Status<RequirementSets>
+>t10; Vrelease &lt; Vest &lt;= V_MRSP + d_Vsbi(V_MRSP); d_maxsafefront &gt; d_SBI2(Vest) for SvL
+	OR d_estfront &gt; d_SBI1(Vest) for EOA; SB; Intervention Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="4ee926ca-bd8f-47b8-af34-0148381d06eb"
@@ -28438,11 +28669,12 @@ Triggering condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="f1638f47-91c3-47b5-95c8-929a83f2c89a"
->t11; V_MRSP + d_Vsbi(V_MRSP) &lt; Vest &lt;= V_MRSP + d_Vebi(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP); SB; Intervention Status(Pre-indication display area)<RequirementSets>
+>t11; V_MRSP + d_Vsbi(V_MRSP) &lt; Vest &lt;= V_MRSP + d_Vebi(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP) for SvL
+	AND d_estfront &lt;= d_I(V_MRSP) for EOA; SB; Intervention Status(Pre-indication display area)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="dad32073-37d1-487a-85a2-5897dc80676f"
@@ -28455,11 +28687,13 @@ Triggering condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="6adc672f-bb83-47c8-850c-a7604401a379"
->t12; V_MRSP + d_Vsbi(V_MRSP) &lt; Vest &lt;= V_MRSP + d_Vebi(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_EBI(Vest); SB; Intervention Status<RequirementSets>
+>t12; V_MRSP + d_Vsbi(V_MRSP) &lt; Vest &lt;= V_MRSP + d_Vebi(V_MRSP); ( d_maxsafefront &gt; d_I(V_MRSP) fro SvL
+	OR d_estfront &gt; d_I(V_MRSP) for EOA )
+    AND d_maxsafefront &lt;= d_I(Vest); SB; Intervention Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="15a4c5cb-77b8-4a64-9b90-ca9a95754763"
@@ -28493,13 +28727,26 @@ Triggering condition #; Estimated speed; Train front end position (estimated and
  version="3.0.0"
  Name=""
  Guid="184511ec-2ccf-4307-aa0d-64e5b4424e92"
->t14; Vest &gt; V_MRSP + d_Vebi(V_MRSP); Not relevant; EB; Intervention Status<RequirementSets>
+>t14; Vest &gt; V_MRSP + d_Vebi(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP) for SvL
+	AND d_estfront &lt;= d_I(V_MRSP) for EOA; EB; Intervention Status(Pre-indication display area)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="c1c8ff94-0295-46f5-97e2-4b3c98bb530b"
 >
 </RequirementSetReference></RequirementSets>
-</Paragraph></Sub>
+</Paragraph><Paragraph
+ id="Entry 3.13.10.4.10.2.15"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="c41cb7ca-ee2d-4af2-841c-855ef592089d"
+>t15; Vest &gt; V_MRSP + d_Vebi(V_MRSP); d_maxsafefront &gt; d_I(V_MRSP) for SvL
+	AND d_estfront &lt;= d_I(V_MRSP) for EOA; EB; Intervention Status</Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -28524,7 +28771,7 @@ Triggering condition #; Estimated speed; Train front end position (estimated and
  version="3.0.0"
  Name=""
  Guid="b10067eb-6ad7-4c8c-9aab-ef1740ef0e13"
->The braking to target Indication supervision limit is not used for estimated speeds higher than V_MRSP. However the location of the Indication supervision limit, valid for V_MRSP, when used to derive the pre-indication location of the target, shall be used for estimated speeds higher than V_MRSP in order to discriminate whether information related to the Indication status has to be displayed to the driver. In other terms, for estimated speeds above V_MRSP, the Indication supervision limit is a fixed location, which defines a pre-indication display area starting from the pre-indication location and ending to this fixed location.<RequirementSets>
+>The braking to target Indication supervision limit is not used for estimated speeds higher than V_MRSP. However the location of the Indication supervision limit, valid for V_MRSP shall be used for estimated speeds higher than V_MRSP in order to discriminate whether information related to the Indication status has to be displayed to the driver. In other terms, for estimated speeds above V_MRSP, this location of the Indication supervision limit defines a pre-indication display area starting from the pre-indication location and ending at this location.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="50175c82-c1ae-4943-829d-5348798f7ba8"
@@ -28585,10 +28832,10 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  Guid="c67a3f36-61c7-4021-a4d9-2d9bbe0d08aa"
 >r1; Vest &lt;= Vtarget; Not relevant; TCO
 	SB
-	EB (in case V_target != 0, only if allowed by National Value; Indication status
+	EB (in case Vtarget != 0, only if allowed by National Value; Indication status
 	Overspeed status
 	Warning status
-	Intervention status (in case of EB command and V_target != 0, only if allowed by National Value)<RequirementSets>
+	Intervention status (in case of EB command and Vtarget != 0, only if allowed by National Value)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="989dccde-27ee-4c80-9719-92d8c01f5024"
@@ -28601,17 +28848,16 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="8f56c788-64ae-457b-b163-9023aca9643c"
->r2; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_I(Vest) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &lt;= d_I(Vest) if FLOI(Vest)=SBI1(Vest); TCO
+>r2; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_I(Vest); TCO
 	SB
 	EB (only if allowed by National Value); Indication status (only in case of change of displayed target)
 	Overspeed status
 	Warning status
-	Intervention status (in case of EB command and V_target != 0, only if allowed by National Value)<RequirementSets>
+	Intervention status (in case of EB command, only if allowed by National Value)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="037a932b-043e-4aa9-a750-341ccf1ee3c1"
@@ -28624,12 +28870,11 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="5b666657-27b5-46b4-9ee5-194c4319dd17"
->r3; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_P(Vest) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &lt;= d_P(Vest) if FLOI(Vest)=SBI1(Vest); TCO
+>r3; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_P(Vest); TCO
 	SB
 	EB (only if allowed by National Value); Overspeed status
 	Warning status
@@ -28683,16 +28928,16 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="2c0f9388-fcbe-4608-aafb-aad27bc06d88"
 >r1; Vest &lt;= Vrelease; Not relevant; TCO
 	SB
-	EB (in case V_target != 0, only if allowed by National Value; Indication status
+	EB (in case Vrelease != 0, only if allowed by National Value; Indication status
 	Overspeed status
 	Warning status
-	Intervention status (in case of EB command and V_target != 0, only if allowed by National Value)<RequirementSets>
+	Intervention status (in case of EB command and Vrelease != 0, only if allowed by National Value)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a9da0efb-47b1-429d-8208-b243191cb70f"
@@ -28705,17 +28950,17 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="9e577947-88cc-41b1-857e-6a7b33567ea5"
->r2; Vrelease &lt; Vest &lt;= V_MRSP; _maxsafefront &lt;= d_I(Vest) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &lt;= d_I(Vest) if FLOI(Vest)=SBI1(Vest); TCO
+>r2; Vrelease &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_I(Vest) for SvL
+	AND d_estfront &lt;= d_I(Vest) for EOA; TCO
 	SB
 	EB (only if allowed by National Value); Indication status (only in case of change of displayed target)
 	Overspeed status
 	Warning status
-	Intervention status (in case of EB command and V_target != 0, only if allowed by National Value)<RequirementSets>
+	Intervention status (in case of EB command, only if allowed by National Value)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="e16a9258-bad8-4652-a7e3-21b1ec553034"
@@ -28728,12 +28973,12 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="d1eb1a87-f8ea-4a77-bf6c-5d1b53c98b42"
->r3; Vrelease &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_P(Vest) if FLOI(Vest)=SBI2(Vest)
-	OR d_estfront &lt;= d_P(Vest) if FLOI(Vest)=SBI1(Vest); TCO
+>r3; Vrelease &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_P(Vest) for SvL
+	AND d_estfront &lt;= d_P(Vest) for EOA; TCO
 	SB
 	EB (only if allowed by National Value); Overspeed status
 	Warning status
@@ -28768,7 +29013,26 @@ Revocation condition #; Estimated speed; Train front end position (estimated and
  version="3.0.0"
  Name=""
  Guid="6112d3b2-46f0-4ecb-8029-415b38396a4d"
->In case of target EOA/SvL without any supervised release speed, the Table 9 and Table 11 shall be applied, by substituting V_release with the value 0.<RequirementSets>
+>In case of target EOA/SvL without any supervised release speed, the Table 9 and Table 11 shall be applied, by substituting V_release with the value 0.<Sub>
+<Paragraph
+ id="3.13.10.4.13.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="45963a73-6286-4c23-8f87-9e18d78e5e28"
+>In case the target is the location at the end of the maximum permitted distance to run in Staff Responsible, the Table 9 and Table 11 shall be applied, by substituting V_release with the value 0, SvL with staff responsible end location and by ignoring any formula related to EOA.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a2114887-5e79-45a7-9280-6ef10c575b9c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="3595d1b9-d5d3-4e83-b216-1c6871bb4995"
@@ -43877,10 +44141,10 @@ am_n; m=3; m=2; m=1; m=0<Sub>
  Name=""
  Guid="ea0e1acc-6fa2-4987-bc51-834e1dc560df"
 >The equivalent brake build up time for the emergency brake shall be computed as follows:
-	T_brake_emergency_cm0 = T_brake_basic_eb when V_target = 0
-	T_brake_emergency_cmt = kto * T_brake_basic_eb when V_target &gt; 0
+	T_brake_emergency_cm0 = T_brake_basic_eb when Vtarget = 0
+	T_brake_emergency_cmt = kto * T_brake_basic_eb when Vtarget &gt; 0
 	where
-	V_target is the target speed<RequirementSets>
+	Vtarget is the target speed<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="94e4f272-b360-4c6f-85a6-54962bbf45ca"
@@ -44023,8 +44287,8 @@ am_n; m=3; m=2; m=1; m=0<Sub>
  Name=""
  Guid="8ffaf5d1-c6dd-466e-ac21-b0075ae250ac"
 >The equivalent brake build up time for the service brake shall be computed as follows:
-	T_brake_service_cm0 = T_brake_basic_sb when V_target = 0
-	T_brake_service_cmt = kto * T_brake_basic_sb when V_target &gt; 0<RequirementSets>
+	T_brake_service_cm0 = T_brake_basic_sb when Vtarget = 0
+	T_brake_service_cmt = kto * T_brake_basic_sb when Vtarget &gt; 0<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1e169edd-9e6f-4317-a4d8-7c2011cb44d5"
@@ -44349,7 +44613,7 @@ am_n; m=3; m=2; m=1; m=0<Sub>
  version="3.0.0"
  Name=""
  Guid="29126f21-90ef-4f2d-b868-4d7423855841"
->If (Q_Tbslocked) or (Q_feedback_started) or (V_est &gt; V_target and the indication supervision limit has been exceeded) then
+>If (Q_Tbslocked) or (Q_feedback_started) or (V_est &gt; Vtarget and the indication supervision limit has been exceeded) then
     If Q_Tbslocked then
         T_bs1 = T_bs1_locked
         T_bs2 = T_bs2_locked
