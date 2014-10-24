@@ -168,7 +168,7 @@ namespace GUI.TestRunnerView
                             toolStripCurrentStepTextBox.Text = "<none>";
                         }
 
-                        if (EFSSystem.Runner.SubSequence != null)
+                        if (EFSSystem.Runner.SubSequence != null && EFSSystem.Runner.SubSequence.Frame != null)
                         {
                             Frame = EFSSystem.Runner.SubSequence.Frame;
                             selectedFrame = EFSSystem.Runner.SubSequence.Frame.Name;
