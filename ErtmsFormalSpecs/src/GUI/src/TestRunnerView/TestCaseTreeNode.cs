@@ -176,7 +176,7 @@ namespace GUI.TestRunnerView
                 if (Window != null)
                 {
                     SynchronizerList.SuspendSynchronization();
-                    DataDictionary.Tests.SubSequence subSequence = TestCase.Enclosing as DataDictionary.Tests.SubSequence;
+                    SubSequence subSequence = TestCase.Enclosing as SubSequence;
                     if (subSequence != null)
                     {
                         DataDictionary.Tests.Runner.Runner runner = new DataDictionary.Tests.Runner.Runner(subSequence, true, false);
