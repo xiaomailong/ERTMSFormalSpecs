@@ -2357,7 +2357,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <PreConditions>
 <PreCondition
  Guid="e83c3c3e-9cfa-4ec8-9613-96417be71c7d"
->Kernel.LevelTransition.LTOtoProcess.TRLevel.Value in [Default.Level.L0, Default.Level.LNTC, Default.Level.L1]</PreCondition></PreConditions>
+>Kernel.LevelTransition.LevelTransitionToProcess.TRLevel.Value in [Default.Level.L0, Default.Level.LNTC, Default.Level.L1]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b71b573b-1f53-4f37-97b5-3ea811c3a2c3"
@@ -2756,6 +2756,11 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  Id="3e290fa7-299c-4897-91e4-dbcb5702edbf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5bdc8f39-44a2-4d9e-8fb9-df822fa48600"
+>
+</ReqRef><ReqRef
+ Id="4a5cfdeb-9d79-4d58-8d37-5073de473751"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="41a15e27-5587-4b5f-99bb-27ca53ad4d33"
 >
 </ReqRef><Comment>If the current RBC is an accepting RBC, the on-board sends its train data.</Comment>
 <SubRules></SubRules>

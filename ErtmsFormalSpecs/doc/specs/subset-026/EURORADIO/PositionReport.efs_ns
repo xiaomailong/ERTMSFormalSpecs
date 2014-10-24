@@ -160,6 +160,20 @@
  Guid="7b58eac9-9baa-4e9f-8a88-8c6bdfa96604"
 >
 </ReqRef><Comment>Contains the previous value of the LRBG in order to know if that value has changed.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="LevelTransitionBorderPassed"
+ Guid="7c5e0340-4043-4904-b425-e9c0566e30f3"
+>
+<ReqRef
+ Id="917e038b-c314-4423-b3a6-c0131f148410"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b435db83-8eae-4c1e-9166-fa7aa55d4674"
+>
+</ReqRef><Comment>Indicates if the level transition border was passed during the current cycle.</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="190"
@@ -728,6 +742,7 @@ PositionReport.PositionReportParameters.DataState != DataState.Valid</Expression
  Y="300"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="SendReportDueToLevelTransitionBorderPassedWithMinSafeRearEnd"
  Guid="653f40d4-26f6-4bd3-a8f7-37dc03dcb5ef"
 >
@@ -736,13 +751,18 @@ PositionReport.PositionReportParameters.DataState != DataState.Valid</Expression
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="73e27a1b-0ae1-443d-9777-8fde6f13b382"
 >
+</ReqRef><ReqRef
+ Id="917e038b-c314-4423-b3a6-c0131f148410"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9c4ada28-6979-4b74-9807-1ce8af715b3d"
+>
 </ReqRef><Comment>Indicates if a position report has to be sent due to the passage of level transition border with the min safe rear end.</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="3cdf6774-c76a-42dd-9aa8-76d918c9c115"
 >
-<Expression>False</Expression>
+<Expression>PositionReportEventsTracker.LevelTransitionBorderPassed == True</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -868,6 +888,11 @@ PositionReport.PositionReportParameters.DataState != DataState.Valid</Expression
  Id="edf4ce85-46d4-4827-9f52-c859b33c7c8d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="afbbc51d-7cd4-4194-9c7a-556ead8acb58"
+>
+</ReqRef><ReqRef
+ Id="917e038b-c314-4423-b3a6-c0131f148410"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c309bd73-4bee-48c6-9175-4a0de1b5709c"
 >
 </ReqRef><Comment>Determines if the train has to send a position report to the RBC now.</Comment>
 <Cases>
