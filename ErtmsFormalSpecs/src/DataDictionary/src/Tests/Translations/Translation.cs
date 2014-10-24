@@ -175,6 +175,8 @@ namespace DataDictionary.Tests.Translations
         /// <param name="step"></param>
         public void UpdateStep(Step step)
         {
+            Step previousStep = step.PreviousStep;
+
             step.Requirements.Clear();
             foreach (ReqRef reqRef in Requirements)
             {
@@ -188,6 +190,13 @@ namespace DataDictionary.Tests.Translations
                 newSubStep.Name = "Sub-step" + subStepCounter;
                 newSubStep.setSkipEngine(subStep.getSkipEngine());
                 step.appendSubSteps(newSubStep);
+
+                if (previousStep != null && previousStep.getDistance() != step.getDistance() && subStepCounter == 1)
+                {
+                    Rules.Action newAct = (Rules.Action)Generated.acceptor.getFactory().createAction();
+                    newAct.ExpressionText = "OdometryInterface.UpdateDistance ( " + step.getDistance() + ".0 )";
+                    newSubStep.appendActions(newAct);
+                }
 
                 foreach (Rules.Action action in subStep.Actions)
                 {

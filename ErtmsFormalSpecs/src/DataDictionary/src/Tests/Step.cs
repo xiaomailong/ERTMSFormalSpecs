@@ -315,5 +315,45 @@ namespace DataDictionary.Tests
                 base.unParse(pw, typeId, headingTag, endingTag);
             }
         }
+
+        /// <summary>
+        /// Provides the previous step (if any) in the subsequence
+        /// </summary>
+        public Step PreviousStep
+        {
+            get
+            {
+                Step retVal = null;
+
+                bool found = false;
+                foreach (TestCase testCase in SubSequence.TestCases)
+                {
+                    foreach (Step step in testCase.Steps)
+                    {
+                        if (step == this)
+                        {
+                            found = true;
+                            break;
+                        }
+                        else
+                        {
+                            retVal = step;
+                        }
+                    }
+
+                    if (found)
+                    {
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    retVal = null;
+                }
+
+                return retVal;
+            }
+        }
     }
 }
