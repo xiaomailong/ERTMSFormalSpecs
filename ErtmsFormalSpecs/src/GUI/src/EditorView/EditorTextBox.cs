@@ -564,7 +564,7 @@ namespace GUI
 
                 if (parenthesis == 0)
                 {
-                    if (Char.IsLetterOrDigit(current) || current == '.' || current == '_')
+                    if (Char.IsLetterOrDigit(current) || current == '.' || current == '_' || current == '%')
                     {
                         // Continue on
                     }
@@ -660,6 +660,28 @@ namespace GUI
             "INSERT <expression> IN <collection> WHEN FULL REPLACE <condition>",
             "REMOVE [FIRST|LAST|ALL] <condition> IN <collection>", 
             "REPLACE <condition> IN <collection> BY <expression>",  
+            "%D_LRBG", 
+            "%Level", 
+            "%Mode", 
+            "%NID_LRBG",
+            "%Q_DIRLRBG",
+            "%Q_DIRTRAIN", 
+            "%Q_DLRBG", 
+            "%RBC_ID", 
+            "%RBCPhone", 
+            "%Step_Distance", 
+            "%Step_LevelIN", 
+            "%Step_LevelOUT", 
+            "%Step_ModeIN", 
+            "%Step_ModeOUT",
+            "%Step_Messages_0",
+            "%Step_Messages_1",
+            "%Step_Messages_2",
+            "%Step_Messages_3",
+            "%Step_Messages_4",
+            "%Step_Messages_5",
+            "%Step_Messages_6",
+            "%Step_Messages_7",
         };
 
         /// <summary>
@@ -889,6 +911,9 @@ namespace GUI
             return retVal;
         }
 
+        private int selectionStart = 0;
+        private int selectionLength = 0;
+
         /// <summary>
         /// Displays the combo box if required and updates the edotor's text
         /// </summary>
@@ -899,7 +924,11 @@ namespace GUI
 
             if (prefix.Length <= EditionTextBox.SelectionStart)
             {
-                EditionTextBox.Select(EditionTextBox.SelectionStart - prefix.Length, prefix.Length);
+                // It seems that selection start and length may be lost when losing the focus. 
+                // Store them to be able to reapply them 
+                selectionStart = EditionTextBox.SelectionStart - prefix.Length;
+                selectionLength = prefix.Length;
+                EditionTextBox.Select(selectionStart, selectionLength);
                 if (allChoices.Count == 1)
                 {
                     EditionTextBox.SelectedText = allChoices[0].DisplayName;
@@ -1057,13 +1086,15 @@ namespace GUI
         {
             if (PendingSelection)
             {
+                PendingSelection = false;
+                EditionTextBox.Select(selectionStart, selectionLength);
+
                 EditionTextBox.SelectedText = SelectionComboBox.Text;
                 EditionTextBox.SelectionStart = EditionTextBox.SelectionStart;
                 SelectionComboBox.Text = "";
                 SelectionComboBox.Items.Clear();
                 SelectionComboBox.Hide();
                 explainRichTextBox.Hide();
-                PendingSelection = false;
             }
         }
 
