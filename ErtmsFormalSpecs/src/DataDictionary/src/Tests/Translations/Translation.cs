@@ -849,7 +849,7 @@ namespace DataDictionary.Tests.Translations
 
             if (isPacket(structure))
             {
-                Types.Structure defaultPacketType = (Types.Structure)structure.Value.Type;
+                Types.Structure defaultPacketType = (Types.Structure)structure.Type;
                 Values.StructureValue defaultPacket = new Values.StructureValue(defaultPacketType);
 
                 Types.NameSpace packetNameSpace = structure.NameSpace;
