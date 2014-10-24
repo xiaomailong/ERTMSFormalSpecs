@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 using System;
+using System.Security;
 
 namespace DataDictionary
 {
@@ -37,17 +38,12 @@ namespace DataDictionary
             {
                 if (value == null)
                 {
-                    value = "";
+                    setName("");                
                 }
-                if (value.EndsWith(" "))
+                else
                 {
-                    while (value.EndsWith(" "))
-                    {
-                        value = value.Remove(value.Length - 1);
-                    }
-                    Log.ErrorFormat("A name cannot end with a white space. Trimmed to " + value);
+                    setName(value.Trim());
                 }
-                setName(value);
                 __fullName = null;
             }
         }
