@@ -355,7 +355,8 @@ namespace GUI.TestRunnerView.TimeLineControl
             /// <param name="evt"></param>
             public void RegisterEvent(ModelEvent evt)
             {
-                if (evt.Time > LastActivationTime)
+                SubStepActivated currentSubStepActivation = evt as SubStepActivated;
+                if (evt.Time > LastActivationTime || currentSubStepActivation != null)
                 {
                     LastActivationTime = evt.Time;
                     AllocatedPositions.Add(new List<ModelEvent>());
@@ -363,7 +364,6 @@ namespace GUI.TestRunnerView.TimeLineControl
 
                     if (LastSubStepActivation != null)
                     {
-                        SubStepActivated currentSubStepActivation = evt as SubStepActivated;
                         if (currentSubStepActivation == null)
                         {
                             AllocatedPositions[AllocatedPositions.Count - 1].Add(LastSubStepActivation);
@@ -374,7 +374,6 @@ namespace GUI.TestRunnerView.TimeLineControl
                 List<ModelEvent> events = AllocatedPositions[AllocatedPositions.Count - 1];
                 if (!events.Contains(evt))
                 {
-                    SubStepActivated currentSubStepActivation = evt as SubStepActivated;
                     if (currentSubStepActivation != null)
                     {
                         if (currentSubStepActivation.SubStep.Step != null)
