@@ -17,7 +17,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
+using Utils;
 
 namespace DataDictionary.Tests.Translations
 {
@@ -138,9 +138,9 @@ namespace DataDictionary.Tests.Translations
         /// <summary>
         /// The enclosing translation dictionary
         /// </summary>
-        public Tests.Translations.TranslationDictionary TranslationDictionary
+        public TranslationDictionary TranslationDictionary
         {
-            get { return Enclosing as Tests.Translations.TranslationDictionary; }
+            get { return EnclosingFinder<TranslationDictionary>.find(this); }
         }
 
         /// <summary>
