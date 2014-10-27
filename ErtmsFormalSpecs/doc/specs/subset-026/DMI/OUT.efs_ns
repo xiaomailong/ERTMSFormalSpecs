@@ -6,12 +6,12 @@
  Name="OUT"
  Guid="2e7bb3be-16e0-4529-8f0b-c5ac83bceb2d"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Enumerations>
 <Enum
  Default="None"
+ X="960"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -69,31 +69,6 @@
 </ReqRef><Comment>Handles display of the current mode</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="161762a7-1189-433c-a31c-8c85f84f08cb"
->
-<Comment>Updates the value of the mode that should be displayed according to the Kernel mode</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="2844d155-0eb3-4eb9-b635-aeca4b1f7cb9"
->
-<PreConditions>
-<PreCondition
- Guid="7ee49310-9903-44ff-b7f4-90784f4c01d5"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="03ff2494-fd28-4b4b-80f1-40ae76f3d84b"
->Mode &lt;- Kernel.Mode</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Output when mandatory"
@@ -110,8 +85,7 @@
 <PreConditions>
 <PreCondition
  Guid="753ed972-9c76-4698-ad97-33ac98bacad8"
-><Comment></Comment>
-ErtmsEtcsModeMandatory()</PreCondition></PreConditions>
+>ErtmsEtcsModeMandatory()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4e9058fa-1f72-44e1-9376-4c12cf21596e"
@@ -139,7 +113,6 @@ ErtmsEtcsModeMandatory()</PreCondition></PreConditions>
  Name="Updates the request status"
  Guid="c2a81133-bb46-452a-afb1-4da5a22b2e0a"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="2e37143a-f3e2-43c0-a250-7dc0d45499d6"
@@ -147,8 +120,7 @@ ErtmsEtcsModeMandatory()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7a40e9dc-de58-4954-be87-2ceafce9ddce"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -164,7 +136,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="6a216dbf-0b5b-4869-bccd-e941cd917b13"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -219,32 +190,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Handles display of information relative to the brake reason.</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="945b1885-0932-43f4-9b04-1e92e0410356"
->
-<Comment>If the information is either available or active, keep the value up to date for display</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="f1a8852d-f15e-4a82-92a1-85b041cf5239"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="195b2dbf-22d7-4c63-b11d-4378c05d6123"
->THIS.OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ae406ba3-7f28-4ecf-936e-37bb2932406f"
->Level &lt;- Kernel.Level.Value</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -280,8 +225,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="d3c15e47-c4d6-468f-93db-bc2d765f81bf"
-><Comment></Comment>
-Display()</Action></Actions>
+>Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -300,8 +244,7 @@ Display()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="0d3def15-41d7-49f9-b8a1-288267313656"
-><Comment></Comment>
-CurrentErtmsEtcsLevelMandatory()</PreCondition></PreConditions>
+>CurrentErtmsEtcsLevelMandatory()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="23247454-343e-4366-8309-a99ac3de6f61"
@@ -329,7 +272,6 @@ CurrentErtmsEtcsLevelMandatory()</PreCondition></PreConditions>
  Name="Updates the request status"
  Guid="157e4c8a-420e-408f-b17c-a31ab9229501"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1e784a97-4006-48aa-8ba4-be2db404ef50"
@@ -337,8 +279,7 @@ CurrentErtmsEtcsLevelMandatory()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d144d142-c95f-4ff8-a029-01114e587e04"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -354,7 +295,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="d531f17e-9380-4098-b42b-54b1cac1fe37"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -384,7 +324,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 >
 <Comment>Provides the state of the information displayed to the driver</Comment>
 </StructureElement><StructureElement
- TypeName="Default.Level"
+ TypeName="Default.LevelDataStruct"
  Default=""
  Mode="Outgoing"
  Implemented="TRUE"
@@ -395,7 +335,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>The current level</Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="60"
+ X="110"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -408,36 +349,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="1f13ddf4-b39e-41c1-a3d9-8739780a4c89"
 >
 </ReqRef><Comment>Handles display of information relative to the driver ID.</Comment>
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="cbbce177-844e-4242-8172-23497e4a05f9"
->
-<Comment>Keep the value of EmergencyStops up-to-date, but only if this information can be displayed</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="7079e769-b475-4285-8e8a-cf7d6e80e8ef"
->
-<PreConditions>
-<PreCondition
- Guid="76ce8e08-b372-452c-a978-83f32c2a88dc"
->OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="a36e66ff-5d2d-4af7-a3b9-882281399754"
-><Comment></Comment>
-Kernel.DriverId.DataState == Default.DataState.Valid</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="3a7adecc-6646-4d3a-ab14-8b07e02c0e6f"
->Id &lt;- Kernel.DriverId.Value</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -459,7 +370,6 @@ Kernel.DriverId.DataState == Default.DataState.Valid</PreCondition></PreConditio
  Name="Updates the request status"
  Guid="30bec30c-104a-461b-b201-a77ee04535d2"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1890816c-118f-40ff-a9b2-b9df7cb5c901"
@@ -467,8 +377,7 @@ Kernel.DriverId.DataState == Default.DataState.Valid</PreCondition></PreConditio
 <Actions>
 <Action
  Guid="a3708dae-7d41-442f-b0b8-2e8cb7a9e939"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -484,7 +393,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="ff1d5ad0-1b79-438c-bc42-3b10824c3200"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -525,8 +433,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>The driver&apos;s ID number</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="60"
+ X="440"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -539,35 +447,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="37b00acc-091e-47f2-8236-e3a3909fe368"
 >
 </ReqRef><Comment>Display the RBC contact information</Comment>
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="ab4d9f1c-831d-4ef2-813d-d551c05ef25b"
->
-<Comment>Update the output value when display is requested</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="74904580-ca74-4c2d-92d4-6e8639786244"
->
-<PreConditions>
-<PreCondition
- Guid="03aa01ef-5c7e-41c1-adb9-bfa449a0ac08"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7856aaad-190f-4795-b48c-e29b2d53f82c"
->RBCContactInformation &lt;- EURORADIO.LastKnownRBC</Action><Action
- Guid="a0d2451b-237c-4d9c-bf90-12ec94387235"
->NetworkId &lt;- EURORADIO.LastKnownNetworkId</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -589,7 +468,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="08f4cbeb-6cbc-4e22-bc4e-467ee020f9ef"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="0d860bfc-a068-46d2-9c33-d9051d63f6f9"
@@ -597,8 +475,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="c616e830-2c9c-4a4c-9efc-031bc0324327"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -614,7 +491,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="24fe3ce2-8bcb-4261-a4ea-4188c077fbbe"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -662,7 +538,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>Radio Network identity.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="120"
+ X="220"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -675,34 +552,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="58ad1909-3f6a-4674-82b3-ba72cb307bd6"
 >
 </ReqRef><Comment>Provides the train running number</Comment>
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="e292de65-b455-469c-be9d-489b6335420b"
->
-<Comment>Updates the value when display is requested</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="ea6f4be3-180c-4a57-81eb-85a5919853f3"
->
-<PreConditions>
-<PreCondition
- Guid="8d1575a9-91fc-45c8-8f7e-c00f834120fe"
-><Comment></Comment>
-OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f3a9d8ce-e6a1-4172-b66b-5be711d63c3b"
->Number &lt;- Kernel.TrainRunningNumber.Value</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -724,7 +573,6 @@ OutputInformation.DisplayRequested</PreCondition></PreConditions>
  Name="Updates the request status"
  Guid="59ab7e0e-fdc1-42a4-8b3c-2dd39aa44961"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="26511343-05ee-424e-81d5-fa5d215b0abb"
@@ -732,8 +580,7 @@ OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4bfa712f-c5c4-4bdf-81da-777d5a731aa9"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -749,7 +596,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="d1f1936a-d941-41c9-b907-6c6c5e16d86b"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -789,8 +635,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>The train running number</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="120"
+ X="220"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -810,32 +655,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the train speed</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="79f4ac7a-9c67-4ffd-87a8-7a42e4c88cd1"
->
-<Comment>Updates the value when display is requested</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="2390984d-fd81-4f13-9e63-70ec1f9db39c"
->
-<PreConditions>
-<PreCondition
- Guid="18c0d73a-086d-4660-a053-8eabb5aef21d"
-><Comment></Comment>
-OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ef7b5877-7325-4951-994a-7959661cf001"
->Speed &lt;- Odometry.TrainSpeed()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Output when mandatory"
@@ -852,8 +671,7 @@ OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="f3ace3a4-209e-4d44-8f2d-3e680aa97a57"
-><Comment></Comment>
-TrainSpeedMandatory()</PreCondition></PreConditions>
+>TrainSpeedMandatory()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b70ebb4c-270c-4dd8-97fb-686b6d0644aa"
@@ -881,7 +699,6 @@ TrainSpeedMandatory()</PreCondition></PreConditions>
  Name="Updates the request status"
  Guid="0c0e9ffc-4e00-4c82-bfd7-24e712f43db7"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="9f024596-db60-4e5a-a2bb-d65f0f0df17f"
@@ -889,8 +706,7 @@ TrainSpeedMandatory()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c3bc4636-3065-4de3-8405-ecb296a90dac"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -906,7 +722,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="641c586b-dc7d-43de-854f-cc88fa7c0a58"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -945,7 +760,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 >
 </StructureElement></Structure><Structure
  Default=""
- Y="180"
+ X="330"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -962,7 +777,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fc07a549-5d16-45d6-b97e-f5ae67bc78a6"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="66b79932-5e84-4126-abe6-3094347749c2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -976,98 +790,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Handles display of information relative to the train permitted speed.</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="21946124-3d50-4855-864d-53a5845df7ba"
->
-<ReqRef
- Id="09e9b21f-a204-44c7-9829-f4221f5ff7a6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="437dece3-cb84-449c-b094-c7141761144d"
->
-<Comment></Comment>
-</ReqRef><ReqRef
- Id="74e64307-2966-461e-a976-9a0194ca8514"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5c101f1a-5c44-4522-96fa-a040dc6b3fac"
->
-<Comment></Comment>
-</ReqRef><Comment>Keep the value of Speed up-to-date, but only if this information can be displayed</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="6b84c2b1-233e-4c52-8153-692db15d6835"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="27f43f3b-9d33-4f93-8af9-d46bf9c93913"
->Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
- Guid="6419b761-6bf8-4aa3-af63-9c94abdb9795"
-><Comment></Comment>
-OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- Name="Update variable"
- Guid="074eb3af-d97b-455d-bf4b-735c57352494"
->
-<Comment>Updates the permitted speed according to the mode</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Train in SR, PT, SH, SN or RV modes"
- Guid="ceca03bb-563c-40a7-be1e-2646f21d018b"
->
-<Comment>Mode SR, PT, SH, SN or RV</Comment>
-<PreConditions>
-<PreCondition
- Guid="04868972-8866-4251-934f-1527923ad496"
->Kernel.Mode == Default.Mode.SR
-  OR  
-Kernel.Mode == Default.Mode.PT
-  OR  
-Kernel.Mode == Default.Mode.SH
-  OR  
-Kernel.Mode == Default.Mode.SN
-  OR  
-Kernel.Mode == Default.Mode.RV</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f6842f02-0829-4aa9-8f87-595353483595"
-><Comment></Comment>
-Speed &lt;- Kernel.ModeRelatedSpeedLimits.SRModeSpeedLimit()</Action><Action
- Guid="fa977fee-280c-40d9-8961-ac5e8494d9ef"
->OutputInformation.DisplayRequested &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Otherwise"
- Guid="3c0e9560-e579-4971-87cc-9fb0389c9b3a"
->
-<Comment>Otherwise</Comment>
-<PreConditions>
-<PreCondition
- Guid="a9971c0e-2925-4453-b4c7-43b5a9104e12"
-><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.Monitoring in  [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="abfe8af1-6df4-4510-9e27-17aa6e1e711a"
-><Comment></Comment>
-Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -1087,19 +809,16 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions
  Name="Display when available"
  Guid="9a747a29-654c-4a69-972e-b43b2f773750"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="a5cf71eb-33aa-4c38-ae2d-b57bf8296310"
-><Comment></Comment>
-NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
+>NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="a3545fc4-9dac-4808-a823-56c23197224d"
 >PermittedSpeedAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d02d6313-d270-47a5-ad3e-88040656c3bd"
-><Comment></Comment>
-Display()</Action></Actions>
+>Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -1123,7 +842,6 @@ Display()</Action></Actions>
  Name="Updates the request status"
  Guid="e6755f83-3ba0-4518-8ae8-ecda833b8d89"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e49bea1a-80dd-4154-a21c-7e20738a3ee1"
@@ -1131,8 +849,7 @@ Display()</Action></Actions>
 <Actions>
 <Action
  Guid="4505b051-fa7c-4a10-a079-58524032a600"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1148,7 +865,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="c3b93dd9-2788-458a-8064-6bb3437d11e5"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1189,7 +905,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>The permitted speed.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
+ X="550"
  Y="180"
  Width="100"
  Height="50"
@@ -1215,36 +931,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the target speed</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="0cc4030a-fa8f-4691-b6e3-a19fe4187f41"
->
-<Comment>TODO: currently this rule is not executed, otherwise EFS gets errors while computing intersection of a target with EBD curve. Its seems to be a problem in the specification. See the comment for paragraph 3.13.9.3.5.7, marked as a spec issue.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="192abb43-8a6c-4da5-8120-07c256ce6121"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="cfab63ee-7d53-4866-889d-af9c47e77295"
-><Comment></Comment>
-OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="718632bd-e801-4c45-95f0-2a3479af5bb4"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target]</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="c312fe49-c752-4ce5-8361-a09bc8d7ecab"
-><Comment></Comment>
-Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -1259,19 +945,16 @@ Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed
  Name="Display when available"
  Guid="27d9b615-cc37-4858-ad42-58404fd8b255"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="c1bd674a-350b-4f1f-aa2b-225cd4a5fe8a"
 >NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="af7cbf9c-290f-4c7f-8a2d-88f4066397d8"
-><Comment></Comment>
-TargetSpeedAvailable()</PreCondition></PreConditions>
+>TargetSpeedAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="87647b02-6c87-4f8b-a641-88a63848fb48"
-><Comment></Comment>
-Display()</Action></Actions>
+>Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -1295,7 +978,6 @@ Display()</Action></Actions>
  Name="Updates the request status"
  Guid="c45ffdd7-d0c1-4d4e-a477-3141d78721b4"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="30069667-e7bb-4089-b1ba-599e3adb047e"
@@ -1303,8 +985,7 @@ Display()</Action></Actions>
 <Actions>
 <Action
  Guid="0f94af17-6998-4edd-80ba-1602e2438a1e"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1320,7 +1001,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="203267b4-2fe1-444e-b30f-b9a4baf6b9f8"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1359,7 +1039,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 >
 </StructureElement></Structure><Structure
  Default=""
- Y="240"
+ X="440"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1379,38 +1060,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the release speed</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="a3647c5d-ea1f-4e03-949a-5ac784053d50"
->
-<ReqRef
- Id="ee7b5ecc-20f6-480c-aa0a-7836d5308d32"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="86bbfe66-d3c6-4d04-a7f4-b54c35c31b93"
->
-</ReqRef><Comment>Updates the output value when display is requested</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="93030fc8-cde7-4a29-a4cb-79d4d8d45e7a"
->
-<PreConditions>
-<PreCondition
- Guid="bfda245f-e56b-40df-b3fd-b22f703f58a4"
->OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="8038d0e6-78ca-47b8-8610-07535136491d"
->Kernel.SpeedAndDistanceMonitoring.DisplayReleaseSpeed()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ac88bf52-f540-44c2-8c94-930fb08165ef"
->Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedMonitoring.ReleaseSpeed</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -1425,19 +1074,16 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Display when available"
  Guid="0c67334d-3458-485b-bb34-f4e5e112ad60"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="db968d58-ebd5-45d5-987c-755499d5cb1f"
 >NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="9cf22a84-5cc3-469d-85ef-b332c2851284"
-><Comment></Comment>
-ReleaseSpeedAvailable()</PreCondition></PreConditions>
+>ReleaseSpeedAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="dc193e95-a2ee-4da7-96e3-d43106fb5c08"
-><Comment></Comment>
-Display()</Action></Actions>
+>Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -1461,7 +1107,6 @@ Display()</Action></Actions>
  Name="Updates the request status"
  Guid="2ff175c6-5101-4ed3-a011-f25fc83cc51d"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="bc5da72e-ae0a-4034-bd54-521e4d8e8f61"
@@ -1469,8 +1114,7 @@ Display()</Action></Actions>
 <Actions>
 <Action
  Guid="f01ab45d-7d87-491f-9a40-e3aa20e05bf1"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1486,7 +1130,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="f19e700f-07b5-4295-a7e8-995a2636008d"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1525,8 +1168,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 >
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="240"
+ X="770"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1551,36 +1193,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the speed and distance monitoring supervision status</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="f3d07897-bef3-4e2c-8e5b-60b429981a77"
->
-<Comment>Updates the output value when the status need be sent to the DMI</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="ee8f8820-7a3e-488c-940c-9b5393756831"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="63b462dd-77eb-421b-b645-7b971238f6ec"
->OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="7488f13c-8a6e-4cf8-8931-dd021c1574b6"
->Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ff5f5c50-07e9-4fef-b3f1-354e16f8124b"
->SupervisionStatus &lt;- Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</Action><Action
- Guid="975c42a9-7e96-48dd-99bb-ee51294679d3"
->Monitoring &lt;- GetMonitoringType()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -1595,19 +1207,16 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Display when available"
  Guid="e992f1ca-e1b6-4ebb-aedd-def1285cdeef"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="78a1f07a-2062-4e9a-a481-34f15dc862f8"
 >NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="cee02dc0-912b-4e1e-a000-ad106e230026"
-><Comment></Comment>
-SpeedAndDistanceMonitoringSupervisionStatusAvailable()</PreCondition></PreConditions>
+>SpeedAndDistanceMonitoringSupervisionStatusAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5157468e-e1b6-4d8a-9aec-e6a3e93259d7"
-><Comment></Comment>
-Display()</Action></Actions>
+>Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -1631,7 +1240,6 @@ Display()</Action></Actions>
  Name="Updates the request status"
  Guid="a8964ed7-0394-491a-bbbf-1ac0ed685766"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d0032115-97d2-404e-8579-a7330e668798"
@@ -1639,8 +1247,7 @@ Display()</Action></Actions>
 <Actions>
 <Action
  Guid="7f4d8513-d902-4aca-adc5-1b869878345f"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1656,7 +1263,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="9e26a77a-84f3-47c9-92c2-796c3af2d415"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1693,7 +1299,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="SupervisionStatus"
  Guid="05418ba3-2072-44cd-854f-981486368998"
 >
-<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="MonitoringType"
  Default=""
@@ -1702,9 +1307,9 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Monitoring"
  Guid="247963ff-a946-42ed-b70e-8c92fbe0eb46"
 >
-<Comment></Comment>
 </StructureElement></Structure><Structure
  Default=""
+ X="220"
  Y="300"
  Width="100"
  Height="50"
@@ -1746,7 +1351,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="14335465-2fe3-4d37-890d-8e124c007f0b"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e51e35e5-61a7-43e2-96e4-00e09b0507b7"
@@ -1754,8 +1358,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="42e147cb-8693-4572-b0e8-39e4df8bb560"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action><Action
+>THIS.OutputInformation.RequestDisplay()</Action><Action
  Guid="65b41d3f-e4e0-4c36-9305-9b7d2998a325"
 >Reason &lt;- reason</Action></Actions>
 </RuleCondition></Conditions>
@@ -1773,7 +1376,6 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
  Name="Updates the status of the request according to the mode"
  Guid="bb4f79ff-cffb-49f8-bf6f-486f90631ca6"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1813,7 +1415,6 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
 <Comment>The trip reason</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
  Y="300"
  Width="100"
  Height="50"
@@ -1848,7 +1449,6 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
  Name="Updates the request status"
  Guid="52c3e64d-83bb-4700-a185-9f7b7e8015c3"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="cba88b8f-30d5-4f59-b2df-e86965c14c77"
@@ -1856,8 +1456,7 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
 <Actions>
 <Action
  Guid="96337ab1-fc07-4f09-bb46-704c5b246166"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1873,7 +1472,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="677d872f-c5e6-40f0-abe6-70685f4ec363"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1912,7 +1510,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>Indicates whether a brake (service or emergency) is active</Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="360"
+ Y="780"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1953,7 +1551,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="f54af30f-be4c-44ee-b4a4-f0d2e0413b9c"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e9ef0638-e784-4c12-96b9-f84c01b3a1f5"
@@ -1961,8 +1558,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="44c800ec-e25d-4917-be36-00c6244139f4"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action><Action
+>THIS.OutputInformation.RequestDisplay()</Action><Action
  Guid="d998e2cd-9f0a-4366-bb76-ff996db04b98"
 >Text &lt;- text</Action></Actions>
 </RuleCondition></Conditions>
@@ -1980,7 +1576,6 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
  Name="Updates the status of the request according to the mode"
  Guid="19e19d77-886e-4bf6-b135-1b731b475d5c"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2020,7 +1615,7 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
 </StructureElement></Structure><Structure
  Default=""
  X="110"
- Y="360"
+ Y="780"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -2061,7 +1656,6 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
  Name="Updates the request status"
  Guid="3c8c7d01-c85d-46c6-878f-cef3a991013e"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="632c7675-7d50-488d-89c8-e3d86c4f1f14"
@@ -2069,11 +1663,9 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
 <Actions>
 <Action
  Guid="4363861c-bb80-4be3-9741-10e5036b5c52"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action><Action
+>THIS.OutputInformation.RequestDisplay()</Action><Action
  Guid="c0458d3c-1475-4aca-a0cb-733f253f4596"
-><Comment></Comment>
-Text &lt;- text</Action></Actions>
+>Text &lt;- text</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2089,7 +1681,6 @@ Text &lt;- text</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="0c2bf2fa-853b-4496-9d78-130a518cd131"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2128,6 +1719,7 @@ Text &lt;- text</Action></Actions>
 <Comment>The text to display</Comment>
 </StructureElement></Structure><Structure
  Default=""
+ X="660"
  Y="420"
  Width="100"
  Height="50"
@@ -2162,7 +1754,6 @@ Text &lt;- text</Action></Actions>
  Name="Updates the request status"
  Guid="8397ac85-8a14-4f4a-9e4a-a387185b0473"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="15fbece4-57c1-4441-989b-9d8c38b20fa8"
@@ -2170,8 +1761,7 @@ Text &lt;- text</Action></Actions>
 <Actions>
 <Action
  Guid="e4448afc-56e7-4c8a-a00e-58e4586a8b51"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2187,7 +1777,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="3953b533-27f0-48e3-b49b-2bcd3a6dc0ee"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2226,8 +1815,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>Indicates that reversing is allowed</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="420"
+ X="440"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -2293,7 +1882,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Update displayed announcements"
  Guid="aa272eda-c845-48e0-91f9-d146e2f3bc97"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d65673f7-4589-4d1a-9cd3-d6ba89f8e929"
@@ -2422,7 +2010,6 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
  Name="Remove announcements past their end condition"
  Guid="6b494b2e-2c53-4705-8eec-6522ca03e158"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -2455,7 +2042,6 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
  Name="Updates the request status"
  Guid="68173e96-a12a-4899-8351-b50350d23af3"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="b90793d4-3205-45b0-82d0-d02693f71e24"
@@ -2463,8 +2049,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 <Actions>
 <Action
  Guid="8116f6c0-ec13-40e8-9a41-a9bfe3af0a54"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2480,7 +2065,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="d43acf04-bbfa-440d-873a-34e2433fc1e0"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2517,7 +2101,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="PlanningInformation"
  Guid="13896f19-7cb7-45e3-857c-b739dc0cee8e"
 >
-<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementCol"
  Default=""
@@ -2561,10 +2144,10 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="301792d1-6909-48bb-9423-60e81e339f84"
 >
-</ReqRef><Comment></Comment>
-</StructureElement></Structure><Structure
+</ReqRef></StructureElement></Structure><Structure
  Default=""
- Y="480"
+ X="330"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -2600,12 +2183,10 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Update the TCProfile with sound horn"
  Guid="0dc169fd-41cd-4887-b5e0-520154065a58"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="0968cf56-3b93-437d-90cc-aec24193b7f2"
-><Comment></Comment>
-OutputInformation.DisplayRequested</PreCondition></PreConditions>
+>OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -2628,7 +2209,6 @@ OutputInformation.DisplayRequested</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b9f81081-46d8-499a-bfd1-3df9809e2580"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="3f38b783-07e2-4c8a-bfd3-a5e8de65d29b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -2653,8 +2233,7 @@ OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="964f9fc5-b40c-408d-9d98-427f9b0c536c"
-><Comment></Comment>
-THERE_IS_IN ActiveConditions |(
+>THERE_IS_IN ActiveConditions |(
 X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea
   AND  
 NOT X.IsAnnouncement
@@ -2664,8 +2243,7 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd(X)
 <Actions>
 <Action
  Guid="21498138-871c-4035-8eda-ed138b81aa0f"
-><Comment></Comment>
-PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
+>PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
     Distance=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea),
     ProfilePoint=&gt;X,
     TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea
@@ -2680,7 +2258,6 @@ PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f70936f8-66a1-4f27-b571-bd19c4b9e9dc"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="280a63e0-22df-4f00-8510-44fdf99aa05f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -2695,8 +2272,7 @@ PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.
 <PreConditions>
 <PreCondition
  Guid="137dac50-09d6-4b1d-98e7-03f2cbc17a0c"
-><Comment></Comment>
-THERE_IS_IN ActiveConditions | (
+>THERE_IS_IN ActiveConditions | (
 X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea
   AND  
 NOT X.IsAnnouncement
@@ -2706,8 +2282,7 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd(X)
 <Actions>
 <Action
  Guid="dd8c664b-f24f-4112-8314-a0df1cd21574"
-><Comment></Comment>
-PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
+>PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
     Distance=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea),
     ProfilePoint=&gt;X,
     TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea
@@ -2732,8 +2307,7 @@ PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.
 <Actions>
 <Action
  Guid="120e50dc-b447-40f5-9e72-762c0b86a068"
-><Comment></Comment>
-MapToDMI()</Action></Actions>
+>MapToDMI()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2751,12 +2325,10 @@ MapToDMI()</Action></Actions>
  Name="Update displayed announcements"
  Guid="ea7c2cff-4b92-444f-bfbd-20e26d0ba90f"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="eadfd07e-2750-432a-8857-64ddd5f0db76"
-><Comment></Comment>
-OutputInformation.DisplayRequested</PreCondition></PreConditions>
+>OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -2774,14 +2346,12 @@ OutputInformation.DisplayRequested</PreCondition></PreConditions>
  Name="Copy relevant announcements to Announcements"
  Guid="c3ee7985-d1ba-4ee5-bd00-3185dd3fe4e8"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="b501096d-5057-466d-a460-16d5c836ceed"
-><Comment></Comment>
-APPLY Kernel.TrackDescription.TrackConditions.General.TCDisplay.DisplayAnnouncement(X)
+>APPLY Kernel.TrackDescription.TrackConditions.General.TCDisplay.DisplayAnnouncement(X)
 ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements | 
 (
   Kernel.TrackDescription.TrackConditions.General.TCDisplay.IsInSoundHornGroup(X.Type)
@@ -2813,14 +2383,12 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
  Name="Remove announcements past their end condition"
  Guid="d8e69cc4-5f84-4777-8303-85bb7247e847"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="2a2107fb-0b0d-4ba0-a97a-e44c76c7df83"
-><Comment></Comment>
-ActiveConditions &lt;-
+>ActiveConditions &lt;-
   MAP ActiveConditions | ( NOT Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd ( Condition =&gt; X)
                              AND
                            X.Time &gt; Kernel.DateAndTime.CurrentTime )
@@ -2857,8 +2425,7 @@ ActiveConditions &lt;-
 <Actions>
 <Action
  Guid="848f8401-d665-400b-b48d-be8bbfa8d170"
-><Comment></Comment>
-PlanningInformation &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToSoundHorn(X)</Action></Actions>
+>PlanningInformation &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToSoundHorn(X)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2874,14 +2441,12 @@ PlanningInformation &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TC
  Name="Copy the changes of traction systems"
  Guid="f3a6c5be-3628-41ce-a5d2-26ca2eb4bbda"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="9933f72e-c217-4e30-8566-3181442f2f62"
-><Comment></Comment>
-APPLY InsertTractionSystem(X)
+>APPLY InsertTractionSystem(X)
 ON Kernel.TrackDescription.TrackConditions.TractionSystems.TCTractionSystems</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -2941,17 +2506,14 @@ IN PlanningInformation</Action></Actions>
  Name="Updates the request status"
  Guid="2f470ff1-873a-4539-a4d8-5a0d6ed2544e"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1bdc9c78-0559-44ac-82a4-5796f7c00f15"
-><Comment></Comment>
-TrackConditionsWithSoundHornAvailable()</PreCondition></PreConditions>
+>TrackConditionsWithSoundHornAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6eb7b085-68c9-4cc1-a257-1a0b570f47c7"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2967,7 +2529,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="256d0140-d2a9-45a8-9cfc-193f2961e8dd"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3004,7 +2565,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="PlanningInformation"
  Guid="d173d1dc-fa75-4e91-8d2b-b378f6a9607a"
 >
-<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCAnnouncementCol"
  Default=""
@@ -3028,11 +2588,10 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="16dbd31a-c116-4cb6-a03a-ed2ce0da7e57"
 >
-</ReqRef><Comment></Comment>
-</StructureElement></Structure><Structure
+</ReqRef></StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="480"
+ X="550"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3052,49 +2611,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the geographical position of the train</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="01247fa8-470b-4a14-9241-cf02fc4cca79"
->
-<ReqRef
- Id="09e9b21f-a204-44c7-9829-f4221f5ff7a6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1336ab23-b79c-48ef-b95e-83539594069c"
->
-<Comment></Comment>
-</ReqRef><ReqRef
- Id="74e64307-2966-461e-a976-9a0194ca8514"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fcfd55aa-d453-4e93-affa-fddb95e0225c"
->
-<Comment></Comment>
-</ReqRef><Comment>Keep the value of Speed up-to-date, but only if this information can be displayed</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="7fb4cb71-6874-4f28-9075-6001303250e9"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="66e26df1-3de2-482f-ad92-f12fbf0ec8d8"
->Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
- Guid="d875d4e5-c722-4867-8ff4-13b0df014c5c"
-><Comment></Comment>
-OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="8294da13-c432-41af-8af5-7ba212f240de"
->Position &lt;- Kernel.TrainPosition.FrontEndPosition(
-    PointOfInterest=&gt;DistanceInterval.Nom
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -3109,7 +2625,6 @@ OutputInformation.DisplayRequested</PreCondition></PreConditions>
  Name="Display when available"
  Guid="b2391609-d363-46d4-b0d6-0dcef2d7cbe8"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="c537f726-8803-4303-8ee5-2c03fff6b039"
@@ -3119,8 +2634,7 @@ OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b24f0281-a1f7-4c77-bcca-827aaaf34fbd"
-><Comment></Comment>
-Display()</Action></Actions>
+>Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -3144,7 +2658,6 @@ Display()</Action></Actions>
  Name="Updates the request status"
  Guid="b23e5f43-3d19-4301-9551-00df3b009ed4"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="8a078331-f869-4979-9161-f369d645920d"
@@ -3152,8 +2665,7 @@ Display()</Action></Actions>
 <Actions>
 <Action
  Guid="dbb8b604-25a0-47c2-84c3-8be34d04acbd"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3169,7 +2681,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="aef92b8c-0b9a-45f8-8197-9da436598f90"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3197,7 +2708,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="OutputInformation"
  Guid="4b181c09-ea8a-4566-bc29-e559c6eaf946"
 >
-<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
@@ -3208,7 +2718,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 >
 </StructureElement></Structure><Structure
  Default=""
- Y="540"
+ X="770"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3242,7 +2753,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="afb93a75-d4c2-4079-b6fe-745db568f019"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="4e821710-4ca6-4c21-bafe-e6a6f253b70a"
@@ -3250,8 +2760,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="43962877-b6d3-4d4e-b030-c4e0f5858340"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3267,7 +2776,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="0370c536-6e9e-4180-bd99-90206e76e11f"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3306,7 +2814,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>The override status</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
+ X="660"
  Y="540"
  Width="100"
  Height="50"
@@ -3341,7 +2849,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="74ef36d2-7e60-491a-9dbc-32b9533bb928"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="69500a35-28b1-4669-a36c-c4ef64ad06da"
@@ -3349,8 +2856,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="3bfbbb9e-57eb-4462-a2c1-e210ee395356"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3366,7 +2872,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="ac49680f-6d8d-4fd2-bda0-9fd18437c806"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3405,7 +2910,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>Indicates that the LX is non protected</Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="600"
+ X="770"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3439,7 +2945,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="f462bd97-0834-42b2-8917-c305f9b09ded"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="79977fa9-364e-499e-9deb-07c81b40b02f"
@@ -3447,8 +2952,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="3760cd6b-eb73-4edb-b32c-c009bec05ecf"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3464,7 +2968,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="7801aafb-e3c2-4dc2-b47b-e031c9cfc686"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3503,8 +3006,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>The RBC refused a request to enter shunting mode</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="600"
+ X="660"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3538,7 +3041,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="877f01a1-881b-4078-9383-e8fdafdbc7ff"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="36682ee2-a8d8-48ea-8d5f-8eeb180fc890"
@@ -3546,8 +3048,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="6b7140f5-6446-42c9-b1e8-1954d25f7d48"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3563,7 +3064,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="cf5d639e-506e-4024-a340-a850242d33e0"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3591,7 +3091,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="OutputInformation"
  Guid="fdd9904d-fd6d-49ee-9fc2-cefb326a062f"
 >
-<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="False"
@@ -3621,33 +3120,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="f1a79f31-d740-4203-86e2-3d320b24e047"
 >
 </ReqRef><Comment>Handles display of information relative to the list of accepted emergency stops.</Comment>
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="6ec43584-7fdc-4e7d-bceb-2d951aee4e6a"
->
-<Comment>Keep the value of EmergencyStops up-to-date, but only if this information can be displayed</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="fb6d5e14-ea87-4906-99e1-2df7aeefb8e4"
->
-<PreConditions>
-<PreCondition
- Guid="a137a28a-4a6e-47ee-aa22-6ac9d63eb392"
->THIS.OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="9815ae9e-cf79-4c63-8626-c190486f58da"
->EmergencyStops &lt;- Kernel.EmergencyStops</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -3669,7 +3141,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="cea6145f-e1d1-4273-a211-15d32abf6a62"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="6500dbb3-1324-47f3-9655-251eb23448d2"
@@ -3677,8 +3148,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="01fc270a-9404-40e3-95be-c12e07a199ec"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3694,7 +3164,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="4b07200e-54ed-4ffd-be8b-a6a2606dafe6"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3735,8 +3204,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>The list of accepted emergency stops to be displayed.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="660"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3748,7 +3216,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="35db4816-af1a-4e15-afed-05ed4a370c53"
 >
-<Comment></Comment>
 </ReqRef><Comment>Handles display of information relative to fact that the mode is entered in FS/OS</Comment>
 <Procedures>
 <Procedure
@@ -3771,7 +3238,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="74ce9036-077e-4cdc-af71-75b9cf5f5c33"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="ca991853-d900-4eac-b463-d398d89390af"
@@ -3779,8 +3245,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="15e7d241-d0a9-4e0a-9407-d7f1fb5c72d6"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3796,7 +3261,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="dff67791-00a9-485e-a674-97a1d03a1f90"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3836,7 +3300,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 Remains true for a while after OS or FS modes have been entered.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="720"
+ X="770"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3877,7 +3342,6 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
  Name="Updates the request status"
  Guid="2a4d9ba1-9c51-4948-bc33-8a34195b750d"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f2534e40-a1bf-436e-91f5-bdf2eec94c25"
@@ -3885,8 +3349,7 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
 <Actions>
 <Action
  Guid="02004a9a-391e-42b3-8ade-c978676f41e1"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action><Action
+>THIS.OutputInformation.RequestDisplay()</Action><Action
  Guid="1f7b0608-20d4-48f7-abe9-c5a26a9cf3bd"
 >Level &lt;- level</Action></Actions>
 </RuleCondition></Conditions>
@@ -3904,7 +3367,6 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
  Name="Updates the status of the request according to the mode"
  Guid="bebe19bb-3d2f-4d93-b2cf-9121b1a50010"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3943,8 +3405,8 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
 <Comment>Target Level on the transition.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="720"
+ X="220"
+ Y="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3978,7 +3440,6 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
  Name="Updates the request status"
  Guid="1aefb64b-666d-4f76-8196-067bb10cdef6"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="c4839fd5-ae6f-4c5f-a918-ac7012b7718b"
@@ -3986,8 +3447,7 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
 <Actions>
 <Action
  Guid="445b5f3a-9ed0-440e-856f-09c6f329239c"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4003,7 +3463,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="8341db48-8fed-4f98-8bd5-a800fcf8b6e9"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4042,7 +3501,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>Indicates that the train has requested information about the upcoming track</Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="780"
+ X="110"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4076,7 +3536,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="1151c1de-6d74-4e35-a217-ad44a59f39ea"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="345451c4-e8e5-4f56-8162-a16dacb212a9"
@@ -4084,8 +3543,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="1c7abe69-5878-481a-938e-91be58ded9b2"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4101,7 +3559,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="b235bbce-372e-4e92-965c-35245c8e8ec0"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4137,11 +3594,10 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="AdhFactor"
  Guid="37897af4-2938-489e-ba40-a3360efa5b73"
 >
-<Comment></Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="780"
+ X="440"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4175,7 +3631,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="9b8fa88b-9a51-4ab6-abf9-6c25b7633fec"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="27129ee1-6600-4d0f-be12-3caf5c6b4dcb"
@@ -4183,8 +3638,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="aa9997fc-79a3-460c-b5da-e82993af495c"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4200,7 +3654,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="f5d7cfae-9f0e-4d4b-9c09-df2c8755af23"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4228,7 +3681,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="OutputInformation"
  Guid="dc38667d-6e41-401b-9494-cb793bd4a531"
 >
-<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.Mode"
  Default="Default.Mode.UN"
@@ -4240,7 +3692,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>The mode proposed to the driver</Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="840"
+ X="110"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4281,7 +3734,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="b6286da0-5eec-4a28-86d8-b07e2542ae22"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1ea16315-d5c1-4018-addc-53abb1f4b3f8"
@@ -4289,8 +3741,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="90ed7f5f-e3f3-4a15-8666-5305d55d8f0f"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action><Action
+>THIS.OutputInformation.RequestDisplay()</Action><Action
  Guid="f80d350b-8ca3-4e53-9ba8-5f703d9793b5"
 >Mode &lt;- mode</Action></Actions>
 </RuleCondition></Conditions>
@@ -4308,7 +3759,6 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
  Name="Updates the status of the request according to the mode"
  Guid="01718b7e-4172-42dd-9176-f9aef0751744"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4347,8 +3797,8 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
 <Comment>Themode proposed to the driver</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="840"
+ X="660"
+ Y="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4382,7 +3832,6 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
  Name="Updates the request status"
  Guid="57870f69-8d2f-4242-b863-9b35d7d55d17"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d3e8ccf6-46b0-42c8-ae56-fadc78f6bca8"
@@ -4390,8 +3839,7 @@ THIS.OutputInformation.RequestDisplay()</Action><Action
 <Actions>
 <Action
  Guid="bde5049d-59cd-4e59-9aae-8ced22704724"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4407,7 +3855,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="734260e2-e6c4-4713-b832-1f133ea0087c"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4446,7 +3893,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>Indicates a malfunction on the trackside end</Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="900"
+ X="110"
+ Y="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4480,7 +3928,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="45efd17c-300c-4708-b44a-ef00b592ef7a"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="2b61ae18-5788-4962-84b5-3e5fd49fac62"
@@ -4488,8 +3935,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="12f9e7a5-3fe2-41c1-8604-7f696c3bb86b"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4505,7 +3951,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="713fa902-862d-4a98-9dad-8964711dd2d9"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4544,8 +3989,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>Indicates that the train data has been changed by a source other than manual input from the driver</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="900"
+ X="330"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4558,6 +4003,36 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="8f60ca0e-0d63-49ba-9242-e2dea62949a0"
 >
 </ReqRef><Comment>Provides the system version</Comment>
+<Rules>
+<Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ Name="Handle display requested by driver"
+ Guid="92d04a13-a457-456c-82b0-c82f75d50b17"
+>
+<ReqRef
+ Id="0bab7f80-e1a8-411c-8eb9-8487f9dea6bf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4b579892-f6b0-4427-98eb-85a2fcd730c7"
+>
+</ReqRef><Comment>If the driver asks to display the Operated System Version, the on-board displays it if allowed by the current mode.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle display requested by driver"
+ Guid="1fdd3940-8696-469f-8eb2-a538b750c352"
+>
+<PreConditions>
+<PreCondition
+ Guid="cf6c3af7-dcc5-4665-83f8-555af0ec4417"
+>DisplayRequestedByDriver == True</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="410e9ab5-f1ec-4904-9c5f-900d9eb5a1ca"
+>Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -4579,7 +4054,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="57d24345-ec10-4db1-bce0-93621e3d82b9"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="494f67b9-c8b2-4169-84dd-5cb5d7964d2b"
@@ -4587,8 +4061,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="f6ccbfec-23a2-49fc-a2b4-313b58fa88f4"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4604,7 +4077,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="f30e1ede-4e10-4091-b02e-247b36bea731"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4642,9 +4114,24 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="78f05cc1-5cc0-4b44-a7b7-59e574fe6977"
 >
 <Comment>The system version</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="DisplayRequestedByDriver"
+ Guid="95183351-c2d8-462f-8d72-9493baf223ac"
+>
+<ReqRef
+ Id="0bab7f80-e1a8-411c-8eb9-8487f9dea6bf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ad7421a0-92a8-4c63-8eff-d51721cf9a6a"
+>
+</ReqRef><Comment>According to the document ERA_ERTMS_015560, the driver can ask the display of operated system version. This variable reflects the status of the driver&apos;s request.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="960"
+ X="330"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4678,7 +4165,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="8a721f6b-e287-43e3-895a-d9fa51f1dbd0"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="5b81ab11-e877-4a99-97b9-44ced052e330"
@@ -4686,8 +4172,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="ddee3ba4-6861-4af9-89f2-f010fa09828d"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4703,7 +4188,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="7fb121b8-9031-46c1-881e-fb7cde89378a"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4742,8 +4226,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>Indicates that registration to a radio network has failed</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="960"
+ X="550"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4761,49 +4245,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="b5c07d4a-6d7e-4492-bfff-b7d693c8aac8"
 >
 </ReqRef><Comment>Handles display of information relative to the Safe Radio Connection Status.</Comment>
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Update value"
- Guid="1eb433e9-8925-4864-a554-9b79504a5128"
->
-<ReqRef
- Id="03c854a9-637b-42ee-b747-173045437dd6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fc5becfa-9fb3-4f50-836a-6afc30bc1725"
->
-</ReqRef><ReqRef
- Id="a5a3cbff-14ec-43ba-afca-63c2734d0414"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8536a165-0d62-4bd5-8086-20124c86ce76"
->
-</ReqRef><ReqRef
- Id="2be2d035-b42d-4e1b-9788-dded559e7f64"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="69ae7903-774a-47f8-9ad7-64d0e933cd7f"
->
-</ReqRef><Comment>Updates the values that have to be displayed to the driver.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Update value"
- Guid="af3fa51f-52af-4310-a35c-6eab9998c825"
->
-<PreConditions>
-<PreCondition
- Guid="6fa32aae-e870-4175-8902-27fd2d816f22"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="6c795dd9-cfd6-4c71-9695-cc2210c5bcaf"
-><Comment></Comment>
-ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -4825,7 +4266,6 @@ ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></
  Name="Updates the request status"
  Guid="6a7e8e31-ea4c-4268-b673-f53a5b18d4a4"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e27fa7ec-cc0c-4946-8e4e-be23f377f273"
@@ -4833,8 +4273,7 @@ ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></
 <Actions>
 <Action
  Guid="4bcacc83-6f10-4d4d-8f58-c7eb913b9aeb"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4850,7 +4289,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="8f9d2216-01b2-4d3b-9b3e-ae52baeee629"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4891,7 +4329,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>The connection status of the radio connection.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="1020"
+ X="550"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4906,42 +4344,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the local time</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="5377a14c-ba9e-4abd-a157-7dbaab76f803"
->
-<ReqRef
- Id="57c8cd45-54ca-4d5e-b07f-37b9b1efab54"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="cde65c3a-b10e-400f-95cc-c84240fa4e96"
->
-</ReqRef><Comment>Updates the local time value when display is requested</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="1ac88761-f8d9-459f-8ec8-217a6c6f500f"
->
-<Comment>TODO Get the NID_C from the appropriate location
-
-Fetches the time from the kernel and adjusts according to the current country identifier</Comment>
-<PreConditions>
-<PreCondition
- Guid="a3218da3-d4c8-4875-9c10-08223c2b7e82"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="1142b13c-b3ac-4642-81b5-5adb7963db43"
-><Comment></Comment>
-Time &lt;- Kernel.DateAndTime.LocalTime(
-    Country=&gt;0
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Output when mandatory"
@@ -4958,8 +4360,7 @@ Time &lt;- Kernel.DateAndTime.LocalTime(
 <PreConditions>
 <PreCondition
  Guid="98e83449-5d66-4d23-8227-998a164bc6ec"
-><Comment></Comment>
-LocalTimeAvailable()</PreCondition></PreConditions>
+>LocalTimeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="361f8ad3-990c-49bf-9f6e-781a49c4bfdf"
@@ -4987,7 +4388,6 @@ LocalTimeAvailable()</PreCondition></PreConditions>
  Name="Updates the request status"
  Guid="54ac2107-31c2-4cb4-b1ae-5762c2a825d8"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="9e7a9ae9-98bb-4f9e-82a4-a3d94862c449"
@@ -4995,8 +4395,7 @@ LocalTimeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2b7116c1-80e9-405f-8e04-d525495a082c"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5012,7 +4411,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="1590c8b0-a533-47d3-889f-2c53543eb197"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -5049,11 +4447,9 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Time"
  Guid="8542b623-7951-4ee9-82cc-8494177e30fd"
 >
-<Comment></Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="1020"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5073,32 +4469,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Handles display of information relative to the gradient profile.</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="683c281e-ae16-43e4-b502-619de00f9967"
->
-<Comment>Keep the value of GradientValues up-to-date, but only if this information can be displayed.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="073eeb23-c47b-4f9c-b3d5-8e928445f9f4"
->
-<PreConditions>
-<PreCondition
- Guid="b728deb1-78dd-4c6b-9369-824d0ce59ec2"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="bd5f6858-eb55-4cc7-a633-8479451bf90c"
-><Comment></Comment>
-GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING Kernel.TrackDescription.Gradient.CompensateForTrainPosition(X)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -5113,19 +4483,16 @@ GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING Kernel
  Name="Display when available"
  Guid="09fef0c1-a468-479d-9367-e585bd66d5a1"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="942d5911-9cbf-4ae4-9fa7-1f094e63ea61"
 >NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="757dbbf8-8a27-446a-b6b0-ddf695b71af6"
-><Comment></Comment>
-GradientAvailable()</PreCondition></PreConditions>
+>GradientAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="03b969cd-23d5-4c5c-bc2f-4e6acb26eb7f"
-><Comment></Comment>
-Display()</Action></Actions>
+>Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -5149,7 +4516,6 @@ Display()</Action></Actions>
  Name="Updates the request status"
  Guid="5c3b7091-321a-4d34-9c0b-c9007e0299eb"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="7bb29aa1-cfc0-4b3e-bbc7-86c80e2490b0"
@@ -5157,8 +4523,7 @@ Display()</Action></Actions>
 <Actions>
 <Action
  Guid="f4d0afe0-0ddc-4128-b56d-c0875cda1866"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5174,7 +4539,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="65f123c1-2830-4f0d-ac58-d4547dd952b1"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -5215,7 +4579,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>The gradient values of the upcoming track.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="1080"
+ X="440"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5227,44 +4591,9 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="69442ebe-cd66-4fdc-9662-61f56838f6f0"
 >
-<Comment></Comment>
 </ReqRef><Comment>Handles display of information relative to the MRSP.</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="cf4083fe-c449-42b7-8f20-0a7a21fef28d"
->
-<Comment>Keep the value of the MRSP up-to-date, but only if this information can be displayed.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="64a50690-ad9b-41f6-94b9-8b44fe30b7d7"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="2d7e3394-01bd-4312-9c4f-39bae5bbbb99"
-><Comment></Comment>
-THIS.OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="97e87b9c-6423-492a-ab35-7e0f036e1158"
->Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()
-  OR  
-Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()
-  OR  
-Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="1be84e29-e3d9-42a7-b772-c8c4ffef7f37"
-><Comment></Comment>
-GetMRSP()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Output when mandatory"
@@ -5281,8 +4610,7 @@ GetMRSP()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="e164bf62-a47f-4fa5-910a-a9c8975846b2"
-><Comment></Comment>
-MRSPMandatory()</PreCondition></PreConditions>
+>MRSPMandatory()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7a1bf9ad-5d1b-4b06-a839-0d07e3d2020c"
@@ -5310,7 +4638,6 @@ MRSPMandatory()</PreCondition></PreConditions>
  Name="Updates the request status"
  Guid="eeff717f-d45f-4395-9b28-aa1ac5e56604"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f48a9910-75f8-4501-a047-83909a5585c1"
@@ -5318,8 +4645,7 @@ MRSPMandatory()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="bbda0746-b83a-4d19-82f7-b7a1006d3eef"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5335,7 +4661,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="bd909e70-be4e-48cf-a339-42722c09ab7e"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -5376,7 +4701,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Clear MRSP"
  Guid="c4a66464-06a8-4223-824f-7b32a8b080c3"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -5404,8 +4728,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="816c448b-3e3d-497e-bc40-71b8a00613f0"
-><Comment></Comment>
-MRSP &lt;- MAP DISCONT(MIN(First=&gt;  MIN(First=&gt; Kernel.MRSP.SpeedRestrictions,
+>MRSP &lt;- MAP DISCONT(MIN(First=&gt;  MIN(First=&gt; Kernel.MRSP.SpeedRestrictions,
                                Second=&gt; Kernel.MA.SpeedRestrictions
                                ),
                   Second=&gt; Kernel.NationalValues.MaxDistInSRSpeedRestriction
@@ -5436,8 +4759,7 @@ MRSP &lt;- MAP DISCONT(MIN(First=&gt;  MIN(First=&gt; Kernel.MRSP.SpeedRestricti
 <Actions>
 <Action
  Guid="3001d028-535c-4c27-be26-f25714392403"
-><Comment></Comment>
-INSERT Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+>INSERT Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
     Location =&gt; 0.0,
     Speed =&gt; Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)),
     Length =&gt; Default.BaseTypes.DistanceToLength(
@@ -5471,8 +4793,8 @@ IN MRSP</Action></Actions>
 <Comment>The MRSP of the upcoming route.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="1080"
+ X="770"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5484,7 +4806,6 @@ IN MRSP</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="20ac7e4e-3c43-4977-80d0-aa27d27f88d0"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="1863d339-25c3-497c-bc7e-4a7c09daf727"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -5493,37 +4814,6 @@ IN MRSP</Action></Actions>
 </ReqRef><Comment>Provides the indication location at the MRSP speed</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="06aae74d-8f94-4a47-8db4-c3a7016c6ebf"
->
-<Comment>Updates the value when needed to be displayed</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="dedfc75e-8039-4cb5-b1a4-25400560f247"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="e7e23d27-d75d-4817-b027-fee6a8e4b996"
->OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="5bced455-e7ba-4ce4-8b8c-d71ad9d9f0b7"
->GetMonitoringType() == MonitoringType.CSM
-  OR  
-GetMonitoringType() == MonitoringType.PIM</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="3b03cbd3-6227-48c2-89d6-d091e5d898dc"
-><Comment></Comment>
-Location &lt;- Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.IndicationLocation()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -5541,16 +4831,12 @@ Location &lt;- Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.Indicatio
 <Comment>The indistaion location should only be displayed when the speed and distance monitoring is in Ceiling Speed Monitoring or and the start of Target Speed Monitoring (PIM)</Comment>
 <PreConditions>
 <PreCondition
- Guid="1d45c12e-77d3-4f4f-9acd-e4c5dac2285c"
->NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="6e65a2c2-85fa-4312-9e7d-1843726e27b7"
-><Comment></Comment>
-IndicationLocationAtMrspSpeedAvailable()</PreCondition></PreConditions>
+>IndicationLocationAtMrspSpeedAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4383da9f-ab69-4fe3-84cf-1b0c583c86e3"
-><Comment></Comment>
-Display()</Action></Actions>
+>Display()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -5559,11 +4845,7 @@ Display()</Action></Actions>
 >
 <Comment>When the speed and distance monitoring is in TSM or RSM, the indication location should not be displayed</Comment>
 <PreConditions>
-<PreCondition
- Guid="1327a651-9c4d-45c4-92b2-6f966039e538"
->GetMonitoringType() == MonitoringType.TSM
-  OR  
-GetMonitoringType() == MonitoringType.RSM</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
 <Action
  Guid="37b1dbea-580c-4478-b8f1-7dc089611c49"
@@ -5591,7 +4873,6 @@ GetMonitoringType() == MonitoringType.RSM</PreCondition></PreConditions>
  Name="Updates the request status"
  Guid="06f69d9b-2cfc-4bcd-923f-e7ce254bbe2a"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="53ea4f82-55d1-44b0-8cc5-ae71ac67eef7"
@@ -5599,8 +4880,7 @@ GetMonitoringType() == MonitoringType.RSM</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3d929aee-7492-4a27-8111-e05f356f398a"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5616,7 +4896,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="a1ac4e2b-3f2b-4d22-8cfc-ccccf260138c"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -5653,10 +4932,10 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Location"
  Guid="15b9d3f6-0aeb-4f95-af2b-16e03acf4ff1"
 >
-<Comment></Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="1140"
+ X="440"
+ Y="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5676,33 +4955,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the first target at speed 0</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="edfe3c9b-4bce-4c4a-839e-f0a62bb2f8da"
->
-<Comment>Updates the value of the first target at 0 speed</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="948831e8-2473-4708-875e-c8da74322cd8"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="ed8d828e-dac1-4e26-b829-678024c3a785"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="48b28eb0-1034-4e06-9c8e-4bc9d9fd35b3"
-><Comment></Comment>
-Target &lt;- Kernel.FirstTargetAtZeroSpeed</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -5717,19 +4969,16 @@ Target &lt;- Kernel.FirstTargetAtZeroSpeed</Action></Actions>
  Name="Display when available"
  Guid="2e8488c4-dd41-4f17-ba09-b8f655d91a91"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="b9d1fc40-0001-4dcf-b9de-ba43f4c13cf3"
 >NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="3e806f2e-1a65-4ee1-a55e-206ab9e461fb"
-><Comment></Comment>
-FirstTargetAtZeroSpeedAvailable()</PreCondition></PreConditions>
+>FirstTargetAtZeroSpeedAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5d249a06-6049-4c2a-a306-c529575e7976"
-><Comment></Comment>
-Display()</Action></Actions>
+>Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -5753,7 +5002,6 @@ Display()</Action></Actions>
  Name="Updates the request status"
  Guid="2a4ee5a7-6c5b-4bbe-b26d-2b5c062dbefe"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="13b97137-8972-499b-a6aa-b5ef95b8e656"
@@ -5761,8 +5009,7 @@ Display()</Action></Actions>
 <Actions>
 <Action
  Guid="f23a76cd-b75a-452e-8de3-1975c045b7c3"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5778,7 +5025,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="d4c1ed24-5ec8-40ea-a57c-8e57121e12be"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -5818,7 +5064,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </StructureElement></Structure><Structure
  Default=""
  X="110"
- Y="1140"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5830,7 +5076,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0d3dbb84-f692-417c-b7df-fc48a29578a4"
 >
-<Comment></Comment>
 </ReqRef><Comment>Handles display of information relative to the brake reason.</Comment>
 <Procedures>
 <Procedure
@@ -5853,7 +5098,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="878599cd-8859-49b6-8d6d-00e62b3c5ea1"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="031d16d4-fdaa-43c6-99e7-482cf67a2780"
@@ -5861,8 +5105,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="58ec87b8-d959-4379-933a-f9be1729e054"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5878,7 +5121,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="2ea1ed6e-dfdc-4036-bdc9-1378055a7fd4"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -5921,7 +5163,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 The brake reason.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="1200"
+ X="550"
+ Y="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5955,7 +5198,6 @@ The brake reason.</Comment>
  Name="Updates the request status"
  Guid="203bcebc-66e7-4936-b931-eae069c7b7b5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d3274471-0f94-473d-b3ad-d0dee0e7a141"
@@ -5963,8 +5205,7 @@ The brake reason.</Comment>
 <Actions>
 <Action
  Guid="7fb8d48f-64df-4c74-aad2-1430fab74b86"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5980,7 +5221,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="ebd29326-5b9d-4c1a-b274-a460781f16aa"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -6019,8 +5259,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>The train is incompatible with a trackside system</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="1200"
+ X="330"
+ Y="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6054,7 +5294,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="28ca0082-2e17-4a3f-88d5-711f07e50af9"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1c3029a6-011b-4755-ba48-41c2be82ec14"
@@ -6062,8 +5301,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="e993ab6a-febe-4ee2-ab6d-b068d8799f1e"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -6079,7 +5317,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="eb4b80c1-4533-48aa-9d5d-0ace00a5348e"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -6118,7 +5355,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>When in Standby mode, the train must be accepted by the RBC to start the mission (in level 2)</Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="1260"
+ X="220"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6131,36 +5369,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="8b256034-106e-4b6e-978f-c1dbcc4afcde"
 >
 </ReqRef><Comment>Provides the route unsuitabilities</Comment>
-<Rules>
-<Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="26f442dc-e1a5-4e18-a2a9-90408ed6900e"
->
-<Comment>Updates the output value when display is requested</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="a764d9c3-bfe8-4a80-a0c8-20818543f5d4"
->
-<PreConditions>
-<PreCondition
- Guid="d4d0f968-0c62-4881-8b31-4c3aa53e38a3"
->OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="02103ad1-59b6-4991-8a41-9d0b4d5374d8"
->Available(Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="9a64b1f3-c744-4797-951b-c1f9247a26c6"
->RouteUnsuitabilities &lt;- 
-MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable (X) USING X</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -6182,7 +5390,6 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
  Name="Updates the request status"
  Guid="e0df6298-3cdb-4d3b-8073-acbc3c74a3bf"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="431d6bc6-bd41-4c80-873f-e8f85a7704eb"
@@ -6190,8 +5397,7 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
 <Actions>
 <Action
  Guid="355191c9-cd4c-4c2d-ab05-02b8bf18ea2e"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -6207,7 +5413,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="713bfedd-3abf-4450-9292-a193a7ab1d94"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -6245,8 +5450,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 >
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="1260"
+ X="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6271,35 +5475,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the target distance</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="d6207bc0-a23b-41d2-b0f8-66717cd383fa"
->
-<Comment>Updates the target distance when requested to display on the DMI</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="463e57c3-09a7-4c0a-9506-917d7b2b22a0"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="08961521-d25e-4e1e-b5ab-f956b5d776fd"
->OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="f4fa4704-a159-4fbe-9c68-7429576b316f"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="4ec9e0a0-7cd1-4cc2-b31f-830372a7fab2"
-><Comment></Comment>
-Distance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Output when mandatory"
@@ -6316,8 +5491,7 @@ Distance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDis
 <PreConditions>
 <PreCondition
  Guid="5cbb612a-00ee-48e7-8bb3-82bfcebd43f1"
-><Comment></Comment>
-TargetDistanceMandatory()</PreCondition></PreConditions>
+>TargetDistanceMandatory()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6063f444-89c9-4cb8-b693-4e852a7586a8"
@@ -6338,19 +5512,16 @@ TargetDistanceMandatory()</PreCondition></PreConditions>
  Name="Display when available"
  Guid="3d6745a4-f1d9-448a-874c-632f5ee46ddf"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="cc305505-c081-4d30-8a92-2f6ee6905b93"
 >NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="4b089d72-b6b7-435c-9a70-5c5e6b400134"
-><Comment></Comment>
-TargetDistanceAvailable()</PreCondition></PreConditions>
+>TargetDistanceAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="68081ce2-073d-4c64-b54f-d758106727ee"
-><Comment></Comment>
-Display()</Action></Actions>
+>Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -6374,7 +5545,6 @@ Display()</Action></Actions>
  Name="Updates the request status"
  Guid="0b882f74-b29d-44ab-9042-ac7c2c15c0e9"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="9bf93f18-1f92-4906-8262-0e7b2503abfd"
@@ -6382,8 +5552,7 @@ Display()</Action></Actions>
 <Actions>
 <Action
  Guid="e740b498-aca3-49b9-8e2f-17616dcd942b"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -6399,7 +5568,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="ca790b4d-d131-4adc-9ff3-87803f9e21dc"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -6436,10 +5604,9 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Distance"
  Guid="b84742ef-0cd2-4b95-a060-5feedf5be421"
 >
-<Comment></Comment>
 </StructureElement></Structure><Structure
  Default=""
- Y="1320"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6452,35 +5619,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="804a0dff-a212-44f5-a927-87b204dafc86"
 >
 </ReqRef><Comment>Provides the train data for output</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="edd0e154-3bff-4bd1-9a9e-f57319af18df"
->
-<Comment>Updates the train data value when display is requested</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="546af9fd-4098-4427-994b-8d9473c046b0"
->
-<PreConditions>
-<PreCondition
- Guid="30046cbc-d85c-44a1-8a6d-6eaa4cb1a866"
-><Comment></Comment>
-OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7c4571e4-a3ac-499c-9dc9-b1dd1f630b2a"
-><Comment></Comment>
-Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -6502,7 +5640,6 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
  Name="Updates the request status"
  Guid="6c0a6683-5d6b-4755-b170-07a30e693a62"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="121da27d-a61b-4bcc-8b1d-f1c5798cad9e"
@@ -6510,8 +5647,7 @@ Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
 <Actions>
 <Action
  Guid="162c6a27-aee4-4c11-8823-afd3d40ef986"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -6527,7 +5663,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="cc802435-ab1e-4bb5-b272-78e437cd71fe"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -6567,8 +5702,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>The train data</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="1320"
+ X="660"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6585,13 +5720,11 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d4fa0b52-9c1e-4992-80d8-ca48d0addad7"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="55fb1cb7-7087-4663-ba4a-49236d42e1c0"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="1863d339-25c3-497c-bc7e-4a7c09daf727"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -6600,51 +5733,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </ReqRef><Comment>Provides the FLOI value</Comment>
 <Rules>
 <Rule
- Priority="UpdateOUT"
- Implemented="TRUE"
- Name="UpdateValue"
- Guid="f035b068-151b-4ba4-9e1c-eaeedd2641a4"
->
-<ReqRef
- Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="37110a05-aaaf-4cab-bbc5-5d6b6e30b84c"
->
-</ReqRef><ReqRef
- Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="54f47ae7-00d8-4ecd-b05e-7342ca703f88"
->
-</ReqRef><Comment>Updates the FLOI value when displayed</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="UpdateValue"
- Guid="84111a24-c1b5-4ecc-9522-559cc279d396"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="b2656408-99e7-4f0c-bc3a-526060dfebca"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target]</PreCondition><PreCondition
- Guid="859e941a-b30f-46f2-9d7b-1cc226cc0fbe"
->Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() != Kernel.SupervisionStatus.Normal
-  AND  
-Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() != Kernel.SupervisionStatus.Indication</PreCondition><PreCondition
- Guid="d5634a7b-6cad-4c6f-9dc8-a6a83557e821"
->Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
- Guid="104bfae1-3091-47e6-b63e-77df74bc368a"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f0c8976c-c957-4f3d-a0a5-3295db9e7317"
-><Comment></Comment>
-Speed &lt;- Kernel.SpeedAndDistanceMonitoring.FLOISpeed(
-Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Display when available"
@@ -6659,19 +5747,16 @@ Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
  Name="Display when available"
  Guid="ef8fe03d-cb85-4274-826c-f054877b0f3b"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="b3afacbf-ccb9-4d3f-8c73-9ef0d57e41c4"
 >NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="e51303da-9c35-4033-8e63-238af9111f56"
-><Comment></Comment>
-FLOIAvailable()</PreCondition></PreConditions>
+>FLOIAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="76e91675-0e4e-47a4-a128-37a1e060e90b"
-><Comment></Comment>
-Display()</Action></Actions>
+>Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -6695,7 +5780,6 @@ Display()</Action></Actions>
  Name="Updates the request status"
  Guid="8e3d730e-4c9b-447a-8d07-dd3830270e75"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="bb6bbd46-31df-4488-af58-162cc8eb566f"
@@ -6703,8 +5787,7 @@ Display()</Action></Actions>
 <Actions>
 <Action
  Guid="48672ecc-af05-478d-9b96-16408fda9b0a"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -6720,7 +5803,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="92bc2096-8ec1-468a-9c21-3986793473cb"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -6748,7 +5830,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="OutputInformation"
  Guid="31d3637e-2796-43d4-9c8c-15f91e8ab818"
 >
-<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default=""
@@ -6760,7 +5841,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 >
 </StructureElement></Structure><Structure
  Default=""
- Y="1380"
+ X="770"
+ Y="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6794,7 +5876,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="5900d80d-dbbd-40c7-8f7a-76c3f6d7d15a"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="aea8f50c-fe99-44a2-aea5-d50e8cede041"
@@ -6802,8 +5883,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="9d120b48-c95f-4c8f-9984-8eed94dc8ab1"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -6819,7 +5899,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="edf39251-e2a3-4f9b-b39a-5fe56917f28e"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -6849,8 +5928,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 >
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="780"
+ X="550"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6885,7 +5964,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="dd114363-41b0-4525-8930-44c0f0b943a5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="8cb0faf6-0f56-49ce-8ff1-85a047cd312d"
@@ -6893,8 +5971,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="c93feb76-9f2f-4824-89cc-cdf8b0eab526"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -6910,7 +5987,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="c91e867b-99fe-4057-b835-0eefae623b9b"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -6939,7 +6015,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="OutputInformation"
  Guid="f87ba491-b541-496a-b83d-35418de800ac"
 >
-<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.Mode"
  Default="Default.Mode.UN"
@@ -6952,8 +6027,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>The mode proposed to the driver</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="780"
+ X="330"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6987,7 +6062,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="3344a026-aed2-46b8-b173-ef34dcf42065"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="4f214030-13a4-49b2-acb8-4931564cd197"
@@ -6995,8 +6069,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="e38df24f-91b3-4340-9189-2b5985454dc4"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -7012,7 +6085,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="2e82d027-373d-4d58-bcff-987f2bd45508"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7040,7 +6112,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="OutputInformation"
  Guid="5bad47c8-f713-4d15-8b49-abbe2fbcb0eb"
 >
-<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.Mode"
  Default="Default.Mode.UN"
@@ -7052,8 +6123,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Comment>The mode proposed to the driver</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="780"
+ X="220"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7087,7 +6158,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the request status"
  Guid="3fa01a56-5e89-49e1-91b1-8a6ad6bdd09b"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="08835343-c693-4006-809f-f6b4569c7f24"
@@ -7095,8 +6165,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Actions>
 <Action
  Guid="ffd22eef-0c9b-44d4-98a2-37633a0eaee9"
-><Comment></Comment>
-THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -7112,7 +6181,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="Updates the status of the request according to the mode"
  Guid="98787c02-e45d-47a2-b1d3-fc1d298a949b"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7140,7 +6208,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="OutputInformation"
  Guid="7081dfe3-4417-48a7-8eef-6d08156a54d5"
 >
-<Comment></Comment>
 </StructureElement><StructureElement
  TypeName="Default.Mode"
  Default="Default.Mode.UN"
@@ -7155,6 +6222,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
 <Function
  Type="Boolean"
  Default=""
+ X="440"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7166,7 +6235,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="94e1c8d8-aa61-4235-9ad0-18023896c0c3"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7179,7 +6247,8 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Type="DMI.OUT.MonitoringType"
  Cacheable="TRUE"
  Default=""
- Y="60"
+ X="770"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7193,7 +6262,6 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Name="CSM"
  Guid="6fae8a65-cefb-46d6-bbab-60430fa382c5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="53ca0f91-10e5-4dd6-9f22-b2d224fc39db"
@@ -7217,8 +6285,7 @@ THIS.OutputInformation.RequestDisplay()</Action></Actions>
  Guid="83cbb20b-cbe1-4364-967a-c98eb720ea26"
 >Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target</PreCondition><PreCondition
  Guid="ed3001e2-668d-4ae2-8381-1d7db8b7173e"
-><Comment></Comment>
-Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)</PreCondition><PreCondition
+>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)</PreCondition><PreCondition
  Guid="0390c7de-4a8c-40ee-b77b-e09a11a4ac1b"
 >Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))) != Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>MonitoringType.PIM</Expression>
@@ -7235,12 +6302,13 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  Name="Otherwise"
  Guid="db82fc54-36f1-4723-aeac-cbbd58c1af8d"
 >
-<Comment></Comment>
 <Expression>MonitoringType.None</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="440"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7252,19 +6320,18 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="86f24701-2a1a-49db-ad45-e7c5314923fa"
 >
-<Comment></Comment>
 </ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
 <Cases>
 <Case
  Name="Enumerates the cases where the request is mandatory"
  Guid="441a3673-4816-408c-a1fa-527d7e042e38"
 >
-<Comment></Comment>
 <Expression>Kernel.Mode in [Mode.FS]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Default=""
+ Y="720"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7276,7 +6343,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5ab270dc-f68c-4379-9094-f04bea6e2d35"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7288,6 +6354,8 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 </Function><Function
  Type="Boolean"
  Default=""
+ X="110"
+ Y="600"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7299,7 +6367,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ecb3c5b4-cb88-4c76-9a19-be66d5ea783f"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7311,6 +6378,7 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 </Function><Function
  Type="Boolean"
  Default=""
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7322,7 +6390,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a455ce59-5d96-4a69-a774-31553ab81ed1"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7334,6 +6401,8 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 </Function><Function
  Type="Boolean"
  Default=""
+ X="110"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7345,7 +6414,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="70af8d46-ae2f-4c3f-bb49-2d0865352651"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7357,6 +6425,8 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 </Function><Function
  Type="Boolean"
  Default=""
+ X="110"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7368,7 +6438,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="feaad77b-3512-4ab2-bfa6-655d9a978918"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7380,6 +6449,8 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 </Function><Function
  Type="Boolean"
  Default=""
+ X="110"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7391,19 +6462,19 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="561fef90-e6ee-40de-8f10-256474260b9e"
 >
-<Comment></Comment>
 </ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
 <Cases>
 <Case
  Name="Enumerates the cases where the request is mandatory"
  Guid="9ceb8c2c-e951-429a-9f18-0fd2387fa5f5"
 >
-<Comment></Comment>
 <Expression>Kernel.Mode in [Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.PT, Mode.SN, Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="110"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7415,7 +6486,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="87aa1ac6-f46a-41ff-bb44-8142ecbef69d"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7427,6 +6497,7 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 </Function><Function
  Type="Boolean"
  Default=""
+ Y="480"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7438,7 +6509,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ca1a3a86-8bdc-4244-98b9-e5787fd17b8f"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7450,6 +6520,7 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 </Function><Function
  Type="Boolean"
  Default=""
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7461,7 +6532,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c042b243-cafa-4f29-a6f4-d0b9308d2afe"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7473,6 +6543,7 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 </Function><Function
  Type="Boolean"
  Default=""
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7484,19 +6555,19 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d32429e3-784d-4ae5-a4f2-c3a872031777"
 >
-<Comment></Comment>
 </ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
 <Cases>
 <Case
  Name="Enumerates the cases where the request is mandatory"
  Guid="747cdc2c-5007-4162-8a29-decdb25a608b"
 >
-<Comment></Comment>
 <Expression>Kernel.Mode in [Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.PT, Mode.IS, Mode.SN, Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="440"
+ Y="720"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7508,7 +6579,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5e66bf5c-69dd-47dd-9e7d-5a9ff498fa1f"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7520,6 +6590,7 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 </Function><Function
  Type="Boolean"
  Default=""
+ Y="840"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7531,7 +6602,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d11d9351-6317-43b4-bef3-f7bf8725f33a"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7543,6 +6613,8 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 </Function><Function
  Type="Boolean"
  Default=""
+ X="550"
+ Y="600"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7554,7 +6626,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d256229e-a2a8-4aad-bebb-d1762878725a"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7566,6 +6637,7 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 </Function><Function
  Type="Boolean"
  Default=""
+ Y="600"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7577,7 +6649,6 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fd73eecb-5301-42b2-9db9-c9e235433014"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7589,6 +6660,8 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
 </Function><Function
  Type="Boolean"
  Default=""
+ X="770"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7600,14 +6673,12 @@ Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I(Kernel.MRSP.SpeedRes
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0e57eff4-a66e-4ffa-83bc-1495f3adbd42"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
  Name="In FS mode"
  Guid="d9077400-ab58-4c57-91b0-5093988dae04"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="6171e686-f3f7-443d-bd7d-fc66cb60ad9f"
@@ -7624,6 +6695,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="770"
+ Y="600"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7635,7 +6708,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d0a42b82-8634-488e-bbbd-468c686a0eef"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7647,6 +6719,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="550"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7658,7 +6732,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c00991e2-2a08-4b7b-a48c-de52e598c93b"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7670,6 +6743,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="550"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7681,19 +6756,19 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b23e4751-5054-4a39-84eb-b896e1ba3463"
 >
-<Comment></Comment>
 </ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
 <Cases>
 <Case
  Name="Enumerates the cases where the request is mandatory"
  Guid="f5a324db-14e0-46a8-8ede-1f9283b647cb"
 >
-<Comment></Comment>
 <Expression>Kernel.Mode in [Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.PT, Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="660"
+ Y="600"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7705,7 +6780,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6ab6f1a9-6e5b-41f9-a68f-ce12bb51dead"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7717,6 +6791,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="110"
+ Y="720"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7728,7 +6804,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d1729488-c9fe-42e4-b5b3-cef33f5c78a6"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7740,6 +6815,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="330"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7751,7 +6828,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e4d93c2e-9af3-4a2d-879e-807f953756ad"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7763,6 +6839,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="110"
+ Y="480"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7774,7 +6852,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="aad8fc3f-8612-4906-837b-b024a5799f6a"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7786,6 +6863,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="770"
+ Y="480"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7797,7 +6876,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1a454798-b173-463b-a497-6cc766185225"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7809,6 +6887,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="330"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7820,19 +6900,19 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dd9e3a4c-429f-4148-88a8-010890e44c55"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
  Name="Enumerates the cases where the request is available"
  Guid="f4fef2f4-3937-4c0d-beea-4f28ea039295"
 >
-<Comment></Comment>
 <Expression>Kernel.Mode in [Mode.SH, Mode.LS, Mode.SR, Mode.OS, Mode.FS, Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="330"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7844,19 +6924,19 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9511acec-3763-4925-ba03-951eae4ea1d6"
 >
-<Comment></Comment>
 </ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
 <Cases>
 <Case
  Name="Enumerates the cases where the request is mandatory"
  Guid="57eb04c9-ae66-483c-9d8b-bd3a38f38ebf"
 >
-<Comment></Comment>
 <Expression>Kernel.Mode in [Mode.FS, Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="110"
+ Y="840"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7868,7 +6948,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4f758a9e-8ad8-4205-968f-0e6073f45881"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7880,6 +6959,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="330"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7891,7 +6972,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="29fd11cf-be88-4276-babb-cbafbfb12843"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7903,6 +6983,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="440"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7914,7 +6996,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c86fa575-6516-402c-9a35-01c945ace07b"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7926,6 +7007,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="440"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7937,7 +7020,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b0d93ee6-49ed-443d-8628-9c7da1ad81a9"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7949,6 +7031,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="660"
+ Y="480"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7960,7 +7044,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d763c115-b82a-40ed-8f61-32e9fc478e23"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7972,6 +7055,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="220"
+ Y="600"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -7983,7 +7068,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3b0e0f20-8cbb-4336-ad31-4bc9b46248aa"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -7995,6 +7079,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="550"
+ Y="480"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8006,7 +7092,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="777c583c-76ef-4681-9646-e76848d3fe1c"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8018,6 +7103,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="550"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8029,7 +7116,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8c57d678-4df4-40a0-b9f0-0cd6c4eaf5cb"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8041,6 +7127,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="770"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8052,7 +7140,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b0cc3fd0-375c-4d67-820d-11dc4a226568"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8064,6 +7151,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="660"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8075,7 +7164,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3b702dc3-f952-4019-87fa-146a16bae601"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8087,6 +7175,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="330"
+ Y="480"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8098,7 +7188,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f7f5af17-91e9-4ae4-8a6b-a8bd6628772f"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8110,6 +7199,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="770"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8121,7 +7212,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a4328dce-ab66-451a-ae74-b915f836a811"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8133,6 +7223,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="220"
+ Y="480"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8144,7 +7236,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="58f2993a-e07a-4e96-9ca2-bed5139fb226"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8156,6 +7247,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="660"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8167,7 +7260,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8c07c019-d504-44eb-a94d-691625b7e657"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8179,6 +7271,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="660"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8190,19 +7284,19 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="78f40432-2149-4f78-9ca5-ae9a4c1c0f56"
 >
-<Comment></Comment>
 </ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
 <Cases>
 <Case
  Name="Enumerates the cases where the request is mandatory"
  Guid="ee7d38f8-d282-4a0e-ac06-d55695636004"
 >
-<Comment></Comment>
 <Expression>Kernel.Mode in [Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="550"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8214,7 +7308,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f659bf11-9698-429c-9370-40dc9a0e3c6a"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8226,6 +7319,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="220"
+ Y="720"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8237,7 +7332,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="444642e2-f7df-4452-acbb-ad14958d688b"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8249,6 +7343,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="440"
+ Y="600"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8260,7 +7356,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="51d944cc-e1b3-47ce-a5e6-4cf77a919171"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8272,6 +7367,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="330"
+ Y="600"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8283,7 +7380,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9c78f282-e267-4e3b-8525-d276de4a00ce"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8295,6 +7391,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="660"
+ Y="720"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8306,7 +7404,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d96f78cd-530a-4c03-b46d-92b0b416c346"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8318,6 +7415,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="550"
+ Y="720"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8329,7 +7428,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a6c8e338-fab3-4931-9e96-0043a6c4cefb"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8341,6 +7439,7 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8352,7 +7451,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f7c835a2-cf45-4b30-807f-8ece8f32cfec"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8364,6 +7462,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="330"
+ Y="720"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8375,7 +7475,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6f18fff5-a078-4293-8238-dca426e49ef1"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8387,6 +7486,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="220"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8398,7 +7499,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0d3bedc8-dca6-4a27-a7f7-b8a07b04539a"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8410,6 +7510,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="220"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8421,7 +7523,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="82f6e36e-ca34-4c44-9625-1d88558a3924"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8433,6 +7534,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="220"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8444,19 +7547,19 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6440d4eb-44f8-4214-b59f-759c6a40e435"
 >
-<Comment></Comment>
 </ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
 <Cases>
 <Case
  Name="Enumerates the cases where the request is mandatory"
  Guid="72e1385e-56fd-4fb5-aa43-dd03a903d30a"
 >
-<Comment></Comment>
 <Expression>Kernel.Mode in [Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.PT, Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="220"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8468,7 +7571,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e16b7541-8ee8-4b35-9c76-e7f17350ec4c"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8480,6 +7582,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="440"
+ Y="480"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8491,7 +7595,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4e9d6fe0-cdbd-4bd8-97a1-32748b1c6c70"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8503,6 +7606,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="660"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8514,7 +7619,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3ae89a00-4f16-4570-8132-41cde299c7c3"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case
@@ -8526,6 +7630,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="770"
+ Y="720"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8537,7 +7643,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="60f5b8a2-460a-4bb5-b45f-bd4a840ca536"
 >
-<Comment></Comment>
 </ReqRef><Comment>Identifies the modes where the output is available</Comment>
 <Cases>
 <Case

@@ -16,6 +16,7 @@
 using System;
 using System.Data;
 using System.Data.OleDb;
+using DataDictionary.Tests.Translations;
 
 namespace Importers
 {
@@ -131,6 +132,7 @@ namespace Importers
                     DataDictionary.Tests.SubSequence oldSubSequence = frame.findSubSequence(subSequenceName);
                     if (oldSubSequence != null)
                     {
+                        newSubSequence.setGuid(oldSubSequence.getGuid());
                         int cnt = 0;
                         foreach (DataDictionary.Tests.TestCase oldTestCase in oldSubSequence.TestCases)
                         {
@@ -217,18 +219,11 @@ namespace Importers
                     initializeTrainDataStep.setTranslationRequired(true);
                     testCase.appendSteps(initializeTrainDataStep);
 
-                    DataDictionary.Tests.Step setupStep = (DataDictionary.Tests.Step)DataDictionary.Generated.acceptor.getFactory().createStep(); ;
-                    setupStep.setTCS_Order(0);
-                    setupStep.setDistance(0);
-                    setupStep.setDescription("Setup test sequence");
-                    setupStep.setTranslationRequired(true);
-                    testCase.appendSteps(setupStep);
-
                     DataDictionary.Tests.Step manualSetupStep = (DataDictionary.Tests.Step)DataDictionary.Generated.acceptor.getFactory().createStep(); ;
                     manualSetupStep.setTCS_Order(0);
                     manualSetupStep.setDistance(0);
                     manualSetupStep.setDescription("Manual setup test sequence");
-                    manualSetupStep.setTranslationRequired(true);
+                    manualSetupStep.setTranslationRequired(false);
                     testCase.appendSteps(manualSetupStep);
                 }
             }
@@ -395,7 +390,7 @@ namespace Importers
                         string value = items[4] as string;
                         if (value != null)
                         {
-                            field.Value = DataDictionary.Tests.Translations.Translation.format_decimal(value);
+                            field.Value = VariableConverter.INSTANCE.Convert(variable, value).ToString();
                         }
                         message.AddField(field);
                     }
@@ -415,7 +410,7 @@ namespace Importers
         /// <param name="aMessage"></param>
         private void importPackets(DataDictionary.Tests.DBElements.DBMessage aMessage, int TCS_order)
         {
-            string sql = "SELECT TCSOrder, MessageOrder, Pac_ID, Var_Name, Var_Value FROM TSW_MessageBody ORDER BY MessageOrder, Var_Row";
+            string sql = "SELECT Pac_ID, Var_Name, Var_Value FROM TSW_MessageBody WHERE (TCSOrder = "+TCS_order+") AND (MessageOrder = "+aMessage.MessageOrder+") ORDER BY Var_Row";
 
             OleDbDataAdapter adapter = new OleDbDataAdapter(sql, Connection);
             DataSet dataSet = new DataSet();
@@ -424,38 +419,33 @@ namespace Importers
 
             int packetNumber = 0;
             DataDictionary.Tests.DBElements.DBPacket packet = (DataDictionary.Tests.DBElements.DBPacket)DataDictionary.Generated.acceptor.getFactory().createDBPacket();
-            if (dataSet.Tables.Count > 0)
+            if (dataSet.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow dataRow in dataSet.Tables[0].Rows)
                 {
                     object[] items = dataRow.ItemArray;
-                    int order = (int)items[0];
-                    short messageOrder = (short)items[1];
-                    if (order == TCS_order && messageOrder == aMessage.MessageOrder)
+                    short pacId = (short)items[0];
+                    if (packetNumber != pacId)
                     {
-                        short pacId = (short)items[2];
-                        if (packetNumber != pacId)
+                        if (packetNumber != 0)
                         {
-                            if (packetNumber != 0)
-                            {
-                                aMessage.AddPacket(packet);
-                            }
-                            packet = (DataDictionary.Tests.DBElements.DBPacket)DataDictionary.Generated.acceptor.getFactory().createDBPacket();
-                            packetNumber = pacId;
+                            aMessage.AddPacket(packet);
                         }
-                        DataDictionary.Tests.DBElements.DBField field = (DataDictionary.Tests.DBElements.DBField)DataDictionary.Generated.acceptor.getFactory().createDBField();
-                        string variable = items[3] as string;
-                        if (variable != null)
-                        {
-                            field.Variable = variable;
-                        }
-                        string value = items[4] as string;
-                        if (value != null)
-                        {
-                            field.Value = DataDictionary.Tests.Translations.Translation.format_decimal(value);
-                        }
-                        packet.AddField(field);
+                        packet = (DataDictionary.Tests.DBElements.DBPacket)DataDictionary.Generated.acceptor.getFactory().createDBPacket();
+                        packetNumber = pacId;
                     }
+                    DataDictionary.Tests.DBElements.DBField field = (DataDictionary.Tests.DBElements.DBField)DataDictionary.Generated.acceptor.getFactory().createDBField();
+                    string variable = items[1] as string;
+                    if (variable != null)
+                    {
+                        field.Variable = variable;
+                    }
+                    string value = items[2] as string;
+                    if (value != null)
+                    {
+                        field.Value = VariableConverter.INSTANCE.Convert(variable, value).ToString(); 
+                    }
+                    packet.AddField(field);
                 }
                 if (packet != null)
                 {

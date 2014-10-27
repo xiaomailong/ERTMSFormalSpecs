@@ -21,6 +21,7 @@ using DataDictionary;
 using DataDictionary.Types;
 using System.Drawing.Design;
 using DataDictionary.Values;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.DataDictionaryView
 {
@@ -217,7 +218,7 @@ namespace GUI.DataDictionaryView
                     }
                 }
             }
-            else if ( Item.Type is DataDictionary.Types.Structure )
+            else 
             {
                 retVal.Insert(5, new MenuItem("-"));
                 retVal.Insert(6, new MenuItem("Display", new EventHandler(DisplayHandler)));
@@ -232,7 +233,11 @@ namespace GUI.DataDictionaryView
             return retVal;
         }
 
-
+        /// <summary>
+        /// Displays the variable value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void DisplayHandler(object sender, EventArgs args)
         {
             DataDictionary.Functions.Function function = Item.Value as DataDictionary.Functions.Function;
@@ -246,8 +251,13 @@ namespace GUI.DataDictionaryView
             else
             {
                 StructureValueEditor.Window window = new StructureValueEditor.Window();
-                window.SetModel(Item.Value);
-                window.ShowDialog();
+                window.SetVariable(Item);
+
+                if ( GUIUtils.MDIWindow.DataDictionaryWindow != null )
+                {
+                    GUIUtils.MDIWindow.AddChildWindow(window, WeifenLuo.WinFormsUI.Docking.DockAreas.Document);
+                    window.Show(GUIUtils.MDIWindow.DataDictionaryWindow.Pane, WeifenLuo.WinFormsUI.Docking.DockAlignment.Right, 0.20);
+                }
             }
         }
     }

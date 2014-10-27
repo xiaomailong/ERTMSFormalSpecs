@@ -646,7 +646,9 @@
       <FIELD NAME="Height"       TYPE="INTEGER" />
       <FIELD NAME="X"            TYPE="INTEGER" />
       <FIELD NAME="Y"            TYPE="INTEGER" />
-      <FIELD NAME="Pinned"              TYPE="BOOLEAN" />
+      <FIELD NAME="Pinned"       TYPE="BOOLEAN" />
+      <FIELD NAME="EnterAction"  REFTYPE="Rule" />
+      <FIELD NAME="LeaveAction"  REFTYPE="Rule" />
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="X"      TARGET="X"      OPTIONAL="TRUE" DEFAULT="0" />
@@ -658,6 +660,12 @@
     <FORMULA>
       <CONCAT>
         <ELEMENTREF NAME="StateMachine" TARGET="StateMachine" OPTIONAL="TRUE" />
+        <ENCLOSED NAME="EnterAction" OPTIONAL="TRUE">
+          <ELEMENTREF NAME="Rule" TARGET="EnterAction"/>
+        </ENCLOSED>
+        <ENCLOSED NAME="LeaveAction" OPTIONAL="TRUE">
+          <ELEMENTREF NAME="Rule" TARGET="LeaveAction"/>
+        </ENCLOSED>
       </CONCAT>
     </FORMULA>
   </ELEMENT>
@@ -940,7 +948,7 @@
   <!-- ---- -->
   <!-- Step -->
   <!-- ---- -->
-  <ELEMENT NAME="Step" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
+  <ELEMENT NAME="Step"  BASEELEMENT="ReferencesParagraph" MAIN="TRUE" BASECLASS="DataDictionary.ReferencesParagraph">
     <META NAME="Package">test</META>
     <FIELDS>
       <FIELD NAME="TCS_Order"           TYPE="INTEGER">
@@ -948,7 +956,7 @@
       </FIELD>
       <FIELD NAME="Distance"            TYPE="INTEGER" />
       <FIELD NAME="Description"         TYPE="PCHAR" />
-      <FIELD NAME="Comment"             TYPE="PCHAR" />
+      <FIELD NAME="ObsoleteComment"     TYPE="PCHAR" />
       <FIELD NAME="UserComment"         TYPE="PCHAR" />
       <FIELD NAME="IO"                  ENUMTYPE="ST_IO" >
         <META NAME="TargetName">Io</META>
@@ -988,7 +996,7 @@
           <PCDATA TARGET="Description" />
         </ENCLOSED>
         <ENCLOSED NAME="Comment" OPTIONAL="TRUE">
-          <PCDATA TARGET="Comment" />
+          <PCDATA TARGET="ObsoleteComment" />
         </ENCLOSED>
         <ENCLOSED NAME="UserComment" OPTIONAL="TRUE">
           <PCDATA TARGET="UserComment" />
@@ -998,7 +1006,7 @@
             <ELEMENTREF NAME="SubStep"/>
           </REPEAT>
         </ENCLOSED>
-	<ENCLOSED NAME="Messsages" OPTIONAL="TRUE">
+        <ENCLOSED NAME="Messsages" OPTIONAL="TRUE">
           <REPEAT TARGET="Messages">
             <ELEMENTREF NAME="DBMessage"/>
           </REPEAT>
@@ -1138,14 +1146,14 @@
     <META NAME="Class">TestField</META>
     <FIELDS>
       <FIELD NAME="Variable" TYPE="PCHAR" />
-      <FIELD NAME="Value"    TYPE="INTEGER" />
+      <FIELD NAME="Value"    TYPE="PCHAR" />
     </FIELDS>
     <ATTRIBUTES>
-      <ATTR NAME="Value" TARGET="Value" OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Value" TARGET="Value" OPTIONAL="TRUE" DEFAULT=""/>
     </ATTRIBUTES>
     <FORMULA>
       <ENCLOSED NAME="Variable" OPTIONAL="TRUE">
-	<PCDATA TARGET="Variable" />
+	    <PCDATA TARGET="Variable" />
       </ENCLOSED>
     </FORMULA>
   </ELEMENT>
@@ -1209,15 +1217,17 @@
   <!-- ----------- -->
   <!-- Translation -->
   <!-- ----------- -->
-  <ELEMENT NAME="Translation" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
+  <ELEMENT NAME="Translation" BASEELEMENT="ReferencesParagraph" MAIN="TRUE" BASECLASS="DataDictionary.ReferencesParagraph">
     <META NAME="Package">translation</META>
     <FIELDS>
-      <FIELD NAME="SourceTexts"   REFTYPE="SourceText" >
+      <FIELD NAME="SourceTexts"     REFTYPE="SourceText" >
         <META NAME="TargetName">Sources</META>
       </FIELD>
-      <FIELD NAME="Implemented"   TYPE="BOOLEAN" />
-      <FIELD NAME="SubSteps"      REFTYPE="SubStep" />
-      <FIELD NAME="Comment"       TYPE="PCHAR" />
+      <FIELD NAME="ObsoleteComment" TYPE="PCHAR">
+        <META NAME="DoNotCompare" />
+      </FIELD>
+      <FIELD NAME="Implemented"     TYPE="BOOLEAN" />
+      <FIELD NAME="SubSteps"        REFTYPE="SubStep" />
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="Implemented" TARGET="Implemented" OPTIONAL="TRUE" DEFAULT="FALSE" />
@@ -1229,13 +1239,13 @@
             <ELEMENTREF NAME="SourceText"/>
           </REPEAT>
         </ENCLOSED>
-	<ENCLOSED NAME="SubSteps" OPTIONAL="TRUE">
+        <ENCLOSED NAME="SubSteps" OPTIONAL="TRUE">
           <REPEAT TARGET="SubSteps">
             <ELEMENTREF NAME="SubStep"/>
           </REPEAT>
         </ENCLOSED>
-	<ENCLOSED NAME="Comment" OPTIONAL="TRUE">
-          <PCDATA TARGET="Comment" />
+        <ENCLOSED NAME="Comment" OPTIONAL="TRUE">
+          <PCDATA TARGET="ObsoleteComment" />
         </ENCLOSED>
       </CONCAT>
     </FORMULA>
@@ -1245,6 +1255,26 @@
   <!-- Source text -->
   <!-- ----------- -->
   <ELEMENT NAME="SourceText" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
+    <META NAME="Package">translation</META>
+    <FIELDS>
+      <FIELD NAME="Comments"     REFTYPE="SourceTextComment" >
+      </FIELD>
+    </FIELDS>
+    <FORMULA>
+      <CONCAT>
+        <ENCLOSED NAME="Comments" OPTIONAL="TRUE">
+          <REPEAT TARGET="Comments" ATLEASTONE="FALSE">
+            <ELEMENTREF NAME="SourceTextComment" />
+          </REPEAT>
+        </ENCLOSED>
+      </CONCAT>
+    </FORMULA>
+  </ELEMENT>
+
+  <!-- ------------------- -->
+  <!-- Source text comment -->
+  <!-- ------------------- -->
+  <ELEMENT NAME="SourceTextComment" BASEELEMENT="Namable" MAIN="TRUE" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">translation</META>
   </ELEMENT>
 

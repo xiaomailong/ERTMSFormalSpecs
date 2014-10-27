@@ -18,12 +18,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DataDictionary;
 using DataDictionary.Constants;
 using DataDictionary.Types;
 using GUI.BoxArrowDiagram;
 using DataDictionary.Rules;
 using DataDictionary.Variables;
 using Utils;
+using DataDictionary.Interpreter;
 
 namespace GUI.StateDiagram
 {
@@ -132,9 +134,27 @@ namespace GUI.StateDiagram
         public StateMachine StateMachine { get { return Model as StateMachine; } set { Model = value; } }
 
         /// <summary>
-        /// The state machine variable (if any) displayed by this panel
+        /// The expressiong required to get the state machine variable (if any) displayed by this panel
         /// </summary>
-        public IVariable StateMachineVariable { get; set; }
+        public Expression StateMachineVariableExpression { get; set; }
+
+        /// <summary>
+        /// Provides the state machine variable (if any)
+        /// </summary>
+        public IVariable StateMachineVariable
+        {
+            get
+            {
+                IVariable retVal = null;
+
+                if (StateMachineVariableExpression != null)
+                {
+                    retVal = StateMachineVariableExpression.GetVariable(new InterpretationContext());
+                }
+
+                return retVal;
+            }
+        }
 
         /// <summary>
         /// Provides the boxes that need be displayed

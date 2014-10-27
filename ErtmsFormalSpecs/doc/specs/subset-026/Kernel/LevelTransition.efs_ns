@@ -8,7 +8,6 @@
  Name="LevelTransition"
  Guid="c7686458-322b-4861-9f8c-de43b74bb2c3"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
@@ -38,8 +37,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ea4e2c95-0a5b-4441-b32c-26918ed088b7"
 >
-</ReqRef><Comment></Comment>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Default.BaseTypes.Length"
  Default=""
  Mode="Internal"
@@ -70,8 +68,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="166e5b58-4865-45e1-a493-cbdd0f15b840"
 >
-</ReqRef><Comment></Comment>
-</StructureElement></Structure><Structure
+</ReqRef></StructureElement></Structure><Structure
  Default=""
  X="260"
  Y="290"
@@ -102,8 +99,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ebc998ec-0df9-4167-afbe-ee3b42ff2856"
 >
-</ReqRef><Comment></Comment>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Internal"
@@ -129,8 +125,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="93b3e829-47db-4fdf-aa99-a5d0304a65e1"
 >
-</ReqRef><Comment></Comment>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
  Mode="Internal"
@@ -159,8 +154,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1da9d143-d07f-490c-98a3-ed1e9d19f02e"
 >
-</ReqRef><Comment></Comment>
-</Collection></Collections>
+</ReqRef></Collection></Collections>
 <Functions>
 <Function
  Type="Default.Level"
@@ -179,8 +173,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="deda796a-0385-4be7-90e2-3d0b343d6564"
 >
-</ReqRef><Comment></Comment>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.M_LEVELTR"
  Name="LevelT"
@@ -361,6 +354,7 @@
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="NewLevelTransitionToNTC"
  Guid="73dab62e-9c45-4ec1-8529-6f89f30f4815"
 >
@@ -425,7 +419,6 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="05acd2a5-8f46-436c-9a1a-5cbe371fef62"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="b14e5210-48d3-4eed-89e3-4d03324dd8f6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -468,7 +461,6 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
  Name="NewLevelTransition"
  Guid="80f02659-3e0a-4140-9113-61a38c5b8fcf"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -492,6 +484,7 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="ReceiveData_Part2"
  Guid="019f945e-875d-4a18-a861-769eb9da18ac"
 >
@@ -502,7 +495,6 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
  Name="NextLevelTransition"
  Guid="7915a4ef-dfb9-4e29-998c-3d273019ad3e"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -521,12 +513,14 @@ Packet.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="ProcessLTO"
  Guid="9c568db2-28f9-4b44-a8a4-d25f61ec89c2"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="ProcessLTO"
  Guid="bbe927d4-96e9-44f8-988b-0bf8b08a27e4"
 >
@@ -553,8 +547,7 @@ Packet.Sequence1</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="338336d3-0344-4b2f-8380-68db927b7096"
 >
-</ReqRef><Comment></Comment>
-<Parameters>
+</ReqRef><Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.CONDITIONAL_LEVEL_TRANSITION_ORDER.Message"
  Name="Packet"
@@ -564,6 +557,7 @@ Packet.Sequence1</Action></Actions>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="ReceiveData_Part1"
  Guid="71e17414-df0a-4b73-b728-0440539665b4"
 >
@@ -596,6 +590,7 @@ Packet.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="ReceiveData_Part2"
  Guid="8f83c7d2-f581-49d3-964f-0a37295c2979"
 >
@@ -624,6 +619,7 @@ Packet.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="CurrentLevelNotInList"
  Guid="b0986f57-114d-4425-ba4c-9f93221238e2"
 >
@@ -653,7 +649,7 @@ Packet.Sequence1</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="7432ff75-4a66-4ae6-9aae-3df6be9e372b"
->NOT (THERE_IS_IN LevelTransitionOrder.LevelAndLength | X.TRLevel.Value == Kernel.Level.Value)</PreCondition></PreConditions>
+>NOT (THERE_IS_IN LevelTransitionOrder.LevelAndLength | X.TRLevel.Value == Kernel.Level.Value.Value)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1a6bdf17-071d-4c6b-921d-d6e6833e5395"
@@ -699,13 +695,13 @@ Packet.Sequence1</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="bd1a1f4f-348c-43d7-a708-6fbb5d523280"
->Kernel.Level.Value == Default.Level.L0</PreCondition><PreCondition
+>Kernel.Level.Value.Value == Default.Level.L0</PreCondition><PreCondition
  Guid="691dd9ff-515f-4c67-a0d5-1cf2ea537d1c"
->LTOtoProcess.TRLevel.Value == Default.Level.L1</PreCondition></PreConditions>
+>LevelTransitionToProcess.TRLevel.Value == Default.Level.L1</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="04cbcfde-a8bc-4ce4-af15-db2cd46487b5"
->Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -714,6 +710,7 @@ Packet.Sequence1</Action></Actions>
  Width="100"
  Height="50"
  Pinned="TRUE"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ProcessLTOGeneric"
  Guid="9f0e907e-219e-4923-a617-2a61a1063133"
@@ -741,21 +738,20 @@ Packet.Sequence1</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fbb1473a-f0aa-4110-908c-b391112b8736"
 >
-<Comment></Comment>
 </ReqRef><Comment>We now prepare the level-transition. I.e. all relevant data has been received and we will now filter out the one single transition which shall be performed</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="ReduceLTOtoOne"
  Guid="f4557bca-d63c-4099-88fe-7af1e08de1c5"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="ed925502-1144-4258-9df9-8077986730c3"
->LTOtoProcess &lt;- FIRST_IN LevelTransitionOrder.LevelAndLength | AvailableForUse( Level=&gt; X.TRLevel )</Action></Actions>
+>LevelTransitionToProcess &lt;- FIRST_IN LevelTransitionOrder.LevelAndLength | AvailableForUse( Level=&gt; X.TRLevel )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -768,27 +764,26 @@ Packet.Sequence1</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2a66ddbd-1775-4be9-872c-7381d0d40473"
 >
-<Comment></Comment>
 </ReqRef><Comment>This is only executed if the previous step (&quot;ReduceLTOtoOne&quot;) failed (i,e, nothing is available)</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="FallbackIfNothingAvailable"
  Guid="ab6c5d8f-4fea-4400-b8c1-34b13a2785bf"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="aea1dfa9-f22d-41e6-b71f-28c16a37d8ab"
->LTOtoProcess.AcknLength == Default.BaseTypes.Length.NA</PreCondition><PreCondition
+>LevelTransitionToProcess.AcknLength == Default.BaseTypes.Length.NA</PreCondition><PreCondition
  Guid="0905157e-7ec2-4c8f-b7ed-41eda4a774b2"
->LTOtoProcess.TRLevel.Value == Default.Level.Unknown</PreCondition><PreCondition
+>LevelTransitionToProcess.TRLevel.Value == Default.Level.Unknown</PreCondition><PreCondition
  Guid="51f56750-a2ca-4d8d-813b-c8da29fbd2e3"
->LTOtoProcess.TRLevel.NTC == Default.NID_NTC.NOT_APPLICABLE</PreCondition></PreConditions>
+>LevelTransitionToProcess.TRLevel.NTC == Default.NID_NTC.NOT_APPLICABLE</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="13a35181-3fe7-41a0-ac21-38a64a3091f6"
->LTOtoProcess &lt;- LAST_IN ( LevelTransitionOrder.LevelAndLength )</Action></Actions>
+>LevelTransitionToProcess &lt;- LAST_IN ( LevelTransitionOrder.LevelAndLength )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -811,10 +806,10 @@ Packet.Sequence1</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9eb81320-eade-44b5-b9b0-46d61d2f7258"
 >
-</ReqRef><Comment></Comment>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="InformDriver"
  Guid="2cf55614-4bd8-418a-b952-e32bea75338f"
 >
@@ -823,11 +818,11 @@ Packet.Sequence1</Action></Actions>
 <Actions>
 <Action
  Guid="fd368ae9-0601-449f-b2c9-e3ef3f7370e8"
-><Comment></Comment>
-DMI.MasterDMI().Out_LevelTransitionAnnouncement.Display(LTOtoProcess.TRLevel.Value)</Action></Actions>
+>DMI.MasterDMI().Out_LevelTransitionAnnouncement.Display(LevelTransitionToProcess.TRLevel.Value)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ExecuteActualTransition"
  Guid="b1028b7b-0bfc-49d2-8eb1-e2e40d9f5e12"
@@ -835,6 +830,7 @@ DMI.MasterDMI().Out_LevelTransitionAnnouncement.Display(LTOtoProcess.TRLevel.Val
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="ExecuteActualTransition"
  Guid="375ba55f-1455-4531-b8e0-b6687a05bfb1"
@@ -867,7 +863,6 @@ DMI.MasterDMI().Out_LevelTransitionAnnouncement.Display(LTOtoProcess.TRLevel.Val
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="37a8549c-70e7-40db-81f0-196e5f56600a"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="6b26f38c-d98d-4eee-a314-ae6b48256d36"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -889,7 +884,7 @@ DMI.MasterDMI().Out_LevelTransitionAnnouncement.Display(LTOtoProcess.TRLevel.Val
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="LTOtoProcess"
+ Name="LevelTransitionToProcess"
  Guid="c4da5415-191f-483c-880e-1c2e86e52dea"
 >
 <ReqRef
@@ -908,7 +903,7 @@ DMI.MasterDMI().Out_LevelTransitionAnnouncement.Display(LTOtoProcess.TRLevel.Val
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="ExecuteLevelTransitionOrder"
+ Name="Execute level transition order"
  Guid="2d1413d6-1677-4d3a-9fd6-3e25c3ab814f"
 >
 <ReqRef
@@ -916,18 +911,16 @@ DMI.MasterDMI().Out_LevelTransitionAnnouncement.Display(LTOtoProcess.TRLevel.Val
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5479e312-51ed-4bcd-84c0-79c01422495c"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="569b9466-f366-4f5e-b29a-47dbd42081e2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d9242104-b92f-4824-9f1e-e35e3bb21582"
 >
-</ReqRef><Comment></Comment>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="ExecuteLevelTransitionOrder"
+ Name="Execute level transition order"
  Guid="ac07ff8b-fc42-4327-a7ab-f1d27cc45a2b"
 >
 <Comment>NTC-part not functional for now (Kernel.NationalSystemId). Requirement for this is missing. Is it needed? #morido, 13/10/14</Comment>
@@ -936,11 +929,74 @@ DMI.MasterDMI().Out_LevelTransitionAnnouncement.Display(LTOtoProcess.TRLevel.Val
  Guid="32291f91-c8f4-4551-9efb-1784c4b3c42b"
 >LevelTransitionOrder.Distance == BTM.TravelledDistanceFromLRBG()</PreCondition><PreCondition
  Guid="8a9cadaf-670b-4f32-8b9e-4b84655afe7a"
->LevelTransitionOrder.IsLTO== True</PreCondition></PreConditions>
+>LevelTransitionOrder.IsLTO == True</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle level transition according to current and target levels"
+ Guid="65e5f4f7-e073-4aa9-a8ad-91bd65ac5a39"
+>
+<Comment>According to the values of the current and the target level, the level transitions are handled in different ways.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="From level 1 to level 2/3"
+ Guid="916739af-e4fd-4cb8-8df1-609c41bc3078"
+>
+<ReqRef
+ Id="d2dba6ab-f150-4940-8d2c-e5e0f78544e3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="75ca26dd-6961-4b3a-a94e-0e69641f77e7"
+>
+</ReqRef><ReqRef
+ Id="f56df936-9ada-4149-91ce-4742fb123bbb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4c92933d-6412-431a-b293-eb29fa910af1"
+>
+</ReqRef><ReqRef
+ Id="917e038b-c314-4423-b3a6-c0131f148410"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="412a4295-716e-45a1-8109-98b52c64b895"
+>
+</ReqRef><Comment>In order to execute the level transition from level 1 to level 2 or 3, the train must possess information about a target speed at the border location or an MA and traci description information into the new area.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="a2f4f847-d900-402b-8e3e-2c45077b7e15"
+>Kernel.Level.Value.Value == Level.L1</PreCondition><PreCondition
+ Guid="41aa37fd-92d5-46cc-8891-ac1549bf9e5c"
+>LevelTransitionToProcess.TRLevel.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
+ Guid="28e4aaff-7081-4121-bb77-dbda745d5e44"
+>MA.EndOfMA() &gt; LevelTransitionOrder.Distance
+  AND
+MA.FullTrackDescriptionAvailableForDistanceInterval( (FIRST_IN MA.MovementAuthority.Sections).Length )</PreCondition><PreCondition
+ Guid="8f452c3f-5b0c-46b0-97ff-2638bb8fe2c6"
+>MA.ClosestEOA().Location == LevelTransitionOrder.Distance
+    AND
+MA.ClosestEOA().Speed &gt; 0.0</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="05d0b765-0cd3-431a-97d3-9a1515603681"
+>Kernel.Level.Value.Value &lt;- LevelTransitionToProcess.TRLevel.Value</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Otherwise"
+ Guid="4a02871c-70ae-4b77-aa21-24e61f3c0442"
+>
+<Comment>For all other levels.</Comment>
+<PreConditions>
+</PreConditions>
 <Actions>
 <Action
  Guid="097a357d-a5c2-47af-a6ac-050fe94ed1ed"
->Kernel.Level.Value &lt;- LTOtoProcess.TRLevel.Value</Action></Actions>
+>Kernel.Level.Value.Value &lt;- LevelTransitionToProcess.TRLevel.Value</Action><Action
+ Guid="0ddeb99e-7c2c-4f4c-a6c4-63b006cbc5e0"
+>EURORADIO.PositionReport.PositionReportEventsTracker.LevelTransitionBorderPassed &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

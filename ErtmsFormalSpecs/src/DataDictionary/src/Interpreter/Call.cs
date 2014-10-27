@@ -379,6 +379,7 @@ namespace DataDictionary.Interpreter
             Values.IValue retVal = null;
 
             Functions.Function function = getFunction(context, explain);
+
             ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, function.Name + " (...) returned ");
             if (function != null)
             {

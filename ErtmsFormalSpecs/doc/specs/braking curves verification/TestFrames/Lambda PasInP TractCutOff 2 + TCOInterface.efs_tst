@@ -47,7 +47,9 @@
  Guid="22e8d9ba-61cc-4249-b766-568b7fb918b6"
 >Kernel.Level &lt;- Kernel.LevelData
 {
-    Value =&gt; Level.L1,
+    Value =&gt; LevelDataStruct{
+      Value =&gt; Level.L1
+    },
     DataState =&gt; DataState.Valid
 }</Action><Action
  Guid="a81770b8-ab33-4987-81c4-2615f0820797"
@@ -66,6 +68,14 @@ BTM.LRBG &lt;- BTM.BaliseGroup{
     },
     NID =&gt; 85,
     Orientation =&gt; Default.Orientation.Nominal
+}</Action><Action
+ Guid="bdc26162-4013-4aa4-817b-90f661966f3b"
+>TIU.CabA &lt;- TIU.CabStruct{
+    Desk1IsActive =&gt; Boolean.True,
+    IsFittedWithSingleDesk =&gt; True,
+    Desk2IsActive =&gt; False,
+    VirtualCabAActive =&gt; True,
+    VirtualCabBActive =&gt; False
 }</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>

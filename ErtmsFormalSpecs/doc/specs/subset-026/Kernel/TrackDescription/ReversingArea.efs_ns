@@ -23,8 +23,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="44c4fb13-6cd4-4fdb-aba7-eb3f8eea8607"
 >
-</ReqRef><Comment></Comment>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
  Mode="Internal"
@@ -439,8 +438,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt; ReversingAreaProfil
 <Actions>
 <Action
  Guid="693639f6-da52-48b4-9947-750a66a4dcf4"
-><Comment></Comment>
-DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DoNotDisplay()</Action><Action
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DoNotDisplay()</Action><Action
  Guid="315ca243-f3b2-480f-87b3-9bdefeaa17b1"
 >DMI.MasterDMI().In_AcknOfRVMode.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>

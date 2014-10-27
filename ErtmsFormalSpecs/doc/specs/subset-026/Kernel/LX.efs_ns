@@ -7,7 +7,6 @@
  Name="LX"
  Guid="b086b356-2889-4262-a7bb-ae9355607b0a"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
@@ -27,7 +26,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ac807194-ff85-4c2c-afab-ada1d79de657"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="f694242d-ad4f-45aa-a715-677610005bcb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -129,7 +127,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8e79b32e-2f40-4d5b-9eb6-e5e570c92648"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="f694242d-ad4f-45aa-a715-677610005bcb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -192,13 +189,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="202d1272-9864-4eef-9bd9-395e6086362a"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="ece82958-6f94-4168-b5b1-f3fe24058435"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2dff7a7e-cb5e-4d2e-9b12-e6e7c349421d"
 >
-<Comment></Comment>
 </ReqRef><Comment>Length of the stopping area in rear of the start location of the level crossing area.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
@@ -244,7 +239,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9aea009c-7b86-4064-b613-03e2a4294b05"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="6caaedb4-a566-4536-a6c7-b958f8c96d03"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -273,7 +267,6 @@
  Name="Value"
  Guid="0aaa7939-0011-43dc-9333-93f25d3eead6"
 >
-<Comment></Comment>
 <Expression>(REDUCE LevelCrossings 
     USING  
         MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; LXSpeedRestriction(aLX =&gt; X, Distance =&gt; d), 
@@ -296,7 +289,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2eb34725-9edf-4f67-b8ee-646d5564503e"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="127b4102-89de-4c50-9c52-b1bead79aa18"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -335,7 +327,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="Stopping area"
  Guid="c02bca9b-8d4b-448d-a0f4-34d1cbdf40f8"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="0b2f6eef-b4ba-4d04-b58d-f9e3967cb279"
@@ -347,7 +338,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="During LX"
  Guid="20734346-3c5e-4874-98f2-a6f945ae06cf"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="aa68eaa3-e106-4898-a5a8-0da6cc9bab87"
@@ -400,7 +390,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="LX is protected"
  Guid="4359d193-2752-4a1e-8efe-3d266fb9367c"
 >
-<Comment></Comment>
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
@@ -516,7 +505,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="SameId"
  Guid="3c7d1422-3ee4-4419-ad6e-520b797ab236"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="fe8a1ccd-112a-435e-bfef-c05500940864"
@@ -575,7 +563,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="Value"
  Guid="a9bbf1f9-7aa9-4346-acd1-798063f97990"
 >
-<Comment></Comment>
 <Expression>REDUCE LevelCrossings | (X.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected) AND (X.StoppingRequired == Messages.Q_STOPLX.No_stop_required)
 
 USING ClosestLX(LX1=&gt;X, LX2=&gt;RESULT)
@@ -655,18 +642,15 @@ INITIAL_VALUE Kernel.LX.LevelCrossing{Location =&gt; Default.BaseTypes.Distance.
  Name="GUI is inhibited"
  Guid="75ba269e-e11b-4dc9-a74b-6618d5460ba5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d4f210eb-abe8-409f-82c1-dcd63fef0895"
-><Comment></Comment>
-NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
+>NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 <Expression>d_FLOI_ForLX ( aLX, True ) - BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
  Guid="b1346c7a-ac41-44d2-b6a3-b7c844cda78d"
 >
-<Comment></Comment>
 <Expression>BaseTypes.MinDistance ( X1 =&gt; d_FLOI_ForLX ( aLX, True ) - BaseTypes.SpeedToMS ( aLX.Speed ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; SpeedAndDistanceMonitoring.DecelerationCurves.GUI, Speed =&gt; aLX.Speed ) )</Expression>
 </Case></Cases>
 </Function><Function
@@ -701,8 +685,7 @@ NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="c96572f1-d44c-4039-8be6-1eb9c3f44363"
-><Comment></Comment>
-SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1 ( aLX.Speed, EstimatedAccelerationSetToZero ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )
+>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1 ( aLX.Speed, EstimatedAccelerationSetToZero ) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )
  &lt;= 
 d_SBI2LX(aLX, EstimatedAccelerationSetToZero) - TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1 ( aLX.Speed, EstimatedAccelerationSetToZero )</Expression>
@@ -710,7 +693,6 @@ d_SBI2LX(aLX, EstimatedAccelerationSetToZero) - TrainPosition.FrontEndPosition (
  Name="d_SBI2"
  Guid="5b780a39-26ea-4c85-870c-c287b12e58f7"
 >
-<Comment></Comment>
 <Expression>d_SBI2LX(aLX, EstimatedAccelerationSetToZero)</Expression>
 </Case></Cases>
 </Function><Function
@@ -722,7 +704,6 @@ d_SBI2LX(aLX, EstimatedAccelerationSetToZero) - TrainPosition.FrontEndPosition (
  Name="d_SBI2LX"
  Guid="a2d7bdad-be08-457a-ab64-f63a2831b5c0"
 >
-<Comment></Comment>
 <Parameters>
 <Parameter
  Type="Kernel.LX.LevelCrossing"
@@ -757,7 +738,6 @@ d_SBI2LX(aLX, EstimatedAccelerationSetToZero) - TrainPosition.FrontEndPosition (
  Name="Value"
  Guid="e0098e0c-aa02-466a-aef7-a55cc93835e7"
 >
-<Comment></Comment>
 <Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.EBIvalue (
     Vest =&gt; aLX.Speed,
     aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
@@ -805,7 +785,6 @@ d_SBI2LX(aLX, EstimatedAccelerationSetToZero) - TrainPosition.FrontEndPosition (
  Name="UpdateLevelCrossings"
  Guid="2f346b4d-6e5b-4d7c-aa47-e547a9a1601d"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -826,8 +805,7 @@ d_SBI2LX(aLX, EstimatedAccelerationSetToZero) - TrainPosition.FrontEndPosition (
 <Actions>
 <Action
  Guid="c3074af9-ea7f-46b8-a94a-efca00745de7"
-><Comment></Comment>
-LevelCrossings &lt;- MAP LevelCrossings USING CreateLevelCrossing(aLevelCrossing=&gt;X, Packet=&gt;Packet, NID_BG=&gt;NID_BG)</Action></Actions>
+>LevelCrossings &lt;- MAP LevelCrossings USING CreateLevelCrossing(aLevelCrossing=&gt;X, Packet=&gt;Packet, NID_BG=&gt;NID_BG)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="NewLevelCrossing"
@@ -898,7 +876,6 @@ IN LevelCrossings</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7298fc20-057d-4d65-ab47-bce3d6280257"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="6caaedb4-a566-4536-a6c7-b958f8c96d03"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"

@@ -244,16 +244,28 @@ namespace DataDictionary.Interpreter.Statement
                     {
                         int token = context.LocalScope.PushContext();
                         context.LocalScope.setVariable(IteratorVariable);
+                        bool elementFound = false;
+                        bool matchingElementFound = false;
                         foreach (Values.IValue value in listValue.Val)
                         {
                             if (value != EFSSystem.EmptyValue)
                             {
+                                elementFound = true;
                                 IteratorVariable.Value = value;
                                 if (conditionSatisfied(context, explanation))
                                 {
+                                    matchingElementFound = true;
                                     AppliedStatement.GetChanges(context, changes, explanation, apply, runner);
                                 }
                             }
+                        }
+                        if (!elementFound)
+                        {
+                            ExplanationPart.CreateSubExplanation(explanation, "Empty collection");
+                        }
+                        else if (!matchingElementFound)
+                        {
+                            ExplanationPart.CreateSubExplanation(explanation, "No matching element found");
                         }
                         context.LocalScope.PopContext(token);
                     }

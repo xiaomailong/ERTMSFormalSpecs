@@ -7,7 +7,6 @@
  Name="ModeRelatedSpeedLimits"
  Guid="89989471-9882-4745-8a2f-2c5d3d48cf9a"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
@@ -51,8 +50,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ccf52cfd-71d5-4d0e-9a79-7147de02038b"
 >
-</ReqRef><Comment></Comment>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default="Default.BaseTypes.Speed.NA"
  Mode="Internal"
@@ -102,7 +100,6 @@
  Name="ValueGivenByTrackside"
  Guid="bad4d621-448c-4df5-aa07-0df881850024"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="7d59cd76-9a12-419a-95f2-b17b859a7e4f"
@@ -162,7 +159,6 @@
  Name="ValueGivenByTrackside"
  Guid="8ea50509-79c0-4120-bb88-4f15f28d3422"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d7e584ef-18a8-49bc-842f-8697192e0102"
@@ -204,7 +200,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8b67b52a-d809-4252-9b56-7e9b3a8975ab"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="bfa09769-fb03-456f-b92b-14ab4cf7977b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -238,12 +233,10 @@
  Name="SH"
  Guid="317649a2-fbab-44f8-81f2-d012ae88dfaf"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="6e3ee52f-2d48-4517-bc28-80d1bf41d9d0"
-><Comment></Comment>
-Kernel.Mode == Mode.SH</PreCondition></PreConditions>
+>Kernel.Mode == Mode.SH</PreCondition></PreConditions>
 <Expression>SHModeSpeedLimit()</Expression>
 </Case><Case
  Name="SR"
@@ -267,7 +260,6 @@ Kernel.Mode == Mode.SH</PreCondition></PreConditions>
  Name="LS"
  Guid="bf3bf27f-1390-419f-bee7-cbc4fca893b1"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="18f22150-6820-406f-8fab-7751e3464e64"
@@ -419,7 +411,6 @@ Kernel.Mode == Mode.SH</PreCondition></PreConditions>
  Name="ValueGivenByDriver"
  Guid="85cd3d19-421e-4809-8cb3-9b846b66d2d3"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="68da82cd-26fd-4256-bdaf-17972b445617"
@@ -517,6 +508,5 @@ Kernel.Mode == Mode.SH</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="09dac94a-1470-4a57-926e-18e8ac7e4a73"
 >
-</ReqRef><Comment></Comment>
-</Variable></Variables>
+</ReqRef></Variable></Variables>
 </NameSpace>

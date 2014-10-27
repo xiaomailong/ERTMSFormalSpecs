@@ -18,15 +18,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Drawing.Design;
+using DataDictionary.Tests.Translations;
+using DataDictionary;
+using DataDictionary.Interpreter;
+using DataDictionary.Specification;
 
 namespace GUI.TestRunnerView
 {
-    public class StepTreeNode : ModelElementTreeNode<DataDictionary.Tests.Step>
+    public class StepTreeNode : ReferencesParagraphTreeNode<DataDictionary.Tests.Step>
     {
         /// <summary>
         /// The value editor
         /// </summary>
-        private class ItemEditor : CommentableEditor
+        private class ItemEditor : ReferencesParagraphEditor
         {
             /// <summary>
             /// Constructor
@@ -209,6 +213,59 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
+        /// Shows the messages associated to this step
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void ShowMessagesHandler(object sender, EventArgs args)
+        {
+            string messageExpression = "[";
+
+            bool first = true;
+            foreach (DataDictionary.Tests.DBElements.DBMessage message in Item.StepMessages)
+            {
+                if (!first)
+                {
+                    messageExpression = messageExpression + ",";
+                }
+
+                if (message != null)
+                {
+                    messageExpression = messageExpression + Translation.format_message(message);
+                    first = false;
+                }
+            }
+            messageExpression += "]";
+
+            Expression expression = EFSSystem.INSTANCE.Parser.Expression(Item.Dictionary, messageExpression);
+            DataDictionary.Values.IValue value = expression.GetValue(new InterpretationContext(), null);
+
+            StructureValueEditor.Window editor = new StructureValueEditor.Window();
+            editor.SetModel(value);
+            editor.ShowDialog();
+        }
+
+        /// <summary>
+        /// Shows the translation which should be applied on this step
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void ShowTranslationHandler(object sender, EventArgs args)
+        {
+            TranslationDictionary translationDictionary = Item.Dictionary.TranslationDictionary;
+
+            if (translationDictionary != null)
+            {
+                Translation translation = translationDictionary.findTranslation(Item.getDescription(), Item.Comment);
+                if (translation != null)
+                {
+                    bool getFocus = true;
+                    GUI.GUIUtils.MDIWindow.Select(translation, getFocus);
+                }
+            }
+        }
+
+        /// <summary>
         /// Translates the corresponding step, according to translation rules
         /// </summary>
         /// <param name="sender"></param>
@@ -329,11 +386,15 @@ namespace GUI.TestRunnerView
             retVal.Add(new MenuItem("Add sub-step", new EventHandler(AddSubStepHandler)));
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
             retVal.AddRange(base.GetMenuItems());
-            retVal.Insert(6, new MenuItem("Apply translation rules", new EventHandler(TranslateHandler)));
-            retVal.Insert(7, new MenuItem("-"));
-            retVal.Insert(8, new MenuItem("Run once", new EventHandler(RunHandler)));
-            retVal.Insert(9, new MenuItem("Run until expectation reached", new EventHandler(RunForExpectationsHandler)));
-            retVal.Insert(10, new MenuItem("-"));
+
+            int index = 6;
+            retVal.Insert(index++, new MenuItem("Show messages", new EventHandler(ShowMessagesHandler)));
+            retVal.Insert(index++, new MenuItem("Show translation rule", new EventHandler(ShowTranslationHandler)));
+            retVal.Insert(index++, new MenuItem("Apply translation rules", new EventHandler(TranslateHandler)));
+            retVal.Insert(index++, new MenuItem("-"));
+            retVal.Insert(index++, new MenuItem("Run once", new EventHandler(RunHandler)));
+            retVal.Insert(index++, new MenuItem("Run until expectation reached", new EventHandler(RunForExpectationsHandler)));
+            retVal.Insert(index++, new MenuItem("-"));
 
             return retVal;
         }

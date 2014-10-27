@@ -2463,6 +2463,28 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Pinned", other.getPinned().ToString(), obj.getPinned().ToString()) );
             }
+            if ( obj.getEnterAction() == null )
+            {
+                if ( other.getEnterAction() != null )
+                {
+                    diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "EnterAction", "" ) );
+                }
+            }
+            else
+            {
+                compareRule ( obj.getEnterAction(), other.getEnterAction(), diff );
+            }
+            if ( obj.getLeaveAction() == null )
+            {
+                if ( other.getLeaveAction() != null )
+                {
+                    diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "LeaveAction", "" ) );
+                }
+            }
+            else
+            {
+                compareRule ( obj.getLeaveAction(), other.getLeaveAction(), diff );
+            }
         }
 
         /// <summary>
@@ -3199,7 +3221,7 @@ namespace DataDictionary.Compare
                 return;
             }
 
-            compareNamable (obj, other, diff);
+            compareReferencesParagraph (obj, other, diff);
 
             if ( obj.getTCS_Order() != other.getTCS_Order() )
             {
@@ -3213,9 +3235,9 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Description", other.getDescription(), obj.getDescription()) );
             }
-            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
+            if ( !CompareUtil.canonicalStringEquality(obj.getObsoleteComment(), other.getObsoleteComment()) )
             {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ObsoleteComment", other.getObsoleteComment(), obj.getObsoleteComment()) );
             }
             if ( !CompareUtil.canonicalStringEquality(obj.getUserComment(), other.getUserComment()) )
             {
@@ -3763,9 +3785,9 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Variable", other.getVariable(), obj.getVariable()) );
             }
-            if ( obj.getValue() != other.getValue() )
+            if ( !CompareUtil.canonicalStringEquality(obj.getValue(), other.getValue()) )
             {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Value", other.getValue().ToString(), obj.getValue().ToString()) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Value", other.getValue(), obj.getValue()) );
             }
         }
 
@@ -4052,7 +4074,7 @@ namespace DataDictionary.Compare
                 return;
             }
 
-            compareNamable (obj, other, diff);
+            compareReferencesParagraph (obj, other, diff);
 
             if ( obj.allSourceTexts() != null )
             {
@@ -4176,10 +4198,6 @@ namespace DataDictionary.Compare
                     }
                 }
             }
-            if ( !CompareUtil.canonicalStringEquality(obj.getComment(), other.getComment()) )
-            {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
-            }
         }
 
         /// <summary>
@@ -4188,6 +4206,82 @@ namespace DataDictionary.Compare
         /// <param name="obj"></param>
         /// <param name="other"></param>
         public static void compareSourceText(Generated.SourceText obj, Generated.SourceText other, VersionDiff diff)
+        {
+            if ( other == null )
+            { 
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "", "", obj.Name ) );
+                return;
+            }
+
+            compareNamable (obj, other, diff);
+
+            if ( obj.allComments() != null )
+            {
+                if ( other.allComments() != null ) 
+                {
+                    foreach ( Generated.SourceTextComment subElement in obj.allComments() )
+                    {
+                        bool compared = false;
+                        foreach ( Generated.SourceTextComment otherElement in other.allComments() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                compareSourceTextComment ( subElement, otherElement, diff );
+                                compared = true;
+                            break;
+                            }
+                        }
+
+                        if ( !compared ) 
+                        {
+                            diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Comments", "", subElement.Name ) );
+                        }
+                    }
+
+                    foreach ( Generated.SourceTextComment otherElement in other.allComments() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.SourceTextComment subElement in obj.allComments() )
+                        {
+                            if ( subElement.Guid == otherElement.Guid )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Comments", otherElement.Name) );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.SourceTextComment subElement in obj.allComments() )
+                    {
+                        diff.appendChanges ( new Diff(subElement, HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd, "Comments", "", subElement.Name ) );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allComments() != null ) 
+                {
+                    foreach ( Generated.SourceTextComment otherElement in other.allComments() )
+                    {
+                        diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove , "Comments", otherElement.Name) );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Compares two SourceTextComment and annotates the differences on the first one
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void compareSourceTextComment(Generated.SourceTextComment obj, Generated.SourceTextComment other, VersionDiff diff)
         {
             if ( other == null )
             { 
@@ -8497,6 +8591,8 @@ namespace DataDictionary.Compare
             ensureGuidReqRelated (obj, other);
 
             ensureGuidStateMachine ( obj.getStateMachine(), other.getStateMachine() );
+            ensureGuidRule ( obj.getEnterAction(), other.getEnterAction() );
+            ensureGuidRule ( obj.getLeaveAction(), other.getLeaveAction() );
         }
 
         /// <summary>
@@ -9507,7 +9603,7 @@ namespace DataDictionary.Compare
                 }
             }
 
-            ensureGuidNamable (obj, other);
+            ensureGuidReferencesParagraph (obj, other);
 
             if ( obj.allSubSteps() != null )
             {
@@ -10652,7 +10748,7 @@ namespace DataDictionary.Compare
                 }
             }
 
-            ensureGuidNamable (obj, other);
+            ensureGuidReferencesParagraph (obj, other);
 
             if ( obj.allSourceTexts() != null )
             {
@@ -10815,6 +10911,129 @@ namespace DataDictionary.Compare
         /// <param name="obj"></param>
         /// <param name="other"></param>
         public static void ensureGuidSourceText(Generated.SourceText obj, Generated.SourceText other)
+        {
+            if ( obj == null )
+            { 
+                if ( other != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (other)
+                    string guid = other.Guid;
+                }
+                return;
+            }
+
+            if ( other == null )
+            { 
+                if ( obj != null )
+                {
+                    // Side effect, setup a GUID if needed for the other part (obj)
+                    string guid = obj.Guid;
+                }
+                return;
+            }
+
+            if ( obj.Guid != other.getGuid() )
+            { 
+                if ( string.IsNullOrEmpty(other.getGuid()) )
+                {
+                    // These are matching elements, copy the guid from  obj
+                    other.setGuid ( obj.Guid );
+                }
+                else 
+                {
+                    // Elements do not match. Stop the recursive process
+                    return;
+                }
+            }
+
+            ensureGuidNamable (obj, other);
+
+            if ( obj.allComments() != null )
+            {
+                if ( other.allComments() != null ) 
+                {
+                    foreach ( Generated.SourceTextComment subElement in obj.allComments() )
+                    {
+                        bool found = false;
+
+                        // Try first to assign Guid to elements which do not have a guid
+                        // This helps handling duplicated in lists
+                        foreach ( Generated.SourceTextComment otherElement in other.allComments() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) && otherElement.getGuid() == null )
+                            {
+                                ensureGuidSourceTextComment ( subElement, otherElement );
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            foreach ( Generated.SourceTextComment otherElement in other.allComments() )
+                            {
+                                if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                                {
+                                    ensureGuidSourceTextComment ( subElement, otherElement );
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if ( !found ) 
+                        {
+                            ensureGuidSourceTextComment ( subElement, null );
+                        }
+                    }
+
+                    foreach ( Generated.SourceTextComment otherElement in other.allComments() )
+                    {
+                        bool found = false;
+                        foreach ( Generated.SourceTextComment subElement in obj.allComments() )
+                        {
+                            if ( CompareUtil.canonicalStringEquality(subElement.Name, otherElement.Name) )
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if ( !found )
+                        {
+                            ensureGuidSourceTextComment ( null, otherElement );
+                        }
+                    }
+                }
+                else 
+                {
+                    foreach ( Generated.SourceTextComment subElement in obj.allComments() )
+                    {
+                        ensureGuidSourceTextComment ( subElement, null );
+                    }
+                }
+            }
+            else 
+            {
+                if ( other.allComments() != null ) 
+                {
+                    foreach ( Generated.SourceTextComment otherElement in other.allComments() )
+                    {
+                        ensureGuidSourceTextComment ( null, otherElement );
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that two SourceTextComment have matching GUID, and recursively.
+        /// obj is the leader for Guid. If other doesn't match obj guid, 
+        ///   1. other does not have a guid, in that case, other should have the same guid as obj
+        ///   2. other already has a guid. In that case, there is a mismatch between objects, and the process stops here
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="other"></param>
+        public static void ensureGuidSourceTextComment(Generated.SourceTextComment obj, Generated.SourceTextComment other)
         {
             if ( obj == null )
             { 
@@ -12800,6 +13019,14 @@ namespace DataDictionary.Compare
             {
                 searchStateMachine ( obj.getStateMachine(), searchString, occurences );
             }
+            if ( obj.getEnterAction() != null )
+            {
+                searchRule ( obj.getEnterAction(), searchString, occurences );
+            }
+            if ( obj.getLeaveAction() != null )
+            {
+                searchRule ( obj.getLeaveAction(), searchString, occurences );
+            }
         }
 
         /// <summary>
@@ -13056,13 +13283,13 @@ namespace DataDictionary.Compare
         /// <param name="occurences">The list of model elements which hold the searched string</param>
         public static void searchStep(Generated.Step obj, string searchString, List<ModelElement> occurences)
         {
-            searchNamable (obj, searchString, occurences);
+            searchReferencesParagraph (obj, searchString, occurences);
 
             if ( obj.getDescription() != null && obj.getDescription().Contains (searchString) ) 
             {
                 occurences.Add ( obj );
             }
-            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
+            if ( obj.getObsoleteComment() != null && obj.getObsoleteComment().Contains (searchString) ) 
             {
                 occurences.Add ( obj );
             }
@@ -13204,6 +13431,10 @@ namespace DataDictionary.Compare
             {
                 occurences.Add ( obj );
             }
+            if ( obj.getValue() != null && obj.getValue().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
         }
 
         /// <summary>
@@ -13269,7 +13500,7 @@ namespace DataDictionary.Compare
         /// <param name="occurences">The list of model elements which hold the searched string</param>
         public static void searchTranslation(Generated.Translation obj, string searchString, List<ModelElement> occurences)
         {
-            searchNamable (obj, searchString, occurences);
+            searchReferencesParagraph (obj, searchString, occurences);
 
             if ( obj.allSourceTexts() != null )
             {
@@ -13278,16 +13509,16 @@ namespace DataDictionary.Compare
                     searchSourceText ( subElement, searchString, occurences );
                 }
             }
+            if ( obj.getObsoleteComment() != null && obj.getObsoleteComment().Contains (searchString) ) 
+            {
+                occurences.Add ( obj );
+            }
             if ( obj.allSubSteps() != null )
             {
                 foreach ( Generated.SubStep subElement in obj.allSubSteps() )
                 {
                     searchSubStep ( subElement, searchString, occurences );
                 }
-            }
-            if ( obj.getComment() != null && obj.getComment().Contains (searchString) ) 
-            {
-                occurences.Add ( obj );
             }
         }
 
@@ -13299,6 +13530,26 @@ namespace DataDictionary.Compare
         /// <param name="obj">The string to search for</param>
         /// <param name="occurences">The list of model elements which hold the searched string</param>
         public static void searchSourceText(Generated.SourceText obj, string searchString, List<ModelElement> occurences)
+        {
+            searchNamable (obj, searchString, occurences);
+
+            if ( obj.allComments() != null )
+            {
+                foreach ( Generated.SourceTextComment subElement in obj.allComments() )
+                {
+                    searchSourceTextComment ( subElement, searchString, occurences );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Searches a specific string in SourceTextComment and updates the list 
+        /// of model element with all the elements in which that string is found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="obj">The string to search for</param>
+        /// <param name="occurences">The list of model elements which hold the searched string</param>
+        public static void searchSourceTextComment(Generated.SourceTextComment obj, string searchString, List<ModelElement> occurences)
         {
             searchNamable (obj, searchString, occurences);
 

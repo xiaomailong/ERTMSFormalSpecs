@@ -110,20 +110,21 @@ namespace DataDictionary.Interpreter.ListOperators
                 int token = PrepareIteration(context);
                 context.LocalScope.setVariable(AccumulatorVariable);
                 AccumulatorVariable.Value = InitialValue.GetValue(context, explain);
-
                 foreach (Values.IValue v in value.Val)
                 {
                     if (v != EFSSystem.EmptyValue)
                     {
+                        ElementFound = true;
                         IteratorVariable.Value = v;
                         if (conditionSatisfied(context, explain))
                         {
+                            MatchingElementFound = true;
                             AccumulatorVariable.Value = IteratorExpression.GetValue(context, explain);
                         }
                     }
                     NextIteration();
                 }
-                EndIteration(context, token);
+                EndIteration(context, explain, token);
                 retVal = AccumulatorVariable.Value;
             }
             else
@@ -264,9 +265,11 @@ namespace DataDictionary.Interpreter.ListOperators
                     {
                         if (v != EFSSystem.EmptyValue)
                         {
+                            ElementFound = true;
                             IteratorVariable.Value = v;
                             if (conditionSatisfied(context, explain))
                             {
+                                MatchingElementFound = true;
                                 AccumulatorVariable.Value = IteratorExpression.GetValue(context, explain);
                             }
                         }
@@ -281,7 +284,7 @@ namespace DataDictionary.Interpreter.ListOperators
                     {
                         retVal = Functions.Function.createGraphForValue(AccumulatorVariable.Value);
                     }
-                    EndIteration(context, token);
+                    EndIteration(context, explain, token);
                 }
             }
             else
@@ -317,9 +320,11 @@ namespace DataDictionary.Interpreter.ListOperators
                     {
                         if (v != EFSSystem.EmptyValue)
                         {
+                            ElementFound = true;
                             IteratorVariable.Value = v;
                             if (conditionSatisfied(context, explain))
                             {
+                                MatchingElementFound = true;
                                 AccumulatorVariable.Value = IteratorExpression.GetValue(context, explain);
                             }
                         }
@@ -334,7 +339,7 @@ namespace DataDictionary.Interpreter.ListOperators
                     {
                         throw new Exception("Expression does not reduces to a function");
                     }
-                    EndIteration(context, token);
+                    EndIteration(context, explain, token);
                 }
             }
             else

@@ -64,6 +64,7 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
+ TranslationRequired="FALSE"
  Name="Step1 - Setup"
  Guid="a668dd43-c91d-4e03-b704-925e50886443"
 >
@@ -83,16 +84,15 @@
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
+ TranslationRequired="FALSE"
  Name="Step2 - Provide data for normal case"
  Guid="23e3f2e5-c5b1-4fd0-92dd-0fc21b9e5e2a"
 >
-<Comment></Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1 - Odometry data"
  Guid="e963ec24-87da-48b1-b8af-fe92d6cdc8a9"
 >
-<Comment></Comment>
 <Actions>
 <Action
  Guid="d1a5b8a4-c1cd-47dd-813d-cca3cf8bb3f8"
@@ -106,8 +106,7 @@
 <Actions>
 <Action
  Guid="144b970c-5c79-4018-ac14-36e47a59c836"
-><Comment></Comment>
-BTM.LRBG &lt;- BTM.BaliseGroup
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
     Position =&gt; BTM.Position
     {
@@ -202,6 +201,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
+ TranslationRequired="FALSE"
  Name="Step3 - Check expectations"
  Guid="5881164d-e7e0-4275-a62c-cce263abe288"
 >
@@ -213,8 +213,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 <Actions>
 <Action
  Guid="c90ae629-9e27-49ea-8b62-644b2c2b8b02"
-><Comment></Comment>
-Odometry.NominalDistance &lt;- 1960.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 1960.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -240,7 +239,6 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
  Name="Sub-step2 - The first SBI limit is crossed but D point not crossed yet =&gt; announcement is displayed"
  Guid="da05d6dc-0167-45a9-88fb-4da0227b50f0"
 >
-<Comment></Comment>
 <Actions>
 <Action
  Guid="e70963d5-f505-460b-9d0c-72383a12c030"
@@ -301,8 +299,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
 <Actions>
 <Action
  Guid="d39c5e99-f30d-440d-8771-a53e4f52f231"
-><Comment></Comment>
-Odometry.NominalDistance &lt;- 2089.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 2089.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -396,6 +393,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
+ TranslationRequired="FALSE"
  Name="Step4 - Provide data for degraded case and check expectations"
  Guid="b1ff3489-6786-4de7-bb28-60ff833799f0"
 >
@@ -413,7 +411,6 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
  Name="Sub-step2 - Non stopping area is displayed again"
  Guid="a7fb2df7-a4da-433d-be93-608176e02ddb"
 >
-<Comment></Comment>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -446,6 +443,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
+ TranslationRequired="FALSE"
  Name="Step5 - Check the non stopping area is no more displayed after the second SBI"
  Guid="1069f47e-bb0b-40ae-8efd-a5ffd5013a0b"
 >
@@ -527,6 +525,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
+ TranslationRequired="FALSE"
  Name="Step6 - Check the passed non stopping area is removed"
  Guid="ae78e486-026d-4137-8241-a2be96a1cc44"
 >
@@ -560,8 +559,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
 <Actions>
 <Action
  Guid="5e194df3-5841-4d41-b775-033d700b3ea0"
-><Comment></Comment>
-Odometry.NominalDistance &lt;- 2909.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 2909.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step4 =&gt; the non stopping area is removed from TCProfile"
  Guid="ae64f3cf-1b31-4c20-abe9-3df7d72669cd"

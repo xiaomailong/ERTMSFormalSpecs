@@ -53,12 +53,6 @@ namespace DataDictionary.Tests.Translations
             }
         }
 
-        public string Comment
-        {
-            get { return getComment(); }
-            set { setComment(value); }
-        }
-
         /// <summary>
         /// Provides the source texts for this dictionary
         /// </summary>
@@ -118,7 +112,7 @@ namespace DataDictionary.Tests.Translations
                     retVal = retVal + "Source texts\n";
                 }
                 indent = "  ";
-                foreach (DataDictionary.Tests.Translations.SourceText text in SourceTexts)
+                foreach (SourceText text in SourceTexts)
                 {
                     retVal = retVal + indent + text.Name + "\n";
                 }
@@ -181,6 +175,14 @@ namespace DataDictionary.Tests.Translations
         /// <param name="step"></param>
         public void UpdateStep(Step step)
         {
+            Step previousStep = step.PreviousStep;
+
+            step.Requirements.Clear();
+            foreach (ReqRef reqRef in Requirements)
+            {
+                step.appendRequirements((ReqRef)reqRef.Duplicate());
+            }
+
             int subStepCounter = 1;
             foreach (SubStep subStep in SubSteps)
             {
@@ -188,6 +190,13 @@ namespace DataDictionary.Tests.Translations
                 newSubStep.Name = "Sub-step" + subStepCounter;
                 newSubStep.setSkipEngine(subStep.getSkipEngine());
                 step.appendSubSteps(newSubStep);
+
+                if (previousStep != null && previousStep.getDistance() != step.getDistance() && subStepCounter == 1)
+                {
+                    Rules.Action newAct = (Rules.Action)Generated.acceptor.getFactory().createAction();
+                    newAct.ExpressionText = "OdometryInterface.UpdateDistance ( " + step.getDistance() + ".0 )";
+                    newSubStep.appendActions(newAct);
+                }
 
                 foreach (Rules.Action action in subStep.Actions)
                 {
@@ -300,7 +309,14 @@ namespace DataDictionary.Tests.Translations
         /// <param name="action"></param>
         private void Review(Rules.Action action)
         {
-            action.ExpressionText = ReviewExpression(action.Step, action.ExpressionText);
+            try
+            {
+                action.ExpressionText = ReviewExpression(action.Step, action.ExpressionText);
+            }
+            catch (Exception e)
+            {
+                action.AddException(e);
+            }
         }
 
         /// <summary>
@@ -332,12 +348,24 @@ namespace DataDictionary.Tests.Translations
                 retVal = retVal.Replace("%Step_LevelOUT", format_level(step.getLevelOUT()));
                 retVal = retVal.Replace("%Step_ModeIN", format_mode(step.getModeOUT()));
                 retVal = retVal.Replace("%Step_ModeOUT", format_mode(step.getModeOUT()));
-                for (int i = 0; i < step.StepMessages.Count; i++)
+
+                int max_step_messages = 8;
+                for (int i = 0; i < max_step_messages; i++)
                 {
-                    DBElements.DBMessage message = step.StepMessages[i] as DBElements.DBMessage;
-                    if (message != null)
+                    if (retVal.IndexOf("%Step_Messages_" + i) >= 0)
                     {
-                        retVal = retVal.Replace("%Step_Messages_" + i, format_message(message));
+                        if (step.StepMessages.Count > i)
+                        {
+                            DBElements.DBMessage message = step.StepMessages[i] as DBElements.DBMessage;
+                            if (message != null)
+                            {
+                                retVal = retVal.Replace("%Step_Messages_" + i, format_message(message));
+                            }
+                        }
+                        else
+                        {
+                            retVal = retVal.Replace("%Step_Messages_" + i, format_default_message(expression));
+                        }
                     }
                 }
 
@@ -459,7 +487,7 @@ namespace DataDictionary.Tests.Translations
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        private string format_message(DBElements.DBMessage message)
+        public static string format_message(DBElements.DBMessage message)
         {
             string retVal = "";
             switch (message.MessageType)
@@ -478,68 +506,43 @@ namespace DataDictionary.Tests.Translations
         }
 
 
-        private string format_eurobalise_message(DBElements.DBMessage message)
+        public string format_default_message(string expression)
         {
-            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Messages");
-            Types.Structure structureType = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.Message");
+            string retVal = "<not a structure type>";
+
+            int index = expression.IndexOf("<-");
+            if ( index > 0 )
+            {
+                string variableText = expression.Substring(0, index).Trim();
+                Interpreter.Expression expressionTree = EFSSystem.Parser.Expression(Dictionary, variableText);
+                if (expressionTree != null)
+                {
+                    Types.Structure structureType = expressionTree.GetExpressionType() as Types.Structure;
+                    retVal = structureType.DefaultValue.LiteralName;
+                }
+            }
+            
+            return retVal;
+        }
+
+        private static string format_eurobalise_message(DBElements.DBMessage message)
+        {
+            EFSSystem system = EFSSystem.INSTANCE;
+
+            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages.EUROBALISE");
+            Types.Structure structureType = (Types.Structure)system.findType(nameSpace, "Message");
             Values.StructureValue structure = new Values.StructureValue(structureType);
 
-            int index = 0;
-            FillStructure(nameSpace, message.Fields, ref index, structure); // fills the message fields
+            int currentIndex = 0;
+            FillStructure(nameSpace, message.Fields, ref currentIndex, structure); // fills the message fields
 
 
             // then we fill the packets
             Variables.IVariable subSequenceVariable;
             if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable))
             {
-                Types.Collection collectionType = (Types.Collection)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.Collection1");
-                Values.ListValue collection = new Values.ListValue(collectionType, new List<Values.IValue>());
-
-                Types.Structure subStructure1Type = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.EUROBALISE.SubStructure1");
-                Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
-
-                Types.Structure packetStructure = (Types.Structure)EFSSystem.findType(nameSpace, "Messages.PACKET.TRACK_TO_TRAIN.Message");
-                Values.StructureValue packetValue = new Values.StructureValue(packetStructure);
-
-                // will contain the list of all packets of the message and then be added to the structure packetValue
-                ArrayList subStructures = new ArrayList();
-
-                foreach (DBElements.DBPacket packet in message.Packets)
-                {
-                    Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
-
-                    if (nidPacketField.Value != 255)  // 255 means "end of information"
-                    {
-                        Values.StructureValue subStructure = FindStructure(nidPacketField.Value);
-
-                        index = 0;
-                        FillStructure(nameSpace, packet.Fields, ref index, subStructure);
-
-                        subStructures.Add(subStructure);
-                    }
-                }
-
-                // the collection of the message packets is copied to the structure packetValue
-                int i = 0;
-                foreach (KeyValuePair<string, Variables.IVariable> pair in packetValue.SubVariables)
-                {
-                    if (i == subStructures.Count)
-                    {
-                        break;
-                    }
-                    string variableName = pair.Key;
-                    Values.StructureValue structureValue = subStructures[i] as Values.StructureValue;
-                    if (structureValue.Structure.FullName.Contains(variableName))
-                    {
-                        Variables.IVariable variable = pair.Value;
-                        variable.Value = structureValue;
-                        i++;
-                    }
-                }
-
-                subStructure1.SubVariables.ElementAt(0).Value.Value = packetValue;
-                collection.Val.Add(subStructure1);
-                subSequenceVariable.Value = collection;
+                
+                subSequenceVariable.Value = get_message_packets(message, nameSpace, system);
             }
             else
             {
@@ -550,23 +553,93 @@ namespace DataDictionary.Tests.Translations
         }
 
 
+
+        static Values.ListValue get_message_packets(DBElements.DBMessage message, Types.NameSpace nameSpace, EFSSystem system)
+        {
+            Values.ListValue retVal;
+
+            Types.Collection collectionType = (Types.Collection)system.findType(nameSpace, "Collection1");
+            Types.Structure subStructure1Type = (Types.Structure)system.findType(nameSpace, "SubStructure1");
+
+            string packetLocation = "Messages.PACKET.";
+            if (nameSpace.FullName.Contains("TRAIN_TO_TRACK"))
+            {
+                packetLocation += "TRAIN_TO_TRACK.Message";
+            }
+            else
+            {
+                packetLocation += "TRACK_TO_TRAIN.Message";
+            }
+
+            Types.Structure packetStructureType = (Types.Structure)system.findType(nameSpace, packetLocation);
+
+            retVal = new Values.ListValue(collectionType, new List<Values.IValue>());
+
+            foreach (DBElements.DBPacket packet in message.Packets)
+            {
+                Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
+                if (nidPacketField.Value != "255")  // 255 means "end of information"
+                {
+                    int packetId = int.Parse(nidPacketField.Value);
+                    Values.StructureValue subStructure = FindStructure(packetId);
+
+                    int currentIndex = 0;
+                    FillStructure(nameSpace, packet.Fields, ref currentIndex, subStructure);
+
+                    Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
+
+                    // For Balise messages, we have an extra level of information to fill, so here we define StructureVal in one of two ways
+                    Values.StructureValue structureVal;
+                    if (subStructure1.SubVariables.Count == 1 && subStructure1.SubVariables.ContainsKey("TRACK_TO_TRAIN"))
+                    {
+                        // For a Balise message, we have an extra level of structures for TRACK_TO_TRAIN
+                        structureVal = new Values.StructureValue(packetStructureType);
+                        
+                        subStructure1.SubVariables["TRACK_TO_TRAIN"].Value = structureVal;
+                    }
+                    else
+                    {
+                        // For RBC, the collection directly holds the different packet types
+                        structureVal = subStructure1;
+                    }
+
+                    // Find the right variable in the packet to add the structure we just created
+                    foreach (KeyValuePair<string, Variables.IVariable> pair in structureVal.SubVariables)
+                    {
+                        string variableName = pair.Key;
+                        if (subStructure.Structure.FullName.Contains(variableName))
+                        {
+                            pair.Value.Value = subStructure;
+
+                            retVal.Val.Add(subStructure1);
+
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return retVal;
+        }
+
+
         /// <summary>
         /// Finds the type of the structure corresponding to the provided NID_PACKET
         /// </summary>
         /// <param name="nameSpace">The namespace where the type has to be found</param>
         /// <param name="nidPacket">The id of the packet</param>
         /// <returns></returns>
-        private Values.StructureValue FindStructure(int nidPacket)
+        private static Values.StructureValue FindStructure(int nidPacket)
         {
+            EFSSystem system = EFSSystem.INSTANCE;
             Types.Structure structure = null;
-            DataDictionary.Types.NameSpace nameSpace;
+            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages.PACKET");
 
-            if (nidPacket != 44)
+            foreach (Types.NameSpace subNameSpace in nameSpace.NameSpaces)
             {
-                nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Messages.PACKET.TRACK_TO_TRAIN");
-                foreach (DataDictionary.Types.NameSpace subNameSpace in nameSpace.NameSpaces)
+                foreach (DataDictionary.Types.NameSpace packetNameSpace in subNameSpace.NameSpaces)
                 {
-                    Types.Structure structureType = (Types.Structure)EFSSystem.findType(subNameSpace, subNameSpace.FullName + ".Message");
+                    Types.Structure structureType = (Types.Structure)system.findType(packetNameSpace, packetNameSpace.FullName + ".Message");
                     Values.StructureValue structureValue = new Values.StructureValue(structureType);
 
                     foreach (KeyValuePair<string, Variables.IVariable> pair in structureValue.SubVariables)
@@ -587,11 +660,6 @@ namespace DataDictionary.Tests.Translations
                     }
                 }
             }
-            else
-            {
-                nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Messages.PACKET.DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM");
-                structure = (Types.Structure)EFSSystem.findType(nameSpace, nameSpace.FullName + ".Message");
-            }
 
             Values.StructureValue retVal = null;
             if (structure != null)
@@ -602,7 +670,6 @@ namespace DataDictionary.Tests.Translations
             return retVal;
         }
 
-
         /// <summary>
         /// Fills the given structure with the values provided from the database
         /// </summary>
@@ -610,12 +677,14 @@ namespace DataDictionary.Tests.Translations
         /// <param name="fields">Fields to be copied into the structure</param>
         /// <param name="index">Index (of fields list) from which we have to start copying</param>
         /// <param name="aStructure">The structure to be filled</param>
-        private void FillStructure(Types.NameSpace aNameSpace, ArrayList fields, ref int index, Values.StructureValue aStructure)
+        private static void FillStructure(Types.NameSpace aNameSpace, ArrayList fields, ref int currentIndex, Values.StructureValue aStructure)
         {
+            EFSSystem system = EFSSystem.INSTANCE;
+
             int j = 0;
-            for (int i = index; i < fields.Count; i++)
+            while ( currentIndex < fields.Count )
             {
-                Tests.DBElements.DBField field = fields[i] as Tests.DBElements.DBField;
+                Tests.DBElements.DBField field = fields[currentIndex] as Tests.DBElements.DBField;
 
                 KeyValuePair<string, Variables.IVariable> pair = aStructure.SubVariables.ElementAt(j);
                 Variables.IVariable variable = pair.Value;
@@ -627,8 +696,9 @@ namespace DataDictionary.Tests.Translations
                         Types.Enum type = variable.Type as Types.Enum;
                         foreach (DataDictionary.Constants.EnumValue enumValue in type.Values)
                         {
-                            int value = Int32.Parse(enumValue.getValue());
-                            if (value == field.Value)
+                            int value = int.Parse(enumValue.getValue());
+                            int other = int.Parse(field.Value);
+                            if (value == other)
                             {
                                 variable.Value = enumValue;
                                 j++;
@@ -639,8 +709,16 @@ namespace DataDictionary.Tests.Translations
                     else if (variable.Type is Types.Range)
                     {
                         Types.Range type = variable.Type as Types.Range;
-                        variable.Value = new Values.IntValue(type, (decimal)field.Value);
+                        object v = VariableConverter.INSTANCE.Convert(variable.Name, field.Value);
+                        variable.Value = new Values.IntValue(type, (int) v);
                         j++;
+                    }
+                    else if (variable.Type is Types.StringType)
+                    {
+                        Types.StringType type = variable.Type as Types.StringType;
+                        variable.Value = new Values.StringValue(type, field.Value);
+                        j++;
+
                     }
                     else
                     {
@@ -650,14 +728,15 @@ namespace DataDictionary.Tests.Translations
                     {
                         KeyValuePair<string, Variables.IVariable> sequencePair = aStructure.SubVariables.ElementAt(j);
                         Variables.IVariable sequenceVariable = sequencePair.Value;
-                        Types.Collection collectionType = (Types.Collection)EFSSystem.findType(aNameSpace, sequenceVariable.TypeName);
+                        Types.Collection collectionType = (Types.Collection)system.findType(aNameSpace, sequenceVariable.TypeName);
                         Values.ListValue sequence = new Values.ListValue(collectionType, new List<Values.IValue>());
 
-                        for (int k = 0; k < field.Value; k++)
+                        int value = int.Parse(field.Value);
+                        for (int k = 0; k < value; k++)
                         {
-                            Types.Structure structureType = (Types.Structure)EFSSystem.findType(aNameSpace, sequence.CollectionType.Type.FullName);
+                            Types.Structure structureType = (Types.Structure)system.findType(aNameSpace, sequence.CollectionType.Type.FullName);
                             Values.StructureValue structureValue = new Values.StructureValue(structureType);
-                            FillStructure(aNameSpace, fields, ref index, structureValue);
+                            FillStructure(aNameSpace, fields, ref currentIndex, structureValue);
                             sequence.Val.Add(structureValue);
                         }
                         sequenceVariable.Value = sequence;
@@ -668,26 +747,338 @@ namespace DataDictionary.Tests.Translations
                 // if all the fields of the structue are filled, we terminated
                 if (j == aStructure.SubVariables.Count)
                 {
-                    index = i;
                     break;
+                }
+                else 
+                {
+                    currentIndex += 1;
                 }
             }
         }
 
 
-        private string format_euroloop_message(DBElements.DBMessage message)
+        private static string format_euroloop_message(DBElements.DBMessage message)
         {
-            string retVal = "";
+            EFSSystem system = EFSSystem.INSTANCE;
+
+            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages.EUROLOOP");
+            Types.Structure structureType = (Types.Structure)system.findType(nameSpace, "Message");
+            Values.StructureValue structure = new Values.StructureValue(structureType);
+
+            int currentIndex = 0;
+            FillStructure(nameSpace, message.Fields, ref currentIndex, structure);
+
+
+            // then we fill the packets
+            Variables.IVariable subSequenceVariable;
+            if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable))
+            {
+                  subSequenceVariable.Value = get_message_packets(message, nameSpace, system);
+            }
+            else
+            {
+                throw new Exception("Cannot find SubSequence in variable");
+            }
+
+            return structure.Name;
+        }
+
+        private static string format_euroradio_message(DBElements.DBMessage message)
+        {
+            EFSSystem system = EFSSystem.INSTANCE;
+
+            DataDictionary.Types.NameSpace rbcRoot = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages.MESSAGE");
+
+            // Get the EFS namespace corresponding to the message 
+            // Select the appropriate message type, tracktotrain or traintotrack
+            Tests.DBElements.DBField nidMessage = message.Fields[0] as Tests.DBElements.DBField;
+            string msg_id = get_namespace_from_ID( nidMessage.Value );
+
+            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(rbcRoot, msg_id);
+
+            if (nameSpace == null)
+            {
+                throw new Exception("Message type not found in EFS");
+            }
+
+            // The EURORADIO messages are defined in the namespaces TRACK_TO_TRAIN and TRAIN_TO_TRACK, which enclose the specific message namespaces
+            // So we get the message type from nameSpace.EnclosingNameSpace and the actual structure corresponding to the message in nameSpace
+            Types.Structure enclosingStructureType = (Types.Structure)system.findType(nameSpace.EnclosingNameSpace, "Message");
+            Values.StructureValue Message = new Values.StructureValue(enclosingStructureType);
+
+
+            // Within the message, get the appropriate field and get that structure
+            Types.Structure structureType = (Types.Structure)system.findType(nameSpace, "Message");
+            Values.StructureValue structure = new Values.StructureValue(structureType);
+
+
+            // Fill the structure
+            int currentIndex = 0;
+            FillStructure(nameSpace, message.Fields, ref currentIndex, structure);
+
+            // Fill the default packets
+            int translatedPackets = 0;
+            foreach (KeyValuePair<string, Variables.IVariable> subVariable in structure.SubVariables)
+            {
+                if (subVariable.Value.TypeName.EndsWith("Message"))
+                {
+                    // The structure of packets will always be a Message, but in some cases, it is a message that contains
+                    // the different options for a single field in the message
+                    structure.getVariable(subVariable.Value.Name).Value = FillDefaultPacket(message, subVariable.Value);
+
+                    translatedPackets++;
+                }
+            }
+
+            // and fill the packets
+            Variables.IVariable subSequenceVariable;
+            if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable)
+                && message.Packets.Count > translatedPackets)
+            {
+                subSequenceVariable.Value = get_message_packets(message, nameSpace, system);
+            }
+            
+
+            // Fill the correct field in Message with the structure.
+            foreach (KeyValuePair<string, Variables.IVariable> pair in Message.SubVariables)
+            {
+                if (msg_id.EndsWith(pair.Key))
+                {
+                    pair.Value.Type = structureType;
+                    pair.Value.Value = structure;
+                }
+            }
+
+            return Message.Name;
+        }
+
+        private static Values.IValue FillDefaultPacket(DBElements.DBMessage message, Variables.IVariable structure)
+        {
+            Values.IValue retVal = structure.Value;
+
+            if (isPacket(structure))
+            {
+                Types.Structure defaultPacketType = (Types.Structure)structure.Type;
+                Values.StructureValue defaultPacket = new Values.StructureValue(defaultPacketType);
+
+                Types.NameSpace packetNameSpace = structure.NameSpace;
+
+                foreach (DBElements.DBPacket packet in message.Packets)
+                {
+                    Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
+                    int packetID = int.Parse(nidPacketField.Value);
+
+                    Types.Structure packetType = (Types.Structure)FindStructure(packetID).Type;
+
+                    if (packetType == defaultPacketType)
+                    {
+                        int defaultPacketIndex = 0;
+                        FillStructure(packetNameSpace, packet.Fields, ref defaultPacketIndex, defaultPacket);
+
+                        retVal = defaultPacket;
+                    }
+                }
+            }
+            else
+            {
+                Types.Structure structureType = structure.Type as Types.Structure;
+                Values.StructureValue Structure = new Values.StructureValue(structureType);
+                if (Structure != null)
+                {
+                    foreach (KeyValuePair<string, Variables.IVariable> subVariable in Structure.SubVariables)
+                    {
+                        if (isPacket(subVariable.Value))
+                        {
+                            Types.Structure defaultPacketType = (Types.Structure)subVariable.Value.Type;
+                            Values.StructureValue defaultPacket = new Values.StructureValue(defaultPacketType);
+
+                            Types.NameSpace packetNameSpace = subVariable.Value.NameSpace;
+
+                            foreach (DBElements.DBPacket packet in message.Packets)
+                            {
+                                Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
+                                int packetID = int.Parse(nidPacketField.Value);
+
+                                Types.Structure packetType = (Types.Structure)FindStructure(packetID).Type;
+
+                                if (packetType == defaultPacketType)
+                                {
+                                    int defaultPacketIndex = 0;
+                                    FillStructure(packetNameSpace, packet.Fields, ref defaultPacketIndex, defaultPacket);
+
+                                    Structure.getVariable(subVariable.Value.Name).Value = defaultPacket;
+                                }
+                            }
+                        }
+                    }
+                    retVal = Structure;
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Determines whether a EFS structure corresponds to a packet
+        /// </summary>
+        /// <param name="structure"></param>
+        /// <returns></returns>
+        private static bool isPacket(Variables.IVariable structure)
+        {
+            bool retVal = false;
+
+            foreach (ModelElement element in structure.Type.SubElements)
+            {
+                Types.StructureElement subElement = element as Types.StructureElement;
+                if (subElement != null)
+                {
+                    if (subElement.Name == "NID_PACKET")
+                    {
+                        retVal = true;
+                    }
+                }
+            }
+
             return retVal;
         }
 
 
-        private string format_euroradio_message(DBElements.DBMessage message)
+        /// <summary>
+        /// Takes the string provided and returns the corresponding RBC message
+        /// </summary>
+        /// <param name="NID_MESSAGE"></param>
+        /// <returns></returns>
+        private static string get_namespace_from_ID(string str)
         {
             string retVal = "";
+            if (format_decimal(str) < 100)
+            {
+                retVal = "TRACK_TO_TRAIN.";
+            }
+            else
+            {
+                retVal = "TRAIN_TO_TRACK.";
+            }
+            switch (format_decimal(str))
+            {
+                case 2:
+                    retVal += "SR_AUTHORISATION";
+                    break;
+                case 3:
+                    retVal += "MOVEMENT_AUTHORITY";
+                    break;
+                case 6:
+                    retVal += "RECOGNITION_OF_EXIT_FROM_TRIP_MODE";
+                    break;
+                case 8:
+                    retVal += "ACKNOWLEDGEMENT_OF_TRAIN_DATA";
+                    break;
+                case 9:
+                    retVal += "REQUEST_TO_SHORTEN_MA";
+                    break;
+                case 15:
+                    retVal += "CONDITIONAL_EMERGENCY_STOP";
+                    break;
+                case 16:
+                    retVal += "UNCONDITIONAL_EMERGENCY_STOP";
+                    break;
+                case 18:
+                    retVal += "REVOCATION_OF_EMERGENCY_STOP";
+                    break;
+                case 24:
+                    retVal += "GENERAL_MESSAGE";
+                    break;
+                case 27:
+                    retVal += "SH_REFUSED";
+                    break;
+                case 28:
+                    retVal += "SH_AUTHORISED";
+                    break;
+                case 32:
+                    retVal += "RBC.RIU_SYSTEM_VERSION";
+                    break;
+                case 33:
+                    retVal += "MA_WITH_SHIFTED_LOCATION_REFERENCE";
+                    break;
+                case 34:
+                    retVal += "TRACK_AHEAD_FREE_REQUEST";
+                    break;
+                case 37:
+                    retVal += "INFILL_MA";
+                    break;
+                case 38:
+                    retVal += "INITIATION_OF_A_COMMUNICATION_SESSION";
+                    break;
+                case 39:
+                    retVal += "ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION";
+                    break;
+                case 40:
+                    retVal += "TRAIN_REJECTED";
+                    break;
+                case 41:
+                    retVal += "TRAIN_ACCEPTED";
+                    break;
+                case 43:
+                    retVal += "SOM_POSITION_REPORT_CONFIRMED_BY_RBC";
+                    break;
+                case 45:
+                    retVal += "ASSIGNMENT_OF_COORDINATE_SYSTEM";
+                    break;
+                case 129:
+                    retVal += "VALIDATED_TRAIN_DATA";
+                    break;
+                case 130:
+                    retVal += "REQUEST_FOR_SHUNTING";
+                    break;
+                case 132:
+                    retVal += "MA_REQUEST";
+                    break;
+                case 136:
+                    retVal += "TRAIN_POSITION_REPORT";
+                    break;
+                case 137:
+                    retVal += "REQUEST_TO_SHORTEN_MA_IS_GRANTED";
+                    break;
+                case 138:
+                    retVal += "REQUEST_TO_SHORTEN_MA_IS_REJECTED";
+                    break;
+                case 146:
+                    retVal += "ACKNOWLEDGEMENT";
+                    break;
+                case 147:
+                    retVal += "ACKNOWLEDGEMENT_OF_EMERGENCY_STOP";
+                    break;
+                case 149:
+                    retVal += "TRACK_AHEAD_FREE_GRANTED";
+                    break;
+                case 150:
+                    retVal += "END_OF_MISSION";
+                    break;
+                case 153:
+                    retVal += "RADIO_INFILL_REQUEST";
+                    break;
+                case 154:
+                    retVal += "NO_COMPATIBLE_VERSION_SUPPORTED";
+                    break;
+                case 155:
+                    retVal += "INITIATION_OF_A_COMMUNICATION_SESSION";
+                    break;
+                case 156:
+                    retVal += "TERMINATION_OF_A_COMMUNICATION_SESSION";
+                    break;
+                case 157:
+                    retVal += "SOM_POSITION_REPORT";
+                    break;
+                case 158:
+                    retVal += "TEXT_MESSAGE_ACKNOWLEDGED_BY_DRIVER";
+                    break;
+                case 159:
+                    retVal += "SESSION_ESTABLISHED";
+                    break;
+            }
+
             return retVal;
         }
-
 
         /// <summary>
         /// Takes the string provided and returns the corresponding Level enum

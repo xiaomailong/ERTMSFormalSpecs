@@ -146,6 +146,12 @@
     <Compile Include="src\ModelDiagram\ModelDiagramPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="src\MessagesView\MessageDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\MessagesView\MessageDetail.Designer.cs">
+      <DependentUpon>MessageDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\SelectionHistory\Window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -514,6 +520,8 @@
     <Compile Include="src\TextEntry.Designer.cs">
       <DependentUpon>TextEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\TranslationRules\SourceTextCommentTreeNode.cs" />
+    <Compile Include="src\TranslationRules\SourceTextCommentsTreeNode.cs" />
     <Compile Include="src\TranslationRules\FolderTreeNode.cs" />
     <Compile Include="src\TranslationRules\SourceTextsTreeNode.cs" />
     <Compile Include="src\TranslationRules\SourceTextTreeNode.cs" />
@@ -594,6 +602,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\BoxArrowDiagram\ArrowControl.resx">
       <DependentUpon>ArrowControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\MessagesView\MessageDetail.resx">
+      <DependentUpon>MessageDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\SelectionHistory\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
@@ -799,6 +810,8 @@
     <None Include="resources\call.png" />
     <None Include="resources\pin.png" />
     <None Include="resources\Pause.png" />
+    <None Include="resources\circular arrow.png" />
+    <None Include="resources\down arrow.png" />
     <Content Include="resources\tools.png" />
     <None Include="resources\type_icon.png" />
     <None Include="resources\call_icon.png" />

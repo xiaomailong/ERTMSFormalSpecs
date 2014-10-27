@@ -219,6 +219,57 @@ namespace DataDictionary
                 base.visit(obj, visitSubNodes);
             }
 
+
+            /// <summary>
+            /// Updates the step : comment has been moved
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Step obj, bool visitSubNodes)
+            {
+                Tests.Step step = (Tests.Step)obj;
+
+                if (!string.IsNullOrEmpty(step.getObsoleteComment()))
+                {
+                    if ( string.IsNullOrEmpty(step.getComment()))
+                    {
+                        step.setComment(step.getObsoleteComment());
+                    }
+                    else 
+                    {
+                        step.setComment(step.getComment() + "\n" + step.getObsoleteComment());
+                    }
+                    step.setObsoleteComment(null);
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Updates the step : comment has been moved
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Translation obj, bool visitSubNodes)
+            {
+                Translation translation = (Translation)obj;
+
+                if (!string.IsNullOrEmpty(translation.getObsoleteComment()))
+                {
+                    if (string.IsNullOrEmpty(translation.getComment()))
+                    {
+                        translation.setComment(translation.getObsoleteComment());
+                    }
+                    else
+                    {
+                        translation.setComment(translation.getComment() + "\n" + translation.getObsoleteComment());
+                    }
+                    translation.setObsoleteComment(null);
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
             /// <summary>
             /// Remove the obsolete comments
             /// </summary>

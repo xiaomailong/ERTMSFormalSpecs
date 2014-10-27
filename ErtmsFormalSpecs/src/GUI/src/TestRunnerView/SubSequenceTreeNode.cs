@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using DataDictionary;
 using DataDictionary.Tests;
+using System.ComponentModel;
 
 namespace GUI.TestRunnerView
 {
@@ -35,6 +36,33 @@ namespace GUI.TestRunnerView
                 : base()
             {
             }
+
+            [Category("Subset-076 Description")]
+            public string D_LRBG { get { return Item.getD_LRBG(); } }
+
+            [Category("Subset-076 Description")]
+            public string Level { get { return Item.getLevel(); } }
+
+            [Category("Subset-076 Description")]
+            public string Mode { get { return Item.getMode(); } }
+
+            [Category("Subset-076 Description")]
+            public string NID_LRBG { get { return Item.getNID_LRBG(); } }
+
+            [Category("Subset-076 Description")]
+            public string Q_DIRLRBG { get { return Item.getQ_DIRLRBG(); } }
+
+            [Category("Subset-076 Description")]
+            public string Q_DIRTRAIN { get { return Item.getQ_DIRTRAIN(); } }
+
+            [Category("Subset-076 Description")]
+            public string Q_DLRBG { get { return Item.getQ_DLRBG(); } }
+
+            [Category("Subset-076 Description")]
+            public string RBC_Phone { get { return Item.getRBCPhone(); } }
+
+            [Category("Subset-076 Description")]
+            public string RBC_ID { get { return Item.getRBC_ID(); } }
         }
 
         /// <summary>

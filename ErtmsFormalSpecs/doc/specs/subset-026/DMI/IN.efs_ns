@@ -6,7 +6,6 @@
  Name="IN"
  Guid="cda5cf76-e875-4230-bdb0-77e5413b50b2"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
@@ -56,7 +55,7 @@
  Guid="899257bb-ad06-4587-a62f-242a76900e2d"
 >InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="6f929bf6-4cae-4324-9cc4-cb3773da8e8d"
->Level in [Level.L2, Level.L3]</PreCondition><PreCondition
+>Level.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
  Guid="816bea88-f7c1-4116-8b88-2ca3a0ad554b"
 >NOT EURORADIO.HasActiveSession()</PreCondition></PreConditions>
 <Actions>
@@ -89,25 +88,20 @@
  Name="Accepts data from the driver"
  Guid="af39ff1d-4989-4637-8d83-1cfa11df8e9b"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d4ace2d4-4177-4e1c-aaaa-2c28ecd4dc60"
 >ErtmsEtcsLevelAvailable()</PreCondition><PreCondition
  Guid="2f7924c5-829f-4f8d-9ac2-285cc8fe7334"
-><Comment></Comment>
-THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="751d7670-6993-472a-85fc-cb7e0ad32257"
-><Comment></Comment>
-Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="3e042315-ce85-4d07-bdd0-fbd05fa15ce1"
-><Comment></Comment>
-Kernel.Level.Value &lt;- Level</Action><Action
+>Kernel.Level.Value &lt;- Level</Action><Action
  Guid="5d557402-1c5e-4bba-9303-13987824e53f"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -119,7 +113,7 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <Comment>Initiate the ERTMS ETCS Level request</Comment>
 <Parameters>
 <Parameter
- Type="Default.Level"
+ Type="Default.LevelDataStruct"
  Name="Level"
  Guid="0c2d6225-8fb1-4915-8f1c-716d41ef8e54"
 >
@@ -132,6 +126,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
  Type="Boolean"
  Name="ReValidate"
  Guid="8c30120f-4f34-4693-bb84-825087b2c539"
+>
+</Parameter><Parameter
+ Type="Default.Levels"
+ Name="NTCLevels"
+ Guid="6bac262c-8687-468e-a35d-a0d9954f82d8"
 >
 </Parameter></Parameters>
 <Rules>
@@ -151,7 +150,6 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
  Name="InitiateRequest"
  Guid="6610a65a-8348-4084-9168-1e811fd22a35"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e3e9962a-aafa-431f-9a06-40a6473d8709"
@@ -165,7 +163,9 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
  Guid="ca58d464-3738-42c5-a904-145687e1b58c"
 >DriverAction.ReValidate &lt;- ReValidate</Action><Action
  Guid="eee0ff88-2014-46c3-b2db-534f41156c06"
->THIS.Level &lt;- Level</Action></Actions>
+>THIS.Level &lt;- Level</Action><Action
+ Guid="18cc2b82-1c18-4013-a8b1-f1dcd346b36f"
+>THIS.NTCLevels &lt;- NTCLevels</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -198,13 +198,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="ba3eec77-d4e1-4bf3-8a99-257ef5e88d19"
-><Comment></Comment>
-NOT ErtmsEtcsLevelAvailable()</PreCondition></PreConditions>
+>NOT ErtmsEtcsLevelAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e4ab45e8-04e0-47b2-8921-9d58fbe632aa"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -219,9 +217,9 @@ THIS.InputInformation.Disable()</Action></Actions>
 >
 <Comment>Provides information about this request status</Comment>
 </StructureElement><StructureElement
- TypeName="Default.Level"
+ TypeName="Default.LevelDataStruct"
  Default=""
- Mode="InOut"
+ Mode="Incoming"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Level"
@@ -238,6 +236,14 @@ THIS.InputInformation.Disable()</Action></Actions>
  Guid="09607d95-2143-4b10-bb46-973612eb2817"
 >
 <Comment>Provides the available driver actions (enter / revalidate)</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.Levels"
+ Default="[]"
+ Mode="Outgoing"
+ Implemented="TRUE"
+ Name="NTCLevels"
+ Guid="24d94d05-1bbc-49f1-89a6-1793c9900948"
+>
 </StructureElement></Structure><Structure
  Default=""
  X="670"
@@ -253,7 +259,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b65d537f-5856-487f-a4ab-8e9a811647e5"
 >
-<Comment></Comment>
 </ReqRef><Comment>Acknowledgement of the selection of language</Comment>
 <Procedures>
 <Procedure
@@ -279,7 +284,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="f31e2c3b-ea47-4b4d-a94d-be0b7bda66a0"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="6fdac9a5-3925-4eb0-b511-347686ea6598"
@@ -289,8 +293,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="54cb09b4-5de6-4185-8150-3b3f162136c5"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -318,13 +321,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="41f159b0-c718-4d7a-a1c1-52694884fc40"
-><Comment></Comment>
-NOT SelectionOfLanguageAvailable()</PreCondition></PreConditions>
+>NOT SelectionOfLanguageAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="29c9e2c0-704a-4b04-877c-5a8aed8a9b69"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -354,8 +355,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="d3c8aaf5-a195-4d51-a872-bb0dd7cc70c8"
-><Comment></Comment>
-SelectionOfLanguageAvailable()</PreCondition></PreConditions>
+>SelectionOfLanguageAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1084ab4d-9958-41bf-83e4-c4ee16c6bbfe"
@@ -400,7 +400,6 @@ SelectionOfLanguageAvailable()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a2e80604-71cf-4fbf-847a-17bc4697e908"
 >
-<Comment></Comment>
 </ReqRef><Comment>Acknowledgement of the track adhesion factor</Comment>
 <Procedures>
 <Procedure
@@ -426,7 +425,6 @@ SelectionOfLanguageAvailable()</PreCondition></PreConditions>
  Name="Accepts data from the driver"
  Guid="9d505db3-218a-4f3e-ad69-90ee58cc294c"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="40ee1148-f353-409d-a95b-00ebd9edb4f4"
@@ -436,8 +434,7 @@ SelectionOfLanguageAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3dfb7e52-d433-403a-8cb0-d646ac39a942"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -465,13 +462,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="3b26f896-2d2b-4b33-9852-0c8c9c96c4a3"
-><Comment></Comment>
-NOT TrackAdhesionFactorAvailable()</PreCondition></PreConditions>
+>NOT TrackAdhesionFactorAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7baf926e-debe-4fa0-ac5b-e4cf5e84a751"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -573,7 +568,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="e830d014-3e43-4c6d-9a1e-2359dd92b8a5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="146fdf8b-b8d6-4313-ba45-30e323f7f464"
@@ -583,8 +577,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="96540f3c-63f5-4d64-88ef-9abe7565f3da"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -614,8 +607,7 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="996f94a0-c5f7-440e-99f3-218673234ca3"
-><Comment></Comment>
-TrainIntegrityAvailable()</PreCondition></PreConditions>
+>TrainIntegrityAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8923a9d3-2909-469f-a68f-1e6e7b3f36ad"
@@ -647,13 +639,11 @@ TrainIntegrityAvailable()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="aaf56087-e2c8-4912-bcd6-6d6f8d647492"
-><Comment></Comment>
-NOT TrainIntegrityAvailable()</PreCondition></PreConditions>
+>NOT TrainIntegrityAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2a049c1c-0ad2-4a3f-ad23-534e9c5a2a07"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -717,7 +707,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="4396a62d-37ec-4da8-8d0d-0c9673dbab23"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e4f4ce1b-a698-4e7a-aba3-882084eebcfe"
@@ -727,8 +716,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="1f6747f9-d7a8-4692-a2b7-2b4403970d81"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -756,13 +744,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="993ecddc-d6d1-43b2-bb02-a0c2fb151728"
-><Comment></Comment>
-NOT StartAvailable()</PreCondition></PreConditions>
+>NOT StartAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="038750a6-22fa-4950-a7cd-fc5d303d141d"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -788,7 +774,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="InitiateRequest"
  Guid="c90df00e-f4fd-4ff4-8210-e2c3000a85f5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="77031b18-064d-41a8-9495-1df1588662c2"
@@ -827,7 +812,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b238156d-dd5f-4598-bd8f-9196f0a29e5a"
 >
-<Comment></Comment>
 </ReqRef><Comment>Acknowledgement of the overrie request</Comment>
 <Procedures>
 <Procedure
@@ -853,7 +837,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="7bc6173b-0baf-46b0-bd83-45af0188608e"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e14cd8d6-e2b5-4fc4-abea-367df57ed394"
@@ -863,8 +846,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="194261ad-f490-48dc-bf11-831b2aeed50e"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -892,13 +874,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="10e2647a-131d-4cc6-80a0-8587280dd433"
-><Comment></Comment>
-NOT OverrideRequestAvailable()</PreCondition></PreConditions>
+>NOT OverrideRequestAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f6cbf73a-e9c9-4aca-9e4a-ff4f3ebe436a"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -932,8 +912,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="514a471c-0d9d-48a5-ae6b-6d9dd8965c33"
-><Comment></Comment>
-THIS.InputInformation.InitiateRequest()</Action><Action
+>THIS.InputInformation.InitiateRequest()</Action><Action
  Guid="979d0f7c-186c-4050-8392-69e909ae60df"
 >DMIStruct.In_OverrideRequest.InputInformation.DriverAnswered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
@@ -991,13 +970,11 @@ THIS.InputInformation.InitiateRequest()</Action><Action
 <PreConditions>
 <PreCondition
  Guid="834c1096-02ba-46a5-ba29-c4badaa23653"
-><Comment></Comment>
-NOT ShuntingRequestAvailable()</PreCondition></PreConditions>
+>NOT ShuntingRequestAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="726bb807-cbe1-441f-b21b-0b42f18550d2"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1023,7 +1000,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="a6f48aca-ce2e-4e65-b5bb-e8429026c2ac"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="b3da6aa0-8264-45d0-89a2-b43c92981f04"
@@ -1033,8 +1009,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="1a908505-fad5-4429-81ac-4c5b8947cb4a"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1124,7 +1099,6 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="7f23b84e-297e-4f69-993a-4064d6d14247"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="0ecd27c5-3a58-43af-9001-c7d6fca72139"
@@ -1134,8 +1108,7 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <Actions>
 <Action
  Guid="5ef5c085-e528-4c0c-9bce-98437e79b8fb"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1163,13 +1136,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="abf9d422-90ef-468e-9086-9fb6ccd79421"
-><Comment></Comment>
-NOT ContinueShuntingOnDeskClosureRequestAvailable()</PreCondition></PreConditions>
+>NOT ContinueShuntingOnDeskClosureRequestAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a77d8197-fee8-4e2f-a32c-e70678e3a5c7"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1281,7 +1252,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="602a982a-73da-4f93-b262-416beb3575b2"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e06b7fcb-f9fd-4311-b0b9-f06ab2e99ca5"
@@ -1291,8 +1261,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="19852f43-635a-4537-bb5d-263d236875bd"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1320,13 +1289,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="129bf70c-ee36-442d-8ef8-8169e2c6d5c6"
-><Comment></Comment>
-NOT ExitOfShuntingRequestAvailable()</PreCondition></PreConditions>
+>NOT ExitOfShuntingRequestAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4a63ec34-d937-4d6b-b92d-60b75c948925"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1353,7 +1320,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="InitiateRequest"
  Guid="ccc7aa22-ce50-4f0c-bd90-bcdbe6883ebe"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="36e54d75-fc95-4449-b5b8-526355ff24d0"
@@ -1415,19 +1381,16 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="d0468250-6321-4a12-8289-79327cfde790"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="2c2dc253-9036-45fd-b9f9-e7c08cc7b5ee"
 >NonLeadingRequestAvailable()</PreCondition><PreCondition
  Guid="95945dac-fa99-4bff-a870-827fc91a461a"
-><Comment></Comment>
-THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="88bee066-b6fd-4b68-983b-5243aa1acab5"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1455,13 +1418,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="5e3017d6-ee53-4cf5-9a2d-a1dd8a46dd81"
-><Comment></Comment>
-NOT NonLeadingRequestAvailable()</PreCondition></PreConditions>
+>NOT NonLeadingRequestAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0186bb3b-5039-48e1-83e1-fa3246b5a5b4"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1494,8 +1455,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="282e040d-d34b-438b-a3b8-cb5d47ce2779"
-><Comment></Comment>
-THIS.InputInformation.InitiateRequest()</Action><Action
+>THIS.InputInformation.InitiateRequest()</Action><Action
  Guid="1df2a125-8ea7-47f5-96e7-fc02e17e674d"
 >DMIStruct.In_NonLeadingRequest.InputInformation.DriverAnswered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
@@ -1551,7 +1511,6 @@ THIS.InputInformation.InitiateRequest()</Action><Action
  Name="Accepts data from the driver"
  Guid="03b88e79-75c3-4ab3-9fa0-0b257ccdcff1"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="087e0b78-e4f0-4c57-afe5-d9e1e68207b1"
@@ -1561,8 +1520,7 @@ THIS.InputInformation.InitiateRequest()</Action><Action
 <Actions>
 <Action
  Guid="0608d022-2811-4d61-83cd-12c8978fc21b"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1590,13 +1548,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="15f85bde-56a5-47e6-842b-b93d6596c763"
-><Comment></Comment>
-NOT AcknOfFixedTextInformationAvailable()</PreCondition></PreConditions>
+>NOT AcknOfFixedTextInformationAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3ca2e0b4-53a9-45ff-af2f-585799d714d1"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1621,7 +1577,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="InitiateRequest"
  Guid="de583df0-cd3b-46d3-9aeb-80fef4748469"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1702,7 +1657,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="dd7970e4-6162-49d8-af31-3559db39c35f"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="bb03b1a4-2f0d-4a56-a62b-fffc1f041bb7"
@@ -1712,8 +1666,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="4dfc4c81-b5da-4c77-bf59-977850e79762"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1741,13 +1694,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="e9bfcd4e-6186-48b9-aa04-70866de97353"
-><Comment></Comment>
-NOT LevelTransitionAvailable()</PreCondition></PreConditions>
+>NOT LevelTransitionAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="740f113c-67a5-49f1-b1f3-fadcbdac5659"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1852,7 +1803,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="936c1a27-25fb-4d0a-b568-c56dc87b1d51"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1fc419e1-a444-4869-8c33-daef9118eb6f"
@@ -1862,8 +1812,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="5bfb2800-2c0e-4da8-9d7a-e40e593d6d55"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1891,13 +1840,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="4458f539-9af9-4af7-9777-27e746c0972f"
-><Comment></Comment>
-NOT AcknOfPlainTextInformationAvailable()</PreCondition></PreConditions>
+>NOT AcknOfPlainTextInformationAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e37bd4ae-e703-4f42-a376-755065173092"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2002,7 +1949,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="ac1a8d63-b9c3-4b80-a293-0527f08fee24"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1a23d43a-05e8-434c-855e-abcab2f07a48"
@@ -2012,8 +1958,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="16019496-7dbf-4a92-a6b2-2422e513d3f5"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2041,13 +1986,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="1d509fd1-6e01-45bc-861d-529c9e2a46d5"
-><Comment></Comment>
-NOT AcknOfTrainDataChangeFromOtherSourceAvailable()</PreCondition></PreConditions>
+>NOT AcknOfTrainDataChangeFromOtherSourceAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6bc48613-a883-467c-8f16-e1e4e358d733"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2148,8 +2091,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="2c1ad6b0-86eb-4b52-9032-afe315680aae"
-><Comment></Comment>
-TrackAheadFreeAvailable()</PreCondition></PreConditions>
+>TrackAheadFreeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="acd708b9-ac7d-4276-b7a0-35601ef7de08"
@@ -2179,7 +2121,6 @@ TrackAheadFreeAvailable()</PreCondition></PreConditions>
  Name="Accepts data from the driver"
  Guid="7c1bd2d5-cc22-40a1-871a-b5f00a0ced93"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="15185d03-8fad-457f-9241-e14008b2fef0"
@@ -2189,8 +2130,7 @@ TrackAheadFreeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a0e16f10-a236-471b-b610-864623cf30dd"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2218,13 +2158,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="6e0cc039-516d-4655-b466-74c9e7b5ae66"
-><Comment></Comment>
-NOT TrackAheadFreeAvailable()</PreCondition></PreConditions>
+>NOT TrackAheadFreeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="59ded254-df81-4e42-a4d2-d921130f9798"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -2288,7 +2226,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="758e5721-740a-4700-8b9e-d6702b47e048"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="4a5ff4fb-a479-4329-9a24-44380cc918cb"
@@ -2298,8 +2235,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="5cc17c0b-817f-4483-8077-9146d6cbb607"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2327,13 +2263,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="e962044a-7848-4ce2-9aee-5b9eb9645b3d"
-><Comment></Comment>
-NOT SRModeSpeedLimitAndDistanceAvailable()</PreCondition></PreConditions>
+>NOT SRModeSpeedLimitAndDistanceAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6a6a0978-207e-42a1-94cc-90fb6e88698f"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2468,7 +2402,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="1fb6f110-4108-4f55-864b-3aee2efc606d"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="882c3d51-0327-4bab-9878-5c3a796d6b81"
@@ -2478,8 +2411,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="6a6a9b6e-874b-4be6-9651-1f7aca9ce19e"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2507,13 +2439,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="5f31f2ca-4f5a-4a67-84f6-a2f999e901f1"
-><Comment></Comment>
-NOT IsolationAvailable()</PreCondition></PreConditions>
+>NOT IsolationAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ed217968-b83d-4bd5-a149-86b178ed3f72"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2543,8 +2473,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="a4caf90d-fe6b-4722-9a4d-21df06db8fcc"
-><Comment></Comment>
-IsolationAvailable()</PreCondition></PreConditions>
+>IsolationAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c0e88048-cbad-4ba2-b471-acbd188ce7bb"
@@ -2648,13 +2577,11 @@ IsolationAvailable()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="368131e4-0b7a-4cc3-ab51-1e1abc95063b"
-><Comment></Comment>
-NOT TrainDataAvailable()</PreCondition></PreConditions>
+>NOT TrainDataAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3d70792f-7b72-4579-a112-46c985abcf4e"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2680,7 +2607,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="ec9cce38-0f8d-4fe6-bee3-d332780c7f4c"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="a3d2c6d4-b570-4d87-86d5-9075cfcc7ec8"
@@ -2690,8 +2616,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="89b7128c-9b3a-42b5-ae06-e45beff492f3"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -2745,24 +2670,20 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="3e975da3-a8dc-49e2-84bd-e8a116d81103"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="20353b9d-dc08-468c-ac7a-cb39c87fb17c"
 >THIS.InputInformation.RequestStatus == Request.Response</PreCondition><PreCondition
  Guid="a28e0781-9f43-4778-a7f0-f1024bf270f5"
-><Comment></Comment>
-TrainRunningNumberAvailable()</PreCondition></PreConditions>
+>TrainRunningNumberAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="780ce46f-881b-40b8-8b8c-6cea27f0bd63"
-><Comment></Comment>
-Kernel.TrainRunningNumber.Value &lt;- Number</Action><Action
+>Kernel.TrainRunningNumber.Value &lt;- Number</Action><Action
  Guid="4ce3e2a4-8a17-430d-86d4-9fd9dd9cf6e1"
 >Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action><Action
  Guid="bcd2af97-71b8-4e6d-85ee-8ba1d4e80800"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2790,13 +2711,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="571f266a-2ee0-4138-9970-ca135128efb4"
-><Comment></Comment>
-NOT TrainRunningNumberAvailable()</PreCondition></PreConditions>
+>NOT TrainRunningNumberAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6908ddd9-012d-44ca-82b0-1690688a6b6a"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2926,7 +2845,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="8590a469-70ad-4762-af9e-a507c1957ce1"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="3c5be02c-986b-40ec-8a61-d8aa2798c682"
@@ -2936,8 +2854,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="e2a59ace-9b37-4f65-86b3-afa908151d1a"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2965,13 +2882,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="3c1ca723-1bfa-472e-8c4d-936a0e1fd394"
-><Comment></Comment>
-NOT AcknOfSNModeAvailable()</PreCondition></PreConditions>
+>NOT AcknOfSNModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6fb39eb4-2bb8-40b9-90ab-23143c097210"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3078,7 +2993,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="InitiateRequest"
  Guid="6756f1c8-a9b7-40dc-a0b5-7dcb02edb10e"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="71d1f95c-1577-47f9-ade4-9696c6695cbb"
@@ -3086,11 +3000,9 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="b1511876-75a0-487c-b207-ad7d83e60c22"
-><Comment></Comment>
-THIS.InputInformation.InitiateRequest()</Action><Action
+>THIS.InputInformation.InitiateRequest()</Action><Action
  Guid="e3c60e02-5c50-4eeb-8bb2-33a0382a63af"
-><Comment></Comment>
-THIS.Data &lt;- Kernel.TrainData.TrainData.Value</Action></Actions>
+>THIS.Data &lt;- Kernel.TrainData.TrainData.Value</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3099,7 +3011,17 @@ THIS.Data &lt;- Kernel.TrainData.TrainData.Value</Action></Actions>
  Name="AcceptDriverResponse"
  Guid="f7e3005d-08b8-44d4-aa9c-b40308838802"
 >
-<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<ReqRef
+ Id="b73d7793-cf2f-4c3f-92ea-d8c2b081c744"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0dc55d15-6a91-411b-9fe5-ac19b58030db"
+>
+</ReqRef><ReqRef
+ Id="bb40e241-378f-4872-9823-6f03bbc2d2e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a6dc2c1d-1fbf-48e9-9c22-12f81cf3870f"
+>
+</ReqRef><Comment>Receives the driver input and updates the internal data accordingly</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -3116,7 +3038,6 @@ THIS.Data &lt;- Kernel.TrainData.TrainData.Value</Action></Actions>
  Name="Accepts data from the driver"
  Guid="eeea8e6c-a89e-4e6f-b00c-97142a6871d5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="58278b2b-d5bd-476a-9cc0-72a35f647608"
@@ -3126,13 +3047,11 @@ THIS.Data &lt;- Kernel.TrainData.TrainData.Value</Action></Actions>
 <Actions>
 <Action
  Guid="c779d55b-4fb3-4c1b-a56f-f589b874ba0a"
-><Comment></Comment>
-Kernel.TrainData.TrainData.Value &lt;- Data</Action><Action
+>Kernel.TrainData.TrainData.Value &lt;- Data</Action><Action
  Guid="f1dea230-8399-4ceb-952e-5fba6e206bc5"
 >Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action
  Guid="6094f996-fa14-4aac-b1c8-c07821f30e5c"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3160,13 +3079,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="6e327413-7261-404c-9cb0-f69958438708"
-><Comment></Comment>
-NOT TrainDataAvailable()</PreCondition></PreConditions>
+>NOT TrainDataAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ab714cab-5648-49d8-83a4-b23ebd126dec"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -3213,7 +3130,17 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="AcceptDriverResponse"
  Guid="8c6c0807-df4e-4b71-869a-031ae3b63785"
 >
-<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<ReqRef
+ Id="fdd34be2-081f-4fd2-81c7-d31750a434b6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1085d700-75f1-4c65-a985-b6f8910c7002"
+>
+</ReqRef><ReqRef
+ Id="4498594e-f543-4aac-a645-51b5961b91b3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7f08a67c-c5c1-44ce-ab0c-8d3d01c43679"
+>
+</ReqRef><Comment>Receives the driver input and updates the internal data accordingly</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -3230,7 +3157,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="4fc6379f-c7d4-41b8-8dac-a95f74dc0172"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f685b8fc-85bc-4fce-a311-7d4f80b915a1"
@@ -3240,14 +3166,11 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="cb6883b5-cc98-4506-a1c6-7a0cb4af3488"
-><Comment></Comment>
-Kernel.DriverId.DataState &lt;- DataState.Valid</Action><Action
+>Kernel.DriverId.DataState &lt;- DataState.Valid</Action><Action
  Guid="7d3f9ccb-b0de-42eb-90cc-548e800edc28"
-><Comment></Comment>
-Kernel.DriverId.Value &lt;- Id</Action><Action
+>Kernel.DriverId.Value &lt;- Id</Action><Action
  Guid="19431aeb-cc52-463d-acfc-343b0ff96809"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3275,13 +3198,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="d1e5b369-ab1f-485c-abef-9ee48b6bc48d"
-><Comment></Comment>
-NOT DriverIdAvailable()</PreCondition></PreConditions>
+>NOT DriverIdAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="61478187-075c-4259-9f38-5dfdb060188e"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3411,7 +3332,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="0ebd53ef-aa70-49bf-b45b-bf1a47857da3"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="fbbca60f-bf2c-4b34-9f99-39d06fe2b92d"
@@ -3421,8 +3341,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="7ea0fcc2-bf7a-47ab-b201-7e29c90a9c96"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3450,13 +3369,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="2d527f8d-5149-4d3a-9a1e-4984ae66bff1"
-><Comment></Comment>
-NOT RBCContactInformationAvailable()</PreCondition></PreConditions>
+>NOT RBCContactInformationAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1bf55176-46e6-4913-a4be-f6983aa5bb3d"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3504,12 +3421,10 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Initiate request"
  Guid="57bbde6c-9ad8-4a75-a62a-76fc47692926"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f6796380-c7cb-42bf-9bda-d66448686024"
-><Comment></Comment>
-RBCContactInformationAvailable()</PreCondition></PreConditions>
+>RBCContactInformationAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ae44b34e-6d5c-4179-8491-b22fa91eca38"
@@ -3556,8 +3471,7 @@ RBCContactInformationAvailable()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="ec7b1a34-a88c-450b-8f91-2a70ae8a2dca"
-><Comment></Comment>
-RBCContactInformationAvailable()</PreCondition></PreConditions>
+>RBCContactInformationAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2fbcc21b-900d-44e5-b0ef-d1f8f0593fa8"
@@ -3658,7 +3572,6 @@ RBCContactInformationAvailable()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="82635655-64f2-4fe7-80b3-996e97867914"
 >
-<Comment></Comment>
 </ReqRef><Comment>Acknowledgement of the virtual balise cover</Comment>
 <Procedures>
 <Procedure
@@ -3684,7 +3597,6 @@ RBCContactInformationAvailable()</PreCondition></PreConditions>
  Name="Accepts data from the driver"
  Guid="08a226e8-80cb-4867-88ed-193bde5cacdf"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="71cda174-55a7-4464-b783-1be7c71c7911"
@@ -3694,8 +3606,9 @@ RBCContactInformationAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9484037f-ae8c-4c61-ac5d-d77f23a6c203"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="29f0eb50-b4fd-485f-add0-03585d769c39"
+>Kernel.VirtualBaliseCoverIsSet &lt;- THIS.VirtualBaliseCoverIsSet</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3705,6 +3618,13 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
  Guid="ff1f2d51-6435-4cde-9750-6985f783f71b"
 >
 <Comment>Initiates train data entry request</Comment>
+<Parameters>
+<Parameter
+ Type="Boolean"
+ Name="VirtualBaliseCoverIsSet"
+ Guid="bbfdb2d4-fd02-4e95-98f8-2d3cbad7a0f1"
+>
+</Parameter></Parameters>
 <Rules>
 <Rule
  Priority="Processing"
@@ -3722,16 +3642,16 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
  Name="InitiateRequest"
  Guid="f774ac51-bbd7-4dbd-a1c9-e54e8be1cff9"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="398d9a4f-2621-484c-a304-24335a68e786"
-><Comment></Comment>
-VirtualBaliseCoverAvailable()</PreCondition></PreConditions>
+>VirtualBaliseCoverAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="fd488683-6118-4073-8f08-3d8d37ab3e7a"
->THIS.InputInformation.InitiateRequest()</Action></Actions>
+>THIS.InputInformation.InitiateRequest()</Action><Action
+ Guid="d98c8987-f0f6-407a-8bf2-9d0ae3658a9e"
+>THIS.VirtualBaliseCoverIsSet &lt;- VirtualBaliseCoverIsSet</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3759,13 +3679,11 @@ VirtualBaliseCoverAvailable()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="00cac2a2-b5cd-44d1-b323-a289024608df"
-><Comment></Comment>
-NOT VirtualBaliseCoverAvailable()</PreCondition></PreConditions>
+>NOT VirtualBaliseCoverAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="341ad025-67cf-4560-9a2e-57fae6de49b3"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -3779,6 +3697,20 @@ THIS.InputInformation.Disable()</Action></Actions>
  Guid="acbda029-1504-4ea3-bebe-1ab21813cd63"
 >
 <Comment>The request status</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="VirtualBaliseCoverIsSet"
+ Guid="cae556c2-f308-4e87-a580-0c1684d76478"
+>
+<ReqRef
+ Id="079c6696-ff46-4b49-b30c-23ad82da6fd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cd72a3c7-0eea-41db-8c0d-93311ad4a10b"
+>
+</ReqRef><Comment>Indicates if the virtual balise cover is set.</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="450"
@@ -3819,19 +3751,16 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="cc939d27-011c-4aad-b71c-7ad4ecc73fab"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="ad8524b2-6768-4b82-be41-35fd4464fe9c"
-><Comment></Comment>
-THIS.InputInformation.RequestStatus == Request.Response</PreCondition><PreCondition
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition><PreCondition
  Guid="687ef45e-f902-4b23-95a7-db5c8670998f"
 >AcknOfLSModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7f80394d-d86d-4e0e-9ee9-48ab5ba67ea8"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3861,8 +3790,7 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="fccd3e1b-375d-4471-b74f-39c268c5e8fd"
-><Comment></Comment>
-AcknOfLSModeAvailable()</PreCondition></PreConditions>
+>AcknOfLSModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="febfd992-c4f5-4d2a-a32c-9b0b21e4b009"
@@ -3894,13 +3822,11 @@ AcknOfLSModeAvailable()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="e59a25ee-386d-4c76-b93c-280c6e9e7c0e"
-><Comment></Comment>
-NOT AcknOfLSModeAvailable()</PreCondition></PreConditions>
+>NOT AcknOfLSModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6f6ee152-a97f-4bb4-8580-2bb9e47088e4"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -3954,7 +3880,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="924ce837-3601-445e-8e33-2fba2d6bdc2a"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="94a5f5a6-f9a5-40c1-b808-fcc02acaee20"
@@ -3964,8 +3889,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="719101c0-d5a3-40d8-a756-4698d9924399"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4027,13 +3951,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="0fe29a45-527c-4651-ae47-3b1879773be3"
-><Comment></Comment>
-NOT AcknOfOSModeAvailable()</PreCondition></PreConditions>
+>NOT AcknOfOSModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5d07f0c5-6eee-401d-9207-7f14d3baa9f6"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -4087,7 +4009,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="1daa3aff-30c9-4387-a7f7-868d05d9433b"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="2deea77c-9d96-4afb-974b-c52f09c6fb57"
@@ -4097,8 +4018,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="24769eb4-f757-4ced-8cd3-4a57859a3edb"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4160,13 +4080,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="6d84ae66-ea93-4604-b26b-23c16337bbee"
-><Comment></Comment>
-NOT AcknOfSHModeAvailable()</PreCondition></PreConditions>
+>NOT AcknOfSHModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="cc376e6f-561a-4be5-b1f5-6551786cb04a"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -4220,19 +4138,16 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="9221724c-c89e-4f8e-9a66-c3bbdc686445"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="4829d3ad-5331-4b26-8f56-a5e4f2be8298"
 >AcknOfSRModeAvailable()</PreCondition><PreCondition
  Guid="22c078b8-2338-4e9f-87b1-485e7b9ca5de"
-><Comment></Comment>
-THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="522267fc-268b-4215-b3c6-3ee21396db96"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4260,13 +4175,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="1ad5959c-2e03-4538-b963-a54dad6a4019"
-><Comment></Comment>
-NOT AcknOfSRModeAvailable()</PreCondition></PreConditions>
+>NOT AcknOfSRModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8ec8893d-8b01-4e00-a463-4980b55fabd1"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4295,8 +4208,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="62101dbc-cb09-4f9b-bd80-c21e0de35640"
-><Comment></Comment>
-AcknOfSRModeAvailable()</PreCondition></PreConditions>
+>AcknOfSRModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c30ea484-06c6-4354-a964-0266da92d675"
@@ -4354,7 +4266,6 @@ AcknOfSRModeAvailable()</PreCondition></PreConditions>
  Name="Accepts data from the driver"
  Guid="ad94be90-564b-47ee-a493-35d234a1327d"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="1d41a389-f99a-4954-9018-69d1f0a8abf0"
@@ -4364,8 +4275,7 @@ AcknOfSRModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c6ae23b0-e926-44d7-9f0c-04a4eeee1ce1"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4393,13 +4303,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="4c2ed3f7-70c9-4459-9302-b047b65ca1c4"
-><Comment></Comment>
-NOT AcknOfUNModeAvailable()</PreCondition></PreConditions>
+>NOT AcknOfUNModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="349b17f5-b665-4423-9ce2-c74251ef1005"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4428,8 +4336,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="1751f347-23bf-4582-8a9a-9dca7879a72e"
-><Comment></Comment>
-AcknOfUNModeAvailable()</PreCondition></PreConditions>
+>AcknOfUNModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="dbda4c24-cc3e-417a-a756-a22a20725059"
@@ -4487,7 +4394,6 @@ AcknOfUNModeAvailable()</PreCondition></PreConditions>
  Name="Accepts data from the driver"
  Guid="be2bb5f0-afd4-4a3e-ad00-a09ff35d51a7"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="7250aa3f-f716-4460-89fd-9d8a54ec1fd4"
@@ -4497,8 +4403,7 @@ AcknOfUNModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="950a0d64-88c9-4e7b-bb22-eb3cb0644b8a"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4526,13 +4431,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="543c9dde-7d92-4c61-8d7b-1eb8d82a4ad7"
-><Comment></Comment>
-NOT AcknOfRVModeAvailable()</PreCondition></PreConditions>
+>NOT AcknOfRVModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="96b7047b-d2df-4c06-8456-d2006eb4e4a6"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4561,8 +4464,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="651585e8-b8e8-43dc-9b38-0a249d364cfc"
-><Comment></Comment>
-AcknOfRVModeAvailable()</PreCondition></PreConditions>
+>AcknOfRVModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="59df9524-e684-4144-bb6f-3fb1c664f74f"
@@ -4620,7 +4522,6 @@ AcknOfRVModeAvailable()</PreCondition></PreConditions>
  Name="Accepts data from the driver"
  Guid="4ccae0a4-f226-4be1-9221-bfe0ba1a83aa"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="4bd3d95f-2f28-4a2f-89e8-2721a3e0ea43"
@@ -4630,8 +4531,7 @@ AcknOfRVModeAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="beebc794-9e66-41ac-bdd5-4af14e37de2f"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4659,13 +4559,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="ff8dc122-8dfb-4f4b-81b9-38da90b100ef"
-><Comment></Comment>
-NOT AcknOfTrainTripAvailable()</PreCondition></PreConditions>
+>NOT AcknOfTrainTripAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f05d70b1-2761-468e-b8d0-658406451f00"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4694,8 +4592,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="67bf8817-9422-4444-badc-ce8717366a3c"
-><Comment></Comment>
-AcknOfTrainTripAvailable()</PreCondition></PreConditions>
+>AcknOfTrainTripAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d7d5dbd8-7b39-4b14-8643-47d1b0daccaf"
@@ -4753,7 +4650,6 @@ AcknOfTrainTripAvailable()</PreCondition></PreConditions>
  Name="Accepts data from the driver"
  Guid="326ea661-9598-4973-9605-6442d3af14b3"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="74984aa5-533e-4d93-adde-3376902ab995"
@@ -4763,8 +4659,7 @@ AcknOfTrainTripAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="448fbdbe-ce25-407b-85c4-cd5abdbb8a7e"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4792,13 +4687,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="87acb675-bfe3-4a25-8c04-b2a224c4661b"
-><Comment></Comment>
-NOT AcknForRollAwayProtectionAvailable()</PreCondition></PreConditions>
+>NOT AcknForRollAwayProtectionAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4577bf00-9e60-4691-9698-dd924755436b"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4827,8 +4720,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="2f2803fc-5a49-46e6-8a71-e7075d4f2f2d"
-><Comment></Comment>
-AcknForRollAwayProtectionAvailable()</PreCondition></PreConditions>
+>AcknForRollAwayProtectionAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c7f17aa8-f0a4-4981-9989-82b41533a8af"
@@ -4886,7 +4778,6 @@ AcknForRollAwayProtectionAvailable()</PreCondition></PreConditions>
  Name="Accepts data from the driver"
  Guid="e1bfefa2-400b-4999-92da-23bd6838bb10"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="6fe5e053-8049-40b6-8e3f-7d2c7e19cb04"
@@ -4896,8 +4787,7 @@ AcknForRollAwayProtectionAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0d0bb983-0452-4009-a999-338ab284e15a"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4925,13 +4815,11 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="bc640a2b-43b8-42ed-bc21-6b4408fbf04b"
-><Comment></Comment>
-NOT AcknForReverseMovementProtectionAvailable()</PreCondition></PreConditions>
+>NOT AcknForReverseMovementProtectionAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d36a0492-fe02-4d06-adc8-db25710f33d0"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4960,13 +4848,11 @@ THIS.InputInformation.Disable()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="9c366715-b619-46a8-85b4-3ee385b4a8db"
-><Comment></Comment>
-AcknForReverseMovementProtectionAvailable()</PreCondition></PreConditions>
+>AcknForReverseMovementProtectionAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f537b56a-b215-4883-88ea-db7dc02fb73d"
-><Comment></Comment>
-THIS.InputInformation.InitiateRequest()</Action></Actions>
+>THIS.InputInformation.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -5020,7 +4906,6 @@ THIS.InputInformation.InitiateRequest()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="48d19d69-e827-40e4-aca1-438bd874ae4b"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="b195fb48-2e58-4b6d-8e92-f6c691fefe08"
@@ -5030,8 +4915,7 @@ THIS.InputInformation.InitiateRequest()</Action></Actions>
 <Actions>
 <Action
  Guid="3423bc91-1951-405d-8894-dbbeef15ee67"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5061,8 +4945,7 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="e4ab4e76-dbe4-4ca8-8e96-be0f523e315a"
-><Comment></Comment>
-AcknForStandstillSupervisionAvailable()</PreCondition></PreConditions>
+>AcknForStandstillSupervisionAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a1df51a0-c291-494a-b630-527f73d952ba"
@@ -5094,13 +4977,11 @@ AcknForStandstillSupervisionAvailable()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="c9f53997-5996-41d9-ac19-4f76b7699c8a"
-><Comment></Comment>
-NOT AcknForStandstillSupervisionAvailable()</PreCondition></PreConditions>
+>NOT AcknForStandstillSupervisionAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c40075ee-471e-4396-9752-fdb04c53700e"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -5154,7 +5035,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="5af6d457-e444-44c9-b4c4-9ec917fce815"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d4d6116f-410d-4fbf-9965-397a1bb830c1"
@@ -5164,8 +5044,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="779ac761-1482-459c-8d66-c3944c74a0cb"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5195,8 +5074,7 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="85a2096a-c315-422e-9f06-ddfd38372f39"
-><Comment></Comment>
-AcknForPostTripDistanceExceededAvailable()</PreCondition></PreConditions>
+>AcknForPostTripDistanceExceededAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="cbacafdd-59cd-4d53-8938-258dfb3dd32d"
@@ -5228,13 +5106,11 @@ AcknForPostTripDistanceExceededAvailable()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="d7a2ed61-eb76-421b-a84f-286bcb2c3cfc"
-><Comment></Comment>
-NOT AcknForPostTripDistanceExceededAvailable()</PreCondition></PreConditions>
+>NOT AcknForPostTripDistanceExceededAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5887af77-ad67-49a6-9f9c-fa1a18265732"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -5288,7 +5164,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  Name="Accepts data from the driver"
  Guid="74ff391e-8f8f-444e-9152-7a0ccbd54036"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="7aa02568-72f6-49af-848e-677ab5f76231"
@@ -5298,8 +5173,7 @@ THIS.InputInformation.Disable()</Action></Actions>
 <Actions>
 <Action
  Guid="cac3a113-83af-4401-b059-0d1fdb629bb8"
-><Comment></Comment>
-THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5329,8 +5203,7 @@ THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="4a90efd1-181c-480d-8779-bc210a8c97bd"
-><Comment></Comment>
-AcknForReversingDistanceExceededAvailable()</PreCondition></PreConditions>
+>AcknForReversingDistanceExceededAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="13de8929-3a32-4885-a045-21b308fa91b0"
@@ -5362,13 +5235,11 @@ AcknForReversingDistanceExceededAvailable()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="0a0afb3a-c81e-49ba-b886-8c7270f4158d"
-><Comment></Comment>
-NOT AcknForReversingDistanceExceededAvailable()</PreCondition></PreConditions>
+>NOT AcknForReversingDistanceExceededAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="91e5d153-ecb6-41d2-872c-36e9bf3b4de4"
-><Comment></Comment>
-THIS.InputInformation.Disable()</Action></Actions>
+>THIS.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -5382,6 +5253,530 @@ THIS.InputInformation.Disable()</Action></Actions>
  Guid="42a5b38a-c042-4152-b33d-be49f5d170ff"
 >
 <Comment>The status of the request</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ X="10"
+ Y="280"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="TrainRunningNumberEntryRequest"
+ Guid="9dc62aa0-e3fe-4443-b9b8-1ba2eda5b8ae"
+>
+<ReqRef
+ Id="cc8be0e3-4edb-46d4-a4e4-a00714d90fc4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55e28fa1-8fe9-4e56-b961-2ff525ffe28c"
+>
+</ReqRef><Comment>Allows to enter the train running number</Comment>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="187ed81d-62c2-4532-9991-c1f920e67240"
+>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="bc2e7418-88a0-4eaa-ad6f-7403a1de6f6b"
+>
+<Comment>Accepts the data and updates the system state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Accepts data from the driver"
+ Guid="23902fc9-c326-44b9-ad5a-307da6178d44"
+>
+<PreConditions>
+<PreCondition
+ Guid="20200d18-c9a3-4d32-89aa-d5e0cc8d28fe"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition><PreCondition
+ Guid="f512c54f-b7e8-430e-b642-e68bc3d8ca02"
+>TrainRunningNumberAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="393a025a-fa0e-48a1-b130-0a528e09e8b4"
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="9d0e63ad-3433-4b6e-a9a2-1726f0c185d3"
+>
+<Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="46f63f3d-638b-49f0-a69a-e4c82433d2b8"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="f5b4657a-3d03-4a0c-83fb-6f814a9a66eb"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="8ca0bc05-45c1-4258-a848-218c479ae81b"
+>NOT TrainRunningNumberAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="dff3acf6-51aa-4af7-bf40-f91aa4b6f42f"
+>THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="1b569536-a978-492e-8451-eada77b46c3c"
+>
+<Comment>Initiates a driver ID request</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="186e22e5-bdce-449b-b384-049a01acb67e"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="8e4202cd-8b7e-42d9-96eb-73096c42f180"
+>
+<PreConditions>
+<PreCondition
+ Guid="94902be4-471e-4371-8cb5-e378545cf7d8"
+>TrainRunningNumberAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="025ab55d-552a-4339-b991-d35bfe5e9491"
+>THIS.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="InputInformation"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InputInformation"
+ Guid="778bf4ea-950f-430d-9700-4be5f00c6fe2"
+>
+<Comment>Provides the status of the request</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ X="450"
+ Y="400"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="VirtualBaliseCoverEntryRequest"
+ Guid="d62208cc-e56c-4d3c-aa96-3c4c95f0a263"
+>
+<ReqRef
+ Id="5f1173da-1cfe-4f41-aa4f-5c394c12e77f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cf93f17e-fd0b-4ade-a8cf-189515a4cf11"
+>
+</ReqRef><Comment>Acknowledgement of the virtual balise cover</Comment>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="314f2a93-a573-4812-be11-2c1f002e80fe"
+>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="8505b010-d2ba-4892-b61b-af060b084991"
+>
+<Comment>Accepts the data and updates the system state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Accepts data from the driver"
+ Guid="062fab32-b2e3-4195-92b2-55114a867bec"
+>
+<PreConditions>
+<PreCondition
+ Guid="85ba86ad-387c-4405-a27b-9342e6896c10"
+>VirtualBaliseCoverAvailable()</PreCondition><PreCondition
+ Guid="109fd754-6f1b-4416-8951-2d2552e9fe8f"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="db267b0a-5c9a-4ef3-92aa-12ab011e6f2f"
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="5c3f0909-64e9-4d8f-acb4-5b2f5d227a8b"
+>
+<Comment>Initiates train data entry request</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="4d744b20-4f9f-41dc-bfb4-8a6b437d4037"
+>
+<Comment>Initiates request</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="4a2dd4f1-6854-4d60-b142-08d060e64a69"
+>
+<PreConditions>
+<PreCondition
+ Guid="b4f80d80-bdba-4dfa-a12c-120f69b3c36f"
+>VirtualBaliseCoverAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0f3854ce-b452-4e09-985d-4458b6ace545"
+>THIS.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="267b49f1-8c2e-41b7-8682-98217322f057"
+>
+<Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="1ad7bd46-04d2-4a1a-ba9e-d020a3db8bd0"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="cb475c0f-3d59-4609-b381-53dbaea3b0d8"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="50a7d616-3f2b-4f06-ac0d-f10d2b0a39c1"
+>NOT VirtualBaliseCoverAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="becde018-6cd7-4a22-9dbc-f3237c0f2c13"
+>THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="InputInformation"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InputInformation"
+ Guid="41d5ac3c-a074-4151-ad31-3e6e6857be60"
+>
+<Comment>The request status</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ X="120"
+ Y="400"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DriverIdEntryRequest"
+ Guid="08537a9d-6924-416b-8966-2fc15db84828"
+>
+<ReqRef
+ Id="166e123f-f57c-4045-af2e-915a4c4e849b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8abca582-aaea-4baf-8414-04da6ee76544"
+>
+</ReqRef><Comment>Allow to enter the driver Id</Comment>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="4ddc25bc-a0e2-4dc8-a83e-66e449626417"
+>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="f441acc5-bd57-43da-862c-b9736dd272a7"
+>
+<Comment>Accepts the data and updates the system state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Accepts data from the driver"
+ Guid="40bc0853-79ce-4471-a8fd-3f5f6a376f60"
+>
+<PreConditions>
+<PreCondition
+ Guid="98f5b3e5-46a7-47c9-9473-df788dee1cf1"
+>DriverIdAvailable()</PreCondition><PreCondition
+ Guid="09c1fb1f-ae4a-4ec6-b860-3d254cbc29ef"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="528423a2-3558-4b80-83c2-a89b03dfae6e"
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="98f4d414-4177-4f4e-9c93-8c0fac1f9a2e"
+>
+<Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="c994f585-8f82-4e15-b4f7-0d4af579d501"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="21cb3ceb-0aad-4e2f-ac83-38c4259ab171"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="faf2e7d6-7cb9-4d83-899b-75c1972b883f"
+>NOT DriverIdAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="fd972ba6-3e31-49e5-b527-8c3e9b2412b3"
+>THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="5cdb9eb2-66fe-4d25-8112-6d41eaf0ace6"
+>
+<Comment>Initiates a driver ID request</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="18aaf906-ddb4-4a8d-93c3-ac86fbf8d13a"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="10d382fa-dc27-4888-9f92-724abc049198"
+>
+<PreConditions>
+<PreCondition
+ Guid="faf02e15-d63d-43be-ae23-925abd22d381"
+>DriverIdAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e8d2d4ab-322c-465e-b4f7-2b8d5d008ac0"
+>THIS.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="InputInformation"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InputInformation"
+ Guid="f0a0b318-0c99-4350-a2b5-41a8608b8ed9"
+>
+<Comment>The current status of the request</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ X="10"
+ Y="400"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="ErtmsEtcsLevelEntryRequest"
+ Guid="e7576663-5f87-452c-9b52-bee0614af97f"
+>
+<ReqRef
+ Id="4efd390e-2e07-4c18-88e9-b389b64cd144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7b31310f-e41b-4fd7-8640-ca27a7e92b37"
+>
+</ReqRef><ReqRef
+ Id="1e7f3c89-d89b-4d31-b758-514c92ae3bf1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="05988353-74fb-4bdd-ae25-5052798abcef"
+>
+</ReqRef><Comment>Allow to enter the Level</Comment>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="46da21f4-349e-460f-8751-a16d2a73bbd7"
+>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="07e4245d-7978-4c9f-b2ba-8c88b77f97ce"
+>
+<Comment>Accepts the data and updates the system state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Accepts data from the driver"
+ Guid="1ade1a6d-a1c7-4620-bdc5-8fc3b9d7511f"
+>
+<PreConditions>
+<PreCondition
+ Guid="851e5f13-c576-435c-8507-16eb479a30bf"
+>ErtmsEtcsLevelAvailable()</PreCondition><PreCondition
+ Guid="83fb3682-da57-4408-9f95-52d81553afa1"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8e1db983-940e-4c27-90dd-eb9c418e948d"
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="91fafc07-26c7-4140-b512-d58cd42b23f0"
+>
+<Comment>Initiate the ERTMS ETCS Level request</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="11a1b4a1-d0fc-470c-8993-927f150abbda"
+>
+<Comment>Initiates the level request</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="911f2f7b-8735-4a25-ad10-86904b2ce266"
+>
+<PreConditions>
+<PreCondition
+ Guid="807a3bf6-839b-410c-9cd5-89965ea3a35d"
+>ErtmsEtcsLevelAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="68bdaacb-196a-4a7e-840a-afe2c8eab7e3"
+>THIS.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="ba443fc0-df28-4721-b184-571ed7e51b9a"
+>
+<ReqRef
+ Id="4efd390e-2e07-4c18-88e9-b389b64cd144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b21ae5c2-8c47-4cc4-b6ca-19fe89737f05"
+>
+</ReqRef><Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="26ab6a51-1c06-410d-9843-216805c44114"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="29bdb37c-113a-47b7-97c7-b69909b165d0"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="3da45d56-5a25-4e7c-b6e0-8bef97dd7d84"
+>NOT ErtmsEtcsLevelAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="4c0aefea-8b1f-46cd-91a7-6f7ef34c846b"
+>THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="InputInformation"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InputInformation"
+ Guid="cc2d7f44-6a96-4b5f-870f-127d92c1896e"
+>
+<Comment>Provides information about this request status</Comment>
 </StructureElement></Structure></Structures>
 <Functions>
 <Function
@@ -5675,7 +6070,6 @@ THIS.InputInformation.Disable()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a1af40c7-1c6c-4ebb-a80a-86065e374a46"
 >
-<Comment></Comment>
 </ReqRef><Comment>Indicates whether the level can be proposed to the driver</Comment>
 <Cases>
 <Case

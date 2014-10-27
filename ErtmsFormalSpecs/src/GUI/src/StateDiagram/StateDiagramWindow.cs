@@ -23,6 +23,8 @@ using DataDictionary.Types;
 using DataDictionary.Variables;
 using Utils;
 using GUI.BoxArrowDiagram;
+using DataDictionary;
+using DataDictionary.Interpreter;
 
 namespace GUI.StateDiagram
 {
@@ -40,11 +42,6 @@ namespace GUI.StateDiagram
         private void InitializeComponent()
         {
         }
-
-        /// <summary>
-        /// The state machine variable, if any
-        /// </summary>
-        public IVariable StateMachineVariable { get; private set; }
 
         /// <summary>
         /// Constructor
@@ -86,11 +83,10 @@ namespace GUI.StateDiagram
             if (stateMachineType != null)
             {
                 StateMachine = stateMachineType;
-                StateMachineVariable = stateMachine;
             }
 
             StatePanel.StateMachine = StateMachine;
-            StatePanel.StateMachineVariable = StateMachineVariable;
+            StatePanel.StateMachineVariableExpression = EFSSystem.INSTANCE.Parser.Expression(Utils.EnclosingFinder<Dictionary>.find(stateMachine), stateMachine.FullName);
             StatePanel.RefreshControl();
         }
 

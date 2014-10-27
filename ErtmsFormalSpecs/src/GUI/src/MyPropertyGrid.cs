@@ -45,13 +45,13 @@ namespace GUI
         {
             if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
             {
-                BaseTreeNode SourceNode = (BaseTreeNode)e.Data.GetData("WindowsForms10PersistentObject");
-                if (SourceNode != null)
+                BaseTreeNode sourceNode = e.Data.GetData("WindowsForms10PersistentObject") as BaseTreeNode;
+                if (sourceNode != null)
                 {
                     BaseTreeNode node = EnclosingForm.TreeView.Selected;
                     if (node != null)
                     {
-                        node.AcceptDrop(SourceNode);
+                        node.AcceptDrop(sourceNode);
                     }
                 }
             }

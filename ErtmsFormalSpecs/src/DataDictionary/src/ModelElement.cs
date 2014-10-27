@@ -79,7 +79,7 @@ namespace DataDictionary
         /// <summary>
         /// The last explanation part for this model element
         /// </summary>
-        public ExplanationPart Explain { get; private set; }
+        public ExplanationPart Explain { get; set; }
 
         /// <summary>
         /// Indicates that no logging should occur

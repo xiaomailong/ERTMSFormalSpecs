@@ -1,13 +1,11 @@
 <NameSpace
- X="240"
- Y="10"
+ X="180"
  Width="100"
  Height="50"
  Pinned="TRUE"
  Name="Kernel"
  Guid="838d10c3-e56e-4b01-83ac-4480aa6fb8b8"
 >
-<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="ConfidenceInterval"
@@ -107,7 +105,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2f379230-3d40-4cc0-b28d-f53dbfc3c9a6"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="10645ba3-8d86-41ad-9956-71f5be85b4c1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -157,7 +154,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6b8d455d-eb79-4af0-a1a2-a854ac0ed25e"
 >
-<Comment></Comment>
 </ReqRef><Comment>Enumerates all the possible reasons for the emergency brakes to be tripped</Comment>
 <Values>
 <EnumValue
@@ -189,8 +185,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="61042f83-ef00-4d83-a1d7-6e7bd80bad74"
 >
-</ReqRef><Comment></Comment>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="String"
  Default="&apos;12345&apos;"
  Mode="Internal"
@@ -229,7 +224,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e4bf8e2b-051d-4e04-9852-f4590e9e140e"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="2bd0d6a5-d918-4308-994a-c1689c4a4e30"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -237,8 +231,12 @@
 >
 </ReqRef><Comment>Represents the ERTMS/ETCS level of the train.</Comment>
 <StructureElement
- TypeName="Default.Level"
- Default="Level.L0"
+ TypeName="Default.LevelDataStruct"
+ Default="Default.LevelDataStruct
+{
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L0
+}"
  Mode="Internal"
  Implemented="TRUE"
  Name="Value"
@@ -258,7 +256,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a3698f3e-66a5-400f-8bad-4714d62e16e2"
 >
-<Comment></Comment>
 </ReqRef><Comment>The data state of the current ERTMS/ETCS level.</Comment>
 </StructureElement></Structure><Structure
  Default=""
@@ -374,7 +371,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="OperatedSystemVersion"
+ Name="OperatedSystemVersionStruct"
  Guid="e4602fc9-bbc3-4fd4-920b-19c1f9c8e08c"
 >
 <ReqRef
@@ -419,8 +416,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="30ca3f74-cfc2-4e19-9e58-f3daaa115444"
 >
-</ReqRef><Comment></Comment>
-<StructureElement
+</ReqRef><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -463,7 +459,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="86a8a1ef-1413-4149-a201-8321cc79420a"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="19082c8b-d1cc-4d23-a9da-8581737a0760"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -488,8 +483,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2d4a2ec1-4f05-498c-b32f-0fdb39c34093"
 >
-</ReqRef><Comment></Comment>
-</Collection></Collections>
+</ReqRef></Collection></Collections>
 <StateMachines>
 <StateMachine
  Default="NoProcedure"
@@ -502,7 +496,6 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="HandleModeChangeSM"
  Guid="470b0371-f7ee-48fa-88a7-680ddaa71b72"
 >
-<Comment></Comment>
 <States>
 <State
  X="30"
@@ -590,7 +583,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="0e6c7970-716e-45ef-885d-d5d5bab3e44b"
 >Odometry.TrainSpeed() == 0.0</PreCondition><PreCondition
  Guid="843273e5-f17b-4806-a9fa-6d0c8af67f3a"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5843b3b7-c47f-4c07-ab25-96802f229d91"
@@ -602,6 +595,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Y="160"
  Width="310"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="StartOfMission"
  Guid="af302632-5386-4684-8466-b813545aa8b6"
@@ -623,6 +617,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Y="50"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A31"
  Guid="620b45cd-72b3-44f5-b69a-b50ed34a6c21"
@@ -672,6 +667,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Y="550"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A39"
  Guid="37900d79-8495-495c-9609-a61c4c6333af"
@@ -738,6 +734,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Y="150"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D31"
  Guid="1048a3f6-ea19-48fe-a257-f0049180a510"
@@ -808,6 +805,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Y="250"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D32"
  Guid="e35d4d07-e6cc-4dfb-9bc5-5598285cb2dd"
@@ -896,6 +894,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Y="50"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="S0"
  Guid="dc1f4881-7fe1-4ee3-a090-49233d4474ff"
@@ -938,24 +937,32 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Y="50"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="S1"
  Guid="d90f824e-90ea-4a50-ac92-243bf7bf4a27"
 >
+<ReqRef
+ Id="b6e9adeb-37b8-4110-a14b-ede647eeec14"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7864be44-e306-4339-ae11-156c4df4b802"
+>
+</ReqRef><Comment>State S1: the driver is asked to enter the driver id and possibly the train running number and the virtual balise cover information.</Comment>
 <StateMachine
- Default="AskDriverId"
+ Default="AskToEnterValues"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="144c98f8-60dd-4ab0-a08a-a47c041668da"
 >
 <States>
 <State
- X="190"
- Y="70"
+ X="400"
+ Y="60"
  Width="150"
  Height="50"
  Implemented="TRUE"
- Name="AskDriverId"
+ NeedsRequirement="FALSE"
+ Name="AskToEnterValues"
  Guid="cf4d1627-2daa-424a-b43b-8630b97cb748"
 >
 <ReqRef
@@ -968,7 +975,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="563e78bb-a5c6-4e49-97db-2905d5530019"
 >
-</ReqRef><StateMachine
+</ReqRef><ReqRef
+ Id="079c6696-ff46-4b49-b30c-23ad82da6fd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="11003385-4f2e-4b8f-b788-fbdec1b24999"
+>
+</ReqRef><Comment>Initial state: the on-board equipment allows driver to enter the following data:...</Comment>
+<StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="53320457-e102-4629-8970-6d0916838e90"
@@ -978,15 +991,16 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Ask Driver Id and possibly train running number"
+ Name="Ask Driver Id and possibly train running number and virtual balise cover"
  Guid="d6057c5b-02a1-4717-88fd-de715a34c1f3"
 >
+<Comment>The on-board equipment allows driver to enter the following data:...</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Ask Driver Id and possibly train running number"
+ Name="Ask Driver Id and possibly train running number and virtual balise cover"
  Guid="aae8cd65-9e16-4cfe-9778-ab2d62e24d75"
 >
 <PreConditions>
@@ -994,12 +1008,12 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Actions>
 <Action
  Guid="6bc7426d-b02b-434f-b579-9703a36b9897"
->THIS &lt;- HandleModeChange.StartOfMission.S1.DriverIdAsked</Action></Actions>
+>THIS &lt;- HandleModeChange.StartOfMission.S1.WaitForDriverSelection</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Invalid or Unknown train running number"
+ Name="Invalid or unknown train running number"
  Guid="c5c372ae-2ed7-44b5-931a-4f785faea67f"
 >
 <ReqRef
@@ -1007,12 +1021,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5e3227d2-b157-4b23-a9f8-ee0a63043bf5"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the train running number is unknown or invalid, the on-board equipment allows the driver to enter it.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Invalid or Unknown train running number"
+ Name="Invalid or unknown train running number"
  Guid="e06d50d4-b90b-44cb-a2e0-2ccc795c5a0d"
 >
 <PreConditions>
@@ -1020,42 +1035,138 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="7277f9d6-4a63-4780-98c9-f7c970c0d2f8"
 >Kernel.TrainRunningNumber.DataState in [DataState.Invalid, DataState.Unknown]</PreCondition></PreConditions>
 <Actions>
-</Actions>
-<SubRules>
-<Rule
+<Action
+ Guid="ec9eeb61-a698-48d9-aceb-4e524615bd9a"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Unknown train running number"
- Guid="896e6a4f-9a5b-4776-b467-3d49e1921af5"
+ Name="Invalid or unknown driver id"
+ Guid="7ceb0570-8756-4415-9364-fc87e930a941"
 >
+<ReqRef
+ Id="3dec40a2-4a61-4a9c-9c92-1d115e8e1756"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eefe1b71-ddaa-4b3d-83c1-65ecc38c078c"
+>
+</ReqRef><Comment>If the driver id is unknown or invalid, the on-board equipment asks the driver to enter it.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Unknown train running number"
- Guid="51b165ad-2672-480e-9b3f-149ce0a278df"
+ Name="Invalid or unknown driver id"
+ Guid="4768fc0c-b2c4-4285-8498-b8dae1ac5917"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
- Guid="80ee118d-5ba9-4d4d-9192-fc1272b787fa"
->Kernel.TrainRunningNumber.DataState == DataState.Unknown</PreCondition></PreConditions>
+ Guid="4c1bcc5b-91cb-42ce-b8a5-df6929aefa41"
+>Kernel.DriverId.DataState in [DataState.Invalid, DataState.Unknown]</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="9a44c4a6-0ae2-44c8-862e-44ed64c312ec"
->DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
-  Number =&gt; Kernel.TrainRunningNumber.Value, 
-  Enter =&gt; True, 
-  ReValidate =&gt; False
-)</Action></Actions>
+ Guid="486875f2-6e3d-4cbc-b4ee-21f50184093d"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Set/remove virtual balise cover"
+ Guid="b85dd727-24cc-4b21-835a-b3d2f1fa9126"
+>
+<ReqRef
+ Id="079c6696-ff46-4b49-b30c-23ad82da6fd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="22b7ad1b-0a7d-4b72-bebb-1dded2b021ac"
+>
+</ReqRef><Comment>The on-board equipment allows the driver to set or remove the virtual balise cover.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Set/remove virtual balise cover"
+ Guid="a87718ca-e86d-444b-9ee7-06b474e2db3c"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="902ff0c6-3fef-4526-86ad-2a619d2be853"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="400"
+ Y="230"
+ Width="150"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="WaitForDriverSelection"
+ Guid="353121e9-571d-4bb4-981b-566dd55dcaa7"
+>
+<ReqRef
+ Id="3dec40a2-4a61-4a9c-9c92-1d115e8e1756"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="52615ce4-04dd-4d09-a414-2507d884c078"
+>
+</ReqRef><ReqRef
+ Id="b5adeff5-835f-415a-a6c0-4bdaee8b3cb8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b25b5c6c-6013-4af1-a918-7bfc85c715fc"
+>
+</ReqRef><ReqRef
+ Id="079c6696-ff46-4b49-b30c-23ad82da6fd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c62b0662-f43b-4434-b204-45138e22f63a"
+>
+</ReqRef><Comment>The on-board equipments waits for the driver&apos;s selection.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="600ee073-5784-40c1-9323-eed23b1957c7"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Driver selected the train running number"
+ Guid="8b637282-3598-44ec-b153-a72b761c0b6a"
+>
+<ReqRef
+ Id="b5adeff5-835f-415a-a6c0-4bdaee8b3cb8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="387c504b-603f-43ed-98aa-c8dbca1b90db"
+>
+</ReqRef><Comment>If the driver selected to enter the train running number, the on-board equipment initiates the train running number entry.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Driver selected the train running number"
+ Guid="62368c6f-fd92-4305-b8cb-602a2cf0176d"
+>
+<PreConditions>
+<PreCondition
+ Guid="c828acc2-6bae-4ddc-87dd-c3002237d294"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="cde86b6e-b58b-448f-a34b-d9c11c00acc6"
+>THIS &lt;- HandleModeChange.StartOfMission.S1.WaitForTrainRunningNumber</Action><Action
+ Guid="3a94c57e-2492-4237-adad-51a74dc19139"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+ Guid="b385b77f-8f9f-4732-85b3-edf4c77497da"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+<SubRules>
+<Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Invalid train running number"
  Guid="905556d9-b460-46f3-a885-1f826d813c73"
 >
+<Comment>If the train running number is invalid, the on-board equipments allows to reenter it or to validate it.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1067,225 +1178,351 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition
  Guid="499e6f7b-740e-4c50-a2c0-019a1e76634e"
->Kernel.TrainRunningNumber.DataState == DataState.Invalid</PreCondition></PreConditions>
+>Kernel.TrainRunningNumber.DataState == Default.DataState.Invalid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="affe3d9b-7a1e-4f62-bd0a-f1ff3cb5effd"
-><Comment></Comment>
-DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
+>DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest
+(
   Number =&gt; Kernel.TrainRunningNumber.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; True
 )</Action></Actions>
 </RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Invalid or Unknown driver ID"
- Guid="7ceb0570-8756-4415-9364-fc87e930a941"
+ Name="Unknown train running number"
+ Guid="896e6a4f-9a5b-4776-b467-3d49e1921af5"
 >
-<ReqRef
- Id="3dec40a2-4a61-4a9c-9c92-1d115e8e1756"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="eefe1b71-ddaa-4b3d-83c1-65ecc38c078c"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Invalid or Unknown driver ID"
- Guid="4768fc0c-b2c4-4285-8498-b8dae1ac5917"
->
-<PreConditions>
-<PreCondition
- Guid="4c1bcc5b-91cb-42ce-b8a5-df6929aefa41"
->Kernel.DriverId.DataState in [DataState.Invalid, DataState.Unknown]</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Invalid driver ID"
- Guid="9d8ef1c6-15c2-4187-9212-faa7974d2e6c"
->
+<Comment>If the train running number is unknown, the on-board equipment allows to enter it.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Invalid driver ID"
- Guid="e7ac7312-d09a-48e1-be73-6c8f26db3161"
+ Name="Unknown train running number"
+ Guid="51b165ad-2672-480e-9b3f-149ce0a278df"
 >
 <PreConditions>
 <PreCondition
- Guid="777e8ebd-bb8e-4e5e-8b5e-5b28d51a9121"
->Kernel.DriverId.DataState == DataState.Invalid</PreCondition></PreConditions>
+ Guid="80ee118d-5ba9-4d4d-9192-fc1272b787fa"
+>Kernel.TrainRunningNumber.DataState == Default.DataState.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="0ff251f6-8beb-499b-9cdc-55577d26e81a"
->DMI.MasterDMI().In_DriverId.InitiateRequest(
-  Id =&gt; Kernel.DriverId.Value, 
-  Enter =&gt; True, 
-  ReValidate =&gt; True
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Unknown driver ID"
- Guid="a3486f3b-4205-47cd-84cc-d6d3de3e0cff"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Unknown driver ID"
- Guid="aa75fa2c-fb14-4b1b-bec4-099d87046c89"
->
-<PreConditions>
-<PreCondition
- Guid="144f89cc-2a42-4da4-a61c-9940b285fd3c"
->Kernel.DriverId.DataState == DataState.Unknown</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="b89bff0b-b2af-4d9c-96fc-22bbcf2647e0"
->DMI.MasterDMI().In_DriverId.InitiateRequest(
-  Id =&gt; Kernel.DriverId.Value, 
+ Guid="9a44c4a6-0ae2-44c8-862e-44ed64c312ec"
+>DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest
+(
+  Number =&gt; &apos;&apos;, 
   Enter =&gt; True, 
   ReValidate =&gt; False
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="190"
- Y="200"
- Width="150"
- Height="50"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DriverIdAsked"
- Guid="6d2edeb8-d496-4748-9faa-e1540e5125c5"
->
-<StateMachine
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="e3a86236-0a6e-41fc-8900-aad3074faeb8"
->
-<Rules>
-<Rule
+</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Receive Driver Id"
- Guid="dd073c4a-25ae-464b-a580-b3a161d8480f"
+ Name="Driver selected the virtual balise cover"
+ Guid="32450414-5819-404e-aa89-f91d3a727dad"
 >
 <ReqRef
- Id="fdd34be2-081f-4fd2-81c7-d31750a434b6"
+ Id="079c6696-ff46-4b49-b30c-23ad82da6fd7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9911bba5-ac85-408d-9af7-03f61a1b8a03"
+ Guid="814cfaac-655f-4782-b153-9c3d2166fa3a"
 >
-</ReqRef><ReqRef
- Id="4498594e-f543-4aac-a645-51b5961b91b3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3a469a0e-dd36-48e9-aa3a-8ed445591463"
->
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the driver selected to enter the virtual balise cover, the on-board equipment initiates the virtual balise cover entry.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Receive Driver Id"
- Guid="c52df98e-de3f-440a-9921-6f77e7fbc0b7"
+ Name="Driver selected the virtual balise cover"
+ Guid="1ee03609-22e3-466a-bb30-fd579e0b1cbf"
 >
 <PreConditions>
 <PreCondition
- Guid="ee754fd3-9c24-41eb-91e9-6421f702b3db"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+ Guid="351a2559-5427-4e20-9dfd-616111571419"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="4679d68d-3e7b-4be1-b781-808efe281d7e"
->DMI.MasterDMI().In_DriverId.AcceptDriverResponse()</Action></Actions>
+ Guid="37b80da0-25d5-44cb-97e7-427a7c7f3433"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+ Guid="2632f67b-bbce-4610-9a8e-03feac03ce3a"
+>THIS &lt;- HandleModeChange.StartOfMission.S1.WaitForVirtualBaliseCover</Action><Action
+ Guid="70ba3904-e666-4bc8-88e1-73690ec6bd79"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+ Guid="58ef1fcc-3144-4aec-9907-a366b5955762"
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Receive Train running number"
- Guid="1d7cb76d-be9e-496a-a503-cfdc94c3fe04"
+ Name="Driver selected the driver id"
+ Guid="e9b738ff-0e9f-4c0b-8c5d-9834acf2fbb8"
 >
 <ReqRef
- Id="ab1d5732-e882-44e5-82c4-b3366adc105e"
+ Id="3dec40a2-4a61-4a9c-9c92-1d115e8e1756"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="36f9982b-0207-4b24-bbd2-922c2cff1294"
+ Guid="8ef71ad8-8a1e-4b65-b9dd-ba8525de4459"
 >
-</ReqRef><ReqRef
- Id="b603ef8b-509e-4363-8527-cab39ee0f193"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ea7061a9-0c69-407c-85ee-5feec77c8a3d"
+</ReqRef><Comment>If the driver selected to enter the driver id, the on-board equipment initiates the driver id entry.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Driver selected the driver id"
+ Guid="767ca013-8881-4aa7-8685-ee5d2e16038d"
 >
-</ReqRef><SubRules></SubRules>
+<PreConditions>
+<PreCondition
+ Guid="1542078c-cb47-4d33-b3d0-7b7ed6c33968"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="19aab77b-193c-4cd2-84bb-84019a974e91"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+ Guid="5b5b6e13-9d2a-4ddb-9306-3f19db286cb0"
+>THIS &lt;- HandleModeChange.StartOfMission.S1.WaitForDriverId</Action><Action
+ Guid="20d6315b-90bc-49df-a944-f411be368116"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Invalid driver id"
+ Guid="9d8ef1c6-15c2-4187-9212-faa7974d2e6c"
+>
+<Comment>If the driver id is invalid, the on-board equipments allows to reenter or validate it.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Receive Train running number"
- Guid="f2f520a2-4bb5-4a33-b190-aca51023b0fd"
+ Name="Invalid driver id"
+ Guid="e7ac7312-d09a-48e1-be73-6c8f26db3161"
 >
 <PreConditions>
 <PreCondition
- Guid="0ad1faa5-a72a-4183-bc57-727093def714"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+ Guid="777e8ebd-bb8e-4e5e-8b5e-5b28d51a9121"
+>Kernel.DriverId.DataState == Default.DataState.Invalid</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="8b33d872-c0c8-4b0b-b8aa-ca338914cc37"
->DMI.MasterDMI().In_TrainRunningNumber.AcceptDriverResponse()</Action></Actions>
+ Guid="0ff251f6-8beb-499b-9cdc-55577d26e81a"
+>DMI.MasterDMI().In_DriverId.InitiateRequest
+(
+  Id =&gt; Kernel.DriverId.Value, 
+  Enter =&gt; True, 
+  ReValidate =&gt; True
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Unknown driver id"
+ Guid="a3486f3b-4205-47cd-84cc-d6d3de3e0cff"
+>
+<Comment>If the driver id is unknown, the on-board equipment allows to enter it.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Unknown driver id"
+ Guid="aa75fa2c-fb14-4b1b-bec4-099d87046c89"
+>
+<PreConditions>
+<PreCondition
+ Guid="144f89cc-2a42-4da4-a61c-9940b285fd3c"
+>Kernel.DriverId.DataState == Default.DataState.Unknown</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b89bff0b-b2af-4d9c-96fc-22bbcf2647e0"
+>DMI.MasterDMI().In_DriverId.InitiateRequest
+(
+  Id =&gt; &apos;&apos;, 
+  Enter =&gt; True, 
+  ReValidate =&gt; False
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</StateMachine></State></States>
+</StateMachine></State><State
+ X="770"
+ Y="230"
+ Width="150"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="WaitForTrainRunningNumber"
+ Guid="389ca563-b643-43bc-9bbf-43d13118c6f2"
+>
+<Comment>The driver asked to enter the train running number and the on-board equipments waits for the train running number data. Once it is entered, the procedure goes back to the initial state S1.AskToEnterValues.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="8321093b-a65f-4dde-96fe-3bbf82755d38"
+>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="E1 : Valid ID &amp; Train running number"
+ Name="Received a response"
+ Guid="9a523d7b-fc5a-4b37-86f5-5eff0946a0a7"
+>
+<ReqRef
+ Id="ab1d5732-e882-44e5-82c4-b3366adc105e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2b222a22-3194-49c0-9429-5eacef295c7a"
+>
+</ReqRef><ReqRef
+ Id="b603ef8b-509e-4363-8527-cab39ee0f193"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="72bf7616-3df5-46f8-8876-d2f02a40a2ad"
+>
+</ReqRef><ReqRef
+ Id="b5adeff5-835f-415a-a6c0-4bdaee8b3cb8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="db1ba0f8-21b8-4309-b9a2-b225bb916fca"
+>
+</ReqRef><Comment>When the driver enters the train running number information, it is stored on-board and the procedure goes back to S1.AskToEnterValues.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="The Train Running Number window was closed on the DMI"
+ Guid="a6032afa-5d9b-4f8c-85a3-61a55a84d570"
+>
+<PreConditions>
+<PreCondition
+ Guid="305e6fb3-3687-4004-8b83-33bdeb7665fd"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9ccf74a9-66b4-4c3e-9735-a12acd9f8d3e"
+>THIS &lt;- HandleModeChange.StartOfMission.S1.AskToEnterValues</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="410"
+ Y="370"
+ Width="150"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="WaitForDriverId"
+ Guid="25891b7a-ba18-46cf-8095-164e68def0dc"
+>
+<Comment>The driver asked to enter the driver id and the on-board equipments waits for the driver id data. Once it is entered, the driver id status becomes valid and the procedure goes to D2 (transition E1).</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="354d157c-7bec-454e-9c00-23df5dce375e"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Received a response"
  Guid="0893f37a-cce8-42d9-87cb-56f5f5a41f30"
 >
 <ReqRef
  Id="7ef55f6e-2855-44c2-9bf0-ba1f05c5574c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fd9908b7-00f0-4c14-9632-4ee0967b8930"
+ Guid="e26b707b-002e-4533-9c41-3edbfce56f11"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Once the driver id is validated, go to D2.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="E1 : Valid ID &amp; Train running number"
+ Name="E1 : Valid ID"
  Guid="4df6d5a8-0802-48f3-813b-1e10805fb099"
 >
+<Comment>Once the driver has provided a valid ID, the procedure may continue</Comment>
 <PreConditions>
 <PreCondition
  Guid="60f30bae-564a-4fdd-aafb-e3573d0cbdf8"
->Kernel.DriverId.DataState == DataState.Valid</PreCondition><PreCondition
- Guid="c3320bec-cf48-4405-8275-2d248a55b338"
->Kernel.TrainRunningNumber.DataState == DataState.Valid</PreCondition></PreConditions>
+>Kernel.DriverId.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5e31eb20-f81b-480a-b45d-8ffcdb87aa64"
->THIS &lt;- HandleModeChange.StartOfMission.D2</Action></Actions>
+>THIS &lt;- D2</Action><Action
+ Guid="a3bab10c-9ff5-4f28-b348-9e7157d0acae"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus&lt;- Default.Request.Disabled</Action><Action
+ Guid="6042798b-1723-45ee-b3c5-d3c31a38a1cf"
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver canceled input"
+ Guid="6e1ee4cb-c008-4535-bcb7-adc6036fab0f"
+>
+<Comment>If the driver closes the Driver ID entry window, return to the initial state</Comment>
+<PreConditions>
+<PreCondition
+ Guid="d120bb97-bab9-4490-82d7-ce6e602329b8"
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="27a87601-18ea-4fbb-9140-921d90d79429"
+>THIS &lt;- S1.AskToEnterValues</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</StateMachine></State><State
+ X="40"
+ Y="230"
+ Width="150"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="WaitForVirtualBaliseCover"
+ Guid="6161d0cc-5d00-44cd-b8f8-a2eacddd2adc"
+>
+<Comment>The driver asked to enter the virtual balise cover and the on-board equipments waits for the virtual balise cover data. Once it is entered, the procedure goes back to the initial state S1.AskToEnterValues.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="5e0c4851-cabe-4cae-a1a2-7d555f9529a5"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Driver entered the virtual balise cover"
+ Guid="ab836b3a-5e72-4356-8678-a2cb1c672d7b"
+>
+<ReqRef
+ Id="079c6696-ff46-4b49-b30c-23ad82da6fd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f3cf903a-3ff8-49f7-b974-38c8126a79e9"
+>
+</ReqRef><Comment>When the driver enters the virtual balise cover information, it is stored on-board and the procedure goes back to S1.AskToEnterValues.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver entered the virtual balise cover"
+ Guid="97f1b693-d191-4df1-9b2b-846c988160fb"
+>
+<PreConditions>
+<PreCondition
+ Guid="0ae3d39c-cb15-4370-b34a-a946e686feaa"
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f45b4dae-5da3-4a8b-b61a-48fd5fd98b9d"
+>THIS &lt;- HandleModeChange.StartOfMission.S1.AskToEnterValues</Action><Action
+ Guid="ac396897-a6cf-4c2e-8977-1a131cf77054"
+>DMI.MasterDMI().In_VirtualBaliseCover.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State></States>
 </StateMachine></State><State
  X="20"
  Y="140"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="S2"
  Guid="ab434a1b-69da-4856-9975-1f3248f699c6"
@@ -1295,7 +1532,8 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e0334c2e-1372-452d-9df0-162e035bd4d9"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>State S2: the driver is asked to enter/validate the level.</Comment>
+<StateMachine
  Default="OfferLevelSelection"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1303,11 +1541,12 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
 >
 <States>
 <State
- X="80"
- Y="310"
+ X="480"
+ Y="320"
  Width="140"
  Height="50"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="LevelSelectionOffered"
  Guid="e0a57b25-5fcf-4e07-b21c-6104193745b4"
 >
@@ -1321,7 +1560,8 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="eaef04bc-7feb-4bee-8d6e-fd4a2b38af86"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>When the driver asks to enter the level, the level entry screen is displayed.</Comment>
+<StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="32dd5a32-966a-4051-9e20-9d7566e1133e"
@@ -1363,7 +1603,8 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c0230ef7-b190-4f95-bb55-4ef5c0bc33a8"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>When the driver enters/revalidates the level, its value is stored.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1371,24 +1612,41 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
  Name="Driver has selected a level"
  Guid="13a3d3c0-989d-47f6-b88c-39f05b8a5c10"
 >
+<Comment>Once the driver has selected a level, the procedure will continue</Comment>
 <PreConditions>
 <PreCondition
  Guid="dcabb4e8-a0e4-463f-9a76-5052d6b10372"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Default.Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered</PreCondition><PreCondition
+ Guid="6c43bac6-cc00-4267-9209-fa6ce1306ef0"
+>Kernel.Level.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="599fb195-5633-44a5-8c59-8f7a5d7cc211"
->THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action><Action
- Guid="adf83d32-c975-419e-9883-ea64d4a80521"
->DMI.MasterDMI().In_ErtmsEtcsLevel.AcceptDriverResponse()</Action></Actions>
+>THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver returned to Main Window"
+ Guid="b3f83648-247a-4438-8a3c-421d6918db8f"
+>
+<Comment>If the driver closes the Level entry window without entering any data, return to the initial state</Comment>
+<PreConditions>
+<PreCondition
+ Guid="db4027ff-8ba1-45c3-a3c1-dc402c55366e"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f42dc015-2fa0-49f9-8a14-5ec22f23b8e3"
+>THIS &lt;- S2.OfferLevelSelection</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="370"
- Y="310"
+ X="90"
+ Y="320"
  Width="140"
  Height="50"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ExitState"
  Guid="e0e90648-167d-4e55-a0ab-446cd624334b"
 >
@@ -1402,7 +1660,8 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d27b2d5c-65a4-4c96-a374-c4c75201a8a9"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Once the driver has entered/validated the level, the process goes to the next state.</Comment>
+<StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="571b634b-6f42-40df-a232-90dc666082e8"
@@ -1415,6 +1674,7 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
  Name="Exit state"
  Guid="e010fe5d-0559-49b0-8799-0714a4dcb378"
 >
+<Comment>If new level value is 0, 1 or NTC, the procedure goes to the state 10. Otherwise it goes to the state S3.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1439,7 +1699,8 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="56a28257-0aa3-423f-ac92-cc6a15f93fbe"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the new level value is 2 or 3, the procedure goes to the state S3.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1450,7 +1711,7 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
 <PreConditions>
 <PreCondition
  Guid="0f957329-38e7-44b9-98b2-ca2eee1cafdd"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5a6f963a-16cd-4609-bed1-858ca9cfd148"
@@ -1467,7 +1728,8 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dd019a05-de34-4fbd-ab5e-99f3ac23189e"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If new level value is 0, 1 or NTC, the procedure goes to the state 10.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1478,7 +1740,7 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
 <PreConditions>
 <PreCondition
  Guid="977f4119-da69-4ac1-b7db-8f5760be498c"
->Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9918c991-5fc3-42c5-829a-128ec7aa4531"
@@ -1493,6 +1755,7 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
  Width="140"
  Height="50"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="OfferLevelSelection"
  Guid="3f3b2e02-66c1-4072-a86e-254a8ce8dad6"
 >
@@ -1506,7 +1769,9 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="cea57749-93e5-4c04-928a-5b93288cf59b"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Initial state: the on-board equipment proposes to the driver to enter/revalidate the level.</Comment>
+<StateMachine
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="62fac64e-8bec-44c9-99bb-1130aa988d11"
 >
@@ -1518,54 +1783,102 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
  Name="Select level"
  Guid="036667bb-40cc-4017-a38f-1528d58a0bb3"
 >
+<Comment>If the level is unknown or invali, the driver is asked to enter/revalidate it. Otherwise, the procedure goes further.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="SelectLevel"
+ Name="Unknown or invalid level"
  Guid="bc8ad033-d4bd-471c-bcb5-239576468166"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Unknown level"
- Guid="5d66a02b-c359-4ca0-bb43-a38dc7a05ad8"
 >
 <ReqRef
  Id="44711e45-24b9-4434-8eef-30cd89f623a4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6584845c-dee6-4466-b45b-1c0cdd3b3257"
+ Guid="c718f4ab-9f67-4f45-94ef-58dcdd55ba86"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><ReqRef
+ Id="7c664288-2b36-410e-9dce-05703e002b8e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8e5aacbf-b209-4ce9-8a60-eca1788eeb5a"
+>
+</ReqRef><Comment>If the level is unknown or invalid, the driver is asked to enter/revalidate it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="8f083773-5b95-4f4c-9ae7-4b797ae0481c"
+>Kernel.Level.DataState in [Default.DataState.Invalid, Default.DataState.Unknown]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2d42d2f5-4319-4560-8681-755772d37629"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InitiateRequest()</Action><Action
+ Guid="9030cc13-551e-4fc6-b9f6-61ebe760b06a"
+>THIS &lt;- WaitForDriverRequest</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Valid level"
+ Guid="10069c33-4a62-4354-8a13-f2d7ae1e306d"
+>
+<ReqRef
+ Id="1cc13002-553c-49af-a2a8-f528a7778ad8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="caf0c06d-cdd7-421e-858a-cc072a026e18"
+>
+</ReqRef><ReqRef
+ Id="a4dec848-a075-4e4a-bd28-b22b5228bb83"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2d77fa4e-212f-4bb9-af16-4cb86a7aa6ff"
+>
+</ReqRef><Comment>If the level is valid, the procedure goes further.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="9a6416c5-bf25-499e-820e-ec747eebc0e6"
+>THIS &lt;- ExitState</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="470"
+ Y="60"
+ Width="140"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="WaitForDriverRequest"
+ Guid="397db79c-ac99-4a86-89f9-17482fb7e2e8"
+>
+<Comment>The on-board equipment waits until the driver asks to enter/revalidate the level.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ Guid="56fd41bb-5456-4a7f-9bf0-2a4636fc0783"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Wait until the driver asks to enter/validate the level"
+ Guid="200031a5-640e-45c5-8b81-11465eed2cbc"
+>
+<Comment>The on-board equipment waits until the driver asks to enter/revalidate the level.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Unknown level"
- Guid="71b9b496-2692-41e6-868d-bc83370bf72d"
+ Name="Wait until the driver asks to enter/validate the level"
+ Guid="e08c4c45-476d-4ff1-9955-01dd2503344f"
 >
 <PreConditions>
 <PreCondition
- Guid="ca461923-7027-48ea-a301-66f336d29791"
->Kernel.Level.DataState == DataState.Unknown</PreCondition></PreConditions>
+ Guid="36792e40-27c4-47f9-9629-1ed2140dd176"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="c97b8401-32c1-4239-bb8d-54f862ebb584"
->THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action
- Guid="e3a60529-bb36-4ba8-9e25-407becd12d5c"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest(
-  Level =&gt; Level.Unknown, 
-  Enter =&gt; True, 
-  ReValidate =&gt; False
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
+ Guid="957c7945-9062-4681-95bd-c5d6c52967a7"
+>THIS &lt;- LevelSelectionOffered</Action></Actions>
+<SubRules>
+<Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Invalid level"
@@ -1576,7 +1889,8 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a04875b2-420b-4609-9c9d-344706167e5d"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the level is invalid, the driver is asked to revalidate it.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1587,51 +1901,56 @@ DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
 <PreConditions>
 <PreCondition
  Guid="cf8193d4-30b6-4bc3-bbd4-45a591192f5f"
->Kernel.Level.DataState == DataState.Invalid</PreCondition></PreConditions>
+>Kernel.Level.DataState == Default.DataState.Invalid</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="957c7945-9062-4681-95bd-c5d6c52967a7"
-><Comment></Comment>
-THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Action
  Guid="24019dfa-3cfc-4da4-a643-b1fc2e787e44"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest(
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
   Level =&gt; Kernel.Level.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; True
+  NTCLevels =&gt; Kernel.TrainData.TrainData.Value.LevelsSupportedOnBoard
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Valid level"
- Guid="41f5f9d1-3e22-4a42-9171-a8f56b58782e"
+ Name="Unknown level"
+ Guid="5d66a02b-c359-4ca0-bb43-a38dc7a05ad8"
 >
 <ReqRef
- Id="1cc13002-553c-49af-a2a8-f528a7778ad8"
+ Id="44711e45-24b9-4434-8eef-30cd89f623a4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d8196737-1fdb-46a4-bfb7-e6cc5ca4b5e8"
+ Guid="6584845c-dee6-4466-b45b-1c0cdd3b3257"
 >
-</ReqRef><ReqRef
- Id="a4dec848-a075-4e4a-bd28-b22b5228bb83"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="856df792-aee8-43f8-a397-42978174325c"
->
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the level is unknown, the driver is asked to enter it.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Valid level"
- Guid="fd487a85-9b71-4ebc-8388-f30b1defe9c3"
+ Name="Unknown level"
+ Guid="71b9b496-2692-41e6-868d-bc83370bf72d"
 >
 <PreConditions>
 <PreCondition
- Guid="329182f9-e5d0-41d5-8949-b86b38d7f1a4"
->Kernel.Level.DataState == DataState.Valid</PreCondition></PreConditions>
+ Guid="ca461923-7027-48ea-a301-66f336d29791"
+>Kernel.Level.DataState == Default.DataState.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="9a6416c5-bf25-499e-820e-ec747eebc0e6"
->THIS &lt;- HandleModeChange.StartOfMission.S2.ExitState</Action></Actions>
+ Guid="e3a60529-bb36-4ba8-9e25-407becd12d5c"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+  Level =&gt; Default.LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Default.Level.Unknown
+  },
+  Enter =&gt; True, 
+  ReValidate =&gt; False,
+  NTCLevels =&gt; Kernel.TrainData.TrainData.Value.LevelsSupportedOnBoard
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1642,12 +1961,17 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
  Y="340"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="S3"
  Guid="3f40363c-4a45-43a7-b6a8-3e02c3b1d6b8"
 >
-<Comment></Comment>
-<StateMachine
+<ReqRef
+ Id="4368a447-3e61-4232-9663-7c24cb36d68c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0be3770f-e94d-4a8e-95e3-00ccc67e368f"
+>
+</ReqRef><StateMachine
  Default="InitialState"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1695,7 +2019,6 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
  Name="Offer change the Radio Network Id"
  Guid="9425b5e5-c591-48ce-a65b-95ab80b83b02"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="bdfd2aaf-0240-446d-9eee-f9de37124239"
@@ -1750,11 +2073,9 @@ THIS &lt;- HandleModeChange.StartOfMission.S2.LevelSelectionOffered</Action><Act
 <Actions>
 <Action
  Guid="0d13890a-fdb8-4bb2-a3c5-978e1acfb39f"
-><Comment></Comment>
-THIS &lt;- HandleModeChange.StartOfMission.S3.RadioNetworkIdChangeOffered</Action><Action
+>THIS &lt;- HandleModeChange.StartOfMission.S3.RadioNetworkIdChangeOffered</Action><Action
  Guid="4b5b8b50-d10d-4d84-a0e9-46e32601d7c0"
-><Comment></Comment>
-DMI.MasterDMI().In_RBCContactInformation.SelectNetworkId(EURORADIO.AvailableNetworks.Networks)</Action></Actions>
+>DMI.MasterDMI().In_RBCContactInformation.SelectNetworkId(EURORADIO.AvailableNetworks.Networks)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1803,7 +2124,7 @@ DMI.MasterDMI().In_RBCContactInformation.SelectNetworkId(EURORADIO.AvailableNetw
 <PreConditions>
 <PreCondition
  Guid="50d00a66-d9da-4f8c-b95e-4a01904298d8"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="cb962547-e788-46e1-b257-5e6b0bf8e644"
@@ -1966,8 +2287,7 @@ DMI.MasterDMI().In_RBCContactInformation.SelectNetworkId(EURORADIO.AvailableNetw
 <Actions>
 <Action
  Guid="bc9da2bf-28aa-4806-88db-3719ca725f9a"
-><Comment></Comment>
-DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 (
     Actions =&gt; [ DMI.RBCContactActionEnum.EnterContactInfo, DMI.RBCContactActionEnum.UseEireneShortNumber ],
     anRBCContactInformation =&gt; EMPTY
@@ -2043,7 +2363,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="fe36d360-ebcd-4886-b1bc-8c2ad944b613"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2be288e7-3344-49f9-b8cc-bc0358e5d574"
@@ -2076,9 +2396,11 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <Actions>
 <Action
  Guid="3b851bc8-f02a-48ec-a13a-15b99c736f16"
->EURORADIO.CurrentRBCConnection().ContactData &lt;- DMI.MasterDMI().In_RBCContactInformation.SelectedRBCContactInformation</Action><Action
- Guid="a45b4d49-8fda-4862-b9d2-5cfd2d0bdd2f"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ContactData &lt;- EURORADIO.RBCContactStruct {
+    Id =&gt; DMI.MasterDMI().In_RBCContactInformation.SelectedRBCContactInformation.Id,
+    PhoneNumber =&gt; DMI.MasterDMI().In_RBCContactInformation.SelectedRBCContactInformation.PhoneNumber,
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2222,11 +2544,9 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="978fcd38-2d1b-41c9-b067-c2a86949f9ce"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Default.Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
-<Action
- Guid="cb908036-5e2d-4e2c-8653-de885b3210a0"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.Disable()</Action></Actions>
+</Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2332,11 +2652,17 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  Y="680"
  Width="600"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="S10"
  Guid="aeee15e7-5c4d-483f-803d-01697bae5812"
 >
-<StateMachine
+<ReqRef
+ Id="50de839c-3618-4979-b91c-f620d58a32ad"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d24b991c-443c-40c6-8ad6-80dd8c22b059"
+>
+</ReqRef><StateMachine
  Default="RequestDriverSelection"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2435,13 +2761,11 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="b1d83e04-3d7f-4cbe-898a-48ad9246b13e"
->DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Default.Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="95ad63ec-6c25-4487-9483-5761e7f0231f"
->THIS &lt;- S12</Action><Action
- Guid="b09e766e-1670-49d6-8d52-64c5a287a287"
->DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.Disable()</Action></Actions>
+>THIS &lt;- S12</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2480,13 +2804,11 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="c927b463-cdd6-4bad-9979-0253bd8fac52"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="787e9a72-addd-4f4c-83f6-45bc400408a6"
 >HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action><Action
- Guid="38d2526d-d9bb-46c0-9a33-4fd93a5f5b7a"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action><Action
  Guid="4f8db88e-3165-4661-bdc5-92c554074578"
 >DMI.MasterDMI().In_NonLeadingRequest.InputInformation.Disable()</Action><Action
  Guid="85d5c94d-3176-4321-980a-89906a0a0b71"
@@ -2581,7 +2903,9 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="87f7a9ed-ebd1-4cd5-a6ce-ce894391339c"
->DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Default.Request.Disabled</PreCondition><PreCondition
+ Guid="3959ee3f-73e9-4dbe-b9a8-638b8e1f497f"
+>NOT DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a0088699-6873-421d-b5f3-ebd7f80418a5"
@@ -2595,11 +2919,11 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="e266fc27-fc1a-4f39-80f2-5121e320f6eb"
->DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b95bdeb8-4524-4f82-b3a4-c151eefa7456"
->DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2619,7 +2943,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="c4df8dcf-f178-42b9-9807-fb70c26e333d"
->Level.Value == Level.L0</PreCondition></PreConditions>
+>Level.Value.Value == Default.Level.L0</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f0015543-7d59-4953-84d7-173971398225"
@@ -2633,7 +2957,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="39318056-06b5-454e-84e2-951f64c30df1"
->Level.Value == Level.LNTC</PreCondition></PreConditions>
+>Level.Value.Value == Default.Level.LNTC</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ae24502b-c0ff-497a-89bd-769ee164563d"
@@ -2647,7 +2971,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="7cdd4b04-cfc8-4daa-9ec8-4b5561935578"
->Level.Value in [ Level.L1, Level.L2, Level.L3 ]</PreCondition></PreConditions>
+>Level.Value.Value in [ Default.Level.L1, Default.Level.L2, Default.Level.L3 ]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f119d8e6-ecd4-47a5-8eba-966ecc41f707"
@@ -2658,16 +2982,94 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</StateMachine></State><State
+</StateMachine><LeaveAction>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Leave action"
+ Guid="feb61fde-0cda-4c1d-8da7-064275b10a7f"
+>
+<ReqRef
+ Id="c01d4cc9-6034-43bf-ba70-4d4fe10dffd9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="301f0be2-55bb-4943-ad61-22ddd9084dbe"
+>
+</ReqRef><ReqRef
+ Id="b9721346-42ac-4a79-8f62-10d5ff6a5abb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2d7ddca6-5e75-4caf-a9cd-3586b20e5b6a"
+>
+</ReqRef><ReqRef
+ Id="1e7f3c89-d89b-4d31-b758-514c92ae3bf1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47a6ecc9-9e7e-403c-80ee-4a8dde58949a"
+>
+</ReqRef><ReqRef
+ Id="aba0e684-4967-4fc6-850e-d080a2909bc5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6235a17c-27bc-4bfa-ac67-dde5ba1ae340"
+>
+</ReqRef><ReqRef
+ Id="28015708-3b6f-4bfb-87a2-4901cf481c50"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d6af73d-7732-40f6-a19e-0fb8843d1766"
+>
+</ReqRef><ReqRef
+ Id="414a7ad9-32f1-4118-b34f-18656d60445f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="014f5ea7-4a22-41b9-978b-e558ac8c98a5"
+>
+</ReqRef><ReqRef
+ Id="2812be46-6d39-4894-be55-c728964a7c49"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d0870146-e7b9-4677-9254-54c747cadca6"
+>
+</ReqRef><Comment>Actions to reset the data entry options upon leaving state S10</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Cancel DMI input requests"
+ Guid="7227be0b-4eb7-48cc-957e-0fb861292fab"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="44d5b949-e56c-4db5-888d-5bf8d1757150"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.Disable()</Action><Action
+ Guid="c3eb797f-cdda-4842-97dd-ba697f8dd605"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.Disable()</Action><Action
+ Guid="c487150b-f3a6-4ae1-9293-049b58b096f9"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.Disable()</Action><Action
+ Guid="2538a003-68f5-48d1-927d-d5d3aa7b5d26"
+>DMI.MasterDMI().In_Start.InputInformation.Disable()</Action><Action
+ Guid="f9d715f4-3bc8-4161-9869-b5c42e708111"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.Disable()</Action><Action
+ Guid="3faf2dd7-45fa-40b8-966f-f206552cb0f9"
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.Disable()</Action><Action
+ Guid="28a3453f-a59a-46eb-a76f-b672c9f3c4b2"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action><Action
+ Guid="ee563fbd-36f5-4979-8fe7-260fd7fa2414"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></LeaveAction>
+</State><State
  X="910"
  Y="360"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="S11"
  Guid="ef58548b-dfa1-48be-a2b7-58485982aabc"
 >
-<StateMachine
+<ReqRef
+ Id="8b735562-2ede-429c-940c-7f53b0f6f675"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2d407d46-bb27-4db3-9cc6-31a4ab975b7e"
+>
+</ReqRef><StateMachine
  Default="SendTrainData"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2778,12 +3180,19 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  Y="200"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="S13"
  Guid="074cbb2d-3d1f-4b7a-af9d-5ed444738989"
 >
+<ReqRef
+ Id="4549d882-b756-48ca-9591-ed094820a8d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1dd1f9bb-0aba-40e9-ad88-26a5240e1a7b"
+>
+</ReqRef><Comment>State S13: The on-board equipments proposes to the driver to reenter or validate the train running number.</Comment>
 <StateMachine
- Default="AskTrainRunningNumber"
+ Default="ProposeTrainRunningNumberEntry"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="8cc41f15-ec07-48f2-a770-e3f31cc1011d"
@@ -2795,7 +3204,8 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  Width="250"
  Height="50"
  Implemented="TRUE"
- Name="AskTrainRunningNumber"
+ NeedsRequirement="FALSE"
+ Name="ProposeTrainRunningNumberEntry"
  Guid="67746203-79a7-4442-a25d-a3ac52989d59"
 >
 <ReqRef
@@ -2803,7 +3213,8 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e140997e-9645-49f5-82b9-052a5c855268"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>The on-board equipment proposes to enter the train running number.</Comment>
+<StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="e9b2610a-3e37-42be-9866-39395468612a"
@@ -2816,6 +3227,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  Name="Request train running number"
  Guid="0be64240-8b8b-4de7-a9b0-f2554315a0f7"
 >
+<Comment>The on-board equipment proposes to enter the train running number.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2831,7 +3243,53 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <Actions>
 <Action
  Guid="d893db47-bd02-44d1-8892-0223a092758d"
->THIS &lt;- HandleModeChange.StartOfMission.S13.TrainRunningNumberAsked</Action></Actions>
+>THIS &lt;- HandleModeChange.StartOfMission.S13.TrainRunningNumberEntryProposed</Action><Action
+ Guid="1f7439c5-76bb-4203-8e33-f0a404163b26"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine></State><State
+ X="110"
+ Y="210"
+ Width="250"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TrainRunningNumberEntryProposed"
+ Guid="3cb0a181-a0b4-4211-b9c5-f0e7ed9bd867"
+>
+<Comment>The driver selected to enter the train running number. Once the data is entered and validated, the process goes to D10.</Comment>
+<StateMachine
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Guid="666b37b1-112b-4834-97d3-77bd1dd1b4d2"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Driver responded"
+ Guid="0fc55ec3-0ee1-403c-8454-76d82640a6d3"
+>
+<ReqRef
+ Id="4549d882-b756-48ca-9591-ed094820a8d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9af79982-584f-41ee-9538-4687e22b8183"
+>
+</ReqRef><Comment>The driver selected to enter the train running number =&gt; the train running number entry is displayed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Driver selected to enter train running number"
+ Guid="51e7a3c8-09c3-4dfc-a732-5bf5837cfbbe"
+>
+<PreConditions>
+<PreCondition
+ Guid="10ca63be-c728-4f77-ae2f-a7b29f9d316f"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+</Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2840,6 +3298,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  Name="Invalid train running number"
  Guid="1c912556-cc36-438e-b863-3aebb0b7dfc6"
 >
+<Comment>If the train running number is invalid, the on-board equipments asks the driver to reenter or revalidate it.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2855,7 +3314,8 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <Actions>
 <Action
  Guid="0ac8622f-25d6-4e3a-acd0-dc80b595016a"
->DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
+>DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest
+(
   Number =&gt; Kernel.TrainRunningNumber.Value, 
   Enter =&gt; True, 
   ReValidate =&gt; True
@@ -2868,6 +3328,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  Name="Unknown train running number"
  Guid="45486070-7d31-48e8-8059-c9071d873654"
 >
+<Comment>If the train running number is unknown, the on-board equipments asks the driver to enter it.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2883,71 +3344,37 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <Actions>
 <Action
  Guid="27775e3f-6a9f-41e7-bba5-77290d1190ec"
->DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
-  Number =&gt; Kernel.TrainRunningNumber.Value, 
+>DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest
+(
+  Number =&gt; &apos;&apos;, 
   Enter =&gt; True, 
   ReValidate =&gt; False
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
- X="110"
- Y="210"
- Width="250"
- Height="50"
- NeedsRequirement="FALSE"
- Name="TrainRunningNumberAsked"
- Guid="3cb0a181-a0b4-4211-b9c5-f0e7ed9bd867"
->
-<StateMachine
+</RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Guid="666b37b1-112b-4834-97d3-77bd1dd1b4d2"
->
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Receive driver response"
- Guid="a36f1137-f7be-48fa-aee7-c2f2bde3b31e"
->
-<ReqRef
- Id="b73d7793-cf2f-4c3f-92ea-d8c2b081c744"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6d5b82a9-b92b-49cd-866c-a229a96aec96"
->
-</ReqRef><ReqRef
- Id="bb40e241-378f-4872-9823-6f03bbc2d2e2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1bd92e62-8b96-4191-89fe-c032d30ecf23"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Receive driver response"
- Guid="b0a0e1ad-5a84-4dd0-9f6f-b581edd3d3e0"
+ Name="Driver closed the window"
+ Guid="176386ad-94e3-4681-b27f-87bf09f7997e"
 >
 <PreConditions>
 <PreCondition
- Guid="f230c550-3d26-43f2-ada0-aeeabf01879d"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+ Guid="c8bdc772-3686-480b-8186-02a614b4aa15"
+>Kernel.TrainRunningNumber.DataState != Default.DataState.Valid</PreCondition><PreCondition
+ Guid="5cca0c9d-d3cb-4563-88da-4902c33524e8"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Default.Request.Disabled</PreCondition><PreCondition
+ Guid="e87adf10-ace6-4b7c-ae31-27bff02ec62c"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus == Default.Request.Disabled</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="72254dd4-eeef-4c2f-98f6-897b4aa95a53"
->DMI.MasterDMI().In_TrainRunningNumber.AcceptDriverResponse()</Action></Actions>
+ Guid="ab922002-922f-478a-b549-891214039c25"
+>THIS &lt;- ProposeTrainRunningNumberEntry</Action></Actions>
 </RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State></States>
-<Rules>
-<Rule
+</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="E18"
+ Name="E18: train running number is valid"
  Guid="1bb65cd2-5e95-4563-a2f6-da183dd9b410"
 >
 <ReqRef
@@ -2955,7 +3382,8 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c49fff60-18c0-40ab-8a0f-517dff3eec9e"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>When the train running number status becomes valid, the procedure goes to D10.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -2970,19 +3398,26 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <Actions>
 <Action
  Guid="445c53d3-c0ee-4c2d-b180-eae97d2f0316"
->THIS &lt;- HandleModeChange.StartOfMission.D10</Action></Actions>
+>THIS &lt;- D10</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</StateMachine></State></States>
 </StateMachine></State><State
  X="860"
  Y="680"
  Width="600"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="S20"
  Guid="32a9ff38-ef60-4081-9725-f4c49c6042ba"
 >
-<StateMachine
+<ReqRef
+ Id="c70a632c-3b48-4d02-90f3-3e843c5c1ea1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="49c4165d-c813-4843-aa0b-78bebdfef8a0"
+>
+</ReqRef><StateMachine
  Default="ProposeStart"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3095,9 +3530,9 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="0f38f13d-2c67-44af-8eb6-f2324414f31b"
->Kernel.Level.Value == Level.LNTC</PreCondition><PreCondition
+>Level.Value.Value == Level.LNTC</PreCondition><PreCondition
  Guid="cfb38227-d19a-4b36-ae2a-324e7cf659f2"
->DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1672933f-5a0a-4e83-ad0b-e0322a0adfbd"
@@ -3127,9 +3562,9 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="6394cd31-5792-4a11-8901-bc6470b22cc0"
->Kernel.Level.Value == Level.L0</PreCondition><PreCondition
+>Level.Value.Value == Level.L0</PreCondition><PreCondition
  Guid="c26c8e48-5aa0-4674-a52b-a1b1609aa2c3"
->DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7319bcc7-95e5-4aea-9c68-0c22e7de70d2"
@@ -3159,9 +3594,9 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="56862dda-61a7-4c31-a336-34047a5b7f23"
->Kernel.Level.Value == Level.L1</PreCondition><PreCondition
+>Level.Value.Value == Level.L1</PreCondition><PreCondition
  Guid="48f3282c-3599-46fe-884c-848cb1162acd"
->DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c1eca809-9715-43ef-bb03-9d2abb642e82"
@@ -3191,9 +3626,9 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="706c846d-4108-450f-bad8-e0279061baf0"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
  Guid="9a3b9345-3449-4f77-ab60-d7dba536fd75"
->DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="535cf889-b49c-4fe5-936f-8207a42556b0"
@@ -3246,7 +3681,9 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="38f3b44b-5a89-41ee-b95f-25ad79bd1cbd"
->DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
+ Guid="ddbcc9d5-bbaa-4c8f-bbf1-36f2aca703a9"
+>NOT DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="923ea094-6be5-481e-94d1-8cdc8568db9d"
@@ -3260,7 +3697,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="f261ffb0-3546-4eb3-b92e-2e561dd1e3e6"
->DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a59bd1e1-eb5a-476d-9a84-03cc15848aba"
@@ -3372,7 +3809,9 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="27a382ca-0787-4ca5-86b0-b911ad8c8c23"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
+ Guid="87b43ff5-5833-4940-9556-50a2e7781480"
+>NOT DMI.MasterDMI().In_ShuntingRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="47ea6985-2b83-4d62-8bdb-f5b4faa5fd71"
@@ -3386,11 +3825,9 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <PreConditions>
 <PreCondition
  Guid="16255eeb-178a-4a42-b934-0186c3c46791"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="af060c8f-33de-49e1-ab6b-daee80936480"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action><Action
  Guid="fcbf15da-671f-480a-b77c-ed25a0c97f53"
 >THIS &lt;- ShuntingInitiatedByDriver</Action></Actions>
 <SubRules>
@@ -3428,7 +3865,84 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</StateMachine></State><State
+</StateMachine><LeaveAction>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Leave action"
+ Guid="e070b6e3-269c-4c46-b526-78c9e3e98c6e"
+>
+<ReqRef
+ Id="2812be46-6d39-4894-be55-c728964a7c49"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6b8203c9-1be6-4296-add6-5daac242b656"
+>
+</ReqRef><ReqRef
+ Id="c01d4cc9-6034-43bf-ba70-4d4fe10dffd9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="829495d0-8955-41ae-8386-b321b61b4e2c"
+>
+</ReqRef><ReqRef
+ Id="b9721346-42ac-4a79-8f62-10d5ff6a5abb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f6ac66e3-4ef8-45ce-91bd-d3555d8c2224"
+>
+</ReqRef><ReqRef
+ Id="5aca3d45-a3d1-4286-a5a4-f451779e43d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cc3dc298-8823-4fe3-9864-908bb61d386e"
+>
+</ReqRef><ReqRef
+ Id="1e7f3c89-d89b-4d31-b758-514c92ae3bf1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="87da6fae-ba78-4a40-a310-ec70b638c4bc"
+>
+</ReqRef><ReqRef
+ Id="aba0e684-4967-4fc6-850e-d080a2909bc5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5a15b33e-a467-4304-89af-85ff8061246e"
+>
+</ReqRef><ReqRef
+ Id="60a884ee-664d-4031-988d-f9da13132152"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5b33304b-0c76-4787-9088-d682f5ea5c3a"
+>
+</ReqRef><ReqRef
+ Id="414a7ad9-32f1-4118-b34f-18656d60445f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d98b98bf-2a4b-480c-b5fd-ce1f23907001"
+>
+</ReqRef><Comment>Actions to reset the data entry options upon leaving state S20</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Leave action"
+ Guid="fae572dc-9d41-43a6-b7dc-44514bc9c15f"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3d8e65d5-bccf-458d-a86c-4605e9085cf9"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action><Action
+ Guid="950de50f-a730-4f40-bd1c-34639abee1aa"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.Disable()</Action><Action
+ Guid="ef24a316-cfce-4797-891b-c2b06b2f73b6"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.Disable()</Action><Action
+ Guid="e5c29bfe-3fb6-4fbd-b3a2-79267ae2e132"
+>DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.Disable()</Action><Action
+ Guid="1727bba5-110f-4204-b1f2-70bbf289650f"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.Disable()</Action><Action
+ Guid="edac98b4-65ce-4af3-bdbf-722b384b1410"
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.Disable()</Action><Action
+ Guid="ab1200c6-542a-4aa7-b56a-8c4b36759f42"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action><Action
+ Guid="f9e8b85d-95f2-40bc-aca4-0dcc38eb2432"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></LeaveAction>
+</State><State
  X="550"
  Y="880"
  Width="100"
@@ -3438,7 +3952,12 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  Name="S24"
  Guid="15a7f2db-53a6-4e6c-813b-033d62d4ba86"
 >
-<StateMachine
+<ReqRef
+ Id="b993b468-098e-45b6-9120-8f3a2608780a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5b15b646-fa46-4e62-9f1d-4f585b9ea2fb"
+>
+</ReqRef><StateMachine
  Default="RequestDriverAck"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3455,6 +3974,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  Guid="f11ea33e-8286-45ae-802d-c8714b7c9349"
 >
 <StateMachine
+ Implemented="TRUE"
  Guid="26c58b42-a54c-4d39-92b0-2d2e6742ee86"
 >
 <Rules>
@@ -3499,6 +4019,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  Guid="4b76bcf7-89cd-48b9-b9e9-a1561d1dce94"
 >
 <StateMachine
+ Implemented="TRUE"
  Guid="008b8155-25d4-43be-9e66-bbe94e75976f"
 >
 </StateMachine></State></States>
@@ -3507,11 +4028,17 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  Y="880"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="S25"
  Guid="4a8e71b3-e752-43a3-9258-9ea48db72854"
 >
-<StateMachine
+<ReqRef
+ Id="9987667c-60f8-4136-98e0-3bb720a91f76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a8f79f89-f8c9-4db1-9567-6c48d1ab672a"
+>
+</ReqRef><StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="ecc0ca72-8751-4044-834c-bd1c4e3c804c"
@@ -3640,6 +4167,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
  Y="50"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D2"
  Guid="b7f45c15-92a0-4ebd-8b8f-d50275cb30fa"
@@ -3745,8 +4273,7 @@ DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 <Actions>
 <Action
  Guid="8b62f242-f507-45b5-ab5c-40ce6d2a09a7"
-><Comment></Comment>
-Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
+>Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3785,11 +4312,17 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Y="50"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D3"
  Guid="bf1df802-72dc-434b-9422-70c776edaf52"
 >
-<StateMachine
+<ReqRef
+ Id="6508f335-762b-42d8-b510-de84124ae5ca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0dcfacfa-6f4a-49cf-9224-484357d47f44"
+>
+</ReqRef><StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="4f296b04-67ad-4605-ad47-2d7105d43e52"
@@ -3828,7 +4361,7 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 </ReqRef><PreConditions>
 <PreCondition
  Guid="e1776ee6-dd5a-4584-b343-30546176c388"
->Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1efe5702-7f1f-4e39-a22e-9531d71a4a47"
@@ -3847,7 +4380,7 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 </ReqRef><PreConditions>
 <PreCondition
  Guid="a7dc56b4-90af-4847-945c-0b57cb9f870b"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5bd67b8a-f71d-4afb-90a9-cd1740b1f74f"
@@ -3859,11 +4392,17 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Y="160"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A32"
  Guid="80510d79-8e7b-4685-b966-91aac83edcd9"
 >
-<StateMachine
+<ReqRef
+ Id="61c92874-8d88-4a7a-83b7-5b7266ebfea5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="151165af-7780-480c-9da9-ae2251e86903"
+>
+</ReqRef><StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="ffbcce36-c1fe-452f-9b42-079272bc27e4"
@@ -3876,11 +4415,6 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Guid="55e6b369-ff69-4b2d-88d8-32d80220692f"
 >
 <ReqRef
- Id="56576e5f-6491-43ac-bb6d-439d660b8baf"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a57b59ea-f6cb-494e-936d-0ccf5fad4cba"
->
-</ReqRef><ReqRef
  Id="97f97df2-7ec4-48d8-a999-6068f0d43b01"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a6bd984b-a2a0-456c-96f7-e4f3d75d919e"
@@ -3912,8 +4446,6 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 </PreConditions>
 <Actions>
 <Action
- Guid="dbfb1ceb-17f2-417f-a80c-6e1d98ff2c85"
->DMI.MasterDMI().Out_SafeRadioConnectionIndication.Display()</Action><Action
  Guid="b8f2f399-bcea-4824-8a83-ebaca850d2c5"
 >THIS &lt;- HandleModeChange.StartOfMission.S10</Action></Actions>
 </RuleCondition></Conditions>
@@ -3923,11 +4455,17 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Y="250"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A33"
  Guid="e7ce2f55-45eb-4eb1-9837-101ee45c2b15"
 >
-<StateMachine
+<ReqRef
+ Id="2a4035e1-99ac-41b8-ba91-d16f5787152e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7becc947-8600-4df0-a048-9666452f3f06"
+>
+</ReqRef><StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="32b48b94-8e6d-458c-b0be-598def2a8e7e"
@@ -3974,11 +4512,17 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Y="350"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A34"
  Guid="f849471c-b7ef-4263-8760-e9360ff6b94b"
 >
-<StateMachine
+<ReqRef
+ Id="313d08c5-10c0-4602-8ba8-e286bbb9cb33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5bca9cec-d452-4c21-80ce-ae4923839539"
+>
+</ReqRef><StateMachine
  Default="ReportPositionToRBC"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -4128,6 +4672,7 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Y="340"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A35"
  Guid="d0cd5f33-9403-41cc-b065-895fc2a399bf"
@@ -4178,6 +4723,7 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Y="430"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A23"
  Guid="62453693-9031-4951-87ee-97e5120bbe01"
@@ -4208,7 +4754,6 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Name="A23"
  Guid="dda98141-51fe-4528-9e42-2e4908115ee6"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -4222,6 +4767,7 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Y="520"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A24"
  Guid="9511728a-a128-4741-9e41-3688e2b176a3"
@@ -4271,6 +4817,7 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Y="450"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A38"
  Guid="99a6f671-d20e-4554-b24a-51cec51b9a43"
@@ -4301,7 +4848,6 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Name="RBC informs that it rejects the train"
  Guid="ced9440b-46bc-44c4-90e2-a73d5131b77d"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -4315,6 +4861,7 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Y="600"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A40"
  Guid="3eba7ac9-a2ce-4726-a52b-3b12670ddd95"
@@ -4359,11 +4906,17 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Y="480"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="S12"
  Guid="d6fc6fad-5ed2-487e-ad8c-81975965acdf"
 >
-<StateMachine
+<ReqRef
+ Id="92ebef6e-9acb-432c-8a1c-932271343aec"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a62e6722-3eb4-44bf-b889-3b60a5777bde"
+>
+</ReqRef><StateMachine
  Default="RequestTrainData"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -4475,7 +5028,7 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 </ReqRef><PreConditions>
 <PreCondition
  Guid="2b33748d-d204-4162-af58-ac54b3c897fd"
->DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>TrainData.TrainData.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5d2f8550-d6a7-4e7c-9170-2995928a8efe"
@@ -4483,7 +5036,38 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Guid="ebe4a3f4-a674-43d8-92d3-2b6166113fa2"
 >DMI.MasterDMI().In_TrainData.AcceptDriverResponse()</Action><Action
  Guid="07087530-74d1-4e08-bd95-86f3e2c4cf0d"
->Kernel.TrainDataVerified &lt;- True</Action></Actions>
+>Kernel.TrainDataValidated &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver closed the Train Data entry window"
+ Guid="d35849ff-4f2f-4ee4-a851-b23419ce44e5"
+>
+<ReqRef
+ Id="73975a0c-4870-4121-b56e-3c68ce047051"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6614e79d-3f24-47f3-9500-e306079feb3a"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver closed window"
+ Guid="a14fe722-424f-4dc4-a993-c65ca10ad344"
+>
+<PreConditions>
+<PreCondition
+ Guid="ce1ab44e-d0f7-48a7-ae25-c80ffd65e042"
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Default.Request.Disabled</PreCondition><PreCondition
+ Guid="ab790024-9e0a-42c2-be46-c6e98482506c"
+>TrainData.TrainData.DataState != DataState.Valid</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="cc9df94f-1f51-4398-bbf0-ca4d8820a9d9"
+>THIS &lt;- S10</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -4492,11 +5076,17 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Y="360"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D12"
  Guid="89be5d8b-5cd0-44fe-a693-2de83d84d2d1"
 >
-<StateMachine
+<ReqRef
+ Id="fde257af-4a02-41e3-b187-50efa872ddda"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="12c0d495-a259-47d9-b383-296222b2325c"
+>
+</ReqRef><StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="250a33d0-c6a0-4c6e-9a95-1ee76cb1c483"
@@ -4586,11 +5176,17 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Y="200"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D10"
  Guid="be1feb3a-a82d-4a15-8c0f-553c08c69328"
 >
-<StateMachine
+<ReqRef
+ Id="d7973918-62e2-43d1-ac9f-f8a39db5d10b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="41386e2c-6340-4c0a-984f-791e91f96fc8"
+>
+</ReqRef><StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="c409f1c3-74f5-4780-aa63-d1a342ee7fc7"
@@ -4638,7 +5234,7 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="b4d05191-93b3-49f5-9435-423c10c560ac"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e962fbb8-4429-4ad3-957c-5b8d3e3589e8"
@@ -4666,7 +5262,7 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="d9550d4a-f9e8-4206-8be8-bfcc14f22415"
->Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="79cc65b2-97ed-4bfc-bff5-eea2a40f3f50"
@@ -4680,6 +5276,7 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Y="360"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D11"
  Guid="ed143ae3-3cc1-426f-8763-f42eaa9bd73a"
@@ -4736,11 +5333,17 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Y="880"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="S21"
  Guid="c7d9eeab-e193-41b8-a17a-231e169ba2c6"
 >
-<StateMachine
+<ReqRef
+ Id="488e6e9f-80b1-48fe-9293-96f3d69e7bd9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="96a3cb37-f69e-4536-9330-47abef3309a6"
+>
+</ReqRef><StateMachine
  Default="SendMARequest"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -4896,11 +5499,17 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
  Y="880"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="S22"
  Guid="da4dd649-1cc0-461b-b906-ee4cecf8025a"
 >
-<StateMachine
+<ReqRef
+ Id="195e2b98-7877-4e7a-850f-134fe5fac373"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d482fc29-37c5-4c90-b5ee-ae1c44a67da6"
+>
+</ReqRef><StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="9a68f736-b3ad-4dab-bb17-e6966abc4408"
@@ -4932,8 +5541,7 @@ Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 <Actions>
 <Action
  Guid="053b80eb-e5c1-42a5-953b-40dae4c23ec6"
-><Comment></Comment>
-DMI.MasterDMI().In_AcknOfSNMode.InitiateRequest(Kernel.NationalSystemId)</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSNMode.InitiateRequest(Kernel.Level.Value.NTC)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4941,11 +5549,17 @@ DMI.MasterDMI().In_AcknOfSNMode.InitiateRequest(Kernel.NationalSystemId)</Action
  Y="880"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="S23"
  Guid="3bf01b0e-b5d7-4813-9428-aff5c7e6b56d"
 >
-<StateMachine
+<ReqRef
+ Id="0bdf5b27-3f33-4831-9b62-9424f5bd350a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7a627b87-87d3-4d54-9cd5-3a48f70b662a"
+>
+</ReqRef><StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="8bd7adf6-f975-4015-a290-77faffdb3cb4"
@@ -4985,11 +5599,17 @@ DMI.MasterDMI().In_AcknOfSNMode.InitiateRequest(Kernel.NationalSystemId)</Action
  Y="50"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="D7"
  Guid="09e46755-3d02-4fbf-979d-5c94fdedd7d0"
 >
-<StateMachine
+<ReqRef
+ Id="deb40ed2-c7f2-47c5-a61c-52bdd7a62dcc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="96b82c62-6a98-469b-b0d9-459c160b3f2e"
+>
+</ReqRef><StateMachine
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="99be0b2e-85bf-4098-abf6-45e43aaf154f"
@@ -5059,6 +5679,7 @@ DMI.MasterDMI().In_AcknOfSNMode.InitiateRequest(Kernel.NationalSystemId)</Action
  Y="140"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="A29"
  Guid="efab7f97-288a-4454-a28f-409bbe1a16e9"
@@ -5300,7 +5921,7 @@ DMI.MasterDMI().In_AcknOfSNMode.InitiateRequest(Kernel.NationalSystemId)</Action
  Guid="fd484513-2142-4fc1-a53f-75f77823e65b"
 >NOT EURORADIO.HasActiveSession()</PreCondition><PreCondition
  Guid="5a6cd26a-dc17-41a4-9901-491292f3ded0"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3ad2ea3b-68ed-4ad8-bbdf-04351bd7290f"
@@ -5322,8 +5943,7 @@ DMI.MasterDMI().In_AcknOfSNMode.InitiateRequest(Kernel.NationalSystemId)</Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3fd7f5ee-ae12-4095-b1bb-15a5f0497c66"
 >
-</ReqRef><Comment></Comment>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5335,8 +5955,7 @@ DMI.MasterDMI().In_AcknOfSNMode.InitiateRequest(Kernel.NationalSystemId)</Action
 <PreConditions>
 <PreCondition
  Guid="7e8aca9e-bed4-4228-a2b5-d53dc47080f8"
-><Comment></Comment>
-THIS in S10 OR THIS in S20</PreCondition><PreCondition
+>THIS in S10 OR THIS in S20</PreCondition><PreCondition
  Guid="e5583ad4-e0b3-48b8-968c-2ff42b9ff8df"
 >Kernel.TrainData.TrainData.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
@@ -5379,13 +5998,12 @@ THIS in S10 OR THIS in S20</PreCondition><PreCondition
 <Actions>
 <Action
  Guid="bf81f04d-cac3-4266-9b0e-e6bebcc4c043"
-><Comment></Comment>
-DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Allow reenter driver ID"
+ Name="Allow reenter driver id for states S10 and S20"
  Guid="eecffdff-c38a-4e86-8625-e1b7be52a479"
 >
 <ReqRef
@@ -5393,14 +6011,16 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ea2a433c-5e13-44a6-9972-eacf2d1e1a36"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles the degraded situation where the driver is allowed to reenter the driver id in states S10 and S20.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Allow reenter driver ID for states S10 and S20"
+ Name="Allow reenter driver id for states S10 and S20"
  Guid="c612bac0-47eb-4c50-a8d4-048633cda15e"
 >
+<Comment>Handles the degraded situation where the driver is allowed to reenter the driver id in states S10 and S20.</Comment>
 <PreConditions>
 <PreCondition
  Guid="f7bcca77-5a28-4e46-8ce1-2317bbe5a0e5"
@@ -5412,42 +6032,68 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Allow Re-enter driver ID"
+ Name="Allow reenter driver id for states S10 and S20"
  Guid="82683e26-8514-4be7-9371-97fc5ead2446"
 >
+<Comment>Handles the degraded situation where the driver is allowed to reenter the driver id in states S10 and S20.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Reenter driver ID not yet proposed to driver"
+ Name="Reenter driver id not proposed to driver yet"
  Guid="f053d594-c9b1-46c5-a6a1-aa54a17b9b21"
 >
+<Comment>If the entry of driver id is not proposed to the driver yet =&gt; propose it.</Comment>
 <PreConditions>
 <PreCondition
  Guid="91fa802b-ff28-476b-a651-8c633651cded"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
+ Guid="1ec0dda5-1942-462f-9631-61e215d6d028"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
+ Guid="f6f2b953-6391-49ef-8bc7-0b5a994f79c2"
+>NOT DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.DriverAnswered</PreCondition><PreCondition
+ Guid="53e96de6-3f2e-4e4d-b3e0-b25670cce139"
+>NOT DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9ebd91fb-b6f2-4d28-b3f7-6fb87e037047"
->DMI.MasterDMI().In_DriverId.InitiateRequest(
+>DMI.MasterDMI().In_DriverIdEntryRequest.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver selected to reenter its driver id"
+ Guid="c967c30b-e87c-4ea0-8a8e-fba01a0d8b09"
+>
+<Comment>If the driver selected to reenter the driver id =&gt; display the screen allowing to do it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="d9868451-925b-400e-b61d-041840d8e282"
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ea9038aa-42bd-4dc0-a9bd-f3fef9b1d975"
+>DMI.MasterDMI().In_DriverIdEntryRequest.AcceptDriverResponse()</Action><Action
+ Guid="5ea06ddc-7a49-47d1-bc71-2d49bca52b14"
+>DMI.MasterDMI().In_DriverId.InitiateRequest
+(
   Id =&gt; DriverId.Value, 
   Enter =&gt; True,
   ReValidate =&gt; False
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Driver selected to reenter its driver ID"
- Guid="c967c30b-e87c-4ea0-8a8e-fba01a0d8b09"
+ Name="Driver reentered its driver id"
+ Guid="0d07430c-b44e-4ed6-959e-db1a4b73c300"
 >
+<Comment>When the driver has entered the new data, it is stored.</Comment>
 <PreConditions>
 <PreCondition
- Guid="d9868451-925b-400e-b61d-041840d8e282"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+ Guid="70b4805b-0b2a-445d-883a-7171029a7383"
+>DMI.MasterDMI().In_DriverId.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="ea9038aa-42bd-4dc0-a9bd-f3fef9b1d975"
+ Guid="959b05e1-e6de-45d3-9a34-984461be3467"
 >DMI.MasterDMI().In_DriverId.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
@@ -5455,7 +6101,7 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Allow reenter train running number"
+ Name="Allow reenter train running number for states S10 and S20"
  Guid="d28a36f2-3019-4425-a860-299d9c9e6bf6"
 >
 <ReqRef
@@ -5463,7 +6109,8 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="80a29dd1-bad8-4b8e-a0d6-abc17b92fa15"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles the degraded situation where the driver is allowed to reenter the train running number in states S10 and S20.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5471,6 +6118,7 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  Name="Allow reenter train running number for states S10 and S20"
  Guid="b09c36e8-2392-49f3-917c-c535c8a16499"
 >
+<Comment>Handles the degraded situation where the driver is allowed to reenter the train running number in states S10 and S20.</Comment>
 <PreConditions>
 <PreCondition
  Guid="ad61ad9c-55da-4750-92f4-c49c4757ee53"
@@ -5485,21 +6133,46 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  Name="Allow Re-enter train running number"
  Guid="003ca651-8587-49e3-9004-9252a13a5874"
 >
+<Comment>Handles the entry of train running number.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Reenter train running number not yet proposed to driver"
+ Name="Reenter train running number not proposed to driver yet"
  Guid="862ffd2c-fba8-4ab0-a32c-b49f4e0b0de4"
 >
+<Comment>If the entry of train running number is not proposed to the driver yet =&gt; propose it.</Comment>
 <PreConditions>
 <PreCondition
  Guid="70d7809e-9779-4fdf-9c3a-9aaf8d7d045e"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
+ Guid="31973ab2-57b1-4431-a284-6d3f8e52c678"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
+ Guid="1076b164-9860-4218-a3bb-30339f00bd4b"
+>NOT DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.DriverAnswered</PreCondition><PreCondition
+ Guid="eb6a75ab-35db-4c39-9176-bbd2d109cafb"
+>NOT DMI.MasterDMI().In_TrainRunningNumber.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5e0fd3ed-60e6-4b96-b48c-0786ee77e557"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Driver selected to reenter the train runnning number =&gt; display the train running number screen"
+ Guid="b9b89b25-5a2a-4f08-b970-f3124ede34b6"
+>
+<Comment>If the driver selected to reenter the train running number =&gt; display the screen allowing to do it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="56f56742-f706-4692-9865-2e18807bb9df"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5b72fd24-bc2f-4ef6-84bc-99e04d9917fe"
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.AcceptDriverResponse()</Action><Action
+ Guid="96f1e7f3-a2c8-465d-a517-6b57b7261814"
 >DMI.MasterDMI().In_TrainRunningNumber.InitiateRequest(
   Number =&gt; TrainRunningNumber.Value, 
   Enter =&gt; True,
@@ -5507,17 +6180,17 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Driver selected to reenter the train runnning number"
- Guid="b9b89b25-5a2a-4f08-b970-f3124ede34b6"
+ Name="Driver reentered the train running number"
+ Guid="4722c094-0128-4e11-b5be-c384283a9d0c"
 >
+<Comment>When the driver has entered the new data, it is stored.</Comment>
 <PreConditions>
 <PreCondition
- Guid="56f56742-f706-4692-9865-2e18807bb9df"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+ Guid="688bdac2-027d-4411-ae1c-aad556028a47"
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="5b72fd24-bc2f-4ef6-84bc-99e04d9917fe"
+ Guid="0fb5bd08-8c72-40dd-a189-ee355411ac99"
 >DMI.MasterDMI().In_TrainRunningNumber.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
@@ -5525,7 +6198,7 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Allow reenter level"
+ Name="Allow reenter level for states S10 and S20"
  Guid="8339b88a-c46f-47fe-96cd-9399b62676a2"
 >
 <ReqRef
@@ -5533,7 +6206,8 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="70438859-26ed-41db-9c54-2694284d764e"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles the degraded situation where the driver is allowed to reenter the level in states S10 and S20.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5541,6 +6215,7 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  Name="Allow reenter level for states S10 and S20"
  Guid="da5aced7-8b86-4e15-8dd8-6801094743e1"
 >
+<Comment>Handles the degraded situation where the driver is allowed to reenter the level in states S10 and S20.</Comment>
 <PreConditions>
 <PreCondition
  Guid="e387c081-c5c9-4dd7-93cb-9d18d9a4790c"
@@ -5552,45 +6227,54 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Allow Re-enter level"
+ Name="Allow reenter level for states S10 and S20"
  Guid="b0d2b632-9991-4298-9b63-09f827cd4ec7"
 >
+<Comment>Handles the degraded situation where the driver is allowed to reenter the level in states S10 and S20.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Reenter level not yet proposed to driver"
+ Name="Reenter level not proposed to driver yet"
  Guid="23ce7013-f6dc-4b1b-8e82-f7766a74842f"
 >
+<Comment>If the entry of level is not proposed to the driver yet =&gt; propose it.</Comment>
 <PreConditions>
 <PreCondition
  Guid="752efb16-fd0d-4e3a-a8d4-514912453887"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
+ Guid="08d52ea0-e4d2-4759-977a-72f373654097"
+>NOT DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered</PreCondition><PreCondition
+ Guid="de6fa6e4-a90c-4813-b140-e440384d79de"
+>NOT DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.DriverAnswered</PreCondition><PreCondition
+ Guid="b8c45ab5-430c-4ec5-a887-5875f78d37f3"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="eff502a6-8c0a-43e4-9cf9-693106460776"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
-(
-    Level =&gt; Kernel.Level.Value,
-    Enter =&gt; True,
-    ReValidate =&gt; False
-)</Action></Actions>
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InitiateRequest()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Driver selected to reenter the level"
  Guid="a141fb86-7873-4806-8c02-bb5cedef0402"
 >
-<Comment></Comment>
+<Comment>If the driver selected to reenter the level =&gt; display the screen allowing to do it.</Comment>
 <PreConditions>
 <PreCondition
- Guid="ae7ab92d-f97e-4ee2-b50a-3137e1b17946"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+ Guid="e74820b3-2ae5-4ac7-852b-a21b93c3e667"
+>DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="d43762ba-cc41-48b3-be35-302b460560c2"
->THIS &lt;- S2.ExitState</Action></Actions>
+ Guid="d14b80ef-581e-4c38-8b74-c8b07ec40db7"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
+(
+    Level =&gt; Kernel.Level.Value,
+    Enter =&gt; True,
+    ReValidate =&gt; False,
+    NTCLevels =&gt; Kernel.TrainData.TrainData.Value.LevelsSupportedOnBoard
+)</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -5603,7 +6287,8 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dae673a9-17eb-40fb-833c-c306d4f85623"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the driver has chosen to reenter the level, its status becomes invalid.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5611,16 +6296,14 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action></Actions>
  Name="Valid level"
  Guid="235ba717-9d6a-4421-886a-eb3d589f7e91"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="3a4dbcb3-3293-404d-8e83-459ce1685e89"
->Level.DataState == DataState.Valid</PreCondition></PreConditions>
+>Level.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c5962eb5-d1d6-4cc7-9baa-8d1ca3f31595"
-><Comment></Comment>
-Level.DataState &lt;- DataState.Invalid</Action></Actions>
+>Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -5633,7 +6316,8 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="550c5d29-cf3c-49a1-a0b3-027ad3415dee"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the driver has chosen to reenter the level, the status of RBC ID/phone number becomes invalid.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -5644,13 +6328,27 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="5ff6cb13-22d1-46ea-950a-2b03de192d9f"
->EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Valid</PreCondition></PreConditions>
+>EURORADIO.CurrentRBCConnection().ContactData.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="57a12587-e7e5-458c-bdd6-5d19303cadef"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Invalid</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- Default.DataState.Invalid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Driver reentered the level"
+ Guid="4b00a48c-db1f-45e9-8358-ae8d38e4f518"
+>
+<Comment>When the driver has entered the new data, it is stored.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="ae7ab92d-f97e-4ee2-b50a-3137e1b17946"
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d43762ba-cc41-48b3-be35-302b460560c2"
+>THIS &lt;- S2.ExitState</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -5855,7 +6553,6 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
  Name="A035"
  Guid="e173bef1-be81-43b7-bfbc-1b99ffc6d707"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -6085,7 +6782,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="39d0af87-3472-44f0-a3b5-806e67d1b75b"
->DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus == Default.Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9b810682-306d-41fa-84ff-890eae846bbc"
@@ -6166,7 +6863,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="381346b4-42d5-4491-a5ee-33979319c657"
->Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L1, Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="42aef285-00ea-4612-9353-fe273c39f732"
@@ -6201,7 +6898,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="c304e2bd-7f2c-40b5-87de-07ac74c29513"
->Kernel.Level.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="cf9c0c8e-5d6f-458e-9576-fd09a3dc7b9e"
@@ -6317,7 +7014,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="7ca85845-8383-49a3-b1ec-5c52d0b7fb35"
->Kernel.Level.Value == Level.L1</PreCondition></PreConditions>
+>Level.Value.Value == Level.L1</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8b629f15-44a4-4733-a3f6-6316b6dd92d7"
@@ -6347,7 +7044,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="9043dfd8-e25e-4e73-a46b-6aefb6c438f9"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="880dd603-8c02-48bd-a1fc-aeea0c049095"
@@ -6803,9 +7500,9 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="8748e903-765c-482a-b060-e24a8c012a8e"
->DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition><PreCondition
+>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="16f83256-478c-4f7c-9056-b8097c00fbda"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="08f650ec-16ac-4ddd-bd1f-a112069dd4aa"
@@ -6839,9 +7536,9 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="22c8f914-81c5-45ec-98e4-85fec0186b89"
->Kernel.Level.Value == Level.L1</PreCondition><PreCondition
+>Level.Value.Value == Level.L1</PreCondition><PreCondition
  Guid="bcbf278e-7248-4a02-9580-06002d14112f"
->DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b68a1177-0104-41b1-b6c3-eb641d14f384"
@@ -6885,7 +7582,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="fbf6c6bf-abd0-403c-bb99-33cf81ed6bce"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d367c039-b4a7-42a3-a80f-a18eed86e4d4"
@@ -6893,7 +7590,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
  Guid="180ce797-b671-4585-a52f-426f2fa4056b"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action><Action
  Guid="c9cabf9b-e4f8-4ebb-ace5-dbab095ab111"
->DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -7131,8 +7828,7 @@ Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <Actions>
 <Action
  Guid="be31f090-2f1d-4061-83a6-729a5aed0a7c"
-><Comment></Comment>
-DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7411,7 +8107,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="c589396e-0e09-4cae-a8c6-118f0936d888"
->Kernel.Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="27ae36c8-f87e-448e-b4d6-15ccb4a6be4d"
@@ -7439,7 +8135,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="0edfb4da-90b2-4a06-92f7-ecc4c3072690"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d38f0a8d-0ca2-4bf0-a8fd-b330fdc6bfc5"
@@ -7649,7 +8345,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="e310a442-e50c-450e-b592-b583920672ac"
->Kernel.Level.Value == Default.Level.L0</PreCondition></PreConditions>
+>Level.Value.Value == Default.Level.L0</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="dd60d7fc-8555-4d2d-8699-72ff8b2617a4"
@@ -7684,7 +8380,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="91457cfd-d5e2-4eab-937d-a0c20b543156"
->Kernel.Level.Value == Default.Level.LNTC</PreCondition></PreConditions>
+>Level.Value.Value == Default.Level.LNTC</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="cc7d4ceb-1e1a-4a4e-869e-7e75a2f8c68e"
@@ -7801,7 +8497,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="8c1e2769-86c8-4300-9e20-b03a15486023"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
  Guid="a20f6e13-1dca-41c0-9034-0684b14f90db"
 >NOT EURORADIO.HasActiveSession()</PreCondition><PreCondition
  Guid="fe2f1b03-ffc7-44cd-ab00-daa877c92ff5"
@@ -7886,7 +8582,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="ffa853eb-8045-483c-9238-3d411219528f"
->Level.Value in [Level.L0, Level.L1]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L0, Level.L1]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="bef78fa3-f5bd-4faa-862c-979a5667c472"
@@ -7905,7 +8601,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="b2001e67-4fe2-4c52-881b-dea065f7d31c"
->Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="952278d9-3147-4c88-843a-dc3b5e96cb2e"
@@ -7924,7 +8620,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="bf16d39f-ea6c-48cc-a0c0-d6cf34945793"
->Level.Value == Level.LNTC</PreCondition></PreConditions>
+>Level.Value.Value == Level.LNTC</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="393eaa91-d1d2-4d4c-ab2b-351100032613"
@@ -8689,7 +9385,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="772df137-5869-413e-a9ca-58bca24c175a"
->Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3d435f88-5421-4d23-8d6f-5570b672d01f"
@@ -8708,7 +9404,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="bd217358-4b3b-44c5-a07e-ff50d034ca15"
->Level.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a389ba71-4c64-4e42-9753-52ab865d444d"
@@ -9467,7 +10163,6 @@ DMI.MasterDMI().In_AcknOfSRMode.InitiateRequest()</Action></Actions>
  Name="Return the closest conditional ES"
  Guid="6504658f-9677-4b71-97ed-e60c579ccab0"
 >
-<Comment></Comment>
 <Expression>REDUCE aESCol | ( X.Reason == Kernel.BrakeReason.OrderFromRBC AND X.IsConditional )
     USING Kernel.MinEmergencyStopDistance( EmergencyStop1 =&gt; X, EmergencyStop2 =&gt; RESULT )
 INITIAL_VALUE EmergencyStop
@@ -9505,7 +10200,6 @@ INITIAL_VALUE EmergencyStop
  Name="First emergency stop is closer"
  Guid="b6da9bf5-c399-43a3-9512-93fc756fa03f"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d6a8ab20-c3ba-4803-81b5-94d9115414fd"
@@ -9548,7 +10242,6 @@ INITIAL_VALUE EmergencyStop
  Name="Handle Odometry inputs"
  Guid="89da51a5-25d5-4e71-9880-7fe2360f042f"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="99d84f3b-cc2e-4d2d-b093-1e6f1a17e664"
@@ -9569,7 +10262,6 @@ INITIAL_VALUE EmergencyStop
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e85cef6e-1d30-442a-97a5-9a68693eb207"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="c534dda4-ea81-40b7-a27b-c229e935a20e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -9607,18 +10299,38 @@ INITIAL_VALUE EmergencyStop
 <PreConditions>
 <PreCondition
  Guid="6d3b2490-aa01-4121-8abb-e05a55a842cc"
-><Comment></Comment>
-BTM.Linking.LinkingApplicable()
+>BTM.Linking.LinkingApplicable()
   AND  
 BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLinking().Distance + BTM.Linking.CurrentLinking().LocationAccuracy)</PreCondition><PreCondition
  Guid="c890d07b-a440-4ec6-ba9a-57aec6e3798e"
-><Comment></Comment>
-ActiveFunctions.CheckLinkingConsistency()</PreCondition></PreConditions>
+>ActiveFunctions.CheckLinkingConsistency()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d3d59ef2-1780-4145-90f8-d8a3cf0dfbcc"
-><Comment></Comment>
-BTM.Linking.HandleLinkingError()</Action></Actions>
+>BTM.Linking.HandleLinkingError()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Handle DMI inputs"
+ Guid="3f4a21e9-b96b-4111-9e6e-f43307cb9ac5"
+>
+<Comment>Accept all the driver responses</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Handle DMI inputs"
+ Guid="40fea73a-1a08-48d3-b25f-8f98327e08f2"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="0cad42a7-d40a-4922-983f-e8acadc41b1e"
+>DMI.MasterDMI().AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9636,7 +10348,6 @@ BTM.Linking.HandleLinkingError()</Action></Actions>
  Name="Handle BTM inputs"
  Guid="7a73e5ba-e5fc-4096-af34-3907ed746ba0"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="e77d83c7-e2ac-4e97-a9b6-cf974eefafae"
@@ -9644,8 +10355,7 @@ BTM.Linking.HandleLinkingError()</Action></Actions>
 <Actions>
 <Action
  Guid="96ddb3ee-57c1-40a0-bc68-2be6f515660e"
-><Comment></Comment>
-BTM.StoreBaliseGroupMessage ( BTM.Message )</Action></Actions>
+>BTM.StoreBaliseGroupMessage ( BTM.Message )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9668,8 +10378,7 @@ BTM.StoreBaliseGroupMessage ( BTM.Message )</Action></Actions>
 <Actions>
 <Action
  Guid="de49db01-c702-4a6c-80db-bb9c911035c1"
-><Comment></Comment>
-EURORADIO.CurrentRBCConnection().HandleIncomingMessage()</Action></Actions>
+>EURORADIO.CurrentRBCConnection().HandleIncomingMessage()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9717,8 +10426,7 @@ EURORADIO.CurrentRBCConnection().HandleIncomingMessage()</Action></Actions>
 <Actions>
 <Action
  Guid="3541b1a8-53a2-4bea-85f6-6c8136424cd0"
-><Comment></Comment>
-TrainPosition.UpdatePositionState()</Action></Actions>
+>TrainPosition.UpdatePositionState()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9749,8 +10457,7 @@ TrainPosition.UpdatePositionState()</Action></Actions>
 <Actions>
 <Action
  Guid="4e99e841-916b-4771-9cbe-a7999f9bbdbb"
-><Comment></Comment>
-ModeTransitions.UpdateMode()</Action></Actions>
+>ModeTransitions.UpdateMode()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -9777,10 +10484,12 @@ ModeTransitions.UpdateMode()</Action></Actions>
  Guid="1ea62aa3-6056-40d4-8b5a-3eb7fbfb176b"
 >SpeedAndDistanceMonitoring.SelectMonitoringType()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Stop monitoring if required"
  Guid="cdeb8310-91de-414d-8e5e-657e42672fe8"
 >
-<Comment></Comment>
+<Comment>If a mode was entered where the speed and distance monitoring is inactive, the speed and distance monitoring must be set to idle</Comment>
 <PreConditions>
 <PreCondition
  Guid="5a06828f-3ad3-414d-a5d5-e64ce6ce5964"
@@ -9820,13 +10529,13 @@ ModeTransitions.UpdateMode()</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="c1218ff1-6980-4500-805c-654cfe700308"
-><Comment></Comment>
-ActiveFunctions.DetermineEOA_SvL_etc()</PreCondition></PreConditions>
+>ActiveFunctions.DetermineEOA_SvL_etc()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c6f59ebe-03a7-4ee2-aea3-8fe999bbfc7a"
 >MA.HandleEOAs()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Do not determine EOAs"
  Guid="2148e8ee-a189-429b-81e3-85bc23711606"
 >
@@ -9836,7 +10545,7 @@ ActiveFunctions.DetermineEOA_SvL_etc()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4e010b0f-76c5-416b-a2d0-24a151314402"
->Kernel.MA.EOAs &lt;- []</Action></Actions>
+>MA.EOAs &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9854,7 +10563,6 @@ ActiveFunctions.DetermineEOA_SvL_etc()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3d7bd13b-8385-4066-8108-cd87f9da786a"
 >
-<Comment></Comment>
 </ReqRef><Comment>Updates the list of Supervision Limits.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -9873,6 +10581,7 @@ ActiveFunctions.DetermineEOA_SvL_etc()</PreCondition></PreConditions>
  Guid="64c5dc89-646c-46a1-8e8c-b24814da8ae4"
 >MA.HandleSvLs()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Do not determine SvL"
  Guid="d54acc72-a081-4808-8d9e-6d3d9b11a28f"
 >
@@ -9887,7 +10596,7 @@ ActiveFunctions.DetermineEOA_SvL_etc()</PreCondition></PreConditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="30"
- Y="270"
+ Y="330"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -9895,7 +10604,6 @@ ActiveFunctions.DetermineEOA_SvL_etc()</PreCondition></PreConditions>
  Name="InitializeTestEnvironment"
  Guid="7cde642d-80d9-4a06-9f70-c9a305706ab2"
 >
-<Comment></Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -9951,9 +10659,9 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 <Actions>
 <Action
  Guid="948430d8-d5d7-4d6e-968a-5c8458525168"
-><Comment></Comment>
-BTM.LRBG &lt;- BTM.BaliseGroup
+>BTM.LRBG &lt;- BTM.BaliseGroup
 {
+    Timestamp =&gt; 0.0,
     Position =&gt; BTM.Position
     {
         Position =&gt; 50.0,
@@ -10005,8 +10713,7 @@ BTM.LRBG &lt;- BTM.BaliseGroup
 <Actions>
 <Action
  Guid="9df8c9b3-bd08-4a3b-a4cb-9e123bb2c01a"
-><Comment></Comment>
-TrainData.Initialize()</Action></Actions>
+>TrainData.Initialize()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -10104,6 +10811,7 @@ TrainData.Initialize()</Action></Actions>
  Name="Add emergency stop"
  Guid="7482b271-0036-4a99-8046-791fdabca1e8"
 >
+<Comment>Received emergency stops are added to a list containing the ID and reason or each emergency stop</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -10111,6 +10819,7 @@ TrainData.Initialize()</Action></Actions>
  Name="Add Conditional Emergency Stop"
  Guid="17059008-89b6-4e10-a7e3-9938cfc666eb"
 >
+<Comment>Adds the conditional emergency stop received in the RBC message</Comment>
 <PreConditions>
 <PreCondition
  Guid="e240d531-4475-416c-bb30-c3574d5dcda4"
@@ -10135,6 +10844,7 @@ EmergencyStops</Action></Actions>
  Name="Add Unconditional Emergency Stop"
  Guid="ca987d81-cf62-4efd-b7b6-f4b669f0f48e"
 >
+<Comment>Adds the unconditional emergency stop received in the RBC message</Comment>
 <PreConditions>
 <PreCondition
  Guid="ba56b109-d68e-48b6-8d69-8c00d3011ebf"
@@ -10163,7 +10873,8 @@ EmergencyStops</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="124f7681-01bf-4cba-ad11-122aa21910a8"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>The received emergency stops are displayed to the driver</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -10188,7 +10899,6 @@ EmergencyStops</Action></Actions>
  Name="RemoveEmergencyStop"
  Guid="f336793a-dd82-40af-b8d5-efe066418065"
 >
-<Comment></Comment>
 <Parameters>
 <Parameter
  Type="Messages.NID_EM"
@@ -10215,8 +10925,7 @@ EmergencyStops</Action></Actions>
 <Actions>
 <Action
  Guid="eb928e38-b0ef-4a1d-8bc9-6a68b0de2c13"
->EmergencyStops &lt;- MAP EmergencyStops | (X.Id != aId)
-    USING X</Action></Actions>
+>REMOVE ALL X.Id == aId IN EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -10234,7 +10943,7 @@ EmergencyStops</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="ed27c8f0-85f6-4b6b-a0a1-49ed462fa9b1"
->NOT( THERE_IS_IN EmergencyStops | X.Reason == Kernel.BrakeReason.OrderFromRBC)</PreCondition></PreConditions>
+>FORALL_IN EmergencyStops | X.Reason != Kernel.BrakeReason.OrderFromRBC</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e2602b9e-3c0d-4aac-a5bf-d0678874da0e"
@@ -10242,8 +10951,8 @@ EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="180"
- Y="270"
+ X="30"
+ Y="390"
  Width="100"
  Height="50"
  Name="DeleteStoredInformation"
@@ -10273,6 +10982,102 @@ EmergencyStops</Action></Actions>
 <Action
  Guid="c1dbce32-b039-4ab7-afd7-fa7c1061d3bd"
 >TrackDescription.TrackConditions.TCMonitor()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="30"
+ Y="270"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="HandleOutputs"
+ Guid="51ad2f80-5fab-4b86-85f9-818dea2864b4"
+>
+<Comment>This procedure handles the outputs to the driver or the trackside according to the state of internal variables.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update the DMI"
+ Guid="e8739a21-082d-428f-a5d3-c595a9e5d364"
+>
+<Comment>Update all the output variables to be displayed on the Master DMI</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update system state"
+ Guid="ebebbf9f-4cd7-4212-aa33-5cca4c0f6ddf"
+>
+<Comment>Update the output variables on the Master DMI</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="29eb6143-5828-4bf2-b80a-04f778521a9f"
+>DMI.MasterDMI().UpdateOUTVariables()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send Euroradio messages"
+ Guid="ac8673bb-364c-4a24-9f76-1336fba2daed"
+>
+<Comment>Send Euroradio messages if needed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send Euroradio messages"
+ Guid="ed1de417-3707-4ba9-bffd-d5211659dd20"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="0d578cf9-1386-4e3d-acce-888906447d6c"
+>EURORADIO.ProcessOutgoingMessages()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send JRU messages"
+ Guid="76dea100-7f32-46de-bfa5-7c1e4f8d34d5"
+>
+<ReqRef
+ Id="d2655cc5-21f7-4522-96f9-bdfb23f40c80"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ace9d56d-48d6-42e5-9784-8aabe4a6d7f4"
+>
+</ReqRef><ReqRef
+ Id="1e4ca98b-fcef-4737-b4e3-38bfc4715927"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b1fd7cb8-6d4d-44dd-ac0c-5fb12da1f5b7"
+>
+</ReqRef><Comment>Create the JRU messages based on the EVC&apos;s current state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send JRU messages"
+ Guid="bdba5cda-8ba3-4fec-ad67-7e7b89118e77"
+>
+<PreConditions>
+<PreCondition
+ Guid="e136c6b8-e08a-46cd-b50c-e0dbe1bdbda6"
+>JRU.SendNewMessage(JRU.JRU1)</PreCondition><PreCondition
+ Guid="391b87a5-a5e4-47d6-aaae-09d81e789aa1"
+>Kernel.ActiveFunctions.ProvideJuridicalData()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="bb324409-0669-4fc6-8f5e-9bde8122f644"
+>JRU.JRU1.HandleMessagesOut()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -10324,14 +11129,13 @@ EmergencyStops</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4954215b-881f-4138-a9e8-eb3ea125979d"
 >
-<Comment></Comment>
 </ReqRef><Comment>Indicates the state and the value of the current ERTMS/ETCS level of the train.</Comment>
 </Variable><Variable
  Type="Default.Mode"
  DefaultValue="Mode.NP"
  VariableMode="Internal"
- X="370"
- Y="350"
+ X="440"
+ Y="340"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -10344,13 +11148,12 @@ EmergencyStops</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b7aa2aae-cdf2-4c9e-bc85-30dd9d84cb36"
 >
-</ReqRef><Comment></Comment>
-</Variable><Variable
+</ReqRef></Variable><Variable
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
- X="260"
- Y="350"
+ X="330"
+ Y="340"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -10382,7 +11185,6 @@ EmergencyStops</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4fbbe1a3-b17e-4d5b-ae57-820cd79573a4"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="07bfd145-efdd-4512-b930-b761213e0377"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -10393,8 +11195,7 @@ EmergencyStops</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6c3a18c6-85a4-4324-822d-6b1faaf9e5fe"
 >
-</ReqRef><Comment></Comment>
-</Variable><Variable
+</ReqRef></Variable><Variable
  Type="EmergencyStopsCol"
  DefaultValue=""
  VariableMode="Internal"
@@ -10466,28 +11267,8 @@ EmergencyStops</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e1871b26-ed36-4255-a022-ac8dbfbd3c3a"
 >
-</ReqRef><Comment></Comment>
-</Variable><Variable
- Type="Default.NID_NTC"
- DefaultValue="NID_NTC.NOT_APPLICABLE"
- VariableMode="Internal"
- X="40"
- Y="350"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- Name="NationalSystemId"
- Guid="d779be35-e181-4d80-bff0-fc43fc35d682"
->
-<ReqRef
- Id="25de9975-544f-48ba-8ed8-aa2ade8433e7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="cb70b7cd-2026-4431-bb62-0c77b6561008"
->
-</ReqRef><Comment>Represents the id of the current national system.</Comment>
-</Variable><Variable
- Type="Kernel.OperatedSystemVersion"
+</ReqRef></Variable><Variable
+ Type="Kernel.OperatedSystemVersionStruct"
  DefaultValue=""
  VariableMode="InOut"
  X="420"
@@ -10504,14 +11285,13 @@ EmergencyStops</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="647e249a-3bcf-4aa7-8c19-95fa6b34643c"
 >
-<Comment></Comment>
 </ReqRef><Comment>The version of the ERTMS/ETCS system.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
  VariableMode="Internal"
- X="150"
- Y="350"
+ X="220"
+ Y="340"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -10579,8 +11359,8 @@ EmergencyStops</Action></Actions>
  Type="Messages.NID_ENGINE"
  DefaultValue="0"
  VariableMode="Internal"
- X="480"
- Y="350"
+ X="550"
+ Y="340"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -10594,8 +11374,8 @@ EmergencyStops</Action></Actions>
  Type="String"
  DefaultValue=""
  VariableMode="Internal"
- X="590"
- Y="350"
+ X="370"
+ Y="470"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -10622,7 +11402,6 @@ EmergencyStops</Action></Actions>
  Name="HandleModeChange"
  Guid="478d6d56-8c92-4b72-92ef-e4fe79d4ceda"
 >
-<Comment></Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="False"
@@ -10632,10 +11411,16 @@ EmergencyStops</Action></Actions>
  Width="100"
  Height="50"
  Pinned="TRUE"
- Name="TrainDataVerified"
+ Implemented="TRUE"
+ Name="TrainDataValidated"
  Guid="8fa81bf4-0f19-4ae8-b2e3-1f0480008ce9"
 >
-<Comment></Comment>
+<ReqRef
+ Id="65ad388e-81c7-4318-822a-ccac8e8fd6e1"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="22b2e428-944c-4d61-934f-b7d281f548a5"
+>
+</ReqRef><Comment>Indicates if the train data was validated by the driver.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Distance"
  DefaultValue="300.0"
@@ -10654,7 +11439,24 @@ EmergencyStops</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9d85b957-d0a8-4d57-89ff-6c96551ff133"
 >
-</ReqRef><Comment></Comment>
+</ReqRef></Variable><Variable
+ Type="Boolean"
+ DefaultValue=""
+ VariableMode="Internal"
+ X="660"
+ Y="340"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="VirtualBaliseCoverIsSet"
+ Guid="2e98aba5-0302-4c0d-ada4-c4d0275519f5"
+>
+<ReqRef
+ Id="079c6696-ff46-4b49-b30c-23ad82da6fd7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5cdf255f-c85e-4037-b9d3-7b4e2da78924"
+>
+</ReqRef><Comment>Indicates if the virtual bailse cover is set or removed.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -10675,18 +11477,16 @@ EmergencyStops</Action></Actions>
  Name="HandleInputs"
  Guid="7bb40ce0-e671-4f16-ba25-f5e8c290c3a8"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="4d92d3d4-cacc-45f7-affb-7dd10a2b80ed"
-><Comment></Comment>
-HandleInputs()</Action></Actions>
+>HandleInputs()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
- X="140"
+ X="360"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -10695,7 +11495,6 @@ HandleInputs()</Action></Actions>
  Name="UpdateSystemTime"
  Guid="46585923-b629-4166-8a63-015a66498ae6"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -10704,14 +11503,12 @@ HandleInputs()</Action></Actions>
  Name="UpdateSystemTime"
  Guid="5a6dc828-78ce-4bd9-895b-61f01f034095"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="5255382c-3be3-4546-b1f7-379dad85f82b"
-><Comment></Comment>
-DateAndTime.CurrentTime &lt;- DateAndTime.CurrentTime + CycleDuration</Action></Actions>
+>DateAndTime.CurrentTime &lt;- DateAndTime.CurrentTime + CycleDuration</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
@@ -10739,6 +11536,32 @@ DateAndTime.CurrentTime &lt;- DateAndTime.CurrentTime + CycleDuration</Action></
 <Action
  Guid="4496b919-4e23-477b-8857-4b9c591f4202"
 >DeleteStoredInformation()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ X="140"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Handle Outputs"
+ Guid="1b0fb1e9-77a2-4126-9b66-9882bd304dcf"
+>
+<Comment>Performs the actions related to the update of output variables in the order DMI -&gt; JRU</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Handle Outputs"
+ Guid="a454a9ef-1994-48a4-81d4-45675bde5a04"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="64fdc2b6-5a0c-4668-8243-6d9c40b99a78"
+>HandleOutputs()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

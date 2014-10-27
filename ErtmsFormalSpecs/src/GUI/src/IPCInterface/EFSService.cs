@@ -692,7 +692,7 @@ namespace GUI.IPCInterface
                     {
                         SyntheticVariableUpdateAction action = new SyntheticVariableUpdateAction(variable, value.convertBack(variable.Type));
                         DataDictionary.Tests.Runner.Events.VariableUpdate variableUpdate = new DataDictionary.Tests.Runner.Events.VariableUpdate(action, null, null);
-                        Runner.EventTimeLine.AddModelEvent(variableUpdate, Runner);
+                        Runner.EventTimeLine.AddModelEvent(variableUpdate, Runner, true);
                     }
                     else
                     {
@@ -726,7 +726,7 @@ namespace GUI.IPCInterface
                         DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
                         action.ExpressionText = statementText;
                         DataDictionary.Tests.Runner.Events.VariableUpdate variableUpdate = new DataDictionary.Tests.Runner.Events.VariableUpdate(action, null, null);
-                        Runner.EventTimeLine.AddModelEvent(variableUpdate, Runner);
+                        Runner.EventTimeLine.AddModelEvent(variableUpdate, Runner, true);
                     }
                     else
                     {

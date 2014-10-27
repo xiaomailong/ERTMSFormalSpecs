@@ -10,6 +10,8 @@
 <Structures>
 <Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Message"
  Guid="8cf2ab27-5cb8-4ffc-82de-4d4372be379a"
@@ -29,7 +31,7 @@
  Guid="6356b5e0-b45f-4053-991d-0496a8f808ba"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -42,7 +44,7 @@
  Guid="731aeb3c-02b4-4994-9468-e45c63c2ef77"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Time"
+ TypeName="MessageTypes.Time"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
@@ -108,6 +110,9 @@
 >
 </ReqRef></StructureElement></Structure><Structure
  Default=""
+ X="110"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SubStructure1"
  Guid="b6b8a6fd-462d-4c20-bf86-bcd010fdbd55"
@@ -445,8 +450,11 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.SubStructure1"
+ TypeName="SubStructure1"
  Default="[]"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Collection1"
  Guid="aecd6927-0a8d-4356-a17e-a4812b2955b9"

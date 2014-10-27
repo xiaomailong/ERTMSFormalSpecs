@@ -99,17 +99,22 @@ namespace DataDictionary.Tests
         /// <param name="oldTestCase"></param>
         public void Merge(TestCase aTestCase)
         {
-            if (Steps.Count != aTestCase.Steps.Count)
+            if (aTestCase != null)
             {
-                throw new Exception("The number of steps of " + Name + " changed");
-            }
-            else
-            {
-                int cnt = 0;
+                setGuid(aTestCase.getGuid());
                 foreach (Step step in Steps)
                 {
-                    Step oldStep = aTestCase.Steps[cnt] as Step;
-                    if (aTestCase != null)
+                    Step oldStep = null;
+                    foreach (Step other in aTestCase.Steps)
+                    {
+                        if (other.getDescription() == step.getDescription() && other.getTCS_Order() == step.getTCS_Order())
+                        {
+                            oldStep = other;
+                            break;
+                        }
+                    }
+
+                    if (oldStep != null)
                     {
                         if (step.getTCS_Order() == oldStep.getTCS_Order())
                         {
@@ -117,10 +122,9 @@ namespace DataDictionary.Tests
                         }
                         else
                         {
-                            throw new Exception("The new version of the test case " + Name + " contains the step " + step.Name + " instead of " + oldStep.Name);
+                             throw new Exception("The new version of the test case " + Name + " contains the step " + step.Name + " instead of " + oldStep.Name);
                         }
                     }
-                    cnt++;
                 }
             }
         }

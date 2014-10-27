@@ -147,6 +147,11 @@ namespace GUI
         protected bool KeepTrackOfSelection { get; set; }
 
         /// <summary>
+        /// Indicates whether refactoring should occur during drag & drop
+        /// </summary>
+        protected bool Refactor { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         protected BaseTreeView()
@@ -198,6 +203,7 @@ namespace GUI
             DoubleBuffered = true;
 
             Selecting = false;
+            Refactor = true;
         }
 
         void BaseTreeView_KeyUp(object sender, KeyEventArgs e)
@@ -316,25 +322,29 @@ namespace GUI
             if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
             {
                 Point pt = ((TreeView)sender).PointToClient(new Point(e.X, e.Y));
-                BaseTreeNode DestinationNode = (BaseTreeNode)((BaseTreeView)sender).GetNodeAt(pt);
-                BaseTreeNode SourceNode = (BaseTreeNode)e.Data.GetData("WindowsForms10PersistentObject");
-                if (DestinationNode != null)
+                BaseTreeNode destinationNode = (BaseTreeNode)((BaseTreeView)sender).GetNodeAt(pt);
+                object data = e.Data.GetData("WindowsForms10PersistentObject");
+                BaseTreeNode sourceNode = data as BaseTreeNode;
+                if (destinationNode != null)
                 {
                     if ((e.KeyState & CTRL) != 0)
                     {
-                        DestinationNode.AcceptCopy(SourceNode);
+                        destinationNode.AcceptCopy(sourceNode);
                     }
                     else if ((e.KeyState & ALT) != 0)
                     {
-                        DestinationNode.AcceptMove(SourceNode);
+                        destinationNode.AcceptMove(sourceNode);
                     }
                     else
                     {
                         DataDictionary.Interpreter.Compiler compiler = DataDictionary.EFSSystem.INSTANCE.Compiler;
 
                         compiler.Compile_Synchronous(false, true);
-                        DestinationNode.AcceptDrop(SourceNode);
-                        compiler.RefactorAndRelocate(SourceNode.Model as DataDictionary.ModelElement);
+                        destinationNode.AcceptDrop(sourceNode);
+                        if (Refactor)
+                        {
+                            compiler.RefactorAndRelocate(sourceNode.Model as DataDictionary.ModelElement);
+                        }
                     }
                 }
             }

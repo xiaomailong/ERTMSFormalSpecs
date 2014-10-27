@@ -13,8 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.Collections;
 
+using System;
+using System.Collections;
+using System.IO;
+using SourceText = DataDictionary.Tests.Translations.SourceText;
+using SourceTextComment = DataDictionary.Tests.Translations.SourceTextComment;
+using DataDictionary.Tests.DBElements;
 
 namespace DataDictionary.Tests
 {
@@ -41,13 +46,6 @@ namespace DataDictionary.Tests
                 return retVal;
             }
         }
-
-        public string Comment
-        {
-            get { return getComment(); }
-            set { setComment(value); }
-        }
-
 
         public ArrayList SubSteps
         {
@@ -150,15 +148,24 @@ namespace DataDictionary.Tests
         /// <param name="translationDictionary"></param>
         public void Translate(Translations.TranslationDictionary translationDictionary)
         {
-            if (getTranslationRequired() && translationDictionary != null)
+            if (getTranslationRequired())
             {
                 SubSteps.Clear();
 
-                Translations.Translation translation = translationDictionary.findTranslation(getDescription());
+                Translations.Translation translation = null;
+                if (translationDictionary != null)
+                {
+                    translation = translationDictionary.findTranslation(getDescription(), Comment);
+                }
+
                 if (translation != null)
                 {
                     translation.UpdateStep(this);
                     setTranslated(true);
+                }
+                else
+                {
+                    AddWarning("Cannot find translation for this step");
                 }
             }
         }
@@ -185,9 +192,20 @@ namespace DataDictionary.Tests
         {
             setAllSubSteps(aStep.SubSteps);
 
+            setGuid(aStep.getGuid());
             setComment(aStep.Comment);
             setTranslated(aStep.getTranslated());
             setTranslationRequired(aStep.getTranslationRequired());
+
+            int cnt = 0;
+            foreach (DBMessage message in StepMessages)
+            {
+                if (cnt < aStep.StepMessages.Count )
+                {
+                    message.Merge((DBMessage)aStep.StepMessages[cnt]);
+                }
+                cnt += 1;
+            }
         }
 
         /// <summary>
@@ -244,6 +262,98 @@ namespace DataDictionary.Tests
             retVal = getExplain(0, explainSubElements);
 
             return retVal;
+        }
+
+        /// <summary>
+        /// Creates the source text which corresponds to this step
+        /// </summary>
+        /// <returns></returns>
+        public SourceText createSourceText()
+        {
+            SourceText retVal = (SourceText) Generated.acceptor.getFactory().createSourceText();
+            retVal.Name = getDescription();
+
+            if (!string.IsNullOrEmpty(Comment) && Comment.Trim() != "-")
+            {
+                SourceTextComment comment = (SourceTextComment) Generated.acceptor.getFactory().createSourceTextComment();
+                comment.Name = Comment;
+                retVal.appendComments(comment);
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// !!! Clean HacK !!! 
+        /// Do not save the substeps when the step requires automatic translation
+        /// !!! Clean HaCk !!!
+        /// </summary>
+        /// <param name="pw"></param>
+        /// <param name="typeId"></param>
+        /// <param name="headingTag"></param>
+        /// <param name="endingTag"></param>
+        public override void unParse(TextWriter pw, bool typeId, string headingTag, string endingTag)
+        {
+            if (getTranslationRequired())
+            {
+                ArrayList tmp = allSubSteps();
+                ArrayList tmp2 = allRequirements();
+                bool translated = getTranslated();
+
+                setAllSubSteps(null);
+                setAllRequirements(null);
+                setTranslated(false);
+
+                base.unParse(pw, typeId, headingTag, endingTag);
+
+                setAllSubSteps(tmp);
+                setAllRequirements(tmp2);
+                setTranslated(translated);
+            }
+            else
+            {
+                base.unParse(pw, typeId, headingTag, endingTag);
+            }
+        }
+
+        /// <summary>
+        /// Provides the previous step (if any) in the subsequence
+        /// </summary>
+        public Step PreviousStep
+        {
+            get
+            {
+                Step retVal = null;
+
+                bool found = false;
+                foreach (TestCase testCase in SubSequence.TestCases)
+                {
+                    foreach (Step step in testCase.Steps)
+                    {
+                        if (step == this)
+                        {
+                            found = true;
+                            break;
+                        }
+                        else
+                        {
+                            retVal = step;
+                        }
+                    }
+
+                    if (found)
+                    {
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    retVal = null;
+                }
+
+                return retVal;
+            }
         }
     }
 }

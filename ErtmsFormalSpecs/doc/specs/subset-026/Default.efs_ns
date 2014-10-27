@@ -1,6 +1,5 @@
 <NameSpace
- X="10"
- Y="20"
+ X="20"
  Width="100"
  Height="50"
  Hidden="TRUE"
@@ -8,7 +7,6 @@
  Name="Default"
  Guid="82b68a28-e61a-460a-a031-2d95fd6b4482"
 >
-<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="BaseTypes"
@@ -562,7 +560,12 @@
  Name="NTC"
  Guid="cd8dbd64-d3e3-46e6-bc84-61e66e882ea7"
 >
-<Comment>only applicable if Value == Level.LNTC</Comment>
+<ReqRef
+ Id="25de9975-544f-48ba-8ed8-aa2ade8433e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1a28215f-24c2-4703-ae46-355068dc484b"
+>
+</ReqRef><Comment>Represents the id of the current national system. Only applicable if Value == Level.LNTC.</Comment>
 </StructureElement><StructureElement
  TypeName="Level"
  Default="Default.Level.Unknown"

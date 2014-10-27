@@ -21,14 +21,21 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DataDictionary;
 using DataDictionary.Values;
 using System.Collections;
 using DataDictionary.Variables;
+using DataDictionary.Interpreter;
 
 namespace GUI.StructureValueEditor
 {
     public partial class Window : BaseForm
     {
+        /// <summary>
+        /// The variable currently being displayed, if any
+        /// </summary>
+        private IVariable Variable { get; set; }
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -53,6 +60,20 @@ namespace GUI.StructureValueEditor
             structureTreeListView.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(CustomizeTreeView.HandleCellEditStarting);
             structureTreeListView.CellEditValidating += new BrightIdeasSoftware.CellEditEventHandler(CustomizeTreeView.HandleCellEditValidating);
             structureTreeListView.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(CustomizeTreeView.HandleCellEditFinishing);
+
+            structureTreeListView.ItemDrag += new ItemDragEventHandler(structureTreeListView_ItemDrag);
+
+            FormClosed += new FormClosedEventHandler(Window_FormClosed);
+        }
+
+        void structureTreeListView_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            DoDragDrop(e.Item, DragDropEffects.Move);
+        }
+
+        void Window_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
 
         /// <summary>
@@ -80,6 +101,41 @@ namespace GUI.StructureValueEditor
             }
 
             structureTreeListView.SetObjects(ObjectModel);
+        }
+
+        /// <summary>
+        /// Sets the variable as data source for this window
+        /// </summary>
+        /// <param name="variable"></param>
+        public void SetVariable(IVariable variable)
+        {
+            Variable = variable;
+
+            Text = Variable.FullName;
+            List<IVariable> ObjectModel = new List<IVariable>();
+            ObjectModel.Add(variable);
+            structureTreeListView.SetObjects(ObjectModel);
+        }
+
+        /// <summary>
+        /// Refresh the window contents when the model may have changed
+        /// </summary>
+        public void RefreshAfterStep()
+        {
+            if (Variable != null)
+            {
+                Expression expression = EFSSystem.INSTANCE.Parser.Expression(Utils.EnclosingFinder<Dictionary>.find(Variable), Variable.FullName);
+                IVariable variable = expression.GetVariable(new InterpretationContext());
+                if (variable != Variable)
+                {
+                    SetVariable(variable);
+                }
+                else
+                {
+                    structureTreeListView.RefreshObject(Variable);
+                    structureTreeListView.Refresh();
+                }
+            }
         }
     }
 }

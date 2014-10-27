@@ -23,7 +23,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="84bee6c8-b94a-4d43-937a-3679ab73e37f"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="9e0c6d45-0f4a-482d-9a28-dbe1f41746ed"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -53,8 +52,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="972f6893-acfe-4345-9bed-757635e7f5de"
 >
-</ReqRef><Comment></Comment>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default="Default.BaseTypes.Speed.MaxSpeed"
  Mode="Internal"
@@ -67,8 +65,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="86823eca-3aa8-40b8-8b28-2fa9d6fe4389"
 >
-</ReqRef><Comment></Comment>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Messages.Q_FRONT"
  Default="Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element"
  Mode="Internal"
@@ -128,7 +125,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4a8c0b15-72c5-4d99-a45a-253382dc4941"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="968938fa-6a64-41cb-9406-2036110d6747"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -184,8 +180,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9076978a-961d-4f88-a7d5-5f1ea4a7c1cd"
 >
-</ReqRef><Comment></Comment>
-</StructureElement></Structure></Structures>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="Kernel.TrackDescription.StaticSpeedProfile.SSPCategory"
@@ -217,7 +212,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a1615ed2-d3d1-46e9-9a11-01bcae22b4c1"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="70632e82-a390-4696-a790-49fc7e83e650"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -259,7 +253,6 @@
  Name="TrainLengthDelay"
  Guid="edae9863-3316-4e77-a6d3-810db9a7e761"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="7f6dc22b-756b-4bbd-a279-def78e406e66"
@@ -269,7 +262,6 @@
  Name="NoTrainLengthDelay"
  Guid="e5943792-4cfa-46ac-befd-3c30fe17d42b"
 >
-<Comment></Comment>
 <Expression>SSPEnd(aSSP) - aSSP.Distance</Expression>
 </Case></Cases>
 </Function><Function
@@ -612,7 +604,6 @@ USING
  Name="Value"
  Guid="8d62abad-1517-484b-86ff-ad3ee8024e41"
 >
-<Comment></Comment>
 <Expression>(REDUCE SSP 
     USING  
         MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; ComputeStaticSpeedRestriction( aSSP =&gt; X, Distance =&gt; d ), 
@@ -658,7 +649,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="EndOfSSP"
  Guid="70ac4f93-7f04-4a90-9bda-e749e2574e2d"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="f61d368f-d291-45c0-8bc4-1c445008961b"
@@ -677,14 +667,12 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="During SSP"
  Guid="82fa0622-8426-4627-a328-c92df7a6646f"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="15221f58-b9e6-4991-9f91-ce91e073c79b"
 >aSSP.Distance &lt;= Distance</PreCondition><PreCondition
  Guid="a3494ca1-2ab4-45f5-9d76-b4fec8b96902"
-><Comment></Comment>
-Distance &lt; Default.BaseTypes.AddDistance (X1 =&gt; aSSP.Distance, X2 =&gt; SSPLength(aSSP))</PreCondition></PreConditions>
+>Distance &lt; Default.BaseTypes.AddDistance (X1 =&gt; aSSP.Distance, X2 =&gt; SSPLength(aSSP))</PreCondition></PreConditions>
 <Expression>SSPSpeed ( aSSP )</Expression>
 </Case><Case
  Name="Outside SSP"
@@ -866,7 +854,7 @@ INITIAL_VALUE
     BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrainData.TrainCategoryEnum"
+ Type="Kernel.TrainData.TrainCategoryEnum"
  Default=""
  X="660"
  Y="240"
@@ -964,8 +952,7 @@ INITIAL_VALUE
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e77e1efc-2db4-415f-b0f0-268a053eb6f5"
 >
-</ReqRef><Comment></Comment>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1007,8 +994,7 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e2e80761-8b80-4a35-b7e5-ef742926f4fc"
 >
-</ReqRef><Comment></Comment>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1156,7 +1142,6 @@ ON
  Name="AddSSR"
  Guid="4f612043-4708-43b6-acf9-4b2dab56b1d1"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition

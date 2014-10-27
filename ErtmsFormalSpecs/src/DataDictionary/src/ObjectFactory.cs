@@ -228,7 +228,7 @@ namespace DataDictionary
 
         public override void visit(Generated.DBField obj, bool visitSubNodes)
         {
-            obj.setValue(0);
+            obj.setValue("");
 
             base.visit(obj, visitSubNodes);
         }
@@ -796,6 +796,15 @@ namespace DataDictionary
         public override Generated.SourceText createSourceText()
         {
             Generated.SourceText retVal = new Tests.Translations.SourceText();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
+        }
+
+        public override Generated.SourceTextComment createSourceTextComment()
+        {
+            Generated.SourceTextComment retVal = new Tests.Translations.SourceTextComment();
 
             DefaultValueSetter.visit(retVal);
 

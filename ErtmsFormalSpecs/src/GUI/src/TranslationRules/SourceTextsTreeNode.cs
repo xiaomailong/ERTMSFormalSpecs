@@ -123,5 +123,15 @@ namespace GUI.TranslationRules
                 }
             }
         }
+
+        /// <summary>
+        /// Handles drop event
+        /// </summary>
+        /// <param name="SourceNode"></param>
+        public override void AcceptDrop(BaseTreeNode SourceNode)
+        {
+            base.AcceptDrop(SourceNode);
+            TranslationTreeNode.AcceptDropForTranslation((TranslationTreeNode)Parent, SourceNode);
+        }
     }
 }

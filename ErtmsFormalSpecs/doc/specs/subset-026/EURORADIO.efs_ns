@@ -1,13 +1,12 @@
 <NameSpace
- X="460"
- Y="10"
+ X="330"
+ Y="60"
  Width="100"
  Height="50"
  Pinned="TRUE"
  Name="EURORADIO"
  Guid="e1153af3-3878-4752-bfdb-9a6c11411de4"
 >
-<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="PositionReport"
@@ -249,6 +248,28 @@
  Guid="0271d2ba-8432-4ab8-9751-21368dd80660"
 >MessageIn &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Clear output message"
+ Guid="0339f48d-dd3c-4427-bb71-c2b0692813a5"
+>
+<Comment>In the beginning of the cycle, the previously sent message is erazed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Clear output message"
+ Guid="b8277cd5-cb64-43eb-b93c-592bf2cbe729"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a88d3410-4254-4ea2-b4be-62c09e71fb63"
+>MessageOut &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
@@ -355,7 +376,7 @@
  Guid="6fb82fcc-1dd5-40c1-a0a7-87279e71cf42"
 >Kernel.HandleModeChange not in Kernel.HandleModeChangeSM.EndOfMission</PreCondition><PreCondition
  Guid="5367589d-d8aa-4929-8097-c8ee899fbb19"
->Kernel.Level.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Kernel.Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d67963d3-60e6-4eed-8fac-e91efefafe50"
@@ -1026,7 +1047,7 @@
 <PreConditions>
 <PreCondition
  Guid="d112e636-6a6c-44a8-894b-ef7e12c2f473"
->MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
+>ConnectionState in RBCStruct.ConnectionStateSM.Connecting</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e922975d-2e7e-4fb8-ae7b-2051e81118c1"
@@ -1310,7 +1331,7 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 <PreConditions>
 <PreCondition
  Guid="4b25cc29-6b61-46d2-b51e-3caa2964d74f"
->MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
+>ConnectionState in RBCStruct.ConnectionStateSM.Connecting</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5e12d8df-0bef-46ba-98ed-6197ab27501a"
@@ -1391,8 +1412,7 @@ ConnectionState in RBCStruct.ConnectionStateSM.Terminating</PreCondition></PreCo
 <Actions>
 <Action
  Guid="7ffe8131-5392-4ec9-a32e-1ad7d3cb2dcd"
-><Comment></Comment>
-ProcessIncomingMessages ( MessageIn )</Action></Actions>
+>ProcessIncomingMessages ( MessageIn )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Handle acknowledgement of termination of a communication session"
@@ -2304,79 +2324,9 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 >LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
+</RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="&quot;Connection status&quot; timer expires"
- Guid="ab14bc46-b49b-43c1-8445-196b2b39e1bd"
->
-<ReqRef
- Id="cd18a937-9dc2-456d-bee7-a61bcd564e32"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="51eab676-3f08-48ad-ba12-d4fcf50c19cb"
->
-</ReqRef><ReqRef
- Id="ca032528-1cb2-4646-bcad-67c92912f36f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8706b9b0-adfd-48fa-8bb2-902bbe274cda"
->
-</ReqRef><ReqRef
- Id="b15cc4d3-14ad-4f2e-b1d9-c70dc451cc6f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9fc279c0-7fc3-42a4-b850-2e7b45f1f829"
->
-</ReqRef><ReqRef
- Id="24cfec76-595f-41de-920e-42c8da108914"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bf7c1fbe-0bc3-4173-8376-bd2df73be0a6"
->
-</ReqRef><ReqRef
- Id="db31b8b2-7e8c-4c37-ac8a-c0df7eda9f8d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4049c1cc-144d-493b-9075-4c7598956982"
->
-</ReqRef><ReqRef
- Id="ecf2af34-5e55-40e4-83a6-e6ec4827734c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a37e606a-4a01-42f9-bfdd-b644b01459e2"
->
-</ReqRef><Comment>If the connection status timer has expired, the Safe Radio Connection setup is declared as failed.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="&quot;Connection status&quot; timer expires"
- Guid="6a118501-cac0-4a06-805f-b587d3b07391"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="051b7c73-d993-4246-ac2a-5099ddc3c5a1"
->ConnectionLostTime + ConnectionStatusTimer &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7a967e85-a3aa-4740-a5be-0df764c85620"
->SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action><Action
- Guid="066fa5b1-2e86-4ca6-93dd-e597e9fe9c21"
->NumberOfSentRequests &lt;- NumberOfSentRequests + 1</Action><Action
- Guid="30af9a7f-b3aa-438e-8e2c-8c3166dbfa4d"
->LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
- Guid="f77d82ba-eaff-4fd1-81c0-2026665608aa"
->SessionManagementData.RequestIsSent &lt;- True</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Handle conditions to stop requests"
- Guid="9b91ee76-2784-4353-8149-ba61eb53cb1a"
->
-<Comment>Handles the possible case to stop requests to set-up a safe radio connection, when the Kernel is not in the Start of Mission procedure.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="End of mission is performed"
+ Name="Stop requests if end of mission is performed"
  Guid="646f3bec-8d5f-4ba4-9483-3bff2fc2e376"
 >
 <ReqRef
@@ -2392,10 +2342,10 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <Actions>
 <Action
  Guid="2f2121c0-547a-4f28-920b-c73ac9de628c"
->THIS &lt;- RBCStruct.ConnectionStateSM.Inactive</Action></Actions>
+>THIS &lt;- ConnectionStateSM.Inactive</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Level transition order is passed"
+ Name="Stop requests if level transition order is passed"
  Guid="9baf68f6-558e-4e7e-b656-9c97e69df736"
 >
 <ReqRef
@@ -2407,14 +2357,14 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <PreConditions>
 <PreCondition
  Guid="e83c3c3e-9cfa-4ec8-9613-96417be71c7d"
->Kernel.LevelTransition.LTOtoProcess.TRLevel.Value in [Default.Level.L0, Default.Level.LNTC, Default.Level.L1]</PreCondition></PreConditions>
+>Kernel.LevelTransition.LevelTransitionToProcess.TRLevel.Value in [Default.Level.L0, Default.Level.LNTC, Default.Level.L1]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b71b573b-1f53-4f37-97b5-3ea811c3a2c3"
->THIS &lt;- RBCStruct.ConnectionStateSM.Inactive</Action></Actions>
+>THIS &lt;- ConnectionStateSM.Inactive</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="Announced radio hole is passed"
+ Name="Stop requests if announced radio hole is passed"
  Guid="3b2f67be-ebc7-4c66-b94c-5280f6238cf8"
 >
 <ReqRef
@@ -2430,10 +2380,10 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <Actions>
 <Action
  Guid="aa4d7c3e-e76d-40a7-9946-5e6162008c03"
->THIS &lt;- RBCStruct.ConnectionStateSM.Inactive</Action></Actions>
+>THIS &lt;- ConnectionStateSM.Inactive</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="RBC/RBC border is passed"
+ Name="Stop requests if RBC/RBC border is passed"
  Guid="02568a26-f5b0-4587-ae56-9754a49e14cf"
 >
 <ReqRef
@@ -2445,11 +2395,71 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <PreConditions>
 <PreCondition
  Guid="a315cce6-b406-417c-9709-d00d567e3b73"
->Kernel.TrainPosition.FrontEndPosition(PointOfInterest =&gt; DistanceInterval.Max) &gt;= PositionReport.RBCTransitionLocation</PreCondition></PreConditions>
+>Kernel.TrainPosition.FrontEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Max) &gt;= PositionReport.RBCTransitionLocation</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7857191c-725b-4d50-9197-8c15c1d2f16a"
->THIS &lt;- RBCStruct.ConnectionStateSM.Inactive</Action></Actions>
+>THIS &lt;- ConnectionStateSM.Inactive</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle connection timer"
+ Guid="8044e56e-b315-450c-8e47-ded7a39ff5bb"
+>
+<Comment>If the connection status timer explires, indicate that the connection is lost.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="&quot;Connection status&quot; timer expires"
+ Guid="6a118501-cac0-4a06-805f-b587d3b07391"
+>
+<ReqRef
+ Id="db31b8b2-7e8c-4c37-ac8a-c0df7eda9f8d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="adbf615d-a0e8-4585-951b-30dba2c016e8"
+>
+</ReqRef><ReqRef
+ Id="cd18a937-9dc2-456d-bee7-a61bcd564e32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="23802d02-9a29-4fcf-8d67-5abe1ea8a33d"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ff1c080c-34f8-4910-b38c-af6411d12a03"
+>
+</ReqRef><ReqRef
+ Id="ecf2af34-5e55-40e4-83a6-e6ec4827734c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="546b714c-ddc5-401c-8acb-42e9d7e303ac"
+>
+</ReqRef><ReqRef
+ Id="b15cc4d3-14ad-4f2e-b1d9-c70dc451cc6f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d4397b5d-e102-41c1-954a-8aa7df0563f5"
+>
+</ReqRef><ReqRef
+ Id="24cfec76-595f-41de-920e-42c8da108914"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="14a66f67-6b80-4a87-ba29-e6d2de210ce4"
+>
+</ReqRef><Comment>If the connection status timer explires, indicate that the connection is lost.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="051b7c73-d993-4246-ac2a-5099ddc3c5a1"
+>ConnectionLostTime + ConnectionStatusTimer &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7a967e85-a3aa-4740-a5be-0df764c85620"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action><Action
+ Guid="066fa5b1-2e86-4ca6-93dd-e597e9fe9c21"
+>NumberOfSentRequests &lt;- NumberOfSentRequests + 1</Action><Action
+ Guid="30af9a7f-b3aa-438e-8e2c-8c3166dbfa4d"
+>LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
+ Guid="f77d82ba-eaff-4fd1-81c0-2026665608aa"
+>SessionManagementData.RequestIsSent &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2522,7 +2532,9 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Guid="b4f25d0d-6815-4c2d-ae03-b9c5f4fe9298"
 >THIS &lt;- Connected</Action><Action
  Guid="14daf0db-62ec-4f22-8031-4c28c232386d"
->SendSessionEstablishmentReport()</Action></Actions>
+>SendSessionEstablishmentReport()</Action><Action
+ Guid="34a43062-7ec6-473d-9e19-755099d35942"
+>ContactRBCOrder &lt;- EMPTY</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2641,66 +2653,66 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <Rule
  Priority="Processing"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Order to contact an RBC is received"
  Guid="63704436-5af4-444f-a8e6-6349d2dee385"
 >
-<ReqRef
- Id="e1848200-b260-492c-a722-3b64311cb97f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5a49a622-e287-4d4f-880a-26ce53166311"
->
-</ReqRef><ReqRef
- Id="d870fe5c-bd41-4203-9dfc-5ace398ffd56"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ab02c3f7-807f-4a87-b47c-393893e559e4"
->
-</ReqRef><ReqRef
- Id="c434f0b2-9953-426f-ab6b-0c705da559de"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ddfcfe8e-9728-4092-a496-73514ef703ef"
->
-</ReqRef><Comment>If an order to contact an RBC is received in connecting state, the establishing of the communication session is aborted.</Comment>
+<Comment>If an order to contact an RBC is received in connecting state, the establishing of the communication session is aborted.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Order to contact an RBC is received"
+ Name="Order to terminate the communication session is received"
  Guid="a42b1225-8802-4fe3-9b3b-1148d9802095"
 >
+<ReqRef
+ Id="d870fe5c-bd41-4203-9dfc-5ace398ffd56"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c000a984-92e1-4c9f-a4ab-6d8babd16d90"
+>
+</ReqRef><ReqRef
+ Id="e1848200-b260-492c-a722-3b64311cb97f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="58a537e1-e554-487c-a5b0-3510d0ac5116"
+>
+</ReqRef><Comment>If an order to terminate the communication session is received, the communication session is terminated.</Comment>
 <PreConditions>
 <PreCondition
  Guid="c94000a1-d7dc-4cd3-becf-159031484f3a"
->ContactRBCOrder != EMPTY</PreCondition></PreConditions>
+>ContactRBCOrder != EMPTY
+  AND
+ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="005fe0c4-14fe-4ed1-8754-5011041d3708"
->THIS &lt;- Inactive</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Handle termination of communication session"
- Guid="e250a5fc-cb9c-42c8-a172-616e6d91b036"
->
-<Comment>If the order action to terminate the communication session, it has to be erased (since it is handled here).</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Handle termination of communication session"
- Guid="88edf8c0-ea11-4695-9842-ab183cddd0df"
->
-<Comment></Comment>
-<PreConditions>
-<PreCondition
- Guid="e1c7b5e8-4fb5-4603-b585-16bee501b09c"
->ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></PreConditions>
-<Actions>
-<Action
+>THIS &lt;- Inactive</Action><Action
  Guid="01701ac8-5a57-4ab9-9aa1-ebfd9312b3ff"
 >ContactRBCOrder &lt;- EMPTY</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Order to contact a different RBC is received"
+ Guid="810dd9dd-550b-403d-aa04-45bd7c0adc05"
+>
+<ReqRef
+ Id="c434f0b2-9953-426f-ab6b-0c705da559de"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1233accf-94cc-42df-b409-3c0c4d646543"
+>
+</ReqRef><Comment>If an order to contact a different RBC is received, the communication session is terminated.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="3b3b8132-510a-45e4-8ea7-1e37ef8996e4"
+>ContactRBCOrder != EMPTY
+  AND
+(
+  ContactRBCOrder.Id != LastKnownRBC.Id
+    OR
+  ContactRBCOrder.PhoneNumber != LastKnownRBC.PhoneNumber
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1096c816-665f-4d31-90fb-7dc32298eb34"
+>THIS &lt;- Inactive</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -2737,22 +2749,49 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Handle train data if accepting RBC"
+ Name="Handle validated train data"
  Guid="3e9be6b6-c794-4dc2-8864-ee20b5c44ad8"
 >
 <ReqRef
- Id="1d0a9f3a-05b9-496f-808f-1dc1ece5338f"
+ Id="3e290fa7-299c-4897-91e4-dbcb5702edbf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ded1d920-0161-49e4-91f9-46f9b8a328e6"
+ Guid="5bdc8f39-44a2-4d9e-8fb9-df822fa48600"
+>
+</ReqRef><ReqRef
+ Id="4a5cfdeb-9d79-4d58-8d37-5073de473751"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="41a15e27-5587-4b5f-99bb-27ca53ad4d33"
 >
 </ReqRef><Comment>If the current RBC is an accepting RBC, the on-board sends its train data.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
+ Name="Handle validated train data"
+ Guid="657834c9-feef-4ac1-a572-58a06727f940"
+>
+<Comment>If the connection with RBC is established and valid train data is present onboard, the message Validated Train Data is sent.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="2b26b73e-2b41-4741-8f2b-9b3ebe6994aa"
+>Kernel.TrainData.TrainData.DataState == Default.DataState.Valid</PreCondition><PreCondition
+ Guid="1885385a-2aa3-4151-8396-e579fca7bd78"
+>IsMainConnection</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="25272c57-44ec-4c93-9595-68bf6e2fc054"
+>SendValidatedTrainData()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Handle train data if accepting RBC"
  Guid="5d62b306-19d5-492b-81e6-ca0e07ed8f8b"
 >
+<ReqRef
+ Id="1d0a9f3a-05b9-496f-808f-1dc1ece5338f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="73803e17-bb68-4c62-b844-3883bd115e34"
+>
+</ReqRef><Comment>As soon as the on-oard equipment has established the session with the Accepting RBC, it shends its Train Data.</Comment>
 <PreConditions>
 <PreCondition
  Guid="07e657aa-3707-4bda-a4f4-a6d13481015f"
@@ -3064,7 +3103,6 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Name="Loss of the safe radio connection is detected"
  Guid="8779a660-1dd0-4176-80b8-c172f1e2b5ba"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="6222ed14-9c42-42d5-b29f-2e5222369f8c"
@@ -3115,8 +3153,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <PreConditions>
 <PreCondition
  Guid="98dfced5-c8e3-4402-9c30-42e6826e38b0"
-><Comment></Comment>
-Kernel.TrackDescription.TrackConditions.General.IsInsideRadioHole()</PreCondition></PreConditions>
+>Kernel.TrackDescription.TrackConditions.General.IsInsideRadioHole()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="31e5f409-b9e6-446b-867c-b18a87681e9d"
@@ -3196,11 +3233,6 @@ Kernel.TrackDescription.TrackConditions.General.IsInsideRadioHole()</PreConditio
  Guid="345712ec-f586-4161-a260-7c2b7c4eb719"
 >
 </ReqRef><ReqRef
- Id="84374b3d-739e-4c5f-909d-4c138dedec38"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="64d1fe74-9c45-451b-8b5e-74c20552440e"
->
-</ReqRef><ReqRef
  Id="bc41e5e5-6fff-4b96-a901-9bc45f108b16"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8f56dd0f-e588-4cc0-9e6b-bd50c23eb281"
@@ -3220,12 +3252,17 @@ Kernel.TrackDescription.TrackConditions.General.IsInsideRadioHole()</PreConditio
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7a3a6f67-69f6-4260-8fdb-bfadfe6a3987"
 >
+</ReqRef><ReqRef
+ Id="84374b3d-739e-4c5f-909d-4c138dedec38"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4c02cdf5-6671-4822-b77c-666272117319"
+>
 </ReqRef><Comment>Handle orders to contact an RBC.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Order to contact an RBC is received"
+ Name="Order to contact another RBC is received"
  Guid="63fe5c9c-8eee-4877-90ab-bc7187858c4a"
 >
 <Comment>When a connection to the RBC is established and a request to contact an RBC is received, the on-board sends the Termination of communication session message to the RBC and goes to Terminating state.</Comment>
@@ -4264,7 +4301,6 @@ After that, if an order to contact an Accepting RBC was received, it will be han
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="84188ebf-17d5-4d9f-af9e-cea78f940fcb"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="68a814aa-d977-4ba8-8329-54aaaec00081"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -5183,7 +5219,6 @@ The only one case where the status to display is that of the secondary connectio
  Name="Status of secondary RBC connection"
  Guid="bf82c512-40c9-460b-ad10-85f4fe30d0c5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="514190b9-00d9-4441-8105-a81690a45408"
@@ -5265,7 +5300,6 @@ The only one case where the status to display is that of the secondary connectio
  Name="Select RBC"
  Guid="0e5a581a-1201-405e-b00a-40ae760b28f2"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="8df44f1d-8bc6-47ea-9994-67dde1dc64c4"
@@ -5273,7 +5307,14 @@ The only one case where the status to display is that of the secondary connectio
 <Actions>
 <Action
  Guid="fb0c323a-04ee-47a6-86cd-341b24a90ee3"
->SelectRBCToContact().ContactRBCOrder &lt;- anOrder</Action></Actions>
+>SelectRBCToContact().ContactRBCOrder &lt;- anOrder</Action><Action
+ Guid="10e5e739-aca5-4fb6-814f-e45da2fe4dde"
+>LastKnownRBC &lt;- EURORADIO.RBCContactStruct
+{
+    Id =&gt; anOrder.Id,
+    PhoneNumber =&gt; anOrder.PhoneNumber,
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5621,7 +5662,6 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  Name="Close the session"
  Guid="b37006ef-5ce5-4c15-9dd8-55ec01214286"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7682,8 +7722,8 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="330"
- Y="840"
+ X="440"
+ Y="800"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8147,6 +8187,43 @@ NOT
 >aMessage.ACKNOWLEDGEMENT_OF_TRAIN_DATA &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ X="330"
+ Y="740"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ProcessOutgoingMessages"
+ Guid="c36b656b-aa9b-4f02-a9d4-d503cfa217a4"
+>
+<Comment>The outgoing messages are sent when specific actions are performed by the on-board equipment.
+
+But at the end of the cycle the conditions required for sending of position report can become satisfied =&gt; they are evaluated and if satisfied, the position report is sent.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send position report"
+ Guid="72736422-33d7-492a-81ac-6cfd6cf0eefd"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Send position report"
+ Guid="30a80c20-5a69-4859-9aba-ef425f481c6d"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="506f0d2b-e726-4168-92cc-489acdd72744"
+>PositionReport.SendPositionReport()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -8471,4 +8548,41 @@ NOT
 >
 </ReqRef><Comment>Stores the messages sent by the Accepting RBC before it becomes the supervising RBC.</Comment>
 </Variable></Variables>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ X="650"
+ Y="800"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Display safe radio connection status"
+ Guid="18070fc1-1c1f-49a3-9614-912ceed3ce08"
+>
+<ReqRef
+ Id="747bae2e-7720-4f04-ac58-bf2f7feb9e50"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="097a1101-bbb5-47b6-8a23-e0471f5aec25"
+>
+</ReqRef><ReqRef
+ Id="56576e5f-6491-43ac-bb6d-439d660b8baf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f9f3c652-cd83-4755-9589-a4c05d733c14"
+>
+</ReqRef><Comment>Requests the display of safe radio connection status.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Display safe radio connection status"
+ Guid="255ec871-8428-4c10-a557-e7c18206ba7a"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="02baeff3-ba76-4e24-b9bf-d47379e408b5"
+>DMI.MasterDMI().Out_SafeRadioConnectionIndication.Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>

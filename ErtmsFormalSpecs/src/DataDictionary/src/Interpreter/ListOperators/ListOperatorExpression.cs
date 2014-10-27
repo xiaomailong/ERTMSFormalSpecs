@@ -134,6 +134,9 @@ namespace DataDictionary.Interpreter.ListOperators
             return retVal;
         }
 
+        protected bool ElementFound = false;
+        protected bool MatchingElementFound = false;
+
         /// <summary>
         /// Prepares the iteration on the context provided
         /// </summary>
@@ -147,6 +150,9 @@ namespace DataDictionary.Interpreter.ListOperators
 
             PreviousIteratorVariable.Value = EFSSystem.EmptyValue;
             IteratorVariable.Value = EFSSystem.EmptyValue;
+
+            ElementFound = false;
+            MatchingElementFound = false;
 
             return retVal;
         }
@@ -163,8 +169,17 @@ namespace DataDictionary.Interpreter.ListOperators
         /// Ends the iteration
         /// </summary>
         /// <param name="context"></param>
-        protected virtual void EndIteration(InterpretationContext context, int token)
+        protected virtual void EndIteration(InterpretationContext context, ExplanationPart explain, int token)
         {
+            if (!ElementFound)
+            {
+                ExplanationPart.CreateSubExplanation(explain, "Empty collection");
+            }
+            else if (!MatchingElementFound)
+            {
+                ExplanationPart.CreateSubExplanation(explain, "No matching element found");
+            }
+
             context.LocalScope.PopContext(token);
         }
 
@@ -182,13 +197,22 @@ namespace DataDictionary.Interpreter.ListOperators
         /// Checks the expression and appends errors to the root tree node when inconsistencies are found
         /// </summary>
         public override void checkExpression()
-        {
+        {            
             base.checkExpression();
 
-            Types.Type listExpressionType = ListExpression.GetExpressionType();
-            if (!(listExpressionType is Types.Collection))
+            if (ListExpression != null)
             {
-                AddError("List expression " + ListExpression.ToString() + " should hold a collection");
+                ListExpression.checkExpression();
+
+                Types.Type listExpressionType = ListExpression.GetExpressionType();
+                if (!(listExpressionType is Types.Collection))
+                {
+                    AddError("List expression " + ListExpression.ToString() + " should hold a collection");
+                }
+            }
+            else
+            {
+                AddError("List expression should be provided");
             }
         }
 

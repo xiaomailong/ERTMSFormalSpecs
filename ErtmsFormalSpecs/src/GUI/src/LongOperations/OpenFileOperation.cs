@@ -80,7 +80,7 @@ namespace GUI.LongOperations
         /// <param name="arg"></param>
         public override void ExecuteWork()
         {
-            Dictionary = DataDictionary.Util.load(FileName, System, false, ErrorsDuringLoad, UpdateGuid);
+            Dictionary = DataDictionary.Util.load(FileName, System, DataDictionary.Util.PleaseLockFiles, ErrorsDuringLoad, UpdateGuid);
         }
 
         /// <summary>

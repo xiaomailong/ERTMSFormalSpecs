@@ -1,6 +1,6 @@
 <NameSpace
- X="480"
- Y="650"
+ X="170"
+ Y="120"
  Width="100"
  Height="50"
  Name="TrackConditions"
@@ -109,7 +109,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d6bd2952-809e-427a-977a-aac6d694728a"
 >
-<Comment></Comment>
 </ReqRef><Comment>Returns True if the TCProfile point is no longer applicable, ie. if there is a more recent profile point that is applied</Comment>
 <Parameters>
 <Parameter
@@ -132,8 +131,7 @@
 <PreConditions>
 <PreCondition
  Guid="63f5b8e4-1c3f-4267-a7e6-bfb62588b3c1"
-><Comment></Comment>
-TrackConditionType == ConditionType.Conditions</PreCondition></PreConditions>
+>TrackConditionType == ConditionType.Conditions</PreCondition></PreConditions>
 <Expression>THERE_IS_IN General.TCProfile| (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt;= TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
 </Case><Case
  Name="Metal masses are passed"
@@ -254,8 +252,7 @@ b) a different combination of enabled braking systems</Comment>
 <Actions>
 <Action
  Guid="effae0ff-821f-49a4-b156-ec9f0cd7cc5b"
-><Comment></Comment>
-REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackConditionType=&gt;ConditionType.Conditions) IN General.TCProfile</Action></Actions>
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackConditionType=&gt;ConditionType.Conditions) IN General.TCProfile</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

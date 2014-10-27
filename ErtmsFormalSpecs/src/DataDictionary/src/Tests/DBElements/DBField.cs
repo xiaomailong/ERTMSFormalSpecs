@@ -35,7 +35,7 @@ namespace DataDictionary.Tests.DBElements
         /// <summary>
         /// The value of the variable
         /// </summary>
-        public int Value
+        public string Value
         {
             get
             {
@@ -44,6 +44,18 @@ namespace DataDictionary.Tests.DBElements
             set
             {
                 setValue(value);
+            }
+        }
+
+        /// <summary>
+        /// Merges two fields
+        /// </summary>
+        /// <param name="p"></param>
+        public void Merge(DBField other)
+        {
+            if (getVariable() == other.getVariable())
+            {
+                setGuid(other.getGuid());    
             }
         }
     }

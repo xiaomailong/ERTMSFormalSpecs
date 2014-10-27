@@ -83,16 +83,18 @@ namespace DataDictionary.Interpreter.ListOperators
                 {
                     if (v != EFSSystem.EmptyValue)
                     {
+                        ElementFound = true;
                         IteratorVariable.Value = v;
 
                         if (conditionSatisfied(context, explain))
                         {
+                            MatchingElementFound = true;
                             retVal.Val.Add(IteratorExpression.GetValue(context, explain));
                         }
                     }
                     NextIteration();
                 }
-                EndIteration(context, token);
+                EndIteration(context, explain, token);
             }
 
             return retVal;

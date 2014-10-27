@@ -6,7 +6,6 @@
  Name="AxleLoad"
  Guid="2bb7594e-aee3-45d5-bcb6-092282828fe2"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
@@ -48,7 +47,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="cf0a11c1-ffaa-4fa9-bd6b-b40d30f1984e"
 >
-<Comment></Comment>
 </ReqRef><Comment>Indicates if the initial state has to be resumed. In that case there will be no speed restrictions due to axle load profile.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -64,7 +62,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="83a3d80c-a040-4d79-b312-aa274d51dc30"
 >
-<Comment></Comment>
 </ReqRef><Comment>Indicates when the initial state has to be resumed.</Comment>
 </StructureElement><StructureElement
  TypeName="AxleLoads"
@@ -105,8 +102,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="46c9c30b-3afe-47b5-9fce-fd6a8111f7bf"
 >
-</ReqRef><Comment></Comment>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default=""
  Mode="Internal"
@@ -308,7 +304,6 @@
  Name="SpeedRestriction"
  Guid="22c57881-cbe1-4a7d-9121-ccd4179f1296"
 >
-<Comment></Comment>
 <Expression>(REDUCE ASP.ALs
     USING  
         MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; AxleLoadSpeedRestriction ( anAxleLoad =&gt; X, Distance =&gt; d ), 
@@ -596,13 +591,11 @@ USING
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d0c19ffa-a7fa-472f-bf2e-ad8403eca91a"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="49595724-3359-4536-a90e-542bc90ffc8e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b6141a27-51ad-4c76-9250-ff3143f8309a"
 >
-<Comment></Comment>
 </ReqRef><Comment>Provides the length of an axle load together with the train&apos;s length, if needed.</Comment>
 <Parameters>
 <Parameter
@@ -642,7 +635,6 @@ USING
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1b0482c0-e198-4a73-929e-1ca3b1529e2d"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="6a6eebd7-7178-4712-b7fa-135df10c5a4c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -671,7 +663,6 @@ USING
  Name="UpdateAxleLoadProfile"
  Guid="53e1254c-7f16-4541-8487-61fd7a8c80da"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -690,8 +681,7 @@ USING
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4ce9aa8b-492e-401d-abd8-e15219cdf935"
 >
-</ReqRef><Comment></Comment>
-<PreConditions>
+</ReqRef><PreConditions>
 <PreCondition
  Guid="5d71078b-ef97-4758-aac1-4ba5b2f40779"
 >Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition><PreCondition
@@ -709,7 +699,6 @@ USING
  Name="NoInitialStatesToBeResumed"
  Guid="06102f57-e117-480c-9129-ab152587cb29"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="ccf11f0a-f6de-4d68-a793-4eeae4640d18"
@@ -815,8 +804,7 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9957e268-3673-4890-a314-802d8cfa9da8"
 >
-</ReqRef><Comment></Comment>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -838,7 +826,6 @@ IN
  Name="Insert first axle load"
  Guid="dafbc0d5-6a4d-44f9-9e44-3c9dba40a004"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -894,8 +881,7 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5aadd5de-2c1d-442e-8528-d01ebebbb00c"
 >
-</ReqRef><Comment></Comment>
-<SubRules></SubRules>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -996,17 +982,14 @@ ON
  Name="Resume initial states"
  Guid="a03d3367-fb14-45fa-9955-c16b87b36bfa"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="72e1f556-901a-48d1-b07e-569a772e86e3"
-><Comment></Comment>
-TrainPosition.FrontEndPosition(
+>TrainPosition.FrontEndPosition(
     PointOfInterest=&gt;DistanceInterval.Nom
 ) &gt;= ASP.EmptyProfileDistance</PreCondition><PreCondition
  Guid="89824f4b-7e4f-4726-9dc5-ebe40aec7187"
-><Comment></Comment>
-ASP.InitialState == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition></PreConditions>
+>ASP.InitialState == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4ad3347b-ced2-45bb-a7e7-f5c8c12d4901"

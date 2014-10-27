@@ -195,10 +195,18 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         public override void CheckStatement()
         {
-            if (ListExpression.Ref is Parameter)
+            if (ListExpression != null)
             {
-                Root.AddError("Cannot change the list value which is a parameter (" + ListExpression.ToString() + ")");
+                if (ListExpression.Ref is Parameter)
+                {
+                    Root.AddError("Cannot change the list value which is a parameter (" + ListExpression.ToString() + ")");
+                }
             }
+            else
+            {
+                Root.AddError("List should be specified");
+            }
+
 
             Types.Collection targetListType = ListExpression.GetExpressionType() as Types.Collection;
             if (targetListType == null)
@@ -293,11 +301,7 @@ namespace DataDictionary.Interpreter.Statement
 
                     Rules.Change change = new Rules.Change(variable, variable.Value, newListValue);
                     changes.Add(change, apply, runner);
-
-                    if (explanation != null)
-                    {
-                        explanation.SubExplanations.Add(new ExplanationPart(Root, change));
-                    }
+                    ExplanationPart.CreateSubExplanation(explanation, Root, change);
 
                     context.LocalScope.PopContext(token);
                 }

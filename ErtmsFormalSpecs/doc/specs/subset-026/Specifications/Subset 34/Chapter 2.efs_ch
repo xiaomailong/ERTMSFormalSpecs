@@ -4,7 +4,6 @@
 >
 <Paragraph
  id="2.1"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -12,13 +11,11 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="49369c23-ccd1-4131-b01e-42cbbf3a36f3"
 >General<Sub>
 <Paragraph
  id="2.1.1.1"
- guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -26,7 +23,6 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="97f12209-d1b7-4e8a-a4e2-3288c14f780e"
 >This chapter describes the functional requirements on all information which is exchanged between ERTMS/ETCS onboard and the Vehicle via the Train Interface.<RequirementSets>
@@ -41,7 +37,6 @@
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.1.1.2"
- guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -49,7 +44,6 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="53acd6ba-79b4-4e17-a613-759cd440eb4b"
 >The information which is exchanged between ERTMS/ETCS onboard and the Vehicle is based on the functionality defined by the ERTMS/ETCS SRS [1]<RequirementSets>
@@ -64,7 +58,6 @@
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.1.1.3"
- guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -72,7 +65,6 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="ad1c2fc2-3eec-4076-b323-52d765bce3a8"
 >Note: Due to its complexity and characteristics, the specification of the interface between ERTMS/ETCS onboard and the recording device in the train is defined in a separate interface specification and therefore not part of the train interface specification.<RequirementSets>
@@ -87,7 +79,6 @@
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.1.1.4"
- guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -95,7 +86,6 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="ce143023-d9f6-4de4-8e42-6e8d7ea36cef"
 >With reference to the Train Interface:
@@ -112,7 +102,6 @@
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.1.1.5"
- guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -120,7 +109,6 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="a5661e0f-3e68-4fe9-8013-a0c212879ec8"
 >In this chapter all functional requirements are written as mandatory principles, i.e. using the word &quot;shall&quot;. Whether a function is used in a specific implementation of the Train Interface may depend on the characteristics of the Vehicle.<RequirementSets>
@@ -146,7 +134,6 @@
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -154,13 +141,11 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="b2e0f352-0c2b-4677-879f-b71184656510"
 >Mode Control<Sub>
 <Paragraph
  id="2.2.1"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -168,13 +153,11 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="d186606f-8953-45ed-8dcd-3e5505d8921e"
 >Sleeping<Sub>
 <Paragraph
  id="2.2.1.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -182,7 +165,6 @@
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="9bd34b9e-1275-4b1d-b8bd-f7d43514a97f"
 >The sleeping information is defined as a two state input with the following values:
@@ -199,7 +181,6 @@
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.1.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -207,7 +188,6 @@
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="705d58b9-e6bf-4033-9442-3c725365f693"
 >Note: The input value &quot;Sleeping requested&quot; is used by ERTMS/ETCS onboard as one of the conditions for the transition to Sleeping mode. The other two conditions are &quot;standstill&quot;, which is managed internally in the ERTMS/ETCS onboard and &quot;All desks connected to the ERTMS/ETCS onboard equipment are closed&quot;, equivalent to &quot;All cabs connected to the ERTMS/ETCS onboard equipment are not active&quot;, which is generated internally in the ERTMS/ETCS onboard based on the input values &quot;Cab not active&quot; as defined in 2.5.1 of this document. See also the SRS references in 2.8.<RequirementSets>
@@ -218,7 +198,6 @@
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.1.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -226,13 +205,11 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="799f51a4-a983-491f-96a4-c53a0a152fcf"
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.2.1.3.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -240,13 +217,11 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="b56eebb1-e09a-44c9-8cb4-a786a164af3d"
 >After successful train inauguration, i.e. one master vehicle exists, defined by strictly one activated cab in the train, the information about successful master definition shall be communicated train-wide to all ERTMS/ETCS onboard units by means of the value &quot;Sleeping requested&quot;.<Sub>
 <Paragraph
  id="2.2.1.3.1.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -254,7 +229,6 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="6e7ef4e6-2a10-45f0-b613-1dea421cea9a"
 >Exception: The ERTMS/ETCS onboard connected via the cab status input (see 2.5.1) with the active cab may be excluded from getting the &quot;Sleeping requested&quot; information because it is not relevant for this ERTMS/ETCS onboard.<RequirementSets>
@@ -272,7 +246,6 @@
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.1.3.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -280,7 +253,6 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="2a74e194-a693-42bc-bac7-ff75e7e642d9"
 >If no active cab exists in the train, this information shall be communicated train-wide to all ERTMS/ETCS onboard units by means of the value &quot;Sleeping not requested&quot;.<RequirementSets>
@@ -291,7 +263,6 @@
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.1.3.3"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -299,7 +270,6 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="ac3ce3fc-a133-44c2-9895-2f775ee38a32"
 >Note: By means of this configuration of the sleeping input it is ensured that the ERTMS/ETCS onboard will only go to sleeping mode if another cab in the train is active, i.e. another train control system (ETCS or national) provides the supervision of the train movement.<RequirementSets>
@@ -328,7 +298,6 @@
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.2"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -336,13 +305,11 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="9f83e2e9-455d-4df6-b073-0a27cf795409"
 >Passive shunting<Sub>
 <Paragraph
  id="2.2.2.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -350,7 +317,6 @@
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="1e916e21-6a94-4e75-aeaa-8857ea37acf7"
 >The passive shunting information is defined as a two state input with the following values:
@@ -367,7 +333,6 @@
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.2.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -375,7 +340,6 @@
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="df56552b-73ea-4617-bea7-d04ca4234fc4"
 >Note: The input value &quot;Passive shunting permitted&quot; is used by ERTMS/ETCS onboard as one of the conditions for the transition to Passive Shunting mode. The other two conditions are &quot;desks are closed&quot;, equivalent to &quot;Cabs are not active&quot;, which is generated internally in the ERTMS/ETCS onboard from the input values &quot;cab not active&quot; as defined in 2.5.1 of this document, and &quot;Continue Shunting on desk closure&quot; function is active, which is generated internally in ERTMS/ETCS onboard from driver input. See also the SRS references in 2.7.<RequirementSets>
@@ -386,7 +350,6 @@
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.2.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -394,13 +357,11 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="862f1a9f-29cf-477d-8dc2-3633d185d9f0"
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.2.2.3.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -408,13 +369,11 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="42eee8e4-4471-4c2f-83fe-e6bf28a8d931"
 >The passive shunting input shall have the value &quot;Passive shunting permitted&quot; if one of the following conditions is fulfilled:<Sub>
 <Paragraph
  id="2.2.2.3.1.a"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -422,7 +381,6 @@
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="a41ce0a4-caf5-4aa5-96e8-e5ed3310d234"
 >Vehicle local (i.e. no data communication between vehicles in the train requested): full service brake applied AND drivers train brake controller isolated (for enabling the release of the train brake in other cab);
@@ -434,7 +392,6 @@ OR<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.2.3.1.b"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -442,7 +399,6 @@ OR<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="48928a85-b343-4d56-a08c-14c5114b0972"
 >Train-wide (i.e. data communication between vehicles in the train requested): Brakes other than the train brake applied (e.g. holding or parking brake), IF they can be released by train-wide command.<RequirementSets>
@@ -460,7 +416,6 @@ OR<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.2.3.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -468,7 +423,6 @@ OR<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="33aa9df2-40c2-4f63-b9c2-a54ade97c129"
 >If none of the conditions in 2.2.2.3.1 is fulfilled, the passive shunting input shall have the value &quot;Passive shunting not permitted&quot;.<RequirementSets>
@@ -479,7 +433,6 @@ OR<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.2.3.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -487,7 +440,6 @@ OR<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="9c2f013f-9e3e-490c-b219-39ac7e225169"
 >It shall be allowed to configure the passive shunting input permanently as &quot;Passive shunting not permitted&quot;. This is a decision made only by the Railway Undertaking e.g. based on the characteristics of the vehicle.<RequirementSets>
@@ -516,7 +468,6 @@ OR<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.3"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -524,13 +475,11 @@ OR<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="091e2914-e7c9-49ef-ba1c-5ac451504f66"
 >Non-Leading<Sub>
 <Paragraph
  id="2.2.3.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -538,7 +487,6 @@ OR<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="99c18997-e909-4f87-bb31-4cb0656ef216"
 >The non-leading information is defined as a two state input with the following values:
@@ -555,7 +503,6 @@ OR<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.3.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -563,7 +510,6 @@ OR<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="14a0113e-9a92-4745-9790-56bec28eace5"
 >Note: The input value &quot;Non-leading permitted&quot; is used by ERTMS/ETCS onboard as one of the conditions for the transition to Non Leading mode. The other two conditions are &quot;standstill&quot; and &quot;Driver selects Non Leading via the DMI&quot; which are managed internally in the ERTMS/ETCS onboard. See also the SRS references in 2.7<RequirementSets>
@@ -574,7 +520,6 @@ OR<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.3.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -582,13 +527,11 @@ OR<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="a21c883a-a992-4665-9932-013fbeb1ec43"
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.2.3.3.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -596,13 +539,11 @@ OR<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="b40055a7-7ed7-4290-a3d5-2db0e2529f84"
 >The non-leading input shall have the value &quot;Non-leading permitted&quot; if the following conditions are fulfilled:<Sub>
 <Paragraph
  id="2.2.3.3.1.a"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -610,7 +551,6 @@ OR<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="b1291c5a-530f-47ee-8bc7-9df4f5205984"
 >Drivers train brake controller isolated
@@ -622,7 +562,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.3.3.1.b"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -630,7 +569,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="3018a589-c75e-443b-8e53-71918781d9e9"
 >Travel direction selected<RequirementSets>
@@ -648,7 +586,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.3.3.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -656,7 +593,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="f69d81ce-4490-417c-a6d5-bf202234d2a4"
 >If at least one of the conditions in 2.2.3.3.1 is not fulfilled, the non-leading input shall have the value &quot;Non-leading not permitted&quot;.<RequirementSets>
@@ -685,7 +621,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.4"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -693,13 +628,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="dcd3333c-90b6-4f84-a97e-aab1835d5a6a"
 >Isolation<Sub>
 <Paragraph
  id="2.2.4.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -707,7 +640,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="e14a2a36-a1c5-4316-b05f-600097f91329"
 >The isolation information is defined as a two state output with the following values:
@@ -724,7 +656,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.2.4.2"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -732,7 +663,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="e39e401b-dc61-47be-aa16-9c916012cf8d"
 >Note: The isolation output is generated by ERTMS/ETCS onboard to inform the Vehicle that the ERTMS/ETCS onboard is in Isolation mode. This information may be used e.g. to isolate the ERTMS/ETCS onboard from brakes and from some other onboard equipment/systems (see SRS clause 4.4.3.1.1).<RequirementSets>
@@ -773,7 +703,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -781,13 +710,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="814737d5-1a86-4bc4-9487-077e479240c8"
 >Control of Brakes<Sub>
 <Paragraph
  id="2.3.1"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -795,13 +722,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="034e0620-6023-43a2-ab1a-115b716201a8"
 >Service brake command<Sub>
 <Paragraph
  id="2.3.1.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -809,7 +734,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="329a7f27-1bd7-4cd4-a3c6-c54b2e0342d5"
 >The service brake command (SBC) is defined as a two state output with the following values:
@@ -826,7 +750,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.1.2"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -834,7 +757,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="bfc16fe6-2364-4975-8d7c-ad98326d1b25"
 >Note: The SBC output is generated by ERTMS/ETCS onboard to command the service brake and to revoke this command.<RequirementSets>
@@ -849,7 +771,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.1.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -857,13 +778,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="1af2e78a-61fe-4a2d-ad86-a2caa3590b0f"
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.3.1.3.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -871,7 +790,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="7057d9c0-dca3-4254-b52a-4bfe92452fd5"
 >The SBC output value &quot;Service brake commanded&quot; shall result in the train applying the full service brake and cutting off the traction.<RequirementSets>
@@ -882,7 +800,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.1.3.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -890,7 +807,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="a0b5a287-67d7-43ea-aae5-37e7772e2f87"
 >Note: Full service brake means application of 100% of the installed braking performance of the train.<RequirementSets>
@@ -901,7 +817,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.1.3.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -909,7 +824,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="8ecd522b-24a8-4154-98cb-742652adcf99"
 >The SBC output value &quot;Service brake not commanded&quot; shall result in a release of the service brake, but only to the highest brake level currently commanded by other application(s) or by the driver, and shall permit the traction power to be switched on.<RequirementSets>
@@ -920,7 +834,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.1.3.4"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -928,7 +841,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="ac74e4b9-5cb6-496f-84cc-b63c7437e7b5"
 >Note 1: the traction power can be switched on again only after the driver has cancelled the traction command (i.e. after a 0-position-acknowledgement by the traction controller).<RequirementSets>
@@ -939,7 +851,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.1.3.5"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -947,7 +858,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="e160c73d-094f-4a38-a4a6-7f4a98f5433a"
 >Note 2: In case of no SB manually applied by the driver and in case of no ASC activated, the SB released by ETCS will automatically cancel the brake application on the train. In case of a gradient, it is possible to have forward movement which must be controlled by driver with his own action on brake. This is acceptable as it is the same situation today (without ETCS).<RequirementSets>
@@ -958,7 +868,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.1.3.6"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -966,7 +875,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="9f0f9ecc-0e79-4748-acf2-c97c8d29ac54"
 >Note 3: The full service brake may be actuated by various brake systems depending on the rolling stock brake architecture (e.g. dynamic brake by substitution, blending or superposition principle with the UIC air brake).<RequirementSets>
@@ -995,7 +903,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.2"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -1003,13 +910,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="a9d51997-df83-491d-b523-507aa41e1869"
 >Brake pressure<Sub>
 <Paragraph
  id="2.3.2.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1017,7 +922,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="f549b249-bf4b-4d17-a7cb-df8b47ffd37a"
 >The brake pressure information is defined as a composite input with the following values:
@@ -1033,7 +937,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.2.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1041,7 +944,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="6ea52912-6ef6-43dd-93a4-8cd0603b56a0"
 >Note: The brake pressure input is used by ERTMS/ETCS onboard in the service brake feedback model in [1].<RequirementSets>
@@ -1052,7 +954,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.2.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1060,13 +961,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="93872585-4e30-4066-adef-81780918cf64"
 >The following requirements apply to the rolling stock:<Sub>
 <Paragraph
  id="2.3.2.3.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1074,7 +973,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="5da99ec2-7aab-47ef-840b-e8b05116f1ba"
 >The value of the brake pressure input shall represent either the pressure in the main brake pipe or in the brake cylinder.<RequirementSets>
@@ -1085,7 +983,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.2.3.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1093,7 +990,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="15427759-9430-4f02-9810-ccbd8e230f0a"
 >Note: The ERTMS/ETCS onboard has to be configured for one of these two input parameters.<RequirementSets>
@@ -1130,7 +1026,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.3"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -1138,13 +1033,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="5b3f7b30-729f-470e-93d0-2e3eff9fe65c"
 >Emergency brake command<Sub>
 <Paragraph
  id="2.3.3.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1152,7 +1045,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="07aa4451-7a3c-41ac-8176-3eab54039e3c"
 >The emergency brake command (EBC) is defined as a two state output with the following values:
@@ -1169,7 +1061,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.3.2"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -1177,7 +1068,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="983169a7-091c-42ff-9ade-6b4e7172f06b"
 >Note: The EBC output is generated by ERTMS/ETCS onboard to command the emergency brake and to revoke this command.<RequirementSets>
@@ -1188,7 +1078,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.3.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1196,13 +1085,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="84d96d30-43e3-4203-ae6f-6648bd02f4d0"
 >The following requirements apply to the rolling stock:<Sub>
 <Paragraph
  id="2.3.3.3.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1210,7 +1097,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="5552dcbb-67b4-4719-b7ea-74d92fa3a017"
 >The EBC output value &quot;Emergency brake commanded&quot; shall result in the train applying the emergency brake and cutting off the traction.<RequirementSets>
@@ -1221,7 +1107,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.3.3.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1229,7 +1114,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="3c432473-4ad8-4b8c-aea0-3fe0b4e9aad6"
 >The EBC output value &quot;Emergency brake not commanded&quot; shall permit release of the emergency brake (implementation dependent if brake is released automatically or not, decision made by operator) and shall permit the traction power to be switched on.<RequirementSets>
@@ -1240,7 +1124,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.3.3.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1248,7 +1131,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="e3a8fa70-ac9d-45d1-be1e-92747ea4e865"
 >Note: the traction power can be switched on again only after the driver has cancelled the traction command (i.e. after a 0-position-acknowledgement by the traction controller).<RequirementSets>
@@ -1277,7 +1159,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.4"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -1285,13 +1166,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="914024d3-6bf6-43ef-a347-66f1c951a253"
 >Special brake inhibit - Trackside orders<Sub>
 <Paragraph
  id="2.3.4.1"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -1299,7 +1178,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="aa3a7b1e-3003-4547-8cc7-6f9f347fdb76"
 >To be harmonized.<RequirementSets>
@@ -1325,7 +1203,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.5"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -1333,13 +1210,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="1b4c3637-6b1b-404c-a8e6-7efa3937c9a3"
 >Special brake inhibit - STM Orders<Sub>
 <Paragraph
  id="2.3.5.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1347,7 +1222,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="8e7e9edc-238d-4740-a6e5-0b3072ab03c3"
 >The generic requirement descriptions in this section shall apply to the inhibition of the following special brakes:
@@ -1366,7 +1240,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.5.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1374,7 +1247,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="ee8241a4-8aa5-4163-8de2-20ca4e6ad70a"
 >This special brake information is defined for each special brake as a two state output with the following values:
@@ -1391,7 +1263,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.5.3"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -1399,7 +1270,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="d191b4a8-10a8-438c-845b-17487db311f9"
 >Note: This special brake inhibit output is generated by the ERTMS/ETCS onboard to inform the train that the respective special brake application is to be allowed / inhibited due to an order from STM.<RequirementSets>
@@ -1425,7 +1295,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.6"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -1433,13 +1302,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="c1f7e69d-55f1-465d-849b-4b894f963de4"
 >Special brake status<Sub>
 <Paragraph
  id="2.3.6.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1447,7 +1314,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="40825e98-f126-45fb-aa32-7514e64332b6"
 >The generic requirement descriptions in this section shall apply to the status of the following special brakes:
@@ -1466,7 +1332,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.6.2"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -1474,7 +1339,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="b71f094b-9dd3-45f5-92f3-a39fd870cb1b"
 >Note: The specifications for the status of these special brakes are exactly the same and therefore given only once.<RequirementSets>
@@ -1489,7 +1353,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.6.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1497,7 +1360,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="dc456af4-f303-4870-a171-ef1d7085b9c0"
 >The special brake status information is defined as a two state input with the following values:
@@ -1514,7 +1376,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.6.4"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1522,7 +1383,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="03cde933-89e7-47e7-9145-df57f955e647"
 >Note: The special brake status input is used by ERTMS/ETCS onboard to adapt the braking curve model for the characteristics of the service brake, the emergency brake, or both, according to the possible configurations of ERTMS/ETCS onboard as defined in [1].<RequirementSets>
@@ -1537,7 +1397,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.6.5"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1545,13 +1404,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="c10c7a8f-70ce-4a76-b38d-ef0e3af3f318"
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.3.6.5.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1559,7 +1416,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="58591906-95a2-4114-9175-01e04940dee2"
 >The special brake status input shall have the value &quot;Special brake active&quot; if the special brake is available, i.e. in working condition and not inhibited.<RequirementSets>
@@ -1570,7 +1426,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.6.5.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1578,7 +1433,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="80c833b6-8a72-48eb-a0e2-97457bbcb4b1"
 >The special brake status input shall have the value &quot;Special brake not active&quot; if the special brake is not available, i.e. not in working condition or inhibited.<RequirementSets>
@@ -1607,7 +1461,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.7"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -1615,13 +1468,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="0b380fa2-af2e-45d9-9823-17982d14ca9e"
 >Additional brake status<Sub>
 <Paragraph
  id="2.3.7.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1629,7 +1480,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="39f2f6b9-101e-4160-b324-b2c4c3b64bbc"
 >The additional brake status information (ABS) is defined as a two state input with the following values:
@@ -1646,7 +1496,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.7.2"
- guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -1654,7 +1503,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="dd174716-d385-4fbd-be0e-1ccf329bf059"
 >The &quot;additional brakes&quot; are defined as any brakes in the train which are independent of wheel/rail adhesion.<RequirementSets>
@@ -1669,7 +1517,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.7.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1677,7 +1524,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="cb88b506-7ed8-46a9-988e-3cd7ea95ef7a"
 >Note: The ABS input is used by ERTMS/ETCS onboard to adapt the braking curve model for the characteristics of the additional brakes independent of wheel/rail adhesions, as defined in [1].<RequirementSets>
@@ -1688,7 +1534,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.7.4"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1696,13 +1541,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="7bbe637f-9628-42d7-bce5-a76b54030eb6"
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.3.7.4.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1710,7 +1553,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="9009bf82-5cb0-4f38-98a1-c69ce36d3845"
 >The ABS input shall have the value &quot;additional brakes active&quot; if the additional brake(s) is/are available, i.e. in working condition and not inhibited.<RequirementSets>
@@ -1721,7 +1563,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.3.7.4.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1729,7 +1570,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="3dafa686-a62d-4a1b-914d-8f8745423727"
 >The ABS input shall have the value &quot;additional brakes not active&quot; if the additional brake(s) is/are not available, i.e. not in working condition or inhibited.<RequirementSets>
@@ -1773,7 +1613,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -1781,13 +1620,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="b12b86f2-bea8-4c73-b264-eba159113859"
 >Control of Train Functions<Sub>
 <Paragraph
  id="2.4.1"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -1795,13 +1632,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="17b5178d-cc39-4dcb-82dc-79283cbc26d4"
 >Change of traction system<Sub>
 <Paragraph
  id="2.4.1.1"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -1809,7 +1644,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="d07b2f9e-c8f3-4389-be7f-633d830fcec0"
 >To be harmonized.<RequirementSets>
@@ -1835,7 +1669,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.2"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -1843,13 +1676,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="f4458fa4-3026-4a46-a105-2cddd7a04e8d"
 >Pantograph - Trackside orders<Sub>
 <Paragraph
  id="2.4.2.1"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -1857,7 +1688,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="5aeaf1f3-c6de-4bdb-a7c2-ea809236e366"
 >To be harmonized.<RequirementSets>
@@ -1883,7 +1713,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.3"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -1891,13 +1720,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="b255e516-0974-49b2-856d-5f59b6812643"
 >Pantograph - STM orders<Sub>
 <Paragraph
  id="2.4.3.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1905,7 +1732,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="64796bcb-a745-4f75-99bf-47778270abbd"
 >This pantograph information is defined as a two state output with the following values:
@@ -1922,7 +1748,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.3.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1930,7 +1755,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="00387b66-c459-4ea1-af5c-fea7a1609c86"
 >Note: This pantograph output is generated by the ERTMS/ETCS onboard to inform the train that the pantograph has to be raised / lowered immediately due to an order from STM.<RequirementSets>
@@ -1956,7 +1780,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.4"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -1964,13 +1787,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="d236eb7f-f63e-418e-9f49-7dd59b42aeab"
 >Air tightness - Trackside orders<Sub>
 <Paragraph
  id="2.4.4.1"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -1978,7 +1799,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="31cedb73-fb37-4bb0-8dfd-3373de85aca3"
 >To be harmonized.<RequirementSets>
@@ -2004,7 +1824,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.5"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -2012,13 +1831,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="5140069e-4513-4bbc-b1f5-c126c231f7f1"
 >Air tightness - STM orders<Sub>
 <Paragraph
  id="2.4.5.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2026,7 +1843,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="e864835c-d370-4254-abe0-f0231ef53296"
 >This air tightness information is defined as a two state output with the following values:
@@ -2043,7 +1859,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.5.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2051,7 +1866,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="411c6431-5cd6-44de-bca8-459584dad124"
 >Note: This air tightness output is generated by the ERTMS/ETCS onboard to inform the train that the flap has to be open / closed immediately due to an order from STM.<RequirementSets>
@@ -2077,7 +1891,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.6"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -2085,13 +1898,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="e775d5be-37e9-40d8-b4b9-9f8e2df6193b"
 >Passenger Door<Sub>
 <Paragraph
  id="2.4.6.1"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -2099,7 +1910,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="e943ce31-72bc-4ab6-b53b-dab2cb1c9a76"
 >To be harmonized.<RequirementSets>
@@ -2125,7 +1935,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.7"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -2133,13 +1942,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="feeb934e-c677-47e3-90e8-7c9574834fac"
 >Main Power Switch - Trackside orders<Sub>
 <Paragraph
  id="2.4.7.1"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -2147,7 +1954,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="6ed868c3-d43b-47dd-8775-d6a819c8ca53"
 >To be harmonized.<RequirementSets>
@@ -2173,7 +1979,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.8"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -2181,13 +1986,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="b010e2d5-8554-4d45-a236-7f83853a2a0b"
 >Main Power Switch - STM orders<Sub>
 <Paragraph
  id="2.4.8.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2195,7 +1998,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="a206f1ba-bef5-40dd-b305-c2cb46cab517"
 >This main power switch information is defined as a two state output with the following values:
@@ -2212,7 +2014,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.8.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2220,7 +2021,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="e491c678-743e-49e8-9ab6-f935f09bceda"
 >Note: This main power switch output is generated by the ERTMS/ETCS onboard to inform the train that the main switch has to be open / closed immediately due to an order from STM.<RequirementSets>
@@ -2246,7 +2046,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.9"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -2254,13 +2053,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="2ace2722-9f0d-4486-934f-c7765ccaabe8"
 >Traction Cut Off<Sub>
 <Paragraph
  id="2.4.9.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2268,7 +2065,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="150c63c0-f112-408f-bb6c-1ea9c8c0d98a"
 >The traction cut off information (TCO) is defined as a two state output with the following values:
@@ -2285,7 +2081,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.9.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2293,7 +2088,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="54fc5d9e-849c-4ae7-9f7d-bfcfe12ee72d"
 >Note: The TCO output is generated by ERTMS/ETCS onboard to cut the traction as soon as it passes the warning limit of the braking curve model as defined in [1] or as a consequence of an STM command.<RequirementSets>
@@ -2308,7 +2102,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.9.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2316,13 +2109,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="550956f7-ac7b-43c3-9178-93eca2e03bec"
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.4.9.3.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2330,7 +2121,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="70e73fa7-dc62-4ac5-815d-6b05f9b4b92a"
 >The TCO output value &quot;Cut off traction&quot; shall be used by the train to cut off the traction power.<RequirementSets>
@@ -2341,7 +2131,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.9.3.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2349,7 +2138,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="3ddb9299-36d8-4adf-b558-944c610e4089"
 >The TCO output value &quot;Do not cut off traction&quot; shall allow the driver or an automatic system (ASC) to apply traction power.<RequirementSets>
@@ -2378,7 +2166,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.4.10"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -2386,13 +2173,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="6f3f0da0-5fa1-4ea6-970c-1850e76f21f1"
 >Change of allowed current consumption<Sub>
 <Paragraph
  id="2.4.10.1"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -2400,7 +2185,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="52bc04f7-19ed-4547-8be6-bf9f4b8100ad"
 >To be harmonized.<RequirementSets>
@@ -2441,7 +2225,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -2449,13 +2232,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="4e4bf824-24db-4724-b38a-1f3c6dd97931"
 >Train Status<Sub>
 <Paragraph
  id="2.5.1"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -2463,13 +2244,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="72bb26e2-61ee-4ecc-ae7d-d504b3f11cca"
 >Cab Status<Sub>
 <Paragraph
  id="2.5.1.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2477,7 +2256,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="deed4628-97e4-4181-8665-7509256de3fa"
 >The cab status information is defined as a two state input with the following values:
@@ -2494,7 +2272,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.1.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2502,7 +2279,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="4e985ff8-d185-48ce-8afd-6944a286b13a"
 >Note 1: The cab status input is used by ERTMS/ETCS onboard for various purposes as defined in [1] or by an STM as defined in [3]. The expression &quot;desk open&quot; in [1] is equivalent to &quot;Cab active&quot; and &quot;desk closed&quot; in [1] is equivalent to &quot;Cab not active&quot;.<RequirementSets>
@@ -2513,7 +2289,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.1.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2521,7 +2296,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="839d8340-fe74-4358-8e90-bbcbf37f22e7"
 >If there is more than one cab connected to a single ERTMS/ETCS onboard unit, each cab will be connected to its individual input.<RequirementSets>
@@ -2536,7 +2310,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.1.4"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2544,13 +2317,11 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="4c089ca6-3a79-4335-bf6b-23d8dcc52b67"
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.5.1.4.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2558,7 +2329,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="940fcf76-9d94-4edc-9b7f-15982740e30b"
 >The cab status input shall have the value &quot;Cab active&quot; if the cab connected to this input is active.<RequirementSets>
@@ -2569,7 +2339,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.1.4.2"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -2577,7 +2346,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="a6becdcf-9e47-4430-b668-fe727b9e29e9"
 >Note: The active cab is the cab from which the traction is controlled.<RequirementSets>
@@ -2588,7 +2356,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.1.4.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2596,7 +2363,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="6ace0263-f3e3-4b80-802f-7ef76f67ec2d"
 >The cab status input shall have the value &quot;Cab not active&quot; if the cab connected to this input is not active.<RequirementSets>
@@ -2607,7 +2373,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.1.4.4"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2615,7 +2380,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="2285ede8-d6ee-4335-ad56-8651d6bcf99c"
 >For single cab locos with two desks, each related to a different train orientation, each desk will be connected to its individual cab status input.<RequirementSets>
@@ -2626,7 +2390,6 @@ AND<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.1.4.5"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2634,7 +2397,6 @@ AND<RequirementSets>
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="639e4b78-6508-4b15-8ce2-176c73314ca5"
 >For single cab locos with only one desk, the cab status shall be combined with the train orientation information to define two virtual cab status signals, connected to their individual inputs.
@@ -2647,7 +2409,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.1.4.6"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -2655,7 +2416,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="f601c872-0d40-422d-a9ed-92b3d10c28c7"
 >Note: The train orientation may be obtained from e.g. the head lights of the train.<RequirementSets>
@@ -2666,7 +2426,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.1.4.7"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2674,7 +2433,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="afc11076-89df-4f73-ab8a-4305e755d70a"
 >Regardless of the vehicle layout the rolling stock shall ensure that only one cab or virtual cab is reported active at any time to a single ERTMS/ETCS onboard equipment.<RequirementSets>
@@ -2703,7 +2461,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.2"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -2711,13 +2468,11 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="07f598aa-6058-4a7b-8aa9-97df12fe0a1f"
 >Direction Controller<Sub>
 <Paragraph
  id="2.5.2.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2725,7 +2480,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="4a159c89-1c48-4991-b068-8e3a93337280"
 >The direction controller information is defined as a three state input with the following values:
@@ -2743,7 +2497,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.2.2"
- guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -2751,7 +2504,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="e3570366-8e7e-4a12-b8eb-61b004744ca2"
 >The notion of forward direction shall correspond to the train orientation defined by the active (virtual) cab as defined in 2.5.1, i.e. when the direction controller is in forward position, this means that the train movement will be in the direction of the active (virtual) cab.<RequirementSets>
@@ -2766,7 +2518,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.2.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2774,7 +2525,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="bf9fab91-97bd-4886-a748-5fe11405b73f"
 >If no cab is active the direction controller information may have any value, but shall be ignored by ERTMS/ETCS onboard.<RequirementSets>
@@ -2789,7 +2539,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.2.4"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2797,7 +2546,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="172da1f2-b135-469b-b39a-5f6fb0fabb49"
 >Note: The direction controller input is used by ERTMS/ETCS onboard to prevent train movement which conflicts with the current position of the direction controller in the active cab and to detect the driver&apos;s intention to reverse, which is one of the conditions for entering Reversing mode. The direction controller input is also used by an STM as defined in [3].<RequirementSets>
@@ -2808,7 +2556,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.2.5"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2816,13 +2563,11 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="76bb47ed-0bdf-48a6-b086-399ebf79deca"
 >The following requirements shall apply to the rolling stock:<Sub>
 <Paragraph
  id="2.5.2.5.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2830,7 +2575,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="a4f7bea9-e655-4f41-ade9-5093a2d45abb"
 >If the ERTMS/ETCS onboard is connected to more than one cab, it is the responsibility of the rolling stock to relate the direction controller information to the active cab.<RequirementSets>
@@ -2859,7 +2603,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.3"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -2867,13 +2610,11 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="e334e6ce-b9fd-4d57-b9fa-763dfb53a873"
 >Train integrity<Sub>
 <Paragraph
  id="2.5.3.1"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -2881,7 +2622,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="f9e20546-588d-4a20-b2e2-bbbad853bafe"
 >To be harmonized.<RequirementSets>
@@ -2907,7 +2647,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.4"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -2915,13 +2654,11 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="96b78e19-c553-4418-a827-628639cc0193"
 >Traction status<Sub>
 <Paragraph
  id="2.5.4.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2929,7 +2666,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="51935dba-7b50-4bd2-b935-b00e566f76f9"
 >The traction status information is defined as a two state input with the following values:
@@ -2946,7 +2682,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.5.4.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2954,7 +2689,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="6123d1a4-d41e-4c0f-a278-9fd4b38e47fd"
 >Note: This traction status information is forwarded by the ERTMS/ETCS onboard to the STM.<RequirementSets>
@@ -2991,7 +2725,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.6"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -2999,13 +2732,11 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="fb750e61-2b8d-4339-b488-e6fbe7528e2d"
 >Train Data<Sub>
 <Paragraph
  id="2.6.1"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -3013,13 +2744,11 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="5a81639e-8949-4a38-a4a3-3914448264ae"
 >Type of train data entry<Sub>
 <Paragraph
  id="2.6.1.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3027,7 +2756,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="6d212610-a9ec-4b0e-9502-48730fbbbd5a"
 >The type of train data entry information is defined as a three state input with the following values:
@@ -3056,7 +2784,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.6.2"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -3064,13 +2791,11 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="d1925f61-e610-4817-9e15-d88a236372ab"
 >Train data information<Sub>
 <Paragraph
  id="2.6.2.1"
- guid=""
  type="NOTE"
  scope="FLAGS"
  bl=""
@@ -3078,7 +2803,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="6f69ab57-55b8-4acb-9707-b343c59e7799"
 >To be harmonized.<RequirementSets>
@@ -3119,7 +2843,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.7"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -3127,13 +2850,11 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="66c68f09-3fcf-423c-8a1f-ed4ba13b7639"
 >National System isolation<Sub>
 <Paragraph
  id="2.7.1.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3141,7 +2862,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="f2a86c31-9afa-4835-9476-eef3285affd4"
 >The National System isolation information is defined as a two state input with the following values:
@@ -3158,7 +2878,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.7.1.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3166,7 +2885,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="f528ddec-a4ac-4385-a599-5f3a1d27ea24"
 >A NTC isolation input shall be used by the ERTMS/ETCS on-board equipment in case it is interfaced to the National System through an STM and this National System requires isolation of the STM to be implemented.<RequirementSets>
@@ -3192,7 +2910,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="2.8"
- guid=""
  type="TITLE"
  scope="FLAGS"
  bl=""
@@ -3200,13 +2917,11 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="7c738480-29dc-4df0-b16a-476e7ab9add2"
 >Reference of functions<Sub>
 <Paragraph
  id="2.8.1.1"
- guid=""
  type="DEFINITION"
  scope="FLAGS"
  bl=""
@@ -3214,13 +2929,11 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="fc45ab64-c419-4a2e-b642-9f9d9bdb0b0f"
 >The following tables give the SRS, DMI, STM subsets references for each function on the Train Interface and the direction of the information (Input / Output of the ERTMS/ETCS onboard).<Sub>
 <Paragraph
  id="Table 2.8.1.1.1"
- guid=""
  type="TABLE_HEADER"
  scope="FLAGS"
  bl=""
@@ -3228,13 +2941,11 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="679d5897-63fe-4c7c-8742-846c5b7b16d9"
 >Chapter; Name; Reference in SRS [1]; Input / Output<Sub>
 <Paragraph
  id="Entry 2.8.1.1.1.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3242,7 +2953,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="a9c6b185-a766-4976-8adf-60d8d7f236ee"
 >2.2.1; Sleeping; 4.4.6 / 4.6.3; Input<RequirementSets>
@@ -3253,7 +2963,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3261,7 +2970,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="11299e1d-f740-44c3-9a5c-50226f32690c"
 >2.2.2; Passive shunting; 4.4.20 / 4.6.3; Input<RequirementSets>
@@ -3272,7 +2980,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3280,7 +2987,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="09309e8a-82d8-45db-a8f2-7030647f8485"
 >2.2.3; Non Leading; 4.4.15 / 4.6.3; Input<RequirementSets>
@@ -3291,7 +2997,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.4"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3299,7 +3004,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="9dfafd4f-0c79-451b-8b8d-1974082706e4"
 >2.2.4; Isolation; 4.4.3.1.1; Output<RequirementSets>
@@ -3310,7 +3014,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.5"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3318,7 +3021,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="43c2eea2-abf4-4dc8-b6fd-38ecc4df7f71"
 >2.3.1; Service brake command; 3.13.2.2.7; Output<RequirementSets>
@@ -3329,7 +3031,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.6"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3337,7 +3038,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="b854037d-8d2f-42cc-9058-9dccf18f20e9"
 >2.3.2; Brake pressure; 3.13.2.2.7 / A.3.10; Input<RequirementSets>
@@ -3348,7 +3048,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.7"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3356,7 +3055,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="c9c519e4-c37e-43f8-a6a1-18a0dda26016"
 >2.3.3; Emergency brake command; 3.13.10 / 3.14.1 / 4.4.4 / 4.4.5 / 4.4.13; Output<RequirementSets>
@@ -3367,7 +3065,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.8"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3375,7 +3072,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="b6739afe-d52f-4017-a97b-b84801c452d6"
 >2.3.4; Special brake inhibit; 3.12.1; Output<RequirementSets>
@@ -3386,7 +3082,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.9"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3394,7 +3089,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="4ad37f33-d9ef-4674-a9fb-b6ab30846c4a"
 >2.3.6; Special brake status; 3.13; Input<RequirementSets>
@@ -3405,7 +3099,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.10"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3413,7 +3106,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="02cb1f03-d196-4076-b127-090974ab08a1"
 >2.3.7; Additional brake status; 3.13; Input<RequirementSets>
@@ -3424,7 +3116,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.11"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3432,7 +3123,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="b9532a1e-8ec7-4679-b610-25d407400191"
 >2.4.1; Change of traction system; 3.12.1; Output<RequirementSets>
@@ -3443,7 +3133,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.12"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3451,7 +3140,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="6e93f083-ce98-468f-ab66-d7bae503f92c"
 >2.4.2; Pantograph; 3.12.1; Output<RequirementSets>
@@ -3462,7 +3150,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.13"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3470,7 +3157,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="58c71da3-6b23-4051-822d-a8456381b0e7"
 >2.4.4; Air tightness; 3.12.1; Output<RequirementSets>
@@ -3481,7 +3167,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.14"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3489,7 +3174,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="3cb0d222-655b-4c2b-95d0-034b929254d4"
 >2.4.6; Passenger Door; 3.12.1; Output<RequirementSets>
@@ -3500,7 +3184,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.15"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3508,7 +3191,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="930cca9b-293c-47ed-beed-7b4881fb0000"
 >2.4.7; Main Power Switch; 3.12.1; Output<RequirementSets>
@@ -3519,7 +3201,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.16"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3527,7 +3208,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="3108ce9e-f990-4004-b30a-8202345f7b50"
 >2.4.9; Traction Cut Off; 3.13.2.2.8; Output<RequirementSets>
@@ -3538,7 +3218,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.17"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3546,7 +3225,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="25b8ff07-e4bd-4601-81dd-1596a15c93ad"
 >2.4.10; Change of allowed current consumption; 3.12.1; Output<RequirementSets>
@@ -3557,7 +3235,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.18"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3565,7 +3242,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="80ae3df2-b47f-4772-93e7-1c1e7395f9b2"
 >2.5.1; Cab Status; 4.6.3; Input<RequirementSets>
@@ -3576,7 +3252,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.19"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3584,7 +3259,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="35f550fb-10f0-4111-a118-44203ac2ec76"
 >2.5.2; Direction Controller; 3.14.2 / 5.13.1.4; Input<RequirementSets>
@@ -3595,7 +3269,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.20"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3603,7 +3276,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="ef800618-551f-4333-aa9f-a92d9bd7e925"
 >2.5.3; Train Integrity; 3.6.5.2.1; Input<RequirementSets>
@@ -3614,7 +3286,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.1.21"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3622,7 +3293,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="88d5dc1c-7304-44be-96b3-8b9fa33d5fbb"
 >2.6.2; Train Data information; 3.18.3; 5.17; Input<RequirementSets>
@@ -3640,7 +3310,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Table 2.8.1.1.2"
- guid=""
  type="TABLE_HEADER"
  scope="FLAGS"
  bl=""
@@ -3648,13 +3317,11 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="715be996-7282-4aeb-9a5b-7cfe0c8a7ab5"
 >Chapter; Name; Reference in DMI [2]; Input / Output<Sub>
 <Paragraph
  id="Entry 2.8.1.1.2.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3662,7 +3329,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="50b5afc2-0c13-4c13-b6e1-94fa6422afe2"
 >2.6.1; Type of train data entry; 10.3.9.6; Input<RequirementSets>
@@ -3680,7 +3346,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Table 2.8.1.1.3"
- guid=""
  type="TABLE_HEADER"
  scope="FLAGS"
  bl=""
@@ -3688,13 +3353,11 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NotImplementable"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="6f208ea3-6550-4ad4-913d-68c5fd58fef4"
 >Chapter; Name; Reference in STM [3]; Input / Output<Sub>
 <Paragraph
  id="Entry 2.8.1.1.3.1"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3702,7 +3365,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="7c3d617a-afee-40e5-9466-6d964f6957f2"
 >2.3.1; Service brake command; 5.2.5; Output<RequirementSets>
@@ -3713,7 +3375,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.3.2"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3721,7 +3382,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="dee8e232-1844-4559-bba2-ac49c6326aac"
 >2.3.3; Emergency brake command; 5.2.5; Output<RequirementSets>
@@ -3732,7 +3392,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.3.3"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3740,7 +3399,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="8c3e0f42-e351-40c3-821f-9aed58b51042"
 >2.3.5; Special brake inhibit; 5.2.4.3; Output<RequirementSets>
@@ -3751,7 +3409,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.3.4"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3759,7 +3416,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="528f15a5-a8b2-42aa-ad33-05ec68006ff4"
 >2.4.3; Pantograph; 5.2.4.3; Output<RequirementSets>
@@ -3770,7 +3426,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.3.5"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3778,7 +3433,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="b82b4a22-c145-48f7-89b2-4ad0ce47cf18"
 >2.4.5; Air tightness; 5.2.4.3; Output<RequirementSets>
@@ -3789,7 +3443,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.3.6"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3797,7 +3450,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="5bd6c5a9-f5dc-4981-bdf8-068976ad0fe5"
 >2.4.8; Main power switch; 5.2.4.3; Output<RequirementSets>
@@ -3808,7 +3460,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.3.7"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3816,7 +3467,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="0e6f8e3b-f65d-4cda-ab7b-d190ea997ec8"
 >2.4.9; Traction Cut Off; 5.2.4.3; Output<RequirementSets>
@@ -3827,7 +3477,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.3.8"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3835,7 +3484,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="66282cb8-6a84-4da5-af95-53eee714721f"
 >2.5.1; Cab Status; 5.2.4.4; Input<RequirementSets>
@@ -3846,7 +3494,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.3.9"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3854,7 +3501,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="93654409-3e42-4c14-af80-509643a42bc2"
 >2.5.2; Direction Controller; 5.2.4.4; Input<RequirementSets>
@@ -3865,7 +3511,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.3.10"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3873,7 +3518,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="373a6c93-f1ff-40bd-ab0a-911a8f48c8af"
 >2.5.4; Traction status; 5.2.4.4; Input<RequirementSets>
@@ -3884,7 +3528,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 2.8.1.1.3.11"
- guid=""
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3892,7 +3535,6 @@ Virtual Cab B active = (Cab active) AND (train orientation direction B)<Requirem
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- functionalBlockName=""
  Name=""
  Guid="ea06d299-7e78-4243-b2ba-f57975a51bda"
 >2.7; National System isolation; 10.3.3.5, 10.3.3.6. e), 10.14.1.2; Input<RequirementSets>

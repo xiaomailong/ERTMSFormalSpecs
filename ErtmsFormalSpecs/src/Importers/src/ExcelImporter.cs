@@ -177,7 +177,7 @@ namespace Importers
             aSubStep.AddModelElement(modeInitialization);
 
             TestAction levelInitialization = new TestAction();
-            levelInitialization.ExpressionText = "Kernel.Level <- Kernel.LevelData\n{\n    Value => Level.L1,\n    DataState => DataState.Valid\n}";
+            levelInitialization.ExpressionText = "Kernel.Level <- Kernel.LevelData\n{\n    Value => LevelDataStruct { Value => Level.L1 },\n    DataState => DataState.Valid\n}";
             aSubStep.AddModelElement(levelInitialization);
 
             TestAction odometryInitialization = new TestAction();

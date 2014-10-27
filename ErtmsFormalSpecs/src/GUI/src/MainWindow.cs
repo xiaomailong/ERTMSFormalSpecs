@@ -108,16 +108,26 @@ namespace GUI
             }
         }
 
+        /// <summary>
+        /// Handles the fact that a sub window has been closed
+        /// </summary>
+        /// <param name="form"></param>
         public void HandleSubWindowClosed(Form form)
         {
-            SubForms.Remove(form);
+            try
+            {
+                SubForms.Remove(form);
+            }
+            catch (Exception)
+            {
+            }
         }
 
         /// <summary>
         /// Finds a  specific window in a collection of windows
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        private static class GenericWindowHandling<T>
+        public static class GenericWindowHandling<T>
             where T : Form, new()
         {
             /// <summary>
@@ -1332,6 +1342,12 @@ namespace GUI
             DataDictionary.Dictionary dictionary = GetActiveDictionary();
             if (dictionary != null)
             {
+                // Apply translation rule to get the spec issues from the translated steps
+                foreach (DataDictionary.Tests.Frame frame in dictionary.Tests)
+                {
+                    frame.Translate(dictionary.TranslationDictionary);
+                }
+
                 Report.SpecIssuesReport aReport = new Report.SpecIssuesReport(dictionary);
                 aReport.ShowDialog(this);
             }
@@ -1506,9 +1522,8 @@ namespace GUI
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Options.Options optionForm = new Options.Options();
-            optionForm.Setup(EFSSystem);
             optionForm.ShowDialog(this);
-            optionForm.UpdateSystem(EFSSystem);
+            Options.Options.setSettings(EFSSystem.INSTANCE);
         }
 
         private void compareWithGitRevisionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1556,6 +1571,10 @@ namespace GUI
                     if (form is TestRunnerView.Watch.Window)
                     {
                         ((TestRunnerView.Watch.Window)form).RefreshAfterStep();
+                    }
+                    if (form is StructureValueEditor.Window)
+                    {
+                        ((StructureValueEditor.Window)form).RefreshAfterStep();
                     }
                 }
             }

@@ -16,12 +16,13 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Tests.Translations;
 
 namespace GUI.TranslationRules
 {
     public class SourceTextTreeNode : ModelElementTreeNode<DataDictionary.Tests.Translations.SourceText>
     {
-        private class ItemEditor : NamedEditor
+        private class ItemEditor : CommentableEditor
         {
             /// <summary>
             /// Constructor
@@ -32,6 +33,8 @@ namespace GUI.TranslationRules
             }
         }
 
+        SourceTextCommentsTreeNode comments = null;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -40,6 +43,54 @@ namespace GUI.TranslationRules
             : base(item, buildSubNodes)
         {
         }
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
+        {
+            base.BuildSubNodes(buildSubNodes);
+
+            if (Item.countComments() > 0)
+            {
+                comments = createFolder();
+            }
+        }
+
+        /// <summary>
+        /// Creates the folder for comments
+        /// </summary>
+        /// <returns></returns>
+        private SourceTextCommentsTreeNode createFolder()
+        {
+            if (comments == null)
+            {
+                comments = new SourceTextCommentsTreeNode(Item, true);
+                Nodes.Add(comments);
+            }
+
+            return comments;
+        }
+
+        /// <summary>
+        /// Creates a new source text
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public SourceTextCommentTreeNode createComment(SourceTextComment comment)
+        {
+            SourceTextCommentTreeNode retVal;
+
+            if (comments == null)
+            {
+                comments = createFolder();
+            }
+
+            retVal = comments.createComment(comment);
+            return retVal;
+        }
+
 
         /// <summary>
         /// Handles a selection change event
@@ -81,9 +132,37 @@ namespace GUI.TranslationRules
         {
             List<MenuItem> retVal = new List<MenuItem>();
 
+            retVal.Add(new MenuItem("Add comment", new EventHandler(AddHandler)));
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
 
             return retVal;
+        }
+
+        /// <summary>
+        /// Deletes the selected item
+        /// </summary>
+        public void AddHandler(object sender, EventArgs args)
+        {
+            SourceTextComment comment = (SourceTextComment) DataDictionary.Generated.acceptor.getFactory().createSourceTextComment();
+            comment.Name = "<unknown>";
+            createComment(comment);
+        }
+
+        /// <summary>
+        /// Accepts the drop event
+        /// </summary>
+        /// <param name="sourceTextTreeNode"></param>
+        /// <param name="SourceNode"></param>
+        public static void AcceptDropForSourceText(SourceTextTreeNode sourceTextTreeNode, BaseTreeNode SourceNode)
+        {
+            if (SourceNode is SourceTextCommentTreeNode)
+            {
+                SourceTextCommentTreeNode comment = SourceNode as SourceTextCommentTreeNode;
+
+                SourceTextComment otherText = (SourceTextComment)comment.Item.Duplicate();
+                sourceTextTreeNode.createComment(otherText);
+                comment.Delete();
+            }
         }
     }
 }

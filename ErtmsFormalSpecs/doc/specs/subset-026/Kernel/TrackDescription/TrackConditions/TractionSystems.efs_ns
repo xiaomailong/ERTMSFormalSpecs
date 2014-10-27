@@ -5,7 +5,6 @@
  Name="TractionSystems"
  Guid="58374065-177d-4411-b299-d4bbda072366"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Structures>
@@ -199,8 +198,7 @@
 <PreConditions>
 <PreCondition
  Guid="eb420e4a-b35e-4d9b-8ab6-a8f9e8ba7043"
-><Comment></Comment>
-THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
+>THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
 <Expression>REDUCE TCTractionSystems | (X.Distance == TSProfileStartLocation(Distance=&gt;Distance) )
     USING X.Value
   INITIAL_VALUE EMPTY</Expression>
@@ -247,7 +245,7 @@ THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreC
   INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum"
+ Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum"
  Default=""
  Width="100"
  Height="50"
@@ -268,7 +266,6 @@ THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreC
  Name="No traction system"
  Guid="ced3b648-54a5-4c85-8dbe-f517c1eca595"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="0b195d30-23be-49a7-b88f-db850e515ac9"
@@ -278,7 +275,6 @@ THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreC
  Name="AC 25 kV 50 Hz"
  Guid="5d732ac5-ad93-4b8e-8456-488b153e7646"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="d5373545-4c2c-4ee9-9d7b-c6a3daf58788"
@@ -344,7 +340,6 @@ THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreC
  Name="Convert type"
  Guid="1d32a1d4-af2e-4812-b39b-e0999d2d11d3"
 >
-<Comment></Comment>
 <Expression>General.TCDisplay.TCStructWithSoundHorn{
     SoundHorn =&gt; General.ProfileAtDistance(TractionSystem.Distance).SoundHorn,
     TunnelStoppingArea =&gt; General.ProfileAtDistance(TractionSystem.Distance).TunnelStoppingArea,
@@ -490,8 +485,7 @@ IN
 <Actions>
 <Action
  Guid="29585674-2fa6-4a76-9dbd-4686d3916b49"
-><Comment></Comment>
-DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Display()</Action></Actions>
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Display()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -512,8 +506,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.Display()</Action></Actions>
 <Actions>
 <Action
  Guid="9bd1a5f3-f510-4564-afff-1238e71425a4"
-><Comment></Comment>
-INSERT General.TCDisplay.NewAnnouncement(
+>INSERT General.TCDisplay.NewAnnouncement(
     TCType=&gt; PacketToAnnouncement(Packet.M_VOLTAGE),
     Distance=&gt; General.TCDisplay.AnnouncementLocation(
         TrackCondition =&gt; General.TrackCondition{},
@@ -551,8 +544,7 @@ IN General.TCDisplay.Announcements</Action></Actions>
 <Actions>
 <Action
  Guid="83db5426-16ea-4334-b486-8690bf014ba2"
-><Comment></Comment>
-INSERT General.TCDisplay.NewAnnouncement(
+>INSERT General.TCDisplay.NewAnnouncement(
     TCType=&gt; PacketToAnnouncement(Packet.M_VOLTAGE),
     Distance=&gt; Default.MessageTypes.QScaleDistance(
             distance=&gt;Packet.D_TRACTION,

@@ -16,10 +16,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DataDictionary.Functions;
 using System.Collections;
 using DataDictionary.Interpreter;
+using DataDictionary.Tests;
+using DataDictionary.Tests.Translations;
 using DataDictionary.Specification;
+using DataDictionary.Functions;
 
 namespace DataDictionary
 {
@@ -172,6 +174,57 @@ namespace DataDictionary
                     }
                 }
             }
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        /// <summary>
+        /// Ensure that all step that should be automatically translated have a translation
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="visitSubNodes"></param>
+        public override void visit(Generated.Step obj, bool visitSubNodes)
+        {
+            Step step = (Step) obj;
+
+            if (step.getTranslationRequired())
+            {
+                Translation translation = null;
+                TranslationDictionary translationDictionary = step.Dictionary.TranslationDictionary;
+                if (translationDictionary != null)
+                {
+                    translation = translationDictionary.findTranslation(step.getDescription(), step.Comment);
+                }
+
+                if (step.getDescription() != null)
+                {
+                    // Specific checks for subset-076
+                    if ((step.getDescription().IndexOf("balise group", StringComparison.InvariantCultureIgnoreCase) != -1) && step.getDescription().Contains("is received"))
+                    {
+                        if (step.StepMessages.Count == 0)
+                        {
+                            step.AddWarning("Cannot find Balise messages for this step");
+                        }
+                    }
+
+                    if ((step.getDescription().IndexOf("euroloop message", StringComparison.InvariantCultureIgnoreCase) != -1) && step.getDescription().Contains("is received"))
+                    {
+                        if (step.StepMessages.Count == 0)
+                        {
+                            step.AddWarning("Cannot find Euroloop messages for this step");
+                        }
+                    }
+
+                    if (step.getDescription().Contains("SA-DATA") && step.getDescription().Contains("is received"))
+                    {
+                        if (step.StepMessages.Count == 0)
+                        {
+                            step.AddWarning("Cannot find RBC message for this step");
+                        }
+                    }
+                }
+            }
+
 
             base.visit(obj, visitSubNodes);
         }
@@ -895,13 +948,13 @@ namespace DataDictionary
                             scopeFound = true;
                         }
 
-                        if ((!paragraph.BelongsToRequirementSet(requirementSet)) && paragraph.SubParagraphBelongsToRequirementSet(requirementSet))
+                        if ((!requirementSet.getRecursiveSelection()) && (!paragraph.BelongsToRequirementSet(requirementSet)) && paragraph.SubParagraphBelongsToRequirementSet(requirementSet))
                         {
                             paragraph.AddWarning("Paragraph scope should be " + requirementSet.Name + ", according to its sub-paragraphs");
                         }
                     }
 
-                    if (!scopeFound && !(paragraph.getType() == Generated.acceptor.Paragraph_type.aDELETED))
+                    if ((!scopeFound) && (paragraph.getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT))
                     {
                         paragraph.AddWarning("Paragraph scope not set");
                     }
@@ -1027,6 +1080,43 @@ namespace DataDictionary
                         }
                     }
                     valuesFound.Add(enumValue);
+                }
+            }
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        private Dictionary<string, Translation> Translations = new Dictionary<string, Translation>();
+
+        public override void visit(Generated.Translation obj, bool visitSubNodes)
+        {
+            Translation translation = (Translation)obj;
+
+            foreach (SourceText source in translation.SourceTexts)
+            {
+                Translation other = null;
+                if ( Translations.TryGetValue(source.Name, out other) )
+                {
+                    translation.AddError("Found translation with duplicate source text " + source.Name);
+                    other.AddError("Found translation with duplicate source text " + source.Name);
+                }
+
+                Translations[source.Name] = translation;
+            }
+
+            if (translation.Requirements.Count == 0 || string.IsNullOrEmpty(translation.Comment))
+            {
+                int countActions = 0;
+                int countExpectations = 0;
+                foreach (SubStep subStep in translation.SubSteps)
+                {
+                    countActions += subStep.Actions.Count;
+                    countExpectations += subStep.Expectations.Count;
+                }
+                if (countActions == 0 && countExpectations == 0)
+                {
+                    translation.AddWarning(
+                        "Empty translation which is not linked to a requirement, or does not hold any comment");
                 }
             }
 

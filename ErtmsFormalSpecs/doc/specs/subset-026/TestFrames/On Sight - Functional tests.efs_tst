@@ -38,9 +38,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2f5be83f-d924-40b8-8776-5c71b788c49d"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -89,7 +87,7 @@
  Guid="4a0a4d7b-9b6d-49d8-98f1-369115685544"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="af946fd8-c54c-45e7-b661-0a0764290db9"
->Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="3f5bc136-268c-4db2-8cc9-a1ce6175baf9"
 >Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
 <Expectations>
@@ -97,7 +95,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="16081bdc-7f0d-4d71-a677-2ddffdee7e65"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested == Boolean.False</Expectation><Expectation
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="cd65b88c-634a-4541-bd1d-8a400d235fb8"
@@ -201,7 +199,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="99baee15-c9cc-4b9d-bd94-d26e45ed6718"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested == Boolean.False</Expectation><Expectation
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="4f470aa2-ab31-4f2d-8715-b302fc05bcae"
@@ -317,7 +315,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="954b2b34-c860-40a0-8698-8922c03b44de"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested == Boolean.True</Expectation><Expectation
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b155bb52-ccd2-4504-bf17-e7ae1b2748ba"
@@ -369,9 +367,7 @@ Messages.EUROBALISE.SubStructure1
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="db4ec8ab-d885-4167-97a1-fdd6aae626c3"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -421,7 +417,7 @@ Messages.EUROBALISE.SubStructure1
  Guid="e6a3e76d-a7c5-48b6-b749-3aca9e7138af"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="004582be-59ab-4517-bc66-927226eba055"
->Kernel.Level.Value &lt;- Default.Level.L2</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L2</Action><Action
  Guid="eef7f708-3987-4a61-beaf-e74ae795f82c"
 >Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
 <Expectations>
@@ -449,8 +445,7 @@ Messages.EUROBALISE.SubStructure1
 <Actions>
 <Action
  Guid="8048d974-8d79-4ccd-a45c-69c329066a0a"
-><Comment></Comment>
-EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
 {
     MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
@@ -528,7 +523,7 @@ EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN
  Kind="Instantaneous"
  DeadLine="1"
  Guid="bd3d4bcc-6952-4769-94c1-4b16ce56b3cd"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DisplayRequested == Boolean.False</Expectation><Expectation
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="726544c5-642e-4a92-ace4-c8ac96f2ee7d"
@@ -566,8 +561,7 @@ EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN
 <Actions>
 <Action
  Guid="8061d583-1e43-4cca-a541-fc2e1f0cefbf"
-><Comment></Comment>
-Odometry.EstimatedSpeed &lt;- 60.0</Action><Action
+>Odometry.EstimatedSpeed &lt;- 60.0</Action><Action
  Guid="70cf7ff9-be6f-41f0-a81f-d6a2bd7c0d35"
 >EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
@@ -687,9 +681,7 @@ Odometry.EstimatedSpeed &lt;- 60.0</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a216048c-88eb-445a-8a59-ddb433d540cd"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -739,7 +731,7 @@ Odometry.EstimatedSpeed &lt;- 60.0</Action><Action
  Guid="393016fe-2789-467a-a965-145cffddf400"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="56f69a51-7766-47c4-9db1-acb6a070d9e4"
->Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="a7657925-6c62-4484-8c78-5972ae2e0ae9"
 >Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 </SubStep></SubSteps>
@@ -919,7 +911,7 @@ Messages.EUROBALISE.SubStructure1
 <Actions>
 <Action
  Guid="378a1c4a-7c27-44fe-9512-231247302e0d"
->Kernel.Level.Value &lt;- Default.Level.L2</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L2</Action><Action
  Guid="09715f36-e298-4e4a-bac2-158e5f0dfad2"
 >Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
 <Expectations>
@@ -1019,7 +1011,7 @@ Messages.EUROBALISE.SubStructure1
  Guid="a245efc3-36d3-456c-a877-c1d8801771ab"
 >Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="43e487f1-5b14-4440-a9d1-4216a124bce0"
->Kernel.Level.Value &lt;- Default.Level.L3</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Default.Level.L3</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1030,12 +1022,10 @@ Messages.EUROBALISE.SubStructure1
  Name="Sub-step4"
  Guid="0bc3cacf-8620-4431-a94f-49bcaa324700"
 >
-<Comment></Comment>
 <Actions>
 <Action
  Guid="0ed1c5ee-e80a-4bc5-9c90-9f5e86cd369e"
-><Comment></Comment>
-EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
 
 {
     MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message

@@ -24,9 +24,9 @@ using System.Drawing.Design;
 
 namespace GUI.TranslationRules
 {
-    public class TranslationTreeNode : ModelElementTreeNode<DataDictionary.Tests.Translations.Translation>
+    public class TranslationTreeNode : ReferencesParagraphTreeNode<DataDictionary.Tests.Translations.Translation>
     {
-        private class ItemEditor : CommentableEditor
+        private class ItemEditor : ReferencesParagraphEditor
         {
             /// <summary>
             /// Constructor
@@ -128,6 +128,53 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
+        /// Finds all steps that are translated using a specific translation rule
+        /// </summary>
+        private class MarkUsageVisitor : DataDictionary.Generated.Visitor
+        {
+            /// <summary>
+            /// The translation to be found
+            /// </summary>
+            public Translation Translation { get; private set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="translation"></param>
+            public MarkUsageVisitor(Translation translation)
+            {
+                Translation = translation;
+            }
+
+            public override void  visit(DataDictionary.Generated.Step obj, bool visitSubNodes)
+            {
+                Step step = (Step) obj;
+
+                if ( Translation == Translation.TranslationDictionary.findTranslation(step.getDescription(), step.Comment))
+                {
+                    step.AddInfo("Translation "+Translation.Name+" used");
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
+        /// <summary>
+        /// Marks all steps that use this translation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void MarkUsageHandler(object sender, EventArgs args)
+        {
+            GUIUtils.MDIWindow.ClearMarks();
+            MarkUsageVisitor finder = new MarkUsageVisitor(Item);
+            foreach ( DataDictionary.Dictionary dictionary in DataDictionary.EFSSystem.INSTANCE.Dictionaries)
+            {
+                finder.visit(dictionary);
+            }
+        }
+
+        /// <summary>
         /// The menu items for this tree node
         /// </summary>
         /// <returns></returns>
@@ -138,11 +185,12 @@ namespace GUI.TranslationRules
             retVal.Add(new MenuItem("Add source text", new EventHandler(AddSourceHandler)));
             retVal.Add(new MenuItem("Add sub-step", new EventHandler(AddSubStepHandler)));
             retVal.Add(new MenuItem("-"));
+            retVal.Add(new MenuItem("Mark usages", new EventHandler(MarkUsageHandler)));
+            retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
 
             return retVal;
         }
-
 
         /// <summary>
         /// Handles drop event
@@ -151,23 +199,36 @@ namespace GUI.TranslationRules
         public override void AcceptDrop(BaseTreeNode SourceNode)
         {
             base.AcceptDrop(SourceNode);
+            AcceptDropForTranslation(this, SourceNode);
+        }
+
+        /// <summary>
+        /// Accepts the drop event
+        /// </summary>
+        /// <param name="translationTreeNode"></param>
+        /// <param name="SourceNode"></param>
+        public static void AcceptDropForTranslation(TranslationTreeNode translationTreeNode, BaseTreeNode SourceNode)
+        {
             if (SourceNode is SourceTextTreeNode)
             {
                 SourceTextTreeNode text = SourceNode as SourceTextTreeNode;
 
-                DataDictionary.Tests.Translations.SourceText otherText = (DataDictionary.Tests.Translations.SourceText)DataDictionary.Generated.acceptor.getFactory().createSourceText();
-                text.Item.copyTo(otherText);
-                createSourceText(otherText);
+                DataDictionary.Tests.Translations.SourceText otherText = (DataDictionary.Tests.Translations.SourceText) text.Item.Duplicate();
+                translationTreeNode.createSourceText(otherText);
                 text.Delete();
             }
             else if (SourceNode is TestRunnerView.StepTreeNode)
             {
                 TestRunnerView.StepTreeNode step = SourceNode as TestRunnerView.StepTreeNode;
 
-                DataDictionary.Tests.Translations.SourceText sourceText = (DataDictionary.Tests.Translations.SourceText)DataDictionary.Generated.acceptor.getFactory().createSourceText();
-                sourceText.Name = step.Item.getDescription();
-                Item.appendSourceTexts(sourceText);
-                createSourceText(sourceText);
+                if (string.IsNullOrEmpty(step.Item.getDescription()))
+                {
+                    MessageBox.Show("Step has no description and cannot be automatically translated", "No description available", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    translationTreeNode.createSourceText(step.Item.createSourceText());
+                }
             }
         }
 

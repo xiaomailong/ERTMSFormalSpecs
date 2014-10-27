@@ -47,7 +47,9 @@
  Guid="9ecdea0c-f235-4614-a1f2-96279432068c"
 >Kernel.Level &lt;- Kernel.LevelData
 {
-    Value =&gt; Level.L1,
+    Value =&gt; LevelDataStruct{
+      Value =&gt; Level.L1
+    },
     DataState =&gt; DataState.Valid
 }</Action><Action
  Guid="dae27f8f-95b2-484c-9d72-d2bce18baf52"
@@ -66,6 +68,14 @@ BTM.LRBG &lt;- BTM.BaliseGroup{
     },
     NID =&gt; 85,
     Orientation =&gt; Default.Orientation.Nominal
+}</Action><Action
+ Guid="7b8c3750-4ad1-40c3-b3e2-f57c2437c6bb"
+>TIU.CabA &lt;- TIU.CabStruct{
+    Desk1IsActive =&gt; Boolean.True,
+    IsFittedWithSingleDesk =&gt; True,
+    Desk2IsActive =&gt; False,
+    VirtualCabAActive =&gt; True,
+    VirtualCabBActive =&gt; False
 }</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -379,6 +389,7 @@ IN
  Name="SubStep6 - Correction factor kdry_rst"
  Guid="829c7b87-f31c-4519-9d1c-576030b12214"
 >
+<Comment></Comment>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase

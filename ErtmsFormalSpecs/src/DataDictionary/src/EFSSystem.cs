@@ -1284,15 +1284,22 @@ namespace DataDictionary
             private bool Belonging { get; set; }
 
             /// <summary>
+            /// Indicates if only the non implemented requirements should be marked
+            /// </summary>
+            private bool NotImplemented{ get; set; }
+
+            /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="requirementSet"></param>
             /// <param name="belonging">Indicates whether the paragraph should belong to the requirement set 
+            /// <param name="notImplemented">Indicates that the the elements that should be marked are the not implemented ones</param>
             /// or whether the requirement should not belong to that requirement set</param>
-            public RequirementSetMarker(RequirementSet requirementSet, bool belonging)
+            public RequirementSetMarker(RequirementSet requirementSet, bool belonging, bool notImplemented)
             {
                 RequirementSet = requirementSet;
                 Belonging = belonging;
+                NotImplemented = notImplemented;
             }
 
             /// <summary>
@@ -1303,7 +1310,18 @@ namespace DataDictionary
             /// <returns>true if marking recursively was applied</returns>
             private bool MarkBelongingParagraph(Paragraph paragraph, bool recursively)
             {
-                paragraph.AddInfo("Requirement set" + RequirementSet.Name);
+                if (!NotImplemented)
+                {
+                    paragraph.AddInfo("Requirement set" + RequirementSet.Name);
+                }
+                else if (paragraph.getImplementationStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented && paragraph.getImplementationStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable)
+                {
+                    if (paragraph.getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT)
+                    {
+                        paragraph.AddInfo("Belongs to Requirement set" + RequirementSet.Name + " but is not implemented");
+                    }
+                }
+
                 if (recursively)
                 {
                     foreach (Paragraph subParagraph in paragraph.SubParagraphs)
@@ -1353,7 +1371,7 @@ namespace DataDictionary
         /// <param name="requirementSet"></param>
         public void MarkRequirementsForRequirementSet(RequirementSet requirementSet)
         {
-            RequirementSetMarker marker = new RequirementSetMarker(requirementSet, true);
+            RequirementSetMarker marker = new RequirementSetMarker(requirementSet, true, false);
             foreach (DataDictionary.Dictionary dictionary in Dictionaries)
             {
                 dictionary.ClearMessages();
@@ -1368,7 +1386,22 @@ namespace DataDictionary
         /// <param name="requirementSet"></param>
         public void MarkRequirementsWhichDoNotBelongToRequirementSet(RequirementSet requirementSet)
         {
-            RequirementSetMarker marker = new RequirementSetMarker(requirementSet, false);
+            RequirementSetMarker marker = new RequirementSetMarker(requirementSet, false, false);
+            foreach (DataDictionary.Dictionary dictionary in Dictionaries)
+            {
+                dictionary.ClearMessages();
+                marker.visit(dictionary);
+            }
+            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
+        }
+
+        /// <summary>
+        /// Marks the requirements which relate to the corresponding requirement set
+        /// </summary>
+        /// <param name="requirementSet"></param>
+        public void MarkNotImplementedRequirements(RequirementSet requirementSet)
+        {
+            RequirementSetMarker marker = new RequirementSetMarker(requirementSet, true, true);
             foreach (DataDictionary.Dictionary dictionary in Dictionaries)
             {
                 dictionary.ClearMessages();

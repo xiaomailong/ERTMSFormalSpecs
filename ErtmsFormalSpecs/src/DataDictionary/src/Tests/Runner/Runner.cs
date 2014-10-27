@@ -19,6 +19,9 @@ using DataDictionary.Interpreter;
 using DataDictionary.Rules;
 using DataDictionary.Tests.Runner.Events;
 using DataDictionary.Values;
+using Utils;
+using DataDictionary.Types;
+using DataDictionary.Constants;
 
 namespace DataDictionary.Tests.Runner
 {
@@ -80,14 +83,9 @@ namespace DataDictionary.Tests.Runner
         }
 
         /// <summary>
-        /// The current time
+        /// The last time when activation has been performed
         /// </summary>
-        private double lastActivationTime;
-        public double LastActivationTime
-        {
-            get { return lastActivationTime; }
-            set { lastActivationTime = value; }
-        }
+        public double LastActivationTime { get; set; }
 
         /// <summary>
         /// Visitor used to clean caches of functions (graphs, surfaces)
@@ -183,10 +181,6 @@ namespace DataDictionary.Tests.Runner
             EFSSystem.Runner = this;
             LogEvents = logEvents;
             Explain = explain;
-
-            // Translate the steps automatically
-            Dictionary.TranslateTestCases translator = new Dictionary.TranslateTestCases();
-            translator.visit(subSequence);
 
             // Compile everything
             EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
@@ -487,7 +481,9 @@ namespace DataDictionary.Tests.Runner
                 }
             }
 
-            ApplyActivations(activations, priority);
+            List<VariableUpdate> updates = new List<VariableUpdate>();
+            EvaluateActivations(activations, priority, updates);
+            ApplyUpdates(updates);
             CheckExpectationsState(priority);
 
             // Indicates that the execution of this cycle priority is complete
@@ -662,10 +658,10 @@ namespace DataDictionary.Tests.Runner
         /// Applies the selected actions and update the system state
         /// </summary>
         /// <param name="updates"></param>
-        public void ApplyActivations(HashSet<Activation> activations, Generated.acceptor.RulePriority priority)
+        public void EvaluateActivations(HashSet<Activation> activations, Generated.acceptor.RulePriority priority, List<Events.VariableUpdate> updates)
         {
             Dictionary<Variables.IVariable, Change> changes = new Dictionary<Variables.IVariable, Change>();
-            Dictionary<Change, VariableUpdate> traceBack = new Dictionary<Change,VariableUpdate>();
+            Dictionary<Change, VariableUpdate> traceBack = new Dictionary<Change, VariableUpdate>();
 
             foreach (Activation activation in activations)
             {
@@ -677,7 +673,8 @@ namespace DataDictionary.Tests.Runner
                 {
                     // Register the fact that a rule has been triggered
                     Events.RuleFired ruleFired = new Events.RuleFired(activation, priority);
-                    EventTimeLine.AddModelEvent(ruleFired, this);
+                    EventTimeLine.AddModelEvent(ruleFired, this, true);
+                    ExplanationPart changesExplanation = ExplanationPart.CreateSubExplanation(activation.Explanation, "Changes");
 
                     // Registers all model updates due to this rule triggering
                     foreach (Rules.Action action in activation.RuleCondition.Actions)
@@ -685,8 +682,14 @@ namespace DataDictionary.Tests.Runner
                         if (action.Statement != null)
                         {
                             Events.VariableUpdate variableUpdate = new Events.VariableUpdate(action, activation.Instance, priority);
-                            EventTimeLine.AddModelEvent(variableUpdate, this);
+                            variableUpdate.ComputeChanges(false, this);
+                            EventTimeLine.AddModelEvent(variableUpdate, this, false);
                             ruleFired.AddVariableUpdate(variableUpdate);
+                            if (changesExplanation != null)
+                            {
+                                changesExplanation.SubExplanations.Add(variableUpdate.Explanation);
+                            }
+                            updates.Add(variableUpdate);
 
                             if (CheckForCompatibleChanges)
                             {
@@ -736,6 +739,101 @@ namespace DataDictionary.Tests.Runner
                     }
                 }
             }
+
+            // Handles the leave & enter state rules
+            List<VariableUpdate> updatesToProcess = updates;
+            updates = new List<VariableUpdate>();
+
+            while (updatesToProcess.Count > 0)
+            {
+                List<VariableUpdate> newUpdates = new List<VariableUpdate>();
+
+                foreach (VariableUpdate update in updatesToProcess)
+                {
+                    updates.Add(update);
+
+                    foreach (Change change in update.Changes.Changes)
+                    {
+                        if (change.Variable.Type is StateMachine)
+                        {
+                            HandleLeaveState(priority, newUpdates, change.Variable, (State)change.Variable.Value, (State)change.NewValue);
+                            HandleEnterState(priority, newUpdates, change.Variable, (State)change.Variable.Value, (State)change.NewValue);
+                        }
+                    }
+                }
+
+                updatesToProcess = newUpdates;
+            }
+        }
+
+        /// <summary>
+        /// Add actions when entering a state
+        /// </summary>
+        /// <param name="priority"></param>
+        /// <param name="updates"></param>
+        /// <param name="leaveState"></param>
+        /// <param name="enterState"></param>
+        private void HandleEnterState(Generated.acceptor.RulePriority priority, List<VariableUpdate> updates, Variables.IVariable variable, State leaveState, State enterState)
+        {
+            if (!enterState.getStateMachine().Contains(enterState, leaveState))
+            {
+                if (enterState.getEnterAction() != null)
+                {
+                    Rule rule = (Rule)enterState.getEnterAction();
+                    ExplanationPart explanation = new ExplanationPart(rule, "Rule evaluation");
+                    HashSet<Activation> newActivations = new HashSet<Activation>();
+                    List<VariableUpdate> newUpdates = new List<VariableUpdate>();
+                    rule.Evaluate(this, priority, variable, newActivations, explanation);
+                    EvaluateActivations(newActivations, priority, newUpdates);
+                    updates.AddRange(newUpdates);
+                }
+
+                if (enterState.EnclosingState != null)
+                {
+                    HandleEnterState(priority, updates, variable, leaveState, enterState.EnclosingState);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Add actions when leaving a state
+        /// </summary>
+        /// <param name="priority"></param>
+        /// <param name="updates"></param>
+        /// <param name="leaveState"></param>
+        /// <param name="enterState"></param>
+        private void HandleLeaveState(Generated.acceptor.RulePriority priority, List<VariableUpdate> updates, Variables.IVariable variable, State leaveState, State enterState)
+        {
+            if (!leaveState.getStateMachine().Contains(leaveState, enterState))
+            {
+                if (leaveState.getLeaveAction() != null)
+                {
+                    Rule rule = (Rule)leaveState.getLeaveAction();
+                    ExplanationPart explanation = new ExplanationPart(rule, "Rule evaluation");
+                    HashSet<Activation> newActivations = new HashSet<Activation>();
+                    List<VariableUpdate> newUpdates = new List<VariableUpdate>();
+                    rule.Evaluate(this, priority, variable, newActivations, explanation);
+                    EvaluateActivations(newActivations, priority, newUpdates);
+                    updates.AddRange(newUpdates);
+                }
+
+                if (leaveState.EnclosingState != null)
+                {
+                    HandleLeaveState(priority, updates, variable, leaveState.EnclosingState, enterState);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Applies the updates on the system
+        /// </summary>
+        /// <param name="updates"></param>
+        private void ApplyUpdates(List<VariableUpdate> updates)
+        {
+            foreach (VariableUpdate update in updates)
+            {
+                update.Apply(this);
+            }
         }
 
         /// <summary>
@@ -751,7 +849,7 @@ namespace DataDictionary.Tests.Runner
                 // No setup can occur when some expectations are still active
                 if (ActiveBlockingExpectations().Count == 0)
                 {
-                    EventTimeLine.AddModelEvent(new SubStepActivated(subStep, CurrentPriority), this);
+                    EventTimeLine.AddModelEvent(new SubStepActivated(subStep, CurrentPriority), this, true);
                 }
             }
             finally
@@ -806,22 +904,22 @@ namespace DataDictionary.Tests.Runner
                         case Generated.acceptor.ExpectationKind.aInstantaneous:
                         case Generated.acceptor.ExpectationKind.defaultExpectationKind:
                             // Instantaneous expectation who raised its deadling
-                            EventTimeLine.AddModelEvent(new FailedExpectation(expect, CurrentPriority, null), this);
+                            EventTimeLine.AddModelEvent(new FailedExpectation(expect, CurrentPriority, null), this, true);
                             break;
 
                         case Generated.acceptor.ExpectationKind.aContinuous:
                             // Continuous expectation who raised its deadline
-                            EventTimeLine.AddModelEvent(new ExpectationReached(expect, CurrentPriority, null), this);
+                            EventTimeLine.AddModelEvent(new ExpectationReached(expect, CurrentPriority, null), this, true);
                             break;
                     }
                 }
                 else
                 {
+                    ExplanationPart explanation = new ExplanationPart(expectation, "Expectation " + expectation.Expression);
                     try
                     {
                         if (expectation.getCyclePhase() == Generated.acceptor.RulePriority.defaultRulePriority || expectation.getCyclePhase() == priority)
                         {
-                            ExplanationPart explanation = new ExplanationPart(expectation, "Expectation " + expectation.Expression);
                             switch (expectation.getKind())
                             {
                                 case Generated.acceptor.ExpectationKind.aInstantaneous:
@@ -829,7 +927,11 @@ namespace DataDictionary.Tests.Runner
                                     if (getBoolValue(expectation, expectation.Expression, explanation))
                                     {
                                         // An instantaneous expectation who reached its satisfactory condition
-                                        EventTimeLine.AddModelEvent(new ExpectationReached(expect, priority, explanation), this);
+                                        EventTimeLine.AddModelEvent(new ExpectationReached(expect, priority, explanation), this, true);
+                                    }
+                                    else
+                                    {
+                                        expectation.Explain = explanation;
                                     }
                                     break;
 
@@ -839,14 +941,18 @@ namespace DataDictionary.Tests.Runner
                                         if (!getBoolValue(expectation, expectation.ConditionTree, explanation))
                                         {
                                             // An continuous expectation who reached its satisfactory condition
-                                            EventTimeLine.AddModelEvent(new ExpectationReached(expect, priority, explanation), this);
+                                            EventTimeLine.AddModelEvent(new ExpectationReached(expect, priority, explanation), this, true);
                                         }
                                         else
                                         {
                                             if (!getBoolValue(expectation, expectation.Expression, explanation))
                                             {
                                                 // A continuous expectation who reached a case where it is not satisfied
-                                                EventTimeLine.AddModelEvent(new FailedExpectation(expect, priority, explanation), this);
+                                                EventTimeLine.AddModelEvent(new FailedExpectation(expect, priority, explanation), this, true);
+                                            }
+                                            else
+                                            {
+                                                expectation.Explain = explanation;
                                             }
                                         }
                                     }
@@ -855,7 +961,11 @@ namespace DataDictionary.Tests.Runner
                                         if (!getBoolValue(expectation, expectation.Expression, explanation))
                                         {
                                             // A continuous expectation who reached a case where it is not satisfied
-                                            EventTimeLine.AddModelEvent(new FailedExpectation(expect, priority, explanation), this);
+                                            EventTimeLine.AddModelEvent(new FailedExpectation(expect, priority, explanation), this, true);
+                                        }
+                                        else
+                                        {
+                                            expectation.Explain = explanation;
                                         }
                                     }
                                     break;
@@ -864,7 +974,7 @@ namespace DataDictionary.Tests.Runner
                     }
                     catch (Exception e)
                     {
-                        expect.Expectation.AddException(e);
+                        expectation.AddErrorAndExplain (e.Message, explanation);
                     }
                 }
             }
@@ -922,7 +1032,7 @@ namespace DataDictionary.Tests.Runner
                 Cycle();
             }
 
-            while (ActiveExpectations().Count > 0)
+            while (ActiveBlockingExpectations().Count > 0)
             {
                 Cycle();
             }
@@ -1242,6 +1352,10 @@ namespace DataDictionary.Tests.Runner
                 }
                 else
                 {
+                    if (subStep.getSkipEngine())
+                    {
+                        CheckExpectationsState(Generated.acceptor.RulePriority.aCleanUp);
+                    }
                     EventTimeLine.CurrentTime += Step;
                 }
             }
@@ -1379,7 +1493,7 @@ namespace DataDictionary.Tests.Runner
                             {
                                 modelInterpretationFailure.Explanation = modelElement.Explain;
                             }
-                            EventTimeLine.AddModelEvent(modelInterpretationFailure, this);
+                            EventTimeLine.AddModelEvent(modelInterpretationFailure, this, true);
                             break;
 
                         case Utils.ElementLog.LevelEnum.Warning:

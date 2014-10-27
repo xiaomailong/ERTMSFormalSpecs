@@ -294,10 +294,15 @@ namespace DataDictionary.Interpreter.Statement
                     {
                         part = new ExplanationPart(Root, procedure.FullName);
                         explanation.SubExplanations.Add(part);
+                        if (ctxt.Instance != null)
+                        {
+                            ExplanationPart instanceExplanation = ExplanationPart.CreateSubExplanation(part, "instance = ");
+                            ExplanationPart.SetNamable(instanceExplanation, ctxt.Instance);
+                        }
                     }
 
                     int token = ctxt.LocalScope.PushContext();
-                    foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in Call.AssignParameterValues(context, procedure, true, explanation))
+                    foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in Call.AssignParameterValues(context, procedure, true, part))
                     {
                         ctxt.LocalScope.setVariable(pair.Key, pair.Value);
                     }
@@ -332,12 +337,7 @@ namespace DataDictionary.Interpreter.Statement
         {
             foreach (Rules.RuleCondition condition in rule.RuleConditions)
             {
-                ExplanationPart conditionExplanation = null;
-                if (explanation != null)
-                {
-                    conditionExplanation = new ExplanationPart(condition, condition.Name);
-                    explanation.SubExplanations.Add(conditionExplanation);
-                }
+                ExplanationPart conditionExplanation = ExplanationPart.CreateSubExplanation(explanation, condition.Name);
 
                 if (condition.EvaluatePreConditions(ctxt, conditionExplanation, runner))
                 {

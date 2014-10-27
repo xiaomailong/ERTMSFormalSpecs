@@ -208,7 +208,8 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Removes the actions and expectation from translated steps because they may cause conflicts
+            /// Removes the actions and expectation from translated steps because they may cause conflicts.
+            /// Remove obsolete comments
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -216,38 +217,68 @@ namespace DataDictionary
             {
                 Step step = (Step)obj;
 
-                if (beforeSave)
+                if (step.getObsoleteComment() == "")
                 {
-                    if (step.getTranslationRequired())
-                    {
-                        step.SubSteps.Clear();
-                        step.setTranslated(false);
-                    }
+                    step.setObsoleteComment(null);
                 }
-                else
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Ensure that empty comments are not stored in the XML file
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+            {
+                ICommentable commentable = obj as ICommentable;
+                if (commentable != null)
                 {
-                    if (step.getTranslationRequired())
+                    if (commentable.Comment == "")
                     {
-                        step.Translate(step.Dictionary.TranslationDictionary);
+                        commentable.Comment = null;
                     }
                 }
 
                 base.visit(obj, visitSubNodes);
             }
-        }
 
-        /// <summary>
-        /// This visitor is used to automatically translated test cases
-        /// </summary>
-        public class TranslateTestCases : Generated.Visitor
-        {
-            public override void visit(Generated.Step obj, bool visitSubNodes)
+            /// <summary>
+            /// Remove obsolete fields from XML file
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.TestCase obj, bool visitSubNodes)
             {
-                Step step = (Step)obj;
+                TestCase testCase = (TestCase)obj;
 
-                if (step.getTranslationRequired())
+                if (testCase.getObsoleteComment() == "")
                 {
-                    step.Translate(step.Dictionary.TranslationDictionary);
+                    testCase.setObsoleteComment(null);
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            
+            /// <summary>
+            /// Remove obsolete fields from XML file
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Paragraph obj, bool visitSubNodes)
+            {
+                Paragraph paragraph = (Paragraph)obj;
+
+                if (paragraph.getObsoleteFunctionalBlockName() == "" )
+                {
+                    paragraph.setObsoleteFunctionalBlockName(null);
+                }
+
+                if (paragraph.getObsoleteGuid() == "")
+                {
+                    paragraph.setObsoleteGuid(null);
                 }
 
                 base.visit(obj, visitSubNodes);
@@ -276,9 +307,6 @@ namespace DataDictionary
 
             updater = new Updater(BasePath, false);
             updater.visit(this);
-
-            TranslateTestCases translator = new TranslateTestCases();
-            translator.visit(this);
         }
 
         /// <summary>

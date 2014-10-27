@@ -6,7 +6,6 @@
  Name="ReleaseSpeedMonitoring"
  Guid="2ef47700-2b29-4937-bb37-0e93c0385ae9"
 >
-<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="SupervisionStatus"
@@ -48,12 +47,10 @@
  Name="d_SBI1"
  Guid="4c1a9b99-6a0a-4f9b-a33e-0cbe40c7680b"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="abbce78f-6895-49a0-a931-84443bad052d"
-><Comment></Comment>
-TargetSpeedMonitoring.SBI1BelowSBI2(
+>TargetSpeedMonitoring.SBI1BelowSBI2(
     d_SBI1=&gt; TargetSpeedMonitoring.d_SBI1 ( V, EstimatedAccelerationSetToZero ),
     d_SBI2=&gt; d_SBI2 ( V, EstimatedAccelerationSetToZero )
 )</PreCondition></PreConditions>
@@ -62,7 +59,6 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Name="d_SBI2"
  Guid="d5c865b3-e560-45db-b300-a9fac42ae0b1"
 >
-<Comment></Comment>
 <Expression>d_SBI2 ( V, EstimatedAccelerationSetToZero )</Expression>
 </Case></Cases>
 </Function><Function
@@ -81,7 +77,6 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="adabca0e-b12c-4050-94f6-9573c79ef922"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="5b7d2c0d-92d5-4743-bbe3-847b2546e103"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -100,7 +95,6 @@ TargetSpeedMonitoring.SBI1BelowSBI2(
  Name="Value"
  Guid="9226eef6-02fb-4694-b13c-ddda96d35d5e"
 >
-<Comment></Comment>
 <Expression>STABILIZE
     VreleaseFunction ( Vrelease_prev =&gt; PREVIOUS, aTarget =&gt; aTarget )
 INITIAL_VALUE
@@ -152,7 +146,6 @@ STOP_CONDITION
  Name="Value"
  Guid="1d0d3250-0301-4809-915d-d662a0e65dcd"
 >
-<Comment></Comment>
 <Expression>DistanceForSpeed (
     Function =&gt; DecelerationCurves.EBD,
     Speed =&gt; Vrelease + f41 ( Vrelease ) )
@@ -193,7 +186,6 @@ STOP_CONDITION
  Name="Value"
  Guid="17beface-fcb0-4eb8-b204-80baed457e28"
 >
-<Comment></Comment>
 <Expression>BaseTypes.SpeedToMS( Vrelease + Vdelta0rsob ( Vrelease ) ) * ( DecelerationCurves.T_traction(EstimatedAccelerationSetToZero=&gt;True) + DecelerationCurves.T_berem(EstimatedAccelerationSetToZero=&gt;True) )</Expression>
 </Case></Cases>
 </Function><Function
@@ -230,7 +222,6 @@ STOP_CONDITION
  Name="Compensation of inaccuracy not inhibited"
  Guid="564e1949-717c-4079-b079-2b808139515f"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="13f4ccc3-2ef6-4202-bfa6-444572980157"
@@ -264,7 +255,6 @@ STOP_CONDITION
  Name="Value"
  Guid="9746676d-2b14-4bef-813d-dd69f85e4882"
 >
-<Comment></Comment>
 <Expression>d_EOA()
   +
 alpha() * BTM.AntennaPosition ( DistanceInterval.Nom )
@@ -307,7 +297,6 @@ BaseTypes.MaxDistance(
  Name="Value"
  Guid="994729c8-aa58-4667-98b0-90ca2b055199"
 >
-<Comment></Comment>
 <Expression>d_EBI ( Vrelease, EstimatedAccelerationSetToZero )  - BaseTypes.SpeedToMS ( Vrelease ) * TargetSpeedMonitoring.T_bs2</Expression>
 </Case></Cases>
 </Function><Function
@@ -349,20 +338,17 @@ BaseTypes.MaxDistance(
  Name="First case"
  Guid="3b210ae9-da1a-49a4-833b-d680e1bdf28c"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="af631487-52d1-4c71-a33c-05b2ff35e1b4"
-><Comment></Comment>
-d_tripEOA() + Dbec ( Vrelease_prev ) &lt; DecelerationCurves.EBD_TargetForSpeed
+>d_tripEOA() + Dbec ( Vrelease_prev ) &lt; DecelerationCurves.EBD_TargetForSpeed
 (
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; aTarget,
     EstimatedAccelerationSetToZero =&gt; True
 )</PreCondition><PreCondition
  Guid="b7339d74-9848-460e-b4e5-8cb15e9f1566"
-><Comment></Comment>
-DecelerationCurves.EBD_Target ( Distance =&gt; ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob ( Vrelease_prev ) ), aTarget =&gt; aTarget ) &gt; aTarget.Speed</PreCondition></PreConditions>
+>DecelerationCurves.EBD_Target ( Distance =&gt; ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob ( Vrelease_prev ) ), aTarget =&gt; aTarget ) &gt; aTarget.Speed</PreCondition></PreConditions>
 <Expression>DecelerationCurves.EBD_Target ( Distance =&gt; ( d_tripEOA () + Dbec ( Vrelease_prev ) ), aTarget =&gt; aTarget ) - Vdelta0rsob ( Vrelease_prev )</Expression>
 </Case><Case
  Name="Second case"
@@ -399,7 +385,6 @@ DecelerationCurves.EBD_Target ( Distance =&gt; ( d_tripEOA() + Dbec ( Vrelease_p
  Name="MA available"
  Guid="4b6a7f82-b4ff-44e2-b744-58bde204ac28"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="866eeedb-a5c6-4e3c-8ebd-dc36fd0b41d8"
@@ -441,18 +426,15 @@ DecelerationCurves.EBD_Target ( Distance =&gt; ( d_tripEOA() + Dbec ( Vrelease_p
  Name="d_FLOI in rear of train"
  Guid="e1f037a9-b112-440d-bd56-12d7ca6a0b9b"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="c1f1f85a-a876-4042-a38d-3b2ed6628245"
-><Comment></Comment>
-d_FLOI ( Vrelease, False ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>d_FLOI ( Vrelease, False ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="0b1798da-f019-46e0-b3b0-7e38f14c1cbd"
 >
-<Comment></Comment>
 <Expression>d_FLOI ( Vrelease, False )</Expression>
 </Case></Cases>
 </Function><Function
@@ -477,7 +459,6 @@ d_FLOI ( Vrelease, False ) == BaseTypes.Distance.Unknown</PreCondition></PreCond
  Name="EOA is not passed"
  Guid="84b3a91b-2eaa-41b9-b009-38522929c69a"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="89ee1741-d547-4a82-847a-692db2e737da"
@@ -487,7 +468,6 @@ d_FLOI ( Vrelease, False ) == BaseTypes.Distance.Unknown</PreCondition></PreCond
  Name="EOA is passed"
  Guid="890f1525-e043-407f-a393-2f0ddeac1f0b"
 >
-<Comment></Comment>
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function><Function
@@ -525,7 +505,6 @@ d_FLOI ( Vrelease, False ) == BaseTypes.Distance.Unknown</PreCondition></PreCond
  Name="ComputeOnBoard"
  Guid="ce4932b2-9469-496b-a526-9481e259b9b5"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="285f2e84-9cb5-4250-a4ba-f84e839b607e"
@@ -586,7 +565,6 @@ INITIAL_VALUE
  Name="Value"
  Guid="ccedf329-af56-4de8-8836-753af71472df"
 >
-<Comment></Comment>
 <Expression>REDUCE
     TargetsList() |
         d_tripEOA() &lt;= X.Location AND X.Location &lt; MA.SvL().Location
@@ -620,8 +598,7 @@ INITIAL_VALUE
 <PreConditions>
 <PreCondition
  Guid="6987e771-1b6a-40d7-86d1-6ee0972c1e4a"
-><Comment></Comment>
-Kernel.Level.Value == Default.Level.L1</PreCondition></PreConditions>
+>Level.Value.Value == Default.Level.L1</PreCondition></PreConditions>
 <Expression>1.0</Expression>
 </Case><Case
  Name="Level 2 or 3"
@@ -630,7 +607,7 @@ Kernel.Level.Value == Default.Level.L1</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="c2818a11-3cd6-4d37-9f07-66a869d1737c"
->Kernel.Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function></Functions>
@@ -654,7 +631,6 @@ Kernel.Level.Value == Default.Level.L1</PreCondition></PreConditions>
  Name="UpdateReleaseSpeed"
  Guid="7ad0f6bc-36a7-4045-b3f3-10e5af9ba196"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -680,8 +656,7 @@ Kernel.Level.Value == Default.Level.L1</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8d371a70-ef2e-4e1b-8637-313df835dbd9"
-><Comment></Comment>
-ReleaseSpeedMonitoring.ReleaseSpeed &lt;- 
+>ReleaseSpeedMonitoring.ReleaseSpeed &lt;- 
 ReleaseSpeedMonitoring.ReleaseSpeedValue(
     Vrel=&gt;Default.BaseTypes.Speed.UseNVForReleaseSpeed
 )</Action></Actions>
@@ -701,13 +676,11 @@ ReleaseSpeedMonitoring.ReleaseSpeedValue(
  Guid="63ee2938-1c1a-4777-96a9-abd7cce122a7"
 >Available ( MA.MA )</PreCondition><PreCondition
  Guid="5104ac8b-6652-4a39-aa1c-04a024112f3c"
-><Comment></Comment>
-Kernel.MA.MA.EndSection.Overlap != EMPTY</PreCondition></PreConditions>
+>Kernel.MA.MA.EndSection.Overlap != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="bdeef7f9-b1e9-4712-8e10-b086f369f67d"
-><Comment></Comment>
-ReleaseSpeedMonitoring.ReleaseSpeed &lt;- ReleaseSpeedMonitoring.ReleaseSpeedValue ( MA.MA.EndSection.Overlap.ReleaseSpeed )</Action></Actions>
+>ReleaseSpeedMonitoring.ReleaseSpeed &lt;- ReleaseSpeedMonitoring.ReleaseSpeedValue ( MA.MA.EndSection.Overlap.ReleaseSpeed )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="DangerPoint"
@@ -767,7 +740,6 @@ ReleaseSpeedMonitoring.ReleaseSpeed &lt;- ReleaseSpeedMonitoring.ReleaseSpeedVal
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a88c99e5-6c3f-429e-81ac-759edeb5fbc9"
 >
-<Comment></Comment>
 </ReqRef><Comment>Used for stabilization of release speed computation.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Speed"
@@ -786,6 +758,5 @@ ReleaseSpeedMonitoring.ReleaseSpeed &lt;- ReleaseSpeedMonitoring.ReleaseSpeedVal
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="51c24a49-b799-4bac-b9d8-364331d8fbab"
 >
-</ReqRef><Comment></Comment>
-</Variable></Variables>
+</ReqRef></Variable></Variables>
 </NameSpace>

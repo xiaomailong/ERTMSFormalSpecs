@@ -6,7 +6,6 @@
  Name="CeilingSpeedMonitoring"
  Guid="81bdbc9f-ad93-486d-b739-3c5d7f7e1987"
 >
-<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="SupervisionStatus"
@@ -48,7 +47,6 @@
  Name="Always"
  Guid="a6ca2df8-da52-427a-b7f7-28931cba0cb5"
 >
-<Comment></Comment>
 <Expression>( dV_ebi_max - dV_ebi_min ) / ( V_ebi_max - V_ebi_min )</Expression>
 </Case></Cases>
 </Function><Function
@@ -85,7 +83,6 @@
  Name="Always"
  Guid="4cd4822e-4db0-42c0-9a92-4efa7ff57757"
 >
-<Comment></Comment>
 <Expression>( dV_sbi_max - dV_sbi_min ) / ( V_sbi_max - V_sbi_min )</Expression>
 </Case></Cases>
 </Function><Function
@@ -122,7 +119,6 @@
  Name="Always"
  Guid="46ab034c-51f8-4828-950e-823da37a4bd7"
 >
-<Comment></Comment>
 <Expression>( dV_warning_max - dV_warning_min ) / ( V_warning_max - V_warning_min )</Expression>
 </Case></Cases>
 </Function><Function
@@ -167,7 +163,6 @@
  Name="V &gt; V_warning_min"
  Guid="c435126f-18b0-4d6b-9139-7c854938a68c"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="5f96f091-76ec-436e-97e2-191fcebebc1e"
@@ -221,7 +216,6 @@
  Name="V &gt; V_ebi_min"
  Guid="535aa63d-ef7e-4b7a-b9fd-28feb45e2718"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="dea57d2f-dc75-4bfa-abc4-08d829d0fdaf"
@@ -231,7 +225,6 @@
  Name="V &lt;= V_ebi_min"
  Guid="605c01a1-da95-4901-a26e-86f35aa22b66"
 >
-<Comment></Comment>
 <Expression>dV_ebi_min</Expression>
 </Case></Cases>
 </Function><Function
@@ -276,7 +269,6 @@
  Name="V &gt; V_sbi_min"
  Guid="8954063e-1866-41c6-909c-a2d01e29cd3a"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="261b8cfe-5c4b-4a62-8deb-003a51a21e89"
@@ -305,7 +297,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fb270e69-087a-4fad-a58e-8e27b0cff367"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="da7b84c8-8f3b-4d51-bb0a-6dddb2b71112"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -316,13 +307,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="74928199-d905-465d-9224-3df12bdb48ce"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="6765b559-5f02-43f0-814e-5c9a289e1f5e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2f3722e2-4423-4fdd-9f5b-022c83413cf7"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="02854410-9ddb-4b94-993c-b26498a498bf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -338,7 +327,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e8e1283e-db9d-4ed3-94b6-1933fd297ae7"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="68cdb140-3c4e-4bdc-a122-88e2b2e22f7f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -359,7 +347,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8e6dabf8-d7c6-4be7-b179-6c49f9e3f5fe"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="22e031b2-e119-4b8b-bb4c-e1ed3946ed60"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -388,7 +375,6 @@
  Name="Always"
  Guid="10689937-c663-4de7-8d80-214156b3d3b8"
 >
-<Comment></Comment>
 <Expression>MIN ( MIN ( MA.SpeedRestrictions, MRSP.SpeedRestrictions), NationalValues.MaxDistInSRSpeedRestriction ) (distance)</Expression>
 </Case></Cases>
 </Function><Function
@@ -426,7 +412,6 @@
  Name="Permitted speed is not zero"
  Guid="3bc715af-e544-40e0-916a-0781ba8daa31"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="06ac8f78-3db7-48f6-9384-4a9f597d0b2b"
@@ -474,18 +459,15 @@
  Name="MRSP speed increases"
  Guid="205dcdf8-afad-400a-8b0f-bd79283c1037"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="579e1045-ba4d-4041-ba9c-804884d9ca61"
-><Comment></Comment>
-MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) ) &gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</PreCondition></PreConditions>
+>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) ) &gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</PreCondition></PreConditions>
 <Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) )</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="a737ca4f-968e-416a-badb-330077e71a71"
 >
-<Comment></Comment>
 <Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</Expression>
 </Case></Cases>
 </Function><Function
@@ -523,7 +505,6 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Max )
  Name="Value"
  Guid="abe701e4-9e3e-4857-806a-07f43f56fb7e"
 >
-<Comment></Comment>
 <Expression>AddIncrement (
   Function =&gt; P, 
   Increment =&gt; dV_sbi
@@ -546,7 +527,6 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Max )
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8bd66382-ba78-4b61-b74a-1011da823f06"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="6765b559-5f02-43f0-814e-5c9a289e1f5e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -585,7 +565,6 @@ MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Max )
  Name="Permitted speed is not zero"
  Guid="8d09c0fa-bea0-485f-ba54-0659f3cc249d"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="0e5ea181-31f6-4423-93dd-5e7adf2f9157"

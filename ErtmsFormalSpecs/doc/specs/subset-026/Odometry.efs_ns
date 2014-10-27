@@ -1,13 +1,12 @@
 <NameSpace
- X="240"
- Y="70"
+ X="330"
+ Y="120"
  Width="100"
  Height="50"
  Pinned="TRUE"
  Name="Odometry"
  Guid="eb49e898-2a38-43cf-82a0-17e52883a9ed"
 >
-<Comment></Comment>
 <NameSpaces>
 </NameSpaces>
 <Ranges>
@@ -166,7 +165,6 @@ The confidence level (K) is defined as a level of probability that the true posi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d7c66f75-c2a1-44b4-ac6d-8403b6e4f469"
 >
-<Comment></Comment>
 </ReqRef><Comment>Represents the odometer accuracy, updated after each odometer message reception.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Length"
@@ -237,7 +235,6 @@ The confidence level (K) is defined as a level of probability that the true posi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0c2fca9c-5f43-40a4-8b7c-afe4f3f9bd9f"
 >
-<Comment></Comment>
 </ReqRef><Comment>Represents a message from Odometry, as specified in the Subset 58 v 211.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.IdentityNumber"
@@ -428,7 +425,6 @@ The confidence level (K) is defined as a level of probability that the true posi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="133e632d-28ae-4afd-bc5b-a2ca308274b7"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="e5f97755-8416-4822-93e4-2c3e935d4b0e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -439,14 +435,12 @@ The confidence level (K) is defined as a level of probability that the true posi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f6500521-1266-4a93-825a-16f561d2b0cc"
 >
-<Comment></Comment>
 </ReqRef><Comment>Indicates if the train is at standstill (its speed equals to zero).</Comment>
 <Cases>
 <Case
  Name="Determine standstill"
  Guid="47f0b7ea-e7fc-4f64-9fda-0b33c9abebe1"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="ff0a4023-88ce-48fb-b8cd-d882e95809fd"
@@ -456,11 +450,10 @@ The confidence level (K) is defined as a level of probability that the true posi
  Name="Otherwise"
  Guid="b2130de3-2d55-4df8-9747-156359361f0e"
 >
-<Comment></Comment>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Cacheable="TRUE"
  Default=""
  Width="100"
@@ -474,14 +467,12 @@ The confidence level (K) is defined as a level of probability that the true posi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="41b28cab-9b1d-4951-90a8-0520365535a0"
 >
-<Comment></Comment>
 </ReqRef><Comment>Returns the current speed, if required in the current mode</Comment>
 <Cases>
 <Case
  Name="Determine train speed"
  Guid="7f6c2a8f-58b7-4a13-9f2c-1d9b1fa3d10a"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="7bbabfb1-de05-4949-8c2a-ad8fd573303a"
@@ -491,11 +482,10 @@ The confidence level (K) is defined as a level of probability that the true posi
  Name="Otherwise"
  Guid="27a4c528-4bbf-4add-be46-4ff32577b5a1"
 >
-<Comment></Comment>
 <Expression>BaseTypes.Speed.NA</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Acceleration"
+ Type="Default.BaseTypes.Acceleration"
  Cacheable="TRUE"
  Default=""
  X="110"
@@ -510,14 +500,12 @@ The confidence level (K) is defined as a level of probability that the true posi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0800f8fd-4001-4e99-9590-a26b1910b608"
 >
-<Comment></Comment>
 </ReqRef><Comment>Returns the train acceleration, if it is required in the current mode</Comment>
 <Cases>
 <Case
  Name="Determine train acceleration"
  Guid="7886a869-a4d0-40ac-913a-058c087ddfb8"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="2bd3b8dd-e9de-4d19-bb6e-fcec83784854"
@@ -558,7 +546,6 @@ The confidence level (K) is defined as a level of probability that the true posi
  Name="StoreOdometerMessage"
  Guid="f15825ae-0c78-48df-aab0-9b3baf63f43c"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -582,8 +569,7 @@ The confidence level (K) is defined as a level of probability that the true posi
  Guid="63cfd51a-a706-4c38-bf84-6496ef309c84"
 >Odometry.EstimatedSpeed &lt;- Message.V_NOM</Action><Action
  Guid="24d8010e-c271-4470-96c1-5303813aaafe"
-><Comment></Comment>
-Odometry.EstimatedAcceleration &lt;- Default.BaseTypes.Acceleration ( Message.V_NOM
+>Odometry.EstimatedAcceleration &lt;- Default.BaseTypes.Acceleration ( Message.V_NOM
 -  Odometry.PreviousSpeed ) / Default.BaseTypes.Acceleration (  Message.T_ODO - PreviousTime)</Action><Action
  Guid="be1750f6-f121-4bb4-9192-25785d00bc32"
 >Odometry.Accuracy.V_ora &lt;- Message.V_NOM - Message.V_MIN</Action><Action
@@ -617,7 +603,6 @@ Odometry.EstimatedAcceleration &lt;- Default.BaseTypes.Acceleration ( Message.V_
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e5728d16-983b-4df7-8677-fa9a9d7a53ff"
 >
-<Comment></Comment>
 </ReqRef><Comment>Represents the odometer accuracy, updated after each odometer message reception. Used for calculating the confidence interval.
 OdometerAccuracy.LowerBoundConfidenceInterval is obtained by computing Distance.Nom - Distance.Min.
 OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.Max - Distance.Nom.</Comment>
@@ -683,7 +668,6 @@ OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="68c4a690-da75-4eeb-bd54-09f43567bab6"
 >
-<Comment></Comment>
 </ReqRef><Comment>The estimated speed of the train.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
@@ -753,7 +737,6 @@ OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.
  Name="ClearNewMessage"
  Guid="d20ef759-ed8a-4c29-a45d-346ee89326b2"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="57d2ef17-78d5-457e-85e4-e49008d580c9"
@@ -765,8 +748,7 @@ OdometerAccuracy.UpperBoundConfidenceInterval is obtained by computing Distance.
  Guid="4433bbad-1426-41b2-b90b-7923057a565f"
 >PreviousTime &lt;- CurrentTime</Action><Action
  Guid="5ee92494-7a41-432d-937e-a24f22bcf92c"
-><Comment></Comment>
-PreviousSpeed &lt;- EstimatedSpeed</Action></Actions>
+>PreviousSpeed &lt;- EstimatedSpeed</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

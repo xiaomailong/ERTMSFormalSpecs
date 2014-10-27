@@ -22,6 +22,7 @@ namespace GUI.ModelDiagram
     using DataDictionary;
     using DataDictionary.Types;
     using System.Windows.Forms;
+    using System.Drawing;
 
     /// <summary>
     /// The boxes that represent a name space
@@ -34,6 +35,8 @@ namespace GUI.ModelDiagram
         public NameSpaceModelControl(NameSpace model)
             : base(model)
         {
+            NORMAL_COLOR = Color.LightGreen;
+            BoxMode = BoxModeEnum.RoundedCorners;
             MouseDoubleClick += new MouseEventHandler(HandleMouseDoubleClick);
         }
 

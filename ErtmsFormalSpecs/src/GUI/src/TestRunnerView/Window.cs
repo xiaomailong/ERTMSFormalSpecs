@@ -168,7 +168,7 @@ namespace GUI.TestRunnerView
                             toolStripCurrentStepTextBox.Text = "<none>";
                         }
 
-                        if (EFSSystem.Runner.SubSequence != null)
+                        if (EFSSystem.Runner.SubSequence != null && EFSSystem.Runner.SubSequence.Frame != null)
                         {
                             Frame = EFSSystem.Runner.SubSequence.Frame;
                             selectedFrame = EFSSystem.Runner.SubSequence.Frame.Name;
@@ -255,11 +255,20 @@ namespace GUI.TestRunnerView
         /// </summary>
         public void StepOnce()
         {
-            CheckRunner();
-            if (EFSSystem.Runner != null)
+            try
             {
-                EFSSystem.Runner.RunUntilTime(EFSSystem.Runner.Time + EFSSystem.Runner.Step);
-                GUIUtils.MDIWindow.RefreshAfterStep();
+                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+
+                CheckRunner();
+                if (EFSSystem.Runner != null)
+                {
+                    EFSSystem.Runner.RunUntilTime(EFSSystem.Runner.Time + EFSSystem.Runner.Step);
+                    GUIUtils.MDIWindow.RefreshAfterStep();
+                }
+            }
+            finally
+            {
+                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
             }
         }
 

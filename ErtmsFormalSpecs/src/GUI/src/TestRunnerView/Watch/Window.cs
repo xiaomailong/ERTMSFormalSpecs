@@ -273,6 +273,8 @@ namespace GUI.TestRunnerView.Watch
             e.Effect = DragDropEffects.Move;
         }
 
+        private const int CTRL = 8;
+
         /// <summary>
         /// Handles a drop event
         /// </summary>
@@ -282,14 +284,14 @@ namespace GUI.TestRunnerView.Watch
         {
             if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
             {
-                BaseTreeNode SourceNode = (BaseTreeNode)e.Data.GetData("WindowsForms10PersistentObject");
-
-                if (SourceNode != null)
+                object data = e.Data.GetData("WindowsForms10PersistentObject");
+                BaseTreeNode sourceNode = data as BaseTreeNode;
+                if (sourceNode != null)
                 {
-                    Variable variable = SourceNode.Model as Variable;
+                    Variable variable = sourceNode.Model as Variable;
                     if (variable == null)
                     {
-                        DataDictionary.Shortcuts.Shortcut shortCut = SourceNode.Model as DataDictionary.Shortcuts.Shortcut;
+                        DataDictionary.Shortcuts.Shortcut shortCut = sourceNode.Model as DataDictionary.Shortcuts.Shortcut;
                         if (shortCut != null)
                         {
                             variable = shortCut.GetReference() as Variable;
@@ -298,14 +300,29 @@ namespace GUI.TestRunnerView.Watch
 
                     if (variable != null)
                     {
-                        List<WatchedExpression> watches = (List<WatchedExpression>)watchDataGridView.DataSource;
-                        watches.Insert(watches.Count - 1, new WatchedExpression(Instance, variable.FullName));
-                        watchDataGridView.DataSource = null;
-                        watchDataGridView.DataSource = watches;
-                        Refresh();
+                        AddVariable(variable);
+                    }
+                }
+
+                BrightIdeasSoftware.OLVListItem item = data as BrightIdeasSoftware.OLVListItem;
+                if ( item != null )
+                {
+                    Variable variable = item.RowObject as Variable;
+                    if (variable != null)
+                    {
+                        AddVariable(variable);
                     }
                 }
             }
+        }
+
+        private void AddVariable(Variable variable)
+        {
+            List<WatchedExpression> watches = (List<WatchedExpression>)watchDataGridView.DataSource;
+            watches.Insert(watches.Count - 1, new WatchedExpression(Instance, variable.FullName));
+            watchDataGridView.DataSource = null;
+            watchDataGridView.DataSource = watches;
+            Refresh();
         }
 
         /// <summary>
@@ -393,10 +410,16 @@ namespace GUI.TestRunnerView.Watch
                         Expression expression = ExpressionTree;
                         if (expression != null)
                         {
-                            IValue value = expression.GetValue(new InterpretationContext(), null);
-                            if (value != null)
+                            try
                             {
-                                retVal = value.LiteralName;
+                                IValue value = expression.GetValue(new InterpretationContext(), null);
+                                if (value != null)
+                                {
+                                    retVal = value.LiteralName;
+                                }
+                            }
+                            catch (Exception)
+                            {
                             }
                         }
 

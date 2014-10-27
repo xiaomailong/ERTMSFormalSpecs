@@ -528,9 +528,9 @@ namespace DataDictionary
           {
             obj.setDescription(obj.getDescription().Trim());
           }
-          if ( obj.getComment() != null )
+          if ( obj.getObsoleteComment() != null )
           {
-            obj.setComment(obj.getComment().Trim());
+            obj.setObsoleteComment(obj.getObsoleteComment().Trim());
           }
           if ( obj.getUserComment() != null )
           {
@@ -611,6 +611,10 @@ namespace DataDictionary
           {
             obj.setVariable(obj.getVariable().Trim());
           }
+          if ( obj.getValue() != null )
+          {
+            obj.setValue(obj.getValue().Trim());
+          }
 
           base.visit(obj, visitSubNodes);
         }
@@ -644,9 +648,9 @@ namespace DataDictionary
         /// <param name="visitSubNodes"></param>
         public override void visit(Generated.Translation obj, bool visitSubNodes)
         {
-          if ( obj.getComment() != null )
+          if ( obj.getObsoleteComment() != null )
           {
-            obj.setComment(obj.getComment().Trim());
+            obj.setObsoleteComment(obj.getObsoleteComment().Trim());
           }
 
           base.visit(obj, visitSubNodes);
@@ -658,6 +662,17 @@ namespace DataDictionary
         /// <param name="obj"></param>
         /// <param name="visitSubNodes"></param>
         public override void visit(Generated.SourceText obj, bool visitSubNodes)
+        {
+
+          base.visit(obj, visitSubNodes);
+        }
+
+        /// <summary>
+        /// Cleans all text fields in this element
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="visitSubNodes"></param>
+        public override void visit(Generated.SourceTextComment obj, bool visitSubNodes)
         {
 
           base.visit(obj, visitSubNodes);

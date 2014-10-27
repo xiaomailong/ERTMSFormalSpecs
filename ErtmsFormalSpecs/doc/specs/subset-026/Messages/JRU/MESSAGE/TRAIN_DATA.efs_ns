@@ -10,6 +10,8 @@
 <Structures>
 <Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Message"
@@ -36,7 +38,7 @@
  Guid="098822da-3b77-4efd-a635-6acd46312411"
 >
 </StructureElement><StructureElement
- TypeName="Default.MessageTypes.Speed"
+ TypeName="MessageTypes.Speed"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -78,7 +80,7 @@
  Guid="d7565ddc-5cae-4346-b3d8-b4b4f26b7316"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -400,6 +402,9 @@
 >
 </ReqRef></StructureElement></Structure><Structure
  Default=""
+ X="110"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure1"
@@ -435,6 +440,9 @@
 >
 </ReqRef></StructureElement></Structure><Structure
  Default=""
+ X="220"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure2"
@@ -535,13 +543,16 @@
 >
 </StructureElement></Structure><Structure
  Default=""
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure3"
  Guid="c7661e9d-6c69-4619-b3fb-05d82e12e933"
 >
 <StructureElement
- TypeName="Default.MessageTypes.Speed"
+ TypeName="MessageTypes.Speed"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -724,6 +735,10 @@
 >
 </ReqRef></StructureElement></Structure><Structure
  Default=""
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure4"
@@ -759,6 +774,10 @@
 >
 </ReqRef></StructureElement></Structure><Structure
  Default=""
+ X="220"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure5"
@@ -794,6 +813,9 @@
 >
 </ReqRef></StructureElement></Structure><Structure
  Default=""
+ Y="120"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SubStructure6"
@@ -816,48 +838,70 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Messages.JRU.MESSAGE.TRAIN_DATA.SubStructure1"
+ TypeName="SubStructure1"
  Default="[]"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Collection1"
  Guid="dd6e0930-a376-4238-b071-2ee3bd805005"
 >
 </Collection><Collection
- TypeName="Messages.JRU.MESSAGE.TRAIN_DATA.SubStructure3"
+ TypeName="SubStructure3"
  Default="[]"
+ X="110"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Collection2"
  Guid="6f444a80-8c62-4d8b-b197-62aae1c320c8"
 >
 </Collection><Collection
- TypeName="Messages.JRU.MESSAGE.TRAIN_DATA.SubStructure4"
+ TypeName="SubStructure4"
  Default="[]"
+ X="220"
+ Y="180"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Collection3"
  Guid="4a2006c1-1e8f-4266-986e-7cac87a8ee0b"
 >
 </Collection><Collection
- TypeName="Messages.JRU.MESSAGE.TRAIN_DATA.SubStructure2"
+ TypeName="SubStructure2"
  Default="[]"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Collection4"
  Guid="020be917-6795-4e45-b660-c85f83712a0d"
 >
 </Collection><Collection
- TypeName="Messages.JRU.MESSAGE.TRAIN_DATA.SubStructure5"
+ TypeName="SubStructure5"
  Default="[]"
+ X="110"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Collection5"
  Guid="8f7ef992-5bd5-4a07-936a-d804b148f84d"
 >
 </Collection><Collection
- TypeName="Messages.JRU.MESSAGE.TRAIN_DATA.SubStructure6"
+ TypeName="SubStructure6"
  Default="[]"
+ X="220"
+ Y="240"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Collection6"

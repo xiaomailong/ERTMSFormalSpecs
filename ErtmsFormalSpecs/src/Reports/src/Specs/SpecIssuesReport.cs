@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using DataDictionary;
 using MigraDoc.DocumentObjectModel;
+using DataDictionary.Tests;
 
 namespace Reports.Specs
 {
@@ -116,7 +117,7 @@ namespace Reports.Specs
         public void CreateDesignChoicesArticle(SpecIssuesReportHandler aReportConfig)
         {
             AddSubParagraph("Design choices report");
-            AddParagraph("This report describes the " + CountDesignChoices(aReportConfig.Dictionary) + " design choices made during modeling. ");
+            AddParagraph("This report describes the " + CountDesignChoices(aReportConfig.Dictionary) + " design choices made during modeling of " + aReportConfig.Dictionary.Name);
             GenerateDesignChoices(aReportConfig.Dictionary);
             CloseSubParagraph();
         }
@@ -200,8 +201,24 @@ namespace Reports.Specs
             foreach (DataDictionary.Specification.Paragraph paragraph in aDictionary.DesignChoices)
             {
                 AddSubParagraph("Design choice " + paragraph.FullId);
-                AddTable(new string[] { "Design choice " + paragraph.FullId }, new int[] { 30, 100 });
+                AddTable(new string[] { "Design choice " + paragraph.FullId }, new int[] { 60, 100 });
                 AddRow(paragraph.Text);
+                
+                // If the paragraph references steps, indicate them
+                bool first = true;
+                foreach ( ReqRef refParagraph in paragraph.Implementations )
+                {
+                    Step step = refParagraph.Enclosing as Step;
+                    if (step != null)
+                    {
+                        if (first)
+                        {
+                            AddTableHeader("Identification", "Step text");
+                        }
+                        AddRow(step.SubSequence.Name + " " + step.TestCase.Name, step.Name);
+                        first = false;
+                    }
+                }
                 CloseSubParagraph();
             }
             CloseSubParagraph();

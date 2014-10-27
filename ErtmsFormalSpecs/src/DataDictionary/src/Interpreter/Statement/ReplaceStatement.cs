@@ -203,12 +203,26 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         public override void CheckStatement()
         {
-            if (ListExpression.Ref is Parameter)
+            if (ListExpression != null)
             {
-                Root.AddError("Cannot change the list value which is a parameter (" + ListExpression.ToString() + ")");
+                if (ListExpression.Ref is Parameter)
+                {
+                    Root.AddError("Cannot change the list value which is a parameter (" + ListExpression.ToString() + ")");
+                }
+            }
+            else
+            {
+                Root.AddError("List should be specified");
             }
 
-            Value.checkExpression();
+            if (Value != null)
+            {
+                Value.checkExpression();
+            }
+            else
+            {
+                Root.AddError("Value should be specified");
+            }
 
             Types.Collection targetListType = ListExpression.GetExpressionType() as Types.Collection;
             if (targetListType != null)
@@ -219,13 +233,19 @@ namespace DataDictionary.Interpreter.Statement
                     Root.AddError("Inserted element type does not corresponds to list type");
                 }
 
-                Condition.checkExpression();
-                Types.BoolType conditionType = Condition.GetExpressionType() as Types.BoolType;
-                if (conditionType == null)
+                if (Condition != null)
                 {
-                    Root.AddError("Condition does not evaluates to boolean");
+                    Condition.checkExpression();
+                    Types.BoolType conditionType = Condition.GetExpressionType() as Types.BoolType;
+                    if (conditionType == null)
+                    {
+                        Root.AddError("Condition does not evaluates to boolean");
+                    }
                 }
-
+                else
+                {
+                    Root.AddError("Condition should be provided");
+                }
             }
             else
             {
@@ -276,11 +296,7 @@ namespace DataDictionary.Interpreter.Statement
                             newListValue.Val[i] = value;
                             Rules.Change change = new Rules.Change(variable, variable.Value, newListValue);
                             changes.Add(change, apply, runner);
-
-                            if (explanation != null)
-                            {
-                                explanation.SubExplanations.Add(new ExplanationPart(Root, change));
-                            }
+                            ExplanationPart.CreateSubExplanation(explanation, Root, change);
                         }
                         else
                         {

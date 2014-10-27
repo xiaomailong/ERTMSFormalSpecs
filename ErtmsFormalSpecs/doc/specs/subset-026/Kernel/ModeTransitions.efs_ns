@@ -8,7 +8,6 @@
  Name="ModeTransitions"
  Guid="19ea2d70-2e6d-45f4-9d4f-bf0d09e19e4c"
 >
-<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="ModeRules"
@@ -53,7 +52,7 @@
 >
 <Expression>TrainPosition.Position.DataState == DataState.Valid AND
   MA.ClosestEOA().Location &lt;= BTM.AntennaPosition ( DistanceInterval.Min ) AND
-  Kernel.Level.Value == Level.L1</Expression>
+  Kernel.Level.Value.Value == Level.L1</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -174,7 +173,7 @@ NOT MA.ModeProfile.ModeProfileIsApplicable()</Expression>
 >
 <Expression>TrainPosition.Position.DataState == DataState.Valid AND
   MA.ClosestEOA().Location &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Min ) AND
-  Kernel.Level.Value in [Level.L2, Level.L3]</Expression>
+  Kernel.Level.Value.Value in [Level.L2, Level.L3]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -267,7 +266,7 @@ DMI.DesksAreClosed()</Expression>
  Name="Value"
  Guid="21f2c88e-bf50-4354-938f-346f4cd8306f"
 >
-<Expression>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Response</Expression>
+<Expression>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DriverAnswered</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -482,7 +481,7 @@ NOT
 >
 <Expression>HandleModeChange in HandleModeChange.TrainTrip.S160
   AND
-DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Default.Request.Response</Expression>
+DMI.MasterDMI().In_AcknOfSRMode.InputInformation.DriverAnswered</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -621,7 +620,7 @@ Available ( EURORADIO.CurrentRBCConnection().MessageIn.SH_AUTHORISED )</Expressi
  Name="Value"
  Guid="b7555f56-996d-45f3-a73c-e81f65b75fff"
 >
-<Expression>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Response</Expression>
+<Expression>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.DriverAnswered</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -730,7 +729,7 @@ Available ( EURORADIO.CurrentRBCConnection().MessageIn.SH_AUTHORISED )</Expressi
   HandleModeChange in HandleModeChange.StartOfMission.S20
 )
   AND
-DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus == Request.Response
+DMI.MasterDMI().In_NonLeadingRequest.InputInformation.DriverAnswered
   AND
 TIU.NonLeadingPermitted</Expression>
 </Case></Cases>
@@ -850,7 +849,7 @@ MA.ModeProfile.CurrentMode() == Mode.ModeProfile.SH</Expression>
   AND
 MA.ModeProfile.CurrentMode() == Mode.ModeProfile.SH
   AND
-Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</Expression>
+Level.Value.Value in [Level.L1, Level.L2, Level.L3]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -873,7 +872,7 @@ Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</Expression>
  Name="Value"
  Guid="ec0576c6-5e8d-4205-8a1a-5c5ee771fd68"
 >
-<Expression>Kernel.Level.Value == Level.LNTC</Expression>
+<Expression>Level.Value.Value == Level.LNTC</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -903,7 +902,7 @@ Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</Expression>
 >
 <Expression>Odometry.TrainIsAtStandstill()
   AND
-DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus == Request.Response</Expression>
+DMI.MasterDMI().In_AcknOfRVMode.InputInformation.DriverAnswered</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -936,7 +935,7 @@ DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus == Request.Respon
  Guid="6e5e5796-8cda-4835-b133-d2ccd6666d77"
 >
 <Expression>HandleModeChange in HandleModeChange.StartOfMission.S22 AND
-DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus == Request.Response</Expression>
+DMI.MasterDMI().In_AcknOfSNMode.InputInformation.DriverAnswered</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1016,7 +1015,7 @@ DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus == Request.Respon
 >
 <Expression>HandleModeChange in HandleModeChange.StartOfMission.S23
   AND
-DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus == Request.Response</Expression>
+DMI.MasterDMI().In_AcknOfUNMode.InputInformation.DriverAnswered</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1082,7 +1081,7 @@ DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus == Request.Respon
  Name="Value"
  Guid="e1e5a254-55f8-496c-8269-0f2331f0b6f2"
 >
-<Expression>Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]
+<Expression>Kernel.Level.Value.Value in [Level.L1, Level.L2, Level.L3]
   AND
 Available ( MA.MA )
   AND
@@ -1281,8 +1280,7 @@ TIU.PassiveShuntingPermitted</Expression>
  Name="Value"
  Guid="40ef8477-1d9b-4987-9d49-7ca23018349e"
 >
-<Comment></Comment>
-<Expression>DMI.MasterDMI().In_ExitOfShuntingRequest.InputInformation.RequestStatus == Request.Response AND
+<Expression>DMI.MasterDMI().In_ExitOfShuntingRequest.InputInformation.DriverAnswered AND
 Odometry.TrainSpeed() == 0.0</Expression>
 </Case></Cases>
 </Function><Function
@@ -1336,7 +1334,7 @@ Kernel.Shunting.StopShuntingOnDeskOpening</Expression>
  Name="Value"
  Guid="352b596a-a555-4dcb-8e37-9775c7755e6a"
 >
-<Expression>Kernel.Level.Value == Level.L0</Expression>
+<Expression>Kernel.Level.Value.Value == Level.L0</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1557,7 +1555,7 @@ MA.ModeProfile.CurrentMode() == Mode.ModeProfile.OS</Expression>
  Name="Value"
  Guid="9f989227-1a5b-40c0-bdc9-f6354a483985"
 >
-<Expression>Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]
+<Expression>Level.Value.Value in [Level.L1, Level.L2, Level.L3]
   AND
 MA.MA == EMPTY</Expression>
 </Case></Cases>
@@ -1614,7 +1612,7 @@ TrackDescription.Gradient.Gradients != []
   AND
 MA.ModeProfile.Profile == []
   AND
-Kernel.Level.Value == Level.L1
+Level.Value.Value == Level.L1
   AND
 SpeedAndDistanceMonitoring.TrainTripped == False</Expression>
 </Case></Cases>
@@ -1672,7 +1670,7 @@ TrackDescription.Gradient.Gradients != []
   AND
 NOT MA.ModeProfile.ModeProfileIsApplicable()
   AND
-Level.Value in [Level.L2, Level.L3]</Expression>
+Level.Value.Value in [Level.L2, Level.L3]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1885,7 +1883,7 @@ Odometry.TrainIsAtStandstill()</Expression>
 >
 <Expression>HandleModeChange in HandleModeChange.TrainTrip.S170.DriverAckRequested
   AND
-DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus == Request.Response</Expression>
+DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DriverAnswered</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1989,7 +1987,7 @@ MA.ModeProfile.CurrentMode() == Mode.ModeProfile.LS</Expression>
   AND
 MA.ModeProfile.CurrentMode() == Mode.ModeProfile.LS
   AND
-Kernel.Level.Value in [Level.L1, Level.L2, Level.L3]</Expression>
+Level.Value.Value in [Level.L1, Level.L2, Level.L3]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2244,7 +2242,7 @@ NOT
 >
 <Expression>HandleModeChange in HandleModeChange.TrainTrip.S170.DriverAckRequested
   AND
-DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Response</Expression>
+DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DriverAnswered</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2289,7 +2287,7 @@ DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Respon
 >
 <Expression>Kernel.HandleModeChange in HandleModeChange.StartOfMission.S25
   AND
-DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Response</Expression>
+DMI.MasterDMI().In_AcknOfOSMode.InputInformation.DriverAnswered</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2380,9 +2378,9 @@ NOT MA.ModeProfile.ModeProfileIsApplicable()</Expression>
 >
 <Expression>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip
   AND
-Kernel.Level.Value in [Level.L2, Level.L3]
+Level.Value.Value in [Level.L2, Level.L3]
   AND
-DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Response</Expression>
+DMI.MasterDMI().In_OverrideRequest.InputInformation.DriverAnswered</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2422,7 +2420,7 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Res
 >
 <Expression>HandleModeChange in HandleModeChange.TrainTrip.S170.DriverAckRequested
   AND
-DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Response</Expression>
+DMI.MasterDMI().In_AcknOfSHMode.InputInformation.DriverAnswered</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2456,7 +2454,7 @@ DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Respon
 >
 <Expression>HandleModeChange in HandleModeChange.StartOfMission.S24
   AND
-DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Default.Request.Response</Expression>
+DMI.MasterDMI().In_AcknOfSRMode.InputInformation.DriverAnswered</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2490,7 +2488,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Default.Reques
   Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S20
 )
   AND
-DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Response</Expression>
+DMI.MasterDMI().In_OverrideRequest.InputInformation.DriverAnswered</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2530,7 +2528,7 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Res
 >
 <Expression>HandleModeChange in HandleModeChange.StartOfMission.S25
   AND
-DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus == Request.Response</Expression>
+DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DriverAnswered</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2570,7 +2568,7 @@ DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus == Request.Respon
 >
 <Expression>HandleModeChange in HandleModeChange.StartOfMission.S25
   AND
-DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Response</Expression>
+DMI.MasterDMI().In_AcknOfSHMode.InputInformation.DriverAnswered</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2597,7 +2595,7 @@ DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Respon
  Name="Value"
  Guid="580df3bd-c8e6-48f2-aba6-78766237debd"
 >
-<Expression>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus == Request.Response
+<Expression>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.DriverAnswered
   AND
 Odometry.TrainIsAtStandstill()
   AND
@@ -2639,7 +2637,7 @@ TIU.NonLeadingPermitted</Expression>
  Name="Value"
  Guid="0f4cca70-9bb1-4700-9cb4-d8e4c5438e63"
 >
-<Expression>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus == Request.Response</Expression>
+<Expression>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DriverAnswered</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -2663,7 +2661,6 @@ TIU.NonLeadingPermitted</Expression>
  Name="Update mode"
  Guid="cb9bee43-a1ca-465a-96a0-ed1fdbbb6026"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2686,7 +2683,6 @@ TIU.NonLeadingPermitted</Expression>
  Name="NP"
  Guid="a7292d7a-3fe6-4781-ae3b-4583c8072d7b"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2727,8 +2723,7 @@ TIU.NonLeadingPermitted</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9222388e-fdf5-45f2-b290-28f029cea192"
 >
-</ReqRef><Comment></Comment>
-<PreConditions>
+</ReqRef><PreConditions>
 <PreCondition
  Guid="4eb9f7ab-f9ff-4968-b61c-35120ed8e96b"
 >Condition4()</PreCondition></PreConditions>
@@ -2745,7 +2740,6 @@ TIU.NonLeadingPermitted</Expression>
  Name="SB"
  Guid="69f62779-e596-4f71-a363-c4bd65348a81"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="8a69d0e4-714f-41a4-ab4a-0bffeaf5ccd0"
@@ -3723,7 +3717,6 @@ TIU.NonLeadingPermitted</Expression>
  Name="FS"
  Guid="8da14eb5-bd44-414b-8e21-06963c27ba89"
 >
-<Comment></Comment>
 <PreConditions>
 <PreCondition
  Guid="36e7f05f-671b-4eb0-bdbc-ae2ca938a6af"

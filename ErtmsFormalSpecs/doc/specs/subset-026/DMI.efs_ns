@@ -1,13 +1,12 @@
 <NameSpace
- X="350"
- Y="70"
+ X="330"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
  Name="DMI"
  Guid="27079fd5-b597-44b6-9a91-248896c6f707"
 >
-<Comment></Comment>
 <NameSpaces>
 <NameSpaceRef
  Name="IN"
@@ -652,87 +651,71 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="e5a3e049-8a1e-4057-88d5-186c28f36bf4"
 >IsMaster == True</PreCondition><PreCondition
  Guid="92d72bbd-a467-46fc-93b9-80133492c1b5"
-><Comment></Comment>
-PreviousMode != Kernel.Mode</PreCondition></PreConditions>
+>PreviousMode != Kernel.Mode</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3f187d6a-e7e5-4287-aed5-a4fe32ff7e96"
-><Comment></Comment>
-THIS.In_ErtmsEtcsLevel.TrackMode()</Action><Action
+>THIS.In_ErtmsEtcsLevel.TrackMode()</Action><Action
+ Guid="4118ac64-ad5c-4eb3-8acf-9f79e9689162"
+>THIS.In_ErtmsEtcsLevelEntryRequest.TrackMode()</Action><Action
  Guid="3a357883-dbd6-4d62-bc9c-894eb3407d42"
 >THIS.In_DriverId.TrackMode()</Action><Action
+ Guid="db5df32f-20b7-4152-98f3-3ef9b1f9ba8e"
+>THIS.In_DriverIdEntryRequest.TrackMode()</Action><Action
  Guid="c4124830-b14b-4a4a-8148-0bda2a440b7d"
-><Comment></Comment>
-THIS.In_TrainData.TrackMode()</Action><Action
+>THIS.In_TrainData.TrackMode()</Action><Action
  Guid="7ec7436d-c9d5-4c45-9474-2b702ea7b28d"
 >THIS.In_TrainDataEntryRequest.TrackMode()</Action><Action
  Guid="a4edbcfb-504e-419a-88f5-9a55b16db104"
-><Comment></Comment>
-THIS.In_TrainRunningNumber.TrackMode()</Action><Action
+>THIS.In_TrainRunningNumber.TrackMode()</Action><Action
+ Guid="05e0d6f8-faf1-4547-be7b-f59a95e4e1cb"
+>THIS.In_TrainRunningNumberEntryRequest.TrackMode()</Action><Action
  Guid="aa1571fb-1de5-4a65-bbc6-0f64a55d3aa9"
 >THIS.In_Start.TrackMode()</Action><Action
  Guid="10c97c94-5e60-4899-8e8c-9f9176d5f30e"
-><Comment></Comment>
-THIS.In_AcknOfFixedTextInformation.TrackMode()</Action><Action
+>THIS.In_AcknOfFixedTextInformation.TrackMode()</Action><Action
  Guid="f1e0a4a1-8f3e-4eba-aa8c-f8afa797b9d8"
-><Comment></Comment>
-THIS.In_AcknOfLevelTransition.TrackMode()</Action><Action
+>THIS.In_AcknOfLevelTransition.TrackMode()</Action><Action
  Guid="43028746-5ad9-4296-bca7-432aba463ecd"
-><Comment></Comment>
-THIS.In_AcknOfPlainTextInformation.TrackMode()</Action><Action
+>THIS.In_AcknOfPlainTextInformation.TrackMode()</Action><Action
  Guid="d338fcb5-0227-40a3-bc6f-630272233913"
-><Comment></Comment>
-THIS.In_AcknOfSNMode.TrackMode()</Action><Action
+>THIS.In_AcknOfSNMode.TrackMode()</Action><Action
  Guid="c6453655-0182-4133-8b85-870eb384205b"
-><Comment></Comment>
-THIS.In_AcknOfTrainDataChangeFromOtherSource.TrackMode()</Action><Action
+>THIS.In_AcknOfTrainDataChangeFromOtherSource.TrackMode()</Action><Action
  Guid="25cc49eb-10cf-4452-a5d0-fa5bd4918b31"
-><Comment></Comment>
-THIS.In_AcknOfLSMode.TrackMode()</Action><Action
+>THIS.In_AcknOfLSMode.TrackMode()</Action><Action
  Guid="6666e546-59da-4db8-af37-9ae57449d1b7"
-><Comment></Comment>
-THIS.In_AcknOfOSMode.TrackMode()</Action><Action
+>THIS.In_AcknOfOSMode.TrackMode()</Action><Action
  Guid="6d31cdde-815c-415e-9ed5-5d4da38c9cd6"
-><Comment></Comment>
-THIS.In_AcknOfSHMode.TrackMode()</Action><Action
+>THIS.In_AcknOfSHMode.TrackMode()</Action><Action
  Guid="edb1fc71-3f49-40b8-a315-6089e42d058f"
 >THIS.In_AcknOfSRMode.TrackMode()</Action><Action
  Guid="42ca96b1-1c03-467c-9a22-15e28737d238"
-><Comment></Comment>
-THIS.In_AcknOfUNMode.TrackMode()</Action><Action
+>THIS.In_AcknOfUNMode.TrackMode()</Action><Action
  Guid="710ad436-5190-4107-8dd8-1cc4ca6528b9"
-><Comment></Comment>
-THIS.In_AcknOfRVMode.TrackMode()</Action><Action
+>THIS.In_AcknOfRVMode.TrackMode()</Action><Action
  Guid="384bc6de-dc39-473c-bc4e-8fcf0b12deb3"
-><Comment></Comment>
-THIS.In_AcknOfTrainTrip.TrackMode()</Action><Action
+>THIS.In_AcknOfTrainTrip.TrackMode()</Action><Action
  Guid="b6f378c4-a98c-4e3a-8369-e518e4510737"
 >THIS.In_AcknForRollAwayProtection.TrackMode()</Action><Action
  Guid="d01b3389-9c4b-49d7-b173-535fe7215790"
 >THIS.In_AcknForReverseMovementProtection.TrackMode()</Action><Action
  Guid="2faeed4b-7ab9-4173-9ab3-7f2dba27d340"
-><Comment></Comment>
-THIS.In_AcknForStandstillSupervision.TrackMode()</Action><Action
+>THIS.In_AcknForStandstillSupervision.TrackMode()</Action><Action
  Guid="d90fc1d5-c91e-458d-ab74-fee176b2a72a"
-><Comment></Comment>
-THIS.In_AcknForPostTripDistanceExceeded.TrackMode()</Action><Action
+>THIS.In_AcknForPostTripDistanceExceeded.TrackMode()</Action><Action
  Guid="2dd4342f-2852-4e68-97de-8354cdf20225"
-><Comment></Comment>
-THIS.In_AcknForReversingDistanceExceeded.TrackMode()</Action><Action
+>THIS.In_AcknForReversingDistanceExceeded.TrackMode()</Action><Action
  Guid="54c4c54d-2b8e-4900-8670-852643ce9ec5"
-><Comment></Comment>
-THIS.In_ContinueShuntingOnDeskClosureRequest.TrackMode()</Action><Action
+>THIS.In_ContinueShuntingOnDeskClosureRequest.TrackMode()</Action><Action
  Guid="3e82c310-33e7-4a58-9784-2bb8a04359d8"
-><Comment></Comment>
-THIS.In_ExitOfShuntingRequest.TrackMode()</Action><Action
+>THIS.In_ExitOfShuntingRequest.TrackMode()</Action><Action
  Guid="731ad583-ccff-46b7-a8f6-c94daf946a56"
-><Comment></Comment>
-THIS.In_Isolation.TrackMode()</Action><Action
+>THIS.In_Isolation.TrackMode()</Action><Action
  Guid="45f2221b-307c-42e5-9e8c-1fa4a1faa127"
 >THIS.In_NonLeadingRequest.TrackMode()</Action><Action
  Guid="8c04f658-d524-4c19-9de7-f16c73c1354e"
-><Comment></Comment>
-THIS.In_OverrideRequest.TrackMode()</Action><Action
+>THIS.In_OverrideRequest.TrackMode()</Action><Action
  Guid="72db7a1c-51f5-4a68-9854-2620811006f9"
 >THIS.In_RBCContactInformation.TrackMode()</Action><Action
  Guid="82cd3c7d-24b4-4b8e-b9bc-26cf2d5d8b6e"
@@ -744,12 +727,13 @@ THIS.In_OverrideRequest.TrackMode()</Action><Action
  Guid="c64ebd35-8f33-4964-9fba-5329d6bf5f90"
 >THIS.In_TrackAdhesionFactor.TrackMode()</Action><Action
  Guid="83a2996f-7c64-4a56-94ab-7463268a9ff3"
-><Comment></Comment>
-THIS.In_TrackAheadFree.TrackMode()</Action><Action
+>THIS.In_TrackAheadFree.TrackMode()</Action><Action
  Guid="ffc49356-a342-4f80-a304-eaebd1b9cd89"
 >THIS.In_TrainIntegrity.TrackMode()</Action><Action
  Guid="a146884b-c77b-4030-aa93-3458ef154f52"
 >THIS.In_VirtualBaliseCover.TrackMode()</Action><Action
+ Guid="df0f55a8-1469-4a69-92ce-dc051554bb23"
+>THIS.In_VirtualBaliseCoverEntryRequest.TrackMode()</Action><Action
  Guid="d852eb4f-3cb6-4961-a0e6-3f5b4b6d01cd"
 >THIS.Out_MRSP.TrackMode()</Action><Action
  Guid="8c218d18-6e1a-4665-a809-355eb5571dd0"
@@ -777,8 +761,7 @@ THIS.In_TrackAheadFree.TrackMode()</Action><Action
  Guid="4f91802d-a5c3-4b2f-9778-98f17b0e2186"
 >THIS.Out_Gradient.TrackMode()</Action><Action
  Guid="96555ce2-6ee4-4384-94d1-526d83f6ead4"
-><Comment></Comment>
-THIS.Out_IndicationLocationAtMrspSpeed.TrackMode()</Action><Action
+>THIS.Out_IndicationLocationAtMrspSpeed.TrackMode()</Action><Action
  Guid="8dfec0d8-d2a3-485b-b240-d2c5631909b0"
 >THIS.Out_LevelTransitionAnnouncement.TrackMode()</Action><Action
  Guid="f699681d-72b2-4cef-92bd-a3b54662a674"
@@ -794,8 +777,7 @@ THIS.Out_IndicationLocationAtMrspSpeed.TrackMode()</Action><Action
  Guid="b0f9922d-af5b-40a8-8d7a-6df9fa087bcd"
 >THIS.Out_OverrideStatus.TrackMode()</Action><Action
  Guid="d6e0e3c9-6372-44ff-8b93-7afe40a0703b"
-><Comment></Comment>
-THIS.Out_PermittedSpeed.TrackMode()</Action><Action
+>THIS.Out_PermittedSpeed.TrackMode()</Action><Action
  Guid="6c6217f2-a5c9-44cb-8cef-553ffbb3a6ea"
 >THIS.Out_PlainTextInformation.TrackMode()</Action><Action
  Guid="a1bc5cf3-b5cc-4a90-8920-a37c0b7fad68"
@@ -875,7 +857,6 @@ THIS.Out_PermittedSpeed.TrackMode()</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b372c965-5eaf-4d25-a866-7912f5ded3f3"
 >
-<Comment></Comment>
 </ReqRef><ReqRef
  Id="63c4543b-5430-4f3e-a524-ce48d640aead"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
@@ -1061,82 +1042,67 @@ THIS.Out_PermittedSpeed.TrackMode()</Action><Action
 <Actions>
 <Action
  Guid="b302e313-c04d-49df-9d1a-d51c5307b11f"
-><Comment></Comment>
-THIS.In_ErtmsEtcsLevel.AcceptDriverResponse()</Action><Action
+>THIS.In_ErtmsEtcsLevel.AcceptDriverResponse()</Action><Action
+ Guid="b17f7913-3180-47a7-a91e-84411761bbf4"
+>THIS.In_ErtmsEtcsLevelEntryRequest.AcceptDriverResponse()</Action><Action
  Guid="9c329640-f88c-404a-931e-8c5f25cf779c"
 >THIS.In_DriverId.AcceptDriverResponse()</Action><Action
+ Guid="c361ed51-efd9-4018-a52f-1dfc1cadc49f"
+>THIS.In_DriverIdEntryRequest.AcceptDriverResponse()</Action><Action
  Guid="fd0e8a79-223e-4a1e-b032-d5c5cf3cf509"
-><Comment></Comment>
-THIS.In_TrainData.AcceptDriverResponse()</Action><Action
+>THIS.In_TrainData.AcceptDriverResponse()</Action><Action
  Guid="08d6bab2-3993-4cb5-9192-319c0ede51d4"
 >THIS.In_TrainDataEntryRequest.AcceptDriverResponse()</Action><Action
  Guid="c02b72b9-a46b-45e5-aea2-51f52d275b06"
-><Comment></Comment>
-THIS.In_TrainRunningNumber.AcceptDriverResponse()</Action><Action
+>THIS.In_TrainRunningNumber.AcceptDriverResponse()</Action><Action
+ Guid="e7ec39fa-e874-4856-95cf-31e8369db25b"
+>THIS.In_TrainRunningNumberEntryRequest.AcceptDriverResponse()</Action><Action
  Guid="afe89900-4ed1-4a67-9dd6-58bc777e8c95"
 >THIS.In_Start.AcceptDriverResponse()</Action><Action
  Guid="075c7e3d-a7b6-48e7-8d83-d0317434457a"
-><Comment></Comment>
-THIS.In_AcknOfFixedTextInformation.AcceptDriverResponse()</Action><Action
+>THIS.In_AcknOfFixedTextInformation.AcceptDriverResponse()</Action><Action
  Guid="06dc464c-b2dc-4b2d-9cf3-19c016c501f8"
-><Comment></Comment>
-THIS.In_AcknOfLevelTransition.AcceptDriverResponse()</Action><Action
+>THIS.In_AcknOfLevelTransition.AcceptDriverResponse()</Action><Action
  Guid="16410175-8324-4cad-92d4-5ea1448871f7"
-><Comment></Comment>
-THIS.In_AcknOfPlainTextInformation.AcceptDriverResponse()</Action><Action
+>THIS.In_AcknOfPlainTextInformation.AcceptDriverResponse()</Action><Action
  Guid="cd68188d-3c3b-4525-b7e1-d8f679f56127"
-><Comment></Comment>
-THIS.In_AcknOfSNMode.AcceptDriverResponse()</Action><Action
+>THIS.In_AcknOfSNMode.AcceptDriverResponse()</Action><Action
  Guid="f07dd17f-121a-41ef-9cf8-1b78ce9802a4"
-><Comment></Comment>
-THIS.In_AcknOfTrainDataChangeFromOtherSource.AcceptDriverResponse()</Action><Action
+>THIS.In_AcknOfTrainDataChangeFromOtherSource.AcceptDriverResponse()</Action><Action
  Guid="ea7fab53-2883-408a-ba7d-5a417c8b0bb9"
-><Comment></Comment>
-THIS.In_AcknOfLSMode.AcceptDriverResponse()</Action><Action
+>THIS.In_AcknOfLSMode.AcceptDriverResponse()</Action><Action
  Guid="2a999307-5abf-47e9-9149-d63de6e1b0ab"
-><Comment></Comment>
-THIS.In_AcknOfOSMode.AcceptDriverResponse()</Action><Action
+>THIS.In_AcknOfOSMode.AcceptDriverResponse()</Action><Action
  Guid="8ecc438f-8ef1-47e3-85b4-bf8de20b39b5"
-><Comment></Comment>
-THIS.In_AcknOfSHMode.AcceptDriverResponse()</Action><Action
+>THIS.In_AcknOfSHMode.AcceptDriverResponse()</Action><Action
  Guid="5e369454-6dd9-4d3f-968e-ff4b5c6783d4"
 >THIS.In_AcknOfSRMode.AcceptDriverResponse()</Action><Action
  Guid="81e876cc-1dd0-44a8-9152-25d1648e6357"
-><Comment></Comment>
-THIS.In_AcknOfUNMode.AcceptDriverResponse()</Action><Action
+>THIS.In_AcknOfUNMode.AcceptDriverResponse()</Action><Action
  Guid="f56cf083-bfce-4faf-b59d-eefcb3f5d292"
-><Comment></Comment>
-THIS.In_AcknOfRVMode.AcceptDriverResponse()</Action><Action
+>THIS.In_AcknOfRVMode.AcceptDriverResponse()</Action><Action
  Guid="c6820a90-0c7f-4b9d-9d1f-e5a069125163"
-><Comment></Comment>
-THIS.In_AcknOfTrainTrip.AcceptDriverResponse()</Action><Action
+>THIS.In_AcknOfTrainTrip.AcceptDriverResponse()</Action><Action
  Guid="1c77c40a-278b-48ea-b041-3d3ee4fb23a6"
 >THIS.In_AcknForRollAwayProtection.AcceptDriverResponse()</Action><Action
  Guid="61de8260-8a7d-4c29-9e4d-b510728200ba"
 >THIS.In_AcknForReverseMovementProtection.AcceptDriverResponse()</Action><Action
  Guid="a03cfdd8-a1a7-456f-8794-cb9a83464a12"
-><Comment></Comment>
-THIS.In_AcknForStandstillSupervision.AcceptDriverResponse()</Action><Action
+>THIS.In_AcknForStandstillSupervision.AcceptDriverResponse()</Action><Action
  Guid="8fa7e934-c848-4b00-a236-aedc81af8f76"
-><Comment></Comment>
-THIS.In_AcknForPostTripDistanceExceeded.AcceptDriverResponse()</Action><Action
+>THIS.In_AcknForPostTripDistanceExceeded.AcceptDriverResponse()</Action><Action
  Guid="d0a1cfe7-916f-48f9-a95a-0d73892db81f"
-><Comment></Comment>
-THIS.In_AcknForReversingDistanceExceeded.AcceptDriverResponse()</Action><Action
+>THIS.In_AcknForReversingDistanceExceeded.AcceptDriverResponse()</Action><Action
  Guid="d7c5819d-3102-417e-a9c3-9e695baac42b"
-><Comment></Comment>
-THIS.In_ContinueShuntingOnDeskClosureRequest.AcceptDriverResponse()</Action><Action
+>THIS.In_ContinueShuntingOnDeskClosureRequest.AcceptDriverResponse()</Action><Action
  Guid="1269bc74-8e91-4544-bb3f-aac174230c08"
-><Comment></Comment>
-THIS.In_ExitOfShuntingRequest.AcceptDriverResponse()</Action><Action
+>THIS.In_ExitOfShuntingRequest.AcceptDriverResponse()</Action><Action
  Guid="7e7c9936-44eb-496b-b07b-5f6e0638282a"
-><Comment></Comment>
-THIS.In_Isolation.AcceptDriverResponse()</Action><Action
+>THIS.In_Isolation.AcceptDriverResponse()</Action><Action
  Guid="8baf325f-725b-41cb-84c5-e9f3b93b9e75"
 >THIS.In_NonLeadingRequest.AcceptDriverResponse()</Action><Action
  Guid="ecbc0a25-04e2-4d46-8759-53da2f78ee13"
-><Comment></Comment>
-THIS.In_OverrideRequest.AcceptDriverResponse()</Action><Action
+>THIS.In_OverrideRequest.AcceptDriverResponse()</Action><Action
  Guid="712dccdd-9204-4120-b84f-564c61163a01"
 >THIS.In_RBCContactInformation.AcceptDriverResponse()</Action><Action
  Guid="371c90f4-e32f-4231-973e-3209033e2246"
@@ -1148,12 +1114,722 @@ THIS.In_OverrideRequest.AcceptDriverResponse()</Action><Action
  Guid="b50bb568-7395-4138-8006-2ed0f7b3184e"
 >THIS.In_TrackAdhesionFactor.AcceptDriverResponse()</Action><Action
  Guid="f73c10a8-0d24-4940-918b-1e7c66f10be0"
-><Comment></Comment>
-THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
+>THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
  Guid="32fa69b6-994c-46b8-85e2-1190d43407dd"
 >THIS.In_TrainIntegrity.AcceptDriverResponse()</Action><Action
  Guid="216a978b-051d-42e3-ba33-a5d67b52054a"
->THIS.In_VirtualBaliseCover.AcceptDriverResponse()</Action></Actions>
+>THIS.In_VirtualBaliseCover.AcceptDriverResponse()</Action><Action
+ Guid="243ab72a-b96b-4196-a725-712460511989"
+>THIS.In_VirtualBaliseCoverEntryRequest.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateOUTVariables"
+ Guid="5bc782b5-76bb-4d4b-ab44-9bcd2cddeec6"
+>
+<Comment>Handles the update of all the output variables displayed on the DMI</Comment>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update accepted emergency stops"
+ Guid="076da07e-1c15-4e7d-b483-f4ea56aa180c"
+>
+<Comment>Updates the displayed list of accepted emergency stops</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update accepted emergency stops"
+ Guid="f3f773a0-88d3-4a43-85b5-f664051554fd"
+>
+<PreConditions>
+<PreCondition
+ Guid="3ae0271e-a782-4f4e-a474-dce7c4b0b89d"
+>Out_AcceptedEmergencyStops.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9815ae9e-cf79-4c63-8626-c190486f58da"
+>Out_AcceptedEmergencyStops.EmergencyStops &lt;- Kernel.EmergencyStops</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update Level"
+ Guid="cae9704d-2daa-42fb-bf5e-8c90f72905a9"
+>
+<Comment>Updates the displayed ERTMS/ETCS Level</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update Level"
+ Guid="4c913cb4-87c2-4e9e-9219-53f8296466c6"
+>
+<PreConditions>
+<PreCondition
+ Guid="195b2dbf-22d7-4c63-b11d-4378c05d6123"
+>Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ae406ba3-7f28-4ecf-936e-37bb2932406f"
+>Out_CurrentErtmsEtcsLevel.Level &lt;- Kernel.Level.Value</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update Driver ID"
+ Guid="f68431be-1330-4646-bd89-866a8d08dfcc"
+>
+<Comment>Updates the displayed driver ID</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update Driver ID"
+ Guid="79ef86c8-e8d6-4444-8f5b-0e875efd6f06"
+>
+<PreConditions>
+<PreCondition
+ Guid="76ce8e08-b372-452c-a978-83f32c2a88dc"
+>Out_DriverId.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="a36e66ff-5d2d-4af7-a3b9-882281399754"
+>Kernel.DriverId.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3a7adecc-6646-4d3a-ab14-8b07e02c0e6f"
+>Out_DriverId.Id &lt;- Kernel.DriverId.Value</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update Mode"
+ Guid="23f8cd15-1e37-451f-866e-eac416698acf"
+>
+<Comment>Updates the displayed ERTMS/ETCS Mode</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update Mode"
+ Guid="caec3181-8487-4d20-887f-01fa668459c1"
+>
+<PreConditions>
+<PreCondition
+ Guid="20dbf228-0aea-40f7-82c6-ce8596d5090a"
+>Out_ErtmsEtcsMode.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="03ff2494-fd28-4b4b-80f1-40ae76f3d84b"
+>Out_ErtmsEtcsMode.Mode &lt;- Kernel.Mode</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update first target at zero speed"
+ Guid="0208baca-5fd6-4136-9149-e3198c042f74"
+>
+<Comment>Updates the display of the first target at zero speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update first target at zero speed"
+ Guid="fb8362ae-d794-497a-9820-071afc48eeb0"
+>
+<PreConditions>
+<PreCondition
+ Guid="ed8d828e-dac1-4e26-b829-678024c3a785"
+>Out_FirstTargetAtZeroSpeed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="48b28eb0-1034-4e06-9c8e-4bc9d9fd35b3"
+>Out_FirstTargetAtZeroSpeed.Target &lt;- Kernel.FirstTargetAtZeroSpeed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update FLOI"
+ Guid="a884fe23-0d45-44d7-bf19-ab6221b4198c"
+>
+<ReqRef
+ Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="95a12ba6-b718-4591-8059-d6e3028b7324"
+>
+</ReqRef><ReqRef
+ Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a828dd44-f6e2-4d30-891e-5f32db33110c"
+>
+</ReqRef><Comment>Updates the displayed FLOI speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="84111a24-c1b5-4ecc-9522-559cc279d396"
+>
+<PreConditions>
+<PreCondition
+ Guid="b2656408-99e7-4f0c-bc3a-526060dfebca"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target]</PreCondition><PreCondition
+ Guid="859e941a-b30f-46f2-9d7b-1cc226cc0fbe"
+>Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() != Kernel.SupervisionStatus.Normal
+  AND  
+Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() != Kernel.SupervisionStatus.Indication</PreCondition><PreCondition
+ Guid="d5634a7b-6cad-4c6f-9dc8-a6a83557e821"
+>Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
+ Guid="104bfae1-3091-47e6-b63e-77df74bc368a"
+>Out_FLOI.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f0c8976c-c957-4f3d-a0a5-3295db9e7317"
+>Out_FLOI.Speed &lt;- Kernel.SpeedAndDistanceMonitoring.FLOISpeed(
+Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update geographical position"
+ Guid="a623c088-3546-40cf-a0f8-812cdca1e577"
+>
+<Comment>Updates the displayed geographical position</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="7fb4cb71-6874-4f28-9075-6001303250e9"
+>
+<PreConditions>
+<PreCondition
+ Guid="66e26df1-3de2-482f-ad92-f12fbf0ec8d8"
+>Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
+ Guid="d875d4e5-c722-4867-8ff4-13b0df014c5c"
+>Out_GeographicalPosition.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8294da13-c432-41af-8af5-7ba212f240de"
+>Out_GeographicalPosition.Position &lt;- Kernel.TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;Default.DistanceInterval.Nom
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update gradient"
+ Guid="b40e4820-4169-4019-8297-4d530bed35c5"
+>
+<Comment>Updates the displayed gradients</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="073eeb23-c47b-4f9c-b3d5-8e928445f9f4"
+>
+<PreConditions>
+<PreCondition
+ Guid="b728deb1-78dd-4c6b-9369-824d0ce59ec2"
+>Out_Gradient.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="bd5f6858-eb55-4cc7-a633-8479451bf90c"
+>Out_Gradient.GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING Kernel.TrackDescription.Gradient.CompensateForTrainPosition(X)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update indication location at MSRP speed"
+ Guid="d461d908-93cf-4d82-a982-20fbe7ea7ecf"
+>
+<Comment>Updates the displayed indication location at MRSP speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="dedfc75e-8039-4cb5-b1a4-25400560f247"
+>
+<PreConditions>
+<PreCondition
+ Guid="e7e23d27-d75d-4817-b027-fee6a8e4b996"
+>Out_IndicationLocationAtMrspSpeed.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="5bced455-e7ba-4ce4-8b8c-d71ad9d9f0b7"
+>OUT.GetMonitoringType() == OUT.MonitoringType.CSM
+  OR  
+OUT.GetMonitoringType() == OUT.MonitoringType.PIM</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3b03cbd3-6227-48c2-89d6-d091e5d898dc"
+>Out_IndicationLocationAtMrspSpeed.Location &lt;- Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.IndicationLocation()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update local time"
+ Guid="77d00604-ba2f-4d60-b3d1-57d9d34afebf"
+>
+<ReqRef
+ Id="57c8cd45-54ca-4d5e-b07f-37b9b1efab54"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6f2d8ff7-483e-4ab1-a1ff-18bfd602fdc5"
+>
+</ReqRef><Comment>Updates the displayed local time</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="1ac88761-f8d9-459f-8ec8-217a6c6f500f"
+>
+<Comment>TODO Get the NID_C from the appropriate location
+
+Fetches the time from the kernel and adjusts according to the current country identifier</Comment>
+<PreConditions>
+<PreCondition
+ Guid="a3218da3-d4c8-4875-9c10-08223c2b7e82"
+>Out_LocalTime.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1142b13c-b3ac-4642-81b5-5adb7963db43"
+>Out_LocalTime.Time &lt;- Kernel.DateAndTime.LocalTime(
+    Country=&gt;0
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update MRSP"
+ Guid="6a704f40-9de7-4007-a2c3-af80257131d1"
+>
+<Comment>Updates the displayed MRSP</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="64a50690-ad9b-41f6-94b9-8b44fe30b7d7"
+>
+<PreConditions>
+<PreCondition
+ Guid="2d7e3394-01bd-4312-9c4f-39bae5bbbb99"
+>Out_MRSP.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="97e87b9c-6423-492a-ab35-7e0f036e1158"
+>Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()
+  OR  
+Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()
+  OR  
+Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1be84e29-e3d9-42a7-b772-c8c4ffef7f37"
+>Out_MRSP.GetMRSP()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update permitted speed"
+ Guid="b9ba7f08-be55-4923-982f-f5872439af94"
+>
+<ReqRef
+ Id="09e9b21f-a204-44c7-9829-f4221f5ff7a6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fffeb489-e055-4142-846d-a686a47ec7fa"
+>
+</ReqRef><ReqRef
+ Id="74e64307-2966-461e-a976-9a0194ca8514"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b437f784-ec34-4cc9-91ca-fc8594023a1d"
+>
+</ReqRef><Comment>Updates the displayed permitted speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="6b84c2b1-233e-4c52-8153-692db15d6835"
+>
+<PreConditions>
+<PreCondition
+ Guid="27f43f3b-9d33-4f93-8af9-d46bf9c93913"
+>Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
+ Guid="6419b761-6bf8-4aa3-af63-9c94abdb9795"
+>Out_PermittedSpeed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ Name="Update variable"
+ Guid="074eb3af-d97b-455d-bf4b-735c57352494"
+>
+<Comment>Updates the permitted speed according to the mode</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Train in SR, PT, SH, SN or RV modes"
+ Guid="ceca03bb-563c-40a7-be1e-2646f21d018b"
+>
+<Comment>Mode SR, PT, SH, SN or RV</Comment>
+<PreConditions>
+<PreCondition
+ Guid="04868972-8866-4251-934f-1527923ad496"
+>Kernel.Mode == Default.Mode.SR
+  OR  
+Kernel.Mode == Default.Mode.PT
+  OR  
+Kernel.Mode == Default.Mode.SH
+  OR  
+Kernel.Mode == Default.Mode.SN
+  OR  
+Kernel.Mode == Default.Mode.RV</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f6842f02-0829-4aa9-8f87-595353483595"
+>Out_PermittedSpeed.Speed &lt;- Kernel.ModeRelatedSpeedLimits.SRModeSpeedLimit()</Action><Action
+ Guid="fa977fee-280c-40d9-8961-ac5e8494d9ef"
+>Out_PermittedSpeed.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Otherwise"
+ Guid="3c0e9560-e579-4971-87cc-9fb0389c9b3a"
+>
+<Comment>Otherwise</Comment>
+<PreConditions>
+<PreCondition
+ Guid="a9971c0e-2925-4453-b4c7-43b5a9104e12"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in  [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="abfe8af1-6df4-4510-9e27-17aa6e1e711a"
+>Out_PermittedSpeed.Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update RBC contact information"
+ Guid="8ca3d038-333d-4b0d-acf4-183ac9b16b65"
+>
+<Comment>Updates the displayed RBC contact information</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="74904580-ca74-4c2d-92d4-6e8639786244"
+>
+<PreConditions>
+<PreCondition
+ Guid="03aa01ef-5c7e-41c1-adb9-bfa449a0ac08"
+>Out_RBCContactInformation.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7856aaad-190f-4795-b48c-e29b2d53f82c"
+>Out_RBCContactInformation.RBCContactInformation &lt;- EURORADIO.LastKnownRBC</Action><Action
+ Guid="a0d2451b-237c-4d9c-bf90-12ec94387235"
+>Out_RBCContactInformation.NetworkId &lt;- EURORADIO.LastKnownNetworkId</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update release speed"
+ Guid="e6fab11f-5dac-4a05-9f51-3ddbf23d6936"
+>
+<ReqRef
+ Id="ee7b5ecc-20f6-480c-aa0a-7836d5308d32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3bf2721b-395c-4392-9343-397ebcb2f7d0"
+>
+</ReqRef><Comment>Updates the displayed release speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="93030fc8-cde7-4a29-a4cb-79d4d8d45e7a"
+>
+<PreConditions>
+<PreCondition
+ Guid="bfda245f-e56b-40df-b3fd-b22f703f58a4"
+>Out_ReleaseSpeed.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="8038d0e6-78ca-47b8-8610-07535136491d"
+>Kernel.SpeedAndDistanceMonitoring.DisplayReleaseSpeed()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ac88bf52-f540-44c2-8c94-930fb08165ef"
+>Out_ReleaseSpeed.Speed &lt;- Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedMonitoring.ReleaseSpeed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update route unsuitabilities"
+ Guid="24eee975-7cab-45b8-b645-0108f62ec075"
+>
+<Comment>Updates the displayed route unsuitabilities</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="a764d9c3-bfe8-4a80-a0c8-20818543f5d4"
+>
+<PreConditions>
+<PreCondition
+ Guid="d4d0f968-0c62-4881-8b31-4c3aa53e38a3"
+>Out_RouteUnsuitabilities.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="02103ad1-59b6-4991-8a41-9d0b4d5374d8"
+>Available(Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9a64b1f3-c744-4797-951b-c1f9247a26c6"
+>Out_RouteUnsuitabilities.RouteUnsuitabilities &lt;- 
+MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable (X) USING X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update safe radio connection indication"
+ Guid="adeefdd3-81c9-4cff-b6d6-baf1a02bd751"
+>
+<ReqRef
+ Id="03c854a9-637b-42ee-b747-173045437dd6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5cded5d6-a573-4f3f-b538-05230c8fb7d2"
+>
+</ReqRef><ReqRef
+ Id="a5a3cbff-14ec-43ba-afca-63c2734d0414"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3e0bb719-35a7-40ef-8425-ae1a9a39b446"
+>
+</ReqRef><ReqRef
+ Id="2be2d035-b42d-4e1b-9788-dded559e7f64"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ecbd88a8-9e98-4001-9c19-83d6f8663ea3"
+>
+</ReqRef><ReqRef
+ Id="747bae2e-7720-4f04-ac58-bf2f7feb9e50"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="754b6ed0-ea21-42a5-948f-b0b4c1a6dbbc"
+>
+</ReqRef><ReqRef
+ Id="56576e5f-6491-43ac-bb6d-439d660b8baf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a1a728dc-d8f9-4219-b475-4a3c074f976e"
+>
+</ReqRef><Comment>Updates the displayed safe radio connection status</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update value"
+ Guid="af3fa51f-52af-4310-a35c-6eab9998c825"
+>
+<PreConditions>
+<PreCondition
+ Guid="6fa32aae-e870-4175-8902-27fd2d816f22"
+>Out_SafeRadioConnectionIndication.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6c795dd9-cfd6-4c71-9695-cc2210c5bcaf"
+>Out_SafeRadioConnectionIndication.ConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusToDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update speed and distance monitoring and supervision status"
+ Guid="52d482c3-5968-4ffd-b59a-22a5a195af0f"
+>
+<Comment>Updates the displayed speed and distance monitoring type and the supervision status</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="ee8f8820-7a3e-488c-940c-9b5393756831"
+>
+<PreConditions>
+<PreCondition
+ Guid="63b462dd-77eb-421b-b645-7b971238f6ec"
+>Out_SpeedAndDistanceMonitoringSupervisionStatus.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="7488f13c-8a6e-4cf8-8931-dd021c1574b6"
+>Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ff5f5c50-07e9-4fef-b3f1-354e16f8124b"
+>Out_SpeedAndDistanceMonitoringSupervisionStatus.SupervisionStatus &lt;- Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</Action><Action
+ Guid="975c42a9-7e96-48dd-99bb-ee51294679d3"
+>Out_SpeedAndDistanceMonitoringSupervisionStatus.Monitoring &lt;- OUT.GetMonitoringType()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update target distance"
+ Guid="975d61c0-380d-467c-9f56-cee47458be1b"
+>
+<Comment>Updates the displayed distance to target</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="463e57c3-09a7-4c0a-9506-917d7b2b22a0"
+>
+<PreConditions>
+<PreCondition
+ Guid="08961521-d25e-4e1e-b5ab-f956b5d776fd"
+>Out_TargetDistance.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="f4fa4704-a159-4fbe-9c68-7429576b316f"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="4ec9e0a0-7cd1-4cc2-b31f-830372a7fab2"
+>Out_TargetDistance.Distance &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update target speed"
+ Guid="a8a43592-998b-47a2-9c66-d85a5ca4e7c4"
+>
+<Comment>Updates the displayed target speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="192abb43-8a6c-4da5-8120-07c256ce6121"
+>
+<PreConditions>
+<PreCondition
+ Guid="cfab63ee-7d53-4866-889d-af9c47e77295"
+>Out_TargetSpeed.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="718632bd-e801-4c45-95f0-2a3479af5bb4"
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c312fe49-c752-4ce5-8361-a09bc8d7ecab"
+>Out_TargetSpeed.Speed &lt;- Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update train data"
+ Guid="358297e0-46fe-4c59-8a59-700a2527bd90"
+>
+<Comment>Updates the displayed train data</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="546af9fd-4098-4427-994b-8d9473c046b0"
+>
+<PreConditions>
+<PreCondition
+ Guid="30046cbc-d85c-44a1-8a6d-6eaa4cb1a866"
+>Out_TrainData.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7c4571e4-a3ac-499c-9dc9-b1dd1f630b2a"
+>Out_TrainData.Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update train running number"
+ Guid="9f34dfca-a33b-4a9f-8086-0d6696620d3e"
+>
+<Comment>Updates the displayed train running number</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="ea6f4be3-180c-4a57-81eb-85a5919853f3"
+>
+<PreConditions>
+<PreCondition
+ Guid="8d1575a9-91fc-45c8-8f7e-c00f834120fe"
+>Out_TrainRunningNumber.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f3a9d8ce-e6a1-4172-b66b-5be711d63c3b"
+>Out_TrainRunningNumber.Number &lt;- Kernel.TrainRunningNumber.Value</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update train speed"
+ Guid="52451ff8-713a-4f4a-8dfd-482516db9c52"
+>
+<Comment>Updates the displayed current speed</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="2390984d-fd81-4f13-9e63-70ec1f9db39c"
+>
+<PreConditions>
+<PreCondition
+ Guid="18c0d73a-086d-4660-a053-8eabb5aef21d"
+>Out_TrainSpeed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ef7b5877-7325-4951-994a-7959661cf001"
+>Out_TrainSpeed.Speed &lt;- Odometry.TrainSpeed()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1170,8 +1846,7 @@ THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="23654851-6314-4d86-85f3-068a975d1cdf"
 >
-</ReqRef><Comment></Comment>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="IN.TrainRunningNumber"
  Default=""
  Mode="InOut"
@@ -1600,8 +2275,7 @@ THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4a21579d-6160-4b38-95ec-22f82c7e6a08"
 >
-</ReqRef><Comment></Comment>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="OUT.PermittedSpeed"
  Default=""
  Mode="Outgoing"
@@ -1822,8 +2496,7 @@ THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e6728181-c1f4-476c-98db-bdd7163f27c2"
 >
-</ReqRef><Comment></Comment>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="OUT.ShuntingRequestNotAnsweredByRbc"
  Default=""
  Mode="Outgoing"
@@ -1914,8 +2587,7 @@ THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e9efebc2-7672-4664-bc54-2bb9bd6c6ea4"
 >
-</ReqRef><Comment></Comment>
-</StructureElement><StructureElement
+</ReqRef></StructureElement><StructureElement
  TypeName="OUT.OsLsShModeProposed"
  Default=""
  Mode="Outgoing"
@@ -1996,7 +2668,7 @@ THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
 </ReqRef></StructureElement><StructureElement
  TypeName="OUT.OperatedSystemVersion"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  Name="Out_OperatedSystemVersion"
  Guid="dabe51ca-f437-4408-884d-7bdfa82f93ec"
@@ -2347,6 +3019,58 @@ THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ce7a5712-d89f-413e-b4fc-4b8c9a3c4c3d"
 >
+</ReqRef></StructureElement><StructureElement
+ TypeName="IN.TrainRunningNumberEntryRequest"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="In_TrainRunningNumberEntryRequest"
+ Guid="a176dabf-1e73-46e5-8f69-aa20eb24db14"
+>
+<ReqRef
+ Id="cc8be0e3-4edb-46d4-a4e4-a00714d90fc4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="deda8162-50eb-4c19-a288-cf1746d84489"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="IN.VirtualBaliseCoverEntryRequest"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="In_VirtualBaliseCoverEntryRequest"
+ Guid="e5333778-9d57-404d-96b4-4d909fcfd919"
+>
+<ReqRef
+ Id="5f1173da-1cfe-4f41-aa4f-5c394c12e77f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="596fe3de-9578-4f0b-ac59-0b281dfd393b"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="IN.ErtmsEtcsLevelEntryRequest"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="In_ErtmsEtcsLevelEntryRequest"
+ Guid="ab0c1a36-a1a6-4657-b8fb-d0d8c6bcde0f"
+>
+<ReqRef
+ Id="4efd390e-2e07-4c18-88e9-b389b64cd144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="92e5663d-5c05-49e1-a5bc-cd193a77bfb1"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="IN.DriverIdEntryRequest"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="In_DriverIdEntryRequest"
+ Guid="13fba8cc-b54c-4d40-a987-19a85adb7a4e"
+>
+<ReqRef
+ Id="166e123f-f57c-4045-af2e-915a4c4e849b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1ef390ee-8426-4e7b-9a70-aabd9bcdded3"
+>
 </ReqRef></StructureElement></Structure><Structure
  Default=""
  X="280"
@@ -2362,6 +3086,31 @@ THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
 - RequestStatus (of type Request) is used to request begin displaying of some information that needs user&apos;s input.
 - DisplayRequested (of type Boolean) is the out variable. The information shall be displayed on DMI while DisplayRequested = true.
 - DriverAnswered (of type Boolean) is the in variable. DriverAnswered = true means that driver answered on the displayed request.</Comment>
+<Rules>
+<Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CleanUp"
+ Guid="f4fed9cd-163c-4bd7-81f4-d0c4574180ed"
+>
+<Comment>At clean up time, clears the flags indicating that the driver answered or the display is requested</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CleanUp"
+ Guid="0da5a9f9-fab4-4903-9da1-3ea6b61ae9b2"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3b144618-b030-4ca2-9831-f6a8a6a2223d"
+>DriverAnswered &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -2387,16 +3136,12 @@ THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
  Name="Accept driver response"
  Guid="18df7044-4c5c-4c2d-92c2-4f53868be3e8"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="0400a25c-46b3-4880-b87e-b8c4e9859910"
->DisplayRequested &lt;- False</Action><Action
  Guid="1ffe3487-ce94-44ef-a4fa-c404ad3237e0"
-><Comment></Comment>
-DriverAnswered &lt;- True</Action><Action
+>DriverAnswered &lt;- True</Action><Action
  Guid="2a9e6a69-a4d0-4ed6-8b66-f274fd0e1ab9"
 >RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
@@ -2431,13 +3176,9 @@ DriverAnswered &lt;- True</Action><Action
 <Actions>
 <Action
  Guid="275793f8-0e6d-4c76-9295-16a6aa5737e0"
-><Comment></Comment>
-RequestStatus &lt;- Request.Request</Action><Action
+>RequestStatus &lt;- Request.Request</Action><Action
  Guid="ec6b86e3-9e3e-42f2-ae1b-a06e09ba44da"
-><Comment></Comment>
-DriverAnswered &lt;- False</Action><Action
- Guid="967f4590-4fab-41ad-b6de-6e8943cd8c6c"
->DisplayRequested &lt;- True</Action></Actions>
+>DriverAnswered &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2464,34 +3205,19 @@ DriverAnswered &lt;- False</Action><Action
  Name="Disables the request"
  Guid="059d5a07-bc55-4ea6-8eae-96ef5571faf9"
 >
-<Comment></Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="2ae47445-50c6-45fe-a4ba-6e9b00b07435"
->RequestStatus &lt;- Request.Disabled</Action><Action
- Guid="3e7f0cb1-d54b-47ad-8b54-6a523ac6fb6b"
->DriverAnswered &lt;- False</Action><Action
- Guid="e3ffba61-3770-4924-a78b-36a40de67aa8"
->DisplayRequested &lt;- False</Action></Actions>
+>RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
- TypeName="Boolean"
- Default=""
- Mode="Outgoing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="DisplayRequested"
- Guid="d7bee549-de45-4daf-a804-722f7584add7"
->
-<Comment>Indicates whether this request should be displayed on the DMI</Comment>
-</StructureElement><StructureElement
  TypeName="Default.Request"
  Default=""
- Mode="Internal"
+ Mode="InOut"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RequestStatus"
@@ -2501,7 +3227,7 @@ DriverAnswered &lt;- False</Action><Action
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default=""
- Mode="Incoming"
+ Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="DriverAnswered"
@@ -2539,7 +3265,6 @@ DriverAnswered &lt;- False</Action><Action
  Name="Changes the status of the request"
  Guid="0bee721d-e5ac-421a-b1ca-6b4fb4c82849"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2571,7 +3296,6 @@ DriverAnswered &lt;- False</Action><Action
  Name="Changes the status of the request"
  Guid="380005ae-c1cd-4a9b-a7f0-69b549f81a64"
 >
-<Comment></Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2968,8 +3692,7 @@ NOT DeskIsOpen ( DMI2 )</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f355a778-4037-4b9e-99e7-b3b68aba7cf3"
 >
-</ReqRef><Comment></Comment>
-</Variable><Variable
+</ReqRef></Variable><Variable
  Type="DMI.DMIStruct"
  DefaultValue=""
  VariableMode="InOut"
@@ -3017,40 +3740,11 @@ NOT DeskIsOpen ( DMI2 )</Expression>
 <PreConditions>
 <PreCondition
  Guid="23ad9e9c-4db8-4c58-b6c8-0a350a70c9ba"
-><Comment></Comment>
-ModeChanged()</PreCondition></PreConditions>
+>ModeChanged()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7b57277f-e2ab-45c2-a612-f14d23efda3a"
-><Comment></Comment>
-DMI.MasterDMI().HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- X="130"
- Y="570"
- Width="100"
- Height="50"
- NeedsRequirement="FALSE"
- Name="Update system state"
- Guid="67b54514-2cec-4d9e-a928-313c0f8d49ca"
->
-<Comment>Updates the state of the system according to the driver&apos;s response</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Update system state"
- Guid="f1841b69-51d6-4354-b40e-5576fd069eb1"
->
-<Comment>Updates the state of the system according to the driver&apos;s response</Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="5cf758f0-3851-438d-8ac5-21ad961d5169"
->DMI.MasterDMI().AcceptDriverResponse()</Action></Actions>
+>DMI.MasterDMI().HandleModeChange()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

@@ -30,9 +30,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="57d7f054-0045-4db6-ab84-6b8b0ac67445"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -81,10 +79,9 @@
  Guid="c2ceb03f-6b94-43a7-86a8-a55adfcc0ca7"
 >Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="b2fe8d8d-40f5-46c4-b7b2-c10f51747a0d"
-><Comment></Comment>
-Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="cac89291-edaf-4815-8dac-eb9987d85032"
->Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -350,7 +347,6 @@ NID_BG =&gt; 1313
  Name="Beginning/End of ModeProfile relates to Max/Min SafeFrontEnd"
  Guid="e456aa15-0b46-42b8-a6b9-55c7c9f8d4d8"
 >
-<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"
@@ -369,9 +365,7 @@ NID_BG =&gt; 1313
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e5578f50-a91d-41da-82b7-017428aa63cb"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -420,7 +414,7 @@ NID_BG =&gt; 1313
  Guid="2863428f-78a1-453c-ae32-2b226f4ac41d"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="c7d8ff8d-a94d-457b-a069-8cca17760ded"
->Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="b83172f0-53c6-414d-bd5a-8fbbd46c6588"
 >Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
 <Expectations>
@@ -448,8 +442,7 @@ NID_BG =&gt; 1313
 <Actions>
 <Action
  Guid="55bd8c19-ed35-4fb4-9e01-bc860219e290"
-><Comment></Comment>
-INSERT Kernel.MA.ModeProfile.ModeProfileStruct 
+>INSERT Kernel.MA.ModeProfile.ModeProfileStruct 
 { 
     Distance=&gt;130.0,
     Length=&gt;200.0,
@@ -553,8 +546,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Actions>
 <Action
  Guid="1cfafc51-3e01-455d-af93-bde127d0ee9a"
-><Comment></Comment>
-Odometry.NominalDistance &lt;- 167.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 167.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -584,8 +576,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Actions>
 <Action
  Guid="e9f59385-cd26-4a5c-95ed-838a7a741149"
-><Comment></Comment>
-Odometry.NominalDistance &lt;- 170.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 170.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -672,7 +663,6 @@ Kernel.TrainPosition.FrontEndPosition(
  Name="Mode Profile LS/OS defines Entry and Length of the Mode"
  Guid="e810ec05-fa8d-4f03-af0c-bcb88161db5e"
 >
-<Comment></Comment>
 <TestCases>
 <TestCase
  Feature="0"
@@ -686,9 +676,7 @@ Kernel.TrainPosition.FrontEndPosition(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6839464a-4e26-43a3-a93c-d37eff66c343"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -735,8 +723,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Actions>
 <Action
  Guid="752f2b12-37e5-4bdd-b76c-0648ebafca6e"
-><Comment></Comment>
-Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="88eb8849-8974-4fc9-a985-2bed6303b601"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="fa1e73ff-180d-4691-be9d-3d44e9e6552a"
@@ -880,9 +867,7 @@ Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="56397877-5ec0-40ff-a32d-32bd0b01bec1"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1060,9 +1045,7 @@ Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="cea18a97-71cf-4c90-bc11-73745e2bc2c5"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1109,7 +1092,7 @@ Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
 <Actions>
 <Action
  Guid="bfd3a22a-1c8e-47f7-bceb-df620b30ef0a"
->Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="2948d5e5-5a9c-41b1-9cfa-a3e7ca2c1739"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="433c78a2-0bf2-4f9d-9ada-80615ed408a2"
@@ -1292,9 +1275,7 @@ Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="29636993-6a70-401b-9b27-6ffa638e353a"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1345,7 +1326,7 @@ Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
  Guid="09e0424c-894e-4d18-a30d-841b3a8ae687"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="c6a12f8b-027b-40f9-bfcc-d1cfb0f3278c"
->Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1618,9 +1599,7 @@ IN Kernel.MA.ModeProfile.Profile</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b9bdda9c-d39c-4280-b126-1c9d9b7da13f"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -1873,9 +1852,7 @@ Messages.EUROBALISE.SubStructure1
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ac17ff8b-d2c3-429c-9623-ac33dec2633d"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2145,9 +2122,7 @@ Messages.EUROBALISE.SubStructure1
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0c2e8799-449f-463d-a9c8-3bfc35aa6231"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2287,7 +2262,7 @@ Messages.EUROBALISE.SubStructure1
  Guid="74c3d78a-6ba4-47c3-8329-689a10773c47"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="a676a454-eef5-456c-a111-f4bb49fea9d5"
->Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2349,9 +2324,7 @@ Messages.EUROBALISE.SubStructure1
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b961ff9c-7785-4ade-b2c4-992d9eedac02"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2489,7 +2462,7 @@ Messages.EUROBALISE.SubStructure1
                            ]
 }</Action><Action
  Guid="c7e1a96c-8027-45b0-bea3-459324b4fcf8"
->Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="5ff1b196-a35a-4fb9-b795-a9b62bbff45b"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action></Actions>
 <Expectations>
@@ -2553,9 +2526,7 @@ Messages.EUROBALISE.SubStructure1
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="81317d1e-61f1-45f8-b283-87f81b600b53"
 >
-</ReqRef><Comment></Comment>
-<Comment></Comment>
-<Steps>
+</ReqRef><Steps>
 <Step
  IO="NA"
  LevelIN="NA"
@@ -2715,7 +2686,7 @@ Messages.EUROBALISE.SubStructure1
                 ]
 }</Action><Action
  Guid="96806aa4-4c43-41fd-abb5-70459d02afe7"
->Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="7ab11c91-1ed6-4075-9e4f-339670218272"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action></Actions>
 <Expectations>

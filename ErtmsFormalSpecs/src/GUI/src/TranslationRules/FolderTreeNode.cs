@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Tests.Translations;
 
 namespace GUI.TranslationRules
 {
@@ -98,11 +99,8 @@ namespace GUI.TranslationRules
         /// <param name="step"></param>
         private void createTranslation(DataDictionary.Tests.Step step)
         {
-            DataDictionary.Tests.Translations.Translation translation = (DataDictionary.Tests.Translations.Translation)DataDictionary.Generated.acceptor.getFactory().createTranslation();
-            DataDictionary.Tests.Translations.SourceText sourceText = (DataDictionary.Tests.Translations.SourceText)DataDictionary.Generated.acceptor.getFactory().createSourceText();
-
-            sourceText.Name = step.getDescription();
-            translation.appendSourceTexts(sourceText);
+            Translation translation = (Translation)DataDictionary.Generated.acceptor.getFactory().createTranslation();
+            translation.appendSourceTexts(step.createSourceText());
             createTranslation(translation);
         }
 
@@ -113,12 +111,40 @@ namespace GUI.TranslationRules
         /// <returns></returns>
         public TranslationTreeNode createTranslation(DataDictionary.Tests.Translations.Translation translation)
         {
-            TranslationTreeNode retVal;
+            TranslationTreeNode retVal = null;
 
-            Item.appendTranslations(translation);
-            retVal = new TranslationTreeNode(translation, true);
-            Nodes.Add(retVal);
-            SortSubNodes();
+            DataDictionary.Tests.Translations.Translation existingTranslation = null;
+            foreach (DataDictionary.Tests.Translations.SourceText sourceText in translation.SourceTexts)
+            {
+                existingTranslation = Item.Dictionary.TranslationDictionary.FindExistingTranslation(sourceText);
+                if (existingTranslation != null)
+                {
+                    break;
+                }
+            }
+
+            if (existingTranslation != null)
+            {
+                DialogResult dialogResult = MessageBox.Show("Translation already exists. Do you want to create a new one (Cancel will select the existing translation) ?", "Already existing translation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (dialogResult == DialogResult.OK)
+                {
+                    existingTranslation = null;
+                }
+                else
+                {
+                    retVal = (TranslationTreeNode) BaseTreeView.Select(existingTranslation);
+                }
+            }
+
+            if (existingTranslation == null)
+            {
+                Item.appendTranslations(translation);
+                retVal = new TranslationTreeNode(translation, true);
+                Nodes.Add(retVal);
+                SortSubNodes();
+
+                BaseTreeView.Select(retVal.Item);
+            }
 
             return retVal;
         }
@@ -196,12 +222,9 @@ namespace GUI.TranslationRules
             else if (SourceNode is TranslationTreeNode)
             {
                 TranslationTreeNode translation = SourceNode as TranslationTreeNode;
-
-                DataDictionary.Tests.Translations.Translation otherTranslation = (DataDictionary.Tests.Translations.Translation)DataDictionary.Generated.acceptor.getFactory().createTranslation();
-                translation.Item.copyTo(otherTranslation);
-                createTranslation(otherTranslation);
-
+                DataDictionary.Tests.Translations.Translation otherTranslation = translation.Item;
                 translation.Delete();
+                createTranslation(otherTranslation);
             }
         }
     }

@@ -6,34 +6,71 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DataDictionary;
+using GUI.Properties;
 
 namespace GUI.Options
 {
     public partial class Options : Form
     {
+        private class SettingsEditor
+        {
+            [Category("Display")]
+            [DisplayName("Enclosing messages")]
+            [Description("Indicates that the enclosing messages should be displayed when selecting a model element")]
+            public bool DisplayEnclosingMessages
+            {
+                get { return Settings.Default.DisplayEnclosingMessages; }
+                set { Settings.Default.DisplayEnclosingMessages = value; }
+            }
+
+            [Category("Display")]
+            [DisplayName("Requirements as list")]
+            [Description("When set to true, indicates that the requirements should only be displayed as a list of number, instead of the requirement number followed by the requirement text")]
+            public bool DisplayRequirementsAsList
+            {
+                get { return Settings.Default.DisplayRequirementsAsList; }
+                set { Settings.Default.DisplayRequirementsAsList = value; }
+            }
+
+            [Category("Files")]
+            [DisplayName("Lock opened files")]
+            [Description("When set to true, indicates that the files opened by EFS should be locked, which forbid other processes to access them")]
+            public bool LockOpenedFiles
+            {
+                get { return Settings.Default.LockOpenedFiles; }
+                set { Settings.Default.LockOpenedFiles = value; }
+            }
+
+            [Category("Display")]
+            [DisplayName("Display all variables in structure editor")]
+            [Description("When set to true, indicates that all the variables should be displayed in the structure editor, even those which are empty")]
+            public bool DisplayAllVariablesInStructureEditor
+            {
+                get { return Settings.Default.DisplayAllVariablesInStructureEditor; }
+                set { Settings.Default.DisplayAllVariablesInStructureEditor = value; }
+            }
+        }
+
         public Options()
         {
             InitializeComponent();
+            propertyGrid.SelectedObject = new SettingsEditor();
         }
 
         /// <summary>
-        /// Setup the option panel according to the configuration stored in the system
+        /// Sets the settings according to the application data
         /// </summary>
-        /// <param name="system"></param>
-        public void Setup(DataDictionary.EFSSystem system)
+        /// <param name="syste"></param>
+        public static void setSettings(EFSSystem system)
         {
-            displayEnclosingMessagesCheckBox.Checked = system.DisplayEnclosingMessages;
-            displayRequirementsAsListCheckBox.Checked = system.DisplayRequirementsAsList;
-        }
+            Settings settings = Settings.Default;
 
-        /// <summary>
-        /// Updates the configuration stored in the system according to the option panel
-        /// </summary>
-        /// <param name="system"></param>
-        public void UpdateSystem(DataDictionary.EFSSystem system)
-        {
-            system.DisplayEnclosingMessages = displayEnclosingMessagesCheckBox.Checked;
-            system.DisplayRequirementsAsList = displayRequirementsAsListCheckBox.Checked;
+            system.DisplayEnclosingMessages = settings.DisplayEnclosingMessages;
+            system.DisplayRequirementsAsList = settings.DisplayRequirementsAsList;
+            DataDictionary.Util.PleaseLockFiles = settings.LockOpenedFiles;
+
+            settings.Save();
         }
     }
 }

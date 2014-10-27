@@ -135,8 +135,9 @@ namespace GUI.BoxArrowDiagram
         {
             if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
             {
-                BaseTreeNode SourceNode = e.Data.GetData("WindowsForms10PersistentObject") as BaseTreeNode;
-                if (SourceNode != null)
+                object data = e.Data.GetData("WindowsForms10PersistentObject");
+                BaseTreeNode sourceNode = data as BaseTreeNode;
+                if (sourceNode != null)
                 {
                     BoxControl<BoxModel, ArrowModel> target = null;
 
@@ -153,7 +154,7 @@ namespace GUI.BoxArrowDiagram
 
                     if (target != null)
                     {
-                        target.AcceptDrop(SourceNode.Model as ModelElement);
+                        target.AcceptDrop(sourceNode.Model as ModelElement);
                     }
                 }
             }

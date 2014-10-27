@@ -1,0 +1,94 @@
+<NameSpace
+ Width="100"
+ Height="50"
+ Name="N1"
+ Guid="dda63f09-688e-426e-9a22-1aabfec1c931"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Default=""
+ X="180"
+ Width="100"
+ Height="50"
+ Name="S"
+ Guid="f3c9481b-4a0a-4760-a887-2d134d722677"
+>
+<Procedures>
+<Procedure
+ Name="P"
+ Guid="5c4461d6-9784-40ce-b2aa-2b0a555aea8c"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="&lt;Rule1&gt;"
+ Guid="f740ecd3-8eb7-483b-91b0-a19a05815ecc"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="&lt;Rule1&gt;"
+ Guid="91dbd41b-458c-4b35-a89e-8facd56f34b3"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="21315efd-0669-4fb5-87b0-2be9dd864ee0"
+>THIS.b &lt;- 1</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="Integer"
+ Default=""
+ Mode="Internal"
+ Name="a"
+ Guid="1922390f-6843-41e1-b938-2ffc49818de8"
+>
+</StructureElement><StructureElement
+ TypeName="Integer"
+ Default=""
+ Mode="Internal"
+ Name="b"
+ Guid="14115738-81e3-4991-8140-0ce7a5e1142b"
+>
+</StructureElement></Structure></Structures>
+<Variables>
+<Variable
+ Type="Integer"
+ VariableMode="Internal"
+ X="20"
+ Width="100"
+ Height="50"
+ Name="a"
+ Guid="35624b53-be76-4858-82bf-ea52d1ace715"
+>
+</Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ X="20"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="&lt;Rule1&gt;"
+ Guid="c1e1ae1d-32a3-4b47-9f7c-cee54fdad684"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="&lt;Condition1&gt;"
+ Guid="2f2c5f55-2453-4c34-b5e3-1076d1a86169"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="d60ce539-b484-4e0a-af86-a154a0c22f1e"
+>a &lt;- a + 1</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>

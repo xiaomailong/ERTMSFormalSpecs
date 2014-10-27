@@ -15,10 +15,27 @@
 // ------------------------------------------------------------------------------
 
 using DataDictionary.Interpreter;
+using System.Collections;
 namespace DataDictionary.Tests.Translations
 {
-    public class SourceText : Generated.SourceText, IExpressionable 
+    public class SourceText : Generated.SourceText, IExpressionable
     {
+        public ArrayList Comments
+        {
+            get
+            {
+                ArrayList retVal = allComments();
+
+                if (retVal == null)
+                {
+                    retVal = new ArrayList();
+                    setAllComments(retVal);
+                }
+
+                return retVal;
+            }
+        }
+
         /// <summary>
         /// The enclosing translation, if any
         /// </summary>

@@ -76,13 +76,17 @@ namespace DataDictionary.Tests.Runner.Events
         /// </summary>
         /// <param name="modelEvent"></param>
         /// <param name="runner"></param>
-        public void AddModelEvent(ModelEvent modelEvent, Runner runner)
+        /// <param name="apply">indicates whether the event should be applied on the model</param>
+        public void AddModelEvent(ModelEvent modelEvent, Runner runner, bool apply)
         {
             modelEvent.Time = CurrentTime;
             modelEvent.TimeLine = this;
             Events.Add(modelEvent);
             Changed = true;
-            modelEvent.Apply(runner);
+            if (apply)
+            {
+                modelEvent.Apply(runner);
+            }
         }
 
         /// <summary>
@@ -95,7 +99,7 @@ namespace DataDictionary.Tests.Runner.Events
 
             foreach (Expect expect in ActiveExpectations)
             {
-                if (expect.State == DataDictionary.Tests.Runner.Events.Expect.EventState.Active && expect.Expectation.Blocking && expect.Expectation.getKind() == Generated.acceptor.ExpectationKind.aInstantaneous)
+                if (expect.State == DataDictionary.Tests.Runner.Events.Expect.EventState.Active && expect.Expectation.Blocking)
                 {
                     retVal.Add(expect);
                 }
@@ -367,6 +371,27 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
+        /// Indicates whether we need to keep this event during garbage collection
+        /// </summary>
+        /// <param name="evt"></param>
+        /// <returns></returns>
+        private bool KeepEvent(ModelEvent evt)
+        {
+            bool retVal = evt is Expect
+                          || evt is ModelInterpretationFailure
+                          || evt is SubStepActivated;
+
+            VariableUpdate update = evt as VariableUpdate;
+            if (update != null)
+            {
+                retVal = Utils.EnclosingFinder<DataDictionary.Types.NameSpace>.find(update.Action) == null;
+            }
+
+            return retVal;
+        }
+
+
+        /// <summary>
         /// Cleans up the time line by removing the events exceeding the maximum number of events in the time line, 
         /// not counting the Expects.
         /// </summary>
@@ -380,7 +405,7 @@ namespace DataDictionary.Tests.Runner.Events
 
                 foreach (ModelEvent modelEvent in Events)
                 {
-                    if (modelEvent is Expect || modelEvent is ModelInterpretationFailure)
+                    if (KeepEvent(modelEvent))
                     {
                         // We keep expectations in the event list
                         newEvents.Add(modelEvent);
