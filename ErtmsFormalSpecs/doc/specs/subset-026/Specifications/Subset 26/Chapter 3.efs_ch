@@ -28746,7 +28746,13 @@ Triggering condition #; Estimated speed; Train front end position (estimated and
  Name=""
  Guid="c41cb7ca-ee2d-4af2-841c-855ef592089d"
 >t15; Vest &gt; V_MRSP + d_Vebi(V_MRSP); d_maxsafefront &gt; d_I(V_MRSP) for SvL
-	AND d_estfront &lt;= d_I(V_MRSP) for EOA; EB; Intervention Status</Paragraph></Sub>
+	AND d_estfront &lt;= d_I(V_MRSP) for EOA; EB; Intervention Status<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2a0fbfb7-6595-4d2e-9e42-641f0f60be8a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -30314,7 +30320,7 @@ If the brake command was triggered due to the driver not having acknowledged a t
  version="3.0.0"
  Name=""
  Guid="3dcd2c27-a8e0-48b8-93e4-915c7943633f"
->Information received from balises during reverse movement shall be rejected.<RequirementSets>
+>Information received from balises during reverse movement shall be ignored.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="fcf17751-a559-4d92-b892-ab7459831191"
