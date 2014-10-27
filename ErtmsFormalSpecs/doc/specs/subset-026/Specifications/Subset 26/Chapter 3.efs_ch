@@ -36582,6 +36582,23 @@ If linking information is used on-board, no error reporting shall be done for ba
  Guid="eb3e9ad8-54ba-4bb0-8d7e-4e5bd9e74061"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.18.3.2.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="39897293-22f2-49f9-b4a0-7511d7dc5b87"
+>The unit, range and resolution of the Train Data that can be entered by the driver shall be as specified in A.3.11.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f7313d27-03d7-416a-9a9d-91ca871557dc"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -36865,6 +36882,23 @@ If linking information is used on-board, no error reporting shall be done for ba
  Guid="3bf41944-40df-4da6-a866-4ac16fdd6ea8"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.18.4.1.4"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="33dee6bc-700a-46f6-9fac-bc38b808ce29"
+>The unit, range and resolution of the driver ID shall be as specified in A.3.11.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0eae83e0-e85b-4766-9288-56906ac70149"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -37108,6 +37142,23 @@ If linking information is used on-board, no error reporting shall be done for ba
  Guid="00e6b0e2-482e-45fb-8487-da9f66edf19a"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.18.4.3.5"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="1f0aabf4-a2c9-46c9-bf2e-0ea221d2f972"
+>The unit, range and resolution of the RBC identity and telephone number shall be as specified in A.3.11.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f2d378a5-4a6a-4ad0-9525-a9fdec97c272"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -37296,6 +37347,23 @@ If linking information is used on-board, no error reporting shall be done for ba
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="aee60cff-1367-4815-94e9-701f72dd4d4f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.18.4.5.5"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="56763dd5-b967-4ff8-818c-9f783b54332e"
+>The unit, range and resolution of the train running number shall be as specified in A.3.11.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1e324d36-b173-4dd2-b9d9-bda34a066088"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -38177,11 +38245,11 @@ If linking information is used on-board, no error reporting shall be done for ba
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="6867c1d9-cb85-4cc7-9083-5b893166fce7"
->Time between Warning supervision limit and FLOI; 2 s; T_warning<RequirementSets>
+>Time between Warning supervision limit and SBI; 2 s; T_warning<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="e13eca4a-83e3-4751-9ef4-bd7da28ad912"
@@ -38194,11 +38262,11 @@ If linking information is used on-board, no error reporting shall be done for ba
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="edd3e5bf-072e-4f5c-a2d2-0852b0d7d409"
->Driver reaction time between Permitted speed supervision limit and FLOI; 4 s; T_driver<RequirementSets>
+>Driver reaction time between Permitted speed supervision limit and SBI; 4 s; T_driver<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="3f2a471c-04b0-4e2f-b173-9acf169c59ff"
@@ -38258,23 +38326,6 @@ If linking information is used on-board, no error reporting shall be done for ba
  id="Entry 3.A3.1.1.21"
  type="REQUIREMENT"
  scope="FLAGS"
- bl="3.2.0"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- Name=""
- Guid="999a2f32-81ff-4fcc-b12c-28761069ec5f"
->Compensation of the speed measurement inaccuracy used for the calculation of speed restriction to ensure given permitted braking distance; 5 km/h;<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="872d6fea-846d-4297-b9c7-cf0dcc1ef600"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph><Paragraph
- id="Entry 3.A3.1.1.22"
- type="REQUIREMENT"
- scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
@@ -38289,7 +38340,7 @@ If linking information is used on-board, no error reporting shall be done for ba
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 3.A3.1.1.23"
+ id="Entry 3.A3.1.1.22"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -38306,7 +38357,7 @@ If linking information is used on-board, no error reporting shall be done for ba
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 3.A3.1.1.24"
+ id="Entry 3.A3.1.1.23"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -38323,7 +38374,7 @@ If linking information is used on-board, no error reporting shall be done for ba
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 3.A3.1.1.25"
+ id="Entry 3.A3.1.1.24"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -38340,7 +38391,7 @@ If linking information is used on-board, no error reporting shall be done for ba
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 3.A3.1.1.26"
+ id="Entry 3.A3.1.1.25"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -38357,7 +38408,7 @@ If linking information is used on-board, no error reporting shall be done for ba
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 3.A3.1.1.27"
+ id="Entry 3.A3.1.1.26"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -38374,7 +38425,7 @@ If linking information is used on-board, no error reporting shall be done for ba
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 3.A3.1.1.28"
+ id="Entry 3.A3.1.1.27"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -38391,7 +38442,7 @@ If linking information is used on-board, no error reporting shall be done for ba
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 3.A3.1.1.29"
+ id="Entry 3.A3.1.1.28"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -38408,7 +38459,7 @@ If linking information is used on-board, no error reporting shall be done for ba
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 3.A3.1.1.30"
+ id="Entry 3.A3.1.1.29"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -39109,7 +39160,299 @@ If linking information is used on-board, no error reporting shall be done for ba
  functionalBlock="TRUE"
  Name=""
  Guid="330b3aa1-49eb-45e4-93dc-d8144cf4c3d6"
->Intentionally deleted<RequirementSets>
+>Handling of information received from trackside<Sub>
+<Paragraph
+ id="3.A3.3.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="7da6b8b6-53d2-4f2b-ac27-4f60889ecc2d"
+>Before it can be accepted and used by the ERTMS/ETCS on-board equipment, raw information received from trackside is subject to various checks, which can lead to the individual rejection/ignoring of information (e.g. Movement Authority not valid for the train orientation), the ignoring of a whole balise telegram or the rejection of a whole message. The SRS clauses/sections corresponding to these checks are gathered in Table 17.<Sub>
+<Paragraph
+ id="Table 3.A3.3.1.1"
+ type="TABLE_HEADER"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="2af6a160-22e6-4556-bb9d-994641071334"
+>Type of check; Individual information; Telegram; Message<Sub>
+<Paragraph
+ id="Entry 3.A3.3.1.1.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="5f645e7c-332f-4646-8350-4b5fb3512566"
+>System version; 3.17.3.11.a) &amp; c); 3.17.3.5.a), d) &amp; e); 3.17.3.5 b)
+3.17.3.6 a)
+3.17.3.6 c)
+3.17.3.11 b)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9494900e-6e9c-4b03-b135-e745036ecf3f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.3.1.1.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="c35eb12c-5a8a-4fb6-953c-db58d01832c7"
+>Virtual Balise Cover; ; 3.15.9.3 a); <RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="53647c85-649b-4bda-8837-7453351a4389"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.3.1.1.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="0c4271ef-8ef4-4457-b0cb-aac587315fde"
+>Reverse Movement Protection; ; 3.14.3.6;<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7e00e3c5-29ca-4c85-be27-ab56f22a5d3b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.3.1.1.4"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="b34569bb-d610-4e54-b365-7f084df4cd49"
+>Duplicated balises; 3.16.2.4.8.1; 3.16.2.4.8.2;<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d447a03c-e0ca-43e6-b508-07be712f6717"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.3.1.1.5"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="32db3a6b-7afc-4e4c-9810-d05505b597c6"
+>Linking; ; ; 3.4.4.4.2 and 3.16.2.4.3
+3.4.4.4.2.1
+3.16.2.3.1.1 together with 3.4.4.4.3
+3.16.2.3.2 with exception 3.16.2.3.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="29d908e6-0d2b-45c5-af31-6f60cc095e80"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.3.1.1.6"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="649ae93b-7142-4d7e-9560-d5a90bdb47e5"
+>Message consistency; ; ; 3.16.2.4.1 together with 3.16.2.4.7, 3.16.2.4.7.1 and with exception 3.16.2.4.2
+3.16.2.4.4 together with 3.16.2.4.7, 3.16.2.4.7.1 and with exception 3.16.2.4.4.1 a)
+3.16.2.5.1 together with 3.16.2.4.7, 3.16.2.4.7.1 and with exception 3.16.2.5.1.1 a)
+3.16.3.1.1.1 together with 3.16.3.1.1 a), 3.16.3.3.3 and 3.16.3.1.1 c)
+3.16.3.1.3.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c2fd0305-6805-4c43-a6b2-3d3b463051c4"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.3.1.1.7"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="b6f9432d-fc7e-4e42-b2d0-3b190fd73ce3"
+>Validity direction; 3.6.3.1.3
+3.6.3.1.3.1
+3.6.3.1.4 with exception 3.6.3.1.4.1; ; <RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7a1094f8-8cca-47a0-bc7f-a12d4390429a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.3.1.1.8"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="3e69fe27-21d5-4038-b493-8fcdf8ed3268"
+>Level, mode, transmission medium, infill/not infill, other miscellaneous criteria; 4.8; ;<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="6a54fce4-9aae-4704-8d50-a551789c756d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0db61beb-567d-468c-8b63-5b2f291b77e5"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="36e9ac19-25f1-4092-be34-a8f9b05ca767"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.3.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="8bba4b1c-fa3f-4e4e-b6fa-2b502a66e740"
+>With the exception of the clauses/sections referred to in Table 17 and of the clause 3.16.3.5.1, all the clauses in this specification in which trackside information is referred to (through the terms “balise”, “telegram”, “balise group [message]”, “message”, “[name of] information”...), shall be applied assuming that the information has not been ignored/rejected by the ERTMS/ETCS on-board equipment due to all the checks listed in Table 17.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5186c0e6-d8e3-4ccf-afb6-2d76284d2979"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.3.3"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="dae9aeb8-ca92-4663-9284-8627277bd38e"
+>Example 1: clause 3.16.2.4.9 has to be understood as follows: “If a &lt;consistent&gt; message &lt;composed with telegrams that have passed the system version check, that have not been ignored because of a VBC, that have not been ignored because of duplication, and that have been received while no reverse movement was performed&gt; has been received &lt;with one of its telegrams composing it&gt; containing the information “default balise information” &lt;which is valid for the train orientation (or the balise group crossing direction for NL or SL engines) and which has passed the level and mode filters&gt;, the driver shall be informed.”<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1c8bce4b-a5e5-4841-bd92-0d6364b572e8"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.3.4"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="5d4bac2d-2990-47e0-a1ef-01d91e69fcc4"
+>Example 2: as a result of the clause A.3.3.2, the ERTMS/ETCS on-board equipment will not apply requirements in relation to the content of the telegram or the message such as:<Sub>
+<Paragraph
+ id="3.A3.3.4.a"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="913a00e0-85b5-456a-b3e6-d65f86c110a3"
+>clause 3.6.2.2.2 a), in case the balise group message is rejected because not consistent (e.g. according to 3.16.2.4.1), it does not become LRBG<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fc07650f-4c1d-454d-b756-c4fea7a290da"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.3.4.b"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="235cb18e-aa04-4735-a049-ca659a1c1096"
+>clause 3.16.3.3.3.1, in case the radio message is rejected because of its time stamp, this latter will not be used by the on-board to check the supervision of sequence of further messages<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="15e8b669-6fb7-4b4f-a4dc-70f4e06db8dc"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.3.4.c"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="faec5d27-3624-4012-a542-4b97d88e39a4"
+>clause 3.17.2.3, in case the balise telegram is ignored because of its system version number (e.g. according to 3.17.3.5 d)), this latter will not affect the system version operated by the on-board<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a52e52a9-cdca-4e0c-a7b1-1d885ec6f534"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.3.4.d"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0e905771-d6a4-4975-9832-fc868ccd7041"
+>clause 3.18.2.5 2nd bullet, in case a message from a balise group marked as linked is rejected because the balise group was not announced by linking (see 3.16.2.4.3), the balise group country or region identifier will not be compared with the one(s) of the currently applicable set of National Values<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3103478d-35a4-4022-b1d2-e96106593814"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a52d559b-f3c1-4399-8424-50934e0648b2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="36d2afd5-a02b-42f3-b4b3-b277dc1e43b5"
@@ -39117,6 +39460,10 @@ If linking information is used on-board, no error reporting shall be done for ba
 </RequirementSetReference><RequirementSetReference
  RefId="a6341084-7360-4c13-80c7-1cfaa892d567"
  Guid="af7b1e97-6d45-4551-af04-1681040f8923"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="2047d70c-da10-45aa-8460-ef768d9337fc"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -43194,6 +43541,146 @@ If linking information is used on-board, no error reporting shall be done for ba
  Guid="e877a444-f3b1-4bb1-ae05-af9b233fb663"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.4.1.3.1.52"
+ type="TITLE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a4125407-011c-4583-90ee-da0fe2c21e57"
+>Generic LS function marker<Sub>
+<Paragraph
+ id="Condition 3.A3.4.1.3.1.52.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="ececd80c-1041-45c7-bea1-3f6d7d7f0280"
+>a - d, f, n =&gt;  U<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0f256ce5-8a96-4594-8e72-b9b38c744f9c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Condition 3.A3.4.1.3.1.52.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="5a3c3460-2ea5-4a2d-8d6c-8ce40a46e6fd"
+>e, g - j, l, m =&gt;  U<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4d026b4b-85f2-4005-943a-c35fc6be26f3"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Condition 3.A3.4.1.3.1.52.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="be93451f-c2fc-4525-8536-f136c8efbc98"
+>k =&gt;  U<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b45611f8-8029-4c51-a287-896cd0abe578"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5201e0d3-13f1-4d6f-9266-eacd71b4e3f6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.4.1.3.1.53"
+ type="TITLE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a1556565-7961-4183-8aa4-5795ed1809bf"
+>LSSMA display toggle on order<Sub>
+<Paragraph
+ id="Condition 3.A3.4.1.3.1.53.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="60a1e820-08d2-4f28-ae41-497bf1c0ce78"
+>a - d, f, n =&gt;  U<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9a55e7cb-6098-4f12-a580-bb231e68611b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Condition 3.A3.4.1.3.1.53.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="0a993cff-c727-4d12-b8a2-21c3dde51447"
+>e, g - j, l, m =&gt;  U<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7e844d03-1a8f-4f9a-9eac-f8f86b881b74"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Condition 3.A3.4.1.3.1.53.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="b3bf21fa-7f01-4bdc-97dd-bf5c90fcfd53"
+>k =&gt;  D<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3e4e4260-7fd7-4c03-b749-6592bed29d51"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9c53e8b2-af72-4cd5-b781-4972e500a39d"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -43486,33 +43973,468 @@ If linking information is used on-board, no error reporting shall be done for ba
  version="3.0.0"
  Name=""
  Guid="094f6632-7d10-48bb-bcae-f932996aae34"
->The following information is not considered to be stored information:
-	a) Repositioning information
-	b) Session Management (exception: the RBC ID/phone number, which is given with an order to establish a communication session, is stored on-board)
-	c) Danger for SH information
-	d) Assignment of Co-ordinate system
-	e) Infill Location Reference
-	f) Location Identity (NID_C + NID_BG transmitted in the balise telegram)
-	g) Recognition of exit from TRIP mode
-	h) Acknowledgement of Train Data
-	i) SH refused
-	j) SH authorised
-	k) Balise/loop system version
-	l) Track Condition Station Platforms
-	m) Track Condition Change of Allowed Current Consumption
-	n) Revocation of Emergency Stop (Conditional or Unconditional)
-	o) Temporary Speed Restriction Revocation
-	p) Initiation of communication session
-	q) Acknowledgement of session termination
-	r) Default Balise Information
-	s) Co-operative shortening of MA (if this message is used, it replaces the movement authority)
-	t) Train Rejected
-	u) Train Accepted
-	v) SoM position report confirmed by RBC
-	w) Track Ahead Free up to level 2/3 transition location
-	x) Signalling related speed restriction value zero (i.e., train trip order)
-	y) Stop if in SR mode
-	z) Data to be forwarded to a National System through the STM interface<RequirementSets>
+>The following information is not considered to be stored information:<Sub>
+<Paragraph
+ id="3.A3.4.1.4.2.a"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="cf8ae877-9efd-4951-8a91-a3e35483d572"
+>Repositioning information<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="57a59571-f0c6-427f-8df9-e23c70cf3710"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.b"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="9d4849a5-c1cf-490e-a040-7ca585763fdf"
+>Session Management (exception: the RBC ID/phone number, which is given with an order to establish a communication session, is stored on-board)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a4a1c0c2-023f-49e3-9592-55ef1bc564dc"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.c"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6bd04dd9-0e9e-48db-abbd-277ffaee31d2"
+>Danger for SH information<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fedfd54d-d992-44b6-9575-d8b340c950e1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.d"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="fc95eda8-2c45-4dd7-94f7-bed3e7a91cf7"
+>Assignment of Co-ordinate system<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="31da2ac4-7b8f-45f7-9b32-1640440d0a78"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.e"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="e32b33fd-0d80-45a6-8aa5-8a47f3f189d2"
+>Infill Location Reference<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="6d38626b-e935-4ad8-86e8-663049f36362"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.f"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d492855e-ad51-40c3-8dcc-159d4bdd086a"
+>Location Identity (NID_C + NID_BG transmitted in the balise telegram)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f2e56f4d-dbf3-4478-8873-6004d75b9a1e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.g"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="32331708-7408-46e4-a587-519385bda4f8"
+>Recognition of exit from TRIP mode<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a43fb458-55f3-4acf-8130-bb0ef55d0de6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.h"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="7438d592-eb3e-4fe8-9538-9c2c2810df6a"
+>Acknowledgement of Train Data<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="67983edf-fc43-4d06-8be4-675cf3dc9a3e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.i"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b9135f65-869c-45db-b0a7-6dc2afe42182"
+>SH refused<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2e823bff-2bcd-4721-a299-6a0dc2052677"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.j"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="12b20d3d-3181-4163-b762-8bef5b4ec994"
+>SH authorised<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="711e5b85-d86d-4782-989d-4b523fa94be1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.k"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="1ab0b55d-543e-49d5-a964-b2f1f58aaf2f"
+>Balise/loop system version<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1f4550c3-b83c-4093-8306-94878ce141b2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.l"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0a8c7c34-652c-4e3f-89ed-7203835ae266"
+>Track Condition Station Platforms<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e2bd55c2-ff6e-46da-bc6e-8c7ffa84c715"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.m"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b527cea2-2ee5-498e-af99-b45587fe89d1"
+>Track Condition Change of Allowed Current Consumption<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="867108e2-f817-40f3-8f22-d4cb39fd1d74"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.n"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0e5220c8-f1df-4230-9e19-8d3b63e86f7a"
+>Revocation of Emergency Stop (Conditional or Unconditional)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d3caa79c-91a2-4fa6-b713-fc75d3a46c61"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.o"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="e6da7346-eefb-4340-8159-f0b9e423d5c8"
+>Temporary Speed Restriction Revocation<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d7dc7cfa-9328-41c4-9ec8-1f8148f0590b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.p"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="554e4f3c-fae0-4fe0-8df1-167041e0287f"
+>Initiation of communication session<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="bf7a70fe-d8e0-4281-8dba-41f70de99804"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.q"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d071ce51-e3b0-45ee-9115-4a98e102cfd3"
+>Acknowledgement of session termination<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e8db6f34-91be-4a6c-912d-28826b3c0966"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.r"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="396a324b-21ae-464c-9275-ab672d39f27d"
+>Default Balise Information<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e855a2a0-11dd-4f86-ad33-c76616bd39dd"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.s"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="e1b51b98-d2f5-474e-bd85-1b1d2c65ac8a"
+>Co-operative shortening of MA (if this message is used, it replaces the movement authority)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="69bf633f-800f-4b2d-94da-298993ac15d6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.t"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6215aa6e-fdde-4cbb-8e4d-f2a68106f65c"
+>Train Rejected<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="024b7415-a301-4ff3-82f8-e2c6cd42d245"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.u"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="557c64f6-cf1a-45b7-9655-18150ac5a3f9"
+>Train Accepted<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="969151d1-c94d-46f1-aba4-de9161fcb439"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.v"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="7fd157a3-09da-4380-ba3d-dc982ff10104"
+>SoM position report confirmed by RBC<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="6e26dc7e-d6a9-41d4-a96d-b9667930cf05"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.w"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d0593646-c7f8-4ffa-9740-84cd98af1d86"
+>Track Ahead Free up to level 2/3 transition location<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d6590058-a1ef-4d0d-9605-b8e86b7cb695"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.x"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d965bb46-bc5c-481d-af51-d13825582054"
+>Signalling related speed restriction value zero (i.e., train trip order)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="09bba928-6f1d-4d4a-9fcd-cacd14de40a0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.y"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="9054fcc1-6809-47c0-9cf7-b823378ac59f"
+>Stop if in SR mode<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="6db8aedb-9b61-4124-8600-6ad5f672a5c3"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.z"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="1f17cf7c-0aab-4335-bb92-8a269007c4df"
+>Data to be forwarded to a National System through the STM interface<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="62d26422-fe37-4544-8429-e9ebaf41f64c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.4.1.4.2.aa"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="e9afa48d-11d5-4cb9-ac61-7896b5798cda"
+>LSSMA display toggle off order<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b8db3d27-3738-4c84-b6aa-6b220a7e376c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d2e2ad51-9ff3-4aad-bf22-2baaf8af347d"
@@ -43562,6 +44484,7 @@ If linking information is used on-board, no error reporting shall be done for ba
  scope="FLAGS"
  bl="3.2.0"
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  Name=""
@@ -43573,7 +44496,7 @@ If linking information is used on-board, no error reporting shall be done for ba
 	- Request to acknowledge a mode profile, mode transition due to mode profile (see 3.12.4)
 	- Start and stop accepting radio infill information (see 3.9.3)
 	- Actions related to RBC/RBC handover (see 3.15.1)
-	- Actions related to track condition information (see 3.12.1) with the exception of big metal masses
+	- Actions related to track condition information (see 3.12.1) with the exception of big metal masses and non stopping areas
 	- Permission to initiate Reversing mode, i.e., limits of Reversing Area (see 3.15.4)
 	- Start and stop Track Ahead free request to driver (see 3.15.5)&quot;
 	- Start and stop calculation of geographical position (see 3.6.6)<RequirementSets>
@@ -44835,6 +45758,281 @@ End if<RequirementSets>
 </RequirementSetReference><RequirementSetReference
  RefId="723a9224-49cd-4a01-ab30-112c939a3529"
  Guid="7d7bec00-3509-4d94-806a-054b72322e46"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.A3.11"
+ type="TITLE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="e056c394-bc76-4b3c-b7ec-f7ca4b95eb7d"
+>Data unit, range and resolution<Sub>
+<Paragraph
+ id="Table 3.A3.11.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="7da31978-0e05-4a50-bab2-6d999446efab"
+>Data; Unit; Range; Resolution<Sub>
+<Paragraph
+ id="Entry 3.A3.11.1.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="2589f2ce-8abb-4ab9-aff1-62dd5f23f754"
+>Train Data: Cant deficiency train category; mm; 80, 100, 130, 150, 165, 180, 210, 225, 245, 275, 300; n/a<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5752c748-936f-4d7c-96ee-90662ea61755"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.11.1.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="cc64a008-67ae-4edc-b2da-420e3d3998a1"
+>Train Data: Other international train category; n/a; passenger train in P, freight train in P, freight train in G; n/a<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="89c5f8e5-27d6-4b1c-99c7-f60676a04126"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.11.1.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="9237b73b-e4c9-44a8-a2a6-6b3ad63bb25b"
+>Train Data: Train length; m; 0-4095; 1m<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ba4e95d3-79d8-48f0-80d8-25d9fb09ffbb"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.11.1.4"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="b5e3cc55-f32d-4a93-9afb-f9a177f51d9a"
+>Train Data: Brake percentage; %; 10-250; 1 %<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="bf4fbe66-1e92-4b7d-9d5c-cb41fecb0a6e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.11.1.5"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="e05db823-b5c3-4438-bc45-e76fe283e163"
+>Train Data: Maximum train speed; km/h; 0-600; 5 km/h<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="505320c7-6915-4182-9200-9bae0c150b20"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.11.1.6"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="b54aeafa-57aa-479c-a635-a9f08e9d5f82"
+>Train Data: Loading gauge; n/a; G1, GA, GB, GC, does not fit any of the interoperable loading gauge profiles; n/a<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="718144c0-baf4-487f-8e68-2002666230c9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.11.1.7"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="9b5bc05a-22cc-46c2-b86e-98b08f33de35"
+>Train Data: Axle load category; n/a; A, HS17, B1, B2, C2, C3, C4, D2, D3, D4, D4XL, E4, E5; n/a<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="342cc52f-1160-4696-b137-da2ca7c82f57"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.11.1.8"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="f612748c-f456-4e96-8bc1-3717f69b4b8b"
+>Train Data: Train fitted with airtight system; n/a; Yes, No; n/a<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="27f73e66-bc69-47ac-a09a-31bcb95d64b7"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.11.1.9"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="9c578eef-4c8d-4689-8bcd-50c0c356864e"
+>Driver ID; n/a; 1 to 16 alphanumeric characters (selected from 0 to 9 and a to z); n/a<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0ef189ae-7383-4f9d-9b6e-f027a5c0feaa"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.11.1.10"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="51eb78d7-7118-4b9f-ac00-ae6d40aefea0"
+>RBC ID; n/a; 0-16777214; 1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2bc1517f-3c21-41ff-83e1-bd44ce56e9df"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.11.1.11"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="bc788967-444b-4de1-bb0a-f16853d222c5"
+>RBC phone number; n/a; no restriction; n/a<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7eeaf599-f11b-4684-af53-7ffdf2ca4ae5"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.11.1.12"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="a14fe95a-8673-4454-b89a-54c4ae081318"
+>Train running number; n/a; no restriction; n/a<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="cb93c390-1df4-4279-9dbe-2737bbde08c6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.11.1.13"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="2f44681c-1f42-4dff-b067-8ff47610b279"
+>Distance to run in SR Mode; m; 0-100000; 1 m<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="334b1013-93fa-4704-a52a-5119e1ac14ba"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 3.A3.11.1.14"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="31ecdc4a-585c-4391-9a85-84c3040e7f35"
+>Maximum SR speed; km/h; 0-600; 5 km/h<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5a8ec8f7-3520-4845-951d-56060d26b66f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="292fe00e-e212-48d3-9e79-9c245e0c697d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9f605ec6-93a2-4f2b-9806-20fd6556bc51"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>

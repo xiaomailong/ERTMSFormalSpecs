@@ -513,11 +513,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1a89fb0a-39f0-4597-abb8-e1a655f8bf8e"
 >
-</ReqRef><ReqRef
- Id="999a2f32-81ff-4fcc-b12c-28761069ec5f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="abe6d9e3-c9fa-45fb-b789-ca1d8d78784b"
->
 </ReqRef><Comment>Provides the value of Vdelta0 for speed restrictions to ensure permitted braking distance.</Comment>
 <Cases>
 <Case
@@ -533,7 +528,7 @@
  Name="Compensation of speed inaccuracy is not inhibited by NV"
  Guid="a19d201e-cd5f-4b60-bcf6-a4ea5c891e82"
 >
-<Expression>5.0</Expression>
+<Expression>Odometry.Accuracy.V_ura</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
