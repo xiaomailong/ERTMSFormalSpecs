@@ -33435,11 +33435,12 @@ If linking information is used the on-board shall react according to the linking
  scope="FLAGS"
  bl=""
  name=""
- status="Implemented"
+ reviewed="TRUE"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="7ec28cec-f043-4430-802b-8219033d9a4f"
->The ERTMS/ETCS on-board equipment shall ignore (i.e. it will not consider as LRBG) a balise group found with its location reference outside its expectation window.<RequirementSets>
+>The ERTMS/ETCS on-board equipment shall reject the message from a balise group found with its location reference outside its expectation window.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="f2eb8f24-d21d-49f0-94b2-e841a99cd471"
@@ -33826,7 +33827,7 @@ only data to be used by applications outside ERTMS/ETCS together with other info
  version="3.0.0"
  Name=""
  Guid="44ee1586-bb5c-42b3-b64d-c63e870d4d0e"
->Comparing message counters of the received telegrams of a balise group message, excluding the ones complying with 3.16.2.4.6, if their values are not all identical, or at least one of them complies with 3.16.2.4.6.1, this shall be considered as a message consistency error. The balise group can, however, be used for location information.<Sub>
+>Comparing message counters of the received telegrams of a balise group message, excluding the ones complying with 3.16.2.4.6, if their values are not all identical, or at least one of them complies with 3.16.2.4.6.1, this shall be considered as a message consistency error.<Sub>
 <Paragraph
  id="3.16.2.4.7.1"
  type="REQUIREMENT"
