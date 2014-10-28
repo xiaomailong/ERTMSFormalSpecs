@@ -15,13 +15,15 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
 using DataDictionary.Rules;
 using DataDictionary.Tests.Runner.Events;
 using DataDictionary.Values;
 using Utils;
-using DataDictionary.Types;
-using DataDictionary.Constants;
+using Rule = DataDictionary.Rules.Rule;
+using State = DataDictionary.Constants.State;
+using StateMachine = DataDictionary.Types.StateMachine;
 
 namespace DataDictionary.Tests.Runner
 {
@@ -431,7 +433,7 @@ namespace DataDictionary.Tests.Runner
                 {
                     Log.Info("New cycle");
                 }
-                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                ControllersManager.DesactivateAllNotifications();
 
                 LastActivationTime = Time;
 
@@ -451,7 +453,7 @@ namespace DataDictionary.Tests.Runner
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+                ControllersManager.ActivateAllNotifications();
             }
 
             EventTimeLine.CurrentTime += Step;
@@ -498,7 +500,7 @@ namespace DataDictionary.Tests.Runner
         {
             try
             {
-                DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                ControllersManager.NamableController.DesactivateNotification();
                 LastActivationTime = Time;
 
                 Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<Utils.ElementLog>>();
@@ -515,7 +517,7 @@ namespace DataDictionary.Tests.Runner
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+                ControllersManager.NamableController.ActivateNotification();
             }
 
             if (priority == Generated.acceptor.RulePriority.aCleanUp)
@@ -595,15 +597,14 @@ namespace DataDictionary.Tests.Runner
 
                         if (val != null)
                         {
-                            int i = 1;
+                            Variables.Variable tmp = new Variables.Variable();
+                            tmp.Name = "list_entry";
+                            tmp.Type = collectionType.Type;
+
                             foreach (IValue subVal in val.Val)
                             {
-                                Variables.Variable tmp = new Variables.Variable();
-                                tmp.Name = variable.Name + '[' + i + ']';
-                                tmp.Type = collectionType.Type;
                                 tmp.Value = subVal;
                                 EvaluateVariable(priority, activations, tmp, explanation, runner);
-                                i = i + 1;
                             }
                         }
                         else
@@ -1280,49 +1281,58 @@ namespace DataDictionary.Tests.Runner
         /// <param name="Item"></param>
         public void RunUntilStep(Step target)
         {
-            currentStepIndex = NO_MORE_STEP;
-            currentTestCaseIndex = NO_MORE_STEP;
+            try
+            {
+                ControllersManager.DesactivateAllNotifications();
 
-            if (target != null)
-            {
-                RunForBlockingExpectations(false);
-            }
-            else
-            {
-                RunForExpectations(false);
-            }
+                currentStepIndex = NO_MORE_STEP;
+                currentTestCaseIndex = NO_MORE_STEP;
 
-            // Run all following steps until the target step is encountered
-            foreach (TestCase testCase in SubSequence.TestCases)
-            {
-                foreach (Step step in testCase.Steps)
+                if (target != null)
                 {
-                    if (step == target)
-                    {
-                        currentStepIndex = REBUILD_CURRENT_SUB_STEP;
-                        currentTestCaseIndex = REBUILD_CURRENT_SUB_STEP;
-                        break;
-                    }
+                    RunForBlockingExpectations(false);
+                }
+                else
+                {
+                    RunForExpectations(false);
+                }
 
-                    if (!EventTimeLine.ContainsStep(step))
+                // Run all following steps until the target step is encountered
+                foreach (TestCase testCase in SubSequence.TestCases)
+                {
+                    foreach (Step step in testCase.Steps)
                     {
-                        foreach (SubStep subStep in step.SubSteps)
+                        if (step == target)
                         {
-                            SetupSubStep(subStep);
-                            if (!subStep.getSkipEngine())
+                            currentStepIndex = REBUILD_CURRENT_SUB_STEP;
+                            currentTestCaseIndex = REBUILD_CURRENT_SUB_STEP;
+                            break;
+                        }
+
+                        if (!EventTimeLine.ContainsStep(step))
+                        {
+                            foreach (SubStep subStep in step.SubSteps)
                             {
-                                if (target != null)
+                                SetupSubStep(subStep);
+                                if (!subStep.getSkipEngine())
                                 {
-                                    RunForBlockingExpectations(true);
-                                }
-                                else
-                                {
-                                    RunForExpectations(true);
+                                    if (target != null)
+                                    {
+                                        RunForBlockingExpectations(true);
+                                    }
+                                    else
+                                    {
+                                        RunForExpectations(true);
+                                    }
                                 }
                             }
                         }
                     }
                 }
+            }
+            finally
+            {
+                ControllersManager.ActivateAllNotifications();
             }
         }
 
