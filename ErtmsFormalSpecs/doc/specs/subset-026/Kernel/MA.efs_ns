@@ -22,7 +22,7 @@
  Height="50"
  Implemented="TRUE"
  Verified="TRUE"
- Name="MovementAuthority"
+ Name="MAStruct"
  Guid="8df498d0-3616-49da-b2a7-9db1bea7f1c8"
 >
 <ReqRef
@@ -2586,7 +2586,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5b63b2df-359c-4b16-a541-ccc42b459fce"
->MA &lt;- MovementAuthority
+>MA &lt;- Kernel.MA.MAStruct
 {
     TargetSpeed =&gt; MessageTypes.SpeedResolution ( Packet.V_LOA, 5.0 ),
     TargetSpeedTimeOut =&gt; BaseTypes.Time ( Packet.T_LOA )
@@ -4381,7 +4381,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="Kernel.MA.MovementAuthority"
+ Type="Kernel.MA.MAStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="160"
