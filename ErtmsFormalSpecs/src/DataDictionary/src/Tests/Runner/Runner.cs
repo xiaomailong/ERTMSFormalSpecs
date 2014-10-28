@@ -1325,6 +1325,18 @@ namespace DataDictionary.Tests.Runner
                                         RunForExpectations(true);
                                     }
                                 }
+                                else
+                                {
+                                    foreach (acceptor.RulePriority priority in PRIORITIES_ORDER)
+                                    {
+                                        CheckExpectationsState(priority);
+                                    }
+                                }
+                            }
+                            
+                            while (EventTimeLine.ActiveBlockingExpectations().Count > 0)
+                            {
+                                Cycle();
                             }
                         }
                     }
