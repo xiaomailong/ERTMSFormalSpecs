@@ -848,7 +848,7 @@ namespace DataDictionary.Tests.Runner
                 LogInstance = subStep;
 
                 // No setup can occur when some expectations are still active
-                if (ActiveBlockingExpectations().Count == 0)
+                if (!EventTimeLine.ContainsSubStep(subStep))
                 {
                     EventTimeLine.AddModelEvent(new SubStepActivated(subStep, CurrentPriority), this, true);
                 }
