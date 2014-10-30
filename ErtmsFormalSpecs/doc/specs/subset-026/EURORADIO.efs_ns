@@ -2032,7 +2032,11 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Guid="5c7318a3-3c2a-4a71-85c0-c1617d2d9134"
 >SessionManagementData.Action &lt;- ContactActionEnum.Establish</Action><Action
  Guid="36c208cd-4fdb-4529-aac3-4806d371c8a8"
->ConnectionLostTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
+>ConnectionLostTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
+ Guid="9dfae625-3ff2-425f-898d-c57ff6a75c0a"
+>LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
+ Guid="5c581ac4-b257-4996-8939-15d5aa8232be"
+>NumberOfSentRequests &lt;- 1</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2193,6 +2197,58 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 >SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
+ Name="&quot;Connection status&quot; timer expires"
+ Guid="6a118501-cac0-4a06-805f-b587d3b07391"
+>
+<ReqRef
+ Id="db31b8b2-7e8c-4c37-ac8a-c0df7eda9f8d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="adbf615d-a0e8-4585-951b-30dba2c016e8"
+>
+</ReqRef><ReqRef
+ Id="cd18a937-9dc2-456d-bee7-a61bcd564e32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="23802d02-9a29-4fcf-8d67-5abe1ea8a33d"
+>
+</ReqRef><ReqRef
+ Id="ca032528-1cb2-4646-bcad-67c92912f36f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ff1c080c-34f8-4910-b38c-af6411d12a03"
+>
+</ReqRef><ReqRef
+ Id="ecf2af34-5e55-40e4-83a6-e6ec4827734c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="546b714c-ddc5-401c-8acb-42e9d7e303ac"
+>
+</ReqRef><ReqRef
+ Id="b15cc4d3-14ad-4f2e-b1d9-c70dc451cc6f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d4397b5d-e102-41c1-954a-8aa7df0563f5"
+>
+</ReqRef><ReqRef
+ Id="24cfec76-595f-41de-920e-42c8da108914"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="14a66f67-6b80-4a87-ba29-e6d2de210ce4"
+>
+</ReqRef><Comment>If the connection status timer expires, indicate that the connection is lost, repeat the connection request and reset the timer (otherwise the request will be repeated during the next cycle).</Comment>
+<PreConditions>
+<PreCondition
+ Guid="051b7c73-d993-4246-ac2a-5099ddc3c5a1"
+>ConnectionLostTime + ConnectionStatusTimer &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7a967e85-a3aa-4740-a5be-0df764c85620"
+>SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action><Action
+ Guid="066fa5b1-2e86-4ca6-93dd-e597e9fe9c21"
+>NumberOfSentRequests &lt;- NumberOfSentRequests + 1</Action><Action
+ Guid="30af9a7f-b3aa-438e-8e2c-8c3166dbfa4d"
+>LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
+ Guid="f77d82ba-eaff-4fd1-81c0-2026665608aa"
+>SessionManagementData.RequestIsSent &lt;- True</Action><Action
+ Guid="9e7c16f9-a8e2-4265-b301-cfb9022263c3"
+>ConnectionLostTime &lt;- Default.BaseTypes.Time.Infinity</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Repeat the connection request"
  Guid="13984cfa-f744-469f-ab79-5063a2f58711"
 >
@@ -2321,7 +2377,9 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Guid="16ba15f9-a1a0-4ae4-871b-0170a60aa6fb"
 >SessionManagementData.RequestIsSent &lt;- True</Action><Action
  Guid="d32ceab3-f240-4971-86d9-06c897d9b505"
->LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
+>LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
+ Guid="a5a746be-d6b2-4350-9a1e-55abb07beb03"
+>NumberOfSentRequests &lt;- NumberOfSentRequests + 1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
@@ -2400,66 +2458,6 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <Action
  Guid="7857191c-725b-4d50-9197-8c15c1d2f16a"
 >THIS &lt;- ConnectionStateSM.Inactive</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Handle connection timer"
- Guid="8044e56e-b315-450c-8e47-ded7a39ff5bb"
->
-<Comment>If the connection status timer explires, indicate that the connection is lost.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="&quot;Connection status&quot; timer expires"
- Guid="6a118501-cac0-4a06-805f-b587d3b07391"
->
-<ReqRef
- Id="db31b8b2-7e8c-4c37-ac8a-c0df7eda9f8d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="adbf615d-a0e8-4585-951b-30dba2c016e8"
->
-</ReqRef><ReqRef
- Id="cd18a937-9dc2-456d-bee7-a61bcd564e32"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="23802d02-9a29-4fcf-8d67-5abe1ea8a33d"
->
-</ReqRef><ReqRef
- Id="ca032528-1cb2-4646-bcad-67c92912f36f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ff1c080c-34f8-4910-b38c-af6411d12a03"
->
-</ReqRef><ReqRef
- Id="ecf2af34-5e55-40e4-83a6-e6ec4827734c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="546b714c-ddc5-401c-8acb-42e9d7e303ac"
->
-</ReqRef><ReqRef
- Id="b15cc4d3-14ad-4f2e-b1d9-c70dc451cc6f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d4397b5d-e102-41c1-954a-8aa7df0563f5"
->
-</ReqRef><ReqRef
- Id="24cfec76-595f-41de-920e-42c8da108914"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="14a66f67-6b80-4a87-ba29-e6d2de210ce4"
->
-</ReqRef><Comment>If the connection status timer explires, indicate that the connection is lost.</Comment>
-<PreConditions>
-<PreCondition
- Guid="051b7c73-d993-4246-ac2a-5099ddc3c5a1"
->ConnectionLostTime + ConnectionStatusTimer &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7a967e85-a3aa-4740-a5be-0df764c85620"
->SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.ConnectionLostOrSetUpFailed</Action><Action
- Guid="066fa5b1-2e86-4ca6-93dd-e597e9fe9c21"
->NumberOfSentRequests &lt;- NumberOfSentRequests + 1</Action><Action
- Guid="30af9a7f-b3aa-438e-8e2c-8c3166dbfa4d"
->LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
- Guid="f77d82ba-eaff-4fd1-81c0-2026665608aa"
->SessionManagementData.RequestIsSent &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
