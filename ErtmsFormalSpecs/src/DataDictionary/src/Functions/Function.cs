@@ -1088,12 +1088,12 @@ namespace DataDictionary.Functions
                         // Evaluate the function
                         ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, "Case " + aCase.Name + " : ");
                         bool val = aCase.EvaluatePreConditions(context, subExplanation);
+                        ExplanationPart.SetNamable(subExplanation, val ? EFSSystem.BoolType.True : EFSSystem.BoolType.False);
                         if (val)
                         {
                             retVal = aCase.Expression.GetValue(context, subExplanation);
                             break;
                         }
-                        ExplanationPart.SetNamable(subExplanation, val ? EFSSystem.BoolType.True : EFSSystem.BoolType.False);
                     }
                 }
                 else if (Surface != null && FormalParameters.Count == 2)
