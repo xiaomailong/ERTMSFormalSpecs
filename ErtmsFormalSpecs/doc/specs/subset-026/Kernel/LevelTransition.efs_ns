@@ -294,64 +294,6 @@
 >
 <Expression>Boolean.False</Expression>
 </Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- X="20"
- Y="360"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="NewAreaInformationAvailable"
- Guid="b8c223d8-2802-47ef-aaaa-64aff3aa176f"
->
-<ReqRef
- Id="d2dba6ab-f150-4940-8d2c-e5e0f78544e3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="14856045-238a-4872-9586-2cef92371a50"
->
-</ReqRef><ReqRef
- Id="10de7e67-23c3-4a05-8dea-663895728a95"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="164da2bd-d915-4a2c-a023-3ec9020f386b"
->
-</ReqRef><ReqRef
- Id="d8c87e49-f79a-4070-b451-f8fdcc8c1071"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="82802060-7c6a-4a14-9652-09ec564c3933"
->
-</ReqRef><Comment>Indicates if the information about the new area is available (as MA or as a target speed).</Comment>
-<Cases>
-<Case
- Name="MA information available"
- Guid="5902578a-c930-4bc8-a30a-fa25d2fccbd1"
->
-<PreConditions>
-<PreCondition
- Guid="8a5d93b2-8d92-469b-a491-eba9319409d2"
->MA.MA != EMPTY
-  AND
-MA.EndOfMA() &gt; LevelTransitionOrder.Distance
-  AND
-MA.FullTrackDescriptionAvailableForDistanceInterval( (FIRST_IN MA.MA.Sections).Length )</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Target speed available"
- Guid="63ccfe36-dd50-45a5-a029-53a1706ace46"
->
-<PreConditions>
-<PreCondition
- Guid="496e63f0-8d00-474a-b6c8-c7b80dd2e1a9"
->MA.ClosestEOA().Location == LevelTransitionOrder.Distance
-  AND
-MA.ClosestEOA().Speed &gt; 0.0</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="457685da-a269-4182-bb3b-cd7c5de7d1de"
->
-<Expression>False</Expression>
-</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -877,7 +819,7 @@ Packet.Sequence1</Action></Actions>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Handle level transition according to current and target levels"
+ Name="Execute level transition"
  Guid="65e5f4f7-e073-4aa9-a8ad-91bd65ac5a39"
 >
 <Comment>According to the values of the current and the target level, the level transitions are handled in different ways.</Comment>
@@ -885,64 +827,9 @@ Packet.Sequence1</Action></Actions>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="From level 1 to level 2/3"
- Guid="916739af-e4fd-4cb8-8df1-609c41bc3078"
->
-<ReqRef
- Id="d2dba6ab-f150-4940-8d2c-e5e0f78544e3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="75ca26dd-6961-4b3a-a94e-0e69641f77e7"
->
-</ReqRef><ReqRef
- Id="f56df936-9ada-4149-91ce-4742fb123bbb"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4c92933d-6412-431a-b293-eb29fa910af1"
->
-</ReqRef><ReqRef
- Id="917e038b-c314-4423-b3a6-c0131f148410"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="412a4295-716e-45a1-8109-98b52c64b895"
->
-</ReqRef><Comment>In order to execute the level transition from level 1 to level 2 or 3, the train must possess information about a target speed at the border location or an MA and traci description information into the new area.</Comment>
-<PreConditions>
-<PreCondition
- Guid="a2f4f847-d900-402b-8e3e-2c45077b7e15"
->Kernel.Level.Value.Value == Default.Level.L1</PreCondition><PreCondition
- Guid="41aa37fd-92d5-46cc-8891-ac1549bf9e5c"
->LevelTransitionToProcess.TRLevel.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Transition can be executed"
- Guid="90b0202c-1239-40fb-990c-4f46982bafeb"
->
-<Comment>If the new area information is available, then execute the level transition.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Transition can be executed"
- Guid="e3e6bb82-85d2-4285-adfd-20cb86775a2d"
->
-<PreConditions>
-<PreCondition
- Guid="28e4aaff-7081-4121-bb77-dbda745d5e44"
->NewAreaInformationAvailable()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="05d0b765-0cd3-431a-97d3-9a1515603681"
->Kernel.Level.Value.Value &lt;- LevelTransitionToProcess.TRLevel.Value</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Otherwise"
+ Name="Execute level transition"
  Guid="4a02871c-70ae-4b77-aa21-24e61f3c0442"
 >
-<Comment>For all other levels.</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
