@@ -114,7 +114,6 @@ namespace Reports.Specs
                 AddParagraph(subparagraph.ExpressionText);
                 
                 // provide the translations the paragraph references
-                AddImplementations(subparagraph);
                 AddSteps(subparagraph);
 
                 CloseSubParagraph();
@@ -133,6 +132,7 @@ namespace Reports.Specs
                     if (first)
                     {
                         AddTable(new string[] { "Related translations" }, new int[] { 100 });
+                        first = false;
                     }
                     foreach (DataDictionary.Tests.Translations.SourceText sourceText in translation.SourceTexts)
                     {
@@ -142,7 +142,6 @@ namespace Reports.Specs
                             AddRow(comment.ExpressionText);
                         }
                     }
-                    first = false;
                 }
             }
         }
@@ -158,10 +157,10 @@ namespace Reports.Specs
                 {
                     if (first)
                     {
-                        AddTable(new string[] { "Test sequence", "Step" }, new int[] { 40, 90 });
+                        AddTable(new string[] { "Sequence", "Test case" }, new int[] { 40, 90 });
                         first = false;
                     }
-                    AddRow(new string[] { step.SubSequence.Name, step.Name });
+                    AddRow(new string[] { step.SubSequence.Name, step.TestCase.Name });
                 }
             }
         }
@@ -180,7 +179,6 @@ namespace Reports.Specs
                 AddParagraph(subparagraph.ExpressionText);
 
                 // provide the translations the paragraph references
-                AddImplementations(subparagraph);
                 AddSteps(subparagraph);
 
                 CloseSubParagraph();
@@ -202,7 +200,6 @@ namespace Reports.Specs
                 AddParagraph(subparagraph.ExpressionText);
 
                 // provide the translations the paragraph references
-                AddImplementations(subparagraph);
                 AddSteps(subparagraph);
 
                 CloseSubParagraph();
