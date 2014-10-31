@@ -1363,6 +1363,16 @@ namespace GUI
             }
         }
 
+        private void generateFindingsReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataDictionary.Dictionary dictionary = GetActiveDictionary();
+            if (dictionary != null)
+            {
+                Report.FindingsReport aReport = new Report.FindingsReport(dictionary);
+                aReport.ShowDialog(this);
+            }
+        }
+
         private void searchToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             SearchDialog.SearchDialog dialog = new SearchDialog.SearchDialog();
