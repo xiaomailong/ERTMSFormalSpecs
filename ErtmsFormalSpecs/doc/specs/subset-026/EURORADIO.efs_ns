@@ -2028,7 +2028,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Guid="30ffcf61-752f-4621-bd06-aae49937b224"
 >THIS &lt;- Connecting</Action><Action
  Guid="0435a548-28e2-45b2-b8f8-0711b2fc3498"
->SessionManagementData.RequestIsSent &lt;- True</Action><Action
+>SessionManagementData.ConnectionRequestIsSent &lt;- True</Action><Action
  Guid="5c7318a3-3c2a-4a71-85c0-c1617d2d9134"
 >SessionManagementData.Action &lt;- ContactActionEnum.Establish</Action><Action
  Guid="36c208cd-4fdb-4529-aac3-4806d371c8a8"
@@ -2100,7 +2100,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <PreConditions>
 <PreCondition
  Guid="7646887d-9f41-46be-afc8-7baa48bad286"
->SessionManagementData.RequestIsReceived</PreCondition></PreConditions>
+>SessionManagementData.ConnectionRequestIsReceived</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="acac9f9a-a9de-4efe-b716-f52130488da8"
@@ -2244,7 +2244,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Guid="30af9a7f-b3aa-438e-8e2c-8c3166dbfa4d"
 >LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
  Guid="f77d82ba-eaff-4fd1-81c0-2026665608aa"
->SessionManagementData.RequestIsSent &lt;- True</Action><Action
+>SessionManagementData.ConnectionRequestIsSent &lt;- True</Action><Action
  Guid="9e7c16f9-a8e2-4265-b301-cfb9022263c3"
 >ConnectionLostTime &lt;- Default.BaseTypes.Time.Infinity</Action></Actions>
 </RuleCondition><RuleCondition
@@ -2316,7 +2316,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Guid="6c9db820-9596-4dc3-b487-9fb6e343bc2b"
 >LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
  Guid="ba529648-8bde-4b6c-bab8-b53b04a493ea"
->SessionManagementData.RequestIsSent &lt;- True</Action><Action
+>SessionManagementData.ConnectionRequestIsSent &lt;- True</Action><Action
  Guid="00fc6a16-7c65-4f0a-b1b2-6b44b65edf9f"
 >NumberOfSentRequests &lt;- NumberOfSentRequests + 1</Action></Actions>
 </RuleCondition><RuleCondition
@@ -2375,7 +2375,7 @@ THERE_IS_IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <Actions>
 <Action
  Guid="16ba15f9-a1a0-4ae4-871b-0170a60aa6fb"
->SessionManagementData.RequestIsSent &lt;- True</Action><Action
+>SessionManagementData.ConnectionRequestIsSent &lt;- True</Action><Action
  Guid="d32ceab3-f240-4971-86d9-06c897d9b505"
 >LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
  Guid="a5a746be-d6b2-4350-9a1e-55abb07beb03"
@@ -2915,7 +2915,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  Guid="aa75abe0-f19d-4bbb-a7f5-323d4a627543"
 >LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
  Guid="3a5452b7-fed6-4ef2-9c87-1954d6c666f7"
->SessionManagementData.RequestIsSent &lt;- True</Action></Actions>
+>SessionManagementData.ConnectionRequestIsSent &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Connection is lost, maximum time is reached"
@@ -3200,7 +3200,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  Guid="c4a3e6fd-bbd3-4c4a-9592-37f17c96b1ac"
 >LastRequestTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
  Guid="bef7600f-38e6-4557-9a1d-4f08e07554dd"
->SessionManagementData.RequestIsSent &lt;- True</Action><Action
+>SessionManagementData.ConnectionRequestIsSent &lt;- True</Action><Action
  Guid="ed5c1847-6ece-4c06-a1fe-50505630488c"
 >THIS &lt;- ConnectionLost</Action></Actions>
 </RuleCondition></Conditions>
@@ -3375,7 +3375,7 @@ The information related to the current communication session is reinitialized.</
  Guid="b2911cf2-e495-44ac-9990-c74a924f43a4"
 >SessionManagementData.Action &lt;- ContactActionEnum.Terminate</Action><Action
  Guid="647ebe75-16e6-45fe-b548-651236617b73"
->SessionManagementData.RequestIsSent &lt;- True</Action><Action
+>SessionManagementData.ConnectionRequestIsSent &lt;- True</Action><Action
  Guid="8123d25a-e014-4582-90b8-34922a36d18b"
 >SafeRadioConnectionStatus &lt;- SafeRadioConnectionStatusEnum.NoConnection</Action></Actions>
 </RuleCondition><RuleCondition
@@ -3650,7 +3650,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 <Actions>
 <Action
  Guid="554740df-b62d-4d21-9e26-a8e2554409c8"
->RequestIsSent &lt;- False</Action></Actions>
+>ConnectionRequestIsSent &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <StructureElement
@@ -3659,7 +3659,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Mode="Outgoing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="RequestIsSent"
+ Name="ConnectionRequestIsSent"
  Guid="3da0a1c7-ca89-43ab-9597-09b7adf15b15"
 >
 <Comment>Set to True when a request to establish a safe radio connection has to be sent.</Comment>
@@ -3729,7 +3729,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Default="False"
  Mode="Incoming"
  Implemented="TRUE"
- Name="RequestIsReceived"
+ Name="ConnectionRequestIsReceived"
  Guid="a6d33ff5-d083-45be-83a3-68ff4212ed87"
 >
 <ReqRef
