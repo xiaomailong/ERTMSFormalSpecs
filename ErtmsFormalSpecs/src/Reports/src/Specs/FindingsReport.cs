@@ -69,6 +69,7 @@ namespace Reports.Specs
             AddSubParagraph("Questions related to Subset-076");
             AddParagraph("This section contains the " + getSection("Questions", aReportConfig.Dictionary).SubParagraphs.Count +
                 " questions raised in translating the Subset-076 test sequences");
+            AddParagraph("Questions are the points in tests that do not contradict Subset-026, but also do not align with our understanding of it.");
             GenerateQuestions(aReportConfig.Dictionary);
             CloseSubParagraph();
         }
@@ -82,6 +83,7 @@ namespace Reports.Specs
             AddSubParagraph("Comments for Subset-076");
             AddParagraph("This section contains the " + getSection("Comments", aReportConfig.Dictionary).SubParagraphs.Count +
                 " comments for the Subset-076 test sequences");
+            AddParagraph("Comments are findings that are minor bugs, that could be assumptions the ERTMS Solutions team is not aware of, or information we feel is worth sharing in the present document.");
             GenerateComments(aReportConfig.Dictionary);
             CloseSubParagraph();
         }
@@ -95,6 +97,7 @@ namespace Reports.Specs
             AddSubParagraph("Bugs for Subset-076");
             AddParagraph("This section contains the " + getSection("Bugs", aReportConfig.Dictionary).SubParagraphs.Count +
                 " discovered bugs for the Subset-076 test sequences");
+            AddParagraph("These are the findings that are errors in the test sequences. They can prevent execution of the test sequence.");
             GenerateBugs(aReportConfig.Dictionary);
             CloseSubParagraph();
         }
