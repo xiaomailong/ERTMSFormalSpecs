@@ -13,7 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using DataDictionary;
+using System.Collections.Generic;
 using MigraDoc.DocumentObjectModel;
 
 namespace Reports.Specs
@@ -104,7 +104,7 @@ namespace Reports.Specs
         /// Creates a table for the questions
         /// </summary>
         /// <param name="aDictionary"></param>
-        public void GenerateQuestions(Dictionary aDictionary)
+        public void GenerateQuestions(DataDictionary.Dictionary aDictionary)
         {
             AddSubParagraph("");
             DataDictionary.Specification.Paragraph questions = getSection("Questions", aDictionary);
@@ -124,7 +124,7 @@ namespace Reports.Specs
         private void AddImplementations(DataDictionary.Specification.Paragraph subparagraph)
         {
             bool first = true;
-            foreach (ReqRef reference in subparagraph.Implementations)
+            foreach (DataDictionary.ReqRef reference in subparagraph.Implementations)
             {
                 DataDictionary.Tests.Translations.Translation translation = reference.Model as DataDictionary.Tests.Translations.Translation;
                 if (translation != null)
@@ -146,30 +146,59 @@ namespace Reports.Specs
             }
         }
 
-
+        /// <summary>
+        /// Builds the table of implementations of a paragraph
+        /// </summary>
+        /// <param name="subparagraph"></param>
         private void AddSteps(DataDictionary.Specification.Paragraph subparagraph)
         {
-            bool first = true;
-            foreach (ReqRef reference in subparagraph.Implementations)
+            AddTable(new string[] { "Test case" , "Sequence" }, new int[] { 40, 90 });
+
+            Dictionary<string, string> TestFeatures = findSteps(subparagraph);
+
+            foreach (KeyValuePair<string, string> testFT in TestFeatures)
+            {
+                AddRow(new string[] { testFT.Key, testFT.Value });
+            }
+        }
+
+        /// <summary>
+        /// Builds a dictionary of sequences containing a given test case, from the implementations of a paragraph
+        /// </summary>
+        /// <param name="paragraph"></param>
+        /// <returns></returns>
+        private Dictionary<string, string> findSteps(DataDictionary.Specification.Paragraph paragraph)
+        {
+            Dictionary<string, string> retVal = new Dictionary<string, string>();
+
+            foreach (DataDictionary.ReqRef reference in paragraph.Implementations)
             {
                 DataDictionary.Tests.Step step = reference.Model as DataDictionary.Tests.Step;
                 if (step != null)
                 {
-                    if (first)
+                    if (retVal.ContainsKey(step.TestCase.Name))
                     {
-                        AddTable(new string[] { "Sequence", "Test case" }, new int[] { 40, 90 });
-                        first = false;
+                        // Only add the subsequence if it is not already in the string
+                        if (retVal[step.TestCase.Name].IndexOf(step.SubSequence.Name) == -1)
+                        {
+                            retVal[step.TestCase.Name] = retVal[step.TestCase.Name] + "\n" + step.SubSequence.Name;
+                        }
                     }
-                    AddRow(new string[] { step.SubSequence.Name, step.TestCase.Name });
+                    else
+                    {
+                        retVal[step.TestCase.Name] = step.SubSequence.Name;
+                    }
                 }
             }
+
+            return retVal;
         }
 
         /// <summary>
         /// Creates a table for the remarks
         /// </summary>
         /// <param name="aDictionary"></param>
-        public void GenerateComments(Dictionary aDictionary)
+        public void GenerateComments(DataDictionary.Dictionary aDictionary)
         {
             AddSubParagraph("");
             DataDictionary.Specification.Paragraph questions = getSection("Comments", aDictionary);
@@ -190,7 +219,7 @@ namespace Reports.Specs
         /// Creates a table for the bugs
         /// </summary>
         /// <param name="aDictionary"></param>
-        public void GenerateBugs(Dictionary aDictionary)
+        public void GenerateBugs(DataDictionary.Dictionary aDictionary)
         {
             AddSubParagraph("");
             DataDictionary.Specification.Paragraph questions = getSection("Bugs", aDictionary);
@@ -205,6 +234,5 @@ namespace Reports.Specs
                 CloseSubParagraph();
             }
         }
-
     }
 }
