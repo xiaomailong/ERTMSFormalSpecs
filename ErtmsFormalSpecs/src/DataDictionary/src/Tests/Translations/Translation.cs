@@ -177,10 +177,20 @@ namespace DataDictionary.Tests.Translations
         {
             Step previousStep = step.PreviousStep;
 
-            step.Requirements.Clear();
             foreach (ReqRef reqRef in Requirements)
             {
-                step.appendRequirements((ReqRef)reqRef.Duplicate());
+                bool isPresent = false;
+                foreach (ReqRef stepReqRef in step.Requirements)
+                {
+                    if (reqRef.Paragraph == stepReqRef.Paragraph)
+                    {
+                        isPresent = true;
+                    }
+                }
+                if (!isPresent)
+                {
+                    step.Requirements.Add(reqRef);
+                }
             }
 
             int subStepCounter = 1;
