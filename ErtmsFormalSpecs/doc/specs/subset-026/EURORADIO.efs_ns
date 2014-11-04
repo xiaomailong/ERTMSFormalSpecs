@@ -6195,7 +6195,7 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fe5ff221-f09e-41e1-ac39-10691136d712"
 >
-</ReqRef><Comment>Handles reception of level transition orders received with the MA.</Comment>
+</ReqRef><Comment>Handles reception of gradient profile received with the MA.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -6233,7 +6233,7 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8ecaa15f-bdde-4f57-a2e5-5abbad0fae88"
 >
-</ReqRef><Comment>Handles reception of level transition orders received with the MA.</Comment>
+</ReqRef><Comment>Handles reception of the international static speed profile received with the MA.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -6448,34 +6448,6 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Mode profile available"
- Guid="77eaf966-192f-4c0e-9990-7e4897dad4af"
->
-<ReqRef
- Id="de18f207-08ba-467b-a877-d3c5a458123d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9a402d46-e655-4ff8-ad35-7229f2ed2f0a"
->
-</ReqRef><Comment>Handles reception of mode profile received with the MA.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Mode profile available"
- Guid="009cc428-70b4-4b0a-b5df-468b677b743e"
->
-<PreConditions>
-<PreCondition
- Guid="9faa2fda-94d0-4d88-b999-35cbcbcf7f60"
->THERE_IS_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="1d0407c6-42f3-4cd3-9dbd-5721ca7faffe"
->Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
  Name="RBC transition order available"
  Guid="0fb335bd-44e1-47e2-bd89-4c942a224204"
 >
@@ -6599,6 +6571,11 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f322b5aa-3e52-44f8-b37d-b356be1b3b17"
 >
+</ReqRef><ReqRef
+ Id="5fff9a06-3432-4ce9-b8e0-9b36de116805"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2d0a8ab9-9dae-4ed6-a748-95a39c9b153d"
+>
 </ReqRef><Comment>At the end, handles the Movement Authority. This is done after all the packets were handled in order to be able to evaluate the track description, if any.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -6622,6 +6599,46 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
     time=&gt;aMessage.MOVEMENT_AUTHORITY.T_TRAIN
 )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Mode profile available"
+ Guid="77eaf966-192f-4c0e-9990-7e4897dad4af"
+>
+<ReqRef
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a402d46-e655-4ff8-ad35-7229f2ed2f0a"
+>
+</ReqRef><ReqRef
+ Id="5fff9a06-3432-4ce9-b8e0-9b36de116805"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae797155-a1ea-43a4-95f4-72ea15165d33"
+>
+</ReqRef><ReqRef
+ Id="63f87a6b-8c3e-4333-b97e-9e417e3623d8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b3ffeffc-b145-44a2-a355-aa32b1978837"
+>
+</ReqRef><Comment>Handles reception of mode profile received with the MA (only if the MA was accepted).</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Mode profile available"
+ Guid="009cc428-70b4-4b0a-b5df-468b677b743e"
+>
+<PreConditions>
+<PreCondition
+ Guid="9faa2fda-94d0-4d88-b999-35cbcbcf7f60"
+>THERE_IS_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition><PreCondition
+ Guid="e03da753-7cd6-4dc6-a1f4-d558ed56a340"
+>Kernel.MA.MAIsAccepted</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1d0407c6-42f3-4cd3-9dbd-5721ca7faffe"
+>Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST_IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

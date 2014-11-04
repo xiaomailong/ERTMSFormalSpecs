@@ -2287,7 +2287,9 @@ Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreCond
 <Actions>
 <Action
  Guid="c6a9825b-4180-4447-a067-78ee2400685c"
->UpdateMA ( Packet =&gt; ConvertMALvl2or3_to_MALvl1 ( Packet ), NID_BG =&gt; NID_BG )</Action></Actions>
+>UpdateMA ( Packet =&gt; ConvertMALvl2or3_to_MALvl1 ( Packet ), NID_BG =&gt; NID_BG )</Action><Action
+ Guid="3e4d5ecc-98c0-4000-9d12-5b63e89e74c7"
+>MAIsAccepted &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4646,6 +4648,27 @@ NOT(Available(EndSectionTimerStart))
     TimeOut =&gt; DateAndTime.CurrentTime,
     Distance =&gt; MA.MA.EndSection.EndSectionTimeOut.Distance
 }</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="CleanUp"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CleanUp"
+ Guid="7de635e8-9b4c-414d-9952-c3c4e222f48b"
+>
+<Comment>Clears the temporary variable indicating if the MA was accepted.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="CleanUp"
+ Guid="c72e1234-805d-4b1e-b806-5849f3aac6fd"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="0209332a-b329-41fe-be81-67f6ff5c367a"
+>MAIsAccepted &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
