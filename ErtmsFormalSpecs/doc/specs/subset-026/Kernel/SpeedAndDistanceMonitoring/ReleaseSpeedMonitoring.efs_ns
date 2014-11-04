@@ -216,42 +216,6 @@ BaseTypes.MaxDistance(
     X2 =&gt; ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Min ) ) )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.BaseTypes.Distance"
- Cacheable="TRUE"
- Default=""
- X="330"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="d_SBI2"
- Guid="d0905bbc-aeb2-4ddf-98b1-d70183e08872"
->
-<ReqRef
- Id="faa860d4-6ec0-42c7-921a-65ae72f044ad"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6c102041-afb3-4661-9fac-360e09ee5518"
->
-</ReqRef><Comment>Provides the location of the SBI2 supervision limit.</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Speed"
- Name="Vrelease"
- Guid="11bc7ff3-8547-485e-96c3-bda20f990caa"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
- Guid="9f92f8f6-b695-4857-b144-f800e36bfc2e"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Value"
- Guid="994729c8-aa58-4667-98b0-90ca2b055199"
->
-<Expression>d_EBI ( Vrelease, EstimatedAccelerationSetToZero )  - BaseTypes.SpeedToMS ( Vrelease ) * TargetSpeedMonitoring.T_bs2</Expression>
-</Case></Cases>
-</Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
  X="330"
@@ -561,6 +525,8 @@ INITIAL_VALUE
  Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ComputeStartRSM_otherTargets"
  Guid="68f6cdc7-8f06-48b1-87fd-3ab1ef04f1eb"
