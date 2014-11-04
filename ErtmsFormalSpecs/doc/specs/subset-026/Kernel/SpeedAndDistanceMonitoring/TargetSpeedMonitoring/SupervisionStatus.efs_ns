@@ -365,9 +365,7 @@
  Guid="7960a7bd-aa52-4d3d-8798-ee8036caba77"
 >Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="13c85266-668b-4739-b924-950683628d85"
->d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; DecelerationCurves.FLOIComparedDistance ()</PreCondition><PreCondition
- Guid="6ec66168-2c16-4b1f-9a3e-efb6cdd7af1c"
->DecelerationCurves.FLOIComparedDistance () &lt;= d_FLOI ( Odometry.TrainSpeed(), False )</PreCondition></PreConditions>
+>d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; DecelerationCurves.FLOIComparedDistance ()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -407,9 +405,7 @@
  Guid="f775a343-3e84-41b9-806b-619a7ba9c12c"
 >SBISpeedOfTarget() &lt; Odometry.TrainSpeed()</PreCondition><PreCondition
  Guid="f9c78069-1a68-40f0-b9cc-907fcacd3346"
->Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
- Guid="6f49276c-a3e2-41fc-9e18-5d1b5d445b04"
->DecelerationCurves.FLOIComparedDistance () &gt; d_FLOI ( Odometry.TrainSpeed(), False )</PreCondition></PreConditions>
+>Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"

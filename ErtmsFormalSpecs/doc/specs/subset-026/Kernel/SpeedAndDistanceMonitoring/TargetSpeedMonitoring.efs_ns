@@ -320,9 +320,9 @@ X2=&gt; Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)
  Guid="fdbf32ad-9c1a-414c-9d9f-a855f9b3ce5f"
 >
 <ReqRef
- Id="d542f99e-9462-4bb6-9087-35da9a233e06"
+ Id="faa860d4-6ec0-42c7-921a-65ae72f044ad"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d69bb437-5b84-4094-b96f-0af903e1a3f7"
+ Guid="9d4c3746-0919-44e4-9a49-c3bc668fcde9"
 >
 </ReqRef><Comment>Provides the SBI distance, calculated from the EBD curve, taken from the most restrictive target amongst the EBD based targets.</Comment>
 <Parameters>
@@ -357,66 +357,6 @@ USING
     BaseTypes.MinDistance ( X1 =&gt; d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ), X2 =&gt; RESULT )
 INITIAL_VALUE
     BaseTypes.Distance.Infinity</Expression>
-</Case></Cases>
-</Function><Function
- Type="Default.BaseTypes.Distance"
- Cacheable="TRUE"
- Default=""
- X="710"
- Y="220"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="d_FLOI"
- Guid="01fe7a01-a860-481f-bb0d-666db0f74def"
->
-<ReqRef
- Id="d542f99e-9462-4bb6-9087-35da9a233e06"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="06f49efe-d784-4884-a95d-f7b60a29b220"
->
-</ReqRef><Comment>Provide the distance d_FLOI.</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Speed"
- Name="Vest"
- Guid="6a5b3f40-6efc-461a-9722-9c6d2b80ea9f"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
- Guid="dba63a35-6404-4a2a-bdf4-3efdc5521726"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="d_SBI1 and d_SBI2_MREBDT unknown"
- Guid="a7e5affa-24bb-421e-b1ef-4795b5e53604"
->
-<PreConditions>
-<PreCondition
- Guid="20e2ac7b-0ae7-4614-a72f-d0d09a41a77e"
->d_SBI1 ( Vest, EstimatedAccelerationSetToZero ) == BaseTypes.Distance.Unknown</PreCondition><PreCondition
- Guid="bc5154cc-8b2b-4252-8016-d2d82cdcf282"
->d_SBI2_MREBDT ( Vest, EstimatedAccelerationSetToZero ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
-<Expression>BaseTypes.Distance.Infinity</Expression>
-</Case><Case
- Name="d_SBI1"
- Guid="b0d4bc0d-d9b2-4653-b671-f954bc79873b"
->
-<PreConditions>
-<PreCondition
- Guid="6a7b1947-677d-4020-8c74-d8e4a1dc4477"
->SBI1BelowSBI2(
-    d_SBI1=&gt; d_SBI1( Vest, EstimatedAccelerationSetToZero ),
-    d_SBI2=&gt; d_SBI2_MREBDT( Vest, EstimatedAccelerationSetToZero )
-)</PreCondition></PreConditions>
-<Expression>d_SBI1 ( Vest, EstimatedAccelerationSetToZero )</Expression>
-</Case><Case
- Name="d_SBI2_MREBDT"
- Guid="50743961-25e5-4e27-8517-242f090e2b32"
->
-<Expression>d_SBI2_MREBDT ( Vest, EstimatedAccelerationSetToZero )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"

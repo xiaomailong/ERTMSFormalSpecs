@@ -2049,53 +2049,6 @@ Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Vsbi2 ( Dmaxsafefrontend
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="d_FLOI"
- Guid="9c562051-6a23-4d64-8376-8b1c3245d360"
->
-<ReqRef
- Id="d542f99e-9462-4bb6-9087-35da9a233e06"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1247894e-6a50-4a44-bf60-152f92300c48"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="8cf04ef4-20bb-437e-8b28-01f994de9455"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step2 - Check d_FLOI"
- Guid="e5406d18-09fa-42e8-9438-89cc19670e09"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="a55bc4ab-2e21-40e9-bb85-e3dd08e4e424"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="04e5db3a-d2f6-4e0d-9c49-7db151342c55"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI ( Vest =&gt; 25.0, EstimatedAccelerationSetToZero =&gt; False ) &gt; 6631.146 AND
-Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI ( Vest =&gt; 25.0, EstimatedAccelerationSetToZero =&gt; False ) &lt; 6631.147</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="d_W"
  Guid="4bec1c2f-527b-493b-885c-11036c3b00de"
 >
