@@ -185,11 +185,12 @@ namespace DataDictionary.Tests.Translations
                     if (reqRef.Paragraph == stepReqRef.Paragraph)
                     {
                         isPresent = true;
+                        break;
                     }
                 }
                 if (!isPresent)
                 {
-                    step.Requirements.Add(reqRef);
+                    step.appendRequirements((ReqRef)reqRef.Duplicate());
                 }
             }
 
