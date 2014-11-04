@@ -315,8 +315,8 @@ IsMaxDistToRunInSR(aTarget)</PreCondition></PreConditions>
  Name="Value"
  Guid="65053d1d-56ea-40c0-958e-a23368d66654"
 >
-<Expression>BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(EstimatedAccelerationSetToZero) / 2.0, X2 =&gt; Vtarget ) ) * T_traction(EstimatedAccelerationSetToZero) +
-BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(EstimatedAccelerationSetToZero), X2 =&gt; Vtarget ) + Vdelta2(EstimatedAccelerationSetToZero) / 2.0 )  * T_berem(EstimatedAccelerationSetToZero)</Expression>
+<Expression>Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(EstimatedAccelerationSetToZero) / 2.0, X2 =&gt; Vtarget ) ) * T_traction(EstimatedAccelerationSetToZero) +
+Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(EstimatedAccelerationSetToZero), X2 =&gt; Vtarget ) + Vdelta2(EstimatedAccelerationSetToZero) / 2.0 )  * T_berem(EstimatedAccelerationSetToZero)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
@@ -363,10 +363,19 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(E
 </ReqRef><Comment>Provides the estimated acceleration to be used during T_traction.</Comment>
 <Cases>
 <Case
- Name="Value"
+ Name="Positive or null value"
  Guid="f959681c-c0e0-4fc4-825d-87d54c4eaf68"
 >
+<PreConditions>
+<PreCondition
+ Guid="3bc033c1-85ec-4e8e-a7d0-20a42883ec13"
+>Odometry.TrainAcceleration() &gt;= 0.0</PreCondition></PreConditions>
 <Expression>Odometry.TrainAcceleration()</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="477270a9-31c0-49dd-9174-fd69f9d2ec02"
+>
+<Expression>0.0</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -937,7 +946,7 @@ BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(E
 <PreConditions>
 <PreCondition
  Guid="47e945e0-0d82-416d-8a82-055c5554df35"
->Mode == Mode.SR</PreCondition></PreConditions>
+>Mode == Default.Mode.SR</PreCondition></PreConditions>
 <Expression>aTarget.Location == NationalValues.ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode
   AND  
 aTarget.Speed == 0.0</Expression>
@@ -946,6 +955,36 @@ aTarget.Speed == 0.0</Expression>
  Guid="a4d5a76f-96ff-4cd5-b4aa-81d1f9d49a7b"
 >
 <Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Default=""
+ Name="Dbe_display"
+ Guid="1e4b3729-497b-4793-93f8-0797a91bf46e"
+>
+<Comment>The distance offset used in the calculation of the SBI curves for display purposes</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vest"
+ Guid="5c4cece7-dc06-4396-9beb-f73d89fc50fe"
+>
+</Parameter><Parameter
+ Type="Boolean"
+ Name="EstimatedAccelerationSetToZero"
+ Guid="545c10aa-66b6-4ea3-9156-3fb7cf0692c3"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="4cc39234-a04a-45a6-bd0f-c005853ac43c"
+>
+<Expression>BaseTypes.SpeedToMS( Vest + Vdelta0() + Vdelta1(EstimatedAccelerationSetToZero)/2.0
+) * T_traction(EstimatedAccelerationSetToZero)
+ + 
+BaseTypes.SpeedToMS( Vest + Vdelta0() + Vdelta1(EstimatedAccelerationSetToZero) + Vdelta2(EstimatedAccelerationSetToZero)/2.0
+) * T_berem(EstimatedAccelerationSetToZero)</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>

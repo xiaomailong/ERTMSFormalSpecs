@@ -239,21 +239,35 @@
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Before EBD(Vtarget)"
- Guid="98ddd973-1247-4b2e-a164-ff0954d53d7e"
+ Name="EBD behind Dmaxsafefrontend"
+ Guid="56d1a168-ba05-42f1-892e-04934c9d544b"
 >
 <PreConditions>
 <PreCondition
- Guid="af655905-681c-467c-8a8c-2b474bb03a43"
->Dmaxsafefrontend + BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs2 + DecelerationCurves.Dbec ( Vest =&gt; Odometry.TrainSpeed(), Vtarget =&gt; Vtarget, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero )
- &lt; 
-DecelerationCurves.EBDForSpeed(Vtarget)</PreCondition></PreConditions>
-<Expression>DecelerationCurves.EBD ( Dmaxsafefrontend + BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs2 + DecelerationCurves.Dbec ( Vest =&gt; Odometry.TrainSpeed(), Vtarget =&gt; Vtarget, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) ) - ( DecelerationCurves.Vbec ( Vest =&gt; Odometry.TrainSpeed(), Vtarget =&gt; Vtarget, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) - Odometry.TrainSpeed() )</Expression>
+ Guid="0d079f8d-23af-45e8-883b-25f7de1f76d3"
+>DecelerationCurves.EBDForSpeed(Vtarget) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)</Expression>
 </Case><Case
  Name="After EBD(Vtarget)"
  Guid="4284e6e0-7eb5-4a62-8c8f-0cbc28530501"
 >
-<Expression>Vtarget</Expression>
+<PreConditions>
+<PreCondition
+ Guid="af655905-681c-467c-8a8c-2b474bb03a43"
+>Dmaxsafefrontend + Default.BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs2 + DecelerationCurves.Dbe_display ( Vest =&gt; Odometry.TrainSpeed(), EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero )
+ &gt; 
+DecelerationCurves.EBDForSpeed(Vtarget)</PreCondition></PreConditions>
+<Expression>Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)</Expression>
+</Case><Case
+ Name="Before EBD(Vtarget)"
+ Guid="98ddd973-1247-4b2e-a164-ff0954d53d7e"
+>
+<Expression>BaseTypes.MaxSpeed(
+X1=&gt; DecelerationCurves.EBD ( Dmaxsafefrontend + BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs2 + DecelerationCurves.Dbe_display ( Vest =&gt; Odometry.TrainSpeed(), EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) ) - (DecelerationCurves.Vdelta0() + DecelerationCurves.Vdelta1(EstimatedAccelerationSetToZero) + DecelerationCurves.Vdelta2(EstimatedAccelerationSetToZero)),
+X2=&gt; Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)
+)
+
+</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -1130,10 +1144,19 @@ d_P(Vest, False) == BaseTypes.Distance.Infinity</PreCondition></PreConditions>
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Value"
+ Name="Supervised target is the EOA"
  Guid="38379bd3-9c98-460e-ae6a-6e0ad0dae502"
 >
-<Expression>d_FLOI ( Vest, EstimatedAccelerationSetToZero ) - BaseTypes.SpeedToMS ( Vest ) * T_warning</Expression>
+<PreConditions>
+<PreCondition
+ Guid="f00aced6-9aec-41aa-ba5c-a1f314c5c26c"
+>MA.IsEOA(MRDT())</PreCondition></PreConditions>
+<Expression>d_SBI1(Vest,EstimatedAccelerationSetToZero) - BaseTypes.SpeedToMS ( Vest ) * T_warning</Expression>
+</Case><Case
+ Name="Supervised target is an EBD based target"
+ Guid="1fdc7a88-028a-4814-b78c-5309fb73739c"
+>
+<Expression>d_SBI2_MREBDT(Vest,EstimatedAccelerationSetToZero) - BaseTypes.SpeedToMS ( Vest ) * T_warning</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
