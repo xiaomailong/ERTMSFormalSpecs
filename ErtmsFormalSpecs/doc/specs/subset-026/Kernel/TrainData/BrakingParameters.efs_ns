@@ -540,6 +540,15 @@
  Name="Ep"
  Guid="7b8f5cd5-9aef-4afb-9194-b47576ed1ff4"
 >
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Time"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="No_Special_Brakes"
+ Guid="575e53a1-7595-45d2-81e0-469a09ef5cab"
+>
 </StructureElement></Structure><Structure
  Default=""
  X="1440"
@@ -2000,6 +2009,21 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
  Guid="f1581cfb-f622-41c9-b709-c5e5c707e92f"
 >EddyCurBrakeUsed == False</PreCondition></PreConditions>
 <Expression>aT_brake_build_upSet.Regenerative_Ep</Expression>
+</Case><Case
+ Name="none"
+ Guid="739428f1-33b4-4775-8a3f-1ff7db53e2e0"
+>
+<PreConditions>
+<PreCondition
+ Guid="d2407cd0-729f-4da2-98c2-f602900b7a34"
+>EddyCurBrakeUsed == False</PreCondition><PreCondition
+ Guid="f10d168d-19e2-4572-b15d-fc7f6452b15b"
+>RegBrakeUsed == False</PreCondition><PreCondition
+ Guid="3e5daded-b22c-48a6-bcac-780063ac18d3"
+>EpBrakeUsed == False</PreCondition><PreCondition
+ Guid="f948f68a-33fe-4fea-bf05-83b1117e0b6b"
+>MagnBrakeUsed == False</PreCondition></PreConditions>
+<Expression>aT_brake_build_upSet.No_Special_Brakes</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Time"
