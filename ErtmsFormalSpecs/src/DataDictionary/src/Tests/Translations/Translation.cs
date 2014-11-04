@@ -179,16 +179,7 @@ namespace DataDictionary.Tests.Translations
 
             foreach (ReqRef reqRef in Requirements)
             {
-                bool isPresent = false;
-                foreach (ReqRef stepReqRef in step.Requirements)
-                {
-                    if (reqRef.Paragraph == stepReqRef.Paragraph)
-                    {
-                        isPresent = true;
-                        break;
-                    }
-                }
-                if (!isPresent)
+                if (!IsRequirementPresent(step, reqRef))
                 {
                     step.appendRequirements((ReqRef)reqRef.Duplicate());
                 }
@@ -198,8 +189,9 @@ namespace DataDictionary.Tests.Translations
             foreach (SubStep subStep in SubSteps)
             {
                 SubStep newSubStep = (SubStep)Generated.acceptor.getFactory().createSubStep();
-                newSubStep.Name = "Sub-step" + subStepCounter;
                 newSubStep.setSkipEngine(subStep.getSkipEngine());
+                newSubStep.Comment = subStep.Comment;
+                newSubStep.Name = subStep.Name;
                 step.appendSubSteps(newSubStep);
 
                 if (previousStep != null && previousStep.getDistance() != step.getDistance() && subStepCounter == 1)
@@ -225,6 +217,28 @@ namespace DataDictionary.Tests.Translations
 
                 subStepCounter++;
             }
+        }
+
+        /// <summary>
+        /// Indicates that the requirement is already present in the step
+        /// </summary>
+        /// <param name="step"></param>
+        /// <param name="reqRef"></param>
+        /// <returns></returns>
+        private bool IsRequirementPresent(Step step, ReqRef reqRef)
+        {
+            bool retVal = false;
+
+            foreach (ReqRef stepReqRef in step.Requirements)
+            {
+                if (reqRef.Paragraph == stepReqRef.Paragraph)
+                {
+                    retVal = true;
+                    break;
+                }
+            }
+
+            return retVal;
         }
 
 
