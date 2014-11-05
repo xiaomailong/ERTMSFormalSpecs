@@ -2463,7 +2463,6 @@ DMI.MasterDMI().In_AcknOfSRMode.InputInformation.DriverAnswered</Expression>
  Y="1260"
  Width="100"
  Height="50"
- Implemented="TRUE"
  Name="Condition37_SB"
  Guid="429d46ed-070b-437d-a553-7516104a68ae"
 >
@@ -2471,11 +2470,6 @@ DMI.MasterDMI().In_AcknOfSRMode.InputInformation.DriverAnswered</Expression>
  Id="105c2ac3-690d-4d9f-805f-76ae298a3ab7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4bddfd58-66b1-4dd5-85d9-ec3f4d84c70f"
->
-</ReqRef><ReqRef
- Id="2812be46-6d39-4894-be55-c728964a7c49"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="48c60ff8-ed7c-4eb7-971d-5a8eb2426c7c"
 >
 </ReqRef><Cases>
 <Case
@@ -3187,52 +3181,6 @@ TIU.NonLeadingPermitted</Expression>
 <Action
  Guid="732da1ab-fa5e-42b6-97bd-ccd958e4ff85"
 >Kernel.TrainPosition.Position.DataState &lt;- DataState.Unknown</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Driver selected Override"
- Guid="73e660b9-f79f-42c2-959a-b1aa2f8e884e"
->
-<ReqRef
- Id="ea9d2d52-6bdb-4a6e-9836-53be43a10271"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e51ea05b-31db-43a5-a193-667ee060ebaf"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="550b9573-3395-4c22-a180-c243c8042fac"
->Condition37_SB()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="0a1836c1-218e-4000-9fb8-cbbcf0eed705"
->DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action><Action
- Guid="2f1888d3-498c-42e6-bce6-a20108245259"
->HandleModeChange &lt;- HandleModeChange.Override</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check position validity"
- Guid="89c9e6f1-3b82-4093-992f-8d03149f3472"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Invalid position"
- Guid="f694dbd5-596a-450d-abab-e0404221cdb6"
->
-<PreConditions>
-<PreCondition
- Guid="0268e2fd-6bf0-4239-8746-54f92664f56a"
->TrainPosition.Position.DataState == DataState.Invalid</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="145d3b3a-2ecc-42c2-9a6a-3141c7304309"
->TrainPosition.Position.DataState &lt;- DataState.Unknown</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

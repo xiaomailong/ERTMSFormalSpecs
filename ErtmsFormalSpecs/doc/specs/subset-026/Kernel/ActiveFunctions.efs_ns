@@ -84,7 +84,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f5df70ff-f7bf-4b28-90c3-5ad46b83f2fa"
 >
-</ReqRef><Comment>Speed and Distance Monitoring based on MRSP, MA, release speed, gradient, mode profile, non protected LX start location, and route unsuitability location</Comment>
+</ReqRef><Comment>Speed and Distance Monitoring based on MRSP, MA, release speed, gradient, mode profile, non protected LX start location, and route unsuitability location.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -1122,7 +1122,7 @@ Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Def
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4acbc235-838c-4a72-a23c-fc77f66d47e0"
 >
-</ReqRef><Comment>Speed and Distance Monitoring based on MRSP</Comment>
+</ReqRef><Comment>Speed and Distance Monitoring based on MRSP.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -1145,7 +1145,7 @@ Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Def
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ee8a50ab-0c7f-4406-906c-a33f5a5281d2"
 >
-</ReqRef><Comment>Speed and Distance Monitoring based on MRSP, allowed distance to run in Staff Resp. mode</Comment>
+</ReqRef><Comment>Speed and Distance Monitoring based on MRSP, allowed distance to run in Staff Resp. mode.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -1168,7 +1168,7 @@ Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Def
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="cfd0c370-3f94-441f-a610-80af733430a4"
 >
-</ReqRef><Comment>Ceiling Speed Monitoring only (no braking curve) based on MRSP</Comment>
+</ReqRef><Comment>Ceiling Speed Monitoring only (no braking curve) based on MRSP.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -1936,6 +1936,44 @@ Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Def
  Guid="ba22f63a-a0d0-4dc0-86cf-cb06f5b01179"
 >
 <Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SuperviseTrainSpeed"
+ Guid="e053ec78-0d08-429c-88c2-aa728cb94be4"
+>
+<ReqRef
+ Id="464dd6eb-f8c7-42fe-b8d9-c416ee775f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f9ab718e-6f15-4e53-8cc0-fd21a85d29e2"
+>
+</ReqRef><ReqRef
+ Id="a918b4eb-359d-45fd-bed4-173ac8763338"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="19eb749d-6c7e-4022-b391-726c5e86b46d"
+>
+</ReqRef><ReqRef
+ Id="4ae5a0a3-fed2-4e03-ad35-c2ff8b81332b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7936521c-cab4-40f0-b2d6-38a507530189"
+>
+</ReqRef><Comment>Indicates if the train speed is supervised.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="5c60ce7e-4e7d-4317-8527-e889bd4f8a1c"
+>
+<Expression>SuperviseTrainSpeed_All_Information()
+  OR
+SuperviseTrainSpeed_CSM()
+  OR
+SuperviseTrainSpeed_MRSP()
+  OR
+SuperviseTrainSpeed_MRSP_DistInSRMode()</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>

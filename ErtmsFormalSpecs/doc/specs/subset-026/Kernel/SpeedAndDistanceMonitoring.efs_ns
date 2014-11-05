@@ -623,7 +623,9 @@ CeilingSpeedMonitoring.SupervisionStatus.r1()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="d984a754-d9a0-4a30-ad3c-10001df8ecf0"
->Condition1()</PreCondition></PreConditions>
+>Condition1()</PreCondition><PreCondition
+ Guid="86039d61-4cbf-4e38-a169-a45ba3aa9912"
+>ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="acffd539-8dfa-4740-9930-3f8c6adee307"
@@ -2066,7 +2068,26 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedM
 <Comment>Returns the list of targets corresponding to a decrease in permitted speed for the train</Comment>
 <Cases>
 <Case
- Name="Value"
+ Name="Supervize MRSP and max dist in SR mode"
+ Guid="c5ea4f4f-f3a0-4e4a-a583-fbee5e633875"
+>
+<PreConditions>
+<PreCondition
+ Guid="70b90267-1f97-420a-98f2-50458a60d168"
+>ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreConditions>
+<Expression>MAP TARGETS
+(
+  Targets1=&gt;MIN
+  (
+    First =&gt; MRSP.SpeedRestrictions,
+    Second =&gt; NationalValues.MaxDistInSRSpeedRestriction
+  ),
+  Targets2=&gt;EMPTY,
+  Targets3=&gt;EMPTY
+) | X.Location &gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)
+  USING X</Expression>
+</Case><Case
+ Name="Otherwise"
  Guid="5bfa34f7-80f1-4c7a-8338-d7b0662d057c"
 >
 <Expression>MAP TARGETS(
@@ -2077,7 +2098,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedM
                   ),
     Targets2=&gt;EMPTY,
     Targets3=&gt;EMPTY
-) | X.Location &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)
+) | X.Location &gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)
   USING X</Expression>
 </Case></Cases>
 </Function><Function
