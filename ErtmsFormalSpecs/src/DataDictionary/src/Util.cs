@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using DataDictionary.Functions;
 using DataDictionary.Specification;
@@ -74,7 +75,131 @@ namespace DataDictionary
                     string guid = element.Guid;
                 }
 
+                IExpressionable expressionable = obj as IExpressionable;
+                if (expressionable != null)
+                {
+                    UpdateExpressionable(expressionable);
+                }
+
                 base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
+            /// Indicates that a character may belong to an identifier
+            /// </summary>
+            /// <param name="c"></param>
+            /// <returns></returns>
+            private bool belongsToIdentifier(char c)
+            {
+                bool retVal = Char.IsLetterOrDigit(c) || c == '.' || c == '_';
+
+                return retVal;
+            }
+
+            /// <summary>
+            /// Indicates that a character is a white space
+            /// </summary>
+            /// <param name="c"></param>
+            /// <returns></returns>
+            private bool isWhiteSpace(char c)
+            {
+                bool retVal = c == ' ' || c == '\t' || c == '\n';
+
+                return retVal;
+            }
+
+            /// <summary>
+            /// Provides the identifier, if any at the position in the expression
+            /// </summary>
+            /// <param name="expression"></param>
+            /// <param name="index"></param>
+            /// <returns></returns>
+            private string Identifier(string expression, int index)
+            {
+                string retVal = "";
+
+                while (index < expression.Length && isWhiteSpace(expression[index]))
+                {
+                    index = index + 1;
+                }
+
+                while (index < expression.Length && belongsToIdentifier(expression[index]))
+                {
+                    retVal = retVal + expression[index];
+                    index = index + 1;
+                }
+
+                return retVal;
+            }
+
+            /// <summary>
+            /// Updates the expressionable, according to the grammar changes
+            /// </summary>
+            /// <param name="expressionable"></param>
+            private void UpdateExpressionable(IExpressionable expressionable)
+            {
+                string expression = expressionable.ExpressionText;
+
+                expression = Replace(expression, "USING",       "USING X IN");
+                expression = Replace(expression, "THERE_IS_IN", "THERE_IS X IN");
+                expression = Replace(expression, "LAST_IN",     "LAST X IN");
+                expression = Replace(expression, "FIRST_IN",    "FIRST X IN");
+                expression = Replace(expression, "FORALL_IN",   "FORALL X IN");
+                expression = Replace(expression, "COUNT",       "COUNT X IN");
+
+                expressionable.ExpressionText = expression;
+            }
+
+            /// <summary>
+            /// Replaces an initial expression from 'expression' by the 'replacementValue'
+            /// if the exclusiong pattern is not found after the 'initial expression'
+            /// </summary>
+            /// <param name="expression"></param>
+            /// <param name="initialExpression"></param>
+            /// <param name="replacementValue"></param>
+            /// <returns></returns>
+            private string Replace(string expression, string initialExpression, string replacementValue)
+            {
+                string retVal = expression;
+
+                int i = 0;
+                while (i >= 0)
+                {
+                    i = retVal.IndexOf(initialExpression, i);
+                    if (i >= 0)
+                    {
+                        if ((i == 0) || (i > 0 && i < retVal.Length - 1 && !belongsToIdentifier(retVal[i - 1]) && !belongsToIdentifier(retVal[i + initialExpression.Length])))
+                        {
+                            bool replace = false;
+                            string identifier = Identifier(retVal, i + initialExpression.Length);
+                            if (string.IsNullOrEmpty(identifier) || identifier == "IN")
+                            {
+                                replace = true;
+                            }
+                            else
+                            {
+                                int j = expression.IndexOf(identifier, i + initialExpression.Length);
+                                string inKeyword = Identifier(retVal, j + identifier.Length);
+                                if (string.IsNullOrEmpty(inKeyword) || inKeyword != "IN")
+                                {
+                                    replace = true;
+                                }
+                            }
+
+                            if (replace)
+                            {
+                                retVal = retVal.Substring(0, i) + replacementValue + retVal.Substring(i + initialExpression.Length);
+                            }
+                            i = i + 1;
+                        }
+                        else
+                        {
+                            i = i + 1;
+                        }
+                    }
+                }
+
+                return retVal;
             }
 
             /// <summary>

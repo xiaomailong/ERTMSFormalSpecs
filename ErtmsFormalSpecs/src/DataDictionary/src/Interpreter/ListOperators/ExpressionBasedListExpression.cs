@@ -30,11 +30,11 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="listExpression"></param>
         /// <param name="condition">the condition to apply to list elements</param>
         /// <param name="iteratorExpression">the expression to be evaluated on each element of the list</param>
-        /// <param name="enclosing">the root element for which this expression should be parsed</param>
+        /// <param name="iteratorVariableName"></param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
-        public ExpressionBasedListExpression(ModelElement root, ModelElement log, Expression listExpression, Expression condition, Expression iteratorExpression, int start, int end)
-            : base(root, log, listExpression, condition, start, end)
+        public ExpressionBasedListExpression(ModelElement root, ModelElement log, Expression listExpression, string iteratorVariableName, Expression condition, Expression iteratorExpression, int start, int end)
+            : base(root, log, listExpression, iteratorVariableName, condition, start, end)
         {
             IteratorExpression = iteratorExpression;
             IteratorExpression.Enclosing = this;
