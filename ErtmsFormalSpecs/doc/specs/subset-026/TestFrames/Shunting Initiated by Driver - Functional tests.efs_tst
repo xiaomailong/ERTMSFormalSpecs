@@ -14,6 +14,112 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
+ Name="A030: Go to Train Trip procedure"
+ Guid="7d32b8dc-74ab-42b8-8056-d6a6fb0d5193"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+ Guid="4c6698ed-862f-4fad-beb4-f47f3ec82c3a"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+ Guid="0a27e2ee-db97-4cff-ae0e-ff13d9007453"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Initialize test environment"
+ Guid="5f123be0-1e4e-431d-8c0f-67450e3b9193"
+>
+<Actions>
+<Action
+ Guid="495d8a9d-cabc-4cec-9a6a-2f518a3f045e"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize communication session"
+ Guid="6b2313ed-3803-44a4-becf-7bded3796f24"
+>
+<Actions>
+<Action
+ Guid="be1e1aac-8a8e-4637-ba2c-7ea9b59a3d4a"
+>Kernel.Level.Value.Value &lt;- Level.L2</Action><Action
+ Guid="f7f3f0a6-51df-4a66-b371-1082ca4b71a3"
+>EURORADIO.CurrentRBCConnection
+().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Connected</Action><Action
+ Guid="48776fac-c775-4e3a-b96b-fa77ccb969ad"
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
+ Guid="94819fe9-df71-4d91-82ce-2596463e7da3"
+>EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Connected</Action><Action
+ Guid="78c99fae-2ed0-4042-8aef-929f8ca98b11"
+>EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.TerminalStruct.RegistrationStateSM.Registered</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="2c9b2c01-9f65-44e4-99d6-64f979ce4165"
+>EURORADIO.HasActiveSession()</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="Go to Train Trip procedure"
+ Guid="c7f32e33-334a-4def-ac00-36e4b9ef627e"
+>
+<ReqRef
+ Id="1e58eff1-39ce-4df0-89c9-6052cd28d07e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="684564aa-1e71-410a-a393-acee1594ef61"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Go to Train Trip procedure"
+ Guid="6176b270-695f-4f07-937e-faa1f81e368e"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="552de38f-e00b-43ef-9879-8773b97ab04c"
+>
+<Actions>
+<Action
+ Guid="a6258a88-0c5e-4e34-be86-9be220ee2e92"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A030</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="7857e866-dc0f-42e7-9a26-105997d47ef7"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
  Name="A045: Request for Shunting message"
  Guid="133a03a4-965b-47b5-afde-a6e8846c1823"
 >
@@ -1113,6 +1219,133 @@
  Kind="Instantaneous"
  Guid="5af40846-10aa-4dd5-8c70-2e36c45c83ee"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.D030</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="D030: branch by National Trip procedure"
+ Guid="edeeed76-a135-4203-a1ec-9e5b7161a40e"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Setup"
+ Guid="1f94b16c-67e6-4246-a087-85c1cdf80137"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+ Guid="b5e1aa88-a482-4f3f-a9ea-053b0a8a6787"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="8f60b2d5-05b7-4df6-a551-346eac3054f5"
+>
+<Actions>
+<Action
+ Guid="8cf2e2a3-8ae1-4f3b-a60a-d4452e898b7a"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="National Trip procedure is on-going"
+ Guid="3ddb4480-8842-41c5-8c8d-80242a619236"
+>
+<ReqRef
+ Id="7df12dee-2836-487c-b425-429f870ed1a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86795fb6-73e3-49ef-89dd-fe926c138bc4"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - National Trip procedure is on-going"
+ Guid="e37ca9ad-c734-4d12-9623-1968d340b320"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="10e01482-f3b8-41a8-9532-831c38d086cb"
+>
+<Actions>
+<Action
+ Guid="4a923956-b754-46bc-b03d-264e09b4a2ae"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D030</Action><Action
+ Guid="6342dc81-73ec-409d-b825-53aab81e01c3"
+>STM.NationalTripProcedureIsOnGoing &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="f1a7eae1-fe59-42cc-99da-00a1322e926d"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A030</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ Name="No National Trip procedure is on-going"
+ Guid="abdba88d-f5ea-4c11-98ee-7ab5a2668d8a"
+>
+<ReqRef
+ Id="2b84288f-8f44-4b3d-bc37-e1534d27fc7a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b4f77df9-760b-4ba5-a632-7a65a860bcd4"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - No National Trip procedure is on-going"
+ Guid="342c32c8-a866-4507-a1cc-dfcc02c1789d"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="6e32abaa-0308-4fab-8207-86f1c5349343"
+>
+<Actions>
+<Action
+ Guid="f7730a3f-8207-4e58-8924-b373ce13c35a"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D030</Action><Action
+ Guid="08f67a9c-d53d-4739-8e29-8d8a6a93a866"
+>STM.NationalTripProcedureIsOnGoing &lt;- False</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="66283d9e-a3bc-4cc8-b18a-868cdcf01714"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A050</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -2495,239 +2728,6 @@
  Kind="Instantaneous"
  Guid="2188a208-a6a5-42e6-8449-8c666e34c1c6"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A115</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="D030: branch by National Trip procedure"
- Guid="edeeed76-a135-4203-a1ec-9e5b7161a40e"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Setup"
- Guid="1f94b16c-67e6-4246-a087-85c1cdf80137"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="b5e1aa88-a482-4f3f-a9ea-053b0a8a6787"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="8f60b2d5-05b7-4df6-a551-346eac3054f5"
->
-<Actions>
-<Action
- Guid="8cf2e2a3-8ae1-4f3b-a60a-d4452e898b7a"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="National Trip procedure is on-going"
- Guid="3ddb4480-8842-41c5-8c8d-80242a619236"
->
-<ReqRef
- Id="7df12dee-2836-487c-b425-429f870ed1a2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="86795fb6-73e3-49ef-89dd-fe926c138bc4"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - National Trip procedure is on-going"
- Guid="e37ca9ad-c734-4d12-9623-1968d340b320"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="10e01482-f3b8-41a8-9532-831c38d086cb"
->
-<Actions>
-<Action
- Guid="4a923956-b754-46bc-b03d-264e09b4a2ae"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D030</Action><Action
- Guid="6342dc81-73ec-409d-b825-53aab81e01c3"
->STM.NationalTripProcedureIsOnGoing &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="f1a7eae1-fe59-42cc-99da-00a1322e926d"
->Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A030</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="No National Trip procedure is on-going"
- Guid="abdba88d-f5ea-4c11-98ee-7ab5a2668d8a"
->
-<ReqRef
- Id="2b84288f-8f44-4b3d-bc37-e1534d27fc7a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b4f77df9-760b-4ba5-a632-7a65a860bcd4"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - No National Trip procedure is on-going"
- Guid="342c32c8-a866-4507-a1cc-dfcc02c1789d"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="6e32abaa-0308-4fab-8207-86f1c5349343"
->
-<Actions>
-<Action
- Guid="f7730a3f-8207-4e58-8924-b373ce13c35a"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.D030</Action><Action
- Guid="08f67a9c-d53d-4739-8e29-8d8a6a93a866"
->STM.NationalTripProcedureIsOnGoing &lt;- False</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="66283d9e-a3bc-4cc8-b18a-868cdcf01714"
->Kernel.HandleModeChange in Kernel.HandleModeChange.ShuntingInitiatedByDriver.A050</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="A030: Go to Train Trip procedure"
- Guid="7d32b8dc-74ab-42b8-8056-d6a6fb0d5193"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Setup"
- Guid="4c6698ed-862f-4fad-beb4-f47f3ec82c3a"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="0a27e2ee-db97-4cff-ae0e-ff13d9007453"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1 - Initialize test environment"
- Guid="5f123be0-1e4e-431d-8c0f-67450e3b9193"
->
-<Actions>
-<Action
- Guid="495d8a9d-cabc-4cec-9a6a-2f518a3f045e"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2 - Initialize communication session"
- Guid="6b2313ed-3803-44a4-becf-7bded3796f24"
->
-<Actions>
-<Action
- Guid="be1e1aac-8a8e-4637-ba2c-7ea9b59a3d4a"
->Kernel.Level.Value.Value &lt;- Level.L2</Action><Action
- Guid="f7f3f0a6-51df-4a66-b371-1082ca4b71a3"
->EURORADIO.CurrentRBCConnection
-().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Connected</Action><Action
- Guid="48776fac-c775-4e3a-b96b-fa77ccb969ad"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
- Guid="94819fe9-df71-4d91-82ce-2596463e7da3"
->EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Connected</Action><Action
- Guid="78c99fae-2ed0-4042-8aef-929f8ca98b11"
->EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.TerminalStruct.RegistrationStateSM.Registered</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="2c9b2c01-9f65-44e4-99d6-64f979ce4165"
->EURORADIO.HasActiveSession()</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- Name="Go to Train Trip procedure"
- Guid="c7f32e33-334a-4def-ac00-36e4b9ef627e"
->
-<ReqRef
- Id="1e58eff1-39ce-4df0-89c9-6052cd28d07e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="684564aa-1e71-410a-a393-acee1594ef61"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Go to Train Trip procedure"
- Guid="6176b270-695f-4f07-937e-faa1f81e368e"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="552de38f-e00b-43ef-9879-8773b97ab04c"
->
-<Actions>
-<Action
- Guid="a6258a88-0c5e-4e34-be86-9be220ee2e92"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A030</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="7857e866-dc0f-42e7-9a26-105997d47ef7"
->Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

@@ -3509,6 +3509,7 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ DeadLine="1"
  Guid="012cc47f-dda1-4bad-b2fa-b0a267742727"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.Override</Expectation><Expectation
  Kind="Instantaneous"
@@ -3545,9 +3546,11 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ DeadLine="1"
  Guid="aa8cf815-8b35-49ff-bb58-21ec6078074e"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.Override</Expectation><Expectation
  Kind="Instantaneous"
+ DeadLine="1"
  Guid="63196aed-57f4-4f48-ae60-90f7811f8ecb"
 >Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -3625,9 +3628,11 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ DeadLine="1"
  Guid="8ce90fbc-a107-41de-bc9f-3bd0e8260f7c"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.Override</Expectation><Expectation
  Kind="Instantaneous"
+ DeadLine="1"
  Guid="566cd922-5dad-4faf-8546-c5b8647414a8"
 >Kernel.TrainPosition.Position.DataState == DataState.Valid</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -9346,7 +9351,9 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="af64cda8-6412-4f5b-9bb6-69c20cc248f8"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action
  Guid="66ad8533-670a-4094-9aa4-065ef39b7776"
->EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
+>EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action><Action
+ Guid="28879867-9951-4be9-b50c-44c78bd137d1"
+>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
