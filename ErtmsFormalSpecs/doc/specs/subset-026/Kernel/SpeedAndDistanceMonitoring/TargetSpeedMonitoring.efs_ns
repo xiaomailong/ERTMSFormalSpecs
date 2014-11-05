@@ -262,8 +262,8 @@ DecelerationCurves.EBDForSpeed(Vtarget)</PreCondition></PreConditions>
  Name="Before EBD(Vtarget)"
  Guid="98ddd973-1247-4b2e-a164-ff0954d53d7e"
 >
-<Expression>BaseTypes.MaxSpeed(
-X1=&gt; DecelerationCurves.EBD ( Dmaxsafefrontend + BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs2 + DecelerationCurves.Dbe_display ( Vest =&gt; Odometry.TrainSpeed(), EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) ) - (DecelerationCurves.Vdelta0() + DecelerationCurves.Vdelta1(EstimatedAccelerationSetToZero) + DecelerationCurves.Vdelta2(EstimatedAccelerationSetToZero)),
+<Expression>Default.BaseTypes.MaxSpeed(
+X1=&gt; DecelerationCurves.EBD ( Dmaxsafefrontend + Default.BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs2 + DecelerationCurves.Dbe_display ( Vest =&gt; Odometry.TrainSpeed(), EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) ) - (DecelerationCurves.Vdelta0() + DecelerationCurves.Vdelta1(EstimatedAccelerationSetToZero) + DecelerationCurves.Vdelta2(EstimatedAccelerationSetToZero)),
 X2=&gt; Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)
 )</Expression>
 </Case></Cases>
@@ -822,11 +822,6 @@ V_P_EBD_Target
  Guid="457a8338-aa65-4170-80a5-cf6b17328492"
 >
 </ReqRef><ReqRef
- Id="c2747f10-3553-4ce9-9fc1-61bbf23b7f0b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="72fe1734-3b14-4095-8a18-2a21d93ae275"
->
-</ReqRef><ReqRef
  Id="faa860d4-6ec0-42c7-921a-65ae72f044ad"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="de210259-fad0-4a65-a00d-855ce3b4c3ed"
@@ -1010,6 +1005,26 @@ d_P(Vest, False) == BaseTypes.Distance.Infinity</PreCondition></PreConditions>
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Target is EOA, SBI1 unknown"
+ Guid="d252b6d9-d7d8-4066-9fe4-35a95c6f25f8"
+>
+<PreConditions>
+<PreCondition
+ Guid="8a9bb99e-e31d-4a5b-b950-a5d567a162f2"
+>d_SBI1(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknown</PreCondition><PreCondition
+ Guid="cf597bcc-a37d-44c6-89af-62f6770a89cb"
+>MA.IsEOA(MRDT())</PreCondition></PreConditions>
+<Expression>BaseTypes.Distance.Infinity</Expression>
+</Case><Case
+ Name="EBD based target, distance unknown"
+ Guid="ed76b401-c261-4369-afc2-9eac91c9d698"
+>
+<PreConditions>
+<PreCondition
+ Guid="4e23c2e8-5e27-4f47-b33a-cda6e1b051fc"
+>d_SBI2_MREBDT(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>BaseTypes.Distance.Infinity</Expression>
+</Case><Case
  Name="GUI inhibited, target is EOA"
  Guid="bc1cd155-ba13-42c9-ad91-23841c16a0d6"
 >

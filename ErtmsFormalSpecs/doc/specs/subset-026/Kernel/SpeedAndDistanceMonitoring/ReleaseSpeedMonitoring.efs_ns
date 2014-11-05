@@ -47,12 +47,25 @@
  Name="Value"
  Guid="9226eef6-02fb-4694-b13c-ddda96d35d5e"
 >
+<PreConditions>
+<PreCondition
+ Guid="cfb74eb7-5b05-4774-b2b9-0f958610469d"
+><Comment>This is the condition for the inequations in 3.13.9.4.8.2 to have a solution, derived from the most permissive cases of these inequations.</Comment>
+aTarget.Speed &lt;= DecelerationCurves.EBD_Target(
+    Distance=&gt;d_tripEOA()+Dbec(aTarget.Speed),
+    aTarget=&gt;aTarget
+) - Vdelta0rsob(aTarget.Speed) + 1.0</PreCondition></PreConditions>
 <Expression>STABILIZE
-    VreleaseFunction ( Vrelease_prev =&gt; PREVIOUS, aTarget =&gt; aTarget )
+    VreleaseFunction ( Vrelease_prev =&gt; (PREVIOUS + VreleaseFunction(PREVIOUS, aTarget))/2.0, aTarget =&gt; aTarget )
 INITIAL_VALUE
     aTarget.Speed
 STOP_CONDITION
     BaseTypes.AbsoluteSpeed ( CURRENT - PREVIOUS ) &lt;= epsilon</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="a8f6ed86-5166-443e-b284-8ce4792d4d49"
+>
+<Expression>aTarget.Speed</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -549,7 +562,14 @@ INITIAL_VALUE
  Name="Value"
  Guid="c5e16647-8fa2-4097-95d2-bf283c6febd5"
 >
-<Expression>REDUCE TargetsList() | (X.Location &gt;= d_tripEOA() AND X.Location &lt;= MA.SvL().Location AND X.Speed &lt;= Vrelease)
+<Comment>We use TARGETS here instead of the function TargetsList() because this calculation only applies to MRSP targets, not the EOA or the SvL.</Comment>
+<Expression>REDUCE TARGETS(
+    Targets1=&gt;MIN(
+        First=&gt;MRSP.SpeedRestrictions,
+        Second=&gt;NationalValues.MaxDistInSRSpeedRestriction),
+    Targets2=&gt;EMPTY,
+    Targets3=&gt;EMPTY
+) | (X.Location &gt;= d_tripEOA() AND X.Location &lt;= MA.SvL().Location AND X.Speed &lt;= Vrelease)
   USING BaseTypes.MinDistance(
           X1 =&gt; TargetSpeedMonitoring.d_SBI2(
                     Vest =&gt; Vrelease,
