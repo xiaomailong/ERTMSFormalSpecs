@@ -1028,6 +1028,12 @@ namespace DataDictionary
                             enumValue.AddError("Duplicate enumeration value");
                             other.AddError("Duplicate enumeration value");
                         }
+
+                        if (enumValue.LiteralName == other.LiteralName)
+                        {
+                            enumValue.AddError("Duplicate enumeration value name");
+                            other.AddError("Duplicate enumeration value name");
+                        }
                     }
                     valuesFound.Add(enumValue);
                 }
@@ -1077,6 +1083,12 @@ namespace DataDictionary
                         {
                             enumValue.AddError("Duplicate special value");
                             other.AddError("Duplicate special value");
+                        }
+
+                        if (enumValue.LiteralName == other.LiteralName)
+                        {
+                            enumValue.AddError("Duplicate special value name");
+                            other.AddError("Duplicate special value name");
                         }
                     }
                     valuesFound.Add(enumValue);
