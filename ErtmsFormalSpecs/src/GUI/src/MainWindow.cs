@@ -564,11 +564,7 @@ namespace GUI
         /// </summary>
         public void UpdateTitle()
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-            string versionNumber = fvi.FileVersion;
-
-            String windowTitle = "ERTMS Formal Spec Workbench (version " + versionNumber + ")";
+            String windowTitle = "ERTMS Formal Spec Workbench";
 
             foreach (DataDictionary.Dictionary dictioanry in EFSSystem.Dictionaries)
             {
@@ -1910,6 +1906,12 @@ namespace GUI
         private void showCommentEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GenericWindowHandling<EditorView.CommentWindow>.AddOrShow(this, CommentEditorWindow, DockAreas.DockBottom);
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutDialogBox aboutDialogBox = new AboutDialogBox();
+            aboutDialogBox.ShowDialog();
         }
     }
 }
