@@ -629,12 +629,33 @@ CeilingSpeedMonitoring.SupervisionStatus.r1()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="acffd539-8dfa-4740-9930-3f8c6adee307"
->DetermineSupervisionStatus(Target)</Action><Action
- Guid="5de6afb7-fad9-40ae-b54b-e37308759455"
->JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
+>DetermineSupervisionStatus(Target)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</StateMachine></State><State
+</StateMachine><LeaveAction>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Leave action"
+ Guid="be891b66-d350-4b19-8d9e-d7c4bccc7fa8"
+>
+<Comment>Indicates to the JRU that the monitoring changed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Leave action"
+ Guid="7baa5fae-1499-4044-8fa2-897c5be15e82"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="71a5fde1-598a-4fbc-adc1-ac8823fd6473"
+>JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></LeaveAction>
+</State><State
  X="560"
  Y="330"
  Width="100"
@@ -1521,12 +1542,33 @@ TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="47aa0936-dd4f-438f-981f-372a69f1a293"
->DetermineSupervisionStatus(Release)</Action><Action
- Guid="7f6e4ac3-b449-424c-9f97-9e8bb1f56a73"
->JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
+>DetermineSupervisionStatus(Release)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</StateMachine></State><State
+</StateMachine><LeaveAction>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Leave action"
+ Guid="5f94ad4a-4721-4108-aab2-27b5758953e8"
+>
+<Comment>Indicates to the JRU that the monitoring changed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Leave action"
+ Guid="c381aa52-44c1-4339-a2e9-e16690e9e08f"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="99cfef32-2db0-4b56-bf19-0e91ceb84880"
+>JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></LeaveAction>
+</State><State
  X="560"
  Y="70"
  Width="100"
@@ -1635,7 +1677,30 @@ TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
-</StateMachine></State><State
+</StateMachine><LeaveAction>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Leave action"
+ Guid="91880f7e-475c-4cfc-bb01-f24f66ae0fb7"
+>
+<Comment>Indicates to the JRU that the monitoring changed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Leave action"
+ Guid="8715927c-480d-4a7e-be83-e4669b9d13b8"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="c33a8f0b-d6b4-468c-a30e-601b26499fae"
+>JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></LeaveAction>
+</State><State
  X="70"
  Y="70"
  Width="100"
@@ -1689,7 +1754,30 @@ TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
 >SelectMonitoringType()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</StateMachine></State></States>
+</StateMachine><LeaveAction>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Leave action"
+ Guid="6ca89d14-fa3d-45c8-8759-a3a6068101ec"
+>
+<Comment>Indicates to the JRU that the monitoring changed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Leave action"
+ Guid="ca431c11-db0d-4153-bff3-01d864a4e922"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="82058584-29de-45da-b2ee-c7b67ac12c96"
+>JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></LeaveAction>
+</State></States>
 <Rules>
 <Rule
  Priority="Processing"
@@ -2318,9 +2406,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
 <Actions>
 <Action
  Guid="9fa14273-a356-4624-b65d-d653232c55c9"
->DetermineSupervisionStatus(MonitoringTypeSM.Release)</Action><Action
- Guid="bcaf9d41-78d4-4ca2-aa31-aa323b2ff4bc"
->JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
+>DetermineSupervisionStatus(MonitoringTypeSM.Release)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Target speed monitoring"
@@ -2338,9 +2424,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
 <Actions>
 <Action
  Guid="5958ef9e-9907-4aa3-a87a-6fde142da01b"
->DetermineSupervisionStatus(MonitoringTypeSM.Target)</Action><Action
- Guid="0e28281d-fafb-49e7-afdf-faad241eeea6"
->JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
+>DetermineSupervisionStatus(MonitoringTypeSM.Target)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Ceiling speed monitoring"
@@ -2356,9 +2440,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
 <Actions>
 <Action
  Guid="deecb83d-3be9-418a-ab8d-8ac5f524776f"
->DetermineSupervisionStatus(MonitoringTypeSM.Ceiling)</Action><Action
- Guid="01b33342-99cc-4d02-a036-2aa5a1aa6f33"
->JRU.JRU1.SpeedAndDistanceSupervisionTypeChanged &lt;- True</Action></Actions>
+>DetermineSupervisionStatus(MonitoringTypeSM.Ceiling)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
