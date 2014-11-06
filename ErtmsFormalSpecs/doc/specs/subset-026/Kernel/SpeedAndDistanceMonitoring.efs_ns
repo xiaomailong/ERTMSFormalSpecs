@@ -2168,7 +2168,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedM
 <Comment>Returns the list of targets corresponding to a decrease in permitted speed for the train</Comment>
 <Cases>
 <Case
- Name="Supervize MRSP and max dist in SR mode"
+ Name="Supervise MRSP and max dist in SR mode"
  Guid="c5ea4f4f-f3a0-4e4a-a583-fbee5e633875"
 >
 <PreConditions>
@@ -2312,7 +2312,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="FLOISpeed"
+ Name="SBISpeed"
  Guid="beeb4057-0fc3-4386-a02a-0a1658883998"
 >
 <ReqRef
@@ -2351,7 +2351,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
 <PreCondition
  Guid="1eda699e-a4d2-4106-8a9a-daf5761de88c"
 >Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
-<Expression>TargetSpeedMonitoring.V_FLOI_DMI()</Expression>
+<Expression>TargetSpeedMonitoring.V_SBI_DMI()</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

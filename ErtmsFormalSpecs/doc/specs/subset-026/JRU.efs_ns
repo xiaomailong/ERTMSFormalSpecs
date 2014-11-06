@@ -1139,7 +1139,7 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
 <Actions>
 <Action
  Guid="9bc80e3a-1a1a-429f-98aa-42c1d4d761ce"
->PreviousVFloiValue &lt;- Kernel.SpeedAndDistanceMonitoring.FLOISpeed(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
+>PreviousVFloiValue &lt;- Kernel.SpeedAndDistanceMonitoring.SBISpeed(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -4622,7 +4622,7 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
     M_SDMTYPE =&gt; TypeConvertors.ToJRUSpeedAndDistanceMonitoringType(),
     M_SDMSUPSTAT =&gt; TypeConvertors.ToJRUSpeedAndDistanceMonitoringsupervisionStatus(),
     V_PERM =&gt; Default.MessageTypes.UnResolveSpeed(DMI.MasterDMI().Out_PermittedSpeed.Speed, 5.0),
-    V_FLOI =&gt; Default.MessageTypes.UnResolveSpeed(Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_FLOI_DMI(), 5.0),
+    V_FLOI =&gt; Default.MessageTypes.UnResolveSpeed(Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_SBI_DMI(), 5.0),
     V_TARGET =&gt; Default.MessageTypes.UnResolveSpeed( DMI.MasterDMI().Out_TargetSpeed.Speed, 5.0),
     D_TARGET =&gt; TypeConvertors.ToMessagesDistance
     (
@@ -4694,7 +4694,7 @@ jru.PreviousSpeedAndDistanceSupervisionStatus != Kernel.SpeedAndDistanceMonitori
  Guid="13358226-042e-4eb7-a8e9-c752639ee537"
 >Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling]
   AND
-jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.FLOISpeed(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
+jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.SBISpeed(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Target speed changed"

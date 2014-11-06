@@ -2173,6 +2173,39 @@ Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreCond
 >
 <Expression>True</Expression>
 </Case></Cases>
+</Function><Function
+ Type="BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SvLSpeedRestriction"
+ Guid="c09b13a8-c006-4b38-9a2d-79bba2d6cf2b"
+>
+<Comment>Provides a speed restriction based on the SvL</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="Distance"
+ Guid="4c792cc1-644f-4b5e-8e8d-29956e2100c7"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="After SvL"
+ Guid="cb600d40-75cb-4d27-b606-668e047c32b3"
+>
+<PreConditions>
+<PreCondition
+ Guid="daa2477a-ebf3-4dee-84db-6c860705b267"
+>Distance &gt;= SvL().Location</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Before SvL"
+ Guid="68888f36-e2f9-4b64-802f-0722fcc4b5d1"
+>
+<Expression>BaseTypes.Speed.MaxSpeed</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
