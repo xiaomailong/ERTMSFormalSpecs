@@ -3392,7 +3392,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 <Expression>(
     REDUCE
         TrackDescription.AdhesionFactors.AdhFactors
-    USING
+    USING X IN
         Override
         (
             Default =&gt; RESULT,
@@ -3585,7 +3585,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 <Expression>(
     REDUCE
         TrackDescription.TrackConditions.General.TCProfile
-    USING
+    USING X IN
         Override
         (
             Default =&gt; RESULT,
@@ -3810,7 +3810,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 <Expression>(
     REDUCE
         TrackDescription.TrackConditions.General.TCProfile
-    USING
+    USING X IN
         Override
         (
             Default =&gt; RESULT,
@@ -4179,7 +4179,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 <Expression>(
     REDUCE
         TrackDescription.TrackConditions.General.TCProfile
-    USING
+    USING X IN
         Override
         (
             Default =&gt; RESULT,

@@ -268,7 +268,7 @@
  Guid="0aaa7939-0011-43dc-9333-93f25d3eead6"
 >
 <Expression>(REDUCE LevelCrossings 
-    USING  
+    USING X IN  
         MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; LXSpeedRestriction(aLX =&gt; X, Distance =&gt; d), 
                   Second =&gt; RESULT )
 INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
@@ -557,7 +557,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <PreConditions>
 <PreCondition
  Guid="345298f5-7a48-4c2a-b922-299a7609c275"
->NOT (THERE_IS_IN LevelCrossings | (X.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected) AND (X.StoppingRequired == Messages.Q_STOPLX.No_stop_required))</PreCondition></PreConditions>
+>NOT (THERE_IS X IN LevelCrossings | (X.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected) AND (X.StoppingRequired == Messages.Q_STOPLX.No_stop_required))</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case><Case
  Name="Value"
@@ -565,7 +565,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >
 <Expression>REDUCE LevelCrossings | (X.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected) AND (X.StoppingRequired == Messages.Q_STOPLX.No_stop_required)
 
-USING ClosestLX(LX1=&gt;X, LX2=&gt;RESULT)
+USING X IN ClosestLX(LX1=&gt;X, LX2=&gt;RESULT)
 
 INITIAL_VALUE Kernel.LX.LevelCrossing{Location =&gt; Default.BaseTypes.Distance.Infinity}</Expression>
 </Case></Cases>
@@ -663,11 +663,11 @@ INITIAL_VALUE Kernel.LX.LevelCrossing{Location =&gt; Default.BaseTypes.Distance.
 <PreConditions>
 <PreCondition
  Guid="c45454d0-a5f2-4a6d-ad2e-bfc59ec32279"
->THERE_IS_IN LevelCrossings | X.Id == Packet.NID_LX</PreCondition></PreConditions>
+>THERE_IS X IN LevelCrossings | X.Id == Packet.NID_LX</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c3074af9-ea7f-46b8-a94a-efca00745de7"
->LevelCrossings &lt;- MAP LevelCrossings USING CreateLevelCrossing(aLevelCrossing=&gt;X, Packet=&gt;Packet, NID_BG=&gt;NID_BG)</Action></Actions>
+>LevelCrossings &lt;- MAP LevelCrossings USING X IN CreateLevelCrossing(aLevelCrossing=&gt;X, Packet=&gt;Packet, NID_BG=&gt;NID_BG)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="NewLevelCrossing"

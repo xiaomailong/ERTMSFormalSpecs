@@ -645,9 +645,9 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
 <PreConditions>
 <PreCondition
  Guid="52fe1d2c-2078-4728-828e-aae8e72d359f"
->THERE_IS_IN TCProfile | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
+>THERE_IS X IN TCProfile | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
 <Expression>REDUCE TCProfile| (X.Distance == ProfileStartLocation(Distance=&gt;Distance) )
-    USING X.Value
+    USING X IN X.Value
   INITIAL_VALUE TrackCondition
 {
     NonStoppingArea =&gt; False,
@@ -696,7 +696,7 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
 >
 <Comment>Returns the element in TCProfile with the largest distance that is less than or equal to the parameter</Comment>
 <Expression>REDUCE TCProfile| (X.Distance &lt;= Distance)
-    USING Default.BaseTypes.MaxDistance(
+    USING X IN Default.BaseTypes.MaxDistance(
         X1=&gt;X.Distance,
         X2=&gt;RESULT)
   INITIAL_VALUE 0.0</Expression>
@@ -741,7 +741,7 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
  Guid="a1f5b781-33c7-4df7-bebc-eee2ce7afa09"
 >Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</PreCondition></PreConditions>
 <Expression>REDUCE Packet.Sequence1
-  USING Default.BaseTypes.MinDistance(
+  USING X IN Default.BaseTypes.MinDistance(
     X1=&gt; Default.MessageTypes.QScaleDistance(distance=&gt;X.D_TRACKCOND, scale=&gt;Packet.Q_SCALE),
     X2=&gt;RESULT
 )
@@ -1092,7 +1092,7 @@ If there is already at a point at the end location, the values will not be chang
 <PreConditions>
 <PreCondition
  Guid="5c2fd295-1fa0-4273-8634-53b3ce87e09e"
->NOT (THERE_IS_IN TCProfile| X.Distance == EndSectionDistance(
+>NOT (THERE_IS X IN TCProfile| X.Distance == EndSectionDistance(
     TCType=&gt;TCType,
     Distance=&gt;Distance,
     Length=&gt;Length
@@ -1133,7 +1133,7 @@ If there is already a point at the start of the section, its conditions will be 
 <PreConditions>
 <PreCondition
  Guid="e75ca188-658d-4763-a32d-985d6154454c"
->NOT (THERE_IS_IN TCProfile| X.Distance == Distance)</PreCondition></PreConditions>
+>NOT (THERE_IS X IN TCProfile| X.Distance == Distance)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="be8dab85-6e95-4b9e-b7b4-0a9c8968a606"
@@ -1164,7 +1164,7 @@ IN
 <Actions>
 <Action
  Guid="0c73a213-20bf-4acb-9a85-b05e04dcdd19"
->TCProfile&lt;- MAP TCProfile USING UpdatedTCProfile(
+>TCProfile&lt;- MAP TCProfile USING X IN UpdatedTCProfile(
     Profile=&gt;X,
     Distance=&gt;Distance,
     Length=&gt;Length,

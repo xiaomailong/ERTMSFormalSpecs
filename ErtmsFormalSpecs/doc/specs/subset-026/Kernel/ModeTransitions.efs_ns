@@ -347,9 +347,9 @@ MA.ModeProfile.CurrentMode() == Mode.ModeProfile.OS
   AND
 NOT
   (
-    ( FIRST_IN MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS ) == EMPTY
+    ( FIRST X IN MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS ) == EMPTY
       OR
-    MA.ModeProfile.AcknAreaReached ( FIRST_IN MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS )
+    MA.ModeProfile.AcknAreaReached ( FIRST X IN MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS )
   )</Expression>
 </Case></Cases>
 </Function><Function
@@ -1361,7 +1361,7 @@ Kernel.Shunting.StopShuntingOnDeskOpening</Expression>
  Name="Value"
  Guid="eb07c999-d231-4dc5-b70f-9699310621f7"
 >
-<Expression>THERE_IS_IN EmergencyStops | (
+<Expression>THERE_IS X IN EmergencyStops | (
     NOT(X.IsConditional) 
 AND 
     X.Reason == Kernel.BrakeReason.OrderFromRBC
@@ -2032,7 +2032,7 @@ BTM.CurrentBaliseGroup != []
 
   AND  
 
-( (FIRST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == (FIRST_IN BTM.CurrentBaliseGroup).NID_BG )
+( (FIRST X IN BTM.Linking.Linkings).BaliseGroupIdentifier == (FIRST X IN BTM.CurrentBaliseGroup).NID_BG )
 
   AND  
 
@@ -2194,9 +2194,9 @@ MA.ModeProfile.CurrentMode() == Mode.ModeProfile.LS
   AND
 NOT
   (
-    ( FIRST_IN MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.OS ) == EMPTY
+    ( FIRST X IN MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.OS ) == EMPTY
       OR
-    MA.ModeProfile.AcknAreaReached ( FIRST_IN MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.OS )
+    MA.ModeProfile.AcknAreaReached ( FIRST X IN MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.OS )
   )</Expression>
 </Case></Cases>
 </Function><Function

@@ -141,7 +141,7 @@
 >TargetsList() != []</PreCondition></PreConditions>
 <Expression>(REDUCE
     TargetsList()
- USING  
+ USING X IN  
     MIN ( First =&gt; FUNCTION d : BaseTypes.Distance =&gt; TargetSpeedRestriction( aTarget =&gt; X, Distance =&gt; d ), 
           Second =&gt; RESULT )
 INITIAL_VALUE Default.BaseTypes.MaxSpeedFunction) (Distance)</Expression>

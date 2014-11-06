@@ -438,7 +438,7 @@ X2 =&gt; ComputeStartRSM_otherTargets(Vrelease)
         StartRSM ( ComputeReleaseSpeed () ) &lt;= X.Location AND X.Location &lt;= d_tripEOA() OR
         StartRSM ( ComputeReleaseSpeed () ) &lt;= X.Location + BaseTypes.LengthToDistance ( X.Length ) AND X.Location + BaseTypes.LengthToDistance ( X.Length ) &lt;= ReleaseSpeedMonitoring.d_tripEOA() OR
         X.Location &lt;= StartRSM ( ComputeReleaseSpeed () ) AND d_tripEOA() &lt;= X.Location + BaseTypes.LengthToDistance ( X.Length )
-USING
+USING X IN
     BaseTypes.MinSpeed ( X1 =&gt; X.Speed, X2 =&gt; RESULT )
 INITIAL_VALUE
     ComputeReleaseSpeed ()</Expression>
@@ -492,7 +492,7 @@ INITIAL_VALUE
 <Expression>REDUCE
     TargetsList() |
         d_tripEOA() &lt;= X.Location AND X.Location &lt; MA.SvL().Location
-USING
+USING X IN
     BaseTypes.MinSpeed ( X1 =&gt; ComputeReleaseSpeedForTarget ( X ), X2 =&gt; RESULT )
 INITIAL_VALUE
     Default.BaseTypes.Speed.Infinity</Expression>
@@ -570,7 +570,7 @@ INITIAL_VALUE
     Targets2=&gt;EMPTY,
     Targets3=&gt;EMPTY
 ) | (X.Location &gt;= d_tripEOA() AND X.Location &lt;= MA.SvL().Location AND X.Speed &lt;= Vrelease)
-  USING BaseTypes.MinDistance(
+  USING X IN BaseTypes.MinDistance(
           X1 =&gt; TargetSpeedMonitoring.d_SBI2(
                     Vest =&gt; Vrelease,
                     aTarget =&gt; X,

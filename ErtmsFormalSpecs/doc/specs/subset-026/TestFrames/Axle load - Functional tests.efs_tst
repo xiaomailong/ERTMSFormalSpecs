@@ -602,22 +602,22 @@ IN BTM.Linking.Linkings</Action><Action
 <Expectation
  Kind="Instantaneous"
  Guid="4f872846-7a67-4c8e-86a1-acc111d61b6c"
->Kernel.TrackDescription.AxleLoad.AxleLoadLength(FIRST_IN Kernel.TrackDescription.AxleLoad.ASP.ALs) == 160.0</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.AxleLoadLength(FIRST X IN Kernel.TrackDescription.AxleLoad.ASP.ALs) == 160.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="5ff95b56-63fe-4c56-9b3d-ab3d3ed9d025"
->Kernel.TrackDescription.AxleLoad.AxleLoadLength(LAST_IN Kernel.TrackDescription.AxleLoad.ASP.ALs) == 40.0</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.AxleLoadLength(LAST X IN Kernel.TrackDescription.AxleLoad.ASP.ALs) == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="40cd70ef-70d1-4b13-8f07-2c8003b98fb6"
->(FIRST_IN Kernel.TrackDescription.AxleLoad.ASP.ALs).Distance == 700.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.AxleLoad.ASP.ALs).Distance == 700.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="246dc47b-abf6-440e-8dd3-808ccd3974ef"
->(LAST_IN Kernel.TrackDescription.AxleLoad.ASP.ALs).Distance == 1700.0</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.AxleLoad.ASP.ALs).Distance == 1700.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="3bd00c2a-3f37-4ac9-b0c6-78ef39f5f83a"
->(FIRST_IN Kernel.TrackDescription.AxleLoad.ASP.ALs).Length == 40.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.AxleLoad.ASP.ALs).Length == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="4d4dd977-8e26-40f3-8bc2-415351bbf9e1"
->(FIRST_IN Kernel.TrackDescription.AxleLoad.ASP.ALs).TrainLengthDelay == Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.AxleLoad.ASP.ALs).TrainLengthDelay == Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element</Expectation><Expectation
  Kind="Instantaneous"
  Guid="53eadf7d-5537-4028-93f7-84cc544a5ae8"
 >Kernel.TrackDescription.AxleLoad.ASP.InitialState == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</Expectation><Expectation
@@ -839,7 +839,7 @@ IN BTM.Linking.Linkings</Action><Action
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 720.0 ) == 60.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="1ee13a2d-88ad-4bd9-ae11-ecfa274fe4ab"
->(FIRST_IN Kernel.TrackDescription.AxleLoad.ASP.ALs).Distance == 600.0</Expectation></Expectations>
+>(FIRST X IN Kernel.TrackDescription.AxleLoad.ASP.ALs).Distance == 600.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase

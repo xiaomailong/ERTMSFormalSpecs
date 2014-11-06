@@ -602,7 +602,7 @@
 <Expression>(
     REDUCE
         TrackDescription.AdhesionFactors.AdhFactors
-    USING
+    USING X IN
         Override
         (
             Default =&gt; RESULT,
@@ -996,7 +996,7 @@
  Guid="69bc209e-cb21-49a8-bd09-ea237265fca4"
 >
 <Expression>(REDUCE SpeedRestrictionsProfile.SpeedRestrictions 
-    USING  
+    USING X IN  
         MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; PBDSpeedRestriction ( aSRPB =&gt; X, Distance =&gt; d ), 
                   Second =&gt; RESULT )
 INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>

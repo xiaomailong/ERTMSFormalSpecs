@@ -844,15 +844,15 @@ Kernel.TrainPosition.FrontEndPosition(
  Kind="Instantaneous"
  DeadLine="1"
  Guid="8ed469b0-5b5e-4ff6-a137-57ca069159ea"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == 200.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Length == 200.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="a999aee5-abd2-4bff-9f63-4098e0f263de"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance == 50.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Distance == 50.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5a1d6e40-a375-468f-a52b-80e05bc93205"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation></Expectations>
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1007,15 +1007,15 @@ Kernel.TrainPosition.FrontEndPosition(
  Kind="Instantaneous"
  DeadLine="1"
  Guid="42c6a155-080c-454a-95e3-73c6b4f767b9"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == 200.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Length == 200.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="6c939f76-b9fc-4a76-90a5-5dbf1290319c"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance == 50.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Distance == 50.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="d12eb96d-7078-45e1-8757-0af5ccbbc3ed"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.LS</Expectation></Expectations>
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.LS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1241,11 +1241,11 @@ Kernel.TrainPosition.FrontEndPosition(
  Kind="Instantaneous"
  DeadLine="1"
  Guid="c43eca27-8d50-4ed2-8876-56567fbe8260"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == BaseTypes.Length.NA</Expectation><Expectation
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Length == BaseTypes.Length.NA</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="6f67534b-0b35-4531-92ef-8dbb48dbae0d"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance ==  50.0</Expectation></Expectations>
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Distance ==  50.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1394,15 +1394,15 @@ IN Kernel.MA.ModeProfile.Profile</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ebb215bb-a5b4-4a05-b096-77d1d822bf74"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == 1000.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Length == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ddc67563-7978-4e39-8f5d-f038cdfce56f"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation><Expectation
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="48ef5462-ea55-4b9e-bce1-4f7a1abc2e40"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance == 100.0</Expectation></Expectations>
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Distance == 100.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1549,27 +1549,27 @@ IN Kernel.MA.ModeProfile.Profile</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b7b3447b-3865-47f3-91ba-7ce184685692"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Length == 600.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Length == 600.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ab7d3d03-22f3-45c0-af32-333aaf15829f"
->(FIRST_IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS).Length == 500.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS).Length == 500.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="13d64d40-7650-4476-ae34-50b9afeb31aa"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation><Expectation
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="8d04aa7f-97fe-43a8-94a9-afb4cfd05271"
->THERE_IS_IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS</Expectation><Expectation
+>THERE_IS X IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ef460206-db53-4646-a4ef-216ae970ca2b"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Distance == 100.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Distance == 100.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="91e0099c-03bd-4c7c-89f8-6f80016345f0"
->(FIRST_IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS).Distance == 750.0</Expectation></Expectations>
+>(FIRST X IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS).Distance == 750.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1747,7 +1747,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="525b1579-9f54-4c80-bd8b-4fbc12da6f9d"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.SH</Expectation></Expectations>
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.SH</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1972,7 +1972,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f94e98b3-78ef-4118-a010-935645ba69a6"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.SH</Expectation></Expectations>
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.SH</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2087,7 +2087,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="96f71285-245f-42e7-be71-8084d5efc18f"
->(FIRST_IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation></Expectations>
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Mode == Mode.ModeProfile.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

@@ -253,7 +253,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Name="Mode profile available"
  Guid="b3d11290-015c-4b99-9601-fe80c8d7ebc7"
 >
-<Expression>DistanceIsWithinAModeProfile ( FIRST_IN Profile )</Expression>
+<Expression>DistanceIsWithinAModeProfile ( FIRST X IN Profile )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.Mode.ModeProfile"
@@ -277,7 +277,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Name="Value"
  Guid="951cc127-221a-4c9f-8e74-8a45b13fdf27"
 >
-<Expression>( FIRST_IN Profile ).Mode</Expression>
+<Expression>( FIRST X IN Profile ).Mode</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -604,7 +604,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Name="Value"
  Guid="81ce4b17-e0fc-4fcf-b185-424a867a20b1"
 >
-<Expression>FIRST_IN Profile | NOT DistanceIsWithinAModeProfile ( X ) AND (X.Mode != Mode)</Expression>
+<Expression>FIRST X IN Profile | NOT DistanceIsWithinAModeProfile ( X ) AND (X.Mode != Mode)</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -1045,7 +1045,7 @@ IN
 <Actions>
 <Action
  Guid="ca7c34df-e127-4393-a18b-a4fac6c5288e"
->ModeProfile.Profile &lt;- MAP ModeProfile.Profile USING ModeProfile.ProfileForInfill ( aProfile =&gt; X, InfillDistance =&gt; BTM.Linking.DistanceToBaliseGroup ( InfillPacket.NID_BG ) )</Action></Actions>
+>ModeProfile.Profile &lt;- MAP ModeProfile.Profile USING X IN ModeProfile.ProfileForInfill ( aProfile =&gt; X, InfillDistance =&gt; BTM.Linking.DistanceToBaliseGroup ( InfillPacket.NID_BG ) )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No infill available"
@@ -1294,9 +1294,9 @@ IN
  Guid="6d1c7801-3e7d-452d-9a52-40bebe0ec5fd"
 >Mode not in [Mode.OS, Mode.SB, Mode.PT]</PreCondition><PreCondition
  Guid="42784a5a-1cae-4c0b-811f-443315954aca"
->( FIRST_IN Profile | X.Mode == Mode.OS ) != EMPTY</PreCondition><PreCondition
+>( FIRST X IN Profile | X.Mode == Mode.OS ) != EMPTY</PreCondition><PreCondition
  Guid="5047ee70-4096-4857-a378-73f6b22a865d"
->AcknAreaReached ( FIRST_IN Profile | X.Mode == Mode.OS )</PreCondition><PreCondition
+>AcknAreaReached ( FIRST X IN Profile | X.Mode == Mode.OS )</PreCondition><PreCondition
  Guid="66b2c6ba-7c31-4c87-9718-93a1cb7db83d"
 >ModeRelatedSpeedLimits.OSModeSpeedLimit() &gt; Odometry.TrainSpeed()</PreCondition><PreCondition
  Guid="9c07352e-7368-4267-b097-8f8ae8201d4d"
@@ -1355,9 +1355,9 @@ IN
  Guid="5600aaf9-7d5c-4a4b-b01c-dcbf24977c52"
 >Mode not in [Mode.LS, Mode.SB, Mode.PT]</PreCondition><PreCondition
  Guid="eb47dd1f-303f-4d40-9087-cb226e89eea5"
->( FIRST_IN Profile | X.Mode == Mode.LS ) != EMPTY</PreCondition><PreCondition
+>( FIRST X IN Profile | X.Mode == Mode.LS ) != EMPTY</PreCondition><PreCondition
  Guid="04fb07e1-e2e4-434a-a085-60940cd1d683"
->AcknAreaReached ( FIRST_IN Profile | X.Mode == Mode.LS )</PreCondition><PreCondition
+>AcknAreaReached ( FIRST X IN Profile | X.Mode == Mode.LS )</PreCondition><PreCondition
  Guid="961a9514-325f-4dd3-8288-f7f5c316bf3b"
 >ModeRelatedSpeedLimits.LSModeSpeedLimit() &gt; Odometry.TrainSpeed()</PreCondition><PreCondition
  Guid="3da0d65b-0e2b-4020-8afd-97fbbee5539f"
@@ -1401,9 +1401,9 @@ IN
  Guid="a6b8a37e-3e25-40ae-ba2c-da28116ece59"
 >Mode not in [Mode.SB, Mode.PT]</PreCondition><PreCondition
  Guid="55cf8108-eb50-4bee-ad58-f34d699f55d3"
->( FIRST_IN Profile | X.Mode == Mode.SH ) != EMPTY</PreCondition><PreCondition
+>( FIRST X IN Profile | X.Mode == Mode.SH ) != EMPTY</PreCondition><PreCondition
  Guid="3e3576fb-239d-486e-8039-2fb033696845"
->AcknAreaReached ( FIRST_IN Profile | X.Mode == Mode.SH )</PreCondition><PreCondition
+>AcknAreaReached ( FIRST X IN Profile | X.Mode == Mode.SH )</PreCondition><PreCondition
  Guid="b7041bbe-293e-4a65-9f11-1f7ea8cd24b3"
 >ModeRelatedSpeedLimits.SHModeSpeedLimit() &gt; Odometry.TrainSpeed()</PreCondition><PreCondition
  Guid="778ffeec-9d0d-4cc8-9cdb-a9b312b12afe"
@@ -1598,9 +1598,9 @@ IN
  Guid="863fe0fb-623d-4d72-bdc1-9bfb5700e462"
 >TIU.EmergencyBrakeCommanded</PreCondition><PreCondition
  Guid="9a079a5e-29df-49b0-8e55-e5b5e245f253"
->THERE_IS_IN EmergencyStops | X.Reason == BrakeReason.DriverAckTimeOut</PreCondition><PreCondition
+>THERE_IS X IN EmergencyStops | X.Reason == BrakeReason.DriverAckTimeOut</PreCondition><PreCondition
  Guid="3e004f42-4d6d-41f5-8591-0ea27887b80a"
->( COUNT EmergencyStops ) == 1</PreCondition></PreConditions>
+>( COUNT X IN EmergencyStops ) == 1</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7ff5c6ed-5396-43e8-ad76-c44fa6cee5bd"

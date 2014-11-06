@@ -221,28 +221,28 @@ IN BTM.Linking.Linkings</Action></Actions>
 >Kernel.TrackDescription.AdhesionFactors.AdhFactors != []</Expectation><Expectation
  Kind="Instantaneous"
  Guid="74eb1a2f-5502-4b82-b67f-d2ba93df16fa"
->(FIRST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Distance == 1000.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Distance == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="c7bbf38b-0e5c-4ed7-a07b-521005bc519d"
->(FIRST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Length == 500.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Length == 500.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="37f6c845-b336-44b8-86d6-7120ac7ce6f8"
->(FIRST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Value == Messages.M_ADHESION.Slippery_rail</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Value == Messages.M_ADHESION.Slippery_rail</Expectation><Expectation
  Kind="Instantaneous"
  Guid="e79c4c49-9982-44a2-9a74-72b71adc7ce3"
->(LAST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Distance == 6000.0</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Distance == 6000.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="6cf51c71-1505-41f9-8867-15a11b505ba4"
->(LAST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Length == 400.0</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Length == 400.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="3df654b5-0fef-4aa2-8710-28d6f5982a71"
->(LAST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Value == Messages.M_ADHESION.Slippery_rail</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Value == Messages.M_ADHESION.Slippery_rail</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2ef33510-0fba-4515-b61c-a82f1ce6cb05"
->Kernel.TrackDescription.AdhesionFactors.AdhFactorLength ( FIRST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors ) == 620.0</Expectation><Expectation
+>Kernel.TrackDescription.AdhesionFactors.AdhFactorLength ( FIRST X IN Kernel.TrackDescription.AdhesionFactors.AdhFactors ) == 620.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="ae8b1ff9-c58c-4de7-8212-a5471f80938a"
->Kernel.TrackDescription.AdhesionFactors.AdhFactorLength ( LAST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors ) == 520.0</Expectation></Expectations>
+>Kernel.TrackDescription.AdhesionFactors.AdhFactorLength ( LAST X IN Kernel.TrackDescription.AdhesionFactors.AdhFactors ) == 520.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -379,22 +379,22 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Expectation
  Kind="Instantaneous"
  Guid="f7101f47-1578-48ec-b51c-fe2dfd9801b1"
->(FIRST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Distance == 1000.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Distance == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="27729425-3ef8-49f6-a3af-7c5e918598dd"
->(FIRST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Length == 500.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Length == 500.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="aac26e26-268e-47f7-8945-bedb298e0884"
->(FIRST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Value == Messages.M_ADHESION.Slippery_rail</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Value == Messages.M_ADHESION.Slippery_rail</Expectation><Expectation
  Kind="Instantaneous"
  Guid="4dc9275c-d51c-41b0-85e2-9bb9e1d36af1"
->(LAST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Length == 500.0</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Length == 500.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="29d3a97b-9877-4f37-bcbb-f1194ed6f832"
->(LAST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Value == Messages.M_ADHESION.Slippery_rail</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Value == Messages.M_ADHESION.Slippery_rail</Expectation><Expectation
  Kind="Instantaneous"
  Guid="3ed3e61c-73c3-48e0-9d0e-4e78a1237f51"
->(LAST_IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Distance == 3700.0</Expectation></Expectations>
+>(LAST X IN Kernel.TrackDescription.AdhesionFactors.AdhFactors).Distance == 3700.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase

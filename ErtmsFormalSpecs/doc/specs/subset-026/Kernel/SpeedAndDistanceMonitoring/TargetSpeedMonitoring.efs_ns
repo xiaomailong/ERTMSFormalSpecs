@@ -345,7 +345,7 @@ X2=&gt; Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)
 <PreConditions>
 <PreCondition
  Guid="f3765bd0-74d9-4a3a-8931-9cd8e64befb5"
->FORALL_IN TargetsList() | d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>FORALL X IN TargetsList() | d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
@@ -353,7 +353,7 @@ X2=&gt; Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)
 >
 <Expression>REDUCE
     TargetsList()
-USING
+USING X IN
     BaseTypes.MinDistance ( X1 =&gt; d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ), X2 =&gt; RESULT )
 INITIAL_VALUE
     BaseTypes.Distance.Infinity</Expression>
@@ -603,7 +603,7 @@ X2 =&gt; Vtarget
 >
 <Expression>REDUCE
     TargetsList()
-USING
+USING X IN
     MinTarget ( X1 =&gt; X, X2 =&gt; RESULT )
 INITIAL_VALUE
     MA.ClosestEOA()</Expression>

@@ -750,11 +750,11 @@ BTM.Linking.Linkings</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="57d1864b-8a23-45b2-ba2a-207bd714af45"
->(COUNT Kernel.MA.MA.Sections) == 3</Expectation><Expectation
+>(COUNT X IN Kernel.MA.MA.Sections) == 3</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="77cfa782-b5f1-4cdf-9eb5-f34e29f29663"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 800.0</Expectation></Expectations>
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 800.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -908,15 +908,15 @@ BTM.Linking.Linkings</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="45ddc847-be91-4155-9d16-f21d3695aa49"
->(COUNT Kernel.MA.MA.Sections) == 5</Expectation><Expectation
+>(COUNT X IN Kernel.MA.MA.Sections) == 5</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="cf8525c5-7738-4c6f-8112-b6e940e38e27"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 800.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 800.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="25f8e812-0eac-4ebe-9ce8-27f9c0cce4c3"
->(LAST_IN Kernel.MA.MA.Sections).Length == 345.0</Expectation><Expectation
+>(LAST X IN Kernel.MA.MA.Sections).Length == 345.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e6b4fb12-7025-4840-83d7-e340baf5a2d0"
@@ -925,8 +925,8 @@ BTM.Linking.Linkings</Action></Actions>
  DeadLine="1"
  Guid="f417fcf7-d3df-4f8b-a813-e4abcd3763b9"
 >Before(
-    ExpectedFirst=&gt; FIRST_IN Kernel.MA.MA.Sections | X.Length == 800.0, 
-    ExpectedSecond=&gt; FIRST_IN Kernel.MA.MA.Sections | X.Length == 200.0,
+    ExpectedFirst=&gt; FIRST X IN Kernel.MA.MA.Sections | X.Length == 800.0, 
+    ExpectedSecond=&gt; FIRST X IN Kernel.MA.MA.Sections | X.Length == 200.0,
     Collection=&gt; Kernel.MA.MA.Sections
 )</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -1101,11 +1101,11 @@ BTM.Linking.Linkings</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="c31e6d0c-1c34-4739-b78d-578ccbb99e10"
->(COUNT Kernel.MA.MA.Sections) == 3</Expectation><Expectation
+>(COUNT X IN Kernel.MA.MA.Sections) == 3</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="46459917-4e41-43ec-bf31-7d85dee40007"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 800.0</Expectation></Expectations>
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 800.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1259,15 +1259,15 @@ BTM.Linking.Linkings</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="7b1010de-9e50-46ca-98eb-5b7c4830eb8b"
->(COUNT Kernel.MA.MA.Sections) == 5</Expectation><Expectation
+>(COUNT X IN Kernel.MA.MA.Sections) == 5</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="4c82dd5d-9a47-489b-a113-4d28402af077"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 800.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 800.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="1cbb2c98-8ff7-4af9-b56f-db0bbe06a983"
->(LAST_IN Kernel.MA.MA.Sections).Length == 345.0</Expectation><Expectation
+>(LAST X IN Kernel.MA.MA.Sections).Length == 345.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="8394a171-1c84-4220-8b4c-225425e246e9"
@@ -1276,8 +1276,8 @@ BTM.Linking.Linkings</Action></Actions>
  DeadLine="1"
  Guid="782c252c-122d-4573-afa8-14aa99be644e"
 >Before(
-    ExpectedFirst=&gt; FIRST_IN Kernel.MA.MA.Sections | X.Length == 800.0, 
-    ExpectedSecond=&gt; FIRST_IN Kernel.MA.MA.Sections | X.Length == 200.0,
+    ExpectedFirst=&gt; FIRST X IN Kernel.MA.MA.Sections | X.Length == 800.0, 
+    ExpectedSecond=&gt; FIRST X IN Kernel.MA.MA.Sections | X.Length == 200.0,
     Collection=&gt; Kernel.MA.MA.Sections
 )</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -1506,15 +1506,15 @@ IN BTM.Linking.Linkings</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b5b64573-069d-464c-9463-44e3f950dd3e"
->THERE_IS_IN BTM.Linking.Linkings | X.Distance == (FIRST_IN Kernel.MA.MA.Sections).Length</Expectation><Expectation
+>THERE_IS X IN BTM.Linking.Linkings | X.Distance == (FIRST X IN Kernel.MA.MA.Sections).Length</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="4d56ef67-2ff1-4825-9781-228c0f5b4a46"
->(COUNT Kernel.MA.MA.Sections) == 1</Expectation><Expectation
+>(COUNT X IN Kernel.MA.MA.Sections) == 1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ed86e9c1-8770-4127-bbe4-17b9394bac22"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 250.0</Expectation></Expectations>
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 250.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -3174,16 +3174,16 @@ IN BTM.Linking.Linkings</Action></Actions>
 >Kernel.MA.ClosestEOA().Location == 1500.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="4451f42d-584c-4e32-a56c-a11b581cb192"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 120.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 120.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="d5875c8a-f842-42cd-b155-7b915b757821"
->(FIRST_IN Kernel.MA.MA.Sections).TimeOut.TimeOut == 40.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).TimeOut.TimeOut == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="01a08aa6-ca70-441e-bad2-a0e4e7bba436"
->(FIRST_IN Kernel.MA.MA.Sections).TimeOut.Distance == 20.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).TimeOut.Distance == 20.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="eca863f4-0542-4f60-a00c-eb37f24c3722"
->Available ( ( FIRST_IN Kernel.MA.MA.Sections ).TimeOut )</Expectation><Expectation
+>Available ( ( FIRST X IN Kernel.MA.MA.Sections ).TimeOut )</Expectation><Expectation
  Kind="Instantaneous"
  Guid="400ea3a5-1406-4786-aea7-cd5b05e483f4"
 >Kernel.MA.ClosestEOA().Speed == 40.0</Expectation></Expectations>
@@ -3297,10 +3297,10 @@ IN BTM.Linking.Linkings</Action></Actions>
 >Kernel.MA.ClosestEOA().Location == 1310.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="3413f504-eac7-4dd4-800d-f49b1424ab9c"
->(FIRST_IN Kernel.MA.MA.Sections).TimeOut == EMPTY</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).TimeOut == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  Guid="6b552018-2db9-49b1-a6b5-b6282db50b00"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 170.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 170.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="1d43c373-49f0-4bea-8f95-4d38983c3755"
 >Kernel.MA.ClosestEOA().Speed == 25.0</Expectation></Expectations>
@@ -4285,7 +4285,7 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="c6a2665c-6283-4b4b-b5f7-5f8a7dced41b"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 705.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 705.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="3e216b08-6657-4fc7-89cd-e19d594da9e5"
@@ -4519,11 +4519,11 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="621b2bd7-d6d5-4647-9a80-64a8d20c0b0a"
->(COUNT Kernel.MA.MA.Sections) == 1</Expectation><Expectation
+>(COUNT X IN Kernel.MA.MA.Sections) == 1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ba0dc73b-fe60-404f-bf18-fc3ef38ab496"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 700.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 700.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b022faa4-47ab-4227-9b41-b928d5f27aa1"
@@ -4673,15 +4673,15 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="00e19708-5e45-4a55-beb3-cff2a60ea65f"
->(COUNT Kernel.MA.MA.Sections) == 2</Expectation><Expectation
+>(COUNT X IN Kernel.MA.MA.Sections) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="c9df00a6-f750-4b1c-a363-5a8a829907be"
->(LAST_IN Kernel.MA.MA.Sections).Length == 1100.0</Expectation><Expectation
+>(LAST X IN Kernel.MA.MA.Sections).Length == 1100.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="c1e0ad36-e8f7-48c3-bc40-1b1793bbf817"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 900.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 900.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="3757fa09-0f4e-427a-824d-d4faedc1ea80"
@@ -4814,15 +4814,15 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="32a1c8a1-7491-4bb6-ae76-22b66cbdb2e7"
->(COUNT Kernel.MA.MA.Sections) == 2</Expectation><Expectation
+>(COUNT X IN Kernel.MA.MA.Sections) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="0065b07a-d6a4-4b74-bc73-22458548a917"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 800.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 800.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="9345a241-b19f-4620-be0a-4288dab7944a"
->(LAST_IN Kernel.MA.MA.Sections).Length == 700.0</Expectation></Expectations>
+>(LAST X IN Kernel.MA.MA.Sections).Length == 700.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -5014,11 +5014,11 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="118ad2de-34d3-4da2-a6ed-78bd11b9850d"
->(COUNT Kernel.MA.MA.Sections) == 1</Expectation><Expectation
+>(COUNT X IN Kernel.MA.MA.Sections) == 1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="92b696f7-debb-46bd-aeb7-5244ba217ae9"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 700.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 700.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="0c4a7fb9-ec20-4bf4-8f8b-038267cfc123"
@@ -5138,15 +5138,15 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="da2ab0a5-e2e6-4f03-a083-23f579a57b94"
->(COUNT Kernel.MA.MA.Sections) == 2</Expectation><Expectation
+>(COUNT X IN Kernel.MA.MA.Sections) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="85598268-dddb-4332-bbb5-fa7335ea905d"
->(LAST_IN Kernel.MA.MA.Sections).Length == 1100.0</Expectation><Expectation
+>(LAST X IN Kernel.MA.MA.Sections).Length == 1100.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="73c1d331-c90c-42eb-ba19-a79309d9269a"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 900.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 900.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5b62f711-2e0e-4d54-9801-d819aa76d415"
@@ -5251,15 +5251,15 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ef6e5b5e-6572-473a-a485-3d535bee86f4"
->(COUNT Kernel.MA.MA.Sections) == 2</Expectation><Expectation
+>(COUNT X IN Kernel.MA.MA.Sections) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b5b3ab7a-a0bc-4c60-aabd-6b8ffe226f47"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 800.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 800.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="22fd6f7d-a096-4a9b-b2b3-af7e3e2563da"
->(LAST_IN Kernel.MA.MA.Sections).Length == 700.0</Expectation><Expectation
+>(LAST X IN Kernel.MA.MA.Sections).Length == 700.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="9a79bf85-2feb-451a-a5ea-0a06e7f0a601"
@@ -5481,11 +5481,11 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="375df2e0-32a1-4b8c-8bec-70a8cef07857"
->(COUNT Kernel.MA.MA.Sections) == 1</Expectation><Expectation
+>(COUNT X IN Kernel.MA.MA.Sections) == 1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f9b2c5a3-6309-4770-aa6f-3f6cf6c2e711"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 700.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 700.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="70b73ce1-ab1e-4ae2-9942-5d9eafc9c137"
@@ -5619,15 +5619,15 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="08e8739c-0e3b-4f76-aa4e-36b75632cd2e"
->(COUNT Kernel.MA.MA.Sections) == 2</Expectation><Expectation
+>(COUNT X IN Kernel.MA.MA.Sections) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f31e7ee8-4d6e-4480-8baa-1e3ba394dc18"
->(LAST_IN Kernel.MA.MA.Sections).Length == 1100.0</Expectation><Expectation
+>(LAST X IN Kernel.MA.MA.Sections).Length == 1100.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="fa8a144f-38a7-4315-a111-3608aaf3d580"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 900.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 900.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="0183e11b-c1cf-48f8-a72f-4d52ddde0322"
@@ -5745,15 +5745,15 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e5b98327-a3f3-415e-a2ab-deb18ba35fd1"
->(COUNT Kernel.MA.MA.Sections) == 2</Expectation><Expectation
+>(COUNT X IN Kernel.MA.MA.Sections) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="7a60bcd9-3fdd-4584-95d1-e0728d47bbec"
->(FIRST_IN Kernel.MA.MA.Sections).Length == 800.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.MA.Sections).Length == 800.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="68479eb1-0b4b-4688-a220-b76e4a62de5a"
->(LAST_IN Kernel.MA.MA.Sections).Length == 700.0</Expectation><Expectation
+>(LAST X IN Kernel.MA.MA.Sections).Length == 700.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="aa3ae47d-086b-47c3-bf6a-68e0a2eff910"
@@ -7077,7 +7077,7 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="1d02e92f-f43d-4a42-b18d-6cb9d521a08d"
->THERE_IS_IN Kernel.MA.MA.Sections | (  X.Length == 120.0 AND X.TimeOut.Distance == 20.0  )</Expectation></Expectations>
+>THERE_IS X IN Kernel.MA.MA.Sections | (  X.Length == 120.0 AND X.TimeOut.Distance == 20.0  )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

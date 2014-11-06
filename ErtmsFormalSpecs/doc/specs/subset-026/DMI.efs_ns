@@ -1319,7 +1319,7 @@ Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</Action></A
 <Actions>
 <Action
  Guid="bd5f6858-eb55-4cc7-a633-8479451bf90c"
->Out_Gradient.GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING Kernel.TrackDescription.Gradient.CompensateForTrainPosition(X)</Action></Actions>
+>Out_Gradient.GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING X IN Kernel.TrackDescription.Gradient.CompensateForTrainPosition(X)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateOUT"
@@ -1586,7 +1586,7 @@ Kernel.Mode == Default.Mode.RV</PreCondition></PreConditions>
 <Action
  Guid="9a64b1f3-c744-4797-951b-c1f9247a26c6"
 >Out_RouteUnsuitabilities.RouteUnsuitabilities &lt;- 
-MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable (X) USING X</Action></Actions>
+MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable (X) USING X IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateOUT"

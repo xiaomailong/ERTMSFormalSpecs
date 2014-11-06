@@ -1866,7 +1866,7 @@
 <Actions>
 <Action
  Guid="bd6cd321-da85-4d70-822f-1231c228bd65"
->PlanningInformation &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToBrakeInhibition(X)</Action></Actions>
+>PlanningInformation &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING X IN Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToBrakeInhibition(X)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2016,7 +2016,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 <Action
  Guid="d6e48ca9-23d7-4be2-bcea-1f16889186b1"
 >ActiveConditions &lt;- MAP ActiveConditions | (NOT Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd ( Condition =&gt; X)  AND  X.Time &gt; Kernel.DateAndTime.CurrentTime)
-  USING X</Action></Actions>
+  USING X IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2233,7 +2233,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 <PreConditions>
 <PreCondition
  Guid="964f9fc5-b40c-408d-9d98-427f9b0c536c"
->THERE_IS_IN ActiveConditions |(
+>THERE_IS X IN ActiveConditions |(
 X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea
   AND  
 NOT X.IsAnnouncement
@@ -2243,7 +2243,7 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd(X)
 <Actions>
 <Action
  Guid="21498138-871c-4035-8eda-ed138b81aa0f"
->PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
+>PlanningInformation &lt;- MAP PlanningInformation USING X IN Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
     Distance=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea),
     ProfilePoint=&gt;X,
     TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea
@@ -2272,7 +2272,7 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd(X)
 <PreConditions>
 <PreCondition
  Guid="137dac50-09d6-4b1d-98e7-03f2cbc17a0c"
->THERE_IS_IN ActiveConditions | (
+>THERE_IS X IN ActiveConditions | (
 X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea
   AND  
 NOT X.IsAnnouncement
@@ -2282,7 +2282,7 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd(X)
 <Actions>
 <Action
  Guid="dd8c664b-f24f-4112-8314-a0df1cd21574"
->PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
+>PlanningInformation &lt;- MAP PlanningInformation USING X IN Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
     Distance=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea),
     ProfilePoint=&gt;X,
     TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea
@@ -2392,7 +2392,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
   MAP ActiveConditions | ( NOT Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd ( Condition =&gt; X)
                              AND
                            X.Time &gt; Kernel.DateAndTime.CurrentTime )
-  USING X</Action></Actions>
+  USING X IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2425,7 +2425,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 <Actions>
 <Action
  Guid="848f8401-d665-400b-b48d-be8bbfa8d170"
->PlanningInformation &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToSoundHorn(X)</Action></Actions>
+>PlanningInformation &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING X IN Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToSoundHorn(X)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -4532,7 +4532,7 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
                                ),
                   Second=&gt; Kernel.NationalValues.MaxDistInSRSpeedRestriction
                   )) | (X.Location &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))
-  USING Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+  USING X IN Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
     Location =&gt; BaseTypes.OffsetDistance(Distance =&gt; X.Location, Offset =&gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom) ),
     Speed =&gt; X.Speed,
     Length =&gt; X.Length
@@ -4563,7 +4563,7 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
     Speed =&gt; Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)),
     Length =&gt; Default.BaseTypes.DistanceToLength(
         REDUCE MRSP
-        USING BaseTypes.MinDistance(X.Location,RESULT)
+        USING X IN BaseTypes.MinDistance(X.Location,RESULT)
         INITIAL_VALUE BaseTypes.Distance.Infinity)
 }
 IN MRSP</Action></Actions>

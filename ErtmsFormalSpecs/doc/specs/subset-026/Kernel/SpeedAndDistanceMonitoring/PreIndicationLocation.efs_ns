@@ -580,7 +580,7 @@ PreIndicationLocation.d_SBI2 ( Vmrsp, EstimatedAccelerationSetToZero ) == Defaul
 <Expression>REDUCE TargetsList()
     | X.Location &gt; Distance
 
-USING MA.ClosestTarget(
+USING X IN MA.ClosestTarget(
     Target1=&gt;X,
     Target2=&gt;RESULT
     )
@@ -619,7 +619,7 @@ INITIAL_VALUE TargetSpeedMonitoring.Target{
 <Expression>REDUCE TargetsList()
     | X.Location &lt; Distance
 
-USING MA.ClosestTarget(
+USING X IN MA.ClosestTarget(
     Target1=&gt;X,
     Target2=&gt;RESULT
     )
@@ -763,7 +763,7 @@ INITIAL_VALUE TargetSpeedMonitoring.Target{
  Guid="7728236a-d7fe-40c3-9417-ee0dd230e10c"
 >
 <Comment>Dist is measured from the LRBG</Comment>
-<Expression>THERE_IS_IN TargetsList() |  (X.Location &lt; Dist) AND (X.Location + Default.BaseTypes.LengthToDistance(X.Length) &gt;= Dist)</Expression>
+<Expression>THERE_IS X IN TargetsList() |  (X.Location &lt; Dist) AND (X.Location + Default.BaseTypes.LengthToDistance(X.Length) &gt;= Dist)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"

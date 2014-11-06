@@ -129,7 +129,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="07fa8dd9-8282-47e0-859f-287e2c20813e"
->THERE_IS_IN Kernel.TSR.TSRs | X.Id == 1515</Expectation></Expectations>
+>THERE_IS X IN Kernel.TSR.TSRs | X.Id == 1515</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -339,7 +339,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="22b07291-9112-46e4-be6c-9dcec1ed4c28"
->( COUNT Kernel.TSR.TSRs ) == 1</Expectation></Expectations>
+>( COUNT X IN Kernel.TSR.TSRs ) == 1</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -429,7 +429,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="250ea92d-b3cb-4b60-9a77-ab1a882f5be9"
->( COUNT Kernel.TSR.TSRs ) == 2</Expectation></Expectations>
+>( COUNT X IN Kernel.TSR.TSRs ) == 2</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -529,7 +529,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5a5520d9-e7a7-45d1-b995-215f2ab3f239"
->( COUNT Kernel.TSR.TSRs ) == 1</Expectation></Expectations>
+>( COUNT X IN Kernel.TSR.TSRs ) == 1</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -569,9 +569,9 @@
 <Action
  Guid="d7872246-e268-4edd-a7c0-8758c1e2edf8"
 >Odometry.NominalDistance &lt;-
-(FIRST_IN Kernel.TSR.TSRs).Location
+(FIRST X IN Kernel.TSR.TSRs).Location
   +
-BaseTypes.LengthToDistance (Kernel.TSR.TSRLength(FIRST_IN Kernel.TSR.TSRs))
+BaseTypes.LengthToDistance (Kernel.TSR.TSRLength(FIRST X IN Kernel.TSR.TSRs))
   +
 BTM.LRBG.Position.Position
   +
@@ -603,7 +603,7 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest=&gt;DistanceInterval.Min 
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5848d15b-deb3-4be0-b2e4-a6020eb40efa"
->( COUNT Kernel.TSR.TSRs ) == 1</Expectation></Expectations>
+>( COUNT X IN Kernel.TSR.TSRs ) == 1</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -624,9 +624,9 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest=&gt;DistanceInterval.Min 
 <Action
  Guid="2e41450a-411a-4b01-80af-d894beedaf44"
 >Odometry.NominalDistance &lt;-
-(FIRST_IN Kernel.TSR.TSRs).Location
+(FIRST X IN Kernel.TSR.TSRs).Location
   +
-BaseTypes.LengthToDistance (Kernel.TSR.TSRLength(FIRST_IN Kernel.TSR.TSRs))
+BaseTypes.LengthToDistance (Kernel.TSR.TSRLength(FIRST X IN Kernel.TSR.TSRs))
   +
 BTM.LRBG.Position.Position
   +
@@ -668,7 +668,7 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest=&gt;DistanceInterval.Min 
  Kind="Instantaneous"
  DeadLine="1"
  Guid="dd1f337b-a457-4af8-817b-ede0f1270ddc"
->( COUNT Kernel.TSR.TSRs ) == 0</Expectation></Expectations>
+>( COUNT X IN Kernel.TSR.TSRs ) == 0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -944,11 +944,11 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest=&gt;DistanceInterval.Min 
  Kind="Instantaneous"
  DeadLine="1"
  Guid="2e865bbb-817a-407c-86cf-0fa91be9f766"
->THERE_IS_IN Kernel.TSR.TSRs |  ( X.Id == 150 AND X.Length == 1500.0 AND X.Location == 4000.0)</Expectation><Expectation
+>THERE_IS X IN Kernel.TSR.TSRs |  ( X.Id == 150 AND X.Length == 1500.0 AND X.Location == 4000.0)</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="991f59f0-4ba9-4754-9faf-fa5c4bf03eaf"
->(COUNT Kernel.TSR.TSRs) == 1</Expectation></Expectations>
+>(COUNT X IN Kernel.TSR.TSRs) == 1</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1007,11 +1007,11 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest=&gt;DistanceInterval.Min 
  Kind="Instantaneous"
  DeadLine="1"
  Guid="c1e4e97e-860c-4c79-99b6-cf4ca5dbccdb"
->THERE_IS_IN Kernel.TSR.TSRs |  ( X.Id == 150 AND X.Length == 1000.0 AND X.Location == 3000.0)</Expectation><Expectation
+>THERE_IS X IN Kernel.TSR.TSRs |  ( X.Id == 150 AND X.Length == 1000.0 AND X.Location == 3000.0)</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="22630cbc-5071-467b-b566-3a69c2b37875"
->(COUNT Kernel.TSR.TSRs) == 1</Expectation></Expectations>
+>(COUNT X IN Kernel.TSR.TSRs) == 1</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1070,11 +1070,11 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest=&gt;DistanceInterval.Min 
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f966762b-6cc1-4b33-9cc2-b4634b883d81"
->THERE_IS_IN Kernel.TSR.TSRs |  ( X.Id == 255 AND X.Length == 1300.0 AND X.Location == 3300.0)</Expectation><Expectation
+>THERE_IS X IN Kernel.TSR.TSRs |  ( X.Id == 255 AND X.Length == 1300.0 AND X.Location == 3300.0)</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e82a62aa-9ae4-4006-addd-c6be488d5768"
->(COUNT Kernel.TSR.TSRs) == 2</Expectation></Expectations>
+>(COUNT X IN Kernel.TSR.TSRs) == 2</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1133,11 +1133,11 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest=&gt;DistanceInterval.Min 
  Kind="Instantaneous"
  DeadLine="1"
  Guid="93f9a48a-aac5-41f7-800b-bf9d27ec37a5"
->THERE_IS_IN Kernel.TSR.TSRs |  ( X.Id == 255 AND X.Length == 2000.0 AND X.Location == 3500.0)</Expectation><Expectation
+>THERE_IS X IN Kernel.TSR.TSRs |  ( X.Id == 255 AND X.Length == 2000.0 AND X.Location == 3500.0)</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="4c773843-0b70-49db-9745-fcaaf775c9ab"
->(COUNT Kernel.TSR.TSRs) == 3</Expectation></Expectations>
+>(COUNT X IN Kernel.TSR.TSRs) == 3</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1482,11 +1482,11 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest=&gt;DistanceInterval.Min 
  Kind="Instantaneous"
  DeadLine="1"
  Guid="60d605f9-aec2-4265-8505-7f6e5a69acda"
->THERE_IS_IN Kernel.TSR.TSRs | X.Id == 1515</Expectation><Expectation
+>THERE_IS X IN Kernel.TSR.TSRs | X.Id == 1515</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="bd528437-b96f-45eb-a5b6-1280c721ac97"
->THERE_IS_IN Kernel.TSR.TSRs | X.Id == 1516</Expectation></Expectations>
+>THERE_IS X IN Kernel.TSR.TSRs | X.Id == 1516</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

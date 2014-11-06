@@ -198,9 +198,9 @@
 <PreConditions>
 <PreCondition
  Guid="eb420e4a-b35e-4d9b-8ab6-a8f9e8ba7043"
->THERE_IS_IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
+>THERE_IS X IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
 <Expression>REDUCE TCTractionSystems | (X.Distance == TSProfileStartLocation(Distance=&gt;Distance) )
-    USING X.Value
+    USING X IN X.Value
   INITIAL_VALUE EMPTY</Expression>
 </Case><Case
  Name="Otherwise"
@@ -208,8 +208,8 @@
 >
 <Comment>Case created just to make the model work</Comment>
 <Expression>TractionSystem{
-    CountryIdentifier =&gt; Messages.NID_CTRACTION((FIRST_IN TrainData.TrainData.Value.TractionSystems).Country),
-    SystemType =&gt; (FIRST_IN TrainData.TrainData.Value.TractionSystems).Voltage
+    CountryIdentifier =&gt; Messages.NID_CTRACTION((FIRST X IN TrainData.TrainData.Value.TractionSystems).Country),
+    SystemType =&gt; (FIRST X IN TrainData.TrainData.Value.TractionSystems).Voltage
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -239,7 +239,7 @@
 >
 <Comment>Returns the element in TCTractionSystems with the largest distance that is less than or equal to the parameter</Comment>
 <Expression>REDUCE TCTractionSystems | (X.Distance &lt;= Distance)
-    USING Default.BaseTypes.MaxDistance(
+    USING X IN Default.BaseTypes.MaxDistance(
         X1=&gt;X.Distance,
         X2=&gt;RESULT)
   INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>

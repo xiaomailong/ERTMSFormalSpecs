@@ -234,7 +234,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="9cc2a57d-541f-4ffa-87fe-b90a13da07bc"
->( THERE_IS_IN Kernel.TrackDescription.Gradient.Gradients | X.Distance == 4000.0 )</Expectation></Expectations>
+>( THERE_IS X IN Kernel.TrackDescription.Gradient.Gradients | X.Distance == 4000.0 )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -256,32 +256,32 @@
  Kind="Instantaneous"
  Guid="93d1b55e-8e1b-4383-9ab6-1190f0c45e9b"
 >Kernel.TrackDescription.Gradient.GradientEnd ( 
-  Current =&gt; FIRST_IN Kernel.TrackDescription.Gradient.Gradients | X.Distance == 4000.0 
+  Current =&gt; FIRST X IN Kernel.TrackDescription.Gradient.Gradients | X.Distance == 4000.0 
 ) == 6000.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="8d5e3344-3819-4400-8a33-003150adeed3"
 >Kernel.TrackDescription.Gradient.GradientInfoProfile (
-  GradientInfo =&gt;  FIRST_IN Kernel.TrackDescription.Gradient.Gradients | X.Distance == 4000.0,
+  GradientInfo =&gt;  FIRST X IN Kernel.TrackDescription.Gradient.Gradients | X.Distance == 4000.0,
   Distance =&gt; 7000.0, 
   TrainLength =&gt; 100.0
 ) == BaseTypes.Gradient.Indefinite</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a5d28ba0-a7c8-411e-9b21-c7a6fc399990"
 >Kernel.TrackDescription.Gradient.GradientInfoProfile (
-  GradientInfo =&gt;  FIRST_IN Kernel.TrackDescription.Gradient.Gradients | X.Distance == 4000.0,
+  GradientInfo =&gt;  FIRST X IN Kernel.TrackDescription.Gradient.Gradients | X.Distance == 4000.0,
   Distance =&gt; 5000.0, 
   TrainLength =&gt; 100.0
 ) &lt; 0.002 
 AND
 Kernel.TrackDescription.Gradient.GradientInfoProfile (
-  GradientInfo =&gt;  FIRST_IN Kernel.TrackDescription.Gradient.Gradients | X.Distance == 4000.0,
+  GradientInfo =&gt;  FIRST X IN Kernel.TrackDescription.Gradient.Gradients | X.Distance == 4000.0,
   Distance =&gt; 5000.0, 
   TrainLength =&gt; 100.0
 ) &gt; 0.0018</Expectation><Expectation
  Kind="Instantaneous"
  Guid="9b4217f9-7059-4ad1-b8a9-d8b1fe6f4d7e"
 >Kernel.TrackDescription.Gradient.GradientInfoProfile (
-  GradientInfo =&gt;  FIRST_IN Kernel.TrackDescription.Gradient.Gradients | X.Distance == 4000.0,
+  GradientInfo =&gt;  FIRST X IN Kernel.TrackDescription.Gradient.Gradients | X.Distance == 4000.0,
   Distance =&gt; 3000.0, 
   TrainLength =&gt; 100.0
 ) == BaseTypes.Gradient.Indefinite</Expectation></Expectations>
@@ -306,28 +306,28 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
  Kind="Instantaneous"
  Guid="1d070dfa-e211-4c91-9024-dddd162bcc76"
 >Kernel.TrackDescription.Gradient.GradientInfoProfile (
-  GradientInfo =&gt;  LAST_IN Kernel.TrackDescription.Gradient.Gradients,
+  GradientInfo =&gt;  LAST X IN Kernel.TrackDescription.Gradient.Gradients,
   Distance =&gt; 20000.0, 
   TrainLength =&gt; 100.0
 ) == BaseTypes.Gradient.Indefinite</Expectation><Expectation
  Kind="Instantaneous"
  Guid="b27318c5-9ac4-4bb1-9475-00117e663e02"
 >Kernel.TrackDescription.Gradient.GradientInfoProfile (
-  GradientInfo =&gt;  LAST_IN Kernel.TrackDescription.Gradient.Gradients,
+  GradientInfo =&gt;  LAST X IN Kernel.TrackDescription.Gradient.Gradients,
   Distance =&gt; 12000.0, 
   TrainLength =&gt; 100.0
 ) == BaseTypes.Gradient.Indefinite</Expectation><Expectation
  Kind="Instantaneous"
  Guid="3197224b-c79c-4ba1-8102-43600861888c"
 >Kernel.TrackDescription.Gradient.GradientInfoProfile (
-  GradientInfo =&gt;  LAST_IN Kernel.TrackDescription.Gradient.Gradients,
+  GradientInfo =&gt;  LAST X IN Kernel.TrackDescription.Gradient.Gradients,
   Distance =&gt; 11000.0, 
   TrainLength =&gt; 100.0
 ) == BaseTypes.Gradient.Indefinite</Expectation><Expectation
  Kind="Instantaneous"
  Guid="61ef0c7c-1423-4b27-8104-ccb644dd6106"
 >Kernel.TrackDescription.Gradient.GradientEnd ( 
-  Current =&gt; LAST_IN Kernel.TrackDescription.Gradient.Gradients
+  Current =&gt; LAST X IN Kernel.TrackDescription.Gradient.Gradients
 ) == 12000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
@@ -1077,15 +1077,15 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 <Expectation
  Kind="Instantaneous"
  Guid="f9504af3-17d7-44c2-b759-30491841a57e"
->(FIRST_IN Kernel.TrackDescription.Gradient.Gradients).Distance == 4000.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 4000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="40a8d5c9-d65a-46e6-b589-816cc4615cd4"
->(COUNT Kernel.TrackDescription.Gradient.Gradients) == 4</Expectation><Expectation
+>(COUNT X IN Kernel.TrackDescription.Gradient.Gradients) == 4</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="fa76dcac-72b8-4cc1-8773-a665fcbaa512"
->(LAST_IN Kernel.TrackDescription.Gradient.Gradients).Distance == 12000.0</Expectation></Expectations>
+>(LAST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 12000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1151,15 +1151,15 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
  Kind="Instantaneous"
  DeadLine="1"
  Guid="30131bd3-d3a7-49ec-a671-48bc4a91847a"
->(COUNT Kernel.TrackDescription.Gradient.Gradients) == 3</Expectation><Expectation
+>(COUNT X IN Kernel.TrackDescription.Gradient.Gradients) == 3</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="7e206c0a-27d0-4c4f-ada7-b47cb9557324"
->(LAST_IN Kernel.TrackDescription.Gradient.Gradients).Distance == 7000.0</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 7000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="07896fc9-99a6-4a32-af1d-6e4685bd478e"
->( FIRST_IN Kernel.TrackDescription.Gradient.Gradients).Distance == 4000.0</Expectation></Expectations>
+>( FIRST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 4000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1318,15 +1318,15 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 <Expectation
  Kind="Instantaneous"
  Guid="b4020933-4fde-48d8-a0c4-acb5e5f5c68c"
->(FIRST_IN Kernel.TrackDescription.Gradient.Gradients).Distance == 4000.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 4000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e8a4813e-f8ff-4838-ac67-8aadc6627c75"
->(COUNT Kernel.TrackDescription.Gradient.Gradients) == 4</Expectation><Expectation
+>(COUNT X IN Kernel.TrackDescription.Gradient.Gradients) == 4</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="74037130-be15-4677-8529-7b8f6ef19175"
->(LAST_IN Kernel.TrackDescription.Gradient.Gradients).Distance == 12000.0</Expectation></Expectations>
+>(LAST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 12000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1392,15 +1392,15 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5c2a06af-a5bc-4c55-8a8e-755a19109eba"
->(COUNT Kernel.TrackDescription.Gradient.Gradients) == 2</Expectation><Expectation
+>(COUNT X IN Kernel.TrackDescription.Gradient.Gradients) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="6ff76243-5514-408c-99fd-b47c3830ae70"
->(LAST_IN Kernel.TrackDescription.Gradient.Gradients).Distance == 4000.0</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 4000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="81dc99fd-acb7-421b-8ed6-aa430e2d0c13"
->( FIRST_IN Kernel.TrackDescription.Gradient.Gradients).Distance == 3000.0</Expectation></Expectations>
+>( FIRST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 3000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1559,15 +1559,15 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 <Expectation
  Kind="Instantaneous"
  Guid="53112f5b-9139-4f1c-a046-557858a6f24a"
->(FIRST_IN Kernel.TrackDescription.Gradient.Gradients).Distance == 4000.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 4000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="6df27e42-79e4-4cbb-9806-1532ab71d098"
->(COUNT Kernel.TrackDescription.Gradient.Gradients) == 4</Expectation><Expectation
+>(COUNT X IN Kernel.TrackDescription.Gradient.Gradients) == 4</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="fc64f8ab-618a-49e8-af34-e40d81983f0e"
->(LAST_IN Kernel.TrackDescription.Gradient.Gradients).Distance == 12000.0</Expectation></Expectations>
+>(LAST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 12000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1649,15 +1649,15 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
  Kind="Instantaneous"
  DeadLine="1"
  Guid="653a25e5-95bd-43ad-81db-3952b18f82ad"
->( FIRST_IN Kernel.TrackDescription.Gradient.Gradients).Distance == 4000.0</Expectation><Expectation
+>( FIRST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 4000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="df11c7f9-02c8-4ae1-963d-0085ca0b62da"
->(COUNT Kernel.TrackDescription.Gradient.Gradients) == 6</Expectation><Expectation
+>(COUNT X IN Kernel.TrackDescription.Gradient.Gradients) == 6</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="59d6e607-f72e-4647-ab15-6abc50f1ff68"
->(LAST_IN Kernel.TrackDescription.Gradient.Gradients).Distance == 14000.0</Expectation></Expectations>
+>(LAST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 14000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

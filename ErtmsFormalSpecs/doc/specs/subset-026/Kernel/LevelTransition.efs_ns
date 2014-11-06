@@ -275,7 +275,7 @@
  Guid="3894d9bf-99c3-4031-a849-43c8d27dfba7"
 >Level.Value == Default.Level.LNTC</PreCondition><PreCondition
  Guid="d4921d5d-80a6-4357-9508-d1e02eee12f6"
->THERE_IS_IN Kernel.TrainData.TrainData.Value.LevelsSupportedOnBoard |  ( X.Value == Level.Value AND X.NTC == Level.NTC )</PreCondition></PreConditions>
+>THERE_IS X IN Kernel.TrainData.TrainData.Value.LevelsSupportedOnBoard |  ( X.Value == Level.Value AND X.NTC == Level.NTC )</PreCondition></PreConditions>
 <Expression>Boolean.True</Expression>
 </Case><Case
  Name="Level 2,3"
@@ -673,7 +673,7 @@ Packet.Sequence1</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="7432ff75-4a66-4ae6-9aae-3df6be9e372b"
->NOT (THERE_IS_IN LevelTransitionOrder.LevelAndLength | X.TRLevel.Value == Kernel.Level.Value.Value)</PreCondition></PreConditions>
+>NOT (THERE_IS X IN LevelTransitionOrder.LevelAndLength | X.TRLevel.Value == Kernel.Level.Value.Value)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1a6bdf17-071d-4c6b-921d-d6e6833e5395"
@@ -727,7 +727,7 @@ Packet.Sequence1</Action></Actions>
 <Actions>
 <Action
  Guid="ed925502-1144-4258-9df9-8077986730c3"
->LevelTransitionToProcess &lt;- FIRST_IN LevelTransitionOrder.LevelAndLength | AvailableForUse( Level=&gt; X.TRLevel )</Action></Actions>
+>LevelTransitionToProcess &lt;- FIRST X IN LevelTransitionOrder.LevelAndLength | AvailableForUse( Level=&gt; X.TRLevel )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -759,7 +759,7 @@ Packet.Sequence1</Action></Actions>
 <Actions>
 <Action
  Guid="13a35181-3fe7-41a0-ac21-38a64a3091f6"
->LevelTransitionToProcess &lt;- LAST_IN ( LevelTransitionOrder.LevelAndLength )</Action></Actions>
+>LevelTransitionToProcess &lt;- LAST X IN ( LevelTransitionOrder.LevelAndLength )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

@@ -1455,7 +1455,7 @@ Condition.Type == TCTypeEnum.SoundHorn</PreCondition></PreConditions>
  Guid="85fce91e-776f-4f8e-9eb4-16352c6f1505"
 >TCType == TCTypeEnum.NonStoppingArea</PreCondition></PreConditions>
 <Expression>REDUCE TCProfile | (NOT X.Value.NonStoppingArea)
-USING Default.BaseTypes.MinDistance(
+USING X IN Default.BaseTypes.MinDistance(
     X1=&gt;X.Distance,
     X2=&gt;RESULT
 )
@@ -1469,7 +1469,7 @@ INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
  Guid="f091ee4d-ca51-40a7-8b31-d640d6048e68"
 >TCType == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions>
 <Expression>REDUCE TCProfile | (NOT X.Value.TunnelStoppingArea)
-USING Default.BaseTypes.MinDistance(
+USING X IN Default.BaseTypes.MinDistance(
     X1=&gt;X.Distance,
     X2=&gt;RESULT
 )
@@ -2297,7 +2297,7 @@ IN Announcements</Action></Actions>
 <Actions>
 <Action
  Guid="8f67b1c5-2634-4c7c-a000-65b01cbdb10e"
->Announcements &lt;- MAP Announcements | X != Announcement USING X</Action></Actions>
+>Announcements &lt;- MAP Announcements | X != Announcement USING X IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
