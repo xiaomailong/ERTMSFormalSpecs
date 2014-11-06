@@ -3,12 +3,8 @@
 # Depends on the following variables
 #  META : the name of the meta definition file, without .xmlb extension
 #
-XMLBOOSTER_ROOT=$(ERTMS_TOOLS_ROOT)/xmlb_2_29_2
-#
-# WARNING : The location of the xmlbcfg.xml file should not have /cygwin/ in its path
-#           and should use / as directory separator
-#
-XMLB_CALL=$(XMLBOOSTER_ROOT)/bin/xmlbgui.exe -CFG=../../../../tools/xmlb_2_29_2/xmlbcfg.xml
+XMLBOOSTER_ROOT=$(ERTMS_TOOLS_ROOT)/xmlb_2_22_11
+XMLB_CALL=$(XMLBOOSTER_ROOT)/bin/xmlbgui.exe -CFG=`cygpath -w $(XMLBOOSTER_ROOT)/xmlbcfg.xml`
 
 .phony: all clean 
 .default: all
