@@ -1361,6 +1361,8 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreCondi
  Type="Targets"
  Cacheable="TRUE"
  Default=""
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="EBDTargetsList"
  Guid="080084b1-b2d0-4064-ad42-393f22dcaa17"
@@ -1378,7 +1380,7 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreCondi
     Targets2=&gt;EMPTY,
     Targets3=&gt;EMPTY
 ) | X.Location &gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)
-  USING X</Expression>
+  USING X IN X</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
