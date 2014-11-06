@@ -925,7 +925,7 @@ INITIAL_VALUE CreateTarget (
 <PreCondition
  Guid="925708df-b37c-401d-8a24-1a988c5dd27b"
 >Available ( MA.EndSection.Overlap )</PreCondition></PreConditions>
-<Expression>ClosestEOA().Location + MA.EndSection.Overlap.Distance</Expression>
+<Expression>EndOfMA() + MA.EndSection.Overlap.Distance</Expression>
 </Case><Case
  Name="Overlap not available"
  Guid="f11f62bb-41ff-4755-a94f-be95cf5beea9"
@@ -1189,62 +1189,6 @@ INITIAL_VALUE CreateTarget (
 </Case><Case
  Name="Otherwise"
  Guid="09116a4e-beda-460c-9d94-5cb177833416"
->
-<Expression>0.0</Expression>
-</Case></Cases>
-</Function><Function
- Type="Default.BaseTypes.Speed"
- Cacheable="TRUE"
- Default=""
- X="140"
- Y="250"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="SvLSpeedRestriction"
- Guid="87cdee38-75a8-40f8-af9d-e60740c6fcbf"
->
-<ReqRef
- Id="d542f99e-9462-4bb6-9087-35da9a233e06"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="46223161-76b0-4a8b-bfcd-3431a5b937c0"
->
-</ReqRef><Comment>Provides speed restriction for SvL. Used to compute the Most Restrictive Target amongst the EBD based targets.</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Distance"
- Name="Distance"
- Guid="54140066-a290-4e97-b9ff-ca2b864c48b1"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="No SvL defined"
- Guid="0d762f8e-a373-494c-86c4-fc44b6d2d41b"
->
-<PreConditions>
-<PreCondition
- Guid="2aafce19-2bba-4e39-856c-e1beec03691c"
->Available ( MA )</PreCondition><PreCondition
- Guid="e5da66d0-90fc-4f2f-93a7-3715d4435165"
->MA.TargetSpeed != 0.0</PreCondition></PreConditions>
-<Expression>BaseTypes.Speed.MaxSpeed</Expression>
-</Case><Case
- Name="Before SvL"
- Guid="12382671-7255-4b68-b475-d8473b04aff0"
->
-<PreConditions>
-<PreCondition
- Guid="a02d2cea-99f2-48c6-a9d0-89bc575c30fa"
->Available ( MA )</PreCondition><PreCondition
- Guid="37061bdc-22ce-419b-ba1d-a18d7cd2608e"
->MA.TargetSpeed == 0.0</PreCondition><PreCondition
- Guid="e0951b7b-4d5d-4096-a48e-a20bf8cb6ee6"
->Distance &lt; SvL().Location</PreCondition></PreConditions>
-<Expression>BaseTypes.Speed.MaxSpeed</Expression>
-</Case><Case
- Name="After SvL"
- Guid="d9444400-043b-4053-8cd0-0cfe09ab18cc"
 >
 <Expression>0.0</Expression>
 </Case></Cases>

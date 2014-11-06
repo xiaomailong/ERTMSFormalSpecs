@@ -609,20 +609,33 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ CyclePhase="UpdateOUT"
  Guid="4a9270f5-be8a-47ba-a94a-5d136c9bd141"
->Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.P( 4000.0 ) == 25.0</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.P( 4000.0 ) == 0.0</Expectation><Expectation
  Kind="Instantaneous"
+ CyclePhase="UpdateOUT"
  Guid="d89d154d-ff6d-40f5-b3cb-b499a8798625"
->Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.P( 3000.0 ) == 60.0</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.P( 3000.0 ) == 0.0</Expectation><Expectation
  Kind="Instantaneous"
+ CyclePhase="UpdateOUT"
  Guid="af699f18-a684-4653-b5c6-94ff36ebdf18"
 >Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.P( 7000.0 ) == 0.0</Expectation><Expectation
  Kind="Instantaneous"
+ CyclePhase="UpdateOUT"
  Guid="528a9c9c-28c5-4427-8c1e-fa64a5d98162"
 >Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.P( 8000.0 ) == 0.0</Expectation><Expectation
  Kind="Instantaneous"
+ CyclePhase="UpdateOUT"
  Guid="54907695-6b2e-4b27-98bc-09387fc8d421"
->Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.P( 2000.0 ) == 40.0</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.P( 2000.0 ) == 0.0</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2 - Remove LX, supervised as EOA"
+ Guid="7b39fe42-c03d-471e-90d1-a6dfad2bc936"
+>
+<Actions>
+<Action
+ Guid="0edc92e1-f6a7-40e7-b118-d650645c9523"
+>Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase

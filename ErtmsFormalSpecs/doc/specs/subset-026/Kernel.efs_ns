@@ -10504,62 +10504,6 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
 <Action
  Guid="4e99e841-916b-4771-9cbe-a7999f9bbdbb"
 >ModeTransitions.UpdateMode()</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Speed and distance monitoring"
- Guid="afe72577-3fb0-4582-8bd7-509a0bd1b795"
->
-<Comment>After the mode is updated, check the speed and distance monitoring</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Start monitoring if required"
- Guid="ee02abe1-f4e4-43e6-9173-89fd8a75b37e"
->
-<Comment>If a mode was entered where the speed and distance monitoring is active, the correct type and status must be selected</Comment>
-<PreConditions>
-<PreCondition
- Guid="7a9bc363-3120-4ac9-8dd9-c9e77819a97c"
->ActiveFunctions.SuperviseTrainSpeed_All_Information()
-  OR
-ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="1ea62aa3-6056-40d4-8b5a-3eb7fbfb176b"
->SpeedAndDistanceMonitoring.SelectMonitoringType()</Action></Actions>
-</RuleCondition><RuleCondition
- Name="Supervise CSM"
- Guid="d2143410-130a-4e02-87c5-997dc73eba9c"
->
-<PreConditions>
-<PreCondition
- Guid="d33202ae-a180-4e5e-94cf-d027d1ba507c"
->ActiveFunctions.SuperviseTrainSpeed_CSM()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="2af78366-a5fa-4945-bc34-75104fbbf1b3"
->SpeedAndDistanceMonitoring.Monitoring &lt;- SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Stop monitoring if required"
- Guid="cdeb8310-91de-414d-8e5e-657e42672fe8"
->
-<Comment>If a mode was entered where the speed and distance monitoring is inactive, the speed and distance monitoring must be set to idle</Comment>
-<PreConditions>
-<PreCondition
- Guid="5a06828f-3ad3-414d-a5d5-e64ce6ce5964"
->SpeedAndDistanceMonitoring.Monitoring not in [SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle]</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="5298da62-c34c-4732-a368-5c9e79af8089"
->SpeedAndDistanceMonitoring.StopMonitoring()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -10652,6 +10596,80 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreCondi
 <Action
  Guid="dd0e1c87-80d0-467b-98af-67be26d63786"
 >MA.SvLs &lt;- []</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Speed and distance monitoring"
+ Guid="afe72577-3fb0-4582-8bd7-509a0bd1b795"
+>
+<ReqRef
+ Id="464dd6eb-f8c7-42fe-b8d9-c416ee775f1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2b5e9dd2-acd9-4291-83f8-8d393ae05adc"
+>
+</ReqRef><ReqRef
+ Id="a918b4eb-359d-45fd-bed4-173ac8763338"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a4b53b52-10bd-480a-bdbf-991b9ad857fe"
+>
+</ReqRef><ReqRef
+ Id="4ae5a0a3-fed2-4e03-ad35-c2ff8b81332b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="90836ca9-6ecf-4b96-90a8-97273bb47e87"
+>
+</ReqRef><ReqRef
+ Id="0f683037-458a-40b9-90d5-f5e9f1c3d70f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="db700523-77eb-40c6-b22f-f76d28a538e8"
+>
+</ReqRef><Comment>After the mode is updated, check the speed and distance monitoring</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Start monitoring if required"
+ Guid="ee02abe1-f4e4-43e6-9173-89fd8a75b37e"
+>
+<Comment>If a mode was entered where the speed and distance monitoring is active, the correct type and status must be selected</Comment>
+<PreConditions>
+<PreCondition
+ Guid="7a9bc363-3120-4ac9-8dd9-c9e77819a97c"
+>ActiveFunctions.SuperviseTrainSpeed_All_Information()
+  OR
+ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1ea62aa3-6056-40d4-8b5a-3eb7fbfb176b"
+>SpeedAndDistanceMonitoring.SelectMonitoringType()</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Supervise CSM"
+ Guid="d2143410-130a-4e02-87c5-997dc73eba9c"
+>
+<PreConditions>
+<PreCondition
+ Guid="d33202ae-a180-4e5e-94cf-d027d1ba507c"
+>ActiveFunctions.SuperviseTrainSpeed_CSM()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2af78366-a5fa-4945-bc34-75104fbbf1b3"
+>SpeedAndDistanceMonitoring.Monitoring &lt;- SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Stop monitoring if required"
+ Guid="cdeb8310-91de-414d-8e5e-657e42672fe8"
+>
+<Comment>If a mode was entered where the speed and distance monitoring is inactive, the speed and distance monitoring must be set to idle</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5a06828f-3ad3-414d-a5d5-e64ce6ce5964"
+>SpeedAndDistanceMonitoring.Monitoring not in [SpeedAndDistanceMonitoring.MonitoringTypeSM.Idle]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5298da62-c34c-4732-a368-5c9e79af8089"
+>SpeedAndDistanceMonitoring.StopMonitoring()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
