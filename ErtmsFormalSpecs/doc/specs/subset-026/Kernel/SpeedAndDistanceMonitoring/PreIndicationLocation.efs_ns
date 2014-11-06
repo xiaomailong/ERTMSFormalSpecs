@@ -852,8 +852,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="0e0a9c6f-2098-468a-8134-6b8c8757a0e4"
->
-TrainData.TrainData.Value.SBCommandIsImplemented</PreCondition></PreConditions>
+>TrainData.TrainData.Value.SBCommandIsImplemented</PreCondition></PreConditions>
 <Expression>TrainData.BrakingParameters.T_bs()</Expression>
 </Case><Case
  Name="Otherwise"
@@ -1024,8 +1023,7 @@ TrainData.TrainData.Value.SBCommandIsImplemented</PreCondition></PreConditions>
  Name="Value"
  Guid="f17882ac-802a-46d9-b618-3d485df5ba34"
 >
-<Expression>DistanceForSpeed ( Function =&gt; DecelerationCurves.SBD, Speed =&gt; Vmrsp )  - BaseTypes.SpeedToMS ( Vmrsp ) * T_bs1ind()
-</Expression>
+<Expression>DistanceForSpeed ( Function =&gt; DecelerationCurves.SBD, Speed =&gt; Vmrsp )  - BaseTypes.SpeedToMS ( Vmrsp ) * T_bs1ind()</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>
