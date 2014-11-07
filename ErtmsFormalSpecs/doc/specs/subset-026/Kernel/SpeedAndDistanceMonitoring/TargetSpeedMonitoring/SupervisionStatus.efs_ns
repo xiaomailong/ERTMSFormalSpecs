@@ -59,17 +59,38 @@
 </ReqRef><Comment>Trigger 2: True if V is between the speed of target and the MRSP speed, and if the front end is in rear of the indication distance for V.</Comment>
 <Cases>
 <Case
- Name="Trigger condition fulfilled"
+ Name="EOA and SvL - Trigger conditions fulfilled"
+ Guid="d92ffa20-568c-44e1-b6c5-0c9d290a4aaf"
+>
+<PreConditions>
+<PreCondition
+ Guid="87efc79c-cd6b-4c61-a0c9-1e3965377bd7"
+>ReleaseSpeedMonitoring.ReleaseSpeed &lt; Odometry.TrainSpeed()</PreCondition><PreCondition
+ Guid="56938139-7e3f-47e3-8946-27c1c207bdfb"
+>Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition><PreCondition
+ Guid="10f58d96-c05d-4049-aae8-7245af552c2c"
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I_Target(
+    Vest =&gt; Odometry.TrainSpeed(),
+    aTarget =&gt; MA.ClosestEOA()
+)
+  AND  
+TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &lt;= d_I_Target(
+    Vest =&gt; Odometry.TrainSpeed(),
+    aTarget =&gt; MA.SvL()
+)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="MRSP target or LOA - Trigger condition fulfilled"
  Guid="c75a89eb-c9fe-4ac5-9250-b1dad82d823a"
 >
 <PreConditions>
 <PreCondition
  Guid="7fabec05-34a0-4a41-99b1-d86203cd8292"
->SpeedOfTarget() &lt; Odometry.TrainSpeed()</PreCondition><PreCondition
+>MRDT().Speed &lt; Odometry.TrainSpeed()</PreCondition><PreCondition
  Guid="2d9bb92d-b2a1-4dfb-b458-cc00f9395f09"
 >Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition><PreCondition
  Guid="522edb9f-b6a7-4746-a2bb-beb31e76cec5"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I ( Odometry.TrainSpeed() )</PreCondition></PreConditions>
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I ( Odometry.TrainSpeed() )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -101,7 +122,28 @@
 </ReqRef><Comment>Trigger 3: True if V is between the speed of target and the MRSP speed, and if the front endd is beyond the indication distance for V.</Comment>
 <Cases>
 <Case
- Name="Trigger condition fulfilled"
+ Name="EOA and SvL - Trigger conditions fulfilled"
+ Guid="c866e79d-b8d4-4840-8528-6e14bafc2497"
+>
+<PreConditions>
+<PreCondition
+ Guid="8490520b-0484-4ea0-a598-7c8157fa8276"
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
+    Vest =&gt; Odometry.TrainSpeed(),
+    aTarget =&gt; MA.ClosestEOA()
+)
+  OR  
+TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt; d_I_Target(
+    Vest =&gt; Odometry.TrainSpeed(),
+    aTarget =&gt; MA.SvL()
+)</PreCondition><PreCondition
+ Guid="10b25826-9caa-4ff6-b838-c97e31aa5bc8"
+>Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition><PreCondition
+ Guid="d4307c38-3194-408f-a83e-134dd68d6e42"
+>ReleaseSpeedMonitoring.ReleaseSpeed &lt; Odometry.TrainSpeed()</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="MRSP target or LOA - Trigger condition fulfilled"
  Guid="56e2b874-6051-4a14-9bc2-0f44e01ad161"
 >
 <PreConditions>
@@ -111,7 +153,7 @@
  Guid="f7fc0c37-82b4-4ec6-ac20-288a66574987"
 >SpeedOfTarget() &lt; Odometry.TrainSpeed()</PreCondition><PreCondition
  Guid="33dc0227-89ad-43e9-a44d-6490c5959c43"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I ( Odometry.TrainSpeed() )</PreCondition></PreConditions>
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I ( Odometry.TrainSpeed() )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -143,7 +185,28 @@
 </ReqRef><Comment>Trigger 4: True if V is between the speed of target and the MRSP speed, and if the front end is beyond the permitted distance for the current speed.</Comment>
 <Cases>
 <Case
- Name="Trigger condition fulfilled"
+ Name="EOA and SvL - Trigger conditions fulfilled"
+ Guid="816da540-64a5-4438-9434-2cfde2f94cac"
+>
+<PreConditions>
+<PreCondition
+ Guid="6706cb7c-de71-46a2-96f7-e57ac8b3f366"
+>TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target(
+    aTarget =&gt; MA.SvL(),
+    Vest =&gt; Odometry.TrainSpeed()
+)
+  OR  
+TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; d_P_Target(
+    aTarget =&gt; MA.ClosestEOA(),
+    Vest =&gt; Odometry.TrainSpeed()
+)</PreCondition><PreCondition
+ Guid="10cf72a7-349f-4977-8b7b-001cb384d690"
+>Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition><PreCondition
+ Guid="5ecb6c49-78e4-4a21-afa1-126de0b33c2e"
+>ReleaseSpeedMonitoring.ReleaseSpeed &lt; Odometry.TrainSpeed()</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="MRSP target or LOA - Trigger condition fulfilled"
  Guid="2854a847-3e8d-4468-a9bd-a85e9df77c42"
 >
 <PreConditions>
@@ -151,7 +214,7 @@
  Guid="0f1b6b31-a810-45c1-9216-78ca3ae96ddd"
 >Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) )</PreCondition><PreCondition
  Guid="0ed05306-8475-4f3f-acea-a2d6579df2ae"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P ( Odometry.TrainSpeed(), False )</PreCondition><PreCondition
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_P ( Odometry.TrainSpeed(), False )</PreCondition><PreCondition
  Guid="792c9f4e-dec9-43d5-ad6d-038c3737a93f"
 >SpeedOfTarget() &lt; Odometry.TrainSpeed()</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -185,17 +248,38 @@
 </ReqRef><Comment>Trigger 5: True if V is between the MRSP speed and the MRSP warning speed, and if the front end is in rear of the indication location.</Comment>
 <Cases>
 <Case
- Name="Trigger condition fulfilled"
+ Name="EOA and SvL - Trigger conditions fulfilled"
+ Guid="c0b9d527-25ba-4c7d-917e-79db487944b3"
+>
+<PreConditions>
+<PreCondition
+ Guid="ea058977-9aa3-4a2a-aca0-d84672eb81be"
+>Odometry.TrainSpeed() &gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition><PreCondition
+ Guid="9a170c78-605b-4d4b-89fb-fb294b836b34"
+>Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_warning(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))</PreCondition><PreCondition
+ Guid="7d512598-3d29-421b-95bb-a8fce77a02b6"
+>TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I_Target(
+    Vest =&gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)),
+    aTarget =&gt; MA.SvL()
+)
+  AND  
+TrainPosition.FrontEndPosition(DistanceInterval.Nom) &lt;= d_I_Target(
+    Vest =&gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)),
+    aTarget =&gt; MA.ClosestEOA()
+)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="MRSP target or LOA - Trigger condition fulfilled"
  Guid="2db9bb5e-952a-4ba8-af80-55bfaccbc14e"
 >
 <PreConditions>
 <PreCondition
  Guid="a0662bd2-d674-48b2-a779-e47c84d847d9"
->MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) &lt; Odometry.TrainSpeed()</PreCondition><PreCondition
+>MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) &lt; Odometry.TrainSpeed()</PreCondition><PreCondition
  Guid="23ac3f1b-42d8-4f5e-a3c5-678b0265e2ab"
 >Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="79d1c420-2608-4faa-a10d-461c0d543deb"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition></PreConditions>
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -227,7 +311,40 @@
 </ReqRef><Comment>Trigger 6: True if V is between the MRSP speed and the MRSP warning speed, and if the front end is between the indication location and the warning distance for V.</Comment>
 <Cases>
 <Case
- Name="Trigger condition fulfilled"
+ Name="EOA and SvL - Trigger conditions fulfilled"
+ Guid="0beb63d1-aba8-4340-8010-136e8b8e74bc"
+>
+<PreConditions>
+<PreCondition
+ Guid="697254df-fd0a-4df1-811b-c6d5c266723f"
+>Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_warning(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)))</PreCondition><PreCondition
+ Guid="4c7b7eea-de86-458b-970c-d0ed1d5d1bd2"
+>Odometry.TrainSpeed() &gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition><PreCondition
+ Guid="ac3fff62-f1e0-4cc7-8396-8d882a8f3736"
+>(
+TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I_Target(
+    Vest =&gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)),
+    aTarget =&gt; MA.SvL() )
+    OR  
+TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt; d_I_Target(
+    Vest =&gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)),
+    aTarget =&gt; MA.ClosestEOA() )
+)
+
+  AND  
+
+(
+TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_W_Target(
+    Vest =&gt; Odometry.TrainSpeed(),
+    aTarget =&gt; MA.SvL() )
+  AND  
+TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &lt;= d_W_Target(
+    Vest =&gt; Odometry.TrainSpeed(),
+    aTarget =&gt; MA.ClosestEOA() )
+)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="MRSP target or LOA - Trigger condition fulfilled"
  Guid="ba3bceba-575d-4cfe-863f-7b13981fd406"
 >
 <PreConditions>
@@ -237,9 +354,9 @@
  Guid="413c079d-224c-4d95-8004-146c1419a9d8"
 >Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="19bb6ad6-bb93-4162-91b8-887f69b2f0c8"
->d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; TrainPosition.FrontEndPosition(DistanceInterval.Max)</PreCondition><PreCondition
+>d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)</PreCondition><PreCondition
  Guid="c4d9e3c3-4232-47e2-9094-a10709e346c4"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_W ( Odometry.TrainSpeed(), False )</PreCondition></PreConditions>
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_W ( Odometry.TrainSpeed(), False )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -271,7 +388,28 @@
 </ReqRef><Comment>Trigger 7: True if V is between the warning speed of target and the MRSP warning speed, and if the front end is beyong the warning distance for V.</Comment>
 <Cases>
 <Case
- Name="Trigger condition fulfilled"
+ Name="EOA and SvL - Trigger conditions fulfilled"
+ Guid="ec56264e-86dd-456b-a1ff-508ece12b841"
+>
+<PreConditions>
+<PreCondition
+ Guid="a35a1039-f912-422c-bc48-1d918c4b32d9"
+>ReleaseSpeedMonitoring.ReleaseSpeed &lt; Odometry.TrainSpeed()</PreCondition><PreCondition
+ Guid="68260460-f757-4cb6-9117-d32b41e6242c"
+>Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_warning(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))</PreCondition><PreCondition
+ Guid="eb49a539-7a7f-4f4c-911a-2613f043ea76"
+>TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_W_Target(
+    Vest =&gt; Odometry.TrainSpeed(),
+    aTarget =&gt; MA.SvL()
+)
+  OR  
+TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; d_W_Target(
+    Vest =&gt; Odometry.TrainSpeed(),
+    aTarget =&gt; MA.ClosestEOA()
+)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="MRSP target or LOA - Trigger condition fulfilled"
  Guid="ed30bc4a-a69c-4209-a3e4-837a6726cad1"
 >
 <PreConditions>
@@ -281,7 +419,7 @@
  Guid="b500a741-0746-4a18-9ae0-1e85ef4271a1"
 >Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_warning ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="39d15eb8-2682-4398-b90f-e09db7a20150"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_W ( Odometry.TrainSpeed(), False )</PreCondition></PreConditions>
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_W ( Odometry.TrainSpeed(), False )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -313,7 +451,28 @@
 </ReqRef><Comment>Trigger 8: True if Vis between the MRSP warning speed and the MRSP SBI speed, and if the front end is beyond the indication location.</Comment>
 <Cases>
 <Case
- Name="Trigger condition fulfilled"
+ Name="EOA and SvL - Trigger conditions fulfilled"
+ Guid="bc3cd16a-e8df-4852-80da-fcd57d6fa131"
+>
+<PreConditions>
+<PreCondition
+ Guid="cf73e62e-3f3c-4b89-956c-9a4d32f2dece"
+>MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_warning(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))  &lt;  Odometry.TrainSpeed()</PreCondition><PreCondition
+ Guid="13232c71-e9d9-492b-a8ca-d13750aa5146"
+>Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_sbi(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))</PreCondition><PreCondition
+ Guid="498da79d-c744-4203-bb43-041d3c4806fe"
+>TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt; d_I_Target(
+    Vest =&gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)),
+    aTarget =&gt; MA.SvL()
+)
+  OR  
+TrainPosition.FrontEndPosition(DistanceInterval.Nom) &lt;= d_I_Target(
+    Vest =&gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)),
+    aTarget =&gt; MA.ClosestEOA()
+)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="MRSP target or LOA - Trigger condition fulfilled"
  Guid="20933763-b87b-4bf7-ab53-7119bba2d16a"
 >
 <PreConditions>
@@ -323,7 +482,7 @@
  Guid="e4c99a45-65ec-4585-95de-683bfd06fc32"
 >Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="bedb0b95-76c5-450c-8d99-e36eae71a2e9"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I ( Odometry.TrainSpeed() )</PreCondition></PreConditions>
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I ( Odometry.TrainSpeed() )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -355,7 +514,42 @@
 </ReqRef><Comment>Trigger 9: True if V is between the MRSP warning and SBI speeds, and if the front end is between the indication location and the FLOI distance for V.</Comment>
 <Cases>
 <Case
- Name="Trigger condition fulfilled"
+ Name="EOA and SvL - Trigger conditions fulfilled"
+ Guid="39c3284d-3d0b-4584-b706-daf8d78d1d8b"
+>
+<PreConditions>
+<PreCondition
+ Guid="56dd96fd-5cf3-4d8b-afb7-0afb0fc451b6"
+>MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_warning(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))  &lt; Odometry.TrainSpeed()</PreCondition><PreCondition
+ Guid="85529716-5270-4dee-a9b6-8725853dfae9"
+>Odometry.TrainSpeed()  &lt;=  MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_sbi(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))</PreCondition><PreCondition
+ Guid="b74a54af-2191-47ce-b256-ce1909d22c61"
+>(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I_Target(
+    Vest =&gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Max)),
+    aTarget =&gt; MA.SvL() )
+    OR    
+TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; d_I_Target(
+    Vest =&gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)),
+    aTarget =&gt; MA.ClosestEOA() )
+)
+
+  AND  
+
+(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_SBI2(
+    Vest =&gt; Odometry.TrainSpeed(),
+    aTarget =&gt; MA.SvL(),
+    EstimatedAccelerationSetToZero =&gt; False )
+    AND    
+TrainPosition.FrontEndPosition(DistanceInterval.Nom) &lt;= d_SBI1(
+    Vest =&gt; Odometry.TrainSpeed(),
+    EstimatedAccelerationSetToZero =&gt; False
+)
+)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="MRSP target or LOA - Trigger condition fulfilled"
  Guid="8425461c-f75f-42f6-8fe4-a064555e00d3"
 >
 <PreConditions>
@@ -365,9 +559,9 @@
  Guid="7960a7bd-aa52-4d3d-8798-ee8036caba77"
 >Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="13c85266-668b-4739-b924-950683628d85"
->d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; TrainPosition.FrontEndPosition(DistanceInterval.Max)</PreCondition><PreCondition
+>d_I ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) ) &lt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)</PreCondition><PreCondition
  Guid="4393a00c-8805-4c6b-850c-9e96b136adce"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_SBI2(
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_SBI2(
     Vest=&gt;Odometry.TrainSpeed(),
     aTarget=&gt;MRDT(),
     EstimatedAccelerationSetToZero=&gt;False
@@ -403,7 +597,29 @@
 </ReqRef><Comment>Trigger 10: True if V between speed of target and SBI speed, and if front end in rear of FLOI</Comment>
 <Cases>
 <Case
- Name="Trigger condition fulfilled"
+ Name="EOA and SvL - Trigger conditions fulfilled"
+ Guid="7cfc204d-8db7-4b59-8f4b-bd92640280d4"
+>
+<PreConditions>
+<PreCondition
+ Guid="3c4afc76-27f9-4694-8fad-3057f5ea8a07"
+>ReleaseSpeedMonitoring.ReleaseSpeed &lt; Odometry.TrainSpeed()</PreCondition><PreCondition
+ Guid="c7f073f8-260b-4b35-bede-4be01887b319"
+>Odometry.TrainSpeed()  &lt;=  MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_sbi(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))</PreCondition><PreCondition
+ Guid="43cfa677-694e-4c1b-968a-0b887d27e12b"
+>TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_SBI2(
+    Vest =&gt; Odometry.TrainSpeed(),
+    aTarget =&gt; MA.SvL(),
+    EstimatedAccelerationSetToZero =&gt; False
+)
+  OR  
+TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; d_SBI1(
+    Vest =&gt; Odometry.TrainSpeed(),
+    EstimatedAccelerationSetToZero =&gt; False
+)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="MRSP target or LOA - Trigger condition fulfilled"
  Guid="5c4828b1-0a48-4d0a-a431-c8d2e4d06db0"
 >
 <PreConditions>
@@ -413,7 +629,7 @@
  Guid="f9c78069-1a68-40f0-b9cc-907fcacd3346"
 >Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom ) ) )</PreCondition><PreCondition
  Guid="e36cfb52-bdf1-4442-bbc1-c26fecadb017"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_SBI2(
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_SBI2(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; MRDT(),
     EstimatedAccelerationSetToZero =&gt; False
@@ -450,7 +666,28 @@
 </ReqRef><Comment>Trigger 11: True if V between SBI speed and EBI speed, and front end in rear of indication location.</Comment>
 <Cases>
 <Case
- Name="Trigger condition fulfilled"
+ Name="EOA and SvL - Trigger conditions fulfilled"
+ Guid="fef6e571-9ff0-4c31-8adc-6b762d06b84b"
+>
+<PreConditions>
+<PreCondition
+ Guid="8d60acbf-9fa8-42e3-b1e7-3ae1e7f26625"
+>MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_sbi(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))  &lt;  Odometry.TrainSpeed()</PreCondition><PreCondition
+ Guid="75c54332-9a82-42de-bf5b-c23064138beb"
+>Odometry.TrainSpeed()  &lt;=  MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_ebi(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))</PreCondition><PreCondition
+ Guid="6f84ab62-4a0a-46f5-a1b9-539cf0c4c8ec"
+>TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I_Target(
+    Vest =&gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Max)),
+    aTarget =&gt; MA.SvL()
+)
+  AND  
+TrainPosition.FrontEndPosition(DistanceInterval.Nom) &lt;= d_I_Target(
+    Vest =&gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Max)),
+    aTarget =&gt; MA.ClosestEOA()
+)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="MRSP target or LOA - Trigger condition fulfilled"
  Guid="103cd448-689f-4944-a9c6-cb6f24307ac2"
 >
 <PreConditions>
@@ -493,7 +730,34 @@
 </ReqRef><Comment>Trigger 12: True if V between the MRSP SBI and EBI speeds, and if front end is beyond the indication location and in rear of the EBI distance for V.</Comment>
 <Cases>
 <Case
- Name="Trigger condition fulfilled"
+ Name="EOA and SvL - Trigger conditions fulfilled"
+ Guid="4099fbf5-84a9-430e-9ee7-e1f9815af3c3"
+>
+<PreConditions>
+<PreCondition
+ Guid="a9b8f7a2-bce8-4098-b31d-21fc11c97695"
+>(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I_Target(
+    Vest =&gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Max)),
+    aTarget =&gt; MA.SvL() )
+    OR  
+TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; d_I_Target(
+    Vest =&gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)),
+    aTarget =&gt; MA.ClosestEOA() )
+)
+
+  AND  
+
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_EBI(
+    Vest =&gt; Odometry.TrainSpeed(),
+    aTarget =&gt; MRDT() )</PreCondition><PreCondition
+ Guid="8724f5ef-1327-466d-b33d-f5a87e1ecf5b"
+>MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_sbi(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))  &lt;  Odometry.TrainSpeed()</PreCondition><PreCondition
+ Guid="20736e6a-7c98-4c0b-a762-0d72acf8f825"
+>Odometry.TrainSpeed()  &lt;=  MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_ebi(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="MRSP target or LOA - Trigger condition fulfilled"
  Guid="4268be01-a895-4a34-b6c1-2472ae2e7c48"
 >
 <PreConditions>
@@ -578,7 +842,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7ba98a7a-7879-45c4-9f9d-12a7b43ebab5"
 >
-</ReqRef><Comment>Trigger 14: True if V is greater than the MRSP EBI speed adn the max safe front end is before the indication location at MRSP speed</Comment>
+</ReqRef><Comment>Trigger 14: True if V is greater than the MRSP EBI speed and the max safe front end is before the indication location at MRSP speed</Comment>
 <Cases>
 <Case
  Name="Trigger condition fulfilled"
@@ -587,9 +851,9 @@
 <PreConditions>
 <PreCondition
  Guid="1512cc48-9a37-4f3a-ac6b-c9705cf73b9f"
->Odometry.TrainSpeed() &gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_ebi(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))</PreCondition><PreCondition
+>Odometry.TrainSpeed() &gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_ebi(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)))</PreCondition><PreCondition
  Guid="d9fd0fbe-8710-452e-8742-cc23353002c2"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))</PreCondition></PreConditions>
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)))</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -924,6 +1188,8 @@ MA.IsSvL(MRDT())</PreCondition><PreCondition
  Type="Boolean"
  Cacheable="TRUE"
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="t15"
  Guid="e2e4425e-13b6-41c7-8ea6-53ed16f8d832"
@@ -941,21 +1207,354 @@ MA.IsSvL(MRDT())</PreCondition><PreCondition
 </ReqRef><Comment>Trigger 15: True if V is greater than the MRSP EBI speed adn the max safe front end is after the indication location at MRSP speed</Comment>
 <Cases>
 <Case
- Name="Trigger condition fulfilled"
+ Name="EOA and SvL - Trigger conditions fulfilled"
+ Guid="91192e5c-b467-4a08-9d67-9791b131db47"
+>
+<PreConditions>
+<PreCondition
+ Guid="a39f9b15-23ff-4264-bb8e-bb0463ac19b4"
+>Odometry.TrainSpeed() &gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_ebi(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)))</PreCondition><PreCondition
+ Guid="c0f2e618-dbcc-4130-b200-7d7a73cbac8c"
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
+    Vest =&gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
+    aTarget =&gt; MA.SvL()
+)
+  AND  
+TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt; d_I_Target(
+    Vest =&gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)),
+    aTarget =&gt; MA.ClosestEOA()
+)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="MRSP target or LOA - Trigger condition fulfilled"
  Guid="fb0a9609-f3bc-473d-92b1-1df0e0b458e3"
 >
 <PreConditions>
 <PreCondition
  Guid="ea46ae48-78b4-4790-9527-dc43bc1a6796"
->Odometry.TrainSpeed() &gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_ebi(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))</PreCondition><PreCondition
+>Odometry.TrainSpeed() &gt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) + CeilingSpeedMonitoring.dV_ebi(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)))</PreCondition><PreCondition
  Guid="cd77289b-948e-4ee1-a3ce-73dc3e7b6637"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom)))</PreCondition></PreConditions>
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I(MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)))</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="4b8eff0c-c0da-4290-b161-a229d3a84bae"
 >
 <Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="d_I_Target"
+ Guid="38af83dd-4335-4ecf-97a6-7ee63ed47cb7"
+>
+<ReqRef
+ Id="1251578c-995d-485e-8833-f418b93e1471"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1e55787a-fe5d-4ecd-8905-8a3e214547f4"
+>
+</ReqRef><ReqRef
+ Id="fcfd3391-2ee8-4a16-8cdb-470f53e81f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3a50a6b4-e50a-40c2-91d5-0c9f068e8ac2"
+>
+</ReqRef><ReqRef
+ Id="9d47bdf0-6549-4af1-8d8a-a36c0d505ec3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a818eebb-918c-4958-ad25-c8ca03cd70ad"
+>
+</ReqRef><ReqRef
+ Id="c8774e4f-d138-4cf7-9fda-5f6a29c50cf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ff0e00f4-7eb3-4ed3-8942-36155137286a"
+>
+</ReqRef><Comment>Provide the distance d_I for a given target and for the current MRSP speed</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vest"
+ Guid="a679d79b-6b64-4bad-8798-bde3ea65acb4"
+>
+</Parameter><Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="a5d96bf6-4309-4789-9c0f-1b38496becaf"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Below P"
+ Guid="7f0f2991-3d1c-4e65-b84b-a0f40ec183d1"
+>
+<PreConditions>
+<PreCondition
+ Guid="75e42f83-db8f-4d4a-b665-78c3f4d685f3"
+>Vest &lt;= CeilingSpeedMonitoring.P ( InterventionValue_Target( aTarget =&gt; aTarget, Vest =&gt; Vest ) )
+  OR  
+d_P_Target( aTarget =&gt; aTarget, Vest =&gt; Vest ) == Default.BaseTypes.Distance.Infinity</PreCondition></PreConditions>
+<Expression>d_P_Target ( aTarget =&gt; aTarget, Vest =&gt; Vest ) - BaseTypes.SpeedToMS ( Vest ) * DecelerationCurves.T_indication ()</Expression>
+</Case><Case
+ Name="Above P"
+ Guid="c3779180-f639-4e07-bece-71f219661b84"
+>
+<Expression>IntersectAt ( FunctionA =&gt; CeilingSpeedMonitoring.P, FunctionB =&gt; InterventionValue_Target(aTarget =&gt; aTarget, Vest =&gt; Vest) )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="d_P_Target"
+ Guid="187628d7-1f8a-47f4-8cf0-1989afffce5d"
+>
+<ReqRef
+ Id="c8774e4f-d138-4cf7-9fda-5f6a29c50cf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c682b272-9537-479d-83af-da5eeb3f6618"
+>
+</ReqRef><ReqRef
+ Id="1251578c-995d-485e-8833-f418b93e1471"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7b23b91-4c41-4a40-b4f2-a086b6886ba9"
+>
+</ReqRef><ReqRef
+ Id="fcfd3391-2ee8-4a16-8cdb-470f53e81f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae572195-5cd3-435d-a414-c01e34262f5e"
+>
+</ReqRef><ReqRef
+ Id="b1bf47d0-d27a-404a-af99-2117b6bd616b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ac7ab7c9-11d9-4be8-bdd4-8d02cfad1daf"
+>
+</ReqRef><ReqRef
+ Id="0c5eaae4-4be7-4f73-ba4d-93cbbc028872"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae1e67a8-cbcf-4e20-b8cf-c1c31bb2746d"
+>
+</ReqRef><Comment>Provide the distance d_P fore the given target at the current MRSP speed.</Comment>
+<Parameters>
+<Parameter
+ Type="Target"
+ Name="aTarget"
+ Guid="b58b45bb-a4c8-495c-9a62-6b4931d211f9"
+>
+</Parameter><Parameter
+ Type="BaseTypes.Speed"
+ Name="Vest"
+ Guid="bc46c78e-bd91-4056-be71-83dc179d5819"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Target is EOA, SBI1 unknown"
+ Guid="01ed4180-15c2-4b52-9992-e2da50549afc"
+>
+<PreConditions>
+<PreCondition
+ Guid="57ec7043-b3d1-4a71-83da-5e50c589ce94"
+>MA.IsEOA(aTarget)</PreCondition><PreCondition
+ Guid="33092ea4-1ff1-4fd2-8dc7-edac24989de3"
+>d_SBI1(Vest, False) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>BaseTypes.Distance.Infinity</Expression>
+</Case><Case
+ Name="EBD based target, distance unknown"
+ Guid="2282fd97-9b10-467b-82da-c856cfbb0f92"
+>
+<PreConditions>
+<PreCondition
+ Guid="13250617-f02f-44c1-afbf-b1bcac4bd983"
+>d_SBI2(
+    Vest =&gt; Vest,
+    aTarget =&gt; aTarget,
+    EstimatedAccelerationSetToZero =&gt; False
+) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>BaseTypes.Distance.Infinity</Expression>
+</Case><Case
+ Name="GUI inhibited, target is EOA"
+ Guid="e10687c2-894c-4b95-a293-4ff0b2eda62d"
+>
+<PreConditions>
+<PreCondition
+ Guid="7bbfaff1-7776-42b9-b431-29088d9c7eb3"
+>MA.IsEOA(aTarget)</PreCondition><PreCondition
+ Guid="57b898c1-dc92-4e49-9bfa-1e4d65ba059b"
+>NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
+<Expression>d_SBI1(Vest, False) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver</Expression>
+</Case><Case
+ Name="GUI inhibited, EBD based target"
+ Guid="0cb556fd-fe05-402a-8018-62a77936af8d"
+>
+<PreConditions>
+<PreCondition
+ Guid="fd0ca0dd-2692-4e25-af6e-b9997a25cd2a"
+>NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
+<Expression>d_SBI2(
+    Vest =&gt; Vest,
+    aTarget =&gt; aTarget,
+    EstimatedAccelerationSetToZero =&gt; False
+) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver</Expression>
+</Case><Case
+ Name="GUI enabled, target is EOA"
+ Guid="1a97b839-c0ea-49d7-9973-e4f7d632d92a"
+>
+<PreConditions>
+<PreCondition
+ Guid="478855f8-d95e-4998-8962-0cd6698978e9"
+>MA.IsEOA(aTarget)</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MinDistance (
+    X1 =&gt; d_SBI1 ( Vest, False ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver,
+    X2 =&gt; DistanceForSpeed ( Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; GUI_Target ( Distance =&gt; d, aTarget =&gt; aTarget ), Speed =&gt; Vest ) )</Expression>
+</Case><Case
+ Name="GUI enabled, EBD based target"
+ Guid="3dbf0857-8f60-4d22-855c-44f3c0dff430"
+>
+<Expression>Default.BaseTypes.MinDistance (
+    X1 =&gt; d_SBI2 ( aTarget =&gt; aTarget, Vest =&gt; Vest, EstimatedAccelerationSetToZero =&gt; False ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver,
+    X2 =&gt; DistanceForSpeed ( Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; GUI_Target ( Distance =&gt; d, aTarget =&gt; aTarget ), Speed =&gt; Vest ) )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="InterventionValue_Target"
+ Guid="9ccc86b6-ab05-4408-ae56-905406d3841e"
+>
+<ReqRef
+ Id="9d47bdf0-6549-4af1-8d8a-a36c0d505ec3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5b3ddc6c-aa1f-48e5-92b9-b31117e97a30"
+>
+</ReqRef><Comment>Provides the location corresponding to the intervention location for the provided speed and target.</Comment>
+<Parameters>
+<Parameter
+ Type="Target"
+ Name="aTarget"
+ Guid="c02d7eed-d37a-432d-8aae-271c683cfd82"
+>
+</Parameter><Parameter
+ Type="BaseTypes.Speed"
+ Name="Vest"
+ Guid="b50aac75-365c-443a-96f9-ea95ded78096"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="0a1cc5d7-b391-4c01-9afc-d402128dcef7"
+>
+<Expression>d_P_Target ( aTarget =&gt; aTarget, Vest =&gt; Vest ) - BaseTypes.SpeedToMS ( Vest ) * DecelerationCurves.T_indication ()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="GUI_Target"
+ Guid="e6053307-7c90-46ee-81b4-ba4a6f72999a"
+>
+<ReqRef
+ Id="74a35017-250f-4c6f-948c-0c08da4f4b05"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="97b0df39-cb05-40d2-987c-6dcf802a9292"
+>
+</ReqRef><Comment>Provides the GUI curve for the given target</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="Distance"
+ Guid="553dece7-b16e-48eb-8225-7aa81cc35199"
+>
+</Parameter><Parameter
+ Type="Target"
+ Name="aTarget"
+ Guid="8cf06f07-a0c3-44d7-9881-e6bde59c1a64"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="7354240a-011b-4614-9393-10a3496e9da6"
+>
+<Expression>FullDecelerationForTarget(
+    Target =&gt; aTarget,
+    DecelerationFactor =&gt; TrainData.BrakingParameters.A_normal_service 
+)(Distance)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="d_W_Target"
+ Guid="36d7c7f7-b625-4f05-8c1b-3828081ae828"
+>
+<ReqRef
+ Id="c8774e4f-d138-4cf7-9fda-5f6a29c50cf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2878e479-f90b-49e9-b83a-8b8722ac9594"
+>
+</ReqRef><ReqRef
+ Id="1251578c-995d-485e-8833-f418b93e1471"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="793e0d7b-6063-4092-a105-e59137b4c3ed"
+>
+</ReqRef><ReqRef
+ Id="fcfd3391-2ee8-4a16-8cdb-470f53e81f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aa78e1fa-957a-4642-8f6a-f8e962c7aeff"
+>
+</ReqRef><ReqRef
+ Id="489ea7da-1016-4fd4-8a89-0ce129ff23a5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="85d22f0a-301a-41f0-afbf-e87182a36bcf"
+>
+</ReqRef><Comment>Provide the distance d_W for the given target.</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Speed"
+ Name="Vest"
+ Guid="858de658-9932-4f69-bf0c-a532d954bb11"
+>
+</Parameter><Parameter
+ Type="Target"
+ Name="aTarget"
+ Guid="b411cfd0-85d0-4d65-8c4f-51a05f00f016"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Supervised target is the EOA"
+ Guid="56f5504f-4623-45f1-a42e-25eaf3e5ec0d"
+>
+<PreConditions>
+<PreCondition
+ Guid="b85276fe-720f-482b-8dab-dd3ab55633c9"
+>MA.IsEOA(aTarget)</PreCondition></PreConditions>
+<Expression>d_SBI1( Vest, False ) - BaseTypes.SpeedToMS ( Vest ) * T_warning</Expression>
+</Case><Case
+ Name="Supervised target is an EBD based target"
+ Guid="b013cd22-029f-4431-b065-367593d90bc6"
+>
+<Expression>d_SBI2 (
+    Vest =&gt; Vest,
+    aTarget =&gt; aTarget,
+    EstimatedAccelerationSetToZero =&gt; False
+) - BaseTypes.SpeedToMS ( Vest ) * T_warning</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -1041,6 +1640,7 @@ MA.IsSvL(MRDT())</PreCondition><PreCondition
  Guid="c6b49d0d-967e-4207-bdc5-c3a7c252a213"
 >Monitoring &lt;- MonitoringTypeSM.Target.Normal</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="t15"
  Guid="37df0060-9efb-4f98-841d-19d29a27ebd7"
 >
@@ -1049,7 +1649,8 @@ MA.IsSvL(MRDT())</PreCondition><PreCondition
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8bf10e01-aa90-4c63-89ae-64a8482c0a1a"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Trigger 15: V greater than V_MRSP + dV_ebi. Train front end before d_I. Intervention Status.</Comment>
+<PreConditions>
 <PreCondition
  Guid="9874f794-ccac-436b-99a9-7ea4fa2307c5"
 >t15()</PreCondition></PreConditions>
@@ -1074,7 +1675,7 @@ MA.IsSvL(MRDT())</PreCondition><PreCondition
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5d9924c5-a617-454c-ab38-6fc6150cf5e9"
 >
-</ReqRef><Comment>Trigger 14: V greater than V_MRSP + dV_ebi. Intervention Status.</Comment>
+</ReqRef><Comment>Trigger 14: V greater than V_MRSP + dV_ebi. Train front end before d_I. Intervention Status.</Comment>
 <PreConditions>
 <PreCondition
  Guid="afbeabf3-73a0-480f-90b7-9ca035f36346"
@@ -1100,7 +1701,7 @@ MA.IsSvL(MRDT())</PreCondition><PreCondition
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="67713a3f-29b9-489b-b16e-a18a502ea2f4"
 >
-</ReqRef><Comment>Trigger 13: V between V_Release and V_MRSP + dV_ebi. Train front end position above d_...</Comment>
+</ReqRef><Comment>Trigger 13: V between V_Release and V_MRSP + dV_ebi. Train front end position above d_</Comment>
 <PreConditions>
 <PreCondition
  Guid="ac178ee5-75c9-4017-a31b-77f5a5712b55"
