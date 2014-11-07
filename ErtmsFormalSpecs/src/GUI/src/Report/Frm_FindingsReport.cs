@@ -139,7 +139,7 @@ namespace GUI.Report
             reportHandler.Name = "Findings report";
 
             reportHandler.addQuestions = CB_ShowQuestions.Checked;
-            reportHandler.addRemarks = CB_ShowComments.Checked;
+            reportHandler.addComments = CB_ShowComments.Checked;
             reportHandler.addBugs = CB_ShowBugs.Checked;
 
             Hide();

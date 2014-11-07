@@ -25,7 +25,7 @@ namespace Reports.Specs
     public class FindingsReportHandler : ReportHandler
     {
         public bool addQuestions { set; get; }
-        public bool addRemarks { set; get; }
+        public bool addComments { set; get; }
         public bool addBugs { set; get; }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Reports.Specs
         {
             createFileName("FindingsReport");
             addQuestions = false;
-            addRemarks = false;
+            addComments = false;
             addBugs = false;
         }
 
@@ -52,22 +52,22 @@ namespace Reports.Specs
             retVal.Info.Subject = "Subset-076 findings report";
 
             FindingsReport report = new FindingsReport(retVal);
-            if (addQuestions)
-            {
-                Log.Info("..generating questions");
-                report.CreateQuestionsArticle(this);
-            }
-
-            if (addRemarks)
-            {
-                Log.Info("..generating remarks");
-                report.CreateCommentsArticle(this);
-            }
-
             if (addBugs)
             {
                 Log.Info("..generating bugs");
                 report.CreateBugsArticle(this);
+            }
+
+            if (addComments)
+            {
+                Log.Info("..generating remarks");
+                report.CreateCommentsArticle(this);
+            }
+            
+            if (addQuestions)
+            {
+                Log.Info("..generating questions");
+                report.CreateQuestionsArticle(this);
             }
 
             return retVal;
