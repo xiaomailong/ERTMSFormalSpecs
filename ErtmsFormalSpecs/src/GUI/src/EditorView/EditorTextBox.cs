@@ -655,6 +655,7 @@ namespace GUI
             MapExpression.OPERATOR     + " <collection> | <condition> USING X IN <map_expression>",
             SumExpression.OPERATOR     + " <collection> | <condition> USING X IN <map_expression>", 
             ReduceExpression.OPERATOR  + " <collection> | <condition> USING X IN <map_expression> INITIAL_VALUE <expression>", 
+            "LET <variable> <- <expression> IN <expression>",
             "STABILIZE <expression> INITIAL_VALUE <expression> STOP_CONDITION <condition>",
             "APPLY <statement> ON <collection> | <condition>",
             "INSERT <expression> IN <collection> WHEN FULL REPLACE <condition>",

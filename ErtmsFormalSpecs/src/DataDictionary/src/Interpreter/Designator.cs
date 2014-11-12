@@ -82,7 +82,8 @@ namespace DataDictionary.Interpreter
                         {
                             if ((current is ListOperators.ListOperatorExpression) ||
                                 (current is Statement.Statement) ||
-                                (current is StabilizeExpression))
+                                (current is StabilizeExpression) ||
+                                (current is LetExpression))
                             {
                                 ISubDeclarator subDeclarator = current as ISubDeclarator;
                                 if (ISubDeclaratorUtils.ContainsValue(subDeclarator, Ref))

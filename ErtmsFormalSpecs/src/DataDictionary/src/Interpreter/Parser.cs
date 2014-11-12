@@ -15,7 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-
+using DataDictionary.Interpreter.ListOperators;
 using DataDictionary.Values;
 using DataDictionary.Interpreter.Filter;
 using System.Threading;
@@ -627,42 +627,80 @@ namespace DataDictionary.Interpreter
         {
             Expression retVal = null;
 
-            switch (expressionLevel)
+            if (expressionLevel == 0 && LookAhead("LET"))
             {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                    ///
-                    /// Binary expressions
-                    ///
-                    retVal = Expression(expressionLevel + 1);
-                    if (retVal != null)
+                int start = Index;
+
+                Match("LET");
+                string boundVariable = Identifier();
+
+                string assignOp = LookAhead(ASSIGN_OPS);
+                if (assignOp != null)
+                {
+                    Match(assignOp);
+                    Expression bindinExpression = Expression(0);
+                    if (bindinExpression != null)
                     {
-                        retVal = ExpressionContinuation(expressionLevel, retVal);
+                        Match("IN");
+                        Expression expression = Expression(0);
+                        if (expression != null)
+                        {
+                            retVal = new LetExpression(Root, RootLog, boundVariable, bindinExpression, expression, start, Index);
+                        }
+                        else
+                        {
+                            RootLog.AddError("Cannot parse expression after IN keyword");
+                        }
                     }
-                    break;
-
-                case 6:
-                    // Continuation, either by . operator, or by function call
-                    retVal = Continuation(Expression(expressionLevel + 1));
-                    break;
-
-                case 7:
-                    ///
-                    /// List operations
-                    /// 
-                    retVal = EvaluateListExpression();
-                    if (retVal == null)
+                    else
                     {
-                        ////
-                        /// Unary expressions
+                        RootLog.AddError("Cannot parse expression after " + boundVariable + " " + assignOp + " ");
+                    }
+                }
+                else
+                {
+                    RootLog.AddError("<- or => expected after " + boundVariable);
+                }
+            }
+            else
+            {
+                switch (expressionLevel)
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                        ///
+                        /// Binary expressions
+                        ///
+                        retVal = Expression(expressionLevel + 1);
+                        if (retVal != null)
+                        {
+                            retVal = ExpressionContinuation(expressionLevel, retVal);
+                        }
+                        break;
+
+                    case 6:
+                        // Continuation, either by . operator, or by function call
+                        retVal = Continuation(Expression(expressionLevel + 1));
+                        break;
+
+                    case 7:
+                        ///
+                        /// List operations
                         /// 
-                        retVal = EvaluateUnaryExpression();
-                    }
-                    break;
+                        retVal = EvaluateListExpression();
+                        if (retVal == null)
+                        {
+                            ////
+                            /// Unary expressions
+                            /// 
+                            retVal = EvaluateUnaryExpression();
+                        }
+                        break;
+                }
             }
 
             return retVal;
