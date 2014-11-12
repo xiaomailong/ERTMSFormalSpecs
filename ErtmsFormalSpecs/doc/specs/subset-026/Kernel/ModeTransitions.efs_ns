@@ -1610,7 +1610,7 @@ TrackDescription.StaticSpeedProfile.SSP != []
   AND
 TrackDescription.Gradient.Gradients != []
   AND
-MA.ModeProfile.Profile == []
+NOT MA.ModeProfile.ModeProfileIsApplicable()
   AND
 Level.Value.Value == Level.L1
   AND
