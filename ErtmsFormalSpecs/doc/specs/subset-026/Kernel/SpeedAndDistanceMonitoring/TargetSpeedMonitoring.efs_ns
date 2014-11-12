@@ -744,7 +744,8 @@ V_P_EBD_Target
 >
 <Expression>BaseTypes.MinSpeed(
     X1 =&gt; V_P_MRDT(),
-    X2 =&gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )</Expression>
+    X2 =&gt; MRSP.V_MRSP()
+)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -793,7 +794,7 @@ V_P_EBD_Target
         Dmaxsafefrontend=&gt;TrainPosition.FrontEndPosition(DistanceInterval.Max),
         Vtarget=&gt;MRDT().Speed,
         EstimatedAccelerationSetToZero=&gt;False),
-    X2 =&gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) + CeilingSpeedMonitoring.dV_sbi ( MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) )
+    X2 =&gt; MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_sbi ( MRSP.V_MRSP() )
     )
 )</Expression>
 </Case></Cases>

@@ -532,5 +532,38 @@
 >
 <Expression>BaseTypes.MaxSpeedFunction(Distance)</Expression>
 </Case></Cases>
+</Function><Function
+ Type="BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ Implemented="TRUE"
+ Name="V_MRSP"
+ Guid="48eb7335-9933-444f-b34f-5a1529d1baa7"
+>
+<ReqRef
+ Id="7da2c959-4215-45b4-b239-3b315d76277c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bc56ed5b-9004-4e41-bd0c-78505480489e"
+>
+</ReqRef><Comment>Returns the value of V_MRSP as used in the speed and distance monitoring commands</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="bc9e2802-635d-43c8-8a44-6790d4a05f49"
+>
+<Expression>REDUCE
+  TARGETS(
+    Targets1 =&gt; SpeedRestrictions,
+    Targets2 =&gt; EMPTY,
+    Targets3 =&gt; EMPTY
+) | TrainPosition.FrontEndPosition(DistanceInterval.Min) &lt; X.Location  AND  X.Location &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Max)
+USING X IN
+  BaseTypes.MinSpeed(
+    X1 =&gt; X.Speed,
+    X2 =&gt; RESULT
+)
+INITIAL_VALUE
+  SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Min))</Expression>
+</Case></Cases>
 </Function></Functions>
 </NameSpace>

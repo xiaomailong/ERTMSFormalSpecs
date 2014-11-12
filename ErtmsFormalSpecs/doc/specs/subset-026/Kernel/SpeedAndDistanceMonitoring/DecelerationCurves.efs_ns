@@ -378,49 +378,6 @@ Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelt
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.BaseTypes.Distance"
- Cacheable="TRUE"
- Default=""
- X="230"
- Y="520"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="FLOIComparedDistance"
- Guid="8a094575-9b75-4b4a-8646-29612c3c547c"
->
-<Comment>Determines whether the FLOI should be calculated from the EBD or the SBD, depending on which provides the closer FLOI. Depending on which one is used, distances are compared to either the max safe front end of the train or the estimated front end of the train.</Comment>
-<Cases>
-<Case
- Name="d_SBI1 and d_SBI2_MREBDT unknown"
- Guid="a0f56999-394f-4b00-b423-9c6440c834cc"
->
-<PreConditions>
-<PreCondition
- Guid="7377911b-f405-40f5-a39e-636a7d591d5f"
->TargetSpeedMonitoring.d_SBI1 ( Odometry.TrainSpeed(), False ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
- Guid="341f5ca9-bbd4-4d97-bbbd-a8d5307c471c"
->TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.TrainSpeed(), False ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Distance.Infinity</Expression>
-</Case><Case
- Name="SBI1"
- Guid="8c95a8f9-eadc-47e4-84e8-3420e2c4a336"
->
-<PreConditions>
-<PreCondition
- Guid="e862b7cc-9cf5-4c3a-afa3-53925d18277e"
->TargetSpeedMonitoring.SBI1BelowSBI2(
-    d_SBI1=&gt; TargetSpeedMonitoring.d_SBI1 ( Odometry.TrainSpeed(), False ),
-    d_SBI2=&gt; TargetSpeedMonitoring.d_SBI2_MREBDT ( Odometry.TrainSpeed(), False )
-)</PreCondition></PreConditions>
-<Expression>TrainPosition.FrontEndPosition ( Default.DistanceInterval.Nom )</Expression>
-</Case><Case
- Name="SBI2"
- Guid="5ffb4c20-ad36-48ae-b178-60417aa361bb"
->
-<Expression>TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</Expression>
-</Case></Cases>
-</Function><Function
  Type="Default.BaseTypes.Speed"
  Cacheable="TRUE"
  Default=""

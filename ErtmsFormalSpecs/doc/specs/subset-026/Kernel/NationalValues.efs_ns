@@ -2719,7 +2719,7 @@
 <PreCondition
  Guid="f7f7c12d-3963-40da-83ea-2d25e6986142"
 >ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Expression>
+<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions (TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Expression>
 </Case><Case
  Name="DefaultValues_Standstill"
  Guid="1492cda9-b98a-41ed-a5e9-08df618081eb"
@@ -2729,7 +2729,7 @@
  Name="DefaultValues_SpeedSupervisionLimitIsNoLongerExceeded"
  Guid="cb889c73-68c2-4ad3-8c17-9640a862ddaa"
 >
-<Expression>Kernel.NationalValues.DefaultValues.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Expression>
+<Expression>Kernel.NationalValues.DefaultValues.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions (TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
