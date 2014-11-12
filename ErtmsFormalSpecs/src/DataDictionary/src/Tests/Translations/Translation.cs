@@ -198,6 +198,7 @@ namespace DataDictionary.Tests.Translations
                 {
                     Rules.Action newAct = (Rules.Action)Generated.acceptor.getFactory().createAction();
                     newAct.ExpressionText = "OdometryInterface.UpdateDistance ( " + step.getDistance() + ".0 )";
+                    newSubStep.setSkipEngine(false);
                     newSubStep.appendActions(newAct);
                 }
 
