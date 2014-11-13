@@ -2505,7 +2505,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
 <Actions>
 <Action
  Guid="53eeb1fe-321f-4cd1-badf-82567a688616"
->SBTriggered &lt;- True</Action><Action
+>TIU.ServiceBrakeCommanded &lt;- True</Action><Action
  Guid="d89cc423-fae2-4789-8127-68c610145693"
 >SBSpecified &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
@@ -2520,7 +2520,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
 <Actions>
 <Action
  Guid="37d9f842-c365-4e03-8f5e-df6d7484dba6"
->EBTriggered &lt;- True</Action><Action
+>TIU.EmergencyBrakeCommanded &lt;- True</Action><Action
  Guid="fd5d023f-77fd-4fd2-8faf-4daa2289d1ad"
 >SBSpecified &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
@@ -2602,7 +2602,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
 <Actions>
 <Action
  Guid="0d9b886e-0bc6-4a1e-b674-689aabe86f85"
->EBTriggered &lt;- False</Action></Actions>
+>TIU.EmergencyBrakeCommanded &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
@@ -2622,7 +2622,7 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Guid="c69226a6-2c28-4bc4-91a1-ff49993f5956"
 >EBSpecified &lt;- False</Action><Action
  Guid="887e30d6-0424-450f-9820-8621c7adf272"
->EBTriggered &lt;- False</Action></Actions>
+>TIU.EmergencyBrakeCommanded &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2680,7 +2680,7 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2a6f82f8-80a2-4496-bfa4-445fd6c1d335"
->SBTriggered &lt;- False</Action><Action
+>TIU.ServiceBrakeCommanded &lt;- False</Action><Action
  Guid="4c3aacf3-5346-42c8-950b-be161a915d5f"
 >SBSpecified &lt;- False</Action></Actions>
 </RuleCondition><RuleCondition
@@ -2874,12 +2874,14 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5f2ab883-f8e5-4aed-ad31-ba3342346cd7"
->EBTriggered &lt;- True</Action><Action
+>TIU.EmergencyBrakeCommanded &lt;- True</Action><Action
  Guid="07dd4121-f8b5-4cd2-926b-3e6778eb77b2"
 >EBSpecified &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="370"
+ Y="120"
  Width="100"
  Height="50"
  Name="StopMonitoring"
@@ -2973,49 +2975,6 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Guid="0989ee0e-13a8-417f-9693-de3171c17c49"
 >
 </ReqRef><Comment>Indicates if SB was triggered.</Comment>
-</Variable><Variable
- Type="Boolean"
- DefaultValue="Boolean.False"
- VariableMode="Internal"
- X="180"
- Y="460"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="EBTriggered"
- Guid="34c6c135-edd7-4757-86c3-b26967d80b7d"
->
-<ReqRef
- Id="f26aa00e-0ded-4d0d-bed9-58813a2d45eb"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="18dfc03a-7711-4816-aed9-b0113d8e5a97"
->
-</ReqRef><ReqRef
- Id="e0714dd3-9891-467d-9584-cfde98bcc4fc"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="421356eb-2b78-4de0-a110-d59f1f5857c9"
->
-</ReqRef><ReqRef
- Id="b19b213b-b887-4ef8-b210-439b95753041"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e36e82e0-f29a-4357-bb33-8229c4305f00"
->
-</ReqRef><ReqRef
- Id="fb41e572-9cb9-4c36-8844-8019df4bd95e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6fb805d8-e377-4058-ab1b-cfd7d8e60c54"
->
-</ReqRef><ReqRef
- Id="987011eb-4ef7-491c-8292-26c140669ff8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bbe65d1a-9c3f-42b9-bda2-895fa04e6a54"
->
-</ReqRef><ReqRef
- Id="d5c3e2f6-7747-4faf-95c2-ec06309fe9ac"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="dde76e0f-6bde-4a1a-b962-12bc22e6802a"
->
-</ReqRef><Comment>Indicates if EB was triggered (can be triggered either if EB was specified or if SB was specified but there is no on-board interface with the service brake or the use of the service brake command is not allowed by a National Value).</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="Boolean.False"
