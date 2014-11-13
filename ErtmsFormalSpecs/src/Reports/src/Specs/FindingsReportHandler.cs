@@ -54,8 +54,8 @@ namespace Reports.Specs
             FindingsReport report = new FindingsReport(retVal);
             if (addBugs)
             {
-                Log.Info("..generating bugs");
-                report.CreateBugsArticle(this);
+                Log.Info("..generating issues");
+                report.CreateIssuesArticle(this);
             }
 
             if (addComments)

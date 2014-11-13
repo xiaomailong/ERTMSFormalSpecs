@@ -90,11 +90,11 @@ namespace Reports.Specs
         /// Creates an article for the bugs
         /// </summary>
         /// <param name="aReportConfig"></param>
-        public void CreateBugsArticle(FindingsReportHandler aReportConfig)
+        public void CreateIssuesArticle(FindingsReportHandler aReportConfig)
         {
-            AddSubParagraph("Bugs for Subset-076");
+            AddSubParagraph("Issues for Subset-076");
             AddParagraph("This section contains the " + getSection("Bugs", aReportConfig.Dictionary).SubParagraphs.Count +
-                " discovered bugs for the Subset-076 test sequences");
+                " discovered issues for the Subset-076 test sequences");
             AddParagraph("These are the findings that are errors in the test sequences. They prevent execution of the test sequence.");
             GenerateBugs(aReportConfig.Dictionary);
             CloseSubParagraph();
@@ -226,7 +226,7 @@ namespace Reports.Specs
             DataDictionary.Specification.Paragraph questions = getSection("Bugs", aDictionary);
             foreach (DataDictionary.Specification.Paragraph subparagraph in questions.SubParagraphs)
             {
-                AddSubParagraph("Bug " + subparagraph.FullId);
+                AddSubParagraph("Issue " + subparagraph.FullId);
                 AddParagraph(subparagraph.ExpressionText);
 
                 // provide the translations the paragraph references
@@ -234,6 +234,7 @@ namespace Reports.Specs
 
                 CloseSubParagraph();
             }
+            CloseSubParagraph();
         }
     }
 }
