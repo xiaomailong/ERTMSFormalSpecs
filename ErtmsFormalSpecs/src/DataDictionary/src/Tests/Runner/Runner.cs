@@ -484,7 +484,7 @@ namespace DataDictionary.Tests.Runner
             }
 
             List<VariableUpdate> updates = new List<VariableUpdate>();
-            EvaluateActivations(activations, priority, updates);
+            EvaluateActivations(activations, priority, ref updates);
             ApplyUpdates(updates);
             CheckExpectationsState(priority);
 
@@ -659,7 +659,7 @@ namespace DataDictionary.Tests.Runner
         /// Applies the selected actions and update the system state
         /// </summary>
         /// <param name="updates"></param>
-        public void EvaluateActivations(HashSet<Activation> activations, Generated.acceptor.RulePriority priority, List<Events.VariableUpdate> updates)
+        public void EvaluateActivations(HashSet<Activation> activations, Generated.acceptor.RulePriority priority, ref List<Events.VariableUpdate> updates)
         {
             Dictionary<Variables.IVariable, Change> changes = new Dictionary<Variables.IVariable, Change>();
             Dictionary<Change, VariableUpdate> traceBack = new Dictionary<Change, VariableUpdate>();
@@ -785,7 +785,7 @@ namespace DataDictionary.Tests.Runner
                     HashSet<Activation> newActivations = new HashSet<Activation>();
                     List<VariableUpdate> newUpdates = new List<VariableUpdate>();
                     rule.Evaluate(this, priority, variable, newActivations, explanation);
-                    EvaluateActivations(newActivations, priority, newUpdates);
+                    EvaluateActivations(newActivations, priority, ref newUpdates);
                     updates.AddRange(newUpdates);
                 }
 
@@ -814,7 +814,7 @@ namespace DataDictionary.Tests.Runner
                     HashSet<Activation> newActivations = new HashSet<Activation>();
                     List<VariableUpdate> newUpdates = new List<VariableUpdate>();
                     rule.Evaluate(this, priority, variable, newActivations, explanation);
-                    EvaluateActivations(newActivations, priority, newUpdates);
+                    EvaluateActivations(newActivations, priority, ref newUpdates);
                     updates.AddRange(newUpdates);
                 }
 
