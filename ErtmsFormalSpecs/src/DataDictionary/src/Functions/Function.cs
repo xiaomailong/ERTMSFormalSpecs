@@ -1100,8 +1100,8 @@ namespace DataDictionary.Functions
                 {
                     double x = 0.0;
                     double y = 0.0;
-                    Parameter formal1 = (Parameter)FormalParameters[0];
-                    Parameter formal2 = (Parameter)FormalParameters[1];
+                    Parameter formal1 = (Parameter) FormalParameters[0];
+                    Parameter formal2 = (Parameter) FormalParameters[1];
                     foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in actuals)
                     {
                         if (pair.Key.Parameter == formal1)
@@ -1124,7 +1124,7 @@ namespace DataDictionary.Functions
                     else if (FormalParameters.Count == 1)
                     {
                         double x = 0.0;
-                        Parameter formal = (Parameter)FormalParameters[0];
+                        Parameter formal = (Parameter) FormalParameters[0];
                         foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in actuals)
                         {
                             if (pair.Key.Parameter == formal)
@@ -1139,7 +1139,7 @@ namespace DataDictionary.Functions
 
                 if (useCache)
                 {
-                    ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, "Cached result = ");
+                    ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, "Caching result ");
                     ExplanationPart.SetNamable(subExplanation, retVal);
                     ExplanationPart.SetNamable(explain, retVal);
                     if (actuals.Count == 0)
@@ -1151,6 +1151,11 @@ namespace DataDictionary.Functions
                         CachedResult.SetValue(actuals, retVal);
                     }
                 }
+            }
+            else
+            {
+                ExplanationPart subExplain = ExplanationPart.CreateSubExplanation(explain, "Cached result = ");
+                ExplanationPart.SetNamable(subExplain, retVal);
             }
 
             return retVal;
