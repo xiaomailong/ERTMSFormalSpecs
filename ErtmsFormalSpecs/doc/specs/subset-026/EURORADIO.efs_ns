@@ -2114,7 +2114,30 @@ THERE_IS X IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
-</StateMachine></State><State
+</StateMachine><EnterAction>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Enter action"
+ Guid="271c51cc-18ce-49bb-b003-3de4dccf8b16"
+>
+<Comment>In the state changed to inactive, that means that the connection requests will not be sent anymore =&gt; delete the contact order.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Enter action"
+ Guid="2bd915e9-9b75-47c6-ab7d-7fb7ef35e100"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="7a74fbe9-dfd5-4afd-ac65-a26da4458a42"
+>ContactRBCOrder &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></EnterAction>
+</State><State
  X="800"
  Y="70"
  Width="100"
