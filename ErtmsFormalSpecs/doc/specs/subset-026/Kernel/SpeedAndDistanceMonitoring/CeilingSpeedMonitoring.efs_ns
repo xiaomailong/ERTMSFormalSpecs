@@ -375,10 +375,10 @@
  Name="Always"
  Guid="10689937-c663-4de7-8d80-214156b3d3b8"
 >
-<Expression>BaseTypes.MinSpeed(
-    X1 =&gt; MRSP.V_MRSP(),
-    X2 =&gt; MA.SpeedRestrictions(distance)
-)</Expression>
+<Expression>MIN(
+    First =&gt; MRSP.SpeedRestrictions,
+    Second =&gt; MA.SpeedRestrictions
+)(distance)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
