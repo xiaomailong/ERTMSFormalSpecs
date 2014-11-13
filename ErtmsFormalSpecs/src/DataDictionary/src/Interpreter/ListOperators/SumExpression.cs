@@ -154,7 +154,7 @@ namespace DataDictionary.Interpreter.ListOperators
                 retVal += " | " + Condition.ToString();
             }
 
-            retVal = retVal + " USING " + IteratorExpression.ToString();
+            retVal = retVal + " USING " + IteratorVariable.Name + " IN " + IteratorExpression.ToString();
 
             return retVal;
         }

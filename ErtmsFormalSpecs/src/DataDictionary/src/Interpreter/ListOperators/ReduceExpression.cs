@@ -195,14 +195,14 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <returns></returns>
         public override string ToString()
         {
-            string retVal = OPERATOR + " " + ListExpression.ToString();
+            string retVal = OPERATOR + ListExpression.ToString();
 
             if (Condition != null)
             {
                 retVal += " | " + Condition.ToString();
             }
 
-            retVal = retVal + " USING " + IteratorExpression.ToString() + " INITIAL_VALUE " + InitialValue.ToString();
+            retVal = retVal + " USING " + " " + IteratorVariable.Name + " IN " + IteratorExpression.ToString() + " INITIAL_VALUE " + InitialValue.ToString();
 
             return retVal;
         }

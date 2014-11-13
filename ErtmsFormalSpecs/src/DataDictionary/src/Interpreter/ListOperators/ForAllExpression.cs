@@ -91,7 +91,7 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <returns></returns>
         public override string ToString()
         {
-            string retVal = OPERATOR + " " + ListExpression.ToString();
+            string retVal = OPERATOR + " " + IteratorVariable.Name + " IN " + ListExpression.ToString();
 
             if (Condition != null)
             {
