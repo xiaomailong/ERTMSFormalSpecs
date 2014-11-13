@@ -775,16 +775,11 @@ V_P_EBD_Target
   X1 =&gt; BaseTypes.MinSpeed(
 
     X1 =&gt; BaseTypes.MaxSpeed(
-
       X1 =&gt; Vsbi1(TrainPosition.FrontEndPosition(DistanceInterval.Nom)),
       X2 =&gt; ReleaseSpeedMonitoring.ReleaseSpeed),
 
     X2 =&gt; BaseTypes.MaxSpeed(
-
-      X1 =&gt; Vsbi2(
-        Dmaxsafefrontend=&gt;TrainPosition.FrontEndPosition(DistanceInterval.Max),
-        Vtarget=&gt;MA.SvL().Speed,
-        EstimatedAccelerationSetToZero=&gt;False),
+      X1 =&gt; Vsbi2_SvL( TrainPosition.FrontEndPosition(DistanceInterval.Max) )
       X2 =&gt; ReleaseSpeedMonitoring.ReleaseSpeed)
     ),
 
@@ -1382,6 +1377,46 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreCondi
     Targets3=&gt;EMPTY
 ) | X.Location &gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)
   USING X IN X</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Vsbi2_SvL"
+ Guid="e2d8cce6-4a1e-435a-8e2b-49faa5eae4af"
+>
+<Comment>This function adds a layer of protection to the Vsbi2 when it is called by V_SBI_DMI.
+This protection is used in the case where V_SBI_DMI is calculated but the train has no MA (the JRU can do this in SR Mode)</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="Dmaxsafefrontend"
+ Guid="3c8a6b79-3cf2-4c92-9799-64ee4f57ade5"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SvL available on-board"
+ Guid="d092303d-95c0-4962-b454-269f77a194ef"
+>
+<PreConditions>
+<PreCondition
+ Guid="fa3471fb-0eac-447a-9a56-daf76ea28288"
+>Available (MA.SvL())</PreCondition></PreConditions>
+<Expression>Vsbi2(
+    Dmaxsafefrontend =&gt; Dmaxsafefrontend,
+    Vtarget =&gt; MA.SvL().Speed,
+    EstimatedAccelerationSetToZero =&gt; False
+)</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="b0c08bf3-b9dc-4921-9708-0b8bf7c2e0a5"
+>
+<Expression>0.0</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
