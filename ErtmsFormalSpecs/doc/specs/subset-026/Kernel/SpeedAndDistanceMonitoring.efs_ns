@@ -729,17 +729,17 @@ CeilingSpeedMonitoring.SupervisionStatus.r1()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="2498b6f2-ac93-4662-b5a6-8b727e05f063"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t15(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t15()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t14(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t14()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t13(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t13()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t12(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t12()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t11(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t11()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t10(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t10()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f8dbb2b7-3bb9-4241-9ff0-d2a33c0ac9a1"
@@ -762,11 +762,11 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t10(
 <PreConditions>
 <PreCondition
  Guid="5bb158cc-08a7-429c-93a2-ec05e3021c7c"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t15(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t15()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t14(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t14()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t13(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t13()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="63d51045-2717-4a15-8ede-ce3ff6fe0323"
@@ -789,11 +789,11 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t13(
 <PreConditions>
 <PreCondition
  Guid="60fd0b2f-2af3-45e7-bbab-631e3eb9a374"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t10(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t10()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t11(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t11()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t12(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="28417994-ca75-4880-ae1b-d6091d0065be"
@@ -814,11 +814,11 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t12(
 <PreConditions>
 <PreCondition
  Guid="068b8429-96c7-47fc-a0dd-eaf49f2d3ebd"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t7(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t7()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t8(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t8()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t9(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t9()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f1abbb09-b10c-4d7f-b671-6d839b9e1c6b"
@@ -839,11 +839,11 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t9(a
 <PreConditions>
 <PreCondition
  Guid="31cfbcb2-c11e-4ca7-87b1-04fa5a24d057"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t4(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t4()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t5(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t5()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t6(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t6()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b3c54d10-3d95-4bbc-80aa-855845e9ef32"
@@ -862,7 +862,7 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t6(a
 <PreConditions>
 <PreCondition
  Guid="3ba9539b-74e0-44dc-8159-829adc3984f6"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t3(aTarget)</PreCondition></PreConditions>
+>TargetSpeedMonitoring.SupervisionStatus.t3()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f2de064d-6a15-442d-b0fc-154e011cf094"
@@ -913,9 +913,9 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t6(a
 <PreConditions>
 <PreCondition
  Guid="fa08245a-da47-4f3f-8b9e-f0e1296ad148"
->FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r1(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.r1()
   OR  
-FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r2(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="994be1c9-73f3-410c-a63e-2660a8882e0d"
@@ -940,17 +940,17 @@ FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r2(aTa
 <PreConditions>
 <PreCondition
  Guid="5eafcee0-46fa-42a9-b134-5b6c946a525b"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t15(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t15()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t14(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t14()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t13(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t13()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t12(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t12()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t11(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t11()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t10(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t10()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="303ea22d-e695-4887-a955-a2d7a91ebae5"
@@ -973,11 +973,11 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t10(
 <PreConditions>
 <PreCondition
  Guid="188ed1ba-e511-47d7-93cd-e70b0b052aeb"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t15(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t15()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t14(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t14()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t13(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t13()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="081aa055-ec6c-4646-af1f-4afeffbf4d01"
@@ -1000,11 +1000,11 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t13(
 <PreConditions>
 <PreCondition
  Guid="b0a4f1ae-3b0e-4b17-899c-db1ade2629b8"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t10(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t10()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t11(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t11()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t12(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="632f5ddb-9f5f-42ab-b59a-9d6d17c2ed8c"
@@ -1025,11 +1025,11 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t12(
 <PreConditions>
 <PreCondition
  Guid="34322efe-7f5c-4c14-8d08-15f66294ea81"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t7(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t7()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t8(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t8()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t9(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t9()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0bcdb731-9edd-4a25-84d2-c2ac161e6aba"
@@ -1050,11 +1050,11 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t9(a
 <PreConditions>
 <PreCondition
  Guid="5d5ec35d-17cf-42d4-b349-521db10b473f"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t4(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t4()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t5(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t5()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t6(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t6()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d28762fe-3632-4bd2-9e7d-fe9f372261f4"
@@ -1105,9 +1105,9 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t6(a
 <PreConditions>
 <PreCondition
  Guid="c4ac1a55-f50c-40ae-a81c-857508f0401f"
->FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r1(aTarget) 
+>TargetSpeedMonitoring.SupervisionStatus.r1()
   OR  
-FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r2(aTarget) </PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3b6c3b7f-2e95-4802-87e8-7df8ab0bb099"
@@ -1132,17 +1132,17 @@ FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r2(aTa
 <PreConditions>
 <PreCondition
  Guid="e931eba7-92a4-4b09-8d6e-075479f9989d"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t15(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t15()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t14(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t14()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t13(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t13()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t12(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t12()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t11(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t11()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t10(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t10()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7020a9c2-28bc-45fb-b642-e83da6813256"
@@ -1165,11 +1165,11 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t10(
 <PreConditions>
 <PreCondition
  Guid="cd7251a7-6c58-4fc8-8d83-997cbe2b580c"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t15(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t15()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t14(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t14()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t13(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t13()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="94acb863-d948-4d74-859e-990164c85a3a"
@@ -1192,11 +1192,11 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t13(
 <PreConditions>
 <PreCondition
  Guid="fab92b84-802e-4552-9756-f67aac477d8a"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t10(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t10()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t11(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t11()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t12(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f477d1e9-f42a-4491-9b23-418f58cdf633"
@@ -1217,7 +1217,7 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t12(
 <PreConditions>
 <PreCondition
  Guid="007e56d1-04a5-42f6-9fd7-51753e17ee24"
->FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r3(aTarget) </PreCondition></PreConditions>
+>TargetSpeedMonitoring.SupervisionStatus.r3()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2b62fb88-bec1-454b-b74e-5bafacec677c"
@@ -1242,11 +1242,11 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t12(
 <PreConditions>
 <PreCondition
  Guid="32c0a323-7fed-4ace-9144-58c779c0e2cc"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t7(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t7()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t8(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t8()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t9(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t9()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6211da03-1df8-44e8-a984-8b0851819f2f"
@@ -1299,10 +1299,9 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t9(a
 <PreConditions>
 <PreCondition
  Guid="666f5a37-2c5d-48a7-abdc-0c62243c4a13"
->
-FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r1(aTarget) 
+>TargetSpeedMonitoring.SupervisionStatus.r1()
   OR  
-FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r2(aTarget) </PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="37f62c09-1939-40a0-9ec7-00f76f47cf66"
@@ -1327,17 +1326,17 @@ FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r2(aTa
 <PreConditions>
 <PreCondition
  Guid="bde799dd-0c85-4b57-ad32-a6c592731adb"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t15(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t15()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t14(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t14()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t13(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t13()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t12(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t12()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t11(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t11()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t10(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t10()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9cfeb262-e27d-4e9f-abcb-0a585094e67a"
@@ -1360,11 +1359,11 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t10(
 <PreConditions>
 <PreCondition
  Guid="a73e7dfc-8ce1-4d90-aa0b-1b3ac8718542"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t15(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t15()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t14(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t14()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t13(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t13()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0fd66ebe-a209-4b32-be08-0d771b37711c"
@@ -1387,11 +1386,11 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t13(
 <PreConditions>
 <PreCondition
  Guid="99b9f0b2-5da2-4ac1-a698-48db44aa83a4"
->THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t10(aTarget)
+>TargetSpeedMonitoring.SupervisionStatus.t10()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t11(aTarget)
+TargetSpeedMonitoring.SupervisionStatus.t11()
   OR  
-THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t12(aTarget)</PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.t12()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f57b4fee-f48c-45b6-be79-3bd814fe653a"
@@ -1412,7 +1411,7 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t12(
 <PreConditions>
 <PreCondition
  Guid="2adcbd97-7c16-4786-80af-5924bce1a3bd"
->FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r3(aTarget) </PreCondition></PreConditions>
+>TargetSpeedMonitoring.SupervisionStatus.r3()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9a2c4b84-2ba8-4c56-b740-29d7470e73e0"
@@ -1464,11 +1463,11 @@ THERE_IS aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.t12(
 <PreConditions>
 <PreCondition
  Guid="8ad546a7-3fae-409d-80a5-bd48d333a7a7"
->FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r0() 
+>TargetSpeedMonitoring.SupervisionStatus.r0() 
   OR  
-FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r1(aTarget) 
+TargetSpeedMonitoring.SupervisionStatus.r1() 
   OR  
-FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r2(aTarget) </PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a2cc4766-eba5-416a-81e7-940a838dac07"
@@ -1512,9 +1511,9 @@ FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r2(aTa
 <PreConditions>
 <PreCondition
  Guid="6e3d0029-6073-4eb3-a2ac-b9f25f0f728a"
->FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r1(aTarget) 
+>TargetSpeedMonitoring.SupervisionStatus.r1() 
   OR  
-FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r2(aTarget) </PreCondition></PreConditions>
+TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f3c53cde-2634-4974-b341-7160f20afab0"
@@ -1532,7 +1531,7 @@ FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r2(aTa
 <PreConditions>
 <PreCondition
  Guid="7a0d66ec-a534-4378-ba44-c2553e18fa8d"
->FORALL aTarget IN TargetsList() | TargetSpeedMonitoring.SupervisionStatus.r3(aTarget) </PreCondition></PreConditions>
+>TargetSpeedMonitoring.SupervisionStatus.r3()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4c209a09-ef03-4016-888c-643568a12234"

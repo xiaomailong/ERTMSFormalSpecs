@@ -1217,7 +1217,9 @@ d_P(Vest, False) == BaseTypes.Distance.Infinity</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="b5f767c0-d69b-47fb-910e-58b4f9b0ec0b"
->DecelerationCurves.EBD_TargetForSpeed(aTarget=&gt;aTarget, Vest=&gt;Vest, EstimatedAccelerationSetToZero=&gt;EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>aTarget.Location == BaseTypes.Distance.Infinity
+  OR  
+DecelerationCurves.EBD_TargetForSpeed(aTarget=&gt;aTarget, Vest=&gt;Vest, EstimatedAccelerationSetToZero=&gt;EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"

@@ -1283,6 +1283,11 @@ INITIAL_VALUE CreateTarget (
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Value"
+ Guid="d5943e59-55e7-4a4d-85cc-f9ba7ae48a02"
+>
+<Expression>aTarget == SvL()</Expression>
+</Case><Case
  Name="EOA"
  Guid="10f59b21-0503-4601-adc1-87c764ddfe9d"
 >
@@ -1391,8 +1396,8 @@ INITIAL_VALUE CreateTarget (
 >
 <PreConditions>
 <PreCondition
- Guid="f439959e-927a-4352-9bad-9ee8aa4cf1d9"
->SvLs != []</PreCondition></PreConditions>
+ Guid="00ad348e-af27-4a5d-8965-b44d5241b2c0"
+>SvLs == []</PreCondition></PreConditions>
 <Expression>REDUCE SvLs
     USING X IN ClosestTarget(
     Target1=&gt;X,
@@ -1401,11 +1406,11 @@ INITIAL_VALUE CreateTarget (
 INITIAL_VALUE CreateTarget (
     aSpeed =&gt; 0.0,
     aLocation =&gt; Default.BaseTypes.Distance.Infinity,
-    aLength =&gt; Default.BaseTypes.Distance.Infinity
+    aLength =&gt; Default.BaseTypes.Length.Infinity
  )</Expression>
 </Case><Case
  Name="No SvL"
- Guid="4c8f9718-7983-4753-b750-ab7c9bae9727"
+ Guid="4bdb7a4c-5966-440d-a6da-8633b54baea5"
 >
 <Expression>EMPTY</Expression>
 </Case></Cases>
@@ -2177,6 +2182,8 @@ Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreCond
  Type="BaseTypes.Speed"
  Cacheable="TRUE"
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SvLSpeedRestriction"
@@ -2478,7 +2485,7 @@ The information about the type of supervised target (SvL or LOA) is also stored,
 <PreCondition
  Guid="51bdba26-9465-413b-af5e-004242826ec0"
 >Available ( MA )
-  AND
+  AND  
 SvL() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
