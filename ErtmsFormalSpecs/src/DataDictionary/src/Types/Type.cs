@@ -233,6 +233,49 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        /// Indicates whether a value can be cast into this type
+        /// </summary>
+        public virtual bool CanBeCastInto
+        {
+            get { return false; }    
+        }
+
+        /// <summary>
+        /// A function which allows to cast a value as a new value of this type
+        /// </summary>
+        public Functions.Function castFunction;
+        public Functions.Function CastFunction
+        {
+            get
+            {
+                if (castFunction == null && CanBeCastInto)
+                {
+                    try
+                    {
+                        DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                        castFunction = new Functions.PredefinedFunctions.Cast(this);
+                    }
+                    finally
+                    {
+                        DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+                    }
+                }
+
+                return castFunction;
+            }
+        }
+
+        /// <summary>
+        /// Converts a value in this type
+        /// </summary>
+        /// <param name="value">The value to convert</param>
+        /// <returns></returns>
+        public virtual Values.IValue convert(Values.IValue value)
+        {
+            return null;
+        }
+
+        /// <summary>
         /// Finds all references to a specific type
         /// </summary>
         private class TypeUsageFinder : Generated.Visitor

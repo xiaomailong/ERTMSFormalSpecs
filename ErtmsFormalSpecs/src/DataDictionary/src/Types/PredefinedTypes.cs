@@ -15,6 +15,7 @@ using System;
 // --
 // ------------------------------------------------------------------------------
 using System.Collections.Generic;
+using DataDictionary.Values;
 
 namespace DataDictionary.Types
 {
@@ -349,6 +350,27 @@ namespace DataDictionary.Types
 
             return retVal;
         }
+
+        /// <summary>
+        /// One can cast into a int
+        /// </summary>
+        public override bool CanBeCastInto
+        {
+            get { return true; }
+        }
+
+        /// <summary>
+        /// Converts a value into an int value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public override IValue convert(IValue value)
+        {
+            IValue retVal = new IntValue(this, getValue(value));
+
+            return retVal;
+        }
+
     }
 
     public class DoubleType : PredefinedType
@@ -569,6 +591,26 @@ namespace DataDictionary.Types
                     }
                 }
             }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// One can cast into a double
+        /// </summary>
+        public override bool CanBeCastInto
+        {
+            get { return true; }
+        }
+
+        /// <summary>
+        /// Converts a value into a double value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public override IValue convert(IValue value)
+        {
+            IValue retVal = new DoubleValue(this, getValue(value));
 
             return retVal;
         }

@@ -47,7 +47,7 @@ namespace DataDictionary.Interpreter.Filter
         /// <returns></returns>
         public static bool Predicate(INamable value)
         {
-            return (value is Interpreter.ICallable) || (value is Types.Range);
+            return (value is Interpreter.ICallable) || (value is Types.Type);
         }
 
         /// <summary>

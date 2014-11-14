@@ -184,10 +184,10 @@ namespace DataDictionary.Interpreter
                 retVal = Called.getCalled(context, explain);
                 if (retVal == null)
                 {
-                    Types.Range range = Called.GetExpressionType() as Types.Range;
-                    if (range != null)
+                    Types.Type type = Called.GetExpressionType();
+                    if (type != null)
                     {
-                        retVal = range.CastFunction;
+                        retVal = type.CastFunction;
                     }
 
                     if (retVal == null)

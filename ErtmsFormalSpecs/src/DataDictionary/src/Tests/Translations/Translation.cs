@@ -188,34 +188,43 @@ namespace DataDictionary.Tests.Translations
             int subStepCounter = 1;
             foreach (SubStep subStep in SubSteps)
             {
-                SubStep newSubStep = (SubStep)Generated.acceptor.getFactory().createSubStep();
-                newSubStep.setSkipEngine(subStep.getSkipEngine());
-                newSubStep.Comment = subStep.Comment;
-                newSubStep.Name = subStep.Name;
-                step.appendSubSteps(newSubStep);
+                bool addSubStep = true;
 
-                if (previousStep != null && previousStep.getDistance() != step.getDistance() && subStepCounter == 1)
+                if (subStep.ReferencesMessages())
                 {
-                    Rules.Action newAct = (Rules.Action)Generated.acceptor.getFactory().createAction();
-                    newAct.ExpressionText = "OdometryInterface.UpdateDistance ( " + step.getDistance() + ".0 )";
-                    newSubStep.setSkipEngine(false);
-                    newSubStep.appendActions(newAct);
+                    addSubStep = step.Messages.Count > 0;
                 }
 
-                foreach (Rules.Action action in subStep.Actions)
+                if (addSubStep)
                 {
-                    Rules.Action newAct = (Rules.Action) action.Duplicate();
-                    newSubStep.appendActions(newAct);
-                    Review(newAct);
-                }
+                    SubStep newSubStep = (SubStep) Generated.acceptor.getFactory().createSubStep();
+                    newSubStep.setSkipEngine(subStep.getSkipEngine());
+                    newSubStep.Comment = subStep.Comment;
+                    newSubStep.Name = subStep.Name;
+                    step.appendSubSteps(newSubStep);
 
-                foreach (Expectation expectation in subStep.Expectations)
-                {
-                    Expectation newExp = (Expectation)expectation.Duplicate();
-                    newSubStep.appendExpectations(newExp);
-                    Review(newExp);
-                }
+                    if (previousStep != null && previousStep.getDistance() != step.getDistance() && subStepCounter == 1)
+                    {
+                        Rules.Action newAct = (Rules.Action) Generated.acceptor.getFactory().createAction();
+                        newAct.ExpressionText = "OdometryInterface.UpdateDistance ( " + step.getDistance() + ".0 )";
+                        newSubStep.setSkipEngine(false);
+                        newSubStep.appendActions(newAct);
+                    }
 
+                    foreach (Rules.Action action in subStep.Actions)
+                    {
+                        Rules.Action newAct = (Rules.Action) action.Duplicate();
+                        newSubStep.appendActions(newAct);
+                        Review(newAct);
+                    }
+
+                    foreach (Expectation expectation in subStep.Expectations)
+                    {
+                        Expectation newExp = (Expectation) expectation.Duplicate();
+                        newSubStep.appendExpectations(newExp);
+                        Review(newExp);
+                    }
+                }
                 subStepCounter++;
             }
         }

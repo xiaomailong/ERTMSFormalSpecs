@@ -212,11 +212,19 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        /// Indicates whether a value can be cast into this type
+        /// </summary>
+        public override bool CanBeCastInto
+        {
+            get { return true; }
+        }
+
+        /// <summary>
         /// Converts a value in this type
         /// </summary>
         /// <param name="value">The value to convert</param>
         /// <returns></returns>
-        public Values.IValue convert(Values.IValue value)
+        public override Values.IValue convert(Values.IValue value)
         {
             Values.IValue retVal = null;
 
@@ -619,32 +627,6 @@ namespace DataDictionary.Types
 
             return retVal;
         }
-
-        /// <summary>
-        /// A function which allows to cast a value as a new value of this type
-        /// </summary>
-        public Functions.Function castFunction;
-        public Functions.Function CastFunction
-        {
-            get
-            {
-                if (castFunction == null)
-                {
-                    try
-                    {
-                        DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
-                        castFunction = new Functions.PredefinedFunctions.Cast(this);
-                    }
-                    finally
-                    {
-                        DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
-                    }
-                }
-
-                return castFunction;
-            }
-        }
-
 
         /// <summary>
         /// Adds a model element in this model element

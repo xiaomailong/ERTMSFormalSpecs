@@ -636,10 +636,10 @@ namespace DataDictionary.Interpreter
 
             if (retVal == null)
             {
-                Types.Range range = GetDesignatorType() as Types.Range;
-                if (range != null)
+                Types.Type type = GetDesignatorType();
+                if (type != null)
                 {
-                    retVal = range.CastFunction;
+                    retVal = type.CastFunction;
                 }
             }
 
