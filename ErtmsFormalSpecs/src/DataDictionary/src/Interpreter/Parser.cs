@@ -15,7 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-
+using DataDictionary.Interpreter.ListOperators;
 using DataDictionary.Values;
 using DataDictionary.Interpreter.Filter;
 using System.Threading;
@@ -627,42 +627,80 @@ namespace DataDictionary.Interpreter
         {
             Expression retVal = null;
 
-            switch (expressionLevel)
+            if (expressionLevel == 0 && LookAhead("LET"))
             {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                    ///
-                    /// Binary expressions
-                    ///
-                    retVal = Expression(expressionLevel + 1);
-                    if (retVal != null)
+                int start = Index;
+
+                Match("LET");
+                string boundVariable = Identifier();
+
+                string assignOp = LookAhead(ASSIGN_OPS);
+                if (assignOp != null)
+                {
+                    Match(assignOp);
+                    Expression bindinExpression = Expression(0);
+                    if (bindinExpression != null)
                     {
-                        retVal = ExpressionContinuation(expressionLevel, retVal);
+                        Match("IN");
+                        Expression expression = Expression(0);
+                        if (expression != null)
+                        {
+                            retVal = new LetExpression(Root, RootLog, boundVariable, bindinExpression, expression, start, Index);
+                        }
+                        else
+                        {
+                            RootLog.AddError("Cannot parse expression after IN keyword");
+                        }
                     }
-                    break;
-
-                case 6:
-                    // Continuation, either by . operator, or by function call
-                    retVal = Continuation(Expression(expressionLevel + 1));
-                    break;
-
-                case 7:
-                    ///
-                    /// List operations
-                    /// 
-                    retVal = EvaluateListExpression();
-                    if (retVal == null)
+                    else
                     {
-                        ////
-                        /// Unary expressions
+                        RootLog.AddError("Cannot parse expression after " + boundVariable + " " + assignOp + " ");
+                    }
+                }
+                else
+                {
+                    RootLog.AddError("<- or => expected after " + boundVariable);
+                }
+            }
+            else
+            {
+                switch (expressionLevel)
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                        ///
+                        /// Binary expressions
+                        ///
+                        retVal = Expression(expressionLevel + 1);
+                        if (retVal != null)
+                        {
+                            retVal = ExpressionContinuation(expressionLevel, retVal);
+                        }
+                        break;
+
+                    case 6:
+                        // Continuation, either by . operator, or by function call
+                        retVal = Continuation(Expression(expressionLevel + 1));
+                        break;
+
+                    case 7:
+                        ///
+                        /// List operations
                         /// 
-                        retVal = EvaluateUnaryExpression();
-                    }
-                    break;
+                        retVal = EvaluateListExpression();
+                        if (retVal == null)
+                        {
+                            ////
+                            /// Unary expressions
+                            /// 
+                            retVal = EvaluateUnaryExpression();
+                        }
+                        break;
+                }
             }
 
             return retVal;
@@ -855,32 +893,34 @@ namespace DataDictionary.Interpreter
             if (listOp != null)
             {
                 Match(listOp);
-                Expression listExpression = Expression(0);
 
-                if (listExpression != null)
+                if (listOp.CompareTo(ListOperators.MapExpression.OPERATOR) == 0
+                    || listOp.CompareTo(ListOperators.ReduceExpression.OPERATOR) == 0
+                    || listOp.CompareTo(ListOperators.SumExpression.OPERATOR) == 0)
                 {
-                    Expression condition = null;
-                    if (LookAhead("|"))
+                    Expression listExpression = Expression(0);
+                    if (listExpression != null)
                     {
-                        Match("|");
-                        condition = Expression(0);
-                    }
+                        Expression condition = null;
+                        if (LookAhead("|"))
+                        {
+                            Match("|");
+                            condition = Expression(0);
+                        }
 
-                    if (listOp.CompareTo(ListOperators.MapExpression.OPERATOR) == 0
-                        || listOp.CompareTo(ListOperators.ReduceExpression.OPERATOR) == 0
-                        || listOp.CompareTo(ListOperators.SumExpression.OPERATOR) == 0)
-                    {
                         Match("USING");
+                        string iteratorIdentifier = Identifier();
+                        Match("IN");
                         Expression iteratorExpression = Expression(0);
                         if (iteratorExpression != null)
                         {
                             if (ListOperators.MapExpression.OPERATOR.CompareTo(listOp) == 0)
                             {
-                                retVal = new ListOperators.MapExpression(Root, RootLog, listExpression, condition, iteratorExpression, start, Index);
+                                retVal = new ListOperators.MapExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, iteratorExpression, start, Index);
                             }
                             else if (ListOperators.SumExpression.OPERATOR.CompareTo(listOp) == 0)
                             {
-                                retVal = new ListOperators.SumExpression(Root, RootLog, listExpression, condition, iteratorExpression, start, Index);
+                                retVal = new ListOperators.SumExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, iteratorExpression, start, Index);
                             }
                             else if (ListOperators.ReduceExpression.OPERATOR.CompareTo(listOp) == 0)
                             {
@@ -888,7 +928,7 @@ namespace DataDictionary.Interpreter
                                 Expression initialValue = Expression(0);
                                 if (initialValue != null)
                                 {
-                                    retVal = new ListOperators.ReduceExpression(Root, RootLog, listExpression, condition, iteratorExpression, initialValue, start, Index);
+                                    retVal = new ListOperators.ReduceExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, iteratorExpression, initialValue, start, Index);
                                 }
                                 else
                                 {
@@ -901,28 +941,41 @@ namespace DataDictionary.Interpreter
                             throw new ParseErrorException("Function designator expected", Index, Buffer);
                         }
                     }
-                    else
+                }
+                else
+                {
+                    string iteratorIdentifier = Identifier();
+                    Match("IN");
+                    Expression listExpression = Expression(0);
+                    if (listExpression != null)
                     {
+                        Expression condition = null;
+                        if (LookAhead("|"))
+                        {
+                            Match("|");
+                            condition = Expression(0);
+                        }
+
                         // Create the right class for this list operation
                         if (ListOperators.ThereIsExpression.OPERATOR.CompareTo(listOp) == 0)
                         {
-                            retVal = new ListOperators.ThereIsExpression(Root, RootLog, listExpression, condition, start, Index);
+                            retVal = new ListOperators.ThereIsExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, start, Index);
                         }
                         else if (ListOperators.ForAllExpression.OPERATOR.CompareTo(listOp) == 0)
                         {
-                            retVal = new ListOperators.ForAllExpression(Root, RootLog, listExpression, condition, start, Index);
+                            retVal = new ListOperators.ForAllExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, start, Index);
                         }
                         else if (ListOperators.FirstExpression.OPERATOR.CompareTo(listOp) == 0)
                         {
-                            retVal = new ListOperators.FirstExpression(Root, RootLog, listExpression, condition, start, Index);
+                            retVal = new ListOperators.FirstExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, start, Index);
                         }
                         else if (ListOperators.LastExpression.OPERATOR.CompareTo(listOp) == 0)
                         {
-                            retVal = new ListOperators.LastExpression(Root, RootLog, listExpression, condition, start, Index);
+                            retVal = new ListOperators.LastExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, start, Index);
                         }
                         else if (ListOperators.CountExpression.OPERATOR.CompareTo(listOp) == 0)
                         {
-                            retVal = new ListOperators.CountExpression(Root, RootLog, listExpression, condition, start, Index);
+                            retVal = new ListOperators.CountExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, start, Index);
                         }
                     }
                 }

@@ -262,11 +262,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="311a1849-4e3a-4ca7-bb80-890469f815a3"
 >
-</ReqRef><ReqRef
- Id="cbdd4a98-e47d-4d4a-be99-b19a44519a2f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d17d218e-2b58-4596-920d-b3a438f34b4a"
->
 </ReqRef><Comment>Computes EBI  target speed supervision value.</Comment>
 <Parameters>
 <Parameter
@@ -332,11 +327,6 @@
  Id="142a3c74-1f88-416b-bcd7-7c7781199737"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0a102b2d-a0b0-4bac-9846-8a57206da992"
->
-</ReqRef><ReqRef
- Id="559469a6-6881-47c1-bf65-ef766c9c7a2e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="244fb978-269b-496f-951a-41a8d245912d"
 >
 </ReqRef><Comment>Computes the permitted speed for a speed restriction to ensure permitted braking distance.</Comment>
 <Parameters>
@@ -523,11 +513,6 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1a89fb0a-39f0-4597-abb8-e1a655f8bf8e"
 >
-</ReqRef><ReqRef
- Id="999a2f32-81ff-4fcc-b12c-28761069ec5f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="abe6d9e3-c9fa-45fb-b789-ca1d8d78784b"
->
 </ReqRef><Comment>Provides the value of Vdelta0 for speed restrictions to ensure permitted braking distance.</Comment>
 <Cases>
 <Case
@@ -543,7 +528,7 @@
  Name="Compensation of speed inaccuracy is not inhibited by NV"
  Guid="a19d201e-cd5f-4b60-bcf6-a4ea5c891e82"
 >
-<Expression>5.0</Expression>
+<Expression>Odometry.Accuracy.V_ura</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
@@ -617,7 +602,7 @@
 <Expression>(
     REDUCE
         TrackDescription.AdhesionFactors.AdhFactors
-    USING
+    USING X IN
         Override
         (
             Default =&gt; RESULT,
@@ -812,11 +797,6 @@
  Id="7a7e3aa4-8bc1-41f9-86fa-a8f1795b69f0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d417314e-4ea2-4ff5-a1cf-d145db1535e0"
->
-</ReqRef><ReqRef
- Id="a17b6a33-29a8-4516-bde9-b715a3d3e84f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c18e247e-6c95-41c8-bd5d-b1b1a7d21a86"
 >
 </ReqRef><Comment>Computes FLOI target speed supervision value.</Comment>
 <Parameters>
@@ -1016,7 +996,7 @@
  Guid="69bc209e-cb21-49a8-bd09-ea237265fca4"
 >
 <Expression>(REDUCE SpeedRestrictionsProfile.SpeedRestrictions 
-    USING  
+    USING X IN  
         MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; PBDSpeedRestriction ( aSRPB =&gt; X, Distance =&gt; d ), 
                   Second =&gt; RESULT )
 INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>

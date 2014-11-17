@@ -82,7 +82,8 @@ namespace DataDictionary.Interpreter
                         {
                             if ((current is ListOperators.ListOperatorExpression) ||
                                 (current is Statement.Statement) ||
-                                (current is StabilizeExpression))
+                                (current is StabilizeExpression) ||
+                                (current is LetExpression))
                             {
                                 ISubDeclarator subDeclarator = current as ISubDeclarator;
                                 if (ISubDeclaratorUtils.ContainsValue(subDeclarator, Ref))
@@ -635,10 +636,10 @@ namespace DataDictionary.Interpreter
 
             if (retVal == null)
             {
-                Types.Range range = GetDesignatorType() as Types.Range;
-                if (range != null)
+                Types.Type type = GetDesignatorType();
+                if (type != null)
                 {
-                    retVal = range.CastFunction;
+                    retVal = type.CastFunction;
                 }
             }
 

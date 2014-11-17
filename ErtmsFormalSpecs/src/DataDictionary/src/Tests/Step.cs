@@ -297,17 +297,14 @@ namespace DataDictionary.Tests
             if (getTranslationRequired())
             {
                 ArrayList tmp = allSubSteps();
-                ArrayList tmp2 = allRequirements();
                 bool translated = getTranslated();
 
                 setAllSubSteps(null);
-                setAllRequirements(null);
                 setTranslated(false);
 
                 base.unParse(pw, typeId, headingTag, endingTag);
 
                 setAllSubSteps(tmp);
-                setAllRequirements(tmp2);
                 setTranslated(translated);
             }
             else

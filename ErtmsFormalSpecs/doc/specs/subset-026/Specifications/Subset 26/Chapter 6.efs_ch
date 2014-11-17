@@ -302,11 +302,30 @@
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NotImplementable"
+ status="NA"
  version="3.2.0"
  Name=""
  Guid="3138ea43-dded-4c2f-8d5f-57e3744a3517"
+>Clause 3.5.3.11 shall be replaced with:&quot;In case the RBC is the initiator, the first message from RBC shall include a request for acknowledgement and shall have the time-stamp and the LRBG identity set to &quot;unknown&quot;.&quot;<Sub>
+<Paragraph
+ id="6.5.1.2.1.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="3ad6bbb8-9122-4f59-98a0-994e53365162"
 >Section 3.6.2.4 shall not apply.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="3a7ea3bc-f1ec-442c-a6a1-ad397cbdb6fe"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="21a9de88-2378-4b67-8f13-516bff1f2989"
@@ -705,7 +724,7 @@
  Guid="3b73cbcd-5cb3-4b66-8c46-873013736bfa"
 >The table 7.4.1.1 shall be replaced with:<Sub>
 <Paragraph
- id="Table 6.5.1.5.2.1"
+ id="Table 6.5.1.5.2.a"
  type="TABLE_HEADER"
  scope="FLAGS"
  bl=""
@@ -717,7 +736,7 @@
  Guid="e5772418-cba0-43d6-a69a-246ecb43104e"
 >Packet Number; Packet Name; Page Number<Sub>
 <Paragraph
- id="Entry 6.5.1.5.2.1.1"
+ id="Entry 6.5.1.5.2.a.1"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -734,7 +753,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.2"
+ id="Entry 6.5.1.5.2.a.2"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -751,7 +770,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.3"
+ id="Entry 6.5.1.5.2.a.3"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -768,7 +787,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.4"
+ id="Entry 6.5.1.5.2.a.4"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -786,7 +805,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.5"
+ id="Entry 6.5.1.5.2.a.5"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -803,7 +822,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.6"
+ id="Entry 6.5.1.5.2.a.6"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -820,7 +839,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.7"
+ id="Entry 6.5.1.5.2.a.7"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -837,7 +856,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.8"
+ id="Entry 6.5.1.5.2.a.8"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -854,7 +873,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.9"
+ id="Entry 6.5.1.5.2.a.9"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -871,7 +890,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.10"
+ id="Entry 6.5.1.5.2.a.10"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -888,7 +907,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.11"
+ id="Entry 6.5.1.5.2.a.11"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -905,7 +924,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.12"
+ id="Entry 6.5.1.5.2.a.12"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -922,7 +941,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.13"
+ id="Entry 6.5.1.5.2.a.13"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -939,7 +958,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.14"
+ id="Entry 6.5.1.5.2.a.14"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -956,7 +975,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.15"
+ id="Entry 6.5.1.5.2.a.15"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -973,7 +992,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.16"
+ id="Entry 6.5.1.5.2.a.16"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -990,7 +1009,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.17"
+ id="Entry 6.5.1.5.2.a.17"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1007,7 +1026,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.18"
+ id="Entry 6.5.1.5.2.a.18"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1024,7 +1043,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.19"
+ id="Entry 6.5.1.5.2.a.19"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1041,7 +1060,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.20"
+ id="Entry 6.5.1.5.2.a.20"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1058,7 +1077,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.21"
+ id="Entry 6.5.1.5.2.a.21"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1075,7 +1094,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.22"
+ id="Entry 6.5.1.5.2.a.22"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1092,7 +1111,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.23"
+ id="Entry 6.5.1.5.2.a.23"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1109,7 +1128,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.24"
+ id="Entry 6.5.1.5.2.a.24"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1126,7 +1145,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.25"
+ id="Entry 6.5.1.5.2.a.25"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1143,7 +1162,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.26"
+ id="Entry 6.5.1.5.2.a.26"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1160,7 +1179,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.27"
+ id="Entry 6.5.1.5.2.a.27"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1177,7 +1196,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.28"
+ id="Entry 6.5.1.5.2.a.28"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1194,7 +1213,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.29"
+ id="Entry 6.5.1.5.2.a.29"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1211,7 +1230,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.30"
+ id="Entry 6.5.1.5.2.a.30"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1228,7 +1247,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.31"
+ id="Entry 6.5.1.5.2.a.31"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1245,7 +1264,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.32"
+ id="Entry 6.5.1.5.2.a.32"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1262,7 +1281,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.33"
+ id="Entry 6.5.1.5.2.a.33"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -1279,7 +1298,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.34"
+ id="Entry 6.5.1.5.2.a.34"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1296,7 +1315,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.35"
+ id="Entry 6.5.1.5.2.a.35"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -1313,7 +1332,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.36"
+ id="Entry 6.5.1.5.2.a.36"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1330,7 +1349,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.37"
+ id="Entry 6.5.1.5.2.a.37"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1347,7 +1366,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.38"
+ id="Entry 6.5.1.5.2.a.38"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1364,7 +1383,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.39"
+ id="Entry 6.5.1.5.2.a.39"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1381,7 +1400,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.40"
+ id="Entry 6.5.1.5.2.a.40"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1398,7 +1417,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.41"
+ id="Entry 6.5.1.5.2.a.41"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1415,7 +1434,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.42"
+ id="Entry 6.5.1.5.2.a.42"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1432,7 +1451,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.43"
+ id="Entry 6.5.1.5.2.a.43"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -1449,7 +1468,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.44"
+ id="Entry 6.5.1.5.2.a.44"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1466,7 +1485,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.45"
+ id="Entry 6.5.1.5.2.a.45"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1484,7 +1503,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.46"
+ id="Entry 6.5.1.5.2.a.46"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1502,7 +1521,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.47"
+ id="Entry 6.5.1.5.2.a.47"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1520,7 +1539,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 6.5.1.5.2.1.48"
+ id="Entry 6.5.1.5.2.a.48"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -1545,7 +1564,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="6.5.1.5.2.2"
+ id="6.5.1.5.2.b"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -1560,6 +1579,163 @@
 <RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="52ce6bc0-ea9e-4fe4-bea4-872ef8726b63"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.5.1.5.2.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="6eb66eb5-9373-4d19-9b43-6a0a372e07cc"
+>The table 7.4.1.2 shall be replaced with:<Sub>
+<Paragraph
+ id="Table 6.5.1.5.2.1.a"
+ type="TABLE_HEADER"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="c18b8a55-d3a4-4db9-983c-1879dcbac249"
+>Packet Number; Packet Name; Page Number<Sub>
+<Paragraph
+ id="Entry 6.5.1.5.2.1.a.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="cdcb88a1-e3b0-4d4a-8b00-a321c23356a1"
+>0; Position Report;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="2f99b71a-b813-4bf1-b9d7-1464d4d6bd6d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.5.2.1.a.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="35838cc8-75f5-4509-9b07-725f220e3136"
+>1; Position Report based on two balise groups;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="334bb852-ff02-4328-b22a-66067f6088ff"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.5.2.1.a.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="dce967e7-4911-40e7-9926-84db61500a14"
+>3; Onboard telephone numbers;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="534e1eaf-8a7a-43d9-8ced-9d541d84ad73"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.5.2.1.a.4"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="521089bc-573f-4718-bf30-69ccfc443053"
+>4; Error Reporting;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="1104f016-311b-4956-8ee3-34b75de12dee"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.5.2.1.a.5"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="cb998e3a-d9c7-4e18-818a-69f39c6a522a"
+>9; Level 2/3 transition information;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="648f5519-5073-456f-8818-9d9247be3677"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.5.2.1.a.6"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b58568f3-6077-49b4-8f56-10b1b5dac44e"
+>11; Validated train data;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="3b162663-690c-44f8-aaa4-2307fe14a755"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.5.2.1.a.7"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="f2d110e6-8424-4ae9-84cd-e324e70db892"
+>44; Data used by applications outside the ERTMS/ETCS system;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="ab2ccf0c-0ed2-4629-b16a-cbcdc9ffd259"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="1d29c084-1129-4c6b-85ab-e7cabd9b23a8"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="b23410e3-b7ac-4447-a250-8858e9ca0622"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -2419,7 +2595,43 @@
  version="3.2.0"
  Name=""
  Guid="2af1662a-ee4f-4de7-b937-e3144714d6c6"
->Section 7.4.2.37.1 (Packet Number 143: Session Management with neighbouring Radio Infill Unit) shall not apply.<RequirementSets>
+>Section 7.4.2.37.1 (Packet Number 143: Session Management with neighbouring Radio Infill Unit) shall not apply.<Sub>
+<Paragraph
+ id="6.5.1.5.20.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a447dd25-10e4-49fb-a601-d1be7cbfd897"
+>Section 7.4.2.37.3 (Packet Number 180: LSSMA display toggle order) shall not apply.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="6e52a9da-9e2e-4638-b017-626e6a6a17df"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.5.1.5.20.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="caddab2e-096a-4ba9-96b9-868a7088f4de"
+>Section 7.4.2.37.4 (Packet Number 181: Generic LS function marker) shall not apply.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="523add46-2e9e-4e77-b0ca-c505cf2febf8"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="55b2991d-2058-482a-9993-5a0ed112afc5"
@@ -2928,7 +3140,7 @@ Packet Number 207: Route Suitability Data<Sub>
  Guid="50737888-9e91-4b64-b3db-51c7e031512d"
 >Added section 7.4.2.37.7 (Packet Number 239: Track Condition Change of traction system) shall apply:<Sub>
 <Paragraph
- id="6.5.1.5.25.1"
+ id="6.5.1.5.25.a"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -2950,6 +3162,55 @@ Packet Number 207: Route Suitability Data<Sub>
 <RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="d4453dba-0c51-4804-977b-c034e337af15"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.5.1.5.25.1"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="f226b0f9-023a-4cca-a50f-464909364425"
+>Table 7.4.3.5 (Packet Number 11: Validated train data) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.25.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="7d86f63d-6d51-4183-8b19-f1dcc9ebd67f"
+>Validated train data. (RBC)
+    NID_PACKET [8]
+    L_PACKET [13]
+    NID_OPERATIONAL [32]
+    NC_TRAIN [15]
+    L_TRAIN [12]
+    V_MAXTRAIN [7]
+    M_LOADINGGAUGE [8]
+    M_AXLELOAD [7]
+    M_AIRTIGHT [2]
+    N_ITER [5]
+    M_TRACTION(k) [8] (Type of traction system)
+    N_ITER [5]
+    NID_NTC(k) [8] (Type of National System available)<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="26e453b1-8fe9-4e51-8ea7-931de4c34c29"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="d94c4a23-7763-429a-9850-c1d505ea4980"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -3022,7 +3283,7 @@ Resolution formula: 10 cm, 1m or 10 m depends on Q_SCALE<TypeSpec
  Guid="d66e738f-ec51-41d2-9249-8c1f4b5ed8c9"
 >Added section 7.5.1.62.2 (M_AXLELOAD) shall apply:<Sub>
 <Paragraph
- id="6.5.1.5.27.1"
+ id="6.5.1.5.27.a"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -3095,6 +3356,140 @@ Values:
  Guid="b3586050-5fa5-40cf-b78d-b2561e1c7955"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.5.1.5.27.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="8cbaf3a4-4771-41a8-b2dc-275ec2cc45c6"
+>Table 7.5.1.64 (M_ERROR) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.27.1.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="53269dc5-3592-4442-b40b-35c45d43bbdc"
+>Name: Identifier of the type of error
+Length: 8 bits
+Values:
+    SpecialOrReservedValues:
+        SpecialOrReservedValue: 
+            Match: 0
+            Meaning: 
+                Type: enum
+                Value: Balise group: linking consistency error (ref. 3.16.2.3)
+        SpecialOrReservedValue: 
+            Match: 1
+            Meaning: 
+                Type: enum
+                Value: Linked balise group: message consistency error (ref. 3.16.2.4.1/4)
+        SpecialOrReservedValue: 
+            Match: 2
+            Meaning: 
+                Type: enum
+                Value: Unlinked balise group: message consistency error (ref. 3.16.2.5)
+        SpecialOrReservedValue: 
+            Match: 3
+            Meaning: 
+                Type: enum
+                Value: Radio: message consistency error (ref. 3.16.3.1.1a,c)
+        SpecialOrReservedValue: 
+            Match: 4
+            Meaning: 
+                Type: enum
+                Value: Radio: sequence error (ref. 3.16.3.1.1b)
+        SpecialOrReservedValue: 
+            Match: 5
+            Meaning: 
+                Type: enum
+                Value: Radio: safe radio connection error (ref. 3.16.3.4, to be sent when communication links re-established)
+        SpecialOrReservedValue: 
+            Match: 6
+            Meaning: 
+                Type: enum
+                Value: Non safety critical failure
+        SpecialOrReservedValue: 
+            Match: 7
+            Meaning: 
+                Type: enum
+                Value: Safety critical failure (ref. 4.4.6.1.6, 4.4.15.1.5)
+        SpecialOrReservedValue: 
+            MatchRange: minimum: 8, maximum: 255
+            Meaning: 
+                Type: invalid
+                Value: Spare<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="6a4ed14b-43f2-4c0b-a709-63e26be9bf85"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="33ee0f5a-aac0-4ddf-84c7-3e88a876085d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.5.1.5.27.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="478854f1-cc19-471d-b66b-3fe9401d9826"
+>Table 7.5.1.68 (M_LOADINGGAUGE) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.27.2.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="ff5b1f32-fa66-4af1-ab20-3c41f5f7ce04"
+>Name: Loading gauge
+Description: Defining the loading gauge profile of a train (refer to TSI RST)
+Length: 8 bits
+Values:
+    SpecialOrReservedValues:
+        SpecialOrReservedValue: 
+            Match: 0
+            Meaning: 
+                Type: enum
+                Value: No loading gauge is defined for the train
+        SpecialOrReservedValue: 
+            MatchRange: minimum: 1, maximum: 255
+            Meaning: 
+                Type: invalid
+                Value: Non interoperable value (this is not a spare value)<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="37dcb5a1-be86-4af2-afb2-2f4024a00fc5"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="0706ffe5-fc5e-4e49-ab9d-c1017925a4ba"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -3116,7 +3511,7 @@ Values:
  Guid="298167b6-2f21-4758-aba4-a0b8461abf45"
 >Table 7.5.1.70 (M_MAMODE) shall be replaced with:<Sub>
 <Paragraph
- id="6.5.1.5.28.1"
+ id="6.5.1.5.28.a"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -3184,6 +3579,128 @@ Values:
 <RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="3183a61b-1ebe-45ea-ae5b-a43c4721da8f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.5.1.5.28.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="86e50f57-b256-4e60-86f6-debfb8f20d52"
+>Table 7.58.1.72 (M_MODE) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.28.1.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d160120c-98a3-45e3-93ad-6a6c9879d032"
+>Name: Onboard operating mode
+Length: 4 bits
+Minimum value: 
+Maximum value: 
+Resolution formula: 
+Values:
+    SpecialOrReservedValues:
+        SpecialOrReservedValue: 
+            Match: 0
+            Meaning: 
+                Type: enum
+                Value: Full Supervision
+        SpecialOrReservedValue: 
+            Match: 1
+            Meaning: 
+                Type: enum
+                Value: On Sight
+        SpecialOrReservedValue: 
+            Match: 2
+            Meaning: 
+                Type: enum
+                Value: Staff Responsible
+        SpecialOrReservedValue: 
+            Match: 3
+            Meaning: 
+                Type: enum
+                Value: Shunting
+        SpecialOrReservedValue: 
+            Match: 4
+            Meaning: 
+                Type: enum
+                Value: Unified
+        SpecialOrReservedValue: 
+            Match: 5
+            Meaning: 
+                Type: enum
+                Value: Sleeping
+        SpecialOrReservedValue: 
+            Match: 6
+            Meaning: 
+                Type: enum
+                Value: Stand By
+        SpecialOrReservedValue: 
+            Match: 7
+            Meaning: 
+                Type: enum
+                Value: Trip
+        SpecialOrReservedValue: 
+            Match: 8
+            Meaning: 
+                Type: enum
+                Value: Post Trip
+        SpecialOrReservedValue: 
+            Match: 9
+            Meaning: 
+                Type: enum
+                Value: System Failure
+        SpecialOrReservedValue: 
+            Match: 10
+            Meaning: 
+                Type: enum
+                Value: Isolation
+        SpecialOrReservedValue: 
+            Match: 11
+            Meaning: 
+                Type: enum
+                Value: Non Leading
+        SpecialOrReservedValue: 
+            Match: 12
+            Meaning: 
+                Type: enum
+                Value: If reported level is NTC, National System; otherwise, Limited Supervision
+        SpecialOrReservedValue: 
+            Match: 13
+            Meaning: 
+                Type: enum
+                Value: National System
+        SpecialOrReservedValue: 
+            Match: 14
+            Meaning: 
+                Type: enum
+                Value: Reversing
+        SpecialOrReservedValue: 
+            Match: 15
+            Meaning: 
+                Type: invalid
+                Value: Spare<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="f719b700-be53-4843-9c70-03afb6de9d16"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="68d95f4a-a99f-4326-9274-237d290c4658"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -3785,7 +4302,7 @@ Values:
  Name=""
  Guid="957a3162-08a4-40ef-9a15-6da8b9f5fa46"
 >Name: Traction system
-Description: It indicates the traction system installed on a specific line
+Description: It indicates the traction system installed on a specific line or respectively that can be used by an engine
 Length: 8 bits
 Minimum value: 
 Maximum value: 
@@ -3968,7 +4485,7 @@ Values:
  Guid="cb2cd436-d5fd-4d3a-aaf7-a12038db871d"
 >Table 7.5.1.83 (NC_DIFF) shall be replaced with:<Sub>
 <Paragraph
- id="6.5.1.5.34.1"
+ id="6.5.1.5.34.a"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -4185,6 +4702,265 @@ Values:
  Guid="9cd423ba-1c6d-43df-8f88-247e8ef941f1"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.5.1.5.34.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="4d8be6db-2e93-4dfe-b378-129bb27bac8f"
+>Table 7.5.1.84 (NC_TRAIN) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.34.1.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="c5532013-305a-442f-8aa6-8b82c84392ee"
+>Name: International Train Category.
+Description: Train category to which the train belongs.
+Thanks to NC_TRAIN, the train knows the “Specific” SSP category it must consider.
+By receiving a list of static speed profile, thanks to NC_DIFF, the train can select the SSP it must obey.
+Each bit represents one category.
+A train can belong to various categories.
+Length: 15 bits
+Resolution formula: Bitset
+Values:
+    SpecialOrReservedValues:
+        SpecialOrReservedValue: 
+            Match: 0
+            Meaning: 
+                Type: enum
+                Value: Train does not belong to any of the &quot;International&quot; Train Category
+        SpecialOrReservedValue: 
+            Mask: 1
+            Match: 1
+            Meaning: 
+                Type: enum
+                Value: Cant Deficiency 275 mm
+        SpecialOrReservedValue: 
+            Mask: 2
+            Match: 2
+            Meaning: 
+                Type: enum
+                Value: Cant Deficiency 80 mm
+        SpecialOrReservedValue: 
+            Mask: 4
+            Match: 4
+            Meaning: 
+                Type: enum
+                Value: Cant Deficiency 100 mm
+        SpecialOrReservedValue:  
+            Mask: 8
+            Match: 8
+            Meaning: 
+                Type: enum
+                Value: Cant Deficiency 130 mm
+        SpecialOrReservedValue:
+            Mask: 16
+            Match: 16
+            Meaning: 
+                Type: enum
+                Value: Cant Deficiency 150 mm
+        SpecialOrReservedValue:
+            Mask: 32
+            Match: 32
+            Meaning: 
+                Type: enum
+                Value: Cant Deficiency 165 mm
+        SpecialOrReservedValue:
+            Mask: 64
+            Match: 64
+            Meaning: 
+                Type: enum
+                Value: Cant Deficiency 180 mm
+        SpecialOrReservedValue:
+            Mask: 128
+            Match: 128
+            Meaning: 
+                Type: enum
+                Value: Cant Deficiency 225 mm
+        SpecialOrReservedValue:
+            Match: 256
+            Meaning: 
+                Type: enum
+                Value: Cant Deficiency 300 mm
+        SpecialOrReservedValue:
+            Match: 512
+            Match: 512
+            Meaning: 
+                Type: enum
+                Value: Freight train braked in “P” position
+        SpecialOrReservedValue:
+            Match: 1024
+            Match: 1024
+            Meaning: 
+                Type: enum
+                Value: Freight train braked in “G” position
+        SpecialOrReservedValue:
+            Match: 2048
+            Match: 2048
+            Meaning: 
+                Type: enum
+                Value: Passenger train
+        SpecialOrReservedValue:
+            Match: 4096
+            Match: 4096
+            Meaning: 
+                Type: enum
+                Value: Cant Deficiency 245 mm
+        SpecialOrReservedValue:
+            Match: 8192
+            Match: 8192
+            Meaning: 
+                Type: enum
+                Value: Cant Deficiency 210 mm
+        SpecialOrReservedValue:
+            Match: 16384
+            Match: 16384
+            Meaning: 
+                Type: invalid
+                Value: Spare<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="b0b3708c-3b14-4c32-98eb-05082ac108cc"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="836ee840-0f25-4ee8-b1c9-5ed6bf70cc93"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.5.1.5.34.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="9455f06f-af4d-475a-8526-a4721f574bca"
+>Table 7.5.1.92 (NID_OPERATIONAL) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.34.2.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="f410f47e-2a8e-43eb-8148-9ded2faad32f"
+>Name: Train Running Number
+Description: This is the operational train running number.
+Length: 32 bits
+Minimum value: 0
+Maximum value: 9999 9999
+Resolution formula: Binary Coded Decimal
+Values:
+    SpecialOrReservedValues:
+        For each digit:
+            SpecialOrReservedValue: 
+                MatchRange: miminum: A, maximum: E
+                Meaning: 
+                    Type: invalid
+                    Value: Spare
+            SpecialOrReservedValue: 
+                Match: F
+                Meaning: 
+                    Type: enum
+                    Value: Use F to indicate no digit (number shorter than 8 digits)
+        SpecialOrReservedValue: 
+            Match: FFFF FFFF
+            Meaning: 
+                Type: enum
+                Value: Unknown<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="c7361aa4-35f4-4078-8ceb-1f3c2e7a3b39"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="5c012d39-3cc5-4cff-8196-3092569ae6bf"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.5.1.5.34.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a759d25d-5a2f-4aec-859e-3d225fff0fff"
+>Table 7.5.1.107 (Q_EMERGENCYSTOP) shall be replaced with:<Sub>
+<Paragraph
+ id="6.5.1.5.34.3.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="54930e86-4d94-4901-8b39-69f2e3577bb1"
+>Name: Qualifier for emergency stop acknowledgement
+Description: Qualifier to indicate whether the train has accepted or not a conditional emergency stop.
+For an unconditional emergency stop, it is set to “not relevant”
+Length: 2 bits
+Values:
+    SpecialOrReservedValues:
+        SpecialOrReservedValue: 
+            Match: 0
+            Meaning: 
+                Type: enum
+                Value: Conditional Emergency Stop accepted
+        SpecialOrReservedValue: 
+            Match: 1
+            Meaning: 
+                Type: enum
+                Value: Conditional Emergency Stop rejected
+        SpecialOrReservedValue: 
+            Match: 2
+            Meaning: 
+                Type: enum
+                Value: Not Relevant (Unconditional Emergency Stop)
+        SpecialOrReservedValue: 
+            Match: 3
+            Meaning: 
+                Type: invalid
+                Value: Spare<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="78a4eb56-5313-4bf5-86b8-3db723b2f39e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="65807d5a-903c-4f1b-a1fa-0a0c9ce56a5c"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -4206,7 +4982,7 @@ Values:
  Guid="9fe95054-bb63-4721-aa66-10426b577328"
 >Table 7.5.1.138 (Q_TEXTCONFIRM) shall be replaced with:<Sub>
 <Paragraph
- id="6.5.1.5.35.1"
+ id="6.5.1.5.35.a"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -4282,6 +5058,59 @@ Values:
 <RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="5c97a8b8-9ddb-4abe-8e75-47196016b09a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.5.1.5.35.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="83a2c036-3bf7-4bb8-9247-194e3444d3ec"
+>Added section 7.5.1.140.1 (Q_TRACKDEL) shall apply:<Sub>
+<Paragraph
+ id="6.5.1.5.35.1.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="75bcd086-7d39-4767-998d-b1617d8ec22d"
+>Name: Track description deleted.
+Description: Qualifier to indicate whether the onboard has deleted (for any reason) track description or not.
+Length: 1 bit
+Minimum value: 
+Maximum value: 
+Resolution formula: 
+Values:
+    SpecialOrReservedValues:
+        SpecialOrReservedValue: 
+            Match: 0
+            Meaning: 
+                Type: enum
+                Value: No track description deleted
+        SpecialOrReservedValue: 
+            Match: 1
+            Meaning: 
+                Type: enum
+                Value: Track description deleted<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="e5652816-306d-4cb4-99be-e58b51a8a98c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="b7a5e083-6dd8-4267-af6f-ad770fa702ce"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -4827,7 +5656,7 @@ Up-link telegram (track to train) (1)<RequirementSets>
  Guid="1f617621-885c-43e9-a31a-f28997414b74"
 >The table under clause 8.4.4.4.1.1 shall be replaced with:<Sub>
 <Paragraph
- id="Table 6.5.1.6.6.1"
+ id="Table 6.5.1.6.6.a"
  type="TABLE_HEADER"
  scope="FLAGS"
  bl=""
@@ -4860,6 +5689,508 @@ Up-link telegram (track to train) (1)<RequirementSets>
 <RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="e2f681a6-bf83-46b5-ad6a-5de928dcf315"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.5.1.6.6.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="2d56620a-e62a-4c6b-930a-fda277fdc538"
+>Clause 8.4.4.4.2 shall be replaced with: “The train to track message 136 (Train Position Report) and 157 (SoM Position Report) may optionally include the following packets:
+    a) Packet 4 (Error Reporting),
+    b) Packet 44 (Data used by applications outside the ERTMS/ETCS system).”<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="3a23d1e7-e8d9-48c1-bfab-050f2072443a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.5.1.6.6.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="2db4ee1d-8038-4d29-8d5c-e4b3f4abf2b9"
+>Table 8.5.2 shall be replaced with:<Sub>
+<Paragraph
+ id="Table 6.5.1.6.6.2.1"
+ type="TABLE_HEADER"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="68c9cb44-b3cd-4407-9199-5dea7bb49ef4"
+>Mes. Id.; Message Name; Type; Invariant; Transmitted to<Sub>
+<Paragraph
+ id="Entry 6.5.1.6.6.2.1.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="59197aac-02f1-4b35-a30e-1b96cd3d64ed"
+>129; Validated Train Data; N; No; RBC<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="98711d78-5b95-40e0-a995-a28e11d85077"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.2.1.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="e201ba39-d4ef-47e3-85c0-7f1f98781032"
+>130; Request for Shunting; N; No; RBC<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="2bce5a66-45fe-47eb-af73-8af166ccdcbc"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.2.1.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="378a1f5e-ebeb-4dbc-8d35-39b80bb61693"
+>132; MA Request; N; No; RBC<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="39dd4971-affa-4fa6-927e-a096ba51260c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.2.1.4"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="ba995b6e-f98d-4e64-aef9-598c9ea9dfa5"
+>136; Train Position Report; N; No; RBC, RIU<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="1279ca1a-038f-4aed-a10c-8fc4ae4ca4c6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.2.1.5"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d5d64248-c475-4575-8b1c-99228b710f91"
+>137; Request to shorted MA is granted; N; No; RBC<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="08c35384-9c5e-4a1e-a2b9-f5950d55378b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.2.1.6"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="3df152a3-c206-4dde-b2ea-d8c4facd760c"
+>138; Request to shorten MA is rejected; N; No; RBC<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="9e72d01d-30b6-4ce1-8809-0483d09ac431"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.2.1.7"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="34053f97-b60b-43aa-9e3b-04529847a7df"
+>146; Acknowledgement; N; No; RBC, RIU<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="8b32c62c-5a67-4ad8-990f-2e74ba594377"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.2.1.8"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="7dafc314-6a25-4705-9076-7e6ad8d5fc11"
+>147; Acknowledgement of Emergency Stop; N; No; RBC<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="bc6625c0-bdcb-4b57-b35c-936cc5ba7970"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.2.1.9"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d37a565c-e2f4-415a-97cf-a3180cb337a3"
+>149; Track Ahead Free Granted; N; No; RBC<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="e04d6cb4-57af-4548-9ee5-bf2a56a85e63"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.2.1.10"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="5fb13366-478a-421f-a934-8bac3a793878"
+>150; End of Mission; N; No; RBC<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="4eaaa54e-92ce-412f-889e-69bf9023092b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.2.1.11"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="daa05005-00c1-4ebe-bc72-97d7c096f580"
+>153; Radio infill request; N; No; RIU<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="c16adfcc-e3cd-4745-b33c-738b2dad29c2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.2.1.12"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="17c1f934-369e-4bbc-a3b7-f695f91cd0e4"
+>154; No compatible version supported; N; Yes; RBC, RIU<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="f5a92d3e-e22b-4d86-b5df-4eee03e455e2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.2.1.13"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6c1b868a-0617-4fd7-add6-9df30e516be6"
+>155; Initiation of a communication session; N; Yes; RBC, RIU<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="6d2f46d9-be8a-43b2-b031-6f313de103f4"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.2.1.14"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="afbd6293-60cf-4d77-9554-c435406905ce"
+>156; Termination of a communication session; N; Yes; RBC, RIU<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="8a2845eb-38d3-498d-8512-fae37b3d38df"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.2.1.15"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6a886195-13ed-4a29-802f-326ddc7c157e"
+>157; SoM Position Report; N; No; RBC<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="4afee64c-8f6b-4704-b0ef-0657cf4e2fdc"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.2.1.16"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6fb99e34-ca97-4a36-8292-d2171e0ed29c"
+>159; Session Established; N; No; RBC, RIU<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="08345ce2-d0f7-438d-83a5-c5ce63557ad8"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="79012c60-73a3-406e-a241-53679270ad96"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="62c9d840-96b8-4137-8b4b-a4aaea2177f2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.5.1.6.6.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a2e53e88-90e6-44f4-b244-d8f1bc2f8187"
+>Table 8.6.3 (Message 132; MA Request) shall be replaced qith:<Sub>
+<Paragraph
+ id="Table 6.5.1.6.6.3.1"
+ type="TABLE_HEADER"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="ba76b17e-19ff-4df2-a618-c7e24989af28"
+>Field No.; VARIABLE/PACKET; Remarks<Sub>
+<Paragraph
+ id="Entry 6.5.1.6.6.3.1.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="cb1c0d20-e629-4d22-9ec6-40372ceda5da"
+>1; NID_MESSAGE;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="6e35da2e-32d4-4679-8ad6-e2465c051035"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.3.1.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a1621be2-a62a-4114-a77f-f7de9c252dd5"
+>2; L_MESSAGE;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="c3b455da-7b06-4409-a3a9-d9722da6ea17"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.3.1.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="7b5bac02-8719-4a3c-8ebb-c72a5040e1f6"
+>3; T_TRAIN;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="d0030218-159d-4c34-b0b2-bfc800591ddb"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.3.1.4"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6c64e736-8d1f-4009-9732-124013054837"
+>4; NID_ENGINE;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="9332bd29-553f-424c-8e2d-e9d6deee8267"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.3.1.5"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a65882cc-0dfa-44e3-b261-f815c775f2a3"
+>5; Q_TRACKDEL;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="11608e17-97ed-49b3-9032-134934d9423a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.3.1.6"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b5e305e8-e252-4d0c-9880-52e6c3dc2ebc"
+>6; Packet 0 or 1;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="6a74f927-b0bd-44e0-ace7-64e549d06a8c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.6.3.1.7"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="45dfb31a-5df3-4949-a03f-ebf41bc2aa5a"
+>7; Optional packets;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="aa897e73-eaf6-47bb-aeb1-20b7f1e48fa4"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="aaf31ca0-1bb9-46e1-aae3-14e0193a636f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="598f4253-7851-4bea-9865-0f4f21ae68fc"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.5.1.6.6.4"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="c132fa2e-7a9e-4928-bff2-9b32baa9ad50"
+>Section 8.6.16 (Message 158: Text Message Acknowledged by Driver) shall not apply.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="414ad59b-583b-4571-9fe6-ca4c9b378d87"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -5251,6 +6582,146 @@ Up-link telegram (track to train) (1)<RequirementSets>
 <RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="02e2fb26-722f-4c83-bdc4-058fe7b465ee"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.5.1.6.9"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="5f70abf8-8797-4173-9b8b-c930b8620730"
+>Table 8.7.16 (Message 38: Initiation of a communication session) shall be replaced with:<Sub>
+<Paragraph
+ id="Table 6.5.1.6.9.1"
+ type="TABLE_HEADER"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="f57dc233-c6f9-4184-b8b3-100ead104ca1"
+>Field No.; VARIABLE; Remarks<Sub>
+<Paragraph
+ id="Entry 6.5.1.6.9.1.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6571c727-8f4b-447e-a2c6-97765dfa5548"
+>1; NID_MESSAGE;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="d322b4d2-312f-4904-95a4-604c1b1e5714"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.9.1.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="aa0f13cf-d735-4bf3-ae0d-e81acd70820c"
+>2; L_MESSAGE;<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="ea690c0e-551b-4f3c-9be6-bf7e53f41d57"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.9.1.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="05bdb895-f048-4e72-8f79-21b2f6a02a6d"
+>3; T_TRAIN; always set to unknown<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="d4331e95-7ea2-4267-8125-4661c794e61f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.9.1.4"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="8ae36a9e-72d1-4169-8e79-acd9b8912549"
+>4; M_ACK; always set to 1<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="cc31bd0f-6657-44f7-a4ed-717a4d721d82"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.5.1.6.9.1.5"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="902c7afc-0460-43e3-96d4-46a69178c6f0"
+>5; NID_LRBG; always set to unknown<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="84b4a553-e3ad-4885-98b2-757020af86fc"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="3a0770ba-0027-44c7-ab2d-3576dae735b0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="98dfb395-be4e-4072-8da1-b5a6c527cb24"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.5.1.6.10"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d4b5807d-ff5e-468c-86a6-efa07242551e"
+>Note: Packets or variables that have been introduced in the system version number X = 2, which cannot be contained within messages transmitted to an RBC operating with system version number X = 1, are not mentioned in the section 6.5.1.5.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="ecc3f9e1-fd5c-4e4c-bb4f-3d27bcf41102"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -5663,10 +7134,27 @@ Up-link telegram (track to train) (1)<RequirementSets>
  version="3.0.0"
  Name=""
  Guid="9a0690ff-e942-464b-82af-67799b46e5c0"
->Void.<RequirementSets>
+>Clause 4.4.11.1.3 d) shall be replaced with: “balise groups giving the order ‘stop if in SR’. This order shall immediately trip the train.”<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="59f31dc5-2d58-4c2d-8b14-3759e501825e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.6.2.2.2"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="bacfa4f9-40d3-4d67-8167-3ebfee36ca47"
+>Condition [54] in table 4.6.3 shall be replaced with: “(reception of information “stop if in Staff Responsible”) AND (override is not active)”.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8dc62d9c-8158-47f6-9905-b0a50b88fbaa"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -6224,7 +7712,7 @@ Packet Number; Packet Name; Operated system version number X = 1; Operated syste
  version="3.0.0"
  Name=""
  Guid="07ca06b7-5fa6-4ecd-b5ce-edbf1224f057"
->58; Position Report Parameters; U [10]; U [10]<RequirementSets>
+>58; Position Report Parameters; U; U<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a693a321-ca0d-4acd-82f6-365380f4a293"
@@ -6598,7 +8086,7 @@ Packet Number; Packet Name; Operated system version number X = 1; Operated syste
  version="3.0.0"
  Name=""
  Guid="5d37ad2a-29f9-4613-a9ed-7ebb62eb2713"
->140; Train running number from RBC; U; U<RequirementSets>
+>140; Train running number from RBC; T [10]; T [10]<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="093e3b6f-89d5-40ad-aa2c-6b824a8f9989"
@@ -7318,7 +8806,7 @@ M_AXLELOAD; M_AXLELOADCAT<Sub>
  version="3.0.0"
  Name=""
  Guid="5a9ff7a7-6960-4afb-b2d1-4e64bd0f979e"
->[10] Exception: if M_LOC = 011, the packet shall be rejected<RequirementSets>
+>[10] Within the 8 digits of the variable NID_OPERATIONAL (as specified in system version X = 1), any digit coded as &quot;F&quot; shall be rightmost shifted, in order to obtain a variable NID_OPERATIONAL (as specified in system version X = 2) made of the significant digits leftmost adjusted followed by digits coded as &quot;F&quot;.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="38276da8-9467-410a-a50d-cbed813450fb"
@@ -8387,6 +9875,40 @@ M_TRACTION; M_VOLTAGE; NID_CTRACTION<Sub>
  Guid="d5f994ef-8978-4758-9561-62ac2730127f"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.6.3.3.2.25"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="61b58d73-45b3-417a-a657-27a8b4e2f0df"
+>[2] Exception: if the variable NID_LRBG ≠ 16777215, it shall be set to 16777215, i.e. the message shall be considered as having been received with NID_LRBG = 16777215.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8f311648-60e5-4399-93c9-a931f6706aac"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="6.6.3.3.2.26"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="437777e3-ba10-4e9e-b3d8-9e1101ca3535"
+>Note: An RBC X=1 based on an older version of the specification may use a value different from 16777215 for NID_LRBG in message 40 or 41.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="591622f1-dcf1-4981-8f3c-b5229584fa6d"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -8424,7 +9946,26 @@ M_TRACTION; M_VOLTAGE; NID_CTRACTION<Sub>
  version="3.0.0"
  Name=""
  Guid="d3467af8-0027-4c5a-a39e-17f65e935eef"
->This section applies for radio messages/packets, which are transmitted to an RBC or an RIU certified to the system version number X = 1.<RequirementSets>
+>This section applies for radio messages/packets, which are transmitted to an RBC or an RIU certified to the system version number X = 1.<Sub>
+<Paragraph
+ id="6.6.3.4.1.1"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="8982834e-9034-43e0-b234-2c3cd71eec0b"
+>Clause 3.12.3.5.2 shall not apply.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fe3dab5d-d378-4dca-b267-818afda9eb43"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="12e81015-a8e0-4d4f-9a4c-56042554e10f"
@@ -8908,6 +10449,23 @@ M_TRACTION; M_VOLTAGE; NID_CTRACTION<Sub>
  status="NA"
  version="3.0.0"
  Name=""
+ Guid="aed642ad-e64a-4d88-b30b-731e7eb1e6ad"
+>158; Text message acknowledged by the driver; NR<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1df14574-eb99-4eed-9eb9-d25020cf52f2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 6.6.3.4.5.26"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
  Guid="bf13c2de-c0ca-4e5a-95fa-32ee7ad623ee"
 >159; Session Established; U<RequirementSets>
 <RequirementSetReference
@@ -8934,7 +10492,7 @@ M_TRACTION; M_VOLTAGE; NID_CTRACTION<Sub>
  Name=""
  Guid="8b69341d-6655-46a9-96e8-d1a924b64bb3"
 >[1] Exception: if M_MODE (X=2) = 15 (PS), then M_MODE (X=1) = 3 (SH)
-Note: if M_MODE= 12 (LS), no translation is effected and the value 12 will be understood by RBC X = 1 as SE mode<RequirementSets>
+Note: if M_MODE= 12 (LS), no translation is effected<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="77b7d64a-474f-4600-97b8-da64568cb3e8"
@@ -10037,9 +11595,7 @@ Q_EMERGENCYSTOP; Q_EMERGENCYSTOP<Sub>
  version="3.0.0"
  Name=""
  Guid="0d3af923-90e0-4f35-9076-f6b3fa763bda"
->3; 1 (if rejection of CES)
-	or
-	2 (if rejection of UES)<RequirementSets>
+>3; 1<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="079758e7-6c2c-44d7-8257-293583693fe2"

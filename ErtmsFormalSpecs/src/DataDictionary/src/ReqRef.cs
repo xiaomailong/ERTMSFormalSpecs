@@ -85,6 +85,14 @@ namespace DataDictionary
                         return paragraph.Requirements;
                     }
                 }
+                else if (Model is DataDictionary.ReferencesParagraph)
+                {
+                    DataDictionary.ReferencesParagraph referencesParagraph = Model as DataDictionary.ReferencesParagraph;
+                    if (referencesParagraph != null)
+                    {
+                        return referencesParagraph.Requirements;
+                    }
+                }
                 return null;
             }
         }

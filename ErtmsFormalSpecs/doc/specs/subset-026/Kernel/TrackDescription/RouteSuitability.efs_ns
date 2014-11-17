@@ -344,7 +344,7 @@
                            aLoadingGauge =&gt; Kernel.TrainData.TrainData.Value.LoadingGauge)
 )
   AND
-NOT THERE_IS_IN
+NOT THERE_IS X IN
   RouteSuitabilityProfile.Items |
     X.Type == Messages.Q_SUITABILITY.Loading_gauge_profile
       AND
@@ -371,7 +371,7 @@ NOT THERE_IS_IN
 >anItem.Type == Messages.Q_SUITABILITY.Traction_system</PreCondition></PreConditions>
 <Expression>NOT
 (
-  THERE_IS_IN
+  THERE_IS X IN
     TrainData.TrainData.Value.TractionSystems |
       X.Voltage == anItem.TractionSystem
         AND
@@ -432,14 +432,14 @@ NOT THERE_IS_IN
   AND
 RouteSuitabilityProfile.Items != []
   AND
-THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition><PreCondition
+THERE_IS X IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition><PreCondition
  Guid="3082a207-3a50-4aef-8222-4d01347f6929"
 >ActiveFunctions.ManageRouteSuitability()</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
 {
     Length =&gt; BaseTypes.Length.Infinity,
     Location =&gt; REDUCE RouteSuitabilityProfile.Items | IsUnsuitable ( X )
-                        USING BaseTypes.MinDistance ( X1 =&gt; X.Distance, X2 =&gt; RESULT )
+                        USING X IN BaseTypes.MinDistance ( X1 =&gt; X.Distance, X2 =&gt; RESULT )
                         INITIAL_VALUE BaseTypes.Distance.Infinity,
     Speed =&gt; 0.0
 }</Expression>
@@ -493,12 +493,12 @@ THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition><Pr
   AND
 RouteSuitabilityProfile.Items != []
   AND
-THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></PreConditions>
+THERE_IS X IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
 {
     Length =&gt; BaseTypes.Length.Infinity,
     Location =&gt; REDUCE RouteSuitabilityProfile.Items | IsUnsuitable ( X )
-                        USING BaseTypes.MinDistance ( X1 =&gt; X.Distance, X2 =&gt; RESULT )
+                        USING X IN BaseTypes.MinDistance ( X1 =&gt; X.Distance, X2 =&gt; RESULT )
                         INITIAL_VALUE BaseTypes.Distance.Infinity,
     Speed =&gt; 0.0
 }</Expression>
@@ -730,7 +730,7 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
  Guid="642c6480-81d4-476b-becc-0d506024a451"
 >Packet.Q_SUITABILITY == Messages.Q_SUITABILITY.Loading_gauge_profile
   OR
-THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Loading_gauge_profile</PreCondition></PreConditions>
+THERE_IS X IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Loading_gauge_profile</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6a2f38c1-da1c-4e68-9a0d-472f127284b4"
@@ -765,7 +765,7 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Loading
  Guid="79753430-4827-4043-b794-c4a30462dfe3"
 >Packet.Q_SUITABILITY == Messages.Q_SUITABILITY.Traction_system
   OR
-THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Traction_system</PreCondition></PreConditions>
+THERE_IS X IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Traction_system</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5234549a-f98d-4998-ba3c-c0295e85fdd9"
@@ -800,7 +800,7 @@ THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Tractio
  Guid="329da492-751c-435f-bcd7-bb60a4a70751"
 >Packet.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axle_load
   OR
-THERE_IS_IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axle_load</PreCondition></PreConditions>
+THERE_IS X IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_axle_load</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7e5e3cc1-05b2-4889-ac3d-45de07e8ac3a"
@@ -943,7 +943,7 @@ ON
 <PreConditions>
 <PreCondition
  Guid="1a52cb97-8d8a-4b18-8f75-61e6c0468f61"
->THERE_IS_IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></PreConditions>
+>THERE_IS X IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c06648a3-cff4-478f-8884-305f08c7951e"

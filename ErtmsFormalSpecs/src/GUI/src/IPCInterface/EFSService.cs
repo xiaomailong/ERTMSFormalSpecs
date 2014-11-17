@@ -683,7 +683,6 @@ namespace GUI.IPCInterface
             EFSAccess.WaitOne();
             try
             {
-
                 if (Runner != null)
                 {
                     DataDictionary.Variables.IVariable variable = Runner.EFSSystem.findByFullName(variableName) as DataDictionary.Variables.IVariable;

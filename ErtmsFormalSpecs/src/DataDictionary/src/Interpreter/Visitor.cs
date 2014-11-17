@@ -160,6 +160,10 @@ namespace DataDictionary.Interpreter
                 {
                     VisitThereIsExpression((ListOperators.ThereIsExpression)expression);
                 }
+                else if (expression is LetExpression)
+                {
+                    VisitLetExpression((LetExpression)expression);
+                }
             }
         }
 
@@ -441,6 +445,22 @@ namespace DataDictionary.Interpreter
             if (binaryExpression.Right != null)
             {
                 VisitExpression(binaryExpression.Right);
+            }
+        }
+
+        /// <summary>
+        /// Visits a let expression
+        /// </summary>
+        /// <param name="letExpression"></param>
+        protected virtual void VisitLetExpression(LetExpression letExpression)
+        {
+            if (letExpression.BindingExpression != null)
+            {
+                VisitExpression(letExpression.BindingExpression);
+            }
+            if (letExpression.Expression != null)
+            {
+                VisitExpression(letExpression.Expression);
             }
         }
 

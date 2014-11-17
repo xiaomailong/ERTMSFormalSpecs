@@ -294,9 +294,9 @@
 <PreConditions>
 <PreCondition
  Guid="e92f1a3d-f7dc-457f-8125-b090db9ad12b"
->THERE_IS_IN TCStationPlatforms | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
+>THERE_IS X IN TCStationPlatforms | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
 <Expression>REDUCE TCStationPlatforms | (X.Distance == SPProfileStartLocation(Distance) )
-    USING X.Value
+    USING X IN X.Value
   INITIAL_VALUE EMPTY</Expression>
 </Case><Case
  Name="Otherwise"
@@ -367,7 +367,7 @@ SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)).Enabl
 >
 <Comment>Returns the element in TCStationPlatform with the largest distance that is less than or equal to the parameter</Comment>
 <Expression>REDUCE TCStationPlatforms | (X.Distance &lt;= Distance)
-    USING Default.BaseTypes.MaxDistance(
+    USING X IN Default.BaseTypes.MaxDistance(
         X1=&gt;X.Distance,
         X2=&gt;RESULT)
   INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
@@ -688,6 +688,7 @@ IN
 <Variables>
 <Variable
  Type="StationPlatforms"
+ DefaultValue=""
  VariableMode="Internal"
  X="20"
  Y="50"

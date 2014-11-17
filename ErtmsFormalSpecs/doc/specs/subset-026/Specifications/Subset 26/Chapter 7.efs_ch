@@ -2245,11 +2245,53 @@ Packet Number; Packet Name; Page No<Sub>
  bl=""
  name=""
  reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="a6eade55-4b84-45f2-a021-fd589f3d1760"
+>180; LSSMA display toggle order; 36<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="865bcafe-8889-467d-8bf3-c2d073bd4507"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="62b2fe9a-fc84-419f-b115-c4bd0c33439b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 7.4.1.1.53"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="2922527c-9e20-48f5-a094-94014ef0aa69"
+>181; Generic LS function marker; 37<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f00ac7b3-00a3-47c9-831f-8eeace254ac9"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="96efaf0b-3f9c-4c38-934f-f6783a4c627b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 7.4.1.1.54"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
  Name=""
  Guid="5c7f8e6f-d144-42ee-91a5-5bc97116d06d"
->254; Default balise, loop or RIU information; 36<RequirementSets>
+>254; Default balise, loop or RIU information; 37<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="cc437db6-3f4d-4fb7-b644-115a5161cc06"
@@ -9012,6 +9054,102 @@ Packet Number; Packet Name; Page No<Sub>
  Guid="f0c6ee85-246f-4b68-9404-daa916702a3b"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="7.4.2.37.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="6eeca2b4-7feb-46e5-9918-59197fd2bd89"
+>Packet Number 180: LSSMA display toggle order<Sub>
+<Paragraph
+ id="7.4.2.37.3.bis"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="bdfaf4fa-ba42-435a-90fb-0d6d385818a9"
+>Used to toggle on/off the display of the Lowest Supervised Speed within the MA.
+    NID_PACKET  [8]
+    Q_DIR  [2]
+    L_PACKET  [13]
+    Q_LSSMA [1]
+        T_LSSMA [8] (Only if Q_LSSMA = 1)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="25972ee0-4a49-4201-93a3-563da82dbb87"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="61d03746-797e-4eb3-8e17-cd1ff0f95c4b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="65184ebd-084a-4a6e-b795-e3119bbc0286"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="6b6afb63-80bf-4f69-8239-5bdcdbce8d58"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="7.4.2.37.4"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="e9f9dfc1-5e6c-4920-958e-20889458cdd1"
+>Packet Number 181: Generic LS function marker<Sub>
+<Paragraph
+ id="7.4.2.37.4.bis"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="6737db26-a632-470d-8d80-0b013d664371"
+>Used to enable the generic toggling on/off of the display of the Lowest Supervised Speed within the MA.
+    NID_PACKET  [8]
+    Q_DIR  [2]
+    L_PACKET  [13]<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="49d423b8-e007-40db-8c4b-4fb83db7f632"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="22a29578-ec6a-4825-8ee1-9b63c6bef8ad"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9678e378-6c12-48a6-afa8-09f4733901d7"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="9e84cd04-2d77-4cfc-8ca4-3ba4f5135a16"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -15109,7 +15247,7 @@ Baseline: 3.2.0<Sub>
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="78f382d2-f2b3-49c3-887a-d8543da41a47"
@@ -15118,7 +15256,8 @@ Short description: Line gauge
 Description:
 Defining which loading gauge(s) are permitted on a line (refer to TSI INF)
 Length: 8 bits
-Baseline: 3.2.0<Sub>
+Values:
+    ResolutionFormula: Bitset<Sub>
 <Paragraph
  id="7.5.1.67.1.0"
  type="REQUIREMENT"
@@ -15127,47 +15266,60 @@ Baseline: 3.2.0<Sub>
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="6af059ec-9811-47aa-82fa-6a4dbc6a8379"
 >SpecialOrReservedValues:
     SpecialOrReservedValue: 
+        Mask: 1
         Match: 1
         Meaning: 
             Type: enum
             Value: G1
     SpecialOrReservedValue: 
+        Mask: 2
         Match: 2
         Meaning: 
             Type: enum
             Value: GA
     SpecialOrReservedValue: 
+        Mask: 4
         Match: 4
         Meaning: 
             Type: enum
             Value: GB
+    SpecialOrReservedValue: 
+        Mask: 8
+        Match: 8
+        Meaning: 
+            Type: enum
+            Value: GC
     SpecialOrReservedValue: 
         Match: 0
         Meaning: 
             Type: invalid
             Value: spare
     SpecialOrReservedValue: 
-        Match: 8
+        Mask: 16
+        Match: 16
         Meaning: 
-            Type: enum
-            Value: GC
+            Type: invalid
+            Value: Spare
     SpecialOrReservedValue: 
+        Mask: 32
         Match: 32
         Meaning: 
             Type: invalid
             Value: spare
     SpecialOrReservedValue: 
+        Mask: 64
         Match: 64
         Meaning: 
             Type: invalid
             Value: spare
     SpecialOrReservedValue: 
+        Mask: 128
         Match: 128
         Meaning: 
             Type: invalid
@@ -21421,6 +21573,62 @@ Length: 1 bits<Sub>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
+ id="7.5.1.118.0"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="9cc43ed6-9621-4a16-8f61-b653dda695e3"
+>Q_LSSMA
+Short description: Qualifier for the LSSMA display
+Description:
+This qualifier tells whether the on-board has to toggle on/off the display of the lowest supervised speed within the MA
+Length: 1 bits<Sub>
+<Paragraph
+ id="7.5.1.118.0.bis"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="5d7052ac-14c2-4d8a-884e-824d2ee9ce9f"
+>SpecialOrReservedValues:
+    SpecialOrReservedValue: 
+        Match: 0
+        Meaning: 
+            Type: enum
+            Value: Toggle off
+    SpecialOrReservedValue: 
+        Match: 1
+        Meaning: 
+            Type: enum
+            Value: Toggle on<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="61743f49-532b-4e39-8d4b-ce1431ef58bf"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="13e3ff81-0a19-4d40-bd8b-5365dde26a80"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d2ecda06-4951-4a35-88ad-1114bc1916ff"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="b88d164f-f10a-4b94-973a-b0101a1a0c0c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="7.5.1.118.1"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -24516,6 +24724,34 @@ Values:
 </RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="04e560ed-fb07-4974-9f68-5fdc7029017d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="7.5.1.144.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="b93d5352-48c7-4473-ba17-a69a4c004cd9"
+>Id: T_CYCRQST
+Short description: Delay to toggle on the LSSMA display
+Description:
+Length: 8 bits
+Minimum value: 0
+Maximum value: 255 s
+Values:
+    ResolutionFormula: value: 1, units: s<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2696d2fe-42bd-42ba-8643-d3b408a6ca1c"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="19191d2e-879a-4ccb-bd2b-5d9bb6fd9a94"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>

@@ -14,54 +14,6 @@
 </NameSpaceRef></NameSpaces>
 <Functions>
 <Function
- Type="Default.BaseTypes.Distance"
- Cacheable="TRUE"
- Default=""
- X="440"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="d_FLOI"
- Guid="d703d61a-ec55-414b-bb4e-e640d547c620"
->
-<ReqRef
- Id="faa860d4-6ec0-42c7-921a-65ae72f044ad"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="913081d1-c135-4e48-94f2-ab9854fc219f"
->
-</ReqRef><Comment>Provides the location of the FLOI supervision limit.</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Speed"
- Name="V"
- Guid="f36c3bfb-eb83-4d92-a95e-e434b8adbd72"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
- Guid="ecf5e368-67c1-4775-98bb-38c9cf4501c0"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="d_SBI1"
- Guid="4c1a9b99-6a0a-4f9b-a33e-0cbe40c7680b"
->
-<PreConditions>
-<PreCondition
- Guid="abbce78f-6895-49a0-a931-84443bad052d"
->TargetSpeedMonitoring.SBI1BelowSBI2(
-    d_SBI1=&gt; TargetSpeedMonitoring.d_SBI1 ( V, EstimatedAccelerationSetToZero ),
-    d_SBI2=&gt; d_SBI2 ( V, EstimatedAccelerationSetToZero )
-)</PreCondition></PreConditions>
-<Expression>TargetSpeedMonitoring.d_SBI1 ( V, EstimatedAccelerationSetToZero )</Expression>
-</Case><Case
- Name="d_SBI2"
- Guid="d5c865b3-e560-45db-b300-a9fac42ae0b1"
->
-<Expression>d_SBI2 ( V, EstimatedAccelerationSetToZero )</Expression>
-</Case></Cases>
-</Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
  X="660"
@@ -95,12 +47,25 @@
  Name="Value"
  Guid="9226eef6-02fb-4694-b13c-ddda96d35d5e"
 >
+<PreConditions>
+<PreCondition
+ Guid="cfb74eb7-5b05-4774-b2b9-0f958610469d"
+><Comment>This is the condition for the inequations in 3.13.9.4.8.2 to have a solution, derived from the most permissive cases of these inequations.</Comment>
+aTarget.Speed &lt;= DecelerationCurves.EBD_Target(
+    Distance=&gt;d_tripEOA()+Dbec(aTarget.Speed),
+    aTarget=&gt;aTarget
+) - Vdelta0rsob(aTarget.Speed) + 1.0</PreCondition></PreConditions>
 <Expression>STABILIZE
-    VreleaseFunction ( Vrelease_prev =&gt; PREVIOUS, aTarget =&gt; aTarget )
+    VreleaseFunction ( Vrelease_prev =&gt; (PREVIOUS + VreleaseFunction(PREVIOUS, aTarget))/2.0, aTarget =&gt; aTarget )
 INITIAL_VALUE
     aTarget.Speed
 STOP_CONDITION
     BaseTypes.AbsoluteSpeed ( CURRENT - PREVIOUS ) &lt;= epsilon</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="a8f6ed86-5166-443e-b284-8ce4792d4d49"
+>
+<Expression>aTarget.Speed</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -264,42 +229,6 @@ BaseTypes.MaxDistance(
     X2 =&gt; ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Min ) ) )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.BaseTypes.Distance"
- Cacheable="TRUE"
- Default=""
- X="330"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="d_SBI2"
- Guid="d0905bbc-aeb2-4ddf-98b1-d70183e08872"
->
-<ReqRef
- Id="faa860d4-6ec0-42c7-921a-65ae72f044ad"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6c102041-afb3-4661-9fac-360e09ee5518"
->
-</ReqRef><Comment>Provides the location of the SBI2 supervision limit.</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Speed"
- Name="Vrelease"
- Guid="11bc7ff3-8547-485e-96c3-bda20f990caa"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
- Guid="9f92f8f6-b695-4857-b144-f800e36bfc2e"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Value"
- Guid="994729c8-aa58-4667-98b0-90ca2b055199"
->
-<Expression>d_EBI ( Vrelease, EstimatedAccelerationSetToZero )  - BaseTypes.SpeedToMS ( Vrelease ) * TargetSpeedMonitoring.T_bs2</Expression>
-</Case></Cases>
-</Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
  X="330"
@@ -423,19 +352,23 @@ BaseTypes.MaxDistance(
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="d_FLOI in rear of train"
- Guid="e1f037a9-b112-440d-bd56-12d7ca6a0b9b"
->
-<PreConditions>
-<PreCondition
- Guid="c1f1f85a-a876-4042-a38d-3b2ed6628245"
->d_FLOI ( Vrelease, False ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
-<Expression>BaseTypes.Distance.Unknown</Expression>
-</Case><Case
  Name="Value"
  Guid="0b1798da-f019-46e0-b3b0-7e38f14c1cbd"
 >
-<Expression>d_FLOI ( Vrelease, False )</Expression>
+<Expression>BaseTypes.MinDistance(
+X1 =&gt; BaseTypes.MinDistance(
+    X1 =&gt; TargetSpeedMonitoring.d_SBI1(
+        Vest =&gt; Vrelease,
+        EstimatedAccelerationSetToZero =&gt; True
+        ),
+    X2 =&gt; TargetSpeedMonitoring.d_SBI2(
+        Vest =&gt; Vrelease,
+        aTarget =&gt; MA.SvL(),
+        EstimatedAccelerationSetToZero =&gt; True
+        )
+    ),
+X2 =&gt; ComputeStartRSM_otherTargets(Vrelease)
+)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -453,22 +386,13 @@ BaseTypes.MaxDistance(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="deb729f2-2e8a-4743-acfe-3ab48c50e292"
 >
-</ReqRef><Comment>Gives the distance between the estimated front end of the train and the location of EOA.</Comment>
+</ReqRef><Comment>Gives the location of EOA.</Comment>
 <Cases>
 <Case
- Name="EOA is not passed"
+ Name="Value"
  Guid="84b3a91b-2eaa-41b9-b009-38522929c69a"
 >
-<PreConditions>
-<PreCondition
- Guid="89ee1741-d547-4a82-847a-692db2e737da"
->MA.ClosestEOA().Location - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &gt;= 0.0</PreCondition></PreConditions>
-<Expression>MA.ClosestEOA().Location - TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</Expression>
-</Case><Case
- Name="EOA is passed"
- Guid="890f1525-e043-407f-a393-2f0ddeac1f0b"
->
-<Expression>0.0</Expression>
+<Expression>MA.ClosestEOA().Location</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -514,7 +438,7 @@ BaseTypes.MaxDistance(
         StartRSM ( ComputeReleaseSpeed () ) &lt;= X.Location AND X.Location &lt;= d_tripEOA() OR
         StartRSM ( ComputeReleaseSpeed () ) &lt;= X.Location + BaseTypes.LengthToDistance ( X.Length ) AND X.Location + BaseTypes.LengthToDistance ( X.Length ) &lt;= ReleaseSpeedMonitoring.d_tripEOA() OR
         X.Location &lt;= StartRSM ( ComputeReleaseSpeed () ) AND d_tripEOA() &lt;= X.Location + BaseTypes.LengthToDistance ( X.Length )
-USING
+USING X IN
     BaseTypes.MinSpeed ( X1 =&gt; X.Speed, X2 =&gt; RESULT )
 INITIAL_VALUE
     ComputeReleaseSpeed ()</Expression>
@@ -568,7 +492,7 @@ INITIAL_VALUE
 <Expression>REDUCE
     TargetsList() |
         d_tripEOA() &lt;= X.Location AND X.Location &lt; MA.SvL().Location
-USING
+USING X IN
     BaseTypes.MinSpeed ( X1 =&gt; ComputeReleaseSpeedForTarget ( X ), X2 =&gt; RESULT )
 INITIAL_VALUE
     Default.BaseTypes.Speed.Infinity</Expression>
@@ -609,6 +533,52 @@ INITIAL_VALUE
  Guid="c2818a11-3cd6-4d37-9f07-66a869d1737c"
 >Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
 <Expression>0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="ComputeStartRSM_otherTargets"
+ Guid="68f6cdc7-8f06-48b1-87fd-3ab1ef04f1eb"
+>
+<ReqRef
+ Id="a387bd06-4306-436c-ae73-a3faa509f059"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8c6322e8-c5f6-4743-88de-89dede07dffb"
+>
+</ReqRef><Comment>Gets the minimum SBI distance for targets between the EOA trip location and the SvL, if any</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vrelease"
+ Guid="462352d6-884e-4837-bad4-401ec3bb14df"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="c5e16647-8fa2-4097-95d2-bf283c6febd5"
+>
+<Comment>We use TARGETS here instead of the function TargetsList() because this calculation only applies to MRSP targets, not the EOA or the SvL.</Comment>
+<Expression>REDUCE TARGETS(
+    Targets1=&gt;MIN(
+        First=&gt;MRSP.SpeedRestrictions,
+        Second=&gt;NationalValues.MaxDistInSRSpeedRestriction),
+    Targets2=&gt;EMPTY,
+    Targets3=&gt;EMPTY
+) | (X.Location &gt;= d_tripEOA() AND X.Location &lt;= MA.SvL().Location AND X.Speed &lt;= Vrelease)
+  USING X IN BaseTypes.MinDistance(
+          X1 =&gt; TargetSpeedMonitoring.d_SBI2(
+                    Vest =&gt; Vrelease,
+                    aTarget =&gt; X,
+                    EstimatedAccelerationSetToZero =&gt; True
+                    ),
+          X2 =&gt; RESULT
+        )
+  INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

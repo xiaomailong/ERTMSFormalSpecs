@@ -1866,7 +1866,7 @@
 <Actions>
 <Action
  Guid="bd6cd321-da85-4d70-822f-1231c228bd65"
->PlanningInformation &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToBrakeInhibition(X)</Action></Actions>
+>PlanningInformation &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING X IN Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToBrakeInhibition(X)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2016,7 +2016,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 <Action
  Guid="d6e48ca9-23d7-4be2-bcea-1f16889186b1"
 >ActiveConditions &lt;- MAP ActiveConditions | (NOT Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd ( Condition =&gt; X)  AND  X.Time &gt; Kernel.DateAndTime.CurrentTime)
-  USING X</Action></Actions>
+  USING X IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2233,7 +2233,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 <PreConditions>
 <PreCondition
  Guid="964f9fc5-b40c-408d-9d98-427f9b0c536c"
->THERE_IS_IN ActiveConditions |(
+>THERE_IS X IN ActiveConditions |(
 X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea
   AND  
 NOT X.IsAnnouncement
@@ -2243,7 +2243,7 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd(X)
 <Actions>
 <Action
  Guid="21498138-871c-4035-8eda-ed138b81aa0f"
->PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
+>PlanningInformation &lt;- MAP PlanningInformation USING X IN Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
     Distance=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea),
     ProfilePoint=&gt;X,
     TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea
@@ -2272,7 +2272,7 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd(X)
 <PreConditions>
 <PreCondition
  Guid="137dac50-09d6-4b1d-98e7-03f2cbc17a0c"
->THERE_IS_IN ActiveConditions | (
+>THERE_IS X IN ActiveConditions | (
 X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea
   AND  
 NOT X.IsAnnouncement
@@ -2282,7 +2282,7 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd(X)
 <Actions>
 <Action
  Guid="dd8c664b-f24f-4112-8314-a0df1cd21574"
->PlanningInformation &lt;- MAP PlanningInformation USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
+>PlanningInformation &lt;- MAP PlanningInformation USING X IN Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
     Distance=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea),
     ProfilePoint=&gt;X,
     TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea
@@ -2392,7 +2392,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
   MAP ActiveConditions | ( NOT Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd ( Condition =&gt; X)
                              AND
                            X.Time &gt; Kernel.DateAndTime.CurrentTime )
-  USING X</Action></Actions>
+  USING X IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2425,7 +2425,7 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 <Actions>
 <Action
  Guid="848f8401-d665-400b-b48d-be8bbfa8d170"
->PlanningInformation &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToSoundHorn(X)</Action></Actions>
+>PlanningInformation &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING X IN Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToSoundHorn(X)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3596,207 +3596,6 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
 >
 </StructureElement></Structure><Structure
  Default=""
- X="440"
- Y="420"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="UNModeProposed"
- Guid="77f91ca6-fa42-4901-a940-9ab74085371a"
->
-<ReqRef
- Id="8f221bd9-37f1-4b7b-90bf-7ced1a3e6840"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9f04e80b-3ca0-4083-8cb2-bf7331e43b76"
->
-</ReqRef><Comment>Indicates that the UN mode has been proposed</Comment>
-<Procedures>
-<Procedure
- Implemented="TRUE"
- Name="Display"
- Guid="99439d7c-8acb-4be9-8793-6a87f0b36d4e"
->
-<Comment>Requests to display the corresponding information</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Updates the request status"
- Guid="8a341d01-37eb-4b56-a2ab-04519d333f43"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Updates the request status"
- Guid="9b8fa88b-9a51-4ab6-abf9-6c25b7633fec"
->
-<PreConditions>
-<PreCondition
- Guid="27129ee1-6600-4d0f-be12-3caf5c6b4dcb"
->UNModeProposedAvailable()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="aa9997fc-79a3-460c-b5da-e82993af495c"
->THIS.OutputInformation.RequestDisplay()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- Name="TrackMode"
- Guid="0f4171d8-91cd-4650-8b4d-dbf8c020bda2"
->
-<Comment>Tracks the changes of the mode</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Updates the status of the request according to the mode"
- Guid="f5d7cfae-9f0e-4d4b-9c09-df2c8755af23"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Updates the status of the request according to the mode"
- Guid="12eb5aec-639b-49bf-8202-71ee1b5798e6"
->
-<PreConditions>
-<PreCondition
- Guid="39ffdcb3-45b7-48a7-9300-c9076f6005cd"
->NOT UNModeProposedAvailable()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="b48e4b87-ef33-4ce5-a5cb-63b891d88e0f"
->THIS.OutputInformation.DoNotDisplay()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure></Procedures>
-<StructureElement
- TypeName="OutputInformation"
- Default=""
- Mode="Outgoing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="OutputInformation"
- Guid="dc38667d-6e41-401b-9494-cb793bd4a531"
->
-</StructureElement><StructureElement
- TypeName="Default.Mode"
- Default="Default.Mode.UN"
- Mode="Internal"
- Implemented="TRUE"
- Name="Mode"
- Guid="8f910f6b-d41d-4a3c-b446-086da2f68adc"
->
-<Comment>The mode proposed to the driver</Comment>
-</StructureElement></Structure><Structure
- Default=""
- X="110"
- Y="420"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="OsLsShModeProposed"
- Guid="b8e97e9d-59a8-4196-926a-5cec53021754"
->
-<ReqRef
- Id="fa0a8ced-0f55-4b05-8937-d1c28bd730e6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="39d15e74-7792-4399-9ab7-a6c1a323d695"
->
-</ReqRef><Comment>Indicates the OS/LS/SH mode that is proposed to the driver</Comment>
-<Procedures>
-<Procedure
- Implemented="TRUE"
- Name="Display"
- Guid="856f790a-daa9-4391-a07b-e601304dc7ee"
->
-<Comment>Requests to display the corresponding information</Comment>
-<Parameters>
-<Parameter
- Type="Default.Mode"
- Name="mode"
- Guid="0abc15fc-e2a9-46f5-87a8-d130281eb6c5"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Updates the request status"
- Guid="8d2231ba-d3a5-4bfa-8b65-38d1bd19eb99"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Updates the request status"
- Guid="b6286da0-5eec-4a28-86d8-b07e2542ae22"
->
-<PreConditions>
-<PreCondition
- Guid="1ea16315-d5c1-4018-addc-53abb1f4b3f8"
->OsLsShModeProposedAvailable()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="90ed7f5f-e3f3-4a15-8666-5305d55d8f0f"
->THIS.OutputInformation.RequestDisplay()</Action><Action
- Guid="f80d350b-8ca3-4e53-9ba8-5f703d9793b5"
->Mode &lt;- mode</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- Name="TrackMode"
- Guid="b90250e9-0199-4830-8ec8-19243f551edb"
->
-<Comment>Tracks the changes of the mode</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Updates the status of the request according to the mode"
- Guid="01718b7e-4172-42dd-9176-f9aef0751744"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Updates the status of the request according to the mode"
- Guid="0f98d22e-4a89-4fa6-8cbf-a99bbba5b71c"
->
-<PreConditions>
-<PreCondition
- Guid="92c036a0-6bf8-4583-93cb-ec8981482a3c"
->NOT OsLsShModeProposedAvailable()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="b9f312ad-76db-43b0-ac4e-d6ef3102f355"
->THIS.OutputInformation.DoNotDisplay()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure></Procedures>
-<StructureElement
- TypeName="OutputInformation"
- Default=""
- Mode="Outgoing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="OutputInformation"
- Guid="6d30053e-5df8-4d90-b980-c76005722b07"
->
-</StructureElement><StructureElement
- TypeName="Default.Mode"
- Default="Default.Mode.OS"
- Mode="Internal"
- Implemented="TRUE"
- Name="Mode"
- Guid="550a111c-8956-42ed-8eb0-11b9e7cb5a86"
->
-<Comment>Themode proposed to the driver</Comment>
-</StructureElement></Structure><Structure
- Default=""
  X="660"
  Y="660"
  Width="100"
@@ -4733,7 +4532,7 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
                                ),
                   Second=&gt; Kernel.NationalValues.MaxDistInSRSpeedRestriction
                   )) | (X.Location &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))
-  USING Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+  USING X IN Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
     Location =&gt; BaseTypes.OffsetDistance(Distance =&gt; X.Location, Offset =&gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom) ),
     Speed =&gt; X.Speed,
     Length =&gt; X.Length
@@ -4764,7 +4563,7 @@ Remains true for a while after OS or FS modes have been entered.</Comment>
     Speed =&gt; Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)),
     Length =&gt; Default.BaseTypes.DistanceToLength(
         REDUCE MRSP
-        USING BaseTypes.MinDistance(X.Location,RESULT)
+        USING X IN BaseTypes.MinDistance(X.Location,RESULT)
         INITIAL_VALUE BaseTypes.Distance.Infinity)
 }
 IN MRSP</Action></Actions>
@@ -5926,297 +5725,6 @@ The brake reason.</Comment>
  Name="OutputInformation"
  Guid="a38029a4-5491-4363-9561-e8d78c629e82"
 >
-</StructureElement></Structure><Structure
- Default=""
- X="550"
- Y="420"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Verified="TRUE"
- Name="RVModeProposed"
- Guid="da4b3c13-62b3-49aa-a107-66617b745e2d"
->
-<ReqRef
- Id="3f9544be-2db6-47dc-99aa-0019955b7d6d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="167ca475-f079-4356-8437-bbfa8134e1b0"
->
-</ReqRef><Comment>Indicates that the mode RV has been proposed</Comment>
-<Procedures>
-<Procedure
- Implemented="TRUE"
- Name="Display"
- Guid="f63bd8b0-b081-490d-a6e6-bc4591af6601"
->
-<Comment>Requests to display the corresponding information</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Updates the request status"
- Guid="233aff49-a57a-4c41-9474-222dea497d9b"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Updates the request status"
- Guid="dd114363-41b0-4525-8930-44c0f0b943a5"
->
-<PreConditions>
-<PreCondition
- Guid="8cb0faf6-0f56-49ce-8ff1-85a047cd312d"
->RVModeProposedAvailable()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="c93feb76-9f2f-4824-89cc-cdf8b0eab526"
->THIS.OutputInformation.RequestDisplay()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- Name="TrackMode"
- Guid="0fc37d6e-c875-46bb-9b05-8935ec6e15dc"
->
-<Comment>Tracks the changes of the mode</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Updates the status of the request according to the mode"
- Guid="c91e867b-99fe-4057-b835-0eefae623b9b"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Updates the status of the request according to the mode"
- Guid="61063816-5bbf-47c0-af05-baa9af20f0b9"
->
-<PreConditions>
-<PreCondition
- Guid="e17d123c-cbfa-444e-b601-97d3af74c8ae"
->NOT RVModeProposedAvailable()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="47c52c29-92eb-489b-a5a6-1b24767bb6ae"
->THIS.OutputInformation.DoNotDisplay()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure></Procedures>
-<StructureElement
- TypeName="OutputInformation"
- Default=""
- Mode="Outgoing"
- Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="OutputInformation"
- Guid="f87ba491-b541-496a-b83d-35418de800ac"
->
-</StructureElement><StructureElement
- TypeName="Default.Mode"
- Default="Default.Mode.UN"
- Mode="Internal"
- Implemented="TRUE"
- Verified="TRUE"
- Name="Mode"
- Guid="1120c2d0-6812-4bc0-a6cc-7437561bbee6"
->
-<Comment>The mode proposed to the driver</Comment>
-</StructureElement></Structure><Structure
- Default=""
- X="330"
- Y="420"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="SNModeProposed"
- Guid="df3dfafd-d474-4971-960d-926efa1511ad"
->
-<ReqRef
- Id="ebf19bbb-1136-41ba-92fe-0aa6cddb639b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="df0c091b-b54f-4ce8-bf8b-7fdfef8ff571"
->
-</ReqRef><Comment>Indicates that the mode SN has been proposed to the driver</Comment>
-<Procedures>
-<Procedure
- Implemented="TRUE"
- Name="Display"
- Guid="3cb29a30-1e0c-4331-aca9-c1d08ab7f418"
->
-<Comment>Requests to display the corresponding information</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Updates the request status"
- Guid="b388589d-2abc-427b-beaa-24de7f6c8723"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Updates the request status"
- Guid="3344a026-aed2-46b8-b173-ef34dcf42065"
->
-<PreConditions>
-<PreCondition
- Guid="4f214030-13a4-49b2-acb8-4931564cd197"
->SNModeProposedAvailable()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="e38df24f-91b3-4340-9189-2b5985454dc4"
->THIS.OutputInformation.RequestDisplay()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- Name="TrackMode"
- Guid="8aa4d32a-b031-4936-b637-0b3713794c5d"
->
-<Comment>Tracks the changes of the mode</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Updates the status of the request according to the mode"
- Guid="2e82d027-373d-4d58-bcff-987f2bd45508"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Updates the status of the request according to the mode"
- Guid="832ddbe0-f7ac-4936-96f8-65eee4c8963f"
->
-<PreConditions>
-<PreCondition
- Guid="bd5c5886-b780-4a50-8744-8d32ba36d0bb"
->NOT SNModeProposedAvailable()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="9bf887cf-e907-48f2-ab85-16e102ccd2fe"
->THIS.OutputInformation.DoNotDisplay()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure></Procedures>
-<StructureElement
- TypeName="OutputInformation"
- Default=""
- Mode="Outgoing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="OutputInformation"
- Guid="5bad47c8-f713-4d15-8b49-abbe2fbcb0eb"
->
-</StructureElement><StructureElement
- TypeName="Default.Mode"
- Default="Default.Mode.UN"
- Mode="Internal"
- Implemented="TRUE"
- Name="Mode"
- Guid="1871d7ee-0ea5-45c5-b3b1-06fb74ee7daa"
->
-<Comment>The mode proposed to the driver</Comment>
-</StructureElement></Structure><Structure
- Default=""
- X="220"
- Y="420"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="SRModeProposed"
- Guid="144672ae-fbdb-4b88-9b4e-e27a3fe208ff"
->
-<ReqRef
- Id="ab35ab1a-b0ef-4158-a6ea-e5e4b77dd326"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="63d2d991-6837-40ce-b18b-45489713a8b2"
->
-</ReqRef><Comment>Indicates that the SR mode has been proposed to the driver</Comment>
-<Procedures>
-<Procedure
- Implemented="TRUE"
- Name="Display"
- Guid="bca68e84-7ccd-451d-a183-459619f66a4e"
->
-<Comment>Requests to display the corresponding information</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Updates the request status"
- Guid="44b73ed9-d740-4178-b8e3-cb2805e8563c"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Updates the request status"
- Guid="3fa01a56-5e89-49e1-91b1-8a6ad6bdd09b"
->
-<PreConditions>
-<PreCondition
- Guid="08835343-c693-4006-809f-f6b4569c7f24"
->SRModeProposedAvailable()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ffd22eef-0c9b-44d4-98a2-37633a0eaee9"
->THIS.OutputInformation.RequestDisplay()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- Name="TrackMode"
- Guid="fe8f2035-38e4-421a-a7cc-37e241a7c08c"
->
-<Comment>Tracks the changes of the mode</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Updates the status of the request according to the mode"
- Guid="98787c02-e45d-47a2-b1d3-fc1d298a949b"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Updates the status of the request according to the mode"
- Guid="4bad8588-5c76-482b-9846-eabdf707e164"
->
-<PreConditions>
-<PreCondition
- Guid="4d68fea4-63d6-49ee-999d-cfe9e39d44c7"
->NOT SRModeProposedAvailable()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="95f95b94-79e3-4b88-ac4a-bb6ee1391f5e"
->THIS.OutputInformation.DoNotDisplay()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure></Procedures>
-<StructureElement
- TypeName="OutputInformation"
- Default=""
- Mode="Outgoing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="OutputInformation"
- Guid="7081dfe3-4417-48a7-8eef-6d08156a54d5"
->
-</StructureElement><StructureElement
- TypeName="Default.Mode"
- Default="Default.Mode.UN"
- Mode="Internal"
- Implemented="TRUE"
- Name="Mode"
- Guid="e03ca7c0-3e74-4cb9-8e1b-4a2888a99394"
->
-<Comment>The mode proposed to the driver</Comment>
 </StructureElement></Structure></Structures>
 <Functions>
 <Function
@@ -6839,30 +6347,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
- X="110"
- Y="480"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="OsLsShModeProposedAvailable"
- Guid="64fd4d34-fa3f-4db6-8453-0bc0b6dbe8fd"
->
-<ReqRef
- Id="fa0a8ced-0f55-4b05-8937-d1c28bd730e6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="aad8fc3f-8612-4906-837b-b024a5799f6a"
->
-</ReqRef><Comment>Identifies the modes where the output is available</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is available"
- Guid="380e4215-3cd4-4dc8-89a7-c75b834e6aea"
->
-<Expression>Kernel.Mode in [Mode.SB, Mode.PT]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
  X="770"
  Y="480"
  Width="100"
@@ -7080,30 +6564,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  Type="Boolean"
  Default=""
  X="550"
- Y="480"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="RVModeProposedAvailable"
- Guid="91fa44fa-e81f-4cfe-9874-48ee9b7c7037"
->
-<ReqRef
- Id="3f9544be-2db6-47dc-99aa-0019955b7d6d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="777c583c-76ef-4681-9646-e76848d3fe1c"
->
-</ReqRef><Comment>Identifies the modes where the output is available</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is available"
- Guid="0431abf3-a16e-406c-a891-2afea91bfd5b"
->
-<Expression>Kernel.Mode in [Mode.FS, Mode.LS, Mode.OS]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- X="550"
  Y="360"
  Width="100"
  Height="50"
@@ -7175,30 +6635,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
- X="330"
- Y="480"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="SNModeProposedAvailable"
- Guid="e4f81048-36e5-46bb-b11a-570f85b61dc3"
->
-<ReqRef
- Id="ebf19bbb-1136-41ba-92fe-0aa6cddb639b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f7f5af17-91e9-4ae4-8a6b-a8bd6628772f"
->
-</ReqRef><Comment>Identifies the modes where the output is available</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is available"
- Guid="9fb72de7-e768-4ce2-b793-b7a62767b977"
->
-<Expression>Kernel.Mode in [Mode.SB]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
  X="770"
  Y="60"
  Width="100"
@@ -7219,30 +6655,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  Guid="aa5d1ce2-bf02-45ea-a8e3-d96cd3b45a41"
 >
 <Expression>Kernel.Mode in [Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.UN, Mode.PT, Mode.RV]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- X="220"
- Y="480"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="SRModeProposedAvailable"
- Guid="75c4c3c0-a079-4b91-9563-13cad657278b"
->
-<ReqRef
- Id="ab35ab1a-b0ef-4158-a6ea-e5e4b77dd326"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="58f2993a-e07a-4e96-9ca2-bed5139fb226"
->
-</ReqRef><Comment>Identifies the modes where the output is available</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is available"
- Guid="2016c4c4-ba52-440f-b77d-4b1dd0d2f104"
->
-<Expression>Kernel.Mode in [Mode.SB, Mode.PT]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -7578,30 +6990,6 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  Guid="e5799dcc-491b-4f20-9936-8236063d62ff"
 >
 <Expression>Kernel.Mode in [Mode.TR]</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- X="440"
- Y="480"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="UNModeProposedAvailable"
- Guid="46967466-5562-4139-81ef-0c552f131441"
->
-<ReqRef
- Id="8f221bd9-37f1-4b7b-90bf-7ced1a3e6840"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4e9d6fe0-cdbd-4bd8-97a1-32748b1c6c70"
->
-</ReqRef><Comment>Identifies the modes where the output is available</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is available"
- Guid="09365d5f-51bc-429d-8d6b-00c84416d12b"
->
-<Expression>Kernel.Mode in [Mode.SB]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"

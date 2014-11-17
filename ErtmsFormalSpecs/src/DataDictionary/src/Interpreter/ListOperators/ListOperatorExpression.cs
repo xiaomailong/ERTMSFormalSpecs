@@ -47,6 +47,11 @@ namespace DataDictionary.Interpreter.ListOperators
         public Variables.Variable IteratorVariable { get; private set; }
 
         /// <summary>
+        /// The name of the iterator variable
+        /// </summary>
+        public string IteratorName { get; private set; }
+
+        /// <summary>
         /// The iterator variable during the previous iteration
         /// </summary>
         public Variables.Variable PreviousIteratorVariable { get; private set; }
@@ -55,11 +60,11 @@ namespace DataDictionary.Interpreter.ListOperators
         /// Constructor
         /// </summary>
         /// <param name="listExpression"></param>
-        /// <param name="function"></param>
         /// <param name="root">the root element for which this expression should be parsed</param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
-        public ListOperatorExpression(ModelElement root, ModelElement log, Expression listExpression, int start, int end)
+        /// <param name="iteratorVariableName">The name of the iterator variable</param>
+        public ListOperatorExpression(ModelElement root, ModelElement log, Expression listExpression, string iteratorVariableName, int start, int end)
             : base(root, log, start, end)
         {
             ListExpression = listExpression;
@@ -67,7 +72,7 @@ namespace DataDictionary.Interpreter.ListOperators
 
             IteratorVariable = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
             IteratorVariable.Enclosing = this;
-            IteratorVariable.Name = "X";
+            IteratorVariable.Name = iteratorVariableName;
 
             PreviousIteratorVariable = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
             PreviousIteratorVariable.Enclosing = this;
@@ -197,7 +202,7 @@ namespace DataDictionary.Interpreter.ListOperators
         /// Checks the expression and appends errors to the root tree node when inconsistencies are found
         /// </summary>
         public override void checkExpression()
-        {            
+        {
             base.checkExpression();
 
             if (ListExpression != null)
@@ -215,6 +220,5 @@ namespace DataDictionary.Interpreter.ListOperators
                 AddError("List expression should be provided");
             }
         }
-
     }
 }

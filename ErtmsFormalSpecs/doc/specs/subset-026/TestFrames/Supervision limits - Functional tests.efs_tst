@@ -1159,7 +1159,7 @@ Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Dbec ( Vest =&gt; 75.0, Vta
 <Actions>
 <Action
  Guid="8167a609-6c8e-44e4-9179-07abd6c18ce1"
->Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct
 {
     TargetSpeed =&gt; 0.0,
     Sections =&gt; [],
@@ -1630,10 +1630,10 @@ DistanceForSpeed (
  Guid="2f70a364-eabf-4ba6-b2e1-a12467cd7c4f"
 >Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI (
     Vest =&gt; 30.0,
-    aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &gt; 5069.769 AND
+    aTarget =&gt; FIRST X IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &gt; 5069.769 AND
 Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI (
     Vest =&gt; 30.0,
-    aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &lt; 5069.77</Expectation><Expectation
+    aTarget =&gt; FIRST X IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &lt; 5069.77</Expectation><Expectation
  Kind="Instantaneous"
  Guid="79cd7589-aabc-4666-98fe-0ebd937a2236"
 >Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Dbec ( Vest =&gt; 30.0, Vtarget =&gt; 0.0, EstimatedAccelerationSetToZero =&gt; False ) &gt; 19.7646
@@ -1648,14 +1648,14 @@ Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Dbec ( Vest =&gt; 30.0, Vta
     Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
     (
         Distance =&gt; d,
-        aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY )
+        aTarget =&gt; FIRST X IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY )
     ),
     Speed =&gt; 34.416 ) &gt; 5089.533 AND
 DistanceForSpeed (
     Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
     (
         Distance =&gt; d,
-        aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY )
+        aTarget =&gt; FIRST X IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY )
     ),
     Speed =&gt; 34.416 ) &lt; 5089.534</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -1718,10 +1718,10 @@ DistanceForSpeed (
  Guid="1dce404d-1cd7-49a5-a809-9618ca24b43f"
 >Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI (
     Vest =&gt; 30.0,
-    aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MRSP.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &gt; 2204.984 AND
+    aTarget =&gt; FIRST X IN TARGETS ( Targets1 =&gt; Kernel.MRSP.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &gt; 2204.984 AND
 Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI (
     Vest =&gt; 30.0,
-    aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MRSP.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &lt; 2204.985</Expectation><Expectation
+    aTarget =&gt; FIRST X IN TARGETS ( Targets1 =&gt; Kernel.MRSP.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &lt; 2204.985</Expectation><Expectation
  Kind="Instantaneous"
  Guid="474595dc-5b00-46c2-bca8-499ad5976db2"
 >Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Dbec ( Vest =&gt; 30.0, Vtarget =&gt; 20.0, EstimatedAccelerationSetToZero =&gt; False ) &gt; 19.7646
@@ -1736,7 +1736,7 @@ Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Dbec ( Vest =&gt; 30.0, Vta
     Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
     (
         Distance =&gt; d,
-        aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MRSP.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY )
+        aTarget =&gt; FIRST X IN TARGETS ( Targets1 =&gt; Kernel.MRSP.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY )
     ),
     Speed =&gt; 34.416 ) &gt;= 2224.748</Expectation><Expectation
  Kind="Instantaneous"
@@ -1745,7 +1745,7 @@ Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Dbec ( Vest =&gt; 30.0, Vta
     Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
     (
         Distance =&gt; d,
-        aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MRSP.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY )
+        aTarget =&gt; FIRST X IN TARGETS ( Targets1 =&gt; Kernel.MRSP.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY )
     ),
     Speed =&gt; 34.416 ) &lt;= 2224.749</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -1870,19 +1870,19 @@ Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Dbec ( Vest =&gt; 30.0, Vta
  Guid="cfc6960f-0752-4713-8620-d422713c0ded"
 >Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI (
     Vest =&gt; 30.0,
-    aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &gt; 5069.769 AND
+    aTarget =&gt; FIRST X IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &gt; 5069.769 AND
 Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI (
     Vest =&gt; 30.0,
-    aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &lt; 5069.77</Expectation><Expectation
+    aTarget =&gt; FIRST X IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) ) &lt; 5069.77</Expectation><Expectation
  Kind="Instantaneous"
  Guid="446708da-441e-49a4-b524-20a17221c826"
 >Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2 (
     Vest =&gt; 30.0,
-    aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ),
+    aTarget =&gt; FIRST X IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ),
     EstimatedAccelerationSetToZero =&gt; False ) &gt; 5063.76 AND
 Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2 (
     Vest =&gt; 30.0,
-    aTarget =&gt; FIRST_IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ),
+    aTarget =&gt; FIRST X IN TARGETS ( Targets1 =&gt; Kernel.MA.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ),
     EstimatedAccelerationSetToZero =&gt; False ) &lt; 5063.77</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -2041,54 +2041,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Vsbi2 ( Dmaxsafefrontend
  Kind="Instantaneous"
  DeadLine="1"
  Guid="15ace69d-42d4-467a-9def-8223f21cd543"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Vsbi2 ( Dmaxsafefrontend =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; 50.0, EstimatedAccelerationSetToZero =&gt; False ) == 50.0</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="d_FLOI"
- Guid="9c562051-6a23-4d64-8376-8b1c3245d360"
->
-<ReqRef
- Id="d542f99e-9462-4bb6-9087-35da9a233e06"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1247894e-6a50-4a44-bf60-152f92300c48"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="8cf04ef4-20bb-437e-8b28-01f994de9455"
->
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step2 - Check d_FLOI"
- Guid="e5406d18-09fa-42e8-9438-89cc19670e09"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="a55bc4ab-2e21-40e9-bb85-e3dd08e4e424"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="04e5db3a-d2f6-4e0d-9c49-7db151342c55"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI ( Vest =&gt; 25.0, EstimatedAccelerationSetToZero =&gt; False ) &gt; 6631.146 AND
-Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI ( Vest =&gt; 25.0, EstimatedAccelerationSetToZero =&gt; False ) &lt; 6631.147</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Vsbi2 ( Dmaxsafefrontend =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; 50.0, EstimatedAccelerationSetToZero =&gt; False ) == 55.5</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2139,8 +2092,8 @@ Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_FLOI ( Vest =&gt; 25.0
 <Expectation
  Kind="Instantaneous"
  Guid="f485a7c1-80cd-4e3f-937a-ef1d22809065"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W  ( Vest =&gt; 25.0, EstimatedAccelerationSetToZero =&gt; False ) &gt; 6617.257 AND
-Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W  ( Vest =&gt; 25.0, EstimatedAccelerationSetToZero =&gt; False ) &lt; 6617.258</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W  ( Vest =&gt; 25.0, EstimatedAccelerationSetToZero =&gt; False ) &gt; 6967.029 AND
+Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W  ( Vest =&gt; 25.0, EstimatedAccelerationSetToZero =&gt; False ) &lt; 6967.03</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2194,8 +2147,8 @@ Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W  ( Vest =&gt; 25.0, 
 <Expectation
  Kind="Instantaneous"
  Guid="77fe5651-de1c-45dc-8094-96f352e2265c"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P  ( Vest =&gt; 25.0, EstimatedAccelerationSetToZero =&gt; False ) &gt; 6603.3683 AND
-Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P  ( Vest =&gt; 25.0, EstimatedAccelerationSetToZero =&gt; False ) &lt; 6603.3684</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P  ( Vest =&gt; 25.0, EstimatedAccelerationSetToZero =&gt; False ) &gt; 6953.1404 AND
+Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P  ( Vest =&gt; 25.0, EstimatedAccelerationSetToZero =&gt; False ) &lt; 6953.1405</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2424,9 +2377,9 @@ IN
 >Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Vbec ( Vest =&gt; 100.0, Vtarget =&gt; 20.0, EstimatedAccelerationSetToZero =&gt; False ) == 103.416</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a870f685-207e-4548-af63-164572f6f9b2"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_P_EBD_Target ( d_maxsafefront =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; 20.0, Vest =&gt; 100.0 ) &gt; 27.3865
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_P_EBD_Target ( d_maxsafefront =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; 20.0, Vest =&gt; 100.0 ) &gt; 26.021
 AND
-Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_P_EBD_Target ( d_maxsafefront =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; 20.0, Vest =&gt; 100.0 ) &lt; 27.3866</Expectation><Expectation
+Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_P_EBD_Target ( d_maxsafefront =&gt; Kernel.TrainPosition.FrontEndPosition ( DistanceInterval.Max ), Vtarget =&gt; 20.0, Vest =&gt; 100.0 ) &lt; 26.022</Expectation><Expectation
  Kind="Instantaneous"
  Guid="8432bdd2-927f-4b0f-9c22-e4a5267d55c0"
 >Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Dbec ( Vest =&gt; 100.0, Vtarget =&gt; 20.0, EstimatedAccelerationSetToZero =&gt; False ) &gt; 59.6312 AND
@@ -2578,8 +2531,8 @@ Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Dbec ( Vest =&gt; 100.0, Vt
 <Expectation
  Kind="Instantaneous"
  Guid="b63c787c-b4a1-4030-ba8f-c36b3121d859"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_I ( 25.0 ) &gt; 6564.4794 AND
-Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_I ( 25.0 ) &lt; 6564.4795</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_I ( 25.0 ) &gt; 6914.251 AND
+Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_I ( 25.0 ) &lt; 6914.252</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

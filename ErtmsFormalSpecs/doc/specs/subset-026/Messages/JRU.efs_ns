@@ -1,5 +1,4 @@
 <NameSpace
- X="550"
  Width="100"
  Height="50"
  Name="JRU"
@@ -592,62 +591,62 @@ Train category used for the static speed profile calculation. Thanks to NC_TRAIN
 >
 </EnumValue><EnumValue
  Value="8"
- Name="Spare"
+ Name="Spare_8"
  Guid="2fe500fa-4a22-48a9-b104-3775f4655d61"
 >
 </EnumValue><EnumValue
  Value="16"
- Name="Spare"
+ Name="Spare_16"
  Guid="95bb5324-334e-4d71-9ea9-9bb7b6490210"
 >
 </EnumValue><EnumValue
  Value="32"
- Name="Spare"
+ Name="Spare_32"
  Guid="f2231ed7-4942-4fe0-b1b1-c37c74c69cd8"
 >
 </EnumValue><EnumValue
  Value="64"
- Name="Spare"
+ Name="Spare_64"
  Guid="db0418b4-5217-4460-8bf9-a266d82a744d"
 >
 </EnumValue><EnumValue
  Value="128"
- Name="Spare"
+ Name="Spare_128"
  Guid="f3faffce-5acc-4f0c-b72f-c75ec037b773"
 >
 </EnumValue><EnumValue
  Value="256"
- Name="Spare"
+ Name="Spare_256"
  Guid="c1ee85e6-193c-4e60-a9e8-fb98eb6de6ce"
 >
 </EnumValue><EnumValue
  Value="512"
- Name="Spare"
+ Name="Spare_512"
  Guid="c69d51ac-ed95-4366-b1f4-27b6cc54601a"
 >
 </EnumValue><EnumValue
  Value="1024"
- Name="Spare"
+ Name="Spare_1024"
  Guid="40406193-e6ff-480d-8882-0fac60a6712e"
 >
 </EnumValue><EnumValue
  Value="2048"
- Name="Spare"
+ Name="Spare_2048"
  Guid="5ccb4fba-6e84-4554-b6a0-434bb0913d7d"
 >
 </EnumValue><EnumValue
  Value="4096"
- Name="Spare"
+ Name="Spare_4096"
  Guid="89c94a2f-febd-462d-9912-0f8fd52f42a2"
 >
 </EnumValue><EnumValue
  Value="8192"
- Name="Spare"
+ Name="Spare_8192"
  Guid="4a9d2a4d-57ef-4b9e-abb6-e219e9e57c6f"
 >
 </EnumValue><EnumValue
  Value="16384"
- Name="Spare"
+ Name="Spare_16384"
  Guid="81a3ee74-a98a-421f-9063-4cbf1bedbf60"
 >
 </EnumValue></SpecialValues>
@@ -862,12 +861,12 @@ It describes the interface with magnetic shoe brake and whether if affects the b
 >
 </EnumValue><EnumValue
  Value="2"
- Name="Spare"
+ Name="Spare_2"
  Guid="3e44743b-1f89-455b-be8e-06d9424dbc9f"
 >
 </EnumValue><EnumValue
  Value="3"
- Name="Spare"
+ Name="Spare_3"
  Guid="96e86314-a9c7-40c3-9d2d-8b5d3c88747f"
 >
 </EnumValue></SpecialValues>
@@ -1497,76 +1496,74 @@ This gives the number of axles of the single unit (fixed train set or locomotive
  MaxValue="127"
  Precision="IntegerPrecision"
  Default="0"
- X="110"
- Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="N_AXLELOADCAT"
- Guid="a6fe19b8-6e08-4251-b0f7-d320a13410a1"
+ Name="M_AXLELOADCAT"
+ Guid="7cdee170-80b7-4c1c-a646-f61a0c2e20b5"
 >
 <Comment>Axle load</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
  Name="A"
- Guid="87735c10-126f-4945-8ec6-c92d0c8ba4c7"
+ Guid="a81f4624-6fe3-44f1-8063-511decef058a"
 >
 </EnumValue><EnumValue
  Value="1"
  Name="B1"
- Guid="058001e8-7577-4740-adc5-e3243c60f932"
+ Guid="3b2aa8a6-b447-4b60-ac41-3028c4f9b813"
 >
 </EnumValue><EnumValue
  Value="2"
  Name="B2"
- Guid="5b8dc54d-7f6f-4cba-b2fa-5cedc954af1b"
+ Guid="67443cda-b7f0-4246-84f1-3cbb18bf09f1"
 >
 </EnumValue><EnumValue
  Value="3"
  Name="C2"
- Guid="5a23c5e5-7a7c-4d90-ac48-e024a7ff7344"
+ Guid="b55a5f64-e6de-4c25-955a-c67cb700900f"
 >
 </EnumValue><EnumValue
  Value="4"
  Name="C3"
- Guid="9df55fc0-0d80-4175-bcc3-29a904d7dfd1"
+ Guid="1ea120b9-f971-45b5-90d5-b052c73a7f88"
 >
 </EnumValue><EnumValue
  Value="5"
  Name="C4"
- Guid="e7240367-0f6e-4e52-a491-fe501871ab07"
+ Guid="8e7b3bb3-9641-4ea2-ac5d-026fd7913cac"
 >
 </EnumValue><EnumValue
  Value="6"
  Name="D2"
- Guid="ba2bea01-43ab-4479-8059-57f1f29020d6"
+ Guid="66c46908-0bd3-42f5-8673-01d496661664"
 >
 </EnumValue><EnumValue
  Value="7"
  Name="D3"
- Guid="ae579f38-20d4-40b0-b9d3-aadea612a384"
+ Guid="8d8d133f-3836-4c84-a3c4-0e49d2d1ff9a"
 >
 </EnumValue><EnumValue
  Value="8"
  Name="D4"
- Guid="45f8a2e8-7c58-45b1-afcf-b47ac77a8e9a"
+ Guid="0c3338c6-0f02-49e9-9b11-eb98c9ac85fb"
 >
 </EnumValue><EnumValue
  Value="9"
  Name="D4XL"
- Guid="706e4f48-d27b-4b61-9597-8a3ea44f96ec"
+ Guid="3270bc91-e481-417e-b0cb-aad471f0fd64"
 >
 </EnumValue><EnumValue
  Value="10"
  Name="E4"
- Guid="f4ce4343-5ed6-4f8b-a15e-f05b2460ae2f"
+ Guid="050ef983-86d7-4005-9e5b-a82a3a696ed2"
 >
 </EnumValue><EnumValue
  Value="11"
  Name="E5"
- Guid="d03d7306-a799-4a1e-84fd-a3d826ea0616"
+ Guid="594eac18-6586-4d9b-9ba5-a2d82e9d52e6"
 >
 </EnumValue></SpecialValues>
 </Range><Range
@@ -2062,12 +2059,12 @@ This variable contains the driver&apos;s action</Comment>
 >
 </EnumValue><EnumValue
  Value="31"
- Name="Spare_1"
+ Name="Spare_31"
  Guid="ad599f29-6983-4aed-9bc3-958d85223cfb"
 >
 </EnumValue><EnumValue
  Value="32"
- Name="Spare_2"
+ Name="Spare_32"
  Guid="2e28c9b2-a91c-4096-a5af-8d949a90e4e4"
 >
 </EnumValue><EnumValue
@@ -2464,7 +2461,7 @@ STM packet number, i.e. NID_PACKET as defined in chapter 8 of subset-58.</Commen
 >
 </EnumValue><EnumValue
  Value="19"
- Name="Spare"
+ Name="Spare_19"
  Guid="a5ff701d-b1b8-4b8d-90b0-76e77cb5eaee"
 >
 </EnumValue><EnumValue
@@ -2494,7 +2491,7 @@ STM packet number, i.e. NID_PACKET as defined in chapter 8 of subset-58.</Commen
 >
 </EnumValue><EnumValue
  Value="33"
- Name="Spare"
+ Name="Spare_33"
  Guid="da411459-3215-4197-8716-9bcf9d8979ae"
 >
 </EnumValue><EnumValue
@@ -2926,12 +2923,12 @@ Supervision status of the speed and distance monitoring</Comment>
 >
 </EnumValue><EnumValue
  Value="16384"
- Name="SR_stop_order"
+ Name="SR_stop_order_16384"
  Guid="e0b9afbe-7500-49b4-b785-f7e8ddacb184"
 >
 </EnumValue><EnumValue
  Value="32768"
- Name="SR_stop_order"
+ Name="SR_stop_order_32768"
  Guid="81179a4d-78bf-4258-ac4c-b5859ab94778"
 >
 </EnumValue><EnumValue

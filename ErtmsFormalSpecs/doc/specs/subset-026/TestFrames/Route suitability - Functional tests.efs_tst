@@ -90,7 +90,7 @@
  Guid="dc249aaf-f113-4dfc-bb75-315b6e2c9ddb"
 >Odometry.NominalDistance &lt;- 0.0</Action><Action
  Guid="a7ca5e3a-5697-4cea-b978-536d61c541de"
->Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
     TargetSpeed =&gt; 0.0,
     Sections =&gt; [],
     EndSection =&gt; Kernel.MA.EndSection{
@@ -218,15 +218,15 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e1c901e7-38c9-4207-aa37-889f322ed57e"
->Kernel.TrackDescription.RouteSuitability.IsUnsuitable(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation><Expectation
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitable(LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="1fe0f5b2-d2bc-494d-a4bb-afbb53f69cdc"
->( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Loading_gauge_profile</Expectation><Expectation
+>( LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Loading_gauge_profile</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b8dd528c-bf69-46b0-aee9-57b01648c436"
->(COUNT Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 1</Expectation></Expectations>
+>(COUNT X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 1</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -291,15 +291,15 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="6dec155d-6039-4dbc-8940-027ccbd1df79"
->Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation><Expectation
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="98239d5f-b6a4-4e3c-a4c3-1ba9dd08c2e9"
->( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Max_axle_load</Expectation><Expectation
+>( LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Max_axle_load</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="094f9f91-e39b-476d-8355-36a374ac46f6"
->(COUNT Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 2</Expectation></Expectations>
+>(COUNT X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 2</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -365,15 +365,15 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="a5f1d5ba-48ec-465c-b739-abe7f65cb3db"
->Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation><Expectation
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="fbaba285-4636-46bc-b1f7-36f24cc47ad3"
->( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Traction_system</Expectation><Expectation
+>( LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Traction_system</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e8ceb019-ba66-4c4b-b03f-6ec405eb9524"
->( COUNT Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 3</Expectation></Expectations>
+>( COUNT X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 3</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -563,19 +563,19 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="d46b4cf8-f81c-47b0-808b-dd4511c9768e"
->(COUNT Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 3</Expectation><Expectation
+>(COUNT X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 3</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f7636d79-0e59-4355-8907-8c16ba6833e8"
->Kernel.TrackDescription.RouteSuitability.IsUnsuitable (FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation><Expectation
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitable (FIRST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="efee40e8-722e-4cc4-9620-b55ebb931fa0"
->Kernel.TrackDescription.RouteSuitability.IsUnsuitable (LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation><Expectation
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitable (LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="338382e1-4efa-41f3-aae4-19a91ce443d8"
->THERE_IS_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable( anItem=&gt; X ) == Boolean.False</Expectation></Expectations>
+>THERE_IS X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable( anItem=&gt; X ) == Boolean.False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -597,7 +597,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="69ab5fff-1c92-45d9-a616-b89705074b74"
->(COUNT DMI.MasterDMI().Out_RouteUnsuitabilities.RouteUnsuitabilities) == 2</Expectation><Expectation
+>(COUNT X IN DMI.MasterDMI().Out_RouteUnsuitabilities.RouteUnsuitabilities) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="9829518d-bd36-4076-bc59-827e5e74f334"
@@ -712,7 +712,7 @@
  Guid="eb190964-e518-4aeb-bae4-0c3b08a8f883"
 >Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action
  Guid="68694749-8398-4c95-9322-2a9b00a2c988"
->Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
     TargetSpeed =&gt; 0.0,
     EndSection =&gt; Kernel.MA.EndSection{
         Length =&gt; 2000.0
@@ -860,35 +860,35 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="d8197f0c-ee80-46df-8db9-476c07187e57"
->(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).NidCTraction == 80</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).NidCTraction == 80</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b2be7619-db97-4931-bc20-c69af53c64c0"
->(COUNT Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 3</Expectation><Expectation
+>(COUNT X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 3</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="0f08b536-83f1-4e8f-afc9-094f88eb7965"
->(FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 500.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 500.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e39e583b-87d0-476f-b422-a14c14ea85b0"
->(FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).LineGauge == Messages.M_LINEGAUGE.GB</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).LineGauge == Messages.M_LINEGAUGE.GB</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="0ddeb3ea-caf9-4c79-a64b-3d649f712d85"
->(FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Loading_gauge_profile</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Loading_gauge_profile</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="c5fbed39-6356-4c0e-b7f3-8b4bfc80ccf8"
->(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 2000.0</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 2000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b6aaf730-08d6-4aca-9bde-2736151002b9"
->(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).TractionSystem == Messages.M_VOLTAGE.AC_25_kV_50_Hz</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).TractionSystem == Messages.M_VOLTAGE.AC_25_kV_50_Hz</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="4c03c706-5e86-437c-996a-a9c74e790cea"
->(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Traction_system</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Traction_system</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="0c90100c-e33e-4236-b027-3dbd15f18f5b"
@@ -896,7 +896,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b9b55801-26ed-4880-92bd-2ce0858c4896"
->THERE_IS_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | (X.Distance == 1000.0 AND X.Type ==  Messages.Q_SUITABILITY.Max_axle_load AND X.MaxAxleLoad == Messages.M_AXLELOADCAT.D4)</Expectation></Expectations>
+>THERE_IS X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | (X.Distance == 1000.0 AND X.Type ==  Messages.Q_SUITABILITY.Max_axle_load AND X.MaxAxleLoad == Messages.M_AXLELOADCAT.D4)</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step 2 - Check that inconsistencies are correctly identified"
  Guid="4341c3e5-24fb-4fca-8782-70b44b8e7ce0"
@@ -906,7 +906,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="551d95c0-219d-4380-8fd2-6e5edc3dd475"
->( FORALL_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem=&gt; X ) == Boolean.False )</Expectation></Expectations>
+>( FORALL X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem=&gt; X ) == Boolean.False )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -984,7 +984,7 @@
     }
 }</Action><Action
  Guid="b8a91470-c604-4a5e-8de8-2a72db649698"
->Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
     TargetSpeed =&gt; 0.0,
     Sections =&gt; [],
     EndSection =&gt; Kernel.MA.EndSection{
@@ -1117,35 +1117,35 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="fac4c56e-b236-4d10-b5c5-73b8aec206f3"
->(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).NidCTraction == 80</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).NidCTraction == 80</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="29b7ba20-867c-4c40-b525-05b1012a67a3"
->(COUNT Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 3</Expectation><Expectation
+>(COUNT X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == 3</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="fceae6ba-e38c-49b9-9ac7-082b0d6b07c8"
->(FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 500.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 500.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="7ab8319c-55cb-412b-b544-4bf767b80f8b"
->(FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).LineGauge == Messages.M_LINEGAUGE.GB</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).LineGauge == Messages.M_LINEGAUGE.GB</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="28ecefba-f238-48ee-b5b5-f368ffeb5ec2"
->(FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Loading_gauge_profile</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Loading_gauge_profile</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="2f2814e1-8e85-4cb3-ae1a-0efca86b2127"
->(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 2000.0</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 2000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="269c68bc-b651-4115-a295-592f591cd628"
->(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).TractionSystem == Messages.M_VOLTAGE.AC_25_kV_50_Hz</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).TractionSystem == Messages.M_VOLTAGE.AC_25_kV_50_Hz</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="abd61f75-d524-4227-a846-702a18927abc"
->(LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Traction_system</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Type == Messages.Q_SUITABILITY.Traction_system</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="a89f1035-3d52-4f28-b67d-38cee43dc66f"
@@ -1153,7 +1153,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="cf41088a-7a1d-49dd-b869-df70923c86ef"
->THERE_IS_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | (X.Distance == 1000.0 AND X.Type ==  Messages.Q_SUITABILITY.Max_axle_load AND X.MaxAxleLoad == Messages.M_AXLELOADCAT.D4)</Expectation></Expectations>
+>THERE_IS X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | (X.Distance == 1000.0 AND X.Type ==  Messages.Q_SUITABILITY.Max_axle_load AND X.MaxAxleLoad == Messages.M_AXLELOADCAT.D4)</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step 2 - Check that inconsistencies are correctly identified"
  Guid="49fd774d-f16e-4ba8-9523-77f6f6bddbd9"
@@ -1163,7 +1163,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="80aa9580-bbc9-46c2-99df-a7bba81ac078"
->( FORALL_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem=&gt; X ) == Boolean.False )</Expectation></Expectations>
+>( FORALL X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem=&gt; X ) == Boolean.False )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1339,7 +1339,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="6829f88c-aac1-4637-a2ff-5b57ae80739c"
->Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.False</Expectation></Expectations>
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1405,7 +1405,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="46487812-0ff9-499e-8cbf-7e26230c00a0"
->Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.False</Expectation></Expectations>
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1471,7 +1471,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="20f8ed22-ce30-487a-b8f9-9f66a7a1f7ef"
->Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation></Expectations>
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1655,11 +1655,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="dbf613f2-518f-4b86-a062-805a42e729b7"
->Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem =&gt; FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items ) == Boolean.False</Expectation><Expectation
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem =&gt; FIRST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items ) == Boolean.False</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="4f50f7ec-61e2-4695-842c-c6ffb76dd5cc"
->Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem =&gt; LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items ) == Boolean.False</Expectation></Expectations>
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem =&gt; LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items ) == Boolean.False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1733,11 +1733,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="dab80ece-de48-4d47-a794-9356b401edd0"
->Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem =&gt; FIRST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items ) == Boolean.True</Expectation><Expectation
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem =&gt; FIRST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items ) == Boolean.True</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="682d2d85-0610-43b4-9219-e9c248df2caa"
->Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem =&gt; LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items ) == Boolean.True</Expectation></Expectations>
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( anItem =&gt; LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items ) == Boolean.True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1914,7 +1914,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f3e49d5b-980e-4e80-b730-7e2211e3263a"
->Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.False</Expectation></Expectations>
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1981,7 +1981,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="85320656-534e-4ca8-9fea-51236d78ef70"
->Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( LAST_IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation></Expectations>
+>Kernel.TrackDescription.RouteSuitability.IsUnsuitable ( LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items) == Boolean.True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

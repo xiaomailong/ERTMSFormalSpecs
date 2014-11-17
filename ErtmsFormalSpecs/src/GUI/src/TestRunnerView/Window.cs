@@ -212,9 +212,15 @@ namespace GUI.TestRunnerView
                             Frame = dictionary.findFrame(frameToolStripComboBox.Text);
                             if (Frame != null)
                             {
+                                List<string> subSequences = new List<string>();
                                 foreach (DataDictionary.Tests.SubSequence subSequence in Frame.SubSequences)
                                 {
-                                    subSequenceSelectorComboBox.Items.Add(subSequence.Name);
+                                    subSequences.Add(subSequence.Name);
+                                }
+                                subSequences.Sort();
+                                foreach (string subSequence in subSequences)
+                                {
+                                    subSequenceSelectorComboBox.Items.Add(subSequence);
                                 }
                                 break;
                             }

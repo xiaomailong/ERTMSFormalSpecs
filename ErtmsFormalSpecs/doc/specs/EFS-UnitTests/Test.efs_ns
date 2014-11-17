@@ -121,6 +121,7 @@
  Guid="06227d1f-734c-4115-92c7-0da13438c378"
 >
 <StateMachine
+ Default=""
  Guid="92a6faf2-3d36-4972-91f8-a37756165b5d"
 >
 <Rules>
@@ -158,6 +159,7 @@
  Guid="3233759a-bbc4-4894-b339-e0c2b9ecef89"
 >
 <StateMachine
+ Default=""
  Guid="9a446eb7-2721-4a8d-a6c7-a0cdbe9072db"
 >
 </StateMachine></State></States>
@@ -223,6 +225,7 @@
  Guid="9b5b7f73-0017-4c18-821a-27d75115981a"
 >
 <StateMachine
+ Default=""
  Guid="285cc810-d4fe-4752-9707-9197b8fad198"
 >
 <Rules>
@@ -254,6 +257,7 @@
  Guid="02ad54b8-7dad-439e-a464-3bb25b702525"
 >
 <StateMachine
+ Default=""
  Guid="ba389e33-57b9-49e0-8c05-afd56c210e7a"
 >
 </StateMachine></State></States>
@@ -272,6 +276,7 @@
  Guid="d22dcc38-0ca1-44c7-bc9c-cdf6f3e696f8"
 >
 <StateMachine
+ Default=""
  Guid="f368b362-5ad4-4276-b658-e8ad79d8c202"
 >
 </StateMachine></State><State
@@ -279,6 +284,7 @@
  Guid="eb19fda7-4643-475c-878a-880f2fa3bc82"
 >
 <StateMachine
+ Default=""
  Guid="c644e644-ee4f-4080-a738-36b41d2083d7"
 >
 <Rules>
@@ -434,6 +440,7 @@
 >
 </Variable><Variable
  Type="enum2"
+ DefaultValue=""
  VariableMode="Internal"
  X="840"
  Y="300"
@@ -444,6 +451,7 @@
 >
 </Variable><Variable
  Type="struct"
+ DefaultValue=""
  VariableMode="Internal"
  X="690"
  Y="300"
@@ -488,11 +496,11 @@
 </ReqRef><PreConditions>
 <PreCondition
  Guid="53f9d34f-499a-4db1-8afd-02cad1f8f3cd"
->THERE_IS_IN var_coll | func1(3) == 5.0</PreCondition></PreConditions>
+>THERE_IS X IN var_coll | func1(3) == 5.0</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ab21d1a9-7be1-43dd-b336-f402a31deebb"
->var_coll &lt;- MAP var_coll USING NOT X</Action><Action
+>var_coll &lt;- MAP var_coll USING X IN NOT X</Action><Action
  Guid="6dd08ff7-0004-4102-bee3-e6143e5cf983"
 >val_struct.proc()</Action><Action
  Guid="a67c275e-a4e7-467b-a126-09a21164da2b"

@@ -17,7 +17,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
+using Utils;
 
 namespace DataDictionary.Tests.Translations
 {
@@ -138,9 +138,9 @@ namespace DataDictionary.Tests.Translations
         /// <summary>
         /// The enclosing translation dictionary
         /// </summary>
-        public Tests.Translations.TranslationDictionary TranslationDictionary
+        public TranslationDictionary TranslationDictionary
         {
-            get { return Enclosing as Tests.Translations.TranslationDictionary; }
+            get { return EnclosingFinder<TranslationDictionary>.find(this); }
         }
 
         /// <summary>
@@ -177,43 +177,78 @@ namespace DataDictionary.Tests.Translations
         {
             Step previousStep = step.PreviousStep;
 
-            step.Requirements.Clear();
             foreach (ReqRef reqRef in Requirements)
             {
-                step.appendRequirements((ReqRef)reqRef.Duplicate());
+                if (!IsRequirementPresent(step, reqRef))
+                {
+                    step.appendRequirements((ReqRef)reqRef.Duplicate());
+                }
             }
 
             int subStepCounter = 1;
             foreach (SubStep subStep in SubSteps)
             {
-                SubStep newSubStep = (SubStep)Generated.acceptor.getFactory().createSubStep();
-                newSubStep.Name = "Sub-step" + subStepCounter;
-                newSubStep.setSkipEngine(subStep.getSkipEngine());
-                step.appendSubSteps(newSubStep);
+                bool addSubStep = true;
 
-                if (previousStep != null && previousStep.getDistance() != step.getDistance() && subStepCounter == 1)
+                if (subStep.ReferencesMessages())
                 {
-                    Rules.Action newAct = (Rules.Action)Generated.acceptor.getFactory().createAction();
-                    newAct.ExpressionText = "OdometryInterface.UpdateDistance ( " + step.getDistance() + ".0 )";
-                    newSubStep.appendActions(newAct);
+                    addSubStep = step.Messages.Count > 0;
                 }
 
-                foreach (Rules.Action action in subStep.Actions)
+                if (addSubStep)
                 {
-                    Rules.Action newAct = (Rules.Action) action.Duplicate();
-                    newSubStep.appendActions(newAct);
-                    Review(newAct);
-                }
+                    SubStep newSubStep = (SubStep) Generated.acceptor.getFactory().createSubStep();
+                    newSubStep.setSkipEngine(subStep.getSkipEngine());
+                    newSubStep.Comment = subStep.Comment;
+                    newSubStep.Name = subStep.Name;
+                    step.appendSubSteps(newSubStep);
 
-                foreach (Expectation expectation in subStep.Expectations)
-                {
-                    Expectation newExp = (Expectation)expectation.Duplicate();
-                    newSubStep.appendExpectations(newExp);
-                    Review(newExp);
-                }
+                    if (previousStep != null && previousStep.getDistance() != step.getDistance() && subStepCounter == 1)
+                    {
+                        Rules.Action newAct = (Rules.Action) Generated.acceptor.getFactory().createAction();
+                        newAct.ExpressionText = "OdometryInterface.UpdateDistance ( " + step.getDistance() + ".0 )";
+                        newSubStep.setSkipEngine(false);
+                        newSubStep.appendActions(newAct);
+                    }
 
+                    foreach (Rules.Action action in subStep.Actions)
+                    {
+                        Rules.Action newAct = (Rules.Action) action.Duplicate();
+                        newSubStep.appendActions(newAct);
+                        Review(newAct);
+                    }
+
+                    foreach (Expectation expectation in subStep.Expectations)
+                    {
+                        Expectation newExp = (Expectation) expectation.Duplicate();
+                        newSubStep.appendExpectations(newExp);
+                        Review(newExp);
+                    }
+                }
                 subStepCounter++;
             }
+        }
+
+        /// <summary>
+        /// Indicates that the requirement is already present in the step
+        /// </summary>
+        /// <param name="step"></param>
+        /// <param name="reqRef"></param>
+        /// <returns></returns>
+        private bool IsRequirementPresent(Step step, ReqRef reqRef)
+        {
+            bool retVal = false;
+
+            foreach (ReqRef stepReqRef in step.Requirements)
+            {
+                if (reqRef.Paragraph == stepReqRef.Paragraph)
+                {
+                    retVal = true;
+                    break;
+                }
+            }
+
+            return retVal;
         }
 
 
@@ -689,6 +724,14 @@ namespace DataDictionary.Tests.Translations
                 KeyValuePair<string, Variables.IVariable> pair = aStructure.SubVariables.ElementAt(j);
                 Variables.IVariable variable = pair.Value;
 
+                // conditional variables can be missing in the database fields, but present in our structure => skip them
+                while (!variable.Name.StartsWith(field.Variable) && j < aStructure.SubVariables.Count - 1)
+                {
+                    j++;
+                    pair = aStructure.SubVariables.ElementAt(j);
+                    variable = pair.Value;
+                }
+
                 if (variable.Name.StartsWith(field.Variable))  // we use StartsWith and not Equals because we can have N_ITER_1 and N_ITER
                 {
                     if (variable.Type is Types.Enum)
@@ -710,7 +753,7 @@ namespace DataDictionary.Tests.Translations
                     {
                         Types.Range type = variable.Type as Types.Range;
                         object v = VariableConverter.INSTANCE.Convert(variable.Name, field.Value);
-                        variable.Value = new Values.IntValue(type, (int) v);
+                        variable.Value = new Values.IntValue(type, (int)v);
                         j++;
                     }
                     else if (variable.Type is Types.StringType)
@@ -724,7 +767,7 @@ namespace DataDictionary.Tests.Translations
                     {
                         throw new Exception("Unhandled variable type");
                     }
-                    if (field.Variable.Equals("N_ITER")) // we have to create a sequence
+                    if (variable.Name.StartsWith("N_ITER")) // we have to create a sequence
                     {
                         KeyValuePair<string, Variables.IVariable> sequencePair = aStructure.SubVariables.ElementAt(j);
                         Variables.IVariable sequenceVariable = sequencePair.Value;
@@ -734,6 +777,7 @@ namespace DataDictionary.Tests.Translations
                         int value = int.Parse(field.Value);
                         for (int k = 0; k < value; k++)
                         {
+                            currentIndex++;
                             Types.Structure structureType = (Types.Structure)system.findType(aNameSpace, sequence.CollectionType.Type.FullName);
                             Values.StructureValue structureValue = new Values.StructureValue(structureType);
                             FillStructure(aNameSpace, fields, ref currentIndex, structureValue);
@@ -749,7 +793,7 @@ namespace DataDictionary.Tests.Translations
                 {
                     break;
                 }
-                else 
+                else
                 {
                     currentIndex += 1;
                 }

@@ -280,7 +280,7 @@
 <PreConditions>
 <PreCondition
  Guid="04a0d169-1137-49ef-8f92-efde68fdeca0"
->NOT THERE_IS_IN Gradients | X.Distance &gt; Current.Distance</PreCondition></PreConditions>
+>NOT THERE_IS X IN Gradients | X.Distance &gt; Current.Distance</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Infinity</Expression>
 </Case><Case
  Name="Otherwise"
@@ -288,7 +288,7 @@
 >
 <Expression>REDUCE
     Gradients | X.Distance &gt; Current.Distance
-USING
+USING X IN
     Default.BaseTypes.MinDistance ( X.Distance, RESULT )
 INITIAL_VALUE
     Default.BaseTypes.Distance.Infinity</Expression>
@@ -469,7 +469,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Expression>SUM
     Gradients |
         Before(ExpectedFirst =&gt; X, ExpectedSecond =&gt; Gradient, Collection =&gt; Gradients) OR ( X == Gradient )
-USING
+USING X IN
     Default.MessageTypes.QScaleDistance (X.D_GRADIENT, Scale)</Expression>
 </Case></Cases>
 </Function><Function
@@ -653,7 +653,7 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
  Guid="4dd28f32-dbba-44cf-abd7-7cd0c8d4e2ab"
 >
 <Expression>(REDUCE Gradients 
-    USING  MIN ( RESULT, FUNCTION d : BaseTypes.Distance =&gt; GradientInfoProfile_NonCompensated( GradientInfo =&gt; X, Distance =&gt; d, TrainLength =&gt; TrainData.TrainData.Value.TrainLength ) )
+    USING X IN  MIN ( RESULT, FUNCTION d : BaseTypes.Distance =&gt; GradientInfoProfile_NonCompensated( GradientInfo =&gt; X, Distance =&gt; d, TrainLength =&gt; TrainData.TrainData.Value.TrainLength ) )
   INITIAL_VALUE BaseTypes.IndefiniteGradientFunction) (Distance)</Expression>
 </Case></Cases>
 </Function><Function
@@ -819,7 +819,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Guid="0690ccc9-34ff-4b71-8628-e586415e8cbd"
 >
 <Expression>(REDUCE Gradients 
-    USING  MIN ( RESULT, FUNCTION d : BaseTypes.Distance =&gt; GradientInfoProfile( GradientInfo =&gt; X, Distance =&gt; d, TrainLength =&gt; TrainData.TrainData.Value.TrainLength ) )
+    USING X IN  MIN ( RESULT, FUNCTION d : BaseTypes.Distance =&gt; GradientInfoProfile( GradientInfo =&gt; X, Distance =&gt; d, TrainLength =&gt; TrainData.TrainData.Value.TrainLength ) )
   INITIAL_VALUE BaseTypes.IndefiniteGradientFunction) (Distance)</Expression>
 </Case></Cases>
 </Function><Function

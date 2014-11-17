@@ -110,7 +110,7 @@
 >
 <Comment>Returns the element in TCCurrentConsumption with the largest distance that is less than or equal to the parameter</Comment>
 <Expression>REDUCE TCCurrentConsumption | (X.Distance &lt;= Distance)
-    USING Default.BaseTypes.MaxDistance(
+    USING X IN Default.BaseTypes.MaxDistance(
         X1=&gt;X.Distance,
         X2=&gt;RESULT)
   INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
@@ -153,9 +153,9 @@
 <PreConditions>
 <PreCondition
  Guid="fe703eb9-0bfa-4767-ad0c-4c1a9a1884d0"
->THERE_IS_IN TCCurrentConsumption | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
+>THERE_IS X IN TCCurrentConsumption | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
 <Expression>REDUCE TCCurrentConsumption | (X.Distance == CCProfileStartLocation(Distance=&gt;Distance) )
-    USING X.Value
+    USING X IN X.Value
   INITIAL_VALUE EMPTY</Expression>
 </Case><Case
  Name="Otherwise"

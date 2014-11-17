@@ -103,7 +103,7 @@
  Name="BaliseGroupsSent"
  Guid="f68b1349-529c-473d-ae9e-ff267673371a"
 >
-<Expression>MAP ( FIRST_IN ( BaliseGroups ) ).LIST_OF_BALISES_IN_SR_AUTHORITY.Sequence1 USING CreateBaliseGroup ( X )</Expression>
+<Expression>MAP ( FIRST X IN ( BaliseGroups ) ).LIST_OF_BALISES_IN_SR_AUTHORITY.Sequence1 USING X IN CreateBaliseGroup ( X )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Kernel.BaliseGroup"

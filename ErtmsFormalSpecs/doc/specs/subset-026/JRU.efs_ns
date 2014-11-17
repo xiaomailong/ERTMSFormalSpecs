@@ -413,7 +413,7 @@ IN
  Guid="b68fe90d-3f7f-4f71-be23-059f5f67cf38"
 >SendSpeedAndDistanceMonitoringInformationMessage(THIS)</PreCondition><PreCondition
  Guid="bd5ee00b-aacc-49ba-9111-eb883e795db7"
->Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
+>Kernel.ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e0adc517-5b2f-4309-ab4b-821bd1fbaf57"
@@ -2530,7 +2530,7 @@ HEADER =&gt; CreateHeader(2),
  NC_CDTRAIN =&gt;  Kernel.TrainData.TrainData.Value.TrainCategories.CantDeficiency,
  M_LOADINGGAUGE =&gt;  Kernel.TrainData.TrainData.Value.LoadingGauge,
  N_AXLE =&gt;  Kernel.TrainData.TrainData.Value.AxleNumber,
- N_AXLELOADCAT =&gt;  Kernel.TrainData.TrainData.Value.AxleLoadCategory, 
+ M_AXLELOADCAT =&gt;  Kernel.TrainData.TrainData.Value.AxleLoadCategory, 
 L_TRAIN =&gt; MessageTypes.UnScaleLength ( length =&gt; Kernel.TrainData.TrainData.Value.TrainLength, scale =&gt; Messages.Q_SCALE._1_m_scaleC ),
  T_TRACTION_CUT_OFF=&gt; DoubleToInteger(Kernel.TrainData.BrakingParameters.T_traction_cut_off(EstimatedAccelerationSetToZero=&gt;False) ),
  M_BRAKE_POSITION =&gt; TypeConvertors.ToJRUMBrakePosition(Kernel.TrainData.TrainData.Value.BrakePosition),
@@ -4657,7 +4657,7 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="MonitoringTypeChanged"
+ Name="Monitoring type changed"
  Guid="cf3ed2ff-72a6-4688-bbf1-7817e23712db"
 >
 <PreConditions>
@@ -4666,7 +4666,7 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
 >jru.SpeedAndDistanceSupervisionTypeChanged</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
- Name="MonitoringSupervisionStatusChanged"
+ Name="Monitoring supervision status changed"
  Guid="67eb6523-2d63-4f30-a601-a58145e999cb"
 >
 <PreConditions>
@@ -4677,7 +4677,7 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
 jru.PreviousSpeedAndDistanceSupervisionStatus != Kernel.SpeedAndDistanceMonitoring.SupervisionStatus()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
- Name="PremittedSpeedChanged"
+ Name="Permitted speed changed"
  Guid="238cfa91-6c7a-4a49-82e7-41a60f3c04d3"
 >
 <PreConditions>
@@ -4686,7 +4686,7 @@ jru.PreviousSpeedAndDistanceSupervisionStatus != Kernel.SpeedAndDistanceMonitori
 >jru.PreviousPermittedSpeed != DMI.MasterDMI().Out_PermittedSpeed.Speed</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
- Name="FLOISpeedChanged"
+ Name="FLOI speed changed"
  Guid="ca347fb9-c634-4db5-9542-dd65f9c8a34f"
 >
 <PreConditions>
@@ -4697,7 +4697,7 @@ jru.PreviousSpeedAndDistanceSupervisionStatus != Kernel.SpeedAndDistanceMonitori
 jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.FLOISpeed(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
- Name="TargetSpeedChanged"
+ Name="Target speed changed"
  Guid="4fedeecf-1440-46e9-a327-59aa24b099b5"
 >
 <PreConditions>
@@ -4706,7 +4706,7 @@ jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.FLOISpeed(Kernel.Tra
 >jru.PreviousTargetSpeed != DMI.MasterDMI().Out_TargetSpeed.Speed</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
- Name="TargetDistanceChanged"
+ Name="Target distance changed"
  Guid="5346a428-a540-498d-a025-48dea44c0809"
 >
 <PreConditions>
@@ -4717,7 +4717,7 @@ jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.FLOISpeed(Kernel.Tra
 jru.PreviousTargetDistance != Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
- Name="ReleaseSpeedChanged"
+ Name="Release speed changed"
  Guid="1f06f341-bcda-4bb8-a621-920216ef2db2"
 >
 <PreConditions>

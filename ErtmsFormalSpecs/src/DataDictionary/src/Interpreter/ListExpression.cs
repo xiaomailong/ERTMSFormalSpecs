@@ -76,7 +76,7 @@ namespace DataDictionary.Interpreter
                     }
                     else
                     {
-                        if (current != elementType)
+                        if (!current.Match(elementType))
                         {
                             AddError("Cannot mix types " + current.ToString() + " and " + elementType.ToString() + "in collection");
                         }

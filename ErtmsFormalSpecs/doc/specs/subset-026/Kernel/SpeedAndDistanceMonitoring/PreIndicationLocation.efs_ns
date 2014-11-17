@@ -58,11 +58,6 @@
  Name="Vmrsp"
  Guid="55a81856-c78d-4268-b3ab-6a25fab54e07"
 >
-</Parameter><Parameter
- Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
- Guid="ebde9346-b685-4f79-8cc3-eb21978bb371"
->
 </Parameter></Parameters>
 <Cases>
 <Case
@@ -80,7 +75,7 @@
  Guid="87bc3884-bbcf-40e7-891f-a35b2baa7c00"
 >
 <Comment>Standard case</Comment>
-<Expression>DistanceForSpeed ( Function =&gt; DecelerationCurves.EBD, Speed =&gt; Vmrsp + f41 ( Vmrsp ) ) - BaseTypes.SpeedToMS( Vmrsp + f41 ( Vmrsp ) ) * ( DecelerationCurves.T_berem(EstimatedAccelerationSetToZero) + DecelerationCurves.T_traction(EstimatedAccelerationSetToZero) )</Expression>
+<Expression>DistanceForSpeed ( Function =&gt; DecelerationCurves.EBD, Speed =&gt; Vmrsp + f41 ( Vmrsp ) ) - BaseTypes.SpeedToMS( Vmrsp + f41 ( Vmrsp ) ) * ( T_beremind() + T_tractionind() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -122,14 +117,14 @@
 <PreConditions>
 <PreCondition
  Guid="84471b54-f275-455e-92d5-7c7965c4c2ac"
->PreIndicationLocation.d_EBI ( Vmrsp, EstimatedAccelerationSetToZero ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>PreIndicationLocation.d_EBI ( Vmrsp ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="6f89c598-f655-4f78-82da-514e35c14b27"
 >
 <Comment>Standard case</Comment>
-<Expression>PreIndicationLocation.d_EBI ( Vmrsp, EstimatedAccelerationSetToZero )  - BaseTypes.SpeedToMS(Vmrsp) * TargetSpeedMonitoring.T_bs2</Expression>
+<Expression>PreIndicationLocation.d_EBI ( Vmrsp )  - BaseTypes.SpeedToMS(Vmrsp) * T_bs2ind()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -213,11 +208,6 @@
  Name="Vmrsp"
  Guid="a7d49188-5325-4de5-b567-e40c0cdcb9df"
 >
-</Parameter><Parameter
- Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
- Guid="3c4490a0-02b2-4c9f-a84e-bfe0ce274bfc"
->
 </Parameter></Parameters>
 <Cases>
 <Case
@@ -229,7 +219,7 @@
  Guid="75d06117-f25e-48be-b4be-2b56f9c3ee57"
 >NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition><PreCondition
  Guid="175bfc74-84a9-491c-b5b7-4b66541f565b"
->TargetSpeedMonitoring.d_SBI1(Vmrsp, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>d_SBI1(Vmrsp) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="GUI is inhibited"
@@ -239,12 +229,12 @@
 <PreCondition
  Guid="76ff14fe-1069-48b8-a935-8bfa9f50e6fc"
 >NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
-<Expression>TargetSpeedMonitoring.d_SBI1 ( Vmrsp, EstimatedAccelerationSetToZero ) - Default.BaseTypes.SpeedToMS(Vmrsp) * TargetSpeedMonitoring.T_driver</Expression>
+<Expression>d_SBI1 ( Vmrsp ) - Default.BaseTypes.SpeedToMS(Vmrsp) * TargetSpeedMonitoring.T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
  Guid="e2ed0a38-959f-4ca1-af51-1fd4543d4a69"
 >
-<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; TargetSpeedMonitoring.d_SBI1 ( Vmrsp, EstimatedAccelerationSetToZero ) - Default.BaseTypes.SpeedToMS(Vmrsp) * TargetSpeedMonitoring.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; DecelerationCurves.GUI, Speed =&gt; Vmrsp ) )</Expression>
+<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; d_SBI1 ( Vmrsp ) - Default.BaseTypes.SpeedToMS(Vmrsp) * TargetSpeedMonitoring.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; DecelerationCurves.GUI, Speed =&gt; Vmrsp ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -430,13 +420,13 @@
 <PreConditions>
 <PreCondition
  Guid="55701c1d-c4af-413b-984a-5d5e5a54ede9"
->d_P_EOA(Vmrsp, True) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>d_P_EOA(Vmrsp) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="7c618fa6-806f-47d7-a5c8-bba444d4051f"
 >
-<Expression>d_P_EOA ( Vmrsp, True ) - Default.BaseTypes.SpeedToMS(Vmrsp) * DecelerationCurves.T_indication()</Expression>
+<Expression>d_P_EOA ( Vmrsp ) - Default.BaseTypes.SpeedToMS(Vmrsp) * DecelerationCurves.T_indication()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -590,7 +580,7 @@ PreIndicationLocation.d_SBI2 ( Vmrsp, EstimatedAccelerationSetToZero ) == Defaul
 <Expression>REDUCE TargetsList()
     | X.Location &gt; Distance
 
-USING MA.ClosestTarget(
+USING X IN MA.ClosestTarget(
     Target1=&gt;X,
     Target2=&gt;RESULT
     )
@@ -629,7 +619,7 @@ INITIAL_VALUE TargetSpeedMonitoring.Target{
 <Expression>REDUCE TargetsList()
     | X.Location &lt; Distance
 
-USING MA.ClosestTarget(
+USING X IN MA.ClosestTarget(
     Target1=&gt;X,
     Target2=&gt;RESULT
     )
@@ -773,7 +763,7 @@ INITIAL_VALUE TargetSpeedMonitoring.Target{
  Guid="7728236a-d7fe-40c3-9417-ee0dd230e10c"
 >
 <Comment>Dist is measured from the LRBG</Comment>
-<Expression>THERE_IS_IN TargetsList() |  (X.Location &lt; Dist) AND (X.Location + Default.BaseTypes.LengthToDistance(X.Length) &gt;= Dist)</Expression>
+<Expression>THERE_IS X IN TargetsList() |  (X.Location &lt; Dist) AND (X.Location + Default.BaseTypes.LengthToDistance(X.Length) &gt;= Dist)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -837,6 +827,203 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
  - TrainPosition.FrontEndPosition(
     PointOfInterest=&gt;Default.DistanceInterval.Nom
 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Time"
+ Cacheable="TRUE"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="T_bs2ind"
+ Guid="be814abf-8727-43da-ad25-c35544dde1eb"
+>
+<ReqRef
+ Id="34cc7c55-4b52-4330-8d40-2770e48f3cd0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d8cc513f-4c4f-4af5-be70-e9d714a7d26c"
+>
+</ReqRef><Comment>Provides the T_bs2 value used in calculations of the pre-indication location</Comment>
+<Cases>
+<Case
+ Name="Service brake available for use"
+ Guid="6c3aa5dd-a328-48b1-be29-7563493d5cca"
+>
+<PreConditions>
+<PreCondition
+ Guid="0e0a9c6f-2098-468a-8134-6b8c8757a0e4"
+>TrainData.TrainData.Value.SBCommandIsImplemented</PreCondition></PreConditions>
+<Expression>TrainData.BrakingParameters.T_bs()</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="c30276fb-bb38-4bd9-b96f-2ae5b5aedd35"
+>
+<Expression>0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Time"
+ Cacheable="TRUE"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="T_bs1ind"
+ Guid="4b4b1471-f614-4f81-bb7e-b49c1e0c1d88"
+>
+<ReqRef
+ Id="34cc7c55-4b52-4330-8d40-2770e48f3cd0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1426fe13-8e98-4bac-98e7-91d962a78b67"
+>
+</ReqRef><Comment>Provides the T_bs1 value used in calculations of the pre-indication location</Comment>
+<Cases>
+<Case
+ Name="Service brake available for use"
+ Guid="522dd5fe-f7b7-426d-a6c4-8a0b5e84b208"
+>
+<PreConditions>
+<PreCondition
+ Guid="1051dd29-931e-4bb6-ae50-2b6225a562c7"
+>TrainData.TrainData.Value.SBCommandIsImplemented</PreCondition></PreConditions>
+<Expression>TrainData.BrakingParameters.T_bs()</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="e4c81873-843b-47f1-bea3-99978290e186"
+>
+<Expression>0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Time"
+ Cacheable="TRUE"
+ Default=""
+ X="220"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="T_tractionind"
+ Guid="77daa316-b35c-49e6-9770-fd274a9c5932"
+>
+<ReqRef
+ Id="34cc7c55-4b52-4330-8d40-2770e48f3cd0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aa6b9959-5825-4f3c-8baf-bb6eb1389503"
+>
+</ReqRef><ReqRef
+ Id="096ce475-1a17-4f39-a9ff-e1838d27439c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="18a7e51a-3e55-4468-b298-a76870819ee5"
+>
+</ReqRef><ReqRef
+ Id="51a4071c-6949-4a0d-8483-6299d2128b0e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="549325b2-8e4a-41c6-aadf-de4daec4990a"
+>
+</ReqRef><ReqRef
+ Id="162a1af4-0262-4370-9baf-76c6abf7cc8d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2f1a08a3-1535-4e47-8956-9aec9d6a00ba"
+>
+</ReqRef><Comment>Provides the value of T_traction used in calculations of the pre-indication location</Comment>
+<Cases>
+<Case
+ Name="Traction cut-off is implemented"
+ Guid="d5c209e3-8d88-4339-b2bc-9a032235f911"
+>
+<PreConditions>
+<PreCondition
+ Guid="85b78555-4e3f-43d7-9c70-2d17711bc6e3"
+>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; ( TrainData.BrakingParameters.T_traction_cut_off (EstimatedAccelerationSetToZero =&gt; True) - ( TargetSpeedMonitoring.T_warning + T_bs2ind() ) ), X2 =&gt; 0.0 )</Expression>
+</Case><Case
+ Name="Traction cut-off is not implemented"
+ Guid="784c8261-6034-48b5-8d85-f5e1de8b6a24"
+>
+<Expression>TrainData.BrakingParameters.T_traction_cut_off (EstimatedAccelerationSetToZero =&gt; True)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Time"
+ Cacheable="TRUE"
+ Default=""
+ X="330"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="T_beremind"
+ Guid="82696d42-4209-4d81-ac18-3c67e44a308e"
+>
+<ReqRef
+ Id="34cc7c55-4b52-4330-8d40-2770e48f3cd0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9951db2b-c3c3-4170-a47d-e4a32d4566aa"
+>
+</ReqRef><ReqRef
+ Id="9ebfc8da-a239-4e8c-a8a6-d80253fe7838"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4c0ff632-8e3e-4b13-85a3-2d211d6b0cab"
+>
+</ReqRef><Comment>Provides the value of T_berem used in calculation of the pre-indication location</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="23041453-a6e4-44cb-9ecb-a6704be9950a"
+>
+<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; TrainData.BrakingParameters.T_be () - T_tractionind (), X2 =&gt; 0.0 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ X="440"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="d_SBI1"
+ Guid="cecd89fa-1e4b-4afa-a801-2b3624b21151"
+>
+<ReqRef
+ Id="c2747f10-3553-4ce9-9fc1-61bbf23b7f0b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="429b4232-3d8e-4e15-8924-9f3f0765a08e"
+>
+</ReqRef><Comment>Provides the SBI curve corresponding to an EOA for the calculation of the indication location</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Speed"
+ Name="Vmrsp"
+ Guid="3e91ee82-1b5f-4cdb-939a-344ba106ce6e"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="No SBD"
+ Guid="a8d5471d-ac53-4943-9bcd-40733fe8cf3b"
+>
+<PreConditions>
+<PreCondition
+ Guid="752251aa-afac-4d10-b3b3-9e6439c6d26f"
+>DecelerationCurves.SBD(
+    Distance=&gt; TrainPosition.FrontEndPosition(
+    PointOfInterest=&gt;DistanceInterval.Nom
+)) == BaseTypes.Speed.NA</PreCondition></PreConditions>
+<Expression>BaseTypes.Distance.Unknown</Expression>
+</Case><Case
+ Name="SBD below V_MRSP"
+ Guid="a23604e8-0be1-425f-90a9-fb1dab0d8d5d"
+>
+<PreConditions>
+<PreCondition
+ Guid="395d82aa-4a02-4070-89b4-d96d16f5f732"
+>DistanceForSpeed(
+    Function=&gt; DecelerationCurves.SBD,
+    Speed=&gt; Vmrsp
+) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>BaseTypes.Distance.Unknown</Expression>
+</Case><Case
+ Name="Value"
+ Guid="f17882ac-802a-46d9-b618-3d485df5ba34"
+>
+<Expression>DistanceForSpeed ( Function =&gt; DecelerationCurves.SBD, Speed =&gt; Vmrsp )  - BaseTypes.SpeedToMS ( Vmrsp ) * T_bs1ind()</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>

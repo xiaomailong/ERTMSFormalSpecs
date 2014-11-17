@@ -647,14 +647,15 @@ namespace GUI
         /// Code templates
         /// </summary>
         private static string[] TEMPLATES = new string[] {
-            ForAllExpression.OPERATOR + " <collection> | <condition> ", 
-            ThereIsExpression.OPERATOR + " <collection> | <condition> ",
-            FirstExpression.OPERATOR + " <collection> | <condition>", 
-            LastExpression.OPERATOR + " <collection> | <condition>", 
-            CountExpression.OPERATOR + " <collection> | <condition>", 
-            MapExpression.OPERATOR + " <collection> | <condition> USING <map_expression>",
-            SumExpression.OPERATOR + " <collection> | <condition> USING <map_expression>", 
-            ReduceExpression.OPERATOR + " <collection> | <condition> USING <map_expression> INITIAL_VALUE <expression>", 
+            ForAllExpression.OPERATOR  + " X IN <collection> | <condition> ", 
+            ThereIsExpression.OPERATOR + " X IN <collection> | <condition> ",
+            FirstExpression.OPERATOR   + " X IN <collection> | <condition>", 
+            LastExpression.OPERATOR    + " X IN <collection> | <condition>", 
+            CountExpression.OPERATOR   + " X IN <collection> | <condition>", 
+            MapExpression.OPERATOR     + " <collection> | <condition> USING X IN <map_expression>",
+            SumExpression.OPERATOR     + " <collection> | <condition> USING X IN <map_expression>", 
+            ReduceExpression.OPERATOR  + " <collection> | <condition> USING X IN <map_expression> INITIAL_VALUE <expression>", 
+            "LET <variable> <- <expression> IN <expression>",
             "STABILIZE <expression> INITIAL_VALUE <expression> STOP_CONDITION <condition>",
             "APPLY <statement> ON <collection> | <condition>",
             "INSERT <expression> IN <collection> WHEN FULL REPLACE <condition>",
@@ -848,7 +849,7 @@ namespace GUI
                         {
                             Expression listExpression = EFSSystem.Parser.Expression(modelElement, EditionTextBox.Text.Substring(start, len), IsVariableOrValue.INSTANCE, false);
                             Expression currentExpression = EFSSystem.Parser.Expression(modelElement, retVal.EnclosingName, AllMatches.INSTANCE, false);
-                            Expression foreachExpression = new ForAllExpression(modelElement, modelElement, listExpression, currentExpression, -1, -1);
+                            Expression foreachExpression = new ForAllExpression(modelElement, modelElement, listExpression, "X", currentExpression, -1, -1);
                             foreachExpression.SemanticAnalysis();
                             if (currentExpression.Ref != null)
                             {

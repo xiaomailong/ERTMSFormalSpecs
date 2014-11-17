@@ -289,13 +289,13 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 <PreConditions>
 <PreCondition
  Guid="2425f7be-2891-4d2c-a000-e3d04864b4b4"
->(FIRST_IN Linkings).BaliseGroupIdentifier == Messages.NID_BG.NID_UNKNOWN</PreCondition></PreConditions>
-<Expression>BGLocationReference.Position - BGLocationReference.OverReadingAmountOdo &lt;= (FIRST_IN Linkings).Distance + (FIRST_IN Linkings).LocationAccuracy</Expression>
+>(FIRST X IN Linkings).BaliseGroupIdentifier == Messages.NID_BG.NID_UNKNOWN</PreCondition></PreConditions>
+<Expression>BGLocationReference.Position - BGLocationReference.OverReadingAmountOdo &lt;= (FIRST X IN Linkings).Distance + (FIRST X IN Linkings).LocationAccuracy</Expression>
 </Case><Case
  Name="Check the expectation window"
  Guid="0bfe0cf6-52e4-46b8-a258-00e1f3aa67c4"
 >
-<Expression>BGinExpectationWindow( FIRST_IN Linkings )</Expression>
+<Expression>BGinExpectationWindow( FIRST X IN Linkings )</Expression>
 </Case></Cases>
 </Function><Function
  Type="BTM.Linking.LinkingData"
@@ -321,7 +321,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  Name="Always"
  Guid="e255898c-ca83-4e9a-9a4c-b2b8446fe98b"
 >
-<Expression>FIRST_IN Linkings</Expression>
+<Expression>FIRST X IN Linkings</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -388,7 +388,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 >Kernel.ActiveFunctions.CheckLinkingConsistency()</PreCondition></PreConditions>
 <Expression>CurrentLinking().BaliseGroupIdentifier == Messages.NID_BG.NID_UNKNOWN
   AND
-THERE_IS_IN CurrentBaliseGroup | TelegramContainsRepositioningInformation ( X )
+THERE_IS X IN CurrentBaliseGroup | TelegramContainsRepositioningInformation ( X )
   AND
 BaliseGroupOrientation() == CurrentLinking().Orientation</Expression>
 </Case><Case
@@ -427,8 +427,8 @@ BaliseGroupOrientation() == CurrentLinking().Orientation</Expression>
 <PreConditions>
 <PreCondition
  Guid="18f99ebe-a473-4db4-b373-7e63ff5fd10e"
->THERE_IS_IN Linkings | X.BaliseGroupIdentifier == NID_BG</PreCondition></PreConditions>
-<Expression>( FIRST_IN Linkings | X.BaliseGroupIdentifier == NID_BG ).Distance</Expression>
+>THERE_IS X IN Linkings | X.BaliseGroupIdentifier == NID_BG</PreCondition></PreConditions>
+<Expression>( FIRST X IN Linkings | X.BaliseGroupIdentifier == NID_BG ).Distance</Expression>
 </Case><Case
  Name="No information available"
  Guid="d73efdcf-cfd4-445a-8b37-24b05899772b"
@@ -552,7 +552,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
  Name="Value"
  Guid="10d7ba53-fe0f-4e69-b2f8-e74a576996b1"
 >
-<Expression>FORALL_IN CurrentBaliseGroup | X.Q_LINK == Messages.Q_LINK.Linked</Expression>
+<Expression>FORALL X IN CurrentBaliseGroup | X.Q_LINK == Messages.Q_LINK.Linked</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -579,7 +579,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 >
 <Expression>NOT CurrentBGIsLinked()
   AND
-(COUNT CurrentBaliseGroup) &gt;= 2</Expression>
+(COUNT X IN CurrentBaliseGroup) &gt;= 2</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -618,7 +618,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 <PreCondition
  Guid="82df884c-19da-40cc-b3b1-5c5365462f5f"
 >Kernel.ActiveFunctions.CheckLinkingConsistency()</PreCondition></PreConditions>
-<Expression>THERE_IS_IN Linkings | X.BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG</Expression>
+<Expression>THERE_IS X IN Linkings | X.BaliseGroupIdentifier == (FIRST X IN CurrentBaliseGroup).NID_BG</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="09df7dbf-e9d8-4952-aa0d-0c4b26e9dd18"
@@ -655,7 +655,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
  Name="Value"
  Guid="efbb6e0b-2160-4e54-acf9-98923bf5abab"
 >
-<Expression>THERE_IS_IN Message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR)</Expression>
+<Expression>THERE_IS X IN Message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -723,7 +723,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 <PreConditions>
 <PreCondition
  Guid="9395d930-3de6-407a-9481-58901353982a"
->(FIRST_IN CurrentBaliseGroup).NID_BG == (FIRST_IN Linkings).BaliseGroupIdentifier
+>(FIRST X IN CurrentBaliseGroup).NID_BG == (FIRST X IN Linkings).BaliseGroupIdentifier
   AND  
 NOT CurrentBGWithinFrame()</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -735,8 +735,8 @@ NOT CurrentBGWithinFrame()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="eefad305-9f3a-4973-a898-0f076af71e89"
->THERE_IS_IN Linkings | 
-    ((X != FIRST_IN Linkings) AND ( (FIRST_IN CurrentBaliseGroup).NID_BG == X.BaliseGroupIdentifier))
+>THERE_IS X IN Linkings | 
+    ((X != FIRST X IN Linkings) AND ( (FIRST X IN CurrentBaliseGroup).NID_BG == X.BaliseGroupIdentifier))
   AND  
 CurrentBGWithinFrame()</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -881,11 +881,11 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
  Guid="973e721c-5881-4502-b5ba-5956531d9a1d"
 >
 <Expression>LinkingData{
-    LocationAccuracy =&gt; (FIRST_IN Linkings | X != (FIRST_IN Linkings)).LocationAccuracy,
-    Orientation =&gt; (FIRST_IN Linkings | X != (FIRST_IN Linkings)).Orientation,
-    Reaction =&gt; (FIRST_IN Linkings | X != (FIRST_IN Linkings)).Reaction,
-    Distance =&gt; (FIRST_IN Linkings | X != (FIRST_IN Linkings)).Distance + (FIRST_IN Linkings).Distance,
-    BaliseGroupIdentifier =&gt; (FIRST_IN Linkings | X != (FIRST_IN Linkings)).BaliseGroupIdentifier
+    LocationAccuracy =&gt; (FIRST X IN Linkings | X != (FIRST X IN Linkings)).LocationAccuracy,
+    Orientation =&gt; (FIRST X IN Linkings | X != (FIRST X IN Linkings)).Orientation,
+    Reaction =&gt; (FIRST X IN Linkings | X != (FIRST X IN Linkings)).Reaction,
+    Distance =&gt; (FIRST X IN Linkings | X != (FIRST X IN Linkings)).Distance + (FIRST X IN Linkings).Distance,
+    BaliseGroupIdentifier =&gt; (FIRST X IN Linkings | X != (FIRST X IN Linkings)).BaliseGroupIdentifier
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -912,8 +912,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
  Guid="c33cb167-421e-456d-a6bf-0eddbeb039be"
 >
 <Expression>REDUCE Linkings | X.BaliseGroupIdentifier == NID_BG
-  USING X
-  INITIAL_VALUE LAST_IN Linkings</Expression>
+  USING X IN X
+  INITIAL_VALUE LAST X IN Linkings</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -938,8 +938,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="635d9b2a-2563-4d44-bd10-0be315054859"
->(COUNT Linkings) &gt;= 2</PreCondition></PreConditions>
-<Expression>SecondLinking().BaliseGroupIdentifier == (FIRST_IN CurrentBaliseGroup).NID_BG</Expression>
+>(COUNT X IN Linkings) &gt;= 2</PreCondition></PreConditions>
+<Expression>SecondLinking().BaliseGroupIdentifier == (FIRST X IN CurrentBaliseGroup).NID_BG</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="99459508-b95a-4115-8e05-d07664deffa4"
@@ -1088,7 +1088,7 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
     ExpectedSecond=&gt;X,
     Collection=&gt;Linkings
 )
-  USING X</Action></Actions>
+  USING X IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1246,7 +1246,7 @@ This function is called whenever it is appropriate, so it does not need any prec
 <PreConditions>
 <PreCondition
  Guid="891bb526-64cc-4560-ba32-6a73d706b12a"
->(FIRST_IN Linkings).BaliseGroupIdentifier == ID</PreCondition></PreConditions>
+>(FIRST X IN Linkings).BaliseGroupIdentifier == ID</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f5e1d966-d547-4ac0-9400-f7ab8627a792"
@@ -1379,12 +1379,12 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
 <PreConditions>
 <PreCondition
  Guid="547b565c-1141-4dd6-b6be-2780271a682f"
->(COUNT Linkings) &gt;= 2</PreCondition></PreConditions>
+>(COUNT X IN Linkings) &gt;= 2</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e340c660-827d-428f-b31a-bd1433093346"
 ><Comment>The SecondLinking function provides the second expected BG, but with the distance measured from the LRBG (instead of from the first expected BG)</Comment>
-(FIRST_IN Linkings | X != FIRST_IN Linkings).Distance &lt;- SecondLinking().Distance</Action></Actions>
+(FIRST X IN Linkings | X != FIRST X IN Linkings).Distance &lt;- SecondLinking().Distance</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1405,7 +1405,7 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
 <Actions>
 <Action
  Guid="3d1509f7-2827-41ac-8a3b-3b3057810dd2"
->StopExpectingBG( (FIRST_IN Linkings).BaliseGroupIdentifier )</Action></Actions>
+>StopExpectingBG( (FIRST X IN Linkings).BaliseGroupIdentifier )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1588,9 +1588,9 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 <Actions>
 <Action
  Guid="6f9ef685-68b5-4cf8-ab5b-fe3765ff7cb1"
->HandleBaliseMessage(DistanceFromLRBG =&gt; (FIRST_IN Linkings).Distance)</Action><Action
+>HandleBaliseMessage(DistanceFromLRBG =&gt; (FIRST X IN Linkings).Distance)</Action><Action
  Guid="73f60427-194a-4f61-9082-16f71fa2409d"
->StopExpectingBG( (FIRST_IN CurrentBaliseGroup).NID_BG )</Action></Actions>
+>StopExpectingBG( (FIRST X IN CurrentBaliseGroup).NID_BG )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="There is an error in the linking consistency of the current BG"
@@ -1672,7 +1672,7 @@ As the first part of this procedure deletes the first (inconsistent) BG from the
  Guid="5f012522-0de0-4446-8302-6097ee955f4d"
 >Linkings != []
   AND  
-(FIRST_IN CurrentBaliseGroup).NID_BG == CurrentLinking().BaliseGroupIdentifier</PreCondition></PreConditions>
+(FIRST X IN CurrentBaliseGroup).NID_BG == CurrentLinking().BaliseGroupIdentifier</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -1700,7 +1700,7 @@ As the first part of this procedure deletes the first (inconsistent) BG from the
  Guid="df96badb-3bc3-40d3-b767-aa2ff7b5b2be"
 >HandleBaliseMessage(CurrentLinking().Distance)</Action><Action
  Guid="b1dfce5d-66ae-4d4d-a99a-2708b3c6650f"
->StopExpectingBG( (FIRST_IN CurrentBaliseGroup).NID_BG )</Action></Actions>
+>StopExpectingBG( (FIRST X IN CurrentBaliseGroup).NID_BG )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Second expected BG outside expectation window"

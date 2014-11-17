@@ -1028,6 +1028,12 @@ namespace DataDictionary
                             enumValue.AddError("Duplicate enumeration value");
                             other.AddError("Duplicate enumeration value");
                         }
+
+                        if (enumValue.LiteralName == other.LiteralName)
+                        {
+                            enumValue.AddError("Duplicate enumeration value name");
+                            other.AddError("Duplicate enumeration value name");
+                        }
                     }
                     valuesFound.Add(enumValue);
                 }
@@ -1078,6 +1084,12 @@ namespace DataDictionary
                             enumValue.AddError("Duplicate special value");
                             other.AddError("Duplicate special value");
                         }
+
+                        if (enumValue.LiteralName == other.LiteralName)
+                        {
+                            enumValue.AddError("Duplicate special value name");
+                            other.AddError("Duplicate special value name");
+                        }
                     }
                     valuesFound.Add(enumValue);
                 }
@@ -1097,8 +1109,38 @@ namespace DataDictionary
                 Translation other = null;
                 if ( Translations.TryGetValue(source.Name, out other) )
                 {
-                    translation.AddError("Found translation with duplicate source text " + source.Name);
-                    other.AddError("Found translation with duplicate source text " + source.Name);
+                    // find the corresponding source text in the other translation
+                    foreach(SourceText anotherSource in other.SourceTexts)
+                    {
+                        // compare comments of the source texts
+                        if(anotherSource.Name == source.Name)
+                        {
+                            if (source.Comments.Count == anotherSource.Comments.Count)
+                            {
+                                bool matchFound = false;
+                                foreach (SourceTextComment comment in source.Comments)
+                                {
+                                    foreach (SourceTextComment anotherComment in anotherSource.Comments)
+                                    {
+                                        if (comment.Name == anotherComment.Name)
+                                        {
+                                            matchFound = true;
+                                            break;
+                                        }
+                                    }
+                                    if (!matchFound)
+                                        break;
+                                }
+
+                                // if a match was found for every comment or the source does not have a comment => problem
+                                if (matchFound || source.Comments.Count == 0)
+                                {
+                                    translation.AddError("Found translation with duplicate source text " + source.Name);
+                                    other.AddError("Found translation with duplicate source text " + source.Name);
+                                }
+                            }
+                        }
+                    }
                 }
 
                 Translations[source.Name] = translation;

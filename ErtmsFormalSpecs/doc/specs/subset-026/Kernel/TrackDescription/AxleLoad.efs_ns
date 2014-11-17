@@ -305,7 +305,7 @@
  Guid="22c57881-cbe1-4a7d-9121-ccd4179f1296"
 >
 <Expression>(REDUCE ASP.ALs
-    USING  
+    USING X IN  
         MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; AxleLoadSpeedRestriction ( anAxleLoad =&gt; X, Distance =&gt; d ), 
                   Second =&gt; RESULT )
 INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
@@ -371,7 +371,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
     Length =&gt; Default.MessageTypes.QScaleLength (anAxleLoad.L_AXLELOAD, Scale),
     TrainLengthDelay =&gt; anAxleLoad.Q_FRONT,
     Values =&gt; MAP anAxleLoad.Sequence2 
-                     USING CreateAxleLoadValue(
+                     USING X IN CreateAxleLoadValue(
                                 Category =&gt; X.M_AXLELOADCAT, 
                                 Speed =&gt; Default.MessageTypes.SpeedResolution (X.V_AXLELOAD, 5.0))
 }</Expression>
@@ -458,7 +458,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
     Length =&gt; AxleLoadLength,
     TrainLengthDelay =&gt; TrainLengthDelay,
     Values =&gt; MAP AxleLoadValues 
-                     USING CreateAxleLoadValue(
+                     USING X IN CreateAxleLoadValue(
                            Category =&gt; X.M_AXLELOADCAT, 
                            Speed =&gt; Default.MessageTypes.SpeedResolution (X.V_AXLELOAD, 5.0))
 }</Expression>
@@ -501,7 +501,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <Expression>SUM
     AxleLoads |
         Before ( ExpectedFirst =&gt; X, ExpectedSecond =&gt; anAxleLoad, Collection =&gt; AxleLoads ) OR ( X == anAxleLoad )
-USING
+USING X IN
     Default.MessageTypes.QScaleDistance ( distance =&gt; X.D_AXLELOAD, scale =&gt; Scale )</Expression>
 </Case></Cases>
 </Function><Function
@@ -561,7 +561,7 @@ USING
 >anAxleLoad.Distance  &lt;= Distance</PreCondition></PreConditions>
 <Expression>REDUCE
     anAxleLoad.Values | X.Category &lt;= Kernel.TrainData.TrainData.Value.AxleLoadCategory
-    USING
+    USING X IN
         BaseTypes.MinSpeed (X1 =&gt; X.Speed, X2 =&gt; RESULT)
     INITIAL_VALUE
         Default.BaseTypes.Speed.MaxSpeed</Expression>

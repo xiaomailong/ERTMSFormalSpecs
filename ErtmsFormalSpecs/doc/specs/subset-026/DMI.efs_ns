@@ -322,21 +322,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="cb8fc9ca-e0ff-40d0-a79c-f3477021cf00"
 >
 </ReqRef><ReqRef
- Id="2c5e9152-5512-4523-8116-03489439ff69"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0420cb1a-af0c-4ef5-b66c-8f204b69ff62"
->
-</ReqRef><ReqRef
- Id="99735e12-128e-4cc9-8fa2-368230a0e2df"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="117fa266-0001-453c-b460-064c6ba8f640"
->
-</ReqRef><ReqRef
- Id="421ee868-5461-4591-b27c-3e641637cc98"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="db69f959-2966-498d-8d04-275daeeb2d2b"
->
-</ReqRef><ReqRef
  Id="b6c67586-24a9-45f1-8716-2ebbbf63edc2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f4f4cf1b-81ec-4cbf-b059-e4d6690c6f40"
@@ -542,31 +527,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="6f0a0572-39dc-47d2-b1a8-a08e99025f7d"
 >
 </ReqRef><ReqRef
- Id="ab35ab1a-b0ef-4158-a6ea-e5e4b77dd326"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d7139785-480f-4f43-8d28-686c07ebbcd8"
->
-</ReqRef><ReqRef
- Id="fa0a8ced-0f55-4b05-8937-d1c28bd730e6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d1c3769a-8c63-45e2-8d8f-7ceb8ee35a4d"
->
-</ReqRef><ReqRef
- Id="ebf19bbb-1136-41ba-92fe-0aa6cddb639b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6fbfcea5-3587-46f6-bcb4-48647b40455c"
->
-</ReqRef><ReqRef
- Id="8f221bd9-37f1-4b7b-90bf-7ced1a3e6840"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0916471a-8d26-4924-849a-934ebf4e4f19"
->
-</ReqRef><ReqRef
- Id="3f9544be-2db6-47dc-99aa-0019955b7d6d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f03e6941-5686-4dd3-a009-579d0da381e1"
->
-</ReqRef><ReqRef
  Id="84e5c5a8-0d3b-4bfa-81c7-81966a31f2e5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7c625222-91bb-43e2-9768-b744d4fd0226"
@@ -635,6 +595,21 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Id="3a7bc83f-7d2f-4338-92a7-ee27e856b0a4"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="55563aa6-faf3-4f18-9625-ac047ddd59bc"
+>
+</ReqRef><ReqRef
+ Id="2c5e9152-5512-4523-8116-03489439ff69"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="05b29ea0-c6b4-44cc-b7ce-e0f2116430b5"
+>
+</ReqRef><ReqRef
+ Id="99735e12-128e-4cc9-8fa2-368230a0e2df"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e1d1f20c-68a0-4cb1-9c3e-2833afdc7795"
+>
+</ReqRef><ReqRef
+ Id="421ee868-5461-4591-b27c-3e641637cc98"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="02513e08-ea25-4ab1-b8fd-1e3fb377cfa8"
 >
 </ReqRef><Comment>Implements the tables of the Chapter 4.7. If the mode of the train changes (detected by comparing the mode previously displayed by the DMI and the current mode of the train), all the current states of IN and OUT sub-elements are updated according to the corresponding values of the tables of the Chapter 4.7.</Comment>
 <SubRules></SubRules>
@@ -772,8 +747,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >THIS.Out_NotificationOfTrainDataChangeFromOtherSource.TrackMode()</Action><Action
  Guid="7727ce62-a381-4f28-96fe-d2d2897141d8"
 >THIS.Out_OperatedSystemVersion.TrackMode()</Action><Action
- Guid="c4c760b8-cd70-4a01-9e29-bb77b6511d35"
->THIS.Out_OsLsShModeProposed.TrackMode()</Action><Action
  Guid="b0f9922d-af5b-40a8-8d7a-6df9fa087bcd"
 >THIS.Out_OverrideStatus.TrackMode()</Action><Action
  Guid="d6e0e3c9-6372-44ff-8b93-7afe40a0703b"
@@ -790,20 +763,14 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >THIS.Out_ReversingAllowed.TrackMode()</Action><Action
  Guid="7071aeec-bba2-4d98-a334-baf8334d1208"
 >THIS.Out_RouteUnsuitabilities.TrackMode()</Action><Action
- Guid="df87ba56-5992-4bfe-acaa-3e403437a8eb"
->THIS.Out_RVModeProposed.TrackMode()</Action><Action
  Guid="7ad075eb-0e89-43b6-9cba-7a575c1fd29a"
 >THIS.Out_SafeRadioConnectionIndication.TrackMode()</Action><Action
  Guid="d3650b36-2cf9-44d1-bba5-706196765f03"
 >THIS.Out_ShuntingRefusedByRbc.TrackMode()</Action><Action
  Guid="9fc762fd-5a11-4e13-81b9-948d98ad1f9a"
 >THIS.Out_ShuntingRequestNotAnsweredByRbc.TrackMode()</Action><Action
- Guid="b21019a3-e0fb-401a-8a3b-cb545fee6c13"
->THIS.Out_SNModeProposed.TrackMode()</Action><Action
  Guid="a49125f3-0f88-4cf1-a775-9dc16a6e04dc"
 >THIS.Out_SpeedAndDistanceMonitoringSupervisionStatus.TrackMode()</Action><Action
- Guid="b40fb024-c490-471f-b261-b0dd78a3d486"
->THIS.Out_SRModeProposed.TrackMode()</Action><Action
  Guid="33d5f49d-3de7-4896-9bff-1ca617eeeabd"
 >THIS.Out_TargetDistance.TrackMode()</Action><Action
  Guid="5af26028-8d93-4f51-a389-b5f9ce3d32fe"
@@ -828,8 +795,6 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
 >THIS.Out_TrainSpeed.TrackMode()</Action><Action
  Guid="8b5d961a-2752-4946-bba3-a1dff33a1664"
 >THIS.Out_TripReason.TrackMode()</Action><Action
- Guid="ef94bb4a-025e-4138-b699-77bfe491ac57"
->THIS.Out_UNModeProposed.TrackMode()</Action><Action
  Guid="d64c9513-c7c2-421a-8c2c-e4cfaff16cae"
 >THIS.Out_FLOI.TrackMode()</Action><Action
  Guid="cb821b2a-3540-441c-9f2e-7d9972f6b7bf"
@@ -1354,7 +1319,7 @@ Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</Action></A
 <Actions>
 <Action
  Guid="bd5f6858-eb55-4cc7-a633-8479451bf90c"
->Out_Gradient.GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING Kernel.TrackDescription.Gradient.CompensateForTrainPosition(X)</Action></Actions>
+>Out_Gradient.GradientValues &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING X IN Kernel.TrackDescription.Gradient.CompensateForTrainPosition(X)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateOUT"
@@ -1621,7 +1586,7 @@ Kernel.Mode == Default.Mode.RV</PreCondition></PreConditions>
 <Action
  Guid="9a64b1f3-c744-4797-951b-c1f9247a26c6"
 >Out_RouteUnsuitabilities.RouteUnsuitabilities &lt;- 
-MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable (X) USING X</Action></Actions>
+MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Kernel.TrackDescription.RouteSuitability.IsUnsuitable (X) USING X IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateOUT"
@@ -2573,71 +2538,6 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
  Id="6d776e50-b3e1-4d29-8ead-bfb688e39099"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ec24a06d-8fd5-49e5-8877-95c957fef3c8"
->
-</ReqRef></StructureElement><StructureElement
- TypeName="OUT.SRModeProposed"
- Default=""
- Mode="Outgoing"
- Implemented="TRUE"
- Name="Out_SRModeProposed"
- Guid="65a43b19-afea-4296-a757-728a79e1af62"
->
-<ReqRef
- Id="ab35ab1a-b0ef-4158-a6ea-e5e4b77dd326"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e9efebc2-7672-4664-bc54-2bb9bd6c6ea4"
->
-</ReqRef></StructureElement><StructureElement
- TypeName="OUT.OsLsShModeProposed"
- Default=""
- Mode="Outgoing"
- Implemented="TRUE"
- Name="Out_OsLsShModeProposed"
- Guid="a1fdc8c9-dbc2-4f1a-a48f-e991697726b0"
->
-<ReqRef
- Id="fa0a8ced-0f55-4b05-8937-d1c28bd730e6"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e9cb2d90-68ce-49cf-ac65-20f6e54dd27a"
->
-</ReqRef></StructureElement><StructureElement
- TypeName="OUT.SNModeProposed"
- Default=""
- Mode="Outgoing"
- Implemented="TRUE"
- Name="Out_SNModeProposed"
- Guid="c3f78211-8f31-4deb-9bb7-91a8c4e8254a"
->
-<ReqRef
- Id="ebf19bbb-1136-41ba-92fe-0aa6cddb639b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a83e58c2-6d6c-40f9-9b69-cdb9f7897a67"
->
-</ReqRef></StructureElement><StructureElement
- TypeName="OUT.UNModeProposed"
- Default=""
- Mode="Outgoing"
- Implemented="TRUE"
- Name="Out_UNModeProposed"
- Guid="9e7eb051-b57e-4fda-a485-262ae32b2ab7"
->
-<ReqRef
- Id="8f221bd9-37f1-4b7b-90bf-7ced1a3e6840"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="58d3f56f-0569-440a-b4e6-a5a78b84faa4"
->
-</ReqRef></StructureElement><StructureElement
- TypeName="OUT.RVModeProposed"
- Default=""
- Mode="Outgoing"
- Implemented="TRUE"
- Name="Out_RVModeProposed"
- Guid="e4ca20a5-3e0b-4875-98dd-d6189db2e986"
->
-<ReqRef
- Id="3f9544be-2db6-47dc-99aa-0019955b7d6d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="adad83af-2703-4890-a69b-cffe9a9dff89"
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="OUT.TracksideMalfunction"

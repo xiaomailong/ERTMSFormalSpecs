@@ -296,7 +296,7 @@
  Guid="5e3671a8-145b-436f-897c-425e53b4e138"
 >
 <Expression>(REDUCE TSRs 
-    USING  
+    USING X IN  
         MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; TSRSpeedRestriction( aTSR =&gt; X, Distance =&gt; d ), 
                   Second =&gt; RESULT )
 INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
@@ -324,7 +324,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Name="Always"
  Guid="5ebe6a9a-6fe4-4578-b828-6c0b14bd1b4a"
 >
-<Expression>THERE_IS_IN TSRs</Expression>
+<Expression>THERE_IS X IN TSRs</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -471,7 +471,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <PreConditions>
 <PreCondition
  Guid="713b3f3c-98bb-481a-8a50-d873d96e317d"
->THERE_IS_IN TSRs | X.Id == Packet.NID_TSR</PreCondition><PreCondition
+>THERE_IS X IN TSRs | X.Id == Packet.NID_TSR</PreCondition><PreCondition
  Guid="d5d60f09-0748-4754-a025-1753e9c07ecc"
 >Packet.NID_TSR != Messages.NID_TSR.Non_revocable_speed_restriction__applicable_for_all_transmission_media</PreCondition></PreConditions>
 <Actions>
@@ -581,7 +581,7 @@ IN TSRs</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="8e101bfa-646f-443f-983c-1f79b9e26a10"
->THERE_IS_IN TSRs | X.Location + BaseTypes.LengthToDistance (TSRLength (X)) + DistanceToKeepInfoInTheRear &lt;= TrainPosition.RearEndPosition ( DistanceInterval.Min )</PreCondition></PreConditions>
+>THERE_IS X IN TSRs | X.Location + BaseTypes.LengthToDistance (TSRLength (X)) + DistanceToKeepInfoInTheRear &lt;= TrainPosition.RearEndPosition ( DistanceInterval.Min )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="eee5f16e-cc8f-4f90-b380-617bf6f96f00"

@@ -212,6 +212,24 @@ namespace DataDictionary.Tests.Runner.Events
             return retVal;
         }
 
+
+        /// <summary>
+        /// Indicates whether the corresponding step has been activated
+        /// </summary>
+        /// <param name="subStep"></param>
+        /// <returns></returns>
+        public bool ContainsSubStep(SubStep subStep)
+        {
+            bool retVal = false;
+
+            if (SubStepActivationCache.ContainsKey(subStep))
+            {
+                retVal = SubStepActivationCache[subStep] != null;
+            }
+
+            return retVal;
+        }
+
         /// <summary>
         /// Gives the time of activation of a sub-step
         /// </summary>

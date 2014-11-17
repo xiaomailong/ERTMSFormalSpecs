@@ -305,7 +305,7 @@
 >
 <Expression>REDUCE
     aSSR.Categories | X.Qualifier == Messages.Q_DIFF.Cant_Deficiency_specific_category AND X.CantDeficiency &lt;= NC_CTRAIN_to_NC_CDDIFF_Converter(Kernel.TrainData.TrainData.Value.TrainCategories.CantDeficiency)
-USING
+USING X IN
     MaxCategory (X =&gt; X.CantDeficiency, Y =&gt; RESULT)
 INITIAL_VALUE
     EMPTY</Expression>
@@ -407,7 +407,7 @@ INITIAL_VALUE
  Name="CorrespondingCategoryFound"
  Guid="06acc45b-dd2a-4263-a75e-cd81c0380c09"
 >
-<Expression>(FIRST_IN aSSR.Categories | X.Qualifier == Messages.Q_DIFF.Cant_Deficiency_specific_category AND X.CantDeficiency == SelectCantDeficiencyCategory(aSSR)).Speed</Expression>
+<Expression>(FIRST X IN aSSR.Categories | X.Qualifier == Messages.Q_DIFF.Cant_Deficiency_specific_category AND X.CantDeficiency == SelectCantDeficiencyCategory(aSSR)).Speed</Expression>
 </Case></Cases>
 </Function><Function
  Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
@@ -474,7 +474,7 @@ INITIAL_VALUE
     Distance =&gt; Distance,
     BasicSpeed =&gt; BasicSpeed,
     TrainLengthDelay =&gt; TrainLengthDelay,
-    Categories =&gt; MAP Categories USING CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt;Default.MessageTypes.SpeedResolution ( X.V_DIFF, 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
+    Categories =&gt; MAP Categories USING X IN CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt;Default.MessageTypes.SpeedResolution ( X.V_DIFF, 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -514,7 +514,7 @@ INITIAL_VALUE
 <Expression>SUM
     SSRs |
         Before ( ExpectedFirst =&gt; X, ExpectedSecond =&gt; aSSR, Collection =&gt; SSRs ) OR ( X == aSSR )
-USING
+USING X IN
     Default.MessageTypes.QScaleDistance ( distance =&gt; X.D_STATIC, scale =&gt; Scale)</Expression>
 </Case></Cases>
 </Function><Function
@@ -605,7 +605,7 @@ USING
  Guid="8d62abad-1517-484b-86ff-ad3ee8024e41"
 >
 <Expression>(REDUCE SSP 
-    USING  
+    USING X IN  
         MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; ComputeStaticSpeedRestriction( aSSP =&gt; X, Distance =&gt; d ), 
                   Second =&gt; RESULT )
 INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
@@ -726,7 +726,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >
 <Expression>REDUCE
     SSP | X.Distance &gt; Current.Distance
-USING
+USING X IN
     BaseTypes.MinDistance( X.Distance, RESULT )
 INITIAL_VALUE
     BaseTypes.Distance.Infinity</Expression>
@@ -765,7 +765,7 @@ INITIAL_VALUE
  Guid="05c53579-36a6-4932-abd9-2d1343543f1f"
 >REDUCE
     aSSP.Categories | X.Qualifier == Messages.Q_DIFF.Other_specific_category__replaces_the_Cant_Deficiency_SSP
-USING
+USING X IN
     FindOSC(X.OtherSpecific) OR RESULT
 INITIAL_VALUE
     False</PreCondition></PreConditions>
@@ -810,7 +810,7 @@ INITIAL_VALUE
  Name="Value"
  Guid="39b3f53b-79a9-41ad-bc42-6742ae462189"
 >
-<Expression>THERE_IS_IN Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational | X == Category</Expression>
+<Expression>THERE_IS X IN Kernel.TrainData.TrainData.Value.TrainCategories.OtherInternational | X == Category</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -848,7 +848,7 @@ INITIAL_VALUE
 >
 <Expression>REDUCE
     aSSP.Categories | X.Qualifier in [Messages.Q_DIFF.Other_specific_category__replaces_the_Cant_Deficiency_SSP, Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP] AND FindOSC(X.OtherSpecific)
-USING
+USING X IN
     BaseTypes.MinSpeed(X.Speed, RESULT)
 INITIAL_VALUE
     BaseTypes.Speed.MaxSpeed</Expression>
@@ -1163,7 +1163,7 @@ ON
         Distance =&gt; Distance,
         BasicSpeed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; aSSP.V_STATIC, resolution =&gt; 5.0 ),
         TrainLengthDelay =&gt; aSSP.Q_FRONT,
-        Categories =&gt; MAP aSSP.Sequence2 USING CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt;Default.MessageTypes.SpeedResolution ( speed =&gt; X.V_DIFF, resolution =&gt; 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
+        Categories =&gt; MAP aSSP.Sequence2 USING X IN CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt;Default.MessageTypes.SpeedResolution ( speed =&gt; X.V_DIFF, resolution =&gt; 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
     }
 IN
     SSP</Action></Actions>
@@ -1188,7 +1188,7 @@ IN
         Distance =&gt; Distance,
         BasicSpeed =&gt; BaseTypes.Speed.Infinity,
         TrainLengthDelay =&gt; aSSP.Q_FRONT,
-        Categories =&gt; MAP aSSP.Sequence2 USING CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; X.V_DIFF, resolution =&gt; 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
+        Categories =&gt; MAP aSSP.Sequence2 USING X IN CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; X.V_DIFF, resolution =&gt; 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
     }
 IN
     SSP</Action></Actions>

@@ -564,11 +564,7 @@ namespace GUI
         /// </summary>
         public void UpdateTitle()
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-            string versionNumber = fvi.FileVersion;
-
-            String windowTitle = "ERTMS Formal Spec Workbench (version " + versionNumber + ")";
+            String windowTitle = "ERTMS Formal Spec Workbench";
 
             foreach (DataDictionary.Dictionary dictioanry in EFSSystem.Dictionaries)
             {
@@ -1363,6 +1359,16 @@ namespace GUI
             }
         }
 
+        private void generateFindingsReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataDictionary.Dictionary dictionary = GetActiveDictionary();
+            if (dictionary != null)
+            {
+                Report.FindingsReport aReport = new Report.FindingsReport(dictionary);
+                aReport.ShowDialog(this);
+            }
+        }
+
         private void searchToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             SearchDialog.SearchDialog dialog = new SearchDialog.SearchDialog();
@@ -1900,6 +1906,12 @@ namespace GUI
         private void showCommentEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GenericWindowHandling<EditorView.CommentWindow>.AddOrShow(this, CommentEditorWindow, DockAreas.DockBottom);
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutDialogBox aboutDialogBox = new AboutDialogBox();
+            aboutDialogBox.ShowDialog();
         }
     }
 }

@@ -24,9 +24,9 @@ namespace DataDictionary.Functions.PredefinedFunctions
     public class Cast : PredefinedFunction
     {
         /// <summary>
-        /// The range type for which the cast is performed
+        /// The target type for which the cast is performed
         /// </summary>
-        public Types.Range Range { get; private set; }
+        public Types.Type TargetType { get; private set; }
 
         /// <summary>
         /// The value which is casted
@@ -36,12 +36,11 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="efsSystem"></param>
-        /// <param name="name">the name of the cast function</param>
-        public Cast(Types.Range range)
-            : base(range.EFSSystem, range.Name)
+        /// <param name="type">The type in which the cast is performed</param>
+        public Cast(Types.Type type)
+            : base(type.EFSSystem, type.Name)
         {
-            Range = range;
+            TargetType = type;
 
             Value = (Parameter)Generated.acceptor.getFactory().createParameter();
             Value.Name = "Value";
@@ -55,7 +54,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// </summary>
         public override Types.Type ReturnType
         {
-            get { return Range; }
+            get { return TargetType; }
         }
 
         /// <summary>
@@ -78,7 +77,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
             }
             else
             {
-                retVal = Range.convert(value);
+                retVal = TargetType.convert(value);
             }
             context.LocalScope.PopContext(token);
 

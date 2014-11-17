@@ -3509,6 +3509,7 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ DeadLine="1"
  Guid="012cc47f-dda1-4bad-b2fa-b0a267742727"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.Override</Expectation><Expectation
  Kind="Instantaneous"
@@ -3545,9 +3546,11 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ DeadLine="1"
  Guid="aa8cf815-8b35-49ff-bb58-21ec6078074e"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.Override</Expectation><Expectation
  Kind="Instantaneous"
+ DeadLine="1"
  Guid="63196aed-57f4-4f48-ae60-90f7811f8ecb"
 >Kernel.TrainPosition.Position.DataState == DataState.Unknown</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -3625,9 +3628,11 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ DeadLine="1"
  Guid="8ce90fbc-a107-41de-bc9f-3bd0e8260f7c"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.Override</Expectation><Expectation
  Kind="Instantaneous"
+ DeadLine="1"
  Guid="566cd922-5dad-4faf-8546-c5b8647414a8"
 >Kernel.TrainPosition.Position.DataState == DataState.Valid</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -8504,7 +8509,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="0de118e8-42c6-4fc6-93bd-aab1c6dc0141"
 >Kernel.SR.SRAuthorisation &lt;- EMPTY</Action><Action
  Guid="b3c931bf-5afe-4bcf-9a7d-4206e376afdb"
->Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action><Action
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{}</Action><Action
  Guid="afa1e864-891e-4787-b29c-1f67f1482eb0"
 >Kernel.MA.ModeProfile.Profile &lt;- 
 [
@@ -8594,7 +8599,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="95e1ec01-adf5-4d7f-912c-b6f3cefde0d8"
 >Kernel.SR.SRAuthorisation &lt;- EMPTY</Action><Action
  Guid="21b1ee59-e22f-4fa3-b1e5-ce8ed8a66de0"
->Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action><Action
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{}</Action><Action
  Guid="e57886d1-e760-43a6-b59d-b9177859a29e"
 >Kernel.MA.ModeProfile.Profile &lt;- 
 [
@@ -8682,7 +8687,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="b4136af6-613e-4ffa-b85f-75a158f4fc17"
 >Kernel.SR.SRAuthorisation &lt;- EMPTY</Action><Action
  Guid="33ba446f-7b6c-4a95-92eb-11c8ebdd372f"
->Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action><Action
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{}</Action><Action
  Guid="42ca0c86-b185-4cb6-a9af-f3608bc461dd"
 >Kernel.MA.ModeProfile.Profile &lt;- 
 [
@@ -8778,7 +8783,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="5b830ab0-09b1-4c9f-84d8-4fe2d21c65b1"
 >Kernel.SR.SRAuthorisation &lt;- EMPTY</Action><Action
  Guid="09c76990-0410-4879-b280-c9c6d12c1025"
->Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority{}</Action><Action
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{}</Action><Action
  Guid="d357ba1b-a023-4f7d-b7c3-fb4be2997864"
 >Kernel.MA.ModeProfile.Profile &lt;- []</Action></Actions>
 <Expectations>
@@ -9346,7 +9351,9 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="af64cda8-6412-4f5b-9bb6-69c20cc248f8"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action
  Guid="66ad8533-670a-4094-9aa4-065ef39b7776"
->EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
+>EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action><Action
+ Guid="28879867-9951-4be9-b50c-44c78bd137d1"
+>Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase

@@ -2848,6 +2848,23 @@
  Guid="6dc761e7-4f01-4c11-bad2-cc9752d218b3"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.4.11.1.5.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="6a2d9432-86f3-4154-85b1-431198e6b7f3"
+>The unit, range and resolution of the SR mode speed limit and distance entered by the driver shall be as specified in A.3.11.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5c2439b1-3690-4c7a-91c4-a678cf0a406b"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -5449,11 +5466,349 @@
  scope="FLAGS"
  bl="3.1.0"
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  Name=""
  Guid="e3caa999-1864-4f55-998d-66166d0a163b"
->The ERTMS/ETCS on-board equipment shall display the train speed. If the permitted speed is lower than both the Limited Supervision mode speed limit and the maximum train speed, the permitted speed and the target speed shall be indicated (this list and the conditions are not exhaustive - refer to chapter 4.7 &quot;DMI depending on modes&quot;).<RequirementSets>
+>The ERTMS/ETCS on-board equipment shall display the train speed and the release speed, if any (this list is not exhaustive - refer to chapter 4.7 “DMI depending on modes”). Upon request by trackside (refer to clauses 4.4.19.1.4.2 to 4.4.19.1.4.6) if the generic LS function marker is stored on-board or if the conditions in clause 4.4.19.1.4.7 are fulfilled, the ERTMS/ETCS on-board equipment shall also display the lowest speed amongst:<Sub>
+<Paragraph
+ id="4.4.19.1.4.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="7ff97a9b-f10c-4e4c-b174-b68c9f680b6e"
+>the lowest MRSP element between the minimum safe front end of the train and the EOA/LOA, AND<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b324b60d-e4f1-47d9-b92a-f9356b8acecf"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="b0f4664c-4aa3-4520-a7f2-d087cbb06e34"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.4.19.1.4.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="37c50c6b-4e41-4db0-ad87-b7b3d074bc00"
+>the target speed at the EOA/LOA<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b86fd51f-83ea-404e-8030-145a6ac29712"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="4419caba-8db6-447a-9ebc-61ac3856712e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.4.19.1.4.1"
+ type="DEFINITION"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="1927f16e-ef66-4d58-a6a2-2333dce7faf6"
+>The speed resulting from 4.4.19.1.4 a) and b) is called the Lowest Supervised Speed within the Movement Authority (LSSMA)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2406dbe0-0964-42c4-8374-560a361b7762"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="38873fc1-1e9f-436f-995b-4426ec7956e0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.4.19.1.4.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="569567b3-3681-4d80-9bed-9a1376f4cd6f"
+>Upon an order to toggle on the LSSMA display, the ERTMS/ETCS on-board equipment shall start a delay timer:<Sub>
+<Paragraph
+ id="4.4.19.1.4.2.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="5ab8592b-d34d-449a-b9b4-a49404c758ed"
+>For order received from RBC/RIU: at the value of the time stamp of the message including the order.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="49eb4c01-3dee-4310-bbb3-c756d08a9f4e"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="0fef3044-134a-4514-8c02-249e54498df3"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.4.19.1.4.2.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="fa830e21-7694-4e0e-b5e1-ec5a23036c07"
+>For order received from balise group: at the time of passage over the first encountered balise of the balise group giving the order.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="65f06fb8-6300-46e2-9d20-d2d7a28c6e7f"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="d95fd667-d150-4a2e-a3bd-fe748c29330b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.4.19.1.4.2.c"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="18659e26-db48-44a9-99f6-e2b9335a9581"
+>Exception to a) and b): for order that has been stored in the level transition buffer (see section 4.8.3): at the time the level transition is performed.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c9690616-6ee0-402c-bc47-2335478c73d5"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="33f0626c-9c99-4bfe-aff9-48d1990060a6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="10a441c7-90b0-443b-ad88-873dfbd56db3"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="e7bdc6a5-7ce0-447a-bb9e-8ef899f5c5d6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.4.19.1.4.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="cc5dadda-f34e-4f97-a9b7-e5e5b8f9e82f"
+>When the delay timer value becomes greater than the time-out value given by trackside, the ERTMS/ETCS on-board equipment shall display the LSSMA.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b004fb21-282e-416a-86bd-4a95d08d70f3"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="08147cfb-391b-4556-8cac-c3732f7f789a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.4.19.1.4.4"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="7a1c72d6-e564-40a5-ac23-c5e4926af96f"
+>On reception of an order to toggle (on or off) the LSSMA display, a toggle on order which has not been executed yet (because the on-board delay timer has not reached the delay time-out value) shall be deleted by the on-board equipment.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3d1aa1c9-f0c1-4577-83e1-9fff4794481a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.4.19.1.4.5"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="60d7382d-21ec-4562-8029-32db0977d2ef"
+>If the LSSMA display is already toggled on, the ERTMS/ETCS on-board equipment shall toggle off the LSSMA display in case:<Sub>
+<Paragraph
+ id="4.4.19.1.4.5.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="cb1268f7-53cb-49c8-a6d9-4e4b32f7774f"
+>the clause 4.4.19.1.4.3 is not immediately fulfilled upon reception of a new order to toggle on the LSSMA display<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="957bd89a-ffee-4450-b8de-5fba03a32b90"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.4.19.1.4.5.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="8875844d-6767-46d6-81e6-f515e52f4417"
+>an order to toggle off the LSSMA display is received.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9c892a63-4992-4e2f-983f-0bf376415524"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8c2f611d-6f45-4f99-bea3-e6f78620df0b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.4.19.1.4.6"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="a2ec7ec3-6644-47d6-8ee1-9e4b16650cc3"
+>When entering the Limited Supervision mode, the LSSMA display shall be toggled off by the ERTMS/ETCS on-board equipment, unless a toggle on order is received and leads immediately to the display of the LSSMA as per clauses 4.4.19.1.4.2 and 4.4.19.1.4.3.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="75ff4f4e-cad9-42ef-b551-d9bdb3b10500"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.4.19.1.4.7"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="b54058d6-eecd-40ca-883f-f77c6bf457b1"
+>If the generic LS function marker is not stored on-board, the clauses 4.4.19.1.4.2 to 4.4.19.1.4.6 shall not apply and the LSSMA shall be displayed if:<Sub>
+<Paragraph
+ id="4.4.19.1.4.7.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="2b70094d-4b34-482b-8e02-5076957231fb"
+>the target speed at the EOA/LOA is lower than the Limited Supervision mode speed limit, AND<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4fe0c9f7-5138-494b-9485-9398b91792c8"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="be122a46-b4b2-4198-8608-4b5dd448b7b7"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.4.19.1.4.7.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="2378ec5b-b103-4415-b159-4c016a0c0966"
+>the LSSMA is lower than the maximum train speed.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="eba393ae-ec40-4089-8a00-70243f753cf4"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d30de734-7e3c-4687-8af6-9eb7bb20456b"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="e21cc9cf-7c11-43d9-9914-fcafae02e41b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.4.19.1.4.8"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="259b9778-4f75-4c5b-a658-9eef737938bf"
+>The generic LS function marker shall be deleted by the ERTMS/ETCS on-board equipment as soon as a Limited Supervision mode profile is received without it in the same balise group message.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8c84f2cc-51be-4437-9119-31164661b98e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="3f7987f8-8b01-4de5-bc2b-a74d1f70d193"
@@ -5642,11 +5997,35 @@
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  Name=""
  Guid="1e609eb0-3130-4af3-9c53-e68391c9fdd1"
->The driver must observe the existing line-side information (signals, speed boards etc.) and National operating rules.<RequirementSets>
+>The driver must always observe the existing line-side information (signals, speed boards etc.) and National operating rules.<Sub>
+<Paragraph
+ id="4.4.19.3.2.1"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="ee3f872d-e976-4a42-a67c-7a159ed23a5d"
+>Note: the indications given to the driver by the ERTMS/ETCS on-board equipment do not substitute the observance of the line-side information. In particular the display of the LSSMA, if deemed necessary by the trackside, only complements the line-side information, e.g. in case there could be a discrepancy between this latter and the background supervision.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c3128e0b-9dd8-457f-a6f8-f4040db0d5cb"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="15753d9c-4be4-410b-b6d9-506cc6a6f3eb"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="52d694a6-76ba-478b-bfe6-7c1893523278"
@@ -7453,6 +7832,23 @@
  bl=""
  name=""
  reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="7a6c1c5d-1513-44e5-9b0d-6a1e8ce3dca9"
+>Manage LSSMA display to the driver; 4.4.19.1; LS<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3b16b25a-23a8-436f-803b-2e53fcf07251"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.5.2.1.74"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
  Name=""
@@ -7464,7 +7860,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="4.5.2.1.74"
+ id="4.5.2.1.75"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -7480,7 +7876,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="4.5.2.1.75"
+ id="4.5.2.1.76"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -7496,7 +7892,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="4.5.2.1.76"
+ id="4.5.2.1.77"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -7513,7 +7909,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="4.5.2.1.77"
+ id="4.5.2.1.78"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -7529,7 +7925,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="4.5.2.1.78"
+ id="4.5.2.1.79"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -7546,7 +7942,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="4.5.2.1.79"
+ id="4.5.2.1.80"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -7562,23 +7958,24 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="4.5.2.1.80"
+ id="4.5.2.1.81"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  Name=""
  Guid="7280400a-c7c1-460b-8556-295a8d721fc8"
->Cold Movement Detection; ; NP<RequirementSets>
+>Cold Movement Detection; 3.15.8 ; NP<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="e9fb4145-7057-4bb9-8181-b57dcfaeb612"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="4.5.2.1.81"
+ id="4.5.2.1.82"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -7594,7 +7991,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="4.5.2.1.82"
+ id="4.5.2.1.83"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -7610,7 +8007,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="4.5.2.1.83"
+ id="4.5.2.1.84"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -7628,7 +8025,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="4.5.2.1.84"
+ id="4.5.2.1.85"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -7644,7 +8041,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="4.5.2.1.85"
+ id="4.5.2.1.86"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -7661,7 +8058,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="4.5.2.1.86"
+ id="4.5.2.1.87"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -7678,7 +8075,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="4.5.2.1.87"
+ id="4.5.2.1.88"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -7695,7 +8092,7 @@
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="4.5.2.1.88"
+ id="4.5.2.1.89"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -11492,7 +11889,7 @@ AND (a National Trip Procedure is active) see {8} here under<RequirementSets>
  Name=""
  Guid="5f956401-5d46-470a-86e1-1e1a5f11d0b4"
 ><Comment>The request to acknowledge On Sight may be also displayed in Train Trip procedure (state S170).</Comment>
-{1} The request to acknowledge On Sight is displayed to the driver only if certain conditions are fulfilled. These conditions are not specified here. See the &quot;On Sight&quot; procedure&quot; of SRS-paragraph 5 (for transitions from FS/LS/UN to OS) and the &quot;Start of mission&quot; procedure (for transition from SB to OS).<RequirementSets>
+{1} The request to acknowledge On Sight is displayed to the driver only if certain conditions are fulfilled. These conditions are not specified here. See the &quot;On Sight&quot; procedure&quot; in 5.9.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="aaa0193e-1fb1-461b-9fab-5d8d425eb27e"
@@ -11509,7 +11906,7 @@ AND (a National Trip Procedure is active) see {8} here under<RequirementSets>
  version="3.0.0"
  Name=""
  Guid="6a06e5d3-c839-4a94-a7d7-63aeb80a80cc"
->{2} This transition to the Unfitted mode is also a transition of level.. For further information, See the &quot;Level Transition&quot; procedure&quot; (SRS-paragraph 5) for transitions from FS/SR/OS/LS to UN and the &quot;Start Of Mission&quot; procedure&quot; (SRS-paragraph 5) for transition from SB to UN.<RequirementSets>
+>{2} This transition to the Unfitted mode is also a transition of level.. For further information, See the &quot;Level Transition&quot; procedure in 5.10 and the &quot;Start Of Mission&quot; procedure in 5.4.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d714780d-93ea-40f1-aa89-9882e19edcba"
@@ -11974,11 +12371,11 @@ AND (a National Trip Procedure is active) see {8} here under<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="b097af96-5a86-448c-a47a-c1f0866d272b"
->Train integrity; A: SB, FS, LS, SR, OS, PT; NA: SF, IS<RequirementSets>
+>Train integrity confirmation; A: SB, FS, LS, SR, OS, PT; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="6e9ea480-1c41-4b34-882a-c11947a387f4"
@@ -12523,13 +12920,13 @@ Current ERTMS/ETCS level; A: SB, TR; X: SH, FS, LS, SR, OS, NL, UN, PT, SN, RV; 
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  infoRequired="TRUE"
  Name=""
  Guid="d71c157f-0723-4ca1-a3ca-bd2eb1e89ec3"
 ><Comment>Permitted speed shall always be sent to the DMI, when available. The DMI will use this information, if requested</Comment>
-Permitted Speed; A: SH, LS, SR, OS; X: FS, RV; GREYED: SN; NA: SF, IS<RequirementSets>
+Permitted Speed; A: SH, SR, OS; X: FS, RV; GREYED: SN; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="c97f73e4-5abf-4de9-8a67-bde319007414"
@@ -12543,12 +12940,12 @@ Permitted Speed; A: SH, LS, SR, OS; X: FS, RV; GREYED: SN; NA: SF, IS<Requiremen
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="9427a791-5126-401a-8a4c-c22ac729a3c7"
 ><Comment>FLOI shall always be sent to the DMI, when available. The DMI will use this information, if requested</Comment>
-FLOI Speed; A: FS; GREYED: SN; NA: SF, IS<RequirementSets>
+SBI Speed; A: FS; GREYED: SN; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="e5fa91cd-b484-469b-8151-844039b73dd4"
@@ -12561,12 +12958,12 @@ FLOI Speed; A: FS; GREYED: SN; NA: SF, IS<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="b2d1ec0c-6179-487e-8bd5-c648d7a87f56"
 ><Comment>Target speed shall always be sent to the DMI, when available. The DMI will use this information, if requested</Comment>
-Target Speed; A: FS, LS, SR,OS; GREYED: SN; NA: SF, IS<RequirementSets>
+Target Speed; A: FS, SR,OS; GREYED: SN; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="343291dd-cb96-42bf-b82e-a996ed21d510"
@@ -12612,6 +13009,23 @@ Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
  id="Entry 4.7.2.2.9"
  type="REQUIREMENT"
  scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="79ff8592-7e4d-46f0-8f6b-70287697fedc"
+>LSSMA; A: LS; NA: SF, IS<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="49fb53a0-ce7e-42fb-ae7c-c08c858aa4d1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 4.7.2.2.10"
+ type="REQUIREMENT"
+ scope="FLAGS"
  bl="3.1.0"
  name=""
  reviewed="TRUE"
@@ -12626,7 +13040,7 @@ Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.10"
+ id="Entry 4.7.2.2.11"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12643,7 +13057,7 @@ Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.11"
+ id="Entry 4.7.2.2.12"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12660,7 +13074,7 @@ Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.12"
+ id="Entry 4.7.2.2.13"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12677,7 +13091,7 @@ Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.13"
+ id="Entry 4.7.2.2.14"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12694,7 +13108,7 @@ Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.14"
+ id="Entry 4.7.2.2.15"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12714,7 +13128,7 @@ Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.15"
+ id="Entry 4.7.2.2.16"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -12732,7 +13146,7 @@ Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.16"
+ id="Entry 4.7.2.2.17"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -12749,7 +13163,7 @@ Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.17"
+ id="Entry 4.7.2.2.18"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12766,7 +13180,7 @@ Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.18"
+ id="Entry 4.7.2.2.19"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12783,7 +13197,7 @@ Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.19"
+ id="Entry 4.7.2.2.20"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12800,7 +13214,7 @@ Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.20"
+ id="Entry 4.7.2.2.21"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -12822,7 +13236,7 @@ Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.21"
+ id="Entry 4.7.2.2.22"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -12839,7 +13253,7 @@ Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.22"
+ id="Entry 4.7.2.2.23"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12857,7 +13271,7 @@ Geographical position; A: SB, FS, LS, SR, OS, NL, UN, TR, PT; NA: SF, IS<Require
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.23"
+ id="Entry 4.7.2.2.24"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12874,7 +13288,7 @@ Geographical position; A: SB, FS, LS, SR, OS, NL, UN, TR, PT; NA: SF, IS<Require
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.24"
+ id="Entry 4.7.2.2.25"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12891,7 +13305,7 @@ Geographical position; A: SB, FS, LS, SR, OS, NL, UN, TR, PT; NA: SF, IS<Require
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.25"
+ id="Entry 4.7.2.2.26"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12908,7 +13322,7 @@ Geographical position; A: SB, FS, LS, SR, OS, NL, UN, TR, PT; NA: SF, IS<Require
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.26"
+ id="Entry 4.7.2.2.27"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12925,7 +13339,7 @@ Geographical position; A: SB, FS, LS, SR, OS, NL, UN, TR, PT; NA: SF, IS<Require
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.27"
+ id="Entry 4.7.2.2.28"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12942,7 +13356,7 @@ Geographical position; A: SB, FS, LS, SR, OS, NL, UN, TR, PT; NA: SF, IS<Require
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.28"
+ id="Entry 4.7.2.2.29"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12961,7 +13375,7 @@ Entry in FS/OS; A: FS, OS; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.29"
+ id="Entry 4.7.2.2.30"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12978,7 +13392,7 @@ Entry in FS/OS; A: FS, OS; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.30"
+ id="Entry 4.7.2.2.31"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -12995,7 +13409,7 @@ Entry in FS/OS; A: FS, OS; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.31"
+ id="Entry 4.7.2.2.32"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -13012,92 +13426,7 @@ Entry in FS/OS; A: FS, OS; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.32"
- type="REQUIREMENT"
- scope="FLAGS"
- bl="3.1.0"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- Name=""
- Guid="ab35ab1a-b0ef-4158-a6ea-e5e4b77dd326"
->SR mode proposed; A: SB, PT; NA: SF, IS<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="987b8522-7562-4ef4-9b8a-50f102476e95"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph><Paragraph
  id="Entry 4.7.2.2.33"
- type="REQUIREMENT"
- scope="FLAGS"
- bl="3.1.0"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- Name=""
- Guid="fa0a8ced-0f55-4b05-8937-d1c28bd730e6"
->OS/LS/SH mode proposed; A: SB, PT; NA: SF, IS<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="50cf49d5-67cd-4b30-83b3-962d6b2938a7"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph><Paragraph
- id="Entry 4.7.2.2.34"
- type="REQUIREMENT"
- scope="FLAGS"
- bl="3.1.0"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- Name=""
- Guid="ebf19bbb-1136-41ba-92fe-0aa6cddb639b"
->SN mode proposed; A: SB; NA: SF, IS<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="b3c55e3a-15f6-425d-848d-b02e0f982488"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph><Paragraph
- id="Entry 4.7.2.2.35"
- type="REQUIREMENT"
- scope="FLAGS"
- bl="3.1.0"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- Name=""
- Guid="8f221bd9-37f1-4b7b-90bf-7ced1a3e6840"
->UN mode proposed; A: SB; NA: SF, IS<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="ff4f35d7-57e9-48be-bd67-c12409c79a83"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph><Paragraph
- id="Entry 4.7.2.2.36"
- type="REQUIREMENT"
- scope="FLAGS"
- bl="3.1.0"
- name=""
- reviewed="TRUE"
- status="Implemented"
- version="3.0.0"
- Name=""
- Guid="3f9544be-2db6-47dc-99aa-0019955b7d6d"
->RV mode proposed; A: FS, LS, OS; NA: SF, IS<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="1c1bb730-aa69-4948-8b5a-2b757ba7a5f6"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph><Paragraph
- id="Entry 4.7.2.2.37"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -13114,24 +13443,24 @@ Entry in FS/OS; A: FS, OS; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.38"
+ id="Entry 4.7.2.2.34"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="cde58d6c-c5d2-4ee2-8363-fb89efc1fcd7"
->Notification of Train Data change from source different from the driver; A: SB, FS, LS, SR, OS, UN, TR, PT, SN, RV; NA: SF, IS<RequirementSets>
+>Notification of Train Data change from source different from the driver; A: SB, FS, LS, SR, OS, UN, TR, PT, SN; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="4acb06f0-6fea-4baf-bdf1-6bbefd64f790"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.39"
+ id="Entry 4.7.2.2.35"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -13148,7 +13477,7 @@ Entry in FS/OS; A: FS, OS; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.40"
+ id="Entry 4.7.2.2.36"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -13165,7 +13494,7 @@ Entry in FS/OS; A: FS, OS; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.41"
+ id="Entry 4.7.2.2.37"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -13182,7 +13511,7 @@ Entry in FS/OS; A: FS, OS; NA: SF, IS<RequirementSets>
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.42"
+ id="Entry 4.7.2.2.38"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -13203,7 +13532,7 @@ Local time; A: SB, TR, SN; X: SH, FS, LS, SR, OS, NL, UN, PT, RV; NA: SF, IS<Req
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.43"
+ id="Entry 4.7.2.2.39"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -13220,7 +13549,7 @@ Local time; A: SB, TR, SN; X: SH, FS, LS, SR, OS, NL, UN, PT, RV; NA: SF, IS<Req
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.44"
+ id="Entry 4.7.2.2.40"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -13237,7 +13566,7 @@ Local time; A: SB, TR, SN; X: SH, FS, LS, SR, OS, NL, UN, PT, RV; NA: SF, IS<Req
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.45"
+ id="Entry 4.7.2.2.41"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -13256,7 +13585,7 @@ Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS<Requirem
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.46"
+ id="Entry 4.7.2.2.42"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.2.0"
@@ -13273,7 +13602,7 @@ Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS<Requirem
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.47"
+ id="Entry 4.7.2.2.43"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -13290,7 +13619,7 @@ Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS<Requirem
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.48"
+ id="Entry 4.7.2.2.44"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -13307,7 +13636,7 @@ Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS<Requirem
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.49"
+ id="Entry 4.7.2.2.45"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -13324,7 +13653,7 @@ Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS<Requirem
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.7.2.2.50"
+ id="Entry 4.7.2.2.46"
  type="REQUIREMENT"
  scope="FLAGS"
  bl="3.1.0"
@@ -13554,7 +13883,7 @@ Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS<Requirem
  version="3.0.0"
  Name=""
  Guid="efb224ef-062d-40f4-8602-aca8bc2c7481"
->the information complies with the data consistency checks.(see section 3.16)<RequirementSets>
+>the information complies with the system version checks (see section 3.17.3) and with the data consistency checks.(see section 3.16)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d1576006-c10f-4fa0-b340-c31f6a46979f"
@@ -13650,6 +13979,23 @@ Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS<Requirem
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="da23400f-1444-45e5-805d-1ab476329191"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.8.2.1.e"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="ae6ed53c-60bb-425b-8045-930946320307"
+>the information from balise is received while no other reverse movement is performed (see clause 3.14.3.6)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b46ece0b-ed4d-4162-ba02-8e320a6473ef"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -15866,6 +16212,108 @@ Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS<Requirem
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="d31c9f35-7397-4230-be2e-51513b70d30c"
+>Generic LS function marker; No; A; A; A; A; A<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0ae6f6be-660b-4c0d-83fc-499004a5c175"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 4.8.3.1.1.2.124"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="1e7f1bb3-f89a-4740-a4f2-6c0a06c55868"
+>Generic LS function marker; Yes; ; ; ; ;<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5b525c61-ace3-4b45-b12c-80d866f5c370"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 4.8.3.1.1.2.125"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="de2486ab-79a0-4f38-84e7-cc4ec46c8c32"
+>LSSMA display toggle on order; No; R [1]; R [1]; A; R [1]; R [1]<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="329f5ac6-8dad-4c5f-8fa1-9352ac9e0cd0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 4.8.3.1.1.2.126"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="a8171092-6c88-4ed8-a684-a440c47451ec"
+>LSSMA display toggle on order; Yes; R [2]; R [2]; R [2]; A [3] [5]; A [3] [5]<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7ba98e30-fffd-49b0-9769-56fa1eba407e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 4.8.3.1.1.2.127"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="a614f8fd-3578-4176-9c48-5a32a54826b1"
+>LSSMA display toggle off order; No; R; R; A; R; R<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="703514c2-a1a1-4a20-b244-e262fd84beed"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 4.8.3.1.1.2.128"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="4abfc20f-bf9f-4151-ac0a-38da0386d674"
+>LSSMA display toggle off order; Yes; R; R; R; A; A<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ad241288-a965-4d79-a4bf-f3ae2cc39aa1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 4.8.3.1.1.2.129"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
  optional="FALSE"
  name=""
  reviewed="TRUE"
@@ -15880,7 +16328,7 @@ Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS<Requirem
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="Entry 4.8.3.1.1.2.124"
+ id="Entry 4.8.3.1.1.2.130"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
@@ -17432,6 +17880,57 @@ Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS<Requirem
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="010b5c35-7431-44f2-ae89-961545d2f5cf"
+>Generic LS function marker; NR; A; A; A; A; A; A; A; A; A; A; A; A; NR; NR; A; A<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a356ee17-e839-49fd-96dd-2c975b7c54d6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 4.8.4.2.2.65"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="92e6202a-171a-4865-9097-38dc4a7d457c"
+>LSSMA display toggle on order; NR; R; R; R; A [9]; A; A [9]; A [9]; R; R; A [9]; R; R; NR; NR; A [9]; R<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3694bcc7-6288-4107-8db8-bc37d2aa163e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 4.8.4.2.2.66"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="3020fb7b-87cb-49b5-8f58-1bb11bb7cc5a"
+>LSSMA display toggle off order; NR; R; R; R; R; A; R; R; R; R; R; R; R; NR; NR; R; R<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="006f1228-5a62-4a3e-912c-36530ba97651"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 4.8.4.2.2.67"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
  optional="FALSE"
  name=""
  reviewed="TRUE"
@@ -17586,6 +18085,23 @@ Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS<Requirem
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d86640ac-95ba-43e5-9f98-b4f50d4611ed"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.8.4.2.11"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="60d79d0d-5079-4e18-adac-d0577c2c5d20"
+>[9]: only if the max safe front end of the train is inside the Limited Supervision area of a mode profile received in the same message<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9d7461ce-1fe8-4976-b399-c0de4448c10d"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -17894,7 +18410,7 @@ Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS<Requirem
  version="3.0.0"
  Name=""
  Guid="1e8f34e9-dc79-4bd3-8acf-af7873f31388"
->Note: The requirement to acknowledge an Emergency Stop information according to clause 3.10.1.4, i.e., communicating to the RBC if the information has been accepted or ignored, applies to the time when the information is used, immediately after the sequential update has been completed.
+>Note: The requirement to acknowledge an Emergency Stop information according to clause 3.10.1.4, i.e., communicating to the RBC if the information has been accepted (Conditional or Unconditional Emergency Stop) or rejected because the train has passed the stop location (Conditional Emergency Stop only), applies to the time when the information is used, immediately after the sequential update has been completed.
 Regards acknowledging the reception of an emergency stop message, as for any other information received from trackside, see clause 3.16.3.5.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -19073,33 +19589,468 @@ Regards acknowledging the reception of an emergency stop message, as for any oth
  version="3.0.0"
  Name=""
  Guid="7f464114-b244-420e-bf58-487c6c861e5b"
->The following information is not considered to be stored information:
-	a) Repositioning information
-	b) Session Management (exception: the RBC ID/phone number, which is given with an order to establish a communication session, is stored on-board)
-	c) Danger for SH information
-	d) Assignment of Co-ordinate system
-	e) Infill Location Reference
-	f) Location Identity (NID_C + NID_BG transmitted in the balise telegram)
-	g) Recognition of exit from TRIP mode
-	h) Acknowledgement of Train Data
-	i) SH refused
-	j) SH authorised
-	k) Balise/loop System Version
-	l) Track Condition Station Platforms
-	m) Track Condition Change of Allowed Current Consumption
-	n) Revocation of Emergency Stop (Conditional or Unconditional)
-	o) Temporary Speed Restriction Revocation
-	p) Initiation of communication session
-	q) Acknowledgement of session termination
-	r) Default Balise Information
-	s) Co-operative shortening of MA (if this message is used, it replaces the movement authority)
-	t) Train Rejected
-	u) Train Accepted
-	v) SoM position report confirmed by RBC
-	w) Track Ahead Free up to level 2/3 transition location
-	x) Signalling related speed restriction value zero (i.e., train trip order)
-	y) Stop if in SR mode
-	z) Data to be forwarded to a National System through the STM interface<RequirementSets>
+>The following information is not considered to be stored information:<Sub>
+<Paragraph
+ id="4.10.1.4.2.a"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="124f7b42-7183-480a-a415-924d8712bbd4"
+>Repositioning information<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7cf086e6-ba91-4ac8-9754-47dfe846ed5a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.b"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b2403726-6cc8-42dc-9bc3-f1e50863dab1"
+>Session Management (exception: the RBC ID/phone number, which is given with an order to establish a communication session, is stored on-board)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1c06372f-1588-4eb5-b82b-3be76ed76cb0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.c"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="e0dda98a-9267-4beb-ba82-9db195269ad7"
+>Danger for SH information<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5fd38cb6-6965-43d9-9457-bce11c62f295"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.d"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="f0ee203c-d219-4bc5-9c33-79b3589f3758"
+>Assignment of Co-ordinate system<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="590a63ac-8827-4b4f-8255-97857cc65eb8"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.e"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="172c7ad9-641a-44f6-a46f-502a151e8e49"
+>Infill Location Reference<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b3fab685-1b01-4a9f-b3f5-dbcc14818148"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.f"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a31f263f-c902-441b-868f-f0033215cea2"
+>Location Identity (NID_C + NID_BG transmitted in the balise telegram)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b2458f1d-4b1c-4529-856a-7b795f6cf09c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.g"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="11dc2c74-2b48-4f4b-a4d0-bd23da1f0464"
+>Recognition of exit from TRIP mode<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="08ca5b2d-7046-4f82-9195-1328952b2b72"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.h"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="51c53b46-cc9b-476f-a54e-ce2f1c7b2619"
+>Acknowledgement of Train Data<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="11b5a2d7-0669-4be7-84e3-e2b611de0751"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.i"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="ea553c39-3ff0-4f9b-bf15-4c51d6b1f5b9"
+>SH refused<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2e1cb7cb-0aaf-466e-a9ee-1a0a20c3abf2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.j"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="1777264a-df46-400b-b253-b09df83f030c"
+>SH authorised<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="852a8019-12d9-40cb-94c0-a2a64092f8ed"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.k"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="51f8bd7b-17ac-4c13-9bd1-ae6e8252311b"
+>Balise/loop System Version<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a159168d-b0a1-4158-9d2f-ba2f3fd0fe76"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.l"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d57bfb57-7651-46c4-8f27-0c4c76f236c7"
+>Track Condition Station Platforms<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="919b019a-a208-440a-9488-a7c8208cc61f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.m"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="2221c7d5-54e0-4976-9949-1c3fd4bd272d"
+>Track Condition Change of Allowed Current Consumption<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ab8677f6-24ad-4195-8c26-04c360c59ccb"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.n"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="69accc65-3e1d-406f-9090-ea55e9cd0bb0"
+>Revocation of Emergency Stop (Conditional or Unconditional)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8cb36fd2-edca-490a-8263-6e4b72539c35"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.o"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="5621402a-53c2-4c1b-874f-d8e92097535e"
+>Temporary Speed Restriction Revocation<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="553e0270-2bc0-438e-9505-564bd9475eb3"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.p"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="3de4d7aa-92a9-4a62-8067-e765328fd8df"
+>Initiation of communication session<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f6a296bc-d370-4454-92a7-c9cd26211a33"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.q"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="583ab81a-9820-41f1-ab82-602dce328362"
+>Acknowledgement of session termination<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="bd9bb491-d5ee-4b9c-9bf0-6fd67d8f4bb8"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.r"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="bc9232ca-161c-425f-ac89-b69e36bcfa6e"
+>Default Balise Information<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9ebe101f-dffa-4ebc-bdec-593934c6428f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.s"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="32165bda-6798-4a78-b346-c11146c0c57d"
+>Co-operative shortening of MA (if this message is used, it replaces the movement authority)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9a800b5c-c72a-4f0e-88ac-a42099fb44f3"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.t"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="be803684-e8ea-4e71-8918-fbfac536975a"
+>Train Rejected<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="67bfc899-47ad-44ff-a495-990ab18ab2e9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.u"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="90a7c93d-5741-4aec-87d9-6f982950fe48"
+>Train Accepted<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1c8e6e5d-8330-40b9-b0c7-672b7538fcb1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.v"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="99cb56ae-13c7-4de4-ac37-2d57e80a1b7f"
+>SoM position report confirmed by RBC<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="00a6838a-5372-4861-b67d-85885f25108d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.w"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0678a227-920e-4d69-ba58-292a0ee2eadd"
+>Track Ahead Free up to level 2/3 transition location<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="50bd8b18-139c-4d24-b3c9-076848031b56"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.x"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="ab697a8e-ef39-4223-ba8d-0bc4882f29b1"
+>Signalling related speed restriction value zero (i.e., train trip order)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="79ec0cf9-40b2-4588-a613-7612a5d8f7b2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.y"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="53829d14-e4bd-41ad-85f1-15bb3f3c0ccb"
+>Stop if in SR mode<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7f67996d-5876-4037-938a-1aa8cd3471ca"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.z"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d4f88d0d-d4c4-4c0c-aa05-aa53f2dacacd"
+>Data to be forwarded to a National System through the STM interface<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5a238310-2bec-4359-be32-3785369ed694"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.10.1.4.2.aa"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="eb637f17-5cbf-4195-964d-0da322f73934"
+>LSSMA display toggle off order<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="99723211-5813-4613-a409-37bde96b82d1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="5c06bd98-c1dd-4381-9b63-44a4aff92659"

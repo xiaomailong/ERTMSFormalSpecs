@@ -22,7 +22,7 @@
  Height="50"
  Implemented="TRUE"
  Verified="TRUE"
- Name="MovementAuthority"
+ Name="MAStruct"
  Guid="8df498d0-3616-49da-b2a7-9db1bea7f1c8"
 >
 <ReqRef
@@ -728,7 +728,7 @@ Location stores the previous End of Movement Authority location.</Comment>
  Guid="4c10b760-6b33-42af-8b63-16dfab10d6b2"
 >
 <Expression>REDUCE EOAs
-    USING ClosestTarget(
+    USING X IN ClosestTarget(
     Target1=&gt;X,
     Target2=&gt;RESULT
 )
@@ -925,7 +925,7 @@ INITIAL_VALUE CreateTarget (
 <PreCondition
  Guid="925708df-b37c-401d-8a24-1a988c5dd27b"
 >Available ( MA.EndSection.Overlap )</PreCondition></PreConditions>
-<Expression>ClosestEOA().Location + MA.EndSection.Overlap.Distance</Expression>
+<Expression>EndOfMA() + MA.EndSection.Overlap.Distance</Expression>
 </Case><Case
  Name="Overlap not available"
  Guid="f11f62bb-41ff-4755-a94f-be95cf5beea9"
@@ -957,7 +957,7 @@ INITIAL_VALUE CreateTarget (
 >Available ( MA )</PreCondition><PreCondition
  Guid="86774d2d-b0d2-450c-b5b2-18a8e71de39b"
 >MA.Sections != EMPTY</PreCondition></PreConditions>
-<Expression>(FIRST_IN MA.Sections).Length</Expression>
+<Expression>(FIRST X IN MA.Sections).Length</Expression>
 </Case><Case
  Name="EndSection"
  Guid="ad46e6ec-360a-48b9-8b2e-93d340f6a5c5"
@@ -1194,62 +1194,6 @@ INITIAL_VALUE CreateTarget (
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
- Cacheable="TRUE"
- Default=""
- X="140"
- Y="250"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="SvLSpeedRestriction"
- Guid="87cdee38-75a8-40f8-af9d-e60740c6fcbf"
->
-<ReqRef
- Id="d542f99e-9462-4bb6-9087-35da9a233e06"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="46223161-76b0-4a8b-bfcd-3431a5b937c0"
->
-</ReqRef><Comment>Provides speed restriction for SvL. Used to compute the Most Restrictive Target amongst the EBD based targets.</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Distance"
- Name="Distance"
- Guid="54140066-a290-4e97-b9ff-ca2b864c48b1"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="No SvL defined"
- Guid="0d762f8e-a373-494c-86c4-fc44b6d2d41b"
->
-<PreConditions>
-<PreCondition
- Guid="2aafce19-2bba-4e39-856c-e1beec03691c"
->Available ( MA )</PreCondition><PreCondition
- Guid="e5da66d0-90fc-4f2f-93a7-3715d4435165"
->MA.TargetSpeed != 0.0</PreCondition></PreConditions>
-<Expression>BaseTypes.Speed.MaxSpeed</Expression>
-</Case><Case
- Name="Before SvL"
- Guid="12382671-7255-4b68-b475-d8473b04aff0"
->
-<PreConditions>
-<PreCondition
- Guid="a02d2cea-99f2-48c6-a9d0-89bc575c30fa"
->Available ( MA )</PreCondition><PreCondition
- Guid="37061bdc-22ce-419b-ba1d-a18d7cd2608e"
->MA.TargetSpeed == 0.0</PreCondition><PreCondition
- Guid="e0951b7b-4d5d-4096-a48e-a20bf8cb6ee6"
->Distance &lt; SvL().Location</PreCondition></PreConditions>
-<Expression>BaseTypes.Speed.MaxSpeed</Expression>
-</Case><Case
- Name="After SvL"
- Guid="d9444400-043b-4053-8cd0-0cfe09ab18cc"
->
-<Expression>0.0</Expression>
-</Case></Cases>
-</Function><Function
- Type="Default.BaseTypes.Speed"
  Default=""
  X="470"
  Y="130"
@@ -1450,7 +1394,7 @@ INITIAL_VALUE CreateTarget (
  Guid="f439959e-927a-4352-9bad-9ee8aa4cf1d9"
 >SvLs != []</PreCondition></PreConditions>
 <Expression>REDUCE SvLs
-    USING ClosestTarget(
+    USING X IN ClosestTarget(
     Target1=&gt;X,
     Target2=&gt;RESULT
 )
@@ -1561,7 +1505,7 @@ INITIAL_VALUE CreateTarget (
 <Expression>SUM
     MA.Sections |
         Before ( ExpectedFirst =&gt; X, ExpectedSecond =&gt; aSection, Collection =&gt; MA.Sections)
-USING
+USING X IN
     Default.BaseTypes.LengthToDistance ( X.Length )</Expression>
 </Case></Cases>
 </Function><Function
@@ -1609,7 +1553,7 @@ USING
     V_LOA =&gt; MALvl2or3.V_LOA,
     T_LOA =&gt; MALvl2or3.T_LOA,
     N_ITER =&gt; MALvl2or3.N_ITER,
-    Sequence1 =&gt; MAP MALvl2or3.Sequence1 USING ConvertSectionLvl2or3_to_SectionLvl1 ( X ),
+    Sequence1 =&gt; MAP MALvl2or3.Sequence1 USING X IN ConvertSectionLvl2or3_to_SectionLvl1 ( X ),
     L_ENDSECTION =&gt; MALvl2or3.L_ENDSECTION,
     Q_SECTIONTIMER =&gt; MALvl2or3.Q_SECTIONTIMER,
     T_SECTIONTIMER =&gt; MALvl2or3.T_SECTIONTIMER,
@@ -1665,7 +1609,7 @@ USING
 (
   Default.MessageTypes.QScaleLength
   (
-    length =&gt; (SUM Packet.Sequence1 USING X.L_SECTION) + Packet.L_ENDSECTION,
+    length =&gt; (SUM Packet.Sequence1 USING X IN X.L_SECTION) + Packet.L_ENDSECTION,
     scale =&gt; Packet.Q_SCALE
   )
 )</Expression>
@@ -1894,8 +1838,8 @@ X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)  is
   AND  
 MA.Sections != []
   AND  
-THERE_IS_IN MA.Sections | (Available(X.TimeOut) AND SectionStartLocation(X) + X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)  AND  X.TimeOut.TimeOut + SectionTimerStart &lt; DateAndTime.CurrentTime)</PreCondition></PreConditions>
-<Expression>FIRST_IN MA.Sections | 
+THERE_IS X IN MA.Sections | (Available(X.TimeOut) AND SectionStartLocation(X) + X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)  AND  X.TimeOut.TimeOut + SectionTimerStart &lt; DateAndTime.CurrentTime)</PreCondition></PreConditions>
+<Expression>FIRST X IN MA.Sections | 
 (   Available(X.TimeOut)
   AND
     SectionStartLocation(X) + X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)
@@ -1969,7 +1913,7 @@ Available(MA.EndSection.TimeOut)
             ExpectedSecond=&gt;aSection,
             Collection=&gt;MA.Sections
         )
-    USING X.Length
+    USING X IN X.Length
 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -2019,7 +1963,7 @@ Available(MA.EndSection.TimeOut)
 <PreCondition
  Guid="fee6d219-56c8-47c9-b840-bc9541b651d5"
 >Available(MA.Sections)</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.LengthToDistance ( (SUM MA.Sections USING X.Length) + MA.EndSection.Length )</Expression>
+<Expression>Default.BaseTypes.LengthToDistance ( (SUM MA.Sections USING X IN X.Length) + MA.EndSection.Length )</Expression>
 </Case><Case
  Name="No sections"
  Guid="da7feeb3-3bc8-4b45-a006-7ffe4b49c1af"
@@ -2050,7 +1994,7 @@ Available(MA.EndSection.TimeOut)
  Guid="d56e2714-804f-45b5-a3b2-be9833877d97"
 >MA.Sections != []</PreCondition></PreConditions>
 <Expression>BaseTypes.LengthToDistance(SUM MA.Sections
-  USING X.Length)</Expression>
+  USING X IN X.Length)</Expression>
 </Case><Case
  Name="Only an end section"
  Guid="9c09af30-c90b-4397-82e8-dcfddda6ba1e"
@@ -2083,7 +2027,7 @@ Available(MA.EndSection.TimeOut)
  Guid="8c82922c-9f10-4433-adf3-04bd582af2fc"
 >
 <Expression>MAP MA.Sections | IsAfterDistance(X, Distance)
-  USING MakeRelocatedSection(X, Distance)</Expression>
+  USING X IN MakeRelocatedSection(X, Distance)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2206,7 +2150,7 @@ This is used for when a new reference location is received and the MA is relocat
  Guid="f924c4c6-4cde-4b20-af66-c70d48f076d4"
 >Kernel.TrackDescription.StaticSpeedProfile.SSP == []
   OR
-Kernel.TrackDescription.StaticSpeedProfile.SSPEnd ( Current =&gt; LAST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP )
+Kernel.TrackDescription.StaticSpeedProfile.SSPEnd ( Current =&gt; LAST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP )
   &lt; 
 Default.BaseTypes.LengthToDistance( aDistanceInterval )</PreCondition></PreConditions>
 <Expression>False</Expression>
@@ -2219,7 +2163,7 @@ Default.BaseTypes.LengthToDistance( aDistanceInterval )</PreCondition></PreCondi
  Guid="7a11d20e-5b84-4027-b9dc-cdcb8e629093"
 >Kernel.TrackDescription.Gradient.Gradients == []
   OR
-Kernel.TrackDescription.Gradient.GradientEnd(Current =&gt; LAST_IN Kernel.TrackDescription.Gradient.Gradients)
+Kernel.TrackDescription.Gradient.GradientEnd(Current =&gt; LAST X IN Kernel.TrackDescription.Gradient.Gradients)
   &lt;
 Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreConditions>
 <Expression>False</Expression>
@@ -2287,7 +2231,9 @@ Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreCond
 <Actions>
 <Action
  Guid="c6a9825b-4180-4447-a067-78ee2400685c"
->UpdateMA ( Packet =&gt; ConvertMALvl2or3_to_MALvl1 ( Packet ), NID_BG =&gt; NID_BG )</Action></Actions>
+>UpdateMA ( Packet =&gt; ConvertMALvl2or3_to_MALvl1 ( Packet ), NID_BG =&gt; NID_BG )</Action><Action
+ Guid="3e4d5ecc-98c0-4000-9d12-5b63e89e74c7"
+>MAIsAccepted &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2586,7 +2532,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5b63b2df-359c-4b16-a541-ccc42b459fce"
->MA &lt;- MovementAuthority
+>MA &lt;- Kernel.MA.MAStruct
 {
     TargetSpeed =&gt; MessageTypes.SpeedResolution ( Packet.V_LOA, 5.0 ),
     TargetSpeedTimeOut =&gt; BaseTypes.Time ( Packet.T_LOA )
@@ -2680,7 +2626,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="12b90b2e-7d29-48ba-9284-89ff10da7e8f"
->MA.Sections &lt;- MAP Packet.Sequence1 USING CreateEFSSection ( ERTMSSection =&gt; X, Scale =&gt; Packet.Q_SCALE )</Action></Actions>
+>MA.Sections &lt;- MAP Packet.Sequence1 USING X IN CreateEFSSection ( ERTMSSection =&gt; X, Scale =&gt; Packet.Q_SCALE )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3219,7 +3165,7 @@ IN MA.Sections</Action></Actions>
 <Actions>
 <Action
  Guid="49f9d3f5-f1b1-4fee-978d-f4804215903f"
->MA.Sections &lt;- MAP MA.Sections USING ConsiderSectionForInfill ( aSection =&gt; X, InfillDistance =&gt; InfillDistance )</Action></Actions>
+>MA.Sections &lt;- MAP MA.Sections USING X IN ConsiderSectionForInfill ( aSection =&gt; X, InfillDistance =&gt; InfillDistance )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3360,7 +3306,7 @@ IN
 <Actions>
 <Action
  Guid="3611dfd8-ce76-44f9-b77d-2ed6793b73c7"
->(FIRST_IN MA.Sections).Length &lt;- DistanceToBG + MessageTypes.QScaleLength ( length =&gt; Packet.L_SECTION, scale =&gt; Packet.Q_SCALE )</Action></Actions>
+>(FIRST X IN MA.Sections).Length &lt;- DistanceToBG + MessageTypes.QScaleLength ( length =&gt; Packet.L_SECTION, scale =&gt; Packet.Q_SCALE )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3521,7 +3467,7 @@ IN EOAs</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="a7d3e9eb-090c-464f-ad59-e3fdb77f9e29"
->THERE_IS_IN EmergencyStops | ( (X.Reason == BrakeReason.OrderFromRBC) AND (X.IsConditional) )</PreCondition></PreConditions>
+>THERE_IS X IN EmergencyStops | ( (X.Reason == BrakeReason.OrderFromRBC) AND (X.IsConditional) )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7c64880f-bfc1-476f-a9b1-9983265c63c0"
@@ -3764,7 +3710,7 @@ IN EOAs</Action><Action
 <PreConditions>
 <PreCondition
  Guid="a779a5e2-a7b0-4b37-b922-68e77593783c"
->THERE_IS_IN MA.Sections | X != EMPTY</PreCondition><PreCondition
+>THERE_IS X IN MA.Sections | X != EMPTY</PreCondition><PreCondition
  Guid="2da1cafb-98d9-4a61-bd3d-495c6e434301"
 >Available ( MA )</PreCondition></PreConditions>
 <Actions>
@@ -3773,7 +3719,7 @@ IN EOAs</Action><Action
 >INSERT
 CreateTarget (
     aSpeed =&gt; MA.TargetSpeed,
-    aLocation =&gt; Default.BaseTypes.LengthToDistance ( (SUM MA.Sections USING X.Length) + MA.EndSection.Length),
+    aLocation =&gt; Default.BaseTypes.LengthToDistance ( (SUM MA.Sections USING X IN X.Length) + MA.EndSection.Length),
     aLength =&gt; Default.BaseTypes.Length.Infinity
 )
 IN EOAs</Action></Actions>
@@ -3795,7 +3741,7 @@ IN EOAs</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="dfcefb13-769a-429a-977d-4dcc97933ad3"
->FORALL_IN MA.Sections | X == EMPTY</PreCondition><PreCondition
+>FORALL X IN MA.Sections | X == EMPTY</PreCondition><PreCondition
  Guid="08a4286f-ccdb-4e73-80bf-91bdbdf925e0"
 >Available ( MA )</PreCondition></PreConditions>
 <Actions>
@@ -4381,7 +4327,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="Kernel.MA.MovementAuthority"
+ Type="Kernel.MA.MAStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="160"
@@ -4646,6 +4592,29 @@ NOT(Available(EndSectionTimerStart))
     TimeOut =&gt; DateAndTime.CurrentTime,
     Distance =&gt; MA.MA.EndSection.EndSectionTimeOut.Distance
 }</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="CleanUp"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CleanUp"
+ Guid="7de635e8-9b4c-414d-9952-c3c4e222f48b"
+>
+<Comment>Clears the temporary variable indicating if the MA was accepted.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="CleanUp"
+ Guid="c72e1234-805d-4b1e-b806-5849f3aac6fd"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="0209332a-b329-41fe-be81-67f6ff5c367a"
+>MAIsAccepted &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

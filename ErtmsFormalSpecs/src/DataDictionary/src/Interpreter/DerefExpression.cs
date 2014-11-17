@@ -62,10 +62,10 @@ namespace DataDictionary.Interpreter
 
                 if (retVal == null)
                 {
-                    Types.Range range = GetExpressionType() as Types.Range;
-                    if (range != null)
+                    Types.Type type = GetExpressionType();
+                    if (type != null)
                     {
-                        retVal = range.CastFunction;
+                        retVal = type.CastFunction;
                     }
                 }
 

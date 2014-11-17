@@ -4199,7 +4199,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="ca77e333-c67b-4c41-8a65-f7b1263f92a3"
->(FIRST_IN EURORADIO.PositionReport.PositionReportParameters.Values.Locations).TrainEnd == EURORADIO.TrainData.TrainEndEnum.MinSafeRearEnd</Expectation><Expectation
+>(FIRST X IN EURORADIO.PositionReport.PositionReportParameters.Values.Locations).TrainEnd == EURORADIO.TrainData.TrainEndEnum.MinSafeRearEnd</Expectation><Expectation
  Kind="Instantaneous"
  Guid="7f3b5bdd-b786-4c1f-a023-503e23d67ce6"
 >EURORADIO.PositionReport.PositionReportParameters.Values.DistanceInterval == 1000.0</Expectation><Expectation
@@ -4214,7 +4214,7 @@
 >EURORADIO.PositionReport.PositionReportParameters.DataState == DataState.Valid</Expectation><Expectation
  Kind="Instantaneous"
  Guid="43fc060a-b4aa-4312-9216-bca96827c2c0"
->(FIRST_IN EURORADIO.PositionReport.PositionReportParameters.Values.Locations).Distance == 1040.0</Expectation></Expectations>
+>(FIRST X IN EURORADIO.PositionReport.PositionReportParameters.Values.Locations).Distance == 1040.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

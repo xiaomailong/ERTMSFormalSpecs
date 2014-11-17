@@ -154,9 +154,9 @@
 <PreConditions>
 <PreCondition
  Guid="832233ef-515a-48e0-b7e8-861ac3cdeea6"
->THERE_IS_IN TCBigMetalMasses | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
+>THERE_IS X IN TCBigMetalMasses | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
 <Expression>REDUCE TCBigMetalMasses | (X.Distance == BMMProfileStartLocation(Distance=&gt;Distance) )
-    USING X.Value
+    USING X IN X.Value
   INITIAL_VALUE EMPTY</Expression>
 </Case><Case
  Name="Otherwise"
@@ -192,7 +192,7 @@
 >
 <Comment>Returns the element in TCBigMetalMasses with the largest distance that is less than or equal to the parameter</Comment>
 <Expression>REDUCE TCBigMetalMasses | (X.Distance &lt;= Distance)
-    USING Default.BaseTypes.MaxDistance(
+    USING X IN Default.BaseTypes.MaxDistance(
         X1=&gt;X.Distance,
         X2=&gt;RESULT)
   INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
@@ -233,7 +233,7 @@
 >
 <Comment>Returns the D_TRACKCOND in the Packet with the lowest value</Comment>
 <Expression>REDUCE Packet.Sequence1
-  USING Default.BaseTypes.MinDistance(
+  USING X IN Default.BaseTypes.MinDistance(
     X1=&gt; Default.MessageTypes.QScaleDistance(distance=&gt;X.D_TRACKCOND, scale=&gt;Packet.Q_SCALE),
     X2=&gt;RESULT
 )
@@ -494,6 +494,7 @@ IN
 <Variables>
 <Variable
  Type="BigMetalMasses"
+ DefaultValue=""
  VariableMode="Internal"
  X="100"
  Y="60"

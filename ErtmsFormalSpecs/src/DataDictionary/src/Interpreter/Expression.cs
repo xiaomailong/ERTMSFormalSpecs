@@ -567,10 +567,10 @@ namespace DataDictionary.Interpreter
 
             if (retVal == null)
             {
-                Types.Range range = Ref as Types.Range;
-                if (range != null)
+                Types.Type type = Ref as Types.Type;
+                if (type != null)
                 {
-                    retVal = range.CastFunction;
+                    retVal = type.CastFunction;
                 }
             }
 

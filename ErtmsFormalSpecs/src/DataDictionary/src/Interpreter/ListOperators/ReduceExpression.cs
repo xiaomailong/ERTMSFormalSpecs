@@ -44,10 +44,11 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="function"></param>
         /// <param name="initialValue"></param>
         /// <param name="root">the root element for which this expression should be parsed</param>
+        /// <param name="iteratorVariableName"></param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
-        public ReduceExpression(ModelElement root, ModelElement log, Expression listExpression, Expression condition, Expression function, Expression initialValue, int start, int end)
-            : base(root, log, listExpression, condition, function, start, end)
+        public ReduceExpression(ModelElement root, ModelElement log, Expression listExpression, string iteratorVariableName, Expression condition, Expression function, Expression initialValue, int start, int end)
+            : base(root, log, listExpression, iteratorVariableName, condition, function, start, end)
         {
             InitialValue = initialValue;
             InitialValue.Enclosing = this;
@@ -194,14 +195,14 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <returns></returns>
         public override string ToString()
         {
-            string retVal = OPERATOR + " " + ListExpression.ToString();
+            string retVal = OPERATOR + ListExpression.ToString();
 
             if (Condition != null)
             {
                 retVal += " | " + Condition.ToString();
             }
 
-            retVal = retVal + " USING " + IteratorExpression.ToString() + " INITIAL_VALUE " + InitialValue.ToString();
+            retVal = retVal + " USING " + " " + IteratorVariable.Name + " IN " + IteratorExpression.ToString() + " INITIAL_VALUE " + InitialValue.ToString();
 
             return retVal;
         }

@@ -60,7 +60,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="7b807639-dc27-4734-bfa2-1c8711696d34"
->(COUNT BTM.Linking.Linkings) == 0</Expectation></Expectations>
+>(COUNT X IN BTM.Linking.Linkings) == 0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -165,23 +165,23 @@ Q_LOCACC=&gt;1
 <Expectation
  Kind="Instantaneous"
  Guid="83480082-d6a5-44eb-91e5-a31fd9e6013f"
->(COUNT BTM.Linking.Linkings) == 2</Expectation><Expectation
+>(COUNT X IN BTM.Linking.Linkings) == 2</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ccd5446e-d7c7-4349-a34c-7c5ca7fc9a07"
->(FIRST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9620</Expectation><Expectation
+>(FIRST X IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9620</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="376625c1-2d7f-4289-ac89-fa310fbf3b45"
->(FIRST_IN BTM.Linking.Linkings).Distance == 3500.0</Expectation><Expectation
+>(FIRST X IN BTM.Linking.Linkings).Distance == 3500.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ff87e43b-29f9-4878-9f35-7cea303ce6e5"
->(LAST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9622</Expectation><Expectation
+>(LAST X IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9622</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="32e37fc4-5bfa-450e-a98a-ded68c5767a5"
->(LAST_IN BTM.Linking.Linkings).Distance == 4500.0</Expectation></Expectations>
+>(LAST X IN BTM.Linking.Linkings).Distance == 4500.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -263,15 +263,15 @@ N_ITER=&gt;0
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ec8cb097-1878-4825-8368-a7901f0109ba"
->(COUNT BTM.Linking.Linkings) == 1</Expectation><Expectation
+>(COUNT X IN BTM.Linking.Linkings) == 1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="49e3ade1-8f51-4845-bc9d-671629bdcc83"
->(FIRST_IN BTM.Linking.Linkings).Distance == 1500.0</Expectation><Expectation
+>(FIRST X IN BTM.Linking.Linkings).Distance == 1500.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="d5051944-2094-4bc6-89b1-5ea386bd3a62"
->(FIRST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9620</Expectation></Expectations>
+>(FIRST X IN BTM.Linking.Linkings).BaliseGroupIdentifier == 9620</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -365,7 +365,7 @@ N_ITER=&gt;0
 <Expectation
  Kind="Instantaneous"
  Guid="d0f345e8-ed3d-48d9-a73c-1bcf4466b345"
->(COUNT BTM.Linking.Linkings) == 0</Expectation></Expectations>
+>(COUNT X IN BTM.Linking.Linkings) == 0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -460,27 +460,27 @@ N_ITER=&gt;0
 <Expectation
  Kind="Instantaneous"
  Guid="d9d16e77-dedb-4781-8a4c-3034802e35b5"
->(COUNT BTM.Linking.Linkings) == 1</Expectation><Expectation
+>(COUNT X IN BTM.Linking.Linkings) == 1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="660889e5-0898-4010-ae5e-5222bf612bae"
->(FIRST_IN BTM.Linking.Linkings).BaliseGroupIdentifier == 10000</Expectation><Expectation
+>(FIRST X IN BTM.Linking.Linkings).BaliseGroupIdentifier == 10000</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="a78d19da-81f2-4f58-8976-0ca814646265"
->(FIRST_IN BTM.Linking.Linkings).Distance == 3500.0</Expectation><Expectation
+>(FIRST X IN BTM.Linking.Linkings).Distance == 3500.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e0da2041-3d45-4b05-bfe0-2fcc742e9004"
->(FIRST_IN BTM.Linking.Linkings).LocationAccuracy == 1.0</Expectation><Expectation
+>(FIRST X IN BTM.Linking.Linkings).LocationAccuracy == 1.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="50fc6586-6213-4ac8-9c17-858650f5ca98"
->(FIRST_IN BTM.Linking.Linkings).Orientation == Default.Orientation.Nominal</Expectation><Expectation
+>(FIRST X IN BTM.Linking.Linkings).Orientation == Default.Orientation.Nominal</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="43548f10-6ba7-4cb1-aecf-147ec80e8ce7"
->(FIRST_IN BTM.Linking.Linkings).Reaction == BTM.Linking.LinkingReaction.CommandServiceBrake</Expectation></Expectations>
+>(FIRST X IN BTM.Linking.Linkings).Reaction == BTM.Linking.LinkingReaction.CommandServiceBrake</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -634,7 +634,7 @@ N_ITER=&gt;0
 <Expectation
  Kind="Instantaneous"
  Guid="e3fc0bca-d291-4135-9962-6fcffa1af110"
->(COUNT BTM.Linking.Linkings) == 0</Expectation></Expectations>
+>(COUNT X IN BTM.Linking.Linkings) == 0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

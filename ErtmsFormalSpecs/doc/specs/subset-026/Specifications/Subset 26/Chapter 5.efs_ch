@@ -1936,12 +1936,12 @@ If the opening of the session has failed, the process shall go to A32<Requiremen
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="c1fbe808-07a9-45cc-aca9-3ad7ce44ca51"
 >If the stored position is valid, the process shall go to A33 
-If the stored position is invalid, the process shall go to A34<RequirementSets>
+If the stored position is invalid or unknown, the process shall go to A34<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="8b98ed74-4f30-4613-b187-909d794525a1"
@@ -7752,11 +7752,13 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
+ infoRequired="TRUE"
  Name=""
  Guid="d2dba6ab-f150-4940-8d2c-e5e0f78544e3"
->For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either:<Sub>
+><Comment>In our understanding, this paragraph states that in order to be able to enter the new area, the train needs an authorization to run in the new area, but this is true everywhere. Does this paragraph states something else? If not, what is the reason of adding this paragraph?</Comment>
+For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either:<Sub>
 <Paragraph
  id="5.10.3.1.2.1"
  type="REQUIREMENT"
@@ -7764,7 +7766,7 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  bl=""
  name=""
  reviewed="TRUE"
- status="NotImplementable"
+ status="NA"
  version="3.0.0"
  Name=""
  Guid="10de7e67-23c3-4a05-8dea-663895728a95"
@@ -7785,7 +7787,7 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  Name=""
  Guid="d8c87e49-f79a-4070-b451-f8fdcc8c1071"
@@ -7838,7 +7840,7 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NA"
  version="3.0.0"
  Name=""
  Guid="f56df936-9ada-4149-91ce-4742fb123bbb"
@@ -9703,7 +9705,7 @@ A level 1 MA and track description information shall be received before or at th
  version="3.0.0"
  Name=""
  Guid="264d34af-3de9-430f-a701-f2f994061ebe"
->ID #; Requirements; Level<RequirementSets>
+>ID #; Requirements<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="9b12b27f-9d18-4745-810b-040689f32aac"
@@ -9716,13 +9718,12 @@ A level 1 MA and track description information shall be received before or at th
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="7a800db1-0312-49df-8a67-3d61c0b8c37b"
 >The ERTMS/ETCS on-board equipment is in one of the following modes: FS, LS, OS, SR, SB, SH, SN or UN
-When an event occurs, which leads to train trip reaction (E015 - refer to chapter 4, transitions between modes), the process shall fo to A025).;
-0,NTC,1,2,3<RequirementSets>
+When an event occurs, which leads to train trip reaction (E015 - refer to chapter 4, transitions between modes), the process shall fo to A025).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="4c71a80c-5def-49b9-97ba-6175ad4bd73c"
@@ -9735,13 +9736,12 @@ When an event occurs, which leads to train trip reaction (E015 - refer to chapte
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="eb5aeb5a-ad87-4472-bf20-a249e1f525d2"
 >The mode shall change to TR.
-The process shall go to A030.;
-1,2,3<RequirementSets>
+The process shall go to D020.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="14a1130d-6411-407d-a063-b89228477e62"
@@ -9766,11 +9766,11 @@ The process shall go to A030.;
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="4ab254b6-4bbf-464c-9170-75905b61adcb"
->If the level is 0/1/NTC, the process shall go to A035.;<RequirementSets>
+>If the level is 1, the process shall go to A035.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2f8bb4ee-1b1a-446c-8211-b430a445692e"
@@ -9791,6 +9791,23 @@ The process shall go to A030.;
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="8e6e28c5-ccab-4ebc-b321-4334f4264d57"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="Entry 5.11.2.2.D020.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="32670e49-9b3d-41ae-b115-4c9a1f6dc1e6"
+>If the level is 0/NTC, the process shall go to S050<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="bacc2cbb-d520-415a-9cce-33c4a4724f00"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -9820,11 +9837,11 @@ The process shall go to A030.;
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="1e84c5a2-c916-45da-94c9-cdf6585f39c9"
->The ERTMS/ETCS on-board equipment shall report the mode change to the RBC; 2,3<RequirementSets>
+>The ERTMS/ETCS on-board equipment shall report the mode change to the RBC<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="c5336b63-9875-4d79-bd55-bc57c9772b36"
@@ -9838,11 +9855,11 @@ The process shall go to A030.;
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="570307dd-e817-45d9-b3d0-1400a19b04f2"
->The process shall go to A035.; 2,3<RequirementSets>
+>The process shall go to A035.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="89d8c1a6-1abe-4772-bb80-1713c9b166ae"
@@ -9862,15 +9879,14 @@ The process shall go to A030.;
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  specIssue="TRUE"
  Name=""
  Guid="9be8a6ae-9abe-4a16-8a19-f28a0581c994"
 ><Comment>How long MA and track description data shall not be accepted? Until the state S150?</Comment>
-All current MA and track description data, except track conditions, shall be deleted and new ones shall not be accepted
-The process shall go to S050.;
-1,2,3<RequirementSets>
+All current MA and track description data (if any), except track conditions, shall be deleted and new ones shall not be accepted
+The process shall go to S050.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="86707c2f-9705-4147-9669-b69996d1d076"
@@ -9900,8 +9916,7 @@ The process shall go to S050.;
  version="3.0.0"
  Name=""
  Guid="6a3629f2-e686-484b-a7b2-4f4ba24b5aa0"
->The ERTMS/ETCS on-board equipment awaits standstill. While braking a border to a level 0 or NTC area may be passed.;
-0,1,2,3,NTC<RequirementSets>
+>The ERTMS/ETCS on-board equipment awaits standstill. While braking a border to a level 0 or NTC area may be passed.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2fdc03c7-b2f2-4c68-bfe6-12c0ba17b2f4"
@@ -9951,12 +9966,11 @@ The process shall go to S050.;
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="8df0e2ea-eb7f-40b5-b72c-11d3fc2ee7b4"
->The ERTMS/ETCS on-board equipment shall display the &quot;Request for driver acknowledgement to Train Trip&quot; to the driver.;
-0,1,2,3, NTC<RequirementSets>
+>The ERTMS/ETCS on-board equipment shall display the &quot;Request for driver acknowledgement to Train Trip&quot; to the driver.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="71ee9c56-ace5-4c5c-a9c5-561a70114a3a"
@@ -9969,12 +9983,11 @@ The process shall go to S050.;
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="c08c4dd4-2d01-4cfc-ae12-f6e093ce97f9"
->When the driver acknowledges the Train Trip (E065), the process shall go to D080.;
-0,1,2,3, NTC<RequirementSets>
+>When the driver acknowledges the Train Trip (E065), the process shall go to D080.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="61e214e1-a249-4dee-962b-cf47a3123f84"
@@ -10006,12 +10019,11 @@ The process shall go to S050.;
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="7364d3c3-544e-4eea-adda-1d2b6461aaac"
->If the level is 1, 2 or 3 the process shall go to A105.;
-1,2,3<RequirementSets>
+>If the level is 1, 2 or 3 the process shall go to A105.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="3f9afdad-734a-4650-b921-8cde6892cc2e"
@@ -10024,12 +10036,11 @@ The process shall go to S050.;
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="20a77818-d458-4cc3-a579-79971189457e"
->If the level is 0 or NTC, the process shall go to D085;
-0,NTC<RequirementSets>
+>If the level is 0 or NTC, the process shall go to D085<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="988f24e0-ee3f-4a6c-91a9-fb3970c9a231"
@@ -10084,7 +10095,7 @@ The process shall go to D110.<RequirementSets>
  version="3.0.0"
  Name=""
  Guid="68b4d5bd-48d1-4e00-b91b-a41dc51986be"
->If no valid Train Data is stored on-board, the process shall go to A140;<RequirementSets>
+>If no valid Train Data is stored on-board, the process shall go to A140<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="0056f361-225a-49f0-affd-58993cd34f82"
@@ -10101,7 +10112,7 @@ The process shall go to D110.<RequirementSets>
  version="3.0.0"
  Name=""
  Guid="ad21fa53-6db5-4bf3-af13-6d90389c9bdb"
->If valid Train Data is stored on-board, the process shall go to D090;<RequirementSets>
+>If valid Train Data is stored on-board, the process shall go to D090<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1f843727-c3d4-48ee-b0b7-226ffc775f88"
@@ -10130,7 +10141,7 @@ The process shall go to D110.<RequirementSets>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="56a7e637-d16d-4fe3-8f31-06f36acf0fd6"
 >
-</ReqRef>The mode shall change to SH and the process shall END.;<RequirementSets>
+</ReqRef>The mode shall change to SH and the process shall END.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d3c86cad-ad96-487b-ae2d-247418cce76d"
@@ -10159,7 +10170,7 @@ The process shall go to D110.<RequirementSets>
  version="3.0.0"
  Name=""
  Guid="e7bdf687-c54b-4d32-a5c6-00cd7f6bd21e"
->If the level is 0, the process shall go to A145.;<RequirementSets>
+>If the level is 0, the process shall go to A145.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="e7042f7a-b089-4058-8115-ccbd2df4dedd"
@@ -10176,7 +10187,7 @@ The process shall go to D110.<RequirementSets>
  version="3.0.0"
  Name=""
  Guid="602dc383-9138-403a-ac74-13e9cb2047eb"
->If the level is NTC, the process shall go to A150.;<RequirementSets>
+>If the level is NTC, the process shall go to A150.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="3cd41512-24c5-4d27-aa4f-3121b48dff92"
@@ -10205,7 +10216,7 @@ The process shall go to D110.<RequirementSets>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c7a51796-6a1c-4294-a56c-795a6bb86c8d"
 >
-</ReqRef>The mode shall change to UN and the process shall END.;<RequirementSets>
+</ReqRef>The mode shall change to UN and the process shall END.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="bcdb9623-f28f-4a68-80d9-bbbba04ee5c3"
@@ -10218,7 +10229,7 @@ The process shall go to D110.<RequirementSets>
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="c66d9504-6139-4a0b-b411-04a20973be2e"
@@ -10227,8 +10238,7 @@ The process shall go to D110.<RequirementSets>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="983b9f62-8dd1-4d9a-bfee-34d5798b224c"
 >
-</ReqRef>The mode shall change to SN and the process shall END.;
-0,NTC<RequirementSets>
+</ReqRef>The mode shall change to SN and the process shall END.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="f6bf19c8-b501-4d26-9cc5-3bbb37f307b4"
@@ -10253,12 +10263,11 @@ The process shall go to D110.<RequirementSets>
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="781ffdfe-d64c-4a5b-8759-e92aa9394b13"
->If the level is 1, the process shall go to S140.;
-1<RequirementSets>
+>If the level is 1, the process shall go to S140.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="822eca29-cc8a-4c42-a90c-a93c3becdfdf"
@@ -10271,12 +10280,11 @@ The process shall go to D110.<RequirementSets>
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="7c644530-c702-4fd9-a9a1-a73f90a2bdf8"
->If the level is 2 or 3, the process shall go to A115.;
-2,3<RequirementSets>
+>If the level is 2 or 3, the process shall go to A115.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="0a46cda9-b04a-44f0-8ecb-8e99e5a5d563"
@@ -10309,11 +10317,11 @@ The process shall go to D110.<RequirementSets>
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="0dc5d937-27a9-4c96-a97d-dfdbe75c85d9"
->The mode change to PT shall be reported to the RBC which shall acknowledge the mode report (Recognition of exit from TR).; 2,3<RequirementSets>
+>The mode change to PT shall be reported to the RBC which shall acknowledge the mode report (Recognition of exit from TR).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="98873683-a569-4d24-af89-68a6a3fa9eac"
@@ -10331,11 +10339,11 @@ The process shall go to D110.<RequirementSets>
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="b1fe97fd-7b59-47e6-b2b5-b1ae367f3a0c"
->The process shall go to S120.; 2,3<RequirementSets>
+>The process shall go to S120.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="64d7db7b-a985-487a-a708-253033a1edbb"
@@ -10447,7 +10455,7 @@ When the acknowledgement is received from the RBC (E125), the process shall go t
  version="3.0.0"
  Name=""
  Guid="0bf0ab9d-7ce3-46d5-a104-d59dbbcf8e4a"
->If there is at least one pending emergency stop, the process shall go to S130.;<RequirementSets>
+>If there is at least one pending emergency stop, the process shall go to S130.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="04fcb51b-93d2-433d-8e5f-e20d1712fa95"
@@ -10464,7 +10472,7 @@ When the acknowledgement is received from the RBC (E125), the process shall go t
  version="3.0.0"
  Name=""
  Guid="3991569f-53ae-4c85-ae2e-22ccdea80ca5"
->If there are no pending emergency stops the process shall go to S140.;<RequirementSets>
+>If there are no pending emergency stops the process shall go to S140.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="62948aa2-e481-419c-9f9d-36aff125f27d"
@@ -10484,13 +10492,12 @@ When the acknowledgement is received from the RBC (E125), the process shall go t
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="d0b99ecd-1992-4aae-9fe2-9ea2b7873292"
 >The ERTMS/ETCS on-board equipment waits  for the RBC to revoke ALL pending emergency stops.
-When all emergency stops are revoked (E135) the process shall go to S140.;
-2,3<RequirementSets>
+When all emergency stops are revoked (E135) the process shall go to S140.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="6ebb8392-8f2e-4809-96a8-bf55b369beb3"
@@ -10519,12 +10526,11 @@ When all emergency stops are revoked (E135) the process shall go to S140.;
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="dfdc851b-0f50-470e-8cbc-c7d0ae012b9d"
->The ERTMS/ETCS on-board equipment shall offer the possibility to the driver to select &quot;start&quot; (only if train data has been previously entered), or to select SH;
-1,2,3<RequirementSets>
+>The ERTMS/ETCS on-board equipment shall offer the possibility to the driver to select &quot;start&quot; (only if train data has been previously entered), or to select SH<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="4579d7b7-eb62-4c2c-b3aa-e944d2079985"
@@ -10541,12 +10547,11 @@ When all emergency stops are revoked (E135) the process shall go to S140.;
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="8ed924c8-449b-49e3-b97b-9d9bac584781"
->a) if the driver selects &quot;start&quot; and the level is 1 (E150), the process shall go to S160;
-1<RequirementSets>
+>a) if the driver selects &quot;start&quot; and the level is 1 (E150), the process shall go to S160<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="f26398ea-dedc-4924-b4a5-46444bd5a311"
@@ -10563,12 +10568,11 @@ When all emergency stops are revoked (E135) the process shall go to S140.;
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="a4b631e4-9069-4f56-b3ab-340f8ec68908"
->b) and the driver selects &quot;start&quot; and the level is 2 or 3 (E155), the process shall go to S150;
-2,3<RequirementSets>
+>b) and the driver selects &quot;start&quot; and the level is 2 or 3 (E155), the process shall go to S150<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="4633ede1-34db-470f-8bdc-7b1fdf69329e"
@@ -10585,12 +10589,11 @@ When all emergency stops are revoked (E135) the process shall go to S140.;
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="e4f509dd-fcb0-4205-8e6b-921aae447bca"
->c) If the driver selects SH (E145), the process shall continue in the same ways as the procedure &quot;Shunting initiated by the driver&quot;. If the SH request is refused by the RBC (E165) the process shall return to S140.; 
-1,2,3<RequirementSets>
+>c) If the driver selects SH (E145), the process shall continue in the same ways as the procedure &quot;Shunting initiated by the driver&quot;. If the SH request is refused by the RBC (E165) the process shall return to S140.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="384c3523-6af3-4a62-9784-e2d4a65c8a9d"
@@ -10630,12 +10633,11 @@ When all emergency stops are revoked (E135) the process shall go to S140.;
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="b490aef9-44fa-4043-a130-aa1a33c15e0c"
->The ERTMS/ETCS on-board equipment shall send an MA request to the RBC and wait.;
-2,3<RequirementSets>
+>The ERTMS/ETCS on-board equipment shall send an MA request to the RBC and wait.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2263e8e9-4978-48ff-b813-2945e5c3623d"
@@ -10652,12 +10654,11 @@ When all emergency stops are revoked (E135) the process shall go to S140.;
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="a54617b4-525f-472d-9e22-cd671feaee3b"
->a) If an SR authorisation is received from RBC (E26), the process shall go to S160;
-2,3<RequirementSets>
+>a) If an SR authorisation is received from RBC (E26), the process shall go to S160<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="c5e74032-7682-42b4-938d-7e1b5246a6da"
@@ -10674,12 +10675,11 @@ When all emergency stops are revoked (E135) the process shall go to S140.;
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="c5dfe3ed-6a84-4f83-a94d-2d2859aa42fc"
->b) If an MA allowing OS/LS/SH is received from RBC (E175), the process shall go to S170;
-2,3<RequirementSets>
+>b) If an MA allowing OS/LS/SH is received from RBC (E175), the process shall go to S170<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="6dfaaa8b-a46f-4a81-94e4-d85cb816f87a"
@@ -10745,12 +10745,11 @@ When all emergency stops are revoked (E135) the process shall go to S140.;
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="da598b1f-9157-4e9a-8888-5cfc296ac2a3"
->The ERTMS/ETCS on-board equipment shall request an acknowledgement from the driver for running in SR mode.;
-1,2,3<RequirementSets>
+>The ERTMS/ETCS on-board equipment shall request an acknowledgement from the driver for running in SR mode.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="95d600f1-403a-44b9-ad19-a483ec058774"
@@ -10763,7 +10762,7 @@ When all emergency stops are revoked (E135) the process shall go to S140.;
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="5c82bf92-4b63-4853-aa34-f9d3e2648b54"
@@ -10772,8 +10771,7 @@ When all emergency stops are revoked (E135) the process shall go to S140.;
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="94b1a55f-f130-423b-8c30-ac1797d651c1"
 >
-</ReqRef>When the driver acknowledges (E180), the mode shall change to SR (refer to SRS chapter 4, transitions between modes: transition from PT to SR) and the process shall END.;
-1,2,3<RequirementSets>
+</ReqRef>When the driver acknowledges (E180), the mode shall change to SR (refer to SRS chapter 4, transitions between modes: transition from PT to SR) and the process shall END.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="39de033e-fcc2-439f-b6f3-5355edb73f36"
@@ -10805,12 +10803,11 @@ When all emergency stops are revoked (E135) the process shall go to S140.;
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="24c07d7e-5637-4dfa-8ad0-b07595006ea3"
->The ERTMS/ETCS on-board equipment shall request an acknowledgement from the driver for running in OS/LS/SH mode.;
-2,3<RequirementSets>
+>The ERTMS/ETCS on-board equipment shall request an acknowledgement from the driver for running in OS/LS/SH mode.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1db363a1-a650-47e0-9931-0f536166396f"
@@ -10823,7 +10820,7 @@ When all emergency stops are revoked (E135) the process shall go to S140.;
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="af1d067a-7dc9-45dc-9ce8-dcbd2fe36941"
@@ -10832,8 +10829,7 @@ When all emergency stops are revoked (E135) the process shall go to S140.;
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9cf6f49e-cac4-4f12-a127-5b2bf025e7f2"
 >
-</ReqRef>When the driver acknowledges (E185), the mode shall change to OS/LS/SH (refer to SRS chapter 4, transitions between modes: transition from PT to OS/LS/SH) and the process shall END.;
-2,3<RequirementSets>
+</ReqRef>When the driver acknowledges (E185), the mode shall change to OS/LS/SH (refer to SRS chapter 4, transitions between modes: transition from PT to OS/LS/SH) and the process shall END.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a8f349da-919a-4e39-ad68-15582cca6122"
@@ -14008,7 +14004,7 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
  version="3.0.0"
  Name=""
  Guid="b7d99bef-d372-4d0a-a74b-4a630f5762aa"
->As soon as the estimated or the max safe front end (depending whether the FLOI at LX speed is the SBI1 or the SBI2) reaches the location of the Permitted speed supervision limit calculated for the LX speed, the ERTMS/ETCS on-board equipment shall no longer supervise the LX start location as both the EOA and SvL (i.e. the ones given by the MA shall be again supervised) and shall immediately include the LX speed restriction in the MRSP, starting from the train front end (estimated or max safe), which has reached the concerned Permitted speed supervision limit location.<RequirementSets>
+>As soon as the estimated or the max safe front end (depending whether the most restrictive SBI supervision limit at LX speed is the SBI1 or the SBI2, see 3.13.9.3.5.11) reaches the location of the Permitted speed supervision limit calculated for the LX speed, the ERTMS/ETCS on-board equipment shall no longer supervise the LX start location as both the EOA and SvL (i.e. the ones given by the MA shall be again supervised) and shall immediately include the LX speed restriction in the MRSP, starting from the train front end (estimated or max safe), which has reached the concerned Permitted speed supervision limit location.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="6e781e55-695a-491e-bd80-ae1c687890ba"
@@ -15510,11 +15506,11 @@ The displayed End of Neutral section information shall also indicate if the rela
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="a155d204-c214-45ff-a2b4-045e5aa12ba8"
->As long as there are non stopping areas stored on-board, the ERTMS/ETCS on-board equipment shall continuously check the current speed and position of the train whether a full service brake command would stop the train within the closest non stopping area. This shall be achieved taking into account two virtual SBI supervision limits (SBID and SBIG), calculated at the estimated speed from two SBD curves of which the feet are the start location of the non stopping area (point D) and a location (point G) at train length distance in advance of the end location of the non stopping area:<Sub>
+>As long as there are non stopping areas stored on-board, the ERTMS/ETCS on-board equipment shall continuously check the current speed and position of the train whether a full service brake command would stop the train within any of the stored non stopping areas. This shall be achieved taking into account for each non stopping area two virtual SBI supervision limits (SBID and SBIG), calculated at the estimated speed from two SBD curves of which the feet are the start location of the non stopping area (point D) and a location (point G) at train length distance in advance of the end location of the non stopping area:<Sub>
 <Paragraph
  id="5.18.4.2.a"
  type="REQUIREMENT"
@@ -15543,11 +15539,11 @@ The displayed End of Neutral section information shall also indicate if the rela
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="22cbd162-caa0-4e5a-a581-176fc2b4b8bb"
->If the max safe front end is in advance of first SBI supervision limit and the min safe front end in rear of the second SBI supervision limit, the non stopping area related information shall be displayed to the driver.<RequirementSets>
+>If the max safe front end is in advance of the first SBI supervision limit (SBID) and the min safe front end in rear of the second SBI supervision limit (SBIG), the non stopping area related information shall be displayed to the driver according to the following clauses 5.18.4.3, 5.18.4.4.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="20cfbe14-205d-4c48-806e-edb9fbb865e8"
@@ -15564,11 +15560,11 @@ The displayed End of Neutral section information shall also indicate if the rela
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="555c0388-8b13-4052-acc3-48e9e785af1a"
->If the min safe front end is in advance of the second SBI supervision limit (SBIG), no information related to this non stopping area shall be displayed and the next non stopping area stored on-board, if any, shall be checked.<RequirementSets>
+>If the min safe front end is in advance of the second SBI supervision limit (SBIG), no information related to this non stopping area shall be displayed.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="e4ce8796-8f1d-46ee-90de-19b90c927611"
@@ -15596,11 +15592,11 @@ The displayed End of Neutral section information shall also indicate if the rela
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="728d48f2-61c9-4dad-9800-8a9daa1cfbf9"
->When the max safe front end reaches the first SBI supervision limit  (point C), the &quot;Non stopping area announcement&quot; shall be displayed to the driver.<RequirementSets>
+>When the max safe front end is in rear of the start location (point D) of the non stopping area, the &quot;Non stopping area announcement&quot; shall be displayed to the driver.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a7619303-fc0b-495c-957f-e2e8e4cd14f2"
@@ -15617,12 +15613,12 @@ The displayed End of Neutral section information shall also indicate if the rela
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NewRevisionAvailable"
  version="3.0.0"
  Name=""
  Guid="3622dce7-f18b-4dc7-8539-e2f01da0803b"
->When the max safe front end reaches the start location (point D) of the non stopping area:
-	- &quot;Non stopping area announcement&quot; shall no longer be displayed
+>When the max safe front end is in advance of the start location (point D) of the non stopping area:
+	- &quot;Non stopping area announcement&quot;, if any, shall no longer be displayed
 	- &quot;Non stopping area&quot; information shall be displayed to the driver.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -15635,16 +15631,16 @@ The displayed End of Neutral section information shall also indicate if the rela
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.18.4.5"
- type="REQUIREMENT"
+ type="DELETED"
  scope="FLAGS"
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="3f38b783-07e2-4c8a-bfd3-a5e8de65d29b"
->When the min safe front end reaches the second SBI supervision limit (point F), the non stopping area information shall no longer be displayed.<RequirementSets>
+>Intentionally deleted<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="54fccb09-9c6f-43fa-a41c-be3462197cfb"
@@ -15665,7 +15661,7 @@ The displayed End of Neutral section information shall also indicate if the rela
  version="3.0.0"
  Name=""
  Guid="5cdcd091-847c-41bb-8f3e-5e59e7f4bd2a"
->Note: the display of the &quot;non stopping area&quot; information will always end before the min safe rear end reaches the point E, because of the condition 5.18.4.2 c).<RequirementSets>
+>Note: the display of the &quot;Non stopping area&quot; information will always end before the min safe rear end reaches the point E, because of the condition 5.18.4.2 c).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1d0453ba-17be-4aa0-b430-318ef3c37596"

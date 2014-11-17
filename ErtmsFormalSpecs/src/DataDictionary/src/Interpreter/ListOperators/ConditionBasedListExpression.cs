@@ -31,10 +31,11 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="listExpression"></param>
         /// <param name="condition"></param>
         /// <param name="root">the root element for which this expression should be parsed</param>
+        /// <param name="iteratorVariableName"></param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
-        public ConditionBasedListExpression(ModelElement root, ModelElement log, Expression listExpression, Expression condition, int start, int end)
-            : base(root, log, listExpression, start, end)
+        public ConditionBasedListExpression(ModelElement root, ModelElement log, Expression listExpression, string iteratorVariableName, Expression condition, int start, int end)
+            : base(root, log, listExpression, iteratorVariableName, start, end)
         {
             Condition = condition;
             if (Condition != null)

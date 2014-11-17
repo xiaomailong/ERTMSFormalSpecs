@@ -15,6 +15,9 @@
 // ------------------------------------------------------------------------------
 
 
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+
 namespace DataDictionary.Tests
 {
     public class SubStep : Generated.SubStep, TextualExplain, ICommentable
@@ -206,6 +209,37 @@ namespace DataDictionary.Tests
         {
             get { return getComment(); }
             set { setComment(value); }
+        }
+
+
+        /// <summary>
+        /// Indicates whether this substep references the special variable %Message_i
+        /// </summary>
+        /// <returns></returns>
+        public bool ReferencesMessages()
+        {
+            bool retVal = false;
+
+            foreach (Action action in Actions)
+            {
+                if (action.ExpressionText.Contains("%Message"))
+                {
+                    retVal = true;
+                    break;
+                }
+            }
+
+            foreach (Expectation expectation in Expectations)
+            {
+                if (expectation.ExpressionText.Contains("%Message"))
+                {
+                    retVal = true;
+                    break;
+                }
+                
+            }
+
+            return retVal;
         }
 
     }

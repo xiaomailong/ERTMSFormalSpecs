@@ -15,13 +15,15 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
 using DataDictionary.Rules;
 using DataDictionary.Tests.Runner.Events;
 using DataDictionary.Values;
 using Utils;
-using DataDictionary.Types;
-using DataDictionary.Constants;
+using Rule = DataDictionary.Rules.Rule;
+using State = DataDictionary.Constants.State;
+using StateMachine = DataDictionary.Types.StateMachine;
 
 namespace DataDictionary.Tests.Runner
 {
@@ -431,7 +433,7 @@ namespace DataDictionary.Tests.Runner
                 {
                     Log.Info("New cycle");
                 }
-                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                ControllersManager.DesactivateAllNotifications();
 
                 LastActivationTime = Time;
 
@@ -451,7 +453,7 @@ namespace DataDictionary.Tests.Runner
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+                ControllersManager.ActivateAllNotifications();
             }
 
             EventTimeLine.CurrentTime += Step;
@@ -482,7 +484,7 @@ namespace DataDictionary.Tests.Runner
             }
 
             List<VariableUpdate> updates = new List<VariableUpdate>();
-            EvaluateActivations(activations, priority, updates);
+            EvaluateActivations(activations, priority, ref updates);
             ApplyUpdates(updates);
             CheckExpectationsState(priority);
 
@@ -498,7 +500,7 @@ namespace DataDictionary.Tests.Runner
         {
             try
             {
-                DataDictionary.Generated.ControllersManager.NamableController.DesactivateNotification();
+                ControllersManager.NamableController.DesactivateNotification();
                 LastActivationTime = Time;
 
                 Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<Utils.ElementLog>>();
@@ -515,7 +517,7 @@ namespace DataDictionary.Tests.Runner
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.NamableController.ActivateNotification();
+                ControllersManager.NamableController.ActivateNotification();
             }
 
             if (priority == Generated.acceptor.RulePriority.aCleanUp)
@@ -595,15 +597,14 @@ namespace DataDictionary.Tests.Runner
 
                         if (val != null)
                         {
-                            int i = 1;
+                            Variables.Variable tmp = new Variables.Variable();
+                            tmp.Name = "list_entry";
+                            tmp.Type = collectionType.Type;
+
                             foreach (IValue subVal in val.Val)
                             {
-                                Variables.Variable tmp = new Variables.Variable();
-                                tmp.Name = variable.Name + '[' + i + ']';
-                                tmp.Type = collectionType.Type;
                                 tmp.Value = subVal;
                                 EvaluateVariable(priority, activations, tmp, explanation, runner);
-                                i = i + 1;
                             }
                         }
                         else
@@ -658,7 +659,7 @@ namespace DataDictionary.Tests.Runner
         /// Applies the selected actions and update the system state
         /// </summary>
         /// <param name="updates"></param>
-        public void EvaluateActivations(HashSet<Activation> activations, Generated.acceptor.RulePriority priority, List<Events.VariableUpdate> updates)
+        public void EvaluateActivations(HashSet<Activation> activations, Generated.acceptor.RulePriority priority, ref List<Events.VariableUpdate> updates)
         {
             Dictionary<Variables.IVariable, Change> changes = new Dictionary<Variables.IVariable, Change>();
             Dictionary<Change, VariableUpdate> traceBack = new Dictionary<Change, VariableUpdate>();
@@ -784,7 +785,7 @@ namespace DataDictionary.Tests.Runner
                     HashSet<Activation> newActivations = new HashSet<Activation>();
                     List<VariableUpdate> newUpdates = new List<VariableUpdate>();
                     rule.Evaluate(this, priority, variable, newActivations, explanation);
-                    EvaluateActivations(newActivations, priority, newUpdates);
+                    EvaluateActivations(newActivations, priority, ref newUpdates);
                     updates.AddRange(newUpdates);
                 }
 
@@ -813,7 +814,7 @@ namespace DataDictionary.Tests.Runner
                     HashSet<Activation> newActivations = new HashSet<Activation>();
                     List<VariableUpdate> newUpdates = new List<VariableUpdate>();
                     rule.Evaluate(this, priority, variable, newActivations, explanation);
-                    EvaluateActivations(newActivations, priority, newUpdates);
+                    EvaluateActivations(newActivations, priority, ref newUpdates);
                     updates.AddRange(newUpdates);
                 }
 
@@ -847,7 +848,7 @@ namespace DataDictionary.Tests.Runner
                 LogInstance = subStep;
 
                 // No setup can occur when some expectations are still active
-                if (ActiveBlockingExpectations().Count == 0)
+                if (!EventTimeLine.ContainsSubStep(subStep))
                 {
                     EventTimeLine.AddModelEvent(new SubStepActivated(subStep, CurrentPriority), this, true);
                 }
@@ -1280,49 +1281,70 @@ namespace DataDictionary.Tests.Runner
         /// <param name="Item"></param>
         public void RunUntilStep(Step target)
         {
-            currentStepIndex = NO_MORE_STEP;
-            currentTestCaseIndex = NO_MORE_STEP;
+            try
+            {
+                ControllersManager.DesactivateAllNotifications();
 
-            if (target != null)
-            {
-                RunForBlockingExpectations(false);
-            }
-            else
-            {
-                RunForExpectations(false);
-            }
+                currentStepIndex = NO_MORE_STEP;
+                currentTestCaseIndex = NO_MORE_STEP;
 
-            // Run all following steps until the target step is encountered
-            foreach (TestCase testCase in SubSequence.TestCases)
-            {
-                foreach (Step step in testCase.Steps)
+                if (target != null)
                 {
-                    if (step == target)
-                    {
-                        currentStepIndex = REBUILD_CURRENT_SUB_STEP;
-                        currentTestCaseIndex = REBUILD_CURRENT_SUB_STEP;
-                        break;
-                    }
+                    RunForBlockingExpectations(false);
+                }
+                else
+                {
+                    RunForExpectations(false);
+                }
 
-                    if (!EventTimeLine.ContainsStep(step))
+                // Run all following steps until the target step is encountered
+                foreach (TestCase testCase in SubSequence.TestCases)
+                {
+                    foreach (Step step in testCase.Steps)
                     {
-                        foreach (SubStep subStep in step.SubSteps)
+                        if (step == target)
                         {
-                            SetupSubStep(subStep);
-                            if (!subStep.getSkipEngine())
+                            currentStepIndex = REBUILD_CURRENT_SUB_STEP;
+                            currentTestCaseIndex = REBUILD_CURRENT_SUB_STEP;
+                            break;
+                        }
+
+                        if (!EventTimeLine.ContainsStep(step))
+                        {
+                            foreach (SubStep subStep in step.SubSteps)
                             {
-                                if (target != null)
+                                SetupSubStep(subStep);
+                                if (!subStep.getSkipEngine())
                                 {
-                                    RunForBlockingExpectations(true);
+                                    if (target != null)
+                                    {
+                                        RunForBlockingExpectations(true);
+                                    }
+                                    else
+                                    {
+                                        RunForExpectations(true);
+                                    }
                                 }
                                 else
                                 {
-                                    RunForExpectations(true);
+                                    foreach (acceptor.RulePriority priority in PRIORITIES_ORDER)
+                                    {
+                                        CheckExpectationsState(priority);
+                                    }
                                 }
+                            }
+                            
+                            while (EventTimeLine.ActiveBlockingExpectations().Count > 0)
+                            {
+                                Cycle();
                             }
                         }
                     }
                 }
+            }
+            finally
+            {
+                ControllersManager.ActivateAllNotifications();
             }
         }
 

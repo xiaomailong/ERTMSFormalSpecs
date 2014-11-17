@@ -314,28 +314,28 @@
 >Kernel.TrackDescription.StaticSpeedProfile.SSP != []</Expectation><Expectation
  Kind="Instantaneous"
  Guid="0476b950-d4cd-4d2e-8921-c1089256ee65"
->(FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP).Distance == 2000.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP).Distance == 2000.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="0a716773-6fb1-416d-961f-ebfa112cab28"
->Kernel.TrackDescription.StaticSpeedProfile.SSPEnd((FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP)) == 3000.0</Expectation><Expectation
+>Kernel.TrackDescription.StaticSpeedProfile.SSPEnd((FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP)) == 3000.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="b3684e7e-d6a8-4759-bf80-9335ab4fd4aa"
->Kernel.TrackDescription.StaticSpeedProfile.CantDeficiencySpeedRestriction( FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP ) == 30.0</Expectation><Expectation
+>Kernel.TrackDescription.StaticSpeedProfile.CantDeficiencySpeedRestriction( FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP ) == 30.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="f5660ffb-dcb3-4f32-bb06-b638a15b4c32"
->Kernel.TrackDescription.StaticSpeedProfile.SelectCantDeficiencyCategory( FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP ) == Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm</Expectation><Expectation
+>Kernel.TrackDescription.StaticSpeedProfile.SelectCantDeficiencyCategory( FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP ) == Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm</Expectation><Expectation
  Kind="Instantaneous"
  Guid="8497c33b-ae61-4d6f-a688-3cca51c2d514"
->Kernel.TrackDescription.StaticSpeedProfile.SSPLength((FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP)) == 1120.0</Expectation><Expectation
+>Kernel.TrackDescription.StaticSpeedProfile.SSPLength((FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP)) == 1120.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="f3bd54be-d7f7-4e05-8c00-5a36497c20fe"
->Kernel.TrackDescription.StaticSpeedProfile.OtherSpecificSpeedRestriction( FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP ) == 35.0</Expectation><Expectation
+>Kernel.TrackDescription.StaticSpeedProfile.OtherSpecificSpeedRestriction( FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP ) == 35.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="52439c1c-8e6b-4b12-a443-5e1f677b19b8"
->Kernel.TrackDescription.StaticSpeedProfile.SSPSpeed(FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP) == 30.0</Expectation><Expectation
+>Kernel.TrackDescription.StaticSpeedProfile.SSPSpeed(FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP) == 30.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="87e4d921-9f64-4308-923e-3b1ababfad93"
->Kernel.TrackDescription.StaticSpeedProfile.ComputeStaticSpeedRestriction(FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP, 11000.0) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.StaticSpeedProfile.ComputeStaticSpeedRestriction(FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP, 11000.0) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="4cbf45eb-6fbf-495a-8bf2-84ceab4213c9"
 >Kernel.TrackDescription.StaticSpeedProfile.SpeedRestrictions ( 0.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
@@ -512,19 +512,19 @@
 <Expectation
  Kind="Instantaneous"
  Guid="b70081bb-45f8-416b-a691-9712899477bd"
->(FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP).Distance == 2000.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP).Distance == 2000.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="d9223b11-6c2c-44e9-892c-ea7d7a007737"
->Kernel.TrackDescription.StaticSpeedProfile.CantDeficiencySpeedRestriction(FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP) == 30.0</Expectation><Expectation
+>Kernel.TrackDescription.StaticSpeedProfile.CantDeficiencySpeedRestriction(FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP) == 30.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="4478164e-1d8e-4103-b353-e2eded7d22ac"
->Kernel.TrackDescription.StaticSpeedProfile.SelectCantDeficiencyCategory(FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP) == Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm</Expectation><Expectation
+>Kernel.TrackDescription.StaticSpeedProfile.SelectCantDeficiencyCategory(FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP) == Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm</Expectation><Expectation
  Kind="Instantaneous"
  Guid="6723ea13-8fd5-4192-a4ed-44cf02823c11"
->Kernel.TrackDescription.StaticSpeedProfile.OtherSpecificSpeedRestriction(FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP) == 35.0</Expectation><Expectation
+>Kernel.TrackDescription.StaticSpeedProfile.OtherSpecificSpeedRestriction(FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP) == 35.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="4785895c-246f-4528-b9ec-44f74cdd8bed"
->Kernel.TrackDescription.StaticSpeedProfile.ComputeStaticSpeedRestriction(FIRST_IN Kernel.TrackDescription.StaticSpeedProfile.SSP, 11000.0) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.StaticSpeedProfile.ComputeStaticSpeedRestriction(FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP, 11000.0) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="d428f139-261e-4016-80a7-677c8db4396a"
 >Kernel.TrackDescription.StaticSpeedProfile.SpeedRestrictions ( 0.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation

@@ -42,7 +42,6 @@ namespace GUI.DataDictionaryView
             {
                 Nodes.Add(new RuleTreeNode(rule, buildSubNodes));
             }
-            SortSubNodes();
             SubNodesBuilt = true;
         }
 
