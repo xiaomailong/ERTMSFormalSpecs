@@ -136,7 +136,7 @@ namespace GUI
                 width = (int)(width - graphics.MeasureString("...", font).Width);
                 int i = text.Length;
                 int step = i / 2;
-                while (graphics.MeasureString(text.Substring(0, i), font).Width > width)
+                while (step > 0  && graphics.MeasureString(text.Substring(0, i), font).Width > width)
                 {
                     i = i - step;
                     step = step / 2;

@@ -1021,7 +1021,11 @@ d_P(Vest, False) == BaseTypes.Distance.Infinity</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="4e23c2e8-5e27-4f47-b33a-cda6e1b051fc"
->d_SBI2_MREBDT(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>EBDTargetsList() != []
+
+  AND  
+
+d_SBI2_MREBDT(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Infinity</Expression>
 </Case><Case
  Name="GUI inhibited, target is EOA"

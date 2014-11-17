@@ -1397,7 +1397,7 @@ INITIAL_VALUE CreateTarget (
 <PreConditions>
 <PreCondition
  Guid="00ad348e-af27-4a5d-8965-b44d5241b2c0"
->SvLs == []</PreCondition></PreConditions>
+>SvLs != []</PreCondition></PreConditions>
 <Expression>REDUCE SvLs
     USING X IN ClosestTarget(
     Target1=&gt;X,

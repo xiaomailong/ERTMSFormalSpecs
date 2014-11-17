@@ -352,6 +352,20 @@ BaseTypes.MaxDistance(
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="No SvL"
+ Guid="a78a9aee-7bab-4ef0-a3de-650f3eccbf65"
+>
+<PreConditions>
+<PreCondition
+ Guid="0d31f943-d426-48ba-a730-f200331c4b50"
+>MA.SvL() == EMPTY</PreCondition></PreConditions>
+<Expression>BaseTypes.MinDistance(
+X1 =&gt; TargetSpeedMonitoring.d_SBI1(
+        Vest =&gt; Vrelease,
+        EstimatedAccelerationSetToZero =&gt; True ),
+X2 =&gt; ComputeStartRSM_otherTargets(Vrelease)
+)</Expression>
+</Case><Case
  Name="Value"
  Guid="0b1798da-f019-46e0-b3b0-7e38f14c1cbd"
 >
