@@ -868,13 +868,15 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="BTM.Linking.LinkingData"
  Default=""
+ X="640"
+ Y="180"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
  Name="SecondLinking"
  Guid="d6a1e09c-59e2-4f03-9d06-ab3b7b7a7d9e"
 >
-<Comment>Returns the second entry in the list of linkings (only called if the number of linkings is greatere than one</Comment>
+<Comment>Returns the second entry in the list of linkings (only called if the number of linkings is greatere than one).</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -891,6 +893,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="BTM.Linking.LinkingData"
  Default=""
+ X="860"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -918,6 +922,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="640"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -949,7 +955,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
- X="110"
+ X="750"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1610,6 +1617,8 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="750"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
