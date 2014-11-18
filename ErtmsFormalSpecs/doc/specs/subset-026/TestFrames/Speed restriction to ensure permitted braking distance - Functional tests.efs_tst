@@ -202,7 +202,7 @@ pbd sr</Comment>
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
-    M_VERSION =&gt; 0,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
     Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
     N_PIG =&gt; 0,
     N_TOTAL =&gt; 0,
@@ -211,39 +211,35 @@ pbd sr</Comment>
     NID_C =&gt; 0,
     NID_BG =&gt; 9616,
     Q_LINK =&gt; Messages.Q_LINK.Unlinked,
-    Sequence1 =&gt; [
-    Messages.EUROBALISE.SubStructure1
+    Sequence1 =&gt; [Messages.EUROBALISE.SubStructure1
+{
+    TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+    {
+        PERMITTED_BRAKING_DISTANCE_INFORMATION =&gt; Messages.PACKET.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.Message
         {
-            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-            PERMITTED_BRAKING_DISTANCE_INFORMATION =&gt;
-            Messages.PACKET.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.Message
-                {
-                Q_DIR =&gt; Messages.Q_DIR.Both_directions,
-                L_PACKET =&gt; 0,
-                Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
-                Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
-                D_PBD =&gt; 2000,
-                Q_GDIR =&gt; Messages.Q_GDIR.uphill,
-                G_PBDSR =&gt; 10,
-                Q_PBDSR =&gt; Messages.Q_PBDSR.SB_intervention_requested,
-                D_PBDSR =&gt; 1000,
-                L_PBDSR =&gt; 5000,
-                N_ITER =&gt; 1,
-                Sequence1 =&gt; [
-                  Messages.PACKET.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.SubStructure1 {
-                    D_PBD =&gt; 3000,
-                    Q_GDIR =&gt; Messages.Q_GDIR.downhill,
-                    G_PBDSR =&gt; 20,
-                    Q_PBDSR =&gt; Messages.Q_PBDSR.EB_intervention_requested,
-                    D_PBDSR =&gt; 2000,
-                    L_PBDSR =&gt; 6000
-                  }
-                ]
-                }
-            }
+            Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+            L_PACKET =&gt; 0,
+            Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+            Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
+            D_PBD =&gt; 2000,
+            Q_GDIR =&gt; Messages.Q_GDIR.uphill,
+            G_PBDSR =&gt; 10,
+            Q_PBDSR =&gt; Messages.Q_PBDSR.SB_intervention_requested,
+            D_PBDSR =&gt; 1000,
+            L_PBDSR =&gt; 5000,
+            N_ITER =&gt; 1,
+            Sequence1 =&gt; [Messages.PACKET.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.SubStructure1
+{
+    D_PBD =&gt; 3000,
+    Q_GDIR =&gt; Messages.Q_GDIR.downhill,
+    G_PBDSR =&gt; 20,
+    Q_PBDSR =&gt; Messages.Q_PBDSR.EB_intervention_requested,
+    D_PBDSR =&gt; 2000,
+    L_PBDSR =&gt; 6000
+}]
         }
-       ]
+    }
+}]
 }</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -425,7 +421,7 @@ pbd sr</Comment>
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
-    M_VERSION =&gt; 0,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
     Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
     N_PIG =&gt; 0,
     N_TOTAL =&gt; 0,
@@ -434,29 +430,26 @@ pbd sr</Comment>
     NID_C =&gt; 0,
     NID_BG =&gt; 9616,
     Q_LINK =&gt; Messages.Q_LINK.Unlinked,
-    Sequence1 =&gt; [
-    Messages.EUROBALISE.SubStructure1
+    Sequence1 =&gt; [Messages.EUROBALISE.SubStructure1
+{
+    TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+    {
+        PERMITTED_BRAKING_DISTANCE_INFORMATION =&gt; Messages.PACKET.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.Message
         {
-            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-            PERMITTED_BRAKING_DISTANCE_INFORMATION =&gt;
-            Messages.PACKET.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.Message
-                {
-                Q_DIR =&gt; Messages.Q_DIR.Both_directions,
-                L_PACKET =&gt; 0,
-                Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
-                Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
-                D_PBD =&gt; 2000,
-                Q_GDIR =&gt; Messages.Q_GDIR.uphill,
-                G_PBDSR =&gt; 10,
-                Q_PBDSR =&gt; Messages.Q_PBDSR.SB_intervention_requested,
-                D_PBDSR =&gt; 1000,
-                L_PBDSR =&gt; 5000,
-                N_ITER =&gt; 0
-                }
-            }
+            Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+            L_PACKET =&gt; 0,
+            Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+            Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
+            D_PBD =&gt; 2000,
+            Q_GDIR =&gt; Messages.Q_GDIR.uphill,
+            G_PBDSR =&gt; 10,
+            Q_PBDSR =&gt; Messages.Q_PBDSR.SB_intervention_requested,
+            D_PBDSR =&gt; 1000,
+            L_PBDSR =&gt; 5000,
+            N_ITER =&gt; 0
         }
-       ]
+    }
+}]
 }</Action><Action
  Guid="e86d4048-c5fe-4314-b348-bb85051e1cde"
 >BTM.LRBG&lt;- BTM.BaliseGroup
@@ -619,7 +612,7 @@ pbd sr</Comment>
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
-    M_VERSION =&gt; 0,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
     Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
     N_PIG =&gt; 0,
     N_TOTAL =&gt; 0,
@@ -628,29 +621,26 @@ pbd sr</Comment>
     NID_C =&gt; 0,
     NID_BG =&gt; 9616,
     Q_LINK =&gt; Messages.Q_LINK.Unlinked,
-    Sequence1 =&gt; [
-    Messages.EUROBALISE.SubStructure1
+    Sequence1 =&gt; [Messages.EUROBALISE.SubStructure1
+{
+    TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+    {
+        PERMITTED_BRAKING_DISTANCE_INFORMATION =&gt; Messages.PACKET.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.Message
         {
-            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-            PERMITTED_BRAKING_DISTANCE_INFORMATION =&gt;
-            Messages.PACKET.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.Message
-                {
-                Q_DIR =&gt; Messages.Q_DIR.Both_directions,
-                L_PACKET =&gt; 0,
-                Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
-                Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
-                D_PBD =&gt; 2000,
-                Q_GDIR =&gt; Messages.Q_GDIR.uphill,
-                G_PBDSR =&gt; 10,
-                Q_PBDSR =&gt; Messages.Q_PBDSR.SB_intervention_requested,
-                D_PBDSR =&gt; 19999,
-                L_PBDSR =&gt; 2000,
-                N_ITER =&gt; 0
-                }
-            }
+            Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+            L_PACKET =&gt; 0,
+            Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+            Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
+            D_PBD =&gt; 2000,
+            Q_GDIR =&gt; Messages.Q_GDIR.uphill,
+            G_PBDSR =&gt; 10,
+            Q_PBDSR =&gt; Messages.Q_PBDSR.SB_intervention_requested,
+            D_PBDSR =&gt; 19999,
+            L_PBDSR =&gt; 2000,
+            N_ITER =&gt; 0
         }
-       ]
+    }
+}]
 }</Action><Action
  Guid="1277cc4a-62f1-493f-82be-3269015c772b"
 >BTM.LRBG&lt;- BTM.BaliseGroup
@@ -834,7 +824,7 @@ pbd sr</Comment>
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Down_link_telegram,
-    M_VERSION =&gt; 0,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
     Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
     N_PIG =&gt; 0,
     N_TOTAL =&gt; 0,
@@ -843,29 +833,26 @@ pbd sr</Comment>
     NID_C =&gt; 0,
     NID_BG =&gt; 9616,
     Q_LINK =&gt; Messages.Q_LINK.Unlinked,
-    Sequence1 =&gt; [
-    Messages.EUROBALISE.SubStructure1
+    Sequence1 =&gt; [Messages.EUROBALISE.SubStructure1
+{
+    TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+    {
+        PERMITTED_BRAKING_DISTANCE_INFORMATION =&gt; Messages.PACKET.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.Message
         {
-            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-            PERMITTED_BRAKING_DISTANCE_INFORMATION =&gt;
-            Messages.PACKET.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.Message
-                {
-                Q_DIR =&gt; Messages.Q_DIR.Both_directions,
-                L_PACKET =&gt; 0,
-                Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
-                Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
-                D_PBD =&gt; 400,
-                Q_GDIR =&gt; Messages.Q_GDIR.uphill,
-                G_PBDSR =&gt; 10,
-                Q_PBDSR =&gt; Messages.Q_PBDSR.SB_intervention_requested,
-                D_PBDSR =&gt; 30001,
-                L_PBDSR =&gt; 2000,
-                N_ITER =&gt; 0
-                }
-            }
+            Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+            L_PACKET =&gt; 0,
+            Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+            Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
+            D_PBD =&gt; 400,
+            Q_GDIR =&gt; Messages.Q_GDIR.uphill,
+            G_PBDSR =&gt; 10,
+            Q_PBDSR =&gt; Messages.Q_PBDSR.SB_intervention_requested,
+            D_PBDSR =&gt; 30001,
+            L_PBDSR =&gt; 2000,
+            N_ITER =&gt; 0
         }
-       ]
+    }
+}]
 }</Action><Action
  Guid="f4cfc4df-73f3-49ad-88c3-7499ed3f21ac"
 >BTM.LRBG&lt;- BTM.BaliseGroup
