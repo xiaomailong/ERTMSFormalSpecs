@@ -11450,7 +11450,11 @@ EmergencyStops</Action></Actions>
 >
 </ReqRef></Variable><Variable
  Type="Kernel.OperatedSystemVersionStruct"
- DefaultValue=""
+ DefaultValue="Kernel.OperatedSystemVersionStruct
+{
+    DataState =&gt; DataState.Unknown, 
+    Value =&gt; Messages.M_VERSION.Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0
+}"
  VariableMode="InOut"
  X="420"
  Y="150"
