@@ -650,7 +650,21 @@ namespace DataDictionary.Interpreter
         {
         }
 
+        /// <summary>
+        /// Provides the expression text
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
+        {
+            return ToString(0);
+        }
+
+        /// <summary>
+        /// Provides the indented expression text
+        /// </summary>
+        /// <param name="indentLevel"></param>
+        /// <returns></returns>
+        public string ToString(int indentLevel)
         {
             return Image;
         }

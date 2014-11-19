@@ -101,19 +101,20 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Provides the expression text
+        /// Provides the indented expression text
         /// </summary>
+        /// <param name="indentLevel"></param>
         /// <returns></returns>
-        public override string ToString()
+        public override string ToString(int indentLevel)
         {
-            string retVal = OPERATOR + " " + ListExpression.ToString();
+            string retVal = OPERATOR + " " + ListExpression.ToString(indentLevel);
 
             if (Condition != null)
             {
-                retVal += " | " + Condition.ToString();
+                retVal += " | " + Condition.ToString(indentLevel);
             }
 
-            retVal = retVal + " USING " + IteratorVariable.Name + " IN " + IteratorExpression.ToString();
+            retVal = retVal + " USING " + IteratorVariable.Name + " IN " + IteratorExpression.ToString(indentLevel);
 
             return retVal;
         }

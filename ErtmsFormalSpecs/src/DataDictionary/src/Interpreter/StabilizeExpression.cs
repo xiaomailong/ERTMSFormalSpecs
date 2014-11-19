@@ -205,12 +205,13 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the string representation of the expression
+        /// Provides the indented expression text
         /// </summary>
+        /// <param name="indentLevel"></param>
         /// <returns></returns>
-        public override string ToString()
+        public override string ToString(int indentLevel)
         {
-            string retVal = "STABILIZE " + Expression.ToString() + " INITIAL_VALUE " + InitialValue.ToString() + " STOP_CONDITION " + Condition.ToString();
+            string retVal = "STABILIZE " + Expression.ToString(indentLevel) + " INITIAL_VALUE " + InitialValue.ToString(indentLevel) + " STOP_CONDITION " + Condition.ToString(indentLevel);
 
             return retVal;
         }

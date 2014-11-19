@@ -221,7 +221,12 @@ namespace DataDictionary.Interpreter
             }
         }
 
-        public override string ToString()
+        /// <summary>
+        /// Provides the indented expression text
+        /// </summary>
+        /// <param name="indentLevel"></param>
+        /// <returns></returns>
+        public override string ToString(int indentLevel)
         {
             string retVal = "FUNCTION ";
 
@@ -236,7 +241,7 @@ namespace DataDictionary.Interpreter
                 first = false;
             }
 
-            retVal += " => " + Expression.ToString();
+            retVal += " => " + Expression.ToString(indentLevel);
 
             return retVal;
         }
