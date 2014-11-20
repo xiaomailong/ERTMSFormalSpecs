@@ -52,6 +52,34 @@ namespace Reports.Specs
             retVal.Info.Subject = "Subset-076 findings report";
 
             FindingsReport report = new FindingsReport(retVal);
+            report.ReviewedParagraphs = false;
+            BuildSections(report);
+
+            report.ReviewedParagraphs = true;
+            BuildSections(report);
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Add an Issues, Comments and Questions section to the report, as requested
+        /// </summary>
+        /// <param name="report"></param>
+        void BuildSections(FindingsReport report)
+        {
+            string sectionHeader;
+
+            if (report.ReviewedParagraphs)
+            {
+                sectionHeader = "The findings that have already been addressed, included for informational purposes.";
+            }
+            else
+            {
+                sectionHeader = "The findings that require attention.";
+            }
+
+
+            report.AddSubParagraph(sectionHeader);
             if (addBugs)
             {
                 Log.Info("..generating issues");
@@ -63,14 +91,14 @@ namespace Reports.Specs
                 Log.Info("..generating remarks");
                 report.CreateCommentsArticle(this);
             }
-            
+
             if (addQuestions)
             {
                 Log.Info("..generating questions");
                 report.CreateQuestionsArticle(this);
             }
 
-            return retVal;
+            report.CloseSubParagraph();
         }
 
     }

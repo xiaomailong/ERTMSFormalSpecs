@@ -22,6 +22,8 @@ namespace Reports.Specs
     {
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        public bool ReviewedParagraphs { get; set; }
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -29,6 +31,7 @@ namespace Reports.Specs
         public FindingsReport(Document document)
             : base(document)
         {
+            ReviewedParagraphs = true;
         }
 
         // For each element in this report, have a Create method that does the paragraphing stuff and a 
@@ -96,7 +99,7 @@ namespace Reports.Specs
             AddParagraph("This section contains the " + getSection("Bugs", aReportConfig.Dictionary).SubParagraphs.Count +
                 " discovered issues for the Subset-076 test sequences");
             AddParagraph("These are the findings that are errors in the test sequences. They prevent execution of the test sequence.");
-            GenerateBugs(aReportConfig.Dictionary);
+            GenerateIssues(aReportConfig.Dictionary);
             CloseSubParagraph();
         }
 
@@ -111,15 +114,32 @@ namespace Reports.Specs
             DataDictionary.Specification.Paragraph questions = getSection("Questions", aDictionary);
             foreach (DataDictionary.Specification.Paragraph subparagraph in questions.SubParagraphs)
             {
-                AddSubParagraph("Question " + subparagraph.FullId);
-                AddParagraph(subparagraph.ExpressionText);
-                
+                addEntry(subparagraph, "Question");
+            }
+            CloseSubParagraph();
+        }
+
+
+        private void addEntry(DataDictionary.Specification.Paragraph paragraph, string entryType)
+        {
+            if (paragraph.getReviewed() == ReviewedParagraphs)
+            {
+                AddSubParagraph(entryType + " " + paragraph.FullId);
+                AddParagraph(paragraph.ExpressionText);
+
                 // provide the translations the paragraph references
-                AddSteps(subparagraph);
+                AddTestCases(paragraph);
 
                 CloseSubParagraph();
             }
-            CloseSubParagraph();
+
+            if (paragraph.SubParagraphs.Count > 0)
+            {
+                foreach (DataDictionary.Specification.Paragraph subParagraph in paragraph.SubParagraphs)
+                {
+                    addEntry(subParagraph, entryType);
+                }
+            }
         }
 
         private void AddImplementations(DataDictionary.Specification.Paragraph subparagraph)
@@ -151,7 +171,7 @@ namespace Reports.Specs
         /// Builds the table of implementations of a paragraph
         /// </summary>
         /// <param name="subparagraph"></param>
-        private void AddSteps(DataDictionary.Specification.Paragraph subparagraph)
+        private void AddTestCases(DataDictionary.Specification.Paragraph subparagraph)
         {
             AddTable(new string[] { "Test case" , "Sequence" }, new int[] { 40, 90 });
 
@@ -182,16 +202,48 @@ namespace Reports.Specs
                         // Only add the subsequence if it is not already in the string
                         if (retVal[step.TestCase.Name].IndexOf(step.SubSequence.Name) == -1)
                         {
-                            retVal[step.TestCase.Name] = retVal[step.TestCase.Name] + "\n" + step.SubSequence.Name;
+                            retVal[step.TestCase.Name] = retVal[step.TestCase.Name] + "\n" + step.SubSequence.Name + " (" + stepNumber(step) + ")";
+                        }
+                        else if (retVal[step.TestCase.Name].IndexOf(stepNumber(step)) == -1)
+                        {
+                            retVal[step.TestCase.Name] = retVal[step.TestCase.Name].Insert(stepIndex(retVal[step.TestCase.Name], step.SubSequence.Name), ", " + stepNumber(step) );
                         }
                     }
                     else
                     {
-                        retVal[step.TestCase.Name] = step.SubSequence.Name;
+                        retVal[step.TestCase.Name] = step.SubSequence.Name + " (" + stepNumber(step) + ")";
                     }
                 }
             }
 
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides the step number, if the name of the step begins with "Step #:"
+        /// </summary>
+        /// <param name="step"></param>
+        /// <returns></returns>
+        private string stepNumber(DataDictionary.Tests.Step step)
+        {
+            string retVal = "";
+
+            if (step.Name.IndexOf(":") != -1)
+            {
+                retVal = step.Name.Substring(0, step.Name.IndexOf(":"));
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides the index of the point wher ea new step name needs to be inserted in a list of steps
+        /// </summary>
+        /// <param name="stepsList"></param>
+        /// <returns></returns>
+        private int stepIndex(string stepsList, string sequenceName)
+        {
+            int retVal = stepsList.IndexOf(")", stepsList.IndexOf(sequenceName) + sequenceName.Length);
             return retVal;
         }
 
@@ -205,13 +257,7 @@ namespace Reports.Specs
             DataDictionary.Specification.Paragraph questions = getSection("Comments", aDictionary);
             foreach (DataDictionary.Specification.Paragraph subparagraph in questions.SubParagraphs)
             {
-                AddSubParagraph("Comment " + subparagraph.FullId);
-                AddParagraph(subparagraph.ExpressionText);
-
-                // provide the translations the paragraph references
-                AddSteps(subparagraph);
-
-                CloseSubParagraph();
+                addEntry(subparagraph, "Comment");
             }
             CloseSubParagraph();
         }
@@ -220,19 +266,13 @@ namespace Reports.Specs
         /// Creates a table for the bugs
         /// </summary>
         /// <param name="aDictionary"></param>
-        public void GenerateBugs(DataDictionary.Dictionary aDictionary)
+        public void GenerateIssues(DataDictionary.Dictionary aDictionary)
         {
             AddSubParagraph("");
             DataDictionary.Specification.Paragraph questions = getSection("Bugs", aDictionary);
             foreach (DataDictionary.Specification.Paragraph subparagraph in questions.SubParagraphs)
             {
-                AddSubParagraph("Issue " + subparagraph.FullId);
-                AddParagraph(subparagraph.ExpressionText);
-
-                // provide the translations the paragraph references
-                AddSteps(subparagraph);
-
-                CloseSubParagraph();
+                addEntry(subparagraph, "Issue");
             }
             CloseSubParagraph();
         }
