@@ -109,7 +109,6 @@ namespace GUI.ExcelImport
             excelImporter.FillEBI = CB_EBI.Checked;
             excelImporter.FillSBI1 = CB_SBI1.Checked;
             excelImporter.FillSBI2 = CB_SBI2.Checked;
-            excelImporter.FillFLOI = CB_FLOI.Checked;
             excelImporter.FillWarning = CB_Warning.Checked;
             excelImporter.FillPermitted = CB_Permitted.Checked;
             excelImporter.FillIndication = CB_Indication.Checked;
