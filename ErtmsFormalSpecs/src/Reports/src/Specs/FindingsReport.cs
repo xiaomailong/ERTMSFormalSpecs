@@ -199,15 +199,19 @@ namespace Reports.Specs
                 {
                     if (retVal.ContainsKey(step.TestCase.Name))
                     {
+                        string steps = retVal[step.TestCase.Name];
+
                         // Only add the subsequence if it is not already in the string
-                        if (retVal[step.TestCase.Name].IndexOf(step.SubSequence.Name) == -1)
+                        if (steps.IndexOf(step.SubSequence.Name) == -1)
                         {
-                            retVal[step.TestCase.Name] = retVal[step.TestCase.Name] + "\n" + step.SubSequence.Name + " (" + stepNumber(step) + ")";
+                            steps = steps + "\n" + step.SubSequence.Name + " (" + stepNumber(step) + ")";
                         }
                         else if (retVal[step.TestCase.Name].IndexOf(stepNumber(step)) == -1)
                         {
-                            retVal[step.TestCase.Name] = retVal[step.TestCase.Name].Insert(stepIndex(retVal[step.TestCase.Name], step.SubSequence.Name), ", " + stepNumber(step) );
+                            steps = steps.Insert(stepIndex(steps, step.SubSequence.Name), ", " + stepNumber(step));
                         }
+
+                        retVal[step.TestCase.Name] = steps;
                     }
                     else
                     {
