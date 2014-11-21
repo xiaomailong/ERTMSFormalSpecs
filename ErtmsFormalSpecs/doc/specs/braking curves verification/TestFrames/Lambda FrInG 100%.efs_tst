@@ -5,6 +5,15 @@
 >
 <SubSequences>
 <SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
  Name="Lambda FrInG100%"
  Guid="cb2fb9d5-c9cf-4c29-bcd2-4ddfecba89d2"
 >
@@ -18,6 +27,11 @@
 >
 <Steps>
 <Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step1 - Setup"
  Guid="a10048d9-0c9f-458e-8d02-0ed5cf4b9500"
@@ -53,6 +67,11 @@
 >
 <Steps>
 <Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step1 - Initialize input"
  Guid="1aa4337d-a782-4fd0-a4b5-bdf96b534052"
@@ -105,7 +124,7 @@
 <Actions>
 <Action
  Guid="9dae8605-44ad-4046-b72a-27349201948a"
->Kernel.TrackDescription.TrackConditions.General.TCProfile &lt;- EMPTY</Action><Action
+>Kernel.TrackDescription.TrackConditions.General.TCProfile &lt;- []</Action><Action
  Guid="7c9c401a-32ba-427d-b32c-4fd511f5d4a5"
 >Kernel.MA.MA &lt;- Kernel.MA.MAStruct
 {
@@ -262,6 +281,11 @@ IN
 >
 <Steps>
 <Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step1 - Verify input"
  Guid="7e525fcf-fa32-4567-bc87-14fe0e4e1e27"
@@ -279,6 +303,7 @@ IN
 >Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedMonitoring.UpdateReleaseSpeed()</Action></Actions>
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  Guid="34804dc7-e6f7-461d-8484-a5bf24e76b6f"
 >Kernel.TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed() == True</Expectation></Expectations>
 </SubStep><SubStep
@@ -291,14 +316,19 @@ IN
 >Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.InitializeTimeIntervals()</Action></Actions>
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  Guid="f53b1891-2b6c-4290-aa51-6d2244fbdd49"
 >Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.16</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="58f9f5a5-b706-41f6-b3f1-07f1335e0d14"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == 14.45</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="4802aa5d-3993-4f4d-aa54-a4c72b4a6c41"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == 22.39</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="eb2f4b98-9310-4303-ac51-067376d2bf92"
 >Kernel.TrainData.BrakingParameters.T_be() == 14.45</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="d783ca33-c63d-4c87-91f8-a0268570cbd9"
 >Kernel.TrainData.BrakingParameters.T_bs() == 22.39</Expectation></Expectations>
 </SubStep><SubStep
@@ -307,48 +337,56 @@ IN
 >
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  Guid="bcf03907-a8a8-486a-9c83-cdb3d26bc4bd"
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency(V =&gt; 0.0),
     Val2 =&gt; 0.826
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="c85d2d56-0032-4022-a471-2fae8ae6d01b"
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency(V =&gt; 120.948338078),
     Val2 =&gt; 0.826
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="7d915c42-cb3c-40d5-9dc5-9a906bfcf974"
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency(V =&gt; 120.94833808),
     Val2 =&gt; 0.6171
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="73fbb981-00d3-4f31-a2e1-af6789b7a0cb"
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency(V =&gt; 149.999999999),
     Val2 =&gt; 0.6171
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="577862e1-de12-4a81-8e4b-d3ea81d2c7ea"
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency(V =&gt; 150.0),
     Val2 =&gt; 0.5915
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="49be2bb1-9f37-4883-9d7e-9035047c8e8f"
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency(V =&gt; 179.999999999),
     Val2 =&gt; 0.5915
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="ba93b24b-c5a3-4f30-af80-3986d05478e8"
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency(V =&gt; 180.0),
     Val2 =&gt; 0.58173
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="bdaed89c-2bbd-4e5d-8254-39d806774511"
 >ERA_BrakingCurvesVerification.Compare
 (
@@ -361,48 +399,56 @@ IN
 >
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  Guid="152824ad-fac0-4674-897e-1f977b7ed5ed"
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service(V =&gt; 0.0),
     Val2 =&gt; 0.826
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="cfa7af0b-baf9-4cbb-b48d-7576924d9eee"
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service(V =&gt; 120.948338078),
     Val2 =&gt; 0.826
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="319e58f9-a53c-4465-8a7a-24185eeb9f5e"
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service(V =&gt; 120.94833808),
     Val2 =&gt; 0.6171
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="d56161c8-c568-4d48-b028-e99cf73131de"
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service(V =&gt; 149.999999999),
     Val2 =&gt; 0.6171
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="bee2e0de-81b2-48df-bcf1-735fc6a32db6"
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service(V =&gt; 150.0),
     Val2 =&gt; 0.5915
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="55ec3b5b-5497-4abb-a580-80259848c0ab"
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service(V =&gt; 179.999999999),
     Val2 =&gt; 0.5915
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="f95b0121-5cf5-4800-aa70-f9ed404b923e"
 >ERA_BrakingCurvesVerification.Compare
 (
     Val1 =&gt; Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service(V =&gt; 180.0),
     Val2 =&gt; 0.58173
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="33101a40-c185-4c2b-ba36-d76c1f7bbc8c"
 >ERA_BrakingCurvesVerification.Compare
 (
@@ -420,6 +466,11 @@ IN
 >
 <Steps>
 <Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step1 - EBD"
  Guid="2bf73ab0-964b-4263-add4-e66470dacd12"
@@ -431,6 +482,7 @@ IN
 >
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="a6179800-b26a-443a-9bba-0f8cfb23dc57"
 >ERA_BrakingCurvesVerification.Compare
@@ -443,6 +495,7 @@ IN
         aSpeed =&gt; 0.0 ),
     Val2 =&gt; -2.71
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="2da296d0-9fd9-4ca8-92d4-16ff0ba436b2"
 >ERA_BrakingCurvesVerification.Compare
@@ -455,6 +508,7 @@ IN
         aSpeed =&gt; 5.0 ),
     Val2 =&gt; -1.5
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="2cf94b1c-0f15-4f03-97ae-145229820587"
 >ERA_BrakingCurvesVerification.Compare
@@ -467,6 +521,7 @@ IN
         aSpeed =&gt; 10.0 ),
     Val2 =&gt; 2.11
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="9c25303d-32d5-49e7-bfaf-8766d5f9fdea"
 >ERA_BrakingCurvesVerification.Compare
@@ -479,6 +534,7 @@ IN
         aSpeed =&gt; 15.0 ),
     Val2 =&gt; 8.13
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="3d8a966c-00d3-45f5-a808-44b86f899361"
 >ERA_BrakingCurvesVerification.Compare
@@ -491,6 +547,7 @@ IN
         aSpeed =&gt; 20.0 ),
     Val2 =&gt; 16.55
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="f37a47e4-d0bb-4c01-be05-c73511e5e931"
 >ERA_BrakingCurvesVerification.Compare
@@ -503,6 +560,7 @@ IN
         aSpeed =&gt; 25.0 ),
     Val2 =&gt; 27.39
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="eaaad307-ecad-457f-b6a8-0bee044e2d12"
 >ERA_BrakingCurvesVerification.Compare
@@ -515,6 +573,7 @@ IN
         aSpeed =&gt; 30.0 ),
     Val2 =&gt; 40.63
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="44d4fdb9-d39a-41a5-8453-24a26ae702ab"
 >ERA_BrakingCurvesVerification.Compare
@@ -527,6 +586,7 @@ IN
         aSpeed =&gt; 35.0 ),
     Val2 =&gt; 56.28
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="ff5ccc1e-c460-468d-a23d-60f61b541990"
 >ERA_BrakingCurvesVerification.Compare
@@ -539,6 +599,7 @@ IN
         aSpeed =&gt; 40.0 ),
     Val2 =&gt; 74.33
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="c2448be3-2f65-457c-ab20-ad2569c216c9"
 >ERA_BrakingCurvesVerification.Compare
@@ -551,6 +612,7 @@ IN
         aSpeed =&gt; 45.0 ),
     Val2 =&gt; 94.8
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="125ed276-0f8c-4f7e-a6ec-c3121460eff2"
 >ERA_BrakingCurvesVerification.Compare
@@ -563,6 +625,7 @@ IN
         aSpeed =&gt; 50.0 ),
     Val2 =&gt; 117.67
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="5317c3c7-1549-4c52-ba6d-d32335f76728"
 >ERA_BrakingCurvesVerification.Compare
@@ -575,6 +638,7 @@ IN
         aSpeed =&gt; 55.0 ),
     Val2 =&gt; 142.95
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="384d6e03-dcc1-4d0a-8904-e4762ad9c201"
 >ERA_BrakingCurvesVerification.Compare
@@ -587,6 +651,7 @@ IN
         aSpeed =&gt; 60.0 ),
     Val2 =&gt; 170.64
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="4929c92a-057f-4c34-975e-144b5855bdc3"
 >ERA_BrakingCurvesVerification.Compare
@@ -599,6 +664,7 @@ IN
         aSpeed =&gt; 65.0 ),
     Val2 =&gt; 200.73
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="3c5d07b0-9a15-4597-97d3-0bbd203b5ed0"
 >ERA_BrakingCurvesVerification.Compare
@@ -611,6 +677,7 @@ IN
         aSpeed =&gt; 70.0 ),
     Val2 =&gt; 233.24
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="5a3b8c92-5d26-4bb1-b192-5283de9e8d60"
 >ERA_BrakingCurvesVerification.Compare
@@ -623,6 +690,7 @@ IN
         aSpeed =&gt; 75.0 ),
     Val2 =&gt; 268.15
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="f704898e-df77-4b22-8c3f-95a3cdef9d29"
 >ERA_BrakingCurvesVerification.Compare
@@ -635,6 +703,7 @@ IN
         aSpeed =&gt; 80.0 ),
     Val2 =&gt; 305.46
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="ef938118-b5ef-4433-819a-3cf206f4473f"
 >ERA_BrakingCurvesVerification.Compare
@@ -647,6 +716,7 @@ IN
         aSpeed =&gt; 85.0 ),
     Val2 =&gt; 345.19
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="55729d0a-9a82-4668-a0f7-937e569a0cc6"
 >ERA_BrakingCurvesVerification.Compare
@@ -659,6 +729,7 @@ IN
         aSpeed =&gt; 90.0 ),
     Val2 =&gt; 387.32
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="aa4857aa-ad45-4710-92cb-1ac1c2a0d596"
 >ERA_BrakingCurvesVerification.Compare
@@ -671,6 +742,7 @@ IN
         aSpeed =&gt; 95.0 ),
     Val2 =&gt; 431.86
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="ddc9b2fa-12a3-4942-8446-8f3bf12fcbb2"
 >ERA_BrakingCurvesVerification.Compare
@@ -683,6 +755,7 @@ IN
         aSpeed =&gt; 100.0 ),
     Val2 =&gt; 478.81
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="98f6ba28-4e16-4ac5-aa72-e4271128bad4"
 >ERA_BrakingCurvesVerification.Compare
@@ -695,6 +768,7 @@ IN
         aSpeed =&gt; 105.0 ),
     Val2 =&gt; 528.17
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="b08b86e7-4d78-48ce-b22f-d24609aa0f13"
 >ERA_BrakingCurvesVerification.Compare
@@ -707,6 +781,7 @@ IN
         aSpeed =&gt; 110.0 ),
     Val2 =&gt; 579.93
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="586f6932-035a-4325-8445-dc2d2d1239f4"
 >ERA_BrakingCurvesVerification.Compare
@@ -719,6 +794,7 @@ IN
         aSpeed =&gt; 115.0 ),
     Val2 =&gt; 634.1
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="4754ef21-42c9-441b-8a34-5e2363e6d9fb"
 >ERA_BrakingCurvesVerification.Compare
@@ -731,6 +807,7 @@ IN
         aSpeed =&gt; 120.0 ),
     Val2 =&gt; 690.68
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="19160e56-ad9e-49ac-abc6-bb16cdafd5f6"
 >ERA_BrakingCurvesVerification.Compare
@@ -743,6 +820,7 @@ IN
         aSpeed =&gt; 125.0 ),
     Val2 =&gt; 765.7
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="d0e7d163-283f-4342-9aef-6cb5de09a500"
 >ERA_BrakingCurvesVerification.Compare
@@ -755,6 +833,7 @@ IN
         aSpeed =&gt; 130.0 ),
     Val2 =&gt; 847.88
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="c20d3f14-b15f-4c90-b75a-9b3a8907c48e"
 >ERA_BrakingCurvesVerification.Compare
@@ -767,6 +846,7 @@ IN
         aSpeed =&gt; 135.0 ),
     Val2 =&gt; 933.28
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="03d1eaa1-b117-4cde-b67e-0a735013462e"
 >ERA_BrakingCurvesVerification.Compare
@@ -779,6 +859,7 @@ IN
         aSpeed =&gt; 140.0 ),
     Val2 =&gt; 1021.9
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="7fc04c46-c544-472b-8380-0c6c9c8eeb16"
 >ERA_BrakingCurvesVerification.Compare
@@ -791,6 +872,7 @@ IN
         aSpeed =&gt; 145.0 ),
     Val2 =&gt; 1113.75
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="de003f43-599f-41af-a4f0-50881b9fd1f1"
 >ERA_BrakingCurvesVerification.Compare
@@ -803,6 +885,7 @@ IN
         aSpeed =&gt; 150.0 ),
     Val2 =&gt; 1208.81
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="9ac7844b-f47e-4e8f-915e-c84d2f73cb12"
 >ERA_BrakingCurvesVerification.Compare
@@ -815,6 +898,7 @@ IN
         aSpeed =&gt; 155.0 ),
     Val2 =&gt; 1311.36
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="ae2ab0cd-ad36-4969-a239-01c88093cd55"
 >ERA_BrakingCurvesVerification.Compare
@@ -827,6 +911,7 @@ IN
         aSpeed =&gt; 160.0 ),
     Val2 =&gt; 1417.26
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="c59193da-e4a0-4961-b707-df50efe6486f"
 >ERA_BrakingCurvesVerification.Compare
@@ -839,6 +924,7 @@ IN
         aSpeed =&gt; 165.0 ),
     Val2 =&gt; 1526.53
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="fcfa76ba-4706-472f-baea-eaed5bba5bc7"
 >ERA_BrakingCurvesVerification.Compare
@@ -851,6 +937,7 @@ IN
         aSpeed =&gt; 170.0 ),
     Val2 =&gt; 1639.16
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="1a7408cc-e32f-4c16-a043-df12cf1537c8"
 >ERA_BrakingCurvesVerification.Compare
@@ -863,6 +950,7 @@ IN
         aSpeed =&gt; 175.0 ),
     Val2 =&gt; 1755.15
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="cdc905f7-c271-4d07-9f1e-9e21f9e256bb"
 >ERA_BrakingCurvesVerification.Compare
@@ -875,6 +963,7 @@ IN
         aSpeed =&gt; 180.0 ),
     Val2 =&gt; 1874.51
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="621f9b49-9dcd-49f4-ab40-9767a5f60973"
 >ERA_BrakingCurvesVerification.Compare
@@ -887,6 +976,7 @@ IN
         aSpeed =&gt; 185.0 ),
     Val2 =&gt; 1999.28
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="ee1986a8-1196-4c3a-ab40-7c029a6bb810"
 >ERA_BrakingCurvesVerification.Compare
@@ -901,6 +991,11 @@ IN
 )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step2 - SBD"
  Guid="7e21dea1-5eb9-4a73-ba8a-5a58530e04d2"
@@ -912,6 +1007,11 @@ IN
 >
 </SubStep></SubSteps>
 </Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step3 - EBI"
  Guid="456644c1-a0a0-4f34-9b82-78fec7ffa485"
@@ -923,6 +1023,7 @@ IN
 >
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="ae7dc3dd-871b-45b2-a0c7-85517f65467a"
 >ERA_BrakingCurvesVerification.Compare
@@ -935,6 +1036,7 @@ IN
         aSpeed =&gt; 10.0 ),
     Val2 =&gt; 42.25
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="e5c67bd6-09d4-4e4b-b223-7e913f134cfd"
 >ERA_BrakingCurvesVerification.Compare
@@ -947,6 +1049,7 @@ IN
         aSpeed =&gt; 15.0 ),
     Val2 =&gt; 68.33
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="bc78ae72-d2bc-4ccd-8273-af0e291e4600"
 >ERA_BrakingCurvesVerification.Compare
@@ -959,6 +1062,7 @@ IN
         aSpeed =&gt; 20.0 ),
     Val2 =&gt; 96.83
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="45135aab-fc0e-4db3-90ec-099969505788"
 >ERA_BrakingCurvesVerification.Compare
@@ -971,6 +1075,7 @@ IN
         aSpeed =&gt; 25.0 ),
     Val2 =&gt; 127.73
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="b5f76e80-c59a-443d-9589-9679765de102"
 >ERA_BrakingCurvesVerification.Compare
@@ -983,6 +1088,7 @@ IN
         aSpeed =&gt; 30.0 ),
     Val2 =&gt; 161.04
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="2f7e0eaf-729a-4773-8eff-fd5d940b0c7c"
 >ERA_BrakingCurvesVerification.Compare
@@ -995,6 +1101,7 @@ IN
         aSpeed =&gt; 35.0 ),
     Val2 =&gt; 196.76
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="5b165d02-1384-4598-8abf-e972bfe20f5c"
 >ERA_BrakingCurvesVerification.Compare
@@ -1007,6 +1114,7 @@ IN
         aSpeed =&gt; 40.0 ),
     Val2 =&gt; 234.89
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="fa3bc7f9-dc9c-4da0-8c09-b1daa2508f31"
 >ERA_BrakingCurvesVerification.Compare
@@ -1019,6 +1127,7 @@ IN
         aSpeed =&gt; 45.0 ),
     Val2 =&gt; 275.42
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="597d0721-a8ce-4069-9716-d15b4126638d"
 >ERA_BrakingCurvesVerification.Compare
@@ -1031,6 +1140,7 @@ IN
         aSpeed =&gt; 50.0 ),
     Val2 =&gt; 318.37
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="fbc7b80a-e93b-4c36-935f-1f5e548612c8"
 >ERA_BrakingCurvesVerification.Compare
@@ -1043,6 +1153,7 @@ IN
         aSpeed =&gt; 55.0 ),
     Val2 =&gt; 363.71
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="d145fcd3-43d7-450b-a2e8-ac9a83faa6a2"
 >ERA_BrakingCurvesVerification.Compare
@@ -1055,6 +1166,7 @@ IN
         aSpeed =&gt; 60.0 ),
     Val2 =&gt; 411.47
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="c122749d-3c59-48d9-ab60-dbe96824e27e"
 >ERA_BrakingCurvesVerification.Compare
@@ -1067,6 +1179,7 @@ IN
         aSpeed =&gt; 65.0 ),
     Val2 =&gt; 461.64
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="63abe01d-4122-43ec-8701-cf97957e3daf"
 >ERA_BrakingCurvesVerification.Compare
@@ -1079,6 +1192,7 @@ IN
         aSpeed =&gt; 70.0 ),
     Val2 =&gt; 514.21
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="af37c43d-65cc-422c-b51c-3badefdfb453"
 >ERA_BrakingCurvesVerification.Compare
@@ -1091,6 +1205,7 @@ IN
         aSpeed =&gt; 75.0 ),
     Val2 =&gt; 569.19
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="fe5c35db-9852-4d34-b150-d9d07179014d"
 >ERA_BrakingCurvesVerification.Compare
@@ -1103,6 +1218,7 @@ IN
         aSpeed =&gt; 80.0 ),
     Val2 =&gt; 626.57
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="db0f8417-e17e-47a1-8802-c80ca886f301"
 >ERA_BrakingCurvesVerification.Compare
@@ -1115,6 +1231,7 @@ IN
         aSpeed =&gt; 85.0 ),
     Val2 =&gt; 686.37
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="2576ce7a-2898-481f-afb9-cd7439453723"
 >ERA_BrakingCurvesVerification.Compare
@@ -1127,6 +1244,7 @@ IN
         aSpeed =&gt; 90.0 ),
     Val2 =&gt; 748.57
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="6f3d8006-57b5-43ba-b2ea-c052bd08ee8c"
 >ERA_BrakingCurvesVerification.Compare
@@ -1139,6 +1257,7 @@ IN
         aSpeed =&gt; 95.0 ),
     Val2 =&gt; 813.18
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="01095387-ef58-4acb-87c5-a429d17b8de5"
 >ERA_BrakingCurvesVerification.Compare
@@ -1151,6 +1270,7 @@ IN
         aSpeed =&gt; 100.0 ),
     Val2 =&gt; 880.2
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="6b2c2f80-c35f-4cc0-aa6e-dd0825446efd"
 >ERA_BrakingCurvesVerification.Compare
@@ -1163,6 +1283,7 @@ IN
         aSpeed =&gt; 105.0 ),
     Val2 =&gt; 949.62
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="f8e70425-c08a-4c17-803c-acf67e1a65a4"
 >ERA_BrakingCurvesVerification.Compare
@@ -1175,6 +1296,7 @@ IN
         aSpeed =&gt; 110.0 ),
     Val2 =&gt; 1021.46
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="c4410325-4dd9-4087-b8eb-7775a8dbffb9"
 >ERA_BrakingCurvesVerification.Compare
@@ -1187,6 +1309,7 @@ IN
         aSpeed =&gt; 115.0 ),
     Val2 =&gt; 1095.7
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="f88cd434-3491-4a38-a41a-44e8aef122f2"
 >ERA_BrakingCurvesVerification.Compare
@@ -1199,6 +1322,7 @@ IN
         aSpeed =&gt; 120.0 ),
     Val2 =&gt; 1172.35
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="8ea24bdf-6c44-42c8-88ac-e38e716918ea"
 >ERA_BrakingCurvesVerification.Compare
@@ -1211,6 +1335,7 @@ IN
         aSpeed =&gt; 125.0 ),
     Val2 =&gt; 1267.44
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="733c2b5c-c0f3-44f6-b0b3-e4292e4e7e55"
 >ERA_BrakingCurvesVerification.Compare
@@ -1223,6 +1348,7 @@ IN
         aSpeed =&gt; 130.0 ),
     Val2 =&gt; 1369.69
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="c6d78514-95fe-4581-986c-4e1c6979a28b"
 >ERA_BrakingCurvesVerification.Compare
@@ -1235,6 +1361,7 @@ IN
         aSpeed =&gt; 135.0 ),
     Val2 =&gt; 1475.15
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="86c7c49a-6018-4aac-893e-83feb2b097dc"
 >ERA_BrakingCurvesVerification.Compare
@@ -1247,6 +1374,7 @@ IN
         aSpeed =&gt; 140.0 ),
     Val2 =&gt; 1583.85
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="a4f2ab54-d935-443f-9cfb-d267f3769972"
 >ERA_BrakingCurvesVerification.Compare
@@ -1259,6 +1387,7 @@ IN
         aSpeed =&gt; 145.0 ),
     Val2 =&gt; 1695.76
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="7d4e0d29-1e64-4be0-bb3a-9cfa73802ad5"
 >ERA_BrakingCurvesVerification.Compare
@@ -1271,6 +1400,7 @@ IN
         aSpeed =&gt; 150.0 ),
     Val2 =&gt; 1810.9
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="3ba43c64-8053-4911-bbbb-878a7a189989"
 >ERA_BrakingCurvesVerification.Compare
@@ -1283,6 +1413,7 @@ IN
         aSpeed =&gt; 155.0 ),
     Val2 =&gt; 1933.51
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="001f1458-30bd-423f-956d-e1e00b528909"
 >ERA_BrakingCurvesVerification.Compare
@@ -1295,6 +1426,7 @@ IN
         aSpeed =&gt; 160.0 ),
     Val2 =&gt; 2059.48
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="c349838c-b1e9-45dd-b252-17ee295ee2bb"
 >ERA_BrakingCurvesVerification.Compare
@@ -1307,6 +1439,7 @@ IN
         aSpeed =&gt; 165.0 ),
     Val2 =&gt; 2188.82
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="b4fb0f36-2ef4-4084-bc10-b325d35cbe69"
 >ERA_BrakingCurvesVerification.Compare
@@ -1321,6 +1454,11 @@ IN
 )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step4 - SBI1"
  Guid="4619a0bd-2656-4047-ac67-c1003e830a96"
@@ -1332,6 +1470,11 @@ IN
 >
 </SubStep></SubSteps>
 </Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step5 - SBI2"
  Guid="7573003d-69f2-488c-8b64-2c32c0e2d023"
@@ -1343,6 +1486,7 @@ IN
 >
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="c242ac8f-a6cb-4829-9188-38bf5a2203a3"
 >ERA_BrakingCurvesVerification.Compare
@@ -1355,6 +1499,7 @@ IN
          aSpeed =&gt; 10.0 ),
     Val2 =&gt; 42.25
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="86c7b3f7-9888-4463-9fd0-9953a1a69d19"
 >ERA_BrakingCurvesVerification.Compare
@@ -1367,6 +1512,7 @@ IN
          aSpeed =&gt; 15.0 ),
     Val2 =&gt; 68.33
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="fb9a0435-c6dc-4c44-b5c7-2bd67a5ef697"
 >ERA_BrakingCurvesVerification.Compare
@@ -1379,6 +1525,7 @@ IN
          aSpeed =&gt; 20.0 ),
     Val2 =&gt; 96.83
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="eae26de7-cd5a-48ae-a886-175db829ec08"
 >ERA_BrakingCurvesVerification.Compare
@@ -1391,6 +1538,7 @@ IN
          aSpeed =&gt; 25.0 ),
     Val2 =&gt; 127.73
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="759c700d-9559-428a-990f-1b75fce11aa3"
 >ERA_BrakingCurvesVerification.Compare
@@ -1403,6 +1551,7 @@ IN
          aSpeed =&gt; 30.0 ),
     Val2 =&gt; 161.04
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="96a3fe3a-f9b2-4641-aaf0-509c56c48fd1"
 >ERA_BrakingCurvesVerification.Compare
@@ -1415,6 +1564,7 @@ IN
          aSpeed =&gt; 35.0 ),
     Val2 =&gt; 196.76
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="12772ca9-3ee8-46ff-84b2-79e5bd061d5d"
 >ERA_BrakingCurvesVerification.Compare
@@ -1427,6 +1577,7 @@ IN
          aSpeed =&gt; 40.0 ),
     Val2 =&gt; 234.89
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="63a7d7fe-6b6d-460a-a045-125fe3a4a277"
 >ERA_BrakingCurvesVerification.Compare
@@ -1439,6 +1590,7 @@ IN
          aSpeed =&gt; 45.0 ),
     Val2 =&gt; 275.42
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="1e21d5c7-014e-43a8-8162-fd6738db8012"
 >ERA_BrakingCurvesVerification.Compare
@@ -1451,6 +1603,7 @@ IN
          aSpeed =&gt; 50.0 ),
     Val2 =&gt; 318.37
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="ead9bddf-2327-48c1-8b40-0ef7cd9d1a39"
 >ERA_BrakingCurvesVerification.Compare
@@ -1463,6 +1616,7 @@ IN
          aSpeed =&gt; 55.0 ),
     Val2 =&gt; 363.71
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="621bb856-60e3-4fda-814c-11a9a6e933f7"
 >ERA_BrakingCurvesVerification.Compare
@@ -1475,6 +1629,7 @@ IN
          aSpeed =&gt; 60.0 ),
     Val2 =&gt; 411.47
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="5ce1580d-997f-4b1e-a210-6f8529f0971b"
 >ERA_BrakingCurvesVerification.Compare
@@ -1487,6 +1642,7 @@ IN
          aSpeed =&gt; 65.0 ),
     Val2 =&gt; 461.64
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="56f51d12-8887-491e-9b48-650c9ca9f128"
 >ERA_BrakingCurvesVerification.Compare
@@ -1499,6 +1655,7 @@ IN
          aSpeed =&gt; 70.0 ),
     Val2 =&gt; 514.21
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="42f28f29-424a-4932-8be7-815e39fd7ec6"
 >ERA_BrakingCurvesVerification.Compare
@@ -1511,6 +1668,7 @@ IN
          aSpeed =&gt; 75.0 ),
     Val2 =&gt; 569.19
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="c93b7049-9347-41cb-ad2c-d35948c7a275"
 >ERA_BrakingCurvesVerification.Compare
@@ -1523,6 +1681,7 @@ IN
          aSpeed =&gt; 80.0 ),
     Val2 =&gt; 626.57
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="1c95d78f-a196-4fa1-965a-e2fcd6fda12b"
 >ERA_BrakingCurvesVerification.Compare
@@ -1535,6 +1694,7 @@ IN
          aSpeed =&gt; 85.0 ),
     Val2 =&gt; 686.37
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="8b0c5c14-e0c1-476f-b0e7-f3147c8c5d83"
 >ERA_BrakingCurvesVerification.Compare
@@ -1547,6 +1707,7 @@ IN
          aSpeed =&gt; 90.0 ),
     Val2 =&gt; 748.57
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="8cb95d66-5480-4d5e-9aef-2adf015d323c"
 >ERA_BrakingCurvesVerification.Compare
@@ -1559,6 +1720,7 @@ IN
          aSpeed =&gt; 95.0 ),
     Val2 =&gt; 813.18
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="8f70eb08-58a1-4289-a7d9-dfac2d4fe6fe"
 >ERA_BrakingCurvesVerification.Compare
@@ -1571,6 +1733,7 @@ IN
          aSpeed =&gt; 100.0 ),
     Val2 =&gt; 880.2
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="7205f1da-4d92-48d6-aacc-e1683b33cc76"
 >ERA_BrakingCurvesVerification.Compare
@@ -1583,6 +1746,7 @@ IN
          aSpeed =&gt; 105.0 ),
     Val2 =&gt; 949.62
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="f553edb5-6f4a-4d5f-97dc-f6ac8649181b"
 >ERA_BrakingCurvesVerification.Compare
@@ -1595,6 +1759,7 @@ IN
          aSpeed =&gt; 110.0 ),
     Val2 =&gt; 1021.46
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="123f1bd2-88cd-4bbe-8381-4dff435808c1"
 >ERA_BrakingCurvesVerification.Compare
@@ -1607,6 +1772,7 @@ IN
          aSpeed =&gt; 115.0 ),
     Val2 =&gt; 1095.7
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="5296087b-5ab1-490d-8638-13de81f8f2e1"
 >ERA_BrakingCurvesVerification.Compare
@@ -1619,6 +1785,7 @@ IN
          aSpeed =&gt; 120.0 ),
     Val2 =&gt; 1172.35
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="835887ef-6b3d-4976-ac9d-c0cb38f78e47"
 >ERA_BrakingCurvesVerification.Compare
@@ -1631,6 +1798,7 @@ IN
          aSpeed =&gt; 125.0 ),
     Val2 =&gt; 1267.44
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="cc30bdf7-2a6a-4d6d-a8ec-1856d3eeadac"
 >ERA_BrakingCurvesVerification.Compare
@@ -1643,6 +1811,7 @@ IN
          aSpeed =&gt; 130.0 ),
     Val2 =&gt; 1369.69
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="d9d253a6-256b-4a5c-8310-991224663409"
 >ERA_BrakingCurvesVerification.Compare
@@ -1655,6 +1824,7 @@ IN
          aSpeed =&gt; 135.0 ),
     Val2 =&gt; 1475.15
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="41c018a1-c6ec-4d30-9680-9767429ebb08"
 >ERA_BrakingCurvesVerification.Compare
@@ -1667,6 +1837,7 @@ IN
          aSpeed =&gt; 140.0 ),
     Val2 =&gt; 1583.85
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="de06dec5-4413-4a82-9d8b-b03a3d991f84"
 >ERA_BrakingCurvesVerification.Compare
@@ -1679,6 +1850,7 @@ IN
          aSpeed =&gt; 145.0 ),
     Val2 =&gt; 1695.76
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="b0d6f4b9-ad54-468e-a709-a62bde5a9971"
 >ERA_BrakingCurvesVerification.Compare
@@ -1691,6 +1863,7 @@ IN
          aSpeed =&gt; 150.0 ),
     Val2 =&gt; 1810.9
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="bc749974-8537-4a54-9b1a-225289f2b5c9"
 >ERA_BrakingCurvesVerification.Compare
@@ -1703,6 +1876,7 @@ IN
          aSpeed =&gt; 155.0 ),
     Val2 =&gt; 1933.51
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="c4b594f7-4931-482c-844d-723f5d1d4990"
 >ERA_BrakingCurvesVerification.Compare
@@ -1715,6 +1889,7 @@ IN
          aSpeed =&gt; 160.0 ),
     Val2 =&gt; 2059.48
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="b75f9e1f-dd38-453a-967e-9f5b68481aeb"
 >ERA_BrakingCurvesVerification.Compare
@@ -1729,6 +1904,11 @@ IN
 )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step6 - Warning"
  Guid="0e6b09a6-3f27-42d2-a1af-43da52b8edf5"
@@ -1740,6 +1920,7 @@ IN
 >
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="fb94a13e-7f70-4a0d-950d-5ad04022f555"
 >ERA_BrakingCurvesVerification.Compare
@@ -1753,6 +1934,7 @@ IN
     ),
     Val2 =&gt; 21.34
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="2540dc21-2ff5-48e2-8e2d-a5cb7c341c24"
 >ERA_BrakingCurvesVerification.Compare
@@ -1766,6 +1948,7 @@ IN
     ),
     Val2 =&gt; 47.8
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="d673fcfa-ac05-4ff6-a2b1-b3d8019dc50a"
 >ERA_BrakingCurvesVerification.Compare
@@ -1779,6 +1962,7 @@ IN
     ),
     Val2 =&gt; 76.67
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="7a738dde-e781-41b6-a210-48a0b3b2e4e1"
 >ERA_BrakingCurvesVerification.Compare
@@ -1792,6 +1976,7 @@ IN
     ),
     Val2 =&gt; 107.94
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="5614aadf-6e2c-4c12-936e-d94c7518c8e6"
 >ERA_BrakingCurvesVerification.Compare
@@ -1805,6 +1990,7 @@ IN
     ),
     Val2 =&gt; 141.62
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="01684d93-4e7a-4a2a-8e91-5b4f682e43c5"
 >ERA_BrakingCurvesVerification.Compare
@@ -1818,6 +2004,7 @@ IN
     ),
     Val2 =&gt; 177.71
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="ac56bac6-cf30-45d7-8bc0-10204d0092b8"
 >ERA_BrakingCurvesVerification.Compare
@@ -1831,6 +2018,7 @@ IN
     ),
     Val2 =&gt; 216.21
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="ecf89757-9d25-4abb-9d2d-5867f891667c"
 >ERA_BrakingCurvesVerification.Compare
@@ -1844,6 +2032,7 @@ IN
     ),
     Val2 =&gt; 257.11
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="328e3f4b-0d29-4b7e-8539-2a9ce7f69550"
 >ERA_BrakingCurvesVerification.Compare
@@ -1857,6 +2046,7 @@ IN
     ),
     Val2 =&gt; 300.42
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="dd6bf700-3d06-40be-89a5-4051d0e7967a"
 >ERA_BrakingCurvesVerification.Compare
@@ -1870,6 +2060,7 @@ IN
     ),
     Val2 =&gt; 346.14
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="19c90182-50ef-4969-8dcf-69274c6ab95a"
 >ERA_BrakingCurvesVerification.Compare
@@ -1883,6 +2074,7 @@ IN
     ),
     Val2 =&gt; 394.27
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="2b728679-8aa3-4f8a-b8f1-4b42cb0aa61f"
 >ERA_BrakingCurvesVerification.Compare
@@ -1896,6 +2088,7 @@ IN
     ),
     Val2 =&gt; 444.8
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="0b2ee9a4-b1aa-4035-9608-9380503a39a1"
 >ERA_BrakingCurvesVerification.Compare
@@ -1909,6 +2102,7 @@ IN
     ),
     Val2 =&gt; 497.75
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="18125a3c-6c35-4843-9533-11a4529cb608"
 >ERA_BrakingCurvesVerification.Compare
@@ -1922,6 +2116,7 @@ IN
     ),
     Val2 =&gt; 553.1
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="20eeabb6-5340-41ac-a399-fe2193646c70"
 >ERA_BrakingCurvesVerification.Compare
@@ -1935,6 +2130,7 @@ IN
     ),
     Val2 =&gt; 610.85
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="b40617f0-1ce8-4ec4-b49e-f056fb960f38"
 >ERA_BrakingCurvesVerification.Compare
@@ -1948,6 +2144,7 @@ IN
     ),
     Val2 =&gt; 671.02
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="2e0fa809-845b-4660-bb9f-67680b0e9c75"
 >ERA_BrakingCurvesVerification.Compare
@@ -1961,6 +2158,7 @@ IN
     ),
     Val2 =&gt; 733.59
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="4b6c9439-c345-4456-8d07-049fd24c43d2"
 >ERA_BrakingCurvesVerification.Compare
@@ -1974,6 +2172,7 @@ IN
     ),
     Val2 =&gt; 798.57
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="ad318942-ce8e-460d-9a8a-4bbdd41699b4"
 >ERA_BrakingCurvesVerification.Compare
@@ -1987,6 +2186,7 @@ IN
     ),
     Val2 =&gt; 865.96
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="40956df0-557b-47f9-be4f-34421f004a84"
 >ERA_BrakingCurvesVerification.Compare
@@ -2000,6 +2200,7 @@ IN
     ),
     Val2 =&gt; 935.75
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="0dc02a90-6d30-4fe9-b1a2-c19d9677e6c4"
 >ERA_BrakingCurvesVerification.Compare
@@ -2013,6 +2214,7 @@ IN
     ),
     Val2 =&gt; 1007.96
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="7c55de0e-ff80-4305-bdda-9a874dbf6737"
 >ERA_BrakingCurvesVerification.Compare
@@ -2026,6 +2228,7 @@ IN
     ),
     Val2 =&gt; 1082.57
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="5fcf6f86-3afb-4e68-9d9a-71dfe5237a15"
 >ERA_BrakingCurvesVerification.Compare
@@ -2039,6 +2242,7 @@ IN
     ),
     Val2 =&gt; 1159.59
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="4232352e-4948-4429-81fe-9c0623d2b9b9"
 >ERA_BrakingCurvesVerification.Compare
@@ -2052,6 +2256,7 @@ IN
     ),
     Val2 =&gt; 1239.01
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="43e8ba57-af01-4d7e-b49b-21ece148a7db"
 >ERA_BrakingCurvesVerification.Compare
@@ -2065,6 +2270,7 @@ IN
     ),
     Val2 =&gt; 1336.88
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="9a1561cb-110c-4963-ba17-597773e2ce03"
 >ERA_BrakingCurvesVerification.Compare
@@ -2078,6 +2284,7 @@ IN
     ),
     Val2 =&gt; 1441.91
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="d886ecc2-8818-43f1-95d9-d6c86d4a8a83"
 >ERA_BrakingCurvesVerification.Compare
@@ -2091,6 +2298,7 @@ IN
     ),
     Val2 =&gt; 1550.15
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="427e10c4-8fe4-47eb-b289-ed1f39e09f74"
 >ERA_BrakingCurvesVerification.Compare
@@ -2104,6 +2312,7 @@ IN
     ),
     Val2 =&gt; 1661.62
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="8bca7a2c-d69b-4331-826f-114d5ef1f380"
 >ERA_BrakingCurvesVerification.Compare
@@ -2117,6 +2326,7 @@ IN
     ),
     Val2 =&gt; 1776.32
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="f5303e80-17a6-41da-879d-1c348d8ec4d1"
 >ERA_BrakingCurvesVerification.Compare
@@ -2130,6 +2340,7 @@ IN
     ),
     Val2 =&gt; 1894.23
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="a2e75d33-c5bc-43de-b800-7db45a921ba0"
 >ERA_BrakingCurvesVerification.Compare
@@ -2143,6 +2354,7 @@ IN
     ),
     Val2 =&gt; 2019.62
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="03c0f09b-2cca-47f8-b3c7-10aea521520d"
 >ERA_BrakingCurvesVerification.Compare
@@ -2156,6 +2368,7 @@ IN
     ),
     Val2 =&gt; 2148.37
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="686467c4-8a53-4890-a6e1-880f8a969a02"
 >ERA_BrakingCurvesVerification.Compare
@@ -2171,6 +2384,11 @@ IN
 )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step7 - Permitted"
  Guid="637a1ef2-ae0b-440a-b84f-8aa9e1627064"
@@ -2182,6 +2400,7 @@ IN
 >
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="7e4ec0ee-6e2c-4714-a049-aad0491c52a4"
 >ERA_BrakingCurvesVerification.Compare
@@ -2195,6 +2414,7 @@ IN
     ),
     Val2 =&gt; 0.0
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="c63efaed-d4ef-46b8-82a6-2d50f17379c4"
 >ERA_BrakingCurvesVerification.Compare
@@ -2208,6 +2428,7 @@ IN
     ),
     Val2 =&gt; 24.12
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="ff118d58-fd23-4a98-b08f-ff8f2546d627"
 >ERA_BrakingCurvesVerification.Compare
@@ -2221,6 +2442,7 @@ IN
     ),
     Val2 =&gt; 53.36
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="c5b2f54f-3b60-4c16-8712-315d78a95212"
 >ERA_BrakingCurvesVerification.Compare
@@ -2234,6 +2456,7 @@ IN
     ),
     Val2 =&gt; 85.0
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="37ae9b2e-d3c4-48b1-97f4-5783e8033bb7"
 >ERA_BrakingCurvesVerification.Compare
@@ -2247,6 +2470,7 @@ IN
     ),
     Val2 =&gt; 119.05
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="3f87adaa-165f-4547-a8be-524cbd23dabf"
 >ERA_BrakingCurvesVerification.Compare
@@ -2260,6 +2484,7 @@ IN
     ),
     Val2 =&gt; 155.51
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="728f68ef-d32b-427d-8597-67eb7f422c35"
 >ERA_BrakingCurvesVerification.Compare
@@ -2273,6 +2498,7 @@ IN
     ),
     Val2 =&gt; 194.38
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="987a5fb1-7db9-41d6-bac6-0740a13663ac"
 >ERA_BrakingCurvesVerification.Compare
@@ -2286,6 +2512,7 @@ IN
     ),
     Val2 =&gt; 235.65
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="0a44abd6-b090-4841-b6b1-141bf692f5cd"
 >ERA_BrakingCurvesVerification.Compare
@@ -2299,6 +2526,7 @@ IN
     ),
     Val2 =&gt; 279.33
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="39d547a1-ba43-412c-bdad-3327be89b3c4"
 >ERA_BrakingCurvesVerification.Compare
@@ -2312,6 +2540,7 @@ IN
     ),
     Val2 =&gt; 325.42
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="7ffda2bb-1896-4904-9c5f-6ffd598f0011"
 >ERA_BrakingCurvesVerification.Compare
@@ -2325,6 +2554,7 @@ IN
     ),
     Val2 =&gt; 373.92
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="ee1ee933-a767-485a-ad71-5eeb66cbb49e"
 >ERA_BrakingCurvesVerification.Compare
@@ -2338,6 +2568,7 @@ IN
     ),
     Val2 =&gt; 424.83
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="e46bbc82-fcf3-4713-8f72-236d8d3008a1"
 >ERA_BrakingCurvesVerification.Compare
@@ -2351,6 +2582,7 @@ IN
     ),
     Val2 =&gt; 478.14
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="f96106e7-c102-4794-b0ab-bce68cae0c5c"
 >ERA_BrakingCurvesVerification.Compare
@@ -2364,6 +2596,7 @@ IN
     ),
     Val2 =&gt; 533.86
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="6ec2ca8c-2022-46cd-8270-beb6c9734d62"
 >ERA_BrakingCurvesVerification.Compare
@@ -2377,6 +2610,7 @@ IN
     ),
     Val2 =&gt; 591.99
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="3b19f928-e5a7-472b-b09b-e4b5d0af19e5"
 >ERA_BrakingCurvesVerification.Compare
@@ -2390,6 +2624,7 @@ IN
     ),
     Val2 =&gt; 652.52
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="2cbfa0c8-148b-4cd5-9e68-5465e6f0925e"
 >ERA_BrakingCurvesVerification.Compare
@@ -2403,6 +2638,7 @@ IN
     ),
     Val2 =&gt; 715.46
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="3dcf8438-3015-421a-8907-0d2917dd9b3e"
 >ERA_BrakingCurvesVerification.Compare
@@ -2416,6 +2652,7 @@ IN
     ),
     Val2 =&gt; 780.81
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="7944751c-fa77-468d-968a-6a09c401de07"
 >ERA_BrakingCurvesVerification.Compare
@@ -2429,6 +2666,7 @@ IN
     ),
     Val2 =&gt; 848.57
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="70bb40d1-fecb-4980-b122-637b2fb1cf24"
 >ERA_BrakingCurvesVerification.Compare
@@ -2442,6 +2680,7 @@ IN
     ),
     Val2 =&gt; 918.74
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="f6cb85a5-2632-4ac6-80d8-c1788c62bde7"
 >ERA_BrakingCurvesVerification.Compare
@@ -2455,6 +2694,7 @@ IN
     ),
     Val2 =&gt; 991.31
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="9fab9065-3f86-4314-9c23-9f63e8a97481"
 >ERA_BrakingCurvesVerification.Compare
@@ -2468,6 +2708,7 @@ IN
     ),
     Val2 =&gt; 1066.29
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="2b2d8454-6382-4fe2-abeb-7ecb7124d0fd"
 >ERA_BrakingCurvesVerification.Compare
@@ -2481,6 +2722,7 @@ IN
     ),
     Val2 =&gt; 1143.68
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="58a66480-3e63-4449-90d2-bdf6e40b7b80"
 >ERA_BrakingCurvesVerification.Compare
@@ -2494,6 +2736,7 @@ IN
     ),
     Val2 =&gt; 1223.48
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="04fd3dc8-9371-4c80-85e6-c59c893f06ba"
 >ERA_BrakingCurvesVerification.Compare
@@ -2507,6 +2750,7 @@ IN
     ),
     Val2 =&gt; 1305.68
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="fde0ac06-7f5c-47eb-a331-90a205f00043"
 >ERA_BrakingCurvesVerification.Compare
@@ -2520,6 +2764,7 @@ IN
     ),
     Val2 =&gt; 1406.33
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="7e8cc713-1f20-4e4e-95a2-9ed77fcb394b"
 >ERA_BrakingCurvesVerification.Compare
@@ -2533,6 +2778,7 @@ IN
     ),
     Val2 =&gt; 1514.13
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="88e62771-3e0e-4c45-9b00-a52c4d51fcb1"
 >ERA_BrakingCurvesVerification.Compare
@@ -2546,6 +2792,7 @@ IN
     ),
     Val2 =&gt; 1625.15
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="808863a8-ab78-47ec-8448-22baff1f981e"
 >ERA_BrakingCurvesVerification.Compare
@@ -2559,6 +2806,7 @@ IN
     ),
     Val2 =&gt; 1739.4
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="f7a163f0-fa63-4116-9e15-7e761b1fd8de"
 >ERA_BrakingCurvesVerification.Compare
@@ -2572,6 +2820,7 @@ IN
     ),
     Val2 =&gt; 1856.87
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="e4826cce-51f7-404b-8400-01e1fbffc76d"
 >ERA_BrakingCurvesVerification.Compare
@@ -2585,6 +2834,7 @@ IN
     ),
     Val2 =&gt; 1977.56
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="574afe25-921f-48ba-9a34-56384bfbbe8e"
 >ERA_BrakingCurvesVerification.Compare
@@ -2598,6 +2848,7 @@ IN
     ),
     Val2 =&gt; 2105.73
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="acdf5bef-09fd-40f5-9797-202417e62540"
 >ERA_BrakingCurvesVerification.Compare
@@ -2613,6 +2864,11 @@ IN
 )</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
  TranslationRequired="FALSE"
  Name="Step8 - Indication"
  Guid="c54bae2c-60dd-426c-bddc-6e6cbb94f965"
@@ -2624,6 +2880,7 @@ IN
 >
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="a7468e53-4d51-49ed-a46b-ed7ce2eabcc2"
 >ERA_BrakingCurvesVerification.Compare
@@ -2637,6 +2894,7 @@ IN
     ),
     Val2 =&gt; -2.71
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="91cdebe2-5620-440d-a87f-59eeedb003ee"
 >ERA_BrakingCurvesVerification.Compare
@@ -2650,6 +2908,7 @@ IN
     ),
     Val2 =&gt; 49.0
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="5e32459a-10ea-4b5b-89cf-73568a7b870a"
 >ERA_BrakingCurvesVerification.Compare
@@ -2663,6 +2922,7 @@ IN
     ),
     Val2 =&gt; 103.11
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="7a385193-1891-4282-9aac-ed0bc9f0a211"
 >ERA_BrakingCurvesVerification.Compare
@@ -2676,6 +2936,7 @@ IN
     ),
     Val2 =&gt; 159.63
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="6655a656-0e41-427f-abc9-6270689ab950"
 >ERA_BrakingCurvesVerification.Compare
@@ -2689,6 +2950,7 @@ IN
     ),
     Val2 =&gt; 218.56
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="4d273b01-c6ff-49a8-951d-32dc664c4080"
 >ERA_BrakingCurvesVerification.Compare
@@ -2702,6 +2964,7 @@ IN
     ),
     Val2 =&gt; 279.9
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="65791548-eca8-4e70-9a34-e60571f61f4b"
 >ERA_BrakingCurvesVerification.Compare
@@ -2715,6 +2978,7 @@ IN
     ),
     Val2 =&gt; 343.64
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="7f235599-5333-403f-8058-cc9007223bb1"
 >ERA_BrakingCurvesVerification.Compare
@@ -2728,6 +2992,7 @@ IN
     ),
     Val2 =&gt; 409.8
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="880afb48-e8e0-4df5-bce8-04d1e0ad3bdb"
 >ERA_BrakingCurvesVerification.Compare
@@ -2741,6 +3006,7 @@ IN
     ),
     Val2 =&gt; 478.36
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="a54b85ac-0c63-497a-b1d1-a8920222e912"
 >ERA_BrakingCurvesVerification.Compare
@@ -2754,6 +3020,7 @@ IN
     ),
     Val2 =&gt; 549.32
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="a66bec13-6886-4acd-ac72-53a0b377d887"
 >ERA_BrakingCurvesVerification.Compare
@@ -2767,6 +3034,7 @@ IN
     ),
     Val2 =&gt; 622.7
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="a2881109-8a26-4fc6-b7f6-855e69b42d00"
 >ERA_BrakingCurvesVerification.Compare
@@ -2780,6 +3048,7 @@ IN
     ),
     Val2 =&gt; 698.48
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="6cee0741-7769-46d9-9c44-3885bdedbb0c"
 >ERA_BrakingCurvesVerification.Compare
@@ -2793,6 +3062,7 @@ IN
     ),
     Val2 =&gt; 776.67
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="fcd61f3c-8c49-46f1-b90d-efb7372b147b"
 >ERA_BrakingCurvesVerification.Compare
@@ -2806,6 +3076,7 @@ IN
     ),
     Val2 =&gt; 857.27
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="69018d77-a391-4b47-9276-71bae7efcd1d"
 >ERA_BrakingCurvesVerification.Compare
@@ -2819,6 +3090,7 @@ IN
     ),
     Val2 =&gt; 940.27
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="422887bf-ecb5-4803-9175-6aaa1a470623"
 >ERA_BrakingCurvesVerification.Compare
@@ -2832,6 +3104,7 @@ IN
     ),
     Val2 =&gt; 1025.69
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="eb9b9dee-451f-4cbd-a194-fab21d496d4c"
 >ERA_BrakingCurvesVerification.Compare
@@ -2845,6 +3118,7 @@ IN
     ),
     Val2 =&gt; 1113.51
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="dd661db0-128a-4632-a66f-257b67fffc6b"
 >ERA_BrakingCurvesVerification.Compare
@@ -2858,6 +3132,7 @@ IN
     ),
     Val2 =&gt; 1203.74
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="d3f3cb62-1018-4980-9c63-c7b37e0e9c7d"
 >ERA_BrakingCurvesVerification.Compare
@@ -2871,6 +3146,7 @@ IN
     ),
     Val2 =&gt; 1296.37
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="49ad266d-64ad-466c-a951-69f54e198d24"
 >ERA_BrakingCurvesVerification.Compare
@@ -2884,6 +3160,7 @@ IN
     ),
     Val2 =&gt; 1391.41
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="8996c5dd-29ba-4697-967d-229fac6965e8"
 >ERA_BrakingCurvesVerification.Compare
@@ -2897,6 +3174,7 @@ IN
     ),
     Val2 =&gt; 1488.87
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="bea82ea4-b966-48bd-aae5-ac46b002f064"
 >ERA_BrakingCurvesVerification.Compare
@@ -2910,6 +3188,7 @@ IN
     ),
     Val2 =&gt; 1588.72
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="e9fac2ec-73b8-4628-8f63-7096656daf83"
 >ERA_BrakingCurvesVerification.Compare
@@ -2923,6 +3202,7 @@ IN
     ),
     Val2 =&gt; 1690.99
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="e6db7ece-d8d2-4d03-a540-00e4c9a921ab"
 >ERA_BrakingCurvesVerification.Compare
@@ -2936,6 +3216,7 @@ IN
     ),
     Val2 =&gt; 1795.66
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="f299dadb-3a45-47c8-b6c8-09ef56f4e061"
 >ERA_BrakingCurvesVerification.Compare
@@ -2949,6 +3230,7 @@ IN
     ),
     Val2 =&gt; 1902.75
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="06956b6c-f17a-45c2-ac31-5355beac5a57"
 >ERA_BrakingCurvesVerification.Compare
@@ -2962,6 +3244,7 @@ IN
     ),
     Val2 =&gt; 2028.27
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="d9a610c5-cf48-48d7-8048-02c855dd63ff"
 >ERA_BrakingCurvesVerification.Compare
@@ -2975,6 +3258,7 @@ IN
     ),
     Val2 =&gt; 2160.95
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="2ae19981-4910-4d46-8503-f1969d7aee2c"
 >ERA_BrakingCurvesVerification.Compare
@@ -2988,6 +3272,7 @@ IN
     ),
     Val2 =&gt; 2296.85
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="5b3a91b2-8d73-4b4f-9281-802691e511a7"
 >ERA_BrakingCurvesVerification.Compare
@@ -3001,6 +3286,7 @@ IN
     ),
     Val2 =&gt; 2435.98
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="b5512454-852a-4ee9-be74-087415324f81"
 >ERA_BrakingCurvesVerification.Compare
@@ -3014,6 +3300,7 @@ IN
     ),
     Val2 =&gt; 2578.33
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="0131caeb-4aaa-4f54-8d96-2d59acd1b725"
 >ERA_BrakingCurvesVerification.Compare
@@ -3027,6 +3314,7 @@ IN
     ),
     Val2 =&gt; 2723.9
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="3742f18b-7037-4e49-afd4-81894c833ae6"
 >ERA_BrakingCurvesVerification.Compare
@@ -3040,6 +3328,7 @@ IN
     ),
     Val2 =&gt; 2876.94
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="7bdcc898-281d-421a-8789-3e2d11a7a5c6"
 >ERA_BrakingCurvesVerification.Compare
@@ -3053,6 +3342,7 @@ IN
     ),
     Val2 =&gt; 3033.35
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="725bb942-8d8b-435d-9066-2dbee0dc0003"
 >ERA_BrakingCurvesVerification.Compare
@@ -3066,6 +3356,7 @@ IN
     ),
     Val2 =&gt; 3033.35
 )</Expectation><Expectation
+ Kind="Instantaneous"
  Blocking="FALSE"
  Guid="71010192-7243-4d63-87b1-9094ac5c9f78"
 >ERA_BrakingCurvesVerification.Compare
