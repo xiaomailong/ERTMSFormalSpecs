@@ -160,9 +160,7 @@
  Guid="cbff820d-516b-4ce6-b28a-bfa4598aab5e"
 >
 <Expression>aTarget.Location
-
--
-
+ - 
 DistanceForSpeed(
     Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target ( Distance =&gt; d, aTarget =&gt; aTarget),
     Speed =&gt; aSpeed
@@ -196,7 +194,7 @@ DistanceForSpeed(
  Guid="585be932-e1ba-4e45-805e-e14b77126ce8"
 >
 <Expression>aTarget.Location
--
+ - 
 Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI(
     Vest =&gt; aSpeed,
     aTarget =&gt; aTarget )</Expression>
@@ -229,7 +227,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI(
  Guid="67ac0f78-e2c4-45b7-b48c-917dcccb2f2c"
 >
 <Expression>aTarget.Location
--
+ - 
 Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2(
     Vest =&gt; aSpeed,
     aTarget =&gt; aTarget,
@@ -264,7 +262,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2(
  Guid="0c0993a4-c3c4-454f-8990-7b6bf582165d"
 >
 <Expression>aTarget.Location
--
+ - 
 Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_W_Target(
     Vest =&gt; aSpeed,
     aTarget =&gt; aTarget
@@ -294,15 +292,37 @@ Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_W_Ta
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Value"
+ Name="In TSM"
  Guid="d1439d1f-4daf-41c6-afdb-5fce4ed82b81"
 >
-<Expression>BaseTypes.MaxDistance(
-X1 =&gt; 0.0,
-X2 =&gt; aTarget.Location - Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_P_Target(
+<PreConditions>
+<PreCondition
+ Guid="fff7c75b-7270-4680-ad15-4e678ca6c220"
+>aSpeed &lt; Kernel.MRSP.V_MRSP()</PreCondition><PreCondition
+ Guid="57b2b0f2-b029-4556-810e-052994de28ac"
+>aSpeed &gt; aTarget.Speed</PreCondition></PreConditions>
+<Expression>aTarget.Location - Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_P_Target(
     Vest =&gt; aSpeed,
-    aTarget =&gt; aTarget )
-)</Expression>
+    aTarget =&gt; aTarget )</Expression>
+</Case><Case
+ Name="In CSM, before the target"
+ Guid="67d7b6ed-d8c5-45be-a65e-ff11032edcdd"
+>
+<PreConditions>
+<PreCondition
+ Guid="b67f82fb-2a12-461a-9f29-7e0b52b61945"
+>aSpeed &gt; aTarget.Speed</PreCondition></PreConditions>
+<Expression>aTarget.Location - Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_P_Target(
+    Vest =&gt; Kernel.MRSP.V_MRSP(),
+    aTarget =&gt; aTarget )</Expression>
+</Case><Case
+ Name="In CSM, after the target"
+ Guid="86a5a6a8-9b1b-4291-b406-0fb3393d627a"
+>
+<Comment>The ERA braking curves do not go beyond the target location, so if the speed is equal to or less than the target speed, the distance is reduced to the target location</Comment>
+<Expression>aTarget.Location
+ - 
+aTarget.Location</Expression>
 </Case></Cases>
 </Function><Function
  Type="BaseTypes.Distance"
@@ -328,15 +348,23 @@ X2 =&gt; aTarget.Location - Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitor
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Value"
+ Name="In TSM"
+ Guid="7add738c-2670-44b8-9d53-b418cf7b7d10"
+>
+<PreConditions>
+<PreCondition
+ Guid="9264fc0e-60e8-498d-aee4-0ec5a0e02d16"
+>aSpeed &lt; Kernel.MRSP.V_MRSP()</PreCondition></PreConditions>
+<Expression>aTarget.Location - Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_I_Target(
+    Vest =&gt; aSpeed,
+    aTarget =&gt; aTarget
+)</Expression>
+</Case><Case
+ Name="In CSM"
  Guid="ed1bcb2f-4429-465d-8bce-f8c28737612e"
 >
-<Expression>LET Vest &lt;- BaseTypes.MinSpeed(
-    X1 =&gt; aSpeed,
-    X2 =&gt; Kernel.MRSP.V_MRSP()
-)
- IN aTarget.Location - Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_I_Target(
-    Vest =&gt; Vest,
+<Expression>aTarget.Location - Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_I_Target(
+    Vest =&gt; Kernel.MRSP.V_MRSP(),
     aTarget =&gt; aTarget
 )</Expression>
 </Case></Cases>
