@@ -133,7 +133,9 @@
     }
 ]</Action><Action
  Guid="8ccd7f45-c65a-407b-9ecb-cc415f9c9ccb"
->Kernel.SpeedAndDistanceMonitoring.TrainTripped &lt;- True</Action></Actions>
+>Kernel.SpeedAndDistanceMonitoring.TrainTripped &lt;- True</Action><Action
+ Guid="0b023f92-16b9-46d1-9686-ed75f626ae68"
+>Kernel.TrainData.InitializeBNS()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -791,68 +793,80 @@
     NID_C =&gt; 140,
     NID_BG =&gt; 2100,
     Q_LINK =&gt; Messages.Q_LINK.Unlinked,
-    Sequence1 =&gt; [Messages.EUROBALISE.SubStructure1
-{
-    TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
-    {
-        AXLE_LOAD_SPEED_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Message
+    Sequence1 =&gt; 
+    [
+        Messages.EUROBALISE.SubStructure1
         {
-            NID_PACKET =&gt; 88,
-            Q_DIR =&gt; Messages.Q_DIR.Both_directions,
-            L_PACKET =&gt; 400,
-            Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
-            Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
-            D_AXLELOAD =&gt; 1000,
-            L_AXLELOAD =&gt; 300,
-            Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
-            Sequence1 =&gt; [Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
-{
-    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
-    V_AXLELOAD =&gt; 14
-}, Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
-{
-    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
-    V_AXLELOAD =&gt; 12
-}, Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
-{
-    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
-    V_AXLELOAD =&gt; 8
-}, Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
-{
-    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
-    V_AXLELOAD =&gt; 4
-}],
-            Sequence3 =&gt; [Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure2
-{
-    D_AXLELOAD =&gt; 2000,
-    L_AXLELOAD =&gt; 1000,
-    Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
-    Sequence2 =&gt; [Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
-{
-    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
-    V_AXLELOAD =&gt; 16
-}, Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
-{
-    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
-    V_AXLELOAD =&gt; 14
-}, Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
-{
-    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
-    V_AXLELOAD =&gt; 12
-}, Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
-{
-    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.D4XL,
-    V_AXLELOAD =&gt; 10
-}, Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
-{
-    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
-    V_AXLELOAD =&gt; 6
-}]
-}],
-            D_TRACKINIT =&gt; 0
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                AXLE_LOAD_SPEED_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Message
+                {
+                    NID_PACKET =&gt; 88,
+                    Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+                    L_PACKET =&gt; 400,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
+                    D_AXLELOAD =&gt; 1000,
+                    L_AXLELOAD =&gt; 300,
+                    Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
+                    Sequence1 =&gt; 
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
+                        {
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
+                            V_AXLELOAD =&gt; 14
+                        }, Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
+                        {
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
+                            V_AXLELOAD =&gt; 12
+                        }, Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
+                        {
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
+                            V_AXLELOAD =&gt; 8
+                        }, Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
+                        {
+                            M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
+                            V_AXLELOAD =&gt; 4
+                        }
+                    ],
+                    Sequence3 =&gt; 
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure2
+                        {
+                            D_AXLELOAD =&gt; 2000,
+                            L_AXLELOAD =&gt; 1000,
+                            Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
+                            Sequence2 =&gt; 
+                            [
+                                Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
+                                {
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
+                                    V_AXLELOAD =&gt; 16
+                                }, Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
+                                {
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
+                                    V_AXLELOAD =&gt; 14
+                                }, Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
+                                {
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
+                                    V_AXLELOAD =&gt; 12
+                                }, Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
+                                {
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.D4XL,
+                                    V_AXLELOAD =&gt; 10
+                                }, Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
+                                {
+                                    M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
+                                    V_AXLELOAD =&gt; 6
+                                }
+                            ]
+                        }
+                    ],
+                    D_TRACKINIT =&gt; 0
+                }
+            }
         }
-    }
-}]
+    ]
 }</Action></Actions>
 <Expectations>
 <Expectation
@@ -902,39 +916,45 @@
     NID_C =&gt; 140,
     NID_BG =&gt; 2124,
     Q_LINK =&gt; Messages.Q_LINK.Unlinked,
-    Sequence1 =&gt; [Messages.EUROBALISE.SubStructure1
-{
-    TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
-    {
-        GRADIENT_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Message
+    Sequence1 =&gt; 
+    [
+        Messages.EUROBALISE.SubStructure1
         {
-            NID_PACKET =&gt; 21,
-            Q_DIR =&gt; Messages.Q_DIR.Both_directions,
-            L_PACKET =&gt; 400,
-            Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
-            D_GRADIENT =&gt; 4000,
-            Q_GDIR =&gt; Messages.Q_GDIR.uphill,
-            G_A =&gt; 2,
-            N_ITER =&gt; 3,
-            Sequence1 =&gt; [Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1
-{
-    D_GRADIENT =&gt; 2000,
-    Q_GDIR =&gt; Messages.Q_GDIR.downhill,
-    G_A =&gt; 1
-}, Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1
-{
-    D_GRADIENT =&gt; 1000,
-    Q_GDIR =&gt; Messages.Q_GDIR.downhill,
-    G_A =&gt; 4
-}, Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1
-{
-    D_GRADIENT =&gt; 5000,
-    Q_GDIR =&gt; Messages.Q_GDIR.uphill,
-    G_A =&gt; 3
-}]
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                GRADIENT_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Message
+                {
+                    NID_PACKET =&gt; 21,
+                    Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+                    L_PACKET =&gt; 400,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    D_GRADIENT =&gt; 4000,
+                    Q_GDIR =&gt; Messages.Q_GDIR.uphill,
+                    G_A =&gt; 2,
+                    N_ITER =&gt; 3,
+                    Sequence1 =&gt; 
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1
+                        {
+                            D_GRADIENT =&gt; 2000,
+                            Q_GDIR =&gt; Messages.Q_GDIR.downhill,
+                            G_A =&gt; 1
+                        }, Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1
+                        {
+                            D_GRADIENT =&gt; 1000,
+                            Q_GDIR =&gt; Messages.Q_GDIR.downhill,
+                            G_A =&gt; 4
+                        }, Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1
+                        {
+                            D_GRADIENT =&gt; 5000,
+                            Q_GDIR =&gt; Messages.Q_GDIR.uphill,
+                            G_A =&gt; 3
+                        }
+                    ]
+                }
+            }
         }
-    }
-}]
+    ]
 }</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
