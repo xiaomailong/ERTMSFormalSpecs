@@ -1126,13 +1126,16 @@
  X="10"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="InitializeTrainData"
  Guid="71722c61-36f8-4c73-9471-14eb436d205a"
 >
+<Comment>Initializes the test environment with the train data as specified in ERA_Braking_cuvers_tool_v3.0.xlsm.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Train data"
  Guid="6cdfcaa4-fa2b-4c22-92d0-f81997e116a0"
@@ -1140,854 +1143,46 @@
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Train data"
- Guid="643ef28c-48c2-449d-8cba-31f2d3943523"
+ Guid="5cb26d74-95fa-46db-b136-e74191e516e4"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="23b06f44-24c6-419a-8941-e8dd55e4b897"
->TrainData.TrainData.Value.EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet{
-            ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet{
-                NoBrake =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 2.2
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 30.0,
-                        Acceleration =&gt; 2.1
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 60.0,
-                        Acceleration =&gt; 1.14
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 100.0,
-                        Acceleration =&gt; 0.81
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 180.0,
-                        Acceleration =&gt; 0.77
-                    }
-                },
-                EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 3.3
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 30.0,
-                        Acceleration =&gt; 2.81
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 60.0,
-                        Acceleration =&gt; 2.18
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 100.0,
-                        Acceleration =&gt; 1.11
-                    }
-                },
-                Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 4.6
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 50.0,
-                        Acceleration =&gt; 3.41
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 80.0,
-                        Acceleration =&gt; 2.29
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 140.0,
-                        Acceleration =&gt; 1.22
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 180.0,
-                        Acceleration =&gt; 0.14
-                    }
-                },
-                Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 3.5
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 45.0,
-                        Acceleration =&gt; 2.45
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 70.0,
-                        Acceleration =&gt; 2.14
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 120.0,
-                        Acceleration =&gt; 1.35
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 150.0,
-                        Acceleration =&gt; 0.8
-                    },
-                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 200.0,
-                        Acceleration =&gt; 0.21
-                    }
-                },
-                EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 6.8
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 25.0,
-                        Acceleration =&gt; 5.75
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 40.0,
-                        Acceleration =&gt; 4.7
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 80.0,
-                        Acceleration =&gt; 3.6
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 120.0,
-                        Acceleration =&gt; 2.4
-                    },
-                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 180.0,
-                        Acceleration =&gt; 1.3
-                    },
-                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 250.0,
-                        Acceleration =&gt; 0.2
-                    }
-                },
-                EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 6.99
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 40.0,
-                        Acceleration =&gt; 5.9
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 80.0,
-                        Acceleration =&gt; 4.8
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 120.0,
-                        Acceleration =&gt; 3.7
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 150.0,
-                        Acceleration =&gt; 2.6
-                    },
-                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 190.0,
-                        Acceleration =&gt; 1.5
-                    },
-                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 220.0,
-                        Acceleration =&gt; 0.45
-                    }
-                },
-                EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 10.999
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 40.0,
-                        Acceleration =&gt; 9.95
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 80.0,
-                        Acceleration =&gt; 8.9
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 120.0,
-                        Acceleration =&gt; 6.8
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 170.0,
-                        Acceleration =&gt; 5.7
-                    },
-                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 220.0,
-                        Acceleration =&gt; 4.6
-                    },
-                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 270.0,
-                        Acceleration =&gt; 3.4
-                    }
-                },
-                Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 6.88
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 40.0,
-                        Acceleration =&gt; 5.82
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 90.0,
-                        Acceleration =&gt; 5.74
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 130.0,
-                        Acceleration =&gt; 4.61
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 160.0,
-                        Acceleration =&gt; 4.52
-                    },
-                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 200.0,
-                        Acceleration =&gt; 3.43
-                    },
-                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 250.0,
-                        Acceleration =&gt; 2.39
-                    }
-                }
-            },
-            Kdry_rstValuesSet =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValuesSet{
-                NoBrake =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValues{
-                    Cl__90 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                        CF0 =&gt; 0.02,
-                        CF1 =&gt; 0.07,
-                        CF2 =&gt; 0.13,
-                        CF3 =&gt; 0.16,
-                        CF4 =&gt; 0.19,
-                        CF5 =&gt; 0.21,
-                        CF6 =&gt; 0.29
-                    },
-                    Cl__99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                        CF0 =&gt; 0.04,
-                        CF1 =&gt; 0.8,
-                        CF2 =&gt; 0.17,
-                        CF3 =&gt; 0.22,
-                        CF4 =&gt; 0.27,
-                        CF5 =&gt; 0.31,
-                        CF6 =&gt; 0.38
-                    },
-                    Cl__99_99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                        CF0 =&gt; 0.06,
-                        CF1 =&gt; 0.11,
-                        CF2 =&gt; 0.18,
-                        CF3 =&gt; 0.25,
-                        CF4 =&gt; 0.32,
-                        CF5 =&gt; 0.41,
-                        CF6 =&gt; 0.51
-                    }
-                },
-                EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValues{
-                    Cl__90 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                        CF0 =&gt; 0.12,
-                        CF1 =&gt; 0.17,
-                        CF2 =&gt; 0.28,
-                        CF3 =&gt; 0.35,
-                        CF4 =&gt; 0.49,
-                        CF5 =&gt; 0.68,
-                        CF6 =&gt; 0.9
-                    },
-                    Cl__99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                        CF0 =&gt; 0.08,
-                        CF1 =&gt; 0.14,
-                        CF2 =&gt; 0.2,
-                        CF3 =&gt; 0.25,
-                        CF4 =&gt; 0.43,
-                        CF5 =&gt; 0.65,
-                        CF6 =&gt; 0.8
-                    },
-                    Cl__99_99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                        CF0 =&gt; 0.09,
-                        CF1 =&gt; 0.15,
-                        CF2 =&gt; 0.19,
-                        CF3 =&gt; 0.25,
-                        CF4 =&gt; 0.3,
-                        CF5 =&gt; 0.4,
-                        CF6 =&gt; 0.55
-                    }
-                },
-                EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValues{
-                    Cl__90 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                        CF0 =&gt; 0.1,
-                        CF1 =&gt; 0.17,
-                        CF2 =&gt; 0.24,
-                        CF3 =&gt; 0.37,
-                        CF4 =&gt; 0.45,
-                        CF5 =&gt; 0.69,
-                        CF6 =&gt; 0.92
-                    },
-                    Cl__99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                        CF0 =&gt; 0.02,
-                        CF1 =&gt; 0.07,
-                        CF2 =&gt; 0.2,
-                        CF3 =&gt; 0.28,
-                        CF4 =&gt; 0.4,
-                        CF5 =&gt; 0.67,
-                        CF6 =&gt; 0.81
-                    },
-                    Cl__99_99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                        CF0 =&gt; 0.03,
-                        CF1 =&gt; 0.08,
-                        CF2 =&gt; 0.12,
-                        CF3 =&gt; 0.17,
-                        CF4 =&gt; 0.24,
-                        CF5 =&gt; 0.38,
-                        CF6 =&gt; 0.52
-                    }
-                },
-                EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValues{
-                    Cl__90 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                        CF0 =&gt; 0.04,
-                        CF1 =&gt; 0.05,
-                        CF2 =&gt; 0.08,
-                        CF3 =&gt; 0.19,
-                        CF4 =&gt; 0.24,
-                        CF5 =&gt; 0.35,
-                        CF6 =&gt; 0.42
-                    },
-                    Cl__99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                        CF0 =&gt; 0.01,
-                        CF1 =&gt; 0.04,
-                        CF2 =&gt; 0.1,
-                        CF3 =&gt; 0.19,
-                        CF4 =&gt; 0.28,
-                        CF5 =&gt; 0.43,
-                        CF6 =&gt; 0.69
-                    },
-                    Cl__99_99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                        CF0 =&gt; 0.01,
-                        CF1 =&gt; 0.02,
-                        CF2 =&gt; 0.04,
-                        CF3 =&gt; 0.09,
-                        CF4 =&gt; 0.18,
-                        CF5 =&gt; 0.22,
-                        CF6 =&gt; 0.35
-                    }
-                },
-                EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValues{
-                    Cl__90 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                        CF0 =&gt; 0.1,
-                        CF1 =&gt; 0.24,
-                        CF2 =&gt; 0.32,
-                        CF3 =&gt; 0.47,
-                        CF4 =&gt; 0.58,
-                        CF5 =&gt; 0.74,
-                        CF6 =&gt; 0.92
-                    },
-                    Cl__99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                        CF0 =&gt; 0.07,
-                        CF1 =&gt; 0.12,
-                        CF2 =&gt; 0.19,
-                        CF3 =&gt; 0.28,
-                        CF4 =&gt; 0.37,
-                        CF5 =&gt; 0.58,
-                        CF6 =&gt; 0.64
-                    },
-                    Cl__99_99 =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                        CF0 =&gt; 0.02,
-                        CF1 =&gt; 0.07,
-                        CF2 =&gt; 0.12,
-                        CF3 =&gt; 0.15,
-                        CF4 =&gt; 0.22,
-                        CF5 =&gt; 0.37,
-                        CF6 =&gt; 0.42
-                    }
-                }
-            },
-            Kwet_rstValuesSet =&gt; Kernel.TrainData.BrakingParameters.Kwet_rstValuesSet{
-                NoBrake =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                    CF0 =&gt; 0.01,
-                    CF1 =&gt; 0.07,
-                    CF2 =&gt; 0.09,
-                    CF3 =&gt; 0.12,
-                    CF4 =&gt; 0.14,
-                    CF5 =&gt; 0.17,
-                    CF6 =&gt; 0.21
-                },
-                EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                    CF0 =&gt; 0.04,
-                    CF1 =&gt; 0.11,
-                    CF2 =&gt; 0.3,
-                    CF3 =&gt; 0.49,
-                    CF4 =&gt; 0.54,
-                    CF5 =&gt; 0.59,
-                    CF6 =&gt; 0.76
-                },
-                EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                    CF0 =&gt; 0.07,
-                    CF1 =&gt; 0.12,
-                    CF2 =&gt; 0.2,
-                    CF3 =&gt; 0.4,
-                    CF4 =&gt; 0.47,
-                    CF5 =&gt; 0.55,
-                    CF6 =&gt; 0.71
-                },
-                EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                    CF0 =&gt; 0.1,
-                    CF1 =&gt; 0.18,
-                    CF2 =&gt; 0.24,
-                    CF3 =&gt; 0.33,
-                    CF4 =&gt; 0.4,
-                    CF5 =&gt; 0.5,
-                    CF6 =&gt; 0.81
-                },
-                Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                    CF0 =&gt; 0.13,
-                    CF1 =&gt; 0.19,
-                    CF2 =&gt; 0.23,
-                    CF3 =&gt; 0.38,
-                    CF4 =&gt; 0.39,
-                    CF5 =&gt; 0.44,
-                    CF6 =&gt; 0.62
-                },
-                EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.CorrectFactorValue{
-                    CF0 =&gt; 0.21,
-                    CF1 =&gt; 0.32,
-                    CF2 =&gt; 0.4,
-                    CF3 =&gt; 0.48,
-                    CF4 =&gt; 0.62,
-                    CF5 =&gt; 0.74,
-                    CF6 =&gt; 0.85
-                }
-            }
-        }</Action><Action
- Guid="5ec015f3-36e0-4bcf-b170-e8e6506cc952"
->TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+ Guid="3c40c469-55cf-4e97-8742-74f6f25d4e1d"
+>BTM.ActiveAntennaPosition &lt;- 5.0</Action><Action
+ Guid="7d442961-2150-4931-ac66-b8c407eac3e6"
+>Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsAllowed &lt;- True</Action><Action
+ Guid="d6a65106-9d66-4565-880a-3816d15bd453"
+>Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action><Action
+ Guid="b46ed63b-c019-4a10-a125-38155e0e146e"
+>Kernel.TrainData.TrainData.Value.EBModels &lt;- Kernel.TrainData.BrakingParameters.EBModelSet
 {
-    EddyCurrent =&gt; 2.3,
-    EddyCurrent_Magnetic =&gt; 2.2,
-    EddyCurrent_Regenerative =&gt; 1.6,
-    EddyCurrent_Ep =&gt; 2.6,
-    Magnetic_Regenerative =&gt; 2.1,
-    Magnetic_Ep =&gt; 1.6,
-    Regenerative_Ep =&gt; 1.5,
-    EddyCurrent_Magnetic_Regenerative =&gt; 2.8,
-    EddyCurrent_Magnetic_Ep =&gt; 1.8,
-    EddyCurrent_Regenerative_Ep =&gt; 2.0,
-    Magnetic_Regenerative_Ep =&gt; 2.0,
-    EddyCurrent_Magnetic_Regenerative_Ep =&gt; 2.2,
-    Magnetic =&gt; 2.7,
-    Regenerative =&gt; 2.2,
-    Ep =&gt; 2.6,
-    No_Special_Brakes =&gt; 1.0
+    ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet{},
+    Kdry_rstValuesSet =&gt; Kernel.TrainData.BrakingParameters.Kdry_rstValuesSet{},
+    Kwet_rstValuesSet =&gt; Kernel.TrainData.BrakingParameters.Kwet_rstValuesSet{}
 }</Action><Action
- Guid="f1a73ebf-dd17-4483-8598-e612e3c7ac66"
->TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet
-        {
-            ModelSet =&gt; Kernel.TrainData.BrakingParameters.BrakingModelSet
-            {
-                NoBrake =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 0.32
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 40.0,
-                        Acceleration =&gt; 0.28
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 65.0,
-                        Acceleration =&gt; 0.23
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 105.0,
-                        Acceleration =&gt; 0.21
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 125.0,
-                        Acceleration =&gt; 0.17
-                    },
-                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 160.0,
-                        Acceleration =&gt; 0.12
-                    },
-                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 220.0,
-                        Acceleration =&gt; 0.07
-                    }
-                },
-                EddyCurrent =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 0.8
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 30.0,
-                        Acceleration =&gt; 0.65
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 60.0,
-                        Acceleration =&gt; 0.49
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 100.0,
-                        Acceleration =&gt; 0.38
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 150.0,
-                        Acceleration =&gt; 0.31
-                    },
-                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 180.0,
-                        Acceleration =&gt; 0.27
-                    },
-                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 240.0,
-                        Acceleration =&gt; 0.2
-                    }
-                },
-                Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 0.8
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 25.0,
-                        Acceleration =&gt; 0.75
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 40.0,
-                        Acceleration =&gt; 0.7
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 80.0,
-                        Acceleration =&gt; 0.6
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 120.0,
-                        Acceleration =&gt; 0.4
-                    },
-                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 180.0,
-                        Acceleration =&gt; 0.3
-                    },
-                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 250.0,
-                        Acceleration =&gt; 0.2
-                    }
-                },
-                EddyCurrent_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 0.92
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 40.0,
-                        Acceleration =&gt; 0.81
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 80.0,
-                        Acceleration =&gt; 0.6
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 120.0,
-                        Acceleration =&gt; 0.46
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 150.0,
-                        Acceleration =&gt; 0.27
-                    },
-                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 190.0,
-                        Acceleration =&gt; 0.22
-                    },
-                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 220.0,
-                        Acceleration =&gt; 0.11
-                    }
-                },
-                EddyCurrent_Magnetic =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 0.84
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 45.0,
-                        Acceleration =&gt; 0.82
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 90.0,
-                        Acceleration =&gt; 0.76
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 120.0,
-                        Acceleration =&gt; 0.68
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 150.0,
-                        Acceleration =&gt; 0.61
-                    },
-                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 200.0,
-                        Acceleration =&gt; 0.54
-                    },
-                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 260.0,
-                        Acceleration =&gt; 0.47
-                    }
-                },
-                Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 0.72
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 40.0,
-                        Acceleration =&gt; 0.65
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 85.0,
-                        Acceleration =&gt; 0.62
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 120.0,
-                        Acceleration =&gt; 0.53
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 160.0,
-                        Acceleration =&gt; 0.46
-                    },
-                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 210.0,
-                        Acceleration =&gt; 0.41
-                    },
-                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 250.0,
-                        Acceleration =&gt; 0.33
-                    }
-                },
-                EddyCurrent_Magnetic_Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 0.9
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 40.0,
-                        Acceleration =&gt; 0.87
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 80.0,
-                        Acceleration =&gt; 0.8
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 120.0,
-                        Acceleration =&gt; 0.7
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 170.0,
-                        Acceleration =&gt; 0.6
-                    },
-                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 220.0,
-                        Acceleration =&gt; 0.4
-                    },
-                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 270.0,
-                        Acceleration =&gt; 0.2
-                    }
-                }
-            }
-        }</Action><Action
- Guid="987f6a36-44ba-4ab7-923b-a4d9f5f0ea64"
->TrainData.TrainData.Value.T_brake_service &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
+ Guid="fe0d9359-7fb8-4b61-ba53-4010e0266b0e"
+>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- Default.Percentage.NA</Action><Action
+ Guid="40725ae5-5b0f-4676-86bf-40f90ae2f801"
+>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 180.0</Action><Action
+ Guid="bc8cdf38-ef71-442e-bfa7-1e6495f34e58"
+>Kernel.TrainData.TrainData.Value.SBCommandIsImplemented &lt;- False</Action><Action
+ Guid="c8715996-5d54-4601-9b89-b56dd6822aad"
+>Kernel.TrainData.TrainData.Value.SBModels &lt;- Kernel.TrainData.BrakingParameters.SBModelSet{}</Action><Action
+ Guid="6b4c0780-e55c-4dc1-94c6-21bf90a5b8cc"
+>Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented &lt;- False</Action><Action
+ Guid="ca39eb79-4831-4354-8c0d-8ce788720338"
+>Kernel.TrainData.TrainData.Value.TractionModel &lt;- Kernel.TrainData.TractionModel
 {
-    EddyCurrent =&gt; 2.0,
-    EddyCurrent_Magnetic =&gt; 2.7,
-    EddyCurrent_Regenerative =&gt; 2.6,
-    EddyCurrent_Ep =&gt; 1.6,
-    Magnetic_Regenerative =&gt; 1.8,
-    Magnetic_Ep =&gt; 1.8,
-    Regenerative_Ep =&gt; 1.8,
-    EddyCurrent_Magnetic_Regenerative =&gt; 2.4,
-    EddyCurrent_Magnetic_Ep =&gt; 2.1,
-    EddyCurrent_Regenerative_Ep =&gt; 2.1,
-    Magnetic_Regenerative_Ep =&gt; 1.7,
-    EddyCurrent_Magnetic_Regenerative_Ep =&gt; 1.6,
-    Magnetic =&gt; 2.5,
-    Regenerative =&gt; 2.8,
-    Ep =&gt; 1.8,
-    No_Special_Brakes =&gt; 1.0
+    Coefficient =&gt; 0.0,
+    Constant    =&gt; 0.0
 }</Action><Action
- Guid="7c2a08c0-ee04-4206-93cc-97200c64d5f2"
->TrainData.TrainData.Value.NormalServiceBrakeModels &lt;- Kernel.TrainData.BrakingParameters.BNSModelSet{
-            TrainInG =&gt; Kernel.TrainData.BrakingParameters.BNSModel{
-                BNS_0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 0.8
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 50.0,
-                        Acceleration =&gt; 0.72
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 80.0,
-                        Acceleration =&gt; 0.6
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 120.0,
-                        Acceleration =&gt; 0.45
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 180.0,
-                        Acceleration =&gt; 0.32
-                    },
-                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 250.0,
-                        Acceleration =&gt; 0.3
-                    }
-                },
-                BNS_1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 0.82
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 50.0,
-                        Acceleration =&gt; 0.7
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 70.0,
-                        Acceleration =&gt; 0.68
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 100.0,
-                        Acceleration =&gt; 0.51
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 150.0,
-                        Acceleration =&gt; 0.34
-                    },
-                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 200.0,
-                        Acceleration =&gt; 0.27
-                    }
-                },
-                BNS_2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 0.94
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 40.0,
-                        Acceleration =&gt; 0.8
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 75.0,
-                        Acceleration =&gt; 0.65
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 100.0,
-                        Acceleration =&gt; 0.5
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 150.0,
-                        Acceleration =&gt; 0.4
-                    },
-                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 200.0,
-                        Acceleration =&gt; 0.35
-                    },
-                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 250.0,
-                        Acceleration =&gt; 0.3
-                    }
-                }
-            },
-            TrainInP =&gt; Kernel.TrainData.BrakingParameters.BNSModel{
-                BNS_0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 0.8
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 60.0,
-                        Acceleration =&gt; 0.6
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 120.0,
-                        Acceleration =&gt; 0.4
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 200.0,
-                        Acceleration =&gt; 0.2
-                    }
-                },
-                BNS_1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 0.9
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 25.0,
-                        Acceleration =&gt; 0.8
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 40.0,
-                        Acceleration =&gt; 0.64
-                    },
-                    Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 75.0,
-                        Acceleration =&gt; 0.5
-                    },
-                    Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 100.0,
-                        Acceleration =&gt; 0.35
-                    },
-                    Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 150.0,
-                        Acceleration =&gt; 0.2
-                    },
-                    Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 200.0,
-                        Acceleration =&gt; 0.14
-                    }
-                },
-                BNS_2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
-                    Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 0.0,
-                        Acceleration =&gt; 0.6
-                    },
-                    Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 80.0,
-                        Acceleration =&gt; 0.2
-                    },
-                    Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue{
-                        SpeedStep =&gt; 200.0,
-                        Acceleration =&gt; 0.1
-                    }
-                }
-            },
-            A_SB01 =&gt; 0.4,
-            A_SB12 =&gt; 0.7
-        }</Action><Action
- Guid="30a3575e-0fda-490b-8762-e2530e93b597"
->TrainData.Value.EddyCurrentBrakeInterface &lt;- BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
- Guid="c289289c-bc7e-4abf-822a-baa902d9c86e"
->TrainData.Value.MagneticShoeBrakeInterface &lt;- BrakingParameters.BrakeInterfaceStatus.EB</Action><Action
- Guid="1150faf4-4606-4991-8763-8a8aafba4453"
->TrainData.Value.EpBrakeInterface &lt;- BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
- Guid="57d18a98-ba5a-42ff-a4ad-c58afc9c5042"
->TrainData.Value.RegenerativeBrakeInterface &lt;- BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
- Guid="c50a3f17-017b-4e8f-bccc-2f797b4981f4"
->INSERT TractionSystem{
-    Voltage =&gt; Messages.M_VOLTAGE.AC_15_kV_16_7_Hz,
-    Country =&gt; 85
-}
-IN TrainData.TrainData.Value.TractionSystems</Action></Actions>
+ Guid="e9aefb43-8673-44d9-bd63-7fd9365eed67"
+>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 900.0</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1995,20 +1190,25 @@ IN TrainData.TrainData.Value.TractionSystems</Action></Actions>
  Y="70"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Initialize"
  Guid="47ef17c8-315c-4519-a3c6-4ad190fb967d"
 >
+<Comment>Initializes the different components of the train data for the test environment.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TrainData"
  Guid="62c122e1-b783-47a7-b65f-60a1ef8997f4"
 >
+<Comment>Initialization of the train data.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TrainData"
  Guid="e37e14be-eeca-4887-8d9a-143fcdb02cd8"
@@ -2022,13 +1222,16 @@ IN TrainData.TrainData.Value.TractionSystems</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="BrakingParameters"
  Guid="8ad2f60c-51c5-4246-9c5b-3f5d40b252af"
 >
+<Comment>Initialization of the braking parameters.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="BrakingParameters"
  Guid="82b4c2fa-0b65-4194-811b-879feaa6db04"
@@ -2040,45 +1243,231 @@ IN TrainData.TrainData.Value.TractionSystems</Action></Actions>
  Guid="4d6003d8-6380-41b4-a175-a0fcbc9eeae4"
 >TrainData.BrakingParameters.Initialize()</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
+</Rule></Rules>
+</Procedure><Procedure
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="TimeIntervals"
- Guid="3f2d9ede-5b5f-4755-aece-27db2d03c2dd"
+ Name="InitializeBNS"
+ Guid="5fa6178b-0707-4501-aa77-f810d08f96f4"
+>
+<Comment>Initializes the BNS for the test environment.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Initialize BNS"
+ Guid="a9fc2480-14e6-4d53-87a9-45bd3eba70b7"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="TimeIntervals"
- Guid="0a1591cd-e887-4a26-b1b4-4e9f0c6e76e3"
+ Name="Initialize BNS"
+ Guid="b94190b7-3d38-49f1-9330-65e9f0f26f22"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="0361adbf-b6aa-4058-87ae-8ada5224f5e6"
->SpeedAndDistanceMonitoring.TargetSpeedMonitoring.InitializeTimeIntervals()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- NeedsRequirement="FALSE"
- Name="ReleaseSpeed"
- Guid="fe586122-e5ef-4a7c-9a94-d6a4b2d512eb"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="ReleaseSpeed"
- Guid="7effa754-2fad-4bf6-a6af-a52ef46f9ee8"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="0c072176-e823-4329-a6f7-99664157752b"
->SpeedAndDistanceMonitoring.ReleaseSpeedMonitoring.UpdateReleaseSpeed()</Action></Actions>
+ Guid="b038e878-3e0d-4f36-b6cc-0a44ceb51394"
+>TrainData.TrainData.Value.NormalServiceBrakeModels &lt;- Kernel.TrainData.BrakingParameters.BNSModelSet
+{
+    A_SB01 =&gt; 0.4,
+    A_SB12 =&gt; 0.7,
+    TrainInP =&gt; Kernel.TrainData.BrakingParameters.BNSModel
+    {
+        BNS_0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.8
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 120.0,
+                Acceleration =&gt; 0.4
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.2
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 60.0,
+                Acceleration =&gt; 0.6
+            }
+        },
+        BNS_1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.14
+            },
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.9
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 40.0,
+                Acceleration =&gt; 0.64
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 75.0,
+                Acceleration =&gt; 0.5
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 100.0,
+                Acceleration =&gt; 0.35
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 150.0,
+                Acceleration =&gt; 0.2
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 25.0,
+                Acceleration =&gt; 0.8
+            }
+        },
+        BNS_2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.6
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.1
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 80.0,
+                Acceleration =&gt; 0.2
+            }
+        }
+    },
+    TrainInG =&gt; Kernel.TrainData.BrakingParameters.BNSModel
+    {
+        BNS_0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.8
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 80.0,
+                Acceleration =&gt; 0.6
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 120.0,
+                Acceleration =&gt; 0.45
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 180.0,
+                Acceleration =&gt; 0.32
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 250.0,
+                Acceleration =&gt; 0.3
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 50.0,
+                Acceleration =&gt; 0.72
+            }
+        },
+        BNS_1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.82
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 70.0,
+                Acceleration =&gt; 0.68
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 100.0,
+                Acceleration =&gt; 0.51
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 150.0,
+                Acceleration =&gt; 0.34
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.27
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 50.0,
+                Acceleration =&gt; 0.7
+            }
+        },
+        BNS_2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModel
+        {
+            Val6 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 250.0,
+                Acceleration =&gt; 0.3
+            },
+            Val0 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 0.0,
+                Acceleration =&gt; 0.94
+            },
+            Val2 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 75.0,
+                Acceleration =&gt; 0.65
+            },
+            Val3 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 100.0,
+                Acceleration =&gt; 0.5
+            },
+            Val4 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 150.0,
+                Acceleration =&gt; 0.4
+            },
+            Val5 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 200.0,
+                Acceleration =&gt; 0.35
+            },
+            Val1 =&gt; Kernel.TrainData.BrakingParameters.BrakingModelValue
+            {
+                SpeedStep =&gt; 40.0,
+                Acceleration =&gt; 0.8
+            }
+        }
+    }
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
