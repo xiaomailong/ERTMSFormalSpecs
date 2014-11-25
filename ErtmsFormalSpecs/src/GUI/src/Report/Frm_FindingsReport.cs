@@ -141,6 +141,8 @@ namespace GUI.Report
             reportHandler.addQuestions = CB_ShowQuestions.Checked;
             reportHandler.addComments = CB_ShowComments.Checked;
             reportHandler.addBugs = CB_ShowBugs.Checked;
+            reportHandler.addReviewed = CB_Reviewed.Checked;
+            reportHandler.addNotReviewed = CB_NotReviewed.Checked;
 
             Hide();
 
@@ -157,6 +159,11 @@ namespace GUI.Report
                 reportHandler.FileName = saveFileDialog.FileName;
                 TxtB_Path.Text = reportHandler.FileName;
             }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

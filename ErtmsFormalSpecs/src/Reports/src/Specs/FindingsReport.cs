@@ -124,11 +124,18 @@ namespace Reports.Specs
         {
             if (paragraph.getReviewed() == ReviewedParagraphs)
             {
-                AddSubParagraph(entryType + " " + paragraph.FullId);
-                AddParagraph(paragraph.ExpressionText);
-
-                // provide the translations the paragraph references
-                AddTestCases(paragraph);
+                if (!paragraph.isTitle)
+                {
+                    AddSubParagraph(entryType + " " + paragraph.FullId);
+                    AddParagraph(paragraph.ExpressionText);
+                    
+                    // provide the translations the paragraph references
+                    AddTestCases(paragraph);
+                }
+                else
+                {
+                    AddSubParagraph(entryType + " " + paragraph.FullId + ": " + paragraph.ExpressionText);
+                }
 
                 CloseSubParagraph();
             }
@@ -139,10 +146,10 @@ namespace Reports.Specs
                 {
                     addEntry(subParagraph, entryType);
                 }
-            }
+        }
         }
 
-        private void AddImplementations(DataDictionary.Specification.Paragraph subparagraph)
+        private void addImplementations(DataDictionary.Specification.Paragraph subparagraph)
         {
             bool first = true;
             foreach (DataDictionary.ReqRef reference in subparagraph.Implementations)
@@ -173,13 +180,16 @@ namespace Reports.Specs
         /// <param name="subparagraph"></param>
         private void AddTestCases(DataDictionary.Specification.Paragraph subparagraph)
         {
-            AddTable(new string[] { "Test case" , "Sequence" }, new int[] { 40, 90 });
+            Dictionary<string, string[]> TestFeatures = findSteps(subparagraph);
 
-            Dictionary<string, string> TestFeatures = findSteps(subparagraph);
-
-            foreach (KeyValuePair<string, string> testFT in TestFeatures)
+            if (TestFeatures.Count > 0)
             {
-                AddRow(new string[] { testFT.Key, testFT.Value });
+                AddTable(new string[] { "Test case", "Steps", "Sequence" }, new int[] { 40, 40, 50 });
+
+                foreach (KeyValuePair<string, string[]> testFT in TestFeatures)
+                {
+                    AddRow(new string[] { testFT.Key, testFT.Value[0], testFT.Value[1] });
+                }
             }
         }
 
@@ -188,9 +198,9 @@ namespace Reports.Specs
         /// </summary>
         /// <param name="paragraph"></param>
         /// <returns></returns>
-        private Dictionary<string, string> findSteps(DataDictionary.Specification.Paragraph paragraph)
+        private Dictionary<string, string[]> findSteps(DataDictionary.Specification.Paragraph paragraph)
         {
-            Dictionary<string, string> retVal = new Dictionary<string, string>();
+            Dictionary<string, string[]> retVal = new Dictionary<string, string[]>();
 
             foreach (DataDictionary.ReqRef reference in paragraph.Implementations)
             {
@@ -199,23 +209,27 @@ namespace Reports.Specs
                 {
                     if (retVal.ContainsKey(step.TestCase.Name))
                     {
-                        string steps = retVal[step.TestCase.Name];
+                        string steps = retVal[step.TestCase.Name][0];
+                        string sequences = retVal[step.TestCase.Name][1];
 
                         // Only add the subsequence if it is not already in the string
-                        if (steps.IndexOf(step.SubSequence.Name) == -1)
+                        if (sequences.IndexOf(step.SubSequence.Name) == -1)
                         {
-                            steps = steps + "\n" + step.SubSequence.Name + " (" + stepNumber(step) + ")";
+                            sequences = sequences + "\n" + step.SubSequence.Name;
+                            steps = steps + "\n" + stepNumber(step);
                         }
-                        else if (retVal[step.TestCase.Name].IndexOf(stepNumber(step)) == -1)
+                        else if (steps.IndexOf(stepNumber(step)) == -1)
                         {
-                            steps = steps.Insert(stepIndex(steps, step.SubSequence.Name), ", " + stepNumber(step));
+                            int line = getLine(sequences, step.SubSequence.Name);
+                            steps = steps.Insert(stepIndex(line, steps), ", " + stepNumber(step));
                         }
 
-                        retVal[step.TestCase.Name] = steps;
+                        retVal[step.TestCase.Name][0] = steps;
+                        retVal[step.TestCase.Name][1] = sequences;
                     }
                     else
                     {
-                        retVal[step.TestCase.Name] = step.SubSequence.Name + " (" + stepNumber(step) + ")";
+                        retVal[step.TestCase.Name] = new string[] { stepNumber(step), step.SubSequence.Name };
                     }
                 }
             }
@@ -245,9 +259,51 @@ namespace Reports.Specs
         /// </summary>
         /// <param name="stepsList"></param>
         /// <returns></returns>
-        private int stepIndex(string stepsList, string sequenceName)
+        private int stepIndex(int line, string stepslist)
         {
-            int retVal = stepsList.IndexOf(")", stepsList.IndexOf(sequenceName) + sequenceName.Length);
+            int retVal = 0;
+
+            // Get the position of each newline character, up to the one preceding the line we want to write on
+            for (int i = line; i > 0; i--)
+            {
+                retVal = stepslist.IndexOf("\n", retVal);
+            }
+
+            // If the line we want is the last line, return the final index of the string,
+            // otherwise, return the next newline
+            if (stepslist.IndexOf("\n", retVal) == -1)
+            {
+                retVal = stepslist.Length;
+            }
+            else
+            {
+                retVal = stepslist.IndexOf("\n", retVal);
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// returns the number of line returns before the given string
+        /// </summary>
+        /// <param name="sequencesList"></param>
+        /// <param name="sequence"></param>
+        /// <returns></returns>
+        private int getLine(string sequencesList, string sequence)
+        {
+            int retVal = 0;
+
+            int sequenceIndex = sequencesList.IndexOf(sequence);
+
+            int startIndex = 0;
+
+            while (sequencesList.IndexOf("\n", startIndex, sequenceIndex - startIndex) != -1)
+            {
+                startIndex = sequencesList.IndexOf("\n", startIndex, sequenceIndex - startIndex);
+                retVal++;
+            }
+
+
             return retVal;
         }
 

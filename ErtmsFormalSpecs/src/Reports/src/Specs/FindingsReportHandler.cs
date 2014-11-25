@@ -28,6 +28,9 @@ namespace Reports.Specs
         public bool addComments { set; get; }
         public bool addBugs { set; get; }
 
+        public bool addReviewed { set; get; }
+        public bool addNotReviewed { set; get; }
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -39,6 +42,9 @@ namespace Reports.Specs
             addQuestions = false;
             addComments = false;
             addBugs = false;
+
+            addReviewed = true;
+            addNotReviewed = true;
         }
 
 
@@ -52,11 +58,18 @@ namespace Reports.Specs
             retVal.Info.Subject = "Subset-076 findings report";
 
             FindingsReport report = new FindingsReport(retVal);
-            report.ReviewedParagraphs = false;
-            BuildSections(report);
 
-            report.ReviewedParagraphs = true;
-            BuildSections(report);
+            if (addReviewed)
+            {
+                report.ReviewedParagraphs = false;
+                BuildSections(report);
+            }
+
+            if (addNotReviewed)
+            {
+                report.ReviewedParagraphs = true;
+                BuildSections(report);
+            }
 
             return retVal;
         }
@@ -67,19 +80,19 @@ namespace Reports.Specs
         /// <param name="report"></param>
         void BuildSections(FindingsReport report)
         {
-            string sectionHeader;
 
             if (report.ReviewedParagraphs)
             {
-                sectionHeader = "The findings that have already been addressed, included for informational purposes.";
+                report.AddSubParagraph("Addressed findings");
+                report.AddParagraph("Findings that have been reviewed by ERA, included for informational purposes only.");
             }
             else
             {
-                sectionHeader = "The findings that require attention.";
+                report.AddSubParagraph("Findings");
             }
 
 
-            report.AddSubParagraph(sectionHeader);
+            
             if (addBugs)
             {
                 Log.Info("..generating issues");
