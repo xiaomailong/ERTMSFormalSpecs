@@ -530,7 +530,7 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="TrainIntegrity"
+ Name="TrainIntegrityConfirmation"
  Guid="eb09ead6-4fdf-4c01-9794-c33fb5343c2b"
 >
 <ReqRef
@@ -571,13 +571,13 @@
 <PreConditions>
 <PreCondition
  Guid="146fdf8b-b8d6-4313-ba45-30e323f7f464"
->TrainIntegrityAvailable()</PreCondition><PreCondition
+>TrainIntegrityConfirmationAvailable()</PreCondition><PreCondition
  Guid="555f8da9-4591-4d7b-ac02-d908a2ca5a37"
->THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>TrainIntegrityConfirmation.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="96540f3c-63f5-4d64-88ef-9abe7565f3da"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>TrainIntegrityConfirmation.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -607,11 +607,11 @@
 <PreConditions>
 <PreCondition
  Guid="996f94a0-c5f7-440e-99f3-218673234ca3"
->TrainIntegrityAvailable()</PreCondition></PreConditions>
+>TrainIntegrityConfirmationAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8923a9d3-2909-469f-a68f-1e6e7b3f36ad"
->THIS.InputInformation.InitiateRequest()</Action></Actions>
+>TrainIntegrityConfirmation.InputInformation.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -639,11 +639,11 @@
 <PreConditions>
 <PreCondition
  Guid="aaf56087-e2c8-4912-bcd6-6d6f8d647492"
->NOT TrainIntegrityAvailable()</PreCondition></PreConditions>
+>NOT TrainIntegrityConfirmationAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2a049c1c-0ad2-4a3f-ad23-534e9c5a2a07"
->THIS.InputInformation.Disable()</Action></Actions>
+>TrainIntegrityConfirmation.InputInformation.Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -6612,7 +6612,7 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="TrainIntegrityAvailable"
+ Name="TrainIntegrityConfirmationAvailable"
  Guid="2e80bf61-2583-44ad-a676-75a360efb995"
 >
 <ReqRef

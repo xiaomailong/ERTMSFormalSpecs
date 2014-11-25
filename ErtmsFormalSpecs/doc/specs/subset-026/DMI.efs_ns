@@ -704,7 +704,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="83a2996f-7c64-4a56-94ab-7463268a9ff3"
 >THIS.In_TrackAheadFree.TrackMode()</Action><Action
  Guid="ffc49356-a342-4f80-a304-eaebd1b9cd89"
->THIS.In_TrainIntegrity.TrackMode()</Action><Action
+>THIS.In_TrainIntegrityConfirmation.TrackMode()</Action><Action
  Guid="a146884b-c77b-4030-aa93-3458ef154f52"
 >THIS.In_VirtualBaliseCover.TrackMode()</Action><Action
  Guid="df0f55a8-1469-4a69-92ce-dc051554bb23"
@@ -796,7 +796,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="8b5d961a-2752-4946-bba3-a1dff33a1664"
 >THIS.Out_TripReason.TrackMode()</Action><Action
  Guid="d64c9513-c7c2-421a-8c2c-e4cfaff16cae"
->THIS.Out_FLOI.TrackMode()</Action><Action
+>THIS.Out_SBI.TrackMode()</Action><Action
  Guid="cb821b2a-3540-441c-9f2e-7d9972f6b7bf"
 >THIS.Out_VirtualBaliseCovers.TrackMode()</Action><Action
  Guid="a2712db3-84fd-4a13-8dfe-168f8bcd01ba"
@@ -1081,7 +1081,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="f73c10a8-0d24-4940-918b-1e7c66f10be0"
 >THIS.In_TrackAheadFree.AcceptDriverResponse()</Action><Action
  Guid="32fa69b6-994c-46b8-85e2-1190d43407dd"
->THIS.In_TrainIntegrity.AcceptDriverResponse()</Action><Action
+>THIS.In_TrainIntegrityConfirmation.AcceptDriverResponse()</Action><Action
  Guid="216a978b-051d-42e3-ba33-a5d67b52054a"
 >THIS.In_VirtualBaliseCover.AcceptDriverResponse()</Action><Action
  Guid="243ab72a-b96b-4196-a725-712460511989"
@@ -1260,11 +1260,11 @@ Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() != Kernel.SupervisionStatu
  Guid="d5634a7b-6cad-4c6f-9dc8-a6a83557e821"
 >Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
  Guid="104bfae1-3091-47e6-b63e-77df74bc368a"
->Out_FLOI.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+>Out_SBI.OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f0c8976c-c957-4f3d-a0a5-3295db9e7317"
->Out_FLOI.Speed &lt;- Kernel.SpeedAndDistanceMonitoring.SBISpeed(
+>Out_SBI.Speed &lt;- Kernel.SpeedAndDistanceMonitoring.SBISpeed(
 Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -1864,11 +1864,11 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
  Guid="e304bea2-c38d-4507-a562-711e96ff31da"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="IN.TrainIntegrity"
+ TypeName="IN.TrainIntegrityConfirmation"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
- Name="In_TrainIntegrity"
+ Name="In_TrainIntegrityConfirmation"
  Guid="8b43e235-2f1a-45d9-83a5-b4d65e3c74ef"
 >
 <ReqRef
@@ -2894,11 +2894,11 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
  Guid="2905a59e-27fb-48e9-9c46-0aa361a543e3"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="OUT.FLOI"
+ TypeName="OUT.SBI"
  Default=""
  Mode="Outgoing"
  Implemented="TRUE"
- Name="Out_FLOI"
+ Name="Out_SBI"
  Guid="9d662df1-dbdb-49e1-a261-ece8bafd0eec"
 >
 <ReqRef
