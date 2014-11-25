@@ -885,7 +885,9 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition
  Guid="d3212dc0-23c8-4d70-9ab3-2a6fc8eb032c"
->Kernel.TrainPosition.Position.DataState == DataState.Invalid</PreCondition></PreConditions>
+>Kernel.TrainPosition.Position.DataState == DataState.Invalid
+  OR  
+Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f1892ef5-6bc1-44ef-857f-821f678ed69b"
