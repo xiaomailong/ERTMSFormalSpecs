@@ -6469,7 +6469,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bf307ba9-6917-420d-900c-66d83a6e4c55"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>The procedure for handling the entry into TR Mode.</Comment>
+<StateMachine
  Default="S010"
  NeedsRequirement="FALSE"
  Guid="8c4ba40d-94dc-4824-90a2-260c8fcf9c6a"
@@ -6481,6 +6482,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  Width="80"
  Height="40"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="S010"
  Guid="d4dcf255-1289-4090-9a09-4b217c379d79"
 >
@@ -6489,8 +6491,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8b5876e6-af13-4adc-82fb-b03a600f4edb"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>State S010: Begin the Train Trip procedure</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="abd48729-52f1-4614-94de-c740e6c52c53"
 >
@@ -6506,9 +6510,11 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d842bcb0-95bf-44da-8e15-6f8efee1a6b6"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Go to A025</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="E015"
  Guid="8a5e8ffd-1a27-434a-9e69-4293bc3ea888"
@@ -6518,7 +6524,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Actions>
 <Action
  Guid="14d6ea94-ebf6-463a-b1e1-052185a81715"
->THIS &lt;- HandleModeChange.TrainTrip.A025</Action></Actions>
+>THIS &lt;- A025</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -6527,6 +6533,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  Width="80"
  Height="40"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="A025"
  Guid="866553a7-858d-4c0b-925c-bede7328929f"
 >
@@ -6535,8 +6542,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="889b0fd1-2131-42d2-a42c-5b5aa19bf9cb"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Action A025: Enter Trip Mode</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="4a023eea-4cbc-4578-b9a0-b750a1234d68"
 >
@@ -6553,7 +6562,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5ef34fe5-6ee5-45f4-bf4d-17b44a8a8366"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Set Mode to Trip and go to D020</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6587,8 +6597,20 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8000d1db-6d0b-41b7-8ddf-dbb1848407ff"
 >
-</ReqRef><StateMachine
+</ReqRef><ReqRef
+ Id="1e84c5a2-c916-45da-94c9-cdf6585f39c9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4a17e7f9-00db-4021-a1dc-acedc9ae1b29"
+>
+</ReqRef><ReqRef
+ Id="570307dd-e817-45d9-b3d0-1400a19b04f2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f2458dbe-4a0e-45cd-8a60-eb54ed09139e"
+>
+</ReqRef><Comment>Action A030: Delete all MA and Track Description information. Proceed to A035.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="cde70f7d-c871-4b94-82a1-c376e01706aa"
 >
@@ -6604,13 +6626,16 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c9f3513f-06f2-4d39-871e-b5c59f481b34"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>The Mode change report is sent (this is handled in the EURORADIO namespace, in Position Report) and the procedure goes to A035.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="A030"
  Guid="717863ea-6a86-4c02-b1d2-73bb7f6b5831"
 >
+<Comment>The Mode change report is handled in the EURORADIO namespace.
+A Position Report is sent whenever the Mode changes (amongst other conditions), so the report is not explicitely handled here.</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -6625,6 +6650,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  Width="80"
  Height="40"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="A035"
  Guid="b14d9f9c-143b-4ca3-9851-a1cfb466287c"
 >
@@ -6633,7 +6659,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e96fdd25-c1f0-4460-b86c-73c3f8da6aab"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Action A035: Delete all MA and Track Description information. Proceed to S050.</Comment>
+<StateMachine
  Default=""
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -6651,7 +6678,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="16147079-f80a-4498-a415-d3ef2552d1b3"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>All MA and Track Description information (except track conditions) are deleted and the procedure goes to state S050.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6696,8 +6724,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="587e4460-d3f7-417e-85bc-d1047fb5cf00"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>State S050: Apply brakes until the train reaches standstill. Proceed to S060.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="98ebac5b-1432-4b8a-a56b-103b573836e8"
 >
@@ -6733,9 +6763,11 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9a124576-2bcb-43d6-bf81-eed2af7bb23c"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>When at standstill, go to S060.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="E055"
  Guid="a425b57a-0b9e-49bf-ab5b-48a10f9c53c1"
@@ -6743,7 +6775,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <PreConditions>
 <PreCondition
  Guid="bd912c80-b11d-4383-8f47-334482455281"
->Odometry.TrainSpeed() == 0.0</PreCondition></PreConditions>
+>Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="35e98016-41c6-4108-9083-ca69fceae8ce"
@@ -6765,8 +6797,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="243aab1e-b3f6-4de7-bd01-4ffc962a72da"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>State S060: Request acknowledgement of Train Trip from the driver. Once the acknowledgement is received, proceed to D080.</Comment>
+<StateMachine
  Default="RequestDriverAck"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="e9b9a454-2ec6-48d2-878e-2e609f9097f4"
 >
@@ -6790,8 +6824,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d079db42-1b28-4b33-ae44-84b36c9071d6"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Upon entering S060, request the Driver&apos;s acknowledgement then wait for the response.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="fc2a4181-029d-45d9-8437-a32ba1278e14"
 >
@@ -6808,7 +6844,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2a75ffa5-ede4-4723-b9e6-1001170d9e42"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Send request for Ack of Train Trip to the DMI, then wait for a response.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6841,8 +6878,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b06d8675-ca60-42aa-a492-82c5850d75a4"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Once the Driver has acknowledged the Train Trip, go to D080.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="0fecab45-efff-49dd-aac6-fb58215880c0"
 >
@@ -6879,7 +6918,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="40d6cfae-2ebe-448d-8464-849456c3f602"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>When the Ack of Train Trip is received, disable the request and go to D080.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -6916,8 +6956,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="22ab6a9c-33cc-4d67-b7b9-3a6724277e44"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Decision D080: Choose Action A105 or Decision D085 depending on the Level.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="1a807d05-4ca3-4817-bd4e-d4cbfee857e6"
 >
@@ -6934,87 +6976,58 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3eae54ee-9d89-409a-818b-e9c405957028"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the Level is level 1, 2 or 3, go to A105.
+If the Level is level 0 or NTC, go to D085.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
- NeedsRequirement="FALSE"
- Name="D080"
- Guid="47c99b16-4714-484d-9a71-ed255bd25f1b"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
  Implemented="TRUE"
- Verified="TRUE"
  Name="Level 1, 2, 3"
- Guid="f46967b3-066c-44e9-8ca0-c831b313871d"
+ Guid="78f5790c-2acb-4fbf-b606-d786bd713d74"
 >
 <ReqRef
  Id="7364d3c3-544e-4eea-adda-1d2b6461aaac"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3768a0b4-deba-41e1-8d25-b095f716e252"
+ Guid="400a83da-f0aa-40fb-b138-526727ae47c6"
 >
 </ReqRef><ReqRef
  Id="3d8929cd-3036-4ab6-a142-7e62115e9f72"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="08e80a66-1515-4ff4-a29b-ee24493437dd"
+ Guid="0f58f2d2-aab5-4167-89de-4723ffdeb938"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="Level 1, 2, 3"
- Guid="8c60610d-7ea5-422c-b217-849fb0892716"
->
+</ReqRef><Comment>If the Level is level 1, 2 or 3, go to A105.</Comment>
 <PreConditions>
 <PreCondition
  Guid="381346b4-42d5-4491-a5ee-33979319c657"
->Level.Value.Value in [Level.L1, Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Default.Level.L1, Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="42aef285-00ea-4612-9353-fe273c39f732"
->THIS &lt;- HandleModeChange.TrainTrip.A105</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
+>THIS &lt;- A105</Action></Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
- Verified="TRUE"
  Name="Level 0, NTC"
- Guid="4b72b4c7-d249-4ade-895f-73b1de77bba0"
+ Guid="2bbde536-e702-43f6-ace0-05265803d11a"
 >
 <ReqRef
  Id="20a77818-d458-4cc3-a579-79971189457e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="92467e81-6f88-47a7-a1be-33fe206607f5"
+ Guid="c14785b6-78ad-4b7f-b51f-2eb718ac50ed"
 >
 </ReqRef><ReqRef
  Id="19c49a5f-d2e2-456a-847c-6d87a956a360"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="61d296c6-49db-4064-a83f-0e5added5536"
+ Guid="62e60848-474d-44df-8533-e8c0435ce0c0"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="Level 0, NTC"
- Guid="40a881f1-9fac-4d18-9c5c-bb4c1f67de4a"
->
+</ReqRef><Comment>If the Level is level 0 or NTC, go to D085.</Comment>
 <PreConditions>
 <PreCondition
  Guid="c304e2bd-7f2c-40b5-87de-07ac74c29513"
->Level.Value.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
+>Level.Value.Value in [Default.Level.L0, Default.Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="cf9c0c8e-5d6f-458e-9576-fd09a3dc7b9e"
->THIS &lt;- HandleModeChange.TrainTrip.D085</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+>THIS &lt;- D085</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7031,8 +7044,13 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="80d1088a-47d6-4f2f-8a99-b4fbcccecc02"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Action A145: Change Mode to SN and end the procedure.
+
+
+This is handled in the rules for Mode transitions.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="a9d44c24-d705-4bb1-8d3a-ceb8c78e803f"
 >
@@ -7050,8 +7068,12 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1e0ce39f-fe4a-4d07-8214-5f2f2ce85284"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Action A105: Mode changes to PT and the emergency brake command is revoked. Proceed to D110.
+
+This action is handled in the rules for Mode transition.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="8bf0d892-71ea-424d-bc61-54449cb57d66"
 >
@@ -7070,8 +7092,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="437eed85-5f42-4c4b-8cd6-599b4d9b74ef"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Decision D110: Choose Action A115 or State S140, depending on the Level.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="431198bf-6820-4708-81c8-0ffe810a8f38"
 >
@@ -7089,81 +7113,58 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="32009a08-4984-4b79-9822-b5072ce81dc5"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><ReqRef
+ Id="7c644530-c702-4fd9-a9a1-a73f90a2bdf8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b8c22e7e-a29f-41b5-92aa-69cd905dd8ef"
+>
+</ReqRef><ReqRef
+ Id="781ffdfe-d64c-4a5b-8759-e92aa9394b13"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="05fbbc61-2432-439f-9174-27d3d9b73836"
+>
+</ReqRef><Comment>If the Level is level 1, go to S140.
+If the Level is level 2 or 3, go to A115.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="D110"
- Guid="aaa6c15f-7a4d-4d24-8b16-bcaa416a3b5e"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Verified="TRUE"
  Name="Level 1"
- Guid="ca15aa9a-ba64-499d-bf34-3857058f75e1"
+ Guid="10a17ef9-2839-4b9d-a868-c30c7b6030ce"
 >
 <ReqRef
  Id="781ffdfe-d64c-4a5b-8759-e92aa9394b13"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="90e75686-e1dd-4bf3-ad6c-da85a9de42e5"
+ Guid="3b365a9c-0218-4e9e-88ea-d37b9c3c477d"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="Level 1"
- Guid="7eb53150-db6e-47a1-8fa3-81239ce685bd"
->
+</ReqRef><Comment>If the Level is level 1, go to S140.</Comment>
 <PreConditions>
 <PreCondition
  Guid="7ca85845-8383-49a3-b1ec-5c52d0b7fb35"
->Level.Value.Value == Level.L1</PreCondition></PreConditions>
+>Level.Value.Value == Default.Level.L1</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8b629f15-44a4-4733-a3f6-6316b6dd92d7"
->THIS &lt;- HandleModeChange.TrainTrip.S140</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
+>THIS &lt;- S140</Action></Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
- Verified="TRUE"
  Name="Level 2, Level 3"
- Guid="90c548c0-d48e-4ef8-88d0-d84e34ec2d33"
+ Guid="8ea39bbc-c118-432e-8bb7-a3074b8aaee8"
 >
 <ReqRef
  Id="7c644530-c702-4fd9-a9a1-a73f90a2bdf8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8ad8fb4b-88eb-4150-b9af-5a9c447e7af6"
+ Guid="f68b6cf0-ec48-4a6d-9539-760127266f68"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="Level 2, Level 3"
- Guid="46a4b8cf-787f-4cf7-af99-a67d94ceac6b"
->
+</ReqRef><Comment>If the Level is level 2 or 3, go to A115.</Comment>
 <PreConditions>
 <PreCondition
  Guid="9043dfd8-e25e-4e73-a46b-6aefb6c438f9"
->Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="880dd603-8c02-48bd-a1fc-aeea0c049095"
->THIS &lt;- HandleModeChange.TrainTrip.A115</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+>THIS &lt;- A115</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7181,8 +7182,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ed5e44ba-b928-4b65-833b-82df55ca2cc2"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>State S120: The on-board contacts the RBC and waits for acknowledgement of PT Mode. Proceed to D130.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="2d766ed0-11db-426f-983e-761ac79d6bc3"
 >
@@ -7195,6 +7198,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  Name="S120"
  Guid="49870eb8-75a7-4ab3-afe1-e36fc690039e"
 >
+<Comment>Send Position Reports periodically until either an acknowledgement is received or the maximum number of repetitions is reached.
+Once an acknowledgement is received, go to D130.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7207,7 +7212,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ea5a86f7-5d5f-4d63-ad68-d9b4e250757a"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Once an acknowledgement is received, go to D130.</Comment>
+<PreConditions>
 <PreCondition
  Guid="ec9ad665-223e-468e-92f5-4db91abad7e4"
 >Available ( EURORADIO.CurrentRBCConnection().MessageIn.RECOGNITION_OF_EXIT_FROM_TRIP_MODE )</PreCondition></PreConditions>
@@ -7230,7 +7236,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0cf44430-2574-4c41-aa00-dfd98902f232"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Once the maximum number of Position Reports have been sent, close the RBC session and the Override function will be activated.</Comment>
+<PreConditions>
 <PreCondition
  Guid="528d5e2d-a603-4abf-88cf-70f8a807690e"
 >EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= DateAndTime.CurrentTime</PreCondition><PreCondition
@@ -7252,7 +7259,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1da59079-3ecc-4d11-b595-eae8fb0a7e4b"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Send Position Reports to the RBC periodically until an answer is received or the maximum number of reports have been sent.</Comment>
+<PreConditions>
 <PreCondition
  Guid="af65778b-f8e2-4308-9aad-916b891b06a5"
 >EURORADIO.PositionReport.LastPositionReport.Time + EURORADIO.TimeBeforeMessageRepetition &gt;= DateAndTime.CurrentTime</PreCondition><PreCondition
@@ -7283,8 +7291,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ac4160fc-b782-4d8b-ae6b-bd381e13ba21"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Decision D130: Choose S130 or S140, depending on whether there are any pending emergency stops.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="e7dd3a38-8f4c-4fbe-a4a5-8b2e33ed05de"
 >
@@ -7302,41 +7312,21 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dc5f313a-546b-4aed-b77c-0fbd4b3ed044"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If there are no pending emergency stops, go to S140.
+If there are pending emergency stops, go to S130.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="D130"
- Guid="f42d1ba7-8167-4f35-af40-aadc703f5fc5"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Verified="TRUE"
- Name="No emergency stop"
- Guid="f388a70a-f881-4bd1-8a8d-c83cf9273cbc"
+ Name="No emergency stops"
+ Guid="b8e7baff-494a-4096-b7c0-42d2cdcee348"
 >
 <ReqRef
  Id="3991569f-53ae-4c85-ae2e-22ccdea80ca5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7490d3f6-d976-40db-bc88-1d23ba1ad304"
+ Guid="95c1a232-cce1-4409-90ab-61364b666bb9"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="No emergency stop"
- Guid="02a1e1e3-461a-49b8-95a2-4baa7d3f2c3a"
->
+</ReqRef><Comment>If there are no pending emergency stops, go to S140.</Comment>
 <PreConditions>
 <PreCondition
  Guid="9dc5b1d9-05dc-49e3-89a1-97efd85b048c"
@@ -7344,29 +7334,18 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Actions>
 <Action
  Guid="6369faef-bf0e-4161-8a3d-8873f1c1f0ac"
->THIS &lt;- HandleModeChange.TrainTrip.S140</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
+>THIS &lt;- S140</Action></Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
- Verified="TRUE"
  Name="Pending emergency stop"
- Guid="7fcf9c2e-9ea9-4669-a9c9-bf80708c2e81"
+ Guid="79602819-7a8c-4f40-9244-a1d7fb728180"
 >
 <ReqRef
  Id="0bf0ab9d-7ce3-46d5-a104-d59dbbcf8e4a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bdce7a4a-2aae-469e-adad-d346097e9524"
+ Guid="1361f01b-80aa-4868-a23a-b40b9b8b177a"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="Pending emergency stop"
- Guid="d2890b12-4e78-4ff3-ad8e-03fb74508d6d"
->
+</ReqRef><Comment>If there are pending emergency stops, go to S130.</Comment>
 <PreConditions>
 <PreCondition
  Guid="8ea2e2cc-f1f2-415b-bca4-fe21fb4e80bb"
@@ -7374,9 +7353,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Actions>
 <Action
  Guid="bb6f0559-f476-4f61-8234-749ad0a46b84"
->THIS &lt;- HandleModeChange.TrainTrip.S130</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+>THIS &lt;- S130</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -7394,8 +7371,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0bda7d4e-1ac3-459b-bea2-b1ff0ec8b4ce"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>State S130: Wait for the RBC to revoke all emergency stops. Proceed to S140.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="c22e776f-bfb0-4714-b4ad-31fb12e9d843"
 >
@@ -7412,7 +7391,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e408e8f5-ce27-4475-ab54-3b1773507964"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Once all the stored emergency stops have been revoked by the RBC, go to S140.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -7446,8 +7426,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7c053713-c14b-4e9c-8fb9-49a35121d012"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>State S140: The Driver can select either &apos;Start&apos; or entry in SH Mode. Depoending on the Level and the Driver&apos;s selection, proceed to States S160 or S170, or start the &quot;Shunting initiated by Driver&quot; procedure.</Comment>
+<StateMachine
  Default="RequestDriverSelection"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="145893a3-bfa7-4fc5-9827-ee7aa1860de2"
 >
@@ -7471,8 +7453,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2c17bd03-7731-4bfb-bb52-f74538c5627c"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Propose Entry in SH and Start (if applicable), then go to DriverSelectionRequested.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="8d467867-fea6-4ae6-8176-92886ff14de1"
 >
@@ -7489,7 +7473,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="10293d00-d6dc-41c0-98a2-d492ad760d64"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Offer Entry in Shunting and, if valid Train Data is stored on-board, Start.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -7519,7 +7504,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6343a7f1-10cc-47aa-ade4-688c8f58c955"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Propose &apos;Start&apos; if there is valid Train Data stored on-board.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -7564,8 +7550,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4c5165d9-bdd3-44b3-91b0-157eb2ba7a72"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Wait for the Driver&apos;s response. The action will depend on the response and the Level.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="e65e02f1-a1f2-47da-b33e-7bfde25d6290"
 >
@@ -7582,135 +7570,94 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a3db26cc-42a0-4af3-9117-129b5d500418"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the Driver selects Start and the Level is level 2 or 3, go to S150.
+If the Driver selects Start and the Level is level 1, go to S160.
+If the Driver selects Entry in SH, initiate &quot;Shunting initiated by Driver&quot; procedure.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
- NeedsRequirement="FALSE"
- Name="Driver has answered"
- Guid="dc80b58a-a19c-4a70-8e29-ee840b3c22d8"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
  Implemented="TRUE"
- Verified="TRUE"
  Name="E155"
- Guid="acd14719-deff-4dc2-a620-960865f76bc1"
+ Guid="cf98221e-cb8e-4e9f-8246-958126ac1f83"
 >
 <ReqRef
  Id="a4b631e4-9069-4f56-b3ab-340f8ec68908"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c56e561c-ec28-47b0-b853-7e8ec9299be5"
+ Guid="7b73edaa-b642-4145-930d-d7af8b4edced"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="E155"
- Guid="f0497429-4efd-43c9-bb99-b27896aeb637"
->
+</ReqRef><Comment>If the Driver selects Start and the Level is level 2 or 3, go to S150.</Comment>
 <PreConditions>
 <PreCondition
  Guid="8748e903-765c-482a-b060-e24a8c012a8e"
 >DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="16f83256-478c-4f7c-9056-b8097c00fbda"
->Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="08f650ec-16ac-4ddd-bd1f-a112069dd4aa"
->THIS &lt;- HandleModeChange.TrainTrip.S150</Action><Action
- Guid="741cde16-5ca2-4fe2-a0ff-31743d338787"
->DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="943a1f2f-1239-439f-a012-d060ccc05728"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action><Action
+ Guid="741cde16-5ca2-4fe2-a0ff-31743d338787"
+>DMI.MasterDMI().In_Start.InputInformation.Disable()</Action><Action
+ Guid="08f650ec-16ac-4ddd-bd1f-a112069dd4aa"
+>THIS &lt;- S150</Action></Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
- Verified="TRUE"
  Name="E150"
- Guid="5cb5204a-78be-4c53-bdf6-4e37a0ebabc8"
+ Guid="02c3a70e-2e23-40c5-bb25-2c8366b0bf56"
 >
 <ReqRef
  Id="8ed924c8-449b-49e3-b97b-9d9bac584781"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="99bd0c1c-3c39-432c-af7f-8cff8fca803c"
+ Guid="7858503e-4f6a-46d2-88b2-175cdfed8f7e"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="E150"
- Guid="c941ab2d-32fc-4ebb-9690-1a15dc031988"
->
+</ReqRef><Comment>If the Driver selects Start and the Level is level 1, go to S160.</Comment>
 <PreConditions>
 <PreCondition
  Guid="22c8f914-81c5-45ec-98e4-85fec0186b89"
->Level.Value.Value == Level.L1</PreCondition><PreCondition
+>Level.Value.Value == Default.Level.L1</PreCondition><PreCondition
  Guid="bcbf278e-7248-4a02-9580-06002d14112f"
 >DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="b68a1177-0104-41b1-b6c3-eb641d14f384"
->THIS &lt;- HandleModeChange.TrainTrip.S160</Action><Action
- Guid="91093a5f-2aae-457d-a856-d36fbd2facc9"
->DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="9617e3b5-fa81-46f2-aefb-50865d8ce869"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action><Action
+ Guid="91093a5f-2aae-457d-a856-d36fbd2facc9"
+>DMI.MasterDMI().In_Start.InputInformation.Disable()</Action><Action
+ Guid="b68a1177-0104-41b1-b6c3-eb641d14f384"
+>THIS &lt;- S160</Action></Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
- Verified="TRUE"
  Name="E145"
- Guid="a73f6d6a-2f67-47d8-b6f0-8c09cf3dd7ba"
+ Guid="134a5ebf-963f-44aa-b497-a3ca9bad7887"
 >
 <ReqRef
- Id="e4f509dd-fcb0-4205-8e6b-921aae447bca"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="adf5eab7-49b1-4869-a78f-785b70f9f1dc"
->
-</ReqRef><ReqRef
  Id="3d01d017-72ad-4ae6-888e-a4e7f0241a33"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b0fe5c62-0417-4061-91d0-6820be40625d"
+ Guid="725324e5-f800-4a3a-8f8a-16b72cbc8cde"
 >
 </ReqRef><ReqRef
  Id="a7dfd21b-40f7-4ea2-8604-1cb1cf5a2a65"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6081d822-9359-40b7-901e-6ff1f9e03321"
+ Guid="ab462add-6711-4651-8efd-23956f4f4f0c"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="E145: Shunting selected by driver"
- Guid="6babfe60-c38c-4a03-b695-1c1a37b2e3da"
+</ReqRef><ReqRef
+ Id="e4f509dd-fcb0-4205-8e6b-921aae447bca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68152ba1-59ec-42e3-9d7c-f297af4902cb"
 >
+</ReqRef><Comment>If the Driver selects Entry in SH, initiate &quot;Shunting initiated by Driver&quot; procedure.</Comment>
 <PreConditions>
 <PreCondition
  Guid="fbf6c6bf-abd0-403c-bb99-33cf81ed6bce"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="d367c039-b4a7-42a3-a80f-a18eed86e4d4"
->Kernel.HandleModeChange &lt;- HandleModeChange.ShuntingInitiatedByDriver</Action><Action
  Guid="180ce797-b671-4585-a52f-426f2fa4056b"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action><Action
  Guid="c9cabf9b-e4f8-4ebb-ace5-dbab095ab111"
->DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+>DMI.MasterDMI().In_Start.InputInformation.Disable()</Action><Action
+ Guid="d367c039-b4a7-42a3-a80f-a18eed86e4d4"
+>HandleModeChange &lt;- ShuntingInitiatedByDriver</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -7729,8 +7676,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="51a0236b-7b45-40ef-9014-5beabdbacb96"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>State S150: The on-board sends an MA request and chooses States S160 or S170, or ends the procedure, depending on the response.</Comment>
+<StateMachine
  Default="SendMARequest"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="89057797-d1bb-4252-8116-2326fba25163"
 >
@@ -7754,8 +7703,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="99c11309-8314-4ba5-8130-18e9d224f951"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Send a MA request to the RBC, the ngo to MARequestSent.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="5b07bb1c-d2be-45f2-8f2a-019b8fdda636"
 >
@@ -7772,7 +7723,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9cd4a2d1-e6ca-488b-b3a8-ce680a761be1"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Send a MA request and go to MARequestSent.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -7815,8 +7767,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ba5cba9f-bfe7-4591-a559-1c5dfbe9974c"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>After a MA request is sent, the on-board waits for a response and either goes to S160 or S170, or ends the procedure, depending on the response.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="b586e25e-24a5-4e61-b832-69de7ff17041"
 >
@@ -7829,6 +7783,9 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  Name="MARequestSent"
  Guid="78e2dae6-48fc-46f7-8a3c-e247b2878a8f"
 >
+<Comment>If the RBC sends a SR authorisation, go to S160.
+If the RBC sends a MA with a Mode Profile, go to S170.
+If the RBC sends a MA without a Mode Profile, the Mode will change to FS and the Train trip procedure will end. This is handled in the Mode transitions.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7841,14 +7798,15 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fe9b9104-ce87-4d3e-b907-2e1299ed38c4"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If the RBC sends a SR authorisation, go to S160.</Comment>
+<PreConditions>
 <PreCondition
  Guid="de3e27a7-c5e6-4f07-8b68-aadb8d7fc131"
 >SR.SRAuthorised()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7ddbbfa8-8c2a-423e-982b-b4feec5a94ae"
->Kernel.HandleModeChange &lt;- HandleModeChange.TrainTrip.S160</Action></Actions>
+>THIS &lt;- S160</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="E175"
@@ -7874,7 +7832,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="aeed2537-fc04-4a96-9cc9-44aab898ddab"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If the RBC sends a MA with a Mode Profile, go to S170.</Comment>
+<PreConditions>
 <PreCondition
  Guid="abe91836-f15f-4e85-bb48-284618adc79f"
 >Available ( MA.MA )</PreCondition><PreCondition
@@ -7883,7 +7842,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Actions>
 <Action
  Guid="6f1a6f0a-0a50-49dc-a9c6-9024364d3bd2"
->Kernel.HandleModeChange &lt;- HandleModeChange.TrainTrip.S170</Action></Actions>
+>THIS &lt;- S170</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
@@ -7907,8 +7866,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6b708915-a39b-42b4-868a-4dc801c47d79"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>State S160: The Driver is requested to acknowledge the entry in SR Mode. Once this is received, the procedure ends.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="fccae4c9-94d6-4626-a5f4-6550c57d1665"
 >
@@ -7934,7 +7895,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3324e2a7-ca2b-4ded-8dbb-6fc8689af099"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Send a request to the Driver for &quot;Acknowledgement of SR Mose&quot;.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -7972,8 +7934,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ac405ca3-7ec3-4a8a-b2ae-6bf2f19f994b"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>State S170: The Driver is requested to acknowledge the Mode received in the Mode Profile. Once this acknowledgement is received, the procedure ends.</Comment>
+<StateMachine
  Default="RequestDriverAck"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="e18c8ff9-90a9-4638-adc4-35ddceb7faca"
 >
@@ -7992,8 +7956,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d8c8ae2d-4095-4f58-be82-4760a49588c7"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Request acknowledgement for the Mode required by the Mode Profile, then go to DriverAckRequested.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="6e73bdb0-d4c6-4e42-be99-f237e7fd6afc"
 >
@@ -8015,7 +7981,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="cc19b645-67cd-4812-a689-0dadbb6c5ae6"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Send a request to the DMI for acknowledgement of the Mode as requested by the Mode Profile and go to DriverAckRequested.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -8049,7 +8016,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f2654f48-25cd-40f4-95c6-cd4fb966d62b"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the Mode Profile contains a OS Mode starting at the train&apos;s position, request acknowledgement for OS Mode.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -8085,7 +8053,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0570dace-e623-48b2-8388-443eba9b7d77"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the Mode Profile contains a LS Mode starting at the train&apos;s position, request acknowledgement for LS Mode.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -8121,7 +8090,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f0b6a958-5718-4b1f-a74a-787ff31fc4c6"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the Mode Profile contains a SH Mode starting at the train&apos;s position, request acknowledgement for SH Mode.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -8156,8 +8126,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fb26ec59-2af2-401e-8562-96db3aa82775"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>The handling of the the Driver&apos;s acknowledgement is done in Mode transitions. The procedure will end.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="eed8ab44-bbad-4c80-8b03-35508889cf84"
 >
@@ -8177,8 +8149,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a135de75-d14f-46c3-a32d-1db6474db7d6"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Decision D020: Choose state S050 or actions A030 or A035 depending on the current Mode</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="2b0c7b24-54d3-4705-bf41-6d0493aed54f"
 >
@@ -8186,7 +8160,6 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
  Name="D020"
  Guid="f97abc09-1e2c-44bb-a96c-6831e513ab6a"
 >
@@ -8195,77 +8168,83 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="11889f89-e06f-4a8f-80f5-5e5d980fe054"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><ReqRef
+ Id="4ab254b6-4bbf-464c-9170-75905b61adcb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d0f2934c-2b70-476c-ab6b-49ffafac9866"
+>
+</ReqRef><ReqRef
+ Id="34640ebd-9a29-4cc2-9bfc-c11616a1eac8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c327cdbc-433f-45c2-916a-21f1a5d726cb"
+>
+</ReqRef><ReqRef
+ Id="32670e49-9b3d-41ae-b115-4c9a1f6dc1e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3afe59f6-9cf8-43cd-b1ec-d8ebd001c101"
+>
+</ReqRef><Comment>If Level is level 1, go to A035.
+If Level is level 2 or 3, go to A030.
+If Level is level 0 or NTC, go to S050.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="D020"
- Guid="bbd09539-429a-4e90-91f9-52bec1354ce9"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Verified="TRUE"
- Name="Level 0, 1, NTC"
- Guid="12f8a0fa-5293-4c7e-8cf2-d90204dd6807"
+ Name="Level 1"
+ Guid="883b3daa-1c4a-4ce7-992a-37be32afd812"
 >
 <ReqRef
  Id="4ab254b6-4bbf-464c-9170-75905b61adcb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f44fc85b-fba2-4c72-a73e-88d342159e4b"
+ Guid="9e649cff-668f-42ee-8e78-cb088be23cae"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="Level 0, 1, NTC"
- Guid="a5a51690-6c8b-4e7e-82a2-5975aed47a77"
->
+</ReqRef><Comment>If Level is level 1, go to A035.</Comment>
 <PreConditions>
 <PreCondition
- Guid="c589396e-0e09-4cae-a8c6-118f0936d888"
->Level.Value.Value in [Level.L0, Level.L1, Level.LNTC]</PreCondition></PreConditions>
+ Guid="838ed804-4420-4d1a-a78c-d57a5807850b"
+>Level.Value.Value == Default.Level.L1</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="27ae36c8-f87e-448e-b4d6-15ccb4a6be4d"
->THIS &lt;- HandleModeChange.TrainTrip.A035</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
+ Guid="09c7dc8d-656d-4abc-b9f6-bcc86aaa7317"
+>THIS &lt;- TrainTrip.A035</Action></Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
- Verified="TRUE"
  Name="Level 2, 3"
- Guid="717902ac-88bd-4a45-9de3-5b400c0803b7"
+ Guid="8e3f491e-87bd-4744-8bdb-fd6e0455cce9"
 >
 <ReqRef
  Id="34640ebd-9a29-4cc2-9bfc-c11616a1eac8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="96193725-ebda-49e7-8828-ed1ce74b6efa"
+ Guid="fd350800-229a-467d-8fd4-45560d6e45b4"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- NeedsRequirement="FALSE"
- Name="Level 2, 3"
- Guid="15889146-e519-4dea-8614-18133a1a7512"
->
+</ReqRef><Comment>If Level is level 2 or 3, go to A030.</Comment>
 <PreConditions>
 <PreCondition
- Guid="0edfb4da-90b2-4a06-92f7-ecc4c3072690"
->Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+ Guid="e9082bb3-1606-490a-8aac-5442ef5a2374"
+>Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="d38f0a8d-0ca2-4bf0-a8fd-b330fdc6bfc5"
->THIS &lt;- HandleModeChange.TrainTrip.A030</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+ Guid="7021103e-5033-4c1f-b30f-d38d80b995e0"
+>THIS &lt;- TrainTrip.A030</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Level 0, NTC"
+ Guid="57f6d6ef-68c8-4451-b94f-4395021d8f29"
+>
+<ReqRef
+ Id="32670e49-9b3d-41ae-b115-4c9a1f6dc1e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c70d6782-c142-459d-9b25-bbfed38911c1"
+>
+</ReqRef><Comment>If Level is level 0 or NTC, go to S050.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="cbf4243a-6975-42f8-bad9-07e9c8245eba"
+>Level.Value.Value in [Default.Level.L0, Default.Level.LNTC]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="85b52695-7760-43b1-b283-fb62fe9e270a"
+>THIS &lt;- TrainTrip.S050</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8283,8 +8262,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="25305c66-d14c-4442-80b8-910123abfa37"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Decision D085: Choose Action A140 or Decision D090, depending on whether valid Train Data is stored on-board.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="f7773569-6f7d-42f1-882f-42945cfeb32a"
 >
@@ -8302,51 +8283,31 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3b2a7813-f99d-49ac-9c50-55fa017cfbbf"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the on-board has valid Train Data stored, go to D090.
+If the on-board does not have valid Train Data stored, go to A140.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="D085"
- Guid="68450dfd-a40c-4386-a581-ffccb9601497"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Verified="TRUE"
  Name="Valid data"
- Guid="3e89c445-d468-4732-98af-704d3a049308"
+ Guid="9701c061-6a35-44f4-a22e-aa5ba82663c5"
 >
 <ReqRef
  Id="ad21fa53-6db5-4bf3-af13-6d90389c9bdb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="55347714-a73d-44b8-9589-fd82340f4a57"
+ Guid="fa4ad0e8-21a4-415f-9312-6a76b111f771"
 >
 </ReqRef><ReqRef
  Id="5922076b-396c-4635-a3bc-dd00149b3647"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a2d7f6ad-746d-4277-9822-53353632da0e"
+ Guid="2674894b-c879-4cb2-b6bd-6e2b51bad4b8"
 >
 </ReqRef><ReqRef
  Id="baa74e49-0452-49c0-a452-f75558625db1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b8871b49-81b7-4d8a-acaf-f0ad185ad3f5"
+ Guid="f0b17802-d381-45c0-b0f9-7a5f7c37c57d"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="Valid data"
- Guid="ee6a6164-09ee-4bf3-b752-976a403958ef"
->
+</ReqRef><Comment>If the on-board has valid Train Data stored, go to D090.</Comment>
 <PreConditions>
 <PreCondition
  Guid="009375ee-d07e-4c39-9d8c-5d10e25e1063"
@@ -8354,34 +8315,23 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Actions>
 <Action
  Guid="d1abc592-c25b-46e3-bedc-b40ab4be542f"
->THIS &lt;- HandleModeChange.TrainTrip.D090</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
+>THIS &lt;- D090</Action></Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
- Verified="TRUE"
  Name="No valid data"
- Guid="bdc3f874-0b71-48a3-898f-eeda84e6850d"
+ Guid="642e837f-37b3-44a5-a7a2-d9e0facf2744"
 >
 <ReqRef
  Id="68b4d5bd-48d1-4e00-b91b-a41dc51986be"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="522e68d3-93bf-4f05-a85c-01466458c1a5"
+ Guid="18e08981-853f-41da-a6e7-a6b7a2dbf330"
 >
 </ReqRef><ReqRef
  Id="19c49a5f-d2e2-456a-847c-6d87a956a360"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="171e3d8c-58ae-412a-b4ce-e5bbd9b989a4"
+ Guid="f7cc064e-ac74-4fe1-aa6d-6d08649af3b4"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="No valid data"
- Guid="6dc29870-42b4-48fa-a382-38337e18452e"
->
+</ReqRef><Comment>If the on-board does not have valid Train Data stored, go to A140.</Comment>
 <PreConditions>
 <PreCondition
  Guid="7c9fb8b6-860d-4f53-a90c-4267b9f1482e"
@@ -8389,9 +8339,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Actions>
 <Action
  Guid="08e32f3e-7e99-4a6b-8345-c01f48191fbe"
->THIS &lt;- HandleModeChange.TrainTrip.A140</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+>THIS &lt;- A140</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8409,8 +8357,10 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b5af8f8f-d247-44cd-bd8d-36298e47cb1b"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Decision D090: Choose Actions A145 or A150, depending on the Level.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="210482a6-5934-4192-9d96-6032e036f8c3"
 >
@@ -8428,46 +8378,26 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="100e4e01-0374-4be9-aae5-0412e0186c34"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the Level is level 0, go to A145.
+If the Level is Level NTC, go to A150.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="D090"
- Guid="4e4890a5-5db6-4c8a-b1fd-d77b4bbe20fc"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Verified="TRUE"
  Name="Level 0"
- Guid="7195c9bf-4ae9-4cb2-a497-f9dc5e8c8208"
+ Guid="0cacdbf5-f675-4382-97c2-77ec99ef335a"
 >
 <ReqRef
  Id="e7bdf687-c54b-4d32-a5c6-00cd7f6bd21e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f4ecbef3-ece9-4ea7-b2c2-0953efbd3107"
+ Guid="e796920b-d7fe-42b3-ac6a-595a7518297c"
 >
 </ReqRef><ReqRef
  Id="5922076b-396c-4635-a3bc-dd00149b3647"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c9edddc4-750c-4b8c-9cee-04e9fefb12dd"
+ Guid="ca6fbeb0-536d-449c-8c96-c14bc540f420"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="Level 0"
- Guid="d3df8dfe-847b-49c8-a4b1-22b537ffe664"
->
+</ReqRef><Comment>If the Level is level 0, go to A145.</Comment>
 <PreConditions>
 <PreCondition
  Guid="e310a442-e50c-450e-b592-b583920672ac"
@@ -8475,34 +8405,23 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Actions>
 <Action
  Guid="dd60d7fc-8555-4d2d-8699-72ff8b2617a4"
->THIS &lt;- HandleModeChange.TrainTrip.A145</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
+>THIS &lt;- A145</Action></Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
- Verified="TRUE"
  Name="Level NTC"
- Guid="1205b36c-5eab-45e6-ac7a-f987b91fbdb0"
+ Guid="e71f81aa-590c-4c08-b02f-6a0b981e45e9"
 >
 <ReqRef
  Id="602dc383-9138-403a-ac74-13e9cb2047eb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b69180ea-75ca-4a42-ae44-7e3d39ce2082"
+ Guid="f73159e2-3696-44ed-a91c-e932d91bb1fe"
 >
 </ReqRef><ReqRef
  Id="baa74e49-0452-49c0-a452-f75558625db1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a25059b5-7bda-4251-bd82-c7606591f6a0"
+ Guid="f18f6e2a-b3e4-49aa-9ca9-2b50783a12d4"
 >
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Verified="TRUE"
- NeedsRequirement="FALSE"
- Name="Level NTC"
- Guid="f95be7a7-b270-4241-bdcc-6a54cf3e76eb"
->
+</ReqRef><Comment>If the Level is Level NTC, go to A150.</Comment>
 <PreConditions>
 <PreCondition
  Guid="91457cfd-d5e2-4eab-937d-a0c20b543156"
@@ -8510,9 +8429,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Actions>
 <Action
  Guid="cc7d4ceb-1e1a-4a4e-869e-7e75a2f8c68e"
->THIS &lt;- HandleModeChange.TrainTrip.A150</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+>THIS &lt;- A150</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -8529,8 +8446,13 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bd39dfb0-eba2-4525-8fde-7e3454153182"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Action A140: The Mode changes to SH and the procedure ends.
+
+
+This is handled in the rules for Mode transitions.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="8a51e59e-d324-4b4b-82d0-f83a497aa00e"
 >
@@ -8548,8 +8470,13 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0619249f-69e8-4463-b3a2-2adcf581dc37"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Action A145: Change Mode to UN and end the procedure.
+
+
+This is handled in the rules for Mode transitions.</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="4e6494e9-929f-4f07-baf4-418497cd560d"
 >
@@ -8568,8 +8495,12 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4f34d119-827a-444b-9477-6e95879461ad"
 >
-</ReqRef><StateMachine
+</ReqRef><Comment>Action A105: Mode change to PT is reported to the RBC. Proceed to S120.
+
+The report is handled in the EURORADIO namespace</Comment>
+<StateMachine
  Default=""
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="d73748af-2ae1-4cf2-a671-4273bea9481f"
 >
@@ -8586,7 +8517,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="044045fe-5208-4dd2-862c-ee4a0cee6055"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Go to S120, the report is handled by a Position Report in the EURORADIO namespace.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -8616,7 +8548,8 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="96ae4a3d-1a06-4ba9-9cb3-204f9b217be1"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If, after the on-board enters PT Mode, the Level is level 2 or 3 and the RBC connection is lost, the Driver will have the possibility to select &quot;Override&quot; and the procedure Override will start, ending Train Trip.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
