@@ -2140,7 +2140,7 @@ This is used for when a new reference location is received and the MA is relocat
 </ReqRef><Comment>Indicates if the distance interval provided as parameter is fully covered by the track description (SSP + gradient).</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Length"
+ Type="Default.BaseTypes.Length"
  Name="aDistanceInterval"
  Guid="1e8c4f20-5a79-4fda-9dd3-56eb3051e2f7"
 >
@@ -2179,7 +2179,7 @@ Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreCond
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Cacheable="TRUE"
  Default=""
  Width="100"
@@ -2192,7 +2192,7 @@ Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreCond
 <Comment>Provides a speed restriction based on the SvL</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="Distance"
  Guid="4c792cc1-644f-4b5e-8e8d-29956e2100c7"
 >

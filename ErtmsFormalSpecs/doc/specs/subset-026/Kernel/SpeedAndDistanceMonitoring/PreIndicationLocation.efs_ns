@@ -829,7 +829,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Time"
+ Type="Default.BaseTypes.Time"
  Cacheable="TRUE"
  Default=""
  Width="100"
@@ -861,7 +861,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Time"
+ Type="Default.BaseTypes.Time"
  Cacheable="TRUE"
  Default=""
  X="110"
@@ -894,7 +894,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Time"
+ Type="Default.BaseTypes.Time"
  Cacheable="TRUE"
  Default=""
  X="220"
@@ -942,7 +942,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
 <Expression>TrainData.BrakingParameters.T_traction_cut_off (EstimatedAccelerationSetToZero =&gt; True)</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Time"
+ Type="Default.BaseTypes.Time"
  Cacheable="TRUE"
  Default=""
  X="330"
@@ -971,7 +971,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.MaxTime ( X1 =&gt; TrainData.BrakingParameters.T_be () - T_tractionind (), X2 =&gt; 0.0 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
  X="440"
@@ -989,7 +989,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
 </ReqRef><Comment>Provides the SBI curve corresponding to an EOA for the calculation of the indication location</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Name="Vmrsp"
  Guid="3e91ee82-1b5f-4cdb-939a-344ba106ce6e"
 >

@@ -1690,7 +1690,7 @@ TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target(
 </ReqRef><Comment>This function returns the Target Speed of the currently supervised target, unless it is the EOA or the SvL, in which case it returns the associated release speed.</Comment>
 <Parameters>
 <Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="a42fe859-9b76-438a-be40-dc0154cd6d13"
 >
@@ -1739,7 +1739,7 @@ MA.IsSvL(aTarget)</PreCondition><PreCondition
 </ReqRef><Comment>Returns the target speed + the difference to warning speed for a LOA or MRDT target, or the release speed for a EOA or SvL.</Comment>
 <Parameters>
 <Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="bcffc93e-fb88-409d-b230-a75428068c5e"
 >
@@ -1788,7 +1788,7 @@ MA.IsSvL(aTarget)</PreCondition></PreConditions>
 </ReqRef><Comment>Returns the target speed + the difference to sbi speed for a LOA or MRSP target, or the release speed for a EOA or SvL.</Comment>
 <Parameters>
 <Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="868355bf-af60-4a8e-b83e-1f294c8c1df6"
 >
@@ -1970,7 +1970,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
     Vest =&gt; Vest )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
  Width="100"
@@ -2007,12 +2007,12 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
 </ReqRef><Comment>Provide the distance d_P fore the given target at the current MRSP speed.</Comment>
 <Parameters>
 <Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="b58b45bb-a4c8-495c-9a62-6b4931d211f9"
 >
 </Parameter><Parameter
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Name="Vest"
  Guid="bc46c78e-bd91-4056-be71-83dc179d5819"
 >
@@ -2086,7 +2086,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
     X2 =&gt; DistanceForSpeed ( Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; GUI_Target ( Distance =&gt; d, aTarget =&gt; aTarget ), Speed =&gt; Vest ) )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
  Y="60"
@@ -2104,12 +2104,12 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
 </ReqRef><Comment>Provides the location corresponding to the intervention location for the provided speed and target.</Comment>
 <Parameters>
 <Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="c02d7eed-d37a-432d-8aae-271c683cfd82"
 >
 </Parameter><Parameter
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Name="Vest"
  Guid="b50aac75-365c-443a-96f9-ea95ded78096"
 >
@@ -2131,7 +2131,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
 <Expression>d_P_Target ( aTarget =&gt; aTarget, Vest =&gt; Vest ) - Default.BaseTypes.SpeedToMS ( Vest ) * DecelerationCurves.T_indication ()</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Cacheable="TRUE"
  Default=""
  Width="100"
@@ -2148,12 +2148,12 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
 </ReqRef><Comment>Provides the GUI curve for the given target</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="Distance"
  Guid="553dece7-b16e-48eb-8225-7aa81cc35199"
 >
 </Parameter><Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="8cf06f07-a0c3-44d7-9881-e6bde59c1a64"
 >
@@ -2169,7 +2169,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
 )(Distance)</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
  Width="100"
@@ -2201,12 +2201,12 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
 </ReqRef><Comment>Provide the distance d_W for the given target.</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Name="Vest"
  Guid="858de658-9932-4f69-bf0c-a532d954bb11"
 >
 </Parameter><Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="b411cfd0-85d0-4d65-8c4f-51a05f00f016"
 >
@@ -2232,7 +2232,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
 ) - BaseTypes.SpeedToMS ( Vest ) * T_warning</Expression>
 </Case></Cases>
 </Function><Function
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  Width="100"
  Height="50"
@@ -2275,7 +2275,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
  Guid="05402e57-a75d-4907-99d0-3b6a302f52e5"
 >
 </Parameter><Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="bebd6072-52ed-400c-9829-cf509bbf6750"
 >
@@ -2291,7 +2291,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
 )(Distance)</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Default=""
  X="110"
  Width="100"
@@ -2304,12 +2304,12 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
 <Comment>Provides the distance d_SBI1 for the provided target.</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Name="Vest"
  Guid="b6ae4883-4a43-4eb6-8b24-168c2b7c4558"
 >
 </Parameter><Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="592d6c81-6feb-4883-8746-b8a936ff31b4"
 >

@@ -1360,7 +1360,7 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreCondi
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case></Cases>
 </Function><Function
- Type="Targets"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets"
  Cacheable="TRUE"
  Default=""
  Width="100"
@@ -1385,7 +1385,7 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreCondi
   USING X IN X</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Cacheable="TRUE"
  Default=""
  Width="100"
@@ -1399,7 +1399,7 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreCondi
 This protection is used in the case where V_SBI_DMI is calculated but the train has no MA (the JRU can do this in SR Mode)</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="Dmaxsafefrontend"
  Guid="3c8a6b79-3cf2-4c92-9799-64ee4f57ade5"
 >

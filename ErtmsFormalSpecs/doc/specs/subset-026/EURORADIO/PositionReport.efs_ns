@@ -2163,7 +2163,7 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; Default.DistanceInt
 <Actions>
 <Action
  Guid="17311951-1bd7-40ab-9779-aee39c8727f4"
->CurrentRBCConnection().ConnectionState &lt;- RBCStruct.ConnectionStateSM.Inactive</Action></Actions>
+>CurrentRBCConnection().ConnectionState &lt;- CurrentRBCConnection().ConnectionStateSM.Inactive</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
