@@ -1,0 +1,5035 @@
+<Chapter
+ id="1 - DMI inputs"
+ Guid="c9ffb803-4123-41d1-ad52-f2af0e035c8d"
+>
+<Paragraph
+ id="1.1"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="258b362b-0087-495d-8825-40fe94589aa1"
+>ACK - level inhibition for brake release at standstill
+START: Standstill and ST01 due to &apos;No level transition possible&apos;
+STOP: ST01 acknowledged
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b19a1d4f-815f-47ae-b3a4-81d3a5796868"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.2"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d3977393-12db-4ebf-877c-189b3b56f9bc"
+>ACK - level transition
+DMI OBJECT: LE07/LE09/LE11/LE13/LE15
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.2.7<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="830d3dba-9e14-4d84-8a31-1a000287815a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.3"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="521a2121-67ee-408f-b1d4-d36bf328c85f"
+>ACK - level transition
+START: x
+STOP: LE07/LE09/LE11/LE13/ LE15 acknowledged
+SUBSET-026 REFERENCE: 5.10.4.1.a
+DMI OBJECT: LE07/LE09/LE11/LE13/LE15
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.2.7<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b7c3d3dc-334b-445e-b4c5-dda449af6a8f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.4"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="c68162ff-fe19-474e-b99c-74d4d07552cf"
+>ACK - level transition
+START: x
+STOP: LE07/LE09/LE11/LE13/ LE15 acknowledged
+SUBSET-026 REFERENCE: 5.10.4.1.b
+DMI OBJECT: LE07/LE09/LE11/LE13/LE15
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.2.7<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8f944de3-5be6-46d6-a6c9-477c4cd0f5c8"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.5"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b6adbb77-6f40-4201-a219-01d44245adc4"
+>ACK - LS
+STOP: x
+SUBSET-026 REFERENCE: 4.6.3.[70]
+DMI OBJECT: MO22
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="257ae4d9-e569-41de-b6ae-bc4ccae8b689"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.6"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="9204499a-8146-4c8b-9a35-b56352a24f23"
+>ACK - LS
+DMI OBJECT: MO22
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a46695a8-e1ae-4367-816a-574845c3abb2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.7"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="7a5c5eff-07c6-4465-b4da-85159ab4a698"
+>ACK - LS
+START: x
+SUBSET-026 REFERENCE: 5.11.2.S170
+DMI OBJECT: MO22
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="03d7167a-db26-4e24-8539-461f8e39dbbc"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.8"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="af6cdc50-5128-458a-9aed-e8575ab80afc"
+>ACK - LS
+DMI OBJECT: MO22
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="6c16611e-c20c-457b-9c29-782c5535ec40"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.9"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="52d3b5a4-db06-4e81-a728-55c829d2d983"
+>ACK - LS
+START: x
+DMI OBJECT: MO22
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="25d88dcf-5432-4042-abd4-11d8b815d49e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.10"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="28d390b0-a29d-4ff5-b7b4-6826dcfe2692"
+>ACK - LS
+START: x
+DMI OBJECT: MO22
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="61370190-18dd-4757-9d95-b56a509a2f6d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.11"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0dcc9781-3e74-4e28-92e9-072f353303b1"
+>ACK - LS
+START: x
+DMI OBJECT: MO22
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7c108fc6-a797-4b60-b879-2a98807665cd"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.12"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="3c88be34-72c7-447b-9f8a-d5a29dc57fdf"
+>ACK - LS
+START: x
+DMI OBJECT: MO22
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="10edb162-9df7-48c3-9996-4c453f3eda88"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.13"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="8dd307dc-ea22-468b-a226-706dc020d3aa"
+>ACK - LS
+START: x
+SUBSET-026 REFERENCE: 5.4.3.2.S25
+DMI OBJECT: MO22
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ee0f38cb-6828-46d5-895d-f468f4777d1c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.14"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="e90feb08-8880-4899-a35b-c40542fc2700"
+>ACK - Movement in the direction opposite to the train orientation detected while the PT distance is still exceeded
+START: Standstill and ST01 due to &apos;Movement in the direction opposite to the train orientation detected while the PT distance is still exceeded&apos;
+STOP: ST01 acknowledged
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c6ce544b-cba2-44a2-bf02-0898f07cd9e5"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.15"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="39395666-939b-46e1-9737-4a66cf259f6b"
+>ACK - Movement in the direction opposite to the train orientation detected while the RV distance is still exceeded
+STOP: RV distance extended
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2874a281-461f-4874-85d6-94db11c75610"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.16"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="2d039e6d-7cbc-445b-935c-fa6359f01bf6"
+>ACK - Movement in the direction opposite to the train orientation detected while the RV distance is still exceeded
+START: standstill and ST01 due to &apos;Movement in the direction opposite to the train orientation detected while the RV distance is still exceeded&apos;
+STOP: ST01 acknowledged
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="58eba333-44b1-4741-ac45-6ec64acda777"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.17"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0135f5b2-4906-4cde-b6e5-d3752cfbac75"
+>ACK - OS
+STOP: x
+SUBSET-026 REFERENCE: 4.6.3.[15]
+DMI OBJECT: MO08
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b89021b9-936e-4c20-976f-ad5b005021aa"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.18"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0424b3db-269a-44e4-b798-c6cfb44039bb"
+>ACK - OS
+DMI OBJECT: MO08
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="db0f6227-b7ad-4c59-ac34-f2302edc8ff1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.19"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="79046c42-2615-4b05-8e7b-1aa8049b26cd"
+>ACK - OS
+START: x
+SUBSET-026 REFERENCE: 5.11.2.S170
+DMI OBJECT: MO08
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4d69d9ee-8d86-480c-8d7e-967cac48e33d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.20"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0f2d5461-7e32-4d79-8762-d27f31836cef"
+>ACK - OS
+START: x
+SUBSET-026 REFERENCE: 5.4.3.2.S25
+DMI OBJECT: MO08
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="cc6f298e-5dca-495c-a8bd-35753bd23286"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.21"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="de4ba777-cdac-42e9-bef0-203b8ec6590b"
+>ACK - OS
+DMI OBJECT: MO08
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fdc88e37-a366-4eb3-97b1-e5c153317688"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.22"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="3030ed03-cb4e-4fda-b9b7-38f591eb8ca6"
+>ACK - OS
+START: x
+DMI OBJECT: MO08
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="06a97a33-c2ff-4ca9-920d-4f6ed16ab376"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.23"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0373eedb-f57f-4e8f-b571-ab8406c6c134"
+>ACK - OS
+START: x
+DMI OBJECT: MO08
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f51907e7-77d7-4015-a68c-1da000680896"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.24"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="115e2b83-38e6-4683-84ac-5f02871e57a1"
+>ACK - OS
+START: x
+DMI OBJECT: MO08
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d468f75d-9474-422b-8683-9b018f6ab5dd"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.25"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b21d5bcc-9418-4ef6-b11f-c4293e2c048f"
+>ACK - OS
+START: x
+DMI OBJECT: MO08
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0a19df4e-e167-4e0f-aa31-fa7b9f2d0fad"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.26"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="7387ca9d-eec5-408a-acf6-0e25ac77b2ba"
+>ACK - PT distance supervision for brake release
+START: Standstill and ST01 due to &apos;Runaway movement&apos;
+STOP: ST01 acknowledged
+SUBSET-026 REFERENCE: 3.14.1.7.6
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4d713d3d-7fac-4477-9bc3-4bf9301365d5"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.27"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a1de4618-7a21-4093-8587-b71b02a259e8"
+>ACK - PT distance supervision for brake release
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b869dc80-900a-46a7-95fa-a60cc8423d57"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.28"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="973491ac-a535-4ec7-a8ad-7febe7ac0f09"
+>ACK - RAP for brake release at standstill
+START: Standstill and ST01 due to &apos;Runaway movement&apos;
+STOP: ST01 acknowledged
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ca204656-1d41-4fc5-838d-12383470bbc0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.29"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="19625797-aac0-439f-95cc-90c2272fe103"
+>ACK - RAP for brake release at standstill
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="6f692609-eeec-4c63-9b3e-6c78c2e0806c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.30"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="462e2149-adb9-46a5-99d3-7302c659175f"
+>ACK - Reversing for brake release at standstill
+STOP: RV distance extended
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f91afa3e-c231-4ed6-8f47-058215cda958"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.31"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="48d15d68-6b5b-423c-8a3a-d9055ce313f8"
+>ACK - Reversing for brake release at standstill
+START: standstill and ST01 due to &apos;RV distance exceeded&apos;
+STOP: ST01 acknowledged
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3da607a4-47b3-48da-ac6a-7f531e69406e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.32"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6db84ec2-7e19-4132-8ae3-c9b5dd9d9762"
+>ACK - Reversing for brake release at standstill
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="85553ed9-a220-46f2-9d68-9da0e1b48d69"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.33"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="80027937-7a6b-427c-9a0f-8181d2005005"
+>ACK - RMP for brake release at standstill
+START: Standstill and ST01 due to &apos;Runaway movement&apos;
+STOP: ST01 acknowledged
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0d12638a-123e-4231-ac8d-db651921ed21"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.34"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="93965ae1-ceca-431a-b566-2a499869411a"
+>ACK - RMP for brake release at standstill
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="52178779-33d3-41ad-8efe-2817ce02b8cc"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.35"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="f4604e32-3c03-48ed-8275-d7297ae8ee7f"
+>ACK - RV
+STOP: x
+SUBSET-026 REFERENCE: 4.6.3.[59]
+DMI OBJECT: MO15
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="05a3da63-3c4d-403d-acbb-7c1c5389d888"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.36"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="2dc4fb51-9bcd-4977-b116-6d3e843758ba"
+>ACK - RV
+DMI OBJECT: MO15
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="94397d29-a7f6-43f6-a143-83589d52a3c1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.37"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="237f66fe-11fa-4de2-8a1c-c31f8b8f0040"
+>ACK - RV
+START: x
+DMI OBJECT: MO15
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="40c0b730-a479-48ae-8a72-677a768206cb"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.38"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b22f4d0d-147d-442a-b39c-39e6329b9aa8"
+>ACK - SH (SH ordered by trackside)
+DMI OBJECT: MO02
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="27f4f6d0-66c1-4a58-81e7-ddcfcddebe6c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.39"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="7f8801b7-67f2-4b50-9e0e-65680d948c7f"
+>ACK - SH (SH ordered by trackside)
+STOP: x
+SUBSET-026 REFERENCE: 4.6.3.[50]
+DMI OBJECT: MO02
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8e74ce9e-a64f-4341-8b18-128574e389ac"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.40"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="e72aa6d1-dc4d-45be-81dd-e29e48dadb81"
+>ACK - SH (SH ordered by trackside)
+DMI OBJECT: MO02
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="265cc2ce-9976-4cf9-b966-b1b5b49b916e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.41"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="c61bdaaa-0534-48e9-9aec-70e73da1234f"
+>ACK - SH (SH ordered by trackside)
+START: x
+SUBSET-026 REFERENCE: 5.11.2.S170
+DMI OBJECT: MO02
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3c3a11df-e5b0-4346-b3bc-4637593d97b6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.42"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="53c08132-c607-46d0-9f82-dc0e89628eb6"
+>ACK - SH (SH ordered by trackside)
+START: x
+SUBSET-026 REFERENCE: 5.4.3.2.S25
+DMI OBJECT: MO02
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="908ec2e1-b275-4563-a316-c520e9cc77cc"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.43"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0367faa9-4753-4f0c-bd10-772317ccb187"
+>ACK - SH (SH ordered by trackside)
+DMI OBJECT: MO02
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5f36040e-8954-4aee-94d7-b518ad347b90"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.44"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="06188c2e-a5e3-43c3-9962-6b8fb062fc86"
+>ACK - SH (SH ordered by trackside)
+START: x
+DMI OBJECT: MO02
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="459adb0a-397b-463a-9a61-e86219730f5a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.45"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="2f5ffea6-902e-44d9-8cd4-eb3cc1a8c46f"
+>ACK - SH (SH ordered by trackside)
+START: x
+DMI OBJECT: MO02
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="197c3e52-cf43-4c4e-8170-01f8dc5724c6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.46"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="70982e12-4c14-4b43-bb9e-0f686d3077e7"
+>ACK - SH (SH ordered by trackside)
+START: x
+DMI OBJECT: MO02
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5e15e8ac-7b8a-4089-9d06-a3790bf117e1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.47"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="3c880a1b-8b1f-4423-a3fe-bf6182644b4e"
+>ACK - SH (SH ordered by trackside)
+START: x
+DMI OBJECT: MO02
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="dd4f1aad-2e9d-46d8-a177-12c8d1ce3e41"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.48"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="c24e84e9-a217-48ca-bd68-5466d1478a51"
+>ACK - SN
+STOP: x
+SUBSET-026 REFERENCE: 4.6.3.[58]
+DMI OBJECT: MO20
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="169f252c-71b8-4c07-a113-18d17d6fb8cb"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.49"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="f4b57948-23a5-422e-9239-595001416617"
+>ACK - SN
+DMI OBJECT: MO20
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f0626a08-8b85-4842-9a5f-7fc797f511ee"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.50"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="c164ce4c-ac11-4f10-a0c6-10ca5f310421"
+>ACK - SN
+START: x
+SUBSET-026 REFERENCE: 5.4.3.2.S22
+DMI OBJECT: MO20
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="21c2c1e2-b8a3-4f8e-b5fb-217674d0908b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.51"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="73c19640-5c88-4f2d-be9e-555fca3ab000"
+>ACK - SR
+STOP: x
+SUBSET-026 REFERENCE: 4.6.3.[8]
+DMI OBJECT: MO10
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="69167ac4-fb98-4c18-86bd-ba52381c71b7"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.52"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="1ecba925-2efc-456c-a7bb-103747ce5443"
+>ACK - SR
+DMI OBJECT: MO10
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c07650b2-05ed-4a9a-a927-65409c8c8eab"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.53"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="386ae0d3-7659-4f17-ab9d-c4b5465a3e94"
+>ACK - SR
+START: x
+SUBSET-026 REFERENCE: 5.11.2.S160
+DMI OBJECT: MO10
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="777ba67e-457e-42a0-a8d4-da6226a4efe1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.54"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a0bfd320-3d4a-4e4b-aadc-6c30c287d080"
+>ACK - SR
+START: x
+SUBSET-026 REFERENCE: 5.4.3.2.S24
+DMI OBJECT: MO10
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9bb0fe30-4071-4e2d-942d-1994cee162f6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.55"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="7b25145c-ccdd-4858-b397-24322ad44155"
+>ACK - standstill supervision for brake release
+START: Standstill and ST01 due to &apos;Runaway movement&apos;
+STOP: ST01 acknowledged
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="90f90602-9b85-4d6d-afa1-8c34df62406c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.56"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="778326f0-5baa-4a06-953d-bf47d8d42dbb"
+>ACK - standstill supervision for brake release
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4f2bf9d0-7c3a-47aa-8a64-5c4e1ff09993"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.57"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="4f2ec11f-9201-4a51-984c-f40448b0c01c"
+>ACK - TAF request
+START: x
+SUBSET-026 REFERENCE: 3.15.5.2.a
+DMI OBJECT: DR02
+DMI AREA: D
+DMI REFERENCE: 8.2.3.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f1a5ad87-0144-4e5d-9216-650f7739fc0b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.58"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="691a1d78-3b9d-4870-8c0c-1205b9cf5439"
+>ACK - TAF request
+STOP: x
+SUBSET-026 REFERENCE: 3.15.5.2.b
+DMI OBJECT: DR02
+DMI AREA: D
+DMI REFERENCE: 8.2.3.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="980aebd8-c2b1-4759-800b-fe0a82985362"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.59"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="4adbe14f-de7c-4da7-b259-192b998af49d"
+>ACK - TAF request
+Comment: 3.15.5.3 does not bring any new info in the SRS
+DMI OBJECT: DR02
+DMI AREA: D
+DMI REFERENCE: 8.2.3.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e64f5975-6aa0-4cc2-8ac9-afbbb91b6997"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.60"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0412fd6a-7f98-4adb-98ed-0393978d1c71"
+>ACK - TAF request
+STOP: x
+DMI OBJECT: DR02
+DMI AREA: D
+DMI REFERENCE: 8.2.3.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="bc444fcd-a81c-4cea-bc8a-cbdc9974c85f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.61"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a2ab3b3e-ebe6-43d3-a47a-7485cfd9d1a1"
+>ACK - TAF request
+DMI OBJECT: DR02
+DMI AREA: D
+DMI REFERENCE: 8.2.3.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3a25d0f2-233c-4410-9d56-e0d465459383"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.62"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="02879345-fb01-4bff-8d97-c26a35a4cae3"
+>ACK - TAF request
+DMI OBJECT: DR02
+DMI AREA: D
+DMI REFERENCE: 8.2.3.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="643c1428-31d0-4c1f-a32a-d28c799f76ac"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.63"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="e54c83f4-e09c-4d63-8684-d93a68968e92"
+>ACK - TAF request
+DMI OBJECT: DR02
+DMI AREA: D
+DMI REFERENCE: 8.2.3.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5fe4d1e0-3f0f-42a4-9191-df5839d56ce2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.64"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="4033c34b-754c-4af7-9341-cfb3c1a55316"
+>ACK - TAF request
+DMI OBJECT: DR02
+DMI AREA: D
+DMI REFERENCE: 8.2.3.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2d534ca3-16b6-44b6-8904-e1bd103f6d3c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.65"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="38d59c65-06bc-4c76-8469-8c4ffe3af624"
+>ACK - TAF request
+DMI OBJECT: DR02
+DMI AREA: D
+DMI REFERENCE: 8.2.3.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="75801691-32c1-44d3-ad08-4ab49d3b1926"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.66"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="3545c2d9-90d2-4541-b40e-cea4136683b8"
+>ACK - text (when required by text conditions)
+DMI OBJECT: Trackside text message to be acknowledged
+DMI AREA: E5-E9 (TS)
+E5-E8 (SK)
+DMI REFERENCE: 8.2.3.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="58cb4d3b-d8c1-41b5-b5d7-e1ead95bb5ee"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.67"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="4091156c-1f2d-4d40-9911-317fe62136d7"
+>ACK - text (when required by text conditions)
+DMI OBJECT: Trackside text message to be acknowledged
+DMI AREA: E5-E9 (TS)
+E5-E8 (SK)
+DMI REFERENCE: 8.2.3.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="84b63fe3-5460-4b26-a4d0-077938bde0fd"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.68"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0c21bb7a-8748-4ef7-a6c5-548079e4f87e"
+>ACK - text (when required by text conditions)
+SUBSET-026 REFERENCE: 3.12.3.1.9.last.bullet
+DMI OBJECT: Trackside text message to be acknowledged
+DMI AREA: E5-E9 (TS)
+E5-E8 (SK)
+DMI REFERENCE: 8.2.3.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c753e255-04bf-40d7-852f-41f3de2ffdfd"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.69"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="99434721-d3e5-4c4d-9e0b-fabc633eea22"
+>ACK - text (when required by text conditions)
+START: x
+DMI OBJECT: Trackside text message to be acknowledged
+DMI AREA: E5-E9 (TS)
+E5-E8 (SK)
+DMI REFERENCE: 8.2.3.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="59e3e600-866c-493c-a38e-4a2a4abbae7e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.70"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="04d3f8d0-7fb0-4108-83c1-93f213e19b13"
+>ACK - text (when required by text conditions)
+START: x
+DMI OBJECT: Trackside text message to be acknowledged
+DMI AREA: E5-E9 (TS)
+E5-E8 (SK)
+DMI REFERENCE: 8.2.3.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2b0284ab-e4d3-45c4-88de-fd0703d5167d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.71"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="caa19a2f-2dba-4434-8e74-c00562482310"
+>ACK - text (when required by text conditions)
+STOP: x
+SUBSET-026 REFERENCE: 3.12.3.4.3.2.a
+DMI OBJECT: Trackside text message to be acknowledged
+DMI AREA: E5-E9 (TS)
+E5-E8 (SK)
+DMI REFERENCE: 8.2.3.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="43a90675-89c0-4529-9fe9-f94600fa67bb"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.72"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b50b20ec-f4f4-4248-b083-5221800f65df"
+>ACK - text (when required by text conditions)
+STOP: x
+Comment: stop the &apos;ACK - text&apos; but can still be displayed afterwards as a &apos;Trackside text message not to be acknowledged&apos;
+SUBSET-026 REFERENCE: 3.12.3.4.3.2.b
+DMI OBJECT: Trackside text message to be acknowledged
+DMI AREA: E5-E9 (TS)
+E5-E8 (SK)
+DMI REFERENCE: 8.2.3.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="739620c1-d8a1-401a-8d35-777282b85a4c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.73"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="3600388a-624c-4e49-8043-21502e6ffcba"
+>ACK - text (when required by text conditions)
+DMI OBJECT: Trackside text message to be acknowledged
+DMI AREA: E5-E9 (TS)
+E5-E8 (SK)
+DMI REFERENCE: 8.2.3.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a290a35c-751d-4e45-a22c-77ca823d680e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.74"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="744f15a8-3ab4-42ed-8103-6c8a132e7622"
+>ACK - Train Data change from source different from the driver
+START: Standstill and ST01 due to &apos;Train data changed&apos;
+STOP: ST01 acknowledged
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="32846292-70fc-4255-923c-045db2157e5f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.75"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="f66c2a74-bb19-4b26-b45f-2de81c53b171"
+>ACK - Train Data change from source different from the driver
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1e526b81-cfbc-474c-9b23-7c0834208074"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.76"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d521c2cc-6458-4636-9377-6dcbdea8155e"
+>ACK - Train Data change from source different from the driver for brake release at standstill
+SUBSET-026 REFERENCE: 5.17.2.2.S3
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9dfc5f04-0b41-4fbc-8f49-b473d7e2437d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.77"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="3d994506-66fb-4a85-8e49-c3934900212c"
+>ACK - Train Data change from source different from the driver for brake release at standstill
+SUBSET-026 REFERENCE: 5.17.2.2.S3.(E3)
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="cbd12842-b9f8-4f1f-8f3e-57aee82c5195"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.78"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="5dadc0e3-285c-4e3c-9635-1e675d44f6e7"
+>ACK - Train Data change from source different from the driver for brake release at standstill
+SUBSET-026 REFERENCE: 5.17.2.2.S5
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0a56b6a0-8dc7-4db4-8dec-4c91f7b770c3"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.79"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="1f93a54b-99a8-4129-902d-586ac2414132"
+>ACK - Train Data change from source different from the driver for brake release at standstill
+SUBSET-026 REFERENCE: 5.17.2.2.S5.(E5)
+DMI OBJECT: ST01 - flashing frame
+DMI AREA: C9
+DMI REFERENCE: 8.2.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3d7f516e-fc7a-4647-8c79-94badfff1bc9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.80"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b588d9b7-eaa9-439e-addb-23460bd39e96"
+>ACK - Trip
+DMI OBJECT: MO05
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="64b30d9f-35bc-4768-85f2-0c713e3183f4"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.81"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a9fd34d4-c530-4c70-a7c6-1f5c2b599921"
+>ACK - Trip
+STOP: x
+SUBSET-026 REFERENCE: 4.6.3.[62]
+DMI OBJECT: MO05
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7aa96e66-7b32-4c42-b0c4-5712569802fe"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.82"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="4c148b4d-7d4c-44ba-a131-d1871730b389"
+>ACK - Trip
+STOP: x
+SUBSET-026 REFERENCE: 4.6.3.[63]
+DMI OBJECT: MO05
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9df64a84-54b0-458e-a11f-fbfd3066e906"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.83"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="bcf19d98-1c88-4031-bb8c-72e6aef7c97b"
+>ACK - Trip
+STOP: x
+SUBSET-026 REFERENCE: 4.6.3.[68]
+DMI OBJECT: MO05
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="30fe9b77-c97b-4bdd-b6f5-22b01eff0923"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.84"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0d38769f-5e6c-42d6-9173-99f5730985b4"
+>ACK - Trip
+STOP: x
+SUBSET-026 REFERENCE: 4.6.3.[7]
+DMI OBJECT: MO05
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c7d2fad9-501f-4121-8873-52569ca85e66"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.85"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="750e4f1f-f6c6-41b7-bfa7-2fa1ae7c1545"
+>ACK - Trip
+DMI OBJECT: MO05
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="cb846972-cc32-4409-94cd-1f15687a8bdb"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.86"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="ff252c60-2a52-45aa-95e0-14c95da5f3ee"
+>ACK - Trip
+START: x
+SUBSET-026 REFERENCE: 5.11.2.S060
+DMI OBJECT: MO05
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="aeac3265-6cf6-4f85-b918-702ab66ad451"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.87"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="c9fda2b8-dedf-4d7e-bd5c-8fc21d8632bb"
+>ACK - UN
+STOP: x
+SUBSET-026 REFERENCE: 4.6.3.[60]
+DMI OBJECT: MO17
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="dee86479-62cc-4d0a-baeb-added9172d9e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.88"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="cd5df9e6-91d4-4ca1-8e6a-59cfd30c55a3"
+>ACK - UN
+DMI OBJECT: MO17
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="607f3ae7-7b9b-4169-aae3-8b03e356c980"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.89"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="bef44b7a-25a5-4b06-a27b-e0ee8bafdaeb"
+>ACK - UN
+START: x
+SUBSET-026 REFERENCE: 5.4.3.2.S23
+DMI OBJECT: MO17
+DMI AREA: C1
+DMI REFERENCE: 8.2.3.1.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8412d674-8f8a-4ec0-a693-2fa4899640be"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.90"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="05440d5e-7f22-42cf-bc31-bd2b6d72db10"
+>Additional Data Entry - driver id
+START: DMI 11.7.2, 11.7.3
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.2, 11.7.3, close
+DMI OBJECT: Driver ID window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3ac2ce4d-2c1a-4391-bfe2-f91336dfc4b9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.91"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6d43b839-b419-4025-99d9-4d2d84095142"
+>Additional Data Entry - driver id
+DMI OBJECT: Driver ID window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="eb364bee-df70-4515-8713-7eeb43ffb003"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.92"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6ffe8cc0-a942-4263-89e1-f5cbc8a500fe"
+>Additional Data Entry - driver id
+SUBSET-026 REFERENCE: 5.4.3.2.S1
+DMI OBJECT: Driver ID window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ee149393-86bb-440e-b536-969852af8f59"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.93"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="27863f05-54ca-43f3-901b-5c686511ebbf"
+>Additional Data Entry - ERTMS/ETCS level
+START: DMI 11.7.2, 11.7.3
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.2, 11.7.3, close
+DMI OBJECT: ERTMS/ETCS level window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="11ab84e7-f81f-43a0-a00f-a2dbbde17099"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.94"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0aeb0c7b-a37f-4e63-aa91-6d99ed7bbac3"
+>Additional Data Entry - ERTMS/ETCS level
+DMI OBJECT: ERTMS/ETCS level window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="035aacdf-2720-4a84-ab3c-b872875f67b4"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.95"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d7d4f1fa-ce75-4f31-9018-1037dec224f9"
+>Additional Data Entry - ERTMS/ETCS level
+SUBSET-026 REFERENCE: 5.4.3.2.S2
+DMI OBJECT: ERTMS/ETCS level window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a69a84b1-e3f2-471c-a0db-9b35d13ee3f3"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.96"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="7b96498b-6408-4346-97ff-b838f4469984"
+>Additional Data Entry - network id
+DMI OBJECT: Radio network ID window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="24e8dd66-50bb-458d-90b0-69f828d92640"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.97"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="4e35c5b2-5744-4a61-94df-567d1c7a793d"
+>Additional Data Entry - network id
+START: DMI 11.7.2, 11.7.3
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.2, 11.7.3, close
+DMI OBJECT: Radio network ID window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b5204efd-3f20-429e-a917-504c918bf7ee"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.98"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="4b76dc76-073a-4c53-9643-044897aa2370"
+>Additional Data Entry - network id
+DMI OBJECT: Radio network ID window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="350c48d1-3eca-4246-8fbc-65172de2cf2a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.99"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="72cff326-bbd3-4daf-92ad-f80595d2d9f4"
+>Additional Data Entry - network id
+SUBSET-026 REFERENCE: 5.10.3.15.2.b
+DMI OBJECT: Radio network ID window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7a792014-b8cf-4082-a4b3-6114eb54f4d5"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.100"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="8f23f637-f09c-49b7-bbb6-0ef5643bfc5c"
+>Additional Data Entry - network id
+SUBSET-026 REFERENCE: 5.4.3.2.S3
+DMI OBJECT: Radio network ID window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2e141ba7-a837-4749-8f64-b152d85e0cda"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.101"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d3cb6a56-ed45-45d0-a546-e22bd3cec8d4"
+>Additional Data Entry - network id
+SUBSET-026 REFERENCE: 5.4.3.2.S3
+DMI OBJECT: Radio network ID window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a9ae926c-fc22-4b50-a6d8-09f488494cd6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.102"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="cf22aaba-1d63-4d96-a857-cb9730ed0dcd"
+>Additional Data Entry - RBC id
+START: DMI 11.7.2, 11.7.3
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.2, 11.7.3, close
+DMI OBJECT: RBC data window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="793fba5b-fa22-4bfe-834b-8e7f972f9916"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.103"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="2f527a4e-2724-405a-98ae-244891d6d4e6"
+>Additional Data Entry - RBC id
+DMI OBJECT: RBC data window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="865dbd9d-a9c3-4841-a719-bcca1f976ee5"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.104"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b47e184d-a2fd-460d-91eb-600d437e6daf"
+>Additional Data Entry - RBC id
+SUBSET-026 REFERENCE: 5.10.3.15.2.b
+DMI OBJECT: RBC data window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="bb22fad7-e603-4900-8473-7ea152445073"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.105"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="63b0066d-46f2-41aa-a18f-37d5de8ae443"
+>Additional Data Entry - RBC id
+SUBSET-026 REFERENCE: 5.4.3.2.S3
+DMI OBJECT: RBC data window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1c1fd0c6-4432-4a0f-afab-f3de7d5b9a79"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.106"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b136ad75-8f12-4356-93d3-84296e806016"
+>Additional Data Entry - RBC phone number
+START: DMI 11.7.2, 11.7.3
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.2, 11.7.3, close
+DMI OBJECT: RBC data window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b4510177-ba40-4335-8ef1-ccdf4a918c38"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.107"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d3a61c3e-6f3c-4c4a-a8fc-c3422ea27d91"
+>Additional Data Entry - RBC phone number
+DMI OBJECT: RBC data window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a88e1563-4c40-4e7a-94c7-2402907940d0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.108"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="1a883056-219c-49be-8df0-eb3f1e0ac272"
+>Additional Data Entry - RBC phone number
+SUBSET-026 REFERENCE: 5.10.3.15.2.b
+DMI OBJECT: RBC data window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d4a3b7a0-453c-45e0-a90a-50ec374450a6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.109"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="4b0a7ab2-05ed-4745-ad2b-1e3c230347ee"
+>Additional Data Entry - RBC phone number
+SUBSET-026 REFERENCE: 5.4.3.2.S3
+DMI OBJECT: RBC data window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="cd09a3c9-c3a7-425b-b2c4-e66b11a81c68"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.110"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="9da3800e-9b0b-43a9-b33a-efa57f501fd2"
+>Additional Data Entry - track adhesion
+DMI OBJECT: Adhesion window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fb9ffba2-1919-408a-9b32-e5f9205175fc"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.111"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="4de6444a-8f0f-4ff9-960a-423fb12e0c18"
+>Additional Data Entry - track adhesion
+DMI OBJECT: Adhesion window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="99b4d1d2-c879-4e32-b70d-ad269a2ff62d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.112"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="5198aaea-792b-4309-b55e-d7b26efb98a5"
+>Additional Data Entry - track adhesion
+START: DMI 11.7.6
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.6, close
+DMI OBJECT: Adhesion window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3e721034-69a0-44ba-be96-0b2f13173ff5"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.113"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6a79643b-30ee-47f0-9fd2-d191f69b5656"
+>Additional Data Entry - track adhesion
+DMI OBJECT: Adhesion window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="35cedbd6-05be-474f-b2c2-bd30e0b6b9e6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.114"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="1b46d73f-f411-4770-94e5-a0e6c3f98f3a"
+>Additional Data Entry - train running number
+DMI OBJECT: Train running number window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e3e8b598-6ec0-4d7b-a4dd-6ec6f0687824"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.115"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b2edefb5-dd30-4296-a4df-0ce25843b5d5"
+>Additional Data Entry - train running number
+DMI OBJECT: Train running number window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="259c21a2-1c76-4f5e-b929-bf759478ce4c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.116"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="952958e0-abd9-4e80-9486-7f344ebe10fa"
+>Additional Data Entry - train running number
+DMI OBJECT: Train running number window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b2c68767-e927-4a4e-8d5a-39aab7a0e1aa"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.117"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="5effae2a-0d7d-492b-bf6e-1937739de0a4"
+>Additional Data Entry - train running number
+DMI OBJECT: Train running number window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="38a13e13-856b-4e6d-a7fc-dbbaa1c94e09"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.118"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="fb4d2ce3-9955-4ccf-a2ef-8f930e52eb61"
+>Additional Data Entry - train running number
+START: DMI 11.7.2, 11.7.3
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.2, 11.7.3, close
+SUBSET-026 REFERENCE: 5.4.3.2.S1
+DMI OBJECT: Train running number window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="221452b1-57ab-427b-8aa7-9d07c8d4b59a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.119"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="60fa4af2-92b6-43a5-ae8b-7bb7a0e4b1a5"
+>Additional Data Entry - train running number
+SUBSET-026 REFERENCE: 5.4.3.2.S13
+DMI OBJECT: Train running number window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7bd5645e-322d-482c-a6d1-05eeefb81115"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.120"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="fa3cb7ea-2d05-47c5-ba96-9ab4ad4afab1"
+>Additional Data Entry - virtual balise cover
+DMI OBJECT: Remove VBC validation window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="848d0096-6f55-4679-8a31-3ecdc344bcfe"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.121"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="ad8320a7-965a-4501-8f0b-6c30dcae9cd6"
+>Additional Data Entry - virtual balise cover
+DMI OBJECT: Remove VBC validation window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d9f5cac9-4792-4b64-9cb1-d214aa5a3bb8"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.122"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="20a2fa40-55b5-45f1-b4d9-125e7a33802c"
+>Additional Data Entry - virtual balise cover
+DMI OBJECT: Remove VBC validation window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d50bc694-c8d7-4d39-bb79-6951ae97e0a9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.123"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="fba96bf3-8d10-4c9a-a2ad-3519efc87649"
+>Additional Data Entry - virtual balise cover
+DMI OBJECT: Remove VBC validation window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5c0dea2e-98f5-4116-b2ba-5220e303d9c0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.124"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="bc1d5b52-95fe-4f90-b0ee-36384752a006"
+>Additional Data Entry - virtual balise cover
+START: DMI 11.7.7
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.7, close
+SUBSET-026 REFERENCE: 5.4.3.2.S1
+DMI OBJECT: Remove VBC validation window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f6efd27d-a0c4-4daa-a005-35e3b3eb6fe7"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.125"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6a42e028-8ce3-46a0-a8d8-bbed0248ea6d"
+>Additional Data Entry - virtual balise cover
+DMI OBJECT: Remove VBC window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="77ce360f-8385-441d-b64c-6fe95504811f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.126"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="c66246aa-7dd7-4cb5-b175-43f2ba6dcfa0"
+>Additional Data Entry - virtual balise cover
+DMI OBJECT: Remove VBC window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9a5777be-2bc7-4c25-a62d-41e97c70e9d7"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.127"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a8780b84-0d3d-4000-b9e8-1e423c34858c"
+>Additional Data Entry - virtual balise cover
+DMI OBJECT: Remove VBC window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c662a584-b493-40c1-b930-ba7c849b566f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.128"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="95bebccf-5374-4a71-b62c-18c71bb3beb1"
+>Additional Data Entry - virtual balise cover
+DMI OBJECT: Remove VBC window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e8e1d074-8e70-4509-b8d7-f0882fc129c2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.129"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="004af38a-ba10-43e3-90ba-88afd155a2e3"
+>Additional Data Entry - virtual balise cover
+START: DMI 11.7.7
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.7, close
+SUBSET-026 REFERENCE: 5.4.3.2.S1
+DMI OBJECT: Remove VBC window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="17976fba-69fc-4ba3-9a0a-0c0cb1ced947"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.130"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="62a0ef00-6265-4e54-b25d-904a39bc5314"
+>Additional Data Entry - virtual balise cover
+DMI OBJECT: Set VBC validation window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1a6fcd22-e66b-46b7-bee5-9ad7c8458f48"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.131"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6b214861-5119-48d1-99c7-9327c5ddd38b"
+>Additional Data Entry - virtual balise cover
+DMI OBJECT: Set VBC validation window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="eeff6b71-4bd7-4af8-8ae5-b591349ce2b7"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.132"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="150b0a11-6536-42ed-9279-dd89ebeb36c1"
+>Additional Data Entry - virtual balise cover
+DMI OBJECT: Set VBC validation window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="be3f039c-b991-4730-b17a-7e7c4d62fd60"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.133"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="13990be9-525a-430d-a177-152bab686ad0"
+>Additional Data Entry - virtual balise cover
+DMI OBJECT: Set VBC validation window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="cb1489cf-9a80-494e-8d2b-cde8b16c34a2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.134"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="ef1cb50e-b354-4437-9919-2ed4e72aadb3"
+>Additional Data Entry - virtual balise cover
+START: DMI 11.7.7
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.7, close
+SUBSET-026 REFERENCE: 5.4.3.2.S1
+DMI OBJECT: Set VBC validation window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a79aee31-9933-4a02-b578-af6b31ea4b65"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.135"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="f6a37505-5c80-4dac-af3d-51b6704fda5c"
+>Additional Data Entry - virtual balise cover
+DMI OBJECT: Set VBC window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="de79f400-e7b5-42e3-8c9c-d76ef53efb36"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.136"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="70102856-480d-4885-af51-43c4956f3e5c"
+>Additional Data Entry - virtual balise cover
+DMI OBJECT: Set VBC window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c5c18faa-cfea-4d67-b726-df52a69f0e38"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.137"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="433891af-8cc0-4a46-9a34-b5a614dcdb7f"
+>Additional Data Entry - virtual balise cover
+DMI OBJECT: Set VBC window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4277a6aa-3d66-4595-9ca1-b4555e6c74d3"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.138"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="17954075-e2a0-4d92-b2f7-348dfa71c4ea"
+>Additional Data Entry - virtual balise cover
+DMI OBJECT: Set VBC window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b545d210-d9e2-4672-9ccc-9673c436064a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.139"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="5275098f-ba98-4f2e-81e8-5f820652072d"
+>Additional Data Entry - virtual balise cover
+START: DMI 11.7.7
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.7, close
+SUBSET-026 REFERENCE: 5.4.3.2.S1
+DMI OBJECT: Set VBC window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7cabb9d3-a1a9-479b-8ed4-ec4ddec688ba"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.140"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="49473f17-4cd2-421a-8b40-957f10bcf184"
+>Adhesion selection
+DMI OBJECT: Button - Adhesion
+DMI AREA: Special window
+DMI REFERENCE: 11.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a0891948-e440-44f6-b5e1-1124f24d0f8d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.141"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="62461502-93a4-4cd6-af51-4d7fa21f6a0b"
+>Adhesion selection
+START: DMI 11.7.6
+STOP: DMI 11.7.6, close
+DMI OBJECT: Button - Adhesion
+DMI AREA: Special window
+DMI REFERENCE: 11.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f174f131-f40e-41d3-9e1f-d4771e72bc0c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.142"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b5b3b05d-135b-47cb-905d-0353c7898749"
+>Data view
+START: Default window displayed
+STOP: Default window  not displayed
+DMI OBJECT: Button - Data view
+DMI AREA: F3
+DMI REFERENCE: 8.5<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="84487add-fbed-40b0-8037-b6bb8ad54310"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.143"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="682a2f5c-2bf3-40fb-8f5b-0bb998f1afc0"
+>Driver ID selection
+DMI OBJECT: Button - Driver ID
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2c7c7e67-d951-471a-80f6-54b25d6bdf93"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.144"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="5dfba938-485f-4807-879b-6fd17546b9de"
+>Driver ID selection
+START: DMI 11.7.3
+STOP: DMI 11.7.3, close
+DMI OBJECT: Button - Driver ID
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b563b6e5-c60c-4e1b-93b3-85eddea303e9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.145"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="eaa1ed0e-6379-47be-aa03-46b911ca6bdf"
+>Driver ID selection
+DMI OBJECT: Button - Driver ID
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7318059b-8188-4f58-b834-31089235b39f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.146"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0047cfec-035d-4e0d-867e-3fad6edc1e52"
+>exit SH
+SUBSET-026 REFERENCE: 4.6.3.[19]
+DMI OBJECT: Button - Exit Shunting
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fb6c81ab-461e-4ee9-8fbf-94c1b2fc2154"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.147"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="3473afd1-5ffd-4d06-aa1c-8bf8ecfd1ec3"
+>exit SH
+START: DMI 11.7.3
+STOP: DMI 11.7.3, close
+DMI OBJECT: Button - Exit Shunting
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="164b941e-85f7-4c9b-8850-4b5f494d4f10"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.148"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="3d642dbf-dce1-417a-aaf8-dd812161898c"
+>Isolation selection
+START: Always
+DMI OBJECT: Any means to isolate<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c87d26c3-c3c8-4f06-8ea0-6d4aa672c631"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.149"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="3322b92e-5c17-490c-b1b3-7c85babedd8b"
+>Level selection
+DMI OBJECT: Button - Level
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a41d9a9b-ec3b-4f9c-9df7-97fe448e9919"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.150"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="68cc462f-47af-4d53-8c16-54117c5a1cfc"
+>Level selection
+DMI OBJECT: Button - Level
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="47d98502-8918-418b-81f0-11dcb7fafd27"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.151"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="9b161693-9b2c-4cdb-8f9e-04589a45240f"
+>Level selection
+START: DMI 11.7.3
+STOP: DMI 11.7.3, close
+DMI OBJECT: Button - Level
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f8ffe533-7ff1-438f-9ccd-8e5f38096fa6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.152"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="1ac34cf0-b965-414a-88e1-44d59e7d0912"
+>Level selection
+DMI OBJECT: Button - Level
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ca5477d7-b483-4af3-a665-179762702d9d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.153"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d2927698-687c-4a94-bbfc-8e485b3718c7"
+>Level selection
+DMI OBJECT: Button - Level
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2b2ac5af-c87e-4478-bef9-b7d7dea5f7e4"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.154"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="05b22227-620b-4934-83b0-2d4ca66a303e"
+>Level selection
+DMI OBJECT: Button - Level
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="931e2777-9940-4088-870e-fc164410235a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.155"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="29d1b5f9-5602-467f-aa26-bede353aefd2"
+>Level selection
+DMI OBJECT: Button - Level
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0499e36e-fffd-41fe-881c-5a03a3470e5b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.156"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="c98c56da-57ea-4481-ac62-37781da4a02c"
+>Network ID selection
+START: DMI 11.7.2, 11.7.3
+STOP: DMI 11.7.2, 11.7.3, close
+DMI OBJECT: Button - Radio Network ID
+DMI AREA: RBC contact window
+DMI REFERENCE: 11.2.5<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f6ded6ae-529a-4f22-995e-f421ecb8b58d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.157"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="c47eb823-dc7a-4247-b4d2-6a9e865272fe"
+>Network ID selection
+SUBSET-026 REFERENCE: 5.10.3.15.2.b
+DMI OBJECT: Button - Radio Network ID
+DMI AREA: RBC contact window
+DMI REFERENCE: 11.2.5<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2b1f0bff-c829-4f53-a79e-30d14dbafa6b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.158"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="f0598cc1-6ab7-4ddc-ae0c-657420310cfc"
+>Network ID selection
+DMI OBJECT: Button - Radio Network ID
+DMI AREA: RBC contact window
+DMI REFERENCE: 11.2.5<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a3722e9f-85e1-4b5e-984e-7a4f9e1b5c28"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.159"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="14dabe57-8bfd-4d69-a00c-a020e66b9a57"
+>Network ID selection
+SUBSET-026 REFERENCE: 5.4.3.2.S3
+DMI OBJECT: Button - Radio Network ID
+DMI AREA: RBC contact window
+DMI REFERENCE: 11.2.5<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="926e4981-50f9-4808-9db4-bac4c7420f10"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.160"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="ea42a995-d35f-4e6a-af13-d55d2035e6d6"
+>NL selection
+SUBSET-026 REFERENCE: 4.6.3.[46]
+DMI OBJECT: Button - Non-Leading
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="03b0bcc3-539a-4d65-9cd6-4f85d4475374"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.161"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="73763966-dbcc-4e9b-b9bc-1631e2be3b8d"
+>NL selection
+START: DMI 11.7.3
+STOP: DMI 11.7.3, close
+DMI OBJECT: Button - Non-Leading
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c2bbdc72-90cf-4bef-b09d-5218b1fab8f4"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.162"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="78afb775-b5a8-4e73-bfee-2453d932e7a2"
+>NL selection
+DMI OBJECT: Button - Non-Leading
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fce27982-3378-458e-a7b2-63d439faa6ae"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.163"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b223a299-499d-4d4e-b7f5-54a0eaca0a86"
+>NL selection
+DMI OBJECT: Button - Non-Leading
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fffc83f3-e11b-410a-87bf-0b1067545539"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.164"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="04b55059-97ed-4cab-a7b6-7e049c71df40"
+>NL selection
+SUBSET-026 REFERENCE: 5.4.3.2.S10
+DMI OBJECT: Button - Non-Leading
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f7dad9ee-80e1-4916-b1d2-6c881c572108"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.165"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="3852b82d-24c7-4899-a6b6-5dd6e28bc1a6"
+>NL selection
+DMI OBJECT: Button - Non-Leading
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="40d38f96-adfd-4dac-8a37-205364327bb1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.166"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="dc957e97-ee06-45b6-8e8d-326051a64a5c"
+>override selection
+DMI OBJECT: Button - EOA
+DMI AREA: Override window
+DMI REFERENCE: 11.2.2<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5fe48271-f550-4b0a-8dca-b3fe3b64c00f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.167"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="00f3bc04-eb88-4d85-ba92-74ca058e3878"
+>override selection
+SUBSET-026 REFERENCE: 4.6.3.[37]
+DMI OBJECT: Button - EOA
+DMI AREA: Override window
+DMI REFERENCE: 11.2.2<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9680ec5c-a2c7-4e7e-8474-02b245d8309c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.168"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b06115df-2330-4049-a9c6-95e33ad383e8"
+>override selection
+START: DMI 11.7.5
+STOP: DMI 11.7.5, close
+DMI OBJECT: Button - EOA
+DMI AREA: Override window
+DMI REFERENCE: 11.2.2<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="42e8edea-3598-42b8-95e0-cce001792844"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.169"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="5d166e22-0c1c-492e-8411-8ba40f6843e7"
+>override selection
+DMI OBJECT: Button - EOA
+DMI AREA: Override window
+DMI REFERENCE: 11.2.2<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0d939ccd-749c-4581-985d-bba39bd66651"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.170"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="588a6e31-2749-4637-9251-a4b4a79b965a"
+>override selection
+DMI OBJECT: Button - EOA
+DMI AREA: Override window
+DMI REFERENCE: 11.2.2<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="38e2cc05-efb3-4838-9e8d-ef2c9895b6f5"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.171"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="61013cf4-5c02-4c37-bb6f-9920a24c0a9d"
+>override selection
+DMI OBJECT: Button - EOA
+DMI AREA: Override window
+DMI REFERENCE: 11.2.2<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f59de491-ecb4-4e19-980d-14894fe80c8e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.172"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="09970673-7aaf-4c3d-9c45-e924d7f3d542"
+>override selection
+DMI OBJECT: Button - EOA
+DMI AREA: Override window
+DMI REFERENCE: 11.2.2<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d61054bb-ac8d-46a2-a658-4549ca8de655"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.173"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="bcd204dd-c07e-4f11-9157-596fb43d7ae1"
+>override selection
+DMI OBJECT: Button - EOA
+DMI AREA: Override window
+DMI REFERENCE: 11.2.2<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="883b6a7a-48dd-4430-a714-8c0782f151f1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.174"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="aaf4d5a8-2977-47f4-aa32-a2f78199d772"
+>override selection
+DMI OBJECT: Button - EOA
+DMI AREA: Override window
+DMI REFERENCE: 11.2.2<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5e468c97-473e-4dca-9783-69a503e2499d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.175"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6c3020b7-2518-46b9-966b-d4b94f11df5b"
+>override selection
+DMI OBJECT: Button - EOA
+DMI AREA: Override window
+DMI REFERENCE: 11.2.2<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="224b02e2-2be5-4e5a-a2b5-95a91fcee957"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.176"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="87ddb7a7-f4cb-4eaf-a2cd-0ced68a51a58"
+>PS selection
+DMI OBJECT: Button - Maintain Shunting
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="78d65e3c-9944-4079-9958-5cca04b0febd"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.177"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="e1fa2391-75fc-43d2-a54e-3445c10ef96f"
+>PS selection
+START: DMI 11.7.3
+STOP: DMI 11.7.3, close
+DMI OBJECT: Button - Maintain Shunting
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5ede969d-4415-4ad5-8a9e-53afbc62cd88"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.178"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6effdc80-0a51-4e29-840f-3f712b6526c1"
+>PS selection
+DMI OBJECT: Button - Maintain Shunting
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1619ba2a-5234-4075-9fc0-d23d398ac53b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.179"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="eb917cc9-7c57-428c-9c8f-35ebc679ff17"
+>PS selection
+DMI OBJECT: Button - Maintain Shunting
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="cfc5ec94-2e56-47fc-aa67-442056b08991"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.180"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d6b7878e-342e-4cf6-a07c-75128276e98e"
+>RBC id/phone number selection
+START: DMI 11.7.2, 11.7.3
+STOP: DMI 11.7.2, 11.7.3, close
+DMI OBJECT: Button - Enter RBC data
+DMI AREA: RBC contact window
+DMI REFERENCE: 11.2.5<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9babc571-2fb0-4a8e-8b20-c66e8f9a265c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.181"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="2400f294-308d-4426-93a8-31e2fecc38e8"
+>RBC id/phone number selection
+SUBSET-026 REFERENCE: 5.10.3.15.2.b
+DMI OBJECT: Button - Enter RBC data
+DMI AREA: RBC contact window
+DMI REFERENCE: 11.2.5<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ebc4ad36-4df8-41d1-924e-75bd2999cce4"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.182"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="155fa89e-43b9-4800-ba6a-a49140b96743"
+>RBC id/phone number selection
+DMI OBJECT: Button - Enter RBC data
+DMI AREA: RBC contact window
+DMI REFERENCE: 11.2.5<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2f93a2a1-c320-4125-b14f-d51301a30410"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.183"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="21f39135-4237-4f01-912f-acd23d5a38d2"
+>RBC id/phone number selection
+SUBSET-026 REFERENCE: 5.4.3.2.S3
+DMI OBJECT: Button - Enter RBC data
+DMI AREA: RBC contact window
+DMI REFERENCE: 11.2.5<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="933ac748-6e50-4269-a515-7d1a3567cacc"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.184"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="72fe9c33-3e1d-443f-9381-30de7bddae81"
+>Remove VBC selection
+DMI OBJECT: Button - Remove VBC
+DMI AREA: Settings window
+DMI REFERENCE: 11.2.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1f4bf2fc-66c7-4373-919d-a0b85fbede27"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.185"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a06e34f7-a0a4-4aad-ba9a-b245c176b39d"
+>Remove VBC selection
+DMI OBJECT: Button - Remove VBC
+DMI AREA: Settings window
+DMI REFERENCE: 11.2.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="558349ea-18a3-4f23-b822-c47907a48c2e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.186"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="f25e63f5-f23d-49a3-95ab-3f6daf121224"
+>Remove VBC selection
+DMI OBJECT: Button - Remove VBC
+DMI AREA: Settings window
+DMI REFERENCE: 11.2.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d8f4b8ef-b1be-42d6-b531-8c1ff38cbfa0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.187"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="7a422e4b-7226-4810-9e87-23dd37fdb838"
+>Remove VBC selection
+START: DMI 11.7.7
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.7, close
+DMI OBJECT: Button - Remove VBC
+DMI AREA: Settings window
+DMI REFERENCE: 11.2.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="066684d5-672b-4d20-974d-9e54694f4721"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.188"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="ad2a81fa-a307-4374-8b4b-93343077c040"
+>Remove VBC selection
+SUBSET-026 REFERENCE: 5.4.3.2.S1
+DMI OBJECT: Button - Remove VBC
+DMI AREA: Settings window
+DMI REFERENCE: 11.2.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fd17e1fa-0144-4eb0-94e9-ff29f484d9f7"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.189"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="203098e9-db91-4eb2-81b2-176d067671ff"
+>Selection of language
+START: DMI 11.7.7
+STOP: DMI 11.7.7, close
+DMI OBJECT: Button - Language
+DMI AREA: Settings window
+DMI REFERENCE: 11.2.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b54901a9-c9dc-42db-bb12-93f340af3d7a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.190"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="1d4f25f7-361b-490d-94d7-0c99d326ae77"
+>Selection of language
+START: DMI 11.7.7
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.7, close
+DMI OBJECT: Language window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8ef8f875-3ea7-40a7-aebf-2004d8498786"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.191"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="4d14c790-bb70-42a6-b772-a2a39fd87763"
+>Set VBC selection
+DMI OBJECT: Button - Set VBC
+DMI AREA: Settings window
+DMI REFERENCE: 11.2.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e4885459-d692-4f33-b2f6-6fa2de6b2af9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.192"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="e97bfb3a-c8ea-4fcb-8634-8bb415a97c0e"
+>Set VBC selection
+DMI OBJECT: Button - Set VBC
+DMI AREA: Settings window
+DMI REFERENCE: 11.2.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="71463aa6-e81c-4378-b70c-cc13cc7391a9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.193"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d38a4360-a6e5-49e1-9c0d-20c050112fe4"
+>Set VBC selection
+DMI OBJECT: Button - Set VBC
+DMI AREA: Settings window
+DMI REFERENCE: 11.2.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1ebe61f2-ec38-4e6e-b3b1-2099aaa15d57"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.194"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="ea90a4a5-f447-46c5-9dd4-7b53920b1ac3"
+>Set VBC selection
+START: DMI 11.7.7
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.7, close
+DMI OBJECT: Button - Set VBC
+DMI AREA: Settings window
+DMI REFERENCE: 11.2.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c1378132-1433-4509-9086-b1eca874ae33"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.195"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="03c37461-3558-4754-914b-772a8cd7303d"
+>Set VBC selection
+SUBSET-026 REFERENCE: 5.4.3.2.S1
+DMI OBJECT: Button - Set VBC
+DMI AREA: Settings window
+DMI REFERENCE: 11.2.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8810ae43-63f8-4b01-aa0a-32e306841615"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.196"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="152fcf2b-71f1-4a28-8f53-b616bbc735cc"
+>SH selection
+DMI OBJECT: Button - Shunting
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="61d0ab78-2762-4027-85bb-1e4f5642d78e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.197"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="bef2bd14-1cfd-48e3-804b-0e84a805f597"
+>SH selection
+SUBSET-026 REFERENCE: 4.6.3.[5]
+DMI OBJECT: Button - Shunting
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="26f1f184-0403-4a01-b3d4-266fc8794741"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.198"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="11bb4690-a0a1-459f-93a5-2285f6ae9d0a"
+>SH selection
+START: DMI 11.7.3, 11.7.4
+STOP: DMI 11.7.3, 11.7.4, close
+DMI OBJECT: Button - Shunting
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="558b6b71-3586-493e-a15e-fd6519df3f12"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.199"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="f563589c-f3b0-4eaf-a525-30e4bfaf6fca"
+>SH selection
+SUBSET-026 REFERENCE: 5.11.2.S140
+DMI OBJECT: Button - Shunting
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="47fb1092-38ee-4723-87cf-8ec93f1bd222"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.200"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="71ae49e8-4386-4f58-b894-6008646c3a7d"
+>SH selection
+SUBSET-026 REFERENCE: 5.4.3.2.S10
+DMI OBJECT: Button - Shunting
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="08c84bb6-d530-4d29-baed-a4e18cf7d83d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.201"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="1eadcdc1-2a1e-4439-b6a2-588eb1063108"
+>SH selection
+DMI OBJECT: Button - Shunting
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2f1acf71-13e3-4c02-9707-bfea101dc447"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.202"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="63b60866-eb63-41b9-837c-1a23309acfd9"
+>SH selection
+DMI OBJECT: Button - Shunting
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="91391189-2453-4527-96fe-4738aab0e010"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.203"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="e366ce3b-c95f-4d15-8ab6-462a3600b909"
+>SH selection
+SUBSET-026 REFERENCE: 5.6.2.E015
+DMI OBJECT: Button - Shunting
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ade4b3a7-0b2c-474a-89d8-725d4b5ad11c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.204"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0b62c128-1312-4429-8e35-790e56a35bdb"
+>SR mode speed limit and distance
+DMI OBJECT: Button - SR speed / distance
+DMI AREA: Special window
+DMI REFERENCE: 11.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d864de8e-03e3-4a92-857c-9af5002b2c8a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.205"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="f23f2dd9-507d-4582-83ed-36a6e58f17b8"
+>SR mode speed limit and distance
+START: DMI 11.7.6
+STOP: DMI 11.7.6, close
+DMI OBJECT: Button - SR speed / distance
+DMI AREA: Special window
+DMI REFERENCE: 11.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f9ca6d84-4525-4f59-8b61-36c94155a824"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.206"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="57c3725f-86a7-48b9-8e3d-04e46734c98e"
+>SR mode speed limit and distance
+DMI OBJECT: Button - SR speed / distance
+DMI AREA: Special window
+DMI REFERENCE: 11.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="53e5b85c-9fe9-4efc-9089-ef4585c3dc03"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.207"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="4b4b3a0b-a013-4a8d-8f19-e5b03575625c"
+>SR mode speed limit and distance
+DMI OBJECT: SR speed / distance window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="038436c5-bf9d-4cdc-8110-8d48f0e24ab0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.208"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="39e71626-be79-4ee7-83b6-f43ab8f9a944"
+>SR mode speed limit and distance
+START: DMI 11.7.6
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.6, close
+DMI OBJECT: SR speed / distance window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7d468dea-8080-478c-9309-6a847eaa8a74"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.209"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6cad5286-6a18-4eac-8d2f-1d3c0c854954"
+>SR mode speed limit and distance
+DMI OBJECT: SR speed / distance window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a74d73c8-73b7-4a9e-9d8a-80b0932aa57e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.210"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="18bcf9c5-f106-49b1-ba32-cc1ac4ba2fac"
+>Start selection
+DMI OBJECT: Button - Start
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="60b97bfd-89d1-4181-926e-eb3239a991dd"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.211"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="9ab448a8-7ac7-4ab3-9aea-77e3fcba50c4"
+>Start selection
+DMI OBJECT: Button - Start
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7970c2a8-9851-48f6-ac3e-f05dc1133c03"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.212"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="4316c2c9-c692-41b8-bf28-94c30cbf0e39"
+>Start selection
+DMI OBJECT: Button - Start
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="99b4f940-b6a1-49a8-a6d3-194ad1d89920"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.213"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="c52f27c4-e4d1-4bec-99f5-6c4c5b6f8b39"
+>Start selection
+DMI OBJECT: Button - Start
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7cf2f076-e275-4071-bc57-1724b673ee72"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.214"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="ee5f142b-d31b-4dbb-9e6b-9d451ac675bc"
+>Start selection
+START: DMI 11.7.3
+STOP: DMI 11.7.3, close
+DMI OBJECT: Button - Start
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c6c9f703-adc8-4019-92a8-640c8a7357de"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.215"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="86d5c90a-35f7-4fbd-b26b-c2bae0908b65"
+>Start selection
+SUBSET-026 REFERENCE: 5.11.2.S140
+DMI OBJECT: Button - Start
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b4641671-7435-4009-aa84-5b094b78e76c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.216"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6ea365fa-daa3-41f0-a898-4dadfc1e3a99"
+>Start selection
+SUBSET-026 REFERENCE: 5.4.3.2.S20
+DMI OBJECT: Button - Start
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0c33512e-66b3-4c58-b58b-07ee605b86c9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.217"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="b3bb105b-90ac-407e-ba5b-c61556424977"
+>Start selection
+DMI OBJECT: Button - Start
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0bb619cb-7ea3-4df4-a3a4-d441bc49490d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.218"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="dfc546e4-bdb5-49c3-b7c9-36b4444e9120"
+>Toggling display for Geo Pos
+DMI OBJECT: DR03
+DMI AREA: G12 (TS)
+F7 (SK)
+DMI REFERENCE: 8.4.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c9653276-8ac2-4a8a-af04-8a0f9d19cf21"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.219"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="cd25792b-2e23-4629-9bd7-ec155b938a68"
+>Toggling display for Geo Pos
+START: x (TS: if toggle off)
+x (SK)
+DMI OBJECT: DR03
+DMI AREA: G12 (TS)
+F7 (SK)
+DMI REFERENCE: 8.4.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="af4775cc-8b79-4389-b3b0-bdd6371fbcc0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.220"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="96c0f333-fa6b-459b-9bc4-e679caee273f"
+>Toggling display for Geo Pos
+STOP: x
+SUBSET-026 REFERENCE: 3.6.6.9.b,c,d
+DMI OBJECT: DR03
+DMI AREA: G12 (TS)
+F7 (SK)
+DMI REFERENCE: 8.4.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9645fa4f-d467-45e6-8495-bf517184a17c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.221"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="04487c5e-f777-43dd-a8e6-a0d95ec14230"
+>Toggling display for OS
+START: DMI 8.2.2.4.2 (TS)
+DMI 8.2.2.4.3 (SK)
+STOP: DMI 8.2.2.4.4
+DMI OBJECT: Toggling function for speed information (DR01 for SK)
+DMI AREA: A/B (TS)
+F7 (SK)
+DMI REFERENCE: 8.2.2.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d65922c3-1bc4-4954-85a9-43136e1a9621"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.222"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="9dff5092-b64a-4b02-a04c-ce86413bbcd0"
+>Toggling display for SH
+START: DMI 8.2.2.4.2 (TS)
+DMI 8.2.2.4.3 (SK)
+STOP: DMI 8.2.2.4.4
+DMI OBJECT: Toggling function for speed information (DR01 for SK)
+DMI AREA: A/B (TS)
+F7 (SK)
+DMI REFERENCE: 8.2.2.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="cfe0629b-14ae-4011-9c2c-1f6fd0e1e30f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.223"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="7cf082e0-9525-4cdd-a2c5-ac4d855fe97b"
+>Toggling display for SR
+START: DMI 8.2.2.4.2 (TS)
+DMI 8.2.2.4.3 (SK)
+STOP: DMI 8.2.2.4.4
+DMI OBJECT: Toggling function for speed information (DR01 for SK)
+DMI AREA: A/B (TS)
+F7 (SK)
+DMI REFERENCE: 8.2.2.4<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="834fc6bf-8c09-4165-99b0-ef613ef7fb78"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.224"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="3429f77b-5d55-4cb8-b6aa-3918b8c30cf7"
+>Toggling for Tunnel Stopping Area
+DMI OBJECT: DR05
+DMI AREA: C2/3/4 (TS)
+F6 (SK)
+DMI REFERENCE: 8.2.3.6<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="6169ce71-28de-4976-859e-62b3d58330a6"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.225"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="9210ace2-4d6d-4bed-b4f3-ecb355b98adb"
+>Toggling for Tunnel Stopping Area
+START: x (TS: if toggle off)
+x (SK)
+STOP: x
+DMI OBJECT: DR05
+DMI AREA: C2/3/4 (TS)
+F6 (SK)
+DMI REFERENCE: 8.2.3.6<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="00b88e6b-fc70-4194-8233-0df8fe0f6a65"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.226"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="4a1b0057-54ad-421d-acb5-8c064332d13e"
+>Train Data - Airtight system
+DMI OBJECT: Train data window(s)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="89bdd91d-9262-4903-929b-b084d48ae6a7"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.227"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6c42aa0d-1bfd-4da2-8f21-e88508e9d799"
+>Train Data - Axle load category
+DMI OBJECT: Train data window(s)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ed7d562b-f2e8-41af-aed7-6b48dbd03acc"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.228"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="3903104a-c079-4b86-aa8a-e360fd6ca588"
+>Train Data - International Train category 
+Comment: covered by the operational train categories together with the brake position
+DMI OBJECT: Train data window(s)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fdfa2953-70a1-4b89-9b43-2741ec4fd546"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.229"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="7c6a86e9-0a44-4e45-9916-17aed9e27dab"
+>Train Data - Loading Gauge
+DMI OBJECT: Train data window(s)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f3331f89-8fda-413e-a5d1-63722557afe3"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.230"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="47773060-a363-4fb1-a4e5-5a3d336bd346"
+>Train Data - Maximum Train Speed 
+DMI OBJECT: Train data window(s)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="24fe0d8a-7c74-4d15-ba2e-c76ef519bb01"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.231"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="1b1c9a35-ec47-4838-baff-a6676262a56c"
+>Train Data - Train length 
+DMI OBJECT: Train data window(s)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="86def08b-090b-4e20-a3db-87838cc8e64f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.232"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="f4d08825-1cb5-40e3-b40c-49f7ca0d51d7"
+>Train Data Entry - traction/brake parameters
+Comment: only for lambda trains via the brake weight percentage.
+brake position covered  by operational train categories
+DMI OBJECT: Train data window(s)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="73c97780-96f2-4df9-9a33-a7b6530f6f40"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.233"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="04107bdb-76e2-489b-a5c4-5bb65939bb5e"
+>Train data Entry/Modification/Re-validation
+START: DMI 11.7.3
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.3, close
+DMI OBJECT: Train data validation window<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d7d97bd3-49c3-4f37-ab64-c841ef6641d8"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.234"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="adf37dac-602f-4daf-938f-f4e9edb2953b"
+>Train data Entry/Modification/Re-validation
+DMI OBJECT: Train data window(s)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2a117b6c-b56d-46ab-a412-8aec3ef3f095"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.235"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="7321e972-74f1-4d75-aa07-6991d1038805"
+>Train data Entry/Modification/Re-validation
+DMI OBJECT: Train data window(s)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="dd70a066-6eec-4c22-9ec1-a1e4bb99cd00"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.236"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d6018b31-a6d1-41f8-b6f4-b1947a5edeef"
+>Train data Entry/Modification/Re-validation
+START: DMI 11.7.3, previous/next (if any)
+STOP: DMI 11.7.1.7, 11.7.1.9, 11.7.3, close, previous/next (if any)
+DMI OBJECT: Train data window(s)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="6d0e4a1c-d1dc-42ce-b2f0-518bbbaad50a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.237"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="25cbe369-b70d-4563-866d-9b7324bb66ff"
+>Train data Entry/Modification/Re-validation
+DMI OBJECT: Train data window(s)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="cc991746-4858-47cd-b4e6-b3db052c1217"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.238"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="66e6851b-7fc2-47fd-8bd8-1ae5521c3b52"
+>Train data Entry/Modification/Re-validation
+DMI OBJECT: Train data window(s)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fe3f5ada-3984-48b9-827a-4e82121780c7"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.239"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="569d4969-1d0c-4238-8d10-ecec466bdfed"
+>Train data Entry/Modification/Re-validation
+DMI OBJECT: Train data window(s)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e057f55d-b91c-49eb-965c-bd88f2a47bd0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.240"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="d9b03cac-6fa9-4165-93b9-602a5460f81d"
+>Train data Entry/Modification/Re-validation
+SUBSET-026 REFERENCE: 5.17.2.2.S6
+DMI OBJECT: Train data window(s)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="df8778b9-87d4-40bd-b09c-5edafd74b2ef"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.241"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="dcb798d7-1981-409b-bb37-561a312be90c"
+>Train data Entry/Modification/Re-validation
+SUBSET-026 REFERENCE: 5.4.3.2.S12
+DMI OBJECT: Train data window(s)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1736c1b7-d5e1-48e5-b5ae-d5054e9422b1"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.242"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="348ec5f4-8a52-4a00-ba9c-5b5590f0f688"
+>Train data selection
+DMI OBJECT: Button - Train data
+DMI AREA: Main window
+DMI REFERENCE: 10.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="59b01013-95b3-4133-81a5-6bd69dca875e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.243"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="84510a40-2fb9-43eb-9133-2b5e068197a3"
+>Train data selection
+START: DMI 11.7.3
+STOP: DMI 11.7.3, close
+DMI OBJECT: Button - Train data
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="eedbd5ca-5d2c-4515-97f3-eca949731688"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.244"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="0ad8eb44-df5e-4258-aec4-7b772ac37059"
+>Train data selection
+SUBSET-026 REFERENCE: 5.4.3.2.S10
+DMI OBJECT: Button - Train data
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3d4282dc-33c6-4ef0-8a45-0121b3d39998"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.245"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a22567fd-3c3d-4236-89b9-88fdbb153ad2"
+>Train data selection
+DMI OBJECT: Button - Train data
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c0ba024f-64f0-48df-8868-c60bd28740b9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.246"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="f7c08c9a-e2ab-4648-91e7-8c115a622734"
+>Train integrity confirmation
+DMI OBJECT: Button - Train integrity
+DMI AREA: Special window
+DMI REFERENCE: 11.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e9db711d-54f2-45cd-828c-0986ed7ea645"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.247"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="fcd96ac1-7641-4609-8d7c-5b48c556cfec"
+>Train integrity confirmation
+DMI OBJECT: Button - Train integrity
+DMI AREA: Special window
+DMI REFERENCE: 11.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="758beea9-0e04-498f-a803-b7f31371e42b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.248"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a8e88897-6435-4bec-964a-c8cd8e2ae068"
+>Train integrity confirmation
+DMI OBJECT: Button - Train integrity
+DMI AREA: Special window
+DMI REFERENCE: 11.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="854b2929-da90-4280-92ab-c09b6b7a3792"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.249"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="2f1a2126-9193-43d2-b63f-17e2ba20efbf"
+>Train integrity confirmation
+START: DMI 11.7.6
+STOP: DMI 11.7.6, close
+DMI OBJECT: Button - Train integrity
+DMI AREA: Special window
+DMI REFERENCE: 11.2.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="106d96ad-35c6-48f8-8e7a-9ab72dc6d82f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.250"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="25461848-79df-4fcd-9656-52883470d2f9"
+>Train running number entry
+DMI OBJECT: Button - Train running number
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d76d1def-530b-4fee-a52d-7dd2008a23b4"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.251"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="95758b75-44ed-4e7c-ab9a-0fbe6c33f88d"
+>Train running number entry
+START: DMI 11.7.2, 11.7.3
+STOP: DMI 11.7.2, 11.7.3, close
+DMI OBJECT: Button - Train running number
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8e3b24ac-ad1b-4eb6-b248-e3d84a8a50eb"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.252"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="cd06b78e-3a09-4a15-ac4b-f6de93679406"
+>Train running number entry
+DMI OBJECT: Button - Train running number
+DMI AREA: Main window
+DMI REFERENCE: 11.2.1<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ae4c89e9-b29b-4a50-9b4e-a073e6853d75"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.253"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="786081f3-9151-4add-982b-42d623eb4534"
+>Train running number entry
+START: DMI 11.7.2
+STOP: DMI 11.7.2, close
+SUBSET-026 REFERENCE: 5.4.3.2.S1
+DMI OBJECT: Button - TRN
+DMI AREA: Driver ID window (SoM)
+DMI REFERENCE: 11.3.3<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b564f7af-8c92-422e-87ec-58ece696212c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.254"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="22270721-25fa-47c3-8b9b-44c4bcc8976c"
+>Use EIRENE short number
+SUBSET-026 REFERENCE: 5.10.3.15.2.b
+DMI OBJECT: Button - Use short number
+DMI AREA: RBC contact window
+DMI REFERENCE: 11.2.5<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b76c8e49-5df2-4c7a-ba19-ad70fc1c179d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.255"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="bbb7dda9-91e2-409d-aae8-b52f49cd9ae1"
+>Use EIRENE short number
+DMI OBJECT: Button - Use short number
+DMI AREA: RBC contact window
+DMI REFERENCE: 11.2.5<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="5d3c30d6-8cbc-4137-879e-d4fd55c6e4cd"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.256"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="17cd9b8d-4cc3-401c-aa2e-971dbff1d589"
+>Use EIRENE short number
+START: DMI 11.7.2, 11.7.3
+STOP: DMI 11.7.2, 11.7.3, close
+SUBSET-026 REFERENCE: 5.4.3.2.S3
+DMI OBJECT: Button - Use short number
+DMI AREA: RBC contact window
+DMI REFERENCE: 11.2.5<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="41c567a7-f922-4341-b4f8-99e42a89330c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.257"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="da98d1b0-d627-4c14-92ad-ec554bc9d4fc"
+>Use last stored RBC id / phone number
+SUBSET-026 REFERENCE: 5.10.3.15.2.b
+DMI OBJECT: Button - Contact last RBC
+DMI AREA: RBC contact window
+DMI REFERENCE: 11.2.5<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="98baa84a-aaf9-40f8-b280-550565a92154"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.258"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="9786ea3f-0c8d-4370-bb3b-d3b3e6b81037"
+>Use last stored RBC id / phone number
+DMI OBJECT: Button - Contact last RBC
+DMI AREA: RBC contact window
+DMI REFERENCE: 11.2.5<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e34b86bd-9391-4cb2-988f-595af85d3c64"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="1.259"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="dc5df774-6c44-4928-bc54-6925729cc1ac"
+>Use last stored RBC id / phone number
+START: DMI 11.7.2, 11.7.3
+STOP: DMI 11.7.2, 11.7.3, close
+SUBSET-026 REFERENCE: 5.4.3.2.S3
+DMI OBJECT: Button - Contact last RBC
+DMI AREA: RBC contact window
+DMI REFERENCE: 11.2.5<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c8e8e60b-4dd2-4490-a060-e859b4fd1257"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Chapter>
