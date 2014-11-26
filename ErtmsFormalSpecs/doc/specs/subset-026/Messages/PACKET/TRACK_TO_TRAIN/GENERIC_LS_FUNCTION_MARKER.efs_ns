@@ -1,0 +1,70 @@
+<NameSpace
+ X="220"
+ Width="100"
+ Height="50"
+ Name="GENERIC_LS_FUNCTION_MARKER"
+ Guid="840d58c8-dab6-459c-b51e-841a2999b024"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Message"
+ Guid="b649da98-79b1-4fd6-a29a-8987e3cd107f"
+>
+<ReqRef
+ Id="e9f9dfc1-5e6c-4920-958e-20889458cdd1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47ecec53-084d-46d4-809d-880f7d5b0948"
+>
+</ReqRef><ReqRef
+ Id="6737db26-a632-470d-8d80-0b013d664371"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="30b6d838-4dee-4d79-b0f5-1aa100fb3e2a"
+>
+</ReqRef><Comment>Used to enable the generic toggling on/off of the display of the Lowest Supervised Speed within the MA.</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="181"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="NID_PACKET"
+ Guid="5484b14d-5214-426e-9262-3cf112ef0903"
+>
+<ReqRef
+ Id="e9f9dfc1-5e6c-4920-958e-20889458cdd1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="177f45cb-f3f7-44ed-8179-9fc56825d1be"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Q_DIR"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="Q_DIR"
+ Guid="89e45b64-0bec-4a6d-8403-6daa0b96f401"
+>
+<ReqRef
+ Id="e9f9dfc1-5e6c-4920-958e-20889458cdd1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d393f8d8-9c1e-4e30-a021-60c497b4a87b"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="L_PACKET"
+ Guid="3faa03d4-2dd6-4c8a-928c-600381b2141a"
+>
+<ReqRef
+ Id="e9f9dfc1-5e6c-4920-958e-20889458cdd1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2d442eec-5c67-4d4e-9199-38557619dac5"
+>
+</ReqRef></StructureElement></Structure></Structures>
+</NameSpace>

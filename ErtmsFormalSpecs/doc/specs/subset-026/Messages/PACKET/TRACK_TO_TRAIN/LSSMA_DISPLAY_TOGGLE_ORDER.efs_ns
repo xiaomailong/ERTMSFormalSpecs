@@ -1,0 +1,91 @@
+<NameSpace
+ X="110"
+ Width="100"
+ Height="50"
+ Name="LSSMA_DISPLAY_TOGGLE_ORDER"
+ Guid="06c16004-883c-4e10-9b28-0ba54aeda449"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Message"
+ Guid="80f6836d-bf58-431c-be1c-84a46f7b398b"
+>
+<ReqRef
+ Id="6eeca2b4-7feb-46e5-9918-59197fd2bd89"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aeffedc5-0602-4099-82da-7259770b9817"
+>
+</ReqRef><ReqRef
+ Id="bdfaf4fa-ba42-435a-90fb-0d6d385818a9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f029e60c-010c-45e4-b7a1-8469711a0ea2"
+>
+</ReqRef><Comment>Used to toggle on/off the display of the Lowest Supervised Speed withing the MA.</Comment>
+<StructureElement
+ TypeName="NID_PACKET"
+ Default="180"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="NID_PACKET"
+ Guid="531763ae-f6b2-4da3-922c-adbc7c44bed0"
+>
+<ReqRef
+ Id="6eeca2b4-7feb-46e5-9918-59197fd2bd89"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7b731997-0913-42ce-95ae-32f6eb929783"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Q_DIR"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="Q_DIR"
+ Guid="e25aae03-548b-4ccb-ad99-afe0aa00fb92"
+>
+<ReqRef
+ Id="6eeca2b4-7feb-46e5-9918-59197fd2bd89"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f34fac66-ed8d-4802-917d-874841b4010e"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="MessageTypes.Length"
+ Default="0"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="L_PACKET"
+ Guid="189b74df-4d28-42f6-b6d3-a425aa392753"
+>
+<ReqRef
+ Id="6eeca2b4-7feb-46e5-9918-59197fd2bd89"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5c7c4dfd-74b3-4cc7-aae7-01f5c772891b"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Q_LSSMA"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="Q_LSSMA"
+ Guid="08606675-5224-4487-8cd1-d80e37787dc9"
+>
+<ReqRef
+ Id="6eeca2b4-7feb-46e5-9918-59197fd2bd89"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e8875e88-f518-4f62-85ca-2cc556556361"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="MessageTypes.Time"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="T_LSSMA"
+ Guid="0843335e-c7ce-4032-9399-b6777c9c70eb"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>
