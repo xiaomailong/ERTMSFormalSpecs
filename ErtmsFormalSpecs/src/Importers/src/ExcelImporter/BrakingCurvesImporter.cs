@@ -23,9 +23,9 @@ using Utils;
 using TestAction = DataDictionary.Rules.Action;
 
 
-namespace Importers
+namespace Importers.ExcelImporter
 {
-    public class ExcelImporter : ProgressHandler
+    public class BrakingCurvesImporter : ProgressHandler
     {
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -141,17 +141,6 @@ namespace Importers
                     Log.ErrorFormat("Error while opening the excel file");
                 }
                 application.Quit();
-            }
-            else
-            {
-                if (TheStep != null)
-                {
-                    //importExpectations(workbook);
-                }
-                else
-                {
-                    Log.ErrorFormat("The import config is not properly initialized");
-                }
             }
         }
 

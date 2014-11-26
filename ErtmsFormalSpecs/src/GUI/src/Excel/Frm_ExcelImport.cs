@@ -26,13 +26,13 @@ namespace GUI.ExcelImport
     public partial class Frm_ExcelImport : Form
     {
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private Importers.ExcelImporter excelImporter = new Importers.ExcelImporter();
+        private Importers.ExcelImporter.BrakingCurvesImporter brakingCurvesImporter = new Importers.ExcelImporter.BrakingCurvesImporter();
 
 
         public Frm_ExcelImport(Dictionary aDictionary)
         {
             InitializeComponent();
-            excelImporter.TheDictionary = aDictionary;
+            brakingCurvesImporter.TheDictionary = aDictionary;
 
             TB_FrameName.Text = String.Format("Frame__{0}_{1}_{2}__{3}s_{4}m_{5}h", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Second, DateTime.Now.Minute, DateTime.Now.Hour);
 
@@ -48,7 +48,7 @@ namespace GUI.ExcelImport
         public Frm_ExcelImport(Step aStep)
         {
             InitializeComponent();
-            excelImporter.TheStep = aStep;
+            brakingCurvesImporter.TheStep = aStep;
 
             CBB_SpeedInterval.Items.Add("0.1");
             CBB_SpeedInterval.Items.Add("0.2");
@@ -86,7 +86,7 @@ namespace GUI.ExcelImport
             openFileDialog.Filter = "Microsof Excel (.xlsm)|*.xlsm";
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                excelImporter.FileName = openFileDialog.FileName;
+                brakingCurvesImporter.FileName = openFileDialog.FileName;
                 TB_FileName.Text = openFileDialog.FileName;
             }
         }
@@ -100,20 +100,20 @@ namespace GUI.ExcelImport
         private void Btn_Import_Click(object sender, EventArgs e)
         {
             Hide();
-            Double.TryParse(CBB_SpeedInterval.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out excelImporter.SpeedInterval);
+            Double.TryParse(CBB_SpeedInterval.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out brakingCurvesImporter.SpeedInterval);
 
-            excelImporter.FrameName = TB_FrameName.Text;
-            excelImporter.FileName = TB_FileName.Text;
-            excelImporter.FillEBD = CB_EBD.Checked;
-            excelImporter.FillSBD = CB_SBD.Checked;
-            excelImporter.FillEBI = CB_EBI.Checked;
-            excelImporter.FillSBI1 = CB_SBI1.Checked;
-            excelImporter.FillSBI2 = CB_SBI2.Checked;
-            excelImporter.FillWarning = CB_Warning.Checked;
-            excelImporter.FillPermitted = CB_Permitted.Checked;
-            excelImporter.FillIndication = CB_Indication.Checked;
+            brakingCurvesImporter.FrameName = TB_FrameName.Text;
+            brakingCurvesImporter.FileName = TB_FileName.Text;
+            brakingCurvesImporter.FillEBD = CB_EBD.Checked;
+            brakingCurvesImporter.FillSBD = CB_SBD.Checked;
+            brakingCurvesImporter.FillEBI = CB_EBI.Checked;
+            brakingCurvesImporter.FillSBI1 = CB_SBI1.Checked;
+            brakingCurvesImporter.FillSBI2 = CB_SBI2.Checked;
+            brakingCurvesImporter.FillWarning = CB_Warning.Checked;
+            brakingCurvesImporter.FillPermitted = CB_Permitted.Checked;
+            brakingCurvesImporter.FillIndication = CB_Indication.Checked;
 
-            ProgressDialog dialog = new ProgressDialog("Importing excel file....", excelImporter);
+            ProgressDialog dialog = new ProgressDialog("Importing excel file....", brakingCurvesImporter);
             dialog.ShowDialog(Owner);
         }
 
