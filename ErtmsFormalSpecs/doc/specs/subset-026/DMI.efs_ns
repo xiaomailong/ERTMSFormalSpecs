@@ -1796,6 +1796,31 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
  Guid="ef7b5877-7325-4951-994a-7959661cf001"
 >Out_TrainSpeed.Speed &lt;- Odometry.TrainSpeed()</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update entry in FS/OS mode"
+ Guid="2566e5c4-fbc3-4fa8-a197-03fb8e155543"
+>
+<Comment>Updates the displayed mode.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="UpdateValue"
+ Guid="cd1d55e4-01af-4468-95e4-efefb022f3be"
+>
+<PreConditions>
+<PreCondition
+ Guid="27732541-1d3f-447a-9519-6825fcc58f27"
+>Out_EntryInFsOs.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e6e806c0-269d-4831-9b90-1dfa1b49e348"
+>Out_EntryInFsOs.Mode &lt;- Kernel.Mode</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
