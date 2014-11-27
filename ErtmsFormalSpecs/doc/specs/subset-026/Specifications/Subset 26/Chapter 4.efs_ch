@@ -2190,7 +2190,8 @@
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="c610a0e4-7479-4ceb-8944-e767ebd408b8"
@@ -2199,10 +2200,6 @@
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="9b5c0e82-6f8c-41fb-a372-51c49bfe056a"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="0e5acf2f-2c76-4823-98d2-3c27c1d8db9a"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="4.4.9.1.2"
@@ -2210,18 +2207,16 @@
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="1bfba96f-abb7-44aa-a403-719474913d61"
->Full supervision cannot be selected by the driver, but shall be entered automatically when all necessary conditions are fulfilled.<RequirementSets>
+><Comment>The mode of the train can only be modified in the namespace Kernel.ModeTransitions, which implements the Table 4.6.2.</Comment>
+Full supervision cannot be selected by the driver, but shall be entered automatically when all necessary conditions are fulfilled.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="3224bec1-2d49-420f-b066-e7877bed2631"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="4d6945ce-5b07-4857-b0f9-9b193e735a23"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -2230,6 +2225,7 @@
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  Name=""
@@ -2239,10 +2235,6 @@
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d606d585-8ec3-4e88-96ec-73aab82c1afe"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="4dcf9c9b-cc13-4c90-bff5-01ce99f2338c"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="4.4.9.1.4"
@@ -2250,8 +2242,10 @@
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
+ infoRequired="TRUE"
  Name=""
  Guid="3d4bd2d4-777c-4d6d-85c1-ab231d5aee49"
 ><ReqRef
@@ -2259,15 +2253,16 @@
  SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
  Guid="3de01dcc-23c1-4395-85b8-799b6e58b98b"
 >
-</ReqRef>Once in Full Supervision mode, if SSP and gradient are not known for the whole length of the train, an indication &quot;ENTRY IN FULL SUPERVISION&quot; shall be clearly displayed to the driver until SSP and gradient are known for the whole length of the train.<Sub>
+</ReqRef><Comment>We consider that the whole length of the train is related to its nominal position.</Comment>
+Once in Full Supervision mode, if SSP and gradient are not known for the whole length of the train, an indication &quot;ENTRY IN FULL SUPERVISION&quot; shall be clearly displayed to the driver until SSP and gradient are known for the whole length of the train.<Sub>
 <Paragraph
  id="4.4.9.1.4.1"
- type="NOTE"
+ type="REQUIREMENT"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NotImplementable"
+ status="NA"
  version="3.0.0"
  Name=""
  Guid="3b270156-0dfc-4630-8ee1-1f927b4c38ea"
@@ -2276,20 +2271,12 @@
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="aa643838-e465-4432-b48f-8a1aaf69099e"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="3d30ce68-edd3-4835-9cd7-68ceeceb3f7e"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="4779bffb-7498-49a1-bf1f-d711e208aee1"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="f7c7b923-eaf7-4053-8c1f-6062c38f1ee9"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -2298,6 +2285,7 @@
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  Name=""
@@ -2307,10 +2295,6 @@
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="da8e7db5-0e59-4c57-88b5-f6b68ff1b580"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="4726ff82-69e0-40dd-8a3e-c80313d94be6"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="4.4.9.1.6"
@@ -2318,6 +2302,7 @@
  scope="FLAGS"
  bl="3.1.0"
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  Name=""
@@ -2356,10 +2341,6 @@
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="7dd6eaaa-6bb7-4a27-a0b6-5c68a6ec1a5c"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="f01dba47-317c-4dc9-8906-a73b2910c87b"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
