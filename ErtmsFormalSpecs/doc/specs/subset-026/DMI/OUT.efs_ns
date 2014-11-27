@@ -3289,15 +3289,13 @@ IN PlanningInformation</Action></Actions>
  Guid="01ccdb75-5dfc-4c5b-b8ae-eda9c68b7913"
 >
 </StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
+ TypeName="Default.Mode"
+ Default="Default.Mode.FS"
  Mode="Internal"
  Implemented="TRUE"
- Name="ModeEntered"
+ Name="Mode"
  Guid="ec13b56c-9a0c-43f3-96f8-d20052458f8f"
 >
-<Comment>TODO: Find out where this is relevant in Subset-026.
-Remains true for a while after OS or FS modes have been entered.</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="770"
@@ -5586,7 +5584,7 @@ The brake reason.</Comment>
 <Actions>
 <Action
  Guid="48672ecc-af05-478d-9b96-16408fda9b0a"
->SBI.OutputInformation.RequestDisplay()</Action></Actions>
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5616,7 +5614,7 @@ The brake reason.</Comment>
 <Actions>
 <Action
  Guid="e33c109a-4b3d-4558-9834-a7b5a9691875"
->SBI.OutputInformation.DoNotDisplay()</Action></Actions>
+>THIS.OutputInformation.DoNotDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -5727,6 +5725,8 @@ The brake reason.</Comment>
 >
 </StructureElement></Structure><Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="LSSMA"
  Guid="61cf8736-704c-4cb6-822c-25091fe9f603"
@@ -7135,6 +7135,9 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="LSSMAAvailable"
  Guid="adab8930-d216-4f78-a9f4-e1976cac52d3"
