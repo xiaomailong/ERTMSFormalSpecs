@@ -33662,6 +33662,7 @@
  Name="Step5 - FS"
  Guid="88a948d5-7047-4f52-be39-7feef6c00e88"
 >
+<Comment>The message Entry in FS/OS shall be displayed in the FS mode only if the whole length of the train is not covered by the gradient and SSP information.</Comment>
 <SubSteps>
 <SubStep
  Name="Sub-step1"
@@ -33674,7 +33675,50 @@
  Guid="d9740f92-7580-4dad-856d-54c0f45e2000"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="e70583a3-4bc2-4250-8a13-af681b653f62"
->DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="0d2de84a-6d2b-451d-aacf-d020de117b62"
+>BTM.LRBG &lt;- BTM.BaliseGroup
+{
+    Position =&gt; BTM.Position
+    {
+        Position =&gt; 1000.0,
+        UnderReadingAmountOdo =&gt; 10.0,
+        OverReadingAmountOdo =&gt; 10.0
+    },
+    NID =&gt; 3047,
+    Orientation =&gt; Default.Orientation.Nominal
+}</Action><Action
+ Guid="05f1918b-e670-45a8-8772-2c7eed2360c4"
+>Odometry.NominalDistance &lt;- 1000.0</Action><Action
+ Guid="42b68d3a-3ea3-4d73-998c-51d977b8c811"
+>Kernel.TrackDescription.Gradient.Gradients &lt;-
+[
+    Kernel.TrackDescription.Gradient.GradientInfo
+    {
+        Distance =&gt; 0.0,
+        Gradient =&gt; 2.0
+    }
+]</Action><Action
+ Guid="f30889ee-af35-4b29-a57c-d2acacd2d7cc"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
+[
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 0.0,
+        BasicSpeed =&gt; 120.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt; 
+        [
+            Kernel.TrackDescription.StaticSpeedProfile.SSPCategory
+            {
+                CantDeficiency =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_80_mm,
+                OtherSpecific =&gt; Kernel.TrainData.TrainCategoryEnum.FreightTrainInG,
+                Qualifier =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
+                Speed =&gt; 80.0
+            }, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY
+        ]
+    }
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
