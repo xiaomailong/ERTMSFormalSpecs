@@ -36695,815 +36695,6 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="OUT SBI Speed"
- Guid="bd961820-dcc9-4a61-bd03-718503dad04c"
->
-<TestCases>
-<TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Initialisation"
- Guid="2d4c6707-bfee-4d35-a058-935945a2ecd3"
->
-<Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="9361a2c4-134a-420c-85a1-d9a4660e5d22"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="57a046eb-a3a2-4739-986e-8bae4777c0ab"
->
-<Actions>
-<Action
- Guid="89dedfe7-cb58-4dc0-b549-3c523bda46bd"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="d622a835-8598-4129-8423-191fd206e0e2"
->DMI.MasterDMI() == DMI.DMI1</Expectation><Expectation
- Kind="Instantaneous"
- Guid="0458d7f6-19f5-4903-9b57-a91d373a702b"
->DMI.SlaveDMI() == DMI.DMI2</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2"
- Guid="78bacf57-4941-4eab-85b0-215faf912c84"
->
-<Actions>
-<Action
- Guid="e091765e-a135-442f-8fcb-072be54ffa75"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action></Actions>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase><TestCase
- Feature="0"
- Case="0"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="OUT SBI"
- Guid="6b440379-17c5-4ade-94b7-ef78af241f41"
->
-<ReqRef
- Id="9427a791-5126-401a-8a4c-c22ac729a3c7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="76406d41-6285-43f2-ab77-0f6149e561ab"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - NP"
- Guid="d9c7a8e2-1ed2-4724-b0d1-0a1d5c2fb9d9"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="ba1cb24a-c9a6-4812-b316-1d6fbed2ba64"
->
-<Actions>
-<Action
- Guid="dbb5e31c-bca2-42eb-972f-2fa19ffa3483"
->Kernel.Mode &lt;- Default.Mode.NP</Action><Action
- Guid="a9c81ca7-ad0c-4de5-9124-042b01f11400"
->Kernel.PowerOn &lt;- False</Action><Action
- Guid="6ce46ca7-7396-4ce6-92d4-e5ace05a773a"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="a0c37f2c-1588-42d1-a9ba-e98a8ef4b7de"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="d23dec5d-91b3-4637-89cd-fd2525b8ebd2"
->
-<Actions>
-<Action
- Guid="53b02e36-327d-41bc-bbb7-b526af091afe"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="855f9d99-dfeb-4ca4-b923-1069378b98df"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step2 - SB"
- Guid="9976213c-b090-4b78-a69b-7e70434a6d1e"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="0d22541a-692a-4eb1-967f-28289500ccfa"
->
-<Actions>
-<Action
- Guid="48f1e73f-a6ad-47df-877b-bc0de86d8820"
->Kernel.Mode &lt;- Default.Mode.SB</Action><Action
- Guid="cbbe9811-0e93-4f3e-9e75-b67632c6774c"
->Kernel.PowerOn &lt;- True</Action><Action
- Guid="d217392c-6151-48d6-975b-9bd199505ec8"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="e434f804-87ce-4356-87bf-d6884076580c"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="5f6fd795-54da-4f3a-9339-0c4ecd53a3ff"
->
-<Actions>
-<Action
- Guid="e1b9d649-9c1b-4587-b4c4-70e010406c05"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="bb2050cb-6e70-448f-9d5e-078748ace233"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step3 - PS"
- Guid="18552bd1-a09d-4613-bb81-396e4bda455a"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="7e0e012c-9460-4862-99cb-5967c0a859d6"
->
-<Actions>
-<Action
- Guid="9e8be577-eb60-4d81-9dd2-bb7699273add"
->Kernel.Mode &lt;- Default.Mode.PS</Action><Action
- Guid="1ffd4ff1-1c10-49b6-8150-94d2a17a010b"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="6c95c226-e99f-483d-9d49-16538fb6a55d"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="8dcfef73-f356-4229-a276-d92c2ad64bd0"
->
-<Actions>
-<Action
- Guid="7a3791fc-3366-4f3a-9cf1-67072e0a9a91"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="4768fbe7-a98d-4b25-939f-2dfacd33c0b5"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step4 - SH"
- Guid="6c096675-800d-4e99-8638-2dabdda12a3f"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="1efc7000-2b86-4293-b7e7-265f0d26f580"
->
-<Actions>
-<Action
- Guid="79fc1090-03a9-4c59-a07c-a62a6f1b72c6"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="cd8a8411-7208-413f-ada9-49beebd64d8d"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
- Guid="b370078b-edd7-40d9-ae1e-7feb043abefb"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="70bf07e3-3513-43f4-95aa-eacf3147b417"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="4bd37460-3802-43f0-bfb8-ee8f830a9fad"
->
-<Actions>
-<Action
- Guid="85b8bb86-c461-40c5-93f3-2d9e09599806"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="fdcb1f36-54a3-470a-a417-b39f2242c987"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step5 - FS"
- Guid="45c35f33-d58c-4fa1-958b-dc4da6b69414"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="991b8ab8-d986-4e0b-8849-c879bc43c57e"
->
-<Actions>
-<Action
- Guid="565b015f-4ed9-415b-823e-db5fa744b5b8"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="3c29a6c2-4ff5-4544-b6ee-f31bbbe5b7be"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
- Guid="03251bc5-4079-4c12-b49e-7288994c6b07"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="08994789-016a-4006-ac65-5c22efb84b63"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="6c8f097f-6963-4576-a733-b2b615d480c9"
->
-<Actions>
-<Action
- Guid="6056d46a-ac0f-4800-b148-f7b3aab6386d"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="22535523-6dfb-4b9b-966c-65a2a3938c96"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step6 - LS"
- Guid="29eff028-9f54-4871-b0bb-b4d86dcb712f"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="7362738d-bca9-4b73-aa70-a814021aa78d"
->
-<Actions>
-<Action
- Guid="287e342d-e41f-4e81-bf9e-c24644e64263"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
- Guid="f6e4ffce-efde-413b-ac18-6fb2b6b31d80"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="27e9b221-e469-4d81-b4d1-3b64b1634d1b"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="db41746c-6bbd-4c4c-b63e-49a6a5b55c6e"
->
-<Actions>
-<Action
- Guid="531fa5d0-e783-4e54-aa2e-893a6bf9cb90"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="0e896d92-212d-492d-b78d-0ddff1dad957"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step7 - SR"
- Guid="15e64ec6-16f3-4122-942e-18706bb46806"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="7e07b614-6e59-45d2-b71e-47ea74b370ab"
->
-<Actions>
-<Action
- Guid="dd936964-bd66-4f94-8535-cb794ee4db76"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
- Guid="94c04b09-1907-4524-88e9-8e85ea806c04"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="d84245de-4ea0-40a0-a22c-28ff877e67bd"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="4377c72d-535d-4bdb-8e71-ffe32ea63c1a"
->
-<Actions>
-<Action
- Guid="0f16e469-f0c5-437c-b43f-6f360cb4e9e6"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="dc855cd9-d72e-49c3-8256-a792c8a1e2a8"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step8 - OS"
- Guid="ff9151cf-6809-4cc3-9d65-8d9a06395239"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="cdba78d9-a701-4cb7-a829-ed1302655361"
->
-<Actions>
-<Action
- Guid="7ae6c6a0-3c68-461a-98e8-0d44afe73a0e"
->Kernel.Mode &lt;- Default.Mode.OS</Action><Action
- Guid="cb884ac9-e3f9-40b0-8aa1-4cbfd391c155"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="6d178183-bdbd-4494-9377-dd96015e6979"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="b450c4b1-946f-40a1-af26-c10c7e73cb9f"
->
-<Actions>
-<Action
- Guid="e2b38cdd-23b8-4809-be3d-7c21c86cfee9"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="c83dd679-2808-42e2-99b2-38af328da5d4"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step9 - SL"
- Guid="4930ea8a-6ced-4f26-aa3f-43e7e327a64c"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="d2cd88d3-d2c2-4ab0-b2b6-bd90c83907f1"
->
-<Actions>
-<Action
- Guid="25ff5f71-17dd-4c22-80e9-b156108dcfcb"
->Kernel.Mode &lt;- Default.Mode.SL</Action><Action
- Guid="491ed8d5-8a65-491b-b543-4d04ec784307"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
- Guid="5ec5517a-0e0f-44fa-805d-a3a4d14c505d"
->TIU.SleepingRequested  &lt;- True</Action><Action
- Guid="b4e94b77-074e-43dd-8b5a-7e579092afa3"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="f7239089-82a4-4c63-a38e-35acc66481e4"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="252ffa0d-3743-4d57-93f3-c90584fc6237"
->
-<Actions>
-<Action
- Guid="4ab14f6d-4f29-425c-ae7f-0dc77073c177"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="6dfd58be-995e-4d96-9c09-c0aec75f4acc"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step10 - NL"
- Guid="4a501f02-1187-4ffc-a2c3-b41f7ea55fff"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="89c2e6d8-18f1-4564-b70c-bb86fbe1f929"
->
-<Actions>
-<Action
- Guid="f044b90f-7d00-4e7a-a5d6-89c841d62fe6"
->Kernel.Mode &lt;- Default.Mode.NL</Action><Action
- Guid="bb376235-bc73-45fb-9e60-a49c6e77a8eb"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
- Guid="7366f005-f391-48a4-8c53-18054433651a"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="f21d6480-8ca8-464e-945c-831f11a01651"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="c814aaa4-3dc1-45c0-9e55-beef87088ed9"
->
-<Actions>
-<Action
- Guid="f82a9f49-6185-476a-8f68-89ca4d9a39e9"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="59686111-1436-4ffe-b139-fe4486e04fb6"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step11 - UN"
- Guid="836828d5-8e4d-4d3b-bb89-51dffc9aea57"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="b493dac9-94b5-45ce-ba0c-ba3329d24739"
->
-<Actions>
-<Action
- Guid="7cbc52e6-8be9-49d2-9b5b-eb2f5e1990cc"
->Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="c6408c43-f9f9-4fed-9b24-2546e2a553a5"
->Kernel.Level.Value.Value &lt;- Level.L0</Action><Action
- Guid="79aed255-6b01-4c77-aa02-5967c2d5902b"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="002a050f-9cc6-4a5c-8fae-743f9ac5d460"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="e4b2d8dc-e801-4d90-aefc-c1244725595d"
->
-<Actions>
-<Action
- Guid="a46e2d2b-32c9-4291-b2ef-7220480fc75a"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="431681a4-9809-40f7-8364-5e320c288766"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step12 - TR"
- Guid="f2b5e598-9292-4816-ab3b-07c55f891966"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="b1abb998-073e-4319-af32-7a8d33307248"
->
-<Actions>
-<Action
- Guid="554a9e5d-fbf1-4818-a6c1-29bd44e5f046"
->Kernel.Mode &lt;- Default.Mode.TR</Action><Action
- Guid="9bbd6643-9507-4ab9-9757-2f854c9473b2"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="d19d2db3-eefb-4bae-9773-57b3ce0a3ae7"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="105b692f-17f0-4359-ad44-cb4f31163e1d"
->
-<Actions>
-<Action
- Guid="95c32bc0-b5e6-49fc-be45-a73ab4355247"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="39bc0439-804a-4552-aaef-7c62893f6d26"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step13 - PT"
- Guid="8e600faa-cb8a-4b83-99cd-64a466825ef3"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="4422f483-77cb-4443-b3cb-4644a0500697"
->
-<Actions>
-<Action
- Guid="3df67ea4-42ba-4555-8b12-2c3a4ba55d65"
->Kernel.Mode &lt;- Default.Mode.PT</Action><Action
- Guid="b188d64a-d1d1-462c-bcd7-79a22bc6682c"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="16af76ae-e07f-4112-8720-cdee15416578"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="968f71b2-79ad-4a6f-b763-ab8f5e04b5fb"
->
-<Actions>
-<Action
- Guid="88f6d016-5154-49e1-a023-1cf9d1e1b693"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="1c58c269-5a96-4796-bdee-e06ccb3a3584"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step14 - SF"
- Guid="541d233c-cb9f-482c-9517-64f65257ca00"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="43e787a0-84a1-45d6-8309-1483f0dc651e"
->
-<Actions>
-<Action
- Guid="98abd8b8-6472-47a1-b237-d880e11d3f01"
->Kernel.Mode &lt;- Default.Mode.SF</Action><Action
- Guid="d727621f-955f-46d8-8c70-ebd301e184aa"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="a885f5c9-da28-4037-8cca-2b012187b2b2"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="1fc124bd-1331-4713-bc53-ae1f8d8c5fc9"
->
-<Actions>
-<Action
- Guid="57c7108c-93ad-48b6-b38b-58749d31439f"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="cd18e13f-cd84-4934-85c6-ddec3c0e3a04"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step15 - IS"
- Guid="75ddbe2b-c2b6-4fa6-9dbb-edde7d939cfd"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="095d14ce-2230-4ac2-9716-38e6baa98ca2"
->
-<Actions>
-<Action
- Guid="e5d45b48-c708-4553-87e7-6d1b3592f169"
->Kernel.Mode &lt;- Default.Mode.IS</Action><Action
- Guid="563afc1d-6ddc-4a54-8309-8da945ef5fd3"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="ab247d8a-2209-4a69-b58a-bbc52100defd"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="6be66625-6136-41ad-ae2d-7da48a30f451"
->
-<Actions>
-<Action
- Guid="567a0c7e-0961-43dc-8762-50931b658602"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="f2a79181-0213-49f6-a3e5-6c4cd2e79923"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step16 - SN"
- Guid="a84d389b-e63e-4802-8317-db4ae6c8cf1e"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="55831d56-f89e-415c-b3d3-fb8888c4ce8b"
->
-<Actions>
-<Action
- Guid="d1f0f07c-2dd0-4f82-bbc6-ffffc41c0e04"
->Kernel.Mode &lt;- Default.Mode.SN</Action><Action
- Guid="cacc742b-713c-4a1c-bb6f-5e337018d3f3"
->Kernel.Level.Value.Value &lt;- Level.LNTC</Action><Action
- Guid="83916c0f-00c7-4cdd-9328-e3e58e87f17c"
->Kernel.Level.Value.NTC &lt;- 254</Action><Action
- Guid="7ce403a6-78ee-4fca-a80b-e2d5c6e36af3"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="ac1f923d-2022-440c-b666-f1c100225eff"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="e1f10a9c-ab66-4d55-9358-8065cabd2c0c"
->
-<Actions>
-<Action
- Guid="7d9f3863-4709-4812-9906-ab758c7562a2"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="dc9130bc-bc2e-445b-a78a-f4c8bc400531"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step17 - RV"
- Guid="46830172-cd8a-4baa-98ef-3481f74e7339"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="13e3fa71-f0c7-47fd-a1a7-cd1367571267"
->
-<Actions>
-<Action
- Guid="d1570e5e-63b6-406d-a880-89785a8deeaf"
->Kernel.Mode &lt;- Default.Mode.RV</Action><Action
- Guid="ba7bd8c9-3132-4339-8f96-d3c7d2ddc650"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="aa934186-e6d8-47e0-bf95-1d79535c793d"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="NewSubStep"
- Guid="2cef0c10-aa41-400c-88ab-8ddcc58de7f5"
->
-<Actions>
-<Action
- Guid="52e258b3-4059-47f1-b0ff-60fba32db112"
->DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- CyclePhase="Processing"
- Guid="6448d861-8fc5-4039-bed2-cf358a445816"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
  Name="OUT Geographical position"
  Guid="b96a9bb9-db4f-4cb7-a5ea-122891f35129"
 >
@@ -51849,6 +51040,815 @@
  CyclePhase="Processing"
  Guid="d0f53877-a668-4d07-abfd-c28de8c73944"
 >DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="OUT SBI Speed"
+ Guid="bd961820-dcc9-4a61-bd03-718503dad04c"
+>
+<TestCases>
+<TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Initialisation"
+ Guid="2d4c6707-bfee-4d35-a058-935945a2ecd3"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+ Guid="9361a2c4-134a-420c-85a1-d9a4660e5d22"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="57a046eb-a3a2-4739-986e-8bae4777c0ab"
+>
+<Actions>
+<Action
+ Guid="89dedfe7-cb58-4dc0-b549-3c523bda46bd"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="d622a835-8598-4129-8423-191fd206e0e2"
+>DMI.MasterDMI() == DMI.DMI1</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="0458d7f6-19f5-4903-9b57-a91d373a702b"
+>DMI.SlaveDMI() == DMI.DMI2</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="78bacf57-4941-4eab-85b0-215faf912c84"
+>
+<Actions>
+<Action
+ Guid="e091765e-a135-442f-8fcb-072be54ffa75"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Feature="0"
+ Case="0"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="OUT SBI"
+ Guid="6b440379-17c5-4ade-94b7-ef78af241f41"
+>
+<ReqRef
+ Id="9427a791-5126-401a-8a4c-c22ac729a3c7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="76406d41-6285-43f2-ab77-0f6149e561ab"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - NP"
+ Guid="d9c7a8e2-1ed2-4724-b0d1-0a1d5c2fb9d9"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="ba1cb24a-c9a6-4812-b316-1d6fbed2ba64"
+>
+<Actions>
+<Action
+ Guid="dbb5e31c-bca2-42eb-972f-2fa19ffa3483"
+>Kernel.Mode &lt;- Default.Mode.NP</Action><Action
+ Guid="a9c81ca7-ad0c-4de5-9124-042b01f11400"
+>Kernel.PowerOn &lt;- False</Action><Action
+ Guid="6ce46ca7-7396-4ce6-92d4-e5ace05a773a"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="a0c37f2c-1588-42d1-a9ba-e98a8ef4b7de"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d23dec5d-91b3-4637-89cd-fd2525b8ebd2"
+>
+<Actions>
+<Action
+ Guid="53b02e36-327d-41bc-bbb7-b526af091afe"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="855f9d99-dfeb-4ca4-b923-1069378b98df"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - SB"
+ Guid="9976213c-b090-4b78-a69b-7e70434a6d1e"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="0d22541a-692a-4eb1-967f-28289500ccfa"
+>
+<Actions>
+<Action
+ Guid="48f1e73f-a6ad-47df-877b-bc0de86d8820"
+>Kernel.Mode &lt;- Default.Mode.SB</Action><Action
+ Guid="cbbe9811-0e93-4f3e-9e75-b67632c6774c"
+>Kernel.PowerOn &lt;- True</Action><Action
+ Guid="d217392c-6151-48d6-975b-9bd199505ec8"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="e434f804-87ce-4356-87bf-d6884076580c"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="5f6fd795-54da-4f3a-9339-0c4ecd53a3ff"
+>
+<Actions>
+<Action
+ Guid="e1b9d649-9c1b-4587-b4c4-70e010406c05"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="bb2050cb-6e70-448f-9d5e-078748ace233"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - PS"
+ Guid="18552bd1-a09d-4613-bb81-396e4bda455a"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="7e0e012c-9460-4862-99cb-5967c0a859d6"
+>
+<Actions>
+<Action
+ Guid="9e8be577-eb60-4d81-9dd2-bb7699273add"
+>Kernel.Mode &lt;- Default.Mode.PS</Action><Action
+ Guid="1ffd4ff1-1c10-49b6-8150-94d2a17a010b"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6c95c226-e99f-483d-9d49-16538fb6a55d"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="8dcfef73-f356-4229-a276-d92c2ad64bd0"
+>
+<Actions>
+<Action
+ Guid="7a3791fc-3366-4f3a-9cf1-67072e0a9a91"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="4768fbe7-a98d-4b25-939f-2dfacd33c0b5"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4 - SH"
+ Guid="6c096675-800d-4e99-8638-2dabdda12a3f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="1efc7000-2b86-4293-b7e7-265f0d26f580"
+>
+<Actions>
+<Action
+ Guid="79fc1090-03a9-4c59-a07c-a62a6f1b72c6"
+>Kernel.Mode &lt;- Default.Mode.SH</Action><Action
+ Guid="cd8a8411-7208-413f-ada9-49beebd64d8d"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="b370078b-edd7-40d9-ae1e-7feb043abefb"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="70bf07e3-3513-43f4-95aa-eacf3147b417"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="4bd37460-3802-43f0-bfb8-ee8f830a9fad"
+>
+<Actions>
+<Action
+ Guid="85b8bb86-c461-40c5-93f3-2d9e09599806"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="fdcb1f36-54a3-470a-a417-b39f2242c987"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step5 - FS"
+ Guid="45c35f33-d58c-4fa1-958b-dc4da6b69414"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="991b8ab8-d986-4e0b-8849-c879bc43c57e"
+>
+<Actions>
+<Action
+ Guid="565b015f-4ed9-415b-823e-db5fa744b5b8"
+>Kernel.Mode &lt;- Default.Mode.FS</Action><Action
+ Guid="3c29a6c2-4ff5-4544-b6ee-f31bbbe5b7be"
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="03251bc5-4079-4c12-b49e-7288994c6b07"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="08994789-016a-4006-ac65-5c22efb84b63"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="6c8f097f-6963-4576-a733-b2b615d480c9"
+>
+<Actions>
+<Action
+ Guid="6056d46a-ac0f-4800-b148-f7b3aab6386d"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="22535523-6dfb-4b9b-966c-65a2a3938c96"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == True</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step6 - LS"
+ Guid="29eff028-9f54-4871-b0bb-b4d86dcb712f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="7362738d-bca9-4b73-aa70-a814021aa78d"
+>
+<Actions>
+<Action
+ Guid="287e342d-e41f-4e81-bf9e-c24644e64263"
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="f6e4ffce-efde-413b-ac18-6fb2b6b31d80"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="27e9b221-e469-4d81-b4d1-3b64b1634d1b"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="db41746c-6bbd-4c4c-b63e-49a6a5b55c6e"
+>
+<Actions>
+<Action
+ Guid="531fa5d0-e783-4e54-aa2e-893a6bf9cb90"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="0e896d92-212d-492d-b78d-0ddff1dad957"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step7 - SR"
+ Guid="15e64ec6-16f3-4122-942e-18706bb46806"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="7e07b614-6e59-45d2-b71e-47ea74b370ab"
+>
+<Actions>
+<Action
+ Guid="dd936964-bd66-4f94-8535-cb794ee4db76"
+>Kernel.Mode &lt;- Default.Mode.SR</Action><Action
+ Guid="94c04b09-1907-4524-88e9-8e85ea806c04"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="d84245de-4ea0-40a0-a22c-28ff877e67bd"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="4377c72d-535d-4bdb-8e71-ffe32ea63c1a"
+>
+<Actions>
+<Action
+ Guid="0f16e469-f0c5-437c-b43f-6f360cb4e9e6"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="dc855cd9-d72e-49c3-8256-a792c8a1e2a8"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step8 - OS"
+ Guid="ff9151cf-6809-4cc3-9d65-8d9a06395239"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="cdba78d9-a701-4cb7-a829-ed1302655361"
+>
+<Actions>
+<Action
+ Guid="7ae6c6a0-3c68-461a-98e8-0d44afe73a0e"
+>Kernel.Mode &lt;- Default.Mode.OS</Action><Action
+ Guid="cb884ac9-e3f9-40b0-8aa1-4cbfd391c155"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6d178183-bdbd-4494-9377-dd96015e6979"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="b450c4b1-946f-40a1-af26-c10c7e73cb9f"
+>
+<Actions>
+<Action
+ Guid="e2b38cdd-23b8-4809-be3d-7c21c86cfee9"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="c83dd679-2808-42e2-99b2-38af328da5d4"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step9 - SL"
+ Guid="4930ea8a-6ced-4f26-aa3f-43e7e327a64c"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="d2cd88d3-d2c2-4ab0-b2b6-bd90c83907f1"
+>
+<Actions>
+<Action
+ Guid="25ff5f71-17dd-4c22-80e9-b156108dcfcb"
+>Kernel.Mode &lt;- Default.Mode.SL</Action><Action
+ Guid="491ed8d5-8a65-491b-b543-4d04ec784307"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
+ Guid="5ec5517a-0e0f-44fa-805d-a3a4d14c505d"
+>TIU.SleepingRequested  &lt;- True</Action><Action
+ Guid="b4e94b77-074e-43dd-8b5a-7e579092afa3"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f7239089-82a4-4c63-a38e-35acc66481e4"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="252ffa0d-3743-4d57-93f3-c90584fc6237"
+>
+<Actions>
+<Action
+ Guid="4ab14f6d-4f29-425c-ae7f-0dc77073c177"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6dfd58be-995e-4d96-9c09-c0aec75f4acc"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step10 - NL"
+ Guid="4a501f02-1187-4ffc-a2c3-b41f7ea55fff"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="89c2e6d8-18f1-4564-b70c-bb86fbe1f929"
+>
+<Actions>
+<Action
+ Guid="f044b90f-7d00-4e7a-a5d6-89c841d62fe6"
+>Kernel.Mode &lt;- Default.Mode.NL</Action><Action
+ Guid="bb376235-bc73-45fb-9e60-a49c6e77a8eb"
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
+ Guid="7366f005-f391-48a4-8c53-18054433651a"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f21d6480-8ca8-464e-945c-831f11a01651"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="c814aaa4-3dc1-45c0-9e55-beef87088ed9"
+>
+<Actions>
+<Action
+ Guid="f82a9f49-6185-476a-8f68-89ca4d9a39e9"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="59686111-1436-4ffe-b139-fe4486e04fb6"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step11 - UN"
+ Guid="836828d5-8e4d-4d3b-bb89-51dffc9aea57"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="b493dac9-94b5-45ce-ba0c-ba3329d24739"
+>
+<Actions>
+<Action
+ Guid="7cbc52e6-8be9-49d2-9b5b-eb2f5e1990cc"
+>Kernel.Mode &lt;- Default.Mode.UN</Action><Action
+ Guid="c6408c43-f9f9-4fed-9b24-2546e2a553a5"
+>Kernel.Level.Value.Value &lt;- Level.L0</Action><Action
+ Guid="79aed255-6b01-4c77-aa02-5967c2d5902b"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="002a050f-9cc6-4a5c-8fae-743f9ac5d460"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e4b2d8dc-e801-4d90-aefc-c1244725595d"
+>
+<Actions>
+<Action
+ Guid="a46e2d2b-32c9-4291-b2ef-7220480fc75a"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="431681a4-9809-40f7-8364-5e320c288766"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step12 - TR"
+ Guid="f2b5e598-9292-4816-ab3b-07c55f891966"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="b1abb998-073e-4319-af32-7a8d33307248"
+>
+<Actions>
+<Action
+ Guid="554a9e5d-fbf1-4818-a6c1-29bd44e5f046"
+>Kernel.Mode &lt;- Default.Mode.TR</Action><Action
+ Guid="9bbd6643-9507-4ab9-9757-2f854c9473b2"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="d19d2db3-eefb-4bae-9773-57b3ce0a3ae7"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="105b692f-17f0-4359-ad44-cb4f31163e1d"
+>
+<Actions>
+<Action
+ Guid="95c32bc0-b5e6-49fc-be45-a73ab4355247"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="39bc0439-804a-4552-aaef-7c62893f6d26"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step13 - PT"
+ Guid="8e600faa-cb8a-4b83-99cd-64a466825ef3"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="4422f483-77cb-4443-b3cb-4644a0500697"
+>
+<Actions>
+<Action
+ Guid="3df67ea4-42ba-4555-8b12-2c3a4ba55d65"
+>Kernel.Mode &lt;- Default.Mode.PT</Action><Action
+ Guid="b188d64a-d1d1-462c-bcd7-79a22bc6682c"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="16af76ae-e07f-4112-8720-cdee15416578"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="968f71b2-79ad-4a6f-b763-ab8f5e04b5fb"
+>
+<Actions>
+<Action
+ Guid="88f6d016-5154-49e1-a023-1cf9d1e1b693"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="1c58c269-5a96-4796-bdee-e06ccb3a3584"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step14 - SF"
+ Guid="541d233c-cb9f-482c-9517-64f65257ca00"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="43e787a0-84a1-45d6-8309-1483f0dc651e"
+>
+<Actions>
+<Action
+ Guid="98abd8b8-6472-47a1-b237-d880e11d3f01"
+>Kernel.Mode &lt;- Default.Mode.SF</Action><Action
+ Guid="d727621f-955f-46d8-8c70-ebd301e184aa"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="a885f5c9-da28-4037-8cca-2b012187b2b2"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="1fc124bd-1331-4713-bc53-ae1f8d8c5fc9"
+>
+<Actions>
+<Action
+ Guid="57c7108c-93ad-48b6-b38b-58749d31439f"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="cd18e13f-cd84-4934-85c6-ddec3c0e3a04"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step15 - IS"
+ Guid="75ddbe2b-c2b6-4fa6-9dbb-edde7d939cfd"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="095d14ce-2230-4ac2-9716-38e6baa98ca2"
+>
+<Actions>
+<Action
+ Guid="e5d45b48-c708-4553-87e7-6d1b3592f169"
+>Kernel.Mode &lt;- Default.Mode.IS</Action><Action
+ Guid="563afc1d-6ddc-4a54-8309-8da945ef5fd3"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="ab247d8a-2209-4a69-b58a-bbc52100defd"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="6be66625-6136-41ad-ae2d-7da48a30f451"
+>
+<Actions>
+<Action
+ Guid="567a0c7e-0961-43dc-8762-50931b658602"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="f2a79181-0213-49f6-a3e5-6c4cd2e79923"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step16 - SN"
+ Guid="a84d389b-e63e-4802-8317-db4ae6c8cf1e"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="55831d56-f89e-415c-b3d3-fb8888c4ce8b"
+>
+<Actions>
+<Action
+ Guid="d1f0f07c-2dd0-4f82-bbc6-ffffc41c0e04"
+>Kernel.Mode &lt;- Default.Mode.SN</Action><Action
+ Guid="cacc742b-713c-4a1c-bb6f-5e337018d3f3"
+>Kernel.Level.Value.Value &lt;- Level.LNTC</Action><Action
+ Guid="83916c0f-00c7-4cdd-9328-e3e58e87f17c"
+>Kernel.Level.Value.NTC &lt;- 254</Action><Action
+ Guid="7ce403a6-78ee-4fca-a80b-e2d5c6e36af3"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="ac1f923d-2022-440c-b666-f1c100225eff"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e1f10a9c-ab66-4d55-9358-8065cabd2c0c"
+>
+<Actions>
+<Action
+ Guid="7d9f3863-4709-4812-9906-ab758c7562a2"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="dc9130bc-bc2e-445b-a78a-f4c8bc400531"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step17 - RV"
+ Guid="46830172-cd8a-4baa-98ef-3481f74e7339"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="13e3fa71-f0c7-47fd-a1a7-cd1367571267"
+>
+<Actions>
+<Action
+ Guid="d1570e5e-63b6-406d-a880-89785a8deeaf"
+>Kernel.Mode &lt;- Default.Mode.RV</Action><Action
+ Guid="ba7bd8c9-3132-4339-8f96-d3c7d2ddc650"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="aa934186-e6d8-47e0-bf95-1d79535c793d"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="2cef0c10-aa41-400c-88ab-8ddcc58de7f5"
+>
+<Actions>
+<Action
+ Guid="52e258b3-4059-47f1-b0ff-60fba32db112"
+>DMI.MasterDMI().Out_SBI.Display()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ CyclePhase="Processing"
+ Guid="6448d861-8fc5-4039-bed2-cf358a445816"
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

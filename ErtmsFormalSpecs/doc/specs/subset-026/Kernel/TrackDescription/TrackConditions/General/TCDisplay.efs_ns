@@ -1074,7 +1074,7 @@ Announcement.Type == TCTypeEnum.RegenerativeBrake</PreCondition></PreConditions>
 <Expression>Odometry.EstimatedSpeed &gt;= VirtualSBIForTarget(
     Distance=&gt; TrainPosition.FrontEndPosition(DistanceInterval.Min),
     Target=&gt;SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
-        Location =&gt; Condition.Distance + BaseTypes.LengthToDistance(Condition.Length + TrainData.TrainData.Value.TrainLength),
+        Location =&gt; Condition.Distance + BaseTypes.LengthToDistance(Condition.Length),
         Speed =&gt; 0.0,
         Length =&gt; 1.0
     }
@@ -2098,9 +2098,9 @@ IN Announcements</Action></Actions>
 <Action
  Guid="66fa938d-0c1d-4ee2-a3ed-61c81a682de0"
 >INSERT NewAnnouncement(
-    TCType=&gt;TCTypeEnum.NonStoppingArea,
-    Distance=&gt; Distance,
-    Length=&gt;Length,
+    TCType =&gt; TCTypeEnum.NonStoppingArea,
+    Distance =&gt; Distance,
+    Length =&gt; Length + TrainData.TrainData.Value.TrainLength,
     Announcement =&gt; False
 )
 IN Announcements</Action></Actions>
@@ -2158,9 +2158,9 @@ IN Announcements</Action></Actions>
 <Action
  Guid="f2ce3e39-ba2f-4091-a282-34ad40517055"
 >INSERT NewAnnouncement(
-    TCType=&gt;TCTypeEnum.TunnelStoppingArea,
-    Distance=&gt; Distance,
-    Length=&gt;Length,
+    TCType =&gt; TCTypeEnum.TunnelStoppingArea,
+    Distance =&gt; Distance,
+    Length =&gt; Length,
     Announcement =&gt; False
 )
 IN Announcements</Action></Actions>
@@ -2364,7 +2364,9 @@ When the announcement starts, the end time is set in the announcement so that it
  Guid="f49ff6a5-5f34-455d-bc3d-d15f37530aa2"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="f4935738-f2f3-4fdb-977e-7936c80c914b"
+>THERE_IS X IN Announcements | ActiveConditionStart(X) AND (NOT HasDisplayEnd(X) )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8d5e8e1f-428e-4bce-9eb3-39280b03398a"
