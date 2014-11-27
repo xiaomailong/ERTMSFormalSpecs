@@ -1,0 +1,666 @@
+<NameSpace
+ X="650"
+ Y="10"
+ Width="100"
+ Height="50"
+ Name="DMISystemStatusesConvertors"
+ Guid="08401bb4-c037-4f94-853f-6ad44aee4dd6"
+>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="BaliseReadErrorDisplayed"
+ Guid="201c16e1-90f7-4e2e-be8d-44318c150391"
+>
+<Comment>Indicates if the system status message &quot;Balise read error&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="f22c2e05-bc3c-41eb-a338-4c94feb11b99"
+>
+<PreConditions>
+<PreCondition
+ Guid="2b5e7c49-49ae-48c0-bbcc-1101efa206e6"
+>False</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="36d59642-8efa-4752-a129-9239a4b07523"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TracksideMalfunctionDisplayed"
+ Guid="09b2a319-3e40-4a68-b521-c42b23b96033"
+>
+<Comment>Indicates if the system status message &quot;Trackside malfunction&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="99ed14d5-33da-4fcf-ae5d-a2525dcd19fc"
+>
+<PreConditions>
+<PreCondition
+ Guid="4d4f0492-4b77-46f5-a370-ea7bf4c63568"
+>DMI.MasterDMI().Out_TracksideMalfunction.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="461a7e04-8e5f-47a6-bf66-878e92162b89"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="220"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="CommunicationErrorDisplayed"
+ Guid="11dc341f-1102-4eff-aac9-7c6658d52c6f"
+>
+<Comment>Indicates if the system status message &quot;Communication error&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="111624ef-e111-43b8-a374-adf4adfb0019"
+>
+<PreConditions>
+<PreCondition
+ Guid="e1567625-b466-4367-b7c8-1d80a6251a27"
+>False</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="72ca3161-3512-46b8-a8e0-eb883408affe"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="330"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="SRDistanceExceededDisplayed"
+ Guid="f67f8b9a-9608-4e21-97a8-091220acd633"
+>
+<Comment>Indicates if the system status message &quot;SR distance exceeded displayed&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="372dd9ac-2a4d-452f-bc73-0337ab6d901b"
+>
+<PreConditions>
+<PreCondition
+ Guid="ca3e4cf9-cdc0-430a-8769-cca8736c0734"
+>False</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="77d6d118-109c-440d-b9d9-12d65ef9a407"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="440"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="EmergencyStopDisplayed"
+ Guid="18d01326-3672-444f-8001-fb9e7756632e"
+>
+<Comment>Indicates if the system status message &quot;Emergency stop&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="8aec26c2-41c1-4d79-9026-122f72d2f0d8"
+>
+<PreConditions>
+<PreCondition
+ Guid="d82cfa1a-f1e4-41fe-80c6-8c3619ef0ba3"
+>False</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="38ba66ef-08ff-446b-8fc0-79f619c1cbfd"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="550"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="RVDistanceExceededDisplayed"
+ Guid="50a0027c-3110-4670-9d6b-7511a4d81f0a"
+>
+<Comment>Indicates if the system status message &quot;RV distance exceeded&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="5993f8c6-2afc-4217-9cc3-ad081328a5ea"
+>
+<PreConditions>
+<PreCondition
+ Guid="7031890a-b2e9-4789-8fec-b83dc699dc1c"
+>False</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="ac08d6b6-6930-4e9b-900f-46ed50ee73df"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="660"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="NoTrackDescriptionDisplayed"
+ Guid="a4a19f0b-d5e3-4043-b98a-c227fb03774e"
+>
+<Comment>Indicates if the system status message &quot;No track description&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="1e32b244-8dc7-4dd1-917b-d5186e452002"
+>
+<PreConditions>
+<PreCondition
+ Guid="9b77b61e-900d-44a8-8473-e5d617b67302"
+>False</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="e6bfc5a4-fb9c-4250-b16e-2341a0accb22"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="770"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RouteUnsuitableAxleLoadCategoryDisplayed"
+ Guid="73338d43-0efa-421c-9643-f8bb1a0d4587"
+>
+<Comment>Indicates if the system status message &quot;Route unsuitable - axle load category&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="b7f92e17-873e-4af7-87f1-73a0c8c744b3"
+>
+<PreConditions>
+<PreCondition
+ Guid="8b7d78b7-7af7-4c6e-b23b-d516dab2d627"
+>DMI.MasterDMI().Out_RouteUnsuitabilities.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="5c75a7f9-c78a-4bd4-b95d-ff9366296e35"
+>THERE_IS X IN DMI.MasterDMI().Out_RouteUnsuitabilities.RouteUnsuitabilities | X.Type == Messages.Q_SUITABILITY.Max_axle_load</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="2744c135-50c7-4159-9671-ec13219a4961"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RouteUnsuitableLoadingGaugeDisplayed"
+ Guid="d7a80c58-d615-4681-a140-00f689138f58"
+>
+<Comment>Indicates if the system status message &quot;Route unsuitable - loading gauge&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="4c249dd4-67e5-4ff2-9b72-7555b1621ed1"
+>
+<PreConditions>
+<PreCondition
+ Guid="0a7e723c-8a62-4532-89a6-f5e06689ce85"
+>DMI.MasterDMI().Out_RouteUnsuitabilities.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="16624bb1-3e16-436e-bf6b-04e5cbb68854"
+>THERE_IS X IN DMI.MasterDMI().Out_RouteUnsuitabilities.RouteUnsuitabilities | X.Type == Messages.Q_SUITABILITY.Loading_gauge_profile</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="71755a70-882f-426b-8224-c37e198d6dd3"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RouteUnsuitableTractionSystemDisplayed"
+ Guid="5fd6bcaf-ca37-4af0-81d2-7ffc70ccf30e"
+>
+<Comment>Indicates if the system status message &quot;Route unsuitable - traction system&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="0e29d68c-7ccc-4134-afa5-14dc29ff0c02"
+>
+<PreConditions>
+<PreCondition
+ Guid="93ea5caf-62ad-47e8-97d9-761458f88c4f"
+>DMI.MasterDMI().Out_RouteUnsuitabilities.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="de32c30f-4eab-4432-84b9-62e4df53bb4e"
+>THERE_IS X IN DMI.MasterDMI().Out_RouteUnsuitabilities.RouteUnsuitabilities | X.Type == Messages.Q_SUITABILITY.Traction_system</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="545aa8b3-486b-4b18-bc0b-bb3e69cb32ea"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="220"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RadioNetworkRegistrationFailedDisplayed"
+ Guid="f61dc9d5-782c-4cc9-9266-d830a5d5fb28"
+>
+<Comment>Indicates if the system status message &quot;Radio network registration failed&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="e93cc0e1-52c6-463c-a39b-877d7dcd41eb"
+>
+<PreConditions>
+<PreCondition
+ Guid="870c98e7-1d67-4dd3-8cd7-2c3fe331cf04"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="a86f9086-2e0d-466a-8873-11aaaf6a71c1"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="330"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EnteringFSDisplayed"
+ Guid="4d069db0-8845-404b-9abc-bf6dd4ee4daf"
+>
+<Comment>Indicates if the system status message &quot;Entering FS&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="09fc9477-38ab-4f1c-9197-f9ba741d9d90"
+>
+<PreConditions>
+<PreCondition
+ Guid="bbc98d43-b5da-4c72-8aff-241ca09bf0bb"
+>DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="43f6be95-935b-4206-89e7-d535ca7dbf4c"
+>DMI.MasterDMI().Out_EntryInFsOs.Mode == Mode.FS</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="b5469662-8137-40e4-8721-f496816ccf62"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="440"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EnteringOSDisplayed"
+ Guid="ec1721ee-1197-44ef-9626-3ee1f225818e"
+>
+<Comment>Indicates if the system status message &quot;Entering OS&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="1c7f7987-0e8c-4516-b799-782e6469d0b1"
+>
+<PreConditions>
+<PreCondition
+ Guid="081b2798-f648-4513-8a32-005a1aac1afb"
+>DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="96d8ffbf-4bbe-4730-a66b-99d8db53d07a"
+>DMI.MasterDMI().Out_EntryInFsOs.Mode == Mode.OS</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="622bf4a8-27ad-4aad-9678-470fb69270df"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="550"
+ Y="60"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="RunawayMovementDisplayed"
+ Guid="22e35a46-2054-4de5-b0b8-1bcc1416ff72"
+>
+<Comment>Indicates if the system status message &quot;Runaway movement&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="76b8cd65-d831-460d-a2fb-df75b7b92f29"
+>
+<PreConditions>
+<PreCondition
+ Guid="eb74f833-6058-4712-818d-218fe5a5a9fc"
+>False</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="0b2f89ec-0eac-4bb4-a9a7-467fb8ac6816"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="660"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SHRefusedDisplayed"
+ Guid="3724c93e-aac4-4c32-b8fe-fa45ac2c53df"
+>
+<Comment>Indicates if the system status message &quot;SH refused&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="9fed70fb-4aeb-4afe-9746-706bf13874fb"
+>
+<PreConditions>
+<PreCondition
+ Guid="fb9e3020-56c3-486d-9373-ed5747468e70"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="d1ff36e2-2090-43bf-986c-4a77984f5f84"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="770"
+ Y="60"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="SHRequestFailedDisplayed"
+ Guid="37c1c4e9-57be-4701-8ca8-107e64a0833b"
+>
+<Comment>Indicates if the system status message &quot;SH request failed&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="82c7f858-586d-4d25-a2a4-eb11d86139db"
+>
+<PreConditions>
+<PreCondition
+ Guid="067251ac-1b7a-47f3-9b02-ffb280f9be18"
+>False</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="4895e247-5f1c-43ef-9917-ae2f537b6434"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Y="120"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TracksideNotCompatibleDisplayed"
+ Guid="c0c4f167-eead-4729-a31d-07791a09fe23"
+>
+<Comment>Indicates if the system status message &quot;Trackside not compatible&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="b307ff5d-41b2-4dab-b143-ca2c7eb12c7d"
+>
+<PreConditions>
+<PreCondition
+ Guid="09cfd144-cb9c-4949-b7c2-dd4b5a91d8cf"
+>DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="0c3d3bb5-5121-46d8-b261-b60e8866ef4c"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="110"
+ Y="120"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="TrainDataChangedDisplayed"
+ Guid="7a2150ff-600b-4b4d-94c1-a3a4d2519362"
+>
+<Comment>Indicates if the system status message &quot;Train data changed&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="c8300d0c-762a-40ae-bcc4-fad4b8ed2606"
+>
+<PreConditions>
+<PreCondition
+ Guid="92ce06d0-e801-4c73-9fd3-9f2f1cfe292b"
+>False</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="5bd2a566-648e-48c3-9855-16c2825dade0"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="220"
+ Y="120"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TrainIsRejectedDisplayed"
+ Guid="4c8d7ee5-bb7a-48f2-93bc-7eaf66d082a7"
+>
+<Comment>Indicates if the system status message &quot;Train is rejected&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="3164f618-212c-4c3d-9a2c-2749fa1ac4f4"
+>
+<PreConditions>
+<PreCondition
+ Guid="0b9f7358-da92-4fb5-b54a-4954b38666b4"
+>DMI.MasterDMI().Out_TrainIsRejected.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="acac3373-c8bb-4b3b-8cb6-e5f2cba2b030"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="330"
+ Y="120"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="UnathorizedPassingOfEOALOADisplayed"
+ Guid="cb72a673-e015-4389-b46a-f1b172f57681"
+>
+<Comment>Indicates if the system status message &quot;Unathorized passing of EOA / LOA&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="5c89f7a9-e438-42ec-a4d9-b3072688fef0"
+>
+<PreConditions>
+<PreCondition
+ Guid="962019a9-c1be-4d5e-874b-ee183efac246"
+>False</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="40025b47-8010-44e1-b96a-9d60c593d700"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="440"
+ Y="120"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="NoMAReceivedAtLevelTransitionDisplayed"
+ Guid="8bbbaa5f-819d-421c-bddc-840e55ca926f"
+>
+<Comment>Indicates if the system status message &quot;No MA received at level transition&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="c09a3d7b-5945-419b-8dea-6d973522bdcf"
+>
+<PreConditions>
+<PreCondition
+ Guid="82f3137f-5384-4629-8982-1d4d24bdfded"
+>False</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="2e1b4e22-140d-4c56-846a-9b74986bc554"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="550"
+ Y="120"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="SHStopOrderDisplayed"
+ Guid="6c618d9c-4652-4f05-8ffe-d3749f97e2fa"
+>
+<Comment>Indicates if the system status message &quot;SH stop order&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="ba774da4-d8a1-4f69-bf9e-d5dff27eb4ce"
+>
+<PreConditions>
+<PreCondition
+ Guid="a4525f15-a852-4bbf-84ae-57178553b116"
+>False</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="00963ac8-76ae-4397-b9c6-bb2de913010f"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ X="660"
+ Y="120"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="SRStopOrderDisplayed"
+ Guid="61584d3b-120e-448c-ba70-0017cea0625a"
+>
+<Comment>Indicates if the system status message &quot;SR stop order&quot; is displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Displayed"
+ Guid="a1473445-c696-4a15-8453-eb90b4113224"
+>
+<PreConditions>
+<PreCondition
+ Guid="4f53283f-9798-4372-9dde-e6204f110f00"
+>False</PreCondition></PreConditions>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.displayed</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="9de8d12a-bd76-4fea-81d2-78a17804dd70"
+>
+<Expression>Messages.JRU.DMI_SYST_STATUS_MESSAGE.not_displayed</Expression>
+</Case></Cases>
+</Function></Functions>
+</NameSpace>

@@ -16,6 +16,10 @@
  Name="DMISymbolsConvertors"
  Guid="3ac2c6af-92ae-4ea1-8912-a230283d8428"
 >
+</NameSpaceRef><NameSpaceRef
+ Name="DMISystemStatusesConvertors"
+ Guid="0d1802bf-ddae-465d-aaff-9160f7f383fb"
+>
 </NameSpaceRef></NameSpaces>
 <Structures>
 <Structure
@@ -5429,6 +5433,11 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
  Guid="7c4442b3-d54c-4ffd-a555-fb3413728e8b"
 >DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="189ae678-ec4c-407e-8b72-9b7a9c6cf5a5"
+>
+<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.MESSAGE.DMI_SYSTEM_STATUS_MESSAGE.Message"
@@ -5466,7 +5475,7 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="e731bb10-1ca8-4aed-8582-a71a3a74207a"
 >
-</ReqRef><Comment>Creates the message containing all the DMI symbols currently displayed.</Comment>
+</ReqRef><Comment>Creates the message indicating which system status messages are currently displayed on the DMI.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -5475,7 +5484,32 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
 <Expression>Messages.JRU.MESSAGE.DMI_SYSTEM_STATUS_MESSAGE.Message
 {
     HEADER =&gt; CreateHeader(23),
-    SYSTEM_STATUS_MESSAGE =&gt; 2
+    SYSTEM_STATUS_MESSAGE =&gt; Messages.JRU.MESSAGE.SYSTEM_STATUS_MESSAGE.Message
+    {
+        Balise_read_error =&gt; DMISystemStatusesConvertors.BaliseReadErrorDisplayed(),
+        Trackside_malfunction =&gt; DMISystemStatusesConvertors.TracksideMalfunctionDisplayed(),
+        Communication_error =&gt; DMISystemStatusesConvertors.CommunicationErrorDisplayed(),
+        Entering_FS =&gt; DMISystemStatusesConvertors.EnteringFSDisplayed(),
+        Entering_OS =&gt; DMISystemStatusesConvertors.EnteringOSDisplayed(),
+        Runaway_movement =&gt; DMISystemStatusesConvertors.RunawayMovementDisplayed(),
+        SH_refused =&gt; DMISystemStatusesConvertors.SHRefusedDisplayed(),
+        SH_request_failed =&gt; DMISystemStatusesConvertors.SHRequestFailedDisplayed(),
+        Trackside_not_compatible =&gt; DMISystemStatusesConvertors.TracksideNotCompatibleDisplayed(),
+        Train_data_changed =&gt; DMISystemStatusesConvertors.TrainDataChangedDisplayed(),
+        Train_is_rejected =&gt; DMISystemStatusesConvertors.TrainIsRejectedDisplayed(),
+        Unauthorized_passing_of_EOA_LOA =&gt; DMISystemStatusesConvertors.UnathorizedPassingOfEOALOADisplayed(),
+        No_MA_received_at_level_transition =&gt; DMISystemStatusesConvertors.NoMAReceivedAtLevelTransitionDisplayed(),
+        SR_distance_exceeded =&gt; DMISystemStatusesConvertors.SRDistanceExceededDisplayed(),
+        SH_stop_order =&gt; DMISystemStatusesConvertors.SHStopOrderDisplayed(),
+        SR_stop_order =&gt; DMISystemStatusesConvertors.SRStopOrderDisplayed(),
+        Emergency_stop =&gt; DMISystemStatusesConvertors.EmergencyStopDisplayed(),
+        RV_distance_exceeded =&gt; DMISystemStatusesConvertors.RVDistanceExceededDisplayed(),
+        No_track_description =&gt; DMISystemStatusesConvertors.NoTrackDescriptionDisplayed(),
+        Route_unsuitable__axle_load_category =&gt; DMISystemStatusesConvertors.RouteUnsuitableAxleLoadCategoryDisplayed(),
+        Route_unsuitable__loading_gauge =&gt; DMISystemStatusesConvertors.RouteUnsuitableLoadingGaugeDisplayed(),
+        Route_unsuitable__traction_system =&gt; DMISystemStatusesConvertors.RouteUnsuitableTractionSystemDisplayed(),
+        Radio_network_registration_failed =&gt; DMISystemStatusesConvertors.RadioNetworkRegistrationFailedDisplayed()
+    }
 }</Expression>
 </Case></Cases>
 </Function></Functions>

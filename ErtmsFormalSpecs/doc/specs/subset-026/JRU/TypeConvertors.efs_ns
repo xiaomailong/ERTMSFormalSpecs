@@ -2458,22 +2458,5 @@ AND
 >aContactOption == EURORADIO.ContactOptionEnum.UseOnBoardStoredShortNumber</PreCondition></PreConditions>
 <Expression>Messages.JRU.Q_RBCENTRY.Use_short_number</Expression>
 </Case></Cases>
-</Function><Function
- Type="Messages.JRU.SYSTEM_STATUS_MESSAGE"
- Default=""
- Name="ToJRUDMISystemStatusMessage"
- Guid="307d761b-bc8c-429a-946c-542e800a053b"
->
-<Cases>
-<Case
- Name="Trackside malfunction"
- Guid="7dafbf0d-cc35-451f-85f0-59afb18e7518"
->
-<PreConditions>
-<PreCondition
- Guid="06efa02f-d18a-4005-b191-e0677fd17e8b"
->DMI.MasterDMI().Out_TracksideMalfunction.OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Expression></Expression>
-</Case></Cases>
 </Function></Functions>
 </NameSpace>
