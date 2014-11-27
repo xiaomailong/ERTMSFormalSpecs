@@ -10682,9 +10682,11 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreCondi
  Guid="1ea62aa3-6056-40d4-8b5a-3eb7fbfb176b"
 >SpeedAndDistanceMonitoring.SelectMonitoringType()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Supervise CSM"
  Guid="d2143410-130a-4e02-87c5-997dc73eba9c"
 >
+<Comment>If the celining speed monitoring has to be entered =&gt; change the monitoring.</Comment>
 <PreConditions>
 <PreCondition
  Guid="d33202ae-a180-4e5e-94cf-d027d1ba507c"
@@ -11733,6 +11735,7 @@ EmergencyStops</Action></Actions>
  Name="UpdateSystemTime"
  Guid="46585923-b629-4166-8a63-015a66498ae6"
 >
+<Comment>At the end of each cycle, the current time of the system is incremented with the duration of one cycle.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -11800,6 +11803,41 @@ EmergencyStops</Action></Actions>
 <Action
  Guid="64fdc2b6-5a0c-4668-8243-6d9c40b99a78"
 >HandleOutputs()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="Handle display of system status messages"
+ Guid="a7c57cb6-49ce-4673-b8fa-7736163f2fe7"
+>
+<Comment>Handles the rules related to the display of different system status messages.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Entry in FS displayed"
+ Guid="1c0fef3b-e512-4772-be62-470f6ecde235"
+>
+<ReqRef
+ Id="3d4bd2d4-777c-4d6d-85c1-ab231d5aee49"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9bcd2c61-5f57-4b59-b4be-a6d019b048b9"
+>
+</ReqRef><Comment>If the train is in FS, its whole length is covered with the gradient profile and the SSP and if the system status message Entry in FS was displayed, then it should not be displayed anymore. We assume that &quot;the whole length of the train&quot; is related to its nominal position.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="aaefe9c9-a7a0-464a-a0e6-7ba2c1238c23"
+>DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="2ec3bf38-b84d-4f67-b5ff-998fdcb9a2f0"
+>TrainPosition.RearEndPosition(PointOfInterest =&gt; DistanceInterval.Nom) &gt;= (FIRST X IN TrackDescription.Gradient.Gradients).Distance</PreCondition><PreCondition
+ Guid="eb57c71e-371d-4b65-966a-36cef783fcba"
+>TrainPosition.RearEndPosition(PointOfInterest =&gt; DistanceInterval.Nom) &gt;= (FIRST X IN TrackDescription.StaticSpeedProfile.SSP).Distance</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="cde8fdd4-fa7a-49d8-b4b6-370f784dd0e9"
+>DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DoNotDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
