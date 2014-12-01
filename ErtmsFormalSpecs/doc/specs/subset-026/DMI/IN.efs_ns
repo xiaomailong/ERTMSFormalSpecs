@@ -6420,14 +6420,26 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="797190f6-58c9-480c-8eba-5936f433f069"
 >
-</ReqRef><Comment>Indicates whether the level can be proposed to the driver</Comment>
+</ReqRef><ReqRef
+ Id="75585210-1cbf-4da4-896a-735f79a162de"
+ SpecId="8afe885d-7c65-45ff-ac5f-48991fa403ca"
+ Guid="b72033fc-9afa-4832-bd75-b0e7762ed438"
+>
+</ReqRef><ReqRef
+ Id="73763966-dbcc-4e9b-b9bc-1631e2be3b8d"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="5ec3a584-e25e-4da6-a365-0d222994c813"
+>
+</ReqRef><Comment>Indicates whether the non-leading request can be proposed to the driver, according to the current mode and to the status of non-leading input signal.</Comment>
 <Cases>
 <Case
  Name="Enumerate the modes where available"
  Guid="be9b248f-1fee-4e53-81ab-514a924baa4d"
 >
 <Comment>Identifies the modes where the function is available</Comment>
-<Expression>Kernel.Mode in [Mode.SB, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS]</Expression>
+<Expression>Kernel.Mode in [Mode.SB, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS]
+  AND
+TIU.NonLeadingPermitted</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"

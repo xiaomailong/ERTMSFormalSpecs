@@ -3106,15 +3106,17 @@ DMI REFERENCE: 11.2.1<RequirementSets>
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="1.161"
- type="NOTE"
+ type="REQUIREMENT"
  scope="FLAGS"
  bl=""
  name=""
- status="NotImplementable"
+ status="Implemented"
  version="3.0.0"
+ specIssue="TRUE"
  Name=""
  Guid="73763966-dbcc-4e9b-b9bc-1631e2be3b8d"
->NL selection
+><Comment>Subset-026 doesn&apos;t specify that the non-leading input signal has to be received in order to display the non-leading request. It is only specified in Table 33 of ETCS Driver Machine Interface v3.3.0.</Comment>
+NL selection
 START: DMI 11.7.3
 STOP: DMI 11.7.3, close
 DMI OBJECT: Button - Non-Leading
