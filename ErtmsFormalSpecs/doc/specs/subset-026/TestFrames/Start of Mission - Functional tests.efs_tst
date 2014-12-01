@@ -3299,7 +3299,9 @@
  Guid="c4b259fc-2f55-4b67-9ec8-9ea9753a3c65"
 >Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action
  Guid="80ccca2b-e66f-4ec9-89ba-8965a7fb69ec"
->EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
+>EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action><Action
+ Guid="4d486ba0-7460-422e-8280-18640600b183"
+>TIU.NonLeadingPermitted &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6431,7 +6433,9 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="ffed13fb-42ba-460a-bb00-5ce7b695a757"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action></Actions>
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action
+ Guid="85b22eee-1a45-48e6-bc63-39b8b5341c28"
+>TIU.NonLeadingPermitted &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

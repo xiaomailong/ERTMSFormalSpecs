@@ -17973,7 +17973,9 @@
  Guid="abf437f1-d58a-449e-975a-ffd75975f0e6"
 >Kernel.PowerOn &lt;- False</Action><Action
  Guid="db2fca44-fab4-42a6-bf29-24feb6a53805"
->DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="bfbc43e8-4038-420a-8ee3-22127a923456"
+>TIU.NonLeadingPermitted &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
