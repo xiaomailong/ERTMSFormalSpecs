@@ -3179,9 +3179,12 @@ TIU.AdditionalBrakesActive
 <PreCondition
  Guid="582da4e0-6e76-4b81-a447-5b6e54f765f4"
 >TrainData.Value.EBModels != EMPTY</PreCondition></PreConditions>
-<Expression>Kdry_rst ( V =&gt; V, M_NVEBCL =&gt; NationalValues.ApplicableNationalValues.Value.ConfLevelForEmergBrakeSafeDecelerationOnDryRails ) * 
-(Kwet_rst ( V ) + NationalValues.ApplicableNationalValues.Value.WeightingFactorForAvailableWheelRailAdhesion *
-( 1.0 - Kwet_rst ( V ) ) )  *
+<Expression>Kdry_rst (
+    V =&gt; V,
+    M_NVEBCL =&gt; NationalValues.ApplicableNationalValues.Value.ConfLevelForEmergBrakeSafeDecelerationOnDryRails )
+ * 
+(Kwet_rst ( V ) + NationalValues.ApplicableNationalValues.Value.WeightingFactorForAvailableWheelRailAdhesion * ( 1.0 - Kwet_rst ( V ) ) )
+ * 
 A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </Case><Case
  Name="From conversion model"
