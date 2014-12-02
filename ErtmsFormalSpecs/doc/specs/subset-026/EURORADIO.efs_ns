@@ -2134,7 +2134,9 @@ THERE_IS X IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <Actions>
 <Action
  Guid="7a74fbe9-dfd5-4afd-ac65-a26da4458a42"
->ContactRBCOrder &lt;- EMPTY</Action></Actions>
+>ContactRBCOrder &lt;- EMPTY</Action><Action
+ Guid="458f058a-f36c-4a00-8209-e4108d1c9c5e"
+>SessionManagementData.ConnectionIsEstablished &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></EnterAction>
 </State><State
@@ -3123,7 +3125,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  Guid="064e439a-0285-414a-99b9-02f9500239f5"
 >NOT SessionManagementData.ConnectionIsEstablished</PreCondition><PreCondition
  Guid="9ad4bbc1-055b-4beb-8d36-44281c10ab76"
->LastRequestTime + TimeBeforeMessageRepetition &gt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
+>LastRequestTime + TimeBeforeMessageRepetition &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="aa75abe0-f19d-4bbb-a7f5-323d4a627543"
