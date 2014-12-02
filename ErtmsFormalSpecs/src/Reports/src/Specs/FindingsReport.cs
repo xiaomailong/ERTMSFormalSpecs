@@ -184,11 +184,11 @@ namespace Reports.Specs
 
             if (TestFeatures.Count > 0)
             {
-                AddTable(new string[] { "Test case", "Steps", "Sequence" }, new int[] { 40, 40, 50 });
+                AddTable(new string[] { "Test case", "Sequence", "Steps" }, new int[] { 40, 65, 40 });
 
                 foreach (KeyValuePair<string, string[]> testFT in TestFeatures)
                 {
-                    AddRow(new string[] { testFT.Key, testFT.Value[0], testFT.Value[1] });
+                    AddRow(new string[] { testFT.Key, testFT.Value[1], testFT.Value[0] });
                 }
             }
         }
