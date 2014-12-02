@@ -219,6 +219,13 @@ namespace Importers
                     initializeTrainDataStep.setTranslationRequired(true);
                     testCase.appendSteps(initializeTrainDataStep);
 
+                    DataDictionary.Tests.Step DefaultValuesStep = (DataDictionary.Tests.Step)DataDictionary.Generated.acceptor.getFactory().createStep(); ;
+                    DefaultValuesStep.setTCS_Order(0);
+                    DefaultValuesStep.setDistance(0);
+                    DefaultValuesStep.setDescription("Set default values");
+                    DefaultValuesStep.setTranslationRequired(true);
+                    testCase.appendSteps(DefaultValuesStep);
+
                     DataDictionary.Tests.Step manualSetupStep = (DataDictionary.Tests.Step)DataDictionary.Generated.acceptor.getFactory().createStep(); ;
                     manualSetupStep.setTCS_Order(0);
                     manualSetupStep.setDistance(0);
