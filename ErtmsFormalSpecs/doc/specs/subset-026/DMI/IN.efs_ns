@@ -3002,7 +3002,7 @@
  Guid="b1511876-75a0-487c-b207-ad7d83e60c22"
 >THIS.InputInformation.InitiateRequest()</Action><Action
  Guid="e3c60e02-5c50-4eeb-8bb2-33a0382a63af"
->THIS.Data &lt;- Kernel.TrainData.TrainData.Value</Action></Actions>
+>THIS.Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3047,7 +3047,7 @@
 <Actions>
 <Action
  Guid="c779d55b-4fb3-4c1b-a56f-f589b874ba0a"
->Kernel.TrainData.TrainData.Value &lt;- Data</Action><Action
+>Kernel.TrainData.TrainData.Value &lt;- Data.Value</Action><Action
  Guid="f1dea230-8399-4ceb-952e-5fba6e206bc5"
 >Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action
  Guid="6094f996-fa14-4aac-b1c8-c07821f30e5c"
@@ -3098,7 +3098,7 @@
 >
 <Comment>The request status</Comment>
 </StructureElement><StructureElement
- TypeName="Kernel.TrainData.TrainDataValues"
+ TypeName="Kernel.TrainData.TrainDataStruct"
  Default=""
  Mode="Incoming"
  Implemented="TRUE"
