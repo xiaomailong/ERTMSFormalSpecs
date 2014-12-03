@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using DataDictionary;
 using DataDictionary.Tests;
 
@@ -177,13 +178,26 @@ namespace GUI.TestRunnerView
                 {
                     SynchronizerList.SuspendSynchronization();
                     SubSequence subSequence = TestCase.Enclosing as SubSequence;
-                    if (subSequence != null)
+                    if (subSequence != null && TestCase.Steps.Count > 0)
                     {
-                        DataDictionary.Tests.Runner.Runner runner = new DataDictionary.Tests.Runner.Runner(subSequence, true, false);
-                        runner.RunUntilStep(null);
+                        Step step = null;
+                        bool found = false;
+                        foreach (TestCase current in subSequence.TestCases)
+                        {
+                            if (found && current.Steps.Count > 0)
+                            {
+                                step = (Step) current.Steps[0];
+                                break;
+                            }
+
+                            found = (current == TestCase);
+                        }
+
+                        DataDictionary.Tests.Runner.Runner runner = Window.getRunner(subSequence);
+                        runner.RunUntilStep(step);
                     }
                     SynchronizerList.ResumeSynchronization();
-                }
+               }
             }
         }
 
