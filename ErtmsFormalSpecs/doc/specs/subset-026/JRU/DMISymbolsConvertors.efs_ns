@@ -1614,7 +1614,7 @@
 <PreConditions>
 <PreCondition
  Guid="054f759a-30b4-4140-8679-851a1875b74e"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions | 
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions | 
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TractionSystem__none AND
     Condition.IsAnnouncement AND
     NOT Condition.Automatic</PreCondition></PreConditions>
@@ -1650,7 +1650,7 @@
 <PreConditions>
 <PreCondition
  Guid="5fd815ba-ed12-4b5d-8f2a-cc68207ce1c7"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions | 
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions | 
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TractionSystem__DC1_5kV AND
     Condition.IsAnnouncement AND
     NOT Condition.Automatic</PreCondition></PreConditions>
@@ -1685,7 +1685,7 @@
 <PreConditions>
 <PreCondition
  Guid="7e6806db-f3f5-45a6-8966-56b43a8faed8"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions | 
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions | 
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TractionSystem__DC600_750V AND (
     ( Condition.IsAnnouncement AND
       Condition.Automatic )
@@ -1724,7 +1724,7 @@
 <PreConditions>
 <PreCondition
  Guid="5c938a0b-783e-43ec-ab67-aca130bcf86f"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions | 
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions | 
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TractionSystem__DC600_750V AND
     Condition.IsAnnouncement AND
     NOT Condition.Automatic</PreCondition></PreConditions>
@@ -1760,7 +1760,7 @@
 <PreConditions>
 <PreCondition
  Guid="594846c5-5a53-45bc-b181-4d44862fda0c"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions | 
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions | 
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.SoundHorn</PreCondition></PreConditions>
 <Expression>Messages.JRU.DMI_SYMB_STATUS.displayed</Expression>
 </Case><Case
@@ -1794,7 +1794,7 @@
 <PreConditions>
 <PreCondition
  Guid="5c18520c-3c4d-42f6-afa9-4ae7622de87d"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions | 
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions | 
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea AND
     NOT Condition.IsAnnouncement</PreCondition></PreConditions>
 <Expression>Messages.JRU.DMI_SYMB_STATUS.displayed</Expression>
@@ -1829,7 +1829,7 @@
 <PreConditions>
 <PreCondition
  Guid="82818800-9638-4dfc-8c0e-3715d152ce74"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions | 
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions | 
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea AND
     Condition.IsAnnouncement</PreCondition></PreConditions>
 <Expression>Messages.JRU.DMI_SYMB_STATUS.displayed</Expression>
@@ -2125,7 +2125,7 @@
 <PreConditions>
 <PreCondition
  Guid="3c40d813-0b0e-41ae-ae2e-45cf6e60d7ed"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions |
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions |
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea AND 
     NOT Condition.IsAnnouncement</PreCondition></PreConditions>
 <Expression>Messages.JRU.DMI_SYMB_STATUS.displayed</Expression>
@@ -2160,7 +2160,7 @@
 <PreConditions>
 <PreCondition
  Guid="60cf3eb2-164c-42e6-988a-552b7ea95dec"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions |
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions |
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea AND 
     Condition.IsAnnouncement</PreCondition></PreConditions>
 <Expression>Messages.JRU.DMI_SYMB_STATUS.displayed</Expression>
@@ -2572,7 +2572,7 @@
 <PreConditions>
 <PreCondition
  Guid="c28f0e05-45eb-4124-ad59-e32b24b865c0"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions | 
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions | 
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TractionSystem__none AND (
     ( Condition.IsAnnouncement AND
       Condition.Automatic )
@@ -2610,7 +2610,7 @@
 <PreConditions>
 <PreCondition
  Guid="0f7342f2-54de-4e84-9c35-414b0e125dfc"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions | 
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions | 
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TractionSystem__AC25kV AND (
     ( Condition.IsAnnouncement AND
       Condition.Automatic )
@@ -2649,7 +2649,7 @@
 <PreConditions>
 <PreCondition
  Guid="af21710f-cbbe-48a3-884c-0770c6bde0f9"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions | 
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions | 
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TractionSystem__AC25kV AND
     Condition.IsAnnouncement AND
     NOT Condition.Automatic</PreCondition></PreConditions>
@@ -2685,7 +2685,7 @@
 <PreConditions>
 <PreCondition
  Guid="e9f7e958-dc58-43aa-a332-5d0e2e6f40ea"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions | 
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions | 
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TractionSystem__AC15kV AND (
     ( Condition.IsAnnouncement AND
       Condition.Automatic )
@@ -2724,7 +2724,7 @@
 <PreConditions>
 <PreCondition
  Guid="49a22ebf-5cb4-4dd5-82a1-1576a4868b6f"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions | 
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions | 
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TractionSystem__AC15kV AND
     Condition.IsAnnouncement AND
     NOT Condition.Automatic</PreCondition></PreConditions>
@@ -2760,7 +2760,7 @@
 <PreConditions>
 <PreCondition
  Guid="5ab85c63-4984-4391-8887-0263e99713c3"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions | 
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions | 
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TractionSystem__DC3kV AND (
     ( Condition.IsAnnouncement AND
       Condition.Automatic )
@@ -2799,7 +2799,7 @@
 <PreConditions>
 <PreCondition
  Guid="f0610222-3763-4a88-9adb-3a86cda5b1e0"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions | 
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions | 
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TractionSystem__DC3kV AND
     Condition.IsAnnouncement AND
     NOT Condition.Automatic</PreCondition></PreConditions>
@@ -2835,7 +2835,7 @@
 <PreConditions>
 <PreCondition
  Guid="61143b5e-7229-447e-8644-8e61db6c2489"
->THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.ActiveConditions | 
+>THERE_IS Condition IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions | 
     Condition.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TractionSystem__DC1_5kV AND (
     ( Condition.IsAnnouncement AND
       Condition.Automatic )
