@@ -175,6 +175,7 @@ namespace DataDictionary
             obj.setQ_DLRBG("");
             obj.setRBC_ID("");
             obj.setRBCPhone("");
+            obj.setCompleted(true);
 
             base.visit(obj, visitSubNodes);
         }

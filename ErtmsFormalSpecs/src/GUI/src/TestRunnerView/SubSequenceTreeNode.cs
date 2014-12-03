@@ -37,6 +37,9 @@ namespace GUI.TestRunnerView
             {
             }
 
+            [Category("Process"), DescriptionAttribute("This flag indicates that the sequence is complete and can be executed during nightbuild")]
+            public Boolean Completed { get { return Item.getCompleted(); }   set { Item.setCompleted(value);} }
+
             [Category("Subset-076 Description")]
             public string D_LRBG { get { return Item.getD_LRBG(); } }
 

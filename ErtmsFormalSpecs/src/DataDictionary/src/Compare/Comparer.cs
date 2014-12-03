@@ -3122,6 +3122,10 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Comment", other.getComment(), obj.getComment()) );
             }
+            if ( obj.getCompleted() != other.getCompleted() )
+            {
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "Completed", other.getCompleted().ToString(), obj.getCompleted().ToString()) );
+            }
         }
 
         /// <summary>

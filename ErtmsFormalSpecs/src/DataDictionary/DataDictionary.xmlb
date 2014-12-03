@@ -887,6 +887,7 @@
       </FIELD>
       <FIELD NAME="TestCases"  REFTYPE="TestCase" MODE="DEFAULT"/>
       <FIELD NAME="Comment"    TYPE="PCHAR"/>
+      <FIELD NAME="Completed"  TYPE="BOOLEAN"/>
     </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="D_LRBG"     TARGET="D_LRBG"     OPTIONAL="TRUE" DEFAULT="" />
@@ -898,6 +899,7 @@
       <ATTR NAME="Q_DLRBG"    TARGET="Q_DLRBG"    OPTIONAL="TRUE" DEFAULT="" />
       <ATTR NAME="RBC_ID"     TARGET="RBC_ID"     OPTIONAL="TRUE" DEFAULT="" />
       <ATTR NAME="RBCPhone"   TARGET="RBCPhone"   OPTIONAL="TRUE" DEFAULT="" />
+      <ATTR NAME="Completed"  TARGET="Completed"  OPTIONAL="TRUE" DEFAULT="TRUE" />
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
