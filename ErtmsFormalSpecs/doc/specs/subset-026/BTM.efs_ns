@@ -21,7 +21,7 @@
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="BaliseGroup"
+ Name="BaliseGroupStruct"
  Guid="5ec3b420-18e5-4e1a-9d06-81474b8546eb"
 >
 <ReqRef
@@ -127,20 +127,48 @@
  Guid="a4915afe-ad95-4ea9-aac7-b511eb5fe837"
 >
 <Comment>The over-reading amount.</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ X="690"
+ Y="350"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="PreviousBaliseGroupStruct"
+ Guid="b78c15a0-5a41-4d5f-9222-3d4b477cb17b"
+>
+<Comment>Used to store a received balise group. Allows to know if that balise group became the LRBG.</Comment>
+<StructureElement
+ TypeName="BaliseGroupStruct"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="BaliseGroup"
+ Guid="368fccbb-30e4-44e2-b001-fc2c5a8fd196"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="IsLRBG"
+ Guid="076ebd0a-bdf0-4724-a6d2-89898982f162"
+>
+<Comment>Indicates if the current balise group is (or was) an LRBG.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="BTM.BaliseGroup"
+ TypeName="BTM.PreviousBaliseGroupStruct"
  MaxSize="8"
  Default="[]"
- X="700"
- Y="350"
+ X="690"
+ Y="280"
  Width="100"
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="BaliseGroups"
+ Name="BaliseGroupsCol"
  Guid="8cbc2535-0557-4e22-b8de-8c576bea9427"
 >
 <Comment>Represents the list of last received LRBGs.</Comment>
@@ -148,8 +176,8 @@
  TypeName="Messages.EUROBALISE.Message"
  MaxSize="8"
  Default="[]"
- X="590"
- Y="280"
+ X="840"
+ Y="460"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -263,7 +291,7 @@
 <Expression>Odometry.NominalDistance - LRBG.Position.Position</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.BaliseGroup"
+ Type="BTM.PreviousBaliseGroupStruct"
  Default=""
  X="40"
  Y="140"
@@ -271,7 +299,7 @@
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="FarthestLRBG"
+ Name="FarthestBG"
  Guid="1a488722-6327-48c3-b7d2-acf35d480352"
 >
 <ReqRef
@@ -285,12 +313,12 @@
  Name="Value"
  Guid="9a9dcfe5-feaa-4d5e-9492-a5095eb075c8"
 >
-<Expression>REDUCE PreviousLRBGs 
+<Expression>REDUCE PreviousBaliseGroups | X.IsLRBG
   USING X IN SelectFartherBG ( X , RESULT )
   INITIAL_VALUE EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.BaliseGroup"
+ Type="BTM.PreviousBaliseGroupStruct"
  Default=""
  X="40"
  Y="80"
@@ -305,12 +333,12 @@
 <Comment>Selects the balise group which is the nearer between the two balise groups provided</Comment>
 <Parameters>
 <Parameter
- Type="BTM.BaliseGroup"
+ Type="BTM.PreviousBaliseGroupStruct"
  Name="bg1"
  Guid="8b6a601b-8730-44f5-846d-56bba22cc276"
 >
 </Parameter><Parameter
- Type="BTM.BaliseGroup"
+ Type="BTM.PreviousBaliseGroupStruct"
  Name="bg2"
  Guid="3160361b-f9a7-4adb-bbcb-5ea66685108e"
 >
@@ -341,7 +369,7 @@
 <PreConditions>
 <PreCondition
  Guid="ca98163b-74ba-48e2-b24b-35a21cb85d6f"
->bg1.Timestamp &lt;= bg2.Timestamp</PreCondition></PreConditions>
+>bg1.BaliseGroup.Timestamp &lt;= bg2.BaliseGroup.Timestamp</PreCondition></PreConditions>
 <Expression>bg1</Expression>
 </Case><Case
  Name="bg2 is the oldest"
@@ -350,7 +378,7 @@
 <Expression>bg2</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.BaliseGroup"
+ Type="BTM.PreviousBaliseGroupStruct"
  Default=""
  X="150"
  Y="80"
@@ -365,12 +393,12 @@
 <Comment>Selects the balise group which is the nearer between the two balise groups provided</Comment>
 <Parameters>
 <Parameter
- Type="BTM.BaliseGroup"
+ Type="BTM.PreviousBaliseGroupStruct"
  Name="bg1"
  Guid="8ec1dd11-507e-4aef-b6e9-8c437c20b3c3"
 >
 </Parameter><Parameter
- Type="BTM.BaliseGroup"
+ Type="BTM.PreviousBaliseGroupStruct"
  Name="bg2"
  Guid="81075d74-f8d2-46ee-9424-ee00d6302b4a"
 >
@@ -401,7 +429,7 @@
 <PreConditions>
 <PreCondition
  Guid="7cbc332d-8834-435a-9c08-ada4f2d15ea5"
->bg1.Timestamp &gt;= bg2.Timestamp</PreCondition></PreConditions>
+>bg1.BaliseGroup.Timestamp &gt;= bg2.BaliseGroup.Timestamp</PreCondition></PreConditions>
 <Expression>bg1</Expression>
 </Case><Case
  Name="bg2 is more recent"
@@ -410,7 +438,7 @@
 <Expression>bg2</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.BaliseGroup"
+ Type="BTM.BaliseGroupStruct"
  Default=""
  X="260"
  Y="140"
@@ -432,9 +460,9 @@
  Name="Value"
  Guid="a3bab8f5-ac86-45fb-b5e9-c1df8045ffea"
 >
-<Expression>REDUCE PreviousLRBGs 
+<Expression>(REDUCE PreviousBaliseGroups | X.IsLRBG
   USING X IN SelectNearerBG ( X , RESULT )
-  INITIAL_VALUE EMPTY</Expression>
+  INITIAL_VALUE EMPTY).BaliseGroup</Expression>
 </Case></Cases>
 </Function><Function
  Type="BTM.Position"
@@ -2097,8 +2125,14 @@ This is a check for message consistency errors.</Comment>
 <Actions>
 <Action
  Guid="7f5ae40b-0a9f-4e16-9b84-8f08ea7564dc"
->INSERT LRBG IN PreviousLRBGs
-  WHEN FULL REPLACE FarthestLRBG()</Action></Actions>
+>INSERT
+  PreviousBaliseGroupStruct
+  {
+      BaliseGroup =&gt; LRBG,
+      IsLRBG =&gt; Boolean.False
+  }
+  IN PreviousBaliseGroups
+  WHEN FULL REPLACE FarthestBG()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2827,7 +2861,7 @@ The list is updated in case two LRBGs provide the same MRSP, this should count a
 <Actions>
 <Action
  Guid="0ed7fcdc-0c4d-4e64-b329-3a748a11b5b8"
->LRBG &lt;- BTM.BaliseGroup
+>LRBG &lt;- BTM.BaliseGroupStruct
 {
   Timestamp =&gt; Kernel.DateAndTime.CurrentTime,
   NID =&gt; Nid_BG,
@@ -3603,7 +3637,7 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
 >
 </ReqRef><Comment>This variable holds the balise message to be processed.</Comment>
 </Variable><Variable
- Type="BTM.BaliseGroup"
+ Type="BTM.BaliseGroupStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="690"
@@ -3642,16 +3676,16 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
 >
 </ReqRef><Comment>Saves the information provided by the odometry at the moment where an unlinked balise group is passed. Used to compute the position, over and under reading amount relative to that unlinked balise. Can be deleted by setting its State sub variable to DataState.Unknown.</Comment>
 </Variable><Variable
- Type="BaliseGroups"
+ Type="BaliseGroupsCol"
  DefaultValue="[]"
  VariableMode="Internal"
- X="840"
- Y="350"
+ X="830"
+ Y="280"
  Width="100"
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="PreviousLRBGs"
+ Name="PreviousBaliseGroups"
  Guid="4552d13d-fb1c-495c-950c-24ad3eb2d288"
 >
 <ReqRef
@@ -3665,13 +3699,13 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="07beb723-31eb-4427-82db-90278134c80b"
 >
-</ReqRef><Comment>Holds the LRBG that have been processed before</Comment>
+</ReqRef><Comment>Holds the balise groups that have been processed before.</Comment>
 </Variable><Variable
  Type="BaliseGroupMessages"
  DefaultValue="[]"
  VariableMode="Internal"
- X="840"
- Y="280"
+ X="830"
+ Y="350"
  Width="100"
  Height="50"
  Pinned="TRUE"
