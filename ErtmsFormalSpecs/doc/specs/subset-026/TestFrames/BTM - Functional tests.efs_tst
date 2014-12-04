@@ -277,16 +277,20 @@
  Guid="3974992a-df70-45ea-b879-d7267a1553ac"
 >BTM.PreviousBaliseGroups == 
 [
-  BTM.BaliseGroup
+  BTM.PreviousBaliseGroupStruct
   {
-    Timestamp =&gt; 2.0 * Kernel.CycleDuration,
-    NID =&gt; 2124,
-    Orientation =&gt; Orientation.Unknown,
-    Position =&gt; BTM.Position
+    IsLRBG =&gt; True,
+    BaliseGroup =&gt; BTM.BaliseGroupStruct
     {
-      OverReadingAmountOdo =&gt; 0.0,
-      Position =&gt; 24510.0,
-      UnderReadingAmountOdo =&gt; 0.0
+      Timestamp =&gt; 2.0 * Kernel.CycleDuration,
+      NID =&gt; 2124,
+      Orientation =&gt; Orientation.Unknown,
+      Position =&gt; BTM.Position
+      {
+        OverReadingAmountOdo =&gt; 0.0,
+        Position =&gt; 24510.0,
+        UnderReadingAmountOdo =&gt; 0.0
+      }
     }
   }
 ]</Expectation><Expectation
@@ -387,16 +391,20 @@
  Guid="f4a0fac2-617b-401a-8780-e6f292d377e9"
 >BTM.PreviousBaliseGroups == 
 [
-  BTM.BaliseGroup
+  BTM.PreviousBaliseGroupStruct
   {
-    Timestamp =&gt; 2.0 * Kernel.CycleDuration,
-    NID =&gt; 2124,
-    Orientation =&gt; Orientation.Unknown,
-    Position =&gt; BTM.Position
+    IsLRBG =&gt; True,
+    BaliseGroup =&gt; BTM.BaliseGroupStruct
     {
-      OverReadingAmountOdo =&gt; 0.0,
-      Position =&gt; 24510.0,
-      UnderReadingAmountOdo =&gt; 0.0
+      Timestamp =&gt; 2.0 * Kernel.CycleDuration,
+      NID =&gt; 2124,
+      Orientation =&gt; Orientation.Unknown,
+      Position =&gt; BTM.Position
+      {
+        OverReadingAmountOdo =&gt; 0.0,
+        Position =&gt; 24510.0,
+        UnderReadingAmountOdo =&gt; 0.0
+      }
     }
   }
 ]</Expectation><Expectation
@@ -484,28 +492,36 @@
  Guid="11b12127-cfc8-4ace-b8f3-7800fbd1a1d1"
 >BTM.PreviousBaliseGroups ==
 [
-  BTM.BaliseGroup
+  BTM.PreviousBaliseGroupStruct
   {
-    Timestamp =&gt; 2.0 * Kernel.CycleDuration,
-    NID =&gt; 2124,
-    Orientation =&gt; Orientation.Unknown,
-    Position =&gt; BTM.Position
+    IsLRBG =&gt; True,
+    BaliseGroup =&gt; BTM.BaliseGroupStruct
     {
-      OverReadingAmountOdo =&gt; 0.0,
-      Position =&gt; 24510.0,
-      UnderReadingAmountOdo =&gt; 0.0
+      Timestamp =&gt; 2.0 * Kernel.CycleDuration,
+      NID =&gt; 2124,
+      Orientation =&gt; Orientation.Unknown,
+      Position =&gt; BTM.Position
+      {
+        OverReadingAmountOdo =&gt; 0.0,
+        Position =&gt; 24510.0,
+        UnderReadingAmountOdo =&gt; 0.0
+      }
     }
   },
-  BTM.BaliseGroup
+  BTM.PreviousBaliseGroupStruct
   {
-    Timestamp =&gt; 5.0 * Kernel.CycleDuration,
-    NID =&gt; 2125,
-    Orientation =&gt; Orientation.Nominal,
-    Position =&gt; BTM.Position
+    IsLRBG =&gt; True,
+    BaliseGroup =&gt; BTM.BaliseGroupStruct
     {
-      OverReadingAmountOdo =&gt; 0.0,
-      Position =&gt; 25620.0,
-      UnderReadingAmountOdo =&gt; 0.0
+      Timestamp =&gt; 5.0 * Kernel.CycleDuration,
+      NID =&gt; 2125,
+      Orientation =&gt; Orientation.Nominal,
+      Position =&gt; BTM.Position
+      {
+        OverReadingAmountOdo =&gt; 0.0,
+        Position =&gt; 25620.0,
+        UnderReadingAmountOdo =&gt; 0.0
+      }
     }
   }
 ]</Expectation><Expectation
