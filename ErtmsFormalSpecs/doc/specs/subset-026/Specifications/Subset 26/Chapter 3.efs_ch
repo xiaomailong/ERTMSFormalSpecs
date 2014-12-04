@@ -27959,9 +27959,12 @@ In Level 1: Train Trip shall be initiated if the on-board equipment detects that
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
+ specIssue="TRUE"
  Name=""
  Guid="7da2c959-4215-45b4-b239-3b315d76277c"
->In the following sections, the term V_MRSP (together with the derived ceiling supervision limits) refers to the lowest MRSP element encountered between the min safe front end and the max safe front end of the train.<RequirementSets>
+><Comment>When the EVC has just passed a new LRBG, the min front end of the train will not be covered by the MRSP.
+Our implementation handles this by taking the max between zero distance and the min front end (so that V_MRSP is derived only from distances covered by the current MRSP)</Comment>
+In the following sections, the term V_MRSP (together with the derived ceiling supervision limits) refers to the lowest MRSP element encountered between the min safe front end and the max safe front end of the train.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a84e2053-7be1-4f7b-b147-260ae39e524a"

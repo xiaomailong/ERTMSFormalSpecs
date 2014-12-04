@@ -565,7 +565,10 @@ USING X IN
     X2 =&gt; RESULT
 )
 INITIAL_VALUE
-  SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Min))</Expression>
+  SpeedRestrictions(BaseTypes.MaxDistance(
+    X1=&gt;TrainPosition.FrontEndPosition(DistanceInterval.Min),
+    X2=&gt;0.0
+))</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>
