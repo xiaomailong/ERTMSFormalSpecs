@@ -132,8 +132,8 @@
 <PreConditions>
 <PreCondition
  Guid="a9d4c728-e23f-4e83-884d-b41a5a7f7494"
->EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
-<Expression>BaseTypes.Distance.Unknown</Expression>
+>EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="fd21b39b-f325-40fa-a78d-5ff23258542b"
@@ -1331,7 +1331,11 @@ d_SBI2 - TrainPosition.FrontEndPosition(DistanceInterval.Max)</Expression>
   OR  
 MA.IsSvL(MRDT())</PreCondition><PreCondition
  Guid="93f3ba48-eaef-4faa-a6d8-30f0cbeb06b3"
->ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
+>ActiveFunctions.SuperviseTrainSpeed_MRSP()
+  OR
+ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()
+  OR  
+ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.MaxDistance(
     X1=&gt;Default.BaseTypes.MinDistance(
         X1=&gt;MA.ClosestEOA().Location - TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
@@ -1348,7 +1352,9 @@ MA.IsSvL(MRDT())</PreCondition><PreCondition
  Guid="b20e9a55-698d-42b5-a74f-10da874697de"
 >ActiveFunctions.SuperviseTrainSpeed_MRSP()
   OR
-ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreConditions>
+ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()
+  OR  
+ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.MaxDistance(
     X1=&gt; d_P(MRDT().Speed, True)-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max),
     X2=&gt;0.0

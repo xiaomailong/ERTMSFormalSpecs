@@ -11237,7 +11237,7 @@ EmergencyStops</Action></Actions>
 <Comment>This procedure handles the outputs to the driver or the trackside according to the state of internal variables.</Comment>
 <Rules>
 <Rule
- Priority="Processing"
+ Priority="UpdateOUT"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Update the DMI"
@@ -11261,7 +11261,7 @@ EmergencyStops</Action></Actions>
 >DMI.MasterDMI().UpdateOUTVariables()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
- Priority="Processing"
+ Priority="UpdateOUT"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Send Euroradio messages"
@@ -11284,7 +11284,7 @@ EmergencyStops</Action></Actions>
 >EURORADIO.ProcessOutgoingMessages()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
- Priority="Processing"
+ Priority="UpdateOUT"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Send JRU messages"
