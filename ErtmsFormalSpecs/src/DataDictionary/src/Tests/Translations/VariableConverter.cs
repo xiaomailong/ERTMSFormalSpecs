@@ -189,7 +189,8 @@ namespace DataDictionary.Tests.Translations
 
             foreach (KeyValuePair<string, BaseConverter> variable in Converters)
             {
-                if (variable.Key.StartsWith(Key))
+                // Check for a key with the name we are looking for, followed by an underscore
+                if (variable.Key.StartsWith(Key + "_0"))
                 {
                     retVal = variable.Value;
                     break;
