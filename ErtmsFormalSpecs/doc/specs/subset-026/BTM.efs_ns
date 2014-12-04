@@ -1813,6 +1813,25 @@ This is a check for message consistency errors.</Comment>
 >Kernel.TrackDescription.AdhesionFactors.AdhesionFactorReceived ( Packet.TRACK_TO_TRAIN.ADHESION_FACTOR )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
+ Name="Geographical Position available"
+ Guid="58f36235-339e-4d9e-a330-534564370838"
+>
+<ReqRef
+ Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b847fa2e-92db-443a-878c-7e801b35892a"
+>
+</ReqRef><Comment>Handles Geographical Position packet, if available.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="e7d4f283-e559-4695-af6d-3d536bd9b26f"
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.GEOGRAPHICAL_POSITION_INFORMATION.Q_DIR )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1c876aff-a87a-4254-9bd2-29322f74ea4b"
+>Kernel.GeographicalPosition.GeographicalPositionReceived ( aPacket=&gt; Packet.TRACK_TO_TRAIN.GEOGRAPHICAL_POSITION_INFORMATION )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Level Crossing available"
  Guid="3ca382d8-714f-4601-a04e-5e6340ece1bb"
 >

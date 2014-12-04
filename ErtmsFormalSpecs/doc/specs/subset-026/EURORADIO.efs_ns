@@ -6669,6 +6669,34 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="Geographical position available"
+ Guid="89d84dcf-76a4-4660-9ae6-86e007676a7c"
+>
+<ReqRef
+ Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fbdbfb9d-de07-49fd-9a29-0cf30112d00c"
+>
+</ReqRef><Comment>Handles reception of geographical position information received with the MA.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Geographical position available"
+ Guid="d0a87e59-f7df-4033-b433-0d5a6ec17190"
+>
+<PreConditions>
+<PreCondition
+ Guid="9d29e221-3a66-4295-b739-4d6d72194693"
+>THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="788a1112-ba99-4044-8655-aa41ca935678"
+>Kernel.GeographicalPosition.GeographicalPositionReceived( aPacket=&gt; (FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION)).GEOGRAPHICAL_POSITION_INFORMATION )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="RBC transition order available"
  Guid="0fb335bd-44e1-47e2-bd89-4c942a224204"
 >
@@ -7174,6 +7202,34 @@ Default.MessageTypes.QScaleDistance(
 >Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet =&gt; ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1  | Available ( X.ROUTE_SUITABILITY_DATA ) ).ROUTE_SUITABILITY_DATA )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Geographical position available"
+ Guid="c6392e10-ecba-405d-a76b-2510ba3260e4"
+>
+<ReqRef
+ Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="494e6f3a-b888-4d5e-87b9-b170d26f9c28"
+>
+</ReqRef><Comment>Handles reception of geographical position information received with the general message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Geographical position available"
+ Guid="61fbd0fd-4497-4000-98e8-49e1aeafeb65"
+>
+<PreConditions>
+<PreCondition
+ Guid="7e563bd6-c9f0-489a-a42f-b6e64a89d11b"
+>THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="93c1c20e-ed7d-474e-aa0b-b56128d38ef9"
+>Kernel.GeographicalPosition.GeographicalPositionReceived( aPacket=&gt; (FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION)).GEOGRAPHICAL_POSITION_INFORMATION )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
  Name="Report parameters available"
@@ -7253,7 +7309,7 @@ Default.MessageTypes.QScaleDistance(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1f2a0132-4a38-4a8a-9ee9-47bc7b5a6e6f"
 >
-</ReqRef><Comment>Handles reception of session management received with the MA.</Comment>
+</ReqRef><Comment>Handles reception of session management received with the general message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7536,6 +7592,34 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="Geographical position available"
+ Guid="caeeb936-cf39-41ac-87ea-75ca757c5a2b"
+>
+<ReqRef
+ Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="324cb001-39a7-4c4f-8532-6a05d0e57281"
+>
+</ReqRef><Comment>Handles reception of geographical position information received with MA with shifted location reference message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Geographical position available"
+ Guid="d71bf398-9b0a-4a76-ae90-ffeb1d8936ef"
+>
+<PreConditions>
+<PreCondition
+ Guid="9bd54d58-f186-4c4a-a7bb-89b66047e5e6"
+>THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8a2191ee-9998-4d69-8379-189c5901fad7"
+>Kernel.GeographicalPosition.GeographicalPositionReceived( aPacket=&gt; (FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION)).GEOGRAPHICAL_POSITION_INFORMATION )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="Mode profile available"
  Guid="d438dc8b-7936-4bcf-8833-97af765a4527"
 >
@@ -7544,7 +7628,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0ed54168-0a74-4d24-88f7-fcbdd7fbf41d"
 >
-</ReqRef><Comment>Handles reception of mode profile received with MA with shifted location reference.</Comment>
+</ReqRef><Comment>Handles reception of mode profile received with MA with shifted location reference message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7572,7 +7656,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="43764454-ca9a-4af0-ad98-93c57e99b628"
 >
-</ReqRef><Comment>Handles receptino of level transition orders with MA with shifted location reference.</Comment>
+</ReqRef><Comment>Handles receptino of level transition orders with MA with shifted location reference message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7600,7 +7684,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="75394fb1-b13d-4ea8-b0ae-b8da4e554e2c"
 >
-</ReqRef><Comment>Handles reception of report parameters received with MA with shifted location reference.</Comment>
+</ReqRef><Comment>Handles reception of report parameters received with MA with shifted location reference message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7638,7 +7722,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2551bc7c-0bcd-40d7-97b3-da8a51f1f3eb"
 >
-</ReqRef><Comment>Handles reception of the route suitability data received with MA with shifted location reference.</Comment>
+</ReqRef><Comment>Handles reception of the route suitability data received with MA with shifted location reference message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7671,7 +7755,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="95d9a572-5238-4503-a82c-fe8c0775545b"
 >
-</ReqRef><Comment>Handles reception of session management received with the MA.</Comment>
+</ReqRef><Comment>Handles reception of session management received with MA with shifted location reference message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7710,7 +7794,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3aaf0c56-8636-4293-9ed7-18ef7d85dcc4"
 >
-</ReqRef><Comment>Handles reception of radio network registration orders received with MA with shifted location reference.</Comment>
+</ReqRef><Comment>Handles reception of radio network registration orders received with MA with shifted location reference message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7743,7 +7827,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="002437a3-173c-4b37-90ab-d72d47d3ff93"
 >
-</ReqRef><Comment>Handles reception of reversing supervision information received with the MA.</Comment>
+</ReqRef><Comment>Handles reception of reversing supervision information received with MA with shifted location reference message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7786,7 +7870,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f7fea26d-2b01-4850-9105-493b0eb9cb04"
 >
-</ReqRef><Comment>Handles reception of reversing area information received with the MA.</Comment>
+</ReqRef><Comment>Handles reception of reversing area information received with the MA message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7825,7 +7909,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1065faf8-5897-4daa-8cc4-d357acd537b9"
 >
-</ReqRef><Comment>Handles reception of RBC transition orders received with MA with shifted location reference.</Comment>
+</ReqRef><Comment>Handles reception of RBC transition orders received with MA with shifted location reference message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
