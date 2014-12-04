@@ -22224,7 +22224,7 @@ if (!fl1151){
 this.setRBCPhone("");
 } // If
 if (!fl1152){
-this.setCompleted( false);
+this.setCompleted( true);
 } // If
 fl1155 = false ; 
 } // If
@@ -22321,7 +22321,7 @@ acceptor.unParsePcData(pw, this.getRBCPhone());
 pw.Write('"');
 pw.Write('\n');
 } // If
-if (this.getCompleted()){
+if (!this.getCompleted()){
 pw.Write(" Completed=\"");
 acceptor.unParsePcData(pw, this.getCompleted());
 pw.Write('"');
