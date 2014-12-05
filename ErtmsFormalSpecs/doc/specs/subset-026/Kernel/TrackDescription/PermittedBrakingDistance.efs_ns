@@ -503,7 +503,7 @@
 </ReqRef><Comment>Provides the value of Vdelta0 for speed restrictions to ensure permitted braking distance.</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Name="V_PBD"
  Guid="cf3822cd-3178-49e6-a46d-c0f600a54143"
 >
@@ -845,7 +845,7 @@
  Guid="581285a2-d199-4610-a3df-8ec1d08eec82"
 >
 </Parameter><Parameter
- Type="BaseTypes.Gradient"
+ Type="Default.BaseTypes.Gradient"
  Name="Gradient"
  Guid="ee6092e5-e433-4498-bf57-431f11c65b03"
 >
@@ -980,7 +980,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 </ReqRef><Comment>Returns the acceleration due to the provided gradient, with compensation for nominal rotating mass</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Gradient"
+ Type="Default.BaseTypes.Gradient"
  Name="Gradient"
  Guid="1c15b776-3692-4568-8037-92b0bd69109f"
 >
@@ -1108,7 +1108,7 @@ TrainData.BrakingParameters.Default_brk_emergency(V)</Expression>
 <Expression>BaseTypes.Acceleration ( NationalValues.Kv_int ( V ) * NationalValues.Kr_int ( TrainData.TrainData.Value.TrainLength ) ) * TrainData.BrakingParameters.ConversionModel.A_brake_emergency ( V )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Default=""
  Y="60"
  Width="100"
@@ -1166,7 +1166,7 @@ Also, as d_offset+D_bec increases, V_PBD increases and V_EBD decreases.
 If the first condition is not satisfied for V_PBD = 0, or if V_EBD is less than V_PBD for the smallest value of d_offset+D_bec, then there will be no solution to the second inequality and the function returns 0, otherwise we look for the value that solves the first inequality in equation form.</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="d_PBD"
  Guid="0ffad4a2-4cae-4d59-942f-0a3e19c37a3c"
 >
@@ -1250,7 +1250,7 @@ STOP_CONDITION
 <Expression>BTM.ActiveAntennaPosition + Default.BaseTypes.SpeedToMS( V ) * T41</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Default=""
  X="110"
  Width="100"
@@ -1322,7 +1322,7 @@ STOP_CONDITION
 </ReqRef><Comment>See comment on ComputePermittedSpeedForEB for details of the calculation</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="d_PBD"
  Guid="9da7a53c-5268-40e3-bb24-b643ceec4b01"
 >
@@ -1365,7 +1365,7 @@ STOP_CONDITION
     BaseTypes.AbsoluteSpeed ( CURRENT - PREVIOUS ) &lt;= epsilon</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Default=""
  X="220"
  Width="100"
@@ -1437,7 +1437,7 @@ STOP_CONDITION
  Guid="d8b06889-dda5-4233-946c-059f9f33780b"
 >
 </Parameter><Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="d_PBD"
  Guid="2b0023a7-6217-485f-879e-e19f0dbe65e1"
 >
@@ -1475,7 +1475,7 @@ STOP_CONDITION
     BaseTypes.AbsoluteSpeed ( CURRENT - PREVIOUS ) &lt;= epsilon</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Default=""
  Y="60"
  Width="100"
@@ -1507,17 +1507,17 @@ STOP_CONDITION
 </ReqRef><Comment>Iteratively calculates the value of V_PBD from the EBD curve</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Name="V_previous"
  Guid="a28559f0-0dcb-4e89-98f6-ef3ea795c3d8"
 >
 </Parameter><Parameter
- Type="BaseTypes.Gradient"
+ Type="Default.BaseTypes.Gradient"
  Name="Gradient"
  Guid="02142f39-90ff-4971-90b9-8dfad21c0a4f"
 >
 </Parameter><Parameter
- Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="Target"
  Guid="34388508-5ae0-4e57-856d-299d4b9c76ec"
 >
@@ -1534,7 +1534,7 @@ STOP_CONDITION
  - Vdelta0PBD(V_previous)</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Default=""
  X="110"
  Y="60"
@@ -1562,17 +1562,17 @@ STOP_CONDITION
 </ReqRef><Comment>Calculates V_PBD iteratively (for the SBD) in the case when it is to be achieved with the service brake</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Name="V_previous"
  Guid="42b8f8bb-6b14-4ecb-9965-e1aba1c8e5cb"
 >
 </Parameter><Parameter
- Type="BaseTypes.Gradient"
+ Type="Default.BaseTypes.Gradient"
  Name="Gradient"
  Guid="a5bd25f5-7aba-40a6-b71f-93db1e5aa804"
 >
 </Parameter><Parameter
- Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="Target"
  Guid="be31749f-27b0-46a0-b1a0-93f41514a29d"
 >
@@ -1588,7 +1588,7 @@ STOP_CONDITION
 )( d_offset(V_previous + SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi(V_previous)) + ( V_previous + SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi(V_previous) ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Default=""
  X="220"
  Y="60"
@@ -1621,17 +1621,17 @@ STOP_CONDITION
 </ReqRef><Comment>Calculates V_PBD iteratively (for the EBD) in the case when it is to be achieved with the service brake</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Name="V_previous"
  Guid="3d98fdd9-64a3-4b17-9205-ba0f5b28da50"
 >
 </Parameter><Parameter
- Type="BaseTypes.Gradient"
+ Type="Default.BaseTypes.Gradient"
  Name="Gradient"
  Guid="3917eae1-23e9-479d-93d2-2a9f523468f9"
 >
 </Parameter><Parameter
- Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="Target"
  Guid="a668678f-6b7d-47f1-b52f-50578a38f84d"
 >
@@ -2079,7 +2079,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 </ReqRef><Comment>Delay between receiving a Balise message and applying the emergency brake.
 Value provided by Subset-041, paragraph 5.2.1.1</Comment>
 </Variable><Variable
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  DefaultValue="1.0"
  VariableMode="Internal"
  Width="100"

@@ -1510,9 +1510,45 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="62fce0f9-f1df-45cc-8519-a8bef2998613"
 >
+</ReqRef><ReqRef
+ Id="a28fa2ad-f49b-49e3-b6c9-a96b78f87074"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="39b783b6-ddcc-4861-93ca-c9b0d2b96780"
+>
+</ReqRef><ReqRef
+ Id="2ae792ac-3c8b-4e81-a0b9-fcf10ab3dbdc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5a96836b-bf87-46e5-b194-0e5711a54457"
+>
+</ReqRef><ReqRef
+ Id="d9694f89-1162-4ba5-a82c-a37e0df77929"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="87a2a88b-1e1b-4ed7-beeb-e3817870ead5"
+>
 </ReqRef><Comment>Performs all the linking and linking consistency checks needed before a balise message is handled</Comment>
 <Rules>
 <Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Check VBC"
+ Guid="caf9206b-cf25-4596-a689-99b419d3dcfb"
+>
+<Comment>Check the Virtual Balise Covers against the message</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Check VBC"
+ Guid="7e86b069-6f62-4f0b-becf-0151f3bb1dc6"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="1a8e70a6-fc3d-4212-a393-e6e1c1372d77"
+>MessageRejected &lt;- THERE_IS X IN Kernel.VirtualBaliseCover.VirtualBaliseCovers | ( X.Marker.Area == (FIRST Message IN CurrentBaliseGroup).NID_C  AND  X.Marker.Marker == (FIRST Message IN CurrentBaliseGroup).NID_BG )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Check Linking"
@@ -1540,11 +1576,13 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
 <PreConditions>
 <PreCondition
  Guid="e42b64dc-30a7-4d68-85ec-69e259afc79d"
->ConsiderBGWithoutLinking()</PreCondition></PreConditions>
+>ConsiderBGWithoutLinking()</PreCondition><PreCondition
+ Guid="e2380874-6cd0-43ab-90a7-bc48cdb67166"
+>NOT MessageRejected</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="da1b995b-2801-473b-9756-c1fe996e68d4"
->HandleBaliseMessage(DistanceFromLRBG =&gt; Odometry.NominalDistance - LRBG.Position.Position)</Action></Actions>
+ Guid="bac12566-89d7-4f78-a052-2705f05be489"
+>BGDistance &lt;- Odometry.NominalDistance - LRBG.Position.Position</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Linking"
@@ -1554,7 +1592,9 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
 <PreConditions>
 <PreCondition
  Guid="5f6b30d6-5215-4d2b-bd11-4191bbad5d7f"
->ConsiderBGWithLinking()</PreCondition></PreConditions>
+>ConsiderBGWithLinking()</PreCondition><PreCondition
+ Guid="956fa6d3-bdee-4ddb-96ba-4dd281e6e5c0"
+>NOT MessageRejected</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -1610,7 +1650,7 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 <Actions>
 <Action
  Guid="6f9ef685-68b5-4cf8-ab5b-fe3765ff7cb1"
->HandleBaliseMessage(DistanceFromLRBG =&gt; (FIRST X IN Linkings).Distance)</Action><Action
+>BGDistance &lt;- (FIRST X IN Linkings).Distance</Action><Action
  Guid="73f60427-194a-4f61-9082-16f71fa2409d"
 >StopExpectingBG( (FIRST X IN CurrentBaliseGroup).NID_BG )</Action></Actions>
 </RuleCondition><RuleCondition
@@ -1627,8 +1667,58 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 <Action
  Guid="4dd4bc3d-0771-48b0-8b36-200f331fbb16"
 >HandleConsistencyError()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Otherwise"
+ Guid="f0b15742-1927-4920-a495-2e8757f615da"
+>
+<Comment>If neither of the previous cases are satisfied, the message is rejected</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3aa871fa-a94f-48d8-9f68-e8f1e862647c"
+>MessageRejected &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Otherwise"
+ Guid="6002d7bc-24e0-48bb-939a-edfe7bd2ab7b"
+>
+<Comment>If neither of the previous cases are satisfied, the message is rejected</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="48cb3971-9d6e-4650-ba6a-67f312e45f08"
+>MessageRejected &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle Balise message"
+ Guid="5b9cc7e6-154b-48d9-bf1d-f96c423747c8"
+>
+<Comment>If the mesasge was not rejected, it is handled.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle Balise message"
+ Guid="77e50242-a4a2-45b5-85fe-88143bd0a21b"
+>
+<PreConditions>
+<PreCondition
+ Guid="d0a762d8-802a-414f-ae0d-87a40020de3f"
+>NOT MessageRejected</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="4466c0b8-63cc-4ff3-ba07-4a7b1f6c44c5"
+>HandleBaliseMessage(
+    DistanceFromLRBG =&gt; BGDistance
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1722,9 +1812,11 @@ As the first part of this procedure deletes the first (inconsistent) BG from the
 <Actions>
 <Action
  Guid="df96badb-3bc3-40d3-b767-aa2ff7b5b2be"
->HandleBaliseMessage(CurrentLinking().Distance)</Action><Action
+>BGDistance &lt;- CurrentLinking().Distance</Action><Action
  Guid="b1dfce5d-66ae-4d4d-a99a-2708b3c6650f"
->StopExpectingBG( (FIRST X IN CurrentBaliseGroup).NID_BG )</Action></Actions>
+>StopExpectingBG( (FIRST X IN CurrentBaliseGroup).NID_BG )</Action><Action
+ Guid="ab68a568-1fe2-4387-94dc-1ed03cfb2f86"
+>MessageRejected &lt;- False</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Second expected BG outside expectation window"
@@ -1787,6 +1879,31 @@ As the first part of this procedure deletes the first (inconsistent) BG from the
  Guid="b46e08a6-2387-4cc6-a9e0-55c6e04acb72"
 >
 </ReqRef><Comment>Stores the next linking data as provided by the balises</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="True"
+ VariableMode="Internal"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MessageRejected"
+ Guid="a9ff2c4e-90d5-42ef-87ca-28b158139423"
+>
+<Comment>Used to determine whether the current Balise message has been rejected due to linking or VBC.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Distance"
+ DefaultValue="0.0"
+ VariableMode="Internal"
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="BGDistance"
+ Guid="7450ed5d-c536-4286-94fe-042865e977b1"
+>
+<Comment>Stores the distance from the LRBG to the current BG.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule

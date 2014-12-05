@@ -2054,6 +2054,30 @@ This is a check for message consistency errors.</Comment>
 <Action
  Guid="dd9b765f-3dcf-48d2-bac3-19ee389e9f1a"
 >Kernel.TrackDescription.Gradient.DefaultGradientForTSRReceived ( Packet.TRACK_TO_TRAIN.DEFAULT_GRADIENT_FOR_TEMPORARY_SPEED_RESTRICTION )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Virtual Balise Cover Order received"
+ Guid="feba58f7-b47c-4901-a9e9-6ee8cfbe6e91"
+>
+<ReqRef
+ Id="c7942b2d-7ebd-4feb-904d-0b6f4653b2a9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4071e969-5a7d-440c-85f7-9c5bbdbe6636"
+>
+</ReqRef><ReqRef
+ Id="b7cd2da7-45be-44f8-893a-a97c68151f82"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a243efc7-9e91-4202-ba05-9c82a530ed2b"
+>
+</ReqRef><Comment>Handles Virtual Balise Cover Order packet, if available.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="e115cfb9-acb3-4a62-9d4f-531cce8adebf"
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.VIRTUAL_BALISE_COVER_ORDER.Q_DIR )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="50f67d89-da94-4bb0-b44b-2f9d06b85685"
+>Kernel.VirtualBaliseCover.VBCReceivedFromBalise( Packet.TRACK_TO_TRAIN.VIRTUAL_BALISE_COVER_ORDER )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

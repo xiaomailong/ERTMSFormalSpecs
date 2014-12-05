@@ -92,6 +92,90 @@ Converts the UTC time to local time using a country identifier</Comment>
 >
 <Expression>Now()</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="T1LaterThanT2"
+ Guid="9ff9a0b6-731b-4c6c-bf23-2cb7d05307e5"
+>
+<Comment>Compares two Default.DateAndTime structures and returns True if the frist one corresponds to a later time.
+
+Returns False if they are equal.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.DateAndTime"
+ Name="T1"
+ Guid="1ba90596-15cf-4d8c-a321-5633f190cda4"
+>
+</Parameter><Parameter
+ Type="Default.DateAndTime"
+ Name="T2"
+ Guid="4f853694-3afe-4870-bab8-185be25b81ea"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Years"
+ Guid="e711fbbe-ec82-43b1-9027-709277ce7285"
+>
+<PreConditions>
+<PreCondition
+ Guid="8dbf3f19-0f9b-4721-bffb-5fc27038a6eb"
+>T1.Year != T2.Year</PreCondition></PreConditions>
+<Expression>T1.Year &gt; T2.Year</Expression>
+</Case><Case
+ Name="Months"
+ Guid="37c4d582-b8c4-428e-9595-162324f22c4c"
+>
+<PreConditions>
+<PreCondition
+ Guid="b7266b49-fd16-4005-a527-c4c265684a74"
+>T1.Month != T2.Month</PreCondition></PreConditions>
+<Expression>T1.Month &gt; T2.Month</Expression>
+</Case><Case
+ Name="Days"
+ Guid="bcabdc1f-5ac6-4fb2-8e72-292428e476d5"
+>
+<PreConditions>
+<PreCondition
+ Guid="f65c41b3-c517-49d1-b395-33e6178e61df"
+>T1.Day != T2.Day</PreCondition></PreConditions>
+<Expression>T1.Day &gt; T2.Day</Expression>
+</Case><Case
+ Name="Hours"
+ Guid="0538e2ea-d6f8-4024-bbc0-7ca873e3c057"
+>
+<PreConditions>
+<PreCondition
+ Guid="95053336-02c2-45cf-beab-912864ea9d1b"
+>T1.Hour != T2.Hour</PreCondition></PreConditions>
+<Expression>T1.Hour &gt; T2.Hour</Expression>
+</Case><Case
+ Name="Minutes"
+ Guid="f76baa6f-1d23-4af0-ade8-bc65f100434d"
+>
+<PreConditions>
+<PreCondition
+ Guid="296646c6-50e6-4880-bc04-3c4e65eb4512"
+>T1.Minute != T2.Minute</PreCondition></PreConditions>
+<Expression>T1.Minute &gt; T2.Minute</Expression>
+</Case><Case
+ Name="Seconds"
+ Guid="26138929-dbdd-4557-b712-b8d7b0393641"
+>
+<PreConditions>
+<PreCondition
+ Guid="b1249b3d-2f82-487a-b56a-ee1fe73c4f8b"
+>T1.Second != T2.Second</PreCondition></PreConditions>
+<Expression>T1.Second &gt; T2.Second</Expression>
+</Case><Case
+ Name="TTS"
+ Guid="c7af5529-2ea0-4c51-9c74-5a4557081451"
+>
+<Expression>T1.TTS &gt; T2.TTS</Expression>
+</Case></Cases>
 </Function></Functions>
 <Variables>
 <Variable

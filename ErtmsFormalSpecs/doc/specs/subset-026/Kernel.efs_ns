@@ -91,6 +91,10 @@
  Name="GeographicalPosition"
  Guid="305a6139-3fcf-46c3-8d4f-e1de87059223"
 >
+</NameSpaceRef><NameSpaceRef
+ Name="VirtualBaliseCover"
+ Guid="37790951-bbd2-47f8-b26d-3b6becb8f3a1"
+>
 </NameSpaceRef></NameSpaces>
 <Enumerations>
 <Enum
@@ -1494,7 +1498,12 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  Name="WaitForVirtualBaliseCover"
  Guid="6161d0cc-5d00-44cd-b8f8-a2eacddd2adc"
 >
-<Comment>The driver asked to enter the virtual balise cover and the on-board equipments waits for the virtual balise cover data. Once it is entered, the procedure goes back to the initial state S1.AskToEnterValues.</Comment>
+<ReqRef
+ Id="ea9e58d0-129c-4996-b7ee-105d84bad554"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="545921f7-225b-4a2c-a5be-48a88c7e879f"
+>
+</ReqRef><Comment>The driver asked to enter the virtual balise cover and the on-board equipments waits for the virtual balise cover data. Once it is entered, the procedure goes back to the initial state S1.AskToEnterValues.</Comment>
 <StateMachine
  Default=""
  Implemented="TRUE"
@@ -2689,8 +2698,13 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d24b991c-443c-40c6-8ad6-80dd8c22b059"
 >
+</ReqRef><ReqRef
+ Id="ea9e58d0-129c-4996-b7ee-105d84bad554"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="618d3a16-40ea-49a6-90b6-8f93eb6222bf"
+>
 </ReqRef><StateMachine
- Default="RequestDriverSelection"
+ Default="S10.RequestDriverSelection"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="9a7e81e8-8f09-4c21-a07d-531ea8260058"
@@ -2742,7 +2756,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Actions>
 <Action
  Guid="3ca18a1c-a5c4-4fa4-8df9-3a451ea588cb"
->THIS &lt;- HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action
+>THIS &lt;- S10.DriverSelectionRequested</Action><Action
  Guid="9a0b3d4f-3720-433f-98fb-44f7f282703c"
 >DMI.MasterDMI().In_NonLeadingRequest.InitiateRequest()</Action><Action
  Guid="53277c45-afcc-4bb0-9d91-b72fbadceb57"
@@ -2877,7 +2891,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <PreConditions>
 <PreCondition
  Guid="4a508c30-f61e-4642-9bfb-c5b8e95e99cd"
->TrainPosition.Position.DataState == DataState.Invalid</PreCondition></PreConditions>
+>TrainPosition.Position.DataState == Default.DataState.Invalid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b1b30221-d9e3-4334-ab87-404ba1068590"
@@ -2910,7 +2924,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <PreConditions>
 <PreCondition
  Guid="267dcd69-cf04-4818-90af-fbe4cb809ecc"
->Kernel.TrainData.TrainData.DataState == DataState.Valid</PreCondition></PreConditions>
+>Kernel.TrainData.TrainData.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -3449,6 +3463,11 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  Id="c70a632c-3b48-4d02-90f3-3e843c5c1ea1"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="49c4165d-c813-4843-aa0b-78bebdfef8a0"
+>
+</ReqRef><ReqRef
+ Id="ea9e58d0-129c-4996-b7ee-105d84bad554"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="124b51d5-fcbb-4551-a1cf-4acc0589ff89"
 >
 </ReqRef><StateMachine
  Default="ProposeStart"
@@ -6455,6 +6474,99 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Action
  Guid="d43762ba-cc41-48b3-be35-302b460560c2"
 >THIS &lt;- S2.ExitState</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Allow set/remove VBC for states S10 and S20"
+ Guid="2a063391-04be-41f1-a550-b50e3a39e750"
+>
+<ReqRef
+ Id="414a7ad9-32f1-4118-b34f-18656d60445f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f5bbaed5-4496-4050-8b61-70b2984ba743"
+>
+</ReqRef><ReqRef
+ Id="ea9e58d0-129c-4996-b7ee-105d84bad554"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="536e6aa6-acf4-4250-9102-cdfb97201f26"
+>
+</ReqRef><Comment>Handles the degraded situation where the driver is allowed to set or remove Virtual Balise Covers in states S10 and S20.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Allow set/remove VBC for states S10 and S20"
+ Guid="7b369b9d-3749-4125-8c52-9c38ace641f7"
+>
+<PreConditions>
+<PreCondition
+ Guid="6070d7bc-afdc-42c3-8526-bce18e6b5a4b"
+>THIS in [S10, S20]</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Allow set/remove VBC for states S10 and S20"
+ Guid="df00d4a0-66d3-42ad-b7fc-7c8d812e6fad"
+>
+<Comment>Handles the degraded situation where the driver is allowed to set/remove Virtual Balise Covers in states S10 and S20.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Not proposed to driver"
+ Guid="5fe47a0f-c027-407c-a77e-91aaae191865"
+>
+<Comment>If the VBC modification is not proposed to the driver yet =&gt; propose it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="c16e9284-e25c-4bfa-9aac-d2e4d22b6a15"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
+ Guid="24d0f665-d562-4828-aa10-c8054b15bd33"
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
+ Guid="532678d5-96a2-4557-a7aa-c73167c7d9e9"
+>NOT DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.DriverAnswered</PreCondition><PreCondition
+ Guid="aef64fa7-f88e-45e1-af89-555819a7325c"
+>NOT DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1601bb77-d59c-4cf0-8fee-c86b5d7369a9"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Driver selected to add/remove VBC"
+ Guid="7c19fe30-9583-4dcb-ae9b-c74fca51c92e"
+>
+<Comment>If the driver selected to add/remove VBC =&gt; display the screen allowing to do it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="1f78619a-ea83-43ea-8ccf-ba01b1bca2ef"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="4ea4fd55-6b4e-4462-96a1-35cb756a9df5"
+>DMI.MasterDMI().In_VirtualBaliseCover.InitiateRequest(
+    VirtualBaliseCovers=&gt;VirtualBaliseCover.VirtualBaliseCovers
+)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Driver set or removed VBCs"
+ Guid="f1cd99fd-2387-4798-b1bc-20218fb9dd5d"
+>
+<Comment>Once the drive has set or removed Virtual Balise Covers, the option to do it again remains available.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="a063431e-e8a5-4fd1-a9b9-a292f7f4f3f1"
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="48aa9224-7f92-4018-acd4-83e2ad3bc4c7"
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

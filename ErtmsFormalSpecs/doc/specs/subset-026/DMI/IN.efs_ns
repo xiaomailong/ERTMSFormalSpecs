@@ -3580,7 +3580,17 @@
  Name="AcceptDriverResponse"
  Guid="416fbac4-352a-48d0-a4fb-cd6cf5869901"
 >
-<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<ReqRef
+ Id="6d37f900-cf0a-4c87-a4b2-9859f99dab0a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7c0632e4-46c8-41d7-9654-8a9f463f67b5"
+>
+</ReqRef><ReqRef
+ Id="c9d51e90-7f7e-4c3e-b330-dec4e7a4499d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fedb3cbb-a490-4ce8-8756-ac0c0a393d67"
+>
+</ReqRef><Comment>Receives the driver input and updates the internal data accordingly</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -3608,7 +3618,7 @@
  Guid="9484037f-ae8c-4c61-ac5d-d77f23a6c203"
 >THIS.InputInformation.AcceptDriverResponse()</Action><Action
  Guid="29f0eb50-b4fd-485f-add0-03585d769c39"
->Kernel.VirtualBaliseCoverIsSet &lt;- THIS.VirtualBaliseCoverIsSet</Action></Actions>
+>Kernel.VirtualBaliseCover.VirtualBaliseCovers &lt;- THIS.VirtualBaliseCovers</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3620,8 +3630,8 @@
 <Comment>Initiates train data entry request</Comment>
 <Parameters>
 <Parameter
- Type="Boolean"
- Name="VirtualBaliseCoverIsSet"
+ Type="Kernel.VirtualBaliseCover.VBCCol"
+ Name="VirtualBaliseCovers"
  Guid="bbfdb2d4-fd02-4e95-98f8-2d3cbad7a0f1"
 >
 </Parameter></Parameters>
@@ -3651,7 +3661,7 @@
  Guid="fd488683-6118-4073-8f08-3d8d37ab3e7a"
 >THIS.InputInformation.InitiateRequest()</Action><Action
  Guid="d98c8987-f0f6-407a-8bf2-9d0ae3658a9e"
->THIS.VirtualBaliseCoverIsSet &lt;- VirtualBaliseCoverIsSet</Action></Actions>
+>THIS.VirtualBaliseCovers &lt;- Kernel.VirtualBaliseCover.VirtualBaliseCovers</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3698,11 +3708,11 @@
 >
 <Comment>The request status</Comment>
 </StructureElement><StructureElement
- TypeName="Boolean"
+ TypeName="Kernel.VirtualBaliseCover.VBCCol"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
- Name="VirtualBaliseCoverIsSet"
+ Name="VirtualBaliseCovers"
  Guid="cae556c2-f308-4e87-a580-0c1684d76478"
 >
 <ReqRef
