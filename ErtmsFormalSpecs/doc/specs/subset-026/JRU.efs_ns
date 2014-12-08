@@ -1073,6 +1073,42 @@ NATIONAL_SYSTEM_ISOLATION =&gt; CreateNationalSystemsIsolationMessage()
 TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
 }IN JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Send Virtual Balise Cover Set By Driver message"
+ Guid="c1a73e75-acbf-4d2d-8d3d-97b57cd3d509"
+>
+<ReqRef
+ Id="73f48619-37ca-496b-914a-d7250a79bc0f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="0e8b371c-dc48-4197-9f27-c18870e983c2"
+>
+</ReqRef><ReqRef
+ Id="9d9290ed-830e-4e22-9056-7b1d9cdd0b86"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="b453418c-b6e4-462a-a3bd-2606543459ad"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Send Virtual Balise Cover Set By Driver message"
+ Guid="1d010ffe-8966-4e71-bc7b-455457545083"
+>
+<PreConditions>
+<PreCondition
+ Guid="26c2d1e1-1591-4002-af57-c37ca3b51984"
+>SendVBCSetByDriverMessage(
+    jru =&gt; THIS
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0106c449-d756-4162-b6a1-629d4ec42579"
+>INSERT Messages.JRU.MESSAGE.Message{
+    VIRTUAL_BALISE_COVER_SET_BY_DRIVER =&gt; CreateVBCSetByDriverMessage( FIRST Cover IN Kernel.VirtualBaliseCover.VirtualBaliseCovers | ( NOT (THERE_IS PrevCover IN THIS.PreviousVirtualBaliseCovers | PrevCover == Cover ) )  )
+}
+
+IN JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Implemented="TRUE"
@@ -1168,7 +1204,9 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="2530de24-0c40-4088-b0a4-1325135e6574"
 >PreviousTrainData &lt;- Kernel.TrainData.TrainData.Value</Action><Action
  Guid="06d0091f-b48f-486b-8088-c41f6e231e53"
->PreviousSystemVersion &lt;- Kernel.OperatedSystemVersion.Value</Action></Actions>
+>PreviousSystemVersion &lt;- Kernel.OperatedSystemVersion.Value</Action><Action
+ Guid="3bf2231c-6b43-4768-99dc-85f531bfcf5c"
+>PreviousVirtualBaliseCovers &lt;- Kernel.VirtualBaliseCover.VirtualBaliseCovers</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -1760,7 +1798,24 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
  Guid="c223a079-b7df-4bc7-924a-a6527543de2a"
 >
 </ReqRef><Comment>Stores the last additinoal data message sent to the JRU. Used to determine if a new one has to be sent (in case any of its values changes).</Comment>
-</StructureElement></Structure></Structures>
+</StructureElement><StructureElement
+ TypeName="Kernel.VirtualBaliseCover.VBCCol"
+ Default=""
+ Mode="Internal"
+ Name="PreviousVirtualBaliseCovers"
+ Guid="1da855d9-0864-4a52-a599-7b55e740ee02"
+>
+<ReqRef
+ Id="29bf3662-a0ca-450a-8c70-1d447bcd3e7b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="616631f3-b6c0-42a9-90f0-523b3c7aecdd"
+>
+</ReqRef><ReqRef
+ Id="d859be5b-236a-48f2-8ded-f5dae33c2380"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d13eb17d-67ff-4a60-8ef5-81503e58580e"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="Messages.JRU.MESSAGE.Message"
@@ -5082,7 +5137,7 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="56d0b161-803f-459b-b8b8-cee9a79809af"
 >
-</ReqRef><Comment>Will fill the necessary fields to generate the SLEEPING_INPUT message</Comment>
+</ReqRef><Comment>Will fill the necessary fields to generate the DRIVERS_ACTIONS message</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -5510,6 +5565,90 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
         Route_unsuitable__traction_system =&gt; DMISystemStatusesConvertors.RouteUnsuitableTractionSystemDisplayed(),
         Radio_network_registration_failed =&gt; DMISystemStatusesConvertors.RadioNetworkRegistrationFailedDisplayed()
     }
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SendVBCSetByDriverMessage"
+ Guid="4cc67eae-65ee-4f8b-b362-5e5c33f9a23b"
+>
+<ReqRef
+ Id="9d9290ed-830e-4e22-9056-7b1d9cdd0b86"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="8b9d850f-06e3-457e-8242-44ca80293bd6"
+>
+</ReqRef><Comment>Determines if it is necessary to send a VIRTUAL BALISE COVER SET BY DRIVER message.</Comment>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="jru"
+ Guid="b4cd5ea2-7aa9-4d55-b3b2-d5735c7a58fb"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Driver added a VBC"
+ Guid="ddc44c55-92a1-4677-831c-8fbbe0f89029"
+>
+<PreConditions>
+<PreCondition
+ Guid="29d1eed5-c62b-4411-b0dd-e1d5c53552c9"
+>THERE_IS Cover IN Kernel.VirtualBaliseCover.VirtualBaliseCovers | ( 
+  NOT THERE_IS PrevCover IN jru.PreviousVirtualBaliseCovers | PrevCover == Cover )</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="6d7d14bc-fe4a-47f4-85b1-d7935716913a"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.VIRTUAL_BALISE_COVER_SET_BY_DRIVER.Message"
+ Default=""
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="CreateVBCSetByDriverMessage"
+ Guid="a009fa28-6ce4-46f9-aae6-605d92dea59d"
+>
+<ReqRef
+ Id="73f48619-37ca-496b-914a-d7250a79bc0f"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="edb57231-fb56-408d-8654-8c530f9f1653"
+>
+</ReqRef><ReqRef
+ Id="29bf3662-a0ca-450a-8c70-1d447bcd3e7b"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d84f603b-237c-4ceb-b664-6f91a61385ae"
+>
+</ReqRef><ReqRef
+ Id="9d9290ed-830e-4e22-9056-7b1d9cdd0b86"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="97a3e726-8698-487a-940d-cb3b2aad6f7b"
+>
+</ReqRef><Comment>Will fill the necessary fields to generate the VIRTUAL_BALISE_COVER_SET_BY_THE_DRIVER message</Comment>
+<Parameters>
+<Parameter
+ Type="Kernel.VirtualBaliseCover.VBCStruct"
+ Name="VBC"
+ Guid="52230d66-cf72-4f29-a376-fc3ae037e5df"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="a02b997a-cde3-44b8-9c4e-70fed622571c"
+>
+<Expression>Messages.JRU.MESSAGE.VIRTUAL_BALISE_COVER_SET_BY_DRIVER.Message{
+    HEADER =&gt; CreateHeader(28),
+    NID_VBCMK =&gt; VBC.Marker.Marker,
+    NID_C =&gt; VBC.Marker.Area,
+    T_VBC =&gt; 0
 }</Expression>
 </Case></Cases>
 </Function></Functions>
