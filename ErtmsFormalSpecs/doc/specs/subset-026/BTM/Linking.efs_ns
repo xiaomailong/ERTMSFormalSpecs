@@ -1547,6 +1547,41 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
 <Action
  Guid="1a8e70a6-fc3d-4212-a393-e6e1c1372d77"
 >MessageRejected &lt;- THERE_IS X IN Kernel.VirtualBaliseCover.VirtualBaliseCovers | ( X.Marker.Area == (FIRST Message IN CurrentBaliseGroup).NID_C  AND  X.Marker.Marker == (FIRST Message IN CurrentBaliseGroup).NID_BG )</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Check the coutry/region identifiers"
+ Guid="e64b04f0-4cb3-4e30-85e9-507a57b9bce8"
+>
+<ReqRef
+ Id="319c077a-b554-46e1-b263-636a65b5e1e9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="08104a7e-e6a7-4e29-9cad-5a1e8018da1e"
+>
+</ReqRef><ReqRef
+ Id="c9d51e90-7f7e-4c3e-b330-dec4e7a4499d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="70873974-ce7e-4f1a-aff0-b9750addfa2e"
+>
+</ReqRef><Comment>Check the Virtual Balise Covers for any markers that are not applicable i nthe current region.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove markers with NID_C different to BG"
+ Guid="47d119c4-d206-455a-9286-1cb961ec1be7"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="2e1d9662-6036-4897-a228-37c00a44fe2b"
+>Kernel.VirtualBaliseCover.CheckNID_C(
+    NID_C =&gt; (FIRST Message IN CurrentBaliseGroup).NID_C
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

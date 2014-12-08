@@ -168,6 +168,7 @@
  Name="Add to the list of virtual balise covers"
  Guid="be4bf4d2-1233-4b04-90a7-c69f9c59d11c"
 >
+<Comment>The packet orders a new VBC to be added to the list.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -226,6 +227,7 @@
  Name="Remove the Virtual Balise Cover from the list"
  Guid="f00ca7c8-179b-4bab-9fab-137760701896"
 >
+<Comment>The packet orders the removal of a VBC.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -244,6 +246,51 @@
     Marker =&gt; Packet.NID_VBCMK,
     Area =&gt; Packet.NID_C
 } IN VirtualBaliseCovers</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="CheckNID_C"
+ Guid="2af5fd43-7f1f-4368-8ee1-ef60fd837855"
+>
+<ReqRef
+ Id="319c077a-b554-46e1-b263-636a65b5e1e9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dd5e4b9e-76d7-41bb-830d-99b45b89c8f1"
+>
+</ReqRef><ReqRef
+ Id="c9d51e90-7f7e-4c3e-b330-dec4e7a4499d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7a2ad41f-34d0-4952-84b2-f5b5c6c7c648"
+>
+</ReqRef><Comment>Checks and removes the markers that do not match the provided NID_C.NID_C</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.NID_C"
+ Name="NID_C"
+ Guid="f08cc5a3-8dc1-4be9-9620-2a8ebcd5672e"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove all mismatched country identifiers"
+ Guid="86e560b6-c03e-40bd-afdc-f075ff069013"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove all mismatched country identifiers"
+ Guid="b3f8d7c7-b0b7-45bf-af8e-164df002d059"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="ef331960-2419-4f15-9ea8-c4fdb56c6c7f"
+>REMOVE ALL X.Marker.Area == NID_C IN VirtualBaliseCovers</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
