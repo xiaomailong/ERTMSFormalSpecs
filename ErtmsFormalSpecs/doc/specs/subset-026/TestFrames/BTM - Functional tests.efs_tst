@@ -195,7 +195,25 @@
 >BTM.LRBG.Position.Position == 24510.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="1b21f890-14a0-4544-b017-c3d13002f5f9"
->BTM.PreviousBaliseGroups == []</Expectation></Expectations>
+>BTM.PreviousBaliseGroups == 
+[
+  BTM.PreviousBaliseGroupStruct
+  {
+    IsLRBG =&gt; True,
+    BaliseGroup =&gt; BTM.BaliseGroupStruct
+    {
+      Timestamp =&gt; 2.0 * Kernel.CycleDuration,
+      NID =&gt; 2124,
+      Orientation =&gt; Orientation.Unknown,
+      Position =&gt; BTM.Position
+      {
+        OverReadingAmountOdo =&gt; 0.0,
+        Position =&gt; 24510.0,
+        UnderReadingAmountOdo =&gt; 0.0
+      }
+    }
+  }
+]</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -403,6 +421,22 @@
       {
         OverReadingAmountOdo =&gt; 0.0,
         Position =&gt; 24510.0,
+        UnderReadingAmountOdo =&gt; 0.0
+      }
+    }
+  },
+  BTM.PreviousBaliseGroupStruct
+  {
+    IsLRBG =&gt; True,
+    BaliseGroup =&gt; BTM.BaliseGroupStruct
+    {
+      Timestamp =&gt; 5.0 * Kernel.CycleDuration,
+      NID =&gt; 2125,
+      Orientation =&gt; Orientation.Nominal,
+      Position =&gt; BTM.Position
+      {
+        OverReadingAmountOdo =&gt; 0.0,
+        Position =&gt; 25620.0,
         UnderReadingAmountOdo =&gt; 0.0
       }
     }
