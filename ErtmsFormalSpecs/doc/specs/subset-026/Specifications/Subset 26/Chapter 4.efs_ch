@@ -305,7 +305,12 @@
  version="3.0.0"
  Name=""
  Guid="c0f8621d-7742-4d77-95a3-e39271f0f811"
->When the desk is open, a clear indication of the ERTMS/ETCS mode shall be shown to the driver.<RequirementSets>
+><ReqRef
+ Id="a94ace2e-2aef-45f9-a300-36570d80e501"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="a97f2adf-ef15-4381-9782-474ab6f360c8"
+>
+</ReqRef>When the desk is open, a clear indication of the ERTMS/ETCS mode shall be shown to the driver.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="154d6e37-d825-457b-b15a-2d1569e8c21e"
@@ -387,7 +392,12 @@
  version="3.0.0"
  Name=""
  Guid="5dfeec2e-72e0-42f0-9cef-f8f3f5b56920"
->There shall be a clear indication to the driver that the ERTMS/ETCS on-board equipment is isolated.<RequirementSets>
+><ReqRef
+ Id="e2dc7ad5-7f8e-41a7-a130-30fa7cddb9d0"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="29e4149b-1f68-45be-827c-a8bda5e85066"
+>
+</ReqRef>There shall be a clear indication to the driver that the ERTMS/ETCS on-board equipment is isolated.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2ec8afda-e3d5-4e6a-855c-590299d32354"
@@ -796,7 +806,12 @@
  version="3.0.0"
  Name=""
  Guid="cbe34815-cb07-47d0-aa70-8e503a0dd8ac"
->The ERTMS/ETCS on-board equipment shall permanently command the Emergency Brakes.<RequirementSets>
+><ReqRef
+ Id="1dd0f0d6-9416-4fd6-ada8-0995aa5be467"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="31294f3c-7cb2-4493-bced-8b01c736ccd9"
+>
+</ReqRef>The ERTMS/ETCS on-board equipment shall permanently command the Emergency Brakes.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="7a772dc3-6e69-4b7b-9579-519e498789a0"
@@ -1640,7 +1655,17 @@
  version="3.0.0"
  Name=""
  Guid="aef89c33-3eb6-459c-901c-72a521999db9"
->a list of expected balise groups (if such list was sent by the trackside equipment). The train shall be tripped if a balise group, not contained in the list, is passed (When an empty list is sent, no balise group can be passed. When no list is sent, all balise groups can be passed)<RequirementSets>
+><ReqRef
+ Id="227ac9ee-dde0-451f-9f3f-ab3a9c99282d"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="b07f68db-daa0-4ea5-ad13-53d018925406"
+>
+</ReqRef><ReqRef
+ Id="5d655b97-3cb6-43ca-8ae2-6bf15c471772"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="019a100d-2882-4a9d-807f-e8d6807f8399"
+>
+</ReqRef>a list of expected balise groups (if such list was sent by the trackside equipment). The train shall be tripped if a balise group, not contained in the list, is passed (When an empty list is sent, no balise group can be passed. When no list is sent, all balise groups can be passed)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="095bac12-a60f-464a-9c2a-1b81412dc960"
@@ -1658,7 +1683,17 @@
  version="3.0.0"
  Name=""
  Guid="2c58a3a1-c451-4832-a446-2e45d7792b9c"
->&quot;stop if in shunting mode&quot; information. The train is tripped if such information is received from balise groups<RequirementSets>
+><ReqRef
+ Id="b89b40af-7936-435c-9675-6bdf367006a7"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="798b09c3-3df8-42af-8f09-b3cf8770c45a"
+>
+</ReqRef><ReqRef
+ Id="4eaa0853-6dff-4ed5-a4ab-8fd1c90c615f"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="7a902091-be50-48c4-a672-c2e1a2a53fb0"
+>
+</ReqRef>&quot;stop if in shunting mode&quot; information. The train is tripped if such information is received from balise groups<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="030c2f87-dfcf-4320-b8e3-15c713edd0b1"
@@ -1802,7 +1837,12 @@
  version="3.0.0"
  Name=""
  Guid="c96434eb-d965-42c8-a680-75ecf91c3047"
->Shunting mode can be selected by the driver, only accepted when the train is at standstill, or ordered by the trackside.<RequirementSets>
+><ReqRef
+ Id="152fcf2b-71f1-4a28-8f53-b616bbc735cc"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="1cd1c639-095d-4d71-b519-a6406b87fc7d"
+>
+</ReqRef>Shunting mode can be selected by the driver, only accepted when the train is at standstill, or ordered by the trackside.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="74facad8-a476-4c1e-ad1c-abba0462aa59"
@@ -1897,7 +1937,17 @@
  version="3.0.0"
  Name=""
  Guid="34700a82-fd46-452e-82c7-77f81db8c569"
->When the switch to shunting is ordered by trackside, a driver acknowledgement is requested.<Sub>
+><ReqRef
+ Id="b22f4d0d-147d-442a-b39c-39e6329b9aa8"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="bba86325-21fa-4ea8-9321-fca28584ec93"
+>
+</ReqRef><ReqRef
+ Id="48727912-5c70-4cb5-b60f-7c4b4bbb66b8"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="a1b3b06b-422e-4ecb-8747-a9ead334d770"
+>
+</ReqRef>When the switch to shunting is ordered by trackside, a driver acknowledgement is requested.<Sub>
 <Paragraph
  id="4.4.8.1.9.1"
  type="NOTE"
@@ -1932,7 +1982,32 @@
  version="3.0.0"
  Name=""
  Guid="14c3e0f6-da11-447b-b983-3021f94a8834"
->The ERTMS/ETCS on-board equipment shall display the train speed and, only on driver request, the permitted speed. The display of the permitted speed shall also be stopped on driver request.<RequirementSets>
+><ReqRef
+ Id="9dff5092-b64a-4b02-a04c-ce86413bbcd0"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="3195acb1-b9ac-401f-911b-f3e5904a6b5d"
+>
+</ReqRef><ReqRef
+ Id="163ba66d-1329-4b37-82bd-4bba805e1575"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="50a9591a-4824-436e-92c4-fcd9539377ac"
+>
+</ReqRef><ReqRef
+ Id="8ddf8544-9617-4b30-a5d8-3d8506a8e79a"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="9cc5b7d7-fcbe-4dbe-b3de-d508d62e1b11"
+>
+</ReqRef><ReqRef
+ Id="2e81fef4-7233-487d-ab53-2f993dada28d"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="99bb8e02-3d61-480d-85c4-3468332c67af"
+>
+</ReqRef><ReqRef
+ Id="7e3ceaa0-5046-4d09-8d26-dcbddee7c887"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="c2a18710-760e-4363-99e8-056e6e47ca1d"
+>
+</ReqRef>The ERTMS/ETCS on-board equipment shall display the train speed and, only on driver request, the permitted speed. The display of the permitted speed shall also be stopped on driver request.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1e3528bd-35f9-4693-bab5-4ba372688bc1"
@@ -2115,7 +2190,8 @@
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="c610a0e4-7479-4ceb-8944-e767ebd408b8"
@@ -2124,10 +2200,6 @@
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="9b5c0e82-6f8c-41fb-a372-51c49bfe056a"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="0e5acf2f-2c76-4823-98d2-3c27c1d8db9a"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="4.4.9.1.2"
@@ -2135,18 +2207,16 @@
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="1bfba96f-abb7-44aa-a403-719474913d61"
->Full supervision cannot be selected by the driver, but shall be entered automatically when all necessary conditions are fulfilled.<RequirementSets>
+><Comment>The mode of the train can only be modified in the namespace Kernel.ModeTransitions, which implements the Table 4.6.2.</Comment>
+Full supervision cannot be selected by the driver, but shall be entered automatically when all necessary conditions are fulfilled.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="3224bec1-2d49-420f-b066-e7877bed2631"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="4d6945ce-5b07-4857-b0f9-9b193e735a23"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -2155,6 +2225,7 @@
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  Name=""
@@ -2164,10 +2235,6 @@
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d606d585-8ec3-4e88-96ec-73aab82c1afe"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="4dcf9c9b-cc13-4c90-bff5-01ce99f2338c"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="4.4.9.1.4"
@@ -2175,19 +2242,27 @@
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
+ infoRequired="TRUE"
  Name=""
  Guid="3d4bd2d4-777c-4d6d-85c1-ab231d5aee49"
->Once in Full Supervision mode, if SSP and gradient are not known for the whole length of the train, an indication &quot;ENTRY IN FULL SUPERVISION&quot; shall be clearly displayed to the driver until SSP and gradient are known for the whole length of the train.<Sub>
+><ReqRef
+ Id="3d5217d4-2767-4596-8997-c65274cd3dcb"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="3de01dcc-23c1-4395-85b8-799b6e58b98b"
+>
+</ReqRef><Comment>We consider that the whole length of the train is related to its nominal position.</Comment>
+Once in Full Supervision mode, if SSP and gradient are not known for the whole length of the train, an indication &quot;ENTRY IN FULL SUPERVISION&quot; shall be clearly displayed to the driver until SSP and gradient are known for the whole length of the train.<Sub>
 <Paragraph
  id="4.4.9.1.4.1"
- type="NOTE"
+ type="REQUIREMENT"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NotImplementable"
+ status="NA"
  version="3.0.0"
  Name=""
  Guid="3b270156-0dfc-4630-8ee1-1f927b4c38ea"
@@ -2196,20 +2271,12 @@
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="aa643838-e465-4432-b48f-8a1aaf69099e"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="3d30ce68-edd3-4835-9cd7-68ceeceb3f7e"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="4779bffb-7498-49a1-bf1f-d711e208aee1"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="f7c7b923-eaf7-4053-8c1f-6062c38f1ee9"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -2218,6 +2285,7 @@
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  Name=""
@@ -2227,10 +2295,6 @@
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="da8e7db5-0e59-4c57-88b5-f6b68ff1b580"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="4726ff82-69e0-40dd-8a3e-c80313d94be6"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="4.4.9.1.6"
@@ -2238,18 +2302,45 @@
  scope="FLAGS"
  bl="3.1.0"
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  Name=""
  Guid="c49975f4-30c4-4807-a153-ed306345cb41"
->The ERTMS/ETCS on-board equipment shall display the train speed, the permitted speed, the target distance and the target speed to the driver (this list is not exhaustive - refer to chapter 4.7 &quot;DMI depending on modes&quot;).<RequirementSets>
+><ReqRef
+ Id="e91f2cc8-6bbd-4ee9-906f-1a238374c3c4"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="c21d66aa-8a9d-4c98-9d41-756ac3273ed5"
+>
+</ReqRef><ReqRef
+ Id="5185164a-cb1c-4aa8-b7d7-29fc7726c2ae"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="995fba4a-304e-4f39-bedf-0b987d3bdf7f"
+>
+</ReqRef><ReqRef
+ Id="827474c9-c759-4c30-af62-af4d0de69650"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="33b1f881-e2be-485c-b72c-83d8b7ec00bd"
+>
+</ReqRef><ReqRef
+ Id="34ba7483-e53b-4467-abcd-267a82fd9f8c"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="8bb0357a-cb44-4e41-95b0-fd5d4f599a26"
+>
+</ReqRef><ReqRef
+ Id="88ba5e3d-dd6c-44a4-9589-679a5d15a691"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="b33cf3c9-effd-43ef-ae58-385f387d15ee"
+>
+</ReqRef><ReqRef
+ Id="819b24e3-3ace-486b-baa7-5d93bf098476"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="6b6b5d9e-517f-4a9b-9b8c-a3498e41ff29"
+>
+</ReqRef>The ERTMS/ETCS on-board equipment shall display the train speed, the permitted speed, the target distance and the target speed to the driver (this list is not exhaustive - refer to chapter 4.7 &quot;DMI depending on modes&quot;).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="7dd6eaaa-6bb7-4a27-a0b6-5c68a6ec1a5c"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="f01dba47-317c-4dc9-8906-a73b2910c87b"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -2514,7 +2605,17 @@
  version="3.0.0"
  Name=""
  Guid="c9680e26-08e8-4c55-8faf-a943544d8889"
->The ERTMS/ETCS on-board equipment shall display the train speed to the driver.<RequirementSets>
+><ReqRef
+ Id="a2404129-37ee-4a93-8811-00b5e93d843d"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="ec9be672-baf4-4804-9c5d-de8f267c6386"
+>
+</ReqRef><ReqRef
+ Id="7d4cf552-c8cf-4116-aa8e-b67be8552bbf"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="b7c565fc-2ec0-4740-a689-de764db7ff44"
+>
+</ReqRef>The ERTMS/ETCS on-board equipment shall display the train speed to the driver.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="fd6eb22b-4762-423d-9e98-4fb7c0be6985"
@@ -2827,7 +2928,17 @@
  version="3.0.0"
  Name=""
  Guid="20105d93-db9d-43da-96f4-3b3ecf09ac54"
->The ERTMS/ETCS on-board equipment shall give the possibility to the driver to modify the value of the SR mode speed limit and of the given distance. This shall be possible only at standstill.<Sub>
+><ReqRef
+ Id="0b62c128-1312-4429-8e35-790e56a35bdb"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="3c02ba2f-b9d7-4905-8b03-d166b67b8c52"
+>
+</ReqRef><ReqRef
+ Id="4b4b3a0b-a013-4a8d-8f19-e5b03575625c"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="f6fa0a5f-8faf-478c-854d-593ba29fb797"
+>
+</ReqRef>The ERTMS/ETCS on-board equipment shall give the possibility to the driver to modify the value of the SR mode speed limit and of the given distance. This shall be possible only at standstill.<Sub>
 <Paragraph
  id="4.4.11.1.5.1"
  type="REQUIREMENT"
@@ -2838,7 +2949,17 @@
  version="3.0.0"
  Name=""
  Guid="a527b959-0a75-42e2-a5d7-aa805d764a9e"
->If a train movement is detected while the driver is entering the SR speed/distance limits, the ERTMS/ETCS on-board equipment shall trigger the brake command.<RequirementSets>
+><ReqRef
+ Id="5f639337-9f3d-4c7f-a64e-3ace14b795f6"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="ad4a692e-66ea-4364-beb5-e48e4bf8275d"
+>
+</ReqRef><ReqRef
+ Id="a4077646-492b-4f20-bb4a-bd00120be200"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="39397ba1-a335-4402-aeea-5c98fed049fa"
+>
+</ReqRef>If a train movement is detected while the driver is entering the SR speed/distance limits, the ERTMS/ETCS on-board equipment shall trigger the brake command.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d9818498-2f10-4312-8ea5-f5079400aa78"
@@ -2886,7 +3007,12 @@
  version="3.0.0"
  Name=""
  Guid="0ae8cbdd-4de7-4e56-9061-504b96318dca"
->In level 2/3, the driver shall have the possibility to request a new distance to run in Staff Responsible, by selecting &quot;Start&quot;. This triggers an MA request.<Sub>
+><ReqRef
+ Id="4316c2c9-c692-41b8-bf28-94c30cbf0e39"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="ec77aa3b-f9bd-446a-a329-6f4a745d46d2"
+>
+</ReqRef>In level 2/3, the driver shall have the possibility to request a new distance to run in Staff Responsible, by selecting &quot;Start&quot;. This triggers an MA request.<Sub>
 <Paragraph
  id="4.4.11.1.6.1"
  type="NOTE"
@@ -2980,7 +3106,12 @@
  version="3.0.0"
  Name=""
  Guid="6aebdaad-cc03-41c0-818a-b52475a6ef43"
->When &quot;Override&quot; is selected, the SR mode speed limit value and the SR distance value previously entered by driver or given by trackside, if any, shall be deleted. The corresponding National/Default values shall enter in force.<RequirementSets>
+><ReqRef
+ Id="dc957e97-ee06-45b6-8e8d-326051a64a5c"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="97201641-a804-463b-89d2-1a117511efec"
+>
+</ReqRef>When &quot;Override&quot; is selected, the SR mode speed limit value and the SR distance value previously entered by driver or given by trackside, if any, shall be deleted. The corresponding National/Default values shall enter in force.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="6d3d57d5-29f8-4c11-8dd1-d5f18737635c"
@@ -3051,7 +3182,47 @@
  version="3.0.0"
  Name=""
  Guid="528068b1-03b9-4be0-9165-0a1fc5d755bd"
->The ERTMS/ETCS on-board equipment shall display the train speed and the (when active) override (permission to pass a signal at danger, trip inhibited). The permitted speed, target distance and the target speed shall be displayed only on driver request, until the driver requests to stop their display.<RequirementSets>
+><ReqRef
+ Id="7cf082e0-9525-4cdd-a2c5-ac4d855fe97b"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="75aec70c-f65a-4647-b0d9-83eca0758c34"
+>
+</ReqRef><ReqRef
+ Id="8912df88-0b49-4564-b4b8-69ed961d643c"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="1dc7700d-cd4b-4806-8a20-89a79573e3ad"
+>
+</ReqRef><ReqRef
+ Id="3eead7ef-3959-48de-95a8-803e3a2d4e72"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="c46399b0-ba88-491c-b2b2-fc3dd762432d"
+>
+</ReqRef><ReqRef
+ Id="d1d0ad10-77cb-405f-b5bb-72c42c30db42"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="c0527ff7-0013-42da-8ba9-f584c26458b7"
+>
+</ReqRef><ReqRef
+ Id="5362e51c-fe9e-4718-ad92-7a75f5f7acb9"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="da10bd9b-c2a2-4a9c-86c4-fe3f4432fca6"
+>
+</ReqRef><ReqRef
+ Id="596b74ae-675c-4601-a470-7508a51de2d6"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="1d999490-35c1-4869-a2e8-3e32632185df"
+>
+</ReqRef><ReqRef
+ Id="c0383856-266f-4045-9edf-2918947b5d15"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="12b2d335-98a3-4eae-aba0-a6fc00e53f66"
+>
+</ReqRef><ReqRef
+ Id="e0d55ac3-5d3a-42f6-968b-40c811a47edf"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="0b324ac3-c278-4d9b-a2a8-c365a80fbcb2"
+>
+</ReqRef>The ERTMS/ETCS on-board equipment shall display the train speed and the (when active) override (permission to pass a signal at danger, trip inhibited). The permitted speed, target distance and the target speed shall be displayed only on driver request, until the driver requests to stop their display.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="25eb8c99-229c-4ccd-9f26-1d172373c177"
@@ -3093,7 +3264,17 @@
  version="3.0.0"
  Name=""
  Guid="39d3a3da-a2a7-44e3-858d-5549ecf03336"
->If receiving a &quot;track ahead free&quot; request from the RBC, the ERTMS/ETCS on-board equipment requests the driver to enter the &quot;track ahead free&quot; information.<RequirementSets>
+><ReqRef
+ Id="a2ab3b3e-ebe6-43d3-a47a-7485cfd9d1a1"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="8ff40a3e-fbf6-44d9-91be-e69927129795"
+>
+</ReqRef><ReqRef
+ Id="ec99bb8d-b85a-455b-8098-2f4e665e497e"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="1d9a4e7d-641e-4618-893e-f0fc3309d5c4"
+>
+</ReqRef>If receiving a &quot;track ahead free&quot; request from the RBC, the ERTMS/ETCS on-board equipment requests the driver to enter the &quot;track ahead free&quot; information.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="b13eb815-1cc7-4c0d-982a-f32b643c1639"
@@ -3379,7 +3560,47 @@
  version="3.0.0"
  Name=""
  Guid="dcce4528-66c3-498d-b4f5-c40ce761f7d1"
->The ERTMS/ETCS on-board equipment shall display the train speed to the driver (this list is not exhaustive). The permitted speed, target distance,target speed and release speed (if any) shall be displayed only on driver request, until the driver requests to stop their display.<RequirementSets>
+><ReqRef
+ Id="04487c5e-f777-43dd-a8e6-a0d95ec14230"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="95d45485-354a-46c9-8271-55d00d0327f8"
+>
+</ReqRef><ReqRef
+ Id="ad8422e2-52da-4ddd-9d92-f8a601f29382"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="30142a26-4951-4dd1-982e-8a5676025ddc"
+>
+</ReqRef><ReqRef
+ Id="620a7659-6e3d-4269-85fa-8104edf5b216"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="6b5a3b6c-6bcd-44c6-ac82-6765df0468ff"
+>
+</ReqRef><ReqRef
+ Id="91579d50-d914-4186-ac63-8e3cb9999ebf"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="065e138e-6983-42ab-a159-7c244663638a"
+>
+</ReqRef><ReqRef
+ Id="5513f196-2deb-4cbe-b8c0-3c87f0276675"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="5d28d0cd-9107-46c9-bbbd-263a19328c8b"
+>
+</ReqRef><ReqRef
+ Id="61abec3a-b25b-4f98-8e2e-3b91b94c321f"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="cfbbd905-473e-4bef-8b90-b3a25b7081b7"
+>
+</ReqRef><ReqRef
+ Id="8fe9b13a-3550-476d-961f-7ef9e25141a5"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="473fba02-8c7a-4101-aea4-cce22b572970"
+>
+</ReqRef><ReqRef
+ Id="7df3d47a-35b6-4ee1-bbf8-9a283088962b"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="bfc33232-5b35-43d8-8c94-ac1921c5f0a1"
+>
+</ReqRef>The ERTMS/ETCS on-board equipment shall display the train speed to the driver (this list is not exhaustive). The permitted speed, target distance,target speed and release speed (if any) shall be displayed only on driver request, until the driver requests to stop their display.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="f856adfc-e3d2-4838-b93a-a24b045e3fed"
@@ -3400,7 +3621,17 @@
  version="3.0.0"
  Name=""
  Guid="d791550a-a843-44fe-8bf3-174bad2c8112"
->If receiving a &quot;track ahead free&quot; request from the RBC, the ERTMS/ETCS on-board equipment requests the driver to enter the &quot;track ahead free&quot; information.<RequirementSets>
+><ReqRef
+ Id="02879345-fb01-4bff-8d97-c26a35a4cae3"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="fd350c15-ae70-4a3f-a35c-52a3310c632b"
+>
+</ReqRef><ReqRef
+ Id="95ed1878-7612-4689-8f6a-3058977c8ef3"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="d4d2eae1-d23f-454c-91e6-a37798005e6d"
+>
+</ReqRef>If receiving a &quot;track ahead free&quot; request from the RBC, the ERTMS/ETCS on-board equipment requests the driver to enter the &quot;track ahead free&quot; information.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a48a54d2-75e7-4b07-af57-8413fc44a625"
@@ -3436,7 +3667,12 @@
  version="3.0.0"
  Name=""
  Guid="6be93d46-2f3c-4a81-bc6f-06a7adbaa419"
->Once in On Sight mode, if SSP and gradient are not known for the whole length of the train, an indication &quot;ENTRY IN ON SIGHT&quot; shall be clearly displayed to the driver until SSP and gradient are known for the whole length of the train.<Sub>
+><ReqRef
+ Id="dddb360c-3053-4a7d-a411-e735624c42a2"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="43649976-5c68-45e8-8e75-d9b419caa13d"
+>
+</ReqRef>Once in On Sight mode, if SSP and gradient are not known for the whole length of the train, an indication &quot;ENTRY IN ON SIGHT&quot; shall be clearly displayed to the driver until SSP and gradient are known for the whole length of the train.<Sub>
 <Paragraph
  id="4.4.12.1.7.1"
  type="NOTE"
@@ -3728,7 +3964,12 @@
  version="3.0.0"
  Name=""
  Guid="3e7cc969-494c-45a5-b39a-09b8d70e8ee3"
->The ERTMS/ETCS on-board equipment shall indicate to the driver the reason of the train trip.<RequirementSets>
+><ReqRef
+ Id="d654764f-ca0f-4288-ac71-2956debb2a7d"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="f61343b4-aaeb-4aab-9b96-84945685940d"
+>
+</ReqRef>The ERTMS/ETCS on-board equipment shall indicate to the driver the reason of the train trip.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="bc073de0-d9cd-4f98-b763-c68fbffb059c"
@@ -3744,7 +3985,17 @@
  version="3.0.0"
  Name=""
  Guid="32b6a168-5f23-49a4-b5ae-4a87344b2b47"
->The ERTMS/ETCS on-board equipment shall request an acknowledgement from the driver once train is at standstill (to allow the driver to acknowledge the train trip).<Sub>
+><ReqRef
+ Id="b588d9b7-eaa9-439e-addb-23460bd39e96"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="76b776fc-cd72-4781-a294-2dc8f198e8f0"
+>
+</ReqRef><ReqRef
+ Id="06946d75-1589-4d52-a46a-ab8b071db9ef"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="4e2dda15-e0c4-435b-8040-e052f867c752"
+>
+</ReqRef>The ERTMS/ETCS on-board equipment shall request an acknowledgement from the driver once train is at standstill (to allow the driver to acknowledge the train trip).<Sub>
 <Paragraph
  id="4.4.13.1.4.1"
  type="NOTE"
@@ -3981,7 +4232,17 @@
  version="3.0.0"
  Name=""
  Guid="14ab3d37-4e5a-4154-9890-181e7a63b317"
->The train shall only be authorised to move backwards a given distance (national value). The ERTMS/ETCS on-board equipment shall supervise this national distance for reverse movements, and shall command the service brakes if the distance is overpassed. The driver shall be informed about the reason for the brake application.<Sub>
+><ReqRef
+ Id="7b40d5dd-ce3c-4e16-ad3b-fe0ca61e8fc5"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="adfe9c09-b75b-4093-b980-301e10ca0faf"
+>
+</ReqRef><ReqRef
+ Id="8345a099-ceb1-4cc4-aec4-da2d42f32a06"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="37b5eab1-601d-4931-abd5-d1d08cf1803a"
+>
+</ReqRef>The train shall only be authorised to move backwards a given distance (national value). The ERTMS/ETCS on-board equipment shall supervise this national distance for reverse movements, and shall command the service brakes if the distance is overpassed. The driver shall be informed about the reason for the brake application.<Sub>
 <Paragraph
  id="4.4.14.1.3.1"
  type="REQUIREMENT"
@@ -4010,7 +4271,17 @@
  version="3.0.0"
  Name=""
  Guid="3cca868d-a0eb-4dce-8f2d-0f0b94b4c882"
->After the release of a brake command initiated due to an overpassed distance allowed for moving backwards in Post Trip mode, the ERTMS/ETCS on-board equipment shall command the service brake for any further movement in the direction opposite to the train orientation.<RequirementSets>
+><ReqRef
+ Id="c9b93ba6-bfa1-4082-90ae-8c41748cc832"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="d7d33fc7-26e6-4ed7-a0a1-2b2c79f36f37"
+>
+</ReqRef><ReqRef
+ Id="462e24e7-0798-4aa8-9d02-23fd628c50ee"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="db9207da-21a1-4c46-8b12-3505ba930561"
+>
+</ReqRef>After the release of a brake command initiated due to an overpassed distance allowed for moving backwards in Post Trip mode, the ERTMS/ETCS on-board equipment shall command the service brake for any further movement in the direction opposite to the train orientation.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="31318747-3e47-47dc-93bc-43a1f1effa9f"
@@ -4067,7 +4338,12 @@
  version="3.0.0"
  Name=""
  Guid="6ad8d7bf-01fe-471e-92c3-38b06b7a48f1"
->When ERTMS/ETCS level is 1, if the driver selects &quot;Start&quot; the onboard equipment proposes Staff Responsible. When ERTMS/ETCS level is 2 or 3, the selection of Start leads to an MA Request to the RBC. It is the RBC responsibility to give an SR authorisation, or a Full Supervision MA or an On Sight/Shunting MA to an ERTMS/ETCS equipment that is in Post Trip mode.<RequirementSets>
+><ReqRef
+ Id="c52f27c4-e4d1-4bec-99f5-6c4c5b6f8b39"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="dcbdfc71-8fd2-4207-a2ad-0fd3003cb322"
+>
+</ReqRef>When ERTMS/ETCS level is 1, if the driver selects &quot;Start&quot; the onboard equipment proposes Staff Responsible. When ERTMS/ETCS level is 2 or 3, the selection of Start leads to an MA Request to the RBC. It is the RBC responsibility to give an SR authorisation, or a Full Supervision MA or an On Sight/Shunting MA to an ERTMS/ETCS equipment that is in Post Trip mode.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="5104054f-2c8a-45c7-ac5f-c80b97b0a2f1"
@@ -4404,7 +4680,17 @@
  version="3.0.0"
  Name=""
  Guid="1f2e00c2-8ac6-4cd5-9258-e70773392522"
->The ERTMS/ETCS on-board equipment shall display the train speed to the driver.<RequirementSets>
+><ReqRef
+ Id="0812fbc8-dd06-4685-90fd-959f85bdd9f9"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="197ff630-da74-47fa-a685-c5caf09ca324"
+>
+</ReqRef><ReqRef
+ Id="9f2c218e-7245-4d09-b5e0-9f122c0ea476"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="9050310b-c6dc-4200-8319-8c4457eb2049"
+>
+</ReqRef>The ERTMS/ETCS on-board equipment shall display the train speed to the driver.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="30867da3-6684-4288-991f-1a53a569faae"
@@ -4558,7 +4844,72 @@
  version="3.0.0"
  Name=""
  Guid="28a6ff8b-2e38-49cd-9d9e-df2835b548a7"
->The driver is responsible for obeying the orders associated to track conditions, when they are displayed by the DMI..<RequirementSets>
+><ReqRef
+ Id="f34a9803-7bf8-401b-837f-e3a8dafce044"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="d6429b01-3a32-43f5-b838-f8cfff09d556"
+>
+</ReqRef><ReqRef
+ Id="fc076647-9bb9-41e1-91b2-f736f75e1437"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="a1d4c02f-86e2-4f32-9ad9-20cae7771c6e"
+>
+</ReqRef><ReqRef
+ Id="a47b5926-380e-4d53-b87e-45ec28aa2067"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="7e88d381-53fb-4af3-afaf-bc85b8748d10"
+>
+</ReqRef><ReqRef
+ Id="c6d17f87-0d46-4779-b024-413f7b6caa4d"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="cf6d739a-b3f5-433a-a0f7-8b4eaf30ea7b"
+>
+</ReqRef><ReqRef
+ Id="93309894-dd87-4d7c-ad21-35988d7c83f7"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="83244b65-3f42-4714-8ca9-a37a814db380"
+>
+</ReqRef><ReqRef
+ Id="22f5f83c-69b8-4537-9e75-44d54c94d598"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="72b18806-b843-4a9e-a488-20461d40c61f"
+>
+</ReqRef><ReqRef
+ Id="2e5a71a0-15e0-4c92-871d-6c35c6c38337"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="a5048001-6410-43d1-9583-2d7b0b3fd7c3"
+>
+</ReqRef><ReqRef
+ Id="830ec523-bd11-4d6f-9228-d9f2d4be7711"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="d6012fb3-50a3-4a06-9514-2b8151d8e81c"
+>
+</ReqRef><ReqRef
+ Id="cd224551-19cd-42cd-84e2-a759887b6cbf"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="77d3e70e-8290-4cf4-8125-a2b48815c032"
+>
+</ReqRef><ReqRef
+ Id="6078f254-13a0-40aa-9c9a-cf43e5ee5a67"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="06be3c46-e885-4862-90a9-88735538631b"
+>
+</ReqRef><ReqRef
+ Id="fac1599f-8ea9-4891-bfb0-33c41481ba15"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="0692faa2-610e-442a-bb17-41e262113da1"
+>
+</ReqRef><ReqRef
+ Id="89635396-6f8e-4a71-a6a3-7dd054ff03ba"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="1c4b39d6-4105-4356-a7c2-4f1bcd3fd0af"
+>
+</ReqRef><ReqRef
+ Id="bb7f4d8e-d696-490a-ae9b-52fdf9d4cc3f"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="5a8fabd8-c98e-4fd6-870f-87ddc315155b"
+>
+</ReqRef>The driver is responsible for obeying the orders associated to track conditions, when they are displayed by the DMI..<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="709122ca-fbcd-45d6-b9b6-7cde45e54ef6"
@@ -5038,7 +5389,17 @@
  version="3.0.0"
  Name=""
  Guid="8532ef0e-00e7-4d13-832b-f44401f8d74a"
->a distance to run in the direction opposite to the train orientation, given from trackside. The emergency brake shall be commanded if overpassing this distance<RequirementSets>
+><ReqRef
+ Id="c4d02ab6-5165-4eee-b350-d92b1cfad5db"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="dda45b7e-cd76-4815-aea5-1106a4f08f2a"
+>
+</ReqRef><ReqRef
+ Id="727f1e35-f270-4c31-9fb9-4af94c143091"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="84006f01-2592-4c81-bf62-2ade6582f988"
+>
+</ReqRef>a distance to run in the direction opposite to the train orientation, given from trackside. The emergency brake shall be commanded if overpassing this distance<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="ed19bd47-b9f8-4d7c-82db-e286ee6851f4"
@@ -5069,7 +5430,17 @@
  version="3.0.0"
  Name=""
  Guid="2f6bd005-a2d8-47d5-81dd-123d253a456b"
->After the release of a brake command initiated due to an overpassed reversing distance, and while the reversing distance is still overpassed, the ERTMS/ETCS on-board equipment shall command the emergency brake for any further movement in the direction opposite to the train orientation.<RequirementSets>
+><ReqRef
+ Id="a36ed068-5efe-4918-a620-a3d2d10c3bde"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="7701c2d4-4a69-4e16-aeff-7f15868f72cb"
+>
+</ReqRef><ReqRef
+ Id="5025dfac-8d60-4c4f-acd6-ca8f9ab94d89"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="f7a0d48d-ba6b-46ba-af13-c275a440dc6a"
+>
+</ReqRef>After the release of a brake command initiated due to an overpassed reversing distance, and while the reversing distance is still overpassed, the ERTMS/ETCS on-board equipment shall command the emergency brake for any further movement in the direction opposite to the train orientation.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="5916cb3b-9f8b-4870-8136-7c023c0cb630"
@@ -5089,7 +5460,32 @@
  version="3.0.0"
  Name=""
  Guid="4f162629-959e-4389-ab91-a83525b8c6c1"
->The ERTMS/ETCS on-board equipment shall display the train speed, the permitted speed and the remaining distance to run.<RequirementSets>
+><ReqRef
+ Id="90167235-1845-4cb1-915b-677b18f5f42e"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="4015c421-63fd-4f3c-8e58-22bd6c5e4e2b"
+>
+</ReqRef><ReqRef
+ Id="8c486e38-6f29-4bb0-80f9-6669285c0547"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="84948378-9878-4198-a3e2-6742cba1f44c"
+>
+</ReqRef><ReqRef
+ Id="0e8f8405-b19e-42cf-ab35-fe231bad59c3"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="4cb157a5-7a7c-4a0b-b7cb-cc2a1b8805bc"
+>
+</ReqRef><ReqRef
+ Id="17ea7725-5515-4acf-ab31-2af2cbbf31b1"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="ce4625ea-d94d-4678-8549-0aa40a65af1f"
+>
+</ReqRef><ReqRef
+ Id="fd52f4d5-330d-431f-8acd-e3e7de5e6f8d"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="1431b6d1-ab96-41e7-b235-cc18c48c9094"
+>
+</ReqRef>The ERTMS/ETCS on-board equipment shall display the train speed, the permitted speed and the remaining distance to run.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="59d602ce-b172-430f-ad6f-9b9ea5cd9b18"
@@ -5234,7 +5630,12 @@
  version="3.0.0"
  Name=""
  Guid="c8fb1f84-a2ce-41e9-bd8c-8c127bf045d5"
->In case the ERTMS/ETCS system version number X transmitted by any balise is greater than the highest version X supported by the onboard equipment (refer to 3.17.3.5), the information from this balise shall be ignored, the train shall not be tripped and the driver shall not be informed.<RequirementSets>
+><ReqRef
+ Id="f225b54c-4538-4664-8539-c08134fd6a25"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="64ed8c7c-a4b1-4b51-9ca7-b1b2dfaf671e"
+>
+</ReqRef>In case the ERTMS/ETCS system version number X transmitted by any balise is greater than the highest version X supported by the onboard equipment (refer to 3.17.3.5), the information from this balise shall be ignored, the train shall not be tripped and the driver shall not be informed.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a770ed57-e88b-4bda-b786-3cf411978576"
@@ -5471,7 +5872,27 @@
  version="3.0.0"
  Name=""
  Guid="e3caa999-1864-4f55-998d-66166d0a163b"
->The ERTMS/ETCS on-board equipment shall display the train speed and the release speed, if any (this list is not exhaustive - refer to chapter 4.7 “DMI depending on modes”). Upon request by trackside (refer to clauses 4.4.19.1.4.2 to 4.4.19.1.4.6) if the generic LS function marker is stored on-board or if the conditions in clause 4.4.19.1.4.7 are fulfilled, the ERTMS/ETCS on-board equipment shall also display the lowest speed amongst:<Sub>
+><ReqRef
+ Id="cc7bbbdf-e3b2-410a-9a6b-4efbf688b063"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="ca5a05e7-c9c2-4323-89da-cfec2d553c0b"
+>
+</ReqRef><ReqRef
+ Id="fa9d7d10-d094-467d-9f2b-2ad6b87d124b"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="ac7c7b35-ee10-4293-b247-3a2e9955f773"
+>
+</ReqRef><ReqRef
+ Id="ed191b97-3242-43c9-b67b-d527cc39980e"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="7bfb8a8f-afb0-4161-9423-d514ebe26195"
+>
+</ReqRef><ReqRef
+ Id="27533aa4-9706-43ee-953d-b3419d6115f6"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="8837b5ce-eb35-4bd6-961f-3238c741a0e9"
+>
+</ReqRef>The ERTMS/ETCS on-board equipment shall display the train speed and the release speed, if any (this list is not exhaustive - refer to chapter 4.7 “DMI depending on modes”). Upon request by trackside (refer to clauses 4.4.19.1.4.2 to 4.4.19.1.4.6) if the generic LS function marker is stored on-board or if the conditions in clause 4.4.19.1.4.7 are fulfilled, the ERTMS/ETCS on-board equipment shall also display the lowest speed amongst:<Sub>
 <Paragraph
  id="4.4.19.1.4.a"
  type="REQUIREMENT"
@@ -5829,7 +6250,17 @@
  version="3.0.0"
  Name=""
  Guid="2a9d3fd0-c8d7-4772-96d9-a87b680e4435"
->If receiving a &quot;track ahead free&quot; request from the RBC, the ERTMS/ETCS on-board equipment requests the driver to enter the &quot;track ahead free&quot; information.<RequirementSets>
+><ReqRef
+ Id="e54c83f4-e09c-4d63-8684-d93a68968e92"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="0e5034cd-b41d-4386-87d0-b61a6165ce8b"
+>
+</ReqRef><ReqRef
+ Id="b2608528-c0d9-49e1-ba21-70785d333062"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="39535a68-6410-452a-b9cd-3b751b9935c0"
+>
+</ReqRef>If receiving a &quot;track ahead free&quot; request from the RBC, the ERTMS/ETCS on-board equipment requests the driver to enter the &quot;track ahead free&quot; information.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="5b1db43d-70c3-4264-a51d-205d8cefa5ec"
@@ -6171,7 +6602,12 @@
  version="3.0.0"
  Name=""
  Guid="81a6f499-6dd5-437b-a330-35c901d3c002"
->It shall only be possible to enter in Passive Shunting mode from the Shunting mode; while in Shunting mode, the driver shall have the possibility to enable the function &quot;Continue Shunting on desk closure&quot;.<RequirementSets>
+><ReqRef
+ Id="87ddb7a7-f4cb-4eaf-a2cd-0ced68a51a58"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="a3302865-345a-487c-ae1d-c13cf6bae983"
+>
+</ReqRef>It shall only be possible to enter in Passive Shunting mode from the Shunting mode; while in Shunting mode, the driver shall have the possibility to enable the function &quot;Continue Shunting on desk closure&quot;.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="4cfc6267-fe9d-4434-944f-40e6bce31576"
@@ -12161,7 +12597,807 @@ AND (a National Trip Procedure is active) see {8} here under<RequirementSets>
  version="3.0.0"
  Name=""
  Guid="44d656a2-d70c-4000-9319-9ef9745c25a8"
->DMI versus Mode Table<Sub>
+><ReqRef
+ Id="d3977393-12db-4ebf-877c-189b3b56f9bc"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="b720b4c2-b51e-41ab-9509-314f5972efdb"
+>
+</ReqRef><ReqRef
+ Id="9204499a-8146-4c8b-9a35-b56352a24f23"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="fcd14ff1-30a2-48e8-bda4-08ae47ac2aab"
+>
+</ReqRef><ReqRef
+ Id="0424b3db-269a-44e4-b798-c6cfb44039bb"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="0c7753d4-1760-4b3c-96b3-936f2954eb09"
+>
+</ReqRef><ReqRef
+ Id="a1de4618-7a21-4093-8587-b71b02a259e8"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="b05575de-6e85-4142-bb77-dc2a07a00b34"
+>
+</ReqRef><ReqRef
+ Id="19625797-aac0-439f-95cc-90c2272fe103"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="95ff9c59-2fe8-4f6d-96d0-723212bc2cbb"
+>
+</ReqRef><ReqRef
+ Id="6db84ec2-7e19-4132-8ae3-c9b5dd9d9762"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="59008000-a7a1-4e4a-8de9-65d6d47eb8cd"
+>
+</ReqRef><ReqRef
+ Id="93965ae1-ceca-431a-b566-2a499869411a"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="1ad312a4-7cac-48e1-9657-bc247179ab72"
+>
+</ReqRef><ReqRef
+ Id="2dc4fb51-9bcd-4977-b116-6d3e843758ba"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="d3903d6d-1bc3-4c01-a12e-6acac60b704a"
+>
+</ReqRef><ReqRef
+ Id="e72aa6d1-dc4d-45be-81dd-e29e48dadb81"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="b69813cb-06db-404d-b3c5-1f68de3c2ac3"
+>
+</ReqRef><ReqRef
+ Id="f4b57948-23a5-422e-9239-595001416617"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="a89ce061-68c3-4c67-972a-5019bfded5ef"
+>
+</ReqRef><ReqRef
+ Id="1ecba925-2efc-456c-a7bb-103747ce5443"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="311b3252-15df-4172-b641-5deb6f96563d"
+>
+</ReqRef><ReqRef
+ Id="778326f0-5baa-4a06-953d-bf47d8d42dbb"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="90359586-e989-4451-8d50-f9eb08ba22b1"
+>
+</ReqRef><ReqRef
+ Id="4033c34b-754c-4af7-9341-cfb3c1a55316"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="bf33c1ae-ae7a-469a-bfb9-14349de3cf25"
+>
+</ReqRef><ReqRef
+ Id="3600388a-624c-4e49-8043-21502e6ffcba"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="ea91997b-af6e-4ec1-b840-dd5bd78e6e1a"
+>
+</ReqRef><ReqRef
+ Id="f66c2a74-bb19-4b26-b45f-2de81c53b171"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="006f2669-0206-4611-aaf8-99d287a7caec"
+>
+</ReqRef><ReqRef
+ Id="750e4f1f-f6c6-41b7-bfa7-2fa1ae7c1545"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="3de891cd-81fe-419a-9da8-446da9460ba8"
+>
+</ReqRef><ReqRef
+ Id="cd5df9e6-91d4-4ca1-8e6a-59cfd30c55a3"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="2b54124e-5068-4533-8724-2b32350a6fb9"
+>
+</ReqRef><ReqRef
+ Id="6d43b839-b419-4025-99d9-4d2d84095142"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="dd8b89ef-45bb-4cf9-82f7-22f3bdb992fe"
+>
+</ReqRef><ReqRef
+ Id="0aeb0c7b-a37f-4e63-aa91-6d99ed7bbac3"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="6704bdaa-f375-40fa-8299-aacd5cee9cc0"
+>
+</ReqRef><ReqRef
+ Id="4b76dc76-073a-4c53-9643-044897aa2370"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="76e5f2e5-9953-4b3f-9af7-35cab86f153d"
+>
+</ReqRef><ReqRef
+ Id="2f527a4e-2724-405a-98ae-244891d6d4e6"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="a494062e-de61-4499-936a-d29ae990d63c"
+>
+</ReqRef><ReqRef
+ Id="d3a61c3e-6f3c-4c4a-a8fc-c3422ea27d91"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="94e728cb-36eb-4648-a574-15799736985f"
+>
+</ReqRef><ReqRef
+ Id="6a79643b-30ee-47f0-9fd2-d191f69b5656"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="70c66bfc-ed5a-4b39-8db8-68e55c1908e4"
+>
+</ReqRef><ReqRef
+ Id="5effae2a-0d7d-492b-bf6e-1937739de0a4"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="8d202a0c-f264-43b4-b5aa-a68c7d52fd65"
+>
+</ReqRef><ReqRef
+ Id="fba96bf3-8d10-4c9a-a2ad-3519efc87649"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="8fbd93a9-7295-420c-9a0e-076dcd871124"
+>
+</ReqRef><ReqRef
+ Id="95bebccf-5374-4a71-b62c-18c71bb3beb1"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="ad400950-8e19-4059-9fe5-c0169f336968"
+>
+</ReqRef><ReqRef
+ Id="13990be9-525a-430d-a177-152bab686ad0"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="2ace2572-24d0-4f96-86e6-509597cf91e4"
+>
+</ReqRef><ReqRef
+ Id="17954075-e2a0-4d92-b2f7-348dfa71c4ea"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="15934601-3f84-4cad-bb08-9a9fce8a9e93"
+>
+</ReqRef><ReqRef
+ Id="62461502-93a4-4cd6-af51-4d7fa21f6a0b"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="d2f594e4-491d-4207-ad4c-c98d18b31492"
+>
+</ReqRef><ReqRef
+ Id="5dfba938-485f-4807-879b-6fd17546b9de"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="19a22703-c556-4580-a59f-a2527bc3d82a"
+>
+</ReqRef><ReqRef
+ Id="3473afd1-5ffd-4d06-aa1c-8bf8ecfd1ec3"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="0ee00775-c86c-4c6b-b458-7948b1467319"
+>
+</ReqRef><ReqRef
+ Id="3d642dbf-dce1-417a-aaf8-dd812161898c"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="f26f2924-f349-4c4c-a1d8-d6984cdd4052"
+>
+</ReqRef><ReqRef
+ Id="9b161693-9b2c-4cdb-8f9e-04589a45240f"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="d3a0ed8e-f802-4013-9b39-553ffe2e6ffe"
+>
+</ReqRef><ReqRef
+ Id="c98c56da-57ea-4481-ac62-37781da4a02c"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="ef301aba-097e-475f-9810-4d0ea67ae18b"
+>
+</ReqRef><ReqRef
+ Id="73763966-dbcc-4e9b-b9bc-1631e2be3b8d"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="d9b10642-2cbc-4532-b1bd-16ed3e4a0dcc"
+>
+</ReqRef><ReqRef
+ Id="b06115df-2330-4049-a9c6-95e33ad383e8"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="bb8dff52-3799-4227-9172-f3a0e87c1c8d"
+>
+</ReqRef><ReqRef
+ Id="e1fa2391-75fc-43d2-a54e-3445c10ef96f"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="223c5842-949f-4563-8bdf-ce7ccadc4184"
+>
+</ReqRef><ReqRef
+ Id="d6b7878e-342e-4cf6-a07c-75128276e98e"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="8289e5da-5b30-4115-8142-e5850c7ec2ed"
+>
+</ReqRef><ReqRef
+ Id="7a422e4b-7226-4810-9e87-23dd37fdb838"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="7c5c8fc9-3812-4039-8ab8-113d2f8dd019"
+>
+</ReqRef><ReqRef
+ Id="203098e9-db91-4eb2-81b2-176d067671ff"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="a6fa3e2b-76ae-4c9e-a503-8a64fac573a7"
+>
+</ReqRef><ReqRef
+ Id="1d4f25f7-361b-490d-94d7-0c99d326ae77"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="368c45b2-d120-4e6f-b000-fbe31275ec6a"
+>
+</ReqRef><ReqRef
+ Id="ea90a4a5-f447-46c5-9dd4-7b53920b1ac3"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="3759d969-ec62-40ff-bc96-2554c3fa65da"
+>
+</ReqRef><ReqRef
+ Id="11bb4690-a0a1-459f-93a5-2285f6ae9d0a"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="b3910af6-9c70-431a-988a-f3e95d088cc1"
+>
+</ReqRef><ReqRef
+ Id="f23f2dd9-507d-4582-83ed-36a6e58f17b8"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="5dbb6c8e-00f1-4c4d-8c91-dda27b2f8d8f"
+>
+</ReqRef><ReqRef
+ Id="39e71626-be79-4ee7-83b6-f43ab8f9a944"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="4f2dbf9a-67d2-4bcf-ba0b-587000b377ff"
+>
+</ReqRef><ReqRef
+ Id="ee5f142b-d31b-4dbb-9e6b-9d451ac675bc"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="d787d43c-6c02-4c42-9ea6-370bac301ba3"
+>
+</ReqRef><ReqRef
+ Id="25cbe369-b70d-4563-866d-9b7324bb66ff"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="e8dfc7b6-9030-4dc7-9494-893ba27ecaa7"
+>
+</ReqRef><ReqRef
+ Id="84510a40-2fb9-43eb-9133-2b5e068197a3"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="715b2bae-2bd7-4b73-acea-810d38bec644"
+>
+</ReqRef><ReqRef
+ Id="2f1a2126-9193-43d2-b63f-17e2ba20efbf"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="77b1104c-40a3-4d84-8cd6-c14935894769"
+>
+</ReqRef><ReqRef
+ Id="95758b75-44ed-4e7c-ab9a-0fbe6c33f88d"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="3d0b6ffd-c439-47ec-8593-3b6571901c06"
+>
+</ReqRef><ReqRef
+ Id="7f8012fa-7bc0-4e2c-920f-441118f37b75"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="648e19a7-f20c-45ad-90c7-159761f4072b"
+>
+</ReqRef><ReqRef
+ Id="27f02b07-cf60-4b5b-93e8-a3ae25faaaeb"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="6f10d3c5-c7e1-46f6-8915-8ae1e828e7e8"
+>
+</ReqRef><ReqRef
+ Id="024e7e85-8822-450b-81a5-194e60bfa908"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="1125fc7c-ab12-48c2-b73e-e389df5b9ff7"
+>
+</ReqRef><ReqRef
+ Id="39dfe717-8822-477c-980c-b268686c3950"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="4da79352-fb0b-48ca-b2fd-5db38d525036"
+>
+</ReqRef><ReqRef
+ Id="8ac90585-6f5f-44f1-8753-61f2f3175012"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="820bd487-c89e-44f4-9126-c123e274ad83"
+>
+</ReqRef><ReqRef
+ Id="bf200d87-1aa0-4b2b-97ff-4242ea1bfa08"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="e9a8243e-a922-4d71-b464-5437effda382"
+>
+</ReqRef><ReqRef
+ Id="8d2de628-84bf-4734-ac07-b254702af67d"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="efef27e7-b47e-4f7f-858a-55f72ac06fd9"
+>
+</ReqRef><ReqRef
+ Id="2f6ceb3a-7f76-48ef-9f85-a161f44f23f9"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="b30598f4-f080-474e-b703-6c251a2ee1be"
+>
+</ReqRef><ReqRef
+ Id="f8e52e13-ea42-4ff4-bc75-ecad309f8427"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="fa51b3ec-6144-4e3f-8ef0-2f707b323dd2"
+>
+</ReqRef><ReqRef
+ Id="bc51b535-dda6-464d-8488-e981d47b7916"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="5eb30c7f-74e5-4149-a48d-1cf40fe0a0b7"
+>
+</ReqRef><ReqRef
+ Id="ef53be9f-2282-41f9-b416-5be41e066784"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="db2b0d1d-5266-4aca-8f3f-38e25cec450b"
+>
+</ReqRef><ReqRef
+ Id="36e4f5c6-85b9-48a6-b60b-65691426a3b9"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="92520267-d557-46fa-bafa-2a5ff101c7a2"
+>
+</ReqRef><ReqRef
+ Id="683abf34-7a8b-4e91-ba4f-283f4985bbe4"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="79d5dbcb-f06b-4285-aac9-51cb4876ed86"
+>
+</ReqRef><ReqRef
+ Id="1aeaa73b-439b-48a9-9980-9007eec2edf6"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="eb7c9426-92fd-4af8-b4f1-ff06eb699440"
+>
+</ReqRef><ReqRef
+ Id="88b28b68-804a-4bb8-89c2-612a343a998f"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="93a661b0-8807-4aa4-a12f-8074414799f8"
+>
+</ReqRef><ReqRef
+ Id="33edce5c-b66a-4267-acdf-6fae51bcb52b"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="31da3213-c53f-4a73-92a7-5198b2055026"
+>
+</ReqRef><ReqRef
+ Id="9495af32-10a2-4849-ba9d-04a2eb2d8f47"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="3fb63dca-5dd5-4c11-a23d-b30b3e9315f1"
+>
+</ReqRef><ReqRef
+ Id="d57e8160-46d8-436d-a870-eb2bf667ee0b"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="93d84d14-88f7-4cbb-af61-082bda1bb506"
+>
+</ReqRef><ReqRef
+ Id="2bb6e107-432e-4692-862c-871077da4889"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="97cf16cd-1ea6-45ca-b8fb-b3c0c5c05ee0"
+>
+</ReqRef><ReqRef
+ Id="9f0c9fe2-4ec1-4865-98f0-60a8facb06f1"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="1eab46b0-7b6b-4f32-bdde-bf3454ec0582"
+>
+</ReqRef><ReqRef
+ Id="19ce6c17-78e1-496a-8d9c-2191b0805fa1"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="a89bbe4f-b0c4-4cf2-a755-6e9222b9fed4"
+>
+</ReqRef><ReqRef
+ Id="ee02c910-a875-4ce3-824d-573290b8be29"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="0d5cc569-4989-4cb5-b8a9-9671bf7391c0"
+>
+</ReqRef><ReqRef
+ Id="e9c59230-e868-4cb2-8121-4a1ff84af3bc"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="a4412252-ff64-4824-8088-6c6c22688685"
+>
+</ReqRef><ReqRef
+ Id="7e1d37f2-8eef-413c-aaff-4e40717d53aa"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="2de76f8b-489d-4752-bf2e-85489991b697"
+>
+</ReqRef><ReqRef
+ Id="aaf67db2-989f-4576-89d9-8731cf755e60"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="80bfc34e-4d91-48ec-b7a9-55bb7cf3f081"
+>
+</ReqRef><ReqRef
+ Id="b4aae127-411a-4118-ac4b-4e18837037f1"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="232db461-fe81-45fa-998c-0aae85bc3332"
+>
+</ReqRef><ReqRef
+ Id="555f26d4-cfd3-4084-a15c-a911a6858fcd"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="1b386042-b13c-49d7-82a6-cccdcbedf804"
+>
+</ReqRef><ReqRef
+ Id="fe1ee7e0-f283-41e6-99ce-2b976b654cfc"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="3f692245-6efb-4cb0-a2b4-82152e1c4cc2"
+>
+</ReqRef><ReqRef
+ Id="bc5c3955-0657-4840-b922-84b4af797ac1"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="d916b134-07e0-4ae5-81bc-a447c1692ab4"
+>
+</ReqRef><ReqRef
+ Id="09143f3a-fb92-4ae5-8b8f-9e233c11c0f7"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="50e407ab-c102-4f5c-b6ff-c7821b5b80c6"
+>
+</ReqRef><ReqRef
+ Id="ce563fea-92a3-4267-bf81-1a5cc5fd548b"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="9d49c03d-f1d4-4f6d-b56d-e32aa69fd5bf"
+>
+</ReqRef><ReqRef
+ Id="2a0ead4b-4fa8-4c77-9419-8a2aee1bade3"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="2c6563d4-6157-4200-8b1e-c6eb217c0868"
+>
+</ReqRef><ReqRef
+ Id="60665c79-3eb1-447a-a202-ef4cf3f670cc"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="6e71410f-767e-46e5-b649-736f29f5b2da"
+>
+</ReqRef><ReqRef
+ Id="4f970c4b-dd5f-45c3-ad26-513d1bb1f725"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="21537c02-8f59-43fe-bc4b-ce90fa67a89d"
+>
+</ReqRef><ReqRef
+ Id="9801a4fd-b56e-4852-84d0-04fb03088faa"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="f01e6c1b-9b4b-4015-8eb5-e97d6a27cb90"
+>
+</ReqRef><ReqRef
+ Id="92c99cc4-9f62-4b5c-84fd-8aaef1b1754a"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="7f339953-e263-4956-b100-705be1758800"
+>
+</ReqRef><ReqRef
+ Id="ef819767-4165-4102-ac02-f7148b42f78e"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="79758e2c-816b-4891-bc0b-cac27aafdd77"
+>
+</ReqRef><ReqRef
+ Id="82007bea-0813-45fa-9169-1decd104a316"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="02cdd1d5-73bd-4d29-a8f0-24afcb3a62d6"
+>
+</ReqRef><ReqRef
+ Id="ea558081-f052-4361-b53a-7b26c1e3889d"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="786fa2ea-be65-4c12-89c7-f960d5546cf2"
+>
+</ReqRef><ReqRef
+ Id="11e0d674-74c9-4faa-b38d-f5e34479a368"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="2830041e-fb62-4133-90df-3f4f0765fc90"
+>
+</ReqRef><ReqRef
+ Id="4314b74d-697c-4562-838b-b1eaeaf4e565"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="e2e745d5-c3d2-4981-a2a7-abcd5462d30a"
+>
+</ReqRef><ReqRef
+ Id="d7e1a2fb-5a46-4a39-9ed2-52740b320a17"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="3d0ba1f6-db4d-4e6b-ad78-9b1a2f497276"
+>
+</ReqRef><ReqRef
+ Id="73a33615-99f4-4bb5-9f9a-596f61c0d1e2"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="0707b911-234c-4c58-b2e2-558bb250215a"
+>
+</ReqRef><ReqRef
+ Id="d8015bba-8732-418a-8989-c213c379c3be"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="55e230e1-bedd-40af-9f11-4c594228f1c4"
+>
+</ReqRef><ReqRef
+ Id="18a95b61-bd58-4986-ab48-53ecf87b37c1"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="4e41b2e8-256e-413b-a664-dd22c1cf5d54"
+>
+</ReqRef><ReqRef
+ Id="0ad8192a-e4cb-448e-8f6e-92018ce127d1"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="e5813fc3-0869-4d56-baf3-af9c43265120"
+>
+</ReqRef><ReqRef
+ Id="21be0c03-216c-4ee7-863b-b6ba961c5173"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="b50f14d1-78e2-4093-87db-e92374e826b3"
+>
+</ReqRef><ReqRef
+ Id="e1616572-fa35-454e-ab1e-fe8ee5650c2d"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="ed114cc9-1cb5-4670-8ea7-b958e4543862"
+>
+</ReqRef><ReqRef
+ Id="3a46d421-667c-4e0f-8507-0c7c927a1fa9"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="100f16ab-7cc8-424b-9dfb-b24dae7b0b95"
+>
+</ReqRef><ReqRef
+ Id="1257282c-46c1-4d0a-bca0-063d228f61dd"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="3034d604-10e3-43a6-b88f-4b65a42814fc"
+>
+</ReqRef><ReqRef
+ Id="668a5e4d-130b-49d0-be61-4a5301b22183"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="34c1d098-47d7-44c9-a07e-bdc806514e34"
+>
+</ReqRef><ReqRef
+ Id="9ac1813b-0464-4579-b194-5d654f6ed456"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="1d7a177a-e9e2-47a8-af15-7e670a89a845"
+>
+</ReqRef><ReqRef
+ Id="4cda8d8f-85e2-4215-a97b-01ec4669c8ac"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="f9031a72-59f3-4910-baf2-2f140095ec03"
+>
+</ReqRef><ReqRef
+ Id="5985341c-13f1-405b-91f9-0b1f3ccf8fc0"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="3f76bfd3-41d1-4530-8b18-e31a89b552e8"
+>
+</ReqRef><ReqRef
+ Id="308c0bbf-2f71-4bb4-b26f-bfce67c89ad7"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="b12f80e9-414c-4f77-989c-73dab82f2aa5"
+>
+</ReqRef><ReqRef
+ Id="d39adea0-a6b3-4efc-9296-59594db9fe07"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="2ea32f4e-79c1-4d43-85d6-a84a98704405"
+>
+</ReqRef><ReqRef
+ Id="93b5dc93-30ac-454c-bd72-f12c33c1f3a4"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="a0262391-4dfd-4447-abd3-ac9411957a16"
+>
+</ReqRef><ReqRef
+ Id="762a6a98-a96c-4712-91f4-1bfad11fc229"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="ef6604fc-42d4-45d0-a42e-c37805024c5c"
+>
+</ReqRef><ReqRef
+ Id="078a5cbb-4d66-4abe-b909-bb015b5ab0d5"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="c8629baa-4585-4ecd-888c-0c4f3203558f"
+>
+</ReqRef><ReqRef
+ Id="d1306277-a43c-43f0-8e13-1a614a2dcac5"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="bc50725c-dcec-45a3-a860-1fcfcf89f2b7"
+>
+</ReqRef><ReqRef
+ Id="0c8e6ebe-c658-4a61-871e-60b516033d0b"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="9a988194-beb3-4f05-a2cb-8eb157c0524f"
+>
+</ReqRef><ReqRef
+ Id="f19bd2f4-0aed-4933-807a-08682f23a8a6"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="315cab66-51b0-4891-b0a0-c6b880467bc9"
+>
+</ReqRef><ReqRef
+ Id="efb182c1-7a1a-4c2b-894a-61889486bb55"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="55e4515a-c0e5-48db-b131-4a3613fef7fc"
+>
+</ReqRef><ReqRef
+ Id="2d0fff66-aeab-4cff-b9ed-af5118c7000f"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="24742d26-5d3f-4336-b33a-488abc339daa"
+>
+</ReqRef><ReqRef
+ Id="7c04b31f-953c-4e58-be69-e8f0d4055a77"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="ed67aadc-6b50-4830-bcbe-5127fdde09ef"
+>
+</ReqRef><ReqRef
+ Id="9e809209-91e3-4d74-9860-e572cdd4b575"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="dc5999b5-db3b-4914-b44c-d63fb6fd109a"
+>
+</ReqRef><ReqRef
+ Id="eab2cabc-8f52-4859-aaf7-a8b0e3416bba"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="2db2642f-6d42-4cbb-950f-d42a889d3661"
+>
+</ReqRef><ReqRef
+ Id="a44d3780-cebd-4c6a-9f23-3c77e3bb3b94"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="a43a2261-08cb-43f5-9328-0a6d01015c0e"
+>
+</ReqRef><ReqRef
+ Id="30e3ce39-a56e-4b2e-9a5b-81c5635c4591"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="e25c88b2-0d9c-4031-b1eb-6a93020d7e21"
+>
+</ReqRef><ReqRef
+ Id="aa17d401-3934-4fbb-847a-cc5ca9919530"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="664b9ca6-170b-4461-911b-56979fdebd5f"
+>
+</ReqRef><ReqRef
+ Id="47b6299e-4038-4327-a485-a58dfcef8dcb"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="f969d617-47f8-4a95-9975-25a288f41ca1"
+>
+</ReqRef><ReqRef
+ Id="76a2d002-fa36-41e5-982c-d2e2bd915afe"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="b9f61639-d1bf-4cb5-8878-07ebbab37c46"
+>
+</ReqRef><ReqRef
+ Id="daf8c083-86d6-4952-b931-dd641352e047"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="3322b8e9-2815-48e6-9a91-c6ea6538cb9e"
+>
+</ReqRef><ReqRef
+ Id="d24dffe1-944a-415f-931c-2ab491b49615"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="1b0cac26-97eb-433e-b2d2-1c40d72e12fd"
+>
+</ReqRef><ReqRef
+ Id="b3e2de45-c953-4169-accf-4f33f2378931"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="863cf366-3ed9-4c9f-a1d9-c8b9c574c9a5"
+>
+</ReqRef><ReqRef
+ Id="66476f1d-1c00-4ccd-a79d-c6fbc70ce7b6"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="2bc18a33-8ddc-4ff5-bfa3-bbd820629f76"
+>
+</ReqRef><ReqRef
+ Id="ce7555d3-c5f1-48da-9b4c-a09e25651136"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="d578ed2c-c98d-4cd0-8b6b-df0b191c9968"
+>
+</ReqRef><ReqRef
+ Id="f8572e5a-adef-47bf-bb3b-cdc58bb37c77"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="6b7f4562-acad-49dc-8db2-88eda9bc53d4"
+>
+</ReqRef><ReqRef
+ Id="d77c0462-0c20-4161-ad8b-b6b3fedcb76e"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="6b20fd2a-ee1d-41c7-96e2-0175c1cef9e1"
+>
+</ReqRef><ReqRef
+ Id="e3da03a3-88ec-467d-8a7e-3da0b7ec61dc"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="e49e6d4a-b740-4af6-b650-4b16b0f3b17c"
+>
+</ReqRef><ReqRef
+ Id="25b293f7-d3c8-4043-8eb6-cb4a73ab0ac8"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="16faff08-a364-449a-a5ab-09e44b6612da"
+>
+</ReqRef><ReqRef
+ Id="39e4df35-9a1e-46a4-8fd2-0b1cd2b29827"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="8cffe1f0-9eb4-429e-8c38-9043e1dee8ad"
+>
+</ReqRef><ReqRef
+ Id="8cdba14e-f655-4565-a311-5c5b6cbb04c9"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="c5c32be4-a34e-429c-b5b6-05c434d68a0c"
+>
+</ReqRef><ReqRef
+ Id="1548dae6-2471-4127-b446-70a50a14de77"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="ca2da3b7-f6de-4322-928c-d1bc4d28125e"
+>
+</ReqRef><ReqRef
+ Id="f8a35a3b-8a16-4e60-a845-4cc092abcf61"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="c5bd31c3-cc47-4753-ad8d-763798550f3f"
+>
+</ReqRef><ReqRef
+ Id="d9f4d6d5-5af0-4824-b369-6ec0aec8831f"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="57418095-5492-4579-b63f-46fdb0355ed4"
+>
+</ReqRef><ReqRef
+ Id="8d82f29a-878f-4af9-bb45-86d96989d366"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="d061b8dd-c568-4a87-b770-297395358fd7"
+>
+</ReqRef><ReqRef
+ Id="709124f4-3428-4b08-aaf6-6092c5382f6b"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="6832edee-e8dd-4bd8-95ed-8ade6fc5869a"
+>
+</ReqRef><ReqRef
+ Id="7ccc5d73-b330-412e-ac8c-6cae5a5ecdb2"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="b597049a-cae6-426f-953c-7defb96ba436"
+>
+</ReqRef><ReqRef
+ Id="70e74533-5901-4ecc-a102-e17d8d97ee2c"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="f45d317b-6527-4514-ad93-a85c7ecba628"
+>
+</ReqRef><ReqRef
+ Id="10c16f6f-dc0b-4752-b110-dad2d50eb929"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="3d355b12-57f2-4a4c-82d5-98593cf5e668"
+>
+</ReqRef><ReqRef
+ Id="3437ffa4-cc14-4434-8e0c-7efe9d4d924d"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="0ece8220-d99f-4428-a7b9-8ad84a39bd80"
+>
+</ReqRef><ReqRef
+ Id="1e1243c8-75d1-4fc8-941c-6845d6450760"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="934a794a-4f81-4870-8868-e219adc606b7"
+>
+</ReqRef><ReqRef
+ Id="b1fec411-6b3d-44e1-b4bc-fb3892d6984d"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="65a2e46e-2e4f-4f2c-a9b4-cc8fa978a483"
+>
+</ReqRef><ReqRef
+ Id="72317bb8-74d8-4df0-8d19-c794ad0f84c0"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="0365505a-139e-4892-af65-2e3432a45e84"
+>
+</ReqRef><ReqRef
+ Id="ea69d070-5bee-4d43-9067-38dcbede4913"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="cdd16b64-ab13-4779-996e-9338dbb431ca"
+>
+</ReqRef><ReqRef
+ Id="cab92e3a-4076-470d-b9f6-45e4fa2d878e"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="b5c9c83c-de24-445c-92ca-4dcef9c769a1"
+>
+</ReqRef><ReqRef
+ Id="2cc64a30-5222-4562-8224-afddab3dd70f"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="b65c17ca-1d15-4cb7-8106-cfc62b15be51"
+>
+</ReqRef><ReqRef
+ Id="bc1d3e00-55c7-4e7b-8bea-a5c212e4cd9b"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="dc62e44c-bc15-455e-a919-672cdfa4f553"
+>
+</ReqRef><ReqRef
+ Id="9377dcc2-c9be-4152-b1f9-d994303d56ab"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="afec998c-8a53-40e2-b0af-bdd6a55f386f"
+>
+</ReqRef><ReqRef
+ Id="6f6da29c-d609-4d41-9b2f-9b588b87e6d2"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="73ce2704-8fc8-4724-b5e5-99d1006140ea"
+>
+</ReqRef><ReqRef
+ Id="da3f6a8b-40dd-4f0f-9a21-9743f21442c8"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="bb6fcd06-6b4b-4664-8867-b165d0752ce5"
+>
+</ReqRef><ReqRef
+ Id="7111ad08-b309-4ac4-abf5-ae59fe4b6118"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="b800e7cb-0b18-4cf0-a3d8-8bce293959ac"
+>
+</ReqRef><ReqRef
+ Id="79661c39-58d2-4013-aaca-47434f30a76d"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="b7a0feaf-c05d-444f-af6b-12b2b73ad4fa"
+>
+</ReqRef><ReqRef
+ Id="6aba28c6-2faf-4920-97d4-8e249e97648c"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="8f5dcb0f-eccc-46d2-aa71-672a4928f5fb"
+>
+</ReqRef><ReqRef
+ Id="cef9d213-b26c-49f0-9112-ba72323b7e3e"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="9566654d-9ea8-4dad-a9ba-3b5fabea11f9"
+>
+</ReqRef><ReqRef
+ Id="91dd16d5-ec9c-402e-96b0-231abf9c8993"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="db6fdb24-40a3-403f-8fd1-93783f8ea299"
+>
+</ReqRef><ReqRef
+ Id="91dbc890-709d-4fd4-807d-81f708855ac8"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="f021bc32-7212-4a83-859a-9a367e48362d"
+>
+</ReqRef><ReqRef
+ Id="9bcf267c-323b-4247-a873-a8f7089bc0ea"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="7efa7612-0952-4d06-bc8e-c28b0176bfed"
+>
+</ReqRef><ReqRef
+ Id="af1cc013-6402-4dde-999b-3656641d56cd"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="2065391e-c2ad-4b44-91e8-7985063d230b"
+>
+</ReqRef>DMI versus Mode Table<Sub>
 <Paragraph
  id="4.7.2.1.1"
  type="NOTE"
@@ -12371,7 +13607,7 @@ AND (a National Trip Procedure is active) see {8} here under<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NewRevisionAvailable"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="b097af96-5a86-448c-a47a-c1f0866d272b"
@@ -12920,7 +14156,7 @@ Current ERTMS/ETCS level; A: SB, TR; X: SH, FS, LS, SR, OS, NL, UN, PT, SN, RV; 
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NewRevisionAvailable"
+ status="Implemented"
  version="3.0.0"
  infoRequired="TRUE"
  Name=""
@@ -12940,11 +14176,11 @@ Permitted Speed; A: SH, SR, OS; X: FS, RV; GREYED: SN; NA: SF, IS<RequirementSet
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NewRevisionAvailable"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="9427a791-5126-401a-8a4c-c22ac729a3c7"
-><Comment>FLOI shall always be sent to the DMI, when available. The DMI will use this information, if requested</Comment>
+><Comment>SBI shall always be sent to the DMI, when available. The DMI will use this information, if requested</Comment>
 SBI Speed; A: FS; GREYED: SN; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -12958,7 +14194,7 @@ SBI Speed; A: FS; GREYED: SN; NA: SF, IS<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NewRevisionAvailable"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="b2d1ec0c-6179-487e-8bd5-c648d7a87f56"
@@ -13012,7 +14248,7 @@ Target distance; A: FS, SR, OS; X: RV; GREYED: SN; NA: SF, IS<RequirementSets>
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="79ff8592-7e4d-46f0-8f6b-70287697fedc"
@@ -13449,7 +14685,7 @@ Entry in FS/OS; A: FS, OS; NA: SF, IS<RequirementSets>
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NewRevisionAvailable"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="cde58d6c-c5d2-4ee2-8363-fb89efc1fcd7"

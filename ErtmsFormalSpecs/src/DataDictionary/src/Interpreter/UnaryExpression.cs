@@ -382,19 +382,24 @@ namespace DataDictionary.Interpreter
             }
         }
 
-        public override string ToString()
+        /// <summary>
+        /// Provides the indented expression text
+        /// </summary>
+        /// <param name="indentLevel"></param>
+        /// <returns></returns>
+        public override string ToString(int indentLevel)
         {
             string retVal = "";
 
             if (Term != null)
             {
-                retVal = Term.ToString();
+                retVal = Term.ToString(indentLevel);
             }
             else
             {
                 if (UnaryOp != null)
                 {
-                    retVal = UnaryOp + " " + Expression.ToString();
+                    retVal = UnaryOp + " " + Expression.ToString(indentLevel);
                 }
                 else
                 {

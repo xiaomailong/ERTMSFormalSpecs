@@ -1,0 +1,378 @@
+<NameSpace
+ X="710"
+ Y="600"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Name="GeographicalPosition"
+ Guid="7e6c43a5-cb12-411e-9230-85944c976e8c"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="GeographicalPositionItemStruct"
+ Guid="fb1b1a64-9f31-41bb-812d-4b0bc9018535"
+>
+<ReqRef
+ Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c76f4423-f61a-446a-baeb-5a8d54ce334a"
+>
+</ReqRef><ReqRef
+ Id="3f471e44-8594-4731-ba67-b7173dc06106"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b30f2d26-4ff1-4c88-9a35-550ff37a5a52"
+>
+</ReqRef><ReqRef
+ Id="5f18c863-0780-4cbd-8960-633822d1844b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b16f0e2a-2a7b-4972-976f-e996e4d94274"
+>
+</ReqRef><Comment>Contains an item of geographical position information.</Comment>
+<StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Offset"
+ Guid="837b03ea-f603-45ae-837f-5e7a5eb5cd01"
+>
+<ReqRef
+ Id="d803e95b-6cad-4960-a6a8-ea864513abaa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="01054ddd-96eb-4364-a727-fed1e5cf29ba"
+>
+</ReqRef><Comment>Offset from the locaion reference of the geographical position reference balise group to the related track kilometre reference.</Comment>
+</StructureElement><StructureElement
+ TypeName="Messages.NID_BG"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="ReferenceBG"
+ Guid="29c05e12-38fe-41b5-83e2-d820c5dbc463"
+>
+<Comment>Geographical position reference balise group.</Comment>
+</StructureElement><StructureElement
+ TypeName="Messages.Q_MPOSITION"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Direction"
+ Guid="8bb584d7-be17-479a-b44a-4dfe626004e1"
+>
+<ReqRef
+ Id="77703c80-fefa-4820-a54b-191604cf0b0f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2d52ec54-48ff-4466-9d17-23a20ecf2509"
+>
+</ReqRef><Comment>Geographical counting direction. Indicates the direction of the geographical position track kilometre in relation to the geographical position reference balise group directionality.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Position"
+ Guid="a17eb432-f213-4c3f-a2ef-7b5490c9566e"
+>
+<ReqRef
+ Id="5c5cc0e5-ec68-48f0-b9d8-17de2cf0bcbf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="733c581f-3d26-465d-906a-38666627c69a"
+>
+</ReqRef><Comment>Track kilometre reference value. The geographical position reporting function uses this variable&apos;s content as a reference value.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="NewCountry"
+ Guid="18b33f88-16d3-4286-a777-54bed037240d"
+>
+<ReqRef
+ Id="7ec45979-d2e8-4661-a8e1-09e937013367"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ea5e1651-3daa-4c86-8790-b44369e75d0f"
+>
+</ReqRef><Comment>Indicates the country changes for this item.</Comment>
+</StructureElement><StructureElement
+ TypeName="Messages.NID_C"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Country"
+ Guid="1b155078-e596-485e-bcff-e40bc37d309a"
+>
+<ReqRef
+ Id="22004407-7b7e-41ef-b2a0-17762884662f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5d9f002f-4933-4259-ae01-378dfb1ea246"
+>
+</ReqRef><Comment>The country for which applies this item.</Comment>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="Kernel.GeographicalPosition.GeographicalPositionItemStruct"
+ Default="[]"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="GeographicalPositionItemsCol"
+ Guid="bdf546cd-9fd5-4432-aac8-b096ef3a3764"
+>
+<ReqRef
+ Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cf6c6cdf-67ee-4722-a858-32535612d2cb"
+>
+</ReqRef><Comment>Collection of geographical position items.</Comment>
+</Collection></Collections>
+<Functions>
+<Function
+ Type="Kernel.GeographicalPosition.GeographicalPositionItemStruct"
+ Default=""
+ Y="180"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="CreateGeographicalPositionItem"
+ Guid="3fd512ca-d404-4d67-adbd-193e326c44eb"
+>
+<ReqRef
+ Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a46cc73-6a67-43ee-8675-fb16d0c3e496"
+>
+</ReqRef><Comment>Creates a geographical position item from an element of collection of geographical position items received from trackside.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.Q_SCALE"
+ Name="aScale"
+ Guid="2939fbe7-7dcf-41b9-b0bd-caac596e65d2"
+>
+</Parameter><Parameter
+ Type="Default.MessageTypes.Distance"
+ Name="anOffset"
+ Guid="d057a90b-8587-4269-99b6-f0100172e9a0"
+>
+</Parameter><Parameter
+ Type="Messages.NID_BG"
+ Name="aReferenceBG"
+ Guid="1417f4af-0cdf-4077-bc6f-364fe15d5a26"
+>
+</Parameter><Parameter
+ Type="Messages.Q_MPOSITION"
+ Name="aDirection"
+ Guid="6408ad70-0e2f-4324-b21e-38233ad9bdd1"
+>
+</Parameter><Parameter
+ Type="Messages.M_POSITION"
+ Name="aPosition"
+ Guid="539b9fb7-c0dd-4327-9ec8-cb798b098f1b"
+>
+</Parameter><Parameter
+ Type="Messages.Q_NEWCOUNTRY"
+ Name="aNewCountry"
+ Guid="b72eb11c-44c3-4a29-80ae-be35d98a72eb"
+>
+</Parameter><Parameter
+ Type="Messages.NID_C"
+ Name="aCountry"
+ Guid="cf0884fb-5230-47b9-b9b7-20acb1d94751"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="384cb3f5-5132-4032-a988-e22ecacb80a9"
+>
+<Expression>Kernel.GeographicalPosition.GeographicalPositionItemStruct
+{
+    Offset =&gt; MessageTypes.QScaleDistance
+    (
+        distance =&gt; anOffset,
+        scale =&gt; aScale
+    ),
+    ReferenceBG =&gt; aReferenceBG,
+    Direction =&gt; aDirection,
+    Position =&gt; MessageTypes.QScaleDistance
+    (
+        distance =&gt; aPosition,
+        scale =&gt; aScale
+    ),
+    NewCountry =&gt; Q_NEWCOUNTRY_To_Bool(aNewCountry),
+    Country =&gt; aCountry
+}</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="GeographicalPositionReceived"
+ Guid="cd2e9e8d-292b-4522-a779-fda1051341bc"
+>
+<ReqRef
+ Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3c2590da-a906-423c-b6a0-9e79ebfde3da"
+>
+</ReqRef><Comment>Handles reception of the geographical position information sent by the trackside.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.GEOGRAPHICAL_POSITION_INFORMATION.Message"
+ Name="aPacket"
+ Guid="37de5a06-b436-4a8d-bae5-f97836087cd6"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle first item"
+ Guid="919b6b4c-39b4-4d45-b09a-4dec28cc41e2"
+>
+<Comment>Stores the first item in the packet.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle first item"
+ Guid="4023e54b-7676-4660-8c9e-aa8611d55552"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="229b02af-8fe9-4a2c-90ff-2c9a0ff0dc95"
+>INSERT
+  CreateGeographicalPositionItem
+  (
+    aScale =&gt; aPacket.Q_SCALE,
+    anOffset =&gt; aPacket.D_POSOFF,
+    aReferenceBG =&gt; aPacket.NID_BG,
+    aDirection =&gt; aPacket.Q_MPOSITION,
+    aPosition =&gt; aPacket.M_POSITION,
+    aNewCountry =&gt; aPacket.Q_NEWCOUNTRY,
+    aCountry =&gt; aPacket.NID_C
+  )
+IN
+  GeographicalPositionInformation</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle following items"
+ Guid="253c558d-7cd3-4e12-a844-9dae9ad4fc30"
+>
+<Comment>Stores the items from Sequence1.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle following items"
+ Guid="669951de-7d12-4438-ac28-81a75edd8090"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="d75bf142-4dde-4ade-86da-02400121cdf7"
+>APPLY
+    AddGeographicalPositionItem
+    (
+        anItem =&gt; X,
+        aScale =&gt; aPacket.Q_SCALE
+    )
+ON
+    aPacket.Sequence1</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Y="240"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="AddGeographicalPositionItem"
+ Guid="10d23d0c-c988-47f7-9263-c9b0c0d0393e"
+>
+<ReqRef
+ Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b961b327-5012-4e80-ae33-bc3bf02b5586"
+>
+</ReqRef><Comment>Adds a new gepgraphical position item received from the trackside to the list of geographical position items stored on-board.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.GEOGRAPHICAL_POSITION_INFORMATION.SubStructure1"
+ Name="anItem"
+ Guid="1ff17b8b-1046-4231-9f03-bc21f31b92db"
+>
+</Parameter><Parameter
+ Type="Messages.Q_SCALE"
+ Name="aScale"
+ Guid="5ce0aa93-ddf2-4031-b5cd-5bf12e155c4a"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Insert the item"
+ Guid="8bf40c2f-1d65-4280-afa1-80ec6ed2e29f"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Insert the item"
+ Guid="96f1a59d-4ac9-4878-890a-b9d159383b66"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="74098f23-1ac0-4463-bfc3-17b5304f2cdb"
+>INSERT
+  CreateGeographicalPositionItem
+  (
+    aScale =&gt; aScale,
+    anOffset =&gt; anItem.D_POSOFF,
+    aReferenceBG =&gt; anItem.NID_BG,
+    aDirection =&gt; anItem.Q_MPOSITION,
+    aPosition =&gt; anItem.M_POSITION,
+    aNewCountry =&gt; anItem.Q_NEWCOUNTRY,
+    aCountry =&gt; anItem.NID_C
+  )
+IN
+  GeographicalPositionInformation</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<Variables>
+<Variable
+ Type="GeographicalPositionItemsCol"
+ DefaultValue="[]"
+ VariableMode="Internal"
+ Y="120"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="GeographicalPositionInformation"
+ Guid="df6a1125-594b-49ca-b27f-b9d010a958e3"
+>
+<ReqRef
+ Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b42a9710-a13e-443d-b862-fdc5a0150e8b"
+>
+</ReqRef><Comment>Regresents the geographical position information received from the trackside.</Comment>
+</Variable></Variables>
+</NameSpace>

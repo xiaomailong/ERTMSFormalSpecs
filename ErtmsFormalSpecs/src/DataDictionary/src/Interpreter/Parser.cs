@@ -95,7 +95,7 @@ namespace DataDictionary.Interpreter
             skipWhiteSpaces();
             if (Index < Buffer.Length)
             {
-                if (Char.IsLetter(Buffer[Index]) || Buffer[Index] == '_')
+                if (Char.IsLetter(Buffer[Index]) || Buffer[Index] == '_' || Buffer[Index] == '%' )
                 {
                     int i = 1;
 

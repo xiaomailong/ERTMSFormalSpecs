@@ -1,6 +1,6 @@
 <NameSpace
- X="990"
- Y="540"
+ X="600"
+ Y="720"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -1904,7 +1904,7 @@
 <Expression>DefaultValues.MaxDecelValueUnderReducedAdhesionCond2</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.NationalValues.CorFactorKt"
+ Type="NationalValues.CorFactorKt"
  Default=""
  X="250"
  Width="100"
@@ -1935,7 +1935,7 @@
 <Expression>CorFactorKt ( 0.05 * KtValue )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.NationalValues.WeightFactor"
+ Type="NationalValues.WeightFactor"
  Default=""
  X="140"
  Y="60"
@@ -1972,7 +1972,7 @@
 <Expression>WeightFactor ( 0.05 * VadhValue )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.NationalValues.CorFactorKr"
+ Type="NationalValues.CorFactorKr"
  Default=""
  X="360"
  Width="100"
@@ -2003,7 +2003,7 @@
 <Expression>CorFactorKr ( 0.05 * KrValue )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.NationalValues.CorFactorKv"
+ Type="NationalValues.CorFactorKv"
  Default=""
  X="470"
  Width="100"
@@ -2034,7 +2034,7 @@
 <Expression>CorFactorKv ( 0.02 * KvValue )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.NationalValues.CorFactorKr"
+ Type="NationalValues.CorFactorKr"
  Default=""
  X="360"
  Y="60"
@@ -2123,7 +2123,7 @@
 <Expression>aKr_int.Val4.Value</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.NationalValues.CorFactorKv"
+ Type="NationalValues.CorFactorKv"
  Default=""
  X="470"
  Y="60"
@@ -2212,7 +2212,7 @@
 <Expression>aKv_int.Val4.Value</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.NationalValues.CorFactorKv"
+ Type="NationalValues.CorFactorKv"
  Default=""
  X="470"
  Y="180"
@@ -2719,7 +2719,7 @@
 <PreCondition
  Guid="f7f7c12d-3963-40da-83ea-2d25e6986142"
 >ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Expression>
+<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions (TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Expression>
 </Case><Case
  Name="DefaultValues_Standstill"
  Guid="1492cda9-b98a-41ed-a5e9-08df618081eb"
@@ -2729,7 +2729,7 @@
  Name="DefaultValues_SpeedSupervisionLimitIsNoLongerExceeded"
  Guid="cb889c73-68c2-4ad3-8c17-9640a862ddaa"
 >
-<Expression>Kernel.NationalValues.DefaultValues.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions ( Odometry.NominalDistance )</Expression>
+<Expression>Kernel.NationalValues.DefaultValues.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions (TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2766,7 +2766,7 @@
 <Expression>DefaultValues.UseServiceBrakeInTargetSpeedMonitoring == Messages.Q_NVSBTSMPERM.No</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.NationalValues.CorFactorKt"
+ Type="NationalValues.CorFactorKt"
  Default=""
  X="30"
  Y="240"
@@ -3481,6 +3481,56 @@
 >KvInt.Val4.ValueA &lt;- KvResolution ( ValueA )</Action><Action
  Guid="603fb8b0-b3d7-4c1e-8412-657adf28d887"
 >KvInt.Val4.ValueB &lt;- KvResolution ( ValueB )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Initialize"
+ Guid="e0605b2d-4c39-4e9e-8424-3c7b5a5e8562"
+>
+<Comment>Initializes the test environment with a set of national values as specified in ERA_Braking_cuvers_tool_v3.0.xlsm.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Initialize national values"
+ Guid="98bc850e-b6e9-402d-99d6-53b62db23c31"
+>
+<Comment>Initializes the test environment with a set of national values as specified in ERA_Braking_cuvers_tool_v3.0.xlsm.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Initialize national values"
+ Guid="877d7f48-72c4-476c-ab60-18b9a035f720"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="bbc3c1b4-d070-43aa-865e-959c2773e688"
+>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="e3cde4ea-42d7-4706-be4c-a9c93882a255"
+>Kernel.NationalValues.ApplicableNationalValues.Value.ConfLevelForEmergBrakeSafeDecelerationOnDryRails &lt;- Messages.M_NVEBCL.Confidence_level___99_9999999</Action><Action
+ Guid="8a82144b-7f5b-4e0f-ad91-a908a70d0aaa"
+>Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond1 &lt;- 1.0</Action><Action
+ Guid="4aed9178-1526-4a91-899f-bd865fe2d49f"
+>Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond2 &lt;- 0.7</Action><Action
+ Guid="465ca94d-ee21-4672-8c1a-5fdaa7717ee9"
+>Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond3 &lt;- 0.7</Action><Action
+ Guid="f3e98582-ca2a-4096-a4bd-d7c1b49f25b4"
+>Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond3 &lt;- 0.7</Action><Action
+ Guid="40e175f6-3218-47e0-b853-e3d5eb431c03"
+>Kernel.NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy &lt;- Messages.Q_NVINHSMICPERM.Yes</Action><Action
+ Guid="93d45e34-8118-44ae-afd4-6d81b80dd945"
+>Kernel.NationalValues.ApplicableNationalValues.Value.UseServiceBrakeInTargetSpeedMonitoring &lt;- Messages.Q_NVSBTSMPERM.Yes</Action><Action
+ Guid="1cdfb05c-f525-493b-950f-d6abc0939671"
+>Kernel.NationalValues.ApplicableNationalValues.Value.WeightingFactorForAvailableWheelRailAdhesion &lt;- 0.0</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

@@ -21,7 +21,7 @@ java:
 	cs2j-2013.0.1/CS2JTranslator/bin/cs2j.exe -net-templates-dir=cs2j-2013.0.1/NetFramework/ -out-java-dir=java/interpreter/translated -cs-dir=src/DataDictionary/generated
 
 nightbuild: release
-	bin/EFSTester.exe "doc/specs/subset-026.efs" "doc/specs/braking curves verification.efs"
+	bin/EFSTester.exe "doc/specs/subset-026.efs" "doc/specs/braking curves verification.efs" "../../efs_contrib/Subset76/subset-076.efs"
 	echo "done."
 
 clean:

@@ -70,7 +70,7 @@
 <Actions>
 <Action
  Guid="03f35f24-1aed-4b77-b63c-55d7c14b5572"
->BTM.LRBG &lt;- BTM.BaliseGroup
+>BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
     NID =&gt; 9600,
     Orientation =&gt; Orientation.Nominal,
@@ -118,7 +118,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;0,
@@ -295,7 +295,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;1,
@@ -325,7 +325,7 @@ IN BTM.Linking.Linkings</Action></Actions>
     ]
 }</Action><Action
  Guid="cf1c52d4-7629-45cd-9a3e-ff13546e893e"
->BTM.LRBG &lt;- BTM.BaliseGroup
+>BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
     NID =&gt; 2100,
     Orientation =&gt; Orientation.Nominal,
@@ -348,7 +348,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;1,
     N_TOTAL=&gt;1,

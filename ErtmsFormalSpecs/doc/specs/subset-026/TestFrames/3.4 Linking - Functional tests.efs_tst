@@ -55,7 +55,7 @@
  Guid="813d6313-ae9b-4c98-9f22-6eb6ab591a61"
 >BTM.LRBG &lt;- EMPTY</Action><Action
  Guid="a727a771-2d3d-4bc0-b137-ce27a449463a"
->BTM.PreviousLRBGs &lt;- []</Action></Actions>
+>BTM.PreviousBaliseGroups &lt;- []</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -83,7 +83,7 @@
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;1,
@@ -127,7 +127,7 @@ Q_LOCACC=&gt;1
     ]
 }</Action><Action
  Guid="90282563-247e-401c-8940-3230df020cea"
->BTM.LRBG &lt;- BTM.BaliseGroup
+>BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
     NID =&gt; 9618,
     Orientation =&gt; Orientation.Nominal,
@@ -149,7 +149,7 @@ Q_LOCACC=&gt;1
  Guid="24676d16-ce49-43f0-903d-7629c302bbba"
 >BTM.Message &lt;- Messages.EUROBALISE.Message{
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION =&gt; 1,
+    M_VERSION =&gt; 32,
     Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
     N_PIG =&gt; 1,
     N_TOTAL =&gt; 1,
@@ -204,7 +204,7 @@ Q_LOCACC=&gt;1
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;1,
@@ -247,7 +247,7 @@ N_ITER=&gt;0
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;1,
     N_TOTAL=&gt;1,
@@ -356,7 +356,7 @@ N_ITER=&gt;0
  Guid="d317192f-f96d-4d90-9346-527c8e893f6e"
 >BTM.LRBG &lt;- EMPTY</Action><Action
  Guid="69d1771f-a2b4-4223-a819-3561976e813a"
->BTM.PreviousLRBGs &lt;- []</Action><Action
+>BTM.PreviousBaliseGroups &lt;- []</Action><Action
  Guid="56435b17-a4a6-4bc3-a78e-c3f91875383b"
 >Kernel.Mode &lt;- Mode.OS</Action><Action
  Guid="46e71f9f-4d55-4dd5-a49c-c800a418490d"
@@ -388,7 +388,7 @@ N_ITER=&gt;0
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;1,
@@ -422,7 +422,7 @@ N_ITER=&gt;0
     ]
 }</Action><Action
  Guid="bbb8ab2d-67f9-434a-9bde-3f743d24dce6"
->BTM.LRBG &lt;- BTM.BaliseGroup
+>BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
     NID =&gt; 9618,
     Orientation =&gt; Orientation.Nominal,
@@ -445,7 +445,7 @@ N_ITER=&gt;0
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;1,
     N_TOTAL=&gt;1,
@@ -501,7 +501,7 @@ N_ITER=&gt;0
 <Actions>
 <Action
  Guid="3edc1e78-efd8-4e05-bc71-40e72ac19352"
->BTM.LRBG &lt;- BTM.BaliseGroup
+>BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
     NID =&gt; 10000,
     Orientation =&gt; Orientation.Nominal,
@@ -516,7 +516,7 @@ N_ITER=&gt;0
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;0,
@@ -569,7 +569,7 @@ N_ITER=&gt;0
  Guid="421c32a4-75e0-4448-9955-46d4b81fee85"
 >Odometry.NominalDistance &lt;- 12600.0</Action><Action
  Guid="9cc19576-406a-40b3-9d62-c3b794c92cf1"
->BTM.LRBG &lt;- BTM.BaliseGroup
+>BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
     NID =&gt; 10001,
     Orientation =&gt; Orientation.Nominal,
@@ -584,7 +584,7 @@ N_ITER=&gt;0
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;1,
@@ -619,7 +619,7 @@ N_ITER=&gt;0
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;1,
     N_TOTAL=&gt;1,

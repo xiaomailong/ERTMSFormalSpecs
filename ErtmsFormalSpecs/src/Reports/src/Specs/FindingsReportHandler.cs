@@ -25,8 +25,11 @@ namespace Reports.Specs
     public class FindingsReportHandler : ReportHandler
     {
         public bool addQuestions { set; get; }
-        public bool addRemarks { set; get; }
+        public bool addComments { set; get; }
         public bool addBugs { set; get; }
+
+        public bool addReviewed { set; get; }
+        public bool addNotReviewed { set; get; }
 
         /// <summary>
         /// Constructor
@@ -37,8 +40,11 @@ namespace Reports.Specs
         {
             createFileName("FindingsReport");
             addQuestions = false;
-            addRemarks = false;
+            addComments = false;
             addBugs = false;
+
+            addReviewed = true;
+            addNotReviewed = true;
         }
 
 
@@ -52,25 +58,60 @@ namespace Reports.Specs
             retVal.Info.Subject = "Subset-076 findings report";
 
             FindingsReport report = new FindingsReport(retVal);
+
+            if (addReviewed)
+            {
+                report.ReviewedParagraphs = false;
+                BuildSections(report);
+            }
+
+            if (addNotReviewed)
+            {
+                report.ReviewedParagraphs = true;
+                BuildSections(report);
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Add an Issues, Comments and Questions section to the report, as requested
+        /// </summary>
+        /// <param name="report"></param>
+        void BuildSections(FindingsReport report)
+        {
+
+            if (report.ReviewedParagraphs)
+            {
+                report.AddSubParagraph("Addressed findings");
+                report.AddParagraph("Findings that have been reviewed by ERA, included for informational purposes only.");
+            }
+            else
+            {
+                report.AddSubParagraph("Findings");
+            }
+
+
+            
+            if (addBugs)
+            {
+                Log.Info("..generating issues");
+                report.CreateIssuesArticle(this);
+            }
+
+            if (addComments)
+            {
+                Log.Info("..generating remarks");
+                report.CreateCommentsArticle(this);
+            }
+
             if (addQuestions)
             {
                 Log.Info("..generating questions");
                 report.CreateQuestionsArticle(this);
             }
 
-            if (addRemarks)
-            {
-                Log.Info("..generating remarks");
-                report.CreateCommentsArticle(this);
-            }
-
-            if (addBugs)
-            {
-                Log.Info("..generating bugs");
-                report.CreateBugsArticle(this);
-            }
-
-            return retVal;
+            report.CloseSubParagraph();
         }
 
     }

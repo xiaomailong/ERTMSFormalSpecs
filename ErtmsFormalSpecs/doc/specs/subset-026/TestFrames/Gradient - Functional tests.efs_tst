@@ -126,7 +126,7 @@
  Guid="853f8842-f3ba-41f1-a2bc-72216b657fef"
 >Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 5.0</Action><Action
  Guid="dddd56df-c0d2-40f7-81c1-0f32b14d8104"
->BTM.LRBG&lt;- BTM.BaliseGroup{
+>BTM.LRBG&lt;- BTM.BaliseGroupStruct{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -161,7 +161,7 @@
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;1,
@@ -182,7 +182,7 @@
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;1,
@@ -402,7 +402,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;1,
@@ -454,7 +454,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;1,
@@ -582,7 +582,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 <Actions>
 <Action
  Guid="a1f841ef-1b47-49f4-8fbf-fa3bef52d1eb"
->BTM.LRBG&lt;- BTM.BaliseGroup{
+>BTM.LRBG&lt;- BTM.BaliseGroupStruct{
   NID=&gt;2123,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -595,7 +595,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;1,
@@ -647,7 +647,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;1,
     N_TOTAL=&gt;1,
@@ -740,7 +740,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;1,
@@ -772,7 +772,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;1,
     N_TOTAL=&gt;1,
@@ -848,7 +848,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;1,
@@ -869,7 +869,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;1,
     N_TOTAL=&gt;1,
@@ -979,7 +979,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
  Guid="99b2fb5e-42cf-4cc9-91d9-e2a05af432a2"
 >Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action><Action
  Guid="d86cece9-de86-4de2-9b4e-2556cc7a0bc6"
->BTM.LRBG&lt;- BTM.BaliseGroup{
+>BTM.LRBG&lt;- BTM.BaliseGroupStruct{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -1026,7 +1026,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;0,
@@ -1109,7 +1109,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;0,
@@ -1220,7 +1220,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
  Guid="b103f561-c1f0-4f0b-960e-aaa35939e1b1"
 >Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action><Action
  Guid="ed5d864c-695f-46c1-900e-352f65d9af18"
->BTM.LRBG&lt;- BTM.BaliseGroup{
+>BTM.LRBG&lt;- BTM.BaliseGroupStruct{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -1267,7 +1267,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;0,
@@ -1350,7 +1350,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;0,
@@ -1461,7 +1461,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
  Guid="3b02bbfc-be20-4e6b-91c5-a0b5d42b1216"
 >Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action><Action
  Guid="4c565971-2de2-4517-86cb-6942cda5db17"
->BTM.LRBG&lt;- BTM.BaliseGroup{
+>BTM.LRBG&lt;- BTM.BaliseGroupStruct{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -1508,7 +1508,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;0,
@@ -1591,7 +1591,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;0,

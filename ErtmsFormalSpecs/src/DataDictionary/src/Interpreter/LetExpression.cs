@@ -182,12 +182,13 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the expression text
+        /// Provides the indented expression text
         /// </summary>
+        /// <param name="indentLevel"></param>
         /// <returns></returns>
-        public override string ToString()
+        public override string ToString(int indentLevel)
         {
-            string retVal = "LET " + BoundVariable.Name + " <- " +  BindingExpression.ToString() + " IN " + Expression.ToString();
+            string retVal = "LET " + BoundVariable.Name + " <- " +  BindingExpression.ToString(indentLevel) + " IN " + Expression.ToString(indentLevel);
 
             return retVal;
         }

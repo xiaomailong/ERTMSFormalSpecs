@@ -1,0 +1,355 @@
+<NameSpace
+ Width="100"
+ Height="50"
+ Name="VirtualBaliseCover"
+ Guid="ccd5db0d-40b0-46c5-9b65-4f98573430e8"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="VBCMarkerStruct"
+ Guid="934b23f9-f7ba-4462-ab27-f53cccd769e7"
+>
+<ReqRef
+ Id="93d356d0-0459-45e1-935f-0fc5fe456679"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a918cf7e-4196-4c6e-a292-342b4cdcea57"
+>
+</ReqRef><Comment>Structure defining a Virtual Balise Cover Marker</Comment>
+<StructureElement
+ TypeName="Messages.NID_VBCMK"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Marker"
+ Guid="466105f4-f1f2-408b-b22d-4c5a79a9a881"
+>
+</StructureElement><StructureElement
+ TypeName="Messages.NID_C"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Area"
+ Guid="6e8bd23c-c58c-4cb0-bde2-5ba65658c6d3"
+>
+</StructureElement></Structure><Structure
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="VBCStruct"
+ Guid="286b40ee-01ac-4269-9cec-d780df423c54"
+>
+<ReqRef
+ Id="6b69d020-e8e5-47de-b8db-68bf85bc1b14"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a1add37e-b1f7-4301-923f-5339b9857c39"
+>
+</ReqRef><Comment>Structure containing all the information describing a Virtual Balise Cover</Comment>
+<StructureElement
+ TypeName="VBCMarkerStruct"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Marker"
+ Guid="43541a47-06c4-4bfe-8d25-115a63876429"
+>
+<ReqRef
+ Id="93d356d0-0459-45e1-935f-0fc5fe456679"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ff96eb95-6704-4560-91e5-b969831429a3"
+>
+</ReqRef><Comment>The marker of balises to be ignored</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.DateAndTime"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="ValidUntil"
+ Guid="ab69c732-e7bd-45ec-9506-642c060e4231"
+>
+<ReqRef
+ Id="7a94390b-2fc5-4c06-8505-46d10e1534cd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7bf5889b-6bd4-4a92-9a4f-57dbe6e79a94"
+>
+</ReqRef><Comment>The period of time for which the cover is valid. This is measured in days.</Comment>
+</StructureElement></Structure></Structures>
+<Collections>
+<Collection
+ TypeName="Kernel.VirtualBaliseCover.VBCStruct"
+ MaxSize="20"
+ Default="[]"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="VBCCol"
+ Guid="87ca92c4-3394-4be9-b2ac-366ad0d298a8"
+>
+<ReqRef
+ Id="6b69d020-e8e5-47de-b8db-68bf85bc1b14"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="80a9de4d-524a-4146-87f2-476be9fc6113"
+>
+</ReqRef><Comment>Collection of VBC structures</Comment>
+</Collection></Collections>
+<Functions>
+<Function
+ Type="Default.DateAndTime"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EndDate"
+ Guid="57840fd8-57cb-4513-830e-8c5e8231cf02"
+>
+<Comment>Returns a DateAndTime corresponding to the end of the validity period of a Virtual Balise Cover</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.T_VBC"
+ Name="Time"
+ Guid="1dbcd2c0-c1e3-4cea-bc19-0573e06d44fc"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="842886c7-b442-48ad-b0bc-5ca07e625c52"
+>
+<Expression>AddToDate(
+    StartDate =&gt; DateAndTime.Now(),
+    Increment =&gt; MessageTypes.TimeResolution(Time) * 24.0 * 60.0 * 60.0
+)</Expression>
+</Case></Cases>
+</Function></Functions>
+<Procedures>
+<Procedure
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="VBCReceivedFromBalise"
+ Guid="10bc3639-bd04-4532-8bd0-d6d6a1b9528e"
+>
+<ReqRef
+ Id="b7cd2da7-45be-44f8-893a-a97c68151f82"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3e952131-a285-4565-a4da-a826009de42c"
+>
+</ReqRef><ReqRef
+ Id="c84b80cb-08a1-432c-b29d-6b457845b914"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21759bb4-c26e-48f0-86d4-d05d92a2c400"
+>
+</ReqRef><ReqRef
+ Id="c9d51e90-7f7e-4c3e-b330-dec4e7a4499d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="57568102-46eb-441b-92d9-1f03b8cd49c3"
+>
+</ReqRef><Comment>Handles a new Virtual Balise Cover received from a Balise.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.VIRTUAL_BALISE_COVER_ORDER.Message"
+ Name="Packet"
+ Guid="f459c531-a8b4-47d3-8bb9-616a056b841a"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Add to the list of virtual balise covers"
+ Guid="be4bf4d2-1233-4b04-90a7-c69f9c59d11c"
+>
+<Comment>The packet orders a new VBC to be added to the list.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Replace existing cover"
+ Guid="a0bb3962-8596-4b3c-a0df-1d75c86ac4c3"
+>
+<Comment>If there is already a virtual balise cover with the marker, update the validity period.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="50ad1665-ac04-44dd-8acc-d41eb79969a7"
+>THERE_IS Cover IN VirtualBaliseCovers | Cover.Marker == VBCMarkerStruct{
+    Marker =&gt; Packet.NID_VBCMK,
+    Area =&gt; Packet.NID_C
+}</PreCondition><PreCondition
+ Guid="ea0112b0-4fd5-475d-ac88-f17ceea0a0d6"
+>Packet.Q_VBCO == 1</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5265f809-c75d-4fba-8a62-07952b5b7954"
+>REPLACE X.Marker == VBCMarkerStruct{
+    Marker =&gt; Packet.NID_VBCMK,
+    Area =&gt; Packet.NID_C
+} IN VirtualBaliseCovers BY VBCStruct{
+    Marker =&gt; VBCMarkerStruct{
+        Marker =&gt; Packet.NID_VBCMK,
+        Area =&gt; Packet.NID_C
+    },
+    ValidUntil =&gt;  EndDate(Packet.T_VBC)
+}</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="New virtual balise cover"
+ Guid="dddcfa25-6371-4162-ae4e-b994124f2bc7"
+>
+<Comment>If a new marker is received, add it to the list.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="124add8a-6aca-428d-a0e6-00b52989544d"
+>Packet.Q_VBCO == 1</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="56fbd131-2ecf-4a96-b2d8-6048796c1e5a"
+>INSERT VBCStruct{
+    Marker =&gt; VBCMarkerStruct{
+        Marker =&gt; Packet.NID_VBCMK,
+        Area =&gt; Packet.NID_C
+    },
+    ValidUntil =&gt; EndDate(Packet.T_VBC)
+
+} IN VirtualBaliseCovers</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove the Virtual Balise Cover from the list"
+ Guid="f00ca7c8-179b-4bab-9fab-137760701896"
+>
+<Comment>The packet orders the removal of a VBC.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove the Virtual Balise Cover from the list"
+ Guid="d7898fff-43a6-492d-9752-0230b6466e96"
+>
+<PreConditions>
+<PreCondition
+ Guid="b0469226-4e58-43a1-baf2-9c1dbccfa2d3"
+>Packet.Q_VBCO == 0</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b452e001-075f-4dcd-9135-f8a1c8329c24"
+>REMOVE FIRST X.Marker == VBCMarkerStruct{
+    Marker =&gt; Packet.NID_VBCMK,
+    Area =&gt; Packet.NID_C
+} IN VirtualBaliseCovers</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="CheckNID_C"
+ Guid="2af5fd43-7f1f-4368-8ee1-ef60fd837855"
+>
+<ReqRef
+ Id="319c077a-b554-46e1-b263-636a65b5e1e9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dd5e4b9e-76d7-41bb-830d-99b45b89c8f1"
+>
+</ReqRef><ReqRef
+ Id="c9d51e90-7f7e-4c3e-b330-dec4e7a4499d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7a2ad41f-34d0-4952-84b2-f5b5c6c7c648"
+>
+</ReqRef><Comment>Checks and removes the markers that do not match the provided NID_C.NID_C</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.NID_C"
+ Name="NID_C"
+ Guid="f08cc5a3-8dc1-4be9-9620-2a8ebcd5672e"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove all mismatched country identifiers"
+ Guid="86e560b6-c03e-40bd-afdc-f075ff069013"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove all mismatched country identifiers"
+ Guid="b3f8d7c7-b0b7-45bf-af8e-164df002d059"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="ef331960-2419-4f15-9ea8-c4fdb56c6c7f"
+>REMOVE ALL X.Marker.Area == NID_C IN VirtualBaliseCovers</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<Variables>
+<Variable
+ Type="VBCCol"
+ DefaultValue=""
+ VariableMode="Internal"
+ Y="120"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="VirtualBaliseCovers"
+ Guid="11cd739f-daa2-4445-aa39-d4868f0a7d7d"
+>
+<ReqRef
+ Id="6b69d020-e8e5-47de-b8db-68bf85bc1b14"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7dfd2493-d70e-4792-9d5c-6936c8549d3d"
+>
+</ReqRef><Comment>The list of Virtual Balise Covers stored on-board</Comment>
+</Variable></Variables>
+<Rules>
+<Rule
+ Priority="CleanUp"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Remove old VBCs"
+ Guid="6c13e85a-3029-4efa-b5f8-1b473101ac1b"
+>
+<ReqRef
+ Id="c9d51e90-7f7e-4c3e-b330-dec4e7a4499d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="06924aa6-43fd-4c41-91ff-60ad189aac00"
+>
+</ReqRef><ReqRef
+ Id="6c93e634-c4da-47bc-bc43-c0201c171fa1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="70659dcb-5fa6-4f89-83d1-a91937b81d09"
+>
+</ReqRef><Comment>Remove any Virtual Balise Covers the have reached the end of their validity period.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove old VBCs"
+ Guid="403223e0-adc2-4447-a581-3a8590551b98"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="c5c1f486-8516-49c9-87c4-dc9252ca1522"
+>REMOVE ALL DateAndTime.T1LaterThanT2(
+    T1 =&gt; X.ValidUntil,
+    T2 =&gt; DateAndTime.Now()
+) IN VirtualBaliseCovers</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>

@@ -68,7 +68,7 @@
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;0,
@@ -189,7 +189,7 @@
     ]
 }</Action><Action
  Guid="4a14e858-244c-42de-b266-dc97a19e6235"
->BTM.LRBG &lt;- BTM.BaliseGroup
+>BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
     NID =&gt; 9620,
     Orientation =&gt; Orientation.Nominal,
@@ -2856,30 +2856,29 @@
  Guid="d40eb755-b1a8-4196-b901-a5b4f633ada5"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; 0,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 2124,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; 
     [
         Messages.EUROBALISE.SubStructure1
         {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
             {
                 NATIONAL_VALUES =&gt; Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Message
                 {
                     NID_PACKET =&gt; 3,
-                    L_PACKET =&gt; 200,
                     Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+                    L_PACKET =&gt; 200,
                     Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
                     D_VALIDNV =&gt; 0,
-                    Q_NVDRIVER_ADHES =&gt; Messages.Q_NVDRIVER_ADHES.Allowed,
                     V_NVSHUNT =&gt; 10,
                     V_NVSTFF =&gt; 16,
                     V_NVONSIGHT =&gt; 22,
@@ -2888,7 +2887,7 @@
                     V_NVREL =&gt; 8,
                     D_NVROLL =&gt; 1200,
                     Q_NVSBTSMPERM =&gt; Messages.Q_NVSBTSMPERM.Yes,
-                    Q_NVEMRRLS =&gt;Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill,
+                    Q_NVEMRRLS =&gt; Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill,
                     Q_NVGUIPERM =&gt; Messages.Q_NVGUIPERM.Yes,
                     Q_NVSBFBPERM =&gt; Messages.Q_NVSBFBPERM.No,
                     Q_NVINHSMICPERM =&gt; Messages.Q_NVINHSMICPERM.Yes,
@@ -2896,39 +2895,18 @@
                     V_NVSUPOVTRP =&gt; 11,
                     D_NVOVTRP =&gt; 2000,
                     T_NVOVTRP =&gt; 150,
-                    M_NVDERUN =&gt; Messages.M_NVDERUN.Yes,
+                    D_NVPOTRP =&gt; 8000,
                     M_NVCONTACT =&gt; Messages.M_NVCONTACT.Train_trip,
                     T_NVCONTACT =&gt; 400,
-                    D_NVPOTRP =&gt; 8000,
+                    M_NVDERUN =&gt; Messages.M_NVDERUN.Yes,
                     D_NVSTFF =&gt; 7000,
+                    Q_NVDRIVER_ADHES =&gt; Messages.Q_NVDRIVER_ADHES.Allowed,
+                    A_NVMAXREDADH1 =&gt; 10,
+                    A_NVMAXREDADH2 =&gt; 7,
+                    A_NVMAXREDADH3 =&gt; 5,
                     Q_NVLOCACC =&gt; 10,
                     M_NVAVADH =&gt; 4,
                     M_NVEBCL =&gt; Messages.M_NVEBCL.Confidence_level___99_9,
-                    L_NVKRINT =&gt; Messages.L_NVKRINT._0mC,
-                    M_NVKRINT =&gt; 6,
-                    Sequence5 =&gt;
-                    [
-                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
-                        {
-                            L_NVKRINT =&gt; Messages.L_NVKRINT._150mC,
-                            M_NVKRINT =&gt; 10
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
-                        {
-                            L_NVKRINT =&gt; Messages.L_NVKRINT._500mC,
-                            M_NVKRINT =&gt; 14
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
-                        {
-                            L_NVKRINT =&gt; Messages.L_NVKRINT._1100mC,
-                            M_NVKRINT =&gt; 20
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
-                        {
-                            L_NVKRINT =&gt; Messages.L_NVKRINT._1500mC,
-                            M_NVKRINT =&gt; 28
-                        }
-                    ],
                     Q_NVKINT =&gt; Messages.Q_NVKINT.Integrated_correction_factors_follow,
                     Q_NVKVINTSET =&gt; Messages.Q_NVKVINTSET.Conventional_passenger_trains,
                     A_NVP12 =&gt; 12,
@@ -2936,26 +2914,26 @@
                     V_NVKVINT =&gt; 4,
                     M_NVKVINT_0 =&gt; 22,
                     M_NVKVINT_1 =&gt; 39,
-                    Sequence2 =&gt;
+                    Sequence2 =&gt; 
                     [
                         Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
                         {
                             V_NVKVINT =&gt; 8,
                             M_NVKVINT_0 =&gt; 26,
                             M_NVKVINT_1 =&gt; 40
-                        },
+                        }, 
                         Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
                         {
                             V_NVKVINT =&gt; 10,
                             M_NVKVINT_0 =&gt; 30,
                             M_NVKVINT_1 =&gt; 57
-                        },
+                        }, 
                         Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
                         {
                             V_NVKVINT =&gt; 14,
                             M_NVKVINT_0 =&gt; 40,
                             M_NVKVINT_1 =&gt; 80
-                        },
+                        }, 
                         Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
                         {
                             V_NVKVINT =&gt; 18,
@@ -2963,7 +2941,7 @@
                             M_NVKVINT_1 =&gt; 100
                         }
                     ],
-                    Sequence4 =&gt;
+                    Sequence4 =&gt; 
                     [
                         Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure3
                         {
@@ -2973,14 +2951,14 @@
                             V_NVKVINT =&gt; 8,
                             M_NVKVINT_0 =&gt; 40,
                             M_NVKVINT_1 =&gt; 50,
-                            Sequence3 =&gt;
+                            Sequence3 =&gt; 
                             [
                                 Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure4
                                 {
                                     V_NVKVINT =&gt; 14,
                                     M_NVKVINT_0 =&gt; 64,
                                     M_NVKVINT_1 =&gt; 80
-                                },
+                                }, 
                                 Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure4
                                 {
                                     V_NVKVINT =&gt; 18,
@@ -2990,10 +2968,32 @@
                             ]
                         }
                     ],
-                    M_NVKTINT =&gt; 25,
-                    A_NVMAXREDADH1 =&gt; 10,
-                    A_NVMAXREDADH2 =&gt; 7,
-                    A_NVMAXREDADH3 =&gt; 5
+                    L_NVKRINT =&gt; Messages.L_NVKRINT._0mC,
+                    M_NVKRINT =&gt; 6,
+                    Sequence5 =&gt; 
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._150mC,
+                            M_NVKRINT =&gt; 10
+                        }, 
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._500mC,
+                            M_NVKRINT =&gt; 14
+                        }, 
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._1100mC,
+                            M_NVKRINT =&gt; 20
+                        }, 
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._1500mC,
+                            M_NVKRINT =&gt; 28
+                        }
+                    ],
+                    M_NVKTINT =&gt; 25
                 }
             }
         }
@@ -4860,30 +4860,29 @@
  Guid="9ed695d3-1269-4718-821b-a39b01ad5698"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; 0,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 2124,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; 
     [
         Messages.EUROBALISE.SubStructure1
         {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
             {
                 NATIONAL_VALUES =&gt; Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Message
                 {
                     NID_PACKET =&gt; 3,
-                    L_PACKET =&gt; 200,
                     Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+                    L_PACKET =&gt; 200,
                     Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
                     D_VALIDNV =&gt; 0,
-                    Q_NVDRIVER_ADHES =&gt; Messages.Q_NVDRIVER_ADHES.Allowed,
                     V_NVSHUNT =&gt; 10,
                     V_NVSTFF =&gt; 16,
                     V_NVONSIGHT =&gt; 22,
@@ -4892,7 +4891,7 @@
                     V_NVREL =&gt; 8,
                     D_NVROLL =&gt; 1200,
                     Q_NVSBTSMPERM =&gt; Messages.Q_NVSBTSMPERM.Yes,
-                    Q_NVEMRRLS =&gt;Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill,
+                    Q_NVEMRRLS =&gt; Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill,
                     Q_NVGUIPERM =&gt; Messages.Q_NVGUIPERM.Yes,
                     Q_NVSBFBPERM =&gt; Messages.Q_NVSBFBPERM.No,
                     Q_NVINHSMICPERM =&gt; Messages.Q_NVINHSMICPERM.Yes,
@@ -4900,29 +4899,18 @@
                     V_NVSUPOVTRP =&gt; 11,
                     D_NVOVTRP =&gt; 2000,
                     T_NVOVTRP =&gt; 150,
-                    M_NVDERUN =&gt; Messages.M_NVDERUN.Yes,
+                    D_NVPOTRP =&gt; 8000,
                     M_NVCONTACT =&gt; Messages.M_NVCONTACT.Train_trip,
                     T_NVCONTACT =&gt; 400,
-                    D_NVPOTRP =&gt; 8000,
+                    M_NVDERUN =&gt; Messages.M_NVDERUN.Yes,
                     D_NVSTFF =&gt; 7000,
+                    Q_NVDRIVER_ADHES =&gt; Messages.Q_NVDRIVER_ADHES.Allowed,
+                    A_NVMAXREDADH1 =&gt; 10,
+                    A_NVMAXREDADH2 =&gt; 7,
+                    A_NVMAXREDADH3 =&gt; 5,
                     Q_NVLOCACC =&gt; 10,
                     M_NVAVADH =&gt; 4,
                     M_NVEBCL =&gt; Messages.M_NVEBCL.Confidence_level___99_9,
-                    L_NVKRINT =&gt; Messages.L_NVKRINT._0mC,
-                    M_NVKRINT =&gt; 4,
-                    Sequence5 =&gt;
-                    [
-                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
-                        {
-                            L_NVKRINT =&gt; Messages.L_NVKRINT._200mC,
-                            M_NVKRINT =&gt; 8
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
-                        {
-                            L_NVKRINT =&gt; Messages.L_NVKRINT._500mC,
-                            M_NVKRINT =&gt; 17
-                        }
-                    ],
                     Q_NVKINT =&gt; Messages.Q_NVKINT.Integrated_correction_factors_follow,
                     Q_NVKVINTSET =&gt; Messages.Q_NVKVINTSET.Conventional_passenger_trains,
                     A_NVP12 =&gt; 10,
@@ -4930,14 +4918,14 @@
                     V_NVKVINT =&gt; 8,
                     M_NVKVINT_0 =&gt; 16,
                     M_NVKVINT_1 =&gt; 29,
-                    Sequence2 =&gt;
+                    Sequence2 =&gt; 
                     [
                         Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
                         {
                             V_NVKVINT =&gt; 12,
                             M_NVKVINT_0 =&gt; 21,
                             M_NVKVINT_1 =&gt; 48
-                        },
+                        }, 
                         Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
                         {
                             V_NVKVINT =&gt; 19,
@@ -4945,7 +4933,7 @@
                             M_NVKVINT_1 =&gt; 72
                         }
                     ],
-                    Sequence4 =&gt;
+                    Sequence4 =&gt; 
                     [
                         Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure3
                         {
@@ -4955,14 +4943,14 @@
                             V_NVKVINT =&gt; 9,
                             M_NVKVINT_0 =&gt; 10,
                             M_NVKVINT_1 =&gt; 45,
-                            Sequence3 =&gt;
+                            Sequence3 =&gt; 
                             [
                                 Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure4
                                 {
                                     V_NVKVINT =&gt; 15,
                                     M_NVKVINT_0 =&gt; 34,
                                     M_NVKVINT_1 =&gt; 81
-                                },
+                                }, 
                                 Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure4
                                 {
                                     V_NVKVINT =&gt; 24,
@@ -4972,10 +4960,22 @@
                             ]
                         }
                     ],
-                    M_NVKTINT =&gt; 25,
-                    A_NVMAXREDADH1 =&gt; 10,
-                    A_NVMAXREDADH2 =&gt; 7,
-                    A_NVMAXREDADH3 =&gt; 5
+                    L_NVKRINT =&gt; Messages.L_NVKRINT._0mC,
+                    M_NVKRINT =&gt; 4,
+                    Sequence5 =&gt; 
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._200mC,
+                            M_NVKRINT =&gt; 8
+                        }, 
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._500mC,
+                            M_NVKRINT =&gt; 17
+                        }
+                    ],
+                    M_NVKTINT =&gt; 25
                 }
             }
         }
@@ -5487,7 +5487,7 @@ Kernel.MA.ModeProfile.Profile</Action><Action
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN=&gt;Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
+    M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
     N_TOTAL=&gt;0,

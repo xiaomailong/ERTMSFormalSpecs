@@ -720,11 +720,22 @@ namespace DataDictionary.Interpreter
 
         }
 
+
         /// <summary>
         /// Provides the expression text
         /// </summary>
         /// <returns></returns>
-        public override abstract string ToString();
+        public override string ToString()
+        {
+            return ToString(0);
+        }
+
+        /// <summary>
+        /// Provides the indented expression text
+        /// </summary>
+        /// <param name="indentLevel"></param>
+        /// <returns></returns>
+        public abstract string ToString(int indentLevel);
 
         /// <summary>
         /// Checks the expression and appends errors to the root tree node when inconsistencies are found

@@ -113,7 +113,7 @@
     OtherInternational =&gt; [Kernel.TrainData.TrainCategoryEnum.FreightTrainInP]
 }</Action><Action
  Guid="6728dcb8-feb1-48de-a3b7-0a85f0480375"
->BTM.LRBG&lt;- BTM.BaliseGroup
+>BTM.LRBG&lt;- BTM.BaliseGroupStruct
 {
     NID=&gt;9616,
     Orientation=&gt;Orientation.Nominal,
@@ -149,147 +149,122 @@
  Guid="7d2b920f-f950-4f34-b860-5f1bba05c6db"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
-    Sequence1=&gt;
-    [
-        Messages.EUROBALISE.SubStructure1
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; 0,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 2124,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; [Messages.EUROBALISE.SubStructure1
+{
+    TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+    {
+        INTERNATIONAL_STATIC_SPEED_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Message
         {
-            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                INTERNATIONAL_STATIC_SPEED_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Message
-                {
-                    NID_PACKET=&gt;27,
-                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    D_STATIC =&gt; 2000,
-                    V_STATIC =&gt; 8,
-                    Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
-                    N_ITER_0 =&gt; 5,
-                    Sequence1 =&gt;
-                    [
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
-                        {
-                            Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
-                            NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
-                            NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
-                            V_DIFF =&gt; 6
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
-                        {
-                            Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
-                            NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_210_mm,
-                            NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
-                            V_DIFF =&gt; 8
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
-                        {
-                            Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
-                            NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
-                            NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__G__position,
-                            V_DIFF =&gt; 10
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
-                        {
-                            Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
-                            NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
-                            NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
-                            V_DIFF =&gt; 7
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
-                        {
-                            Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
-                            NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
-                            NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Passenger_train,
-                            V_DIFF =&gt; 14
-                        }
-                    ],
-                    Sequence3 =&gt;
-                    [
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
-                        {
-                            D_STATIC =&gt; 1000,
-                            V_STATIC =&gt; 10,
-                            Q_FRONT =&gt;  Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-                            N_ITER =&gt; 3,
-                            Sequence2 =&gt;
-                            [
-                                Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
-                                {
-                                    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
-                                    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
-                                    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
-                                    V_DIFF =&gt; 12
-                                },
-                                Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
-                                {
-                                    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
-                                    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
-                                    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__G__position,
-                                    V_DIFF =&gt; 8
-                                },
-                                Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
-                                {
-                                    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
-                                    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
-                                    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Passenger_train,
-                                    V_DIFF =&gt; 6
-                                }
-                            ]
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
-                        {
-                            D_STATIC =&gt; 400,
-                            V_STATIC =&gt; 12,
-                            Q_FRONT =&gt;  Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-                            N_ITER =&gt; 3,
-                            Sequence2 =&gt;
-                            [
-                                Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
-                                {
-                                    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
-                                    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
-                                    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
-                                    V_DIFF =&gt; 9
-                                },
-                                Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
-                                {
-                                    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
-                                    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
-                                    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__G__position,
-                                    V_DIFF =&gt; 6
-                                },
-                                Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
-                                {
-                                    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
-                                    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
-                                    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Passenger_train,
-                                    V_DIFF =&gt; 5
-                                }
-                            ]
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
-                        {
-                            D_STATIC =&gt; 500,
-                            V_STATIC =&gt; 127,
-                            Q_FRONT =&gt;  Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-                            N_ITER =&gt; 3,
-                            Sequence2 =&gt; []
-                        }
-                    ]
-                }
-            }
+            NID_PACKET =&gt; 27,
+            Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+            L_PACKET =&gt; 400,
+            Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+            D_STATIC =&gt; 2000,
+            V_STATIC =&gt; 8,
+            Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
+            N_ITER_0 =&gt; 5,
+            Sequence1 =&gt; [Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
+    V_DIFF =&gt; 6
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_210_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
+    V_DIFF =&gt; 8
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__G__position,
+    V_DIFF =&gt; 10
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
+    V_DIFF =&gt; 7
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Passenger_train,
+    V_DIFF =&gt; 14
+}],
+            Sequence3 =&gt; [Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
+{
+    D_STATIC =&gt; 1000,
+    V_STATIC =&gt; 10,
+    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    N_ITER =&gt; 3,
+    Sequence2 =&gt; [Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
+    V_DIFF =&gt; 12
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__G__position,
+    V_DIFF =&gt; 8
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Passenger_train,
+    V_DIFF =&gt; 6
+}]
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
+{
+    D_STATIC =&gt; 400,
+    V_STATIC =&gt; 12,
+    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    N_ITER =&gt; 3,
+    Sequence2 =&gt; [Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
+    V_DIFF =&gt; 9
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__G__position,
+    V_DIFF =&gt; 6
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Passenger_train,
+    V_DIFF =&gt; 5
+}]
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
+{
+    D_STATIC =&gt; 500,
+    V_STATIC =&gt; 127,
+    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    N_ITER =&gt; 3,
+    Sequence2 =&gt; []
+}]
         }
-    ]
+    }
+}]
 }</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -411,86 +386,72 @@
  Guid="5ea11e10-0280-41ea-8daf-fd4746f71283"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
-    Sequence1=&gt;
-    [
-        Messages.EUROBALISE.SubStructure1
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; 0,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 2124,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; [Messages.EUROBALISE.SubStructure1
+{
+    TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+    {
+        INTERNATIONAL_STATIC_SPEED_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Message
         {
-            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                INTERNATIONAL_STATIC_SPEED_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Message
-                {
-                    NID_PACKET=&gt;27,
-                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    D_STATIC =&gt; 3300,
-                    V_STATIC =&gt; 2,
-                    Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
-                    N_ITER_0 =&gt; 5,
-                    Sequence1 =&gt;
-                    [
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
-                        {
-                            Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
-                            NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
-                            NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
-                            V_DIFF =&gt; 6
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
-                        {
-                            Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
-                            NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
-                            NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
-                            V_DIFF =&gt; 14
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
-                        {
-                            Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
-                            NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_210_mm,
-                            NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
-                            V_DIFF =&gt; 15
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
-                        {
-                            Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
-                            NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
-                            NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
-                            V_DIFF =&gt; 7
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
-                        {
-                            Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
-                            NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
-                            NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Passenger_train,
-                            V_DIFF =&gt; 14
-                        }
-                    ],
-                    Sequence3 =&gt;
-                    [
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
-                        {
-                            D_STATIC =&gt; 1700,
-                            V_STATIC =&gt; 127,
-                            Q_FRONT =&gt;  Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-                            N_ITER =&gt; 3,
-                            Sequence2 =&gt;
-                            [ ]
-                        }
-                    ]
-                }
-            }
+            NID_PACKET =&gt; 27,
+            Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+            L_PACKET =&gt; 400,
+            Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+            D_STATIC =&gt; 3300,
+            V_STATIC =&gt; 2,
+            Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
+            N_ITER_0 =&gt; 5,
+            Sequence1 =&gt; [Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
+    V_DIFF =&gt; 6
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
+    V_DIFF =&gt; 14
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_210_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
+    V_DIFF =&gt; 15
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
+    V_DIFF =&gt; 7
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Passenger_train,
+    V_DIFF =&gt; 14
+}],
+            Sequence3 =&gt; [Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
+{
+    D_STATIC =&gt; 1700,
+    V_STATIC =&gt; 127,
+    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    N_ITER =&gt; 3,
+    Sequence2 =&gt; []
+}]
         }
-    ]
+    }
+}]
 }</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -622,123 +583,102 @@
  Guid="79e0b133-6daa-4f1a-87ad-a055c8457825"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
-    Sequence1=&gt;
-    [
-        Messages.EUROBALISE.SubStructure1
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; 0,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 2124,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; [Messages.EUROBALISE.SubStructure1
+{
+    TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+    {
+        INTERNATIONAL_STATIC_SPEED_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Message
         {
-            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                INTERNATIONAL_STATIC_SPEED_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Message
-                {
-                    NID_PACKET=&gt;27,
-                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    D_STATIC =&gt; 2000,
-                    V_STATIC =&gt; 2,
-                    Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
-                    N_ITER_0 =&gt; 5,
-                    Sequence1 =&gt;
-                    [
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
-                        {
-                            Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
-                            NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
-                            NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
-                            V_DIFF =&gt; 6
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
-                        {
-                            Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
-                            NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
-                            NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
-                            V_DIFF =&gt; 14
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
-                        {
-                            Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
-                            NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_210_mm,
-                            NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
-                            V_DIFF =&gt; 15
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
-                        {
-                            Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
-                            NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
-                            NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
-                            V_DIFF =&gt; 7
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
-                        {
-                            Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
-                            NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
-                            NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Passenger_train,
-                            V_DIFF =&gt; 14
-                        }
-                    ],
-                    Sequence3 =&gt;
-                    [
-                        
-Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
-                        {
-                            D_STATIC =&gt; 700,
-                            V_STATIC =&gt; 10,
-                            Q_FRONT =&gt;  Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-                            N_ITER =&gt; 3,
-                            Sequence2 =&gt;
-                            [
-                                Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
-                                {
-                                    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
-                                    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
-                                    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
-                                    V_DIFF =&gt; 12
-                                },
-                                Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
-                                {
-                                    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
-                                    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
-                                    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__G__position,
-                                    V_DIFF =&gt; 8
-                                },
-                                Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
-                                {
-                                    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
-                                    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
-                                    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Passenger_train,
-                                    V_DIFF =&gt; 6
-                                }
-                            ]
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
-                        {
-                            D_STATIC =&gt; 400,
-                            V_STATIC =&gt; 127,
-                            Q_FRONT =&gt;  Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-                            N_ITER =&gt; 3,
-                            Sequence2 =&gt;
-                            [ ]
-                        }
-                    ]
-                }
-            }
+            NID_PACKET =&gt; 27,
+            Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+            L_PACKET =&gt; 400,
+            Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+            D_STATIC =&gt; 2000,
+            V_STATIC =&gt; 2,
+            Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
+            N_ITER_0 =&gt; 5,
+            Sequence1 =&gt; [Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
+    V_DIFF =&gt; 6
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
+    V_DIFF =&gt; 14
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_210_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
+    V_DIFF =&gt; 15
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
+    V_DIFF =&gt; 7
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Passenger_train,
+    V_DIFF =&gt; 14
+}],
+            Sequence3 =&gt; [Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
+{
+    D_STATIC =&gt; 700,
+    V_STATIC =&gt; 10,
+    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    N_ITER =&gt; 3,
+    Sequence2 =&gt; [Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
+    V_DIFF =&gt; 12
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__G__position,
+    V_DIFF =&gt; 8
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
+{
+    Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
+    NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
+    NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Passenger_train,
+    V_DIFF =&gt; 6
+}]
+}, Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
+{
+    D_STATIC =&gt; 400,
+    V_STATIC =&gt; 127,
+    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    N_ITER =&gt; 3,
+    Sequence2 =&gt; []
+}]
         }
-    ]
+    }
+}]
 }</Action><Action
  Guid="e09cc84b-2635-42dc-be42-7901e573e9a2"
 >Kernel.TrainData.TrainData.Value.TrainLength &lt;- 120.0</Action><Action
  Guid="525f9423-64e2-4c0a-901a-25d70eed7b69"
->BTM.LRBG&lt;- BTM.BaliseGroup
+>BTM.LRBG&lt;- BTM.BaliseGroupStruct
 {
     NID=&gt;9616,
     Orientation=&gt;Orientation.Nominal,

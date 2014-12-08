@@ -3299,7 +3299,9 @@
  Guid="c4b259fc-2f55-4b67-9ec8-9ea9753a3c65"
 >Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action
  Guid="80ccca2b-e66f-4ec9-89ba-8965a7fb69ec"
->EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action></Actions>
+>EURORADIO.CurrentRBCConnection().SafeRadioConnectionStatus &lt;- EURORADIO.SafeRadioConnectionStatusEnum.ConnectionUp</Action><Action
+ Guid="4d486ba0-7460-422e-8280-18640600b183"
+>TIU.NonLeadingPermitted &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6311,7 +6313,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Kind="Instantaneous"
  DeadLine="1"
  Guid="34fd67cf-0c15-41d9-8026-d1f055e5e5d1"
->DMI.MasterDMI().In_VirtualBaliseCover.VirtualBaliseCoverIsSet == False</Expectation><Expectation
+>DMI.MasterDMI().In_VirtualBaliseCover.VirtualBaliseCovers == []</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="9de3d903-4264-416a-b606-431f032cec1c"
@@ -6337,7 +6339,15 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="a18c6409-4f98-478a-ae4b-34b5a58c7c64"
 >DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="b98af2ac-5156-465d-b578-4ff472b3603c"
->DMI.MasterDMI().In_VirtualBaliseCover.VirtualBaliseCoverIsSet &lt;- True</Action></Actions>
+>DMI.MasterDMI().In_VirtualBaliseCover.VirtualBaliseCovers &lt;- [Kernel.VirtualBaliseCover.VBCStruct{
+    Marker =&gt; Kernel.VirtualBaliseCover.VBCMarkerStruct{
+        Marker =&gt; 23,
+        Area =&gt; 85
+    },
+    ValidUntil =&gt; AddToDate(
+        StartDate =&gt; Kernel.DateAndTime.Now(),
+        Increment =&gt; 5.0 * 24.0 * 60.0 * 60.0 )
+}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6347,7 +6357,15 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Kind="Instantaneous"
  DeadLine="1"
  Guid="4a4e8218-327e-4964-b577-530042c252a6"
->Kernel.VirtualBaliseCoverIsSet == True</Expectation></Expectations>
+>Kernel.VirtualBaliseCover.VirtualBaliseCovers == [Kernel.VirtualBaliseCover.VBCStruct{
+    Marker =&gt; Kernel.VirtualBaliseCover.VBCMarkerStruct{
+        Marker =&gt; 23,
+        Area =&gt; 85
+    },
+    ValidUntil =&gt; AddToDate(
+        StartDate =&gt; Kernel.DateAndTime.Now(),
+        Increment =&gt; 5.0 * 24.0 * 60.0 * 60.0 )
+}]</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -6431,7 +6449,9 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="ffed13fb-42ba-460a-bb00-5ce7b695a757"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action></Actions>
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10</Action><Action
+ Guid="85b22eee-1a45-48e6-bc63-39b8b5341c28"
+>TIU.NonLeadingPermitted &lt;- True</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6485,7 +6505,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="14f6ca43-eec3-49b8-8a99-628b940425c7"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10.DriverSelectionRequested</Action><Action
  Guid="19a6c095-6be1-401e-b08a-ce424950cfdf"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="6ab8b22e-22da-4836-9a45-75cdc82e2b0b"
@@ -6529,7 +6549,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="b517725e-593a-44f5-bd6b-55b987dfdd17"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10.DriverSelectionRequested</Action><Action
  Guid="64aa2e70-4a10-4f7e-9b48-aa260b3223bf"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="0e08cd4e-136f-45b7-9fd1-032698e9058f"
@@ -6571,7 +6591,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="4d8cdaf0-79e4-45b3-b08d-a6643bf0774f"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10.DriverSelectionRequested</Action><Action
  Guid="6ca829f4-b29a-4231-bfa8-e360610b27f2"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="20495cfe-07d9-426b-9262-c5619f4e090e"
@@ -6645,7 +6665,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="5a8d24d8-4a02-4dfa-a6f7-615701ab72dd"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10.DriverSelectionRequested</Action><Action
  Guid="70e2ade8-89f7-43ce-8c6b-35869ab1b0bb"
 >DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="97c3ca51-0e58-47c4-8cfc-dc2d176be5ac"
@@ -6695,7 +6715,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="b05ee8a6-76f8-4077-b11c-6e6c2007d022"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10.DriverSelectionRequested</Action><Action
  Guid="5045c9fb-e8f9-4016-8066-e3ab05a0ea32"
 >DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="3bf2d7e7-e04a-4376-beb4-d3894703cd1f"
@@ -6745,7 +6765,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="1d259faa-fb84-4830-b7f7-3273605f0dd1"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10.DriverSelectionRequested</Action><Action
  Guid="89a8cd4c-9d27-4275-994c-816f3de0757f"
 >DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="72222194-b196-46cf-9b06-d16499808984"
@@ -6795,7 +6815,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="50bbf155-530f-4ee3-a035-fcfa6b488318"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10.DriverSelectionRequested</Action><Action
  Guid="4485016d-5a0f-4b21-92c8-bd382c7ad353"
 >DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="9ede6b22-2427-43af-8bad-ffd968a71cd1"
@@ -6847,7 +6867,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="27123528-d830-46f1-bc50-18702857b12a"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10.DriverSelectionRequested</Action><Action
  Guid="f2629489-c3da-477e-902e-deaa4002d1d3"
 >DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="a9e8b37a-e985-4b7d-bf77-50c7770e0a9d"
@@ -6914,7 +6934,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="8944547b-69dc-42ee-9020-354203971b17"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S10.DriverSelectionRequested</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S10.DriverSelectionRequested</Action><Action
  Guid="fa49b11e-89eb-4cb1-b3f0-1059f297f65c"
 >DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="0f75de6b-e3c0-4924-a3c5-75bb93aa0bd1"

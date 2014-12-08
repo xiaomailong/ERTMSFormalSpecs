@@ -165,9 +165,41 @@ namespace DataDictionary.Tests.Translations
                 BaseConverter converter = Converters[variable];
                 retVal = converter.convertFrom(value);
             }
+            else
+            {
+                BaseConverter converter = ConverterForKey(variable);
+                if (converter != null)
+                {
+                    retVal = converter.convertFrom(value);
+                }
+            }
 
             return retVal;
         }
+
+        /// <summary>
+        /// If the dictionary of variables does not contain a particular name, check for
+        /// cases where there is a more developed version of the variable name
+        /// </summary>
+        /// <param name="Key"></param>
+        /// <returns></returns>
+        private BaseConverter ConverterForKey (string Key)
+        {
+            BaseConverter retVal = null;
+
+            foreach (KeyValuePair<string, BaseConverter> variable in Converters)
+            {
+                // Check for a key with the name we are looking for, followed by an underscore
+                if (variable.Key.StartsWith(Key + "_0"))
+                {
+                    retVal = variable.Value;
+                    break;
+                }
+            }
+
+            return retVal;
+        }
+
 
         /// <summary>
         /// The singleton

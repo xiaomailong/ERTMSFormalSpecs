@@ -288,7 +288,7 @@ Gives the version of the ETCS system. Each part indicates the first and second n
 <SpecialValues>
 <EnumValue
  Value="16"
- Name="Unknown"
+ Name="Class_1__version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0"
  Guid="6e4dc96a-6749-4421-8e42-e18c704ee5d8"
 >
 </EnumValue><EnumValue
@@ -2832,139 +2832,27 @@ Supervision status of the speed and distance monitoring</Comment>
 </EnumValue></SpecialValues>
 </Range><Range
  MinValue="0"
- MaxValue="8388607"
+ MaxValue="1"
  Precision="IntegerPrecision"
  Default="0"
- X="220"
- Y="660"
  Width="100"
  Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="SYSTEM_STATUS_MESSAGE"
- Guid="2163adde-f8b4-487c-931d-22c6f68ee020"
+ Name="DMI_SYST_STATUS_MESSAGE"
+ Guid="93689dfb-239b-4da4-ac15-8de56b5c789d"
 >
-<ReqRef
- Id="91edf44c-54a6-4ab1-805f-8a0678a979aa"
- SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
- Guid="20ffb3d8-c701-4feb-9a25-48ddb32bba06"
->
-</ReqRef><Comment>System status message displayed to the driver. A bit set to 1 means that the corresponding system status message is displayed.</Comment>
+<Comment>Status of the symbols displayed to the driver</Comment>
 <SpecialValues>
 <EnumValue
+ Value="0"
+ Name="not_displayed"
+ Guid="51ebbf9e-d687-4784-b564-bbf5cb4fb71f"
+>
+</EnumValue><EnumValue
  Value="1"
- Name="Balise_read_error"
- Guid="c4339b26-558e-4bcd-a268-a0e3732d4da6"
->
-</EnumValue><EnumValue
- Value="2"
- Name="Trackside_malfunction"
- Guid="f45b6fd8-404c-4fb9-9e22-2be950f6746e"
->
-</EnumValue><EnumValue
- Value="4"
- Name="Communication_error"
- Guid="b9e146e2-17d7-4651-9dc2-91a8d299964f"
->
-</EnumValue><EnumValue
- Value="8"
- Name="Entering_FS"
- Guid="22afaa59-b860-4542-ab2e-ca044860c3e8"
->
-</EnumValue><EnumValue
- Value="16"
- Name="Entering_OS"
- Guid="dab360cd-eb33-40e2-88fa-ef608343a658"
->
-</EnumValue><EnumValue
- Value="32"
- Name="Runaway_movement"
- Guid="8a020879-2420-4fef-bea5-7d625919de59"
->
-</EnumValue><EnumValue
- Value="64"
- Name="SH_refused"
- Guid="60c84124-3cb3-4580-9950-65543b35eda1"
->
-</EnumValue><EnumValue
- Value="128"
- Name="SH_request_failed"
- Guid="e85acd8b-c9bb-4b2f-a6b6-946a88cbb6bc"
->
-</EnumValue><EnumValue
- Value="256"
- Name="Trackside_not_compatible"
- Guid="35434f85-9749-4846-8ee5-c7bc287234ce"
->
-</EnumValue><EnumValue
- Value="512"
- Name="Train_data_changed"
- Guid="5ab2371f-438d-4cc3-9f52-cf0f8d66dfd2"
->
-</EnumValue><EnumValue
- Value="1024"
- Name="Train_rejected"
- Guid="9954b862-ad2c-4802-ba7f-cc928a2d3139"
->
-</EnumValue><EnumValue
- Value="2048"
- Name="Unauthorized_passing_of_EOA_LOA"
- Guid="1832a465-deff-4b47-ab62-2a08a5df3d28"
->
-</EnumValue><EnumValue
- Value="4096"
- Name="No_MA_received_at_level_transition"
- Guid="ef1fecd1-9251-4fc1-999b-40bd4d7090d5"
->
-</EnumValue><EnumValue
- Value="8192"
- Name="SR_distance_exceeded"
- Guid="35022837-6f83-494e-b2ab-35ef5c0a5469"
->
-</EnumValue><EnumValue
- Value="16384"
- Name="SR_stop_order_16384"
- Guid="e0b9afbe-7500-49b4-b785-f7e8ddacb184"
->
-</EnumValue><EnumValue
- Value="32768"
- Name="SR_stop_order_32768"
- Guid="81179a4d-78bf-4258-ac4c-b5859ab94778"
->
-</EnumValue><EnumValue
- Value="65536"
- Name="Emergency_stop"
- Guid="f12cd236-37dd-487c-b229-ee719cb7ca54"
->
-</EnumValue><EnumValue
- Value="131072"
- Name="RV_distance_exceeded"
- Guid="180e0d8a-fb74-4b18-ba3a-16b486271bf1"
->
-</EnumValue><EnumValue
- Value="262144"
- Name="No_track_description"
- Guid="87826da0-54dc-44b9-b4a6-9908d992c70e"
->
-</EnumValue><EnumValue
- Value="524288"
- Name="Route_unsuitable___axleload_category"
- Guid="5d172d5f-abb0-435a-84e3-c5ebccfbf24c"
->
-</EnumValue><EnumValue
- Value="1048576"
- Name="Route_unsuitable___loading_gauge"
- Guid="fda88b08-3eca-4cc2-8c4c-18846c576fab"
->
-</EnumValue><EnumValue
- Value="2097152"
- Name="Route_unsuitable___traction_system"
- Guid="c4e292a7-b006-4c59-8ab6-493364839027"
->
-</EnumValue><EnumValue
- Value="4194304"
- Name="Radio_network_registration_failed"
- Guid="2f23a0c8-df87-4346-a915-3efcb712a839"
+ Name="displayed"
+ Guid="1e5a9529-93cf-41d5-b3d3-21354ddbe43e"
 >
 </EnumValue></SpecialValues>
 </Range><Range

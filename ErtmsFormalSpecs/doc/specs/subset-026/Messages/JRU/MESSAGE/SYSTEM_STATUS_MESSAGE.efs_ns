@@ -1,0 +1,228 @@
+<NameSpace
+ Width="100"
+ Height="50"
+ Name="SYSTEM_STATUS_MESSAGE"
+ Guid="a066fa1b-aa0e-456f-88f1-e9904928252e"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Message"
+ Guid="e7240366-578f-4575-b2ea-29c4b5115927"
+>
+<Comment>System status message displayed to the driver. A bit set to 1 means that the corresponding system status message is displayed.</Comment>
+<StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Balise_read_error"
+ Guid="8c089338-9c9c-4295-85b6-5c8f406319ab"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Trackside_malfunction"
+ Guid="6f32332f-718c-47ee-988b-18873ae5589b"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Communication_error"
+ Guid="79fe0b64-08d3-4fd6-bbce-f1bf05f02f5e"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Entering_FS"
+ Guid="3ba9985c-462d-42ff-bb48-7bbfb6e425c5"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Entering_OS"
+ Guid="c1c5c955-4724-479d-9451-5dc4612b64a8"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Runaway_movement"
+ Guid="87b5d612-95f5-4f22-851a-d5094e05689e"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SH_refused"
+ Guid="1e95b307-af30-4e00-ae03-e76d0c8a73a6"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SH_request_failed"
+ Guid="4f37e84f-f1b4-4ff4-8443-59524a69593c"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Trackside_not_compatible"
+ Guid="d3d9ae85-ab14-4a70-9ded-f61f9c208f10"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Train_data_changed"
+ Guid="b87e843e-ccb9-4505-8f71-ad46e4d0481b"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Train_is_rejected"
+ Guid="b29b76cc-d7ee-4ad9-92d2-4a95b2710f76"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Unauthorized_passing_of_EOA_LOA"
+ Guid="dca5ae6b-f0f0-4ee5-8c10-0cea3b378ecf"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="No_MA_received_at_level_transition"
+ Guid="abb34d20-c528-4204-8243-26e398a8306a"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SR_distance_exceeded"
+ Guid="16c4bdf3-21fc-4533-b332-d34f1eb98a2a"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SH_stop_order"
+ Guid="aac2066f-185b-4dfd-b209-a9b889ba483a"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SR_stop_order"
+ Guid="a780674c-b8e0-4881-a2e1-6940f728b63b"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Emergency_stop"
+ Guid="489c6e60-eaf8-4ba9-b2c5-14a28bebf757"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RV_distance_exceeded"
+ Guid="3639c77c-6db6-48ae-ad7a-dcf20b0ef7c1"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="No_track_description"
+ Guid="0d927c53-30de-49ac-8295-bb10c91accc4"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Route_unsuitable__axle_load_category"
+ Guid="83c4d8b4-22e8-4536-a56a-216577d97d6c"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Route_unsuitable__loading_gauge"
+ Guid="e333e897-8559-43d8-b7bc-ec9e237d1cb7"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Route_unsuitable__traction_system"
+ Guid="8e7b0d83-9f0a-4b47-9256-d21ce0979522"
+>
+</StructureElement><StructureElement
+ TypeName="DMI_SYST_STATUS_MESSAGE"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Radio_network_registration_failed"
+ Guid="e973a4ae-b77b-4e13-b8a0-44cf33ac8a75"
+>
+</StructureElement></Structure></Structures>
+</NameSpace>

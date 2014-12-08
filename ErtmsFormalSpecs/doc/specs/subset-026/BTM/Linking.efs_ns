@@ -279,6 +279,11 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f45d8422-4e60-46f0-915f-f9818ea06e4a"
 >
+</ReqRef><ReqRef
+ Id="7ec28cec-f043-4430-802b-8219033d9a4f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e152e477-1c03-4d5e-8707-276952ce2016"
+>
 </ReqRef><Comment>Returns true if the current BaliseGroup is linked + stored in our Linking database and within reach of the onboard antenna</Comment>
 <Cases>
 <Case
@@ -704,6 +709,11 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="22e18a0d-2808-49d0-be62-e0cf4ebba616"
 >
+</ReqRef><ReqRef
+ Id="7ec28cec-f043-4430-802b-8219033d9a4f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fd3f8b1f-0d60-42bb-9f46-db9b0c2d1827"
+>
 </ReqRef><Comment>Returns true if there is a linking consistency error with the BG</Comment>
 <Cases>
 <Case
@@ -868,13 +878,15 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="BTM.Linking.LinkingData"
  Default=""
+ X="640"
+ Y="180"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
  Name="SecondLinking"
  Guid="d6a1e09c-59e2-4f03-9d06-ab3b7b7a7d9e"
 >
-<Comment>Returns the second entry in the list of linkings (only called if the number of linkings is greatere than one</Comment>
+<Comment>Returns the second entry in the list of linkings (only called if the number of linkings is greatere than one).</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -891,6 +903,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="BTM.Linking.LinkingData"
  Default=""
+ X="860"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -918,6 +932,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="640"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -949,7 +965,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
- X="110"
+ X="750"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -966,10 +983,15 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f1cb4a21-215c-4362-8104-35596a0894ce"
 >
+</ReqRef><ReqRef
+ Id="7ec28cec-f043-4430-802b-8219033d9a4f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c68a93aa-761d-4852-95cf-fec299f4f4c4"
+>
 </ReqRef><Comment>Checks whether the linked BG was found inside its expectation window</Comment>
 <Parameters>
 <Parameter
- Type="LinkingData"
+ Type="BTM.Linking.LinkingData"
  Name="LinkedBG"
  Guid="a5522054-89ca-44b5-b236-35449029ff8e"
 >
@@ -1488,9 +1510,80 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="62fce0f9-f1df-45cc-8519-a8bef2998613"
 >
+</ReqRef><ReqRef
+ Id="a28fa2ad-f49b-49e3-b6c9-a96b78f87074"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="39b783b6-ddcc-4861-93ca-c9b0d2b96780"
+>
+</ReqRef><ReqRef
+ Id="2ae792ac-3c8b-4e81-a0b9-fcf10ab3dbdc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5a96836b-bf87-46e5-b194-0e5711a54457"
+>
+</ReqRef><ReqRef
+ Id="d9694f89-1162-4ba5-a82c-a37e0df77929"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="87a2a88b-1e1b-4ed7-beeb-e3817870ead5"
+>
 </ReqRef><Comment>Performs all the linking and linking consistency checks needed before a balise message is handled</Comment>
 <Rules>
 <Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Check VBC"
+ Guid="caf9206b-cf25-4596-a689-99b419d3dcfb"
+>
+<Comment>Check the Virtual Balise Covers against the message</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Check VBC"
+ Guid="7e86b069-6f62-4f0b-becf-0151f3bb1dc6"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="1a8e70a6-fc3d-4212-a393-e6e1c1372d77"
+>MessageRejected &lt;- THERE_IS X IN Kernel.VirtualBaliseCover.VirtualBaliseCovers | ( X.Marker.Area == (FIRST Message IN CurrentBaliseGroup).NID_C  AND  X.Marker.Marker == (FIRST Message IN CurrentBaliseGroup).NID_BG )</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Check the coutry/region identifiers"
+ Guid="e64b04f0-4cb3-4e30-85e9-507a57b9bce8"
+>
+<ReqRef
+ Id="319c077a-b554-46e1-b263-636a65b5e1e9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="08104a7e-e6a7-4e29-9cad-5a1e8018da1e"
+>
+</ReqRef><ReqRef
+ Id="c9d51e90-7f7e-4c3e-b330-dec4e7a4499d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="70873974-ce7e-4f1a-aff0-b9750addfa2e"
+>
+</ReqRef><Comment>Check the Virtual Balise Covers for any markers that are not applicable i nthe current region.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove markers with NID_C different to BG"
+ Guid="47d119c4-d206-455a-9286-1cb961ec1be7"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="2e1d9662-6036-4897-a228-37c00a44fe2b"
+>Kernel.VirtualBaliseCover.CheckNID_C(
+    NID_C =&gt; (FIRST Message IN CurrentBaliseGroup).NID_C
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Check Linking"
@@ -1518,11 +1611,15 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
 <PreConditions>
 <PreCondition
  Guid="e42b64dc-30a7-4d68-85ec-69e259afc79d"
->ConsiderBGWithoutLinking()</PreCondition></PreConditions>
+>ConsiderBGWithoutLinking()</PreCondition><PreCondition
+ Guid="e2380874-6cd0-43ab-90a7-bc48cdb67166"
+>NOT MessageRejected</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="da1b995b-2801-473b-9756-c1fe996e68d4"
->HandleBaliseMessage(DistanceFromLRBG =&gt; Odometry.NominalDistance - LRBG.Position.Position)</Action></Actions>
+ Guid="bac12566-89d7-4f78-a052-2705f05be489"
+>HandleBaliseMessage(
+    DistanceFromLRBG =&gt; Odometry.NominalDistance - LRBG.Position.Position
+)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Linking"
@@ -1532,7 +1629,9 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
 <PreConditions>
 <PreCondition
  Guid="5f6b30d6-5215-4d2b-bd11-4191bbad5d7f"
->ConsiderBGWithLinking()</PreCondition></PreConditions>
+>ConsiderBGWithLinking()</PreCondition><PreCondition
+ Guid="956fa6d3-bdee-4ddb-96ba-4dd281e6e5c0"
+>NOT MessageRejected</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -1588,7 +1687,9 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 <Actions>
 <Action
  Guid="6f9ef685-68b5-4cf8-ab5b-fe3765ff7cb1"
->HandleBaliseMessage(DistanceFromLRBG =&gt; (FIRST X IN Linkings).Distance)</Action><Action
+>HandleBaliseMessage(
+    DistanceFromLRBG =&gt; (FIRST X IN Linkings).Distance
+)</Action><Action
  Guid="73f60427-194a-4f61-9082-16f71fa2409d"
 >StopExpectingBG( (FIRST X IN CurrentBaliseGroup).NID_BG )</Action></Actions>
 </RuleCondition><RuleCondition
@@ -1610,6 +1711,8 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="750"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1698,7 +1801,9 @@ As the first part of this procedure deletes the first (inconsistent) BG from the
 <Actions>
 <Action
  Guid="df96badb-3bc3-40d3-b767-aa2ff7b5b2be"
->HandleBaliseMessage(CurrentLinking().Distance)</Action><Action
+>HandleBaliseMessage(
+    DistanceFromLRBG =&gt; CurrentLinking().Distance
+)</Action><Action
  Guid="b1dfce5d-66ae-4d4d-a99a-2708b3c6650f"
 >StopExpectingBG( (FIRST X IN CurrentBaliseGroup).NID_BG )</Action></Actions>
 </RuleCondition><RuleCondition
@@ -1763,6 +1868,18 @@ As the first part of this procedure deletes the first (inconsistent) BG from the
  Guid="b46e08a6-2387-4cc6-a9e0-55c6e04acb72"
 >
 </ReqRef><Comment>Stores the next linking data as provided by the balises</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="True"
+ VariableMode="Internal"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MessageRejected"
+ Guid="a9ff2c4e-90d5-42ef-87ca-28b158139423"
+>
+<Comment>Used to determine whether the current Balise message has been rejected due to linking or VBC.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule

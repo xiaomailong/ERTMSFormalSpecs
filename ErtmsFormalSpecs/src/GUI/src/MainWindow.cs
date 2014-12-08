@@ -1913,5 +1913,25 @@ namespace GUI
             AboutDialogBox aboutDialogBox = new AboutDialogBox();
             aboutDialogBox.ShowDialog();
         }
+
+        private void importStartStopConditionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Select excel file...";
+            openFileDialog.Filter = "Microsof Excel (.xls, .xlsm)|*.xls;*.xlsm";
+            Importers.ExcelImporter.SpecsImporter specsImporter = new Importers.ExcelImporter.SpecsImporter();
+
+            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                if (DataDictionaryWindow.Dictionary != null)
+                {
+                    specsImporter.TheDictionary = DataDictionaryWindow.Dictionary;
+                    specsImporter.FileName = openFileDialog.FileName;
+
+                    ProgressDialog dialog = new ProgressDialog("Importing excel file....", specsImporter);
+                    dialog.ShowDialog(Owner);
+                }
+            }
+        }
     }
 }

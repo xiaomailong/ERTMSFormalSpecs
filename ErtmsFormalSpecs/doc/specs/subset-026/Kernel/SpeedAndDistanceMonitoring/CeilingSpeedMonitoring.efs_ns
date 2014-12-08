@@ -375,7 +375,10 @@
  Name="Always"
  Guid="10689937-c663-4de7-8d80-214156b3d3b8"
 >
-<Expression>MIN ( MIN ( MA.SpeedRestrictions, MRSP.SpeedRestrictions), NationalValues.MaxDistInSRSpeedRestriction ) (distance)</Expression>
+<Expression>MIN(
+    First =&gt; MRSP.SpeedRestrictions,
+    Second =&gt; MA.SpeedRestrictions
+)(distance)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -439,11 +442,6 @@
  Guid="a3eaf16c-bef1-4884-88ff-219ad88ad06d"
 >
 <ReqRef
- Id="26d27752-70b9-46bf-ada7-95ba7bb47a3c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d6859f9f-1f00-4c19-a221-9abfee5e36c3"
->
-</ReqRef><ReqRef
  Id="1d80a2a9-35e8-42c0-b7af-767e7c110d32"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="86a48eb4-db24-4a85-9ae3-be98b0d95110"
@@ -456,19 +454,10 @@
 </ReqRef><Comment>Provides the train supervised speed</Comment>
 <Cases>
 <Case
- Name="MRSP speed increases"
+ Name="Value"
  Guid="205dcdf8-afad-400a-8b0f-bd79283c1037"
 >
-<PreConditions>
-<PreCondition
- Guid="579e1045-ba4d-4041-ba9c-804884d9ca61"
->MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) ) &gt; MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</PreCondition></PreConditions>
-<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) )</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="a737ca4f-968e-416a-badb-330077e71a71"
->
-<Expression>MRSP.SpeedRestrictions ( TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) )</Expression>
+<Expression>MRSP.V_MRSP()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"

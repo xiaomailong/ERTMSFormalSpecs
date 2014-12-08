@@ -770,13 +770,13 @@
  Case="0"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Level 0, 1 or NTC"
+ Name="Level 0 or NTC"
  Guid="0d6e7a42-2e9a-47e2-b64a-0ff96e60bce4"
 >
 <ReqRef
- Id="4ab254b6-4bbf-464c-9170-75905b61adcb"
+ Id="32670e49-9b3d-41ae-b115-4c9a1f6dc1e6"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4b08404b-7fde-43a2-be70-ce16c5ea95f9"
+ Guid="db9f243c-bd11-4935-8c45-7a2fc0912902"
 >
 </ReqRef><Steps>
 <Step
@@ -801,12 +801,12 @@
  Guid="3da29d97-cbb0-4470-b879-06f9ce6b2b30"
 >Kernel.Level.Value.Value &lt;- Default.Level.L0</Action><Action
  Guid="89257905-0b5d-4022-afc4-e0d06a641454"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action></Actions>
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.TrainTrip.D020</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="ddad392c-bc62-4675-a4d7-e99b38171447"
->Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A035</Expectation></Expectations>
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S050</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -815,36 +815,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - Level 1"
- Guid="1209e79f-e4cd-4ae0-9245-071d8e79709a"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="bf7d6a9b-c1e5-41a9-b333-29dcbd0ba402"
->
-<Actions>
-<Action
- Guid="fa2c1f97-95d8-4b80-808f-b75bbc1e388e"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action><Action
- Guid="7c50d936-fdab-497b-988c-6c808ab04236"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
- Guid="8b541fd3-c8a1-40ef-bb7a-bebc2f1def3b"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="adaa4d54-2b28-417b-810e-0fe755303ec8"
->Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A035</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step3 - Level NTC"
+ Name="Step2 - Level NTC"
  Guid="977a7a9b-36b5-4981-89d0-1b75938eab65"
 >
 <SubSteps>
@@ -866,6 +837,46 @@
 <Expectation
  Kind="Instantaneous"
  Guid="1d1f93d4-9eaf-4bd4-b96c-32ff64d7f8dd"
+>Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S050</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase><TestCase
+ Name="Level 1"
+ Guid="0ed6699f-e416-4842-90a7-d116c88ec947"
+>
+<ReqRef
+ Id="4ab254b6-4bbf-464c-9170-75905b61adcb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="db2f5e74-b635-4ffa-99ca-365017f3b8c6"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Level 1"
+ Guid="1209e79f-e4cd-4ae0-9245-071d8e79709a"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="bf7d6a9b-c1e5-41a9-b333-29dcbd0ba402"
+>
+<Actions>
+<Action
+ Guid="fa2c1f97-95d8-4b80-808f-b75bbc1e388e"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.TrainTrip.D020</Action><Action
+ Guid="7c50d936-fdab-497b-988c-6c808ab04236"
+>Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="8b541fd3-c8a1-40ef-bb7a-bebc2f1def3b"
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="adaa4d54-2b28-417b-810e-0fe755303ec8"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.A035</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>

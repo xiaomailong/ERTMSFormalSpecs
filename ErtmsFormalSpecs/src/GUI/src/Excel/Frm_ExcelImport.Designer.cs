@@ -51,7 +51,6 @@ namespace GUI.ExcelImport
             this.CB_EBI = new System.Windows.Forms.CheckBox();
             this.CB_SBI1 = new System.Windows.Forms.CheckBox();
             this.CB_SBI2 = new System.Windows.Forms.CheckBox();
-            this.CB_FLOI = new System.Windows.Forms.CheckBox();
             this.CB_Warning = new System.Windows.Forms.CheckBox();
             this.CB_Permitted = new System.Windows.Forms.CheckBox();
             this.CB_Indication = new System.Windows.Forms.CheckBox();
@@ -154,19 +153,6 @@ namespace GUI.ExcelImport
             this.CB_SBI2.Text = "SBI2";
             this.CB_SBI2.UseVisualStyleBackColor = true;
             // 
-            // CB_FLOI
-            // 
-            this.CB_FLOI.AutoSize = true;
-            this.CB_FLOI.Checked = true;
-            this.CB_FLOI.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CB_FLOI.Location = new System.Drawing.Point(100, 58);
-            this.CB_FLOI.Name = "CB_FLOI";
-            this.CB_FLOI.Size = new System.Drawing.Size(49, 17);
-            this.CB_FLOI.TabIndex = 8;
-            this.CB_FLOI.Tag = "FILTER";
-            this.CB_FLOI.Text = "FLOI";
-            this.CB_FLOI.UseVisualStyleBackColor = true;
-            // 
             // CB_Warning
             // 
             this.CB_Warning.AutoSize = true;
@@ -198,7 +184,7 @@ namespace GUI.ExcelImport
             this.CB_Indication.AutoSize = true;
             this.CB_Indication.Checked = true;
             this.CB_Indication.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CB_Indication.Location = new System.Drawing.Point(197, 58);
+            this.CB_Indication.Location = new System.Drawing.Point(100, 58);
             this.CB_Indication.Name = "CB_Indication";
             this.CB_Indication.Size = new System.Drawing.Size(72, 17);
             this.CB_Indication.TabIndex = 11;
@@ -268,7 +254,6 @@ namespace GUI.ExcelImport
             this.Controls.Add(this.CB_Indication);
             this.Controls.Add(this.CB_Permitted);
             this.Controls.Add(this.CB_Warning);
-            this.Controls.Add(this.CB_FLOI);
             this.Controls.Add(this.CB_SBI2);
             this.Controls.Add(this.CB_SBI1);
             this.Controls.Add(this.CB_EBI);
@@ -294,7 +279,6 @@ namespace GUI.ExcelImport
         private System.Windows.Forms.CheckBox CB_EBI;
         private System.Windows.Forms.CheckBox CB_SBI1;
         private System.Windows.Forms.CheckBox CB_SBI2;
-        private System.Windows.Forms.CheckBox CB_FLOI;
         private System.Windows.Forms.CheckBox CB_Warning;
         private System.Windows.Forms.CheckBox CB_Permitted;
         private System.Windows.Forms.CheckBox CB_Indication;

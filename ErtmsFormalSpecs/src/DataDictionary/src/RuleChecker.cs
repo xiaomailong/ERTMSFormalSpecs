@@ -1146,7 +1146,7 @@ namespace DataDictionary
                 Translations[source.Name] = translation;
             }
 
-            if (translation.Requirements.Count == 0 || string.IsNullOrEmpty(translation.Comment))
+            if (translation.Requirements.Count == 0 && string.IsNullOrEmpty(translation.Comment))
             {
                 int countActions = 0;
                 int countExpectations = 0;

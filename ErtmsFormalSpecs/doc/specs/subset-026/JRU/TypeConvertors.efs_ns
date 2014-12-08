@@ -1580,7 +1580,7 @@ AND
 <PreConditions>
 <PreCondition
  Guid="4192a0e3-64ef-4734-8c83-38be693f4c6b"
->SystemVersion.Value == &apos;Version_1_1__introduced_in_SRS_3_0_0&apos;</PreCondition></PreConditions>
+>SystemVersion.Value == Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0</PreCondition></PreConditions>
 <Expression>Messages.JRU.SYSTEM_VERSION.Class_1__version_1_1__introduced_in_SRS_3_0_0</Expression>
 </Case><Case
  Name="Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0"
@@ -1589,8 +1589,8 @@ AND
 <PreConditions>
 <PreCondition
  Guid="f6a293ef-1394-4490-a5f7-b624ffdae8ef"
->SystemVersion.Value == &apos;Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0&apos;</PreCondition></PreConditions>
-<Expression>Messages.JRU.SYSTEM_VERSION.Class_1__version_2_0__introduced_in_SRS_3_0_0</Expression>
+>SystemVersion.Value == Messages.M_VERSION.Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0</PreCondition></PreConditions>
+<Expression>Messages.JRU.SYSTEM_VERSION.Class_1__version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0</Expression>
 </Case><Case
  Name="Version_2_0__introduced_in_SRS_3_0_0"
  Guid="79ab7b6a-df16-4d6f-91a5-270f4ea86bda"
@@ -1598,13 +1598,8 @@ AND
 <PreConditions>
 <PreCondition
  Guid="0e5c7dbb-a8fc-4c3f-ad28-e552c1c638c8"
->SystemVersion.Value == &apos;Version_2_0__introduced_in_SRS_3_0_0&apos;</PreCondition></PreConditions>
+>SystemVersion.Value == Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0</PreCondition></PreConditions>
 <Expression>Messages.JRU.SYSTEM_VERSION.Class_1__version_2_0__introduced_in_SRS_3_0_0</Expression>
-</Case><Case
- Name="Default"
- Guid="1e049f40-f9ba-4939-b8ad-aea112453435"
->
-<Expression>Messages.JRU.SYSTEM_VERSION.Unknown</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.M_TRACTION_STATUS"
@@ -2375,7 +2370,7 @@ AND
 <PreConditions>
 <PreCondition
  Guid="097ab212-1611-4047-a4c6-b8af2e9d1231"
->DMI.MasterDMI().In_TrainIntegrity.InputInformation.DriverAnswered</PreCondition></PreConditions>
+>DMI.MasterDMI().In_TrainIntegrityConfirmation.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Train_integrity_confirmation</Expression>
 </Case><Case
  Name="TrainRunningNumber"

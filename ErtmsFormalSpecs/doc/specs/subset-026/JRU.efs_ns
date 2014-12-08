@@ -16,6 +16,10 @@
  Name="DMISymbolsConvertors"
  Guid="3ac2c6af-92ae-4ea1-8912-a230283d8428"
 >
+</NameSpaceRef><NameSpaceRef
+ Name="DMISystemStatusesConvertors"
+ Guid="0d1802bf-ddae-465d-aaff-9160f7f383fb"
+>
 </NameSpaceRef></NameSpaces>
 <Structures>
 <Structure
@@ -361,7 +365,12 @@ TO_RBC =&gt; CreateMessageToRbcMessage(EURORADIO.CurrentRBCConnection(), EURORAD
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="741b48c6-c598-4719-af46-10c23821fe00"
 >
-</ReqRef><Comment>Sends Drivers Actions message if the driver has actend on the DMI.</Comment>
+</ReqRef><ReqRef
+ Id="0fcf9f57-8c5b-4beb-88e2-c8f43ec6f8bd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e0dace2d-a0ba-41cd-b0c8-a2deb38c583a"
+>
+</ReqRef><Comment>Sends Drivers Actions message if the driver has acted on the DMI.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -460,6 +469,49 @@ SPEED_AND_DISTANCE_MONITORING_INFORMATION =&gt; CreateSpeedAndDistanceMonitoring
 }
   IN
 JRUMessages</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Send DMI System Status message"
+ Guid="91e0d02f-f141-4eb5-a970-22ed2b986fba"
+>
+<ReqRef
+ Id="d40c9e34-a55f-47f5-9283-e61f6f9f2e06"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="66e025ca-0b5c-481a-ba58-b97667a6e14c"
+>
+</ReqRef><ReqRef
+ Id="3f518e1c-d9ad-4bbe-8bb0-a45bfc3a1f81"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="aa0654a2-720e-4994-89fc-065587769744"
+>
+</ReqRef><ReqRef
+ Id="5ebc8464-ea72-426f-9d36-3891fb49f575"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="09a53622-d0af-4a38-8ddb-d1f264d238d4"
+>
+</ReqRef><Comment>Sends DMI System Status message if one of the system status messages was displayed on the DMI.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send System Status message"
+ Guid="6f098128-0160-4854-9f5b-cc16e7ad7687"
+>
+<PreConditions>
+<PreCondition
+ Guid="1cff9757-a2c2-4926-9dc1-caea439f72ea"
+>SendDMISystemStatusMessage()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="150a90b0-b2c6-4fbb-b954-89ad9a224e09"
+>INSERT Messages.JRU.MESSAGE.Message
+{
+  DMI_SYSTEM_STATUS_MESSAGE =&gt; JRU.CreateDMISystemStatusMessage()
+}
+IN
+  JRUMessages</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1139,7 +1191,7 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
 <Actions>
 <Action
  Guid="9bc80e3a-1a1a-429f-98aa-42c1d4d761ce"
->PreviousVFloiValue &lt;- Kernel.SpeedAndDistanceMonitoring.FLOISpeed(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
+>PreviousVFloiValue &lt;- Kernel.SpeedAndDistanceMonitoring.SBISpeed(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1230,7 +1282,7 @@ TRACTION_CUT_OFF_COMMAND_STATE =&gt; CreateTractionCutOffMessage()
 >
 </ReqRef><Comment>This will reflex the last time a JRU message was sent to JRU.</Comment>
 </StructureElement><StructureElement
- TypeName="String"
+ TypeName="Messages.M_VERSION"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -2211,7 +2263,9 @@ SendDMIStatusMessage(jru)
   OR
 SendAdditionalDataMessage(jru)
   OR
-DriverActed()</PreCondition><PreCondition
+DriverActed()
+  OR
+SendDMISystemStatusMessage()</PreCondition><PreCondition
  Guid="07a9b9fc-3c5f-4545-acc0-68ead56b0325"
 >Kernel.ActiveFunctions.ProvideJuridicalData()</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -4622,7 +4676,7 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
     M_SDMTYPE =&gt; TypeConvertors.ToJRUSpeedAndDistanceMonitoringType(),
     M_SDMSUPSTAT =&gt; TypeConvertors.ToJRUSpeedAndDistanceMonitoringsupervisionStatus(),
     V_PERM =&gt; Default.MessageTypes.UnResolveSpeed(DMI.MasterDMI().Out_PermittedSpeed.Speed, 5.0),
-    V_FLOI =&gt; Default.MessageTypes.UnResolveSpeed(Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_FLOI_DMI(), 5.0),
+    V_FLOI =&gt; Default.MessageTypes.UnResolveSpeed(Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_SBI_DMI(), 5.0),
     V_TARGET =&gt; Default.MessageTypes.UnResolveSpeed( DMI.MasterDMI().Out_TargetSpeed.Speed, 5.0),
     D_TARGET =&gt; TypeConvertors.ToMessagesDistance
     (
@@ -4694,7 +4748,7 @@ jru.PreviousSpeedAndDistanceSupervisionStatus != Kernel.SpeedAndDistanceMonitori
  Guid="13358226-042e-4eb7-a8e9-c752639ee537"
 >Kernel.SpeedAndDistanceMonitoring.Monitoring in [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling]
   AND
-jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.FLOISpeed(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
+jru.PreviousVFloiValue != Kernel.SpeedAndDistanceMonitoring.SBISpeed(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Target speed changed"
@@ -4993,7 +5047,7 @@ DMI.MasterDMI().In_TrainData.InputInformation.DriverAnswered
   OR
 DMI.MasterDMI().In_TrainDataEntryRequest.InputInformation.DriverAnswered
   OR
-DMI.MasterDMI().In_TrainIntegrity.InputInformation.DriverAnswered
+DMI.MasterDMI().In_TrainIntegrityConfirmation.InputInformation.DriverAnswered
   OR
 DMI.MasterDMI().In_TrainRunningNumber.InputInformation.DriverAnswered
   OR
@@ -5297,6 +5351,166 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
  Guid="b6f1ee97-eb90-45fb-b6f8-20eb24cc8d90"
 >
 <Expression>aJRU.PreviousAdditionalDataMessage != CreateAdditionalDataMessage()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="660"
+ Y="390"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SendDMISystemStatusMessage"
+ Guid="6057d48e-5610-465d-995d-2b83a9965165"
+>
+<ReqRef
+ Id="3f518e1c-d9ad-4bbe-8bb0-a45bfc3a1f81"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e557eb17-5450-4664-9502-fb7c91fd7cae"
+>
+</ReqRef><Comment>Will determine if it is necessary to send the SYSTEM_STATUS_MESSAGE.</Comment>
+<Cases>
+<Case
+ Name="Trackside malfunction is displayed"
+ Guid="c0ec95bd-a9c5-4e08-86d3-7ec2ca3d3ee5"
+>
+<PreConditions>
+<PreCondition
+ Guid="16845fdc-ba7f-42fa-bc77-670a32b94288"
+>DMI.MasterDMI().Out_TracksideMalfunction.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Entry in OS/FS is displayed"
+ Guid="b65808fa-b766-46c6-b689-c6597f0f9636"
+>
+<PreConditions>
+<PreCondition
+ Guid="e701e050-10fc-4d31-a812-91ad02d5c88f"
+>DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SH refused is displayed"
+ Guid="b5fefd75-aa9b-47f7-99e1-fc7f9bb18d2c"
+>
+<PreConditions>
+<PreCondition
+ Guid="9b61451b-f9ed-4c2d-9c92-7398d9438b8b"
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Trackside not compatible is displayed"
+ Guid="63f09c81-3b4d-40d9-af1b-367e230b42f7"
+>
+<PreConditions>
+<PreCondition
+ Guid="90d59ec6-07d0-4a59-9da8-ebb2911c3bdb"
+>DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Train is rejected is displayed"
+ Guid="a47d4c18-0963-497b-888f-b5709096a5c3"
+>
+<PreConditions>
+<PreCondition
+ Guid="290d7a6d-badc-49b0-a76b-972568c60416"
+>DMI.MasterDMI().Out_TrainIsRejected.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Route unsuitabilities are displayed"
+ Guid="a76fc6cc-4cbb-4e36-b2d8-b8e9c0c6e919"
+>
+<PreConditions>
+<PreCondition
+ Guid="60001df3-172c-41cb-9b62-75eaec29dc6f"
+>DMI.MasterDMI().Out_RouteUnsuitabilities.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Radio network registration failed is displayed"
+ Guid="db91d673-bb3a-427d-ad8e-0bb9a9b64f4e"
+>
+<PreConditions>
+<PreCondition
+ Guid="7c4442b3-d54c-4ffd-a555-fb3413728e8b"
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="189ae678-ec4c-407e-8b72-9b7a9c6cf5a5"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.JRU.MESSAGE.DMI_SYSTEM_STATUS_MESSAGE.Message"
+ Default=""
+ X="770"
+ Y="300"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="CreateDMISystemStatusMessage"
+ Guid="28c3facc-51d5-4ba9-ac93-93373d27f970"
+>
+<ReqRef
+ Id="d40c9e34-a55f-47f5-9283-e61f6f9f2e06"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="d6d09fa1-d44f-4c43-811c-d0b597dca864"
+>
+</ReqRef><ReqRef
+ Id="5ebc8464-ea72-426f-9d36-3891fb49f575"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="687dc556-fef6-4e38-959b-9116997ab804"
+>
+</ReqRef><ReqRef
+ Id="fe171800-34b8-4d6b-8a0e-e519f273ac49"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e0ac5bf5-1d3c-48c0-a8a0-893fd809f8d1"
+>
+</ReqRef><ReqRef
+ Id="91edf44c-54a6-4ab1-805f-8a0678a979aa"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="a3d27f07-0955-4c14-aaa3-0349e7e45156"
+>
+</ReqRef><ReqRef
+ Id="3f518e1c-d9ad-4bbe-8bb0-a45bfc3a1f81"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="e731bb10-1ca8-4aed-8582-a71a3a74207a"
+>
+</ReqRef><Comment>Creates the message indicating which system status messages are currently displayed on the DMI.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="2d3c2108-7354-4118-a606-e59ef29ea0ac"
+>
+<Expression>Messages.JRU.MESSAGE.DMI_SYSTEM_STATUS_MESSAGE.Message
+{
+    HEADER =&gt; CreateHeader(23),
+    SYSTEM_STATUS_MESSAGE =&gt; Messages.JRU.MESSAGE.SYSTEM_STATUS_MESSAGE.Message
+    {
+        Balise_read_error =&gt; DMISystemStatusesConvertors.BaliseReadErrorDisplayed(),
+        Trackside_malfunction =&gt; DMISystemStatusesConvertors.TracksideMalfunctionDisplayed(),
+        Communication_error =&gt; DMISystemStatusesConvertors.CommunicationErrorDisplayed(),
+        Entering_FS =&gt; DMISystemStatusesConvertors.EnteringFSDisplayed(),
+        Entering_OS =&gt; DMISystemStatusesConvertors.EnteringOSDisplayed(),
+        Runaway_movement =&gt; DMISystemStatusesConvertors.RunawayMovementDisplayed(),
+        SH_refused =&gt; DMISystemStatusesConvertors.SHRefusedDisplayed(),
+        SH_request_failed =&gt; DMISystemStatusesConvertors.SHRequestFailedDisplayed(),
+        Trackside_not_compatible =&gt; DMISystemStatusesConvertors.TracksideNotCompatibleDisplayed(),
+        Train_data_changed =&gt; DMISystemStatusesConvertors.TrainDataChangedDisplayed(),
+        Train_is_rejected =&gt; DMISystemStatusesConvertors.TrainIsRejectedDisplayed(),
+        Unauthorized_passing_of_EOA_LOA =&gt; DMISystemStatusesConvertors.UnathorizedPassingOfEOALOADisplayed(),
+        No_MA_received_at_level_transition =&gt; DMISystemStatusesConvertors.NoMAReceivedAtLevelTransitionDisplayed(),
+        SR_distance_exceeded =&gt; DMISystemStatusesConvertors.SRDistanceExceededDisplayed(),
+        SH_stop_order =&gt; DMISystemStatusesConvertors.SHStopOrderDisplayed(),
+        SR_stop_order =&gt; DMISystemStatusesConvertors.SRStopOrderDisplayed(),
+        Emergency_stop =&gt; DMISystemStatusesConvertors.EmergencyStopDisplayed(),
+        RV_distance_exceeded =&gt; DMISystemStatusesConvertors.RVDistanceExceededDisplayed(),
+        No_track_description =&gt; DMISystemStatusesConvertors.NoTrackDescriptionDisplayed(),
+        Route_unsuitable__axle_load_category =&gt; DMISystemStatusesConvertors.RouteUnsuitableAxleLoadCategoryDisplayed(),
+        Route_unsuitable__loading_gauge =&gt; DMISystemStatusesConvertors.RouteUnsuitableLoadingGaugeDisplayed(),
+        Route_unsuitable__traction_system =&gt; DMISystemStatusesConvertors.RouteUnsuitableTractionSystemDisplayed(),
+        Radio_network_registration_failed =&gt; DMISystemStatusesConvertors.RadioNetworkRegistrationFailedDisplayed()
+    }
+}</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>

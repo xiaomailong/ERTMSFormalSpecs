@@ -60,45 +60,59 @@ namespace EFSTester
                         foreach (DataDictionary.Tests.SubSequence subSequence in frame.SubSequences)
                         {
                             Console.Out.WriteLine("Executing sub sequence " + subSequence.FullName);
-                            DataDictionary.Tests.Runner.Runner runner = new DataDictionary.Tests.Runner.Runner(subSequence, false, false);
-                            runner.RunUntilStep(null);
-
-                            bool failed = false;
-                            foreach (DataDictionary.Tests.Runner.Events.ModelEvent evt in runner.FailedExpectations())
+                            if (subSequence.getCompleted())
                             {
-                                DataDictionary.Tests.Runner.Events.Expect expect = evt as DataDictionary.Tests.Runner.Events.Expect;
-                                if (expect != null)
+                                if (dictionary.TranslationDictionary != null)
                                 {
-                                    Console.Out.WriteLine(" failed : " + expect.Message);
-                                    DataDictionary.Tests.TestCase testCase = Utils.EnclosingFinder<DataDictionary.Tests.TestCase>.find(expect.Expectation);
-                                    if (testCase.ImplementationCompleted)
+                                    Console.Out.WriteLine("  -> Translating sub sequence ");
+                                    subSequence.Translate(dictionary.TranslationDictionary);
+                                }
+
+                                DataDictionary.Tests.Runner.Runner runner = new DataDictionary.Tests.Runner.Runner(subSequence, false, false);
+                                runner.RunUntilStep(null);
+
+                                bool failed = false;
+                                foreach (DataDictionary.Tests.Runner.Events.ModelEvent evt in runner.FailedExpectations())
+                                {
+                                    DataDictionary.Tests.Runner.Events.Expect expect = evt as DataDictionary.Tests.Runner.Events.Expect;
+                                    if (expect != null)
                                     {
-                                        Console.Out.WriteLine(" !Unexpected failed expectation: " + expect.Message);
-                                        failed = true;
+                                        string message = expect.Message.Replace('\n', ' ');
+                                        DataDictionary.Tests.TestCase testCase = Utils.EnclosingFinder<DataDictionary.Tests.TestCase>.find(expect.Expectation);
+                                        if (testCase.ImplementationCompleted)
+                                        {
+                                            Console.Out.WriteLine(" failed (unexpected) :" + message);
+                                            failed = true;
+                                        }
+                                        else
+                                        {
+                                            Console.Out.WriteLine(" failed (expected) : " + message);
+                                        }
                                     }
                                     else
                                     {
-                                        Console.Out.WriteLine(" .Expected failed expectation: " + expect.Message);
+                                        DataDictionary.Tests.Runner.Events.ModelInterpretationFailure modelInterpretationFailure = evt as DataDictionary.Tests.Runner.Events.ModelInterpretationFailure;
+                                        if (modelInterpretationFailure != null)
+                                        {
+                                            Console.Out.WriteLine(" failed : " + modelInterpretationFailure.Message);
+                                            failed = true;
+                                        }
                                     }
+                                }
+
+                                if (failed)
+                                {
+                                    Console.Out.WriteLine("  -> Failed");
+                                    retVal = -1;
                                 }
                                 else
                                 {
-                                    DataDictionary.Tests.Runner.Events.ModelInterpretationFailure modelInterpretationFailure = evt as DataDictionary.Tests.Runner.Events.ModelInterpretationFailure;
-                                    if (modelInterpretationFailure != null)
-                                    {
-                                        Console.Out.WriteLine(" failed : " + modelInterpretationFailure.Message);
-
-                                    }
+                                    Console.Out.WriteLine("  -> Success");
                                 }
-                            }
-                            if (failed)
-                            {
-                                Console.Out.WriteLine("  -> Failed");
-                                retVal = -1;
                             }
                             else
                             {
-                                Console.Out.WriteLine("  -> Success");
+                                Console.Out.WriteLine("  -> Not executed because it is not marked as completed");
                             }
                         }
                     }

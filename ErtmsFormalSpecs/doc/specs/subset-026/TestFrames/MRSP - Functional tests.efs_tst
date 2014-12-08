@@ -65,7 +65,7 @@
 <Actions>
 <Action
  Guid="447a13c6-7869-4e6d-b198-f34868d3782f"
->BTM.LRBG&lt;- BTM.BaliseGroup{
+>BTM.LRBG&lt;- BTM.BaliseGroupStruct{
   NID=&gt;9616,
   Orientation=&gt;Orientation.Nominal,
   Position=&gt;BTM.Position{
@@ -167,30 +167,29 @@
  Guid="54de5ccf-9c43-4f95-8b86-3076de2b8308"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; 0,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 2124,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; 
     [
         Messages.EUROBALISE.SubStructure1
         {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
             {
                 NATIONAL_VALUES =&gt; Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.Message
                 {
                     NID_PACKET =&gt; 3,
-                    L_PACKET =&gt; 200,
                     Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+                    L_PACKET =&gt; 200,
                     Q_SCALE =&gt; Messages.Q_SCALE._10_cm_scaleC,
                     D_VALIDNV =&gt; 0,
-                    Q_NVDRIVER_ADHES =&gt; Messages.Q_NVDRIVER_ADHES.Allowed,
                     V_NVSHUNT =&gt; 10,
                     V_NVSTFF =&gt; 16,
                     V_NVONSIGHT =&gt; 22,
@@ -199,7 +198,7 @@
                     V_NVREL =&gt; 8,
                     D_NVROLL =&gt; 1200,
                     Q_NVSBTSMPERM =&gt; Messages.Q_NVSBTSMPERM.Yes,
-                    Q_NVEMRRLS =&gt;Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill,
+                    Q_NVEMRRLS =&gt; Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill,
                     Q_NVGUIPERM =&gt; Messages.Q_NVGUIPERM.Yes,
                     Q_NVSBFBPERM =&gt; Messages.Q_NVSBFBPERM.No,
                     Q_NVINHSMICPERM =&gt; Messages.Q_NVINHSMICPERM.Yes,
@@ -207,29 +206,18 @@
                     V_NVSUPOVTRP =&gt; 11,
                     D_NVOVTRP =&gt; 2000,
                     T_NVOVTRP =&gt; 150,
-                    M_NVDERUN =&gt; Messages.M_NVDERUN.Yes,
+                    D_NVPOTRP =&gt; 8000,
                     M_NVCONTACT =&gt; Messages.M_NVCONTACT.Train_trip,
                     T_NVCONTACT =&gt; 400,
-                    D_NVPOTRP =&gt; 8000,
+                    M_NVDERUN =&gt; Messages.M_NVDERUN.Yes,
                     D_NVSTFF =&gt; 7000,
+                    Q_NVDRIVER_ADHES =&gt; Messages.Q_NVDRIVER_ADHES.Allowed,
+                    A_NVMAXREDADH1 =&gt; 10,
+                    A_NVMAXREDADH2 =&gt; 7,
+                    A_NVMAXREDADH3 =&gt; 5,
                     Q_NVLOCACC =&gt; 10,
                     M_NVAVADH =&gt; 4,
                     M_NVEBCL =&gt; Messages.M_NVEBCL.Confidence_level___99_9,
-                    L_NVKRINT =&gt; Messages.L_NVKRINT._0mC,
-                    M_NVKRINT =&gt; 20,
-                    Sequence5 =&gt;
-                    [
-                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
-                        {
-                            L_NVKRINT =&gt; Messages.L_NVKRINT._150mC,
-                            M_NVKRINT =&gt; 20
-                        },
-                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
-                        {
-                            L_NVKRINT =&gt; Messages.L_NVKRINT._1100mC,
-                            M_NVKRINT =&gt; 28
-                        }
-                    ],
                     Q_NVKINT =&gt; Messages.Q_NVKINT.Integrated_correction_factors_follow,
                     Q_NVKVINTSET =&gt; Messages.Q_NVKVINTSET.Conventional_passenger_trains,
                     A_NVP12 =&gt; 12,
@@ -237,26 +225,26 @@
                     V_NVKVINT =&gt; 4,
                     M_NVKVINT_0 =&gt; 22,
                     M_NVKVINT_1 =&gt; 39,
-                    Sequence2 =&gt;
+                    Sequence2 =&gt; 
                     [
                         Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
                         {
                             V_NVKVINT =&gt; 8,
                             M_NVKVINT_0 =&gt; 26,
                             M_NVKVINT_1 =&gt; 40
-                        },
+                        }, 
                         Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
                         {
                             V_NVKVINT =&gt; 10,
                             M_NVKVINT_0 =&gt; 30,
                             M_NVKVINT_1 =&gt; 57
-                        },
+                        }, 
                         Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
                         {
                             V_NVKVINT =&gt; 14,
                             M_NVKVINT_0 =&gt; 40,
                             M_NVKVINT_1 =&gt; 80
-                        },
+                        }, 
                         Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure2
                         {
                             V_NVKVINT =&gt; 18,
@@ -264,7 +252,7 @@
                             M_NVKVINT_1 =&gt; 100
                         }
                     ],
-                    Sequence4 =&gt;
+                    Sequence4 =&gt; 
                     [
                         Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure3
                         {
@@ -274,27 +262,39 @@
                             V_NVKVINT =&gt; 8,
                             M_NVKVINT_0 =&gt; 40,
                             M_NVKVINT_1 =&gt; 50,
-                            Sequence3 =&gt;
+                            Sequence3 =&gt; 
                             [
                                 Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure4
                                 {
                                     V_NVKVINT =&gt; 14,
                                     M_NVKVINT_0 =&gt; 64,
                                     M_NVKVINT_1 =&gt; 80
-                                },
+                                }, 
                                 Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure4
                                 {
                                     V_NVKVINT =&gt; 18,
-                                    M_NVKVINT_0=&gt; 80,
+                                    M_NVKVINT_0 =&gt; 80,
                                     M_NVKVINT_1 =&gt; 100
                                 }
                             ]
                         }
                     ],
-                    M_NVKTINT =&gt; 25,
-                    A_NVMAXREDADH1 =&gt; 10,
-                    A_NVMAXREDADH2 =&gt; 7,
-                    A_NVMAXREDADH3 =&gt; 5
+                    L_NVKRINT =&gt; Messages.L_NVKRINT._0mC,
+                    M_NVKRINT =&gt; 20,
+                    Sequence5 =&gt; 
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._150mC,
+                            M_NVKRINT =&gt; 20
+                        }, 
+                        Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.SubStructure5
+                        {
+                            L_NVKRINT =&gt; Messages.L_NVKRINT._1100mC,
+                            M_NVKRINT =&gt; 28
+                        }
+                    ],
+                    M_NVKTINT =&gt; 25
                 }
             }
         }
@@ -359,32 +359,32 @@
  Guid="beb61e33-1c48-431b-997b-70dc3af3f04a"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; 0,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 2124,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; 
     [
         Messages.EUROBALISE.SubStructure1
         {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
             {
                 TEMPORARY_SPEED_RESTRICTION =&gt; Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message
                 {
-                    NID_PACKET=&gt;8,
-                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    NID_PACKET =&gt; 8,
+                    Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+                    L_PACKET =&gt; 400,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    NID_TSR =&gt; 1515,
                     D_TSR =&gt; 4000,
                     L_TSR =&gt; 2500,
-                    NID_TSR =&gt; 1515,
-                    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element ,
+                    Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
                     V_TSR =&gt; 5
                 }
             }
@@ -450,35 +450,35 @@
  Guid="db68b74d-5ad2-4199-bc53-bbbab2dcc181"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; 0,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 2124,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; 
     [
         Messages.EUROBALISE.SubStructure1
         {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
             {
                 LEVEL_CROSSING_INFORMATION =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
                 {
-                    NID_PACKET=&gt;88,
-                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    NID_LX=&gt;20,
-                    D_LX=&gt;2000,
-                    L_LX=&gt;250,
-                    Q_LXSTATUS=&gt;Messages.Q_LXSTATUS.LX_is_not_protected,
-                    V_LX=&gt;8,
-                    Q_STOPLX=&gt;Messages.Q_STOPLX.No_stop_required,
-                    L_STOPLX=&gt;0
+                    NID_PACKET =&gt; 88,
+                    Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+                    L_PACKET =&gt; 400,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    NID_LX =&gt; 20,
+                    D_LX =&gt; 2000,
+                    L_LX =&gt; 250,
+                    Q_LXSTATUS =&gt; Messages.Q_LXSTATUS.LX_is_not_protected,
+                    V_LX =&gt; 8,
+                    Q_STOPLX =&gt; Messages.Q_STOPLX.No_stop_required,
+                    L_STOPLX =&gt; 0
                 }
             }
         }
@@ -721,85 +721,84 @@
  Guid="fd8133a8-07d8-4322-afd4-1b4857e68971"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2100,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; 0,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 2100,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; 
     [
         Messages.EUROBALISE.SubStructure1
         {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
             {
-                AXLE_LOAD_SPEED_PROFILE=&gt;Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Message
+                AXLE_LOAD_SPEED_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Message
                 {
                     NID_PACKET =&gt; 88,
                     Q_DIR =&gt; Messages.Q_DIR.Both_directions,
                     L_PACKET =&gt; 400,
                     Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
                     Q_TRACKINIT =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
-                    D_TRACKINIT =&gt; 0,
                     D_AXLELOAD =&gt; 1000,
                     L_AXLELOAD =&gt; 300,
                     Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
-                    Sequence1 =&gt;
+                    Sequence1 =&gt; 
                     [
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
                             M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
                             V_AXLELOAD =&gt; 14
-                        },
+                        }, 
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
                             M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
                             V_AXLELOAD =&gt; 12
-                        },
+                        }, 
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
                             M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
                             V_AXLELOAD =&gt; 8
-                        },
+                        }, 
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1
                         {
                             M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
                             V_AXLELOAD =&gt; 4
                         }
                     ],
-                    Sequence3 =&gt;
+                    Sequence3 =&gt; 
                     [
                         Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure2
                         {
                             D_AXLELOAD =&gt; 2000,
                             L_AXLELOAD =&gt; 1000,
                             Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
-                            Sequence2 =&gt;
+                            Sequence2 =&gt; 
                             [
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
                                     M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.A,
                                     V_AXLELOAD =&gt; 16
-                                },
+                                }, 
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
                                     M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.B2,
                                     V_AXLELOAD =&gt; 14
-                                },
+                                }, 
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
                                     M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.C4,
                                     V_AXLELOAD =&gt; 12
-                                },
+                                }, 
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
                                     M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.D4XL,
                                     V_AXLELOAD =&gt; 10
-                                },
+                                }, 
                                 Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3
                                 {
                                     M_AXLELOADCAT =&gt; Messages.M_AXLELOADCAT.E5,
@@ -807,7 +806,8 @@
                                 }
                             ]
                         }
-                    ]
+                    ],
+                    D_TRACKINIT =&gt; 0
                 }
             }
         }
@@ -851,48 +851,52 @@
  Guid="6b098b64-3297-43d4-9e8d-05f21ade42d1"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Linked,
-    Sequence1=&gt;
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; 0,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 2124,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; 
     [
         Messages.EUROBALISE.SubStructure1
         {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
             {
                 GRADIENT_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.Message
                 {
-                    NID_PACKET=&gt;21,
-                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    NID_PACKET =&gt; 21,
+                    Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+                    L_PACKET =&gt; 400,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
                     D_GRADIENT =&gt; 4000,
                     Q_GDIR =&gt; Messages.Q_GDIR.uphill,
                     G_A =&gt; 2,
                     N_ITER =&gt; 3,
-                    Sequence1 =&gt; [
-                      Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1 {
-                        D_GRADIENT =&gt; 2000,
-                        Q_GDIR =&gt; Messages.Q_GDIR.downhill,
-                        G_A =&gt; 1
-                      },
-                      Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1 {
-                        D_GRADIENT =&gt; 1000,
-                        Q_GDIR =&gt; Messages.Q_GDIR.downhill,
-                        G_A =&gt; 4
-                      },
-                      Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1 {
-                        D_GRADIENT =&gt; 5000,
-                        Q_GDIR =&gt; Messages.Q_GDIR.uphill,
-                        G_A =&gt; 3
-                      }
+                    Sequence1 =&gt; 
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1
+                        {
+                            D_GRADIENT =&gt; 2000,
+                            Q_GDIR =&gt; Messages.Q_GDIR.downhill,
+                            G_A =&gt; 1
+                        }, 
+                        Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1
+                        {
+                            D_GRADIENT =&gt; 1000,
+                            Q_GDIR =&gt; Messages.Q_GDIR.downhill,
+                            G_A =&gt; 4
+                        }, 
+                        Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.SubStructure1
+                        {
+                            D_GRADIENT =&gt; 5000,
+                            Q_GDIR =&gt; Messages.Q_GDIR.uphill,
+                            G_A =&gt; 3
+                        }
                     ]
                 }
             }
@@ -944,17 +948,17 @@
  Guid="14d575cc-e5ad-488f-b1e1-1c81b52cfda6"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;1,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2124,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
-    Sequence1=&gt;
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; 0,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 2124,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; 
     [
         Messages.EUROBALISE.SubStructure1
         {
@@ -962,15 +966,15 @@
             {
                 INTERNATIONAL_STATIC_SPEED_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.Message
                 {
-                    NID_PACKET=&gt;27,
-                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
+                    NID_PACKET =&gt; 27,
+                    Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+                    L_PACKET =&gt; 400,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
                     D_STATIC =&gt; 4500,
                     V_STATIC =&gt; 8,
                     Q_FRONT =&gt; Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element,
                     N_ITER_0 =&gt; 5,
-                    Sequence1 =&gt;
+                    Sequence1 =&gt; 
                     [
                         Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
                         {
@@ -978,28 +982,28 @@
                             NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
                             NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
                             V_DIFF =&gt; 6
-                        },
+                        }, 
                         Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
                         {
                             Q_DIFF =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category,
                             NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_210_mm,
                             NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
                             V_DIFF =&gt; 2
-                        },
+                        }, 
                         Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
                         {
                             Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
                             NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
                             NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__G__position,
                             V_DIFF =&gt; 10
-                        },
+                        }, 
                         Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
                         {
                             Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
                             NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_130_mm,
                             NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
                             V_DIFF =&gt; 7
-                        },
+                        }, 
                         Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1
                         {
                             Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
@@ -1008,15 +1012,15 @@
                             V_DIFF =&gt; 14
                         }
                     ],
-                    Sequence3 =&gt;
+                    Sequence3 =&gt; 
                     [
                         Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
                         {
                             D_STATIC =&gt; 1000,
                             V_STATIC =&gt; 10,
-                            Q_FRONT =&gt;  Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+                            Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
                             N_ITER =&gt; 3,
-                            Sequence2 =&gt;
+                            Sequence2 =&gt; 
                             [
                                 Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
                                 {
@@ -1024,14 +1028,14 @@
                                     NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
                                     NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__G__position,
                                     V_DIFF =&gt; 12
-                                },
+                                }, 
                                 Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
                                 {
                                     Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
                                     NC_CDDIFF =&gt; Messages.NC_CDDIFF.Specific_SSP_applicable_to_Cant_Deficiency_150_mm,
                                     NC_DIFF =&gt; Messages.NC_DIFF.Specific_SSP_applicable_to_Freight_train_braked_in__P__position,
                                     V_DIFF =&gt; 6
-                                },
+                                }, 
                                 Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3
                                 {
                                     Q_DIFF =&gt; Messages.Q_DIFF.Other_specific_category__does_not_replace_the_Cant_Deficiency_SSP,
@@ -1040,14 +1044,16 @@
                                     V_DIFF =&gt; 8
                                 }
                             ]
-                        },
+                        }, 
                         Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2
                         {
                             D_STATIC =&gt; 2000,
                             V_STATIC =&gt; 127,
-                            Q_FRONT =&gt;  Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+                            Q_FRONT =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
                             N_ITER =&gt; 0,
-                            Sequence2 =&gt; []
+                            Sequence2 =&gt; 
+                            [
+                            ]
                         }
                     ]
                 }

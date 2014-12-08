@@ -34,7 +34,7 @@
  version="3.0.0"
  Name=""
  Guid="8b8ea3a5-12ac-4d39-a0c7-11e4836910a0"
->The DMI shall only send information that alter the DMI display. If the same information is provided over the cycles, it shall only be provided once.<RequirementSets>
+>The DMI shall send the information every cycle (if applicable), even if it is identical to the information sent the previous cycle.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="0ffc5b70-cb08-4243-af5e-f9b4e253f741"
@@ -298,7 +298,8 @@ Duplicate balises<Sub>
  version="3.0.0"
  Name=""
  Guid="689ab6d6-cac9-4667-86bf-c6be70fefd43"
->As balises are expected in the order given by linking information, BTM.Linking.Linkings is assumed to be listed in order of ascending distance<RequirementSets>
+>As balises are expected in the order given by linking information, each entry of BTM.Linking.Linkings is assumed to be listed with respect to the previous entry.
+So the distance in entry 3 is the distance as measure from entry 2, not the current LRBG.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="75fb698b-10d3-43c2-8a01-baef9fc7b85c"
@@ -377,7 +378,7 @@ Duplicate balises<Sub>
  version="3.0.0"
  Name=""
  Guid="6114bfb9-055b-4951-93ea-75d62541b167"
->In the state S140, we assume that when a START is received, the Shunting request to the driver is no more relevant, and vice versa : when the SHUNTING is received, the Start request is no more relevant.<RequirementSets>
+>In the state S140, we assume that when a START is received, the Shunting request to the driver is no longer relevant, and vice versa : when the SHUNTING is received, the Start request is no longer relevant.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a5c390f7-5ec7-44cf-aadf-e46a2d8a1f15"
@@ -557,7 +558,7 @@ This is mandatory to ensure that all preconditions for an MA (which may have bee
  version="3.0.0"
  Name=""
  Guid="d4425f99-d283-4faf-ba1a-eef44feb9002"
->The paragraph 3.13.2.2.6.2 indicates that the selection of brake parameter for A_brake_service(V) is done according to status of regenerative brake and eddy current brake (but not magnetic brake), while the paragraph 3.13.2.2.3.1.7 states that it shall be possible to define individual speed dependent deceleration models of A_brake_service(V) for each combination of use of regenerative brake, eddy current brake AND magnetic shoe brake, that is inconsistend. EFS offers the possibility to define individual models of A_brake_emergency(V) for each combination of use of all three brakes, but we consider that the magnetic shoe brake is never used in the case of A_brake_emergency(V).<RequirementSets>
+>The paragraph 3.13.2.2.6.2 indicates that the selection of brake parameter for A_brake_service(V) is done according to status of regenerative brake and eddy current brake (but not magnetic brake), while the paragraph 3.13.2.2.3.1.7 states that it shall be possible to define individual speed dependent deceleration models of A_brake_service(V) for each combination of use of regenerative brake, eddy current brake AND magnetic shoe brake, that is inconsistent. EFS offers the possibility to define individual models of A_brake_emergency(V) for each combination of use of all three brakes, but we consider that the magnetic shoe brake is never used in the case of A_brake_emergency(V).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2ec97486-5fe5-4a0e-8306-ab71708d693d"
@@ -1226,7 +1227,7 @@ This is mandatory to ensure that all preconditions for an MA (which may have bee
  version="3.0.0"
  Name=""
  Guid="cebd434e-de63-4765-a196-95e72be91d23"
->Verify that eather the braking models are defined in the train data, or the conversion model is applicable.<RequirementSets>
+>Verify that either the braking models are defined in the train data, or the conversion model is applicable.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="6cef7ecd-0353-49f6-b0ea-b937431404a9"
@@ -1542,7 +1543,7 @@ The non-matching elements defined in Subset-027 are:
  version="3.0.0"
  Name=""
  Guid="7e2eedb2-843c-49cc-baec-39383388af08"
->Requirement 3.16.2.3.1.a) says that the action must take place &quot;in rear of&quot; the expectation window. As there would be no benefit for this to occur after the expctation window has been passed we have decided that &quot;in rear of&quot; means &quot;before it is entered&quot; in this case.<RequirementSets>
+>The phrase &quot;in rear of X&quot; is taken to mean &quot;preceding X, in the train&apos;s direction of travel.&quot;<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="4dd284ad-c9b9-468f-8dfc-72b4731303be"
@@ -1703,7 +1704,7 @@ The non-matching elements defined in Subset-027 are:
  Name=""
  Guid="6dae5e9c-2f5e-4dd2-89ec-096e89a76644"
 >In chapter 5, there is a procedure describing the rules linked to displaying a change of traction system to the driver, but this information is not included in 4.7, DMI depending on modes.
-As the spec does not say in wich modes the traction system must be displayed, it was decided that it should be included with Sound Horn.<RequirementSets>
+As the spec does not say in wich modes the traction system must be displayed, it was decided to include it with Sound Horn.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="8848d207-66e8-488a-852e-cdaa81385256"

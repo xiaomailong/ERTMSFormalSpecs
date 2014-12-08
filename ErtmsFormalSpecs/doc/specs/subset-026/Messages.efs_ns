@@ -1,6 +1,4 @@
 <NameSpace
- X="30"
- Y="60"
  Width="100"
  Height="50"
  Name="Messages"
@@ -3154,26 +3152,26 @@ Qualifier to indicate the relevant validity direction of transmitted data, with 
  Guid="f7353ca2-87f4-4b9b-967e-551022187a35"
 >
 </ReqRef><Comment>Qualifier for emergency stop acknowledgement
-Qualifier to inform the RBC about the use of emergency stop by on-board equipment.</Comment>
+Qualifier to inform the RBC about the use of a conditional emergency stop by the on-board equipment. For an unconditional emergency stop, it is set to &quot;not relevant&quot;</Comment>
 <SpecialValues>
 <EnumValue
  Value="0"
- Name="Conditional_Emergency_Stop_accepted__with_update_of_EOA"
+ Name="Conditional_Emergency_Stop_accepted__with_update_of_EOA__ref_3_10_2_2"
  Guid="341295ef-5046-450e-87f2-8e3edf2331c5"
 >
 </EnumValue><EnumValue
  Value="1"
- Name="Conditional_Emergency_Stop_accepted__with_no_update_of_EOA"
+ Name="Conditional_Emergency_Stop_accepted__with_no_update_of_EOA__ref_3_10_2_2"
  Guid="f356b0f6-156b-47b1-b06d-9fabe36dcf08"
 >
 </EnumValue><EnumValue
  Value="2"
- Name="Unconditional_Emergency_Stop_accepted"
+ Name="Not_relevant__Unconditional_Emergency_Stop___ref_3_10_2_3"
  Guid="1962324d-f420-49de-9dbc-9ef25425aaf1"
 >
 </EnumValue><EnumValue
  Value="3"
- Name="Emergency_stop__Conditional_or_Unconditional__rejected__whatever_the_reason"
+ Name="Conditional_Emergency_Stop_rejected__because_the_train_has_passed_the_emergency_stop_location__ref_3_10_2_2"
  Guid="ce3689a0-28bb-430e-bee2-daa0ec15c8f6"
 >
 </EnumValue></SpecialValues>
@@ -3607,6 +3605,38 @@ Indicates LOOP-reference direction in relation to EOLM direction</Comment>
  Value="1"
  Name="Same"
  Guid="acdcdd90-aaa2-4329-8d80-682f00d1fe82"
+>
+</EnumValue></SpecialValues>
+</Range><Range
+ MinValue="0"
+ MaxValue="1"
+ Precision="IntegerPrecision"
+ Default="0"
+ X="770"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Q_LSSMA"
+ Guid="f7661a7b-6f6a-4b05-bb90-91a4fab76612"
+>
+<ReqRef
+ Id="9cc43ed6-9621-4a16-8f61-b653dda695e3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="10e624b4-0c7c-4e78-bf56-e8c019ed2985"
+>
+</ReqRef><Comment>Qualifier for the LSSMA display
+This qualifier tells whether the on-board has to toggle on/off the display of the lowest supervised speed within the MA</Comment>
+<SpecialValues>
+<EnumValue
+ Value="0"
+ Name="Toggle_off"
+ Guid="dc4418c9-640a-48a5-951e-d7f40558cda7"
+>
+</EnumValue><EnumValue
+ Value="1"
+ Name="Toggle_on"
+ Guid="9b052ec7-8d91-43a8-9103-94162ac1f731"
 >
 </EnumValue></SpecialValues>
 </Range><Range

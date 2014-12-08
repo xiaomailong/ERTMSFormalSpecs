@@ -61,7 +61,6 @@ namespace GUI.DataDictionaryView
 
             Item.appendSubRules(rule);
             Nodes.Add(retVal);
-            SortSubNodes();
 
             Item.setVerified(false);
 

@@ -530,7 +530,7 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="TrainIntegrity"
+ Name="TrainIntegrityConfirmation"
  Guid="eb09ead6-4fdf-4c01-9794-c33fb5343c2b"
 >
 <ReqRef
@@ -571,9 +571,9 @@
 <PreConditions>
 <PreCondition
  Guid="146fdf8b-b8d6-4313-ba45-30e323f7f464"
->TrainIntegrityAvailable()</PreCondition><PreCondition
+>TrainIntegrityConfirmationAvailable()</PreCondition><PreCondition
  Guid="555f8da9-4591-4d7b-ac02-d908a2ca5a37"
->THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+>TrainIntegrityConfirmation.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="96540f3c-63f5-4d64-88ef-9abe7565f3da"
@@ -607,7 +607,7 @@
 <PreConditions>
 <PreCondition
  Guid="996f94a0-c5f7-440e-99f3-218673234ca3"
->TrainIntegrityAvailable()</PreCondition></PreConditions>
+>TrainIntegrityConfirmationAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8923a9d3-2909-469f-a68f-1e6e7b3f36ad"
@@ -639,7 +639,7 @@
 <PreConditions>
 <PreCondition
  Guid="aaf56087-e2c8-4912-bcd6-6d6f8d647492"
->NOT TrainIntegrityAvailable()</PreCondition></PreConditions>
+>NOT TrainIntegrityConfirmationAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2a049c1c-0ad2-4a3f-ad23-534e9c5a2a07"
@@ -3002,7 +3002,7 @@
  Guid="b1511876-75a0-487c-b207-ad7d83e60c22"
 >THIS.InputInformation.InitiateRequest()</Action><Action
  Guid="e3c60e02-5c50-4eeb-8bb2-33a0382a63af"
->THIS.Data &lt;- Kernel.TrainData.TrainData.Value</Action></Actions>
+>THIS.Data &lt;- Kernel.TrainData.TrainData</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3047,7 +3047,7 @@
 <Actions>
 <Action
  Guid="c779d55b-4fb3-4c1b-a56f-f589b874ba0a"
->Kernel.TrainData.TrainData.Value &lt;- Data</Action><Action
+>Kernel.TrainData.TrainData.Value &lt;- Data.Value</Action><Action
  Guid="f1dea230-8399-4ceb-952e-5fba6e206bc5"
 >Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action
  Guid="6094f996-fa14-4aac-b1c8-c07821f30e5c"
@@ -3098,7 +3098,7 @@
 >
 <Comment>The request status</Comment>
 </StructureElement><StructureElement
- TypeName="Kernel.TrainData.TrainDataValues"
+ TypeName="Kernel.TrainData.TrainDataStruct"
  Default=""
  Mode="Incoming"
  Implemented="TRUE"
@@ -3580,7 +3580,17 @@
  Name="AcceptDriverResponse"
  Guid="416fbac4-352a-48d0-a4fb-cd6cf5869901"
 >
-<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<ReqRef
+ Id="6d37f900-cf0a-4c87-a4b2-9859f99dab0a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7c0632e4-46c8-41d7-9654-8a9f463f67b5"
+>
+</ReqRef><ReqRef
+ Id="c9d51e90-7f7e-4c3e-b330-dec4e7a4499d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fedb3cbb-a490-4ce8-8756-ac0c0a393d67"
+>
+</ReqRef><Comment>Receives the driver input and updates the internal data accordingly</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -3608,7 +3618,7 @@
  Guid="9484037f-ae8c-4c61-ac5d-d77f23a6c203"
 >THIS.InputInformation.AcceptDriverResponse()</Action><Action
  Guid="29f0eb50-b4fd-485f-add0-03585d769c39"
->Kernel.VirtualBaliseCoverIsSet &lt;- THIS.VirtualBaliseCoverIsSet</Action></Actions>
+>Kernel.VirtualBaliseCover.VirtualBaliseCovers &lt;- THIS.VirtualBaliseCovers</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3620,8 +3630,8 @@
 <Comment>Initiates train data entry request</Comment>
 <Parameters>
 <Parameter
- Type="Boolean"
- Name="VirtualBaliseCoverIsSet"
+ Type="Kernel.VirtualBaliseCover.VBCCol"
+ Name="VirtualBaliseCovers"
  Guid="bbfdb2d4-fd02-4e95-98f8-2d3cbad7a0f1"
 >
 </Parameter></Parameters>
@@ -3651,7 +3661,7 @@
  Guid="fd488683-6118-4073-8f08-3d8d37ab3e7a"
 >THIS.InputInformation.InitiateRequest()</Action><Action
  Guid="d98c8987-f0f6-407a-8bf2-9d0ae3658a9e"
->THIS.VirtualBaliseCoverIsSet &lt;- VirtualBaliseCoverIsSet</Action></Actions>
+>THIS.VirtualBaliseCovers &lt;- Kernel.VirtualBaliseCover.VirtualBaliseCovers</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3698,11 +3708,11 @@
 >
 <Comment>The request status</Comment>
 </StructureElement><StructureElement
- TypeName="Boolean"
+ TypeName="Kernel.VirtualBaliseCover.VBCCol"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
- Name="VirtualBaliseCoverIsSet"
+ Name="VirtualBaliseCovers"
  Guid="cae556c2-f308-4e87-a580-0c1684d76478"
 >
 <ReqRef
@@ -6420,14 +6430,21 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="797190f6-58c9-480c-8eba-5936f433f069"
 >
-</ReqRef><Comment>Indicates whether the level can be proposed to the driver</Comment>
+</ReqRef><ReqRef
+ Id="73763966-dbcc-4e9b-b9bc-1631e2be3b8d"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="5ec3a584-e25e-4da6-a365-0d222994c813"
+>
+</ReqRef><Comment>Indicates whether the non-leading request can be proposed to the driver, according to the current mode and to the status of non-leading input signal.</Comment>
 <Cases>
 <Case
  Name="Enumerate the modes where available"
  Guid="be9b248f-1fee-4e53-81ab-514a924baa4d"
 >
 <Comment>Identifies the modes where the function is available</Comment>
-<Expression>Kernel.Mode in [Mode.SB, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS]</Expression>
+<Expression>Kernel.Mode in [Mode.SB, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS]
+  AND
+TIU.NonLeadingPermitted</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -6612,7 +6629,7 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="TrainIntegrityAvailable"
+ Name="TrainIntegrityConfirmationAvailable"
  Guid="2e80bf61-2583-44ad-a676-75a360efb995"
 >
 <ReqRef

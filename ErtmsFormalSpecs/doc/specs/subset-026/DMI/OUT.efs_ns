@@ -1838,43 +1838,55 @@
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Update the TC profile without sound horn"
- Guid="4090d354-4677-4507-a18a-40a5fc2fa9d0"
+ Name="Update display"
+ Guid="ff47369f-f0a4-4da1-b59f-ad868d89de75"
 >
 <ReqRef
+ Id="c5c7a634-701c-4959-ae64-0522e9a953bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="08787086-c731-4e93-abaa-c8f0e3e8d661"
+>
+</ReqRef><ReqRef
+ Id="76e592ed-ed99-43e7-914d-f61ca2620144"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b048599b-7e82-43bd-ad4b-0375c4ca0b29"
+>
+</ReqRef><ReqRef
+ Id="6cbde49b-37af-4487-8711-54e2b5be1b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b8a725aa-182b-4560-9979-893c61fd2c8d"
+>
+</ReqRef><ReqRef
+ Id="a8ccc78f-09d7-4eed-b28f-c54108243648"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="410078bb-0758-46e0-953e-e2bd6c48e888"
+>
+</ReqRef><ReqRef
+ Id="37680a2a-2a2a-4293-b7b9-642b8326a938"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c95c155b-9ab9-4785-8bf3-3add7178cbf9"
+>
+</ReqRef><ReqRef
+ Id="12c337c0-55dd-4a63-ae32-c7fed0a16df9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="53d2cb83-539a-4fe5-aed1-d17e01b4070f"
+>
+</ReqRef><ReqRef
+ Id="dd85a59f-1d9f-471f-a5df-61f76a51d906"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="72230a75-0c1a-4dc7-bf1d-0a5d70a1dc74"
+>
+</ReqRef><ReqRef
  Id="975df280-ccd5-4db5-b2e6-00760162a5c8"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4dc20220-0518-4198-8df8-50ff89d879bf"
+ Guid="51840bff-50a5-415a-8389-a323db9beef2"
 >
 </ReqRef><ReqRef
  Id="3bc1a1bb-c207-4a66-a42a-62965c4a81cf"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="50bb519e-0b51-4ed0-920e-f0ffa1f59e64"
+ Guid="9eaaa63c-20a1-4329-a7ce-71d4327f29b9"
 >
-</ReqRef><Comment>Fetches the track conditions grouped with brake inhibition from the kernel for display on the DMI</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Update the TC profile without sound horn"
- Guid="561ce012-08f0-4304-b556-35eed2b66607"
->
-<PreConditions>
-<PreCondition
- Guid="e6acfc1e-25dd-42a7-a4ef-f3a2f407c8ae"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="bd6cd321-da85-4d70-822f-1231c228bd65"
->PlanningInformation &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING X IN Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToBrakeInhibition(X)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Update displayed announcements"
- Guid="ff47369f-f0a4-4da1-b59f-ad868d89de75"
->
-<Comment>Keeps the displayed announcements up to date by fetching new announcements from the kernel and deleting passed announcements</Comment>
+</ReqRef><Comment>Gets the track condition information from the Kernel for display</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1887,138 +1899,11 @@
  Guid="d65673f7-4589-4d1a-9cd3-d6ba89f8e929"
 >OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Add new announcements"
- Guid="42467e2e-ab7c-4b58-9abb-956cafa70971"
->
-<ReqRef
- Id="76e592ed-ed99-43e7-914d-f61ca2620144"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d144f439-e504-447d-b0ef-d56fbcf0e1e2"
->
-</ReqRef><ReqRef
- Id="c5c7a634-701c-4959-ae64-0522e9a953bd"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6c9ffa4e-a6dd-41aa-b2dd-f75041ce46be"
->
-</ReqRef><ReqRef
- Id="6cbde49b-37af-4487-8711-54e2b5be1b1a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="52a081d7-b378-46f2-b979-da2293b66fa6"
->
-</ReqRef><ReqRef
- Id="a8ccc78f-09d7-4eed-b28f-c54108243648"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c90f6c7e-aab7-4074-bb1f-88c66f4b99b1"
->
-</ReqRef><ReqRef
- Id="37680a2a-2a2a-4293-b7b9-642b8326a938"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="322ca277-03b0-48de-8b15-8b5b6407bbb7"
->
-</ReqRef><ReqRef
- Id="12c337c0-55dd-4a63-ae32-c7fed0a16df9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="059c3d83-84cf-4128-a731-3ec5dfe2e962"
->
-</ReqRef><ReqRef
- Id="dd85a59f-1d9f-471f-a5df-61f76a51d906"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="da6772b2-d67d-4fcc-a94c-212dce117c66"
->
-</ReqRef><Comment>Add stored announcements to the list of announcements displayed on the DMI</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Copy relevant announcements to Announcements"
- Guid="6d350436-ccf7-47ca-bd7b-1a62d3d6db91"
->
-<PreConditions>
-</PreConditions>
-<Actions>
 <Action
- Guid="e34b4f04-fe73-4018-9b61-fe9e819113a5"
->APPLY Kernel.TrackDescription.TrackConditions.General.TCDisplay.DisplayAnnouncement(X)
-ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements | 
-(
-  NOT Kernel.TrackDescription.TrackConditions.General.TCDisplay.IsInSoundHornGroup(X.Type)
-    AND  
-  Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionStart(X)
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Delete passed announcements"
- Guid="2cf86803-d4b1-4abd-b16a-2bada0f9f1f9"
->
-<ReqRef
- Id="7ff9da00-1e5b-46f1-b270-f5f14d810fd9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="50354a05-a2e4-417e-b1b4-63e1b584c850"
->
-</ReqRef><ReqRef
- Id="68413353-2dd0-4dd6-ba33-b1b4afb1c586"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8650377e-92d0-42e4-b881-a7533568f8c0"
->
-</ReqRef><ReqRef
- Id="96e826e2-9907-4faa-a010-bae190ca3e11"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5206123a-9f47-44a7-b72d-866ff703fdf2"
->
-</ReqRef><ReqRef
- Id="2aea8a30-ac5d-4fd5-baa8-d160b7b48ee7"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="416d8e47-b9bf-4572-ac8c-3c9dc469ca98"
->
-</ReqRef><ReqRef
- Id="3622dce7-f18b-4dc7-8539-e2f01da0803b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="692fb5b9-8af9-4e0b-b6c6-dd700e047522"
->
-</ReqRef><ReqRef
- Id="b68f5cf2-721d-45e0-bb47-eebf53ac6cfb"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="598828d3-f19c-4a4b-b52d-5f8a5ff8b0a4"
->
-</ReqRef><ReqRef
- Id="35fce87d-1120-47fb-8478-e9057dbcda67"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4c4a5798-24c6-4a09-8fd8-69cb51cfb7c1"
->
-</ReqRef><ReqRef
- Id="44386e14-f70e-4a34-ae1a-c1ebbc2ca149"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f2fe714d-af5e-4df3-ae64-97e772887e26"
->
-</ReqRef><ReqRef
- Id="a42d1ba3-faa3-4d96-9ea1-a86b6415e23d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e15c91e6-6f55-455e-b696-b2bdd15700dd"
->
-</ReqRef><Comment>Delete passed announcements from the displayed list</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Remove announcements past their end condition"
- Guid="6b494b2e-2c53-4705-8eec-6522ca03e158"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="d6e48ca9-23d7-4be2-bcea-1f16889186b1"
->ActiveConditions &lt;- MAP ActiveConditions | (NOT Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd ( Condition =&gt; X)  AND  X.Time &gt; Kernel.DateAndTime.CurrentTime)
-  USING X IN X</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+ Guid="c1e713a4-378e-4214-9d44-f045abfd742e"
+>Kernel.TrackDescription.TrackConditions.General.TCDisplay.DisplayAnnouncements(SoundHornGroup =&gt; False)</Action><Action
+ Guid="bd6cd321-da85-4d70-822f-1231c228bd65"
+>Kernel.TrackDescription.TrackConditions.General.TCDisplay.DisplayPlanning(SoundHornGroup =&gt; False)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -2162,162 +2047,21 @@ ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements |
 </ReqRef><Comment>Handles display of the following track conditions:
  - Sound horn
  - Non stopping area
- - Tunnel stopping area</Comment>
+ - Tunnel stopping area
+ - Change of traction system</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Update the TCProfile with sound horn"
- Guid="4410afeb-6e59-4243-ae9c-37065be322bc"
+ Name="Update display"
+ Guid="86095bc2-31aa-41c5-98bf-710505a4ee5e"
 >
 <ReqRef
  Id="fd0688e1-7912-499e-8db3-590b6e01d887"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d2df142d-ba32-41b5-95cc-08a6f596d82f"
+ Guid="6ce888a2-2fe8-4002-9ccd-d8b47ee4e6b6"
 >
-</ReqRef><Comment>Fetches the track conditions grouped with sound horn from the kernel for display on the DMI</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Update the TCProfile with sound horn"
- Guid="0dc169fd-41cd-4887-b5e0-520154065a58"
->
-<PreConditions>
-<PreCondition
- Guid="0968cf56-3b93-437d-90cc-aec24193b7f2"
->OutputInformation.DisplayRequested</PreCondition></PreConditions>
-<Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Check non stopping area and tunnel stopping area ends"
- Guid="0143daf8-1cac-46c0-a8b6-5a1fc440fc6d"
->
-<Comment>If the train is in a non stopping area, check that it has not passed the end (which is not tied to a fixed location)</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="In non stopping area"
- Guid="df251260-bf96-439b-893b-e4b0049d4f95"
->
-<ReqRef
- Id="a155d204-c214-45ff-a2b4-045e5aa12ba8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b9f81081-46d8-499a-bfd1-3df9809e2580"
->
-</ReqRef><ReqRef
- Id="3f38b783-07e2-4c8a-bfd3-a5e8de65d29b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1ad19272-279f-44e5-9464-9f8d9cae08a3"
->
-</ReqRef><ReqRef
- Id="46ca4ea8-b495-4b75-8ec7-60ccf9444a55"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="21967cf4-7d96-4927-8a52-49173823f672"
->
-</ReqRef><ReqRef
- Id="22cbd162-caa0-4e5a-a581-176fc2b4b8bb"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a2259b0a-36b6-4d88-abe0-6f6616b0faa9"
->
-</ReqRef><ReqRef
- Id="555c0388-8b13-4052-acc3-48e9e785af1a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="dd170a2f-5c2c-486f-8c68-11788f26b4f1"
->
-</ReqRef><Comment>Check for the end of a non stopping area, if applicable</Comment>
-<PreConditions>
-<PreCondition
- Guid="964f9fc5-b40c-408d-9d98-427f9b0c536c"
->THERE_IS X IN ActiveConditions |(
-X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea
-  AND  
-NOT X.IsAnnouncement
-  AND  
-Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd(X)
-)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="21498138-871c-4035-8eda-ed138b81aa0f"
->PlanningInformation &lt;- MAP PlanningInformation USING X IN Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
-    Distance=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea),
-    ProfilePoint=&gt;X,
-    TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea
-)</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="In tunnel stopping area"
- Guid="518946a6-da38-4a0a-9e3d-4e48017188d1"
->
-<ReqRef
- Id="3c13572d-5841-4b36-8f01-b73857688c4b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f70936f8-66a1-4f27-b571-bd19c4b9e9dc"
->
-</ReqRef><ReqRef
- Id="280a63e0-22df-4f00-8510-44fdf99aa05f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="56e0b00f-5574-4d83-a98e-8f9d559df837"
->
-</ReqRef><ReqRef
- Id="ac29655f-87cc-4309-b3bc-4d0736a743ad"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0a9ce4d2-63db-480a-8cdc-0f8c1c02fdfd"
->
-</ReqRef><Comment>Check for the end of a tunnel stopping area, if applicable</Comment>
-<PreConditions>
-<PreCondition
- Guid="137dac50-09d6-4b1d-98e7-03f2cbc17a0c"
->THERE_IS X IN ActiveConditions | (
-X.Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea
-  AND  
-NOT X.IsAnnouncement
-  AND  
-Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd(X)
-)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="dd8c664b-f24f-4112-8314-a0df1cd21574"
->PlanningInformation &lt;- MAP PlanningInformation USING X IN Kernel.TrackDescription.TrackConditions.General.TCDisplay.HideTCInformation(
-    Distance=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.EndOfTC(Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea),
-    ProfilePoint=&gt;X,
-    TCType=&gt;Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.TunnelStoppingArea
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Copy the TCProfile to the DMI"
- Guid="51ffb9cf-3010-4881-9a15-59b75be10def"
->
-<Comment>Fetch the track condition profile for display on the DMI</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="MAP TCProfile to the local variable"
- Guid="c6a5c0a5-ca0d-48b5-a4dc-5934fef31914"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="120e50dc-b447-40f5-9e72-762c0b86a068"
->MapToDMI()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Update displayed announcements"
- Guid="86095bc2-31aa-41c5-98bf-710505a4ee5e"
->
-<Comment>Keeps the displayed announcements up to date by fetching new announcements from the kernel and deleting passed announcements</Comment>
+</ReqRef><Comment>Keeps the displayed announcements up to date by fetching new announcements from the kernel and deleting passed announcements</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2330,163 +2074,15 @@ Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd(X)
  Guid="eadfd07e-2750-432a-8857-64ddd5f0db76"
 >OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Add new announcements"
- Guid="2f25fe10-0942-4e7c-8544-e086f3777671"
->
-<Comment>Add stored announcements to the list of announcements displayed on the DMI</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Copy relevant announcements to Announcements"
- Guid="c3ee7985-d1ba-4ee5-bd00-3185dd3fe4e8"
->
-<PreConditions>
-</PreConditions>
-<Actions>
 <Action
- Guid="b501096d-5057-466d-a460-16d5c836ceed"
->APPLY Kernel.TrackDescription.TrackConditions.General.TCDisplay.DisplayAnnouncement(X)
-ON Kernel.TrackDescription.TrackConditions.General.TCDisplay.Announcements | 
-(
-  Kernel.TrackDescription.TrackConditions.General.TCDisplay.IsInSoundHornGroup(X.Type)
-    AND  
-  Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionStart(X)
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Delete passed announcements"
- Guid="ba1832f4-5f9f-4895-aed6-018630be5072"
->
-<ReqRef
- Id="9ca199da-b431-4208-bbb1-61052c8839e8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b024fee8-cc49-4572-a943-132163ce150a"
->
-</ReqRef><ReqRef
- Id="02fc4b04-89a4-4fac-b594-da0bd5d3d31b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="18a905c2-6b06-41b1-a29c-7ad5d17a1bc0"
->
-</ReqRef><Comment>Delete passed announcements from the displayed list</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Remove announcements past their end condition"
- Guid="d8e69cc4-5f84-4777-8303-85bb7247e847"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="2a2107fb-0b0d-4ba0-a97a-e44c76c7df83"
->ActiveConditions &lt;-
-  MAP ActiveConditions | ( NOT Kernel.TrackDescription.TrackConditions.General.TCDisplay.ActiveConditionEnd ( Condition =&gt; X)
-                             AND
-                           X.Time &gt; Kernel.DateAndTime.CurrentTime )
-  USING X IN X</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+ Guid="7096599f-ab71-4629-8965-102f9e0c37ae"
+>Kernel.TrackDescription.TrackConditions.General.TCDisplay.DisplayAnnouncements(SoundHornGroup =&gt; True)</Action><Action
+ Guid="f0724a59-93f4-4514-a665-5fb10e9c4e8a"
+>Kernel.TrackDescription.TrackConditions.General.TCDisplay.DisplayPlanning(SoundHornGroup =&gt; True)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="MapToDMI"
- Guid="6b9249d8-3ea9-4819-b42b-3fe016a7c8de"
->
-<Comment>Map the track conditions in the kernel to the DMI</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Copy the track conditions"
- Guid="18407a17-9a33-4a25-9f8d-0f093c41e758"
->
-<Comment>Copy the general track conditions, converting to the appropriate structure</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Copy the track conditions"
- Guid="7223634b-8a0a-4126-966c-63ccb2206c4f"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="848f8401-d665-400b-b48d-be8bbfa8d170"
->PlanningInformation &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING X IN Kernel.TrackDescription.TrackConditions.General.TCDisplay.MapToSoundHorn(X)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Copy the changes of traction systems"
- Guid="66598e95-5d74-4a1a-8300-bb13ded6551b"
->
-<Comment>Insert the changes of traction system</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Copy the changes of traction systems"
- Guid="f3a6c5be-3628-41ce-a5d2-26ca2eb4bbda"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="9933f72e-c217-4e30-8566-3181442f2f62"
->APPLY InsertTractionSystem(X)
-ON Kernel.TrackDescription.TrackConditions.TractionSystems.TCTractionSystems</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- Name="InsertTractionSystem"
- Guid="c41db434-8b9b-4531-9aee-0308afb13bc6"
->
-<Comment>Inserts a change of traction system profile point into the list of displayed track conditions</Comment>
-<Parameters>
-<Parameter
- Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformation"
- Name="TractionSystem"
- Guid="b6e6a79d-e192-4f5b-826d-8ca9279b1e7f"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Insert element"
- Guid="9f851c49-8952-4343-862a-6608d52160bb"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Insert element"
- Guid="17681255-ccff-4a74-982a-d364549d7af3"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="8789d6b0-a839-4feb-8fdf-f3584bd08942"
->INSERT Kernel.TrackDescription.TrackConditions.TractionSystems.MapToSoundHorn(TractionSystem)
-IN PlanningInformation</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
  Implemented="TRUE"
  Name="Display"
  Guid="78b77eb3-b475-46f5-acde-89a0d43ebf6d"
@@ -3289,15 +2885,13 @@ IN PlanningInformation</Action></Actions>
  Guid="01ccdb75-5dfc-4c5b-b8ae-eda9c68b7913"
 >
 </StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
+ TypeName="Default.Mode"
+ Default="Default.Mode.FS"
  Mode="Internal"
  Implemented="TRUE"
- Name="ModeEntered"
+ Name="Mode"
  Guid="ec13b56c-9a0c-43f3-96f8-d20052458f8f"
 >
-<Comment>TODO: Find out where this is relevant in Subset-026.
-Remains true for a while after OS or FS modes have been entered.</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="770"
@@ -5506,7 +5100,7 @@ The brake reason.</Comment>
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="FLOI"
+ Name="SBI"
  Guid="13b7aaa8-f6c7-4600-996a-a27eb602319b"
 >
 <ReqRef
@@ -5551,7 +5145,7 @@ The brake reason.</Comment>
  Guid="b3afacbf-ccb9-4d3f-8c73-9ef0d57e41c4"
 >NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="e51303da-9c35-4033-8e63-238af9111f56"
->FLOIAvailable()</PreCondition></PreConditions>
+>SBIAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="76e91675-0e4e-47a4-a128-37a1e060e90b"
@@ -5582,7 +5176,7 @@ The brake reason.</Comment>
 <PreConditions>
 <PreCondition
  Guid="bb6bbd46-31df-4488-af58-162cc8eb566f"
->FLOIAvailable()</PreCondition></PreConditions>
+>SBIAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="48672ecc-af05-478d-9b96-16408fda9b0a"
@@ -5612,7 +5206,7 @@ The brake reason.</Comment>
 <PreConditions>
 <PreCondition
  Guid="9010ca2a-b7a7-44f0-9ef9-b21f798434ce"
->NOT FLOIAvailable()</PreCondition></PreConditions>
+>NOT SBIAvailable()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e33c109a-4b3d-4558-9834-a7b5a9691875"
@@ -5725,6 +5319,101 @@ The brake reason.</Comment>
  Name="OutputInformation"
  Guid="a38029a4-5491-4363-9561-e8d78c629e82"
 >
+</StructureElement></Structure><Structure
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LSSMA"
+ Guid="61cf8736-704c-4cb6-822c-25091fe9f603"
+>
+<ReqRef
+ Id="79ff8592-7e4d-46f0-8f6b-70287697fedc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="42712752-4949-4820-9b47-f0868bf9e56c"
+>
+</ReqRef><Comment>Handles display of the LSSMA</Comment>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ Name="Display"
+ Guid="b902fcd2-5a44-425d-91d1-0c0ae27f67ef"
+>
+<Comment>Requests to display the corresponding information</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Updates the request status"
+ Guid="22339978-dfba-4ad7-8701-4472a5e57933"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Updates the request status"
+ Guid="9de8ca92-db4b-46e2-8ee4-66918bb56185"
+>
+<PreConditions>
+<PreCondition
+ Guid="0c17445a-2aed-4ce9-a909-5cdf8a6eb0c8"
+>LSSMAAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7637b37c-826a-4446-8919-49775bc4804d"
+>THIS.OutputInformation.RequestDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="49707a0f-5010-4cda-8b08-6d82409e57a3"
+>
+<Comment>Tracks the changes of the mode</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Updates the status of the request according to the mode"
+ Guid="17c584a1-2858-43c9-ae41-23cba0e0d41c"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Updates the status of the request according to the mode"
+ Guid="acbb89d8-72e6-4ace-946e-cd36677d0a2e"
+>
+<PreConditions>
+<PreCondition
+ Guid="5b088292-2bb2-4e90-9fad-bb4fdb5720ce"
+>NOT LSSMAAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d646677e-06ec-4acd-9585-20d8186bad24"
+>THIS.OutputInformation.DoNotDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="OutputInformation"
+ Default=""
+ Mode="Outgoing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="OutputInformation"
+ Guid="7ceb6974-e979-4b5c-be2e-15cf41f988b8"
+>
+<Comment>Provides the state of the information displayed to the driver</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Speed"
+ Guid="7e0b18c1-3fb6-4827-89d9-d60537148fee"
+>
+<Comment>The LSSMA</Comment>
 </StructureElement></Structure></Structures>
 <Functions>
 <Function
@@ -6318,7 +6007,7 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  Name="Enumerates the cases where the request is available"
  Guid="8ddea9fa-b284-40a1-bf16-9d22c59a6571"
 >
-<Expression>Kernel.Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+<Expression>Kernel.Mode in [Mode.SB, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.UN, Mode.TR, Mode.PT, Mode.SN]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -6390,7 +6079,7 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  Name="Enumerates the cases where the request is available"
  Guid="f4fef2f4-3937-4c0d-beea-4f28ea039295"
 >
-<Expression>Kernel.Mode in [Mode.SH, Mode.LS, Mode.SR, Mode.OS, Mode.FS, Mode.RV]</Expression>
+<Expression>Kernel.Mode in [Mode.SH, Mode.SR, Mode.OS, Mode.FS, Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -6726,7 +6415,7 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  Name="Enumerates the cases where the request is available"
  Guid="28690335-579e-471c-8489-bc3709ee8621"
 >
-<Expression>Kernel.Mode in [Mode.FS, Mode.LS, Mode.SR, Mode.OS]</Expression>
+<Expression>Kernel.Mode in [Mode.FS, Mode.SR, Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -6999,7 +6688,7 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="FLOIAvailable"
+ Name="SBIAvailable"
  Guid="b8a22bf9-af92-48fe-becd-00738da5e74f"
 >
 <ReqRef
@@ -7038,6 +6727,29 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  Guid="2c5a07d0-3570-49ca-abfc-22e367e9ab86"
 >
 <Expression>Kernel.Mode in [Mode.SB, Mode.SH, Mode.FS, Mode.LS, Mode.SR, Mode.OS, Mode.NL, Mode.UN, Mode.TR, Mode.PT, Mode.SN, Mode.RV]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LSSMAAvailable"
+ Guid="adab8930-d216-4f78-a9f4-e1976cac52d3"
+>
+<ReqRef
+ Id="79ff8592-7e4d-46f0-8f6b-70287697fedc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7804c5fb-c6f1-4327-9fc1-d16e7751d866"
+>
+</ReqRef><Comment>Identifies the modes where the output is available</Comment>
+<Cases>
+<Case
+ Name="Enumerates the cases where the request is available"
+ Guid="fcac8ac8-c83a-449d-a0e2-c3e59d3720be"
+>
+<Expression>Kernel.Mode in [Mode.LS]</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>

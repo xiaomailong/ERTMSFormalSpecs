@@ -267,7 +267,7 @@
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
     Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram, 
-    M_VERSION =&gt; 0, 
+    M_VERSION =&gt; 32,
     Q_MEDIA =&gt; Messages.Q_MEDIA.Balise, 
     N_PIG =&gt; 0,
     N_TOTAL =&gt; 0, 
@@ -1094,7 +1094,9 @@
 <Actions>
 <Action
  Guid="e3c57cb7-0ef4-4596-8163-a1b5f865cf31"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Kernel.InitializeTestEnvironment()</Action><Action
+ Guid="e6d751be-0d92-48fc-8346-14fa456df4d8"
+>Kernel.OperatedSystemVersion.Value &lt;- Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1120,7 +1122,7 @@
 <Actions>
 <Action
  Guid="88c763c3-f445-43f3-84ca-799a536de6c6"
->Kernel.OperatedSystemVersion.Value &lt;- &apos;Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0&apos;</Action></Actions>
+>Kernel.OperatedSystemVersion.Value &lt;- Messages.M_VERSION.Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2822,7 +2824,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Send Magnetic Shoe BrakeStatus Message"
+ Name="Send Magnetic Shoe Brake Status Message"
  Guid="ff41d673-0116-4873-a253-a242de1d7769"
 >
 <TestCases>

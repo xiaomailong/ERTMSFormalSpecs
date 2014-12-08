@@ -211,6 +211,8 @@ namespace DataDictionary.Tests.Translations
           AddVariable("V_REVERSE", ConvertInt.INSTANCE);
           AddVariable("NID_OPERATIONAL", ConvertString.INSTANCE);
           AddVariable("G_TSR", ConvertInt.INSTANCE);
+          AddVariable("Q_LSSMA", ConvertInt.INSTANCE);
+          AddVariable("T_LSSMA", ConvertInt.INSTANCE);
           AddVariable("NID_LRBG", ConvertInt.INSTANCE);
           AddVariable("D_LRBG", ConvertInt.INSTANCE);
           AddVariable("Q_DIRLRBG", ConvertInt.INSTANCE);

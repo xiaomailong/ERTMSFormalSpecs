@@ -106,10 +106,11 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the string representation of the binary expression
+        /// Provides the indented expression text
         /// </summary>
+        /// <param name="indentLevel"></param>
         /// <returns></returns>
-        public override string ToString()
+        public override string ToString(int indentLevel)
         {
             string retVal = "'" + Image + "'";
 

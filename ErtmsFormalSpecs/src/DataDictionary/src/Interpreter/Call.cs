@@ -581,9 +581,14 @@ namespace DataDictionary.Interpreter
             }
         }
 
-        public override string ToString()
+        /// <summary>
+        /// Provides the indented expression text
+        /// </summary>
+        /// <param name="indentLevel"></param>
+        /// <returns></returns>
+        public override string ToString(int indentLevel)
         {
-            string retVal = Called.ToString() + "(";
+            string retVal = Called.ToString(indentLevel) + "(";
 
             bool first = true;
             foreach (Expression argument in ActualParameters)
@@ -593,7 +598,7 @@ namespace DataDictionary.Interpreter
                     retVal += ", ";
                 }
                 first = false;
-                retVal += argument.ToString();
+                retVal += argument.ToString(indentLevel);
             }
             foreach (KeyValuePair<Designator, Expression> pair in NamedActualParameters)
             {
@@ -602,7 +607,7 @@ namespace DataDictionary.Interpreter
                     retVal += ", ";
                 }
                 first = false;
-                retVal += pair.Key.ToString() + " => " + pair.Value.ToString();
+                retVal += pair.Key.ToString(indentLevel) + " => " + pair.Value.ToString(indentLevel);
             }
             retVal = retVal + ")";
 

@@ -342,7 +342,7 @@ namespace GUI.TestRunnerView
                     }
                 }
 
-                window.RefreshAfterStep();
+                GUIUtils.MDIWindow.RefreshAfterStep();
                 window.tabControl1.SelectedTab = window.testExecutionTabPage;
             }
         }
@@ -372,6 +372,9 @@ namespace GUI.TestRunnerView
                     }
                 }
                 SynchronizerList.ResumeSynchronization();
+
+                GUIUtils.MDIWindow.RefreshAfterStep();;
+                window.tabControl1.SelectedTab = window.testExecutionTabPage;
             }
         }
 
@@ -392,7 +395,7 @@ namespace GUI.TestRunnerView
             retVal.Insert(index++, new MenuItem("Show translation rule", new EventHandler(ShowTranslationHandler)));
             retVal.Insert(index++, new MenuItem("Apply translation rules", new EventHandler(TranslateHandler)));
             retVal.Insert(index++, new MenuItem("-"));
-            retVal.Insert(index++, new MenuItem("Run once", new EventHandler(RunHandler)));
+            retVal.Insert(index++, new MenuItem("Run, not checking expectations", new EventHandler(RunHandler)));
             retVal.Insert(index++, new MenuItem("Run until expectation reached", new EventHandler(RunForExpectationsHandler)));
             retVal.Insert(index++, new MenuItem("-"));
 

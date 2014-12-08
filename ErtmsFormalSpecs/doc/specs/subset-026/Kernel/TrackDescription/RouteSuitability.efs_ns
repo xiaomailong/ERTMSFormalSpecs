@@ -11,6 +11,8 @@
 <Structures>
 <Structure
  Default=""
+ X="20"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -64,9 +66,11 @@
 <Comment>List of route suitability items.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
+ X="350"
+ Y="10"
  Width="100"
  Height="50"
+ Pinned="TRUE"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RouteSuitabilityItem"
@@ -202,7 +206,8 @@
 <Collection
  TypeName="Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItem"
  Default="[]"
- Y="60"
+ X="180"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -216,6 +221,7 @@
 <Function
  Type="Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItem"
  Default=""
+ X="20"
  Y="180"
  Width="100"
  Height="50"
@@ -279,7 +285,7 @@
 </Function><Function
  Type="Boolean"
  Default=""
- X="110"
+ X="130"
  Y="180"
  Width="100"
  Height="50"
@@ -381,7 +387,7 @@ NOT THERE_IS X IN
 </Function><Function
  Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
- X="220"
+ X="240"
  Y="180"
  Width="100"
  Height="50"
@@ -452,7 +458,7 @@ THERE_IS X IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition><
 </Function><Function
  Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
- X="330"
+ X="350"
  Y="180"
  Width="100"
  Height="50"
@@ -511,7 +517,7 @@ THERE_IS X IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition><
 </Function><Function
  Type="Boolean"
  Default=""
- X="440"
+ X="460"
  Y="180"
  Width="100"
  Height="50"
@@ -588,7 +594,8 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
 </Function></Functions>
 <Procedures>
 <Procedure
- Y="300"
+ X="20"
+ Y="280"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -682,8 +689,8 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="110"
- Y="300"
+ X="130"
+ Y="280"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -951,8 +958,8 @@ ON
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="220"
- Y="300"
+ X="240"
+ Y="280"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1011,7 +1018,8 @@ IN
  Type="Kernel.TrackDescription.RouteSuitability.RouteSuitabilityInformation"
  DefaultValue="EMPTY"
  VariableMode="Internal"
- Y="120"
+ X="20"
+ Y="90"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1038,7 +1046,8 @@ IN
 <Rules>
 <Rule
  Priority="Processing"
- Y="360"
+ X="20"
+ Y="380"
  Width="100"
  Height="50"
  Implemented="TRUE"

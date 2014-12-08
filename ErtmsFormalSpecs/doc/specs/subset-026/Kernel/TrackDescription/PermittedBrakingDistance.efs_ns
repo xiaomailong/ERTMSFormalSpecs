@@ -24,6 +24,16 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="47130d6d-d31a-46c2-aeb2-bddffa9cb33d"
 >
+</ReqRef><ReqRef
+ Id="7286d7a7-e1e5-4269-ae7b-f3e6ff5a129f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bfba847b-787d-4617-ad7a-972ac93c113c"
+>
+</ReqRef><ReqRef
+ Id="256eb4d5-6af7-4f58-b1ad-b1fd498be1d7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4863af56-2423-4051-891d-9238b5496c6e"
+>
 </ReqRef><Comment>Represents a speed restriction to ensure permitted braking distance.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Distance"
@@ -249,57 +259,6 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="450"
- Y="250"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="EBSpeedRestrictions"
- Guid="137e9a66-3ec7-48f0-acf7-e86cd4b74f11"
->
-<ReqRef
- Id="7a7e3aa4-8bc1-41f9-86fa-a8f1795b69f0"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="311a1849-4e3a-4ca7-bb80-890469f815a3"
->
-</ReqRef><Comment>Computes EBI  target speed supervision value.</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Distance"
- Name="d"
- Guid="63f76424-ab3e-4296-ac73-9c55d1896e4b"
->
-</Parameter><Parameter
- Type="Default.BaseTypes.Distance"
- Name="PermittedBrakingDistance"
- Guid="193a6a97-37ef-414e-875b-c1d810869bab"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Before permitted braking distance"
- Guid="90d40712-938a-49ee-92d9-86b0e4327c05"
->
-<PreConditions>
-<PreCondition
- Guid="104659de-a2d2-4f67-a02f-1b251160a453"
->d &lt; PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, EstimatedAccelerationSetToZero =&gt; False )</PreCondition><PreCondition
- Guid="3891d176-4d7b-40b3-b804-77f1889d16bb"
->0.0 &lt;= d</PreCondition></PreConditions>
-<Expression>BaseTypes.Speed.MaxSpeed</Expression>
-</Case><Case
- Name="After permitted braking distance"
- Guid="24f6acc4-1f2a-4a8b-89ce-583a62ce2e12"
->
-<PreConditions>
-<PreCondition
- Guid="08d03f34-367b-475c-8e4f-c1175164676b"
->PermittedBrakingDistance - Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, EstimatedAccelerationSetToZero =&gt; False ) &lt;= d</PreCondition></PreConditions>
-<Expression>0.0</Expression>
-</Case></Cases>
-</Function><Function
- Type="Default.BaseTypes.Speed"
- Default=""
  X="10"
  Y="310"
  Width="100"
@@ -328,6 +287,26 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0a102b2d-a0b0-4bac-9846-8a57206da992"
 >
+</ReqRef><ReqRef
+ Id="256eb4d5-6af7-4f58-b1ad-b1fd498be1d7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2571039c-648a-4338-9166-6d12e3ec0840"
+>
+</ReqRef><ReqRef
+ Id="033c7194-4880-4392-826b-611b7e266476"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="71efcfab-9d22-4033-a983-c89e2ebddfa2"
+>
+</ReqRef><ReqRef
+ Id="8c7db48b-2e9f-4028-9811-c07cc373b1cc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f9feac13-1780-4b38-beda-d1bb2bc56744"
+>
+</ReqRef><ReqRef
+ Id="bb553624-3428-4035-ae99-df4bea6282e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0f0edd67-a055-4dfa-9b17-f1222044fefc"
+>
 </ReqRef><Comment>Computes the permitted speed for a speed restriction to ensure permitted braking distance.</Comment>
 <Parameters>
 <Parameter
@@ -348,15 +327,25 @@
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Value"
+ Name="EB"
+ Guid="1323899b-9fa0-4934-9a84-141b821de50a"
+>
+<PreConditions>
+<PreCondition
+ Guid="d7d70801-f807-432c-be32-68ab4529c806"
+>BrakeType == Messages.Q_PBDSR.EB_intervention_requested</PreCondition></PreConditions>
+<Expression>RoundToMultiple(
+    Value =&gt; ComputePermittedSpeedForEB( d_PBD =&gt; PermittedBrakingDistance, Gradient =&gt; Gradient ),
+    Multiple =&gt; 5.0
+)</Expression>
+</Case><Case
+ Name="SB"
  Guid="cf62ff4f-7221-4e5b-8d1f-ed2445553643"
 >
 <Expression>RoundToMultiple (
-    Value =&gt; ComputeSBCeilingSpeedIntervention (
+    Value =&gt; ComputePermittedSpeedForSB (
         PermittedBrakingDistance =&gt; PermittedBrakingDistance,
-        Gradient =&gt; Gradient,
-        BrakeType =&gt; BrakeType ) -
-            SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi ( ComputeSBCeilingSpeedIntervention ( PermittedBrakingDistance =&gt; PermittedBrakingDistance, Gradient =&gt; Gradient, BrakeType =&gt; BrakeType ) ),
+        Gradient =&gt; Gradient ),
     Multiple =&gt; 5.0
 )</Expression>
 </Case></Cases>
@@ -368,13 +357,28 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="ComputeSBCeilingSpeedIntervention"
+ Name="ComputePermittedSpeedForSB"
  Guid="51b7e8a2-a2f3-499f-9794-248e4bd4dff0"
 >
 <ReqRef
  Id="09e2410c-62cb-42ab-b7f9-21ab9940cbc7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8d071e71-8966-4f84-aa88-2b88362dc5fd"
+>
+</ReqRef><ReqRef
+ Id="033c7194-4880-4392-826b-611b7e266476"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4f6369e8-d856-463d-8bec-f6f58a1adc4f"
+>
+</ReqRef><ReqRef
+ Id="bb553624-3428-4035-ae99-df4bea6282e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fbd06aa1-7577-47a6-9071-6a2cec045dc7"
+>
+</ReqRef><ReqRef
+ Id="8c7db48b-2e9f-4028-9811-c07cc373b1cc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a488b00f-c14a-482b-ac0b-6cc7403f4ae5"
 >
 </ReqRef><Comment>Computes SB ceiling speed intervention value for a speed restriction to ensure permitted braking distance.</Comment>
 <Parameters>
@@ -388,37 +392,16 @@
  Name="Gradient"
  Guid="035c5457-66f1-437d-b55e-7bf9056a9282"
 >
-</Parameter><Parameter
- Type="Messages.Q_PBDSR"
- Name="BrakeType"
- Guid="e6189dbc-f3b5-491f-8966-73aee19a1bd7"
->
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="EB"
- Guid="841502a3-0e6b-4f5f-aec8-6400ad81e86a"
->
-<PreConditions>
-<PreCondition
- Guid="7c338b96-eb1e-4447-a229-f3bf88472e15"
->BrakeType == Messages.Q_PBDSR.EB_intervention_requested</PreCondition></PreConditions>
-<Expression>DecelerationProfile ( 
-  SpeedRestrictions =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; EBSpeedRestrictions ( d =&gt; d, PermittedBrakingDistance =&gt; PermittedBrakingDistance ), 
-  DecelerationFactor =&gt; FUNCTION d : Default.BaseTypes.Distance, V : Default.BaseTypes.Speed =&gt; A_safe ( d =&gt; d, V =&gt; V, Gradient =&gt; Gradient ) ) 
-( 0.0 )</Expression>
-</Case><Case
- Name="SB"
+ Name="Value"
  Guid="e94a30d4-4c1e-4d97-a556-fb5305537c4c"
 >
-<PreConditions>
-<PreCondition
- Guid="1272a550-6204-449a-a256-468ef4216b1f"
->BrakeType == Messages.Q_PBDSR.SB_intervention_requested</PreCondition></PreConditions>
-<Expression>DecelerationProfile ( 
-  SpeedRestrictions =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; SBSpeedRestrictions ( d =&gt; d, PermittedBrakingDistance =&gt; PermittedBrakingDistance ), 
-  DecelerationFactor =&gt; FUNCTION d : Default.BaseTypes.Distance, V : Default.BaseTypes.Speed =&gt; A_safe ( d =&gt; d, V =&gt; V, Gradient =&gt; Gradient ) ) 
-( 0.0 )</Expression>
+<Expression>BaseTypes.MinSpeed(
+    X1 =&gt; PermittedSpeedForSB_EB( d_PBD =&gt; PermittedBrakingDistance, Gradient =&gt; Gradient ),
+    X2 =&gt; PermittedSpeedForSB_SB( d_PBD =&gt; PermittedBrakingDistance, Gradient =&gt; Gradient )
+)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -432,16 +415,6 @@
  Guid="c21f881b-d886-45ff-bed7-bab1d5e1a2e8"
 >
 <ReqRef
- Id="327d187c-a17c-486f-b724-d1f714f552fe"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b4fbf68c-38a0-4e77-9ba2-c0e7d129e31d"
->
-</ReqRef><ReqRef
- Id="afcddd77-8cf6-4e60-8d18-2663f4121206"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5c2549c5-c567-45fa-80b8-fac931db1b88"
->
-</ReqRef><ReqRef
  Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="cd255157-9f1b-457a-bdd7-67a8c0037883"
@@ -451,22 +424,37 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bc321fca-17c5-4f93-b624-e81b76adfbd6"
 >
+</ReqRef><ReqRef
+ Id="4486b27f-175f-416b-966b-36a45f3533dd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2592bbe3-5f19-43af-bfb0-7092ba779339"
+>
+</ReqRef><ReqRef
+ Id="e87f780e-c98b-4fa1-8fc6-fa1095bf905f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dceaa548-fc85-4a3c-9b6c-976217512149"
+>
+</ReqRef><ReqRef
+ Id="d4a81249-71de-4107-8751-642bb154bb84"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="de50a32d-0600-4d36-afd7-0f1600d8edc5"
+>
+</ReqRef><ReqRef
+ Id="7a7e3aa4-8bc1-41f9-86fa-a8f1795b69f0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d759bb2d-f3f7-461e-9f9e-181712740338"
+>
 </ReqRef><Comment>Provides the distance travelled during the time elapsed between the Emergency brake intervention and the full application of the braking effort.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
- Name="Vest"
+ Name="V_PBD"
  Guid="88a3ad4a-103b-4e84-b8c1-2509d26f5507"
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Speed"
- Name="Vtarget"
- Guid="c63c5f83-4265-43ba-9a78-ae1feaeefee7"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
- Guid="8f2b1abe-76d1-417c-96f7-beedd377b6d1"
+ Name="dV"
+ Guid="8524eab8-3ef9-46c6-acb8-3c0cdbefe540"
 >
 </Parameter></Parameters>
 <Cases>
@@ -474,8 +462,7 @@
  Name="Value"
  Guid="626b0f44-abec-4e4e-a2e4-67111dc5b3c1"
 >
-<Expression>BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta1(EstimatedAccelerationSetToZero) / 2.0, X2 =&gt; Vtarget ) * SpeedAndDistanceMonitoring.DecelerationCurves.T_traction(EstimatedAccelerationSetToZero) +
-( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta1(EstimatedAccelerationSetToZero), X2 =&gt; Vtarget ) + SpeedAndDistanceMonitoring.DecelerationCurves.Vdelta2(EstimatedAccelerationSetToZero) / 2.0 ) * SpeedAndDistanceMonitoring.DecelerationCurves.T_berem(EstimatedAccelerationSetToZero)</Expression>
+<Expression>BaseTypes.SpeedToMS( V_PBD + dV + Vdelta0PBD(V_PBD) ) * ( SpeedAndDistanceMonitoring.DecelerationCurves.T_traction(True) + SpeedAndDistanceMonitoring.DecelerationCurves.T_berem(True) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -485,35 +472,42 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="Vdelta0"
+ Name="Vdelta0PBD"
  Guid="25c05d76-e738-4198-b39e-efd3cdcbaefa"
 >
 <ReqRef
- Id="327d187c-a17c-486f-b724-d1f714f552fe"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7be5d5bd-2a1d-4918-a469-20d7c5bb06fb"
->
-</ReqRef><ReqRef
  Id="28e8fd74-8da8-4c8d-9d0b-2b3de6dea1ac"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6221e25a-6d61-4cf5-8a73-465103ab38a2"
->
-</ReqRef><ReqRef
- Id="7a7e3aa4-8bc1-41f9-86fa-a8f1795b69f0"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f848ccf6-4be4-4980-aecb-67f160a66e1e"
->
-</ReqRef><ReqRef
- Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f5782854-e6cb-4e0a-807f-ab1bc1e97733"
 >
 </ReqRef><ReqRef
  Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1a89fb0a-39f0-4597-abb8-e1a655f8bf8e"
 >
+</ReqRef><ReqRef
+ Id="603addf7-8a2f-4b2c-8e61-6c2de3f220f7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1e29328-931b-49df-ac9d-4b4c3a5b51ea"
+>
+</ReqRef><ReqRef
+ Id="7b334033-590c-4e04-b98a-1973062cc426"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cc9158cd-a0a3-4622-9e41-63f340be5f2a"
+>
+</ReqRef><ReqRef
+ Id="cbdd4a98-e47d-4d4a-be99-b19a44519a2f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ca4938da-e57f-4d82-a7f2-d68f7799908e"
+>
 </ReqRef><Comment>Provides the value of Vdelta0 for speed restrictions to ensure permitted braking distance.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V_PBD"
+ Guid="cf3822cd-3178-49e6-a46d-c0f600a54143"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="Compensation of speed inaccuracy is inhibited by NV"
@@ -522,13 +516,13 @@
 <PreConditions>
 <PreCondition
  Guid="44484dba-c965-4e53-b13d-f63a06ed43cb"
->NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.Yes</PreCondition></PreConditions>
+>NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case><Case
  Name="Compensation of speed inaccuracy is not inhibited by NV"
  Guid="a19d201e-cd5f-4b60-bcf6-a4ea5c891e82"
 >
-<Expression>Odometry.Accuracy.V_ura</Expression>
+<Expression>SpeedAndDistanceMonitoring.f41(V_PBD)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
@@ -575,6 +569,11 @@
  Id="2c111d3d-6708-48ec-ae52-2f2dd5ea8d7f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7005a401-ce82-4efd-b415-a87c91bc45b7"
+>
+</ReqRef><ReqRef
+ Id="08b9f07e-b517-412e-8ea3-adc1aa89cba0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="97a25e34-02e1-423b-8987-2b5247f9ac42"
 >
 </ReqRef><Comment>Computes the safe deceleration of the train, with gradient 0.</Comment>
 <Parameters>
@@ -674,6 +673,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b11d86f5-1038-4bf5-a25e-c749a00423ba"
 >
+</ReqRef><ReqRef
+ Id="08b9f07e-b517-412e-8ea3-adc1aa89cba0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="80731477-68c2-4bd9-bd46-ad7d3e94971b"
+>
 </ReqRef><Comment>Provides value of A_safe for adhesion factor slippery rail with gradient 0.</Comment>
 <Parameters>
 <Parameter
@@ -706,7 +710,7 @@
 <PreCondition
  Guid="099356aa-bb6a-4569-96cc-bd9497a47543"
 >AdhesionFactors.SlipperyRailSelectedByDriver == Messages.M_ADHESION.Slippery_rail</PreCondition></PreConditions>
-<Expression>( MINSURFACE ( TrainData.BrakingParameters.A_brake_safe ( d =&gt; d, V =&gt; V ), NationalValues.A_MAXREDADH () ) + Gradient ) (d, V)</Expression>
+<Expression>( MIN ( A_brake_safe (V), NationalValues.A_MAXREDADH () ) + A_gradient(Gradient) ) (V)</Expression>
 </Case><Case
  Name="Adhesion factor available (trackside)"
  Guid="fdcbba77-4eb9-4b7f-9ac6-54da14511424"
@@ -719,7 +723,7 @@
 >anAdhFactor.Distance &lt;= d</PreCondition><PreCondition
  Guid="db33952f-0acc-4003-8b05-5fcf9b2fa7c3"
 >anAdhFactor.Value == Messages.M_ADHESION.Slippery_rail</PreCondition></PreConditions>
-<Expression>( MINSURFACE ( TrainData.BrakingParameters.A_brake_safe ( d =&gt; d, V =&gt; V ), NationalValues.A_MAXREDADH () ) + Gradient ) (d, V)</Expression>
+<Expression>( MIN ( A_brake_safe (V), NationalValues.A_MAXREDADH () ) + A_gradient(Gradient) ) (V)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
@@ -780,97 +784,7 @@
  Name="Value"
  Guid="8c9d1ee0-0c94-488c-94f8-8d85df4b9e66"
 >
-<Expression>TrainData.BrakingParameters.A_brake_safe ( d =&gt; d, V =&gt; V ) + Gradient</Expression>
-</Case></Cases>
-</Function><Function
- Type="Default.BaseTypes.Speed"
- Default=""
- X="120"
- Y="250"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="SBSpeedRestrictions"
- Guid="96960abf-ca14-404a-a50f-416490ef20c6"
->
-<ReqRef
- Id="7a7e3aa4-8bc1-41f9-86fa-a8f1795b69f0"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d417314e-4ea2-4ff5-a1cf-d145db1535e0"
->
-</ReqRef><Comment>Computes FLOI target speed supervision value.</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Distance"
- Name="d"
- Guid="5dd910e8-4ec3-4d9b-ac27-e221037a9081"
->
-</Parameter><Parameter
- Type="Default.BaseTypes.Distance"
- Name="PermittedBrakingDistance"
- Guid="d86e6aa8-ae38-44b1-870a-2b15e9e8a66a"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Before permitted braking distance"
- Guid="5e061e77-a887-4729-a664-1493d1fd755a"
->
-<PreConditions>
-<PreCondition
- Guid="3778642d-2ad3-4bb5-846d-9cebbcac9a61"
->0.0 &lt;= d</PreCondition><PreCondition
- Guid="4c02d1d5-54b9-4506-b278-57f123705cf6"
->d &lt; PermittedBrakingDistance - SB_PBD ( EstimatedAccelerationSetToZero =&gt; True )</PreCondition></PreConditions>
-<Expression>BaseTypes.Speed.MaxSpeed</Expression>
-</Case><Case
- Name="After permitted braking distance"
- Guid="80ef50ed-7d3c-488b-8a39-1643d88a7e26"
->
-<PreConditions>
-<PreCondition
- Guid="7df22ab8-0234-4eb3-94c3-e7b321626e01"
->PermittedBrakingDistance - SB_PBD ( EstimatedAccelerationSetToZero =&gt; False ) &lt;= d</PreCondition></PreConditions>
-<Expression>0.0</Expression>
-</Case></Cases>
-</Function><Function
- Type="Default.BaseTypes.Distance"
- Default=""
- X="230"
- Y="250"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="SB_PBD"
- Guid="777a4305-497b-43fe-b1db-8f90284c21d6"
->
-<ReqRef
- Id="d542f99e-9462-4bb6-9087-35da9a233e06"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="28e488f9-c17b-45ac-8a6c-d25b1e2186e9"
->
-</ReqRef><Parameters>
-<Parameter
- Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
- Guid="9aa8f36c-efeb-42b4-8e4d-fbb45bcf5134"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="SBI1"
- Guid="a3bdc837-fad8-4b38-98d7-846b87ef16de"
->
-<PreConditions>
-<PreCondition
- Guid="0fdc4648-093d-4db8-a89e-ed9a3c288bb9"
->( SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2 * BaseTypes.SpeedToMS( Odometry.TrainSpeed() ) + Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) ) + ( TrainPosition.FrontEndPosition ( DistanceInterval.Max ) - TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) ) &lt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1 * Odometry.TrainSpeed()</PreCondition></PreConditions>
-<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1 * BaseTypes.SpeedToMS( Odometry.TrainSpeed() )</Expression>
-</Case><Case
- Name="SBI2"
- Guid="5712aee3-b427-40aa-aae6-94724f375a2d"
->
-<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2 * BaseTypes.SpeedToMS( Odometry.TrainSpeed() ) + Dbec ( Vest =&gt; 0.0, Vtarget =&gt; 0.0, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero )</Expression>
+<Expression>A_brake_safe (V) + A_gradient(Gradient)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
@@ -918,17 +832,22 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ec423045-2fcf-46d0-9dd8-010f61123b7b"
 >
+</ReqRef><ReqRef
+ Id="59b55377-5f37-4420-adf5-c0ce7ad42db1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="060c9648-b4b0-4d73-9e8b-5102e96f8462"
+>
 </ReqRef><Comment>Provides the value of the expected deceleration of the train, with gradient 0.</Comment>
 <Parameters>
 <Parameter
- Type="Default.BaseTypes.Distance"
- Name="d"
- Guid="450ce57d-a4a3-42a8-921d-e992de93a28f"
->
-</Parameter><Parameter
  Type="Default.BaseTypes.Speed"
  Name="V"
  Guid="581285a2-d199-4610-a3df-8ec1d08eec82"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="Gradient"
+ Guid="ee6092e5-e433-4498-bf57-431f11c65b03"
 >
 </Parameter></Parameters>
 <Cases>
@@ -940,7 +859,7 @@
 <PreCondition
  Guid="59fd3e62-37f9-4040-ac3a-96214d7a24cf"
 >TrainData.TrainData.Value.SBModels != EMPTY</PreCondition></PreConditions>
-<Expression>TrainData.BrakingParameters.A_brake_service ( d =&gt; d, V =&gt; V )</Expression>
+<Expression>TrainData.BrakingParameters.Default_brk_service (V) + A_gradient(Gradient)</Expression>
 </Case><Case
  Name="From conversion model"
  Guid="40d171e2-7f71-49f1-9dbe-19e8a8faac39"
@@ -949,7 +868,7 @@
 <PreCondition
  Guid="e650e13e-81be-4737-a404-293cace431a0"
 >TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed()</PreCondition></PreConditions>
-<Expression>TrainData.BrakingParameters.ConversionModel.A_brake_service ( V )</Expression>
+<Expression>TrainData.BrakingParameters.ConversionModel.A_brake_service ( V ) + A_gradient(Gradient)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -1044,6 +963,690 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 >
 <Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="A_gradient"
+ Guid="ff4d8d35-9b13-45fd-b239-097d073ee88a"
+>
+<ReqRef
+ Id="2c111d3d-6708-48ec-ae52-2f2dd5ea8d7f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="af76dc0f-3972-4bf4-9fcd-0f0190f31abe"
+>
+</ReqRef><Comment>Returns the acceleration due to the provided gradient, with compensation for nominal rotating mass</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="Gradient"
+ Guid="1c15b776-3692-4568-8037-92b0bd69109f"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="918992e5-ffd6-4a75-9604-fef457732318"
+>
+<Expression>Default.BaseTypes.Acceleration.g * Gradient.CompensateGradientWithRotatingMass(Gradient)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Default=""
+ X="270"
+ Y="630"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="A_brake_safe"
+ Guid="0cfdfadd-4ab2-467e-8f11-7a6d96a24894"
+>
+<ReqRef
+ Id="597cfdc2-80f1-4a68-807f-b6173d958e91"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2441ef30-2fc9-43b2-b50d-57da11f33912"
+>
+</ReqRef><ReqRef
+ Id="2a47f8ca-cb24-457f-98df-f582d87fc9f5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e23f92a7-9c1e-491f-90af-c658503aca32"
+>
+</ReqRef><ReqRef
+ Id="59212bdc-e7a1-4127-aa56-123c9f178c3f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b8932acf-4087-4dbc-b309-5ec04484fbb2"
+>
+</ReqRef><ReqRef
+ Id="8cd1b370-4096-41a0-a4ba-709970b131cd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55a7fb0e-5e85-48b3-be24-53d02c95b84c"
+>
+</ReqRef><ReqRef
+ Id="09f9f219-2879-4eb9-bf75-c4583a632b4a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="82bb680c-4945-4f8b-aae0-2b56cff32d17"
+>
+</ReqRef><ReqRef
+ Id="63f52c67-800b-450c-9dbc-7020eaf5e657"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e84bbf4-7f97-4ce5-bb77-b761076b0a1c"
+>
+</ReqRef><ReqRef
+ Id="1b7c34b0-8ee1-4615-9579-b4f183c85f6a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1ca053e1-5161-41fd-b336-e4a5d8e91700"
+>
+</ReqRef><ReqRef
+ Id="d4abd686-74e0-4be7-8850-63b0d76f32da"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="75ee56bf-0155-459e-8192-aec1c85e880e"
+>
+</ReqRef><ReqRef
+ Id="28e8fd74-8da8-4c8d-9d0b-2b3de6dea1ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b5965432-48d3-4bed-9057-83e0c8915de5"
+>
+</ReqRef><ReqRef
+ Id="c688042e-0d6a-4705-82a5-db7cfe7b6840"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9bb1b998-c58b-4cb8-9704-1217af2f4e69"
+>
+</ReqRef><ReqRef
+ Id="7cdec823-92bb-41e1-9c42-c852a448f5e8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f570be82-2b65-4074-a9ac-80ff3addc171"
+>
+</ReqRef><ReqRef
+ Id="e6efd599-0613-4f01-8315-f611bcebacb5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="35a8cd69-80f1-4b3f-8226-23349ee287bc"
+>
+</ReqRef><ReqRef
+ Id="3dec5ab4-e034-4e35-8225-c22d5267e266"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e618201d-2624-473d-9689-a141d37e83ee"
+>
+</ReqRef><ReqRef
+ Id="08b9f07e-b517-412e-8ea3-adc1aa89cba0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26ae85e6-4f67-4bcb-be58-2e5a1d95b36d"
+>
+</ReqRef><Comment>Computes the safe emergency brake deceleration. Its value can be computed from the information provided by the Train Data or from the Conversion Model.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+ Guid="ee8bef9e-7b94-4b71-92d2-6b44883c63e6"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="From train data"
+ Guid="e0b3c941-7132-4e86-bfc5-5663ee9cccf0"
+>
+<PreConditions>
+<PreCondition
+ Guid="aadc4768-d9d0-4121-ad97-03daa65b322c"
+>TrainData.TrainData.Value.EBModels != EMPTY</PreCondition></PreConditions>
+<Expression>TrainData.BrakingParameters.Kdry_rst (
+    V =&gt; V,
+    M_NVEBCL =&gt; NationalValues.ApplicableNationalValues.Value.ConfLevelForEmergBrakeSafeDecelerationOnDryRails )
+ * 
+(TrainData.BrakingParameters.Kwet_rst ( V ) + NationalValues.ApplicableNationalValues.Value.WeightingFactorForAvailableWheelRailAdhesion * ( 1.0 - TrainData.BrakingParameters.Kwet_rst ( V ) ) )
+ * 
+TrainData.BrakingParameters.Default_brk_emergency(V)</Expression>
+</Case><Case
+ Name="From conversion model"
+ Guid="23cbc22f-2c1a-405b-8152-7a44c441b6f3"
+>
+<PreConditions>
+<PreCondition
+ Guid="572e8bb1-06af-4554-aad8-8dee18cd6e36"
+>TrainData.BrakingParameters.ConversionModel.ConversionModelIsUsed()</PreCondition></PreConditions>
+<Expression>BaseTypes.Acceleration ( NationalValues.Kv_int ( V ) * NationalValues.Kr_int ( TrainData.TrainData.Value.TrainLength ) ) * TrainData.BrakingParameters.ConversionModel.A_brake_emergency ( V )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="ComputePermittedSpeedForEB"
+ Guid="028bde42-5ad5-41f6-9b88-0e89a78c86ac"
+>
+<ReqRef
+ Id="6b0803c4-fc83-41dd-bcfd-d53de1634680"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="80964b20-08c9-4009-a19c-8d3d7610d418"
+>
+</ReqRef><ReqRef
+ Id="ffb98aeb-e620-476c-8ca6-7b57a2bdf860"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="23a13d2c-01f5-40a4-bcba-4bd09e3b3502"
+>
+</ReqRef><ReqRef
+ Id="256eb4d5-6af7-4f58-b1ad-b1fd498be1d7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0bfca987-4341-4d55-b787-66719b0dadc4"
+>
+</ReqRef><ReqRef
+ Id="473066ff-b109-4dc9-bca2-85967286256b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="97760f4d-bd12-4889-adb4-215493373b5d"
+>
+</ReqRef><ReqRef
+ Id="ed856630-b669-4f24-8abb-18ff6b70c623"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bbdadbd5-e6c6-4414-b341-4ab6771b511c"
+>
+</ReqRef><ReqRef
+ Id="63a450f4-bf5b-4d7a-86d3-0d58f01de1b8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="23150130-2fb3-41f7-9950-7b0d8dbeeed8"
+>
+</ReqRef><ReqRef
+ Id="8c7db48b-2e9f-4028-9811-c07cc373b1cc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f01814c3-ba4f-4726-b883-3cab888e10cd"
+>
+</ReqRef><Comment>The inequalities (in linked requirements) can be interpreted as follows:
+
+ - d_offset + D_bec &lt;= d_PBD
+    d_offset and D_bed are two distances that increase as V_PBD increases. This can be understood as an upper limit on V_PBD.
+
+ - ABS{(V_PBD + dV_ebi)-(V_EBD(d_offset + D_bec) - V_delta_0_PBD)} &lt;= 1km/h
+    This can be understood that V_PBD+dV_ebi + V_delta_0_PBD = V_EBD(d_offset+D_bec)  more or less.
+
+
+So we are looking for a value of V_PBD that satisfies the second eqation, while respecting the condition of the first.
+Also, as d_offset+D_bec increases, V_PBD increases and V_EBD decreases.
+If the first condition is not satisfied for V_PBD = 0, or if V_EBD is less than V_PBD for the smallest value of d_offset+D_bec, then there will be no solution to the second inequality and the function returns 0, otherwise we look for the value that solves the first inequality in equation form.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="d_PBD"
+ Guid="0ffad4a2-4cae-4d59-942f-0a3e19c37a3c"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="Gradient"
+ Guid="189643af-1122-459e-ad10-b7dc07a80538"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="No value of V_PBD"
+ Guid="ccdbce69-c640-4cca-821a-bf20da13645e"
+>
+<PreConditions>
+<PreCondition
+ Guid="4b011f3e-039d-4608-87c5-31a6c054e7b0"
+>LET
+dV &lt;- SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_ebi(0.0)
+
+ IN
+d_PBD &lt; Dbec( V_PBD =&gt; 0.0, dV =&gt; dV ) + d_offset( 0.0 + dV + Vdelta0PBD(0.0) )</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Value"
+ Guid="12794295-7bfd-46bf-9723-9e4e6a9a1553"
+>
+<Expression>LET
+Target &lt;- SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+    Location =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom) + d_PBD,
+    Speed =&gt; 0.0,
+    Length =&gt; 0.0 }
+
+ IN
+STABILIZE
+    V_PBDFunctionForEB_EB
+    (
+        V_previous =&gt; PREVIOUS,
+        Gradient =&gt; Gradient,
+        Target =&gt; Target
+    )
+INITIAL_VALUE
+    Target.Speed
+STOP_CONDITION
+    BaseTypes.AbsoluteSpeed ( CURRENT - PREVIOUS ) &lt;= epsilon</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Default=""
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="d_offset"
+ Guid="1c700673-b077-4da5-8b4b-1e34291b42c3"
+>
+<ReqRef
+ Id="cc8e8e02-60fb-4417-9393-4dff7314e3ba"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0ef58d52-0884-4bc4-9062-50c389ea79f3"
+>
+</ReqRef><ReqRef
+ Id="5d67617c-2424-460f-9d50-a7309f98b878"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64296ff4-42cc-460c-ac43-3055630f14cc"
+>
+</ReqRef><Comment>Returns the offset between the train&apos;s antenna at the time the Balise was read and the front end position when the brakes are applied.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V"
+ Guid="9f141ce0-217c-4265-a31b-a38d7aafbf63"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="29f39ba9-5eb5-4694-9943-ea36ad4f34ec"
+>
+<Expression>BTM.ActiveAntennaPosition + Default.BaseTypes.SpeedToMS( V ) * T41</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="PermittedSpeedForSB_EB"
+ Guid="93819934-9284-4345-85a6-8a8b99583937"
+>
+<ReqRef
+ Id="487ecc36-819a-466e-927f-25b594c60f8f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2a8a0e1c-51c8-4ad1-b60c-71602b62810a"
+>
+</ReqRef><ReqRef
+ Id="deacc74e-fbfb-47dd-b349-9315987b0dd1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e838c3a9-a31c-40c4-9226-5ea6b3a9f3d1"
+>
+</ReqRef><ReqRef
+ Id="f4554793-dd91-466a-a509-694c2b4ae126"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="40bbd5fe-d582-4dff-a216-688fef3faa04"
+>
+</ReqRef><ReqRef
+ Id="8c7db48b-2e9f-4028-9811-c07cc373b1cc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a0b9ca81-92d3-4773-ac22-6291c2583ebd"
+>
+</ReqRef><ReqRef
+ Id="f4346f9e-2145-4af7-bd48-cf7b4dbaa3d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e9a7f0b4-e8a4-4ab3-b97c-6617e57165f7"
+>
+</ReqRef><ReqRef
+ Id="156a802d-6e3a-40b4-a563-5ed0e0e269cd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="be55b579-395d-480c-9c4d-858c1bb81230"
+>
+</ReqRef><ReqRef
+ Id="cdc5e973-dc65-4303-890a-517186db0e7c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="79458a21-b0b9-4c0b-8927-b59f383ed5d1"
+>
+</ReqRef><ReqRef
+ Id="0c20dbe8-5365-4828-825d-2a5c1fc0168b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d4c60e4-364c-4295-889a-8889f481e738"
+>
+</ReqRef><ReqRef
+ Id="a4dbcf91-f014-4372-ad47-2cc7f9f411b3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="db2d29a5-685b-4232-9b95-df18b7508b63"
+>
+</ReqRef><ReqRef
+ Id="fa888c61-602c-43d3-8f0f-cf5fa57f409a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a877ffeb-6cbd-4c6e-9184-050742c82c0f"
+>
+</ReqRef><ReqRef
+ Id="5d67617c-2424-460f-9d50-a7309f98b878"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="49414851-6cf9-4c46-b6a2-a792445c4e05"
+>
+</ReqRef><ReqRef
+ Id="193a1397-5f2b-4b18-b842-b525e8403c19"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4dc5d2e0-d56c-41bd-80c4-dcd446b7961e"
+>
+</ReqRef><Comment>See comment on ComputePermittedSpeedForEB for details of the calculation</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="d_PBD"
+ Guid="9da7a53c-5268-40e3-bb24-b643ceec4b01"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="Gradient"
+ Guid="de89272a-1993-47f3-be2f-23b1462c95ff"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="No value"
+ Guid="6e5febf3-a5a2-4054-a9c4-e3e99d6c0ecf"
+>
+<PreConditions>
+<PreCondition
+ Guid="aea8bb04-039b-4b1f-a151-48c43947693a"
+>d_PBD &lt; d_offset( 0.0 + SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi(0.0) + Vdelta0PBD(0.0) ) + Dbec( V_PBD =&gt; 0.0, dV =&gt; SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi(0.0) ) + ( 0.0 + SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi(0.0) )*SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Value"
+ Guid="ac3927ab-3f1b-484c-81ef-683b09ff8bb8"
+>
+<Expression>LET
+Target &lt;- SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+    Location =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom) + d_PBD,
+    Speed =&gt; 0.0,
+    Length =&gt; 0.0 }
+
+ IN
+STABILIZE
+    V_PBDFunctionForEB_SB(
+        V_previous =&gt; PREVIOUS,
+        Gradient =&gt; Gradient,
+        Target =&gt; Target
+    )
+INITIAL_VALUE
+    Target.Speed
+STOP_CONDITION
+    BaseTypes.AbsoluteSpeed ( CURRENT - PREVIOUS ) &lt;= epsilon</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="220"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="PermittedSpeedForSB_SB"
+ Guid="bf02bffe-ca37-4cdf-8786-ba9f6842e6a4"
+>
+<ReqRef
+ Id="9e7d4197-1c30-4b39-92cd-a636d43cd467"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="515cf44f-d39d-4a81-9630-9fd685c28a11"
+>
+</ReqRef><ReqRef
+ Id="25263057-31b7-4226-b0de-0bec0c132acd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c9ca6021-efe7-4967-b8fd-68fd20f3c8dd"
+>
+</ReqRef><ReqRef
+ Id="297da4a9-ce33-4638-bc80-e3abd77a4290"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b874942e-a23b-4e8e-af48-172e2c131405"
+>
+</ReqRef><ReqRef
+ Id="bb553624-3428-4035-ae99-df4bea6282e6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ea70f2a7-5ddf-4208-96a3-5d6405fc0f10"
+>
+</ReqRef><ReqRef
+ Id="f4346f9e-2145-4af7-bd48-cf7b4dbaa3d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="76c2df85-1110-4c19-9c0a-dc1c33cb7d89"
+>
+</ReqRef><ReqRef
+ Id="93577eaa-8d60-44e6-95a3-acd9c3b352be"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="52e14a3d-10e1-4587-8559-cae464346302"
+>
+</ReqRef><ReqRef
+ Id="449495a1-f9a0-42cc-ad9e-f524e9331789"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="005536cd-3375-4301-9305-8ca5c68c1b13"
+>
+</ReqRef><ReqRef
+ Id="ecaef0c1-337e-4102-b161-13c39f7e619f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="12d82822-1612-4cb9-bc6a-931a9bd347b9"
+>
+</ReqRef><ReqRef
+ Id="3f9b09ee-3df8-4f92-b36a-36d94b76f9dd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="62109576-41a2-48bb-b644-5fdde890ed48"
+>
+</ReqRef><ReqRef
+ Id="669805bd-0d39-4992-b803-87fa5d6b2c44"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="85723fc3-8ec3-402f-9135-7b6166a9e0f8"
+>
+</ReqRef><ReqRef
+ Id="6d439db1-f485-4c3a-bfc9-bcede4b4eab3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="563f0d86-8e40-4828-82a7-2da4bd36cb15"
+>
+</ReqRef><Comment>See comment on ComputePermittedSpeedForEB for details of the calculation</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="Gradient"
+ Guid="d8b06889-dda5-4233-946c-059f9f33780b"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="d_PBD"
+ Guid="2b0023a7-6217-485f-879e-e19f0dbe65e1"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="No value"
+ Guid="798055f5-0a01-4395-8c82-d24c2fa77c51"
+>
+<PreConditions>
+<PreCondition
+ Guid="68686248-6f3b-4bb5-91b3-6034c00fc553"
+>d_PBD &lt; d_offset( 0.0 + SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi(0.0) ) + ( 0.0 + SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi(0.0) ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Value"
+ Guid="8e7c458e-347b-42dd-a544-ef6a49849cd3"
+>
+<Expression>LET
+Target &lt;- SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+    Location =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom) + d_PBD,
+    Speed =&gt; 0.0,
+    Length =&gt; 0.0 }
+
+ IN
+STABILIZE
+    V_PBDFunctionForSB_SB(
+        V_previous =&gt; PREVIOUS,
+        Gradient =&gt; Gradient,
+        Target =&gt; Target
+    )
+INITIAL_VALUE
+    Target.Speed
+STOP_CONDITION
+    BaseTypes.AbsoluteSpeed ( CURRENT - PREVIOUS ) &lt;= epsilon</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="V_PBDFunctionForEB_EB"
+ Guid="e1afe3c9-3f15-435e-a51e-9923eb060731"
+>
+<ReqRef
+ Id="6b0803c4-fc83-41dd-bcfd-d53de1634680"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f0f9cb4f-8226-4011-a11c-bb2935f3bbfb"
+>
+</ReqRef><ReqRef
+ Id="ffb98aeb-e620-476c-8ca6-7b57a2bdf860"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="39c42848-4f38-4009-9e5d-b1328260e07a"
+>
+</ReqRef><ReqRef
+ Id="142a3c74-1f88-416b-bcd7-7c7781199737"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7d25be71-8da2-41ed-a89d-67a811efef68"
+>
+</ReqRef><ReqRef
+ Id="473066ff-b109-4dc9-bca2-85967286256b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="02314b2b-e043-434f-944c-1e8497f2b5aa"
+>
+</ReqRef><Comment>Iteratively calculates the value of V_PBD from the EBD curve</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V_previous"
+ Guid="a28559f0-0dcb-4e89-98f6-ef3ea795c3d8"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="Gradient"
+ Guid="02142f39-90ff-4971-90b9-8dfad21c0a4f"
+>
+</Parameter><Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="Target"
+ Guid="34388508-5ae0-4e57-856d-299d4b9c76ec"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="397b8239-33a2-46be-9332-726e4bc51b28"
+>
+<Expression>FullDecelerationForTarget (
+        Target =&gt; Target,
+    DecelerationFactor =&gt; FUNCTION d : BaseTypes.Distance, V : BaseTypes.Speed =&gt; A_safe( d =&gt; d, V =&gt; V, Gradient =&gt; Gradient )
+)( d_offset(V_previous + SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_ebi(V_previous)) + Dbec(V_PBD=&gt;V_previous, dV=&gt;SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_ebi(V_previous)) )
+ - Vdelta0PBD(V_previous)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="V_PBDFunctionForSB_SB"
+ Guid="0c246271-1243-4138-a903-832d18f9415c"
+>
+<ReqRef
+ Id="9e7d4197-1c30-4b39-92cd-a636d43cd467"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="30f30b7a-5e7b-4243-85c0-ab6b83f46c2a"
+>
+</ReqRef><ReqRef
+ Id="25263057-31b7-4226-b0de-0bec0c132acd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf0f8d50-a50b-4f7e-a3c2-c797c886fb58"
+>
+</ReqRef><ReqRef
+ Id="297da4a9-ce33-4638-bc80-e3abd77a4290"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b097533e-635c-462c-a2ea-859811c65687"
+>
+</ReqRef><Comment>Calculates V_PBD iteratively (for the SBD) in the case when it is to be achieved with the service brake</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V_previous"
+ Guid="42b8f8bb-6b14-4ecb-9965-e1aba1c8e5cb"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="Gradient"
+ Guid="a5bd25f5-7aba-40a6-b71f-93db1e5aa804"
+>
+</Parameter><Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="Target"
+ Guid="be31749f-27b0-46a0-b1a0-93f41514a29d"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="62e96d19-c1f0-4c40-9356-0052296487f6"
+>
+<Expression>FullDecelerationForTarget (
+        Target =&gt; Target,
+    DecelerationFactor =&gt; FUNCTION V : BaseTypes.Speed, d : BaseTypes.Distance =&gt; A_expected( V =&gt; V, Gradient =&gt; Gradient )
+)( d_offset(V_previous + SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi(V_previous)) + ( V_previous + SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi(V_previous) ) * SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs1 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="220"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="V_PBDFunctionForEB_SB"
+ Guid="65795330-e340-4767-bf84-c4c661bd537d"
+>
+<ReqRef
+ Id="487ecc36-819a-466e-927f-25b594c60f8f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8b82cf61-bcf5-4c8f-9546-06fa38437fcb"
+>
+</ReqRef><ReqRef
+ Id="deacc74e-fbfb-47dd-b349-9315987b0dd1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8c44d84c-9c9b-4fb0-9b69-9d977027ae8f"
+>
+</ReqRef><ReqRef
+ Id="f4554793-dd91-466a-a509-694c2b4ae126"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="49c2120a-d75e-4e8e-9cec-2327822348a6"
+>
+</ReqRef><ReqRef
+ Id="fa888c61-602c-43d3-8f0f-cf5fa57f409a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="99c4d754-d6ac-4aee-98c6-e14c03eb8254"
+>
+</ReqRef><Comment>Calculates V_PBD iteratively (for the EBD) in the case when it is to be achieved with the service brake</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="V_previous"
+ Guid="3d98fdd9-64a3-4b17-9205-ba0f5b28da50"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Gradient"
+ Name="Gradient"
+ Guid="3917eae1-23e9-479d-93d2-2a9f523468f9"
+>
+</Parameter><Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="Target"
+ Guid="a668678f-6b7d-47f1-b52f-50578a38f84d"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="1e9d1e7a-6914-423f-88dc-aeebb2c97838"
+>
+<Expression>FullDecelerationForTarget (
+        Target =&gt; Target,
+    DecelerationFactor =&gt; FUNCTION d : BaseTypes.Distance, V : BaseTypes.Speed =&gt; A_safe( d =&gt; d, V =&gt; V, Gradient =&gt; Gradient )
+)( d_offset(V_previous + SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi(V_previous)) + Dbec(V_PBD=&gt;V_previous, dV=&gt;SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi(V_previous)) + BaseTypes.SpeedToMS(V_previous + SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi(V_previous))*SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2 )
+ - Vdelta0PBD(V_previous)</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -1097,7 +1700,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="10705933-efb1-49f5-bb56-6c651f95a2c4"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the message states that there are initial states to be resumed, remove the profile starting from D_TRACKINIT</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1133,7 +1737,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4c2dc5d5-5b05-40bd-b3c8-073896896b80"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If no initial states are to be resumed, remove the previously received information before adding the new speed restrictions</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1188,7 +1793,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8102c187-84c0-480f-b14f-19377ca61467"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Add the new restrictions to the list</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1205,11 +1811,12 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 <Actions>
 <Action
  Guid="2afd30de-c39b-432c-9bcf-27501908073d"
->AddNewSpeedRestriction ( Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_PBDSR, scale =&gt; Packet.Q_SCALE ),
-                                            Length =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_PBDSR, scale =&gt; Packet.Q_SCALE ),
-                                            PermittedBrakingDistance =&gt;  MessageTypes.QScaleDistance ( distance =&gt; Packet.D_PBD, scale =&gt; Packet.Q_SCALE ),
-                                            Gradient =&gt; TrackDescription.Gradient.CreateGradient ( Q_GDIR =&gt; Packet.Q_GDIR, G_A =&gt; Packet.G_PBDSR ),
-                                            BrakeType =&gt; Packet.Q_PBDSR )</Action><Action
+>AddNewSpeedRestriction (
+    Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_PBDSR, scale =&gt; Packet.Q_SCALE ),
+    Length =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_PBDSR, scale =&gt; Packet.Q_SCALE ),
+    PermittedBrakingDistance =&gt;  MessageTypes.QScaleDistance ( distance =&gt; Packet.D_PBD, scale =&gt; Packet.Q_SCALE ),
+    Gradient =&gt; TrackDescription.Gradient.CreateGradient ( Q_GDIR =&gt; Packet.Q_GDIR, G_A =&gt; Packet.G_PBDSR ),
+    BrakeType =&gt; Packet.Q_PBDSR )</Action><Action
  Guid="4acb943c-c5f1-4bae-ac1d-9c276e643663"
 >APPLY
     AddNewSpeedRestriction ( Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; X.D_PBDSR, scale =&gt; Packet.Q_SCALE ),
@@ -1223,7 +1830,7 @@ ON
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Save braking models"
+ Name="Save inputs"
  Guid="fd009598-541a-43a3-97ef-193343e01593"
 >
 <ReqRef
@@ -1231,12 +1838,13 @@ ON
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a624c9c3-3940-48f5-bec7-bb0862f254ba"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Save the inputs used in the calculations, so that they can be redone if any of this information changes</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Save braking models"
+ Name="Save inputs"
  Guid="560a969f-0f52-4a98-8134-98ff378d757a"
 >
 <PreConditions>
@@ -1248,7 +1856,9 @@ ON
  Guid="812f3ae6-01ea-41a2-9abe-58774618967b"
 >PrevEBModels &lt;- TrainData.TrainData.Value.EBModels</Action><Action
  Guid="245ad180-10c2-4230-93e8-c5930841f91a"
->PrevSBModels &lt;- TrainData.TrainData.Value.SBModels</Action></Actions>
+>PrevSBModels &lt;- TrainData.TrainData.Value.SBModels</Action><Action
+ Guid="06efd726-cf60-44b1-ba6a-733cf20e54d5"
+>CompensationForSpeedInaccuracyInhibited &lt;- NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1328,7 +1938,8 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="51148404-10ab-4f54-87e0-2580ced2d56d"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>If any of the inputs for the calculation of the speed restrictions change, recalculate the speed restrictions due to permitted braking distances</Comment>
+<Parameters>
 <Parameter
  Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
  Name="aSRPB"
@@ -1428,7 +2039,71 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
  Guid="d6294354-7811-48c5-be20-e864ba83e49c"
 >
 </ReqRef><Comment>Contains the previous value of service braking models.</Comment>
-</Variable></Variables>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue=""
+ VariableMode="Internal"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="CompensationForSpeedInaccuracyInhibited"
+ Guid="840f756f-9723-4b11-907e-0c1097bc857c"
+>
+<ReqRef
+ Id="603addf7-8a2f-4b2c-8e61-6c2de3f220f7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4906cb8e-f55d-4387-be2b-6932a4909206"
+>
+</ReqRef><ReqRef
+ Id="7b334033-590c-4e04-b98a-1973062cc426"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1fa25baa-cb8d-4b62-9808-6bae48151906"
+>
+</ReqRef><Comment>Keeps the previous value of the National Value, Compensation for speed inaccuracy inhibited</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="1.0"
+ VariableMode="Internal"
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="T41"
+ Guid="04193745-0a02-4528-96f6-2a9e419ac68c"
+>
+<ReqRef
+ Id="a17b6a33-29a8-4516-bde9-b715a3d3e84f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7a8f249-05ba-4112-a2db-17fc8d5b9778"
+>
+</ReqRef><Comment>Delay between receiving a Balise message and applying the emergency brake.
+Value provided by Subset-041, paragraph 5.2.1.1</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Speed"
+ DefaultValue="1.0"
+ VariableMode="Internal"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="epsilon"
+ Guid="53a639ef-9c0a-4807-9f1b-2a0895b1b08c"
+>
+<ReqRef
+ Id="6b0803c4-fc83-41dd-bcfd-d53de1634680"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b64e7d47-1bec-4df4-bc2d-ceb489088657"
+>
+</ReqRef><ReqRef
+ Id="deacc74e-fbfb-47dd-b349-9315987b0dd1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2216bb68-4c02-4989-b10e-b2adc56c1ac9"
+>
+</ReqRef><ReqRef
+ Id="25263057-31b7-4226-b0de-0bec0c132acd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="78ea6c18-75e7-45df-998b-b9743b6e0cd5"
+>
+</ReqRef></Variable></Variables>
 <Rules>
 <Rule
  Priority="CleanUp"
@@ -1437,7 +2112,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="Train brake characteristics change"
+ Name="Inputs for PBD change"
  Guid="eda7d7c2-6090-4a07-a068-b4f717a70e6d"
 >
 <ReqRef
@@ -1454,14 +2129,17 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
  Name="Train brake characteristics change"
  Guid="62c68afa-4797-4cc2-b999-e0b345689ec5"
 >
+<Comment>If the train brake characteristics change, calculate the speed restrictions again</Comment>
 <PreConditions>
 <PreCondition
  Guid="87412dc3-a473-4513-ac75-4058b021c9b2"
->SpeedRestrictionsProfile.SpeedRestrictions != []</PreCondition><PreCondition
+>SpeedRestrictionsProfile != EMPTY
+  AND  
+SpeedRestrictionsProfile.SpeedRestrictions != []</PreCondition><PreCondition
  Guid="9040d4f6-e334-4442-b2a9-d02e2978ab34"
->PrevEBModels != TrainData.TrainData.Value.EBModels OR PrevSBModels != TrainData.TrainData.Value.SBModels</PreCondition><PreCondition
- Guid="e32b9525-2f16-451f-83e0-3ec3f5536534"
->SpeedRestrictionsProfile != EMPTY</PreCondition></PreConditions>
+>PrevEBModels != TrainData.TrainData.Value.EBModels
+  OR  
+PrevSBModels != TrainData.TrainData.Value.SBModels</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1dcf7b2e-7a94-49c7-9f7e-7826aa500f44"
@@ -1473,6 +2151,25 @@ ON
 >PrevSBModels &lt;- TrainData.TrainData.Value.SBModels</Action><Action
  Guid="89055dbd-938e-45d3-90a9-42cb151bc8f0"
 >PrevEBModels &lt;- TrainData.TrainData.Value.EBModels</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="National Values, permission to compensate for inaccuracy of speed measurement changes"
+ Guid="49d0bf0b-a292-4b4f-a962-5a29ccc702a7"
+>
+<Comment>If the relevant national value changes, calculate the speed restrictions again</Comment>
+<PreConditions>
+<PreCondition
+ Guid="461c2817-11cd-48d1-9ce5-9884557cadb1"
+>NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited() != CompensationForSpeedInaccuracyInhibited</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3bc27eb9-4377-4dc1-bc29-4c8f376147bc"
+>APPLY
+    UpdateSpeedRestriction ( X )
+ON
+    SpeedRestrictionsProfile.SpeedRestrictions</Action><Action
+ Guid="9fb8334a-ef20-46a7-915c-f404a81d6dce"
+>CompensationForSpeedInaccuracyInhibited &lt;- NationalValues.CompensationOfInaccuracyOfTheSpeedIsInhibited()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

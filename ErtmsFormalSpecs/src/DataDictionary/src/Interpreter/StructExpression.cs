@@ -153,22 +153,13 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the expression text
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            return ToString(0);
-        }
-
-        /// <summary>
         /// Provides the indented expression text
         /// </summary>
         /// <param name="indentLevel"></param>
         /// <returns></returns>
-        private string ToString(int indentLevel)
+        public override string ToString(int indentLevel)
         {
-            string retVal = Structure.ToString();
+            string retVal = Structure.ToString(indentLevel);
             string indentAccolade = "";
             for (int i = 0; i < indentLevel; i++)
             {
@@ -195,7 +186,7 @@ namespace DataDictionary.Interpreter
                 }
                 else
                 {
-                    retVal = retVal + pair.Key.Image + " => " + pair.Value.ToString();
+                    retVal = retVal + pair.Key.Image + " => " + pair.Value.ToString(indentLevel + 1);
                 }
             }
             retVal = retVal + "\n" + indentAccolade + "}";

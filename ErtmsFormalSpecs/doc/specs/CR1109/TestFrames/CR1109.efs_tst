@@ -77,6 +77,19 @@
 <Action
  Guid="6938995c-275f-4f2c-925a-ec3607e9f7c3"
 >Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="4cd9d19e-40f2-462b-aa9e-48e08b9812c0"
+>
+<Actions>
+<Action
+ Guid="57773518-7b40-4a90-a5b3-23890923d4ac"
+>Kernel.TrainData.TrainData.Value.TractionSystems &lt;- [Kernel.TrainData.TractionSystem{
+    Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
+    Country =&gt; 85
+}]</Action><Action
+ Guid="0581229d-3f73-46f2-8619-092a4a06373a"
+>Kernel.TrainData.TrainData.Value.TrainLength &lt;- 400.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -110,7 +123,7 @@
 {
     Position =&gt; BTM.Position
     {
-        Position =&gt; 100.0,
+        Position =&gt; 0.0,
         UnderReadingAmountOdo =&gt; 4.0,
         OverReadingAmountOdo =&gt; 8.0
     },
@@ -118,7 +131,7 @@
     Orientation =&gt; Default.Orientation.Nominal
 }</Action><Action
  Guid="07d1eff8-4b40-4266-a2ae-d1de93937102"
->Kernel.MA.MA &lt;- Kernel.MA.MovementAuthority
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct
 {
     TargetSpeed =&gt; 90.0,
     EndSection =&gt; Kernel.MA.EndSection
@@ -149,7 +162,7 @@
 <Actions>
 <Action
  Guid="16d94069-df89-4d11-8c21-de6d3bdc10ca"
->Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="e57d1e3a-8808-46c5-941a-6438647d311e"
 >Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
 </SubStep><SubStep
@@ -213,7 +226,7 @@ BTM.Message &lt;- Messages.EUROBALISE.Message
 <Actions>
 <Action
  Guid="c90ae629-9e27-49ea-8b62-644b2c2b8b02"
->Odometry.NominalDistance &lt;- 1960.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 1870.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -242,7 +255,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
 <Actions>
 <Action
  Guid="e70963d5-f505-460b-9d0c-72383a12c030"
->Odometry.NominalDistance &lt;- 1970.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 1900.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -250,11 +263,11 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
  Guid="9e00570a-c4a4-4fef-b724-30a12b59c331"
 >DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested == True
   AND
-( COUNT DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ) == 1
+( COUNT X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ) == 1
   AND
-( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).IsAnnouncement
+( FIRST X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).IsAnnouncement
   AND
-( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation><Expectation
+( FIRST X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="8ec01a32-aee6-4f53-901d-c770319b5da7"
@@ -275,7 +288,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
 <Actions>
 <Action
  Guid="fcb57132-bfad-419a-a535-8120a08dc155"
->Odometry.NominalDistance &lt;- 2088.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 1988.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -287,11 +300,11 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
  Guid="43510d22-e133-42de-9f35-1bb01ff12356"
 >DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested == True
   AND
-( COUNT DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ) == 1
+( COUNT X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ) == 1
   AND
-( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).IsAnnouncement
+( FIRST X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).IsAnnouncement
   AND
-( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation></Expectations>
+( FIRST X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step4 - At point D =&gt; the announcement is not displayed anymore, the track condition is displayed"
  Guid="6cb4c63f-63f8-4a04-837d-f07ac968020e"
@@ -299,7 +312,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
 <Actions>
 <Action
  Guid="d39c5e99-f30d-440d-8771-a53e4f52f231"
->Odometry.NominalDistance &lt;- 2089.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 1989.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -307,11 +320,11 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
  Guid="3676d519-5d6c-4e19-8670-e36c0e77931c"
 >DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested == True
   AND
-( COUNT DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ) == 1
+( COUNT X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ) == 1
   AND
-( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).IsAnnouncement == False
+( FIRST X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).IsAnnouncement == False
   AND
-( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation><Expectation
+( FIRST X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b510dad6-aa16-4bc9-80d4-597c5f30ef9f"
@@ -323,7 +336,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
 <Actions>
 <Action
  Guid="48a7add8-956c-499b-85d4-453b3741ef1b"
->Odometry.NominalDistance &lt;- 2789.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 2689.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step6 =&gt; the non stopping area is displayed"
  Guid="f78b98f9-2fc9-4c09-b6b8-7a60d36a338b"
@@ -348,11 +361,11 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
  Guid="6307c5f2-2a69-48e2-a222-057ff3b7a45f"
 >DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested == True
   AND
-( COUNT DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ) == 1
+( COUNT X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ) == 1
   AND
-( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).IsAnnouncement == False
+( FIRST X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).IsAnnouncement == False
   AND
-( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation></Expectations>
+( FIRST X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step7 - The second SBI is crossed"
  Guid="d8677fcc-960b-4472-92c6-50cced4ec60d"
@@ -406,7 +419,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
 <Actions>
 <Action
  Guid="9910e75f-b279-4cff-9592-5cb3e9364737"
->Odometry.EstimatedSpeed &lt;- 51.0</Action></Actions>
+>Odometry.EstimatedSpeed &lt;- 21.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Non stopping area is displayed again"
  Guid="a7fb2df7-a4da-433d-be93-608176e02ddb"
@@ -418,11 +431,11 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
  Guid="1b4e9e32-326d-416d-b009-50e30e8186a4"
 >DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested == True
   AND
-( COUNT DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ) == 1
+( COUNT X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ) == 1
   AND
-( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).IsAnnouncement == False
+( FIRST X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).IsAnnouncement == False
   AND
-( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation><Expectation
+( FIRST X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="47ad158c-3bcf-4ff0-b5b8-8d8be733c679"
@@ -455,7 +468,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
 <Actions>
 <Action
  Guid="4e332ab1-3fcd-4438-adf9-669a3a8b2b4a"
->Odometry.NominalDistance &lt;- 2794.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 2791.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 =&gt; the non stopping area is still displayed"
  Guid="d21ed8d3-48fa-4219-a2a1-333247c57156"
@@ -467,11 +480,11 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
  Guid="f19b0b3d-11d5-471c-a0ad-f774e239b7b1"
 >DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested == True
   AND
-( COUNT DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ) == 1
+( COUNT X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ) == 1
   AND
-( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).IsAnnouncement == False
+( FIRST X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).IsAnnouncement == False
   AND
-( FIRST_IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation><Expectation
+( FIRST X IN DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions ).Type == Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum.NonStoppingArea</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="d92ebdb0-d16c-4442-9168-1ba7a0f676b6"
@@ -537,7 +550,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
 <Actions>
 <Action
  Guid="b100338b-57a5-4341-baa3-a420b4fab7fe"
->Odometry.NominalDistance &lt;- 2908.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 2808.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 =&gt; the non stopping area is still present in TCProfile"
  Guid="2a4dec1d-36ad-4cb8-8cc9-d642eacfb8aa"
@@ -551,7 +564,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
  Kind="Instantaneous"
  DeadLine="1"
  Guid="84d838e0-0e26-48d5-86e9-1ee4037b2bed"
->( COUNT Kernel.TrackDescription.TrackConditions.General.TCProfile ) == 2</Expectation></Expectations>
+>( COUNT X IN Kernel.TrackDescription.TrackConditions.General.TCProfile ) == 2</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step3 - The second non stopping area end is crossed"
  Guid="95164d7e-bf58-4475-881e-bc2754ed4789"
@@ -559,7 +572,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
 <Actions>
 <Action
  Guid="5e194df3-5841-4d41-b775-033d700b3ea0"
->Odometry.NominalDistance &lt;- 2909.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 2809.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step4 =&gt; the non stopping area is removed from TCProfile"
  Guid="ae64f3cf-1b31-4c20-abe9-3df7d72669cd"
@@ -573,7 +586,7 @@ DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.ActiveConditions == []</Expecta
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f8258aa9-affb-44a6-98fa-0deda8d047ea"
->( COUNT Kernel.TrackDescription.TrackConditions.General.TCProfile ) == 1</Expectation></Expectations>
+>( COUNT X IN Kernel.TrackDescription.TrackConditions.General.TCProfile ) == 1</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

@@ -162,12 +162,19 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the string representation of the binary expression
+        /// Provides the indented expression text
         /// </summary>
+        /// <param name="indentLevel"></param>
         /// <returns></returns>
-        public override string ToString()
+        public override string ToString(int indentLevel)
         {
-            string retVal = "[";
+            string indentText = "";
+            for (int i = 0; i < indentLevel; i++)
+            {
+                indentText += "    ";
+            }
+
+            string retVal = "\n" + indentText + "[\n" + indentText + "    ";
 
             bool first = true;
             foreach (Expression expr in ListElements)
@@ -176,11 +183,12 @@ namespace DataDictionary.Interpreter
                 {
                     retVal += ", ";
                 }
-                retVal += expr.ToString();
+                retVal += expr.ToString(indentLevel + 1);
 
                 first = false;
             }
-            retVal += "]";
+
+            retVal += "\n" + indentText + "]";
 
             return retVal;
         }

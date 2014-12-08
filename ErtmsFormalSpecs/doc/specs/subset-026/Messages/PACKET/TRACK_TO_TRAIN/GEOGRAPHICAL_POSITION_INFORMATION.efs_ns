@@ -11,6 +11,8 @@
 <Structures>
 <Structure
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Message"
  Guid="44be740c-c86e-4d91-8b4d-f1c29d0d28e7"
@@ -53,7 +55,7 @@
  Guid="eafa0025-0136-4ca1-b3aa-af2ac09cf2b7"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="Default.MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -113,7 +115,7 @@
  Guid="1b084a64-1ec7-45de-afea-1313257946cb"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="Default.MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -179,6 +181,9 @@
 >
 </ReqRef></StructureElement></Structure><Structure
  Default=""
+ X="110"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SubStructure1"
  Guid="87204649-5624-42c2-9e89-1db43fcce7be"
@@ -223,7 +228,7 @@
  Guid="64809b88-535f-4f5c-85fd-092e74a49feb"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="Default.MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -264,8 +269,11 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="SubStructure1"
+ TypeName="Messages.PACKET.TRACK_TO_TRAIN.GEOGRAPHICAL_POSITION_INFORMATION.SubStructure1"
  Default="[]"
+ Y="60"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Collection1"
  Guid="acd3d9b2-021b-4642-9866-309329a6f633"

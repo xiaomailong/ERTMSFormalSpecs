@@ -315,8 +315,14 @@ namespace DataDictionary.Types
         public string getExplain(int indentLevel)
         {
             string retVal = TextualExplainUtilities.Comment(this, indentLevel);
+            string typeName = TypeName;
 
-            retVal += TextualExplainUtilities.Pad(Name + " : " + TypeName, indentLevel);
+            if (Type != null)
+            {
+                typeName = Type.FullName;
+            }
+            
+            retVal += TextualExplainUtilities.Pad(Name + " : " + typeName, indentLevel);
 
             return retVal;
         }

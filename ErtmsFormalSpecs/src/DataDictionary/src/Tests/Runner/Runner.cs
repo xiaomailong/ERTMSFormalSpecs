@@ -1278,7 +1278,7 @@ namespace DataDictionary.Tests.Runner
         /// Runs the test case until the step provided is encountered
         /// This does not execute the corresponding step. 
         /// </summary>
-        /// <param name="Item"></param>
+        /// <param name="target"></param>
         public void RunUntilStep(Step target)
         {
             try
@@ -1339,6 +1339,11 @@ namespace DataDictionary.Tests.Runner
                                 Cycle();
                             }
                         }
+                    }
+
+                    if (currentTestCaseIndex == REBUILD_CURRENT_SUB_STEP)
+                    {
+                        break;
                     }
                 }
             }
