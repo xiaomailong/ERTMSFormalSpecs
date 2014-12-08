@@ -134,6 +134,7 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="PreviousBaliseGroupStruct"
  Guid="b78c15a0-5a41-4d5f-9222-3d4b477cb17b"
 >
@@ -143,6 +144,7 @@
  Default=""
  Mode="Internal"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="BaliseGroup"
  Guid="368fccbb-30e4-44e2-b001-fc2c5a8fd196"
 >
@@ -151,6 +153,7 @@
  Default="False"
  Mode="Internal"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="IsLRBG"
  Guid="076ebd0a-bdf0-4724-a6d2-89898982f162"
 >
@@ -2105,38 +2108,6 @@ This is a check for message consistency errors.</Comment>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Store current LRBG as previous encountered BG"
- Guid="36dfb833-4143-4e52-90a3-b98a644556f1"
->
-<Comment>The current LRBG is stored in the list of previously encountered balise groups.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="LRBG is available"
- Guid="3b1afa6d-b6ec-451b-95aa-0a2cc16bd7ad"
->
-<PreConditions>
-<PreCondition
- Guid="c15177bc-4a7d-42a5-a6ac-6d3d2c37f2c0"
->Available ( LRBG )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7f5ae40b-0a9f-4e16-9b84-8f08ea7564dc"
->INSERT
-  PreviousBaliseGroupStruct
-  {
-      BaliseGroup =&gt; LRBG,
-      IsLRBG =&gt; Boolean.True
-  }
-  IN PreviousBaliseGroups
-  WHEN FULL REPLACE FarthestBG()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
  Name="Relocate trackside information"
  Guid="ba44542d-5f85-4e5c-9be1-449daf9f1059"
 >
@@ -2965,78 +2936,6 @@ The list is updated in case two LRBGs provide the same MRSP, this should count a
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="LRBG change"
- Guid="2eaeddca-034e-4016-956e-16066b1645ba"
->
-<ReqRef
- Id="50574953-3247-4859-8de2-1049ab46e862"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9b6ea606-21f9-4e4f-9f72-a903cbde27f5"
->
-</ReqRef><ReqRef
- Id="18834f9f-2f32-40fe-9d9a-97c8e2991f93"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="efc732f9-78d2-41f5-91fb-c7f777171a27"
->
-</ReqRef><Comment>If the current balise group is a candidate to become a new LRBG, then it is stored as a new LRBG.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="LRBG change"
- Guid="604b0d58-795f-4720-86b5-1b92956a4206"
->
-<ReqRef
- Id="997012e6-1938-4ed6-b9fe-4a696ee0c30f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="936076b4-52d1-470d-adbe-5d793f0c72ac"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="f59f7d3d-8d42-4bdd-bbd8-4c554420d5a0"
->LRBG.NID != BG_To_LRBG(Message.NID_BG)</PreCondition><PreCondition
- Guid="cb8a8653-84b9-4caf-ae7e-a410b15b64ea"
->Message.N_PIG == 0</PreCondition><PreCondition
- Guid="9a0cc237-370c-4dcb-b53c-9bf804dd2a0d"
->LRBGCandidate( )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="3c939d6a-99af-451a-b12d-368fece30c2a"
->HandleNewLRBG(Default.BG_To_LRBG(Nid_BG =&gt; Message.NID_BG), DistanceFromLRBG =&gt; DistanceFromLRBG)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Unlinked BG"
- Guid="d9721a38-c34a-4516-940d-18d4dbe8ac69"
->
-<ReqRef
- Id="d5dcae2f-5a41-4d4b-ab0d-436579a7646a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c3c3db39-aa21-4c1a-b790-97515020ea23"
->
-</ReqRef><Comment>Stores the position of that unlinked balise group, which may be used for position reporting.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Unlinked BG"
- Guid="51d206fc-d4b1-42ee-8e76-c5ffeea965a5"
->
-<PreConditions>
-<PreCondition
- Guid="1f80f179-74aa-465e-b6d3-e15aba062a97"
->Message.Q_LINK == Messages.Q_LINK.Unlinked</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="c995c1c6-6e01-4775-b912-22de76bd76ca"
->HandleUnlinkedBG(Message)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
  Name="Clear mode profile if MA received"
  Guid="843333de-ec8d-428b-8030-16cf2ddff736"
 >
@@ -3436,6 +3335,122 @@ The parameter DistanceFromLRBG is needed for the case when the handled BG will b
 <Action
  Guid="947f5c13-b3ba-42c5-bebd-24f3bf75e2f2"
 >Kernel.OperatedSystemVersion.Value &lt;- (FIRST X IN CurrentBaliseGroup).M_VERSION</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle LRBG"
+ Guid="a0bf5168-6256-43d5-9291-b6437f385e01"
+>
+<ReqRef
+ Id="50574953-3247-4859-8de2-1049ab46e862"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ac0c1363-8c77-4d99-ab2c-8aa09208dbb3"
+>
+</ReqRef><ReqRef
+ Id="18834f9f-2f32-40fe-9d9a-97c8e2991f93"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4be0e5a1-144c-4987-9970-de1652eaa020"
+>
+</ReqRef><Comment>Verifies if the current balise group is an LRBG candidate (in that case the LRBG is updated) or is unlinked (in that case the information related to the last unlinked balise group is updated). In all the cases the new balise group is stored in the list of previous balise groups.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="The BG becomes LRBG"
+ Guid="604b0d58-795f-4720-86b5-1b92956a4206"
+>
+<ReqRef
+ Id="997012e6-1938-4ed6-b9fe-4a696ee0c30f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="936076b4-52d1-470d-adbe-5d793f0c72ac"
+>
+</ReqRef><Comment>If the current balise group is a candidate to become a new LRBG, then it is stored as a new LRBG.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="f59f7d3d-8d42-4bdd-bbd8-4c554420d5a0"
+>LRBG.NID != Default.BG_To_LRBG(Message.NID_BG)</PreCondition><PreCondition
+ Guid="9a0cc237-370c-4dcb-b53c-9bf804dd2a0d"
+>LRBGCandidate( )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3c939d6a-99af-451a-b12d-368fece30c2a"
+>HandleNewLRBG(Default.BG_To_LRBG(Nid_BG =&gt; Message.NID_BG), DistanceFromLRBG =&gt; DistanceFromLRBG)</Action><Action
+ Guid="eec330f2-bae4-4027-998f-3bed4d222121"
+>INSERT
+  BTM.PreviousBaliseGroupStruct
+  {
+      BaliseGroup =&gt; BTM.BaliseGroupStruct
+      {
+          Position =&gt; BGLocationReference,
+          NID =&gt; Message.NID_BG,
+          Orientation =&gt; BaliseGroupOrientation(),
+          Timestamp =&gt; Kernel.DateAndTime.CurrentTime
+      },
+      IsLRBG =&gt; Boolean.True
+  }
+  IN PreviousBaliseGroups
+  WHEN FULL REPLACE FarthestBG()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="The BG is unlinked"
+ Guid="51d206fc-d4b1-42ee-8e76-c5ffeea965a5"
+>
+<ReqRef
+ Id="d5dcae2f-5a41-4d4b-ab0d-436579a7646a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2e617305-b06c-466c-a6bc-26a12f4ef8ba"
+>
+</ReqRef><Comment>Otherwise, if the balise group is unlinked, stores the position of that unlinked balise group, which may be used for position reporting. The balise group is also stored in the list of previous balise groups in case it will be needed for the geographical position reporting.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="1f80f179-74aa-465e-b6d3-e15aba062a97"
+>Message.Q_LINK == Messages.Q_LINK.Unlinked</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c995c1c6-6e01-4775-b912-22de76bd76ca"
+>HandleUnlinkedBG(Message)</Action><Action
+ Guid="e0d92db1-ce43-4385-ae52-42c474a91e91"
+>INSERT
+  BTM.PreviousBaliseGroupStruct
+  {
+      BaliseGroup =&gt; BTM.BaliseGroupStruct
+      {
+          Position =&gt; BGLocationReference,
+          NID =&gt; Message.NID_BG,
+          Orientation =&gt; BaliseGroupOrientation(),
+          Timestamp =&gt; Kernel.DateAndTime.CurrentTime
+      },
+      IsLRBG =&gt; Boolean.False
+  }
+  IN PreviousBaliseGroups
+  WHEN FULL REPLACE FarthestBG()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Otherwise"
+ Guid="45fc3591-bbef-464e-9eef-5658c496eb8d"
+>
+<Comment>Stores the balise group in the list of previous balise groups.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a0a2bd8f-ac0c-44b6-aa24-93d5263d8371"
+>INSERT
+  BTM.PreviousBaliseGroupStruct
+  {
+      BaliseGroup =&gt; BTM.BaliseGroupStruct
+      {
+          Position =&gt; BGLocationReference,
+          NID =&gt; Message.NID_BG,
+          Orientation =&gt; BaliseGroupOrientation(),
+          Timestamp =&gt; Kernel.DateAndTime.CurrentTime
+      },
+      IsLRBG =&gt; Boolean.False
+  }
+  IN PreviousBaliseGroups
+  WHEN FULL REPLACE FarthestBG()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
