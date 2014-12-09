@@ -158,6 +158,20 @@
  Guid="076ebd0a-bdf0-4724-a6d2-89898982f162"
 >
 <Comment>Indicates if the current balise group is (or was) an LRBG.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="IsSingle"
+ Guid="d64b4af4-32c8-461a-ab5f-b71ed7f4261c"
+>
+<ReqRef
+ Id="76868626-5a6b-4610-a688-a56653fef701"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8c2b9437-285e-4bbf-8939-fb35385e147c"
+>
+</ReqRef><Comment>Indicates if the that balise group is single or not.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -1225,6 +1239,68 @@ This is a check for message consistency errors.</Comment>
  Guid="1f63e25c-3f0e-4216-a35b-1417d2ae25d9"
 >
 <Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Default=""
+ X="150"
+ Y="410"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="TravelledDistanceFromBG"
+ Guid="8c1c8b83-7a3e-4623-a519-765f7d5919ad"
+>
+<ReqRef
+ Id="b9a734e7-b75f-426b-a5f9-6926dfdc248d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bd6ee481-0620-4540-9c94-c124e0e0cc3b"
+>
+</ReqRef><Comment>Provides the distance travelled from a balise group given in parameter. In case the balise group is not stored in the list of previously received balise groups, the returned distance is unknown.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.NID_BG"
+ Name="aBG"
+ Guid="83176aad-6fcb-4cc8-8267-fa10ab3d9a55"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="The BG is available"
+ Guid="bbc79522-c8ab-4fa8-b6ed-089f511bd393"
+>
+<PreConditions>
+<PreCondition
+ Guid="39d378f2-a59c-43bf-9e51-ee9605484628"
+>THERE_IS X IN PreviousBaliseGroups | X.BaliseGroup.NID == aBG</PreCondition></PreConditions>
+<Expression>Odometry.NominalDistance - (FIRST X IN PreviousBaliseGroups | X.BaliseGroup.NID == aBG).BaliseGroup.Position.Position</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="bbb4368c-06da-4efc-9230-417c0d87f09f"
+>
+<Expression>BaseTypes.Distance.Unknown</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="CurrentBGIsSingle"
+ Guid="df71b6c3-9242-4aa9-9de5-4af1944389a1"
+>
+<ReqRef
+ Id="76868626-5a6b-4610-a688-a56653fef701"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="20f9b592-92f4-4fe2-99c0-316f45d325c6"
+>
+</ReqRef><Comment>Indicates if the current balise group is single.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="ecba41eb-172e-43a6-a77b-432225e820eb"
+>
+<Expression>(FIRST X IN CurrentBaliseGroup).N_TOTAL == 0</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -3412,7 +3488,8 @@ The parameter DistanceFromLRBG is needed for the case when the handled BG will b
           Orientation =&gt; BaliseGroupOrientation(),
           Timestamp =&gt; Kernel.DateAndTime.CurrentTime
       },
-      IsLRBG =&gt; Boolean.True
+      IsLRBG =&gt; Boolean.True,
+      IsSingle =&gt; CurrentBGIsSingle()
   }
   IN PreviousBaliseGroups
   WHEN FULL REPLACE FarthestBG()</Action></Actions>
@@ -3446,7 +3523,8 @@ The parameter DistanceFromLRBG is needed for the case when the handled BG will b
           Orientation =&gt; BaliseGroupOrientation(),
           Timestamp =&gt; Kernel.DateAndTime.CurrentTime
       },
-      IsLRBG =&gt; Boolean.False
+      IsLRBG =&gt; Boolean.False,
+      IsSingle =&gt; CurrentBGIsSingle()
   }
   IN PreviousBaliseGroups
   WHEN FULL REPLACE FarthestBG()</Action></Actions>
@@ -3471,7 +3549,8 @@ The parameter DistanceFromLRBG is needed for the case when the handled BG will b
           Orientation =&gt; BaliseGroupOrientation(),
           Timestamp =&gt; Kernel.DateAndTime.CurrentTime
       },
-      IsLRBG =&gt; Boolean.False
+      IsLRBG =&gt; Boolean.False,
+      IsSingle =&gt; CurrentBGIsSingle()
   }
   IN PreviousBaliseGroups
   WHEN FULL REPLACE FarthestBG()</Action></Actions>
