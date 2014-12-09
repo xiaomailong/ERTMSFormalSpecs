@@ -12,6 +12,8 @@
 <Structures>
 <Structure
  Default=""
+ X="210"
+ Y="20"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -118,7 +120,8 @@
 <Collection
  TypeName="Kernel.GeographicalPosition.GeographicalPositionItemStruct"
  Default="[]"
- Y="60"
+ X="20"
+ Y="20"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -136,7 +139,8 @@
 <Function
  Type="Kernel.GeographicalPosition.GeographicalPositionItemStruct"
  Default=""
- Y="180"
+ X="20"
+ Y="250"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -209,9 +213,169 @@
     Country =&gt; aCountry
 }</Expression>
 </Case></Cases>
+</Function><Function
+ Type="GeographicalPositionItemStruct"
+ Default=""
+ X="240"
+ Y="250"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="ProvideNewApplicableTrackKilometreReference"
+ Guid="29618bce-3631-4269-9663-54ad3f2dbfbd"
+>
+<ReqRef
+ Id="b69a0632-61db-40c6-bb0b-d93d2e2d8348"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f1e9e095-5c2b-4c2c-8655-8f5d99ed6e9d"
+>
+</ReqRef><Comment>Provides the first geographical position elemet that became applicable.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="a0345f7e-91f6-4fb5-9eba-c96289554b6a"
+>
+<Expression>FIRST X IN GeographicalPositionInformation | GeographicalPositionItemIsApplicable ( X )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Default=""
+ X="350"
+ Y="250"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="ComputeGeographicalPosition"
+ Guid="ab534169-55e3-4ef1-a7e9-fc33e1d4e042"
+>
+<ReqRef
+ Id="b9a734e7-b75f-426b-a5f9-6926dfdc248d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="311744c7-39a6-4043-8b64-c61537e63aa4"
+>
+</ReqRef><ReqRef
+ Id="414f47b6-9c22-4a9c-89cf-495c9741dd20"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="867a07fb-d826-4a26-8ea0-a32b833db5ce"
+>
+</ReqRef><ReqRef
+ Id="8d446063-9881-49af-baa0-fbe1656e8820"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eccf25b0-5022-4e39-8964-4dca6161a47a"
+>
+</ReqRef><ReqRef
+ Id="8d2de3da-bec4-45ae-83d3-1b2de8d2a295"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1e69b47d-4937-4b79-a8ae-034b4ea5e652"
+>
+</ReqRef><ReqRef
+ Id="b6b00068-7433-47a4-9720-8c1f056ecace"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e6210525-c58c-405d-b193-ddb0f6ba8feb"
+>
+</ReqRef><ReqRef
+ Id="f042e036-f6fa-4673-a7a6-5248b3127084"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c58630ba-7689-421f-9a8a-7e6cba198057"
+>
+</ReqRef><Comment>The geographical position is computed by adding to the position of the track kilometre reference the position travelled by the train from that track kilometre reference. The position travelled by the train is computed as follows: (train position - reference BG position) - offset from the balise group.</Comment>
+<Cases>
+<Case
+ Name="Geographical position available"
+ Guid="1d1de3a5-2db6-4ac1-bcc0-5397d85663ca"
+>
+<PreConditions>
+<PreCondition
+ Guid="1e9fd2b4-c19b-4e5c-97cb-ccbdf771a701"
+>ApplicableItem != EMPTY</PreCondition></PreConditions>
+<Expression>ApplicableItem.Position +
+BTM.TravelledDistanceFromBG( aBG =&gt; ApplicableItem.ReferenceBG ) - ApplicableItem.Offset</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="2f4846d6-134d-4c5b-a4ea-c1f5f01f87ff"
+>
+<Expression>BaseTypes.Distance.Unknown</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="460"
+ Y="250"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="AcceptGeographicalPositionItem"
+ Guid="2f450ba7-a8a4-422f-b3a4-3fff05593ee7"
+>
+<ReqRef
+ Id="76868626-5a6b-4610-a688-a56653fef701"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="feaf7ed8-c010-40b9-bfa7-7c8340281189"
+>
+</ReqRef><Comment>In case the balise group has already been received, but is single and no linking information is available in order to detect its direction, the corresponding geographical position item will not be accepted.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.NID_BG"
+ Name="aBG"
+ Guid="776b7465-3cd8-488f-b012-5b9c6096b436"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="The balise group hasn&apos;t been passed yet"
+ Guid="c6a011c6-6086-4a3b-a392-1714d66a4d68"
+>
+<PreConditions>
+<PreCondition
+ Guid="24ef9169-9d08-49be-8ca9-d675c1282a7d"
+>NOT THERE_IS X IN BTM.PreviousBaliseGroups |X.BaliseGroup.NID == aBG</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="The balise has already been passed"
+ Guid="b7a7cc28-d8d5-480f-8e33-2cc9643d2dfc"
+>
+<Expression>(FIRST X IN BTM.PreviousBaliseGroups | X.BaliseGroup.NID == aBG).IsSingle
+  AND
+NOT BTM.Linking.LinkingApplicable()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="130"
+ Y="250"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="GeographicalPositionItemIsApplicable"
+ Guid="7723d0d4-a6c8-49a0-b222-1f552e5bad43"
+>
+<ReqRef
+ Id="b69a0632-61db-40c6-bb0b-d93d2e2d8348"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a1e670cc-9d3e-4edb-88c6-d2ba795a11d7"
+>
+</ReqRef><Comment>Indicates if the geographical position item given as parameter has become applicable, i.e. it has been passed by the train and the train has travelled  the offset distance from that balise group.</Comment>
+<Parameters>
+<Parameter
+ Type="GeographicalPositionItemStruct"
+ Name="anItem"
+ Guid="f426927e-5a60-43d5-9495-c9b3376808a4"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="95cb3527-3a65-4152-9dc6-cf073e588e5c"
+>
+<Expression>THERE_IS X IN BTM.PreviousBaliseGroups | X.BaliseGroup.NID == anItem.ReferenceBG
+  AND
+BTM.TravelledDistanceFromBG( aBG =&gt; anItem.ReferenceBG ) &gt; anItem.Offset</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
+ X="130"
+ Y="380"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -235,6 +399,32 @@
 <Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="Remove previous information"
+ Guid="062f4311-a4cc-456c-a085-e0343b63c80a"
+>
+<ReqRef
+ Id="73d5ed04-a22f-4b38-8b54-747a7b298b0d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fbac6526-99db-4b01-8968-044fb8096e09"
+>
+</ReqRef><Comment>The previously stored information is deleted, except the applicable item.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove previous information"
+ Guid="7efb28a7-e3e4-47b5-9cae-f50d7fba9381"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="c463fff4-8fd4-4f40-a175-e405f76b9fdc"
+>GeographicalPositionInformation &lt;- []</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="Handle first item"
  Guid="919b6b4c-39b4-4d45-b09a-4dec28cc41e2"
 >
@@ -246,8 +436,15 @@
  Name="Handle first item"
  Guid="4023e54b-7676-4660-8c9e-aa8611d55552"
 >
-<PreConditions>
-</PreConditions>
+<ReqRef
+ Id="76868626-5a6b-4610-a688-a56653fef701"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d4d11970-1ed8-4d9a-8437-1f328f617c93"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="2e5ab3d2-c408-435c-be37-f5d7d8d69376"
+>AcceptGeographicalPositionItem( aBG =&gt; aPacket.NID_BG )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="229b02af-8fe9-4a2c-90ff-2c9a0ff0dc95"
@@ -295,7 +492,8 @@ ON
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- Y="240"
+ X="20"
+ Y="380"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -306,6 +504,11 @@ ON
  Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b961b327-5012-4e80-ae33-bc3bf02b5586"
+>
+</ReqRef><ReqRef
+ Id="76868626-5a6b-4610-a688-a56653fef701"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="41ee90ad-7501-4982-8562-f26c260f939d"
 >
 </ReqRef><Comment>Adds a new gepgraphical position item received from the trackside to the list of geographical position items stored on-board.</Comment>
 <Parameters>
@@ -336,7 +539,9 @@ ON
  Guid="96f1a59d-4ac9-4878-890a-b9d159383b66"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="c832e278-dcb4-4f77-82d2-d378c1c195c8"
+>AcceptGeographicalPositionItem( aBG =&gt; anItem.NID_BG )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="74098f23-1ac0-4463-bfc3-17b5304f2cdb"
@@ -361,7 +566,8 @@ IN
  Type="GeographicalPositionItemsCol"
  DefaultValue="[]"
  VariableMode="Internal"
- Y="120"
+ X="20"
+ Y="130"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -374,5 +580,104 @@ IN
  Guid="b42a9710-a13e-443d-b862-fdc5a0150e8b"
 >
 </ReqRef><Comment>Regresents the geographical position information received from the trackside.</Comment>
+</Variable><Variable
+ Type="GeographicalPositionItemStruct"
+ DefaultValue="EMPTY"
+ VariableMode="Internal"
+ X="220"
+ Y="130"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="ApplicableItem"
+ Guid="0f9f2868-411e-4120-82f8-c16034546a0b"
+>
+<ReqRef
+ Id="b6b00068-7433-47a4-9720-8c1f056ecace"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="040655d8-fd27-42d0-adf1-f15c8929e16d"
+>
+</ReqRef><Comment>The currently applicable geographical position information.</Comment>
 </Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ X="20"
+ Y="510"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Update the applicable information"
+ Guid="28917be5-2be1-4c55-8ae1-06d40824b71c"
+>
+<ReqRef
+ Id="73d5ed04-a22f-4b38-8b54-747a7b298b0d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="97443141-ac4f-4f9d-843a-524f180c4a0d"
+>
+</ReqRef><ReqRef
+ Id="b6b00068-7433-47a4-9720-8c1f056ecace"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c4087075-7c2f-4b37-b087-9d2b1b27d594"
+>
+</ReqRef><Comment>Verifies if the applicable item has to be removed or replaced.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="New track kilometre reference becomes applicable"
+ Guid="180bfa55-11ab-4fe1-929f-1f7b7bcebe6e"
+>
+<ReqRef
+ Id="8d446063-9881-49af-baa0-fbe1656e8820"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2f4dde94-ac45-4c13-88d3-95778c7c0479"
+>
+</ReqRef><ReqRef
+ Id="33c5dfdb-d429-4a77-84e8-bc1263f07586"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ac7df42d-2a9a-4697-8d60-97cc5b50edf4"
+>
+</ReqRef><ReqRef
+ Id="b69a0632-61db-40c6-bb0b-d93d2e2d8348"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b366827d-fa74-4fca-9dd7-5c41467193c9"
+>
+</ReqRef><Comment>When a new track kilometre reference becomes applicable, it replaces the previously selected item, which is deleted.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="05d9eaeb-2a8b-4d2d-b4fd-f84e2dbbf8e2"
+>ProvideNewApplicableTrackKilometreReference() != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b8dd3273-98a6-4a43-a04a-153875db2af3"
+>ApplicableItem &lt;- ProvideNewApplicableTrackKilometreReference()</Action><Action
+ Guid="99ddc2e3-1b2b-42b7-89f5-aeed68ce965e"
+>REMOVE FIRST X == ProvideNewApplicableTrackKilometreReference() IN GeographicalPositionInformation</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="The position becomes negative"
+ Guid="89c99206-3603-4515-9ac3-730784e30f7f"
+>
+<ReqRef
+ Id="8d2de3da-bec4-45ae-83d3-1b2de8d2a295"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f5cbb355-2e5d-4602-aa61-d43e18ab07a2"
+>
+</ReqRef><ReqRef
+ Id="33c5dfdb-d429-4a77-84e8-bc1263f07586"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d3f3a761-ff94-4159-81f0-adfa4b36b112"
+>
+</ReqRef><Comment>If the calculated geographical position becomes negative, the applicable geographical position item is deleted (and the position will not be calculated anymore).</Comment>
+<PreConditions>
+<PreCondition
+ Guid="85c69cc0-bbbd-4589-bedb-386533047038"
+>ComputeGeographicalPosition() &lt; 0.0</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8a34a79b-a1c7-412f-b7c6-5328fdd0636a"
+>ApplicableItem &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>
