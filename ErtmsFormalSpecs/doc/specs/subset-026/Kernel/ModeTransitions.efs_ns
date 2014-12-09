@@ -7216,7 +7216,12 @@ TIU.NonLeadingPermitted</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dfac0b7a-e328-4c69-8c50-a18b5373aa09"
 >
-</ReqRef><Comment>If the train changes its orientation, the temporary speed restrictions are deleted.</Comment>
+</ReqRef><ReqRef
+ Id="6f9b176c-5d2f-4c1e-ac6f-775a0e864dfe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fc370a44-5fc4-4f24-8059-8bb01ddd37d6"
+>
+</ReqRef><Comment>If the train changes its orientation, the temporary speed restrictions and the announced and not applicable geographical references are deleted.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7231,7 +7236,9 @@ TIU.NonLeadingPermitted</Expression>
 <Actions>
 <Action
  Guid="cfe2c845-a9f2-49cc-a9ac-eb8e870263d8"
->Kernel.TSR.TSRs &lt;- []</Action></Actions>
+>Kernel.TSR.TSRs &lt;- []</Action><Action
+ Guid="d76a3771-e75a-4586-aa50-73a70912fd4f"
+>GeographicalPosition.GeographicalPositionInformation &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7276,6 +7283,7 @@ TrainPosition.RearEndPosition(PointOfInterest =&gt; DistanceInterval.Nom) &lt; (
  Width="100"
  Height="50"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="PrevMode"
  Guid="1c13dfb6-c156-4096-b11b-0b4752ff6ab6"
 >
