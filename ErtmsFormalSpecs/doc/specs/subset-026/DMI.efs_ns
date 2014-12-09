@@ -1274,7 +1274,12 @@ Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</Action></A
  Name="Update geographical position"
  Guid="a623c088-3546-40cf-a0f8-812cdca1e577"
 >
-<Comment>Updates the displayed geographical position</Comment>
+<ReqRef
+ Id="f042e036-f6fa-4673-a7a6-5248b3127084"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e6698627-bd0a-46b3-ade2-cf09e14763c4"
+>
+</ReqRef><Comment>Updates the displayed geographical position</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1286,15 +1291,13 @@ Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</Action></A
 <PreConditions>
 <PreCondition
  Guid="66e26df1-3de2-482f-ad92-f12fbf0ec8d8"
->Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
+>Kernel.GeographicalPosition.ComputeGeographicalPosition() != BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="d875d4e5-c722-4867-8ff4-13b0df014c5c"
 >Out_GeographicalPosition.OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8294da13-c432-41af-8af5-7ba212f240de"
->Out_GeographicalPosition.Position &lt;- Kernel.TrainPosition.FrontEndPosition(
-    PointOfInterest=&gt;Default.DistanceInterval.Nom
-)</Action></Actions>
+>Out_GeographicalPosition.Position &lt;- Kernel.GeographicalPosition.ComputeGeographicalPosition()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateOUT"
@@ -2437,7 +2440,7 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
 </ReqRef></StructureElement><StructureElement
  TypeName="OUT.GeographicalPosition"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  Name="Out_GeographicalPosition"
  Guid="31cd8f7a-c0f1-4bce-8268-99e6daa3fd2d"
