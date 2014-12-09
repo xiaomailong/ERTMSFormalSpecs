@@ -8016,7 +8016,7 @@ The safe train length information shall be re-calculated for every position repo
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="e3a55e7e-350d-4dfa-86ea-512545c008b1"
@@ -8048,11 +8048,12 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="f042e036-f6fa-4673-a7a6-5248b3127084"
->The resolution of the position indication shall be 1 metre (sufficient to allow the driver to report the train position when communicating with the signalman).<RequirementSets>
+><Comment>All the distances in EFS are stored with resolution of 1 metre.</Comment>
+The resolution of the position indication shall be 1 metre (sufficient to allow the driver to report the train position when communicating with the signalman).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="9be3e764-5c2b-4efe-9bb6-2534dca6dbdf"
@@ -8065,7 +8066,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="73d5ed04-a22f-4b38-8b54-747a7b298b0d"
@@ -8077,77 +8078,77 @@ The safe train length information shall be re-calculated for every position repo
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.6.6.4"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="a6897c95-bcce-48ed-8949-f1a53ad4b2c4"
 >Geographical position information shall always use a balise group as geographical position reference balise group and if needed an offset from that balise group. A geographical position reference balise group shall be either:<Sub>
 <Paragraph
  id="3.6.6.4.a"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="e55ef713-c059-4748-854d-c0d018fce3fc"
 >part of the last reported balise groups memorised on-board, in case the information is received from radio, OR<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="325c9645-862c-4e1f-829b-709762d91c54"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="878fab95-2ecd-4011-8736-c47d04a720d3"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="cbfb68cc-9442-4660-b6a1-6278c0987eab"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.6.6.4.b"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="476b92ec-43c6-4617-bf87-d99d65ac0ed6"
 >the balise group transmitting the information, in case the information is received from balise group, OR<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="cc6fb737-486c-4504-a290-dceb12c8418a"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="fa976237-35c5-49e8-979c-ae26201e8e5b"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2ce2ec0a-5707-410b-8dff-0f1d559be0e5"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.6.6.4.c"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="0172eb2d-0435-4a9c-863c-3dab30a32195"
 >any balise group not yet passed at the time of reception of the information.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="b3ea712e-60af-440e-b008-12fd57159d07"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="2806eaec-c939-459c-84f1-c02bfaa73d19"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1af12442-a7f8-4b16-af59-4042103fd491"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -8174,7 +8175,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="b69a0632-61db-40c6-bb0b-d93d2e2d8348"
@@ -8206,7 +8207,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="6f9b176c-5d2f-4c1e-ac6f-775a0e864dfe"
@@ -8219,12 +8220,12 @@ The safe train length information shall be re-calculated for every position repo
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="b1016da6-644e-44d0-8cd1-a71b6467521b"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="f862c7cf-9f26-40fc-8cdf-bc21a5a4d71a"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a1ac0608-a56e-4a4d-aa0f-b2b2d9a3cda7"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -8234,7 +8235,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="b9a734e7-b75f-426b-a5f9-6926dfdc248d"
@@ -8268,7 +8269,7 @@ The safe train length information shall be re-calculated for every position repo
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="76868626-5a6b-4610-a688-a56653fef701"
@@ -8306,7 +8307,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="b6b00068-7433-47a4-9720-8c1f056ecace"
@@ -8318,7 +8319,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="8d446063-9881-49af-baa0-fbe1656e8820"
@@ -8337,9 +8338,11 @@ The safe train length information shall be re-calculated for every position repo
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
+ infoRequired="TRUE"
  Name=""
  Guid="cf9672ca-2e57-4a1b-a1dc-d490283fcb09"
->it is told not to do so, OR<RequirementSets>
+><Comment>How can it be told not to do so?</Comment>
+it is told not to do so, OR<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="3cd029ae-a40a-4745-af9a-a951acde2278"
@@ -8352,7 +8355,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="8d2de3da-bec4-45ae-83d3-1b2de8d2a295"
@@ -8369,7 +8372,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="414f47b6-9c22-4a9c-89cf-495c9741dd20"
@@ -8386,7 +8389,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="33c5dfdb-d429-4a77-84e8-bc1263f07586"
