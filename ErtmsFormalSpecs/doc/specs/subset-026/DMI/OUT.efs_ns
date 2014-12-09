@@ -2209,22 +2209,42 @@
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Display when available"
+ Name="Handle display requested by driver"
  Guid="be73de03-a920-4e30-9d79-55a93f39054f"
 >
-<Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
+<ReqRef
+ Id="e3a55e7e-350d-4dfa-86ea-512545c008b1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a1015a32-753e-4e2f-8a23-755b64873f37"
+>
+</ReqRef><Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
+ Name="Driver asked to hide the information"
+ Guid="2f41ec95-4e1a-44b6-a922-511127030bb0"
+>
+<Comment>If the driver has asked to hide the information, the display is stopped.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="807538d1-ed6e-4343-bf92-eead45a93843"
+>DisplayRequestedByDriver == False</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9ce7ee57-b1dc-4c73-bc47-4364e9ff6925"
+>THIS.OutputInformation.DoNotDisplay()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Display when available"
+ Name="Driver asked to show the information"
  Guid="b2391609-d363-46d4-b0d6-0dcef2d7cbe8"
 >
+<Comment>If the driver has asked to show the information, the information is displayed.</Comment>
 <PreConditions>
 <PreCondition
  Guid="c537f726-8803-4303-8ee5-2c03fff6b039"
->NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
+>Kernel.GeographicalPosition.ComputeGeographicalPosition() != BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="2367a109-ff4c-478f-859c-68331eca3af8"
 >GeographicalPositionAvailable()</PreCondition></PreConditions>
 <Actions>
@@ -2312,6 +2332,25 @@
  Name="Position"
  Guid="7c317b24-64c0-4182-81a7-955eca43bbfd"
 >
+<ReqRef
+ Id="f042e036-f6fa-4673-a7a6-5248b3127084"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cf994b1c-86ed-418f-a961-70dc08079370"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Incoming"
+ Implemented="TRUE"
+ Name="DisplayRequestedByDriver"
+ Guid="3c737c6f-7e63-4b27-9fe8-7ae70835b44a"
+>
+<ReqRef
+ Id="e3a55e7e-350d-4dfa-86ea-512545c008b1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8553a393-573b-4783-bcca-97758a2125be"
+>
+</ReqRef><Comment>Indicates if the driver has requested the display of the geographical position.</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="770"
@@ -3395,6 +3434,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8f60ca0e-0d63-49ba-9242-e2dea62949a0"
 >
+</ReqRef><ReqRef
+ Id="d8015bba-8732-418a-8989-c213c379c3be"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="d1147c5b-a4ba-4bb1-bc50-dfcfcc3a6d5f"
+>
 </ReqRef><Comment>Provides the system version</Comment>
 <Rules>
 <Rule
@@ -3413,13 +3457,26 @@
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Handle display requested by driver"
- Guid="1fdd3940-8696-469f-8eb2-a538b750c352"
+ Name="Driver asked to hide the information"
+ Guid="99b4a06e-3a4c-4dbb-8981-82886aba65e8"
 >
+<Comment>If the driver has asked to hide the information, the display is stopped.</Comment>
 <PreConditions>
 <PreCondition
  Guid="cf6c3af7-dcc5-4665-83f8-555af0ec4417"
->DisplayRequestedByDriver == True</PreCondition></PreConditions>
+>DisplayRequestedByDriver == False</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="4e0c4346-bb50-40d2-ba8a-54bc4e6c9a65"
+>THIS.OutputInformation.DoNotDisplay()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Driver asked to show the information"
+ Guid="1fdd3940-8696-469f-8eb2-a538b750c352"
+>
+<Comment>If the driver has asked to show the information, the information is displayed.</Comment>
+<PreConditions>
+</PreConditions>
 <Actions>
 <Action
  Guid="410e9ab5-f1ec-4904-9c5f-900d9eb5a1ca"
@@ -3520,7 +3577,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ad7421a0-92a8-4c63-8eff-d51721cf9a6a"
 >
-</ReqRef><Comment>According to the document ERA_ERTMS_015560, the driver can ask the display of operated system version. This variable reflects the status of the driver&apos;s request.</Comment>
+</ReqRef><Comment>According to the document ERA_ERTMS_015560, the driver can ask the display of the operated system version. This variable reflects the status of the driver&apos;s request.</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="330"
