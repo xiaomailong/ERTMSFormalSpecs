@@ -294,6 +294,7 @@ namespace Importers
                             subSequence.appendTestCases(testCase);
                             DataDictionary.Tests.Step setupTestCaseStep = (DataDictionary.Tests.Step)DataDictionary.Generated.acceptor.getFactory().createStep();
                             setupTestCaseStep.Name = "Setup test case";
+                            setupTestCaseStep.setDescription(setupTestCaseStep.Name);
                             setupTestCaseStep.setComment("This step is used to setup the test case " + testCaseNr + " feature " + feature);
                             setupTestCaseStep.setTranslationRequired(true);
                             testCase.appendSteps(setupTestCaseStep);
