@@ -93,18 +93,12 @@
 <PreConditions>
 <PreCondition
  Guid="d164c315-df41-48a4-aa11-d21cee4593c2"
->d_EBI ( Vtarget ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
- Guid="089c769c-9cde-4d4f-ad6b-051682628614"
->NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
+>d_EBI ( Vtarget ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="7e0f93ea-6373-4564-a9fc-832150d2356b"
 >
-<PreConditions>
-<PreCondition
- Guid="6860da27-cc47-40c6-ba21-60e0797f07ba"
->NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
 <Expression>d_EBI ( Vtarget ) - Vtarget * ( TargetSpeedMonitoring.T_driver + TargetSpeedMonitoring.T_bs2 )</Expression>
 </Case></Cases>
 </Function><Function

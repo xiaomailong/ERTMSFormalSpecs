@@ -505,7 +505,7 @@ INITIAL_VALUE
 DecelerationCurves.EBDForSpeed(Vtarget)</PreCondition><PreCondition
  Guid="2784bf61-3ed4-4bb9-ba3c-cfa74d731b58"
 >NOT NationalValues.ComputationOfGUIIsEnabled ()</PreCondition></PreConditions>
-<Expression>BaseTypes.MaxDistance(
+<Expression>BaseTypes.MaxSpeed(
     X1 =&gt; DecelerationCurves.EBD(d_maxsafefront + Vest*(T_driver + T_bs2) + DecelerationCurves.Dbe_display( Vest =&gt; Vest , EstimatedAccelerationSetToZero =&gt; False )) - ( DecelerationCurves.Vdelta0() + DecelerationCurves.Vdelta1(False) + DecelerationCurves.Vdelta2(False)),
     X2 =&gt; Vtarget
 )</Expression>
@@ -526,8 +526,8 @@ DecelerationCurves.EBDForSpeed(Vtarget)</PreCondition><PreCondition
     Function=&gt;DecelerationCurves.GUI,
     Speed=&gt;Vtarget
 )</PreCondition></PreConditions>
-<Expression>BaseTypes.MaxDistance(
-X1 =&gt; BaseTypes.MinDistance(
+<Expression>BaseTypes.MaxSpeed(
+X1 =&gt; BaseTypes.MinSpeed(
     X1 =&gt; DecelerationCurves.EBD ( d_maxsafefront 
               + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs2 )
               + DecelerationCurves.Dbe_display ( Vest =&gt; Vest, EstimatedAccelerationSetToZero =&gt; False ))
