@@ -214,7 +214,7 @@
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="GeographicalPositionItemStruct"
+ Type="Kernel.GeographicalPosition.GeographicalPositionItemStruct"
  Default=""
  X="240"
  Y="250"
@@ -238,7 +238,7 @@
 <Expression>FIRST X IN GeographicalPositionInformation | GeographicalPositionItemIsApplicable ( X )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Default=""
  X="350"
  Y="250"
@@ -357,7 +357,7 @@ NOT BTM.Linking.LinkingApplicable()</Expression>
 </ReqRef><Comment>Indicates if the geographical position item given as parameter has become applicable, i.e. it has been passed by the train and the train has travelled  the offset distance from that balise group.</Comment>
 <Parameters>
 <Parameter
- Type="GeographicalPositionItemStruct"
+ Type="Kernel.GeographicalPosition.GeographicalPositionItemStruct"
  Name="anItem"
  Guid="f426927e-5a60-43d5-9495-c9b3376808a4"
 >
@@ -581,7 +581,7 @@ IN
 >
 </ReqRef><Comment>Regresents the geographical position information received from the trackside.</Comment>
 </Variable><Variable
- Type="GeographicalPositionItemStruct"
+ Type="Kernel.GeographicalPosition.GeographicalPositionItemStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="220"
