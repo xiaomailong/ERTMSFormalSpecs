@@ -1,0 +1,218 @@
+<Frame
+ CycleDuration="0.1"
+ Name="CR 1084 problem case"
+ Guid="7e090dcc-9a47-4110-8cae-ce8a160b18e4"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Sequence1"
+ Guid="bf6ae475-bd7f-43ae-b46c-14675d8c438c"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+ Guid="00db9ab9-80cd-4f7a-adc5-b4e257713d6d"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+ Guid="20d0454d-f188-43d9-82b1-fbb890be6c6f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Initialize test environment"
+ Guid="70919a02-6022-4793-929f-be4711cc00e9"
+>
+<Actions>
+<Action
+ Guid="48efc257-ab1a-41c0-bced-60f4221fd096"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements for MA"
+ Guid="76e85bd1-94fa-4516-812d-2a48473d8c44"
+>
+<Actions>
+<Action
+ Guid="7d59b900-fa6b-46b1-b564-41ae3828cd61"
+>Kernel.MA.InitializeElementsForMA()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3 - Set LRBG at 0 distance"
+ Guid="30ca4676-9b3f-4bbc-b737-8dc36cd7654e"
+>
+<Actions>
+<Action
+ Guid="cf07d96e-7a9e-4eb2-af55-ea9bdaf47857"
+>BTM.LRBG.Position &lt;- BTM.Position{
+    Position =&gt; 0.0,
+    UnderReadingAmountOdo =&gt; 0.0,
+    OverReadingAmountOdo =&gt; 0.0
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step4 - Set Level and Mode"
+ Guid="8fa4e265-5f3e-4a50-a29b-24dafb97dc74"
+>
+<Actions>
+<Action
+ Guid="f856ea69-5b6f-40a1-b685-a840a270e535"
+>Kernel.Mode &lt;- Mode.FS</Action><Action
+ Guid="7939eaf7-ea36-4fd5-a29c-7bc66ed5bbe0"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; LevelDataStruct{
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L1
+    },
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Provide SSP"
+ Guid="d8544fe9-8641-4a52-b5dd-fc14e9cfce72"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Set MA"
+ Guid="af97fb56-53e8-4529-8c57-f775268c5f36"
+>
+<Actions>
+<Action
+ Guid="1fef9f06-5a0e-4b61-970f-9bd032dc6ebe"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 5000.0
+    }
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Set SSP"
+ Guid="a1f8319d-77b1-4b98-80b0-fdc9e9a1d364"
+>
+<Actions>
+<Action
+ Guid="3706d470-9a99-4cd5-9c56-9f5a00bf2e67"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
+[
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 0.0,
+        BasicSpeed =&gt; 70.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt; 
+        [
+            
+        ]
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 950.0,
+        BasicSpeed =&gt; 50.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt; 
+        [
+            
+        ]
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 1260.0,
+        BasicSpeed =&gt; 30.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt; 
+        [
+            
+        ]
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 1550.0,
+        BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt; 
+        [
+            
+        ]
+    }
+]</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - View the different cases"
+ Guid="2fe1d363-aaf7-482c-91bb-7d5fa689a5e1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Before PIM1"
+ Guid="72c4cbb4-b8fd-435b-8d6a-1a5e01c409c4"
+>
+<Actions>
+<Action
+ Guid="0254aa01-02a9-4774-91fd-a2a66080dc4b"
+>Odometry.NominalDistance &lt;- 500.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - PIM1"
+ Guid="7f32ade8-e3c2-461a-b525-2343feaeb4af"
+>
+<Actions>
+<Action
+ Guid="d05d7793-d019-4127-94b0-0b459ad22e6a"
+>Odometry.NominalDistance &lt;- 550.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3 - TSM1"
+ Guid="de65601a-40ee-4d68-9902-b67eb238bddb"
+>
+<Actions>
+<Action
+ Guid="67e265f1-350a-408b-aa2e-4c361f342b9e"
+>Odometry.NominalDistance &lt;- 880.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step4 - PIM2, after Target 1"
+ Guid="2db675ae-e1ab-421d-9536-e3610937e9d8"
+>
+<Actions>
+<Action
+ Guid="ec3bc56c-a0aa-4bdf-8ba2-b05e68f4962a"
+>Odometry.NominalDistance &lt;- 951.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step5 - TSM2"
+ Guid="55733a9a-8908-4386-8634-9962cb83422c"
+>
+<Actions>
+<Action
+ Guid="7ad6696f-6d41-4c03-a0a1-c18f76863631"
+>Odometry.NominalDistance &lt;- 1000.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step6 - After Target 2"
+ Guid="deff3c15-fc25-4f4f-b1e2-e496ed79449b"
+>
+<Actions>
+<Action
+ Guid="5e968dc9-814e-4620-9a67-b48957f2fcad"
+>Odometry.NominalDistance &lt;- 1100.0</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>
