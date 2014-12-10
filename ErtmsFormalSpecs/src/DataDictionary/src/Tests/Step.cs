@@ -206,6 +206,11 @@ namespace DataDictionary.Tests
                 }
                 cnt += 1;
             }
+
+            foreach (ReqRef reqRef in aStep.Requirements)
+            {
+                appendRequirements(reqRef);
+            }
         }
 
         /// <summary>

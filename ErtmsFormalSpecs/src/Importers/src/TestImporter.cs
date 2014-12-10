@@ -292,6 +292,11 @@ namespace Importers
                             testCase.setCase(testCaseNr);
                             testCase.setFeature(feature);
                             subSequence.appendTestCases(testCase);
+                            DataDictionary.Tests.Step setupTestCaseStep = (DataDictionary.Tests.Step)DataDictionary.Generated.acceptor.getFactory().createStep();
+                            setupTestCaseStep.Name = "Setup test case";
+                            setupTestCaseStep.setComment("This step is used to setup the test case " + testCaseNr + " feature " + feature);
+                            setupTestCaseStep.setTranslationRequired(true);
+                            testCase.appendSteps(setupTestCaseStep);
                         }
 
                         DataDictionary.Tests.Step step = (DataDictionary.Tests.Step)DataDictionary.Generated.acceptor.getFactory().createStep();
