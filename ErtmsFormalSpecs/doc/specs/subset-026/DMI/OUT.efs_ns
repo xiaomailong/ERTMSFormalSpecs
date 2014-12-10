@@ -2252,6 +2252,32 @@
  Guid="b24f0281-a1f7-4c77-bcca-827aaaf34fbd"
 >Display()</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Allow to request the display when available"
+ Guid="94d461ca-619e-4d73-b6b5-ac42e4d1ed46"
+>
+<Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Allow to request the display when available"
+ Guid="8aa4a159-5894-4d47-90f3-95c526fcc760"
+>
+<PreConditions>
+<PreCondition
+ Guid="d58a2bc1-b0a1-4172-911e-00ba9fdfc91d"
+>NOT DisplayRequestIsAllowed</PreCondition><PreCondition
+ Guid="bbc83398-279f-4955-82f7-4642145ddf5f"
+>GeographicalPositionAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="bb735862-c763-4c2d-9e4b-8477c2a6f19c"
+>DisplayRequestIsAllowed &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
@@ -2311,7 +2337,9 @@
 <Actions>
 <Action
  Guid="d9d5e187-d916-4552-b128-8c065fc2cf87"
->THIS.OutputInformation.DoNotDisplay()</Action></Actions>
+>THIS.OutputInformation.DoNotDisplay()</Action><Action
+ Guid="3b4af509-1fa6-45ca-90d2-f7bfa8315f77"
+>DisplayRequestIsAllowed &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -2351,6 +2379,20 @@
  Guid="8553a393-573b-4783-bcca-97758a2125be"
 >
 </ReqRef><Comment>Indicates if the driver has requested the display of the geographical position.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Outgoing"
+ Implemented="TRUE"
+ Name="DisplayRequestIsAllowed"
+ Guid="d5034220-1bb8-408a-838c-1dff4f9ecfca"
+>
+<ReqRef
+ Id="e3a55e7e-350d-4dfa-86ea-512545c008b1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="713a5341-eecc-4093-b377-7457c36ec39b"
+>
+</ReqRef><Comment>Indicates if the driver may ask to display the geographical position information.</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="770"
@@ -5378,6 +5420,8 @@ The brake reason.</Comment>
 >
 </StructureElement></Structure><Structure
  Default=""
+ X="110"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6788,7 +6832,8 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
- Y="60"
+ X="110"
+ Y="480"
  Width="100"
  Height="50"
  Implemented="TRUE"
