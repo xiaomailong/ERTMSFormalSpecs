@@ -5651,6 +5651,418 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
     T_VBC =&gt; 0
 }</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Messages.JRU.HEADER.Message"
+ Default=""
+ Name="GetMessageHeader"
+ Guid="407f9891-2642-4929-bcf6-1a42fed8088f"
+>
+<Comment>Gets the header of a generic JRU message </Comment>
+<Parameters>
+<Parameter
+ Type="Messages.JRU.MESSAGE.Message"
+ Name="Message"
+ Guid="bbf5f83e-1bcc-4adb-9654-3e9b8a1f276e"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="ADDITIONAL BRAKE STATUS"
+ Guid="a057248a-3dda-4391-a4dc-4b4a89f87c31"
+>
+<PreConditions>
+<PreCondition
+ Guid="cefef1c4-e96b-4e6f-9996-bf2bf7c6735e"
+>Message.ADDITIONAL_BRAKE_STATUS != EMPTY</PreCondition></PreConditions>
+<Expression>Message.ADDITIONAL_BRAKE_STATUS.HEADER</Expression>
+</Case><Case
+ Name="ADDITIONAL_DATA"
+ Guid="ab0b96c8-ad1f-41d5-a8b3-0ecc3d42242d"
+>
+<PreConditions>
+<PreCondition
+ Guid="9ec1f546-4087-475b-9ba6-f5c6b22f8cf6"
+>Message.ADDITIONAL_DATA != EMPTY</PreCondition></PreConditions>
+<Expression>Message.ADDITIONAL_DATA.HEADER</Expression>
+</Case><Case
+ Name="BALISE_GROUP_ERROR"
+ Guid="1b9fe234-baf4-4292-9c8f-40c0b2f43754"
+>
+<PreConditions>
+<PreCondition
+ Guid="12e40cb8-8689-42d5-ab24-c7583ede84b9"
+>Message.BALISE_GROUP_ERROR != EMPTY</PreCondition></PreConditions>
+<Expression>Message.BALISE_GROUP_ERROR.HEADER</Expression>
+</Case><Case
+ Name="CAB_STATUS"
+ Guid="ce257714-cf91-48c6-8e38-8e076dc8b6c1"
+>
+<PreConditions>
+<PreCondition
+ Guid="1a9eb750-cf50-43aa-9760-b0e553ee552c"
+>Message.CAB_STATUS != EMPTY</PreCondition></PreConditions>
+<Expression>Message.CAB_STATUS.HEADER</Expression>
+</Case><Case
+ Name="DIRECTION_CONTROLLER_POSITION"
+ Guid="69ea2574-aad7-4fb8-b525-3e6185b41d24"
+>
+<PreConditions>
+<PreCondition
+ Guid="ba8c38df-fd50-490a-86e8-2cb3c7dc7bb7"
+>Message.DIRECTION_CONTROLLER_POSITION != EMPTY</PreCondition></PreConditions>
+<Expression>Message.DIRECTION_CONTROLLER_POSITION.HEADER</Expression>
+</Case><Case
+ Name="DMI_SOUND_STATUS"
+ Guid="7903798d-8ab7-4785-9ea7-6fc5aa9564c9"
+>
+<PreConditions>
+<PreCondition
+ Guid="5e6a5953-fc1f-4c9c-b43e-7f7dcd233aa0"
+>Message.DMI_SOUND_STATUS != EMPTY</PreCondition></PreConditions>
+<Expression>Message.DMI_SOUND_STATUS.HEADER</Expression>
+</Case><Case
+ Name="DMI_SYMB_STATUS"
+ Guid="c9fc0f02-8411-40db-9429-e600b3558c0c"
+>
+<PreConditions>
+<PreCondition
+ Guid="6ea4a15f-f7c8-4730-84ef-35d2b89d5ee9"
+>Message.DMI_SYMB_STATUS != EMPTY</PreCondition></PreConditions>
+<Expression>Message.DMI_SYMB_STATUS.HEADER</Expression>
+</Case><Case
+ Name="DMI_SYSTEM_STATUS_MESSAGE"
+ Guid="1da67046-53a6-44ce-b8fe-76ad6bd13ac2"
+>
+<PreConditions>
+<PreCondition
+ Guid="a25c4bf2-ec1c-4eca-a461-08f2b605babc"
+>Message.DMI_SYSTEM_STATUS_MESSAGE != EMPTY</PreCondition></PreConditions>
+<Expression>Message.DMI_SYSTEM_STATUS_MESSAGE.HEADER</Expression>
+</Case><Case
+ Name="DRIVER_S_ACTIONS"
+ Guid="53b31b09-7d49-4823-9ba8-c70a6539f58e"
+>
+<PreConditions>
+<PreCondition
+ Guid="ff146049-394b-4fa5-bc34-7797318999f7"
+>Message.DRIVER_S_ACTIONS != EMPTY</PreCondition></PreConditions>
+<Expression>Message.DRIVER_S_ACTIONS.HEADER</Expression>
+</Case><Case
+ Name="EDDY_CURRENT_BRAKE_STATUS"
+ Guid="c0ba7f73-42f4-456a-b7db-ded3ba516a99"
+>
+<PreConditions>
+<PreCondition
+ Guid="393d5327-dbcd-4977-954e-1c68d9cffcdf"
+>Message.EDDY_CURRENT_BRAKE_STATUS != EMPTY</PreCondition></PreConditions>
+<Expression>Message.EDDY_CURRENT_BRAKE_STATUS.HEADER</Expression>
+</Case><Case
+ Name="ELECTRO_PNEUMATIC_BRAKE_STATUS"
+ Guid="bb8d8598-a394-442d-b433-df584362546c"
+>
+<PreConditions>
+<PreCondition
+ Guid="959db6ff-c6e2-445c-82da-600ad809ebb4"
+>Message.ELECTRO_PNEUMATIC_BRAKE_STATUS != EMPTY</PreCondition></PreConditions>
+<Expression>Message.ELECTRO_PNEUMATIC_BRAKE_STATUS.HEADER</Expression>
+</Case><Case
+ Name="EMERGENCY_BRAKE_COMMAND_STATE"
+ Guid="f0fd1329-d7f1-4610-8da3-c120b5361041"
+>
+<PreConditions>
+<PreCondition
+ Guid="d28702a8-1177-4137-95c0-22200540b91a"
+>Message.EMERGENCY_BRAKE_COMMAND_STATE != EMPTY</PreCondition></PreConditions>
+<Expression>Message.EMERGENCY_BRAKE_COMMAND_STATE.HEADER</Expression>
+</Case><Case
+ Name="ETCS_ON_BOARD_PROPIETARY_JURIDICAL_DATA"
+ Guid="2ba7f9e1-dd62-447d-b076-0160203b25e5"
+>
+<PreConditions>
+<PreCondition
+ Guid="fc2193c2-0d19-4d85-845f-096452fd627d"
+>Message.ETCS_ON_BOARD_PROPIETARY_JURIDICAL_DATA != EMPTY</PreCondition></PreConditions>
+<Expression>Message.ETCS_ON_BOARD_PROPIETARY_JURIDICAL_DATA.HEADER</Expression>
+</Case><Case
+ Name="FROM_EUROLOOP"
+ Guid="768342a4-de8b-4cfa-ae6a-f5cdd5c9360a"
+>
+<PreConditions>
+<PreCondition
+ Guid="f8b45600-999f-4a9c-b7f2-0935adde6eb1"
+>Message.FROM_EUROLOOP != EMPTY</PreCondition></PreConditions>
+<Expression>Message.FROM_EUROLOOP.HEADER</Expression>
+</Case><Case
+ Name="FROM_RADIO_INFILL_UNIT"
+ Guid="d8c52ab0-2044-4a06-b9e9-8fb6f1e9edf7"
+>
+<PreConditions>
+<PreCondition
+ Guid="a814aac4-921b-4d21-9eb4-25d86a76db4c"
+>Message.FROM_RADIO_INFILL_UNIT != EMPTY</PreCondition></PreConditions>
+<Expression>Message.FROM_RADIO_INFILL_UNIT.HEADER</Expression>
+</Case><Case
+ Name="FROM_RBC"
+ Guid="430e2b3c-b336-44c7-8c61-12d6aabc6dcf"
+>
+<PreConditions>
+<PreCondition
+ Guid="bfa2a158-3b8c-4f44-b22a-5416542e12e6"
+>Message.FROM_RBC != EMPTY</PreCondition></PreConditions>
+<Expression>Message.FROM_RBC.HEADER</Expression>
+</Case><Case
+ Name="GENERAL_MESSAGE"
+ Guid="a5813ccd-61cb-44db-a181-9a45ad690b23"
+>
+<PreConditions>
+<PreCondition
+ Guid="4fdd909c-92d9-4c23-b41f-107430cef83d"
+>Message.GENERAL_MESSAGE != EMPTY</PreCondition></PreConditions>
+<Expression>Message.GENERAL_MESSAGE.HEADER</Expression>
+</Case><Case
+ Name="INFORMATION_FROM_COLD_MOVEMENT_DETECTOR"
+ Guid="3b2174cb-a67b-455e-8d8f-3a4b5b8e74f1"
+>
+<PreConditions>
+<PreCondition
+ Guid="c8150f54-9e19-414a-9f83-e230cde5ac26"
+>Message.INFORMATION_FROM_COLD_MOVEMENT_DETECTOR != EMPTY</PreCondition></PreConditions>
+<Expression>Message.INFORMATION_FROM_COLD_MOVEMENT_DETECTOR.HEADER</Expression>
+</Case><Case
+ Name="MAGNETIC_SHOE_BRAKE_STATUS"
+ Guid="a7b2fafd-bafc-4c2d-b020-c6094898ec2d"
+>
+<PreConditions>
+<PreCondition
+ Guid="fd303e09-4ea7-4beb-a927-12567fe28354"
+>Message.MAGNETIC_SHOE_BRAKE_STATUS != EMPTY</PreCondition></PreConditions>
+<Expression>Message.MAGNETIC_SHOE_BRAKE_STATUS.HEADER</Expression>
+</Case><Case
+ Name="NATIONAL_SYSTEM_ISOLATION"
+ Guid="93c35eec-ad0d-42f5-a745-6ab28eff178e"
+>
+<PreConditions>
+<PreCondition
+ Guid="2e73184a-d6f5-4f94-a174-8212173fc529"
+>Message.NATIONAL_SYSTEM_ISOLATION != EMPTY</PreCondition></PreConditions>
+<Expression>Message.NATIONAL_SYSTEM_ISOLATION.HEADER</Expression>
+</Case><Case
+ Name="NON_LEADING_INPUT"
+ Guid="8469cf6e-7f23-4806-8824-c2b64e16888b"
+>
+<PreConditions>
+<PreCondition
+ Guid="6169d7f5-0261-44d0-92f9-6daf3ea933d8"
+>Message.NON_LEADING_INPUT != EMPTY</PreCondition></PreConditions>
+<Expression>Message.NON_LEADING_INPUT.HEADER</Expression>
+</Case><Case
+ Name="NTC_SELECTED"
+ Guid="c3c77eee-6b68-41c7-ba36-01644f09c8c3"
+>
+<PreConditions>
+<PreCondition
+ Guid="1e443858-0fb9-473f-b28b-b0374b2175f1"
+>Message.NTC_SELECTED != EMPTY</PreCondition></PreConditions>
+<Expression>Message.NTC_SELECTED.HEADER</Expression>
+</Case><Case
+ Name="PASSIVE_SHUNTTING_INPUT"
+ Guid="9fe561b9-e680-44ee-9359-2f23c77f94bd"
+>
+<PreConditions>
+<PreCondition
+ Guid="fc99618c-077c-4bd3-89ad-00d411366d56"
+>Message.PASSIVE_SHUNTTING_INPUT != EMPTY</PreCondition></PreConditions>
+<Expression>Message.PASSIVE_SHUNTTING_INPUT.HEADER</Expression>
+</Case><Case
+ Name="RADIO_ERROR"
+ Guid="921255b9-3cdd-4955-8308-10d44abef9ff"
+>
+<PreConditions>
+<PreCondition
+ Guid="8b7ea826-ac5c-422e-ba40-336a6e504f1b"
+>Message.RADIO_ERROR != EMPTY</PreCondition></PreConditions>
+<Expression>Message.RADIO_ERROR.HEADER</Expression>
+</Case><Case
+ Name="REGENERATIVE_BRAKE_STATUS"
+ Guid="4a50128d-7331-421e-ad6c-9988fb747438"
+>
+<PreConditions>
+<PreCondition
+ Guid="b6c1e8ef-4721-4992-a5b9-3ffd22951fcf"
+>Message.REGENERATIVE_BRAKE_STATUS != EMPTY</PreCondition></PreConditions>
+<Expression>Message.REGENERATIVE_BRAKE_STATUS.HEADER</Expression>
+</Case><Case
+ Name="SAFETY_CRITICAL_FAULT_IN_MODE_SL_NL_OR_PS"
+ Guid="6806406c-1041-4798-8208-31eb22fc1abd"
+>
+<PreConditions>
+<PreCondition
+ Guid="3c0889b6-eed3-4437-bfd3-a5b36ec8b922"
+>Message.SAFETY_CRITICAL_FAULT_IN_MODE_SL_NL_OR_PS != EMPTY</PreCondition></PreConditions>
+<Expression>Message.SAFETY_CRITICAL_FAULT_IN_MODE_SL_NL_OR_PS.HEADER</Expression>
+</Case><Case
+ Name="SERVICE_BRAKE_COMMAND_STATE"
+ Guid="f7bc19ff-c4c3-4fbf-9fa0-758fb90c7cf6"
+>
+<PreConditions>
+<PreCondition
+ Guid="0145cb6a-df9f-47c5-8da4-b8b5fba6bd39"
+>Message.SERVICE_BRAKE_COMMAND_STATE != EMPTY</PreCondition></PreConditions>
+<Expression>Message.SERVICE_BRAKE_COMMAND_STATE.HEADER</Expression>
+</Case><Case
+ Name="SLEEPING_INPUT"
+ Guid="23004cf0-102a-401e-84d9-99fa3f7ff861"
+>
+<PreConditions>
+<PreCondition
+ Guid="77f18f31-9e32-4590-804f-b3f26b91cf71"
+>Message.SLEEPING_INPUT != EMPTY</PreCondition></PreConditions>
+<Expression>Message.SLEEPING_INPUT.HEADER</Expression>
+</Case><Case
+ Name="SPEED_AND_DISTANCE_MONITORING_INFORMATION"
+ Guid="842fd3c2-f60d-4311-be7a-3cdaca268fee"
+>
+<PreConditions>
+<PreCondition
+ Guid="aeb0e361-0e64-4a1e-8e2d-9d176a79490a"
+>Message.SPEED_AND_DISTANCE_MONITORING_INFORMATION != EMPTY</PreCondition></PreConditions>
+<Expression>Message.SPEED_AND_DISTANCE_MONITORING_INFORMATION.HEADER</Expression>
+</Case><Case
+ Name="SR_SPEED_DISTANCE_ENTERED_BY_DRIVER"
+ Guid="b5af636f-4cf3-4e4a-b0e8-7d5dab6ebc57"
+>
+<PreConditions>
+<PreCondition
+ Guid="92953361-fc11-4c6b-a105-0c27259ad5bd"
+>Message.SR_SPEED_DISTANCE_ENTERED_BY_DRIVER != EMPTY</PreCondition></PreConditions>
+<Expression>Message.SR_SPEED_DISTANCE_ENTERED_BY_DRIVER.HEADER</Expression>
+</Case><Case
+ Name="START_DISPLAYING_FIXED_TEXT_MESSAGE"
+ Guid="1c5dd424-85a9-42ca-a6d8-b7513d5004e4"
+>
+<PreConditions>
+<PreCondition
+ Guid="8685597e-f5e7-44f4-a386-d85cfcd1cdbe"
+>Message.START_DISPLAYING_FIXED_TEXT_MESSAGE != EMPTY</PreCondition></PreConditions>
+<Expression>Message.START_DISPLAYING_FIXED_TEXT_MESSAGE.HEADER</Expression>
+</Case><Case
+ Name="START_DISPLAYING_PLAIN_TEXT_MESSAGE"
+ Guid="54724eda-928c-416b-98b7-9f8d2e670df7"
+>
+<PreConditions>
+<PreCondition
+ Guid="266a84cb-b0a7-4853-8e90-d5abf31987ad"
+>Message.START_DISPLAYING_PLAIN_TEXT_MESSAGE != EMPTY</PreCondition></PreConditions>
+<Expression>Message.START_DISPLAYING_PLAIN_TEXT_MESSAGE.HEADER</Expression>
+</Case><Case
+ Name="STM_INFORMATION"
+ Guid="26e3e367-582e-4abd-8aca-82096e7453db"
+>
+<PreConditions>
+<PreCondition
+ Guid="5f277d7f-3e01-41dd-a30f-75c0fcbf18e4"
+>Message.STM_INFORMATION != EMPTY</PreCondition></PreConditions>
+<Expression>Message.STM_INFORMATION.HEADER</Expression>
+</Case><Case
+ Name="STOP_DISPLAYING_FIXED_TEXT_MESSAGE"
+ Guid="26ca0dd9-8be3-45c7-957e-82320eddf81c"
+>
+<PreConditions>
+<PreCondition
+ Guid="91725d12-1759-42aa-b031-a6b0aba78a27"
+>Message.STOP_DISPLAYING_FIXED_TEXT_MESSAGE != EMPTY</PreCondition></PreConditions>
+<Expression>Message.STOP_DISPLAYING_FIXED_TEXT_MESSAGE.HEADER</Expression>
+</Case><Case
+ Name="STOP_DISPLAYING_PLAIN_TEXT_MESSAGE"
+ Guid="eb22504c-8337-42e8-8ceb-2d00dc0ee53f"
+>
+<PreConditions>
+<PreCondition
+ Guid="aebb4114-b6de-45a0-9ad3-2e5aafd9d634"
+>Message.STOP_DISPLAYING_PLAIN_TEXT_MESSAGE != EMPTY</PreCondition></PreConditions>
+<Expression>Message.STOP_DISPLAYING_PLAIN_TEXT_MESSAGE.HEADER</Expression>
+</Case><Case
+ Name="TELEGRAM_FROM_BALISE"
+ Guid="1d0c9ee5-6d87-4915-929f-98e5a913b2ee"
+>
+<PreConditions>
+<PreCondition
+ Guid="87e20c90-f79b-490e-bd55-3635f2cd09f1"
+>Message.TELEGRAM_FROM_BALISE != EMPTY</PreCondition></PreConditions>
+<Expression>Message.TELEGRAM_FROM_BALISE.HEADER</Expression>
+</Case><Case
+ Name="TO_RADIO_INFILL_UNIT"
+ Guid="9ecbd52a-ac08-4a1e-988b-da696914e42f"
+>
+<PreConditions>
+<PreCondition
+ Guid="4cb8ae68-efb8-45e1-b663-6eea5ad300b8"
+>Message.TO_RADIO_INFILL_UNIT != EMPTY</PreCondition></PreConditions>
+<Expression>Message.TO_RADIO_INFILL_UNIT.HEADER</Expression>
+</Case><Case
+ Name="TO_RBC"
+ Guid="27971ed0-627c-440d-a2f0-2cc10bdd9444"
+>
+<PreConditions>
+<PreCondition
+ Guid="885e279c-48d9-4af6-b609-1748eaf274ed"
+>Message.TO_RBC != EMPTY</PreCondition></PreConditions>
+<Expression>Message.TO_RBC.HEADER</Expression>
+</Case><Case
+ Name="TRACTION_CUT_OFF_COMMAND_STATE"
+ Guid="481f1ec5-9571-484f-a483-47132b624c40"
+>
+<PreConditions>
+<PreCondition
+ Guid="f4a2c16c-0c8c-48ef-a9eb-bb26dd08ef18"
+>Message.TRACTION_CUT_OFF_COMMAND_STATE != EMPTY</PreCondition></PreConditions>
+<Expression>Message.TRACTION_CUT_OFF_COMMAND_STATE.HEADER</Expression>
+</Case><Case
+ Name="TRACTION_STATUS"
+ Guid="7edb690b-1f19-465f-904e-ca96f8e06564"
+>
+<PreConditions>
+<PreCondition
+ Guid="31228bad-48f7-4ef6-a785-a1c8ad6070a7"
+>Message.TRACTION_STATUS != EMPTY</PreCondition></PreConditions>
+<Expression>Message.TRACTION_STATUS.HEADER</Expression>
+</Case><Case
+ Name="TRAIN_DATA"
+ Guid="90ff5e82-1a2c-4495-90ba-27692a1a2054"
+>
+<PreConditions>
+<PreCondition
+ Guid="e0aa2f0e-9e7e-45c8-8535-eee10a12ff2f"
+>Message.TRAIN_DATA != EMPTY</PreCondition></PreConditions>
+<Expression>Message.TRAIN_DATA.HEADER</Expression>
+</Case><Case
+ Name="TYPE_OF_TRAIN_DATA_ENTRY"
+ Guid="cf0c7e91-e6a2-4af2-8c88-5292495a4ab9"
+>
+<PreConditions>
+<PreCondition
+ Guid="6dc2f006-b1b5-4791-ba51-092b11d4105b"
+>Message.TYPE_OF_TRAIN_DATA_ENTRY != EMPTY</PreCondition></PreConditions>
+<Expression>Message.TYPE_OF_TRAIN_DATA_ENTRY.HEADER</Expression>
+</Case><Case
+ Name="VIRTUAL_BALISE_COVER_REMOVED_BY_DRIVER"
+ Guid="5921abf1-6a94-4493-b344-7a82fc4c6e0e"
+>
+<PreConditions>
+<PreCondition
+ Guid="ae6b32fe-8b48-4b64-a91a-121da0932916"
+>Message.VIRTUAL_BALISE_COVER_REMOVED_BY_DRIVER != EMPTY</PreCondition></PreConditions>
+<Expression>Message.VIRTUAL_BALISE_COVER_REMOVED_BY_DRIVER.HEADER</Expression>
+</Case><Case
+ Name="VIRTUAL_BALISE_COVER_SET_BY_DRIVER"
+ Guid="4ddb106a-0045-4742-9d1d-27b39d0c319f"
+>
+<PreConditions>
+<PreCondition
+ Guid="e23dfa04-7142-47df-aa9c-39f61defcacd"
+>Message.VIRTUAL_BALISE_COVER_SET_BY_DRIVER != EMPTY</PreCondition></PreConditions>
+<Expression>Message.VIRTUAL_BALISE_COVER_SET_BY_DRIVER.HEADER</Expression>
+</Case></Cases>
 </Function></Functions>
 <Variables>
 <Variable
