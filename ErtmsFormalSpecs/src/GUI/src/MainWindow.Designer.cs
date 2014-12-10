@@ -183,8 +183,6 @@ namespace GUI
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.importStartStopConditionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -656,8 +654,6 @@ namespace GUI
             this.markNotTestedButFunctionalTestToolStripMenuItem,
             this.markSpecIssuesToolStripMenuItem,
             this.markParagraphsFromNewRevisionToolStripMenuItem,
-            this.toolStripSeparator20,
-            this.importStartStopConditionsToolStripMenuItem,
             this.toolStripSeparator15,
             this.generateCoverageReportToolStripMenuItem,
             this.generateSpecIssuesReportToolStripMenuItem});
@@ -1227,18 +1223,6 @@ namespace GUI
             this.dockPanel.Skin = dockPanelSkin1;
             this.dockPanel.TabIndex = 4;
             // 
-            // importStartStopConditionsToolStripMenuItem
-            // 
-            this.importStartStopConditionsToolStripMenuItem.Name = "importStartStopConditionsToolStripMenuItem";
-            this.importStartStopConditionsToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
-            this.importStartStopConditionsToolStripMenuItem.Text = "Import Start Stop Conditions";
-            this.importStartStopConditionsToolStripMenuItem.Click += new System.EventHandler(this.importStartStopConditionsToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator20
-            // 
-            this.toolStripSeparator20.Name = "toolStripSeparator20";
-            this.toolStripSeparator20.Size = new System.Drawing.Size(333, 6);
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1390,8 +1374,6 @@ namespace GUI
         private System.Windows.Forms.ToolStripMenuItem showSelectionHistoryViewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateFindingsReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
-        private System.Windows.Forms.ToolStripMenuItem importStartStopConditionsToolStripMenuItem;
     }
 }
 
