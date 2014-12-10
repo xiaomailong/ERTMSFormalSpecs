@@ -232,6 +232,7 @@ namespace GUI.TestRunnerView
         {
             ClearAll();
             ClearMessages();
+            Utils.ModelElement.LogCount = 0;
 
             ExecuteTestsOperation executeTestsOperation = new ExecuteTestsOperation(BaseForm as Window, Item);
             executeTestsOperation.ExecuteUsingProgressDialog("Executing test sequences");

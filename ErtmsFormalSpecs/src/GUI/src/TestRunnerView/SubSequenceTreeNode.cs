@@ -228,6 +228,8 @@ namespace GUI.TestRunnerView
         public void RunHandler(object sender, EventArgs args)
         {
             ClearMessages();
+            Utils.ModelElement.LogCount = 0;
+
             ExecuteTestsHandler executeTestHandler = new ExecuteTestsHandler(BaseForm as Window, Item);
             executeTestHandler.ExecuteUsingProgressDialog("Executing test steps");
 
