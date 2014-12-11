@@ -381,13 +381,13 @@ TO_RBC =&gt; CreateMessageToRbcMessage(EURORADIO.CurrentRBCConnection(), EURORAD
 <PreConditions>
 <PreCondition
  Guid="f02eecba-036a-4cca-b8c4-60599b02f0cc"
->DriverActed()</PreCondition></PreConditions>
+>DriverActed(THIS)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f5f5fe71-29ba-4927-b45c-fd8ea8e75cca"
 >INSERT Messages.JRU.MESSAGE.Message
 {
-  DRIVER_S_ACTIONS =&gt; JRU.CreateDriversActionsMessage()
+  DRIVER_S_ACTIONS =&gt; JRU.CreateDriversActionsMessage(THIS)
 }
 IN
   JRUMessages</Action></Actions>
@@ -1213,7 +1213,9 @@ IN JRUMessages</Action></Actions>
  Guid="65f7cd8d-4303-454d-abfb-ae779fe99371"
 >PreviousDMISymbolStatusMessage &lt;- CreateDMISymbolStatusChangeMessage().DMI_SYMBOL_STATUS</Action><Action
  Guid="eef9b3ad-1029-42e0-bbed-ad777e865c1f"
->PreviousAdditionalDataMessage &lt;- CreateAdditionalDataMessage()</Action></Actions>
+>PreviousAdditionalDataMessage &lt;- CreateAdditionalDataMessage()</Action><Action
+ Guid="cb009226-a854-4134-aa00-33daf3f0f700"
+>PreviousRequestToDisplayTheGeographicalInformation &lt;- DMI.MasterDMI().Out_GeographicalPosition.DisplayRequestedByDriver</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -1823,7 +1825,21 @@ IN JRUMessages</Action></Actions>
  SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
  Guid="d13eb17d-67ff-4a60-8ef5-81503e58580e"
 >
-</ReqRef></StructureElement></Structure></Structures>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreviousRequestToDisplayTheGeographicalInformation"
+ Guid="0854c22f-2c24-462f-a321-baddfab2fab7"
+>
+<ReqRef
+ Id="0fcf9f57-8c5b-4beb-88e2-c8f43ec6f8bd"
+ SpecId="2218d057-3a1a-45e0-a1c9-ef26c3f85bc2"
+ Guid="cee33ed9-5c7a-4f65-b172-57e14ba92220"
+>
+</ReqRef><Comment>Used to determine if the driver acted on the display or concealment of the geographical position on the DMI.</Comment>
+</StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="Messages.JRU.MESSAGE.Message"
@@ -2326,7 +2342,7 @@ SendDMIStatusMessage(jru)
   OR
 SendAdditionalDataMessage(jru)
   OR
-DriverActed()
+DriverActed(jru)
   OR
 SendDMISystemStatusMessage()</PreCondition><PreCondition
  Guid="07a9b9fc-3c5f-4545-acc0-68ead56b0325"
@@ -5035,6 +5051,13 @@ jru.PreviousTargetDistance != Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonit
  Guid="d23192df-2ae6-496c-9aa2-115a2067994a"
 >
 </ReqRef><Comment>Indicates if the driver has acted on the DMI.</Comment>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="aJRU"
+ Guid="c436d7fe-11f8-4126-b36d-a43e9355416f"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
@@ -5118,7 +5141,9 @@ DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.DriverAnswere
   OR
 DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.DriverAnswered
   OR
-DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswered</Expression>
+DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswered
+  OR
+aJRU.PreviousRequestToDisplayTheGeographicalInformation != DMI.MasterDMI().Out_GeographicalPosition.DisplayRequestedByDriver</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.MESSAGE.DRIVER_S_ACTIONS.Message"
@@ -5146,6 +5171,13 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
  Guid="56d0b161-803f-459b-b8b8-cee9a79809af"
 >
 </ReqRef><Comment>Will fill the necessary fields to generate the DRIVERS_ACTIONS message</Comment>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="aJRU"
+ Guid="5cb7bd58-b91a-4647-9308-d2dee83e62ae"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
@@ -5154,7 +5186,7 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
 <Expression>Messages.JRU.MESSAGE.DRIVER_S_ACTIONS.Message
 {
     HEADER =&gt; CreateHeader(11),
-    M_DRIVERACTIONS =&gt; TypeConvertors.ToJRUDriversAction()
+    M_DRIVERACTIONS =&gt; TypeConvertors.ToJRUDriversAction(aJRU)
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -5417,19 +5449,19 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
 <PreConditions>
 <PreCondition
  Guid="04f2e10e-94f3-4928-90a5-a75ba2e20267"
->aJRU.PreviousAdditionalDataMessage.M_ADHESION == CreateAdditionalDataMessage().M_ADHESION</PreCondition><PreCondition
- Guid="24015de3-5535-4b00-bac6-0e6381aff376"
->aJRU.PreviousAdditionalDataMessage.NID_C == CreateAdditionalDataMessage().NID_C</PreCondition><PreCondition
- Guid="d881dab0-2146-413d-83cb-1f478cdf6b68"
->aJRU.PreviousAdditionalDataMessage.NID_OPERATIONAL == CreateAdditionalDataMessage().NID_OPERATIONAL</PreCondition><PreCondition
- Guid="9c4a4233-370d-4c64-b10e-0ff1d84c5740"
->aJRU.PreviousAdditionalDataMessage.NID_MN == CreateAdditionalDataMessage().NID_MN</PreCondition><PreCondition
- Guid="8207a120-4f99-4e0e-836d-fb0b57605d6e"
->aJRU.PreviousAdditionalDataMessage.NID_RADIO == CreateAdditionalDataMessage().NID_RADIO</PreCondition><PreCondition
- Guid="49873979-bc2b-4521-b946-da80c9a118bd"
->aJRU.PreviousAdditionalDataMessage.Q_RBCENTRY == CreateAdditionalDataMessage().Q_RBCENTRY</PreCondition><PreCondition
- Guid="d4729b10-156d-4aeb-a629-1adfa929f98e"
->aJRU.PreviousAdditionalDataMessage.NID_RBC == CreateAdditionalDataMessage().NID_RBC</PreCondition></PreConditions>
+>aJRU.PreviousAdditionalDataMessage.M_ADHESION != CreateAdditionalDataMessage().M_ADHESION
+  OR
+aJRU.PreviousAdditionalDataMessage.NID_C != CreateAdditionalDataMessage().NID_C
+  OR
+aJRU.PreviousAdditionalDataMessage.NID_OPERATIONAL != CreateAdditionalDataMessage().NID_OPERATIONAL
+  OR
+aJRU.PreviousAdditionalDataMessage.NID_MN != CreateAdditionalDataMessage().NID_MN
+  OR
+aJRU.PreviousAdditionalDataMessage.NID_RADIO != CreateAdditionalDataMessage().NID_RADIO
+  OR
+aJRU.PreviousAdditionalDataMessage.Q_RBCENTRY != CreateAdditionalDataMessage().Q_RBCENTRY
+  OR
+aJRU.PreviousAdditionalDataMessage.NID_RBC != CreateAdditionalDataMessage().NID_RBC</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Do not send"
