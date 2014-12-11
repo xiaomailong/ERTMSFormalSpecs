@@ -11422,10 +11422,10 @@ EmergencyStops</Action></Actions>
 >
 <PreConditions>
 <PreCondition
- Guid="e136c6b8-e08a-46cd-b50c-e0dbe1bdbda6"
->JRU.SendNewMessage(JRU.JRU1)</PreCondition><PreCondition
  Guid="391b87a5-a5e4-47d6-aaae-09d81e789aa1"
->Kernel.ActiveFunctions.ProvideJuridicalData()</PreCondition></PreConditions>
+>Kernel.ActiveFunctions.ProvideJuridicalData()
+  AND
+JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="bb324409-0669-4fc6-8f5e-9bde8122f644"

@@ -1211,7 +1211,9 @@ IN JRUMessages</Action></Actions>
  Guid="3bf2231c-6b43-4768-99dc-85f531bfcf5c"
 >PreviousVirtualBaliseCovers &lt;- Kernel.VirtualBaliseCover.VirtualBaliseCovers</Action><Action
  Guid="65f7cd8d-4303-454d-abfb-ae779fe99371"
->PreviousDMISymbolStatusMessage &lt;- CreateDMISymbolStatusChangeMessage().DMI_SYMBOL_STATUS</Action></Actions>
+>PreviousDMISymbolStatusMessage &lt;- CreateDMISymbolStatusChangeMessage().DMI_SYMBOL_STATUS</Action><Action
+ Guid="eef9b3ad-1029-42e0-bbed-ad777e865c1f"
+>PreviousAdditionalDataMessage &lt;- CreateAdditionalDataMessage()</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -5324,6 +5326,7 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.MESSAGE.ADDITIONAL_DATA.Message"
+ Cacheable="TRUE"
  Default=""
  X="880"
  Y="300"
@@ -5408,10 +5411,31 @@ DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.DriverAnswere
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Value"
+ Name="Send"
  Guid="b6f1ee97-eb90-45fb-b6f8-20eb24cc8d90"
 >
-<Expression>aJRU.PreviousAdditionalDataMessage != CreateAdditionalDataMessage()</Expression>
+<PreConditions>
+<PreCondition
+ Guid="04f2e10e-94f3-4928-90a5-a75ba2e20267"
+>aJRU.PreviousAdditionalDataMessage.M_ADHESION == CreateAdditionalDataMessage().M_ADHESION</PreCondition><PreCondition
+ Guid="24015de3-5535-4b00-bac6-0e6381aff376"
+>aJRU.PreviousAdditionalDataMessage.NID_C == CreateAdditionalDataMessage().NID_C</PreCondition><PreCondition
+ Guid="d881dab0-2146-413d-83cb-1f478cdf6b68"
+>aJRU.PreviousAdditionalDataMessage.NID_OPERATIONAL == CreateAdditionalDataMessage().NID_OPERATIONAL</PreCondition><PreCondition
+ Guid="9c4a4233-370d-4c64-b10e-0ff1d84c5740"
+>aJRU.PreviousAdditionalDataMessage.NID_MN == CreateAdditionalDataMessage().NID_MN</PreCondition><PreCondition
+ Guid="8207a120-4f99-4e0e-836d-fb0b57605d6e"
+>aJRU.PreviousAdditionalDataMessage.NID_RADIO == CreateAdditionalDataMessage().NID_RADIO</PreCondition><PreCondition
+ Guid="49873979-bc2b-4521-b946-da80c9a118bd"
+>aJRU.PreviousAdditionalDataMessage.Q_RBCENTRY == CreateAdditionalDataMessage().Q_RBCENTRY</PreCondition><PreCondition
+ Guid="d4729b10-156d-4aeb-a629-1adfa929f98e"
+>aJRU.PreviousAdditionalDataMessage.NID_RBC == CreateAdditionalDataMessage().NID_RBC</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Do not send"
+ Guid="d17a142b-2e99-4434-b6f0-22a1488c9bba"
+>
+<Expression>False</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
