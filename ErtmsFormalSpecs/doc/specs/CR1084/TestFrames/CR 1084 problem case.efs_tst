@@ -14,7 +14,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Sequence1"
+ Name="Sequence"
  Guid="bf6ae475-bd7f-43ae-b46c-14675d8c438c"
 >
 <TestCases>
@@ -133,7 +133,7 @@
         ]
     }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
     {
-        Distance =&gt; 1260.0,
+        Distance =&gt; 1190.0,
         BasicSpeed =&gt; 30.0,
         TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
         Categories =&gt; 
@@ -186,7 +186,7 @@
 <Actions>
 <Action
  Guid="67e265f1-350a-408b-aa2e-4c361f342b9e"
->Odometry.NominalDistance &lt;- 880.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 910.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step4 - PIM2, after Target 1"
  Guid="2db675ae-e1ab-421d-9536-e3610937e9d8"
@@ -202,7 +202,7 @@
 <Actions>
 <Action
  Guid="7ad6696f-6d41-4c03-a0a1-c18f76863631"
->Odometry.NominalDistance &lt;- 1000.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 1160.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step6 - After Target 2"
  Guid="deff3c15-fc25-4f4f-b1e2-e496ed79449b"
@@ -210,7 +210,7 @@
 <Actions>
 <Action
  Guid="5e968dc9-814e-4620-9a67-b48957f2fcad"
->Odometry.NominalDistance &lt;- 1100.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 1300.0</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
