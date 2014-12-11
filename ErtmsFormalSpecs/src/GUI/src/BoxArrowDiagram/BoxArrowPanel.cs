@@ -24,6 +24,7 @@ using DataDictionary;
 using System.IO;
 using System.Globalization;
 using ErtmsSolutions.Utils.RunProcessExec;
+using LibGit2Sharp;
 
 namespace GUI.BoxArrowDiagram
 {
@@ -54,7 +55,7 @@ namespace GUI.BoxArrowDiagram
             reDisplayMenuItem.Name = "reDisplayMenuItem";
             reDisplayMenuItem.Size = new System.Drawing.Size(250, 22);
             reDisplayMenuItem.Text = "Redisplay items";
-            reDisplayMenuItem.Click += new System.EventHandler(reDisplayMenuItem_Click);
+            reDisplayMenuItem.Click += new System.EventHandler(ReDisplayMenuItem_Click);
 
             contextMenu.Items.Clear();
             contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -100,6 +101,7 @@ namespace GUI.BoxArrowDiagram
             MouseDown += new MouseEventHandler(BoxArrowPanel_MouseDown);
             MouseMove += new MouseEventHandler(BoxArrowPanel_MouseMove);
             MouseUp += new MouseEventHandler(BoxArrowPanel_MouseUp);
+            Click += new EventHandler(BoxArrowPanel_Click);
 
             DragEnter += new DragEventHandler(DragEnterHandler);
             DragDrop += new DragEventHandler(DragDropHandler);
@@ -111,6 +113,42 @@ namespace GUI.BoxArrowDiagram
             Images.Images.Add(GUI.Properties.Resources.unpin);
 
             Paint += new PaintEventHandler(BoxArrowPanel_Paint);
+        }
+
+        void BoxArrowPanel_Click(object sender, EventArgs e)
+        {
+            MouseEventArgs mouseEvent = e as MouseEventArgs;
+
+            if (mouseEvent.Button == MouseButtons.Right)
+            {
+                BaseForm baseForm = EnclosingForm as BaseForm;
+                if (baseForm != null && baseForm.TreeView != null)
+                {
+                    BaseTreeNode node = baseForm.TreeView.FindNode(Model as ModelElement);
+                    ContextMenu menu = node.ContextMenu;
+                    menu.Show(this, mouseEvent.Location);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Provides the enclosing form
+        /// </summary>
+        public Form EnclosingForm
+        {
+            get
+            {
+                Form retVal = null;
+
+                Control current = this;
+                while (current != null && retVal == null)
+                {
+                    retVal = current as Form;
+                    current = current.Parent;
+                }
+
+                return retVal;
+            }
         }
 
         /// <summary>
@@ -175,7 +213,7 @@ namespace GUI.BoxArrowDiagram
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void reDisplayMenuItem_Click(object sender, EventArgs e)
+        private void ReDisplayMenuItem_Click(object sender, EventArgs e)
         {
             string filePath = System.IO.Path.GetTempFileName();
             try
