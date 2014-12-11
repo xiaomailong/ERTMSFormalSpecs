@@ -331,12 +331,21 @@ BTM.TravelledDistanceFromBG( aBG =&gt; ApplicableItem.ReferenceBG ) - Applicable
 >NOT THERE_IS X IN BTM.PreviousBaliseGroups |X.BaliseGroup.NID == aBG</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
- Name="The balise has already been passed"
+ Name="The balise has already been passed but is single and no linking"
  Guid="b7a7cc28-d8d5-480f-8e33-2cc9643d2dfc"
 >
-<Expression>(FIRST X IN BTM.PreviousBaliseGroups | X.BaliseGroup.NID == aBG).IsSingle
-  AND
-NOT BTM.Linking.LinkingApplicable()</Expression>
+<PreConditions>
+<PreCondition
+ Guid="837ba973-2270-434d-a170-3a3de07c862d"
+>(FIRST X IN BTM.PreviousBaliseGroups | X.BaliseGroup.NID == aBG).IsSingle</PreCondition><PreCondition
+ Guid="b9707add-be46-4c2d-91d3-bf29675d068a"
+>NOT BTM.Linking.LinkingApplicable()</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="7e18fb09-0d33-411a-bc0e-44e174dc87b2"
+>
+<Expression>True</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -369,7 +378,7 @@ NOT BTM.Linking.LinkingApplicable()</Expression>
 >
 <Expression>THERE_IS X IN BTM.PreviousBaliseGroups | X.BaliseGroup.NID == anItem.ReferenceBG
   AND
-BTM.TravelledDistanceFromBG( aBG =&gt; anItem.ReferenceBG ) &gt; anItem.Offset</Expression>
+BTM.TravelledDistanceFromBG( aBG =&gt; anItem.ReferenceBG ) &gt;= anItem.Offset</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
