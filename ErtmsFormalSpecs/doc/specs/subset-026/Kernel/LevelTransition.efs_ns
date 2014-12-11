@@ -294,6 +294,49 @@
 >
 <Expression>Boolean.False</Expression>
 </Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="ComputeLTODistance"
+ Guid="fd20b9f2-73c0-4e6f-aa9e-36ce9fecd9a3"
+>
+<ReqRef
+ Id="48cd2e35-67c2-46a5-9f39-4d543c9361d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="76d3a7e7-d3dc-4162-824d-254688fdc4be"
+>
+</ReqRef><Comment>Converts the distance received from the trackside to the distance used on-board. If D_LEVELTR equals 32767 (= special value &quot;Now&quot;), the stored distance will equal BTM.TravelledDistanceFromLRBG(), otherwise it is translated as usually.</Comment>
+<Parameters>
+<Parameter
+ Type="MessageTypes.Distance"
+ Name="aDistance"
+ Guid="4dead16f-9ec4-4761-9b58-f020c2dbca8e"
+>
+</Parameter><Parameter
+ Type="Messages.Q_SCALE"
+ Name="aScale"
+ Guid="7e133d04-9468-42a1-86a4-46abfc9a6853"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Special value &quot;now&quot;"
+ Guid="941e4694-f686-4e96-ab79-bae123c083fe"
+>
+<PreConditions>
+<PreCondition
+ Guid="2a28cce7-3c7e-4ceb-a109-be236d69e4af"
+>aDistance == 32767</PreCondition></PreConditions>
+<Expression>BTM.TravelledDistanceFromLRBG()</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="a0f2f271-9086-4966-8579-24238c7e2adb"
+>
+<Expression>MessageTypes.QScaleDistance ( distance =&gt; aDistance, scale =&gt; aScale )</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -482,7 +525,7 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
 >LevelTransitionOrder &lt;- Kernel.LevelTransition.LevelTransitionOrderStruct
 {
   IsConditional=&gt; True,
-  Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LEVELTR, scale =&gt; Packet.Q_SCALE ),
+  Distance =&gt; ComputeLTODistance ( aDistance =&gt; Packet.D_LEVELTR, aScale =&gt; Packet.Q_SCALE ),
   LevelAndLength =&gt; 
   [ 
       Kernel.LevelTransition.LevelTransitionStruct { 
@@ -835,7 +878,7 @@ Packet.Sequence1</Action></Actions>
 <Actions>
 <Action
  Guid="097a357d-a5c2-47af-a6ac-050fe94ed1ed"
->Kernel.Level.Value.Value &lt;- LevelTransitionToProcess.TRLevel.Value</Action><Action
+>Kernel.Level.Value &lt;- LevelTransitionToProcess.TRLevel</Action><Action
  Guid="0ddeb99e-7c2c-4f4c-a6c4-63b006cbc5e0"
 >EURORADIO.PositionReport.PositionReportEventsTracker.LevelTransitionBorderPassed &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
