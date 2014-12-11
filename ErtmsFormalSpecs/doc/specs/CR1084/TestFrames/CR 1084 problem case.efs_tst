@@ -153,13 +153,14 @@
 ]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
+ Distance="500"
  IO="NA"
  LevelIN="NA"
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step3 - View the different cases"
+ Name="Step3 - Before PIM1"
  Guid="2fe1d363-aaf7-482c-91bb-7d5fa689a5e1"
 >
 <SubSteps>
@@ -171,31 +172,83 @@
 <Action
  Guid="0254aa01-02a9-4774-91fd-a2a66080dc4b"
 >Odometry.NominalDistance &lt;- 500.0</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2 - PIM1"
+</SubStep></SubSteps>
+</Step><Step
+ Distance="550"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4 - PIM1"
+ Guid="d43b8308-1169-4c65-89b4-3458c0ff1ac6"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - PIM1"
  Guid="7f32ade8-e3c2-461a-b525-2343feaeb4af"
 >
 <Actions>
 <Action
  Guid="d05d7793-d019-4127-94b0-0b459ad22e6a"
 >Odometry.NominalDistance &lt;- 550.0</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step3 - TSM1"
+</SubStep></SubSteps>
+</Step><Step
+ Distance="910"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step5 - TSM1"
+ Guid="fc2902fa-0e40-441d-8c5a-7a8380a9077e"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - TSM1"
  Guid="de65601a-40ee-4d68-9902-b67eb238bddb"
 >
 <Actions>
 <Action
  Guid="67e265f1-350a-408b-aa2e-4c361f342b9e"
 >Odometry.NominalDistance &lt;- 910.0</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step4 - PIM2, after Target 1"
+</SubStep></SubSteps>
+</Step><Step
+ Distance="951"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step6 - PIM2, after Target 1"
+ Guid="43abb105-efce-4ece-bdc9-eb0b806ddc1d"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - PIM2, after Target 1"
  Guid="2db675ae-e1ab-421d-9536-e3610937e9d8"
 >
 <Actions>
 <Action
  Guid="ec3bc56c-a0aa-4bdf-8ba2-b05e68f4962a"
 >Odometry.NominalDistance &lt;- 951.0</Action></Actions>
-</SubStep><SubStep
+</SubStep></SubSteps>
+</Step><Step
+ Distance="1160"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step7 - TSM2"
+ Guid="8d5b9487-e92b-4c34-b448-5d86c62e0907"
+>
+<SubSteps>
+<SubStep
  Name="Sub-step5 - TSM2"
  Guid="55733a9a-8908-4386-8634-9962cb83422c"
 >
@@ -203,14 +256,27 @@
 <Action
  Guid="7ad6696f-6d41-4c03-a0a1-c18f76863631"
 >Odometry.NominalDistance &lt;- 1160.0</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step6 - After Target 2"
+</SubStep></SubSteps>
+</Step><Step
+ Distance="2000"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step8 - After Target 2"
+ Guid="aab4e397-adb5-489e-8b7d-b449a6b41fe6"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - After Target 2"
  Guid="deff3c15-fc25-4f4f-b1e2-e496ed79449b"
 >
 <Actions>
 <Action
  Guid="5e968dc9-814e-4620-9a67-b48957f2fcad"
->Odometry.NominalDistance &lt;- 1300.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 2000.0</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
