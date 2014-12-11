@@ -10,7 +10,6 @@
 <Functions>
 <Function
  Type="Default.BaseTypes.Distance"
- Cacheable="TRUE"
  Default=""
  X="20"
  Y="160"
@@ -71,15 +70,29 @@
 >DecelerationCurves.EBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) &lt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
+ Name="Border case"
+ Guid="e14b2ae3-9422-4cfe-b114-57be6f8ad826"
+>
+<PreConditions>
+<PreCondition
+ Guid="8d987f0a-f51e-477e-810c-d3a2a790bacc"
+>Vmrsp + f41 ( Vmrsp ) + CeilingSpeedMonitoring.dV_ebi( Vmrsp ) &gt; DecelerationCurves.EBD( TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) )</PreCondition></PreConditions>
+<Expression>DistanceForSpeed ( 
+    Function =&gt; DecelerationCurves.EBD,
+    Speed =&gt; DecelerationCurves.EBD( TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) ) )</Expression>
+</Case><Case
  Name="Value"
  Guid="87bc3884-bbcf-40e7-891f-a35b2baa7c00"
 >
 <Comment>Standard case</Comment>
-<Expression>DistanceForSpeed ( Function =&gt; DecelerationCurves.EBD, Speed =&gt; Vmrsp + f41 ( Vmrsp ) ) - BaseTypes.SpeedToMS( Vmrsp + f41 ( Vmrsp ) ) * ( T_beremind() + T_tractionind() )</Expression>
+<Expression>DistanceForSpeed ( 
+    Function =&gt; DecelerationCurves.EBD,
+    Speed =&gt; Vmrsp + f41 ( Vmrsp ) + CeilingSpeedMonitoring.dV_ebi( Vmrsp ) )
+
+ - BaseTypes.SpeedToMS( Vmrsp + f41 ( Vmrsp ) ) * ( T_beremind() + T_tractionind() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
- Cacheable="TRUE"
  Default=""
  X="20"
  Y="220"
@@ -128,7 +141,6 @@
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
- Cacheable="TRUE"
  Default=""
  X="240"
  Y="220"
@@ -324,7 +336,7 @@
  Guid="53520f03-8e9f-47cf-a003-6a8a5a346744"
 >MA.IsEOA ( MRSPnTarget )</PreCondition><PreCondition
  Guid="6e0306cd-0b5a-4339-8626-25b6e5b0163b"
->MRSPnTarget == TargetSpeedMonitoring.MRDT()</PreCondition></PreConditions>
+>MRSPnTarget == TargetSpeedMonitoring.SupervisedTarget()</PreCondition></PreConditions>
 <Expression>PreIndicationLocation.d_I_EOA ( PreIndicationLocation.TargetSpeed(MRSPnTarget) ) - BaseTypes.SpeedToMS(TargetSpeed(MRSPnTarget)) * PreIndicationLocation.T_preindication</Expression>
 </Case><Case
  Name="Other target, first case, current target"
@@ -335,7 +347,7 @@
  Guid="92a5fe74-f56f-49fb-ad9b-59302ec14d54"
 >PreIndicationLocation.d_I ( PreIndicationLocation.TargetSpeed(MRSPnTarget) ) &lt;= PreIndicationLocation.MRSPnEnd(MRSPnTarget)</PreCondition><PreCondition
  Guid="78b9ae74-6271-4ba4-ba19-6547ce837dfe"
->MRSPnTarget == TargetSpeedMonitoring.MRDT()</PreCondition></PreConditions>
+>MRSPnTarget == TargetSpeedMonitoring.SupervisedTarget()</PreCondition></PreConditions>
 <Expression>PreIndicationLocation.d_I ( PreIndicationLocation.TargetSpeed(MRSPnTarget) ) - BaseTypes.SpeedToMS(TargetSpeed(MRSPnTarget)) * PreIndicationLocation.T_preindication</Expression>
 </Case><Case
  Name="Second case, current target"
@@ -344,7 +356,7 @@
 <PreConditions>
 <PreCondition
  Guid="14678d4c-8a8c-49e3-99ba-0284c32a0363"
->MRSPnTarget == TargetSpeedMonitoring.MRDT()</PreCondition><PreCondition
+>MRSPnTarget == TargetSpeedMonitoring.SupervisedTarget()</PreCondition><PreCondition
  Guid="fea3478d-454f-4a14-b807-f7c9564ad8a4"
 >PreIndicationLocation.MRSPnEnd(MRSPnTarget) &lt; PreIndicationLocation.d_I ( PreIndicationLocation.TargetSpeed(MRSPnTarget) )</PreCondition><PreCondition
  Guid="75a229f0-84ec-4f4b-aa86-b24afaa035d4"
@@ -430,7 +442,6 @@
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
- Cacheable="TRUE"
  Default=""
  X="240"
  Y="160"
@@ -546,7 +557,7 @@ PreIndicationLocation.d_SBI2 ( Vmrsp, EstimatedAccelerationSetToZero ) == Defaul
 <PreCondition
  Guid="3bf6d470-f45b-45d0-864a-c216d2eeb181"
 >TargetsList() != []</PreCondition></PreConditions>
-<Expression>Compute_d_preindication(TargetSpeedMonitoring.MRDT())</Expression>
+<Expression>Compute_d_preindication(TargetSpeedMonitoring.SupervisedTarget())</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="2864273a-427e-4862-800f-f42bb985cd36"
@@ -657,7 +668,7 @@ INITIAL_VALUE TargetSpeedMonitoring.Target{
 <PreConditions>
 <PreCondition
  Guid="6c89e2c5-c672-4783-b6b8-0d417cf0f735"
->Target == TargetSpeedMonitoring.MRDT()</PreCondition></PreConditions>
+>Target == TargetSpeedMonitoring.SupervisedTarget()</PreCondition></PreConditions>
 <Expression>MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</Expression>
 </Case><Case
  Name="The section ending at the target is not speed restricted"
@@ -789,13 +800,13 @@ INITIAL_VALUE TargetSpeedMonitoring.Target{
 <PreConditions>
 <PreCondition
  Guid="ef820a57-90ad-4617-a69a-6c1a406ec324"
->( MA.IsEOA(TargetSpeedMonitoring.MRDT())
+>( MA.IsEOA(TargetSpeedMonitoring.SupervisedTarget())
   OR  
-MA.IsSvL(TargetSpeedMonitoring.MRDT()) )
+MA.IsSvL(TargetSpeedMonitoring.SupervisedTarget()) )
 
   AND  
 
-( d_I_EOA( TargetSpeed(TargetSpeedMonitoring.MRDT()) ) == BaseTypes.Distance.Unknown)</PreCondition></PreConditions>
+( d_I_EOA( TargetSpeed(TargetSpeedMonitoring.SupervisedTarget()) ) == BaseTypes.Distance.Unknown)</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="The target is the EOA or the SvL"
@@ -804,10 +815,10 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT()) )
 <PreConditions>
 <PreCondition
  Guid="2aac3ae2-f418-460d-aaeb-f270e8019b10"
->MA.IsEOA(TargetSpeedMonitoring.MRDT())
+>MA.IsEOA(TargetSpeedMonitoring.SupervisedTarget())
   OR  
-MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
-<Expression>d_I_EOA( TargetSpeed(TargetSpeedMonitoring.MRDT()) ) - TrainPosition.FrontEndPosition(
+MA.IsSvL(TargetSpeedMonitoring.SupervisedTarget())</PreCondition></PreConditions>
+<Expression>d_I_EOA( TargetSpeed(TargetSpeedMonitoring.SupervisedTarget()) ) - TrainPosition.FrontEndPosition(
     PointOfInterest=&gt;Default.DistanceInterval.Nom
 )</Expression>
 </Case><Case
@@ -817,13 +828,13 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="fa0c9d7c-78ac-4201-9248-1cf43a6f34ae"
->d_I( TargetSpeed(TargetSpeedMonitoring.MRDT()) ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>d_I( TargetSpeed(TargetSpeedMonitoring.SupervisedTarget()) ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="It is another target"
  Guid="8bdffb03-588c-4283-94e4-00ae6887a869"
 >
-<Expression>d_I( TargetSpeed(TargetSpeedMonitoring.MRDT()) )
+<Expression>d_I( TargetSpeed(TargetSpeedMonitoring.SupervisedTarget()) )
  - TrainPosition.FrontEndPosition(
     PointOfInterest=&gt;Default.DistanceInterval.Nom
 )</Expression>

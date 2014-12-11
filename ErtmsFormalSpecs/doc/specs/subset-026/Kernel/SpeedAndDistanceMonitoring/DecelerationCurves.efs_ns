@@ -823,7 +823,7 @@ Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelt
 >
 <Expression>EBD_Target(
     Distance =&gt; Distance,
-    aTarget =&gt; TargetSpeedMonitoring.MRDT()
+    aTarget =&gt; TargetSpeedMonitoring.SupervisedTarget()
 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -915,6 +915,37 @@ aTarget.Speed == 0.0</Expression>
  + 
 BaseTypes.SpeedToMS( Vest + Vdelta0() + Vdelta1(EstimatedAccelerationSetToZero) + Vdelta2(EstimatedAccelerationSetToZero)/2.0
 ) * T_berem(EstimatedAccelerationSetToZero)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="GUI_Target"
+ Guid="aaba99b9-f4f2-44d0-94f7-54d0f2bbc893"
+>
+<Comment>Provides the deceleration profile based on the MRSP and deceleration factors for the given target</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="8f4624dd-8b20-4778-ba7f-9c3202f4412d"
+>
+</Parameter><Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="134a8097-f893-43c3-bc23-58de8bfc6e16"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="2f357ded-9abb-48a8-9da4-a33fac286a1e"
+>
+<Expression>FullDecelerationForTarget (
+    Target =&gt; aTarget,
+    DecelerationFactor=&gt;TrainData.BrakingParameters.A_normal_service
+)(Distance)</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>

@@ -2152,7 +2152,7 @@ SupervisedTargets</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="35a78385-5ce1-4613-91ce-27ae1fc32d9e"
->ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable(TargetSpeedMonitoring.MRDT())
+>ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable(TargetSpeedMonitoring.SupervisedTarget())
 AND
 ReleaseSpeedMonitoring.StartRSM(ReleaseSpeedMonitoring.ReleaseSpeed) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -2163,7 +2163,7 @@ ReleaseSpeedMonitoring.StartRSM(ReleaseSpeedMonitoring.ReleaseSpeed) == Default.
 <PreConditions>
 <PreCondition
  Guid="5acecc19-8795-458f-bf25-d3d7788ef394"
->ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable(TargetSpeedMonitoring.MRDT())
+>ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable(TargetSpeedMonitoring.SupervisedTarget())
 AND
 TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedMonitoring.StartRSM(ReleaseSpeedMonitoring.ReleaseSpeed)</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -2253,9 +2253,9 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedM
 <PreCondition
  Guid="eae54f73-e54c-496a-b739-536763fd2530"
 >Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
-<Expression>MA.IsEOA(TargetSpeedMonitoring.MRDT())
+<Expression>MA.IsEOA(TargetSpeedMonitoring.SupervisedTarget())
   OR  
-MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
+MA.IsSvL(TargetSpeedMonitoring.SupervisedTarget())</Expression>
 </Case><Case
  Name="Monitoring release speed"
  Guid="08d09e11-9195-4651-b68a-5e2963886bc4"
