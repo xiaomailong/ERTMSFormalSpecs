@@ -2272,7 +2272,9 @@
  Guid="d58a2bc1-b0a1-4172-911e-00ba9fdfc91d"
 >NOT DisplayRequestIsAllowed</PreCondition><PreCondition
  Guid="bbc83398-279f-4955-82f7-4642145ddf5f"
->GeographicalPositionAvailable()</PreCondition></PreConditions>
+>GeographicalPositionAvailable()</PreCondition><PreCondition
+ Guid="b4a5658c-baaf-4128-a915-b0c7a23de39b"
+>Kernel.GeographicalPosition.ComputeGeographicalPosition() != BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="bb735862-c763-4c2d-9e4b-8477c2a6f19c"
