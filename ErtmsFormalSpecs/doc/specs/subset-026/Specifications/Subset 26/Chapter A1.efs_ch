@@ -298,8 +298,8 @@ Duplicate balises<Sub>
  version="3.0.0"
  Name=""
  Guid="689ab6d6-cac9-4667-86bf-c6be70fefd43"
->As balises are expected in the order given by linking information, each entry of BTM.Linking.Linkings is assumed to be listed with respect to the previous entry.
-So the distance in entry 3 is the distance as measure from entry 2, not the current LRBG.<RequirementSets>
+>As balises are expected in the order given by linking information, each element of BTM.Linking.Linkings is assumed to be listed with respect to the previous element.
+So the distance in element 3 is the distance as measured from element 2, not from the current LRBG.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="75fb698b-10d3-43c2-8a01-baef9fc7b85c"
@@ -558,7 +558,7 @@ This is mandatory to ensure that all preconditions for an MA (which may have bee
  version="3.0.0"
  Name=""
  Guid="d4425f99-d283-4faf-ba1a-eef44feb9002"
->The paragraph 3.13.2.2.6.2 indicates that the selection of brake parameter for A_brake_service(V) is done according to status of regenerative brake and eddy current brake (but not magnetic brake), while the paragraph 3.13.2.2.3.1.7 states that it shall be possible to define individual speed dependent deceleration models of A_brake_service(V) for each combination of use of regenerative brake, eddy current brake AND magnetic shoe brake, that is inconsistent. EFS offers the possibility to define individual models of A_brake_emergency(V) for each combination of use of all three brakes, but we consider that the magnetic shoe brake is never used in the case of A_brake_emergency(V).<RequirementSets>
+>The paragraph 3.13.2.2.6.2 indicates that the selection of brake parameter for A_brake_service(V) is done according to status of regenerative brake and eddy current brake (but not magnetic brake), while the paragraph 3.13.2.2.3.1.7 states that it shall be possible to define individual speed dependent deceleration models of A_brake_service(V) for each combination of use of regenerative brake, eddy current brake AND magnetic shoe brake, that is inconsistent. EFS offers the possibility to define individual models of A_brake_emergency(V) and A_brake_service(V) for each combination of use of all three brakes, but we consider that the magnetic shoe brake is never used in the case of A_brake_service(V).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2ec97486-5fe5-4a0e-8306-ab71708d693d"
@@ -618,7 +618,7 @@ This is mandatory to ensure that all preconditions for an MA (which may have bee
  version="3.0.0"
  Name=""
  Guid="7b939cca-c775-4101-b7dd-1944169ceeb2"
->The requirement 7.5.1.171 specifies that if the value of V_STATIC, representing the base speed for static speed profile, equals 127, that means that the static speed profile description ends at the next discontinuity. We assume that it means that there will be no more speed restriction due to the static speed profile.<RequirementSets>
+>The requirement 7.5.1.171 specifies that if the value of V_STATIC, representing the base speed for static speed profile, equals 127, that means that the static speed profile description ends at the next discontinuity. We assume that it means that there will be no more speed restrictions due to the static speed profile.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="35c56e9d-671c-4c2b-b633-665e27f0e3c6"
@@ -1429,7 +1429,7 @@ We decided that the procedure would return to state S10.<RequirementSets>
  version="3.0.0"
  Name=""
  Guid="1fc880ed-12b0-4b3a-9b18-232e2d8aa5cd"
->We do not know what to do when the NID_STM is not applicable and should provided to the JRU. We assume that this situation never occurs<RequirementSets>
+>We do not know what to do when the NID_STM is not applicable and should be provided to the JRU. We assume that this situation never occurs.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="b3d31030-a216-41c5-b7be-b1f463e0e5c5"
@@ -1501,7 +1501,7 @@ The non-matching elements defined in Subset-027 are:
  version="3.0.0"
  Name=""
  Guid="e0cce2b4-2341-4ff7-8496-f341142799d3"
->In paragraph 3.10.2.2, the train&apos;s behaviour is defined for when it has passed a stop location and for when it has not yet passed the stop location. We have decided to consider that when it is at the specified location, it is to behave as if it had passed it.<RequirementSets>
+>In paragraph 3.10.2.2, the train&apos;s behaviour is defined for when it has passed a stop location and for when it has not passed the stop location yet. We have decided to consider that when it is at the specified location, it should behave as if it had passed it.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="37e0ca18-dfea-4479-b4e9-a5b0477b5e69"
