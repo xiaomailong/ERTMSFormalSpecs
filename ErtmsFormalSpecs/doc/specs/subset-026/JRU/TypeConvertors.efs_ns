@@ -1955,6 +1955,13 @@ AND
  Guid="83c352ab-bcaa-46bc-91d1-3d14d6645d84"
 >
 </ReqRef><Comment>Encodes driver&apos;s action in format defined by M_DRIVERACTIONS. If no corresponding action is defined in M_DRIVERACTIONS, the value Spare is sent.</Comment>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="aJRU"
+ Guid="8021777a-4729-49ab-bcad-8eee27a337ab"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="AcknForPostTripDistanceExceeded"
@@ -2300,6 +2307,28 @@ AND
  Guid="b538e351-aaa1-4929-948c-4877ff67004b"
 >DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Change_of_language</Expression>
+</Case><Case
+ Name="Request to show geographical position"
+ Guid="92f19531-7c51-4fe4-a868-8d181e0108b4"
+>
+<PreConditions>
+<PreCondition
+ Guid="9746d4b5-834c-429c-ae4d-f5850f698b84"
+>DMI.MasterDMI().Out_GeographicalPosition.DisplayRequestedByDriver != aJRU.PreviousRequestToDisplayTheGeographicalInformation</PreCondition><PreCondition
+ Guid="51d477d5-b40b-4098-b10e-bf549634cbe3"
+>DMI.MasterDMI().Out_GeographicalPosition.DisplayRequestedByDriver == True</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_DRIVERACTIONS.Request_to_show_geographical_position</Expression>
+</Case><Case
+ Name="Request to hide geographical position"
+ Guid="969137d3-dc22-4cdf-982c-df573bfca7b9"
+>
+<PreConditions>
+<PreCondition
+ Guid="cbefd161-4601-4146-adf7-bee9e5fcf8dd"
+>DMI.MasterDMI().Out_GeographicalPosition.DisplayRequestedByDriver != aJRU.PreviousRequestToDisplayTheGeographicalInformation</PreCondition><PreCondition
+ Guid="03f8562e-3aa8-403d-966f-83e7bc6f8cee"
+>DMI.MasterDMI().Out_GeographicalPosition.DisplayRequestedByDriver == False</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_DRIVERACTIONS.Request_to_hide_geographical_information</Expression>
 </Case><Case
  Name="ShuntingRequest"
  Guid="6f6f8f80-1bec-4b80-9bbf-950276b5dc18"
