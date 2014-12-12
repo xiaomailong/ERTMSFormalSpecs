@@ -5585,9 +5585,9 @@ The brake reason.</Comment>
  Guid="83cbb20b-cbe1-4364-967a-c98eb720ea26"
 >Kernel.SpeedAndDistanceMonitoring.Monitoring in Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target</PreCondition><PreCondition
  Guid="ed3001e2-668d-4ae2-8381-1d7db8b7173e"
->Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I( aTarget =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisedTarget(), Vmrsp =&gt; Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)</PreCondition><PreCondition
+>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I( aTarget =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT(), Vmrsp =&gt; Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)</PreCondition><PreCondition
  Guid="0390c7de-4a8c-40ee-b77b-e09a11a4ac1b"
->Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I( aTarget =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisedTarget(), Vmrsp =&gt; Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))) != Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I( aTarget =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT(), Vmrsp =&gt; Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))) != Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>MonitoringType.PIM</Expression>
 </Case><Case
  Name="TSM"
