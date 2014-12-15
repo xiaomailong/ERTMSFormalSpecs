@@ -2026,7 +2026,7 @@ AND
  Guid="e4ac315f-ce10-46e1-93e4-9748279e763b"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="7a6d699d-657c-47ca-ac89-78e61b7deeb2"
->DMI.MasterDMI().In_AcknOfLevelTransition.Level == Default.Level.L0</PreCondition></PreConditions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level.Value == Default.Level.L0</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Ack_level_0</Expression>
 </Case><Case
  Name="AcknOfLevelTransitionToL1"
@@ -2037,7 +2037,7 @@ AND
  Guid="509e8a0e-f4a5-402e-83f9-ea9c07065f48"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="d2086493-dec0-431e-b39e-7557cb33f909"
->DMI.MasterDMI().In_AcknOfLevelTransition.Level == Default.Level.L1</PreCondition></PreConditions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level.Value == Default.Level.L1</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Ack_level_1</Expression>
 </Case><Case
  Name="AcknOfLevelTransitionToL2"
@@ -2048,7 +2048,7 @@ AND
  Guid="ca172e6f-6a19-4623-a725-e0983350107a"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="4195f1a7-2ad2-4ea3-8e42-ebff740220da"
->DMI.MasterDMI().In_AcknOfLevelTransition.Level == Default.Level.L2</PreCondition></PreConditions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level.Value == Default.Level.L2</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Ack_level_2</Expression>
 </Case><Case
  Name="AcknOfLevelTransitionToL3"
@@ -2059,7 +2059,7 @@ AND
  Guid="bdf13ce4-2f26-49fd-9fb1-41c868a1b152"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="1251ac27-2603-4e3f-be24-e59c68f68ffd"
->DMI.MasterDMI().In_AcknOfLevelTransition.Level == Default.Level.L3</PreCondition></PreConditions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level.Value == Default.Level.L3</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Ack_level_3</Expression>
 </Case><Case
  Name="AcknOfLevelTransitionToLNTC"
@@ -2070,7 +2070,7 @@ AND
  Guid="40cbe79a-033a-4547-a1a0-f2f3f7985332"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="23925601-273b-47a2-a38a-1e1298824326"
->DMI.MasterDMI().In_AcknOfLevelTransition.Level == Default.Level.LNTC</PreCondition></PreConditions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level.Value == Default.Level.LNTC</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Ack_level_NTC</Expression>
 </Case><Case
  Name="AcknOfLSMode"
