@@ -983,7 +983,9 @@ Packet.Sequence1</Action></Actions>
 <Actions>
 <Action
  Guid="6e7033cb-ec67-45ae-8141-1fb4371273ce"
->DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest( Level =&gt; LevelTransitionToProcess.TRLevel )</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest( Level =&gt; LevelTransitionToProcess.TRLevel )</Action><Action
+ Guid="1cf506df-06cd-40e2-a5cb-f05ea42130a3"
+>AcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1024,6 +1026,30 @@ Packet.Sequence1</Action></Actions>
 >Kernel.Level.Value &lt;- LevelTransitionToProcess.TRLevel</Action><Action
  Guid="0ddeb99e-7c2c-4f4c-a6c4-63b006cbc5e0"
 >EURORADIO.PositionReport.PositionReportEventsTracker.LevelTransitionBorderPassed &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Remove executed level transition order"
+ Guid="9e5d7fd9-8ba9-41d6-9a1f-c3d5c489b456"
+>
+<Comment>Once the level transition order is executed, it is deleted.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove executed level transition order"
+ Guid="1958a987-de03-4d8e-b436-068098ab54c8"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="9c31b8a4-e590-4a4f-a228-e031aa6442b8"
+>LevelTransitionOrder &lt;- EMPTY</Action><Action
+ Guid="d7eec92a-82a6-4cf2-bea8-434dee18f457"
+>LevelTransitionToProcess &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1193,7 +1219,9 @@ Packet.Sequence1</Action></Actions>
 <Actions>
 <Action
  Guid="6cd45745-93fd-462e-a9a2-fba632fb6219"
->DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest( Level =&gt; LevelTransitionToProcess.TRLevel )</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest( Level =&gt; LevelTransitionToProcess.TRLevel )</Action><Action
+ Guid="e61e0e97-b591-4494-bddf-fefa789965bc"
+>AcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
