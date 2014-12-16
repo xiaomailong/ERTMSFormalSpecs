@@ -2294,11 +2294,11 @@ This is a check for message consistency errors.</Comment>
 <PreConditions>
 <PreCondition
  Guid="45bd8711-149c-4bbd-a43b-1659bf13a9d7"
->Kernel.LX.LevelCrossings != []</PreCondition></PreConditions>
+>Kernel.LX.SupervisedLevelCrossings != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="50ba0696-fc68-4e62-bbec-364e5d782455"
->Kernel.LX.LevelCrossings &lt;- MAP Kernel.LX.LevelCrossings USING X IN Kernel.LX.LevelCrossing{
+>Kernel.LX.SupervisedLevelCrossings &lt;- MAP Kernel.LX.SupervisedLevelCrossings USING X IN Kernel.LX.LevelCrossingStruct{
     Id =&gt; X.Id,
     Location =&gt; X.Location - DistanceFromLRBG,
     Length =&gt; X.Length,
