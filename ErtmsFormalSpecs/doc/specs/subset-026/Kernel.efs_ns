@@ -10683,7 +10683,12 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
  Name="Determine EOAs"
  Guid="d7ab7899-fe7e-4f3d-963b-654c6a62edda"
 >
-<Comment>The EOA must only be calculated in FS, LS and OS modes</Comment>
+<ReqRef
+ Id="d2ff8626-b129-41d0-afab-85c0e9977832"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cdfdf51a-be03-42b9-aa16-db1e4460dfb9"
+>
+</ReqRef><Comment>The EOA must only be calculated in FS, LS and OS modes</Comment>
 <PreConditions>
 <PreCondition
  Guid="c1218ff1-6980-4500-805c-654cfe700308"
@@ -10729,7 +10734,12 @@ BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLi
  Name="Determine SvL"
  Guid="06bdb857-818e-49a7-9717-5767e306582a"
 >
-<Comment>The SvL must only be calculated in FS, LS and OS modes</Comment>
+<ReqRef
+ Id="d2ff8626-b129-41d0-afab-85c0e9977832"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d2788609-0337-4b98-9c14-cccec0f9c8dd"
+>
+</ReqRef><Comment>The SvL must only be calculated in FS, LS and OS modes</Comment>
 <PreConditions>
 <PreCondition
  Guid="7c2c7437-68f3-4930-ac92-dfdf371a0be9"
