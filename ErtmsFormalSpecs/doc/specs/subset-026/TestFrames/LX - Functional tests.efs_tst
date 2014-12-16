@@ -22,7 +22,7 @@
  Feature="0"
  Case="0"
  Implemented="TRUE"
- Name="protected + non-protected LX"
+ Name="Protected + non-protected LX"
  Guid="8ca00f61-51b5-44ca-88e9-419ebf658e63"
 >
 <ReqRef
@@ -74,7 +74,7 @@
 <Actions>
 <Action
  Guid="dfe1d05b-ebbd-4507-8676-dd46043c7df8"
->Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
+>Kernel.LX.SupervisedLevelCrossings &lt;- []</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -205,47 +205,51 @@
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="caa19e33-5788-46b6-aed0-7b9e71f2fe32"
->(FIRST X IN Kernel.LX.LevelCrossings).Id == 18</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="6b89b352-a342-4913-981f-fb015bb3c1bf"
->(FIRST X IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_protected</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="f93665be-ee1f-4bba-8fb4-462d0c5096ca"
->(FIRST X IN Kernel.LX.LevelCrossings).Length == 50.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="5e426661-0e63-4b57-bed2-949b7dbe8bd9"
->(FIRST X IN Kernel.LX.LevelCrossings).Location == 1000.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
  Guid="adc7a78a-07f8-4e8b-a125-dec74cf9b379"
->(LAST X IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="bdd7b2bd-7788-4d3f-bb97-f54bfc0180bc"
->(LAST X IN Kernel.LX.LevelCrossings).Length == 100.0</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).Length == 100.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="82c6804f-9299-4266-b7e8-e12a2a33cd3c"
->(LAST X IN Kernel.LX.LevelCrossings).Location == 2000.0</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).Location == 2000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="216e9293-2f37-4a3d-b507-3249f2ee26cc"
->(LAST X IN Kernel.LX.LevelCrossings).Id == 19</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).Id == 19</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="7ea73fad-a6ef-4c5a-8d4f-0360b3052d15"
+>(COUNT X IN Kernel.LX.SupervisedLevelCrossings) == 1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b8d04d84-5a4f-4ec9-b44a-d09d8cb8dc4f"
->(COUNT X IN Kernel.LX.LevelCrossings) == 2</Expectation></Expectations>
+>(COUNT X IN Kernel.LX.MRSPLevelCrossings) == 1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="caa19e33-5788-46b6-aed0-7b9e71f2fe32"
+>(FIRST X IN Kernel.LX.MRSPLevelCrossings).Id == 18</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="6b89b352-a342-4913-981f-fb015bb3c1bf"
+>(FIRST X IN Kernel.LX.MRSPLevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_protected</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f93665be-ee1f-4bba-8fb4-462d0c5096ca"
+>(FIRST X IN Kernel.LX.MRSPLevelCrossings).Length == 50.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="5e426661-0e63-4b57-bed2-949b7dbe8bd9"
+>(FIRST X IN Kernel.LX.MRSPLevelCrossings).Location == 1000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
  Feature="0"
  Case="0"
  Implemented="TRUE"
- Name="non-protected LX"
+ Name="Non-protected LX"
  Guid="a4b43398-8834-43cc-a076-e6cb06d4ad6b"
 >
 <ReqRef
@@ -307,7 +311,7 @@
 <Actions>
 <Action
  Guid="f05eeef2-065e-4072-a0b2-3a1cb6d7b6dd"
->Kernel.LX.LevelCrossings &lt;- []</Action><Action
+>Kernel.LX.SupervisedLevelCrossings &lt;- []</Action><Action
  Guid="6defe287-a0ef-4383-b734-f27439b493b0"
 >BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
     LocationAccuracy =&gt; 5.0,
@@ -398,15 +402,15 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="18c47b39-a7d0-4c77-9842-94edf96c337b"
->(FIRST X IN Kernel.LX.LevelCrossings).Speed == 20.0</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).Speed == 20.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="03f4f493-e78d-4c56-b8e7-bc0c5ca64dbb"
->(FIRST X IN Kernel.LX.LevelCrossings).StoppingRequired == Messages.Q_STOPLX.No_stop_required</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).StoppingRequired == Messages.Q_STOPLX.No_stop_required</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="0dc55a3b-5bbc-4b43-8db9-46b05bff7413"
->(FIRST X IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation></Expectations>
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -463,7 +467,7 @@
     ]
 }</Action><Action
  Guid="79b36933-aea1-4bfd-94ab-5d1f29227b4c"
->Kernel.LX.LevelCrossings &lt;- []</Action></Actions>
+>Kernel.LX.SupervisedLevelCrossings &lt;- []</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -485,15 +489,15 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ec0080d8-4519-4e33-adb4-0ed54e819adb"
->(FIRST X IN Kernel.LX.LevelCrossings).StoppingRequired == Messages.Q_STOPLX.Stop_required</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).StoppingRequired == Messages.Q_STOPLX.Stop_required</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b9f7e729-0742-41d8-aaac-a955dc560991"
->(FIRST X IN Kernel.LX.LevelCrossings).StoppingAreaLength == 100.0</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).StoppingAreaLength == 100.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="4634ba8a-1512-431a-af2b-1e0693b84617"
->(FIRST X IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation></Expectations>
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -619,7 +623,7 @@
     ]
 }</Action><Action
  Guid="a1897832-bbd5-4f11-aa07-4e687a99f14e"
->Kernel.LX.LevelCrossings &lt;- []</Action><Action
+>Kernel.LX.SupervisedLevelCrossings &lt;- []</Action><Action
  Guid="ad7d6f1f-34e3-4735-bcd1-4ad5f1f140f1"
 >Odometry.NominalDistance &lt;- 2500.0</Action><Action
  Guid="a6753e47-bb6a-4d83-a5b5-c2c94a6341a2"
@@ -648,7 +652,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="38064b26-a4be-4682-aef6-1233ed88ad26"
->Kernel.LX.LevelCrossings != []</Expectation></Expectations>
+>Kernel.LX.SupervisedLevelCrossings != []</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -669,22 +673,22 @@
 <Expectation
  Kind="Instantaneous"
  Guid="c3089584-871b-4e25-a9fe-337735d70ab9"
->(FIRST X IN Kernel.LX.LevelCrossings).Id == 20</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).Id == 20</Expectation><Expectation
  Kind="Instantaneous"
  Guid="5b478a63-5035-4c12-ad9d-cd5fc27fdeb7"
->(FIRST X IN Kernel.LX.LevelCrossings).Location == 800.0</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).Location == 800.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="4dbf659b-ba26-4480-ae93-eb6d6c467cd2"
->(FIRST X IN Kernel.LX.LevelCrossings).Length == 100.0</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).Length == 100.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="8b56fc24-785c-42b6-9b08-a958cf61e219"
->(FIRST X IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation><Expectation
  Kind="Instantaneous"
  Guid="460c38aa-4d60-4d89-8f13-212e8a0acbfb"
->(FIRST X IN Kernel.LX.LevelCrossings).Speed == 40.0</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).Speed == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="1e1f68cc-a29d-457f-bdad-523c401e7d4b"
->(FIRST X IN Kernel.LX.LevelCrossings).StoppingRequired == Messages.Q_STOPLX.No_stop_required</Expectation></Expectations>
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).StoppingRequired == Messages.Q_STOPLX.No_stop_required</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -840,7 +844,7 @@
     ]
 }</Action><Action
  Guid="1e9b613d-5c4e-4c57-ba9f-95729930c0aa"
->Kernel.LX.LevelCrossings &lt;- []</Action><Action
+>Kernel.LX.SupervisedLevelCrossings &lt;- []</Action><Action
  Guid="696e7774-087d-49ef-af78-8b35e21bf1c6"
 >BTM.LRBG&lt;- BTM.BaliseGroupStruct
 {
@@ -869,7 +873,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="3d33535d-8fa8-4d37-bee3-0172c22cb7ad"
->Kernel.LX.LevelCrossings != []</Expectation></Expectations>
+>Kernel.LX.SupervisedLevelCrossings != []</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -890,25 +894,25 @@
 <Expectation
  Kind="Instantaneous"
  Guid="b23c97aa-4b75-4190-a524-cf59b534fd67"
->(FIRST X IN Kernel.LX.LevelCrossings).Id == 22</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).Id == 22</Expectation><Expectation
  Kind="Instantaneous"
  Guid="c15d563e-b77b-4e2c-8b33-56f481f31adc"
->(FIRST X IN Kernel.LX.LevelCrossings).Location == 1200.0</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).Location == 1200.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="ec3e55ea-cf84-4afa-b59e-e606bc8c68a0"
->(FIRST X IN Kernel.LX.LevelCrossings).Length == 240.0</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).Length == 240.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a1b4a5fb-e1fe-455f-985d-34787ebc6557"
->(FIRST X IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation><Expectation
  Kind="Instantaneous"
  Guid="97f5d4d3-0de9-4100-bd9c-b409efa58465"
->(FIRST X IN Kernel.LX.LevelCrossings).Speed == 50.0</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).Speed == 50.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="0029e1c1-bedd-4b42-b45c-5fa0d5326986"
->(FIRST X IN Kernel.LX.LevelCrossings).StoppingRequired == Messages.Q_STOPLX.Stop_required</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).StoppingRequired == Messages.Q_STOPLX.Stop_required</Expectation><Expectation
  Kind="Instantaneous"
  Guid="64840633-e601-47e2-b106-7d04a47aa911"
->(FIRST X IN Kernel.LX.LevelCrossings).StoppingAreaLength == 70.0</Expectation></Expectations>
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).StoppingAreaLength == 70.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1065,7 +1069,7 @@
     ]
 }</Action><Action
  Guid="98dd78b9-0580-462a-8dd8-5a4bb0771e93"
->Kernel.LX.LevelCrossings &lt;- []</Action><Action
+>Kernel.LX.SupervisedLevelCrossings &lt;- []</Action><Action
  Guid="6ec31930-8f5c-4f8b-9d30-f69cc2a347ae"
 >BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
@@ -1094,7 +1098,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="16e47f9c-45b2-40ca-ae74-fa6376433e9b"
->Kernel.LX.LevelCrossings != []</Expectation></Expectations>
+>(COUNT X IN Kernel.LX.MRSPLevelCrossings) == 1</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1115,16 +1119,16 @@
 <Expectation
  Kind="Instantaneous"
  Guid="8a6fa354-94ae-45b7-8cfc-3a8e7ff93a2e"
->(FIRST X IN Kernel.LX.LevelCrossings).Id == 18</Expectation><Expectation
+>(FIRST X IN Kernel.LX.MRSPLevelCrossings).Id == 18</Expectation><Expectation
  Kind="Instantaneous"
  Guid="fd9ac3b7-4b83-4c38-a679-63256ec00013"
->(FIRST X IN Kernel.LX.LevelCrossings).Location == 1000.0</Expectation><Expectation
+>(FIRST X IN Kernel.LX.MRSPLevelCrossings).Location == 1000.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="1bd8f2f7-1076-49b1-bc9d-57f14a6f8267"
->(FIRST X IN Kernel.LX.LevelCrossings).Length == 50.0</Expectation><Expectation
+>(FIRST X IN Kernel.LX.MRSPLevelCrossings).Length == 50.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="49ca7685-d176-4b44-bd2a-6d14a6a65e27"
->(FIRST X IN Kernel.LX.LevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_protected</Expectation></Expectations>
+>(FIRST X IN Kernel.LX.MRSPLevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_protected</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1272,7 +1276,7 @@
     ]
 }</Action><Action
  Guid="00d62fa8-cb2c-4102-a704-b0a12e0f1db7"
->Kernel.LX.LevelCrossings &lt;- []</Action><Action
+>Kernel.LX.SupervisedLevelCrossings &lt;- []</Action><Action
  Guid="0ad66d6d-325c-4a25-9b8d-0e99811cd9de"
 >BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
@@ -1301,7 +1305,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="c8f217e4-3385-4793-8135-dcb906795115"
->Kernel.LX.LevelCrossings != []</Expectation><Expectation
+>(COUNT X IN Kernel.LX.MRSPLevelCrossings) == 1</Expectation><Expectation
  Kind="Instantaneous"
  Guid="65595750-2561-4276-bf5a-045522809e0f"
 >Kernel.LX.SpeedRestrictions ( 1000.0 ) &gt;= 150.0</Expectation><Expectation
@@ -1566,7 +1570,7 @@
     ]
 }</Action><Action
  Guid="4b8a39f5-c467-4921-8300-4488b65c53f6"
->Kernel.LX.LevelCrossings &lt;- []</Action><Action
+>Kernel.LX.SupervisedLevelCrossings &lt;- []</Action><Action
  Guid="ca555052-cf67-40f5-8a7d-c2c32d54b6c1"
 >BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
@@ -1585,11 +1589,11 @@
 <Expectation
  Kind="Instantaneous"
  Guid="41295b1e-b242-4786-ba70-35a957080035"
->(COUNT X IN Kernel.LX.LevelCrossings) == 1</Expectation><Expectation
+>(COUNT X IN Kernel.LX.MRSPLevelCrossings) == 1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="c651b657-25e9-42b8-b633-3411f356327b"
->(FIRST X IN Kernel.LX.LevelCrossings).Location == 3000.0</Expectation></Expectations>
+>(FIRST X IN Kernel.LX.MRSPLevelCrossings).Location == 3000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1654,11 +1658,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f1037c8e-2029-44ac-af92-0eb94392a32e"
->(COUNT X IN Kernel.LX.LevelCrossings) == 1</Expectation><Expectation
+>(COUNT X IN Kernel.LX.MRSPLevelCrossings) == 1</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="8a6b9ada-22f8-4cf0-a12f-aed3fccb9034"
->(FIRST X IN Kernel.LX.LevelCrossings).Location == 4000.0</Expectation></Expectations>
+>(FIRST X IN Kernel.LX.MRSPLevelCrossings).Location == 4000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
