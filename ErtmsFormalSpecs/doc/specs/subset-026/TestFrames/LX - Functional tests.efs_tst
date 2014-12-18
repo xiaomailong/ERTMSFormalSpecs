@@ -206,7 +206,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="adc7a78a-07f8-4e8b-a125-dec74cf9b379"
->(FIRST X IN Kernel.LX.SupervisedLevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).IsProtected == False</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="bdd7b2bd-7788-4d3f-bb97-f54bfc0180bc"
@@ -234,7 +234,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="6b89b352-a342-4913-981f-fb015bb3c1bf"
->(FIRST X IN Kernel.LX.MRSPLevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_protected</Expectation><Expectation
+>(FIRST X IN Kernel.LX.MRSPLevelCrossings).IsProtected == True</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f93665be-ee1f-4bba-8fb4-462d0c5096ca"
@@ -406,11 +406,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="03f4f493-e78d-4c56-b8e7-bc0c5ca64dbb"
->(FIRST X IN Kernel.LX.SupervisedLevelCrossings).StoppingRequired == Messages.Q_STOPLX.No_stop_required</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).StoppingRequired == False</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="0dc55a3b-5bbc-4b43-8db9-46b05bff7413"
->(FIRST X IN Kernel.LX.SupervisedLevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation></Expectations>
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).IsProtected == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -489,7 +489,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ec0080d8-4519-4e33-adb4-0ed54e819adb"
->(FIRST X IN Kernel.LX.SupervisedLevelCrossings).StoppingRequired == Messages.Q_STOPLX.Stop_required</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).StoppingRequired == True</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b9f7e729-0742-41d8-aaac-a955dc560991"
@@ -497,7 +497,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="4634ba8a-1512-431a-af2b-1e0693b84617"
->(FIRST X IN Kernel.LX.SupervisedLevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation></Expectations>
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).IsProtected == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -546,6 +546,16 @@
  Id="09955e19-89e5-4073-8a7b-b17cb637603a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="cb27aa50-9070-4aae-abb2-9c5d4fc2e9f6"
+>
+</ReqRef><ReqRef
+ Id="9b54b401-0857-45af-bbb3-1ec502f39d2a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a87f24f7-5a8e-4411-b865-18c73db49ff1"
+>
+</ReqRef><ReqRef
+ Id="b7d99bef-d372-4d0a-a74b-4a630f5762aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b0b06f71-716c-4ce1-a4c0-e2012fa56a00"
 >
 </ReqRef><Steps>
 <Step
@@ -652,7 +662,11 @@
 <Expectation
  Kind="Instantaneous"
  Guid="38064b26-a4be-4682-aef6-1233ed88ad26"
->Kernel.LX.SupervisedLevelCrossings != []</Expectation></Expectations>
+>(COUNT X IN Kernel.LX.SupervisedLevelCrossings) == 1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="6fd40420-01d4-4e3c-8fc8-6b1d223ae91d"
+>(COUNT X IN Kernel.LX.MRSPLevelCrossings) == 0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -682,13 +696,13 @@
 >(FIRST X IN Kernel.LX.SupervisedLevelCrossings).Length == 100.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="8b56fc24-785c-42b6-9b08-a958cf61e219"
->(FIRST X IN Kernel.LX.SupervisedLevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).IsProtected == False</Expectation><Expectation
  Kind="Instantaneous"
  Guid="460c38aa-4d60-4d89-8f13-212e8a0acbfb"
 >(FIRST X IN Kernel.LX.SupervisedLevelCrossings).Speed == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="1e1f68cc-a29d-457f-bdad-523c401e7d4b"
->(FIRST X IN Kernel.LX.SupervisedLevelCrossings).StoppingRequired == Messages.Q_STOPLX.No_stop_required</Expectation></Expectations>
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).StoppingRequired == False</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -709,16 +723,46 @@
 <Expectation
  Kind="Instantaneous"
  Guid="600d1f85-ebe1-44a5-a40b-2869d778cc03"
->Kernel.LX.SpeedRestrictions ( 899.0 ) == 40.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 899.0 ) &gt;= BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="827cfc4f-2f52-4e9a-a82a-6e40d58365f1"
->Kernel.LX.SpeedRestrictions ( 500.0 ) &gt;= 150.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 500.0 ) &gt;= BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="eff485cf-24e4-413a-a58b-f759dc3f699c"
->Kernel.LX.SpeedRestrictions ( 900.0 ) &gt;= 150.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 900.0 ) &gt;= BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="108b57d0-f8ae-44b9-b356-7cffb335eda8"
->Kernel.LX.SpeedRestrictions ( 800.0 ) == 40.0</Expectation></Expectations>
+>Kernel.LX.SpeedRestrictions ( 800.0 ) &gt;= BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step5 - MSRP substitution location is reached"
+ Guid="2464b15e-3d45-4e59-aa7c-25a170ff344e"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="3096597a-7071-4448-b4ee-ef0221ecde8a"
+>
+<Actions>
+<Action
+ Guid="a5e1f1b9-55bd-4166-a086-7f4ed66da308"
+>Odometry.NominalDistance &lt;- BTM.LRBG.Position.Position + 790.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="046e46b0-fe8e-4a83-9c39-6ee061d9e7d3"
+>(COUNT X IN Kernel.LX.MRSPLevelCrossings) == 1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="a5d078c5-10f6-4dbd-838f-542fbdc295da"
+>(COUNT X IN Kernel.LX.SupervisedLevelCrossings) == 0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -767,6 +811,11 @@
  Id="09955e19-89e5-4073-8a7b-b17cb637603a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2f5b6369-2767-4aad-9ecc-0cf3c6ec9662"
+>
+</ReqRef><ReqRef
+ Id="40345205-ff68-43c5-b986-172b7e41c842"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eb5a5a5c-f29e-45db-818d-bb0fd1bbc847"
 >
 </ReqRef><Steps>
 <Step
@@ -873,7 +922,11 @@
 <Expectation
  Kind="Instantaneous"
  Guid="3d33535d-8fa8-4d37-bee3-0172c22cb7ad"
->Kernel.LX.SupervisedLevelCrossings != []</Expectation></Expectations>
+>(COUNT X IN Kernel.LX.SupervisedLevelCrossings) == 1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="c74987e3-502a-4b65-abdd-5b577b323f06"
+>(COUNT X IN Kernel.LX.MRSPLevelCrossings) == 0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -903,13 +956,13 @@
 >(FIRST X IN Kernel.LX.SupervisedLevelCrossings).Length == 240.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a1b4a5fb-e1fe-455f-985d-34787ebc6557"
->(FIRST X IN Kernel.LX.SupervisedLevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).IsProtected == False</Expectation><Expectation
  Kind="Instantaneous"
  Guid="97f5d4d3-0de9-4100-bd9c-b409efa58465"
 >(FIRST X IN Kernel.LX.SupervisedLevelCrossings).Speed == 50.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="0029e1c1-bedd-4b42-b45c-5fa0d5326986"
->(FIRST X IN Kernel.LX.SupervisedLevelCrossings).StoppingRequired == Messages.Q_STOPLX.Stop_required</Expectation><Expectation
+>(FIRST X IN Kernel.LX.SupervisedLevelCrossings).StoppingRequired == True</Expectation><Expectation
  Kind="Instantaneous"
  Guid="64840633-e601-47e2-b106-7d04a47aa911"
 >(FIRST X IN Kernel.LX.SupervisedLevelCrossings).StoppingAreaLength == 70.0</Expectation></Expectations>
@@ -933,22 +986,72 @@
 <Expectation
  Kind="Instantaneous"
  Guid="06964456-3755-414a-a978-e6356d9a16ef"
->Kernel.LX.SpeedRestrictions ( 1200.0 ) == 50.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 1200.0 ) &gt;= BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="fff2cd79-bc76-42de-bb34-9d3ad5333e09"
->Kernel.LX.SpeedRestrictions ( 2000.0 ) &gt;= 150.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 2000.0 ) &gt;= BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="0f34469c-0e1b-4710-9e15-9400c4dd18fa"
->Kernel.LX.SpeedRestrictions ( 1400.0 ) == 50.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 1400.0 ) &gt;= BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="207deeb4-208e-416a-8d93-e0e9e8d938dc"
->Kernel.LX.SpeedRestrictions ( 1130.0 ) == 0.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 1130.0 ) &gt;= BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="fda33045-f559-4f30-8182-9f06b4875f42"
->Kernel.LX.SpeedRestrictions ( 1440.0 ) &gt;= 150.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 1440.0 ) &gt;= BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="d82a7ca5-35d9-4a19-8a92-f0c7ca46e891"
->Kernel.LX.SpeedRestrictions ( 1500.0 ) &gt;= 150.0</Expectation></Expectations>
+>Kernel.LX.SpeedRestrictions ( 1500.0 ) &gt;= BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step5 - Train stops in the stopping area"
+ Guid="f1c30491-3401-4d36-884c-48581ac41a47"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="5af3aa03-8aff-4b6d-87f1-e12293c020cf"
+>
+<Actions>
+<Action
+ Guid="09a2bcef-b2f1-4ebe-9535-bb649639cbfa"
+>Odometry.NominalDistance &lt;- BTM.LRBG.Position.Position + 1170.0</Action><Action
+ Guid="43c9e8cf-1818-4c57-bbba-c37532b384c0"
+>Odometry.EstimatedSpeed &lt;- 0.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="2c42d772-36bd-4453-8f44-ce860a5ad422"
+>Kernel.LX.SpeedRestrictions ( 1130.0 ) &gt;= BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="b7b313b0-dfc4-43de-83d5-619d461a1bfd"
+>Kernel.LX.SpeedRestrictions ( 1200.0 ) &gt;= 50.</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="907e5b96-40d3-48ec-8573-ce3936bd9e7a"
+>Kernel.LX.SpeedRestrictions ( 1400.0 ) &gt;= 50.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="cf8af44f-c813-48f8-b9c0-03e5b0601f65"
+>Kernel.LX.SpeedRestrictions ( 1440.0 ) &gt;= BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="7da039f8-59b0-4e77-9115-934c91d74780"
+>Kernel.LX.SpeedRestrictions ( 1500.0 ) &gt;= BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="5af224f4-3b5b-47f3-94b8-e40df36b885b"
+>Kernel.LX.SpeedRestrictions ( 2000.0 ) &gt;= BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="44cc3dd8-65cb-4ca6-a7c2-cd7278277e0b"
+>(COUNT X IN Kernel.LX.MRSPLevelCrossings) == 1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="32b5cec7-245f-43a8-b860-92620a44925e"
+>(COUNT X IN Kernel.LX.SupervisedLevelCrossings) == 0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1128,7 +1231,7 @@
 >(FIRST X IN Kernel.LX.MRSPLevelCrossings).Length == 50.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="49ca7685-d176-4b44-bd2a-6d14a6a65e27"
->(FIRST X IN Kernel.LX.MRSPLevelCrossings).IsProtected == Messages.Q_LXSTATUS.LX_is_protected</Expectation></Expectations>
+>(FIRST X IN Kernel.LX.MRSPLevelCrossings).IsProtected == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1199,6 +1302,21 @@
  Id="09955e19-89e5-4073-8a7b-b17cb637603a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3645a3a5-8947-4e73-8a0a-9d5d8660c8b1"
+>
+</ReqRef><ReqRef
+ Id="40345205-ff68-43c5-b986-172b7e41c842"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f87689ea-9255-46c1-8654-3822eb3f5666"
+>
+</ReqRef><ReqRef
+ Id="9b54b401-0857-45af-bbb3-1ec502f39d2a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="04f3371e-e6ff-492e-8f21-1dd9323da722"
+>
+</ReqRef><ReqRef
+ Id="b7d99bef-d372-4d0a-a74b-4a630f5762aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0c1e94be-ee0a-4b76-a80e-c20dafba0c21"
 >
 </ReqRef><Steps>
 <Step
@@ -1308,16 +1426,20 @@
 >(COUNT X IN Kernel.LX.MRSPLevelCrossings) == 1</Expectation><Expectation
  Kind="Instantaneous"
  Guid="65595750-2561-4276-bf5a-045522809e0f"
->Kernel.LX.SpeedRestrictions ( 1000.0 ) &gt;= 150.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 1000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="37a6e80b-e721-406a-b08c-7bc0be781a9c"
->Kernel.LX.SpeedRestrictions ( 3000.0 ) &gt;= 150.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 3000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="d945d918-814a-41b2-9c66-fcf18b7de193"
->Kernel.LX.SpeedRestrictions ( 3020.0 ) &gt;= 150.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 3020.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="c89abb87-bb38-4c4e-990c-865aebb376e6"
->Kernel.LX.SpeedRestrictions ( 4000.0 ) &gt;= 150.0</Expectation></Expectations>
+>Kernel.LX.SpeedRestrictions ( 4000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="370f799d-9eda-41f3-85ef-84aad7f8f434"
+>(COUNT X IN Kernel.LX.SupervisedLevelCrossings) == 0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1377,22 +1499,30 @@
 <Expectation
  Kind="Instantaneous"
  Guid="fee415b7-ad32-4025-8918-8e18692f50c5"
->Kernel.LX.SpeedRestrictions ( 1000.0 ) &gt;= 150.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 1000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="743c713d-2c61-412b-a4e6-41af129e1926"
->Kernel.LX.SpeedRestrictions ( 2000.0 ) == 40.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 2000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a3dfef0a-43a6-4ad7-8c58-b6e266b16530"
->Kernel.LX.SpeedRestrictions ( 2099.0 ) == 40.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 2099.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="68614665-fe53-447e-93c5-bf11d5933ea5"
->Kernel.LX.SpeedRestrictions ( 3000.0 ) &gt;= 150.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 3000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="912c578c-566d-47ea-8bb1-72ba745eb810"
->Kernel.LX.SpeedRestrictions ( 3020.0 ) &gt;= 150.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 3020.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="e44a57f3-bb19-4b0e-9d2d-df129e949112"
->Kernel.LX.SpeedRestrictions ( 4000.0 ) &gt;= 150.0</Expectation></Expectations>
+>Kernel.LX.SpeedRestrictions ( 4000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="492e51ee-3778-4f1b-b7e9-6eb4ff2f3bff"
+>(COUNT X IN Kernel.LX.MRSPLevelCrossings) == 1</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="461770c0-cd5a-41b4-be16-b12435ab70c4"
+>(COUNT X IN Kernel.LX.SupervisedLevelCrossings) == 1</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1452,37 +1582,122 @@
 <Expectation
  Kind="Instantaneous"
  Guid="33a4c9a7-3d00-4f01-ac3e-00426a2827d5"
->Kernel.LX.SpeedRestrictions ( 1000.0 ) &gt;= 150.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 1000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="275d6ba0-a101-466b-8447-3fcebabdbef5"
->Kernel.LX.SpeedRestrictions ( 2000.0 ) == 40.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 2000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="9a0ca218-e1a1-46bf-a04f-681a7fafe2c8"
->Kernel.LX.SpeedRestrictions ( 2099.0 ) == 40.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 2099.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a40d11fd-4818-4799-87af-05b29e9af373"
->Kernel.LX.SpeedRestrictions ( 2450.0 ) == 0.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 2450.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="bba3a0ec-d438-4a27-b0c3-3871f7d5e2c1"
->Kernel.LX.SpeedRestrictions ( 2500.0 ) == 20.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 2500.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a501ec06-a4eb-438a-b9ff-56aa67287409"
->Kernel.LX.SpeedRestrictions ( 2539.0 ) == 20.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 2539.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="28c9acaa-04f9-44ab-9b53-a5ef2f7c0be1"
->Kernel.LX.SpeedRestrictions ( 2540.0 ) &gt;= 150.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 2540.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="0161ecb4-1a4f-4bc7-b3c9-fbc049f0e491"
->Kernel.LX.SpeedRestrictions ( 3000.0 ) &gt;= 150.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 3000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="4a124efe-72c4-4aaa-8cbb-2081ca5ebebb"
->Kernel.LX.SpeedRestrictions ( 3020.0 ) &gt;= 150.0</Expectation><Expectation
+>Kernel.LX.SpeedRestrictions ( 3020.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="f36796d1-bb7a-4285-a82f-a84d25effd13"
->Kernel.LX.SpeedRestrictions ( 4000.0 ) &gt;= 150.0</Expectation></Expectations>
+>Kernel.LX.SpeedRestrictions ( 4000.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="a2b48ff3-6ff9-460b-b0ae-eab19907210c"
+>(COUNT X IN Kernel.LX.SupervisedLevelCrossings) == 2</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e30dec1b-2ead-47ed-84b1-ddd0ad6d9bd2"
+>(COUNT X IN Kernel.LX.MRSPLevelCrossings) == 1</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step5 - The train reaches LX supervision location"
+ Guid="53a77487-a311-4692-8086-41b35de40e7d"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="058bd99c-f789-4091-94cf-4fe7336811a7"
+>
+<Actions>
+<Action
+ Guid="2e5eca5b-4e47-4ce0-a8f1-726e0bc5d75f"
+>Odometry.NominalDistance &lt;- BTM.LRBG.Position.Position + 1990.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="92f38336-cd52-4a9f-9b78-d4edffa0a48f"
+>(COUNT X IN Kernel.LX.MRSPLevelCrossings) == 2</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="8ee49747-f8cc-40db-b871-befd5be0a236"
+>(COUNT X IN Kernel.LX.SupervisedLevelCrossings) == 1</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step6 - Train stops in the stopping location"
+ Guid="27a7bc39-87dd-460e-b696-db271405fd0f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="0b34e9c6-5ea2-4c39-bcd4-94105f3e3455"
+>
+<Actions>
+<Action
+ Guid="13687742-07e1-4c19-94ed-3582c2faa535"
+>Odometry.NominalDistance &lt;- BTM.LRBG.Position.Position + 2452.0</Action><Action
+ Guid="028c34a3-7874-4d24-98a1-c3e4453da85b"
+>Odometry.EstimatedSpeed &lt;- 0.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="aa8dad5c-0c81-4b18-9e59-1192b45c5cb3"
+>(COUNT X IN Kernel.LX.SupervisedLevelCrossings) == 0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="20b88d31-40cd-44a6-8be8-66c001bf9fc0"
+>(COUNT X IN Kernel.LX.MRSPLevelCrossings) == 3</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
-</TestCase><TestCase
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="New LX information with same id replaces old information"
+ Guid="eb6de040-b36a-400c-89ee-b49aac17fe1b"
+>
+<TestCases>
+<TestCase
  Feature="0"
  Case="0"
  Implemented="TRUE"
