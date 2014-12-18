@@ -297,6 +297,8 @@
 </Function><Function
  Type="BaseTypes.Distance"
  Default=""
+ X="20"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -336,6 +338,97 @@
  Guid="a0f2f271-9086-4966-8579-24238c7e2adb"
 >
 <Expression>MessageTypes.QScaleDistance ( distance =&gt; aDistance, scale =&gt; aScale )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="350"
+ Y="360"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="AcknowledgementRequiredForLT"
+ Guid="41be7128-6029-484c-9d47-1dfec1b786f0"
+>
+<ReqRef
+ Id="8d4e3494-0d48-4a2c-9b77-5f6c3172b190"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ed999388-254c-49d3-a68d-dd6ec685d937"
+>
+</ReqRef><ReqRef
+ Id="a3a0049d-a3a9-4214-8f52-5e8bc71b4d74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e3ae7613-aba6-47aa-bde0-f1ed0f420ff8"
+>
+</ReqRef><ReqRef
+ Id="a19779b8-8b61-4cfa-8ee6-b2a0a005a1ef"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9d7e17f0-732c-4094-9ca6-98ece92f4c6a"
+>
+</ReqRef><ReqRef
+ Id="8b054aef-0c7c-4bb6-b706-dc8f199900c8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1de50a2-d565-4566-8a67-8b9c6656a6fb"
+>
+</ReqRef><ReqRef
+ Id="10532251-984f-4e9b-9194-e8b1e47d73a4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7a287679-7e57-4dae-9460-4e1dd059653e"
+>
+</ReqRef><Comment>Indicates if the level transition requires the acknowledgement from the driver, according to the current level of the on-board and to the level of the level transition.</Comment>
+<Parameters>
+<Parameter
+ Type="LevelTransitionStruct"
+ Name="anLTO"
+ Guid="cce3afb1-e47c-4834-aef8-2030ee570304"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Transition to L0"
+ Guid="d49a8c09-431c-4f54-a2e6-0c628ebb4b38"
+>
+<PreConditions>
+<PreCondition
+ Guid="719c0338-4cbc-46ce-9cc9-79eece2f3361"
+>anLTO.TRLevel.Value == Level.L0</PreCondition></PreConditions>
+<Expression>Kernel.Level.Value.Value in [Level.L1, Level.L2, Level.L3, Level.LNTC]</Expression>
+</Case><Case
+ Name="Transition to L1"
+ Guid="56f2f296-9ad7-40a2-97ae-86fa1bbd6d85"
+>
+<PreConditions>
+<PreCondition
+ Guid="e867f5a1-cb45-4b2b-8756-3acbf248c2da"
+>anLTO.TRLevel.Value == Level.L1</PreCondition></PreConditions>
+<Expression>Kernel.Level.Value.Value in [Level.LNTC]</Expression>
+</Case><Case
+ Name="Transition to L2"
+ Guid="4644b186-48e9-42ef-a097-5af5bd38a70a"
+>
+<PreConditions>
+<PreCondition
+ Guid="d99bbf7e-2c43-4f73-89b2-6f3073524634"
+>anLTO.TRLevel.Value == Level.L2</PreCondition></PreConditions>
+<Expression>Kernel.Level.Value.Value in [Level.LNTC]</Expression>
+</Case><Case
+ Name="Transition to L3"
+ Guid="e3dcefe8-0a6e-4c35-af1e-1cae0abc2c3d"
+>
+<PreConditions>
+<PreCondition
+ Guid="f309a7c2-0879-4ca7-bdb3-af5b22680bec"
+>anLTO.TRLevel.Value == Level.L3</PreCondition></PreConditions>
+<Expression>Kernel.Level.Value.Value in [Level.LNTC]</Expression>
+</Case><Case
+ Name="Transition to LNTC"
+ Guid="aedccfb5-1bbd-43ed-96f5-5176b508b71c"
+>
+<PreConditions>
+<PreCondition
+ Guid="c8f31cb9-bb3a-4cef-ba29-fc9eaa7d3f5f"
+>anLTO.TRLevel.Value == Level.LNTC</PreCondition></PreConditions>
+<Expression>Kernel.Level.Value.Value in [Level.L0, Level.L1, Level.L2, Level.L3, Level.LNTC]</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -587,7 +680,7 @@ Packet.Sequence1</Action></Actions>
 <Actions>
 <Action
  Guid="f47d50dc-9fb7-45f3-bad6-736e4f447e1e"
->ProcessLTO()</Action></Actions>
+>ProcessLTO( IsImmediate =&gt; Packet.D_LEVELTR == 32767 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -720,7 +813,7 @@ Packet.Sequence1</Action></Actions>
 <Actions>
 <Action
  Guid="1a6bdf17-071d-4c6b-921d-d6e6833e5395"
->ProcessLTO()</Action></Actions>
+>ProcessLTO( IsImmediate =&gt; True )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -740,6 +833,13 @@ Packet.Sequence1</Action></Actions>
  Guid="45363af2-0936-412e-9368-b4ef2b8c06c1"
 >
 </ReqRef><Comment>This does all general stuff required for a level transition independent from the source and target level It is therefore a preliminary step for ProcessLTOSpecific.</Comment>
+<Parameters>
+<Parameter
+ Type="Boolean"
+ Name="IsImmediate"
+ Guid="fa6f1edc-a8ac-47fe-99b7-6256f2b9f138"
+>
+</Parameter></Parameters>
 <Rules>
 <Rule
  Priority="Processing"
@@ -842,6 +942,51 @@ Packet.Sequence1</Action></Actions>
  Guid="fd368ae9-0601-449f-b2c9-e3ef3f7370e8"
 >DMI.MasterDMI().Out_LevelTransitionAnnouncement.Display(LevelTransitionToProcess.TRLevel.Value)</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="CheckAcknowledgement"
+ Guid="ca6a90e6-8f59-4986-8c59-80e27df43cd1"
+>
+<ReqRef
+ Id="326c0395-05a3-431d-b435-8b4d44c094c1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="84598eac-1a6e-48de-a7ca-6c82b575f50a"
+>
+</ReqRef><ReqRef
+ Id="8328bb5f-310c-462b-9f15-802a2fee99b9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="95bbb81a-e94a-4249-a2cf-2c51ee4bc965"
+>
+</ReqRef><ReqRef
+ Id="a9175422-b443-4cc7-95c0-c99e8be3f93b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d6f84dc-9ff9-434d-924e-6b991d83e2e9"
+>
+</ReqRef><Comment>If this is an immediate level transition order (or a conditional level transition order, which has to be handled as an immediate one), the on-board asks the driver to acknowledge the level transition.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CheckAcknowledgement"
+ Guid="ec0364d2-cac7-4416-8161-2f940de28c6c"
+>
+<PreConditions>
+<PreCondition
+ Guid="0304e311-65dd-4d61-9fc9-5bf978e8a25f"
+>IsImmediate</PreCondition><PreCondition
+ Guid="d6084a3b-1eef-4337-853b-ac80bbe9af51"
+>AcknowledgementRequiredForLT( anLTO =&gt; LevelTransitionToProcess )</PreCondition><PreCondition
+ Guid="1f3fc39c-13be-4818-b96a-906fb7e5d4e6"
+>Kernel.Mode != Mode.NL</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6e7033cb-ec67-45ae-8141-1fb4371273ce"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest( Level =&gt; LevelTransitionToProcess.TRLevel )</Action><Action
+ Guid="1cf506df-06cd-40e2-a5cb-f05ea42130a3"
+>AcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="130"
@@ -881,6 +1026,30 @@ Packet.Sequence1</Action></Actions>
 >Kernel.Level.Value &lt;- LevelTransitionToProcess.TRLevel</Action><Action
  Guid="0ddeb99e-7c2c-4f4c-a6c4-63b006cbc5e0"
 >EURORADIO.PositionReport.PositionReportEventsTracker.LevelTransitionBorderPassed &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Remove executed level transition order"
+ Guid="9e5d7fd9-8ba9-41d6-9a1f-c3d5c489b456"
+>
+<Comment>Once the level transition order is executed, it is deleted.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove executed level transition order"
+ Guid="1958a987-de03-4d8e-b436-068098ab54c8"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="9c31b8a4-e590-4a4f-a228-e031aa6442b8"
+>LevelTransitionOrder &lt;- EMPTY</Action><Action
+ Guid="d7eec92a-82a6-4cf2-bea8-434dee18f457"
+>LevelTransitionToProcess &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -932,6 +1101,24 @@ Packet.Sequence1</Action></Actions>
  Guid="3d81a9fc-56e0-4b4b-87a3-1cd11c8bfa42"
 >
 </ReqRef><Comment>The (target-)level (and -distance) that the train should perform a transition to (i.e. the output of the computations)</Comment>
+</Variable><Variable
+ Type="BaseTypes.Time"
+ DefaultValue="BaseTypes.Time.NA"
+ VariableMode="Internal"
+ X="510"
+ Y="100"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="AcknowledgementTime"
+ Guid="e27806fd-a35b-4c88-94b2-9b342fb8a244"
+>
+<ReqRef
+ Id="b80b16f5-2420-4404-a28c-46554a19a163"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="65259564-6bd7-4de4-804b-de346b551c3f"
+>
+</ReqRef><Comment>Indicates the time when the last level transition acknowledgement has been requested.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -981,6 +1168,125 @@ Packet.Sequence1</Action></Actions>
 >ExecuteLevelTransitionOrder()</Action><Action
  Guid="4394273d-b6c5-440d-b2db-9c96b1741a0f"
 >DMI.MasterDMI().Out_LevelTransitionAnnouncement.OutputInformation.DoNotDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ X="130"
+ Y="440"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Check acknowledgement"
+ Guid="c31fe5c9-0f2d-4090-a87a-ef6c2b424b65"
+>
+<Comment>Handles the acknowledgement requests for level transition orders.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Acknowledgement not requested yet"
+ Guid="f402987a-e9bc-4a6a-b1ef-9db9fac8b09b"
+>
+<ReqRef
+ Id="8328bb5f-310c-462b-9f15-802a2fee99b9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5d58f1bd-18f1-4045-9cd2-874a54b2bb38"
+>
+</ReqRef><ReqRef
+ Id="a9175422-b443-4cc7-95c0-c99e8be3f93b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7e9db350-4378-490f-b28a-8a197ac5fe03"
+>
+</ReqRef><ReqRef
+ Id="9f0f683a-1fd7-4c49-a2e8-e9ed1c86ba09"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2979102a-3404-4e51-9f61-6b77fb893ffb"
+>
+</ReqRef><Comment>When the max safe front end of the train has passed a trackside defined location in rear of the level transition border and if the mode is different from NL, the on-board asks the driver to acknowledge the level transition.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="119f3451-7abd-48fd-ae98-5d685a2d6454"
+>LevelTransitionOrder != EMPTY</PreCondition><PreCondition
+ Guid="ba1fa256-51bd-488d-80b9-bedccd862de9"
+>AcknowledgementRequiredForLT( anLTO =&gt; LevelTransitionToProcess )</PreCondition><PreCondition
+ Guid="70792393-b2da-4f9c-b343-ffd26b6ede9b"
+>Kernel.Mode != Mode.NL</PreCondition><PreCondition
+ Guid="0f38d48a-8431-4fc2-8a57-2fed7286c19c"
+>TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Max ) &gt; LevelTransitionOrder.Distance - LevelTransitionToProcess.AcknLength</PreCondition><PreCondition
+ Guid="d1c2a625-f343-46d3-aff8-a4ac69558533"
+>AcknowledgementTime == BaseTypes.Time.NA</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6cd45745-93fd-462e-a9a2-fba632fb6219"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest( Level =&gt; LevelTransitionToProcess.TRLevel )</Action><Action
+ Guid="e61e0e97-b591-4494-bddf-fefa789965bc"
+>AcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Acknowledgement requested, driver acknowledged"
+ Guid="ce1f8945-c32c-46dd-b9cf-a7443d217a18"
+>
+<Comment>If the acknowledgement was requested and the driver acknowledged =&gt; the acknowledgement timer is reset.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="0f07a27d-8f89-4c48-b063-81d257bb788f"
+>NOT TIU.ServiceBrakeCommanded</PreCondition><PreCondition
+ Guid="96e10611-73a9-4b54-a0f9-c2f7ff4abbe3"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.DriverAnswered</PreCondition><PreCondition
+ Guid="1b9b34c4-45d8-4d6f-8626-ca3d83dd1512"
+>AcknowledgementTime != BaseTypes.Time.NA</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d6a676aa-d751-4c19-ada6-811369689182"
+>AcknowledgementTime &lt;- BaseTypes.Time.NA</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Acknowledgement requested, driver didn&apos;t acknowledge"
+ Guid="fbab0a5d-ece3-4b57-b8b0-82d13be1e7f2"
+>
+<ReqRef
+ Id="b80b16f5-2420-4404-a28c-46554a19a163"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1426a17-e857-4579-802b-e4a0515d654f"
+>
+</ReqRef><Comment>If the acknowledgement has already been requested but the driver didn&apos;t ask within the driver acknowledgement time, the on-board applies the service brake.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5572fcd3-71a6-4fce-91e3-03f994294492"
+>AcknowledgementTime != BaseTypes.Time.NA</PreCondition><PreCondition
+ Guid="08841d53-1313-454d-8f2d-2590fea1bf0a"
+>AcknowledgementTime + MA.ModeProfile.Tack &lt; DateAndTime.CurrentTime</PreCondition><PreCondition
+ Guid="557cf452-9e01-4ddf-82e2-d45344d238bd"
+>NOT TIU.ServiceBrakeCommanded</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="617b5f25-4fc9-4476-a25c-ce5ca0b97228"
+>TIU.ServiceBrakeCommanded &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Service brake applied, driver acknowledges"
+ Guid="c36246cd-1da8-4647-81cb-040a9183829e"
+>
+<ReqRef
+ Id="25ff8d11-2313-4e9f-80cb-228750b3ad1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8d7bc05c-d39a-410c-a136-3ae4e9a83130"
+>
+</ReqRef><Comment>If the service brake was applied due to the level transition acknowledgement and the driver acknowledged, the service brake is released.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="188a9d02-c244-4384-914e-7b38ba3387a5"
+>TIU.ServiceBrakeCommanded</PreCondition><PreCondition
+ Guid="1be75203-d9a7-4da3-a6ea-ed3bcdbd5073"
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="bb75a97e-9347-4f16-9157-f1243bcaeff9"
+>TIU.ServiceBrakeCommanded &lt;- False</Action><Action
+ Guid="3b2c7e90-7a82-4030-b7be-38fdead76ad1"
+>AcknowledgementTime &lt;- BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

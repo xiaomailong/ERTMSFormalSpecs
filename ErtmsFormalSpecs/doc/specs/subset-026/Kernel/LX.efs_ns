@@ -18,7 +18,7 @@
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="LevelCrossing"
+ Name="LevelCrossingStruct"
  Guid="02504b1e-5cef-4fa8-b6ec-b2928255acdf"
 >
 <ReqRef
@@ -110,7 +110,7 @@
 >
 </ReqRef><Comment>Length of the level crossing area.</Comment>
 </StructureElement><StructureElement
- TypeName="Messages.Q_LXSTATUS"
+ TypeName="Boolean"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -158,7 +158,7 @@
 >
 </ReqRef><Comment>Permitted speed for the level crossing speed restriction.</Comment>
 </StructureElement><StructureElement
- TypeName="Messages.Q_STOPLX"
+ TypeName="Boolean"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -198,7 +198,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.LX.LevelCrossing"
+ TypeName="Kernel.LX.LevelCrossingStruct"
  MaxSize="20"
  Default="[]"
  X="230"
@@ -207,7 +207,7 @@
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="LevelCrossings"
+ Name="LevelCrossingsCol"
  Guid="f7ac6fa8-6bd4-4b62-818b-23b38afbfbeb"
 >
 <ReqRef
@@ -220,7 +220,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="af170558-4a3b-4241-aaf3-f806e11d7e67"
 >
-</ReqRef><Comment>Represents the level crossings received from the trackside.</Comment>
+</ReqRef><Comment>Represents a collection of level crossings received from the trackside.</Comment>
 </Collection></Collections>
 <Functions>
 <Function
@@ -267,7 +267,7 @@
  Name="Value"
  Guid="0aaa7939-0011-43dc-9333-93f25d3eead6"
 >
-<Expression>(REDUCE LevelCrossings 
+<Expression>(REDUCE MRSPLevelCrossings 
     USING X IN  
         MIN ( First =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; LXSpeedRestriction(aLX =&gt; X, Distance =&gt; d), 
                   Second =&gt; RESULT )
@@ -312,7 +312,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </ReqRef><Comment>Provides the speed profile due to a level crossing.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.LX.LevelCrossing"
+ Type="Kernel.LX.LevelCrossingStruct"
  Name="aLX"
  Guid="d7d85ea2-3ebc-4c2a-a4aa-8074be5f2f4e"
 >
@@ -324,17 +324,6 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Parameter></Parameters>
 <Cases>
 <Case
- Name="Stopping area"
- Guid="c02bca9b-8d4b-448d-a0f4-34d1cbdf40f8"
->
-<PreConditions>
-<PreCondition
- Guid="0b2f6eef-b4ba-4d04-b58d-f9e3967cb279"
->aLX.Location - Default.BaseTypes.LengthToDistance(aLX.StoppingAreaLength) &lt;= Distance</PreCondition><PreCondition
- Guid="8950058e-304d-4ac4-a86a-a98ef88c42a9"
->Distance &lt; aLX.Location</PreCondition></PreConditions>
-<Expression>StoppingAreaSpeed(aLX)</Expression>
-</Case><Case
  Name="During LX"
  Guid="20734346-3c5e-4874-98f2-a6f945ae06cf"
 >
@@ -344,7 +333,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >aLX.Location &lt;= Distance</PreCondition><PreCondition
  Guid="fcd3813f-21a2-4424-a05a-e68ff8a575e9"
 >Distance &lt; aLX.Location + Default.BaseTypes.LengthToDistance(aLX.Length)</PreCondition></PreConditions>
-<Expression>NonProtectedSpeed(aLX)</Expression>
+<Expression>aLX.Speed</Expression>
 </Case><Case
  Name="Outside LX"
  Guid="f1b56221-be26-417f-969b-c42462ccb12f"
@@ -352,114 +341,16 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.BaseTypes.Speed"
+ Type="Kernel.LX.LevelCrossingStruct"
  Default=""
- X="230"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- Name="NonProtectedSpeed"
- Guid="fc60e92d-e251-48d6-85be-da9ced8c827f"
->
-<ReqRef
- Id="4b756e9d-4e0d-4fd1-81a8-9244618a8547"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3901d7e5-2c67-47fa-baed-a686559b96ed"
->
-</ReqRef><Comment>Provides the speed value during the level crossing. If the current LX is protected, the speed is not limited, if the current LX is not protected, the speed is limited to the value given by the LX.</Comment>
-<Parameters>
-<Parameter
- Type="Kernel.LX.LevelCrossing"
- Name="aLX"
- Guid="0cb48cb8-ea4e-4723-9582-e4719b7ee221"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="LX is not protected"
- Guid="4aeaa947-7bb9-4f94-b693-73f82de18cd0"
->
-<Comment>If the LX is not protected and it has no stopping area in rear of its start location, the start location is temporarily considered as the EOA and SvL. Once the train has reached the permitted speed supervision limit for the LX speed, the train then monitors the LX speed as if it was in the LX area.</Comment>
-<PreConditions>
-<PreCondition
- Guid="d632bc00-1e4d-44cf-ba8c-2133d1f88ca0"
->aLX.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</PreCondition></PreConditions>
-<Expression>aLX.Speed</Expression>
-</Case><Case
- Name="LX is protected"
- Guid="4359d193-2752-4a1e-8efe-3d266fb9367c"
->
-<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
-</Case></Cases>
-</Function><Function
- Type="Default.BaseTypes.Speed"
- Default=""
- X="110"
- Y="60"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- Name="StoppingAreaSpeed"
- Guid="38fbcc58-30db-45fc-90ee-de1f34963493"
->
-<ReqRef
- Id="4be474be-fe70-49b2-8c94-d7383e9539e8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ed753af3-4522-4e47-a35b-e0b83aa4f612"
->
-</ReqRef><Comment>Provides the speed value for the stopping area of a given LX. There are three possible cases:
-1. The LX is not protected and the stopping is required =&gt; the speed equals 0
-2. The LX is not protected, no stopping is required and the stopping area equals 0 (that means that the stopping area and the LX interval overlap) =&gt; the speed is limited to the value given by the LX
-3. Otherwise =&gt; there is no speed limit</Comment>
-<Parameters>
-<Parameter
- Type="Kernel.LX.LevelCrossing"
- Name="aLX"
- Guid="9369ff2c-f0da-45fc-98fc-62bebb888802"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Stopping required"
- Guid="8665054a-cef1-49ed-a051-18e1509107f4"
->
-<PreConditions>
-<PreCondition
- Guid="8938012f-528f-44aa-bfc5-753e5238a230"
->aLX.StoppingRequired == Messages.Q_STOPLX.Stop_required</PreCondition><PreCondition
- Guid="4cf0b792-29ea-4228-93ac-30a8d6186e3a"
->aLX.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected</PreCondition></PreConditions>
-<Expression>0.0</Expression>
-</Case><Case
- Name="No stopping required, stopping area is 0"
- Guid="1c6b7841-a634-4b3c-86aa-d2b2e085c7d5"
->
-<PreConditions>
-<PreCondition
- Guid="06f322c2-1017-4408-b473-623b18c09641"
->aLX.StoppingAreaLength == 0.0</PreCondition><PreCondition
- Guid="e0e31d3a-3425-4866-8bef-75967e0814bc"
->aLX.IsProtected ==  Messages.Q_LXSTATUS.LX_is_not_protected</PreCondition></PreConditions>
-<Expression>aLX.Speed</Expression>
-</Case><Case
- Name="No stopping required, stopping area is != 0"
- Guid="00ecb741-a6a6-4d3e-9420-6320aca790ae"
->
-<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
-</Case></Cases>
-</Function><Function
- Type="Kernel.LX.LevelCrossing"
- Default=""
- X="230"
+ X="220"
  Y="60"
  Width="100"
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="CreateLevelCrossing"
+ Name="UpdateLevelCrossing"
  Guid="cbac608b-ef3f-4823-bf1e-795f7b75f62c"
 >
 <ReqRef
@@ -482,10 +373,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c3426c7a-5593-444b-a84e-8df379e237e1"
 >
-</ReqRef><Comment>When a new LX is received, one have to check if it has the same id than an other LX received previously. In that case we have to replace the previously received TSR with the same id by the new one. This function takes a previously received LX in parameters and if it has the same id as the new one, it returns a new LX; in the other case it returnes the same TSR.</Comment>
+</ReqRef><Comment>When a new LX is received, one have to check if it has the same id than an other LX received previously. In that case we have to replace the previously received TSR with the same id by the new one. This function takes a previously received LX in parameters and if it has the same id as the new one, it returns a new LX; in the other case it returnes the same LX.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.LX.LevelCrossing"
+ Type="Kernel.LX.LevelCrossingStruct"
  Name="aLevelCrossing"
  Guid="5c9e17d6-63b7-439f-8087-738f2b1c7f4a"
 >
@@ -509,14 +400,14 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <PreCondition
  Guid="fe8a1ccd-112a-435e-bfef-c05500940864"
 >aLevelCrossing.Id == Packet.NID_LX</PreCondition></PreConditions>
-<Expression>LevelCrossing
+<Expression>Kernel.LX.LevelCrossingStruct
 {
     Id =&gt; Packet.NID_LX,
     Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LX, scale =&gt; Packet.Q_SCALE ),
     Length =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_LX, scale =&gt; Packet.Q_SCALE ),
-    IsProtected =&gt; Packet.Q_LXSTATUS,
+    IsProtected =&gt; ProtectedStatusToBoolean( ProtectedStatus =&gt; Packet.Q_LXSTATUS ),
     Speed =&gt; MessageTypes.SpeedResolution ( Packet.V_LX, 5.0 ),
-    StoppingRequired =&gt; Packet.Q_STOPLX,
+    StoppingRequired =&gt; StoppingRequiredToBoolean ( StoppingRequired =&gt; Packet.Q_STOPLX ),
     StoppingAreaLength =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_STOPLX, scale =&gt; Packet.Q_SCALE)
 }</Expression>
 </Case><Case
@@ -530,12 +421,12 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <Expression>aLevelCrossing</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.LX.LevelCrossing"
+ Type="Kernel.LX.LevelCrossingStruct"
  Default=""
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="NearestNonProtectedNonStoppingLX"
+ Name="NearestLX"
  Guid="fae147e0-6891-41b3-99a1-a53243253b5e"
 >
 <ReqRef
@@ -548,29 +439,25 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f22f1a74-fd95-494d-bb79-12807a725b97"
 >
-</ReqRef><Comment>Returns the LevelCrossing in LevelCrossings with the nearest Location, that is non protected, and with no stopping area</Comment>
+</ReqRef><Comment>Returns the nearest level crossing from the provided collection of level crossings.</Comment>
+<Parameters>
+<Parameter
+ Type="LevelCrossingsCol"
+ Name="LXCollection"
+ Guid="5af66df4-0460-4f64-89ce-431dda060692"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
- Name="None exist"
- Guid="a8d933e2-7a55-4c8f-aade-f052e5d56195"
->
-<PreConditions>
-<PreCondition
- Guid="345298f5-7a48-4c2a-b922-299a7609c275"
->NOT (THERE_IS X IN LevelCrossings | (X.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected) AND (X.StoppingRequired == Messages.Q_STOPLX.No_stop_required))</PreCondition></PreConditions>
-<Expression>EMPTY</Expression>
-</Case><Case
  Name="Value"
  Guid="a9bbf1f9-7aa9-4346-acd1-798063f97990"
 >
-<Expression>REDUCE LevelCrossings | (X.IsProtected == Messages.Q_LXSTATUS.LX_is_not_protected) AND (X.StoppingRequired == Messages.Q_STOPLX.No_stop_required)
-
-USING X IN ClosestLX(LX1=&gt;X, LX2=&gt;RESULT)
-
-INITIAL_VALUE Kernel.LX.LevelCrossing{Location =&gt; Default.BaseTypes.Distance.Infinity}</Expression>
+<Expression>REDUCE LXCollection
+  USING X IN ClosestLX(LX1=&gt;X, LX2=&gt;RESULT)
+  INITIAL_VALUE Kernel.LX.LevelCrossingStruct{Location =&gt; Default.BaseTypes.Distance.Infinity}</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.LX.LevelCrossing"
+ Type="Kernel.LX.LevelCrossingStruct"
  Default=""
  X="110"
  Width="100"
@@ -580,15 +467,15 @@ INITIAL_VALUE Kernel.LX.LevelCrossing{Location =&gt; Default.BaseTypes.Distance.
  Name="ClosestLX"
  Guid="48c39ba9-266b-4a94-bfe3-34d2b653dc14"
 >
-<Comment>Takes two LevelCrossing structures and returns the one with the nearest Location</Comment>
+<Comment>Takes two LX structures and returns the one with the nearest Location.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.LX.LevelCrossing"
+ Type="Kernel.LX.LevelCrossingStruct"
  Name="LX1"
  Guid="e98f59f4-6757-40e6-bdbc-335ea6fe69ac"
 >
 </Parameter><Parameter
- Type="Kernel.LX.LevelCrossing"
+ Type="Kernel.LX.LevelCrossingStruct"
  Name="LX2"
  Guid="eb6b6b78-008d-439f-b300-dc8b2a6afd71"
 >
@@ -609,6 +496,349 @@ INITIAL_VALUE Kernel.LX.LevelCrossing{Location =&gt; Default.BaseTypes.Distance.
 >
 <Expression>LX1</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="ProtectedStatusToBoolean"
+ Guid="8388855e-6f8c-400a-a1b7-2d924d38d55b"
+>
+<ReqRef
+ Id="829b0ec7-e41b-4dbb-ac6a-fd2079cd565c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a0e2043-5b33-43ab-b009-984af7dd0776"
+>
+</ReqRef><Comment>Converts the protected status to a boolean.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.Q_LXSTATUS"
+ Name="ProtectedStatus"
+ Guid="e7df4cfa-be7e-4972-8a9d-65f087f1da37"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Protected"
+ Guid="a654a386-812f-4d56-8045-d81f8ed1faf7"
+>
+<PreConditions>
+<PreCondition
+ Guid="3de1d21c-2b6b-464b-970a-78aa75c3988a"
+>ProtectedStatus == Messages.Q_LXSTATUS.LX_is_protected</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Non protected"
+ Guid="94dc838f-a58c-48b9-9fcc-e6482b615fad"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="StoppingRequiredToBoolean"
+ Guid="66800276-19d4-4673-907f-c0d8306d3655"
+>
+<ReqRef
+ Id="fbae4639-91c7-4474-bfc1-2e930f72239f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="875b1485-90f2-4d59-a9fc-247016f991ac"
+>
+</ReqRef><Comment>Converts &quot;stopping required&quot; information to boolean.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.Q_STOPLX"
+ Name="StoppingRequired"
+ Guid="4dbaf31f-213a-4923-be8a-3a2c80144ab3"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Stopping is required"
+ Guid="e633caed-2377-480d-9b3d-bdabac103090"
+>
+<PreConditions>
+<PreCondition
+ Guid="a07491c1-e737-41ef-a6bd-ccd909463d6d"
+>StoppingRequired == Messages.Q_STOPLX.Stop_required</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Stopping is not required"
+ Guid="4274e1c5-51a8-4100-8c18-c30098314fe2"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="StoppingConditionSatisfied"
+ Guid="3bf2a233-47fe-4730-8f5b-26116f5494c1"
+>
+<ReqRef
+ Id="40345205-ff68-43c5-b986-172b7e41c842"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ec703f14-06ea-4dc7-8964-9d5e3cce5159"
+>
+</ReqRef><Comment>Indicates if for the given non protected LX with stopping required, the condition to substitute its supervision as EOA and SvL by its inclusion in the MRSP is satisfied. It is satisfied if the train has stopped in the stopping area of that LX.</Comment>
+<Parameters>
+<Parameter
+ Type="LevelCrossingStruct"
+ Name="aLX"
+ Guid="99ad67a1-1be7-4adf-8726-36de0f4fb8b5"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="c22cff6c-edad-468e-b90d-fe14c703194e"
+>
+<Expression>aLX.StoppingRequired
+  AND
+aLX.Location - aLX.StoppingAreaLength &lt;= TrainPosition.FrontEndPosition( PointOfInterest =&gt; Default.DistanceInterval.Nom )
+  AND
+TrainPosition.FrontEndPosition( PointOfInterest =&gt; Default.DistanceInterval.Nom ) &lt;= aLX.Location</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="NonStoppingConditionSatisfied"
+ Guid="05a1d0c4-5da4-48c1-95e3-ea804c0b9b28"
+>
+<ReqRef
+ Id="b7d99bef-d372-4d0a-a74b-4a630f5762aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="610eb935-f7ed-4c17-b8dd-e0118745951f"
+>
+</ReqRef><ReqRef
+ Id="9b54b401-0857-45af-bbb3-1ec502f39d2a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4bef49a4-b098-474f-b256-0d492b35d343"
+>
+</ReqRef><ReqRef
+ Id="c6aacc41-0ade-4c43-a0c5-e212f9a6a52f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f74d707e-c6d4-48aa-87d1-95fa9ab82d25"
+>
+</ReqRef><ReqRef
+ Id="4ba91473-9e38-449c-87e0-203353bc7bcb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9116255e-6109-47f7-9401-18237b4d1e5e"
+>
+</ReqRef><Comment>Indicates if the condition to substitute the supervision of that non protected LX with no stopping required as EOA and SvL by the inclusion of the LX speed restriction in the MRSP is satisfied.
+It is satisfied if the estimated or the max safe front end (depending whether the most restrictive SBI supervision limit at LX speed is the SBI1 or the SBI2) reaches the location of the Permitted speed supervision limit calculated for the LX speed.</Comment>
+<Parameters>
+<Parameter
+ Type="LevelCrossingStruct"
+ Name="aLX"
+ Guid="fc20cfd2-738f-43bb-8ae6-9339d16c5252"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Stopping is required"
+ Guid="4de70400-ead0-48bf-86d7-7de0dffec83a"
+>
+<PreConditions>
+<PreCondition
+ Guid="9d42c41a-90d5-48e2-aa4c-5294a6cf6c35"
+>aLX.StoppingRequired</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="SBD and EBD undefined"
+ Guid="83d483ee-776c-472c-902c-570b69400a57"
+>
+<PreConditions>
+<PreCondition
+ Guid="27fd513f-4347-436d-a985-58b252376701"
+>(
+  SpeedAndDistanceMonitoring.DecelerationCurves.SBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) == BaseTypes.Speed.NA
+  OR
+  SpeedAndDistanceMonitoring.DecelerationCurves.SBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) &lt; aLX.Speed
+)
+  AND
+SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
+(
+  Distance =&gt; (TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)),
+  aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
+  {
+    Speed =&gt; 0.0,
+    Location =&gt; aLX.Location
+  }
+) &lt; aLX.Speed</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="SBD undefined, EBD defined"
+ Guid="ccd0f4e5-00fc-4a54-a191-2361854016d1"
+>
+<PreConditions>
+<PreCondition
+ Guid="1cd6fd3b-3c25-4162-9e56-b3db1c1933ff"
+>(
+  SpeedAndDistanceMonitoring.DecelerationCurves.SBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) == BaseTypes.Speed.NA
+  OR
+  SpeedAndDistanceMonitoring.DecelerationCurves.SBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) &lt; aLX.Speed
+)
+  AND
+SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
+(
+  Distance =&gt; (TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
+  aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
+  {
+    Speed =&gt; 0.0,
+    Location =&gt; aLX.Location
+  }
+) &gt;= aLX.Speed</PreCondition></PreConditions>
+<Expression>(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P( Vest =&gt; aLX.Speed + SpeedAndDistanceMonitoring.f41( V =&gt; aLX.Speed ), EstimatedAccelerationSetToZero =&gt; True ) &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Max))</Expression>
+</Case><Case
+ Name="EBD undefined, SBD defined"
+ Guid="cdef8867-c7f0-4eb2-9299-adc7e8682e22"
+>
+<PreConditions>
+<PreCondition
+ Guid="6defd243-0751-4c79-a330-29ec47356a78"
+>SpeedAndDistanceMonitoring.DecelerationCurves.SBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) != BaseTypes.Speed.NA
+  AND
+SpeedAndDistanceMonitoring.DecelerationCurves.SBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) &gt;= aLX.Speed
+  AND
+SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
+(
+  Distance =&gt; (TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)),
+  aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
+  {
+    Speed =&gt; 0.0,
+    Location =&gt; aLX.Location
+  }
+) &lt; aLX.Speed</PreCondition></PreConditions>
+<Expression>(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P( Vest =&gt; aLX.Speed + SpeedAndDistanceMonitoring.f41( V =&gt; aLX.Speed ), EstimatedAccelerationSetToZero =&gt; True ) &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Max))</Expression>
+</Case><Case
+ Name="Value for SBI1"
+ Guid="f4052748-7c95-42d6-9f60-ff500bf55fd9"
+>
+<PreConditions>
+<PreCondition
+ Guid="88fcab7b-3381-463b-8e1b-a944094cd598"
+>SBI1IsMostRestrictive( aLX )</PreCondition></PreConditions>
+<Expression>(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P( Vest =&gt; aLX.Speed + SpeedAndDistanceMonitoring.f41( V =&gt; aLX.Speed ), EstimatedAccelerationSetToZero =&gt; True ) &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Expression>
+</Case><Case
+ Name="Value for SBI2"
+ Guid="c43828b7-0d92-4b13-8d55-8c4ef789fb76"
+>
+<Expression>(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P( Vest =&gt; aLX.Speed + SpeedAndDistanceMonitoring.f41( V =&gt; aLX.Speed ), EstimatedAccelerationSetToZero =&gt; True ) &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Max))</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="220"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SBI1IsMostRestrictive"
+ Guid="9974ff04-1029-4dd0-b07f-52be76bf6a15"
+>
+<ReqRef
+ Id="b7d99bef-d372-4d0a-a74b-4a630f5762aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3480450c-02c1-460a-bb77-7e250fcc35f3"
+>
+</ReqRef><ReqRef
+ Id="c6aacc41-0ade-4c43-a0c5-e212f9a6a52f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="95c1e738-9dba-4874-967f-661b16fbc557"
+>
+</ReqRef><Comment>Indicates if the most restrictive SBI supervision limit at the speed of the given LX is the SBI1 or the SBI2, used to determine whether the max safe front end or the estimated front end has to be compared to the location of the Permitted speed supervision in order to determine if the supervision of the current LX as EOA and SvL has to be substitued by the inclusion of the LX in the MRSP.</Comment>
+<Parameters>
+<Parameter
+ Type="LevelCrossingStruct"
+ Name="aLX"
+ Guid="fb6f82cf-e87f-4453-b7a2-36dfe33844c6"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="773759e4-0a94-4d5e-b184-a527d0ac9227"
+>
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_SBI1_Target
+(
+  Vest =&gt; aLX.Speed,
+  aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
+{
+    Location =&gt; aLX.Location,
+    Speed =&gt; 0.0,
+    Length =&gt; aLX.Length
+  }
+)
+&lt;
+SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2
+(
+  Vest =&gt; aLX.Speed,
+  aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
+  {
+    Location =&gt; aLX.Location,
+    Speed =&gt; 0.0,
+    Length =&gt; aLX.Length
+  },
+  EstimatedAccelerationSetToZero =&gt; True
+)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="DistanceInterval"
+ Default=""
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SelectFrontEnd"
+ Guid="ca822e3c-6f67-47b1-a252-5a88b6975fe0"
+>
+<ReqRef
+ Id="b7d99bef-d372-4d0a-a74b-4a630f5762aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="960009f2-218d-4215-9e7a-6f0e759c6d60"
+>
+</ReqRef><ReqRef
+ Id="3d9a09c9-758a-417a-8688-317064a5d7d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="44d91444-1316-44e2-8d18-969d19c789c1"
+>
+</ReqRef><Comment>Selects the train front end (nominal or maximal) from which will be adjusted the starting point of the given LX, depending whether the most restrictive SBI supervision limit at LX speed is the SBI1 or the SBI2).</Comment>
+<Parameters>
+<Parameter
+ Type="LevelCrossingStruct"
+ Name="aLX"
+ Guid="c5534220-5efd-4f76-b559-6acdc3b2b840"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Nominal"
+ Guid="2f97180b-cd93-40df-a018-e7ea816ec164"
+>
+<PreConditions>
+<PreCondition
+ Guid="85a39cd2-0e93-44b6-86bb-795272712381"
+>SpeedAndDistanceMonitoring.DecelerationCurves.SBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) != BaseTypes.Speed.NA
+  AND
+SBI1IsMostRestrictive( aLX =&gt; aLX )</PreCondition></PreConditions>
+<Expression>DistanceInterval.Nom</Expression>
+</Case><Case
+ Name="Maximal"
+ Guid="f006b704-01fa-4293-a5b0-396ecf291c31"
+>
+<Expression>DistanceInterval.Max</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -626,7 +856,7 @@ INITIAL_VALUE Kernel.LX.LevelCrossing{Location =&gt; Default.BaseTypes.Distance.
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="db94e85a-ca32-4533-bcc6-219d9f36c47e"
 >
-</ReqRef><Comment>Procedure to handle the reception of one or more new level crossings to supervise</Comment>
+</ReqRef><Comment>Procedure handling the reception of new level crossings.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message"
@@ -644,14 +874,15 @@ INITIAL_VALUE Kernel.LX.LevelCrossing{Location =&gt; Default.BaseTypes.Distance.
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="UpdateLevelCrossings"
+ Name="Update level crossings"
  Guid="2f346b4d-6e5b-4d7c-aa47-e547a9a1601d"
 >
+<Comment>First, the values are updated.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="ExistingLevelCrossing"
+ Name="Existing supervised level crossing"
  Guid="5ec899a1-5be9-4d78-89d9-330a9bbf343f"
 >
 <ReqRef
@@ -659,18 +890,135 @@ INITIAL_VALUE Kernel.LX.LevelCrossing{Location =&gt; Default.BaseTypes.Distance.
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="71622625-e828-4a94-b810-def49fca23c3"
 >
-</ReqRef><Comment>There are already supervised level crossings</Comment>
+</ReqRef><Comment>The new level crossing has already been received and is supervised as EOA and SvL =&gt; update it.</Comment>
 <PreConditions>
 <PreCondition
  Guid="c45454d0-a5f2-4a6d-ad2e-bfc59ec32279"
->THERE_IS X IN LevelCrossings | X.Id == Packet.NID_LX</PreCondition></PreConditions>
+>THERE_IS X IN SupervisedLevelCrossings | X.Id == Packet.NID_LX</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Check the type of the level crossing"
+ Guid="0098f288-e969-46f5-b8f5-468467b4a740"
+>
+<Comment>According to the type of the level crossing (protected or not, it will either be updated in the current collection, or moved no the other collection.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Protected"
+ Guid="2233208d-ea42-48b5-aab9-53281edc6e4c"
+>
+<Comment>If the new status of the level crossing is protected, it will not be supervised anymore =&gt; move it to the list of level crossings for MRSP.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="c4f0f8bb-2554-42f7-8d6a-5a4d2562c0d4"
+>Packet.Q_LXSTATUS == Messages.Q_LXSTATUS.LX_is_protected</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1fbdbe23-78ce-493f-b852-1d0303540840"
+>INSERT
+Kernel.LX.LevelCrossingStruct
+{
+    Id =&gt; Packet.NID_LX,
+    Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LX, scale =&gt; Packet.Q_SCALE ),
+    Length =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_LX, scale =&gt; Packet.Q_SCALE ),
+    IsProtected =&gt; True,
+    Speed =&gt; BaseTypes.Speed.MaxSpeed,
+    StoppingRequired =&gt; StoppingRequiredToBoolean ( StoppingRequired =&gt; Packet.Q_STOPLX ),
+    StoppingAreaLength =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_STOPLX, scale =&gt; Packet.Q_SCALE )
+}
+IN MRSPLevelCrossings</Action><Action
+ Guid="dc0079cd-e16f-4525-ae95-28ed68abafe9"
+>REMOVE FIRST X.Id == Packet.NID_LX IN SupervisedLevelCrossings</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Non protected"
+ Guid="c1d7a4b9-f3b7-4671-a1a1-d07e3e340838"
+>
+<Comment>Otherwise, it is kept in the current list and its values are updated.</Comment>
+<PreConditions>
+</PreConditions>
 <Actions>
 <Action
  Guid="c3074af9-ea7f-46b8-a94a-efca00745de7"
->LevelCrossings &lt;- MAP LevelCrossings USING X IN CreateLevelCrossing(aLevelCrossing=&gt;X, Packet=&gt;Packet, NID_BG=&gt;NID_BG)</Action></Actions>
+>SupervisedLevelCrossings &lt;- MAP SupervisedLevelCrossings USING X IN UpdateLevelCrossing(aLevelCrossing=&gt;X, Packet=&gt;Packet, NID_BG=&gt;NID_BG)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="NewLevelCrossing"
+ Name="Existing MRSP level crossing"
+ Guid="30b697b4-6a20-4940-836a-613374479a64"
+>
+<ReqRef
+ Id="1db11ec4-063b-4b77-b176-cba385f8f886"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="08341569-48c2-4556-a357-b4d6ab947db6"
+>
+</ReqRef><Comment>The new level crossing has already been received and is part of MRSP.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="7a63adce-3da5-400c-b4f0-8013eada12aa"
+>THERE_IS X IN MRSPLevelCrossings | X.Id == Packet.NID_LX</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Check the type of the level crossing"
+ Guid="40e08dfe-2492-417d-996d-c634911765c8"
+>
+<Comment>According to the type of the level crossing (protected or not, it will either be updated in the current collection, or moved no the other collection.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Protected"
+ Guid="27bd4bac-39a7-442a-8d6e-ecd2cfedde9f"
+>
+<Comment>If the new type of the level crossing is protected, it will be kept in the list of the MRSP level crossing and its values will be updated.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="0a5a40a3-cb97-4e01-9e1a-69d2a4be18a1"
+>Packet.Q_LXSTATUS == Messages.Q_LXSTATUS.LX_is_protected</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a7834952-fe89-46a7-9f11-2a5ab98555b6"
+>MRSPLevelCrossings &lt;- MAP MRSPLevelCrossings USING X IN UpdateLevelCrossing(aLevelCrossing=&gt;X, Packet=&gt;Packet, NID_BG=&gt;NID_BG)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Non protected"
+ Guid="706170fe-2923-4fb1-b8be-cfdd68da2c12"
+>
+<Comment>Otherwise, it is moved to the list of supervised level corssings since the on-board will probably supervise it.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="d82b35d5-7000-4fb9-9fda-9cb95ca822f4"
+>INSERT
+Kernel.LX.LevelCrossingStruct
+{
+    Id =&gt; Packet.NID_LX,
+    Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LX, scale =&gt; Packet.Q_SCALE ),
+    Length =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_LX, scale =&gt; Packet.Q_SCALE ),
+    IsProtected =&gt; False,
+    Speed =&gt; MessageTypes.SpeedResolution ( Packet.V_LX, 5.0 ),
+    StoppingRequired =&gt; StoppingRequiredToBoolean ( StoppingRequired =&gt; Packet.Q_STOPLX ),
+    StoppingAreaLength =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_STOPLX, scale =&gt; Packet.Q_SCALE )
+}
+IN SupervisedLevelCrossings</Action><Action
+ Guid="7d717cf9-f377-4173-a517-d07732e898dc"
+>REMOVE FIRST X.Id == Packet.NID_LX IN MRSPLevelCrossings</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="New level crossing, protected"
  Guid="6502b4b7-ffd9-445f-b073-0ced29d3ac61"
 >
 <ReqRef
@@ -698,39 +1046,427 @@ INITIAL_VALUE Kernel.LX.LevelCrossing{Location =&gt; Default.BaseTypes.Distance.
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7fa62d07-c1df-4796-b333-a7d62dea0a53"
 >
-</ReqRef><Comment>There are no supervised level crossings</Comment>
+</ReqRef><Comment>If this is a new protected level crossing, it will not be supervised as EOA and SvL and thus is it directly added to the list of level crossings for MRSP.</Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="6da8b0b7-390c-4a6e-b138-e9d2311826de"
+>Packet.Q_LXSTATUS == Messages.Q_LXSTATUS.LX_is_protected</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="31f55fb6-5217-49b5-8a68-ba5ad5434dfa"
 >INSERT
-LevelCrossing
+Kernel.LX.LevelCrossingStruct
 {
-    Id=&gt;Packet.NID_LX,
-    Location=&gt;MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LX, scale =&gt; Packet.Q_SCALE ),
-    Length=&gt;MessageTypes.QScaleLength ( length =&gt; Packet.L_LX, scale =&gt; Packet.Q_SCALE ),
-    IsProtected=&gt;Packet.Q_LXSTATUS,
-    Speed=&gt;MessageTypes.SpeedResolution ( Packet.V_LX, 5.0 ),
-    StoppingRequired=&gt;Packet.Q_STOPLX,
-    StoppingAreaLength=&gt;MessageTypes.QScaleLength ( length =&gt; Packet.L_STOPLX, scale =&gt; Packet.Q_SCALE )
+    Id =&gt; Packet.NID_LX,
+    Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LX, scale =&gt; Packet.Q_SCALE ),
+    Length =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_LX, scale =&gt; Packet.Q_SCALE ),
+    IsProtected =&gt; True,
+    Speed =&gt; BaseTypes.Speed.MaxSpeed,
+    StoppingRequired =&gt; StoppingRequiredToBoolean ( StoppingRequired =&gt; Packet.Q_STOPLX ),
+    StoppingAreaLength =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_STOPLX, scale =&gt; Packet.Q_SCALE )
 }
-IN LevelCrossings</Action></Actions>
+IN MRSPLevelCrossings</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="New level crossing, not protected"
+ Guid="1e19b451-aff1-4564-a01b-7c9867b798c0"
+>
+<ReqRef
+ Id="6caaedb4-a566-4536-a6c7-b958f8c96d03"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="72e246ef-0755-4804-a0e7-3082b62858b4"
+>
+</ReqRef><ReqRef
+ Id="4788d498-2e49-46e4-b9ef-ab4371ff454b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2f29184a-1642-47bb-846f-8e79bafd4c02"
+>
+</ReqRef><ReqRef
+ Id="35deca04-3db3-4618-8a5b-13f4cdd1478c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4acab42d-d65c-45ef-a866-6cf66757cd38"
+>
+</ReqRef><ReqRef
+ Id="29a4f8d4-9f89-4bd3-9a47-729f68635b19"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0d4acd0a-ac8f-4149-a88d-dcf3aebfc4c5"
+>
+</ReqRef><ReqRef
+ Id="ece82958-6f94-4168-b5b1-f3fe24058435"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ac2d4840-ec5c-4a36-ba56-9ab9c3d5830a"
+>
+</ReqRef><Comment>If this is a new non protected level crossing, it will first be supervised as EOA and SvL and is this added to the list of the supervised level crossings.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="dfcc7301-9185-4609-a9f4-c8af81ea6994"
+>INSERT
+Kernel.LX.LevelCrossingStruct
+{
+    Id =&gt; Packet.NID_LX,
+    Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_LX, scale =&gt; Packet.Q_SCALE ),
+    Length =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_LX, scale =&gt; Packet.Q_SCALE ),
+    IsProtected =&gt; False,
+    Speed =&gt; MessageTypes.SpeedResolution ( Packet.V_LX, 5.0 ),
+    StoppingRequired =&gt; StoppingRequiredToBoolean ( StoppingRequired =&gt; Packet.Q_STOPLX ),
+    StoppingAreaLength =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_STOPLX, scale =&gt; Packet.Q_SCALE )
+}
+IN SupervisedLevelCrossings</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle LX supervision"
+ Guid="10d3044a-c8de-4ee5-a5bd-bbad2672f249"
+>
+<Comment>Then, the on-board verifies if the conditions are satisfied to substitute the supervision of level crossings by their insertion in the MRSP.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle LX supervision"
+ Guid="432cc593-e730-4033-aaef-151d260326b8"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="d9c2cf57-ba18-43cc-ab38-915aa3358707"
+>HandleLXSupervision()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="HandleLXSupervision"
+ Guid="54100577-aac3-4485-8e7b-2745bbd04dc6"
+>
+<ReqRef
+ Id="90d05183-dd5f-471a-929c-200da2581c34"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e6ca4cd9-18c9-4126-a2ea-c189c4fc805a"
+>
+</ReqRef><Comment>This procedure checks if the supervision as EOA and SvL of some of the non protected LXs has to be substituted by their inclusion in the MRSP.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle LX with stopping required"
+ Guid="229022ce-8eb2-4c55-aa91-547014fc4ecb"
+>
+<ReqRef
+ Id="40345205-ff68-43c5-b986-172b7e41c842"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c1ccdc23-3e3b-4354-bd28-680abb8acb40"
+>
+</ReqRef><Comment>If the condition to substitute the supervision of non protected LXs with stopping required as EOA and SvL by their inclusion in the MRSP is satisfied, the corresponding LXs are moved to the collection of the MRSP LXs, their starting location is adjusted and then they are removed from the collection of the supervised LXs.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="The train has stopped inside the stopping area"
+ Guid="b8829b66-16b1-4be9-ba77-85510ee85902"
+>
+<PreConditions>
+<PreCondition
+ Guid="784017e9-44e2-4b2e-89e8-fa1630919e29"
+>Odometry.EstimatedSpeed == 0.0</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Insert concerned LXs into the list of MRSP LXs"
+ Guid="6b07339a-fc33-4dab-ada8-c35772f81263"
+>
+<ReqRef
+ Id="3d9a09c9-758a-417a-8688-317064a5d7d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aedb3fbc-0bad-48fe-a406-b86d4abcfb8d"
+>
+</ReqRef><Comment>First, insert the LXs that will not be supervised anymore into the collection of the MRSP LXs and adjust their starting location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Insert concerned LXs into the list of MRSP LXs"
+ Guid="b4c42637-e5ec-4353-9523-7a8e1460a44b"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="0bd1f278-88d4-4261-9636-ebf3cde0a1c9"
+>APPLY
+  InsertSupervisedLXToMRSPLX
+ (
+    NID_LX =&gt; X.Id,
+    LocationUpdate =&gt; X.Location - TrainPosition.FrontEndPosition( PointOfInterest =&gt; Default.DistanceInterval.Nom )
+  )
+ON
+  SupervisedLevelCrossings | StoppingConditionSatisfied ( aLX =&gt; X )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove concerned LXs from the list of supervised LXs"
+ Guid="b2e3f0f2-d7e1-4829-b60d-040dfe520d10"
+>
+<Comment>Then, these LXs are removed from the list of the supervised LXs.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove concerned LXs from the list of supervised LXs"
+ Guid="5891151b-563d-4f7a-b8dd-dab785f64037"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="1b2aaf8d-6977-4fdf-95dc-de78bcccaa12"
+>REMOVE ALL
+  StoppingConditionSatisfied ( aLX =&gt; X )
+IN
+  SupervisedLevelCrossings</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle LX with stopping not required"
+ Guid="ca5b88ec-b238-4806-8553-5470712c2b04"
+>
+<ReqRef
+ Id="b7d99bef-d372-4d0a-a74b-4a630f5762aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="981a4afb-4d78-484f-b862-758fb4d3bd11"
+>
+</ReqRef><ReqRef
+ Id="9b54b401-0857-45af-bbb3-1ec502f39d2a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4d2d7d38-5072-4720-b956-a8912bed53f9"
+>
+</ReqRef><ReqRef
+ Id="59bae633-99ce-4f69-992a-cec56e0b4c41"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="81f9b176-bf22-491a-9ba9-dd7d0ee00b77"
+>
+</ReqRef><Comment>If the condition to substitute the supervision of non protected LXs with no stopping required as EOA and SvL by their inclusion in the MRSP is satisfied, the corresponding LXs are moved to the collection of the MRSP LXs, their starting location is adjusted and then they are removed from the collection of the supervised LXs.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle LX with stopping not required"
+ Guid="e6ecd5a5-0d28-43ba-9984-e667eac90d8d"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Insert concerned LX into the list of MRSP LXs"
+ Guid="be6547f4-39a6-4e18-92cb-d8685fc95e7c"
+>
+<ReqRef
+ Id="3d9a09c9-758a-417a-8688-317064a5d7d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4c69c189-b6bb-4271-b78b-6264710056e0"
+>
+</ReqRef><Comment>First, insert the LXs that will not be supervised anymore into the collection of the MRSP LXs and adjust their starting location according to the fact whether the most restsrictive SBI supervision limit at LX speed is the SBI1 or the SBI2.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Insert concerned LX into the list of MRSP LXs"
+ Guid="b764a290-9e8a-41b2-b1ea-c284dac7183d"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="89d605ca-5bf3-4a64-841f-19880fc67f04"
+>APPLY
+  InsertSupervisedLXToMRSPLX
+ (
+    NID_LX =&gt; X.Id,
+    LocationUpdate =&gt; X.Location - TrainPosition.FrontEndPosition( PointOfInterest =&gt; SelectFrontEnd ( X ) )
+  )
+ON
+  SupervisedLevelCrossings | NonStoppingConditionSatisfied ( aLX =&gt; X )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove concerned LXs from the list of supervised LXs"
+ Guid="43eabf73-8e61-4c8f-b8cc-1ee7e6d9fd34"
+>
+<Comment>Then, these LXs are removed from the list of the supervised LXs.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove concerned LXs from the list of supervised LXs"
+ Guid="ada225c0-d788-460f-9670-0b01cf5d7f85"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="f96c2c01-59fb-4196-8db8-befdb503d5d7"
+>REMOVE ALL
+  NonStoppingConditionSatisfied ( aLX =&gt; X )
+IN
+  SupervisedLevelCrossings</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="InsertSupervisedLXToMRSPLX"
+ Guid="71606631-0ba0-4071-bf92-f5dbfceb0b65"
+>
+<ReqRef
+ Id="b7d99bef-d372-4d0a-a74b-4a630f5762aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cba2ff96-407f-46c0-a4bd-154bbafa6c19"
+>
+</ReqRef><ReqRef
+ Id="3d9a09c9-758a-417a-8688-317064a5d7d1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="06bd98f8-a48c-4366-b71b-f50aeb8f8570"
+>
+</ReqRef><Comment>This procedure retrieves the LXs with the id provided as parameter from the collection of supervised LXs, inserts it in the collection of the MRSP LXs, updates its starting location and informs the driver.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.NID_LX"
+ Name="NID_LX"
+ Guid="ff2222ab-555e-4b3c-96c4-6042a002d230"
+>
+</Parameter><Parameter
+ Type="BaseTypes.Length"
+ Name="LocationUpdate"
+ Guid="73d53a35-4d65-4640-afe5-33f87b2f8293"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Insert the LX into the collection of MRSP LX"
+ Guid="47639a6c-b4a8-4e4d-96bd-13a36939f739"
+>
+<Comment>First, find the LX in the collection of supervised LXs according to the id provided as parameter and insert it into the collection of the MRSP LXs.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Insert the LX into the collection of MRSP LX"
+ Guid="43a9019b-ff16-43b3-9cfa-1580f30b0cdc"
+>
+<PreConditions>
+<PreCondition
+ Guid="eaef430f-2f10-4ea6-8db4-095d06766d1b"
+>THERE_IS aLX IN SupervisedLevelCrossings | aLX.Id == NID_LX</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="eb2e5f8d-1a10-4776-860b-c55594b295e2"
+>INSERT
+  LevelCrossingStruct
+  {
+    Id =&gt; NID_LX,
+    Location =&gt; (FIRST aLX IN SupervisedLevelCrossings | aLX.Id == NID_LX).Location,
+    Length =&gt; (FIRST aLX IN SupervisedLevelCrossings | aLX.Id == NID_LX).Length,
+    IsProtected =&gt; (FIRST aLX IN SupervisedLevelCrossings | aLX.Id == NID_LX).IsProtected,
+    Speed =&gt; (FIRST aLX IN SupervisedLevelCrossings | aLX.Id == NID_LX).Speed,
+    StoppingRequired =&gt; (FIRST aLX IN SupervisedLevelCrossings | aLX.Id == NID_LX).StoppingRequired,
+    StoppingAreaLength =&gt; (FIRST aLX IN SupervisedLevelCrossings | aLX.Id == NID_LX).StoppingAreaLength
+  }
+IN
+  MRSPLevelCrossings</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update the location"
+ Guid="c3a68dcb-500d-423c-b794-a68279e50d7d"
+>
+<Comment>Then, update the starting location according to the provided distance. The length of the LX has to be updated as well, since it depends on the starting location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update the location"
+ Guid="ec39bf6d-4495-4dfb-93ea-b17d0258ddd3"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="89479101-922e-400c-a1f9-f1a786a9fb4a"
+>(FIRST aLX IN MRSPLevelCrossings | aLX.Id == NID_LX).Location &lt;-(FIRST aLX IN MRSPLevelCrossings | aLX.Id == NID_LX).Location + LocationUpdate</Action><Action
+ Guid="eaeb6921-d9a0-4958-91f2-a984b2a8ea0a"
+>(FIRST aLX IN MRSPLevelCrossings | aLX.Id == NID_LX).Length &lt;-(FIRST aLX IN MRSPLevelCrossings | aLX.Id == NID_LX).Length + LocationUpdate</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Inform the driver"
+ Guid="e0044ca1-3bd7-4fab-b3cb-cf80a0734dca"
+>
+<ReqRef
+ Id="c8715350-50d3-418e-a138-39f03d488016"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b156166a-a6c7-45fb-90d6-15a704d818d6"
+>
+</ReqRef><ReqRef
+ Id="18f662c4-1a06-4ad0-9986-1dc47f1c5948"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf42ee5c-676d-4d39-aab2-05f9b1783028"
+>
+</ReqRef><Comment>Finally, inform the driver about this non protected level crossing.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Inform the driver"
+ Guid="4bc8f1bc-3573-41b1-97eb-d350315c8c0d"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="cb3438fb-461e-47a2-9168-e34f0ee654c3"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="LevelCrossings"
+ Type="LevelCrossingsCol"
  DefaultValue=""
  VariableMode="Internal"
- X="50"
- Y="260"
+ X="160"
+ Y="380"
  Width="100"
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="LevelCrossings"
+ Name="SupervisedLevelCrossings"
  Guid="f57bad76-0297-460a-916f-2c6ce1af3ffd"
 >
 <ReqRef
@@ -739,15 +1475,168 @@ IN LevelCrossings</Action></Actions>
  Guid="7298fc20-057d-4d65-ab47-bce3d6280257"
 >
 </ReqRef><ReqRef
- Id="6caaedb4-a566-4536-a6c7-b958f8c96d03"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a6e038f6-1c2d-4472-82db-40ee5b61750f"
->
-</ReqRef><ReqRef
  Id="8a060a51-4b93-4eb7-aa9b-5b5c264b6820"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8584f093-706e-487f-95ad-7986a043990a"
 >
-</ReqRef><Comment>Represents the level crossings received from the trackside.</Comment>
+</ReqRef><Comment>Represents the level crossings that are currently supervised as both the EOA and SvL.</Comment>
+</Variable><Variable
+ Type="LevelCrossingsCol"
+ DefaultValue=""
+ VariableMode="Internal"
+ X="300"
+ Y="380"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="MRSPLevelCrossings"
+ Guid="10d0cbc3-d953-4540-b266-1b1ffc0b2e65"
+>
+<ReqRef
+ Id="f80261a5-4553-4c43-ab09-2cf0da750a7e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d19934ca-4e10-4bee-a263-9c04562f5a45"
+>
+</ReqRef><ReqRef
+ Id="8a060a51-4b93-4eb7-aa9b-5b5c264b6820"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="83cbebfa-561b-4726-bd53-08a0af086be1"
+>
+</ReqRef><Comment>Represents the level crossings that are either protected or not protected but not supervised as EOA and SvL anymore.</Comment>
 </Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ Y="120"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Handle LX display"
+ Guid="e0068546-9dde-4553-815c-8ae3cb5cbe59"
+>
+<ReqRef
+ Id="18f662c4-1a06-4ad0-9986-1dc47f1c5948"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4bb56f4d-c2b0-43e0-8331-b8eb588a3fe2"
+>
+</ReqRef><ReqRef
+ Id="25f5d4dc-17ae-428e-804b-cad4501f9207"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f09fff25-eccc-4a73-86b5-b90037fff38d"
+>
+</ReqRef><Comment>Handles the display rules of the non protected level crossings.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="LX not displayed yet, MRDT is LX"
+ Guid="4137f509-807d-4468-9922-6d4e586500e9"
+>
+<ReqRef
+ Id="c29d61b8-fc7e-4e30-a772-7fcd54f864fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2262339d-1319-49ca-89bb-ba23504280e2"
+>
+</ReqRef><ReqRef
+ Id="18f662c4-1a06-4ad0-9986-1dc47f1c5948"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="edb6a290-6fa2-49c1-99c9-4042b60f02c6"
+>
+</ReqRef><Comment>If a non protected LX becomes an MRDT, it has to be displayed.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="844caf83-5600-405c-a667-ab3aeb77a763"
+>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Location == NearestLX( LXCollection =&gt; SupervisedLevelCrossings).Location</PreCondition><PreCondition
+ Guid="bb44d43e-95da-48da-b824-60f9651204a4"
+>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed == 0.0</PreCondition><PreCondition
+ Guid="be2849b2-d98c-45ab-95e8-0e4ecae4735a"
+>NOT DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a55924d2-3614-4ec0-b0cf-adcee82b22a9"
+>DMI.MasterDMI().Out_LXStatusNotProtected.Display()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="LX already displayed, LX end location is passed"
+ Guid="c7b1fae9-7c0a-4ad7-a8a7-644c62c2b481"
+>
+<ReqRef
+ Id="25f5d4dc-17ae-428e-804b-cad4501f9207"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="89089e75-5236-432d-9e9c-6df5e64a4c71"
+>
+</ReqRef><ReqRef
+ Id="6b88cee7-690c-471d-bb1a-10dfa73e675a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6d0cd065-4d70-41fa-a218-be0f3f4aa3ff"
+>
+</ReqRef><Comment>If a non protected LX is displayed but its end location is passed, it has to be removed from the DMI.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="59536c72-3242-4ff5-b2ee-668c56877ea9"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested == True</PreCondition><PreCondition
+ Guid="570cd62d-e6c3-4bf4-98a5-66f73c5b5f58"
+>THERE_IS aLX IN MRSPLevelCrossings |
+  aLX.Location + aLX.Length &lt;= TrainPosition.RearEndPosition( PointOfInterest=&gt;DistanceInterval.Min )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="01f88f62-b0ed-4467-aec6-1f4c3123d7a9"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DoNotDisplay()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="LX already displayed, LX is protected"
+ Guid="2c76b7b1-e5fe-4e11-98c1-a67fc189f9b8"
+>
+<ReqRef
+ Id="cb0fc7f5-a2fc-4ade-96c4-44833122166e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="657c115f-a556-4c8b-ac86-9070453ab817"
+>
+</ReqRef><ReqRef
+ Id="25f5d4dc-17ae-428e-804b-cad4501f9207"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e275b9e6-c9ea-4fc7-b965-a4dfef951d3f"
+>
+</ReqRef><Comment>If a non protected LX is displayed but it becomes protected, it is removed from the DMI.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="7a8cb1c6-907a-4bc5-8e82-8f6cdd5f8664"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested == True</PreCondition><PreCondition
+ Guid="0bb08515-f6b7-4264-8561-d8984d21ec31"
+>NearestLX( LXCollection =&gt; MRSPLevelCrossings ).IsProtected</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="24be345a-d6c9-4ee9-b037-c1b1dc08b714"
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DoNotDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Handle LX supervision"
+ Guid="064e35fe-10d1-4c95-8902-ac26aea38cbe"
+>
+<ReqRef
+ Id="90d05183-dd5f-471a-929c-200da2581c34"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9170bca1-19c4-44b5-9ee4-65f2796f1832"
+>
+</ReqRef><Comment>Calls the procedure checking if the supervision as EOA and SvL of some of the non protected LXs has to be substituted by their inclusion in the MRSP.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Handle LX supervision"
+ Guid="c5e6ff15-879a-4660-b696-c87e29a79f15"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="c577c561-ea45-4542-9440-ef3027ee9a1b"
+>HandleLXSupervision()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>

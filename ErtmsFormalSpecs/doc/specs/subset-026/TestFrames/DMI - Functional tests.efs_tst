@@ -273,7 +273,15 @@
  Guid="0cd2c13f-8ffc-4635-b22b-07a12b3845de"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="dd15225d-23c6-4d72-82ce-03140644cbf2"
->DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="f1ae09c1-0fde-41c9-95de-c570d1226690"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1082,7 +1090,15 @@
  Guid="278b533e-e993-43f6-a2b8-698b5ad77527"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="a1b5e535-74e6-46ed-989b-1a97a9a3b5dd"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="45d12de1-9e1e-4cc1-b2cb-70a19f98a769"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1891,7 +1907,15 @@
  Guid="d5067906-5820-45e3-9a0f-1e6d88682365"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="6d436ad0-4b36-4fd7-acb7-87bac16741d1"
->DMI.MasterDMI().In_AcknForReversingDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForReversingDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="f44d9fa0-cc4f-42e6-8097-09d0b7e88f35"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2700,7 +2724,15 @@
  Guid="8fd7b25f-46d4-4683-bdf1-4acc15cb19f2"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="6ff0702f-dcaf-497c-984e-b3f710cff669"
->DMI.MasterDMI().In_AcknForRollAwayProtection.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForRollAwayProtection.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="c394739c-8be5-41e6-8679-3526e70befeb"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3509,7 +3541,15 @@
  Guid="9c758a74-0937-44a3-9214-1f5f8b8fc8b4"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="1a72e352-6c99-4fcf-952d-c50436860ac3"
->DMI.MasterDMI().In_AcknForStandstillSupervision.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForStandstillSupervision.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="0a7212f6-baf1-48ce-a3c7-c1df677985e9"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4320,7 +4360,15 @@
  Guid="8d184ef9-ff2a-494a-941b-eac3e9dea656"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="eaab459c-4e6f-49bf-89b4-729a9ea6511a"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="fdabb8c9-234d-4ac2-bf60-3b5f99148f2f"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="257af298-2519-489e-8081-c83d8b806232"
@@ -4957,7 +5005,11 @@
  Guid="965516ae-14ba-437e-9616-99bf6e15be7c"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -4995,7 +5047,11 @@
  Guid="cec6722b-f91b-45f3-a8d0-5865f439ad6f"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5040,7 +5096,11 @@
  Guid="52469cb1-b1cf-4c0c-ac68-db3440369c08"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5087,7 +5147,11 @@
  Guid="06036e8b-813b-4f5c-8295-fb54faab89ac"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5116,7 +5180,15 @@
  Guid="7bec8ed4-15fd-4dd2-ac4d-884875cde99a"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="5a69ffa4-8e5d-401c-b85d-d97e84a09a5b"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="3c1af714-2f9b-4180-8c98-1ca10c4cf23b"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="9f526e7d-0b79-4c6e-8cdc-e70d8e62723d"
@@ -5126,7 +5198,11 @@
  Guid="19f39b0f-8359-4d49-9810-c0c31845074c"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5163,7 +5239,11 @@
  Guid="ceba38b4-2f3a-4790-aa04-2e0375571c2f"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5200,7 +5280,11 @@
  Guid="a2746abd-9c10-4937-8e7c-7e0eac6fd5f5"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5237,7 +5321,11 @@
  Guid="d48c7a6f-e5ae-4acd-a6ca-3bd8b74def0b"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5286,7 +5374,11 @@
  Guid="2851e35a-dd5f-4f29-a501-d41e48fd2e0c"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5325,7 +5417,11 @@
  Guid="c1a9fd04-1db1-4f3b-8e8a-22e7dbd9ce49"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5364,7 +5460,11 @@
  Guid="fb5bcf50-11ce-48f9-9061-f0e10206730d"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5409,7 +5509,11 @@
  Guid="5ae6bd69-7208-45de-b45d-8deff2493115"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5454,7 +5558,11 @@
  Guid="08426912-957a-423e-945f-5517dbf8a429"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5499,7 +5607,11 @@
  Guid="5394a12e-12d0-45e2-86e3-fcbb1341f5f5"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5544,7 +5656,11 @@
  Guid="26398c50-f4e0-402d-a9fc-7d43dbd088a3"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5585,7 +5701,11 @@
  Guid="4c62a196-aeb3-4ece-8f67-e712d03e3876"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5630,7 +5750,11 @@
  Guid="7198c9fc-87a0-492e-b143-b1af7f953d94"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5910,7 +6034,15 @@
  Guid="290157ad-f2d1-48c6-8737-a0c05dd9d019"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="4ead613a-7762-4b45-b34b-93b8b31a413d"
->DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="825ee374-fe12-4756-91d5-9e0f10af5df6"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6719,7 +6851,15 @@
  Guid="b9970bb1-9ee7-4ff1-bcee-eb793e647012"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="2a3b74b5-f2d1-4c47-ae05-0a27df1cbaba"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="1a5ca125-a988-4ecf-a0fb-0bef77085374"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7530,7 +7670,15 @@
  Guid="dc5eb49a-4c4e-444e-a88c-4470cbb6296c"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="270dbd36-4add-42bc-988e-621c38b94000"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="f7c3ba07-bb3a-40d9-b329-74422eac905c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="4f5b1d92-f2e2-4afb-a0b3-782a636d999b"
@@ -8324,7 +8472,15 @@
  Guid="90a2c289-06ee-40f2-8326-1541ac24904b"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="793d06eb-3c77-4ac6-8f05-dabc1769b97f"
->DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="d4f08ff0-b4aa-439f-b1a6-1447a2a40c38"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -9133,7 +9289,15 @@
  Guid="e027671e-8875-455a-b785-69257b95a23b"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="893a4254-fdca-499e-8cd9-5d7565b04741"
->DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="9eaeeafb-f238-462d-ab5d-a83e71467b17"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -9944,7 +10108,15 @@
  Guid="a872561b-85f9-4691-ac5d-a4dcb04937e3"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="5d495396-e011-46b8-a533-33fe0d41e76b"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="8ada98f9-0999-4c83-96eb-de2951c5dc1d"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="6d100fa0-3110-4aa2-a5db-27110de53441"
@@ -10738,7 +10910,15 @@
  Guid="d1ab0892-538d-48fc-8cb2-a935db3535fe"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="ba538e31-8e83-4b4f-b791-ada4128935dd"
->DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="1c2b2d72-1f52-4749-a2d2-7ae12ca5398b"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -11537,7 +11717,15 @@
  Guid="747551d2-e082-4d73-b85e-6982df0c0e43"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="eeb0fff4-8abf-474b-bdce-b309beab6cef"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="30d69fcb-ded7-4556-bad1-786c90d82c5c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="3143fc1c-d90a-4967-afa9-824ee6559cac"
@@ -12292,7 +12480,15 @@
  Guid="b1164b4c-2d98-4bac-a2ec-3988c3912465"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="5843d52d-61d9-4c81-b47a-78cecb2de36c"
->DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="469b5cb4-f9b8-449a-b1f9-a866b7d15ca9"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -13101,7 +13297,15 @@
  Guid="961de197-71c1-4b8f-9507-9545dde655a2"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="2e63bfc2-7b19-443f-904b-a9031dab6ed2"
->DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="417231f0-dc61-4053-aa3f-5f9bc747d66c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -13910,7 +14114,15 @@
  Guid="454ced84-d14b-4f46-bcf5-fee573a455ce"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="c5a3e682-7ab4-4f28-9fde-e64f703a2f3d"
->DMI.MasterDMI().In_ContinueShuntingOnDeskClosureRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_ContinueShuntingOnDeskClosureRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="b53e715a-b1ff-47a1-8208-66bd09be7470"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -14739,7 +14951,15 @@
  Guid="97bf9e47-0646-459e-94b4-2c3456d23abe"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="2c2dc783-1c1f-4f26-a8aa-4b4592aeabe1"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="dec66baa-0501-4ea7-a6a5-e57ed5cd9032"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -15643,7 +15863,15 @@
  Guid="8b194586-d682-425e-a539-50a9fd220c21"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="16b448ec-f90d-41f8-a567-f83648b3c81b"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="9111dfbe-d356-4c68-b44e-71ae0a105583"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="61d9efb5-106b-4925-b1ba-d7c80662ab5c"
@@ -16528,7 +16756,15 @@
  Guid="5a6ad5c8-b892-41c0-9fc5-c64deb584991"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="411bfaa1-235f-4ea2-a7e4-bbadad537a33"
->DMI.MasterDMI().In_ExitOfShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_ExitOfShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="bce594bd-3f78-4227-8486-5e1a767b619c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -17337,7 +17573,15 @@
  Guid="47da4ecf-9287-42f7-938f-d729eb998479"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="5fdd44c6-f529-4f93-b049-21d2f734ffa1"
->DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="2574bc96-9fb2-464f-9103-36ee33047c3d"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -18152,7 +18396,15 @@
  Guid="759307b1-960a-4fd6-a2df-44afe6099121"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="232e3aca-b940-4e9e-bbe3-4374970e9def"
->DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="4211d76f-0302-48ed-9011-e02ad64d4c87"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -18978,7 +19230,15 @@
  Guid="26084ed9-e969-45ab-8a64-e742bf49e660"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="8412a53c-2380-4ca6-8cb3-331baea09acf"
->DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="6873bc62-2cdc-4fca-801e-6fce7f796e08"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -19840,7 +20100,15 @@
  Guid="d1fcef9d-1f4f-45db-819a-4bc89e111686"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="629b7598-0416-4aec-95f1-a9750044ec42"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="5f4baff5-8620-41f1-8ff0-a09cb62db1de"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -20779,7 +21047,15 @@
  Guid="1866f745-e878-4b4a-84b9-31802a3e55ff"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="5e128ac2-f54b-4f2b-ae00-0dcff5bd7018"
->DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="bdef9347-17d2-4964-98dd-24735041ab1c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -21588,7 +21864,15 @@
  Guid="af3f6fb0-f9ab-4128-8457-25516c6705af"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="3389465f-222f-4dd8-b552-fd4624810513"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="fc53a900-0a95-4a5a-acdc-562c96ae908c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -22397,7 +22681,15 @@
  Guid="d5f5c086-b809-4b79-9944-651ebd37f01c"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="30dbca9e-72ad-4fb1-8dcd-ee21c3990503"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="44904c28-714e-4ffa-9a45-8cf6cb4f1c55"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -23196,7 +23488,15 @@
  Guid="cc434190-b6a7-4134-8627-61a5257b41fe"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="d9265269-5ff3-4d78-97ae-5ff7b3e38b46"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="c59b24d2-7c55-483b-bc78-6d085f1da493"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="713e2d81-f3d2-474c-adf1-d8ad949ad459"
@@ -23951,7 +24251,15 @@
  Guid="0414a53c-337c-4bd0-a33c-ed27b1cf4517"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="1a6c9b79-4d3f-49b7-a537-8b5d548bb20c"
->DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="dd797bb7-dd81-414c-813c-98620eaf84fc"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -24764,7 +25072,15 @@
  Guid="f5f7732e-3026-4077-96b4-e2ec0f5bcfe5"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="dcea6a47-6fde-4df1-8c57-fce21f5ce770"
->DMI.MasterDMI().In_TrackAheadFree.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_TrackAheadFree.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="6f5667b1-2e6f-41fa-bcdf-a30b629aec34"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -25560,7 +25876,15 @@
  Guid="95812fdd-3b20-4c7f-b2de-e6482aeb14de"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="d4765d06-0c5e-44ed-a0db-637a35b7dad3"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
+ Guid="b8097522-60fa-4192-87c9-1b2b3196bf3b"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="d6decd08-20ca-4ae1-9bb3-ecd7e6c775f3"
@@ -26323,7 +26647,15 @@
  Guid="e26dc9b3-1053-4431-93c0-926891420d64"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="8f1d1c08-37c3-42de-9cc3-80331c84d7f6"
->DMI.MasterDMI().In_TrainIntegrityConfirmation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_TrainIntegrityConfirmation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="5d9a313b-1d4a-4168-8b49-f1f32fd5b7cf"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -27134,7 +27466,15 @@
  Guid="152baf04-73a7-42c9-8021-a0b180fb7ecc"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="e707415d-49d6-4c74-8c63-c14143631ee6"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
+ Guid="c862fcb6-9aa8-438e-9976-db26f9fdbcd0"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="42877f80-8c79-47f9-9814-598e16daea22"
@@ -27974,7 +28314,15 @@
  Guid="c35419b5-8c28-44df-9308-0dcebb8a41f8"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="447d934d-dde7-4ea6-826d-c47e6ba8cf80"
->DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="b8330e07-2684-4039-82cd-a575b49f82ea"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28822,7 +29170,15 @@
  Guid="f76517a2-02c5-4f5a-b280-db19e9a79bfb"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="e267627d-e6c5-4c75-a5a6-6274b6571207"
->DMI.MasterDMI().Out_AcceptedEmergencyStops.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_AcceptedEmergencyStops.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="36442f7b-3a27-4e8f-b738-c4c926ac106d"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -29631,7 +29987,15 @@
  Guid="1ffb2505-47db-4158-857f-32999a94505f"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="5d66faf6-9922-4b8c-9946-a4a5035d532a"
->DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="b861e960-207e-4ea6-845e-a58a199881bc"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -30440,7 +30804,15 @@
  Guid="f17dfdc2-627b-4416-a8dc-de02411440f0"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="d6077c89-0dbd-421e-b3e3-2383924f4ec7"
->DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="6b20e755-2216-471f-a681-f3a2809db9a0"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -31249,7 +31621,15 @@
  Guid="73997bd2-6b63-4eff-af20-924500bd6b6c"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="af8ac6b9-42f6-470b-83ee-82f1cfdbdd54"
->DMI.MasterDMI().Out_BrakeReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_BrakeReason.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="a13505a5-399c-4029-a7b9-0610b5c8982a"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -32058,7 +32438,15 @@
  Guid="1c95d14b-4fdd-4851-9762-b6b2ee331007"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="0da0b6d1-2fba-47b4-9595-a0e50d4b53e7"
->DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="a708c8aa-4186-4504-8185-12e68a379a19"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -32867,7 +33255,15 @@
  Guid="80c4f9e4-8bdc-4675-ba16-e349e15187ca"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="4322e51b-2441-4b24-8ff5-875f21082367"
->DMI.MasterDMI().Out_DriverId.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_DriverId.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="a5472cd7-2d8a-4b31-b0e0-f4c48ea783bb"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -33720,7 +34116,15 @@
             }, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY
         ]
     }
-]</Action></Actions>
+]</Action><Action
+ Guid="20e20a93-05d2-44c5-9456-ee60210e9776"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -33762,7 +34166,9 @@
  Guid="69754cdf-b391-4100-b700-6343122fe028"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="b2dd33f0-f2a6-44a2-b97a-f4fb8bff06cf"
->DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="8f557492-0062-4fbf-be60-69a2a25eea7f"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -34529,7 +34935,15 @@
  Guid="5fec0444-6577-42ae-a61a-787c8792ff95"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="263ea8c2-b244-41d9-8f42-757a959b02df"
->DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="0ce83c84-60dd-42ac-8f34-22bc6eb5ceda"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -35338,7 +35752,15 @@
  Guid="a203d876-6838-4be5-83bf-daf5542d5a9d"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="4e34d0aa-26b5-43eb-8ab6-b191af309a52"
->DMI.MasterDMI().Out_FirstTargetAtZeroSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_FirstTargetAtZeroSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="2b595ae1-1b80-437b-8ea9-2419720d4b79"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -36147,7 +36569,15 @@
  Guid="77113a71-84af-46ed-aef6-28902981fd57"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="cfc578f2-0adb-454e-811e-d48abf7d0f71"
->DMI.MasterDMI().Out_FixedTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_FixedTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="3461a2f7-7e15-4800-801a-af9ec5a03b08"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -36916,7 +37346,15 @@
  Guid="36b4ce83-6997-452a-aec2-d62b58314f6a"
 >Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="d801d12d-4e26-402c-afb8-988439a5455e"
->DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="f1c76bbf-8ac7-4ea2-8896-6d0a18b33026"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -37543,7 +37981,15 @@
  Guid="a6742a8a-3e73-4509-b3be-dc736d2e842d"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="3dd3f63a-da02-4592-ae43-a756ba4c1581"
->DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="17a91353-3027-4929-a5e9-7e2e768a28a7"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -38352,7 +38798,15 @@
  Guid="9725e38e-b887-44a3-a054-8be3ec761b7d"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="879aa2f5-9469-4390-a585-f1957fad9eca"
->DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="b28482cf-294d-4288-bba3-2b76870646f2"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -39161,7 +39615,15 @@
  Guid="91e30f57-9f4c-461c-9c87-9a66af7d6479"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="c29c7972-d290-4fdb-8cc4-14325545698e"
->DMI.MasterDMI().Out_LevelTransitionAnnouncement.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_LevelTransitionAnnouncement.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="bae5d76d-6839-4706-908f-b0d949e2aa9f"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -39970,7 +40432,15 @@
  Guid="8e021157-41c2-4a5c-b7cc-c34ed2969298"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="6e21b8c5-519d-475f-86eb-1c366dea56dd"
->DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="9a30ede7-b554-4f57-b80b-3f331ae04b7c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -40779,7 +41249,15 @@
  Guid="0918ce86-e3ac-4f1c-8618-730091a7e302"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="7c20481c-8891-4113-83ba-7e1deaf1047a"
->DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="1f5aab85-b152-4187-a72d-11fc92b1dea4"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -41588,7 +42066,15 @@
  Guid="98a2e899-b0e6-4cf8-9340-74d7d763cf89"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="41564c9b-9744-4195-b8a4-2df183f4b2cd"
->DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action><Action
+ Guid="692a00f7-f7fd-49d6-9839-ba1883221325"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -42397,7 +42883,15 @@
  Guid="5f0dd701-bfee-4a4f-ba31-744937da0418"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="2b1744a5-ae99-40eb-a2c8-e9595cd7f95b"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="728cb573-59c5-415d-8355-108b95e45c15"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -43208,7 +43702,15 @@
  Guid="8ee66bd1-1d36-4d12-b2bd-3c107ef316da"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="cf04b7db-1e82-461f-9010-97e5409a2a90"
->DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="694ea278-1d45-44fd-941c-75b849ca0071"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -44017,7 +44519,15 @@
  Guid="144f43cb-a6b4-430c-8824-17cc20217f46"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="d04fe0aa-07d9-40b9-90a6-2c26b2435661"
->DMI.MasterDMI().Out_OverrideStatus.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_OverrideStatus.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="cd6e8252-6ec1-4c97-b183-c8871e248b24"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -44844,7 +45354,15 @@
  Guid="a3b76d80-47d9-498c-80d2-dc11fbf4eeb9"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="5627ca23-289d-429b-a896-dc021a3c8aaa"
->DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="19a294ec-9cd3-4d59-8104-3fb1cf73661c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -45655,7 +46173,15 @@
  Guid="510fcccf-497d-48ac-8183-8d9ce142453a"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="3fad2054-0639-41ae-97a6-fd353c18896c"
->DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="22fe8a8e-0875-4de9-bc64-2335a6764e5d"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -46462,9 +46988,17 @@
  Guid="ac265b62-24e9-4d2f-abc2-659363678214"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="6d321ec9-38b6-4726-affe-fc33ed6657f0"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="68adf27e-a85c-4b69-ba20-fbf891fb40c7"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="dd86858c-2121-44ff-a084-8654a8ed2de5"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -47273,7 +47807,15 @@
  Guid="734eda9b-0179-4bcc-b286-d5a23c5b7e95"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="340ed680-f9b9-4d05-8cbb-d38e07512f35"
->DMI.MasterDMI().Out_RBCContactInformation.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_RBCContactInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="ff5e51d3-0d30-4fee-9db6-e0c8ad4f03dc"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -48082,7 +48624,15 @@
  Guid="6464e252-a905-4bff-ba9c-4d9dd1e35b55"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="a2cfeda9-5338-4412-a629-48d3fe56a821"
->DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="9da35383-8069-49fa-9ebc-a571a54ba46e"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -48891,7 +49441,15 @@
  Guid="ea39a3ae-2dc9-44b9-aada-05d8dc7aaea2"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="4288c618-7e00-40b5-a7a3-cd7e7c117831"
->DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="bbe344df-8e26-402f-9d64-dda9909a9f2e"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -49700,7 +50258,15 @@
  Guid="98b5d093-0877-40cb-92e5-ec5fd37e425e"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="ecffad60-6a79-4869-b447-07aeef92d436"
->DMI.MasterDMI().Out_RouteUnsuitabilities.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_RouteUnsuitabilities.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="ad204125-eba4-4879-a714-266c72dae3f7"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -50509,7 +51075,15 @@
  Guid="f56b732c-95ef-4674-9c13-61840a17c692"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="5fc005e0-49d4-45b7-925e-720f0bdc1798"
->DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="1dfb4c88-8677-4d17-847b-bb9710ae4a84"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -51318,7 +51892,15 @@
  Guid="3c29a6c2-4ff5-4544-b6ee-f31bbbe5b7be"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="03251bc5-4079-4c12-b49e-7288994c6b07"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="bb12f9c6-c8a0-48fd-90eb-b627e94f71a3"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -52125,9 +52707,17 @@
  Guid="a820ae2a-6604-46f0-a45f-78bc6fa94b01"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="40ab8709-99de-479a-acb0-b9bfbaf6329c"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="6e289749-cce1-404f-bf92-96d5d1c99515"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="f89aa59a-5f7b-49d6-b0de-84e58021867b"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -52936,7 +53526,15 @@
  Guid="56577378-3ac1-49f4-b2a7-b982216dd93c"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="d3c8c934-bd96-40db-aecb-d1c36496de08"
->DMI.MasterDMI().Out_ShuntingRequestNotAnsweredByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ShuntingRequestNotAnsweredByRbc.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="730648a5-f0d6-44c2-8323-0db91e6ac3ba"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -53745,7 +54343,15 @@
  Guid="b1ea9c6e-1963-4798-8047-0fae54b253dd"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="853f3b6e-31cc-4e6b-aa5e-282a3d158fd2"
->DMI.MasterDMI().Out_SpeedAndDistanceMonitoringSupervisionStatus.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_SpeedAndDistanceMonitoringSupervisionStatus.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="898d01ab-8938-4b9b-b036-3c1468059c92"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -54554,7 +55160,15 @@
  Guid="58745fd1-9f15-44d0-854e-ee67eb91a3d8"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="89e1b5f0-fdf3-4cfb-bef5-c01e867b857f"
->DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="bc7345a7-8128-4c13-b408-e6eb07d3e0b8"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -55363,7 +55977,15 @@
  Guid="ba7911d9-4de1-4d16-9cdb-fd1e9a7454a2"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="4196d91e-c8a6-4438-888d-5beb7131e099"
->DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="23a70cad-c303-4443-9d53-ac84db7b4817"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -56172,7 +56794,15 @@
  Guid="a92f0281-9dd2-4011-a0ce-d856cf69daa8"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="b9a339d4-a7d6-4e82-ab9c-f87f01a48193"
->DMI.MasterDMI().Out_TrackAheadFreeRequest.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrackAheadFreeRequest.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="19260461-09c3-4fda-b87c-303fcb1e4b8a"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -56981,7 +57611,15 @@
  Guid="7c25e350-74b1-4a47-a29f-8ac05b164407"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="0497e780-00da-45ea-8794-2e6a3c40ee0e"
->DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="55bd6eac-e634-4959-bded-f8868da1e43f"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -57790,7 +58428,15 @@
  Guid="5a337d34-389e-4bd9-ac39-3dd31e0cd80b"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="9ea33085-d551-46ee-99ee-94d5a634f7a5"
->DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="8b0d5407-8d9b-4a30-aae4-afac4557cbd5"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -58599,7 +59245,15 @@
  Guid="c7c1892a-04dd-494a-a15f-066452e1f202"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="18032cdb-f041-44e8-b2cf-db62e8339a1a"
->DMI.MasterDMI().Out_TracksideMalfunction.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TracksideMalfunction.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="760576c4-3946-4f6e-9c4a-37b86a2ba0c1"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -59408,7 +60062,15 @@
  Guid="8383c00a-94bd-4998-89ea-7254ec80e530"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="12077fd1-ee86-4ea3-9987-fa38baf154eb"
->DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="b073a71c-ea45-4f80-8b76-da2cc834424d"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -60217,7 +60879,15 @@
  Guid="0d906a7d-0a61-42f9-ad37-c90d47691357"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="de7141ca-8702-4286-b638-7a2c0773e796"
->DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="4299ed56-b9a3-4788-984c-eac01fab02b0"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -61026,7 +61696,15 @@
  Guid="a6007283-3daf-4d91-8818-2a410a2f4d90"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="72bfd003-e401-416e-b041-c185daa962f8"
->DMI.MasterDMI().Out_TrainIsRejected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrainIsRejected.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="ddf58823-de67-4245-8214-7d854d8d5389"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -61835,7 +62513,15 @@
  Guid="d7f2f716-ff71-4cc4-8fd0-344ec4485109"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="d3da71ff-934e-4443-86aa-377b36c32f49"
->DMI.MasterDMI().Out_TrainRunningNumber.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrainRunningNumber.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="b076ee5b-925b-411e-a74e-5f0547245ba7"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -62644,7 +63330,15 @@
  Guid="6813f1c5-5c7f-4e51-9ac1-8b5e78d60b92"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="533793a8-31a8-4549-81a2-18e46b7f3d7c"
->DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="41b45da5-9164-43e0-8c2a-daa342965bcc"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -63453,7 +64147,15 @@
  Guid="569c7978-c169-4ce4-bd30-7fb24f8d7a9d"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="22553d3d-5d92-4dc5-82d6-3016c9471bf5"
->DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="a8cbc552-a5f1-43e6-b4cd-36ffbd0d2272"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -64262,7 +64964,15 @@
  Guid="91887cdf-593b-4dd9-ace0-f252e41e955b"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="47d53cba-f644-489c-aff9-a625b29f8de6"
->DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="95c73b58-9147-454c-b2a9-741a9442855a"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
