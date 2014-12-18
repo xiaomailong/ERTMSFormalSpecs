@@ -607,13 +607,13 @@ INITIAL_VALUE TargetSpeedMonitoring.Target{
 <Expression>REDUCE TargetsList()
     | X.Location &lt; Distance
 
-USING X IN MA.ClosestTarget(
+USING X IN FarthestTarget(
     Target1=&gt;X,
     Target2=&gt;RESULT
     )
 
-INITIAL_VALUE TargetSpeedMonitoring.Target{
-    Location =&gt; Default.BaseTypes.Distance.Infinity,
+INITIAL_VALUE Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
+    Location =&gt; 0.0,
     Speed =&gt; 0.0,
     Length =&gt; 0.0
     }</Expression>
@@ -660,7 +660,7 @@ INITIAL_VALUE TargetSpeedMonitoring.Target{
  Name="Otherwise"
  Guid="35c09766-18ba-4b49-b7eb-7cf4f9834d95"
 >
-<Expression>PreIndicationLocation.LastTargetBeforeLocation(Target.Location).Speed</Expression>
+<Expression>LastTargetBeforeLocation(Target.Location).Speed</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -698,7 +698,7 @@ INITIAL_VALUE TargetSpeedMonitoring.Target{
  Guid="87f6d9cb-b75e-422b-9c16-26bce5e8782b"
 >
 <Comment>Otherwise, returns the start of the previous section</Comment>
-<Expression>PreIndicationLocation.LastTargetBeforeLocation(MRSPnTarget.Location).Location</Expression>
+<Expression>LastTargetBeforeLocation(MRSPnTarget.Location).Location</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -1016,6 +1016,44 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
     Vest =&gt; Vmrsp,
     aTarget =&gt; MA.ClosestEOA()
 ) - BaseTypes.SpeedToMS ( Vmrsp ) * T_bs1ind()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="TargetSpeedMonitoring.Target"
+ Cacheable="TRUE"
+ Default=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FarthestTarget"
+ Guid="93ecc986-4c53-41ee-8535-339f6af414ff"
+>
+<Comment>Returnst the further of the two targets, measured from the train&apos;s location.</Comment>
+<Parameters>
+<Parameter
+ Type="TargetSpeedMonitoring.Target"
+ Name="Target1"
+ Guid="f6d35e1d-c5aa-44c4-a371-97dea0aa6d7f"
+>
+</Parameter><Parameter
+ Type="TargetSpeedMonitoring.Target"
+ Name="Target2"
+ Guid="b855c6c5-922e-4978-8c72-41862551d44f"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="X2 farther"
+ Guid="a18c0721-d716-4163-85b9-7d7ae2c22c4b"
+>
+<PreConditions>
+<PreCondition
+ Guid="a69c5fe7-6c32-419c-a407-ec1411bd8f9f"
+>Target2.Location &gt; Target1.Location</PreCondition></PreConditions>
+<Expression>Target2</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="a0f6d6c5-c63f-4e3f-a84c-8279a872a0bb"
+>
+<Expression>Target1</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>
