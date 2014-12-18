@@ -144,14 +144,14 @@ IsMaxDistToRunInSR(aTarget)</PreCondition></PreConditions>
  Guid="7ebdcb56-85ff-439b-999d-e866f2c509e9"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
- Name="aTarget"
- Guid="a587ea44-f686-4370-9a34-89bf21378e98"
->
-</Parameter><Parameter
  Type="Boolean"
  Name="EstimatedAccelerationSetToZero"
  Guid="d26ac90a-7c32-4398-9b35-4f8e11a76abd"
+>
+</Parameter><Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="9205a509-dcbb-4180-aaea-8ee866a17e88"
 >
 </Parameter></Parameters>
 <Cases>
@@ -946,6 +946,106 @@ BaseTypes.SpeedToMS( Vest + Vdelta0() + Vdelta1(EstimatedAccelerationSetToZero) 
     Target =&gt; aTarget,
     DecelerationFactor=&gt;TrainData.BrakingParameters.A_normal_service
 )(Distance)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ X="120"
+ Y="400"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SBD_Target"
+ Guid="b8ee099f-554d-4e4a-9897-3b6246fe2e57"
+>
+<ReqRef
+ Id="7525f72a-3b46-498c-8c48-1ed3ad888b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b094936b-65de-4141-b0b7-2660c16749de"
+>
+</ReqRef><ReqRef
+ Id="02854410-9ddb-4b94-993c-b26498a498bf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4f7314e8-e148-4af6-9caa-85f15ae88260"
+>
+</ReqRef><ReqRef
+ Id="50a11b55-dc19-4427-b0fd-d81384417f79"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8dbd31cc-e9df-4de3-9a0f-7cd4a3923770"
+>
+</ReqRef><ReqRef
+ Id="cb22befd-4969-4fdf-9f68-f6b39ec1abe3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="155c6392-9559-4825-96cc-2210a96f1e40"
+>
+</ReqRef><Comment>Provides the deceleration profile based on the MRSP and deceleration factors</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="23bddcb1-5ccf-4509-baaa-6ded3d3e37f2"
+>
+</Parameter><Parameter
+ Type="TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="039cf632-3886-4722-b209-2317834458c4"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Supervising LOA - no SBD"
+ Guid="361b514a-64d7-4327-8368-010c348c88e1"
+>
+<PreConditions>
+<PreCondition
+ Guid="3c2e4284-6ce3-4369-8f13-1b7ce48c3d1c"
+>NOT MA.EOADefined()</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Speed.NA</Expression>
+</Case><Case
+ Name="Value"
+ Guid="a4d1ebea-f02f-494c-8412-5cdfb397ff66"
+>
+<Expression>FullDecelerationForTarget(
+    Target =&gt; aTarget,
+    DecelerationFactor =&gt; TrainData.BrakingParameters.A_expected
+) (Distance)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Default=""
+ X="10"
+ Y="130"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SBD_TargetForSpeed"
+ Guid="84a677e7-2097-4535-8ec3-4ae9ded3d2f7"
+>
+<Comment>Returns the distance at which the EBD deceleration curve for a given target has the given speed</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vest"
+ Guid="5adf2764-19a7-48cf-addd-30e7791ff59f"
+>
+</Parameter><Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="a587ea44-f686-4370-9a34-89bf21378e98"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="1ee056d3-694b-40e6-8c13-d5f92da377d0"
+>
+<Expression>DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; SBD_Target ( Distance =&gt; d, aTarget =&gt; aTarget ),
+        Speed =&gt; Vest
+)</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>

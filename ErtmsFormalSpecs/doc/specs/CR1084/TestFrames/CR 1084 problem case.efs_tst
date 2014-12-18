@@ -14,7 +14,7 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Sequence"
+ Name="Proof of concept"
  Guid="bf6ae475-bd7f-43ae-b46c-14675d8c438c"
 >
 <TestCases>
@@ -277,6 +277,163 @@
 <Action
  Guid="5e968dc9-814e-4620-9a67-b48957f2fcad"
 >Odometry.NominalDistance &lt;- 2000.0</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Real scenario"
+ Guid="1c080e61-bbe9-4c8b-a95f-f4c6b02d5a19"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+ Guid="b4844675-f22c-4648-a154-eca226fdf491"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+ Guid="c6fd5757-ee82-47e2-bf65-9be2ecfa4221"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Initialize test environment"
+ Guid="e548ca04-7a3f-4903-80c8-443e716df29f"
+>
+<Actions>
+<Action
+ Guid="5d33009f-811e-464f-85fb-5bd6f9dead9e"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements for MA"
+ Guid="b27e333e-f9f7-42fa-adf4-a8ce326028f6"
+>
+<Actions>
+<Action
+ Guid="cf2c5af1-a99a-4eee-8cce-f192cbd790b4"
+>Kernel.MA.InitializeElementsForMA()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3 - Set LRBG at 0 distance"
+ Guid="8b90b454-4b8f-4934-9c60-e9b6780cf1ec"
+>
+<Actions>
+<Action
+ Guid="c35e9986-ba6f-460c-9989-3bd978d4c05b"
+>BTM.LRBG.Position &lt;- BTM.Position{
+    Position =&gt; 0.0,
+    UnderReadingAmountOdo =&gt; 0.0,
+    OverReadingAmountOdo =&gt; 0.0
+}</Action><Action
+ Guid="5b1ec297-eb51-4164-b08f-b1d0cffa0965"
+>Odometry.NominalDistance &lt;- 100.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step4 - Set Level and Mode"
+ Guid="bad2de57-109d-48a9-8673-1a122e47ee98"
+>
+<Actions>
+<Action
+ Guid="2ffddea1-7c40-448e-8deb-e9f06bde5f85"
+>Kernel.Mode &lt;- Mode.FS</Action><Action
+ Guid="f56530eb-5955-43d7-acda-baa65158f37c"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; LevelDataStruct{
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L1
+    },
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step5 - Set MA"
+ Guid="067c8557-fce0-4c98-8520-70abf722739c"
+>
+<Actions>
+<Action
+ Guid="6ee4ddfd-2a4e-4104-8fc7-b29b71b15b50"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 30000.0
+    }
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step6 - Set SSP"
+ Guid="aa404616-2d59-4176-b715-01f6d50d9231"
+>
+<Actions>
+<Action
+ Guid="f7000ca8-6f0a-4227-aea1-09a76e72f3f1"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
+[
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 0.0,
+        BasicSpeed =&gt; 200.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt; 
+        [
+            
+        ]
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 2000.0,
+        BasicSpeed =&gt; 160.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt; 
+        [
+            
+        ]
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 3200.0,
+        BasicSpeed =&gt; 90.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt; 
+        [
+            
+        ]
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 5500.0,
+        BasicSpeed =&gt; 200.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt; 
+        [
+            
+        ]
+    }
+]</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ Distance="10000"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3"
+ Guid="f5e0f501-682e-4942-8fda-276e3430313f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="96dbf2f3-19e7-468b-98b7-79cf311c980e"
+>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
