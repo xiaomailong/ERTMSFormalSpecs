@@ -2280,10 +2280,10 @@ This is a check for message consistency errors.</Comment>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Update Level Crossings"
+ Name="Update Supervised Level Crossings"
  Guid="289a329e-dd2d-494d-9874-0a0f6afd15a5"
 >
-<Comment>Change the distances in the stored Level Crossings to be measured from the new LRBG</Comment>
+<Comment>Change the distances in the supervised Level Crossings to be measured from the new LRBG.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2298,7 +2298,40 @@ This is a check for message consistency errors.</Comment>
 <Actions>
 <Action
  Guid="50ba0696-fc68-4e62-bbec-364e5d782455"
->Kernel.LX.SupervisedLevelCrossings &lt;- MAP Kernel.LX.SupervisedLevelCrossings USING X IN Kernel.LX.LevelCrossingStruct{
+>Kernel.LX.SupervisedLevelCrossings &lt;- MAP Kernel.LX.SupervisedLevelCrossings USING X IN Kernel.LX.LevelCrossingStruct
+{
+    Id =&gt; X.Id,
+    Location =&gt; X.Location - DistanceFromLRBG,
+    Length =&gt; X.Length,
+    IsProtected =&gt; X.IsProtected,
+    Speed =&gt; X.Speed,
+    StoppingRequired =&gt; X.StoppingRequired,
+    StoppingAreaLength =&gt; X.StoppingAreaLength
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update Level Crossings for MRSP"
+ Guid="c9b63bb1-5136-491f-b4ea-529ef88b2d99"
+>
+<Comment>Change the distances in the Level Crossings for MRSP to be measured from the new LRBG.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update Level Crossings"
+ Guid="5f75d9ad-9162-42ca-83f6-73b4c6935fb1"
+>
+<PreConditions>
+<PreCondition
+ Guid="e08c006e-0492-46ff-b5ac-2f3f993e12ba"
+>Kernel.LX.MRSPLevelCrossings != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3edc6100-c7fa-4477-887e-0c92550cda00"
+>Kernel.LX.MRSPLevelCrossings &lt;- MAP Kernel.LX.MRSPLevelCrossings USING X IN Kernel.LX.LevelCrossingStruct
+{
     Id =&gt; X.Id,
     Location =&gt; X.Location - DistanceFromLRBG,
     Length =&gt; X.Length,
