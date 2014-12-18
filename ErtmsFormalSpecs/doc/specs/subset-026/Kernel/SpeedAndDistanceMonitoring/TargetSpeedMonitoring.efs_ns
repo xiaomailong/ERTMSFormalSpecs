@@ -418,7 +418,10 @@ INITIAL_VALUE
 >d_estfront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs1 ) &lt; MA.ClosestEOA().Location</PreCondition><PreCondition
  Guid="8b332ee1-e275-4c1d-b11c-5aaaf0880d71"
 >NOT NationalValues.ComputationOfGUIIsEnabled ()</PreCondition></PreConditions>
-<Expression>DecelerationCurves.SBD ( d_estfront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs1) )</Expression>
+<Expression>DecelerationCurves.SBD_Target(
+    Distance =&gt; d_estfront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs1),
+    aTarget =&gt; MA.ClosestEOA()
+)</Expression>
 </Case><Case
  Name="GUI is enabled, first case"
  Guid="0c8c1aab-75c3-4d07-b159-af8a7433a06f"
@@ -429,9 +432,14 @@ INITIAL_VALUE
 >NationalValues.ComputationOfGUIIsEnabled ()</PreCondition><PreCondition
  Guid="ae292cb2-e670-4c12-9ec0-b9244a86f5d1"
 >d_estfront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs1 ) &lt; MA.ClosestEOA().Location</PreCondition></PreConditions>
-<Expression>BaseTypes.MinDistance(
-    X1 =&gt; DecelerationCurves.SBD ( d_estfront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs1 ) ),
-    X2 =&gt; DecelerationCurves.GUI ( d_estfront ) )</Expression>
+<Expression>BaseTypes.MinSpeed(
+    X1 =&gt; DecelerationCurves.SBD_Target(
+        Distance =&gt; d_estfront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs1 ),
+        aTarget =&gt; MA.ClosestEOA() ),
+    X2 =&gt; DecelerationCurves.GUI_Target(
+        Distance =&gt; d_estfront,
+        aTarget =&gt; MA.ClosestEOA() )
+)</Expression>
 </Case><Case
  Name="Second case"
  Guid="e154f4c7-5452-4307-a281-82156ab1a210"
@@ -1358,8 +1366,8 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()
 ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.MaxDistance(
     X1=&gt;Default.BaseTypes.MinDistance(
-        X1=&gt;MA.ClosestEOA().Location - TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
-        X2=&gt;MA.SvL().Location - TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)
+        X1 =&gt; MA.ClosestEOA().Location - TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+        X2 =&gt; SvLDistance()
     ),
     X2=&gt;0.0
 )</Expression>
@@ -1449,6 +1457,31 @@ This protection is used in the case where V_SBI_DMI is calculated but the train 
  Guid="b0c08bf3-b9dc-4921-9708-0b8bf7c2e0a5"
 >
 <Expression>0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="SvLDistance"
+ Guid="1455010c-0eb4-467d-bc96-1985d5cc05b7"
+>
+<Comment>Handles the case where the function call for SvL does not work.</Comment>
+<Cases>
+<Case
+ Name="SvL available"
+ Guid="f27a7401-a0d5-4d46-bc34-d7012b4d6c2d"
+>
+<PreConditions>
+<PreCondition
+ Guid="104c8194-1f31-4c18-b4a6-9f1da87c0b4b"
+>Available(MA.SvL())</PreCondition></PreConditions>
+<Expression>MA.SvL().Location - TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="a4044a21-12b3-43ad-a351-8d08bc843b0d"
+>
+<Expression>Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
