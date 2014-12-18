@@ -1326,7 +1326,15 @@ Kernel.TrainPosition.FrontEndPosition(
  Guid="09e0424c-894e-4d18-a30d-841b3a8ae687"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="c6a12f8b-027b-40f9-bfcc-d1cfb0f3278c"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
+ Guid="ee3fb1c3-d220-4655-8be6-2462a8d5aba4"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

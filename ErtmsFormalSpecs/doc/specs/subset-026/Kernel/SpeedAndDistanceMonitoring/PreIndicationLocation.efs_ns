@@ -330,7 +330,9 @@
 <PreConditions>
 <PreCondition
  Guid="5a958cda-e0be-4be2-bd2b-8d2f74669d4e"
->PreIndicationLocation.d_I( aTarget =&gt; MRSPnTarget, Vmrsp =&gt; PreIndicationLocation.TargetSpeed(MRSPnTarget) ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>PreIndicationLocation.d_I( aTarget =&gt; MRSPnTarget, Vmrsp =&gt; PreIndicationLocation.TargetSpeed(MRSPnTarget) ) == Default.BaseTypes.Distance.Unknown
+  OR  
+PreIndicationLocation.d_I( aTarget =&gt; MRSPnTarget, Vmrsp =&gt; PreIndicationLocation.TargetSpeed(MRSPnTarget) ) &lt; TrainPosition.FrontEndPosition(DistanceInterval.Nom)</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="EOA, first case"
