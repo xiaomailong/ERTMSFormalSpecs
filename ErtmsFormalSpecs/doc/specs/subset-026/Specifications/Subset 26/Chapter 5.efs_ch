@@ -4792,7 +4792,7 @@ The process shall END.<RequirementSets>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="689b55e0-2746-467d-8882-d9d0e181d309"
 >
-</ReqRef><Comment>The Paragraph 5.6.4.3 describes a degraded situation where no order to terminate the communication session was received from the RBC after a given number of position report sendings. It states that in that case the ERTMS/ETCS onboard equipment shall terminate the session. But there is no information about the state change after this action =&gt; should be process end? or remain in the same state?</Comment>
+</ReqRef><Comment>The Paragraph 5.6.4.3 describes a degraded situation where no order to terminate the communication session was received from the RBC after a given number of position report sendings. It states that in that case the ERTMS/ETCS onboard equipment shall terminate the session. But there is no information about the state change after this action =&gt; should the process end? or remain in the same state?</Comment>
 After a defined number of repetitions (see appendix to chapter 3, List of Fixed Value Data), and if no reply is received within the fixed waiting time from the last sending of the mode change report, the ERTMS/ETCS onboard equipment shall terminate the communication session.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -6549,7 +6549,6 @@ The ERTMS/ETCS on-board equipment shall be in On Sight mode before the train rea
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
  Name=""
  Guid="02990d41-6bf4-4c89-94b5-aee9d1db2510"
 ><Comment>The On Sight speed limit can be given as a default value, with a National value or with a mode profile. Paragraph 3.11.7.1.1 states that the speed given from the trackside prevails the National value and the default value. According to paragraphs 5.9.2.1, 5.9.2.2 and 5.9.3.1, the On Sight mode can only be requested with a mode profile. So, here we always have a mode profile, and the mode profile speed limit prevails the other speed limits, why in this case we have to take in account the National value too?</Comment>
@@ -8420,7 +8419,6 @@ For the train to be able to enter the new area, the old area must possess inform
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
  Name=""
  Guid="5ccf76c1-cbde-4d3f-bd38-dfdee972897f"
 ><ReqRef
@@ -8433,8 +8431,7 @@ For the train to be able to enter the new area, the old area must possess inform
  SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
  Guid="0398a151-22ef-4f79-9c5e-d6992faa421f"
 >
-</ReqRef><Comment>Does the track description requirement imply a boolean AND or an OR for the individual description parts (Kernel.TrackDescription.TrackDescriptionAvailable)? #morido, 13/10/15</Comment>
-A level 1 MA and track description information shall be received before or at the level transition border. If not, when the level transition is performed, the train shall be tripped, i.e. after switching to level 1, movement is not allowed without a movement authority (refer to SRS chapter 4, transitions between modes).<RequirementSets>
+</ReqRef>A level 1 MA and track description information shall be received before or at the level transition border. If not, when the level transition is performed, the train shall be tripped, i.e. after switching to level 1, movement is not allowed without a movement authority (refer to SRS chapter 4, transitions between modes).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="8bf4755e-22ca-44a2-a5f9-1215296e5332"
@@ -15490,7 +15487,7 @@ This location (point C) shall be determined by the ERTMS/ETCS on-board equipment
  specIssue="TRUE"
  Name=""
  Guid="9dd79c32-df2a-4434-b913-50640beb4281"
-><Comment>When is it automatic and when does the drive need to act?</Comment>
+><Comment>When is it automatic and when does the driver need to act?</Comment>
 The displayed &quot;Lower pantograph announcement&quot; information shall also indicate if the related functionality is executed
 	- automatically, or
 	- if the driver is requested to act.<Sub>
@@ -15626,7 +15623,7 @@ The displayed &quot;Lower pantograph announcement&quot; information shall also i
  specIssue="TRUE"
  Name=""
  Guid="66551c91-ee6f-4402-b569-a9ff81c8d821"
-><Comment>When is it automatic and when does the drive need to act?</Comment>
+><Comment>When is it automatic and when does the driver need to act?</Comment>
 The displayed &quot;Raise pantograph&quot; information shall also indicate if the related functionality is executed
 	- automatically, or
 	- if the driver is requested to act.<Sub>
@@ -15803,7 +15800,7 @@ This location (point C) shall be determined by the ERTMS/ETCS on-board equipment
  specIssue="TRUE"
  Name=""
  Guid="b04158a3-35ce-4257-b43e-1d9716f76f93"
-><Comment>When is it automatic and when does the drive need to act?</Comment>
+><Comment>When is it automatic and when does the driver need to act?</Comment>
 The displayed Neutral section announcement information shall also indicate if the related functionality is executed
 - automatically, or
 - if the driver is requested to act.<Sub>
@@ -15899,7 +15896,7 @@ The displayed Neutral section announcement information shall also indicate if th
  specIssue="TRUE"
  Name=""
  Guid="54fc1b2f-383b-4d7f-8d4a-91173fd494a8"
-><Comment>When is it automatic and when does the drive need to act?</Comment>
+><Comment>When is it automatic and when does the driver need to act?</Comment>
 The displayed End of Neutral section information shall also indicate if the related functionality is executed
 - Automatically, or
 - if the driver is requested to act.<Sub>
@@ -16402,7 +16399,7 @@ This location (point C) shall be determined by the ERTMS/ETCS on-board equipment
  specIssue="TRUE"
  Name=""
  Guid="cd230e40-3098-4fd4-94b2-cc5f04fa5d77"
-><Comment>When is it automatic and when does the drive need to act?</Comment>
+><Comment>When is it automatic and when does the driver need to act?</Comment>
 The displayed &quot;Close air conditioning intake announcement&quot; information shall also indicate if the related functionality is executed
 	- automatically, or
 	- if the driver is requested to act.<Sub>
@@ -16518,7 +16515,7 @@ The displayed &quot;Close air conditioning intake announcement&quot; information
  specIssue="TRUE"
  Name=""
  Guid="ac29e88f-6252-4dc2-ba81-7dde4deecdc7"
-><Comment>When is it automatic and when does the drive need to act?</Comment>
+><Comment>When is it automatic and when does the driver need to act?</Comment>
 The displayed &quot;Open air conditioning intake&quot; information shall also indicate if the related functionality is executed
 	- automatically, or
 	- If the driver is requested to act.<Sub>
@@ -16723,7 +16720,7 @@ The displayed &quot;Open air conditioning intake&quot; information shall also in
  specIssue="TRUE"
  Name=""
  Guid="41d40a52-5363-4cb6-925a-671d1d925ce8"
-><Comment>When is it automatic and when does the drive need to act?</Comment>
+><Comment>When is it automatic and when does the driver need to act?</Comment>
 The displayed &quot;Inhibition of Regenerative Brake announcement&quot; information shall also indicate if the related functionality is executed
 	- automatically, or
 	- if the driver is requested to act.<Sub>
