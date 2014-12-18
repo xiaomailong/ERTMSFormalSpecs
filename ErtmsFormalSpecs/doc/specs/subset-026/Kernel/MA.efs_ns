@@ -3565,33 +3565,35 @@ IN EOAs</Action></Actions>
  Guid="82693a36-2536-4332-a326-6e2eddba3708"
 >
 </ReqRef><ReqRef
- Id="59bae633-99ce-4f69-992a-cec56e0b4c41"
+ Id="90d05183-dd5f-471a-929c-200da2581c34"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2e28949e-c78f-4f2d-a422-1533aec5f79b"
+ Guid="970a020b-66a9-4606-9914-f20f74a55162"
 >
 </ReqRef><Comment>The start location of  a non protected level crossing with no stopping area shall be considered as both EOA and SvL until the train brakes to the LX permitted speed</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Upcoming non protected LX"
+ Name="Non protected LX"
  Guid="a8ce68a8-6c7b-4e39-8f4a-1ddb54892e6b"
 >
 <PreConditions>
 <PreCondition
  Guid="839cbb33-f7e4-4233-b5fe-4fccc5a07519"
->LX.NearestNonProtectedNonStoppingLX() != EMPTY
-  AND  
-(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P( Vest =&gt; LX.NearestNonProtectedNonStoppingLX().Speed, EstimatedAccelerationSetToZero =&gt; True ) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
+>LX.SupervisedLevelCrossings != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5d428056-d867-4dff-bc94-633a9ba1c635"
->INSERT CreateTarget(
-    aLength=&gt;BaseTypes.Length.Infinity,
-    aLocation=&gt;LX.NearestNonProtectedNonStoppingLX().Location,
+>APPLY 
+  INSERT CreateTarget
+  (
+    aLength =&gt; X.Length,
+    aLocation =&gt; X.Location,
     aSpeed=&gt;0.0
-)
-IN EOAs</Action></Actions>
+  )
+  IN EOAs
+ON
+  LX.SupervisedLevelCrossings</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -4053,19 +4055,14 @@ IN SvLs</Action></Actions>
  Guid="043c8302-2385-4eaa-8096-529cf295b598"
 >
 <ReqRef
- Id="59bae633-99ce-4f69-992a-cec56e0b4c41"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="86b35dab-6268-4501-8f74-291792dbf7b9"
->
-</ReqRef><ReqRef
- Id="9b54b401-0857-45af-bbb3-1ec502f39d2a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="77d408c1-1178-418b-bf3d-8ce10e3a06f5"
->
-</ReqRef><ReqRef
  Id="d2ff8626-b129-41d0-afab-85c0e9977832"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="817206bd-6c5f-42c0-b063-fe923c403ad1"
+>
+</ReqRef><ReqRef
+ Id="90d05183-dd5f-471a-929c-200da2581c34"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="016b2cee-fc07-4e2c-908e-707833067147"
 >
 </ReqRef><Comment>The start location of  a non protected level crossing with no stopping area shall be considered as both EOA and SvL until the train brakes to the LX permitted speed</Comment>
 <SubRules></SubRules>
@@ -4078,18 +4075,20 @@ IN SvLs</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="95230fbf-fc08-4439-860f-125265afa0df"
->LX.NearestNonProtectedNonStoppingLX() != EMPTY
-  AND  
-(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P( Vest =&gt; LX.NearestNonProtectedNonStoppingLX().Speed, EstimatedAccelerationSetToZero =&gt; True ) &gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition></PreConditions>
+>LX.SupervisedLevelCrossings != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9274d1c1-4a76-4102-970e-4758a11502ca"
->INSERT CreateTarget(
-    aLength=&gt;LX.NearestNonProtectedNonStoppingLX().Length,
-    aLocation=&gt;LX.NearestNonProtectedNonStoppingLX().Location,
-    aSpeed=&gt;0.0
-)
-IN SvLs</Action></Actions>
+>APPLY 
+  INSERT CreateTarget
+  (
+    aLength =&gt; X.Length,
+    aLocation =&gt; X.Location,
+    aSpeed =&gt; 0.0
+  )
+  IN SvLs
+ON
+  LX.SupervisedLevelCrossings</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
