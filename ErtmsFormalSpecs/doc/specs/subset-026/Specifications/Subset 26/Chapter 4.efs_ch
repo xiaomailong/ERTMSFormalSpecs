@@ -14600,11 +14600,9 @@ Geographical position; A: SB, FS, LS, SR, OS, NL, UN, TR, PT; NA: SF, IS<Require
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
  Name=""
  Guid="d3c5c2fa-1d94-436a-9c37-457cf5e63194"
-><Comment>What is the semantics of this? When does this information should be displayed to the driver?</Comment>
-Entry in FS/OS; A: FS, OS; NA: SF, IS<RequirementSets>
+>Entry in FS/OS; A: FS, OS; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="dbc1da16-1ce1-44d2-97c7-fd7d4f91ef25"
@@ -14758,7 +14756,7 @@ Entry in FS/OS; A: FS, OS; NA: SF, IS<RequirementSets>
  infoRequired="TRUE"
  Name=""
  Guid="fa81092d-9831-470d-bccf-0aef687cf1de"
-><Comment>There does not seem to be any requirement which indicate, in the modes SB, TR and SN when to send the local time to the DMI. 
+><Comment>There does not seem to be any requirement which indicates, in the modes SB, TR and SN when to send the local time to the DMI. 
 
 Hence, it seems that is should be right to always send the time to the DMI. The latter will dispay this on driver&apos;s request for those modes, according to the displayed informations.</Comment>
 Local time; A: SB, TR, SN; X: SH, FS, LS, SR, OS, NL, UN, PT, RV; NA: SF, IS<RequirementSets>
@@ -14813,7 +14811,7 @@ Local time; A: SB, TR, SN; X: SH, FS, LS, SR, OS, NL, UN, PT, RV; NA: SF, IS<Req
  infoRequired="TRUE"
  Name=""
  Guid="abc0e167-3d30-443d-b62a-963a5228be72"
-><Comment>Target speed shall always be sent to the DMI, when available. The DMI will use this information, if requested</Comment>
+><Comment>Target speed shall always be sent to the DMI, when available. The DMI will use this information, if requested.</Comment>
 Indication location at MRSP speed (see 3.13.10.4.11); A: FS; NA: SF, IS<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"

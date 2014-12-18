@@ -6549,7 +6549,6 @@ The ERTMS/ETCS on-board equipment shall be in On Sight mode before the train rea
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
  Name=""
  Guid="02990d41-6bf4-4c89-94b5-aee9d1db2510"
 ><Comment>The On Sight speed limit can be given as a default value, with a National value or with a mode profile. Paragraph 3.11.7.1.1 states that the speed given from the trackside prevails the National value and the default value. According to paragraphs 5.9.2.1, 5.9.2.2 and 5.9.3.1, the On Sight mode can only be requested with a mode profile. So, here we always have a mode profile, and the mode profile speed limit prevails the other speed limits, why in this case we have to take in account the National value too?</Comment>
@@ -8420,7 +8419,6 @@ For the train to be able to enter the new area, the old area must possess inform
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
  Name=""
  Guid="5ccf76c1-cbde-4d3f-bd38-dfdee972897f"
 ><ReqRef
@@ -8433,8 +8431,7 @@ For the train to be able to enter the new area, the old area must possess inform
  SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
  Guid="0398a151-22ef-4f79-9c5e-d6992faa421f"
 >
-</ReqRef><Comment>Does the track description requirement imply a boolean AND or an OR for the individual description parts (Kernel.TrackDescription.TrackDescriptionAvailable)? #morido, 13/10/15</Comment>
-A level 1 MA and track description information shall be received before or at the level transition border. If not, when the level transition is performed, the train shall be tripped, i.e. after switching to level 1, movement is not allowed without a movement authority (refer to SRS chapter 4, transitions between modes).<RequirementSets>
+</ReqRef>A level 1 MA and track description information shall be received before or at the level transition border. If not, when the level transition is performed, the train shall be tripped, i.e. after switching to level 1, movement is not allowed without a movement authority (refer to SRS chapter 4, transitions between modes).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="8bf4755e-22ca-44a2-a5f9-1215296e5332"
