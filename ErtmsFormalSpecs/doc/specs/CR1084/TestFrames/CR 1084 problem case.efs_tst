@@ -420,7 +420,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2"
+ Name="Step2 - Distances"
  Guid="f5e0f501-682e-4942-8fda-276e3430313f"
 >
 <SubSteps>
@@ -456,6 +456,255 @@
 <Action
  Guid="9e59a459-009d-4f02-99b0-780cbeb29211"
 >Odometry.NominalDistance &lt;- 2010.0</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Level crossing"
+ Guid="32d10faf-a2ce-47f2-8c91-d93c587c0321"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+ Guid="220db9d1-789f-4a67-9b38-34136c61cf79"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Initialize test environment"
+ Guid="b53f9a44-6701-46d8-a000-4f7281ae8577"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Initialize test environment"
+ Guid="a0c3b9a7-e753-4117-9546-e102b6082b7e"
+>
+<Actions>
+<Action
+ Guid="1747548e-fb06-4ff4-841a-d60d81234f47"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements for MA"
+ Guid="204494a8-8a9f-469b-a25d-61a8019ae0f3"
+>
+<Actions>
+<Action
+ Guid="5a8b90eb-20e9-4902-ba6d-d48c2445a352"
+>Kernel.MA.InitializeElementsForMA()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3 - Set LRBG at 0 distance"
+ Guid="be78d4a2-05ea-4698-a5ef-dc5401b32aec"
+>
+<Actions>
+<Action
+ Guid="84ff9d41-2030-4f10-af04-49044ff1b4ce"
+>BTM.LRBG.Position &lt;- BTM.Position{
+    Position =&gt; 0.0,
+    UnderReadingAmountOdo =&gt; 0.0,
+    OverReadingAmountOdo =&gt; 0.0
+}</Action><Action
+ Guid="47930390-0b58-4871-9b7d-9c20ee80ba25"
+>Odometry.NominalDistance &lt;- 100.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step4 - Set Level and Mode + MA"
+ Guid="ea227c59-39aa-4042-8866-013ef1e4580b"
+>
+<Actions>
+<Action
+ Guid="fd817698-8d3c-4203-b2e1-304a3a0f1f02"
+>Kernel.Mode &lt;- Mode.FS</Action><Action
+ Guid="b2858016-cf3d-4ebe-8060-113347c114ea"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; LevelDataStruct{
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L1
+    },
+    DataState =&gt; Default.DataState.Valid
+}</Action><Action
+ Guid="f545d7a9-3921-4530-8fd7-59df6eeb6e1e"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 30000.0
+    }
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step5 - Set SSP"
+ Guid="fa9e36a7-4e06-4d21-8d0a-a6e0d2dd7cdd"
+>
+<Actions>
+<Action
+ Guid="81d91c30-de48-41f9-9fd0-8964a3e8fd93"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
+[
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 0.0,
+        BasicSpeed =&gt; 200.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt; 
+        [
+            
+        ]
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 3000.0,
+        BasicSpeed =&gt; 60.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt; 
+        [
+            
+        ]
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 6200.0,
+        BasicSpeed =&gt; 200.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt; 
+        [
+            
+        ]
+    }
+]</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step6 - Set unprotected LX"
+ Guid="43efdeed-3abf-47de-9a28-9af9d74e93e4"
+>
+<Actions>
+<Action
+ Guid="66ad08b3-299d-4a8b-b60b-48fb00ca65e7"
+>Kernel.LX.SupervisedLevelCrossings &lt;- [Kernel.LX.LevelCrossingStruct{
+    Id =&gt; 123,
+    Location =&gt; 3200.0,
+    Length =&gt; 150.0,
+    IsProtected =&gt; Boolean.False,
+    Speed =&gt; 40.0,
+    StoppingRequired =&gt; Boolean.True,
+    StoppingAreaLength =&gt; 100.0
+}]</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ Distance="2800"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2"
+ Guid="b89a1c79-eb8a-41d4-93b3-6530f9b7c3e4"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="be69be1f-e769-47df-8da2-e73f7f9b64c8"
+>
+<Actions>
+<Action
+ Guid="bb0f0407-f6d0-4ac6-8249-155dda26c997"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; 1,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 1765,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; 
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_CROSSING_INFORMATION =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
+                {
+                    NID_PACKET =&gt; 88,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 0,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    NID_LX =&gt; 123,
+                    D_LX =&gt; 400,
+                    L_LX =&gt; 150,
+                    Q_LXSTATUS =&gt; Messages.Q_LXSTATUS.LX_is_protected,
+                    V_LX =&gt; 8,
+                    Q_STOPLX =&gt; Messages.Q_STOPLX.No_stop_required,
+                    L_STOPLX =&gt; 0
+                }
+            }
+        }, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY
+    ],
+    BitField =&gt; &apos;&apos;
+}</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ Distance="2805"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3"
+ Guid="8729daba-a0ce-469d-90b6-971a87720ece"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step2"
+ Guid="5f8d3b00-1258-41ab-9a88-2f2b2aa74085"
+>
+<Actions>
+<Action
+ Guid="d8a6f74b-5ad2-4546-8e40-8c0ba7a18940"
+>BTM.Message &lt;- Messages.EUROBALISE.Message{
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 1,
+    N_TOTAL =&gt; 1,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 1765,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; [],
+    BitField =&gt; &apos;&apos;
+}</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ Distance="10000"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4"
+ Guid="8226279c-2628-412c-98cd-7145f0810d5a"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="7ba9fc64-fdf2-4dfe-aafb-0ce859e63e45"
+>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
