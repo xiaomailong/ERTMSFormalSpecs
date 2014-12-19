@@ -599,7 +599,7 @@ X2 =&gt; aTarget.Speed
 <PreConditions>
 <PreCondition
  Guid="178905dd-ce63-4fba-8a0b-3c4f22c9b159"
->MA.IsEOA(MRDT())</PreCondition></PreConditions>
+>MA.IsEOA(SupervisedTarget())</PreCondition></PreConditions>
 <Expression>V_P_EOA(d_estfront=&gt;TrainPosition.FrontEndPosition(DistanceInterval.Nom), Vest=&gt;Odometry.TrainSpeed())</Expression>
 </Case><Case
  Name="Otherwise"
@@ -607,7 +607,7 @@ X2 =&gt; aTarget.Speed
 >
 <Expression>V_P_EBD_Target(
     d_maxsafefront =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Max),
-    aTarget =&gt; MRDT(),
+    aTarget =&gt; SupervisedTarget(),
     Vest =&gt; Odometry.TrainSpeed()
 )</Expression>
 </Case></Cases>
@@ -619,7 +619,7 @@ X2 =&gt; aTarget.Speed
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="MRDT"
+ Name="SupervisedTarget"
  Guid="c23acb47-fdeb-4b58-b3df-fdf995401020"
 >
 <ReqRef
@@ -815,7 +815,7 @@ V_P_EBD_Target(
 
     X1 =&gt; Vsbi2(
         Dmaxsafefrontend=&gt;TrainPosition.FrontEndPosition(DistanceInterval.Max),
-        Vtarget=&gt;MRDT().Speed,
+        Vtarget=&gt;SupervisedTarget().Speed,
         EstimatedAccelerationSetToZero=&gt;False),
     X2 =&gt; MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_sbi ( MRSP.V_MRSP() )
     )
@@ -1040,7 +1040,7 @@ d_P(Vest, False) == BaseTypes.Distance.Infinity</PreCondition></PreConditions>
  Guid="8a9bb99e-e31d-4a5b-b950-a5d567a162f2"
 >d_SBI1(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="cf597bcc-a37d-44c6-89af-62f6770a89cb"
->MA.IsEOA(MRDT())</PreCondition></PreConditions>
+>MA.IsEOA(SupervisedTarget())</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Infinity</Expression>
 </Case><Case
  Name="EBD based target, distance unknown"
@@ -1064,7 +1064,7 @@ d_SBI2_MREBDT(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknow
  Guid="70659c39-2759-4cb5-b0d4-fd30a601fc38"
 >NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition><PreCondition
  Guid="3bec59ce-8eb8-400e-9082-c1c388aff52b"
->MA.IsEOA(MRDT())</PreCondition></PreConditions>
+>MA.IsEOA(SupervisedTarget())</PreCondition></PreConditions>
 <Expression>d_SBI1(Vest, EstimatedAccelerationSetToZero) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver</Expression>
 </Case><Case
  Name="GUI inhibited, EBD based target"
@@ -1082,7 +1082,7 @@ d_SBI2_MREBDT(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknow
 <PreConditions>
 <PreCondition
  Guid="a7bc345d-8d50-4c6a-8832-5dd65bdf1241"
->MA.IsEOA(MRDT())</PreCondition></PreConditions>
+>MA.IsEOA(SupervisedTarget())</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.MinDistance (
     X1 =&gt; d_SBI1 ( Vest, EstimatedAccelerationSetToZero ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver,
     X2 =&gt; DistanceForSpeed ( Function =&gt; DecelerationCurves.GUI, Speed =&gt; Vest ) )</Expression>
@@ -1157,7 +1157,7 @@ d_SBI2_MREBDT(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknow
 <PreConditions>
 <PreCondition
  Guid="f00aced6-9aec-41aa-ba5c-a1f314c5c26c"
->MA.IsEOA(MRDT())</PreCondition></PreConditions>
+>MA.IsEOA(SupervisedTarget())</PreCondition></PreConditions>
 <Expression>d_SBI1(Vest,EstimatedAccelerationSetToZero) - BaseTypes.SpeedToMS ( Vest ) * T_warning</Expression>
 </Case><Case
  Name="Supervised target is an EBD based target"
@@ -1462,6 +1462,123 @@ This protection is used in the case where V_SBI_DMI is calculated but the train 
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function><Function
+ Type="Target"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="MRDT"
+ Guid="2f81894a-e876-4f5a-99fc-5f8647f5c324"
+>
+<Comment>Provides the Most Relevant Displayed Target</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="52fbd973-a249-4593-8ca6-49d343805067"
+>
+<Expression>STABILIZE
+MaskedTarget(PREVIOUS)
+
+ INITIAL_VALUE
+SupervisedTarget()
+
+ STOP_CONDITION
+CURRENT == PREVIOUS</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Target"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Name="MaskedTarget"
+ Guid="30a649ab-aa1b-411a-a74b-99a291166bb6"
+>
+<Comment>Returns the target masked by the current MRDT with the lowest speed</Comment>
+<Parameters>
+<Parameter
+ Type="Target"
+ Name="Target"
+ Guid="e4c0e9eb-d980-4f38-a2df-873185c17bd5"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="f66cf3fa-6f2c-49df-9a18-6b54b3d5eb7e"
+>
+<Expression>REDUCE
+TargetsList() |
+    X.Location &gt; Target.Location  AND  
+    X.Speed &lt; Target.Speed  AND  
+    d_PreInd_Target_forSpeed(
+        aTarget =&gt; X,
+        aSpeed =&gt; Target.Speed ) &lt; Target.Location
+
+ USING X IN
+MinTargetSpeed(
+    X1 =&gt; X,
+    X2 =&gt; RESULT )
+
+ INITIAL_VALUE
+Target</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Target"
+ Default=""
+ X="220"
+ Width="100"
+ Height="50"
+ Name="MinTargetSpeed"
+ Guid="e488cea3-78da-4a16-bc06-4375b7b18da8"
+>
+<Comment>Returns the target with the loer speed. In case of a tie, returns the further target.</Comment>
+<Parameters>
+<Parameter
+ Type="Target"
+ Name="X1"
+ Guid="8033d0c8-b4db-460e-8c64-7cf880d8ce39"
+>
+</Parameter><Parameter
+ Type="Target"
+ Name="X2"
+ Guid="94dc3823-d4c9-49a1-adc3-3d70b168446e"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="X1.Speed &lt; X2.Speed"
+ Guid="d39dd2f1-9f4b-4d60-b9b0-52b3f0f87678"
+>
+<PreConditions>
+<PreCondition
+ Guid="1facbb52-483b-4b5d-a00c-101577a81622"
+>X1.Speed &lt; X2.Speed</PreCondition></PreConditions>
+<Expression>X1</Expression>
+</Case><Case
+ Name="X2.Speed &gt; X1.Speed"
+ Guid="2e45633c-4d36-47bf-a2a3-3bbdac067a75"
+>
+<PreConditions>
+<PreCondition
+ Guid="79963fec-8881-4d55-8610-60dba0d50631"
+>X2.Speed &lt; X1.Speed</PreCondition></PreConditions>
+<Expression>X2</Expression>
+</Case><Case
+ Name="Equal speeds, X1 is closer"
+ Guid="7c52b31b-8e3b-4cbf-8843-3d98e9bc8c6b"
+>
+<PreConditions>
+<PreCondition
+ Guid="8ca02fb0-5bf9-4a59-9830-dd5206837da4"
+>X1.Location &lt; X2.Location</PreCondition></PreConditions>
+<Expression>X2</Expression>
+</Case><Case
+ Name="Equal speeds, X2 is closer"
+ Guid="c165d431-8975-4fba-952b-2f57e4e491ed"
+>
+<Expression>X1</Expression>
+</Case></Cases>
+</Function><Function
  Type="BaseTypes.Distance"
  Default=""
  Width="100"
@@ -1487,6 +1604,57 @@ This protection is used in the case where V_SBI_DMI is calculated but the train 
  Guid="a4044a21-12b3-43ad-a351-8d08bc843b0d"
 >
 <Expression>Default.BaseTypes.Distance.Infinity</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="d_PreInd_Target_forSpeed"
+ Guid="f6eadf65-b6e1-43c0-8573-4c7cef62e802"
+>
+<Comment>Returns the Pre-Indication location of a target for the given speed.
+
+The Pre-Indication location is 
+d_SBI - Vest * T_driver           =&gt; d_P
+      - Vest * T_indication       =&gt; d_I
+      - Vest * T_preindication    =&gt; d_preindication</Comment>
+<Parameters>
+<Parameter
+ Type="Target"
+ Name="aTarget"
+ Guid="f38919cf-1bc1-49dc-a01b-12b43482ae70"
+>
+</Parameter><Parameter
+ Type="BaseTypes.Speed"
+ Name="aSpeed"
+ Guid="45b376f0-a5af-4268-b3e2-1734707d79f4"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Target is EOA or SvL"
+ Guid="a80d4248-7a40-4c11-a4f8-a5f1d7f33989"
+>
+<PreConditions>
+<PreCondition
+ Guid="6ccc3abd-893f-4482-ae0a-f1e2fa60d2c2"
+>MA.IsEOA(aTarget)
+  OR  
+MA.IsSvL(aTarget)</PreCondition></PreConditions>
+<Expression>d_SBI1(
+    Vest =&gt; aSpeed,
+    EstimatedAccelerationSetToZero =&gt; True )
+ - BaseTypes.SpeedToMS(aSpeed) * (T_driver + DecelerationCurves.T_indication() + PreIndicationLocation.T_preindication)</Expression>
+</Case><Case
+ Name="Target is an MRSP target or the LOA"
+ Guid="0eb63632-9f07-4633-b2c2-77f1f56957ef"
+>
+<Expression>d_SBI2(
+    Vest =&gt; aSpeed,
+    aTarget =&gt; aTarget,
+    EstimatedAccelerationSetToZero =&gt; True )
+ - BaseTypes.SpeedToMS(aSpeed) * (T_driver + DecelerationCurves.T_indication() + PreIndicationLocation.T_preindication )</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
