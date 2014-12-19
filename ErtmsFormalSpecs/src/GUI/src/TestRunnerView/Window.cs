@@ -68,7 +68,9 @@ namespace GUI.TestRunnerView
         /// </summary>
         public DataDictionary.Tests.Runner.Runner getRunner(DataDictionary.Tests.SubSequence subSequence)
         {
-            if (EFSSystem.Runner == null)
+            Runner runner = EFSSystem.Runner;
+
+            if (runner == null || runner.SubSequence != subSequence)
             {
                 if (subSequence != null)
                 {
