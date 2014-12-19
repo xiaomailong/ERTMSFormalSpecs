@@ -1512,7 +1512,7 @@ TargetsList() |
     X.Speed &lt; Target.Speed  AND  
     d_PreInd_Target_forSpeed(
         aTarget =&gt; X,
-        aSpeed =&gt; Target.Speed ) &lt; Target.Location
+        aSpeed =&gt; Target.Speed ) &lt; TrainPosition.FrontEndPosition(DistanceInterval.Nom)
 
  USING X IN
 MinTargetSpeed(
@@ -1617,8 +1617,7 @@ Target</Expression>
 
 The Pre-Indication location is 
 d_SBI - Vest * T_driver           =&gt; d_P
-      - Vest * T_indication       =&gt; d_I
-      - Vest * T_preindication    =&gt; d_preindication</Comment>
+      - Vest * T_indication       =&gt; d_I</Comment>
 <Parameters>
 <Parameter
  Type="Target"
@@ -1654,7 +1653,7 @@ MA.IsSvL(aTarget)</PreCondition></PreConditions>
     Vest =&gt; aSpeed,
     aTarget =&gt; aTarget,
     EstimatedAccelerationSetToZero =&gt; True )
- - BaseTypes.SpeedToMS(aSpeed) * (T_driver + DecelerationCurves.T_indication() + PreIndicationLocation.T_preindication )</Expression>
+ - BaseTypes.SpeedToMS(aSpeed) * (T_driver + DecelerationCurves.T_indication() + PreIndicationLocation.T_preindication)</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
