@@ -337,5 +337,17 @@ namespace GUI.TestRunnerView
                 createTestCase(testCase.Item);
             }
         }
+
+        public override void SelectionChanged(bool displayStatistics)
+        {
+            base.SelectionChanged(displayStatistics);
+
+            Window window = BaseForm as Window;
+            if (window != null)
+            {
+                window.testDescriptionTimeLineControl.SubSequence = Item;
+                window.testDescriptionTimeLineControl.Refresh();
+            }
+        }
     }
 }

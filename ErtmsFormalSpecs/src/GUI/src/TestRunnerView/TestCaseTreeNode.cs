@@ -304,11 +304,17 @@ namespace GUI.TestRunnerView
         {
             base.SelectionChanged(displayStatistics);
 
-            Window window = BaseForm as Window;
-            if (window != null)
+            // HaCK 
+            // Avoid selecting the test case when selecting a step in the static time line
+            // when the sub sequence is currently displayed
+            if (!GUIUtils.MDIWindow.HandlingSelection)
             {
-                window.testDescriptionTimeLineControl.TestCase = Item;
-                window.testDescriptionTimeLineControl.Refresh();
+                Window window = BaseForm as Window;
+                if (window != null)
+                {
+                    window.testDescriptionTimeLineControl.TestCase = Item;
+                    window.testDescriptionTimeLineControl.Refresh();
+                }
             }
         }
     }
