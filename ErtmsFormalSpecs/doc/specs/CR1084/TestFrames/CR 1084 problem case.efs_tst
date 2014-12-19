@@ -341,7 +341,7 @@
  Guid="5b1ec297-eb51-4164-b08f-b1d0cffa0965"
 >Odometry.NominalDistance &lt;- 100.0</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step4 - Set Level and Mode"
+ Name="Sub-step4 - Set Level and Mode + MA"
  Guid="bad2de57-109d-48a9-8673-1a122e47ee98"
 >
 <Actions>
@@ -355,14 +355,8 @@
         Value =&gt; Default.Level.L1
     },
     DataState =&gt; Default.DataState.Valid
-}</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step5 - Set MA"
- Guid="067c8557-fce0-4c98-8520-70abf722739c"
->
-<Actions>
-<Action
- Guid="6ee4ddfd-2a4e-4104-8fc7-b29b71b15b50"
+}</Action><Action
+ Guid="40fc0081-ca39-465a-8be1-2f29429a8d39"
 >Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
     TargetSpeed =&gt; 0.0,
     Sections =&gt; [],
@@ -371,7 +365,7 @@
     }
 }</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step6 - Set SSP"
+ Name="Sub-step5 - Set SSP"
  Guid="aa404616-2d59-4176-b715-01f6d50d9231"
 >
 <Actions>
@@ -426,7 +420,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step3"
+ Name="Step2"
  Guid="f5e0f501-682e-4942-8fda-276e3430313f"
 >
 <SubSteps>
@@ -434,6 +428,34 @@
  Name="Sub-step1"
  Guid="96dbf2f3-19e7-468b-98b7-79cf311c980e"
 >
+<Actions>
+<Action
+ Guid="176b07cb-a076-421c-aa9d-3515e9cc1145"
+>Odometry.NominalDistance &lt;- 390.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="22597dce-869a-4308-95ce-7d77323a4ab4"
+>
+<Actions>
+<Action
+ Guid="bca1624d-9a12-49c2-b14d-6ff26af30bbe"
+>Odometry.NominalDistance &lt;- 1990.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3"
+ Guid="98b22f84-d073-4a3a-9fca-b3708803cd39"
+>
+<Actions>
+<Action
+ Guid="28cdf6ec-c8c9-4770-a0d0-18b6998931c7"
+>Odometry.NominalDistance &lt;- 2000.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step4"
+ Guid="4d167ec9-26ff-47a5-b76b-379dbeb0d228"
+>
+<Actions>
+<Action
+ Guid="9e59a459-009d-4f02-99b0-780cbeb29211"
+>Odometry.NominalDistance &lt;- 2010.0</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
