@@ -352,7 +352,7 @@ X2=&gt; Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)
  Guid="673e0526-d664-4d47-ac36-3e9fd64b13fc"
 >
 <Expression>REDUCE
-EBDTargetsList()
+EBDTargetsList() | X.Speed &lt;= Vest
 USING X IN
     BaseTypes.MinDistance ( X1 =&gt; d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ), X2 =&gt; RESULT )
 INITIAL_VALUE
