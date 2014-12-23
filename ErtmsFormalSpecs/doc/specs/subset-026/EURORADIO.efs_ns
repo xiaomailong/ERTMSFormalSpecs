@@ -123,7 +123,7 @@
 >
 </EnumValue></Values>
 </Enum><Enum
- Default="ContactOptionEnum.ContactLastKnownRBC"
+ Default="ContactOptionEnum.None"
  X="930"
  Y="110"
  Width="100"
@@ -163,6 +163,11 @@
  Value="2"
  Name="RBCIdAndPhoneNumber"
  Guid="e2610b4d-3509-49f9-bb90-82315bcfe068"
+>
+</EnumValue><EnumValue
+ Value="3"
+ Name="None"
+ Guid="0ca1ef56-ad4c-46ce-91ca-94eb05874054"
 >
 </EnumValue></Values>
 </Enum><Enum
@@ -5451,6 +5456,122 @@ The only one case where the status to display is that of the secondary connectio
 >
 <Expression>CurrentRBCConnection().SafeRadioConnectionStatus</Expression>
 </Case></Cases>
+</Function><Function
+ Type="DMI.RBCContactActionsCol"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="GetDriverActionsForSoM"
+ Guid="20e3b23a-2d80-4bc5-86b9-155e2c5d7fe2"
+>
+<ReqRef
+ Id="88987d99-35ff-4f33-894e-06060476dc7d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4fb159ce-833a-4808-8869-1ddce907d864"
+>
+</ReqRef><ReqRef
+ Id="ff5aeaff-49e3-489d-816f-c49fc05bc951"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="254d57b4-6a90-4101-b538-0dfa94ec1240"
+>
+</ReqRef><ReqRef
+ Id="1ab51773-764d-4fc1-b533-351222363321"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="31520df7-3467-44cc-9fd4-70c27e579bb3"
+>
+</ReqRef><ReqRef
+ Id="bc8058d6-c833-43cf-93a4-f446a3a326ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="161e14a5-bbec-4d72-8a48-2bdd4e34effc"
+>
+</ReqRef><ReqRef
+ Id="a9f86939-1651-4064-9732-2d860f2d28af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e0a48322-cfee-451f-ad93-61721a92fb93"
+>
+</ReqRef><ReqRef
+ Id="3a73d38c-66b9-4e87-873d-9efe293f0f56"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7f727e19-d682-44f3-aedf-92a6c1c72516"
+>
+</ReqRef><Comment>Provides the possible Driver actions for connecting to an RBC during the Start of Mission procedure.</Comment>
+<Cases>
+<Case
+ Name="No mobile terminal registered"
+ Guid="537376e4-4c71-451c-bcc9-5c0847fd25a5"
+>
+<PreConditions>
+<PreCondition
+ Guid="de47f946-a102-4d92-93ac-58473a186252"
+>NOT TerminalIsRegistered(CurrentTerminal())</PreCondition></PreConditions>
+<Expression>[DMI.RBCContactActionEnum.ReenterNetworkId]</Expression>
+</Case><Case
+ Name="Invalid RBC-ID/phone number"
+ Guid="63d1f25a-5bd9-45c5-978e-7fe44ecdf335"
+>
+<PreConditions>
+<PreCondition
+ Guid="cdc11219-5220-4b39-ae2d-a4dc45a10acf"
+>CurrentRBCConnection().ContactData.DataState == DataState.Invalid</PreCondition></PreConditions>
+<Expression>[DMI.RBCContactActionEnum.ReenterNetworkId, DMI.RBCContactActionEnum.UseLastStoredNumber, DMI.RBCContactActionEnum.UseEireneShortNumber, DMI.RBCContactActionEnum.RevalidateContactInfo, DMI.RBCContactActionEnum.EnterContactInfo]</Expression>
+</Case><Case
+ Name="Unknown RBC-ID/phone number"
+ Guid="fab42248-c38b-4b63-a0c2-6270b13c8ffb"
+>
+<PreConditions>
+<PreCondition
+ Guid="dd77bcad-0268-4dee-987b-3a77cbd9865c"
+>CurrentRBCConnection().ContactData.DataState == DataState.Unknown</PreCondition></PreConditions>
+<Expression>[DMI.RBCContactActionEnum.ReenterNetworkId,  DMI.RBCContactActionEnum.UseEireneShortNumber,  DMI.RBCContactActionEnum.EnterContactInfo]</Expression>
+</Case><Case
+ Name="Valid RBC-ID/phone number"
+ Guid="de7929e2-7d30-48aa-a121-5ffb5b45a2e2"
+>
+<PreConditions>
+<PreCondition
+ Guid="c4dba95e-3474-4ec3-b537-7fb3e625877b"
+>CurrentRBCConnection().ContactData.DataState == DataState.Valid</PreCondition></PreConditions>
+<Expression>[DMI.RBCContactActionEnum.ReenterNetworkId,  DMI.RBCContactActionEnum.UseEireneShortNumber]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="EURORADIO.RBCContactStruct"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GetRBCContactInfoForSoM"
+ Guid="50e734b8-332b-4530-bf92-d336fb4e8a00"
+>
+<Comment>Returns the RBC contact information if a terminal is registered. Otherwise returns EMPTY.</Comment>
+<Cases>
+<Case
+ Name="Terminal registered, contact information unknown"
+ Guid="35f30c40-e878-4765-a7cd-73e73dc0b127"
+>
+<PreConditions>
+<PreCondition
+ Guid="b11115a5-266b-47cb-877c-f30a46722281"
+>TerminalIsRegistered(CurrentTerminal())
+  AND  
+CurrentRBCConnection().ContactData.DataState == DataState.Unknown</PreCondition></PreConditions>
+<Expression>EMPTY</Expression>
+</Case><Case
+ Name="Terminal registered"
+ Guid="0f604a9e-a58e-40a0-bf09-0f8eb4f520ed"
+>
+<PreConditions>
+<PreCondition
+ Guid="87fa35d7-7cae-4d88-84ce-26e032d54e3c"
+>TerminalIsRegistered(CurrentTerminal())</PreCondition></PreConditions>
+<Expression>CurrentRBCConnection().ContactData</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="096a5de1-c61c-46fb-b534-6fb65d9d9134"
+>
+<Expression>EMPTY</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -8140,6 +8261,43 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  Guid="12ed8134-932c-460b-b43c-93b9450e806e"
 >HandleInitiationOfACommunicationSession ( aMessage =&gt; aMessage.INITIATION_OF_A_COMMUNICATION_SESSION )</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Train accepted"
+ Guid="725718e5-f5f3-4f4d-b754-8dc45947c867"
+>
+<ReqRef
+ Id="1494c427-572b-4bfa-bfea-2aa68994f26e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="35b0fb55-f322-40c7-b19f-c98132dbe02f"
+>
+</ReqRef><Comment>Handles reception of Train accepted by the RBC.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Train accepted"
+ Guid="2dfc97cc-3038-4f6e-aa93-0ae81b2b5952"
+>
+<PreConditions>
+<PreCondition
+ Guid="004c4b64-a44e-4794-961c-bbe0398ae621"
+>Available ( aMessage.TRAIN_ACCEPTED )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="fc94d5e3-5ec4-4589-82e9-ccd1a4cb832f"
+>BTM.LRBG &lt;- BTM.BaliseGroupStruct{
+    Position =&gt; BTM.Position{
+        Position =&gt; Default.BaseTypes.Distance.Unknown,
+        UnderReadingAmountOdo =&gt; 0.0,
+        OverReadingAmountOdo =&gt; 0.0
+    },
+    NID =&gt; aMessage.TRAIN_ACCEPTED.NID_LRBG,
+    Orientation =&gt; Default.Orientation.Unknown,
+    Timestamp =&gt; Kernel.DateAndTime.CurrentTime
+}</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="440"
@@ -8831,7 +8989,7 @@ But at the end of the cycle the conditions required for sending of position repo
 </ReqRef><Comment>Second mobile terminal.</Comment>
 </Variable><Variable
  Type="ContactOptionEnum"
- DefaultValue="ContactOptionEnum.ContactLastKnownRBC"
+ DefaultValue=""
  VariableMode="Internal"
  X="930"
  Y="20"

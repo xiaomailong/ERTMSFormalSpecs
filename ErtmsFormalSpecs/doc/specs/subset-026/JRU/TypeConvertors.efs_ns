@@ -2467,7 +2467,7 @@ AND
 <PreCondition
  Guid="ee6e2512-53cf-4d33-b17a-0d8defd71341"
 >aContactOption == EURORADIO.ContactOptionEnum.ContactLastKnownRBC</PreCondition></PreConditions>
-<Expression>Messages.JRU.Q_RBCENTRY.Contact_last_unknown_RBC</Expression>
+<Expression>Messages.JRU.Q_RBCENTRY.Contact_last_known_RBC</Expression>
 </Case><Case
  Name="RBC Id and Phone Number"
  Guid="15bb8ff1-195f-4522-b05c-e1bef9647f0d"
@@ -2486,6 +2486,11 @@ AND
  Guid="b74926ce-5e94-438d-8c03-3270c6e9a8d6"
 >aContactOption == EURORADIO.ContactOptionEnum.UseOnBoardStoredShortNumber</PreCondition></PreConditions>
 <Expression>Messages.JRU.Q_RBCENTRY.Use_short_number</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="d8aa4286-c636-432c-bbc0-7cb4cef4c0b2"
+>
+<Expression>Messages.JRU.Q_RBCENTRY.Spare</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>

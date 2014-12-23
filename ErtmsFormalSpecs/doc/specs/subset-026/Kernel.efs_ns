@@ -2001,16 +2001,17 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0be3770f-e94d-4a8e-95e3-00ccc67e368f"
 >
-</ReqRef><StateMachine
- Default="InitialState"
+</ReqRef><Comment>State S3: Connection to the Radio Network</Comment>
+<StateMachine
+ Default="ProposeDriverActions"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="071f7069-c2df-45c2-aef4-77e2ac5e91a7"
 >
 <States>
 <State
- X="660"
- Y="140"
+ X="630"
+ Y="300"
  Width="300"
  Height="50"
  Implemented="TRUE"
@@ -2024,10 +2025,22 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 >
 </ReqRef><Comment>If the list of networks is empty, the process goes to A29, otherwise it allows driver to select one of the proposed Radio Network ids.</Comment>
 <StateMachine
- Default=""
+ Default="NetworkIDsReceived"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="4494d3fd-a533-4efa-a64d-6b8747ebf7c5"
+>
+<States>
+<State
+ Implemented="TRUE"
+ Name="NetworkIDsReceived"
+ Guid="708c704f-867e-48c7-9866-120d0a9cd7c8"
+>
+<Comment>When the Network IDs are received, display them to the Driver for selection.</Comment>
+<StateMachine
+ Default=""
+ Implemented="TRUE"
+ Guid="79b1b271-f61c-404d-86e9-2c149948fea8"
 >
 <Rules>
 <Rule
@@ -2087,7 +2100,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Actions>
 <Action
  Guid="21478aae-4b0b-4b85-861a-fe216b49e4fd"
->THIS &lt;- HandleModeChange.StartOfMission.A29</Action></Actions>
+>THIS &lt;- A29</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="List not empty"
@@ -2104,7 +2117,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Actions>
 <Action
  Guid="0d13890a-fdb8-4bb2-a3c5-978e1acfb39f"
->THIS &lt;- HandleModeChange.StartOfMission.S3.RadioNetworkIdChangeOffered</Action><Action
+>THIS &lt;- DriverSelection</Action><Action
  Guid="4b5b8b50-d10d-4d84-a0e9-46e32601d7c0"
 >DMI.MasterDMI().In_RBCContactInformation.SelectNetworkId(EURORADIO.AvailableNetworks.Networks)</Action></Actions>
 </RuleCondition></Conditions>
@@ -2112,25 +2125,20 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="390"
- Y="250"
- Width="300"
- Height="50"
  Implemented="TRUE"
- Name="RadioNetworkIdChangeOffered"
- Guid="5536cbaa-3a33-4711-b832-2623781cfa19"
+ Name="DriverSelection"
+ Guid="4b63cc76-56d4-4490-9302-8a0c2a42d9a7"
 >
 <ReqRef
  Id="5cc3aa7d-2f29-448d-ba8a-4b26df4678b0"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b1bc079b-462a-44e5-ae55-b8f38e5033e9"
+ Guid="46058e5b-99bb-4c52-94c7-bd964e358966"
 >
-</ReqRef><Comment>When the driver selects the desired Radio Network id, the id is stored and the RBC connection data state is set to uknown.</Comment>
+</ReqRef><Comment>Once a Network has been chosen, proceed to Registration.</Comment>
 <StateMachine
  Default=""
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="e59b4100-dcda-4c1d-887c-a78a0975c9a6"
+ Guid="5bf27bf8-e05e-4a2c-bae4-7a57c6823da9"
 >
 <Rules>
 <Rule
@@ -2160,9 +2168,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Actions>
 <Action
  Guid="cb962547-e788-46e1-b257-5e6b0bf8e644"
->THIS &lt;- HandleModeChange.StartOfMission.S3.OfferChangeRBCId</Action><Action
- Guid="615131b3-e09d-4cab-9cff-21775aa2d817"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.Disable()</Action></Actions>
+>THIS &lt;- Registration</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2201,7 +2207,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Actions>
 <Action
  Guid="198cb14a-02da-4a00-8f9c-b5ddffc80be8"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Unknown</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- Default.DataState.Unknown</Action><Action
  Guid="525893e1-c192-4679-9788-b1b77c5b89c3"
 >EURORADIO.RegisterMobileTerminals ( DMI.MasterDMI().In_RBCContactInformation.SelectedNetwork )</Action></Actions>
 </RuleCondition></Conditions>
@@ -2209,337 +2215,74 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="110"
- Y="360"
- Width="300"
- Height="50"
  Implemented="TRUE"
- Name="OfferChangeRBCId"
- Guid="ea83ebe9-9626-4775-ac91-fabc3c64fded"
+ Name="Registration"
+ Guid="ef3eb9d0-c08b-454d-90e4-ab80f692c10e"
 >
 <ReqRef
- Id="ff5aeaff-49e3-489d-816f-c49fc05bc951"
+ Id="3a73d38c-66b9-4e87-873d-9efe293f0f56"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e6b3e4d5-9ae9-4e70-a729-9833fc7a2f0d"
+ Guid="483b7394-358f-41d4-8bee-0a0c2db20e9b"
 >
-</ReqRef><Comment>According to the data state of the RBC contact information, different options are proposed to the driver.</Comment>
+</ReqRef><Comment>Wait for the terminal to complete registry, then propose a new set of actions to the Driver.</Comment>
 <StateMachine
  Default=""
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="f17fef62-6219-4c5f-a397-1af94418f9c5"
+ Guid="c0426b18-69d1-4389-a9b8-87316849a547"
 >
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Offer change RBC contact information"
- Guid="4bdaec4e-496b-47e8-af88-6e58516853c3"
+ Name="Current Terminal is registered"
+ Guid="83cd7df2-b0bc-4703-a753-d991269e88e8"
 >
-<ReqRef
- Id="ff5aeaff-49e3-489d-816f-c49fc05bc951"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="dc65e0a5-ee8c-4470-9ad6-60cc7ad1ea9c"
->
-</ReqRef><Comment>According to the data state of the RBC contact information, different options are proposed to the driver.</Comment>
+<Comment>Once the current terminal is registered with a Radio Network, propose the actions to the Driver once again.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Offer change RBC contact information"
- Guid="8d61adbd-d37d-474f-b243-49451b2bfa64"
+ Name="Registration complete"
+ Guid="e7b9ad69-87e9-4eb6-9093-fb6bcbbd9a71"
 >
-<Comment>According to the data state of the RBC contact information, different options are proposed to the driver.</Comment>
 <PreConditions>
 <PreCondition
- Guid="bc7f91b0-e11d-4017-b7a5-8bc60727b7ce"
->EURORADIO.MobileTerminalRegisteredToNetwork()</PreCondition></PreConditions>
+ Guid="c3842935-7c87-4440-93fd-86ce9d1d5f50"
+>EURORADIO.TerminalIsRegistered(EURORADIO.CurrentTerminal())</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="e026bf01-58e8-4495-ab41-9ce60c908c4d"
->THIS &lt;- HandleModeChange.StartOfMission.S3.RBCIdChangeOffered</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Offer change RBC contact data"
- Guid="cec4081e-e83b-475b-85ee-ec82b6930878"
->
-<Comment>According to the data state of the RBC contact information, different options are proposed to the driver.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Invalid RBC id"
- Guid="43a6ded7-a236-402e-8c69-a0efb36cc6cd"
->
-<ReqRef
- Id="1ab51773-764d-4fc1-b533-351222363321"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4110663d-cc84-4e4a-b884-016c0d80839d"
->
-</ReqRef><ReqRef
- Id="bc8058d6-c833-43cf-93a4-f446a3a326ac"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ec601a57-8b71-40c4-9925-51f7b30c36c4"
->
-</ReqRef><ReqRef
- Id="a9f86939-1651-4064-9732-2d860f2d28af"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="59194792-c84a-4cac-8c32-82ace4b68a2b"
->
-</ReqRef><Comment>If the RBC contact data state is invalid, the driver can use the last stored contact information, the EIRENE short number or revalidate the existing contact information.</Comment>
-<PreConditions>
-<PreCondition
- Guid="ec3f70a9-e747-4a79-bdbd-f8b7f145d927"
->EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Invalid</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="c81859b1-ca16-401d-97cb-7c06376e4a91"
->DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
-(
-    Actions =&gt; [ DMI.RBCContactActionEnum.RevalidateContactInfo, DMI.RBCContactActionEnum.UseEireneShortNumber, DMI.RBCContactActionEnum.UseLastStoredNumber ],
-    anRBCContactInformation =&gt; EURORADIO.CurrentRBCConnection().ContactData
-)</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Unknown RBC id"
- Guid="61f19972-c2c0-4337-a1e1-2a2c50199a75"
->
-<ReqRef
- Id="a9f86939-1651-4064-9732-2d860f2d28af"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e021ccda-1a47-41c3-b30f-d52a7383c2ae"
->
-</ReqRef><Comment>If the RBC contact data state is invalid, the driver can use the EIRENE short number or enter a new contact information.</Comment>
-<PreConditions>
-<PreCondition
- Guid="7cecdb0c-0aad-43fd-9fc1-d4c97f2a8ca9"
->EURORADIO.CurrentRBCConnection().ContactData.DataState== DataState.Unknown</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="bc9da2bf-28aa-4806-88db-3719ca725f9a"
->DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
-(
-    Actions =&gt; [ DMI.RBCContactActionEnum.EnterContactInfo, DMI.RBCContactActionEnum.UseEireneShortNumber ],
-    anRBCContactInformation =&gt; EMPTY
-)</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Valid RBC id"
- Guid="b66354f1-337e-4e25-bacc-fa698c0b5cb0"
->
-<ReqRef
- Id="bc8058d6-c833-43cf-93a4-f446a3a326ac"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="be956259-f686-4308-bbd2-543a583b721d"
->
-</ReqRef><Comment>If the RBC contact data state is invalid, the driver can only use the EIRENE short number.</Comment>
-<PreConditions>
-<PreCondition
- Guid="247a616b-4d85-46fd-aa47-94feb534f911"
->EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Valid</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="19da3fbc-42e2-4fd0-be14-5f15861cfa54"
->DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
-(
-    Actions =&gt; [ DMI.RBCContactActionEnum.UseEireneShortNumber ],
-    anRBCContactInformation =&gt; EURORADIO.CurrentRBCConnection().ContactData
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+ Guid="923250f3-997b-4a5f-a8ac-29986744abdb"
+>THIS &lt;- ProposeDriverActions</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</StateMachine></State><State
- X="110"
- Y="470"
- Width="300"
- Height="50"
- Implemented="TRUE"
- Name="RBCIdChangeOffered"
- Guid="92c082f4-e149-47c2-9745-645bbc046fe1"
->
-<ReqRef
- Id="ae370033-2f7d-478e-bce2-69e09a8cc718"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="21956293-d2e7-41f4-84da-a95b3d221876"
->
-</ReqRef><Comment>When the driver has answered, the process shall go to A31.</Comment>
-<StateMachine
- Default=""
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Guid="528440ae-5c40-4e65-a03c-1a8a4b624e0f"
->
-<Rules>
+</StateMachine></State></States>
+</StateMachine><EnterAction>
 <Rule
  Priority="Processing"
- Implemented="TRUE"
- Name="RBC Id response received"
- Guid="02d50fab-cda8-4188-88ba-a336e5779595"
+ Name="Enter action"
+ Guid="78530999-bd14-4d99-9c1c-c959c3e7544f"
 >
-<ReqRef
- Id="ae370033-2f7d-478e-bce2-69e09a8cc718"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1be11f62-5e32-4bc9-adff-e6944c0748a2"
->
-</ReqRef><Comment>When the driver has answered, the process shall go to A31.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RBC id response received"
- Guid="2a8f7c88-17db-411c-9622-a445a8af3d5d"
->
-<PreConditions>
-<PreCondition
- Guid="fe36d360-ebcd-4886-b1bc-8c2ad944b613"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.DriverAnswered</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="2be288e7-3344-49f9-b8cc-bc0358e5d574"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.Disable()</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="RBC Id Changed"
- Guid="e4bc9757-a75d-45bd-be7e-6a36f8300bb1"
->
-<Comment>If the driver has entered new RBC contact information, then its data state becomes valid.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RBC Id Changed"
- Guid="0fc22f18-920a-42bb-aaec-ef0d45206e01"
->
-<ReqRef
- Id="65c1baf8-73ca-4e1d-a95b-6371966bfa95"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5acf6dda-766c-4e5e-9174-b4f8e94faf03"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="5d1fc04b-3e60-461f-9ee1-bae0e4fb1821"
->DMI.MasterDMI().In_RBCContactInformation.DriversSelectedAction == DMI.RBCContactActionEnum.EnterContactInfo</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="3b851bc8-f02a-48ec-a13a-15b99c736f16"
->EURORADIO.CurrentRBCConnection().ContactData &lt;- EURORADIO.RBCContactStruct {
-    Id =&gt; DMI.MasterDMI().In_RBCContactInformation.SelectedRBCContactInformation.Id,
-    PhoneNumber =&gt; DMI.MasterDMI().In_RBCContactInformation.SelectedRBCContactInformation.PhoneNumber,
-    DataState =&gt; Default.DataState.Valid
-}</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="E5"
- Guid="38aa8d2b-13c3-49a9-8381-b3e801de7a3d"
->
-<ReqRef
- Id="ae370033-2f7d-478e-bce2-69e09a8cc718"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="74b0395f-6976-4fbf-9c3a-bfdb65c2f2ce"
->
-</ReqRef><Comment>When the driver has answered, the process shall go to A31.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="E5"
- Guid="3211135f-4149-4d84-9ccc-59d8ec1b9698"
+ Name="Enter action"
+ Guid="0426aaea-396b-4b44-9cb9-148ad7a84ca8"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="005ab267-bbd1-4474-b5e5-217058561ce5"
->THIS &lt;- HandleModeChange.StartOfMission.A31</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Update RBC contact options"
- Guid="805727e8-c699-491e-aff6-1176c19648f6"
->
-<Comment>The driver&apos;s selected action is stored.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Driver selected to use last stored RBC number"
- Guid="baec451f-e8af-437c-80ab-fdb4df4493ca"
->
-<ReqRef
- Id="369d7ae0-50db-411b-9941-bbe30e354733"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5c65e7c9-fe72-4ab3-9dff-68b7032339de"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="32626884-e265-4849-a120-f71a520e02a6"
->DMI.MasterDMI().In_RBCContactInformation.DriversSelectedAction == DMI.RBCContactActionEnum.UseLastStoredNumber</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="bf7bbae9-8b6d-4bd3-808a-af8eacf7b880"
->EURORADIO.ContactOption &lt;- EURORADIO.ContactOptionEnum.ContactLastKnownRBC</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Driver selected to use on-board stored short number"
- Guid="4ec4b9eb-c19e-428b-9669-0c963fd8ef1e"
->
-<ReqRef
- Id="40859515-77c4-46aa-96a5-12453cd171a2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4493eed4-c270-419e-8311-4807c96987ef"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="05fe5311-ce1b-4720-a2da-3b1f06a376cf"
->DMI.MasterDMI().In_RBCContactInformation.DriversSelectedAction == DMI.RBCContactActionEnum.UseEireneShortNumber</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="95793100-26fa-4d28-b9e4-af14dded9d38"
->EURORADIO.ContactOption &lt;- EURORADIO.ContactOptionEnum.UseOnBoardStoredShortNumber</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Driver revalidated or entered new RBC contact information"
- Guid="a0a0468b-05fe-4e0c-9c3e-e22aa2ae39a1"
->
-<ReqRef
- Id="cebfc056-7b96-49d7-a6ff-1fdf0076bb9e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e8368bf0-f055-4abd-93db-c3a1658a2785"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="9525b908-7a51-4be2-9ea4-897bf2b5942e"
->DMI.MasterDMI().In_RBCContactInformation.DriversSelectedAction in [ DMI.RBCContactActionEnum.EnterContactInfo, DMI.RBCContactActionEnum.RevalidateContactInfo ]</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="8851da30-5b10-432e-84a4-4d4e819e55ba"
->EURORADIO.ContactOption &lt;- EURORADIO.ContactOptionEnum.RBCIdAndPhoneNumber</Action></Actions>
+ Guid="3922fdae-0d9c-481d-a28e-4aeed5a2fdf6"
+>DMI.MasterDMI().In_RBCContactInformation.DriverElectsToReenterNetworkId &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</StateMachine></State><State
+</Rule></EnterAction>
+</State><State
  X="110"
- Y="140"
+ Y="300"
  Width="300"
  Height="50"
  Implemented="TRUE"
- Name="NetworkIdReenteringOffered"
+ Name="ActionsProposed"
  Guid="2714f59d-78fe-45a4-9d2f-23ac622d8693"
 >
 <ReqRef
@@ -2587,7 +2330,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Driver elects to enter network ID"
+ Name="Handle specific response"
  Guid="4bf01d41-c550-4d3a-a174-8e2d91f11bf4"
 >
 <Comment>If the driver elects to reenter the Radio Network Id, the on-boards requests the list of available ids to the Mobile Terminal(s).</Comment>
@@ -2599,6 +2342,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  Name="Driver elects to enter network ID"
  Guid="5b621f77-849f-44a9-a077-544ae1bb1c12"
 >
+<Comment>If the Driver chooses to (re)enter the network ID, get a list of networks to propose to the Driver.</Comment>
 <PreConditions>
 <PreCondition
  Guid="97859259-41d4-460f-959b-32957ccade83"
@@ -2612,15 +2356,110 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Otherwise"
- Guid="20f15c85-ae52-4aeb-962f-10fd0e7066d3"
+ Name="E5"
+ Guid="3211135f-4149-4d84-9ccc-59d8ec1b9698"
 >
+<Comment>If the Driver chooses another action, proceed to E5.</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="6da2dfc4-6d01-4b89-83eb-659b44569d6d"
->THIS &lt;- HandleModeChange.StartOfMission.S3.OfferChangeRBCId</Action></Actions>
+ Guid="005ab267-bbd1-4474-b5e5-217058561ce5"
+>THIS &lt;- A31</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update RBC contact options"
+ Guid="805727e8-c699-491e-aff6-1176c19648f6"
+>
+<Comment>The driver&apos;s selected action is stored.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Driver elected to use last stored RBC number"
+ Guid="baec451f-e8af-437c-80ab-fdb4df4493ca"
+>
+<ReqRef
+ Id="369d7ae0-50db-411b-9941-bbe30e354733"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5c65e7c9-fe72-4ab3-9dff-68b7032339de"
+>
+</ReqRef><Comment>Driver elected to use the last stored RBC number.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="32626884-e265-4849-a120-f71a520e02a6"
+>DMI.MasterDMI().In_RBCContactInformation.DriversSelectedAction == DMI.RBCContactActionEnum.UseLastStoredNumber</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="bf7bbae9-8b6d-4bd3-808a-af8eacf7b880"
+>EURORADIO.ContactOption &lt;- EURORADIO.ContactOptionEnum.ContactLastKnownRBC</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Driver elected to use on-board stored short number"
+ Guid="4ec4b9eb-c19e-428b-9669-0c963fd8ef1e"
+>
+<ReqRef
+ Id="40859515-77c4-46aa-96a5-12453cd171a2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4493eed4-c270-419e-8311-4807c96987ef"
+>
+</ReqRef><Comment>Driver elected to use the on-board stored short number.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="05fe5311-ce1b-4720-a2da-3b1f06a376cf"
+>DMI.MasterDMI().In_RBCContactInformation.DriversSelectedAction == DMI.RBCContactActionEnum.UseEireneShortNumber</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="95793100-26fa-4d28-b9e4-af14dded9d38"
+>EURORADIO.ContactOption &lt;- EURORADIO.ContactOptionEnum.UseOnBoardStoredShortNumber</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Driver revalidated or entered new RBC contact information"
+ Guid="a0a0468b-05fe-4e0c-9c3e-e22aa2ae39a1"
+>
+<ReqRef
+ Id="cebfc056-7b96-49d7-a6ff-1fdf0076bb9e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e8368bf0-f055-4abd-93db-c3a1658a2785"
+>
+</ReqRef><Comment>Driver revalidated or entered RBC contact information.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="9525b908-7a51-4be2-9ea4-897bf2b5942e"
+>DMI.MasterDMI().In_RBCContactInformation.DriversSelectedAction in [ DMI.RBCContactActionEnum.EnterContactInfo, DMI.RBCContactActionEnum.RevalidateContactInfo ]</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="RBC id changed"
+ Guid="47e640e2-e929-41e7-bb6c-0f166a59640d"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="RBC id changed"
+ Guid="4ed548d4-93df-4a28-90ea-a1593b3f9cee"
+>
+<PreConditions>
+<PreCondition
+ Guid="ae2a8cea-d2ab-4a99-89c0-67427153c65a"
+>DMI.MasterDMI().In_RBCContactInformation.DriversSelectedAction == DMI.RBCContactActionEnum.EnterContactInfo</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9de675ca-f9a8-4377-9d0a-27e5939234d9"
+>EURORADIO.CurrentRBCConnection().ContactData &lt;- EURORADIO.RBCContactStruct{
+    Id =&gt; DMI.MasterDMI().In_RBCContactInformation.SelectedRBCContactInformation.Id,
+    PhoneNumber =&gt; DMI.MasterDMI().In_RBCContactInformation.SelectedRBCContactInformation.PhoneNumber,
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2631,7 +2470,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  Width="300"
  Height="50"
  Implemented="TRUE"
- Name="InitialState"
+ Name="ProposeDriverActions"
  Guid="bd647c1a-2399-4122-ac9f-7681a0de7fff"
 >
 <ReqRef
@@ -2651,7 +2490,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Offer reenter network id"
+ Name="Offer currently possible actions to the Driver"
  Guid="ca6bcbe9-a6e3-4fa7-94d8-2855a7d09300"
 >
 <ReqRef
@@ -2664,7 +2503,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Offer reenter network id"
+ Name="Propose Driver actions"
  Guid="3cfbfa67-eb12-470c-a026-ce3e13ee42f0"
 >
 <Comment>The driver can only request to select a new Radio Network Id.</Comment>
@@ -2673,12 +2512,12 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Actions>
 <Action
  Guid="61891f14-3e04-4ca2-a56b-9e6c6f04364d"
->THIS &lt;- HandleModeChange.StartOfMission.S3.NetworkIdReenteringOffered</Action><Action
+>THIS &lt;- ActionsProposed</Action><Action
  Guid="295e1d05-4478-4870-97fd-1fa5d8fcf302"
 >DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
 (
-    Actions =&gt; [ DMI.RBCContactActionEnum.ReenterNetworkId ],
-    anRBCContactInformation =&gt; EMPTY
+    Actions =&gt; EURORADIO.GetDriverActionsForSoM(),
+    anRBCContactInformation =&gt; EURORADIO.GetRBCContactInfoForSoM()
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>

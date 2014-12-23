@@ -10080,7 +10080,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="0c39f19d-3872-4b23-b460-ba753aa44492"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.NetworkIdReenteringOffered</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ActionsProposed</Action><Action
  Guid="d83054ec-b936-4834-accf-4bdb3f78d8c3"
 >DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="4785624a-d4f9-4669-b796-3dd3cfa94273"
@@ -10185,8 +10185,9 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ DeadLine="1"
  Guid="6369b968-b9a1-40fa-ae3d-e48463c8c350"
->Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCId</Expectation></Expectations>
+>Kernel.HandleModeChange in Kernel.HandleModeChange.StartOfMission.S3.ActionsProposed</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -10265,7 +10266,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="9f0a5edc-ad74-471b-afea-d04aaa4c8b64"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCId</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ProposeDriverActions</Action><Action
  Guid="f5c662f4-fab7-43dc-904f-a4328eaeff34"
 >EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.TerminalStruct.RegistrationStateSM.Registered</Action><Action
  Guid="6396f662-5eba-46a8-932c-3473c823120c"
@@ -10285,7 +10286,9 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 [
     DMI.RBCContactActionEnum.RevalidateContactInfo,
     DMI.RBCContactActionEnum.UseEireneShortNumber,
-    DMI.RBCContactActionEnum.UseLastStoredNumber
+    DMI.RBCContactActionEnum.UseLastStoredNumber,
+    DMI.RBCContactActionEnum.EnterContactInfo,
+    DMI.RBCContactActionEnum.ReenterNetworkId
 ]</Expectation><Expectation
  Kind="Instantaneous"
  Guid="78e1429a-8d0d-409d-a54a-8a8ae84d98b8"
@@ -10312,7 +10315,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="10bff51d-36cf-4f52-96d7-3488803a4b1a"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCId</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ProposeDriverActions</Action><Action
  Guid="46905405-653d-4779-a78e-59fffc305ff7"
 >EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.TerminalStruct.RegistrationStateSM.Registered</Action><Action
  Guid="68efa288-04ab-4fc9-83a5-df1e9c17a58f"
@@ -10330,6 +10333,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="66c939c9-07a3-4d34-b76a-5e0c23a8abe6"
 >DMI.MasterDMI().In_RBCContactInformation.ProposedActions == 
 [
+    DMI.RBCContactActionEnum.ReenterNetworkId,
     DMI.RBCContactActionEnum.UseEireneShortNumber
 ]</Expectation><Expectation
  Kind="Instantaneous"
@@ -10357,7 +10361,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="ab3d83ae-ef80-4e1d-be9f-30e9719adda5"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.OfferChangeRBCId</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ProposeDriverActions</Action><Action
  Guid="a7d8e6f4-db1c-455c-9125-e4b1f2e6f8d7"
 >EURORADIO.Terminal1.RegistrationState &lt;- EURORADIO.TerminalStruct.RegistrationStateSM.Registered</Action><Action
  Guid="cecf1275-73c7-43d9-98e2-c1620437d190"
@@ -10375,6 +10379,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="5801acee-8886-478c-aa75-ba1328ebd893"
 >DMI.MasterDMI().In_RBCContactInformation.ProposedActions == 
 [
+    DMI.RBCContactActionEnum.ReenterNetworkId,
     DMI.RBCContactActionEnum.EnterContactInfo,
     DMI.RBCContactActionEnum.UseEireneShortNumber
 ]</Expectation><Expectation
@@ -10425,9 +10430,11 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="717238a6-3473-4d52-b989-47bc5bd4482d"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.RBCIdChangeOffered</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ActionsProposed</Action><Action
  Guid="c5c9aaa9-eae2-49b1-956c-8baebeab0010"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
+ Guid="d6c9e8a9-4ea0-485e-a1f6-7b85ea0edad1"
+>DMI.MasterDMI().In_RBCContactInformation.DriverElectsToReenterNetworkId &lt;- False</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -10456,7 +10463,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="463ebdcf-db4d-421b-b56c-14c018d06718"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.RBCIdChangeOffered</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S3.ActionsProposed</Action><Action
  Guid="5a46ea13-1e37-4ec7-bdfe-516b370dece5"
 >DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="2bb26852-d088-40d5-bf39-b91ea18d8e3b"
@@ -10479,6 +10486,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="75a3c059-555b-4c9a-9ed3-2a315840640f"
 >EURORADIO.CurrentRBCConnection().ContactData.PhoneNumber == &apos;2398&apos;</Expectation><Expectation
  Kind="Instantaneous"
+ DeadLine="1"
  Guid="e0f4e289-dbf0-474b-b5eb-e313f193a2ad"
 >EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Valid</Expectation><Expectation
  Kind="Instantaneous"
