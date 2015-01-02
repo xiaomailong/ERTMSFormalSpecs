@@ -1214,6 +1214,10 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
  Name="Two BGs"
  Guid="84e46cd8-5e10-4316-bd28-38f4540024f7"
 >
+<PreConditions>
+<PreCondition
+ Guid="f8dcdf38-e6ba-4440-a046-60992b0d3b5e"
+>Available(BTM.PreviousLRBG())</PreCondition></PreConditions>
 <Expression>Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.Message
 {
     POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS=&gt;Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.Message
@@ -1233,6 +1237,30 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
         M_MODE =&gt; FillModeInformation(),
         M_LEVEL =&gt; FillLevelInformation()
     }
+}</Expression>
+</Case><Case
+ Name="One BG, orientation unknown"
+ Guid="de29c384-ec75-48bb-a7a5-8baefbc6287e"
+>
+<Expression>Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.Message
+{
+    POSITION_REPORT=&gt; Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORT.Message
+    {
+        Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+        NID_LRBG =&gt; BTM.LRBG.NID,
+        D_LRBG =&gt; FillDistance(),
+        Q_DIRLRBG =&gt; Default.Q_DIRLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation ),
+        Q_DLRBG =&gt; Default.Q_DLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition ),
+        L_DOUBTOVER =&gt; Default.MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER), Messages.Q_SCALE._1_m_scaleC ),
+        L_DOUBTUNDER =&gt; Default.MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER), Messages.Q_SCALE._1_m_scaleC ),
+        Q_LENGTH =&gt; TIU.TrainIntegrity.Status,
+        L_TRAININT =&gt; Default.MessageTypes.UnScaleLength ( FillTrainIntegrityInformation(), Messages.Q_SCALE._1_m_scaleC),
+        V_TRAIN =&gt; Default.MessageTypes.UnResolveSpeed ( Odometry.TrainSpeed(), 5.0 ),
+        Q_DIRTRAIN =&gt; Default.Q_DIRTRAIN ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection ),
+        M_MODE =&gt; FillModeInformation(),
+        M_LEVEL =&gt; FillLevelInformation()
+    },
+    POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS =&gt; EMPTY
 }</Expression>
 </Case></Cases>
 </Function><Function
