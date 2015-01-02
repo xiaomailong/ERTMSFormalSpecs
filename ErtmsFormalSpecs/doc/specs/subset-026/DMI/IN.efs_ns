@@ -944,6 +944,40 @@
  Guid="7ca42f42-34db-46a3-88ef-3e5e9be102eb"
 >
 </ReqRef><Comment>Acknowledgement of a shunting request</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Display Shunting Request"
+ Guid="a6278a3a-eb11-498d-8ec2-d5df618e9dad"
+>
+<ReqRef
+ Id="3d01d017-72ad-4ae6-888e-a4e7f0241a33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4732f948-1017-4cff-b330-2d04cabd30a0"
+>
+</ReqRef><Comment>Display the Shunting Request if the train is at standstill.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Display Shunting Request"
+ Guid="afacd343-2188-4571-a4f0-8a0b9f15a051"
+>
+<PreConditions>
+<PreCondition
+ Guid="487837a4-4fec-433e-96ef-be1f39c069a1"
+>Odometry.TrainIsAtStandstill()</PreCondition><PreCondition
+ Guid="b392428c-2e67-4b0d-8638-557b1554b2d4"
+>InputInformation.RequestStatus == Default.Request.Disabled</PreCondition><PreCondition
+ Guid="4147a8a3-fef5-4d1f-a85a-f00a875464a8"
+>NOT InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="794adc96-4807-4177-9a23-4eda1869e819"
+>InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
