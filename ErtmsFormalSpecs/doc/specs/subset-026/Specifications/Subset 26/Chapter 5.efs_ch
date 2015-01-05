@@ -7979,7 +7979,7 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  scope="FLAGS"
  bl=""
  name=""
- status="Implemented"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="1ba3133a-d773-4c35-99f9-1fff5698675d"
@@ -7996,7 +7996,7 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  infoRequired="TRUE"
  Name=""
@@ -8004,43 +8004,35 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
 ><Comment>In our understanding, this paragraph states that in order to be able to enter the new area, the train needs an authorization to run in the new area, but this is true everywhere. Does this paragraph states something else? If not, what is the reason of adding this paragraph?</Comment>
 For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either:<Sub>
 <Paragraph
- id="5.10.3.1.2.1"
+ id="5.10.3.1.2.a"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="10de7e67-23c3-4a05-8dea-663895728a95"
 >as an MA and track description information into the new area, or<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="a9ba37e0-fd75-4d62-8cd7-3e09e5e77cb3"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="e0414d13-0742-4f39-90bc-d8c0b1bed046"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="5.10.3.1.2.2"
+ id="5.10.3.1.2.b"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="d8c87e49-f79a-4070-b451-f8fdcc8c1071"
 >as a target speed at the border location i.e. as an LOA.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="083188f8-9c03-407b-b2ad-e93e447bf206"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="c01ab897-433f-4c43-b917-f20e11260f04"
 >
@@ -8048,10 +8040,6 @@ For the train to be able to enter the new area, the old area must possess inform
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="25d78d95-b4ad-454c-945e-e8662fc619b4"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="41fb85fc-1cd7-4b69-98f0-4a58f05f46a7"
 >
@@ -8125,16 +8113,12 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="67636ec5-7748-4138-a51f-2dff374c08de"
 >If an order to connect to an RBC has been received and the train will not enter the announced RBC area, an order to terminate the session shall be sent either from balises or from the RBC for any route not leading to the RBC area. This is the case both if the train turns back and if the train continues in the same direction, but on another route.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="e420c28c-9391-4e44-8eee-3db3ab105d80"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="340a537a-3183-4137-aa15-46108313753d"
 >
@@ -8168,16 +8152,12 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="ee345c99-9a39-4e05-8317-0abe2e53dae7"
 >An order to connect to the RBC with a given id and telephone number shall be given via balise group in rear of the border location.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="e1b4cbe4-ffe7-44b5-9059-16f1424a48ec"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="a7d20909-8c16-4926-9d2f-544491d5b16a"
 >
@@ -8311,18 +8291,46 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="c00f63e5-6e86-472d-8c58-01a717659705"
->For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either
-	a) as an MA and track description information into the new area, or
-	b) as a target speed at the border location i.e. as an LOA.<RequirementSets>
+>For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either<Sub>
+<Paragraph
+ id="5.10.3.3.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="e691e322-6827-4fb2-aaa2-921131e61148"
+>as an MA and track description information into the new area, or<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="45b649bd-dc88-47e1-bb78-7c80737f90d8"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="859ec82b-8c67-413f-9443-25abf03410e1"
 >
-</RequirementSetReference><RequirementSetReference
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.10.3.3.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="fd3c7b74-7485-4b50-bf82-78ad56e16804"
+>as a target speed at the border location i.e. as an LOA.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="65768fdb-5e3e-4c46-8675-c8b0a2cc4f63"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="ebd6e1ae-b328-409f-9730-d4faf9a6628e"
 >
@@ -8490,18 +8498,46 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="a3cb8501-500f-41b4-99a5-928ee951c819"
->For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either
-	a) as an MA and track description information into the new area, or
-	b) as a target speed at the border location i.e. as an LOA.<RequirementSets>
+>For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either<Sub>
+<Paragraph
+ id="5.10.3.5.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="eda1910e-a0b5-43de-89f5-c33036a44278"
+>as an MA and track description information into the new area, or<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="de5d30f6-c691-4cac-b513-dc2457842359"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="eb2f9bed-feeb-4774-9255-32853f35c478"
 >
-</RequirementSetReference><RequirementSetReference
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.10.3.5.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="69335cb8-f8a1-45e7-a529-6010ef297a06"
+>as a target speed at the border location i.e. as an LOA.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="8e242348-1500-4830-89d0-0a12d1086853"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="3b335b07-7061-4087-9763-17ca16227e78"
 >
@@ -8556,18 +8592,46 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="20ce3d8d-e845-462d-a68f-ff93e4af8af4"
->For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either
-	a) as an MA and track description information into the new area, or
-	b) as a target speed at the border location i.e. as an LOA.<RequirementSets>
+>For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either<Sub>
+<Paragraph
+ id="5.10.3.6.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="05952c59-5b44-404b-a5eb-87e9199e6ca0"
+>as an MA and track description information into the new area, or<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="fbd3a77f-d151-4a61-8bed-a82b078bff5f"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="595528b9-f937-450a-9275-77fb169b376f"
 >
-</RequirementSetReference><RequirementSetReference
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.10.3.6.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="07bcdba2-595c-4160-b1fa-92d826e44818"
+>as a target speed at the border location i.e. as an LOA.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="7216f4b1-2d2c-49ae-b5e2-71ee5e69541f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="490942f2-c015-453e-abcf-3ab6847c86c8"
 >
@@ -8662,16 +8726,12 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="b9eef187-de62-4e91-9ca2-8e80fcda562a"
 >An order to connect to the RBC with a given id and telephone number shall be given via balise group in rear of the border location.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="b15c7f50-ddbf-4612-a676-5632595b6948"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="c442368f-deb2-42eb-9d4a-30fde6e33d14"
 >
@@ -8909,18 +8969,46 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="312b695b-a91a-4dfd-8816-c7d7ef6e7c19"
->For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either
-	a) as an MA and track description information into the new area, or
-	b) as a target speed at the border location i.e. as an LOA.<RequirementSets>
+>For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either<Sub>
+<Paragraph
+ id="5.10.3.9.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6bc241a4-153b-48d2-a3b9-8734e7714b07"
+>as an MA and track description information into the new area, or<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="50fd1128-c848-495d-9833-d3bf9b7bdd50"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="351a7529-5de5-41d4-8913-84cb437ad005"
 >
-</RequirementSetReference><RequirementSetReference
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.10.3.9.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="55c53574-abb2-4110-ae26-3f9cd74c1237"
+>as a target speed at the border location i.e. as an LOA.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="15a40d45-8204-46ac-a9cf-84e84614aa03"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="2e413340-e169-48c1-b942-273d2d6054c7"
 >
@@ -8996,18 +9084,46 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="8f6e94e0-d9c3-4b74-ae40-72a7434ddac3"
->For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either
-	- as an MA and track description information into the new area, or
-	- as a target speed at the border location i.e. as an LOA.<RequirementSets>
+>For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either<Sub>
+<Paragraph
+ id="5.10.3.10.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="84646629-b268-413d-a4d9-959f02af510f"
+>as an MA and track description information into the new area, or<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="273a0228-d399-4f22-ac3f-7008676cd280"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="c8b9e1e4-3f8e-4006-8adc-351bf022bfb0"
 >
-</RequirementSetReference><RequirementSetReference
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.10.3.10.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="54791f37-8622-428d-9844-f22ea2f14651"
+>as a target speed at the border location i.e. as an LOA.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="6c419744-e255-4ff1-80d9-8837dd4a652f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="cb2ea6f8-b335-413d-b14a-89f19324a847"
 >
@@ -9084,7 +9200,7 @@ For the train to be able to enter the new area, the old area must possess inform
  version="3.0.0"
  Name=""
  Guid="fca28ee5-38be-4707-94b2-4bc07faf660b"
->In case the ERTMS/ETCS on-board equipment is interfaced to the National System through an STM, please refer to SUBSET-035 for the STM state transition orders in relation to the level transition announcement and border..<RequirementSets>
+>In case the ERTMS/ETCS on-board equipment is interfaced to the National System through an STM, please refer to SUBSET-035 for the STM state transition orders in relation to the level transition announcement and border.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="49797a05-c058-4a6a-a9e0-27ace427a217"
@@ -9515,7 +9631,7 @@ For the train to be able to enter the new area, the old area must possess inform
  SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
  Guid="1126d193-c89c-42ce-8872-0ef54aa6ffd5"
 >
-</ReqRef>Transition initiated by driver<RequirementSets>
+</ReqRef>In addition to the level transitions ordered by trackside, it is also possible, at standstill, for the driver to change the ERTMS/ETCS level (refer to section 3.18.4.2).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="ca44d61c-ff42-472a-b9c5-92d8f3b20506"
@@ -9535,10 +9651,48 @@ For the train to be able to enter the new area, the old area must possess inform
  version="3.0.0"
  Name=""
  Guid="cae9ea11-6eb1-49b7-b010-183e0c897e7b"
->If the driver changes the level to 2 or 3, the ERTMS/ETCS on-board equipment shall establish a communication session with the RBC:
-	a) immediately if at least one Mobile Terminal is registered to a Radio Network and a valid RBC ID/ phone number is available, OR
-	b) once the driver has selected the RBC contact information (by the same means as for Start of Mission), if either no Mobile Terminal is registered to a Radio Network or no valid RBC ID/phone number is available.<Sub>
+>If the driver changes the level to 2 or 3, the ERTMS/ETCS on-board equipment shall establish a communication session with the RBC:<Sub>
 <Paragraph
+ id="5.10.3.15.2.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="38c25256-da47-4c77-a112-1ee0d724e7f2"
+>immediately if at least one Mobile Terminal is registered to a Radio Network and a valid RBC ID/ phone number is available, OR<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e5903931-8a68-44c1-be50-666ca2542583"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="906874b5-811f-4b8c-9850-79d2459d45f0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.10.3.15.2.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="573d0d6d-98df-43fa-8065-22f5dae937f3"
+>once the driver has selected the RBC contact information (by the same means as for Start of Mission), if either no Mobile Terminal is registered to a Radio Network or no valid RBC ID/phone number is available.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7c673d75-95bf-48fc-b834-e596ab551fdb"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="3a660431-b524-49a8-b526-2600a22e0301"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="5.10.3.15.2.1"
  type="REQUIREMENT"
  scope="FLAGS"
