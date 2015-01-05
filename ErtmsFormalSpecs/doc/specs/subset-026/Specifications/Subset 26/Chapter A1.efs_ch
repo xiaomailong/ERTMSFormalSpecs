@@ -76,6 +76,22 @@
  Guid="59a1fe42-316d-46d1-96ba-6a4d28d6bb71"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.1.4"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="a2b0cd6a-ad4a-4cd9-bf2a-2a8639adbf37"
+>Information that is marked as Available in section 4.7, but for which we have not found any display conditions will be sent to the DMI as if it was Active.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fdcb00d8-97f8-4f17-8f64-15a827e63e72"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -1664,11 +1680,11 @@ The non-matching elements defined in Subset-027 are:
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="A1.1.23"
- type="REQUIREMENT"
+ type="TITLE"
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="79cf885b-315d-408c-87cc-c16c3e53bc97"
@@ -1698,11 +1714,11 @@ The non-matching elements defined in Subset-027 are:
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="A1.1.24"
- type="REQUIREMENT"
+ type="TITLE"
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="6424d9c8-7112-4bae-99d8-af5cf73fe0cb"
@@ -1729,6 +1745,40 @@ As the spec does not say in wich modes the traction system must be displayed, it
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2de3090e-16ab-43eb-8fa7-5d35e0bbf342"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.25"
+ type="TITLE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="8de1b122-19e8-4fa5-882c-140134cc7d6d"
+>Calculation of V_MRSP<Sub>
+<Paragraph
+ id="A1.1.25.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="5da2e749-a3e2-4dba-99b5-f766189c6f3e"
+>The calculation of V_MRSP (see 3.13.10.2.8) is limited in the case where the on-board has just received the MA and track description to the distance 0 (LRBG location), as our implementation does not store MRSP values in advance of the LRBG.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="63092628-71de-4d4d-a9f2-5f4399687876"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="71841c5e-7ac1-47cf-abbe-a068ca773796"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>

@@ -24389,11 +24389,9 @@ A_brake_emergency_x(V) is equal to the emergency brake model, A_brake_emergency,
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- specIssue="TRUE"
  Name=""
  Guid="05b26663-30b6-44d4-8063-71e9774b2488"
-><Comment>We assume that the A_brake_emergency used here is the one calculated by the conversion model.</Comment>
-The maximum EB deceleration A_ebmax shall be the maximum of A_brake_emergency between 0 km/h and the maximum speed of the train.<RequirementSets>
+>The maximum EB deceleration A_ebmax shall be the maximum of A_brake_emergency between 0 km/h and the maximum speed of the train.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="0339b69d-f183-4b53-88aa-d8009f7eb968"
@@ -27938,9 +27936,7 @@ Or d_P(V_MRSP-n) = min { ( d_SBI1(V_MRSP-n) - V_MRSP-n * Tdriver ), d_GUI(V_MRSP
  version="3.0.0"
  Name=""
  Guid="7da2c959-4215-45b4-b239-3b315d76277c"
-><Comment>When the EVC has just passed a new LRBG, the min front end of the train will not be covered by the MRSP.
-Our implementation handles this by taking the max between zero distance and the min front end (so that V_MRSP is derived only from distances covered by the current MRSP).</Comment>
-In the following sections, the term V_MRSP (together with the derived ceiling supervision limits) refers to the lowest MRSP element encountered between the min safe front end and the max safe front end of the train.<RequirementSets>
+>In the following sections, the term V_MRSP (together with the derived ceiling supervision limits) refers to the lowest MRSP element encountered between the min safe front end and the max safe front end of the train.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a84e2053-7be1-4f7b-b147-260ae39e524a"
