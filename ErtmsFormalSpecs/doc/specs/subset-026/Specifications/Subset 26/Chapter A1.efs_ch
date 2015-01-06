@@ -92,6 +92,54 @@
  Guid="fdcb00d8-97f8-4f17-8f64-15a827e63e72"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.1.5"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="01d5b677-947b-41a3-b122-755926f72f02"
+>The speed and distance monitoring supervision status, to be sent to the DMI, includes the speed and distance monitoring type. This information is necessary for the DMI but is not explicitely provided in the specs.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="576b88f5-1bd9-4aad-a121-d390d3ef218b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.1.6"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="90aeeb77-0da0-47f5-ac84-c4490540a1c0"
+>Subset-026 doesn&apos;t specify the conditions of display of Geographical Position. According to the document &quot;ETCS DMI Objectis - Start Stop Conditions v1.0.0.xls&quot;, only the driver can ask the display of Operated System Version. To model it, an input variable was added to the structure GeographicalPosition, handling the requests from the driver.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="774ad0e3-3354-4260-919c-5a519df77612"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.1.7"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="ff71a9f1-39e5-4439-b9c5-c29510d74dd2"
+>According to Subset-026 Paragraph 5.16.1.4.a, the level crossing information has to be displayed if the EOA or the SvL related to the LX start location becomes the Most Restrictive Displayed Target (see 3.13.10.4.2). But this condition can be satisfied if the MRDT is not displayed yet, in that case we suppose that the level crossing information shouldn&apos;t be displayed either.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1347ff72-366f-4122-8417-96eaba4199b4"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -2175,56 +2223,6 @@ As the spec does not say in wich modes the traction system must be displayed, it
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="5915868f-cc88-485b-8d8a-2dfca5dc70d0"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph><Paragraph
- id="A1.2.3"
- type="REQUIREMENT"
- scope="FLAGS"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- Name=""
- Guid="e61eb334-9566-4cbb-bea5-863ccc426b66"
->Information for DMI<Sub>
-<Paragraph
- id="A1.2.3.1"
- type="REQUIREMENT"
- scope="FLAGS"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- Name=""
- Guid="01d5b677-947b-41a3-b122-755926f72f02"
->The speed and distance monitoring supervision status, to be sent to the DMI, includes the speed and distance monitoring type. This information is necessary for the DMI but is not explicitely provided in the specs.<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="576b88f5-1bd9-4aad-a121-d390d3ef218b"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph><Paragraph
- id="A1.2.3.2"
- type="REQUIREMENT"
- scope="FLAGS"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- Name=""
- Guid="1863d339-25c3-497c-bc7e-4a7c09daf727"
->The value shall always be sent to the DMI, when available. The DMI will use this information, if requested<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="b64cb6eb-1fb7-41a2-987e-c0df58dcb212"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph></Sub>
-<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="a56c37f3-cbf6-4200-95e5-8d0787e1f57f"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
