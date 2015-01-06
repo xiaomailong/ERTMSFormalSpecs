@@ -9667,6 +9667,46 @@ The report is handled in the EURORADIO namespace</Comment>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State></States>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Display Shunting Request"
+ Guid="a6278a3a-eb11-498d-8ec2-d5df618e9dad"
+>
+<ReqRef
+ Id="3d01d017-72ad-4ae6-888e-a4e7f0241a33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4732f948-1017-4cff-b330-2d04cabd30a0"
+>
+</ReqRef><Comment>Display the Shunting Request if all the necessary conditions are satisfied (see the State S10 of Start of Mission): the driver id is valid, the level is validn the train position is valid and the train is at standstill (since it is in SB mode).</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Display Shunting Request"
+ Guid="afacd343-2188-4571-a4f0-8a0b9f15a051"
+>
+<PreConditions>
+<PreCondition
+ Guid="487837a4-4fec-433e-96ef-be1f39c069a1"
+>Odometry.TrainIsAtStandstill()</PreCondition><PreCondition
+ Guid="b392428c-2e67-4b0d-8638-557b1554b2d4"
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Default.Request.Disabled</PreCondition><PreCondition
+ Guid="4147a8a3-fef5-4d1f-a85a-f00a875464a8"
+>NOT DMI.MasterDMI().In_ShuntingRequest.InputInformation.DriverAnswered</PreCondition><PreCondition
+ Guid="f87bb6ae-17c7-4285-8e28-fcbeaeb36771"
+>Kernel.Level.DataState == DataState.Valid</PreCondition><PreCondition
+ Guid="662c3df4-c42d-42b4-969f-26374908d16a"
+>Kernel.DriverId.DataState == DataState.Valid</PreCondition><PreCondition
+ Guid="8b553c5e-3a07-4b2e-8694-8654c55631d7"
+>Kernel.TrainPosition.TrainPosition.DataState == DataState.Valid</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="794adc96-4807-4177-9a23-4eda1869e819"
+>DMI.MasterDMI().In_ShuntingRequest.InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </StateMachine></State><State
  X="730"
  Y="60"
