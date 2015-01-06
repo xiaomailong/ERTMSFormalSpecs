@@ -1542,6 +1542,11 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="edb6a290-6fa2-49c1-99c9-4042b60f02c6"
 >
+</ReqRef><ReqRef
+ Id="ff71a9f1-39e5-4439-b9c5-c29510d74dd2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c64cc6f-b6c2-4826-b7e1-815a892ecce4"
+>
 </ReqRef><Comment>If a non protected LX becomes an MRDT, it has to be displayed.</Comment>
 <PreConditions>
 <PreCondition
@@ -1554,7 +1559,11 @@ SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Location == NearestLX( L
   AND  
 SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed == 0.0</PreCondition><PreCondition
  Guid="be2849b2-d98c-45ab-95e8-0e4ecae4735a"
->NOT DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+>NOT DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="caa6693a-447c-49de-97ec-4021fea274e1"
+>DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DisplayRequested == True</PreCondition><PreCondition
+ Guid="433c1762-c317-4ac3-9395-a34b66a74ca2"
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested == True</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a55924d2-3614-4ec0-b0cf-adcee82b22a9"
