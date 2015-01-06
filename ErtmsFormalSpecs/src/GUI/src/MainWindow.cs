@@ -564,11 +564,11 @@ namespace GUI
         /// </summary>
         public void UpdateTitle()
         {
-            String windowTitle = "ERTMS Formal Spec Workbench";
+            String windowTitle = "ERTMSFormalSpecs Workbench";
 
-            foreach (DataDictionary.Dictionary dictioanry in EFSSystem.Dictionaries)
+            foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                windowTitle += " " + dictioanry.FilePath;
+                windowTitle += " " + dictionary.FilePath;
             }
 
             if (EFSSystem != null && EFSSystem.ShouldSave)
