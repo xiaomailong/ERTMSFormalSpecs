@@ -3278,4 +3278,84 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
 >
 </ReqRef><Comment>Indicates if the EB command was specified. Use to determine wheter EB command was triggered due to SBI supervision limit or EBI supervision limit.</Comment>
 </Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Display MRDT"
+ Guid="ce801b5f-440e-42ac-b2c8-8673d9527ef2"
+>
+<ReqRef
+ Id="96719821-5827-4475-bf1c-8200e9c230e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a28ff937-5c77-4818-ac10-f2c1089b9ae5"
+>
+</ReqRef><Comment>When the speed and distance monitoring is in TSM, display the target speed and distance to target information on the DMI.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="In TSM"
+ Guid="663134a6-2bdd-40df-a5e6-5328537d077d"
+>
+<PreConditions>
+<PreCondition
+ Guid="ed7c18c8-9916-42b4-a148-c8fa749672f4"
+>Monitoring in MonitoringTypeSM.Target</PreCondition><PreCondition
+ Guid="fa5bd0d4-bc50-4790-a500-786894ea795c"
+>NOT DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested
+  OR  
+NOT DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="4a411142-5898-4368-94e1-eda1a6d8e0e9"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action><Action
+ Guid="379bfbb4-8fac-409a-b268-779785db0b11"
+>DMI.MasterDMI().Out_TargetSpeed.Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Display Release Speed"
+ Guid="5c92cde1-4120-4c02-8b69-884049fefac5"
+>
+<ReqRef
+ Id="ee7b5ecc-20f6-480c-aa0a-7836d5308d32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fd282b9d-7a4a-4a79-b069-3a5e2264465c"
+>
+</ReqRef><ReqRef
+ Id="220617b2-d0d2-4c8e-a475-e9d9a8761441"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6ba159a6-91e1-44d4-bfa4-fee1a44c3e43"
+>
+</ReqRef><Comment>When the speed and distance monitoring is in RSM, display the release speed and distance to target information on the DMI.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="IN RSM"
+ Guid="6f864eb3-3c94-47cf-890b-b2fcf6835df8"
+>
+<PreConditions>
+<PreCondition
+ Guid="674a48a4-12cd-4224-9c99-1d283a29ba91"
+>Monitoring in MonitoringTypeSM.Release</PreCondition><PreCondition
+ Guid="3a58c397-dc7d-4d8e-8748-37fbf73b5f69"
+>NOT DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested
+  OR  
+NOT DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1fe599b1-6f99-43f1-8625-70b81b394a28"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action><Action
+ Guid="e2712580-841c-4dd1-88f4-a8e6583f7ba9"
+>DMI.MasterDMI().Out_ReleaseSpeed.Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>

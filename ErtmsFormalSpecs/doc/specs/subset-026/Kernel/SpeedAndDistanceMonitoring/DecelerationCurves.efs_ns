@@ -921,10 +921,16 @@ BaseTypes.SpeedToMS( Vest + Vdelta0() + Vdelta1(EstimatedAccelerationSetToZero) 
  Default=""
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="GUI_Target"
  Guid="aaba99b9-f4f2-44d0-94f7-54d0f2bbc893"
 >
-<Comment>Provides the deceleration profile based on the MRSP and deceleration factors for the given target</Comment>
+<ReqRef
+ Id="74a35017-250f-4c6f-948c-0c08da4f4b05"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6d9ae2e9-bf7e-4c23-b25b-d076f875134d"
+>
+</ReqRef><Comment>Provides the deceleration profile based on the MRSP and deceleration factors for the given target</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"

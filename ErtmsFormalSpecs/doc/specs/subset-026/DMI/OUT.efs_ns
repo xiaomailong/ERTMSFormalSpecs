@@ -929,34 +929,6 @@
  Guid="ed8f0146-d478-4822-b102-8a9483ce12bb"
 >
 </ReqRef><Comment>Provides the target speed</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Display when available"
- Guid="e6068436-2e83-4ef3-9546-704748baf2d9"
->
-<Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Display when available"
- Guid="27d9b615-cc37-4858-ad42-58404fd8b255"
->
-<PreConditions>
-<PreCondition
- Guid="c1bd674a-350b-4f1f-aa2b-225cd4a5fe8a"
->NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="af7cbf9c-290f-4c7f-8a2d-88f4066397d8"
->TargetSpeedAvailable()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="87647b02-6c87-4f8b-a641-88a63848fb48"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -1058,34 +1030,6 @@
  Guid="1405dfb1-9a78-424b-898e-aaa77ac5184d"
 >
 </ReqRef><Comment>Provides the release speed</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Display when available"
- Guid="ca1f6314-40e9-47e8-8f58-d2408ea066ba"
->
-<Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Display when available"
- Guid="0c67334d-3458-485b-bb34-f4e5e112ad60"
->
-<PreConditions>
-<PreCondition
- Guid="db968d58-ebd5-45d5-987c-755499d5cb1f"
->NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="9cf22a84-5cc3-469d-85ef-b332c2851284"
->ReleaseSpeedAvailable()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="dc193e95-a2ee-4da7-96e3-d43106fb5c08"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -4982,32 +4926,6 @@ The brake reason.</Comment>
  Guid="6063f444-89c9-4cb8-b693-4e852a7586a8"
 >Display()</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Display when available"
- Guid="ccfc2605-316a-4fe7-a30e-240fb200a964"
->
-<Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Display when available"
- Guid="3d6745a4-f1d9-448a-874c-632f5ee46ddf"
->
-<PreConditions>
-<PreCondition
- Guid="cc305505-c081-4d30-8a92-2f6ee6905b93"
->NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="4b089d72-b6b7-435c-9a70-5c5e6b400134"
->TargetDistanceAvailable()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="68081ce2-073d-4c64-b54f-d758106727ee"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
 <Procedure
@@ -5033,7 +4951,9 @@ The brake reason.</Comment>
 <PreConditions>
 <PreCondition
  Guid="9bf93f18-1f92-4906-8262-0e7b2503abfd"
->TargetDistanceAvailable()</PreCondition></PreConditions>
+>TargetDistanceAvailable()
+  OR  
+TargetDistanceMandatory()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e740b498-aca3-49b9-8e2f-17616dcd942b"
@@ -6461,7 +6381,7 @@ GetMonitoringType() == MonitoringType.PIM</Expression>
  Name="Enumerates the cases where the request is available"
  Guid="95e3202b-142d-4123-9991-f16ba0c0abf4"
 >
-<Expression>Kernel.Mode in [Mode.FS, Mode.SR, Mode.OS, Mode.RV]</Expression>
+<Expression>Kernel.Mode in [Mode.FS, Mode.SR, Mode.OS]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
