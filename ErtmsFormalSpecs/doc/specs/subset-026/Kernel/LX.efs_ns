@@ -686,9 +686,25 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
 <PreCondition
  Guid="1cd6fd3b-3c25-4162-9e56-b3db1c1933ff"
 >(
-  SpeedAndDistanceMonitoring.DecelerationCurves.SBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) == BaseTypes.Speed.NA
+  SpeedAndDistanceMonitoring.DecelerationCurves.SBD_Target
+  (
+    Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
+    {
+      Speed =&gt; 0.0,
+      Location =&gt; aLX.Location
+    }
+  ) == BaseTypes.Speed.NA
   OR
-  SpeedAndDistanceMonitoring.DecelerationCurves.SBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) &lt; aLX.Speed
+  SpeedAndDistanceMonitoring.DecelerationCurves.SBD_Target
+  (
+    Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
+    {
+      Speed =&gt; 0.0,
+      Location =&gt; aLX.Location
+    }
+  ) &lt; aLX.Speed
 )
   AND
 SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
@@ -700,7 +716,15 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
     Location =&gt; aLX.Location
   }
 ) &gt;= aLX.Speed</PreCondition></PreConditions>
-<Expression>(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P( Vest =&gt; aLX.Speed + SpeedAndDistanceMonitoring.f41( V =&gt; aLX.Speed ), EstimatedAccelerationSetToZero =&gt; True ) &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Max))</Expression>
+<Expression>(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_P_Target(
+    aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
+    {
+      Speed =&gt; 0.0,
+      Location =&gt; aLX.Location
+    },
+    Vest =&gt; aLX.Speed + SpeedAndDistanceMonitoring.f41( V =&gt; aLX.Speed ),
+    anEstimatedAccelerationSetToZero =&gt; True 
+) &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Max))</Expression>
 </Case><Case
  Name="EBD undefined, SBD defined"
  Guid="cdef8867-c7f0-4eb2-9299-adc7e8682e22"
@@ -1418,7 +1442,7 @@ IN
 <Actions>
 <Action
  Guid="89479101-922e-400c-a1f9-f1a786a9fb4a"
->(FIRST aLX IN MRSPLevelCrossings | aLX.Id == NID_LX).Location &lt;-(FIRST aLX IN MRSPLevelCrossings | aLX.Id == NID_LX).Location + LocationUpdate</Action><Action
+>(FIRST aLX IN MRSPLevelCrossings | aLX.Id == NID_LX).Location &lt;- (FIRST aLX IN MRSPLevelCrossings | aLX.Id == NID_LX).Location - LocationUpdate</Action><Action
  Guid="eaeb6921-d9a0-4958-91f2-a984b2a8ea0a"
 >(FIRST aLX IN MRSPLevelCrossings | aLX.Id == NID_LX).Length &lt;-(FIRST aLX IN MRSPLevelCrossings | aLX.Id == NID_LX).Length + LocationUpdate</Action></Actions>
 </RuleCondition></Conditions>
@@ -1589,8 +1613,8 @@ SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed == 0.0</PreConditi
  Guid="59536c72-3242-4ff5-b2ee-668c56877ea9"
 >DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested == True</PreCondition><PreCondition
  Guid="570cd62d-e6c3-4bf4-98a5-66f73c5b5f58"
->THERE_IS aLX IN MRSPLevelCrossings |
-  aLX.Location + aLX.Length &lt;= TrainPosition.RearEndPosition( PointOfInterest=&gt;DistanceInterval.Min )</PreCondition></PreConditions>
+>THERE_IS aLX IN Kernel.LX.MRSPLevelCrossings |
+  aLX.Location + aLX.Length &lt;= Kernel.TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Min )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="01f88f62-b0ed-4467-aec6-1f4c3123d7a9"
