@@ -1091,7 +1091,7 @@ Packet.Sequence1</Action></Actions>
  Guid="097a357d-a5c2-47af-a6ac-050fe94ed1ed"
 >Kernel.Level.Value &lt;- LevelTransitionToProcess.TRLevel</Action><Action
  Guid="0ddeb99e-7c2c-4f4c-a6c4-63b006cbc5e0"
->EURORADIO.PositionReport.PositionReportEventsTracker.LevelTransitionBorderPassed &lt;- True</Action></Actions>
+>EURORADIO.PositionReport.PositionReportEventsTracker.Level &lt;- LevelTransitionOrder.CurrentLevel.Value</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1391,9 +1391,7 @@ Packet.Sequence1</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="aa213c6b-c619-4e1c-87bc-a74f4d1b8bad"
->TrainPosition.RearEndPosition(DistanceInterval.Min) &gt;= LevelTransitionOrder.Distance</PreCondition><PreCondition
- Guid="c0f0f5a4-2915-47b9-96e5-20c82035129e"
->ActiveFunctions.ReportPosition_PassLevelTransition()</PreCondition><PreCondition
+>TrainPosition.RearEndPosition(Default.DistanceInterval.Min) &gt;= LevelTransitionOrder.Distance</PreCondition><PreCondition
  Guid="841d9164-6f90-4cca-a388-fef4340c3077"
 >LevelTransitionOrder.CurrentLevel.Value in [Default.Level.L2, Default.Level.L3]</PreCondition><PreCondition
  Guid="f0dd9be7-1b5b-410c-ab51-e00ed28c2052"
@@ -1401,9 +1399,21 @@ Packet.Sequence1</Action></Actions>
 <Actions>
 <Action
  Guid="e52599ee-bda8-481c-8967-10f342082f2e"
->EURORADIO.CurrentRBCConnection().SendPositionReport()</Action><Action
+>EURORADIO.PositionReport.PositionReportEventsTracker.LevelTransitionBorderPassed &lt;- True</Action><Action
  Guid="3851d849-c7b7-49c2-a554-2a47880a4c61"
 >LevelTransitionOrder.PositionReportSent &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Train enters level 2/3 from NTC"
+ Guid="876b1f14-916b-4df5-b8b5-60944eb2dac0"
+>
+<PreConditions>
+<PreCondition
+ Guid="f2015811-7deb-49d2-b3a2-9a82336529e6"
+>LevelTransitionOrder.CurrentLevel.Value in [Default.Level.LNTC]</PreCondition><PreCondition
+ Guid="571a7181-1b87-401e-962a-92df42e17bc8"
+>(FIRST Transition IN LevelTransitionOrder.LevelAndLength | AvailableForUse(Transition.TRLevel) ).TRLevel.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+<Actions>
+</Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
