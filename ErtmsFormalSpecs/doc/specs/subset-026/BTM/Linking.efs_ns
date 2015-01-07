@@ -1618,7 +1618,7 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
 <Action
  Guid="bac12566-89d7-4f78-a052-2705f05be489"
 >HandleBaliseMessage(
-    DistanceFromLRBG =&gt; Odometry.NominalDistance - LRBG.Position.Position
+    DistanceFromLRBG =&gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"

@@ -127,16 +127,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="93b3e829-47db-4fdf-aa99-a5d0304a65e1"
 >
-</ReqRef></StructureElement><StructureElement
- TypeName="Boolean"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="IsConditional"
- Guid="4eeaf3fb-5a46-4956-b0d8-11627181636a"
->
-<Comment>Indicates if the current transition order is conditional or not.</Comment>
-</StructureElement></Structure></Structures>
+</ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="Kernel.LevelTransition.LevelTransitionStruct"
@@ -300,7 +291,7 @@
 <Expression>Boolean.False</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Default=""
  X="20"
  Y="360"
@@ -318,7 +309,7 @@
 </ReqRef><Comment>Converts the distance received from the trackside to the distance used on-board. If D_LEVELTR equals 32767 (= special value &quot;Now&quot;), the stored distance will equal BTM.TravelledDistanceFromLRBG(), otherwise it is translated as usually.</Comment>
 <Parameters>
 <Parameter
- Type="MessageTypes.Distance"
+ Type="Default.MessageTypes.Distance"
  Name="aDistance"
  Guid="4dead16f-9ec4-4761-9b58-f020c2dbca8e"
 >
@@ -383,7 +374,7 @@
 </ReqRef><Comment>Indicates if the level transition requires the acknowledgement from the driver, according to the current level of the on-board and to the level of the level transition.</Comment>
 <Parameters>
 <Parameter
- Type="LevelTransitionStruct"
+ Type="Kernel.LevelTransition.LevelTransitionStruct"
  Name="anLTO"
  Guid="cce3afb1-e47c-4834-aef8-2030ee570304"
 >
@@ -627,7 +618,6 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
  Guid="fdddee24-a2ec-4f7a-be60-6dc368978033"
 >LevelTransitionOrder &lt;- Kernel.LevelTransition.LevelTransitionOrderStruct
 {
-  IsConditional=&gt; True,
   Distance =&gt; ComputeLTODistance ( aDistance =&gt; Packet.D_LEVELTR, aScale =&gt; Packet.Q_SCALE ),
   LevelAndLength =&gt; 
   [ 
@@ -748,7 +738,6 @@ Packet.Sequence1</Action></Actions>
  Guid="747eb726-b54e-45cc-ab5b-9093722e93e4"
 >LevelTransitionOrder &lt;- Kernel.LevelTransition.LevelTransitionOrderStruct
 {
-   IsConditional=&gt; False,
    Distance =&gt; Default.BaseTypes.Distance.Unknown,
    LevelAndLength =&gt; [ 
       Kernel.LevelTransition.LevelTransitionStruct { 
@@ -1127,7 +1116,7 @@ Packet.Sequence1</Action></Actions>
 >
 </ReqRef><Comment>The (target-)level (and -distance) that the train should perform a transition to (i.e. the output of the computations)</Comment>
 </Variable><Variable
- Type="BaseTypes.Time"
+ Type="Default.BaseTypes.Time"
  DefaultValue="BaseTypes.Time.NA"
  VariableMode="Internal"
  X="510"
@@ -1184,9 +1173,7 @@ Packet.Sequence1</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="32291f91-c8f4-4551-9efb-1784c4b3c42b"
->LevelTransitionOrder.Distance == BTM.TravelledDistanceFromLRBG()</PreCondition><PreCondition
- Guid="8a9cadaf-670b-4f32-8b9e-4b84655afe7a"
->LevelTransitionOrder.IsConditional == True</PreCondition></PreConditions>
+>LevelTransitionOrder.Distance == BTM.TravelledDistanceFromLRBG()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0dca39ae-4aed-48b7-b4a6-6e165c4d7194"
