@@ -299,9 +299,11 @@ TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I_Target(
  Guid="c6b1bf5f-4451-423e-a6ea-b5b6520aabe8"
 >Odometry.TrainSpeed() &lt;= MRSP.V_MRSP()</PreCondition><PreCondition
  Guid="29acbbd9-6a14-4923-aac5-152799b4c7a8"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target(
+>TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target
+(
     aTarget =&gt; MaxDistInSR(),
-    Vest =&gt; Odometry.TrainSpeed()
+    Vest =&gt; Odometry.TrainSpeed(),
+    anEstimatedAccelerationSetToZero =&gt; False
 )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
@@ -313,19 +315,21 @@ TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I_Target(
  Guid="6706cb7c-de71-46a2-96f7-e57ac8b3f366"
 ><Comment>The leading term, TargetSpeed == 0.0, ensures that the end on the MA is not a LOA since, in that case, there is neither EOA or SvL</Comment>
 MA.MA.TargetSpeed == 0.0
-
  AND 
-
 (
-TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target(
+  TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target
+  (
     aTarget =&gt; MA.SvL(),
-    Vest =&gt; Odometry.TrainSpeed() )
-
+    Vest =&gt; Odometry.TrainSpeed(),
+    anEstimatedAccelerationSetToZero =&gt; False
+  )
     OR    
-
-TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; d_P_Target(
+  TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; d_P_Target
+  (
     aTarget =&gt; MA.ClosestEOA(),
-    Vest =&gt; Odometry.TrainSpeed() )
+    Vest =&gt; Odometry.TrainSpeed(),
+    anEstimatedAccelerationSetToZero =&gt; False
+  )
 )</PreCondition><PreCondition
  Guid="10cf72a7-349f-4977-8b7b-001cb384d690"
 >Odometry.TrainSpeed() &lt;= MRSP.V_MRSP()</PreCondition><PreCondition
@@ -337,15 +341,18 @@ TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; d_P_Target(
  Guid="2854a847-3e8d-4468-a9bd-a85e9df77c42"
 >
 <Expression>THERE_IS aTarget IN TargetsList() | 
-(aTarget.Speed &lt; Odometry.TrainSpeed()
-  AND
- Odometry.TrainSpeed() &lt;= MRSP.V_MRSP()
-
+(
+  aTarget.Speed &lt; Odometry.TrainSpeed()
+    AND
+  Odometry.TrainSpeed() &lt;= MRSP.V_MRSP()
     AND    
-
-TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target(
+  TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target
+  (
     aTarget =&gt; aTarget,
-    Vest =&gt; Odometry.TrainSpeed() ) )</Expression>
+    Vest =&gt; Odometry.TrainSpeed(),
+    anEstimatedAccelerationSetToZero =&gt; False
+  ) 
+)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1577,9 +1584,11 @@ TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I_Target(
 
     OR    
 
-TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target
+(
     aTarget =&gt; MaxDistInSR(),
-    Vest =&gt; Odometry.TrainSpeed()
+    Vest =&gt; Odometry.TrainSpeed(),
+    anEstimatedAccelerationSetToZero =&gt; False
 )</PreCondition><PreCondition
  Guid="cba9e74e-f531-4a64-a766-87744964f013"
 >Mode == Mode.SR</PreCondition></PreConditions>
@@ -1593,23 +1602,29 @@ TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target(
  Guid="46976ad2-a3f5-4133-8f3f-42c8c4cbb189"
 ><Comment>The leading term, TargetSpeed == 0.0, ensures that the end on the MA is not a LOA since, in that case, there is neither EOA or SvL</Comment>
 MA.MA.TargetSpeed == 0.0
-
  AND 
-
 (
-(Odometry.TrainSpeed() &lt;= ReleaseSpeedMonitoring.ReleaseSpeed 
-  OR  
- MRSP.V_MRSP() &lt; Odometry.TrainSpeed() )
-
+  (
+    Odometry.TrainSpeed() &lt;= ReleaseSpeedMonitoring.ReleaseSpeed 
+      OR  
+     MRSP.V_MRSP() &lt; Odometry.TrainSpeed()
+  )
     OR    
-
-(TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target(
-    Vest =&gt; Odometry.TrainSpeed(),
-    aTarget =&gt; MA.SvL() )
-  OR  
- TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; d_P_Target(
-    Vest =&gt; Odometry.TrainSpeed(),
-    aTarget =&gt; MA.SvL() ) )
+  (
+    TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target
+    (
+      Vest =&gt; Odometry.TrainSpeed(),
+      aTarget =&gt; MA.SvL(),
+      anEstimatedAccelerationSetToZero =&gt; False
+    )
+    OR  
+    TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; d_P_Target
+    (
+      Vest =&gt; Odometry.TrainSpeed(),
+      aTarget =&gt; MA.SvL(),
+      anEstimatedAccelerationSetToZero =&gt; False
+    )
+  )
 )</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
@@ -1621,14 +1636,18 @@ MA.MA.TargetSpeed == 0.0
  Guid="99cc373c-4cb4-4cfa-8fdc-4a2e6db789d1"
 >THERE_IS aTarget IN TargetsList() |
 (
-(Odometry.TrainSpeed() &lt;= aTarget.Speed
-  OR  
- MRSP.V_MRSP() &lt; Odometry.TrainSpeed())
-
+  (
+    Odometry.TrainSpeed() &lt;= aTarget.Speed
+      OR  
+     MRSP.V_MRSP() &lt; Odometry.TrainSpeed()
+  )
     OR    
-TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target(
+  TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target
+  (
     aTarget =&gt; aTarget,
-    Vest =&gt; Odometry.TrainSpeed() )
+    Vest =&gt; Odometry.TrainSpeed(),
+    anEstimatedAccelerationSetToZero =&gt; False
+  )
 )</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
@@ -1950,7 +1969,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
 <PreConditions>
 <PreCondition
  Guid="a633f1b8-f45e-4269-a8fc-4d6a528e587c"
->d_P_Target( aTarget =&gt; aTarget, Vest =&gt; Vest ) == Default.BaseTypes.Distance.Infinity</PreCondition></PreConditions>
+>d_P_Target( aTarget =&gt; aTarget, Vest =&gt; Vest, anEstimatedAccelerationSetToZero =&gt; False ) == Default.BaseTypes.Distance.Infinity</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Infinity</Expression>
 </Case><Case
  Name="Below P"
@@ -1960,7 +1979,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
 <PreCondition
  Guid="75e42f83-db8f-4d4a-b665-78c3f4d685f3"
 >Vest &lt;= CeilingSpeedMonitoring.P ( InterventionValue_Target( aTarget =&gt; aTarget, Vest =&gt; Vest ) )</PreCondition></PreConditions>
-<Expression>d_P_Target ( aTarget =&gt; aTarget, Vest =&gt; Vest ) - BaseTypes.SpeedToMS ( Vest ) * DecelerationCurves.T_indication ()</Expression>
+<Expression>d_P_Target ( aTarget =&gt; aTarget, Vest =&gt; Vest, anEstimatedAccelerationSetToZero =&gt; False ) - BaseTypes.SpeedToMS ( Vest ) * DecelerationCurves.T_indication ()</Expression>
 </Case><Case
  Name="Above P"
  Guid="c3779180-f639-4e07-bece-71f219661b84"
@@ -2016,6 +2035,11 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
  Name="Vest"
  Guid="bc46c78e-bd91-4056-be71-83dc179d5819"
 >
+</Parameter><Parameter
+ Type="Boolean"
+ Name="anEstimatedAccelerationSetToZero"
+ Guid="f27462b2-a2b0-4db5-b8f7-ef4ae1d3d98e"
+>
 </Parameter></Parameters>
 <Cases>
 <Case
@@ -2027,7 +2051,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
  Guid="57ec7043-b3d1-4a71-83da-5e50c589ce94"
 >MA.IsEOA(aTarget)</PreCondition><PreCondition
  Guid="33092ea4-1ff1-4fd2-8dc7-edac24989de3"
->d_SBI1(Vest, False) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>d_SBI1(Vest, anEstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Infinity</Expression>
 </Case><Case
  Name="EBD based target, distance unknown"
@@ -2039,7 +2063,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
 >d_SBI2(
     Vest =&gt; Vest,
     aTarget =&gt; aTarget,
-    EstimatedAccelerationSetToZero =&gt; False
+    EstimatedAccelerationSetToZero =&gt; anEstimatedAccelerationSetToZero
 ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Infinity</Expression>
 </Case><Case
@@ -2052,7 +2076,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
 >MA.IsEOA(aTarget)</PreCondition><PreCondition
  Guid="57b898c1-dc92-4e49-9bfa-1e4d65ba059b"
 >NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
-<Expression>d_SBI1(Vest, False) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver</Expression>
+<Expression>d_SBI1(Vest, anEstimatedAccelerationSetToZero) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver</Expression>
 </Case><Case
  Name="GUI inhibited, EBD based target"
  Guid="0cb556fd-fe05-402a-8018-62a77936af8d"
@@ -2061,10 +2085,11 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
 <PreCondition
  Guid="fd0ca0dd-2692-4e25-af6e-b9997a25cd2a"
 >NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
-<Expression>d_SBI2(
+<Expression>d_SBI2
+(
     Vest =&gt; Vest,
     aTarget =&gt; aTarget,
-    EstimatedAccelerationSetToZero =&gt; False
+    EstimatedAccelerationSetToZero =&gt; anEstimatedAccelerationSetToZero
 ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver</Expression>
 </Case><Case
  Name="GUI enabled, target is EOA"
@@ -2075,14 +2100,14 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
  Guid="478855f8-d95e-4998-8962-0cd6698978e9"
 >MA.IsEOA(aTarget)</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.MinDistance (
-    X1 =&gt; d_SBI1 ( Vest, False ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver,
+    X1 =&gt; d_SBI1 ( Vest, anEstimatedAccelerationSetToZero ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver,
     X2 =&gt; DistanceForSpeed ( Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; GUI_Target ( Distance =&gt; d, aTarget =&gt; aTarget ), Speed =&gt; Vest ) )</Expression>
 </Case><Case
  Name="GUI enabled, EBD based target"
  Guid="3dbf0857-8f60-4d22-855c-44f3c0dff430"
 >
 <Expression>Default.BaseTypes.MinDistance (
-    X1 =&gt; d_SBI2 ( aTarget =&gt; aTarget, Vest =&gt; Vest, EstimatedAccelerationSetToZero =&gt; False ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver,
+    X1 =&gt; d_SBI2 ( aTarget =&gt; aTarget, Vest =&gt; Vest, EstimatedAccelerationSetToZero =&gt; anEstimatedAccelerationSetToZero ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver,
     X2 =&gt; DistanceForSpeed ( Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; GUI_Target ( Distance =&gt; d, aTarget =&gt; aTarget ), Speed =&gt; Vest ) )</Expression>
 </Case></Cases>
 </Function><Function
@@ -2128,7 +2153,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
  Name="Value"
  Guid="0a1cc5d7-b391-4c01-9afc-d402128dcef7"
 >
-<Expression>d_P_Target ( aTarget =&gt; aTarget, Vest =&gt; Vest ) - Default.BaseTypes.SpeedToMS ( Vest ) * DecelerationCurves.T_indication ()</Expression>
+<Expression>d_P_Target ( aTarget =&gt; aTarget, Vest =&gt; Vest, anEstimatedAccelerationSetToZero =&gt; False ) - Default.BaseTypes.SpeedToMS ( Vest ) * DecelerationCurves.T_indication ()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
