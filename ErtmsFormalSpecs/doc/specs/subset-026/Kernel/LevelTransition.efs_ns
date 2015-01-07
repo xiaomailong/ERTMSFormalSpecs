@@ -506,6 +506,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0d3127fc-63a8-4e10-b3d5-a05d1aa4e528"
 >
+</ReqRef><ReqRef
+ Id="f1e6e692-0410-42c3-8425-da3a74657106"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="78609c81-6ce6-47fa-84ef-e7b41420bbee"
+>
 </ReqRef><Comment>Inserts a new level transition order in the list of level transition orders stored on-board.</Comment>
 <Parameters>
 <Parameter
@@ -1093,30 +1098,6 @@ Packet.Sequence1</Action></Actions>
  Guid="0ddeb99e-7c2c-4f4c-a6c4-63b006cbc5e0"
 >EURORADIO.PositionReport.PositionReportEventsTracker.Level &lt;- LevelTransitionOrder.CurrentLevel.Value</Action></Actions>
 </RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Remove executed level transition order"
- Guid="9e5d7fd9-8ba9-41d6-9a1f-c3d5c489b456"
->
-<Comment>Once the level transition order is executed, it is deleted.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Remove executed level transition order"
- Guid="1958a987-de03-4d8e-b436-068098ab54c8"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="9c31b8a4-e590-4a4f-a228-e031aa6442b8"
->LevelTransitionOrder &lt;- EMPTY</Action><Action
- Guid="d7eec92a-82a6-4cf2-bea8-434dee18f457"
->LevelTransitionToProcess &lt;- EMPTY</Action></Actions>
-</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <Variables>
@@ -1147,10 +1128,15 @@ Packet.Sequence1</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c2abeb43-c104-4ec4-9329-c03b18b69ce6"
 >
+</ReqRef><ReqRef
+ Id="f1e6e692-0410-42c3-8425-da3a74657106"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4db0959a-eb36-4bb3-af9a-5ee13b63d244"
+>
 </ReqRef><Comment>Level transition order  received from the track side</Comment>
 </Variable><Variable
  Type="Kernel.LevelTransition.LevelTransitionStruct"
- DefaultValue=""
+ DefaultValue="EMPTY"
  VariableMode="Internal"
  X="380"
  Y="100"
@@ -1225,7 +1211,11 @@ Packet.Sequence1</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="32291f91-c8f4-4551-9efb-1784c4b3c42b"
->LevelTransitionOrder.Distance == BTM.TravelledDistanceFromLRBG()</PreCondition></PreConditions>
+>Available(LevelTransitionOrder)
+  AND  
+LevelTransitionOrder.Distance &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Nom)</PreCondition><PreCondition
+ Guid="a793711a-f9af-4251-b86a-906d92f0b23f"
+>Kernel.Level.Value != LevelTransitionToProcess.TRLevel</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0dca39ae-4aed-48b7-b4a6-6e165c4d7194"
@@ -1380,6 +1370,11 @@ Packet.Sequence1</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e01e4202-0ebf-4c92-af78-c619e3af12bf"
 >
+</ReqRef><ReqRef
+ Id="74a30d76-76b6-4796-9af7-51fcc86fdda3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1806dc19-da18-42f0-aa14-7783268c0192"
+>
 </ReqRef><Comment>When the min safe rear end of the train passes a border from level 2/3, the on-board sends a position report to the RBC.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1388,6 +1383,7 @@ Packet.Sequence1</Action></Actions>
  Name="Train rear leaves level 2/3 area"
  Guid="b852ea5c-632f-4150-9d61-c815f69ef77a"
 >
+<Comment>When the min safe rear end of the train passes the border leaving a level 2/3 section, send a position report.</Comment>
 <PreConditions>
 <PreCondition
  Guid="aa213c6b-c619-4e1c-87bc-a74f4d1b8bad"
@@ -1395,7 +1391,9 @@ Packet.Sequence1</Action></Actions>
  Guid="841d9164-6f90-4cca-a388-fef4340c3077"
 >LevelTransitionOrder.CurrentLevel.Value in [Default.Level.L2, Default.Level.L3]</PreCondition><PreCondition
  Guid="f0dd9be7-1b5b-410c-ab51-e00ed28c2052"
->NOT LevelTransitionOrder.PositionReportSent</PreCondition></PreConditions>
+>NOT LevelTransitionOrder.PositionReportSent</PreCondition><PreCondition
+ Guid="9d05460b-a991-459b-8c92-894b266afa9d"
+>Mode not in [Default.Mode.NL]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e52599ee-bda8-481c-8967-10f342082f2e"
@@ -1403,17 +1401,26 @@ Packet.Sequence1</Action></Actions>
  Guid="3851d849-c7b7-49c2-a554-2a47880a4c61"
 >LevelTransitionOrder.PositionReportSent &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Train enters level 2/3 from NTC"
  Guid="876b1f14-916b-4df5-b8b5-60944eb2dac0"
 >
+<Comment>When the estimated front end passes the level transition border from NTC to a level 2/3 section, send a position report.</Comment>
 <PreConditions>
 <PreCondition
  Guid="f2015811-7deb-49d2-b3a2-9a82336529e6"
 >LevelTransitionOrder.CurrentLevel.Value in [Default.Level.LNTC]</PreCondition><PreCondition
  Guid="571a7181-1b87-401e-962a-92df42e17bc8"
->(FIRST Transition IN LevelTransitionOrder.LevelAndLength | AvailableForUse(Transition.TRLevel) ).TRLevel.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+>(FIRST Transition IN LevelTransitionOrder.LevelAndLength | AvailableForUse(Transition.TRLevel) ).TRLevel.Value in [Default.Level.L2, Default.Level.L3]</PreCondition><PreCondition
+ Guid="5d86c07e-19a2-43cd-b727-6618f6a65fff"
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt;= LevelTransitionOrder.Distance</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="80001d59-a4e1-4935-a8ca-2772d5ccab14"
+>
+LevelTransitionOrder.PositionReportSent &lt;- True</Action><Action
+ Guid="99edecea-5f88-4332-b9be-57663c593046"
+>EURORADIO.PositionReport.PositionReportEventsTracker.LevelTransitionBorderPassed &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
