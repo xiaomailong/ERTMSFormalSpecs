@@ -127,7 +127,55 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="93b3e829-47db-4fdf-aa99-a5d0304a65e1"
 >
-</ReqRef></StructureElement></Structure></Structures>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Default.LevelDataStruct"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="CurrentLevel"
+ Guid="1333791e-a914-4788-9d07-cd1aa6d8018e"
+>
+<ReqRef
+ Id="47b91cc7-c8e6-4d25-94b9-7992b9456daa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b0c0ef69-70cf-4674-8041-5f45b9142900"
+>
+</ReqRef><ReqRef
+ Id="fef79c41-a6e7-4139-94de-a5a9b000932d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="16240869-63f0-422a-80ba-b6739b4d0dd6"
+>
+</ReqRef><ReqRef
+ Id="a7605778-28fc-48d9-b6cd-2429b3e840e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e25b02c7-2696-4956-9ebe-70ac9b774dc9"
+>
+</ReqRef><Comment>The level of the train before applying the level transition order.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PositionReportSent"
+ Guid="d34ba99f-bc39-4d93-9b0e-5707eeab8534"
+>
+<ReqRef
+ Id="47b91cc7-c8e6-4d25-94b9-7992b9456daa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="264445e9-bb13-40d2-b598-ca230b34203f"
+>
+</ReqRef><ReqRef
+ Id="fef79c41-a6e7-4139-94de-a5a9b000932d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="553bfe68-3989-473f-bae5-ff257d5d8e59"
+>
+</ReqRef><ReqRef
+ Id="a7605778-28fc-48d9-b6cd-2429b3e840e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ea02c2cd-1626-40b1-ae74-3f7b97f2f42c"
+>
+</ReqRef><Comment>Stores whether the position report to be sent after leaving a level 2/3 area has been sent to the RBC.</Comment>
+</StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="Kernel.LevelTransition.LevelTransitionStruct"
@@ -618,6 +666,8 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
  Guid="fdddee24-a2ec-4f7a-be60-6dc368978033"
 >LevelTransitionOrder &lt;- Kernel.LevelTransition.LevelTransitionOrderStruct
 {
+  CurrentLevel =&gt; Level.Value,
+  PositionReportSent =&gt; False,
   Distance =&gt; ComputeLTODistance ( aDistance =&gt; Packet.D_LEVELTR, aScale =&gt; Packet.Q_SCALE ),
   LevelAndLength =&gt; 
   [ 
@@ -738,6 +788,8 @@ Packet.Sequence1</Action></Actions>
  Guid="747eb726-b54e-45cc-ab5b-9093722e93e4"
 >LevelTransitionOrder &lt;- Kernel.LevelTransition.LevelTransitionOrderStruct
 {
+   CurrentLevel =&gt; Level.Value,
+   PositionReportSent =&gt; False,
    Distance =&gt; Default.BaseTypes.Distance.Unknown,
    LevelAndLength =&gt; [ 
       Kernel.LevelTransition.LevelTransitionStruct { 
@@ -1299,6 +1351,59 @@ Packet.Sequence1</Action></Actions>
 >TIU.ServiceBrakeCommanded &lt;- False</Action><Action
  Guid="3b2c7e90-7a82-4030-b7be-38fdead76ad1"
 >AcknowledgementTime &lt;- BaseTypes.Time.NA</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Report train position"
+ Guid="61e5d8bf-cac6-40e1-af1d-2a42bd262312"
+>
+<ReqRef
+ Id="6ba8948f-12e6-4276-a69a-8e9e1ee29135"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="058da72b-0b56-4c33-b6ae-84e6d1e5ece7"
+>
+</ReqRef><ReqRef
+ Id="a7605778-28fc-48d9-b6cd-2429b3e840e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5c62b790-376b-4fc6-ae54-9e9a47a71479"
+>
+</ReqRef><ReqRef
+ Id="fef79c41-a6e7-4139-94de-a5a9b000932d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f099b7e7-d0c3-4a2a-9334-3c8b4e33a8e4"
+>
+</ReqRef><ReqRef
+ Id="47b91cc7-c8e6-4d25-94b9-7992b9456daa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e01e4202-0ebf-4c92-af78-c619e3af12bf"
+>
+</ReqRef><Comment>When the min safe rear end of the train passes a border from level 2/3, the on-board sends a position report to the RBC.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Train rear leaves level 2/3 area"
+ Guid="b852ea5c-632f-4150-9d61-c815f69ef77a"
+>
+<PreConditions>
+<PreCondition
+ Guid="aa213c6b-c619-4e1c-87bc-a74f4d1b8bad"
+>TrainPosition.RearEndPosition(DistanceInterval.Min) &gt;= LevelTransitionOrder.Distance</PreCondition><PreCondition
+ Guid="c0f0f5a4-2915-47b9-96e5-20c82035129e"
+>ActiveFunctions.ReportPosition_PassLevelTransition()</PreCondition><PreCondition
+ Guid="841d9164-6f90-4cca-a388-fef4340c3077"
+>LevelTransitionOrder.CurrentLevel.Value in [Default.Level.L2, Default.Level.L3]</PreCondition><PreCondition
+ Guid="f0dd9be7-1b5b-410c-ab51-e00ed28c2052"
+>NOT LevelTransitionOrder.PositionReportSent</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e52599ee-bda8-481c-8967-10f342082f2e"
+>EURORADIO.CurrentRBCConnection().SendPositionReport()</Action><Action
+ Guid="3851d849-c7b7-49c2-a554-2a47880a4c61"
+>LevelTransitionOrder.PositionReportSent &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
