@@ -428,7 +428,7 @@ namespace DataDictionary.Interpreter
                 }
                 catch (Exception e)
                 {
-                    AddError("Cannot evaluate function call " + function.Name);
+                    AddErrorAndExplain("Cannot evaluate function call " + function.Name, subExplanation);
                     throw new Exception("inner evaluation failure");
                 }
                 finally

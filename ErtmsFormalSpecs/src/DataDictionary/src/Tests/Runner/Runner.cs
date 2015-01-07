@@ -21,6 +21,7 @@ using DataDictionary.Rules;
 using DataDictionary.Tests.Runner.Events;
 using DataDictionary.Values;
 using Utils;
+using Action = DataDictionary.Generated.Action;
 using Rule = DataDictionary.Rules.Rule;
 using State = DataDictionary.Constants.State;
 using StateMachine = DataDictionary.Types.StateMachine;
@@ -88,63 +89,6 @@ namespace DataDictionary.Tests.Runner
         /// The last time when activation has been performed
         /// </summary>
         public double LastActivationTime { get; set; }
-
-        /// <summary>
-        /// Visitor used to clean caches of functions (graphs, surfaces)
-        /// </summary>
-        protected class FunctionGraphCache : Generated.Visitor
-        {
-            /// <summary>
-            /// The list of functions to be cleared
-            /// </summary>
-            public List<Functions.Function> CachedFunctions = new List<Functions.Function>();
-
-            /// <summary>
-            /// Constructor
-            /// </summary>
-            /// <param name="system"></param>
-            public FunctionGraphCache(EFSSystem system)
-            {
-                // Fill the list of functions to be cleared
-                foreach (DataDictionary.Dictionary dictionnary in EFSSystem.INSTANCE.Dictionaries)
-                {
-                    visit(dictionnary);
-                }
-            }
-
-            /// <summary>
-            /// Fills the list of functions to be cleared
-            /// </summary>
-            /// <param name="obj"></param>
-            /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Function obj, bool visitSubNodes)
-            {
-                Functions.Function function = obj as Functions.Function;
-
-                if (function != null)
-                {
-                    CachedFunctions.Add(function);
-                }
-
-                base.visit(obj, visitSubNodes);
-            }
-
-            /// <summary>
-            /// Clears the caches of all functions
-            /// </summary>
-            public void ClearCaches()
-            {
-                foreach (Functions.Function function in CachedFunctions)
-                {
-                    function.ClearCache();
-                }
-            }
-        }
-
-        /// <summary>
-        /// The function cache cleaner
-        /// </summary>
-        protected FunctionGraphCache FunctionCacheCleaner { get; set; }
 
         /// <summary>
         /// Event when the execution is terminated
@@ -260,6 +204,23 @@ namespace DataDictionary.Tests.Runner
 
                 base.visit(obj, visitSubNodes);
             }
+
+            /// <summary>
+            /// Clear the cache of all functions
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(Generated.Function obj, bool visitSubNodes)
+            {
+                Functions.Function function = obj as Functions.Function;
+
+                if (function != null)
+                {
+                    function.ClearCache();
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
         }
 
         /// <summary>
@@ -308,9 +269,6 @@ namespace DataDictionary.Tests.Runner
 
                 // Clears all caches
                 Utils.FinderRepository.INSTANCE.ClearCache();
-
-                // Builds the list of functions that will require a cache for their graph 
-                FunctionCacheCleaner = new FunctionGraphCache(EFSSystem);
 
                 // Setup the step
                 if (SubSequence != null)
@@ -444,8 +402,6 @@ namespace DataDictionary.Tests.Runner
                     innerExecuteOnePriority(priority);
                 }
                 CurrentPriority = null;
-                // Clears the cache of functions
-                FunctionCacheCleaner.ClearCaches();
 
                 RegisterErrors(Utils.ModelElement.Errors);
 
@@ -470,8 +426,6 @@ namespace DataDictionary.Tests.Runner
             {
                 Log.Info("Priority=" + priority);
             }
-            // Clears the cache of functions
-            FunctionCacheCleaner.ClearCaches();
 
             // Activates the processing engine
             HashSet<Activation> activations = new HashSet<Activation>();
@@ -505,14 +459,9 @@ namespace DataDictionary.Tests.Runner
 
                 Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<Utils.ElementLog>>();
 
-                // Clears the cache of functions
-                FunctionCacheCleaner.ClearCaches();
-
                 // Executes a single rule priority
                 innerExecuteOnePriority(priority);
 
-                // Clears the cache of functions
-                FunctionCacheCleaner.ClearCaches();
                 EventTimeLine.GarbageCollect();
             }
             finally
@@ -1393,7 +1342,6 @@ namespace DataDictionary.Tests.Runner
         /// </summary>
         public void StepBack()
         {
-            FunctionCacheCleaner.ClearCaches();
             EventTimeLine.StepBack(step);
             currentSubStepIndex = REBUILD_CURRENT_SUB_STEP;
             currentStepIndex = REBUILD_CURRENT_SUB_STEP;
@@ -1422,10 +1370,6 @@ namespace DataDictionary.Tests.Runner
         /// </summary>
         public void EndExecution()
         {
-            if (FunctionCacheCleaner != null)
-            {
-                FunctionCacheCleaner.ClearCaches();
-            }
             ExecutionTimeInitializer initializer = new ExecutionTimeInitializer();
             foreach (Dictionary dictionary in EFSSystem.Dictionaries)
             {
@@ -1485,9 +1429,6 @@ namespace DataDictionary.Tests.Runner
                 Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<Utils.ElementLog>>();
 
                 innerExecuteOnePriority((Generated.acceptor.RulePriority)CurrentPriority);
-
-                // Clears the cache of functions
-                FunctionCacheCleaner.ClearCaches();
 
                 RegisterErrors(Utils.ModelElement.Errors);
 

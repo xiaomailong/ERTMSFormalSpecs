@@ -15,6 +15,8 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using DataDictionary.Generated;
+using DataDictionary.Values;
 using Utils;
 
 namespace DataDictionary.Variables
@@ -538,5 +540,25 @@ namespace DataDictionary.Variables
         /// Indicates that the element is pinned
         /// </summary>
         public bool Pinned { get { return getPinned(); } set { setPinned(value); } }
+
+        public override void HandleChange()
+        {
+            base.HandleChange();
+
+            Structure structure = Type as Structure;
+            if (structure == null)
+            {
+                StructureValue enclosingStructure = Enclosing as StructureValue;
+                if (enclosingStructure != null)
+                {
+                    structure = enclosingStructure.Type as Structure;
+                }
+            }
+
+            if (structure != null)
+            {
+                structure.HandleChange();
+            }
+        }
     }
 }

@@ -1391,8 +1391,10 @@ namespace DataDictionary.Functions
         /// <summary>
         /// Clears the caches for this function
         /// </summary>
-        public void ClearCache()
+        public override void ClearCache()
         {
+            base.ClearCache();
+
             CachedValue = null;
             CachedResult = null;
             foreach (Case aCase in Cases)

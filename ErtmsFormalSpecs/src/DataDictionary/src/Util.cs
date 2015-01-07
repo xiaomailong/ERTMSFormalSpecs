@@ -781,6 +781,7 @@ namespace DataDictionary
 
             if (retVal != null && efsSystem != null)
             {
+                efsSystem.ShouldRebuild = true;
                 retVal.CheckRules();
             }
 
