@@ -1410,39 +1410,6 @@ namespace DataDictionary.Tests.Runner
         }
 
         /// <summary>
-        /// Activates a mini step
-        /// </summary>
-        public void MiniStep()
-        {
-            try
-            {
-                CurrentPriority = NextPriority();
-
-                if (LogEvents)
-                {
-                    Log.Info("Mini step " + CurrentPriority);
-                }
-                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
-
-                LastActivationTime = Time;
-
-                Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<Utils.ElementLog>>();
-
-                innerExecuteOnePriority((Generated.acceptor.RulePriority)CurrentPriority);
-
-                RegisterErrors(Utils.ModelElement.Errors);
-
-                EventTimeLine.GarbageCollect();
-            }
-            finally
-            {
-                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
-            }
-
-            EventTimeLine.CurrentTime += Step; 
-        }
-
-        /// <summary>
         /// Registers the errors raised during evaluation and create ModelInterpretationFailure for each one of them
         /// </summary>
         /// <param name="errors"></param>

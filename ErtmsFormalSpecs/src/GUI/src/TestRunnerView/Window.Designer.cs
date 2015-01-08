@@ -48,12 +48,21 @@ namespace GUI.TestRunnerView
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.nextErrortoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.nextWarningToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.nextInfoToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
             this.frameToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.subSequenceSelectorComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.rewindButton = new System.Windows.Forms.ToolStripButton();
+            this.RestartButton = new System.Windows.Forms.ToolStripButton();
+            this.StepOnceButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTimeTextBox = new System.Windows.Forms.ToolStripTextBox();
@@ -67,16 +76,6 @@ namespace GUI.TestRunnerView
             this.testDescriptionTimeLineControl = new GUI.TestRunnerView.TimeLineControl.StaticTimeLineControl();
             this.testExecutionTabPage = new System.Windows.Forms.TabPage();
             this.testExecutionTimeLineControl = new GUI.TestRunnerView.TimeLineControl.DynamicTimeLineControl();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.nextErrortoolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.nextWarningToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.nextInfoToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.rewindButton = new System.Windows.Forms.ToolStripButton();
-            this.RestartButton = new System.Windows.Forms.ToolStripButton();
-            this.StepOnceButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -107,7 +106,6 @@ namespace GUI.TestRunnerView
             this.RestartButton,
             this.StepOnceButton,
             this.toolStripButton4,
-            this.toolStripButton3,
             this.toolStripSeparator2,
             this.toolStripLabel1,
             this.toolStripTimeTextBox,
@@ -130,6 +128,58 @@ namespace GUI.TestRunnerView
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.ToolTipText = "Select previous marking";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.ToolTipText = "Select next marking";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // nextErrortoolStripButton
+            // 
+            this.nextErrortoolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.nextErrortoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("nextErrortoolStripButton.Image")));
+            this.nextErrortoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.nextErrortoolStripButton.Name = "nextErrortoolStripButton";
+            this.nextErrortoolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.nextErrortoolStripButton.Text = "Next error";
+            this.nextErrortoolStripButton.Click += new System.EventHandler(this.nextErrortoolStripButton_Click);
+            // 
+            // nextWarningToolStripButton
+            // 
+            this.nextWarningToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.nextWarningToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("nextWarningToolStripButton.Image")));
+            this.nextWarningToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.nextWarningToolStripButton.Name = "nextWarningToolStripButton";
+            this.nextWarningToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.nextWarningToolStripButton.Text = "Next warning";
+            this.nextWarningToolStripButton.Click += new System.EventHandler(this.nextWarningToolStripButton_Click);
+            // 
+            // nextInfoToolStripButton
+            // 
+            this.nextInfoToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.nextInfoToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("nextInfoToolStripButton.Image")));
+            this.nextInfoToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.nextInfoToolStripButton.Name = "nextInfoToolStripButton";
+            this.nextInfoToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.nextInfoToolStripButton.Text = "Next info";
+            this.nextInfoToolStripButton.Click += new System.EventHandler(this.nextInfoToolStripButton_Click);
             // 
             // toolStripSeparator4
             // 
@@ -167,6 +217,47 @@ namespace GUI.TestRunnerView
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // rewindButton
+            // 
+            this.rewindButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.rewindButton.Image = ((System.Drawing.Image)(resources.GetObject("rewindButton.Image")));
+            this.rewindButton.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.rewindButton.Name = "rewindButton";
+            this.rewindButton.Size = new System.Drawing.Size(23, 22);
+            this.rewindButton.Text = "Step back";
+            this.rewindButton.Click += new System.EventHandler(this.rewindButton_Click);
+            // 
+            // RestartButton
+            // 
+            this.RestartButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.RestartButton.Image = ((System.Drawing.Image)(resources.GetObject("RestartButton.Image")));
+            this.RestartButton.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.RestartButton.Name = "RestartButton";
+            this.RestartButton.Size = new System.Drawing.Size(23, 22);
+            this.RestartButton.Text = "Restart";
+            this.RestartButton.Click += new System.EventHandler(this.restart_Click);
+            // 
+            // StepOnceButton
+            // 
+            this.StepOnceButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StepOnceButton.Image = ((System.Drawing.Image)(resources.GetObject("StepOnceButton.Image")));
+            this.StepOnceButton.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.StepOnceButton.Name = "StepOnceButton";
+            this.StepOnceButton.Size = new System.Drawing.Size(23, 22);
+            this.StepOnceButton.Text = "Step once";
+            this.StepOnceButton.Click += new System.EventHandler(this.stepOnce_Click);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton4.Text = "toolStripButton4";
+            this.toolStripButton4.ToolTipText = "Pause";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // toolStripSeparator2
             // 
@@ -273,8 +364,10 @@ namespace GUI.TestRunnerView
             this.testDescriptionTimeLineControl.Location = new System.Drawing.Point(0, 0);
             this.testDescriptionTimeLineControl.Name = "testDescriptionTimeLineControl";
             this.testDescriptionTimeLineControl.Size = new System.Drawing.Size(609, 522);
+            this.testDescriptionTimeLineControl.SubSequence = null;
             this.testDescriptionTimeLineControl.TabIndex = 0;
             this.testDescriptionTimeLineControl.TestCase = null;
+            this.testDescriptionTimeLineControl.Translation = null;
             // 
             // testExecutionTabPage
             // 
@@ -299,108 +392,6 @@ namespace GUI.TestRunnerView
             this.testExecutionTimeLineControl.Size = new System.Drawing.Size(605, 518);
             this.testExecutionTimeLineControl.TabIndex = 1;
             this.testExecutionTimeLineControl.Text = "evcTimeLineControl1";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.ToolTipText = "Select previous marking";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
-            this.toolStripButton2.ToolTipText = "Select next marking";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // nextErrortoolStripButton
-            // 
-            this.nextErrortoolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.nextErrortoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("nextErrortoolStripButton.Image")));
-            this.nextErrortoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.nextErrortoolStripButton.Name = "nextErrortoolStripButton";
-            this.nextErrortoolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.nextErrortoolStripButton.Text = "Next error";
-            this.nextErrortoolStripButton.Click += new System.EventHandler(this.nextErrortoolStripButton_Click);
-            // 
-            // nextWarningToolStripButton
-            // 
-            this.nextWarningToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.nextWarningToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("nextWarningToolStripButton.Image")));
-            this.nextWarningToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.nextWarningToolStripButton.Name = "nextWarningToolStripButton";
-            this.nextWarningToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.nextWarningToolStripButton.Text = "Next warning";
-            this.nextWarningToolStripButton.Click += new System.EventHandler(this.nextWarningToolStripButton_Click);
-            // 
-            // nextInfoToolStripButton
-            // 
-            this.nextInfoToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.nextInfoToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("nextInfoToolStripButton.Image")));
-            this.nextInfoToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.nextInfoToolStripButton.Name = "nextInfoToolStripButton";
-            this.nextInfoToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.nextInfoToolStripButton.Text = "Next info";
-            this.nextInfoToolStripButton.Click += new System.EventHandler(this.nextInfoToolStripButton_Click);
-            // 
-            // rewindButton
-            // 
-            this.rewindButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.rewindButton.Image = ((System.Drawing.Image)(resources.GetObject("rewindButton.Image")));
-            this.rewindButton.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.rewindButton.Name = "rewindButton";
-            this.rewindButton.Size = new System.Drawing.Size(23, 22);
-            this.rewindButton.Text = "Step back";
-            this.rewindButton.Click += new System.EventHandler(this.rewindButton_Click);
-            // 
-            // RestartButton
-            // 
-            this.RestartButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RestartButton.Image = ((System.Drawing.Image)(resources.GetObject("RestartButton.Image")));
-            this.RestartButton.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.RestartButton.Name = "RestartButton";
-            this.RestartButton.Size = new System.Drawing.Size(23, 22);
-            this.RestartButton.Text = "Restart";
-            this.RestartButton.Click += new System.EventHandler(this.restart_Click);
-            // 
-            // StepOnceButton
-            // 
-            this.StepOnceButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.StepOnceButton.Image = ((System.Drawing.Image)(resources.GetObject("StepOnceButton.Image")));
-            this.StepOnceButton.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.StepOnceButton.Name = "StepOnceButton";
-            this.StepOnceButton.Size = new System.Drawing.Size(23, 22);
-            this.StepOnceButton.Text = "Step once";
-            this.StepOnceButton.Click += new System.EventHandler(this.stepOnce_Click);
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "toolStripButton4";
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "toolStripButton3";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // Window
             // 
@@ -463,7 +454,6 @@ namespace GUI.TestRunnerView
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.TabPage testDescriptionTabPage;
         public TimeLineControl.StaticTimeLineControl testDescriptionTimeLineControl;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
 
     }
