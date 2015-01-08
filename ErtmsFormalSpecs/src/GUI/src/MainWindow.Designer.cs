@@ -693,7 +693,7 @@ namespace GUI
             // 
             this.reviewedToolStripMenuItem.Name = "reviewedToolStripMenuItem";
             this.reviewedToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
-            this.reviewedToolStripMenuItem.Text = "Mark reviewed";
+            this.reviewedToolStripMenuItem.Text = "Mark not reviewed";
             this.reviewedToolStripMenuItem.Click += new System.EventHandler(this.reviewedToolStripMenuItem_Click);
             // 
             // markNotImplementedButImplementationExistsToolStripMenuItem
