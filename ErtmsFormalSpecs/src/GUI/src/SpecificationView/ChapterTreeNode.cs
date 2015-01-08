@@ -102,7 +102,18 @@ namespace GUI.SpecificationView
             DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)DataDictionary.Generated.acceptor.getFactory().createParagraph();
             paragraph.FullId = Item.getId() + "." + (Item.countParagraphs() + 1);
             paragraph.Text = "";
+
+            SetupDefaultRequirementSets(paragraph);
+
             AddParagraph(paragraph);
+        }
+
+        private void SetupDefaultRequirementSets(DataDictionary.Specification.Paragraph paragraph)
+        {
+            foreach (RequirementSet requirementSet in Item.EFSSystem.RequirementSets)
+            {
+                requirementSet.setDefaultRequirementSets(paragraph);
+            }
         }
 
         public void ChangeRequirementToNoteHandler(object sender, EventArgs args)
