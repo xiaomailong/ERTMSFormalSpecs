@@ -753,6 +753,11 @@ Packet.Sequence1</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="338336d3-0344-4b2f-8380-68db927b7096"
 >
+</ReqRef><ReqRef
+ Id="5bcc87bc-5d11-48c0-b51c-a864660e918f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="57f1665c-3be9-4d1a-b4e2-7b5fb7308de9"
+>
 </ReqRef><Comment>Is called whenever a new trackside-information regarding an upcoming conditional level transition is received. It will take care about the first (highest priority) LTO, forward the others to AddNewLTO and then process the new information.</Comment>
 <Parameters>
 <Parameter
@@ -1417,8 +1422,7 @@ LevelTransitionOrder.Distance &lt;= TrainPosition.FrontEndPosition(DistanceInter
 <Actions>
 <Action
  Guid="80001d59-a4e1-4935-a8ca-2772d5ccab14"
->
-LevelTransitionOrder.PositionReportSent &lt;- True</Action><Action
+>LevelTransitionOrder.PositionReportSent &lt;- True</Action><Action
  Guid="99edecea-5f88-4332-b9be-57663c593046"
 >EURORADIO.PositionReport.PositionReportEventsTracker.LevelTransitionBorderPassed &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
