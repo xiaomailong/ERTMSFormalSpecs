@@ -1,5 +1,5 @@
 <Frame
- CycleDuration="0.1"
+ CycleDuration="Kernel.CycleDuration"
  Name="Level transitions - Functional tests"
  Guid="2baba2c2-1565-48c8-b53f-6cf427c10629"
 >
@@ -1479,8 +1479,7 @@
 <Actions>
 <Action
  Guid="da0db539-ccdf-4a32-9db3-249a4dd43917"
->
-Kernel.InitializeTestEnvironment()</Action></Actions>
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Set Level and Mode"
  Guid="2d95189f-d036-4f96-b303-479fb3444c46"
@@ -1701,8 +1700,7 @@ Kernel.InitializeTestEnvironment()</Action></Actions>
 <Actions>
 <Action
  Guid="38290da3-44d7-4ba6-87c1-3b13ebf32cce"
->
-EURORADIO.CurrentRBCConnection().SessionManagementData.SystemVersion &lt;- EURORADIO.SystemVersionStruct{
+>EURORADIO.CurrentRBCConnection().SessionManagementData.SystemVersion &lt;- EURORADIO.SystemVersionStruct{
     Value =&gt; EURORADIO.SystemVersionEnum.Version2_0,
     DataState =&gt; Default.DataState.Valid
 }</Action></Actions>
@@ -1777,9 +1775,7 @@ EURORADIO.CurrentRBCConnection().SessionManagementData.SystemVersion &lt;- EUROR
 <Actions>
 <Action
  Guid="7ef967f0-283a-4afb-84e7-13e90e483103"
->
-
-Kernel.InitializeTestEnvironment()</Action></Actions>
+>Kernel.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Set Level and Mode"
  Guid="fd93367d-45ac-4b04-9cfa-8189230a01d7"
@@ -2010,9 +2006,7 @@ Kernel.InitializeTestEnvironment()</Action></Actions>
 <Actions>
 <Action
  Guid="09cdd8f2-232b-4356-91ea-80d406cc08c7"
->
-
-EURORADIO.CurrentRBCConnection().SessionManagementData.SystemVersion &lt;- EURORADIO.SystemVersionStruct{
+>EURORADIO.CurrentRBCConnection().SessionManagementData.SystemVersion &lt;- EURORADIO.SystemVersionStruct{
     Value =&gt; EURORADIO.SystemVersionEnum.Version2_0,
     DataState =&gt; Default.DataState.Valid
 }</Action></Actions>
