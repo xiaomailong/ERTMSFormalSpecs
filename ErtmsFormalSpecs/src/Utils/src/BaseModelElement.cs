@@ -428,7 +428,7 @@ namespace Utils
             {
                 foreach (ModelElement element in CacheDependancy)
                 {
-                    retVal += element.FullName + "\n";
+                    retVal += element.FullName +  " ";
                 }
             }
 

@@ -13,6 +13,9 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Windows.Forms.VisualStyles;
+
 namespace GUI
 {
     using System;
@@ -1426,7 +1429,7 @@ namespace GUI
                 function.ExecutionTimeInMilli = 0;
                 function.ExecutionCount = 0;
 
-                base.visit(obj);
+                base.visit(obj, visitSubNodes);
             }
 
             public override void visit(DataDictionary.Generated.Frame obj, bool visitSubNodes)

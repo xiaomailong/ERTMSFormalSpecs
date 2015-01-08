@@ -15,7 +15,7 @@
 // ------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using DataDictionary.Generated;
+using DataDictionary.Types;
 using DataDictionary.Values;
 using Utils;
 
@@ -546,18 +546,19 @@ namespace DataDictionary.Variables
             base.HandleChange();
 
             Structure structure = Type as Structure;
-            if (structure == null)
-            {
-                StructureValue enclosingStructure = Enclosing as StructureValue;
-                if (enclosingStructure != null)
-                {
-                    structure = enclosingStructure.Type as Structure;
-                }
-            }
-
             if (structure != null)
             {
                 structure.HandleChange();
+            }
+
+            StructureValue enclosingStructureValue = Enclosing as StructureValue;
+            if (enclosingStructureValue != null)
+            {
+                Variable enclosingVariable = enclosingStructureValue.Enclosing as Variable;
+                if (enclosingVariable != null)
+                {
+                    enclosingVariable.HandleChange();
+                }
             }
         }
     }

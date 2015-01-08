@@ -1048,19 +1048,14 @@ namespace DataDictionary.Functions
         {
             Values.IValue retVal = CachedValue;
 
-            // TODO : Ensure that context.HasSideEffects should not be used in the useCase computation.
-            bool useCache = getCacheable() || AverageExecutionTime > 20;
             if (retVal == null)
             {
-                if (useCache)
+                if (CachedResult == null)
                 {
-                    if (CachedResult == null)
-                    {
-                        CachedResult = new CurryCache(this);
-                    }
-
-                    retVal = CachedResult.GetValue(actuals);
+                    CachedResult = new CurryCache(this);
                 }
+
+                retVal = CachedResult.GetValue(actuals);
             }
 
             if (retVal == null)
@@ -1072,19 +1067,6 @@ namespace DataDictionary.Functions
                     // Statically defined function
                     foreach (Case aCase in Cases)
                     {
-                        // Caches the function for this call if need be
-                        if (useCache)
-                        {
-                            Interpreter.Call call = aCase.Expression as Interpreter.Call;
-                            if (call != null)
-                            {
-                                if (call.CachedFunction == null)
-                                {
-                                    call.CachedFunction = call.getFunction(context, explain);
-                                }
-                            }
-                        }
-
                         // Evaluate the function
                         ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, "Case " + aCase.Name + " : ");
                         bool val = aCase.EvaluatePreConditions(context, subExplanation);
@@ -1137,19 +1119,14 @@ namespace DataDictionary.Functions
                 }
                 context.LocalScope.PopContext(token);
 
-                if (useCache)
+                ExplanationPart.SetNamable(explain, retVal);
+                if (actuals.Count == 0)
                 {
-                    ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, "Caching result ");
-                    ExplanationPart.SetNamable(subExplanation, retVal);
-                    ExplanationPart.SetNamable(explain, retVal);
-                    if (actuals.Count == 0)
-                    {
-                        CachedValue = retVal;
-                    }
-                    else
-                    {
-                        CachedResult.SetValue(actuals, retVal);
-                    }
+                    CachedValue = retVal;
+                }
+                else
+                {
+                    CachedResult.SetValue(actuals, retVal);
                 }
             }
             else
@@ -1397,14 +1374,7 @@ namespace DataDictionary.Functions
 
             CachedValue = null;
             CachedResult = null;
-            foreach (Case aCase in Cases)
-            {
-                Interpreter.Call call = aCase.Expression as Interpreter.Call;
-                if (call != null)
-                {
-                    call.CachedFunction = null;
-                }
-            }
+
             Graph = null;
             Surface = null;
         }
