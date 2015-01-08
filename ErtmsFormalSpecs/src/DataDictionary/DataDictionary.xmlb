@@ -1360,26 +1360,26 @@
   <ELEMENT NAME="RequirementSet" MAIN="TRUE" BASEELEMENT="Namable" BASECLASS="DataDictionary.Namable">
     <META NAME="Package">requirements</META>
     <FIELDS>
-      <FIELD NAME="Dependancies"         REFTYPE="RequirementSetDependancy" />
-      <FIELD NAME="SubSets"              REFTYPE="RequirementSet" />
-      <FIELD NAME="Width"                TYPE="INTEGER" />
-      <FIELD NAME="Height"               TYPE="INTEGER" />
-      <FIELD NAME="X"                    TYPE="INTEGER" />
-      <FIELD NAME="Y"                    TYPE="INTEGER" />
-      <FIELD NAME="RecursiveSelection"   TYPE="BOOLEAN" />
-      <FIELD NAME="RequirementsStatus"   ENUMTYPE="SPEC_IMPLEMENTED_ENUM" />
-      <FIELD NAME="Default"              TYPE="BOOLEAN" />
-      <FIELD NAME="Pinned"               TYPE="BOOLEAN" />
+      <FIELD NAME="Dependancies"               REFTYPE="RequirementSetDependancy" />
+      <FIELD NAME="SubSets"                    REFTYPE="RequirementSet" />
+      <FIELD NAME="Width"                      TYPE="INTEGER" />
+      <FIELD NAME="Height"                     TYPE="INTEGER" />
+      <FIELD NAME="X"                          TYPE="INTEGER" />
+      <FIELD NAME="Y"                          TYPE="INTEGER" />
+      <FIELD NAME="RecursiveSelection"         TYPE="BOOLEAN" />
+      <FIELD NAME="ObsoleteRequirementsStatus" ENUMTYPE="SPEC_IMPLEMENTED_ENUM" />
+      <FIELD NAME="Default"                    TYPE="BOOLEAN" />
+      <FIELD NAME="Pinned"                     TYPE="BOOLEAN" />
     </FIELDS>
     <ATTRIBUTES>
-      <ATTR NAME="X"                   TARGET="X"                    OPTIONAL="TRUE" DEFAULT="0" />
-      <ATTR NAME="Y"                   TARGET="Y"                    OPTIONAL="TRUE" DEFAULT="0" />
-      <ATTR NAME="Width"               TARGET="Width"                OPTIONAL="TRUE" DEFAULT="0" />
-      <ATTR NAME="Height"              TARGET="Height"               OPTIONAL="TRUE" DEFAULT="0" />
-      <ATTR NAME="RecursiveSelection"  TARGET="RecursiveSelection"   OPTIONAL="TRUE" DEFAULT="FALSE" />
-      <ATTR NAME="RequirementsStatus"  TARGET="RequirementsStatus"   OPTIONAL="TRUE" />
-      <ATTR NAME="Default"             TARGET="Default"              OPTIONAL="TRUE" DEFAULT="FALSE" />
-      <ATTR NAME="Pinned"              TARGET="Pinned" OPTIONAL="TRUE" DEFAULT="FALSE" />
+      <ATTR NAME="X"                   TARGET="X"                            OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Y"                   TARGET="Y"                            OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Width"               TARGET="Width"                        OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="Height"              TARGET="Height"                       OPTIONAL="TRUE" DEFAULT="0" />
+      <ATTR NAME="RecursiveSelection"  TARGET="RecursiveSelection"           OPTIONAL="TRUE" DEFAULT="FALSE" />
+      <ATTR NAME="RequirementsStatus"  TARGET="ObsoleteRequirementsStatus"   OPTIONAL="TRUE" />
+      <ATTR NAME="Default"             TARGET="Default"                      OPTIONAL="TRUE" DEFAULT="FALSE" />
+      <ATTR NAME="Pinned"              TARGET="Pinned"                       OPTIONAL="TRUE" DEFAULT="FALSE" />
     </ATTRIBUTES>
     <FORMULA>
       <CONCAT>

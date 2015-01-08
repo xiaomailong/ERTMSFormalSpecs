@@ -104,20 +104,7 @@ namespace GUI.RequirementSetDiagram
             public bool Default
             {
                 get { return control.Model.getDefault(); }
-                set
-                {
-                    control.Model.setDefault(value);
-                }
-            }
-
-            /// <summary>
-            /// Indicates if the paragraph can be implemented by the EFS
-            /// </summary>
-            [Category("Related Requirements behaviour"), TypeConverter(typeof(Converters.ImplementationStatusConverterWithDefault))]
-            public virtual DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM ImplementationStatus
-            {
-                get { return control.Model.getRequirementsStatus(); }
-                set { control.Model.setRequirementsStatus(value); }
+                set { control.Model.setDefault(value); }
             }
         }
 
