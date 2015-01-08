@@ -736,5 +736,163 @@
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Non protected Level Crossing"
+ Guid="a3ae3a75-fa8e-4b58-b6c5-0042628a613b"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+ Guid="bc171baf-b64f-4c1a-8c8e-ffc97441a4be"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Initialize test environment"
+ Guid="c7c58cd7-b834-4a96-90a0-4fb00b568424"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Initialize test environment"
+ Guid="8d993783-417a-4c4f-9337-5c2dca8e2d20"
+>
+<Actions>
+<Action
+ Guid="79315133-c52c-4c2f-9fe0-4b914ec5136c"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements for MA"
+ Guid="4fb12348-5f7a-47c8-bcc9-8aef67e8078f"
+>
+<Actions>
+<Action
+ Guid="a8c2c8c0-c5ee-4aaf-80b8-15ef6aeca7ee"
+>Kernel.MA.InitializeElementsForMA()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3 - Set LRBG at 0 distance"
+ Guid="9303c7a7-fea0-4c69-b302-1696dbdabf88"
+>
+<Actions>
+<Action
+ Guid="7c5c176a-ae77-4de9-a031-881433040cd8"
+>BTM.LRBG.Position &lt;- BTM.Position{
+    Position =&gt; 0.0,
+    UnderReadingAmountOdo =&gt; 0.0,
+    OverReadingAmountOdo =&gt; 0.0
+}</Action><Action
+ Guid="012f3548-3af4-4713-bd47-df5437b051f8"
+>Odometry.NominalDistance &lt;- 100.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step4 - Set Level and Mode + MA"
+ Guid="e1a6caf9-32c6-4c1d-8665-e42b9acd8193"
+>
+<Actions>
+<Action
+ Guid="4a3ab6f2-4021-4ac4-b816-39cc42bb64e7"
+>Kernel.Mode &lt;- Mode.FS</Action><Action
+ Guid="35131fd3-4aa2-4af9-8423-1c60bd4b8801"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; LevelDataStruct{
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L1
+    },
+    DataState =&gt; Default.DataState.Valid
+}</Action><Action
+ Guid="07dd756d-0a82-45f6-b02e-5bc318192160"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 30000.0
+    }
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step5 - Set SSP"
+ Guid="f3b2c1b3-fd69-4fd7-8518-f6acd9885860"
+>
+<Actions>
+<Action
+ Guid="557310ba-ed0f-4b77-9f9e-5042a2cbb654"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
+[
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 0.0,
+        BasicSpeed =&gt; 200.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt; 
+        [
+            
+        ]
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 3000.0,
+        BasicSpeed =&gt; 60.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt; 
+        [
+            
+        ]
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 6200.0,
+        BasicSpeed =&gt; 200.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt; 
+        [
+            
+        ]
+    }
+]</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step6 - Set unprotected LX"
+ Guid="9ccdd12f-bcee-4222-b51c-4a55fac73639"
+>
+<Actions>
+<Action
+ Guid="11cf9734-44d9-4805-98ad-97c88601314f"
+>Kernel.LX.SupervisedLevelCrossings &lt;- [Kernel.LX.LevelCrossingStruct{
+    Id =&gt; 123,
+    Location =&gt; 3200.0,
+    Length =&gt; 150.0,
+    IsProtected =&gt; Boolean.False,
+    Speed =&gt; 40.0,
+    StoppingRequired =&gt; Boolean.True,
+    StoppingAreaLength =&gt; 100.0
+}]</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ Distance="10000"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4"
+ Guid="05fd2bdb-ce19-49f8-9bed-4130189ba812"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="dfe78d18-4101-4936-a113-d0c9d3d61a2d"
+>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>
