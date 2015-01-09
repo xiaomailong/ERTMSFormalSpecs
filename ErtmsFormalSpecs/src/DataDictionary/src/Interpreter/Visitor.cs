@@ -160,6 +160,10 @@ namespace DataDictionary.Interpreter
                 {
                     VisitThereIsExpression((ListOperators.ThereIsExpression)expression);
                 }
+                else if (expression is StabilizeExpression)
+                {
+                    VisitStabilizeExpression((StabilizeExpression)expression);
+                }
                 else if (expression is LetExpression)
                 {
                     VisitLetExpression((LetExpression)expression);
@@ -185,6 +189,7 @@ namespace DataDictionary.Interpreter
                 }
             }
         }
+
         /// <summary>
         /// Visits a THERE IS expression
         /// </summary>
@@ -197,6 +202,19 @@ namespace DataDictionary.Interpreter
             }
         }
 
+        /// <summary>
+        /// Visits a STABILIZE expression
+        /// </summary>
+        /// <param name="stabilizeExpression"></param>
+        protected virtual void VisitStabilizeExpression(StabilizeExpression stabilizeExpression)
+        {
+            if (stabilizeExpression != null)
+            {
+                VisitExpression(stabilizeExpression.Expression);
+                VisitExpression(stabilizeExpression.Condition);
+                VisitExpression(stabilizeExpression.InitialValue);
+            }
+        }
         /// <summary>
         /// Visits a SUM expression
         /// </summary>
