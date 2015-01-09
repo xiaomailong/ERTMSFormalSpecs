@@ -18,7 +18,7 @@ using DataDictionary.Interpreter.Filter;
 
 namespace DataDictionary.Interpreter
 {
-    class StabilizeExpression : Expression, Utils.ISubDeclarator
+    public class StabilizeExpression : Expression, Utils.ISubDeclarator
     {
         /// <summary>
         /// The expression to stabilize
