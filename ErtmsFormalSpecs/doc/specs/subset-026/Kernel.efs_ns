@@ -11854,5 +11854,35 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Guid="cde8fdd4-fa7a-49d8-b4b6-370f784dd0e9"
 >DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DoNotDisplay()</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Display mode"
+ Guid="496d1c7f-ec8d-4d53-bcff-fe9d45fb2c3e"
+>
+<ReqRef
+ Id="c0f8621d-7742-4d77-95a3-e39271f0f811"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa7e2285-ed3e-40aa-ab19-45e8f4bc9654"
+>
+</ReqRef><Comment>When the desk is open, the mode is diplayed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="If the desk is open, send mode to the DMI"
+ Guid="3efbfb47-02cd-4fcf-8b3e-7489604734ea"
+>
+<PreConditions>
+<PreCondition
+ Guid="5261edd1-1888-4b24-a3be-96e0042f3f52"
+>DMI.DeskIsOpen(DMI.MasterDMI())</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8a9c5110-e954-49ff-9f0c-1b49b54cf754"
+>DMI.MasterDMI().Out_ErtmsEtcsMode.Display()</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
