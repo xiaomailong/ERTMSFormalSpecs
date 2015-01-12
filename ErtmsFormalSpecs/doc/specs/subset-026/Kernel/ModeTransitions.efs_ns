@@ -1403,6 +1403,11 @@ AND
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="06b96fd1-3ea0-46be-a1d5-4576f9a47da4"
 >
+</ReqRef><ReqRef
+ Id="8e0c1f96-45b8-4efd-9014-4237d9bae112"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8e4ee8d8-cdef-4725-a68e-be459fe34aa7"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -7208,6 +7213,68 @@ TIU.NonLeadingPermitted</Expression>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="FS"
+ Guid="3f86a7bf-7ef9-4e47-8bf0-12834e8d9248"
+>
+<ReqRef
+ Id="3d4bd2d4-777c-4d6d-85c1-ab231d5aee49"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="778438b4-07a2-47b9-9c56-eef2acbed6b9"
+>
+</ReqRef><Comment>If the FS mode is entered and the gradient or the SSP do not cover the whole length of the train, the message Entry in FS is displayed to the driver.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Entry in FS"
+ Guid="732f5a4a-c546-4fbb-904c-23c4b1656ae6"
+>
+<PreConditions>
+<PreCondition
+ Guid="6fbe47aa-ca2b-4420-a0b0-c8f1462ea615"
+>TrainPosition.RearEndPosition(PointOfInterest =&gt; DistanceInterval.Nom) &lt; (FIRST X IN TrackDescription.Gradient.Gradients).Distance
+  OR
+TrainPosition.RearEndPosition(PointOfInterest =&gt; DistanceInterval.Nom) &lt; (FIRST X IN TrackDescription.StaticSpeedProfile.SSP).Distance</PreCondition><PreCondition
+ Guid="3fe81a1f-a14a-42cf-86f4-2c6b8b82bf29"
+>Mode == Mode.FS</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0227ac5d-5147-488a-b254-c00debe67dd3"
+>DMI.MasterDMI().Out_EntryInFsOs.Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="SR"
+ Guid="aca2dab1-2c2b-4dcb-ab3e-9f95bc4e94ee"
+>
+<ReqRef
+ Id="77289e9b-8c64-4406-8d33-fcf9d018e94c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fd47390c-e46f-4098-8177-23bf79715f25"
+>
+</ReqRef><ReqRef
+ Id="03cde0ce-fb7a-4c71-83d9-e32bb757174f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0f56c8d0-70ff-4fea-b79f-b74ffc058eab"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="SR start distance"
+ Guid="542a293f-0bbe-4b7e-8564-f58bb6df0072"
+>
+<PreConditions>
+<PreCondition
+ Guid="d1fb763d-8eb4-449e-b9fb-3ab9c203ce8f"
+>Mode == Mode.SR</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9861dab1-0ea0-474a-a570-5c9f716e8ed6"
+>TrainPosition.SRStartDistance &lt;- Odometry.NominalDistance</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="RV"
  Guid="4fed2537-dd03-40b9-976c-a3fbcfa70489"
 >
@@ -7239,36 +7306,6 @@ TIU.NonLeadingPermitted</Expression>
 >Kernel.TSR.TSRs &lt;- []</Action><Action
  Guid="d76a3771-e75a-4586-aa50-73a70912fd4f"
 >GeographicalPosition.GeographicalPositionInformation &lt;- []</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="FS"
- Guid="3f86a7bf-7ef9-4e47-8bf0-12834e8d9248"
->
-<ReqRef
- Id="3d4bd2d4-777c-4d6d-85c1-ab231d5aee49"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="778438b4-07a2-47b9-9c56-eef2acbed6b9"
->
-</ReqRef><Comment>If the FS mode is entered and the gradient or the SSP do not cover the whole length of the train, the message Entry in FS is displayed to the driver.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="FS"
- Guid="732f5a4a-c546-4fbb-904c-23c4b1656ae6"
->
-<PreConditions>
-<PreCondition
- Guid="6fbe47aa-ca2b-4420-a0b0-c8f1462ea615"
->TrainPosition.RearEndPosition(PointOfInterest =&gt; DistanceInterval.Nom) &lt; (FIRST X IN TrackDescription.Gradient.Gradients).Distance
-  OR
-TrainPosition.RearEndPosition(PointOfInterest =&gt; DistanceInterval.Nom) &lt; (FIRST X IN TrackDescription.StaticSpeedProfile.SSP).Distance</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="0227ac5d-5147-488a-b254-c00debe67dd3"
->DMI.MasterDMI().Out_EntryInFsOs.Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

@@ -324,6 +324,19 @@
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Max distance in SR"
+ Guid="a291f1e8-12fb-45a4-baaa-88ec06539450"
+>
+<PreConditions>
+<PreCondition
+ Guid="a9fb3c3c-7773-4948-ab56-9a10f7455784"
+>Mode == Mode.SR</PreCondition><PreCondition
+ Guid="ec598b73-c6d7-4824-9352-4260309ad112"
+>MRSPnTarget.Location == NationalValues.ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode
+  AND  
+MRSPnTarget.Speed == 0.0</PreCondition></PreConditions>
+<Expression>PreIndicationLocation.d_I_EOA ( PreIndicationLocation.TargetSpeed(MRSPnTarget) ) - BaseTypes.SpeedToMS(TargetSpeed(MRSPnTarget)) * PreIndicationLocation.T_preindication</Expression>
+</Case><Case
  Name="d_I in rear of train"
  Guid="0e479194-ecac-4abe-bc9e-ca85dcaa8ba9"
 >
@@ -646,7 +659,7 @@ INITIAL_VALUE Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
 <PreCondition
  Guid="6c89e2c5-c672-4783-b6b8-0d417cf0f735"
 >Target == TargetSpeedMonitoring.MRDT()</PreCondition></PreConditions>
-<Expression>MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</Expression>
+<Expression>MRSP.V_MRSP()</Expression>
 </Case><Case
  Name="The section ending at the target is not speed restricted"
  Guid="19b306b3-2404-42ce-8135-a9cd9a1839e4"
@@ -1021,6 +1034,8 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
  Type="TargetSpeedMonitoring.Target"
  Cacheable="TRUE"
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="FarthestTarget"

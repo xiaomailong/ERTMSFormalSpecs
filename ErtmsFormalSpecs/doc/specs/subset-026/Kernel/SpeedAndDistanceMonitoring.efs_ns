@@ -2218,6 +2218,17 @@ SupervisedTargets</PreCondition><PreCondition
 >PreIndicationLocation.d_preindication() == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
+ Name="pre-indication for max dist to run in SR"
+ Guid="b03181eb-fb52-4946-a491-60b400c4aa90"
+>
+<PreConditions>
+<PreCondition
+ Guid="ec5c9338-6d2d-493a-8b62-04357f0dc7e1"
+>TrainPosition.DistanceRunInSR(Default.DistanceInterval.Max) &gt; PreIndicationLocation.d_preindication()</PreCondition><PreCondition
+ Guid="f6562426-5200-4773-85de-7b6bebd8476a"
+>Mode == Mode.SR</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
  Name="Train passed pre-indication location"
  Guid="d246cb6e-5ad9-415b-a581-75b2b0b9263a"
 >
@@ -2924,9 +2935,7 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="734c0cfb-8504-4804-8e92-7d445b1644b3"
->MonitoringType in MonitoringTypeSM.Target</PreCondition><PreCondition
- Guid="1d9d0f82-9b6e-4854-85b9-8c830b0881ef"
->TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+>MonitoringType in MonitoringTypeSM.Target</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="646147c7-d863-488e-83c8-2dad26e8f09b"
@@ -2940,9 +2949,7 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="d670d6a1-c1ac-44f1-b831-99c4d17bd838"
->MonitoringType in MonitoringTypeSM.Ceiling</PreCondition><PreCondition
- Guid="d839fc91-525d-472c-8bfb-dc7f3595ee3b"
->TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+>MonitoringType in MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b1c0ff01-91ce-4c1f-9bcf-aaf67396cf63"
@@ -2955,8 +2962,6 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
 <Comment>Supervision status for a train in RSM.</Comment>
 <PreConditions>
 <PreCondition
- Guid="beb69a2c-c219-4dcb-9a3b-7d7ee370bff7"
->TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
  Guid="0d0b9a1b-65da-4d93-bfa4-45805bdddd01"
 >MonitoringType in MonitoringTypeSM.Release</PreCondition></PreConditions>
 <Actions>

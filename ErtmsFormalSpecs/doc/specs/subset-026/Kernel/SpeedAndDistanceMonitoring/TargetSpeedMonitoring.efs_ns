@@ -593,6 +593,23 @@ X2 =&gt; aTarget.Speed
 </ReqRef><Comment>The permitted speed of the MRDT.</Comment>
 <Cases>
 <Case
+ Name="Max dist in SR"
+ Guid="e3d6ef1f-eecd-4e3e-81f7-a3074b4048f5"
+>
+<PreConditions>
+<PreCondition
+ Guid="3a0c2a8a-74d6-4796-be6b-59799791f944"
+>Mode == Mode.SR</PreCondition><PreCondition
+ Guid="d95afede-c96a-425e-8056-2fe078c73a94"
+>MRDT().Location == NationalValues.ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode
+  AND  
+MRDT().Speed == 0.0</PreCondition></PreConditions>
+<Expression>V_P_EBD_Target(
+    d_maxsafefront =&gt; TrainPosition.DistanceRunInSR(Default.DistanceInterval.Max),
+    aTarget =&gt; MRDT(),
+    Vest =&gt; Odometry.TrainSpeed()
+)</Expression>
+</Case><Case
  Name="MRDT is the EOA"
  Guid="da50275f-a949-4fe9-b3ab-e1285e86eb11"
 >
@@ -600,13 +617,13 @@ X2 =&gt; aTarget.Speed
 <PreCondition
  Guid="178905dd-ce63-4fba-8a0b-3c4f22c9b159"
 >MA.IsEOA(MRDT())</PreCondition></PreConditions>
-<Expression>V_P_EOA(d_estfront=&gt;TrainPosition.FrontEndPosition(DistanceInterval.Nom), Vest=&gt;Odometry.TrainSpeed())</Expression>
+<Expression>V_P_EOA(d_estfront=&gt;TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom), Vest=&gt;Odometry.TrainSpeed())</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="ce69f6f0-25b3-421d-b722-f59a85591ca8"
 >
 <Expression>V_P_EBD_Target(
-    d_maxsafefront =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Max),
+    d_maxsafefront =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Max),
     aTarget =&gt; MRDT(),
     Vest =&gt; Odometry.TrainSpeed()
 )</Expression>
@@ -1349,6 +1366,22 @@ d_SBI2 - TrainPosition.FrontEndPosition(DistanceInterval.Max)</Expression>
 </ReqRef><Comment>Provides the distance to the MRDT. the calculation of this distance depends on whether the MRDT is EOA/SvL or another type of target.</Comment>
 <Cases>
 <Case
+ Name="Max dist in SR"
+ Guid="5ea21d75-ea2b-4b65-b935-97e8b8332413"
+>
+<PreConditions>
+<PreCondition
+ Guid="cbebfd0e-2d3b-4f65-8478-e3cd710700ac"
+>ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition><PreCondition
+ Guid="6580cd96-d7fe-44ae-85db-07515746be94"
+>MRDT().Location == NationalValues.ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode
+  AND  
+MRDT().Speed == 0.0</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MaxDistance(
+    X1 =&gt; NationalValues.ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode - TrainPosition.DistanceRunInSR(DistanceInterval.Nom),
+    X2 =&gt; 0.0
+)</Expression>
+</Case><Case
  Name="MRDT is EOA or SvL"
  Guid="82194262-9ba2-4fde-8a4d-317280711763"
 >

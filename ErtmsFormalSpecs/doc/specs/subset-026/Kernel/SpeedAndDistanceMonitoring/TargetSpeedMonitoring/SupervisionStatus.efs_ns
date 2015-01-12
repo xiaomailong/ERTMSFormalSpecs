@@ -112,7 +112,7 @@ Odometry.TrainSpeed() &lt;= SpeedOfTarget(aTarget)</Expression>
  Guid="6f30e0cb-6eaa-45f6-b002-5a0a3598a78d"
 >Odometry.TrainSpeed() &lt;= MRSP.V_MRSP()</PreCondition><PreCondition
  Guid="fd5e6266-aa7b-42a3-9cde-871febdd1614"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I_Target(
+>TrainPosition.DistanceRunInSR(DistanceInterval.Max) &lt;= d_I_Target(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; MaxDistInSR() )</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -205,7 +205,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I_Target(
  Guid="46ce3e46-09af-4ec4-b0c5-596d538dc278"
 >Odometry.TrainSpeed() &lt;= MRSP.V_MRSP()</PreCondition><PreCondition
  Guid="bf1a9aa2-6328-4b32-85b2-a4fe3d27e6b9"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I_Target(
+>TrainPosition.DistanceRunInSR(DistanceInterval.Max) &gt; d_I_Target(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; MaxDistInSR()
 )</PreCondition></PreConditions>
@@ -299,7 +299,7 @@ TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I_Target(
  Guid="c6b1bf5f-4451-423e-a6ea-b5b6520aabe8"
 >Odometry.TrainSpeed() &lt;= MRSP.V_MRSP()</PreCondition><PreCondition
  Guid="29acbbd9-6a14-4923-aac5-152799b4c7a8"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target
+>TrainPosition.DistanceRunInSR(DistanceInterval.Max) &gt; d_P_Target
 (
     aTarget =&gt; MaxDistInSR(),
     Vest =&gt; Odometry.TrainSpeed(),
@@ -400,7 +400,7 @@ MA.MA.TargetSpeed == 0.0
  Guid="1d09dc23-9222-472e-bfbf-0358c5f37231"
 >Odometry.TrainSpeed() &lt;= MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_warning( MRSP.V_MRSP() )</PreCondition><PreCondition
  Guid="2f194928-7a05-4d7f-aea1-d31fda866459"
->TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I_Target(
+>TrainPosition.DistanceRunInSR(Default.DistanceInterval.Max) &lt;= d_I_Target(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; MaxDistInSR() )</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -493,13 +493,13 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I_Target(
  Guid="33d11481-c0da-46de-8ba2-4d7657a68498"
 >Odometry.TrainSpeed() &lt;= MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_warning( MRSP.V_MRSP() )</PreCondition><PreCondition
  Guid="2ffcd774-542e-48e1-8ca7-1c6a959ab69d"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I_Target(
+>TrainPosition.DistanceRunInSR(DistanceInterval.Max) &lt;= d_I_Target(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; MaxDistInSR() )
 
   AND  
 
-TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_W_Target(
+TrainPosition.DistanceRunInSR(DistanceInterval.Max) &lt;= d_W_Target(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; MaxDistInSR() )</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -602,7 +602,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_W_Target(
  Guid="9876ef17-5a09-410a-b14d-deda68e45908"
 >Odometry.TrainSpeed() &lt;= MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_warning( MRSP.V_MRSP() )</PreCondition><PreCondition
  Guid="3076d147-37ec-43b6-8b06-8580da05eb47"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_W_Target(
+>TrainPosition.DistanceRunInSR(DistanceInterval.Max) &gt; d_W_Target(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; MaxDistInSR() )</PreCondition><PreCondition
  Guid="3eeab62b-3df1-447b-bd8a-647ce7c87ceb"
@@ -697,7 +697,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_W_Target(
  Guid="3a3debe1-625f-44fc-87cc-428207f46d6e"
 >Odometry.TrainSpeed() &lt;= MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_sbi( MRSP.V_MRSP() )</PreCondition><PreCondition
  Guid="14f1484e-5d51-4124-9e4b-e4a96ba5f0ec"
->TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt; d_I_Target(
+>TrainPosition.DistanceRunInSR(Default.DistanceInterval.Max) &lt; d_I_Target(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; MaxDistInSR() )</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -790,13 +790,13 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I_Target(
  Guid="1d2c8097-b965-4172-80eb-ee1110c6630d"
 >Odometry.TrainSpeed()  &lt;=  MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_sbi( MRSP.V_MRSP() )</PreCondition><PreCondition
  Guid="1ad85ffe-6b3b-4e42-afc5-989c5afc986b"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I_Target(
+>TrainPosition.DistanceRunInSR(DistanceInterval.Max) &gt; d_I_Target(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; MaxDistInSR() )
 
   AND  
 
-TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_SBI2(
+TrainPosition.DistanceRunInSR(DistanceInterval.Max) &lt;= d_SBI2(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; MaxDistInSR(),
     EstimatedAccelerationSetToZero =&gt; False )</PreCondition></PreConditions>
@@ -904,7 +904,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_SBI2(
  Guid="0e04f5c4-231d-47ea-a2d1-a645b932dbec"
 >Odometry.TrainSpeed()  &lt;=  MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_sbi( MRSP.V_MRSP() )</PreCondition><PreCondition
  Guid="6292932a-4da3-468b-b518-ae4ee4fcb90e"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_SBI2(
+>TrainPosition.DistanceRunInSR(DistanceInterval.Max) &gt; d_SBI2(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; MaxDistInSR(),
     EstimatedAccelerationSetToZero =&gt; False )</PreCondition></PreConditions>
@@ -1001,7 +1001,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_SBI2(
  Guid="b50b7cbf-0435-4ba9-b4ce-9d30c45f4183"
 >Odometry.TrainSpeed()  &lt;=  MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_ebi( MRSP.V_MRSP() )</PreCondition><PreCondition
  Guid="11ec7d1e-65f1-4ab5-a550-b4b78675ee3a"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I_Target(
+>TrainPosition.DistanceRunInSR(DistanceInterval.Max) &lt;= d_I_Target(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; MaxDistInSR() )</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -1095,13 +1095,13 @@ TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &lt;= d_I_Target
  Guid="ea13585b-79b5-4e94-9f1d-20f70caca56a"
 >Odometry.TrainSpeed()  &lt;=  MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_ebi( MRSP.V_MRSP() )</PreCondition><PreCondition
  Guid="d62fb026-0dfe-46d4-b297-9d13a84749ee"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I_Target(
+>TrainPosition.DistanceRunInSR(DistanceInterval.Max) &gt; d_I_Target(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; MaxDistInSR() )
 
   AND  
 
-TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_EBI(
+TrainPosition.DistanceRunInSR(DistanceInterval.Max) &lt;= d_EBI(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; MaxDistInSR() )</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -1197,7 +1197,7 @@ TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &lt;= d_EBI ( Ve
  Guid="a4eaed8f-35ff-4238-855d-22ae6e6372ac"
 >Mode == Mode.SR</PreCondition><PreCondition
  Guid="69841c47-1e6a-47e1-a080-91f9ede0a96e"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_EBI(
+>TrainPosition.DistanceRunInSR(DistanceInterval.Max) &gt; d_EBI(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; MaxDistInSR() )</PreCondition><PreCondition
  Guid="d9ed9e43-7d34-44ef-a52f-2bfc4ea13e50"
@@ -1281,7 +1281,7 @@ TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &gt; d_EBI ( Ves
  Guid="1788e4ad-5a93-452d-b094-56b2dc9823d2"
 >Mode == Mode.SR</PreCondition><PreCondition
  Guid="ab1a64ff-33d1-4770-af7d-d95a4733e145"
->TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I_Target(
+>TrainPosition.DistanceRunInSR(DistanceInterval.Max) &lt;= d_I_Target(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; MaxDistInSR() )</PreCondition><PreCondition
  Guid="11168aca-1f55-4c52-b369-44d49b1b1ec8"
@@ -1477,7 +1477,7 @@ MRSP.V_MRSP() &lt; Odometry.TrainSpeed()
     OR    
 
 
-TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I_Target(
+TrainPosition.DistanceRunInSR(DistanceInterval.Max) &gt; d_I_Target(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; MaxDistInSR() )</PreCondition></PreConditions>
 <Expression>False</Expression>
@@ -1584,7 +1584,7 @@ TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I_Target(
 
     OR    
 
-TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_P_Target
+TrainPosition.DistanceRunInSR(DistanceInterval.Max) &gt; d_P_Target
 (
     aTarget =&gt; MaxDistInSR(),
     Vest =&gt; Odometry.TrainSpeed(),
@@ -1875,7 +1875,7 @@ MA.IsSvL(aTarget)</PreCondition><PreCondition
  Guid="f80fe6b3-c394-49a0-9007-09c3436bb189"
 >Odometry.TrainSpeed() &gt; MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_ebi( MRSP.V_MRSP() )</PreCondition><PreCondition
  Guid="24699bfb-8dd1-4e5c-9595-f1017a992208"
->TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I_Target(
+>TrainPosition.DistanceRunInSR(Default.DistanceInterval.Max) &gt; d_I_Target(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; MaxDistInSR() )</PreCondition></PreConditions>
 <Expression>True</Expression>
