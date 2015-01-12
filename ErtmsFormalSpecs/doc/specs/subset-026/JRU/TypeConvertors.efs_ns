@@ -1143,7 +1143,7 @@ AND
  Name="D_LRBG"
  Guid="8b98f5c1-5722-4917-8ca6-4c9408d771e3"
 >
-<Expression>Default.MessageTypes.UnScaleDistance ( BTM.TravelledDistanceFromLRBG(), Q_SCALE)</Expression>
+<Expression>Default.MessageTypes.UnScaleDistance ( Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom), Q_SCALE)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.M_BRAKE_COMMAND_STATE"

@@ -264,50 +264,6 @@
 <Expression>Default.BaseTypes.Length(Kernel.NationalValues.DefaultValues.DefaultLocationAccuracyOfABaliseGroup)</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.BaseTypes.Distance"
- Default=""
- X="40"
- Y="20"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- Name="TravelledDistanceFromLRBG"
- Guid="f74474aa-0762-458a-9afe-da10aed23e8e"
->
-<ReqRef
- Id="ee60d01b-a74d-40b9-88b2-c24f3198e572"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d0e8e336-b8dd-4015-808d-eb6e7aa8c480"
->
-</ReqRef><ReqRef
- Id="762a9a50-d079-460f-80fd-c72d91c43331"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2a707fc9-b132-4f41-a773-ce29711ea69e"
->
-</ReqRef><ReqRef
- Id="bcb653a9-abe2-44a8-ac09-0df33ec9af30"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ea13b6a5-1c54-4c59-8d0e-7c5f7065859a"
->
-</ReqRef><Comment>Provides the travelled distance from the LRBG, retrieved from the Linking (if available) or from the odometry information.</Comment>
-<Cases>
-<Case
- Name="LinkingAvailable"
- Guid="15dfd3e1-1878-4852-b045-9d0925351142"
->
-<PreConditions>
-<PreCondition
- Guid="a7596565-f7a2-424a-ad5d-577218b44d1c"
->Linking.LinkingApplicable()</PreCondition></PreConditions>
-<Expression>0.0</Expression>
-</Case><Case
- Name="LinkingNotAvailable"
- Guid="b8bfdcb0-1ad3-4031-bfa9-1aa1e7f7bd62"
->
-<Expression>Odometry.NominalDistance - LRBG.Position.Position</Expression>
-</Case></Cases>
-</Function><Function
  Type="BTM.PreviousBaliseGroupStruct"
  Default=""
  X="40"
