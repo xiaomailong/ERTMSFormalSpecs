@@ -1482,8 +1482,6 @@ Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP()</PreCondition></PreConditions>
 >
 <PreConditions>
 <PreCondition
- Guid="27f43f3b-9d33-4f93-8af9-d46bf9c93913"
->Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
  Guid="6419b761-6bf8-4aa3-af63-9c94abdb9795"
 >Out_PermittedSpeed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
@@ -1500,38 +1498,23 @@ Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP()</PreCondition></PreConditions>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Train in SR, PT, SH, SN or RV modes"
- Guid="ceca03bb-563c-40a7-be1e-2646f21d018b"
->
-<Comment>Mode SR, PT, SH, SN or RV</Comment>
-<PreConditions>
-<PreCondition
- Guid="04868972-8866-4251-934f-1527923ad496"
->Kernel.Mode == Default.Mode.SR
-  OR  
-Kernel.Mode == Default.Mode.PT
-  OR  
-Kernel.Mode == Default.Mode.SH
-  OR  
-Kernel.Mode == Default.Mode.SN
-  OR  
-Kernel.Mode == Default.Mode.RV</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f6842f02-0829-4aa9-8f87-595353483595"
->Out_PermittedSpeed.Speed &lt;- Kernel.ModeRelatedSpeedLimits.SRModeSpeedLimit()</Action><Action
- Guid="fa977fee-280c-40d9-8961-ac5e8494d9ef"
->Out_PermittedSpeed.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Otherwise"
+ Name="Update variable"
  Guid="3c0e9560-e579-4971-87cc-9fb0389c9b3a"
 >
-<Comment>Otherwise</Comment>
 <PreConditions>
 <PreCondition
  Guid="a9971c0e-2925-4453-b4c7-43b5a9104e12"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in  [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in  [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition><PreCondition
+ Guid="7d25919c-82de-4004-8494-f8c4d6df3025"
+>Kernel.Mode == Default.Mode.SH
+  OR  
+Kernel.Mode == Default.Mode.FS
+  OR  
+Kernel.Mode == Default.Mode.SR
+  OR  
+Kernel.Mode == Default.Mode.OS
+  OR  
+Kernel.Mode == Default.Mode.RV</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="abfe8af1-6df4-4510-9e27-17aa6e1e711a"
