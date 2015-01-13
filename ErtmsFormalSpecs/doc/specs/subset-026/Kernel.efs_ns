@@ -11715,6 +11715,19 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Guid="5cdf255f-c85e-4037-b9d3-7b4e2da78924"
 >
 </ReqRef><Comment>Indicates if the virtual bailse cover is set or removed.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Name="SafetyCriticalFaultDetected"
+ Guid="c6707387-3118-4b16-99f1-ae1e361fe904"
+>
+<ReqRef
+ Id="0dbbf234-3119-40cf-839a-64ae2c895770"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7ea2bad2-d3ea-4e0f-a694-34653ff84122"
+>
+</ReqRef><Comment>Notification that a safety critical fault has been detected.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule

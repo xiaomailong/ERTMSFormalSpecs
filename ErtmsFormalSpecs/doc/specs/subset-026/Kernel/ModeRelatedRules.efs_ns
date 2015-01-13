@@ -12,20 +12,20 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="In NP"
- Guid="29eabb18-6e20-40a8-9c0e-31d8081572de"
+ Name="Emergency brakes commanded"
+ Guid="b1e500b6-da18-463a-a1df-c3830ba655e9"
 >
 <ReqRef
- Id="c8a247ef-0cc1-4086-9306-42e2ff40d35d"
+ Id="cbe34815-cb07-47d0-aa70-8e503a0dd8ac"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="63d04b0b-58b9-4c8b-822e-b59f7d865d88"
+ Guid="be98c7f7-595e-4951-ba7a-40ca43f2cde8"
 >
 </ReqRef><ReqRef
- Id="fcee3944-2911-422c-babf-349b36eaa478"
+ Id="c8a247ef-0cc1-4086-9306-42e2ff40d35d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9a294b3e-fca2-4fff-9619-cc631af5e88f"
+ Guid="fed645ef-220e-4bc5-8cd8-3c15bb99ebd8"
 >
-</ReqRef><Comment>Keep the emergency brake commanded when in NP Mode.</Comment>
+</ReqRef><Comment>Keep the emergency brake commanded in modes that require it.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -33,10 +33,20 @@
  Name="Command emergency brake"
  Guid="a5ff7100-f174-471b-bc1f-272a18397ba2"
 >
-<PreConditions>
+<ReqRef
+ Id="fcee3944-2911-422c-babf-349b36eaa478"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="09bc0268-9693-4bd4-ac67-dbd6e8b7c11f"
+>
+</ReqRef><ReqRef
+ Id="88305e66-3a01-4328-8957-6bb64a87e149"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1a55985-14ae-4f1b-9d3d-f223fe538437"
+>
+</ReqRef><PreConditions>
 <PreCondition
  Guid="3d959843-a902-466d-b0f2-8f0d8d02b9e3"
->Mode == Mode.NP</PreCondition></PreConditions>
+>ActiveFunctions.CommandEmergencyBrake()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2f519e9a-6de5-419c-951b-9cb427818a68"

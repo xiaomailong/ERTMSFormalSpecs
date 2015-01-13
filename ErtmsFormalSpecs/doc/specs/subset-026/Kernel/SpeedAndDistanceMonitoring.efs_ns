@@ -3019,6 +3019,7 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Y="120"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="StopMonitoring"
  Guid="48b4ed23-a3f4-48eb-8f3f-452d661c18f6"
 >
@@ -3031,12 +3032,19 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Stop monitoring"
  Guid="d7656454-9a47-4789-9492-17126a0230bc"
 >
-<SubRules></SubRules>
+<ReqRef
+ Id="371574c0-bfb9-4c7e-9180-dce7382fc418"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="831a4388-d056-412d-864e-a1765b5bb4d0"
+>
+</ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Stop monitoring"
  Guid="ed6f0713-b80f-4f62-9939-55378975c820"
 >
@@ -3045,7 +3053,7 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Guid="32ca5a8e-3e3a-4109-82c7-f43c4deb007e"
 >Monitoring not in MonitoringTypeSM.Idle</PreCondition><PreCondition
  Guid="3949a806-a2cc-4c53-b7d8-c00f2a2b444e"
->NOT ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
+>NOT ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="bb283a6b-d672-40a0-9fa5-e027239cb8ed"
