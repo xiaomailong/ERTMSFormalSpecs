@@ -86,7 +86,14 @@ namespace GUI.StateDiagram
             }
 
             StatePanel.StateMachine = StateMachine;
-            StatePanel.StateMachineVariableExpression = EFSSystem.INSTANCE.Parser.Expression(Utils.EnclosingFinder<Dictionary>.find(StateMachine), StateMachine.FullName);
+            if (stateMachine != null)
+            {
+                StatePanel.StateMachineVariableExpression = EFSSystem.INSTANCE.Parser.Expression(Utils.EnclosingFinder<Dictionary>.find(stateMachine), stateMachine.FullName);
+            }
+            else
+            {
+                StatePanel.StateMachineVariableExpression = null;
+            }
             StatePanel.RefreshControl();
         }
 
