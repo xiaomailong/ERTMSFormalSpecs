@@ -77,39 +77,7 @@
         Value =&gt; Default.Level.L1
     },
     DataState =&gt; Default.DataState.Valid
-}</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step2 - Provide SSP"
- Guid="d8544fe9-8641-4a52-b5dd-fc14e9cfce72"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1 - Set MA"
- Guid="af97fb56-53e8-4529-8c57-f775268c5f36"
->
-<Actions>
-<Action
- Guid="1fef9f06-5a0e-4b61-970f-9bd032dc6ebe"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 5000.0
-    }
-}</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2 - Set SSP"
- Guid="a1f8319d-77b1-4b98-80b0-fdc9e9a1d364"
->
-<Actions>
-<Action
+}</Action><Action
  Guid="3706d470-9a99-4cd5-9c56-9f5a00bf2e67"
 >Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
 [
@@ -150,7 +118,15 @@
             
         ]
     }
-]</Action></Actions>
+]</Action><Action
+ Guid="1fef9f06-5a0e-4b61-970f-9bd032dc6ebe"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 5000.0
+    }
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  Distance="500"
@@ -160,7 +136,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step3 - Before PIM1"
+ Name="Step2 - Before PIM1"
  Guid="2fe1d363-aaf7-482c-91bb-7d5fa689a5e1"
 >
 <SubSteps>
@@ -181,7 +157,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step4 - PIM1"
+ Name="Step3 - PIM1"
  Guid="d43b8308-1169-4c65-89b4-3458c0ff1ac6"
 >
 <SubSteps>
@@ -202,7 +178,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step5 - TSM1"
+ Name="Step4 - TSM1"
  Guid="fc2902fa-0e40-441d-8c5a-7a8380a9077e"
 >
 <SubSteps>
@@ -223,7 +199,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step6 - PIM2, after Target 1"
+ Name="Step5 - PIM2, after Target 1"
  Guid="43abb105-efce-4ece-bdc9-eb0b806ddc1d"
 >
 <SubSteps>
@@ -244,7 +220,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step7 - TSM2"
+ Name="Step6 - TSM2"
  Guid="8d5b9487-e92b-4c34-b448-5d86c62e0907"
 >
 <SubSteps>
@@ -265,7 +241,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step8 - After Target 2"
+ Name="Step7 - After Target 2"
  Guid="aab4e397-adb5-489e-8b7d-b449a6b41fe6"
 >
 <SubSteps>
