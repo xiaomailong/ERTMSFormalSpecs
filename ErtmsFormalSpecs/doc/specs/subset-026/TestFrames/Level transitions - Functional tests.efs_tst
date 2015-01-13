@@ -14,433 +14,6 @@
  Q_DLRBG=""
  RBC_ID=""
  RBCPhone=""
- Name="Retain Level 1 MA after transition to Level 2/3"
- Guid="872f065b-26d7-4ca3-87fa-8453fda3ace6"
->
-<TestCases>
-<TestCase
- Implemented="TRUE"
- Name="No Level 2/3 MA received, train supervised acccording to previous level 1 MA"
- Guid="13df6666-852d-4a02-a9d2-f31e33c38575"
->
-<ReqRef
- Id="f56df936-9ada-4149-91ce-4742fb123bbb"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2ef75edc-880a-4577-9efa-8711274a98fe"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="a10ae1d5-a5ed-4c96-a198-f5fffbee22d1"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1 - Initialize test environment"
- Guid="22e58216-8f18-4687-a9b4-934d1a0e2fae"
->
-<Actions>
-<Action
- Guid="217d4391-49ae-4e99-bae7-5c13ec6197bc"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2 - Initialize elements for MA"
- Guid="9d7434d9-d975-4cae-b748-1e5741deceaa"
->
-<Actions>
-<Action
- Guid="a5e63a8d-70cf-46c8-bfa9-d8e1124bbcb7"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step3 - Set Level and Mode"
- Guid="c4f13228-2b9f-4804-aeb6-f441433dc9cb"
->
-<Actions>
-<Action
- Guid="d5dbc677-46dc-4b77-a151-3796963da174"
->Kernel.Mode &lt;- Mode.FS</Action><Action
- Guid="a3cfd791-7ce4-4f5a-9cf5-76f114955511"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; LevelDataStruct{
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L1
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action><Action
- Guid="b9a7a770-948c-478a-8ce8-e25779bd565c"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 2500.0
-    }
-}</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step2 - Receive Level Transition Order for Level 2"
- Guid="7efbfc2b-e9db-4820-ad2f-74104d0d26f3"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="744490da-c0e4-4953-b52f-61afe65a01a3"
->
-<Actions>
-<Action
- Guid="f8a2b4b3-f40c-40bc-9d44-4c28dcfa7a79"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION =&gt; Messages.M_VERSION.Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0,
-    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
-    N_PIG =&gt; 0,
-    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
-    M_DUP =&gt; Messages.M_DUP.No_duplicates,
-    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
-    NID_C =&gt; 85,
-    NID_BG =&gt; 12345,
-    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
-    Sequence1 =&gt; 
-    [
-        Messages.EUROBALISE.SubStructure1
-        {
-            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                LEVEL_TRANSITION_ORDER =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Message
-                {
-                    NID_PACKET =&gt; 41,
-                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
-                    L_PACKET =&gt; 0,
-                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
-                    D_LEVELTR =&gt; 1400,
-                    M_LEVELTR =&gt; Messages.M_LEVELTR.Level_2,
-                    NID_NTC =&gt; 0,
-                    L_ACKLEVELTR =&gt; 0,
-                    N_ITER =&gt; 0
-                }
-            }
-        }, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY
-    ],
-    BitField =&gt; &apos;&apos;
-}</Action><Action
- Guid="0a9a665d-1ffd-4461-850a-d30b22a38522"
->Odometry.NominalDistance &lt;- 500.0</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2"
- Guid="043bd470-568b-49b9-8f3f-91c333ad9caa"
->
-<Actions>
-<Action
- Guid="96768687-7b52-4640-9f54-21e7a42718f5"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION =&gt; Messages.M_VERSION.Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0,
-    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
-    N_PIG =&gt; Messages.N_PIG._2C,
-    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
-    M_DUP =&gt; Messages.M_DUP.No_duplicates,
-    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
-    NID_C =&gt; 85,
-    NID_BG =&gt; 12345,
-    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
-    Sequence1 =&gt; 
-    [
-        
-    ],
-    BitField =&gt; &apos;&apos;
-}</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step3 - Check MA"
- Guid="2ce9f465-f6c9-4c5c-8344-bf5257b2069a"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="f7ba56b5-1cde-4f16-afb8-2e2e1c12965e"
->Kernel.MA.MA.TargetSpeed == 0.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="d846927a-e4a1-4fb7-a786-fb15eb2a7ab4"
->Kernel.MA.MA.EndSection.Length == 2500.0</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step3 - Level transition to L2, retain L1 MA"
- Guid="ab2dca26-3b4a-4426-955f-ceb824ad2eee"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="8be95276-f0da-406c-97e4-e6b61c629a2d"
->
-<Actions>
-<Action
- Guid="1be355cc-ff70-4c9b-829d-f3d71f805dde"
->Odometry.NominalDistance &lt;- 1451.0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="7d9a226f-f873-46f2-9f07-5087adc3a6f0"
->Kernel.Level.Value.Value == Level.L2</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2 - Check MA is retained"
- Guid="8534f423-1a16-4653-8bf6-51214fc164db"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="2a0329bc-45c0-4008-a0e4-fed07a837ee0"
->Kernel.MA.MA.EndSection.Length == 2500.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="43b1537f-5e78-4376-916e-e794b60d4bd8"
->Kernel.MA.MA.TargetSpeed == 0.0</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
- Name="Retain Level 2/3 MA after transition to Level 1"
- Guid="10d25328-d996-41b4-ac7f-e9b1eeea763a"
->
-<TestCases>
-<TestCase
- Name="No Level 1 MA received, train supervised acccording to previous level 2/3 MA"
- Guid="5bf8e688-cbd0-4bc7-8f9c-ca143e0cf8e7"
->
-<ReqRef
- Id="47a5b75a-d6f4-49e5-b2aa-7370f9aa1173"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c46d7cfb-9adc-4532-aa22-5cf882a87e12"
->
-</ReqRef><Steps>
-<Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step1 - Setup"
- Guid="a38f4c42-7f10-4ec7-8b26-ce7a0a253457"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1 - Initialize test environment"
- Guid="0c4fbde4-373a-426d-a16d-c29092f5d4a4"
->
-<Actions>
-<Action
- Guid="85f58faa-cb5b-4dff-8325-36a34f0dec59"
->Kernel.InitializeTestEnvironment()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2 - Initialize elements for MA"
- Guid="f4e36036-27de-40aa-b017-9be8b8895118"
->
-<Actions>
-<Action
- Guid="15ddd14a-2870-4116-ac46-95165732d87a"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step3 - Set Level and Mode"
- Guid="9c5d2e06-c644-45a2-b897-829fe705cc5c"
->
-<Actions>
-<Action
- Guid="154f29fb-844a-4a03-8638-0899a8d206cb"
->Kernel.Mode &lt;- Mode.FS</Action><Action
- Guid="504fd31d-d4c2-4eeb-8180-4188b5d95281"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; LevelDataStruct{
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L2
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action><Action
- Guid="56fe791c-dee6-494d-a12a-e83e5045adde"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 2500.0
-    }
-}</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step2 - Receive Level Transition Order for Level 1"
- Guid="4e6a1294-be05-414b-a8cb-557650aec355"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="7da9266f-f255-4cfb-84b2-7e366944387f"
->
-<Actions>
-<Action
- Guid="ca801b45-3c53-405d-a93d-dd5214643ce0"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
-    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
-    N_PIG =&gt; 0,
-    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
-    M_DUP =&gt; Messages.M_DUP.No_duplicates,
-    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
-    NID_C =&gt; 85,
-    NID_BG =&gt; 12345,
-    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
-    Sequence1 =&gt; 
-    [
-        Messages.EUROBALISE.SubStructure1
-        {
-            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                LEVEL_TRANSITION_ORDER =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Message
-                {
-                    NID_PACKET =&gt; 41,
-                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
-                    L_PACKET =&gt; 0,
-                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
-                    D_LEVELTR =&gt; 1400,
-                    M_LEVELTR =&gt; Messages.M_LEVELTR.Level_1,
-                    NID_NTC =&gt; 0,
-                    L_ACKLEVELTR =&gt; 0,
-                    N_ITER =&gt; 0
-                }
-            }
-        }, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY
-    ],
-    BitField =&gt; &apos;&apos;
-}</Action><Action
- Guid="14ed9bd1-88f4-4cec-92a8-e21de45806d4"
->Odometry.NominalDistance &lt;- 500.0</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2"
- Guid="0168e2c6-6d3a-46cf-a64a-a32104add3ac"
->
-<Actions>
-<Action
- Guid="a7aca81b-8b54-4558-ae82-e343deebd6a0"
->BTM.Message &lt;- Messages.EUROBALISE.Message
-{
-    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION =&gt; Messages.M_VERSION.Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0,
-    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
-    N_PIG =&gt; Messages.N_PIG._2C,
-    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
-    M_DUP =&gt; Messages.M_DUP.No_duplicates,
-    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
-    NID_C =&gt; 85,
-    NID_BG =&gt; 12345,
-    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
-    Sequence1 =&gt; 
-    [
-        
-    ],
-    BitField =&gt; &apos;&apos;
-}</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step3 - Check MA"
- Guid="d1d20be4-aefd-4862-9c0d-b2b8be6f75c4"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="2199b449-ffca-43f6-9594-61fb1ef3ef11"
->Kernel.MA.MA.TargetSpeed == 0.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="77e4b0fb-1f45-4134-98bb-8629a6406893"
->Kernel.MA.MA.EndSection.Length == 2500.0</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step><Step
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step3 - Level transition to L2, retain L1 MA"
- Guid="1220729c-c4c1-429c-8162-0545b7f37a0f"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="a239d533-1bb6-4fb4-849d-31d5ac9f011e"
->
-<Actions>
-<Action
- Guid="09725c4c-3f70-4324-9df7-3c49d38a3e6e"
->Odometry.NominalDistance &lt;- 1451.0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="b855f194-a514-4745-aaa4-71f6366c6dca"
->Kernel.Level.Value.Value == Level.L1</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2 - Check MA is retained"
- Guid="e6b1ffc5-7c6b-4829-9f8d-bbcf3f20c613"
->
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="18ed4dcb-62ef-4af4-946a-44d902fdf0f4"
->Kernel.MA.MA.EndSection.Length == 2500.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="1b8d572a-05d4-4c9e-8f87-c9dbbc6fbffe"
->Kernel.MA.MA.TargetSpeed == 0.0</Expectation></Expectations>
-</SubStep></SubSteps>
-</Step></Steps>
-</TestCase></TestCases>
-</SubSequence><SubSequence
- D_LRBG=""
- Level=""
- Mode=""
- NID_LRBG=""
- Q_DIRLRBG=""
- Q_DIRTRAIN=""
- Q_DLRBG=""
- RBC_ID=""
- RBCPhone=""
  Name="MA not received for Level 1/2/3 -&gt; Trip"
  Guid="2fd51af7-a0ec-4a23-bd61-f358cab40b43"
 >
@@ -2046,6 +1619,433 @@
  DeadLine="1"
  Guid="e41ced8e-f84c-48c5-b056-bbcb9c2a770f"
 >Kernel.Level.Value.Value == Level.L2</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Retain Level 1 MA after transition to Level 2/3"
+ Guid="872f065b-26d7-4ca3-87fa-8453fda3ace6"
+>
+<TestCases>
+<TestCase
+ Implemented="TRUE"
+ Name="No Level 2/3 MA received, train supervised acccording to previous level 1 MA"
+ Guid="13df6666-852d-4a02-a9d2-f31e33c38575"
+>
+<ReqRef
+ Id="f56df936-9ada-4149-91ce-4742fb123bbb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2ef75edc-880a-4577-9efa-8711274a98fe"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+ Guid="a10ae1d5-a5ed-4c96-a198-f5fffbee22d1"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Initialize test environment"
+ Guid="22e58216-8f18-4687-a9b4-934d1a0e2fae"
+>
+<Actions>
+<Action
+ Guid="217d4391-49ae-4e99-bae7-5c13ec6197bc"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements for MA"
+ Guid="9d7434d9-d975-4cae-b748-1e5741deceaa"
+>
+<Actions>
+<Action
+ Guid="a5e63a8d-70cf-46c8-bfa9-d8e1124bbcb7"
+>Kernel.MA.InitializeElementsForMA()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3 - Set Level and Mode"
+ Guid="c4f13228-2b9f-4804-aeb6-f441433dc9cb"
+>
+<Actions>
+<Action
+ Guid="d5dbc677-46dc-4b77-a151-3796963da174"
+>Kernel.Mode &lt;- Mode.FS</Action><Action
+ Guid="a3cfd791-7ce4-4f5a-9cf5-76f114955511"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; LevelDataStruct{
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L1
+    },
+    DataState =&gt; Default.DataState.Valid
+}</Action><Action
+ Guid="b9a7a770-948c-478a-8ce8-e25779bd565c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 2500.0
+    }
+}</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Receive Level Transition Order for Level 2"
+ Guid="7efbfc2b-e9db-4820-ad2f-74104d0d26f3"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="744490da-c0e4-4953-b52f-61afe65a01a3"
+>
+<Actions>
+<Action
+ Guid="f8a2b4b3-f40c-40bc-9d44-4c28dcfa7a79"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 12345,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; 
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_TRANSITION_ORDER =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Message
+                {
+                    NID_PACKET =&gt; 41,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 0,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    D_LEVELTR =&gt; 1400,
+                    M_LEVELTR =&gt; Messages.M_LEVELTR.Level_2,
+                    NID_NTC =&gt; 0,
+                    L_ACKLEVELTR =&gt; 0,
+                    N_ITER =&gt; 0
+                }
+            }
+        }, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY
+    ],
+    BitField =&gt; &apos;&apos;
+}</Action><Action
+ Guid="0a9a665d-1ffd-4461-850a-d30b22a38522"
+>Odometry.NominalDistance &lt;- 500.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="043bd470-568b-49b9-8f3f-91c333ad9caa"
+>
+<Actions>
+<Action
+ Guid="96768687-7b52-4640-9f54-21e7a42718f5"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._2C,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 12345,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; 
+    [
+        
+    ],
+    BitField =&gt; &apos;&apos;
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3 - Check MA"
+ Guid="2ce9f465-f6c9-4c5c-8344-bf5257b2069a"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f7ba56b5-1cde-4f16-afb8-2e2e1c12965e"
+>Kernel.MA.MA.TargetSpeed == 0.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="d846927a-e4a1-4fb7-a786-fb15eb2a7ab4"
+>Kernel.MA.MA.EndSection.Length == 2500.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Level transition to L2, retain L1 MA"
+ Guid="ab2dca26-3b4a-4426-955f-ceb824ad2eee"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="8be95276-f0da-406c-97e4-e6b61c629a2d"
+>
+<Actions>
+<Action
+ Guid="1be355cc-ff70-4c9b-829d-f3d71f805dde"
+>Odometry.NominalDistance &lt;- 1451.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="7d9a226f-f873-46f2-9f07-5087adc3a6f0"
+>Kernel.Level.Value.Value == Level.L2</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2 - Check MA is retained"
+ Guid="8534f423-1a16-4653-8bf6-51214fc164db"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2a0329bc-45c0-4008-a0e4-fed07a837ee0"
+>Kernel.MA.MA.EndSection.Length == 2500.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="43b1537f-5e78-4376-916e-e794b60d4bd8"
+>Kernel.MA.MA.TargetSpeed == 0.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Retain Level 2/3 MA after transition to Level 1"
+ Guid="10d25328-d996-41b4-ac7f-e9b1eeea763a"
+>
+<TestCases>
+<TestCase
+ Name="No Level 1 MA received, train supervised acccording to previous level 2/3 MA"
+ Guid="5bf8e688-cbd0-4bc7-8f9c-ca143e0cf8e7"
+>
+<ReqRef
+ Id="47a5b75a-d6f4-49e5-b2aa-7370f9aa1173"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c46d7cfb-9adc-4532-aa22-5cf882a87e12"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Setup"
+ Guid="a38f4c42-7f10-4ec7-8b26-ce7a0a253457"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1 - Initialize test environment"
+ Guid="0c4fbde4-373a-426d-a16d-c29092f5d4a4"
+>
+<Actions>
+<Action
+ Guid="85f58faa-cb5b-4dff-8325-36a34f0dec59"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Initialize elements for MA"
+ Guid="f4e36036-27de-40aa-b017-9be8b8895118"
+>
+<Actions>
+<Action
+ Guid="15ddd14a-2870-4116-ac46-95165732d87a"
+>Kernel.MA.InitializeElementsForMA()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3 - Set Level and Mode"
+ Guid="9c5d2e06-c644-45a2-b897-829fe705cc5c"
+>
+<Actions>
+<Action
+ Guid="154f29fb-844a-4a03-8638-0899a8d206cb"
+>Kernel.Mode &lt;- Mode.FS</Action><Action
+ Guid="504fd31d-d4c2-4eeb-8180-4188b5d95281"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; LevelDataStruct{
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L2
+    },
+    DataState =&gt; Default.DataState.Valid
+}</Action><Action
+ Guid="56fe791c-dee6-494d-a12a-e83e5045adde"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 2500.0
+    }
+}</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Receive Level Transition Order for Level 1"
+ Guid="4e6a1294-be05-414b-a8cb-557650aec355"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="7da9266f-f255-4cfb-84b2-7e366944387f"
+>
+<Actions>
+<Action
+ Guid="ca801b45-3c53-405d-a93d-dd5214643ce0"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 12345,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; 
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_TRANSITION_ORDER =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Message
+                {
+                    NID_PACKET =&gt; 41,
+                    Q_DIR =&gt; Messages.Q_DIR.Nominal,
+                    L_PACKET =&gt; 0,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    D_LEVELTR =&gt; 1400,
+                    M_LEVELTR =&gt; Messages.M_LEVELTR.Level_1,
+                    NID_NTC =&gt; 0,
+                    L_ACKLEVELTR =&gt; 0,
+                    N_ITER =&gt; 0
+                }
+            }
+        }, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY
+    ],
+    BitField =&gt; &apos;&apos;
+}</Action><Action
+ Guid="14ed9bd1-88f4-4cec-92a8-e21de45806d4"
+>Odometry.NominalDistance &lt;- 500.0</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="0168e2c6-6d3a-46cf-a64a-a32104add3ac"
+>
+<Actions>
+<Action
+ Guid="a7aca81b-8b54-4558-ae82-e343deebd6a0"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; Messages.N_PIG._2C,
+    N_TOTAL =&gt; Messages.N_TOTAL._2_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 12345,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; 
+    [
+        
+    ],
+    BitField =&gt; &apos;&apos;
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3 - Check MA"
+ Guid="d1d20be4-aefd-4862-9c0d-b2b8be6f75c4"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="2199b449-ffca-43f6-9594-61fb1ef3ef11"
+>Kernel.MA.MA.TargetSpeed == 0.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="77e4b0fb-1f45-4134-98bb-8629a6406893"
+>Kernel.MA.MA.EndSection.Length == 2500.0</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Level transition to L2, retain L1 MA"
+ Guid="1220729c-c4c1-429c-8162-0545b7f37a0f"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="a239d533-1bb6-4fb4-849d-31d5ac9f011e"
+>
+<Actions>
+<Action
+ Guid="09725c4c-3f70-4324-9df7-3c49d38a3e6e"
+>Odometry.NominalDistance &lt;- 1451.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b855f194-a514-4745-aaa4-71f6366c6dca"
+>Kernel.Level.Value.Value == Level.L1</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2 - Check MA is retained"
+ Guid="e6b1ffc5-7c6b-4829-9f8d-bbcf3f20c613"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="18ed4dcb-62ef-4af4-946a-44d902fdf0f4"
+>Kernel.MA.MA.EndSection.Length == 2500.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="1b8d572a-05d4-4c9e-8f87-c9dbbc6fbffe"
+>Kernel.MA.MA.TargetSpeed == 0.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
