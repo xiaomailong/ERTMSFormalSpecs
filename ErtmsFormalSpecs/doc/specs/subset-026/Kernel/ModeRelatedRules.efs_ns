@@ -6,4 +6,41 @@
 >
 <NameSpaces>
 </NameSpaces>
+<Rules>
+<Rule
+ Priority="Processing"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="In NP"
+ Guid="29eabb18-6e20-40a8-9c0e-31d8081572de"
+>
+<ReqRef
+ Id="c8a247ef-0cc1-4086-9306-42e2ff40d35d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="63d04b0b-58b9-4c8b-822e-b59f7d865d88"
+>
+</ReqRef><ReqRef
+ Id="fcee3944-2911-422c-babf-349b36eaa478"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a294b3e-fca2-4fff-9619-cc631af5e88f"
+>
+</ReqRef><Comment>Keep the emergency brake commanded when in NP Mode.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Command emergency brake"
+ Guid="a5ff7100-f174-471b-bc1f-272a18397ba2"
+>
+<PreConditions>
+<PreCondition
+ Guid="3d959843-a902-466d-b0f2-8f0d8d02b9e3"
+>Mode == Mode.NP</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2f519e9a-6de5-419c-951b-9cb427818a68"
+>TIU.EmergencyBrakeCommanded &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>

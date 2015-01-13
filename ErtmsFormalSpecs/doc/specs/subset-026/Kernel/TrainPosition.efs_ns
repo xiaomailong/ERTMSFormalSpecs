@@ -283,6 +283,8 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Type="BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="DistanceRunInSR"
  Guid="773d6d2d-8050-4fef-92e6-539ea0b9728d"
@@ -435,5 +437,29 @@ BTM.LRBG.NID != Messages.NID_LRBG.Unknown</PreCondition></PreConditions>
  Guid="379e00c5-f7ff-46ba-bf22-1c929bfbdaf8"
 >
 </ReqRef><Comment>Stored the odometry distance when SR mode is entered.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="ColdMovementDetected"
+ Guid="e23d84c4-f294-4a26-b034-6df33be1cb1c"
+>
+<ReqRef
+ Id="2998ba86-2e9d-4b02-8aa1-8368fcf74a87"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d66ec9f6-e815-4486-89cd-bfabe017b558"
+>
+</ReqRef><ReqRef
+ Id="96c497d9-1029-481d-9775-eaf075881899"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="de367dbd-8110-4dd5-94a2-d28dc4a4402c"
+>
+</ReqRef><ReqRef
+ Id="fcee3944-2911-422c-babf-349b36eaa478"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="28b9db3f-5130-4c53-9b78-a27a84d72ac0"
+>
+</ReqRef><Comment>Determines whether the train has been moved while in NP mode.</Comment>
 </Variable></Variables>
 </NameSpace>
