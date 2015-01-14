@@ -621,6 +621,16 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1b4a87b9-669b-41f3-977e-b2be0781dbc8"
 >
+</ReqRef><ReqRef
+ Id="2f665d04-952a-40f9-917d-bfc51f72a606"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d62c1f9e-3b39-446f-bebf-aa35413acfe9"
+>
+</ReqRef><ReqRef
+ Id="07f0d51c-ecb9-4d52-8f3c-9cbd443a65bb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c6c3636c-cca1-4e8f-8f38-0cc54af367a8"
+>
 </ReqRef><Comment>Is called whenever a new trackside-information regarding an upcoming level transition is received. It will take care about the first (highest priority) LTO, forward the others to AddNewLTO and then process the new information.</Comment>
 <Parameters>
 <Parameter
@@ -665,7 +675,12 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
  Guid="80f02659-3e0a-4140-9113-61a38c5b8fcf"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="03e95979-8ae6-471e-be3a-e68cab1f63fa"
+><Comment>In SH or PS modes, the LTO is only stored if it is immediate.</Comment>
+Mode not in [Mode.SH, Mode.PS]
+  OR  
+Packet.D_LEVELTR == 32767</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="fdddee24-a2ec-4f7a-be60-6dc368978033"
@@ -701,7 +716,13 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
  Guid="7915a4ef-dfb9-4e29-998c-3d273019ad3e"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="ff929c1d-de94-46e4-a636-d2b729cae5ac"
+><Comment>In SH or PS modes, the LTO is only stored if it is immediate.</Comment>
+
+Mode not in [Mode.SH, Mode.PS]
+  OR  
+Packet.D_LEVELTR == 32767</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a8e25caf-0ad5-4053-ac0a-f626072bf07e"
@@ -731,7 +752,9 @@ Packet.Sequence1</Action></Actions>
  Guid="bbe927d4-96e9-44f8-988b-0bf8b08a27e4"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="f020e824-04db-4701-aa36-47cab4f8570a"
+>Mode not in [Mode.SH, Mode.PS]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f47d50dc-9fb7-45f3-bad6-736e4f447e1e"
@@ -757,6 +780,16 @@ Packet.Sequence1</Action></Actions>
  Id="5bcc87bc-5d11-48c0-b51c-a864660e918f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="57f1665c-3be9-4d1a-b4e2-7b5fb7308de9"
+>
+</ReqRef><ReqRef
+ Id="07f0d51c-ecb9-4d52-8f3c-9cbd443a65bb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="49dfdfbd-4f99-4198-bd3c-82c03590230a"
+>
+</ReqRef><ReqRef
+ Id="2f665d04-952a-40f9-917d-bfc51f72a606"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4d2b584a-7e83-4b9d-8cd3-72985651744a"
 >
 </ReqRef><Comment>Is called whenever a new trackside-information regarding an upcoming conditional level transition is received. It will take care about the first (highest priority) LTO, forward the others to AddNewLTO and then process the new information.</Comment>
 <Parameters>
@@ -875,7 +908,10 @@ Packet.Sequence1</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="7432ff75-4a66-4ae6-9aae-3df6be9e372b"
->NOT (THERE_IS X IN LevelTransitionOrder.LevelAndLength | X.TRLevel.Value == Kernel.Level.Value.Value)</PreCondition></PreConditions>
+>NOT (THERE_IS X IN LevelTransitionOrder.LevelAndLength | X.TRLevel.Value == Kernel.Level.Value.Value)</PreCondition><PreCondition
+ Guid="1a10c0fb-f68d-41d0-900c-4dd3613eacdc"
+>
+Mode not in [Mode.SH, Mode.PS]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1a6bdf17-071d-4c6b-921d-d6e6833e5395"
@@ -1204,6 +1240,11 @@ Packet.Sequence1</Action></Actions>
  SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
  Guid="c19ada3c-a3fc-4b71-a336-39b5afae1c97"
 >
+</ReqRef><ReqRef
+ Id="07f0d51c-ecb9-4d52-8f3c-9cbd443a65bb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="24e31559-1a9e-4ea9-ad2b-e9f95ffda621"
+>
 </ReqRef><Comment>If the train has reached the level transition order location, the on-board equipment executed is.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1220,7 +1261,9 @@ Packet.Sequence1</Action></Actions>
   AND  
 LevelTransitionOrder.Distance &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Nom)</PreCondition><PreCondition
  Guid="a793711a-f9af-4251-b86a-906d92f0b23f"
->Kernel.Level.Value != LevelTransitionToProcess.TRLevel</PreCondition></PreConditions>
+>Kernel.Level.Value != LevelTransitionToProcess.TRLevel</PreCondition><PreCondition
+ Guid="25250332-c8c8-4785-908c-5901c81268aa"
+>Mode not in [Mode.SH, Mode.PS]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0dca39ae-4aed-48b7-b4a6-6e165c4d7194"
@@ -1262,6 +1305,16 @@ LevelTransitionOrder.Distance &lt;= TrainPosition.FrontEndPosition(DistanceInter
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2979102a-3404-4e51-9f61-6b77fb893ffb"
 >
+</ReqRef><ReqRef
+ Id="2f665d04-952a-40f9-917d-bfc51f72a606"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="efe453cb-1bee-485e-8925-ed4b1d4fcf91"
+>
+</ReqRef><ReqRef
+ Id="07f0d51c-ecb9-4d52-8f3c-9cbd443a65bb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="542c7b52-17fc-4eb5-9c15-898dd9373470"
+>
 </ReqRef><Comment>When the max safe front end of the train has passed a trackside defined location in rear of the level transition border and if the mode is different from NL, the on-board asks the driver to acknowledge the level transition.</Comment>
 <PreConditions>
 <PreCondition
@@ -1270,9 +1323,9 @@ LevelTransitionOrder.Distance &lt;= TrainPosition.FrontEndPosition(DistanceInter
  Guid="ba1fa256-51bd-488d-80b9-bedccd862de9"
 >AcknowledgementRequiredForLT( anLTO =&gt; LevelTransitionToProcess )</PreCondition><PreCondition
  Guid="70792393-b2da-4f9c-b343-ffd26b6ede9b"
->Kernel.Mode != Mode.NL</PreCondition><PreCondition
+>Kernel.Mode not in [Mode.NL, Mode.SH, Mode.PS]</PreCondition><PreCondition
  Guid="0f38d48a-8431-4fc2-8a57-2fed7286c19c"
->TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Max ) &gt; LevelTransitionOrder.Distance - LevelTransitionToProcess.AcknLength</PreCondition><PreCondition
+>TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Max ) &gt; LevelTransitionOrder.Distance - BaseTypes.LengthToDistance(LevelTransitionToProcess.AcknLength)</PreCondition><PreCondition
  Guid="d1c2a625-f343-46d3-aff8-a4ac69558533"
 >AcknowledgementTime == BaseTypes.Time.NA</PreCondition></PreConditions>
 <Actions>
