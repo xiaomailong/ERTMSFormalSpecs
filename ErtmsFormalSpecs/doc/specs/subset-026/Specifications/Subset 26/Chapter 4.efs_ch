@@ -1021,9 +1021,11 @@
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
+ specIssue="TRUE"
  Name=""
  Guid="a3be6193-1d98-4009-8e1d-df9cd86ee857"
->The ERTMS/ETCS on-board equipment shall perform the Train Position function; in particular, the front/rear end of the engine (i.e., not the train) shall be used to refer to train front/rear end.<RequirementSets>
+><Comment>The specification does not state that the train must know the engine length, which is necessary to know its rear position.</Comment>
+The ERTMS/ETCS on-board equipment shall perform the Train Position function; in particular, the front/rear end of the engine (i.e., not the train) shall be used to refer to train front/rear end.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="bf95b7af-898e-4740-aa5f-6e64b294d1a3"
