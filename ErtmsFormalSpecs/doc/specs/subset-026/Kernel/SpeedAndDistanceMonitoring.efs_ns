@@ -652,7 +652,12 @@ SupervisedTargets</PreCondition></PreConditions>
  Name="ToTSM"
  Guid="20f999bf-2d05-4b9e-83cc-867c3fc4d8d3"
 >
-<Comment>Rule for changing to target speed monitoring when the train passes the pre-indication location</Comment>
+<ReqRef
+ Id="7fcdea21-7a57-4a9d-8c17-8018a059e5a7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="82f313ee-93d5-4648-9bbd-5d83b18b0efa"
+>
+</ReqRef><Comment>Rule for changing to target speed monitoring when the train passes the pre-indication location</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -662,10 +667,12 @@ SupervisedTargets</PreCondition></PreConditions>
 >
 <PreConditions>
 <PreCondition
+ Guid="86039d61-4cbf-4e38-a169-a45ba3aa9912"
+>ActiveFunctions.SuperviseTrainSpeed_All_Information()
+  OR  
+ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition><PreCondition
  Guid="d984a754-d9a0-4a30-ad3c-10001df8ecf0"
 >Condition1()</PreCondition><PreCondition
- Guid="86039d61-4cbf-4e38-a169-a45ba3aa9912"
->ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition><PreCondition
  Guid="f9d7d7b3-264c-4b4e-8da7-17ec19c647c4"
 >TargetsList()
 ==
@@ -1891,7 +1898,7 @@ SupervisedTargets</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="6bee5e64-dd3e-4190-b0cc-b9fecd7c8aa1"
->ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
+>ActiveFunctions.SuperviseTrainSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="351c9b66-e0cc-4a58-9b1c-f39028235a8a"
@@ -2528,6 +2535,11 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bdec0d17-674b-4f28-a73e-7cc2558ed8ba"
 >
+</ReqRef><ReqRef
+ Id="7fcdea21-7a57-4a9d-8c17-8018a059e5a7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3d1f0eb4-ebc6-4c66-9476-e1511c783e3e"
+>
 </ReqRef><Comment>Update the speed and distance monitoring type</Comment>
 <Rules>
 <Rule
@@ -2559,7 +2571,11 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
 <PreConditions>
 <PreCondition
  Guid="f0a73956-72ca-4e2a-833d-c64917c04a3d"
->Condition2()</PreCondition></PreConditions>
+>Condition2()</PreCondition><PreCondition
+ Guid="d9a9a4cd-117d-4d8d-b421-b6cdc0e4ed2f"
+>ActiveFunctions.SuperviseTrainSpeed_All_Information()
+  OR  
+ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9fa14273-a356-4624-b65d-d653232c55c9"
@@ -2575,7 +2591,12 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
  Guid="d65208a9-5e12-45dd-8d14-3dc148564806"
 >Condition1()</PreCondition><PreCondition
  Guid="e50642fe-e198-4f28-a317-12417a620320"
->NOT Condition2()</PreCondition></PreConditions>
+>NOT Condition2()</PreCondition><PreCondition
+ Guid="991d2b44-b8c0-492a-b512-472c51a082ab"
+>
+ActiveFunctions.SuperviseTrainSpeed_All_Information()
+  OR  
+ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5958ef9e-9907-4aa3-a87a-6fde142da01b"

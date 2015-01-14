@@ -2492,5 +2492,107 @@ AND
 >
 <Expression>Messages.JRU.Q_RBCENTRY.Spare</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Default.MessageTypes.Speed"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ToJRUVFloi"
+ Guid="adf6d8ce-2d4d-4d0f-b0e6-023bf7d8a808"
+>
+<Comment>Provides the SBI speed for the speed and distance monitoring message. If the current mode does not have target supervsion (SH, UN), this will return NA.</Comment>
+<Cases>
+<Case
+ Name="No target supervision"
+ Guid="0fd16b8b-3ea7-4948-8e09-46cf9076e1ab"
+>
+<PreConditions>
+<PreCondition
+ Guid="ddb43881-4a43-45ba-b745-633990bafcaa"
+>NOT
+(
+  Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()
+   OR  
+  Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()
+)</PreCondition></PreConditions>
+<Expression>Default.MessageTypes.Speed.NA</Expression>
+</Case><Case
+ Name="Value"
+ Guid="83a0ade9-0f18-49f9-890c-305f872b1896"
+>
+<Expression>Default.MessageTypes.UnResolveSpeed(Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_SBI_DMI(), 5.0)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.MessageTypes.Speed"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ToJRUVTarget"
+ Guid="48f9bce4-fcd1-4d24-b4f1-5afaf34e7620"
+>
+<Comment>Provides the target speed for the speed and distance monitoring message. If the current mode does not have target supervsion (SH, UN), this will return NA.</Comment>
+<Cases>
+<Case
+ Name="No target supervision"
+ Guid="8322a104-d99f-4fd9-8824-6e937b1577fc"
+>
+<PreConditions>
+<PreCondition
+ Guid="b7c9d9a5-604c-4025-af08-b4a80b70ef5f"
+>NOT
+(
+  Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()
+   OR  
+  Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()
+)</PreCondition></PreConditions>
+<Expression>Default.MessageTypes.Speed.NA</Expression>
+</Case><Case
+ Name="Value"
+ Guid="5c2e883d-936c-40e3-b972-8210c054a91c"
+>
+<Expression>Default.MessageTypes.UnResolveSpeed( DMI.MasterDMI().Out_TargetSpeed.Speed, 5.0)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.MessageTypes.Distance"
+ Default=""
+ X="220"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ToJRUTargetDistance"
+ Guid="f9369bdb-34ba-4e46-8f68-36363206254b"
+>
+<Comment>Provides the distance to the MRDT for the speed and distance monitoring message. If the current mode does not have target supervsion (SH, UN), this will return Unknown.</Comment>
+<Cases>
+<Case
+ Name="No target supervision"
+ Guid="7bb44242-841a-4f86-a73d-733bdd5f958e"
+>
+<PreConditions>
+<PreCondition
+ Guid="cc8b85ce-4ddf-4f38-911a-0ef8fcc67a37"
+>NOT
+(
+  Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()
+   OR  
+  Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()
+)</PreCondition></PreConditions>
+<Expression>Default.MessageTypes.Distance.Unknown</Expression>
+</Case><Case
+ Name="Value"
+ Guid="73c215ef-33a1-4814-9e8a-c013d83bd220"
+>
+<Expression>TypeConvertors.ToMessagesDistance
+    (
+        distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance(),
+        scale =&gt; Messages.JRU.Q_SCALE._1_m_scaleC
+    )</Expression>
+</Case></Cases>
 </Function></Functions>
 </NameSpace>

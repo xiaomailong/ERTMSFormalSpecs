@@ -145,6 +145,11 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6297e289-f36a-4369-9672-21ddb7fba4ff"
 >
+</ReqRef><ReqRef
+ Id="137a2d02-81cd-4bb2-a7fa-6fcf738cf589"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="658e5d6f-cd8d-495b-be31-57e0f14e7371"
+>
 </ReqRef><Comment>This function is used to compute the estimated front end position, the max and min safe front end position of the train. The parameter specifies which of the values must be returned.</Comment>
 <Parameters>
 <Parameter
@@ -216,6 +221,11 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d39884e0-a5bb-433b-80fa-0ed1ed02c038"
 >
+</ReqRef><ReqRef
+ Id="137a2d02-81cd-4bb2-a7fa-6fcf738cf589"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="89d635a3-80b1-4b4b-a8a5-628b159b8faa"
+>
 </ReqRef><Comment>This function is used to compute the estimated rear end position, the max and min safe rear end position of the train. The parameter specifies which of the values must be returned. These values are computed iff the train integrity status is valid (confirmed by driver or by integrity monitoring device).</Comment>
 <Parameters>
 <Parameter
@@ -274,6 +284,8 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 </Function><Function
  Type="Boolean"
  Default=""
+ X="70"
+ Y="390"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -301,6 +313,8 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Type="BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
+ X="480"
+ Y="260"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -352,6 +366,10 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 </Function><Function
  Type="BaseTypes.Length"
  Default=""
+ X="70"
+ Y="320"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="TrainLength"
  Guid="f2c6361e-b0a6-4453-8039-fae14928bd1d"
@@ -388,7 +406,7 @@ In SL mode, the front and rear ends of the train are considered to be the front 
 <Procedures>
 <Procedure
  X="70"
- Y="340"
+ Y="150"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -452,7 +470,7 @@ BTM.LRBG.NID != Messages.NID_LRBG.Unknown</PreCondition></PreConditions>
  Type="Kernel.TrainPosition.TrainPosition"
  DefaultValue=""
  VariableMode="Internal"
- X="60"
+ X="70"
  Y="40"
  Width="100"
  Height="50"
@@ -474,6 +492,8 @@ BTM.LRBG.NID != Messages.NID_LRBG.Unknown</PreCondition></PreConditions>
  Type="BaseTypes.Distance"
  DefaultValue="0.0"
  VariableMode="Internal"
+ X="370"
+ Y="260"
  Width="100"
  Height="50"
  Name="SRStartDistance"
@@ -494,6 +514,8 @@ BTM.LRBG.NID != Messages.NID_LRBG.Unknown</PreCondition></PreConditions>
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
+ X="480"
+ Y="40"
  Width="100"
  Height="50"
  Implemented="TRUE"

@@ -1530,6 +1530,30 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="Check list of expected balises"
+ Guid="1c6c1ee3-5e2b-46de-b12e-939ceebac056"
+>
+<Comment>If the current mode is SH, check the received  BG against the list of expected balises for SH Mode.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Expected balises for SH"
+ Guid="5aa01674-ac6a-41a6-ad84-8971d1ae9e14"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="8d1a6745-9466-4063-a719-d54c187a08dc"
+>MessageRejected &lt;- 
+Kernel.Mode == Mode.SH
+  AND  
+NOT Kernel.Shunting.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="Check VBC"
  Guid="caf9206b-cf25-4596-a689-99b419d3dcfb"
 >
@@ -1544,7 +1568,9 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
 <PreConditions>
 <PreCondition
  Guid="f09ace5e-2bad-4e68-8426-d3bbf8bcdcc8"
->Kernel.ActiveFunctions.ManageVirtualBaliseCovers()</PreCondition></PreConditions>
+>Kernel.ActiveFunctions.ManageVirtualBaliseCovers()</PreCondition><PreCondition
+ Guid="782453fa-a201-492f-b441-89440b123b19"
+>NOT MessageRejected</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1a8e70a6-fc3d-4212-a393-e6e1c1372d77"

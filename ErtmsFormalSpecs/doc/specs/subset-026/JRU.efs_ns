@@ -4755,13 +4755,9 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
     M_SDMTYPE =&gt; TypeConvertors.ToJRUSpeedAndDistanceMonitoringType(),
     M_SDMSUPSTAT =&gt; TypeConvertors.ToJRUSpeedAndDistanceMonitoringsupervisionStatus(),
     V_PERM =&gt; Default.MessageTypes.UnResolveSpeed(DMI.MasterDMI().Out_PermittedSpeed.Speed, 5.0),
-    V_FLOI =&gt; Default.MessageTypes.UnResolveSpeed(Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_SBI_DMI(), 5.0),
-    V_TARGET =&gt; Default.MessageTypes.UnResolveSpeed( DMI.MasterDMI().Out_TargetSpeed.Speed, 5.0),
-    D_TARGET =&gt; TypeConvertors.ToMessagesDistance
-    (
-        distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance(),
-        scale =&gt; Messages.JRU.Q_SCALE._1_m_scaleC
-    ),
+    V_FLOI =&gt; TypeConvertors.ToJRUVFloi(),
+    V_TARGET =&gt; TypeConvertors.ToJRUVTarget(),
+    D_TARGET =&gt; TypeConvertors.ToJRUTargetDistance(),
     V_RELEASE =&gt; Default.MessageTypes.UnResolveSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed, 5.0)
 }</Expression>
 </Case></Cases>

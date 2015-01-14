@@ -674,6 +674,7 @@ Available ( EURORADIO.CurrentRBCConnection().MessageIn.SH_AUTHORISED )</Expressi
  Y="360"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Condition49"
  Guid="9fed90e2-c3c1-48a8-8fc9-301e96ed0317"
 >
@@ -682,12 +683,19 @@ Available ( EURORADIO.CurrentRBCConnection().MessageIn.SH_AUTHORISED )</Expressi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9ea25d32-80ec-4ed2-8613-17e9ec34e322"
 >
+</ReqRef><ReqRef
+ Id="2c58a3a1-c451-4832-a446-2e45d7792b9c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="57675279-8b4b-40e2-9900-8b44c36c3232"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="49817480-d87b-447f-948e-60ae66ca0923"
 >
-<Expression>False</Expression>
+<Expression>Shunting.StopIfInShunting
+  AND  
+HandleModeChange not in HandleModeChangeSM.Override</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"

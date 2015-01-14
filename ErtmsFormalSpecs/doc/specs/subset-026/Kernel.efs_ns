@@ -436,6 +436,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="NewCountry"
  Guid="5ab74922-f03f-4da9-ae00-8183f6dbfbc5"
 >
+<Comment>The Balise group is in a different country from the train.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.NID_C"
  Default=""
@@ -547,6 +548,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="StartOfMission Initiation"
  Guid="db607fdc-2bee-4bbf-aa53-6ba171f0ea06"
@@ -10708,7 +10710,9 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreCondi
 <PreConditions>
 <PreCondition
  Guid="d33202ae-a180-4e5e-94cf-d027d1ba507c"
->ActiveFunctions.SuperviseTrainSpeed_CSM()</PreCondition></PreConditions>
+>ActiveFunctions.SuperviseTrainSpeed_CSM()
+  OR  
+ActiveFunctions.SuperviseTrainSpeed_MRSP()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2af78366-a5fa-4945-bc34-75104fbbf1b3"
