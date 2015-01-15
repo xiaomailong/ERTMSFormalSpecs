@@ -307,5 +307,26 @@
  Guid="adc75d5e-0b22-47a9-b300-93de33ea1422"
 >
 </ReqRef><Comment>Indicates whether the &quot;Stop if in Shunting&quot; message has been received.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="UnexpectedBGPassed"
+ Guid="1ac74209-a67a-45eb-8f1d-edca85da42fd"
+>
+<ReqRef
+ Id="d70520c1-bb18-45b2-a3e6-312149387ee3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ba9fe478-c5b1-4ebf-b95d-38907c14c661"
+>
+</ReqRef><ReqRef
+ Id="aef89c33-3eb6-459c-901c-72a521999db9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6400bd94-8c2e-43a3-8963-9e637b12ed6f"
+>
+</ReqRef><Comment>Notification that the engine has passed a BG, in SH mode, that was not expected.</Comment>
 </Variable></Variables>
 </NameSpace>

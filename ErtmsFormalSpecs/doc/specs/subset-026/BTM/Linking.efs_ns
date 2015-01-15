@@ -1550,6 +1550,31 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
 Kernel.Mode == Mode.SH
   AND  
 NOT Kernel.Shunting.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Trip if BG unexpected"
+ Guid="51ad7e8c-22fc-434b-9791-4176dcaeec3b"
+>
+<Comment>If the passed BG was not in the list of expected BG in SH mode, the train will be tripped.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="BG not in expected list, trip"
+ Guid="0e80ba82-ec9a-468d-b0ec-baf6d9b6887b"
+>
+<PreConditions>
+<PreCondition
+ Guid="989d26ee-c16e-40c1-8d40-ba77d9accd5a"
+>Kernel.Mode == Mode.SH</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="834b94d2-1cc0-44a6-9de5-016da6df76c4"
+>Kernel.Shunting.UnexpectedBGPassed&lt;- NOT Kernel.Shunting.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

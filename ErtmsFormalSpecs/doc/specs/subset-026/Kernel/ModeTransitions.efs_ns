@@ -688,6 +688,11 @@ Available ( EURORADIO.CurrentRBCConnection().MessageIn.SH_AUTHORISED )</Expressi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="57675279-8b4b-40e2-9900-8b44c36c3232"
 >
+</ReqRef><ReqRef
+ Id="d70520c1-bb18-45b2-a3e6-312149387ee3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="defcf236-084f-4c0d-a1e7-2d5045a6b853"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -1090,6 +1095,7 @@ DMI.MasterDMI().In_AcknOfSNMode.InputInformation.DriverAnswered</Expression>
  Y="540"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Condition52"
  Guid="30d774f3-2dd5-4a0a-95e5-ca056924c45d"
 >
@@ -1103,7 +1109,9 @@ DMI.MasterDMI().In_AcknOfSNMode.InputInformation.DriverAnswered</Expression>
  Name="Value"
  Guid="4f1f4ed4-0fdd-445a-b62c-77d11810378b"
 >
-<Expression>False</Expression>
+<Expression>Shunting.UnexpectedBGPassed
+  AND  
+HandleModeChange not in HandleModeChangeSM.Override</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
