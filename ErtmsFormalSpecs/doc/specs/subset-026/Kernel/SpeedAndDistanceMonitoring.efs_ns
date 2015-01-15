@@ -3170,6 +3170,16 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ee289381-10a6-47b9-ae57-cfc9d28d45e5"
 >
+</ReqRef><ReqRef
+ Id="81a2ad5f-ad30-40e6-944f-ca4bd29708db"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cddd1597-977f-4d55-8b6b-d6aad57fd4c8"
+>
+</ReqRef><ReqRef
+ Id="bc8646ad-d463-4460-8cf4-e24c114b2b7b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0100bbd5-00ee-4f8d-952f-466e7741a172"
+>
 </ReqRef><Comment>Indicates the current monitoring of the train.</Comment>
 </Variable><Variable
  Type="Boolean"
@@ -3268,7 +3278,12 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Name="TrainTripped"
  Guid="53d8badf-f08b-4d97-8f5e-710965ab272f"
 >
-<Comment>Indicates if the train is tripped.</Comment>
+<ReqRef
+ Id="bc8646ad-d463-4460-8cf4-e24c114b2b7b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="12b3f80c-d7cd-4617-87f5-1f7e6f8a1602"
+>
+</ReqRef><Comment>Indicates if the train is tripped.</Comment>
 </Variable><Variable
  Type="TargetSpeedMonitoring.Targets"
  DefaultValue="[]"

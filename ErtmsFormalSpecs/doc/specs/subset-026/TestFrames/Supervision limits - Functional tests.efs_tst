@@ -1599,7 +1599,25 @@ Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
  Guid="762c291e-9b89-469c-ada8-ab649609d840"
 >Kernel.Mode &lt;- Mode.FS</Action><Action
  Guid="39383703-45b4-42f3-9805-e8dea5012820"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="88bde159-7f88-4cb9-b13c-46ac39e22b2f"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
+[
+  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
+    Distance =&gt; 0.0,
+    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
+    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    Categories =&gt; []
+  }
+]</Action><Action
+ Guid="f5c3eb39-7560-4e7c-9a93-3617eb9c39ec"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- 
+[
+  Kernel.TrackDescription.Gradient.GradientInfo{
+    Distance =&gt; 0.0,
+    Gradient =&gt; 0.0
+  }
+]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

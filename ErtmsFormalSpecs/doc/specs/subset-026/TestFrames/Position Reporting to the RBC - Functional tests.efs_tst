@@ -1017,7 +1017,11 @@ EURORADIO.PositionReport.LastPositionReport.Time &lt; 2401.0</Expectation><Expec
  Guid="9289823d-aa26-4889-beb6-0eb9873b7d61"
 >Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action><Action
  Guid="aa366b7c-9bf7-4b82-b515-4162416c20d8"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action></Actions>
+>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition &lt;- Orientation.Nominal</Action><Action
+ Guid="65eb316f-4332-43e1-9332-6fe0cf3bd4a6"
+>Kernel.MA.InitializeElementsForMA()</Action><Action
+ Guid="24e94281-eed8-454b-8a57-6a2dcde0bdd0"
+>Odometry.NominalDistance &lt;- 1100.0</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase

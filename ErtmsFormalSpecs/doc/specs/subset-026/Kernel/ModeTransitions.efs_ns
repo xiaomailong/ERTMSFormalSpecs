@@ -2113,6 +2113,7 @@ DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DriverAnswered</Expression>
  Y="1020"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Condition69"
  Guid="04f7b324-5473-4642-aa2f-10ab852fdf9e"
 >
@@ -2121,12 +2122,19 @@ DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DriverAnswered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9e06cc54-8cb4-467a-b5bf-ff420304ebe2"
 >
+</ReqRef><ReqRef
+ Id="83484e2e-340f-443e-931d-762efbc3dcdc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ee41406e-ca0b-433f-8f39-2163a3a303c9"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="6d1267bb-2737-4321-af1f-b133b7477942"
 >
-<Expression>False</Expression>
+<Expression>NOT (TrackDescription.StaticSpeedProfile.SSPStart() &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Nom) )
+  OR  
+NOT (TrackDescription.Gradient.GradientProfileStart() &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Nom) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"

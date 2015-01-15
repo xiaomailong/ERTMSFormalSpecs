@@ -78,16 +78,6 @@
 >Kernel.TSR.TSRs &lt;- []</Action><Action
  Guid="395088be-f8ce-4106-9942-8089ec905817"
 >Odometry.NominalDistance &lt;- 2000.0</Action><Action
- Guid="5776c753-3ca0-4056-bcc6-3363f80218a2"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct
-{
-    TargetSpeed =&gt; 40.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection
-    {
-        Length =&gt; 4000.0
-    }
-}</Action><Action
  Guid="67423479-3a7c-4e82-a20c-d6ce91c2ea2f"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="b102c0bc-3707-4dad-a9f6-1ab3ed25f5e7"
@@ -116,7 +106,17 @@
  Guid="1064c05a-15cb-429d-b8ff-4928f64c8c1e"
 >Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 110.0</Action><Action
  Guid="b65ee900-dde7-4bce-916d-33f5c81bbd9a"
->Kernel.Mode &lt;- Mode.LS</Action></Actions>
+>Kernel.Mode &lt;- Mode.LS</Action><Action
+ Guid="764fc3bd-70d8-4a71-821c-81b2ce593fb5"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
+[
+  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
+    Distance =&gt; 0.0,
+    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
+    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    Categories =&gt; []
+  }
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

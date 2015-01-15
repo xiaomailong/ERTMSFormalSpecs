@@ -969,7 +969,7 @@
 <Actions>
 <Action
  Guid="53932b9f-14c8-402b-aeb6-cbeded3be5c2"
->Odometry.NominalDistance &lt;- 0.0</Action><Action
+>Odometry.NominalDistance &lt;- 250.0</Action><Action
  Guid="61455775-3df5-4bdd-a7f3-b26122d6367b"
 >BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
@@ -995,7 +995,25 @@
  Guid="0e4d0fe2-aaf1-42a3-9e4a-4510680612dc"
 >Kernel.Mode &lt;- Mode.OS</Action><Action
  Guid="9c032315-6052-4830-b5f3-fd8e1ff5d237"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="088222b8-5a65-4e26-a3b9-38c7cf293baf"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
+[
+  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
+    Distance =&gt; 0.0,
+    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
+    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    Categories =&gt; []
+  }
+]</Action><Action
+ Guid="d632e5e1-91d9-4382-bc91-16163c44adaf"
+>Kernel.TrackDescription.Gradient.Gradients &lt;-
+[
+Kernel.TrackDescription.Gradient.GradientInfo{
+    Distance =&gt; 0.0,
+    Gradient =&gt; 0.0
+  }
+]</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 4 - Start radio connection"
  Guid="b1b911c1-96d3-48bf-8a50-ac706ce508b2"
@@ -1263,7 +1281,25 @@
  Guid="905ffffc-20cc-4180-abdb-4dca8e908575"
 >Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.C3</Action><Action
  Guid="9270577f-542b-430d-9189-443a2ec3e31e"
->Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action></Actions>
+>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action
+ Guid="eb5b60df-ac22-4e69-9904-9e6d8cf6dad2"
+>Kernel.TrackDescription.Gradient.Gradients &lt;-
+[
+Kernel.TrackDescription.Gradient.GradientInfo{
+    Distance =&gt; 0.0,
+    Gradient =&gt; 0.0
+  }
+]</Action><Action
+ Guid="81521b41-edb1-4cb9-9616-eb66d221b601"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
+[
+  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
+    Distance =&gt; 0.0,
+    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
+    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    Categories =&gt; []
+  }
+]</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 4 - Set mode and level"
  Guid="b3d6363e-834c-4d09-8782-02ffda5ee5a8"
@@ -1553,6 +1589,24 @@
         Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
         Country =&gt; 80
     }
+]</Action><Action
+ Guid="fdddaa02-e18d-40b8-97a2-4bbeff66bf00"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
+[
+  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
+    Distance =&gt; 0.0,
+    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
+    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    Categories =&gt; []
+  }
+]</Action><Action
+ Guid="e5510077-b0a1-4967-8620-b5502fa8b863"
+>Kernel.TrackDescription.Gradient.Gradients &lt;-
+[
+Kernel.TrackDescription.Gradient.GradientInfo{
+    Distance =&gt; 0.0,
+    Gradient =&gt; 0.0
+  }
 ]</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 4 - Set mode and level"
@@ -1803,6 +1857,24 @@
         Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
         Country =&gt; 85
     }
+]</Action><Action
+ Guid="70a4be54-cfd8-4255-8bc1-375c4b9b20c0"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
+[
+  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
+    Distance =&gt; 0.0,
+    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
+    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    Categories =&gt; []
+  }
+]</Action><Action
+ Guid="9df9ef0e-6aa3-4517-93a2-b5510394bf41"
+>Kernel.TrackDescription.Gradient.Gradients &lt;-
+[
+Kernel.TrackDescription.Gradient.GradientInfo{
+    Distance =&gt; 0.0,
+    Gradient =&gt; 0.0
+  }
 ]</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 4 - Set mode and level"

@@ -71,7 +71,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - Iniitalize test data"
+ Name="Step2 - Initialize test data"
  Guid="daae1a9c-2af6-4da8-96d3-14a80a41da9f"
 >
 <SubSteps>
@@ -101,13 +101,20 @@
     LocationAccuracy =&gt; 5.0,
     Orientation =&gt; Default.Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
-    Distance =&gt; 1050.0,
+    Distance =&gt; 1450.0,
     BaliseGroupIdentifier =&gt; 2125
   }
 ]</Action><Action
  Guid="71810be4-558d-470e-8f72-6fd1449dd6a8"
 >Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
 [
+  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+  {
+    Distance =&gt; 0.0,
+    BasicSpeed =&gt; 80.0,
+    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    Categories =&gt; []
+  },
   Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
   {
     Distance =&gt; 1000.0,
@@ -140,7 +147,12 @@ Kernel.MA.MAStruct
  Guid="7f0ec444-e850-4bd6-ad8d-64bcd956d421"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="b0641fde-2a04-42d9-bb38-6d57d26d8e77"
->Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
+ Guid="4ed9eba4-4c47-4fe2-97a2-17d755bedd2f"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{
+    Distance =&gt; 0.0,
+    Gradient =&gt; 0.0
+}]</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="fe420840-a890-4c53-b6e5-11e5c5e09cff"
@@ -150,7 +162,7 @@ Kernel.MA.MAStruct
  Kind="Instantaneous"
  DeadLine="1"
  Guid="01cc653b-e23d-4203-9300-3969406f5768"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP).BasicSpeed</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP | X.Distance &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)).BasicSpeed</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="50860bcb-a26b-4f52-b3eb-98c0fea2c61d"
@@ -158,7 +170,7 @@ Kernel.MA.MAStruct
  Kind="Instantaneous"
  DeadLine="1"
  Guid="366db7bf-f0b5-4547-bff7-1113e08690c8"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Location == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP).Distance</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Location == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP | X.Distance &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)).Distance</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -224,11 +236,11 @@ Kernel.MA.MAStruct
  Kind="Instantaneous"
  DeadLine="1"
  Guid="3fd89754-442c-4b55-bc03-246c1b961cf3"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Location == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP).Distance</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Location == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP | X.Distance &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)).Distance</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f01789ef-0e35-4c43-a5ae-abd845d56b51"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP).BasicSpeed</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP | X.Distance &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)).BasicSpeed</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="c8fc9b7a-01de-4e03-8a41-32f98f654392"
@@ -261,7 +273,7 @@ Kernel.MA.MAStruct
 <Actions>
 <Action
  Guid="6a7e226f-e44c-45c5-84d0-3b9d7589da33"
->Odometry.NominalDistance &lt;- 1200.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 1600.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="1f9d2d5c-80ff-44ab-81f1-05a456d9262e"
@@ -444,6 +456,13 @@ Kernel.MA.MAStruct
 [
   Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
   {
+    Distance =&gt; 0.0,
+    BasicSpeed =&gt; 100.0,
+    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    Categories =&gt; []
+  },
+  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+  {
     Distance =&gt; 1300.0,
     BasicSpeed =&gt; 20.0,
     TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
@@ -474,7 +493,12 @@ Kernel.MA.MAStruct
  Guid="df34c23e-d3de-434f-a6d9-a7cfd696af1c"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="3008cf97-f007-4724-8e1f-ff429643329c"
->Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
+ Guid="999fd038-ea32-4df1-a9d0-3b0249e4c058"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{
+    Distance =&gt; 0.0,
+    Gradient =&gt; 0.0
+}]</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="8596f9f7-df33-456c-8faf-ee584314fa31"
@@ -484,7 +508,7 @@ Kernel.MA.MAStruct
  Kind="Instantaneous"
  DeadLine="1"
  Guid="50ff6c6d-19af-4bf1-9af3-8558522eecbb"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP).BasicSpeed</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP | X.Distance &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)).BasicSpeed</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="59ce0fdd-bfaa-4620-b030-2a72f69bfe67"
@@ -492,7 +516,7 @@ Kernel.MA.MAStruct
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f35bb5fd-b30a-4a57-812d-ab190ed1d003"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Location == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP).Distance</Expectation></Expectations>
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Location == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP | X.Distance &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)).Distance</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -557,11 +581,11 @@ Kernel.MA.MAStruct
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5989b4a4-88af-48aa-bedd-92fcc5366fcc"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Location == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP).Distance</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Location == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP | X.Distance &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)).Distance</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b73e26e8-d42a-4645-8bdd-c6c264af534c"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP).BasicSpeed</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP | X.Distance &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)).BasicSpeed</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="2064fdc3-5e67-40e6-90cc-9cbecaae296c"
@@ -609,11 +633,11 @@ Kernel.MA.MAStruct
  Kind="Instantaneous"
  DeadLine="1"
  Guid="06eb18f9-0191-46cf-ab23-98a377916278"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Location == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP).Distance</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Location == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP | X.Distance &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)).Distance</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="75ef6f7e-abf0-474b-9fe4-12406ddd7adc"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP).BasicSpeed</Expectation><Expectation
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed == (FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP | X.Distance &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)).BasicSpeed</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="fd5d4805-4d66-4da2-9605-b32c63045c5b"
