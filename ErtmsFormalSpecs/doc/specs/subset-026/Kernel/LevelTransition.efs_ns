@@ -719,7 +719,6 @@ Packet.D_LEVELTR == 32767</PreCondition></PreConditions>
 <PreCondition
  Guid="ff929c1d-de94-46e4-a636-d2b729cae5ac"
 ><Comment>In SH or PS modes, the LTO is only stored if it is immediate.</Comment>
-
 Mode not in [Mode.SH, Mode.PS]
   OR  
 Packet.D_LEVELTR == 32767</PreCondition></PreConditions>
@@ -910,8 +909,7 @@ Packet.Sequence1</Action></Actions>
  Guid="7432ff75-4a66-4ae6-9aae-3df6be9e372b"
 >NOT (THERE_IS X IN LevelTransitionOrder.LevelAndLength | X.TRLevel.Value == Kernel.Level.Value.Value)</PreCondition><PreCondition
  Guid="1a10c0fb-f68d-41d0-900c-4dd3613eacdc"
->
-Mode not in [Mode.SH, Mode.PS]</PreCondition></PreConditions>
+>Mode not in [Mode.SH, Mode.PS]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1a6bdf17-071d-4c6b-921d-d6e6833e5395"
