@@ -2545,6 +2545,16 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5cf2c133-3154-4407-be26-74c168416d86"
 >
+</ReqRef><ReqRef
+ Id="aabedc00-dbbb-473a-9da1-25be4b1bd7d3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0fafa9b2-b0b2-46b5-ae40-1caf18356009"
+>
+</ReqRef><ReqRef
+ Id="446e9157-336b-4f48-a316-446351886a02"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4192f9ea-2f0d-4461-a558-79bd74b0234c"
+>
 </ReqRef><Comment>Update the speed and distance monitoring type</Comment>
 <Rules>
 <Rule
@@ -3086,6 +3096,8 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="610"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3179,6 +3191,16 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Id="bc8646ad-d463-4460-8cf4-e24c114b2b7b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0100bbd5-00ee-4f8d-952f-466e7741a172"
+>
+</ReqRef><ReqRef
+ Id="aabedc00-dbbb-473a-9da1-25be4b1bd7d3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="898b0164-0247-468a-8619-604cd86373a3"
+>
+</ReqRef><ReqRef
+ Id="446e9157-336b-4f48-a316-446351886a02"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e7fe38a3-1d38-4039-bdd8-fa5424dcf215"
 >
 </ReqRef><Comment>Indicates the current monitoring of the train.</Comment>
 </Variable><Variable
@@ -3334,6 +3356,7 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
 <Rules>
 <Rule
  Priority="Processing"
+ Y="130"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3371,6 +3394,7 @@ NOT DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DisplayRequested</PreCondi
 </Rule><Rule
  Priority="Processing"
  X="110"
+ Y="130"
  Width="100"
  Height="50"
  Implemented="TRUE"
