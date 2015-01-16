@@ -81,7 +81,13 @@
  Guid="b2fe8d8d-40f5-46c4-b7b2-c10f51747a0d"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="cac89291-edaf-4815-8dac-eb9987d85032"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
+ Guid="eeccca6a-edc6-42b0-99ba-503b42f6ba5c"
+>Kernel.StaffResponsible.SRAuthorisation &lt;- Kernel.StaffResponsible.SR{
+    Distance =&gt; Default.BaseTypes.Distance.Unknown,
+    BGs =&gt; [],
+    BGListReceived =&gt; False
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -202,14 +208,18 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="7a2fd659-56ac-4f79-b4b0-5c29a74b53e9"
->Kernel.Shunting.BaliseGroupsForShArea ==
+>Kernel.Shunting.BaliseGroupsForShArea.BGs ==
 [Kernel.BaliseGroup
 {
 NewCountry =&gt; Boolean.False,
 NID_C =&gt; 140,
 NID_BG =&gt; 1212
 }
-]</Expectation></Expectations>
+]</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="08173977-757b-45f1-a48b-ca915a0fd599"
+>Kernel.Shunting.BaliseGroupsForShArea.ListReceived == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -326,14 +336,18 @@ NID_BG =&gt; 1212
  Kind="Instantaneous"
  DeadLine="1"
  Guid="245094cb-e085-40ae-8a12-2f71a9f29056"
->Kernel.Shunting.BaliseGroupsForShArea ==
+>Kernel.Shunting.BaliseGroupsForShArea.BGs ==
 [Kernel.BaliseGroup
 {
 NewCountry =&gt; Boolean.False,
 NID_C =&gt; 140,
 NID_BG =&gt; 1313
 }
-]</Expectation></Expectations>
+]</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="c49b15fe-7a7c-482b-9fab-b5dbcec023cf"
+>Kernel.Shunting.BaliseGroupsForShArea.ListReceived == True</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

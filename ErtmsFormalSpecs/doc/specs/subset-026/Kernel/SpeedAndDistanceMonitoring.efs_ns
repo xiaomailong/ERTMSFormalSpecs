@@ -2308,13 +2308,14 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedM
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets"
  Cacheable="TRUE"
  Default=""
  X="90"
  Y="290"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="TargetsList"
  Guid="f4668202-f4f0-4a13-b076-7ffb98ee3f01"
@@ -2397,7 +2398,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
 <Expression>Monitoring in MonitoringTypeSM.Release</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SupervisionStatus"
+ Type="SupervisionStatus"
  Cacheable="TRUE"
  Default=""
  X="420"
@@ -2554,6 +2555,16 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
  Id="446e9157-336b-4f48-a316-446351886a02"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4192f9ea-2f0d-4461-a558-79bd74b0234c"
+>
+</ReqRef><ReqRef
+ Id="95f15c06-a37e-4368-b951-c675cf544059"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="87cef31b-97cd-485b-ad65-8cfed588e73e"
+>
+</ReqRef><ReqRef
+ Id="774c0a7a-9451-4e93-ae7a-5a64de270168"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f8b69113-b526-4541-80cb-354f3a2375c0"
 >
 </ReqRef><Comment>Update the speed and distance monitoring type</Comment>
 <Rules>
@@ -3201,6 +3212,21 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Id="446e9157-336b-4f48-a316-446351886a02"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e7fe38a3-1d38-4039-bdd8-fa5424dcf215"
+>
+</ReqRef><ReqRef
+ Id="95f15c06-a37e-4368-b951-c675cf544059"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="202e2637-aadf-43ee-9159-9db806f9e37b"
+>
+</ReqRef><ReqRef
+ Id="774c0a7a-9451-4e93-ae7a-5a64de270168"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="db4ea997-eb2b-4bef-b9b4-ae89449f469a"
+>
+</ReqRef><ReqRef
+ Id="77289e9b-8c64-4406-8d33-fcf9d018e94c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="82056cde-3793-4ff9-8b0e-a5feaf2cde53"
 >
 </ReqRef><Comment>Indicates the current monitoring of the train.</Comment>
 </Variable><Variable

@@ -56,7 +56,7 @@
  Guid="880bcc6e-c41a-425c-a226-f75fb17190ec"
 >
 </NameSpaceRef><NameSpaceRef
- Name="SR"
+ Name="StaffResponsible"
  Guid="ce5ba9c6-6ff5-44cc-ba9d-604bfe5ce808"
 >
 </NameSpaceRef><NameSpaceRef
@@ -5373,7 +5373,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 </ReqRef><PreConditions>
 <PreCondition
  Guid="e43fdd3d-fef1-4b2f-b931-a04bddf3ae57"
->SR.SRAuthorised()</PreCondition></PreConditions>
+>StaffResponsible.SRAuthorised()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d5a2a004-5cce-4a62-9dd4-637430d3e05f"
@@ -7815,7 +7815,7 @@ If the RBC sends a MA without a Mode Profile, the Mode will change to FS and the
 <PreConditions>
 <PreCondition
  Guid="de3e27a7-c5e6-4f07-8b68-aadb8d7fc131"
->SR.SRAuthorised()</PreCondition></PreConditions>
+>StaffResponsible.SRAuthorised()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7ddbbfa8-8c2a-423e-982b-b4feec5a94ae"
@@ -8804,7 +8804,10 @@ The report is handled in the EURORADIO namespace</Comment>
 <Actions>
 <Action
  Guid="078393ba-187b-4992-a8ac-d44fad419046"
->Shunting.BaliseGroupsForShArea &lt;- []</Action></Actions>
+>Shunting.BaliseGroupsForShArea &lt;- Shunting.ExpectedBGstruct{
+    ListReceived =&gt; False,
+    BGs =&gt; []
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

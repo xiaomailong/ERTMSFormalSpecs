@@ -310,7 +310,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 ]</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
  X="480"
@@ -364,7 +364,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) - SRStartDistance</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Length"
+ Type="Default.BaseTypes.Length"
  Default=""
  X="70"
  Y="320"
@@ -489,13 +489,14 @@ BTM.LRBG.NID != Messages.NID_LRBG.Unknown</PreCondition></PreConditions>
  Guid="bbfa7a99-0ee1-4ecc-859d-b11eb3c977fc"
 >
 </ReqRef></Variable><Variable
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  DefaultValue="0.0"
  VariableMode="Internal"
  X="370"
  Y="260"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="SRStartDistance"
  Guid="e7248a60-09d7-4a0a-bf38-7234b34911e1"
 >

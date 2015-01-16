@@ -804,6 +804,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="619e28e9-e518-4eca-8065-97c51e9712f0"
 >
+</ReqRef><ReqRef
+ Id="80c7f3b7-09d1-4a40-ab28-0aafd6ac3530"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="35a35599-4108-4c4f-897c-4018b1beb073"
+>
 </ReqRef></StructureElement><StructureElement
  TypeName="WeightFactor"
  Default="0.0"
@@ -1665,39 +1670,39 @@
 <Expression>Kernel.NationalValues.NationalValues
 {
     DataState =&gt; Default.DataState.Valid,
-    ApplicableDistance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_VALIDNV, scale =&gt; Packet.Q_SCALE ),
+    ApplicableDistance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_VALIDNV, scale =&gt; Packet.Q_SCALE ),
     NID_C =&gt; NID_C,
     Value =&gt; Kernel.NationalValues.NationalDefaultData
     {
         ModificationOfAdhesionFactorByDriver =&gt; Packet.Q_NVDRIVER_ADHES,
-        ShuntingModeSpeedLimit =&gt; MessageTypes.SpeedResolution ( Packet.V_NVSHUNT, 5.0 ),
-        StaffResponsibleModeSpeedLimit =&gt; MessageTypes.SpeedResolution ( Packet.V_NVSTFF, 5.0 ),
-        OnSightModeSpeedLimit =&gt; MessageTypes.SpeedResolution ( Packet.V_NVONSIGHT, 5.0 ),
-        LimitedSupervisionModeSpeedLimit =&gt; MessageTypes.SpeedResolution ( Packet.V_NVLIMSUPERV, 5.0 ),
-        UnfittedModeSpeedLimit =&gt; MessageTypes.SpeedResolution ( Packet.V_NVUNFIT, 5.0 ),
-        ReleaseSpeed =&gt; MessageTypes.SpeedResolution ( Packet.V_NVREL, 5.0 ),
-        DistToBeUsedInRollAwayProt_RevMvtProt_StandstillSup =&gt; MessageTypes.QScaleDistance ( Packet.D_NVROLL, Packet.Q_SCALE ),
+        ShuntingModeSpeedLimit =&gt; Default.MessageTypes.SpeedResolution ( Packet.V_NVSHUNT, 5.0 ),
+        StaffResponsibleModeSpeedLimit =&gt; Default.MessageTypes.SpeedResolution ( Packet.V_NVSTFF, 5.0 ),
+        OnSightModeSpeedLimit =&gt; Default.MessageTypes.SpeedResolution ( Packet.V_NVONSIGHT, 5.0 ),
+        LimitedSupervisionModeSpeedLimit =&gt; Default.MessageTypes.SpeedResolution ( Packet.V_NVLIMSUPERV, 5.0 ),
+        UnfittedModeSpeedLimit =&gt; Default.MessageTypes.SpeedResolution ( Packet.V_NVUNFIT, 5.0 ),
+        ReleaseSpeed =&gt; Default.MessageTypes.SpeedResolution ( Packet.V_NVREL, 5.0 ),
+        DistToBeUsedInRollAwayProt_RevMvtProt_StandstillSup =&gt; Default.MessageTypes.QScaleDistance ( Packet.D_NVROLL, Packet.Q_SCALE ),
         UseServiceBrakeInTargetSpeedMonitoring =&gt; Packet.Q_NVSBTSMPERM,
         PermToReleaseEmergencyBrake =&gt; Packet.Q_NVEMRRLS,
         PermToUseGuidanceCurves =&gt; Packet.Q_NVGUIPERM,
         PermToUseTheServiceBrakeFeedback =&gt; Packet.Q_NVSBFBPERM,
         PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy =&gt; Packet.Q_NVINHSMICPERM,
-        SpeedLimitForTriggeringTheOverrideFunction =&gt; MessageTypes.SpeedResolution ( Packet.V_NVALLOWOVTRP, 5.0 ),
-        OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive =&gt; MessageTypes.SpeedResolution ( Packet.V_NVSUPOVTRP, 5.0 ),
-        DistForTrainTripSuppressionWhenOverrideIsTriggered =&gt; MessageTypes.QScaleDistance ( Packet.D_NVOVTRP, Packet.Q_SCALE ),
-        MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered =&gt; BaseTypes.Time ( Packet.T_NVOVTRP ),
+        SpeedLimitForTriggeringTheOverrideFunction =&gt; Default.MessageTypes.SpeedResolution ( Packet.V_NVALLOWOVTRP, 5.0 ),
+        OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive =&gt; Default.MessageTypes.SpeedResolution ( Packet.V_NVSUPOVTRP, 5.0 ),
+        DistForTrainTripSuppressionWhenOverrideIsTriggered =&gt; Default.MessageTypes.QScaleDistance ( Packet.D_NVOVTRP, Packet.Q_SCALE ),
+        MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered =&gt; Default.BaseTypes.Time ( Packet.T_NVOVTRP ),
         ChangeOfDriverIDPermittedWhileRunning =&gt; Packet.M_NVDERUN,
         SystemReactionIfRadioChannelMonitoringTimeLimitExpires =&gt; Packet.M_NVCONTACT,
-        MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram =&gt; BaseTypes.Time ( Packet.T_NVCONTACT ),
-        DistToBeAllowedForReversingInPostTripMode =&gt; MessageTypes.QScaleDistance ( Packet.D_NVPOTRP, Packet.Q_SCALE ),
-        MaxPermDistToRunInStaffResponsibleMode =&gt; MessageTypes.QScaleDistance ( Packet.D_NVSTFF, Packet.Q_SCALE ),
+        MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram =&gt; Default.BaseTypes.Time ( Packet.T_NVCONTACT ),
+        DistToBeAllowedForReversingInPostTripMode =&gt; Default.MessageTypes.QScaleDistance ( Packet.D_NVPOTRP, Packet.Q_SCALE ),
+        MaxPermDistToRunInStaffResponsibleMode =&gt; Default.MessageTypes.QScaleDistance ( Packet.D_NVSTFF, Packet.Q_SCALE ),
         DefaultLocationAccuracyOfABaliseGroup =&gt; Packet.Q_NVLOCACC,
         WeightingFactorForAvailableWheelRailAdhesion =&gt; WeightFactResolution ( Packet.M_NVAVADH ),
         ConfLevelForEmergBrakeSafeDecelerationOnDryRails =&gt; Packet.M_NVEBCL,
         IntegratedCorrectionFactorForBrakeBuildUpTime =&gt; KtResolution ( Packet.M_NVKTINT ),
-        MaxDecelValueUnderReducedAdhesionCond1 =&gt; MessageTypes.DecelerationResolution ( Packet.A_NVMAXREDADH1, 0.05 ),
-        MaxDecelValueUnderReducedAdhesionCond2 =&gt; MessageTypes.DecelerationResolution ( Packet.A_NVMAXREDADH2, 0.05 ),
-        MaxDecelValueUnderReducedAdhesionCond3 =&gt; MessageTypes.DecelerationResolution ( Packet.A_NVMAXREDADH3, 0.05 )
+        MaxDecelValueUnderReducedAdhesionCond1 =&gt; Default.MessageTypes.DecelerationResolution ( Packet.A_NVMAXREDADH1, 0.05 ),
+        MaxDecelValueUnderReducedAdhesionCond2 =&gt; Default.MessageTypes.DecelerationResolution ( Packet.A_NVMAXREDADH2, 0.05 ),
+        MaxDecelValueUnderReducedAdhesionCond3 =&gt; Default.MessageTypes.DecelerationResolution ( Packet.A_NVMAXREDADH3, 0.05 )
     }
 }</Expression>
 </Case></Cases>
@@ -1752,10 +1757,10 @@
 <PreConditions>
 <PreCondition
  Guid="3d5a36d0-595f-42e5-a36a-49a44199a640"
->Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition><PreCondition
+>NationalValues.ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition><PreCondition
  Guid="97ff3cda-e064-42fd-9ef4-2561e441b7cc"
->Kernel.HandleModeChange in Kernel.HandleModeChange.Override</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive</Expression>
+>HandleModeChange in HandleModeChangeSM.Override</PreCondition></PreConditions>
+<Expression>NationalValues.ApplicableNationalValues.Value.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive</Expression>
 </Case><Case
  Name="DefaultValue"
  Guid="10e22cc9-fc2e-4997-8935-445d4869c0ed"
@@ -1763,10 +1768,10 @@
 <PreConditions>
 <PreCondition
  Guid="6fe49ff5-1abc-44f8-9fbe-0809314bf327"
->Kernel.NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition><PreCondition
+>NationalValues.ApplicableNationalValues.DataState != Default.DataState.Valid</PreCondition><PreCondition
  Guid="fdd71851-17b9-4fca-940a-4c6865621452"
->Kernel.HandleModeChange in Kernel.HandleModeChange.Override</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.DefaultValues.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive</Expression>
+>HandleModeChange in HandleModeChangeSM.Override</PreCondition></PreConditions>
+<Expression>NationalValues.DefaultValues.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive</Expression>
 </Case><Case
  Name="OverrideNotActive"
  Guid="926d0bc3-585c-4bd1-9c29-04a3a0526a09"
@@ -1774,7 +1779,7 @@
 <PreConditions>
 <PreCondition
  Guid="14b28a32-c7d1-4f6a-9dfa-7147e1dbf61f"
->Kernel.HandleModeChange not in Kernel.HandleModeChange.Override</PreCondition></PreConditions>
+>HandleModeChange not in HandleModeChangeSM.Override</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
@@ -1846,9 +1851,9 @@
 <PreConditions>
 <PreCondition
  Guid="c74660cf-9016-4488-aff2-22f1b3e04e9b"
->Kernel.TrainData.TrainData.Value.BrakePosition in [Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP,Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition><PreCondition
+>Kernel.TrainData.TrainData.Value.BrakePosition in [TrainData.BrakingParameters.BrakePositions.FreightTrainInP,TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition><PreCondition
  Guid="c36d932b-6fb7-4575-b5d8-204440e0d288"
->ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+>ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Expression>ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond3</Expression>
 </Case><Case
  Name="FreightTrain_Default"
@@ -1857,7 +1862,7 @@
 <PreConditions>
 <PreCondition
  Guid="ec044d5e-b1aa-40e9-b086-ee870ec96593"
->Kernel.TrainData.TrainData.Value.BrakePosition in [Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInP,Kernel.TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition></PreConditions>
+>Kernel.TrainData.TrainData.Value.BrakePosition in [TrainData.BrakingParameters.BrakePositions.FreightTrainInP,TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition></PreConditions>
 <Expression>DefaultValues.MaxDecelValueUnderReducedAdhesionCond3</Expression>
 </Case><Case
  Name="PassengerTrainWithBrakesIndependentFromWheelRailAdhesion_NV"
@@ -1866,11 +1871,11 @@
 <PreConditions>
 <PreCondition
  Guid="62e0ee78-f62c-40f0-8088-bcee31304ad7"
->Kernel.TrainData.TrainData.Value.BrakePosition == Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition
+>Kernel.TrainData.TrainData.Value.BrakePosition == TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition
  Guid="5891c969-d31e-43b7-92a0-bb72d17d9fe0"
->Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition><PreCondition
+>TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition><PreCondition
  Guid="df7504cc-63f7-471f-94bb-9497d55a6b23"
->ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+>ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Expression>ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond1</Expression>
 </Case><Case
  Name="PassengerTrainWithBrakesIndependentFromWheelRailAdhesion_Default"
@@ -1879,9 +1884,9 @@
 <PreConditions>
 <PreCondition
  Guid="d29a5b14-527a-4849-9999-53b52218c701"
->Kernel.TrainData.TrainData.Value.BrakePosition == Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition
+>Kernel.TrainData.TrainData.Value.BrakePosition == TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition
  Guid="b1aac6b3-1fa5-47df-aae0-287baecf0607"
->Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition></PreConditions>
+>TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition></PreConditions>
 <Expression>DefaultValues.MaxDecelValueUnderReducedAdhesionCond1</Expression>
 </Case><Case
  Name="PassengerTrainWithoutBrakesIndependentFromWheelRailAdhesion_NV"
@@ -1890,11 +1895,11 @@
 <PreConditions>
 <PreCondition
  Guid="b0e1e819-ae1e-47aa-b0f4-05f1cf67d2c7"
->Kernel.TrainData.TrainData.Value.BrakePosition == Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition
+>Kernel.TrainData.TrainData.Value.BrakePosition == TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition
  Guid="0aae850b-97c9-46c9-a0d2-a0f698d84d30"
->NOT Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition><PreCondition
+>NOT TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition><PreCondition
  Guid="856c721e-e6ec-4e26-a4c6-5fe4817c460e"
->ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+>ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Expression>ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond2</Expression>
 </Case><Case
  Name="PassengerTrainWithoutBrakesIndependentFromWheelRailAdhesion_Default"
@@ -1903,13 +1908,13 @@
 <PreConditions>
 <PreCondition
  Guid="38a5768c-d031-45e0-b83c-b27f068618a9"
->Kernel.TrainData.TrainData.Value.BrakePosition == Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition
+>Kernel.TrainData.TrainData.Value.BrakePosition == TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition
  Guid="818c6748-3268-4671-947e-4d911770f422"
->NOT Kernel.TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition></PreConditions>
+>NOT TrainData.BrakingParameters.ContributionOfSpecialBrakeIsTakenIntoAccount()</PreCondition></PreConditions>
 <Expression>DefaultValues.MaxDecelValueUnderReducedAdhesionCond2</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.NationalValues.CorFactorKt"
+ Type="NationalValues.CorFactorKt"
  Default=""
  X="250"
  Width="100"
@@ -1940,7 +1945,7 @@
 <Expression>CorFactorKt ( 0.05 * KtValue )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.NationalValues.WeightFactor"
+ Type="NationalValues.WeightFactor"
  Default=""
  X="140"
  Y="60"
@@ -1977,7 +1982,7 @@
 <Expression>WeightFactor ( 0.05 * VadhValue )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.NationalValues.CorFactorKr"
+ Type="NationalValues.CorFactorKr"
  Default=""
  X="360"
  Width="100"
@@ -2008,7 +2013,7 @@
 <Expression>CorFactorKr ( 0.05 * KrValue )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.NationalValues.CorFactorKv"
+ Type="NationalValues.CorFactorKv"
  Default=""
  X="470"
  Width="100"
@@ -2039,7 +2044,7 @@
 <Expression>CorFactorKv ( 0.02 * KvValue )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.NationalValues.CorFactorKr"
+ Type="NationalValues.CorFactorKr"
  Default=""
  X="360"
  Y="60"
@@ -2128,7 +2133,7 @@
 <Expression>aKr_int.Val4.Value</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.NationalValues.CorFactorKv"
+ Type="NationalValues.CorFactorKv"
  Default=""
  X="470"
  Y="60"
@@ -2217,7 +2222,7 @@
 <Expression>aKv_int.Val4.Value</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.NationalValues.CorFactorKv"
+ Type="NationalValues.CorFactorKv"
  Default=""
  X="470"
  Y="180"
@@ -2433,7 +2438,7 @@
  Guid="1b966e7b-4628-49e9-a576-795207603422"
 >TrainData.TrainData.Value.BrakePosition == TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</PreCondition><PreCondition
  Guid="94addf95-8a2a-440e-aab6-de5d081171b3"
->ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+>ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Expression>Kv_intFunction_PassengerTrains ( aKv_int =&gt; ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain, V =&gt; V )</Expression>
 </Case><Case
  Name="NV available, freight train"
@@ -2444,7 +2449,7 @@
  Guid="f84d530e-7734-4978-81a8-9d0fe1bde311"
 >TrainData.TrainData.Value.BrakePosition in [TrainData.BrakingParameters.BrakePositions.FreightTrainInP, TrainData.BrakingParameters.BrakePositions.FreightTrainInG]</PreCondition><PreCondition
  Guid="85743eb1-5e8a-43de-8e42-fb02ba6b99ef"
->ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+>ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Expression>Kv_intFunction_FreightTrains ( aKv_int =&gt; ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain, V =&gt; V )</Expression>
 </Case><Case
  Name="No NV available, passenger train"
@@ -2497,7 +2502,7 @@
 <PreConditions>
 <PreCondition
  Guid="7db75a07-549f-48a2-af3b-211c8656b06e"
->ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+>ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Expression>Kr_intFunction ( aKr_int =&gt; ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt, L =&gt; L )</Expression>
 </Case><Case
  Name="No NV available"
@@ -2543,15 +2548,15 @@
  Guid="0cb8f8e9-a841-4bff-bbb0-a534c9774614"
 >ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode &lt;= Distance</PreCondition><PreCondition
  Guid="9ac672a4-f130-4e84-8a0a-712cd3080e6b"
->ApplicableNationalValues.DataState == DataState.Valid</PreCondition><PreCondition
+>ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition><PreCondition
  Guid="085f5adc-b43b-426c-90bb-1e23251bbef5"
->Kernel.Mode == Mode.SR</PreCondition></PreConditions>
+>Mode == Default.Mode.SR</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case><Case
  Name="No speed restriction"
  Guid="b13ef6f3-58dc-4633-bdc2-d5328104e5f0"
 >
-<Expression>BaseTypes.Speed.MaxSpeed</Expression>
+<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2579,13 +2584,13 @@
 <PreConditions>
 <PreCondition
  Guid="aa5bd5dd-1ce3-4977-b2da-111cc04d3b4e"
->ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseGuidanceCurves == Messages.Q_NVGUIPERM.Yes</Expression>
+>ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+<Expression>NationalValues.ApplicableNationalValues.Value.PermToUseGuidanceCurves == Messages.Q_NVGUIPERM.Yes</Expression>
 </Case><Case
  Name="DefaultValues"
  Guid="abae21fc-3c0d-44ab-8963-5946ae86bf4d"
 >
-<Expression>Kernel.NationalValues.DefaultValues.PermToUseGuidanceCurves == Messages.Q_NVGUIPERM.Yes</Expression>
+<Expression>NationalValues.DefaultValues.PermToUseGuidanceCurves == Messages.Q_NVGUIPERM.Yes</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2613,13 +2618,13 @@
 <PreConditions>
 <PreCondition
  Guid="5829c109-7ddc-455d-8b9f-d97942937fcb"
->ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.Yes</Expression>
+>ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+<Expression>NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.Yes</Expression>
 </Case><Case
  Name="DefaultValues"
  Guid="03de849d-6080-448f-a377-81e2ef891307"
 >
-<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.Yes</Expression>
+<Expression>NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy == Messages.Q_NVINHSMICPERM.Yes</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -2647,7 +2652,7 @@
 <PreConditions>
 <PreCondition
  Guid="001aeaf4-3a2a-4dec-b295-b06db614cb99"
->ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+>ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Expression>ApplicableNationalValues.Value.ReleaseSpeed</Expression>
 </Case><Case
  Name="DefaultValues"
@@ -2681,13 +2686,13 @@
 <PreConditions>
 <PreCondition
  Guid="23adcbd6-175f-450b-abf2-6134351c71a3"
->ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToUseTheServiceBrakeFeedback == Messages.Q_NVSBFBPERM.Yes</Expression>
+>ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+<Expression>NationalValues.ApplicableNationalValues.Value.PermToUseTheServiceBrakeFeedback == Messages.Q_NVSBFBPERM.Yes</Expression>
 </Case><Case
  Name="DefaultValues"
  Guid="4efe5695-306f-4efb-9734-95fe7b45f1b3"
 >
-<Expression>Kernel.NationalValues.DefaultValues.PermToUseTheServiceBrakeFeedback == Messages.Q_NVSBFBPERM.Yes</Expression>
+<Expression>NationalValues.DefaultValues.PermToUseTheServiceBrakeFeedback == Messages.Q_NVSBFBPERM.Yes</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2714,8 +2719,8 @@
 <PreConditions>
 <PreCondition
  Guid="076e8f62-4c7e-40a8-ad88-47cc8bd4416c"
->ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill AND Odometry.TrainSpeed() == 0.0</Expression>
+>ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+<Expression>NationalValues.ApplicableNationalValues.Value.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill AND Odometry.TrainSpeed() == 0.0</Expression>
 </Case><Case
  Name="NationalValues_SpeedSupervisionLimitIsNoLongerExceeded"
  Guid="c42b9ca4-4e17-4e9c-8e6e-e9970071fd9c"
@@ -2723,18 +2728,18 @@
 <PreConditions>
 <PreCondition
  Guid="f7f7c12d-3963-40da-83ea-2d25e6986142"
->ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions (TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Expression>
+>ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+<Expression>NationalValues.ApplicableNationalValues.Value.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions (TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</Expression>
 </Case><Case
  Name="DefaultValues_Standstill"
  Guid="1492cda9-b98a-41ed-a5e9-08df618081eb"
 >
-<Expression>Kernel.NationalValues.DefaultValues.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill AND Odometry.TrainSpeed() == 0.0</Expression>
+<Expression>NationalValues.DefaultValues.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill AND Odometry.TrainSpeed() == 0.0</Expression>
 </Case><Case
  Name="DefaultValues_SpeedSupervisionLimitIsNoLongerExceeded"
  Guid="cb889c73-68c2-4ad3-8c17-9640a862ddaa"
 >
-<Expression>Kernel.NationalValues.DefaultValues.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions (TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Expression>
+<Expression>NationalValues.DefaultValues.PermToReleaseEmergencyBrake == Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_when_permitted_speed_supervision_limit_is_no_longer_exceeded AND Odometry.TrainSpeed() &lt;= MRSP.SpeedRestrictions (TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2762,7 +2767,7 @@
 <PreConditions>
 <PreCondition
  Guid="6d2ab883-b3bb-4a4d-87d1-f75f81a152ed"
->ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+>ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Expression>ApplicableNationalValues.Value.UseServiceBrakeInTargetSpeedMonitoring == Messages.Q_NVSBTSMPERM.No</Expression>
 </Case><Case
  Name="DefaultValues"
@@ -2771,7 +2776,7 @@
 <Expression>DefaultValues.UseServiceBrakeInTargetSpeedMonitoring == Messages.Q_NVSBTSMPERM.No</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.NationalValues.CorFactorKt"
+ Type="NationalValues.CorFactorKt"
  Default=""
  X="30"
  Y="240"
@@ -2791,7 +2796,7 @@
 <PreConditions>
 <PreCondition
  Guid="44305a07-806e-4c0e-937c-65feef0ba006"
->ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+>ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Expression>ApplicableNationalValues.Value.IntegratedCorrectionFactorForBrakeBuildUpTime</Expression>
 </Case><Case
  Name="DefaultValues"
@@ -3003,15 +3008,15 @@
 <Actions>
 <Action
  Guid="c1becae3-6e1a-4170-a8a1-adf7cdd3d97c"
->NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.SpeedStep &lt;- MessageTypes.SpeedResolution ( InitialSpeed, 5.0 )</Action><Action
+>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.SpeedStep &lt;- Default.MessageTypes.SpeedResolution ( InitialSpeed, 5.0 )</Action><Action
  Guid="fbcfffe9-d65d-4a12-b4da-4608a9c25682"
 >NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueA &lt;- KvResolution ( InitialValueA )</Action><Action
  Guid="2c634ac8-184a-4f4a-8a67-2b963e2cdd89"
 >NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueB &lt;- KvResolution ( InitialValueB )</Action><Action
  Guid="bc6d8ad7-3677-49d6-ad4c-38890c6c2606"
->NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 &lt;- MessageTypes.DecelerationResolution ( LowerLimit, 0.05 )</Action><Action
+>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 &lt;- Default.MessageTypes.DecelerationResolution ( LowerLimit, 0.05 )</Action><Action
  Guid="45cb5b6e-1d06-4c22-bad0-c8450095dc49"
->NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 &lt;- MessageTypes.DecelerationResolution ( UpperLimit, 0.05 )</Action><Action
+>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 &lt;- Default.MessageTypes.DecelerationResolution ( UpperLimit, 0.05 )</Action><Action
  Guid="cf10bb82-803b-4012-93a4-b757a457f689"
 >APPLY CreateKvIntValue_PassengerTrain ( ValueA =&gt; X.M_NVKVINT_0, ValueB =&gt; X.M_NVKVINT_1, Speed =&gt; X.V_NVKVINT, KvInt =&gt; NV.IntegratedCorrectionFactorKvInt_PassengerTrain ) ON Values</Action><Action
  Guid="46f6439c-4704-4862-ae91-bdf83e5d0d57"
@@ -3030,11 +3035,11 @@
 <Actions>
 <Action
  Guid="cfcad485-7d5b-4383-be3a-c559310b907b"
->NV.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.SpeedStep &lt;- MessageTypes.SpeedResolution ( InitialSpeed, 5.0 )</Action><Action
+>NV.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.SpeedStep &lt;- Default.MessageTypes.SpeedResolution ( InitialSpeed, 5.0 )</Action><Action
  Guid="d7907659-8ff3-4364-995f-f6e1feebb17b"
->NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP12 &lt;- MessageTypes.DecelerationResolution ( LowerLimit, 0.05 )</Action><Action
+>NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP12 &lt;- Default.MessageTypes.DecelerationResolution ( LowerLimit, 0.05 )</Action><Action
  Guid="2581743e-39b1-48ee-b39f-b5a89eb251be"
->NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP23 &lt;- MessageTypes.DecelerationResolution ( LowerLimit, 0.05 )</Action><Action
+>NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP23 &lt;- Default.MessageTypes.DecelerationResolution ( LowerLimit, 0.05 )</Action><Action
  Guid="0b7fff38-ac0a-4151-9f9d-07d541bde61c"
 >APPLY CreateKvIntValue_FreightTrain ( Speed =&gt; X.V_NVKVINT, KvInt =&gt; NV.IntegratedCorrectionFactorKvInt_FreightTrain ) ON Values</Action><Action
  Guid="d2888a66-8da7-424b-8ee2-ccb4b8d35958"
@@ -3089,15 +3094,15 @@
 <Actions>
 <Action
  Guid="0aad9b94-a9e0-4bb6-b42c-5bf3abac6040"
->NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.SpeedStep &lt;- MessageTypes.SpeedResolution ( Value.V_NVKVINT, 5.0 )</Action><Action
+>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.SpeedStep &lt;- Default.MessageTypes.SpeedResolution ( Value.V_NVKVINT, 5.0 )</Action><Action
  Guid="4d10563c-b59e-4804-ae09-22d07721b276"
 >NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueA &lt;- KvResolution ( Value.M_NVKVINT_0 )</Action><Action
  Guid="5d7394d8-aa09-4dab-8901-4bb657c592f5"
 >NV.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.ValueB &lt;- KvResolution ( Value.M_NVKVINT_1 )</Action><Action
  Guid="85397132-e980-4289-911c-34475e387dba"
->NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 &lt;- MessageTypes.AccelerationResolution ( Value.A_NVP12, 0.05 )</Action><Action
+>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 &lt;- Default.MessageTypes.AccelerationResolution ( Value.A_NVP12, 0.05 )</Action><Action
  Guid="dcf17b74-527b-4ea5-b8d4-eb2c3baeed9d"
->NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 &lt;- MessageTypes.AccelerationResolution ( Value.A_NVP23, 0.05 )</Action><Action
+>NV.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 &lt;- Default.MessageTypes.AccelerationResolution ( Value.A_NVP23, 0.05 )</Action><Action
  Guid="897f29cb-d63b-4a40-b33b-c2efd03314c8"
 >APPLY CreateKvIntValue_PassengerTrain ( ValueA =&gt; X.M_NVKVINT_0, ValueB =&gt; X.M_NVKVINT_1, Speed =&gt; X.V_NVKVINT, KvInt =&gt; NV.IntegratedCorrectionFactorKvInt_PassengerTrain ) ON Value.Sequence3</Action></Actions>
 </RuleCondition><RuleCondition
@@ -3112,11 +3117,11 @@
 <Actions>
 <Action
  Guid="a6f1abff-276f-405d-a44b-777620b05ffa"
->NV.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.SpeedStep &lt;- MessageTypes.SpeedResolution ( Value.V_NVKVINT, 5.0 )</Action><Action
+>NV.IntegratedCorrectionFactorKvInt_FreightTrain.Val0.SpeedStep &lt;- Default.MessageTypes.SpeedResolution ( Value.V_NVKVINT, 5.0 )</Action><Action
  Guid="eb7b31e9-85ff-47d9-8073-fc583564acff"
->NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP12 &lt;- MessageTypes.AccelerationResolution ( Value.A_NVP12, 0.05 )</Action><Action
+>NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP12 &lt;- Default.MessageTypes.AccelerationResolution ( Value.A_NVP12, 0.05 )</Action><Action
  Guid="4f6674c9-942f-4859-a24d-b3d2052d5f97"
->NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP23 &lt;- MessageTypes.AccelerationResolution ( Value.A_NVP23, 0.05 )</Action><Action
+>NV.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP23 &lt;- Default.MessageTypes.AccelerationResolution ( Value.A_NVP23, 0.05 )</Action><Action
  Guid="c6395a3d-341e-4c95-af1b-5174a6caf594"
 >APPLY CreateKvIntValue_FreightTrain ( Speed =&gt; X.V_NVKVINT, KvInt =&gt; NV.IntegratedCorrectionFactorKvInt_FreightTrain ) ON Value.Sequence3</Action></Actions>
 </RuleCondition></Conditions>
@@ -3178,7 +3183,7 @@
 <Actions>
 <Action
  Guid="33026411-a597-448a-878e-b99ff0ccda97"
->NV.IntegratedCorrectionFactorKrInt.Val0.LengthStep &lt;-  KrIntLengthConverter ( InitialLength )</Action><Action
+>NV.IntegratedCorrectionFactorKrInt.Val0.LengthStep &lt;-  Default.KrIntLengthConverter ( InitialLength )</Action><Action
  Guid="42e3bbd8-3ee3-435f-9880-5d6aeb16cea2"
 >NV.IntegratedCorrectionFactorKrInt.Val0.Value &lt;- KrResolution ( InitialValue )</Action><Action
  Guid="ba6cc39f-c9b7-4566-883f-ae7bb444c6cf"
@@ -3229,11 +3234,11 @@
 <PreConditions>
 <PreCondition
  Guid="9f8e3b44-8bd4-434b-9172-62bf9d06bbb5"
->KrInt.Val1.LengthStep == BaseTypes.Length.Infinity</PreCondition></PreConditions>
+>KrInt.Val1.LengthStep == Default.BaseTypes.Length.Infinity</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="befc6b41-4c10-496c-83a8-5e8994d16e6f"
->KrInt.Val1.LengthStep &lt;- KrIntLengthConverter ( Value.L_NVKRINT )</Action><Action
+>KrInt.Val1.LengthStep &lt;- Default.KrIntLengthConverter ( Value.L_NVKRINT )</Action><Action
  Guid="c8a1cde2-1f19-42e5-a912-29d7a21f4600"
 >KrInt.Val1.Value &lt;- KrResolution ( Value.M_NVKRINT )</Action></Actions>
 </RuleCondition><RuleCondition
@@ -3244,11 +3249,11 @@
 <PreConditions>
 <PreCondition
  Guid="a228458a-68e0-40c0-856a-cdaad8190f2e"
->KrInt.Val2.LengthStep == BaseTypes.Length.Infinity</PreCondition></PreConditions>
+>KrInt.Val2.LengthStep == Default.BaseTypes.Length.Infinity</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e2373cfe-b1ab-44dc-9b79-ac2d5984f91b"
->KrInt.Val2.LengthStep &lt;- KrIntLengthConverter ( Value.L_NVKRINT )</Action><Action
+>KrInt.Val2.LengthStep &lt;- Default.KrIntLengthConverter ( Value.L_NVKRINT )</Action><Action
  Guid="f7cfe666-9666-4337-8956-5c392ebfff28"
 >KrInt.Val2.Value &lt;- KrResolution ( Value.M_NVKRINT )</Action></Actions>
 </RuleCondition><RuleCondition
@@ -3259,11 +3264,11 @@
 <PreConditions>
 <PreCondition
  Guid="7812895a-aa18-450e-b769-cfbc8c81c6d6"
->KrInt.Val3.LengthStep == BaseTypes.Length.Infinity</PreCondition></PreConditions>
+>KrInt.Val3.LengthStep == Default.BaseTypes.Length.Infinity</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="87feb100-16ec-4d2e-9637-f11156ed9d20"
->KrInt.Val3.LengthStep &lt;- KrIntLengthConverter ( Value.L_NVKRINT )</Action><Action
+>KrInt.Val3.LengthStep &lt;- Default.KrIntLengthConverter ( Value.L_NVKRINT )</Action><Action
  Guid="a1776987-1980-4a0b-a964-8a3d37de31dc"
 >KrInt.Val3.Value &lt;- KrResolution ( Value.M_NVKRINT )</Action></Actions>
 </RuleCondition><RuleCondition
@@ -3274,11 +3279,11 @@
 <PreConditions>
 <PreCondition
  Guid="cd40286c-b38e-41c9-9538-28ca990b3778"
->KrInt.Val4.LengthStep == BaseTypes.Length.Infinity</PreCondition></PreConditions>
+>KrInt.Val4.LengthStep == Default.BaseTypes.Length.Infinity</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3eb74c13-aab0-4515-b5da-b1b310fcce0e"
->KrInt.Val4.LengthStep &lt;- KrIntLengthConverter ( Value.L_NVKRINT )</Action><Action
+>KrInt.Val4.LengthStep &lt;- Default.KrIntLengthConverter ( Value.L_NVKRINT )</Action><Action
  Guid="13488caa-2517-4507-b685-e73df95aca02"
 >KrInt.Val4.Value &lt;- KrResolution ( Value.M_NVKRINT )</Action></Actions>
 </RuleCondition></Conditions>
@@ -3327,11 +3332,11 @@
 <PreConditions>
 <PreCondition
  Guid="a3614ae8-6bb6-4357-ae33-171e1ecd43aa"
->KvInt.Val1.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+>KvInt.Val1.SpeedStep == Default.BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9a6b1e17-ad76-4c59-afc6-f336d0c358dc"
->KvInt.Val1.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action></Actions>
+>KvInt.Val1.SpeedStep &lt;- Default.MessageTypes.SpeedResolution ( Speed, 5.0 )</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Val2"
@@ -3340,11 +3345,11 @@
 <PreConditions>
 <PreCondition
  Guid="a0c2fe13-5b8c-4214-aac3-05d63a1dc27b"
->KvInt.Val2.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+>KvInt.Val2.SpeedStep == Default.BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e985bd1f-70dc-4961-bdde-1c08a935989a"
->KvInt.Val2.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action></Actions>
+>KvInt.Val2.SpeedStep &lt;- Default.MessageTypes.SpeedResolution ( Speed, 5.0 )</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Val3"
@@ -3353,11 +3358,11 @@
 <PreConditions>
 <PreCondition
  Guid="e53c7325-d435-4af8-ba0c-5a61dd278eb9"
->KvInt.Val3.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+>KvInt.Val3.SpeedStep == Default.BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1917adc2-911a-47c0-9fad-2d3b551b256c"
->KvInt.Val2.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action></Actions>
+>KvInt.Val2.SpeedStep &lt;- Default.MessageTypes.SpeedResolution ( Speed, 5.0 )</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Val4"
@@ -3366,11 +3371,11 @@
 <PreConditions>
 <PreCondition
  Guid="ec306e92-2b25-4fdd-bc62-d737038b3298"
->KvInt.Val4.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+>KvInt.Val4.SpeedStep == Default.BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="77ea9c6e-78a8-4919-b755-d5d5f968162c"
->KvInt.Val2.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action></Actions>
+>KvInt.Val2.SpeedStep &lt;- Default.MessageTypes.SpeedResolution ( Speed, 5.0 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3426,11 +3431,11 @@
 <PreConditions>
 <PreCondition
  Guid="87b7e9f2-598a-445e-a254-d8962f7e6018"
->KvInt.Val1.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+>KvInt.Val1.SpeedStep == Default.BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="02098015-9328-4060-bf47-a34950e5e92f"
->KvInt.Val1.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action><Action
+>KvInt.Val1.SpeedStep &lt;- Default.MessageTypes.SpeedResolution ( Speed, 5.0 )</Action><Action
  Guid="ff12d93b-63e4-4cac-827e-85f00b5ddc71"
 >KvInt.Val1.ValueA &lt;- KvResolution ( ValueA )</Action><Action
  Guid="3f7c9184-c574-4923-8508-d5f4d62c2fe3"
@@ -3443,11 +3448,11 @@
 <PreConditions>
 <PreCondition
  Guid="bfbe6406-1d30-4a23-ad74-6d1eeb2cc39c"
->KvInt.Val2.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+>KvInt.Val2.SpeedStep == Default.BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c6c70a21-8882-4b1f-9ba4-1518a04379f5"
->KvInt.Val2.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action><Action
+>KvInt.Val2.SpeedStep &lt;- Default.MessageTypes.SpeedResolution ( Speed, 5.0 )</Action><Action
  Guid="9a98ff4a-e97b-4cb1-93cd-620014766dd0"
 >KvInt.Val2.ValueA &lt;- KvResolution ( ValueA )</Action><Action
  Guid="50e95d44-1e25-487a-b47e-6a2f21a21a4f"
@@ -3460,11 +3465,11 @@
 <PreConditions>
 <PreCondition
  Guid="47e8da02-6679-45ee-82e9-2c28bd1147a0"
->KvInt.Val3.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+>KvInt.Val3.SpeedStep == Default.BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="815b91fb-c06e-4553-aeac-aaec02534634"
->KvInt.Val3.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action><Action
+>KvInt.Val3.SpeedStep &lt;- Default.MessageTypes.SpeedResolution ( Speed, 5.0 )</Action><Action
  Guid="c1b56876-41e2-417d-b749-c70677c9dbb6"
 >KvInt.Val3.ValueA &lt;- KvResolution ( ValueA )</Action><Action
  Guid="913e1348-aa70-4eae-9e3a-c066e7e65fa4"
@@ -3477,11 +3482,11 @@
 <PreConditions>
 <PreCondition
  Guid="77d7e468-8f99-4d92-ae50-152b5ccb16b3"
->KvInt.Val4.SpeedStep == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
+>KvInt.Val4.SpeedStep == Default.BaseTypes.Speed.Infinity</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="998253c5-2808-4b46-9455-7f6ec1bd4330"
->KvInt.Val4.SpeedStep &lt;- MessageTypes.SpeedResolution ( Speed, 5.0 )</Action><Action
+>KvInt.Val4.SpeedStep &lt;- Default.MessageTypes.SpeedResolution ( Speed, 5.0 )</Action><Action
  Guid="fe54f14e-3a30-4835-89c9-1def6c8149d5"
 >KvInt.Val4.ValueA &lt;- KvResolution ( ValueA )</Action><Action
  Guid="603fb8b0-b3d7-4c1e-8412-657adf28d887"
@@ -3519,23 +3524,23 @@
 <Actions>
 <Action
  Guid="bbc3c1b4-d070-43aa-865e-959c2773e688"
->Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Valid</Action><Action
+>NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="e3cde4ea-42d7-4706-be4c-a9c93882a255"
->Kernel.NationalValues.ApplicableNationalValues.Value.ConfLevelForEmergBrakeSafeDecelerationOnDryRails &lt;- Messages.M_NVEBCL.Confidence_level___99_9999999</Action><Action
+>NationalValues.ApplicableNationalValues.Value.ConfLevelForEmergBrakeSafeDecelerationOnDryRails &lt;- Messages.M_NVEBCL.Confidence_level___99_9999999</Action><Action
  Guid="8a82144b-7f5b-4e0f-ad91-a908a70d0aaa"
->Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond1 &lt;- 1.0</Action><Action
+>NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond1 &lt;- 1.0</Action><Action
  Guid="4aed9178-1526-4a91-899f-bd865fe2d49f"
->Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond2 &lt;- 0.7</Action><Action
+>NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond2 &lt;- 0.7</Action><Action
  Guid="465ca94d-ee21-4672-8c1a-5fdaa7717ee9"
->Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond3 &lt;- 0.7</Action><Action
+>NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond3 &lt;- 0.7</Action><Action
  Guid="f3e98582-ca2a-4096-a4bd-d7c1b49f25b4"
->Kernel.NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond3 &lt;- 0.7</Action><Action
+>NationalValues.ApplicableNationalValues.Value.MaxDecelValueUnderReducedAdhesionCond3 &lt;- 0.7</Action><Action
  Guid="40e175f6-3218-47e0-b853-e3d5eb431c03"
->Kernel.NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy &lt;- Messages.Q_NVINHSMICPERM.Yes</Action><Action
+>NationalValues.ApplicableNationalValues.Value.PermToInhibitTheCompOfTheSpeedMeasurementInaccuracy &lt;- Messages.Q_NVINHSMICPERM.Yes</Action><Action
  Guid="93d45e34-8118-44ae-afd4-6d81b80dd945"
->Kernel.NationalValues.ApplicableNationalValues.Value.UseServiceBrakeInTargetSpeedMonitoring &lt;- Messages.Q_NVSBTSMPERM.Yes</Action><Action
+>NationalValues.ApplicableNationalValues.Value.UseServiceBrakeInTargetSpeedMonitoring &lt;- Messages.Q_NVSBTSMPERM.Yes</Action><Action
  Guid="1cdfb05c-f525-493b-950f-d6abc0939671"
->Kernel.NationalValues.ApplicableNationalValues.Value.WeightingFactorForAvailableWheelRailAdhesion &lt;- 0.0</Action></Actions>
+>NationalValues.ApplicableNationalValues.Value.WeightingFactorForAvailableWheelRailAdhesion &lt;- 0.0</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
