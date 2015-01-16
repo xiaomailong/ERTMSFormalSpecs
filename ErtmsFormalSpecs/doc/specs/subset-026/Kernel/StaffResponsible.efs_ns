@@ -263,6 +263,48 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="StopIfInSRReceived"
+ Guid="b6ba04fd-5a2d-4329-b003-41bfe7fc159c"
+>
+<ReqRef
+ Id="01a39be8-2459-4c78-a817-469f0b6b6748"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e8a1385c-eb2b-4802-a6bb-56933b4ceb92"
+>
+</ReqRef><Comment>Handles reception of a packet &quot;Stop if in SR mode&quot;.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.STOP_IF_IN_STAFF_RESPONSIBLE.Message"
+ Name="Packet"
+ Guid="ce678ef3-55a9-4505-842e-37d08500c2cd"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle packet"
+ Guid="76c74132-a1c3-4320-8bab-a754c9591f6f"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle packet"
+ Guid="77e9d509-9333-4cfa-9903-271166cb80be"
+>
+<PreConditions>
+<PreCondition
+ Guid="1af23fe5-a5a6-41f8-824b-5238b8ff70f8"
+>Packet.Q_SRSTOP == Messages.Q_SRSTOP.Stop_if_in_SR_mode</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e22bd583-6c01-4ec6-820f-7e54a97ef357"
+>StopIfInStaffResponsible &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -283,5 +325,19 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
  Guid="da1d4183-210e-4321-ad03-9815ba49f0a0"
 >
 </ReqRef><Comment>Contains information about the SR authorisation.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="StopIfInStaffResponsible"
+ Guid="6b0cb808-5169-40a9-af38-eb17c3057dcf"
+>
+<ReqRef
+ Id="01a39be8-2459-4c78-a817-469f0b6b6748"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b71f4b38-c59f-492a-bb9f-f8f1105bb553"
+>
+</ReqRef><Comment>Signals that a Balise with the message &quot;stop if in SR mode&quot; has been read</Comment>
 </Variable></Variables>
 </NameSpace>

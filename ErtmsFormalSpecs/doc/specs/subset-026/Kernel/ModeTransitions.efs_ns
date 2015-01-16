@@ -1154,6 +1154,7 @@ DMI.MasterDMI().In_AcknOfUNMode.InputInformation.DriverAnswered</Expression>
  Y="600"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Condition54"
  Guid="d57ff110-7152-4909-a2bc-8f0f15c24e18"
 >
@@ -1162,12 +1163,26 @@ DMI.MasterDMI().In_AcknOfUNMode.InputInformation.DriverAnswered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="753bc4d6-87c9-4624-9191-3c70f0d6dec6"
 >
-</ReqRef><Cases>
+</ReqRef><ReqRef
+ Id="01a39be8-2459-4c78-a817-469f0b6b6748"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="99f88663-7201-4057-ba33-4d460e44a7bf"
+>
+</ReqRef><Comment>&quot;Stop if in SR&quot; received and override is not active.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="7df588b1-7b61-44ff-b4c0-8cef08b7afe0"
 >
-<Expression>False</Expression>
+<Expression>StaffResponsible.StopIfInStaffResponsible
+  AND  
+(
+  NOT StaffResponsible.SRAuthorisation.BGListReceived
+    OR  
+  FORALL BaliseGroup IN StaffResponsible.SRAuthorisation.BGs | ((FIRST X IN BTM.CurrentBaliseGroup).NID_BG != BaliseGroup.NID_BG  OR  (FIRST X IN BTM.CurrentBaliseGroup).NID_C != BaliseGroup.NID_C) 
+)
+  AND  
+HandleModeChange not in HandleModeChangeSM.Override</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
