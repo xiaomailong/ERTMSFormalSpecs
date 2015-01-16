@@ -1143,6 +1143,11 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="33dfd7e2-32d0-402c-b907-8a05dfa118a8"
 >
+</ReqRef><ReqRef
+ Id="34700a82-fd46-452e-82c7-77f81db8c569"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="87dfc2d5-a4c7-441c-a0c1-efccd7621714"
+>
 </ReqRef><Comment>Represents the time when the driver ack was requested.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
@@ -1241,7 +1246,12 @@ IN
  Name="Display driver ack"
  Guid="413fa19c-51c6-4d80-8f2b-56d878b3285f"
 >
-<Comment>For the modes SB and PT, the acknowledgement procedure is launched in the procedures Start of Mission and Train Trip respectively.</Comment>
+<ReqRef
+ Id="34700a82-fd46-452e-82c7-77f81db8c569"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5637c905-6d83-46c3-916d-5c53ec9b4e48"
+>
+</ReqRef><Comment>For the modes SB and PT, the acknowledgement procedure is launched in the procedures Start of Mission and Train Trip respectively.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition

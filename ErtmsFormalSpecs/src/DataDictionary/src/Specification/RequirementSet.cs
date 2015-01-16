@@ -257,5 +257,21 @@ namespace DataDictionary.Specification
         /// The name of the requireement set for scoping information
         /// </summary>
         public const string ROLLING_STOCK_SCOPE_NAME = "Rolling stock";
+
+        /// <summary>
+        /// Sets the default requirement sets for the paragraph
+        /// </summary>
+        /// <param name="paragraph"></param>
+        public void setDefaultRequirementSets(Paragraph paragraph)
+        {
+            if (getDefault())
+            {
+                paragraph.AppendToRequirementSet(this);
+            }
+            foreach (RequirementSet subRequirementSet in RequirementSets)
+            {
+                subRequirementSet.setDefaultRequirementSets(paragraph);
+            }
+        }
     }
 }

@@ -273,7 +273,33 @@
  Guid="0cd2c13f-8ffc-4635-b22b-07a12b3845de"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="dd15225d-23c6-4d72-82ce-03140644cbf2"
->DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="f1ae09c1-0fde-41c9-95de-c570d1226690"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="7715da82-7aa0-4e77-b3fd-74e2d30a2df3"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
+[
+  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
+    Distance =&gt; 0.0,
+    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
+    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    Categories =&gt; []
+  }
+]</Action><Action
+ Guid="127fab83-f157-412a-95ff-e6714e482adf"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- 
+[
+  Kernel.TrackDescription.Gradient.GradientInfo{
+    Distance =&gt; 0.0,
+    Gradient =&gt; 0.0
+  }
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -315,7 +341,9 @@
  Guid="648f084b-f4a5-49c4-ac48-36696da4e34e"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="08b049f2-681b-4d23-ba48-930fc3923d1d"
->DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="764a8fc8-01af-41f2-ab16-f705802e62ce"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1082,7 +1110,33 @@
  Guid="278b533e-e993-43f6-a2b8-698b5ad77527"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="a1b5e535-74e6-46ed-989b-1a97a9a3b5dd"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="45d12de1-9e1e-4cc1-b2cb-70a19f98a769"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="2e62bd8b-4911-433c-ab79-a799bab955e1"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- 
+[
+  Kernel.TrackDescription.Gradient.GradientInfo{
+    Distance =&gt; 0.0,
+    Gradient =&gt; 0.0
+  }
+]</Action><Action
+ Guid="dc008d7f-3ef0-4406-9222-3bdbd54d8dc1"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
+[
+  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
+    Distance =&gt; 0.0,
+    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
+    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    Categories =&gt; []
+  }
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1124,7 +1178,9 @@
  Guid="a9a8ac49-4668-4a77-825d-2d600e6bf170"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="8a6f3ffe-af79-47c8-a853-300b96ffcf16"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="d5f5a3bb-eb19-4994-9c7a-5c36bbfcd785"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1891,7 +1947,33 @@
  Guid="d5067906-5820-45e3-9a0f-1e6d88682365"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="6d436ad0-4b36-4fd7-acb7-87bac16741d1"
->DMI.MasterDMI().In_AcknForReversingDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForReversingDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="f44d9fa0-cc4f-42e6-8097-09d0b7e88f35"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="4b4b9fb2-ee4b-4ee4-a3b8-16551f33056c"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
+[
+  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
+    Distance =&gt; 0.0,
+    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
+    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    Categories =&gt; []
+  }
+]</Action><Action
+ Guid="aea5c5a0-85fc-49ba-9660-56a486e5cb4a"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- 
+[
+  Kernel.TrackDescription.Gradient.GradientInfo{
+    Distance =&gt; 0.0,
+    Gradient =&gt; 0.0
+  }
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1933,7 +2015,9 @@
  Guid="d84d71f5-4eb3-4b3e-a6d7-58f1fe9c31fd"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="3c80f300-dcca-4b9c-af33-2fbabf622948"
->DMI.MasterDMI().In_AcknForReversingDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForReversingDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="9e5ec820-3aee-42a4-ba40-c9273b0a549d"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2700,7 +2784,33 @@
  Guid="8fd7b25f-46d4-4683-bdf1-4acc15cb19f2"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="6ff0702f-dcaf-497c-984e-b3f710cff669"
->DMI.MasterDMI().In_AcknForRollAwayProtection.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForRollAwayProtection.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="c394739c-8be5-41e6-8679-3526e70befeb"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="82a0847b-7712-4f41-a0ee-a1a39f1a5364"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
+[
+  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
+    Distance =&gt; 0.0,
+    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
+    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    Categories =&gt; []
+  }
+]</Action><Action
+ Guid="d67cb8fb-eb60-4d57-8a25-7176527a75eb"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- 
+[
+  Kernel.TrackDescription.Gradient.GradientInfo{
+    Distance =&gt; 0.0,
+    Gradient =&gt; 0.0
+  }
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2742,7 +2852,9 @@
  Guid="27f55cbb-96bc-4d30-ae11-500e60125fba"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="3c1b4d70-f914-4943-84e8-823fd731db31"
->DMI.MasterDMI().In_AcknForRollAwayProtection.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForRollAwayProtection.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="061aec98-a49a-4fa7-ae86-a6d384dd8201"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3509,7 +3621,19 @@
  Guid="9c758a74-0937-44a3-9214-1f5f8b8fc8b4"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="1a72e352-6c99-4fcf-952d-c50436860ac3"
->DMI.MasterDMI().In_AcknForStandstillSupervision.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForStandstillSupervision.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="0a7212f6-baf1-48ce-a3c7-c1df677985e9"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="9ac687e3-887f-4d97-97c5-9ce219bb218d"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="47f3d8a6-94fb-4530-827b-a7d13fd7cc9b"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3551,7 +3675,9 @@
  Guid="c946f963-bf77-45e7-886e-5c1e7337ced9"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="f5f193b6-80cb-4021-ad01-834f2495eed7"
->DMI.MasterDMI().In_AcknForStandstillSupervision.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForStandstillSupervision.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="3a46a044-5eb3-4c1a-97d0-c1bfb846c18f"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4320,7 +4446,19 @@
  Guid="8d184ef9-ff2a-494a-941b-eac3e9dea656"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="eaab459c-4e6f-49bf-89b4-729a9ea6511a"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="fdabb8c9-234d-4ac2-bf60-3b5f99148f2f"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="621de2d8-f0c7-4644-ab71-99f5ae48d092"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="b9b77fea-6b41-4692-953b-c2623fab27bb"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="257af298-2519-489e-8081-c83d8b806232"
@@ -4357,7 +4495,9 @@
 <Actions>
 <Action
  Guid="1fc98029-9d85-429a-b0bd-18928c99e76c"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="801efc06-c52c-4cc9-bd4c-74c5ecd84f4d"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="dcde0770-9fee-48e7-8c65-cbacff08231c"
@@ -4957,7 +5097,11 @@
  Guid="965516ae-14ba-437e-9616-99bf6e15be7c"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -4995,7 +5139,11 @@
  Guid="cec6722b-f91b-45f3-a8d0-5865f439ad6f"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5040,7 +5188,11 @@
  Guid="52469cb1-b1cf-4c0c-ac68-db3440369c08"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5087,7 +5239,11 @@
  Guid="06036e8b-813b-4f5c-8295-fb54faab89ac"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5116,7 +5272,19 @@
  Guid="7bec8ed4-15fd-4dd2-ac4d-884875cde99a"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="5a69ffa4-8e5d-401c-b85d-d97e84a09a5b"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="3c1af714-2f9b-4180-8c98-1ca10c4cf23b"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="4595ec50-0022-406d-9b7a-c174d1ea1093"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="88eb5b0f-01e2-493f-ad3c-873b06142799"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="9f526e7d-0b79-4c6e-8cdc-e70d8e62723d"
@@ -5126,7 +5294,11 @@
  Guid="19f39b0f-8359-4d49-9810-c0c31845074c"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5153,7 +5325,9 @@
 <Actions>
 <Action
  Guid="0532930f-20ff-41c7-9968-26566afb3760"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="3a47f181-5a27-488e-8cef-188884f78e4a"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="6a44af97-c5ef-4fb3-beaf-0b5c7e2ff0fa"
@@ -5163,7 +5337,11 @@
  Guid="ceba38b4-2f3a-4790-aa04-2e0375571c2f"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5200,7 +5378,11 @@
  Guid="a2746abd-9c10-4937-8e7c-7e0eac6fd5f5"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5237,7 +5419,11 @@
  Guid="d48c7a6f-e5ae-4acd-a6ca-3bd8b74def0b"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5286,7 +5472,11 @@
  Guid="2851e35a-dd5f-4f29-a501-d41e48fd2e0c"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5325,7 +5515,11 @@
  Guid="c1a9fd04-1db1-4f3b-8e8a-22e7dbd9ce49"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5364,7 +5558,11 @@
  Guid="fb5bcf50-11ce-48f9-9061-f0e10206730d"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5409,7 +5607,11 @@
  Guid="5ae6bd69-7208-45de-b45d-8deff2493115"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5454,7 +5656,11 @@
  Guid="08426912-957a-423e-945f-5517dbf8a429"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5499,7 +5705,11 @@
  Guid="5394a12e-12d0-45e2-86e3-fcbb1341f5f5"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5544,7 +5754,11 @@
  Guid="26398c50-f4e0-402d-a9fc-7d43dbd088a3"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5585,7 +5799,11 @@
  Guid="4c62a196-aeb3-4ece-8f67-e712d03e3876"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5630,7 +5848,11 @@
  Guid="7198c9fc-87a0-492e-b143-b1af7f953d94"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest
 (
-   Level =&gt; Level.L1
+  Level =&gt; LevelDataStruct
+  {
+    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.L1
+  }
 )</Action></Actions>
 <Expectations>
 <Expectation
@@ -5910,7 +6132,19 @@
  Guid="290157ad-f2d1-48c6-8737-a0c05dd9d019"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="4ead613a-7762-4b45-b34b-93b8b31a413d"
->DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="825ee374-fe12-4756-91d5-9e0f10af5df6"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="441ef555-ad86-4288-911d-8beb68359c19"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="08add592-9c2a-466b-962a-dceedcca3a8a"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5952,7 +6186,9 @@
  Guid="d70b651a-393a-46c3-8e2e-f081dc8972e9"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="f37b6e9c-9c1a-4755-ad49-d099bd8e40e0"
->DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="ce82f2e4-71f3-48b1-afbd-db72e7ad2536"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6719,7 +6955,19 @@
  Guid="b9970bb1-9ee7-4ff1-bcee-eb793e647012"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="2a3b74b5-f2d1-4c47-ae05-0a27df1cbaba"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="1a5ca125-a988-4ecf-a0fb-0bef77085374"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="7a099aad-2f25-4065-96df-b7fbaf8d8a1c"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="0c27bb25-40b3-41be-b8b8-ef569df44d3b"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6761,7 +7009,9 @@
  Guid="08093eab-8010-4e70-8659-36100d313a9d"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="9a4e8cda-b87d-4611-aff0-cca2619a4f8c"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="a2ffd3b8-9b18-4cf5-b8fd-608822021f3f"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7530,7 +7780,19 @@
  Guid="dc5eb49a-4c4e-444e-a88c-4470cbb6296c"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="270dbd36-4add-42bc-988e-621c38b94000"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="f7c3ba07-bb3a-40d9-b329-74422eac905c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="b8da0ce6-554a-49dc-acb4-fc3616b86542"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="3bcc7db0-da86-4c69-80e8-c18965fe7278"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="4f5b1d92-f2e2-4afb-a0b3-782a636d999b"
@@ -7567,7 +7829,9 @@
 <Actions>
 <Action
  Guid="be0bffda-61aa-4f3b-ae91-0a9ab325373d"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="dd4de665-2bce-4013-86af-1ef5982e3acb"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="313dbe42-cd0a-4ed4-a75a-bdcf079ad0c6"
@@ -8324,7 +8588,19 @@
  Guid="90a2c289-06ee-40f2-8326-1541ac24904b"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="793d06eb-3c77-4ac6-8f05-dabc1769b97f"
->DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="d4f08ff0-b4aa-439f-b1a6-1447a2a40c38"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="e7d6ef43-8f06-4d2f-bdb3-7cbaedde3c77"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="b99c2781-963b-4dae-a9d9-8f2f015271be"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -8366,7 +8642,9 @@
  Guid="64b3d212-c574-4112-9b11-04f11947d63c"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="ae3fba50-1e90-477e-92d7-34843dc52726"
->DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="ebfd6caa-1989-43ea-976a-43d3a2429b62"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -9133,7 +9411,19 @@
  Guid="e027671e-8875-455a-b785-69257b95a23b"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="893a4254-fdca-499e-8cd9-5d7565b04741"
->DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="9eaeeafb-f238-462d-ab5d-a83e71467b17"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="ae03667a-54cb-4bc8-bc21-ac788eb9312b"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="fa9a95ce-afd1-4f45-836d-aa33b5c312aa"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -9175,7 +9465,9 @@
  Guid="f5f6bcd5-0e70-42bf-9af6-bd5bb775e604"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="1d4d2adb-f3a7-419f-af76-33fca3c81c4e"
->DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="f7ad4932-7205-45d6-bd45-88144bd87998"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -9944,7 +10236,19 @@
  Guid="a872561b-85f9-4691-ac5d-a4dcb04937e3"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="5d495396-e011-46b8-a533-33fe0d41e76b"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="8ada98f9-0999-4c83-96eb-de2951c5dc1d"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="792e0983-519c-4be2-94c8-b3d83274c2b7"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="6b0eb75b-2c02-41ea-b82f-6ef6d0c6ecf4"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="6d100fa0-3110-4aa2-a5db-27110de53441"
@@ -9981,7 +10285,9 @@
 <Actions>
 <Action
  Guid="4852940e-873d-4b68-8376-2409345c4b38"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="de9ade5c-a86f-4017-86ea-e01dbf716375"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="9b9e1c62-5956-4088-a062-439b786e5404"
@@ -10738,7 +11044,19 @@
  Guid="d1ab0892-538d-48fc-8cb2-a935db3535fe"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="ba538e31-8e83-4b4f-b791-ada4128935dd"
->DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="1c2b2d72-1f52-4749-a2d2-7ae12ca5398b"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="be0a22b1-58c8-4d5b-9a2d-4d7087da942c"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="09e973ba-1f20-43de-ab88-33d6559a28ae"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -10780,7 +11098,9 @@
  Guid="a1dada00-ba80-4d4c-aa01-fd206f72b47a"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="4ecdcbf9-e56d-4903-929b-6c7c062afcba"
->DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="216d0f39-0e79-4841-96c8-c319702bef00"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -11537,7 +11857,19 @@
  Guid="747551d2-e082-4d73-b85e-6982df0c0e43"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="eeb0fff4-8abf-474b-bdce-b309beab6cef"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="30d69fcb-ded7-4556-bad1-786c90d82c5c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="feb5720f-2fba-4ac0-b005-7e2bee312220"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="167fe76c-3bdc-4702-bf3b-650913718b5f"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="3143fc1c-d90a-4967-afa9-824ee6559cac"
@@ -11571,7 +11903,9 @@
 <Actions>
 <Action
  Guid="b7701858-ab55-4216-8b0b-d071c3069ba5"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="cd0a9e4d-1c75-492f-aa0c-0eb0875a3755"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="8b7f0771-24ca-42be-a9f7-81b1fb9b1b96"
@@ -12292,7 +12626,19 @@
  Guid="b1164b4c-2d98-4bac-a2ec-3988c3912465"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="5843d52d-61d9-4c81-b47a-78cecb2de36c"
->DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="469b5cb4-f9b8-449a-b1f9-a866b7d15ca9"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="642d4819-b816-4325-a41e-5a4faf9f3ba4"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="abcf7ecc-46b0-4995-8b78-15277a545842"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -12334,7 +12680,9 @@
  Guid="bd14da25-55e3-4605-a04f-a3b6314d36c4"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="bcb3ac54-2bf0-480c-82f7-944501ea05ac"
->DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="6c3f22f7-2b93-45a0-abe1-94dbb6d09877"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -13101,7 +13449,19 @@
  Guid="961de197-71c1-4b8f-9507-9545dde655a2"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="2e63bfc2-7b19-443f-904b-a9031dab6ed2"
->DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="417231f0-dc61-4053-aa3f-5f9bc747d66c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="35b1f567-847b-4012-966d-8a16687d8fe2"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="9dfec736-5a05-498c-9dcb-bd1a6f6dcd87"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -13143,7 +13503,9 @@
  Guid="97473e92-8761-43fe-9a03-29ff9d4d3ee5"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="6ea102ae-6d58-4032-906d-2f89ce5e33de"
->DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="3a7b7ad3-55b8-43da-9ac9-234fadcc56f9"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -13910,7 +14272,19 @@
  Guid="454ced84-d14b-4f46-bcf5-fee573a455ce"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="c5a3e682-7ab4-4f28-9fde-e64f703a2f3d"
->DMI.MasterDMI().In_ContinueShuntingOnDeskClosureRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_ContinueShuntingOnDeskClosureRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="b53e715a-b1ff-47a1-8208-66bd09be7470"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="c6b01082-cb86-4042-8977-471cf7ec40c2"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="14091cab-66ad-46d2-a874-954978e6b96d"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -13952,7 +14326,9 @@
  Guid="a52392d0-8f72-4c9c-8336-bfb046da27c0"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="fe6402c1-e935-4338-8c5f-a73d1846f826"
->DMI.MasterDMI().In_ContinueShuntingOnDeskClosureRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_ContinueShuntingOnDeskClosureRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="aebd2b9f-83cc-4101-82f6-e67a2ff53900"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -14739,7 +15115,19 @@
  Guid="97bf9e47-0646-459e-94b4-2c3456d23abe"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="2c2dc783-1c1f-4f26-a8aa-4b4592aeabe1"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="dec66baa-0501-4ea7-a6a5-e57ed5cd9032"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="ea203cda-2ac5-4c03-937b-d27e3b56bb9a"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="1845611c-1b4d-4ac9-ac8b-2c0349d4749c"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -14786,7 +15174,9 @@
  Guid="747e3505-5327-461d-99fb-709a1d01ca44"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="807e4676-712f-4aca-b57f-aac1e6fb4a87"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="8bb29c78-bd4c-4626-a16d-391beb6ff4e6"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -15643,7 +16033,19 @@
  Guid="8b194586-d682-425e-a539-50a9fd220c21"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="16b448ec-f90d-41f8-a567-f83648b3c81b"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="9111dfbe-d356-4c68-b44e-71ae0a105583"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="bae7e2a6-345f-4c43-831d-18b9a63e4b37"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="c8031126-b924-400c-a4cc-bf8b18c95a72"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="61d9efb5-106b-4925-b1ba-d7c80662ab5c"
@@ -15687,7 +16089,9 @@
 <Actions>
 <Action
  Guid="6448ae4e-2e9c-45cd-9fd8-922f0948270f"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="b9a78321-195a-463e-9724-1c29a848c60f"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="732db1d9-a29d-4b52-a219-9220c7f0f7ec"
@@ -16528,7 +16932,19 @@
  Guid="5a6ad5c8-b892-41c0-9fc5-c64deb584991"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="411bfaa1-235f-4ea2-a7e4-bbadad537a33"
->DMI.MasterDMI().In_ExitOfShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_ExitOfShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="bce594bd-3f78-4227-8486-5e1a767b619c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="d6d1d74b-0164-4ecb-829b-9c3ba5bf4642"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="975a96c6-f495-48fc-9fc5-599f2643080e"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -16570,7 +16986,9 @@
  Guid="75c530ff-ef82-46ef-aad9-4f917121597e"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="729def53-49f1-47e4-98bd-7d0b5a35d0b9"
->DMI.MasterDMI().In_ExitOfShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_ExitOfShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="e2883b3f-2aa7-4108-92a6-e6f65855b153"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -17337,7 +17755,19 @@
  Guid="47da4ecf-9287-42f7-938f-d729eb998479"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="5fdd44c6-f529-4f93-b049-21d2f734ffa1"
->DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="2574bc96-9fb2-464f-9103-36ee33047c3d"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="cd9b459b-91e7-4042-9d40-51524c7c98cc"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="dbd38047-93ee-4f6d-a76e-27e9047ad416"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -17379,7 +17809,9 @@
  Guid="728e3587-1329-42d4-b3fb-a39cbb43123c"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="7b1da4a4-0c21-4700-be32-365f3fcc6ea0"
->DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="84b9c40b-fbfd-490b-a964-a241a6823e86"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -18152,7 +18584,19 @@
  Guid="759307b1-960a-4fd6-a2df-44afe6099121"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="232e3aca-b940-4e9e-bbe3-4374970e9def"
->DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="4211d76f-0302-48ed-9011-e02ad64d4c87"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="8d5a9e18-3f78-40f5-8b3c-5386a69930b3"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="119e51fe-3249-4cc6-90f8-56784fd90571"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -18195,7 +18639,9 @@
  Guid="d416b385-8aee-4085-ac2c-1ae7bb3d2f6c"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="eba39a68-3160-413b-b9da-6209ef01ce18"
->DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="75711872-eb5f-4af7-a92f-3b4f20a26456"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -18978,7 +19424,19 @@
  Guid="26084ed9-e969-45ab-8a64-e742bf49e660"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="8412a53c-2380-4ca6-8cb3-331baea09acf"
->DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="6873bc62-2cdc-4fca-801e-6fce7f796e08"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="e5fe0b8e-51a0-4cca-97e6-a6120998db0e"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="bf1cea95-a83e-4aa9-9be1-b55d2027184f"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -19021,7 +19479,9 @@
  Guid="b74cd4ff-8dcf-4eb2-acbb-adfc58bb8e47"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="6dd81b2c-534a-4d61-9930-4792258aa8b1"
->DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="cca40bcb-28f3-4cb7-81b0-15b60d35362b"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -19840,7 +20300,19 @@
  Guid="d1fcef9d-1f4f-45db-819a-4bc89e111686"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="629b7598-0416-4aec-95f1-a9750044ec42"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="5f4baff5-8620-41f1-8ff0-a09cb62db1de"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="d9bcadec-689c-43d8-a2e6-956d211d2f48"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="280ef3f4-b8ab-4438-9df3-6ae54f8460b6"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -19892,7 +20364,9 @@
  Guid="2b0f5808-45c9-4aa5-9506-3479280e7670"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="14e274c3-ae46-4599-a752-1b30accb7920"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="83cc368d-c59d-4d6f-b6bf-15b83bc16176"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -20779,7 +21253,19 @@
  Guid="1866f745-e878-4b4a-84b9-31802a3e55ff"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="5e128ac2-f54b-4f2b-ae00-0dcff5bd7018"
->DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="bdef9347-17d2-4964-98dd-24735041ab1c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="b729c7bd-0849-4e32-9317-179af20f6692"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="dda1ae70-8212-4cac-ba53-ddc3b1f7a9be"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -20821,7 +21307,9 @@
  Guid="85060b4d-3a20-43f4-a2d8-931647fba9bc"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="613c3f99-e418-4b2f-8883-5495355fd906"
->DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="fe41f90c-1c1a-4be3-b5b9-626508928dc2"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -21588,7 +22076,19 @@
  Guid="af3f6fb0-f9ab-4128-8457-25516c6705af"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="3389465f-222f-4dd8-b552-fd4624810513"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="fc53a900-0a95-4a5a-acdc-562c96ae908c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="d83f95c0-f319-47d6-8bc6-400a00876f7f"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="cd8359db-df90-4b7a-8271-66906994603e"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -21630,7 +22130,9 @@
  Guid="2ffea8c5-cfe9-40e5-9fec-1bcb187d78c2"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="b1604fd9-c7fc-43b8-a07a-083f7dc1cf7c"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="0912a0c1-2eef-4a94-bcaf-3c9cda4c8edf"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -22397,7 +22899,19 @@
  Guid="d5f5c086-b809-4b79-9944-651ebd37f01c"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="30dbca9e-72ad-4fb1-8dcd-ee21c3990503"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="44904c28-714e-4ffa-9a45-8cf6cb4f1c55"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="2267e714-5be2-4279-83e6-937e9f1b5a21"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="ad56c2ad-2ef0-4d43-b94a-ea2fd5a5d95f"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -22439,7 +22953,9 @@
  Guid="c6441a4d-df05-48ca-b9b5-2ef96ad82820"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="121f66ed-5072-4360-9fa7-c1c3213216c0"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="a699f7d2-c96d-4ee8-b25d-9bf7c5a68420"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -23196,7 +23712,19 @@
  Guid="cc434190-b6a7-4134-8627-61a5257b41fe"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="d9265269-5ff3-4d78-97ae-5ff7b3e38b46"
->Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+ Guid="c59b24d2-7c55-483b-bc78-6d085f1da493"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="deb4f912-52df-4d2a-901b-9292ac45f579"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="4bd36af4-d09f-41ce-8aab-4a739c8c0b2c"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="713e2d81-f3d2-474c-adf1-d8ad949ad459"
@@ -23230,7 +23758,9 @@
 <Actions>
 <Action
  Guid="c3d5dca9-b8d1-421c-896e-0ce205aa5766"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="9d85aaeb-37e3-4e5c-864d-4f2423aa4c8b"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="dceec359-56b5-4e64-a998-8fcf9442381e"
@@ -23951,7 +24481,19 @@
  Guid="0414a53c-337c-4bd0-a33c-ed27b1cf4517"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="1a6c9b79-4d3f-49b7-a537-8b5d548bb20c"
->DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="dd797bb7-dd81-414c-813c-98620eaf84fc"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="bc6df73e-549b-4203-aedc-477d7a4ec0aa"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="1588f303-3477-4a81-bde4-96dc7ef8ec9e"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -23993,7 +24535,9 @@
  Guid="cb0e5e66-b6e5-4748-a9e2-4fceecf03497"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="ed4e3c93-fde8-4d4a-b1f3-fc8ed340dbdd"
->DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="5c8c0324-ca3f-44bb-a219-334ea41ab9df"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -24764,7 +25308,19 @@
  Guid="f5f7732e-3026-4077-96b4-e2ec0f5bcfe5"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="dcea6a47-6fde-4df1-8c57-fce21f5ce770"
->DMI.MasterDMI().In_TrackAheadFree.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_TrackAheadFree.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="6f5667b1-2e6f-41fa-bcdf-a30b629aec34"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="cc999e56-00e3-4db3-9dc8-120573d342e2"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="8049d759-158d-4a47-b394-e85bc90beb31"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -24807,7 +25363,9 @@
  Guid="10c73228-1eef-42f9-a2dc-187c6c4fc156"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="35a9f9f9-9eae-4a8b-96b6-9bb0902346bb"
->DMI.MasterDMI().In_TrackAheadFree.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_TrackAheadFree.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="1fb6b64d-cb6e-45b0-9cb8-1b76fc68e92c"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -25560,7 +26118,19 @@
  Guid="95812fdd-3b20-4c7f-b2de-e6482aeb14de"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="d4765d06-0c5e-44ed-a0db-637a35b7dad3"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
+ Guid="b8097522-60fa-4192-87c9-1b2b3196bf3b"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="479b3a57-f24c-4771-aa5c-7219a22c4ae3"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="85cd5f0b-1eed-4419-bc16-0291b12665d5"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="d6decd08-20ca-4ae1-9bb3-ecd7e6c775f3"
@@ -25594,7 +26164,9 @@
 <Actions>
 <Action
  Guid="b800f496-1246-4abd-941d-83f8fdcd79de"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="7f3dc532-01a2-43c4-ad43-a2b1d9985566"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="5ccd0812-30d4-454e-ada0-14b3e40a29f6"
@@ -26323,7 +26895,19 @@
  Guid="e26dc9b3-1053-4431-93c0-926891420d64"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="8f1d1c08-37c3-42de-9cc3-80331c84d7f6"
->DMI.MasterDMI().In_TrainIntegrityConfirmation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_TrainIntegrityConfirmation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="5d9a313b-1d4a-4168-8b49-f1f32fd5b7cf"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="de6471db-f1b4-4c97-8b23-20ddc440d658"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="c7882958-ef6a-46e8-a898-ec6e32a14e20"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -26365,7 +26949,9 @@
  Guid="44b74afa-908d-434b-815b-aae08ad32d7f"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="bfa8e8ed-0c4a-482f-9651-c27313f8a94b"
->DMI.MasterDMI().In_TrainIntegrityConfirmation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_TrainIntegrityConfirmation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="8597451d-bd7a-4907-b201-91e9066ad743"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -27134,7 +27720,19 @@
  Guid="152baf04-73a7-42c9-8021-a0b180fb7ecc"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="e707415d-49d6-4c74-8c63-c14143631ee6"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
+ Guid="c862fcb6-9aa8-438e-9976-db26f9fdbcd0"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="2e7bf73b-6ea0-4306-ae69-d91ab1a49374"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="30b1aefe-0b58-4f6e-b128-a39bbb31523a"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="42877f80-8c79-47f9-9814-598e16daea22"
@@ -27173,7 +27771,9 @@
 <Actions>
 <Action
  Guid="ceb3620d-9777-4800-bcb6-6b8b3112802e"
->Kernel.Mode &lt;- Default.Mode.LS</Action></Actions>
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
+ Guid="15ca97aa-0c66-416c-8c9a-08044be51d15"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="2ca0adb5-adab-4009-9b5e-acc5faadf535"
@@ -27974,7 +28574,19 @@
  Guid="c35419b5-8c28-44df-9308-0dcebb8a41f8"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="447d934d-dde7-4ea6-826d-c47e6ba8cf80"
->DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="b8330e07-2684-4039-82cd-a575b49f82ea"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="8223df28-0dc1-4508-ac55-3a2c4fa70588"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="3be48e3b-9dff-4e06-bf0a-9452af473609"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28019,7 +28631,9 @@
  Guid="a2776b5c-3017-4f16-bbd3-fd111f05d39b"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="d708d76f-a433-49b3-91cb-0e39ccb42530"
->DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="6046aec4-adce-41d5-85df-8ff2cf960839"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28822,7 +29436,19 @@
  Guid="f76517a2-02c5-4f5a-b280-db19e9a79bfb"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="e267627d-e6c5-4c75-a5a6-6274b6571207"
->DMI.MasterDMI().Out_AcceptedEmergencyStops.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_AcceptedEmergencyStops.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="36442f7b-3a27-4e8f-b738-c4c926ac106d"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="0986d4b9-4b49-435b-b531-34d7a47155ea"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="677bce0c-c124-4300-b492-a1818494fb92"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28864,7 +29490,9 @@
  Guid="06a18c2c-a759-44ee-8eb9-b1d12bbe07e0"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="3f48f6da-9547-4230-8ffd-87102f561278"
->DMI.MasterDMI().Out_AcceptedEmergencyStops.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_AcceptedEmergencyStops.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="1ea3654d-28b1-4baf-a1b5-122790359a20"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -29631,7 +30259,19 @@
  Guid="1ffb2505-47db-4158-857f-32999a94505f"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="5d66faf6-9922-4b8c-9946-a4a5035d532a"
->DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="b861e960-207e-4ea6-845e-a58a199881bc"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="778a7bee-881c-48c1-bdb0-79e4b62dc735"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="96d427c4-2649-45ff-b40b-7f1aa6c51d66"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -29673,7 +30313,9 @@
  Guid="b24e63fe-7f70-4f7e-aed0-30b0a4e2be7d"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="d494692e-fdc1-4329-b819-d5010219420c"
->DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="7914e70e-842f-4c47-9d50-901a78a252b7"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -30440,7 +31082,19 @@
  Guid="f17dfdc2-627b-4416-a8dc-de02411440f0"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="d6077c89-0dbd-421e-b3e3-2383924f4ec7"
->DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="6b20e755-2216-471f-a681-f3a2809db9a0"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="db223045-c5cb-4e8b-86ba-55f78467d612"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="c8a6090d-d840-46d1-abd7-851c4727605e"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -30482,7 +31136,9 @@
  Guid="94d6deca-2160-4824-913e-694ba7c154f7"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="14b0cc3a-6a43-4af4-b102-c8dbae4c62d9"
->DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="6f37a0de-f643-482b-994f-8512d0b0d7d0"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -31249,7 +31905,19 @@
  Guid="73997bd2-6b63-4eff-af20-924500bd6b6c"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="af8ac6b9-42f6-470b-83ee-82f1cfdbdd54"
->DMI.MasterDMI().Out_BrakeReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_BrakeReason.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="a13505a5-399c-4029-a7b9-0610b5c8982a"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="f339d2a9-882c-4d1b-ae2e-e2e319c96d60"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="38a36c87-ccd9-4e12-b393-f40ce48e6986"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -31291,7 +31959,9 @@
  Guid="33f931f6-984a-4c9f-bc5f-87bf600a75b7"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="6d612dbb-ab41-4aa8-97b8-2abe515752fa"
->DMI.MasterDMI().Out_BrakeReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_BrakeReason.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="592471f1-b476-4350-b3d5-dbf0b227fa35"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -32058,7 +32728,19 @@
  Guid="1c95d14b-4fdd-4851-9762-b6b2ee331007"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="0da0b6d1-2fba-47b4-9595-a0e50d4b53e7"
->DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="a708c8aa-4186-4504-8185-12e68a379a19"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="f14b8aba-27b0-445c-86ad-1af062700980"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="17023664-fbd8-487c-88dc-7060bce76fe8"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -32100,7 +32782,9 @@
  Guid="8a9909ea-02de-4532-bcc8-c7cda22d5bd0"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="76a2e6f5-8ea7-4ad2-8bed-22fa51cfe731"
->DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="2c7498d0-0251-44a7-a2ac-155c74f0fadc"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -32867,7 +33551,19 @@
  Guid="80c4f9e4-8bdc-4675-ba16-e349e15187ca"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="4322e51b-2441-4b24-8ff5-875f21082367"
->DMI.MasterDMI().Out_DriverId.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_DriverId.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="a5472cd7-2d8a-4b31-b0e0-f4c48ea783bb"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="41d82916-81df-4a21-ab0c-bac36cfe3983"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="ffe0da90-6515-4dc9-b54f-7b0454201d7a"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -32909,7 +33605,9 @@
  Guid="8d077220-ef02-44ca-a565-421ef0dbecba"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="1a83ee62-b7be-41bd-bea4-723bd2bdc5de"
->DMI.MasterDMI().Out_DriverId.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_DriverId.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="185b666f-8516-4013-8cd6-d6bb87ef8962"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -33720,7 +34418,19 @@
             }, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY
         ]
     }
-]</Action></Actions>
+]</Action><Action
+ Guid="20e20a93-05d2-44c5-9456-ee60210e9776"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="671fc491-3251-41b5-94fa-f032377515a8"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="356dc03c-f8b3-42c8-ae3e-584ca30309bb"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -33762,7 +34472,11 @@
  Guid="69754cdf-b391-4100-b700-6343122fe028"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="b2dd33f0-f2a6-44a2-b97a-f4fb8bff06cf"
->DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="8f557492-0062-4fbf-be60-69a2a25eea7f"
+>Kernel.MA.MA &lt;- EMPTY</Action><Action
+ Guid="53a3f34a-4ebe-4f88-b54d-1d13c2a04650"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -34529,7 +35243,19 @@
  Guid="5fec0444-6577-42ae-a61a-787c8792ff95"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="263ea8c2-b244-41d9-8f42-757a959b02df"
->DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="0ce83c84-60dd-42ac-8f34-22bc6eb5ceda"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="cff5cf03-71d4-42f4-bba3-2f3a04145b30"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="30b1d51f-59e0-4a8f-8a88-77e6f793a88a"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -34571,7 +35297,9 @@
  Guid="4318c9ff-ab57-400f-8d24-58c826fe8468"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="bd80e72d-296d-405e-b2d7-500aeda84fa6"
->DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="d512ddec-04f7-4644-8eff-1ea71930b15e"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -35338,7 +36066,19 @@
  Guid="a203d876-6838-4be5-83bf-daf5542d5a9d"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="4e34d0aa-26b5-43eb-8ab6-b191af309a52"
->DMI.MasterDMI().Out_FirstTargetAtZeroSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_FirstTargetAtZeroSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="2b595ae1-1b80-437b-8ea9-2419720d4b79"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="1561b0b4-6fee-449c-8d0e-8131fe1ba67b"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="7b6e065e-b991-45ac-b350-ff52ec2eae5f"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -35380,7 +36120,9 @@
  Guid="3611983e-2d49-401c-9284-251c777d6076"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="c0a125b0-85ee-4829-8108-62c0c988b957"
->DMI.MasterDMI().Out_FirstTargetAtZeroSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_FirstTargetAtZeroSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="5f988a8e-aa3a-4994-85cd-1b23308d4ce4"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -36147,7 +36889,19 @@
  Guid="77113a71-84af-46ed-aef6-28902981fd57"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="cfc578f2-0adb-454e-811e-d48abf7d0f71"
->DMI.MasterDMI().Out_FixedTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_FixedTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="3461a2f7-7e15-4800-801a-af9ec5a03b08"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="2a7c2d7c-6f06-4de3-a802-dd44e5f15e81"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="bb9eb0d8-2276-4890-89b2-f61aa11c9ca7"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -36189,7 +36943,9 @@
  Guid="7552b165-9693-46b4-9e7d-e231756f3458"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="c1429da1-5df5-4dcf-8abf-87c68688aaed"
->DMI.MasterDMI().Out_FixedTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_FixedTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="41bb61bd-abe5-4683-bb12-d7057fd325c8"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -36744,7 +37500,9 @@
 <Actions>
 <Action
  Guid="a3abf01a-0fcf-4dfd-8d7e-ab7d409620b6"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action></Actions>
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
+ Guid="b38d15e6-215e-47c7-a658-1cad6a60e869"
+>DMI.MasterDMI().Out_GeographicalPosition.DisplayRequestedByDriver &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -36914,7 +37672,19 @@
  Guid="36b4ce83-6997-452a-aec2-d62b58314f6a"
 >Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="d801d12d-4e26-402c-afb8-988439a5455e"
->DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="f1c76bbf-8ac7-4ea2-8896-6d0a18b33026"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="f8c9c97d-7083-4be9-9e64-0bc3299b7e79"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="c424de17-ff6d-47bd-a2fa-e9a300723c98"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -36942,7 +37712,9 @@
  Guid="5e2217a2-eb3e-4ed8-be62-5ca98113f1ce"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="30a0e8d3-267b-4bb8-945e-8ce51b934bc1"
->DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="73d07819-4be3-4324-ba42-b01f2d6b3997"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -37541,7 +38313,19 @@
  Guid="a6742a8a-3e73-4509-b3be-dc736d2e842d"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="3dd3f63a-da02-4592-ae43-a756ba4c1581"
->DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="17a91353-3027-4929-a5e9-7e2e768a28a7"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="568a9297-faad-428e-9a08-9018484c02f1"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="87486f11-b9d4-4729-a916-b345614ef5c3"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -37583,7 +38367,9 @@
  Guid="9d7efcfb-8694-45d2-81e8-0b9bc0c68696"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="625bab36-0e7f-4d63-9c83-ce59bf657236"
->DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="9004c644-423a-4f38-908f-b6a422919241"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -38350,7 +39136,19 @@
  Guid="9725e38e-b887-44a3-a054-8be3ec761b7d"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="879aa2f5-9469-4390-a585-f1957fad9eca"
->DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="b28482cf-294d-4288-bba3-2b76870646f2"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="255c619e-bb7b-4eb5-8ad6-1bbbef894b4b"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="e5cc91ca-377b-4f2c-af99-b48c170d38a4"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -38392,7 +39190,9 @@
  Guid="2fa75e19-8462-4c61-b137-0e633204dce5"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="317a647b-b175-4f77-923b-2a7e5294d91d"
->DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="c89262ce-8e84-4690-bd42-3d930606cf89"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -39159,7 +39959,19 @@
  Guid="91e30f57-9f4c-461c-9c87-9a66af7d6479"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="c29c7972-d290-4fdb-8cc4-14325545698e"
->DMI.MasterDMI().Out_LevelTransitionAnnouncement.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_LevelTransitionAnnouncement.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="bae5d76d-6839-4706-908f-b0d949e2aa9f"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="468768f9-1fa9-450d-b968-7dff059d069f"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="ba5f7946-c208-4c37-ad46-f2e38ad6d8d4"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -39201,7 +40013,9 @@
  Guid="8eeebab6-9b07-48a9-8cb7-5674c713a26f"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="dd6db097-662b-4c9e-9d80-8a5d971745ba"
->DMI.MasterDMI().Out_LevelTransitionAnnouncement.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_LevelTransitionAnnouncement.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="c610559a-67c5-4d56-8b03-e474578e688f"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -39968,7 +40782,19 @@
  Guid="8e021157-41c2-4a5c-b7cc-c34ed2969298"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="6e21b8c5-519d-475f-86eb-1c366dea56dd"
->DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="9a30ede7-b554-4f57-b80b-3f331ae04b7c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="b41fc635-fc91-47b4-9648-a3df59c9360b"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="7d43fd50-0d5c-47e0-9df9-21b4e8e6ee21"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -40010,7 +40836,9 @@
  Guid="b0ca3508-6e3d-4670-91e2-7110773f3cd4"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="91adcfbb-74b2-4366-859c-c9f66f3bd1c1"
->DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="7dd3755f-59c8-4eb7-97d2-fad737997c2e"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -40777,7 +41605,19 @@
  Guid="0918ce86-e3ac-4f1c-8618-730091a7e302"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="7c20481c-8891-4113-83ba-7e1deaf1047a"
->DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="1f5aab85-b152-4187-a72d-11fc92b1dea4"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="44c26ea9-1f86-44d8-ad6a-6b613b840799"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="f6239258-2d55-49b5-8f88-13341b9df7fc"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -40819,7 +41659,9 @@
  Guid="d6f55d0d-b5ca-408f-a5c2-1197a0a2fc61"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="268cd20e-5db0-45f5-900c-46f0bda2ebbb"
->DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="aa69a314-31dd-46e4-ab25-6fbbd62a43ed"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -41586,7 +42428,19 @@
  Guid="98a2e899-b0e6-4cf8-9340-74d7d763cf89"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="41564c9b-9744-4195-b8a4-2df183f4b2cd"
->DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- False</Action><Action
+ Guid="692a00f7-f7fd-49d6-9839-ba1883221325"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="2fdae1b2-a9c5-4ac8-a225-635b87fae4bb"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="becc84d2-3a31-4b41-8e42-4cf8539bdd78"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -41628,7 +42482,9 @@
  Guid="2809b23c-3d30-4694-a010-b58e341e1d82"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="c52c30f1-689d-4418-8538-72508b3d7b9f"
->DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="ed9ad481-9b9f-4520-b816-fd43343d97e3"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -42395,7 +43251,19 @@
  Guid="5f0dd701-bfee-4a4f-ba31-744937da0418"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="2b1744a5-ae99-40eb-a2c8-e9595cd7f95b"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="728cb573-59c5-415d-8355-108b95e45c15"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="dbfa1b91-45f4-4c61-8e3d-f40f163844fb"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="3c7f27ca-0f47-4391-9242-8b744ba2c005"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -42437,7 +43305,9 @@
  Guid="6af87894-63c3-43c2-95d7-d5e7925c4a4d"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="81cb91c7-5311-4fe1-a542-ec3c63e25e08"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="f6f92662-b7ac-487c-862f-5e6d21ec3196"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -42992,7 +43862,9 @@
 <Actions>
 <Action
  Guid="2ff6c691-871e-49bf-bbc5-89c1b1e1b1ac"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action></Actions>
+>DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action><Action
+ Guid="810060d9-50be-4c96-a473-26ba49f2b701"
+>DMI.MasterDMI().Out_OperatedSystemVersion.DisplayRequestedByDriver &lt;- True</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -43204,7 +44076,19 @@
  Guid="8ee66bd1-1d36-4d12-b2bd-3c107ef316da"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="cf04b7db-1e82-461f-9010-97e5409a2a90"
->DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="694ea278-1d45-44fd-941c-75b849ca0071"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="2c7d7bd3-2494-40b5-8dd6-a1d85ca1bb9a"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="0c61e916-c4ab-475d-b0c0-0f0765b8ee6f"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -43246,7 +44130,9 @@
  Guid="3b8a70f3-25ae-4667-8ec2-8610afa265b2"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="fa80f97a-eb73-480d-a1cc-92b55bb06810"
->DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="667e0a31-00f2-41ef-9216-238dbcbf065a"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -44013,7 +44899,19 @@
  Guid="144f43cb-a6b4-430c-8824-17cc20217f46"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="d04fe0aa-07d9-40b9-90a6-2c26b2435661"
->DMI.MasterDMI().Out_OverrideStatus.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_OverrideStatus.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="cd6e8252-6ec1-4c97-b183-c8871e248b24"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="e8c2bf49-2e51-4148-b169-6cafaa7beb91"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="b2acdfc9-d189-452b-8c32-a1cdac3e15c8"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -44055,7 +44953,9 @@
  Guid="bb197310-7dc0-444c-b625-eb8601a43ba8"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="0ac214cf-1699-4f03-b5ad-17ea1f3980b3"
->DMI.MasterDMI().Out_OverrideStatus.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_OverrideStatus.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="c849e163-3877-4e80-a36d-3b1317cf6fff"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -44840,7 +45740,19 @@
  Guid="a3b76d80-47d9-498c-80d2-dc11fbf4eeb9"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="5627ca23-289d-429b-a896-dc021a3c8aaa"
->DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="19a294ec-9cd3-4d59-8104-3fb1cf73661c"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="dae490ea-1ff8-43cc-b622-5750531c47ed"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="ddf080ee-8864-4b04-bcfe-0368038f754d"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -44882,7 +45794,9 @@
  Guid="5c9f6e29-2b21-49ad-8348-e80208835786"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="2ec97cf4-cbca-419a-84ae-bd223b4e6399"
->DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="64b6206a-8201-4bbe-a117-73efc4f37888"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -45651,7 +46565,19 @@
  Guid="510fcccf-497d-48ac-8183-8d9ce142453a"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="3fad2054-0639-41ae-97a6-fd353c18896c"
->DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="22fe8a8e-0875-4de9-bc64-2335a6764e5d"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="08066900-94e7-41ad-a009-e2db71541141"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="93147551-eaae-42bd-929a-d279ebda5e2b"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -45693,7 +46619,9 @@
  Guid="02ebd656-9358-443f-88ee-888d510bea72"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="6ec7ac25-8e72-4431-b610-90a14f4feb38"
->DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="ec3829fa-56f7-4611-9f38-0e4cd2bbe44c"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -46458,9 +47386,21 @@
  Guid="ac265b62-24e9-4d2f-abc2-659363678214"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="6d321ec9-38b6-4726-affe-fc33ed6657f0"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="68adf27e-a85c-4b69-ba20-fbf891fb40c7"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="dd86858c-2121-44ff-a084-8654a8ed2de5"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="e8342340-1303-492b-8d02-110cf3f36570"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="e6ca9fc4-a4dd-40c6-b43a-0c8f6de27fc0"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -46502,7 +47442,9 @@
  Guid="3d795705-a6de-477a-8748-a0e3e125b94f"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="22ee352d-f236-4904-b871-3e2b7bb0929e"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="5af11c86-f137-465d-bec0-8d8c4484fd65"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -47269,7 +48211,19 @@
  Guid="734eda9b-0179-4bcc-b286-d5a23c5b7e95"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="340ed680-f9b9-4d05-8cbb-d38e07512f35"
->DMI.MasterDMI().Out_RBCContactInformation.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_RBCContactInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="ff5e51d3-0d30-4fee-9db6-e0c8ad4f03dc"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="16c29148-e2a1-43d8-b89a-0be78920aab3"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="9282ff0f-6a5c-4900-82d7-385550e37e5a"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -47311,7 +48265,9 @@
  Guid="7865050d-8872-4656-bbfb-7cb98851850a"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="c6156c78-e62c-40be-b482-d0daa2aeca3c"
->DMI.MasterDMI().Out_RBCContactInformation.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_RBCContactInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="86edd8c9-64d7-4060-90ba-68002f0dbc8c"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -48078,7 +49034,19 @@
  Guid="6464e252-a905-4bff-ba9c-4d9dd1e35b55"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="a2cfeda9-5338-4412-a629-48d3fe56a821"
->DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="9da35383-8069-49fa-9ebc-a571a54ba46e"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="2cdef98d-afa1-45d8-9109-b08f4dd5ff1c"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="8e4de96a-788e-427c-8c4d-fded86262da6"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -48120,7 +49088,9 @@
  Guid="3a82b4d3-9b4d-4fe2-915b-d3e0a0480575"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="d5478c09-ac92-4a7c-bee2-3694e8ea1841"
->DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="4a1f09a2-aeab-464d-b511-e4f385cbb085"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -48887,7 +49857,19 @@
  Guid="ea39a3ae-2dc9-44b9-aada-05d8dc7aaea2"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="4288c618-7e00-40b5-a7a3-cd7e7c117831"
->DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="bbe344df-8e26-402f-9d64-dda9909a9f2e"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="c36a09b2-f2eb-44c1-962c-1908c68609d6"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="ccb65465-6836-459e-977a-be10b41e99e3"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -48929,7 +49911,9 @@
  Guid="ecf8956f-f4b2-429a-8842-1ba90ab37ca6"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="8920fed5-efa9-43fb-b980-a855535f4593"
->DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="2f3e75fc-fcac-41de-821c-52222e1b188b"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -49696,7 +50680,19 @@
  Guid="98b5d093-0877-40cb-92e5-ec5fd37e425e"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="ecffad60-6a79-4869-b447-07aeef92d436"
->DMI.MasterDMI().Out_RouteUnsuitabilities.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_RouteUnsuitabilities.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="ad204125-eba4-4879-a714-266c72dae3f7"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="edafafbd-cd67-4b6e-a41f-b6319444e585"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="c4136ef0-5247-4a51-9455-d316388ef7b2"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -49738,7 +50734,9 @@
  Guid="faf9a8f4-a58f-4a40-b080-867bee2cfcf6"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="583a34cf-f945-4061-b49e-56f811f91023"
->DMI.MasterDMI().Out_RouteUnsuitabilities.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_RouteUnsuitabilities.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="2620a715-5d4a-4b7a-8667-0aa15434d179"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -50505,7 +51503,19 @@
  Guid="f56b732c-95ef-4674-9c13-61840a17c692"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="5fc005e0-49d4-45b7-925e-720f0bdc1798"
->DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="1dfb4c88-8677-4d17-847b-bb9710ae4a84"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="8bfa7d8d-b84c-490c-87a4-bc16ad38efa7"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="29de9a70-abc7-48f2-85e6-21b833d14405"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -50547,7 +51557,9 @@
  Guid="31ca8dcd-d12c-4338-a667-97c07fcfc7fc"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="d42c0742-89b6-4dd4-aa33-accd135041de"
->DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="96cca5fa-9726-4e5d-9775-0781e08aebfe"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -51314,7 +52326,19 @@
  Guid="3c29a6c2-4ff5-4544-b6ee-f31bbbe5b7be"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="03251bc5-4079-4c12-b49e-7288994c6b07"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="bb12f9c6-c8a0-48fd-90eb-b627e94f71a3"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="f7f7e2f1-9926-4e63-9935-c525255bda7d"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="f2df61bb-99c4-4d59-8c68-218ee38e255a"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -51356,7 +52380,9 @@
  Guid="287e342d-e41f-4e81-bf9e-c24644e64263"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="f6e4ffce-efde-413b-ac18-6fb2b6b31d80"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="f24c8277-d47a-4d98-9a69-4badab26d0a9"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -52121,9 +53147,21 @@
  Guid="a820ae2a-6604-46f0-a45f-78bc6fa94b01"
 >Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="40ab8709-99de-479a-acb0-b9bfbaf6329c"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="6e289749-cce1-404f-bf92-96d5d1c99515"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="f89aa59a-5f7b-49d6-b0de-84e58021867b"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="7ffdfa14-3eff-4d5b-8ecb-9fcad832cb19"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="b4d33b35-7238-46bd-bd06-43827c6dfa13"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -52165,7 +53203,9 @@
  Guid="d6d47db5-bd4d-41e7-9f49-4e9d9e8beb54"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="e93c61b3-3ddb-4754-81f7-09387019e297"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="5f697a75-2cb6-4172-ac84-2e9b7c75e3c8"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -52932,7 +53972,19 @@
  Guid="56577378-3ac1-49f4-b2a7-b982216dd93c"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="d3c8c934-bd96-40db-aecb-d1c36496de08"
->DMI.MasterDMI().Out_ShuntingRequestNotAnsweredByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ShuntingRequestNotAnsweredByRbc.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="730648a5-f0d6-44c2-8323-0db91e6ac3ba"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="58c3e06d-f034-42b9-bb8c-6604892baa70"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="763005e8-1a51-4103-9490-91eec0b1c0ec"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -52974,7 +54026,9 @@
  Guid="7b024638-1580-4f66-9a45-d999d7661908"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="9c720ea8-a67e-455d-8cc4-73afc8811f4d"
->DMI.MasterDMI().Out_ShuntingRequestNotAnsweredByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ShuntingRequestNotAnsweredByRbc.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="7302ce57-fc02-46ed-9524-4baccf4ffa9a"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -53741,7 +54795,19 @@
  Guid="b1ea9c6e-1963-4798-8047-0fae54b253dd"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="853f3b6e-31cc-4e6b-aa5e-282a3d158fd2"
->DMI.MasterDMI().Out_SpeedAndDistanceMonitoringSupervisionStatus.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_SpeedAndDistanceMonitoringSupervisionStatus.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="898d01ab-8938-4b9b-b036-3c1468059c92"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="7c41a65b-22ef-4e89-9c12-d443c705ca06"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="1b9a14cd-17e9-4fb8-b0e0-64ace7a04b0b"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -53783,7 +54849,9 @@
  Guid="b5e9d683-7824-42f8-84d9-b4f7649cb005"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="b9b809fa-6272-4b4d-bed9-a3640fd7be19"
->DMI.MasterDMI().Out_SpeedAndDistanceMonitoringSupervisionStatus.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_SpeedAndDistanceMonitoringSupervisionStatus.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="01c5f626-c08b-40cb-a421-a606cc509ee6"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -54550,7 +55618,19 @@
  Guid="58745fd1-9f15-44d0-854e-ee67eb91a3d8"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="89e1b5f0-fdf3-4cfb-bef5-c01e867b857f"
->DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="bc7345a7-8128-4c13-b408-e6eb07d3e0b8"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="8b7aad72-5224-49d0-86c0-b9fde47af37e"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="e0cb8bca-9523-43cb-9543-9d899368568e"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -54592,7 +55672,9 @@
  Guid="ccb2cb14-6328-497c-b768-0a38753a2c9c"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="1742766c-733f-4905-a7e1-f01d6c8980c1"
->DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="a3ffe612-0787-49d7-8bcf-f41eeea4a8df"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -55359,7 +56441,19 @@
  Guid="ba7911d9-4de1-4d16-9cdb-fd1e9a7454a2"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="4196d91e-c8a6-4438-888d-5beb7131e099"
->DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="23a70cad-c303-4443-9d53-ac84db7b4817"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="e5c37006-808f-4146-a43e-51d516c811d1"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="9e869fc1-39b5-4c05-8d6e-cdfb7cfd4dd3"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -55401,7 +56495,9 @@
  Guid="05bc8352-1f0a-4f5d-8e6e-b3b57cd960e2"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="4ae97a89-1ff2-4658-83f2-c1073e8f34eb"
->DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="2c1f3d0e-1b12-48cf-a9b9-017b770accbe"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -56168,7 +57264,19 @@
  Guid="a92f0281-9dd2-4011-a0ce-d856cf69daa8"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="b9a339d4-a7d6-4e82-ab9c-f87f01a48193"
->DMI.MasterDMI().Out_TrackAheadFreeRequest.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrackAheadFreeRequest.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="19260461-09c3-4fda-b87c-303fcb1e4b8a"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="3b12c139-2215-4c18-8abd-08df4f76eb1d"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="28f3c0cd-4b16-4b5c-b058-f6dff778a967"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -56210,7 +57318,9 @@
  Guid="01e9884e-7cf2-4cb7-b535-dfbb8abf3d24"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="cea287ac-3db6-4189-9072-d7aa752bcacd"
->DMI.MasterDMI().Out_TrackAheadFreeRequest.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrackAheadFreeRequest.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="cb02476d-6485-4bc8-863f-06a27d9421d4"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -56977,7 +58087,19 @@
  Guid="7c25e350-74b1-4a47-a29f-8ac05b164407"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="0497e780-00da-45ea-8794-2e6a3c40ee0e"
->DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="55bd6eac-e634-4959-bded-f8868da1e43f"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="d828ff9e-37d9-4b0f-af16-160f50589e90"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="2aa2bc2d-77a1-4665-857c-2d65c61f2c8f"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -57019,7 +58141,9 @@
  Guid="5ad6e0e1-e7ac-4e7d-b1b6-1fa24601da53"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="d91a73bc-f78a-4f83-a582-c50ddcff7053"
->DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="034d7814-4dd2-4c29-beeb-a39b75bedab4"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -57786,7 +58910,19 @@
  Guid="5a337d34-389e-4bd9-ac39-3dd31e0cd80b"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="9ea33085-d551-46ee-99ee-94d5a634f7a5"
->DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="8b0d5407-8d9b-4a30-aae4-afac4557cbd5"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="d478c202-eb9e-4305-a20c-9cb1abca21c2"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="568c0e78-37e7-45d6-ad1d-7ff868bc475b"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -57828,7 +58964,9 @@
  Guid="cb244a90-1152-44ff-9d24-4f5b4c836fb4"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="003ec9f4-b9e9-48f7-9734-e4c387f2e18e"
->DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="198df9cb-f970-4e33-8e7d-fec2fdb2458e"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -58595,7 +59733,19 @@
  Guid="c7c1892a-04dd-494a-a15f-066452e1f202"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="18032cdb-f041-44e8-b2cf-db62e8339a1a"
->DMI.MasterDMI().Out_TracksideMalfunction.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TracksideMalfunction.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="760576c4-3946-4f6e-9c4a-37b86a2ba0c1"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="d73bdc80-daa1-4bad-8033-b7938c62f36b"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="1d9ab4ca-510c-4147-a08d-4b7ac80a2a89"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -58637,7 +59787,9 @@
  Guid="aa21eed6-0ce2-4ae3-8b8e-f8feebf6c97c"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="22f32f9d-0fca-4919-bfe7-e4f7f38b1de1"
->DMI.MasterDMI().Out_TracksideMalfunction.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TracksideMalfunction.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="9824daed-fd8e-4e1e-be6b-1d52433e4d10"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -59404,7 +60556,19 @@
  Guid="8383c00a-94bd-4998-89ea-7254ec80e530"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="12077fd1-ee86-4ea3-9987-fa38baf154eb"
->DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="b073a71c-ea45-4f80-8b76-da2cc834424d"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="576dd55c-7f7a-4aee-9aa6-40cfc4ead9be"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="ac8b5a6c-ca0d-4b3d-917d-dd9349f57096"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -59446,7 +60610,9 @@
  Guid="606aea0c-c636-4ee8-b172-ea2c289c8dd0"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="7cbd4b7b-1bfd-4d2c-b67b-8900fafa1aed"
->DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="2dc6266e-2d31-454f-a115-ebe93cf21340"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -60213,7 +61379,19 @@
  Guid="0d906a7d-0a61-42f9-ad37-c90d47691357"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="de7141ca-8702-4286-b638-7a2c0773e796"
->DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="4299ed56-b9a3-4788-984c-eac01fab02b0"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="d3c8bfb1-16a0-4935-92d2-f396a860d221"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="28d28587-aca4-4dc8-bf2e-fa287552b2d2"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -60255,7 +61433,9 @@
  Guid="e19939f9-9a06-4b17-a99d-b90681bea03a"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="f661ffdc-894c-4225-9744-9de1e1f76d5d"
->DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="dd33fd3c-c421-4b10-b1ae-472fb10f3723"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -61022,7 +62202,19 @@
  Guid="a6007283-3daf-4d91-8818-2a410a2f4d90"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="72bfd003-e401-416e-b041-c185daa962f8"
->DMI.MasterDMI().Out_TrainIsRejected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrainIsRejected.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="ddf58823-de67-4245-8214-7d854d8d5389"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="54bad580-8309-412e-8357-00c5a9fcf32a"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="69f56d3c-9303-47dc-a57a-14e27ba3673e"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -61064,7 +62256,9 @@
  Guid="ee741a51-ecf3-4e16-b66f-09cd24d49841"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="d9c902d4-a14d-4d00-b341-0afe90ba1fd1"
->DMI.MasterDMI().Out_TrainIsRejected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrainIsRejected.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="ac4c97e5-c02f-4e35-99a1-25308597507c"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -61831,7 +63025,19 @@
  Guid="d7f2f716-ff71-4cc4-8fd0-344ec4485109"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="d3da71ff-934e-4443-86aa-377b36c32f49"
->DMI.MasterDMI().Out_TrainRunningNumber.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrainRunningNumber.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="b076ee5b-925b-411e-a74e-5f0547245ba7"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="0b10d681-5c56-4ae2-bd7c-77434783a393"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="902c0460-d159-4ede-a3b0-77ffc64e083a"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -61873,7 +63079,9 @@
  Guid="9606673a-84d7-41fb-af8e-cdee5641cd39"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="7292c095-fdce-448d-8a71-36fa38faca51"
->DMI.MasterDMI().Out_TrainRunningNumber.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrainRunningNumber.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="8737d9ee-2760-4327-9cbe-b37fdc8f6c47"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -62640,7 +63848,19 @@
  Guid="6813f1c5-5c7f-4e51-9ac1-8b5e78d60b92"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="533793a8-31a8-4549-81a2-18e46b7f3d7c"
->DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="41b45da5-9164-43e0-8c2a-daa342965bcc"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="05b8acd9-2800-41b4-83ae-4145e9866c26"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="8990fa62-468f-4301-9205-3ebc5f2cb4b8"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -62682,7 +63902,9 @@
  Guid="771e9405-dced-461e-bcc1-14c2ae177aa1"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="acb44122-7204-442d-9c91-266ecf00c885"
->DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="fcd1c897-e998-4f1a-b51b-6f3d01075d57"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -63449,7 +64671,19 @@
  Guid="569c7978-c169-4ce4-bd30-7fb24f8d7a9d"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="22553d3d-5d92-4dc5-82d6-3016c9471bf5"
->DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="a8cbc552-a5f1-43e6-b4cd-36ffbd0d2272"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="fa871b64-431b-495e-8a05-feff4f9f27b3"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="e3acc023-0478-4407-ac34-2e4be7054c06"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -63491,7 +64725,9 @@
  Guid="fd8deb73-cf08-4528-a383-b48c77ac9a83"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="2423b1c7-530d-4ac1-b85f-24eef4a5504a"
->DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="ba61c6d3-e52b-4ba9-beab-0009f9b66af3"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -64258,7 +65494,19 @@
  Guid="91887cdf-593b-4dd9-ace0-f252e41e955b"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="47d53cba-f644-489c-aff9-a625b29f8de6"
->DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="95c73b58-9147-454c-b2a9-741a9442855a"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action><Action
+ Guid="20d994f4-e82c-4d59-a0e4-640f758dcdf1"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
+ Guid="920e989e-5bc0-4877-a275-6b6dfe5df013"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -64300,7 +65548,9 @@
  Guid="c421b2b9-76b0-4e99-9d3b-6fd96812f4a5"
 >Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="24f32dc4-9099-47c5-8c4d-8391f6032626"
->DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="8fefc2ea-c529-4ef3-95be-f263d9aa61bb"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

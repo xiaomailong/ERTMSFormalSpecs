@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Drawing.Design;
+using DataDictionary.Tests;
 using DataDictionary.Tests.Translations;
 using DataDictionary;
 using DataDictionary.Interpreter;
@@ -317,6 +318,66 @@ namespace GUI.TestRunnerView
             return retVal;
         }
 
+        private class ExecuteTestsHandler : LongOperations.BaseLongOperation
+        {
+            /// <summary>
+            /// The window for which theses tests should be executed
+            /// </summary>
+            private Window Window { get; set; }
+
+            /// <summary>
+            /// The subsequence which should be executed
+            /// </summary>
+            private Step Step { get; set; }
+
+            /// <summary>
+            /// Indicates that the engine should be run until all blocking expectations are reached
+            /// </summary>
+            private bool RunForExpectations { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="window"></param>
+            /// <param name="step"></param>
+            /// <param name="runForBlockingExpectations"></param>
+            public ExecuteTestsHandler(Window window, Step step, bool runForBlockingExpectations)
+            {
+                Window = window;
+                Step = step;
+                RunForExpectations = runForBlockingExpectations;
+            }
+
+            /// <summary>
+            /// Executes the tests in the background thread
+            /// </summary>
+            public override void ExecuteWork()
+            {
+                if (Window != null)
+                {
+                    Window.setSubSequence(Step.SubSequence);
+                    DataDictionary.Tests.Runner.Runner runner = Window.getRunner(Step.SubSequence);
+
+                    runner.RunUntilStep(Step);
+                    foreach (DataDictionary.Tests.SubStep subStep in Step.SubSteps)
+                    {
+                        runner.SetupSubStep(subStep);
+                        if (!subStep.getSkipEngine())
+                        {
+                            if (RunForExpectations)
+                            {
+                                runner.RunForBlockingExpectations(true);
+                            }
+                            else
+                            {
+                                runner.Cycle();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Handles a run event on this step
         /// </summary>
@@ -329,18 +390,8 @@ namespace GUI.TestRunnerView
             Window window = BaseForm as Window;
             if (window != null)
             {
-                window.setSubSequence(Item.SubSequence);
-                DataDictionary.Tests.Runner.Runner runner = window.getRunner(Item.TestCase.SubSequence);
-
-                runner.RunUntilStep(Item);
-                foreach (DataDictionary.Tests.SubStep subStep in Item.SubSteps)
-                {
-                    runner.SetupSubStep(subStep);
-                    if (!subStep.getSkipEngine())
-                    {
-                        runner.Cycle();
-                    }
-                }
+                ExecuteTestsHandler executeTestHandler = new ExecuteTestsHandler(window, Item, false);
+                executeTestHandler.ExecuteUsingProgressDialog("Executing test steps");
 
                 GUIUtils.MDIWindow.RefreshAfterStep();
                 window.tabControl1.SelectedTab = window.testExecutionTabPage;
@@ -359,21 +410,10 @@ namespace GUI.TestRunnerView
             Window window = BaseForm as Window;
             if (window != null)
             {
-                DataDictionary.Tests.Runner.Runner runner = window.getRunner(Item.TestCase.SubSequence);
+                ExecuteTestsHandler executeTestHandler = new ExecuteTestsHandler(window, Item, false);
+                executeTestHandler.ExecuteUsingProgressDialog("Executing test steps");
 
-                SynchronizerList.SuspendSynchronization();
-                runner.RunUntilStep(Item);
-                foreach (DataDictionary.Tests.SubStep subStep in Item.SubSteps)
-                {
-                    runner.SetupSubStep(subStep);
-                    if (!subStep.getSkipEngine())
-                    {
-                        runner.RunForBlockingExpectations(true);
-                    }
-                }
-                SynchronizerList.ResumeSynchronization();
-
-                GUIUtils.MDIWindow.RefreshAfterStep();;
+                GUIUtils.MDIWindow.RefreshAfterStep();
                 window.tabControl1.SelectedTab = window.testExecutionTabPage;
             }
         }

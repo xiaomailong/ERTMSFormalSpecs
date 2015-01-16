@@ -37,6 +37,29 @@ namespace GUI.TestRunnerView.TimeLineControl
     public class StaticTimeLineControl : TimeLineControl
     {
         /// <summary>
+        /// The subsequence currently being displayed
+        /// </summary>
+        private SubSequence __subSequence;
+
+        /// <summary>
+        /// The test case for which this time line is built
+        /// </summary>
+        public SubSequence SubSequence
+        {
+            get
+            {
+                return __subSequence;
+            }
+            set
+            {
+                __testCase = null;
+                __subSequence = value;
+                __translation = null;
+                CleanEventPositions();
+            }
+        }
+
+        /// <summary>
         /// The test case
         /// </summary>
         private TestCase __testCase;
@@ -52,6 +75,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             }
             set
             {
+                __subSequence = null;
                 __testCase = value;
                 __translation = null; 
                 CleanEventPositions();
@@ -76,6 +100,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             {
                 __translation = value;
                 __testCase = null;
+                __subSequence = null;
                 CleanEventPositions();
             }
         }
@@ -89,9 +114,17 @@ namespace GUI.TestRunnerView.TimeLineControl
             {
                 ArrayList retVal = null;
 
-                if ( TestCase != null)
+                if (TestCase != null)
                 {
                     retVal = TestCase.Steps;
+                }
+                else if ( SubSequence != null)
+                {
+                    retVal = new ArrayList();
+                    foreach (TestCase testCase in SubSequence.TestCases)
+                    {
+                        retVal.AddRange(testCase.Steps);
+                    }
                 }
 
                 return retVal;
@@ -111,6 +144,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             DoubleClick += new EventHandler(TimeLineControl_DoubleClick);
             MouseDown += new MouseEventHandler(StaticTimeLineControl_MouseDown);
             TestCase = null;
+            SubSequence = null;
         }
 
         private const int CTRL = 8;
@@ -620,6 +654,11 @@ namespace GUI.TestRunnerView.TimeLineControl
                 UpdatePanelSize();
                 HandledEvents = TestCase.ActionCount;
             }
+            else if (SubSequence != null)
+            {
+                UpdatePositionHandler();
+                UpdatePanelSize();                
+            }
             else if (Translation != null)
             {
                 UpdatePositionHandler();
@@ -635,7 +674,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         protected override void UpdatePositionHandler()
         {
             PositionHandler.CleanPositions();
-            if (TestCase != null)
+            if ((TestCase != null) || SubSequence != null )
             {
                 double currentTime = 0.0;
                 foreach (Step step in Steps)

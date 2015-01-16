@@ -228,6 +228,8 @@ namespace GUI.TestRunnerView
         public void RunHandler(object sender, EventArgs args)
         {
             ClearMessages();
+            Utils.ModelElement.LogCount = 0;
+
             ExecuteTestsHandler executeTestHandler = new ExecuteTestsHandler(BaseForm as Window, Item);
             executeTestHandler.ExecuteUsingProgressDialog("Executing test steps");
 
@@ -333,6 +335,18 @@ namespace GUI.TestRunnerView
                 testCase.Delete();
 
                 createTestCase(testCase.Item);
+            }
+        }
+
+        public override void SelectionChanged(bool displayStatistics)
+        {
+            base.SelectionChanged(displayStatistics);
+
+            Window window = BaseForm as Window;
+            if (window != null)
+            {
+                window.testDescriptionTimeLineControl.SubSequence = Item;
+                window.testDescriptionTimeLineControl.Refresh();
             }
         }
     }

@@ -72,7 +72,7 @@
 </ReqRef></Collection></Collections>
 <Functions>
 <Function
- Type="SR.BaliseGroups"
+ Type="Kernel.SR.BaliseGroups"
  Default=""
  X="20"
  Y="150"
@@ -181,7 +181,8 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9ff870da-a8b3-4130-a312-de9e3164b58b"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Handles reception of authorization to enter SR mode from RBC.</Comment>
+<Parameters>
 <Parameter
  Type="Messages.MESSAGE.TRACK_TO_TRAIN.SR_AUTHORISATION.Message"
  Name="Packet"
@@ -191,12 +192,14 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="UpdateSRAuthorisation"
  Guid="afdb2dd6-b9d2-427b-91c1-b7ad2cf7767c"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="UpdateSRAuthorisation"
  Guid="4ee6f8cc-70a3-4372-bb61-1cc8aebfa6c5"
 >

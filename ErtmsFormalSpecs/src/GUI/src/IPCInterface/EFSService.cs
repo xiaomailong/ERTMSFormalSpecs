@@ -632,7 +632,7 @@ namespace GUI.IPCInterface
                 }
             }
 
-            throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot convert value " + value.ToString()));
+            throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot convert value " + value));
         }
 
         private class SyntheticVariableUpdateAction : DataDictionary.Rules.Action

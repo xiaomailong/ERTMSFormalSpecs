@@ -118,6 +118,8 @@ namespace DataDictionary
             }
             History.UpdateBlame();
 
+            CheckParentRelationship = true;
+
             Generated.ControllersManager.BaseModelElementController.Listeners.Insert(0, new BaseModelElementChangeListener(this));
         }
 
@@ -1220,7 +1222,15 @@ namespace DataDictionary
         /// </summary>
         public bool DisplayEnclosingMessages { get; set; }
 
+        /// <summary>
+        /// Indicates that requirements should be displayed as a list of element instead of the full requirement description
+        /// </summary>
         public bool DisplayRequirementsAsList { get; set; }
+
+        /// <summary>
+        /// When animating the model, verify the correctness of the 'parent' relation for each model element
+        /// </summary>
+        public bool CheckParentRelationship { get; set; }
 
         /// <summary>
         /// Stops the system

@@ -1,7 +1,9 @@
 .phony:all clean increase_release_number release
 .default:all
 
-XMLBOOSTER_ROOT=$(ERTMS_TOOLS_ROOT)/xmlb_2_29_2
+include etc/makefile.shared
+
+XMLBOOSTER_ROOT=$(ERTMS_TOOLS_ROOT)/xmlb_2_22_9
 XMLB_CALL=$(XMLBOOSTER_ROOT)/bin/xmlbgui.exe -CFG=../../../tools/xmlb_2_29_2/xmlbcfg.xml
 
 all: 
@@ -26,7 +28,9 @@ increase_release_number :
 	@echo === Increase build number
 	@-$(XMLB_CALL) -SCRIPT update_release_number.rcs GUI/Properties/AssemblyInfo.cs > /dev/null
 
-release: clean increase_release_number all Installer/EFSW_Installer_Script.iss	
+release: clean increase_release_number Installer/EFSW_Installer_Script.iss	
+	@echo === Rebuilding solution in Release mode
+	$(BUILD) /t:Rebuild /p:Configuration=Release
 	@echo === Building Installer package	
 	@../depends/InnoInstaller5/ISCC.exe Installer/EFSW_Installer_Script.iss /q
 

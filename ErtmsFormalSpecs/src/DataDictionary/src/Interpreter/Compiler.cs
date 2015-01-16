@@ -15,6 +15,13 @@
 // ------------------------------------------------------------------------------
 using System.Threading;
 using System.Collections.Generic;
+using DataDictionary.Generated;
+using Utils;
+using Function = DataDictionary.Functions.Function;
+using NameSpace = DataDictionary.Types.NameSpace;
+using StructureElement = DataDictionary.Types.StructureElement;
+using Variable = DataDictionary.Variables.Variable;
+
 namespace DataDictionary.Interpreter
 {
     /// <summary>
@@ -22,10 +29,18 @@ namespace DataDictionary.Interpreter
     /// </summary>
     public class Compiler : Generated.Visitor
     {
-        private class InitDeclaredElements : Generated.Visitor
+        /// <summary>
+        /// Performs a clean before compiling
+        /// </summary>
+        private class CleanBeforeCompilation : Generated.Visitor
         {
             /// <summary>
-            /// Cleans up the declaraed elements dictionaries
+            /// The compilation options
+            /// </summary>
+            private CompilationOptions Options { get; set; }
+
+            /// <summary>
+            /// Cleans up the declared elements dictionaries
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -47,11 +62,28 @@ namespace DataDictionary.Interpreter
             }
 
             /// <summary>
+            /// Clears the cache dependancy when a full rebuilt is asked
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(BaseModelElement obj, bool visitSubNodes)
+            {
+                if (Options.Rebuild)
+                {
+                    obj.CacheDependancy = null;
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+
+            /// <summary>
             /// Constructor
             /// </summary>
+            /// <param name="options"></param>
             /// <param name="system"></param>
-            public InitDeclaredElements(EFSSystem system)
+            public CleanBeforeCompilation(CompilationOptions options, EFSSystem system)
             {
+                Options = options;
                 system.InitDeclaredElements();
 
                 foreach (Dictionary dictionary in system.Dictionaries)
@@ -152,6 +184,239 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
+        /// Creates the function dependancies
+        /// </summary>
+        private class CreateDependancy : Generated.Visitor
+        {
+            /// <summary>
+            /// Visits the expressions used in functions to create the dependancy graph for that functions
+            /// </summary>
+            private class ReferenceVisitor : Visitor
+            {
+                /// <summary>
+                /// The function for which the dependancy graph is being built
+                /// </summary>
+                private Function DependantFunction { get; set; }
+
+                /// <summary>
+                /// Indicates that a change in the dependancy graph has been performed
+                /// </summary>
+                public bool DependancyChange { get; set; }
+
+                /// <summary>
+                /// Constructor
+                /// </summary>
+                public ReferenceVisitor()
+                {
+                }
+
+                /// <summary>
+                /// Updates the dependancy graph according to this expression tree
+                /// </summary>
+                /// <param name="dependantFunction"/>
+                /// <param name="tree"></param>
+                public void UpdateReferences(Function dependantFunction, InterpreterTreeNode tree)
+                {
+                    DependantFunction = dependantFunction;
+
+                    visitInterpreterTreeNode(tree);
+                }
+
+                protected override void VisitDesignator(Designator designator)
+                {
+                    base.VisitDesignator(designator);
+
+                    Utils.ModelElement current = designator.Ref as Utils.ModelElement;
+                    while (current != null && !(current is NameSpace) && !(current is Parameter))
+                    {
+                        bool change = false;
+
+                        Variable variable = current as Variable;
+                        if (variable != null)
+                        {
+                            change = variable.AddDependancy(DependantFunction);
+                            DependancyChange = DependancyChange || change;
+                        }
+                        else
+                        {
+                            StructureElement structureElement = current as StructureElement;
+                            if (structureElement != null)
+                            {
+                                change = structureElement.AddDependancy(DependantFunction);
+                                DependancyChange = DependancyChange || change;
+
+                                change = structureElement.Structure.AddDependancy(DependantFunction);
+                                DependancyChange = DependancyChange || change;
+                            }
+                            else
+                            {
+                                Function function = current as Function;
+                                if (function != null)
+                                {
+                                    change = function.AddDependancy(DependantFunction);
+                                    DependancyChange = DependancyChange || change;
+                                }
+                            }
+                        }
+
+                        current = current.Enclosing as Utils.ModelElement;
+                    }
+                }
+            }
+            
+
+            /// <summary>
+            /// The reference visitor
+            /// </summary>
+            private ReferenceVisitor TheReferenceVisitor { get; set; }
+
+            /// <summary>
+            /// Indicates that a change in the dependancy graph has been performed
+            /// </summary>
+            public bool DependancyChange
+            {
+                get { return TheReferenceVisitor.DependancyChange; }
+            }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="system"></param>
+            public CreateDependancy(EFSSystem system)
+            {
+                TheReferenceVisitor = new ReferenceVisitor();
+
+                foreach (DataDictionary.Dictionary dictionary in system.Dictionaries)
+                {
+                    visit(dictionary, true);
+                }
+            }
+
+            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+            {
+                IExpressionable expressionnable = obj as IExpressionable;
+                if (expressionnable != null)
+                {
+                    Functions.Function enclosingFunction = EnclosingFinder<Functions.Function>.find(obj, true);
+                    if (enclosingFunction != null)
+                    {
+                        // The value of the function depends on this. 
+                        TheReferenceVisitor.UpdateReferences(enclosingFunction, expressionnable.Tree);
+                    }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
+        /// <summary>
+        /// PropagatesDependancy the dependancy relationship between elements
+        /// </summary>
+        private class FlattenDependancy : Generated.Visitor
+        {
+            /// <summary>
+            /// The elements that have already been browsed
+            /// </summary>
+            private HashSet<Utils.ModelElement> BrowsedElements { get; set; } 
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="system"></param>
+            public FlattenDependancy(EFSSystem system)
+            {
+                foreach (DataDictionary.Dictionary dictionary in system.Dictionaries)
+                {
+                    foreach (NameSpace nameSpace in dictionary.NameSpaces)
+                    {
+                        visit(nameSpace, true);
+                    }
+                }
+            }
+
+            /// <summary>
+            /// PropagatesDependancy the elementToAdd to the dependancies of the elementToBrowse
+            /// </summary>
+            /// <param name="elementToBrowse"></param>
+            /// <param name="elementToAdd"></param>
+            private void PropagatesDependancy(Utils.ModelElement elementToBrowse, Utils.ModelElement elementToAdd)
+            {
+                if (!BrowsedElements.Contains(elementToBrowse))
+                {
+                    BrowsedElements.Add(elementToBrowse);
+
+                    elementToAdd.AddDependancy(elementToBrowse);
+                    if (elementToBrowse.CacheDependancy != null)
+                    {
+                        foreach (Utils.ModelElement depending in elementToBrowse.CacheDependancy)
+                        {
+                            object current = depending;
+                            while (current != null)
+                            {
+                                Utils.ModelElement currentElement = current as Utils.ModelElement;
+                                if (currentElement != null)
+                                {
+                                    PropagatesDependancy(currentElement, elementToAdd);
+                                }
+
+                                IEnclosed enclosed = current as IEnclosed;
+                                if (enclosed != null)
+                                {
+                                    current = enclosed.Enclosing;
+                                }
+                                else
+                                {
+                                    current = null;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            /// <summary>
+            /// PropagatesDependancy all elements
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(BaseModelElement obj, bool visitSubNodes)
+            {
+                if (obj.CacheDependancy != null)
+                {
+                    BrowsedElements = new HashSet<Utils.ModelElement>();
+                    BrowsedElements.Add(obj);
+
+                    HashSet<Utils.ModelElement> dependingElements = obj.CacheDependancy;
+                    obj.CacheDependancy = null;
+                    foreach (Utils.ModelElement depending in dependingElements)
+                    {
+                        object current = depending;
+                        while (current != null)
+                        {
+                            Utils.ModelElement currentElement = current as Utils.ModelElement;
+                            if (currentElement != null)
+                            {
+                                PropagatesDependancy(currentElement, obj);
+                            }
+
+                            IEnclosed enclosed = current as IEnclosed;
+                            if (enclosed != null)
+                            {
+                                current = enclosed.Enclosing;
+                            }
+                            else
+                            {
+                                current = null;
+                            }
+                        }
+                    }
+                }
+
+                base.visit(obj, visitSubNodes);
+            }
+        }
+
+        /// <summary>
         /// Compiles or recompiles everything
         /// </summary>
         private void PerformCompile(CompilationOptions options)
@@ -160,13 +425,22 @@ namespace DataDictionary.Interpreter
             {
                 ModelElement.BeSilent = options.SilentCompile;
 
-                // Initialises the declared eleemnts
-                InitDeclaredElements initDeclaredElements = new InitDeclaredElements(EFSSystem);
+                // Initialises the declared elements
+                CleanBeforeCompilation cleanBeforeCompilation = new CleanBeforeCompilation(options, EFSSystem);
 
                 // Compiles each expression and each statement encountered in the nodes
                 foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
                 {
                     visit(dictionary, true);
+                }
+
+                if (options.Rebuild)
+                {
+                    CreateDependancy createDependancy = new CreateDependancy(EFSSystem);
+                    if (createDependancy.DependancyChange)
+                    {
+                        FlattenDependancy flattenDependancy = new FlattenDependancy(EFSSystem);
+                    }
                 }
             }
             catch (System.Exception)
@@ -205,7 +479,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Performs a synchronous compilation
         /// </summary>
-        /// <param name="retbuild"></param>
+        /// <param name="rebuild"></param>
         /// <param name="silent"></param>
         public void Compile_Synchronous(bool rebuild, bool silent = false)
         {
@@ -246,7 +520,6 @@ namespace DataDictionary.Interpreter
                 {
                     expressionnable.CleanCompilation();
                 }
-
                 // Ensures that the expressionable is compiled
                 expressionnable.Compile();
             }

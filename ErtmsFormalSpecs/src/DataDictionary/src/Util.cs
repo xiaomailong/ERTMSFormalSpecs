@@ -280,7 +280,6 @@ namespace DataDictionary
                         onBoard = scope.findRequirementSet(RequirementSet.ONBOARD_SCOPE_NAME, true);
                         onBoard.setRecursiveSelection(false);
                         onBoard.setDefault(true);
-                        onBoard.setRequirementsStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
                     }
                     paragraph.AppendToRequirementSet(onBoard);
                     paragraph.setObsoleteScopeOnBoard(false);
@@ -781,6 +780,7 @@ namespace DataDictionary
 
             if (retVal != null && efsSystem != null)
             {
+                efsSystem.ShouldRebuild = true;
                 retVal.CheckRules();
             }
 

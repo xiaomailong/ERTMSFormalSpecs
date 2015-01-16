@@ -76,6 +76,70 @@
  Guid="59a1fe42-316d-46d1-96ba-6a4d28d6bb71"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.1.4"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="a2b0cd6a-ad4a-4cd9-bf2a-2a8639adbf37"
+>Information that is marked as Available in section 4.7, but for which we have not found any display conditions will be sent to the DMI as if it was Active.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="fdcb00d8-97f8-4f17-8f64-15a827e63e72"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.1.5"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="01d5b677-947b-41a3-b122-755926f72f02"
+>The speed and distance monitoring supervision status, to be sent to the DMI, includes the speed and distance monitoring type. This information is necessary for the DMI but is not explicitely provided in the specs.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="576b88f5-1bd9-4aad-a121-d390d3ef218b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.1.6"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="90aeeb77-0da0-47f5-ac84-c4490540a1c0"
+>Subset-026 doesn&apos;t specify the conditions of display of Geographical Position. According to the document &quot;ETCS DMI Objectis - Start Stop Conditions v1.0.0.xls&quot;, only the driver can ask the display of Operated System Version. To model it, an input variable was added to the structure GeographicalPosition, handling the requests from the driver.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="774ad0e3-3354-4260-919c-5a519df77612"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.1.7"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="ff71a9f1-39e5-4439-b9c5-c29510d74dd2"
+>According to Subset-026 Paragraph 5.16.1.4.a, the level crossing information has to be displayed if the EOA or the SvL related to the LX start location becomes the Most Restrictive Displayed Target (see 3.13.10.4.2). But this condition can be satisfied if the MRDT is not displayed yet, in that case we suppose that the level crossing information shouldn&apos;t be displayed either.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1347ff72-366f-4122-8417-96eaba4199b4"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -298,8 +362,8 @@ Duplicate balises<Sub>
  version="3.0.0"
  Name=""
  Guid="689ab6d6-cac9-4667-86bf-c6be70fefd43"
->As balises are expected in the order given by linking information, each entry of BTM.Linking.Linkings is assumed to be listed with respect to the previous entry.
-So the distance in entry 3 is the distance as measure from entry 2, not the current LRBG.<RequirementSets>
+>As balises are expected in the order given by linking information, each element of BTM.Linking.Linkings is assumed to be listed with respect to the previous element.
+So the distance in element 3 is the distance as measured from element 2, not from the current LRBG.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="75fb698b-10d3-43c2-8a01-baef9fc7b85c"
@@ -558,7 +622,7 @@ This is mandatory to ensure that all preconditions for an MA (which may have bee
  version="3.0.0"
  Name=""
  Guid="d4425f99-d283-4faf-ba1a-eef44feb9002"
->The paragraph 3.13.2.2.6.2 indicates that the selection of brake parameter for A_brake_service(V) is done according to status of regenerative brake and eddy current brake (but not magnetic brake), while the paragraph 3.13.2.2.3.1.7 states that it shall be possible to define individual speed dependent deceleration models of A_brake_service(V) for each combination of use of regenerative brake, eddy current brake AND magnetic shoe brake, that is inconsistent. EFS offers the possibility to define individual models of A_brake_emergency(V) for each combination of use of all three brakes, but we consider that the magnetic shoe brake is never used in the case of A_brake_emergency(V).<RequirementSets>
+>The paragraph 3.13.2.2.6.2 indicates that the selection of brake parameter for A_brake_service(V) is done according to status of regenerative brake and eddy current brake (but not magnetic brake), while the paragraph 3.13.2.2.3.1.7 states that it shall be possible to define individual speed dependent deceleration models of A_brake_service(V) for each combination of use of regenerative brake, eddy current brake AND magnetic shoe brake, that is inconsistent. EFS offers the possibility to define individual models of A_brake_emergency(V) and A_brake_service(V) for each combination of use of all three brakes, but we consider that the magnetic shoe brake is never used in the case of A_brake_service(V).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2ec97486-5fe5-4a0e-8306-ab71708d693d"
@@ -618,7 +682,7 @@ This is mandatory to ensure that all preconditions for an MA (which may have bee
  version="3.0.0"
  Name=""
  Guid="7b939cca-c775-4101-b7dd-1944169ceeb2"
->The requirement 7.5.1.171 specifies that if the value of V_STATIC, representing the base speed for static speed profile, equals 127, that means that the static speed profile description ends at the next discontinuity. We assume that it means that there will be no more speed restriction due to the static speed profile.<RequirementSets>
+>The requirement 7.5.1.171 specifies that if the value of V_STATIC, representing the base speed for static speed profile, equals 127, that means that the static speed profile description ends at the next discontinuity. We assume that it means that there will be no more speed restrictions due to the static speed profile.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="35c56e9d-671c-4c2b-b633-665e27f0e3c6"
@@ -1093,6 +1157,23 @@ This is mandatory to ensure that all preconditions for an MA (which may have bee
  Guid="7f7c2d24-4514-4a00-9903-ba56215ff492"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.11.15"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="e1d78a17-1bcd-4870-a539-278a995cac92"
+>In sleeping mode, the front/rear end of the train is taken to be the front/rear of the engine.
+This information is not stored anywhere, we have added a field to the train data for this information. A default value was chosen for this.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="410a81fd-61f0-4986-a671-38e97862b256"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -1353,6 +1434,22 @@ We decided that the procedure would return to state S10.<RequirementSets>
  Guid="e47eaec6-ec57-4d7b-a175-f609a5d95ff9"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.16.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="3a73d38c-66b9-4e87-873d-9efe293f0f56"
+>In State S3, we assume that the Driver can always select a new Radio Network ID, even if he has already done so during this Start of Mission procedure.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e7fb74a8-219f-441a-8280-3b16b74119bf"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
@@ -1429,7 +1526,7 @@ We decided that the procedure would return to state S10.<RequirementSets>
  version="3.0.0"
  Name=""
  Guid="1fc880ed-12b0-4b3a-9b18-232e2d8aa5cd"
->We do not know what to do when the NID_STM is not applicable and should provided to the JRU. We assume that this situation never occurs<RequirementSets>
+>We do not know what to do when the NID_STM is not applicable and should be provided to the JRU. We assume that this situation never occurs.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="b3d31030-a216-41c5-b7be-b1f463e0e5c5"
@@ -1460,11 +1557,9 @@ The non-matching elements defined in Subset-026 are:
 - virtual balise cover
 The non-matching elements defined in Subset-027 are:
 - brake release
-- request to hide geographical information
 - request to hide supervision limits
 - request to hide tunnel stopping area information
 - request to show supervision limits
-- request to show geographical position
 - request to show tunnel stopping area information
 - scroll up button activated
 - scroll down button activaged<RequirementSets>
@@ -1501,7 +1596,7 @@ The non-matching elements defined in Subset-027 are:
  version="3.0.0"
  Name=""
  Guid="e0cce2b4-2341-4ff7-8496-f341142799d3"
->In paragraph 3.10.2.2, the train&apos;s behaviour is defined for when it has passed a stop location and for when it has not yet passed the stop location. We have decided to consider that when it is at the specified location, it is to behave as if it had passed it.<RequirementSets>
+>In paragraph 3.10.2.2, the train&apos;s behaviour is defined for when it has passed a stop location and for when it has not passed the stop location yet. We have decided to consider that when it is at the specified location, it should behave as if it had passed it.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="37e0ca18-dfea-4479-b4e9-a5b0477b5e69"
@@ -1650,11 +1745,11 @@ The non-matching elements defined in Subset-027 are:
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="A1.1.23"
- type="REQUIREMENT"
+ type="TITLE"
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="79cf885b-315d-408c-87cc-c16c3e53bc97"
@@ -1684,11 +1779,11 @@ The non-matching elements defined in Subset-027 are:
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="A1.1.24"
- type="REQUIREMENT"
+ type="TITLE"
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="6424d9c8-7112-4bae-99d8-af5cf73fe0cb"
@@ -1715,6 +1810,40 @@ As the spec does not say in wich modes the traction system must be displayed, it
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2de3090e-16ab-43eb-8fa7-5d35e0bbf342"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.25"
+ type="TITLE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="8de1b122-19e8-4fa5-882c-140134cc7d6d"
+>Calculation of V_MRSP<Sub>
+<Paragraph
+ id="A1.1.25.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="5da2e749-a3e2-4dba-99b5-f766189c6f3e"
+>The calculation of V_MRSP (see 3.13.10.2.8) is limited in the case where the on-board has just received the MA and track description to the distance 0 (LRBG location), as our implementation does not store MRSP values in rear of the LRBG.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="63092628-71de-4d4d-a9f2-5f4399687876"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="71841c5e-7ac1-47cf-abbe-a068ca773796"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -2111,56 +2240,6 @@ As the spec does not say in wich modes the traction system must be displayed, it
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="5915868f-cc88-485b-8d8a-2dfca5dc70d0"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph><Paragraph
- id="A1.2.3"
- type="REQUIREMENT"
- scope="FLAGS"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- Name=""
- Guid="e61eb334-9566-4cbb-bea5-863ccc426b66"
->Information for DMI<Sub>
-<Paragraph
- id="A1.2.3.1"
- type="REQUIREMENT"
- scope="FLAGS"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- Name=""
- Guid="01d5b677-947b-41a3-b122-755926f72f02"
->The speed and distance monitoring supervision status, to be sent to the DMI, includes the speed and distance monitoring type. This information is necessary for the DMI but is not explicitely provided in the specs.<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="576b88f5-1bd9-4aad-a121-d390d3ef218b"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph><Paragraph
- id="A1.2.3.2"
- type="REQUIREMENT"
- scope="FLAGS"
- bl=""
- name=""
- status="NA"
- version="3.0.0"
- Name=""
- Guid="1863d339-25c3-497c-bc7e-4a7c09daf727"
->The value shall always be sent to the DMI, when available. The DMI will use this information, if requested<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="b64cb6eb-1fb7-41a2-987e-c0df58dcb212"
->
-</RequirementSetReference></RequirementSets>
-</Paragraph></Sub>
-<RequirementSets>
-<RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="a56c37f3-cbf6-4200-95e5-8d0787e1f57f"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>

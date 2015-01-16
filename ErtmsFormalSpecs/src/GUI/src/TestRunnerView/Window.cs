@@ -68,7 +68,9 @@ namespace GUI.TestRunnerView
         /// </summary>
         public DataDictionary.Tests.Runner.Runner getRunner(DataDictionary.Tests.SubSequence subSequence)
         {
-            if (EFSSystem.Runner == null)
+            Runner runner = EFSSystem.Runner;
+
+            if (runner == null || runner.SubSequence != subSequence)
             {
                 if (subSequence != null)
                 {
@@ -278,16 +280,6 @@ namespace GUI.TestRunnerView
             }
         }
 
-        public void MiniStep()
-        {
-            CheckRunner();
-            if (EFSSystem.Runner != null)
-            {
-                EFSSystem.Runner.MiniStep();
-                GUIUtils.MDIWindow.RefreshAfterStep();
-            }
-        }
-
         private void stepOnce_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = testExecutionTabPage;
@@ -469,12 +461,6 @@ namespace GUI.TestRunnerView
             {
                 MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
-
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedTab = testExecutionTabPage;
-            MiniStep();
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)

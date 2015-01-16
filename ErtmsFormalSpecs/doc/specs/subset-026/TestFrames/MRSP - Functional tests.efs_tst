@@ -78,20 +78,13 @@
 >Kernel.TSR.TSRs &lt;- []</Action><Action
  Guid="395088be-f8ce-4106-9942-8089ec905817"
 >Odometry.NominalDistance &lt;- 2000.0</Action><Action
- Guid="5776c753-3ca0-4056-bcc6-3363f80218a2"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct
-{
-    TargetSpeed =&gt; 40.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection
-    {
-        Length =&gt; 4000.0
-    }
-}</Action><Action
  Guid="67423479-3a7c-4e82-a20c-d6ce91c2ea2f"
 >Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="b102c0bc-3707-4dad-a9f6-1ab3ed25f5e7"
->Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action><Action
+>Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{
+    Distance =&gt; 0.0,
+    Gradient =&gt; 0.0
+} ]</Action><Action
  Guid="1b78718f-fef3-445a-ab5b-55a2bd3189d5"
 >Kernel.TrainData.TrainData.Value.TrainCategories &lt;- Kernel.TrainData.TrainCategoriesStruct
 {
@@ -113,7 +106,17 @@
  Guid="1064c05a-15cb-429d-b8ff-4928f64c8c1e"
 >Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 110.0</Action><Action
  Guid="b65ee900-dde7-4bce-916d-33f5c81bbd9a"
->Kernel.Mode &lt;- Mode.LS</Action></Actions>
+>Kernel.Mode &lt;- Mode.LS</Action><Action
+ Guid="764fc3bd-70d8-4a71-821c-81b2ce593fb5"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
+[
+  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
+    Distance =&gt; 0.0,
+    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
+    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+    Categories =&gt; []
+  }
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -199,7 +202,7 @@
                     D_NVROLL =&gt; 1200,
                     Q_NVSBTSMPERM =&gt; Messages.Q_NVSBTSMPERM.Yes,
                     Q_NVEMRRLS =&gt; Messages.Q_NVEMRRLS.Revoke_emergency_brake_command_at_standstill,
-                    Q_NVGUIPERM =&gt; Messages.Q_NVGUIPERM.Yes,
+                    Q_NVGUIPERM =&gt; Messages.Q_NVGUIPERM.No,
                     Q_NVSBFBPERM =&gt; Messages.Q_NVSBFBPERM.No,
                     Q_NVINHSMICPERM =&gt; Messages.Q_NVINHSMICPERM.Yes,
                     V_NVALLOWOVTRP =&gt; 9,
@@ -442,7 +445,7 @@
 >
 <SubSteps>
 <SubStep
- Name="Sub-step1"
+ Name="Sub-step1 - non protected LX, not in MRSP"
  Guid="ace46cf1-4d11-45cd-b62c-e7c00697b000"
 >
 <Actions>
@@ -500,7 +503,75 @@
 >Kernel.MRSP.SpeedRestrictions ( 8000.0 ) == 60.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="255cd9e9-44c0-48f2-847c-92a5f0e6cc82"
->Kernel.MRSP.SpeedRestrictions ( 2000.0 ) == 40.0</Expectation></Expectations>
+>Kernel.MRSP.SpeedRestrictions ( 2000.0 ) == 60.0</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2 - non protected LX, in MRSP"
+ Guid="31dd83db-3f2a-40fe-acd1-5fa897bfe9aa"
+>
+<Actions>
+<Action
+ Guid="6fe5328a-865e-4d7d-93a9-829fe6bdb31f"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; 0,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 2124,
+    Q_LINK =&gt; Messages.Q_LINK.Linked,
+    Sequence1 =&gt; 
+    [
+        Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LEVEL_CROSSING_INFORMATION =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message
+                {
+                    NID_PACKET =&gt; 88,
+                    Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+                    L_PACKET =&gt; 400,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    NID_LX =&gt; 21,
+                    D_LX =&gt; 20,
+                    L_LX =&gt; 70,
+                    Q_LXSTATUS =&gt; Messages.Q_LXSTATUS.LX_is_not_protected,
+                    V_LX =&gt; 8,
+                    Q_STOPLX =&gt; Messages.Q_STOPLX.No_stop_required,
+                    L_STOPLX =&gt; 0
+                }
+            }
+        }
+    ]
+}</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="6a574960-d3fe-4553-a23d-b7ff4e99834a"
+>Kernel.MRSP.SpeedRestrictions ( 2000.0 ) == 60.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="fe08018e-7ac7-437d-8b60-b6172040cb87"
+>Kernel.MRSP.SpeedRestrictions ( 3000.0 ) == 60.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="dc6c1364-9001-4ec9-87db-9aefabd5b150"
+>Kernel.MRSP.SpeedRestrictions ( 4000.0 ) == 25.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="45c7126f-def6-4470-9ead-42c27d52c2b3"
+>Kernel.MRSP.SpeedRestrictions ( 7000.0 ) == 60.0</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="e6131e81-a4c6-4539-b540-54848c50b8a7"
+>Kernel.MRSP.SpeedRestrictions ( 8000.0 ) == 60.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="83a9dcfa-9360-4ba7-a079-4253749295fa"
+>Kernel.MRSP.SpeedRestrictions ( 50.0 ) == 40.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="e381aeeb-3139-4be7-ab42-8caba06fd331"
+>Kernel.MRSP.SpeedRestrictions ( 500.0 ) == 60.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase

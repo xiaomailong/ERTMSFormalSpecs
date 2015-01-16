@@ -1291,11 +1291,9 @@ Note: If the reference balise is duplicated, it is the trackside responsibility 
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- specIssue="TRUE"
  Name=""
  Guid="3ab48b20-0a96-4f02-93ac-64071624c979"
-><Comment>The term &quot;Linking information is used&quot; is confusing because of its tense. It should rather be &quot;Linking information is {currently in use | applicable}&quot;, #morido, 14/01/16</Comment>
-&quot;Linking information is used&quot; shall be interpreted as when balise group(s) are announced and the minimum safe antenna position has not yet passed the expectation window of the furthest announced balise group.<RequirementSets>
+>&quot;Linking information is used&quot; shall be interpreted as when balise group(s) are announced and the minimum safe antenna position has not yet passed the expectation window of the furthest announced balise group.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1df5cb59-8c5f-4537-a8a4-7cd49fd32617"
@@ -2244,7 +2242,6 @@ The information Initiation of a Communication Session and Version not Compatible
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- specIssue="TRUE"
  Name=""
  Guid="2beacd86-f3da-4d70-9f5b-c90738e82b4e"
 ><ReqRef
@@ -2252,12 +2249,7 @@ The information Initiation of a Communication Session and Version not Compatible
  SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
  Guid="e2af653a-7aea-411d-886d-039c4d2ee4e3"
 >
-</ReqRef><Comment>stan@ertmssolutions.com: seems a spec issue. Indeed, 3.5.3.4.a) covers start of mission case. Actually, 3.5.3.4.d) seems to be included inside 3.5.3.4.a), as manual level selection can only happen during SoM procedure. 
-
-Answer: --&gt; the following paragraph makes it possible at virtually any time when there is a driver present (and the train is at stand-still):
-
-3.18.4.2.4 For operational fallback situations: at standstill, the onboard equipment shall allow the driver to change the ERTMS/ETCS level: The selection shall be limited to those contained in the table of priority, if available</Comment>
-If the driver has manually changed the level to 2 or 3<RequirementSets>
+</ReqRef>If the driver has manually changed the level to 2 or 3<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="5148da8e-a663-49f5-854f-a95463ebe852"
@@ -3517,11 +3509,9 @@ Contact given RBC by using RBC ID and the RBC phone number<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- specIssue="TRUE"
  Name=""
  Guid="0495c96f-8aa3-4cc5-b09d-99f5379d6fcf"
-><Comment>[stan@ertmssolutions.com] what does it mean? what are the implications of the message being considered as sent?</Comment>
-In case a message has to be sent during the loss of the safe radio connection, this message shall be considered as sent.<RequirementSets>
+>In case a message has to be sent during the loss of the safe radio connection, this message shall be considered as sent.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="fcb7fd4b-2240-44d7-9248-5151cdb1d977"
@@ -3590,7 +3580,7 @@ In case a message has to be sent during the loss of the safe radio connection, t
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- specIssue="TRUE"
+ infoRequired="TRUE"
  Name=""
  Guid="21b52bea-13d1-437e-9aec-4d66149f68d5"
 ><Comment>[stan@ertmssolutions.com] Any other errors requiring this?</Comment>
@@ -8016,7 +8006,7 @@ The safe train length information shall be re-calculated for every position repo
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="e3a55e7e-350d-4dfa-86ea-512545c008b1"
@@ -8048,11 +8038,12 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="f042e036-f6fa-4673-a7a6-5248b3127084"
->The resolution of the position indication shall be 1 metre (sufficient to allow the driver to report the train position when communicating with the signalman).<RequirementSets>
+><Comment>All the distances in EFS are stored with resolution of 1 metre.</Comment>
+The resolution of the position indication shall be 1 metre (sufficient to allow the driver to report the train position when communicating with the signalman).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="9be3e764-5c2b-4efe-9bb6-2534dca6dbdf"
@@ -8065,7 +8056,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="73d5ed04-a22f-4b38-8b54-747a7b298b0d"
@@ -8077,77 +8068,77 @@ The safe train length information shall be re-calculated for every position repo
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.6.6.4"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="a6897c95-bcce-48ed-8949-f1a53ad4b2c4"
 >Geographical position information shall always use a balise group as geographical position reference balise group and if needed an offset from that balise group. A geographical position reference balise group shall be either:<Sub>
 <Paragraph
  id="3.6.6.4.a"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="e55ef713-c059-4748-854d-c0d018fce3fc"
 >part of the last reported balise groups memorised on-board, in case the information is received from radio, OR<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="325c9645-862c-4e1f-829b-709762d91c54"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="878fab95-2ecd-4011-8736-c47d04a720d3"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="cbfb68cc-9442-4660-b6a1-6278c0987eab"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.6.6.4.b"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="476b92ec-43c6-4617-bf87-d99d65ac0ed6"
 >the balise group transmitting the information, in case the information is received from balise group, OR<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="cc6fb737-486c-4504-a290-dceb12c8418a"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="fa976237-35c5-49e8-979c-ae26201e8e5b"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2ce2ec0a-5707-410b-8dff-0f1d559be0e5"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.6.6.4.c"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="0172eb2d-0435-4a9c-863c-3dab30a32195"
 >any balise group not yet passed at the time of reception of the information.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="b3ea712e-60af-440e-b008-12fd57159d07"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="2806eaec-c939-459c-84f1-c02bfaa73d19"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1af12442-a7f8-4b16-af59-4042103fd491"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -8174,7 +8165,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="b69a0632-61db-40c6-bb0b-d93d2e2d8348"
@@ -8206,7 +8197,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="6f9b176c-5d2f-4c1e-ac6f-775a0e864dfe"
@@ -8219,12 +8210,12 @@ The safe train length information shall be re-calculated for every position repo
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="b1016da6-644e-44d0-8cd1-a71b6467521b"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="f862c7cf-9f26-40fc-8cdf-bc21a5a4d71a"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a1ac0608-a56e-4a4d-aa0f-b2b2d9a3cda7"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -8234,7 +8225,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="b9a734e7-b75f-426b-a5f9-6926dfdc248d"
@@ -8268,7 +8259,7 @@ The safe train length information shall be re-calculated for every position repo
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="76868626-5a6b-4610-a688-a56653fef701"
@@ -8306,7 +8297,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="b6b00068-7433-47a4-9720-8c1f056ecace"
@@ -8318,7 +8309,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="8d446063-9881-49af-baa0-fbe1656e8820"
@@ -8337,9 +8328,11 @@ The safe train length information shall be re-calculated for every position repo
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
+ infoRequired="TRUE"
  Name=""
  Guid="cf9672ca-2e57-4a1b-a1dc-d490283fcb09"
->it is told not to do so, OR<RequirementSets>
+><Comment>How can it be told not to do so?</Comment>
+it is told not to do so, OR<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="3cd029ae-a40a-4745-af9a-a951acde2278"
@@ -8352,7 +8345,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="8d2de3da-bec4-45ae-83d3-1b2de8d2a295"
@@ -8369,7 +8362,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="414f47b6-9c22-4a9c-89cf-495c9741dd20"
@@ -8386,7 +8379,7 @@ The safe train length information shall be re-calculated for every position repo
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="33c5dfdb-d429-4a77-84e8-bc1263f07586"
@@ -17499,11 +17492,9 @@ V_PBD = 0<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- specIssue="TRUE"
  Name=""
  Guid="00dfa999-7dd3-4fe9-a2d0-8fab1506a7d9"
-><Comment>The future max safe front end is unknown, but when calculating braking curves, future track conditions are taken in account.</Comment>
-The starting point of a profile type track condition shall be evaluated taking into account the max safe front end of the train, the end of the profile taking into account the min safe rear end of the train. Location type data shall be evaluated taking into account the max safe front of the train.<Sub>
+>The starting point of a profile type track condition shall be evaluated taking into account the max safe front end of the train, the end of the profile taking into account the min safe rear end of the train. Location type data shall be evaluated taking into account the max safe front of the train.<Sub>
 <Paragraph
  id="3.12.1.2.1.1"
  type="NOTE"
@@ -18087,7 +18078,7 @@ The starting point of a profile type track condition shall be evaluated taking i
  specIssue="TRUE"
  Name=""
  Guid="f68f0880-1233-4bd8-adf9-cadf0073af35"
-><Comment>Do not know what this external function is</Comment>
+><Comment>What is the ERTMS/ETCS external function?</Comment>
 Send information with the remaining distance to an ERTMS/ETCS external function, with the exception of big metal mass track condition, sound horn track condition, non stopping area, tunnel stopping area and supervision of radio transmission which are handled inside the ERTMS/ETCS on-board equipment.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -18189,7 +18180,7 @@ Send information with the remaining distance to an ERTMS/ETCS external function,
  specIssue="TRUE"
  Name=""
  Guid="660c224a-36f1-4dae-bb7d-671adbce8172"
-><Comment>The variable M_LINEGAUGE is used in the Route Suitability Package 7.4.2.21. Line gauge or loading gauge?</Comment>
+><Comment>The variable M_LINEGAUGE is used in the Route Suitability Package 7.4.2.21. Line gauge or Loading gauge?</Comment>
 Route suitability data defines which values concerning loading gauge, traction system and axle load category a train must meet to be allowed to enter the route.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -19657,11 +19648,9 @@ Route suitability data defines which values concerning loading gauge, traction s
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- specIssue="TRUE"
  Name=""
  Guid="36b7b2d7-fafa-4229-b0da-4e4d149ed7c7"
-><Comment>What happens for the case of not protected level crossing? EBD has to cross EBI supervision limit or 0km/h?</Comment>
-In case the LX is not protected, ERTMS/ETCS on-board equipment shall be informed:<Sub>
+>In case the LX is not protected, ERTMS/ETCS on-board equipment shall be informed:<Sub>
 <Paragraph
  id="3.12.5.6.a"
  type="REQUIREMENT"
@@ -22124,11 +22113,9 @@ When the brake percentage is captured as Train Data and the conversion model is 
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
  Name=""
  Guid="00a69e16-494d-4601-947a-02a6541733da"
-><Comment>See 3.12.1.3.3 for more details....</Comment>
-Track conditions related to powerless section<RequirementSets>
+>Track conditions related to powerless section<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="197d7014-36ed-4caa-969b-fc9f4d67762c"
@@ -22295,11 +22282,9 @@ Track conditions related to powerless section<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
  Name=""
  Guid="a2d32abf-08a0-4bc5-b97e-117e6a4fd998"
-><Comment>See 3.12.1.3.3 for more details....</Comment>
-The speed and distance monitoring shall take into account the following types of track condition received from trackside (see section 3.12.1): powerless section, inhibition of regenerative brake, eddy current brake and magnetic shoe brake.<RequirementSets>
+>The speed and distance monitoring shall take into account the following types of track condition received from trackside (see section 3.12.1): powerless section, inhibition of regenerative brake, eddy current brake and magnetic shoe brake.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="aaf49ae0-a262-463f-b8df-76a387782f8e"
@@ -24404,11 +24389,9 @@ A_brake_emergency_x(V) is equal to the emergency brake model, A_brake_emergency,
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- specIssue="TRUE"
  Name=""
  Guid="05b26663-30b6-44d4-8063-71e9774b2488"
-><Comment>We assume that the A_brake_emergency used here is the one calculated by the conversion model.</Comment>
-The maximum EB deceleration A_ebmax shall be the maximum of A_brake_emergency between 0 km/h and the maximum speed of the train.<RequirementSets>
+>The maximum EB deceleration A_ebmax shall be the maximum of A_brake_emergency between 0 km/h and the maximum speed of the train.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="0339b69d-f183-4b53-88aa-d8009f7eb968"
@@ -26625,10 +26608,9 @@ V_P_EOA (d_estfront) = 0 if d_estfront + Vest * ( T_driver + T_bs1 ) &gt;= d_EOA
  status="Implemented"
  version="3.0.0"
  infoRequired="TRUE"
- specIssue="TRUE"
  Name=""
  Guid="8b2366a5-38e0-4885-836f-fdcbbf43e1b8"
-><Comment>V_GUI_EOA ( d_estfront ) = ?</Comment>
+><Comment>V_GUI_EOA is not defined.</Comment>
 In case the calculation of the GUI curve is enabled, for display purpose only, the P speed related to SBD shall be calculated for the estimated train front end as follows:
 V_P_EOA (d_estfront) = min { V_SBD ( d_estfront + Vest * ( T_driver + T_bs1 ) ), V_GUI_EOA ( d_estfront ) }
 V_P_EOA (d_estfront) = 0 if d_estfront + Vest * ( T_driver + T_bs1 ) &gt;= d_EOA<RequirementSets>
@@ -26646,11 +26628,9 @@ V_P_EOA (d_estfront) = 0 if d_estfront + Vest * ( T_driver + T_bs1 ) &gt;= d_EOA
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- specIssue="TRUE"
  Name=""
  Guid="07eb8e7a-b28f-4fcc-96e6-2042d5ca7980"
-><Comment>d_EBD is undefined for Vtarget (will always return Infinity), because for each EBD based target (except SvL or SR distance) the EBD curve crosses the ceiling speed EBI supervision limit at the target location (see 3.13.8.3.1). EBI = P + dV_EBI (see 3.13.9.2.2), so d_EBD is undefined for Vtarget (= P).</Comment>
-In case the calculation of the GUI curve is inhibited, for display purpose only, the P speed related to EBD, shall be calculated for the max safe front end of the train as follows (see Figure 49):
+>In case the calculation of the GUI curve is inhibited, for display purpose only, the P speed related to EBD, shall be calculated for the max safe front end of the train as follows (see Figure 49):
 V_P_EBD_Target (d_maxsafefront) = max{ V_EBD ( d_maxsafefront + Vest * ( T_driver + T_bs2 ) + D_be_display ) - ( V_delta0 + V_delta1 + V_delta2 ), Vtarget}
 V_P_EBD_Target (d_maxsafefront) = Vtarget if d_maxsafefront + Vest * ( T_driver + T_bs2 ) + D_be_display &gt;= d_EBD (Vtarget)
 With V_delta0, V_delta1 and V_delta2 calculated according to 3.13.9.3.2.10
@@ -26689,10 +26669,9 @@ With D_be_display = ( Vest + V_delta0 + V_delta1 / 2 ) * T_traction + ( Vest + V
  status="Implemented"
  version="3.0.0"
  infoRequired="TRUE"
- specIssue="TRUE"
  Name=""
  Guid="18ac7a51-42e7-45d9-b16c-290a09782304"
-><Comment>V_GUI_EBD_Target ( d_maxsafefront ) = ?</Comment>
+><Comment>V_GUI_EBD_Target is not defined.</Comment>
 In case the calculation of the GUI curve is enabled, for display purpose only, the P speed related to EBD, shall be calculated for the max safe front end of the train as follows:
 V_P_EBD_Target (d_maxsafefront) = max { min { ( V_EBD ( d_maxsafefront + Vest * ( T_driver + T_bs2 ) + D_be_display ) - ( V_delta0 + V_delta1 + V_delta2 ) ), V_GUI_EBD_Target ( d_maxsafefront ) } ,  Vtarget }
 V_P_EBD_Target ( d_maxsafefront ) = Vtarget if d_maxsafefront + Vest * ( T_driver + T_bs2 ) + D_be_display &gt;= d_EBD ( Vtarget ) or if d_maxsafefront &gt;= d_GUI ( Vtarget )
@@ -26804,7 +26783,7 @@ d_P ( Vtarget ) = d_EBI ( Vtarget ) - Vtarget * ( T_driver + T_bs2 )<Sub>
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="59bae633-99ce-4f69-992a-cec56e0b4c41"
@@ -26817,7 +26796,7 @@ d_P ( Vtarget ) = d_EBI ( Vtarget ) - Vtarget * ( T_driver + T_bs2 )<Sub>
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="c6aacc41-0ade-4c43-a0c5-e212f9a6a52f"
@@ -26835,7 +26814,7 @@ d_P ( Vtarget ) = d_EBI ( Vtarget ) - Vtarget * ( T_driver + T_bs2 )<Sub>
  optional="FALSE"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="4ba91473-9e38-449c-87e0-203353bc7bcb"
@@ -27901,7 +27880,6 @@ Or d_P(V_MRSP-n) = min { ( d_SBI1(V_MRSP-n) - V_MRSP-n * Tdriver ), d_GUI(V_MRSP
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- specIssue="TRUE"
  Name=""
  Guid="1da03f20-a99e-4472-aa18-712448e84434"
 ><ReqRef
@@ -27914,8 +27892,7 @@ Or d_P(V_MRSP-n) = min { ( d_SBI1(V_MRSP-n) - V_MRSP-n * Tdriver ), d_GUI(V_MRSP
  SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
  Guid="9d90c4cd-c397-47e3-89b0-0300c0da5368"
 >
-</ReqRef><Comment>We suppose that the train must have an MA available on-board to be able to apply this rule (otherwise it cannot run until the first balise group).</Comment>
-In level 2/3: Train trip shall be initiated if the on-board equipment detects that the minimum safe front end has passed the EOA/LOA location.<RequirementSets>
+</ReqRef>In level 2/3: Train trip shall be initiated if the on-board equipment detects that the minimum safe front end has passed the EOA/LOA location.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2bce2f30-21bb-48f1-b443-5b365110548f"
@@ -27930,7 +27907,6 @@ In level 2/3: Train trip shall be initiated if the on-board equipment detects th
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- specIssue="TRUE"
  Name=""
  Guid="858a955b-8eb5-4eac-b52e-49723ffd3d9b"
 ><ReqRef
@@ -27943,8 +27919,7 @@ In level 2/3: Train trip shall be initiated if the on-board equipment detects th
  SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
  Guid="e2c325e0-4ccb-4ffb-9483-1d177a5174d0"
 >
-</ReqRef><Comment>We suppose that the train must have an MA available on-board to be able to apply this rule (otherwise it cannot run until the first balise group).</Comment>
-In Level 1: Train Trip shall be initiated if the on-board equipment detects that the minimum safe antenna position (calculated by subtracting distance between active Eurobalise antenna and the front end of the train from the min safe front end position) has passed the EOA/LOA location.<RequirementSets>
+</ReqRef>In Level 1: Train Trip shall be initiated if the on-board equipment detects that the minimum safe antenna position (calculated by subtracting distance between active Eurobalise antenna and the front end of the train from the min safe front end position) has passed the EOA/LOA location.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="b80d0b12-fb02-4c3e-9ab8-f903a20e21ee"
@@ -27959,12 +27934,9 @@ In Level 1: Train Trip shall be initiated if the on-board equipment detects that
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- specIssue="TRUE"
  Name=""
  Guid="7da2c959-4215-45b4-b239-3b315d76277c"
-><Comment>When the EVC has just passed a new LRBG, the min front end of the train will not be covered by the MRSP.
-Our implementation handles this by taking the max between zero distance and the min front end (so that V_MRSP is derived only from distances covered by the current MRSP)</Comment>
-In the following sections, the term V_MRSP (together with the derived ceiling supervision limits) refers to the lowest MRSP element encountered between the min safe front end and the max safe front end of the train.<RequirementSets>
+>In the following sections, the term V_MRSP (together with the derived ceiling supervision limits) refers to the lowest MRSP element encountered between the min safe front end and the max safe front end of the train.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a84e2053-7be1-4f7b-b147-260ae39e524a"
@@ -28824,12 +28796,9 @@ Triggering condition #; Estimated speed; Train front end position (max safe); TI
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
  Name=""
  Guid="c9726f4e-f5b9-4cb2-8c10-be51cb610a07"
-><Comment>What is Vtarget?</Comment>
-t1; Vest &lt;= Vtarget; Not relevant; -; Normal Status<RequirementSets>
+>t1; Vest &lt;= Vtarget; Not relevant; -; Normal Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="cddb8f62-5056-4124-9b74-4152bd6b971b"
@@ -28844,13 +28813,9 @@ t1; Vest &lt;= Vtarget; Not relevant; -; Normal Status<RequirementSets>
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
  Name=""
  Guid="235a2d43-f1f5-49b1-8517-1f6b17a29a4c"
-><Comment>For which distance is computed V_MRSP?
-What is Vtarget?</Comment>
-t2; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_I(Vest);-; Normal Status<RequirementSets>
+>t2; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_I(Vest);-; Normal Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="c6302ae3-3e01-4c1c-a536-9e5c65208cb1"
@@ -28865,13 +28830,9 @@ t2; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &lt;= d_I(Vest);-; Normal Sta
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
  Name=""
  Guid="fda34875-06ef-46a2-b272-8fdf00368ad5"
-><Comment>For which distance is computed V_MRSP?
-What is Vtarget?</Comment>
-t3; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_I(Vest); -; Indication Status<RequirementSets>
+>t3; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_I(Vest); -; Indication Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="7adbf236-b9f7-42a4-a295-e31b771220fe"
@@ -28886,13 +28847,9 @@ t3; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_I(Vest); -; Indication
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
  Name=""
  Guid="81b045fa-67f4-4abe-9d72-380cb0687a1d"
-><Comment>For which distance is computed V_MRSP?
-What is Vtarget?</Comment>
-t4; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_P(Vest); -; Overspeed Status<RequirementSets>
+>t4; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_P(Vest); -; Overspeed Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="f01efe81-fd2e-4fb0-a661-ec671ea2ff63"
@@ -28907,12 +28864,9 @@ t4; Vtarget &lt; Vest &lt;= V_MRSP; d_maxsafefront &gt; d_P(Vest); -; Overspeed 
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
  Name=""
  Guid="366c7bc8-9a83-43fb-b4e8-f41812946c97"
-><Comment>For which distance is computed V_MRSP?</Comment>
-t5; V MRSP &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP); -; Overspeed Status(Pre-indication display area)<RequirementSets>
+>t5; V MRSP &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP); -; Overspeed Status(Pre-indication display area)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="56143e92-5587-47f9-8a85-87d610a03625"
@@ -28927,12 +28881,9 @@ t5; V MRSP &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_maxsafefront &lt;= d_I(
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
  Name=""
  Guid="ac2002ec-cc04-4e25-8344-d90765ce4d29"
-><Comment>For which distance is computed V_MRSP?</Comment>
-t6; V_MRSP &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_W(Vest); -; Overspeed Status<RequirementSets>
+>t6; V_MRSP &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_W(Vest); -; Overspeed Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="8e437c99-3913-43d7-af42-12016ce6183d"
@@ -28947,13 +28898,9 @@ t6; V_MRSP &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_I(V_MRSP) &lt; d_maxsaf
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
  Name=""
  Guid="d394cede-dff2-4764-b72a-288ee8d5617c"
-><Comment>For which distance is computed V_MRSP?
-What is Vtarget?</Comment>
-t7; Vtarget + d_Vwarning(Vtarget) &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_maxsafefront &gt; d_W(Vest); TCO; Warning Status<RequirementSets>
+>t7; Vtarget + d_Vwarning(Vtarget) &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_maxsafefront &gt; d_W(Vest); TCO; Warning Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d0077084-971f-4f88-805e-83f20b508e31"
@@ -28968,12 +28915,9 @@ t7; Vtarget + d_Vwarning(Vtarget) &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
  Name=""
  Guid="d916181f-d7a1-4043-9617-e814b97ae7b4"
-><Comment>For which distance is computed V_MRSP?</Comment>
-t8; V_MSRP + d_Vwarning(V MSRP) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); dmaxsafefront &lt;= d_I(V_MRSP); TCO; Warning Status(Pre-indication display area)<RequirementSets>
+>t8; V_MSRP + d_Vwarning(V MSRP) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); dmaxsafefront &lt;= d_I(V_MRSP); TCO; Warning Status(Pre-indication display area)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1671b1b8-a74d-49e3-8fb4-ec3bdaefc730"
@@ -28988,12 +28932,9 @@ t8; V_MSRP + d_Vwarning(V MSRP) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); dmaxsafe
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
  Name=""
  Guid="0342251f-d656-4d41-8ece-bde758fbfadf"
-><Comment>For which distance is computed V_MRSP?</Comment>
-t9; V_MSRP + dVwarning(V_MSRP) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_SBI2(Vest); TCO; Warning Status<RequirementSets>
+>t9; V_MSRP + dVwarning(V_MSRP) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_SBI2(Vest); TCO; Warning Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1577ba30-14b6-466b-a037-a946c64e4826"
@@ -29008,13 +28949,9 @@ t9; V_MSRP + dVwarning(V_MSRP) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); d_I(V_MRS
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
  Name=""
  Guid="49cb1ac1-74b3-4afe-865d-d6b4401719da"
-><Comment>For which distance is computed V_MRSP?
-What is Vtarget?</Comment>
-t10; Vtarget + dVsbi(Vtarget) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); d_maxsafefront &gt; d_SBI2(Vest); SB; Intervention Status<RequirementSets>
+>t10; Vtarget + dVsbi(Vtarget) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); d_maxsafefront &gt; d_SBI2(Vest); SB; Intervention Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="7547d5fa-3f9e-481f-bd7c-2a736846287a"
@@ -29029,12 +28966,9 @@ t10; Vtarget + dVsbi(Vtarget) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); d_maxsafef
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
  Name=""
  Guid="b3b7e30c-6bb4-4cd9-8e6d-dfb514676cbd"
-><Comment>For which distance is computed V_MRSP?</Comment>
-t11; V_MRSP + dVsbi(V_MRSP) &lt; Vest &lt;= V_MSRP + dVebi(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP); SB; Intervention Status(Pre-indication display area)<RequirementSets>
+>t11; V_MRSP + dVsbi(V_MRSP) &lt; Vest &lt;= V_MSRP + dVebi(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP); SB; Intervention Status(Pre-indication display area)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="81db3823-c9bd-4d93-9918-e9b56ae30ca2"
@@ -29049,13 +28983,9 @@ t11; V_MRSP + dVsbi(V_MRSP) &lt; Vest &lt;= V_MSRP + dVebi(V_MRSP); d_maxsafefro
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
  Name=""
  Guid="e354be4a-8c30-493a-8607-87b51d1ac30c"
-><Comment>For which target is computed d_EBI? We suppose that it is computed for MRDT.
-For which distance is computed V_MRSP?</Comment>
-t12; V_MRSP + dVsbi(V_MRSP) &lt; Vest &lt;= V_MSRP + dVebi(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_EBI(Vest); SB; Intervention Status<RequirementSets>
+>t12; V_MRSP + dVsbi(V_MRSP) &lt; Vest &lt;= V_MSRP + dVebi(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_EBI(Vest); SB; Intervention Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="fd2b3904-9bce-460f-9f07-cfced7933436"
@@ -29070,13 +29000,9 @@ t12; V_MRSP + dVsbi(V_MRSP) &lt; Vest &lt;= V_MSRP + dVebi(V_MRSP); d_I(V_MRSP) 
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
  Name=""
  Guid="6d9d71c4-5508-47ef-ab3d-c32522306769"
-><Comment>For which distance is computed V_MRSP?
-What is Vtarget?</Comment>
-t13; Vtarget + dVebi(Vtarget) &lt; Vest &lt;= V_MSRP + dVebi(V_MRSP); d_maxsafefront &gt; d_EBI(Vest); EB; Intervention Status<RequirementSets>
+>t13; Vtarget + dVebi(Vtarget) &lt; Vest &lt;= V_MSRP + dVebi(V_MRSP); d_maxsafefront &gt; d_EBI(Vest); EB; Intervention Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="0c9b09c9-c01e-4c35-8380-88efc12d6eaa"
@@ -29091,12 +29017,9 @@ t13; Vtarget + dVebi(Vtarget) &lt; Vest &lt;= V_MSRP + dVebi(V_MRSP); d_maxsafef
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
- specIssue="TRUE"
  Name=""
  Guid="a77d9b43-ca07-4b88-99c9-aee4aac78473"
-><Comment>For which distance is computed V_MRSP?</Comment>
-t14; Vest &gt; V_MRSP + dVebi(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP); EB; Intervention Status(Pre-indication display area)<RequirementSets>
+>t14; Vest &gt; V_MRSP + dVebi(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP); EB; Intervention Status(Pre-indication display area)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1c14d564-7efb-44a6-b360-422fdff6fe3b"
@@ -32914,11 +32837,9 @@ If the brake command was triggered due to the driver not having acknowledged a t
  reviewed="TRUE"
  status="NA"
  version="3.0.0"
- specIssue="TRUE"
  Name=""
  Guid="796923a0-8b8a-4e7b-8af3-43f3398b27dd"
-><Comment>If this information is not sent together with start and end of reversing area, what the on-board shall do?</Comment>
-Together with start and end of reversing area, the following supervision information shall be sent:<Sub>
+>Together with start and end of reversing area, the following supervision information shall be sent:<Sub>
 <Paragraph
  id="3.15.4.2.a"
  type="REQUIREMENT"

@@ -214,23 +214,13 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The cached function for this call
-        /// </summary>
-        public Function CachedFunction = null;
-
-        /// <summary>
         /// The function which is called by this call statement
         /// </summary>
         /// <param name="context"></param>
         /// <param name="explain"></param>
         public Functions.Function getFunction(InterpretationContext context, ExplanationPart explain)
         {
-            Functions.Function retVal = CachedFunction;
-
-            if (retVal == null)
-            {
-                retVal = getCalled(context, explain) as Functions.Function;
-            }
+            Functions.Function retVal = getCalled(context, explain) as Functions.Function;
 
             return retVal;
         }
@@ -428,7 +418,7 @@ namespace DataDictionary.Interpreter
                 }
                 catch (Exception e)
                 {
-                    AddError("Cannot evaluate function call " + function.Name);
+                    AddErrorAndExplain("Cannot evaluate function call " + function.Name, subExplanation);
                     throw new Exception("inner evaluation failure");
                 }
                 finally

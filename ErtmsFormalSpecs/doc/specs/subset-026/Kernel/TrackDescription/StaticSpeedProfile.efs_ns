@@ -148,7 +148,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ad8a7310-f6d4-44bd-8971-a19fa3035c51"
 >
-</ReqRef></StructureElement><StructureElement
+</ReqRef><Comment>Any train category that does not correspond to the standard values in CantDeficiency.</Comment>
+</StructureElement><StructureElement
  TypeName="Messages.Q_DIFF"
  Default=""
  Mode="Internal"
@@ -854,7 +855,7 @@ INITIAL_VALUE
     BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrainData.TrainCategoryEnum"
+ Type="Kernel.TrainData.TrainCategoryEnum"
  Default=""
  X="660"
  Y="240"
@@ -865,6 +866,7 @@ INITIAL_VALUE
  Name="ERTMSCategory_To_EFSCategory"
  Guid="9c8e2904-7c8f-462a-a1a2-8309ac542f92"
 >
+<Comment>Converts the category value received in the packet to an enum value for EFS.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.NC_DIFF"
@@ -896,6 +898,40 @@ INITIAL_VALUE
  Guid="d33744f8-9650-4bc2-8e19-c1a8cfe405ec"
 >
 <Expression>TrainData.TrainCategoryEnum.PassengerTrain</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SSPStart"
+ Guid="897030b6-5757-406a-9f8b-8b167459aa7d"
+>
+<Comment>Returns the start location of the static speed profile.</Comment>
+<Cases>
+<Case
+ Name="No SSP"
+ Guid="94b60146-98fa-4e69-b98e-07e6716d248d"
+>
+<PreConditions>
+<PreCondition
+ Guid="cb66de97-90ab-4a91-92d2-e3d00eaa5426"
+>SSP == []</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
+ Name="Value"
+ Guid="ad59596b-0db0-4f50-b0fb-cfc610a8a2b4"
+>
+<Expression>REDUCE SSP
+ USING X IN 
+  BaseTypes.MinDistance(
+    X1 =&gt; X.Distance,
+    X2 =&gt; RESULT
+  )
+ INITIAL_VALUE BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

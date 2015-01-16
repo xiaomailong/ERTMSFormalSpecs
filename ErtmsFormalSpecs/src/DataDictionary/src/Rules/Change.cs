@@ -15,6 +15,9 @@
 // ------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+
 namespace DataDictionary.Rules
 {
     /// <summary>
@@ -73,7 +76,7 @@ namespace DataDictionary.Rules
                 {
                     Log.Info(Variable.FullName + "<-" + NewValue.LiteralName);
                 }
-                Variable.Value = NewValue;
+                ChangeVariableValue(NewValue);
                 Applied = true;
             }
         }
@@ -85,8 +88,23 @@ namespace DataDictionary.Rules
         {
             if (Applied)
             {
-                Variable.Value = PreviousValue;
+                ChangeVariableValue(PreviousValue);
                 Applied = false;
+            }
+        }
+
+        /// <summary>
+        /// Changes the value of the corresponding variable
+        /// </summary>
+        /// <param name="value"></param>
+        private void ChangeVariableValue(IValue value)
+        {
+            Variable.Value = value;
+
+            Variables.Variable variable = Variable as Variables.Variable;
+            if (variable != null)
+            {
+                variable.HandleChange();
             }
         }
     }

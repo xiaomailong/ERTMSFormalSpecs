@@ -145,6 +145,11 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6297e289-f36a-4369-9672-21ddb7fba4ff"
 >
+</ReqRef><ReqRef
+ Id="137a2d02-81cd-4bb2-a7fa-6fcf738cf589"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="658e5d6f-cd8d-495b-be31-57e0f14e7371"
+>
 </ReqRef><Comment>This function is used to compute the estimated front end position, the max and min safe front end position of the train. The parameter specifies which of the values must be returned.</Comment>
 <Parameters>
 <Parameter
@@ -155,13 +160,22 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Position not determined"
+ Guid="5d7f2191-a648-4b75-9c90-464357706664"
+>
+<PreConditions>
+<PreCondition
+ Guid="7ac6b80c-17dc-4f43-8b49-b875002e5f28"
+>NOT ActiveFunctions.DeterminePositionFromLRBG()</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
  Name="No valid position on-board"
  Guid="fdff3051-a684-4dbb-be2b-50187f6898e8"
 >
 <PreConditions>
 <PreCondition
  Guid="cf061e0e-d4c3-4801-88b0-96d5c524d68f"
->Position.DataState != DataState.Valid</PreCondition></PreConditions>
+>Position.DataState != Default.DataState.Valid</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Nominal"
@@ -207,6 +221,11 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d39884e0-a5bb-433b-80fa-0ed1ed02c038"
 >
+</ReqRef><ReqRef
+ Id="137a2d02-81cd-4bb2-a7fa-6fcf738cf589"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="89d635a3-80b1-4b4b-a8a5-628b159b8faa"
+>
 </ReqRef><Comment>This function is used to compute the estimated rear end position, the max and min safe rear end position of the train. The parameter specifies which of the values must be returned. These values are computed iff the train integrity status is valid (confirmed by driver or by integrity monitoring device).</Comment>
 <Parameters>
 <Parameter
@@ -217,6 +236,15 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Position not determined"
+ Guid="432cfe00-3605-43a1-8d81-cd7440cb03d2"
+>
+<PreConditions>
+<PreCondition
+ Guid="c2ce85a0-7d1d-4d2b-b123-8da80708e062"
+>NOT ActiveFunctions.DeterminePositionFromLRBG()</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
  Name="No valid position on-board"
  Guid="c23e833e-473b-4784-a10a-806485ebdfe1"
 >
@@ -233,7 +261,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <PreCondition
  Guid="af6354bc-53f0-4317-a7c6-bd6f449d83af"
 >PointOfInterest == Default.DistanceInterval.Nom</PreCondition></PreConditions>
-<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(TrainData.TrainData.Value.TrainLength) - BTM.LRBG.Position.Position</Expression>
+<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(TrainLength()) - BTM.LRBG.Position.Position</Expression>
 </Case><Case
  Name="Maximum"
  Guid="b426890d-eef3-43d5-a1b8-fa3270e36c15"
@@ -242,7 +270,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <PreCondition
  Guid="39cfca21-49df-4f1e-8025-c2388dba9c80"
 >PointOfInterest == Default.DistanceInterval.Max</PreCondition></PreConditions>
-<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(TrainData.TrainData.Value.TrainLength) + Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) - BTM.LRBG.Position.Position</Expression>
+<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(TrainLength()) + Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) - BTM.LRBG.Position.Position</Expression>
 </Case><Case
  Name="Minimum"
  Guid="9c92d5c6-f86d-4cb4-b67d-50e0b531635d"
@@ -251,11 +279,13 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <PreCondition
  Guid="add9c23c-ed04-4a06-be98-4afc341bfbd8"
 >PointOfInterest == Default.DistanceInterval.Min</PreCondition></PreConditions>
-<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(TrainData.TrainData.Value.TrainLength) - Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) - BTM.LRBG.Position.Position</Expression>
+<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(TrainLength()) - Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) - BTM.LRBG.Position.Position</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="70"
+ Y="390"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -279,11 +309,104 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
   Messages.Q_LENGTH.Train_integrity_confirmed_by_integrity_monitoring_device
 ]</Expression>
 </Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ X="480"
+ Y="260"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DistanceRunInSR"
+ Guid="773d6d2d-8050-4fef-92e6-539ea0b9728d"
+>
+<ReqRef
+ Id="80c7f3b7-09d1-4a40-ab28-0aafd6ac3530"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c04e98fc-fc2c-4a33-b9c9-69a2cf7ed5f5"
+>
+</ReqRef><Comment>Provides the distance the train has run in SR mode, for comparison wit hthe maxmum distance allowed to run in SR.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.DistanceInterval"
+ Name="PointOfInterest"
+ Guid="9039d245-ee58-4fd1-845e-23a0e2693a98"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Nominal"
+ Guid="2cd35a10-37d1-401f-b71c-605833fe0011"
+>
+<PreConditions>
+<PreCondition
+ Guid="a04a9fe3-ccfe-41e7-9db0-4e4c173b87c7"
+>PointOfInterest == Default.DistanceInterval.Nom</PreCondition></PreConditions>
+<Expression>Odometry.NominalDistance - SRStartDistance</Expression>
+</Case><Case
+ Name="Maximum"
+ Guid="eea4e50b-8a7e-4d8d-9385-5e5c8f746d64"
+>
+<PreConditions>
+<PreCondition
+ Guid="e791ab41-f4e1-47ec-9211-23e80d1283e7"
+>PointOfInterest == Default.DistanceInterval.Max</PreCondition></PreConditions>
+<Expression>Odometry.NominalDistance + Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) - SRStartDistance</Expression>
+</Case><Case
+ Name="Minimum"
+ Guid="8daa68a5-19d7-4426-9706-3dcec08d2d2b"
+>
+<PreConditions>
+<PreCondition
+ Guid="4d659489-1337-46f0-b444-4c9721144492"
+>PointOfInterest == Default.DistanceInterval.Min</PreCondition></PreConditions>
+<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) - SRStartDistance</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Length"
+ Default=""
+ X="70"
+ Y="320"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="TrainLength"
+ Guid="f2c6361e-b0a6-4453-8039-fae14928bd1d"
+>
+<ReqRef
+ Id="a3be6193-1d98-4009-8e1d-df9cd86ee857"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e59a1220-f70f-4356-a0ec-cf032e1b595c"
+>
+</ReqRef><ReqRef
+ Id="e1d78a17-1bcd-4870-a539-278a995cac92"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6494a7a5-38f9-45d5-9701-29b57a14420a"
+>
+</ReqRef><Comment>Provides the train length for the train position supervision.
+In SL mode, the front and rear ends of the train are considered to be the front and rear of the engine.</Comment>
+<Cases>
+<Case
+ Name="SL Mode"
+ Guid="9b767de0-3468-4f36-af82-70cfb7eb5281"
+>
+<PreConditions>
+<PreCondition
+ Guid="7f5f21f8-4aef-4736-b345-d96f9e3f3499"
+>Mode == Mode.SL</PreCondition></PreConditions>
+<Expression>TrainData.TrainData.Value.EngineLength</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="978c2759-2734-4aea-b702-6440e1f67f06"
+>
+<Expression>TrainData.TrainData.Value.TrainLength</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
  X="70"
- Y="340"
+ Y="150"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -315,7 +438,9 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <PreConditions>
 <PreCondition
  Guid="ebb63de6-5d6c-42ea-863c-cc45b2035c0b"
->Available ( BTM.LRBG )</PreCondition></PreConditions>
+>Available ( BTM.LRBG )
+  AND  
+BTM.LRBG.NID != Messages.NID_LRBG.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5de6dbe1-ecc5-4386-8dc0-d09a5a6a49de"
@@ -345,7 +470,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Type="Kernel.TrainPosition.TrainPosition"
  DefaultValue=""
  VariableMode="Internal"
- X="60"
+ X="70"
  Y="40"
  Width="100"
  Height="50"
@@ -363,5 +488,55 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bbfa7a99-0ee1-4ecc-859d-b11eb3c977fc"
 >
-</ReqRef></Variable></Variables>
+</ReqRef></Variable><Variable
+ Type="BaseTypes.Distance"
+ DefaultValue="0.0"
+ VariableMode="Internal"
+ X="370"
+ Y="260"
+ Width="100"
+ Height="50"
+ Name="SRStartDistance"
+ Guid="e7248a60-09d7-4a0a-bf38-7234b34911e1"
+>
+<ReqRef
+ Id="77289e9b-8c64-4406-8d33-fcf9d018e94c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3200b6eb-181a-40b6-8541-de165d8a5014"
+>
+</ReqRef><ReqRef
+ Id="80c7f3b7-09d1-4a40-ab28-0aafd6ac3530"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="379e00c5-f7ff-46ba-bf22-1c929bfbdaf8"
+>
+</ReqRef><Comment>Stored the odometry distance when SR mode is entered.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ X="480"
+ Y="40"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="ColdMovementDetected"
+ Guid="e23d84c4-f294-4a26-b034-6df33be1cb1c"
+>
+<ReqRef
+ Id="2998ba86-2e9d-4b02-8aa1-8368fcf74a87"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d66ec9f6-e815-4486-89cd-bfabe017b558"
+>
+</ReqRef><ReqRef
+ Id="96c497d9-1029-481d-9775-eaf075881899"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="de367dbd-8110-4dd5-94a2-d28dc4a4402c"
+>
+</ReqRef><ReqRef
+ Id="fcee3944-2911-422c-babf-349b36eaa478"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="28b9db3f-5130-4c53-9b78-a27a84d72ac0"
+>
+</ReqRef><Comment>Determines whether the train has been moved while in NP mode.</Comment>
+</Variable></Variables>
 </NameSpace>

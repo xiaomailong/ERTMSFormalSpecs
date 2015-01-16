@@ -50,6 +50,15 @@ namespace GUI.Options
                 get { return Settings.Default.DisplayAllVariablesInStructureEditor; }
                 set { Settings.Default.DisplayAllVariablesInStructureEditor = value; }
             }
+
+            [Category("Behaviour")]
+            [DisplayName("Check parent relationship")]
+            [Description("When animating the model, verify the correctness of the 'parent' relation for each model element")]
+            public bool CheckParentRelationship
+            {
+                get { return Settings.Default.CheckParentRelationship; }
+                set { Settings.Default.CheckParentRelationship= value; }
+            }
         }
 
         public Options()
@@ -68,6 +77,7 @@ namespace GUI.Options
 
             system.DisplayEnclosingMessages = settings.DisplayEnclosingMessages;
             system.DisplayRequirementsAsList = settings.DisplayRequirementsAsList;
+            system.CheckParentRelationship = settings.CheckParentRelationship;
             DataDictionary.Util.PleaseLockFiles = settings.LockOpenedFiles;
 
             settings.Save();

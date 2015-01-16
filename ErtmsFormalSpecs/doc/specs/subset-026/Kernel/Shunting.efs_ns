@@ -28,7 +28,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="250cfd8e-3bfd-4ccc-89c9-93eb43ff1335"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Creates a balise group from the structure contained in the LIST OF BALISES FOR SH AREA packet.</Comment>
+<Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.SubStructure1"
  Name="aPacket"
@@ -47,6 +48,39 @@
     NID_C =&gt; aPacket.NID_C
 }</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="BGIsExpected"
+ Guid="4c83360a-8e3b-4661-b0b9-75a304964c65"
+>
+<ReqRef
+ Id="aef89c33-3eb6-459c-901c-72a521999db9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2927dada-e7b7-43bf-a89b-b299c70beb40"
+>
+</ReqRef><Comment>Checks whether the Balise group is in the list of expected Balise groups for Shunting.</Comment>
+<Parameters>
+<Parameter
+ Type="BTM.BaliseGroupMessages"
+ Name="BaliseGroup"
+ Guid="3962d2b0-ecec-4b93-a205-aba274e1fd26"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="d67e003d-78e3-4271-811a-7eba7708ed34"
+>
+<Expression>THERE_IS ShuntingBG IN BaliseGroupsForShArea | 
+(FIRST Balise IN BaliseGroup).NID_C == ShuntingBG.NID_C
+  AND  
+(FIRST Balise IN BaliseGroup).NID_BG == ShuntingBG.NID_BG</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -55,6 +89,7 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
+ Verified="TRUE"
  Name="HandleNewListOfBaliseGroups"
  Guid="c0e794ac-1f1c-4ed5-aac2-35e16cc966c8"
 >
@@ -68,7 +103,13 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f7afcc46-dc4d-46ab-aa26-d1cdf86bb257"
 >
-</ReqRef><Parameters>
+</ReqRef><ReqRef
+ Id="aef89c33-3eb6-459c-901c-72a521999db9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1c0f08a5-edc4-43ad-bf7b-276609a83364"
+>
+</ReqRef><Comment>Handles reception of a list of expected Balise groups for the shunting area.</Comment>
+<Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Message"
  Name="Packet"
@@ -78,12 +119,16 @@
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
+ Verified="TRUE"
  Name="Insert new balise groups"
  Guid="2afbd1a9-b83e-48de-9284-cbd7c7605038"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
+ Verified="TRUE"
  Name="Insert new balise groups"
  Guid="5d9b7f39-7b6b-49a0-9140-7a1aa2c2fb70"
 >
@@ -93,6 +138,51 @@
 <Action
  Guid="6eb88973-44cd-4f97-826a-cdd04271377a"
 >BaliseGroupsForShArea &lt;- MAP Packet.Sequence1 USING X IN CreateBaliseGroup ( X )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Y="120"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DangerForShuntingReceived"
+ Guid="15abd2a2-f443-4d4f-8895-9d18c6880e5f"
+>
+<ReqRef
+ Id="2c58a3a1-c451-4832-a446-2e45d7792b9c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4adc5a85-a282-481b-be78-b249b954b4c9"
+>
+</ReqRef><Comment>Handles reception of the packet DANGER FOR SHUNTING.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.DANGER_FOR_SHUNTING_INFORMATION.Message"
+ Name="Packet"
+ Guid="4205c367-40d0-4399-a148-32f5b7a9a0d0"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Stop if required"
+ Guid="188ad3c4-6ace-4b3e-9386-041085513c36"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Stop if required"
+ Guid="e688dd05-2d56-4068-897e-9f93c0fa08f1"
+>
+<PreConditions>
+<PreCondition
+ Guid="8da76a80-09a8-4469-8549-ff75099c9d6b"
+>Packet.Q_ASPECT == Messages.Q_ASPECT.Stop_if_in_SH_mode</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3f463e23-b785-4883-aa96-4162c727bca8"
+>StopIfInShunting &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -161,6 +251,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5fd3520c-b48d-49fb-a673-32759426c5a6"
 >
+</ReqRef><ReqRef
+ Id="aef89c33-3eb6-459c-901c-72a521999db9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bcf28d79-0817-4931-80df-dc2c6075a469"
+>
 </ReqRef><Comment>Contains the list of balise groups for Shunting area.</Comment>
 </Variable><Variable
  Type="Integer"
@@ -196,5 +291,42 @@
  Guid="addcd8ec-763e-4929-b972-874dbf41e7af"
 >
 </ReqRef><Comment>Indicates the time when the last Shunting request has been sent.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="StopIfInShunting"
+ Guid="33308d9d-b100-46d1-bc70-4519726705c9"
+>
+<ReqRef
+ Id="2c58a3a1-c451-4832-a446-2e45d7792b9c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="adc75d5e-0b22-47a9-b300-93de33ea1422"
+>
+</ReqRef><Comment>Indicates whether the &quot;Stop if in Shunting&quot; message has been received.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="UnexpectedBGPassed"
+ Guid="1ac74209-a67a-45eb-8f1d-edca85da42fd"
+>
+<ReqRef
+ Id="d70520c1-bb18-45b2-a3e6-312149387ee3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ba9fe478-c5b1-4ebf-b95d-38907c14c661"
+>
+</ReqRef><ReqRef
+ Id="aef89c33-3eb6-459c-901c-72a521999db9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6400bd94-8c2e-43a3-8963-9e637b12ed6f"
+>
+</ReqRef><Comment>Notification that the engine has passed a BG, in SH mode, that was not expected.</Comment>
 </Variable></Variables>
 </NameSpace>

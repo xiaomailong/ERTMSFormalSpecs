@@ -227,7 +227,7 @@ namespace DataDictionary.Interpreter.Statement
                                     index = newListValue.Val.IndexOf(removeValue);
                                     if (index >= 0)
                                     {
-                                        newListValue.Val[index] = value;
+                                        newListValue.Val[index] = value.RightSide(variable, true, true);
                                     }
                                     else
                                     {

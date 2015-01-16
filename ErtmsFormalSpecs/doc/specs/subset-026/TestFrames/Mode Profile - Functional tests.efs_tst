@@ -103,96 +103,99 @@
  Guid="61696ae0-bae0-432a-8531-5dab958fd932"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
-    M_VERSION=&gt;32,
-    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
-    N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
-    M_DUP=&gt;Messages.M_DUP.No_duplicates,
-    M_MCOUNT=&gt;4,
-    NID_C=&gt;140,
-    NID_BG=&gt;2020,
-    Q_LINK=&gt;Messages.Q_LINK.Unlinked,
-    Sequence1=&gt;
-    [ 
-     Messages.EUROBALISE.SubStructure1
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; 32,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 0,
+    N_TOTAL =&gt; 0,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 2020,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; 
+    [
+        Messages.EUROBALISE.SubStructure1
         {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
             {
-                 LEVEL_1_MOVEMENT_AUTHORITY=&gt;Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
+                LEVEL_1_MOVEMENT_AUTHORITY =&gt; Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message
                 {
-                    NID_PACKET=&gt;12,
-                    Q_DIR=&gt;Messages.Q_DIR.Both_directions,
-                    L_PACKET=&gt;400,
-                    Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                    V_MAIN=&gt;16,
-                    V_LOA=&gt;8,
-                    T_LOA=&gt;200,
-                    N_ITER=&gt;0,
-                    Sequence1=&gt;[],
-                    L_ENDSECTION=&gt;10000,
-                    Q_SECTIONTIMER=&gt;Messages.Q_SECTIONTIMER.No_Section_Timer_information,
-                    T_SECTIONTIMER=&gt;0,
-                    D_SECTIONTIMERSTOPLOC=&gt;0,
-                    Q_ENDTIMER=&gt;Messages.Q_ENDTIMER.No_End_section_timer_information,
-                    T_ENDTIMER=&gt;0,
-                    D_ENDTIMERSTARTLOC=&gt;0,
-                    Q_DANGERPOINT=&gt;Messages.Q_DANGERPOINT.Danger_point_information_to_follow,
-                    D_DP=&gt;12000,
-                    V_RELEASEDP=&gt;5,
-                    Q_OVERLAP=&gt;Messages.Q_OVERLAP.No_overlap_information,
-                    D_STARTOL=&gt;0,
-                    T_OL=&gt;0,
-                    D_OL=&gt;0,
-                    V_RELEASEOL=&gt;0
+                    NID_PACKET =&gt; 12,
+                    Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+                    L_PACKET =&gt; 400,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    V_MAIN =&gt; 16,
+                    V_LOA =&gt; 8,
+                    T_LOA =&gt; 200,
+                    N_ITER =&gt; 0,
+                    Sequence1 =&gt; 
+                    [
+                        
+                    ],
+                    L_ENDSECTION =&gt; 10000,
+                    Q_SECTIONTIMER =&gt; Messages.Q_SECTIONTIMER.No_Section_Timer_information,
+                    T_SECTIONTIMER =&gt; 0,
+                    D_SECTIONTIMERSTOPLOC =&gt; 0,
+                    Q_ENDTIMER =&gt; Messages.Q_ENDTIMER.No_End_section_timer_information,
+                    T_ENDTIMER =&gt; 0,
+                    D_ENDTIMERSTARTLOC =&gt; 0,
+                    Q_DANGERPOINT =&gt; Messages.Q_DANGERPOINT.Danger_point_information_to_follow,
+                    D_DP =&gt; 12000,
+                    V_RELEASEDP =&gt; 5,
+                    Q_OVERLAP =&gt; Messages.Q_OVERLAP.No_overlap_information,
+                    D_STARTOL =&gt; 0,
+                    T_OL =&gt; 0,
+                    D_OL =&gt; 0,
+                    V_RELEASEOL =&gt; 0
                 }
             }
-         },
-       Messages.EUROBALISE.SubStructure1
+        }, Messages.EUROBALISE.SubStructure1
         {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
             {
-                MODE_PROFILE=&gt;Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message
+                MODE_PROFILE =&gt; Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message
                 {
-                   D_MAMODE=&gt;0,
-                   L_ACKMAMODE=&gt;500,
-                   L_MAMODE=&gt;100,
-                   L_PACKET=&gt;0,
-                   M_MAMODE=&gt;   Messages.M_MAMODE.Shunting,               
-                   N_ITER=&gt;0,
-                   NID_PACKET=&gt;80,
-                   Q_DIR=&gt; Messages.Q_DIR.Both_directions,
-                   Q_MAMODE=&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
-                   Q_SCALE=&gt;Messages.Q_SCALE._1_m_scaleC,
-                   V_MAMODE=&gt;10,
-                   Sequence1=&gt;[] 
-               }
-          }
-      },
-      
-           Messages.EUROBALISE.SubStructure1
-        {
-            TRACK_TO_TRAIN=&gt;Messages.PACKET.TRACK_TO_TRAIN.Message
-            {
-                               LIST_OF_BALISES_FOR_SH_AREA =&gt; Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Message
-                  {
-                      NID_PACKET =&gt; 49,
-                      Q_DIR =&gt; Messages.Q_DIR.Both_directions,
-                      L_PACKET =&gt;8,
-                      N_ITER =&gt; 1,
-                      Sequence1 =&gt; 
-                              [
-                                 Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.SubStructure1
-                                  {
-                                        NID_BG=&gt; 1212,
-                                        NID_C=&gt;140,
-                                        Q_NEWCOUNTRY=&gt;Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows
-                                    }
-                              ]
-                   } 
+                    NID_PACKET =&gt; 80,
+                    Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+                    L_PACKET =&gt; 0,
+                    Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
+                    D_MAMODE =&gt; 500,
+                    M_MAMODE =&gt; Messages.M_MAMODE.Shunting,
+                    V_MAMODE =&gt; 10,
+                    L_MAMODE =&gt; 100,
+                    L_ACKMAMODE =&gt; 500,
+                    Q_MAMODE =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA,
+                    N_ITER =&gt; 0,
+                    Sequence1 =&gt; 
+                    [
+                        
+                    ]
+                }
             }
-         }
-                ]
+        }, Messages.EUROBALISE.SubStructure1
+        {
+            TRACK_TO_TRAIN =&gt; Messages.PACKET.TRACK_TO_TRAIN.Message
+            {
+                LIST_OF_BALISES_FOR_SH_AREA =&gt; Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.Message
+                {
+                    NID_PACKET =&gt; 49,
+                    Q_DIR =&gt; Messages.Q_DIR.Both_directions,
+                    L_PACKET =&gt; 8,
+                    N_ITER =&gt; 1,
+                    Sequence1 =&gt; 
+                    [
+                        Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_FOR_SH_AREA.SubStructure1
+                        {
+                            Q_NEWCOUNTRY =&gt; Messages.Q_NEWCOUNTRY.Same_country___railway_administration__no_NID_C_follows,
+                            NID_C =&gt; 140,
+                            NID_BG =&gt; 1212
+                        }
+                    ]
+                }
+            }
+        }
+    ]
 }</Action></Actions>
 <Expectations>
 <Expectation
@@ -1326,7 +1329,15 @@ Kernel.TrainPosition.FrontEndPosition(
  Guid="09e0424c-894e-4d18-a30d-841b3a8ae687"
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="c6a12f8b-027b-40f9-bfcc-d1cfb0f3278c"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
+ Guid="ee3fb1c3-d220-4655-8be6-2462a8d5aba4"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 3000.0
+    }
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

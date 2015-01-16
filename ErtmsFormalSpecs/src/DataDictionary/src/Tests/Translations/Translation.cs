@@ -560,11 +560,28 @@ namespace DataDictionary.Tests.Translations
             return retVal;
         }
 
+        private static DataDictionary.Types.NameSpace findNameSpace(string name)
+        {
+            DataDictionary.Types.NameSpace retVal = null;
+
+            EFSSystem system = EFSSystem.INSTANCE;
+            foreach (DataDictionary.Dictionary dictionary in system.Dictionaries)
+            {
+                retVal = OverallNameSpaceFinder.INSTANCE.findByName(dictionary, name);
+                if (retVal != null)
+                {
+                    break;
+                }
+            }
+
+            return retVal;
+        }
+
         private static string format_eurobalise_message(DBElements.DBMessage message)
         {
             EFSSystem system = EFSSystem.INSTANCE;
 
-            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages.EUROBALISE");
+            DataDictionary.Types.NameSpace nameSpace = findNameSpace("Messages.EUROBALISE");
             Types.Structure structureType = (Types.Structure)system.findType(nameSpace, "Message");
             Values.StructureValue structure = new Values.StructureValue(structureType);
 
@@ -668,7 +685,7 @@ namespace DataDictionary.Tests.Translations
         {
             EFSSystem system = EFSSystem.INSTANCE;
             Types.Structure structure = null;
-            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages.PACKET");
+            DataDictionary.Types.NameSpace nameSpace = findNameSpace ("Messages.PACKET");
 
             foreach (Types.NameSpace subNameSpace in nameSpace.NameSpaces)
             {
@@ -805,7 +822,7 @@ namespace DataDictionary.Tests.Translations
         {
             EFSSystem system = EFSSystem.INSTANCE;
 
-            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages.EUROLOOP");
+            DataDictionary.Types.NameSpace nameSpace = findNameSpace("Messages.EUROLOOP");
             Types.Structure structureType = (Types.Structure)system.findType(nameSpace, "Message");
             Values.StructureValue structure = new Values.StructureValue(structureType);
 
@@ -831,7 +848,7 @@ namespace DataDictionary.Tests.Translations
         {
             EFSSystem system = EFSSystem.INSTANCE;
 
-            DataDictionary.Types.NameSpace rbcRoot = OverallNameSpaceFinder.INSTANCE.findByName(system.Dictionaries[0], "Messages.MESSAGE");
+            DataDictionary.Types.NameSpace rbcRoot = findNameSpace("Messages.MESSAGE");
 
             // Get the EFS namespace corresponding to the message 
             // Select the appropriate message type, tracktotrain or traintotrack

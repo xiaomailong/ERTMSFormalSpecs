@@ -1143,7 +1143,7 @@ AND
  Name="D_LRBG"
  Guid="8b98f5c1-5722-4917-8ca6-4c9408d771e3"
 >
-<Expression>Default.MessageTypes.UnScaleDistance ( BTM.TravelledDistanceFromLRBG(), Q_SCALE)</Expression>
+<Expression>Default.MessageTypes.UnScaleDistance ( Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom), Q_SCALE)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.JRU.M_BRAKE_COMMAND_STATE"
@@ -1955,6 +1955,13 @@ AND
  Guid="83c352ab-bcaa-46bc-91d1-3d14d6645d84"
 >
 </ReqRef><Comment>Encodes driver&apos;s action in format defined by M_DRIVERACTIONS. If no corresponding action is defined in M_DRIVERACTIONS, the value Spare is sent.</Comment>
+<Parameters>
+<Parameter
+ Type="JRU.JRU"
+ Name="aJRU"
+ Guid="8021777a-4729-49ab-bcad-8eee27a337ab"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="AcknForPostTripDistanceExceeded"
@@ -2019,7 +2026,7 @@ AND
  Guid="e4ac315f-ce10-46e1-93e4-9748279e763b"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="7a6d699d-657c-47ca-ac89-78e61b7deeb2"
->DMI.MasterDMI().In_AcknOfLevelTransition.Level == Default.Level.L0</PreCondition></PreConditions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level.Value == Default.Level.L0</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Ack_level_0</Expression>
 </Case><Case
  Name="AcknOfLevelTransitionToL1"
@@ -2030,7 +2037,7 @@ AND
  Guid="509e8a0e-f4a5-402e-83f9-ea9c07065f48"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="d2086493-dec0-431e-b39e-7557cb33f909"
->DMI.MasterDMI().In_AcknOfLevelTransition.Level == Default.Level.L1</PreCondition></PreConditions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level.Value == Default.Level.L1</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Ack_level_1</Expression>
 </Case><Case
  Name="AcknOfLevelTransitionToL2"
@@ -2041,7 +2048,7 @@ AND
  Guid="ca172e6f-6a19-4623-a725-e0983350107a"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="4195f1a7-2ad2-4ea3-8e42-ebff740220da"
->DMI.MasterDMI().In_AcknOfLevelTransition.Level == Default.Level.L2</PreCondition></PreConditions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level.Value == Default.Level.L2</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Ack_level_2</Expression>
 </Case><Case
  Name="AcknOfLevelTransitionToL3"
@@ -2052,7 +2059,7 @@ AND
  Guid="bdf13ce4-2f26-49fd-9fb1-41c868a1b152"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="1251ac27-2603-4e3f-be24-e59c68f68ffd"
->DMI.MasterDMI().In_AcknOfLevelTransition.Level == Default.Level.L3</PreCondition></PreConditions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level.Value == Default.Level.L3</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Ack_level_3</Expression>
 </Case><Case
  Name="AcknOfLevelTransitionToLNTC"
@@ -2063,7 +2070,7 @@ AND
  Guid="40cbe79a-033a-4547-a1a0-f2f3f7985332"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="23925601-273b-47a2-a38a-1e1298824326"
->DMI.MasterDMI().In_AcknOfLevelTransition.Level == Default.Level.LNTC</PreCondition></PreConditions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level.Value == Default.Level.LNTC</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Ack_level_NTC</Expression>
 </Case><Case
  Name="AcknOfLSMode"
@@ -2301,6 +2308,28 @@ AND
 >DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Expression>Messages.JRU.M_DRIVERACTIONS.Change_of_language</Expression>
 </Case><Case
+ Name="Request to show geographical position"
+ Guid="92f19531-7c51-4fe4-a868-8d181e0108b4"
+>
+<PreConditions>
+<PreCondition
+ Guid="9746d4b5-834c-429c-ae4d-f5850f698b84"
+>DMI.MasterDMI().Out_GeographicalPosition.DisplayRequestedByDriver != aJRU.PreviousRequestToDisplayTheGeographicalInformation</PreCondition><PreCondition
+ Guid="51d477d5-b40b-4098-b10e-bf549634cbe3"
+>DMI.MasterDMI().Out_GeographicalPosition.DisplayRequestedByDriver == True</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_DRIVERACTIONS.Request_to_show_geographical_position</Expression>
+</Case><Case
+ Name="Request to hide geographical position"
+ Guid="969137d3-dc22-4cdf-982c-df573bfca7b9"
+>
+<PreConditions>
+<PreCondition
+ Guid="cbefd161-4601-4146-adf7-bee9e5fcf8dd"
+>DMI.MasterDMI().Out_GeographicalPosition.DisplayRequestedByDriver != aJRU.PreviousRequestToDisplayTheGeographicalInformation</PreCondition><PreCondition
+ Guid="03f8562e-3aa8-403d-966f-83e7bc6f8cee"
+>DMI.MasterDMI().Out_GeographicalPosition.DisplayRequestedByDriver == False</PreCondition></PreConditions>
+<Expression>Messages.JRU.M_DRIVERACTIONS.Request_to_hide_geographical_information</Expression>
+</Case><Case
  Name="ShuntingRequest"
  Guid="6f6f8f80-1bec-4b80-9bbf-950276b5dc18"
 >
@@ -2438,7 +2467,7 @@ AND
 <PreCondition
  Guid="ee6e2512-53cf-4d33-b17a-0d8defd71341"
 >aContactOption == EURORADIO.ContactOptionEnum.ContactLastKnownRBC</PreCondition></PreConditions>
-<Expression>Messages.JRU.Q_RBCENTRY.Contact_last_unknown_RBC</Expression>
+<Expression>Messages.JRU.Q_RBCENTRY.Contact_last_known_RBC</Expression>
 </Case><Case
  Name="RBC Id and Phone Number"
  Guid="15bb8ff1-195f-4522-b05c-e1bef9647f0d"
@@ -2457,6 +2486,113 @@ AND
  Guid="b74926ce-5e94-438d-8c03-3270c6e9a8d6"
 >aContactOption == EURORADIO.ContactOptionEnum.UseOnBoardStoredShortNumber</PreCondition></PreConditions>
 <Expression>Messages.JRU.Q_RBCENTRY.Use_short_number</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="d8aa4286-c636-432c-bbc0-7cb4cef4c0b2"
+>
+<Expression>Messages.JRU.Q_RBCENTRY.Spare</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.MessageTypes.Speed"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ToJRUVFloi"
+ Guid="adf6d8ce-2d4d-4d0f-b0e6-023bf7d8a808"
+>
+<Comment>Provides the SBI speed for the speed and distance monitoring message. If the current mode does not have target supervsion (SH, UN), this will return NA.</Comment>
+<Cases>
+<Case
+ Name="No target supervision"
+ Guid="0fd16b8b-3ea7-4948-8e09-46cf9076e1ab"
+>
+<PreConditions>
+<PreCondition
+ Guid="ddb43881-4a43-45ba-b745-633990bafcaa"
+>NOT
+(
+  Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()
+   OR  
+  Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()
+)</PreCondition></PreConditions>
+<Expression>Default.MessageTypes.Speed.NA</Expression>
+</Case><Case
+ Name="Value"
+ Guid="83a0ade9-0f18-49f9-890c-305f872b1896"
+>
+<Expression>Default.MessageTypes.UnResolveSpeed(Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.V_SBI_DMI(), 5.0)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.MessageTypes.Speed"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ToJRUVTarget"
+ Guid="48f9bce4-fcd1-4d24-b4f1-5afaf34e7620"
+>
+<Comment>Provides the target speed for the speed and distance monitoring message. If the current mode does not have target supervsion (SH, UN), this will return NA.</Comment>
+<Cases>
+<Case
+ Name="No target supervision"
+ Guid="8322a104-d99f-4fd9-8824-6e937b1577fc"
+>
+<PreConditions>
+<PreCondition
+ Guid="b7c9d9a5-604c-4025-af08-b4a80b70ef5f"
+>NOT
+(
+  Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()
+   OR  
+  Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()
+)</PreCondition></PreConditions>
+<Expression>Default.MessageTypes.Speed.NA</Expression>
+</Case><Case
+ Name="Value"
+ Guid="5c2e883d-936c-40e3-b972-8210c054a91c"
+>
+<Expression>Default.MessageTypes.UnResolveSpeed( DMI.MasterDMI().Out_TargetSpeed.Speed, 5.0)</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.MessageTypes.Distance"
+ Default=""
+ X="220"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ToJRUTargetDistance"
+ Guid="f9369bdb-34ba-4e46-8f68-36363206254b"
+>
+<Comment>Provides the distance to the MRDT for the speed and distance monitoring message. If the current mode does not have target supervsion (SH, UN), this will return Unknown.</Comment>
+<Cases>
+<Case
+ Name="No target supervision"
+ Guid="7bb44242-841a-4f86-a73d-733bdd5f958e"
+>
+<PreConditions>
+<PreCondition
+ Guid="cc8b85ce-4ddf-4f38-911a-0ef8fcc67a37"
+>NOT
+(
+  Kernel.ActiveFunctions.SuperviseTrainSpeed_All_Information()
+   OR  
+  Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()
+)</PreCondition></PreConditions>
+<Expression>Default.MessageTypes.Distance.Unknown</Expression>
+</Case><Case
+ Name="Value"
+ Guid="73c215ef-33a1-4814-9e8a-c013d83bd220"
+>
+<Expression>TypeConvertors.ToMessagesDistance
+    (
+        distance =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.TargetDistance(),
+        scale =&gt; Messages.JRU.Q_SCALE._1_m_scaleC
+    )</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>

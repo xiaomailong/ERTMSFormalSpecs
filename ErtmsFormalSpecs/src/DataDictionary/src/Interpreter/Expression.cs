@@ -597,7 +597,13 @@ namespace DataDictionary.Interpreter
             {
                 context = new InterpretationContext();
             }
-            Values.IValue value = GetValue(context, retVal);
+            try
+            {
+                Values.IValue value = GetValue(context, retVal);
+            }
+            catch (Exception)
+            {
+            }
 
             return retVal;
         }

@@ -243,8 +243,6 @@ BTM.Linking.Linkings</Action></Actions>
 >
 <Actions>
 <Action
- Guid="340b9d3f-3766-4bf0-801a-64d225aff07c"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="397c8d42-e6ac-4538-a472-b4da2f0d1f84"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
@@ -330,7 +328,9 @@ BTM.Linking.Linkings</Action></Actions>
     NID_BG=&gt;2125,
     Q_LINK=&gt;Messages.Q_LINK.Unlinked,
     Sequence1=&gt;[]
-}</Action></Actions>
+}</Action><Action
+ Guid="340b9d3f-3766-4bf0-801a-64d225aff07c"
+>Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -648,7 +648,7 @@ BTM.Linking.Linkings</Action></Actions>
  Guid="06694a08-b3cb-4eaf-b49b-889af96a480d"
 >Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="851e79be-bb39-4eb2-9bfa-d90c79f36350"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="be2ff6e5-079e-4d29-88fb-a16e9e845175"
 >Kernel.MA.MA &lt;- EMPTY</Action><Action
  Guid="690069b3-72aa-405c-93ae-1bc1771979d6"
@@ -999,7 +999,7 @@ BTM.Linking.Linkings</Action></Actions>
  Guid="c46c77f6-53f1-4476-8e14-45326cfb44cc"
 >Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
  Guid="8334c3df-4f78-4b96-a4da-819f0cee7b11"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
+>Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="1c28a5ce-cbb9-483d-a6fa-e70bc6df00f4"
 >Kernel.MA.MA &lt;- EMPTY</Action><Action
  Guid="ca5f22dd-b138-44dd-b950-d049a10239db"

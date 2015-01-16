@@ -388,5 +388,72 @@ namespace Utils
         {
             return "";
         }
+
+        /// <summary>
+        /// The reverse cache dependancy. 
+        /// All model elements beloging to the cache dependancy need be recomputed when this model element changes
+        /// </summary>
+        public HashSet<ModelElement> CacheDependancy { get; set; }
+
+        /// <summary>
+        /// Adds an element whose value is dependant to this one
+        /// </summary>
+        /// <param name="dependant"></param>
+        /// <returns>True if the dependancy has been added</returns>
+        public bool AddDependancy(ModelElement dependant)
+        {
+            bool retVal = false;
+
+            if (CacheDependancy == null)
+            {
+                CacheDependancy = new HashSet<ModelElement>();
+                retVal = true;
+            }
+
+            bool change = CacheDependancy.Add(dependant);
+            retVal = retVal || change;
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides the names of the elements in the cache dependancy
+        /// </summary>
+        /// <returns></returns>
+        public string CacheDependancyNames()
+        {
+            string retVal = "";
+
+            if (CacheDependancy != null)
+            {
+                foreach (ModelElement element in CacheDependancy)
+                {
+                    retVal += element.FullName +  " ";
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Handles a change of the model element by invalidating the cache of all element in CacheDependancy
+        /// </summary>
+        public virtual void HandleChange()
+        {
+            if (CacheDependancy != null)
+            {
+                foreach (ModelElement element in CacheDependancy)
+                {
+                    element.ClearCache();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Clears the cache associated to this model element
+        /// </summary>
+        public virtual void ClearCache()
+        {            
+        }
     }
 }

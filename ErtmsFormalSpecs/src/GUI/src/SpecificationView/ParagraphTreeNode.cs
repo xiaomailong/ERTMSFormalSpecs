@@ -223,10 +223,7 @@ namespace GUI.SpecificationView
         {
             foreach (RequirementSet requirementSet in Item.EFSSystem.RequirementSets)
             {
-                if (requirementSet.getDefault())
-                {
-                    paragraph.AppendToRequirementSet(requirementSet);
-                }
+                requirementSet.setDefaultRequirementSets(paragraph);
             }
         }
 

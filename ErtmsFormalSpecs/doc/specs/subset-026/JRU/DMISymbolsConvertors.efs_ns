@@ -134,7 +134,7 @@
 <PreConditions>
 <PreCondition
  Guid="0b8f51df-0547-49e2-9bf5-a3c082f3f914"
->DMI.MasterDMI().In_AcknOfLevelTransition.Level == Level.L0</PreCondition><PreCondition
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level.Value == Level.L0</PreCondition><PreCondition
  Guid="f03e1f41-ce46-42a4-9a8b-42a448cca21d"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Expression>Messages.JRU.DMI_SYMB_STATUS.displayed</Expression>
@@ -202,7 +202,7 @@
 <PreConditions>
 <PreCondition
  Guid="2057c217-5f13-4463-943b-d1a678469aa7"
->DMI.MasterDMI().In_AcknOfLevelTransition.Level == Level.LNTC</PreCondition><PreCondition
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level.Value == Level.LNTC</PreCondition><PreCondition
  Guid="da383b83-7151-496a-b9d4-ad0630a12f5d"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Expression>Messages.JRU.DMI_SYMB_STATUS.displayed</Expression>
@@ -272,7 +272,7 @@
 <PreConditions>
 <PreCondition
  Guid="015e5b94-1152-4474-b1ae-e73540d11b08"
->DMI.MasterDMI().In_AcknOfLevelTransition.Level == Level.L1</PreCondition><PreCondition
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level.Value == Level.L1</PreCondition><PreCondition
  Guid="e5635f2b-0453-43a4-bacb-060c147bdac5"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Expression>Messages.JRU.DMI_SYMB_STATUS.displayed</Expression>
@@ -344,7 +344,7 @@
  Guid="1bd907b8-2eeb-46f3-bc00-2c2d0e4acba4"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request</PreCondition><PreCondition
  Guid="4e229dc1-e31c-46df-8968-5e41c6befd25"
->DMI.MasterDMI().In_AcknOfLevelTransition.Level == Level.L2</PreCondition></PreConditions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level.Value == Level.L2</PreCondition></PreConditions>
 <Expression>Messages.JRU.DMI_SYMB_STATUS.displayed</Expression>
 </Case><Case
  Name="Otherwise"
@@ -516,7 +516,7 @@
  Guid="82e542f8-1c17-4180-8005-53061f88ed91"
 >DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request</PreCondition><PreCondition
  Guid="63061636-6648-43a1-ae6f-a675aaa50d1c"
->DMI.MasterDMI().In_AcknOfLevelTransition.Level == Level.L3</PreCondition></PreConditions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level.Value == Level.L3</PreCondition></PreConditions>
 <Expression>Messages.JRU.DMI_SYMB_STATUS.displayed</Expression>
 </Case><Case
  Name="Otherwise"
@@ -2938,7 +2938,7 @@
 <PreConditions>
 <PreCondition
  Guid="32ccc610-3fbb-47be-a3ca-73ec2b163e65"
->DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+>DMI.MasterDMI().Out_GeographicalPosition.DisplayRequestIsAllowed</PreCondition></PreConditions>
 <Expression>Messages.JRU.DMI_SYMB_STATUS.displayed</Expression>
 </Case><Case
  Name="Otherwise"

@@ -70,5 +70,17 @@ namespace GUI.Properties {
                 this["LockOpenedFiles"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CheckParentRelationship {
+            get {
+                return ((bool)(this["CheckParentRelationship"]));
+            }
+            set {
+                this["CheckParentRelationship"] = value;
+            }
+        }
     }
 }

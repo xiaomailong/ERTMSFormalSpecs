@@ -245,13 +245,6 @@ namespace DataDictionary.Specification
             switch (Type)
             {
                 case Generated.acceptor.Paragraph_type.aREQUIREMENT:
-                    foreach (RequirementSet requirementSet in ApplicableRequirementSets)
-                    {
-                        if (requirementSet.getRequirementsStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM)
-                        {
-                            setImplementationStatus(requirementSet.getRequirementsStatus());
-                        }
-                    }
                     break;
 
                 default:
@@ -729,14 +722,6 @@ namespace DataDictionary.Specification
                 RequirementSetReference reference = (RequirementSetReference)Generated.acceptor.getFactory().createRequirementSetReference();
                 reference.setTarget(requirementSet.Guid);
                 appendRequirementSets(reference);
-
-                if (getImplementationStatus() == Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM)
-                {
-                    if (requirementSet.getRequirementsStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM)
-                    {
-                        setImplementationStatus(requirementSet.getRequirementsStatus());
-                    }
-                }
             }
 
             return retVal;

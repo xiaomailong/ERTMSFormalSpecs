@@ -4741,9 +4741,9 @@ namespace DataDictionary.Compare
             {
                 diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "RecursiveSelection", other.getRecursiveSelection().ToString(), obj.getRecursiveSelection().ToString()) );
             }
-            if ( obj.getRequirementsStatus() != other.getRequirementsStatus() )
+            if ( obj.getObsoleteRequirementsStatus() != other.getObsoleteRequirementsStatus() )
             {
-                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "RequirementsStatus", other.getRequirementsStatus().ToString(), obj.getRequirementsStatus().ToString()) );
+                diff.appendChanges ( new Diff(obj, HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange, "ObsoleteRequirementsStatus", other.getObsoleteRequirementsStatus().ToString(), obj.getObsoleteRequirementsStatus().ToString()) );
             }
             if ( obj.getDefault() != other.getDefault() )
             {

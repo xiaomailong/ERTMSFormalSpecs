@@ -407,14 +407,27 @@ namespace GUI.BoxArrowDiagram
         /// <param name="e"></param>
         void HandleMouseClick(object sender, MouseEventArgs e)
         {
-            if (e.X >= Width - 18 && e.Y <= 18)
+            if (e.Button == MouseButtons.Left)
             {
-                Model.Pinned = !Model.Pinned;
-                Refresh();
+                if (e.X >= Width - 18 && e.Y <= 18)
+                {
+                    Model.Pinned = !Model.Pinned;
+                    Refresh();
+                }
+                else
+                {
+                    SelectBox();
+                }
             }
             else
             {
-                SelectBox();
+                BaseForm baseForm = EnclosingForm as BaseForm;
+                if (baseForm != null && baseForm.TreeView != null)
+                {
+                    BaseTreeNode node = baseForm.TreeView.FindNode(Model);
+                    ContextMenu menu = node.ContextMenu;
+                    menu.Show(this, e.Location);
+                }
             }
         }
 

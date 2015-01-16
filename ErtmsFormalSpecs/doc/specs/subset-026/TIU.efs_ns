@@ -394,6 +394,11 @@
  SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
  Guid="70f8fe81-060e-41c4-a3f6-1515c8c0a7fb"
 >
+</ReqRef><ReqRef
+ Id="762a9543-7c55-4a02-947b-aee9c3570c30"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55d22e94-1059-4dbc-b531-106a810e2975"
+>
 </ReqRef><Comment>Indicates if the &quot;sleeping&quot; input signal is received.</Comment>
 </Variable><Variable
  Type="Boolean"
@@ -775,5 +780,20 @@
  Guid="2a4507d1-a44d-480c-8ba3-7541b181d12c"
 >
 </ReqRef><Comment>This variable represens the train integrity information as described in 3.6.5.2.3.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Width="100"
+ Height="50"
+ Name="ColdMovementDetectionFitted"
+ Guid="b800e73b-22b3-4545-95fb-d3dad4785c18"
+>
+<ReqRef
+ Id="2998ba86-2e9d-4b02-8aa1-8368fcf74a87"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ba3a9cc1-1fef-420f-9fc0-2292517b7690"
+>
+</ReqRef><Comment>Indicates whether the train is fitted with cold movement detection.</Comment>
 </Variable></Variables>
 </NameSpace>

@@ -946,7 +946,7 @@ namespace DataDictionary.Interpreter
                 {
                     string iteratorIdentifier = Identifier();
                     Match("IN");
-                    Expression listExpression = Expression(0);
+                    Expression listExpression = Expression(6);
                     if (listExpression != null)
                     {
                         Expression condition = null;

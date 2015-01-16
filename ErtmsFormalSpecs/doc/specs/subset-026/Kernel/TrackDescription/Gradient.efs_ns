@@ -153,7 +153,7 @@
 >
 </StructureElement><StructureElement
  TypeName="CorFactValue"
- Default=""
+ Default="CorFactValue{ Factor =&gt; 0.0, SpeedStep =&gt; 0.0 }"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -902,7 +902,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Expression>KnMin ( V ) * GradientInfoProfileSummary_NonCompensated ( d )</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackDescription.Gradient.CorrectionFactor"
+ Type="Kernel.TrackDescription.Gradient.CorrectionFactor"
  Default=""
  X="220"
  Y="420"
@@ -991,7 +991,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Expression>aCorrectionFactor.Val4.Factor</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackDescription.Gradient.CorrectionFactor"
+ Type="Kernel.TrackDescription.Gradient.CorrectionFactor"
  Default=""
  X="330"
  Y="420"
@@ -1022,7 +1022,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Expression>CorrectionFactorFunction ( aCorrectionFactor =&gt; KnPlus, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
- Type="TrackDescription.Gradient.CorrectionFactor"
+ Type="Kernel.TrackDescription.Gradient.CorrectionFactor"
  Default=""
  X="440"
  Y="420"
@@ -1076,6 +1076,39 @@ Outside the distances provided by the gradient, the gradient value is defined as
     Distance =&gt; aGradient.Distance - Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     Gradient =&gt; aGradient.Gradient
 }</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GradientProfileStart"
+ Guid="accf4af7-7200-4db5-89db-7fbf1c86d3d6"
+>
+<Comment>Provides the start of the gradient profile.</Comment>
+<Cases>
+<Case
+ Name="No profile"
+ Guid="85d55af0-012f-4a9e-8c41-2a17ce320fbf"
+>
+<PreConditions>
+<PreCondition
+ Guid="cde51ae9-b753-41c6-a20f-cd4886808eab"
+>Gradients == []</PreCondition></PreConditions>
+<Expression>BaseTypes.Distance.Unknown</Expression>
+</Case><Case
+ Name="Value"
+ Guid="266cb7b8-2d80-4102-8811-1fc7150ad4fb"
+>
+<Expression>REDUCE Gradients
+ USING X IN 
+  BaseTypes.MinDistance(
+    X1 =&gt; X.Distance,
+    X2 =&gt; RESULT
+  )
+ INITIAL_VALUE BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

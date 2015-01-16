@@ -529,25 +529,29 @@ namespace DataDictionary.Interpreter
                     {
                         tmp2.Add(namable);
 
-                        if (!(namable is Values.EmptyValue))
+                        if (EFSSystem.INSTANCE.CheckParentRelationship && !(namable is Values.EmptyValue))
                         {
                             // Consistency check. 
                             // Empty value should not be considered because we can dereference 'Empty'
                             Variables.IVariable subDeclVar = subDeclarator as Variables.Variable;
+                            object enclosed = ((IEnclosed)namable).Enclosing;
                             if (subDeclVar != null)
                             {
-                                if (((IEnclosed)namable).Enclosing != subDeclVar.Value)
+                                if (enclosed != subDeclVar.Value)
                                 {
                                     AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
                                 }
                             }
                             else
                             {
-                                if (((IEnclosed)namable).Enclosing != subDeclarator)
+                                if (enclosed != subDeclarator)
                                 {
-                                    AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
+                                    // There is still an exception : when the element is declared in the default namespace
+                                    if (subDeclarator != EFSSystem.INSTANCE || enclosed != EFSSystem.INSTANCE.findByFullName("Default"))
+                                    {
+                                        AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
+                                    }
                                 }
-
                             }
                         }
                     }

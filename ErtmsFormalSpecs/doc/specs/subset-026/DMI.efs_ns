@@ -191,6 +191,41 @@ DeskOpen: represents the current state of the DMI&apos;s desk, used to detect mo
 IsMaster: indicates if the current DMI is master (leading) or slave
 PrecedingDeskOpen: indicates the preceding value of DeskOpen, used to detect moments where the driver opens or closes the desk
 PreviousMode: represents the train mode displayed on the DMI during the previous cycle</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ X="20"
+ Y="570"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Handle mode change"
+ Guid="c661243f-901c-4d0f-88b1-1c128f122919"
+>
+<ReqRef
+ Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4edd4452-49b2-41f3-b872-1b3d231e8556"
+>
+</ReqRef><Comment>Takes care of a mode change to update the DMI structure value (automatically enable / disable requests)</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Handle mode change"
+ Guid="9a018467-a592-4a26-a61b-67487104fb6c"
+>
+<Comment>Updates the state machines of DMI according to the tables of �4.7.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="7b57277f-e2ab-45c2-a612-f14d23efda3a"
+>HandleModeChange()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -1274,7 +1309,12 @@ Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</Action></A
  Name="Update geographical position"
  Guid="a623c088-3546-40cf-a0f8-812cdca1e577"
 >
-<Comment>Updates the displayed geographical position</Comment>
+<ReqRef
+ Id="f042e036-f6fa-4673-a7a6-5248b3127084"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e6698627-bd0a-46b3-ade2-cf09e14763c4"
+>
+</ReqRef><Comment>Updates the displayed geographical position</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1286,15 +1326,13 @@ Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</Action></A
 <PreConditions>
 <PreCondition
  Guid="66e26df1-3de2-482f-ad92-f12fbf0ec8d8"
->Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
+>Kernel.GeographicalPosition.ComputeGeographicalPosition() != BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="d875d4e5-c722-4867-8ff4-13b0df014c5c"
 >Out_GeographicalPosition.OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8294da13-c432-41af-8af5-7ba212f240de"
->Out_GeographicalPosition.Position &lt;- Kernel.TrainPosition.FrontEndPosition(
-    PointOfInterest=&gt;Default.DistanceInterval.Nom
-)</Action></Actions>
+>Out_GeographicalPosition.Position &lt;- Kernel.GeographicalPosition.ComputeGeographicalPosition()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateOUT"
@@ -1444,8 +1482,6 @@ Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP()</PreCondition></PreConditions>
 >
 <PreConditions>
 <PreCondition
- Guid="27f43f3b-9d33-4f93-8af9-d46bf9c93913"
->Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition><PreCondition
  Guid="6419b761-6bf8-4aa3-af63-9c94abdb9795"
 >Out_PermittedSpeed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
@@ -1462,38 +1498,23 @@ Kernel.ActiveFunctions.SuperviseTrainSpeed_MRSP()</PreCondition></PreConditions>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Train in SR, PT, SH, SN or RV modes"
- Guid="ceca03bb-563c-40a7-be1e-2646f21d018b"
->
-<Comment>Mode SR, PT, SH, SN or RV</Comment>
-<PreConditions>
-<PreCondition
- Guid="04868972-8866-4251-934f-1527923ad496"
->Kernel.Mode == Default.Mode.SR
-  OR  
-Kernel.Mode == Default.Mode.PT
-  OR  
-Kernel.Mode == Default.Mode.SH
-  OR  
-Kernel.Mode == Default.Mode.SN
-  OR  
-Kernel.Mode == Default.Mode.RV</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f6842f02-0829-4aa9-8f87-595353483595"
->Out_PermittedSpeed.Speed &lt;- Kernel.ModeRelatedSpeedLimits.SRModeSpeedLimit()</Action><Action
- Guid="fa977fee-280c-40d9-8961-ac5e8494d9ef"
->Out_PermittedSpeed.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Otherwise"
+ Name="Update variable"
  Guid="3c0e9560-e579-4971-87cc-9fb0389c9b3a"
 >
-<Comment>Otherwise</Comment>
 <PreConditions>
 <PreCondition
  Guid="a9971c0e-2925-4453-b4c7-43b5a9104e12"
->Kernel.SpeedAndDistanceMonitoring.Monitoring in  [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Monitoring in  [Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Ceiling, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Target, Kernel.SpeedAndDistanceMonitoring.MonitoringTypeSM.Release]</PreCondition><PreCondition
+ Guid="7d25919c-82de-4004-8494-f8c4d6df3025"
+>Kernel.Mode == Default.Mode.SH
+  OR  
+Kernel.Mode == Default.Mode.FS
+  OR  
+Kernel.Mode == Default.Mode.SR
+  OR  
+Kernel.Mode == Default.Mode.OS
+  OR  
+Kernel.Mode == Default.Mode.RV</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="abfe8af1-6df4-4510-9e27-17aa6e1e711a"
@@ -2437,7 +2458,7 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
 </ReqRef></StructureElement><StructureElement
  TypeName="OUT.GeographicalPosition"
  Default=""
- Mode="Outgoing"
+ Mode="InOut"
  Implemented="TRUE"
  Name="Out_GeographicalPosition"
  Guid="31cd8f7a-c0f1-4bce-8268-99e6daa3fd2d"
@@ -3439,26 +3460,6 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
 <Expression>DMI2</Expression>
 </Case></Cases>
 </Function><Function
- Type="Boolean"
- Default=""
- X="240"
- Y="370"
- Width="100"
- Height="50"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ModeChanged"
- Guid="52246ca1-4f9a-4bb3-9be3-983e1c1da594"
->
-<Comment>Indicates if the mode of the kernel changed (used to update the state machines of DMI).</Comment>
-<Cases>
-<Case
- Name="Check mode change"
- Guid="eeedad28-c2f1-47c9-92c3-bb94b3c66b98"
->
-<Expression>DMI.MasterDMI().PreviousMode != Kernel.Mode</Expression>
-</Case></Cases>
-</Function><Function
  Type="TIU.CabStruct"
  Default=""
  X="20"
@@ -3635,41 +3636,4 @@ NOT DeskIsOpen ( DMI2 )</Expression>
  Guid="fc096183-b1e3-4918-b1b2-40f1dc65ca6c"
 >
 </ReqRef></Variable></Variables>
-<Rules>
-<Rule
- Priority="Processing"
- X="20"
- Y="570"
- Width="100"
- Height="50"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Handle mode change"
- Guid="c661243f-901c-4d0f-88b1-1c128f122919"
->
-<ReqRef
- Id="44d656a2-d70c-4000-9319-9ef9745c25a8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4edd4452-49b2-41f3-b872-1b3d231e8556"
->
-</ReqRef><Comment>Takes care of a mode change to update the DMI structure value (automatically enable / disable requests)</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Handle mode change"
- Guid="9a018467-a592-4a26-a61b-67487104fb6c"
->
-<Comment>Updates the state machines of DMI according to the tables of �4.7.</Comment>
-<PreConditions>
-<PreCondition
- Guid="23ad9e9c-4db8-4c58-b6c8-0a350a70c9ba"
->ModeChanged()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7b57277f-e2ab-45c2-a612-f14d23efda3a"
->DMI.MasterDMI().HandleModeChange()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 </NameSpace>

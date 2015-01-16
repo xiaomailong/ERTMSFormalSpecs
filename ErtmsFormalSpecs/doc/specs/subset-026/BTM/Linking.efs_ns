@@ -1530,6 +1530,55 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="Check list of expected balises"
+ Guid="1c6c1ee3-5e2b-46de-b12e-939ceebac056"
+>
+<Comment>If the current mode is SH, check the received  BG against the list of expected balises for SH Mode.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Expected balises for SH"
+ Guid="5aa01674-ac6a-41a6-ad84-8971d1ae9e14"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="8d1a6745-9466-4063-a719-d54c187a08dc"
+>MessageRejected &lt;- 
+Kernel.Mode == Mode.SH
+  AND  
+NOT Kernel.Shunting.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Trip if BG unexpected"
+ Guid="51ad7e8c-22fc-434b-9791-4176dcaeec3b"
+>
+<Comment>If the passed BG was not in the list of expected BG in SH mode, the train will be tripped.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="BG not in expected list, trip"
+ Guid="0e80ba82-ec9a-468d-b0ec-baf6d9b6887b"
+>
+<PreConditions>
+<PreCondition
+ Guid="989d26ee-c16e-40c1-8d40-ba77d9accd5a"
+>Kernel.Mode == Mode.SH</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="834b94d2-1cc0-44a6-9de5-016da6df76c4"
+>Kernel.Shunting.UnexpectedBGPassed&lt;- NOT Kernel.Shunting.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="Check VBC"
  Guid="caf9206b-cf25-4596-a689-99b419d3dcfb"
 >
@@ -1542,7 +1591,11 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
  Guid="7e86b069-6f62-4f0b-becf-0151f3bb1dc6"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="f09ace5e-2bad-4e68-8426-d3bbf8bcdcc8"
+>Kernel.ActiveFunctions.ManageVirtualBaliseCovers()</PreCondition><PreCondition
+ Guid="782453fa-a201-492f-b441-89440b123b19"
+>NOT MessageRejected</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1a8e70a6-fc3d-4212-a393-e6e1c1372d77"
@@ -1618,7 +1671,7 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
 <Action
  Guid="bac12566-89d7-4f78-a052-2705f05be489"
 >HandleBaliseMessage(
-    DistanceFromLRBG =&gt; Odometry.NominalDistance - LRBG.Position.Position
+    DistanceFromLRBG =&gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"

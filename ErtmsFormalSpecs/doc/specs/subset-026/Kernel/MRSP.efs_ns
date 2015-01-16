@@ -547,12 +547,21 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bc56ed5b-9004-4e41-bd0c-78505480489e"
 >
+</ReqRef><ReqRef
+ Id="5da2e749-a3e2-4dba-99b5-f766189c6f3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d6d390ff-4f4e-4618-a6a5-d0dc406a5b50"
+>
 </ReqRef><Comment>Returns the value of V_MRSP as used in the speed and distance monitoring commands</Comment>
 <Cases>
 <Case
- Name="Value"
+ Name="Valid position"
  Guid="bc9e2802-635d-43c8-8a44-6790d4a05f49"
 >
+<PreConditions>
+<PreCondition
+ Guid="3cba845a-5194-47da-81ff-78d368523184"
+>TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>REDUCE
   TARGETS(
     Targets1 =&gt; SpeedRestrictions,
@@ -569,6 +578,23 @@ INITIAL_VALUE
     X1=&gt;TrainPosition.FrontEndPosition(DistanceInterval.Min),
     X2=&gt;0.0
 ))</Expression>
+</Case><Case
+ Name="In SR Mode, position invalid/unknown"
+ Guid="07155ae8-2f98-4cd3-b826-b02b15070446"
+>
+<PreConditions>
+<PreCondition
+ Guid="db1088b1-47d7-48cc-82ea-d54ec2ee1683"
+>Mode == Mode.SR</PreCondition></PreConditions>
+<Expression>SpeedRestrictions(BaseTypes.MaxDistance(
+    X1 =&gt; Odometry.NominalDistance - TrainPosition.SRStartDistance,
+    X2 =&gt; 0.0
+))</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="60205dfa-dfa9-4ea2-8fea-039c02eb562d"
+>
+<Expression>BaseTypes.Speed.NA</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>

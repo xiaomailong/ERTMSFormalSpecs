@@ -13,6 +13,9 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Windows.Forms.VisualStyles;
+
 namespace GUI
 {
     using System;
@@ -564,11 +567,11 @@ namespace GUI
         /// </summary>
         public void UpdateTitle()
         {
-            String windowTitle = "ERTMS Formal Spec Workbench";
+            String windowTitle = "ERTMSFormalSpecs Workbench";
 
-            foreach (DataDictionary.Dictionary dictioanry in EFSSystem.Dictionaries)
+            foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                windowTitle += " " + dictioanry.FilePath;
+                windowTitle += " " + dictionary.FilePath;
             }
 
             if (EFSSystem != null && EFSSystem.ShouldSave)
@@ -1426,7 +1429,7 @@ namespace GUI
                 function.ExecutionTimeInMilli = 0;
                 function.ExecutionCount = 0;
 
-                base.visit(obj);
+                base.visit(obj, visitSubNodes);
             }
 
             public override void visit(DataDictionary.Generated.Frame obj, bool visitSubNodes)

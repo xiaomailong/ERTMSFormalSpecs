@@ -218,10 +218,13 @@ namespace Reports.Specs
                             sequences = sequences + "\n" + step.SubSequence.Name;
                             steps = steps + "\n" + stepNumber(step);
                         }
-                        else if (steps.IndexOf(stepNumber(step)) == -1)
+                        else 
                         {
                             int line = getLine(sequences, step.SubSequence.Name);
-                            steps = steps.Insert(stepIndex(line, steps), ", " + stepNumber(step));
+                            if (!stepPresent(line, step, steps))
+                            {
+                                steps = steps.Insert(stepIndex(line, steps), ", " + stepNumber(step));
+                            }
                         }
 
                         retVal[step.TestCase.Name][0] = steps;
@@ -234,6 +237,27 @@ namespace Reports.Specs
                 }
             }
 
+            return retVal;
+        }
+
+        /// <summary>
+        /// indicates whether a given line contains the step number provided
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="step"></param>
+        /// <returns></returns>
+        private bool stepPresent(int line, DataDictionary.Tests.Step step, string steps)
+        {
+            bool retVal = false;
+
+            if (steps.Substring(stepIndex(line, steps)).Contains("\n"))
+            {
+                retVal = steps.Substring(stepIndex(line, steps), stepIndex(line + 1, steps) - stepIndex(line, steps)).Contains(stepNumber(step));
+            }
+            else
+            {
+                retVal = steps.Substring(stepIndex(line, steps)).Contains(stepNumber(step));
+            }
             return retVal;
         }
 
@@ -266,7 +290,7 @@ namespace Reports.Specs
             // Get the position of each newline character, up to the one preceding the line we want to write on
             for (int i = line; i > 0; i--)
             {
-                retVal = stepslist.IndexOf("\n", retVal);
+                retVal = stepslist.IndexOf("\n", retVal) + 1;
             }
 
             // If the line we want is the last line, return the final index of the string,
@@ -299,7 +323,7 @@ namespace Reports.Specs
 
             while (sequencesList.IndexOf("\n", startIndex, sequenceIndex - startIndex) != -1)
             {
-                startIndex = sequencesList.IndexOf("\n", startIndex, sequenceIndex - startIndex);
+                startIndex = sequencesList.IndexOf("\n", startIndex, sequenceIndex - startIndex) + 1;
                 retVal++;
             }
 

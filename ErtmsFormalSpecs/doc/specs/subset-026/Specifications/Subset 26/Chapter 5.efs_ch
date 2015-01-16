@@ -4792,7 +4792,7 @@ The process shall END.<RequirementSets>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="689b55e0-2746-467d-8882-d9d0e181d309"
 >
-</ReqRef><Comment>The Paragraph 5.6.4.3 describes a degraded situation where no order to terminate the communication session was received from the RBC after a given number of position report sendings. It states that in that case the ERTMS/ETCS onboard equipment shall terminate the session. But there is no information about the state change after this action =&gt; should be process end? or remain in the same state?</Comment>
+</ReqRef><Comment>The Paragraph 5.6.4.3 describes a degraded situation where no order to terminate the communication session was received from the RBC after a given number of position report sendings. It states that in that case the ERTMS/ETCS onboard equipment shall terminate the session. But there is no information about the state change after this action =&gt; should the process end? or remain in the same state?</Comment>
 After a defined number of repetitions (see appendix to chapter 3, List of Fixed Value Data), and if no reply is received within the fixed waiting time from the last sending of the mode change report, the ERTMS/ETCS onboard equipment shall terminate the communication session.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
@@ -6549,7 +6549,6 @@ The ERTMS/ETCS on-board equipment shall be in On Sight mode before the train rea
  reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
- infoRequired="TRUE"
  Name=""
  Guid="02990d41-6bf4-4c89-94b5-aee9d1db2510"
 ><Comment>The On Sight speed limit can be given as a default value, with a National value or with a mode profile. Paragraph 3.11.7.1.1 states that the speed given from the trackside prevails the National value and the default value. According to paragraphs 5.9.2.1, 5.9.2.2 and 5.9.3.1, the On Sight mode can only be requested with a mode profile. So, here we always have a mode profile, and the mode profile speed limit prevails the other speed limits, why in this case we have to take in account the National value too?</Comment>
@@ -7325,7 +7324,7 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="a1ef3780-3196-4251-9ef3-c86a48d573a4"
@@ -7389,7 +7388,7 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  scope="FLAGS"
  bl="3.1.0"
  name=""
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="105589ab-9536-4d66-b95e-b3155a3a97f5"
@@ -7605,7 +7604,7 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="9fb4faf4-8c92-4619-9edc-a411b5cc07cf"
@@ -7636,7 +7635,7 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="2c603461-d585-4f5b-a625-44c11d721ef7"
@@ -7734,11 +7733,11 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.10.2.4.2"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="52ed06ba-5e06-4d9a-870c-b0a159ebed8a"
@@ -7824,12 +7823,12 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
 >If none of the ordered level(s) is available for use by the ERTMS/ETCS on-board equipment, it shall nevertheless make the transition, to the ordered level with the lowest priority.<Sub>
 <Paragraph
  id="5.10.2.7.1"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="91f853db-5446-42e9-bd20-c7df2c617fdd"
@@ -7860,7 +7859,8 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="f1e6e692-0410-42c3-8425-da3a74657106"
@@ -7980,7 +7980,7 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  scope="FLAGS"
  bl=""
  name=""
- status="Implemented"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="1ba3133a-d773-4c35-99f9-1fff5698675d"
@@ -7997,7 +7997,7 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  infoRequired="TRUE"
  Name=""
@@ -8005,43 +8005,35 @@ The speed is lower than the On Sight mode speed limit (national value, or value 
 ><Comment>In our understanding, this paragraph states that in order to be able to enter the new area, the train needs an authorization to run in the new area, but this is true everywhere. Does this paragraph states something else? If not, what is the reason of adding this paragraph?</Comment>
 For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either:<Sub>
 <Paragraph
- id="5.10.3.1.2.1"
+ id="5.10.3.1.2.a"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="10de7e67-23c3-4a05-8dea-663895728a95"
 >as an MA and track description information into the new area, or<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="a9ba37e0-fd75-4d62-8cd7-3e09e5e77cb3"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="e0414d13-0742-4f39-90bc-d8c0b1bed046"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
- id="5.10.3.1.2.2"
+ id="5.10.3.1.2.b"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="d8c87e49-f79a-4070-b451-f8fdcc8c1071"
 >as a target speed at the border location i.e. as an LOA.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="083188f8-9c03-407b-b2ad-e93e447bf206"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="c01ab897-433f-4c43-b917-f20e11260f04"
 >
@@ -8049,10 +8041,6 @@ For the train to be able to enter the new area, the old area must possess inform
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="25d78d95-b4ad-454c-945e-e8662fc619b4"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="41fb85fc-1cd7-4b69-98f0-4a58f05f46a7"
 >
@@ -8065,6 +8053,7 @@ For the train to be able to enter the new area, the old area must possess inform
  name=""
  reviewed="TRUE"
  status="Implemented"
+ tested="TRUE"
  version="3.0.0"
  Name=""
  Guid="4a5cfdeb-9d79-4d58-8d37-5073de473751"
@@ -8085,7 +8074,7 @@ For the train to be able to enter the new area, the old area must possess inform
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="f56df936-9ada-4149-91ce-4742fb123bbb"
@@ -8093,10 +8082,6 @@ For the train to be able to enter the new area, the old area must possess inform
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="fea476fa-36be-4826-b477-31e877272754"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="d8bd5a7d-8522-4e68-8eec-550e3cd2417b"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -8107,6 +8092,7 @@ For the train to be able to enter the new area, the old area must possess inform
  name=""
  reviewed="TRUE"
  status="Implemented"
+ tested="TRUE"
  version="3.0.0"
  Name=""
  Guid="917e038b-c314-4423-b3a6-c0131f148410"
@@ -8126,16 +8112,13 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="67636ec5-7748-4138-a51f-2dff374c08de"
 >If an order to connect to an RBC has been received and the train will not enter the announced RBC area, an order to terminate the session shall be sent either from balises or from the RBC for any route not leading to the RBC area. This is the case both if the train turns back and if the train continues in the same direction, but on another route.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="e420c28c-9391-4e44-8eee-3db3ab105d80"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="340a537a-3183-4137-aa15-46108313753d"
 >
@@ -8169,16 +8152,12 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="ee345c99-9a39-4e05-8317-0abe2e53dae7"
 >An order to connect to the RBC with a given id and telephone number shall be given via balise group in rear of the border location.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="e1b4cbe4-ffe7-44b5-9059-16f1424a48ec"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="a7d20909-8c16-4926-9d2f-544491d5b16a"
 >
@@ -8189,7 +8168,9 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
+ tested="TRUE"
  version="3.0.0"
  Name=""
  Guid="b77954f4-fe3b-4ae7-8e08-b0c1750a1d26"
@@ -8209,7 +8190,9 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
+ tested="TRUE"
  version="3.0.0"
  Name=""
  Guid="993ecba4-4a41-42a9-aa46-e1ea0e930d86"
@@ -8225,11 +8208,12 @@ For the train to be able to enter the new area, the old area must possess inform
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.10.3.2.4"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="8ef5e098-89ed-4f6e-a410-d143f91babf8"
@@ -8249,7 +8233,9 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
+ tested="TRUE"
  version="3.0.0"
  Name=""
  Guid="4f4a1783-3d82-4056-8a27-0f47ff27ce77"
@@ -8269,16 +8255,13 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="c687972f-cca4-490d-8c85-52439871148b"
 >If an order to connect to an RBC has been received and the train will not enter the announced RBC area, an order to terminate the session shall be sent either from balises or from the RBC for any route not leading to the RBC area. This is the case both if the train turns back and if the train continues in the same direction, but on another route.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="1289636d-aa9d-463e-9f00-81c82d1b6d01"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="652f5253-4b7f-4818-b3e7-7042dfda14e4"
 >
@@ -8312,18 +8295,46 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="c00f63e5-6e86-472d-8c58-01a717659705"
->For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either
-	a) as an MA and track description information into the new area, or
-	b) as a target speed at the border location i.e. as an LOA.<RequirementSets>
+>For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either<Sub>
+<Paragraph
+ id="5.10.3.3.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="e691e322-6827-4fb2-aaa2-921131e61148"
+>as an MA and track description information into the new area, or<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="45b649bd-dc88-47e1-bb78-7c80737f90d8"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="859ec82b-8c67-413f-9443-25abf03410e1"
 >
-</RequirementSetReference><RequirementSetReference
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.10.3.3.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="fd3c7b74-7485-4b50-bf82-78ad56e16804"
+>as a target speed at the border location i.e. as an LOA.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="65768fdb-5e3e-4c46-8675-c8b0a2cc4f63"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="ebd6e1ae-b328-409f-9730-d4faf9a6628e"
 >
@@ -8334,7 +8345,8 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="47a5b75a-d6f4-49e5-b2aa-7370f9aa1173"
@@ -8354,7 +8366,7 @@ For the train to be able to enter the new area, the old area must possess inform
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="a7605778-28fc-48d9-b6cd-2429b3e840e2"
@@ -8370,20 +8382,17 @@ For the train to be able to enter the new area, the old area must possess inform
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.10.3.3.4"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="ed84e85e-71aa-4b4c-ae90-fb0806ee3a26"
 >After receiving this exit position report, the RBC can order the train to terminate the session (leading and non-leading engines).<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="82a9ee9c-68c8-445b-8b8f-8b83ea70d09d"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="ea373fdd-1626-42b1-8057-175da512ebe1"
 >
@@ -8419,8 +8428,8 @@ For the train to be able to enter the new area, the old area must possess inform
  name=""
  reviewed="TRUE"
  status="Implemented"
+ tested="TRUE"
  version="3.0.0"
- infoRequired="TRUE"
  Name=""
  Guid="5ccf76c1-cbde-4d3f-bd38-dfdee972897f"
 ><ReqRef
@@ -8433,8 +8442,7 @@ For the train to be able to enter the new area, the old area must possess inform
  SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
  Guid="0398a151-22ef-4f79-9c5e-d6992faa421f"
 >
-</ReqRef><Comment>Does the track description requirement imply a boolean AND or an OR for the individual description parts (Kernel.TrackDescription.TrackDescriptionAvailable)? #morido, 13/10/15</Comment>
-A level 1 MA and track description information shall be received before or at the level transition border. If not, when the level transition is performed, the train shall be tripped, i.e. after switching to level 1, movement is not allowed without a movement authority (refer to SRS chapter 4, transitions between modes).<RequirementSets>
+</ReqRef>A level 1 MA and track description information shall be received before or at the level transition border. If not, when the level transition is performed, the train shall be tripped, i.e. after switching to level 1, movement is not allowed without a movement authority (refer to SRS chapter 4, transitions between modes).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="8bf4755e-22ca-44a2-a5f9-1215296e5332"
@@ -8446,11 +8454,12 @@ A level 1 MA and track description information shall be received before or at th
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.10.3.4.2"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="d1a8966b-07dc-4680-a401-e469e38aa366"
@@ -8493,18 +8502,46 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="a3cb8501-500f-41b4-99a5-928ee951c819"
->For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either
-	a) as an MA and track description information into the new area, or
-	b) as a target speed at the border location i.e. as an LOA.<RequirementSets>
+>For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either<Sub>
+<Paragraph
+ id="5.10.3.5.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="eda1910e-a0b5-43de-89f5-c33036a44278"
+>as an MA and track description information into the new area, or<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="de5d30f6-c691-4cac-b513-dc2457842359"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="eb2f9bed-feeb-4774-9255-32853f35c478"
 >
-</RequirementSetReference><RequirementSetReference
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.10.3.5.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="69335cb8-f8a1-45e7-a529-6010ef297a06"
+>as a target speed at the border location i.e. as an LOA.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="8e242348-1500-4830-89d0-0a12d1086853"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="3b335b07-7061-4087-9763-17ca16227e78"
 >
@@ -8559,18 +8596,46 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="20ce3d8d-e845-462d-a68f-ff93e4af8af4"
->For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either
-	a) as an MA and track description information into the new area, or
-	b) as a target speed at the border location i.e. as an LOA.<RequirementSets>
+>For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either<Sub>
+<Paragraph
+ id="5.10.3.6.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="05952c59-5b44-404b-a5eb-87e9199e6ca0"
+>as an MA and track description information into the new area, or<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="fbd3a77f-d151-4a61-8bed-a82b078bff5f"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="595528b9-f937-450a-9275-77fb169b376f"
 >
-</RequirementSetReference><RequirementSetReference
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.10.3.6.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="07bcdba2-595c-4160-b1fa-92d826e44818"
+>as a target speed at the border location i.e. as an LOA.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="7216f4b1-2d2c-49ae-b5e2-71ee5e69541f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="490942f2-c015-453e-abcf-3ab6847c86c8"
 >
@@ -8581,7 +8646,7 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="fef79c41-a6e7-4139-94de-a5a9b000932d"
@@ -8597,20 +8662,17 @@ A level 1 MA and track description information shall be received before or at th
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.10.3.6.3"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="babdea27-1a9d-4b61-a60d-256db9292e34"
 >After receiving this exit position report, the RBC can order the train to terminate the session (leading and non-leading engines).<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="477fc207-496f-48a6-a936-87307efbe2d7"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="9240df0d-8d1e-403e-8635-b59d2a881119"
 >
@@ -8665,16 +8727,12 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="b9eef187-de62-4e91-9ca2-8e80fcda562a"
 >An order to connect to the RBC with a given id and telephone number shall be given via balise group in rear of the border location.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="b15c7f50-ddbf-4612-a676-5632595b6948"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="c442368f-deb2-42eb-9d4a-30fde6e33d14"
 >
@@ -8685,7 +8743,9 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
+ tested="TRUE"
  version="3.0.0"
  Name=""
  Guid="c5a46dc7-2c6f-4ee4-98cd-53b8ce7d8bd9"
@@ -8705,7 +8765,9 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
+ tested="TRUE"
  version="3.0.0"
  Name=""
  Guid="9b7b7260-4745-47d4-8972-ee9042015f08"
@@ -8731,11 +8793,12 @@ A level 1 MA and track description information shall be received before or at th
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.10.3.7.4"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="10acdb5e-0b63-4057-8e63-c1ab2b810c90"
@@ -8755,7 +8818,9 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
+ tested="TRUE"
  version="3.0.0"
  Name=""
  Guid="74a30d76-76b6-4796-9af7-51fcc86fdda3"
@@ -8775,16 +8840,13 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="f8cd5d10-8b71-4318-a7b0-8187b3a85595"
 >If an order to connect to an RBC has been received and the train will not enter the announced RBC area, an order to disconnect shall be sent either from balises or from the RBC for any route not leading to the RBC area. This is the case both if the train turns back and if the train continues in the same direction, but on another route.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="65a0c916-3952-4de3-8fa9-3f1e2083bf8b"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="8ece058b-f5c3-497a-afcc-c954e7102ced"
 >
@@ -8818,7 +8880,9 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
+ tested="TRUE"
  version="3.0.0"
  Name=""
  Guid="b9beb249-7083-4fd4-bcbc-fdf20b210328"
@@ -8844,11 +8908,12 @@ A level 1 MA and track description information shall be received before or at th
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.10.3.8.2"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="8341b7ae-0e8e-4a1e-b048-f46beea1b9a1"
@@ -8912,18 +8977,46 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="312b695b-a91a-4dfd-8816-c7d7ef6e7c19"
->For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either
-	a) as an MA and track description information into the new area, or
-	b) as a target speed at the border location i.e. as an LOA.<RequirementSets>
+>For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either<Sub>
+<Paragraph
+ id="5.10.3.9.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="6bc241a4-153b-48d2-a3b9-8734e7714b07"
+>as an MA and track description information into the new area, or<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="50fd1128-c848-495d-9833-d3bf9b7bdd50"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="351a7529-5de5-41d4-8913-84cb437ad005"
 >
-</RequirementSetReference><RequirementSetReference
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.10.3.9.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="55c53574-abb2-4110-ae26-3f9cd74c1237"
+>as a target speed at the border location i.e. as an LOA.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="15a40d45-8204-46ac-a9cf-84e84614aa03"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="2e413340-e169-48c1-b942-273d2d6054c7"
 >
@@ -8999,18 +9092,46 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="8f6e94e0-d9c3-4b74-ae40-72a7434ddac3"
->For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either
-	- as an MA and track description information into the new area, or
-	- as a target speed at the border location i.e. as an LOA.<RequirementSets>
+>For the train to be able to enter the new area, the old area must possess information about at least the first section of the new area. The information may be transmitted to the train either<Sub>
+<Paragraph
+ id="5.10.3.10.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="84646629-b268-413d-a4d9-959f02af510f"
+>as an MA and track description information into the new area, or<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="273a0228-d399-4f22-ac3f-7008676cd280"
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="c8b9e1e4-3f8e-4006-8adc-351bf022bfb0"
 >
-</RequirementSetReference><RequirementSetReference
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.10.3.10.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="54791f37-8622-428d-9844-f22ea2f14651"
+>as a target speed at the border location i.e. as an LOA.<RequirementSets>
+<RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="6c419744-e255-4ff1-80d9-8837dd4a652f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="cb2ea6f8-b335-413d-b14a-89f19324a847"
 >
@@ -9042,7 +9163,7 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="47b91cc7-c8e6-4d25-94b9-7992b9456daa"
@@ -9058,20 +9179,17 @@ A level 1 MA and track description information shall be received before or at th
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.10.3.10.4"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="fc108d59-c2f6-4950-aa66-569b8efa7e4c"
 >After receiving this exit position report, the RBC can order the train to terminate the session (leading and non-leading engines).<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="32ba873e-4af1-45ed-87af-7cc2f740153d"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="c4270dd4-7f1b-4d9f-980c-e0b25334c7e1"
 >
@@ -9087,7 +9205,7 @@ A level 1 MA and track description information shall be received before or at th
  version="3.0.0"
  Name=""
  Guid="fca28ee5-38be-4707-94b2-4bc07faf660b"
->In case the ERTMS/ETCS on-board equipment is interfaced to the National System through an STM, please refer to SUBSET-035 for the STM state transition orders in relation to the level transition announcement and border..<RequirementSets>
+>In case the ERTMS/ETCS on-board equipment is interfaced to the National System through an STM, please refer to SUBSET-035 for the STM state transition orders in relation to the level transition announcement and border.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="49797a05-c058-4a6a-a9e0-27ace427a217"
@@ -9229,11 +9347,12 @@ A level 1 MA and track description information shall be received before or at th
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.10.3.12.2"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="513d0c06-b396-493e-ab15-ec00a45b82d5"
@@ -9335,11 +9454,12 @@ A level 1 MA and track description information shall be received before or at th
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.10.3.13.3"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="18aec2bc-09a2-4bca-888b-d3a3accfa3d4"
@@ -9445,7 +9565,8 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl="3.1.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="5bcc87bc-5d11-48c0-b51c-a864660e918f"
@@ -9509,7 +9630,8 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl="3.1.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="4cfe03c5-9038-4784-ad96-4ccf981c6a5f"
@@ -9518,7 +9640,7 @@ A level 1 MA and track description information shall be received before or at th
  SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
  Guid="1126d193-c89c-42ce-8872-0ef54aa6ffd5"
 >
-</ReqRef>Transition initiated by driver<RequirementSets>
+</ReqRef>In addition to the level transitions ordered by trackside, it is also possible, at standstill, for the driver to change the ERTMS/ETCS level (refer to section 3.18.4.2).<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="ca44d61c-ff42-472a-b9c5-92d8f3b20506"
@@ -9538,10 +9660,48 @@ A level 1 MA and track description information shall be received before or at th
  version="3.0.0"
  Name=""
  Guid="cae9ea11-6eb1-49b7-b010-183e0c897e7b"
->If the driver changes the level to 2 or 3, the ERTMS/ETCS on-board equipment shall establish a communication session with the RBC:
-	a) immediately if at least one Mobile Terminal is registered to a Radio Network and a valid RBC ID/ phone number is available, OR
-	b) once the driver has selected the RBC contact information (by the same means as for Start of Mission), if either no Mobile Terminal is registered to a Radio Network or no valid RBC ID/phone number is available.<Sub>
+>If the driver changes the level to 2 or 3, the ERTMS/ETCS on-board equipment shall establish a communication session with the RBC:<Sub>
 <Paragraph
+ id="5.10.3.15.2.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="38c25256-da47-4c77-a112-1ee0d724e7f2"
+>immediately if at least one Mobile Terminal is registered to a Radio Network and a valid RBC ID/ phone number is available, OR<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e5903931-8a68-44c1-be50-666ca2542583"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="906874b5-811f-4b8c-9850-79d2459d45f0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.10.3.15.2.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="573d0d6d-98df-43fa-8065-22f5dae937f3"
+>once the driver has selected the RBC contact information (by the same means as for Start of Mission), if either no Mobile Terminal is registered to a Radio Network or no valid RBC ID/phone number is available.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7c673d75-95bf-48fc-b834-e596ab551fdb"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="3a660431-b524-49a8-b526-2600a22e0301"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="5.10.3.15.2.1"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -9658,21 +9818,54 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl="3.1.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="8328bb5f-310c-462b-9f15-802a2fee99b9"
->If defined so for the level transition (see table below), the driver shall be requested to acknowledge the transition
-	a) when the max safe front end of the train has passed a trackside defined location in rear of the level transition border
-	b) upon receipt of the order to switch to the new level immediately<Sub>
+>If defined so for the level transition (see table below), the driver shall be requested to acknowledge the transition<Sub>
 <Paragraph
+ id="5.10.4.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ Name=""
+ Guid="9f0f683a-1fd7-4c49-a2e8-e9ed1c86ba09"
+>when the max safe front end of the train has passed a trackside defined location in rear of the level transition border<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c59dda5d-d823-447a-97c0-2a617d66f706"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.10.4.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ Name=""
+ Guid="326c0395-05a3-431d-b435-8b4d44c094c1"
+>upon receipt of the order to switch to the new level immediately<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9c251d09-a89c-4bf0-bc8b-8a26ca902abb"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="5.10.4.1.1"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="a9175422-b443-4cc7-95c0-c99e8be3f93b"
@@ -9681,20 +9874,12 @@ A level 1 MA and track description information shall be received before or at th
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a636ba9f-9825-4885-8f0e-d5194a73f2c5"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="4bf4f4cb-a82f-4a37-b473-db1740cf6666"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="e6c04d3e-55dd-4a11-986d-6d9f1d73a573"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="26884740-f305-465a-b848-565470108f2c"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -9703,8 +9888,10 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
+ specIssue="TRUE"
  Name=""
  Guid="b80b16f5-2420-4404-a28c-46554a19a163"
 ><ReqRef
@@ -9712,14 +9899,11 @@ A level 1 MA and track description information shall be received before or at th
  SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
  Guid="9ac3af23-8352-4a1d-af84-bdc8bcdc38c7"
 >
-</ReqRef>If the driver has not yet acknowledged within the driver acknowledgement time (refer to Appendix A3.1) after the level transition, a service brake command shall be initiated.<RequirementSets>
+</ReqRef><Comment>Appendix A3.1 only specifies the driver acknowledgement time for mode transitions.</Comment>
+If the driver has not yet acknowledged within the driver acknowledgement time (refer to Appendix A3.1) after the level transition, a service brake command shall be initiated.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="561de011-a01b-4c7f-9cf7-d1dd6cd0abe9"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="4212cf63-fd22-452b-9943-659e7704032f"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -9728,7 +9912,8 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="25ff8d11-2313-4e9f-80cb-228750b3ad1a"
@@ -9741,10 +9926,6 @@ A level 1 MA and track description information shall be received before or at th
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="36c1a45f-5379-4520-a0a7-e4a7d2303a90"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="d1af4c8a-b5da-4ee5-acda-6d21ac508b4e"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -9777,7 +9958,8 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="8d4e3494-0d48-4a2c-9b77-5f6c3172b190"
@@ -9786,10 +9968,6 @@ A level 1 MA and track description information shall be received before or at th
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a649e6f0-3d96-4df5-a0b4-77c1b199e767"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="00585064-1a48-4010-83ca-7394513bba2e"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 5.10.4.4.1.2"
@@ -9797,7 +9975,8 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="a3a0049d-a3a9-4214-8f52-5e8bc71b4d74"
@@ -9806,10 +9985,6 @@ A level 1 MA and track description information shall be received before or at th
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="168957f3-fa12-4d76-8850-c85817886a9f"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="e7e4ff22-9014-4759-bdcd-21d6c7cf63cd"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 5.10.4.4.1.3"
@@ -9817,7 +9992,8 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="a19779b8-8b61-4cfa-8ee6-b2a0a005a1ef"
@@ -9826,10 +10002,6 @@ A level 1 MA and track description information shall be received before or at th
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="b16c1b84-8d3c-457b-a727-6ba14c29926a"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="b2ec1d01-8cee-4800-a700-fc5b578b7341"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 5.10.4.4.1.4"
@@ -9837,7 +10009,8 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="8b054aef-0c7c-4bb6-b706-dc8f199900c8"
@@ -9846,10 +10019,6 @@ A level 1 MA and track description information shall be received before or at th
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="07d80b81-30e5-440f-ac42-33043dd1dcf4"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="434559d9-cbdf-453a-9cca-375913521be0"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="Entry 5.10.4.4.1.5"
@@ -9857,7 +10026,8 @@ A level 1 MA and track description information shall be received before or at th
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="10532251-984f-4e9b-9194-e8b1e47d73a4"
@@ -9865,10 +10035,6 @@ A level 1 MA and track description information shall be received before or at th
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="10e3120a-6610-413d-ab53-a1967dc24aa5"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="17919fea-e792-4da1-8401-acb61311b106"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -14201,6 +14367,7 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
  Name=""
@@ -14210,10 +14377,6 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="73491a56-d681-41f9-8283-fdb8cbae7c6a"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="531d7ec3-9559-4323-8b02-91569d9f62aa"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.16.1.2"
@@ -14221,7 +14384,8 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="90d05183-dd5f-471a-929c-200da2581c34"
@@ -14230,10 +14394,6 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="e3a87ec4-cdae-4daa-898a-7a98f3cca0dc"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="6a461674-776f-4a29-be60-cadaba930cf6"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.16.1.3"
@@ -14241,7 +14401,8 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="3d9a09c9-758a-417a-8688-317064a5d7d1"
@@ -14250,10 +14411,6 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="62aa0da1-0fe8-4724-b0c2-5de4dc0abf39"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="4da2e024-e42a-4161-8d62-627a294c6499"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.16.1.4"
@@ -14261,7 +14418,8 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="18f662c4-1a06-4ad0-9986-1dc47f1c5948"
@@ -14270,16 +14428,45 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
  SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
  Guid="d8ce6e0d-dbce-48c4-a625-58d5ccc757ef"
 >
-</ReqRef>When approaching a non protected LX, the on-board equipment shall inform the driver about the status of the LX, as soon as: 
-	a) either the EOA or the SvL related to the LX start location becomes the Most Restrictive Displayed Target (see 3.13.10.4.2), or
-	b) the ERTMS/ETCS on-board equipment substitutes the supervision of the LX start location as both the EOA and SvL by the inclusion of the LX speed restriction in the MRSP.<RequirementSets>
+</ReqRef>When approaching a non protected LX, the on-board equipment shall inform the driver about the status of the LX, as soon as:<Sub>
+<Paragraph
+ id="5.16.1.4.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="Implemented"
+ version="3.0.0"
+ Name=""
+ Guid="c29d61b8-fc7e-4e30-a772-7fcd54f864fe"
+>either the EOA or the SvL related to the LX start location becomes the Most Restrictive Displayed Target (see 3.13.10.4.2), or<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="d886166e-27ab-477e-a22a-83cf7c4e33b0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.16.1.4.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ Name=""
+ Guid="c8715350-50d3-418e-a138-39f03d488016"
+>the ERTMS/ETCS on-board equipment substitutes the supervision of the LX start location as both the EOA and SvL by the inclusion of the LX speed restriction in the MRSP.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="246d2079-0b8b-4714-b1de-8cc12d751ef2"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="329b5e5b-4bfb-4b8a-890b-a52354a89eeb"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="fc18561b-0557-45fb-876a-bc0c11799682"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -14288,7 +14475,8 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="25f5d4dc-17ae-428e-804b-cad4501f9207"
@@ -14297,16 +14485,46 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
  SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
  Guid="6b225115-a5ef-49f0-9cee-b8c3d038f0f6"
 >
-</ReqRef>Indication given to the driver shall remain displayed until one of the following conditions is met:
-	a) information &quot;LX is protected&quot; is received on-board;
-	b) train has passed the LX end location with its min safe front end.<RequirementSets>
+</ReqRef>Indication given to the driver shall remain displayed until one of the following conditions is met:<Sub>
+<Paragraph
+ id="5.16.1.5.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ Name=""
+ Guid="cb0fc7f5-a2fc-4ade-96c4-44833122166e"
+>information &quot;LX is protected&quot; is received on-board;<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="848aa5a3-0c14-4dc5-9109-08d313a649d3"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="5.16.1.5.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ Name=""
+ Guid="6b88cee7-690c-471d-bb1a-10dfa73e675a"
+>train has passed the LX end location with its min safe front end.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="409d2472-2ae3-4f64-a331-bb87107ad42c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="676c690a-923c-46c3-8d06-706d3144cc51"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="79268357-d431-4695-a5a7-d5d319055826"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -14338,7 +14556,8 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="40345205-ff68-43c5-b986-172b7e41c842"
@@ -14381,7 +14600,8 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="9b54b401-0857-45af-bbb3-1ec502f39d2a"
@@ -14390,10 +14610,6 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="c64d31d7-b232-4688-b899-130cb3f450e8"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="e83e50ae-db0e-4fdf-93e2-fb89a0af15b0"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="5.16.3.2"
@@ -14401,7 +14617,8 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
  scope="FLAGS"
  bl="3.2.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="b7d99bef-d372-4d0a-a74b-4a630f5762aa"
@@ -14409,10 +14626,6 @@ At the RBC/RBC border a balise group with an order to execute the handover immed
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="6e781e55-695a-491e-bd80-ae1c687890ba"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="41e90ad2-716f-42f2-8bb9-7ef488513a4c"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -15437,7 +15650,7 @@ This location (point C) shall be determined by the ERTMS/ETCS on-board equipment
  specIssue="TRUE"
  Name=""
  Guid="9dd79c32-df2a-4434-b913-50640beb4281"
-><Comment>When is it automatic and when does the drive need to act?</Comment>
+><Comment>When is it automatic and when does the driver need to act?</Comment>
 The displayed &quot;Lower pantograph announcement&quot; information shall also indicate if the related functionality is executed
 	- automatically, or
 	- if the driver is requested to act.<Sub>
@@ -15573,7 +15786,7 @@ The displayed &quot;Lower pantograph announcement&quot; information shall also i
  specIssue="TRUE"
  Name=""
  Guid="66551c91-ee6f-4402-b569-a9ff81c8d821"
-><Comment>When is it automatic and when does the drive need to act?</Comment>
+><Comment>When is it automatic and when does the driver need to act?</Comment>
 The displayed &quot;Raise pantograph&quot; information shall also indicate if the related functionality is executed
 	- automatically, or
 	- if the driver is requested to act.<Sub>
@@ -15750,7 +15963,7 @@ This location (point C) shall be determined by the ERTMS/ETCS on-board equipment
  specIssue="TRUE"
  Name=""
  Guid="b04158a3-35ce-4257-b43e-1d9716f76f93"
-><Comment>When is it automatic and when does the drive need to act?</Comment>
+><Comment>When is it automatic and when does the driver need to act?</Comment>
 The displayed Neutral section announcement information shall also indicate if the related functionality is executed
 - automatically, or
 - if the driver is requested to act.<Sub>
@@ -15846,7 +16059,7 @@ The displayed Neutral section announcement information shall also indicate if th
  specIssue="TRUE"
  Name=""
  Guid="54fc1b2f-383b-4d7f-8d4a-91173fd494a8"
-><Comment>When is it automatic and when does the drive need to act?</Comment>
+><Comment>When is it automatic and when does the driver need to act?</Comment>
 The displayed End of Neutral section information shall also indicate if the related functionality is executed
 - Automatically, or
 - if the driver is requested to act.<Sub>
@@ -16349,7 +16562,7 @@ This location (point C) shall be determined by the ERTMS/ETCS on-board equipment
  specIssue="TRUE"
  Name=""
  Guid="cd230e40-3098-4fd4-94b2-cc5f04fa5d77"
-><Comment>When is it automatic and when does the drive need to act?</Comment>
+><Comment>When is it automatic and when does the driver need to act?</Comment>
 The displayed &quot;Close air conditioning intake announcement&quot; information shall also indicate if the related functionality is executed
 	- automatically, or
 	- if the driver is requested to act.<Sub>
@@ -16465,7 +16678,7 @@ The displayed &quot;Close air conditioning intake announcement&quot; information
  specIssue="TRUE"
  Name=""
  Guid="ac29e88f-6252-4dc2-ba81-7dde4deecdc7"
-><Comment>When is it automatic and when does the drive need to act?</Comment>
+><Comment>When is it automatic and when does the driver need to act?</Comment>
 The displayed &quot;Open air conditioning intake&quot; information shall also indicate if the related functionality is executed
 	- automatically, or
 	- If the driver is requested to act.<Sub>
@@ -16670,7 +16883,7 @@ The displayed &quot;Open air conditioning intake&quot; information shall also in
  specIssue="TRUE"
  Name=""
  Guid="41d40a52-5363-4cb6-925a-671d1d925ce8"
-><Comment>When is it automatic and when does the drive need to act?</Comment>
+><Comment>When is it automatic and when does the driver need to act?</Comment>
 The displayed &quot;Inhibition of Regenerative Brake announcement&quot; information shall also indicate if the related functionality is executed
 	- automatically, or
 	- if the driver is requested to act.<Sub>

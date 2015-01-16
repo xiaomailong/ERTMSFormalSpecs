@@ -32082,27 +32082,27 @@ public  void setRecursiveSelection(bool v) {
 }
 
 
-private  acceptor.SPEC_IMPLEMENTED_ENUM aRequirementsStatus;
+private  acceptor.SPEC_IMPLEMENTED_ENUM aObsoleteRequirementsStatus;
 
-public  acceptor.SPEC_IMPLEMENTED_ENUM getRequirementsStatus() { return aRequirementsStatus;}
+public  acceptor.SPEC_IMPLEMENTED_ENUM getObsoleteRequirementsStatus() { return aObsoleteRequirementsStatus;}
 
-public  void setRequirementsStatus(acceptor.SPEC_IMPLEMENTED_ENUM v) {
-  aRequirementsStatus = v;
+public  void setObsoleteRequirementsStatus(acceptor.SPEC_IMPLEMENTED_ENUM v) {
+  aObsoleteRequirementsStatus = v;
   __setDirty(true);
   NotifyControllers(null);
 }
 
 
-public  string   getRequirementsStatus_AsString()
+public  string   getObsoleteRequirementsStatus_AsString()
 {
-  return acceptor.Enum_SPEC_IMPLEMENTED_ENUM_ToString (aRequirementsStatus);
+  return acceptor.Enum_SPEC_IMPLEMENTED_ENUM_ToString (aObsoleteRequirementsStatus);
 }
 
-public  bool setRequirementsStatus_AsString( string  v)
+public  bool setObsoleteRequirementsStatus_AsString( string  v)
 {
  acceptor.SPEC_IMPLEMENTED_ENUM  temp = acceptor.StringTo_Enum_SPEC_IMPLEMENTED_ENUM(v);
 if (temp >= 0){
-  aRequirementsStatus = temp;
+  aObsoleteRequirementsStatus = temp;
   __setDirty(true);
   NotifyControllers(null);
   return true;
@@ -32142,7 +32142,7 @@ aHeight=(0);
 aX=(0);
 aY=(0);
 aRecursiveSelection=(false);
-aRequirementsStatus=(0);
+aObsoleteRequirementsStatus=(0);
 aDefault=(false);
 aPinned=(false);
 }
@@ -32157,7 +32157,7 @@ other.aHeight = aHeight;
 other.aX = aX;
 other.aY = aY;
 other.aRecursiveSelection = aRecursiveSelection;
-other.aRequirementsStatus = aRequirementsStatus;
+other.aObsoleteRequirementsStatus = aObsoleteRequirementsStatus;
 other.aDefault = aDefault;
 other.aPinned = aPinned;
 }
@@ -32497,7 +32497,7 @@ ctxt.fail ("Duplicate attribute: RequirementsStatus");
 } // If
 fl1619 = true ; 
 quoteChar = ctxt.acceptQuote();
-this.setRequirementsStatus(acceptor.lAcceptEnum_SPEC_IMPLEMENTED_ENUM(ctxt));
+this.setObsoleteRequirementsStatus(acceptor.lAcceptEnum_SPEC_IMPLEMENTED_ENUM(ctxt));
 ctxt.accept(quoteChar);
 ctxt.skipWhiteSpace();
 break;
@@ -32652,10 +32652,10 @@ acceptor.unParsePcData(pw, this.getRecursiveSelection());
 pw.Write('"');
 pw.Write('\n');
 } // If
-if (this.getRequirementsStatus() != 0){
+if (this.getObsoleteRequirementsStatus() != 0){
 pw.Write(" RequirementsStatus=\"");
 acceptor.unParsePcData(pw,
-  acceptor.Enum_SPEC_IMPLEMENTED_ENUM_ToString(this.getRequirementsStatus()));
+  acceptor.Enum_SPEC_IMPLEMENTED_ENUM_ToString(this.getObsoleteRequirementsStatus()));
 pw.Write('"');
 pw.Write('\n');
 } // If
