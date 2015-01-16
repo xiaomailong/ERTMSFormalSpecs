@@ -58,7 +58,7 @@
  Guid="55a81856-c78d-4268-b3ab-6a25fab54e07"
 >
 </Parameter><Parameter
- Type="TargetSpeedMonitoring.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="ad8a6301-49b4-439c-a3dc-051c1433b04e"
 >
@@ -119,7 +119,7 @@
  Guid="4e482c9e-001d-40ca-813a-a2f8cd0a0e96"
 >
 </Parameter><Parameter
- Type="TargetSpeedMonitoring.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="3bcc2f1b-2aa5-4627-9be3-2550e4ab4459"
 >
@@ -182,7 +182,7 @@
  Guid="d3d44a74-6a3d-43bc-82af-1df1d08bbcec"
 >
 </Parameter><Parameter
- Type="TargetSpeedMonitoring.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="af7e9799-9b52-4fc7-bd5e-b307a19e2eb0"
 >
@@ -455,7 +455,7 @@ PreIndicationLocation.d_I( aTarget =&gt; MRSPnTarget, Vmrsp =&gt; PreIndicationL
  Guid="821a7511-17af-46c6-8219-84b6b489bdc6"
 >
 </Parameter><Parameter
- Type="TargetSpeedMonitoring.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="93c5bc3e-e389-48f8-b43d-fde5addad986"
 >
@@ -1031,7 +1031,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
 ) - BaseTypes.SpeedToMS ( Vmrsp ) * T_bs1ind()</Expression>
 </Case></Cases>
 </Function><Function
- Type="TargetSpeedMonitoring.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Cacheable="TRUE"
  Default=""
  Width="100"
@@ -1044,12 +1044,12 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
 <Comment>Returnst the further of the two targets, measured from the train&apos;s location.</Comment>
 <Parameters>
 <Parameter
- Type="TargetSpeedMonitoring.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="Target1"
  Guid="f6d35e1d-c5aa-44c4-a371-97dea0aa6d7f"
 >
 </Parameter><Parameter
- Type="TargetSpeedMonitoring.Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="Target2"
  Guid="b855c6c5-922e-4978-8c72-41862551d44f"
 >

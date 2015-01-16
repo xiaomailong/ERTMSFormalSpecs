@@ -2335,29 +2335,6 @@ This is a check for message consistency errors.</Comment>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Update SR Authorisation"
- Guid="49559908-53df-46da-942b-d6c1cfb7660a"
->
-<Comment>Change the distances in the stored Staff Responsible Mode Authorisation to be measured from the new LRBG</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Update SR Authorisation"
- Guid="64e19da1-18aa-4dc7-ba6e-4485a8cfc96a"
->
-<PreConditions>
-<PreCondition
- Guid="f0617975-0e2a-4844-9d27-166b80175975"
->Available(Kernel.StaffResponsible.SRAuthorisation)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="3e93b105-dd0c-4ddb-93ee-34c23ce710f6"
->Kernel.StaffResponsible.SRAuthorisation.Distance &lt;- Kernel.StaffResponsible.SRAuthorisation.Distance - DistanceFromLRBG</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
  Name="Update Adhesion Factors"
  Guid="fe95f853-8149-4972-879a-6b9bd5be4766"
 >

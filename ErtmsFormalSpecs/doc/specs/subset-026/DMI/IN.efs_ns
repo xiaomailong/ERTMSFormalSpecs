@@ -1710,7 +1710,7 @@
 <Comment>Allows to initiate the request</Comment>
 <Parameters>
 <Parameter
- Type="LevelDataStruct"
+ Type="Default.LevelDataStruct"
  Name="Level"
  Guid="a2575882-c585-47b2-b62d-129a8a319646"
 >
@@ -1755,7 +1755,7 @@
 >
 <Comment>Provides information about the request status</Comment>
 </StructureElement><StructureElement
- TypeName="LevelDataStruct"
+ TypeName="Default.LevelDataStruct"
  Default=""
  Mode="Outgoing"
  Implemented="TRUE"
@@ -2326,7 +2326,12 @@
  Name="Speed"
  Guid="279c7719-87a5-4e77-a4e8-5c9d3ee7eccc"
 >
-<Comment>The speed to acknowledge</Comment>
+<ReqRef
+ Id="6a2d9432-86f3-4154-85b1-431198e6b7f3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ecb32629-3049-4a45-a275-f19bb83649d2"
+>
+</ReqRef><Comment>The speed to acknowledge</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
@@ -2336,7 +2341,12 @@
  Name="Distance"
  Guid="6aca2546-bcde-44ab-852c-95f8bd0ace1e"
 >
-<Comment>The distance to acknowledge</Comment>
+<ReqRef
+ Id="6a2d9432-86f3-4154-85b1-431198e6b7f3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="305c9c80-b045-4ef7-8d9f-a12cfbb4a727"
+>
+</ReqRef><Comment>The distance to acknowledge</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="230"
@@ -5787,6 +5797,157 @@
  Guid="cc2d7f44-6a96-4b5f-870f-127d92c1896e"
 >
 <Comment>Provides information about this request status</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ X="670"
+ Y="520"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SRModeSpeedLimitAndDistanceEntryRequest"
+ Guid="7c15a2f2-bf82-40ac-8208-25ca377ad078"
+>
+<ReqRef
+ Id="7ae1bf11-7b11-466d-abd7-fcec9dee2465"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fa74ec18-682c-4414-a84e-8ec353e858ee"
+>
+</ReqRef><Comment>Acknowledgement speed and distance for SR mode</Comment>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcceptDriverResponse"
+ Guid="9bac551e-2093-4792-ac64-07600ce23d16"
+>
+<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Accepts data from the driver"
+ Guid="49e03954-42d7-42bf-aee1-bb2ff94d4982"
+>
+<Comment>Accepts the data and updates the system state</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Accepts data from the driver"
+ Guid="129dc5be-e561-422f-8f0a-4314f82bac92"
+>
+<PreConditions>
+<PreCondition
+ Guid="75e7534c-ffa8-48b8-ba98-3c39debe87e7"
+>SRModeSpeedLimitAndDistanceAvailable()</PreCondition><PreCondition
+ Guid="7799470d-65b1-4cb0-9f2a-5644837c4f04"
+>THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="fb33d69b-90c0-4a5e-9ca4-56c8c6accc24"
+>THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="TrackMode"
+ Guid="fb2f8c24-99d4-4a8f-968a-0e9438b86792"
+>
+<Comment>Updates the request status according to a mode change</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="0bc9950d-04bc-457d-9a20-abd45fa00cdd"
+>
+<Comment>Disable the request if the mode renders it unavailable</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Disable if needed"
+ Guid="71c7252e-168a-4b8a-aaa1-863e21f5e6e7"
+>
+<Comment>Disable the request according to mode change</Comment>
+<PreConditions>
+<PreCondition
+ Guid="f96e7c81-2df5-4202-9421-eb18af5e52a3"
+>NOT SRModeSpeedLimitAndDistanceAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="49565fb1-df99-44f4-96c6-46be4ce6b049"
+>THIS.InputInformation.Disable()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="c590cc0f-3942-4912-a2a5-ef53763baa83"
+>
+<Comment>Initiate request</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="43dd80ad-6eba-45df-9160-6a0587ec7241"
+>
+<Comment>Initiate request</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitiateRequest"
+ Guid="27534936-6450-4fd9-b573-0025b43cbe57"
+>
+<PreConditions>
+<PreCondition
+ Guid="5245df18-e61e-4ce3-93c3-891259dbc813"
+>SRModeSpeedLimitAndDistanceAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="030d48d3-a736-4adb-8cba-0441c97a6c3f"
+>THIS.InputInformation.InitiateRequest()</Action><Action
+ Guid="35d0ab61-a9bf-4b29-8df4-2824488c6b1e"
+>DMIStruct.In_SRModeSpeedLimitAndDistance.InputInformation.DriverAnswered &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<StructureElement
+ TypeName="InputInformation"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InputInformation"
+ Guid="96b43298-50fa-4acb-b2b2-382788943b0e"
+>
+<Comment>The request status</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Speed"
+ Default="0.0"
+ Mode="Outgoing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Speed"
+ Guid="ca12f3fe-6b50-41fd-9143-5ed34c0fa622"
+>
+<Comment>The speed to acknowledge</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default="0.0"
+ Mode="Outgoing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Distance"
+ Guid="39879fa9-7f2b-47ee-b005-fcd9574efa97"
+>
+<Comment>The distance to acknowledge</Comment>
 </StructureElement></Structure></Structures>
 <Functions>
 <Function

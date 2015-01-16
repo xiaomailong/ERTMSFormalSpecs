@@ -7463,6 +7463,7 @@ TrainPosition.RearEndPosition(PointOfInterest =&gt; DistanceInterval.Nom) &lt; (
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="SR"
  Guid="aca2dab1-2c2b-4dcb-ab3e-9f95bc4e94ee"
 >
@@ -7476,9 +7477,11 @@ TrainPosition.RearEndPosition(PointOfInterest =&gt; DistanceInterval.Nom) &lt; (
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0f56c8d0-70ff-4fea-b79f-b74ffc058eab"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>When the SR mode is entered, keep a record of the train&apos;s position for the max allowed distance to run in SR mode.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="SR start distance"
  Guid="542a293f-0bbe-4b7e-8564-f58bb6df0072"
 >

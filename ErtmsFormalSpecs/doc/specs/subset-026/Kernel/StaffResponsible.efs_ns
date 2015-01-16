@@ -12,7 +12,7 @@
 <Structures>
 <Structure
  Default=""
- X="190"
+ X="490"
  Y="30"
  Width="100"
  Height="50"
@@ -28,21 +28,7 @@
 >
 </ReqRef><Comment>Stores information received about an upcoming SR area.</Comment>
 <StructureElement
- TypeName="Default.BaseTypes.Distance"
- Default="Default.BaseTypes.Distance.Unknown"
- Mode="Internal"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Distance"
- Guid="fff6a8cc-79ca-4559-a4f8-1f301ee25c72"
->
-<ReqRef
- Id="13ab2c85-748e-4895-a3c6-95ec5c0d9f08"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7dd69a96-0bee-4698-a185-ac93c1e509ad"
->
-</ReqRef></StructureElement><StructureElement
- TypeName="Kernel.BaliseGroups"
+ TypeName="BaliseGroups"
  Default="[]"
  Mode="Internal"
  Implemented="TRUE"
@@ -70,10 +56,19 @@
  Guid="28dfc203-335b-4c4c-844e-c8d8a06f4dee"
 >
 </ReqRef><Comment>Retains whether a list of BGs that can be passed in SR mode has been received.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default="0.0"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Distance"
+ Guid="365f5bcd-a90a-4173-8202-def82f01b37b"
+>
+<Comment>The permitted distance to run in SR.</Comment>
 </StructureElement></Structure></Structures>
 <Functions>
 <Function
- Type="Kernel.BaliseGroups"
+ Type="BaliseGroups"
  Default=""
  X="20"
  Y="150"
@@ -168,7 +163,8 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
 </Function><Function
  Type="Boolean"
  Default=""
- Y="60"
+ X="130"
+ Y="210"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -206,6 +202,54 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
 (FIRST Balise IN BaliseGroup).NID_C == StaffResponsibleBG.NID_C
   AND  
 (FIRST Balise IN BaliseGroup).NID_BG == StaffResponsibleBG.NID_BG</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Default=""
+ X="130"
+ Y="290"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="DistanceToRun"
+ Guid="e2e6a23d-5997-4a50-9d99-d0aece4b2e95"
+>
+<ReqRef
+ Id="d1fd4df1-3d3f-4520-b838-9000fd3ebb82"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f4640f9f-c30b-45a6-bc00-eb6004287416"
+>
+</ReqRef><ReqRef
+ Id="478bdd4c-284c-4cc2-98a7-1b85116f19c2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="37044b83-a59c-4a78-9173-b474e78f0781"
+>
+</ReqRef><Comment>Returns the permitted distance to run in SR mode.</Comment>
+<Cases>
+<Case
+ Name="Received distance"
+ Guid="8950d78d-464b-4c32-932f-b4f4cd3556e3"
+>
+<PreConditions>
+<PreCondition
+ Guid="738bcd15-c113-45d0-8ca8-16a08f625fc7"
+>Available(SRAuthorisation)</PreCondition></PreConditions>
+<Expression>SRAuthorisation.Distance</Expression>
+</Case><Case
+ Name="Use national value"
+ Guid="b0da0439-c627-4c3f-890d-4367da277940"
+>
+<PreConditions>
+<PreCondition
+ Guid="acd62eb3-0fbf-4941-9c7a-849404515151"
+>NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<Expression>NationalValues.ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="fcbd3c98-8e7f-458c-8994-70e53df4fd5d"
+>
+<Expression>NationalValues.DefaultValues.MaxPermDistToRunInStaffResponsibleMode</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -264,6 +308,10 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="20"
+ Y="30"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="StopIfInSRReceived"
  Guid="b6ba04fd-5a2d-4329-b003-41bfe7fc159c"
@@ -311,7 +359,7 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
  Type="Kernel.StaffResponsible.SR"
  DefaultValue="EMPTY"
  VariableMode="Internal"
- X="20"
+ X="310"
  Y="30"
  Width="100"
  Height="50"
@@ -329,6 +377,10 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
+ X="310"
+ Y="100"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="StopIfInStaffResponsible"
  Guid="6b0cb808-5169-40a9-af38-eb17c3057dcf"
@@ -339,5 +391,18 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
  Guid="b71f4b38-c59f-492a-bb9f-f8f1105bb553"
 >
 </ReqRef><Comment>Signals that a Balise with the message &quot;stop if in SR mode&quot; has been read</Comment>
+</Variable><Variable
+ Type="BaseTypes.Speed"
+ DefaultValue="0.0"
+ VariableMode="Internal"
+ Name="SRSpeedLimit"
+ Guid="c2bea7db-7ccf-4214-b16f-41e25994dbcc"
+>
+<ReqRef
+ Id="f67f8025-cc67-47e1-8be3-847abc28ea27"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d9534bb-d566-45c0-8264-ebda47c4d6c7"
+>
+</ReqRef><Comment>Holds the SR speed limit entered by the driver.</Comment>
 </Variable></Variables>
 </NameSpace>

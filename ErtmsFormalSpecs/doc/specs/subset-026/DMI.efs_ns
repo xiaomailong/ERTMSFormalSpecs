@@ -1110,7 +1110,7 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="66dff686-9039-4ea9-8d44-cd1087b8e830"
 >THIS.In_ShuntingRequest.AcceptDriverResponse()</Action><Action
  Guid="b84a746e-58bd-4034-b3b7-8791d6ef5344"
->THIS.In_SRModeSpeedLimitAndDistance.AcceptDriverResponse()</Action><Action
+>THIS.In_SRModeSpeedLimitAndDistanceEntryRequest.AcceptDriverResponse()</Action><Action
  Guid="b50bb568-7395-4138-8006-2ed0f7b3184e"
 >THIS.In_TrackAdhesionFactor.AcceptDriverResponse()</Action><Action
  Guid="f73c10a8-0d24-4940-918b-1e7c66f10be0"
@@ -1120,7 +1120,10 @@ PreviousMode: represents the train mode displayed on the DMI during the previous
  Guid="216a978b-051d-42e3-ba33-a5d67b52054a"
 >THIS.In_VirtualBaliseCover.AcceptDriverResponse()</Action><Action
  Guid="243ab72a-b96b-4196-a725-712460511989"
->THIS.In_VirtualBaliseCoverEntryRequest.AcceptDriverResponse()</Action></Actions>
+>THIS.In_VirtualBaliseCoverEntryRequest.AcceptDriverResponse()</Action><Action
+ Guid="f9995c0b-23f9-4d2e-b302-cfac8d706459"
+>
+THIS.In_SRModeSpeedLimitAndDistance.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3016,6 +3019,19 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
  Id="166e123f-f57c-4045-af2e-915a4c4e849b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1ef390ee-8426-4e7b-9a70-aabd9bcdded3"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="IN.SRModeSpeedLimitAndDistanceEntryRequest"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="In_SRModeSpeedLimitAndDistanceEntryRequest"
+ Guid="36de7f13-33df-4477-b9b7-bf5f9dd697fb"
+>
+<ReqRef
+ Id="7ae1bf11-7b11-466d-abd7-fcec9dee2465"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4321f9df-8dda-4216-b357-8313afdfbc36"
 >
 </ReqRef></StructureElement></Structure><Structure
  Default=""
