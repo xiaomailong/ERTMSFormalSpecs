@@ -78,15 +78,65 @@
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="A1.1.1.4"
+ type="TITLE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="a2b0cd6a-ad4a-4cd9-bf2a-2a8639adbf37"
+>Information that is marked as Available in Section 4.7, but for which we have not found any display conditions will be sent to the DMI as if it was Active.<Sub>
+<Paragraph
+ id="A1.1.1.4.1"
  type="REQUIREMENT"
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
- Guid="a2b0cd6a-ad4a-4cd9-bf2a-2a8639adbf37"
->Information that is marked as Available in section 4.7, but for which we have not found any display conditions will be sent to the DMI as if it was Active.<RequirementSets>
+ Guid="3182607e-35e6-4a7a-90f0-94908d9ecf22"
+>For Speed and Distance Monitoring Status, the Start Stop Conditions document only specifies the modes in which the information has to be displayed. We suppose that this information has to be sent as if it was Active in these modes. Since nothing is specified for SBI and permitted speed, we decide to apply this rule to these outputs as well.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="12f5ab14-235d-4104-9053-8f20fec4145c"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.1.4.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="Implemented"
+ version="3.0.0"
+ Name=""
+ Guid="5e511b79-1787-413b-ae27-0d7d6246b010"
+>According to Subset-026 paragraph 3.15.10.1, the route related information (i.e. gradients, MRSP, track conditions except the tunnel stopping areas, indication location of the MRSP speed and the first target at zero speed) has to be displayed only on driver request. Except for track conditions, for which the display is specified in Section 5.18, we implement this information as being Active (i.e. always sent to the DMI for the modes specified by Section 4.7) and its up to the DMI to display it when requested by the driver.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="6068dd24-a8b3-4dff-a06d-a77c93877842"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.1.4.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="Implemented"
+ version="3.0.0"
+ Name=""
+ Guid="ef1a1833-4603-48d5-a049-82e6a371c2c5"
+>In some modes (SB, TR) the display of the ERTMS/ETCS level is marked as Available, but no conditions seem to be specified by Subset-026 to display it. According to Start Stop Conditions document, these conditions are given by paragraph 4.7.2. The only condition we found is specified in ETCS Driver Machine Interface document v3.3.0, in paragraph 8.2.3.2.2: &quot;When the current ERTMS/ETCS level is valid and equal to 0, 1, NTC (except in the modes SN and NL), 1, 2 or 3, it shall be displayed in area C8 (see Figure 57)&quot;. We consider thus that &quot;being valid&quot; is the only one condition to display the level in modes SB and TR and that in the modes where the display of level is marked as Active, no condition on the validity of the level is required.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="115a8016-dc36-4252-a69d-76cd7f6ed21e"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="fdcb00d8-97f8-4f17-8f64-15a827e63e72"

@@ -187,6 +187,11 @@
  Guid="e3159af4-46ad-4b79-a4d3-554d66ffb29a"
 >
 <Comment>The level is always display when available</Comment>
+</ReqRef><ReqRef
+ Id="ef1a1833-4603-48d5-a049-82e6a371c2c5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2420cb2b-346d-4f5a-bb66-ef691caa5c78"
+>
 </ReqRef><Comment>Handles display of information relative to the brake reason.</Comment>
 <Rules>
 <Rule
@@ -201,9 +206,9 @@
  Guid="e2e1a7dd-bf87-454b-b8c0-d55bb2f44dae"
 >
 </ReqRef><ReqRef
- Id="a2b0cd6a-ad4a-4cd9-bf2a-2a8639adbf37"
+ Id="ef1a1833-4603-48d5-a049-82e6a371c2c5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2edffbdf-3d9a-4090-860b-d9182592348a"
+ Guid="d61b59de-b46e-4147-9f6c-d5502a4d1696"
 >
 </ReqRef><Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
 <SubRules></SubRules>
@@ -211,7 +216,7 @@
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="DisplayValidLevel"
+ Name="Display when available"
  Guid="7c481d8e-cc94-4a91-bcd9-62fc36fc6628"
 >
 <PreConditions>
@@ -219,9 +224,7 @@
  Guid="744b2bb2-48f6-46e6-8b8b-3455eec94a75"
 >Kernel.Level.DataState == DataState.Valid</PreCondition><PreCondition
  Guid="e2deb052-d34d-471d-8476-cbc5634e2c97"
->NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="a66f0e32-4441-479f-93ee-77a29a6890ac"
->CurrentErtmsEtcsLevelAvailable()</PreCondition></PreConditions>
+>NOT OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d3c15e47-c4d6-468f-93db-bc2d765f81bf"
@@ -231,23 +234,23 @@
  Priority="Processing"
  Implemented="TRUE"
  Name="Output when mandatory"
- Guid="3c0a0a57-7959-43f4-8e81-ebd4f401b0f6"
+ Guid="ee4e205f-e155-4760-aa1b-daad5f3cba19"
 >
-<Comment>Outputs the value of this element when mandatory</Comment>
+<Comment>Outputs the value of this element when mandatory.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  Name="Output when mandatory"
- Guid="757aa958-b8f1-4c0e-8c26-e2f1e856784f"
+ Guid="aa7cea83-8571-4952-aefb-15617296186d"
 >
 <PreConditions>
 <PreCondition
- Guid="0d3def15-41d7-49f9-b8a1-288267313656"
+ Guid="172fa2e6-0c1f-460d-81a3-c6c33afc7738"
 >CurrentErtmsEtcsLevelMandatory()</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="23247454-343e-4366-8309-a99ac3de6f61"
+ Guid="1f86547d-007d-43ac-8e6b-8f6a924aa731"
 >Display()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -257,7 +260,12 @@
  Name="Display"
  Guid="4b8c4d28-eb46-46de-9b65-cc5297a2e971"
 >
-<Comment>Requests to display the corresponding information</Comment>
+<ReqRef
+ Id="ef1a1833-4603-48d5-a049-82e6a371c2c5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="945740f0-7986-49e2-b7c7-ccc7dac2b9b5"
+>
+</ReqRef><Comment>Requests to display the corresponding information</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -783,9 +791,9 @@
  Guid="8f192127-013a-44d0-b253-de9781814f91"
 >
 </ReqRef><ReqRef
- Id="a2b0cd6a-ad4a-4cd9-bf2a-2a8639adbf37"
+ Id="3182607e-35e6-4a7a-90f0-94908d9ecf22"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5e31c1f3-7b79-433e-b2f2-fb5ac1ad0cdd"
+ Guid="760381b8-399b-450f-aa8e-9784a1f95aca"
 >
 </ReqRef><Comment>Handles display of information relative to the train permitted speed.</Comment>
 <Rules>
@@ -800,6 +808,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ec8fb5bc-626d-4c96-ba1b-56eb9fd3c1d6"
 >
+</ReqRef><ReqRef
+ Id="3182607e-35e6-4a7a-90f0-94908d9ecf22"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d2c6d086-eb71-4399-9e97-2885014634d2"
+>
 </ReqRef><Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -812,9 +825,7 @@
 <PreConditions>
 <PreCondition
  Guid="a5cf71eb-33aa-4c38-ae2d-b57bf8296310"
->NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="a3545fc4-9dac-4808-a823-56c23197224d"
->PermittedSpeedAvailable()</PreCondition></PreConditions>
+>NOT OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d02d6313-d270-47a5-ad3e-88040656c3bd"
@@ -1115,9 +1126,9 @@
  Guid="f1ddbc36-6e02-4d5a-876a-f8070dc2e78d"
 >
 </ReqRef><ReqRef
- Id="a2b0cd6a-ad4a-4cd9-bf2a-2a8639adbf37"
+ Id="3182607e-35e6-4a7a-90f0-94908d9ecf22"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="16a45ff8-d768-4c7d-822a-7e16a3a3b73f"
+ Guid="fac1e8d9-009a-4e95-81dd-70a4bf25cbe9"
 >
 </ReqRef><Comment>Provides the speed and distance monitoring supervision status</Comment>
 <Rules>
@@ -1127,7 +1138,12 @@
  Name="Display when available"
  Guid="5bf29549-1609-496d-a390-e51d25606493"
 >
-<Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
+<ReqRef
+ Id="3182607e-35e6-4a7a-90f0-94908d9ecf22"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5ba00cd6-7025-4df0-b2d6-601a0fd68563"
+>
+</ReqRef><Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3886,9 +3902,9 @@
  Guid="55b9e939-10b7-4579-b68f-3115b0603ea9"
 >
 </ReqRef><ReqRef
- Id="a2b0cd6a-ad4a-4cd9-bf2a-2a8639adbf37"
+ Id="5e511b79-1787-413b-ae27-0d7d6246b010"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="85e766c5-e9dc-4419-bdff-cda6057ead0d"
+ Guid="e82eb5c5-02a1-42c8-91e3-5c385f6c7c4b"
 >
 </ReqRef><Comment>Handles display of information relative to the gradient profile.</Comment>
 <Rules>
@@ -3898,7 +3914,12 @@
  Name="Display when available"
  Guid="c76110e8-6e64-4417-8b6f-6bc454930726"
 >
-<Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
+<ReqRef
+ Id="5e511b79-1787-413b-ae27-0d7d6246b010"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3c00b44a-4a92-4da8-b16e-6090f13e943d"
+>
+</ReqRef><Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3910,9 +3931,7 @@
 <PreConditions>
 <PreCondition
  Guid="942d5911-9cbf-4ae4-9fa7-1f094e63ea61"
->NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="757dbbf8-8a27-446a-b6b0-ddf695b71af6"
->GradientAvailable()</PreCondition></PreConditions>
+>NOT OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="03b969cd-23d5-4c5c-bc2f-4e6acb26eb7f"
@@ -4015,26 +4034,36 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="69442ebe-cd66-4fdc-9662-61f56838f6f0"
 >
+</ReqRef><ReqRef
+ Id="5e511b79-1787-413b-ae27-0d7d6246b010"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1f561acd-cdcf-488f-937e-bdd78aae0da8"
+>
 </ReqRef><Comment>Handles display of information relative to the MRSP.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Output when mandatory"
+ Name="Display when available"
  Guid="c635755b-a5a6-4cd8-bd79-33150e20ea35"
 >
-<Comment>Outputs the value of this element when mandatory</Comment>
+<ReqRef
+ Id="5e511b79-1787-413b-ae27-0d7d6246b010"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="abf63ed1-70d9-419b-a6ec-8c276adc31d9"
+>
+</ReqRef><Comment>Outputs the value of this element when mandatory</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Output when mandatory"
+ Name="Display when available"
  Guid="202b9fe8-b94a-446b-aa45-7ac933d7bbf5"
 >
 <PreConditions>
 <PreCondition
- Guid="e164bf62-a47f-4fa5-910a-a9c8975846b2"
->MRSPMandatory()</PreCondition></PreConditions>
+ Guid="21b7935b-b409-4479-a9cf-43e4d0f18a7c"
+>NOT OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7a1bf9ad-5d1b-4b06-a839-0d07e3d2020c"
@@ -4231,9 +4260,9 @@ IN MRSP</Action></Actions>
  Guid="20ac7e4e-3c43-4977-80d0-aa27d27f88d0"
 >
 </ReqRef><ReqRef
- Id="a2b0cd6a-ad4a-4cd9-bf2a-2a8639adbf37"
+ Id="5e511b79-1787-413b-ae27-0d7d6246b010"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3a4bc0cd-0867-48d8-b07b-5e18346476ac"
+ Guid="fd769c43-43d5-4cd7-b0d2-b1dc236e5833"
 >
 </ReqRef><Comment>Provides the indication location at the MRSP speed</Comment>
 <Rules>
@@ -4243,7 +4272,17 @@ IN MRSP</Action></Actions>
  Name="Display when available"
  Guid="c0688ad2-b95a-4d86-9f0a-8979bb6ea24e"
 >
-<Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
+<ReqRef
+ Id="5e511b79-1787-413b-ae27-0d7d6246b010"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="25676bff-a7f1-47af-96e9-5377e75399eb"
+>
+</ReqRef><ReqRef
+ Id="ce563fea-92a3-4267-bf81-1a5cc5fd548b"
+ SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
+ Guid="38e6388a-0e31-402f-b490-0956db249c2f"
+>
+</ReqRef><Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4256,7 +4295,7 @@ IN MRSP</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="6e65a2c2-85fa-4312-9e7d-1843726e27b7"
->IndicationLocationAtMrspSpeedAvailable()</PreCondition></PreConditions>
+>NOT OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="4383da9f-ab69-4fe3-84cf-1b0c583c86e3"
@@ -4372,9 +4411,9 @@ IN MRSP</Action></Actions>
  Guid="53a41a45-4bfe-4c31-a3ab-f5bc33ed1498"
 >
 </ReqRef><ReqRef
- Id="a2b0cd6a-ad4a-4cd9-bf2a-2a8639adbf37"
+ Id="5e511b79-1787-413b-ae27-0d7d6246b010"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a32d4cc6-edef-49b2-ae14-0e12c25f77eb"
+ Guid="ebcd5195-08c2-4831-bcc3-dc53659a01f7"
 >
 </ReqRef><Comment>Provides the first target at speed 0</Comment>
 <Rules>
@@ -4384,7 +4423,12 @@ IN MRSP</Action></Actions>
  Name="Display when available"
  Guid="908debb0-a423-4b6d-81dd-07c70b5fecad"
 >
-<Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
+<ReqRef
+ Id="5e511b79-1787-413b-ae27-0d7d6246b010"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7690469c-1166-4661-bcd5-dce94e32ab67"
+>
+</ReqRef><Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4396,9 +4440,7 @@ IN MRSP</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="b9d1fc40-0001-4dcf-b9de-ba43f4c13cf3"
->NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="3e806f2e-1a65-4ee1-a55e-206ab9e461fb"
->FirstTargetAtZeroSpeedAvailable()</PreCondition></PreConditions>
+>NOT OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5d249a06-6049-4c2a-a306-c529575e7976"
@@ -5121,9 +5163,9 @@ TargetDistanceMandatory()</PreCondition></PreConditions>
  Guid="55fb1cb7-7087-4663-ba4a-49236d42e1c0"
 >
 </ReqRef><ReqRef
- Id="a2b0cd6a-ad4a-4cd9-bf2a-2a8639adbf37"
+ Id="3182607e-35e6-4a7a-90f0-94908d9ecf22"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a26e2fb5-1c83-4f0c-afb6-8c1f459ee4f4"
+ Guid="162ffef6-3de9-4e74-915f-5c1b10613347"
 >
 </ReqRef><Comment>Provides the FLOI value</Comment>
 <Rules>
@@ -5142,12 +5184,15 @@ TargetDistanceMandatory()</PreCondition></PreConditions>
  Name="Display when available"
  Guid="ef8fe03d-cb85-4274-826c-f054877b0f3b"
 >
-<PreConditions>
+<ReqRef
+ Id="3182607e-35e6-4a7a-90f0-94908d9ecf22"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="29bfd49c-b4d8-4e70-832b-b39878618ce4"
+>
+</ReqRef><PreConditions>
 <PreCondition
  Guid="b3afacbf-ccb9-4d3f-8c73-9ef0d57e41c4"
->NOT OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="e51303da-9c35-4033-8e63-238af9111f56"
->SBIAvailable()</PreCondition></PreConditions>
+>NOT OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="76e91675-0e4e-47a4-a128-37a1e060e90b"
@@ -5504,30 +5549,6 @@ TargetDistanceMandatory()</PreCondition></PreConditions>
  Guid="db82fc54-36f1-4723-aeac-cbbd58c1af8d"
 >
 <Expression>MonitoringType.None</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- X="440"
- Y="120"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="MRSPMandatory"
- Guid="44355dcf-447a-4547-a50c-230097cb3a96"
->
-<ReqRef
- Id="ff18547f-9677-4352-91c6-672291b94c64"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="86f24701-2a1a-49db-ad45-e7c5314923fa"
->
-</ReqRef><Comment>Indicates the modes where the output is mandatory</Comment>
-<Cases>
-<Case
- Name="Enumerates the cases where the request is mandatory"
- Guid="441a3673-4816-408c-a1fa-527d7e042e38"
->
-<Expression>Kernel.Mode in [Mode.FS]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
