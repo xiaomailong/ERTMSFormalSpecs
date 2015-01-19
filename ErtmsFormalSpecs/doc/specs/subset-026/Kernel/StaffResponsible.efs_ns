@@ -127,9 +127,9 @@
  Name="Value"
  Guid="98759279-000a-4ddb-a0f6-e737236f7520"
 >
-<Expression>BaliseGroup
+<Expression>Kernel.BaliseGroup
 {
-    NewCountry =&gt; Q_NEWCOUNTRY_To_Bool ( aBaliseGroup.Q_NEWCOUNTRY ),
+    NewCountry =&gt; Default.Q_NEWCOUNTRY_To_Bool ( aBaliseGroup.Q_NEWCOUNTRY ),
     NID_C =&gt; aBaliseGroup.NID_C,
     NID_BG =&gt; aBaliseGroup.NID_BG
 }</Expression>
@@ -158,7 +158,7 @@
 >
 <Expression>Available ( SRAuthorisation )
   AND
-SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max )</Expression>
+SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -243,7 +243,7 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
 <PreConditions>
 <PreCondition
  Guid="acd62eb3-0fbf-4941-9c7a-849404515151"
->NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+>NationalValues.ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Expression>NationalValues.ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode</Expression>
 </Case><Case
  Name="Otherwise"
@@ -299,9 +299,9 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
 <Actions>
 <Action
  Guid="342b18cc-bb34-4c17-8157-1bebc9fb9941"
->StaffResponsible.SRAuthorisation &lt;- StaffResponsible.SR
+>SRAuthorisation &lt;- Kernel.StaffResponsible.SR
 {
-    Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SR, scale =&gt; Packet.Q_SCALE ),
+    Distance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SR, scale =&gt; Packet.Q_SCALE ),
     BGs =&gt; CreateBaliseGroups ( BaliseGroups =&gt; Packet.Sequence1 ),
     BGListReceived =&gt; (Packet.Sequence1 == [])
 }</Action></Actions>
@@ -391,18 +391,5 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
  Guid="b71f4b38-c59f-492a-bb9f-f8f1105bb553"
 >
 </ReqRef><Comment>Signals that a Balise with the message &quot;stop if in SR mode&quot; has been read</Comment>
-</Variable><Variable
- Type="BaseTypes.Speed"
- DefaultValue="0.0"
- VariableMode="Internal"
- Name="SRSpeedLimit"
- Guid="c2bea7db-7ccf-4214-b16f-41e25994dbcc"
->
-<ReqRef
- Id="f67f8025-cc67-47e1-8be3-847abc28ea27"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1d9534bb-d566-45c0-8264-ebda47c4d6c7"
->
-</ReqRef><Comment>Holds the SR speed limit entered by the driver.</Comment>
 </Variable></Variables>
 </NameSpace>

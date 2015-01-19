@@ -419,7 +419,7 @@
 <PreConditions>
 <PreCondition
  Guid="68da82cd-26fd-4256-bdaf-17972b445617"
->StaffResponsible.SRSpeedLimit != 0.0</PreCondition></PreConditions>
+>TracksideModeRelatedSpeedRestrictions.SR != Default.BaseTypes.Speed.NA</PreCondition></PreConditions>
 <Expression>TracksideModeRelatedSpeedRestrictions.SR</Expression>
 </Case><Case
  Name="NationalValue"
@@ -428,16 +428,12 @@
 <PreConditions>
 <PreCondition
  Guid="6340bbbd-fe53-4c48-91bf-925ecc2dc34a"
->TracksideModeRelatedSpeedRestrictions.SR == Default.BaseTypes.Speed.NA AND NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+>NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>NationalValues.ApplicableNationalValues.Value.StaffResponsibleModeSpeedLimit</Expression>
 </Case><Case
  Name="DefaultValue"
  Guid="276e7a9f-7ed8-4fdf-8d46-3aa2ebb25d03"
 >
-<PreConditions>
-<PreCondition
- Guid="a6031c28-170b-40bd-b0b0-35e1221921c2"
->TracksideModeRelatedSpeedRestrictions.SR == Default.BaseTypes.Speed.NA AND NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition></PreConditions>
 <Expression>NationalValues.DefaultValues.StaffResponsibleModeSpeedLimit</Expression>
 </Case></Cases>
 </Function><Function
@@ -512,6 +508,11 @@
  Id="aee41b7b-392b-4306-b271-aa82bdfb015f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="09dac94a-1470-4a57-926e-18e8ac7e4a73"
+>
+</ReqRef><ReqRef
+ Id="f67f8025-cc67-47e1-8be3-847abc28ea27"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="87bd0d9e-1198-4864-a10a-7beb4e014469"
 >
 </ReqRef></Variable></Variables>
 </NameSpace>
