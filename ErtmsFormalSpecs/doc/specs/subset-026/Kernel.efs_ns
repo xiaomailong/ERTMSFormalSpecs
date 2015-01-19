@@ -11925,8 +11925,7 @@ When the rear end of the train passes the start of the profiles, the message is 
  Guid="e0fc7a91-fd3d-43d4-9ac5-d88d4088cf00"
 >DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="e31a3f35-e0d0-4679-bdb6-287dc5bbf9ce"
->TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &gt;= (FIRST X IN TrackDescription.Gradient.Gradients).Distance
-</PreCondition><PreCondition
+>TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &gt;= (FIRST X IN TrackDescription.Gradient.Gradients).Distance</PreCondition><PreCondition
  Guid="8ef695d6-6008-457a-b954-e699a5744db5"
 >Mode in [Default.Mode.FS, Default.Mode.OS]</PreCondition><PreCondition
  Guid="f693983c-1ef2-466c-9f2a-1e388434b61c"
@@ -11938,6 +11937,8 @@ When the rear end of the train passes the start of the profiles, the message is 
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="Display brake reason"
  Guid="620ca4e2-a41d-40ed-bcb7-c86a3d0a2888"

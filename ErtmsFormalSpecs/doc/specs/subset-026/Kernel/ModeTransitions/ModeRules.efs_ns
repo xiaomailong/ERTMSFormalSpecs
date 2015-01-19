@@ -615,7 +615,7 @@
 <Actions>
 <Action
  Guid="c2aeb6e2-d835-4907-921b-659073bb1bfd"
->InitiateRequest()</Action></Actions>
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistanceEntryRequest.InitiateRequest()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Handle driver request"
@@ -629,7 +629,7 @@
 <Actions>
 <Action
  Guid="1168f969-c721-4d44-a41d-330a21b954cb"
->InitiateRequest()</Action></Actions>
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
