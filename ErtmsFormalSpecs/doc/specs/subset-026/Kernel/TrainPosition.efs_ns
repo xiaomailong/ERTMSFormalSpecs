@@ -194,7 +194,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <PreCondition
  Guid="470ac07d-62b5-42c4-a517-866a90c3bfee"
 >PointOfInterest == Default.DistanceInterval.Max</PreCondition></PreConditions>
-<Expression>Odometry.NominalDistance + Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) - BTM.LRBG.Position.Position</Expression>
+<Expression>Odometry.NominalDistance + Default.BaseTypes.LengthToDistance(ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) - BTM.LRBG.Position.Position</Expression>
 </Case><Case
  Name="Minimum"
  Guid="33a2da89-eff5-4355-8fa9-2974bb4f2c14"
@@ -203,7 +203,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <PreCondition
  Guid="acddaf27-c5fb-493f-8b2c-ebdc1bb73993"
 >PointOfInterest == Default.DistanceInterval.Min</PreCondition></PreConditions>
-<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) - BTM.LRBG.Position.Position</Expression>
+<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) - BTM.LRBG.Position.Position</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -251,7 +251,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <PreConditions>
 <PreCondition
  Guid="9b31b852-4b9f-4141-956b-1cad986e9b1b"
->Position.DataState != DataState.Valid</PreCondition></PreConditions>
+>Position.DataState != Default.DataState.Valid</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Nominal"
@@ -270,7 +270,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <PreCondition
  Guid="39cfca21-49df-4f1e-8025-c2388dba9c80"
 >PointOfInterest == Default.DistanceInterval.Max</PreCondition></PreConditions>
-<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(TrainLength()) + Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) - BTM.LRBG.Position.Position</Expression>
+<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(TrainLength()) + Default.BaseTypes.LengthToDistance(ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) - BTM.LRBG.Position.Position</Expression>
 </Case><Case
  Name="Minimum"
  Guid="9c92d5c6-f86d-4cb4-b67d-50e0b531635d"
@@ -279,7 +279,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <PreCondition
  Guid="add9c23c-ed04-4a06-be98-4afc341bfbd8"
 >PointOfInterest == Default.DistanceInterval.Min</PreCondition></PreConditions>
-<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(TrainLength()) - Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) - BTM.LRBG.Position.Position</Expression>
+<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(TrainLength()) - Default.BaseTypes.LengthToDistance(ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) - BTM.LRBG.Position.Position</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -362,7 +362,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <PreCondition
  Guid="e791ab41-f4e1-47ec-9211-23e80d1283e7"
 >PointOfInterest == Default.DistanceInterval.Max</PreCondition></PreConditions>
-<Expression>Odometry.NominalDistance + Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) - SRStartDistance</Expression>
+<Expression>Odometry.NominalDistance + Default.BaseTypes.LengthToDistance(ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) - SRStartDistance</Expression>
 </Case><Case
  Name="Minimum"
  Guid="8daa68a5-19d7-4426-9706-3dcec08d2d2b"
@@ -371,7 +371,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <PreCondition
  Guid="4d659489-1337-46f0-b444-4c9721144492"
 >PointOfInterest == Default.DistanceInterval.Min</PreCondition></PreConditions>
-<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) - SRStartDistance</Expression>
+<Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) - SRStartDistance</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Length"
@@ -404,7 +404,7 @@ In SL mode, the front and rear ends of the train are considered to be the front 
 <PreConditions>
 <PreCondition
  Guid="7f5f21f8-4aef-4736-b345-d96f9e3f3499"
->Mode == Mode.SL</PreCondition></PreConditions>
+>Mode == Default.Mode.SL</PreCondition></PreConditions>
 <Expression>TrainData.TrainData.Value.EngineLength</Expression>
 </Case><Case
  Name="Otherwise"
@@ -454,7 +454,7 @@ BTM.LRBG.NID != Messages.NID_LRBG.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5de6dbe1-ecc5-4386-8dc0-d09a5a6a49de"
->Position.DataState &lt;- DataState.Valid</Action></Actions>
+>Position.DataState &lt;- Default.DataState.Valid</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -467,11 +467,11 @@ BTM.LRBG.NID != Messages.NID_LRBG.Unknown</PreCondition></PreConditions>
  Guid="5234c501-b995-48d0-a954-656e018b210f"
 >BTM.LRBG == EMPTY</PreCondition><PreCondition
  Guid="f7740abf-4293-414b-840d-342933b94656"
->Position.DataState != DataState.Invalid</PreCondition></PreConditions>
+>Position.DataState != Default.DataState.Invalid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2ac2232a-f080-40b8-8b9d-71bf83d4e452"
->Position.DataState &lt;- DataState.Unknown</Action></Actions>
+>Position.DataState &lt;- Default.DataState.Unknown</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

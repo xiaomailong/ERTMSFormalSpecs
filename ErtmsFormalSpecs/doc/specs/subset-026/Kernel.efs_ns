@@ -95,10 +95,6 @@
  Name="VirtualBaliseCover"
  Guid="37790951-bbd2-47f8-b26d-3b6becb8f3a1"
 >
-</NameSpaceRef><NameSpaceRef
- Name="ModeRelatedRules"
- Guid="57c5e589-fd72-4172-804b-697529b98552"
->
 </NameSpaceRef></NameSpaces>
 <Enumerations>
 <Enum
@@ -789,7 +785,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="50c7579a-477c-4412-bbdc-fdafe80d502a"
 >EURORADIO.CloseRBCSession()</Action><Action
  Guid="31bb2c38-0d15-4eed-b0fc-428aa17307f9"
->Kernel.TrainPosition.Position.DataState &lt;- DataState.Unknown</Action><Action
+>TrainPosition.Position.DataState &lt;- DataState.Unknown</Action><Action
  Guid="f18726fd-abef-4f8b-8e6b-ba1aa6d4f4cb"
 >THIS &lt;- HandleModeChange.StartOfMission.A40</Action></Actions>
 </RuleCondition></Conditions>
@@ -924,7 +920,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition
  Guid="52ef8468-e61a-4089-8cc5-6976d3466efd"
->Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
+>TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f2bc14a7-b262-4c2a-8664-c6996b80d76e"
@@ -947,9 +943,9 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <PreConditions>
 <PreCondition
  Guid="d3212dc0-23c8-4d70-9ab3-2a6fc8eb032c"
->Kernel.TrainPosition.Position.DataState == DataState.Invalid
+>TrainPosition.Position.DataState == DataState.Invalid
   OR  
-Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditions>
+TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f1892ef5-6bc1-44ef-857f-821f678ed69b"
@@ -4173,7 +4169,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  Guid="b622aa04-c29a-4327-b398-9682084161d7"
 >Kernel.Level.DataState == DataState.Valid</PreCondition><PreCondition
  Guid="d11f0472-931c-4394-a4ae-212e4b91e49d"
->Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
+>TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e673e160-9779-48f7-9c2b-e69c9cc97b66"
@@ -4676,7 +4672,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
  Guid="98d23c02-f619-40d0-b33a-94f5ffd20033"
 >THIS &lt;- HandleModeChange.StartOfMission.S10</Action><Action
  Guid="2e0b169f-b3e4-4c7b-b22d-3cb1b27d424b"
->Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action></Actions>
+>TrainPosition.Position.DataState &lt;- DataState.Valid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
@@ -4770,7 +4766,7 @@ Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></Pre
 <Actions>
 <Action
  Guid="b54108ba-1521-44d1-abee-ce5626afd545"
->Kernel.TrainPosition.Position.DataState &lt;- DataState.Unknown</Action><Action
+>TrainPosition.Position.DataState &lt;- DataState.Unknown</Action><Action
  Guid="2e2ac32d-fe80-40df-8bd8-badfa262e908"
 >THIS &lt;- HandleModeChange.StartOfMission.S10</Action></Actions>
 </RuleCondition></Conditions>
@@ -6809,6 +6805,11 @@ A Position Report is sent whenever the Mode changes (amongst other conditions), 
  Id="0bae6856-8d5d-4916-83a0-b8fa4be991ae"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="243aab1e-b3f6-4de7-bd01-4ffc962a72da"
+>
+</ReqRef><ReqRef
+ Id="32b6a168-5f23-49a4-b5ae-4a87344b2b47"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a0bdccdb-19a7-4ce7-a0be-977c553a0446"
 >
 </ReqRef><Comment>State S060: Request acknowledgement of Train Trip from the driver. Once the acknowledgement is received, proceed to D080.</Comment>
 <StateMachine
@@ -10828,9 +10829,9 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
     Orientation =&gt; Orientation.Nominal
 }</Action><Action
  Guid="278b2665-4f56-474f-a4b7-b6cbc08f01a6"
->Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPosition
+>TrainPosition.Position &lt;- TrainPosition.TrainPosition
 {
-    DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformation
+    DirectionalPositionInformation =&gt; TrainPosition.DirectionalTrainPositionInformation
     {
         TrainFrontEndPosition =&gt; Orientation.Nominal,
         TrainOrientation =&gt; Orientation.Nominal,
@@ -10849,7 +10850,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
     V_ura =&gt; 2.0
 }</Action><Action
  Guid="35f34f07-d5ae-493e-8f02-ef3b67c0d497"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
+>TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -11493,6 +11494,11 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ff01a9c0-064c-49da-9e3c-7e0a6350c0c7"
 >
+</ReqRef><ReqRef
+ Id="3e7cc969-494c-45a5-b39a-09b8d70e8ee3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3ee345c2-0b99-4b40-8956-1b00f302aabf"
+>
 </ReqRef><Comment>This holds all the different emergency stop messages the train currently has.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Distance"
@@ -11859,47 +11865,6 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- X="470"
- Width="100"
- Height="50"
- NeedsRequirement="FALSE"
- Name="Handle display of system status messages"
- Guid="a7c57cb6-49ce-4673-b8fa-7736163f2fe7"
->
-<Comment>Handles the rules related to the display of different system status messages.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Entry in FS displayed"
- Guid="1c0fef3b-e512-4772-be62-470f6ecde235"
->
-<ReqRef
- Id="3d4bd2d4-777c-4d6d-85c1-ab231d5aee49"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9bcd2c61-5f57-4b59-b4be-a6d019b048b9"
->
-</ReqRef><ReqRef
- Id="83484e2e-340f-443e-931d-762efbc3dcdc"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="65b97b49-5ce9-4030-bb2d-3a13a4fcc057"
->
-</ReqRef><Comment>If the train is in FS, its whole length is covered with the gradient profile and the SSP and if the system status message Entry in FS was displayed, then it should not be displayed anymore. We assume that &quot;the whole length of the train&quot; is related to its nominal position.</Comment>
-<PreConditions>
-<PreCondition
- Guid="aaefe9c9-a7a0-464a-a0e6-7ba2c1238c23"
->DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested</PreCondition><PreCondition
- Guid="2ec3bf38-b84d-4f67-b5ff-998fdcb9a2f0"
->TrainPosition.RearEndPosition(PointOfInterest =&gt; DistanceInterval.Nom) &gt;= (FIRST X IN TrackDescription.Gradient.Gradients).Distance</PreCondition><PreCondition
- Guid="eb57c71e-371d-4b65-966a-36cef783fcba"
->TrainPosition.RearEndPosition(PointOfInterest =&gt; DistanceInterval.Nom) &gt;= (FIRST X IN TrackDescription.StaticSpeedProfile.SSP).Distance</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="cde8fdd4-fa7a-49d8-b4b6-370f784dd0e9"
->DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DoNotDisplay()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -11927,6 +11892,81 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 <Action
  Guid="8a9c5110-e954-49ff-9f0c-1b49b54cf754"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Handle System Status Message"
+ Guid="15d8403d-72a4-4fc7-ae20-47fba71a19b3"
+>
+<ReqRef
+ Id="6be93d46-2f3c-4a81-bc6f-06a7adbaa419"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="42d8bac7-3cbb-4e64-96fe-06aca31788da"
+>
+</ReqRef><ReqRef
+ Id="3d4bd2d4-777c-4d6d-85c1-ab231d5aee49"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c10619e8-492e-4a83-99f6-0a22b01419bf"
+>
+</ReqRef><Comment>The texts &quot;Entry in FS&quot; and &quot;Entry in OS&quot; are displayed when the SSP and gradients are not known for the whole length of the train.
+When the rear end of the train passes the start of the profiles, the message is no longer displayed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Stop display of &quot;Entry in FS/OS&quot;"
+ Guid="49263247-9450-40e7-a2bf-58fe0a1a052b"
+>
+<PreConditions>
+<PreCondition
+ Guid="e0fc7a91-fd3d-43d4-9ac5-d88d4088cf00"
+>DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested</PreCondition><PreCondition
+ Guid="e31a3f35-e0d0-4679-bdb6-287dc5bbf9ce"
+>TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &gt;= (FIRST X IN TrackDescription.Gradient.Gradients).Distance
+</PreCondition><PreCondition
+ Guid="8ef695d6-6008-457a-b954-e699a5744db5"
+>Mode in [Default.Mode.FS, Default.Mode.OS]</PreCondition><PreCondition
+ Guid="f693983c-1ef2-466c-9f2a-1e388434b61c"
+>TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &gt;= (FIRST X IN TrackDescription.StaticSpeedProfile.SSP).Distance</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1cb44512-e85f-49fd-b1d2-d6050b977813"
+>DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DoNotDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Display brake reason"
+ Guid="620ca4e2-a41d-40ed-bcb7-c86a3d0a2888"
+>
+<ReqRef
+ Id="3e7cc969-494c-45a5-b39a-09b8d70e8ee3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fbba527c-f509-4b37-b6b8-4c7c291fdc02"
+>
+</ReqRef><Comment>In trip mode, the reason for the train trip is displayed to the driver, if available.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Display reason for TR mode"
+ Guid="1da3a6c2-3279-4f23-b795-09b96bfb7ae0"
+>
+<PreConditions>
+<PreCondition
+ Guid="db698431-04ed-49bb-b877-65c637a29172"
+>Mode == Mode.TR</PreCondition><PreCondition
+ Guid="9b89c340-ef51-4c14-bb62-8a7b2d72fba4"
+>EmergencyStops != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a3fc4c17-da7a-44f6-a07b-e0a9591ad4dc"
+>DMI.MasterDMI().Out_TripReason.Display(
+    reason =&gt; (FIRST X IN EmergencyStops).Reason
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

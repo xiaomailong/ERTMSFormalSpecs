@@ -2320,7 +2320,12 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedM
  Name="TargetsList"
  Guid="f4668202-f4f0-4a13-b076-7ffb98ee3f01"
 >
-<Comment>Returns the list of targets corresponding to a decrease in permitted speed for the train</Comment>
+<ReqRef
+ Id="733908ef-20dd-403f-b49a-d8da495aae43"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a42be91-3dc5-4002-8801-e41a30c9d8d0"
+>
+</ReqRef><Comment>Returns the list of targets corresponding to a decrease in permitted speed for the train</Comment>
 <Cases>
 <Case
  Name="Supervise MRSP and max dist in SR mode"
@@ -2565,6 +2570,11 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
  Id="774c0a7a-9451-4e93-ae7a-5a64de270168"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f8b69113-b526-4541-80cb-354f3a2375c0"
+>
+</ReqRef><ReqRef
+ Id="733908ef-20dd-403f-b49a-d8da495aae43"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e360321d-66b4-40b8-9fb1-fb553dcd7ddd"
 >
 </ReqRef><Comment>Update the speed and distance monitoring type</Comment>
 <Rules>
@@ -3227,6 +3237,11 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Id="77289e9b-8c64-4406-8d33-fcf9d018e94c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="82056cde-3793-4ff9-8b0e-a5feaf2cde53"
+>
+</ReqRef><ReqRef
+ Id="31f0ed31-f80b-4c67-9d1b-9d6eb5b08cdc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ad6ce424-ec88-4fd9-9841-8bbdcd6bd975"
 >
 </ReqRef><Comment>Indicates the current monitoring of the train.</Comment>
 </Variable><Variable

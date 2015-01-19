@@ -1073,7 +1073,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Guid="6d7ed6e7-c960-4fcd-8285-ba5f72e50a28"
 >
 <Expression>GradientInfo{
-    Distance =&gt; aGradient.Distance - Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom),
+    Distance =&gt; aGradient.Distance - TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     Gradient =&gt; aGradient.Gradient
 }</Expression>
 </Case></Cases>

@@ -3351,5 +3351,94 @@
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Close desk in Trip mode"
+ Guid="28b29cbb-817a-487a-961a-4a6c800f4515"
+>
+<TestCases>
+<TestCase
+ Name="Close desk"
+ Guid="40620dc3-f872-4ba3-852f-d52b2ed267b6"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Initialize test environment"
+ Guid="138fd3ca-1c54-4ea3-b43f-2070468f4c30"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="aec3c530-250f-4851-9a89-cf2d98a892fc"
+>
+<Actions>
+<Action
+ Guid="9f02a3c0-d82a-4d56-8fd5-3a52f1c5ee7c"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Desk 1 is active"
+ Guid="660da28b-d4b3-443c-813d-dd5f99d53311"
+>
+<Actions>
+<Action
+ Guid="e8380a4f-cb07-4391-82b3-d02cf1935010"
+>DMI.CabOfDMI(DMI.MasterDMI()).Desk1IsActive &lt;- True</Action><Action
+ Guid="3507dbbc-e761-44d0-a909-71853909b9db"
+>DMI.CabOfDMI(DMI.MasterDMI()).Desk2IsActive &lt;- False</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3"
+ Guid="e5707fff-910f-450b-8a9f-3e238246ba04"
+>
+<Actions>
+<Action
+ Guid="c6a74712-97a7-4cb5-a594-7de6bab7ef24"
+>Kernel.Mode &lt;- Mode.TR</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Close desk"
+ Guid="9cdaf304-11e8-48a5-9b21-586955ab9eab"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="0b9ba535-ae59-493f-af08-f3799e97140b"
+>
+<Actions>
+<Action
+ Guid="964db456-2392-488e-9e5a-b7c1c177ee42"
+>DMI.CabOfDMI(DMI.MasterDMI()).Desk1IsActive &lt;- False</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="500fd550-e517-4960-8cf8-262f98a2efb7"
+>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="efc28a2c-fb78-4edb-9d27-68abd911b6b6"
+>Kernel.Mode == Mode.TR</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
 </SubSequence></SubSequences>
 </Frame>

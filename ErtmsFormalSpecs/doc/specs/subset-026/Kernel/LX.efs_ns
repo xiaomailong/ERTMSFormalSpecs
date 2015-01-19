@@ -1614,7 +1614,7 @@ SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed == 0.0</PreConditi
 >DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested == True</PreCondition><PreCondition
  Guid="570cd62d-e6c3-4bf4-98a5-66f73c5b5f58"
 >THERE_IS aLX IN Kernel.LX.MRSPLevelCrossings |
-  aLX.Location + aLX.Length &lt;= Kernel.TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Min )</PreCondition></PreConditions>
+  aLX.Location + aLX.Length &lt;= TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Min )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="01f88f62-b0ed-4467-aec6-1f4c3123d7a9"
