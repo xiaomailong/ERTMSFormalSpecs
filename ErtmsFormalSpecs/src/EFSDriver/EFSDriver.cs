@@ -100,6 +100,7 @@ namespace EFSDriver
             cycleCheckBox.Checked = false;
 
             BackgroundThread = new Thread((ThreadStart)HandleBackgroundProcess);
+            BackgroundThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
             BackgroundThread.Start();
         }
 

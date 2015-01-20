@@ -99,6 +99,7 @@ namespace GUI
         {
             Instance = instance;
             Thread = new Thread(DoSynchronize);
+            Thread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
             Thread.Start(Instance);
         }
 
