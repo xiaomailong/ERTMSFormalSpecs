@@ -1142,7 +1142,7 @@ Kernel.MA.MAStruct
     M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -1174,6 +1174,27 @@ Kernel.MA.MAStruct
 }</Action><Action
  Guid="79b36933-aea1-4bfd-94ab-5d1f29227b4c"
 >Kernel.LX.SupervisedLevelCrossings &lt;- []</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="9aa24cca-5e7b-4e82-9f82-e211271d4c15"
+>
+<Actions>
+<Action
+ Guid="6267e615-8eb0-4d3e-a3f4-c84067ff1478"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;32,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;[]
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
