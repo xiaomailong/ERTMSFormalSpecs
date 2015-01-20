@@ -7082,6 +7082,11 @@ This is handled in the rules for Mode transitions.</Comment>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1e0ce39f-fe4a-4d07-8214-5f2f2ce85284"
 >
+</ReqRef><ReqRef
+ Id="62231675-226e-4512-bb26-157f534b0300"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bea2f0e6-5123-456d-9ece-160dd065f9ca"
+>
 </ReqRef><Comment>Action A105: Mode changes to PT and the emergency brake command is revoked. Proceed to D110.
 
 This action is handled in the rules for Mode transition.</Comment>
@@ -7440,6 +7445,11 @@ If there are pending emergency stops, go to S130.</Comment>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7c053713-c14b-4e9c-8fb9-49a35121d012"
 >
+</ReqRef><ReqRef
+ Id="6ad8d7bf-01fe-471e-92c3-38b06b7a48f1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="30a17e3a-a4b7-439e-80f7-9617bf8770fd"
+>
 </ReqRef><Comment>State S140: The Driver can select either &apos;Start&apos; or entry in SH Mode. Depoending on the Level and the Driver&apos;s selection, proceed to States S160 or S170, or start the &quot;Shunting initiated by Driver&quot; procedure.</Comment>
 <StateMachine
  Default="RequestDriverSelection"
@@ -7690,6 +7700,11 @@ If the Driver selects Entry in SH, initiate &quot;Shunting initiated by Driver&q
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="51a0236b-7b45-40ef-9014-5beabdbacb96"
 >
+</ReqRef><ReqRef
+ Id="6ad8d7bf-01fe-471e-92c3-38b06b7a48f1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="46599cdc-a90b-416d-a139-4a71c8bda782"
+>
 </ReqRef><Comment>State S150: The on-board sends an MA request and chooses States S160 or S170, or ends the procedure, depending on the response.</Comment>
 <StateMachine
  Default="SendMARequest"
@@ -7879,6 +7894,11 @@ If the RBC sends a MA without a Mode Profile, the Mode will change to FS and the
  Id="d20ca54f-b973-4b49-9923-a3eaf4c2d07e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6b708915-a39b-42b4-868a-4dc801c47d79"
+>
+</ReqRef><ReqRef
+ Id="6ad8d7bf-01fe-471e-92c3-38b06b7a48f1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="58a44da9-41b9-4e83-8018-9877ad70fc50"
 >
 </ReqRef><Comment>State S160: The Driver is requested to acknowledge the entry in SR Mode. Once this is received, the procedure ends.</Comment>
 <StateMachine
@@ -11754,6 +11774,11 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Id="0dbbf234-3119-40cf-839a-64ae2c895770"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7ea2bad2-d3ea-4e0f-a694-34653ff84122"
+>
+</ReqRef><ReqRef
+ Id="e13575b2-3dc6-4c1e-995f-7d24e34c61b1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="267ef0cd-ec93-4429-95cd-6b791de6f210"
 >
 </ReqRef><Comment>Notification that a safety critical fault has been detected.</Comment>
 </Variable></Variables>

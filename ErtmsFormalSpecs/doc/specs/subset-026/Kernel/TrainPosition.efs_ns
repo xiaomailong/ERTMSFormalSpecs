@@ -150,6 +150,11 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="658e5d6f-cd8d-495b-be31-57e0f14e7371"
 >
+</ReqRef><ReqRef
+ Id="71325bb5-51a0-4724-bf1c-658efb3ce4dc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f3cefead-eb9d-45d9-b4ef-a11b02621893"
+>
 </ReqRef><Comment>This function is used to compute the estimated front end position, the max and min safe front end position of the train. The parameter specifies which of the values must be returned.</Comment>
 <Parameters>
 <Parameter
@@ -225,6 +230,11 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Id="137a2d02-81cd-4bb2-a7fa-6fcf738cf589"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="89d635a3-80b1-4b4b-a8a5-628b159b8faa"
+>
+</ReqRef><ReqRef
+ Id="71325bb5-51a0-4724-bf1c-658efb3ce4dc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d0f9c48-fe3e-4539-8e7f-bc4e71e678c5"
 >
 </ReqRef><Comment>This function is used to compute the estimated rear end position, the max and min safe rear end position of the train. The parameter specifies which of the values must be returned. These values are computed iff the train integrity status is valid (confirmed by driver or by integrity monitoring device).</Comment>
 <Parameters>
@@ -394,17 +404,22 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6494a7a5-38f9-45d5-9701-29b57a14420a"
 >
+</ReqRef><ReqRef
+ Id="71325bb5-51a0-4724-bf1c-658efb3ce4dc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ddb27ed5-b86c-40a0-86d4-69e228b5dca8"
+>
 </ReqRef><Comment>Provides the train length for the train position supervision.
 In SL mode, the front and rear ends of the train are considered to be the front and rear of the engine.</Comment>
 <Cases>
 <Case
- Name="SL Mode"
+ Name="SL/NL Mode"
  Guid="9b767de0-3468-4f36-af82-70cfb7eb5281"
 >
 <PreConditions>
 <PreCondition
  Guid="7f5f21f8-4aef-4736-b345-d96f9e3f3499"
->Mode == Default.Mode.SL</PreCondition></PreConditions>
+>Mode in [Default.Mode.SL, Mode.NL]</PreCondition></PreConditions>
 <Expression>TrainData.TrainData.Value.EngineLength</Expression>
 </Case><Case
  Name="Otherwise"

@@ -486,6 +486,11 @@ NOT
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="09f14641-fd5b-47d9-bdc1-4a41d1045970"
 >
+</ReqRef><ReqRef
+ Id="62231675-226e-4512-bb26-157f534b0300"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e0fb9a20-1920-47cc-9803-ae27fc36eaba"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -619,6 +624,7 @@ Available ( EURORADIO.CurrentRBCConnection().MessageIn.SH_AUTHORISED )</Expressi
  Y="360"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Condition47"
  Guid="b73c9970-6414-4676-9699-4121a53052dd"
 >
@@ -627,12 +633,19 @@ Available ( EURORADIO.CurrentRBCConnection().MessageIn.SH_AUTHORISED )</Expressi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a926b7be-ecf0-4b04-9fd0-ef7123e10084"
 >
+</ReqRef><ReqRef
+ Id="662646fc-0a77-4297-b6f6-7b39dfaae824"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="28ae0dda-8c95-4e40-b2c7-17e0cae4f4ba"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="dc9cbe84-19d1-4d8a-aacf-ca499d5c017e"
 >
-<Expression>False</Expression>
+<Expression>NOT TIU.NonLeadingPermitted
+  AND  
+Odometry.TrainIsAtStandstill()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
