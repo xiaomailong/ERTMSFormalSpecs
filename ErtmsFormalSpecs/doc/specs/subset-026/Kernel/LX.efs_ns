@@ -590,7 +590,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </ReqRef><Comment>Indicates if for the given non protected LX with stopping required, the condition to substitute its supervision as EOA and SvL by its inclusion in the MRSP is satisfied. It is satisfied if the train has stopped in the stopping area of that LX.</Comment>
 <Parameters>
 <Parameter
- Type="LevelCrossingStruct"
+ Type="Kernel.LX.LevelCrossingStruct"
  Name="aLX"
  Guid="99ad67a1-1be7-4adf-8726-36de0f4fb8b5"
 >
@@ -640,7 +640,7 @@ TrainPosition.FrontEndPosition( PointOfInterest =&gt; Default.DistanceInterval.N
 It is satisfied if the estimated or the max safe front end (depending whether the most restrictive SBI supervision limit at LX speed is the SBI1 or the SBI2) reaches the location of the Permitted speed supervision limit calculated for the LX speed.</Comment>
 <Parameters>
 <Parameter
- Type="LevelCrossingStruct"
+ Type="Kernel.LX.LevelCrossingStruct"
  Name="aLX"
  Guid="fc20cfd2-738f-43bb-8ae6-9339d16c5252"
 >
@@ -784,7 +784,7 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
 </ReqRef><Comment>Indicates if the most restrictive SBI supervision limit at the speed of the given LX is the SBI1 or the SBI2, used to determine whether the max safe front end or the estimated front end has to be compared to the location of the Permitted speed supervision in order to determine if the supervision of the current LX as EOA and SvL has to be substitued by the inclusion of the LX in the MRSP.</Comment>
 <Parameters>
 <Parameter
- Type="LevelCrossingStruct"
+ Type="Kernel.LX.LevelCrossingStruct"
  Name="aLX"
  Guid="fb6f82cf-e87f-4453-b7a2-36dfe33844c6"
 >
@@ -818,7 +818,7 @@ SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2
 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="DistanceInterval"
+ Type="Default.DistanceInterval"
  Default=""
  Y="60"
  Width="100"
@@ -840,7 +840,7 @@ SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2
 </ReqRef><Comment>Selects the train front end (nominal or maximal) from which will be adjusted the starting point of the given LX, depending whether the most restrictive SBI supervision limit at LX speed is the SBI1 or the SBI2).</Comment>
 <Parameters>
 <Parameter
- Type="LevelCrossingStruct"
+ Type="Kernel.LX.LevelCrossingStruct"
  Name="aLX"
  Guid="c5534220-5efd-4f76-b559-6acdc3b2b840"
 >
@@ -1382,7 +1382,7 @@ IN
  Guid="ff2222ab-555e-4b3c-96c4-6042a002d230"
 >
 </Parameter><Parameter
- Type="BaseTypes.Length"
+ Type="Default.BaseTypes.Length"
  Name="LocationUpdate"
  Guid="73d53a35-4d65-4640-afe5-33f87b2f8293"
 >

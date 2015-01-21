@@ -490,7 +490,7 @@ INITIAL_VALUE
  Guid="9d0d9740-70a0-4e00-91b9-22507eb04f5c"
 >
 </Parameter><Parameter
- Type="Target"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="66a7c1ee-0117-4b52-a235-d68da4f21e6f"
 >
@@ -1427,7 +1427,7 @@ ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditi
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets"
  Cacheable="TRUE"
  Default=""
  Y="340"
@@ -1495,7 +1495,7 @@ This protection is used in the case where V_SBI_DMI is calculated but the train 
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Default=""
  Width="100"
  Height="50"

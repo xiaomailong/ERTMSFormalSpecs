@@ -112,8 +112,8 @@
 <PreConditions>
 <PreCondition
  Guid="57e2c056-75ae-473c-b464-229e1e149c83"
->Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.LimitedSupervisionModeSpeedLimit</Expression>
+>NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<Expression>NationalValues.ApplicableNationalValues.Value.LimitedSupervisionModeSpeedLimit</Expression>
 </Case><Case
  Name="DefaultValue"
  Guid="c38eea85-0522-4226-8544-5833a319508d"
@@ -121,8 +121,8 @@
 <PreConditions>
 <PreCondition
  Guid="ea84754b-fc3a-46c9-8441-424a721943b4"
->Kernel.NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.DefaultValues.LimitedSupervisionModeSpeedLimit</Expression>
+>NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition></PreConditions>
+<Expression>NationalValues.DefaultValues.LimitedSupervisionModeSpeedLimit</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -171,8 +171,8 @@
 <PreConditions>
 <PreCondition
  Guid="8ba582bf-c5c4-4eea-879e-adffe46cedb4"
->Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.OnSightModeSpeedLimit</Expression>
+>NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<Expression>NationalValues.ApplicableNationalValues.Value.OnSightModeSpeedLimit</Expression>
 </Case><Case
  Name="DefaultValue"
  Guid="dcae3059-4535-4c00-813d-5e566059babd"
@@ -180,8 +180,8 @@
 <PreConditions>
 <PreCondition
  Guid="68964fa2-5665-4cf9-8fbe-89968036c1b9"
->Kernel.NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.DefaultValues.OnSightModeSpeedLimit</Expression>
+>NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition></PreConditions>
+<Expression>NationalValues.DefaultValues.OnSightModeSpeedLimit</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -370,8 +370,8 @@
 <PreConditions>
 <PreCondition
  Guid="8346e15d-25f2-4811-a3d2-5ec0b673af66"
->Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.ShuntingModeSpeedLimit</Expression>
+>NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<Expression>NationalValues.ApplicableNationalValues.Value.ShuntingModeSpeedLimit</Expression>
 </Case><Case
  Name="DefaultValue"
  Guid="8fbb6b92-5db4-44b6-8255-83a9c06d9c94"
@@ -379,8 +379,8 @@
 <PreConditions>
 <PreCondition
  Guid="ea23c043-38b1-4d9c-a0c2-6b8f840e386f"
->Kernel.NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.DefaultValues.ShuntingModeSpeedLimit</Expression>
+>NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition></PreConditions>
+<Expression>NationalValues.DefaultValues.ShuntingModeSpeedLimit</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -401,6 +401,11 @@
  Id="98959354-04de-4b43-8a9c-c23b7263bdfb"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="542370bf-0891-4f58-ab6e-13dce0133075"
+>
+</ReqRef><ReqRef
+ Id="774c0a7a-9451-4e93-ae7a-5a64de270168"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1784b939-cf57-4ba6-bdac-ba603d8b82d6"
 >
 </ReqRef><Comment>Provides the speed limit related to SR mode.
 - If a value was provided by the driver, this value is returned
@@ -423,17 +428,13 @@
 <PreConditions>
 <PreCondition
  Guid="6340bbbd-fe53-4c48-91bf-925ecc2dc34a"
->TracksideModeRelatedSpeedRestrictions.SR == Default.BaseTypes.Speed.NA AND Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.StaffResponsibleModeSpeedLimit</Expression>
+>NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<Expression>NationalValues.ApplicableNationalValues.Value.StaffResponsibleModeSpeedLimit</Expression>
 </Case><Case
  Name="DefaultValue"
  Guid="276e7a9f-7ed8-4fdf-8d46-3aa2ebb25d03"
 >
-<PreConditions>
-<PreCondition
- Guid="a6031c28-170b-40bd-b0b0-35e1221921c2"
->TracksideModeRelatedSpeedRestrictions.SR == Default.BaseTypes.Speed.NA AND Kernel.NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.DefaultValues.StaffResponsibleModeSpeedLimit</Expression>
+<Expression>NationalValues.DefaultValues.StaffResponsibleModeSpeedLimit</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -462,8 +463,8 @@
 <PreConditions>
 <PreCondition
  Guid="59d6b9d3-724d-46c7-a7ea-7cab6ef27d67"
->Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.ApplicableNationalValues.Value.UnfittedModeSpeedLimit</Expression>
+>NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<Expression>NationalValues.ApplicableNationalValues.Value.UnfittedModeSpeedLimit</Expression>
 </Case><Case
  Name="DefaultValue"
  Guid="a0560e4a-96b8-4541-afda-b45f46d13750"
@@ -471,8 +472,8 @@
 <PreConditions>
 <PreCondition
  Guid="56849a7d-1f0c-4b14-b5a7-6e1cd6da39b2"
->Kernel.NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition></PreConditions>
-<Expression>Kernel.NationalValues.DefaultValues.UnfittedModeSpeedLimit</Expression>
+>NationalValues.ApplicableNationalValues.DataState != DataState.Valid</PreCondition></PreConditions>
+<Expression>NationalValues.DefaultValues.UnfittedModeSpeedLimit</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>
@@ -507,6 +508,11 @@
  Id="aee41b7b-392b-4306-b271-aa82bdfb015f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="09dac94a-1470-4a57-926e-18e8ac7e4a73"
+>
+</ReqRef><ReqRef
+ Id="f67f8025-cc67-47e1-8be3-847abc28ea27"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="87bd0d9e-1198-4864-a10a-7beb4e014469"
 >
 </ReqRef></Variable></Variables>
 </NameSpace>

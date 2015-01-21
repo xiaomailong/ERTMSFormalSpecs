@@ -310,7 +310,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 ]</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
  X="480"
@@ -325,6 +325,16 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Id="80c7f3b7-09d1-4a40-ab28-0aafd6ac3530"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c04e98fc-fc2c-4a33-b9c9-69a2cf7ed5f5"
+>
+</ReqRef><ReqRef
+ Id="03cde0ce-fb7a-4c71-83d9-e32bb757174f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ceaf5691-5da1-4b54-91a1-b7091c3376ce"
+>
+</ReqRef><ReqRef
+ Id="d1fd4df1-3d3f-4520-b838-9000fd3ebb82"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="700ef92b-c288-4dfc-b9e7-9cda5499b177"
 >
 </ReqRef><Comment>Provides the distance the train has run in SR mode, for comparison wit hthe maxmum distance allowed to run in SR.</Comment>
 <Parameters>
@@ -364,7 +374,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
 <Expression>Odometry.NominalDistance - Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) - SRStartDistance</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Length"
+ Type="Default.BaseTypes.Length"
  Default=""
  X="70"
  Y="320"
@@ -489,13 +499,14 @@ BTM.LRBG.NID != Messages.NID_LRBG.Unknown</PreCondition></PreConditions>
  Guid="bbfa7a99-0ee1-4ecc-859d-b11eb3c977fc"
 >
 </ReqRef></Variable><Variable
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  DefaultValue="0.0"
  VariableMode="Internal"
  X="370"
  Y="260"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="SRStartDistance"
  Guid="e7248a60-09d7-4a0a-bf38-7234b34911e1"
 >
@@ -508,6 +519,16 @@ BTM.LRBG.NID != Messages.NID_LRBG.Unknown</PreCondition></PreConditions>
  Id="80c7f3b7-09d1-4a40-ab28-0aafd6ac3530"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="379e00c5-f7ff-46ba-bf22-1c929bfbdaf8"
+>
+</ReqRef><ReqRef
+ Id="d1fd4df1-3d3f-4520-b838-9000fd3ebb82"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="148c87bb-4d08-4e03-b801-85c2f06273ae"
+>
+</ReqRef><ReqRef
+ Id="03cde0ce-fb7a-4c71-83d9-e32bb757174f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c4b7653-be63-472f-8913-236ef25e975c"
 >
 </ReqRef><Comment>Stored the odometry distance when SR mode is entered.</Comment>
 </Variable><Variable

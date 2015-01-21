@@ -1533,48 +1533,63 @@ If BG1 is missed, we must update the other one to (BG2, 750m).</Comment>
  Name="Check list of expected balises"
  Guid="1c6c1ee3-5e2b-46de-b12e-939ceebac056"
 >
-<Comment>If the current mode is SH, check the received  BG against the list of expected balises for SH Mode.</Comment>
+<Comment>If the current mode is SH/SR, check the received  BG against the list of expected balises for SH/SR Mode.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Expected balises for SH"
+ Name="In SH mode"
  Guid="5aa01674-ac6a-41a6-ad84-8971d1ae9e14"
 >
+<ReqRef
+ Id="aef89c33-3eb6-459c-901c-72a521999db9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="05824919-5263-420b-9c2a-992ae628a6e4"
+>
+</ReqRef><Comment>In SH mode, check for a list of expected Balise groups for SH.</Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="d3e69c54-db46-4f85-9ff3-3159f3eeaff0"
+>Kernel.Mode == Mode.SH</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8d1a6745-9466-4063-a719-d54c187a08dc"
 >MessageRejected &lt;- 
-Kernel.Mode == Mode.SH
-  AND  
-NOT Kernel.Shunting.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Trip if BG unexpected"
- Guid="51ad7e8c-22fc-434b-9791-4176dcaeec3b"
->
-<Comment>If the passed BG was not in the list of expected BG in SH mode, the train will be tripped.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="BG not in expected list, trip"
- Guid="0e80ba82-ec9a-468d-b0ec-baf6d9b6887b"
->
-<PreConditions>
-<PreCondition
- Guid="989d26ee-c16e-40c1-8d40-ba77d9accd5a"
->Kernel.Mode == Mode.SH</PreCondition></PreConditions>
-<Actions>
-<Action
+NOT Kernel.Shunting.BGIsExpected(CurrentBaliseGroup)</Action><Action
  Guid="834b94d2-1cc0-44a6-9de5-016da6df76c4"
 >Kernel.Shunting.UnexpectedBGPassed&lt;- NOT Kernel.Shunting.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="In SR mode"
+ Guid="8a482241-5c9d-4374-876a-dee9e253676a"
+>
+<ReqRef
+ Id="f7cb96a8-a052-46e7-a159-d08ccb5dac88"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5c1abe7f-0f3b-4028-b63a-0aac206b28af"
+>
+</ReqRef><Comment>In SR mode, check for a list of expected Balise groups for SR.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="b0d0f21d-b735-4fdb-bb84-9a28eba9d3d1"
+>Kernel.Mode == Mode.SR</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6cb1c474-bc67-4f05-835f-4028f0ac9989"
+>MessageRejected &lt;- 
+NOT Kernel.StaffResponsible.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Otherwise"
+ Guid="dc1777c6-7bfe-4c25-b2f7-0679143c756a"
+>
+<Comment>In other modes, we do not need to check against a list of expected Balise groups.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="b8a8678f-a8b2-46f1-8bf8-616eb813e4d9"
+>MessageRejected &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
