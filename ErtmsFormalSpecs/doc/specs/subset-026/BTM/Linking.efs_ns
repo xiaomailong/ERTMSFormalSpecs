@@ -1667,10 +1667,32 @@ NOT Kernel.StaffResponsible.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="613f2ef2-9b75-4bce-ab3b-9e42b280c042"
 >
+</ReqRef><ReqRef
+ Id="9a35a3cc-6ff3-40a5-b097-b6dd250e24bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="932d00f8-4441-4e04-bed6-fc45254299a5"
+>
 </ReqRef><Comment>This handles the case where there is no linking information available or the received message is unlinked</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Name="Do not check linking"
+ Guid="df90ec56-8901-46cd-adf6-222ce297838b"
+>
+<Comment>In all but FS, LS and OS modes, linking consistency is not checked.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="75e2e59b-82ce-46f5-b4c3-f77163334510"
+>NOT Kernel.ActiveFunctions.CheckLinkingConsistency()</PreCondition><PreCondition
+ Guid="29540586-570d-4072-b0e3-c75fb0a754a3"
+>NOT MessageRejected</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b5267b4f-321c-48a3-8cb1-b091b3a4496d"
+>HandleBaliseMessage(
+    DistanceFromLRBG =&gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)
+)</Action></Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No Linking"
  Guid="1674753e-32b6-4435-b722-c9d87cf7a490"

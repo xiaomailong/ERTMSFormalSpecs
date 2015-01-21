@@ -91,6 +91,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d84c658f-c01a-429d-a534-1214663e233d"
 >
+</ReqRef><ReqRef
+ Id="733908ef-20dd-403f-b49a-d8da495aae43"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="87a6d9ca-9e70-4f72-9a25-3f6c6853a307"
+>
 </ReqRef><Comment>Speed and Distance Monitoring based on MRSP, MA, release speed, gradient, mode profile, non protected LX start location, and route unsuitability location.</Comment>
 <Cases>
 <Case
@@ -112,6 +117,11 @@
  Id="21a0ae2b-0594-4a82-bcb1-13fdda48901c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="71f057b9-1fc6-46bd-98b3-b8f2d3fd88ce"
+>
+</ReqRef><ReqRef
+ Id="9a35a3cc-6ff3-40a5-b097-b6dd250e24bd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d0c82492-41e9-4d04-bf18-b3433664bb5e"
 >
 </ReqRef><Comment>Check linking consistency</Comment>
 <Cases>
@@ -291,6 +301,11 @@
  Id="137a2d02-81cd-4bb2-a7fa-6fcf738cf589"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="542367e2-d1a5-413e-8db4-b5c6bb6adb72"
+>
+</ReqRef><ReqRef
+ Id="71325bb5-51a0-4724-bf1c-658efb3ce4dc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ccce9a64-0d22-4d0b-9555-c1f4a55b24e1"
 >
 </ReqRef><Comment>Determine train position referenced to LRBG</Comment>
 <Cases>
@@ -1230,13 +1245,18 @@ Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Def
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="50cec160-69b5-4b10-b372-df44c150d365"
 >
+</ReqRef><ReqRef
+ Id="12251a60-68aa-4b3a-a148-aaf3ecf250f4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="727211ec-23d9-4107-9bbd-1d99cfca5d5d"
+>
 </ReqRef><Comment>Ceiling Speed Monitoring only (no braking curve) based on MRSP.</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="78c34474-81fe-422c-9294-aea7ce2eb836"
 >
-<Expression>Mode in [Default.Mode.SH]</Expression>
+<Expression>Mode in [Default.Mode.SH, Default.Mode.SN, Default.Mode.RV]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1320,6 +1340,11 @@ Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Def
  Id="0c3e4a15-d05b-4bc4-af75-f6733855f370"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="143e4cc2-f4ed-4386-9ef5-4b74cb7ddd42"
+>
+</ReqRef><ReqRef
+ Id="a2624a52-9911-4e63-95fd-0c291a97c37d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4d2e6a3d-79fa-4faf-92cf-c2057041b4b3"
 >
 </ReqRef><Comment>Standstill Supervision</Comment>
 <Cases>
@@ -1405,6 +1430,7 @@ Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Def
  Y="180"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="CommandEmergencyBrake"
  Guid="f2682aa0-2961-469c-b4e0-19306cf99b55"
 >
@@ -1412,6 +1438,16 @@ Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Def
  Id="8aacc5c1-b1bc-4b80-b068-82d6acb6bc59"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f76687f4-0cb0-4598-883b-59c71c971c3d"
+>
+</ReqRef><ReqRef
+ Id="cb89fa5e-3586-488f-81d3-0b25fac37ed3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3333f32e-307b-490d-a7ac-cbc80569f498"
+>
+</ReqRef><ReqRef
+ Id="a7faf903-999e-4ba6-87e3-e88f11355da6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bdcfd166-ebf6-4c4f-85ed-2cb201bd2796"
 >
 </ReqRef><Comment>Command Emergency Brake</Comment>
 <Cases>
@@ -2022,6 +2058,11 @@ Mode in [Default.Mode.SB, Default.Mode.FS, Default.Mode.LS, Default.Mode.SR, Def
  Id="4ae5a0a3-fed2-4e03-ad35-c2ff8b81332b"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7936521c-cab4-40f0-b2d6-38a507530189"
+>
+</ReqRef><ReqRef
+ Id="209d7e8c-bff7-451b-9e46-5f613f0ad17f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6a46f29e-297c-4ab1-bbeb-8ce62b662e84"
 >
 </ReqRef><Comment>Indicates if the train speed is supervised.</Comment>
 <Cases>

@@ -160,6 +160,7 @@ namespace DataDictionary.Interpreter
 
             DoCompile = true;
             CompilerThread = new Thread(CompileContinuously);
+            CompilerThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
             CompilerThread.Start();
         }
 

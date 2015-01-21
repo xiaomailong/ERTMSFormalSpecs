@@ -1029,7 +1029,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -1073,15 +1073,36 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
         }
     ]
 }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="1f21caea-2690-461b-92b4-0229b9a48905"
+>
+<Actions>
+<Action
+ Guid="79c50b6d-123b-4a82-8666-0848f6e6d4b4"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;32,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2124,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;[]
+}</Action></Actions>
 <Expectations>
 <Expectation
- Kind="Instantaneous"
- Guid="f9504af3-17d7-44c2-b759-30491841a57e"
->(FIRST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 4000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="40a8d5c9-d65a-46e6-b589-816cc4615cd4"
 >(COUNT X IN Kernel.TrackDescription.Gradient.Gradients) == 4</Expectation><Expectation
+ Kind="Instantaneous"
+ Guid="f9504af3-17d7-44c2-b759-30491841a57e"
+>(FIRST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 4000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="fa76dcac-72b8-4cc1-8773-a665fcbaa512"
@@ -1112,7 +1133,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -1146,16 +1167,37 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
         }
     ]
 }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="58f0fec8-e113-48e7-85d7-f80f65c15df3"
+>
+<Actions>
+<Action
+ Guid="49066d72-0377-486a-aa3b-c7e50eb697cf"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;32,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;[]
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="30131bd3-d3a7-49ec-a671-48bc4a91847a"
->(COUNT X IN Kernel.TrackDescription.Gradient.Gradients) == 3</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
  Guid="7e206c0a-27d0-4c4f-ada7-b47cb9557324"
 >(LAST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 7000.0</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="30131bd3-d3a7-49ec-a671-48bc4a91847a"
+>(COUNT X IN Kernel.TrackDescription.Gradient.Gradients) == 3</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="07896fc9-99a6-4a32-af1d-6e4685bd478e"
@@ -1353,7 +1395,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -1387,8 +1429,33 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
         }
     ]
 }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="7768054d-eae5-46b6-82a2-d03ea6b05bd5"
+>
+<Actions>
+<Action
+ Guid="91efd198-3843-468a-a7f5-ae3ba05602b2"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;32,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;[]
+}</Action></Actions>
 <Expectations>
 <Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="81dc99fd-acb7-421b-8ed6-aa430e2d0c13"
+>( FIRST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 3000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5c2a06af-a5bc-4c55-8a8e-755a19109eba"
@@ -1396,11 +1463,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
  Kind="Instantaneous"
  DeadLine="1"
  Guid="6ff76243-5514-408c-99fd-b47c3830ae70"
->(LAST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 4000.0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="81dc99fd-acb7-421b-8ed6-aa430e2d0c13"
->( FIRST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 3000.0</Expectation></Expectations>
+>(LAST X IN Kernel.TrackDescription.Gradient.Gradients).Distance == 4000.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1594,7 +1657,7 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
     M_VERSION=&gt;32,
     Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
     N_PIG=&gt;0,
-    N_TOTAL=&gt;0,
+    N_TOTAL=&gt;1,
     M_DUP=&gt;Messages.M_DUP.No_duplicates,
     M_MCOUNT=&gt;4,
     NID_C=&gt;140,
@@ -1627,6 +1690,27 @@ Kernel.TrackDescription.Gradient.GradientInfoProfile (
             }
         }
     ]
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="905c990c-29ff-4f81-a2ce-2f3275cb26d9"
+>
+<Actions>
+<Action
+ Guid="fc966be1-45e9-499b-a77d-49d064c97d07"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN=&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION=&gt;32,
+    Q_MEDIA=&gt;Messages.Q_MEDIA.Balise,
+    N_PIG=&gt;1,
+    N_TOTAL=&gt;1,
+    M_DUP=&gt;Messages.M_DUP.No_duplicates,
+    M_MCOUNT=&gt;4,
+    NID_C=&gt;140,
+    NID_BG=&gt;2125,
+    Q_LINK=&gt;Messages.Q_LINK.Linked,
+    Sequence1=&gt;[]
 }</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
