@@ -206,7 +206,10 @@
     IsSingle =&gt; True,
     BaliseGroup =&gt; BTM.BaliseGroupStruct
     {
-      Timestamp =&gt; 2.0 * Kernel.CycleDuration,
+      Timestamp =&gt; AddToDate(
+              StartDate =&gt; Kernel.DateAndTime.StartDate,
+              Increment =&gt; 2.0 * Kernel.CycleDuration
+          ),
       NID =&gt; 2124,
       Orientation =&gt; Orientation.Unknown,
       Position =&gt; BTM.Position
@@ -305,7 +308,10 @@
     IsSingle =&gt; True,
     BaliseGroup =&gt; BTM.BaliseGroupStruct
     {
-      Timestamp =&gt; 2.0 * Kernel.CycleDuration,
+      Timestamp =&gt; AddToDate(
+              StartDate =&gt; Kernel.DateAndTime.StartDate,
+              Increment =&gt; 2.0 * Kernel.CycleDuration
+          ),
       NID =&gt; 2124,
       Orientation =&gt; Orientation.Unknown,
       Position =&gt; BTM.Position
@@ -420,7 +426,10 @@
     IsSingle =&gt; True,
     BaliseGroup =&gt; BTM.BaliseGroupStruct
     {
-      Timestamp =&gt; 2.0 * Kernel.CycleDuration,
+      Timestamp =&gt; AddToDate(
+              StartDate =&gt; Kernel.DateAndTime.StartDate,
+              Increment =&gt; 2.0 * Kernel.CycleDuration
+          ),
       NID =&gt; 2124,
       Orientation =&gt; Orientation.Unknown,
       Position =&gt; BTM.Position
@@ -437,7 +446,10 @@
     IsSingle =&gt; False,
     BaliseGroup =&gt; BTM.BaliseGroupStruct
     {
-      Timestamp =&gt; 5.0 * Kernel.CycleDuration,
+      Timestamp =&gt; AddToDate(
+              StartDate =&gt; Kernel.DateAndTime.StartDate,
+              Increment =&gt; 3.0 * Kernel.CycleDuration
+          ),
       NID =&gt; 2125,
       Orientation =&gt; Orientation.Nominal,
       Position =&gt; BTM.Position
@@ -539,7 +551,10 @@
     IsSingle =&gt; True,
     BaliseGroup =&gt; BTM.BaliseGroupStruct
     {
-      Timestamp =&gt; 2.0 * Kernel.CycleDuration,
+      Timestamp =&gt; AddToDate(
+              StartDate =&gt; Kernel.DateAndTime.StartDate,
+              Increment =&gt; 2.0 * Kernel.CycleDuration
+          ),
       NID =&gt; 2124,
       Orientation =&gt; Orientation.Unknown,
       Position =&gt; BTM.Position
@@ -556,7 +571,10 @@
     IsSingle =&gt; False,
     BaliseGroup =&gt; BTM.BaliseGroupStruct
     {
-      Timestamp =&gt; 5.0 * Kernel.CycleDuration,
+      Timestamp =&gt; AddToDate(
+              StartDate =&gt; Kernel.DateAndTime.StartDate,
+              Increment =&gt; 3.0 * Kernel.CycleDuration
+          ),
       NID =&gt; 2125,
       Orientation =&gt; Orientation.Nominal,
       Position =&gt; BTM.Position

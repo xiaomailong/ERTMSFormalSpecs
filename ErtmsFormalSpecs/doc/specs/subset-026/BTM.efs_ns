@@ -52,7 +52,7 @@
 <Comment>The identity number of the LRBG.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Orientation"
- Default="Orientation.Unknown"
+ Default="Default.Orientation.Unknown"
  Mode="Internal"
  Implemented="TRUE"
  Name="Orientation"
@@ -75,7 +75,7 @@
 >
 </ReqRef><Comment>Indicates of the orientation of the LRBG can be determined.</Comment>
 </StructureElement><StructureElement
- TypeName="Default.BaseTypes.Time"
+ TypeName="Default.DateAndTime"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -172,6 +172,34 @@
  Guid="8c2b9437-285e-4bbf-8939-fb35385e147c"
 >
 </ReqRef><Comment>Indicates if the that balise group is single or not.</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="LocationReferenceStruct"
+ Guid="cdcfde8e-5a0f-4fae-a527-567ccb883fac"
+>
+<Comment>Keeps the location and time of passage over the location reference of a Balise group.</Comment>
+<StructureElement
+ TypeName="Position"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Position"
+ Guid="b15b81c8-faa3-40b9-adf3-745bf7b8b4ff"
+>
+</StructureElement><StructureElement
+ TypeName="Default.DateAndTime"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Timestamp"
+ Guid="4ed3664e-befe-4a45-9b5d-42c4852d4240"
+>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -255,7 +283,7 @@
 <PreConditions>
 <PreCondition
  Guid="5af1a0fa-d27c-46f0-86b9-6d9afbcbb7a5"
->Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+>Kernel.NationalValues.ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Length(Kernel.NationalValues.ApplicableNationalValues.Value.DefaultLocationAccuracyOfABaliseGroup)</Expression>
 </Case><Case
  Name="DefaultValue"
@@ -342,7 +370,10 @@
 <PreConditions>
 <PreCondition
  Guid="ca98163b-74ba-48e2-b24b-35a21cb85d6f"
->bg1.BaliseGroup.Timestamp &lt;= bg2.BaliseGroup.Timestamp</PreCondition></PreConditions>
+>Kernel.DateAndTime.T1LaterThanT2(
+    T1 =&gt; bg2.BaliseGroup.Timestamp,
+    T2 =&gt; bg1.BaliseGroup.Timestamp
+)</PreCondition></PreConditions>
 <Expression>bg1</Expression>
 </Case><Case
  Name="bg2 is the oldest"
@@ -402,7 +433,10 @@
 <PreConditions>
 <PreCondition
  Guid="7cbc332d-8834-435a-9c08-ada4f2d15ea5"
->bg1.BaliseGroup.Timestamp &gt;= bg2.BaliseGroup.Timestamp</PreCondition></PreConditions>
+>NOT Kernel.DateAndTime.T1LaterThanT2(
+    T1 =&gt; bg2.BaliseGroup.Timestamp,
+    T2 =&gt; bg1.BaliseGroup.Timestamp
+)</PreCondition></PreConditions>
 <Expression>bg1</Expression>
 </Case><Case
  Name="bg2 is more recent"
@@ -531,7 +565,7 @@
 <PreCondition
  Guid="42e647d7-f4ec-404e-822d-0af260c9426c"
 >IsSingleBaliseGroup()</PreCondition></PreConditions>
-<Expression>Orientation.Unknown</Expression>
+<Expression>Default.Orientation.Unknown</Expression>
 </Case><Case
  Name="First balise is the number 0"
  Guid="1b917fc8-846c-477a-b9f8-6b1bbf9a1a07"
@@ -540,12 +574,12 @@
 <PreCondition
  Guid="99800f60-19c6-48c4-895b-d7aa823ecd0c"
 >(FIRST X IN CurrentBaliseGroup).N_PIG == 0</PreCondition></PreConditions>
-<Expression>Orientation.Nominal</Expression>
+<Expression>Default.Orientation.Nominal</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="9ce6a19a-a14f-4efa-8a9d-6f7a4101f7ec"
 >
-<Expression>Orientation.Reverse</Expression>
+<Expression>Default.Orientation.Reverse</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -638,7 +672,7 @@
 <PreConditions>
 <PreCondition
  Guid="96082ab6-fc3c-4a7b-bdbb-3f0531f8b32d"
->(BaliseGroupOrientation() == Orientation.Nominal)
+>(BaliseGroupOrientation() == Default.Orientation.Nominal)
   AND  
 (Message.M_DUP == Messages.M_DUP.This_balise_is_a_duplicate_of_the_previous_balise__seen_in_the_nominal_direction_of_the_balise_group)</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -649,7 +683,7 @@
 <PreConditions>
 <PreCondition
  Guid="1b12d48f-6253-4317-a2de-067dfa9f67c3"
->(BaliseGroupOrientation() == Orientation.Reverse)
+>(BaliseGroupOrientation() == Default.Orientation.Reverse)
   AND  
 (Message.M_DUP == Messages.M_DUP.This_balise_is_a_duplicate_of_the_next_balise__seen_in_the_nominal_direction_of_the_balise_group)</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -741,7 +775,7 @@ If the train direction is unknown, this function returns true only if the packet
  Name="Value"
  Guid="8ecc0b19-4add-4c5e-82e5-c56868836734"
 >
-<Expression>PacketOrientation == EFSOrientationConverter ( BaliseGroupOrientation() )
+<Expression>PacketOrientation == Default.EFSOrientationConverter ( BaliseGroupOrientation() )
   OR
 PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 </Case></Cases>
@@ -1234,7 +1268,7 @@ This is a check for message consistency errors.</Comment>
  Name="Otherwise"
  Guid="bbb4368c-06da-4efc-9230-417c0d87f09f"
 >
-<Expression>BaseTypes.Distance.Unknown</Expression>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2117,6 +2151,22 @@ This is a check for message consistency errors.</Comment>
 <Action
  Guid="50f67d89-da94-4bb0-b44b-2f9d06b85685"
 >Kernel.VirtualBaliseCover.VBCReceivedFromBalise( Packet.TRACK_TO_TRAIN.VIRTUAL_BALISE_COVER_ORDER )</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="LSSMA available"
+ Guid="693073bb-3954-46f2-a554-5ac6a8f876d7"
+>
+<Comment>Handles LSSMA display toggle order packet, if available.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="6849aabe-b0ac-4fbc-8d10-a3200c6580e6"
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.LSSMA_DISPLAY_TOGGLE_ORDER.Q_DIR )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="004ed3f5-351e-4130-868e-a4960e2b944e"
+>Kernel.LimitedSupervision.LSSMAToggleReceived(
+    Packet =&gt; Packet.TRACK_TO_TRAIN.LSSMA_DISPLAY_TOGGLE_ORDER,
+    Timestamp =&gt; BGLocationReference.Timestamp
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2842,7 +2892,7 @@ The list is updated in case two LRBGs provide the same MRSP, this should count a
 <Actions>
 <Action
  Guid="1a79f6be-8cd7-40c6-9975-e855cdded2c5"
->Kernel.MA.MA.EndSection.Length &lt;- Kernel.MA.MA.EndSection.Length - BaseTypes.DistanceToLength( BGLocationReference.Position - LRBG.Position.Position )</Action></Actions>
+>Kernel.MA.MA.EndSection.Length &lt;- Kernel.MA.MA.EndSection.Length - Default.BaseTypes.DistanceToLength( BGLocationReference.Position.Position - LRBG.Position.Position )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="There are sections - train is in the end section"
@@ -2852,11 +2902,11 @@ The list is updated in case two LRBGs provide the same MRSP, this should count a
 <PreConditions>
 <PreCondition
  Guid="d424a96a-5c7d-4c07-b419-e3cf71806b66"
->BGLocationReference.Position - LRBG.Position.Position &gt;= Kernel.MA.EndSectionStart()</PreCondition></PreConditions>
+>BGLocationReference.Position.Position - LRBG.Position.Position &gt;= Kernel.MA.EndSectionStart()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b9ea2e9d-59d1-4ef8-88df-d51843437f9e"
->Kernel.MA.RelocateMAinEndSection(BGLocationReference.Position - LRBG.Position.Position)</Action></Actions>
+>Kernel.MA.RelocateMAinEndSection(BGLocationReference.Position.Position - LRBG.Position.Position)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Train is in one of the sections"
@@ -2868,7 +2918,7 @@ The list is updated in case two LRBGs provide the same MRSP, this should count a
 <Actions>
 <Action
  Guid="ed0099d6-3ed8-4657-b337-6d58e3914acb"
->Kernel.MA.MA.Sections &lt;- Kernel.MA.RelocatedSections( BGLocationReference.Position - LRBG.Position.Position )</Action></Actions>
+>Kernel.MA.MA.Sections &lt;- Kernel.MA.RelocatedSections( BGLocationReference.Position.Position - LRBG.Position.Position )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -2907,9 +2957,9 @@ The list is updated in case two LRBGs provide the same MRSP, this should count a
  Guid="0ed7fcdc-0c4d-4e64-b329-3a748a11b5b8"
 >LRBG &lt;- BTM.BaliseGroupStruct
 {
-  Timestamp =&gt; Kernel.DateAndTime.CurrentTime,
+  Timestamp =&gt; BGLocationReference.Timestamp,
   NID =&gt; Nid_BG,
-  Position =&gt; BGLocationReference,
+  Position =&gt; BGLocationReference.Position,
   Orientation =&gt; BaliseGroupOrientation()
 }</Action><Action
  Guid="9ea8e191-ce41-4e2f-8bab-49b9a8bbbde8"
@@ -3241,7 +3291,10 @@ If all the messages of the current balise group have been received, calls Handle
 <Actions>
 <Action
  Guid="2b0bea2f-701c-4d39-b9fb-f12ed87bc4e4"
->BGLocationReference &lt;- PositionFromOdometry()</Action></Actions>
+>BGLocationReference &lt;- LocationReferenceStruct{
+    Position =&gt; PositionFromOdometry(),
+    Timestamp =&gt; Kernel.DateAndTime.Now()
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -3456,10 +3509,10 @@ The parameter DistanceFromLRBG is needed for the case when the handled BG will b
   {
       BaliseGroup =&gt; BTM.BaliseGroupStruct
       {
-          Position =&gt; BGLocationReference,
+          Position =&gt; BGLocationReference.Position,
           NID =&gt; Message.NID_BG,
           Orientation =&gt; BaliseGroupOrientation(),
-          Timestamp =&gt; Kernel.DateAndTime.CurrentTime
+          Timestamp =&gt; BGLocationReference.Timestamp
       },
       IsLRBG =&gt; Boolean.True,
       IsSingle =&gt; CurrentBGIsSingle()
@@ -3491,10 +3544,10 @@ The parameter DistanceFromLRBG is needed for the case when the handled BG will b
   {
       BaliseGroup =&gt; BTM.BaliseGroupStruct
       {
-          Position =&gt; BGLocationReference,
+          Position =&gt; BGLocationReference.Position,
           NID =&gt; Message.NID_BG,
           Orientation =&gt; BaliseGroupOrientation(),
-          Timestamp =&gt; Kernel.DateAndTime.CurrentTime
+          Timestamp =&gt; BGLocationReference.Timestamp
       },
       IsLRBG =&gt; Boolean.False,
       IsSingle =&gt; CurrentBGIsSingle()
@@ -3517,10 +3570,10 @@ The parameter DistanceFromLRBG is needed for the case when the handled BG will b
   {
       BaliseGroup =&gt; BTM.BaliseGroupStruct
       {
-          Position =&gt; BGLocationReference,
+          Position =&gt; BGLocationReference.Position,
           NID =&gt; Message.NID_BG,
           Orientation =&gt; BaliseGroupOrientation(),
-          Timestamp =&gt; Kernel.DateAndTime.CurrentTime
+          Timestamp =&gt; BGLocationReference.Timestamp
       },
       IsLRBG =&gt; Boolean.False,
       IsSingle =&gt; CurrentBGIsSingle()
@@ -3683,7 +3736,12 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
 <Actions>
 <Action
  Guid="2db6933b-ffcd-41fc-b5ab-90177389d406"
->Kernel.MA.ModeProfile.ModeProfileReceived ( Packet=&gt; aPacket.TRACK_TO_TRAIN.MODE_PROFILE )</Action></Actions>
+>Kernel.MA.ModeProfile.ModeProfileReceived (
+    Packet =&gt; aPacket.TRACK_TO_TRAIN.MODE_PROFILE,
+    GenericLSMarker =&gt; Kernel.LimitedSupervision.LSMarkerPresent(
+    Messages=&gt;CurrentBaliseGroup
+)
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -3811,7 +3869,7 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
 >
 <Comment>This variable holds the messages from the current balise group until the complete balise group has been encountered</Comment>
 </Variable><Variable
- Type="BTM.Position"
+ Type="BTM.LocationReferenceStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="440"

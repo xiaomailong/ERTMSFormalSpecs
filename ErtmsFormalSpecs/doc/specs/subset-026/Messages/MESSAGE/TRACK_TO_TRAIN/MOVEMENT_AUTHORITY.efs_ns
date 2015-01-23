@@ -31,7 +31,7 @@
  Guid="6356b5e0-b45f-4053-991d-0496a8f808ba"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -44,7 +44,7 @@
  Guid="731aeb3c-02b4-4994-9468-e45c63c2ef77"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Time"
+ TypeName="MessageTypes.Time"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
@@ -447,10 +447,18 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c62fe892-f021-4d5d-b971-8a77923a4944"
 >
-</ReqRef></StructureElement></Structure></Structures>
+</ReqRef></StructureElement><StructureElement
+ TypeName="PACKET.TRACK_TO_TRAIN.LSSMA_DISPLAY_TOGGLE_ORDER.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="LSSMA_DISPLAY_TOGGLE_ORDER"
+ Guid="d2273932-ac22-4234-ab4e-b1da1f70e79d"
+>
+</StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.SubStructure1"
+ TypeName="SubStructure1"
  Default="[]"
  Y="60"
  Width="100"

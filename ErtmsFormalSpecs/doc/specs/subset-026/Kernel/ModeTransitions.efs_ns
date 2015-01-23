@@ -2140,6 +2140,11 @@ Odometry.TrainIsAtStandstill()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="63479266-6d51-491f-9e5b-6c3b90152568"
 >
+</ReqRef><ReqRef
+ Id="5fac2ca7-314d-40c2-9267-45948c003cd0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4c8da253-c1f6-4888-9ae5-d4e5fde3d0d4"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -2174,6 +2179,11 @@ DMI.MasterDMI().In_AcknOfLSMode.InputInformation.DriverAnswered</Expression>
  Id="ef357556-b9eb-422f-9405-83e4b929a1c3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0576627b-ddd7-448c-bc85-5a004747360e"
+>
+</ReqRef><ReqRef
+ Id="bef5de12-943a-4b92-94ba-8f9f55bf7241"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="432fb1ac-8b27-465e-a1bd-2a084265f800"
 >
 </ReqRef><Cases>
 <Case
@@ -2220,6 +2230,11 @@ NOT (TrackDescription.Gradient.GradientProfileStart() &lt;= TrainPosition.FrontE
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="56c79534-df9e-4fa5-b12e-541fcc8aefa7"
 >
+</ReqRef><ReqRef
+ Id="5fac2ca7-314d-40c2-9267-45948c003cd0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c06ea9e5-cffb-4663-94b7-73b3b1b32007"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -2264,6 +2279,11 @@ MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.LS</Expression>
  Id="2b361c71-11d4-4fd7-aeb7-81d19aeb3b64"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="47fe02cd-7b1e-4c04-94c3-0a5f88677989"
+>
+</ReqRef><ReqRef
+ Id="5fac2ca7-314d-40c2-9267-45948c003cd0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ca56d08-8c12-4787-be29-3fd7ea82a685"
 >
 </ReqRef><Cases>
 <Case
@@ -2479,6 +2499,11 @@ BTM.CurrentBaliseGroup != []
  Id="bf8f8704-ab96-4ceb-a58e-dca57715e14f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4d6514cc-2086-4634-b01a-09d77ff3d31b"
+>
+</ReqRef><ReqRef
+ Id="5fac2ca7-314d-40c2-9267-45948c003cd0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="252f7c4b-177f-4fef-9418-ab77c21c016c"
 >
 </ReqRef><Cases>
 <Case
@@ -2832,6 +2857,11 @@ DMI.MasterDMI().In_OverrideRequest.InputInformation.DriverAnswered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2a4ef2ea-843e-4718-aa93-e7107c4e0b2b"
 >
+</ReqRef><ReqRef
+ Id="5fac2ca7-314d-40c2-9267-45948c003cd0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="29a1e980-59b1-480b-baac-a9d01e34fd0a"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -2942,6 +2972,11 @@ TIU.NonLeadingPermitted</Expression>
  Id="0fe12114-3bcd-460f-8e08-ccb61b620101"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="22ce6469-4e37-4adf-8fbd-7d31929fd318"
+>
+</ReqRef><ReqRef
+ Id="5fac2ca7-314d-40c2-9267-45948c003cd0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9d992584-015d-4d93-aca0-4ee8d6d9d4fc"
 >
 </ReqRef><Cases>
 <Case
@@ -7503,6 +7538,34 @@ TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom
 <Action
  Guid="0227ac5d-5147-488a-b254-c00debe67dd3"
 >DMI.MasterDMI().Out_EntryInFsOs.Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="LS"
+ Guid="2ae9bd77-7e3a-4a27-9471-8b1b81368446"
+>
+<ReqRef
+ Id="a2ec7ec3-6644-47d6-8ee1-9e4b16650cc3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="89e454f2-87ae-4393-82c8-50fe4b942793"
+>
+</ReqRef><Comment>When LS mode is entered, the display of the LSSMA will be off.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Entry in LS"
+ Guid="82be5964-69bc-427d-95f2-e0caf751a4e4"
+>
+<PreConditions>
+<PreCondition
+ Guid="649da02e-875c-432f-b874-f3716160e2c9"
+>Mode == Mode.LS</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0aa12865-2a4e-4155-b6cb-66ce493b30d1"
+>LimitedSupervision.DisplayLSSMA &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

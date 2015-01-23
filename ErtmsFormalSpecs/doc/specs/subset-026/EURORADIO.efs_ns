@@ -6994,6 +6994,45 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="LSSMA display toggle order available"
+ Guid="1cd12ff4-6000-43dc-adbd-d711a9b70e64"
+>
+<ReqRef
+ Id="5ab8592b-d34d-449a-b9b4-a49404c758ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6d1d363f-720f-445b-8dba-f08284ce1dab"
+>
+</ReqRef><ReqRef
+ Id="569567b3-3681-4d80-9bed-9a1376f4cd6f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1f0d954d-f4d7-4718-8df3-50357ada5fb7"
+>
+</ReqRef><Comment>Handles reception of an LSSMA diplay toggle order received with the MA.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="LSSMA display toggle order received"
+ Guid="2c196828-b55b-4c96-9dd8-d88466c7bdc0"
+>
+<PreConditions>
+<PreCondition
+ Guid="d929b47a-52a6-44ae-84ea-b3b125dcd969"
+>THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available (X.LSSMA_DISPLAY_TOGGLE_ORDER)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7495227e-d962-4677-8d3d-055a79d7376d"
+>Kernel.LimitedSupervision.LSSMAToggleReceived(
+    Packet =&gt; (FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available(X.LSSMA_DISPLAY_TOGGLE_ORDER)).LSSMA_DISPLAY_TOGGLE_ORDER,
+    Timestamp =&gt; AddToDate(
+        StartDate =&gt; Kernel.DateAndTime.StartDate,
+        Increment =&gt; MessageTypes.TimeResolution(aMessage.MOVEMENT_AUTHORITY.T_TRAIN)
+    )
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="Handle the Movement Authority"
  Guid="7d82c686-4ecc-403f-abbd-e4c751de1bdf"
 >
@@ -7074,7 +7113,10 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Actions>
 <Action
  Guid="1d0407c6-42f3-4cd3-9dbd-5721ca7faffe"
->Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+>Kernel.MA.ModeProfile.ModeProfileReceived (
+  Packet =&gt; ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE,
+  GenericLSMarker =&gt; False
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -7168,7 +7210,10 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Actions>
 <Action
  Guid="42923357-d030-4973-8f7e-66c4c0796d02"
->Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST X IN aMessage.REQUEST_TO_SHORTEN_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+>Kernel.MA.ModeProfile.ModeProfileReceived (
+  Packet =&gt; ( FIRST X IN aMessage.REQUEST_TO_SHORTEN_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE,
+  GenericLSMarker =&gt; False
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7672,6 +7717,45 @@ Default.MessageTypes.QScaleDistance(
     RVSupervisionPacket =&gt; ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION
 )</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="LSSMA display toggle order available"
+ Guid="cf3b6a56-0f48-4763-a9f3-26f5e0f6b0db"
+>
+<ReqRef
+ Id="5ab8592b-d34d-449a-b9b4-a49404c758ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="09fa92ee-7cd7-489c-9efc-7a8080c44a86"
+>
+</ReqRef><ReqRef
+ Id="569567b3-3681-4d80-9bed-9a1376f4cd6f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="be72b01c-5106-49a0-8a60-afd1ebd352bc"
+>
+</ReqRef><Comment>Handles reception of an LSSMA diplay toggle order received with the general message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="LSSMA display toggle order received"
+ Guid="9a4a5819-03c2-4b8c-8d54-3e3ae43d3089"
+>
+<PreConditions>
+<PreCondition
+ Guid="20b8a664-9aa0-43cf-806f-77575b6c9d8b"
+>THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available (X.LSSMA_DISPLAY_TOGGLE_ORDER)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="de78be94-0ff2-487f-b42a-b5d3406df13c"
+>Kernel.LimitedSupervision.LSSMAToggleReceived(
+    Packet =&gt; (FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available(X.LSSMA_DISPLAY_TOGGLE_ORDER)).LSSMA_DISPLAY_TOGGLE_ORDER,
+    Timestamp =&gt; AddToDate(
+        StartDate =&gt; Kernel.DateAndTime.StartDate,
+        Increment =&gt; MessageTypes.TimeResolution(aMessage.GENERAL_MESSAGE.T_TRAIN)
+    )
+)</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -7840,7 +7924,10 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Actions>
 <Action
  Guid="6fc1e57f-7584-4af7-b92a-c41bcf7f6e58"
->Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+>Kernel.MA.ModeProfile.ModeProfileReceived (
+  Packet =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE,
+  GenericLSMarker =&gt; False
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -8093,6 +8180,45 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="LSSMA display toggle order available"
+ Guid="ee57379c-f490-44bb-98e4-338041668edb"
+>
+<ReqRef
+ Id="5ab8592b-d34d-449a-b9b4-a49404c758ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="721176da-770e-409b-ab05-aab36f5c94cc"
+>
+</ReqRef><ReqRef
+ Id="569567b3-3681-4d80-9bed-9a1376f4cd6f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="107ec775-9ae1-4048-8464-caef8de3bf4b"
+>
+</ReqRef><Comment>Handles reception of an LSSMA diplay toggle order received with the MA message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="LSSMA display toggle order received"
+ Guid="3b9a00bd-48fc-450d-b098-c457a12ff7ae"
+>
+<PreConditions>
+<PreCondition
+ Guid="01d6ea61-7ad0-4ad2-8c18-71d5fc673f75"
+>THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available (X.LSSMA_DISPLAY_TOGGLE_ORDER)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d2621da4-99cc-4cb9-97a0-92bf06ae5cb7"
+>Kernel.LimitedSupervision.LSSMAToggleReceived(
+    Packet =&gt; (FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available(X.LSSMA_DISPLAY_TOGGLE_ORDER)).LSSMA_DISPLAY_TOGGLE_ORDER,
+    Timestamp =&gt; AddToDate(
+        StartDate =&gt; Kernel.DateAndTime.StartDate,
+        Increment =&gt; MessageTypes.TimeResolution(aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.T_TRAIN)
+    )
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="RBC transition order available"
  Guid="a8af2694-8a1a-4a7b-bcdf-1b0a2fc65759"
 >
@@ -8272,7 +8398,10 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Actions>
 <Action
  Guid="3913ccf6-bc3b-423b-a4da-7742b09c8e22"
->Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST X IN aMessage.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+>Kernel.MA.ModeProfile.ModeProfileReceived (
+  Packet =&gt; ( FIRST X IN aMessage.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE,
+  GenericLSMarker =&gt; False
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -8376,7 +8505,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
     },
     NID =&gt; aMessage.TRAIN_ACCEPTED.NID_LRBG,
     Orientation =&gt; Default.Orientation.Unknown,
-    Timestamp =&gt; Kernel.DateAndTime.CurrentTime
+    Timestamp =&gt; Kernel.DateAndTime.Now()
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
