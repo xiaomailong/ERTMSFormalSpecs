@@ -409,6 +409,11 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ddb27ed5-b86c-40a0-86d4-69e228b5dca8"
 >
+</ReqRef><ReqRef
+ Id="99b2ce8e-827d-48c7-89b4-3d1b09021dd1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a91834c4-4e9a-433c-b545-3e650524cf59"
+>
 </ReqRef><Comment>Provides the train length for the train position supervision.
 In SL mode, the front and rear ends of the train are considered to be the front and rear of the engine.</Comment>
 <Cases>
@@ -419,7 +424,7 @@ In SL mode, the front and rear ends of the train are considered to be the front 
 <PreConditions>
 <PreCondition
  Guid="7f5f21f8-4aef-4736-b345-d96f9e3f3499"
->Mode in [Default.Mode.SL, Mode.NL]</PreCondition></PreConditions>
+>Mode in [Mode.SL, Mode.NL, Mode.PS]</PreCondition></PreConditions>
 <Expression>TrainData.TrainData.Value.EngineLength</Expression>
 </Case><Case
  Name="Otherwise"

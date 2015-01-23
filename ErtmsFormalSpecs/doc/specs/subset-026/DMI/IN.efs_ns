@@ -2214,7 +2214,17 @@
  Name="AcceptDriverResponse"
  Guid="4af5856d-f8e3-4000-8bc5-a6f968ea4d88"
 >
-<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<ReqRef
+ Id="c51f0ee1-8abb-4f3a-a52f-62248f5a5f7f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6241e68e-f3e2-4212-a5bb-aadb7c331750"
+>
+</ReqRef><ReqRef
+ Id="17a4c2cf-4fbc-48d2-b77e-25fe06fda936"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c8b0f4e2-5f3c-49d6-a5f7-575b62170ced"
+>
+</ReqRef><Comment>Receives the driver input and updates the internal data accordingly</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -2240,7 +2250,11 @@
 <Actions>
 <Action
  Guid="5cc17c0b-817f-4483-8077-9146d6cbb607"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="f5ce354f-859e-4332-b811-e2d0ae772e1a"
+>Kernel.ModeRelatedSpeedLimits.TracksideModeRelatedSpeedRestrictions.SR &lt;- Speed</Action><Action
+ Guid="a11aacf6-d0d4-4812-a3b0-3254aeb2f787"
+>Kernel.StaffResponsible.SRAuthorisation.Distance &lt;- Distance</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

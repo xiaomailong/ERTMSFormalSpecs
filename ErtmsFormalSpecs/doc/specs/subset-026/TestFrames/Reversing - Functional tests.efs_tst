@@ -697,7 +697,7 @@
  Guid="5038686e-1d0e-4195-abf3-f710b0739afe"
 >DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="0,3"
+ DeadLine="3"
  Guid="92720950-7bdf-49ab-9bab-6ad2cad24600"
 >Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Min) &lt; Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance</Expectation><Expectation
  Kind="Instantaneous"
@@ -782,7 +782,7 @@ DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DoNotDisplay()</Action></
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="0,3"
+ DeadLine="3"
  Guid="b95e54a7-e4b0-4e60-8451-9c74e81884a6"
 >NOT ( DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested )</Expectation><Expectation
  Kind="Instantaneous"

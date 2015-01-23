@@ -61,6 +61,7 @@
  Y="120"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Condition13"
  Guid="0f0cab76-ea06-4831-a0a6-68559f0758e4"
 >
@@ -79,7 +80,7 @@
  Name="Value"
  Guid="8b201671-d6a9-4381-9ead-0282a8f9b60d"
 >
-<Expression>SafetyCriticalFaultDetected</Expression>
+<Expression>THERE_IS SafetyCriticalFault IN SafetyCriticalFaults | FaultIsUrgent(SafetyCriticalFault.Fault)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1318,6 +1319,16 @@ MA.ModeProfile.Profile == []</Expression>
  SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
  Guid="b54fc244-c2e4-4dad-86d1-c4c7a8429e4a"
 >
+</ReqRef><ReqRef
+ Id="5f4831dc-11e2-40f0-b7fe-d48e5a41c5e1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6e118b52-5c73-4d15-85cd-c3aff8db5daa"
+>
+</ReqRef><ReqRef
+ Id="b101c43f-e73c-4f94-9ee0-c21f49d37520"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5dae8b2d-c9f3-4a61-878b-d72be4122d75"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -1376,6 +1387,11 @@ NOT Shunting.StopShuntingOnDeskOpening</Expression>
  SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
  Guid="49518805-9647-455a-acb0-222c5aade4a6"
 >
+</ReqRef><ReqRef
+ Id="d40945cf-a283-481c-b33d-a666a705fbf4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="219068ee-e328-4733-891b-63a5920ddd34"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -1410,6 +1426,16 @@ NOT Shunting.ContinueShuntingOnDeskClosure</Expression>
  Id="80ae3df2-b47f-4772-93e7-1c1e7395f9b2"
  SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
  Guid="aea8ad58-9357-4082-bc14-d17769adf5e2"
+>
+</ReqRef><ReqRef
+ Id="81a6f499-6dd5-437b-a330-35c901d3c002"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fca69cde-b243-452a-bdb5-a2f68a43006c"
+>
+</ReqRef><ReqRef
+ Id="d40945cf-a283-481c-b33d-a666a705fbf4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="de26db90-9125-452e-a8b4-904a918321b3"
 >
 </ReqRef><Cases>
 <Case
@@ -1487,6 +1513,11 @@ Odometry.TrainSpeed() == 0.0</Expression>
  Id="80ae3df2-b47f-4772-93e7-1c1e7395f9b2"
  SpecId="33a01dd1-de78-4ea3-9e96-a198d1a29277"
  Guid="28869923-ef8a-4add-a716-00599ff5b52b"
+>
+</ReqRef><ReqRef
+ Id="21668075-c10a-4e08-9120-597a2c9a8ddf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d6629ed6-a4e1-4dec-895e-4e9e88b3e97a"
 >
 </ReqRef><Cases>
 <Case
@@ -7510,6 +7541,38 @@ TIU.NonLeadingPermitted</Expression>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="SL"
+ Guid="320a22e3-bd1d-410f-9762-62bec15dde1b"
+>
+<ReqRef
+ Id="1346f2e0-2754-4999-9ddd-41e3b9c2a912"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="40824ca3-1544-44e6-8983-7c7a05ca0b13"
+>
+</ReqRef><Comment>Connect to the RBC when entering or leaving SL mode in levels 2/3.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Entering or exiting SL, level 2/3"
+ Guid="cd67b8f6-4006-4f51-889f-4b3ca8fb51a3"
+>
+<PreConditions>
+<PreCondition
+ Guid="58542aca-0898-4eea-9437-50175e65bc57"
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
+ Guid="803992df-272e-44be-ae5d-0ca02c53a945"
+>Mode == Default.Mode.SL
+  OR  
+PrevMode == Default.Mode.SL</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3fc3fdc4-a55e-460d-b562-e9e19afbc77a"
+>EURORADIO.CurrentRBCConnection().SendInitiationOfCommunicationSession()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="FS"
  Guid="3f86a7bf-7ef9-4e47-8bf0-12834e8d9248"
 >
@@ -7694,6 +7757,34 @@ TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom
 <Action
  Guid="fce2ce78-cae7-4636-a542-10255cd0c722"
 >TIU.EmergencyBrakeCommanded &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="PS"
+ Guid="e678dd57-f8d2-4b47-9d29-c433b99d728a"
+>
+<ReqRef
+ Id="e2b45ab5-ef70-4c71-a023-bb00b22e624f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8028d489-9584-4a3e-a5c8-3fa7e585947d"
+>
+</ReqRef><Comment>Deactivate the &quot;Continue Shunting on desk colsure&quot; function, so that it can only allow one SH -&gt; PS transition.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Cancel Continue Shunting of Desk Closure"
+ Guid="cd37f525-9ad6-4412-9df1-914d877aeb74"
+>
+<PreConditions>
+<PreCondition
+ Guid="e33521a1-766d-4be5-a28a-ef3ee818bdcf"
+>Mode == Mode.PS</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="95b757a7-c19e-4ffc-ba3d-afbc5c486d8f"
+>Shunting.ContinueShuntingOnDeskClosure &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

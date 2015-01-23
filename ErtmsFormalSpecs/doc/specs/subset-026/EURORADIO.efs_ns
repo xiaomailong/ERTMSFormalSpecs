@@ -363,6 +363,43 @@
     Sequence1 =&gt; EMPTY,
     T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime)
 }</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Include error report"
+ Guid="d9f908d5-de87-4bab-91ce-da2c66953c63"
+>
+<ReqRef
+ Id="9e2c2d2b-5db5-4ed7-ac2d-0ff95a23e76f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ddac13ec-1b48-4d26-9286-afd5f82d7e7f"
+>
+</ReqRef><Comment>If a safety critical fault was detected in this cycle, send it to the RBC</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Add packet 4"
+ Guid="083c5a7e-665e-4129-b81b-334094135d71"
+>
+<PreConditions>
+<PreCondition
+ Guid="6ae49c95-7d4b-42c1-8330-6a69edd591a3"
+>THERE_IS Fault IN Kernel.SafetyCriticalFaults | Fault.Timestamp == Kernel.DateAndTime.Now()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e07dcf11-0ce2-47e9-879e-4b160dbf579e"
+>INSERT Messages.MESSAGE.TRAIN_TO_TRACK.TRAIN_POSITION_REPORT.SubStructure1{
+    ERROR_REPORTING =&gt; Messages.PACKET.TRAIN_TO_TRACK.ERROR_REPORTING.Message{
+        NID_PACKET =&gt; 4,
+        L_PACKET =&gt; 0,
+        M_ERROR =&gt; (FIRST X IN Kernel.SafetyCriticalFaults | X.Timestamp == Kernel.DateAndTime.Now()).Fault
+    }
+}
+ IN MessageOut.TRAIN_POSITION_REPORT.Sequence1</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="The message cannot be sent"
@@ -2742,9 +2779,37 @@ THERE_IS X IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Guid="ea8b7978-d9c8-42c9-a1a1-339aea7eb022"
 >THIS &lt;- Inactive</Action><Action
  Guid="53aed77c-69b4-4844-84ca-aeb33f10a498"
->SendNoCompatibleVersionSupported()</Action><Action
+>SendNoCompatibleVersionSupported()</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Display indication to driver"
+ Guid="32978d87-8f73-45bd-bb68-3f372244060e"
+>
+<Comment>If the on-board is unable to connect to the RBC, only display the Incompatible System Version information if the current mode is not SL.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Mode is not SL"
+ Guid="0ff8a2f0-4595-49a4-b1ff-17efce2e7f5b"
+>
+<ReqRef
+ Id="26f8b2b9-4d92-46f3-8c33-b40b1b891b32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="05961053-1d2a-4252-922e-6124df28fbd1"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="8473eb41-8b29-4bfc-850f-20dab16f4863"
+>Kernel.Mode != Mode.SL</PreCondition></PreConditions>
+<Actions>
+<Action
  Guid="67b23c1f-f588-4c6d-82e0-4bd1b8feb62a"
 >DMI.MasterDMI().Out_TracksideNotCompatible.Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -8862,6 +8927,11 @@ NOT
  Id="09eeadf1-fd15-4f7c-8f52-fb0f04b31d9c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="deb3eb45-c15c-4c64-afde-d4f94bce56d1"
+>
+</ReqRef><ReqRef
+ Id="b0837b14-48a2-43c7-a312-c2fa7b7ae35b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f92abecc-a493-4ed2-bfba-7a5d14970cbe"
 >
 </ReqRef><Comment>Handles the reception of RBC transition order.</Comment>
 <Parameters>
