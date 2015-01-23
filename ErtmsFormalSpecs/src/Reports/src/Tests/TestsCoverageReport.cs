@@ -48,6 +48,7 @@ namespace Reports.Tests
             CloseSubParagraph();
         }
 
+
         /// <summary>
         /// Generates a table with specification coverage statistics
         /// </summary>
@@ -88,38 +89,10 @@ namespace Reports.Tests
             {
                 AddRow("Number of non covered requirements", String.Format("{0} ({1:0.##}%)", nonCoveredParagraphsCount, nonCoveredPercentage));
             }
-            CloseSubParagraph();
-        }
-
-
-        /// <summary>
-        /// Creates a table for the current element (a frame, a sub sequence or a test case)
-        /// </summary>
-        /// <param name="title">Title of the table</param>
-        /// <param name="activatedRules">Set of activated rules by the current element</param>
-        /// <param name="implementedRules">Set of implemented rules in the dictionary</param>
-        /// <param name="addActivatedRules">Indicates if we have to display the set of activated rules</param>
-        /// <returns></returns>
-        private void CreateTable(String title, HashSet<RuleCondition> activatedRules, HashSet<Rule> implementedRules, bool addActivatedRules)
-        {
-            AddSubParagraph(title);
-            AddTable(new string[] { "", "Statistics" }, new int[] { 40, 100 });
-
-            double implementedPercentage = (double)((double)activatedRules.Count / (double)implementedRules.Count) * 100;
-
-            AddRow("Number of activated rules", String.Format("{0} ({1:0.##}%)", activatedRules.Count.ToString(), implementedPercentage));
-
-            if (addActivatedRules && activatedRules.Count > 0)
-            {
-                AddRow("Activated rules", null);
-                foreach (RuleCondition ruleCondition in activatedRules)
-                {
-                    AppendToRow(null, ruleCondition.FullName);
-                }
-            }
 
             CloseSubParagraph();
         }
+
 
         /// <summary>
         /// Creates an article for a given frame
@@ -130,55 +103,63 @@ namespace Reports.Tests
         /// <returns></returns>
         public void CreateFrameArticle(Frame aFrame, TestsCoverageReportHandler aReportConfig, HashSet<RuleCondition> activatedRules)
         {
-            AddSubParagraph("Frame " + aFrame.Name);
+            string title = "Frame " + aFrame.Name;
+
+            AddSubParagraph(title);
 
             foreach (SubSequence subSequence in aFrame.SubSequences)
             {
-                // SIDE EFFECT : 
-                // each test case will calculate the list of rules it activate
+                // SIDE EFFECT:
+                // each sub-sequence will calculate the list of rules it activates
                 // and add them to activatedRules list
                 CreateSubSequenceSection(subSequence, aReportConfig, activatedRules, aReportConfig.AddSubSequences);
             }
 
-            // now we  can create the table with the current sub sequence statistics
-            AddSubParagraph("Statistics");
-            CreateTable(aFrame.Name,
-                        activatedRules,
-                        aReportConfig.Dictionary.ImplementedRules,
-                        aReportConfig.AddActivatedRulesInFrames);
-            CloseSubParagraph();
+            // now we  can create the section containing the activated rules of the frame
+            CreateActivatedRulesSection(title,
+                                        activatedRules,
+                                        aReportConfig.Dictionary.ImplementedRules,
+                                        aReportConfig.AddActivatedRulesInFrames);
             CloseSubParagraph();
         }
 
 
         /// <summary>
-        /// Creates a section for a given sub sequence
+        /// Creates a section for a given sub-sequence
         /// </summary>
-        /// <param name="aFrame">Frame to be displayed</param>
+        /// <param name="aSubSequence">A sub-sequence to be displayed</param>
         /// <param name="aReportConfig">The report configuration containing display details</param>
-        /// <param name="activatedRules">The list that will contain the rules activated by this sub sequence</param>
-        /// <returns></returns>
+        /// <param name="activatedRules">The list that will contain the rules activated by this sub-sequence</param>
+        /// <param name="createPdf">Indicates if the information about this sub-sequence has to be added to the pdf</param>
         public void CreateSubSequenceSection(SubSequence aSubSequence, TestsCoverageReportHandler aReportConfig, HashSet<RuleCondition> activatedRules, bool createPdf)
         {
-            AddSubParagraph("Sub sequence " + aSubSequence.Name);
+            string title = "Sub sequence " + aSubSequence.Name;
+            if (createPdf)
+            {
+                AddSubParagraph(title);
+            }
 
             HashSet<RuleCondition> rules = new HashSet<RuleCondition>();
             aSubSequence.EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(aSubSequence, false, false);
             foreach (TestCase testCase in aSubSequence.TestCases)
             {
-                // each test case will calculate the list of rules it activate
+                // SIDE EFFECT:
+                // each test case will calculate the list of rules it activates
                 // and add them to activatedRules list
                 CreateTestCaseSection(aSubSequence.EFSSystem.Runner, testCase, aReportConfig, rules, createPdf && aReportConfig.AddTestCases);
             }
+            activatedRules.UnionWith(rules);
 
             // now we  can create the table with the current sub sequence statistics
-            CreateTable(aSubSequence.Name,
-                        rules,
-                        aReportConfig.Dictionary.ImplementedRules,
-                        aReportConfig.AddActivatedRulesInSubSequences);
+            if (createPdf)
+            {
+                CreateActivatedRulesSection(title,
+                                            rules,
+                                            aReportConfig.Dictionary.ImplementedRules,
+                                            aReportConfig.AddActivatedRulesInSubSequences);
 
-            activatedRules.UnionWith(rules);
-            CloseSubParagraph();
+                CloseSubParagraph();
+            }
         }
 
 
@@ -186,92 +167,120 @@ namespace Reports.Tests
         /// Creates a section for a given test case
         /// </summary>
         /// <param name="runner">The runner to be used to execute the tests</param>
-        /// <param name="aFrame">Frame to be displayed</param>
+        /// <param name="aTestCase">Test case to be displayed</param>
         /// <param name="aReportConfig">The report configuration containing display details</param>
         /// <param name="activatedRuleConditions">The list that will contain the rules activated by this test case</param>
-        /// <returns></returns>
+        /// <param name="createPdf">Indicates if the information about this sub-sequence has to be added to the pdf</param>
         public void CreateTestCaseSection(DataDictionary.Tests.Runner.Runner runner, TestCase aTestCase, TestsCoverageReportHandler aReportConfig, HashSet<RuleCondition> activatedRuleConditions, bool createPdf)
         {
-            AddSubParagraph("Test case " + aTestCase.Name);
-
-            if (aTestCase.Requirements.Count > 0)
+            string title = "Test case " + aTestCase.Name;
+            if (createPdf)
             {
-                AddParagraph("This test case verifies the following requirements");
-                foreach (DataDictionary.ReqRef reqRef in aTestCase.Requirements)
+                AddSubParagraph(title);
+
+                if (aTestCase.Requirements.Count > 0)
                 {
-                    string text = "Requirement " + reqRef.Name;
-                    if (!Utils.Utils.isEmpty(reqRef.Comment))
+                    AddSubParagraph(title + ": verified requirements:");
+                    foreach (DataDictionary.ReqRef reqRef in aTestCase.Requirements)
                     {
-                        text = text + " : " + reqRef.Comment;
+                        string text = "Requirement " + reqRef.Name;
+                        if (!Utils.Utils.isEmpty(reqRef.Comment))
+                        {
+                            text = text + " : " + reqRef.Comment;
+                        }
+                        AddListItem(text);
                     }
-                    AddListItem(text);
+                    CloseSubParagraph();
                 }
             }
 
             runner.RunUntilStep(null);
             activatedRuleConditions.UnionWith(runner.EventTimeLine.GetActivatedRules());
 
-            string title = "Test case " + aTestCase.Name;
-            CreateTable(title,
-                        runner.EventTimeLine.GetActivatedRules(),
-                        aReportConfig.Dictionary.ImplementedRules,
-                        aReportConfig.AddActivatedRulesInTestCases);
 
-            if (createPdf && aReportConfig.AddSteps)
+            if (createPdf)
             {
-                foreach (Step step in aTestCase.Steps)
+                if (aReportConfig.AddSteps)
                 {
-                    if (step.SubSteps.Count > 0)
+                    foreach (Step step in aTestCase.Steps)
                     {
-                        AddSubParagraph(String.Format("Step {0}", step.Name));
-
-                        DataDictionary.Tests.SubStep firstSubStep = step.SubSteps[0] as DataDictionary.Tests.SubStep;
-                        DataDictionary.Tests.SubStep lastSubStep = step.SubSteps[step.SubSteps.Count - 1] as DataDictionary.Tests.SubStep;
-                        double start = runner.EventTimeLine.GetSubStepActivationTime(firstSubStep);
-                        double end = runner.EventTimeLine.GetNextSubStepActivationTime(lastSubStep);
-                        List<RuleCondition> activatedRules = runner.EventTimeLine.GetActivatedRulesInRange(start, end);
-
-                        CreateStepTable(runner, step, aTestCase.Dictionary.ImplementedRules.Count, activatedRules, aReportConfig);
-                        if (aReportConfig.AddLog)
+                        if (step.SubSteps.Count > 0)
                         {
-                            List<DataDictionary.Tests.Runner.Events.ModelEvent> events = runner.EventTimeLine.GetEventsInRange((uint)start, (uint)end);
-                            foreach (ModelEvent ev in events)
-                            {
-                                AddCode(ev.ToString());
-                            }
+                            DataDictionary.Tests.SubStep firstSubStep = step.SubSteps[0] as DataDictionary.Tests.SubStep;
+                            DataDictionary.Tests.SubStep lastSubStep = step.SubSteps[step.SubSteps.Count - 1] as DataDictionary.Tests.SubStep;
+                            double start = runner.EventTimeLine.GetSubStepActivationTime(firstSubStep);
+                            double end = runner.EventTimeLine.GetNextSubStepActivationTime(lastSubStep);
+                            List<RuleCondition> activatedRules = runner.EventTimeLine.GetActivatedRulesInRange(start, end);
+
+                            CreateStepSection(step, activatedRules, aReportConfig);
                         }
-                        CloseSubParagraph();
                     }
                 }
+
+
+                CreateActivatedRulesSection(title,
+                                            runner.EventTimeLine.GetActivatedRules(),
+                                            aReportConfig.Dictionary.ImplementedRules,
+                                            aReportConfig.AddActivatedRulesInTestCases);
+
+                CloseSubParagraph();
             }
+        }
+
+
+        /// <summary>
+        /// Creates a section for a given step
+        /// </summary>
+        /// <param name="aStep">The step to be displayed</param>
+        /// <param name="activatedRules">The list of rules activated by this step</param>
+        /// <param name="aReportConfig">The report config</param>
+        private void CreateStepSection(Step aStep, List<RuleCondition> activatedRules, TestsCoverageReportHandler aReportConfig)
+        {
+            string title = "Step " + aStep.Name;
+            AddSubParagraph(title);
+
+            CreateActivatedRulesSection("",
+                                        new HashSet<RuleCondition>(activatedRules),
+                                        aReportConfig.Dictionary.ImplementedRules,
+                                        aReportConfig.AddActivatedRulesInTestCases);
+
             CloseSubParagraph();
         }
 
+
         /// <summary>
-        /// Creates a table for a given step of a test
+        /// Adds information about the activated rules of a frame, a section, a test case or a step
         /// </summary>
-        /// <param name="aStep">The step to be displayed</param>
-        /// <param name="totalNumberOfRules">The total number of implemented rules in the dictionary</param>
-        /// <param name="aReportConfig">The report config</param>
-        /// <returns></returns>
-        private void CreateStepTable(DataDictionary.Tests.Runner.Runner runner, Step aStep, int totalNumberOfRules, List<RuleCondition> activatedRules, TestsCoverageReportHandler aReportConfig)
+        /// <param name="activatedRules">The list of activated rules</param>
+        /// <param name="implementedRules">The list of implemented rules</param>
+        private void CreateActivatedRulesSection(string title, HashSet<RuleCondition> activatedRules, HashSet<Rule> implementedRules, bool addActivatedRules)
         {
-            AddParagraph(aStep.Name);
-
-            AddTable(new string[] { "", "Statistics" }, new int[] { 40, 100 });
-
-            double implementedPercentage = (double)((double)activatedRules.Count / (double)totalNumberOfRules) * 100;
-            AddRow("Number of activated rules", String.Format("{0} ({1:0.##}%)", activatedRules.Count.ToString(), implementedPercentage));
-
-            if (aReportConfig.AddActivatedRulesInSteps && activatedRules.Count > 0)
+            double implementedPercentage = (double)((double)activatedRules.Count / (double)implementedRules.Count) * 100;
+            string titleOfParagraph;
+            if (title != "")
             {
-                AddRow("Activated rules", null);
+                titleOfParagraph = String.Format("{0}: activated rules: {1} ({2:0.##}%)", title, activatedRules.Count.ToString(), implementedPercentage);
+            }
+            else
+            {
+                titleOfParagraph = String.Format("Activated rules: {0} ({1:0.##}%)", activatedRules.Count.ToString(), implementedPercentage);
+            }
+            
+            if (addActivatedRules)
+            {
+                AddSubParagraph(titleOfParagraph);
                 foreach (RuleCondition ruleCondition in activatedRules)
                 {
-                    AppendToRow(null, ruleCondition.Name);
+                    AddParagraph(ruleCondition.FullName);
                 }
+                CloseSubParagraph();
+            }
+            else
+            {
+                AddParagraph(titleOfParagraph);
             }
         }
+
 
         /// <summary>
         /// Provides the set of covered requirements by the tests

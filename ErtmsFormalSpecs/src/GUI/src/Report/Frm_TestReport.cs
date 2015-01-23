@@ -58,8 +58,6 @@ namespace GUI.Report
             reportHandler = new TestsCoverageReportHandler(aDictionary);
             reportHandler.Dictionary = aDictionary;
             InitializeCheckBoxes(1);
-            CB_Log.Checked = false;
-            CB_Log.Enabled = false;
             CB_ActivatedRulesInSteps.Checked = false;
             CB_ActivatedRulesInSteps.Enabled = false;
             TxtB_Path.Text = reportHandler.FileName;
@@ -268,8 +266,6 @@ namespace GUI.Report
 
             reportHandler.AddSteps = CB_Steps.Checked;
             reportHandler.AddActivatedRulesInSteps = CB_ActivatedRulesInSteps.Checked;
-
-            reportHandler.AddLog = CB_Log.Checked;
 
             Hide();
 

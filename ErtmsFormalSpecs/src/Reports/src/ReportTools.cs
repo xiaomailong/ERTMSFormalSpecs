@@ -114,6 +114,8 @@ namespace Reports
             style.ParagraphFormat.AddTabStop("16cm", TabAlignment.Right, TabLeader.Dots);
             style.ParagraphFormat.Font.Color = Colors.Blue;
         }
+
+
         /// <summary>
         /// Adds a new subsection in the document
         /// </summary>
@@ -123,6 +125,7 @@ namespace Reports
             section.AddParagraph(name, "Heading" + level);
             level += 1;
         }
+
 
         /// <summary>
         /// Closes the subsection in the document

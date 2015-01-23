@@ -50,7 +50,6 @@ namespace GUI.Report
             this.CB_SubSequences = new System.Windows.Forms.CheckBox();
             this.CB_TestCases = new System.Windows.Forms.CheckBox();
             this.CB_Steps = new System.Windows.Forms.CheckBox();
-            this.CB_Log = new System.Windows.Forms.CheckBox();
             this.GrB_Filters = new System.Windows.Forms.GroupBox();
             this.Lbl_Element = new System.Windows.Forms.Label();
             this.CB_ActivatedRulesInSteps = new System.Windows.Forms.CheckBox();
@@ -63,7 +62,7 @@ namespace GUI.Report
             // 
             // Btn_CreateReport
             // 
-            this.Btn_CreateReport.Location = new System.Drawing.Point(298, 205);
+            this.Btn_CreateReport.Location = new System.Drawing.Point(296, 173);
             this.Btn_CreateReport.Name = "Btn_CreateReport";
             this.Btn_CreateReport.Size = new System.Drawing.Size(87, 23);
             this.Btn_CreateReport.TabIndex = 1;
@@ -73,7 +72,7 @@ namespace GUI.Report
             // 
             // Btn_SelectFile
             // 
-            this.Btn_SelectFile.Location = new System.Drawing.Point(205, 205);
+            this.Btn_SelectFile.Location = new System.Drawing.Point(203, 173);
             this.Btn_SelectFile.Name = "Btn_SelectFile";
             this.Btn_SelectFile.Size = new System.Drawing.Size(87, 23);
             this.Btn_SelectFile.TabIndex = 2;
@@ -148,21 +147,6 @@ namespace GUI.Report
             this.CB_Steps.UseVisualStyleBackColor = true;
             this.CB_Steps.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
-            // CB_Log
-            // 
-            this.CB_Log.AutoSize = true;
-            this.CB_Log.Enabled = false;
-            this.CB_Log.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_Log.Location = new System.Drawing.Point(9, 162);
-            this.CB_Log.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.CB_Log.Name = "CB_Log";
-            this.CB_Log.Size = new System.Drawing.Size(44, 17);
-            this.CB_Log.TabIndex = 4;
-            this.CB_Log.Tag = "FILTER.5";
-            this.CB_Log.Text = "Log";
-            this.CB_Log.UseVisualStyleBackColor = true;
-            this.CB_Log.CheckedChanged += new System.EventHandler(this.CheckedChanged);
-            // 
             // GrB_Filters
             // 
             this.GrB_Filters.Controls.Add(this.Lbl_Element);
@@ -175,11 +159,10 @@ namespace GUI.Report
             this.GrB_Filters.Controls.Add(this.CB_TestCases);
             this.GrB_Filters.Controls.Add(this.Lbl_CoveredRules);
             this.GrB_Filters.Controls.Add(this.CB_SubSequences);
-            this.GrB_Filters.Controls.Add(this.CB_Log);
             this.GrB_Filters.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GrB_Filters.Location = new System.Drawing.Point(12, 12);
             this.GrB_Filters.Name = "GrB_Filters";
-            this.GrB_Filters.Size = new System.Drawing.Size(371, 187);
+            this.GrB_Filters.Size = new System.Drawing.Size(371, 155);
             this.GrB_Filters.TabIndex = 3;
             this.GrB_Filters.TabStop = false;
             this.GrB_Filters.Text = "Filters";
@@ -236,7 +219,7 @@ namespace GUI.Report
             // 
             // TxtB_Path
             // 
-            this.TxtB_Path.Location = new System.Drawing.Point(12, 208);
+            this.TxtB_Path.Location = new System.Drawing.Point(10, 176);
             this.TxtB_Path.Name = "TxtB_Path";
             this.TxtB_Path.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TxtB_Path.Size = new System.Drawing.Size(186, 20);
@@ -247,7 +230,7 @@ namespace GUI.Report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 240);
+            this.ClientSize = new System.Drawing.Size(395, 207);
             this.Controls.Add(this.TxtB_Path);
             this.Controls.Add(this.GrB_Filters);
             this.Controls.Add(this.Btn_SelectFile);
@@ -273,7 +256,6 @@ namespace GUI.Report
         private System.Windows.Forms.CheckBox CB_SubSequences;
         private System.Windows.Forms.CheckBox CB_TestCases;
         private System.Windows.Forms.CheckBox CB_Steps;
-        private System.Windows.Forms.CheckBox CB_Log;
         private System.Windows.Forms.GroupBox GrB_Filters;
         private System.Windows.Forms.Label Lbl_CoveredRules;
         private System.Windows.Forms.TextBox TxtB_Path;

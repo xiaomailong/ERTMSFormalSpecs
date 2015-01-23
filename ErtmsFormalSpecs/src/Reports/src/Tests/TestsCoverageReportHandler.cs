@@ -83,8 +83,6 @@ namespace Reports.Tests
 
             AddSteps = false;
             AddActivatedRulesInSteps = false;
-
-            AddLog = false;
         }
 
         /// <summary>
@@ -121,6 +119,7 @@ namespace Reports.Tests
             {
                 Log.Info("..creating frame report " + Frame.Name);
                 Dictionary = Frame.Dictionary;
+                
                 report.CreateFrameArticle(Frame, this, activatedRules);
             }
             else if (Dictionary != null) /* We generate a full report */
@@ -149,8 +148,6 @@ namespace Reports.Tests
 
         public bool AddSteps { set; get; }
         public bool AddActivatedRulesInSteps { set; get; }
-
-        public bool AddLog { set; get; }
     }
 
 }
