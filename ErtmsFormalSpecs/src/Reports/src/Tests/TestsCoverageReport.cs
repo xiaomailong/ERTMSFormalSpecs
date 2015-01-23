@@ -99,9 +99,8 @@ namespace Reports.Tests
         /// <param name="activatedRules">Set of activated rules by the current element</param>
         /// <param name="implementedRules">Set of implemented rules in the dictionary</param>
         /// <param name="addActivatedRules">Indicates if we have to display the set of activated rules</param>
-        /// <param name="addNonCoveredRules">Indicates if we have to display the set of non covered rules</param>
         /// <returns></returns>
-        private void CreateTable(String title, HashSet<RuleCondition> activatedRules, HashSet<Rule> implementedRules, bool addActivatedRules, bool addNonCoveredRules)
+        private void CreateTable(String title, HashSet<RuleCondition> activatedRules, HashSet<Rule> implementedRules, bool addActivatedRules)
         {
             AddSubParagraph(title);
             AddTable(new string[] { "", "Statistics" }, new int[] { 40, 100 });
@@ -119,26 +118,6 @@ namespace Reports.Tests
                 }
             }
 
-            if (addNonCoveredRules)
-            {
-                HashSet<RuleCondition> nonCoveredRules = new HashSet<RuleCondition>();
-                foreach (Rule rule in implementedRules)
-                {
-                    foreach (RuleCondition ruleCondition in rule.RuleConditions)
-                    {
-                        if (!activatedRules.Contains(ruleCondition))
-                        {
-                            nonCoveredRules.Add(ruleCondition);
-                        }
-                    }
-                }
-
-                AddRow("Non covered rules", null);
-                foreach (RuleCondition ruleCondition in nonCoveredRules)
-                {
-                    AppendToRow(null, ruleCondition.FullName);
-                }
-            }
             CloseSubParagraph();
         }
 
@@ -166,8 +145,7 @@ namespace Reports.Tests
             CreateTable(aFrame.Name,
                         activatedRules,
                         aReportConfig.Dictionary.ImplementedRules,
-                        aReportConfig.AddActivatedRulesInFrames,
-                        aReportConfig.AddNonCoveredRulesInFrames);
+                        aReportConfig.AddActivatedRulesInFrames);
             CloseSubParagraph();
             CloseSubParagraph();
         }
@@ -197,8 +175,7 @@ namespace Reports.Tests
             CreateTable(aSubSequence.Name,
                         rules,
                         aReportConfig.Dictionary.ImplementedRules,
-                        aReportConfig.AddActivatedRulesInSubSequences,
-                        aReportConfig.AddNonCoveredRulesInSubSequences);
+                        aReportConfig.AddActivatedRulesInSubSequences);
 
             activatedRules.UnionWith(rules);
             CloseSubParagraph();
@@ -238,8 +215,7 @@ namespace Reports.Tests
             CreateTable(title,
                         runner.EventTimeLine.GetActivatedRules(),
                         aReportConfig.Dictionary.ImplementedRules,
-                        aReportConfig.AddActivatedRulesInTestCases,
-                        aReportConfig.AddNonCoveredRulesInTestCases);
+                        aReportConfig.AddActivatedRulesInTestCases);
 
             if (createPdf && aReportConfig.AddSteps)
             {

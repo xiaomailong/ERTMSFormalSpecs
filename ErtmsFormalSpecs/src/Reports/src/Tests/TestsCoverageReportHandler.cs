@@ -74,19 +74,15 @@ namespace Reports.Tests
 
             AddFrames = false;
             AddActivatedRulesInFrames = false;
-            AddNonCoveredRulesInFrames = false;
 
             AddSubSequences = false;
             AddActivatedRulesInSubSequences = false;
-            AddNonCoveredRulesInSubSequences = false;
 
             AddTestCases = false;
             AddActivatedRulesInTestCases = false;
-            AddNonCoveredRulesInTestCases = false;
 
             AddSteps = false;
             AddActivatedRulesInSteps = false;
-            AddNonCoveredRulesInSteps = false;
 
             AddLog = false;
         }
@@ -141,22 +137,18 @@ namespace Reports.Tests
 
         public bool AddFrames { set; get; }
         public bool AddActivatedRulesInFrames { set; get; }
-        public bool AddNonCoveredRulesInFrames { set; get; }
         public Frame Frame { set; get; } /* if Frame is defined, we execute all its sub sequences */
 
         public bool AddSubSequences { set; get; }
         public bool AddActivatedRulesInSubSequences { set; get; }
-        public bool AddNonCoveredRulesInSubSequences { set; get; }
         public SubSequence SubSequence { set; get; } /* if SubSequence is defined, we execute all its test cases */
 
         public bool AddTestCases { set; get; }
         public bool AddActivatedRulesInTestCases { set; get; }
-        public bool AddNonCoveredRulesInTestCases { set; get; }
         public TestCase TestCase { set; get; } /* if TestCase is defined, we execute all its steps */
 
         public bool AddSteps { set; get; }
         public bool AddActivatedRulesInSteps { set; get; }
-        public bool AddNonCoveredRulesInSteps { set; get; }
 
         public bool AddLog { set; get; }
     }
