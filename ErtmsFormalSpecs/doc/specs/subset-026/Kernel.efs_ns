@@ -1924,6 +1924,11 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="cea57749-93e5-4c04-928a-5b93288cf59b"
 >
+</ReqRef><ReqRef
+ Id="3a49cd7f-bbab-4e5f-a202-49a48db3b367"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="666f5776-b8f8-45ce-8e1e-836917b31108"
+>
 </ReqRef><Comment>Initial state: the on-board equipment proposes to the driver to enter/revalidate the level.</Comment>
 <StateMachine
  Default=""
@@ -12011,7 +12016,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  DefaultValue=""
  VariableMode="Internal"
  X="590"
- Y="590"
+ Y="470"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12152,8 +12157,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- X="120"
- Y="80"
+ X="300"
+ Y="90"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12228,8 +12233,8 @@ When the rear end of the train passes the start of the profiles, the message is 
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- X="10"
- Y="80"
+ X="300"
+ Y="150"
  Width="100"
  Height="50"
  Implemented="TRUE"

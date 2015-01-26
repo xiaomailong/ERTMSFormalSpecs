@@ -5776,13 +5776,83 @@ Kernel.Mode not in [Mode.SH]</Expression>
  Name="No mobile terminals are registered"
  Guid="10050a00-0387-4b75-84ad-ef36b7942386"
 >
-<Comment>If there is no mobile terminal registered, the order to contact the RBC is stored in order to retry the connection establishment later.</Comment>
+<ReqRef
+ Id="1d7b7d76-6567-4512-ab16-84e87808264f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c3ea8cfd-05cf-4baf-8797-7d00867b360e"
+>
+</ReqRef><Comment>If there is no mobile terminal registered, the order to contact the RBC is stored in order to retry the connection establishment later and the driver is requested to enter the contact data.</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="c74d158a-5aad-472c-9837-f0467d1ce3f8"
 >RBCContactOrderToRepeat &lt;- anOrder</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle terminal registration"
+ Guid="40194bc4-0ac8-46b4-bc8c-9597f7d2a6fb"
+>
+<Comment>If there is no mobile terminal registered, the driver is requested to enter the contact data or the connection is established according to previously stored data.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Last known network id is available"
+ Guid="e0aa62f1-3590-4c8a-b763-5b08d22b7432"
+>
+<Comment>The information about the last unknown network is stored on-board =&gt; the terminals are registered with this information.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="fb8b18ba-7882-4bb1-aaf3-68e9c372b9e8"
+>LastKnownNetworkId != &apos;&apos;</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="28e290a4-51be-483e-9fa6-a06cad53f05d"
+>RegisterMobileTerminals( aNetworkId =&gt; LastKnownNetworkId )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="No network id available, data entry not proposed yet"
+ Guid="81a8cb24-f23b-4ddb-b5b2-bca8b0938ead"
+>
+<ReqRef
+ Id="00a1581e-9f11-4254-b27b-c762074e9dde"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="44e8c435-29a3-4fb0-b7cd-c127b8645829"
+>
+</ReqRef><Comment>Otherwise, if the mode is different from TR, the driver is requested to enter the connection data.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5b896537-0cd3-4108-8766-68152d5eea7f"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
+ Guid="6dc5d3cd-fdbd-4642-9f27-ec7398ba1982"
+>Kernel.Mode != Mode.TR</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="43066826-6217-4a25-87ff-a9bce7e4c9b7"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+    Actions =&gt; GetDriverActionsForSoM(),
+    anRBCContactInformation =&gt; GetRBCContactInfoForSoM()
+)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="No network id available, driver provided the contact information"
+ Guid="0471ad84-4efc-42f2-bc4c-cbe64854e8e4"
+>
+<Comment>When the driver enters the connection data, the mobile terminals are registered.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="f233f57b-bf25-46ae-9918-86536bc4985c"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="44217646-714f-49c3-8352-2f030641cc52"
+>RegisterMobileTerminals( aNetworkId =&gt; DMI.MasterDMI().In_RBCContactInformation.SelectedNetwork )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
