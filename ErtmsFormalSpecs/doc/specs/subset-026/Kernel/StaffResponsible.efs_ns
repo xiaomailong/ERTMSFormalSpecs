@@ -410,6 +410,42 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 >StopIfInStaffResponsible &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SendTrackAheadFreeGranted"
+ Guid="76e41108-5778-4d43-b628-365005e4ad80"
+>
+<ReqRef
+ Id="39d3a3da-a2a7-44e3-858d-5549ecf03336"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bb0c89b6-8a40-451e-bf46-538ce1adf594"
+>
+</ReqRef><Comment>Tells the radio unit to send the answer to the track ahead free request.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Send driver response"
+ Guid="c018ceec-4372-41d6-9ae2-9dd886244c4f"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send driver response"
+ Guid="17bf2d28-346b-41c1-9bce-56e8f4c176f7"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="85c5c726-5bab-4899-abae-2af17f06cefa"
+>EURORADIO.CurrentRBCConnection().SendTrackAheadFreeGranted()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -463,6 +499,22 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
  Guid="b71f4b38-c59f-492a-bb9f-f8f1105bb553"
 >
 </ReqRef><Comment>Signals that a Balise with the message &quot;stop if in SR mode&quot; has been read</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="TrackAheadFreeRequested"
+ Guid="76627cd9-eeb0-48e3-a078-3a297347b847"
+>
+<ReqRef
+ Id="39d3a3da-a2a7-44e3-858d-5549ecf03336"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="753571c5-a3f6-4e0e-9f1a-dd7e88d1951f"
+>
+</ReqRef><Comment>Indicates that the driver must enter the &apos;Track ahead free&apos; information.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -519,6 +571,40 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 >EURORADIO.CurrentRBCConnection().SendMARequest(
     aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver
 )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Y="120"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Track ahead free"
+ Guid="f1717e1e-5aa0-4ced-8d48-dfe9912870b5"
+>
+<ReqRef
+ Id="39d3a3da-a2a7-44e3-858d-5549ecf03336"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bd06a4c2-dbd7-4f91-bfd2-9f9eb99afb3f"
+>
+</ReqRef><Comment>Until the driver has answered the track ahead free request received from the RBC, keep the display of the request up.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send request"
+ Guid="92f0d805-e1a4-46da-aed1-5c107935d0e4"
+>
+<Comment>Send the request </Comment>
+<PreConditions>
+<PreCondition
+ Guid="5b98706c-3564-43f5-9a5b-3e026df073d0"
+>TrackAheadFreeRequested</PreCondition><PreCondition
+ Guid="9861b232-c07b-4950-9280-6185b8be54c7"
+>NOT DMI.MasterDMI().In_TrackAheadFree.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="141a635d-b107-44bf-bd3f-b36115ff8ee1"
+>DMI.MasterDMI().In_TrackAheadFree.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

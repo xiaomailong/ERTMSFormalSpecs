@@ -1736,6 +1736,81 @@ THERE_IS X IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 >SessionManagementData.AcknowledgementOfTerminationReceived &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendTrackAheadFreeGranted"
+ Guid="167f10b4-b529-4073-83bc-4df57fffd309"
+>
+<ReqRef
+ Id="39d3a3da-a2a7-44e3-858d-5549ecf03336"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c6b0d226-5b1a-477c-9f80-1a73d75053fb"
+>
+</ReqRef><ReqRef
+ Id="2d050b09-6a5c-4bb4-bf0f-c438a6b5741c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6d2bf641-a024-40f4-80a6-e1fdc672cac9"
+>
+</ReqRef><ReqRef
+ Id="aebab1a5-d7eb-4483-b1fb-4d494d19ece9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="48d5c8c3-a5a5-44f2-b124-049708e5088f"
+>
+</ReqRef><ReqRef
+ Id="73d010ae-6637-4f5a-aa4c-0b6dbe9f3c2a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="30f1f916-3437-462c-87f2-b1cf593fdf44"
+>
+</ReqRef><ReqRef
+ Id="14cdaf65-b7b4-48bd-be26-ab3a6c03f33b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="32465574-b76a-4827-a592-9f5c8345a3b8"
+>
+</ReqRef><ReqRef
+ Id="14a35615-f26c-4b61-a906-f2e64cb6ac19"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="31e044d3-5c9f-4776-a40c-e2280606c35c"
+>
+</ReqRef><ReqRef
+ Id="81e40582-8c1f-4854-b6a4-c389c5b3ff6b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="765d7cfe-1765-409b-aece-3ba32bb647fc"
+>
+</ReqRef><Comment>Sends the track ahead free granted message.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle sending of the message"
+ Guid="143ae29d-9939-4a1a-8d9d-ee90dc49c9de"
+>
+<Comment>If the outgoing message is EMPTY, it has to be initialized and then the corresponding field is filled.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle sending of the message"
+ Guid="08ff094e-8ba2-4537-9dfb-ee1b9b6a2686"
+>
+<PreConditions>
+<PreCondition
+ Guid="fb4f6985-6111-40cd-b353-065cc84a8954"
+>MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6a3a929b-edfd-4e1a-9442-0bbac9df7970"
+>InitializeOutMessage()</Action><Action
+ Guid="2091b658-8d3c-4f9f-8a7c-27a0abad7399"
+>MessageOut.TRACK_AHEAD_FREE_GRANTED &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.TRACK_AHEAD_FREE_GRANTED.Message
+{
+    NID_MESSAGE =&gt; 149,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime(Kernel.DateAndTime.CurrentTime),
+    NID_ENGINE =&gt; Kernel.NidEngine,
+    POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
@@ -8663,6 +8738,11 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="35b0fb55-f322-40c7-b19f-c98132dbe02f"
 >
+</ReqRef><ReqRef
+ Id="7c2005be-ddda-445e-89ca-07171e96ad2a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="733d7266-45ff-4358-93bb-e366e518f3ce"
+>
 </ReqRef><Comment>Handles reception of Train accepted by the RBC.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -8688,6 +8768,31 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
     Orientation =&gt; Default.Orientation.Unknown,
     Timestamp =&gt; Kernel.DateAndTime.Now()
 }</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Track ahead free request"
+ Guid="94458279-c5f8-4ad9-8905-dba6a4e03d8e"
+>
+<ReqRef
+ Id="9f590dd5-5917-4dd1-bc6d-a17f6fff66a8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c6f1dafb-4228-4bbf-9cf0-3dc3b6b2b7ba"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Track ahead free request"
+ Guid="ab7cd9b2-b961-4259-b7d7-183625d8add1"
+>
+<PreConditions>
+<PreCondition
+ Guid="49e1775e-6397-4477-91a0-21ca5473c6f7"
+>Available ( aMessage.TRACK_AHEAD_FREE_REQUEST )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a9e8f466-9aaf-47c1-ae92-7d4f01e53b0c"
+>Kernel.StaffResponsible.TrackAheadFreeRequested &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

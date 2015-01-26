@@ -2135,7 +2135,31 @@
 <Actions>
 <Action
  Guid="a0e16f10-a236-471b-b610-864623cf30dd"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="535124c5-bff1-45d4-9d68-c67528fe40ed"
+>Kernel.StaffResponsible.TrackAheadFreeRequested &lt;- False</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Track ahead is free"
+ Guid="ed651d9e-bba2-4e55-8b5e-f77c384c25f2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Handle the driver input"
+ Guid="e0510277-7b5a-44ef-9b91-6166f78bd33c"
+>
+<PreConditions>
+<PreCondition
+ Guid="826452ea-6279-445f-8a91-c4ced2a5ab76"
+>THIS.TrackAheadIsFree</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="de8de7fb-9cf8-4cb3-8e47-0a6c0cc774dc"
+>Kernel.StaffResponsible.SendTrackAheadFreeGranted()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
