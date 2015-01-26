@@ -691,7 +691,7 @@
     SystemVersion=&gt; Kernel.OperatedSystemVersion
 )</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="55"
+ DeadLine="5,5"
  Guid="c7a718ac-861d-4d94-ab3b-966fceef8778"
 >THERE_IS X IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -795,7 +795,7 @@
 <Expectations>
 <Expectation
  Kind="Continuous"
- DeadLine="4.4"
+ DeadLine="4,4"
  Guid="99ee9222-a9a8-488c-9db2-03ef220465e0"
 >JRU.SendMessagePeriodically(
     jru=&gt; JRU.JRU1
@@ -824,11 +824,11 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1"
+ DeadLine="0,1"
  Guid="58f7e436-6515-41d6-80ba-aecb5fd535b0"
 >THERE_IS X IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1"
+ DeadLine="0,1"
  Guid="98890196-f12a-4d9d-afb6-aaa34bb770d9"
 >JRU.SendMessagePeriodically(
     jru=&gt;JRU.JRU1
@@ -856,7 +856,7 @@
  Guid="0ae3e0ce-8ad4-413f-8d00-812d58b7b84c"
 >FORALL X IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
  Kind="Continuous"
- DeadLine="4.4"
+ DeadLine="4,4"
  Guid="79059aee-71f9-408b-8c7e-87692fce4ade"
 >JRU.SendMessagePeriodically(
     jru=&gt; JRU.JRU1
@@ -881,13 +881,13 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1"
+ DeadLine="0,1"
  Guid="1d302f0e-4f52-46ba-9686-431b30b46c0c"
 >JRU.SendMessagePeriodically(
     jru=&gt;JRU.JRU1
 ) == True</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="1"
+ DeadLine="0,1"
  Guid="23c0a9f2-e52c-4ebd-bdf8-22c33b2c83bd"
 >THERE_IS X IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -1747,7 +1747,7 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="55"
+ DeadLine="5,5"
  Guid="a9be0df9-7386-4fca-b858-34a7bd86632f"
 >FORALL X IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -1887,7 +1887,7 @@
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="55"
+ DeadLine="5,5"
  Guid="4518ced9-9935-4c77-a472-2d0a51335afb"
 >FORALL X IN JRU.JRU1.JRUMessages | X.NTC_SELECTED == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
@@ -1945,7 +1945,7 @@
  Guid="5951b2ff-64af-4400-bab6-06730328bb50"
 >FORALL X IN JRU.JRU1.JRUMessages | X.GENERAL_MESSAGE == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
- DeadLine="55"
+ DeadLine="5,5"
  Guid="8107798e-b611-4dbe-be42-73652758f7e3"
 >FORALL X IN JRU.JRU1.JRUMessages | X.NTC_SELECTED == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
