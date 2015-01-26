@@ -5602,11 +5602,6 @@ CurrentRBCConnection().ContactData.DataState == DataState.Unknown</PreCondition>
  Guid="18a671d3-8767-4b2f-ba96-f58870ebde49"
 >
 </ReqRef><ReqRef
- Id="00910a19-7134-4f24-a20b-6c88aa996ff1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ee1377e4-795f-4619-b479-83b10dd2243f"
->
-</ReqRef><ReqRef
  Id="8f6d9e5c-7082-4ff4-b968-cfe98c4ad1d5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2b96e0c1-e66d-49f5-ad67-1b38cdacab23"
@@ -5621,7 +5616,17 @@ CurrentRBCConnection().ContactData.DataState == DataState.Unknown</PreCondition>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ca675e4f-a03e-4c1d-a96d-99e18b58a73c"
 >
-</ReqRef><Comment>Allows to establish/terminate the communication session with an RBC. If no mobile temrinal is registered, the order is rejected.</Comment>
+</ReqRef><ReqRef
+ Id="573d0d6d-98df-43fa-8065-22f5dae937f3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d48e4cd2-54f9-4787-837f-ee40acc85794"
+>
+</ReqRef><ReqRef
+ Id="cae9ea11-6eb1-49b7-b010-183e0c897e7b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a405afc3-bc82-4c58-b388-1ce500d52660"
+>
+</ReqRef><Comment>Allows to establish/terminate the communication session with an RBC. If no mobile terminal is registered, the order is rejected.</Comment>
 <Parameters>
 <Parameter
  Type="EURORADIO.ContactOrderStruct"
@@ -5641,12 +5646,13 @@ CurrentRBCConnection().ContactData.DataState == DataState.Unknown</PreCondition>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Select RBC"
+ Name="There is at least one mobile terminal registered"
  Guid="0e5a581a-1201-405e-b00a-40ae760b28f2"
 >
+<Comment>If there is at least one mobile terminal registered, the on-board requests to establish the connection.</Comment>
 <PreConditions>
 <PreCondition
- Guid="8df44f1d-8bc6-47ea-9994-67dde1dc64c4"
+ Guid="f76e9e01-3ba5-4eb3-8563-aef8799f02d3"
 >SelectRBCToContact() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
@@ -5658,7 +5664,21 @@ CurrentRBCConnection().ContactData.DataState == DataState.Unknown</PreCondition>
     Id =&gt; anOrder.Id,
     PhoneNumber =&gt; anOrder.PhoneNumber,
     DataState =&gt; Default.DataState.Valid
-}</Action></Actions>
+}</Action><Action
+ Guid="b327d97a-1053-46ca-a7eb-480617cdb643"
+>RBCContactOrderToRepeat &lt;- EMPTY</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="No mobile terminals are registered"
+ Guid="10050a00-0387-4b75-84ad-ef36b7942386"
+>
+<Comment>If there is no mobile terminal registered, the order to contact the RBC is stored in order to retry the connection establishment later.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="c74d158a-5aad-472c-9837-f0467d1ce3f8"
+>RBCContactOrderToRepeat &lt;- anOrder</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5851,6 +5871,16 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d1ee1871-11f4-4b57-9cd4-1613cfc9d0a7"
 >
+</ReqRef><ReqRef
+ Id="38c25256-da47-4c77-a112-1ee0d724e7f2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="901dd993-3bcc-434d-8e46-9c30a0f49483"
+>
+</ReqRef><ReqRef
+ Id="cae9ea11-6eb1-49b7-b010-183e0c897e7b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7dd7023d-3484-40f2-9f7a-9fec7e06f1b2"
+>
 </ReqRef><Comment>Initiates the contact with the RBC, as requested by ContactOption.</Comment>
 <Rules>
 <Rule
@@ -6030,8 +6060,8 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="440"
- Y="780"
+ X="330"
+ Y="840"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6135,6 +6165,23 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
+ Name="No terminal registered"
+ Guid="e8077b47-cddf-451a-967a-543bb5984da0"
+>
+<ReqRef
+ Id="00910a19-7134-4f24-a20b-6c88aa996ff1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3e39c131-4847-4cb8-b888-25c5778a78ac"
+>
+</ReqRef><Comment>If no mobile terminal is registered, the order from the trackside is ignored.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="74c2dd30-5ea7-4f91-8d3a-52d704636cac"
+>SelectRBCToContact() == EMPTY</PreCondition></PreConditions>
+<Actions>
+</Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Contact information provided by the packet"
  Guid="a1967dcf-c7b2-477d-a589-c2dc4de30508"
@@ -6304,6 +6351,11 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  Id="fc32fb41-1c57-4753-a923-fe676aabf35d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9d437a7b-af72-4620-a9df-d2ca2686e1cb"
+>
+</ReqRef><ReqRef
+ Id="573d0d6d-98df-43fa-8065-22f5dae937f3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0bbe939d-9ee9-4f15-8ddf-731a12b94c96"
 >
 </ReqRef><Comment>Registers the mobile terminals to a radio network.</Comment>
 <Parameters>
@@ -8330,7 +8382,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule></Rules>
 </Procedure><Procedure
  X="440"
- Y="800"
+ Y="780"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8796,7 +8848,7 @@ NOT
 </Rule></Rules>
 </Procedure><Procedure
  X="330"
- Y="740"
+ Y="720"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8837,8 +8889,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="Default.BaseTypes.Time"
  DefaultValue="15.0"
  VariableMode="Constant"
- X="560"
- Y="370"
+ X="1000"
+ Y="310"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8855,8 +8907,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="Integer"
  DefaultValue="3"
  VariableMode="Constant"
- X="440"
- Y="130"
+ X="1000"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8919,8 +8971,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="String"
  DefaultValue="&apos;&apos;"
  VariableMode="Internal"
- X="440"
- Y="250"
+ X="680"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8947,8 +8999,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="String"
  DefaultValue="&apos;&apos;"
  VariableMode="Internal"
- X="560"
- Y="250"
+ X="850"
+ Y="540"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -9048,8 +9100,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="String"
  DefaultValue="&apos;&apos;"
  VariableMode="Internal"
- X="320"
- Y="250"
+ X="680"
+ Y="430"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9095,7 +9147,7 @@ But at the end of the cycle the conditions required for sending of position repo
  DefaultValue="300.0"
  VariableMode="Constant"
  X="1000"
- Y="390"
+ Y="430"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9117,8 +9169,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="Default.BaseTypes.Time"
  DefaultValue="45.0"
  VariableMode="Constant"
- X="320"
- Y="130"
+ X="850"
+ Y="430"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9154,12 +9206,30 @@ But at the end of the cycle the conditions required for sending of position repo
  Guid="c900db09-2078-4202-9b78-6a61d34165d9"
 >
 </ReqRef><Comment>Stores the messages sent by the Accepting RBC before it becomes the supervising RBC.</Comment>
+</Variable><Variable
+ Type="ContactOrderStruct"
+ DefaultValue="EMPTY"
+ VariableMode="Internal"
+ X="140"
+ Y="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="RBCContactOrderToRepeat"
+ Guid="d890477f-424a-4de1-a3d6-b794a1bde12c"
+>
+<ReqRef
+ Id="573d0d6d-98df-43fa-8065-22f5dae937f3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="88e78b40-3606-492a-9021-fd45199aaf6a"
+>
+</ReqRef><Comment>If the first attempt to contact the RBC failed, the corresponding contact order is stored in order to retry contacting the RBC.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
  Priority="UpdateOUT"
- X="650"
- Y="800"
+ X="680"
+ Y="730"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9190,6 +9260,38 @@ But at the end of the cycle the conditions required for sending of position repo
 <Action
  Guid="02baeff3-ba76-4e24-b9bf-d47379e408b5"
 >DMI.MasterDMI().Out_SafeRadioConnectionIndication.Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ X="850"
+ Y="730"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Repeat contact RBC request"
+ Guid="3b4757ee-054d-4c37-b5d2-f437b162bd07"
+>
+<ReqRef
+ Id="573d0d6d-98df-43fa-8065-22f5dae937f3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="822b7fa6-8031-42cf-a46c-ec5963cfcd45"
+>
+</ReqRef><Comment>If an order to contact the RBC by on-board was received but the connection couldn&apos;t be established, the request is repeated again.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="An order to contact the RBC is stored"
+ Guid="edb33073-756f-48cb-9763-0e33ca5f0723"
+>
+<PreConditions>
+<PreCondition
+ Guid="61a5462f-dc93-45db-bd21-2c092de05ca3"
+>RBCContactOrderToRepeat != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b5fbfee4-ca84-4128-9ab3-2edd2f4447ef"
+>ContactRBC( anOrder =&gt; RBCContactOrderToRepeat )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

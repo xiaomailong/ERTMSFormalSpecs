@@ -2241,6 +2241,11 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="672c32d1-9580-474c-b93c-5a3a2b311fec"
 >
+</ReqRef><ReqRef
+ Id="573d0d6d-98df-43fa-8065-22f5dae937f3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1c15e8c3-4504-4e9d-a33e-7732974e29e8"
+>
 </ReqRef><Comment>If the Radio Network id has changed, the RBC connection data state is set to uknown and the new radio terminal is registered.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -11765,6 +11770,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
+ X="590"
+ Y="590"
  Width="100"
  Height="50"
  Name="SafetyCriticalFaultDetected"
@@ -11785,7 +11792,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 <Rules>
 <Rule
  Priority="UpdateINTERNAL"
- X="30"
+ X="10"
+ Y="10"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -11810,7 +11818,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
- X="360"
+ X="340"
+ Y="10"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -11837,7 +11846,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
- X="250"
+ X="450"
+ Y="10"
  Width="100"
  Height="50"
  Name="Clean Up"
@@ -11864,7 +11874,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateOUT"
- X="140"
+ X="120"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -11890,6 +11901,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ X="120"
+ Y="80"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -11920,6 +11933,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ X="230"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -11962,6 +11977,8 @@ When the rear end of the train passes the start of the profiles, the message is 
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ X="10"
+ Y="80"
  Width="100"
  Height="50"
  Implemented="TRUE"
