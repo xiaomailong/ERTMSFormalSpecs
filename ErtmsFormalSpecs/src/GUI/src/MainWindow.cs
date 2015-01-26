@@ -1752,7 +1752,7 @@ namespace GUI
 
         private void showSpecificationViewToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            GenericWindowHandling<SpecificationView.Window>.AddOrShow(this, SpecificationWindow, DockAreas.DockLeft);
+            AddChildWindow(new SpecificationView.Window(), DockAreas.DockLeft);
         }
 
         private void showModelViewToolStripMenuItem_Click_1(object sender, EventArgs e)
