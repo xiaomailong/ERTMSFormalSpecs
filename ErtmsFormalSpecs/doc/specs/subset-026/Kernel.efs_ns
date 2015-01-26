@@ -104,7 +104,7 @@
 <Enum
  Default="SupervisionStatus.Normal"
  X="600"
- Y="30"
+ Y="270"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -459,7 +459,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 </StructureElement></Structure><Structure
  Default=""
- Y="60"
+ X="970"
+ Y="400"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -551,7 +552,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </ReqRef></Collection><Collection
  TypeName="SafetyCriticalFaultStruct"
  Default="[]"
- Y="120"
+ X="970"
+ Y="470"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10432,7 +10434,8 @@ INITIAL_VALUE EmergencyStop
 </Function><Function
  Type="Boolean"
  Default=""
- Y="180"
+ X="970"
+ Y="530"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -11517,7 +11520,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- Y="240"
+ X="970"
+ Y="590"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -11898,7 +11902,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Type="Default.BaseTypes.Time"
  DefaultValue="0.34"
  VariableMode="Internal"
- X="700"
+ X="660"
  Y="470"
  Width="100"
  Height="50"
@@ -12015,7 +12019,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Type="SafetyCriticalFaultsCol"
  DefaultValue=""
  VariableMode="Internal"
- X="590"
+ X="800"
  Y="470"
  Width="100"
  Height="50"
@@ -12157,8 +12161,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- X="300"
- Y="90"
+ X="560"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12233,8 +12237,8 @@ When the rear end of the train passes the start of the profiles, the message is 
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- X="300"
- Y="150"
+ X="670"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
