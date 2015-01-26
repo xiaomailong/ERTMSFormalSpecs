@@ -80,13 +80,13 @@ namespace ERTMSFormalSpecs
                 GUI.Options.Options.setSettings(EFSSystem.INSTANCE);
 
                 GUI.MainWindow window = new GUI.MainWindow();
+                Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 
                 {
                     // TRICKY SECTION
                     // This thread is mandatory otherwise WCF does not create a new thread to handle the service requests. 
                     // Since the call to Cycle is blocking, creating such threads is mandatory
-                    Thread thread = new Thread((ThreadStart)HostEFSService);
-                    thread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+                    Thread thread = Utils.ThreadUtil.CreateThread((ThreadStart)HostEFSService);
                     thread.Start();
                 }
 

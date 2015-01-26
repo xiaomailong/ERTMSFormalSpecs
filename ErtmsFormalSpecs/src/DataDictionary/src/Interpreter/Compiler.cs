@@ -159,8 +159,7 @@ namespace DataDictionary.Interpreter
             EFSSystem = system;
 
             DoCompile = true;
-            CompilerThread = new Thread(CompileContinuously);
-            CompilerThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+            CompilerThread = Utils.ThreadUtil.CreateThread(CompileContinuously);
             CompilerThread.Start();
         }
 

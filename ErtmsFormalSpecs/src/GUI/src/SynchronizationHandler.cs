@@ -98,8 +98,7 @@ namespace GUI
             : base(cycleTime)
         {
             Instance = instance;
-            Thread = new Thread(DoSynchronize);
-            Thread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+            Thread = Utils.ThreadUtil.CreateThread(DoSynchronize);
             Thread.Start(Instance);
         }
 
