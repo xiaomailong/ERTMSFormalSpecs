@@ -119,6 +119,7 @@ namespace DataDictionary
             History.UpdateBlame();
 
             CheckParentRelationship = true;
+            CacheFunctions = true;
 
             Generated.ControllersManager.BaseModelElementController.Listeners.Insert(0, new BaseModelElementChangeListener(this));
         }
@@ -1231,6 +1232,11 @@ namespace DataDictionary
         /// When animating the model, verify the correctness of the 'parent' relation for each model element
         /// </summary>
         public bool CheckParentRelationship { get; set; }
+
+        /// <summary>
+        /// When animating the model, cache the function results
+        /// </summary>
+        public bool CacheFunctions { get; set; }
 
         /// <summary>
         /// Stops the system

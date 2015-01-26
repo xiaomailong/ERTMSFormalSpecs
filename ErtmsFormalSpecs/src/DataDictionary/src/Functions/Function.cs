@@ -1055,7 +1055,10 @@ namespace DataDictionary.Functions
                     CachedResult = new CurryCache(this);
                 }
 
-                retVal = CachedResult.GetValue(actuals);
+                if (EFSSystem.CacheFunctions)
+                {
+                    retVal = CachedResult.GetValue(actuals);
+                }
             }
 
             if (retVal == null)
