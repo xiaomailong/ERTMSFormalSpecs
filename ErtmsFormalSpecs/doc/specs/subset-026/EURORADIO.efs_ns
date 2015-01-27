@@ -5862,6 +5862,11 @@ CurrentRBCConnection().ContactData.DataState == DataState.Unknown</PreCondition>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ae8519af-3c8e-4135-8b65-54a072f5fe25"
 >
+</ReqRef><ReqRef
+ Id="72a514b1-acd2-473d-a39b-87d8f86f1624"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f45a4e2d-0cc3-4c93-88ad-1e1262803e9a"
+>
 </ReqRef><Comment>Is true if the on-board should establish a communication session.</Comment>
 <Cases>
 <Case
@@ -5870,7 +5875,7 @@ CurrentRBCConnection().ContactData.DataState == DataState.Unknown</PreCondition>
 >
 <Expression>Kernel.ActiveFunctions.ManageCommunicationSession()
   AND  
-Kernel.Mode not in [Mode.SH]</Expression>
+Kernel.Mode not in [Mode.SH, Mode.PS]</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -8970,6 +8975,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Track ahead free request"
  Guid="94458279-c5f8-4ad9-8905-dba6a4e03d8e"
 >
@@ -8978,9 +8984,26 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c6f1dafb-4228-4bbf-9cf0-3dc3b6b2b7ba"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><ReqRef
+ Id="39d3a3da-a2a7-44e3-858d-5549ecf03336"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="723fe0d6-1315-48b0-b567-e63d38f4b7b4"
+>
+</ReqRef><ReqRef
+ Id="d791550a-a843-44fe-8bf3-174bad2c8112"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a323a74e-0b84-4ac3-9ccc-2adc8bbae466"
+>
+</ReqRef><ReqRef
+ Id="2a9d3fd0-c8d7-4772-96d9-a87b680e4435"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="423a9267-acf6-41ab-9f8a-55141ab330ce"
+>
+</ReqRef><Comment>Handles reception of Track ahead free request.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Track ahead free request"
  Guid="ab7cd9b2-b961-4259-b7d7-183625d8add1"
 >
@@ -8991,7 +9014,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Actions>
 <Action
  Guid="a9e8f466-9aaf-47c1-ae92-7d4f01e53b0c"
->Kernel.StaffResponsible.TrackAheadFreeRequested &lt;- True</Action></Actions>
+>Kernel.TrackDescription.TrackAheadFreeRequested &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -9358,6 +9381,11 @@ NOT
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0d247151-d406-407d-96e3-60218521cc09"
 >
+</ReqRef><ReqRef
+ Id="8b8b9125-ec61-4539-8be7-909451a4860a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="432415ec-b3ca-4bf6-a687-30b1d58d8a18"
+>
 </ReqRef><Comment>Handles the reception of RBC transition order.</Comment>
 <Parameters>
 <Parameter
@@ -9422,7 +9450,7 @@ NOT
 }</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
- Name="SH mode"
+ Name="SH/PS mode"
  Guid="5d77f218-2ec3-4740-94e8-d43f7e084f75"
 >
 <ReqRef
@@ -9430,11 +9458,16 @@ NOT
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5b1c3845-5822-44a4-b775-fc69302562f2"
 >
+</ReqRef><ReqRef
+ Id="8b8b9125-ec61-4539-8be7-909451a4860a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eb84192b-7a41-4025-8c52-f20f69b2bbdf"
+>
 </ReqRef><Comment>In SH mode, only store the ID and phone number.</Comment>
 <PreConditions>
 <PreCondition
  Guid="3ef8acf1-bfab-4044-95fc-65e2507daa13"
->Kernel.Mode == Default.Mode.SH</PreCondition></PreConditions>
+>Kernel.Mode in [Mode.SH, Mode.PS]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c59b3f0b-833a-4b7f-aa43-c4ecf057eddb"

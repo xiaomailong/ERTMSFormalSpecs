@@ -2139,12 +2139,58 @@ The ERTMS/ETCS on-board equipment shall perform the Train Position function; in 
  version="3.0.0"
  Name=""
  Guid="c1074c38-484b-4b2e-97f9-d0f96501d95b"
->The driver is responsible for:
-	a) Remaining inside the shunting area defined by a procedure or an external system outside ERTMS/ETCS (also when the shunting area is protected by balises)
-	b) Train/engine movements and shunting operations<RequirementSets>
+>The driver is responsible for:<Sub>
+<Paragraph
+ id="4.4.8.3.2.a"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="637936eb-fd9d-4e86-98f9-87073e04b9e6"
+>Remaining inside the shunting area defined by a procedure or an external system outside ERTMS/ETCS (also when the shunting area is protected by balises)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="50d19d4f-a4db-43ad-8c69-6e99b2277f28"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="29e9830d-418e-4204-a6e3-a1446a4a96af"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.4.8.3.2.b"
+ type="NOTE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="263019f4-6284-4a39-97b8-54c390f95393"
+>Train/engine movements and shunting operations<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="46afe5d2-2d4e-4432-8fbb-ee814817d688"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="446f5682-ee3b-4f99-b824-773a09f8974f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="09cd4bfc-c581-46ba-a326-80cb61f3e14f"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="823a73e9-4816-45ed-b580-476f51396f4d"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -2152,6 +2198,10 @@ The ERTMS/ETCS on-board equipment shall perform the Train Position function; in 
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="bf6cc54c-45b1-40d8-ae0b-c373c28f9fbe"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="8e31c1bb-b43e-467c-8fc8-855083837fa4"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -3847,7 +3897,7 @@ Used in level 0.<RequirementSets>
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="d791550a-a843-44fe-8bf3-174bad2c8112"
@@ -5075,7 +5125,7 @@ Used in level 1, 2 and 3.<RequirementSets>
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="3eba9eba-fff7-4936-a03c-c8be978fa08f"
@@ -6508,7 +6558,7 @@ Level 1, 2, 3.<RequirementSets>
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="2a9d3fd0-c8d7-4772-96d9-a87b680e4435"
@@ -6648,7 +6698,7 @@ Level 1, 2, 3.<RequirementSets>
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="b29f816b-b653-4467-96c2-5640b8b6a52a"
@@ -6692,7 +6742,7 @@ Level 1, 2, 3.<RequirementSets>
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="1e609eb0-3130-4af3-9c53-e68391c9fdd1"
@@ -7018,7 +7068,7 @@ Level 1, 2, 3.<RequirementSets>
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="72a514b1-acd2-473d-a39b-87d8f86f1624"
@@ -7039,11 +7089,11 @@ Level 1, 2, 3.<RequirementSets>
  bl="3.2.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="8b8b9125-ec61-4539-8be7-909451a4860a"
->When in Passive Shunting mode, the ERTMS/ETCS on-board shall not manage RBCRBC hand-over, except for storing the RBC ID/phone number information given at the RBC/RBC border.<RequirementSets>
+>When in Passive Shunting mode, the ERTMS/ETCS on-board shall not manage RBC-RBC hand-over, except for storing the RBC ID/phone number information given at the RBC/RBC border.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="cd0f3e23-5549-42cc-a92d-963ec8c0f311"

@@ -197,7 +197,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="61042f83-ef00-4d83-a1d7-6e7bd80bad74"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment>The Driver ID with its datastate.</Comment>
+<StructureElement
  TypeName="String"
  Default="&apos;12345&apos;"
  Mode="Internal"
@@ -429,7 +430,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="30ca3f74-cfc2-4e19-9e58-f3daaa115444"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment>A set of country and Balise group identifiers that uniquely designate one BG.</Comment>
+<StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
  Mode="Internal"
@@ -10399,6 +10401,7 @@ INITIAL_VALUE EmergencyStop
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="MinEmergencyStopDistance"
  Guid="760d41cd-34f8-4a83-8e8d-d49e57d0c208"
 >
@@ -11957,9 +11960,11 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Width="100"
  Height="50"
  Pinned="TRUE"
+ NeedsRequirement="FALSE"
  Name="HandleModeChange"
  Guid="478d6d56-8c92-4b72-92ef-e4fe79d4ceda"
 >
+<Comment>The current procedure that the on-board is handling.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="False"
