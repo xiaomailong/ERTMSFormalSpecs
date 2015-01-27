@@ -878,6 +878,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7b8139c8-9858-4f97-9ad4-60549457b180"
 >
+</ReqRef><ReqRef
+ Id="4443416b-4b5b-4896-a845-222b762d3950"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="715b48c3-af70-479c-9314-7eaf9aa4bab2"
+>
 </ReqRef><Comment>Sends the MA request message.</Comment>
 <Parameters>
 <Parameter
@@ -4789,6 +4794,8 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 <Comment>The data state of the system version.</Comment>
 </StructureElement></Structure><Structure
  Default=""
+ X="680"
+ Y="390"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9786,8 +9793,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="Default.BaseTypes.Time"
  DefaultValue="15.0"
  VariableMode="Constant"
- X="1000"
- Y="310"
+ X="1090"
+ Y="430"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9804,7 +9811,7 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="Integer"
  DefaultValue="3"
  VariableMode="Constant"
- X="1000"
+ X="970"
  Y="540"
  Width="100"
  Height="50"
@@ -9868,8 +9875,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="String"
  DefaultValue="&apos;&apos;"
  VariableMode="Internal"
- X="680"
- Y="540"
+ X="970"
+ Y="310"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9997,8 +10004,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="String"
  DefaultValue="&apos;&apos;"
  VariableMode="Internal"
- X="680"
- Y="430"
+ X="1090"
+ Y="310"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10043,7 +10050,7 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="Default.BaseTypes.Time"
  DefaultValue="300.0"
  VariableMode="Constant"
- X="1000"
+ X="970"
  Y="430"
  Width="100"
  Height="50"
@@ -10125,7 +10132,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="MARequestParametersStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
- Y="60"
+ X="680"
+ Y="490"
  Width="100"
  Height="50"
  Implemented="TRUE"
