@@ -182,63 +182,73 @@ namespace Reports.ERTMSAcademy
             retVal.Info.Author = "ERTMS Solutions";
             retVal.Info.Subject = "ERTMS Academy report";
 
-            List<Activity> ModelActivity = new List<Activity>();
-            List<Activity> TestActivity = new List<Activity>();
-            foreach (Commit commit in Repository.Commits)
+            ERTMSAcademyReport report = new ERTMSAcademyReport(retVal);
+
+            // Make sure the repository is available
+            if (Repository == null)
             {
-                TimeSpan span = System.DateTime.Now - commit.Author.When;
-                if (span.Days > SinceHowManyDays)
+                report.AddSubParagraph("Configuration");
+                report.AddParagraph("Invalid git configuration : cannot access git repository");
+                report.CloseSubParagraph();
+            }
+            else
+            {
+                List<Activity> ModelActivity = new List<Activity>();
+                List<Activity> TestActivity = new List<Activity>();
+                foreach (Commit commit in Repository.Commits)
                 {
-                    break;
-                }
-
-                if (commit.Author.Email == GitLogin)
-                {
-                    if (commit.Message.Contains("EA_MODEL") || commit.Message.Contains("EA_TEST"))
+                    TimeSpan span = System.DateTime.Now - commit.Author.When;
+                    if (span.Days > SinceHowManyDays)
                     {
-                        Activity activity = new Activity(commit.Author.Name, commit.Author.Email, commit.Author.When, commit.Message);
-                        foreach (Commit other in commit.Parents)
-                        {
-                            TreeChanges changes = Repository.Diff.Compare(other.Tree, commit.Tree);
-                            foreach (TreeEntryChanges change in changes.Modified)
-                            {
-                                string path = Path.GetFileName(change.Path);
-                                activity.Statistics.Add(new Statistics(path, change.LinesAdded, change.LinesDeleted));
-                            }
-                        }
+                        break;
+                    }
 
-                        if (commit.Message.Contains("EA_MODEL"))
+                    if (commit.Author.Email == GitLogin)
+                    {
+                        if (commit.Message.Contains("EA_MODEL") || commit.Message.Contains("EA_TEST"))
                         {
-                            ModelActivity.Add(activity);
-                        }
-                        else
-                        {
-                            TestActivity.Add(activity);
+                            Activity activity = new Activity(commit.Author.Name, commit.Author.Email, commit.Author.When, commit.Message);
+                            foreach (Commit other in commit.Parents)
+                            {
+                                TreeChanges changes = Repository.Diff.Compare(other.Tree, commit.Tree);
+                                foreach (TreeEntryChanges change in changes.Modified)
+                                {
+                                    string path = Path.GetFileName(change.Path);
+                                    activity.Statistics.Add(new Statistics(path, change.LinesAdded, change.LinesDeleted));
+                                }
+                            }
+
+                            if (commit.Message.Contains("EA_MODEL"))
+                            {
+                                ModelActivity.Add(activity);
+                            }
+                            else
+                            {
+                                TestActivity.Add(activity);
+                            }
                         }
                     }
                 }
-            }
 
-            // Create the report
-
-            ERTMSAcademyReport report = new ERTMSAcademyReport(retVal);
-            if (ModelActivity.Count > 0)
-            {
-                report.AddSubParagraph("Implementation activity by " + User);
-
-                foreach (Activity activity in ModelActivity)
+                // Create the report
+                if (ModelActivity.Count > 0)
                 {
-                    reportActivity(report, activity);
+                    report.AddSubParagraph("Implementation activity by " + User);
+
+                    foreach (Activity activity in ModelActivity)
+                    {
+                        reportActivity(report, activity);
+                    }
                 }
-            }
 
-            if (TestActivity.Count > 0)
-            {
-                report.AddSubParagraph("Testing activity by " + User);
-
-                foreach (Activity activity in TestActivity)
+                if (TestActivity.Count > 0)
                 {
-                    reportActivity(report, activity);
+                    report.AddSubParagraph("Testing activity by " + User);
+
+                    foreach (Activity activity in TestActivity)
+                    {
+                        reportActivity(report, activity);
+                    }
                 }
             }
 
