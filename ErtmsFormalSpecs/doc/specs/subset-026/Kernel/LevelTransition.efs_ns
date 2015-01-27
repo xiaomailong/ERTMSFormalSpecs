@@ -1264,7 +1264,9 @@ Packet.Sequence1</Action></Actions>
   AND  
 LevelTransitionOrder.Distance &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Nom)</PreCondition><PreCondition
  Guid="a793711a-f9af-4251-b86a-906d92f0b23f"
->Kernel.Level.Value != LevelTransitionToProcess.TRLevel</PreCondition><PreCondition
+>Available(LevelTransitionToProcess)
+  AND  
+Kernel.Level.Value != LevelTransitionToProcess.TRLevel</PreCondition><PreCondition
  Guid="25250332-c8c8-4785-908c-5901c81268aa"
 >Mode not in [Mode.SH, Mode.PS]</PreCondition></PreConditions>
 <Actions>
@@ -1324,7 +1326,9 @@ LevelTransitionOrder.Distance &lt;= TrainPosition.FrontEndPosition(DistanceInter
  Guid="119f3451-7abd-48fd-ae98-5d685a2d6454"
 >LevelTransitionOrder != EMPTY</PreCondition><PreCondition
  Guid="ba1fa256-51bd-488d-80b9-bedccd862de9"
->AcknowledgementRequiredForLT( anLTO =&gt; LevelTransitionToProcess )</PreCondition><PreCondition
+>Available(LevelTransitionToProcess)
+  AND  
+AcknowledgementRequiredForLT( anLTO =&gt; LevelTransitionToProcess )</PreCondition><PreCondition
  Guid="70792393-b2da-4f9c-b343-ffd26b6ede9b"
 >Kernel.Mode not in [Mode.NL, Mode.SH, Mode.PS]</PreCondition><PreCondition
  Guid="0f38d48a-8431-4fc2-8a57-2fed7286c19c"
