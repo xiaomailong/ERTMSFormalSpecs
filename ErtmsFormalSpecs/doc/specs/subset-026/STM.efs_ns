@@ -30,7 +30,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d1064f85-4d4a-4cab-ae87-44785ec1d081"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment>Represents a speed given by STM and indicates if it has to be supervised.</Comment>
+<StructureElement
  TypeName="Default.BaseTypes.Speed"
  Default=""
  Mode="Incoming"
@@ -39,6 +40,7 @@
  Name="Speed"
  Guid="e1153308-d937-4877-b878-7df5ee254273"
 >
+<Comment>The STM speed.</Comment>
 </StructureElement><StructureElement
  TypeName="Boolean"
  Default="Boolean.False"
@@ -48,6 +50,7 @@
  Name="HasToBeSupervised"
  Guid="0a399fa6-d5e6-4c7e-9dde-373648eb8915"
 >
+<Comment>Indicates if the STM speed has to be supervised.</Comment>
 </StructureElement></Structure></Structures>
 <Functions>
 <Function
@@ -76,7 +79,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="090587f1-4afa-451d-b073-2669807f9f85"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Provides the STM max speed.</Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"
@@ -125,7 +129,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ef4a2478-bf06-454e-a72b-1f8842146333"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Provides the STM system speed restrictions.</Comment>
+<Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
  Name="Distance"

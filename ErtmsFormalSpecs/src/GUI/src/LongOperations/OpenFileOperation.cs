@@ -53,6 +53,11 @@ namespace GUI.LongOperations
         private bool UpdateGuid { get; set; }
 
         /// <summary>
+        /// Indicates that files should be locked
+        /// </summary>
+        public bool PleaseLockFiles { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="fileName">The file path of the file to load</param>
@@ -72,6 +77,7 @@ namespace GUI.LongOperations
                 ErrorsDuringLoad = null;
             }
             UpdateGuid = updateGuid;
+            PleaseLockFiles = DataDictionary.Util.PleaseLockFiles;
         }
 
         /// <summary>
@@ -80,7 +86,7 @@ namespace GUI.LongOperations
         /// <param name="arg"></param>
         public override void ExecuteWork()
         {
-            Dictionary = DataDictionary.Util.load(FileName, System, DataDictionary.Util.PleaseLockFiles, ErrorsDuringLoad, UpdateGuid);
+            Dictionary = DataDictionary.Util.load(FileName, System, PleaseLockFiles, ErrorsDuringLoad, UpdateGuid);
         }
 
         /// <summary>

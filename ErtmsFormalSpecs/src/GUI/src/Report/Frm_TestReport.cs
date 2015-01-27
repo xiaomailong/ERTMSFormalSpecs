@@ -58,8 +58,8 @@ namespace GUI.Report
             reportHandler = new TestsCoverageReportHandler(aDictionary);
             reportHandler.Dictionary = aDictionary;
             InitializeCheckBoxes(1);
-            CB_Log.Checked = false;
-            CB_Log.Enabled = false;
+            CB_ActivatedRulesInSteps.Checked = false;
+            CB_ActivatedRulesInSteps.Enabled = false;
             TxtB_Path.Text = reportHandler.FileName;
         }
 
@@ -120,7 +120,6 @@ namespace GUI.Report
                 System.Collections.ArrayList retVal = new System.Collections.ArrayList();
                 retVal.AddRange(this.Controls);
                 retVal.AddRange(this.GrB_Filters.Controls);
-                retVal.AddRange(this.GrB_Statistics.Controls);
                 return retVal;
             }
         }
@@ -208,7 +207,14 @@ namespace GUI.Report
                     Int32.TryParse(tags[1], out cbLevel);
                     if ((cbLevel == level && cbProperty.Equals("STAT")) || (cbLevel == level + 1 && cbProperty.Equals("FILTER")))
                     {
-                        cb.Enabled = true;
+                        if ((cb.Name != "CB_ActivatedRulesInSteps" &&
+                             cb.Name != "CB_Log" ) ||
+                            (reportHandler.Frame != null ||
+                             reportHandler.SubSequence != null ||
+                             reportHandler.TestCase != null))
+                        {
+                            cb.Enabled = true;
+                        }
                     }
                 }
             }
@@ -251,21 +257,15 @@ namespace GUI.Report
 
             reportHandler.AddFrames = CB_Frames.Checked;
             reportHandler.AddActivatedRulesInFrames = CB_ActivatedRulesInFrames.Checked;
-            reportHandler.AddNonCoveredRulesInFrames = CB_NonCoveredRulesInFrames.Checked;
 
             reportHandler.AddSubSequences = CB_SubSequences.Checked;
             reportHandler.AddActivatedRulesInSubSequences = CB_ActivatedRulesInSubSequences.Checked;
-            reportHandler.AddNonCoveredRulesInSubSequences = CB_NonCoveredRulesInSubSequences.Checked;
 
             reportHandler.AddTestCases = CB_TestCases.Checked;
             reportHandler.AddActivatedRulesInTestCases = CB_ActivatedRulesInTestCases.Checked;
-            reportHandler.AddNonCoveredRulesInTestCases = CB_NonCoveredRulesInTestCases.Checked;
 
             reportHandler.AddSteps = CB_Steps.Checked;
             reportHandler.AddActivatedRulesInSteps = CB_ActivatedRulesInSteps.Checked;
-            reportHandler.AddNonCoveredRulesInSteps = CB_NonCoveredRulesInSteps.Checked;
-
-            reportHandler.AddLog = CB_Log.Checked;
 
             Hide();
 

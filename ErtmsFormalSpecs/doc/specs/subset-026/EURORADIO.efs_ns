@@ -363,6 +363,43 @@
     Sequence1 =&gt; EMPTY,
     T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime)
 }</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Include error report"
+ Guid="d9f908d5-de87-4bab-91ce-da2c66953c63"
+>
+<ReqRef
+ Id="9e2c2d2b-5db5-4ed7-ac2d-0ff95a23e76f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ddac13ec-1b48-4d26-9286-afd5f82d7e7f"
+>
+</ReqRef><Comment>If a safety critical fault was detected in this cycle, send it to the RBC</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Add packet 4"
+ Guid="083c5a7e-665e-4129-b81b-334094135d71"
+>
+<PreConditions>
+<PreCondition
+ Guid="6ae49c95-7d4b-42c1-8330-6a69edd591a3"
+>THERE_IS Fault IN Kernel.SafetyCriticalFaults | Fault.Timestamp == Kernel.DateAndTime.Now()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e07dcf11-0ce2-47e9-879e-4b160dbf579e"
+>INSERT Messages.MESSAGE.TRAIN_TO_TRACK.TRAIN_POSITION_REPORT.SubStructure1{
+    ERROR_REPORTING =&gt; Messages.PACKET.TRAIN_TO_TRACK.ERROR_REPORTING.Message{
+        NID_PACKET =&gt; 4,
+        L_PACKET =&gt; 0,
+        M_ERROR =&gt; (FIRST X IN Kernel.SafetyCriticalFaults | X.Timestamp == Kernel.DateAndTime.Now()).Fault
+    }
+}
+ IN MessageOut.TRAIN_POSITION_REPORT.Sequence1</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="The message cannot be sent"
@@ -840,6 +877,11 @@
  Id="09bd805d-47dc-47e1-9489-e5fb2e24f885"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7b8139c8-9858-4f97-9ad4-60549457b180"
+>
+</ReqRef><ReqRef
+ Id="4443416b-4b5b-4896-a845-222b762d3950"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="715b48c3-af70-479c-9314-7eaf9aa4bab2"
 >
 </ReqRef><Comment>Sends the MA request message.</Comment>
 <Parameters>
@@ -1697,6 +1739,81 @@ THERE_IS X IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <Action
  Guid="7073da78-58f0-4a39-ae89-49ca19eb62dd"
 >SessionManagementData.AcknowledgementOfTerminationReceived &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendTrackAheadFreeGranted"
+ Guid="167f10b4-b529-4073-83bc-4df57fffd309"
+>
+<ReqRef
+ Id="39d3a3da-a2a7-44e3-858d-5549ecf03336"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c6b0d226-5b1a-477c-9f80-1a73d75053fb"
+>
+</ReqRef><ReqRef
+ Id="2d050b09-6a5c-4bb4-bf0f-c438a6b5741c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6d2bf641-a024-40f4-80a6-e1fdc672cac9"
+>
+</ReqRef><ReqRef
+ Id="aebab1a5-d7eb-4483-b1fb-4d494d19ece9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="48d5c8c3-a5a5-44f2-b124-049708e5088f"
+>
+</ReqRef><ReqRef
+ Id="73d010ae-6637-4f5a-aa4c-0b6dbe9f3c2a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="30f1f916-3437-462c-87f2-b1cf593fdf44"
+>
+</ReqRef><ReqRef
+ Id="14cdaf65-b7b4-48bd-be26-ab3a6c03f33b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="32465574-b76a-4827-a592-9f5c8345a3b8"
+>
+</ReqRef><ReqRef
+ Id="14a35615-f26c-4b61-a906-f2e64cb6ac19"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="31e044d3-5c9f-4776-a40c-e2280606c35c"
+>
+</ReqRef><ReqRef
+ Id="81e40582-8c1f-4854-b6a4-c389c5b3ff6b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="765d7cfe-1765-409b-aece-3ba32bb647fc"
+>
+</ReqRef><Comment>Sends the track ahead free granted message.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle sending of the message"
+ Guid="143ae29d-9939-4a1a-8d9d-ee90dc49c9de"
+>
+<Comment>If the outgoing message is EMPTY, it has to be initialized and then the corresponding field is filled.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle sending of the message"
+ Guid="08ff094e-8ba2-4537-9dfb-ee1b9b6a2686"
+>
+<PreConditions>
+<PreCondition
+ Guid="fb4f6985-6111-40cd-b353-065cc84a8954"
+>MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6a3a929b-edfd-4e1a-9442-0bbac9df7970"
+>InitializeOutMessage()</Action><Action
+ Guid="2091b658-8d3c-4f9f-8a7c-27a0abad7399"
+>MessageOut.TRACK_AHEAD_FREE_GRANTED &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.TRACK_AHEAD_FREE_GRANTED.Message
+{
+    NID_MESSAGE =&gt; 149,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime(Kernel.DateAndTime.CurrentTime),
+    NID_ENGINE =&gt; Kernel.NidEngine,
+    POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -2742,9 +2859,37 @@ THERE_IS X IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Guid="ea8b7978-d9c8-42c9-a1a1-339aea7eb022"
 >THIS &lt;- Inactive</Action><Action
  Guid="53aed77c-69b4-4844-84ca-aeb33f10a498"
->SendNoCompatibleVersionSupported()</Action><Action
+>SendNoCompatibleVersionSupported()</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Display indication to driver"
+ Guid="32978d87-8f73-45bd-bb68-3f372244060e"
+>
+<Comment>If the on-board is unable to connect to the RBC, only display the Incompatible System Version information if the current mode is not SL.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Mode is not SL"
+ Guid="0ff8a2f0-4595-49a4-b1ff-17efce2e7f5b"
+>
+<ReqRef
+ Id="26f8b2b9-4d92-46f3-8c33-b40b1b891b32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="05961053-1d2a-4252-922e-6124df28fbd1"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="8473eb41-8b29-4bfc-850f-20dab16f4863"
+>Kernel.Mode != Mode.SL</PreCondition></PreConditions>
+<Actions>
+<Action
  Guid="67b23c1f-f588-4c6d-82e0-4bd1b8feb62a"
 >DMI.MasterDMI().Out_TracksideNotCompatible.Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -4358,10 +4503,22 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Name="Registration order is received"
  Guid="7df57111-c014-46f5-9c21-22d1c682901e"
 >
-<PreConditions>
+<ReqRef
+ Id="4aa98857-a1f3-4fee-ab3c-0af871807ad8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f45b1a7b-a61b-4e25-91d5-96d6da4375bd"
+>
+</ReqRef><ReqRef
+ Id="aa345d0e-f599-4016-b5b5-c68601d642fb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ad2432a5-4b3f-4b67-bb43-08e82d0ad932"
+>
+</ReqRef><PreConditions>
 <PreCondition
  Guid="ad7f21b5-0b7e-44df-92f1-1a7e950f69b6"
->RegistrationOrderIsReceived</PreCondition></PreConditions>
+>RegistrationOrderIsReceived</PreCondition><PreCondition
+ Guid="17000d60-a63d-4a8d-87a0-47828aabccfe"
+>EstablishCommunicationSession()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9e7d5d30-f543-42e0-a83f-36e13134cba0"
@@ -4635,6 +4792,121 @@ After that, if an order to contact an Accepting RBC was received, it will be han
  Guid="1d98ef8a-fbe4-4fe6-affb-c0d0d99bb986"
 >
 <Comment>The data state of the system version.</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ X="680"
+ Y="390"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="MARequestParametersStruct"
+ Guid="9d7a57c5-16b7-49c4-a5ae-7c349742e6f1"
+>
+<ReqRef
+ Id="b74d1689-f942-4e2a-abdb-aa241f4f117f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86ba9eb8-9104-4dd0-8208-ab19a713f8d4"
+>
+</ReqRef><ReqRef
+ Id="f1ea734b-e726-48f2-96ea-1c70bef0a48f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0778d2a3-b667-448e-8ba9-52aedffb80a0"
+>
+</ReqRef><Comment>Contains the parameters for the MA request.</Comment>
+<StructureElement
+ TypeName="BaseTypes.Time"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreindicationLocationTime"
+ Guid="7a06a620-fa06-4db1-b6cd-70855746f090"
+>
+<ReqRef
+ Id="628ac46e-918d-47a4-9804-1bae59216f63"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="008aee12-76b5-4f6a-b96c-5b57008d736c"
+>
+</ReqRef><ReqRef
+ Id="f1ea734b-e726-48f2-96ea-1c70bef0a48f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d639d100-4f29-4fbb-885b-3a52416aca8a"
+>
+</ReqRef><Comment>A defined time before the train reaches the pre-indication location for the EOA/LOA assuming it is running at the warning speed.</Comment>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Time"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="SectionTimerTime"
+ Guid="61b511aa-6e78-4c29-86e5-94796558e1c5"
+>
+<ReqRef
+ Id="95d3b6c1-0843-4142-a7aa-9589d026598d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="195f61fd-1fc4-4337-b0a8-a0cff448d0bc"
+>
+</ReqRef><ReqRef
+ Id="f1ea734b-e726-48f2-96ea-1c70bef0a48f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a44bd3bf-127b-44de-9bdb-180758d8036c"
+>
+</ReqRef><Comment>A defined time before the Section timer (not the End Section timer, not the Overlap timer) for any section of the MA expires, or before the LOA speed timer expires.</Comment>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Time"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="RepetitionTime"
+ Guid="919bcae0-9652-4d12-9a00-97b03d9cf4a7"
+>
+<ReqRef
+ Id="b2206740-ee3b-42bc-9b69-b3ef064476be"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26c9d53d-e59f-405c-94a1-7b86c15f039d"
+>
+</ReqRef><Comment>Indicates the timbe between each repetition of the MA request if it has to be repeated until a new MA is received.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="HandleRepetitions"
+ Guid="352665ed-7ee9-445c-9429-dadb1453eae5"
+>
+<ReqRef
+ Id="b2206740-ee3b-42bc-9b69-b3ef064476be"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6e1f9242-7e78-4822-9fba-3689c0395dab"
+>
+</ReqRef><Comment>Indicates whether the MA request shall be repeated until a new MA is received or not.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="HandleTimeouts"
+ Guid="d33dfcaf-77bc-4946-94a9-52b60ce95d02"
+>
+<ReqRef
+ Id="95d3b6c1-0843-4142-a7aa-9589d026598d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8978512a-1560-464d-994b-2ee9be1ea942"
+>
+</ReqRef><Comment>Indicates whether the MA requests due to section timeouts have to be handled.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="HandlePreindicationLocation"
+ Guid="e1a46e17-bcc4-4c3f-a825-45ce186b486a"
+>
+<ReqRef
+ Id="628ac46e-918d-47a4-9804-1bae59216f63"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4e199458-83df-461a-97a8-fa9f09152bcc"
+>
+</ReqRef><Comment>Indicates whether the MA requests due to the pre-indication location have to be handled.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -5576,6 +5848,42 @@ CurrentRBCConnection().ContactData.DataState == DataState.Unknown</PreCondition>
 >
 <Expression>EMPTY</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="550"
+ Y="660"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="EstablishCommunicationSession"
+ Guid="cc4f4bfd-00bb-4541-a811-7d04769f9382"
+>
+<ReqRef
+ Id="4aa98857-a1f3-4fee-ab3c-0af871807ad8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2de0df57-ffa5-45fb-a62c-8a1d3498619d"
+>
+</ReqRef><ReqRef
+ Id="49ac5c2f-c76c-4903-a7c8-2a28ea61c09c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae8519af-3c8e-4135-8b65-54a072f5fe25"
+>
+</ReqRef><ReqRef
+ Id="72a514b1-acd2-473d-a39b-87d8f86f1624"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f45a4e2d-0cc3-4c93-88ad-1e1262803e9a"
+>
+</ReqRef><Comment>Is true if the on-board should establish a communication session.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="afd88ff5-02a2-4f63-a8f6-443811e90293"
+>
+<Expression>Kernel.ActiveFunctions.ManageCommunicationSession()
+  AND  
+Kernel.Mode not in [Mode.SH, Mode.PS]</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -5602,11 +5910,6 @@ CurrentRBCConnection().ContactData.DataState == DataState.Unknown</PreCondition>
  Guid="18a671d3-8767-4b2f-ba96-f58870ebde49"
 >
 </ReqRef><ReqRef
- Id="00910a19-7134-4f24-a20b-6c88aa996ff1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ee1377e4-795f-4619-b479-83b10dd2243f"
->
-</ReqRef><ReqRef
  Id="8f6d9e5c-7082-4ff4-b968-cfe98c4ad1d5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2b96e0c1-e66d-49f5-ad67-1b38cdacab23"
@@ -5621,7 +5924,17 @@ CurrentRBCConnection().ContactData.DataState == DataState.Unknown</PreCondition>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ca675e4f-a03e-4c1d-a96d-99e18b58a73c"
 >
-</ReqRef><Comment>Allows to establish/terminate the communication session with an RBC. If no mobile temrinal is registered, the order is rejected.</Comment>
+</ReqRef><ReqRef
+ Id="573d0d6d-98df-43fa-8065-22f5dae937f3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d48e4cd2-54f9-4787-837f-ee40acc85794"
+>
+</ReqRef><ReqRef
+ Id="cae9ea11-6eb1-49b7-b010-183e0c897e7b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a405afc3-bc82-4c58-b388-1ce500d52660"
+>
+</ReqRef><Comment>Allows to establish/terminate the communication session with an RBC. If no mobile terminal is registered, the order is rejected.</Comment>
 <Parameters>
 <Parameter
  Type="EURORADIO.ContactOrderStruct"
@@ -5641,12 +5954,13 @@ CurrentRBCConnection().ContactData.DataState == DataState.Unknown</PreCondition>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Select RBC"
+ Name="There is at least one mobile terminal registered"
  Guid="0e5a581a-1201-405e-b00a-40ae760b28f2"
 >
+<Comment>If there is at least one mobile terminal registered, the on-board requests to establish the connection.</Comment>
 <PreConditions>
 <PreCondition
- Guid="8df44f1d-8bc6-47ea-9994-67dde1dc64c4"
+ Guid="f76e9e01-3ba5-4eb3-8563-aef8799f02d3"
 >SelectRBCToContact() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
@@ -5658,7 +5972,91 @@ CurrentRBCConnection().ContactData.DataState == DataState.Unknown</PreCondition>
     Id =&gt; anOrder.Id,
     PhoneNumber =&gt; anOrder.PhoneNumber,
     DataState =&gt; Default.DataState.Valid
-}</Action></Actions>
+}</Action><Action
+ Guid="b327d97a-1053-46ca-a7eb-480617cdb643"
+>RBCContactOrderToRepeat &lt;- EMPTY</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="No mobile terminals are registered"
+ Guid="10050a00-0387-4b75-84ad-ef36b7942386"
+>
+<ReqRef
+ Id="1d7b7d76-6567-4512-ab16-84e87808264f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c3ea8cfd-05cf-4baf-8797-7d00867b360e"
+>
+</ReqRef><Comment>If there is no mobile terminal registered, the order to contact the RBC is stored in order to retry the connection establishment later and the driver is requested to enter the contact data.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="c74d158a-5aad-472c-9837-f0467d1ce3f8"
+>RBCContactOrderToRepeat &lt;- anOrder</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle terminal registration"
+ Guid="40194bc4-0ac8-46b4-bc8c-9597f7d2a6fb"
+>
+<Comment>If there is no mobile terminal registered, the driver is requested to enter the contact data or the connection is established according to previously stored data.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Last known network id is available"
+ Guid="e0aa62f1-3590-4c8a-b763-5b08d22b7432"
+>
+<Comment>The information about the last unknown network is stored on-board =&gt; the terminals are registered with this information.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="fb8b18ba-7882-4bb1-aaf3-68e9c372b9e8"
+>LastKnownNetworkId != &apos;&apos;</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="28e290a4-51be-483e-9fa6-a06cad53f05d"
+>RegisterMobileTerminals( aNetworkId =&gt; LastKnownNetworkId )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="No network id available, data entry not proposed yet"
+ Guid="81a8cb24-f23b-4ddb-b5b2-bca8b0938ead"
+>
+<ReqRef
+ Id="00a1581e-9f11-4254-b27b-c762074e9dde"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="44e8c435-29a3-4fb0-b7cd-c127b8645829"
+>
+</ReqRef><Comment>Otherwise, if the mode is different from TR, the driver is requested to enter the connection data.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5b896537-0cd3-4108-8766-68152d5eea7f"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
+ Guid="6dc5d3cd-fdbd-4642-9f27-ec7398ba1982"
+>Kernel.Mode != Mode.TR</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="43066826-6217-4a25-87ff-a9bce7e4c9b7"
+>DMI.MasterDMI().In_RBCContactInformation.InitiateRequest
+(
+    Actions =&gt; GetDriverActionsForSoM(),
+    anRBCContactInformation =&gt; GetRBCContactInfoForSoM()
+)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="No network id available, driver provided the contact information"
+ Guid="0471ad84-4efc-42f2-bc4c-cbe64854e8e4"
+>
+<Comment>When the driver enters the connection data, the mobile terminals are registered.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="f233f57b-bf25-46ae-9918-86536bc4985c"
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="44217646-714f-49c3-8352-2f030641cc52"
+>RegisterMobileTerminals( aNetworkId =&gt; DMI.MasterDMI().In_RBCContactInformation.SelectedNetwork )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5851,6 +6249,16 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d1ee1871-11f4-4b57-9cd4-1613cfc9d0a7"
 >
+</ReqRef><ReqRef
+ Id="38c25256-da47-4c77-a112-1ee0d724e7f2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="901dd993-3bcc-434d-8e46-9c30a0f49483"
+>
+</ReqRef><ReqRef
+ Id="cae9ea11-6eb1-49b7-b010-183e0c897e7b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7dd7023d-3484-40f2-9f7a-9fec7e06f1b2"
+>
 </ReqRef><Comment>Initiates the contact with the RBC, as requested by ContactOption.</Comment>
 <Rules>
 <Rule
@@ -6030,8 +6438,8 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="440"
- Y="780"
+ X="330"
+ Y="840"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -6135,6 +6543,23 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
+ Name="No terminal registered"
+ Guid="e8077b47-cddf-451a-967a-543bb5984da0"
+>
+<ReqRef
+ Id="00910a19-7134-4f24-a20b-6c88aa996ff1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3e39c131-4847-4cb8-b888-25c5778a78ac"
+>
+</ReqRef><Comment>If no mobile terminal is registered, the order from the trackside is ignored.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="74c2dd30-5ea7-4f91-8d3a-52d704636cac"
+>SelectRBCToContact() == EMPTY</PreCondition></PreConditions>
+<Actions>
+</Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Contact information provided by the packet"
  Guid="a1967dcf-c7b2-477d-a589-c2dc4de30508"
@@ -6305,6 +6730,11 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9d437a7b-af72-4620-a9df-d2ca2686e1cb"
 >
+</ReqRef><ReqRef
+ Id="573d0d6d-98df-43fa-8065-22f5dae937f3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0bbe939d-9ee9-4f15-8ddf-731a12b94c96"
+>
 </ReqRef><Comment>Registers the mobile terminals to a radio network.</Comment>
 <Parameters>
 <Parameter
@@ -6437,6 +6867,11 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  Id="d97a231f-6ef1-4300-9bd9-d3dba7d434bd"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="75b6b428-5a43-4df5-aa76-0990b37dbfe2"
+>
+</ReqRef><ReqRef
+ Id="478bdd4c-284c-4cc2-98a7-1b85116f19c2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f5d5bf71-140b-48ae-92bc-f8cfa73f4cf9"
 >
 </ReqRef><Comment>Handles reception of SR authorisation.</Comment>
 <SubRules></SubRules>
@@ -6730,6 +7165,34 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 >Kernel.Shunting.HandleNewListOfBaliseGroups ( Packet =&gt; ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LIST_OF_BALISES_FOR_SH_AREA ) ).LIST_OF_BALISES_FOR_SH_AREA )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Movement authority request parameters available"
+ Guid="3d1f686f-75f0-4710-aaa9-ae0e283a9daa"
+>
+<ReqRef
+ Id="0207a978-352d-4243-81cd-c58fb8228dc2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e7dfac47-3a3b-4618-9a1e-a71506fc36dc"
+>
+</ReqRef><Comment>Handles reception of the movement authority request parameters received with the MA.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Movement authority request parameters available"
+ Guid="b9ad65a0-8474-457d-90b1-c6906f945fe7"
+>
+<PreConditions>
+<PreCondition
+ Guid="19fbe0f5-f665-469b-8ecf-20c4453d8aaf"
+>THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e4a09d49-6bab-4250-9fae-0359a274682c"
+>MARequestParametersReceived( Packet =&gt; ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS ) ).MOVEMENT_AUTHORITY_REQUEST_PARAMETERS )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
  Name="Report parameters available"
@@ -6942,6 +7405,45 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="LSSMA display toggle order available"
+ Guid="1cd12ff4-6000-43dc-adbd-d711a9b70e64"
+>
+<ReqRef
+ Id="5ab8592b-d34d-449a-b9b4-a49404c758ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6d1d363f-720f-445b-8dba-f08284ce1dab"
+>
+</ReqRef><ReqRef
+ Id="569567b3-3681-4d80-9bed-9a1376f4cd6f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1f0d954d-f4d7-4718-8df3-50357ada5fb7"
+>
+</ReqRef><Comment>Handles reception of an LSSMA diplay toggle order received with the MA.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="LSSMA display toggle order received"
+ Guid="2c196828-b55b-4c96-9dd8-d88466c7bdc0"
+>
+<PreConditions>
+<PreCondition
+ Guid="d929b47a-52a6-44ae-84ea-b3b125dcd969"
+>THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available (X.LSSMA_DISPLAY_TOGGLE_ORDER)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7495227e-d962-4677-8d3d-055a79d7376d"
+>Kernel.LimitedSupervision.LSSMAToggleReceived(
+    Packet =&gt; (FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available(X.LSSMA_DISPLAY_TOGGLE_ORDER)).LSSMA_DISPLAY_TOGGLE_ORDER,
+    Timestamp =&gt; AddToDate(
+        StartDate =&gt; Kernel.DateAndTime.StartDate,
+        Increment =&gt; MessageTypes.TimeResolution(aMessage.MOVEMENT_AUTHORITY.T_TRAIN)
+    )
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="Handle the Movement Authority"
  Guid="7d82c686-4ecc-403f-abbd-e4c751de1bdf"
 >
@@ -7022,7 +7524,10 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Actions>
 <Action
  Guid="1d0407c6-42f3-4cd3-9dbd-5721ca7faffe"
->Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+>Kernel.MA.ModeProfile.ModeProfileReceived (
+  Packet =&gt; ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE,
+  GenericLSMarker =&gt; False
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -7116,7 +7621,10 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Actions>
 <Action
  Guid="42923357-d030-4973-8f7e-66c4c0796d02"
->Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST X IN aMessage.REQUEST_TO_SHORTEN_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+>Kernel.MA.ModeProfile.ModeProfileReceived (
+  Packet =&gt; ( FIRST X IN aMessage.REQUEST_TO_SHORTEN_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE,
+  GenericLSMarker =&gt; False
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7316,98 +7824,6 @@ Default.MessageTypes.QScaleDistance(
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Route suitability data available"
- Guid="4aa1a01f-4254-4958-b0e8-99b5cb30cc20"
->
-<ReqRef
- Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="052af9bd-f74a-4e5a-b527-5d0041e154b5"
->
-</ReqRef><Comment>Handles reception of the route suitability data received with the general message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Route suitability data available"
- Guid="c0c990ba-89d9-47e6-b458-c64d95c8112c"
->
-<PreConditions>
-<PreCondition
- Guid="446284a7-38bb-4883-9c06-40ea15d59a53"
->THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.ROUTE_SUITABILITY_DATA )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="1835b379-689c-41b7-82bd-bafdaa9df3c9"
->Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet =&gt; ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1  | Available ( X.ROUTE_SUITABILITY_DATA ) ).ROUTE_SUITABILITY_DATA )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Geographical position available"
- Guid="c6392e10-ecba-405d-a76b-2510ba3260e4"
->
-<ReqRef
- Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="494e6f3a-b888-4d5e-87b9-b170d26f9c28"
->
-</ReqRef><Comment>Handles reception of geographical position information received with the general message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Geographical position available"
- Guid="61fbd0fd-4497-4000-98e8-49e1aeafeb65"
->
-<PreConditions>
-<PreCondition
- Guid="7e563bd6-c9f0-489a-a42f-b6e64a89d11b"
->THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="93c1c20e-ed7d-474e-aa0b-b56128d38ef9"
->Kernel.GeographicalPosition.GeographicalPositionReceived( aPacket=&gt; (FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION)).GEOGRAPHICAL_POSITION_INFORMATION )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- Name="Report parameters available"
- Guid="935df013-36d5-46e2-8fd1-1c22e87f3dfc"
->
-<ReqRef
- Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3e5938e1-3ca7-41d6-ae46-5f9bca5e096f"
->
-</ReqRef><Comment>Handles reception of report parameters received with the general message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Report parameters available"
- Guid="8f6b94f8-5ebc-4d66-9acf-ddf51ba1d957"
->
-<ReqRef
- Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="68ef5d9c-449c-40de-beea-e8affff46386"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="e736f8f8-7e25-47b8-95d9-3641a99d39cb"
->THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="066e716a-07aa-4d5a-a10b-7fc517f0f0b2"
->PositionReport.UpdatePositionReportParameters
-(
-  ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
  Name="Level transition order available"
  Guid="36e96b58-9f40-4919-9b4e-07c2b3fbed30"
 >
@@ -7508,6 +7924,126 @@ Default.MessageTypes.QScaleDistance(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="Movement authority request parameters available"
+ Guid="d246069e-15d2-49e9-b02f-d74d788b9fd2"
+>
+<ReqRef
+ Id="0207a978-352d-4243-81cd-c58fb8228dc2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3d8034b0-46d6-45ae-8ba2-96929eae8835"
+>
+</ReqRef><Comment>Handles reception of the movement authority request parameters received with the general message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Movement authority request parameters available"
+ Guid="f690f045-757e-4168-850f-58888f04d1ab"
+>
+<PreConditions>
+<PreCondition
+ Guid="fb216486-6cdc-4b68-90d3-5e7377703f26"
+>THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="abe81056-9b8c-4250-9bda-c30cafef8c82"
+>MARequestParametersReceived( Packet =&gt; ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS ) ).MOVEMENT_AUTHORITY_REQUEST_PARAMETERS )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ Name="Report parameters available"
+ Guid="935df013-36d5-46e2-8fd1-1c22e87f3dfc"
+>
+<ReqRef
+ Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3e5938e1-3ca7-41d6-ae46-5f9bca5e096f"
+>
+</ReqRef><Comment>Handles reception of report parameters received with the general message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Report parameters available"
+ Guid="8f6b94f8-5ebc-4d66-9acf-ddf51ba1d957"
+>
+<ReqRef
+ Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68ef5d9c-449c-40de-beea-e8affff46386"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="e736f8f8-7e25-47b8-95d9-3641a99d39cb"
+>THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="066e716a-07aa-4d5a-a10b-7fc517f0f0b2"
+>PositionReport.UpdatePositionReportParameters
+(
+  ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Route suitability data available"
+ Guid="4aa1a01f-4254-4958-b0e8-99b5cb30cc20"
+>
+<ReqRef
+ Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="052af9bd-f74a-4e5a-b527-5d0041e154b5"
+>
+</ReqRef><Comment>Handles reception of the route suitability data received with the general message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Route suitability data available"
+ Guid="c0c990ba-89d9-47e6-b458-c64d95c8112c"
+>
+<PreConditions>
+<PreCondition
+ Guid="446284a7-38bb-4883-9c06-40ea15d59a53"
+>THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.ROUTE_SUITABILITY_DATA )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1835b379-689c-41b7-82bd-bafdaa9df3c9"
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet =&gt; ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1  | Available ( X.ROUTE_SUITABILITY_DATA ) ).ROUTE_SUITABILITY_DATA )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Geographical position available"
+ Guid="c6392e10-ecba-405d-a76b-2510ba3260e4"
+>
+<ReqRef
+ Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="494e6f3a-b888-4d5e-87b9-b170d26f9c28"
+>
+</ReqRef><Comment>Handles reception of geographical position information received with the general message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Geographical position available"
+ Guid="61fbd0fd-4497-4000-98e8-49e1aeafeb65"
+>
+<PreConditions>
+<PreCondition
+ Guid="7e563bd6-c9f0-489a-a42f-b6e64a89d11b"
+>THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="93c1c20e-ed7d-474e-aa0b-b56128d38ef9"
+>Kernel.GeographicalPosition.GeographicalPositionReceived( aPacket=&gt; (FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION)).GEOGRAPHICAL_POSITION_INFORMATION )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="RBC transition order available"
  Guid="bbd085cd-6114-4a8e-9372-7befdce23b2b"
 >
@@ -7537,39 +8073,6 @@ Default.MessageTypes.QScaleDistance(
 <Action
  Guid="9465d11b-3c0d-4be2-a91e-883e806e5d57"
 >RBCTransitionOrderReceived ( aPacket =&gt; ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )).RBC_TRANSITION_ORDER )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Reversing supervision information received"
- Guid="28f5a732-ce0a-4051-bbf4-03e0557c4a7b"
->
-<ReqRef
- Id="c93e250c-fc42-406f-9706-6ec7488b8982"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b0c86519-5005-4a55-ba21-787201b11562"
->
-</ReqRef><ReqRef
- Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="005e242c-9fab-496a-8cc4-ba3c58514f36"
->
-</ReqRef><Comment>Handles reception of reversing supervision information received with the general message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Reversing supervision information received"
- Guid="af2c5570-7a4d-4054-82ad-57ef1d45427e"
->
-<PreConditions>
-<PreCondition
- Guid="193d11a0-6c10-4e95-88ed-a9e108627cb4"
->THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="44c794a5-cbc0-4338-8222-edf600f1a426"
->Kernel.TrackDescription.ReversingArea.ReversingSupervisionInformationReceived(RVSupervisionPacket =&gt;  ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7618,6 +8121,78 @@ Default.MessageTypes.QScaleDistance(
 (
     RVAreaPacket =&gt; ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available (X.REVERSING_AREA_INFORMATION)).REVERSING_AREA_INFORMATION,
     RVSupervisionPacket =&gt; ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Reversing supervision information received"
+ Guid="28f5a732-ce0a-4051-bbf4-03e0557c4a7b"
+>
+<ReqRef
+ Id="c93e250c-fc42-406f-9706-6ec7488b8982"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b0c86519-5005-4a55-ba21-787201b11562"
+>
+</ReqRef><ReqRef
+ Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="005e242c-9fab-496a-8cc4-ba3c58514f36"
+>
+</ReqRef><Comment>Handles reception of reversing supervision information received with the general message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Reversing supervision information received"
+ Guid="af2c5570-7a4d-4054-82ad-57ef1d45427e"
+>
+<PreConditions>
+<PreCondition
+ Guid="193d11a0-6c10-4e95-88ed-a9e108627cb4"
+>THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="44c794a5-cbc0-4338-8222-edf600f1a426"
+>Kernel.TrackDescription.ReversingArea.ReversingSupervisionInformationReceived(RVSupervisionPacket =&gt;  ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="LSSMA display toggle order available"
+ Guid="cf3b6a56-0f48-4763-a9f3-26f5e0f6b0db"
+>
+<ReqRef
+ Id="5ab8592b-d34d-449a-b9b4-a49404c758ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="09fa92ee-7cd7-489c-9efc-7a8080c44a86"
+>
+</ReqRef><ReqRef
+ Id="569567b3-3681-4d80-9bed-9a1376f4cd6f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="be72b01c-5106-49a0-8a60-afd1ebd352bc"
+>
+</ReqRef><Comment>Handles reception of an LSSMA diplay toggle order received with the general message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="LSSMA display toggle order received"
+ Guid="9a4a5819-03c2-4b8c-8d54-3e3ae43d3089"
+>
+<PreConditions>
+<PreCondition
+ Guid="20b8a664-9aa0-43cf-806f-77575b6c9d8b"
+>THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available (X.LSSMA_DISPLAY_TOGGLE_ORDER)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="de78be94-0ff2-487f-b42a-b5d3406df13c"
+>Kernel.LimitedSupervision.LSSMAToggleReceived(
+    Packet =&gt; (FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available(X.LSSMA_DISPLAY_TOGGLE_ORDER)).LSSMA_DISPLAY_TOGGLE_ORDER,
+    Timestamp =&gt; AddToDate(
+        StartDate =&gt; Kernel.DateAndTime.StartDate,
+        Increment =&gt; MessageTypes.TimeResolution(aMessage.GENERAL_MESSAGE.T_TRAIN)
+    )
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
@@ -7732,74 +8307,13 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Geographical position available"
- Guid="caeeb936-cf39-41ac-87ea-75ca757c5a2b"
->
-<ReqRef
- Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="324cb001-39a7-4c4f-8532-6a05d0e57281"
->
-</ReqRef><Comment>Handles reception of geographical position information received with MA with shifted location reference message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Geographical position available"
- Guid="d71bf398-9b0a-4a76-ae90-ffeb1d8936ef"
->
-<PreConditions>
-<PreCondition
- Guid="9bd54d58-f186-4c4a-a7bb-89b66047e5e6"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="8a2191ee-9998-4d69-8379-189c5901fad7"
->Kernel.GeographicalPosition.GeographicalPositionReceived( aPacket=&gt; (FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION)).GEOGRAPHICAL_POSITION_INFORMATION )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Mode profile available"
- Guid="d438dc8b-7936-4bcf-8833-97af765a4527"
->
-<ReqRef
- Id="de18f207-08ba-467b-a877-d3c5a458123d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0ed54168-0a74-4d24-88f7-fcbdd7fbf41d"
->
-</ReqRef><ReqRef
- Id="8d9ca13d-bff4-486f-9cb1-dc825fd1b8ab"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c99cb77c-5ecb-4070-a2bb-c51caf609161"
->
-</ReqRef><Comment>Handles reception of mode profile received with MA with shifted location reference message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Mode profile available"
- Guid="5fd08ada-39f6-43b7-bb09-1af3639e5a10"
->
-<PreConditions>
-<PreCondition
- Guid="4db7c2bd-92a6-46fa-8e2a-21d174da1a53"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="6fc1e57f-7584-4af7-b92a-c41bcf7f6e58"
->Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
  Name="Level transition order available"
  Guid="2daa150e-f714-4954-9c73-3b6086131c5a"
 >
 <ReqRef
  Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="43764454-ca9a-4af0-ad98-93c57e99b628"
+ Guid="1c4b3755-e382-4628-927b-306506e1ae03"
 >
 </ReqRef><Comment>Handles receptino of level transition orders with MA with shifted location reference message.</Comment>
 <SubRules></SubRules>
@@ -7817,72 +8331,6 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Action
  Guid="2a39f497-93ab-442c-bd1a-1f87053a30c5"
 >Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- Name="Report parameters available"
- Guid="41514341-5275-4457-b6e1-3d0cdf73210d"
->
-<ReqRef
- Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="75394fb1-b13d-4ea8-b0ae-b8da4e554e2c"
->
-</ReqRef><Comment>Handles reception of report parameters received with MA with shifted location reference message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Report parameters available"
- Guid="a072a522-be55-470d-ac59-e4904cf1245c"
->
-<ReqRef
- Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fbc7c1b8-fb9d-4785-b3a8-b910c732edb4"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="5b8975b0-260d-4631-8a07-a597c7067649"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition
- Guid="29c7550e-0318-4ea1-be60-556bb6f76b25"
->aMessage.GENERAL_MESSAGE == EMPTY</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="d4dd1adc-2417-418e-9af1-28d490582186"
->PositionReport.UpdatePositionReportParameters
-(
-   ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Route suitability data available"
- Guid="d1763cf0-854a-43b9-890b-65362093d1e5"
->
-<ReqRef
- Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2551bc7c-0bcd-40d7-97b3-da8a51f1f3eb"
->
-</ReqRef><Comment>Handles reception of the route suitability data received with MA with shifted location reference message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Route suitability data available"
- Guid="05c6c904-72ce-4e9f-b546-00d44c02eb79"
->
-<PreConditions>
-<PreCondition
- Guid="785ad9f3-d16d-4ca7-a789-7e6ec4432c28"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.ROUTE_SUITABILITY_DATA )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="249aeb3c-974b-4193-96c5-9a76aafc8946"
->Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1  | Available ( X.ROUTE_SUITABILITY_DATA ) ).ROUTE_SUITABILITY_DATA )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7959,35 +8407,193 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Reversing supervision information received"
- Guid="0e37d4b1-e6f0-4c40-946d-2440c15b6c3d"
+ Name="Movement authority request parameters available"
+ Guid="75a93497-d4cf-428d-86f1-0aca8e2813f1"
 >
 <ReqRef
- Id="c93e250c-fc42-406f-9706-6ec7488b8982"
+ Id="0207a978-352d-4243-81cd-c58fb8228dc2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2df957a8-7b34-4b00-b67c-e2f40bc49fc1"
+ Guid="f6e30fa3-7b45-4e7a-93e1-b37a6f57d3d8"
 >
-</ReqRef><ReqRef
- Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="002437a3-173c-4b37-90ab-d72d47d3ff93"
->
-</ReqRef><Comment>Handles reception of reversing supervision information received with MA with shifted location reference message.</Comment>
+</ReqRef><Comment>Handles reception of the movement authority request parameters received with MA with shifted location reference message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Reversing supervision information received"
- Guid="530d4fa3-09f2-48f4-b5c9-2f77bc42c524"
+ Name="Movement authority request parameters available"
+ Guid="9c804d15-d78a-436a-8dd2-2dcd96b6bd1f"
 >
 <PreConditions>
 <PreCondition
- Guid="e13745ef-2428-495d-8e94-d1900f3d0b06"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
+ Guid="cdd8c0a8-2f12-41a6-8112-4431c79abb8f"
+>THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS )</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="6c9233fc-46fd-477b-b385-92185e9c87f8"
->Kernel.TrackDescription.ReversingArea.ReversingSupervisionInformationReceived(RVSupervisionPacket =&gt;  ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION)</Action></Actions>
+ Guid="72d50021-9d55-4610-88d0-eae7c9ce20a5"
+>MARequestParametersReceived( Packet =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS ) ).MOVEMENT_AUTHORITY_REQUEST_PARAMETERS )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ Name="Report parameters available"
+ Guid="41514341-5275-4457-b6e1-3d0cdf73210d"
+>
+<ReqRef
+ Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="75394fb1-b13d-4ea8-b0ae-b8da4e554e2c"
+>
+</ReqRef><Comment>Handles reception of report parameters received with MA with shifted location reference message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Report parameters available"
+ Guid="a072a522-be55-470d-ac59-e4904cf1245c"
+>
+<ReqRef
+ Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fbc7c1b8-fb9d-4785-b3a8-b910c732edb4"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="5b8975b0-260d-4631-8a07-a597c7067649"
+>THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition
+ Guid="29c7550e-0318-4ea1-be60-556bb6f76b25"
+>aMessage.GENERAL_MESSAGE == EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d4dd1adc-2417-418e-9af1-28d490582186"
+>PositionReport.UpdatePositionReportParameters
+(
+   ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Route suitability data available"
+ Guid="d1763cf0-854a-43b9-890b-65362093d1e5"
+>
+<ReqRef
+ Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2551bc7c-0bcd-40d7-97b3-da8a51f1f3eb"
+>
+</ReqRef><Comment>Handles reception of the route suitability data received with MA with shifted location reference message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Route suitability data available"
+ Guid="05c6c904-72ce-4e9f-b546-00d44c02eb79"
+>
+<PreConditions>
+<PreCondition
+ Guid="785ad9f3-d16d-4ca7-a789-7e6ec4432c28"
+>THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.ROUTE_SUITABILITY_DATA )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="249aeb3c-974b-4193-96c5-9a76aafc8946"
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1  | Available ( X.ROUTE_SUITABILITY_DATA ) ).ROUTE_SUITABILITY_DATA )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Geographical position available"
+ Guid="caeeb936-cf39-41ac-87ea-75ca757c5a2b"
+>
+<ReqRef
+ Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="324cb001-39a7-4c4f-8532-6a05d0e57281"
+>
+</ReqRef><Comment>Handles reception of geographical position information received with MA with shifted location reference message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Geographical position available"
+ Guid="d71bf398-9b0a-4a76-ae90-ffeb1d8936ef"
+>
+<PreConditions>
+<PreCondition
+ Guid="9bd54d58-f186-4c4a-a7bb-89b66047e5e6"
+>THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8a2191ee-9998-4d69-8379-189c5901fad7"
+>Kernel.GeographicalPosition.GeographicalPositionReceived( aPacket=&gt; (FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION)).GEOGRAPHICAL_POSITION_INFORMATION )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Mode profile available"
+ Guid="d438dc8b-7936-4bcf-8833-97af765a4527"
+>
+<ReqRef
+ Id="de18f207-08ba-467b-a877-d3c5a458123d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0ed54168-0a74-4d24-88f7-fcbdd7fbf41d"
+>
+</ReqRef><ReqRef
+ Id="8d9ca13d-bff4-486f-9cb1-dc825fd1b8ab"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c99cb77c-5ecb-4070-a2bb-c51caf609161"
+>
+</ReqRef><Comment>Handles reception of mode profile received with MA with shifted location reference message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Mode profile available"
+ Guid="5fd08ada-39f6-43b7-bb09-1af3639e5a10"
+>
+<PreConditions>
+<PreCondition
+ Guid="4db7c2bd-92a6-46fa-8e2a-21d174da1a53"
+>THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MODE_PROFILE )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6fc1e57f-7584-4af7-b92a-c41bcf7f6e58"
+>Kernel.MA.ModeProfile.ModeProfileReceived (
+  Packet =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE,
+  GenericLSMarker =&gt; False
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="RBC transition order available"
+ Guid="a8af2694-8a1a-4a7b-bcdf-1b0a2fc65759"
+>
+<ReqRef
+ Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="20491a0d-e1d0-4c4c-a1d7-8521af2fb735"
+>
+</ReqRef><ReqRef
+ Id="fb5cdb2c-826a-4be7-babf-d16c11e9720c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1065faf8-5897-4daa-8cc4-d357acd537b9"
+>
+</ReqRef><Comment>Handles reception of RBC transition orders received with MA with shifted location reference message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="RBC transition order available"
+ Guid="e55e6bdc-afac-476b-a86e-1249de5ea4d2"
+>
+<PreConditions>
+<PreCondition
+ Guid="8723be7a-426d-477a-a43a-230a0faa8ca3"
+>THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="fe627e78-cc1a-46c9-b978-a68996f61e55"
+>RBCTransitionOrderReceived ( aPacket =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )).RBC_TRANSITION_ORDER )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -8041,35 +8647,74 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="RBC transition order available"
- Guid="a8af2694-8a1a-4a7b-bcdf-1b0a2fc65759"
+ Name="Reversing supervision information received"
+ Guid="0e37d4b1-e6f0-4c40-946d-2440c15b6c3d"
 >
 <ReqRef
- Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
+ Id="c93e250c-fc42-406f-9706-6ec7488b8982"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="20491a0d-e1d0-4c4c-a1d7-8521af2fb735"
+ Guid="2df957a8-7b34-4b00-b67c-e2f40bc49fc1"
 >
 </ReqRef><ReqRef
- Id="fb5cdb2c-826a-4be7-babf-d16c11e9720c"
+ Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1065faf8-5897-4daa-8cc4-d357acd537b9"
+ Guid="002437a3-173c-4b37-90ab-d72d47d3ff93"
 >
-</ReqRef><Comment>Handles reception of RBC transition orders received with MA with shifted location reference message.</Comment>
+</ReqRef><Comment>Handles reception of reversing supervision information received with MA with shifted location reference message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="RBC transition order available"
- Guid="e55e6bdc-afac-476b-a86e-1249de5ea4d2"
+ Name="Reversing supervision information received"
+ Guid="530d4fa3-09f2-48f4-b5c9-2f77bc42c524"
 >
 <PreConditions>
 <PreCondition
- Guid="8723be7a-426d-477a-a43a-230a0faa8ca3"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )</PreCondition></PreConditions>
+ Guid="e13745ef-2428-495d-8e94-d1900f3d0b06"
+>THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="fe627e78-cc1a-46c9-b978-a68996f61e55"
->RBCTransitionOrderReceived ( aPacket =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )).RBC_TRANSITION_ORDER )</Action></Actions>
+ Guid="6c9233fc-46fd-477b-b385-92185e9c87f8"
+>Kernel.TrackDescription.ReversingArea.ReversingSupervisionInformationReceived(RVSupervisionPacket =&gt;  ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="LSSMA display toggle order available"
+ Guid="ee57379c-f490-44bb-98e4-338041668edb"
+>
+<ReqRef
+ Id="5ab8592b-d34d-449a-b9b4-a49404c758ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="721176da-770e-409b-ab05-aab36f5c94cc"
+>
+</ReqRef><ReqRef
+ Id="569567b3-3681-4d80-9bed-9a1376f4cd6f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="107ec775-9ae1-4048-8464-caef8de3bf4b"
+>
+</ReqRef><Comment>Handles reception of an LSSMA diplay toggle order received with the MA message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="LSSMA display toggle order received"
+ Guid="3b9a00bd-48fc-450d-b098-c457a12ff7ae"
+>
+<PreConditions>
+<PreCondition
+ Guid="01d6ea61-7ad0-4ad2-8c18-71d5fc673f75"
+>THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available (X.LSSMA_DISPLAY_TOGGLE_ORDER)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d2621da4-99cc-4cb9-97a0-92bf06ae5cb7"
+>Kernel.LimitedSupervision.LSSMAToggleReceived(
+    Packet =&gt; (FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available(X.LSSMA_DISPLAY_TOGGLE_ORDER)).LSSMA_DISPLAY_TOGGLE_ORDER,
+    Timestamp =&gt; AddToDate(
+        StartDate =&gt; Kernel.DateAndTime.StartDate,
+        Increment =&gt; MessageTypes.TimeResolution(aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.T_TRAIN)
+    )
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -8220,7 +8865,10 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Actions>
 <Action
  Guid="3913ccf6-bc3b-423b-a4da-7742b09c8e22"
->Kernel.MA.ModeProfile.ModeProfileReceived ( Packet =&gt; ( FIRST X IN aMessage.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE )</Action></Actions>
+>Kernel.MA.ModeProfile.ModeProfileReceived (
+  Packet =&gt; ( FIRST X IN aMessage.INFILL_MA.Sequence1 | Available ( X.MODE_PROFILE)).MODE_PROFILE,
+  GenericLSMarker =&gt; False
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -8301,6 +8949,11 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="35b0fb55-f322-40c7-b19f-c98132dbe02f"
 >
+</ReqRef><ReqRef
+ Id="7c2005be-ddda-445e-89ca-07171e96ad2a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="733d7266-45ff-4358-93bb-e366e518f3ce"
+>
 </ReqRef><Comment>Handles reception of Train accepted by the RBC.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -8324,13 +8977,56 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
     },
     NID =&gt; aMessage.TRAIN_ACCEPTED.NID_LRBG,
     Orientation =&gt; Default.Orientation.Unknown,
-    Timestamp =&gt; Kernel.DateAndTime.CurrentTime
+    Timestamp =&gt; Kernel.DateAndTime.Now()
 }</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Track ahead free request"
+ Guid="94458279-c5f8-4ad9-8905-dba6a4e03d8e"
+>
+<ReqRef
+ Id="9f590dd5-5917-4dd1-bc6d-a17f6fff66a8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c6f1dafb-4228-4bbf-9cf0-3dc3b6b2b7ba"
+>
+</ReqRef><ReqRef
+ Id="39d3a3da-a2a7-44e3-858d-5549ecf03336"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="723fe0d6-1315-48b0-b567-e63d38f4b7b4"
+>
+</ReqRef><ReqRef
+ Id="d791550a-a843-44fe-8bf3-174bad2c8112"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a323a74e-0b84-4ac3-9ccc-2adc8bbae466"
+>
+</ReqRef><ReqRef
+ Id="2a9d3fd0-c8d7-4772-96d9-a87b680e4435"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="423a9267-acf6-41ab-9f8a-55141ab330ce"
+>
+</ReqRef><Comment>Handles reception of Track ahead free request.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Track ahead free request"
+ Guid="ab7cd9b2-b961-4259-b7d7-183625d8add1"
+>
+<PreConditions>
+<PreCondition
+ Guid="49e1775e-6397-4477-91a0-21ca5473c6f7"
+>Available ( aMessage.TRACK_AHEAD_FREE_REQUEST )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a9e8f466-9aaf-47c1-ae92-7d4f01e53b0c"
+>Kernel.TrackDescription.TrackAheadFreeRequested &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="440"
- Y="800"
+ Y="780"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8682,6 +9378,21 @@ NOT
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="deb3eb45-c15c-4c64-afde-d4f94bce56d1"
 >
+</ReqRef><ReqRef
+ Id="b0837b14-48a2-43c7-a312-c2fa7b7ae35b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f92abecc-a493-4ed2-bfba-7a5d14970cbe"
+>
+</ReqRef><ReqRef
+ Id="aa345d0e-f599-4016-b5b5-c68601d642fb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0d247151-d406-407d-96e3-60218521cc09"
+>
+</ReqRef><ReqRef
+ Id="8b8b9125-ec61-4539-8be7-909451a4860a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="432415ec-b3ca-4bf6-a687-30b1d58d8a18"
+>
 </ReqRef><Comment>Handles the reception of RBC transition order.</Comment>
 <Parameters>
 <Parameter
@@ -8704,14 +9415,17 @@ NOT
  Name="Handle RBC transition order"
  Guid="f3f1f4d2-821a-4f89-a412-c9ed748cc203"
 >
+<Comment>Manage the RBC/RBC handover.</Comment>
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="07c5b809-13b3-4f39-b519-5f01c929afa6"
+>Kernel.ActiveFunctions.ManageRBC_RBCHandover()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c0382dd7-53dc-4905-9aa6-af132fc3f8ca"
 >ContactAcceptingRBC
 (
-    Order =&gt; ContactOrderStruct
+    Order =&gt; EURORADIO.ContactOrderStruct
     {
         Id =&gt; EURORADIO.RBCIdStruct
         {
@@ -8719,18 +9433,60 @@ NOT
             Id =&gt; aPacket.NID_RBC
         },
         PhoneNumber =&gt; aPacket.NID_RADIO,
-        ActionToPerform =&gt; EURORADIO.ContactActionEnum.Establish,
+        ActionToPerform =&gt; ContactActionEnum.Establish,
         AppliesToSleepingUnits =&gt; ConvertAppliesToSleepingUnits ( aValue =&gt; aPacket.Q_SLEEPSESSION )
     }
 )</Action><Action
  Guid="d3c6cdf9-9747-4381-9c1e-6895964348f9"
->PositionReport.RBCTransitionLocation &lt;- MessageTypes.QScaleDistance
+>PositionReport.RBCTransitionLocation &lt;- Default.MessageTypes.QScaleDistance
 (
     distance =&gt; aPacket.D_RBCTR,
     scale =&gt; aPacket.Q_SCALE
 )</Action><Action
  Guid="292b24e9-212c-45d5-b0f0-e37848e44ad8"
->PositionReport.NumberOfReportsSentToHandingOverRBC &lt;- 0</Action></Actions>
+>PositionReport.NumberOfReportsSentToHandingOverRBC &lt;- 0</Action><Action
+ Guid="89c525f7-4f86-4365-ac3c-d181b753d36c"
+>LastKnownRBC &lt;- EURORADIO.RBCContactStruct
+{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; aPacket.NID_C,
+        Id =&gt; aPacket.NID_RBC
+    },
+    PhoneNumber =&gt; aPacket.NID_RADIO,
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="SH/PS mode"
+ Guid="5d77f218-2ec3-4740-94e8-d43f7e084f75"
+>
+<ReqRef
+ Id="aa345d0e-f599-4016-b5b5-c68601d642fb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5b1c3845-5822-44a4-b775-fc69302562f2"
+>
+</ReqRef><ReqRef
+ Id="8b8b9125-ec61-4539-8be7-909451a4860a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eb84192b-7a41-4025-8c52-f20f69b2bbdf"
+>
+</ReqRef><Comment>In SH mode, only store the ID and phone number.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="3ef8acf1-bfab-4044-95fc-65e2507daa13"
+>Kernel.Mode in [Mode.SH, Mode.PS]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c59b3f0b-833a-4b7f-aa43-c4ecf057eddb"
+>LastKnownRBC &lt;- EURORADIO.RBCContactStruct
+{
+    Id =&gt; EURORADIO.RBCIdStruct{
+        Country =&gt; aPacket.NID_C,
+        Id =&gt; aPacket.NID_RBC
+    },
+    PhoneNumber =&gt; aPacket.NID_RADIO,
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -8796,7 +9552,7 @@ NOT
 </Rule></Rules>
 </Procedure><Procedure
  X="330"
- Y="740"
+ Y="720"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8831,14 +9587,214 @@ But at the end of the cycle the conditions required for sending of position repo
 >PositionReport.SendPositionReport()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ X="550"
+ Y="480"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="MARequestParametersReceived"
+ Guid="3bdf5b74-b267-4f2f-a3b8-3167dff3cf81"
+>
+<ReqRef
+ Id="b74d1689-f942-4e2a-abdb-aa241f4f117f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3cb894fb-932b-4391-8954-8801db9865b1"
+>
+</ReqRef><ReqRef
+ Id="8e7007f5-0fea-404a-b7eb-50db12d09f31"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="66a6926c-9728-4beb-adac-aad01a7c9a74"
+>
+</ReqRef><ReqRef
+ Id="b67273e4-3130-454e-8325-67246db078fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b0a343ae-844d-48ca-8a2a-49d7aae4cca5"
+>
+</ReqRef><ReqRef
+ Id="1684f6ad-c7c2-42db-b17b-b3b24f030364"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="54464bfe-6c0a-46fe-80c3-f7ef5172d48c"
+>
+</ReqRef><ReqRef
+ Id="05cf6799-8b56-48cb-9adc-a464323c5a84"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="50aa7b37-3201-4bc4-beb2-0c261666819a"
+>
+</ReqRef><ReqRef
+ Id="ecd0acf3-52c6-488c-a1d4-ed1e35869e6f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb4205b0-4dec-4e92-84b2-6ab04f42c918"
+>
+</ReqRef><ReqRef
+ Id="62880846-6786-43c3-84fe-79a4b98b3fd8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d4590bb2-86a9-49c9-9932-842834ff2092"
+>
+</ReqRef><Comment>Handles reception of MA request parameters.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS.Message"
+ Name="Packet"
+ Guid="e05bfa6e-1820-488c-83bd-22448ff3b138"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Store the new parameters"
+ Guid="4f4c9412-ebd3-447b-9eb3-bdfc0fa01dfa"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Store the time values"
+ Guid="2c7c39f7-e8f5-4942-bb23-f347779f6b17"
+>
+<Comment>First, replace the previous values by the values received from the packet.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="320b109a-792e-416d-bbba-d48ea2c1833b"
+>MARequestParameters &lt;- MARequestParametersStruct
+{
+    PreindicationLocationTime =&gt; MessageTypes.TimeResolution( time =&gt; Packet.T_MAR ),
+    SectionTimerTime =&gt; MessageTypes.TimeResolution( time =&gt; Packet.T_TIMEOUTRQST ),
+    RepetitionTime =&gt; MessageTypes.TimeResolution( time =&gt; Packet.T_CYCRQST )
+}</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Handle special values"
+ Guid="ca982596-2da7-42ea-a6a2-a42145830eed"
+>
+<Comment>Then, store the special values indicating which MA request parameters are applicable.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Store the pre-indication location handling"
+ Guid="0c0ee582-cb6f-4ace-b45a-2dd21540dc3d"
+>
+<Comment>The special value 255 for T_MAR indicates that there is no MA request triggering with regards to the pre-indication location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Pre-indication location has to be handled"
+ Guid="737e7870-a1f7-4b54-a1fe-69223e8b8c01"
+>
+<Comment>Pre-indication location has to be handled for MA requests.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5e204e62-c4fe-490d-9a1b-e5938a2190c8"
+>Packet.T_MAR != 255</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="30f9257a-8ea3-4ecc-8601-24c70ff492d7"
+>MARequestParameters.HandlePreindicationLocation &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Pre-indication location has not to be handled"
+ Guid="7524805a-63de-4539-9370-da3ef41336f7"
+>
+<Comment>Pre-indication location has not to be handled for MA requests.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="18636c9f-9aaa-4ff5-8c27-049f405a5abf"
+>MARequestParameters.HandlePreindicationLocation &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Store the timeouts handling"
+ Guid="f96ad77b-e4c5-43f9-99b5-834422430ef2"
+>
+<Comment>The special value 1023 for T_TIMEOUTRSQT indicates that there is no MA request triggering with regards to the sections timeouts.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Timeouts have to be handled"
+ Guid="dbe503b6-3453-4df6-a8ce-ba4b3449fa19"
+>
+<Comment>Timeouts have to be handled for MA requests.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="2455541d-8ac7-408b-be9a-5f05a4817771"
+>Packet.T_TIMEOUTRQST != 1023</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6ba53e46-8e54-4dc0-bf70-f290747fac02"
+>MARequestParameters.HandleTimeouts &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Timeouts have not to be handled"
+ Guid="ef14cf5a-a35d-4ce6-a465-70d38c44c5b0"
+>
+<Comment>Timeouts have not to be handled for MA requests.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="68f887a6-fb71-4685-92d2-ea6e3dbda166"
+>MARequestParameters.HandleTimeouts &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Store the repetition handling"
+ Guid="7d401cbf-73df-4768-ad07-446d774f07cc"
+>
+<Comment>The special value 255 for T_CYCRQST indicates that there is no MA request repetition.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Requests have to be repeated"
+ Guid="e196364a-ac50-4cb1-bf76-bab2e5b5637b"
+>
+<Comment>The MA requests have to be repeated.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="ee06d8a0-da11-4df4-8c6e-b2aaa0f16630"
+>Packet.T_CYCRQST != 255</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c7436dc7-bf48-4b23-92f3-88f26cacf70c"
+>MARequestParameters.HandleRepetitions &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Requests have not to be repeated"
+ Guid="e539fe7d-00dc-4497-b787-fc9aa78f5fb5"
+>
+<Comment>The MA requests have not to be repeated.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="90d2fcd9-38c9-4dc2-8519-b67f724b95ae"
+>MARequestParameters.HandleRepetitions &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
  Type="Default.BaseTypes.Time"
  DefaultValue="15.0"
  VariableMode="Constant"
- X="560"
- Y="370"
+ X="1090"
+ Y="430"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8855,8 +9811,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="Integer"
  DefaultValue="3"
  VariableMode="Constant"
- X="440"
- Y="130"
+ X="970"
+ Y="540"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8919,8 +9875,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="String"
  DefaultValue="&apos;&apos;"
  VariableMode="Internal"
- X="440"
- Y="250"
+ X="970"
+ Y="310"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -8947,8 +9903,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="String"
  DefaultValue="&apos;&apos;"
  VariableMode="Internal"
- X="560"
- Y="250"
+ X="850"
+ Y="540"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -9048,8 +10004,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="String"
  DefaultValue="&apos;&apos;"
  VariableMode="Internal"
- X="320"
- Y="250"
+ X="1090"
+ Y="310"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9094,8 +10050,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="Default.BaseTypes.Time"
  DefaultValue="300.0"
  VariableMode="Constant"
- X="1000"
- Y="390"
+ X="970"
+ Y="430"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9117,8 +10073,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="Default.BaseTypes.Time"
  DefaultValue="45.0"
  VariableMode="Constant"
- X="320"
- Y="130"
+ X="850"
+ Y="430"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9154,12 +10110,48 @@ But at the end of the cycle the conditions required for sending of position repo
  Guid="c900db09-2078-4202-9b78-6a61d34165d9"
 >
 </ReqRef><Comment>Stores the messages sent by the Accepting RBC before it becomes the supervising RBC.</Comment>
+</Variable><Variable
+ Type="ContactOrderStruct"
+ DefaultValue="EMPTY"
+ VariableMode="Internal"
+ X="140"
+ Y="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="RBCContactOrderToRepeat"
+ Guid="d890477f-424a-4de1-a3d6-b794a1bde12c"
+>
+<ReqRef
+ Id="573d0d6d-98df-43fa-8065-22f5dae937f3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="88e78b40-3606-492a-9021-fd45199aaf6a"
+>
+</ReqRef><Comment>If the first attempt to contact the RBC failed, the corresponding contact order is stored in order to retry contacting the RBC.</Comment>
+</Variable><Variable
+ Type="MARequestParametersStruct"
+ DefaultValue="EMPTY"
+ VariableMode="Internal"
+ X="680"
+ Y="490"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="MARequestParameters"
+ Guid="4ad80678-7cc9-40d9-8f70-14d50a56c72f"
+>
+<ReqRef
+ Id="b74d1689-f942-4e2a-abdb-aa241f4f117f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="18564ce8-692b-482e-96b4-d018059c6e4d"
+>
+</ReqRef><Comment>Contains the parameters for the MA request. If no parameters are stored, the variable is EMPTY.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
  Priority="UpdateOUT"
- X="650"
- Y="800"
+ X="680"
+ Y="730"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9190,6 +10182,38 @@ But at the end of the cycle the conditions required for sending of position repo
 <Action
  Guid="02baeff3-ba76-4e24-b9bf-d47379e408b5"
 >DMI.MasterDMI().Out_SafeRadioConnectionIndication.Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ X="850"
+ Y="730"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Repeat contact RBC request"
+ Guid="3b4757ee-054d-4c37-b5d2-f437b162bd07"
+>
+<ReqRef
+ Id="573d0d6d-98df-43fa-8065-22f5dae937f3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="822b7fa6-8031-42cf-a46c-ec5963cfcd45"
+>
+</ReqRef><Comment>If an order to contact the RBC by on-board was received but the connection couldn&apos;t be established, the request is repeated again.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="An order to contact the RBC is stored"
+ Guid="edb33073-756f-48cb-9763-0e33ca5f0723"
+>
+<PreConditions>
+<PreCondition
+ Guid="61a5462f-dc93-45db-bd21-2c092de05ca3"
+>RBCContactOrderToRepeat != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b5fbfee4-ca84-4128-9ab3-2edd2f4447ef"
+>ContactRBC( anOrder =&gt; RBCContactOrderToRepeat )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

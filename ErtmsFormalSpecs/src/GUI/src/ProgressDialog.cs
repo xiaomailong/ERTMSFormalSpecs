@@ -45,8 +45,7 @@ namespace GUI
         {
             BackgroundWorker worker = sender as BackgroundWorker;
 
-            Thread thread = new Thread(Work.TreadStart);
-            thread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+            Thread thread = Utils.ThreadUtil.CreateThread(Work.TreadStart);
             thread.Start(Work);
 
             int percent = 0;

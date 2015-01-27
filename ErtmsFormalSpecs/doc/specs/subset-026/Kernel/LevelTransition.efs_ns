@@ -1243,6 +1243,11 @@ Packet.Sequence1</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="24e31559-1a9e-4ea9-ad2b-e9f95ffda621"
 >
+</ReqRef><ReqRef
+ Id="2f665d04-952a-40f9-917d-bfc51f72a606"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a7fb407f-8879-48af-ac10-4229a16fc7b6"
+>
 </ReqRef><Comment>If the train has reached the level transition order location, the on-board equipment executed is.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -1259,7 +1264,9 @@ Packet.Sequence1</Action></Actions>
   AND  
 LevelTransitionOrder.Distance &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Nom)</PreCondition><PreCondition
  Guid="a793711a-f9af-4251-b86a-906d92f0b23f"
->Kernel.Level.Value != LevelTransitionToProcess.TRLevel</PreCondition><PreCondition
+>Available(LevelTransitionToProcess)
+  AND  
+Kernel.Level.Value != LevelTransitionToProcess.TRLevel</PreCondition><PreCondition
  Guid="25250332-c8c8-4785-908c-5901c81268aa"
 >Mode not in [Mode.SH, Mode.PS]</PreCondition></PreConditions>
 <Actions>
@@ -1319,7 +1326,9 @@ LevelTransitionOrder.Distance &lt;= TrainPosition.FrontEndPosition(DistanceInter
  Guid="119f3451-7abd-48fd-ae98-5d685a2d6454"
 >LevelTransitionOrder != EMPTY</PreCondition><PreCondition
  Guid="ba1fa256-51bd-488d-80b9-bedccd862de9"
->AcknowledgementRequiredForLT( anLTO =&gt; LevelTransitionToProcess )</PreCondition><PreCondition
+>Available(LevelTransitionToProcess)
+  AND  
+AcknowledgementRequiredForLT( anLTO =&gt; LevelTransitionToProcess )</PreCondition><PreCondition
  Guid="70792393-b2da-4f9c-b343-ffd26b6ede9b"
 >Kernel.Mode not in [Mode.NL, Mode.SH, Mode.PS]</PreCondition><PreCondition
  Guid="0f38d48a-8431-4fc2-8a57-2fed7286c19c"

@@ -26,6 +26,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="cbb8db73-0734-4e33-86a2-3cd8c3e5d25a"
 >
+</ReqRef><ReqRef
+ Id="478bdd4c-284c-4cc2-98a7-1b85116f19c2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="696e79f6-1df1-4c3d-91be-f38ec6f2a813"
+>
 </ReqRef><Comment>Stores information received about an upcoming SR area.</Comment>
 <StructureElement
  TypeName="BaliseGroups"
@@ -74,11 +79,16 @@
  Y="150"
  Width="100"
  Height="50"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="CreateBaliseGroups"
  Guid="f9550a10-747b-4726-934e-39d8fbcbc99a"
 >
-<Comment>Creates a collection of Balise groups for the expected Balise groups for SR area.</Comment>
+<ReqRef
+ Id="dd3eed62-7fd8-49f1-b24f-9e8008ab2471"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d27882a4-83e4-439b-b1e7-6878eea0282a"
+>
+</ReqRef><Comment>Creates a collection of Balise groups for the expected Balise groups for SR area.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.MESSAGE.TRACK_TO_TRAIN.SR_AUTHORISATION.Collection1"
@@ -225,6 +235,16 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="37044b83-a59c-4a78-9173-b474e78f0781"
 >
+</ReqRef><ReqRef
+ Id="17a4c2cf-4fbc-48d2-b77e-25fe06fda936"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="50d4b7f8-9d28-4696-9985-3f7e77803967"
+>
+</ReqRef><ReqRef
+ Id="6aebdaad-cc03-41c0-818a-b52475a6ef43"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21b6984b-caea-49f8-a958-ea932d14972a"
+>
 </ReqRef><Comment>Returns the permitted distance to run in SR mode.</Comment>
 <Cases>
 <Case
@@ -234,7 +254,9 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 <PreConditions>
 <PreCondition
  Guid="738bcd15-c113-45d0-8ca8-16a08f625fc7"
->Available(SRAuthorisation)</PreCondition></PreConditions>
+>Available(SRAuthorisation)</PreCondition><PreCondition
+ Guid="5af6ee90-8c46-4ec6-a4d6-06ccf8474ed5"
+>HandleModeChange not in HandleModeChangeSM.Override</PreCondition></PreConditions>
 <Expression>SRAuthorisation.Distance</Expression>
 </Case><Case
  Name="Use national value"
@@ -272,6 +294,16 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9ff870da-a8b3-4130-a312-de9e3164b58b"
 >
+</ReqRef><ReqRef
+ Id="2f6ead7a-d5f6-4a11-8819-61f7aaaad9ca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0da89684-ca88-400b-a6d6-6c46a80c8ec2"
+>
+</ReqRef><ReqRef
+ Id="dd3eed62-7fd8-49f1-b24f-9e8008ab2471"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e579716-ebc7-4c46-a2e0-d37c4e2a582e"
+>
 </ReqRef><Comment>Handles reception of authorization to enter SR mode from RBC.</Comment>
 <Parameters>
 <Parameter
@@ -305,6 +337,31 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
     BGs =&gt; CreateBaliseGroups ( BaliseGroups =&gt; Packet.Sequence1 ),
     BGListReceived =&gt; (Packet.Sequence1 == [])
 }</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Count the distance from the current location if in SR"
+ Guid="f6641dc9-8d36-4ca5-a09e-327befa89789"
+>
+<Comment>If a SR authorization specifying a distance (and possibly a list of Balise groups for SR) is received, the distance to run is measured from the train&apos;s current location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Set SR start to train position"
+ Guid="2dda6ff2-1853-45e5-89e5-50879341b940"
+>
+<PreConditions>
+<PreCondition
+ Guid="ca00b5c3-749e-4688-81da-05727f081038"
+>Mode == Mode.SR</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="96ee091d-b9e9-4509-b1a7-1c630d2fd21e"
+>TrainPosition.SRStartDistance &lt;- Odometry.NominalDistance</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -372,6 +429,21 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="da1d4183-210e-4321-ad03-9815ba49f0a0"
 >
+</ReqRef><ReqRef
+ Id="c51f0ee1-8abb-4f3a-a52f-62248f5a5f7f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="24ca6afe-ba23-4379-9930-85c26282a3ce"
+>
+</ReqRef><ReqRef
+ Id="2f6ead7a-d5f6-4a11-8819-61f7aaaad9ca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7d3f004a-ca45-4362-9051-7ce8679d2aab"
+>
+</ReqRef><ReqRef
+ Id="478bdd4c-284c-4cc2-98a7-1b85116f19c2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5a7a73f3-ee5a-4ac8-993c-c74837ed0704"
+>
 </ReqRef><Comment>Contains information about the SR authorisation.</Comment>
 </Variable><Variable
  Type="Boolean"
@@ -392,4 +464,76 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 >
 </ReqRef><Comment>Signals that a Balise with the message &quot;stop if in SR mode&quot; has been read</Comment>
 </Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Request new distance to run in SR"
+ Guid="6c397c2a-962e-4413-95a9-a76a39abb9fe"
+>
+<ReqRef
+ Id="0ae8cbdd-4de7-4e56-9061-504b96318dca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7d834822-91e3-4374-9f04-fb49195a8a98"
+>
+</ReqRef><Comment>The driver may request a new distance to run in SR by pressing &apos;Start&apos;.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Enable request"
+ Guid="372bed13-1b0e-4d38-84a5-1652201f7087"
+>
+<Comment>Display the request for new distance to run in SR mode on the DMI in SR mode and level 2/3.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="b352c267-ea89-4d92-96e6-906fec9cd522"
+>Mode == Mode.SR</PreCondition><PreCondition
+ Guid="38a2855c-a564-4a2f-b1cf-ab9373fbe4af"
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
+ Guid="e8a7ae96-cd47-4d9e-8a00-715ca0a3e838"
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="bd2c7627-cb26-4ee4-a08b-41e674d7f810"
+>DMI.MasterDMI().In_Start.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Accept response"
+ Guid="dc4f53e6-2d23-4f2d-b429-515d189ad3fa"
+>
+<ReqRef
+ Id="ff288c94-6672-4739-a2b6-fd66db6c9de8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="46c5ce20-2dab-4878-8752-e825be56095e"
+>
+</ReqRef><ReqRef
+ Id="4443416b-4b5b-4896-a845-222b762d3950"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2ce73648-ad51-4e52-b71f-2b963b38dd30"
+>
+</ReqRef><ReqRef
+ Id="8ae45849-75e7-4ebf-9e7c-625d834e6433"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="21afbe35-bea2-4b7d-ac52-124f1195e913"
+>
+</ReqRef><Comment>Handle the driver&apos;s request for a new distance to run in SR mode.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="4532d348-879a-4cf6-b646-604abda0d8a0"
+>Mode == Mode.SR</PreCondition><PreCondition
+ Guid="d9198f6b-ab29-4800-8177-3582c9f6b6f5"
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
+ Guid="b141a80f-70a4-4c16-ab6a-2c1a644b9b5b"
+>DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="46dbfab0-2d80-4d37-a202-f2046e4ae97d"
+>EURORADIO.CurrentRBCConnection().SendMARequest(
+    aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>

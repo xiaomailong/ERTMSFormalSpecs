@@ -731,6 +731,11 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Name="Packet"
  Guid="75b62463-3fa9-4c19-b2ec-dfce61799a11"
 >
+</Parameter><Parameter
+ Type="Boolean"
+ Name="GenericLSMarker"
+ Guid="35fc88c4-2b37-44da-a0d2-1ff900415967"
+>
 </Parameter></Parameters>
 <Rules>
 <Rule
@@ -757,7 +762,8 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
     M_MAMODE =&gt; Packet.M_MAMODE,
     V_MAMODE =&gt; Packet.V_MAMODE,
     Q_MAMODE =&gt; Packet.Q_MAMODE,
-    Q_SCALE =&gt; Packet.Q_SCALE
+    Q_SCALE =&gt; Packet.Q_SCALE,
+    GenericLSMarker =&gt; GenericLSMarker
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -785,7 +791,8 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
         M_MAMODE =&gt; X.M_MAMODE,
         V_MAMODE =&gt; X.V_MAMODE,
         Q_MAMODE =&gt; X.Q_MAMODE,
-        Q_SCALE =&gt; Packet.Q_SCALE
+        Q_SCALE =&gt; Packet.Q_SCALE,
+        GenericLSMarker =&gt; GenericLSMarker
     )
 ON
     Packet.Sequence1</Action></Actions>
@@ -876,6 +883,11 @@ ON
  Type="Messages.Q_SCALE"
  Name="Q_SCALE"
  Guid="59470058-475d-468a-b380-e1d74d140903"
+>
+</Parameter><Parameter
+ Type="Boolean"
+ Name="GenericLSMarker"
+ Guid="c567c2c9-e49e-4c15-ace1-4d019f4ff251"
 >
 </Parameter></Parameters>
 <Rules>
@@ -973,6 +985,35 @@ IN
     }
 IN
     Profile</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="LS - No marker received"
+ Guid="40e7e378-9c53-4324-814a-7d12e2560ca6"
+>
+<ReqRef
+ Id="259b9778-4f75-4c5b-a658-9eef737938bf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="82229d0d-a9c5-4867-bf63-c6dca0946379"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="No marker"
+ Guid="22f70c9c-3856-4b19-9418-24eef06f259b"
+>
+<PreConditions>
+<PreCondition
+ Guid="b2604372-b987-4a51-b556-c2757c4b3907"
+>NOT GenericLSMarker</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1f3d6bb1-d1d8-40d6-acf9-f4f4610ca528"
+>LimitedSupervision.GenericMarkerStored &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition><RuleCondition
  Name="No infill available, LS or OS"
  Guid="07db9b5d-c0c8-47e0-b272-7d8042bea88b"
@@ -994,6 +1035,35 @@ IN
     }
 IN
     Profile</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="LS - No marker received"
+ Guid="7e15adcd-7f7c-4123-86ba-b239dc562ac3"
+>
+<ReqRef
+ Id="259b9778-4f75-4c5b-a658-9eef737938bf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c1f14513-9bed-4582-a613-f113e697f748"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="No marker"
+ Guid="92c49840-ed53-45be-9a2a-c8d3a86c1d86"
+>
+<PreConditions>
+<PreCondition
+ Guid="56e14f59-2c1b-4c33-860c-221bd8bea952"
+>NOT GenericLSMarker</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="62332412-16d4-4840-b334-6f4566fec990"
+>LimitedSupervision.GenericMarkerStored &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

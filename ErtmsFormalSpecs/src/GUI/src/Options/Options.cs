@@ -59,6 +59,15 @@ namespace GUI.Options
                 get { return Settings.Default.CheckParentRelationship; }
                 set { Settings.Default.CheckParentRelationship= value; }
             }
+
+            [Category("Behaviour")]
+            [DisplayName("Cache function")]
+            [Description("When animating the model, cache the values computed by functions")]
+            public bool CacheFunctions
+            {
+                get { return Settings.Default.CacheFunctions; }
+                set { Settings.Default.CacheFunctions= value; }
+            }
         }
 
         public Options()
@@ -78,6 +87,7 @@ namespace GUI.Options
             system.DisplayEnclosingMessages = settings.DisplayEnclosingMessages;
             system.DisplayRequirementsAsList = settings.DisplayRequirementsAsList;
             system.CheckParentRelationship = settings.CheckParentRelationship;
+            system.CacheFunctions = settings.CacheFunctions;
             DataDictionary.Util.PleaseLockFiles = settings.LockOpenedFiles;
 
             settings.Save();

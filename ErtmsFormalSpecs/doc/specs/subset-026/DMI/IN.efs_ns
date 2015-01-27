@@ -42,6 +42,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2dfad422-bedb-4ed9-8fa0-9a587d8edb19"
 >
+</ReqRef><ReqRef
+ Id="cae9ea11-6eb1-49b7-b010-183e0c897e7b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="184842fa-48ad-4793-bf10-c680aaa614e3"
+>
 </ReqRef><Comment>If the driver has manually changed the level to 2 or 3 and no communication session is established, the on-board has to establish a new communication session.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -2130,7 +2135,34 @@
 <Actions>
 <Action
  Guid="a0e16f10-a236-471b-b610-864623cf30dd"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="535124c5-bff1-45d4-9d68-c67528fe40ed"
+>Kernel.TrackDescription.TrackAheadFreeRequested &lt;- False</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Track ahead is free"
+ Guid="ed651d9e-bba2-4e55-8b5e-f77c384c25f2"
+>
+<Comment>Handle the driver&apos;s confirmation that the track ahead is free.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle the driver input"
+ Guid="e0510277-7b5a-44ef-9b91-6166f78bd33c"
+>
+<PreConditions>
+<PreCondition
+ Guid="826452ea-6279-445f-8a91-c4ced2a5ab76"
+>THIS.TrackAheadIsFree</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="de8de7fb-9cf8-4cb3-8e47-0a6c0cc774dc"
+>Kernel.TrackDescription.SendTrackAheadFreeGranted()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2209,7 +2241,17 @@
  Name="AcceptDriverResponse"
  Guid="4af5856d-f8e3-4000-8bc5-a6f968ea4d88"
 >
-<Comment>Receives the driver input and updates the internal data accordingly</Comment>
+<ReqRef
+ Id="c51f0ee1-8abb-4f3a-a52f-62248f5a5f7f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6241e68e-f3e2-4212-a5bb-aadb7c331750"
+>
+</ReqRef><ReqRef
+ Id="17a4c2cf-4fbc-48d2-b77e-25fe06fda936"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c8b0f4e2-5f3c-49d6-a5f7-575b62170ced"
+>
+</ReqRef><Comment>Receives the driver input and updates the internal data accordingly</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -2235,7 +2277,11 @@
 <Actions>
 <Action
  Guid="5cc17c0b-817f-4483-8077-9146d6cbb607"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="f5ce354f-859e-4332-b811-e2d0ae772e1a"
+>Kernel.ModeRelatedSpeedLimits.TracksideModeRelatedSpeedRestrictions.SR &lt;- Speed</Action><Action
+ Guid="a11aacf6-d0d4-4812-a3b0-3254aeb2f787"
+>Kernel.StaffResponsible.SRAuthorisation.Distance &lt;- Distance</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -6772,6 +6818,11 @@ TIU.NonLeadingPermitted</Expression>
  Id="25a833cc-7385-4baf-a092-22c94d1cafe5"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9b3b95ef-849b-40ab-9c8b-ab4e7e6ec1c0"
+>
+</ReqRef><ReqRef
+ Id="2a9d3fd0-c8d7-4772-96d9-a87b680e4435"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86f4c4a4-2cf4-4651-8c60-4f2f02d4a878"
 >
 </ReqRef><Comment>Indicates whether the level can be proposed to the driver</Comment>
 <Cases>

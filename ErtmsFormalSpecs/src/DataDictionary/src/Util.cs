@@ -26,6 +26,7 @@ using DataDictionary.Variables;
 using XmlBooster;
 using Utils;
 using System.Collections;
+using System.Threading;
 
 namespace DataDictionary
 {
@@ -720,6 +721,7 @@ namespace DataDictionary
         /// <returns></returns>
         public static Dictionary load(String filePath, EFSSystem efsSystem, bool lockFiles, List<ElementLog> errors, bool updateGuid)
         {
+            Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
             Dictionary retVal = null;
 
             ObjectFactory factory = (ObjectFactory)Generated.acceptor.getFactory();

@@ -129,9 +129,10 @@ namespace GUI.LongOperations
                 try
                 {
                     // Open the dictionary but do not store it in the EFS System
-                    bool allowErrors = true;
-                    bool updateGuid = false;
+                    const bool allowErrors = true;
+                    const bool updateGuid = false;
                     OpenFileOperation openFileOperation = new OpenFileOperation(tempDirectory + Path.DirectorySeparatorChar + DictionaryFileName, null, allowErrors, updateGuid);
+                    openFileOperation.PleaseLockFiles = false;
                     openFileOperation.ExecuteWork();
                     retVal = openFileOperation.Dictionary;
                 }
