@@ -906,6 +906,10 @@ namespace DataDictionary
                         {
                             paragraph.AddWarning("Paragraph state does not correspond to implementation status (Implemented but not applicable)");
                         }
+                        if (paragraph.getReviewed() == false)
+                        {
+                            paragraph.AddWarning("A non reviewed paragraph is marked as implemented");
+                        }
                         break;
 
                     case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA:
