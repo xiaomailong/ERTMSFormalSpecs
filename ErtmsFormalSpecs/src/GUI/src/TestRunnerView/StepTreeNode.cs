@@ -23,6 +23,8 @@ using DataDictionary.Tests.Translations;
 using DataDictionary;
 using DataDictionary.Interpreter;
 using DataDictionary.Specification;
+using GUI.TranslationRules;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.TestRunnerView
 {
@@ -260,8 +262,30 @@ namespace GUI.TestRunnerView
                 Translation translation = translationDictionary.findTranslation(Item.getDescription(), Item.Comment);
                 if (translation != null)
                 {
-                    bool getFocus = true;
-                    GUI.GUIUtils.MDIWindow.Select(translation, getFocus);
+                    // Finds the translation window which corresponds to this translation
+                    TranslationRules.Window translationWindow = null;
+                    foreach (IBaseForm form in GUIUtils.MDIWindow.SubWindows)
+                    {
+                        translationWindow = form as TranslationRules.Window;
+                        if (translationWindow != null)
+                        {
+                            TypedTreeView<TranslationDictionary> treeView = translationWindow.TreeView as TypedTreeView<TranslationDictionary>;
+                            if (treeView != null && treeView.Root == translation.TranslationDictionary)
+                            {
+                                break;
+                            }
+                        }
+                    }
+
+                    if (translationWindow == null)
+                    {
+                        translationWindow = new TranslationRules.Window(translation.TranslationDictionary);
+                        GUIUtils.MDIWindow.AddChildWindow(translationWindow, DockAreas.Document);
+                    }
+
+                    const bool getFocus = true;
+                    GUIUtils.MDIWindow.Select(translation, getFocus);
+                    translationWindow.Show();
                 }
             }
         }

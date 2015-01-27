@@ -157,7 +157,7 @@ namespace GUI
             /// <summary>
             /// Finds the specified element in the collection provided
             /// </summary>
-            /// <param name="?"></param>
+            /// <param name="subWindows"></param>
             /// <returns></returns>
             public static T find(ICollection<IBaseForm> subWindows)
             {
@@ -755,7 +755,7 @@ namespace GUI
                         GenericWindowHandling<TestRunnerView.Window>.AddOrShow(this, TestWindow, DockAreas.Document);
 
                         TranslationRules.Window translationWindow = null;
-                        if (dictionary.TranslationDictionary != null && dictionary.TranslationDictionary.Translations.Count > 0)
+                        if (dictionary.TranslationDictionary != null && dictionary.TranslationDictionary.TranslationsCount > 0)
                         {
                             translationWindow = new TranslationRules.Window(dictionary.TranslationDictionary);
                             AddChildWindow(translationWindow, DockAreas.Document);

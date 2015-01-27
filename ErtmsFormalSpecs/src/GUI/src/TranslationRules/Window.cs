@@ -47,7 +47,17 @@ namespace GUI.TranslationRules
         {
             get { return translationTreeView; }
         }
-    
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="dictionary"></param>
+        public Window()
+        {
+            InitializeComponent();
+            FormClosed += new FormClosedEventHandler(Window_FormClosed);
+        }
+
         /// <summary>
         /// Constructor
         /// </summary>
