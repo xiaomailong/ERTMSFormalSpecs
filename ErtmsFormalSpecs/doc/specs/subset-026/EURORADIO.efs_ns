@@ -883,12 +883,17 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="715b48c3-af70-479c-9314-7eaf9aa4bab2"
 >
-</ReqRef><Comment>Sends the MA request message.</Comment>
+</ReqRef><Comment>Sends the MA request message, possibly with an additional packet (Packet 9: Level 2/3 transition information).</Comment>
 <Parameters>
 <Parameter
  Type="Messages.Q_MARQSTREASON"
  Name="aReason"
  Guid="5c0da812-a270-4cf0-b8e8-c58eb2c798db"
+>
+</Parameter><Parameter
+ Type="Messages.PACKET.TRAIN_TO_TRACK.LEVEL_2_3_TRANSITION_INFORMATION.Message"
+ Name="aPacket"
+ Guid="efa70ad2-1b31-4fba-8e5b-1394f640af26"
 >
 </Parameter></Parameters>
 <Rules>
@@ -911,6 +916,25 @@
  Guid="48295035-e9ad-4544-9df0-05b1d725b286"
 >MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
 <Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Fill the message"
+ Guid="6a8d7932-914e-4d24-a047-ae5a2b06ff00"
+>
+<Comment>First, fill the fields of the message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Fill the message"
+ Guid="028126ab-0258-4ee6-819e-a978c06643da"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
 <Action
  Guid="bd0bff4f-a385-4604-9275-9ca2e8029bb5"
 >InitializeOutMessage()</Action><Action
@@ -924,6 +948,72 @@
     Q_MARQSTREASON =&gt; aReason,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
 }</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Add the optional packet, if any"
+ Guid="1e128daf-b918-4719-9653-73eb5ae01642"
+>
+<ReqRef
+ Id="c2016b38-4117-4913-9885-bc04bda19872"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eb2fb9bf-eb81-4102-b4e2-4be112bc2963"
+>
+</ReqRef><Comment>Then, add the optional packet, if any.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Add the optional packet, if any"
+ Guid="ac36f825-e92f-4ee9-8831-a81f5a88f097"
+>
+<PreConditions>
+<PreCondition
+ Guid="2dd7f6aa-12b8-4aa9-8130-0d8662cb6f64"
+>aPacket != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f44318cf-785d-4f2d-b554-9b4fc910b4f0"
+>INSERT
+Messages.MESSAGE.TRAIN_TO_TRACK.MA_REQUEST.SubStructure1
+{
+    LEVEL_2_3_TRANSITION_INFORMATION =&gt; aPacket
+}
+  IN
+MessageOut.MA_REQUEST.Sequence1</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update MA request parameters"
+ Guid="9d1fd56f-96df-4f78-9cad-0936c95e17ac"
+>
+<ReqRef
+ Id="b2206740-ee3b-42bc-9b69-b3ef064476be"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cafe6bb4-a15b-4ea9-9165-f0ae350e5c42"
+>
+</ReqRef><Comment>Finally, if MA request parameters are stored on-board, the current time and the reason are stored in order to be able to resend the MA cyclically, if needed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update MA request parameters"
+ Guid="a918565b-068a-41c0-8290-cc43a8c4ac0f"
+>
+<PreConditions>
+<PreCondition
+ Guid="3acc2481-ba85-4ccd-b7fc-ed2acaac77e7"
+>Kernel.MA.MARequest.MARequestParameters != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d3ec36ee-64d3-4339-b85a-967e5ce5a6ca"
+>Kernel.MA.MARequest.LastMARequestRepetitionTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
+ Guid="b5a94a6c-2159-44bd-9c71-7c81d6c057f9"
+>Kernel.MA.MARequest.MARequestParameters.Reason &lt;- aReason</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4792,121 +4882,6 @@ After that, if an order to contact an Accepting RBC was received, it will be han
  Guid="1d98ef8a-fbe4-4fe6-affb-c0d0d99bb986"
 >
 <Comment>The data state of the system version.</Comment>
-</StructureElement></Structure><Structure
- Default=""
- X="680"
- Y="390"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="MARequestParametersStruct"
- Guid="9d7a57c5-16b7-49c4-a5ae-7c349742e6f1"
->
-<ReqRef
- Id="b74d1689-f942-4e2a-abdb-aa241f4f117f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="86ba9eb8-9104-4dd0-8208-ab19a713f8d4"
->
-</ReqRef><ReqRef
- Id="f1ea734b-e726-48f2-96ea-1c70bef0a48f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0778d2a3-b667-448e-8ba9-52aedffb80a0"
->
-</ReqRef><Comment>Contains the parameters for the MA request.</Comment>
-<StructureElement
- TypeName="BaseTypes.Time"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="PreindicationLocationTime"
- Guid="7a06a620-fa06-4db1-b6cd-70855746f090"
->
-<ReqRef
- Id="628ac46e-918d-47a4-9804-1bae59216f63"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="008aee12-76b5-4f6a-b96c-5b57008d736c"
->
-</ReqRef><ReqRef
- Id="f1ea734b-e726-48f2-96ea-1c70bef0a48f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d639d100-4f29-4fbb-885b-3a52416aca8a"
->
-</ReqRef><Comment>A defined time before the train reaches the pre-indication location for the EOA/LOA assuming it is running at the warning speed.</Comment>
-</StructureElement><StructureElement
- TypeName="BaseTypes.Time"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="SectionTimerTime"
- Guid="61b511aa-6e78-4c29-86e5-94796558e1c5"
->
-<ReqRef
- Id="95d3b6c1-0843-4142-a7aa-9589d026598d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="195f61fd-1fc4-4337-b0a8-a0cff448d0bc"
->
-</ReqRef><ReqRef
- Id="f1ea734b-e726-48f2-96ea-1c70bef0a48f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a44bd3bf-127b-44de-9bdb-180758d8036c"
->
-</ReqRef><Comment>A defined time before the Section timer (not the End Section timer, not the Overlap timer) for any section of the MA expires, or before the LOA speed timer expires.</Comment>
-</StructureElement><StructureElement
- TypeName="BaseTypes.Time"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="RepetitionTime"
- Guid="919bcae0-9652-4d12-9a00-97b03d9cf4a7"
->
-<ReqRef
- Id="b2206740-ee3b-42bc-9b69-b3ef064476be"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="26c9d53d-e59f-405c-94a1-7b86c15f039d"
->
-</ReqRef><Comment>Indicates the timbe between each repetition of the MA request if it has to be repeated until a new MA is received.</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Implemented="TRUE"
- Name="HandleRepetitions"
- Guid="352665ed-7ee9-445c-9429-dadb1453eae5"
->
-<ReqRef
- Id="b2206740-ee3b-42bc-9b69-b3ef064476be"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6e1f9242-7e78-4822-9fba-3689c0395dab"
->
-</ReqRef><Comment>Indicates whether the MA request shall be repeated until a new MA is received or not.</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="HandleTimeouts"
- Guid="d33dfcaf-77bc-4946-94a9-52b60ce95d02"
->
-<ReqRef
- Id="95d3b6c1-0843-4142-a7aa-9589d026598d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8978512a-1560-464d-994b-2ee9be1ea942"
->
-</ReqRef><Comment>Indicates whether the MA requests due to section timeouts have to be handled.</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="HandlePreindicationLocation"
- Guid="e1a46e17-bcc4-4c3f-a825-45ce186b486a"
->
-<ReqRef
- Id="628ac46e-918d-47a4-9804-1bae59216f63"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4e199458-83df-461a-97a8-fa9f09152bcc"
->
-</ReqRef><Comment>Indicates whether the MA requests due to the pre-indication location have to be handled.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -9659,7 +9634,7 @@ But at the end of the cycle the conditions required for sending of position repo
 <Actions>
 <Action
  Guid="320b109a-792e-416d-bbba-d48ea2c1833b"
->MARequestParameters &lt;- MARequestParametersStruct
+>Kernel.MA.MARequest.MARequestParameters &lt;- Kernel.MA.MARequest.MARequestParametersStruct
 {
     PreindicationLocationTime =&gt; MessageTypes.TimeResolution( time =&gt; Packet.T_MAR ),
     SectionTimerTime =&gt; MessageTypes.TimeResolution( time =&gt; Packet.T_TIMEOUTRQST ),
@@ -9698,7 +9673,7 @@ But at the end of the cycle the conditions required for sending of position repo
 <Actions>
 <Action
  Guid="30f9257a-8ea3-4ecc-8601-24c70ff492d7"
->MARequestParameters.HandlePreindicationLocation &lt;- True</Action></Actions>
+>Kernel.MA.MARequest.MARequestParameters.HandlePreindicationLocation &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Pre-indication location has not to be handled"
@@ -9710,7 +9685,7 @@ But at the end of the cycle the conditions required for sending of position repo
 <Actions>
 <Action
  Guid="18636c9f-9aaa-4ff5-8c27-049f405a5abf"
->MARequestParameters.HandlePreindicationLocation &lt;- False</Action></Actions>
+>Kernel.MA.MARequest.MARequestParameters.HandlePreindicationLocation &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9734,7 +9709,7 @@ But at the end of the cycle the conditions required for sending of position repo
 <Actions>
 <Action
  Guid="6ba53e46-8e54-4dc0-bf70-f290747fac02"
->MARequestParameters.HandleTimeouts &lt;- True</Action></Actions>
+>Kernel.MA.MARequest.MARequestParameters.HandleTimeouts &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Timeouts have not to be handled"
@@ -9746,7 +9721,7 @@ But at the end of the cycle the conditions required for sending of position repo
 <Actions>
 <Action
  Guid="68f887a6-fb71-4685-92d2-ea6e3dbda166"
->MARequestParameters.HandleTimeouts &lt;- False</Action></Actions>
+>Kernel.MA.MARequest.MARequestParameters.HandleTimeouts &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9770,7 +9745,7 @@ But at the end of the cycle the conditions required for sending of position repo
 <Actions>
 <Action
  Guid="c7436dc7-bf48-4b23-92f3-88f26cacf70c"
->MARequestParameters.HandleRepetitions &lt;- True</Action></Actions>
+>Kernel.MA.MARequest.MARequestParameters.HandleRepetitions &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Requests have not to be repeated"
@@ -9782,7 +9757,7 @@ But at the end of the cycle the conditions required for sending of position repo
 <Actions>
 <Action
  Guid="90d2fcd9-38c9-4dc2-8519-b67f724b95ae"
->MARequestParameters.HandleRepetitions &lt;- False</Action></Actions>
+>Kernel.MA.MARequest.MARequestParameters.HandleRepetitions &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -10111,7 +10086,7 @@ But at the end of the cycle the conditions required for sending of position repo
 >
 </ReqRef><Comment>Stores the messages sent by the Accepting RBC before it becomes the supervising RBC.</Comment>
 </Variable><Variable
- Type="ContactOrderStruct"
+ Type="EURORADIO.ContactOrderStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="140"
@@ -10128,24 +10103,6 @@ But at the end of the cycle the conditions required for sending of position repo
  Guid="88e78b40-3606-492a-9021-fd45199aaf6a"
 >
 </ReqRef><Comment>If the first attempt to contact the RBC failed, the corresponding contact order is stored in order to retry contacting the RBC.</Comment>
-</Variable><Variable
- Type="MARequestParametersStruct"
- DefaultValue="EMPTY"
- VariableMode="Internal"
- X="680"
- Y="490"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="MARequestParameters"
- Guid="4ad80678-7cc9-40d9-8f70-14d50a56c72f"
->
-<ReqRef
- Id="b74d1689-f942-4e2a-abdb-aa241f4f117f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="18564ce8-692b-482e-96b4-d018059c6e4d"
->
-</ReqRef><Comment>Contains the parameters for the MA request. If no parameters are stored, the variable is EMPTY.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule

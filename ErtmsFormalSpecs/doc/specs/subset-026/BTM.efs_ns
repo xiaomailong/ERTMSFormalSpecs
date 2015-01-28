@@ -86,8 +86,8 @@
 <Comment>The moment when the balise group was received by the train. Used to retrieve the most recent balise group.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="500"
- Y="460"
+ X="560"
+ Y="310"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -174,6 +174,8 @@
 </ReqRef><Comment>Indicates if the that balise group is single or not.</Comment>
 </StructureElement></Structure><Structure
  Default=""
+ X="440"
+ Y="460"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -629,7 +631,7 @@
  Type="Boolean"
  Default=""
  X="40"
- Y="230"
+ Y="20"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -697,7 +699,7 @@
  Type="Boolean"
  Default=""
  X="150"
- Y="230"
+ Y="200"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -783,7 +785,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Type="Default.BaseTypes.Distance"
  Default=""
  X="260"
- Y="230"
+ Y="200"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -814,8 +816,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
- X="150"
- Y="290"
+ X="40"
+ Y="260"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -845,7 +847,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Type="Boolean"
  Default=""
  X="40"
- Y="290"
+ Y="200"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -903,8 +905,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 </Function><Function
  Type="Messages.EUROBALISE.SubStructure1"
  Default=""
- X="260"
- Y="290"
+ X="370"
+ Y="260"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -935,8 +937,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
- X="260"
- Y="350"
+ X="150"
+ Y="260"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -982,8 +984,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
- X="40"
- Y="410"
+ X="260"
+ Y="260"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -1019,8 +1021,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 </Function><Function
  Type="Messages.PACKET.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Message"
  Default=""
- X="40"
- Y="350"
+ X="370"
+ Y="200"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -1047,8 +1049,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 </Function><Function
  Type="Messages.EUROBALISE.SubStructure1"
  Default=""
- X="150"
- Y="350"
+ X="40"
+ Y="320"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -1234,7 +1236,7 @@ This is a check for message consistency errors.</Comment>
  Type="Default.BaseTypes.Distance"
  Default=""
  X="150"
- Y="410"
+ Y="320"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1274,7 +1276,7 @@ This is a check for message consistency errors.</Comment>
  Type="Boolean"
  Default=""
  X="260"
- Y="410"
+ Y="320"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1958,6 +1960,82 @@ This is a check for message consistency errors.</Comment>
 <Action
  Guid="961a9459-5891-48f0-8de2-eddc845ec82f"
 >Kernel.LX.LXReceived ( Packet=&gt;Packet.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION, NID_BG=&gt;NID_BG )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Track Ahead Free up to level 2/3 transition location available"
+ Guid="3e1e35c2-8ca1-4ddf-82d7-0e25d78a10e7"
+>
+<ReqRef
+ Id="864033cc-a0bd-4284-9de8-2572cad9faf5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="66f64433-ce22-4bbb-8377-14fa4c38c76d"
+>
+</ReqRef><ReqRef
+ Id="a5cab7d5-9533-4bee-9cb2-2fb89da811cd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8acbd76e-5078-4625-8fcd-fcd98f750c4d"
+>
+</ReqRef><Comment>Handles Track Ahead Free up to lebel 2/3 transition location packet, if available.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="09dc7e93-e179-44cf-a996-1512cd99d929"
+>ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.TRACK_AHEAD_FREE_UP_TO_LEVEL_2_3_TRANSITION_LOCATION.Q_DIR )</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Send MA request"
+ Guid="f9d974f9-1e11-40b0-a44b-d38c1c34fa97"
+>
+<ReqRef
+ Id="0ee0129e-1504-4c7f-ab04-b8c8d596fe5a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="727358ea-e3d6-4107-ad07-3f703ee3b577"
+>
+</ReqRef><ReqRef
+ Id="4443416b-4b5b-4896-a845-222b762d3950"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="42371c33-8091-4e62-9d37-57c8b350b245"
+>
+</ReqRef><ReqRef
+ Id="cf6c6b17-27a3-476b-8db5-eab7f0aceb1e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b4154eed-f979-4136-9fd7-3f0c1d8ad63d"
+>
+</ReqRef><Comment>In level 0,1,NTC: if a level 2/3 transition is announced and a communication session is already established, an MA request is sent to the RBC.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send MA request"
+ Guid="d9afa2e8-bc08-487a-b28e-cc0c9370afb6"
+>
+<PreConditions>
+<PreCondition
+ Guid="e9f7503a-a201-4ce0-be40-99cef91b92ba"
+>EURORADIO.HasActiveSession()</PreCondition><PreCondition
+ Guid="afc8b3ae-0a5f-413b-a613-0d8145a1c32f"
+>Kernel.LevelTransition.LevelTransitionToProcess != EMPTY
+  AND
+  Kernel.LevelTransition.LevelTransitionToProcess.TRLevel.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
+ Guid="9f677cc3-085c-4916-af03-783e04349ffc"
+>Kernel.Level.Value.Value in [Level.L0, Level.L1, Level.L2]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8b6b13bc-da05-493a-8895-bd58979b488e"
+>EURORADIO.CurrentRBCConnection().SendMARequest
+(
+    aReason =&gt; Messages.Q_MARQSTREASON.TAF_up_to_level_2_3_transition_location,
+    aPacket =&gt; Messages.PACKET.TRAIN_TO_TRACK.LEVEL_2_3_TRANSITION_INFORMATION.Message
+    {
+        NID_PACKET =&gt; 9,
+        NID_LTRBG =&gt; Packet.TRACK_TO_TRAIN.TRACK_AHEAD_FREE_UP_TO_LEVEL_2_3_TRANSITION_LOCATION.NID_BG
+    }
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="RBC Transition Order available"
