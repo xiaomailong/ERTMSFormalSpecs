@@ -10303,7 +10303,7 @@ Regards to the above possibilities, the MA request shall be triggered when the t
  bl="3.1.0"
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="4443416b-4b5b-4896-a845-222b762d3950"
@@ -33031,7 +33031,7 @@ If the brake command was triggered due to the driver not having acknowledged a t
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="a5cab7d5-9533-4bee-9cb2-2fb89da811cd"
@@ -33047,13 +33047,58 @@ If the brake command was triggered due to the driver not having acknowledged a t
  scope="FLAGS"
  bl="3.1.0"
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="317daa11-e8a3-482d-9b98-a8ee6a882b28"
->The track ahead free request from the RBC shall indicate to the on-board
-	a) at which location the ERTMS/ETCS on-board equipment shall begin to display the request to the driver.
-	b) at which location the ERTMS/ETCS on-board equipment shall stop to display the request to the driver (in case the driver did not acknowledge).<RequirementSets>
+>The track ahead free request from the RBC shall indicate to the on-board<Sub>
+<Paragraph
+ id="3.15.5.2.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ specIssue="TRUE"
+ Name=""
+ Guid="8f2786c1-d114-44ea-a244-7cc5e566dd3b"
+><Comment>Does this location refer to the estimated train front end?</Comment>
+at which location the ERTMS/ETCS on-board equipment shall begin to display the request to the driver.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="bc3446a8-8ee1-4b12-bc8b-727e7582b088"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="eceea85d-a516-4298-b200-87aa46d43d87"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.15.5.2.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ Name=""
+ Guid="972fbe51-1072-44da-980b-ea076a4d9e79"
+>at which location the ERTMS/ETCS on-board equipment shall stop to display the request to the driver (in case the driver did not acknowledge).<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2d9051a6-2155-4872-86ff-aaae3c466888"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="16f73b6a-edfa-4bf7-9558-c8d376d6f4c0"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d1365068-b5f9-4561-afac-4865bf2e5d7b"
@@ -33069,7 +33114,8 @@ If the brake command was triggered due to the driver not having acknowledged a t
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="bb7b8945-b977-4e95-976b-bb8d2f76bca8"
@@ -33093,10 +33139,6 @@ If the brake command was triggered due to the driver not having acknowledged a t
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="5de81f03-d1ca-4628-9f63-96529a71d473"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="648c5af4-f250-4801-8106-d8ae3cf4818f"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.15.5.4"
@@ -33104,7 +33146,8 @@ If the brake command was triggered due to the driver not having acknowledged a t
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="cf04ffbe-1da0-4fb9-ad6a-12a84b219244"
@@ -33128,10 +33171,6 @@ If the brake command was triggered due to the driver not having acknowledged a t
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2465c233-5564-4bcd-ba95-e84f459cbb9c"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="1a8f6c2f-49a1-4a9e-9745-c5612866382d"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.15.5.5"
@@ -33139,7 +33178,8 @@ If the brake command was triggered due to the driver not having acknowledged a t
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="e355dda4-803b-47ed-8c58-67ed057aa194"
@@ -33148,10 +33188,6 @@ If the brake command was triggered due to the driver not having acknowledged a t
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="9397c5ee-3041-478f-bea3-5c99bca76dce"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="9fe6ec9d-663f-45c7-b1aa-13c5e5b0766c"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.15.5.6"
@@ -33159,7 +33195,8 @@ If the brake command was triggered due to the driver not having acknowledged a t
  scope="FLAGS"
  bl=""
  name=""
- status="NA"
+ reviewed="TRUE"
+ status="Implemented"
  version="3.0.0"
  Name=""
  Guid="6843fde0-7c61-40e2-a130-d778bcc5e1fa"
@@ -33167,10 +33204,6 @@ If the brake command was triggered due to the driver not having acknowledged a t
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="2f1a764d-f888-457d-a01d-51f1dd1a4d5a"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="eb00ff82-b36b-497c-9d72-164aebe7d7f9"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
