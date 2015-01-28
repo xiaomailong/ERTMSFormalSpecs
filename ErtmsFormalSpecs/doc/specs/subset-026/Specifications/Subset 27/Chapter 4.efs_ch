@@ -4143,13 +4143,12 @@ This message is sent after receiving a telegram from a balise.<Sub>
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
  Name=""
  Guid="d5f77b0d-de50-41bd-8a16-2a2d0f8d98d9"
->The content of this message is the telegram coming from a balise as defined in Chapters 7 and 8 of [1].:This message is sent after receiving a message from an Euroloop.
-4.2.4.7 MESSAGE FROM EUROLOOP:Content
-Description:The content of this message is any message coming from an Euroloop as defined in Chapters 7 and 8 of [1].<RequirementSets>
+>The content of this message is the telegram coming from a balise as defined in Chapters 7 and 8 of [1].<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="b3c7e5f0-f733-422e-8cbf-edb37776c4e7"
@@ -4160,6 +4159,42 @@ Description:The content of this message is any message coming from an Euroloop a
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="4035b3ba-cd9d-4419-82e7-be4d48340146"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="4.2.4.7"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="ba2a938c-d83c-4ca1-a14e-304334f42fcf"
+>MESSAGE FROM EUROLOOP:Content
+Description
+This message is sent after receiving a message from an Euroloop.<Sub>
+<Paragraph
+ id="4.2.4.7.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="5a5fc9ff-0b82-4b86-9eb2-71880cbbbd8b"
+>The content of this message is any message coming from an Euroloop as defined in Chapters 7 and 8 of [1].<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="deb4c7b2-0fbf-4db1-acfb-42e61127342b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="007b3df1-f3e8-4a8b-9fb4-f98e9b6bce09"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -7537,6 +7572,7 @@ Comment:<RequirementSets>
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="Implemented"
  version="3.0.0"
  Name=""
