@@ -12,6 +12,10 @@
  Name="ModeProfile"
  Guid="78bbf16d-77a9-451f-865c-7232182d21ec"
 >
+</NameSpaceRef><NameSpaceRef
+ Name="MARequest"
+ Guid="8e966d15-e7c8-49df-8142-00a09f0d069f"
+>
 </NameSpaceRef></NameSpaces>
 <Structures>
 <Structure
@@ -1836,7 +1840,12 @@ USING X IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3b4954af-389f-4fd2-9d90-4b4ee0b8b025"
 >
-</ReqRef><Comment>Returns the first section in MA.Sections that has timed out</Comment>
+</ReqRef><ReqRef
+ Id="6ac522ac-79fd-4987-859f-3144edd1f09d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aa4ccdad-d5b5-4ba2-bc08-e61cedff936d"
+>
+</ReqRef><Comment>Returns the first section in MA.Sections that has timed out, if the level is different from 3 (in level 3 no time-outs are used).</Comment>
 <Cases>
 <Case
  Name="Check sections in the MA"
@@ -1851,7 +1860,13 @@ X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)  is
   AND  
 MA.Sections != []
   AND  
-THERE_IS X IN MA.Sections | (Available(X.TimeOut) AND SectionStartLocation(X) + X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)  AND  X.TimeOut.TimeOut + SectionTimerStart &lt; DateAndTime.CurrentTime)</PreCondition></PreConditions>
+THERE_IS X IN MA.Sections | (Available(X.TimeOut)
+  AND
+SectionStartLocation(X) + X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)  
+  AND 
+X.TimeOut.TimeOut + SectionTimerStart &lt; DateAndTime.CurrentTime)</PreCondition><PreCondition
+ Guid="87a7ac1d-9861-4a39-a1bd-90d0182d96e6"
+>Kernel.Level.Value.Value != Level.L3</PreCondition></PreConditions>
 <Expression>FIRST X IN MA.Sections | 
 (   Available(X.TimeOut)
   AND
@@ -1876,7 +1891,9 @@ Available(MA.EndSection.TimeOut)
     MA.EndSection.TimeOut.Distance + Default.BaseTypes.LengthToDistance(MA.EndSection.Length) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)
       AND  
     MA.EndSection.TimeOut.TimeOut + SectionTimerStart &lt; DateAndTime.CurrentTime
-)</PreCondition></PreConditions>
+)</PreCondition><PreCondition
+ Guid="eb1eb2c2-ee01-4da8-95fb-684a3c9d0fcd"
+>Kernel.Level.Value.Value != Level.L3</PreCondition></PreConditions>
 <Expression>Section{
     Length =&gt; MA.EndSection.Length,
     TimeOut =&gt; MA.EndSection.TimeOut
@@ -2015,7 +2032,7 @@ Available(MA.EndSection.TimeOut)
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function><Function
- Type="MA.SectionsCol"
+ Type="SectionsCol"
  Default=""
  X="580"
  Y="190"
