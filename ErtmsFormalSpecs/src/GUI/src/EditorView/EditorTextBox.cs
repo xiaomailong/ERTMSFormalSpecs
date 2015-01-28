@@ -847,8 +847,8 @@ namespace GUI
                         ModelElement modelElement = Instance as ModelElement;
                         if (modelElement != null)
                         {
-                            Expression listExpression = EFSSystem.Parser.Expression(modelElement, EditionTextBox.Text.Substring(start, len), IsVariableOrValue.INSTANCE, false);
-                            Expression currentExpression = EFSSystem.Parser.Expression(modelElement, retVal.EnclosingName, AllMatches.INSTANCE, false);
+                            Expression listExpression = EFSSystem.Parser.Expression(modelElement, EditionTextBox.Text.Substring(start, len), IsVariableOrValue.INSTANCE, false, null, true);
+                            Expression currentExpression = EFSSystem.Parser.Expression(modelElement, retVal.EnclosingName, AllMatches.INSTANCE, false, null, true);
                             Expression foreachExpression = new ForAllExpression(modelElement, modelElement, listExpression, "X", currentExpression, -1, -1);
                             foreachExpression.SemanticAnalysis();
                             if (currentExpression.Ref != null)
@@ -867,7 +867,7 @@ namespace GUI
                     int parentIndex = retVal.EnclosingName.LastIndexOf('(');
                     string functionName = retVal.EnclosingName.Substring(0, parentIndex);
 
-                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, functionName, AllMatches.INSTANCE);
+                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, functionName, AllMatches.INSTANCE, true, null, true);
                     DataDictionary.Functions.Function function = expression.Ref as DataDictionary.Functions.Function;
                      if (function != null)
                     {
@@ -877,7 +877,7 @@ namespace GUI
                 }
                 else
                 {
-                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, retVal.EnclosingName, AllMatches.INSTANCE);
+                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, retVal.EnclosingName, AllMatches.INSTANCE, true, null, true);
 
                     if (expression != null)
                     {
@@ -1044,7 +1044,7 @@ namespace GUI
                             break;
 
                         case '{':
-                            Expression structureTypeExpression = EFSSystem.Parser.Expression(Instance as ModelElement, CurrentPrefix().Trim(), IsStructure.INSTANCE);
+                            Expression structureTypeExpression = EFSSystem.Parser.Expression(Instance as ModelElement, CurrentPrefix().Trim(), IsStructure.INSTANCE, true, null, true);
                             if (structureTypeExpression != null)
                             {
                                 DataDictionary.Types.Structure structure = structureTypeExpression.Ref as DataDictionary.Types.Structure;
@@ -1059,7 +1059,7 @@ namespace GUI
                             break;
 
                         case '(':
-                            Expression callableExpression = EFSSystem.Parser.Expression(Instance as ModelElement, CurrentPrefix().Trim(), IsCallable.INSTANCE);
+                            Expression callableExpression = EFSSystem.Parser.Expression(Instance as ModelElement, CurrentPrefix().Trim(), IsCallable.INSTANCE, true, null, true);
                             if (callableExpression != null)
                             {
                                 DataDictionary.Interpreter.ICallable callable = callableExpression.Ref as DataDictionary.Interpreter.ICallable;
@@ -1444,8 +1444,8 @@ namespace GUI
                         window.ShowDialog();
 
                         string newExpression = value.ToExpressionWithDefault();
-                        bool doSemanticalAnalysis = true;
-                        bool silent = true;
+                        const bool doSemanticalAnalysis = true;
+                        const bool silent = true;
                         retVal = EFSSystem.INSTANCE.Parser.Expression(expression.Root, newExpression, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent);
                     }
                 }
@@ -1566,8 +1566,8 @@ namespace GUI
 
             if (!dialogShown)
             {
-                bool doSemanticalAnalysis = true;
-                bool silent = true;
+                const bool doSemanticalAnalysis = true;
+                const bool silent = true;
                 ModelElement root = Instance as ModelElement;
                 if (root == null)
                 {
