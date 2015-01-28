@@ -6215,8 +6215,10 @@ BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="1db9e7cc-9ef3-4a75-a381-f2af5f0f2280"
->EURORADIO.CurrentRBCConnection().SendMARequest(
-    aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver
+>EURORADIO.CurrentRBCConnection().SendMARequest
+(
+    aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver,
+    aPacket =&gt; EMPTY
 )</Action></Actions>
 <Expectations>
 <Expectation

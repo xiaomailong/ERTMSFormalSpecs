@@ -5562,7 +5562,11 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <Actions>
 <Action
  Guid="d8168522-2e95-455d-b009-9b8a1f790460"
->EURORADIO.CurrentRBCConnection().SendMARequest ( aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver )</Action><Action
+>EURORADIO.CurrentRBCConnection().SendMARequest
+(
+    aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver,
+    aPacket =&gt; EMPTY
+)</Action><Action
  Guid="90885e9c-cbaf-452c-80fe-9e7324d8b5a0"
 >THIS &lt;- HandleModeChange.StartOfMission.S21.MARequestSent</Action></Actions>
 </RuleCondition></Conditions>
@@ -7888,7 +7892,11 @@ If the Driver selects Entry in SH, initiate &quot;Shunting initiated by Driver&q
 <Actions>
 <Action
  Guid="39540147-4615-44eb-84a8-9083d135c7c0"
->EURORADIO.CurrentRBCConnection().SendMARequest ( aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver )</Action><Action
+>EURORADIO.CurrentRBCConnection().SendMARequest
+(
+    aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver,
+    aPacket =&gt; EMPTY
+)</Action><Action
  Guid="fed8c181-694f-4bae-b0ce-bceb028acba9"
 >THIS &lt;- HandleModeChange.TrainTrip.S150.MARequestSent</Action></Actions>
 </RuleCondition></Conditions>
