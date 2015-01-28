@@ -12,7 +12,7 @@
 <Structures>
 <Structure
  Default=""
- X="410"
+ X="390"
  Y="260"
  Width="100"
  Height="50"
@@ -201,7 +201,7 @@
  TypeName="Kernel.LX.LevelCrossingStruct"
  MaxSize="20"
  Default="[]"
- X="230"
+ X="220"
  Y="260"
  Width="100"
  Height="50"
@@ -423,6 +423,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="Kernel.LX.LevelCrossingStruct"
  Default=""
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -460,6 +461,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Type="Kernel.LX.LevelCrossingStruct"
  Default=""
  X="110"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -499,6 +501,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="110"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -537,7 +541,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
- X="110"
+ X="220"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -820,6 +825,7 @@ SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2
 </Function><Function
  Type="Default.DistanceInterval"
  Default=""
+ X="110"
  Y="60"
  Width="100"
  Height="50"
@@ -866,8 +872,8 @@ SBI1IsMostRestrictive( aLX =&gt; aLX )</PreCondition></PreConditions>
 </Function></Functions>
 <Procedures>
 <Procedure
- X="110"
- Y="120"
+ X="480"
+ Y="90"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -1162,7 +1168,8 @@ IN SupervisedLevelCrossings</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- Y="60"
+ X="370"
+ Y="150"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1356,8 +1363,8 @@ IN
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="110"
- Y="60"
+ X="370"
+ Y="90"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1485,7 +1492,7 @@ IN
  DefaultValue=""
  VariableMode="Internal"
  X="160"
- Y="380"
+ Y="390"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -1508,8 +1515,8 @@ IN
  Type="LevelCrossingsCol"
  DefaultValue=""
  VariableMode="Internal"
- X="300"
- Y="380"
+ X="280"
+ Y="390"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1531,7 +1538,7 @@ IN
 <Rules>
 <Rule
  Priority="Processing"
- Y="120"
+ X="370"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1648,6 +1655,7 @@ SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT().Speed == 0.0</PreConditi
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ X="480"
  Width="100"
  Height="50"
  Implemented="TRUE"

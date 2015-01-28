@@ -13,6 +13,8 @@
 <Structures>
 <Structure
  Default=""
+ X="670"
+ Y="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -50,7 +52,7 @@
 <Function
  Type="Kernel.BaliseGroup"
  Default=""
- X="30"
+ X="670"
  Y="170"
  Width="100"
  Height="50"
@@ -87,9 +89,11 @@
 </Function><Function
  Type="Boolean"
  Default=""
- Y="60"
+ X="550"
+ Y="110"
  Width="100"
  Height="50"
+ Pinned="TRUE"
  Implemented="TRUE"
  Name="BGIsExpected"
  Guid="4c83360a-8e3b-4661-b0b9-75a304964c65"
@@ -129,8 +133,7 @@
 </Function></Functions>
 <Procedures>
 <Procedure
- X="190"
- Y="170"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -187,6 +190,7 @@
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="110"
  Y="120"
  Width="100"
  Height="50"
@@ -290,7 +294,7 @@
  Type="Kernel.Shunting.ExpectedBGstruct"
  DefaultValue=""
  VariableMode="Internal"
- X="220"
+ X="670"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -351,6 +355,7 @@
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
+ X="220"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -367,6 +372,7 @@
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
+ X="550"
  Width="100"
  Height="50"
  Implemented="TRUE"
