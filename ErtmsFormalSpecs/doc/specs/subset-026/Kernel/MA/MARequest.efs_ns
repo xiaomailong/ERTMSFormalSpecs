@@ -183,6 +183,8 @@ Kernel.MA.MARequest.MARequestParameters.HandleRepetitions</PreCondition></PreCon
 </Function><Function
  Type="BaseTypes.Time"
  Default=""
+ X="130"
+ Y="220"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -408,9 +410,9 @@ Kernel.MA.MARequest.MARequestParameters.HandleRepetitions</PreCondition></PreCon
 >MARequestParameters.HandleTimeouts
   AND
 (
-  THERE_IS Section IN MA.Sections | (SectionTimerStart + Section.TimeOut.TimeOut &gt;= MARequestParameters.SectionTimerTime)
+  THERE_IS Section IN MA.Sections | (MATimersStart + Section.TimeOut.TimeOut &gt;= MARequestParameters.SectionTimerTime)
     OR
-  SectionTimerStart + MA.TargetSpeedTimeOut &gt;= MARequestParameters.SectionTimerTime
+  MATimersStart + MA.TargetSpeedTimeOut &gt;= MARequestParameters.SectionTimerTime
 )</PreCondition></PreConditions>
 <Actions>
 <Action

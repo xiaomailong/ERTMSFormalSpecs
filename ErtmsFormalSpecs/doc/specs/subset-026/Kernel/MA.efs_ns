@@ -1864,7 +1864,7 @@ THERE_IS X IN MA.Sections | (Available(X.TimeOut)
   AND
 SectionStartLocation(X) + X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)  
   AND 
-X.TimeOut.TimeOut + SectionTimerStart &lt; DateAndTime.CurrentTime)</PreCondition><PreCondition
+X.TimeOut.TimeOut + MATimersStart &lt; DateAndTime.CurrentTime)</PreCondition><PreCondition
  Guid="87a7ac1d-9861-4a39-a1bd-90d0182d96e6"
 >Kernel.Level.Value.Value != Level.L3</PreCondition></PreConditions>
 <Expression>FIRST X IN MA.Sections | 
@@ -1872,7 +1872,7 @@ X.TimeOut.TimeOut + SectionTimerStart &lt; DateAndTime.CurrentTime)</PreConditio
   AND
     SectionStartLocation(X) + X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)
   AND  
-    X.TimeOut.TimeOut + SectionTimerStart &lt; DateAndTime.CurrentTime )</Expression>
+    X.TimeOut.TimeOut + MATimersStart &lt; DateAndTime.CurrentTime )</Expression>
 </Case><Case
  Name="Check the End Section"
  Guid="0cd53d69-33fa-4bd8-838c-2567b54d86e6"
@@ -1890,7 +1890,7 @@ Available(MA.EndSection.TimeOut)
 (
     MA.EndSection.TimeOut.Distance + Default.BaseTypes.LengthToDistance(MA.EndSection.Length) &gt; TrainPosition.FrontEndPosition(DistanceInterval.Min)
       AND  
-    MA.EndSection.TimeOut.TimeOut + SectionTimerStart &lt; DateAndTime.CurrentTime
+    MA.EndSection.TimeOut.TimeOut + MATimersStart &lt; DateAndTime.CurrentTime
 )</PreCondition><PreCondition
  Guid="eb1eb2c2-ee01-4da8-95fb-684a3c9d0fcd"
 >Kernel.Level.Value.Value != Level.L3</PreCondition></PreConditions>
@@ -2382,6 +2382,16 @@ Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreCond
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3a4ca2cf-0b50-4c9b-b314-f32a554ec7aa"
 >
+</ReqRef><ReqRef
+ Id="f9ca42e2-644d-47a2-b6e3-80059c79e361"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="71e2701d-8dbf-465b-b542-3eb2fe6e9835"
+>
+</ReqRef><ReqRef
+ Id="0e6a08d0-98b2-451c-bd8b-74b39807dde8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3425acbd-4984-4092-ba24-f889e46845f1"
+>
 </ReqRef><PreConditions>
 <PreCondition
  Guid="9f480703-6045-4959-8238-ce2a2407ae11"
@@ -2394,7 +2404,7 @@ Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreCond
 >SignallingRelatedSpeedRestriction &lt;- Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_MAIN, resolution =&gt; 5.0 )</Action><Action
  Guid="80edc04f-5273-4997-8bd5-e5b012a9c650"
 ><Comment>Current BG time of passage becomes section timer start</Comment>
-SectionTimerStart &lt;- CurrentBGTimeOfPassage</Action><Action
+MATimersStart &lt;- CurrentBGTimeOfPassage</Action><Action
  Guid="e1d644fe-308d-4060-a4cc-c14066ce2a1e"
 >MAIsAccepted &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
@@ -4518,7 +4528,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="SectionTimerStart"
+ Name="MATimersStart"
  Guid="eadabd71-0e7f-4597-8d44-9574de6f8a1d"
 >
 <ReqRef
@@ -4545,6 +4555,26 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
  Id="430d4f07-d2b9-4364-a2e5-17353db2175e"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1e9d37c8-ed98-409e-852e-bc09f61b31d7"
+>
+</ReqRef><ReqRef
+ Id="f9ca42e2-644d-47a2-b6e3-80059c79e361"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="56d5590e-2102-4277-87e1-a8a87054c7b0"
+>
+</ReqRef><ReqRef
+ Id="00601485-94ca-4c66-a312-5037844661af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6783c529-aeda-4d6c-9f72-95271d293c02"
+>
+</ReqRef><ReqRef
+ Id="0e6a08d0-98b2-451c-bd8b-74b39807dde8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ef2dff5d-26a1-4249-b036-b7007afbf999"
+>
+</ReqRef><ReqRef
+ Id="9d6569e4-3f30-4589-b167-e8da599da410"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="110ecff1-086f-4339-bdff-58be2da326f0"
 >
 </ReqRef><Comment>Time of reception of the MA, starting point of the section timers</Comment>
 </Variable><Variable
@@ -4598,6 +4628,16 @@ Note that the &quot;TimeOut&quot; here is not the End Section time-out value, bu
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="04bca44f-b79e-48e8-8afe-6a9a0bee0869"
 >
+</ReqRef><ReqRef
+ Id="f9ca42e2-644d-47a2-b6e3-80059c79e361"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a1b7a15-ef0d-4ad5-940d-3a33ad94c7e2"
+>
+</ReqRef><ReqRef
+ Id="0e6a08d0-98b2-451c-bd8b-74b39807dde8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a7fe8dca-53d2-4615-ab76-ea875b67d31b"
+>
 </ReqRef><Comment>Stores the time of passage over the first balise encountered of any BG. If the BG contains an MA, this time is the section timer start for all section time-outs in that MA</Comment>
 </Variable><Variable
  Type="Boolean"
@@ -4622,7 +4662,7 @@ Note that the &quot;TimeOut&quot; here is not the End Section time-out value, bu
 <Rule
  Priority="Processing"
  X="20"
- Y="730"
+ Y="740"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4666,8 +4706,8 @@ NOT(Available(EndSectionTimerStart))
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
- X="400"
- Y="650"
+ X="240"
+ Y="740"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4690,6 +4730,42 @@ NOT(Available(EndSectionTimerStart))
 <Action
  Guid="0209332a-b329-41fe-be81-67f6ff5c367a"
 >MAIsAccepted &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ X="130"
+ Y="740"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Handle EOA/LOA timeout"
+ Guid="591e94e5-c3a7-4e81-90e3-88568265a519"
+>
+<ReqRef
+ Id="9d6569e4-3f30-4589-b167-e8da599da410"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3b21b085-f837-4ebe-9e27-06a08ee3bec8"
+>
+</ReqRef><Comment>When the timeout associated to the target speed expires, the speed is set to 0.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle EOA/LOA timeout"
+ Guid="efc26cd3-d8bd-413b-8276-69274b1470de"
+>
+<PreConditions>
+<PreCondition
+ Guid="e2bcedd1-3423-45d1-99d3-ad82884d61fb"
+>MA != EMPTY
+  AND
+MATimersStart + MA.TargetSpeedTimeOut &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="81fb344e-2eac-4dbf-a87a-6b07cd092523"
+>MA.TargetSpeed &lt;- 0.0</Action><Action
+ Guid="4dbeb024-474e-458d-9ad3-72599528c636"
+>HandlingOfAcceptedAndStoredInformation.LOABecameEOA &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

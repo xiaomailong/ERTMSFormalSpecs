@@ -6902,16 +6902,6 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0b95f307-32e9-4b7f-a263-33d54c3b4cee"
 >
-</ReqRef><ReqRef
- Id="d833d8f6-90b9-499b-bdb1-408971c2cbfe"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="eac3e3bf-733f-427a-8d04-fe84a6b58c8a"
->
-</ReqRef><ReqRef
- Id="f0c86934-5f4c-4832-bb8d-5fce455e3e7e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d5fb7916-0ab9-4d5d-9d3d-3d810023d757"
->
 </ReqRef><Comment>Handles reception of the MA.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -7432,6 +7422,26 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2d0a8ab9-9dae-4ed6-a748-95a39c9b153d"
 >
+</ReqRef><ReqRef
+ Id="d833d8f6-90b9-499b-bdb1-408971c2cbfe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a622f005-ec93-4509-9936-58883e29eaa3"
+>
+</ReqRef><ReqRef
+ Id="f0c86934-5f4c-4832-bb8d-5fce455e3e7e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="551b8673-8961-4cd9-8469-961d3530f9e6"
+>
+</ReqRef><ReqRef
+ Id="f9ca42e2-644d-47a2-b6e3-80059c79e361"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e80f884d-b06d-4fb7-89ee-1fb58f2f242f"
+>
+</ReqRef><ReqRef
+ Id="00601485-94ca-4c66-a312-5037844661af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="626ef3ec-8126-47b1-8d9a-a4507f600f1d"
+>
 </ReqRef><Comment>At the end, handles the Movement Authority. This is done after all the packets were handled in order to be able to evaluate the track description, if any.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -7452,7 +7462,7 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 )</Action><Action
  Guid="ea27a22e-702a-469f-b2a7-d06724785ce8"
 ><Comment>Save the time stamp of the new MA for section timers</Comment>
-Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
+Kernel.MA.MATimersStart &lt;- Default.MessageTypes.TimeResolution(
     time=&gt;aMessage.MOVEMENT_AUTHORITY.T_TRAIN
 )</Action></Actions>
 </RuleCondition></Conditions>
@@ -7617,6 +7627,16 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d45e8c84-d628-48f9-89b7-7969ac7f5b82"
 >
+</ReqRef><ReqRef
+ Id="f9ca42e2-644d-47a2-b6e3-80059c79e361"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="88086661-9850-4991-86d6-fdc3f7d416d2"
+>
+</ReqRef><ReqRef
+ Id="00601485-94ca-4c66-a312-5037844661af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ce54f0d-e573-46c8-ab8a-4cb9a0f66dda"
+>
 </ReqRef><Comment>If the MA is accepted, it is handled normally and the section timer will be started</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -7633,7 +7653,7 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Action
  Guid="d4fb8501-640d-4856-92c1-a168eeed555f"
 ><Comment>Save the time stamp of the new MA for section timers</Comment>
-Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
+Kernel.MA.MATimersStart &lt;- Default.MessageTypes.TimeResolution(
     time=&gt;aMessage.MOVEMENT_AUTHORITY.T_TRAIN
 )</Action></Actions>
 </RuleCondition></Conditions>
@@ -8250,6 +8270,11 @@ Default.MessageTypes.QScaleDistance(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0a17f545-62a2-415b-9648-05f864f135d4"
 >
+</ReqRef><ReqRef
+ Id="00601485-94ca-4c66-a312-5037844661af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="297eefcb-fe92-4160-b242-3593360731db"
+>
 </ReqRef><Comment>Handles reception of MA with shifted location reference.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -8259,7 +8284,12 @@ Default.MessageTypes.QScaleDistance(
  Name="MA with shifted location reference"
  Guid="e0951c53-d0ce-491c-8f51-9d84c8f49e55"
 >
-<PreConditions>
+<ReqRef
+ Id="f9ca42e2-644d-47a2-b6e3-80059c79e361"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d62bbe47-2ec4-482e-b95a-9f103e40bfeb"
+>
+</ReqRef><PreConditions>
 <PreCondition
  Guid="4b26ec5f-a027-4caa-bca8-cd8c1bb56153"
 >Available ( aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE )</PreCondition><PreCondition
@@ -8275,7 +8305,7 @@ Default.MessageTypes.QScaleDistance(
 )</Action><Action
  Guid="99284f00-6c38-42f0-9a3c-fa2f5e7f6d9b"
 ><Comment>Save the time stamp of the new MA for section timers</Comment>
-Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
+Kernel.MA.MATimersStart &lt;- Default.MessageTypes.TimeResolution(
     time=&gt;aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.T_TRAIN
 )</Action></Actions>
 <SubRules>

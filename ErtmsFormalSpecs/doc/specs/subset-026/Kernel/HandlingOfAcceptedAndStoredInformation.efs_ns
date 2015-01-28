@@ -269,6 +269,7 @@
  Y="80"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="SituationN"
  Guid="436ae695-a3a8-49b6-904e-17721f4eb4cd"
 >
@@ -277,8 +278,19 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c97b818c-831a-4786-aa26-c4a048510153"
 >
-</ReqRef><Cases>
-</Cases>
+</ReqRef><ReqRef
+ Id="9d6569e4-3f30-4589-b167-e8da599da410"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d47e976b-0b6c-448f-982c-c314057ee276"
+>
+</ReqRef><Comment>Represents the situation N: the Limit of Authority becomes an End of Authority and the on-board considers an SvL.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="835a494f-04a5-4709-810a-6c28b56b41f7"
+>
+<Expression>LOABecameEOA</Expression>
+</Case></Cases>
 </Function></Functions>
 <Variables>
 <Variable
@@ -386,6 +398,29 @@
  Guid="e8b59214-3c92-48ee-bdfc-e779c253bd22"
 >
 </ReqRef><Comment>Indicates if a section timer reaches the time-out value, causing an MA shortening (Situation c)</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue=""
+ VariableMode="Internal"
+ X="580"
+ Y="190"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LOABecameEOA"
+ Guid="89fe25d6-ef7b-4b65-9204-01fa2521f186"
+>
+<ReqRef
+ Id="2f0d6e91-cef8-4e7a-a919-b4720496fb40"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="77147cf6-2414-47a6-a760-dbf83105579c"
+>
+</ReqRef><ReqRef
+ Id="9d6569e4-3f30-4589-b167-e8da599da410"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5291d0fa-0dfc-4d52-aa52-1f43a14de1fc"
+>
+</ReqRef><Comment>Indicates if the LOA became the EOA due to the target speed timeout.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -584,7 +619,9 @@
  Guid="cc289662-05e8-4a10-94e4-8e3b8b53053b"
 >ShortenedMaReceived &lt;- False</Action><Action
  Guid="4dd6b848-b366-45f2-9e1c-5246b5a568e0"
->ShortenedMaReceivedRegardlessOfSvL &lt;- False</Action></Actions>
+>ShortenedMaReceivedRegardlessOfSvL &lt;- False</Action><Action
+ Guid="4180ceda-1b01-4746-9372-b8a23545d007"
+>LOABecameEOA &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
