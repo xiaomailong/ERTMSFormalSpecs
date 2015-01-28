@@ -3381,6 +3381,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 >Kernel.MA.MA &lt;- Kernel.MA.MAStruct
 {
     TargetSpeed =&gt; 30.0,
+    TargetSpeedTimeOut =&gt; 200.0,
     Sections =&gt; [],
     EndSection =&gt; Kernel.MA.EndSection
     {
@@ -3464,7 +3465,7 @@ IN BTM.Linking.Linkings</Action></Actions>
                     Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
                     V_MAIN =&gt; 25,
                     V_LOA =&gt; 0,
-                    T_LOA =&gt; 150,
+                    T_LOA =&gt; 500,
 
                     N_ITER =&gt; 0,
                     Sequence1 =&gt; [],
