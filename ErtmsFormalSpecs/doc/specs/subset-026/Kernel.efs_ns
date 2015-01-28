@@ -99,6 +99,10 @@
  Name="LimitedSupervision"
  Guid="6680e38c-166c-45a7-a971-8712310bb80c"
 >
+</NameSpaceRef><NameSpaceRef
+ Name="TrackAheadFree"
+ Guid="ce8ea0b2-9a21-45f2-b90f-db2be131ec8b"
+>
 </NameSpaceRef></NameSpaces>
 <Enumerations>
 <Enum
@@ -486,7 +490,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 </ReqRef><Comment>Structure containing a record of a safety critical fault.</Comment>
 <StructureElement
- TypeName="DateAndTime"
+ TypeName="Default.DateAndTime"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -552,7 +556,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="2d4a2ec1-4f05-498c-b32f-0fdb39c34093"
 >
 </ReqRef></Collection><Collection
- TypeName="SafetyCriticalFaultStruct"
+ TypeName="Kernel.SafetyCriticalFaultStruct"
  Default="[]"
  X="970"
  Y="470"
@@ -12204,8 +12208,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- X="560"
- Y="10"
+ X="600"
+ Y="790"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12280,8 +12284,8 @@ When the rear end of the train passes the start of the profiles, the message is 
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- X="670"
- Y="10"
+ X="710"
+ Y="790"
  Width="100"
  Height="50"
  Implemented="TRUE"
