@@ -7462,7 +7462,7 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 )</Action><Action
  Guid="ea27a22e-702a-469f-b2a7-d06724785ce8"
 ><Comment>Save the time stamp of the new MA for section timers</Comment>
-Kernel.MA.MATimersStart &lt;- Default.MessageTypes.TimeResolution(
+Kernel.MA.MATimers.MATimersStart &lt;- Default.MessageTypes.TimeResolution(
     time=&gt;aMessage.MOVEMENT_AUTHORITY.T_TRAIN
 )</Action></Actions>
 </RuleCondition></Conditions>
@@ -7653,7 +7653,7 @@ Kernel.MA.MATimersStart &lt;- Default.MessageTypes.TimeResolution(
 <Action
  Guid="d4fb8501-640d-4856-92c1-a168eeed555f"
 ><Comment>Save the time stamp of the new MA for section timers</Comment>
-Kernel.MA.MATimersStart &lt;- Default.MessageTypes.TimeResolution(
+Kernel.MA.MATimers.MATimersStart &lt;- Default.MessageTypes.TimeResolution(
     time=&gt;aMessage.MOVEMENT_AUTHORITY.T_TRAIN
 )</Action></Actions>
 </RuleCondition></Conditions>
@@ -8305,7 +8305,7 @@ Default.MessageTypes.QScaleDistance(
 )</Action><Action
  Guid="99284f00-6c38-42f0-9a3c-fa2f5e7f6d9b"
 ><Comment>Save the time stamp of the new MA for section timers</Comment>
-Kernel.MA.MATimersStart &lt;- Default.MessageTypes.TimeResolution(
+Kernel.MA.MATimers.MATimersStart &lt;- Default.MessageTypes.TimeResolution(
     time=&gt;aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.T_TRAIN
 )</Action></Actions>
 <SubRules>
