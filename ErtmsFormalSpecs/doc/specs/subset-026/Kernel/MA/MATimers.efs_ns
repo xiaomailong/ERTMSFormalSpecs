@@ -212,8 +212,8 @@ X.TimeOut.TimeOut + MATimersStart &lt; DateAndTime.CurrentTime)</PreCondition><P
 >
 </ReqRef><Comment>Stores the time of passage over the first balise encountered of any BG. If the BG contains an MA, this time is the section timer start for all section time-outs in that MA.</Comment>
 </Variable><Variable
- Type="TimeOut"
- DefaultValue=""
+ Type="BaseTypes.Time"
+ DefaultValue="BaseTypes.Time.NA"
  VariableMode="Internal"
  X="130"
  Y="20"
@@ -379,19 +379,12 @@ MATimersStart + MA.TargetSpeedTimeOut &lt;= DateAndTime.CurrentTime</PreConditio
   AND  
 (TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Max) &gt; EndOfMA() - MA.MA.EndSection.EndSectionTimeOut.Distance)</PreCondition><PreCondition
  Guid="22692d30-56a8-4f47-a757-885cf72f478f"
-><Comment>Doesn&apos;t reassign the End Section timer start once it has already been started:
-Either there is no EndSectionTimerStart and we can go, or one has already been assigned, but with the wrong distance (so it can be overwritten).</Comment>
-NOT(Available(EndSectionTimerStart))
-  OR  
-(MATimers.EndSectionTimerStart.Distance != MA.MA.EndSection.EndSectionTimeOut.Distance)</PreCondition></PreConditions>
+><Comment>Doesn&apos;t reassign the End Section timer start once it has already been started.</Comment>
+EndSectionTimerStart != BaseTypes.Time.NA</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b9c8841c-a50c-46ad-97ae-1da9976bb22e"
->EndSectionTimerStart &lt;- TimeOut
-{
-    TimeOut =&gt; DateAndTime.CurrentTime,
-    Distance =&gt; MA.MA.EndSection.EndSectionTimeOut.Distance
-}</Action></Actions>
+>EndSectionTimerStart &lt;- DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
