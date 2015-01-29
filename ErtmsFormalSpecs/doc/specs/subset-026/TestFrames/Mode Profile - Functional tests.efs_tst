@@ -474,12 +474,12 @@ IN Kernel.MA.ModeProfile.Profile</Action><Action
     Sections =&gt; [],
     EndSection =&gt;Kernel.MA.EndSection
 {
-        EndSectionTimeOut =&gt; Kernel.MA.SectionTimeOut
+        EndSectionTimeOut =&gt; Kernel.MA.MATimers.TimeOut
        {
             TimeOut =&gt; 5.0,
             Distance =&gt; 1000.0
         },
-        TimeOut =&gt; Kernel.MA.SectionTimeOut
+        TimeOut =&gt; Kernel.MA.MATimers.TimeOut
         {
             TimeOut =&gt; 10.0,
             Distance =&gt; 1000.0
