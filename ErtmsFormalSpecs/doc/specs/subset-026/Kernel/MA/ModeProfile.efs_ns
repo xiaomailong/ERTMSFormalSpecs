@@ -25,7 +25,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="71f84709-ef29-467d-bba4-410f650a9f0d"
 >
-</ReqRef><StructureElement
+</ReqRef><Comment>Represents a mode profile.</Comment>
+<StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default="0.0"
  Mode="Internal"
@@ -239,7 +240,8 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="39dc7a5b-e779-417c-856c-4c64e105ebe7"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if the mode profile is applicable (i.e. there is a mode profile stored on-board and the train is within this mode profile).</Comment>
+<Cases>
 <Case
  Name="Mode profile not available"
  Guid="4b4310b8-065b-46d8-94ef-ecc033e5531a"
@@ -272,7 +274,8 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="62272c20-587d-4cf8-af77-0c80e0364bc5"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Provides the first mode of the mode profile.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="951cc127-221a-4c9f-8e74-8a45b13fdf27"
@@ -288,7 +291,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="RemoveMode"
+ Name="RemoveModeProfile"
  Guid="0b4e5f8b-0a62-4620-834a-8154496cc8ac"
 >
 <ReqRef
@@ -301,7 +304,8 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7a26f171-5b10-4050-8d75-a9f63001275d"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Indicates if the current mode profile has to be removed.</Comment>
+<Parameters>
 <Parameter
  Type="Kernel.MA.ModeProfile.ModeProfileStruct"
  Name="aProfile"
@@ -403,6 +407,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Name="ERTMS_To_EFS_Mode"
  Guid="5fd9933c-08ff-435f-aece-f31cc161c2de"
 >
+<Comment>Converts the modes received from the trackside to the modes used by EFS.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.M_MAMODE"
@@ -508,7 +513,8 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a543c236-bbd7-4441-aa3b-7fba736f19c3"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Provides the EOA due to the mode profile, if any.</Comment>
+<Cases>
 <Case
  Name="Mode Profile EOA available"
  Guid="35bb6df3-77eb-44a1-a069-ac7715eb8c61"
@@ -560,7 +566,8 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d015959e-6c8f-4db1-9287-5b2e166456e5"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Provides the SvL due to the mode profile, if any.</Comment>
+<Cases>
 <Case
  Name="Mode Profile SvL available"
  Guid="5dbb9bfb-4674-49fd-9b83-a74ce04de1fb"
@@ -595,6 +602,8 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Width="100"
  Height="50"
  Pinned="TRUE"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="FirstNonApplicableModeProfile"
  Guid="547b6baa-ee4d-4b17-8252-0289749bf194"
 >
@@ -619,9 +628,11 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Name="InitiateDriverAck"
  Guid="12cfa8ea-ce28-4fce-8003-8fca365a9729"
 >
+<Comment>Initiates driver&apos;s acknowledgement for the mode profile.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Initiate driver ack"
  Guid="481bfdba-8e13-4e61-a5a9-19b642ba0dbe"
@@ -638,7 +649,8 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="54645201-e2f1-49e3-800f-c798832237e2"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Initiates driver&apos;s acknowledgement for the OS mode.</Comment>
+<PreConditions>
 <PreCondition
  Guid="3238789f-c620-4519-8190-ff6b8b5d76e4"
 >CurrentMode() == Mode.ModeProfile.OS</PreCondition></PreConditions>
@@ -658,7 +670,8 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ca29006b-7bb2-438b-af61-a1b041457993"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Initiates driver&apos;s acknowledgement for the LS mode.</Comment>
+<PreConditions>
 <PreCondition
  Guid="18ce89cf-f196-45fa-91c2-76e40674c52e"
 >CurrentMode() == Mode.ModeProfile.LS</PreCondition></PreConditions>
@@ -683,7 +696,8 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2b9f2baf-16a1-4d3d-a9ef-c3ced9da9341"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Initiates driver&apos;s acknowledgement for the SH mode.</Comment>
+<PreConditions>
 <PreCondition
  Guid="f4862025-752e-4ca1-9057-6601634bf231"
 >CurrentMode() == Mode.ModeProfile.SH</PreCondition></PreConditions>
@@ -725,7 +739,8 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3cf46ce2-be5c-4575-b83a-0ca3ff590a76"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Handles the reception of the mode profile.</Comment>
+<Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.MODE_PROFILE.Message"
  Name="Packet"
@@ -740,12 +755,15 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Add first profile"
  Guid="e66d71f8-c387-4ceb-bd8c-7ccf4fbcb946"
 >
+<Comment>Adds the first element of the mode profile.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Add new profile"
  Guid="14aee0f3-9f0e-4f8b-906c-eb50d95486eb"
 >
@@ -768,12 +786,15 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Add following profiles"
  Guid="76413865-dfc6-4396-8fe8-64ecedc67e8f"
 >
+<Comment>Adds the following elements of the mode profile.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Add following profiles"
  Guid="66b0b22b-84a7-4296-8a17-166e4bc4dfde"
 >
@@ -848,7 +869,8 @@ ON
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bbda7634-3ea3-4356-bda3-f2c326a5ffbc"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Adds the new mode profile element received from the trackside.</Comment>
+<Parameters>
 <Parameter
  Type="Default.MessageTypes.Length"
  Name="L_ACKMAMODE"
@@ -911,7 +933,8 @@ ON
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ed72a11b-ae3f-4401-9f90-12dee8ae02ab"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Inserts a new mode profile for Shunting mode, in case the mode profile was received by infill (=&gt; the distance is computed according to the infill value).</Comment>
+<PreConditions>
 <PreCondition
  Guid="022da320-6f5e-4431-a3a7-861e2096f6ac"
 >Kernel.Infill.Data != EMPTY</PreCondition><PreCondition
@@ -933,9 +956,11 @@ ON
 IN
     Profile</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="No infill available, SH"
  Guid="e17706c0-74ac-4c15-8627-8aec55d86a52"
 >
+<Comment>Inserts a new mode profile for Shunting mode, in case the mode profile was received without infill.</Comment>
 <PreConditions>
 <PreCondition
  Guid="7a8f0e52-383d-41ee-8df5-71a1521c2764"
@@ -966,7 +991,8 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="eb3793a3-90a2-4df8-a3c2-69e0c13bc76b"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Inserts a new mode profile for Limited Supervision of On-Sight modes, in case the mode profile was received by infill (=&gt; the distance is computed according to the infill value).</Comment>
+<PreConditions>
 <PreCondition
  Guid="f1684bcc-f007-401f-a563-b5b2c938adb4"
 >Kernel.Infill.Data != EMPTY</PreCondition></PreConditions>
@@ -997,7 +1023,8 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="82229d0d-a9c5-4867-bf63-c6dca0946379"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If no generic marker is received, the stored marker is removed.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1015,9 +1042,11 @@ IN
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="No infill available, LS or OS"
  Guid="07db9b5d-c0c8-47e0-b272-7d8042bea88b"
 >
+<Comment>Inserts a new mode profile for Limited Supervision and On-Sight modes, in case the mode profile was received without infill.</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -1047,7 +1076,8 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c1f14513-9bed-4582-a613-f113e697f748"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If no generic marker is received, the stored marker is removed.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1081,7 +1111,8 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9912c05b-a2ff-4b0d-a17e-fb4d35f5215f"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Clears the previously stored mode profile on the reception of a new MA. If the MA is received by infill, the mode profile is deleted only beyond the reference location of the infill information.</Comment>
+<Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message"
  Name="InfillPacket"
@@ -1108,7 +1139,8 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="27fb3b75-ccad-4b93-9962-454d310035cf"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If the MA is received by infill, the mode profile is deleted only beyond the reference location of the infill information.</Comment>
+<PreConditions>
 <PreCondition
  Guid="acbdd6b9-884b-450b-bdcc-17b491c78147"
 >InfillPacket != EMPTY</PreCondition></PreConditions>
@@ -1121,6 +1153,7 @@ IN
  Name="No infill available"
  Guid="43da712d-cb6e-47bf-a0ca-fd7fd8c8ecee"
 >
+<Comment>If no infill is available, the mode profile is removed.</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
@@ -1291,9 +1324,11 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1c347756-616b-4ccf-a015-61883bd90610"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Removes the mode profile elemets that are not applicable anymore.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Clear profile"
  Guid="34b2d5de-80a8-4539-96e6-c35627980e9b"
 >
@@ -1302,7 +1337,7 @@ IN
 <Actions>
 <Action
  Guid="bef1dd94-9db8-4d2d-86e9-aa0a15bb0913"
->REMOVE ALL RemoveMode ( X ) IN  Profile</Action></Actions>
+>REMOVE ALL RemoveModeProfile ( X ) IN  Profile</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1369,7 +1404,8 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2cfaa422-d2fe-404b-b28c-cf93722a90ff"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Requests the acknowledgement from the driver for OS mode.</Comment>
+<PreConditions>
 <PreCondition
  Guid="6d1c7801-3e7d-452d-9a52-40bebe0ec5fd"
 >Mode not in [Mode.OS, Mode.SB, Mode.PT]</PreCondition><PreCondition
@@ -1430,7 +1466,8 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="41c7688c-1f16-4acf-910f-6eb4d335c50b"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Requests the acknowledgement from the driver for LS mode.</Comment>
+<PreConditions>
 <PreCondition
  Guid="5600aaf9-7d5c-4a4b-b01c-dcbf24977c52"
 >Mode not in [Mode.LS, Mode.SB, Mode.PT]</PreCondition><PreCondition
@@ -1476,7 +1513,8 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="35e408c0-1d04-4f6a-80e6-056c81f9ce1b"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Requests the acknowledgement from the driver for SH mode.</Comment>
+<PreConditions>
 <PreCondition
  Guid="a6b8a37e-3e25-40ae-ba2c-da28116ece59"
 >Mode not in [Mode.SB, Mode.PT]</PreCondition><PreCondition
@@ -1505,6 +1543,7 @@ IN
  Name="Driver ack timeout"
  Guid="5e7a02ed-8746-46f9-8f8a-9786dd7cc397"
 >
+<Comment>If the driver hasn&apos;t acknowledge during the allowed time, the service brake is applied.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1522,7 +1561,8 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="07afc52e-d4fc-4025-9e79-61d69bf44e1c"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Applies the service brake if the driver hasn&apos;t acknowledge the OS mode.</Comment>
+<PreConditions>
 <PreCondition
  Guid="1af308aa-11fd-4159-a0ff-6063b49cf8c5"
 >DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Request</PreCondition><PreCondition
@@ -1551,7 +1591,8 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ba7523a6-c845-4941-aeb2-8bea4fd53730"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Applies the service brake if the driver hasn&apos;t acknowledge the LS mode.</Comment>
+<PreConditions>
 <PreCondition
  Guid="67e8c925-5ed6-49dd-9683-286503836380"
 >Kernel.Mode == Mode.LS</PreCondition><PreCondition
@@ -1580,7 +1621,8 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a5320b9f-25f7-46c7-9bc5-bea6b9a5a4a8"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>Applies the service brake if the driver hasn&apos;t acknowledge the SH mode.</Comment>
+<PreConditions>
 <PreCondition
  Guid="41b79268-f740-4fa2-9e70-08d78771856a"
 >Kernel.Mode == Mode.SH</PreCondition><PreCondition
@@ -1636,7 +1678,8 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="263a0c68-6df9-4f0a-b715-872b15132d4b"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Releases ths service brake if the driver acknowledged the mode profile.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
