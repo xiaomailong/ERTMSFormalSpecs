@@ -24,11 +24,15 @@ clean:
 	@make -C GUI clean 
 	@make -C EFSTester clean 
 
-increase_release_number :
+increase_release_number:
 	@echo === Increase build number
 	@-$(XMLB_CALL) -SCRIPT update_release_number.rcs GUI/Properties/AssemblyInfo.cs > /dev/null
 
-release: clean increase_release_number Installer/EFSW_Installer_Script.iss	
+patch_configuration_file:
+	@echo === Patch configuration file
+	@-$(XMLB_CALL) -SCRIPT patch_configuration_file.rcs ../bin/GUI.exe.config
+
+release: clean increase_release_number patch_configuration_file Installer/EFSW_Installer_Script.iss	
 	@echo === Rebuilding solution in Release mode
 	$(BUILD) /t:Rebuild /p:Configuration=Release
 	@echo === Building Installer package	

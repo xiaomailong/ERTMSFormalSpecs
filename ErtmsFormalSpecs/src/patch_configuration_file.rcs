@@ -1,0 +1,17 @@
+MODULE PatchConfigurationFile;
+
+PROCEDURE TERMINATE;
+VAR
+  document;
+BEGIN
+  XML.SetKeepSpaces(TRUE);
+  document := XML.LoadFile(SYS.Args[1]);
+
+  FOR setting IN document.RecursiveGetElementChildNodes("setting") | X.name = "LockOpenedFiles" DO
+    FOR value IN setting.GetElementChildNodes("value") DO
+      value.GetFirstChild.SetNodeValue("True");
+    END;
+  END;
+
+  XML.SaveFile ( document, SYS.Args[1]);
+END TERMINATE;
