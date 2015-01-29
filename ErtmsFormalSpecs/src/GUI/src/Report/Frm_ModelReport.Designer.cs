@@ -440,7 +440,7 @@ namespace GUI.Report
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ModelReport";
             this.ShowInTaskbar = false;
-            this.Text = "Report options";
+            this.Text = "Model report options";
             this.GrB_Options.ResumeLayout(false);
             this.GrB_Options.PerformLayout();
             this.ResumeLayout(false);

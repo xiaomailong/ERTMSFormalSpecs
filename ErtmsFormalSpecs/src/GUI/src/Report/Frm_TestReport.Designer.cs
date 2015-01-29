@@ -238,7 +238,7 @@ namespace GUI.Report
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "TestReport";
             this.ShowInTaskbar = false;
-            this.Text = "Report options";
+            this.Text = "Test report options";
             this.TopMost = true;
             this.GrB_Filters.ResumeLayout(false);
             this.GrB_Filters.PerformLayout();

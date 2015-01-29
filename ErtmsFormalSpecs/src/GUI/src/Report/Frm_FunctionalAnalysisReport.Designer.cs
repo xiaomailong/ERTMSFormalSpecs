@@ -86,7 +86,7 @@ namespace GUI.Report
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FunctionalAnalysisReport";
             this.ShowInTaskbar = false;
-            this.Text = "Report options";
+            this.Text = "Functional analysis report options";
             this.ResumeLayout(false);
             this.PerformLayout();
 

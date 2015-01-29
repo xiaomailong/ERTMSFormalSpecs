@@ -130,7 +130,7 @@
             this.Controls.Add(this.Lbl_UserName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ERTMSAcademyReport";
-            this.Text = "Frm_ERTMSAcademyReport";
+            this.Text = "ERTMS Academy report";
             ((System.ComponentModel.ISupportInitialize)(this.sinceUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

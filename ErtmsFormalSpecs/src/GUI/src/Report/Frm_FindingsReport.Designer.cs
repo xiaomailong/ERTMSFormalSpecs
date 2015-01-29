@@ -44,15 +44,15 @@ namespace GUI.Report
         private void InitializeComponent()
         {
             this.GrB_Options = new System.Windows.Forms.GroupBox();
+            this.CB_NotReviewed = new System.Windows.Forms.CheckBox();
+            this.CB_Reviewed = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.CB_ShowBugs = new System.Windows.Forms.CheckBox();
             this.CB_ShowComments = new System.Windows.Forms.CheckBox();
             this.CB_ShowQuestions = new System.Windows.Forms.CheckBox();
             this.TxtB_Path = new System.Windows.Forms.TextBox();
             this.Btn_SelectFile = new System.Windows.Forms.Button();
             this.Btn_CreateReport = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.CB_Reviewed = new System.Windows.Forms.CheckBox();
-            this.CB_NotReviewed = new System.Windows.Forms.CheckBox();
             this.GrB_Options.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +71,42 @@ namespace GUI.Report
             this.GrB_Options.TabIndex = 0;
             this.GrB_Options.TabStop = false;
             this.GrB_Options.Text = "Options";
+            // 
+            // CB_NotReviewed
+            // 
+            this.CB_NotReviewed.AutoSize = true;
+            this.CB_NotReviewed.Checked = true;
+            this.CB_NotReviewed.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CB_NotReviewed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.CB_NotReviewed.Location = new System.Drawing.Point(208, 66);
+            this.CB_NotReviewed.Name = "CB_NotReviewed";
+            this.CB_NotReviewed.Size = new System.Drawing.Size(89, 17);
+            this.CB_NotReviewed.TabIndex = 5;
+            this.CB_NotReviewed.Text = "Not reviewed";
+            this.CB_NotReviewed.UseVisualStyleBackColor = true;
+            // 
+            // CB_Reviewed
+            // 
+            this.CB_Reviewed.AutoSize = true;
+            this.CB_Reviewed.Checked = true;
+            this.CB_Reviewed.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CB_Reviewed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.CB_Reviewed.Location = new System.Drawing.Point(208, 43);
+            this.CB_Reviewed.Name = "CB_Reviewed";
+            this.CB_Reviewed.Size = new System.Drawing.Size(74, 17);
+            this.CB_Reviewed.TabIndex = 4;
+            this.CB_Reviewed.Text = "Reviewed";
+            this.CB_Reviewed.UseVisualStyleBackColor = true;
+            this.CB_Reviewed.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(196, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 15);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Include Findings";
             // 
             // CB_ShowBugs
             // 
@@ -138,42 +174,6 @@ namespace GUI.Report
             this.Btn_CreateReport.UseVisualStyleBackColor = true;
             this.Btn_CreateReport.Click += new System.EventHandler(this.Btn_CreateReport_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(196, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 15);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Include Findings";
-            // 
-            // CB_Reviewed
-            // 
-            this.CB_Reviewed.AutoSize = true;
-            this.CB_Reviewed.Checked = true;
-            this.CB_Reviewed.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CB_Reviewed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.CB_Reviewed.Location = new System.Drawing.Point(208, 43);
-            this.CB_Reviewed.Name = "CB_Reviewed";
-            this.CB_Reviewed.Size = new System.Drawing.Size(74, 17);
-            this.CB_Reviewed.TabIndex = 4;
-            this.CB_Reviewed.Text = "Reviewed";
-            this.CB_Reviewed.UseVisualStyleBackColor = true;
-            this.CB_Reviewed.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // CB_NotReviewed
-            // 
-            this.CB_NotReviewed.AutoSize = true;
-            this.CB_NotReviewed.Checked = true;
-            this.CB_NotReviewed.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CB_NotReviewed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.CB_NotReviewed.Location = new System.Drawing.Point(208, 66);
-            this.CB_NotReviewed.Name = "CB_NotReviewed";
-            this.CB_NotReviewed.Size = new System.Drawing.Size(89, 17);
-            this.CB_NotReviewed.TabIndex = 5;
-            this.CB_NotReviewed.Text = "Not reviewed";
-            this.CB_NotReviewed.UseVisualStyleBackColor = true;
-            // 
             // FindingsReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,7 +186,7 @@ namespace GUI.Report
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FindingsReport";
             this.ShowInTaskbar = false;
-            this.Text = "Report options";
+            this.Text = "Findings report options";
             this.GrB_Options.ResumeLayout(false);
             this.GrB_Options.PerformLayout();
             this.ResumeLayout(false);

@@ -44,13 +44,13 @@ namespace GUI.Report
         private void InitializeComponent()
         {
             this.GrB_Options = new System.Windows.Forms.GroupBox();
+            this.assumptionsAndCommentsCheckBox = new System.Windows.Forms.CheckBox();
+            this.moreInformationNeededCheckBox = new System.Windows.Forms.CheckBox();
             this.CB_ShowDesignChoices = new System.Windows.Forms.CheckBox();
             this.CB_ShowIssues = new System.Windows.Forms.CheckBox();
             this.TxtB_Path = new System.Windows.Forms.TextBox();
             this.Btn_SelectFile = new System.Windows.Forms.Button();
             this.Btn_CreateReport = new System.Windows.Forms.Button();
-            this.moreInformationNeededCheckBox = new System.Windows.Forms.CheckBox();
-            this.assumptionsAndCommentsCheckBox = new System.Windows.Forms.CheckBox();
             this.GrB_Options.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +67,32 @@ namespace GUI.Report
             this.GrB_Options.TabIndex = 0;
             this.GrB_Options.TabStop = false;
             this.GrB_Options.Text = "Options";
+            // 
+            // assumptionsAndCommentsCheckBox
+            // 
+            this.assumptionsAndCommentsCheckBox.AutoSize = true;
+            this.assumptionsAndCommentsCheckBox.Checked = true;
+            this.assumptionsAndCommentsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.assumptionsAndCommentsCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.assumptionsAndCommentsCheckBox.Location = new System.Drawing.Point(6, 89);
+            this.assumptionsAndCommentsCheckBox.Name = "assumptionsAndCommentsCheckBox";
+            this.assumptionsAndCommentsCheckBox.Size = new System.Drawing.Size(157, 17);
+            this.assumptionsAndCommentsCheckBox.TabIndex = 3;
+            this.assumptionsAndCommentsCheckBox.Text = "Assumptions and comments";
+            this.assumptionsAndCommentsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // moreInformationNeededCheckBox
+            // 
+            this.moreInformationNeededCheckBox.AutoSize = true;
+            this.moreInformationNeededCheckBox.Checked = true;
+            this.moreInformationNeededCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.moreInformationNeededCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moreInformationNeededCheckBox.Location = new System.Drawing.Point(6, 66);
+            this.moreInformationNeededCheckBox.Name = "moreInformationNeededCheckBox";
+            this.moreInformationNeededCheckBox.Size = new System.Drawing.Size(143, 17);
+            this.moreInformationNeededCheckBox.TabIndex = 2;
+            this.moreInformationNeededCheckBox.Text = "More information needed";
+            this.moreInformationNeededCheckBox.UseVisualStyleBackColor = true;
             // 
             // CB_ShowDesignChoices
             // 
@@ -121,32 +147,6 @@ namespace GUI.Report
             this.Btn_CreateReport.UseVisualStyleBackColor = true;
             this.Btn_CreateReport.Click += new System.EventHandler(this.Btn_CreateReport_Click);
             // 
-            // moreInformationNeededCheckBox
-            // 
-            this.moreInformationNeededCheckBox.AutoSize = true;
-            this.moreInformationNeededCheckBox.Checked = true;
-            this.moreInformationNeededCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.moreInformationNeededCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.moreInformationNeededCheckBox.Location = new System.Drawing.Point(6, 66);
-            this.moreInformationNeededCheckBox.Name = "moreInformationNeededCheckBox";
-            this.moreInformationNeededCheckBox.Size = new System.Drawing.Size(143, 17);
-            this.moreInformationNeededCheckBox.TabIndex = 2;
-            this.moreInformationNeededCheckBox.Text = "More information needed";
-            this.moreInformationNeededCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // assumptionsAndCommentsCheckBox
-            // 
-            this.assumptionsAndCommentsCheckBox.AutoSize = true;
-            this.assumptionsAndCommentsCheckBox.Checked = true;
-            this.assumptionsAndCommentsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.assumptionsAndCommentsCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.assumptionsAndCommentsCheckBox.Location = new System.Drawing.Point(6, 89);
-            this.assumptionsAndCommentsCheckBox.Name = "assumptionsAndCommentsCheckBox";
-            this.assumptionsAndCommentsCheckBox.Size = new System.Drawing.Size(157, 17);
-            this.assumptionsAndCommentsCheckBox.TabIndex = 3;
-            this.assumptionsAndCommentsCheckBox.Text = "Assumptions and comments";
-            this.assumptionsAndCommentsCheckBox.UseVisualStyleBackColor = true;
-            // 
             // SpecIssuesReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -159,7 +159,7 @@ namespace GUI.Report
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SpecIssuesReport";
             this.ShowInTaskbar = false;
-            this.Text = "Report options";
+            this.Text = "Specification issues report options";
             this.GrB_Options.ResumeLayout(false);
             this.GrB_Options.PerformLayout();
             this.ResumeLayout(false);
