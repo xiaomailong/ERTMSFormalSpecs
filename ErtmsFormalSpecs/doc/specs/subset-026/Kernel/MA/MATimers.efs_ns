@@ -177,6 +177,74 @@ X.TimeOut.TimeOut + MATimersStart &lt; DateAndTime.CurrentTime)</PreCondition><P
 <Expression>SectionStartLocation(TimedOutSection())</Expression>
 </Case></Cases>
 </Function></Functions>
+<Procedures>
+<Procedure
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="HandleOverlapTimeout"
+ Guid="f32e57d7-7a01-4127-8730-4655bd6637a0"
+>
+<ReqRef
+ Id="750dafb4-b830-46b9-8b8e-2e806677f57c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6780da7e-dd85-49c7-bb79-b0738d23a55d"
+>
+</ReqRef><ReqRef
+ Id="2ef82e94-5a1f-42b0-b633-74070aff0b33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="364ce915-091f-4d56-89a7-d7731ff1e621"
+>
+</ReqRef><ReqRef
+ Id="64856907-c6b2-46b6-9ed0-07e61ce48cee"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="48685342-a69c-46ea-88c8-f8ca6f6a344e"
+>
+</ReqRef><ReqRef
+ Id="7e708f27-9f31-40a5-bbcf-ef90c1570bfc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bb010ed8-4e14-4690-a297-b37abf75f515"
+>
+</ReqRef><ReqRef
+ Id="95c54f1e-3d4f-4f96-afdb-8cefc9edf6ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d252de04-0c99-4d67-b0d4-4c12cea05dda"
+>
+</ReqRef><ReqRef
+ Id="0e4b96b4-eebf-407d-839d-227cc544b37a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3a66388c-91e9-460c-8856-c1c07a93d1e7"
+>
+</ReqRef><Comment>Applies the actions that have to be executed if the overlap timer expires.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle overlap timeout"
+ Guid="cc29dd32-dd09-4257-9600-b6fbde4293e4"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle overlap timeout"
+ Guid="ab320ee7-8f6c-4d27-aa4f-7ba486cbf555"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="60ac98eb-f87f-4a83-b636-ea89d0c00d73"
+>HandlingOfAcceptedAndStoredInformation.SvLShiftedDueToOverlapTimeout &lt;- True</Action><Action
+ Guid="a201db5e-1464-408f-b6e0-527ae199b982"
+>MA.MA.EndSection.Overlap &lt;- EMPTY</Action><Action
+ Guid="7fc9aece-b4b1-44d9-8ec3-044e13911666"
+>MA.MA.TargetSpeed &lt;- 0.0</Action><Action
+ Guid="0833bca7-b3f6-4aa8-a810-9134c26fe7d7"
+>OverlapTimerStart &lt;- BaseTypes.Time.NA</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <Variables>
 <Variable
  Type="Default.BaseTypes.Time"
@@ -294,8 +362,8 @@ Note that the &quot;TimeOut&quot; here is not the End Section time-out value, bu
 >
 </ReqRef><Comment>Time of reception of the MA, starting point of the section timers and EOA/LOA timer.</Comment>
 </Variable><Variable
- Type="TimeOut"
- DefaultValue=""
+ Type="BaseTypes.Time"
+ DefaultValue="BaseTypes.Time.NA"
  VariableMode="Internal"
  X="240"
  Y="20"
@@ -393,15 +461,11 @@ EndSectionTimerStart != BaseTypes.Time.NA</PreCondition></PreConditions>
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="Start overlap timer"
+ NeedsRequirement="FALSE"
+ Name="Handle overlap timer"
  Guid="5dc5d497-4b0e-4f74-bec6-6c57c87fa5b4"
 >
-<ReqRef
- Id="1b6f1d36-9373-453c-9e59-13fd613cd03d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b3695dfe-7ed5-4df1-8ebf-3bca4e4bdc91"
->
-</ReqRef><Comment>As soon as the train&apos;s location passes the Overlap Start Location, start the timer.</Comment>
+<Comment>Handles the actions related to the overlap timer (start, stop and handling of timeout).</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -409,20 +473,74 @@ EndSectionTimerStart != BaseTypes.Time.NA</PreCondition></PreConditions>
  Name="Start overlap timer"
  Guid="b5ba1c3a-9d61-477b-84da-163a081813c3"
 >
+<ReqRef
+ Id="1b6f1d36-9373-453c-9e59-13fd613cd03d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fbec9b86-6e10-401d-9f1e-c53718bbefcb"
+>
+</ReqRef><Comment>As soon as the train&apos;s location passes the Overlap Start Location, start the timer.</Comment>
 <PreConditions>
 <PreCondition
  Guid="4622259b-4b1e-41e7-8a6f-d5719cd20cd5"
 >MA.EndSection.Overlap != EMPTY
   AND  
-(TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Nom) &gt; EndOfMA() - MA.MA.EndSection.Overlap.TimerDistance )</PreCondition></PreConditions>
+(TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Nom) &gt; EndOfMA() - MA.MA.EndSection.Overlap.TimerDistance )</PreCondition><PreCondition
+ Guid="b4790add-4047-43c2-b414-3748923bc727"
+><Comment>Doesn&apos;t reassign the Overlap timer start once it has already been started.</Comment>
+OverlapTimerStart == BaseTypes.Time.NA</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d4efcec8-86d8-4a2f-b686-4f86b2dc0755"
->OverlapTimerStart &lt;- TimeOut
-{
-    TimeOut =&gt; DateAndTime.CurrentTime,
-    Distance =&gt; MA.MA.EndSection.EndSectionTimeOut.Distance
-}</Action></Actions>
+>OverlapTimerStart &lt;- DateAndTime.CurrentTime</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Overlap timer expired"
+ Guid="8947c324-1b7f-45a4-9df8-3009b7bd255e"
+>
+<ReqRef
+ Id="750dafb4-b830-46b9-8b8e-2e806677f57c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="22458151-67d6-416c-8c70-c90cd5538dc6"
+>
+</ReqRef><ReqRef
+ Id="bd7b8708-c9ad-4c70-9635-d903b7a30074"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="11880b75-fd88-4234-8006-b68988d88d05"
+>
+</ReqRef><Comment>If the timer expires, the appropriate actions are executed.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="4550ef6f-589d-4c2d-b6b8-bb16a4a704a4"
+>MA.MA.EndSection.Overlap != EMPTY
+  AND
+OverlapTimerStart != BaseTypes.Time.NA
+  AND  
+(DateAndTime.CurrentTime &gt; OverlapTimerStart + MA.MA.EndSection.Overlap.TimeOut)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9cf7b65e-05f0-43cf-8a21-9e0fdac2bd4b"
+>HandleOverlapTimeout()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Train comes at standstill with overlap timer started"
+ Guid="5cf5f22f-1cc4-4ba9-a737-48fbef3ed482"
+>
+<ReqRef
+ Id="95c54f1e-3d4f-4f96-afdb-8cefc9edf6ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="06f1038d-fe3c-4aa1-a0d6-c040d745a6b6"
+>
+</ReqRef><Comment>If the train comes at standstill after the overlap timer has been started, the overlap timer is considered as expired.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="e920c97c-9102-47d7-a043-0c6c4808eabf"
+>OverlapTimerStart != BaseTypes.Time.NA</PreCondition><PreCondition
+ Guid="2938a143-8f9c-4ad2-a055-fa0c7a29cd19"
+>Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="97ae4750-9d3a-491c-a9b9-a17c639d1089"
+>HandleOverlapTimeout()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

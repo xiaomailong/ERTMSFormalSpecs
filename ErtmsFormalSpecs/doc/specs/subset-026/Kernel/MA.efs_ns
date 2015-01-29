@@ -2604,7 +2604,7 @@ SvL() != EMPTY</PreCondition></PreConditions>
  Name="Check end section timer"
  Guid="8dd58980-55ef-4bb2-b236-e4152bf43630"
 >
-<Comment>When a new MA is received, check for a new End Section timer in rear of the train</Comment>
+<Comment>When a new MA is received, checks if the start location of the end section of the new MA is in the rear of the train and in that case simulates the expiration of the end section timer.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2651,6 +2651,42 @@ In this case, the EOA should be moved to the train&apos;s current position with 
 >MATimers.EndSectionTimerStart &lt;- DateAndTime.CurrentTime - BaseTypes.Time ( Packet.T_ENDTIMER )</Action><Action
  Guid="72934c18-ce47-4fc9-8041-2427d0965cbf"
 >HandlingOfAcceptedAndStoredInformation.EndSectionTimeOutShortensMA &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Check overlap timer"
+ Guid="1435801b-bb35-40e4-821c-64e45f56e759"
+>
+<Comment>When a new MA is received, checks if the start location of the overlap of the new MA is in the rear of the train and in that case simulates the expiration of the overlap timer.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="No Overlap timer and new Overlap timer in rear of train"
+ Guid="345e8491-a696-4ee4-bf01-c4fa7c944c37"
+>
+<ReqRef
+ Id="0e4b96b4-eebf-407d-839d-227cc544b37a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8f623633-ed28-42ac-aaa6-af737d5f9d9f"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="1abe8fa0-b26c-4fc1-914a-75ad390bbe7f"
+>Packet.Q_OVERLAP == Messages.Q_OVERLAP.Overlap_information_to_follow
+  AND
+( 
+  Default.MessageTypes.QScaleDistance
+  (
+      distance =&gt; Packet.D_STARTOL,
+      scale =&gt; Packet.Q_SCALE
+  ) &lt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3ade456f-2e44-420d-8da8-5e67afcd2911"
+>MATimers.HandleOverlapTimeout()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -2884,6 +2920,11 @@ In this case, the EOA should be moved to the train&apos;s current position with 
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d622832e-d82c-43e6-a465-0e396eff6c96"
 >
+</ReqRef><ReqRef
+ Id="6052fa22-4c14-4438-bee8-59b6eae1a666"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d5c3cfaa-4e04-492f-a5a4-af2d13171019"
+>
 </ReqRef><Comment>If the Packet announces an Overlap, record it</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -2937,7 +2978,9 @@ In this case, the EOA should be moved to the train&apos;s current position with 
 <Actions>
 <Action
  Guid="6025c9c1-140a-4a5a-987a-8e0a1d675e04"
->MA.EndSection.Overlap &lt;- EMPTY</Action></Actions>
+>MA.EndSection.Overlap &lt;- EMPTY</Action><Action
+ Guid="da51d9dd-a44b-4e99-b6c5-262363713fa8"
+>MATimers.OverlapTimerStart &lt;- BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

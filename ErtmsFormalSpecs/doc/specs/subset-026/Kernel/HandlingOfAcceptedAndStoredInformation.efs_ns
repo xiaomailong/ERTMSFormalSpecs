@@ -81,6 +81,7 @@
  Y="80"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="SituationD"
  Guid="4e8d4bf8-721f-4fab-b115-d5bf0d8308ec"
 >
@@ -89,8 +90,14 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4abf47b8-fc6d-4f53-9979-92d2fe0904ea"
 >
-</ReqRef><Cases>
-</Cases>
+</ReqRef><Comment>Indicates if the SvL is shifted due to the expiration of the overlap timer.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="088c6edb-0085-4fbe-881d-c2936a51d1de"
+>
+<Expression>SvLShiftedDueToOverlapTimeout</Expression>
+</Case></Cases>
 </Function><Function
  Type="Boolean"
  Default=""
@@ -421,6 +428,25 @@
  Guid="5291d0fa-0dfc-4d52-aa52-1f43a14de1fc"
 >
 </ReqRef><Comment>Indicates if the LOA became the EOA due to the target speed timeout.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue=""
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="SvLShiftedDueToOverlapTimeout"
+ Guid="3dbdf849-09e5-486e-aa55-78c8b4590490"
+>
+<ReqRef
+ Id="bd7b8708-c9ad-4c70-9635-d903b7a30074"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="33bf8df6-c03f-41ed-9db5-99cb18d9a62c"
+>
+</ReqRef><ReqRef
+ Id="2ef82e94-5a1f-42b0-b633-74070aff0b33"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e0f238c1-df24-4cec-9d58-bda56ad2677b"
+>
+</ReqRef><Comment>Indicates if the SvL was shifted due to the expiration of the overlap timer.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
