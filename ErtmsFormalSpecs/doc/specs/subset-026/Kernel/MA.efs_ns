@@ -1738,6 +1738,7 @@ USING X IN
  Y="10"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="ShortenedMAIsAccepted"
  Guid="1891bebe-22be-4c1a-89f9-80a427758759"
 >
@@ -1761,13 +1762,34 @@ USING X IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7a8b15f1-1207-4f8a-b0ef-ac53d671ecfb"
 >
-</ReqRef><Comment>Indicates whether the shortened MA sent by RBC is accepted</Comment>
+</ReqRef><Comment>Indicates whether the shortened MA sent by RBC is accepted.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_2_3_MOVEMENT_AUTHORITY.Message"
+ Name="aShortenedMA"
+ Guid="5c891ee4-a50f-478d-85e4-84cdab2858d1"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
  Guid="9481bd1d-6bc4-4ebc-8167-a44b76beb265"
 >
-<Expression>False</Expression>
+<Expression>TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Nom )
+  &gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_I_Target
+(
+    Vest =&gt; Odometry.EstimatedSpeed,
+    aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
+    {
+        Location =&gt; MessageTypes.QScaleDistance
+        (
+            distance =&gt; (SUM aShortenedMA.Sequence1 USING X IN X.L_SECTION) + aShortenedMA.L_ENDSECTION,
+            scale =&gt; aShortenedMA.Q_SCALE
+        ),
+        Speed =&gt; 0.0,
+        Length =&gt; 0.0
+    }
+)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -2125,7 +2147,7 @@ Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreCond
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Store MA information"
+ Name="Handle new MA"
  Guid="6fc7171c-6986-4137-bdd6-b65a06a83d84"
 >
 <SubRules></SubRules>
@@ -2133,7 +2155,7 @@ Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreCond
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Store MA information"
+ Name="Handle new MA"
  Guid="ddb3309f-db79-43b7-938a-d3dc7c9abd43"
 >
 <PreConditions>

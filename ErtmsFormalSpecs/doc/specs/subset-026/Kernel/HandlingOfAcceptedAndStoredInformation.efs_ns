@@ -43,7 +43,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="86f8f8e5-65b8-4a66-96da-647c04724fe0"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if the on-board received a shortened MA.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="d310ebb4-ad28-4cbe-b24c-0c6a00ee1008"
@@ -134,6 +135,7 @@
  Y="80"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="SituationF"
  Guid="9f4e8423-766c-4a78-9d9c-9ce71d753a2d"
 >
@@ -142,8 +144,19 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="533ca604-d837-4e29-bbd6-76e3352cd1da"
 >
-</ReqRef><Cases>
-</Cases>
+</ReqRef><ReqRef
+ Id="0385292a-59d1-48df-b95b-ac8936ef26aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c51c494d-bedc-4d91-a1e1-280a55ee14d3"
+>
+</ReqRef><Comment>Indicates if a cooperative MA revocation is granted by the onboard.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="a1241f0b-fd1f-4501-a97c-ef53bc638b8b"
+>
+<Expression>CooperativeMARevocationIsGranted</Expression>
+</Case></Cases>
 </Function><Function
  Type="Boolean"
  Default=""
@@ -228,7 +241,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="74405626-92a2-413d-878c-7687dc393ae0"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if the driver closed the desk during the Start of Mission procedure.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="51f08011-394d-4a16-bbbb-bca13af3e500"
@@ -432,6 +446,10 @@
  Type="Boolean"
  DefaultValue=""
  VariableMode="Internal"
+ X="690"
+ Y="190"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="SvLShiftedDueToOverlapTimeout"
  Guid="3dbdf849-09e5-486e-aa55-78c8b4590490"
@@ -447,6 +465,29 @@
  Guid="e0f238c1-df24-4cec-9d58-bda56ad2677b"
 >
 </ReqRef><Comment>Indicates if the SvL was shifted due to the expiration of the overlap timer.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue=""
+ VariableMode="Internal"
+ X="800"
+ Y="190"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="CooperativeMARevocationIsGranted"
+ Guid="34b678e4-b0f3-46ed-b8de-524ae3e6f354"
+>
+<ReqRef
+ Id="0385292a-59d1-48df-b95b-ac8936ef26aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="431becad-d065-483e-b5cb-112b0f3ac0ec"
+>
+</ReqRef><ReqRef
+ Id="f02c77c5-55bf-4067-a811-d4fd60ec7819"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e192cd80-d5af-41b8-9acf-de65011638ee"
+>
+</ReqRef><Comment>Indicates if a cooperative MA revocation was granted by the onboard.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -647,7 +688,11 @@
  Guid="4dd6b848-b366-45f2-9e1c-5246b5a568e0"
 >ShortenedMaReceivedRegardlessOfSvL &lt;- False</Action><Action
  Guid="4180ceda-1b01-4746-9372-b8a23545d007"
->LOABecameEOA &lt;- False</Action></Actions>
+>LOABecameEOA &lt;- False</Action><Action
+ Guid="cc633673-ad54-48db-a9d8-27d2b5295769"
+>CooperativeMARevocationIsGranted &lt;- False</Action><Action
+ Guid="a4f7b2c0-61dc-4d2e-be64-f3684558c166"
+>SvLShiftedDueToOverlapTimeout &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
