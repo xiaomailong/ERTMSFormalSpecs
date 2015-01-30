@@ -740,6 +740,11 @@ INITIAL_VALUE CreateTarget (
  Name="Scale"
  Guid="0b75831b-6fa2-4e98-80b8-0b78d1295f41"
 >
+</Parameter><Parameter
+ Type="BaseTypes.Time"
+ Name="SectionStartTimer"
+ Guid="7c9adcc0-43e2-4367-9d2a-cb2ce7306602"
+>
 </Parameter></Parameters>
 <Cases>
 <Case
@@ -756,7 +761,8 @@ INITIAL_VALUE CreateTarget (
     TimeOut =&gt;Kernel.MA.MATimers.TimeOut
     {
         Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; ERTMSSection.D_SECTIONTIMERSTOPLOC, scale =&gt; Scale ),
-        TimeOut =&gt; BaseTypes.Time ( ERTMSSection.T_SECTIONTIMER )
+        TimeOut =&gt; BaseTypes.Time ( ERTMSSection.T_SECTIONTIMER ),
+        TimerStart =&gt; SectionStartTimer
     }
 }</Expression>
 </Case><Case
@@ -2108,6 +2114,11 @@ Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreCond
  Name="NID_BG"
  Guid="e30eabf9-dbd6-4355-bee8-27b2e2e7ce7d"
 >
+</Parameter><Parameter
+ Type="BaseTypes.Time"
+ Name="SectionStartTimer"
+ Guid="4dc676aa-f0e6-4858-8811-4526592f5424"
+>
 </Parameter></Parameters>
 <Rules>
 <Rule
@@ -2132,7 +2143,12 @@ Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreCond
 <Actions>
 <Action
  Guid="c6a9825b-4180-4447-a067-78ee2400685c"
->UpdateMA ( Packet =&gt; ConvertMALvl2or3_to_MALvl1 ( Packet ), NID_BG =&gt; NID_BG )</Action><Action
+>UpdateMA
+(
+    Packet =&gt; ConvertMALvl2or3_to_MALvl1 ( Packet ),
+    NID_BG =&gt; NID_BG,
+    SectionStartTimer =&gt; SectionStartTimer
+)</Action><Action
  Guid="3e4d5ecc-98c0-4000-9d12-5b63e89e74c7"
 >MAIsAccepted &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
@@ -2233,12 +2249,17 @@ Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreCond
 <Actions>
 <Action
  Guid="0b32d029-1703-4f17-9be3-7ba6576b3c68"
->UpdateMA ( Packet =&gt; Packet, NID_BG =&gt; NID_BG )</Action><Action
+>UpdateMA
+(
+    Packet =&gt; Packet,
+    NID_BG =&gt; NID_BG,
+    SectionStartTimer =&gt; MATimers.CurrentBGTimeOfPassage
+)</Action><Action
  Guid="f8a42f47-6bf7-4155-9ad4-52eb896fbff6"
 >SignallingRelatedSpeedRestriction &lt;- Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_MAIN, resolution =&gt; 5.0 )</Action><Action
  Guid="80edc04f-5273-4997-8bd5-e5b012a9c650"
 ><Comment>Current BG time of passage becomes section timer start</Comment>
-MATimers.MATimersStart &lt;- MATimers.CurrentBGTimeOfPassage</Action><Action
+MATimers.LOATimerStart &lt;- MATimers.CurrentBGTimeOfPassage</Action><Action
  Guid="e1d644fe-308d-4060-a4cc-c14066ce2a1e"
 >MAIsAccepted &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
@@ -2320,6 +2341,11 @@ MATimers.MATimersStart &lt;- MATimers.CurrentBGTimeOfPassage</Action><Action
  Type="Messages.NID_BG"
  Name="NID_BG"
  Guid="64a6d581-678f-43a5-9cde-ce68d2052fdd"
+>
+</Parameter><Parameter
+ Type="BaseTypes.Time"
+ Name="SectionStartTimer"
+ Guid="2e880274-ffee-4f27-b59e-f1d655b920d1"
 >
 </Parameter></Parameters>
 <Rules>
@@ -2478,6 +2504,16 @@ SvL() != EMPTY</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="52485ec4-7a71-4a7f-b120-731b12b2b40e"
 >
+</ReqRef><ReqRef
+ Id="d9235eb8-4b37-4376-98fc-a488932db020"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="32feab52-c8f0-4803-bba9-5157404957b2"
+>
+</ReqRef><ReqRef
+ Id="aab59034-edf0-405a-be36-77d7bb4b775a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b0307fef-6c6e-46fa-984f-2a6dce58957f"
+>
 </ReqRef><Comment>Update sections with infill data</Comment>
 <PreConditions>
 <PreCondition
@@ -2486,7 +2522,12 @@ SvL() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="72e4e499-b2a3-4def-8b72-ed0903b42191"
->UpdateSectionsForInfill ( InfillDistance =&gt; BTM.Linking.DistanceToBaliseGroup ( Infill.Data.NID_BG ), Packet =&gt; Packet )</Action></Actions>
+>UpdateSectionsForInfill
+(
+    InfillDistance =&gt; BTM.Linking.DistanceToBaliseGroup ( Infill.Data.NID_BG ),
+    Packet =&gt; Packet,
+    SectionStartTimer =&gt; SectionStartTimer
+)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No infill"
@@ -2537,7 +2578,12 @@ SvL() != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="12b90b2e-7d29-48ba-9284-89ff10da7e8f"
->MA.Sections &lt;- MAP Packet.Sequence1 USING X IN CreateEFSSection ( ERTMSSection =&gt; X, Scale =&gt; Packet.Q_SCALE )</Action></Actions>
+>MA.Sections &lt;- MAP Packet.Sequence1 USING X IN CreateEFSSection
+(
+    ERTMSSection =&gt; X,
+    Scale =&gt; Packet.Q_SCALE,
+    SectionStartTimer =&gt; SectionStartTimer
+)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3021,6 +3067,16 @@ In this case, the EOA should be moved to the train&apos;s current position with 
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7644767a-490e-426e-ac8a-c902d9572d14"
 >
+</ReqRef><ReqRef
+ Id="d9235eb8-4b37-4376-98fc-a488932db020"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ce66dd99-871f-4658-938e-e02a64d3c4b9"
+>
+</ReqRef><ReqRef
+ Id="aab59034-edf0-405a-be36-77d7bb4b775a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f73af415-0314-4a46-8ef8-0d11bfd214ed"
+>
 </ReqRef><Comment>This function updates the MA&apos;s sections when an infill MA is received. The following steps are executed:
  - The end section of the previous MA is inserted to the list of the sections;
  - All sections situated after the infill locations are removed (if the infill location is situated in the middle of one of sections, the section is cut at that point);
@@ -3035,6 +3091,11 @@ In this case, the EOA should be moved to the train&apos;s current position with 
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
  Name="Packet"
  Guid="eb63bd74-8ab7-4816-a6c2-7f9d9679f8fd"
+>
+</Parameter><Parameter
+ Type="BaseTypes.Time"
+ Name="SectionStartTimer"
+ Guid="de8e380d-d4cf-4e28-b3f5-b58648426ca6"
 >
 </Parameter></Parameters>
 <Rules>
@@ -3113,7 +3174,14 @@ IN MA.Sections</Action></Actions>
 <Actions>
 <Action
  Guid="1b412fd4-760c-48a0-b2de-253d03b01b87"
->APPLY ExtendSections ( aSection =&gt; X, Scale =&gt; Packet.Q_SCALE ) ON Packet.Sequence1</Action></Actions>
+>APPLY ExtendSections
+(
+    aSection =&gt; X,
+    Scale =&gt; Packet.Q_SCALE,
+    SectionStartTimer =&gt; SectionStartTimer
+)
+  ON
+Packet.Sequence1</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3130,7 +3198,7 @@ IN MA.Sections</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="84cd2f51-3416-4f6e-9ff1-37130af463d1"
 >
-</ReqRef><Comment>Adds a MA section from the received movement authority to MA.Sections</Comment>
+</ReqRef><Comment>Adds a MA section from the received movement authority to MA.Sections.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.SubStructure1"
@@ -3141,6 +3209,11 @@ IN MA.Sections</Action></Actions>
  Type="Messages.Q_SCALE"
  Name="Scale"
  Guid="d9585381-876e-43a5-83aa-7091db273836"
+>
+</Parameter><Parameter
+ Type="BaseTypes.Time"
+ Name="SectionStartTimer"
+ Guid="38e11100-e282-4d18-b010-621073c43a6a"
 >
 </Parameter></Parameters>
 <Rules>
@@ -3165,7 +3238,12 @@ IN MA.Sections</Action></Actions>
 <Action
  Guid="ce0beff9-e9af-4007-a828-33f30bece57b"
 >INSERT
-  CreateEFSSection ( ERTMSSection =&gt; aSection, Scale =&gt; Scale )
+  CreateEFSSection
+  (
+    ERTMSSection =&gt; aSection,
+    Scale =&gt; Scale,
+    SectionStartTimer =&gt; SectionStartTimer
+   )
 IN
   MA.Sections</Action></Actions>
 </RuleCondition></Conditions>

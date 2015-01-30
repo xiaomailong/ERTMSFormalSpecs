@@ -7458,13 +7458,11 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 >Kernel.MA.MALvl2or3Received
 (
     Packet =&gt; aMessage.MOVEMENT_AUTHORITY.LEVEL_2_3_MOVEMENT_AUTHORITY,
-    NID_BG =&gt; aMessage.MOVEMENT_AUTHORITY.NID_LRBG
+    NID_BG =&gt; aMessage.MOVEMENT_AUTHORITY.NID_LRBG,
+    SectionStartTimer =&gt; MessageTypes.TimeResolution ( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )
 )</Action><Action
- Guid="ea27a22e-702a-469f-b2a7-d06724785ce8"
-><Comment>Save the time stamp of the new MA for section timers</Comment>
-Kernel.MA.MATimers.MATimersStart &lt;- Default.MessageTypes.TimeResolution(
-    time=&gt;aMessage.MOVEMENT_AUTHORITY.T_TRAIN
-)</Action></Actions>
+ Guid="03bcefd6-b932-4560-84fe-4d09a3f2be6f"
+>Kernel.MA.MATimers.LOATimerStart &lt;- Default.MessageTypes.TimeResolution( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7653,9 +7651,7 @@ Kernel.MA.MATimers.MATimersStart &lt;- Default.MessageTypes.TimeResolution(
 <Action
  Guid="d4fb8501-640d-4856-92c1-a168eeed555f"
 ><Comment>Save the time stamp of the new MA for section timers</Comment>
-Kernel.MA.MATimers.MATimersStart &lt;- Default.MessageTypes.TimeResolution(
-    time=&gt;aMessage.MOVEMENT_AUTHORITY.T_TRAIN
-)</Action></Actions>
+Kernel.MA.MATimers.LOATimerStart &lt;- Default.MessageTypes.TimeResolution( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -8301,13 +8297,11 @@ Default.MessageTypes.QScaleDistance(
 >Kernel.MA.MALvl2or3Received
 (
     Packet =&gt; aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.LEVEL_2_3_MOVEMENT_AUTHORITY,
-    NID_BG =&gt; aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.NID_LRBG
+    NID_BG =&gt; aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.NID_LRBG,
+    SectionStartTimer =&gt; MessageTypes.TimeResolution ( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )
 )</Action><Action
- Guid="99284f00-6c38-42f0-9a3c-fa2f5e7f6d9b"
-><Comment>Save the time stamp of the new MA for section timers</Comment>
-Kernel.MA.MATimers.MATimersStart &lt;- Default.MessageTypes.TimeResolution(
-    time=&gt;aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.T_TRAIN
-)</Action></Actions>
+ Guid="50e62eff-bd12-4fa0-b4e8-45ee5c8367fa"
+>Kernel.MA.MATimers.LOATimerStart &lt;- Default.MessageTypes.TimeResolution( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"

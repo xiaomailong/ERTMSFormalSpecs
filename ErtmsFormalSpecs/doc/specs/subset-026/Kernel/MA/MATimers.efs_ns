@@ -11,8 +11,8 @@
 <Structures>
 <Structure
  Default=""
- X="190"
- Y="110"
+ X="500"
+ Y="20"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -68,7 +68,20 @@
  Guid="976a6a5f-ad07-4b1f-b660-56738e4c0409"
 >
 </ReqRef><Comment>Represents the distance from beginning of section to section timer stop location (if there is a time-out associated to this section).</Comment>
-</StructureElement></Structure></Structures>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Time"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="TimerStart"
+ Guid="38f3d48d-b31d-48f0-ae9b-b3e054f3f0de"
+>
+<ReqRef
+ Id="d833d8f6-90b9-499b-bdb1-408971c2cbfe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a67aad2b-242b-4c48-af09-02424a0d68c8"
+>
+</ReqRef></StructureElement></Structure></Structures>
 <Functions>
 <Function
  Type="Kernel.MA.Section"
@@ -115,7 +128,7 @@ THERE_IS X IN MA.Sections | (Available(X.TimeOut)
   AND
 SectionStartLocation(X) + X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)  
   AND 
-X.TimeOut.TimeOut + MATimersStart &lt; DateAndTime.CurrentTime)</PreCondition><PreCondition
+X.TimeOut.TimerStart + X.TimeOut.TimeOut &lt; DateAndTime.CurrentTime)</PreCondition><PreCondition
  Guid="87a7ac1d-9861-4a39-a1bd-90d0182d96e6"
 >Kernel.Level.Value.Value != Default.Level.L3</PreCondition></PreConditions>
 <Expression>FIRST X IN MA.Sections | 
@@ -123,7 +136,7 @@ X.TimeOut.TimeOut + MATimersStart &lt; DateAndTime.CurrentTime)</PreCondition><P
   AND
     SectionStartLocation(X) + X.TimeOut.Distance &gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)
   AND  
-    X.TimeOut.TimeOut + MATimersStart &lt; DateAndTime.CurrentTime )</Expression>
+    X.TimeOut.TimerStart + X.TimeOut.TimeOut &lt; DateAndTime.CurrentTime )</Expression>
 </Case><Case
  Name="Check the End Section"
  Guid="0cd53d69-33fa-4bd8-838c-2567b54d86e6"
@@ -137,7 +150,7 @@ X.TimeOut.TimeOut + MATimersStart &lt; DateAndTime.CurrentTime)</PreCondition><P
 (
     MA.EndSection.TimeOut.Distance + Default.BaseTypes.LengthToDistance(MA.EndSection.Length) &gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)
       AND  
-    MA.EndSection.TimeOut.TimeOut + MATimersStart &lt; DateAndTime.CurrentTime
+    MA.EndSection.TimeOut.TimerStart + MA.EndSection.TimeOut.TimeOut &lt; DateAndTime.CurrentTime
 )</PreCondition><PreCondition
  Guid="eb1eb2c2-ee01-4da8-95fb-684a3c9d0fcd"
 >Kernel.Level.Value.Value != Default.Level.L3</PreCondition></PreConditions>
@@ -179,6 +192,8 @@ X.TimeOut.TimeOut + MATimersStart &lt; DateAndTime.CurrentTime)</PreCondition><P
 </Function></Functions>
 <Procedures>
 <Procedure
+ X="20"
+ Y="310"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -312,28 +327,13 @@ Note that the &quot;TimeOut&quot; here is not the End Section time-out value, bu
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="MATimersStart"
+ Name="LOATimerStart"
  Guid="eadabd71-0e7f-4597-8d44-9574de6f8a1d"
 >
 <ReqRef
- Id="d833d8f6-90b9-499b-bdb1-408971c2cbfe"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5d38ff66-ed89-4de5-98f5-3c04a6ae6687"
->
-</ReqRef><ReqRef
  Id="8298df3a-f507-437d-a5de-ceceaeedbead"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ccdb4da4-d3cb-4c19-849f-977a5ecaa05f"
->
-</ReqRef><ReqRef
- Id="f0c86934-5f4c-4832-bb8d-5fce455e3e7e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0d804bda-38f9-4a2b-8936-4b20cf91923f"
->
-</ReqRef><ReqRef
- Id="0d501890-d967-43e6-b663-c526a3371860"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e57e122f-10e2-49e4-a381-4fc31f9dee44"
 >
 </ReqRef><ReqRef
  Id="430d4f07-d2b9-4364-a2e5-17353db2175e"
@@ -384,7 +384,7 @@ Note that the &quot;TimeOut&quot; here is not the End Section time-out value, bu
 <Rule
  Priority="Processing"
  X="20"
- Y="300"
+ Y="410"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -409,7 +409,7 @@ Note that the &quot;TimeOut&quot; here is not the End Section time-out value, bu
  Guid="e2bcedd1-3423-45d1-99d3-ad82884d61fb"
 >MA != EMPTY
   AND
-MATimersStart + MA.TargetSpeedTimeOut &lt;= DateAndTime.CurrentTime</PreCondition></PreConditions>
+LOATimerStart + MA.TargetSpeedTimeOut &lt;= DateAndTime.CurrentTime</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="81fb344e-2eac-4dbf-a87a-6b07cd092523"
@@ -420,7 +420,7 @@ MATimersStart + MA.TargetSpeedTimeOut &lt;= DateAndTime.CurrentTime</PreConditio
 </Rule><Rule
  Priority="Processing"
  X="130"
- Y="300"
+ Y="410"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -457,7 +457,7 @@ EndSectionTimerStart != BaseTypes.Time.NA</PreCondition></PreConditions>
 </Rule><Rule
  Priority="Processing"
  X="240"
- Y="300"
+ Y="410"
  Width="100"
  Height="50"
  Implemented="TRUE"
