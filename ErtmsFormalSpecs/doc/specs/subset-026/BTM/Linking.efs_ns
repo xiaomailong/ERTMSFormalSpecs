@@ -1653,8 +1653,10 @@ NOT Kernel.StaffResponsible.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
 <Actions>
 <Action
  Guid="b5267b4f-321c-48a3-8cb1-b091b3a4496d"
->HandleBaliseMessage(
-    DistanceFromLRBG =&gt; Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)
+>CheckMessageConsistency(
+    DistanceFromLRBG =&gt; Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    LinkingUsed =&gt; False,
+    LinkingReaction =&gt; Linking.LinkingReaction.CommandServiceBrake
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -1671,8 +1673,10 @@ NOT Kernel.StaffResponsible.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
 <Actions>
 <Action
  Guid="bac12566-89d7-4f78-a052-2705f05be489"
->HandleBaliseMessage(
-    DistanceFromLRBG =&gt; Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)
+>CheckMessageConsistency(
+    DistanceFromLRBG =&gt; Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    LinkingUsed =&gt; False,
+    LinkingReaction =&gt; Linking.LinkingReaction.CommandServiceBrake
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -1741,8 +1745,10 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 <Actions>
 <Action
  Guid="6f9ef685-68b5-4cf8-ab5b-fe3765ff7cb1"
->HandleBaliseMessage(
-    DistanceFromLRBG =&gt; (FIRST X IN Linking.Linkings).Distance
+>CheckMessageConsistency(
+    DistanceFromLRBG =&gt; (FIRST X IN Linking.Linkings).Distance,
+    LinkingUsed =&gt; True,
+    LinkingReaction =&gt; (FIRST X IN Linking.Linkings).Reaction
 )</Action><Action
  Guid="73f60427-194a-4f61-9082-16f71fa2409d"
 >Linking.StopExpectingBG( (FIRST X IN CurrentBaliseGroup).Telegram.NID_BG )</Action></Actions>
@@ -1855,8 +1861,10 @@ As the first part of this procedure deletes the first (inconsistent) BG from the
 <Actions>
 <Action
  Guid="df96badb-3bc3-40d3-b767-aa2ff7b5b2be"
->HandleBaliseMessage(
-    DistanceFromLRBG =&gt; Linking.CurrentLinking().Distance
+>CheckMessageConsistency(
+    DistanceFromLRBG =&gt; Linking.CurrentLinking().Distance,
+    LinkingUsed =&gt; True,
+    LinkingReaction =&gt; Linking.CurrentLinking().Reaction
 )</Action><Action
  Guid="b1dfce5d-66ae-4d4d-a99a-2708b3c6650f"
 >Linking.StopExpectingBG( (FIRST X IN CurrentBaliseGroup).Telegram.NID_BG )</Action></Actions>

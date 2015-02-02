@@ -1451,9 +1451,10 @@ InconsistentMessageCounters()</Expression>
 <PreCondition
  Guid="f542a03d-bf03-4346-a2c9-fbb9fe2892b6"
 >LinkingUsed</PreCondition></PreConditions>
-<Expression>FORALL X IN CurrentBaliseGroup | 
-NOT X.Missed
- OR 
+<Expression>THERE_IS X IN CurrentBaliseGroup | 
+X.Missed
+ AND
+NOT 
 (
 PreviousBalise(X).Telegram.M_DUP == Messages.M_DUP.This_balise_is_a_duplicate_of_the_next_balise__seen_in_the_nominal_direction_of_the_balise_group
   OR  
@@ -1463,7 +1464,21 @@ NextBalise(X).Telegram.M_DUP == Messages.M_DUP.This_balise_is_a_duplicate_of_the
  Name="Linking not used"
  Guid="e3eb75ad-5aa6-4b1c-8aa0-c2bc1ee9a5a3"
 >
-<Expression>False</Expression>
+<Expression>THERE_IS X IN CurrentBaliseGroup | 
+X.Missed
+ AND 
+NOT
+(
+  (
+  PreviousBalise(X).Telegram.M_DUP == Messages.M_DUP.This_balise_is_a_duplicate_of_the_next_balise__seen_in_the_nominal_direction_of_the_balise_group
+    OR  
+  NextBalise(X).Telegram.M_DUP == Messages.M_DUP.This_balise_is_a_duplicate_of_the_previous_balise__seen_in_the_nominal_direction_of_the_balise_group
+  )
+
+ AND 
+
+ DuplicatedBaliseIsUseable(X.Telegram)
+)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1513,6 +1528,15 @@ NextBalise(X).Telegram.M_DUP == Messages.M_DUP.This_balise_is_a_duplicate_of_the
 >
 </ReqRef><Cases>
 <Case
+ Name="All telegrams fit all others"
+ Guid="4bdef627-9e9b-4909-80c2-52097e9aec50"
+>
+<PreConditions>
+<PreCondition
+ Guid="a7bc10ee-a2e0-4e3e-9076-9f264f4a9e5c"
+>FORALL X IN CurrentBaliseGroup | X.Telegram.M_MCOUNT == Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
  Name="A telegram fits none of the others"
  Guid="4eb04444-97ff-45c2-97c3-0a5be833fb59"
 >
@@ -1741,29 +1765,65 @@ StoredBaliseStruct{
  Guid="7eb5830f-91b5-438b-b3b1-c9c98a7860e7"
 >Balise.Sequence1 != []
   AND  
-THERE_IS X IN Balise.Sequence1 | 
-
+THERE_IS X IN Balise.Sequence1 | (Messages.GetPacketQ_Dir(X.TRACK_TO_TRAIN) == Messages.Q_DIR.Nominal  OR  Messages.GetPacketQ_Dir(X.TRACK_TO_TRAIN) == Messages.Q_DIR.Reverse)
+  AND  
 BaliseGroupOrientation() != Default.Orientation.Unknown</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
- Name="&lt;Case2&gt;"
+ Name="All information valid for both directions"
  Guid="bb8a5edf-3d78-478c-9b40-8419b7dca32d"
 >
+<PreConditions>
+<PreCondition
+ Guid="7da6c3c5-4e47-49e8-9df7-23241484e700"
+>Balise.Sequence1 != []
+  AND  
+FORALL X IN Balise.Sequence1 | (Messages.GetPacketQ_Dir(X.TRACK_TO_TRAIN) == Messages.Q_DIR.Both_directions)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
- Name="&lt;Case3&gt;"
+ Name="No directional info, nor info for both directions"
  Guid="e75160c7-9683-4aea-aa2a-cd1307200da5"
 >
+<PreConditions>
+<PreCondition
+ Guid="5b875a8a-3354-48d1-8692-eb9629dc8e22"
+>Balise.Sequence1 == []
+  OR  
+FORALL X IN Balise.Sequence1 | 
+  (
+  Messages.GetPacketQ_Dir(X.TRACK_TO_TRAIN) != Messages.Q_DIR.Both_directions
+   AND 
+  Messages.GetPacketQ_Dir(X.TRACK_TO_TRAIN) != Messages.Q_DIR.Nominal
+   AND 
+  Messages.GetPacketQ_Dir(X.TRACK_TO_TRAIN) != Messages.Q_DIR.Reverse
+  )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
- Name="&lt;Case4&gt;"
+ Name="Only info to be used outside of ERTMS/ETCS"
  Guid="0df1de30-0ad5-45c1-abfe-f84fae25312e"
 >
+<PreConditions>
+<PreCondition
+ Guid="66a1fed0-37c3-40ab-a96a-abce6764238a"
+>Balise.Sequence1 != []
+  AND  
+FORALL X IN Balise.Sequence1 | Available(X.TRACK_TO_TRAIN.DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
- Name="&lt;Case5&gt;"
+ Name="Info outside ERTMS/ETCS or valid for both directions"
  Guid="fb6ea15f-32f5-4d40-a680-387c431526ae"
 >
+<PreConditions>
+<PreCondition
+ Guid="bb2c4ca9-56a0-411b-889a-f34195e35221"
+>Balise.Sequence1 != []
+  AND  
+FORALL X IN Balise.Sequence1 | 
+  (
+  Available(X.TRACK_TO_TRAIN.DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM)
+   OR 
+  Messages.GetPacketQ_Dir(X.TRACK_TO_TRAIN) != Messages.Q_DIR.Both_directions
+  )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
