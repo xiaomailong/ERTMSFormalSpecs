@@ -25,7 +25,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0e3bd7fe-ec61-4b1c-aef9-0a0912d4f7d3"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if a conditional emergency stop was executed.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="2a16ff07-f029-4e9d-91ba-f246870e03a5"
@@ -177,7 +178,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1ee20157-6013-4063-9899-f9ad5e0716d2"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if an inconsistency in a balise group marked as unlinked was detected and the train is at standstill.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="5c5536bf-5616-48bc-9b44-ec22975e219d"
@@ -199,7 +201,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="51c545f9-768b-4076-8358-2a127fe837e6"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if a linking reaction led to a service brake and the train is at standstill.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="cac824c3-1667-4f30-b4d8-6482af4970be"
@@ -221,7 +224,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d3074dc1-aa0b-49d8-a2a5-98f29b56d440"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if the reaction due to the supervision of the safe radio connection led to a service brake and the train is at standstill.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="2449a365-c01d-4827-bdf0-d5610c5e93ee"
@@ -243,7 +247,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4182cf69-c6bd-43f3-a1c0-14f0e25c50ff"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if the train category, axle load category, loading gauge or traction system is changed and the train is at standstill.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="a4672bcb-0d83-4fbf-9bbd-37cc56e72c34"
@@ -289,7 +294,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3b7d18f4-1117-4e11-a7a0-7cbff5e314e9"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if RAMS related supervision function led to a service brake and the train is at standstill.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="244e5af0-b989-48af-8657-9b0a11145ef9"
@@ -311,7 +317,8 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="259eed49-11bd-40f5-96e8-c31adf48723b"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if an inconsistency in a balise groupe marked as linked is detected and no linking is used onboard and the train is at standstill.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="6e483044-a5eb-4d7d-a311-74fb0b66f37b"
@@ -506,6 +513,17 @@ SituationM()</Expression>
  Name="HandleInformation"
  Guid="056a72fb-65fb-4ba9-9401-9f42986a2718"
 >
+<ReqRef
+ Id="49aa8058-c5e4-4843-979e-18bad9bc4d61"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2d35136a-7d3b-4f62-ba7e-d740b160b38f"
+>
+</ReqRef><ReqRef
+ Id="10cc3f12-c2b4-45a6-b67a-18195d3de671"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5bdac248-a162-481d-b11e-3f66d4ff2de0"
+>
+</ReqRef><Comment>Updates the accepted and stored information according to the changes in the system.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -697,13 +715,19 @@ SituationM()</Expression>
  Name="Handle Movement Authority"
  Guid="d5c1e5c8-ab2f-4fa1-8192-c47a1c73efc4"
 >
+<Comment>Handles Movement Authority in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Situations of the first category"
  Guid="e79aa5e9-2f9e-4d67-80a8-854b0838bd96"
 >
-<Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
+<ReqRef
+ Id="60f7510b-3edf-4206-bbd3-f54e49074677"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6847c58a-6e07-41dc-b3a2-8f2397bcc4b8"
+>
+</ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="6dac0017-b57a-4c43-9f8d-40a4329ab633"
@@ -714,7 +738,12 @@ SituationM()</Expression>
  Name="Situations of the second category"
  Guid="23f9318a-4ff1-4127-b2f9-250059f4979d"
 >
-<Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
+<ReqRef
+ Id="1b0d0ae0-74a6-47fd-973a-bf6558f80573"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="140ea095-3e10-450b-b608-2df1b2ed1e99"
+>
+</ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="eb0e8d31-241f-4e35-8fb1-648d95ff1436"
@@ -725,7 +754,12 @@ SituationM()</Expression>
  Name="Situations of the third category"
  Guid="c1206e20-394d-4ea9-81dd-439988c950b6"
 >
-<Comment>Handles the information for the situation k.</Comment>
+<ReqRef
+ Id="cf73aeff-8137-4be4-938d-d760f813b8e5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="63cdb084-a888-4b14-a6b3-c23371993470"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="aa2daec1-cce7-4580-ac2f-723099182263"
@@ -739,13 +773,19 @@ SituationM()</Expression>
  Name="Handle Gradient Profile"
  Guid="e15a405c-a148-42a5-95f0-99208ad99b6f"
 >
+<Comment>Handles Gradient Profile in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Situations of the first category"
  Guid="1a99a4f5-ccf0-40fb-951b-f58c969fc81b"
 >
-<Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
+<ReqRef
+ Id="b6ad5c5c-2d47-4688-8e04-159a0f0f3c2b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c4ca9336-db7b-4dba-8039-fc38576dd78e"
+>
+</ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="572616f7-537b-4c23-9060-c39357fd0206"
@@ -756,7 +796,12 @@ SituationM()</Expression>
  Name="Situations of the second category"
  Guid="65a701ef-8068-4a97-a07f-80659e60a928"
 >
-<Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
+<ReqRef
+ Id="6443098f-2d6f-47bb-9f02-bed7f2c9808e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e934c1c7-d386-4a32-89fe-6e6528721e41"
+>
+</ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="00b55384-eccc-44c8-9237-37ce8ab583d4"
@@ -767,7 +812,12 @@ SituationM()</Expression>
  Name="Situations of the third category"
  Guid="63c8e574-da7f-459a-9e88-196d04e468f1"
 >
-<Comment>Handles the information for the situation k.</Comment>
+<ReqRef
+ Id="40e9c558-f092-434e-9566-d640f6b39451"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a3d1f430-d426-4a2f-8ec9-ae36ea2f041b"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="ff56a657-5495-4da4-b66c-6ab1e388682f"
@@ -781,13 +831,19 @@ SituationM()</Expression>
  Name="Handle International SSP"
  Guid="b63bd0f4-78dc-45b8-9c37-8ec4f204a17a"
 >
+<Comment>Handles International SSP in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Situations of the first category"
  Guid="9a67fc2f-0b72-4143-9606-23f7e352337e"
 >
-<Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
+<ReqRef
+ Id="8fc519c9-36f6-4876-bf6d-e9b28623b683"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0d1b91c2-a9ca-4173-87b2-b4f7ebd1262a"
+>
+</ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="ce365c5a-3336-469b-bd79-ae5578376028"
@@ -798,7 +854,12 @@ SituationM()</Expression>
  Name="Situations of the second category"
  Guid="77d02a2c-1d7c-4e04-b64e-94b7c4b7ffc2"
 >
-<Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
+<ReqRef
+ Id="32cdac05-1927-4110-9b53-fd54de0c7d76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2f0c8f8f-3e86-4daf-8d39-64b726f8b0a6"
+>
+</ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="9bd37d44-ca09-470e-b005-c1189fb3aa23"
@@ -809,7 +870,12 @@ SituationM()</Expression>
  Name="Situations of the third category"
  Guid="7c1f0741-579a-4949-924a-c7721f111415"
 >
-<Comment>Handles the information for the situation k.</Comment>
+<ReqRef
+ Id="4fdcc333-d6dd-4c43-9579-f505b88638a8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f8a7c7a5-996c-4cce-a5b8-090af6fccdfc"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="c0fb9300-379b-4008-ae24-61dab4bce190"
@@ -823,13 +889,19 @@ SituationM()</Expression>
  Name="Handle Axle load speed profile"
  Guid="1bdef1d2-bb53-453c-9dfa-a00321660af0"
 >
+<Comment>Handles Axle load speed profile in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Situations of the first category"
  Guid="27120cf8-8cb9-4c36-bf3f-4d79486b4654"
 >
-<Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
+<ReqRef
+ Id="4585105d-95cd-4519-ab5e-229f4787bb09"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f1b725c2-5d66-4f37-9467-2ef3ead4ee1e"
+>
+</ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="52f9a01a-ab6d-41ae-b6e3-ba5e8eec822d"
@@ -840,7 +912,12 @@ SituationM()</Expression>
  Name="Situations of the second category"
  Guid="8188f4f0-a81c-4c46-9caa-baf7578b3486"
 >
-<Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
+<ReqRef
+ Id="b58f3369-1b6f-45ce-be93-13bcfac8db78"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="81e3a940-b280-487f-85cc-0615d3bb72b2"
+>
+</ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="f8c4d8d5-2a1b-4d8a-86ef-e443c1678a30"
@@ -851,7 +928,12 @@ SituationM()</Expression>
  Name="Situations of the third category"
  Guid="a6c00a11-c8e9-4a1d-98c4-15a70a194db9"
 >
-<Comment>Handles the information for the situation k.</Comment>
+<ReqRef
+ Id="9ecaf71d-cad7-4056-b73f-f07b5aee5e96"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="24a3e307-0b64-45a5-965c-7e4281a7c3a2"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="a65a0266-e006-4f80-b165-7255fd5efb19"
@@ -1121,13 +1203,19 @@ SituationM()</Expression>
  Name="Handle List of balises for SH area"
  Guid="d32ec0a1-3bba-479a-bdbf-ec9ad4ade821"
 >
+<Comment>Handles List of balises for SH area in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Situations of the first category"
  Guid="ff7e0da7-1513-40e1-be7e-a5bebc8b8c78"
 >
-<Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
+<ReqRef
+ Id="1ae5ed42-6923-408b-9448-05919371dd0b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="400c6501-90bf-4364-92cc-38a6a28cc260"
+>
+</ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="5cc60423-8764-4a2e-9ca8-d9a0973d3192"
@@ -1138,7 +1226,12 @@ SituationM()</Expression>
  Name="Situations of the second category"
  Guid="839463ba-ea68-4d35-a51a-19bb2e6f3047"
 >
-<Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
+<ReqRef
+ Id="acff7837-5521-4d42-9e87-ed42741020a5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="54af5eab-bd0b-414a-b776-aee9a05a04ea"
+>
+</ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="54a581c8-9453-4a98-abb2-a38d0175d49f"
@@ -1149,7 +1242,12 @@ SituationM()</Expression>
  Name="Situations of the third category"
  Guid="5e50b5ff-0820-4f35-8d2e-928b71d027f6"
 >
-<Comment>Handles the information for the situation k.</Comment>
+<ReqRef
+ Id="b0bfdd47-5ac8-4810-8fb5-ee88677a71bb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68f4949a-6d59-4717-a3a0-c018c5225447"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="6d3ff10e-244a-471d-b619-2b71b1c06f18"
@@ -1535,13 +1633,19 @@ SituationM()</Expression>
  Name="Handle Signalling related Speed Restriction"
  Guid="05f7260f-0c62-40c1-97bb-544e6bf146a8"
 >
+<Comment>Handles Signalling related Speed Restriction in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Situations of the first category"
  Guid="dd79ac35-cedf-47e7-8dd9-def9529eaa0a"
 >
-<Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
+<ReqRef
+ Id="3bd4faef-87fb-4abe-9769-6fd5d8affa56"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f385e106-ca99-4eb0-97f9-0a8f4324839a"
+>
+</ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="46c3583f-0cb7-4143-930d-75f9393e3c0d"
@@ -1552,7 +1656,12 @@ SituationM()</Expression>
  Name="Situations of the second category"
  Guid="369a2881-4284-46dd-8750-516c2c6d86e2"
 >
-<Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
+<ReqRef
+ Id="c1f2c69c-192d-4900-bb8f-fe9a36823f3d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ad0bd45f-f54b-4265-808a-6602805448c4"
+>
+</ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="b2f67685-6b99-4167-a8b3-b4e5fafd1103"
@@ -1563,7 +1672,12 @@ SituationM()</Expression>
  Name="Situations of the third category"
  Guid="94f431fe-dd2b-468b-9cb2-21ad2896459a"
 >
-<Comment>Handles the information for the situation k.</Comment>
+<ReqRef
+ Id="a0415b8a-8777-46f0-9f3d-8fe1921ae3f8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="92031031-35d4-4be2-a468-32d88e805662"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="778e8157-5067-430e-95c5-dc3d091f3349"
@@ -1577,13 +1691,19 @@ SituationM()</Expression>
  Name="Handle Route Suitability Data"
  Guid="d9706f2b-7376-4bc5-890c-593deb9d1682"
 >
+<Comment>Handles Route Suitability Data in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Situations of the first category"
  Guid="c5ee41c5-3d0b-4c10-a4fe-0562fd04a177"
 >
-<Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
+<ReqRef
+ Id="78751c70-72e3-4e43-9e03-32e66b7c02f4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1e5d7e1b-c56e-4315-9c48-44dc6f380ea3"
+>
+</ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="bb3b1062-bb61-4b1d-835d-668748745bcf"
@@ -1594,7 +1714,12 @@ SituationM()</Expression>
  Name="Situations of the second category"
  Guid="bedd4e3a-f64a-4a1b-a2c4-370f4f2f4038"
 >
-<Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
+<ReqRef
+ Id="5f651283-7b34-4b40-bd6d-48a0668dd71f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="38e3ce48-e7f6-4ffc-a9cb-7a9711b43e5a"
+>
+</ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="33d12f1e-d564-4f13-8d1f-23a7d3ad3e31"
@@ -1605,7 +1730,12 @@ SituationM()</Expression>
  Name="Situations of the third category"
  Guid="03aebb47-12bb-4ef8-bcba-0fce9ac2ccda"
 >
-<Comment>Handles the information for the situation k.</Comment>
+<ReqRef
+ Id="00d89694-edc5-411a-96a9-add48d755661"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a043d169-d28d-4155-bb81-313b01faef02"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="e932ab41-5b8f-401a-a0a1-f21b80be07a5"
@@ -1619,13 +1749,19 @@ SituationM()</Expression>
  Name="Handle Plain Text Information (location based)"
  Guid="efdec25a-7a7e-4c91-8663-7d7c0e410bad"
 >
+<Comment>Handles Plain Text information (location based) in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Situations of the first category"
  Guid="044b1232-f961-4859-94c2-1343832c1161"
 >
-<Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
+<ReqRef
+ Id="c8aa2175-24d9-475e-9c50-b4b0f6b46637"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f28c539a-c364-49ee-a27f-7627970ab5bc"
+>
+</ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="4606a4ac-d0c4-4091-8c6a-4c9ef49f5858"
@@ -1636,7 +1772,12 @@ SituationM()</Expression>
  Name="Situations of the second category"
  Guid="aa92ac63-55e8-4939-84d3-2343d4794730"
 >
-<Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
+<ReqRef
+ Id="62cfa1a2-802d-4f1a-9d24-2c40ff89dba0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cfd57d8c-0e1a-44a9-a355-c3c6e100fdc2"
+>
+</ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="d81a0410-7be3-4ee3-9a14-f60493c12ea2"
@@ -1647,7 +1788,12 @@ SituationM()</Expression>
  Name="Situations of the third category"
  Guid="abbf6faf-30e9-4624-b169-ccf65450bd7a"
 >
-<Comment>Handles the information for the situation k.</Comment>
+<ReqRef
+ Id="f14b8fb9-877e-40a1-871f-c0bb3ab64422"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a9ebcd54-020d-433e-bf2d-c1279643eec7"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="0fcf79a6-8a43-43f1-a5ab-f4749b5d567f"
@@ -1721,13 +1867,19 @@ SituationM()</Expression>
  Name="Handle Fixed Text Information (location based)"
  Guid="5ce8e56a-c309-4e45-8241-f481f13ab257"
 >
+<Comment>Handles Fixed text information (location based) in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Situations of the first category"
  Guid="d82bf2e3-deae-4fcc-a2ae-1b99e4df3e8f"
 >
-<Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
+<ReqRef
+ Id="599a69d1-abc3-4a00-9a11-5fbe5f276967"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55abfc87-e72f-453a-8127-3dc691162fc0"
+>
+</ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="8604a0d0-8380-4e81-bc2c-0721fbac8722"
@@ -1738,7 +1890,12 @@ SituationM()</Expression>
  Name="Situations of the second category"
  Guid="fb2b9493-40ce-496c-8c24-2bfed47ddea2"
 >
-<Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
+<ReqRef
+ Id="57f7143f-3337-46c5-bf89-0ec8d1bd69d6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="31816329-c7ed-435e-ab71-54bfe1f18858"
+>
+</ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="a09a60fe-3f03-45e4-8acf-2d337693e684"
@@ -1749,7 +1906,12 @@ SituationM()</Expression>
  Name="Situations of the third category"
  Guid="0359aaed-fb06-432d-aa4e-eea9363b6834"
 >
-<Comment>Handles the information for the situation k.</Comment>
+<ReqRef
+ Id="4c34fdef-c064-43e6-aba5-7bc00a3f13ea"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5710f488-0acd-4ddd-b31d-620fb506e857"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="b41c2c8f-a304-4601-96fd-535b10027939"
@@ -1885,13 +2047,19 @@ SituationM()</Expression>
  Name="Handle Mode Profile"
  Guid="839744e0-9554-4c10-8334-4f0e771bb40d"
 >
+<Comment>Handles Mode Profile in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Situations of the first category"
  Guid="014d11b7-7df6-447a-9d5b-0a2b19cc3733"
 >
-<Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
+<ReqRef
+ Id="417bff03-188b-4a9f-a53f-f4b64258c65d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fc93fbbf-de9b-4f3b-8686-4b3f25f225bc"
+>
+</ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="0088112f-69c0-41e2-8a27-e739575c7f30"
@@ -1902,7 +2070,12 @@ SituationM()</Expression>
  Name="Situations of the second category"
  Guid="c1dd8de2-ddde-4746-bfdb-e79322ae72c4"
 >
-<Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
+<ReqRef
+ Id="b53a43a9-cffa-4417-968b-b2210fb37b31"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c80236a3-0d3f-4e56-b002-99fa9a1dc6b7"
+>
+</ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="41605fbd-eac0-4381-9732-e043614a0dae"
@@ -1913,7 +2086,12 @@ SituationM()</Expression>
  Name="Situations of the third category"
  Guid="f6467721-6ce6-4fac-a055-1388abed76ae"
 >
-<Comment>Handles the information for the situation k.</Comment>
+<ReqRef
+ Id="91294164-600a-47a0-b9d5-8b7b96be34e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a9de3a6-242a-4b9f-8dae-382b53dedc1b"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="b364d015-7195-4f78-9136-a54ee902750e"
@@ -1927,13 +2105,19 @@ SituationM()</Expression>
  Name="Handle RBC Transition Order"
  Guid="8610d7db-5964-4dd8-917a-0df5a870acf8"
 >
+<Comment>Handles RBC Transition Order in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Situations of the first category"
  Guid="bafcf114-a2eb-456b-a3d9-3efc71c1df16"
 >
-<Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
+<ReqRef
+ Id="8fa3c468-ff7b-4fa4-9f9c-790f481b3f5c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55b69988-099b-4d63-ae95-30a31d1374d1"
+>
+</ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="25cb1a15-22e5-4ddd-a81e-f665c7ec380d"
@@ -1944,7 +2128,12 @@ SituationM()</Expression>
  Name="Situations of the second category"
  Guid="b075b53d-5f29-40d4-b288-cd8ba2416ce0"
 >
-<Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
+<ReqRef
+ Id="bb662eea-95fc-427d-8968-9c64c70423fa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="37e07677-f457-4aaa-9e78-6b2dbd758750"
+>
+</ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="4b93ffcc-8b1d-4e86-b857-31b079717a72"
@@ -1955,7 +2144,12 @@ SituationM()</Expression>
  Name="Situations of the third category"
  Guid="1c779892-a7c8-4de4-81af-2fc96253d178"
 >
-<Comment>Handles the information for the situation k.</Comment>
+<ReqRef
+ Id="3cf876e9-fd29-41a4-a3d3-154e60b988e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b1976bdf-c435-4bf8-80b1-04c214340424"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="0b82d6f8-7d29-4a94-8ae7-18c62bbdf3ca"
@@ -1969,13 +2163,19 @@ SituationM()</Expression>
  Name="Handle Radio Infill Area Information"
  Guid="bc0d8f2c-3f46-4276-bf2d-cc04b391ba54"
 >
+<Comment>Handles Radio Infill Area Information in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Situations of the first category"
  Guid="a39726a0-c299-43ba-aaa5-7766dcd0ae74"
 >
-<Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
+<ReqRef
+ Id="85fec594-f417-473d-9e2e-9973a56e5408"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7d7933e-e995-459c-bb6a-44cefac4f415"
+>
+</ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="2eb839b9-f196-49e4-99a1-04846604d126"
@@ -1986,7 +2186,12 @@ SituationM()</Expression>
  Name="Situations of the second category"
  Guid="1b46f11d-3194-425c-aba8-ec4664c11a62"
 >
-<Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
+<ReqRef
+ Id="7a1f79e4-0aad-484c-adaf-741608cebbb4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="00d85617-9396-41dd-9fee-3715ee24b896"
+>
+</ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="fe701cb9-5e8f-4368-b607-873fa3672a12"
@@ -1997,7 +2202,12 @@ SituationM()</Expression>
  Name="Situations of the third category"
  Guid="d3fb368e-e838-489b-b64b-0eae375e0c39"
 >
-<Comment>Handles the information for the situation k.</Comment>
+<ReqRef
+ Id="defc840f-217f-4fa0-a2f8-be00e46f0928"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0ce5cf93-597d-4bf4-8c15-567474c11c08"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="8a70908d-287a-4e6e-9e88-56f72add076f"
@@ -2073,13 +2283,19 @@ SituationM()</Expression>
  Name="Handle Track Conditions excluding big metal masses"
  Guid="28297d0e-c3d8-4378-a5a8-f72a55fe697a"
 >
+<Comment>Handles Track Conditions excluding big metal masses in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Situations of the first category"
  Guid="c452d77a-d79c-4e88-92a3-0ea98c8235d1"
 >
-<Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
+<ReqRef
+ Id="2c2f3d46-b62b-44a6-a8ab-393ec946e9dd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a001d63-9559-4c29-acf1-7920d961aab7"
+>
+</ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="71f6bd48-b11a-41e2-870c-9221d5c249b7"
@@ -2090,7 +2306,12 @@ SituationM()</Expression>
  Name="Situations of the second category"
  Guid="995e28b2-21c9-4e2a-b3ea-1b7be9daa48c"
 >
-<Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
+<ReqRef
+ Id="d7f09170-28ec-4015-8c03-8e1612c5ccc4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9b84b9ed-2e77-46e9-b09d-5d469078c98f"
+>
+</ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="305b4758-2eda-446f-81ea-8a457f9e4cac"
@@ -2101,7 +2322,12 @@ SituationM()</Expression>
  Name="Situations of the third category"
  Guid="d589ca70-d9f1-4f0b-b684-75270920b970"
 >
-<Comment>Handles the information for the situation k.</Comment>
+<ReqRef
+ Id="0da5ba08-f5f3-44ac-931d-082c562fc62b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0443cb12-7274-4e7b-8ed8-6bbe2930d5fd"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="83159a8c-077e-4ae1-98cf-d600e48373af"
@@ -2115,13 +2341,19 @@ SituationM()</Expression>
  Name="Handle Track condition big metal masses"
  Guid="951e28c0-45a2-4896-a3ed-ccbd5ecd92ca"
 >
+<Comment>Handles Track condition big metal masses in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Situations of the first category"
  Guid="b6d210c5-bd34-4b65-8167-16914aa42a9e"
 >
-<Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
+<ReqRef
+ Id="de3fda91-880c-46f8-8a7b-46ff210c7694"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="623ea0cb-1c5e-4f21-840c-c31b22ee2393"
+>
+</ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="c72eb393-b70b-4c97-b3ae-a954824c7cb1"
@@ -2132,7 +2364,12 @@ SituationM()</Expression>
  Name="Situations of the second category"
  Guid="9bb6bd5e-33fb-4f11-8472-3ae6b54e8789"
 >
-<Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
+<ReqRef
+ Id="d8472c20-d663-4018-8dde-35613b7d9391"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a3f7d754-694d-4ade-87cd-9cce9ed80a4f"
+>
+</ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="8ad7cd04-c7d8-4d18-95c9-5d34a884aa5a"
@@ -2143,7 +2380,12 @@ SituationM()</Expression>
  Name="Situations of the third category"
  Guid="110223a8-1ebc-4388-8cee-3b4a19743023"
 >
-<Comment>Handles the information for the situation k.</Comment>
+<ReqRef
+ Id="6263b5ee-78f8-4939-87f9-ba0e930017d0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="20f81fae-a456-46df-bd00-8b335326b8d5"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="201a4ede-4c60-4321-b510-68d69cbe147f"
@@ -2843,13 +3085,19 @@ SituationM()</Expression>
  Name="Handle Reversing Area Information"
  Guid="7b6626a3-899f-4bc9-b511-f45af1c5dcfc"
 >
+<Comment>Handles Reversing Area Information in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Situations of the first category"
  Guid="ec021cf5-a258-4eb4-9108-561edf8c8c38"
 >
-<Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
+<ReqRef
+ Id="3e48fc0f-b76c-4125-a563-12d71b201abf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c4d84555-c722-40c5-95b3-93107ba10874"
+>
+</ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="f20c81e6-f258-4b01-ba55-474f716b9839"
@@ -2860,7 +3108,12 @@ SituationM()</Expression>
  Name="Situations of the second category"
  Guid="96cbaf03-9cb3-4e15-8f14-fdbcfc16f7b9"
 >
-<Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
+<ReqRef
+ Id="90495c82-f890-47b7-9b0f-0c7d08603ea7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="399dd053-ae82-4fc5-a53a-da065e9486cc"
+>
+</ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="e2bcd049-469e-4900-8ee6-50ecd0b9e48d"
@@ -2871,7 +3124,12 @@ SituationM()</Expression>
  Name="Situations of the third category"
  Guid="7b18c75c-f776-40b9-93d6-1cdc80858287"
 >
-<Comment>Handles the information for the situation k.</Comment>
+<ReqRef
+ Id="7939c5a8-e34a-4368-9959-4a62a275aa3b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="afbefed0-f6b3-4c8e-b70b-9b0acc4f8b63"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="f0a20753-bbf6-4c00-8161-ffd95b33608e"
@@ -3075,13 +3333,19 @@ SituationM()</Expression>
  Name="Handle Permitted Braking Distance Information"
  Guid="482d24fa-7c72-4c71-bd15-6d84292139d8"
 >
+<Comment>Handles Permitted Braking Distance in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Name="Situations of the first category"
  Guid="3ab83088-d140-4f55-8d5d-3a18c4104f80"
 >
-<Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
+<ReqRef
+ Id="272fe976-efae-4c77-8efc-d232472a532b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="25b93c3c-a9fd-4288-ac10-67375713259c"
+>
+</ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="837336dc-9065-4505-945b-7cd7571a02bb"
@@ -3092,7 +3356,12 @@ SituationM()</Expression>
  Name="Situations of the second category"
  Guid="a6002ec0-a11a-4e10-a112-e6a8817a262c"
 >
-<Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
+<ReqRef
+ Id="983096f7-b75d-42d2-be5a-fd2be9f8db6f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="634a5b6e-ae00-4f63-8a84-ded9d0a327e4"
+>
+</ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="e0ce1b6a-7b21-4101-a6e7-4db390267585"
@@ -3103,7 +3372,12 @@ SituationM()</Expression>
  Name="Situations of the third category"
  Guid="2e2446ff-42d6-4805-a541-daa9f1b51451"
 >
-<Comment>Handles the information for the situation k.</Comment>
+<ReqRef
+ Id="c48e18fa-f801-4337-8937-ded0d4426761"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d9f218d7-aaed-40e3-be2c-b31b000a7599"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="99f17489-8078-40c5-b678-a0753aa3009a"
@@ -3506,6 +3780,7 @@ SituationM()</Expression>
  Type="Boolean"
  DefaultValue="Boolean.False"
  VariableMode="Internal"
+ X="30"
  Y="240"
  Width="100"
  Height="50"
@@ -3679,7 +3954,8 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dd4eeb8f-c412-452a-b60f-23089e2cb1a0"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Executes the procedure which will update the accepted and stored information according to the changes in the system.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  NeedsRequirement="FALSE"
