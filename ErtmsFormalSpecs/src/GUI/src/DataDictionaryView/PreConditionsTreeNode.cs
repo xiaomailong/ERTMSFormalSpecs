@@ -13,9 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using Case = DataDictionary.Functions.Case;
+using PreCondition = DataDictionary.Rules.PreCondition;
 
 namespace GUI.DataDictionaryView
 {
@@ -26,7 +30,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="children"></param>
-        public PreConditionsTreeNode(DataDictionary.Functions.Case item, bool buildSubNodes)
+        public PreConditionsTreeNode(Case item, bool buildSubNodes)
             : base(item, buildSubNodes, "Pre condition", true)
         {
         }
@@ -39,9 +43,9 @@ namespace GUI.DataDictionaryView
         {
             Nodes.Clear();
 
-            foreach (DataDictionary.Rules.PreCondition preCondition in Item.PreConditions)
+            foreach (PreCondition preCondition in Item.PreConditions)
             {
-                Nodes.Add(new DataDictionaryView.PreConditionTreeNode(preCondition, buildSubNodes));
+                Nodes.Add(new PreConditionTreeNode(preCondition, buildSubNodes));
             }
             SubNodesBuilt = true;
         }
@@ -59,7 +63,7 @@ namespace GUI.DataDictionaryView
                 if (MessageBox.Show("Are you sure you want to move the corresponding function ?", "Move action", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     PreConditionTreeNode node = SourceNode as PreConditionTreeNode;
-                    DataDictionary.Rules.PreCondition preCondition = node.Item;
+                    PreCondition preCondition = node.Item;
                     node.Delete();
                     AddPreCondition(preCondition);
                 }
@@ -68,7 +72,7 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Rules.PreCondition preCondition = (DataDictionary.Rules.PreCondition)DataDictionary.Generated.acceptor.getFactory().createPreCondition();
+            PreCondition preCondition = (PreCondition) acceptor.getFactory().createPreCondition();
             preCondition.Condition = "<empty>";
             AddPreCondition(preCondition);
         }
@@ -77,10 +81,10 @@ namespace GUI.DataDictionaryView
         /// Adds a preCondition to the modelized item
         /// </summary>
         /// <param name="preCondition"></param>
-        public void AddPreCondition(DataDictionary.Rules.PreCondition preCondition)
+        public void AddPreCondition(PreCondition preCondition)
         {
             Item.appendPreConditions(preCondition);
-            Nodes.Add(new DataDictionaryView.PreConditionTreeNode(preCondition, true));
+            Nodes.Add(new PreConditionTreeNode(preCondition, true));
             SortSubNodes();
         }
 

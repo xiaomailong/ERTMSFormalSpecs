@@ -13,14 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using DataDictionary.Functions;
 
 namespace GUI.DataDictionaryView
 {
-    public class ProcedureTreeNode : ReqRelatedTreeNode<DataDictionary.Functions.Procedure>
+    public class ProcedureTreeNode : ReqRelatedTreeNode<Procedure>
     {
         private class ItemEditor : ReqRelatedEditor
         {
@@ -57,7 +59,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ProcedureTreeNode(DataDictionary.Functions.Procedure item, bool buildSubNodes)
+        public ProcedureTreeNode(Procedure item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }
@@ -67,7 +69,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public ProcedureTreeNode(DataDictionary.Functions.Procedure item, bool buildSubNodes, string name, bool isFolder, bool addRequirements)
+        public ProcedureTreeNode(Procedure item, bool buildSubNodes, string name, bool isFolder, bool addRequirements)
             : base(item, buildSubNodes, name, isFolder, addRequirements)
         {
         }

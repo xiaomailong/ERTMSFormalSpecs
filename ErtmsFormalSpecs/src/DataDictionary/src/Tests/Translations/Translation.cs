@@ -13,11 +13,28 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using DataDictionary.Variables;
 using Utils;
+using Action = DataDictionary.Rules.Action;
+using Collection = DataDictionary.Types.Collection;
+using DBField = DataDictionary.Tests.DBElements.DBField;
+using DBMessage = DataDictionary.Tests.DBElements.DBMessage;
+using DBPacket = DataDictionary.Tests.DBElements.DBPacket;
+using Enum = DataDictionary.Types.Enum;
+using EnumValue = DataDictionary.Constants.EnumValue;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Range = DataDictionary.Types.Range;
+using Structure = DataDictionary.Types.Structure;
+using StructureElement = DataDictionary.Types.StructureElement;
 
 namespace DataDictionary.Tests.Translations
 {
@@ -47,48 +64,39 @@ namespace DataDictionary.Tests.Translations
 
                 return retVal;
             }
-            set
-            {
-                base.Name = value;
-            }
+            set { base.Name = value; }
         }
 
         /// <summary>
         /// Provides the source texts for this dictionary
         /// </summary>
-        public System.Collections.ArrayList SourceTexts
+        public ArrayList SourceTexts
         {
             get
             {
                 if (allSourceTexts() == null)
                 {
-                    setAllSourceTexts(new System.Collections.ArrayList());
+                    setAllSourceTexts(new ArrayList());
                 }
                 return allSourceTexts();
             }
-            set
-            {
-                setAllSourceTexts(value);
-            }
+            set { setAllSourceTexts(value); }
         }
 
         /// <summary>
         /// Provides the sub-steps for this dictionary
         /// </summary>
-        public System.Collections.ArrayList SubSteps
+        public ArrayList SubSteps
         {
             get
             {
                 if (allSubSteps() == null)
                 {
-                    setAllSubSteps(new System.Collections.ArrayList());
+                    setAllSubSteps(new ArrayList());
                 }
                 return allSubSteps();
             }
-            set
-            {
-                setAllSubSteps(value);
-            }
+            set { setAllSubSteps(value); }
         }
 
         /// <summary>
@@ -146,19 +154,19 @@ namespace DataDictionary.Tests.Translations
         /// <summary>
         /// Provides the enclosing collection
         /// </summary>
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
-                System.Collections.ArrayList retVal = null;
-                Tests.Translations.TranslationDictionary dictionary = Enclosing as Tests.Translations.TranslationDictionary;
+                ArrayList retVal = null;
+                TranslationDictionary dictionary = Enclosing as TranslationDictionary;
                 if (dictionary != null)
                 {
                     retVal = dictionary.Translations;
                 }
                 else
                 {
-                    Tests.Translations.Folder folder = Enclosing as Tests.Translations.Folder;
+                    Folder folder = Enclosing as Folder;
                     if (folder != null)
                     {
                         retVal = folder.Translations;
@@ -181,7 +189,7 @@ namespace DataDictionary.Tests.Translations
             {
                 if (!IsRequirementPresent(step, reqRef))
                 {
-                    step.appendRequirements((ReqRef)reqRef.Duplicate());
+                    step.appendRequirements((ReqRef) reqRef.Duplicate());
                 }
             }
 
@@ -197,7 +205,7 @@ namespace DataDictionary.Tests.Translations
 
                 if (addSubStep)
                 {
-                    SubStep newSubStep = (SubStep) Generated.acceptor.getFactory().createSubStep();
+                    SubStep newSubStep = (SubStep) acceptor.getFactory().createSubStep();
                     newSubStep.setSkipEngine(subStep.getSkipEngine());
                     newSubStep.Comment = subStep.Comment;
                     newSubStep.Name = subStep.Name;
@@ -205,15 +213,15 @@ namespace DataDictionary.Tests.Translations
 
                     if (previousStep != null && previousStep.getDistance() != step.getDistance() && subStepCounter == 1)
                     {
-                        Rules.Action newAct = (Rules.Action) Generated.acceptor.getFactory().createAction();
+                        Action newAct = (Action) acceptor.getFactory().createAction();
                         newAct.ExpressionText = "OdometryInterface.UpdateDistance ( " + step.getDistance() + ".0 )";
                         newSubStep.setSkipEngine(false);
                         newSubStep.appendActions(newAct);
                     }
 
-                    foreach (Rules.Action action in subStep.Actions)
+                    foreach (Action action in subStep.Actions)
                     {
-                        Rules.Action newAct = (Rules.Action) action.Duplicate();
+                        Action newAct = (Action) action.Duplicate();
                         newSubStep.appendActions(newAct);
                         Review(newAct);
                     }
@@ -276,7 +284,7 @@ namespace DataDictionary.Tests.Translations
                 result += TextualExplainUtilities.Pad("{\\b SOURCE TEXTS}\\par", indent);
                 foreach (SourceText sourceText in SourceTexts)
                 {
-                    result += TextualExplainUtilities.Pad("{\\b SOURCE TEXT "+i+"}\\par", indent);
+                    result += TextualExplainUtilities.Pad("{\\b SOURCE TEXT " + i + "}\\par", indent);
                     result += sourceText.getExplain(explainSubElements, indent + 2) + "\\par";
                     i += 1;
                 }
@@ -342,7 +350,7 @@ namespace DataDictionary.Tests.Translations
         /// Review the expressions associated to this action
         /// </summary>
         /// <param name="action"></param>
-        private void Review(Rules.Action action)
+        private void Review(Action action)
         {
             try
             {
@@ -391,7 +399,7 @@ namespace DataDictionary.Tests.Translations
                     {
                         if (step.StepMessages.Count > i)
                         {
-                            DBElements.DBMessage message = step.StepMessages[i] as DBElements.DBMessage;
+                            DBMessage message = step.StepMessages[i] as DBMessage;
                             if (message != null)
                             {
                                 retVal = retVal.Replace("%Step_Messages_" + i, format_message(message));
@@ -449,64 +457,64 @@ namespace DataDictionary.Tests.Translations
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        private string format_mode(Generated.acceptor.ST_MODE mode)
+        private string format_mode(acceptor.ST_MODE mode)
         {
             string retVal = "";
 
             switch (mode)
             {
-                case Generated.acceptor.ST_MODE.Mode_FS:
+                case acceptor.ST_MODE.Mode_FS:
                     retVal = "Mode.FS";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_IS:
+                case acceptor.ST_MODE.Mode_IS:
                     retVal = "Mode.IS";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_LS:
+                case acceptor.ST_MODE.Mode_LS:
                     retVal = "Mode.LS";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_NA:
+                case acceptor.ST_MODE.Mode_NA:
                     retVal = "Mode.NA";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_NL:
+                case acceptor.ST_MODE.Mode_NL:
                     retVal = "Mode.NL";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_NP:
+                case acceptor.ST_MODE.Mode_NP:
                     retVal = "Mode.NP";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_OS:
+                case acceptor.ST_MODE.Mode_OS:
                     retVal = "Mode.OS";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_PSH:
+                case acceptor.ST_MODE.Mode_PSH:
                     retVal = "Mode.PSH";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_PT:
+                case acceptor.ST_MODE.Mode_PT:
                     retVal = "Mode.PT";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_RE:
+                case acceptor.ST_MODE.Mode_RE:
                     retVal = "Mode.RE";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_SB:
+                case acceptor.ST_MODE.Mode_SB:
                     retVal = "Mode.SB";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_SF:
+                case acceptor.ST_MODE.Mode_SF:
                     retVal = "Mode.SF";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_SH:
+                case acceptor.ST_MODE.Mode_SH:
                     retVal = "Mode.SH";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_SL:
+                case acceptor.ST_MODE.Mode_SL:
                     retVal = "Mode.SL";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_SN:
+                case acceptor.ST_MODE.Mode_SN:
                     retVal = "Mode.SN";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_SR:
+                case acceptor.ST_MODE.Mode_SR:
                     retVal = "Mode.SR";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_TR:
+                case acceptor.ST_MODE.Mode_TR:
                     retVal = "Mode.TR";
                     break;
-                case Generated.acceptor.ST_MODE.Mode_UF:
+                case acceptor.ST_MODE.Mode_UF:
                     retVal = "Mode.UF";
                     break;
                 default:
@@ -522,18 +530,18 @@ namespace DataDictionary.Tests.Translations
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static string format_message(DBElements.DBMessage message)
+        public static string format_message(DBMessage message)
         {
             string retVal = "";
             switch (message.MessageType)
             {
-                case Generated.acceptor.DBMessageType.aEUROBALISE:
+                case acceptor.DBMessageType.aEUROBALISE:
                     retVal = format_eurobalise_message(message);
                     break;
-                case Generated.acceptor.DBMessageType.aEUROLOOP:
+                case acceptor.DBMessageType.aEUROLOOP:
                     retVal = format_euroloop_message(message);
                     break;
-                case Generated.acceptor.DBMessageType.aEURORADIO:
+                case acceptor.DBMessageType.aEURORADIO:
                     retVal = format_euroradio_message(message);
                     break;
             }
@@ -546,26 +554,26 @@ namespace DataDictionary.Tests.Translations
             string retVal = "<not a structure type>";
 
             int index = expression.IndexOf("<-");
-            if ( index > 0 )
+            if (index > 0)
             {
                 string variableText = expression.Substring(0, index).Trim();
-                Interpreter.Expression expressionTree = EFSSystem.Parser.Expression(Dictionary, variableText);
+                Expression expressionTree = EFSSystem.Parser.Expression(Dictionary, variableText);
                 if (expressionTree != null)
                 {
-                    Types.Structure structureType = expressionTree.GetExpressionType() as Types.Structure;
+                    Structure structureType = expressionTree.GetExpressionType() as Structure;
                     retVal = structureType.DefaultValue.LiteralName;
                 }
             }
-            
+
             return retVal;
         }
 
-        private static DataDictionary.Types.NameSpace findNameSpace(string name)
+        private static NameSpace findNameSpace(string name)
         {
-            DataDictionary.Types.NameSpace retVal = null;
+            NameSpace retVal = null;
 
             EFSSystem system = EFSSystem.INSTANCE;
-            foreach (DataDictionary.Dictionary dictionary in system.Dictionaries)
+            foreach (Dictionary dictionary in system.Dictionaries)
             {
                 retVal = OverallNameSpaceFinder.INSTANCE.findByName(dictionary, name);
                 if (retVal != null)
@@ -577,23 +585,22 @@ namespace DataDictionary.Tests.Translations
             return retVal;
         }
 
-        private static string format_eurobalise_message(DBElements.DBMessage message)
+        private static string format_eurobalise_message(DBMessage message)
         {
             EFSSystem system = EFSSystem.INSTANCE;
 
-            DataDictionary.Types.NameSpace nameSpace = findNameSpace("Messages.EUROBALISE");
-            Types.Structure structureType = (Types.Structure)system.findType(nameSpace, "Message");
-            Values.StructureValue structure = new Values.StructureValue(structureType);
+            NameSpace nameSpace = findNameSpace("Messages.EUROBALISE");
+            Structure structureType = (Structure) system.findType(nameSpace, "Message");
+            StructureValue structure = new StructureValue(structureType);
 
             int currentIndex = 0;
             FillStructure(nameSpace, message.Fields, ref currentIndex, structure); // fills the message fields
 
 
             // then we fill the packets
-            Variables.IVariable subSequenceVariable;
+            IVariable subSequenceVariable;
             if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable))
             {
-                
                 subSequenceVariable.Value = get_message_packets(message, nameSpace, system);
             }
             else
@@ -605,13 +612,12 @@ namespace DataDictionary.Tests.Translations
         }
 
 
-
-        static Values.ListValue get_message_packets(DBElements.DBMessage message, Types.NameSpace nameSpace, EFSSystem system)
+        private static ListValue get_message_packets(DBMessage message, NameSpace nameSpace, EFSSystem system)
         {
-            Values.ListValue retVal;
+            ListValue retVal;
 
-            Types.Collection collectionType = (Types.Collection)system.findType(nameSpace, "Collection1");
-            Types.Structure subStructure1Type = (Types.Structure)system.findType(nameSpace, "SubStructure1");
+            Collection collectionType = (Collection) system.findType(nameSpace, "Collection1");
+            Structure subStructure1Type = (Structure) system.findType(nameSpace, "SubStructure1");
 
             string packetLocation = "Messages.PACKET.";
             if (nameSpace.FullName.Contains("TRAIN_TO_TRACK"))
@@ -623,30 +629,30 @@ namespace DataDictionary.Tests.Translations
                 packetLocation += "TRACK_TO_TRAIN.Message";
             }
 
-            Types.Structure packetStructureType = (Types.Structure)system.findType(nameSpace, packetLocation);
+            Structure packetStructureType = (Structure) system.findType(nameSpace, packetLocation);
 
-            retVal = new Values.ListValue(collectionType, new List<Values.IValue>());
+            retVal = new ListValue(collectionType, new List<IValue>());
 
-            foreach (DBElements.DBPacket packet in message.Packets)
+            foreach (DBPacket packet in message.Packets)
             {
-                Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
-                if (nidPacketField.Value != "255")  // 255 means "end of information"
+                DBField nidPacketField = packet.Fields[0] as DBField;
+                if (nidPacketField.Value != "255") // 255 means "end of information"
                 {
                     int packetId = int.Parse(nidPacketField.Value);
-                    Values.StructureValue subStructure = FindStructure(packetId);
+                    StructureValue subStructure = FindStructure(packetId);
 
                     int currentIndex = 0;
                     FillStructure(nameSpace, packet.Fields, ref currentIndex, subStructure);
 
-                    Values.StructureValue subStructure1 = new Values.StructureValue(subStructure1Type);
+                    StructureValue subStructure1 = new StructureValue(subStructure1Type);
 
                     // For Balise messages, we have an extra level of information to fill, so here we define StructureVal in one of two ways
-                    Values.StructureValue structureVal;
+                    StructureValue structureVal;
                     if (subStructure1.SubVariables.Count == 1 && subStructure1.SubVariables.ContainsKey("TRACK_TO_TRAIN"))
                     {
                         // For a Balise message, we have an extra level of structures for TRACK_TO_TRAIN
-                        structureVal = new Values.StructureValue(packetStructureType);
-                        
+                        structureVal = new StructureValue(packetStructureType);
+
                         subStructure1.SubVariables["TRACK_TO_TRAIN"].Value = structureVal;
                     }
                     else
@@ -656,7 +662,7 @@ namespace DataDictionary.Tests.Translations
                     }
 
                     // Find the right variable in the packet to add the structure we just created
-                    foreach (KeyValuePair<string, Variables.IVariable> pair in structureVal.SubVariables)
+                    foreach (KeyValuePair<string, IVariable> pair in structureVal.SubVariables)
                     {
                         string variableName = pair.Key;
                         if (subStructure.Structure.FullName.Contains(variableName))
@@ -681,25 +687,25 @@ namespace DataDictionary.Tests.Translations
         /// <param name="nameSpace">The namespace where the type has to be found</param>
         /// <param name="nidPacket">The id of the packet</param>
         /// <returns></returns>
-        private static Values.StructureValue FindStructure(int nidPacket)
+        private static StructureValue FindStructure(int nidPacket)
         {
             EFSSystem system = EFSSystem.INSTANCE;
-            Types.Structure structure = null;
-            DataDictionary.Types.NameSpace nameSpace = findNameSpace ("Messages.PACKET");
+            Structure structure = null;
+            NameSpace nameSpace = findNameSpace("Messages.PACKET");
 
-            foreach (Types.NameSpace subNameSpace in nameSpace.NameSpaces)
+            foreach (NameSpace subNameSpace in nameSpace.NameSpaces)
             {
-                foreach (DataDictionary.Types.NameSpace packetNameSpace in subNameSpace.NameSpaces)
+                foreach (NameSpace packetNameSpace in subNameSpace.NameSpaces)
                 {
-                    Types.Structure structureType = (Types.Structure)system.findType(packetNameSpace, packetNameSpace.FullName + ".Message");
-                    Values.StructureValue structureValue = new Values.StructureValue(structureType);
+                    Structure structureType = (Structure) system.findType(packetNameSpace, packetNameSpace.FullName + ".Message");
+                    StructureValue structureValue = new StructureValue(structureType);
 
-                    foreach (KeyValuePair<string, Variables.IVariable> pair in structureValue.SubVariables)
+                    foreach (KeyValuePair<string, IVariable> pair in structureValue.SubVariables)
                     {
                         string variableName = pair.Key;
                         if (variableName.Equals("NID_PACKET"))
                         {
-                            Values.IntValue value = pair.Value.Value as Values.IntValue;
+                            IntValue value = pair.Value.Value as IntValue;
                             if (value.Val == nidPacket)
                             {
                                 structure = structureType;
@@ -713,10 +719,10 @@ namespace DataDictionary.Tests.Translations
                 }
             }
 
-            Values.StructureValue retVal = null;
+            StructureValue retVal = null;
             if (structure != null)
             {
-                retVal = new Values.StructureValue(structure);
+                retVal = new StructureValue(structure);
             }
 
             return retVal;
@@ -729,17 +735,17 @@ namespace DataDictionary.Tests.Translations
         /// <param name="fields">Fields to be copied into the structure</param>
         /// <param name="index">Index (of fields list) from which we have to start copying</param>
         /// <param name="aStructure">The structure to be filled</param>
-        private static void FillStructure(Types.NameSpace aNameSpace, ArrayList fields, ref int currentIndex, Values.StructureValue aStructure)
+        private static void FillStructure(NameSpace aNameSpace, ArrayList fields, ref int currentIndex, StructureValue aStructure)
         {
             EFSSystem system = EFSSystem.INSTANCE;
 
             int j = 0;
-            while ( currentIndex < fields.Count )
+            while (currentIndex < fields.Count)
             {
-                Tests.DBElements.DBField field = fields[currentIndex] as Tests.DBElements.DBField;
+                DBField field = fields[currentIndex] as DBField;
 
-                KeyValuePair<string, Variables.IVariable> pair = aStructure.SubVariables.ElementAt(j);
-                Variables.IVariable variable = pair.Value;
+                KeyValuePair<string, IVariable> pair = aStructure.SubVariables.ElementAt(j);
+                IVariable variable = pair.Value;
 
                 // conditional variables can be missing in the database fields, but present in our structure => skip them
                 while (!variable.Name.StartsWith(field.Variable) && j < aStructure.SubVariables.Count - 1)
@@ -749,12 +755,12 @@ namespace DataDictionary.Tests.Translations
                     variable = pair.Value;
                 }
 
-                if (variable.Name.StartsWith(field.Variable))  // we use StartsWith and not Equals because we can have N_ITER_1 and N_ITER
+                if (variable.Name.StartsWith(field.Variable)) // we use StartsWith and not Equals because we can have N_ITER_1 and N_ITER
                 {
-                    if (variable.Type is Types.Enum)
+                    if (variable.Type is Enum)
                     {
-                        Types.Enum type = variable.Type as Types.Enum;
-                        foreach (DataDictionary.Constants.EnumValue enumValue in type.Values)
+                        Enum type = variable.Type as Enum;
+                        foreach (EnumValue enumValue in type.Values)
                         {
                             int value = int.Parse(enumValue.getValue());
                             int other = int.Parse(field.Value);
@@ -766,19 +772,18 @@ namespace DataDictionary.Tests.Translations
                             }
                         }
                     }
-                    else if (variable.Type is Types.Range)
+                    else if (variable.Type is Range)
                     {
-                        Types.Range type = variable.Type as Types.Range;
+                        Range type = variable.Type as Range;
                         object v = VariableConverter.INSTANCE.Convert(variable.Name, field.Value);
-                        variable.Value = new Values.IntValue(type, (int)v);
+                        variable.Value = new IntValue(type, (int) v);
                         j++;
                     }
-                    else if (variable.Type is Types.StringType)
+                    else if (variable.Type is StringType)
                     {
-                        Types.StringType type = variable.Type as Types.StringType;
-                        variable.Value = new Values.StringValue(type, field.Value);
+                        StringType type = variable.Type as StringType;
+                        variable.Value = new StringValue(type, field.Value);
                         j++;
-
                     }
                     else
                     {
@@ -786,17 +791,17 @@ namespace DataDictionary.Tests.Translations
                     }
                     if (variable.Name.StartsWith("N_ITER")) // we have to create a sequence
                     {
-                        KeyValuePair<string, Variables.IVariable> sequencePair = aStructure.SubVariables.ElementAt(j);
-                        Variables.IVariable sequenceVariable = sequencePair.Value;
-                        Types.Collection collectionType = (Types.Collection)system.findType(aNameSpace, sequenceVariable.TypeName);
-                        Values.ListValue sequence = new Values.ListValue(collectionType, new List<Values.IValue>());
+                        KeyValuePair<string, IVariable> sequencePair = aStructure.SubVariables.ElementAt(j);
+                        IVariable sequenceVariable = sequencePair.Value;
+                        Collection collectionType = (Collection) system.findType(aNameSpace, sequenceVariable.TypeName);
+                        ListValue sequence = new ListValue(collectionType, new List<IValue>());
 
                         int value = int.Parse(field.Value);
                         for (int k = 0; k < value; k++)
                         {
                             currentIndex++;
-                            Types.Structure structureType = (Types.Structure)system.findType(aNameSpace, sequence.CollectionType.Type.FullName);
-                            Values.StructureValue structureValue = new Values.StructureValue(structureType);
+                            Structure structureType = (Structure) system.findType(aNameSpace, sequence.CollectionType.Type.FullName);
+                            StructureValue structureValue = new StructureValue(structureType);
                             FillStructure(aNameSpace, fields, ref currentIndex, structureValue);
                             sequence.Val.Add(structureValue);
                         }
@@ -818,23 +823,23 @@ namespace DataDictionary.Tests.Translations
         }
 
 
-        private static string format_euroloop_message(DBElements.DBMessage message)
+        private static string format_euroloop_message(DBMessage message)
         {
             EFSSystem system = EFSSystem.INSTANCE;
 
-            DataDictionary.Types.NameSpace nameSpace = findNameSpace("Messages.EUROLOOP");
-            Types.Structure structureType = (Types.Structure)system.findType(nameSpace, "Message");
-            Values.StructureValue structure = new Values.StructureValue(structureType);
+            NameSpace nameSpace = findNameSpace("Messages.EUROLOOP");
+            Structure structureType = (Structure) system.findType(nameSpace, "Message");
+            StructureValue structure = new StructureValue(structureType);
 
             int currentIndex = 0;
             FillStructure(nameSpace, message.Fields, ref currentIndex, structure);
 
 
             // then we fill the packets
-            Variables.IVariable subSequenceVariable;
+            IVariable subSequenceVariable;
             if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable))
             {
-                  subSequenceVariable.Value = get_message_packets(message, nameSpace, system);
+                subSequenceVariable.Value = get_message_packets(message, nameSpace, system);
             }
             else
             {
@@ -844,18 +849,18 @@ namespace DataDictionary.Tests.Translations
             return structure.Name;
         }
 
-        private static string format_euroradio_message(DBElements.DBMessage message)
+        private static string format_euroradio_message(DBMessage message)
         {
             EFSSystem system = EFSSystem.INSTANCE;
 
-            DataDictionary.Types.NameSpace rbcRoot = findNameSpace("Messages.MESSAGE");
+            NameSpace rbcRoot = findNameSpace("Messages.MESSAGE");
 
             // Get the EFS namespace corresponding to the message 
             // Select the appropriate message type, tracktotrain or traintotrack
-            Tests.DBElements.DBField nidMessage = message.Fields[0] as Tests.DBElements.DBField;
-            string msg_id = get_namespace_from_ID( nidMessage.Value );
+            DBField nidMessage = message.Fields[0] as DBField;
+            string msg_id = get_namespace_from_ID(nidMessage.Value);
 
-            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(rbcRoot, msg_id);
+            NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(rbcRoot, msg_id);
 
             if (nameSpace == null)
             {
@@ -864,13 +869,13 @@ namespace DataDictionary.Tests.Translations
 
             // The EURORADIO messages are defined in the namespaces TRACK_TO_TRAIN and TRAIN_TO_TRACK, which enclose the specific message namespaces
             // So we get the message type from nameSpace.EnclosingNameSpace and the actual structure corresponding to the message in nameSpace
-            Types.Structure enclosingStructureType = (Types.Structure)system.findType(nameSpace.EnclosingNameSpace, "Message");
-            Values.StructureValue Message = new Values.StructureValue(enclosingStructureType);
+            Structure enclosingStructureType = (Structure) system.findType(nameSpace.EnclosingNameSpace, "Message");
+            StructureValue Message = new StructureValue(enclosingStructureType);
 
 
             // Within the message, get the appropriate field and get that structure
-            Types.Structure structureType = (Types.Structure)system.findType(nameSpace, "Message");
-            Values.StructureValue structure = new Values.StructureValue(structureType);
+            Structure structureType = (Structure) system.findType(nameSpace, "Message");
+            StructureValue structure = new StructureValue(structureType);
 
 
             // Fill the structure
@@ -879,7 +884,7 @@ namespace DataDictionary.Tests.Translations
 
             // Fill the default packets
             int translatedPackets = 0;
-            foreach (KeyValuePair<string, Variables.IVariable> subVariable in structure.SubVariables)
+            foreach (KeyValuePair<string, IVariable> subVariable in structure.SubVariables)
             {
                 if (subVariable.Value.TypeName.EndsWith("Message"))
                 {
@@ -892,16 +897,16 @@ namespace DataDictionary.Tests.Translations
             }
 
             // and fill the packets
-            Variables.IVariable subSequenceVariable;
+            IVariable subSequenceVariable;
             if (structure.SubVariables.TryGetValue("Sequence1", out subSequenceVariable)
                 && message.Packets.Count > translatedPackets)
             {
                 subSequenceVariable.Value = get_message_packets(message, nameSpace, system);
             }
-            
+
 
             // Fill the correct field in Message with the structure.
-            foreach (KeyValuePair<string, Variables.IVariable> pair in Message.SubVariables)
+            foreach (KeyValuePair<string, IVariable> pair in Message.SubVariables)
             {
                 if (msg_id.EndsWith(pair.Key))
                 {
@@ -913,23 +918,23 @@ namespace DataDictionary.Tests.Translations
             return Message.Name;
         }
 
-        private static Values.IValue FillDefaultPacket(DBElements.DBMessage message, Variables.IVariable structure)
+        private static IValue FillDefaultPacket(DBMessage message, IVariable structure)
         {
-            Values.IValue retVal = structure.Value;
+            IValue retVal = structure.Value;
 
             if (isPacket(structure))
             {
-                Types.Structure defaultPacketType = (Types.Structure)structure.Type;
-                Values.StructureValue defaultPacket = new Values.StructureValue(defaultPacketType);
+                Structure defaultPacketType = (Structure) structure.Type;
+                StructureValue defaultPacket = new StructureValue(defaultPacketType);
 
-                Types.NameSpace packetNameSpace = structure.NameSpace;
+                NameSpace packetNameSpace = structure.NameSpace;
 
-                foreach (DBElements.DBPacket packet in message.Packets)
+                foreach (DBPacket packet in message.Packets)
                 {
-                    Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
+                    DBField nidPacketField = packet.Fields[0] as DBField;
                     int packetID = int.Parse(nidPacketField.Value);
 
-                    Types.Structure packetType = (Types.Structure)FindStructure(packetID).Type;
+                    Structure packetType = (Structure) FindStructure(packetID).Type;
 
                     if (packetType == defaultPacketType)
                     {
@@ -942,25 +947,25 @@ namespace DataDictionary.Tests.Translations
             }
             else
             {
-                Types.Structure structureType = structure.Type as Types.Structure;
-                Values.StructureValue Structure = new Values.StructureValue(structureType);
+                Structure structureType = structure.Type as Structure;
+                StructureValue Structure = new StructureValue(structureType);
                 if (Structure != null)
                 {
-                    foreach (KeyValuePair<string, Variables.IVariable> subVariable in Structure.SubVariables)
+                    foreach (KeyValuePair<string, IVariable> subVariable in Structure.SubVariables)
                     {
                         if (isPacket(subVariable.Value))
                         {
-                            Types.Structure defaultPacketType = (Types.Structure)subVariable.Value.Type;
-                            Values.StructureValue defaultPacket = new Values.StructureValue(defaultPacketType);
+                            Structure defaultPacketType = (Structure) subVariable.Value.Type;
+                            StructureValue defaultPacket = new StructureValue(defaultPacketType);
 
-                            Types.NameSpace packetNameSpace = subVariable.Value.NameSpace;
+                            NameSpace packetNameSpace = subVariable.Value.NameSpace;
 
-                            foreach (DBElements.DBPacket packet in message.Packets)
+                            foreach (DBPacket packet in message.Packets)
                             {
-                                Tests.DBElements.DBField nidPacketField = packet.Fields[0] as Tests.DBElements.DBField;
+                                DBField nidPacketField = packet.Fields[0] as DBField;
                                 int packetID = int.Parse(nidPacketField.Value);
 
-                                Types.Structure packetType = (Types.Structure)FindStructure(packetID).Type;
+                                Structure packetType = (Structure) FindStructure(packetID).Type;
 
                                 if (packetType == defaultPacketType)
                                 {
@@ -984,13 +989,13 @@ namespace DataDictionary.Tests.Translations
         /// </summary>
         /// <param name="structure"></param>
         /// <returns></returns>
-        private static bool isPacket(Variables.IVariable structure)
+        private static bool isPacket(IVariable structure)
         {
             bool retVal = false;
 
             foreach (ModelElement element in structure.Type.SubElements)
             {
-                Types.StructureElement subElement = element as Types.StructureElement;
+                StructureElement subElement = element as StructureElement;
                 if (subElement != null)
                 {
                     if (subElement.Name == "NID_PACKET")
@@ -1180,25 +1185,25 @@ namespace DataDictionary.Tests.Translations
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        private string format_level(Generated.acceptor.ST_LEVEL level)
+        private string format_level(acceptor.ST_LEVEL level)
         {
             string retVal = "";
 
             switch (level)
             {
-                case Generated.acceptor.ST_LEVEL.StLevel_L0:
+                case acceptor.ST_LEVEL.StLevel_L0:
                     retVal = "Level.L0";
                     break;
-                case Generated.acceptor.ST_LEVEL.StLevel_L1:
+                case acceptor.ST_LEVEL.StLevel_L1:
                     retVal = "Level.L1";
                     break;
-                case Generated.acceptor.ST_LEVEL.StLevel_LSTM:
+                case acceptor.ST_LEVEL.StLevel_LSTM:
                     retVal = "Level.LSTR";
                     break;
-                case Generated.acceptor.ST_LEVEL.StLevel_L2:
+                case acceptor.ST_LEVEL.StLevel_L2:
                     retVal = "Level.L2";
                     break;
-                case Generated.acceptor.ST_LEVEL.StLevel_L3:
+                case acceptor.ST_LEVEL.StLevel_L3:
                     retVal = "Level.L3";
                     break;
                 default:
@@ -1273,11 +1278,11 @@ namespace DataDictionary.Tests.Translations
                 {
                     if (tmp[i] == '0')
                     {
-                        retVal = retVal * 2;
+                        retVal = retVal*2;
                     }
                     else if (tmp[i] == '1')
                     {
-                        retVal = retVal * 2 + 1;
+                        retVal = retVal*2 + 1;
                     }
                 }
             }
@@ -1309,7 +1314,7 @@ namespace DataDictionary.Tests.Translations
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             SubStep subStep = element as SubStep;
             if (subStep != null)
@@ -1317,6 +1322,5 @@ namespace DataDictionary.Tests.Translations
                 appendSubSteps(subStep);
             }
         }
-
     }
 }

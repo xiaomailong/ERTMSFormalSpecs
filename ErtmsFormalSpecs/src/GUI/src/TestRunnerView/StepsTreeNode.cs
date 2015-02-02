@@ -13,13 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Tests;
 
 namespace GUI.TestRunnerView
 {
-    public class StepsTreeNode : ModelElementTreeNode<DataDictionary.Tests.TestCase>
+    public class StepsTreeNode : ModelElementTreeNode<TestCase>
     {
         /// <summary>
         /// The value editor
@@ -39,7 +41,7 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public StepsTreeNode(DataDictionary.Tests.TestCase item, bool buildSubNodes)
+        public StepsTreeNode(TestCase item, bool buildSubNodes)
             : base(item, buildSubNodes, "Steps", true)
         {
         }
@@ -52,7 +54,7 @@ namespace GUI.TestRunnerView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Tests.Step step in Item.Steps)
+            foreach (Step step in Item.Steps)
             {
                 Nodes.Add(new StepTreeNode(step, buildSubNodes));
             }
@@ -72,7 +74,7 @@ namespace GUI.TestRunnerView
         /// </summary>
         /// <param name="step"></param>
         /// <returns></returns>
-        public StepTreeNode createStep(DataDictionary.Tests.Step step)
+        public StepTreeNode createStep(Step step)
         {
             step.Enclosing = Item;
             StepTreeNode retVal = new StepTreeNode(step, true);
@@ -85,7 +87,7 @@ namespace GUI.TestRunnerView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            createStep(DataDictionary.Tests.Step.createDefault("Step" + (GetNodeCount(false) + 1)));
+            createStep(Step.createDefault("Step" + (GetNodeCount(false) + 1)));
         }
 
         /// <summary>

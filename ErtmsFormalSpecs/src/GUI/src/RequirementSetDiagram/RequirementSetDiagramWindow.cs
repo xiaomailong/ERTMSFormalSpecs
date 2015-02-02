@@ -13,18 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
 using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-using DataDictionary;
-using DataDictionary.Constants;
-using DataDictionary.Rules;
-using DataDictionary.Types;
-using DataDictionary.Variables;
-using Utils;
-using GUI.BoxArrowDiagram;
 using DataDictionary.Specification;
+using GUI.BoxArrowDiagram;
+using GUI.Converters;
 
 namespace GUI.RequirementSetDiagram
 {
@@ -55,7 +48,10 @@ namespace GUI.RequirementSetDiagram
         /// <summary>
         /// The panel used to display the state diagram
         /// </summary>
-        private RequirementSetPanel Panel { get { return (RequirementSetPanel)BoxArrowContainerPanel; } }
+        private RequirementSetPanel Panel
+        {
+            get { return (RequirementSetPanel) BoxArrowContainerPanel; }
+        }
 
         /// <summary>
         /// Sets the system for this diagram
@@ -94,10 +90,7 @@ namespace GUI.RequirementSetDiagram
             public bool Recursive
             {
                 get { return control.Model.getRecursiveSelection(); }
-                set
-                {
-                    control.Model.setRecursiveSelection(value);
-                }
+                set { control.Model.setRecursiveSelection(value); }
             }
 
             [Category("Related Requirements behaviour")]
@@ -120,13 +113,13 @@ namespace GUI.RequirementSetDiagram
             return retVal;
         }
 
-        protected class InternalRequirementSetTypeConverter : Converters.RequirementSetTypeConverter
+        protected class InternalRequirementSetTypeConverter : RequirementSetTypeConverter
         {
             public override StandardValuesCollection
-            GetStandardValues(ITypeDescriptorContext context)
+                GetStandardValues(ITypeDescriptorContext context)
             {
-                TransitionEditor instance = (TransitionEditor)context.Instance;
-                RequirementSetPanel panel = (RequirementSetPanel)instance.control.BoxArrowPanel;
+                TransitionEditor instance = (TransitionEditor) context.Instance;
+                RequirementSetPanel panel = (RequirementSetPanel) instance.control.BoxArrowPanel;
                 return GetValues(panel.Enclosing);
             }
         }
@@ -145,7 +138,7 @@ namespace GUI.RequirementSetDiagram
             {
             }
 
-            [Category("Description"), TypeConverter(typeof(InternalRequirementSetTypeConverter))]
+            [Category("Description"), TypeConverter(typeof (InternalRequirementSetTypeConverter))]
             public string Source
             {
                 get
@@ -160,7 +153,7 @@ namespace GUI.RequirementSetDiagram
                 }
                 set
                 {
-                    RequirementSetDependancyControl transitionControl = (RequirementSetDependancyControl)control;
+                    RequirementSetDependancyControl transitionControl = (RequirementSetDependancyControl) control;
                     IHoldsRequirementSets enclosing = transitionControl.Model.Source.Enclosing as IHoldsRequirementSets;
                     if (enclosing != null)
                     {
@@ -174,7 +167,7 @@ namespace GUI.RequirementSetDiagram
                 }
             }
 
-            [Category("Description"), TypeConverter(typeof(InternalRequirementSetTypeConverter))]
+            [Category("Description"), TypeConverter(typeof (InternalRequirementSetTypeConverter))]
             public string Target
             {
                 get
@@ -190,7 +183,7 @@ namespace GUI.RequirementSetDiagram
                 }
                 set
                 {
-                    RequirementSetDependancyControl transitionControl = (RequirementSetDependancyControl)control;
+                    RequirementSetDependancyControl transitionControl = (RequirementSetDependancyControl) control;
                     IHoldsRequirementSets enclosing = transitionControl.Model.Source.Enclosing as IHoldsRequirementSets;
                     if (enclosing != null)
                     {

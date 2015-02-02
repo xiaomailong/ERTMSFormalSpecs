@@ -13,10 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using Utils;
+using DataDictionary.Functions;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter.Filter;
+using DataDictionary.Values;
+using Utils;
+using Function = DataDictionary.Functions.Function;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Interpreter
 {
@@ -61,23 +67,23 @@ namespace DataDictionary.Interpreter
             foreach (Parameter parameter in Parameters)
             {
                 parameter.Enclosing = this;
-                Utils.ISubDeclaratorUtils.AppendNamable(this, parameter);
+                ISubDeclaratorUtils.AppendNamable(this, parameter);
             }
         }
 
         /// <summary>
         /// The elements declared by this declarator
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; private set; }
+        public Dictionary<string, List<INamable>> DeclaredElements { get; private set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
-            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
+            ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>
@@ -86,7 +92,7 @@ namespace DataDictionary.Interpreter
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
+        public override bool SemanticAnalysis(INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
@@ -113,20 +119,21 @@ namespace DataDictionary.Interpreter
 
             return __staticCallable;
         }
+
         /// <summary>
         /// Provides the type of this expression
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
-        public override Types.Type GetExpressionType()
+        public override Type GetExpressionType()
         {
-            Functions.Function retVal = (Functions.Function)Generated.acceptor.getFactory().createFunction();
+            Function retVal = (Function) acceptor.getFactory().createFunction();
             retVal.Name = ToString();
             retVal.ReturnType = Expression.GetExpressionType();
 
             foreach (Parameter parameter in Parameters)
             {
-                Parameter param = (Parameter)Generated.acceptor.getFactory().createParameter();
+                Parameter param = (Parameter) acceptor.getFactory().createParameter();
                 param.Name = parameter.Name;
                 param.Type = parameter.Type;
                 retVal.appendParameters(param);
@@ -153,9 +160,9 @@ namespace DataDictionary.Interpreter
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
+        public override IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, Name + " = ");
             try
@@ -164,7 +171,7 @@ namespace DataDictionary.Interpreter
                 {
                     int token = context.LocalScope.PushContext();
                     context.LocalScope.setGraphParameter(Parameters[0]);
-                    Functions.Graph graph = createGraph(context, Parameters[0], subExplanation);
+                    Graph graph = createGraph(context, Parameters[0], subExplanation);
                     context.LocalScope.PopContext(token);
                     if (graph != null)
                     {
@@ -175,7 +182,7 @@ namespace DataDictionary.Interpreter
                 {
                     int token = context.LocalScope.PushContext();
                     context.LocalScope.setSurfaceParameters(Parameters[0], Parameters[1]);
-                    Functions.Surface surface = createSurface(context, Parameters[0], Parameters[1], subExplanation);
+                    Surface surface = createSurface(context, Parameters[0], Parameters[1], subExplanation);
                     context.LocalScope.PopContext(token);
                     if (surface != null)
                     {
@@ -187,11 +194,11 @@ namespace DataDictionary.Interpreter
             {
                 /// TODO Ugly hack, because functions & function types are merged.
                 /// This provides an empty function as the type of this
-                retVal = GetExpressionType() as Values.IValue;
+                retVal = GetExpressionType() as IValue;
             }
             finally
             {
-                ExplanationPart.SetNamable(subExplanation, retVal); 
+                ExplanationPart.SetNamable(subExplanation, retVal);
             }
 
             return retVal;
@@ -202,7 +209,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public override void fill(List<Utils.INamable> retVal, BaseFilter filter)
+        public override void fill(List<INamable> retVal, BaseFilter filter)
         {
             if (Parameters != null)
             {
@@ -264,9 +271,9 @@ namespace DataDictionary.Interpreter
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public override Functions.Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
+        public override Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
-            Functions.Graph retVal = base.createGraph(context, parameter, explain);
+            Graph retVal = base.createGraph(context, parameter, explain);
 
             if (parameter == Parameters[0] || parameter == Parameters[1])
             {
@@ -288,9 +295,9 @@ namespace DataDictionary.Interpreter
         /// <param name="yParam">The Y axis of this surface</param>
         /// <param name="explain"></param>
         /// <returns>The surface which corresponds to this expression</returns>
-        public override Functions.Surface createSurface(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
+        public override Surface createSurface(InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
         {
-            Functions.Surface retVal = base.createSurface(context, xParam, yParam, explain);
+            Surface retVal = base.createSurface(context, xParam, yParam, explain);
 
             if (xParam == null || yParam == null)
             {

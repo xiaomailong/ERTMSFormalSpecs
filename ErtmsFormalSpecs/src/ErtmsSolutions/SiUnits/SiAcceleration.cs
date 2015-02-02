@@ -1,4 +1,4 @@
-// ------------------------------------------------------------------------------
+﻿// ------------------------------------------------------------------------------
 // -- Copyright ERTMS Solutions
 // -- Licensed under the EUPL V.1.1
 // -- http://joinup.ec.europa.eu/software/page/eupl/licence-eupl
@@ -21,11 +21,13 @@
  ********************************************************************************/
 
 using System;
+
 /**@brief International System of Units encapsulation. */
+
 namespace ErtmsSolutions.SiUnits
 {
-
     /**@brief List of possible representations of a SiAcceleration */
+
     public enum SiAcceleration_SubUnits
     {
         Meter_per_SecondSquare, // Symbol : 'm/s²', Factor : 1.0
@@ -33,6 +35,7 @@ namespace ErtmsSolutions.SiUnits
     }
 
     /**@brief Represents a acceleration expressed in number of meter/second2s */
+
     public struct SiAcceleration : ISiUnit<SiAcceleration>
     {
         /****************** private members and functions ***************/
@@ -43,41 +46,36 @@ namespace ErtmsSolutions.SiUnits
         private static double the_epsilon = 0.0001;
 
         /**@brief The minimum difference between two SiAcceleration objects. */
+
         public static double Epsilon
         {
-            get
-            {
-                return the_epsilon;
-            }
-            set
-            {
-                the_epsilon = value;
-            }
+            get { return the_epsilon; }
+            set { the_epsilon = value; }
         }
 
         /****************** constructors ******************************/
         /**@brief A constructor where the value unit's is specified. */
         /**@param "x" The internal value is assigned to it. It is assumed x is accelerations */
         /**@param "SubUnit" The units in wich 'x' is expressed. */
+
         public SiAcceleration(double x, SiAcceleration_SubUnits SubUnit)
         {
             this.the_value = 0.0;
-            this.the_value = x / SubUnitFactor(SubUnit);
+            this.the_value = x/SubUnitFactor(SubUnit);
         }
 
         /**@brief A constructor where the default unit is assumed. */
+
         public SiAcceleration(double x)
             : this(x, SiAcceleration_SubUnits.Meter_per_SecondSquare)
         {
         }
 
         /**@brief Returns the value as a double. */
+
         public double Value
         {
-            get
-            {
-                return this.the_value;
-            }
+            get { return this.the_value; }
         }
 
         /****************** Constants *********************************/
@@ -94,6 +92,7 @@ namespace ErtmsSolutions.SiUnits
         public static readonly SiAcceleration MaxValue = new SiAcceleration(double.MaxValue);
 
         /****************** functions ***********************************/
+
         public bool Equals(SiAcceleration obj)
         {
             return (this == obj);
@@ -101,7 +100,7 @@ namespace ErtmsSolutions.SiUnits
 
         public override bool Equals(object obj)
         {
-            return (obj.GetType() != this.GetType()) ? false : this.Equals((SiAcceleration)obj);
+            return (obj.GetType() != this.GetType()) ? false : this.Equals((SiAcceleration) obj);
         }
 
         public override int GetHashCode()
@@ -111,12 +110,12 @@ namespace ErtmsSolutions.SiUnits
 
         public static SiAcceleration Min(SiAcceleration a, SiAcceleration b)
         {
-            return SiAcceleration.One * Math.Min(a.Value, b.Value);
+            return One*Math.Min(a.Value, b.Value);
         }
 
         public static SiAcceleration Max(SiAcceleration a, SiAcceleration b)
         {
-            return SiAcceleration.One * Math.Max(a.Value, b.Value);
+            return One*Math.Max(a.Value, b.Value);
         }
 
         public bool IsLessOrEqualThan(SiAcceleration other)
@@ -141,12 +140,12 @@ namespace ErtmsSolutions.SiUnits
 
         public SiAcceleration Min(SiAcceleration other)
         {
-            return SiAcceleration.Min(this, other);
+            return Min(this, other);
         }
 
         public SiAcceleration Max(SiAcceleration other)
         {
-            return SiAcceleration.Max(this, other);
+            return Max(this, other);
         }
 
         /****************** operators ***********************************/
@@ -154,6 +153,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first acceleration. */
         /**@param "b" The second acceleration. */
         /**@return 'true' if a.Value and b.Value differ less than Epsilon. Otherwise, 'else' is returned */
+
         public static bool operator ==(SiAcceleration a, SiAcceleration b)
         {
             return (Math.Abs(a.the_value - b.the_value) < the_epsilon);
@@ -163,6 +163,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first acceleration. */
         /**@param "b" The second acceleration. */
         /**@return 'true' if a.Value and b.Value differ more than Epsilon. Otherwise, 'else' is returned */
+
         public static bool operator !=(SiAcceleration a, SiAcceleration b)
         {
             return (!(a == b));
@@ -172,6 +173,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first acceleration. */
         /**@param "b" The second acceleration. */
         /**@return 'true' if a.Value is less or equal than b.Value. Otherwise, 'else' is returned */
+
         public static bool operator <=(SiAcceleration a, SiAcceleration b)
         {
             return (a.the_value <= b.the_value);
@@ -181,6 +183,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first acceleration. */
         /**@param "b" The second acceleration. */
         /**@return 'true' if a.Value is greater or equal than b.Value. Otherwise, 'else' is returned */
+
         public static bool operator >=(SiAcceleration a, SiAcceleration b)
         {
             return (a.the_value >= b.the_value);
@@ -190,6 +193,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first acceleration. */
         /**@param "b" The second acceleration. */
         /**@return 'true' if a.Value is less than b.Value. Otherwise, 'else' is returned */
+
         public static bool operator <(SiAcceleration a, SiAcceleration b)
         {
             return (a.the_value < b.the_value);
@@ -199,6 +203,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first acceleration. */
         /**@param "b" The second acceleration. */
         /**@return 'true' if a.Value is bigger than b.Value. Otherwise, 'else' is returned */
+
         public static bool operator >(SiAcceleration a, SiAcceleration b)
         {
             return (a.the_value > b.the_value);
@@ -208,6 +213,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first term of the sum. */
         /**@param "b" The second term of the sum. */
         /**@return The sum of a.Value and b.Value as a new SiAcceleration object */
+
         public static SiAcceleration operator +(SiAcceleration a, SiAcceleration b)
         {
             return new SiAcceleration(a.the_value + b.the_value);
@@ -217,6 +223,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first term of the difference. */
         /**@param "b" The second term of the difference. */
         /**@return The difference of (a.Value - b.Value) as a new SiAcceleration object */
+
         public static SiAcceleration operator -(SiAcceleration a, SiAcceleration b)
         {
             return new SiAcceleration(a.the_value - b.the_value);
@@ -226,36 +233,40 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The numerator of the ratio. */
         /**@param "b" The denominator of the ratio. */
         /**@return The ratio (a.Value / b.Value) as a double. */
+
         public static double operator /(SiAcceleration a, SiAcceleration b)
         {
-            return (a.the_value / b.the_value);
+            return (a.the_value/b.the_value);
         }
 
         /**@brief Multiplies by a scalar (dimensionless) */
         /**@param "a" A SiAcceleration object. */
         /**@param "b" The scalar multiplier. */
         /**@return The value (a.Value * b) as a new .SiAcceleration object */
+
         public static SiAcceleration operator *(SiAcceleration a, double b)
         {
-            return new SiAcceleration(a.the_value * b);
+            return new SiAcceleration(a.the_value*b);
         }
 
         /**@brief Multiplies by a scalar (dimensionless) */
         /**@param "a" The scalar multiplier. */
         /**@param "b" A SiAcceleration object. */
         /**@return The value (a.Value * b) as a new .SiAcceleration object */
+
         public static SiAcceleration operator *(double a, SiAcceleration b)
         {
-            return new SiAcceleration(a * b.the_value);
+            return new SiAcceleration(a*b.the_value);
         }
 
         /**@brief Divides by a scalar (dimensionless) */
         /**@param "a" A SiAcceleration object. */
         /**@param "b" The scalar divisor. */
         /**@return The value (a.Value / b) as a new .SiAcceleration object */
+
         public static SiAcceleration operator /(SiAcceleration a, double b)
         {
-            return new SiAcceleration(a.the_value / b);
+            return new SiAcceleration(a.the_value/b);
         }
 
         /****************** operators for other classes *****************/
@@ -263,13 +274,15 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" A acceleration. */
         /**@param "b" A time. */
         /**@return a.Value '* b.Value as a speed. */
+
         public static SiSpeed operator *(SiAcceleration a, SiTime b)
         {
-            return new SiSpeed(a.Value * b.Value);
+            return new SiSpeed(a.Value*b.Value);
         }
 
         /****************************************************************/
         /******************************************************************/
+
         public string SubUnitString(SiAcceleration_SubUnits SubUnit)
         {
             string sub_unit_name = "";
@@ -286,6 +299,7 @@ namespace ErtmsSolutions.SiUnits
         }
 
         /******************************************************************/
+
         public double SubUnitFactor(SiAcceleration_SubUnits SubUnit)
         {
             double factor = 1.0;
@@ -295,28 +309,32 @@ namespace ErtmsSolutions.SiUnits
                     factor = 1.0;
                     break;
                 case SiAcceleration_SubUnits.Eearth_G_Constant:
-                    factor = 100.0 / 981.0;
+                    factor = 100.0/981.0;
                     break;
             }
             return factor;
         }
 
         /**@brief Returns the value converted to the selected units. */
+
         public double ToSubUnits(SiAcceleration_SubUnits SubUnit)
         {
-            return this.Value * SubUnitFactor(SubUnit);
+            return this.Value*SubUnitFactor(SubUnit);
         }
+
         /**@brief Returns the value converted to the default units. */
+
         public double ToUnits()
         {
             return ToSubUnits(SiAcceleration_SubUnits.Meter_per_SecondSquare);
         }
+
         /**@brief Returns the value converted to the default units. */
+
         public string UnitString()
         {
             return SubUnitString(SiAcceleration_SubUnits.Meter_per_SecondSquare);
         }
-
     } /* End of 'SiAcceleration' class.*/
 } /* End of 'ErtmsSolutions.SiUnits' name space. */
 

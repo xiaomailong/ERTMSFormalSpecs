@@ -13,17 +13,21 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
+using DataDictionary.Generated;
+using Utils;
 
 namespace DataDictionary.Specification
 {
-    public class Paragraph : Generated.Paragraph, IComparable<Utils.IModelElement>, IHoldsParagraphs
+    public class Paragraph : Generated.Paragraph, IComparable<IModelElement>, IHoldsParagraphs
     {
         private static int A = Char.ConvertToUtf32("a", 0);
 
         private int[] id;
+
         public int[] Id
         {
             get
@@ -47,12 +51,12 @@ namespace DataDictionary.Specification
                                 {
                                     if (Char.IsDigit(levels[i][j]))
                                     {
-                                        id[i] = id[i] * 10 + Char.Parse(levels[i][j] + "");
+                                        id[i] = id[i]*10 + Char.Parse(levels[i][j] + "");
                                     }
                                     else
                                     {
                                         int v = (Char.ConvertToUtf32(Char.ToLower(levels[i][j]) + "", 0) - A);
-                                        id[i] = id[i] * 100 + v;
+                                        id[i] = id[i]*100 + v;
                                     }
                                 }
                             }
@@ -124,6 +128,7 @@ namespace DataDictionary.Specification
         /// The maximum size of the text to be displayed
         /// </summary>
         private static int MAX_TEXT_LENGTH = 50;
+
         private static bool STRIP_LONG_TEXT = false;
 
         /// <summary>
@@ -135,7 +140,7 @@ namespace DataDictionary.Specification
             {
                 string retVal = FullId;
 
-                if (Generated.acceptor.Paragraph_type.aTITLE == getType())
+                if (acceptor.Paragraph_type.aTITLE == getType())
                 {
                     retVal = retVal + " " + getText();
                 }
@@ -197,11 +202,11 @@ namespace DataDictionary.Specification
             set { setText(value); }
         }
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
-                System.Collections.ArrayList retVal = null;
+                ArrayList retVal = null;
                 if (EnclosingParagraph != null)
                 {
                     retVal = EnclosingParagraph.SubParagraphs;
@@ -239,16 +244,16 @@ namespace DataDictionary.Specification
             return retVal;
         }
 
-        public void SetType(DataDictionary.Generated.acceptor.Paragraph_type Type)
+        public void SetType(acceptor.Paragraph_type Type)
         {
             setType(Type);
             switch (Type)
             {
-                case Generated.acceptor.Paragraph_type.aREQUIREMENT:
+                case acceptor.Paragraph_type.aREQUIREMENT:
                     break;
 
                 default:
-                    setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
+                    setImplementationStatus(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
                     break;
             }
         }
@@ -260,10 +265,7 @@ namespace DataDictionary.Specification
         /// <returns></returns>
         public bool isTitle
         {
-            get
-            {
-                return (getType() == DataDictionary.Generated.acceptor.Paragraph_type.aTITLE);
-            }
+            get { return (getType() == acceptor.Paragraph_type.aTITLE); }
         }
 
 
@@ -296,7 +298,7 @@ namespace DataDictionary.Specification
 
                     if (retVal == null && create)
                     {
-                        retVal = (Paragraph)Generated.acceptor.getFactory().createParagraph();
+                        retVal = (Paragraph) acceptor.getFactory().createParagraph();
                         string subId = id.Substring(FullId.Length + 1);
                         string[] items = subId.Split('.');
                         if (items.Length > 0)
@@ -339,7 +341,7 @@ namespace DataDictionary.Specification
                 int lastId = ids[ids.Length - 1];
                 if (letter)
                 {
-                    retVal = this.FullId + "." + (char)('a' + (lastId + 1));
+                    retVal = this.FullId + "." + (char) ('a' + (lastId + 1));
                 }
                 else
                 {
@@ -353,13 +355,13 @@ namespace DataDictionary.Specification
         /// <summary>
         /// The sub paragraphs of this paragraph
         /// </summary>
-        public System.Collections.ArrayList SubParagraphs
+        public ArrayList SubParagraphs
         {
             get
             {
                 if (allParagraphs() == null)
                 {
-                    setAllParagraphs(new System.Collections.ArrayList());
+                    setAllParagraphs(new ArrayList());
                 }
                 return allParagraphs();
             }
@@ -369,13 +371,13 @@ namespace DataDictionary.Specification
         /// <summary>
         /// The type specs of this paragraph
         /// </summary>
-        public System.Collections.ArrayList TypeSpecs
+        public ArrayList TypeSpecs
         {
             get
             {
                 if (allTypeSpecs() == null)
                 {
-                    setAllTypeSpecs(new System.Collections.ArrayList());
+                    setAllTypeSpecs(new ArrayList());
                 }
                 return allTypeSpecs();
             }
@@ -391,7 +393,7 @@ namespace DataDictionary.Specification
             TypeSpecs.Add(aTypeSpec);
         }
 
-        public override int CompareTo(Utils.IModelElement other)
+        public override int CompareTo(IModelElement other)
         {
             int retVal = 0;
 
@@ -445,23 +447,21 @@ namespace DataDictionary.Specification
         /// </summary>
         public int Level
         {
-            get
-            {
-                return getId().Split('.').Length;
-            }
+            get { return getId().Split('.').Length; }
         }
 
         /**
          * Indicates that the paragraph need an implementation
          */
+
         public bool isApplicable()
         {
             bool retVal = false;
 
-            if (getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT)
+            if (getType() == acceptor.Paragraph_type.aREQUIREMENT)
             {
-                retVal = getImplementationStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM
-                    && getImplementationStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable;
+                retVal = getImplementationStatus() != acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM
+                         && getImplementationStatus() != acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable;
             }
 
             return retVal;
@@ -485,12 +485,13 @@ namespace DataDictionary.Specification
         /// <summary>
         /// Finds all req ref to this paragraph
         /// </summary>
-        private class ReqRefFinder : Generated.Visitor
+        private class ReqRefFinder : Visitor
         {
             /// <summary>
             /// Provides the paragraph currently looked for
             /// </summary>
             private Paragraph paragraph;
+
             public Paragraph Paragraph
             {
                 get { return paragraph; }
@@ -501,6 +502,7 @@ namespace DataDictionary.Specification
             /// Provides the req refs which implement this paragraph 
             /// </summary>
             private List<ReqRef> implementations;
+
             public List<ReqRef> Implementations
             {
                 get { return implementations; }
@@ -519,7 +521,7 @@ namespace DataDictionary.Specification
 
             public override void visit(Generated.ReqRef obj, bool visitSubNodes)
             {
-                ReqRef reqRef = (ReqRef)obj;
+                ReqRef reqRef = (ReqRef) obj;
 
                 if (reqRef.Paragraph == Paragraph)
                 {
@@ -561,7 +563,7 @@ namespace DataDictionary.Specification
         /// </summary>
         /// <param name="originalType">The type of the paragraph which should be matched</param>
         /// <param name="targetType">When the originalType is matched, the new type to set</param>
-        public void ChangeType(Generated.acceptor.Paragraph_type originalType, Generated.acceptor.Paragraph_type targetType)
+        public void ChangeType(acceptor.Paragraph_type originalType, acceptor.Paragraph_type targetType)
         {
             // If the type is matched, change the type
             if (getType() == originalType)
@@ -606,7 +608,7 @@ namespace DataDictionary.Specification
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             {
                 Paragraph item = element as Paragraph;
@@ -617,7 +619,7 @@ namespace DataDictionary.Specification
             }
         }
 
-        private class RemoveReqRef : Generated.Visitor
+        private class RemoveReqRef : Visitor
         {
             /// <summary>
             /// The paragraph for which no req ref should exist
@@ -635,7 +637,7 @@ namespace DataDictionary.Specification
 
             public override void visit(Generated.ReqRef obj, bool visitSubNodes)
             {
-                ReqRef reqRef = (ReqRef)obj;
+                ReqRef reqRef = (ReqRef) obj;
 
                 if (reqRef.Paragraph == Paragraph)
                 {
@@ -719,7 +721,7 @@ namespace DataDictionary.Specification
             if (!BelongsToRequirementSet(requirementSet))
             {
                 retVal = true;
-                RequirementSetReference reference = (RequirementSetReference)Generated.acceptor.getFactory().createRequirementSetReference();
+                RequirementSetReference reference = (RequirementSetReference) acceptor.getFactory().createRequirementSetReference();
                 reference.setTarget(requirementSet.Guid);
                 appendRequirementSets(reference);
             }
@@ -777,7 +779,7 @@ namespace DataDictionary.Specification
                 bool retVal = true;
 
                 bool reqRelatedFound = false;
-                foreach (DataDictionary.ReqRef reqRef in Implementations)
+                foreach (ReqRef reqRef in Implementations)
                 {
                     ReqRelated reqRelated = reqRef.Model as ReqRelated;
 
@@ -788,7 +790,7 @@ namespace DataDictionary.Specification
                     }
                 }
 
-                if(!reqRelatedFound)
+                if (!reqRelatedFound)
                 {
                     retVal = false;
                 }
@@ -796,6 +798,5 @@ namespace DataDictionary.Specification
                 return retVal;
             }
         }
-
     }
 }

@@ -13,14 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using DataDictionary.Functions;
+using DataDictionary.Interpreter.Filter;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Utils;
+using Type = DataDictionary.Types.Type;
+
 namespace DataDictionary.Interpreter
 {
-    using System.Collections.Generic;
-    using DataDictionary.Interpreter.Filter;
-    using System;
-    using DataDictionary.Values;
-    using System.Threading;
-
     /// <summary>
     /// Stores the association between a interpreter tree node and a value
     /// </summary>
@@ -34,7 +39,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The value
         /// </summary>
-        public Utils.INamable Value { get; set; }
+        public INamable Value { get; set; }
 
         /// <summary>
         /// Indicates that the return value element was found as a type of its instance, instead of the instance itself. 
@@ -49,7 +54,7 @@ namespace DataDictionary.Interpreter
         /// <param name="value"></param>
         /// <param name="previous"></param>
         /// <param name="asType"></param>
-        public ReturnValueElement(Utils.INamable value, ReturnValueElement previous = null, bool asType = false)
+        public ReturnValueElement(INamable value, ReturnValueElement previous = null, bool asType = false)
         {
             PreviousElement = previous;
             Value = value;
@@ -146,24 +151,33 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Indicates if there is more than one value in the result set
         /// </summary>
-        public bool IsAmbiguous { get { return Values.Count > 1; } }
+        public bool IsAmbiguous
+        {
+            get { return Values.Count > 1; }
+        }
 
         /// <summary>
         /// Indicates if there is only one value in the result set
         /// </summary>
-        public bool IsUnique { get { return Values.Count == 1; } }
+        public bool IsUnique
+        {
+            get { return Values.Count == 1; }
+        }
 
         /// <summary>
         /// Indicates if there is no more value in the result set
         /// </summary>
-        public bool IsEmpty { get { return Values.Count == 0; } }
+        public bool IsEmpty
+        {
+            get { return Values.Count == 0; }
+        }
 
         /// <summary>
         /// Adds a new value in the set of return values
         /// </summary>
         /// <param name="value">The value to add</param>
         /// <param name="previous">The previous element in the chain</param>
-        public void Add(Utils.INamable value, ReturnValueElement previous = null, bool asType = false)
+        public void Add(INamable value, ReturnValueElement previous = null, bool asType = false)
         {
             if (value != null)
             {
@@ -263,7 +277,7 @@ namespace DataDictionary.Interpreter
                     while (!variableFound && current != null)
                     {
                         variableFound = IsStrictVariableOrValue.INSTANCE.AcceptableChoice(current.Value) || current.AsType;
-                        onlyStructureElement = onlyStructureElement && current.Value is Types.StructureElement;
+                        onlyStructureElement = onlyStructureElement && current.Value is StructureElement;
                         current = current.PreviousElement;
                     }
 
@@ -294,7 +308,7 @@ namespace DataDictionary.Interpreter
                     if (accept.AcceptableChoice(element.Value) && element.Value.FullName.Equals(mostSpecific))
                     {
                         tmp.Add(element);
-                        variable = variable || element.Value is Variables.IVariable;
+                        variable = variable || element.Value is IVariable;
                     }
                 }
                 Values = tmp;
@@ -306,7 +320,7 @@ namespace DataDictionary.Interpreter
                 List<ReturnValueElement> tmp = new List<ReturnValueElement>();
                 foreach (ReturnValueElement element in Values)
                 {
-                    if (!(element.Value is Types.StructureElement) && !(element.Value is Types.Type))
+                    if (!(element.Value is StructureElement) && !(element.Value is Type))
                     {
                         tmp.Add(element);
                     }
@@ -330,7 +344,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The instance on which the expression is checked
         /// </summary>
-        public Utils.INamable Instance { get; set; }
+        public INamable Instance { get; set; }
 
         /// <summary>
         /// The local scope for interpretation
@@ -363,7 +377,7 @@ namespace DataDictionary.Interpreter
         /// Constructor
         /// </summary>
         /// <param name="instance">The instance on which interpretation should be performed</param>
-        public InterpretationContext(Utils.INamable instance)
+        public InterpretationContext(INamable instance)
         {
             LocalScope = new SymbolTable();
             Instance = instance;
@@ -388,7 +402,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="other">Copies the other interpretation context contents</param>
         /// <param name="instance">The evaluation instance</param>
-        public InterpretationContext(InterpretationContext other, Utils.INamable instance)
+        public InterpretationContext(InterpretationContext other, INamable instance)
         {
             LocalScope = other.LocalScope;
             Instance = instance;
@@ -410,7 +424,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        public Variables.IVariable findOnStack(Parameter parameter)
+        public IVariable findOnStack(Parameter parameter)
         {
             return LocalScope.find(parameter);
         }
@@ -418,7 +432,10 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Provides the current stack index
         /// </summary>
-        public int StackIndex { get { return LocalScope.Index; } }
+        public int StackIndex
+        {
+            get { return LocalScope.Index; }
+        }
     }
 
     /// <summary>
@@ -429,7 +446,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Provides the referenced element 
         /// </summary>
-        Utils.INamable Ref { get; }
+        INamable Ref { get; }
     }
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -487,7 +504,7 @@ namespace DataDictionary.Interpreter
         /// <param name="expectation">the expectation on the element found</param>
         /// <param name="last">indicates that this is the last element in a dereference chain</param>
         /// <returns></returns>
-        public virtual ReturnValue getReferences(Utils.INamable instance, BaseFilter expectation, bool last)
+        public virtual ReturnValue getReferences(INamable instance, BaseFilter expectation, bool last)
         {
             return ReturnValue.Empty;
         }
@@ -499,7 +516,7 @@ namespace DataDictionary.Interpreter
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <param name="last">indicates that this is the last element in a dereference chain</param>
         /// <returns></returns>
-        public virtual ReturnValue getReferenceTypes(Utils.INamable instance, BaseFilter expectation, bool last)
+        public virtual ReturnValue getReferenceTypes(INamable instance, BaseFilter expectation, bool last)
         {
             ReturnValue retVal = new ReturnValue(this);
 
@@ -516,7 +533,7 @@ namespace DataDictionary.Interpreter
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public virtual bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
+        public virtual bool SemanticAnalysis(INamable instance, BaseFilter expectation)
         {
             bool retVal = !SemanticAnalysisDone;
 
@@ -534,7 +551,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <returns>True if semantic analysis should be continued</returns>
-        public bool SemanticAnalysis(Utils.INamable instance = null)
+        public bool SemanticAnalysis(INamable instance = null)
         {
             return SemanticAnalysis(instance, AllMatches.INSTANCE);
         }
@@ -552,7 +569,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Provides the INamable which is referenced by this expression, if any
         /// </summary>
-        public virtual Utils.INamable Ref
+        public virtual INamable Ref
         {
             get { return null; }
             protected set { }
@@ -567,7 +584,7 @@ namespace DataDictionary.Interpreter
 
             if (retVal == null)
             {
-                Types.Type type = Ref as Types.Type;
+                Type type = Ref as Type;
                 if (type != null)
                 {
                     retVal = type.CastFunction;
@@ -582,8 +599,8 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
-        public abstract Types.Type GetExpressionType();
-        
+        public abstract Type GetExpressionType();
+
         /// <summary>
         /// Provides all the steps used to get the value of the expression
         /// </summary>
@@ -599,7 +616,7 @@ namespace DataDictionary.Interpreter
             }
             try
             {
-                Values.IValue value = GetValue(context, retVal);
+                IValue value = GetValue(context, retVal);
             }
             catch (Exception)
             {
@@ -626,7 +643,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="context">The context on which the variable must be found</param>
         /// <returns></returns>
-        public virtual Variables.IVariable GetVariable(InterpretationContext context)
+        public virtual IVariable GetVariable(InterpretationContext context)
         {
             return null;
         }
@@ -637,7 +654,7 @@ namespace DataDictionary.Interpreter
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public virtual Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
+        public virtual IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
             return null;
         }
@@ -658,21 +675,21 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public abstract void fill(List<Utils.INamable> retVal, BaseFilter filter);
+        public abstract void fill(List<INamable> retVal, BaseFilter filter);
 
         /// <summary>
         /// Provides the right sides used by this expression
         /// </summary>
-        public List<Types.ITypedElement> GetRightSides()
+        public List<ITypedElement> GetRightSides()
         {
-            List<Types.ITypedElement> retVal = new List<Types.ITypedElement>();
+            List<ITypedElement> retVal = new List<ITypedElement>();
 
-            List<Utils.INamable> tmp = new List<Utils.INamable>();
+            List<INamable> tmp = new List<INamable>();
             fill(tmp, IsRightSide.INSTANCE);
 
-            foreach (Utils.INamable namable in tmp)
+            foreach (INamable namable in tmp)
             {
-                Types.ITypedElement element = namable as Types.ITypedElement;
+                ITypedElement element = namable as ITypedElement;
                 if (element != null)
                 {
                     retVal.Add(element);
@@ -685,16 +702,16 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Provides the variables used by this expression
         /// </summary>
-        public List<Variables.IVariable> GetVariables()
+        public List<IVariable> GetVariables()
         {
-            List<Variables.IVariable> retVal = new List<Variables.IVariable>();
+            List<IVariable> retVal = new List<IVariable>();
 
-            List<Utils.INamable> tmp = new List<Utils.INamable>();
+            List<INamable> tmp = new List<INamable>();
             fill(tmp, IsVariable.INSTANCE);
 
-            foreach (Utils.INamable namable in tmp)
+            foreach (INamable namable in tmp)
             {
-                Variables.IVariable variable = namable as Variables.IVariable;
+                IVariable variable = namable as IVariable;
                 if (variable != null)
                 {
                     retVal.Add(variable);
@@ -703,19 +720,20 @@ namespace DataDictionary.Interpreter
 
             return retVal;
         }
+
         /// <summary>
         /// Provides the list of literals found in the expression
         /// </summary>
-        public List<Values.IValue> GetLiterals()
+        public List<IValue> GetLiterals()
         {
-            List<Values.IValue> retVal = new List<Values.IValue>();
+            List<IValue> retVal = new List<IValue>();
 
-            List<Utils.INamable> tmp = new List<Utils.INamable>();
+            List<INamable> tmp = new List<INamable>();
             fill(tmp, IsValue.INSTANCE);
 
-            foreach (Utils.INamable namable in tmp)
+            foreach (INamable namable in tmp)
             {
-                Values.IValue value = namable as Values.IValue;
+                IValue value = namable as IValue;
                 if (value != null)
                 {
                     retVal.Add(value);
@@ -723,7 +741,6 @@ namespace DataDictionary.Interpreter
             }
 
             return retVal;
-
         }
 
 
@@ -757,9 +774,9 @@ namespace DataDictionary.Interpreter
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public virtual Functions.Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
+        public virtual Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
-            Functions.Graph retVal = null;
+            Graph retVal = null;
 
             return retVal;
         }
@@ -772,9 +789,9 @@ namespace DataDictionary.Interpreter
         /// <param name="yParam">The Y axis of this surface</param>
         /// <param name="explain"></param>
         /// <returns>The surface which corresponds to this expression</returns>
-        public virtual Functions.Surface createSurface(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
+        public virtual Surface createSurface(InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
         {
-            Functions.Surface retVal = null;
+            Surface retVal = null;
 
             return retVal;
         }

@@ -13,13 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary;
+using Shortcut = DataDictionary.Shortcuts.Shortcut;
 
 namespace GUI.Shortcuts
 {
-    public class ShortcutTreeNode : ModelElementTreeNode<DataDictionary.Shortcuts.Shortcut>
+    public class ShortcutTreeNode : ModelElementTreeNode<Shortcut>
     {
         private class ItemEditor : NamedEditor
         {
@@ -36,7 +39,7 @@ namespace GUI.Shortcuts
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ShortcutTreeNode(DataDictionary.Shortcuts.Shortcut item, bool buildSubNodes)
+        public ShortcutTreeNode(Shortcut item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }
@@ -76,7 +79,7 @@ namespace GUI.Shortcuts
         {
             base.DoubleClickHandler();
 
-            DataDictionary.Namable element = Item.GetReference();
+            Namable element = Item.GetReference();
             if (element != null)
             {
                 MainWindow mainWindow = GUIUtils.MDIWindow;

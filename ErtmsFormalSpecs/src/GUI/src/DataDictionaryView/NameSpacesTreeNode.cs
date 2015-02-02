@@ -13,13 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.FunctionalView;
+using Dictionary = DataDictionary.Dictionary;
+using NameSpace = DataDictionary.Types.NameSpace;
 
 namespace GUI.DataDictionaryView
 {
-    public class NameSpacesTreeNode : ModelElementTreeNode<DataDictionary.Dictionary>
+    public class NameSpacesTreeNode : ModelElementTreeNode<Dictionary>
     {
         private class ItemEditor : NamedEditor
         {
@@ -37,7 +42,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public NameSpacesTreeNode(DataDictionary.Dictionary item, bool buildSubNodes)
+        public NameSpacesTreeNode(Dictionary item, bool buildSubNodes)
             : base(item, buildSubNodes, "Name spaces", true)
         {
         }
@@ -50,7 +55,7 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Types.NameSpace nameSpace in Item.NameSpaces)
+            foreach (NameSpace nameSpace in Item.NameSpaces)
             {
                 Nodes.Add(new NameSpaceTreeNode(nameSpace, buildSubNodes));
             }
@@ -68,7 +73,7 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Types.NameSpace nameSpace = (DataDictionary.Types.NameSpace)DataDictionary.Generated.acceptor.getFactory().createNameSpace();
+            NameSpace nameSpace = (NameSpace) acceptor.getFactory().createNameSpace();
             nameSpace.Name = "<NameSpace" + (GetNodeCount(false) + 1) + ">";
             AddNameSpace(nameSpace);
         }
@@ -77,7 +82,7 @@ namespace GUI.DataDictionaryView
         /// Adds a namespace in the corresponding namespace
         /// </summary>
         /// <param name="nameSpace"></param>
-        public NameSpaceTreeNode AddNameSpace(DataDictionary.Types.NameSpace nameSpace)
+        public NameSpaceTreeNode AddNameSpace(NameSpace nameSpace)
         {
             Item.appendNameSpaces(nameSpace);
             NameSpaceTreeNode retVal = new NameSpaceTreeNode(nameSpace, true);
@@ -94,7 +99,7 @@ namespace GUI.DataDictionaryView
         /// <param name="args"></param>
         protected void ShowFunctionalViewHandler(object sender, EventArgs args)
         {
-            FunctionalView.FunctionalAnalysisWindow window = new FunctionalView.FunctionalAnalysisWindow();
+            FunctionalAnalysisWindow window = new FunctionalAnalysisWindow();
             GUIUtils.MDIWindow.AddChildWindow(window);
             window.SetNameSpaceContainer(Item);
             window.Text = Item.Name + " functional view";
@@ -127,7 +132,7 @@ namespace GUI.DataDictionaryView
             if (SourceNode is NameSpaceTreeNode)
             {
                 NameSpaceTreeNode nameSpaceTreeNode = SourceNode as NameSpaceTreeNode;
-                DataDictionary.Types.NameSpace nameSpace = nameSpaceTreeNode.Item;
+                NameSpace nameSpace = nameSpaceTreeNode.Item;
 
                 nameSpaceTreeNode.Delete();
                 AddNameSpace(nameSpace);
@@ -149,8 +154,8 @@ namespace GUI.DataDictionaryView
                 window.modelDiagramPanel.RefreshControl();
             }
 
-            List<DataDictionary.Types.NameSpace> namespaces = new List<DataDictionary.Types.NameSpace>();
-            foreach (DataDictionary.Types.NameSpace aNamespace in Item.NameSpaces)
+            List<NameSpace> namespaces = new List<NameSpace>();
+            foreach (NameSpace aNamespace in Item.NameSpaces)
             {
                 namespaces.Add(aNamespace);
             }

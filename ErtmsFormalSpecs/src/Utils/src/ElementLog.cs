@@ -13,18 +13,25 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 
 namespace Utils
 {
     public class ElementLog : IComparable<ElementLog>
     {
-        public enum LevelEnum { Info, Warning, Error };
+        public enum LevelEnum
+        {
+            Info,
+            Warning,
+            Error
+        };
 
         /// <summary>
         /// The element log level
         /// </summary>
         private LevelEnum level = LevelEnum.Error;
+
         public LevelEnum Level
         {
             get { return level; }
@@ -35,6 +42,7 @@ namespace Utils
         /// The log message
         /// </summary>
         private string log;
+
         public string Log
         {
             get { return log; }
@@ -45,6 +53,7 @@ namespace Utils
         /// Indicates if this log concerns a failed expectation (in that case, this is not a model error)
         /// </summary>
         private bool failedExpectation;
+
         public bool FailedExpectation
         {
             get { return failedExpectation; }

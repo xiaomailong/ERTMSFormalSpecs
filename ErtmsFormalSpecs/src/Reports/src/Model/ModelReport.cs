@@ -13,22 +13,43 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections;
-using DataDictionary;
+using System.Reflection;
+using DataDictionary.Generated;
+using log4net;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
+using Utils;
+using Case = DataDictionary.Functions.Case;
+using Collection = DataDictionary.Types.Collection;
+using Enum = DataDictionary.Types.Enum;
+using EnumValue = DataDictionary.Constants.EnumValue;
+using Function = DataDictionary.Functions.Function;
+using Parameter = DataDictionary.Parameter;
+using PreCondition = DataDictionary.Rules.PreCondition;
+using Procedure = DataDictionary.Functions.Procedure;
+using Range = DataDictionary.Types.Range;
+using ReqRef = DataDictionary.ReqRef;
+using ReqRelated = DataDictionary.ReqRelated;
+using Rule = DataDictionary.Rules.Rule;
+using RuleCondition = DataDictionary.Rules.RuleCondition;
+using State = DataDictionary.Constants.State;
+using StateMachine = DataDictionary.Types.StateMachine;
+using Structure = DataDictionary.Types.Structure;
+using StructureElement = DataDictionary.Types.StructureElement;
+using Variable = DataDictionary.Variables.Variable;
 
 namespace Reports.Model
 {
     public class ModelReport : ReportTools
     {
-        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// Indicates if only the implemented model elements should be included to the report
         /// </summary>
         private bool implementedOnly;
-
 
 
         /// <summary>
@@ -71,7 +92,7 @@ namespace Reports.Model
         {
             int retVal = 0;
 
-            foreach (DataDictionary.Variables.Variable variable in list)
+            foreach (Variable variable in list)
             {
                 if (considerVariable(variable, inOutOnly))
                 {
@@ -90,14 +111,14 @@ namespace Reports.Model
         public void CreateRangesSection(ArrayList ranges, bool addDetails)
         {
             AddSubParagraph("Ranges");
-            foreach (DataDictionary.Types.Range range in ranges)
+            foreach (Range range in ranges)
             {
                 if (considerReqRelated(range))
                 {
                     if (addDetails)
                     {
                         AddSubParagraph(range.Name);
-                        AddTable(new string[] { "Range " + range.Name }, new int[] { 30, 40, 70 });
+                        AddTable(new string[] {"Range " + range.Name}, new int[] {30, 40, 70});
                         if (range.Comment != "")
                         {
                             AddRow(range.Comment);
@@ -112,7 +133,7 @@ namespace Reports.Model
                             Row firstRow = lastRow;
                             firstRow.Shading.Color = Colors.LightBlue;
 
-                            foreach (DataDictionary.Constants.EnumValue value in range.SpecialValues)
+                            foreach (EnumValue value in range.SpecialValues)
                             {
                                 if (AddRow("", value.getValue().ToString(), value.Name) != null)
                                 {
@@ -145,7 +166,7 @@ namespace Reports.Model
         public void CreateEnumerationsSection(ArrayList enumerations, bool addDetails)
         {
             AddSubParagraph("Enumerations");
-            foreach (DataDictionary.Types.Enum anEnum in enumerations)
+            foreach (Enum anEnum in enumerations)
             {
                 if (considerReqRelated(anEnum))
                 {
@@ -160,13 +181,13 @@ namespace Reports.Model
         /// </summary>
         /// <param name="anEnum">The enum to add</param>
         /// <param name="addDetails">Add details or simply enumerate the enums</param>
-        private void AddEnumerationSection(DataDictionary.Types.Enum anEnum, bool addDetails)
+        private void AddEnumerationSection(Enum anEnum, bool addDetails)
         {
             if (addDetails)
             {
                 AddSubParagraph(anEnum.Name);
 
-                AddTable(new string[] { "Enumeration " + anEnum.Name }, new int[] { 40, 20, 80 });
+                AddTable(new string[] {"Enumeration " + anEnum.Name}, new int[] {40, 20, 80});
                 if (anEnum.Comment != "")
                 {
                     AddRow(anEnum.Comment);
@@ -174,7 +195,7 @@ namespace Reports.Model
                 AddTableHeader("Name", "Value", "Comment");
                 if (anEnum.Values.Count > 0)
                 {
-                    foreach (DataDictionary.Constants.EnumValue value in anEnum.Values)
+                    foreach (EnumValue value in anEnum.Values)
                     {
                         if (value.getName().Equals(anEnum.Default))
                         {
@@ -189,7 +210,7 @@ namespace Reports.Model
 
                 CreateStatusTable(anEnum);
 
-                foreach (DataDictionary.Types.Enum subEnum in anEnum.SubEnums)
+                foreach (Enum subEnum in anEnum.SubEnums)
                 {
                     if (considerReqRelated(subEnum))
                     {
@@ -213,7 +234,7 @@ namespace Reports.Model
         public void CreateStructuresSection(ArrayList structures, bool addDetails)
         {
             AddSubParagraph("Structures");
-            foreach (DataDictionary.Types.Structure structure in structures)
+            foreach (Structure structure in structures)
             {
                 if (considerReqRelated(structure))
                 {
@@ -225,9 +246,9 @@ namespace Reports.Model
                             AddParagraph(structure.Comment);
                         }
 
-                        AddTable(new string[] { "Structure " + structure.Name }, new int[] { 35, 15, 40, 50 });
+                        AddTable(new string[] {"Structure " + structure.Name}, new int[] {35, 15, 40, 50});
                         AddTableHeader("Sub element name", "Mode", "Type", "Comment");
-                        foreach (DataDictionary.Types.StructureElement element in structure.Elements)
+                        foreach (StructureElement element in structure.Elements)
                         {
                             AddRow(element.Name, element.getMode_AsString(), element.TypeName, element.Comment);
                         }
@@ -263,14 +284,14 @@ namespace Reports.Model
         public void CreateCollectionsSection(ArrayList collections, bool addDetails)
         {
             AddSubParagraph("Collections");
-            foreach (DataDictionary.Types.Collection collection in collections)
+            foreach (Collection collection in collections)
             {
                 if (considerReqRelated(collection))
                 {
                     if (addDetails)
                     {
                         AddSubParagraph(collection.Name);
-                        AddTable(new string[] { "Collection " + collection.Name }, new int[] { 40, 100 });
+                        AddTable(new string[] {"Collection " + collection.Name}, new int[] {40, 100});
                         if (collection.Comment != "")
                         {
                             AddRow(collection.Comment);
@@ -299,7 +320,7 @@ namespace Reports.Model
         public void CreateStateMachinesSection(ArrayList stateMachines, bool addDetails)
         {
             AddSubParagraph("State machines");
-            foreach (DataDictionary.Types.StateMachine stateMachine in stateMachines)
+            foreach (StateMachine stateMachine in stateMachines)
             {
                 if (considerReqRelated(stateMachine))
                 {
@@ -314,7 +335,7 @@ namespace Reports.Model
         /// </summary>
         /// <param name="aSM">The state machine</param>
         /// <param name="addDetails">Add details or simply enumerate the state machines</param>
-        private void AddStateMachineSection(DataDictionary.Types.StateMachine aSM, bool addDetails)
+        private void AddStateMachineSection(StateMachine aSM, bool addDetails)
         {
             string name = aSM.FullName;
             if (name == "" && aSM.EnclosingState != null)
@@ -323,7 +344,7 @@ namespace Reports.Model
             }
             AddSubParagraph(name);
 
-            AddTable(new string[] { "State machine " + name }, new int[] { 20, 40, 80 });
+            AddTable(new string[] {"State machine " + name}, new int[] {20, 40, 80});
             AddRow(aSM.Comment);
             if (aSM.States.Count > 0)
             {
@@ -331,7 +352,7 @@ namespace Reports.Model
                 Row firstRow = lastRow;
                 firstRow.Shading.Color = Colors.LightBlue;
 
-                foreach (DataDictionary.Constants.State state in aSM.States)
+                foreach (State state in aSM.States)
                 {
                     string comment = "";
                     if (aSM.Default.Equals(state.Name))
@@ -356,7 +377,7 @@ namespace Reports.Model
             CreateStatusTable(aSM);
             CloseSubParagraph();
 
-            foreach (DataDictionary.Constants.State state in aSM.States)
+            foreach (State state in aSM.States)
             {
                 if (state.StateMachine != null && considerReqRelated(state.StateMachine))
                 {
@@ -374,7 +395,7 @@ namespace Reports.Model
         public void CreateFunctionsSection(ArrayList functions, bool addDetails)
         {
             AddSubParagraph("Functions");
-            foreach (DataDictionary.Functions.Function function in functions)
+            foreach (Function function in functions)
             {
                 if (considerReqRelated(function))
                 {
@@ -385,12 +406,12 @@ namespace Reports.Model
 
                         if (function.Cases.Count > 0)
                         {
-                            AddTable(new string[] { "Behaviour" }, new int[] { 70, 70 });
+                            AddTable(new string[] {"Behaviour"}, new int[] {70, 70});
                             AddTableHeader("Condition", "Value");
-                            foreach (DataDictionary.Functions.Case cas in function.Cases)
+                            foreach (Case cas in function.Cases)
                             {
                                 Row firstRow = null;
-                                foreach (DataDictionary.Rules.PreCondition preCondition in cas.PreConditions)
+                                foreach (PreCondition preCondition in cas.PreConditions)
                                 {
                                     if (firstRow == null)
                                     {
@@ -440,7 +461,7 @@ namespace Reports.Model
                 AddTableHeader("Procedures");
             }
 
-            foreach (DataDictionary.Functions.Procedure procedure in procedures)
+            foreach (Procedure procedure in procedures)
             {
                 if (considerReqRelated(procedure))
                 {
@@ -484,14 +505,14 @@ namespace Reports.Model
         public void CreateVariablesSection(ArrayList variables, bool addDetails, bool inOutOnly)
         {
             AddSubParagraph("Variables");
-            foreach (DataDictionary.Variables.Variable variable in variables)
+            foreach (Variable variable in variables)
             {
                 if (considerVariable(variable, inOutOnly))
                 {
                     if (addDetails)
                     {
                         AddSubParagraph(variable.Name);
-                        AddTable(new string[] { "Variable " + variable.Name }, new int[] { 40, 100 });
+                        AddTable(new string[] {"Variable " + variable.Name}, new int[] {40, 100});
                         AddRow(variable.Comment);
                         AddRow("Type", variable.getTypeName());
                         AddRow("Default value", variable.Default);
@@ -526,7 +547,7 @@ namespace Reports.Model
             {
                 AddTableHeader("Rules");
             }
-            foreach (DataDictionary.Rules.Rule rule in rules)
+            foreach (Rule rule in rules)
             {
                 if (considerReqRelated(rule))
                 {
@@ -543,7 +564,7 @@ namespace Reports.Model
         /// <param name="aRule">The rule to add</param>
         /// <param name="addDetails">Add details or simply enumerate the enums</param>
         /// <param name="addToExistingTable">Add information to an existing table or create a separate section</param>
-        private void AddRuleSection(DataDictionary.Rules.Rule aRule, bool addDetails, bool addToExitingTable)
+        private void AddRuleSection(Rule aRule, bool addDetails, bool addToExitingTable)
         {
             if (addDetails)
             {
@@ -568,33 +589,33 @@ namespace Reports.Model
         /// </summary>
         /// <param name="aRule">The rule to add</param>
         /// <param name="addDetails">Add details or simply enumerate the enums</param>
-        private void AddRuleRow(DataDictionary.Rules.Rule aRule, bool addDetails)
+        private void AddRuleRow(Rule aRule, bool addDetails)
         {
             if (addDetails)
             {
                 if (aRule.EnclosingRuleCondition != null)
                 {
-                    AddTable(new string[] { "Sub-rule " + aRule.Name + " (parent rule condition : " + aRule.EnclosingRuleCondition.Name + ")" }, new int[] { 40, 100 });
+                    AddTable(new string[] {"Sub-rule " + aRule.Name + " (parent rule condition : " + aRule.EnclosingRuleCondition.Name + ")"}, new int[] {40, 100});
                 }
                 else
                 {
-                    AddTable(new string[] { "Rule " + aRule.Name }, new int[] { 40, 100 });
+                    AddTable(new string[] {"Rule " + aRule.Name}, new int[] {40, 100});
                 }
                 AddRow(aRule.Comment);
                 AddRow("Activation priority", aRule.getPriority_AsString());
-                AddRow(Utils.RTFConvertor.RTFToPlainText(aRule.getExplain(false)));
+                AddRow(RTFConvertor.RTFToPlainText(aRule.getExplain(false)));
             }
             else
             {
                 AddRow(aRule.Name + " (" + GetRequirementsAsString(aRule.Requirements) + ")");
             }
 
-            foreach (DataDictionary.Rules.RuleCondition ruleCondition in aRule.RuleConditions)
+            foreach (RuleCondition ruleCondition in aRule.RuleConditions)
             {
                 if (CountDisplayedReqRelated(ruleCondition.SubRules) > 0)
                 {
                     AddTableHeader("Sub-rules of " + ruleCondition.Name);
-                    foreach (DataDictionary.Rules.Rule subRule in ruleCondition.SubRules)
+                    foreach (Rule subRule in ruleCondition.SubRules)
                     {
                         if (considerReqRelated(subRule))
                         {
@@ -617,7 +638,7 @@ namespace Reports.Model
             if (requirements.Count > 0)
             {
                 bool first = true;
-                foreach (DataDictionary.ReqRef reqRef in requirements)
+                foreach (ReqRef reqRef in requirements)
                 {
                     if (first)
                     {
@@ -645,7 +666,7 @@ namespace Reports.Model
         /// <returns></returns>
         private void CreateParameters(string name, string comment, ArrayList parameters, string returnValue)
         {
-            AddTable(new string[] { name }, new int[] { 40, 80 });
+            AddTable(new string[] {name}, new int[] {40, 80});
             if (comment != "")
             {
                 AddRow(comment);
@@ -654,7 +675,7 @@ namespace Reports.Model
             {
                 AddTableHeader("Parameters");
                 AddTableHeader("Name", "Type");
-                foreach (DataDictionary.Parameter parameter in parameters)
+                foreach (Parameter parameter in parameters)
                 {
                     AddRow(parameter.Name, parameter.getTypeName());
                 }
@@ -674,7 +695,7 @@ namespace Reports.Model
         /// <returns></returns>
         private void CreateStatusTable(ReqRelated aReqRelated)
         {
-            AddTable(new string[] { "Modeling information" }, new int[] { 40, 30, 70 });
+            AddTable(new string[] {"Modeling information"}, new int[] {40, 30, 70});
 
             string implemented = "not implemented";
             string verified = "not verified";
@@ -707,12 +728,12 @@ namespace Reports.Model
         /// <param name="aVariable"></param>
         /// <param name="inOutOnly"></param>
         /// <returns></returns>
-        private bool considerVariable(DataDictionary.Variables.Variable aVariable, bool inOutOnly)
+        private bool considerVariable(Variable aVariable, bool inOutOnly)
         {
             return (aVariable.ImplementationPartiallyCompleted || !implementedOnly) &&
-                   (!inOutOnly || aVariable.Mode == DataDictionary.Generated.acceptor.VariableModeEnumType.aIncoming ||
-                                  aVariable.Mode == DataDictionary.Generated.acceptor.VariableModeEnumType.aOutgoing ||
-                                  aVariable.Mode == DataDictionary.Generated.acceptor.VariableModeEnumType.aInOut);
+                   (!inOutOnly || aVariable.Mode == acceptor.VariableModeEnumType.aIncoming ||
+                    aVariable.Mode == acceptor.VariableModeEnumType.aOutgoing ||
+                    aVariable.Mode == acceptor.VariableModeEnumType.aInOut);
         }
     }
 }

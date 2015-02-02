@@ -13,13 +13,21 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
+using System.Collections;
 using System.Collections.Generic;
+using DataDictionary.Generated;
+using DataDictionary.Values;
+using DataDictionary.Variables;
 using Utils;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Rule = DataDictionary.Rules.Rule;
+using StateMachine = DataDictionary.Types.StateMachine;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Constants
 {
-    public class State : Generated.State, Values.IValue, Utils.ISubDeclarator, TextualExplain, IGraphicalDisplay
+    public class State : Generated.State, IValue, ISubDeclarator, TextualExplain, IGraphicalDisplay
     {
         public string LiteralName
         {
@@ -105,7 +113,7 @@ namespace DataDictionary.Constants
                     stt = stt.EnclosingState;
                 }
 
-                Types.StateMachine parentStateMachine = EnclosingStateMachine;
+                StateMachine parentStateMachine = EnclosingStateMachine;
                 while (parentStateMachine.EnclosingStateMachine != null)
                 {
                     parentStateMachine = parentStateMachine.EnclosingStateMachine;
@@ -123,7 +131,7 @@ namespace DataDictionary.Constants
         /// <summary>
         /// The states available in this state
         /// </summary>
-        public HashSet<Constants.State> AllStates
+        public HashSet<State> AllStates
         {
             get { return StateFinder.INSTANCE.find(this); }
         }
@@ -133,7 +141,7 @@ namespace DataDictionary.Constants
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public Constants.State findSubState(string name)
+        public State findSubState(string name)
         {
             return findSubState(name.Split('.'), 0);
         }
@@ -143,11 +151,11 @@ namespace DataDictionary.Constants
         /// </summary>
         /// <param name="index">the index in names to consider</param>
         /// <param name="names">the simple value names</param>
-        public Constants.State findSubState(string[] names, int index)
+        public State findSubState(string[] names, int index)
         {
-            Constants.State retVal = null;
+            State retVal = null;
 
-            foreach (Constants.State state in StateMachine.States)
+            foreach (State state in StateMachine.States)
             {
                 if (state.Name.CompareTo(names[index]) == 0)
                 {
@@ -166,11 +174,11 @@ namespace DataDictionary.Constants
         /// <summary>
         /// The value type
         /// </summary>
-        public Types.Type Type
+        public Type Type
         {
             get
             {
-                Types.StateMachine retVal = StateMachine;
+                StateMachine retVal = StateMachine;
 
                 while (retVal.EnclosingStateMachine != null)
                 {
@@ -185,18 +193,18 @@ namespace DataDictionary.Constants
         /// <summary>
         /// The sub state machine for this state
         /// </summary>
-        public Types.StateMachine StateMachine
+        public StateMachine StateMachine
         {
             get
             {
                 if (getStateMachine() == null)
                 {
-                    Types.StateMachine stateMachine = (Types.StateMachine)DataDictionary.Generated.acceptor.getFactory().createStateMachine();
+                    StateMachine stateMachine = (StateMachine) acceptor.getFactory().createStateMachine();
                     stateMachine.setFather(this);
                     setStateMachine(stateMachine);
                 }
 
-                return (Types.StateMachine)getStateMachine();
+                return (StateMachine) getStateMachine();
             }
             set { setStateMachine(value); }
         }
@@ -257,19 +265,27 @@ namespace DataDictionary.Constants
         /// <summary>
         /// Indicates whether the state is hidden
         /// </summary>
-        public bool Hidden { get { return false; } set { } }
+        public bool Hidden
+        {
+            get { return false; }
+            set { }
+        }
 
         /// <summary>
         /// Indicates that the element is pinned
         /// </summary>
-        public bool Pinned { get { return getPinned(); } set { setPinned(value); } }
+        public bool Pinned
+        {
+            get { return getPinned(); }
+            set { setPinned(value); }
+        }
 
         /// <summary>
         /// The enclosing state machine
         /// </summary>
-        public Types.StateMachine EnclosingStateMachine
+        public StateMachine EnclosingStateMachine
         {
-            get { return Enclosing as Types.StateMachine; }
+            get { return Enclosing as StateMachine; }
         }
 
         /// <summary>
@@ -280,7 +296,7 @@ namespace DataDictionary.Constants
             get { return EnclosingStateMachine.getFather() as State; }
         }
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get { return EnclosingStateMachine.States; }
         }
@@ -307,12 +323,9 @@ namespace DataDictionary.Constants
         /// <summary>
         /// Provides all the states available through this state
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements
+        public Dictionary<string, List<INamable>> DeclaredElements
         {
-            get
-            {
-                return StateMachine.DeclaredElements;
-            }
+            get { return StateMachine.DeclaredElements; }
         }
 
         /// <summary>
@@ -320,7 +333,7 @@ namespace DataDictionary.Constants
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
             StateMachine.Find(name, retVal);
         }
@@ -331,13 +344,13 @@ namespace DataDictionary.Constants
         /// <param name="variable">The target variable</param>
         /// <param name="setEnclosing">Indicates that the new value enclosing element should be set</param>
         /// <returns></returns>
-        public virtual Values.IValue RightSide(Variables.IVariable variable, bool duplicate, bool setEnclosing)
+        public virtual IValue RightSide(IVariable variable, bool duplicate, bool setEnclosing)
         {
             State retVal = this;
 
             while (retVal.StateMachine.AllValues.Count > 0)
             {
-                retVal = (Constants.State)retVal.StateMachine.DefaultValue;
+                retVal = (State) retVal.StateMachine.DefaultValue;
             }
 
             return retVal;
@@ -346,28 +359,42 @@ namespace DataDictionary.Constants
         /// <summary>
         /// The namespace related to the typed element
         /// </summary>
-        public Types.NameSpace NameSpace { get { return null; } }
+        public NameSpace NameSpace
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// Provides the type name of the element
         /// </summary>
-        public string TypeName { get { return Type.FullName; } set { } }
+        public string TypeName
+        {
+            get { return Type.FullName; }
+            set { }
+        }
 
         /// <summary>
         /// Provides the mode of the typed element
         /// </summary>
-        public DataDictionary.Generated.acceptor.VariableModeEnumType Mode { get { return Generated.acceptor.VariableModeEnumType.aInternal; } }
+        public acceptor.VariableModeEnumType Mode
+        {
+            get { return acceptor.VariableModeEnumType.aInternal; }
+        }
 
         /// <summary>
         /// Provides the default value of the typed element
         /// </summary>
-        public string Default { get { return this.FullName; } set { } }
+        public string Default
+        {
+            get { return this.FullName; }
+            set { }
+        }
 
         /// <summary>
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
         }
 
@@ -381,15 +408,14 @@ namespace DataDictionary.Constants
             string retVal = "";
 
             retVal =
-                  TextualExplainUtilities.Pad("{\\cf11 // " + TextualExplainUtilities.Iterate('*', 6 + Name.Length) + "}\\cf1\\par", indentLevel)
+                TextualExplainUtilities.Pad("{\\cf11 // " + TextualExplainUtilities.Iterate('*', 6 + Name.Length) + "}\\cf1\\par", indentLevel)
                 + TextualExplainUtilities.Pad("{\\cf11 // State " + Name + "}\\cf1\\par", indentLevel)
                 + TextualExplainUtilities.Pad("{\\cf11 // " + TextualExplainUtilities.Iterate('*', 6 + Name.Length) + "}\\cf1\\par", indentLevel);
 
             if (getExplain)
             {
-                foreach (Rules.Rule rule in StateMachine.Rules)
+                foreach (Rule rule in StateMachine.Rules)
                 {
-
                     retVal += "\\par" + rule.getExplain(indentLevel, true);
                 }
             }
@@ -414,7 +440,7 @@ namespace DataDictionary.Constants
         /// <returns></returns>
         public State duplicate()
         {
-            State retVal = (State)Generated.acceptor.getFactory().createState();
+            State retVal = (State) acceptor.getFactory().createState();
             retVal.Name = Name;
             retVal.X = X;
             retVal.Y = Y;

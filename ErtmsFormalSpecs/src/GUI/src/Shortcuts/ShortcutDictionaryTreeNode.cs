@@ -13,14 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
+using DataDictionary.Generated;
+using GUI.DataDictionaryView;
+using Shortcut = DataDictionary.Shortcuts.Shortcut;
+using ShortcutDictionary = DataDictionary.Shortcuts.ShortcutDictionary;
+using ShortcutFolder = DataDictionary.Shortcuts.ShortcutFolder;
 
 namespace GUI.Shortcuts
 {
-    public class ShortcutDictionaryTreeNode : ModelElementTreeNode<DataDictionary.Shortcuts.ShortcutDictionary>
+    public class ShortcutDictionaryTreeNode : ModelElementTreeNode<ShortcutDictionary>
     {
         private class ItemEditor : NamedEditor
         {
@@ -37,7 +42,7 @@ namespace GUI.Shortcuts
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ShortcutDictionaryTreeNode(DataDictionary.Shortcuts.ShortcutDictionary item, bool buildSubNodes)
+        public ShortcutDictionaryTreeNode(ShortcutDictionary item, bool buildSubNodes)
             : base(item, buildSubNodes, item.Name, true)
         {
         }
@@ -50,12 +55,12 @@ namespace GUI.Shortcuts
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Shortcuts.ShortcutFolder folder in Item.Folders)
+            foreach (ShortcutFolder folder in Item.Folders)
             {
                 Nodes.Add(new ShortcutFolderTreeNode(folder, buildSubNodes));
             }
 
-            foreach (DataDictionary.Shortcuts.Shortcut shortcut in Item.Shortcuts)
+            foreach (Shortcut shortcut in Item.Shortcuts)
             {
                 Nodes.Add(new ShortcutTreeNode(shortcut, buildSubNodes));
             }
@@ -76,7 +81,7 @@ namespace GUI.Shortcuts
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public ShortcutTreeNode createShortcut(DataDictionary.Shortcuts.Shortcut shortcut)
+        public ShortcutTreeNode createShortcut(Shortcut shortcut)
         {
             ShortcutTreeNode retVal;
 
@@ -93,7 +98,7 @@ namespace GUI.Shortcuts
         /// </summary>
         /// <param name="folder"></param>
         /// <returns></returns>
-        public ShortcutFolderTreeNode createFolder(DataDictionary.Shortcuts.ShortcutFolder folder)
+        public ShortcutFolderTreeNode createFolder(ShortcutFolder folder)
         {
             ShortcutFolderTreeNode retVal;
 
@@ -107,7 +112,7 @@ namespace GUI.Shortcuts
 
         public void AddFolderHandler(object sender, EventArgs args)
         {
-            DataDictionary.Shortcuts.ShortcutFolder folder = (DataDictionary.Shortcuts.ShortcutFolder)DataDictionary.Generated.acceptor.getFactory().createShortcutFolder();
+            ShortcutFolder folder = (ShortcutFolder) acceptor.getFactory().createShortcutFolder();
             folder.Name = "<Folder " + (Item.Folders.Count + 1) + ">";
             createFolder(folder);
         }
@@ -172,7 +177,7 @@ namespace GUI.Shortcuts
 
                     if (shortcut.Item.Dictionary == Item.Dictionary)
                     {
-                        DataDictionary.Shortcuts.Shortcut otherShortcut = (DataDictionary.Shortcuts.Shortcut)shortcut.Item.Duplicate();
+                        Shortcut otherShortcut = (Shortcut) shortcut.Item.Duplicate();
                         createShortcut(otherShortcut);
 
                         shortcut.Delete();
@@ -184,52 +189,52 @@ namespace GUI.Shortcuts
 
                     if (folder.Item.Dictionary == Item.Dictionary)
                     {
-                        DataDictionary.Shortcuts.ShortcutFolder otherFolder = (DataDictionary.Shortcuts.ShortcutFolder)folder.Item.Duplicate();
+                        ShortcutFolder otherFolder = (ShortcutFolder) folder.Item.Duplicate();
                         createFolder(otherFolder);
 
                         folder.Delete();
                     }
                 }
-                else if (SourceNode is DataDictionaryView.RuleTreeNode)
+                else if (SourceNode is RuleTreeNode)
                 {
-                    DataDictionaryView.RuleTreeNode rule = SourceNode as DataDictionaryView.RuleTreeNode;
+                    RuleTreeNode rule = SourceNode as RuleTreeNode;
 
                     if (rule.Item.Dictionary == Item.Dictionary)
                     {
-                        DataDictionary.Shortcuts.Shortcut shortcut = (DataDictionary.Shortcuts.Shortcut)DataDictionary.Generated.acceptor.getFactory().createShortcut();
+                        Shortcut shortcut = (Shortcut) acceptor.getFactory().createShortcut();
                         shortcut.CopyFrom(rule.Item);
                         createShortcut(shortcut);
                     }
                 }
-                else if (SourceNode is DataDictionaryView.FunctionTreeNode)
+                else if (SourceNode is FunctionTreeNode)
                 {
-                    DataDictionaryView.FunctionTreeNode function = SourceNode as DataDictionaryView.FunctionTreeNode;
+                    FunctionTreeNode function = SourceNode as FunctionTreeNode;
 
                     if (function.Item.Dictionary == Item.Dictionary)
                     {
-                        DataDictionary.Shortcuts.Shortcut shortcut = (DataDictionary.Shortcuts.Shortcut)DataDictionary.Generated.acceptor.getFactory().createShortcut();
+                        Shortcut shortcut = (Shortcut) acceptor.getFactory().createShortcut();
                         shortcut.CopyFrom(function.Item);
                         createShortcut(shortcut);
                     }
                 }
-                else if (SourceNode is DataDictionaryView.ProcedureTreeNode)
+                else if (SourceNode is ProcedureTreeNode)
                 {
-                    DataDictionaryView.ProcedureTreeNode procedure = SourceNode as DataDictionaryView.ProcedureTreeNode;
+                    ProcedureTreeNode procedure = SourceNode as ProcedureTreeNode;
 
                     if (procedure.Item.Dictionary == Item.Dictionary)
                     {
-                        DataDictionary.Shortcuts.Shortcut shortcut = (DataDictionary.Shortcuts.Shortcut)DataDictionary.Generated.acceptor.getFactory().createShortcut();
+                        Shortcut shortcut = (Shortcut) acceptor.getFactory().createShortcut();
                         shortcut.CopyFrom(procedure.Item);
                         createShortcut(shortcut);
                     }
                 }
-                else if (SourceNode is DataDictionaryView.VariableTreeNode)
+                else if (SourceNode is VariableTreeNode)
                 {
-                    DataDictionaryView.VariableTreeNode variable = SourceNode as DataDictionaryView.VariableTreeNode;
+                    VariableTreeNode variable = SourceNode as VariableTreeNode;
 
                     if (variable.Item.Dictionary == Item.Dictionary)
                     {
-                        DataDictionary.Shortcuts.Shortcut shortcut = (DataDictionary.Shortcuts.Shortcut)DataDictionary.Generated.acceptor.getFactory().createShortcut();
+                        Shortcut shortcut = (Shortcut) acceptor.getFactory().createShortcut();
                         shortcut.CopyFrom(variable.Item);
                         createShortcut(shortcut);
                     }

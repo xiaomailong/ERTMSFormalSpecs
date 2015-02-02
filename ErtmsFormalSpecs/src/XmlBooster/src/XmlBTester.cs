@@ -1,92 +1,86 @@
-
 using System;
-using System.Collections;
-using System.IO;
 
 namespace XmlBooster
 {
+    /// <remarks>Used by XMLBooster-generated class
+    /// to test the performance and the memory
+    /// occupation for the generated parser.</remarks>
+    public class XmlBTester
+    {
+        public XmlBTester()
+        {
+        }
 
-	/// <remarks>Used by XMLBooster-generated class
-	/// to test the performance and the memory
-	/// occupation for the generated parser.</remarks>
-	public class XmlBTester
-	{
-		public XmlBTester ()
-		{
-		}
+        private void performTest(XmlBBaseAcceptor acceptor,
+            String fname,
+            int count,
+            int inMem)
+        {
+            XmlBStringContext ctxt = new XmlBStringContext();
+            String b;
 
-		private void performTest (XmlBBaseAcceptor acceptor,
-			String fname,
-			int count,
-			int inMem)
-		{
-			XmlBStringContext ctxt = new XmlBStringContext();
-			String b;
+            long start = 0; //System.currentTimeMillis();
 
-			long start = 0; //System.currentTimeMillis();
+            if (! ctxt.readFile(fname))
+            {
+                Console.WriteLine("Could not open file : " +
+                                  fname);
+                return;
+            }
+            IXmlBBase[] el = new IXmlBBase[inMem];
+            try
+            {
+                int ptr = 0;
+                for (int i = 0; i < count; i++)
+                {
+                    if (i%1000 == 0)
+                        Console.WriteLine("" + (i) + "/" + count);
+                    el[ptr] = acceptor.genericAccept(ctxt);
+                    ctxt.setPtr(0);
+                    ptr++;
+                    if (ptr >= el.Length)
+                        ptr = 0;
+                }
+                long stop = 0; //System.currentTimeMillis();
+                Console.WriteLine("Done parsing.    Total time: " +
+                                  (stop - start) + " millisecs   Time/instance: " +
+                                  (stop - start)/count);
+                // System.Console.WriteLine (el[0].toString());
+                start = 0; //System.currentTimeMillis();
+                for (int i = 0; i < count; i++)
+                {
+                    if (i%1000 == 0)
+                        Console.WriteLine("" + (i) + "/" + count);
+                    b = el[0].ToString();
+                }
+                stop = 0; //System.currentTimeMillis();
+                Console.WriteLine("Done unparsing.  Total time: " +
+                                  (stop - start) + " millisecs   Time/instance: " +
+                                  (stop - start)/count);
+            }
+            catch (Exception)
+            {
+                ctxt.dumpError();
+            }
+        }
 
-			if (! ctxt.readFile (fname))
-			{
-				System.Console.WriteLine ("Could not open file : " +
-						   fname);
-				return;
-			}
-			IXmlBBase [] el = new IXmlBBase[inMem];
-			try
-			{
-				int ptr = 0;
-				for (int i=0; i < count; i++)
-				{
-					if (i % 1000 == 0)
-						System.Console.WriteLine ("" + (i) + "/" + count);
-					el[ptr] = acceptor.genericAccept(ctxt);
-					ctxt.setPtr(0);
-					ptr++;
-					if (ptr >= el.Length)
-						ptr = 0;
-				}
-				long stop = 0;//System.currentTimeMillis();
-				System.Console.WriteLine ("Done parsing.    Total time: " +
-						   (stop-start) + " millisecs   Time/instance: " +
-						   (stop-start)/count);
-				// System.Console.WriteLine (el[0].toString());
-				start = 0;//System.currentTimeMillis();
-				for (int i=0; i < count; i++)
-				{
-					if (i % 1000 == 0)
-						System.Console.WriteLine ("" + (i) + "/" + count);
-					b = el[0].ToString();
-				}
-				stop = 0;//System.currentTimeMillis();
-				System.Console.WriteLine ("Done unparsing.  Total time: " +
-						   (stop-start) + " millisecs   Time/instance: " +
-						   (stop-start)/count);
-			}
-      catch (Exception)
-			{
-				ctxt.dumpError();
-			}
-		}
+        public const int DEFAULT_COUNT = 10000;
 
-		public const int DEFAULT_COUNT = 10000;
+        public void performTest(XmlBBaseAcceptor acceptor,
+            string[] args)
+        {
+            int count = DEFAULT_COUNT;
+            int inMem = 1;
 
-		public void performTest (XmlBBaseAcceptor acceptor,
-			string [] args)
-		{
-			int count = DEFAULT_COUNT;
-			int inMem = 1;
-
-			if (args == null || args.Length == 0)
-			{
-				System.Console.WriteLine ("No file name specified");
-				return;
-			}
-			if (args.Length > 1)
-				if (args.Length > 2)
-					inMem = System.Convert.ToInt32(args[2]);
-			performTest (acceptor, args[0], count, inMem);
-
-		}
-
-	}
+            if (args == null || args.Length == 0)
+            {
+                Console.WriteLine("No file name specified");
+                return;
+            }
+            if (args.Length > 1)
+                if (args.Length > 2)
+                    inMem = Convert.ToInt32(args[2]);
+            performTest(acceptor, args[0], count, inMem);
+        }
+    }
 }

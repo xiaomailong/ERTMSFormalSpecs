@@ -13,9 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using Rule = DataDictionary.Rules.Rule;
+using RuleCondition = DataDictionary.Rules.RuleCondition;
 
 namespace GUI.DataDictionaryView
 {
@@ -25,7 +29,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public SubRulesTreeNode(DataDictionary.Rules.RuleCondition item, bool buildSubNodes)
+        public SubRulesTreeNode(RuleCondition item, bool buildSubNodes)
             : base(item, buildSubNodes, "Sub rules", true, false)
         {
         }
@@ -38,7 +42,7 @@ namespace GUI.DataDictionaryView
         {
             Nodes.Clear();
 
-            foreach (DataDictionary.Rules.Rule rule in Item.SubRules)
+            foreach (Rule rule in Item.SubRules)
             {
                 Nodes.Add(new RuleTreeNode(rule, buildSubNodes));
             }
@@ -55,7 +59,7 @@ namespace GUI.DataDictionaryView
         /// Adds a rule in this set of sub rules
         /// </summary>
         /// <param name="rule"></param>
-        public RuleTreeNode AddRule(DataDictionary.Rules.Rule rule)
+        public RuleTreeNode AddRule(Rule rule)
         {
             RuleTreeNode retVal = new RuleTreeNode(rule, true);
 
@@ -69,10 +73,10 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)DataDictionary.Generated.acceptor.getFactory().createRule();
+            Rule rule = (Rule) acceptor.getFactory().createRule();
             rule.Name = "<Rule" + (GetNodeCount(false) + 1) + ">";
 
-            DataDictionary.Rules.RuleCondition condition = (DataDictionary.Rules.RuleCondition)DataDictionary.Generated.acceptor.getFactory().createRuleCondition();
+            RuleCondition condition = (RuleCondition) acceptor.getFactory().createRuleCondition();
             condition.Name = "<Condition1>";
             rule.appendConditions(condition);
 
@@ -90,9 +94,9 @@ namespace GUI.DataDictionaryView
             {
                 if (MessageBox.Show("Are you sure you want to move the corresponding rule ?", "Move rule", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    RuleTreeNode ruleTreeNode = (RuleTreeNode)SourceNode;
+                    RuleTreeNode ruleTreeNode = (RuleTreeNode) SourceNode;
 
-                    DataDictionary.Rules.Rule rule = ruleTreeNode.Item;
+                    Rule rule = ruleTreeNode.Item;
                     ruleTreeNode.Delete();
                     AddRule(rule);
                 }

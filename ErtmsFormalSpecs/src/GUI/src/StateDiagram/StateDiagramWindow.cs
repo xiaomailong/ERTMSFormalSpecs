@@ -13,18 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
 using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
+using DataDictionary;
 using DataDictionary.Constants;
 using DataDictionary.Rules;
 using DataDictionary.Types;
 using DataDictionary.Variables;
-using Utils;
 using GUI.BoxArrowDiagram;
-using DataDictionary;
-using DataDictionary.Interpreter;
+using GUI.Converters;
+using Utils;
 
 namespace GUI.StateDiagram
 {
@@ -54,7 +52,10 @@ namespace GUI.StateDiagram
         /// <summary>
         /// The panel used to display the state diagram
         /// </summary>
-        private StatePanel StatePanel { get { return (StatePanel)BoxArrowContainerPanel; } }
+        private StatePanel StatePanel
+        {
+            get { return (StatePanel) BoxArrowContainerPanel; }
+        }
 
         /// <summary>
         /// Sets the state machine type
@@ -88,7 +89,7 @@ namespace GUI.StateDiagram
             StatePanel.StateMachine = StateMachine;
             if (stateMachine != null)
             {
-                StatePanel.StateMachineVariableExpression = EFSSystem.INSTANCE.Parser.Expression(Utils.EnclosingFinder<Dictionary>.find(stateMachine), stateMachine.FullName);
+                StatePanel.StateMachineVariableExpression = EFSSystem.INSTANCE.Parser.Expression(EnclosingFinder<Dictionary>.find(stateMachine), stateMachine.FullName);
             }
             else
             {
@@ -131,13 +132,13 @@ namespace GUI.StateDiagram
             return retVal;
         }
 
-        protected class InternalStateTypeConverter : Converters.StateTypeConverter
+        protected class InternalStateTypeConverter : StateTypeConverter
         {
             public override StandardValuesCollection
-            GetStandardValues(ITypeDescriptorContext context)
+                GetStandardValues(ITypeDescriptorContext context)
             {
-                TransitionEditor instance = (TransitionEditor)context.Instance;
-                StatePanel panel = (StatePanel)instance.control.BoxArrowPanel;
+                TransitionEditor instance = (TransitionEditor) context.Instance;
+                StatePanel panel = (StatePanel) instance.control.BoxArrowPanel;
                 return GetValues(panel.StateMachine);
             }
         }
@@ -156,7 +157,7 @@ namespace GUI.StateDiagram
             {
             }
 
-            [Category("Description"), TypeConverter(typeof(InternalStateTypeConverter))]
+            [Category("Description"), TypeConverter(typeof (InternalStateTypeConverter))]
             public string Source
             {
                 get
@@ -171,9 +172,9 @@ namespace GUI.StateDiagram
                 }
                 set
                 {
-                    TransitionControl transitionControl = (TransitionControl)control;
-                    StatePanel statePanel = (StatePanel)transitionControl.Panel;
-                    State state = DataDictionary.OverallStateFinder.INSTANCE.findByName(statePanel.StateMachine, value);
+                    TransitionControl transitionControl = (TransitionControl) control;
+                    StatePanel statePanel = (StatePanel) transitionControl.Panel;
+                    State state = OverallStateFinder.INSTANCE.findByName(statePanel.StateMachine, value);
                     if (state != null)
                     {
                         control.SetInitialBox(state);
@@ -182,7 +183,7 @@ namespace GUI.StateDiagram
                 }
             }
 
-            [Category("Description"), TypeConverter(typeof(InternalStateTypeConverter))]
+            [Category("Description"), TypeConverter(typeof (InternalStateTypeConverter))]
             public string Target
             {
                 get
@@ -198,9 +199,9 @@ namespace GUI.StateDiagram
                 }
                 set
                 {
-                    TransitionControl transitionControl = (TransitionControl)control;
-                    StatePanel statePanel = (StatePanel)transitionControl.Panel;
-                    State state = DataDictionary.OverallStateFinder.INSTANCE.findByName(statePanel.StateMachine, value);
+                    TransitionControl transitionControl = (TransitionControl) control;
+                    StatePanel statePanel = (StatePanel) transitionControl.Panel;
+                    State state = OverallStateFinder.INSTANCE.findByName(statePanel.StateMachine, value);
                     if (state != null)
                     {
                         control.SetTargetBox(state);

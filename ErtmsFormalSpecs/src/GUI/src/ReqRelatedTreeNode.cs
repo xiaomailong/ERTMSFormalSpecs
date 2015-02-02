@@ -13,16 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
-
+using DataDictionary;
 
 namespace GUI
 {
     public abstract class ReqRelatedTreeNode<T> : ReferencesParagraphTreeNode<T>
-        where T : DataDictionary.ReqRelated
+        where T : ReqRelated
     {
         /// <summary>
         /// The editor for message variables
@@ -118,6 +119,5 @@ namespace GUI
 
             return retVal;
         }
-
     }
 }

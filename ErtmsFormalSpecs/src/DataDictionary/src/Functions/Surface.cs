@@ -13,11 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using DataDictionary.Values;
 using ErtmsSolutions.Etcs.Subset26.BrakingCurves;
 using ErtmsSolutions.SiUnits;
-using DataDictionary.Interpreter;
 
 namespace DataDictionary.Functions
 {
@@ -368,7 +371,7 @@ namespace DataDictionary.Functions
         /// <summary>
         /// The segments associated to this graph
         /// </summary>
-        public System.Collections.Generic.List<Segment> Segments { get; private set; }
+        public List<Segment> Segments { get; private set; }
 
         /// <summary>
         /// The X axis for this surface 
@@ -384,6 +387,7 @@ namespace DataDictionary.Functions
         /// Provides the function associated to this graph
         /// </summary>
         private Function function;
+
         public Function Function
         {
             get
@@ -391,16 +395,16 @@ namespace DataDictionary.Functions
                 if (function == null)
                 {
                     // Create a function associated to this graph
-                    function = (Function)Generated.acceptor.getFactory().createFunction();
+                    function = (Function) acceptor.getFactory().createFunction();
                     function.Name = "SurfaceRelatedFunction";
                     function.ReturnType = EFSSystem.INSTANCE.DoubleType;
                     function.Surface = this;
 
-                    Parameter parameter = (Parameter)Generated.acceptor.getFactory().createParameter();
+                    Parameter parameter = (Parameter) acceptor.getFactory().createParameter();
                     parameter.Name = "X";
                     parameter.Type = EFSSystem.INSTANCE.DoubleType;
                     function.appendParameters(parameter);
-                    parameter = (Parameter)Generated.acceptor.getFactory().createParameter();
+                    parameter = (Parameter) acceptor.getFactory().createParameter();
                     parameter.Name = "Y";
                     parameter.Type = EFSSystem.INSTANCE.DoubleType;
                     function.appendParameters(parameter);
@@ -408,10 +412,7 @@ namespace DataDictionary.Functions
 
                 return function;
             }
-            set
-            {
-                function = value;
-            }
+            set { function = value; }
         }
 
         /// <summary>
@@ -493,7 +494,7 @@ namespace DataDictionary.Functions
                         seg.X.X0,
                         seg.X.X1,
                         seg.Y
-                    );
+                        );
                     retVal.Tiles.Add(tile);
                 }
             }
@@ -585,13 +586,13 @@ namespace DataDictionary.Functions
         /// <param name="iValue"></param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public static Surface createSurface(Parameter xParam, Parameter yParam, Values.IValue iValue, ExplanationPart explain)
+        public static Surface createSurface(Parameter xParam, Parameter yParam, IValue iValue, ExplanationPart explain)
         {
             Surface retVal = null;
 
             if (retVal == null)
             {
-                Functions.Function function = iValue as Function;
+                Function function = iValue as Function;
                 if (function != null)
                 {
                     retVal = function.Surface;
@@ -862,7 +863,7 @@ namespace DataDictionary.Functions
                 {
                     if (totalSegmentSize != 0 && segmentCount != 0)
                     {
-                        retVal = Math.Floor(start + totalSegmentSize / segmentCount) + 1.0;
+                        retVal = Math.Floor(start + totalSegmentSize/segmentCount) + 1.0;
                     }
                     else
                     {
@@ -933,12 +934,12 @@ namespace DataDictionary.Functions
         /// <param name="xParam"></param>
         /// <param name="yParam"></param>
         /// <returns></returns>
-        public static Surface createSurface(Values.IValue namable, Parameter xParam, Parameter yParam)
+        public static Surface createSurface(IValue namable, Parameter xParam, Parameter yParam)
         {
             Surface retVal = null;
 
-            Functions.Function function = namable as Functions.Function;
-            Values.IValue value = namable as Values.IValue;
+            Function function = namable as Function;
+            IValue value = namable as IValue;
             if (function != null)
             {
                 if (function.Surface != null)

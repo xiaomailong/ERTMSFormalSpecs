@@ -1,5 +1,4 @@
-﻿using System.IO;
-// ------------------------------------------------------------------------------
+﻿// ------------------------------------------------------------------------------
 // -- Copyright ERTMS Solutions
 // -- Licensed under the EUPL V.1.1
 // -- http://joinup.ec.europa.eu/software/page/eupl/licence-eupl
@@ -14,8 +13,10 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using Utils;
 using System;
+using System.IO;
+using Utils;
+
 namespace DataDictionary.Specification
 {
     public class ChapterRef : Generated.ChapterRef

@@ -13,9 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.Collections.Generic;
-using DataDictionary.Interpreter;
 
+using System.Collections.Generic;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -43,13 +47,13 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public IntersectAt(EFSSystem efsSystem)
             : base(efsSystem, "IntersectAt")
         {
-            FunctionA = (Parameter)Generated.acceptor.getFactory().createParameter();
+            FunctionA = (Parameter) acceptor.getFactory().createParameter();
             FunctionA.Name = "FunctionA";
             FunctionA.Type = EFSSystem.AnyType;
             FunctionA.setFather(this);
             FormalParameters.Add(FunctionA);
 
-            FunctionB = (Parameter)Generated.acceptor.getFactory().createParameter();
+            FunctionB = (Parameter) acceptor.getFactory().createParameter();
             FunctionB.Name = "FunctionB";
             FunctionB.Type = EFSSystem.AnyType;
             FunctionB.setFather(this);
@@ -60,7 +64,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// The return type of the function
         /// </summary>
-        public override Types.Type ReturnType
+        public override Type ReturnType
         {
             get { return EFSSystem.DoubleType; }
         }
@@ -72,9 +76,9 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             AssignParameters(context, actuals);
             Graph graph = createGraphForValue(context, context.findOnStack(FunctionA).Value, explain);
@@ -90,16 +94,16 @@ namespace DataDictionary.Functions.PredefinedFunctions
                         if (function.FormalParameters.Count > 0)
                         {
                             Parameter functionParameter = function.FormalParameters[0] as Parameter;
-                            Variables.Actual actual = functionParameter.createActual();
-                            actual.Value = new Values.DoubleValue(EFSSystem.DoubleType, speed);
-                            Dictionary<Variables.Actual, Values.IValue> values = new Dictionary<Variables.Actual, Values.IValue>();
-                            values[actual] = new Values.DoubleValue(EFSSystem.DoubleType, speed);
-                            Values.IValue solution = function.Evaluate(context, values, explain);
+                            Actual actual = functionParameter.createActual();
+                            actual.Value = new DoubleValue(EFSSystem.DoubleType, speed);
+                            Dictionary<Actual, IValue> values = new Dictionary<Actual, IValue>();
+                            values[actual] = new DoubleValue(EFSSystem.DoubleType, speed);
+                            IValue solution = function.Evaluate(context, values, explain);
                             double doubleValue = getDoubleValue(solution);
 
                             if (doubleValue >= segment.Start && doubleValue <= segment.End)
                             {
-                                retVal = new Values.DoubleValue(EFSSystem.DoubleType, doubleValue);
+                                retVal = new DoubleValue(EFSSystem.DoubleType, doubleValue);
                                 break;
                             }
                         }

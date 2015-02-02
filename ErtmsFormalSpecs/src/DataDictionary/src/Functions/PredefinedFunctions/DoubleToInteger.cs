@@ -13,10 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
-
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -33,7 +37,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// The return type of the function
         /// </summary>
-        public override DataDictionary.Types.Type ReturnType
+        public override Type ReturnType
         {
             get { return EFSSystem.IntegerType; }
         }
@@ -45,7 +49,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public DoubleToInteger(EFSSystem efsSystem)
             : base(efsSystem, "DoubleToInteger")
         {
-            Value = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Value = (Parameter) acceptor.getFactory().createParameter();
             Value.Name = "Value";
             Value.Type = EFSSystem.DoubleType;
             Value.setFather(this);
@@ -59,18 +63,18 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             int token = context.LocalScope.PushContext();
             AssignParameters(context, actuals);
 
-            Values.DoubleValue value = context.findOnStack(Value).Value as Values.DoubleValue;
+            DoubleValue value = context.findOnStack(Value).Value as DoubleValue;
             if (value != null)
             {
-                int res = (int)Math.Round(value.Val);
-                retVal = new Values.IntValue(ReturnType, res);
+                int res = (int) Math.Round(value.Val);
+                retVal = new IntValue(ReturnType, res);
             }
 
             context.LocalScope.PopContext(token);

@@ -13,21 +13,32 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using DataDictionary;
-using DataDictionary.Rules;
-using DataDictionary.Variables;
-
+using System.Reflection;
+using DataDictionary.Generated;
+using log4net;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
-using DataDictionary.Specification;
+using Utils;
+using Dictionary = DataDictionary.Dictionary;
+using Frame = DataDictionary.Tests.Frame;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using ReqRef = DataDictionary.ReqRef;
+using ReqRelated = DataDictionary.ReqRelated;
+using RequirementSet = DataDictionary.Specification.RequirementSet;
+using Rule = DataDictionary.Rules.Rule;
+using StateMachine = DataDictionary.Types.StateMachine;
+using TestCase = DataDictionary.Tests.TestCase;
+using Type = DataDictionary.Types.Type;
+using Variable = DataDictionary.Variables.Variable;
 
 namespace Reports.Specs
 {
     public class SpecCoverageReport : ReportTools
     {
-        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// Constructor
@@ -67,7 +78,7 @@ namespace Reports.Specs
             AddSubParagraph("Covered requirements");
             GenerateStatistics(aReportConfig.Dictionary, true, false, true, false);
 
-            HashSet<DataDictionary.Specification.Paragraph> coveredParagraphs = CoveredRequirements(aReportConfig.Dictionary, true);
+            HashSet<Paragraph> coveredParagraphs = CoveredRequirements(aReportConfig.Dictionary, true);
             if (coveredParagraphs.Count > 0) /* If we have some covered paragraphs, we create a section with informations about it */
             {
                 AddSubParagraph("Coverage detail");
@@ -88,13 +99,13 @@ namespace Reports.Specs
             AddSubParagraph("Non covered requirements");
             GenerateStatistics(aReportConfig.Dictionary, false, true, true, false);
 
-            HashSet<DataDictionary.Specification.Paragraph> nonCoveredParagraphs = CoveredRequirements(aReportConfig.Dictionary, false);
+            HashSet<Paragraph> nonCoveredParagraphs = CoveredRequirements(aReportConfig.Dictionary, false);
             if (nonCoveredParagraphs.Count > 0) /* If we have some non covered paragraphs, we create a section containing the list of these paragraphs */
             {
-                foreach (DataDictionary.Specification.Paragraph paragraph in nonCoveredParagraphs)
+                foreach (Paragraph paragraph in nonCoveredParagraphs)
                 {
                     AddSubParagraph("Requirement " + paragraph.FullId);
-                    AddTable(new string[] { "Requirement " + paragraph.FullId }, new int[] { 100 });
+                    AddTable(new string[] {"Requirement " + paragraph.FullId}, new int[] {100});
                     AddRow(paragraph.Text);
                     CloseSubParagraph();
                 }
@@ -116,15 +127,15 @@ namespace Reports.Specs
             HashSet<ReqRelated> implementedTypes = new HashSet<ReqRelated>();
             HashSet<ReqRelated> implementedVariables = new HashSet<ReqRelated>();
 
-            ICollection<DataDictionary.Specification.Paragraph> applicableParagraphs = aReportConfig.Dictionary.ApplicableParagraphs;
-            HashSet<DataDictionary.Specification.Paragraph> modeledParagraphs = new HashSet<DataDictionary.Specification.Paragraph>();
+            ICollection<Paragraph> applicableParagraphs = aReportConfig.Dictionary.ApplicableParagraphs;
+            HashSet<Paragraph> modeledParagraphs = new HashSet<Paragraph>();
             foreach (ReqRelated reqRelated in implementedReqRelated)
             {
                 if (reqRelated is Rule)
                 {
                     implementedRules.Add(reqRelated);
                 }
-                else if (reqRelated is DataDictionary.Types.Type)
+                else if (reqRelated is Type)
                 {
                     implementedTypes.Add(reqRelated);
                 }
@@ -134,9 +145,9 @@ namespace Reports.Specs
                 }
                 modeledParagraphs.UnionWith(reqRelated.ModeledParagraphs);
             }
-            double modeledPercentage = ((double)modeledParagraphs.Count / (double)applicableParagraphs.Count) * 100;
+            double modeledPercentage = ((double) modeledParagraphs.Count/(double) applicableParagraphs.Count)*100;
 
-            AddTable(new string[] { "Statistics" }, new int[] { 70, 70 });
+            AddTable(new string[] {"Statistics"}, new int[] {70, 70});
             AddRow("Number of implemented model elements", implementedReqRelated.Count.ToString());
             AddRow("Number of modeled paragraphs", String.Format("{0} of {1} ({2:0.##}%)", modeledParagraphs.Count, applicableParagraphs.Count, modeledPercentage));
 
@@ -179,7 +190,7 @@ namespace Reports.Specs
         /// <returns></returns>
         private void GenerateStatistics(Dictionary aDictionary, bool coveredParagraphs, bool nonCoveredParagraphs, bool applicableParagraphs, bool allParagraphs)
         {
-            AddTable(new string[] { "Statistics" }, new int[] { 70, 70 });
+            AddTable(new string[] {"Statistics"}, new int[] {70, 70});
             if (allParagraphs)
             {
                 AddRow("Total number of paragraphs", aDictionary.AllParagraphs.Count.ToString());
@@ -191,7 +202,7 @@ namespace Reports.Specs
 
             double applicableParagraphsCount = aDictionary.ApplicableParagraphs.Count;
             double coveredParagraphsCount = CoveredRequirements(aDictionary, true).Count;
-            double coveredPercentage = (coveredParagraphsCount / applicableParagraphsCount) * 100;
+            double coveredPercentage = (coveredParagraphsCount/applicableParagraphsCount)*100;
             double nonCoveredParagraphsCount = applicableParagraphsCount - coveredParagraphsCount;
             double nonCoveredPercentage = 100 - coveredPercentage;
 
@@ -212,15 +223,15 @@ namespace Reports.Specs
         /// <param name="aDictionary">The model</param>
         /// <param name="covered">Indicates if we need compute covered or non covered requirements</param>
         /// <returns></returns>
-        public static HashSet<DataDictionary.Specification.Paragraph> CoveredRequirements(Dictionary aDictionary, bool covered)
+        public static HashSet<Paragraph> CoveredRequirements(Dictionary aDictionary, bool covered)
         {
-            HashSet<DataDictionary.Specification.Paragraph> retVal = new HashSet<DataDictionary.Specification.Paragraph>();
+            HashSet<Paragraph> retVal = new HashSet<Paragraph>();
 
-            ICollection<DataDictionary.Specification.Paragraph> applicableParagraphs = aDictionary.ApplicableParagraphs;
-            Dictionary<DataDictionary.Specification.Paragraph, List<ReqRef>> paragraphsReqRefDictionary = aDictionary.ParagraphsReqRefs;
-            foreach (DataDictionary.Specification.Paragraph paragraph in applicableParagraphs)
+            ICollection<Paragraph> applicableParagraphs = aDictionary.ApplicableParagraphs;
+            Dictionary<Paragraph, List<ReqRef>> paragraphsReqRefDictionary = aDictionary.ParagraphsReqRefs;
+            foreach (Paragraph paragraph in applicableParagraphs)
             {
-                bool implemented = paragraph.getImplementationStatus() == DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented;
+                bool implemented = paragraph.getImplementationStatus() == acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented;
                 if (implemented)
                 {
                     if (paragraphsReqRefDictionary.ContainsKey(paragraph))
@@ -233,7 +244,7 @@ namespace Reports.Specs
                             {
                                 ReqRelated reqRelated = implementations[i].Enclosing as ReqRelated;
                                 // Do not consider tests
-                                if (Utils.EnclosingFinder<DataDictionary.Tests.Frame>.find(reqRelated) == null)
+                                if (EnclosingFinder<Frame>.find(reqRelated) == null)
                                 {
                                     implemented = implemented && reqRelated.ImplementationCompleted;
                                 }
@@ -257,9 +268,9 @@ namespace Reports.Specs
         /// <returns></returns>
         private void CreateSpecificationTable(Dictionary aDictionary)
         {
-            AddTable(new string[] { "Model information" }, new int[] { 40, 40, 30, 30 });
+            AddTable(new string[] {"Model information"}, new int[] {40, 40, 30, 30});
             AddTableHeader("Requirement", "Target", "Type", "Implementation status");
-            foreach (DataDictionary.Specification.Paragraph paragraph in aDictionary.AllParagraphs)
+            foreach (Paragraph paragraph in aDictionary.AllParagraphs)
             {
                 string requirementSets = "";
                 foreach (RequirementSet requirementSet in paragraph.ApplicableRequirementSets)
@@ -277,17 +288,17 @@ namespace Reports.Specs
         /// <param name="paragraphs">The paragraphs to display</param>
         /// <param name="dictionary">The dictionary</param>
         /// <returns></returns>
-        private void CreateImplementedParagraphsTable(HashSet<DataDictionary.Specification.Paragraph> paragraphs, Dictionary dictionary)
+        private void CreateImplementedParagraphsTable(HashSet<Paragraph> paragraphs, Dictionary dictionary)
         {
-            Dictionary<DataDictionary.Specification.Paragraph, List<ReqRef>> paragraphsReqRefDictionary = dictionary.ParagraphsReqRefs;
-            foreach (DataDictionary.Specification.Paragraph paragraph in paragraphs)
+            Dictionary<Paragraph, List<ReqRef>> paragraphsReqRefDictionary = dictionary.ParagraphsReqRefs;
+            foreach (Paragraph paragraph in paragraphs)
             {
                 Cell previousCell = null;
 
                 if (paragraphsReqRefDictionary.ContainsKey(paragraph))
                 {
                     AddSubParagraph("Requirement " + paragraph.FullId);
-                    AddTable(new string[] { "Requirement " + paragraph.FullId }, new int[] { 40, 60, 40 });
+                    AddTable(new string[] {"Requirement " + paragraph.FullId}, new int[] {40, 60, 40});
                     AddRow(paragraph.Text);
 
                     foreach (ReqRef reqRef in paragraph.Implementations)
@@ -298,11 +309,11 @@ namespace Reports.Specs
                         ReqRelated reqRelated = reqRef.Enclosing as ReqRelated;
                         if (reqRelated != null)
                         {
-                            if (reqRelated is DataDictionary.Tests.TestCase)  /* TODO: review it */
+                            if (reqRelated is TestCase) /* TODO: review it */
                             {
                                 fullName = "TEST CASE " + reqRelated.Name;
                             }
-                            else if (reqRelated is DataDictionary.Types.StateMachine)  /* TODO: review it */
+                            else if (reqRelated is StateMachine) /* TODO: review it */
                             {
                                 fullName = reqRelated.Name;
                             }
@@ -314,8 +325,8 @@ namespace Reports.Specs
                         }
                         else
                         {
-                            DataDictionary.Specification.Paragraph par = reqRef.Enclosing as DataDictionary.Specification.Paragraph;
-                            if (par != null)  /* TODO: review it */
+                            Paragraph par = reqRef.Enclosing as Paragraph;
+                            if (par != null) /* TODO: review it */
                             {
                                 fullName = "PARAGRAPH " + paragraph.FullId;
                                 comment = paragraph.Comment;
@@ -357,11 +368,11 @@ namespace Reports.Specs
             foreach (ReqRelated reqRelated in elements)
             {
                 AddSubParagraph(reqRelated.FullName);
-                AddTable(new string[] { reqRelated.FullName }, new int[] { 40, 100 });
+                AddTable(new string[] {reqRelated.FullName}, new int[] {40, 100});
                 if (showAssociatedParagraphs)
                 {
                     Row firstRow = null;
-                    foreach (DataDictionary.Specification.Paragraph paragraph in reqRelated.ModeledParagraphs)
+                    foreach (Paragraph paragraph in reqRelated.ModeledParagraphs)
                     {
                         if (firstRow == null)
                         {

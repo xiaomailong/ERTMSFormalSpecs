@@ -13,9 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.Windows.Forms;
-using System.Threading;
+
 using System;
+using System.Drawing;
+using System.Reflection;
+using System.Windows.Forms;
+using Utils;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI
@@ -65,40 +68,58 @@ namespace GUI
         /// <summary>
         /// Provides the model element currently selected in this IBaseForm
         /// </summary>
-        Utils.IModelElement Selected { get; }
+        IModelElement Selected { get; }
     }
 
-    public class BaseForm : WeifenLuo.WinFormsUI.Docking.DockContent, IBaseForm
+    public class BaseForm : DockContent, IBaseForm
     {
         /// <summary>
         /// The property grid used to edit elements properties
         /// </summary>
-        public virtual MyPropertyGrid Properties { get { return null; } }
+        public virtual MyPropertyGrid Properties
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// The requirements text box used to display the associated requirements
         /// </summary>
-        public virtual EditorTextBox RequirementsTextBox { get { return null; } }
+        public virtual EditorTextBox RequirementsTextBox
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// The text box used to edit expression
         /// </summary>
-        public virtual EditorTextBox ExpressionEditorTextBox { get { return null; } }
+        public virtual EditorTextBox ExpressionEditorTextBox
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// The main tree view of the form
         /// </summary>
-        public virtual BaseTreeView TreeView { get { return null; } }
+        public virtual BaseTreeView TreeView
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// The sub tree view of the form
         /// </summary>
-        public virtual BaseTreeView subTreeView { get { return null; } }
+        public virtual BaseTreeView subTreeView
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// The explain text box
         /// </summary>
-        public virtual ExplainTextBox ExplainTextBox { get { return null; } }
+        public virtual ExplainTextBox ExplainTextBox
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// Allows to refresh the view, according to the fact that the structure for the model could change
@@ -110,11 +131,11 @@ namespace GUI
         /// <summary>
         /// Provides the model element currently selected in this IBaseForm
         /// </summary>
-        public virtual Utils.IModelElement Selected
+        public virtual IModelElement Selected
         {
             get
             {
-                Utils.IModelElement retVal = null;
+                IModelElement retVal = null;
 
                 if (TreeView != null && TreeView.Selected != null)
                 {
@@ -145,10 +166,7 @@ namespace GUI
             /// <param name="instance"></param>
             public override void HandleSynchronization(BaseForm instance)
             {
-                instance.Invoke((MethodInvoker)delegate
-                {
-                    instance.SynchronizeForm();
-                });
+                instance.Invoke((MethodInvoker) delegate { instance.SynchronizeForm(); });
             }
         }
 
@@ -163,12 +181,12 @@ namespace GUI
         public BaseForm()
             : base()
         {
-            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
+            DockAreas = DockAreas.Document;
             FormSynchronizer = new Synchronizer(this, 300);
             ParentChanged += new EventHandler(BaseForm_ParentChanged);
         }
 
-        void BaseForm_ParentChanged(object sender, EventArgs e)
+        private void BaseForm_ParentChanged(object sender, EventArgs e)
         {
             FloatWindow window = ParentForm as FloatWindow;
             if (window != null)
@@ -177,9 +195,9 @@ namespace GUI
             }
         }
 
-        void ParentForm_Move(object sender, EventArgs e)
+        private void ParentForm_Move(object sender, EventArgs e)
         {
-            if (Control.ModifierKeys == Keys.Control)
+            if (ModifierKeys == Keys.Control)
             {
                 Hide();
                 DockAreas = DockAreas.Document;
@@ -204,7 +222,7 @@ namespace GUI
         {
             if (Properties != null)
             {
-                if (!Properties.ContainsFocus && !(Properties.ActiveControl is System.Windows.Forms.Button))
+                if (!Properties.ContainsFocus && !(Properties.ActiveControl is Button))
                 {
                     Properties.Refresh();
                 }
@@ -212,7 +230,7 @@ namespace GUI
 
             if (TreeView != null && TreeView.SelectedNode != null)
             {
-                ((BaseTreeNode)TreeView.SelectedNode).RefreshViewAccordingToModel(this, true);
+                ((BaseTreeNode) TreeView.SelectedNode).RefreshViewAccordingToModel(this, true);
             }
         }
 
@@ -222,8 +240,8 @@ namespace GUI
             // 
             // BaseForm
             // 
-            this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClientSize = new Size(284, 262);
+            this.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte) (0)));
             this.Name = "BaseForm";
             this.ResumeLayout(false);
         }
@@ -241,9 +259,9 @@ namespace GUI
             {
                 if (control.GetType().Name == "DocComment")
                 {
-                    System.Reflection.FieldInfo fieldInfo = control.GetType().BaseType.GetField("userSized",
-                      System.Reflection.BindingFlags.Instance |
-                      System.Reflection.BindingFlags.NonPublic);
+                    FieldInfo fieldInfo = control.GetType().BaseType.GetField("userSized",
+                        BindingFlags.Instance |
+                        BindingFlags.NonPublic);
                     fieldInfo.SetValue(control, true);
                     control.Height = height;
                     return;

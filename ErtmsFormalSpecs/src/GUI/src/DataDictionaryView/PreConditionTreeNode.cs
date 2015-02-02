@@ -13,15 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using System.Drawing.Design;
 using System.ComponentModel;
+using System.Drawing.Design;
+using System.Windows.Forms;
+using DataDictionary.Rules;
+using GUI.Converters;
 
 namespace GUI.DataDictionaryView
 {
-    public class PreConditionTreeNode : ModelElementTreeNode<DataDictionary.Rules.PreCondition>
+    public class PreConditionTreeNode : ModelElementTreeNode<PreCondition>
     {
         private class ItemEditor : Editor
         {
@@ -34,9 +37,9 @@ namespace GUI.DataDictionaryView
             }
 
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.ExpressionableUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.ExpressionableUITypeConverter))]
-            public DataDictionary.Rules.PreCondition Expression
+            [Editor(typeof (ExpressionableUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (ExpressionableUITypeConverter))]
+            public PreCondition Expression
             {
                 get { return Item; }
                 set
@@ -47,9 +50,9 @@ namespace GUI.DataDictionaryView
             }
 
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
-            public DataDictionary.Rules.PreCondition Comment
+            [Editor(typeof (CommentableUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (CommentableUITypeConverter))]
+            public PreCondition Comment
             {
                 get { return Item; }
                 set
@@ -76,7 +79,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public PreConditionTreeNode(DataDictionary.Rules.PreCondition item, bool buildSubNodes)
+        public PreConditionTreeNode(PreCondition item, bool buildSubNodes)
             : base(item, buildSubNodes, null)
         {
         }

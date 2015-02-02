@@ -13,9 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Windows.Forms;
 using DataDictionary;
+using Utils;
 
 namespace GUI.DataDictionaryView
 {
@@ -29,8 +31,9 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// The Dictionary handled by this view
         /// </summary>
-        private DataDictionary.Dictionary dictionary;
-        public DataDictionary.Dictionary Dictionary
+        private Dictionary dictionary;
+
+        public Dictionary Dictionary
         {
             get { return dictionary; }
             set
@@ -40,6 +43,7 @@ namespace GUI.DataDictionaryView
                 Text = dictionary.Name + " model view";
             }
         }
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -53,7 +57,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="dictionary"></param>
-        public Window(DataDictionary.Dictionary dictionary)
+        public Window(Dictionary dictionary)
         {
             InitializeComponent();
             SpecificInitialization();
@@ -77,7 +81,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Window_FormClosed(object sender, FormClosedEventArgs e)
+        private void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
             GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
@@ -104,7 +108,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public BaseTreeNode FindNode(Utils.IModelElement model)
+        public BaseTreeNode FindNode(IModelElement model)
         {
             return TreeView.FindNode(model);
         }
@@ -116,7 +120,7 @@ namespace GUI.DataDictionaryView
         /// <param name="e"></param>
         private void nextErrortoolStripButton_Click(object sender, EventArgs e)
         {
-            TreeView.SelectNext(Utils.ElementLog.LevelEnum.Error);
+            TreeView.SelectNext(ElementLog.LevelEnum.Error);
         }
 
         /// <summary>
@@ -126,7 +130,7 @@ namespace GUI.DataDictionaryView
         /// <param name="e"></param>
         private void nextWarningToolStripButton_Click(object sender, EventArgs e)
         {
-            TreeView.SelectNext(Utils.ElementLog.LevelEnum.Warning);
+            TreeView.SelectNext(ElementLog.LevelEnum.Warning);
         }
 
         /// <summary>
@@ -136,7 +140,7 @@ namespace GUI.DataDictionaryView
         /// <param name="e"></param>
         private void nextInfoToolStripButton_Click(object sender, EventArgs e)
         {
-            TreeView.SelectNext(Utils.ElementLog.LevelEnum.Info);
+            TreeView.SelectNext(ElementLog.LevelEnum.Info);
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)

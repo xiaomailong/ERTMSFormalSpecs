@@ -13,12 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
-using System.Text;
-using Utils;
 using DataDictionary.Functions;
-using DataDictionary.Values;
 using DataDictionary.Rules;
+using DataDictionary.Values;
+using Utils;
+
 namespace DataDictionary.Interpreter
 {
     /// <summary>
@@ -30,6 +31,7 @@ namespace DataDictionary.Interpreter
         /// The explanation message
         /// </summary>
         private string _message;
+
         public string Message
         {
             get
@@ -64,10 +66,7 @@ namespace DataDictionary.Interpreter
 
                 return retVal;
             }
-            set
-            {
-                _message = value;
-            }
+            set { _message = value; }
         }
 
         /// <summary>
@@ -83,7 +82,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The (optional) change for which this explanation part is created
         /// </summary>
-        public DataDictionary.Rules.Change Change { get; private set; }
+        public Change Change { get; private set; }
 
         /// <summary>
         /// The (optional) expression for which this explanation part is created
@@ -112,7 +111,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="element">The element for which this explanation part is created</param>
         /// <param name="change">The change performed</param>
-        public ExplanationPart(ModelElement element, DataDictionary.Rules.Change change)
+        public ExplanationPart(ModelElement element, Change change)
         {
             Element = element;
             Change = change;
@@ -158,7 +157,7 @@ namespace DataDictionary.Interpreter
                 }
                 else
                 {
-                    Values.IValue value = namable as Values.IValue;
+                    IValue value = namable as IValue;
                     if (value != null)
                     {
                         retVal = value.LiteralName;
@@ -232,7 +231,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="explain"></param>
         /// <param name="namable"></param>
-        public static void SetNamable(ExplanationPart explain, Utils.INamable namable)
+        public static void SetNamable(ExplanationPart explain, INamable namable)
         {
             if (explain != null)
             {

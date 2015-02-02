@@ -14,6 +14,9 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Generated;
+using Type = DataDictionary.Types.Type;
+
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
@@ -34,18 +37,18 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public FunctionOnSurface(EFSSystem efsSystem, string name)
             : base(efsSystem, name)
         {
-            Returns = (Function)Generated.acceptor.getFactory().createFunction();
+            Returns = (Function) acceptor.getFactory().createFunction();
             Returns.Name = Name + "ReturnType";
             Returns.ReturnType = EFSSystem.DoubleType;
             Returns.setFather(this);
 
-            Parameter returnTypeParam1 = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Parameter returnTypeParam1 = (Parameter) acceptor.getFactory().createParameter();
             returnTypeParam1.Name = Name + "ReturnTypeParam1";
             returnTypeParam1.Type = EFSSystem.DoubleType;
             returnTypeParam1.setFather(Returns);
             Returns.appendParameters(returnTypeParam1);
 
-            Parameter returnTypeParam2 = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Parameter returnTypeParam2 = (Parameter) acceptor.getFactory().createParameter();
             returnTypeParam2.Name = Name + "ReturnTypeParam2";
             returnTypeParam2.Type = EFSSystem.DoubleType;
             returnTypeParam2.setFather(Returns);
@@ -55,7 +58,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// The return type of the available function
         /// </summary>
-        public override Types.Type ReturnType
+        public override Type ReturnType
         {
             get { return Returns; }
         }

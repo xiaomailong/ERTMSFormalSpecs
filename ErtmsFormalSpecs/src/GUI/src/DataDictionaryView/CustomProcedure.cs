@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Windows.Forms;
 
@@ -37,12 +38,13 @@ namespace GUI.DataDictionaryView
         }
 
         public delegate void CustomProcedureCreator(DMIProcedureConfig aConfig);
+
         public CustomProcedureCreator CreateCustomProcedure;
 
         public CustomProcedure(string type, CustomProcedureCreator aCustomProcedureCreator)
         {
             InitializeComponent();
-            CbB_Types.DataSource = Enum.GetValues(typeof(CustomProcedureType));
+            CbB_Types.DataSource = Enum.GetValues(typeof (CustomProcedureType));
             Lbl_ProcedureName.Text = type + " name";
             TxtB_ProcedureName.Text = type + "Out";
             Btn_Add.Text = "Add " + type;
@@ -59,7 +61,7 @@ namespace GUI.DataDictionaryView
                 aConfig.VariableOutName = TxtB_VariableOut.Text;
                 aConfig.VariableRequestName = TxtB_VariableRequest.Text;
                 aConfig.VariableRequestDisabledName = TxtB_VariableRequestDisabled.Text;
-                aConfig.Type = (CustomProcedureType)Enum.Parse(typeof(CustomProcedureType), CbB_Types.SelectedValue.ToString());
+                aConfig.Type = (CustomProcedureType) Enum.Parse(typeof (CustomProcedureType), CbB_Types.SelectedValue.ToString());
                 CreateCustomProcedure(aConfig);
             }
             this.Hide();
@@ -70,27 +72,27 @@ namespace GUI.DataDictionaryView
             switch (CbB_Types.SelectedItem.ToString())
             {
                 case ("DMI_In"):
-                    {
-                        TxtB_ProcedureName.Text = "ProcedureIn";
-                        TxtB_VariableIn.Text = "DriverAnswered";
-                        TxtB_VariableIn.Enabled = true;
-                        TxtB_VariableOut.Text = "DisplayRequested";
-                        TxtB_VariableRequest.Text = "RequestStatus";
-                        TxtB_VariableRequestDisabled.Text = "";
-                        TxtB_VariableRequestDisabled.Enabled = false;
-                        break;
-                    }
+                {
+                    TxtB_ProcedureName.Text = "ProcedureIn";
+                    TxtB_VariableIn.Text = "DriverAnswered";
+                    TxtB_VariableIn.Enabled = true;
+                    TxtB_VariableOut.Text = "DisplayRequested";
+                    TxtB_VariableRequest.Text = "RequestStatus";
+                    TxtB_VariableRequestDisabled.Text = "";
+                    TxtB_VariableRequestDisabled.Enabled = false;
+                    break;
+                }
                 case ("DMI_Out"):
-                    {
-                        TxtB_ProcedureName.Text = "ProcedureOut";
-                        TxtB_VariableIn.Text = "";
-                        TxtB_VariableIn.Enabled = false;
-                        TxtB_VariableOut.Text = "DisplayRequested";
-                        TxtB_VariableRequest.Text = "ShowRequestStatus";
-                        TxtB_VariableRequestDisabled.Text = "HideRequestStatus";
-                        TxtB_VariableRequestDisabled.Enabled = true;
-                        break;
-                    }
+                {
+                    TxtB_ProcedureName.Text = "ProcedureOut";
+                    TxtB_VariableIn.Text = "";
+                    TxtB_VariableIn.Enabled = false;
+                    TxtB_VariableOut.Text = "DisplayRequested";
+                    TxtB_VariableRequest.Text = "ShowRequestStatus";
+                    TxtB_VariableRequestDisabled.Text = "HideRequestStatus";
+                    TxtB_VariableRequestDisabled.Enabled = true;
+                    break;
+                }
             }
         }
     }

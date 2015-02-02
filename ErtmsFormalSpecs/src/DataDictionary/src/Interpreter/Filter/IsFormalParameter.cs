@@ -13,10 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using Utils;
+
 namespace DataDictionary.Interpreter.Filter
 {
-    using Utils;
-
     /// <summary>
     /// Predicates which indicates that the namable is a formal parameter
     /// </summary>
@@ -46,6 +47,5 @@ namespace DataDictionary.Interpreter.Filter
         /// Singleton
         /// </summary>
         public static IsFormalParameter INSTANCE = new IsFormalParameter();
-
     }
 }

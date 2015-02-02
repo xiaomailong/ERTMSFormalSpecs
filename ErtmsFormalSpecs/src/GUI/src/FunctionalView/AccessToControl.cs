@@ -13,15 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
 using System.ComponentModel;
 using System.Drawing;
-using System.Windows.Forms;
-using DataDictionary.Rules;
+using DataDictionary.Interpreter;
 using DataDictionary.Types;
-using GUI.BoxArrowDiagram;
-using DataDictionary.Constants;
 using DataDictionary.Types.AccessMode;
+using GUI.BoxArrowDiagram;
 
 namespace GUI.FunctionalView
 {
@@ -49,10 +47,7 @@ namespace GUI.FunctionalView
 
         public override AccessMode Model
         {
-            get
-            {
-                return base.Model;
-            }
+            get { return base.Model; }
             set
             {
                 base.Model = value;
@@ -61,17 +56,17 @@ namespace GUI.FunctionalView
                 {
                     switch (accessToVariable.AccessMode)
                     {
-                        case DataDictionary.Interpreter.Usage.ModeEnum.Read:
+                        case Usage.ModeEnum.Read:
                             NORMAL_COLOR = Color.Green;
                             NORMAL_PEN = new Pen(NORMAL_COLOR);
                             break;
 
-                        case DataDictionary.Interpreter.Usage.ModeEnum.ReadAndWrite:
+                        case Usage.ModeEnum.ReadAndWrite:
                             NORMAL_COLOR = Color.Orange;
                             NORMAL_PEN = new Pen(NORMAL_COLOR);
                             break;
 
-                        case DataDictionary.Interpreter.Usage.ModeEnum.Write:
+                        case Usage.ModeEnum.Write:
                             NORMAL_COLOR = Color.Red;
                             NORMAL_PEN = new Pen(NORMAL_COLOR);
                             break;

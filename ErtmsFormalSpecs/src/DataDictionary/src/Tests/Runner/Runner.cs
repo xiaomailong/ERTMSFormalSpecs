@@ -13,18 +13,29 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using DataDictionary.Generated;
 using DataDictionary.Interpreter;
+using DataDictionary.Interpreter.Statement;
 using DataDictionary.Rules;
 using DataDictionary.Tests.Runner.Events;
 using DataDictionary.Values;
+using DataDictionary.Variables;
+using log4net;
 using Utils;
-using Action = DataDictionary.Generated.Action;
-using Rule = DataDictionary.Rules.Rule;
+using Action = DataDictionary.Rules.Action;
+using Collection = DataDictionary.Types.Collection;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Rule = DataDictionary.Generated.Rule;
+using RuleCondition = DataDictionary.Rules.RuleCondition;
 using State = DataDictionary.Constants.State;
 using StateMachine = DataDictionary.Types.StateMachine;
+using Structure = DataDictionary.Types.Structure;
+using Variable = DataDictionary.Generated.Variable;
+using Visitor = DataDictionary.Generated.Visitor;
 
 namespace DataDictionary.Tests.Runner
 {
@@ -33,12 +44,12 @@ namespace DataDictionary.Tests.Runner
         /// <summary>
         /// The Logger
         /// </summary>
-        protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// The event time line for this runner
         /// </summary>
-        public Events.EventTimeLine EventTimeLine { get; private set; }
+        public EventTimeLine EventTimeLine { get; private set; }
 
         /// <summary>
         /// Indicates whether events should be logged using log4net
@@ -55,10 +66,7 @@ namespace DataDictionary.Tests.Runner
         /// </summary>
         public virtual EFSSystem EFSSystem
         {
-            get
-            {
-                return EFSSystem.INSTANCE;
-            }
+            get { return EFSSystem.INSTANCE; }
         }
 
         /// <summary>
@@ -70,6 +78,7 @@ namespace DataDictionary.Tests.Runner
         /// The step between two activations
         /// </summary>
         private double step = 0.1;
+
         public double Step
         {
             get { return step; }
@@ -94,14 +103,15 @@ namespace DataDictionary.Tests.Runner
         /// Event when the execution is terminated
         /// </summary>
         /// <param name="priority"></param>
-        public delegate void CycleExecutionTerminatedDelegate(Runner runner, DataDictionary.Generated.acceptor.RulePriority priority);
+        public delegate void CycleExecutionTerminatedDelegate(Runner runner, acceptor.RulePriority priority);
+
         public static event CycleExecutionTerminatedDelegate CycleExecutionTerminated;
 
         /// <summary>
         /// Launches the event CycleExecutionTerminated
         /// </summary>
         /// <param name="priority"></param>
-        public virtual void OnCycleExecutionTerminated(DataDictionary.Generated.acceptor.RulePriority priority)
+        public virtual void OnCycleExecutionTerminated(acceptor.RulePriority priority)
         {
             if (CycleExecutionTerminated != null)
             {
@@ -122,7 +132,7 @@ namespace DataDictionary.Tests.Runner
         /// <param name="logEvents">Indicates whether events should be logged</param>
         public Runner(SubSequence subSequence, bool explain, bool logEvents)
         {
-            EventTimeLine = new Events.EventTimeLine();
+            EventTimeLine = new EventTimeLine();
             SubSequence = subSequence;
             EFSSystem.Runner = this;
             LogEvents = logEvents;
@@ -141,7 +151,7 @@ namespace DataDictionary.Tests.Runner
         /// </summary>
         public Runner(bool explain, bool logEvents, int step = 100, int storeEventCount = 0)
         {
-            EventTimeLine = new Events.EventTimeLine();
+            EventTimeLine = new EventTimeLine();
             SubSequence = null;
             Step = 100;
             EventTimeLine.MaxNumberOfEvents = storeEventCount;
@@ -159,7 +169,7 @@ namespace DataDictionary.Tests.Runner
         /// <summary>
         /// Sets up all variables before any execution on the system
         /// </summary>
-        private class Setuper : Generated.Visitor
+        private class Setuper : Visitor
         {
             /// <summary>
             /// The EFS system for which this setuper is created
@@ -180,9 +190,9 @@ namespace DataDictionary.Tests.Runner
             /// </summary>
             /// <param name="variable">The variable to set</param>
             /// <param name="subNodes">Indicates whether sub nodes should be considered</param>
-            public override void visit(DataDictionary.Generated.Variable variable, bool subNodes)
+            public override void visit(Variable variable, bool subNodes)
             {
-                DataDictionary.Variables.Variable var = (DataDictionary.Variables.Variable)variable;
+                Variables.Variable var = (Variables.Variable) variable;
 
                 var.Value = var.DefaultValue;
 
@@ -194,9 +204,9 @@ namespace DataDictionary.Tests.Runner
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Rule obj, bool visitSubNodes)
+            public override void visit(Rule obj, bool visitSubNodes)
             {
-                Rules.Rule rule = obj as Rule;
+                Rules.Rule rule = obj as Rules.Rule;
                 if (rule != null)
                 {
                     rule.ActivationPriorities = null;
@@ -210,7 +220,7 @@ namespace DataDictionary.Tests.Runner
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Function obj, bool visitSubNodes)
+            public override void visit(Function obj, bool visitSubNodes)
             {
                 Functions.Function function = obj as Functions.Function;
 
@@ -226,9 +236,9 @@ namespace DataDictionary.Tests.Runner
         /// <summary>
         /// Initializes the execution time for functions and rules
         /// </summary>
-        private class ExecutionTimeInitializer : Generated.Visitor
+        private class ExecutionTimeInitializer : Visitor
         {
-            public override void visit(Generated.Function obj, bool visitSubNodes)
+            public override void visit(Function obj, bool visitSubNodes)
             {
                 Functions.Function function = obj as Functions.Function;
 
@@ -238,7 +248,7 @@ namespace DataDictionary.Tests.Runner
                 base.visit(obj, visitSubNodes);
             }
 
-            public override void visit(Generated.Rule obj, bool visitSubNodes)
+            public override void visit(Rule obj, bool visitSubNodes)
             {
                 Rules.Rule rule = obj as Rules.Rule;
 
@@ -247,7 +257,6 @@ namespace DataDictionary.Tests.Runner
 
                 base.visit(obj, visitSubNodes);
             }
-
         }
 
         /// <summary>
@@ -257,24 +266,24 @@ namespace DataDictionary.Tests.Runner
         {
             try
             {
-                Generated.ControllersManager.DesactivateAllNotifications();
+                ControllersManager.DesactivateAllNotifications();
                 // Setup the execution environment
                 Setuper setuper = new Setuper(EFSSystem);
                 ExecutionTimeInitializer executionTimeInitializer = new ExecutionTimeInitializer();
-                foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+                foreach (Dictionary dictionary in EFSSystem.Dictionaries)
                 {
                     setuper.visit(dictionary);
                     executionTimeInitializer.visit(dictionary);
                 }
 
                 // Clears all caches
-                Utils.FinderRepository.INSTANCE.ClearCache();
+                FinderRepository.INSTANCE.ClearCache();
 
                 // Setup the step
                 if (SubSequence != null)
                 {
                     Expression expression = SubSequence.Frame.CycleDuration;
-                    Values.IValue value = expression.GetValue(new InterpretationContext(SubSequence.Frame), null);
+                    IValue value = expression.GetValue(new InterpretationContext(SubSequence.Frame), null);
                     Step = Functions.Function.getDoubleValue(value);
                 }
 
@@ -282,7 +291,7 @@ namespace DataDictionary.Tests.Runner
             }
             finally
             {
-                Generated.ControllersManager.ActivateAllNotifications();
+                ControllersManager.ActivateAllNotifications();
             }
         }
 
@@ -291,12 +300,12 @@ namespace DataDictionary.Tests.Runner
             /// <summary>
             /// The action to activate
             /// </summary>
-            public Rules.RuleCondition RuleCondition { get; private set; }
+            public RuleCondition RuleCondition { get; private set; }
 
             /// <summary>
             /// The instance on which the action is applied
             /// </summary>
-            public Utils.IModelElement Instance { get; private set; }
+            public IModelElement Instance { get; private set; }
 
             /// <summary>
             /// The explanation why this activation has been performed
@@ -308,7 +317,7 @@ namespace DataDictionary.Tests.Runner
             /// </summary>
             /// <param name="ruleCondition">The rule condition which leads to this activation</param>
             /// <param name="instance">The instance on which this rule condition's preconditions are evaluated to true</param>
-            public Activation(Rules.RuleCondition ruleCondition, Utils.IModelElement instance, ExplanationPart explanation)
+            public Activation(RuleCondition ruleCondition, IModelElement instance, ExplanationPart explanation)
             {
                 RuleCondition = ruleCondition;
                 Instance = instance;
@@ -364,19 +373,19 @@ namespace DataDictionary.Tests.Runner
         /// <summary>
         /// Provides the order in which rules should be activated
         /// </summary>
-        public static Generated.acceptor.RulePriority[] PRIORITIES_ORDER = 
-        { 
-            Generated.acceptor.RulePriority.aVerification,
-            Generated.acceptor.RulePriority.aUpdateINTERNAL,
-            Generated.acceptor.RulePriority.aProcessing,
-            Generated.acceptor.RulePriority.aUpdateOUT,
-            Generated.acceptor.RulePriority.aCleanUp,
+        public static acceptor.RulePriority[] PRIORITIES_ORDER =
+        {
+            acceptor.RulePriority.aVerification,
+            acceptor.RulePriority.aUpdateINTERNAL,
+            acceptor.RulePriority.aProcessing,
+            acceptor.RulePriority.aUpdateOUT,
+            acceptor.RulePriority.aCleanUp,
         };
 
         /// <summary>
         /// The current priority
         /// </summary>
-        public Generated.acceptor.RulePriority? CurrentPriority { get; private set; }
+        public acceptor.RulePriority? CurrentPriority { get; private set; }
 
         /// <summary>
         /// Activates the rules in the dictionary until stabilisation
@@ -395,9 +404,9 @@ namespace DataDictionary.Tests.Runner
 
                 LastActivationTime = Time;
 
-                Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<Utils.ElementLog>>();
+                Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<ElementLog>>();
 
-                foreach (Generated.acceptor.RulePriority priority in PRIORITIES_ORDER)
+                foreach (acceptor.RulePriority priority in PRIORITIES_ORDER)
                 {
                     innerExecuteOnePriority(priority);
                 }
@@ -419,7 +428,7 @@ namespace DataDictionary.Tests.Runner
         /// Executes a single rule priority (shared version of the method)
         /// </summary>
         /// <param name="priority"></param>
-        private void innerExecuteOnePriority(Generated.acceptor.RulePriority priority)
+        private void innerExecuteOnePriority(acceptor.RulePriority priority)
         {
             CurrentPriority = priority;
             if (LogEvents)
@@ -429,9 +438,9 @@ namespace DataDictionary.Tests.Runner
 
             // Activates the processing engine
             HashSet<Activation> activations = new HashSet<Activation>();
-            foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+            foreach (Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                foreach (DataDictionary.Types.NameSpace nameSpace in dictionary.NameSpaces)
+                foreach (NameSpace nameSpace in dictionary.NameSpaces)
                 {
                     SetupNameSpaceActivations(priority, activations, nameSpace, this);
                 }
@@ -450,14 +459,14 @@ namespace DataDictionary.Tests.Runner
         /// Executes the interpretation machine for one priority
         /// </summary>
         /// <param name="priority"></param>
-        public void ExecuteOnePriority(DataDictionary.Generated.acceptor.RulePriority priority)
+        public void ExecuteOnePriority(acceptor.RulePriority priority)
         {
             try
             {
                 ControllersManager.NamableController.DesactivateNotification();
                 LastActivationTime = Time;
 
-                Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<Utils.ElementLog>>();
+                Utils.ModelElement.Errors = new Dictionary<Utils.ModelElement, List<ElementLog>>();
 
                 // Executes a single rule priority
                 innerExecuteOnePriority(priority);
@@ -469,7 +478,7 @@ namespace DataDictionary.Tests.Runner
                 ControllersManager.NamableController.ActivateNotification();
             }
 
-            if (priority == Generated.acceptor.RulePriority.aCleanUp)
+            if (priority == acceptor.RulePriority.aCleanUp)
             {
                 EventTimeLine.CurrentTime += Step;
             }
@@ -484,21 +493,21 @@ namespace DataDictionary.Tests.Runner
         /// <param name="explanation">The explanation part to be filled</param>
         /// <param name="runner"></param>
         /// <returns></returns>
-        protected void SetupNameSpaceActivations(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Types.NameSpace nameSpace, Tests.Runner.Runner runner)
+        protected void SetupNameSpaceActivations(acceptor.RulePriority priority, HashSet<Activation> activations, NameSpace nameSpace, Runner runner)
         {
             // Finds all activations in sub namespaces
-            foreach (Types.NameSpace subNameSpace in nameSpace.NameSpaces)
+            foreach (NameSpace subNameSpace in nameSpace.NameSpaces)
             {
                 SetupNameSpaceActivations(priority, activations, subNameSpace, runner);
             }
 
-            foreach (Rule rule in nameSpace.Rules)
+            foreach (Rules.Rule rule in nameSpace.Rules)
             {
                 ExplanationPart explanation = new ExplanationPart(rule, "Rule evaluation");
                 rule.Evaluate(this, priority, rule, activations, explanation);
             }
 
-            foreach (Variables.IVariable variable in nameSpace.Variables)
+            foreach (IVariable variable in nameSpace.Variables)
             {
                 EvaluateVariable(priority, activations, variable, new ExplanationPart(variable as ModelElement, "Evaluating variable"), runner);
             }
@@ -512,14 +521,14 @@ namespace DataDictionary.Tests.Runner
         /// <param name="variable">The variable to evaluate</param>
         /// <param name="explanation">The explanation part to be filled</param>
         /// <param name="runner"></param>
-        private void EvaluateVariable(Generated.acceptor.RulePriority priority, HashSet<Activation> activations, Variables.IVariable variable, ExplanationPart explanation, Tests.Runner.Runner runner)
+        private void EvaluateVariable(acceptor.RulePriority priority, HashSet<Activation> activations, IVariable variable, ExplanationPart explanation, Runner runner)
         {
             if (variable != null && variable.Value != EFSSystem.EmptyValue)
             {
-                if (variable.Type is Types.Structure)
+                if (variable.Type is Structure)
                 {
-                    Types.Structure structure = variable.Type as Types.Structure;
-                    foreach (Rule rule in structure.Rules)
+                    Structure structure = variable.Type as Structure;
+                    foreach (Rules.Rule rule in structure.Rules)
                     {
                         rule.Evaluate(this, priority, variable, activations, explanation);
                     }
@@ -527,19 +536,19 @@ namespace DataDictionary.Tests.Runner
                     StructureValue value = variable.Value as StructureValue;
                     if (value != null)
                     {
-                        foreach (Variables.IVariable subVariable in value.SubVariables.Values)
+                        foreach (IVariable subVariable in value.SubVariables.Values)
                         {
                             EvaluateVariable(priority, activations, subVariable, explanation, runner);
                         }
                     }
                 }
-                else if (variable.Type is Types.StateMachine)
+                else if (variable.Type is StateMachine)
                 {
                     EvaluateStateMachine(activations, priority, variable, explanation, runner);
                 }
-                else if (variable.Type is Types.Collection)
+                else if (variable.Type is Collection)
                 {
-                    Types.Collection collectionType = variable.Type as Types.Collection;
+                    Collection collectionType = variable.Type as Collection;
                     if (variable.Value != EFSSystem.EmptyValue)
                     {
                         ListValue val = variable.Value as ListValue;
@@ -565,7 +574,7 @@ namespace DataDictionary.Tests.Runner
                             }
                             else
                             {
-                                throw new System.Exception("Variable " + variable.Name + " does not hold a collection but " + variable.Value);
+                                throw new Exception("Variable " + variable.Name + " does not hold a collection but " + variable.Value);
                             }
                         }
                     }
@@ -582,15 +591,15 @@ namespace DataDictionary.Tests.Runner
         /// <param name="currentStateVariable">The variable which holds the current state of the procedure</param>
         /// <param name="explanation">The explanation part to be filled</param>
         /// <param name="runner"></param>
-        private void EvaluateStateMachine(HashSet<Runner.Activation> activations, Generated.acceptor.RulePriority priority, Variables.IVariable currentStateVariable, ExplanationPart explanation, Tests.Runner.Runner runner)
+        private void EvaluateStateMachine(HashSet<Activation> activations, acceptor.RulePriority priority, IVariable currentStateVariable, ExplanationPart explanation, Runner runner)
         {
             if (currentStateVariable != null)
             {
-                Constants.State currentState = currentStateVariable.Value as Constants.State;
-                Types.StateMachine currentStateMachine = currentState.StateMachine;
+                State currentState = currentStateVariable.Value as State;
+                StateMachine currentStateMachine = currentState.StateMachine;
                 while (currentStateMachine != null)
                 {
-                    foreach (Rule rule in currentStateMachine.Rules)
+                    foreach (Rules.Rule rule in currentStateMachine.Rules)
                     {
                         rule.Evaluate(this, priority, currentStateVariable, activations, explanation);
                     }
@@ -608,9 +617,9 @@ namespace DataDictionary.Tests.Runner
         /// Applies the selected actions and update the system state
         /// </summary>
         /// <param name="updates"></param>
-        public void EvaluateActivations(HashSet<Activation> activations, Generated.acceptor.RulePriority priority, ref List<Events.VariableUpdate> updates)
+        public void EvaluateActivations(HashSet<Activation> activations, acceptor.RulePriority priority, ref List<VariableUpdate> updates)
         {
-            Dictionary<Variables.IVariable, Change> changes = new Dictionary<Variables.IVariable, Change>();
+            Dictionary<IVariable, Change> changes = new Dictionary<IVariable, Change>();
             Dictionary<Change, VariableUpdate> traceBack = new Dictionary<Change, VariableUpdate>();
 
             foreach (Activation activation in activations)
@@ -622,16 +631,16 @@ namespace DataDictionary.Tests.Runner
                 if (activation.RuleCondition.Actions.Count > 0)
                 {
                     // Register the fact that a rule has been triggered
-                    Events.RuleFired ruleFired = new Events.RuleFired(activation, priority);
+                    RuleFired ruleFired = new RuleFired(activation, priority);
                     EventTimeLine.AddModelEvent(ruleFired, this, true);
                     ExplanationPart changesExplanation = ExplanationPart.CreateSubExplanation(activation.Explanation, "Changes");
 
                     // Registers all model updates due to this rule triggering
-                    foreach (Rules.Action action in activation.RuleCondition.Actions)
+                    foreach (Action action in activation.RuleCondition.Actions)
                     {
                         if (action.Statement != null)
                         {
-                            Events.VariableUpdate variableUpdate = new Events.VariableUpdate(action, activation.Instance, priority);
+                            VariableUpdate variableUpdate = new VariableUpdate(action, activation.Instance, priority);
                             variableUpdate.ComputeChanges(false, this);
                             EventTimeLine.AddModelEvent(variableUpdate, this, false);
                             ruleFired.AddVariableUpdate(variableUpdate);
@@ -644,9 +653,9 @@ namespace DataDictionary.Tests.Runner
                             if (CheckForCompatibleChanges)
                             {
                                 ChangeList actionChanges = variableUpdate.Changes;
-                                if (variableUpdate.Action.Statement is Interpreter.Statement.ProcedureCallStatement)
+                                if (variableUpdate.Action.Statement is ProcedureCallStatement)
                                 {
-                                    Dictionary<Variables.IVariable, Change> procedureChanges = new Dictionary<Variables.IVariable, Change>();
+                                    Dictionary<IVariable, Change> procedureChanges = new Dictionary<IVariable, Change>();
 
                                     foreach (Change change in variableUpdate.Changes.Changes)
                                     {
@@ -662,15 +671,15 @@ namespace DataDictionary.Tests.Runner
 
                                 foreach (Change change in actionChanges.Changes)
                                 {
-                                    Variables.IVariable variable = change.Variable;
+                                    IVariable variable = change.Variable;
                                     if (changes.ContainsKey(change.Variable))
                                     {
                                         Change otherChange = changes[change.Variable];
-                                        Rules.Action otherAction = traceBack[otherChange].Action;
+                                        Action otherAction = traceBack[otherChange].Action;
                                         if (!variable.Type.CompareForEquality(otherChange.NewValue, change.NewValue))
                                         {
-                                            string action1 = ((Utils.INamable)action.Enclosing).FullName + " : " + variableUpdate.Action.FullName;
-                                            string action2 = ((Utils.INamable)otherAction.Enclosing).FullName + " : " + traceBack[otherChange].Action.FullName;
+                                            string action1 = ((INamable) action.Enclosing).FullName + " : " + variableUpdate.Action.FullName;
+                                            string action2 = ((INamable) otherAction.Enclosing).FullName + " : " + traceBack[otherChange].Action.FullName;
                                             variableUpdate.Action.AddError("Simultaneous change of the same variable with different values. Conflit between " + action1 + " and " + action2);
                                         }
                                     }
@@ -706,8 +715,8 @@ namespace DataDictionary.Tests.Runner
                     {
                         if (change.Variable.Type is StateMachine)
                         {
-                            HandleLeaveState(priority, newUpdates, change.Variable, (State)change.Variable.Value, (State)change.NewValue);
-                            HandleEnterState(priority, newUpdates, change.Variable, (State)change.Variable.Value, (State)change.NewValue);
+                            HandleLeaveState(priority, newUpdates, change.Variable, (State) change.Variable.Value, (State) change.NewValue);
+                            HandleEnterState(priority, newUpdates, change.Variable, (State) change.Variable.Value, (State) change.NewValue);
                         }
                     }
                 }
@@ -723,13 +732,13 @@ namespace DataDictionary.Tests.Runner
         /// <param name="updates"></param>
         /// <param name="leaveState"></param>
         /// <param name="enterState"></param>
-        private void HandleEnterState(Generated.acceptor.RulePriority priority, List<VariableUpdate> updates, Variables.IVariable variable, State leaveState, State enterState)
+        private void HandleEnterState(acceptor.RulePriority priority, List<VariableUpdate> updates, IVariable variable, State leaveState, State enterState)
         {
             if (!enterState.getStateMachine().Contains(enterState, leaveState))
             {
                 if (enterState.getEnterAction() != null)
                 {
-                    Rule rule = (Rule)enterState.getEnterAction();
+                    Rules.Rule rule = (Rules.Rule) enterState.getEnterAction();
                     ExplanationPart explanation = new ExplanationPart(rule, "Rule evaluation");
                     HashSet<Activation> newActivations = new HashSet<Activation>();
                     List<VariableUpdate> newUpdates = new List<VariableUpdate>();
@@ -752,13 +761,13 @@ namespace DataDictionary.Tests.Runner
         /// <param name="updates"></param>
         /// <param name="leaveState"></param>
         /// <param name="enterState"></param>
-        private void HandleLeaveState(Generated.acceptor.RulePriority priority, List<VariableUpdate> updates, Variables.IVariable variable, State leaveState, State enterState)
+        private void HandleLeaveState(acceptor.RulePriority priority, List<VariableUpdate> updates, IVariable variable, State leaveState, State enterState)
         {
             if (!leaveState.getStateMachine().Contains(leaveState, enterState))
             {
                 if (leaveState.getLeaveAction() != null)
                 {
-                    Rule rule = (Rule)leaveState.getLeaveAction();
+                    Rules.Rule rule = (Rules.Rule) leaveState.getLeaveAction();
                     ExplanationPart explanation = new ExplanationPart(rule, "Rule evaluation");
                     HashSet<Activation> newActivations = new HashSet<Activation>();
                     List<VariableUpdate> newUpdates = new List<VariableUpdate>();
@@ -793,7 +802,7 @@ namespace DataDictionary.Tests.Runner
         {
             try
             {
-                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                ControllersManager.DesactivateAllNotifications();
                 LogInstance = subStep;
 
                 // No setup can occur when some expectations are still active
@@ -804,7 +813,7 @@ namespace DataDictionary.Tests.Runner
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+                ControllersManager.ActivateAllNotifications();
             }
         }
 
@@ -839,10 +848,10 @@ namespace DataDictionary.Tests.Runner
         /// Updates the expectation state according to the variables' value
         /// </summary>
         /// <param name="priority">The priority for which this check is performed</param>
-        private void CheckExpectationsState(Generated.acceptor.RulePriority priority)
+        private void CheckExpectationsState(acceptor.RulePriority priority)
         {
             // Update the state of the expectation according to system's state
-            foreach (Events.Expect expect in ActiveExpectations())
+            foreach (Expect expect in ActiveExpectations())
             {
                 Expectation expectation = expect.Expectation;
 
@@ -851,13 +860,13 @@ namespace DataDictionary.Tests.Runner
                 {
                     switch (expect.Expectation.getKind())
                     {
-                        case Generated.acceptor.ExpectationKind.aInstantaneous:
-                        case Generated.acceptor.ExpectationKind.defaultExpectationKind:
+                        case acceptor.ExpectationKind.aInstantaneous:
+                        case acceptor.ExpectationKind.defaultExpectationKind:
                             // Instantaneous expectation who raised its deadling
                             EventTimeLine.AddModelEvent(new FailedExpectation(expect, CurrentPriority, null), this, true);
                             break;
 
-                        case Generated.acceptor.ExpectationKind.aContinuous:
+                        case acceptor.ExpectationKind.aContinuous:
                             // Continuous expectation who raised its deadline
                             EventTimeLine.AddModelEvent(new ExpectationReached(expect, CurrentPriority, null), this, true);
                             break;
@@ -868,12 +877,12 @@ namespace DataDictionary.Tests.Runner
                     ExplanationPart explanation = new ExplanationPart(expectation, "Expectation " + expectation.Expression);
                     try
                     {
-                        if (expectation.getCyclePhase() == Generated.acceptor.RulePriority.defaultRulePriority || expectation.getCyclePhase() == priority)
+                        if (expectation.getCyclePhase() == acceptor.RulePriority.defaultRulePriority || expectation.getCyclePhase() == priority)
                         {
                             switch (expectation.getKind())
                             {
-                                case Generated.acceptor.ExpectationKind.aInstantaneous:
-                                case Generated.acceptor.ExpectationKind.defaultExpectationKind:
+                                case acceptor.ExpectationKind.aInstantaneous:
+                                case acceptor.ExpectationKind.defaultExpectationKind:
                                     if (getBoolValue(expectation, expectation.Expression, explanation))
                                     {
                                         // An instantaneous expectation who reached its satisfactory condition
@@ -885,7 +894,7 @@ namespace DataDictionary.Tests.Runner
                                     }
                                     break;
 
-                                case Generated.acceptor.ExpectationKind.aContinuous:
+                                case acceptor.ExpectationKind.aContinuous:
                                     if (expectation.getCondition() != null)
                                     {
                                         if (!getBoolValue(expectation, expectation.ConditionTree, explanation))
@@ -924,7 +933,7 @@ namespace DataDictionary.Tests.Runner
                     }
                     catch (Exception e)
                     {
-                        expectation.AddErrorAndExplain (e.Message, explanation);
+                        expectation.AddErrorAndExplain(e.Message, explanation);
                     }
                 }
             }
@@ -941,7 +950,7 @@ namespace DataDictionary.Tests.Runner
         {
             bool retVal = false;
 
-            Interpreter.InterpretationContext context = new Interpreter.InterpretationContext(instance);
+            InterpretationContext context = new InterpretationContext(instance);
             BoolValue val = expression.GetValue(context, explain) as BoolValue;
 
             if (val != null)
@@ -1030,7 +1039,7 @@ namespace DataDictionary.Tests.Runner
             {
                 if (currentTestCaseIndex >= 0 && currentTestCaseIndex < SubSequence.TestCases.Count)
                 {
-                    retVal = (TestCase)SubSequence.TestCases[currentTestCaseIndex];
+                    retVal = (TestCase) SubSequence.TestCases[currentTestCaseIndex];
                 }
             }
 
@@ -1078,13 +1087,12 @@ namespace DataDictionary.Tests.Runner
 
             if (currentStepIndex != NO_MORE_STEP)
             {
-
                 TestCase testCase = CurrentTestCase();
                 if (testCase != null)
                 {
                     if (currentStepIndex >= 0 && currentStepIndex < testCase.Steps.Count)
                     {
-                        retVal = (Step)testCase.Steps[currentStepIndex];
+                        retVal = (Step) testCase.Steps[currentStepIndex];
                     }
                 }
             }
@@ -1129,8 +1137,7 @@ namespace DataDictionary.Tests.Runner
                         }
                         step = CurrentStep();
                     }
-                }
-                while (step != null && step.IsEmpty());
+                } while (step != null && step.IsEmpty());
             }
         }
 
@@ -1175,7 +1182,7 @@ namespace DataDictionary.Tests.Runner
                 {
                     if (currentSubStepIndex >= 0 && currentSubStepIndex < step.SubSteps.Count)
                     {
-                        retVal = (SubStep)step.SubSteps[currentSubStepIndex];
+                        retVal = (SubStep) step.SubSteps[currentSubStepIndex];
                     }
                 }
             }
@@ -1218,8 +1225,7 @@ namespace DataDictionary.Tests.Runner
                         }
                     }
                     subStep = CurrentSubStep();
-                }
-                while (step != null && (step.IsEmpty() || subStep.IsEmpty()));
+                } while (step != null && (step.IsEmpty() || subStep.IsEmpty()));
             }
         }
 
@@ -1282,7 +1288,7 @@ namespace DataDictionary.Tests.Runner
                                     }
                                 }
                             }
-                            
+
                             while (EventTimeLine.ActiveBlockingExpectations().Count > 0)
                             {
                                 Cycle();
@@ -1330,7 +1336,7 @@ namespace DataDictionary.Tests.Runner
                 {
                     if (subStep.getSkipEngine())
                     {
-                        CheckExpectationsState(Generated.acceptor.RulePriority.aCleanUp);
+                        CheckExpectationsState(acceptor.RulePriority.aCleanUp);
                     }
                     EventTimeLine.CurrentTime += Step;
                 }
@@ -1355,7 +1361,7 @@ namespace DataDictionary.Tests.Runner
         /// <param name="time">the time when the rule condition should be activated</param>
         /// <param name="variable">The variable impacted by this rule condition, if any</param>
         /// <returns>true if the corresponding rule condition has been activated at the time provided</returns>
-        public bool RuleActivatedAtTime(DataDictionary.Rules.RuleCondition ruleCondition, double time, Variables.IVariable variable)
+        public bool RuleActivatedAtTime(RuleCondition ruleCondition, double time, IVariable variable)
         {
             return EventTimeLine.RuleActivatedAtTime(ruleCondition, time, variable);
         }
@@ -1381,14 +1387,14 @@ namespace DataDictionary.Tests.Runner
         /// Provides the next rule priority according to the current one
         /// </summary>
         /// <returns></returns>
-        private Generated.acceptor.RulePriority NextPriority()
+        private acceptor.RulePriority NextPriority()
         {
-            Generated.acceptor.RulePriority retVal = Generated.acceptor.RulePriority.defaultRulePriority;
+            acceptor.RulePriority retVal = acceptor.RulePriority.defaultRulePriority;
 
             if (CurrentPriority != null)
             {
                 bool currentFound = false;
-                foreach (Generated.acceptor.RulePriority next in PRIORITIES_ORDER)
+                foreach (acceptor.RulePriority next in PRIORITIES_ORDER)
                 {
                     if (next == CurrentPriority)
                     {
@@ -1401,9 +1407,9 @@ namespace DataDictionary.Tests.Runner
                 }
             }
 
-            if (retVal == Generated.acceptor.RulePriority.defaultRulePriority)
+            if (retVal == acceptor.RulePriority.defaultRulePriority)
             {
-                retVal = Generated.acceptor.RulePriority.aVerification;
+                retVal = acceptor.RulePriority.aVerification;
             }
 
             return retVal;
@@ -1413,16 +1419,16 @@ namespace DataDictionary.Tests.Runner
         /// Registers the errors raised during evaluation and create ModelInterpretationFailure for each one of them
         /// </summary>
         /// <param name="errors"></param>
-        private void RegisterErrors(Dictionary<Utils.ModelElement, List<Utils.ElementLog>> errors)
+        private void RegisterErrors(Dictionary<Utils.ModelElement, List<ElementLog>> errors)
         {
-            foreach (KeyValuePair<Utils.ModelElement, List<Utils.ElementLog>> pair in errors)
+            foreach (KeyValuePair<Utils.ModelElement, List<ElementLog>> pair in errors)
             {
-                foreach (Utils.ElementLog log in pair.Value)
+                foreach (ElementLog log in pair.Value)
                 {
                     switch (log.Level)
                     {
-                        case Utils.ElementLog.LevelEnum.Error:
-                            ModelInterpretationFailure modelInterpretationFailure = new ModelInterpretationFailure(log, pair.Key as Utils.INamable, null);
+                        case ElementLog.LevelEnum.Error:
+                            ModelInterpretationFailure modelInterpretationFailure = new ModelInterpretationFailure(log, pair.Key as INamable, null);
                             ModelElement modelElement = pair.Key as ModelElement;
                             if (modelElement != null)
                             {
@@ -1431,9 +1437,9 @@ namespace DataDictionary.Tests.Runner
                             EventTimeLine.AddModelEvent(modelInterpretationFailure, this, true);
                             break;
 
-                        case Utils.ElementLog.LevelEnum.Warning:
+                        case ElementLog.LevelEnum.Warning:
                             break;
-                        case Utils.ElementLog.LevelEnum.Info:
+                        case ElementLog.LevelEnum.Info:
                             break;
                     }
                 }

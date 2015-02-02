@@ -13,33 +13,36 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary;
+using DataDictionary.Types;
+using MigraDoc.DocumentObjectModel;
+
 namespace Reports.Model
 {
-    using MigraDoc.DocumentObjectModel;
-
     public class ModelReportHandler : ReportHandler
     {
-        public ModelReportHandler(DataDictionary.Dictionary aDictionary)
+        public ModelReportHandler(Dictionary aDictionary)
             : base(aDictionary)
         {
             createFileName("ModelReport");
-            AddRanges              = false;
-            AddRangesDetails       = false;
-            AddEnumerations        = false;
+            AddRanges = false;
+            AddRangesDetails = false;
+            AddEnumerations = false;
             AddEnumerationsDetails = false;
-            AddStructures          = false;
-            AddStructuresDetails   = false;
-            AddCollections         = false;
-            AddCollectionsDetails  = false;
-            AddFunctions           = false;
-            AddFunctionsDetails    = false;
-            AddProcedures          = false;
-            AddProceduresDetails   = false;
-            AddVariables           = false;
-            AddVariablesDetails    = false;
-            AddRules               = false;
-            AddRulesDetails        = false;
-            ImplementedOnly        = true;
+            AddStructures = false;
+            AddStructuresDetails = false;
+            AddCollections = false;
+            AddCollectionsDetails = false;
+            AddFunctions = false;
+            AddFunctionsDetails = false;
+            AddProcedures = false;
+            AddProceduresDetails = false;
+            AddVariables = false;
+            AddVariablesDetails = false;
+            AddRules = false;
+            AddRulesDetails = false;
+            ImplementedOnly = true;
         }
 
         /// <summary>
@@ -56,7 +59,7 @@ namespace Reports.Model
             retVal.Info.Subject = "Model report";
 
             ModelReport report = new ModelReport(retVal, ImplementedOnly);
-            foreach (DataDictionary.Types.NameSpace nameSpace in Dictionary.NameSpaces)
+            foreach (NameSpace nameSpace in Dictionary.NameSpaces)
             {
                 CreateNamespaceSection(report, nameSpace);
             }
@@ -64,7 +67,7 @@ namespace Reports.Model
             return retVal;
         }
 
-        public void CreateNamespaceSection(ModelReport report, DataDictionary.Types.NameSpace aNameSpace)
+        public void CreateNamespaceSection(ModelReport report, NameSpace aNameSpace)
         {
             Log.Info("..generating name space " + aNameSpace.Name);
             bool informationAdded = false;
@@ -182,41 +185,41 @@ namespace Reports.Model
                     report.CloseSubParagraph();
                 }
 
-                foreach (DataDictionary.Types.NameSpace nameSpace in aNameSpace.NameSpaces)
+                foreach (NameSpace nameSpace in aNameSpace.NameSpaces)
                 {
                     CreateNamespaceSection(report, nameSpace);
                 }
             }
         }
 
-        public bool AddRanges               { set; get; }
-        public bool AddRangesDetails        { set; get; }
+        public bool AddRanges { set; get; }
+        public bool AddRangesDetails { set; get; }
 
-        public bool AddEnumerations         { set; get; }
-        public bool AddEnumerationsDetails  { set; get; }
+        public bool AddEnumerations { set; get; }
+        public bool AddEnumerationsDetails { set; get; }
 
-        public bool AddStructures           { set; get; }
-        public bool AddStructuresDetails    { set; get; }
+        public bool AddStructures { set; get; }
+        public bool AddStructuresDetails { set; get; }
 
-        public bool AddCollections          { set; get; }
-        public bool AddCollectionsDetails   { set; get; }
+        public bool AddCollections { set; get; }
+        public bool AddCollectionsDetails { set; get; }
 
-        public bool AddStateMachines        { set; get; }
+        public bool AddStateMachines { set; get; }
         public bool AddStateMachinesDetails { set; get; }
 
-        public bool AddFunctions            { set; get; }
-        public bool AddFunctionsDetails     { set; get; }
+        public bool AddFunctions { set; get; }
+        public bool AddFunctionsDetails { set; get; }
 
-        public bool AddProcedures           { set; get; }
-        public bool AddProceduresDetails    { set; get; }
+        public bool AddProcedures { set; get; }
+        public bool AddProceduresDetails { set; get; }
 
-        public bool AddVariables            { set; get; }
-        public bool AddVariablesDetails     { set; get; }
-        public bool InOutOnly               { set; get; }
+        public bool AddVariables { set; get; }
+        public bool AddVariablesDetails { set; get; }
+        public bool InOutOnly { set; get; }
 
-        public bool AddRules                { set; get; }
-        public bool AddRulesDetails         { set; get; }
+        public bool AddRules { set; get; }
+        public bool AddRulesDetails { set; get; }
 
-        public bool ImplementedOnly         { set; get; }
+        public bool ImplementedOnly { set; get; }
     }
 }

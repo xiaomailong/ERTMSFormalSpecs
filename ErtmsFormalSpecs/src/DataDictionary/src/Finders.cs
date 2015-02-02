@@ -13,12 +13,27 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
-using DataDictionary.Specification;
+using DataDictionary.Generated;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Utils;
+using XmlBooster;
+using Function = DataDictionary.Functions.Function;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using Procedure = DataDictionary.Functions.Procedure;
+using RequirementSet = DataDictionary.Specification.RequirementSet;
+using Rule = DataDictionary.Rules.Rule;
+using State = DataDictionary.Constants.State;
+using Structure = DataDictionary.Types.Structure;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary
 {
-    public class BaseFinder<T> : Generated.Visitor, Utils.IFinder
+    public class BaseFinder<T> : Visitor, IFinder
         where T : class
     {
         /// <summary>
@@ -26,13 +41,13 @@ namespace DataDictionary
         /// </summary>
         protected BaseFinder()
         {
-            Utils.FinderRepository.INSTANCE.Register(this);
+            FinderRepository.INSTANCE.Register(this);
         }
 
         /// <summary>
         /// Stored the result of previous searches
         /// </summary>
-        private Dictionary<XmlBooster.IXmlBBase, HashSet<T>> TheCache = new Dictionary<XmlBooster.IXmlBBase, HashSet<T>>();
+        private Dictionary<IXmlBBase, HashSet<T>> TheCache = new Dictionary<IXmlBBase, HashSet<T>>();
 
         /// <summary>
         /// The set currently being filled 
@@ -44,7 +59,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>
-        public HashSet<T> find(XmlBooster.IXmlBBase root)
+        public HashSet<T> find(IXmlBBase root)
         {
             if (!TheCache.ContainsKey(root))
             {
@@ -85,12 +100,12 @@ namespace DataDictionary
             // Optimization : no model element can be found here => no call to base
         }
 
-        public override void visit(Generated.Frame obj, bool subNodes)
+        public override void visit(Frame obj, bool subNodes)
         {
             // Optimization : no model element can be found here => no call to base
         }
 
-        public override void visit(Generated.TranslationDictionary obj, bool subNodes)
+        public override void visit(TranslationDictionary obj, bool subNodes)
         {
             // Optimization : no model element can be found here => no call to base
         }
@@ -99,7 +114,7 @@ namespace DataDictionary
     /// <summary>
     /// Finds all types
     /// </summary>
-    public class TypeFinder : ModelFinder<Types.Type>
+    public class TypeFinder : ModelFinder<Type>
     {
         /// <summary>
         /// Constructor
@@ -116,7 +131,7 @@ namespace DataDictionary
 
         public override void visit(Generated.Type obj, bool subNodes)
         {
-            currentSet.Add((Types.Type)obj);
+            currentSet.Add((Type) obj);
             base.visit(obj, subNodes);
         }
     }
@@ -124,7 +139,7 @@ namespace DataDictionary
     /// <summary>
     /// Finds all states
     /// </summary>
-    public class StateFinder : ModelFinder<Constants.State>
+    public class StateFinder : ModelFinder<State>
     {
         /// <summary>
         /// Constructor
@@ -141,7 +156,7 @@ namespace DataDictionary
 
         public override void visit(Generated.State obj, bool visitSubNodes)
         {
-            currentSet.Add((Constants.State)obj);
+            currentSet.Add((State) obj);
             base.visit(obj, visitSubNodes);
         }
     }
@@ -166,7 +181,7 @@ namespace DataDictionary
 
         public override void visit(Generated.ReqRelated obj, bool visitSubNodes)
         {
-            currentSet.Add((ReqRelated)obj);
+            currentSet.Add((ReqRelated) obj);
             base.visit(obj, visitSubNodes);
         }
     }
@@ -174,7 +189,7 @@ namespace DataDictionary
     /// <summary>
     /// Finds all rules
     /// </summary>
-    public class RuleFinder : ModelFinder<Rules.Rule>
+    public class RuleFinder : ModelFinder<Rule>
     {
         /// <summary>
         /// Constructor
@@ -191,7 +206,7 @@ namespace DataDictionary
 
         public override void visit(Generated.Rule obj, bool visitSubNodes)
         {
-            currentSet.Add((Rules.Rule)obj);
+            currentSet.Add((Rule) obj);
             base.visit(obj, visitSubNodes);
         }
     }
@@ -199,7 +214,7 @@ namespace DataDictionary
     /// <summary>
     /// Finds all states
     /// </summary>
-    public class ImplementedParagraphsFinder : ModelFinder<Specification.Paragraph>
+    public class ImplementedParagraphsFinder : ModelFinder<Paragraph>
     {
         /// <summary>
         /// Constructor
@@ -221,16 +236,16 @@ namespace DataDictionary
         /// <param name="visitSubNodes"></param>
         public override void visit(Generated.Dictionary obj, bool visitSubNodes)
         {
-            paragraphCache = new Dictionary<Specification.Paragraph, HashSet<ReqRef>>();
+            paragraphCache = new Dictionary<Paragraph, HashSet<ReqRef>>();
 
             base.visit(obj, visitSubNodes);
         }
 
         public override void visit(Generated.ReqRef obj, bool visitSubNodes)
         {
-            ReqRef req = (ReqRef)obj;
-            Specification.Paragraph paragraph = req.Paragraph;
-            if (paragraph != null && paragraph.getImplementationStatus() == Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented)
+            ReqRef req = (ReqRef) obj;
+            Paragraph paragraph = req.Paragraph;
+            if (paragraph != null && paragraph.getImplementationStatus() == acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented)
             {
                 currentSet.Add(paragraph);
 
@@ -247,14 +262,14 @@ namespace DataDictionary
         /// <summary>
         /// The cache
         /// </summary>
-        private Dictionary<Specification.Paragraph, HashSet<ReqRef>> paragraphCache = null;
+        private Dictionary<Paragraph, HashSet<ReqRef>> paragraphCache = null;
 
         /// <summary>
         /// Provides the list of refs which reference this paragraph
         /// </summary>
         /// <param name="paragraph"></param>
         /// <returns></returns>
-        public HashSet<ReqRef> findRefs(Specification.Paragraph paragraph)
+        public HashSet<ReqRef> findRefs(Paragraph paragraph)
         {
             HashSet<ReqRef> retVal = null;
 
@@ -289,14 +304,14 @@ namespace DataDictionary
     /// <summary>
     /// Finds the enclosing namespace
     /// </summary>
-    public class EnclosingNameSpaceFinder : Utils.EnclosingFinder<Types.NameSpace>
+    public class EnclosingNameSpaceFinder : EnclosingFinder<NameSpace>
     {
     }
 
     /// <summary>
     /// Finds the Namable in the dictionary, based on the name provided
     /// </summary>
-    public class OverallNamableFinder : Utils.OverallFinder<Namable>
+    public class OverallNamableFinder : OverallFinder<Namable>
     {
         /// <summary>
         /// A static instance used to execute this finder
@@ -307,7 +322,7 @@ namespace DataDictionary
     /// <summary>
     /// Finds the Namespaces in the dictionary, based on the name provided
     /// </summary>
-    public class OverallNameSpaceFinder : Utils.OverallFinder<Types.NameSpace>
+    public class OverallNameSpaceFinder : OverallFinder<NameSpace>
     {
         /// <summary>
         /// A static instance used to execute this finder
@@ -318,7 +333,7 @@ namespace DataDictionary
     /// <summary>
     /// Finds the Types in the dictionary, based on the name provided
     /// </summary>
-    public class OverallTypeFinder : Utils.OverallFinder<Types.Type>
+    public class OverallTypeFinder : OverallFinder<Type>
     {
         /// <summary>
         /// A static instance used to execute this finder
@@ -329,7 +344,7 @@ namespace DataDictionary
     /// <summary>
     /// Finds the ITypedElement in the dictionary, based on the name provided
     /// </summary>
-    public class OverallTypedElementFinder : Utils.OverallFinder<Types.ITypedElement>
+    public class OverallTypedElementFinder : OverallFinder<ITypedElement>
     {
         /// <summary>
         /// A static instance used to execute this finder
@@ -340,7 +355,7 @@ namespace DataDictionary
     /// <summary>
     /// Finds the IVariable in the dictionary, based on the name provided
     /// </summary>
-    public class OverallVariableFinder : Utils.OverallFinder<Variables.IVariable>
+    public class OverallVariableFinder : OverallFinder<IVariable>
     {
         /// <summary>
         /// A static instance used to execute this finder
@@ -351,7 +366,7 @@ namespace DataDictionary
     /// <summary>
     /// Finds the IValue in the dictionary, based on the name provided
     /// </summary>
-    public class OverallValueFinder : Utils.OverallFinder<Values.IValue>
+    public class OverallValueFinder : OverallFinder<IValue>
     {
         /// <summary>
         /// A static instance used to execute this finder
@@ -362,7 +377,7 @@ namespace DataDictionary
     /// <summary>
     /// Finds the State in the dictionary, based on the name provided
     /// </summary>
-    public class OverallStateFinder : Utils.OverallFinder<Constants.State>
+    public class OverallStateFinder : OverallFinder<State>
     {
         /// <summary>
         /// A static instance used to execute this finder
@@ -373,7 +388,7 @@ namespace DataDictionary
     /// <summary>
     /// Finds the State in the dictionary, based on the name provided
     /// </summary>
-    public class OverallRequirementSetFinder : Utils.OverallFinder<RequirementSet>
+    public class OverallRequirementSetFinder : OverallFinder<RequirementSet>
     {
         /// <summary>
         /// A static instance used to execute this finder
@@ -384,7 +399,7 @@ namespace DataDictionary
     /// <summary>
     /// Finds the State in the dictionary, based on the name provided
     /// </summary>
-    public class OverallStructureFinder : Utils.OverallFinder<Types.Structure>
+    public class OverallStructureFinder : OverallFinder<Structure>
     {
         /// <summary>
         /// A static instance used to execute this finder
@@ -395,7 +410,7 @@ namespace DataDictionary
     /// <summary>
     /// Finds the Function in the dictionary, based on the name provided
     /// </summary>
-    public class OverallFunctionFinder : Utils.OverallFinder<Functions.Function>
+    public class OverallFunctionFinder : OverallFinder<Function>
     {
         /// <summary>
         /// A static instance used to execute this finder
@@ -406,7 +421,7 @@ namespace DataDictionary
     /// <summary>
     /// Finds the procedure in the dictionary, based on the name provided
     /// </summary>
-    public class OverallProcedureFinder : Utils.OverallFinder<Functions.Procedure>
+    public class OverallProcedureFinder : OverallFinder<Procedure>
     {
         /// <summary>
         /// A static instance used to execute this finder
@@ -417,7 +432,7 @@ namespace DataDictionary
     /// <summary>
     /// Finds the Rule in the dictionary, based on the name provided
     /// </summary>
-    public class OverallRuleFinder : Utils.OverallFinder<Rules.Rule>
+    public class OverallRuleFinder : OverallFinder<Rule>
     {
         /// <summary>
         /// A static instance used to execute this finder
@@ -425,5 +440,3 @@ namespace DataDictionary
         public static OverallRuleFinder INSTANCE = new OverallRuleFinder();
     }
 }
-
-

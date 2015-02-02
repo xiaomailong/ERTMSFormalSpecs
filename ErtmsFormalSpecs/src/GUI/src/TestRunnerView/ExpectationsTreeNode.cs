@@ -13,13 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using Expectation = DataDictionary.Tests.Expectation;
+using SubStep = DataDictionary.Tests.SubStep;
 
 namespace GUI.TestRunnerView
 {
-    public class ExpectationsTreeNode : ModelElementTreeNode<DataDictionary.Tests.SubStep>
+    public class ExpectationsTreeNode : ModelElementTreeNode<SubStep>
     {
         /// <summary>
         /// The value editor
@@ -39,7 +43,7 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ExpectationsTreeNode(DataDictionary.Tests.SubStep item, bool buildSubNodes)
+        public ExpectationsTreeNode(SubStep item, bool buildSubNodes)
             : base(item, buildSubNodes, "Expectations", true)
         {
         }
@@ -75,7 +79,7 @@ namespace GUI.TestRunnerView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Tests.Expectation expectation in Item.Expectations)
+            foreach (Expectation expectation in Item.Expectations)
             {
                 Nodes.Add(new ExpectationTreeNode(expectation, buildSubNodes));
             }
@@ -95,7 +99,7 @@ namespace GUI.TestRunnerView
         /// Adds the given action to the list of actions
         /// </summary>
         /// <param name="action"></param>
-        public void addExpectation(DataDictionary.Tests.Expectation expectation)
+        public void addExpectation(Expectation expectation)
         {
             expectation.Enclosing = Item;
             ExpectationTreeNode expectationNode = new ExpectationTreeNode(expectation, true);
@@ -106,7 +110,7 @@ namespace GUI.TestRunnerView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Tests.Expectation expectation = (DataDictionary.Tests.Expectation)DataDictionary.Generated.acceptor.getFactory().createExpectation();
+            Expectation expectation = (Expectation) acceptor.getFactory().createExpectation();
             expectation.Name = "<Expectation" + (GetNodeCount(false)) + ">";
             addExpectation(expectation);
         }

@@ -14,6 +14,17 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System.Collections;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using DataDictionary.Types;
+using Utils;
+using Case = DataDictionary.Functions.Case;
+using Function = DataDictionary.Functions.Function;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Structure = DataDictionary.Types.Structure;
+using Translation = DataDictionary.Tests.Translations.Translation;
+
 namespace DataDictionary.Rules
 {
     public class PreCondition : Generated.PreCondition, IExpressionable, TextualExplain, ICommentable
@@ -63,8 +74,9 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Provides the expression tree associated to this action's expression
         /// </summary>
-        private Interpreter.Expression __expression;
-        public Interpreter.Expression Expression
+        private Expression __expression;
+
+        public Expression Expression
         {
             get
             {
@@ -75,13 +87,13 @@ namespace DataDictionary.Rules
 
                 return __expression;
             }
-            set
-            {
-                __expression = value;
-            }
+            set { __expression = value; }
         }
 
-        public Interpreter.InterpreterTreeNode Tree { get { return Expression; } }
+        public InterpreterTreeNode Tree
+        {
+            get { return Expression; }
+        }
 
 
         /// <summary>
@@ -95,7 +107,7 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Creates the tree according to the expression text
         /// </summary>
-        public Interpreter.InterpreterTreeNode Compile()
+        public InterpreterTreeNode Compile()
         {
             // Side effect, builds the statement if it is not already built
             return Tree;
@@ -110,7 +122,7 @@ namespace DataDictionary.Rules
         {
             bool retVal = false;
 
-            Interpreter.Expression tree = EFSSystem.Parser.Expression(this, expression, null, false, null, true);
+            Expression tree = EFSSystem.Parser.Expression(this, expression, null, false, null, true);
             retVal = tree != null;
 
             return retVal;
@@ -135,23 +147,23 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Finds the enclosing structure
         /// </summary>
-        public Types.Structure EnclosingStructure
+        public Structure EnclosingStructure
         {
-            get { return Utils.EnclosingFinder<Types.Structure>.find(this); }
+            get { return EnclosingFinder<Structure>.find(this); }
         }
 
         /// <summary>
         /// Finds the enclosing function
         /// </summary>
-        public Functions.Function EnclosingFunction
+        public Function EnclosingFunction
         {
-            get { return Utils.EnclosingFinder<Functions.Function>.find(this); }
+            get { return EnclosingFinder<Function>.find(this); }
         }
 
         /// <summary>
         /// Finds the enclosing namespace
         /// </summary>
-        public Types.NameSpace NameSpace
+        public NameSpace NameSpace
         {
             get { return EnclosingNameSpaceFinder.find(this); }
         }
@@ -159,24 +171,24 @@ namespace DataDictionary.Rules
         /// <summary>
         /// The enclosing translation, if any
         /// </summary>
-        public Tests.Translations.Translation Translation
+        public Translation Translation
         {
-            get { return Enclosing as Tests.Translations.Translation; }
+            get { return Enclosing as Translation; }
         }
 
         /// <summary>
         /// The enclosing test step
         /// </summary>
-        public Functions.Case Case
+        public Case Case
         {
-            get { return Enclosing as Functions.Case; }
+            get { return Enclosing as Case; }
         }
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
-                System.Collections.ArrayList retVal = null;
+                ArrayList retVal = null;
 
                 if (RuleCondition != null)
                 {
@@ -196,13 +208,13 @@ namespace DataDictionary.Rules
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>
-        public bool Reads(Types.ITypedElement variable)
+        public bool Reads(ITypedElement variable)
         {
             bool retVal = false;
 
             if (Expression != null)
             {
-                foreach (Types.ITypedElement el in Expression.GetVariables())
+                foreach (ITypedElement el in Expression.GetVariables())
                 {
                     if (el == variable)
                     {
@@ -213,7 +225,7 @@ namespace DataDictionary.Rules
 
                 if (!retVal)
                 {
-                    Interpreter.Call call = Expression as Interpreter.Call;
+                    Call call = Expression as Call;
                     if (call != null)
                     {
                         retVal = call.Reads(variable);
@@ -285,7 +297,6 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Provides an explanation of the rule's behaviour
         /// </summary>
-
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
         public string getExplain(bool explainSubElements)
@@ -300,7 +311,7 @@ namespace DataDictionary.Rules
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
         }
 
@@ -310,7 +321,7 @@ namespace DataDictionary.Rules
         /// <returns></returns>
         public PreCondition duplicate()
         {
-            PreCondition retVal = (PreCondition)Generated.acceptor.getFactory().createPreCondition();
+            PreCondition retVal = (PreCondition) acceptor.getFactory().createPreCondition();
             retVal.Name = Name;
             retVal.ExpressionText = ExpressionText;
 

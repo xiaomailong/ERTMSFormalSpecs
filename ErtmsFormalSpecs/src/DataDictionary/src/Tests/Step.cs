@@ -14,12 +14,15 @@
 // --
 // ------------------------------------------------------------------------------
 
-using System;
 using System.Collections;
 using System.IO;
+using DataDictionary.Generated;
+using Utils;
+using DBMessage = DataDictionary.Tests.DBElements.DBMessage;
 using SourceText = DataDictionary.Tests.Translations.SourceText;
 using SourceTextComment = DataDictionary.Tests.Translations.SourceTextComment;
-using DataDictionary.Tests.DBElements;
+using Translation = DataDictionary.Tests.Translations.Translation;
+using TranslationDictionary = DataDictionary.Tests.Translations.TranslationDictionary;
 
 namespace DataDictionary.Tests
 {
@@ -63,13 +66,13 @@ namespace DataDictionary.Tests
         /// <summary>
         /// The messages associated to this step
         /// </summary>
-        public System.Collections.ArrayList StepMessages
+        public ArrayList StepMessages
         {
             get
             {
                 if (allMessages() == null)
                 {
-                    setAllMessages(new System.Collections.ArrayList());
+                    setAllMessages(new ArrayList());
                 }
                 return allMessages();
             }
@@ -112,7 +115,7 @@ namespace DataDictionary.Tests
         /// </summary>
         public SubSequence SubSequence
         {
-            get { return Utils.EnclosingFinder<SubSequence>.find(this); }
+            get { return EnclosingFinder<SubSequence>.find(this); }
         }
 
         /// <summary>
@@ -146,13 +149,13 @@ namespace DataDictionary.Tests
         /// Removes all preconditions, actions and expectations
         /// </summary>
         /// <param name="translationDictionary"></param>
-        public void Translate(Translations.TranslationDictionary translationDictionary)
+        public void Translate(TranslationDictionary translationDictionary)
         {
             if (getTranslationRequired())
             {
                 SubSteps.Clear();
 
-                Translations.Translation translation = null;
+                Translation translation = null;
                 if (translationDictionary != null)
                 {
                     translation = translationDictionary.findTranslation(getDescription(), Comment);
@@ -174,7 +177,7 @@ namespace DataDictionary.Tests
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             SubStep item = element as SubStep;
             if (item != null)
@@ -200,9 +203,9 @@ namespace DataDictionary.Tests
             int cnt = 0;
             foreach (DBMessage message in StepMessages)
             {
-                if (cnt < aStep.StepMessages.Count )
+                if (cnt < aStep.StepMessages.Count)
                 {
-                    message.Merge((DBMessage)aStep.StepMessages[cnt]);
+                    message.Merge((DBMessage) aStep.StepMessages[cnt]);
                 }
                 cnt += 1;
             }
@@ -217,7 +220,7 @@ namespace DataDictionary.Tests
         /// Adds a new message
         /// </summary>
         /// <param name="message"></param>
-        public void AddMessage(DBElements.DBMessage message)
+        public void AddMessage(DBMessage message)
         {
             allMessages().Add(message);
         }
@@ -229,7 +232,7 @@ namespace DataDictionary.Tests
         /// <returns></returns>
         public static Step createDefault(string name)
         {
-            Step retVal = (Step)DataDictionary.Generated.acceptor.getFactory().createStep();
+            Step retVal = (Step) acceptor.getFactory().createStep();
             retVal.Name = name;
 
             retVal.appendSubSteps(SubStep.createDefault("Sub-step1"));
@@ -249,7 +252,6 @@ namespace DataDictionary.Tests
             foreach (SubStep subStep in SubSteps)
             {
                 retVal += subStep.getExplain(indentLevel + 2, explainSubElements) + "\\par";
-
             }
             return retVal;
         }
@@ -257,7 +259,6 @@ namespace DataDictionary.Tests
         /// <summary>
         /// Provides an explanation of the step's behaviour
         /// </summary>
-
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
         public string getExplain(bool explainSubElements)
@@ -275,12 +276,12 @@ namespace DataDictionary.Tests
         /// <returns></returns>
         public SourceText createSourceText()
         {
-            SourceText retVal = (SourceText) Generated.acceptor.getFactory().createSourceText();
+            SourceText retVal = (SourceText) acceptor.getFactory().createSourceText();
             retVal.Name = getDescription();
 
             if (!string.IsNullOrEmpty(Comment) && Comment.Trim() != "-")
             {
-                SourceTextComment comment = (SourceTextComment) Generated.acceptor.getFactory().createSourceTextComment();
+                SourceTextComment comment = (SourceTextComment) acceptor.getFactory().createSourceTextComment();
                 comment.Name = Comment;
                 retVal.appendComments(comment);
             }

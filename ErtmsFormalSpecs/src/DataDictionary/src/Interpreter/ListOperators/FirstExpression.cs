@@ -14,6 +14,9 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Types;
+using DataDictionary.Values;
+
 namespace DataDictionary.Interpreter.ListOperators
 {
     public class FirstExpression : ConditionBasedListExpression
@@ -42,11 +45,11 @@ namespace DataDictionary.Interpreter.ListOperators
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
-        public override Types.Type GetExpressionType()
+        public override Type GetExpressionType()
         {
-            Types.Type retVal = null;
+            Type retVal = null;
 
-            Types.Collection listType = ListExpression.GetExpressionType() as Types.Collection;
+            Collection listType = ListExpression.GetExpressionType() as Collection;
             if (listType != null)
             {
                 retVal = listType.Type;
@@ -65,15 +68,15 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
+        public override IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
-            Values.IValue retVal = EFSSystem.EmptyValue;
+            IValue retVal = EFSSystem.EmptyValue;
 
-            Values.ListValue value = ListExpression.GetValue(context, explain) as Values.ListValue;
+            ListValue value = ListExpression.GetValue(context, explain) as ListValue;
             if (value != null)
             {
                 int token = PrepareIteration(context);
-                foreach (Values.IValue v in value.Val)
+                foreach (IValue v in value.Val)
                 {
                     if (v != EFSSystem.EmptyValue)
                     {

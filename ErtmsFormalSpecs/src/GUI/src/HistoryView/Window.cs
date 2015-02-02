@@ -13,14 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
-using System.Windows.Forms;
 
-using Reports.Specs;
-using Reports.Tests;
-using DataDictionary.Specification;
-using System.Collections;
-using DataDictionary;
+using System.Windows.Forms;
+using HistoricalData;
+using Utils;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.HistoryView
 {
@@ -44,8 +41,9 @@ namespace GUI.HistoryView
         /// <summary>
         /// The rule set which is used to check the specifications
         /// </summary>
-        private Utils.IModelElement model;
-        public Utils.IModelElement Model
+        private IModelElement model;
+
+        public IModelElement Model
         {
             get { return model; }
             set
@@ -53,7 +51,7 @@ namespace GUI.HistoryView
                 model = value;
                 historyTreeView.Root = model;
 
-                Utils.INamable namable = model as Utils.INamable;
+                INamable namable = model as INamable;
                 if (namable != null)
                 {
                     Text = namable.Name + " history";
@@ -92,7 +90,7 @@ namespace GUI.HistoryView
 
             Refresh();
 
-            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight;
+            DockAreas = DockAreas.DockRight;
         }
 
         /// <summary>
@@ -100,7 +98,7 @@ namespace GUI.HistoryView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Window_FormClosed(object sender, FormClosedEventArgs e)
+        private void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
             GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
@@ -123,7 +121,7 @@ namespace GUI.HistoryView
         /// Updates the window according to the new selected change
         /// </summary>
         /// <param name="Item"></param>
-        public void SelectionChanged(HistoricalData.Change Item)
+        public void SelectionChanged(Change Item)
         {
             if (Item != null)
             {
@@ -134,7 +132,6 @@ namespace GUI.HistoryView
             {
                 beforeRichTextBox.Text = "";
                 afterRichTextBox.Text = "";
-
             }
         }
     }

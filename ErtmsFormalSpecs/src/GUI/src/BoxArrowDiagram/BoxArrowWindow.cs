@@ -13,22 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using DataDictionary.Constants;
-using DataDictionary.Rules;
-using DataDictionary.Types;
-using DataDictionary.Variables;
-using Utils;
+using DataDictionary;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.BoxArrowDiagram
 {
     public abstract partial class BoxArrowWindow<BoxModel, ArrowModel> : DockContent
-        where BoxModel : class, DataDictionary.IGraphicalDisplay
-        where ArrowModel : class, DataDictionary.IGraphicalArrow<BoxModel>
+        where BoxModel : class, IGraphicalDisplay
+        where ArrowModel : class, IGraphicalArrow<BoxModel>
     {
         /// <summary>
         /// Constructor
@@ -39,9 +35,9 @@ namespace GUI.BoxArrowDiagram
             InitializeComponent();
 
             FormClosed += new FormClosedEventHandler(BoxArrowDiagramWindow_FormClosed);
-            splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            splitContainer1.FixedPanel = FixedPanel.Panel2;
 
-            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
+            DockAreas = DockAreas.Document;
         }
 
         /// <summary>
@@ -51,7 +47,7 @@ namespace GUI.BoxArrowDiagram
         /// <returns></returns>
         public abstract BoxArrowPanel<BoxModel, ArrowModel> createPanel();
 
-        void BoxArrowDiagramWindow_FormClosed(object sender, FormClosedEventArgs e)
+        private void BoxArrowDiagramWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
             GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
@@ -161,10 +157,7 @@ namespace GUI.BoxArrowDiagram
             [Category("Description")]
             public string Name
             {
-                get
-                {
-                    return control.Model.GraphicalName;
-                }
+                get { return control.Model.GraphicalName; }
             }
         }
 
@@ -212,7 +205,7 @@ namespace GUI.BoxArrowDiagram
                 descriptionRichTextBox.ResetText();
                 if (control.Model.ReferencedModel != null)
                 {
-                    DataDictionary.TextualExplain explainable = control.Model.ReferencedModel as DataDictionary.TextualExplain;
+                    TextualExplain explainable = control.Model.ReferencedModel as TextualExplain;
                     if (explainable != null)
                     {
                         descriptionRichTextBox.Rtf = explainable.getExplain(true);

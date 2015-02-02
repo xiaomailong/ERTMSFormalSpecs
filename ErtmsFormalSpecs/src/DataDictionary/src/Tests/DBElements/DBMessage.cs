@@ -13,7 +13,9 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections;
+using DataDictionary.Generated;
 
 namespace DataDictionary.Tests.DBElements
 {
@@ -24,29 +26,17 @@ namespace DataDictionary.Tests.DBElements
         /// </summary>
         public int MessageOrder
         {
-            get
-            {
-                return getMessageOrder();
-            }
-            set
-            {
-                setMessageOrder(value);
-            }
+            get { return getMessageOrder(); }
+            set { setMessageOrder(value); }
         }
 
         /// <summary>
         /// Order of the message
         /// </summary>
-        public Generated.acceptor.DBMessageType MessageType
+        public acceptor.DBMessageType MessageType
         {
-            get
-            {
-                return getMessageType();
-            }
-            set
-            {
-                setMessageType(value);
-            }
+            get { return getMessageType(); }
+            set { setMessageType(value); }
         }
 
         /// <summary>
@@ -54,10 +44,7 @@ namespace DataDictionary.Tests.DBElements
         /// </summary>
         public ArrayList Fields
         {
-            get
-            {
-                return allFields();
-            }
+            get { return allFields(); }
         }
 
         /// <summary>
@@ -65,10 +52,7 @@ namespace DataDictionary.Tests.DBElements
         /// </summary>
         public ArrayList Packets
         {
-            get
-            {
-                return allPackets();
-            }
+            get { return allPackets(); }
         }
 
         /// <summary>
@@ -101,7 +85,7 @@ namespace DataDictionary.Tests.DBElements
                 int cnt = 0;
                 foreach (DBField field in Fields)
                 {
-                    if (cnt < other.Fields.Count )
+                    if (cnt < other.Fields.Count)
                     {
                         field.Merge((DBField) other.Fields[cnt]);
                     }

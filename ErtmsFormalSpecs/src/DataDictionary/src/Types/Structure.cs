@@ -13,33 +13,38 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections;
 using System.Collections.Generic;
 using DataDictionary.Functions;
-using Utils;
 using DataDictionary.Interpreter;
+using DataDictionary.Rules;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Utils;
 
 namespace DataDictionary.Types
 {
-    public class Structure : Generated.Structure, Utils.ISubDeclarator, Utils.IFinder, DataDictionary.TextualExplain
+    public class Structure : Generated.Structure, ISubDeclarator, IFinder, TextualExplain
     {
         /// <summary>
         /// Constructor
         /// </summary>
         public Structure()
         {
-            Utils.FinderRepository.INSTANCE.Register(this);
+            FinderRepository.INSTANCE.Register(this);
         }
 
         /// <summary>
         /// The structure elements 
         /// </summary>
-        public System.Collections.ArrayList Elements
+        public ArrayList Elements
         {
             get
             {
                 if (allElements() == null)
                 {
-                    setAllElements(new System.Collections.ArrayList());
+                    setAllElements(new ArrayList());
                 }
                 return allElements();
             }
@@ -48,13 +53,13 @@ namespace DataDictionary.Types
         /// <summary>
         /// The structure procedures
         /// </summary>
-        public System.Collections.ArrayList Procedures
+        public ArrayList Procedures
         {
             get
             {
                 if (allProcedures() == null)
                 {
-                    setAllProcedures(new System.Collections.ArrayList());
+                    setAllProcedures(new ArrayList());
                 }
                 return allProcedures();
             }
@@ -63,13 +68,13 @@ namespace DataDictionary.Types
         /// <summary>
         /// The state machines
         /// </summary>
-        public System.Collections.ArrayList StateMachines
+        public ArrayList StateMachines
         {
             get
             {
                 if (allStateMachines() == null)
                 {
-                    setAllStateMachines(new System.Collections.ArrayList());
+                    setAllStateMachines(new ArrayList());
                 }
                 return allStateMachines();
             }
@@ -84,34 +89,34 @@ namespace DataDictionary.Types
         /// </summary>
         public void InitDeclaredElements()
         {
-            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+            DeclaredElements = new Dictionary<string, List<INamable>>();
 
             foreach (StructureElement element in Elements)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, element);
+                ISubDeclaratorUtils.AppendNamable(this, element);
             }
             foreach (Procedure procedure in Procedures)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, procedure);
+                ISubDeclaratorUtils.AppendNamable(this, procedure);
             }
 
             foreach (StateMachine stateMachine in StateMachines)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, stateMachine);
+                ISubDeclaratorUtils.AppendNamable(this, stateMachine);
             }
         }
 
         /// <summary>
         /// The declared elements of the structure
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
+        public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
             ISubDeclaratorUtils.Find(this, name, retVal);
         }
@@ -119,13 +124,13 @@ namespace DataDictionary.Types
         /// <summary>
         /// The structure rules
         /// </summary>
-        public System.Collections.ArrayList Rules
+        public ArrayList Rules
         {
             get
             {
                 if (allRules() == null)
                 {
-                    setAllRules(new System.Collections.ArrayList());
+                    setAllRules(new ArrayList());
                 }
                 return allRules();
             }
@@ -138,10 +143,10 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public StructureElement findStructureElement(string name)
         {
-            return (StructureElement)Utils.INamableUtils.findByName(name, Elements);
+            return (StructureElement) INamableUtils.findByName(name, Elements);
         }
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get { return NameSpace.Structures; }
         }
@@ -149,11 +154,11 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides the default value for this structure
         /// </summary>
-        public override Values.IValue DefaultValue
+        public override IValue DefaultValue
         {
             get
             {
-                Values.StructureValue retVal = new Values.StructureValue(this);
+                StructureValue retVal = new StructureValue(this);
 
                 return retVal;
             }
@@ -163,7 +168,7 @@ namespace DataDictionary.Types
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             {
                 StructureElement item = element as StructureElement;
@@ -180,7 +185,7 @@ namespace DataDictionary.Types
                 }
             }
             {
-                Rules.Rule item = element as Rules.Rule;
+                Rule item = element as Rule;
                 if (item != null)
                 {
                     appendRules(item);
@@ -218,7 +223,7 @@ namespace DataDictionary.Types
             return retVal;
         }
 
-        public override bool CompareForEquality(Values.IValue left, Values.IValue right)  // left == right
+        public override bool CompareForEquality(IValue left, IValue right) // left == right
         {
             bool retVal = base.CompareForEquality(left, right);
 
@@ -226,17 +231,17 @@ namespace DataDictionary.Types
             {
                 if (left.Type == right.Type)
                 {
-                    Values.StructureValue leftValue = left as Values.StructureValue;
-                    Values.StructureValue rightValue = right as Values.StructureValue;
+                    StructureValue leftValue = left as StructureValue;
+                    StructureValue rightValue = right as StructureValue;
 
                     if (left != null && right != null)
                     {
                         retVal = true;
 
-                        foreach (KeyValuePair<string, Variables.IVariable> pair in leftValue.SubVariables)
+                        foreach (KeyValuePair<string, IVariable> pair in leftValue.SubVariables)
                         {
-                            Variables.IVariable leftVar = pair.Value;
-                            Variables.IVariable rightVar = rightValue.getVariable(pair.Key);
+                            IVariable leftVar = pair.Value;
+                            IVariable rightVar = rightValue.getVariable(pair.Key);
 
                             if (leftVar.Type != null)
                             {
@@ -249,7 +254,6 @@ namespace DataDictionary.Types
                         }
                     }
                 }
-
             }
 
             return retVal;

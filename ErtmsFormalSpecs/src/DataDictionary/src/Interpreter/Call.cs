@@ -13,22 +13,30 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using DataDictionary.Functions;
+using DataDictionary.Functions.PredefinedFunctions;
 using DataDictionary.Interpreter.Filter;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Utils;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Interpreter
 {
     /// <summary>
     /// Something that can be called
     /// </summary>
-    public interface ICallable : Utils.INamable
+    public interface ICallable : INamable
     {
         /// <summary>
         /// Formal parameters of the callable
         /// </summary>
-        System.Collections.ArrayList FormalParameters { get; }
+        ArrayList FormalParameters { get; }
 
         /// <summary>
         /// Provides the formal parameter which matches the name provided
@@ -40,7 +48,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Provides the return type of the called element
         /// </summary>
-        Types.Type ReturnType { get; }
+        Type ReturnType { get; }
 
         /// <summary>
         /// Perform additional checks based on the parameter types
@@ -61,6 +69,7 @@ namespace DataDictionary.Interpreter
         /// The unnamed actual parameters
         /// </summary>
         private List<Expression> actualParameters;
+
         public List<Expression> ActualParameters
         {
             get
@@ -71,16 +80,14 @@ namespace DataDictionary.Interpreter
                 }
                 return actualParameters;
             }
-            set
-            {
-                actualParameters = null;
-            }
+            set { actualParameters = null; }
         }
 
         /// <summary>
         /// The list of named actual parameters
         /// </summary>
         private Dictionary<Designator, Expression> namedActualParameters;
+
         public Dictionary<Designator, Expression> NamedActualParameters
         {
             get
@@ -184,7 +191,7 @@ namespace DataDictionary.Interpreter
                 retVal = Called.getCalled(context, explain);
                 if (retVal == null)
                 {
-                    Types.Type type = Called.GetExpressionType();
+                    Type type = Called.GetExpressionType();
                     if (type != null)
                     {
                         retVal = type.CastFunction;
@@ -206,9 +213,9 @@ namespace DataDictionary.Interpreter
         /// <param name="context"></param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public Functions.Procedure getProcedure(InterpretationContext context, ExplanationPart explain)
+        public Procedure getProcedure(InterpretationContext context, ExplanationPart explain)
         {
-            Functions.Procedure retVal = getCalled(context, explain) as Functions.Procedure;
+            Procedure retVal = getCalled(context, explain) as Procedure;
 
             return retVal;
         }
@@ -218,9 +225,9 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="context"></param>
         /// <param name="explain"></param>
-        public Functions.Function getFunction(InterpretationContext context, ExplanationPart explain)
+        public Function getFunction(InterpretationContext context, ExplanationPart explain)
         {
-            Functions.Function retVal = getCalled(context, explain) as Functions.Function;
+            Function retVal = getCalled(context, explain) as Function;
 
             return retVal;
         }
@@ -231,7 +238,7 @@ namespace DataDictionary.Interpreter
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
+        public override bool SemanticAnalysis(INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
@@ -341,11 +348,11 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
-        public override Types.Type GetExpressionType()
+        public override Type GetExpressionType()
         {
-            Types.Type retVal = null;
+            Type retVal = null;
 
-            Functions.Function function = Called.getStaticCallable() as Functions.Function;
+            Function function = Called.getStaticCallable() as Function;
             if (function != null)
             {
                 retVal = function.ReturnType;
@@ -364,18 +371,18 @@ namespace DataDictionary.Interpreter
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
+        public override IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
-            Functions.Function function = getFunction(context, explain);
+            Function function = getFunction(context, explain);
 
             ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, function.Name + " (...) returned ");
             if (function != null)
             {
-                long start = System.Environment.TickCount;
+                long start = Environment.TickCount;
 
-                Dictionary<Variables.Actual, Values.IValue> parameterValues = null;
+                Dictionary<Actual, IValue> parameterValues = null;
                 try
                 {
                     parameterValues = AssignParameterValues(context, function, true, subExplanation);
@@ -392,7 +399,7 @@ namespace DataDictionary.Interpreter
                     {
                         int token = context.LocalScope.PushContext();
                         context.LocalScope.setGraphParameter(parameters[0]);
-                        Functions.Graph graph = function.createGraphForParameter(context, parameters[0], subExplanation);
+                        Graph graph = function.createGraphForParameter(context, parameters[0], subExplanation);
                         context.LocalScope.PopContext(token);
                         if (graph != null)
                         {
@@ -405,7 +412,7 @@ namespace DataDictionary.Interpreter
                     }
                     else // surface
                     {
-                        Functions.Surface surface = function.createSurfaceForParameters(context, parameters[0], parameters[1], subExplanation);
+                        Surface surface = function.createSurfaceForParameters(context, parameters[0], parameters[1], subExplanation);
                         if (surface != null)
                         {
                             retVal = surface.Function;
@@ -423,7 +430,7 @@ namespace DataDictionary.Interpreter
                 }
                 finally
                 {
-                    long stop = System.Environment.TickCount;
+                    long stop = Environment.TickCount;
                     long span = (stop - start);
                     function.ExecutionTimeInMilli += span;
                     function.ExecutionCount += 1;
@@ -445,15 +452,15 @@ namespace DataDictionary.Interpreter
         /// <param name="function">The function on which the call is performed</param>
         /// <param name="parameterValues">The actual parameter values</param>
         /// <returns></returns>
-        private List<Parameter> GetPlaceHolders(Functions.Function function, Dictionary<Variables.Actual, Values.IValue> parameterValues)
+        private List<Parameter> GetPlaceHolders(Function function, Dictionary<Actual, IValue> parameterValues)
         {
             List<Parameter> retVal = new List<Parameter>();
 
-            foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in parameterValues)
+            foreach (KeyValuePair<Actual, IValue> pair in parameterValues)
             {
-                Variables.Actual actual = pair.Key;
+                Actual actual = pair.Key;
 
-                Values.PlaceHolder placeHolder = pair.Value as Values.PlaceHolder;
+                PlaceHolder placeHolder = pair.Value as PlaceHolder;
                 if (placeHolder != null && actual.Parameter.Enclosing == function)
                 {
                     retVal.Add(actual.Parameter);
@@ -473,13 +480,13 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="parameterValues"></param>
         /// <returns></returns>
-        private static string ParameterValues(Dictionary<Variables.Actual, Values.IValue> parameterValues)
+        private static string ParameterValues(Dictionary<Actual, IValue> parameterValues)
         {
             string parameters = "";
 
             if (parameterValues != null)
             {
-                foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in parameterValues)
+                foreach (KeyValuePair<Actual, IValue> pair in parameterValues)
                 {
                     if (!Utils.Utils.isEmpty(parameters))
                     {
@@ -500,10 +507,10 @@ namespace DataDictionary.Interpreter
         /// <param name="log">Indicates whether errors should be logged</param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public Dictionary<Variables.Actual, Values.IValue> AssignParameterValues(InterpretationContext context, ICallable callable, bool log, ExplanationPart explain)
+        public Dictionary<Actual, IValue> AssignParameterValues(InterpretationContext context, ICallable callable, bool log, ExplanationPart explain)
         {
             // Compute the unnamed actual parameter values
-            Dictionary<Variables.Actual, Values.IValue> retVal = new Dictionary<Variables.Actual, Values.IValue>();
+            Dictionary<Actual, IValue> retVal = new Dictionary<Actual, IValue>();
 
             if (callable.FormalParameters.Count == NamedActualParameters.Count + ActualParameters.Count)
             {
@@ -512,10 +519,10 @@ namespace DataDictionary.Interpreter
                 {
                     Parameter parameter = callable.FormalParameters[i] as Parameter;
                     ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, "parameter " + parameter.Name + " = ");
-                    Values.IValue val = expression.GetValue(context, subExplanation);
+                    IValue val = expression.GetValue(context, subExplanation);
                     if (val != null)
                     {
-                        Variables.Actual actual = parameter.createActual();
+                        Actual actual = parameter.createActual();
                         val = val.RightSide(actual, false, false);
                         retVal.Add(actual, val);
                     }
@@ -533,10 +540,10 @@ namespace DataDictionary.Interpreter
                 {
                     Parameter parameter = callable.getFormalParameter(pair.Key.Image);
                     ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, "parameter " + parameter.Name + " = ");
-                    Values.IValue val = pair.Value.GetValue(context, subExplanation);
+                    IValue val = pair.Value.GetValue(context, subExplanation);
                     if (val != null)
                     {
-                        Variables.Actual actual = parameter.createActual();
+                        Actual actual = parameter.createActual();
                         val = val.RightSide(actual, false, false);
                         actual.Value = val;
                         retVal.Add(actual, val);
@@ -558,7 +565,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public override void fill(List<Utils.INamable> retVal, BaseFilter filter)
+        public override void fill(List<INamable> retVal, BaseFilter filter)
         {
             foreach (Expression expression in NamedActualParameters.Values)
             {
@@ -675,7 +682,7 @@ namespace DataDictionary.Interpreter
             actuals[parameter.Name] = expression;
 
             expression.checkExpression();
-            Types.Type argumentType = expression.GetExpressionType();
+            Type argumentType = expression.GetExpressionType();
             if (argumentType == null)
             {
                 AddError("Cannot evaluate argument type for argument " + expression.ToString());
@@ -703,15 +710,15 @@ namespace DataDictionary.Interpreter
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public override Functions.Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
+        public override Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
-            Functions.Graph retVal = base.createGraph(context, parameter, explain);
+            Graph retVal = base.createGraph(context, parameter, explain);
 
-            Functions.PredefinedFunctions.Cast cast = Called.Ref as Functions.PredefinedFunctions.Cast;
+            Cast cast = Called.Ref as Cast;
             if (cast != null)
             {
                 // In case of cast, just take the graph of the enclosed expression
-                Parameter param = (Parameter)cast.FormalParameters[0];
+                Parameter param = (Parameter) cast.FormalParameters[0];
                 retVal = cast.createGraphForParameter(context, param, explain);
             }
 
@@ -768,16 +775,16 @@ namespace DataDictionary.Interpreter
         /// <param name="yParam">The Y axis of this surface</param>
         /// <param name="explain"></param>
         /// <returns>The surface which corresponds to this expression</returns>
-        public override Functions.Surface createSurface(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
+        public override Surface createSurface(InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
         {
-            Functions.Surface retVal = base.createSurface(context, xParam, yParam, explain);
+            Surface retVal = base.createSurface(context, xParam, yParam, explain);
 
-            Functions.Function function = getFunction(context, explain);
-            Functions.PredefinedFunctions.Cast cast = Called.Ref as Functions.PredefinedFunctions.Cast;
+            Function function = getFunction(context, explain);
+            Cast cast = Called.Ref as Cast;
             if (cast != null)
             {
                 // In case of cast, just take the surface of the enclosed expression
-                Expression actual = (Expression)ActualParameters[0];
+                Expression actual = (Expression) ActualParameters[0];
                 retVal = actual.createSurface(context, xParam, yParam, explain);
             }
             else
@@ -800,10 +807,10 @@ namespace DataDictionary.Interpreter
                 }
                 else
                 {
-                    Values.IValue value = GetValue(context, explain);
+                    IValue value = GetValue(context, explain);
                     if (value != null)
                     {
-                        retVal = Functions.Surface.createSurface(value, xParam, yParam);
+                        retVal = Surface.createSurface(value, xParam, yParam);
                     }
                     else
                     {
@@ -827,7 +834,7 @@ namespace DataDictionary.Interpreter
         /// <param name="Xaxis">The resulting X axis</param>
         /// <param name="Yaxis">The resulting Y axis</param>
         /// <returns>true if the axis could be selected</returns>
-        private void SelectXandYAxis(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam, Functions.Function function, out Parameter Xaxis, out Parameter Yaxis)
+        private void SelectXandYAxis(InterpretationContext context, Parameter xParam, Parameter yParam, Function function, out Parameter Xaxis, out Parameter Yaxis)
         {
             Xaxis = null;
             Yaxis = null;
@@ -873,7 +880,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>
-        public bool Reads(Types.ITypedElement variable)
+        public bool Reads(ITypedElement variable)
         {
             bool retVal = false;
 

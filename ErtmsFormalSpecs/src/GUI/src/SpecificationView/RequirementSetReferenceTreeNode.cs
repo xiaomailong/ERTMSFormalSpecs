@@ -13,14 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
+using DataDictionary.Specification;
 
 namespace GUI.SpecificationView
 {
-    public class RequirementSetReferenceTreeNode : ModelElementTreeNode<DataDictionary.Specification.RequirementSetReference>
+    public class RequirementSetReferenceTreeNode : ModelElementTreeNode<RequirementSetReference>
     {
         /// <summary>
         /// The value editor
@@ -40,7 +41,7 @@ namespace GUI.SpecificationView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public RequirementSetReferenceTreeNode(DataDictionary.Specification.RequirementSetReference item, bool buildSubNodes)
+        public RequirementSetReferenceTreeNode(RequirementSetReference item, bool buildSubNodes)
             : base(item, buildSubNodes, null, true)
         {
         }

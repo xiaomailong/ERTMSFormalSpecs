@@ -13,15 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using System.Text;
+using DataDictionary.Types;
+using DataDictionary.Variables;
+using Utils;
 
 namespace DataDictionary.Values
 {
     /// <summary>
     /// An empty value to fill the empty gaps in the collections
     /// </summary>
-    public class EmptyValue : Values.Value, Utils.ISubDeclarator
+    public class EmptyValue : Value, ISubDeclarator
     {
         public override string Name
         {
@@ -43,27 +47,27 @@ namespace DataDictionary.Values
         /// </summary>
         public void InitDeclaredElements()
         {
-            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+            DeclaredElements = new Dictionary<string, List<INamable>>();
         }
 
         /// <summary>
         /// The elements declared by this declarator
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
+        public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
             // Dereference of an empty value holds the empty value (not a null pointer exception-like thing)
             retVal.Add(this);
         }
     }
 
-    public class ListValue : BaseValue<Types.Collection, List<IValue>>
+    public class ListValue : BaseValue<Collection, List<IValue>>
     {
         public override string Name
         {
@@ -94,7 +98,7 @@ namespace DataDictionary.Values
         /// Constructor
         /// </summary>
         /// <param name="type"></param>
-        public ListValue(Types.Collection type, List<IValue> val)
+        public ListValue(Collection type, List<IValue> val)
             : base(type, val)
         {
         }
@@ -117,9 +121,9 @@ namespace DataDictionary.Values
         /// <summary>
         /// The collection type associated to this list value
         /// </summary>
-        public Types.Collection CollectionType
+        public Collection CollectionType
         {
-            get { return Type as Types.Collection; }
+            get { return Type as Collection; }
         }
 
         /// <summary>
@@ -129,15 +133,15 @@ namespace DataDictionary.Values
         /// <param name="duplicate">Indicates that a duplication of the variable should be performed</param>
         /// <param name="setEnclosing">Indicates that the new value enclosing element should be set</param>
         /// <returns></returns>
-        public override Values.IValue RightSide(Variables.IVariable variable, bool duplicate, bool setEnclosing)
+        public override IValue RightSide(IVariable variable, bool duplicate, bool setEnclosing)
         {
             ListValue retVal = this;
 
             //  Complete the list with empty values
-            Types.Collection collectionType = variable.Type as Types.Collection;
+            Collection collectionType = variable.Type as Collection;
             if (collectionType != null)
             {
-                Values.EmptyValue emptyValue = EFSSystem.EmptyValue;
+                EmptyValue emptyValue = EFSSystem.EmptyValue;
                 while (retVal.Val.Count < collectionType.getMaxSize())
                 {
                     retVal.Val.Add(emptyValue);

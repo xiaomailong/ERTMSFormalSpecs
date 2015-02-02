@@ -13,14 +13,22 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
+using System.Reflection;
+using DataDictionary;
+using DataDictionary.Specification;
+using DataDictionary.Tests;
+using DataDictionary.Tests.Translations;
+using log4net;
 using MigraDoc.DocumentObjectModel;
+using Paragraph = DataDictionary.Specification.Paragraph;
 
 namespace Reports.Specs
 {
-    class FindingsReport : ReportTools
+    internal class FindingsReport : ReportTools
     {
-        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         public bool ReviewedParagraphs { get; set; }
 
@@ -43,14 +51,14 @@ namespace Reports.Specs
         /// <param name="aSectionName"></param>
         /// <param name="dictionary"></param>
         /// <returns></returns>
-        private DataDictionary.Specification.Paragraph getSection(string aSectionName, DataDictionary.Dictionary dictionary)
+        private Paragraph getSection(string aSectionName, Dictionary dictionary)
         {
-            DataDictionary.Specification.Paragraph retVal = new DataDictionary.Specification.Paragraph();
-            foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+            Paragraph retVal = new Paragraph();
+            foreach (Specification specification in dictionary.Specifications)
             {
-                foreach (DataDictionary.Specification.Chapter chapter in specification.Chapters)
+                foreach (Chapter chapter in specification.Chapters)
                 {
-                    foreach (DataDictionary.Specification.Paragraph paragraph in chapter.Paragraphs)
+                    foreach (Paragraph paragraph in chapter.Paragraphs)
                     {
                         if (paragraph.ExpressionText == aSectionName)
                         {
@@ -71,7 +79,7 @@ namespace Reports.Specs
         {
             AddSubParagraph("Questions related to Subset-076");
             AddParagraph("This section contains the " + getSection("Questions", aReportConfig.Dictionary).SubParagraphs.Count +
-                " questions raised in translating the Subset-076 test sequences.");
+                         " questions raised in translating the Subset-076 test sequences.");
             GenerateQuestions(aReportConfig.Dictionary);
             CloseSubParagraph();
         }
@@ -84,7 +92,7 @@ namespace Reports.Specs
         {
             AddSubParagraph("Comments for Subset-076");
             AddParagraph("This section contains the " + getSection("Comments", aReportConfig.Dictionary).SubParagraphs.Count +
-                " comments for the Subset-076 test sequences. " + "Comments are findings that are minor bugs, that could be assumptions the ERTMS Solutions team is not aware of, or information we feel is worth sharing in the present document.");
+                         " comments for the Subset-076 test sequences. " + "Comments are findings that are minor bugs, that could be assumptions the ERTMS Solutions team is not aware of, or information we feel is worth sharing in the present document.");
             GenerateComments(aReportConfig.Dictionary);
             CloseSubParagraph();
         }
@@ -97,7 +105,7 @@ namespace Reports.Specs
         {
             AddSubParagraph("Issues for Subset-076");
             AddParagraph("This section contains the " + getSection("Bugs", aReportConfig.Dictionary).SubParagraphs.Count +
-                " discovered issues for the Subset-076 test sequences");
+                         " discovered issues for the Subset-076 test sequences");
             AddParagraph("These are the findings that are errors in the test sequences. They prevent execution of the test sequence.");
             GenerateIssues(aReportConfig.Dictionary);
             CloseSubParagraph();
@@ -108,11 +116,11 @@ namespace Reports.Specs
         /// Creates a table for the questions
         /// </summary>
         /// <param name="aDictionary"></param>
-        public void GenerateQuestions(DataDictionary.Dictionary aDictionary)
+        public void GenerateQuestions(Dictionary aDictionary)
         {
             AddSubParagraph("");
-            DataDictionary.Specification.Paragraph questions = getSection("Questions", aDictionary);
-            foreach (DataDictionary.Specification.Paragraph subparagraph in questions.SubParagraphs)
+            Paragraph questions = getSection("Questions", aDictionary);
+            foreach (Paragraph subparagraph in questions.SubParagraphs)
             {
                 addEntry(subparagraph, "Question");
             }
@@ -120,7 +128,7 @@ namespace Reports.Specs
         }
 
 
-        private void addEntry(DataDictionary.Specification.Paragraph paragraph, string entryType)
+        private void addEntry(Paragraph paragraph, string entryType)
         {
             if (paragraph.getReviewed() == ReviewedParagraphs)
             {
@@ -128,7 +136,7 @@ namespace Reports.Specs
                 {
                     AddSubParagraph(entryType + " " + paragraph.FullId);
                     AddParagraph(paragraph.ExpressionText);
-                    
+
                     // provide the translations the paragraph references
                     AddTestCases(paragraph);
                 }
@@ -142,30 +150,30 @@ namespace Reports.Specs
 
             if (paragraph.SubParagraphs.Count > 0)
             {
-                foreach (DataDictionary.Specification.Paragraph subParagraph in paragraph.SubParagraphs)
+                foreach (Paragraph subParagraph in paragraph.SubParagraphs)
                 {
                     addEntry(subParagraph, entryType);
                 }
-        }
+            }
         }
 
-        private void addImplementations(DataDictionary.Specification.Paragraph subparagraph)
+        private void addImplementations(Paragraph subparagraph)
         {
             bool first = true;
-            foreach (DataDictionary.ReqRef reference in subparagraph.Implementations)
+            foreach (ReqRef reference in subparagraph.Implementations)
             {
-                DataDictionary.Tests.Translations.Translation translation = reference.Model as DataDictionary.Tests.Translations.Translation;
+                Translation translation = reference.Model as Translation;
                 if (translation != null)
                 {
                     if (first)
                     {
-                        AddTable(new string[] { "Related translations" }, new int[] { 100 });
+                        AddTable(new string[] {"Related translations"}, new int[] {100});
                         first = false;
                     }
-                    foreach (DataDictionary.Tests.Translations.SourceText sourceText in translation.SourceTexts)
+                    foreach (SourceText sourceText in translation.SourceTexts)
                     {
                         AddRow(sourceText.ExpressionText);
-                        foreach (DataDictionary.Tests.Translations.SourceTextComment comment in sourceText.Comments)
+                        foreach (SourceTextComment comment in sourceText.Comments)
                         {
                             AddRow(comment.ExpressionText);
                         }
@@ -178,17 +186,17 @@ namespace Reports.Specs
         /// Builds the table of implementations of a paragraph
         /// </summary>
         /// <param name="subparagraph"></param>
-        private void AddTestCases(DataDictionary.Specification.Paragraph subparagraph)
+        private void AddTestCases(Paragraph subparagraph)
         {
             Dictionary<string, string[]> TestFeatures = findSteps(subparagraph);
 
             if (TestFeatures.Count > 0)
             {
-                AddTable(new string[] { "Test case", "Sequence", "Steps" }, new int[] { 40, 65, 40 });
+                AddTable(new string[] {"Test case", "Sequence", "Steps"}, new int[] {40, 65, 40});
 
                 foreach (KeyValuePair<string, string[]> testFT in TestFeatures)
                 {
-                    AddRow(new string[] { testFT.Key, testFT.Value[1], testFT.Value[0] });
+                    AddRow(new string[] {testFT.Key, testFT.Value[1], testFT.Value[0]});
                 }
             }
         }
@@ -198,13 +206,13 @@ namespace Reports.Specs
         /// </summary>
         /// <param name="paragraph"></param>
         /// <returns></returns>
-        private Dictionary<string, string[]> findSteps(DataDictionary.Specification.Paragraph paragraph)
+        private Dictionary<string, string[]> findSteps(Paragraph paragraph)
         {
             Dictionary<string, string[]> retVal = new Dictionary<string, string[]>();
 
-            foreach (DataDictionary.ReqRef reference in paragraph.Implementations)
+            foreach (ReqRef reference in paragraph.Implementations)
             {
-                DataDictionary.Tests.Step step = reference.Model as DataDictionary.Tests.Step;
+                Step step = reference.Model as Step;
                 if (step != null)
                 {
                     if (retVal.ContainsKey(step.TestCase.Name))
@@ -218,7 +226,7 @@ namespace Reports.Specs
                             sequences = sequences + "\n" + step.SubSequence.Name;
                             steps = steps + "\n" + stepNumber(step);
                         }
-                        else 
+                        else
                         {
                             int line = getLine(sequences, step.SubSequence.Name);
                             if (!stepPresent(line, step, steps))
@@ -232,7 +240,7 @@ namespace Reports.Specs
                     }
                     else
                     {
-                        retVal[step.TestCase.Name] = new string[] { stepNumber(step), step.SubSequence.Name };
+                        retVal[step.TestCase.Name] = new string[] {stepNumber(step), step.SubSequence.Name};
                     }
                 }
             }
@@ -246,7 +254,7 @@ namespace Reports.Specs
         /// <param name="line"></param>
         /// <param name="step"></param>
         /// <returns></returns>
-        private bool stepPresent(int line, DataDictionary.Tests.Step step, string steps)
+        private bool stepPresent(int line, Step step, string steps)
         {
             bool retVal = false;
 
@@ -266,7 +274,7 @@ namespace Reports.Specs
         /// </summary>
         /// <param name="step"></param>
         /// <returns></returns>
-        private string stepNumber(DataDictionary.Tests.Step step)
+        private string stepNumber(Step step)
         {
             string retVal = "";
 
@@ -335,11 +343,11 @@ namespace Reports.Specs
         /// Creates a table for the remarks
         /// </summary>
         /// <param name="aDictionary"></param>
-        public void GenerateComments(DataDictionary.Dictionary aDictionary)
+        public void GenerateComments(Dictionary aDictionary)
         {
             AddSubParagraph("");
-            DataDictionary.Specification.Paragraph questions = getSection("Comments", aDictionary);
-            foreach (DataDictionary.Specification.Paragraph subparagraph in questions.SubParagraphs)
+            Paragraph questions = getSection("Comments", aDictionary);
+            foreach (Paragraph subparagraph in questions.SubParagraphs)
             {
                 addEntry(subparagraph, "Comment");
             }
@@ -350,11 +358,11 @@ namespace Reports.Specs
         /// Creates a table for the bugs
         /// </summary>
         /// <param name="aDictionary"></param>
-        public void GenerateIssues(DataDictionary.Dictionary aDictionary)
+        public void GenerateIssues(Dictionary aDictionary)
         {
             AddSubParagraph("");
-            DataDictionary.Specification.Paragraph questions = getSection("Bugs", aDictionary);
-            foreach (DataDictionary.Specification.Paragraph subparagraph in questions.SubParagraphs)
+            Paragraph questions = getSection("Bugs", aDictionary);
+            foreach (Paragraph subparagraph in questions.SubParagraphs)
             {
                 addEntry(subparagraph, "Issue");
             }

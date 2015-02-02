@@ -13,14 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
 using System.Collections.Generic;
 using System.Windows.Forms;
-using DataDictionary.Specification;
+using DataDictionary.Generated;
+using GUI.SpecificationView;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using ReferencesParagraph = DataDictionary.ReferencesParagraph;
+using ReqRef = DataDictionary.ReqRef;
 
 namespace GUI
 {
-    public class ReqRefsTreeNode : ModelElementTreeNode<DataDictionary.ReferencesParagraph>
+    public class ReqRefsTreeNode : ModelElementTreeNode<ReferencesParagraph>
     {
         /// <summary>
         /// The editor for message variables
@@ -40,7 +44,7 @@ namespace GUI
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ReqRefsTreeNode(DataDictionary.ReferencesParagraph item, bool buildSubNodes)
+        public ReqRefsTreeNode(ReferencesParagraph item, bool buildSubNodes)
             : base(item, buildSubNodes, "Requirements", true)
         {
         }
@@ -53,7 +57,7 @@ namespace GUI
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.ReqRef req in Item.Requirements)
+            foreach (ReqRef req in Item.Requirements)
             {
                 Nodes.Add(new ReqRefTreeNode(req, buildSubNodes, true));
             }
@@ -76,7 +80,7 @@ namespace GUI
         public void CreateReqRef(Paragraph paragraph)
         {
             bool found = false;
-            foreach (DataDictionary.ReqRef reqRef in Item.Requirements)
+            foreach (ReqRef reqRef in Item.Requirements)
             {
                 if (reqRef.Paragraph == paragraph)
                 {
@@ -87,7 +91,7 @@ namespace GUI
 
             if (!found)
             {
-                DataDictionary.ReqRef req = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
+                ReqRef req = (ReqRef) acceptor.getFactory().createReqRef();
                 req.Paragraph = paragraph;
                 Item.appendRequirements(req);
                 Nodes.Add(new ReqRefTreeNode(req, true, true));
@@ -106,14 +110,14 @@ namespace GUI
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)
         {
-            if (SourceNode is SpecificationView.ParagraphTreeNode)
+            if (SourceNode is ParagraphTreeNode)
             {
-                SpecificationView.ParagraphTreeNode paragraphTreeNode = (SpecificationView.ParagraphTreeNode)SourceNode;
+                ParagraphTreeNode paragraphTreeNode = (ParagraphTreeNode) SourceNode;
                 CreateReqRef(paragraphTreeNode.Item);
             }
             else if (SourceNode is ReqRefTreeNode)
             {
-                ReqRefTreeNode reqRefTreeNode = (ReqRefTreeNode)SourceNode;
+                ReqRefTreeNode reqRefTreeNode = (ReqRefTreeNode) SourceNode;
                 CreateReqRef(reqRefTreeNode.Item.Paragraph);
             }
         }

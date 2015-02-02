@@ -13,9 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using Enum = DataDictionary.Types.Enum;
+using EnumValue = DataDictionary.Constants.EnumValue;
 
 namespace GUI.DataDictionaryView
 {
@@ -25,7 +29,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public EnumerationValuesTreeNode(DataDictionary.Types.Enum item, bool buildSubNodes)
+        public EnumerationValuesTreeNode(Enum item, bool buildSubNodes)
             : base(item, buildSubNodes, "Values", true, false)
         {
         }
@@ -38,7 +42,7 @@ namespace GUI.DataDictionaryView
         {
             Nodes.Clear();
 
-            foreach (DataDictionary.Constants.EnumValue value in Item.Values)
+            foreach (EnumValue value in Item.Values)
             {
                 Nodes.Add(new EnumerationValueTreeNode(value, buildSubNodes));
             }
@@ -48,11 +52,11 @@ namespace GUI.DataDictionaryView
 
         public void AddEnumValueHandler(object sender, EventArgs args)
         {
-            DataDictionary.Constants.EnumValue value = (DataDictionary.Constants.EnumValue)DataDictionary.Generated.acceptor.getFactory().createEnumValue();
+            EnumValue value = (EnumValue) acceptor.getFactory().createEnumValue();
             AddValue(value);
         }
 
-        public void AddValue(DataDictionary.Constants.EnumValue value)
+        public void AddValue(EnumValue value)
         {
             value.Name = "<EnumValue" + (GetNodeCount(false) + 1) + ">";
             value.setValue("");
@@ -73,6 +77,5 @@ namespace GUI.DataDictionaryView
 
             return retVal;
         }
-
     }
 }

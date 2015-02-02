@@ -13,7 +13,9 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using DataDictionary.Specification;
+
 namespace GUI.SpecificationView
 {
     public class RequirementSetsTreeView : TypedTreeView<Paragraph>

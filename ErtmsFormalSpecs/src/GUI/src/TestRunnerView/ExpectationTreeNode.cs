@@ -13,16 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.Design;
 using System.Drawing.Design;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.Converters;
+using Expectation = DataDictionary.Tests.Expectation;
 
 namespace GUI.TestRunnerView
 {
-    public class ExpectationTreeNode : ModelElementTreeNode<DataDictionary.Tests.Expectation>
+    public class ExpectationTreeNode : ModelElementTreeNode<Expectation>
     {
         /// <summary>
         /// The value editor
@@ -38,9 +42,9 @@ namespace GUI.TestRunnerView
             }
 
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.ExpressionableUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.ExpressionableUITypeConverter))]
-            public DataDictionary.Tests.Expectation Expression
+            [Editor(typeof (ExpressionableUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (ExpressionableUITypeConverter))]
+            public Expectation Expression
             {
                 get { return Item; }
                 set
@@ -57,9 +61,9 @@ namespace GUI.TestRunnerView
                 set { Item.setBlocking(value); }
             }
 
-            [Category("Description"), TypeConverter(typeof(Converters.ExpectationKindConverter))]
+            [Category("Description"), TypeConverter(typeof (ExpectationKindConverter))]
             [ReadOnly(false)]
-            public DataDictionary.Generated.acceptor.ExpectationKind Kind
+            public acceptor.ExpectationKind Kind
             {
                 get { return Item.getKind(); }
                 set
@@ -70,12 +74,13 @@ namespace GUI.TestRunnerView
             }
 
             [Category("Description"), DisplayName("Condition")]
-            [System.ComponentModel.Editor(typeof(Converters.ConditionUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.ConditionUITypeConverter))]
-            public DataDictionary.Tests.Expectation Condition
+            [Editor(typeof (ConditionUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (ConditionUITypeConverter))]
+            public Expectation Condition
             {
                 get { return Item; }
-                set {
+                set
+                {
                     Item = value;
                     RefreshNode();
                 }
@@ -91,8 +96,8 @@ namespace GUI.TestRunnerView
             /// <summary>
             /// The item name
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(Converters.CyclePhaseConverter))]
-            public DataDictionary.Generated.acceptor.RulePriority CyclePhase
+            [Category("Description"), TypeConverter(typeof (CyclePhaseConverter))]
+            public acceptor.RulePriority CyclePhase
             {
                 get { return Item.getCyclePhase(); }
                 set { Item.setCyclePhase(value); }
@@ -103,7 +108,7 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ExpectationTreeNode(DataDictionary.Tests.Expectation item, bool buildSubNodes)
+        public ExpectationTreeNode(Expectation item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }
@@ -158,11 +163,11 @@ namespace GUI.TestRunnerView
         /// Creates sub sequence tree nodes
         /// </summary>
         /// <param name="elements">The elements to be placed in the node</param>
-        public static List<BaseTreeNode> CreateExpectations(System.Collections.ArrayList elements)
+        public static List<BaseTreeNode> CreateExpectations(ArrayList elements)
         {
             List<BaseTreeNode> retVal = new List<BaseTreeNode>();
 
-            foreach (DataDictionary.Tests.Expectation expectation in elements)
+            foreach (Expectation expectation in elements)
             {
                 retVal.Add(new ExpectationTreeNode(expectation, true));
             }

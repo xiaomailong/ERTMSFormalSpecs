@@ -13,33 +13,38 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using DataDictionary.Types;
 using System.Text;
+using DataDictionary.Generated;
 using DataDictionary.Variables;
+using Utils;
+using Structure = DataDictionary.Types.Structure;
+using StructureElement = DataDictionary.Types.StructureElement;
+using Variable = DataDictionary.Variables.Variable;
 
 namespace DataDictionary.Values
 {
-    public class StructureValue : BaseValue<Types.Structure, Dictionary<string, Utils.INamable>>, Utils.ISubDeclarator
+    public class StructureValue : BaseValue<Structure, Dictionary<string, INamable>>, ISubDeclarator
     {
         /// <summary>
         /// Provides the type as a structure
         /// </summary>
-        public Types.Structure Structure
+        public Structure Structure
         {
-            get { return Type as Types.Structure; }
+            get { return Type as Structure; }
         }
 
-        static int depth = 0;
+        private static int depth = 0;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="structure"></param>
         /// <paraparam name="setDefaultValue">Indicates that default values should be set</paraparam>
-        public StructureValue(Types.Structure structure, bool setDefaultValue = true)
-            : base(structure, new Dictionary<string, Utils.INamable>())
+        public StructureValue(Structure structure, bool setDefaultValue = true)
+            : base(structure, new Dictionary<string, INamable>())
         {
             Enclosing = structure;
 
@@ -48,12 +53,12 @@ namespace DataDictionary.Values
                 depth += 1;
                 if (depth > 100)
                 {
-                    throw new System.Exception("Possible structure recursion found");
+                    throw new Exception("Possible structure recursion found");
                 }
-                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
-                foreach (Types.StructureElement element in Structure.Elements)
+                ControllersManager.DesactivateAllNotifications();
+                foreach (StructureElement element in Structure.Elements)
                 {
-                    Variables.Variable variable = (Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
+                    Variable variable = (Variable) acceptor.getFactory().createVariable();
                     variable.Enclosing = this;
                     if (element.Type != null)
                     {
@@ -77,7 +82,7 @@ namespace DataDictionary.Values
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+                ControllersManager.ActivateAllNotifications();
 
                 depth -= 1;
                 DeclaredElements = null;
@@ -89,16 +94,16 @@ namespace DataDictionary.Values
         /// </summary>
         /// <param name="structure"></param>
         public StructureValue(StructureValue other)
-            : base(other.Structure, new Dictionary<string, Utils.INamable>())
+            : base(other.Structure, new Dictionary<string, INamable>())
         {
             Enclosing = other.Structure;
 
-            foreach (KeyValuePair<string, Utils.INamable> pair in other.Val)
+            foreach (KeyValuePair<string, INamable> pair in other.Val)
             {
-                Variables.Variable variable = pair.Value as Variables.Variable;
+                Variable variable = pair.Value as Variable;
                 if (variable != null)
                 {
-                    Variables.Variable var2 = (Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
+                    Variable var2 = (Variable) acceptor.getFactory().createVariable();
                     var2.Type = variable.Type;
                     var2.Name = variable.Name;
                     var2.Mode = variable.Mode;
@@ -124,7 +129,7 @@ namespace DataDictionary.Values
         /// </summary>
         /// <param name="name"></param>
         /// <param name="val"></param>
-        public void set(Variables.IVariable variable)
+        public void set(IVariable variable)
         {
             StructureElement element = Structure.findStructureElement(variable.Name);
 
@@ -141,13 +146,13 @@ namespace DataDictionary.Values
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public Variables.IVariable getVariable(string name)
+        public IVariable getVariable(string name)
         {
-            Variables.IVariable retVal = null;
+            IVariable retVal = null;
 
             if (Val.ContainsKey(name))
             {
-                retVal = Val[name] as Variables.IVariable;
+                retVal = Val[name] as IVariable;
             }
 
             return retVal;
@@ -158,27 +163,27 @@ namespace DataDictionary.Values
         /// </summary>
         public void InitDeclaredElements()
         {
-            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+            DeclaredElements = new Dictionary<string, List<INamable>>();
 
-            foreach (Utils.INamable namable in Val.Values)
+            foreach (INamable namable in Val.Values)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, namable);
+                ISubDeclaratorUtils.AppendNamable(this, namable);
             }
         }
 
         /// <summary>
         /// The elements declared by this declarator
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
+        public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
-            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
+            ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         public override string Name
@@ -194,7 +199,7 @@ namespace DataDictionary.Values
                     {
                         retVal += ", \n";
                     }
-                    Variables.Variable variable = tmp as Variables.Variable;
+                    Variable variable = tmp as Variable;
                     if (variable != null && variable.Value != null)
                     {
                         retVal += "    " + variable.Name + " => " + variable.Value.FullName;
@@ -212,18 +217,19 @@ namespace DataDictionary.Values
         /// <summary>
         /// The sub variables of this structure
         /// </summary>
-        private Dictionary<string, Variables.IVariable> subVariables;
-        public Dictionary<string, Variables.IVariable> SubVariables
+        private Dictionary<string, IVariable> subVariables;
+
+        public Dictionary<string, IVariable> SubVariables
         {
             get
             {
                 if (subVariables == null)
                 {
-                    subVariables = new Dictionary<string, Variables.IVariable>();
+                    subVariables = new Dictionary<string, IVariable>();
 
-                    foreach (KeyValuePair<string, Utils.INamable> kp in Val)
+                    foreach (KeyValuePair<string, INamable> kp in Val)
                     {
-                        Variables.IVariable var = kp.Value as Variables.IVariable;
+                        IVariable var = kp.Value as IVariable;
 
                         if (var != null)
                         {
@@ -243,7 +249,7 @@ namespace DataDictionary.Values
         /// <param name="duplicate">Indicates that a duplication of the variable should be performed</param>
         /// <param name="setEnclosing">Indicates that the new value enclosing element should be set</param>
         /// <returns></returns>
-        public override Values.IValue RightSide(Variables.IVariable variable, bool duplicate, bool setEnclosing)
+        public override IValue RightSide(IVariable variable, bool duplicate, bool setEnclosing)
         {
             StructureValue retVal = this;
 
@@ -273,7 +279,7 @@ namespace DataDictionary.Values
             bool first = true;
             foreach (object tmp in Val.Values)
             {
-                Variables.Variable variable = tmp as Variables.Variable;
+                Variable variable = tmp as Variable;
                 if (variable != null && !(variable.Value is DefaultValue))
                 {
                     if (!first)

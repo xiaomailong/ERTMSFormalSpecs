@@ -13,8 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -36,7 +41,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public Not(EFSSystem efsSystem)
             : base(efsSystem, "NOT")
         {
-            Value = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Value = (Parameter) acceptor.getFactory().createParameter();
             Value.Name = "Value";
             Value.Type = EFSSystem.BoolType;
             Value.setFather(this);
@@ -46,7 +51,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// The return type of the available function
         /// </summary>
-        public override Types.Type ReturnType
+        public override Type ReturnType
         {
             get { return EFSSystem.BoolType; }
         }
@@ -58,13 +63,13 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             int token = context.LocalScope.PushContext();
             AssignParameters(context, actuals);
-            Values.BoolValue val = context.findOnStack(Value).Value as Values.BoolValue;
+            BoolValue val = context.findOnStack(Value).Value as BoolValue;
             if (val != null)
             {
                 if (val.Val)

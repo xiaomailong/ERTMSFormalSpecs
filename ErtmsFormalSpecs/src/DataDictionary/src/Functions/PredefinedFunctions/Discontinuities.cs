@@ -13,9 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
 using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Collection = DataDictionary.Types.Collection;
+using Structure = DataDictionary.Types.Structure;
+using Type = DataDictionary.Types.Type;
+using Variable = DataDictionary.Variables.Variable;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -30,7 +37,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public Parameter Targets { get; private set; }
 
 
-        public override Types.Type ReturnType
+        public override Type ReturnType
         {
             get { return EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"), "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets"); }
         }
@@ -40,9 +47,9 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// </summary>
         /// <param name="efsSystem"></param>
         public Discontinuities(EFSSystem efsSystem)
-            : base(efsSystem,"DISCONT")
+            : base(efsSystem, "DISCONT")
         {
-            Targets = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Targets = (Parameter) acceptor.getFactory().createParameter();
             Targets.Name = "Targets";
             Targets.Type = EFSSystem.AnyType;
             Targets.setFather(this);
@@ -55,7 +62,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="root">The element on which the errors should be reported</param>
         /// <param name="context">The evaluation context</param>
         /// <param name="actualParameters">The parameters applied to this function call</param>
-        public override void additionalChecks(ModelElement root, Interpreter.InterpretationContext context, Dictionary<string, Interpreter.Expression> actualParameters)
+        public override void additionalChecks(ModelElement root, InterpretationContext context, Dictionary<string, Expression> actualParameters)
         {
             CheckFunctionalParameter(root, context, actualParameters[Targets.Name], 1);
         }
@@ -67,17 +74,17 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             int token = context.LocalScope.PushContext();
             AssignParameters(context, actuals);
 
-            Types.Collection collectionType = (Types.Collection)EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"), "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets");
-            Values.ListValue collection = new Values.ListValue(collectionType, new List<Values.IValue>());
+            Collection collectionType = (Collection) EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"), "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets");
+            ListValue collection = new ListValue(collectionType, new List<IValue>());
 
-            Function function = context.findOnStack(Targets).Value as Functions.Function;
+            Function function = context.findOnStack(Targets).Value as Function;
             if (function != null && !function.Name.Equals("EMPTY"))
             {
                 Graph graph1 = createGraphForValue(context, function, explain);
@@ -95,7 +102,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// </summary>
         /// <param name="function">Function containing targets</param>
         /// <param name="collection">Collection to be filled with targets</param>
-        private void ComputeTargets(Function function, Values.ListValue collection)
+        private void ComputeTargets(Function function, ListValue collection)
         {
             if (function != null)
             {
@@ -105,7 +112,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
                     for (int i = 0; i < graph.Segments.Count; i++)
                     {
                         Graph.Segment s = graph.Segments[i];
-                        Values.StructureValue value = CreateTarget(s.Start, s.End - s.Start, s.Val(s.Start));
+                        StructureValue value = CreateTarget(s.Start, s.End - s.Start, s.Val(s.Start));
 
                         collection.Val.Add(value);
                     }
@@ -120,36 +127,36 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="length"></param>
         /// <param name="speed"></param>
         /// <returns></returns>
-        private Values.StructureValue CreateTarget(double start, double length, double speed)
+        private StructureValue CreateTarget(double start, double length, double speed)
         {
-            Types.Structure structureType = (Types.Structure)EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"), "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target");
-            Values.StructureValue value = new Values.StructureValue(structureType);
+            Structure structureType = (Structure) EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"), "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target");
+            StructureValue value = new StructureValue(structureType);
 
-            Variables.Variable speedV = (Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
+            Variable speedV = (Variable) acceptor.getFactory().createVariable();
             speedV.Type = EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default.BaseTypes"), "Default.BaseTypes.Speed");
             speedV.Name = "Speed";
-            speedV.Mode = Generated.acceptor.VariableModeEnumType.aInternal;
+            speedV.Mode = acceptor.VariableModeEnumType.aInternal;
             speedV.Default = "0.0";
             speedV.Enclosing = value;
-            speedV.Value = new Values.DoubleValue(EFSSystem.DoubleType, speed);
+            speedV.Value = new DoubleValue(EFSSystem.DoubleType, speed);
             value.set(speedV);
 
-            Variables.Variable location = (Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
+            Variable location = (Variable) acceptor.getFactory().createVariable();
             location.Type = EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default.BaseTypes"), "Default.BaseTypes.Distance");
             location.Name = "Location";
-            location.Mode = Generated.acceptor.VariableModeEnumType.aInternal;
+            location.Mode = acceptor.VariableModeEnumType.aInternal;
             location.Default = "0.0";
             location.Enclosing = value;
-            location.Value = new Values.DoubleValue(EFSSystem.DoubleType, start);
+            location.Value = new DoubleValue(EFSSystem.DoubleType, start);
             value.set(location);
 
-            Variables.Variable lengthV = (Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
+            Variable lengthV = (Variable) acceptor.getFactory().createVariable();
             lengthV.Type = EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default.BaseTypes"), "Default.BaseTypes.Length");
             lengthV.Name = "Length";
-            lengthV.Mode = Generated.acceptor.VariableModeEnumType.aInternal;
+            lengthV.Mode = acceptor.VariableModeEnumType.aInternal;
             lengthV.Default = "0.0";
             lengthV.Enclosing = value;
-            lengthV.Value = new Values.DoubleValue(EFSSystem.DoubleType, length);
+            lengthV.Value = new DoubleValue(EFSSystem.DoubleType, length);
             value.set(lengthV);
             return value;
         }

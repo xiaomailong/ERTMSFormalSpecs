@@ -14,18 +14,22 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Types;
+using DataDictionary.Values;
+using Utils;
+
 namespace DataDictionary.Variables
 {
-    public interface IVariable : Utils.IModelElement, Types.ITypedElement, Utils.ISubDeclarator
+    public interface IVariable : IModelElement, ITypedElement, ISubDeclarator
     {
         /// <summary>
         /// Provides the value of the variable
         /// </summary>
-        Values.IValue Value { get; set; }
+        IValue Value { get; set; }
 
         /// <summary>
         /// Provides the default value to give to the variable
         /// </summary>
-        Values.IValue DefaultValue { get; }
+        IValue DefaultValue { get; }
     }
 }

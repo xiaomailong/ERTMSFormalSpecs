@@ -13,26 +13,36 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+using DataDictionary;
+using DataDictionary.Generated;
+using GUI.BoxArrowDiagram;
+using Collection = DataDictionary.Types.Collection;
+using Dictionary = DataDictionary.Dictionary;
+using Enum = DataDictionary.Types.Enum;
+using Function = DataDictionary.Functions.Function;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Procedure = DataDictionary.Functions.Procedure;
+using Range = DataDictionary.Types.Range;
+using Rule = DataDictionary.Rules.Rule;
+using StateMachine = DataDictionary.Types.StateMachine;
+using Structure = DataDictionary.Types.Structure;
+using StructureElement = DataDictionary.Types.StructureElement;
+using Type = DataDictionary.Types.Type;
+using Variable = DataDictionary.Variables.Variable;
+
 namespace GUI.ModelDiagram
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary;
-    using GUI.BoxArrowDiagram;
-    using DataDictionary.Types;
-    using DataDictionary.Variables;
-    using DataDictionary.Functions;
-    using DataDictionary.Rules;
-    using System.Drawing;
-
     /// <summary>
     /// The panel used to display model elements (types, variables, rules, ...)
     /// </summary>
     public class ModelDiagramPanel : BoxArrowPanel<IGraphicalDisplay, ModelArrow>
     {
-        private System.Windows.Forms.ToolStripMenuItem addRangeMenuItem;
+        private ToolStripMenuItem addRangeMenuItem;
 
         /// <summary>
         /// Constructor
@@ -52,9 +62,9 @@ namespace GUI.ModelDiagram
                 // 
                 // Add range
                 // 
-                addRangeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+                addRangeMenuItem = new ToolStripMenuItem();
                 addRangeMenuItem.Text = "Add range";
-                addRangeMenuItem.Click += new System.EventHandler(addRangeMenuItem_Click);
+                addRangeMenuItem.Click += new EventHandler(addRangeMenuItem_Click);
             }
         }
 
@@ -65,7 +75,7 @@ namespace GUI.ModelDiagram
         /// <param name="e"></param>
         private void addRangeMenuItem_Click(object sender, EventArgs e)
         {
-            Range range = (Range)DataDictionary.Generated.acceptor.getFactory().createRange();
+            Range range = (Range) acceptor.getFactory().createRange();
             range.Name = "Range";
             NameSpace.appendRanges(range);
             RefreshControl();
@@ -74,12 +84,20 @@ namespace GUI.ModelDiagram
         /// <summary>
         /// The namespace for which this panel is built
         /// </summary>
-        public NameSpace NameSpace { get { return Model as NameSpace; } set { Model = value; } }
+        public NameSpace NameSpace
+        {
+            get { return Model as NameSpace; }
+            set { Model = value; }
+        }
 
         /// <summary>
         /// The dictionary for which this panel is built
         /// </summary>
-        public Dictionary Dictionary { get { return Model as Dictionary; } set { Model = value; } }
+        public Dictionary Dictionary
+        {
+            get { return Model as Dictionary; }
+            set { Model = value; }
+        }
 
         /// <summary>
         /// Method used to create a box
@@ -120,13 +138,13 @@ namespace GUI.ModelDiagram
                 retVal = new RangeModelControl(range);
             }
 
-            DataDictionary.Types.Enum enumeration = model as DataDictionary.Types.Enum;
+            Enum enumeration = model as Enum;
             if (enumeration != null)
             {
                 retVal = new EnumModelControl(enumeration);
             }
 
-            DataDictionary.Types.Collection collection = model as DataDictionary.Types.Collection;
+            Collection collection = model as Collection;
             if (collection != null)
             {
                 retVal = new CollectionModelControl(collection);
@@ -180,27 +198,27 @@ namespace GUI.ModelDiagram
                     retVal.Add(nameSpace);
                 }
 
-                foreach (DataDictionary.Types.Type type in NameSpace.Types)
+                foreach (Type type in NameSpace.Types)
                 {
                     retVal.Add(type);
                 }
 
-                foreach (DataDictionary.Variables.Variable variable in NameSpace.Variables)
+                foreach (Variable variable in NameSpace.Variables)
                 {
                     retVal.Add(variable);
                 }
 
-                foreach (DataDictionary.Functions.Function function in NameSpace.Functions)
+                foreach (Function function in NameSpace.Functions)
                 {
                     retVal.Add(function);
                 }
 
-                foreach (DataDictionary.Functions.Procedure procedure in NameSpace.Procedures)
+                foreach (Procedure procedure in NameSpace.Procedures)
                 {
                     retVal.Add(procedure);
                 }
 
-                foreach (DataDictionary.Rules.Rule rule in NameSpace.Rules)
+                foreach (Rule rule in NameSpace.Rules)
                 {
                     retVal.Add(rule);
                 }
@@ -279,7 +297,7 @@ namespace GUI.ModelDiagram
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public override System.Drawing.Point GetNextPosition(IGraphicalDisplay model)
+        public override Point GetNextPosition(IGraphicalDisplay model)
         {
             if (LastComputedPositionModel != null && model.GetType() != LastComputedPositionModel.GetType())
             {

@@ -13,13 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.SpecificationView;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using Range = DataDictionary.Types.Range;
+using ReqRef = DataDictionary.ReqRef;
 
 namespace GUI.DataDictionaryView
 {
-    public class RangesTreeNode : ModelElementTreeNode<DataDictionary.Types.NameSpace>
+    public class RangesTreeNode : ModelElementTreeNode<NameSpace>
     {
         private class ItemEditor : NamedEditor
         {
@@ -37,7 +44,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public RangesTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+        public RangesTreeNode(NameSpace item, bool buildSubNodes)
             : base(item, buildSubNodes, "Ranges", true)
         {
         }
@@ -50,7 +57,7 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Types.Range range in Item.Ranges)
+            foreach (Range range in Item.Ranges)
             {
                 Nodes.Add(new RangeTreeNode(range, buildSubNodes));
             }
@@ -68,7 +75,7 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Types.Range range = (DataDictionary.Types.Range)DataDictionary.Generated.acceptor.getFactory().createRange();
+            Range range = (Range) acceptor.getFactory().createRange();
             range.Name = "<Range" + (GetNodeCount(false) + 1) + ">";
             range.MinValue = "0";
             range.MaxValue = "1";
@@ -79,7 +86,7 @@ namespace GUI.DataDictionaryView
         /// Adds a range
         /// </summary>
         /// <param name="range"></param>
-        public void AddRange(DataDictionary.Types.Range range)
+        public void AddRange(Range range)
         {
             Item.appendRanges(range);
             Nodes.Add(new RangeTreeNode(range, true));
@@ -110,20 +117,20 @@ namespace GUI.DataDictionaryView
             if (SourceNode is RangeTreeNode)
             {
                 RangeTreeNode rangeTreeNode = SourceNode as RangeTreeNode;
-                DataDictionary.Types.Range range = rangeTreeNode.Item;
+                Range range = rangeTreeNode.Item;
 
                 rangeTreeNode.Delete();
                 AddRange(range);
             }
-            else if (SourceNode is SpecificationView.ParagraphTreeNode)
+            else if (SourceNode is ParagraphTreeNode)
             {
-                SpecificationView.ParagraphTreeNode node = SourceNode as SpecificationView.ParagraphTreeNode;
-                DataDictionary.Specification.Paragraph paragaph = node.Item;
+                ParagraphTreeNode node = SourceNode as ParagraphTreeNode;
+                Paragraph paragaph = node.Item;
 
-                DataDictionary.Types.Range range = (DataDictionary.Types.Range)DataDictionary.Generated.acceptor.getFactory().createRange();
+                Range range = (Range) acceptor.getFactory().createRange();
                 range.Name = paragaph.Name;
 
-                DataDictionary.ReqRef reqRef = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
+                ReqRef reqRef = (ReqRef) acceptor.getFactory().createReqRef();
                 reqRef.Name = paragaph.FullId;
                 range.appendRequirements(reqRef);
                 AddRange(range);

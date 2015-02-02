@@ -13,9 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
-using DataDictionary.Values;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter.Filter;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using Utils;
+using Collection = DataDictionary.Types.Collection;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Interpreter
 {
@@ -48,7 +54,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The type of the collection
         /// </summary>
-        private Types.Collection ExpressionType { get; set; }
+        private Collection ExpressionType { get; set; }
 
         /// <summary>
         /// Performs the semantic analysis of the expression
@@ -56,20 +62,20 @@ namespace DataDictionary.Interpreter
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
+        public override bool SemanticAnalysis(INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
             if (retVal)
             {
-                Types.Type elementType = null;
+                Type elementType = null;
 
                 foreach (Expression expr in ListElements)
                 {
                     expr.SemanticAnalysis(instance, expectation);
                     StaticUsage.AddUsages(expr.StaticUsage, null);
 
-                    Types.Type current = expr.GetExpressionType();
+                    Type current = expr.GetExpressionType();
                     if (elementType == null)
                     {
                         elementType = current;
@@ -85,7 +91,7 @@ namespace DataDictionary.Interpreter
 
                 if (elementType != null)
                 {
-                    ExpressionType = (Types.Collection)Generated.acceptor.getFactory().createCollection();
+                    ExpressionType = (Collection) acceptor.getFactory().createCollection();
                     ExpressionType.Type = elementType;
                     ExpressionType.Name = "ListOf_" + elementType.FullName;
                     ExpressionType.Enclosing = Root.EFSSystem;
@@ -94,7 +100,7 @@ namespace DataDictionary.Interpreter
                 }
                 else
                 {
-                    ExpressionType = new Types.GenericCollection(EFSSystem);
+                    ExpressionType = new GenericCollection(EFSSystem);
                 }
             }
 
@@ -117,7 +123,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
-        public override Types.Type GetExpressionType()
+        public override Type GetExpressionType()
         {
             return ExpressionType;
         }
@@ -128,7 +134,7 @@ namespace DataDictionary.Interpreter
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
+        public override IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
             List<IValue> elements = new List<IValue>();
             foreach (Expression expr in ListElements)
@@ -144,7 +150,7 @@ namespace DataDictionary.Interpreter
                 }
             }
 
-            Values.IValue retVal = new Values.ListValue(ExpressionType, elements);
+            IValue retVal = new ListValue(ExpressionType, elements);
             return retVal;
         }
 
@@ -153,7 +159,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public override void fill(List<Utils.INamable> retVal, BaseFilter filter)
+        public override void fill(List<INamable> retVal, BaseFilter filter)
         {
             foreach (Expression expr in ListElements)
             {

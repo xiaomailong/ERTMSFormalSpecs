@@ -13,14 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using ErtmsSolutions.SiUnits;
 
 namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 {
     /* Uses GnuPlot to build graphs with curves .*/
+
     public class SpeedDistanceCurvePlotter : GnuPlotter
     {
         private bool min_x_is_set = false;
@@ -28,10 +31,26 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         private SiDistance min_x = SiDistance.Zero;
         private SiDistance max_x = SiDistance.Zero;
 
-        public SiDistance Min_X { set { min_x = value; min_x_is_set = true; } }
-        public SiDistance Max_X { set { max_x = value; max_x_is_set = true; } }
+        public SiDistance Min_X
+        {
+            set
+            {
+                min_x = value;
+                min_x_is_set = true;
+            }
+        }
+
+        public SiDistance Max_X
+        {
+            set
+            {
+                max_x = value;
+                max_x_is_set = true;
+            }
+        }
 
         /* Default creator */
+
         public SpeedDistanceCurvePlotter()
             : base()
         {
@@ -47,6 +66,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
 
         /************************************************************************/
+
         public void AddPoint(SinglePoint aPoint, string Name, string color)
         {
             PlottedItem p = new PlottedItem();
@@ -57,6 +77,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /************************************************************************/
+
         public void AddCurve(QuadraticSpeedDistanceCurve aCurve, string Name, string color)
         {
             PlottedItem p = new PlottedItem();
@@ -67,6 +88,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /************************************************************************/
+
         public void AddCurve(FlatSpeedDistanceCurve aCurve, string Name, string color)
         {
             PlottedItem p = new PlottedItem();
@@ -77,6 +99,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /************************************************************************/
+
         public void AddCurve(AccelerationSpeedDistanceSurface aSurface, string Name)
         {
             PlottedItem p = new PlottedItem();
@@ -94,6 +117,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
            added, will build gnuplot input files, call gnuplot.exe and remove temp files if needed.
            */
         /************************************************************************/
+
         private class PlottedItem
         {
             public object theCurve;
@@ -106,6 +130,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
 
         /******************************************************************************************************/
+
         protected override void Build_Gnuplot_Files(string job_filename, string png_filename)
         {
             int label_counter = 0;
@@ -119,8 +144,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
             swj.WriteLine("set xlabel 'm'             ");
             swj.WriteLine("set xrange [{0}:{1}]       ",
-                           min_x_is_set ? min_x.ToSubUnits(SiDistance_SubUnits.Meter).ToString() : "*",
-                           max_x_is_set ? max_x.ToSubUnits(SiDistance_SubUnits.Meter).ToString() : "*");
+                min_x_is_set ? min_x.ToSubUnits(SiDistance_SubUnits.Meter).ToString() : "*",
+                max_x_is_set ? max_x.ToSubUnits(SiDistance_SubUnits.Meter).ToString() : "*");
 
             swj.WriteLine("set ylabel 'km/h'          ");
             swj.WriteLine("set autoscale y            ");
@@ -158,8 +183,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             /* Let's plot all curves */
             for (int item_idx = 0; item_idx < Items.Count; item_idx++)
             {
-                SiSpeed v_offset = 0.0 * new SiSpeed((double)(item_idx) * -5.0, SiSpeed_SubUnits.KiloMeter_per_Hour);
-                SiDistance d_offset = 0.0 * new SiDistance((double)(item_idx) * -10.0);
+                SiSpeed v_offset = 0.0*new SiSpeed((double) (item_idx)*-5.0, SiSpeed_SubUnits.KiloMeter_per_Hour);
+                SiDistance d_offset = 0.0*new SiDistance((double) (item_idx)*-10.0);
 
                 PlottedItem pi = Items[item_idx];
 
@@ -187,9 +212,9 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                                 {
                                     the_text += String.Format(" A{0,6:F1}{1}", aSegment.A.ToUnits(), aSegment.A.UnitString());
                                     the_text += String.Format(" V{0,6:F1}..{1,6:F1} {2}",
-                                                            aSegment.Get(aSegment.X.X0).ToUnits(),
-                                                            aSegment.Get(aSegment.X.X1).ToUnits(),
-                                                            aSegment.Get(aSegment.X.X0).UnitString());
+                                        aSegment.Get(aSegment.X.X0).ToUnits(),
+                                        aSegment.Get(aSegment.X.X1).ToUnits(),
+                                        aSegment.Get(aSegment.X.X0).UnitString());
                                 }
                                 else
                                     the_text += String.Format(" V{0,6:F1}{1}", aSegment.V0.ToUnits(), aSegment.V0.UnitString());
@@ -241,7 +266,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                     }
                 }
 
-                /************************ Flat curve ******************************/
+                    /************************ Flat curve ******************************/
                 else if (pi.theCurve is FlatSpeedDistanceCurve)
                 {
                     FlatSpeedDistanceCurve F_Curve = pi.theCurve as FlatSpeedDistanceCurve;
@@ -255,9 +280,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                     swd.Close();
 
                     GPPlot.Add(String.Format("'{0}' using 1:2 axes x1y1 title \"{1}\" with lines linewidth 3 linecolor rgb \"{2}\"", filename_dat, pi.theName, pi.theColor));
-
                 }
-                /************************ Flat curve ******************************/
+                    /************************ Flat curve ******************************/
                 else if (pi.theCurve is AccelerationSpeedDistanceSurface)
                 {
                     AccelerationSpeedDistanceSurface AVD_Surface = pi.theCurve as AccelerationSpeedDistanceSurface;
@@ -276,27 +300,24 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
                             if (Show_ASD_AccelerationValues)
                             {
-                                SiDistance cx = (aTile.D.X.X0 + aTile.D.X.X1) * 0.5;
-                                SiSpeed cy = (aTile.V.X.X0 + aTile.V.X.X1) * 0.5;
+                                SiDistance cx = (aTile.D.X.X0 + aTile.D.X.X1)*0.5;
+                                SiSpeed cy = (aTile.V.X.X0 + aTile.V.X.X1)*0.5;
 
                                 label_counter++;
 
                                 swj.WriteLine("set label {0} '{1} m/s²' at {2}, {3} center front",
-                                               label_counter,
-                                               aTile.V.Y.ToUnits().ToString("0.00", System.Globalization.CultureInfo.InvariantCulture),
-                                               cx.ToUnits().ToString(System.Globalization.CultureInfo.InvariantCulture),
-                                               cy.ToSubUnits(SiSpeed_SubUnits.KiloMeter_per_Hour).ToString(System.Globalization.CultureInfo.InvariantCulture)
-                                               );
-
+                                    label_counter,
+                                    aTile.V.Y.ToUnits().ToString("0.00", CultureInfo.InvariantCulture),
+                                    cx.ToUnits().ToString(CultureInfo.InvariantCulture),
+                                    cy.ToSubUnits(SiSpeed_SubUnits.KiloMeter_per_Hour).ToString(CultureInfo.InvariantCulture)
+                                    );
                             }
-
                         }
                         swd.Close();
                         GPPlot.Add(String.Format("'{0}' using 1:2 axes x1y1 title \"{1}\" with points pointtype 5 pointsize 0.5 linecolor rgb \"gray\"", filename_dat, pi.theName));
-
                     }
                 }
-                /************************ A single Point ****************************/
+                    /************************ A single Point ****************************/
                 else if (pi.theCurve is SinglePoint)
                 {
                     string filename_dat = BuildTempFile(true, String.Format("{0}_{1:D2}.dat", my_base_name, item_idx));
@@ -307,18 +328,15 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                     swd.Close();
 
                     GPPlot.Add(String.Format("'{0}' axes x1y1 title \"{1}\" with points pointsize 2 pointtype 7 linecolor rgb \"{2}\" ",
-                                               filename_dat,
-                                               pi.theName,
-                                               pi.theColor));
-
+                        filename_dat,
+                        pi.theName,
+                        pi.theColor));
                 }
-                /************************ WTF is that ? ***************************/
+                    /************************ WTF is that ? ***************************/
                 else
                 {
                     throw new ArgumentException("Unsuported curve type" + pi.theCurve);
                 }
-
-
             }
 
             swj.Write("plot ");
@@ -328,8 +346,5 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
             swj.Close();
         }
-
-
     }
 }
-

@@ -13,25 +13,30 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
-using Utils;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter.Filter;
+using Utils;
+using Collection = DataDictionary.Types.Collection;
+using Type = DataDictionary.Types.Type;
+using Variable = DataDictionary.Variables.Variable;
 
 namespace DataDictionary.Interpreter.ListOperators
 {
-    public abstract class ListOperatorExpression : Expression, Utils.ISubDeclarator
+    public abstract class ListOperatorExpression : Expression, ISubDeclarator
     {
         /// <summary>
         /// List operators
         /// </summary>
-        public static string[] LIST_OPERATORS = 
-        { 
+        public static string[] LIST_OPERATORS =
+        {
             ThereIsExpression.OPERATOR,
-            ForAllExpression.OPERATOR, 
-            FirstExpression.OPERATOR, 
+            ForAllExpression.OPERATOR,
+            FirstExpression.OPERATOR,
             LastExpression.OPERATOR,
             CountExpression.OPERATOR,
-            ReduceExpression.OPERATOR, 
+            ReduceExpression.OPERATOR,
             SumExpression.OPERATOR,
             MapExpression.OPERATOR
         };
@@ -44,7 +49,7 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <summary>
         /// The iterator variable
         /// </summary>
-        public Variables.Variable IteratorVariable { get; private set; }
+        public Variable IteratorVariable { get; private set; }
 
         /// <summary>
         /// The name of the iterator variable
@@ -54,7 +59,7 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <summary>
         /// The iterator variable during the previous iteration
         /// </summary>
-        public Variables.Variable PreviousIteratorVariable { get; private set; }
+        public Variable PreviousIteratorVariable { get; private set; }
 
         /// <summary>
         /// Constructor
@@ -70,11 +75,11 @@ namespace DataDictionary.Interpreter.ListOperators
             ListExpression = listExpression;
             ListExpression.Enclosing = this;
 
-            IteratorVariable = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
+            IteratorVariable = (Variable) acceptor.getFactory().createVariable();
             IteratorVariable.Enclosing = this;
             IteratorVariable.Name = iteratorVariableName;
 
-            PreviousIteratorVariable = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
+            PreviousIteratorVariable = (Variable) acceptor.getFactory().createVariable();
             PreviousIteratorVariable.Enclosing = this;
             PreviousIteratorVariable.Name = "prevX";
 
@@ -88,23 +93,23 @@ namespace DataDictionary.Interpreter.ListOperators
         {
             DeclaredElements = new Dictionary<string, List<INamable>>();
 
-            Utils.ISubDeclaratorUtils.AppendNamable(this, IteratorVariable);
-            Utils.ISubDeclaratorUtils.AppendNamable(this, PreviousIteratorVariable);
+            ISubDeclaratorUtils.AppendNamable(this, IteratorVariable);
+            ISubDeclaratorUtils.AppendNamable(this, PreviousIteratorVariable);
         }
 
         /// <summary>
         /// The elements declared by this declarator
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; private set; }
+        public Dictionary<string, List<INamable>> DeclaredElements { get; private set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
-            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
+            ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>
@@ -113,7 +118,7 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
+        public override bool SemanticAnalysis(INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
@@ -123,7 +128,7 @@ namespace DataDictionary.Interpreter.ListOperators
                 ListExpression.SemanticAnalysis(instance, IsRightSide.INSTANCE);
                 StaticUsage.AddUsages(ListExpression.StaticUsage, Usage.ModeEnum.Read);
 
-                Types.Collection collectionType = ListExpression.GetExpressionType() as Types.Collection;
+                Collection collectionType = ListExpression.GetExpressionType() as Collection;
                 if (collectionType != null)
                 {
                     StaticUsage.AddUsage(collectionType, Root, Usage.ModeEnum.Type);
@@ -193,7 +198,7 @@ namespace DataDictionary.Interpreter.ListOperators
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public override void fill(List<Utils.INamable> retVal, BaseFilter filter)
+        public override void fill(List<INamable> retVal, BaseFilter filter)
         {
             ListExpression.fill(retVal, filter);
         }
@@ -209,8 +214,8 @@ namespace DataDictionary.Interpreter.ListOperators
             {
                 ListExpression.checkExpression();
 
-                Types.Type listExpressionType = ListExpression.GetExpressionType();
-                if (!(listExpressionType is Types.Collection))
+                Type listExpressionType = ListExpression.GetExpressionType();
+                if (!(listExpressionType is Collection))
                 {
                     AddError("List expression " + ListExpression.ToString() + " should hold a collection");
                 }

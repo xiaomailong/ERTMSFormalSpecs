@@ -13,13 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.SpecificationView;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using Procedure = DataDictionary.Functions.Procedure;
+using ReqRef = DataDictionary.ReqRef;
+using Structure = DataDictionary.Types.Structure;
 
 namespace GUI.DataDictionaryView
 {
-    public class StructureProceduresTreeNode : ModelElementTreeNode<DataDictionary.Types.Structure>
+    public class StructureProceduresTreeNode : ModelElementTreeNode<Structure>
     {
         /// <summary>
         /// The editor for message variables
@@ -40,7 +47,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public StructureProceduresTreeNode(DataDictionary.Types.Structure item, bool buildSubNodes)
+        public StructureProceduresTreeNode(Structure item, bool buildSubNodes)
             : base(item, buildSubNodes, "Procedures", true)
         {
         }
@@ -53,7 +60,7 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Functions.Procedure procedure in Item.Procedures)
+            foreach (Procedure procedure in Item.Procedures)
             {
                 Nodes.Add(new ProcedureTreeNode(procedure, buildSubNodes));
             }
@@ -71,7 +78,7 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Functions.Procedure procedure = (DataDictionary.Functions.Procedure)DataDictionary.Generated.acceptor.getFactory().createProcedure();
+            Procedure procedure = (Procedure) acceptor.getFactory().createProcedure();
             procedure.Name = "<Procedure" + (GetNodeCount(false) + 1) + ">";
             AddProcedure(procedure);
         }
@@ -80,7 +87,7 @@ namespace GUI.DataDictionaryView
         /// Adds a procedure in the corresponding namespace
         /// </summary>
         /// <param name="procedure"></param>
-        public ProcedureTreeNode AddProcedure(DataDictionary.Functions.Procedure procedure)
+        public ProcedureTreeNode AddProcedure(Procedure procedure)
         {
             Item.appendProcedures(procedure);
             ProcedureTreeNode retVal = new ProcedureTreeNode(procedure, true);
@@ -114,20 +121,20 @@ namespace GUI.DataDictionaryView
             if (SourceNode is ProcedureTreeNode)
             {
                 ProcedureTreeNode procedureTreeNode = SourceNode as ProcedureTreeNode;
-                DataDictionary.Functions.Procedure procedure = procedureTreeNode.Item;
+                Procedure procedure = procedureTreeNode.Item;
 
                 procedureTreeNode.Delete();
                 AddProcedure(procedure);
             }
-            else if (SourceNode is SpecificationView.ParagraphTreeNode)
+            else if (SourceNode is ParagraphTreeNode)
             {
-                SpecificationView.ParagraphTreeNode node = SourceNode as SpecificationView.ParagraphTreeNode;
-                DataDictionary.Specification.Paragraph paragaph = node.Item;
+                ParagraphTreeNode node = SourceNode as ParagraphTreeNode;
+                Paragraph paragaph = node.Item;
 
-                DataDictionary.Functions.Procedure procedure = (DataDictionary.Functions.Procedure)DataDictionary.Generated.acceptor.getFactory().createProcedure();
+                Procedure procedure = (Procedure) acceptor.getFactory().createProcedure();
                 procedure.Name = paragaph.Name;
 
-                DataDictionary.ReqRef reqRef = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
+                ReqRef reqRef = (ReqRef) acceptor.getFactory().createReqRef();
                 reqRef.Name = paragaph.FullId;
                 procedure.appendRequirements(reqRef);
                 AddProcedure(procedure);

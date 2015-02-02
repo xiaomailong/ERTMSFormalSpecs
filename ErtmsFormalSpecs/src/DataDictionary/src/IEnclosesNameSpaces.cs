@@ -13,19 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections;
+using System.Collections.Generic;
+using DataDictionary.Interpreter;
+using DataDictionary.Interpreter.Filter;
+using DataDictionary.Types;
+using DataDictionary.Types.AccessMode;
+using DataDictionary.Variables;
+using Utils;
+
 namespace DataDictionary
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary.Types;
-    using DataDictionary.Interpreter;
-    using Utils;
-    using DataDictionary.Types.AccessMode;
-    using DataDictionary.Variables;
-    using DataDictionary.Interpreter.Filter;
-
     /// <summary>
     /// Holds several namespaces
     /// </summary>
@@ -39,7 +38,7 @@ namespace DataDictionary
         /// <summary>
         /// The namespaces referenced by this 
         /// </summary>
-        System.Collections.ArrayList NameSpaces { get; }
+        ArrayList NameSpaces { get; }
     }
 
 
@@ -60,7 +59,7 @@ namespace DataDictionary
             SortedSet<AccessToVariable> accessesToVariables = new SortedSet<AccessToVariable>();
             foreach (Usage usage in system.FindReferences(IsCallableOrIsVariable.INSTANCE))
             {
-                ModelElement target = (ModelElement)usage.Referenced;
+                ModelElement target = (ModelElement) usage.Referenced;
                 ModelElement source = usage.User;
 
                 NameSpace sourceNameSpace = getCorrespondingNameSpace(source, container, true);
@@ -70,7 +69,7 @@ namespace DataDictionary
                 {
                     if (considerCall(usage, container, sourceNameSpace, targetNameSpace))
                     {
-                        procedureCalls.Add(new ProcedureOrFunctionCall(sourceNameSpace, targetNameSpace, (ICallable)target));
+                        procedureCalls.Add(new ProcedureOrFunctionCall(sourceNameSpace, targetNameSpace, (ICallable) target));
                     }
                 }
                 else
@@ -78,7 +77,7 @@ namespace DataDictionary
                     // IsVariable(usage.Referenced)
                     if (considerVariableReference(usage, container, sourceNameSpace, targetNameSpace))
                     {
-                        Usage.ModeEnum mode = (Usage.ModeEnum)usage.Mode;
+                        Usage.ModeEnum mode = (Usage.ModeEnum) usage.Mode;
 
                         // Find a corresponding access to variable (same source and target namespaces, and same variable
                         AccessToVariable otherAccess = null;
@@ -98,7 +97,7 @@ namespace DataDictionary
                                 // Since the access mode is different, one of them is either Read or ReadWrite and the other is ReadWrite or Write. 
                                 // So, in any case, the resulting access mode is ReadWrite
                                 accessesToVariables.Remove(otherAccess);
-                                accessesToVariables.Add(new AccessToVariable(sourceNameSpace, targetNameSpace, (IVariable)target, Usage.ModeEnum.ReadAndWrite));
+                                accessesToVariables.Add(new AccessToVariable(sourceNameSpace, targetNameSpace, (IVariable) target, Usage.ModeEnum.ReadAndWrite));
                             }
                             else
                             {
@@ -108,7 +107,7 @@ namespace DataDictionary
                         else
                         {
                             // Does not already exists, insert it in the list
-                            accessesToVariables.Add(new AccessToVariable(sourceNameSpace, targetNameSpace, (IVariable)target, mode));
+                            accessesToVariables.Add(new AccessToVariable(sourceNameSpace, targetNameSpace, (IVariable) target, mode));
                         }
                     }
                 }

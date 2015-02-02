@@ -13,6 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections;
+using DataDictionary.Specification;
+using Utils;
+
 namespace DataDictionary
 {
     public class ReqRef : Generated.ReqRef, ICommentable
@@ -28,7 +33,7 @@ namespace DataDictionary
 
                 if (Paragraph != null)
                 {
-                    Specification.Specification specification = Utils.EnclosingFinder<Specification.Specification>.find(Paragraph);
+                    Specification.Specification specification = EnclosingFinder<Specification.Specification>.find(Paragraph);
                     if (specification != null)
                     {
                         retVal = specification.Name + " § " + Paragraph.getId();
@@ -60,34 +65,34 @@ namespace DataDictionary
         /// <summary>
         /// The implementation of this trace
         /// </summary>
-        public Utils.IModelElement Model
+        public IModelElement Model
         {
-            get { return Enclosing as Utils.IModelElement; }
+            get { return Enclosing as IModelElement; }
         }
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
-                if (Model is DataDictionary.ReqRelated)
+                if (Model is ReqRelated)
                 {
-                    DataDictionary.ReqRelated reqRelated = Model as DataDictionary.ReqRelated;
+                    ReqRelated reqRelated = Model as ReqRelated;
                     if (reqRelated != null)
                     {
                         return reqRelated.Requirements;
                     }
                 }
-                else if (Model is Specification.Paragraph)
+                else if (Model is Paragraph)
                 {
-                    Specification.Paragraph paragraph = Model as Specification.Paragraph;
+                    Paragraph paragraph = Model as Paragraph;
                     if (paragraph != null)
                     {
                         return paragraph.Requirements;
                     }
                 }
-                else if (Model is DataDictionary.ReferencesParagraph)
+                else if (Model is ReferencesParagraph)
                 {
-                    DataDictionary.ReferencesParagraph referencesParagraph = Model as DataDictionary.ReferencesParagraph;
+                    ReferencesParagraph referencesParagraph = Model as ReferencesParagraph;
                     if (referencesParagraph != null)
                     {
                         return referencesParagraph.Requirements;
@@ -100,11 +105,11 @@ namespace DataDictionary
         /// <summary>
         /// The corresponding specification paragraph
         /// </summary>
-        public Specification.Paragraph Paragraph
+        public Paragraph Paragraph
         {
             get
             {
-                Specification.Paragraph retVal = GuidCache.INSTANCE.GetModel(getId()) as Specification.Paragraph;
+                Paragraph retVal = GuidCache.INSTANCE.GetModel(getId()) as Paragraph;
 
                 if (retVal == null)
                 {
@@ -135,7 +140,7 @@ namespace DataDictionary
             set
             {
                 // Sets the paragraph and specification guid
-                Specification.Specification specification = Utils.EnclosingFinder<Specification.Specification>.find(value);
+                Specification.Specification specification = EnclosingFinder<Specification.Specification>.find(value);
                 setId(value.Guid);
                 setSpecId(specification.Guid);
             }
@@ -163,7 +168,7 @@ namespace DataDictionary
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
         }
 

@@ -13,18 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.IO;
-using MigraDoc.DocumentObjectModel;
-using MigraDoc.DocumentObjectModel.Tables;
 
+using MigraDoc.DocumentObjectModel;
 
 namespace Reports.ERTMSAcademy
 {
     public class ERTMSAcademyReport : ReportTools
     {
-
         /// <summary>
         /// Constructor
         /// </summary>

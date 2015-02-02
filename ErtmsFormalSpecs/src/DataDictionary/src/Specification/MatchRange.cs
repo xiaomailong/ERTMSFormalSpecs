@@ -14,9 +14,11 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Generated;
+
 namespace DataDictionary.Specification
 {
-    public class MatchRange : Generated.match_range
+    public class MatchRange : match_range
     {
         /// <summary>
         /// The MatchRange content

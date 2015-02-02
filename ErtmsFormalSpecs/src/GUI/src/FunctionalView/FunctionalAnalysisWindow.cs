@@ -13,18 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
 using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-using DataDictionary.Constants;
-using DataDictionary.Rules;
-using DataDictionary.Types;
-using DataDictionary.Variables;
-using Utils;
-using GUI.BoxArrowDiagram;
 using DataDictionary;
+using DataDictionary.Types;
 using DataDictionary.Types.AccessMode;
+using GUI.BoxArrowDiagram;
 
 namespace GUI.FunctionalView
 {
@@ -54,7 +48,10 @@ namespace GUI.FunctionalView
         /// <summary>
         /// The panel used to display the state diagram
         /// </summary>
-        private FunctionalAnalysisPanel FunctionalAnalysisPanel { get { return (FunctionalAnalysisPanel)BoxArrowContainerPanel; } }
+        private FunctionalAnalysisPanel FunctionalAnalysisPanel
+        {
+            get { return (FunctionalAnalysisPanel) BoxArrowContainerPanel; }
+        }
 
         /// <summary>
         /// Sets the state machine type

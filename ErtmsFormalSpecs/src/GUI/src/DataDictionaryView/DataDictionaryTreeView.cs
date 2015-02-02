@@ -13,10 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.Collections.Generic;
+
+using DataDictionary;
+
 namespace GUI.DataDictionaryView
 {
-    public class DataDictionaryTreeView : TypedTreeView<DataDictionary.Dictionary>
+    public class DataDictionaryTreeView : TypedTreeView<Dictionary>
     {
         protected override void BuildModel()
         {

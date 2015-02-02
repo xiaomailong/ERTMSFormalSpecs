@@ -13,17 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Drawing;
+using System.Windows.Forms;
+using DataDictionary.Rules;
+
 namespace GUI.ModelDiagram
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Drawing;
-    using DataDictionary;
-    using DataDictionary.Rules;
-    using System.Windows.Forms;
-
     /// <summary>
     /// The boxes that represent a rule
     /// </summary>
@@ -45,9 +41,9 @@ namespace GUI.ModelDiagram
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void HandleMouseClick(object sender, MouseEventArgs e)
+        private void HandleMouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 Panel.Select(this, true);
             }
@@ -56,6 +52,9 @@ namespace GUI.ModelDiagram
         /// <summary>
         /// The name of the kind of model
         /// </summary>
-        public override string ModelName { get { return "Rule"; } }
+        public override string ModelName
+        {
+            get { return "Rule"; }
+        }
     }
 }

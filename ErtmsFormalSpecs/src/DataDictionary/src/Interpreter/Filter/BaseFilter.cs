@@ -13,10 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using Utils;
+
 namespace DataDictionary.Interpreter.Filter
 {
-    using Utils;
-
     /// <summary>
     /// A base interpreter tree node filter
     /// </summary>

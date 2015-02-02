@@ -13,21 +13,27 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using DataDictionary.Constants;
+using DataDictionary.Rules;
+using DataDictionary.Types;
+using GUI.Converters;
+using GUI.StateDiagram;
 
 namespace GUI.DataDictionaryView
 {
-    public class StateMachineTreeNode : ReqRelatedTreeNode<DataDictionary.Types.StateMachine>
+    public class StateMachineTreeNode : ReqRelatedTreeNode<StateMachine>
     {
-        private class InternalStateTypeConverter : Converters.StateTypeConverter
+        private class InternalStateTypeConverter : StateTypeConverter
         {
             public override StandardValuesCollection
-            GetStandardValues(ITypeDescriptorContext context)
+                GetStandardValues(ITypeDescriptorContext context)
             {
-                return GetValues(((ItemEditor)context.Instance).Item);
+                return GetValues(((ItemEditor) context.Instance).Item);
             }
         }
 
@@ -41,7 +47,7 @@ namespace GUI.DataDictionaryView
             {
             }
 
-            [Category("Default"), TypeConverter(typeof(InternalStateTypeConverter))]
+            [Category("Default"), TypeConverter(typeof (InternalStateTypeConverter))]
             public string InitialState
             {
                 get { return Item.Default; }
@@ -49,15 +55,15 @@ namespace GUI.DataDictionaryView
             }
         }
 
-        StateMachineStatesTreeNode states;
-        StateMachineRulesTreeNode rules;
+        private StateMachineStatesTreeNode states;
+        private StateMachineRulesTreeNode rules;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
         /// <param name="children"></param>
-        public StateMachineTreeNode(DataDictionary.Types.StateMachine item, bool buildSubNodes)
+        public StateMachineTreeNode(StateMachine item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }
@@ -95,7 +101,7 @@ namespace GUI.DataDictionaryView
         /// Adds a new state 
         /// </summary>
         /// <param name="state"></param>
-        public StateTreeNode AddState(DataDictionary.Constants.State state)
+        public StateTreeNode AddState(State state)
         {
             return states.AddState(state);
         }
@@ -109,7 +115,7 @@ namespace GUI.DataDictionaryView
         /// Adds a new state 
         /// </summary>
         /// <param name="state"></param>
-        public RuleTreeNode AddRule(DataDictionary.Rules.Rule rule)
+        public RuleTreeNode AddRule(Rule rule)
         {
             return rules.AddRule(rule);
         }
@@ -119,7 +125,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         public void ViewDiagram()
         {
-            StateDiagram.StateDiagramWindow window = new StateDiagram.StateDiagramWindow();
+            StateDiagramWindow window = new StateDiagramWindow();
             GUIUtils.MDIWindow.AddChildWindow(window);
             window.SetStateMachine(Item);
             window.Text = Item.Name + " state diagram";
@@ -145,9 +151,8 @@ namespace GUI.DataDictionaryView
             {
                 if (MessageBox.Show("Are you sure you want to override the state machine ? ", "Override state machine", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-
-                    StateMachineTreeNode stateMachineTreeNode = (StateMachineTreeNode)SourceNode;
-                    DataDictionary.Types.StateMachine stateMachine = stateMachineTreeNode.Item;
+                    StateMachineTreeNode stateMachineTreeNode = (StateMachineTreeNode) SourceNode;
+                    StateMachine stateMachine = stateMachineTreeNode.Item;
                     stateMachineTreeNode.Delete();
 
                     // Update the model

@@ -13,12 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using EnumValue = DataDictionary.Constants.EnumValue;
+using Range = DataDictionary.Types.Range;
 
 namespace GUI.DataDictionaryView
 {
@@ -28,7 +29,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public RangeValuesTreeNode(DataDictionary.Types.Range item, bool buildSubNodes)
+        public RangeValuesTreeNode(Range item, bool buildSubNodes)
             : base(item, buildSubNodes, "Special values", true, false)
         {
         }
@@ -41,7 +42,7 @@ namespace GUI.DataDictionaryView
         {
             Nodes.Clear();
 
-            foreach (DataDictionary.Constants.EnumValue value in Item.SpecialValues)
+            foreach (EnumValue value in Item.SpecialValues)
             {
                 Nodes.Add(new EnumerationValueTreeNode(value, buildSubNodes));
             }
@@ -51,7 +52,7 @@ namespace GUI.DataDictionaryView
 
         public override void AddSpecialValueHandler(object sender, EventArgs e)
         {
-            DataDictionary.Constants.EnumValue value = (DataDictionary.Constants.EnumValue)DataDictionary.Generated.acceptor.getFactory().createEnumValue();
+            EnumValue value = (EnumValue) acceptor.getFactory().createEnumValue();
             value.Name = "<unnamed>";
             AppendSpecialValue(value);
         }
@@ -60,7 +61,7 @@ namespace GUI.DataDictionaryView
         /// Adds a new special value to this range
         /// </summary>
         /// <param name="value"></param>
-        public void AppendSpecialValue(DataDictionary.Constants.EnumValue value)
+        public void AppendSpecialValue(EnumValue value)
         {
             Item.appendSpecialValues(value);
             Nodes.Add(new EnumerationValueTreeNode(value, true));
@@ -79,6 +80,5 @@ namespace GUI.DataDictionaryView
 
             return retVal;
         }
-
     }
 }

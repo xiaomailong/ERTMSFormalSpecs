@@ -13,22 +13,28 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
-using DataDictionary.Rules;
+using DataDictionary.Generated;
+using GUI.Converters;
+using GUI.StateDiagram;
+using Rule = DataDictionary.Rules.Rule;
+using State = DataDictionary.Constants.State;
+using StateMachine = DataDictionary.Types.StateMachine;
 
 namespace GUI.DataDictionaryView
 {
-    public class StateTreeNode : ReqRelatedTreeNode<DataDictionary.Constants.State>
+    public class StateTreeNode : ReqRelatedTreeNode<State>
     {
-        private class InternalStateTypeConverter : Converters.StateTypeConverter
+        private class InternalStateTypeConverter : StateTypeConverter
         {
             public override StandardValuesCollection
-            GetStandardValues(ITypeDescriptorContext context)
+                GetStandardValues(ITypeDescriptorContext context)
             {
-                return GetValues(((ItemEditor)context.Instance).Item);
+                return GetValues(((ItemEditor) context.Instance).Item);
             }
         }
 
@@ -49,7 +55,7 @@ namespace GUI.DataDictionaryView
                 set { Item.Name = value; }
             }
 
-            [Category("Default"), TypeConverter(typeof(InternalStateTypeConverter))]
+            [Category("Default"), TypeConverter(typeof (InternalStateTypeConverter))]
             public string InitialState
             {
                 get { return Item.StateMachine.Default; }
@@ -61,13 +67,14 @@ namespace GUI.DataDictionaryView
         /// The sub state machine
         /// </summary>
         public StateSubStatesTreeNode SubStates;
+
         public StateRulesTreeNode Rules;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public StateTreeNode(DataDictionary.Constants.State item, bool buildSubNodes)
+        public StateTreeNode(State item, bool buildSubNodes)
             : base(item, buildSubNodes, null, false, true)
         {
         }
@@ -87,11 +94,11 @@ namespace GUI.DataDictionaryView
 
             if (Item.getEnterAction() != null)
             {
-                Nodes.Add(new RuleTreeNode((Rule)Item.getEnterAction(), buildSubNodes));
+                Nodes.Add(new RuleTreeNode((Rule) Item.getEnterAction(), buildSubNodes));
             }
             if (Item.getLeaveAction() != null)
             {
-                Nodes.Add(new RuleTreeNode((Rule)Item.getLeaveAction(), buildSubNodes));
+                Nodes.Add(new RuleTreeNode((Rule) Item.getLeaveAction(), buildSubNodes));
             }
         }
 
@@ -106,7 +113,7 @@ namespace GUI.DataDictionaryView
 
         public void AddStateHandler(object sender, EventArgs args)
         {
-            DataDictionary.Constants.State state = (DataDictionary.Constants.State)DataDictionary.Generated.acceptor.getFactory().createState();
+            State state = (State) acceptor.getFactory().createState();
             state.Name = "State" + (GetNodeCount(true) + 1);
             Item.StateMachine.appendStates(state);
             Nodes.Add(new StateTreeNode(state, true));
@@ -115,7 +122,7 @@ namespace GUI.DataDictionaryView
 
         public void AddEnterActionHandler(object sender, EventArgs args)
         {
-            DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)DataDictionary.Generated.acceptor.getFactory().createRule();
+            Rule rule = (Rule) acceptor.getFactory().createRule();
             rule.Name = "Enter action";
             Item.setEnterAction(rule);
             Nodes.Add(new RuleTreeNode(rule, true));
@@ -124,7 +131,7 @@ namespace GUI.DataDictionaryView
 
         public void AddLeaveActionHandler(object sender, EventArgs args)
         {
-            DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)DataDictionary.Generated.acceptor.getFactory().createRule();
+            Rule rule = (Rule) acceptor.getFactory().createRule();
             rule.Name = "Leave action";
             Item.setLeaveAction(rule);
             Nodes.Add(new RuleTreeNode(rule, true));
@@ -141,8 +148,8 @@ namespace GUI.DataDictionaryView
             {
                 if (MessageBox.Show("Are you sure you want to override the state machine ? ", "Override state machine", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    StateMachineTreeNode stateMachineTreeNode = (StateMachineTreeNode)SourceNode;
-                    DataDictionary.Types.StateMachine stateMachine = stateMachineTreeNode.Item;
+                    StateMachineTreeNode stateMachineTreeNode = (StateMachineTreeNode) SourceNode;
+                    StateMachine stateMachine = stateMachineTreeNode.Item;
                     stateMachineTreeNode.Delete();
 
                     // Update the model
@@ -163,7 +170,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         public void ViewDiagram()
         {
-            StateDiagram.StateDiagramWindow window = new StateDiagram.StateDiagramWindow();
+            StateDiagramWindow window = new StateDiagramWindow();
             GUIUtils.MDIWindow.AddChildWindow(window);
             window.SetStateMachine(Item.StateMachine);
             window.Text = Item.Name + " state diagram";

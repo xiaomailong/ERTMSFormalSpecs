@@ -13,17 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.Windows.Forms;
+using DataDictionary;
+using DataDictionary.Interpreter;
+using DataDictionary.Tests;
+using DataDictionary.Tests.Runner;
+using DataDictionary.Tests.Runner.Events;
+
 namespace GUI.TestRunnerView.TimeLineControl
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary.Tests.Runner.Events;
-    using DataDictionary.Tests.Runner;
-    using System.Windows.Forms;
-    using DataDictionary.Interpreter;
-
     /// <summary>
     /// The static time line according to a TimeLine
     /// </summary>
@@ -38,7 +38,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             {
                 EventTimeLine retVal = null;
 
-                Runner runner = DataDictionary.EFSSystem.INSTANCE.Runner;
+                Runner runner = EFSSystem.INSTANCE.Runner;
                 if (runner != null)
                 {
                     retVal = runner.EventTimeLine;
@@ -87,14 +87,14 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void TimeLineControl_DoubleClick(object sender, EventArgs e)
+        private void TimeLineControl_DoubleClick(object sender, EventArgs e)
         {
             ModelEvent evt = GetEventUnderMouse();
 
             VariableUpdate variableUpdate = evt as VariableUpdate;
             if (variableUpdate != null)
             {
-                DataDictionary.Interpreter.ExplanationPart explain = variableUpdate.Explanation;
+                ExplanationPart explain = variableUpdate.Explanation;
                 ExplainBox explainTextBox = new ExplainBox();
                 explainTextBox.setExplanation(explain);
                 GUIUtils.MDIWindow.AddChildWindow(explainTextBox);
@@ -103,7 +103,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             RuleFired rulefired = evt as RuleFired;
             if (rulefired != null)
             {
-                DataDictionary.Interpreter.ExplanationPart explain = rulefired.Explanation;
+                ExplanationPart explain = rulefired.Explanation;
                 ExplainBox explainTextBox = new ExplainBox();
                 explainTextBox.setExplanation(explain);
                 GUIUtils.MDIWindow.AddChildWindow(explainTextBox);
@@ -112,7 +112,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             Expect expect = evt as Expect;
             if (expect != null)
             {
-                DataDictionary.Tests.Expectation expectation = expect.Expectation;
+                Expectation expectation = expect.Expectation;
 
                 if (expectation != null)
                 {

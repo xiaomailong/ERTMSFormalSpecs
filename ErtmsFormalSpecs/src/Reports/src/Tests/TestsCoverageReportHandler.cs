@@ -13,20 +13,23 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections.Generic;
+using DataDictionary;
+using DataDictionary.Rules;
 using DataDictionary.Tests;
+using DataDictionary.Tests.Runner;
+using MigraDoc.DocumentObjectModel;
 
 namespace Reports.Tests
 {
-    using System.Collections.Generic;
-    using DataDictionary;
-    using MigraDoc.DocumentObjectModel;
-
     public class TestsCoverageReportHandler : ReportHandler
     {
         /// <summary>
         /// The system for which this report is built
         /// </summary>
         private EFSSystem __efsSystem;
+
         public override EFSSystem EFSSystem
         {
             get
@@ -101,11 +104,11 @@ namespace Reports.Tests
             TestsCoverageReport report = new TestsCoverageReport(retVal);
             Log.Info("..gathering requirement coverage");
             report.CreateRequirementCoverageArticle(this);
-            HashSet<DataDictionary.Rules.RuleCondition> activatedRules = new HashSet<DataDictionary.Rules.RuleCondition>();
+            HashSet<RuleCondition> activatedRules = new HashSet<RuleCondition>();
             if (TestCase != null) /* We generate a report for a selected test case */
             {
                 Log.Info("..creating test case report " + TestCase.Name);
-                EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(TestCase.SubSequence, false, false);
+                EFSSystem.Runner = new Runner(TestCase.SubSequence, false, false);
                 Dictionary = TestCase.Dictionary;
                 report.CreateTestCaseSection(EFSSystem.Runner, TestCase, this, activatedRules, true);
             }
@@ -119,7 +122,7 @@ namespace Reports.Tests
             {
                 Log.Info("..creating frame report " + Frame.Name);
                 Dictionary = Frame.Dictionary;
-                
+
                 report.CreateFrameArticle(Frame, this, activatedRules);
             }
             else if (Dictionary != null) /* We generate a full report */
@@ -149,6 +152,4 @@ namespace Reports.Tests
         public bool AddSteps { set; get; }
         public bool AddActivatedRulesInSteps { set; get; }
     }
-
 }
-

@@ -15,8 +15,11 @@
 // ------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Reflection;
+using DataDictionary.Tests.Runner;
 using DataDictionary.Values;
 using DataDictionary.Variables;
+using log4net;
 
 namespace DataDictionary.Rules
 {
@@ -28,7 +31,7 @@ namespace DataDictionary.Rules
         /// <summary>
         /// The Logger
         /// </summary>
-        protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// Indicates whether the change has already been applied
@@ -38,17 +41,17 @@ namespace DataDictionary.Rules
         /// <summary>
         /// The variable affected by the change
         /// </summary>
-        public Variables.IVariable Variable { get; private set; }
+        public IVariable Variable { get; private set; }
 
         /// <summary>
         /// The value the variable had before the change
         /// </summary>
-        public Values.IValue PreviousValue { get; private set; }
+        public IValue PreviousValue { get; private set; }
 
         /// <summary>
         /// The new value affected by the change
         /// </summary>
-        public Values.IValue NewValue { get; private set; }
+        public IValue NewValue { get; private set; }
 
         /// <summary>
         /// Constructor
@@ -56,7 +59,7 @@ namespace DataDictionary.Rules
         /// <param name="variable"></param>
         /// <param name="previousValue"></param>
         /// <param name="newValue"></param>
-        public Change(Variables.IVariable variable, Values.IValue previousValue, Values.IValue newValue)
+        public Change(IVariable variable, IValue previousValue, IValue newValue)
         {
             Variable = variable;
             PreviousValue = previousValue;
@@ -68,7 +71,7 @@ namespace DataDictionary.Rules
         /// Applies the change if it has not yet been applied
         /// </summary>
         /// <param name="runner"></param>
-        public void Apply(Tests.Runner.Runner runner)
+        public void Apply(Runner runner)
         {
             if (!Applied)
             {
@@ -101,7 +104,7 @@ namespace DataDictionary.Rules
         {
             Variable.Value = value;
 
-            Variables.Variable variable = Variable as Variables.Variable;
+            Variable variable = Variable as Variable;
             if (variable != null)
             {
                 variable.HandleChange();
@@ -133,7 +136,7 @@ namespace DataDictionary.Rules
         /// <param name="change">The change to add</param>
         /// <param name="apply">Indicates whether the change should be applied immediately</param>
         /// <param name="runner"></param>
-        public void Add(Change change, bool apply, Tests.Runner.Runner runner)
+        public void Add(Change change, bool apply, Runner runner)
         {
             Changes.Add(change);
             if (apply)
@@ -166,9 +169,9 @@ namespace DataDictionary.Rules
         /// Apply all changes
         /// </summary>
         /// <param name="runner"></param>
-        public void Apply(Tests.Runner.Runner runner)
+        public void Apply(Runner runner)
         {
-            foreach (DataDictionary.Rules.Change change in Changes)
+            foreach (Change change in Changes)
             {
                 change.Apply(runner);
             }
@@ -190,21 +193,21 @@ namespace DataDictionary.Rules
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>
-        public bool ImpactVariable(Variables.IVariable variable)
+        public bool ImpactVariable(IVariable variable)
         {
             bool retVal = false;
 
             foreach (Change change in Changes)
             {
-                Variables.IVariable current = change.Variable;
+                IVariable current = change.Variable;
                 while (!retVal && current != null)
                 {
                     retVal = current == variable;
 
-                    Values.StructureValue enclosingStructureValue = current.Enclosing as Values.StructureValue;
+                    StructureValue enclosingStructureValue = current.Enclosing as StructureValue;
                     if (enclosingStructureValue != null)
                     {
-                        current = enclosingStructureValue.Enclosing as Variables.IVariable;
+                        current = enclosingStructureValue.Enclosing as IVariable;
                     }
                     else
                     {

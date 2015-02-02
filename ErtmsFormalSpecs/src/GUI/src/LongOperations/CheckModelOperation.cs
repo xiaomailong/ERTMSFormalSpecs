@@ -13,10 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary;
+using DataDictionary.Generated;
+using Dictionary = DataDictionary.Dictionary;
+
 namespace GUI.LongOperations
 {
-    using DataDictionary;
-
     public class CheckModelOperation : BaseLongOperation
     {
         /// <summary>
@@ -39,17 +42,17 @@ namespace GUI.LongOperations
         /// <param name="arg"></param>
         public override void ExecuteWork()
         {
-            DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+            ControllersManager.DesactivateAllNotifications();
             try
             {
-                foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+                foreach (Dictionary dictionary in EFSSystem.Dictionaries)
                 {
                     dictionary.CheckRules();
                 }
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+                ControllersManager.ActivateAllNotifications();
             }
         }
     }

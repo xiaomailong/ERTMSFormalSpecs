@@ -13,17 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Drawing;
+using System.Windows.Forms;
+using DataDictionary.Generated;
+using Variable = DataDictionary.Variables.Variable;
+
 namespace GUI.ModelDiagram
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary;
-    using DataDictionary.Variables;
-    using System.Drawing;
-    using System.Windows.Forms;
-
     /// <summary>
     /// The boxes that represent a variable
     /// </summary>
@@ -46,9 +43,9 @@ namespace GUI.ModelDiagram
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void HandleMouseClick(object sender, MouseEventArgs e)
+        private void HandleMouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 Panel.Select(this, true);
             }
@@ -57,17 +54,18 @@ namespace GUI.ModelDiagram
         /// <summary>
         /// The name of the kind of model
         /// </summary>
-        public override string ModelName 
-        { 
-            get {
+        public override string ModelName
+        {
+            get
+            {
                 string retVal = "Variable";
 
-                if (((Variable)Model).getVariableMode() == DataDictionary.Generated.acceptor.VariableModeEnumType.aConstant)
+                if (((Variable) Model).getVariableMode() == acceptor.VariableModeEnumType.aConstant)
                 {
                     retVal = "Constant";
                 }
 
-                return retVal;    
+                return retVal;
             }
         }
     }

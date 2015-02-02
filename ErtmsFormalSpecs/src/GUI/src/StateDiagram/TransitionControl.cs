@@ -13,14 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
 using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
+using DataDictionary.Constants;
 using DataDictionary.Rules;
+using DataDictionary.Tests.Runner;
 using DataDictionary.Types;
 using GUI.BoxArrowDiagram;
-using DataDictionary.Constants;
+using Utils;
 
 namespace GUI.StateDiagram
 {
@@ -56,7 +56,7 @@ namespace GUI.StateDiagram
             {
                 if (Name.CompareTo("Initial State") != 0)
                 {
-                    StateMachine transitionStateMachine = Utils.EnclosingFinder<StateMachine>.find(Model.RuleCondition);
+                    StateMachine transitionStateMachine = EnclosingFinder<StateMachine>.find(Model.RuleCondition);
                     if (transitionStateMachine == null && Name.CompareTo("Initial State") != 0)
                     {
                         // A deduced case is a arrow that is not defined in any state machine
@@ -64,7 +64,7 @@ namespace GUI.StateDiagram
                     }
                     else
                     {
-                        StatePanel panel = (StatePanel)Panel;
+                        StatePanel panel = (StatePanel) Panel;
                         if (Model.RuleCondition != null && panel.StateMachine.Rules.Contains(Model.RuleCondition.EnclosingRule))
                         {
                             // A deduced case is a arrow that is defined in the rules of the state machines (not in its states)
@@ -111,10 +111,10 @@ namespace GUI.StateDiagram
             {
                 if (Model.RuleCondition != null)
                 {
-                    DataDictionary.Tests.Runner.Runner runner = Model.RuleCondition.EFSSystem.Runner;
+                    Runner runner = Model.RuleCondition.EFSSystem.Runner;
                     if (runner != null)
                     {
-                        StatePanel panel = (StatePanel)Panel;
+                        StatePanel panel = (StatePanel) Panel;
                         if (runner.RuleActivatedAtTime(Model.RuleCondition, runner.LastActivationTime, panel.StateMachineVariable))
                         {
                             retVal = true;
@@ -149,6 +149,5 @@ namespace GUI.StateDiagram
 
             return retVal;
         }
-
     }
 }

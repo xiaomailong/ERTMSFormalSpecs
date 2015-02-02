@@ -13,13 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.SpecificationView;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using ReqRef = DataDictionary.ReqRef;
+using StateMachine = DataDictionary.Types.StateMachine;
+
 namespace GUI.DataDictionaryView
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Windows.Forms;
-
-    public class StateMachinesTreeNode : ModelElementTreeNode<DataDictionary.Types.NameSpace>
+    public class StateMachinesTreeNode : ModelElementTreeNode<NameSpace>
     {
         private class ItemEditor : NamedEditor
         {
@@ -37,7 +44,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public StateMachinesTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+        public StateMachinesTreeNode(NameSpace item, bool buildSubNodes)
             : base(item, buildSubNodes, "State Machines", true)
         {
         }
@@ -50,7 +57,7 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Types.StateMachine stateMachine in Item.StateMachines)
+            foreach (StateMachine stateMachine in Item.StateMachines)
             {
                 Nodes.Add(new StateMachineTreeNode(stateMachine, buildSubNodes));
             }
@@ -71,7 +78,7 @@ namespace GUI.DataDictionaryView
             DataDictionaryTreeView treeView = BaseTreeView as DataDictionaryTreeView;
             if (treeView != null)
             {
-                DataDictionary.Types.StateMachine stateMachine = (DataDictionary.Types.StateMachine)DataDictionary.Generated.acceptor.getFactory().createStateMachine();
+                StateMachine stateMachine = (StateMachine) acceptor.getFactory().createStateMachine();
                 stateMachine.Name = "<StateMachine" + (GetNodeCount(false) + 1) + ">";
                 AddStateMachine(stateMachine);
             }
@@ -81,7 +88,7 @@ namespace GUI.DataDictionaryView
         /// Adds a new state machine
         /// </summary>
         /// <param name="collection"></param>
-        public StateMachineTreeNode AddStateMachine(DataDictionary.Types.StateMachine stateMachine)
+        public StateMachineTreeNode AddStateMachine(StateMachine stateMachine)
         {
             StateMachineTreeNode retVal = new StateMachineTreeNode(stateMachine, true);
             Item.appendStateMachines(stateMachine);
@@ -116,20 +123,20 @@ namespace GUI.DataDictionaryView
             if (SourceNode is StateMachineTreeNode)
             {
                 StateMachineTreeNode stateMachineTreeNode = SourceNode as StateMachineTreeNode;
-                DataDictionary.Types.StateMachine stateMachine = stateMachineTreeNode.Item;
+                StateMachine stateMachine = stateMachineTreeNode.Item;
 
                 stateMachineTreeNode.Delete();
                 AddStateMachine(stateMachine);
             }
-            else if (SourceNode is SpecificationView.ParagraphTreeNode)
+            else if (SourceNode is ParagraphTreeNode)
             {
-                SpecificationView.ParagraphTreeNode node = SourceNode as SpecificationView.ParagraphTreeNode;
-                DataDictionary.Specification.Paragraph paragaph = node.Item;
+                ParagraphTreeNode node = SourceNode as ParagraphTreeNode;
+                Paragraph paragaph = node.Item;
 
-                DataDictionary.Types.StateMachine stateMachine = (DataDictionary.Types.StateMachine)DataDictionary.Generated.acceptor.getFactory().createStateMachine();
+                StateMachine stateMachine = (StateMachine) acceptor.getFactory().createStateMachine();
                 stateMachine.Name = paragaph.Name;
 
-                DataDictionary.ReqRef reqRef = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
+                ReqRef reqRef = (ReqRef) acceptor.getFactory().createReqRef();
                 reqRef.Name = paragaph.FullId;
                 stateMachine.appendRequirements(reqRef);
                 AddStateMachine(stateMachine);

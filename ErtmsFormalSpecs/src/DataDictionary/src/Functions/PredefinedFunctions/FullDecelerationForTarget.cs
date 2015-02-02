@@ -13,10 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using DataDictionary.Variables;
 using ErtmsSolutions.Etcs.Subset26.BrakingCurves;
 using ErtmsSolutions.SiUnits;
-using DataDictionary.Interpreter;
+using Variable = DataDictionary.Variables.Variable;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -38,13 +44,13 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public FullDecelerationForTarget(EFSSystem efsSystem)
             : base(efsSystem, "FullDecelerationForTarget")
         {
-            Target = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Target = (Parameter) acceptor.getFactory().createParameter();
             Target.Name = "Target";
             Target.Type = EFSSystem.AnyType;
             Target.setFather(this);
             FormalParameters.Add(Target);
 
-            DecelerationFactor = (Parameter)Generated.acceptor.getFactory().createParameter();
+            DecelerationFactor = (Parameter) acceptor.getFactory().createParameter();
             DecelerationFactor.Name = "DecelerationFactor";
             DecelerationFactor.Type = EFSSystem.AnyType;
             DecelerationFactor.setFather(this);
@@ -57,7 +63,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="root">The element on which the errors should be reported</param>
         /// <param name="context">The evaluation context</param>
         /// <param name="actualParameters">The parameters applied to this function call</param>
-        public override void additionalChecks(ModelElement root, Interpreter.InterpretationContext context, Dictionary<string, Interpreter.Expression> actualParameters)
+        public override void additionalChecks(ModelElement root, InterpretationContext context, Dictionary<string, Expression> actualParameters)
         {
             CheckFunctionalParameter(root, context, actualParameters[Target.Name], 1);
             CheckFunctionalParameter(root, context, actualParameters[DecelerationFactor.Name], 2);
@@ -70,21 +76,21 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="parameter"></param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public override Graph createGraph(Interpreter.InterpretationContext context, Parameter parameter, ExplanationPart explain)
+        public override Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
             Graph retVal = new Graph();
 
-            Values.StructureValue LocationStruct = context.findOnStack(Target).Value as Values.StructureValue;
+            StructureValue LocationStruct = context.findOnStack(Target).Value as StructureValue;
 
             SiDistance location;
             SiSpeed speed;
 
             if (LocationStruct != null)
             {
-                Variables.Variable Location = LocationStruct.Val["Location"] as Variables.Variable;
-                location =  new SiDistance((Location.Value as Values.DoubleValue).Val);
-                Variables.Variable Speed = LocationStruct.Val["Speed"] as Variables.Variable;
-                speed = new SiSpeed((Speed.Value as Values.DoubleValue).Val, SiSpeed_SubUnits.KiloMeter_per_Hour);
+                Variable Location = LocationStruct.Val["Location"] as Variable;
+                location = new SiDistance((Location.Value as DoubleValue).Val);
+                Variable Speed = LocationStruct.Val["Speed"] as Variable;
+                speed = new SiSpeed((Speed.Value as DoubleValue).Val, SiSpeed_SubUnits.KiloMeter_per_Hour);
 
                 Function decelerationFactor = context.findOnStack(DecelerationFactor).Value as Function;
                 if (decelerationFactor != null)
@@ -100,7 +106,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
                         {
                             BrakingCurve = EtcsBrakingCurveBuilder.Build_Deceleration_Curve(accelerationSurface, speed, location);
                         }
-                        catch (System.Exception e)
+                        catch (Exception e)
                         {
                             retVal.addSegment(new Graph.Segment(0, double.MaxValue, new Graph.Segment.Curve(0, 0, 0)));
                         }
@@ -135,17 +141,17 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             int token = context.LocalScope.PushContext();
             AssignParameters(context, actuals);
 
-            Function function = (Function)Generated.acceptor.getFactory().createFunction();
+            Function function = (Function) acceptor.getFactory().createFunction();
             function.Name = "FullDecelerationForTarget ( Target => " + getName(Target) + ", DecelerationFactor => " + getName(DecelerationFactor) + " )";
             function.Enclosing = EFSSystem;
-            Parameter parameter = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Parameter parameter = (Parameter) acceptor.getFactory().createParameter();
             parameter.Name = "X";
             parameter.Type = EFSSystem.DoubleType;
             function.appendParameters(parameter);

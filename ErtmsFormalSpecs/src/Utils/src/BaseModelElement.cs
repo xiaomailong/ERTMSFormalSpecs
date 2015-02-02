@@ -13,15 +13,30 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using log4net;
+using XmlBooster;
 
 namespace Utils
 {
     /// <summary>
     /// Indicates if the element holds messages, or is part of a path to a message 
     /// </summary>
-    public enum MessagePathInfoEnum { NotComputed = 0, Nothing = 4, Error = 10, PathToError = 9, Warning = 8, PathToWarning = 7, Info = 6, PathToInfo = 5 };
+    public enum MessagePathInfoEnum
+    {
+        NotComputed = 0,
+        Nothing = 4,
+        Error = 10,
+        PathToError = 9,
+        Warning = 8,
+        PathToWarning = 7,
+        Info = 6,
+        PathToInfo = 5
+    };
 
     public interface IEnclosed
     {
@@ -39,12 +54,12 @@ namespace Utils
         /// <summary>
         /// The sub elements of this model element
         /// </summary>
-        System.Collections.ArrayList SubElements { get; }
+        ArrayList SubElements { get; }
 
         /// <summary>
         /// Provides the collection which holds this instance
         /// </summary>
-        System.Collections.ArrayList EnclosingCollection { get; }
+        ArrayList EnclosingCollection { get; }
 
         /// <summary>
         /// Deletes the element from its enclosing node
@@ -92,23 +107,28 @@ namespace Utils
         string getExplain();
     }
 
-    public abstract class ModelElement : XmlBooster.XmlBBase, IModelElement
+    public abstract class ModelElement : XmlBBase, IModelElement
     {
         /// <summary>
         /// The Logger
         /// </summary>
-        protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// The model element name
         /// </summary>
         public virtual string Name { get; set; }
-        public virtual string FullName { get { return Name; } }
+
+        public virtual string FullName
+        {
+            get { return Name; }
+        }
 
         /// <summary>
         /// The enclosing model element
         /// </summary>
         private object enclosing;
+
         public virtual object Enclosing
         {
             get
@@ -121,7 +141,7 @@ namespace Utils
             }
             set
             {
-                XmlBooster.IXmlBBase val = value as XmlBooster.IXmlBBase;
+                IXmlBBase val = value as IXmlBBase;
                 if (val != null)
                 {
                     setFather(val);
@@ -136,11 +156,11 @@ namespace Utils
         /// <summary>
         /// The sub elements of this model element
         /// </summary>
-        public System.Collections.ArrayList SubElements
+        public ArrayList SubElements
         {
             get
             {
-                System.Collections.ArrayList list = new System.Collections.ArrayList();
+                ArrayList list = new ArrayList();
 
                 subElements(list);
 
@@ -172,7 +192,10 @@ namespace Utils
         /// <summary>
         /// The collection in which this model element lies
         /// </summary>
-        public virtual System.Collections.ArrayList EnclosingCollection { get { return null; } }
+        public virtual ArrayList EnclosingCollection
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// Deletes this model element from its enclosing collection
@@ -220,6 +243,7 @@ namespace Utils
         /// Logs associated to this model element
         /// </summary>
         private List<ElementLog> messages = new List<ElementLog>();
+
         public virtual List<ElementLog> Messages
         {
             get { return messages; }
@@ -252,7 +276,7 @@ namespace Utils
 
             if (log.Level == ElementLog.LevelEnum.Error)
             {
-                if (!log.FailedExpectation)  // if this is a failed expectation, this is not a model error
+                if (!log.FailedExpectation) // if this is a failed expectation, this is not a model error
                 {
                     if (!Errors.ContainsKey(this))
                     {
@@ -428,7 +452,7 @@ namespace Utils
             {
                 foreach (ModelElement element in CacheDependancy)
                 {
-                    retVal += element.FullName +  " ";
+                    retVal += element.FullName + " ";
                 }
             }
 
@@ -453,7 +477,7 @@ namespace Utils
         /// Clears the cache associated to this model element
         /// </summary>
         public virtual void ClearCache()
-        {            
+        {
         }
     }
 }

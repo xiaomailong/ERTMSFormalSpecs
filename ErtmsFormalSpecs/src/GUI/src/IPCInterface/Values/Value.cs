@@ -13,24 +13,23 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using DataDictionary.Types;
+using DataDictionary.Values;
+
 namespace GUI.IPCInterface.Values
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Runtime.Serialization;
-    using System.ServiceModel;
-
     [DataContract]
-    [KnownType(typeof(BoolValue))]
-    [KnownType(typeof(IntValue))]
-    [KnownType(typeof(DoubleValue))]
-    [KnownType(typeof(StringValue))]
-    [KnownType(typeof(StateValue))]
-    [KnownType(typeof(EnumValue))]
-    [KnownType(typeof(ListValue))]
-    [KnownType(typeof(StructureValue))]
+    [KnownType(typeof (BoolValue))]
+    [KnownType(typeof (IntValue))]
+    [KnownType(typeof (DoubleValue))]
+    [KnownType(typeof (StringValue))]
+    [KnownType(typeof (StateValue))]
+    [KnownType(typeof (EnumValue))]
+    [KnownType(typeof (ListValue))]
+    [KnownType(typeof (StructureValue))]
     public abstract class Value
     {
         /// <summary>
@@ -44,14 +43,14 @@ namespace GUI.IPCInterface.Values
         /// </summary>
         /// <param name="type">the value expected type</param>
         /// <returns></returns>
-        public abstract DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type);
+        public abstract IValue convertBack(Type type);
 
         /// <summary>
         /// Checks the return value for a conversion to EFS type
         /// </summary>
         /// <param name="value"></param>
         /// <param name="type"></param>
-        public void CheckReturnValue(DataDictionary.Values.IValue value, DataDictionary.Types.Type type)
+        public void CheckReturnValue(IValue value, Type type)
         {
             if (value == null)
             {

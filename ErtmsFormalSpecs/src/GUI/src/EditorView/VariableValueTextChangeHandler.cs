@@ -13,14 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+
 namespace GUI.EditorView
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary;
-
     /// <summary>
     /// Sets the string value into the right property
     /// </summary>
@@ -44,7 +43,7 @@ namespace GUI.EditorView
         public override string GetText()
         {
             string retVal = "";
-            DataDictionary.Variables.IVariable variable = Instance as DataDictionary.Variables.IVariable;
+            IVariable variable = Instance as IVariable;
 
             if (variable != null)
             {
@@ -59,11 +58,11 @@ namespace GUI.EditorView
         /// <returns></returns>
         public override void SetText(string text)
         {
-            DataDictionary.Variables.IVariable variable = Instance as DataDictionary.Variables.IVariable;
+            IVariable variable = Instance as IVariable;
 
             if (variable != null && variable.Type != null)
             {
-                DataDictionary.Values.IValue value = variable.Type.getValue(text);
+                IValue value = variable.Type.getValue(text);
                 if (value != null)
                 {
                     variable.Value = value;

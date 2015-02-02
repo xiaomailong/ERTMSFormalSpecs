@@ -5,138 +5,137 @@ using System.Text;
 
 namespace XmlBooster
 {
+    public abstract class XmlBBase : IXmlBBase
+    {
+        private IXmlBBase aNext, aFather, aSibling, aFirstSon;
 
-	public abstract class XmlBBase : IXmlBBase
-	{
+        public void setNext(IXmlBBase n)
+        {
+            aNext = n;
+        }
 
-		IXmlBBase aNext, aFather, aSibling, aFirstSon;
+        public IXmlBBase getNext()
+        {
+            return aNext;
+        }
 
-		public void setNext (IXmlBBase n)
-		{
-			aNext = n;
-		}
+        public void setSon(IXmlBBase n)
+        {
+            XmlBBase n1;
 
-		public IXmlBBase getNext()
-		{
-			return aNext;
-		}
+            if (n != null)
+            {
+                n1 = (XmlBBase) n;
+                n1.aFather = this;
+                n1.aSibling = aFirstSon;
+            }
+            aFirstSon = n;
+        }
 
-		public void setSon (IXmlBBase n)
-		{
-			XmlBBase n1;
+        public void setSon(ICollection l)
+        {
+            if (l != null)
+            {
+                foreach (IXmlBBase item in l)
+                    setSon(item);
+            }
+        }
 
-			if (n != null)
-			{
-				n1 = (XmlBBase) n;
-				n1.aFather = this;
-				n1.aSibling = aFirstSon;
-			}
-			aFirstSon = n;
-		}
+        public void setFather(IXmlBBase f)
+        {
+            aFather = f;
+        }
 
-		public void setSon (ICollection l)
-		{
-			if (l != null)
-			{
-				foreach (IXmlBBase item in l)
-					setSon (item);
-			}
-		}
+        public IXmlBBase getFather()
+        {
+            return aFather;
+        }
 
-		public void setFather (IXmlBBase f)
-		{
-			aFather = f;
-		}
+        public abstract void parse(XmlBContext ctxt, String endingTag);
+        //  throws XmlBException, XmlBRecoveryException;
+        public abstract void parseBody(XmlBContext ctxt);
+        //   throws XmlBException, XmlBRecoveryException;
 
-		public IXmlBBase getFather()
-		{
-			return aFather;
-		}
+        public abstract void unParse(TextWriter pw, bool typeId,
+            String headingTag,
+            String endingTag);
 
-		public abstract void parse (XmlBContext ctxt, String endingTag);
-		//  throws XmlBException, XmlBRecoveryException;
-		public abstract void parseBody (XmlBContext ctxt);
-		//   throws XmlBException, XmlBRecoveryException;
+        public abstract void unParseBody(TextWriter pw);
 
-		public abstract void unParse (TextWriter pw, bool typeId,
-			String headingTag,
-			String endingTag);
-		public abstract void unParseBody (TextWriter pw);
+        public void unParse(TextWriter pw, bool typeId)
+        {
+            unParse(pw, this, typeId, null, null);
+        }
 
-		public void unParse (TextWriter pw, bool typeId)
-		{
-			unParse (pw, this, typeId, null, null);
-		}
+        public void unParse(TextWriter pw, IXmlBBase el, bool typeId,
+            String headingTag,
+            String endingTag)
+        {
+            XmlBBase el2;
 
-		public void unParse (TextWriter pw, IXmlBBase el, bool typeId,
-			String headingTag,
-			String endingTag)
-		{
-			XmlBBase el2;
+            if (el == null)
+            {
+                return;
+            }
+            el2 = (XmlBBase) el;
 
-			if (el == null)
-			{
-				return;
-			}
-			el2 = (XmlBBase) el;
+            while (el2 != null)
+            {
+                el2.unParse(pw, typeId, headingTag, endingTag);
+                el2 = (XmlBBase) el2.aNext;
+            }
+        }
 
-			while (el2 != null)
-			{
-				el2.unParse (pw, typeId, headingTag, endingTag);
-				el2 = (XmlBBase)el2.aNext;
-			}
-		}
+        public void unParse(TextWriter pw, ArrayList l, bool typeId,
+            String headingTag,
+            String endingTag)
+        {
+            if (l != null)
+                foreach (IXmlBBase item in l)
+                    unParse(pw, item, typeId, headingTag, endingTag);
+        }
 
-		public void unParse (TextWriter pw, ArrayList l, bool typeId,
-			String headingTag,
-			String endingTag)
-		{
-			if (l != null)
-				foreach (IXmlBBase item in l)
-					unParse(pw, item, typeId, headingTag, endingTag);
-		}
+        public void unParse(TextWriter pw, IEnumerable l, bool typeId,
+            String headingTag,
+            String endingTag)
+        {
+            if (l != null)
+                foreach (IXmlBBase item in l)
+                    unParse(pw, item, typeId, headingTag, endingTag);
+        }
 
-		public void unParse (TextWriter pw, IEnumerable l, bool typeId,
-			String headingTag,
-			String endingTag)
-		{
-			if (l != null)
-				foreach (IXmlBBase item in l)
-					unParse(pw, item, typeId, headingTag, endingTag);
-		}
+        public String ToXMLString()
+        {
+            //ByteArrayOutputStream os;
+            StringWriter pw;
 
-		public String ToXMLString()
-		{
-			//ByteArrayOutputStream os;
-			StringWriter pw;
+            // os = new ByteArrayOutputStream();
+            // pw = new TextWriter(os);
+            pw = new StringWriter();
+            unParse(pw, false);
+            pw.Flush();
+            // return new String(os.toByteArray());
+            return pw.ToString();
+            //new String(os.toByteArray());
+        }
 
-			// os = new ByteArrayOutputStream();
-			// pw = new TextWriter(os);
-			pw = new StringWriter ();
-			unParse(pw, false);
-			pw.Flush();
-			// return new String(os.toByteArray());
-			return pw.ToString();
-			//new String(os.toByteArray());
-		}
+        public virtual void subElements(ArrayList l)
+        {
+        }
 
-		virtual public void subElements(ArrayList l)
-		{
-		}
-
-		public  IXmlBBase[] subElements()
-  		{
-    			ArrayList l = new ArrayList();
-    			subElements (l);
-    			for (int i=l.Count-1; i >=0; i--)
-      			if (l[i] == null)
-        			l.Remove(i);
-    			if (l.Count == 0)
-      				return null;
-    			IXmlBBase [] res = new IXmlBBase[l.Count];
-    			l.CopyTo (res, 0);
-    			return res;
-  		}
+        public IXmlBBase[] subElements()
+        {
+            ArrayList l = new ArrayList();
+            subElements(l);
+            for (int i = l.Count - 1; i >= 0; i--)
+                if (l[i] == null)
+                    l.Remove(i);
+            if (l.Count == 0)
+                return null;
+            IXmlBBase[] res = new IXmlBBase[l.Count];
+            l.CopyTo(res, 0);
+            return res;
+        }
 
 //		public override String ToString()
 //		{
@@ -161,7 +160,7 @@ namespace XmlBooster
             save(filename, bufSize, Encoding.ASCII);
         }
 
-        const int DEFAULT_BUF_SIZE = 16 * 1024;
+        private const int DEFAULT_BUF_SIZE = 16*1024;
 
         public void save(String filename)
         {
@@ -173,10 +172,10 @@ namespace XmlBooster
             save(filename, DEFAULT_BUF_SIZE, encoding);
         }
 
-		public abstract void dispatch(XmlBBaseVisitor v);
-		public abstract void dispatch(XmlBBaseVisitor v, bool visitSubNodes);
+        public abstract void dispatch(XmlBBaseVisitor v);
+        public abstract void dispatch(XmlBBaseVisitor v, bool visitSubNodes);
 
-        bool __dirty = false;
+        private bool __dirty = false;
 
         public void __setDirty(bool val)
         {
@@ -203,5 +202,4 @@ namespace XmlBooster
         /// <returns>True if the string provided if found in the object</returns>
         public abstract bool find(Object search);
     }
-
 }

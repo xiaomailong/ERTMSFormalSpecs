@@ -24,7 +24,7 @@ namespace Utils
         /// <param name="arg"></param>
         public void TreadStart(object arg)
         {
-            ProgressHandler handler = (ProgressHandler)arg;
+            ProgressHandler handler = (ProgressHandler) arg;
             handler.ExecuteWork();
         }
 

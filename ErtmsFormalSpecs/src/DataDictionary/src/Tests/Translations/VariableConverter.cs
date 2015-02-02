@@ -13,10 +13,9 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Globalization;
 
 namespace DataDictionary.Tests.Translations
 {
@@ -53,7 +52,7 @@ namespace DataDictionary.Tests.Translations
     {
         public override object convertFrom(string value)
         {
-            return int.Parse(value, System.Globalization.NumberStyles.HexNumber);
+            return int.Parse(value, NumberStyles.HexNumber);
         }
 
         /// <summary>
@@ -183,7 +182,7 @@ namespace DataDictionary.Tests.Translations
         /// </summary>
         /// <param name="Key"></param>
         /// <returns></returns>
-        private BaseConverter ConverterForKey (string Key)
+        private BaseConverter ConverterForKey(string Key)
         {
             BaseConverter retVal = null;
 

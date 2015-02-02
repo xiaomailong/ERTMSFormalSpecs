@@ -14,13 +14,11 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System.Collections;
+using DataDictionary.Generated;
+
 namespace DataDictionary.Specification
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// Represents a reference to a requirement set
     /// </summary>
@@ -39,16 +37,14 @@ namespace DataDictionary.Specification
 
                 return retVal;
             }
-            set
-            {
-            }
+            set { }
         }
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
-                Paragraph paragraph = (Paragraph)Enclosing;
+                Paragraph paragraph = (Paragraph) Enclosing;
 
                 return paragraph.allRequirementSets();
             }
@@ -59,30 +55,26 @@ namespace DataDictionary.Specification
         /// </summary>
         public RequirementSet Ref
         {
-            get
-            {
-                return GuidCache.INSTANCE.GetModel(getTarget()) as RequirementSet;
-            }
+            get { return GuidCache.INSTANCE.GetModel(getTarget()) as RequirementSet; }
         }
 
         /// <summary>
         /// This visitor can be used to recursively remove all requirement set references
         /// </summary>
-        public class RemoveReferencesVisitor : DataDictionary.Generated.Visitor
+        public class RemoveReferencesVisitor : Visitor
         {
-            public override void visit(DataDictionary.Generated.Paragraph obj, bool visitSubNodes)
+            public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
-                Paragraph paragraph = (Paragraph)obj;
+                Paragraph paragraph = (Paragraph) obj;
 
                 while (paragraph.RequirementSetReferences.Count > 0)
                 {
-                    RequirementSetReference reference = (RequirementSetReference)paragraph.RequirementSetReferences[0];
+                    RequirementSetReference reference = (RequirementSetReference) paragraph.RequirementSetReferences[0];
                     reference.Delete();
                 }
 
                 base.visit(obj, visitSubNodes);
             }
         }
-
     }
 }

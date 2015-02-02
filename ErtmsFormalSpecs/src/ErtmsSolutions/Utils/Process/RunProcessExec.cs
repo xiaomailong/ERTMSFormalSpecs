@@ -13,11 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Threading;
+using log4net;
 
 namespace ErtmsSolutions.Utils.RunProcessExec
 {
@@ -25,6 +28,7 @@ namespace ErtmsSolutions.Utils.RunProcessExec
      * This class permit to run a process.
      *
      */
+
     public class RunProcessExec
     {
         /*****************************************************************/
@@ -43,7 +47,7 @@ namespace ErtmsSolutions.Utils.RunProcessExec
         // private static readonly uint LSFW_UNLOCK = 2;
 
 
-        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
 
         private string WorkingDirectory;
@@ -77,6 +81,7 @@ namespace ErtmsSolutions.Utils.RunProcessExec
          *                infinitely
          *
          */
+
         public RunProcessExec(string WorkingDirectory, string Path, string Program, string Arguments, string FName_StandardInput, string FName_StandardOutput, string FName_StandardError, TimeSpan TimeOut)
         {
             processHasExited = false;
@@ -101,20 +106,22 @@ namespace ErtmsSolutions.Utils.RunProcessExec
 
         /** An enum that defines the differents state of the process
          *   */
+
         public enum ProcessExecResult_Enum
         {
-            OK,/**< The process finished correctly*/
-            Error,/**< An error occurs when the process started whit ProcessStartInfo*/
-            TimeOut/**< The process runs longer than the time out define by the user*/
+            OK, /**< The process finished correctly*/
+            Error, /**< An error occurs when the process started whit ProcessStartInfo*/
+            TimeOut /**< The process runs longer than the time out define by the user*/
         }
 
         /**A struct that defines the state of the process, its exit
          * code and message */
+
         public struct ProcessExecResult_Struct
         {
             public ProcessExecResult_Enum ExecResult; /**< Define the process ExecResult */
             public int ExitCode; /**< The process exit code if it finished correctly*/
-            public string Message;/**< The message concerning the ExecResult*/
+            public string Message; /**< The message concerning the ExecResult*/
         }
 
 
@@ -131,7 +138,6 @@ namespace ErtmsSolutions.Utils.RunProcessExec
                     Log.WarnFormat("Output not written in the file because it's closed : {0}", outLine.Data);
                 }
             }
-
         }
 
         private void StdErrorHandler(object sendingProcess, DataReceivedEventArgs outLine)
@@ -154,6 +160,7 @@ namespace ErtmsSolutions.Utils.RunProcessExec
          *
          * @return ProcessExecResult_Struct
          */
+
         public ProcessExecResult_Struct StartAndWait()
         {
             ProcessExecResult_Struct result = new ProcessExecResult_Struct();
@@ -268,8 +275,7 @@ namespace ErtmsSolutions.Utils.RunProcessExec
                             break;
                         }
                     }
-                    Thread.Sleep(20/*ms*/);
-
+                    Thread.Sleep(20 /*ms*/);
                 } while (true);
             }
 
@@ -311,7 +317,6 @@ namespace ErtmsSolutions.Utils.RunProcessExec
         public bool ProcessFinished
         {
             get { return processHasExited; }
-
         }
     }
 }

@@ -13,20 +13,30 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Collections;
+using DataDictionary.Generated;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Utils;
+using Enum = DataDictionary.Types.Enum;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Range = DataDictionary.Types.Range;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Constants
 {
-    public class EnumValue : Generated.EnumValue, Values.IValue
+    public class EnumValue : Generated.EnumValue, IValue
     {
         /// <summary>
         /// The corresponding type
         /// </summary>
-        public Types.Type Type
+        public Type Type
         {
             get
             {
-                Types.Type retVal = null;
+                Type retVal = null;
 
                 if (Enum != null)
                 {
@@ -64,24 +74,24 @@ namespace DataDictionary.Constants
         /// <summary>
         /// The enclosing enumeration type
         /// </summary>
-        public Types.Enum Enum
+        public Enum Enum
         {
-            get { return Enclosing as Types.Enum; }
+            get { return Enclosing as Enum; }
         }
 
         /// <summary>
         /// The enclosing range
         /// </summary>
-        public Types.Range Range
+        public Range Range
         {
-            get { return Enclosing as Types.Range; }
+            get { return Enclosing as Range; }
         }
 
-        public Values.IValue Value
+        public IValue Value
         {
             get
             {
-                Values.IValue retVal = this;
+                IValue retVal = this;
 
                 if (Range != null)
                 {
@@ -95,11 +105,11 @@ namespace DataDictionary.Constants
         /// <summary>
         /// Provides the enclosing collection, for deletion purposes
         /// </summary>
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
-                System.Collections.ArrayList retVal = null;
+                ArrayList retVal = null;
 
                 if (Enum != null)
                 {
@@ -121,7 +131,7 @@ namespace DataDictionary.Constants
         /// <param name="duplicate">Indicates that a duplication of the variable should be performed</param>
         /// <param name="setEnclosing">Indicates that the new value enclosing element should be set</param>
         /// <returns></returns>
-        public virtual Values.IValue RightSide(Variables.IVariable variable, bool duplicate, bool setEnclosing)
+        public virtual IValue RightSide(IVariable variable, bool duplicate, bool setEnclosing)
         {
             return this;
         }
@@ -129,28 +139,42 @@ namespace DataDictionary.Constants
         /// <summary>
         /// The namespace related to the typed element
         /// </summary>
-        public Types.NameSpace NameSpace { get { return null; } }
+        public NameSpace NameSpace
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// Provides the type name of the element
         /// </summary>
-        public string TypeName { get { return Type.FullName; } set { } }
+        public string TypeName
+        {
+            get { return Type.FullName; }
+            set { }
+        }
 
         /// <summary>
         /// Provides the mode of the typed element
         /// </summary>
-        public DataDictionary.Generated.acceptor.VariableModeEnumType Mode { get { return Generated.acceptor.VariableModeEnumType.aInternal; } }
+        public acceptor.VariableModeEnumType Mode
+        {
+            get { return acceptor.VariableModeEnumType.aInternal; }
+        }
 
         /// <summary>
         /// Provides the default value of the typed element
         /// </summary>
-        public string Default { get { return this.FullName; } set { } }
+        public string Default
+        {
+            get { return this.FullName; }
+            set { }
+        }
 
         /// <summary>
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
         }
 

@@ -13,18 +13,21 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Globalization;
 using System.Linq;
+using DataDictionary.Types;
 
 namespace DataDictionary.Values
 {
-    public class DoubleValue : BaseValue<Types.Type, double>
+    public class DoubleValue : BaseValue<Type, double>
     {
         public override string Name
         {
             get
             {
-                System.Globalization.CultureInfo info = System.Globalization.CultureInfo.InvariantCulture;
-                string retVal = Val.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                CultureInfo info = CultureInfo.InvariantCulture;
+                string retVal = Val.ToString(CultureInfo.InvariantCulture);
                 if (!retVal.Contains('.'))
                 {
                     retVal = retVal + ".0";
@@ -37,7 +40,7 @@ namespace DataDictionary.Values
         /// Constructor
         /// </summary>
         /// <param name="type"></param>
-        public DoubleValue(Types.Type type, double val)
+        public DoubleValue(Type type, double val)
             : base(type, val)
         {
         }

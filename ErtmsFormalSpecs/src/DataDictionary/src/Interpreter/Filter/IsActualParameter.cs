@@ -13,10 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using Utils;
+
 namespace DataDictionary.Interpreter.Filter
 {
-    using Utils;
-
     /// <summary>
     /// Predicates which indicates that the namable can be an actual parameter
     /// </summary>
@@ -45,7 +46,6 @@ namespace DataDictionary.Interpreter.Filter
         /// <summary>
         /// Singleton
         /// </summary>
-        public static new IsActualParameter INSTANCE = new IsActualParameter();
-
+        public new static IsActualParameter INSTANCE = new IsActualParameter();
     }
 }

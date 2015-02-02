@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Utils;
+﻿using System.Windows.Forms;
 using DataDictionary;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.MoreInfoView
 {
@@ -32,7 +25,7 @@ namespace GUI.MoreInfoView
             moreInfoRichTextBox.Enabled = true;
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
-            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom;
+            DockAreas = DockAreas.DockBottom;
         }
 
         /// <summary>
@@ -40,7 +33,7 @@ namespace GUI.MoreInfoView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Window_FormClosed(object sender, FormClosedEventArgs e)
+        private void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
             GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
@@ -60,21 +53,21 @@ namespace GUI.MoreInfoView
         /// </summary>
         public override void RefreshModel()
         {
-            bool silent = DataDictionary.ModelElement.BeSilent;
+            bool silent = ModelElement.BeSilent;
             try
             {
-                DataDictionary.ModelElement.BeSilent = true;
+                ModelElement.BeSilent = true;
                 moreInfoRichTextBox.Rtf = EmptyRTF;
                 if (Model != null)
                 {
-                    moreInfoRichTextBox.Instance = Model as DataDictionary.ModelElement;
+                    moreInfoRichTextBox.Instance = Model as ModelElement;
                     moreInfoRichTextBox.Rtf = TextualExplainUtilities.Encapsule(Model.getExplain(true));
                 }
                 Refresh();
             }
             finally
             {
-                DataDictionary.ModelElement.BeSilent = silent;
+                ModelElement.BeSilent = silent;
             }
         }
     }

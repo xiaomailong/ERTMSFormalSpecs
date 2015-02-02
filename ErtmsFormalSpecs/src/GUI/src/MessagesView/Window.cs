@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Utils;
 using DataDictionary;
+using Utils;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.MessagesView
 {
@@ -26,7 +23,7 @@ namespace GUI.MessagesView
             InitializeComponent();
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
-            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight;
+            DockAreas = DockAreas.DockRight;
 
             messagesDataGridView.DoubleClick += new EventHandler(messagesDataGridView_DoubleClick);
         }
@@ -42,7 +39,7 @@ namespace GUI.MessagesView
 
             if (messagesDataGridView.SelectedCells.Count == 1)
             {
-                List<MessageEntry> messages = (List<MessageEntry>)messagesDataGridView.DataSource;
+                List<MessageEntry> messages = (List<MessageEntry>) messagesDataGridView.DataSource;
                 selected = messages[messagesDataGridView.SelectedCells[0].OwningRow.Index];
             }
 
@@ -59,7 +56,7 @@ namespace GUI.MessagesView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Window_FormClosed(object sender, FormClosedEventArgs e)
+        private void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
             GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
@@ -82,7 +79,7 @@ namespace GUI.MessagesView
         {
             List<MessageEntry> messages = new List<MessageEntry>();
 
-            Utils.IModelElement current = Model;
+            IModelElement current = Model;
             while (current != null)
             {
                 if (current.Messages != null)
@@ -95,7 +92,7 @@ namespace GUI.MessagesView
 
                 if (EFSSystem.INSTANCE.DisplayEnclosingMessages)
                 {
-                    current = current.Enclosing as Utils.IModelElement;
+                    current = current.Enclosing as IModelElement;
                 }
                 else
                 {
@@ -119,7 +116,7 @@ namespace GUI.MessagesView
             /// <summary>
             /// The element that is logged
             /// </summary>
-            [System.ComponentModel.Browsable(false)]
+            [Browsable(false)]
             public ElementLog Log { get; private set; }
 
             /// <summary>
@@ -127,10 +124,7 @@ namespace GUI.MessagesView
             /// </summary>
             public ElementLog.LevelEnum Level
             {
-                get
-                {
-                    return Log.Level;
-                }
+                get { return Log.Level; }
             }
 
             /// <summary>
@@ -138,10 +132,7 @@ namespace GUI.MessagesView
             /// </summary>
             public String Message
             {
-                get
-                {
-                    return Log.Log;
-                }
+                get { return Log.Log; }
             }
 
             /// <summary>

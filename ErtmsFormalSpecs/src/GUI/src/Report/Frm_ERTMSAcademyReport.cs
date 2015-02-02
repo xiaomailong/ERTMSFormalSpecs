@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -63,7 +64,7 @@ namespace GUI.Report
 
             reportHandler.User = Cbb_UserNames.Text;
             reportHandler.GitLogin = UsersAndLogin[reportHandler.User];
-            reportHandler.SinceHowManyDays = (int)sinceUpDown.Value;
+            reportHandler.SinceHowManyDays = (int) sinceUpDown.Value;
 
             Hide();
 

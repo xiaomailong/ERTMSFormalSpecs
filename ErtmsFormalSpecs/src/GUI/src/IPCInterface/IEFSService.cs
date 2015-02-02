@@ -13,19 +13,24 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using GUI.IPCInterface.Values;
+
 namespace GUI.IPCInterface
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.ServiceModel;
-    using System.Runtime.Serialization;
-
     /// <summary>
     /// The cycle priority to execute
     /// </summary>
-    public enum Step { Verification, UpdateInternal, Process, UpdateOutput, CleanUp };
+    public enum Step
+    {
+        Verification,
+        UpdateInternal,
+        Process,
+        UpdateOutput,
+        CleanUp
+    };
 
     /// <summary>
     /// A fault occured while executing a service function
@@ -76,7 +81,7 @@ namespace GUI.IPCInterface
         /// <param name="listener">Indicates that the client is a listener</param>
         /// <returns>The client identifier</returns>
         [OperationContract]
-        [FaultContractAttribute(typeof(EFSServiceFault))]
+        [FaultContract(typeof (EFSServiceFault))]
         int ConnectUsingDefaultValues(bool listener);
 
         /// <summary>
@@ -89,7 +94,7 @@ namespace GUI.IPCInterface
         /// <param name="keepEventCount">The number of events that should be kept in memory</param>
         /// <returns>The client identifier</returns>
         [OperationContract]
-        [FaultContractAttribute(typeof(EFSServiceFault))]
+        [FaultContract(typeof (EFSServiceFault))]
         int Connect(bool listener, bool explain, bool logEvents, int cycleDuration, int keepEventCount);
 
         /// <summary>
@@ -98,7 +103,7 @@ namespace GUI.IPCInterface
         /// <param name="variableName"></param>
         /// <returns></returns>
         [OperationContract]
-        Values.Value GetVariableValue(string variableName);
+        Value GetVariableValue(string variableName);
 
         /// <summary>
         /// Provides the value of an expression
@@ -106,7 +111,7 @@ namespace GUI.IPCInterface
         /// <param name="expression"></param>
         /// <returns></returns>
         [OperationContract]
-        Values.Value GetExpressionValue(string expression);
+        Value GetExpressionValue(string expression);
 
         /// <summary>
         /// Sets the value of a specific variable
@@ -114,8 +119,8 @@ namespace GUI.IPCInterface
         /// <param name="variableName"></param>
         /// <param name="value"></param>
         [OperationContract]
-        [FaultContractAttribute(typeof(EFSServiceFault))]
-        void SetVariableValue(string variableName, Values.Value value);
+        [FaultContract(typeof (EFSServiceFault))]
+        void SetVariableValue(string variableName, Value value);
 
         /// <summary>
         /// Applies a specific statement on the model
@@ -123,7 +128,7 @@ namespace GUI.IPCInterface
         /// <param name="variableName"></param>
         /// <param name="value"></param>
         [OperationContract]
-        [FaultContractAttribute(typeof(EFSServiceFault))]
+        [FaultContract(typeof (EFSServiceFault))]
         void ApplyStatement(string statement);
 
         /// <summary>
@@ -133,7 +138,7 @@ namespace GUI.IPCInterface
         /// <param name="step">The cycle step to execute</param>
         /// <returns>true if cycle execution is successful, false when the client is asked not to perform his work</returns>
         [OperationContract]
-        [FaultContractAttribute(typeof(EFSServiceFault))]
+        [FaultContract(typeof (EFSServiceFault))]
         bool Cycle(int clientId, Step step);
 
         /// <summary>

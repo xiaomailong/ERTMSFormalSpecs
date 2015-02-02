@@ -13,17 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using DataDictionary.Constants;
-using DataDictionary.Variables;
-using GUI.BoxArrowDiagram;
-using DataDictionary.Rules;
 using DataDictionary.Types;
 using DataDictionary.Types.AccessMode;
-using DataDictionary.Specification;
+using GUI.BoxArrowDiagram;
 
 namespace GUI.FunctionalView
 {
@@ -36,7 +32,7 @@ namespace GUI.FunctionalView
             : base()
         {
             BoxMode = BoxModeEnum.RoundedCorners;
-            BackColor = System.Drawing.Color.Transparent;
+            BackColor = Color.Transparent;
             MouseDoubleClick += new MouseEventHandler(HandleMouseDoubleClick);
         }
 
@@ -48,7 +44,7 @@ namespace GUI.FunctionalView
             : base(container)
         {
             BoxMode = BoxModeEnum.RoundedCorners;
-            BackColor = System.Drawing.Color.Transparent;
+            BackColor = Color.Transparent;
             MouseDoubleClick += new MouseEventHandler(HandleMouseDoubleClick);
         }
 
@@ -57,11 +53,11 @@ namespace GUI.FunctionalView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void HandleMouseDoubleClick(object sender, MouseEventArgs e)
+        private void HandleMouseDoubleClick(object sender, MouseEventArgs e)
         {
             SelectBox();
 
-            FunctionalAnalysisPanel panel = (FunctionalAnalysisPanel)Panel;
+            FunctionalAnalysisPanel panel = (FunctionalAnalysisPanel) Panel;
             if (panel != null)
             {
                 FunctionalAnalysisWindow window = new FunctionalAnalysisWindow();

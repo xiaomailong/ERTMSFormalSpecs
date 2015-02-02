@@ -13,13 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using Rule = DataDictionary.Rules.Rule;
+using StateMachine = DataDictionary.Types.StateMachine;
 
 namespace GUI.DataDictionaryView
 {
-    public class StateMachineRulesTreeNode : TypeTreeNode<DataDictionary.Types.StateMachine>
+    public class StateMachineRulesTreeNode : TypeTreeNode<StateMachine>
     {
         private class ItemEditor : TypeEditor
         {
@@ -40,7 +44,7 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Rules.Rule rule in Item.Rules)
+            foreach (Rule rule in Item.Rules)
             {
                 Nodes.Add(new RuleTreeNode(rule, buildSubNodes));
             }
@@ -50,7 +54,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public StateMachineRulesTreeNode(DataDictionary.Types.StateMachine item, bool buildSubNodes)
+        public StateMachineRulesTreeNode(StateMachine item, bool buildSubNodes)
             : base(item, buildSubNodes, "Rules", true, false)
         {
         }
@@ -75,7 +79,7 @@ namespace GUI.DataDictionaryView
             if (SourceNode is RuleTreeNode)
             {
                 RuleTreeNode node = SourceNode as RuleTreeNode;
-                DataDictionary.Rules.Rule rule = node.Item;
+                Rule rule = node.Item;
                 node.Delete();
                 AddRule(rule);
             }
@@ -83,7 +87,7 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)DataDictionary.Generated.acceptor.getFactory().createRule();
+            Rule rule = (Rule) acceptor.getFactory().createRule();
             rule.Name = "<Rule" + (GetNodeCount(false) + 1) + ">";
             AddRule(rule);
         }
@@ -93,9 +97,9 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="rule"></param>
         /// <returns></returns>
-        public RuleTreeNode AddRule(DataDictionary.Rules.Rule rule)
+        public RuleTreeNode AddRule(Rule rule)
         {
-            RuleTreeNode retVal = new DataDictionaryView.RuleTreeNode(rule, true);
+            RuleTreeNode retVal = new RuleTreeNode(rule, true);
 
             Item.appendRules(rule);
             Nodes.Add(retVal);

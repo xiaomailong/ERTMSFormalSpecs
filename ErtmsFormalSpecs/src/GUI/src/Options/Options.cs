@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary;
 using GUI.Properties;
@@ -57,7 +51,7 @@ namespace GUI.Options
             public bool CheckParentRelationship
             {
                 get { return Settings.Default.CheckParentRelationship; }
-                set { Settings.Default.CheckParentRelationship= value; }
+                set { Settings.Default.CheckParentRelationship = value; }
             }
 
             [Category("Behaviour")]
@@ -66,7 +60,7 @@ namespace GUI.Options
             public bool CacheFunctions
             {
                 get { return Settings.Default.CacheFunctions; }
-                set { Settings.Default.CacheFunctions= value; }
+                set { Settings.Default.CacheFunctions = value; }
             }
         }
 
@@ -88,7 +82,7 @@ namespace GUI.Options
             system.DisplayRequirementsAsList = settings.DisplayRequirementsAsList;
             system.CheckParentRelationship = settings.CheckParentRelationship;
             system.CacheFunctions = settings.CacheFunctions;
-            DataDictionary.Util.PleaseLockFiles = settings.LockOpenedFiles;
+            Util.PleaseLockFiles = settings.LockOpenedFiles;
 
             settings.Save();
         }

@@ -14,9 +14,11 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Generated;
+
 namespace DataDictionary.Specification
 {
-    public class CharValue : Generated.char_value
+    public class CharValue : char_value
     {
     }
 }

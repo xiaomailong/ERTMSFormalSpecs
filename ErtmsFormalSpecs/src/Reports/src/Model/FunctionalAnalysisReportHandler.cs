@@ -13,19 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections.Generic;
+using DataDictionary;
+using DataDictionary.Types;
+using DataDictionary.Types.AccessMode;
+using MigraDoc.DocumentObjectModel;
+
 namespace Reports.Model
 {
-    using MigraDoc.DocumentObjectModel;
-    using DataDictionary;
-    using DataDictionary.Interpreter;
-    using DataDictionary.Types;
-    using DataDictionary.Variables;
-    using DataDictionary.Types.AccessMode;
-    using System.Collections.Generic;
-
     public class FunctionalAnalysisReportHandler : ReportHandler
     {
-        public FunctionalAnalysisReportHandler(DataDictionary.Dictionary aDictionary)
+        public FunctionalAnalysisReportHandler(Dictionary aDictionary)
             : base(aDictionary)
         {
             createFileName("FunctionalAnalysisReport");
@@ -46,7 +45,7 @@ namespace Reports.Model
 
             FunctionalAnalysisReport report = new FunctionalAnalysisReport(retVal);
             List<AccessMode> accesses = IEnclosesNameSpacesUtils.getAccesses(EFSSystem, null);
-            foreach (DataDictionary.Types.NameSpace nameSpace in Dictionary.NameSpaces)
+            foreach (NameSpace nameSpace in Dictionary.NameSpaces)
             {
                 CreateNamespaceSection(report, nameSpace, accesses);
             }
@@ -54,12 +53,12 @@ namespace Reports.Model
             return retVal;
         }
 
-        public void CreateNamespaceSection(FunctionalAnalysisReport report, DataDictionary.Types.NameSpace nameSpace, List<AccessMode> accesses)
+        public void CreateNamespaceSection(FunctionalAnalysisReport report, NameSpace nameSpace, List<AccessMode> accesses)
         {
             Log.Info("..generating name space " + nameSpace.Name);
 
             report.CreateNameSpaceSection(nameSpace, accesses);
-            foreach (DataDictionary.Types.NameSpace subNameSpace in nameSpace.NameSpaces)
+            foreach (NameSpace subNameSpace in nameSpace.NameSpaces)
             {
                 CreateNamespaceSection(report, subNameSpace, accesses);
             }

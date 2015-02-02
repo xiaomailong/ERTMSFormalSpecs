@@ -13,10 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections.Generic;
+
 namespace DataDictionary.Specification
 {
-    using System.Collections.Generic;
-
     /// <summary>
     /// Indicates that it can hold paragraphs
     /// </summary>

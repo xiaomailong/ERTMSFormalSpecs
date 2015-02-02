@@ -13,8 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using DataDictionary.Functions;
 using DataDictionary.Rules;
+using DataDictionary.Tests.Runner;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using log4net;
+using Utils;
 
 namespace DataDictionary.Interpreter.Statement
 {
@@ -23,7 +33,7 @@ namespace DataDictionary.Interpreter.Statement
         /// <summary>
         /// The Logger
         /// </summary>
-        protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// The designator which identifies the procedure to call
@@ -50,7 +60,7 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance)
+        public override bool SemanticAnalysis(INamable instance)
         {
             bool retVal = base.SemanticAnalysis(instance);
 
@@ -66,38 +76,38 @@ namespace DataDictionary.Interpreter.Statement
         /// <summary>
         /// Provides the rules associates to this procedure call statement
         /// </summary>
-        public System.Collections.ArrayList Rules
+        public ArrayList Rules
         {
             get
             {
                 InterpretationContext ctxt = getContext(new InterpretationContext(Root), null);
                 if (Call != null)
                 {
-                    Functions.Procedure procedure = Call.getProcedure(ctxt, null);
+                    Procedure procedure = Call.getProcedure(ctxt, null);
                     if (procedure != null)
                     {
                         return procedure.Rules;
                     }
                 }
 
-                return new System.Collections.ArrayList();
+                return new ArrayList();
             }
         }
 
         /// <summary>
         /// Provides the list of actions performed during this procedure call
         /// </summary>
-        public List<Rules.Action> Actions
+        public List<Action> Actions
         {
             get
             {
-                List<Rules.Action> retVal = new List<Rules.Action>();
+                List<Action> retVal = new List<Action>();
 
-                foreach (Rules.Rule rule in Rules)
+                foreach (Rule rule in Rules)
                 {
-                    foreach (Rules.RuleCondition condition in rule.RuleConditions)
+                    foreach (RuleCondition condition in rule.RuleConditions)
                     {
-                        foreach (Rules.Action action in condition.Actions)
+                        foreach (Action action in condition.Actions)
                         {
                             retVal.Add(action);
                         }
@@ -113,11 +123,11 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         /// <param name="variable"></param>
         /// <returns>null if no statement modifies the element</returns>
-        public override VariableUpdateStatement Modifies(Types.ITypedElement variable)
+        public override VariableUpdateStatement Modifies(ITypedElement variable)
         {
             VariableUpdateStatement retVal = null;
 
-            foreach (Rules.Action action in Actions)
+            foreach (Action action in Actions)
             {
                 retVal = action.Modifies(variable);
                 if (retVal != null)
@@ -135,7 +145,7 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="retVal">the list to fill</param>
         public override void UpdateStatements(List<VariableUpdateStatement> retVal)
         {
-            foreach (Rules.Action action in Actions)
+            foreach (Action action in Actions)
             {
                 if (action.Statement != null)
                 {
@@ -149,9 +159,9 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>
-        public override bool Reads(Types.ITypedElement variable)
+        public override bool Reads(ITypedElement variable)
         {
-            foreach (Rules.Action action in Actions)
+            foreach (Action action in Actions)
             {
                 if (action.Reads(variable))
                 {
@@ -166,9 +176,9 @@ namespace DataDictionary.Interpreter.Statement
         /// Provides the list of elements read by this statement
         /// </summary>
         /// <param name="retVal">the list to fill</param>
-        public override void ReadElements(List<Types.ITypedElement> retVal)
+        public override void ReadElements(List<ITypedElement> retVal)
         {
-            foreach (Rules.Action action in Actions)
+            foreach (Action action in Actions)
             {
                 if (action.Statement != null)
                 {
@@ -190,7 +200,7 @@ namespace DataDictionary.Interpreter.Statement
             DerefExpression deref = Call.Called as DerefExpression;
             if (deref != null)
             {
-                Values.IValue value = deref.GetPrefixValue(context, deref.Arguments.Count - 1, explain) as Values.IValue;
+                IValue value = deref.GetPrefixValue(context, deref.Arguments.Count - 1, explain) as IValue;
                 if (value != null)
                 {
                     retVal = new InterpretationContext(context, value);
@@ -209,10 +219,10 @@ namespace DataDictionary.Interpreter.Statement
             {
                 Call.checkExpression();
 
-                Functions.Procedure procedure = Call.Called.Ref as Functions.Procedure;
+                Procedure procedure = Call.Called.Ref as Procedure;
                 if (procedure == null)
                 {
-                    if (Call.Called.Ref is Functions.Function)
+                    if (Call.Called.Ref is Function)
                     {
                         Root.AddError("Invalid call : Function " + Call.Called + " called as a procedure");
                     }
@@ -223,13 +233,13 @@ namespace DataDictionary.Interpreter.Statement
                 }
                 else
                 {
-                    if (procedure.Enclosing is Types.Structure)
+                    if (procedure.Enclosing is Structure)
                     {
                         DerefExpression deref = Call.Called as DerefExpression;
                         if (deref != null)
                         {
                             int count = deref.Arguments.Count;
-                            if ((deref.Arguments[count - 2].Ref is Types.NameSpace) || (deref.Arguments[count - 2].Ref is Types.Structure))
+                            if ((deref.Arguments[count - 2].Ref is NameSpace) || (deref.Arguments[count - 2].Ref is Structure))
                             {
                                 Root.AddError("Invalid procedure call : context should be the instance on which the call is performed");
                             }
@@ -251,30 +261,30 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
         /// <param name="runner"></param>
-        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Tests.Runner.Runner runner)
+        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Runner runner)
         {
             if (Call != null)
             {
                 InterpretationContext ctxt = getContext(context, explanation);
-                Functions.Procedure procedure = Call.getProcedure(ctxt, explanation);
+                Procedure procedure = Call.getProcedure(ctxt, explanation);
                 if (procedure != null)
                 {
                     ctxt.HasSideEffects = true;
 
                     // If the procedure has been defined in a structure, 
                     // ensure that it is applied to an instance of that structure
-                    Types.Structure structure = procedure.Enclosing as Types.Structure;
+                    Structure structure = procedure.Enclosing as Structure;
                     if (structure != null)
                     {
-                        Types.ITypedElement current = ctxt.Instance as Types.ITypedElement;
+                        ITypedElement current = ctxt.Instance as ITypedElement;
                         while (current != null)
                         {
                             if (current.Type != structure)
                             {
-                                Utils.IEnclosed enclosed = current as Utils.IEnclosed;
+                                IEnclosed enclosed = current as IEnclosed;
                                 if (enclosed != null)
                                 {
-                                    current = enclosed.Enclosing as Types.ITypedElement;
+                                    current = enclosed.Enclosing as ITypedElement;
                                 }
                                 else
                                 {
@@ -302,12 +312,12 @@ namespace DataDictionary.Interpreter.Statement
                     }
 
                     int token = ctxt.LocalScope.PushContext();
-                    foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in Call.AssignParameterValues(context, procedure, true, part))
+                    foreach (KeyValuePair<Actual, IValue> pair in Call.AssignParameterValues(context, procedure, true, part))
                     {
                         ctxt.LocalScope.setVariable(pair.Key, pair.Value);
                     }
 
-                    foreach (Rules.Rule rule in procedure.Rules)
+                    foreach (Rule rule in procedure.Rules)
                     {
                         ApplyRule(rule, changes, ctxt, part, runner);
                     }
@@ -333,9 +343,9 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="ctxt"></param>
         /// <param name="explanation"></param>
         /// <param name="runner"></param>
-        private void ApplyRule(Rules.Rule rule, ChangeList changes, InterpretationContext ctxt, ExplanationPart explanation, Tests.Runner.Runner runner)
+        private void ApplyRule(Rule rule, ChangeList changes, InterpretationContext ctxt, ExplanationPart explanation, Runner runner)
         {
-            foreach (Rules.RuleCondition condition in rule.RuleConditions)
+            foreach (RuleCondition condition in rule.RuleConditions)
             {
                 ExplanationPart conditionExplanation = ExplanationPart.CreateSubExplanation(explanation, condition.Name);
 
@@ -349,12 +359,12 @@ namespace DataDictionary.Interpreter.Statement
                     {
                         Log.Info("SATISIFIED " + rule.Name + "." + condition.Name);
                     }
-                    foreach (Rules.Action action in condition.Actions)
+                    foreach (Action action in condition.Actions)
                     {
                         action.GetChanges(ctxt, changes, conditionExplanation, true, runner);
                     }
 
-                    foreach (Rules.Rule subRule in condition.SubRules)
+                    foreach (Rule subRule in condition.SubRules)
                     {
                         ApplyRule(subRule, changes, ctxt, conditionExplanation, runner);
                     }

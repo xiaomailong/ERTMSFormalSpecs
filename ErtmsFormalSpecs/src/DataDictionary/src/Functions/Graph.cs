@@ -13,11 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
+using System.Reflection;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using DataDictionary.Variables;
 using ErtmsSolutions.Etcs.Subset26.BrakingCurves;
 using ErtmsSolutions.SiUnits;
-using DataDictionary.Interpreter;
+using log4net;
+using Utils;
 
 namespace DataDictionary.Functions
 {
@@ -27,7 +34,7 @@ namespace DataDictionary.Functions
     /// </summary>
     public class Graph
     {
-        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
 
         public class Segment : IComparable<Segment>
@@ -89,7 +96,7 @@ namespace DataDictionary.Functions
                     }
                     else
                     {
-                        retVal = MS_To_KmH(Math.Sqrt(KmH_To_MS(v0) * KmH_To_MS(v0) + 2 * a * (d - d0)));
+                        retVal = MS_To_KmH(Math.Sqrt(KmH_To_MS(v0)*KmH_To_MS(v0) + 2*a*(d - d0)));
                     }
                     return retVal;
                 }
@@ -105,7 +112,7 @@ namespace DataDictionary.Functions
                     double retVal = double.MaxValue;
                     if (a != 0)
                     {
-                        retVal = d0 + (KmH_To_MS(Y) * KmH_To_MS(Y) - KmH_To_MS(v0) * KmH_To_MS(v0)) / (2 * a);
+                        retVal = d0 + (KmH_To_MS(Y)*KmH_To_MS(Y) - KmH_To_MS(v0)*KmH_To_MS(v0))/(2*a);
                     }
                     return retVal;
                 }
@@ -117,7 +124,7 @@ namespace DataDictionary.Functions
                 /// <returns></returns>
                 private double KmH_To_MS(double val)
                 {
-                    return (val * 1000) / 3600;
+                    return (val*1000)/3600;
                 }
 
                 /// <summary>
@@ -127,7 +134,7 @@ namespace DataDictionary.Functions
                 /// <returns></returns>
                 private double MS_To_KmH(double val)
                 {
-                    return (val * 3600) / 1000;
+                    return (val*3600)/1000;
                 }
 
                 /// <summary>
@@ -274,7 +281,7 @@ namespace DataDictionary.Functions
 
                     if (isFlat(c1) && isFlat(c2))
                     {
-                        retVal = new Curve(0.0, c1.v0 * c2.v0, 0.0);
+                        retVal = new Curve(0.0, c1.v0*c2.v0, 0.0);
                     }
                     else
                     {
@@ -307,7 +314,7 @@ namespace DataDictionary.Functions
 
                     if (isFlat(c1) && isFlat(c2))
                     {
-                        retVal = new Curve(0.0, c1.v0 / c2.v0, 0.0);
+                        retVal = new Curve(0.0, c1.v0/c2.v0, 0.0);
                     }
                     else
                     {
@@ -399,7 +406,7 @@ namespace DataDictionary.Functions
                 /// </summary>
                 public void Negate()
                 {
-                    if (Curve.isFlat(this))
+                    if (isFlat(this))
                     {
                         a = -a;
                         v0 = -v0;
@@ -484,13 +491,13 @@ namespace DataDictionary.Functions
             public double IntersectsAt(double Y)
             {
                 double retVal = double.MaxValue;
-                if (Expression.a != 0.0)  // this is a curve
+                if (Expression.a != 0.0) // this is a curve
                 {
                     retVal = Expression.InverseVal(Y);
                 }
                 else
                 {
-                    retVal = Start;  // this is a flat segment
+                    retVal = Start; // this is a flat segment
                 }
                 return retVal;
             }
@@ -553,7 +560,8 @@ namespace DataDictionary.Functions
 
                 foreach (Segment other in boundaries)
                 {
-                    double start = Math.Max(Start, other.Start); ;
+                    double start = Math.Max(Start, other.Start);
+                    ;
                     double end = Math.Min(End, other.End);
                     if (start <= end)
                     {
@@ -596,7 +604,7 @@ namespace DataDictionary.Functions
         /// <summary>
         /// The segments associated to this graph
         /// </summary>
-        public System.Collections.Generic.List<Segment> Segments { get; private set; }
+        public List<Segment> Segments { get; private set; }
 
         /// <summary>
         /// Constructor
@@ -699,7 +707,7 @@ namespace DataDictionary.Functions
                 {
                     if (totalSegmentSize != 0 && segmentCount != 0)
                     {
-                        retVal = Math.Floor(start + totalSegmentSize / segmentCount) + 1.0;
+                        retVal = Math.Floor(start + totalSegmentSize/segmentCount) + 1.0;
                     }
                     else
                     {
@@ -813,7 +821,7 @@ namespace DataDictionary.Functions
                     curve.Add(
                         new SiSpeed(segment.Start, SiSpeed_SubUnits.KiloMeter_per_Hour),
                         new SiSpeed(end, SiSpeed_SubUnits.KiloMeter_per_Hour),
-                        new SiAcceleration(-segment.Expression.v0, SiAcceleration_SubUnits.Meter_per_SecondSquare));  // decelerations are negative
+                        new SiAcceleration(-segment.Expression.v0, SiAcceleration_SubUnits.Meter_per_SecondSquare)); // decelerations are negative
                 }
             }
 
@@ -824,6 +832,7 @@ namespace DataDictionary.Functions
         /// Provides the function associated to this graph
         /// </summary>
         private Function function;
+
         public Function Function
         {
             get
@@ -831,12 +840,12 @@ namespace DataDictionary.Functions
                 if (function == null)
                 {
                     // Create a function associated to this graph
-                    function = (Function)Generated.acceptor.getFactory().createFunction();
+                    function = (Function) acceptor.getFactory().createFunction();
                     function.Name = "GraphRelatedFunction";
                     function.ReturnType = EFSSystem.INSTANCE.DoubleType;
                     function.Graph = this;
 
-                    Parameter parameter = (Parameter)Generated.acceptor.getFactory().createParameter();
+                    Parameter parameter = (Parameter) acceptor.getFactory().createParameter();
                     parameter.Name = "X";
                     parameter.Type = EFSSystem.INSTANCE.DoubleType;
                     function.appendParameters(parameter);
@@ -844,10 +853,7 @@ namespace DataDictionary.Functions
 
                 return function;
             }
-            set
-            {
-                function = value;
-            }
+            set { function = value; }
         }
 
         /// <summary>
@@ -857,19 +863,19 @@ namespace DataDictionary.Functions
         /// <param name="parameter"></param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public static Graph createGraph(Utils.INamable namable, Parameter parameter, ExplanationPart explain)
+        public static Graph createGraph(INamable namable, Parameter parameter, ExplanationPart explain)
         {
             Graph retVal = null;
 
-            Functions.Function function = namable as Functions.Function;
+            Function function = namable as Function;
             if (function != null)
             {
-                retVal = function.createGraphForParameter(new Interpreter.InterpretationContext(), parameter, explain);
+                retVal = function.createGraphForParameter(new InterpretationContext(), parameter, explain);
             }
 
             if (retVal == null)
             {
-                Values.IValue value = namable as Values.IValue;
+                IValue value = namable as IValue;
                 if (value != null)
                 {
                     retVal = createGraph(Function.getDoubleValue(value), parameter);
@@ -887,9 +893,9 @@ namespace DataDictionary.Functions
         /// <returns></returns>
         public static Graph createGraph(double value, Parameter parameter = null)
         {
-            Graph retVal = new Functions.Graph();
+            Graph retVal = new Graph();
 
-            Functions.Graph.Segment segment = new Functions.Graph.Segment(0, double.MaxValue, new Segment.Curve());
+            Segment segment = new Segment(0, double.MaxValue, new Segment.Curve());
             segment.Expression.v0 = value;
             retVal.addSegment(segment);
 
@@ -1214,7 +1220,7 @@ namespace DataDictionary.Functions
         /// <param name="Operator">The operator to apply</param>
         /// <param name="value">The value to compare with the values of the graph</param>
         /// <returns></returns>
-        public List<Segment> GetSegments(Interpreter.BinaryExpression.OPERATOR Operator, double value)
+        public List<Segment> GetSegments(BinaryExpression.OPERATOR Operator, double value)
         {
             List<Segment> retVal = new List<Segment>();
 
@@ -1224,35 +1230,35 @@ namespace DataDictionary.Functions
                 {
                     switch (Operator)
                     {
-                        case Interpreter.BinaryExpression.OPERATOR.GREATER:
+                        case BinaryExpression.OPERATOR.GREATER:
                             if (segment.Expression.v0 > value)
                             {
                                 retVal.Add(segment);
                             }
                             break;
 
-                        case Interpreter.BinaryExpression.OPERATOR.GREATER_OR_EQUAL:
+                        case BinaryExpression.OPERATOR.GREATER_OR_EQUAL:
                             if (segment.Expression.v0 >= value)
                             {
                                 retVal.Add(segment);
                             }
                             break;
 
-                        case Interpreter.BinaryExpression.OPERATOR.LESS_OR_EQUAL:
+                        case BinaryExpression.OPERATOR.LESS_OR_EQUAL:
                             if (segment.Expression.v0 <= value)
                             {
                                 retVal.Add(segment);
                             }
                             break;
 
-                        case Interpreter.BinaryExpression.OPERATOR.LESS:
+                        case BinaryExpression.OPERATOR.LESS:
                             if (segment.Expression.v0 < value)
                             {
                                 retVal.Add(segment);
                             }
                             break;
 
-                        case Interpreter.BinaryExpression.OPERATOR.EQUAL:
+                        case BinaryExpression.OPERATOR.EQUAL:
                             if (segment.Expression.v0 == value)
                             {
                                 retVal.Add(segment);
@@ -1278,19 +1284,19 @@ namespace DataDictionary.Functions
         /// <param name="context">the context used to evaluate the function</param>
         /// <param name="increment">The increment function do add</param>
         /// <returns></returns>
-        public Graph AddIncrement(Interpreter.InterpretationContext context, Functions.Function increment, ExplanationPart explain)
+        public Graph AddIncrement(InterpretationContext context, Function increment, ExplanationPart explain)
         {
             Graph retVal = new Graph();
 
             if (IsFlat() && increment.FormalParameters.Count == 1)
             {
-                Parameter parameter = (Parameter)increment.FormalParameters[0];
+                Parameter parameter = (Parameter) increment.FormalParameters[0];
                 foreach (Segment segment in Segments)
                 {
-                    Dictionary<Variables.Actual, Values.IValue> actuals = new Dictionary<Variables.Actual, Values.IValue>();
-                    Variables.Actual actual = parameter.createActual();
-                    actuals[actual] = new Values.DoubleValue(increment.EFSSystem.DoubleType, segment.Expression.v0);
-                    Values.IValue result = increment.Evaluate(context, actuals, explain);
+                    Dictionary<Actual, IValue> actuals = new Dictionary<Actual, IValue>();
+                    Actual actual = parameter.createActual();
+                    actuals[actual] = new DoubleValue(increment.EFSSystem.DoubleType, segment.Expression.v0);
+                    IValue result = increment.Evaluate(context, actuals, explain);
                     Segment newSegment = new Segment(segment);
                     newSegment.Expression.v0 = segment.Expression.v0 + Function.getDoubleValue(result);
                     retVal.addSegment(newSegment);
@@ -1416,7 +1422,7 @@ namespace DataDictionary.Functions
         {
             Surface retVal = new Surface(null, null);
 
-            foreach (Graph.Segment segment in Segments)
+            foreach (Segment segment in Segments)
             {
                 Graph graph = new Graph();
                 graph.addSegment(new Segment(0, double.MaxValue, new Segment.Curve(0, segment.Expression.v0, 0)));

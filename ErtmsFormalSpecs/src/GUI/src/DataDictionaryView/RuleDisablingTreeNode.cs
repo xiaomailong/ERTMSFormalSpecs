@@ -13,15 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using DataDictionary.Rules;
 
 namespace GUI.DataDictionaryView
 {
-    public class RuleDisablingTreeNode : ReqRelatedTreeNode<DataDictionary.Rules.RuleDisabling>
+    public class RuleDisablingTreeNode : ReqRelatedTreeNode<RuleDisabling>
     {
         /// <summary>
         /// The editor for message variables
@@ -41,7 +41,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public RuleDisablingTreeNode(DataDictionary.Rules.RuleDisabling item, bool buildSubNodes)
+        public RuleDisablingTreeNode(RuleDisabling item, bool buildSubNodes)
             : base(item, buildSubNodes, "Rule disabling", false)
         {
         }
@@ -50,7 +50,7 @@ namespace GUI.DataDictionaryView
         /// Provides the editor for rule disablings
         /// </summary>
         /// <returns></returns>
-        protected override ModelElementTreeNode<DataDictionary.Rules.RuleDisabling>.Editor createEditor()
+        protected override Editor createEditor()
         {
             return new ItemEditor();
         }

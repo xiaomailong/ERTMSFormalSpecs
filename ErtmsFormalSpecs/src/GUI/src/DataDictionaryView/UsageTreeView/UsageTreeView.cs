@@ -13,16 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Windows.Forms;
+using DataDictionary.Interpreter;
+using DataDictionary.Tests;
+using DataDictionary.Types;
+using Utils;
+using ModelElement = DataDictionary.ModelElement;
+
 namespace GUI.DataDictionaryView.UsageTreeView
 {
-    using DataDictionary;
-    using DataDictionary.Interpreter;
-    using System.Collections.Generic;
-    using System.Windows.Forms;
-
-    public class UsageTreeView : TypedTreeView<Utils.IModelElement>
+    public class UsageTreeView : TypedTreeView<IModelElement>
     {
         private UsageTreeNode __tests = null;
+
         private UsageTreeNode TestNode
         {
             get
@@ -36,13 +40,11 @@ namespace GUI.DataDictionaryView.UsageTreeView
 
                 return __tests;
             }
-            set
-            {
-                __tests = value;
-            }
+            set { __tests = value; }
         }
 
         private UsageTreeNode __models = null;
+
         private UsageTreeNode ModelNode
         {
             get
@@ -56,10 +58,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
 
                 return __models;
             }
-            set
-            {
-                __models = value;
-            }
+            set { __models = value; }
         }
 
         /// <summary>
@@ -69,7 +68,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
             : base()
         {
             KeepTrackOfSelection = false;
-            MouseMove += new System.Windows.Forms.MouseEventHandler(UsageTreeView_MouseMove);
+            MouseMove += new MouseEventHandler(UsageTreeView_MouseMove);
         }
 
         private void UsageTreeView_MouseMove(object sender, MouseEventArgs e)
@@ -102,15 +101,15 @@ namespace GUI.DataDictionaryView.UsageTreeView
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-        private bool IsModel(Utils.IModelElement element)
+        private bool IsModel(IModelElement element)
         {
             bool retVal = false;
 
-            Utils.IModelElement current = element;
+            IModelElement current = element;
             while (current != null && !retVal)
             {
-                retVal = current is DataDictionary.Types.NameSpace;
-                current = current.Enclosing as Utils.IModelElement;
+                retVal = current is NameSpace;
+                current = current.Enclosing as IModelElement;
             }
 
             return retVal;
@@ -121,21 +120,21 @@ namespace GUI.DataDictionaryView.UsageTreeView
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-        private bool IsTest(Utils.IModelElement element)
+        private bool IsTest(IModelElement element)
         {
             bool retVal = false;
 
-            Utils.IModelElement current = element;
+            IModelElement current = element;
             while (current != null && !retVal)
             {
-                retVal = current is DataDictionary.Tests.Frame;
-                current = current.Enclosing as Utils.IModelElement;
+                retVal = current is Frame;
+                current = current.Enclosing as IModelElement;
             }
 
             return retVal;
         }
 
-        ModelElement previousModel = null;
+        private ModelElement previousModel = null;
 
         protected override void BuildModel()
         {

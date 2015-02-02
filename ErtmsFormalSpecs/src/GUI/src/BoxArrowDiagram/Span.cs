@@ -13,11 +13,6 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
 
 namespace GUI.BoxArrowDiagram
 {
@@ -28,6 +23,7 @@ namespace GUI.BoxArrowDiagram
         /// Hyp : LowBound <= HighBound
         /// </summary>
         public int LowBound { get; set; }
+
         public int HighBound { get; set; }
 
         /// <summary>
@@ -35,7 +31,7 @@ namespace GUI.BoxArrowDiagram
         /// </summary>
         public int Center
         {
-            get { return (HighBound - LowBound) / 2; }
+            get { return (HighBound - LowBound)/2; }
         }
 
         /// <summary>
@@ -142,6 +138,5 @@ namespace GUI.BoxArrowDiagram
 
             return retVal;
         }
-
     }
 }

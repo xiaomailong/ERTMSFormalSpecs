@@ -13,16 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.ComponentModel;
+using System.Globalization;
+using DataDictionary.Variables;
+
 namespace GUI.Converters
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.ComponentModel;
-    using System.Globalization;
-    using DataDictionary;
-
     /// <summary>
     /// Converts IExpressionable to string, by getting the Expression property
     /// </summary>
@@ -39,7 +37,7 @@ namespace GUI.Converters
             string text = value as string;
             if (editor != null && text != null)
             {
-                DataDictionary.Variables.IVariable variable = editor.Model as DataDictionary.Variables.IVariable;
+                IVariable variable = editor.Model as IVariable;
                 if (variable != null && variable.Type != null)
                 {
                     variable.Value = variable.Type.getValue(text);
@@ -64,7 +62,7 @@ namespace GUI.Converters
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
             string retVal = "<unknown>";
-            DataDictionary.Variables.IVariable variable = value as DataDictionary.Variables.IVariable;
+            IVariable variable = value as IVariable;
             if (variable != null && variable.Value != null)
             {
                 retVal = variable.Value.LiteralName;

@@ -13,12 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.IO;
+using System.Text;
+
 namespace Utils
 {
-    using System;
-    using System.IO;
-    using System.Text;
-
     /// <summary>
     /// The class versioned writer overwrites a new file when the preceding contents is different from the original one
     /// </summary>
@@ -45,7 +46,7 @@ namespace Utils
         /// </summary>
         public override void Close()
         {
-            String tempFilePath = ((FileStream)BaseStream).Name;
+            String tempFilePath = ((FileStream) BaseStream).Name;
             base.Close();
 
             if (!SameFiles(tempFilePath))

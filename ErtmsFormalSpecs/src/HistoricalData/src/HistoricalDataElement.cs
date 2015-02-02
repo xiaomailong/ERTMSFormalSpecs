@@ -13,12 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using Utils;
+
 namespace HistoricalData
 {
     /// <summary>
     /// The base class for all historical data element
     /// </summary>
-    public abstract class HistoricalDataElement : Utils.ModelElement
+    public abstract class HistoricalDataElement : ModelElement
     {
     }
 }

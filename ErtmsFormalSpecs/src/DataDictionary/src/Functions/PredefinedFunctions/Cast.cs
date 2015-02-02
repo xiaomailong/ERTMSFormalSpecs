@@ -13,8 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -26,7 +31,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// The target type for which the cast is performed
         /// </summary>
-        public Types.Type TargetType { get; private set; }
+        public Type TargetType { get; private set; }
 
         /// <summary>
         /// The value which is casted
@@ -37,12 +42,12 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// Constructor
         /// </summary>
         /// <param name="type">The type in which the cast is performed</param>
-        public Cast(Types.Type type)
+        public Cast(Type type)
             : base(type.EFSSystem, type.Name)
         {
             TargetType = type;
 
-            Value = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Value = (Parameter) acceptor.getFactory().createParameter();
             Value.Name = "Value";
             Value.Type = EFSSystem.AnyType;
             Value.setFather(this);
@@ -52,7 +57,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// The return type of the cast function
         /// </summary>
-        public override Types.Type ReturnType
+        public override Type ReturnType
         {
             get { return TargetType; }
         }
@@ -64,13 +69,13 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             int token = context.LocalScope.PushContext();
             AssignParameters(context, actuals);
-            Values.IValue value = context.findOnStack(Value).Value;
+            IValue value = context.findOnStack(Value).Value;
             if (value is Function)
             {
                 retVal = value;
@@ -91,15 +96,15 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="parameter"></param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public override Graph createGraph(Interpreter.InterpretationContext context, Parameter parameter, ExplanationPart explain)
+        public override Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
             Graph retVal = null;
 
-            Variables.IVariable variable = context.findOnStack(Value);
+            IVariable variable = context.findOnStack(Value);
 
             if (variable != null)
             {
-                retVal = Graph.createGraph(Functions.Function.getDoubleValue(variable.Value), parameter);
+                retVal = Graph.createGraph(getDoubleValue(variable.Value), parameter);
             }
             else
             {

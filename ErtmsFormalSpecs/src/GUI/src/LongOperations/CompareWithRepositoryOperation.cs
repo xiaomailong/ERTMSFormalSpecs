@@ -13,12 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Windows.Forms;
+using DataDictionary;
+using DataDictionary.Compare;
+using LibGit2Sharp;
+
 namespace GUI.LongOperations
 {
-    using DataDictionary;
-    using System.Windows.Forms;
-    using LibGit2Sharp;
-
     public class CompareWithRepositoryOperation : BaseCompareWithRepositoryOperation
     {
         /// <summary>
@@ -48,9 +50,9 @@ namespace GUI.LongOperations
             // Compare the two dictionaries and mark the differences
             if (otherVersion != null)
             {
-                DataDictionary.Compare.VersionDiff versionDiff = new DataDictionary.Compare.VersionDiff();
-                DataDictionary.Compare.Comparer.ensureGuidDictionary(Dictionary, otherVersion);
-                DataDictionary.Compare.Comparer.compareDictionary(Dictionary, otherVersion, versionDiff);
+                VersionDiff versionDiff = new VersionDiff();
+                Comparer.ensureGuidDictionary(Dictionary, otherVersion);
+                Comparer.compareDictionary(Dictionary, otherVersion, versionDiff);
                 versionDiff.markVersionChanges(Dictionary);
             }
             else

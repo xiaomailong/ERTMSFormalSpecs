@@ -13,13 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using ErtmsSolutions.SiUnits;
+using log4net;
 
 namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 {
     /**@brief A piece of A(V,d). It has a D0..D0 V0..V1 domain and a constant A value over it. */
+
     public class SurfaceTile
     {
         private ConstantCurveSegment<SiDistance, SiAcceleration> myD;
@@ -27,10 +31,18 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
 
         /**@brief The SiDistance domain.*/
-        public ConstantCurveSegment<SiDistance, SiAcceleration> D { get { return myD; } }
+
+        public ConstantCurveSegment<SiDistance, SiAcceleration> D
+        {
+            get { return myD; }
+        }
 
         /**@brief The SiSpeed domain.*/
-        public ConstantCurveSegment<SiSpeed, SiAcceleration> V { get { return myV; } }
+
+        public ConstantCurveSegment<SiSpeed, SiAcceleration> V
+        {
+            get { return myV; }
+        }
 
 
         public SurfaceTile(SiDistance d0, SiDistance d1, SiSpeed v0, SiSpeed v1, SiAcceleration a)
@@ -42,27 +54,29 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         public override string ToString()
         {
             return String.Format(" D:[{0,7:F2}..{1,7:F2}]({2})   V:[{3,7:F2}..{4,7:F2}]({5})    A:{6,7:F2}({7})",
-                                  D.X.X0.ToUnits(),
-                                  D.X.X1.ToUnits(),
-                                  D.X.X0.UnitString(),
-                                  V.X.X0.ToUnits(),
-                                  V.X.X1.ToUnits(),
-                                  V.X.X0.UnitString(),
-                                  V.Y.ToUnits(),
-                                  V.Y.UnitString());
+                D.X.X0.ToUnits(),
+                D.X.X1.ToUnits(),
+                D.X.X0.UnitString(),
+                V.X.X0.ToUnits(),
+                V.X.X1.ToUnits(),
+                V.X.X0.UnitString(),
+                V.Y.ToUnits(),
+                V.Y.UnitString());
         }
     }
 
     /**@brief A RxR->R surface that returns and SiAcceleration for every SiSpeed,SiDistance pair. 
       Used to store braking capablity over speed and distance. Namely A(V,d) in Subset26 notation.**/
+
     public class AccelerationSpeedDistanceSurface
     {
         /************************************************************/
-        public static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private List<SurfaceTile> myTiles;
 
 
         /**@brief The list of tiles is sorted every time a new one is added*/
+
         private static int CompareTiles(SurfaceTile a, SurfaceTile b)
         {
             if (a.D.X.X0 < b.D.X.X0)
@@ -91,15 +105,21 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /************************************************************/
+
         public AccelerationSpeedDistanceSurface()
         {
             myTiles = new List<SurfaceTile>();
         }
 
         /**@brief The surface is stored as a list of 'tiles'. Each one has a D0..D0 V0..V1 domain and a constant A value over it. */
-        public List<SurfaceTile> Tiles { get { return myTiles; } }
+
+        public List<SurfaceTile> Tiles
+        {
+            get { return myTiles; }
+        }
 
         /************************************************************/
+
         public SurfaceTile GetTileAt(SiSpeed V, SiDistance D)
         {
             foreach (SurfaceTile T in Tiles)
@@ -114,15 +134,12 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /************************************************************/
+
         public void Dump(string Title)
         {
             Log.DebugFormat("**************{0}**************", Title);
             foreach (SurfaceTile t in myTiles)
                 Log.DebugFormat(t.ToString());
         }
-
     }
 }
-
-
-

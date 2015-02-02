@@ -13,22 +13,38 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using DataDictionary.Generated;
 using DataDictionary.Specification;
-using DataDictionary.Tests;
-using DataDictionary.Types;
 using Utils;
+using XmlBooster;
+using Chapter = DataDictionary.Specification.Chapter;
+using ChapterRef = DataDictionary.Specification.ChapterRef;
+using Frame = DataDictionary.Tests.Frame;
+using FrameRef = DataDictionary.Tests.FrameRef;
+using NameSpaceRef = DataDictionary.Types.NameSpaceRef;
+using Paragraph = DataDictionary.Generated.Paragraph;
+using RequirementSet = DataDictionary.Specification.RequirementSet;
+using Rule = DataDictionary.Rules.Rule;
+using RuleDisabling = DataDictionary.Rules.RuleDisabling;
+using ShortcutDictionary = DataDictionary.Shortcuts.ShortcutDictionary;
+using StateMachine = DataDictionary.Types.StateMachine;
+using SubSequence = DataDictionary.Tests.SubSequence;
+using TranslationDictionary = DataDictionary.Tests.Translations.TranslationDictionary;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary
 {
-    public class Dictionary : Generated.Dictionary, Utils.ISubDeclarator, Utils.IFinder, IEnclosesNameSpaces, IHoldsParagraphs, IHoldsRequirementSets
+    public class Dictionary : Generated.Dictionary, ISubDeclarator, IFinder, IEnclosesNameSpaces, IHoldsParagraphs, IHoldsRequirementSets
     {
         /// <summary>
         /// The file path associated to the dictionary
         /// </summary>
         private string filePath;
+
         public string FilePath
         {
             get { return filePath; }
@@ -48,7 +64,7 @@ namespace DataDictionary
         /// <summary>
         /// Updates the dictionary contents before saving it
         /// </summary>
-        private class Updater : Generated.Visitor
+        private class Updater : Visitor
         {
             /// <summary>
             /// Indicates if the update operation is performed before saving or after
@@ -76,7 +92,7 @@ namespace DataDictionary
             {
                 base.visit(obj, visitSubNodes);
 
-                Dictionary dictionary = (Dictionary)obj;
+                Dictionary dictionary = (Dictionary) obj;
 
                 if (beforeSave)
                 {
@@ -86,7 +102,7 @@ namespace DataDictionary
 
                     if (dictionary.allNameSpaces() != null)
                     {
-                        foreach (NameSpace subNameSpace in dictionary.allNameSpaces())
+                        foreach (Types.NameSpace subNameSpace in dictionary.allNameSpaces())
                         {
                             dictionary.appendNameSpaceRefs(referenceNameSpace(dictionary, subNameSpace));
                         }
@@ -107,11 +123,11 @@ namespace DataDictionary
                 }
             }
 
-            public override void visit(Generated.NameSpace obj, bool visitSubNodes)
+            public override void visit(NameSpace obj, bool visitSubNodes)
             {
                 base.visit(obj, visitSubNodes);
 
-                NameSpace nameSpace = (NameSpace)obj;
+                Types.NameSpace nameSpace = (Types.NameSpace) obj;
 
                 if (beforeSave)
                 {
@@ -120,7 +136,7 @@ namespace DataDictionary
 
                     if (nameSpace.allNameSpaces() != null)
                     {
-                        foreach (NameSpace subNameSpace in nameSpace.allNameSpaces())
+                        foreach (Types.NameSpace subNameSpace in nameSpace.allNameSpaces())
                         {
                             nameSpace.appendNameSpaceRefs(referenceNameSpace(nameSpace, subNameSpace));
                         }
@@ -137,7 +153,7 @@ namespace DataDictionary
             {
                 base.visit(obj, visitSubNodes);
 
-                Specification.Specification specification = (Specification.Specification)obj;
+                Specification.Specification specification = (Specification.Specification) obj;
 
                 if (beforeSave)
                 {
@@ -159,13 +175,13 @@ namespace DataDictionary
                 }
             }
 
-            private NameSpaceRef referenceNameSpace(ModelElement enclosing, NameSpace nameSpace)
+            private NameSpaceRef referenceNameSpace(ModelElement enclosing, Types.NameSpace nameSpace)
             {
                 NameSpaceRef retVal = nameSpace.NameSpaceRef;
 
                 if (retVal == null)
                 {
-                    retVal = (NameSpaceRef)Generated.acceptor.getFactory().createNameSpaceRef();
+                    retVal = (NameSpaceRef) acceptor.getFactory().createNameSpaceRef();
                 }
 
                 retVal.Name = nameSpace.Name;
@@ -181,7 +197,7 @@ namespace DataDictionary
 
                 if (retVal == null)
                 {
-                    retVal = (FrameRef)Generated.acceptor.getFactory().createFrameRef();
+                    retVal = (FrameRef) acceptor.getFactory().createFrameRef();
                 }
 
                 retVal.Name = test.Name;
@@ -197,7 +213,7 @@ namespace DataDictionary
 
                 if (retVal == null)
                 {
-                    retVal = (ChapterRef)Generated.acceptor.getFactory().createChapterRef();
+                    retVal = (ChapterRef) acceptor.getFactory().createChapterRef();
                 }
 
                 retVal.Name = chapter.Name;
@@ -213,9 +229,9 @@ namespace DataDictionary
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Step obj, bool visitSubNodes)
+            public override void visit(Step obj, bool visitSubNodes)
             {
-                Step step = (Step)obj;
+                Tests.Step step = (Tests.Step) obj;
 
                 if (step.getObsoleteComment() == "")
                 {
@@ -230,7 +246,7 @@ namespace DataDictionary
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+            public override void visit(BaseModelElement obj, bool visitSubNodes)
             {
                 ICommentable commentable = obj as ICommentable;
                 if (commentable != null)
@@ -249,9 +265,9 @@ namespace DataDictionary
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.TestCase obj, bool visitSubNodes)
+            public override void visit(TestCase obj, bool visitSubNodes)
             {
-                TestCase testCase = (TestCase)obj;
+                Tests.TestCase testCase = (Tests.TestCase) obj;
 
                 if (testCase.getObsoleteComment() == "")
                 {
@@ -261,17 +277,17 @@ namespace DataDictionary
                 base.visit(obj, visitSubNodes);
             }
 
-            
+
             /// <summary>
             /// Remove obsolete fields from XML file
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Paragraph obj, bool visitSubNodes)
+            public override void visit(Paragraph obj, bool visitSubNodes)
             {
-                Paragraph paragraph = (Paragraph)obj;
+                Specification.Paragraph paragraph = (Specification.Paragraph) obj;
 
-                if (paragraph.getObsoleteFunctionalBlockName() == "" )
+                if (paragraph.getObsoleteFunctionalBlockName() == "")
                 {
                     paragraph.setObsoleteFunctionalBlockName(null);
                 }
@@ -315,7 +331,7 @@ namespace DataDictionary
         public void StoreInfo()
         {
             savedNameSpaces = new ArrayList();
-            foreach (NameSpace aNameSpace in allNameSpaces())
+            foreach (Types.NameSpace aNameSpace in allNameSpaces())
             {
                 savedNameSpaces.Add(aNameSpace);
             }
@@ -335,7 +351,7 @@ namespace DataDictionary
         public void RestoreInfo()
         {
             setAllNameSpaces(new ArrayList());
-            foreach (NameSpace aNameSpace in savedNameSpaces)
+            foreach (Types.NameSpace aNameSpace in savedNameSpaces)
             {
                 allNameSpaces().Add(aNameSpace);
                 aNameSpace.RestoreInfo();
@@ -381,34 +397,34 @@ namespace DataDictionary
         /// </summary>
         public void InitDeclaredElements()
         {
-            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+            DeclaredElements = new Dictionary<string, List<INamable>>();
 
             foreach (Types.NameSpace nameSpace in NameSpaces)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, nameSpace);
+                ISubDeclaratorUtils.AppendNamable(this, nameSpace);
             }
         }
 
         /// <summary>
         /// Provides the list of declared elements in this Dictionary
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
+        public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
-            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
+            ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>
         /// Finds all namable which match the full name provided
         /// </summary>
         /// <param name="fullname">The full name used to search the namable</param>
-        public Utils.INamable findByFullName(string fullname)
+        public INamable findByFullName(string fullname)
         {
             return OverallNamableFinder.INSTANCE.findByName(this, fullname);
         }
@@ -434,13 +450,13 @@ namespace DataDictionary
         /// <summary>
         /// The rule disablings related to this rule set
         /// </summary>
-        public System.Collections.ArrayList RuleDisablings
+        public ArrayList RuleDisablings
         {
             get
             {
                 if (allRuleDisablings() == null)
                 {
-                    setAllRuleDisablings(new System.Collections.ArrayList());
+                    setAllRuleDisablings(new ArrayList());
                 }
                 return allRuleDisablings();
             }
@@ -449,13 +465,13 @@ namespace DataDictionary
         /// <summary>
         /// The test frames
         /// </summary>
-        public System.Collections.ArrayList Tests
+        public ArrayList Tests
         {
             get
             {
                 if (allTests() == null)
                 {
-                    setAllTests(new System.Collections.ArrayList());
+                    setAllTests(new ArrayList());
                 }
                 return allTests();
             }
@@ -464,26 +480,27 @@ namespace DataDictionary
         /// <summary>
         /// Associates the types with their full name
         /// </summary>
-        private Dictionary<string, Types.Type> definedTypes;
-        public Dictionary<string, Types.Type> DefinedTypes
+        private Dictionary<string, Type> definedTypes;
+
+        public Dictionary<string, Type> DefinedTypes
         {
             get
             {
                 if (definedTypes == null)
                 {
-                    definedTypes = new Dictionary<string, Types.Type>();
+                    definedTypes = new Dictionary<string, Type>();
 
-                    foreach (Types.Type type in EFSSystem.PredefinedTypes.Values)
+                    foreach (Type type in EFSSystem.PredefinedTypes.Values)
                     {
                         definedTypes.Add(type.FullName, type);
                     }
 
-                    foreach (Types.Type type in TypeFinder.INSTANCE.find(this))
+                    foreach (Type type in TypeFinder.INSTANCE.find(this))
                     {
                         // Ignore state machines which have no substate
-                        if (type is Types.StateMachine)
+                        if (type is StateMachine)
                         {
-                            Types.StateMachine stateMachine = type as Types.StateMachine;
+                            StateMachine stateMachine = type as StateMachine;
 
                             // Ignore state machines which have no substate
                             if (stateMachine.States.Count > 0)
@@ -509,18 +526,19 @@ namespace DataDictionary
         /// <summary>
         /// Associates the types with their full name
         /// </summary>
-        private Dictionary<Rules.Rule, Rules.RuleDisabling> cachedRuleDisablings;
-        public Dictionary<Rules.Rule, Rules.RuleDisabling> CachedRuleDisablings
+        private Dictionary<Rule, RuleDisabling> cachedRuleDisablings;
+
+        public Dictionary<Rule, RuleDisabling> CachedRuleDisablings
         {
             get
             {
                 if (cachedRuleDisablings == null)
                 {
-                    cachedRuleDisablings = new Dictionary<Rules.Rule, Rules.RuleDisabling>();
+                    cachedRuleDisablings = new Dictionary<Rule, RuleDisabling>();
 
-                    foreach (Rules.RuleDisabling ruleDisabling in RuleDisablings)
+                    foreach (RuleDisabling ruleDisabling in RuleDisablings)
                     {
-                        Rules.Rule disabledRule = EFSSystem.findRule(ruleDisabling.getRule());
+                        Rule disabledRule = EFSSystem.findRule(ruleDisabling.getRule());
                         if (disabledRule != null)
                         {
                             cachedRuleDisablings.Add(disabledRule, ruleDisabling);
@@ -571,7 +589,7 @@ namespace DataDictionary
         /// <summary>
         /// The cache for types / namespace + name
         /// </summary>
-        private Dictionary<Types.NameSpace, Dictionary<string, Types.Type>> cache = new Dictionary<Types.NameSpace, Dictionary<string, Types.Type>>();
+        private Dictionary<Types.NameSpace, Dictionary<string, Type>> cache = new Dictionary<Types.NameSpace, Dictionary<string, Type>>();
 
         /// <summary>
         /// Provides the type associated to the name
@@ -579,9 +597,9 @@ namespace DataDictionary
         /// <param name="nameSpace">the namespace in which the name should be found</param>
         /// <param name="name"></param>
         /// <returns></returns>
-        public Types.Type findType(Types.NameSpace nameSpace, string name)
+        public Type findType(Types.NameSpace nameSpace, string name)
         {
-            Types.Type retVal = null;
+            Type retVal = null;
 
             if (name != null)
             {
@@ -589,13 +607,13 @@ namespace DataDictionary
                 {
                     if (!cache.ContainsKey(nameSpace))
                     {
-                        cache[nameSpace] = new Dictionary<string, Types.Type>();
+                        cache[nameSpace] = new Dictionary<string, Type>();
                     }
-                    Dictionary<string, Types.Type> subCache = cache[nameSpace];
+                    Dictionary<string, Type> subCache = cache[nameSpace];
 
                     if (!subCache.ContainsKey(name))
                     {
-                        Types.Type tmp = null;
+                        Type tmp = null;
 
                         if (!Utils.Utils.isEmpty(name))
                         {
@@ -646,7 +664,7 @@ namespace DataDictionary
         /// </summary>
         public Types.NameSpace findNameSpace(string name)
         {
-            Types.NameSpace retVal = (Types.NameSpace)Utils.INamableUtils.findByName(name, NameSpaces);
+            Types.NameSpace retVal = (Types.NameSpace) INamableUtils.findByName(name, NameSpaces);
 
             return retVal;
         }
@@ -656,11 +674,11 @@ namespace DataDictionary
         /// </summary>
         /// <param name="fullName"></param>
         /// <returns></returns>
-        public Rules.Rule findRule(string fullName)
+        public Rule findRule(string fullName)
         {
-            Rules.Rule retVal = null;
+            Rule retVal = null;
 
-            foreach (Rules.Rule rule in AllRules)
+            foreach (Rule rule in AllRules)
             {
                 if (rule.FullName.CompareTo(fullName) == 0)
                 {
@@ -679,19 +697,19 @@ namespace DataDictionary
         public Dictionary()
             : base()
         {
-            Utils.FinderRepository.INSTANCE.Register(this);
+            FinderRepository.INSTANCE.Register(this);
         }
 
         /// <summary>
         /// Provides the namespaces defined in this dictionary
         /// </summary>
-        public System.Collections.ArrayList NameSpaces
+        public ArrayList NameSpaces
         {
             get
             {
                 if (allNameSpaces() == null)
                 {
-                    setAllNameSpaces(new System.Collections.ArrayList());
+                    setAllNameSpaces(new ArrayList());
                 }
                 return allNameSpaces();
             }
@@ -704,17 +722,14 @@ namespace DataDictionary
         /// <returns></returns>
         public HashSet<Specification.Paragraph> ImplementedParagraphs
         {
-            get
-            {
-                return ImplementedParagraphsFinder.INSTANCE.find(this);
-            }
+            get { return ImplementedParagraphsFinder.INSTANCE.find(this); }
         }
 
         /// <summary>
         /// Recursively provides the rules stored in this dictionary
         /// </summary>
         /// <returns></returns>
-        public HashSet<Rules.Rule> AllRules
+        public HashSet<Rule> AllRules
         {
             get { return RuleFinder.INSTANCE.find(this); }
         }
@@ -754,13 +769,13 @@ namespace DataDictionary
         /// Recursively provides the rules stored in this dictionary
         /// </summary>
         /// <returns></returns>
-        public HashSet<Rules.Rule> ImplementedRules
+        public HashSet<Rule> ImplementedRules
         {
             get
             {
-                HashSet<Rules.Rule> retVal = new HashSet<Rules.Rule>();
+                HashSet<Rule> retVal = new HashSet<Rule>();
 
-                foreach (Rules.Rule rule in AllRules)
+                foreach (Rule rule in AllRules)
                 {
                     if (rule.getImplemented())
                     {
@@ -779,7 +794,7 @@ namespace DataDictionary
         {
             try
             {
-                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                ControllersManager.DesactivateAllNotifications();
                 ClearMessages();
 
                 // Rebuilds everything
@@ -793,7 +808,7 @@ namespace DataDictionary
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+                ControllersManager.ActivateAllNotifications();
             }
         }
 
@@ -804,7 +819,7 @@ namespace DataDictionary
         {
             try
             {
-                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                ControllersManager.DesactivateAllNotifications();
                 ClearMessages();
 
                 // Rebuilds everything
@@ -818,15 +833,15 @@ namespace DataDictionary
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+                ControllersManager.ActivateAllNotifications();
             }
         }
 
-        private class UnimplementedItemVisitor : Generated.Visitor
+        private class UnimplementedItemVisitor : Visitor
         {
             public override void visit(Generated.ReqRelated obj, bool visitSubNodes)
             {
-                DataDictionary.ReqRelated reqRelated = (DataDictionary.ReqRelated)obj;
+                ReqRelated reqRelated = (ReqRelated) obj;
 
                 if (!reqRelated.getImplemented())
                 {
@@ -838,7 +853,6 @@ namespace DataDictionary
         }
 
 
-
         /// <summary>
         /// Marks all unimplemented test cases stored in the dictionary
         /// </summary>
@@ -848,11 +862,11 @@ namespace DataDictionary
             visitor.visit(this, true);
         }
 
-        private class UnimplementedTestVisitor : Generated.Visitor
+        private class UnimplementedTestVisitor : Visitor
         {
-            public override void visit(Generated.TestCase obj, bool visitSubNodes)
+            public override void visit(TestCase obj, bool visitSubNodes)
             {
-                DataDictionary.Tests.TestCase testCase = (DataDictionary.Tests.TestCase)obj;
+                Tests.TestCase testCase = (Tests.TestCase) obj;
                 if (!testCase.getImplemented())
                 {
                     testCase.AddInfo("Unimplemented test case");
@@ -870,11 +884,11 @@ namespace DataDictionary
             visitor.visit(this, true);
         }
 
-        private class NotTranslatedTestVisitor : Generated.Visitor
+        private class NotTranslatedTestVisitor : Visitor
         {
-            public override void visit(Generated.Step obj, bool visitSubNodes)
+            public override void visit(Step obj, bool visitSubNodes)
             {
-                DataDictionary.Tests.Step step = (DataDictionary.Tests.Step)obj;
+                Tests.Step step = (Tests.Step) obj;
                 if (step.getTranslationRequired() && !step.getTranslated())
                 {
                     step.AddInfo("Not translated step");
@@ -892,11 +906,11 @@ namespace DataDictionary
             visitor.visit(this, true);
         }
 
-        private class NotImplementedTranslationVisitor : Generated.Visitor
+        private class NotImplementedTranslationVisitor : Visitor
         {
-            public override void visit(Generated.Translation obj, bool visitSubNodes)
+            public override void visit(Translation obj, bool visitSubNodes)
             {
-                DataDictionary.Tests.Translations.Translation translation = (DataDictionary.Tests.Translations.Translation)obj;
+                Tests.Translations.Translation translation = (Tests.Translations.Translation) obj;
                 if (!translation.getImplemented())
                 {
                     translation.AddInfo("Not implemented translation");
@@ -916,11 +930,11 @@ namespace DataDictionary
             EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
         }
 
-        private class NotVerifiedRuleVisitor : Generated.Visitor
+        private class NotVerifiedRuleVisitor : Visitor
         {
             public override void visit(Generated.Rule obj, bool visitSubNodes)
             {
-                DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)obj;
+                Rule rule = (Rule) obj;
 
                 if (!rule.getVerified())
                 {
@@ -945,11 +959,11 @@ namespace DataDictionary
         /// <summary>
         /// Clears all marks related to model elements
         /// </summary>
-        private class ClearMarksVisitor : Generated.Visitor
+        private class ClearMarksVisitor : Visitor
         {
-            public override void visit(XmlBooster.IXmlBBase obj, bool visitSubNodes)
+            public override void visit(IXmlBBase obj, bool visitSubNodes)
             {
-                Utils.IModelElement element = obj as Utils.IModelElement;
+                IModelElement element = obj as IModelElement;
 
                 if (element != null)
                 {
@@ -963,10 +977,11 @@ namespace DataDictionary
         /// <summary>
         /// Creates a dictionary with pairs paragraph - list of its implementations
         /// </summary>
-        private class ParagraphReqRefFinder : Generated.Visitor
+        private class ParagraphReqRefFinder : Visitor
         {
-            private Dictionary<DataDictionary.Specification.Paragraph, List<ReqRef>> paragraphsReqRefs;
-            public Dictionary<DataDictionary.Specification.Paragraph, List<ReqRef>> ParagraphsReqRefs
+            private Dictionary<Specification.Paragraph, List<ReqRef>> paragraphsReqRefs;
+
+            public Dictionary<Specification.Paragraph, List<ReqRef>> ParagraphsReqRefs
             {
                 get
                 {
@@ -978,7 +993,7 @@ namespace DataDictionary
                 }
             }
 
-            public override void visit(XmlBooster.IXmlBBase obj, bool visitSubNodes)
+            public override void visit(IXmlBBase obj, bool visitSubNodes)
             {
                 ReqRef reqRef = obj as ReqRef;
                 if (reqRef != null)
@@ -995,7 +1010,7 @@ namespace DataDictionary
             }
         }
 
-        public Dictionary<DataDictionary.Specification.Paragraph, List<ReqRef>> ParagraphsReqRefs
+        public Dictionary<Specification.Paragraph, List<ReqRef>> ParagraphsReqRefs
         {
             get
             {
@@ -1023,7 +1038,7 @@ namespace DataDictionary
         {
             int retVal = 0;
 
-            foreach (DataDictionary.Tests.Frame frame in Tests)
+            foreach (Frame frame in Tests)
             {
                 int failedFrames = frame.ExecuteAllTests();
                 if (failedFrames > 0)
@@ -1038,13 +1053,13 @@ namespace DataDictionary
         /// <summary>
         /// The sub sequences of this data dictionary
         /// </summary>
-        public List<Tests.SubSequence> SubSequences
+        public List<SubSequence> SubSequences
         {
             get
             {
-                List<Tests.SubSequence> retVal = new List<Tests.SubSequence>();
+                List<SubSequence> retVal = new List<SubSequence>();
 
-                foreach (Tests.Frame frame in Tests)
+                foreach (Frame frame in Tests)
                 {
                     frame.FillSubSequences(retVal);
                 }
@@ -1059,9 +1074,9 @@ namespace DataDictionary
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public Tests.SubSequence findSubSequence(string name)
+        public SubSequence findSubSequence(string name)
         {
-            return (Tests.SubSequence)Utils.INamableUtils.findByName(name, SubSequences);
+            return (SubSequence) INamableUtils.findByName(name, SubSequences);
         }
 
         /// <summary>
@@ -1069,43 +1084,42 @@ namespace DataDictionary
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public Tests.Frame findFrame(string name)
+        public Frame findFrame(string name)
         {
-            return (Tests.Frame)Utils.INamableUtils.findByName(name, Tests);
+            return (Frame) INamableUtils.findByName(name, Tests);
         }
 
         /// <summary>
         /// The translation dictionary.
         /// </summary>
-        public Tests.Translations.TranslationDictionary TranslationDictionary
+        public TranslationDictionary TranslationDictionary
         {
             get
             {
                 if (getTranslationDictionary() == null)
                 {
-                    setTranslationDictionary(Generated.acceptor.getFactory().createTranslationDictionary());
+                    setTranslationDictionary(acceptor.getFactory().createTranslationDictionary());
                 }
 
-                return (Tests.Translations.TranslationDictionary)getTranslationDictionary();
+                return (TranslationDictionary) getTranslationDictionary();
             }
         }
 
         /// <summary>
         /// The translation dictionary.
         /// </summary>
-        public Shortcuts.ShortcutDictionary ShortcutsDictionary
+        public ShortcutDictionary ShortcutsDictionary
         {
             get
             {
                 if (getShortcutDictionary() == null)
                 {
-                    Shortcuts.ShortcutDictionary dictionary = (Shortcuts.ShortcutDictionary)Generated.acceptor.getFactory().createShortcutDictionary();
+                    ShortcutDictionary dictionary = (ShortcutDictionary) acceptor.getFactory().createShortcutDictionary();
                     dictionary.Name = Name;
                     setShortcutDictionary(dictionary);
-
                 }
 
-                return (Shortcuts.ShortcutDictionary)getShortcutDictionary();
+                return (ShortcutDictionary) getShortcutDictionary();
             }
         }
 
@@ -1113,9 +1127,9 @@ namespace DataDictionary
         /// Adds a new rule disabling in this dictionary
         /// </summary>
         /// <param name="rule"></param>
-        public void AppendRuleDisabling(Rules.Rule rule)
+        public void AppendRuleDisabling(Rule rule)
         {
-            Rules.RuleDisabling disabling = (Rules.RuleDisabling)Generated.acceptor.getFactory().createRuleDisabling();
+            RuleDisabling disabling = (RuleDisabling) acceptor.getFactory().createRuleDisabling();
 
             disabling.Name = rule.Name;
             disabling.setRule(rule.FullName);
@@ -1127,7 +1141,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="rule"></param>
         /// <returns></returns>
-        public bool Disabled(Rules.Rule rule)
+        public bool Disabled(Rule rule)
         {
             bool retVal = CachedRuleDisablings.ContainsKey(rule);
 
@@ -1138,7 +1152,7 @@ namespace DataDictionary
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             {
                 Types.NameSpace item = element as Types.NameSpace;
@@ -1148,14 +1162,14 @@ namespace DataDictionary
                 }
             }
             {
-                Rules.RuleDisabling item = element as Rules.RuleDisabling;
+                RuleDisabling item = element as RuleDisabling;
                 if (item != null)
                 {
                     appendRuleDisablings(item);
                 }
             }
             {
-                Tests.Frame item = element as Tests.Frame;
+                Frame item = element as Frame;
                 if (item != null)
                 {
                     appendTests(item);
@@ -1163,15 +1177,15 @@ namespace DataDictionary
             }
         }
 
-        public ICollection<Paragraph> AllParagraphs
+        public ICollection<Specification.Paragraph> AllParagraphs
         {
             get
             {
-                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+                ICollection<Specification.Paragraph> retVal = new HashSet<Specification.Paragraph>();
 
                 foreach (Specification.Specification specification in Specifications)
                 {
-                    foreach (Paragraph paragraph in specification.AllParagraphs)
+                    foreach (Specification.Paragraph paragraph in specification.AllParagraphs)
                     {
                         retVal.Add(paragraph);
                     }
@@ -1180,11 +1194,12 @@ namespace DataDictionary
                 return retVal;
             }
         }
+
         /// <summary>
         /// Gets all paragraphs from a dictionary
         /// </summary>
         /// <param name="paragraphs"></param>
-        public void GetParagraphs(List<DataDictionary.Specification.Paragraph> paragraphs)
+        public void GetParagraphs(List<Specification.Paragraph> paragraphs)
         {
             foreach (Specification.Specification specification in Specifications)
             {
@@ -1192,15 +1207,15 @@ namespace DataDictionary
             }
         }
 
-        public ICollection<Paragraph> ApplicableParagraphs
+        public ICollection<Specification.Paragraph> ApplicableParagraphs
         {
             get
             {
-                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+                ICollection<Specification.Paragraph> retVal = new HashSet<Specification.Paragraph>();
 
                 foreach (Specification.Specification specification in Specifications)
                 {
-                    foreach (Paragraph paragraph in specification.ApplicableParagraphs)
+                    foreach (Specification.Paragraph paragraph in specification.ApplicableParagraphs)
                     {
                         retVal.Add(paragraph);
                     }
@@ -1210,15 +1225,15 @@ namespace DataDictionary
             }
         }
 
-        public ICollection<Paragraph> MoreInformationNeeded
+        public ICollection<Specification.Paragraph> MoreInformationNeeded
         {
             get
             {
-                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+                ICollection<Specification.Paragraph> retVal = new HashSet<Specification.Paragraph>();
 
                 foreach (Specification.Specification specification in Specifications)
                 {
-                    foreach (Paragraph paragraph in specification.MoreInformationNeeded)
+                    foreach (Specification.Paragraph paragraph in specification.MoreInformationNeeded)
                     {
                         retVal.Add(paragraph);
                     }
@@ -1228,15 +1243,15 @@ namespace DataDictionary
             }
         }
 
-        public ICollection<Paragraph> SpecIssues
+        public ICollection<Specification.Paragraph> SpecIssues
         {
             get
             {
-                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+                ICollection<Specification.Paragraph> retVal = new HashSet<Specification.Paragraph>();
 
                 foreach (Specification.Specification specification in Specifications)
                 {
-                    foreach (Paragraph paragraph in specification.SpecIssues)
+                    foreach (Specification.Paragraph paragraph in specification.SpecIssues)
                     {
                         retVal.Add(paragraph);
                     }
@@ -1246,15 +1261,15 @@ namespace DataDictionary
             }
         }
 
-        public ICollection<Paragraph> DesignChoices
+        public ICollection<Specification.Paragraph> DesignChoices
         {
             get
             {
-                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+                ICollection<Specification.Paragraph> retVal = new HashSet<Specification.Paragraph>();
 
                 foreach (Specification.Specification specification in Specifications)
                 {
-                    foreach (Paragraph paragraph in specification.DesignChoices)
+                    foreach (Specification.Paragraph paragraph in specification.DesignChoices)
                     {
                         retVal.Add(paragraph);
                     }
@@ -1264,15 +1279,15 @@ namespace DataDictionary
             }
         }
 
-        public ICollection<Paragraph> OnlyComments
+        public ICollection<Specification.Paragraph> OnlyComments
         {
             get
             {
-                ICollection<Paragraph> retVal = new HashSet<Paragraph>();
+                ICollection<Specification.Paragraph> retVal = new HashSet<Specification.Paragraph>();
 
                 foreach (Specification.Specification specification in Specifications)
                 {
-                    foreach (Paragraph paragraph in specification.OnlyComments)
+                    foreach (Specification.Paragraph paragraph in specification.OnlyComments)
                     {
                         retVal.Add(paragraph);
                     }
@@ -1324,7 +1339,7 @@ namespace DataDictionary
 
             if (retVal == null && create)
             {
-                retVal = (RequirementSet)Generated.acceptor.getFactory().createRequirementSet();
+                retVal = (RequirementSet) acceptor.getFactory().createRequirementSet();
                 retVal.Name = name;
                 appendRequirementSets(retVal);
             }
@@ -1351,6 +1366,5 @@ namespace DataDictionary
         /// The name of the requireement set for scoping information
         /// </summary>
         public const string SCOPE_NAME = "Scope";
-
     }
 }

@@ -13,13 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.DataDictionaryView;
+using Action = DataDictionary.Rules.Action;
+using SubStep = DataDictionary.Tests.SubStep;
 
 namespace GUI.TestRunnerView
 {
-    public class ActionsTreeNode : ModelElementTreeNode<DataDictionary.Tests.SubStep>
+    public class ActionsTreeNode : ModelElementTreeNode<SubStep>
     {
         /// <summary>
         /// The value editor
@@ -39,7 +44,7 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ActionsTreeNode(DataDictionary.Tests.SubStep item, bool buildSubNodes)
+        public ActionsTreeNode(SubStep item, bool buildSubNodes)
             : base(item, buildSubNodes, "Actions", true)
         {
         }
@@ -52,9 +57,9 @@ namespace GUI.TestRunnerView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Rules.Action action in Item.Actions)
+            foreach (Action action in Item.Actions)
             {
-                Nodes.Add(new DataDictionaryView.ActionTreeNode(action, buildSubNodes));
+                Nodes.Add(new ActionTreeNode(action, buildSubNodes));
             }
             SortSubNodes();
         }
@@ -72,10 +77,10 @@ namespace GUI.TestRunnerView
         /// Adds the given action to the list of actions
         /// </summary>
         /// <param name="action"></param>
-        public void addAction(DataDictionary.Rules.Action action)
+        public void addAction(Action action)
         {
             action.Enclosing = Item;
-            DataDictionaryView.ActionTreeNode actionNode = new DataDictionaryView.ActionTreeNode(action, true);
+            ActionTreeNode actionNode = new ActionTreeNode(action, true);
             Item.appendActions(action);
             Nodes.Add(actionNode);
             SortSubNodes();
@@ -83,7 +88,7 @@ namespace GUI.TestRunnerView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
+            Action action = (Action) acceptor.getFactory().createAction();
             action.ExpressionText = "";
             addAction(action);
         }
@@ -108,9 +113,9 @@ namespace GUI.TestRunnerView
         public override void AcceptDrop(BaseTreeNode SourceNode)
         {
             base.AcceptDrop(SourceNode);
-            if (SourceNode is DataDictionaryView.ActionTreeNode)
+            if (SourceNode is ActionTreeNode)
             {
-                DataDictionaryView.ActionTreeNode action = SourceNode as DataDictionaryView.ActionTreeNode;
+                ActionTreeNode action = SourceNode as ActionTreeNode;
                 action.Delete();
                 addAction(action.Item);
             }

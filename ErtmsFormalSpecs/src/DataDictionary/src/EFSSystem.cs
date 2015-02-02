@@ -13,32 +13,48 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections;
+using System.Collections.Generic;
+using DataDictionary.Functions.PredefinedFunctions;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using DataDictionary.Interpreter.Filter;
+using DataDictionary.Interpreter.Statement;
+using DataDictionary.Specification;
+using DataDictionary.Tests.Runner;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using HistoricalData;
+using Utils;
+using XmlBooster;
+using Collection = DataDictionary.Types.Collection;
+using Factory = DataDictionary.Compare.Factory;
+using Function = DataDictionary.Functions.Function;
+using History = DataDictionary.Compare.History;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using RequirementSet = DataDictionary.Specification.RequirementSet;
+using Rule = DataDictionary.Rules.Rule;
+using Type = DataDictionary.Types.Type;
+using Visitor = DataDictionary.Generated.Visitor;
+
 namespace DataDictionary
 {
-    using System.Collections.Generic;
-    using DataDictionary.Types;
-    using DataDictionary.Interpreter;
-    using DataDictionary.Rules;
-    using System;
-    using DataDictionary.Interpreter.Statement;
-    using DataDictionary.Specification;
-    using DataDictionary.Interpreter.Filter;
-    using System.Collections;
-
     /// <summary>
     /// A complete system, along with all dictionaries
     /// </summary>
-    public class EFSSystem : Utils.IModelElement, Utils.ISubDeclarator, IHoldsParagraphs
+    public class EFSSystem : IModelElement, ISubDeclarator, IHoldsParagraphs
     {
         /// <summary>
         /// The dictionaries used in the system
         /// </summary>
-        public List<DataDictionary.Dictionary> Dictionaries { get; private set; }
+        public List<Dictionary> Dictionaries { get; private set; }
 
         /// <summary>
         /// The runner currently set for the system
         /// </summary>
-        public Tests.Runner.Runner Runner { get; set; }
+        public Runner Runner { get; set; }
 
         /// <summary>
         /// Indicates wheter the model should be recompiled (after a change or a load)
@@ -58,7 +74,7 @@ namespace DataDictionary
         /// <summary>
         /// Listener to model changes
         /// </summary>
-        public class BaseModelElementChangeListener : XmlBooster.IListener<DataDictionary.Generated.BaseModelElement>
+        public class BaseModelElementChangeListener : IListener<BaseModelElement>
         {
             /// <summary>
             /// The system for which this listener listens
@@ -75,16 +91,18 @@ namespace DataDictionary
             }
 
             #region Listens to namable changes
-            public void HandleChangeEvent(DataDictionary.Generated.BaseModelElement sender)
+
+            public void HandleChangeEvent(BaseModelElement sender)
             {
                 System.ShouldRebuild = true;
                 System.ShouldSave = true;
             }
 
-            public void HandleChangeEvent(XmlBooster.Lock aLock, DataDictionary.Generated.BaseModelElement sender)
+            public void HandleChangeEvent(Lock aLock, BaseModelElement sender)
             {
                 HandleChangeEvent(sender);
             }
+
             #endregion
         }
 
@@ -96,7 +114,7 @@ namespace DataDictionary
         /// <summary>
         /// Provides the history
         /// </summary>
-        public Compare.History History { get; private set; }
+        public History History { get; private set; }
 
         /// <summary>
         /// Constructor
@@ -105,23 +123,23 @@ namespace DataDictionary
         {
             Dictionaries = new List<Dictionary>();
 
-            DataDictionary.Generated.acceptor.setFactory(new DataDictionary.ObjectFactory());
-            Compiler = new Interpreter.Compiler(this);
+            acceptor.setFactory(new ObjectFactory());
+            Compiler = new Compiler(this);
             Markings = new MarkingHistory(this);
 
             // Reads the history file and updates the blame information stored in it
-            Compare.Factory historyFactory = DataDictionary.Compare.Factory.INSTANCE;
-            History = (Compare.History)HistoricalData.HistoryUtils.Load(Compare.History.HISTORY_FILE_NAME, historyFactory);
+            Factory historyFactory = Factory.INSTANCE;
+            History = (History) HistoryUtils.Load(History.HISTORY_FILE_NAME, historyFactory);
             if (History == null)
             {
-                History = (Compare.History)historyFactory.createHistory();
+                History = (History) historyFactory.createHistory();
             }
             History.UpdateBlame();
 
             CheckParentRelationship = true;
             CacheFunctions = true;
 
-            Generated.ControllersManager.BaseModelElementController.Listeners.Insert(0, new BaseModelElementChangeListener(this));
+            ControllersManager.BaseModelElementController.Listeners.Insert(0, new BaseModelElementChangeListener(this));
         }
 
         /// <summary>
@@ -140,7 +158,11 @@ namespace DataDictionary
         /// <summary>
         /// The enclosing model element
         /// </summary>
-        public object Enclosing { get { return null; } set { } }
+        public object Enclosing
+        {
+            get { return null; }
+            set { }
+        }
 
         /// <summary>
         /// The EFS System name
@@ -159,13 +181,13 @@ namespace DataDictionary
         /// <summary>
         /// The sub elements of this model element
         /// </summary>
-        public System.Collections.ArrayList SubElements
+        public ArrayList SubElements
         {
             get
             {
-                System.Collections.ArrayList retVal = new System.Collections.ArrayList();
+                ArrayList retVal = new ArrayList();
 
-                foreach (DataDictionary.Dictionary dictionary in Dictionaries)
+                foreach (Dictionary dictionary in Dictionaries)
                 {
                     retVal.Add(dictionary);
                 }
@@ -177,7 +199,10 @@ namespace DataDictionary
         /// <summary>
         /// Provides the collection which holds this instance
         /// </summary>
-        public System.Collections.ArrayList EnclosingCollection { get { return null; } }
+        public ArrayList EnclosingCollection
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// Deletes the element from its enclosing node
@@ -199,9 +224,9 @@ namespace DataDictionary
         /// <summary>
         /// The messages logged on the model element
         /// </summary>
-        public List<Utils.ElementLog> Messages
+        public List<ElementLog> Messages
         {
-            get { return new List<Utils.ElementLog>(); }
+            get { return new List<ElementLog>(); }
         }
 
         /// <summary>
@@ -220,7 +245,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public int CompareTo(Utils.IModelElement other)
+        public int CompareTo(IModelElement other)
         {
             if (other == this)
             {
@@ -237,14 +262,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined empty value
         /// </summary>
-        private Values.EmptyValue emptyValue;
-        public Values.EmptyValue EmptyValue
+        private EmptyValue emptyValue;
+
+        public EmptyValue EmptyValue
         {
             get
             {
                 if (emptyValue == null)
                 {
-                    emptyValue = new Values.EmptyValue(this);
+                    emptyValue = new EmptyValue(this);
                 }
                 return emptyValue;
             }
@@ -253,14 +279,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined any type
         /// </summary>
-        private Types.AnyType anyType;
-        public Types.AnyType AnyType
+        private AnyType anyType;
+
+        public AnyType AnyType
         {
             get
             {
                 if (anyType == null)
                 {
-                    anyType = new Types.AnyType(this);
+                    anyType = new AnyType(this);
                 }
                 return anyType;
             }
@@ -269,14 +296,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined no type
         /// </summary>
-        private Types.NoType noType;
-        public Types.NoType NoType
+        private NoType noType;
+
+        public NoType NoType
         {
             get
             {
                 if (noType == null)
                 {
-                    noType = new Types.NoType(this);
+                    noType = new NoType(this);
                 }
                 return noType;
             }
@@ -285,14 +313,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined bool type
         /// </summary>
-        private Types.BoolType boolType;
-        public Types.BoolType BoolType
+        private BoolType boolType;
+
+        public BoolType BoolType
         {
             get
             {
                 if (boolType == null)
                 {
-                    boolType = new Types.BoolType(this);
+                    boolType = new BoolType(this);
                 }
                 return boolType;
             }
@@ -301,14 +330,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined integer type
         /// </summary>
-        private Types.IntegerType integerType;
-        public Types.IntegerType IntegerType
+        private IntegerType integerType;
+
+        public IntegerType IntegerType
         {
             get
             {
                 if (integerType == null)
                 {
-                    integerType = new Types.IntegerType(this);
+                    integerType = new IntegerType(this);
                 }
                 return integerType;
             }
@@ -317,14 +347,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined double type
         /// </summary>
-        private Types.DoubleType doubleType;
-        public Types.DoubleType DoubleType
+        private DoubleType doubleType;
+
+        public DoubleType DoubleType
         {
             get
             {
                 if (doubleType == null)
                 {
-                    doubleType = new Types.DoubleType(this);
+                    doubleType = new DoubleType(this);
                 }
                 return doubleType;
             }
@@ -333,14 +364,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined string type
         /// </summary>
-        private Types.StringType stringType;
-        public Types.StringType StringType
+        private StringType stringType;
+
+        public StringType StringType
         {
             get
             {
                 if (stringType == null)
                 {
-                    stringType = new Types.StringType(this);
+                    stringType = new StringType(this);
                 }
                 return stringType;
             }
@@ -350,14 +382,15 @@ namespace DataDictionary
         /// The generic collection type
         /// </summary>
         /// <returns></returns>
-        private Types.Collection genericCollection;
-        public Types.Collection GenericCollection
+        private Collection genericCollection;
+
+        public Collection GenericCollection
         {
             get
             {
                 if (genericCollection == null)
                 {
-                    genericCollection = new Types.GenericCollection(this);
+                    genericCollection = new GenericCollection(this);
                 }
 
                 return genericCollection;
@@ -367,14 +400,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined types
         /// </summary>
-        private Dictionary<string, Types.Type> predefinedTypes;
-        public Dictionary<string, Types.Type> PredefinedTypes
+        private Dictionary<string, Type> predefinedTypes;
+
+        public Dictionary<string, Type> PredefinedTypes
         {
             get
             {
                 if (predefinedTypes == null)
                 {
-                    PredefinedTypes = new Dictionary<string, Types.Type>();
+                    PredefinedTypes = new Dictionary<string, Type>();
                     PredefinedTypes[BoolType.Name] = BoolType;
                     PredefinedTypes[IntegerType.Name] = IntegerType;
                     PredefinedTypes[DoubleType.Name] = DoubleType;
@@ -390,7 +424,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
-        public Values.IValue GetBoolean(bool val)
+        public IValue GetBoolean(bool val)
         {
             if (val)
             {
@@ -405,14 +439,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined allocate function
         /// </summary>
-        private Functions.PredefinedFunctions.Allocate allocatePredefinedFunction;
-        public Functions.PredefinedFunctions.Allocate AllocatePredefinedFunction
+        private Allocate allocatePredefinedFunction;
+
+        public Allocate AllocatePredefinedFunction
         {
             get
             {
                 if (allocatePredefinedFunction == null)
                 {
-                    allocatePredefinedFunction = new Functions.PredefinedFunctions.Allocate(this);
+                    allocatePredefinedFunction = new Allocate(this);
                 }
                 return allocatePredefinedFunction;
             }
@@ -421,14 +456,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined available function
         /// </summary>
-        private Functions.PredefinedFunctions.Available availablePredefinedFunction;
-        public Functions.PredefinedFunctions.Available AvailablePredefinedFunction
+        private Available availablePredefinedFunction;
+
+        public Available AvailablePredefinedFunction
         {
             get
             {
                 if (availablePredefinedFunction == null)
                 {
-                    availablePredefinedFunction = new Functions.PredefinedFunctions.Available(this);
+                    availablePredefinedFunction = new Available(this);
                 }
                 return availablePredefinedFunction;
             }
@@ -437,14 +473,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined not function
         /// </summary>
-        private Functions.PredefinedFunctions.Not notPredefinedFunction;
-        public Functions.PredefinedFunctions.Not NotPredefinedFunction
+        private Not notPredefinedFunction;
+
+        public Not NotPredefinedFunction
         {
             get
             {
                 if (notPredefinedFunction == null)
                 {
-                    notPredefinedFunction = new Functions.PredefinedFunctions.Not(this);
+                    notPredefinedFunction = new Not(this);
                 }
                 return notPredefinedFunction;
             }
@@ -454,14 +491,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined min function
         /// </summary>
-        private Functions.PredefinedFunctions.Min minPredefinedFunction;
-        public Functions.PredefinedFunctions.Min MinPredefinedFunction
+        private Min minPredefinedFunction;
+
+        public Min MinPredefinedFunction
         {
             get
             {
                 if (minPredefinedFunction == null)
                 {
-                    minPredefinedFunction = new Functions.PredefinedFunctions.Min(this);
+                    minPredefinedFunction = new Min(this);
                 }
                 return minPredefinedFunction;
             }
@@ -470,14 +508,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined MinSurface function
         /// </summary>
-        private Functions.PredefinedFunctions.MinSurface minSurfacePredefinedFunction;
-        public Functions.PredefinedFunctions.MinSurface MinSurfacePredefinedFunction
+        private MinSurface minSurfacePredefinedFunction;
+
+        public MinSurface MinSurfacePredefinedFunction
         {
             get
             {
                 if (minSurfacePredefinedFunction == null)
                 {
-                    minSurfacePredefinedFunction = new Functions.PredefinedFunctions.MinSurface(this);
+                    minSurfacePredefinedFunction = new MinSurface(this);
                 }
                 return minSurfacePredefinedFunction;
             }
@@ -486,14 +525,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined max function
         /// </summary>
-        private Functions.PredefinedFunctions.Max maxPredefinedFunction;
-        public Functions.PredefinedFunctions.Max MaxPredefinedFunction
+        private Max maxPredefinedFunction;
+
+        public Max MaxPredefinedFunction
         {
             get
             {
                 if (maxPredefinedFunction == null)
                 {
-                    maxPredefinedFunction = new Functions.PredefinedFunctions.Max(this);
+                    maxPredefinedFunction = new Max(this);
                 }
                 return maxPredefinedFunction;
             }
@@ -502,14 +542,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined targets function
         /// </summary>
-        private Functions.PredefinedFunctions.Targets targetsPredefinedFunction;
-        public Functions.PredefinedFunctions.Targets TargetsPredefinedFunction
+        private Targets targetsPredefinedFunction;
+
+        public Targets TargetsPredefinedFunction
         {
             get
             {
                 if (targetsPredefinedFunction == null)
                 {
-                    targetsPredefinedFunction = new Functions.PredefinedFunctions.Targets(this);
+                    targetsPredefinedFunction = new Targets(this);
                 }
                 return targetsPredefinedFunction;
             }
@@ -518,14 +559,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined discontinuities function
         /// </summary>
-        private Functions.PredefinedFunctions.Discontinuities discontPredefinedFunction;
-        public Functions.PredefinedFunctions.Discontinuities DiscontPredefinedFunction
+        private Discontinuities discontPredefinedFunction;
+
+        public Discontinuities DiscontPredefinedFunction
         {
             get
             {
                 if (discontPredefinedFunction == null)
                 {
-                    discontPredefinedFunction = new Functions.PredefinedFunctions.Discontinuities(this);
+                    discontPredefinedFunction = new Discontinuities(this);
                 }
                 return discontPredefinedFunction;
             }
@@ -534,14 +576,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined RoundToMultiple function
         /// </summary>
-        private Functions.PredefinedFunctions.RoundToMultiple roundToMultiplePredefinedFunction;
-        public Functions.PredefinedFunctions.RoundToMultiple RoundToMultiplePredefinedFunction
+        private RoundToMultiple roundToMultiplePredefinedFunction;
+
+        public RoundToMultiple RoundToMultiplePredefinedFunction
         {
             get
             {
                 if (roundToMultiplePredefinedFunction == null)
                 {
-                    roundToMultiplePredefinedFunction = new Functions.PredefinedFunctions.RoundToMultiple(this);
+                    roundToMultiplePredefinedFunction = new RoundToMultiple(this);
                 }
                 return roundToMultiplePredefinedFunction;
             }
@@ -550,14 +593,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined DoubleToInteger function
         /// </summary>
-        private Functions.PredefinedFunctions.DoubleToInteger doubleToIntegerPredefinedFunction;
-        public Functions.PredefinedFunctions.DoubleToInteger DoubleToIntegerPredefinedFunction
+        private DoubleToInteger doubleToIntegerPredefinedFunction;
+
+        public DoubleToInteger DoubleToIntegerPredefinedFunction
         {
             get
             {
                 if (doubleToIntegerPredefinedFunction == null)
                 {
-                    doubleToIntegerPredefinedFunction = new Functions.PredefinedFunctions.DoubleToInteger(this);
+                    doubleToIntegerPredefinedFunction = new DoubleToInteger(this);
                 }
                 return doubleToIntegerPredefinedFunction;
             }
@@ -566,14 +610,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined deceleration profile function
         /// </summary>
-        private Functions.PredefinedFunctions.DecelerationProfile decelerationProfilePredefinedFunction;
-        public Functions.PredefinedFunctions.DecelerationProfile DecelerationProfilePredefinedFunction
+        private DecelerationProfile decelerationProfilePredefinedFunction;
+
+        public DecelerationProfile DecelerationProfilePredefinedFunction
         {
             get
             {
                 if (decelerationProfilePredefinedFunction == null)
                 {
-                    decelerationProfilePredefinedFunction = new Functions.PredefinedFunctions.DecelerationProfile(this);
+                    decelerationProfilePredefinedFunction = new DecelerationProfile(this);
                 }
                 return decelerationProfilePredefinedFunction;
             }
@@ -582,14 +627,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined before function
         /// </summary>
-        private Functions.PredefinedFunctions.Before beforePredefinedFunction;
-        public Functions.PredefinedFunctions.Before BeforePredefinedFunction
+        private Before beforePredefinedFunction;
+
+        public Before BeforePredefinedFunction
         {
             get
             {
                 if (beforePredefinedFunction == null)
                 {
-                    beforePredefinedFunction = new Functions.PredefinedFunctions.Before(this);
+                    beforePredefinedFunction = new Before(this);
                 }
                 return beforePredefinedFunction;
             }
@@ -598,14 +644,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined AddIncrement function
         /// </summary>
-        private Functions.PredefinedFunctions.AddIncrement addIncrementPredefinedFunction;
-        public Functions.PredefinedFunctions.AddIncrement AddIncrementPredefinedFunction
+        private AddIncrement addIncrementPredefinedFunction;
+
+        public AddIncrement AddIncrementPredefinedFunction
         {
             get
             {
                 if (addIncrementPredefinedFunction == null)
                 {
-                    addIncrementPredefinedFunction = new Functions.PredefinedFunctions.AddIncrement(this);
+                    addIncrementPredefinedFunction = new AddIncrement(this);
                 }
                 return addIncrementPredefinedFunction;
             }
@@ -614,14 +661,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined AddToDate function
         /// </summary>
-        private Functions.PredefinedFunctions.AddToDate addToDatePredefinedFunction;
-        public Functions.PredefinedFunctions.AddToDate AddToDatePredefinedFunction
+        private AddToDate addToDatePredefinedFunction;
+
+        public AddToDate AddToDatePredefinedFunction
         {
             get
             {
                 if (addToDatePredefinedFunction == null)
                 {
-                    addToDatePredefinedFunction = new Functions.PredefinedFunctions.AddToDate(this);
+                    addToDatePredefinedFunction = new AddToDate(this);
                 }
                 return addToDatePredefinedFunction;
             }
@@ -630,14 +678,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined override function
         /// </summary>
-        private Functions.PredefinedFunctions.Override overridePredefinedFunction;
-        public Functions.PredefinedFunctions.Override OverridePredefinedFunction
+        private Override overridePredefinedFunction;
+
+        public Override OverridePredefinedFunction
         {
             get
             {
                 if (overridePredefinedFunction == null)
                 {
-                    overridePredefinedFunction = new Functions.PredefinedFunctions.Override(this);
+                    overridePredefinedFunction = new Override(this);
                 }
                 return overridePredefinedFunction;
             }
@@ -646,14 +695,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined DistanceForSpeed function
         /// </summary>
-        private Functions.PredefinedFunctions.DistanceForSpeed distanceForSpeedPredefinedFunction;
-        public Functions.PredefinedFunctions.DistanceForSpeed DistanceForSpeedPredefinedFunction
+        private DistanceForSpeed distanceForSpeedPredefinedFunction;
+
+        public DistanceForSpeed DistanceForSpeedPredefinedFunction
         {
             get
             {
                 if (distanceForSpeedPredefinedFunction == null)
                 {
-                    distanceForSpeedPredefinedFunction = new Functions.PredefinedFunctions.DistanceForSpeed(this);
+                    distanceForSpeedPredefinedFunction = new DistanceForSpeed(this);
                 }
                 return distanceForSpeedPredefinedFunction;
             }
@@ -662,14 +712,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined IntersectAt function
         /// </summary>
-        private Functions.PredefinedFunctions.IntersectAt intersectAtFunction;
-        public Functions.PredefinedFunctions.IntersectAt IntersectAtFunction
+        private IntersectAt intersectAtFunction;
+
+        public IntersectAt IntersectAtFunction
         {
             get
             {
                 if (intersectAtFunction == null)
                 {
-                    intersectAtFunction = new Functions.PredefinedFunctions.IntersectAt(this);
+                    intersectAtFunction = new IntersectAt(this);
                 }
                 return intersectAtFunction;
             }
@@ -678,14 +729,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined Full Deceleration For Target function
         /// </summary>
-        private Functions.PredefinedFunctions.FullDecelerationForTarget fullDecelerationForTargetPredefinedFunction;
-        public Functions.PredefinedFunctions.FullDecelerationForTarget FullDecelerationForTargetPredefinedFunction
+        private FullDecelerationForTarget fullDecelerationForTargetPredefinedFunction;
+
+        public FullDecelerationForTarget FullDecelerationForTargetPredefinedFunction
         {
             get
             {
                 if (fullDecelerationForTargetPredefinedFunction == null)
                 {
-                    fullDecelerationForTargetPredefinedFunction = new Functions.PredefinedFunctions.FullDecelerationForTarget(this);
+                    fullDecelerationForTargetPredefinedFunction = new FullDecelerationForTarget(this);
                 }
                 return fullDecelerationForTargetPredefinedFunction;
             }
@@ -694,14 +746,15 @@ namespace DataDictionary
         /// <summary>
         /// The predefined functions
         /// </summary>
-        private Dictionary<string, Functions.PredefinedFunctions.PredefinedFunction> predefinedFunctions;
-        public Dictionary<string, Functions.PredefinedFunctions.PredefinedFunction> PredefinedFunctions
+        private Dictionary<string, PredefinedFunction> predefinedFunctions;
+
+        public Dictionary<string, PredefinedFunction> PredefinedFunctions
         {
             get
             {
                 if (predefinedFunctions == null)
                 {
-                    predefinedFunctions = new Dictionary<string, Functions.PredefinedFunctions.PredefinedFunction>();
+                    predefinedFunctions = new Dictionary<string, PredefinedFunction>();
                     predefinedFunctions[AvailablePredefinedFunction.Name] = AvailablePredefinedFunction;
                     predefinedFunctions[AllocatePredefinedFunction.Name] = AllocatePredefinedFunction;
                     predefinedFunctions[NotPredefinedFunction.Name] = NotPredefinedFunction;
@@ -730,32 +783,33 @@ namespace DataDictionary
         /// <summary>
         /// All predefined items in the system
         /// </summary>
-        private Dictionary<string, Utils.INamable> predefinedItems;
-        public Dictionary<string, Utils.INamable> PredefinedItems
+        private Dictionary<string, INamable> predefinedItems;
+
+        public Dictionary<string, INamable> PredefinedItems
         {
             get
             {
                 if (predefinedItems == null)
                 {
-                    predefinedItems = new Dictionary<string, Utils.INamable>();
+                    predefinedItems = new Dictionary<string, INamable>();
 
-                    foreach (KeyValuePair<string, Functions.PredefinedFunctions.PredefinedFunction> pair in PredefinedFunctions)
+                    foreach (KeyValuePair<string, PredefinedFunction> pair in PredefinedFunctions)
                     {
                         predefinedItems.Add(pair.Key, pair.Value);
                     }
-                    foreach (KeyValuePair<string, Types.Type> pair in PredefinedTypes)
+                    foreach (KeyValuePair<string, Type> pair in PredefinedTypes)
                     {
                         predefinedItems.Add(pair.Key, pair.Value);
-                        Types.IEnumerateValues enumerator = pair.Value as Types.IEnumerateValues;
+                        IEnumerateValues enumerator = pair.Value as IEnumerateValues;
                         if (enumerator != null)
                         {
                             Dictionary<string, object> constants = new Dictionary<string, object>();
                             enumerator.Constants("", constants);
                             foreach (KeyValuePair<string, object> pair2 in constants)
                             {
-                                if (pair2.Value is Utils.INamable)
+                                if (pair2.Value is INamable)
                                 {
-                                    predefinedItems.Add(pair2.Key, (Utils.INamable)pair2.Value);
+                                    predefinedItems.Add(pair2.Key, (INamable) pair2.Value);
                                 }
                             }
                         }
@@ -766,19 +820,17 @@ namespace DataDictionary
 
                 return predefinedItems;
             }
-            set
-            {
-                predefinedItems = value;
-            }
+            set { predefinedItems = value; }
         }
+
         /// <summary>
         /// Provides the predefined item, based on its name
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public Utils.INamable getPredefinedItem(string name)
+        public INamable getPredefinedItem(string name)
         {
-            Utils.INamable namable = null;
+            INamable namable = null;
 
             PredefinedItems.TryGetValue(name, out namable);
 
@@ -790,7 +842,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="levelEnum"></param>
         /// <returns></returns>
-        public bool HasMessage(Utils.ElementLog.LevelEnum levelEnum)
+        public bool HasMessage(ElementLog.LevelEnum levelEnum)
         {
             bool retVal = false;
 
@@ -802,20 +854,20 @@ namespace DataDictionary
         /// </summary>
         public void InitDeclaredElements()
         {
-            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+            DeclaredElements = new Dictionary<string, List<INamable>>();
 
             try
             {
-                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                ControllersManager.DesactivateAllNotifications();
 
-                Utils.ISubDeclaratorUtils.AppendNamable(this, EmptyValue);
-                foreach (Types.Type type in PredefinedTypes.Values)
+                ISubDeclaratorUtils.AppendNamable(this, EmptyValue);
+                foreach (Type type in PredefinedTypes.Values)
                 {
-                    Utils.ISubDeclaratorUtils.AppendNamable(this, type);
+                    ISubDeclaratorUtils.AppendNamable(this, type);
                 }
-                foreach (Functions.PredefinedFunctions.PredefinedFunction function in PredefinedFunctions.Values)
+                foreach (PredefinedFunction function in PredefinedFunctions.Values)
                 {
-                    Utils.ISubDeclaratorUtils.AppendNamable(this, function);
+                    ISubDeclaratorUtils.AppendNamable(this, function);
                 }
 
                 // Adds the namable from the default namespace as directly accessible
@@ -829,11 +881,11 @@ namespace DataDictionary
                             {
                                 nameSpace.InitDeclaredElements();
                             }
-                            foreach (List<Utils.INamable> namables in nameSpace.DeclaredElements.Values)
+                            foreach (List<INamable> namables in nameSpace.DeclaredElements.Values)
                             {
-                                foreach (Utils.INamable namable in namables)
+                                foreach (INamable namable in namables)
                                 {
-                                    Utils.ISubDeclaratorUtils.AppendNamable(this, namable);
+                                    ISubDeclaratorUtils.AppendNamable(this, namable);
                                 }
                             }
                         }
@@ -842,32 +894,32 @@ namespace DataDictionary
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+                ControllersManager.ActivateAllNotifications();
             }
         }
 
         /// <summary>
         /// Provides the list of declared elements in this System
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
+        public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
-            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
+            ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>
         /// Finds all namable which match the full name provided
         /// </summary>
         /// <param name="fullname">The full name used to search the namable</param>
-        public Utils.INamable findByFullName(string fullname)
+        public INamable findByFullName(string fullname)
         {
-            Utils.INamable retVal = null;
+            INamable retVal = null;
 
             foreach (Dictionary dictionary in Dictionaries)
             {
@@ -888,9 +940,9 @@ namespace DataDictionary
         /// <param name="nameSpace"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        public Types.Type findType(Types.NameSpace nameSpace, string name)
+        public Type findType(NameSpace nameSpace, string name)
         {
-            Types.Type retVal = null;
+            Type retVal = null;
 
             if (name != null)
             {
@@ -917,9 +969,9 @@ namespace DataDictionary
         /// </summary>
         /// <param name="fullName"></param>
         /// <returns></returns>
-        public Rules.Rule findRule(string fullName)
+        public Rule findRule(string fullName)
         {
-            Rules.Rule retVal = null;
+            Rule retVal = null;
 
             foreach (Dictionary dictionary in Dictionaries)
             {
@@ -938,7 +990,7 @@ namespace DataDictionary
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public void AddModelElement(Utils.IModelElement element)
+        public void AddModelElement(IModelElement element)
         {
             {
                 Dictionary item = element as Dictionary;
@@ -954,7 +1006,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="rule"></param>
         /// <returns></returns>
-        public bool isDisabled(Rules.Rule rule)
+        public bool isDisabled(Rule rule)
         {
             bool retVal = false;
 
@@ -974,14 +1026,15 @@ namespace DataDictionary
         /// <summary>
         /// The evaluator for this dictionary
         /// </summary>
-        private Interpreter.Parser parser;
-        public Interpreter.Parser Parser
+        private Parser parser;
+
+        public Parser Parser
         {
             get
             {
                 if (parser == null)
                 {
-                    parser = new Interpreter.Parser(this);
+                    parser = new Parser(this);
                 }
                 return parser;
             }
@@ -993,7 +1046,7 @@ namespace DataDictionary
         /// <param name="root">the root element for which this statement is created</param>
         /// <param name="expression"></param>
         /// <returns></returns>
-        public Interpreter.Statement.Statement ParseStatement(ModelElement root, string expression)
+        public Statement ParseStatement(ModelElement root, string expression)
         {
             return Parser.Statement(root, expression);
         }
@@ -1002,6 +1055,7 @@ namespace DataDictionary
         /// The EFS System instance
         /// </summary>
         private static EFSSystem instance = null;
+
         public static EFSSystem INSTANCE
         {
             get
@@ -1026,7 +1080,7 @@ namespace DataDictionary
         /// <summary>
         /// The visitor who shall find all references
         /// </summary>
-        private class ReferenceVisitor : Generated.Visitor
+        private class ReferenceVisitor : Visitor
         {
             /// <summary>
             /// The references found
@@ -1125,7 +1179,7 @@ namespace DataDictionary
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+            public override void visit(BaseModelElement obj, bool visitSubNodes)
             {
                 IExpressionable expressionable = obj as IExpressionable;
                 if (expressionable != null)
@@ -1139,7 +1193,7 @@ namespace DataDictionary
                     ConsiderTypeOfElement(element);
                 }
 
-                Functions.Function function = obj as Functions.Function;
+                Function function = obj as Function;
                 if (function != null)
                 {
                     if (function.ReturnType == Model && function != Model)
@@ -1250,7 +1304,7 @@ namespace DataDictionary
         /// Gets all paragraphs from EFS System
         /// </summary>
         /// <returns></returns>
-        public void GetParagraphs(List<DataDictionary.Specification.Paragraph> paragraphs)
+        public void GetParagraphs(List<Paragraph> paragraphs)
         {
             foreach (Dictionary dictionary in Dictionaries)
             {
@@ -1261,7 +1315,10 @@ namespace DataDictionary
         /// <summary>
         /// Indicates if the element holds messages, or is part of a path to a message 
         /// </summary>
-        public Utils.MessagePathInfoEnum MessagePathInfo { get { return Utils.MessagePathInfoEnum.Nothing; } }
+        public MessagePathInfoEnum MessagePathInfo
+        {
+            get { return MessagePathInfoEnum.Nothing; }
+        }
 
         /// <summary>
         /// Provides the list of requirement sets in the system
@@ -1272,7 +1329,7 @@ namespace DataDictionary
             {
                 List<RequirementSet> retVal = new List<RequirementSet>();
 
-                foreach (DataDictionary.Dictionary dictionary in Dictionaries)
+                foreach (Dictionary dictionary in Dictionaries)
                 {
                     foreach (RequirementSet requirementSet in dictionary.RequirementSets)
                     {
@@ -1287,7 +1344,7 @@ namespace DataDictionary
         /// <summary>
         /// Marks the requirements for a specific requirement set
         /// </summary>
-        private class RequirementSetMarker : Generated.Visitor
+        private class RequirementSetMarker : Visitor
         {
             /// <summary>
             /// The requirement set for which marking is done
@@ -1302,7 +1359,7 @@ namespace DataDictionary
             /// <summary>
             /// Indicates if only the non implemented requirements should be marked
             /// </summary>
-            private bool NotImplemented{ get; set; }
+            private bool NotImplemented { get; set; }
 
             /// <summary>
             /// Constructor
@@ -1330,9 +1387,9 @@ namespace DataDictionary
                 {
                     paragraph.AddInfo("Requirement set" + RequirementSet.Name);
                 }
-                else if (paragraph.getImplementationStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented && paragraph.getImplementationStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable)
+                else if (paragraph.getImplementationStatus() != acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented && paragraph.getImplementationStatus() != acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable)
                 {
-                    if (paragraph.getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT)
+                    if (paragraph.getType() == acceptor.Paragraph_type.aREQUIREMENT)
                     {
                         paragraph.AddInfo("Belongs to Requirement set" + RequirementSet.Name + " but is not implemented");
                     }
@@ -1351,7 +1408,7 @@ namespace DataDictionary
 
             public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
-                Paragraph paragraph = (Paragraph)obj;
+                Paragraph paragraph = (Paragraph) obj;
 
                 if (paragraph.BelongsToRequirementSet(RequirementSet))
                 {
@@ -1371,7 +1428,7 @@ namespace DataDictionary
                 {
                     if (!Belonging)
                     {
-                        if (paragraph.getType() == Generated.acceptor.Paragraph_type.aREQUIREMENT)
+                        if (paragraph.getType() == acceptor.Paragraph_type.aREQUIREMENT)
                         {
                             paragraph.AddInfo("Requirement does not belong to requirement set " + RequirementSet.Name);
                         }
@@ -1388,12 +1445,12 @@ namespace DataDictionary
         public void MarkRequirementsForRequirementSet(RequirementSet requirementSet)
         {
             RequirementSetMarker marker = new RequirementSetMarker(requirementSet, true, false);
-            foreach (DataDictionary.Dictionary dictionary in Dictionaries)
+            foreach (Dictionary dictionary in Dictionaries)
             {
                 dictionary.ClearMessages();
                 marker.visit(dictionary);
             }
-            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
+            INSTANCE.Markings.RegisterCurrentMarking();
         }
 
         /// <summary>
@@ -1403,12 +1460,12 @@ namespace DataDictionary
         public void MarkRequirementsWhichDoNotBelongToRequirementSet(RequirementSet requirementSet)
         {
             RequirementSetMarker marker = new RequirementSetMarker(requirementSet, false, false);
-            foreach (DataDictionary.Dictionary dictionary in Dictionaries)
+            foreach (Dictionary dictionary in Dictionaries)
             {
                 dictionary.ClearMessages();
                 marker.visit(dictionary);
             }
-            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
+            INSTANCE.Markings.RegisterCurrentMarking();
         }
 
         /// <summary>
@@ -1418,12 +1475,12 @@ namespace DataDictionary
         public void MarkNotImplementedRequirements(RequirementSet requirementSet)
         {
             RequirementSetMarker marker = new RequirementSetMarker(requirementSet, true, true);
-            foreach (DataDictionary.Dictionary dictionary in Dictionaries)
+            foreach (Dictionary dictionary in Dictionaries)
             {
                 dictionary.ClearMessages();
                 marker.visit(dictionary);
             }
-            EFSSystem.INSTANCE.Markings.RegisterCurrentMarking();
+            INSTANCE.Markings.RegisterCurrentMarking();
         }
 
         /// <summary>
@@ -1435,7 +1492,7 @@ namespace DataDictionary
         {
             RequirementSet retVal = null;
 
-            foreach (DataDictionary.Dictionary dictionary in Dictionaries)
+            foreach (Dictionary dictionary in Dictionaries)
             {
                 foreach (RequirementSet requirementSet in dictionary.RequirementSets)
                 {

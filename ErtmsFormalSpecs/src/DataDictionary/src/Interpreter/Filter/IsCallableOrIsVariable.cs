@@ -13,10 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using Utils;
+
 namespace DataDictionary.Interpreter.Filter
 {
-    using Utils;
-
     /// <summary>
     /// Indicates that the namable is a callable or a variable
     /// </summary>
@@ -50,6 +51,6 @@ namespace DataDictionary.Interpreter.Filter
         /// <summary>
         /// Singleton
         /// </summary>
-        public static new IsCallableOrIsVariable INSTANCE = new IsCallableOrIsVariable();
+        public new static IsCallableOrIsVariable INSTANCE = new IsCallableOrIsVariable();
     }
 }

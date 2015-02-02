@@ -13,13 +13,9 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 namespace GUI.EditorView
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// A comment editor window
     /// </summary>
@@ -27,10 +23,7 @@ namespace GUI.EditorView
     {
         protected override string EditorName
         {
-            get
-            {
-                return "Comment editor";
-            }
+            get { return "Comment editor"; }
         }
     }
 }

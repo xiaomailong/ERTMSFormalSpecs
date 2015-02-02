@@ -13,10 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using DataDictionary.Generated;
+using Type = System.Type;
 
 namespace GUI.Converters
 {
@@ -56,14 +58,14 @@ namespace GUI.Converters
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destType)
         {
-            return destType == typeof(string);
+            return destType == typeof (string);
         }
 
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destType)
         {
             string retVal = converters[0].display;
 
-            T val = (T)value;
+            T val = (T) value;
             foreach (Converter converter in converters)
             {
                 if (converter.val.Equals(val))
@@ -78,7 +80,7 @@ namespace GUI.Converters
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type srcType)
         {
-            return srcType == typeof(string);
+            return srcType == typeof (string);
         }
 
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
@@ -98,28 +100,28 @@ namespace GUI.Converters
         }
     }
 
-    public class VariableModeConverter : GenericEnumConverter<DataDictionary.Generated.acceptor.VariableModeEnumType>
+    public class VariableModeConverter : GenericEnumConverter<acceptor.VariableModeEnumType>
     {
         public VariableModeConverter(Type type)
             : base(type)
         {
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.VariableModeEnumType.aConstant, "Constant"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.VariableModeEnumType.aIncoming, "In"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.VariableModeEnumType.aInOut, "In Out"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.VariableModeEnumType.aInternal, "Internal"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.VariableModeEnumType.aOutgoing, "Out"));
+            converters.Add(new Converter(acceptor.VariableModeEnumType.aConstant, "Constant"));
+            converters.Add(new Converter(acceptor.VariableModeEnumType.aIncoming, "In"));
+            converters.Add(new Converter(acceptor.VariableModeEnumType.aInOut, "In Out"));
+            converters.Add(new Converter(acceptor.VariableModeEnumType.aInternal, "Internal"));
+            converters.Add(new Converter(acceptor.VariableModeEnumType.aOutgoing, "Out"));
         }
     }
 
-    public class ImplementationStatusConverter : GenericEnumConverter<DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM>
+    public class ImplementationStatusConverter : GenericEnumConverter<acceptor.SPEC_IMPLEMENTED_ENUM>
     {
         public ImplementationStatusConverter(Type type)
             : base(type)
         {
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA, "Not implemented"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented, "Implemented"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable, "Not implementable"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable, "New revision available"));
+            converters.Add(new Converter(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA, "Not implemented"));
+            converters.Add(new Converter(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented, "Implemented"));
+            converters.Add(new Converter(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable, "Not implementable"));
+            converters.Add(new Converter(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable, "New revision available"));
         }
     }
 
@@ -128,47 +130,47 @@ namespace GUI.Converters
         public ImplementationStatusConverterWithDefault(Type type)
             : base(type)
         {
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM, "Default"));
+            converters.Add(new Converter(acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM, "Default"));
         }
     }
 
-    public class ScopeConverter : GenericEnumConverter<DataDictionary.Generated.acceptor.Paragraph_scope>
+    public class ScopeConverter : GenericEnumConverter<acceptor.Paragraph_scope>
     {
         public ScopeConverter(Type type)
             : base(type)
         {
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_scope.aOBU, "On Board Unit"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK, "On Board Unit and Track"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_scope.aTRACK, "Track"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_scope.aROLLING_STOCK, "Rolling stock"));
+            converters.Add(new Converter(acceptor.Paragraph_scope.aOBU, "On Board Unit"));
+            converters.Add(new Converter(acceptor.Paragraph_scope.aOBU_AND_TRACK, "On Board Unit and Track"));
+            converters.Add(new Converter(acceptor.Paragraph_scope.aTRACK, "Track"));
+            converters.Add(new Converter(acceptor.Paragraph_scope.aROLLING_STOCK, "Rolling stock"));
         }
     }
 
-    public class SpecTypeConverter : GenericEnumConverter<DataDictionary.Generated.acceptor.Paragraph_type>
+    public class SpecTypeConverter : GenericEnumConverter<acceptor.Paragraph_type>
     {
         public SpecTypeConverter(Type type)
             : base(type)
         {
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_type.aDEFINITION, "Definition"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_type.aDELETED, "Deleted"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_type.aNOTE, "Note"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_type.aPROBLEM, "Problem"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_type.aREQUIREMENT, "Requirement"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_type.aTITLE, "Title"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.Paragraph_type.aTABLE_HEADER, "Table header"));
+            converters.Add(new Converter(acceptor.Paragraph_type.aDEFINITION, "Definition"));
+            converters.Add(new Converter(acceptor.Paragraph_type.aDELETED, "Deleted"));
+            converters.Add(new Converter(acceptor.Paragraph_type.aNOTE, "Note"));
+            converters.Add(new Converter(acceptor.Paragraph_type.aPROBLEM, "Problem"));
+            converters.Add(new Converter(acceptor.Paragraph_type.aREQUIREMENT, "Requirement"));
+            converters.Add(new Converter(acceptor.Paragraph_type.aTITLE, "Title"));
+            converters.Add(new Converter(acceptor.Paragraph_type.aTABLE_HEADER, "Table header"));
         }
     }
 
-    public class RulePriorityConverter : GenericEnumConverter<DataDictionary.Generated.acceptor.RulePriority>
+    public class RulePriorityConverter : GenericEnumConverter<acceptor.RulePriority>
     {
         public RulePriorityConverter(Type type)
             : base(type)
         {
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aProcessing, "Processing"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aUpdateINTERNAL, "Update INTERNAL variables"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aUpdateOUT, "Update OUT variables"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aVerification, "INPUT Verification"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.aCleanUp, "Clean Up"));
+            converters.Add(new Converter(acceptor.RulePriority.aProcessing, "Processing"));
+            converters.Add(new Converter(acceptor.RulePriority.aUpdateINTERNAL, "Update INTERNAL variables"));
+            converters.Add(new Converter(acceptor.RulePriority.aUpdateOUT, "Update OUT variables"));
+            converters.Add(new Converter(acceptor.RulePriority.aVerification, "INPUT Verification"));
+            converters.Add(new Converter(acceptor.RulePriority.aCleanUp, "Clean Up"));
         }
     }
 
@@ -177,27 +179,27 @@ namespace GUI.Converters
         public CyclePhaseConverter(Type type)
             : base(type)
         {
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.RulePriority.defaultRulePriority, "All"));
+            converters.Add(new Converter(acceptor.RulePriority.defaultRulePriority, "All"));
         }
     }
 
-    public class RangePrecisionConverter : GenericEnumConverter<DataDictionary.Generated.acceptor.PrecisionEnum>
+    public class RangePrecisionConverter : GenericEnumConverter<acceptor.PrecisionEnum>
     {
         public RangePrecisionConverter(Type type)
             : base(type)
         {
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.PrecisionEnum.aIntegerPrecision, "Integer"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.PrecisionEnum.aDoublePrecision, "Floating point"));
+            converters.Add(new Converter(acceptor.PrecisionEnum.aIntegerPrecision, "Integer"));
+            converters.Add(new Converter(acceptor.PrecisionEnum.aDoublePrecision, "Floating point"));
         }
     }
 
-    public class ExpectationKindConverter : GenericEnumConverter<DataDictionary.Generated.acceptor.ExpectationKind>
+    public class ExpectationKindConverter : GenericEnumConverter<acceptor.ExpectationKind>
     {
         public ExpectationKindConverter(Type type)
             : base(type)
         {
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.ExpectationKind.aInstantaneous, "Instantaneous"));
-            converters.Add(new Converter(DataDictionary.Generated.acceptor.ExpectationKind.aContinuous, "Continuous"));
+            converters.Add(new Converter(acceptor.ExpectationKind.aInstantaneous, "Instantaneous"));
+            converters.Add(new Converter(acceptor.ExpectationKind.aContinuous, "Continuous"));
         }
     }
 

@@ -13,12 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ComponentModel;
+using DataDictionary;
+using DataDictionary.Constants;
+using DataDictionary.Interpreter;
+using DataDictionary.Rules;
 using DataDictionary.Specification;
+using DataDictionary.Types;
+using Utils;
 
 namespace GUI.Converters
 {
@@ -37,21 +41,21 @@ namespace GUI.Converters
             return true;
         }
 
-        public StandardValuesCollection GetValues(Utils.IModelElement element)
+        public StandardValuesCollection GetValues(IModelElement element)
         {
-            Utils.FinderRepository.INSTANCE.ClearCache();
+            FinderRepository.INSTANCE.ClearCache();
 
-            DataDictionary.Dictionary dictionary = Utils.EnclosingFinder<DataDictionary.Dictionary>.find(element);
-            DataDictionary.Types.NameSpace nameSpace = DataDictionary.EnclosingNameSpaceFinder.find(element);
+            Dictionary dictionary = EnclosingFinder<Dictionary>.find(element);
+            NameSpace nameSpace = EnclosingNameSpaceFinder.find(element);
 
             List<string> retVal = new List<string>();
             if (nameSpace != null)
             {
-                DataDictionary.OverallTypeFinder.INSTANCE.findAllValueNames("", nameSpace, true, retVal);
+                OverallTypeFinder.INSTANCE.findAllValueNames("", nameSpace, true, retVal);
             }
             else
             {
-                DataDictionary.OverallTypeFinder.INSTANCE.findAllValueNames("", dictionary, false, retVal);
+                OverallTypeFinder.INSTANCE.findAllValueNames("", dictionary, false, retVal);
             }
             retVal.Sort();
 
@@ -79,9 +83,9 @@ namespace GUI.Converters
             return false;
         }
 
-        public StandardValuesCollection GetValues(DataDictionary.Types.NameSpace nameSpace, DataDictionary.Types.Type type)
+        public StandardValuesCollection GetValues(NameSpace nameSpace, Type type)
         {
-            Utils.FinderRepository.INSTANCE.ClearCache();
+            FinderRepository.INSTANCE.ClearCache();
 
             List<string> retVal = new List<string>();
             if (type != null)
@@ -91,7 +95,7 @@ namespace GUI.Converters
                 {
                     prefix = prefix.Substring(nameSpace.FullName.Length + 1);
                 }
-                DataDictionary.OverallValueFinder.INSTANCE.findAllValueNames(prefix, type, false, retVal);
+                OverallValueFinder.INSTANCE.findAllValueNames(prefix, type, false, retVal);
                 retVal.Sort();
             }
 
@@ -114,12 +118,12 @@ namespace GUI.Converters
             return true; // drop-down vs combo
         }
 
-        public StandardValuesCollection GetValues(DataDictionary.Dictionary dictionary)
+        public StandardValuesCollection GetValues(Dictionary dictionary)
         {
-            Utils.FinderRepository.INSTANCE.ClearCache();
+            FinderRepository.INSTANCE.ClearCache();
 
             List<string> retVal = new List<string>();
-            DataDictionary.OverallNameSpaceFinder.INSTANCE.findAllValueNames("", dictionary, false, retVal);
+            OverallNameSpaceFinder.INSTANCE.findAllValueNames("", dictionary, false, retVal);
             retVal.Sort();
 
             return new StandardValuesCollection(retVal);
@@ -141,25 +145,25 @@ namespace GUI.Converters
             return true; // drop-down vs combo
         }
 
-        public StandardValuesCollection GetValues(DataDictionary.ReqRef req)
+        public StandardValuesCollection GetValues(ReqRef req)
         {
-            Utils.FinderRepository.INSTANCE.ClearCache();
+            FinderRepository.INSTANCE.ClearCache();
 
             List<string> retVal = new List<string>();
 
-            if (req.Model is DataDictionary.Rules.Rule)
+            if (req.Model is Rule)
             {
-                DataDictionary.Rules.Rule rule = req.Model as DataDictionary.Rules.Rule;
-                foreach (DataDictionary.Specification.Paragraph paragraph in rule.ApplicableParagraphs)
+                Rule rule = req.Model as Rule;
+                foreach (Paragraph paragraph in rule.ApplicableParagraphs)
                 {
                     retVal.Add(paragraph.getId());
                 }
             }
             else
             {
-                foreach (DataDictionary.Dictionary dictionary in req.EFSSystem.Dictionaries)
+                foreach (Dictionary dictionary in req.EFSSystem.Dictionaries)
                 {
-                    foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+                    foreach (Specification specification in dictionary.Specifications)
                     {
                         foreach (string paragraph in specification.ParagraphList())
                         {
@@ -188,12 +192,12 @@ namespace GUI.Converters
             return true; // drop-down vs combo
         }
 
-        public StandardValuesCollection GetValues(DataDictionary.Types.StateMachine StateMachine)
+        public StandardValuesCollection GetValues(StateMachine StateMachine)
         {
-            Utils.FinderRepository.INSTANCE.ClearCache();
+            FinderRepository.INSTANCE.ClearCache();
 
             List<string> retVal = new List<string>();
-            foreach (DataDictionary.Constants.State subState in StateMachine.States)
+            foreach (State subState in StateMachine.States)
             {
                 retVal.Add(subState.Name);
             }
@@ -207,7 +211,7 @@ namespace GUI.Converters
             return new StandardValuesCollection(retVal);
         }
 
-        public StandardValuesCollection GetValues(DataDictionary.Constants.State State)
+        public StandardValuesCollection GetValues(State State)
         {
             return GetValues(State.StateMachine);
         }
@@ -230,9 +234,9 @@ namespace GUI.Converters
 
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
-            Utils.FinderRepository.INSTANCE.ClearCache();
+            FinderRepository.INSTANCE.ClearCache();
 
-            return new StandardValuesCollection(DataDictionary.Interpreter.BinaryExpression.OperatorsImages);
+            return new StandardValuesCollection(BinaryExpression.OperatorsImages);
         }
     }
 
@@ -253,7 +257,7 @@ namespace GUI.Converters
 
         public StandardValuesCollection GetValues(IHoldsRequirementSets enclosing)
         {
-            Utils.FinderRepository.INSTANCE.ClearCache();
+            FinderRepository.INSTANCE.ClearCache();
 
             List<string> retVal = new List<string>();
             foreach (RequirementSet requirementSet in enclosing.RequirementSets)
@@ -270,5 +274,4 @@ namespace GUI.Converters
             return new StandardValuesCollection(retVal);
         }
     }
-
 }

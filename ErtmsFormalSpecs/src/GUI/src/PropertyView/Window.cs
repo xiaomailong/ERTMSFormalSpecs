@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Utils;
-using DataDictionary;
+﻿using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.PropertyView
 {
@@ -27,7 +19,7 @@ namespace GUI.PropertyView
             ResizeDescriptionArea(propertyGrid, 0);
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
-            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight;
+            DockAreas = DockAreas.DockRight;
         }
 
         /// <summary>
@@ -35,7 +27,7 @@ namespace GUI.PropertyView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Window_FormClosed(object sender, FormClosedEventArgs e)
+        private void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
             GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }

@@ -13,14 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using DataDictionary.Functions;
+using DataDictionary.Rules;
+using DataDictionary.Tests;
+using DataDictionary.Types;
+using Utils;
+using Type = DataDictionary.Types.Type;
+
 namespace DataDictionary.Interpreter
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using Utils;
-
     /// <summary>
     /// Indicates where the model element is used, associated with the usage mode (read / write)
     /// </summary>
@@ -34,7 +38,15 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The access mode to the element
         /// </summary>
-        public enum ModeEnum { Read, Write, ReadAndWrite, Call, Type, Parameter };
+        public enum ModeEnum
+        {
+            Read,
+            Write,
+            ReadAndWrite,
+            Call,
+            Type,
+            Parameter
+        };
 
         /// <summary>
         /// Provides the usage mode for this element
@@ -44,14 +56,14 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Provides the element that uses the model
         /// </summary>
-        public DataDictionary.ModelElement User { get; private set; }
+        public ModelElement User { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="referenced"></param>
         /// <param name="user"></param>
-        public Usage(INamable referenced, DataDictionary.ModelElement user, ModeEnum? mode)
+        public Usage(INamable referenced, ModelElement user, ModeEnum? mode)
         {
             Referenced = referenced;
             User = user;
@@ -69,11 +81,11 @@ namespace DataDictionary.Interpreter
             IModelElement current = User;
             while (current != null && retVal == null)
             {
-                if (current is Rules.RuleCondition ||
-                    current is Functions.Function ||
-                    current is Functions.Procedure ||
-                    current is Types.Type ||
-                    current is Tests.TestCase)
+                if (current is RuleCondition ||
+                    current is Function ||
+                    current is Procedure ||
+                    current is Type ||
+                    current is TestCase)
                 {
                     retVal = current.Name;
                 }
@@ -97,8 +109,8 @@ namespace DataDictionary.Interpreter
             {
                 if (other.Mode != null && Mode != null)
                 {
-                    ModeEnum m1 = (ModeEnum)Mode;
-                    ModeEnum m2 = (ModeEnum)other.Mode;
+                    ModeEnum m1 = (ModeEnum) Mode;
+                    ModeEnum m2 = (ModeEnum) other.Mode;
 
                     retVal = m1.CompareTo(m2);
                 }
@@ -172,12 +184,12 @@ namespace DataDictionary.Interpreter
         /// <param name="referenced"></param>
         /// <param name="user"></param>
         /// <param name="mode"></param>
-        public void AddUsage(INamable referenced, DataDictionary.ModelElement user, Usage.ModeEnum? mode)
+        public void AddUsage(INamable referenced, ModelElement user, Usage.ModeEnum? mode)
         {
             if (referenced != null)
             {
                 // Do not store namespaces
-                if (!(referenced is Types.NameSpace))
+                if (!(referenced is NameSpace))
                 {
                     Usage usage = new Usage(referenced, user, mode);
                     AllUsages.Add(usage);
@@ -190,7 +202,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public List<Usage> Find(DataDictionary.ModelElement model)
+        public List<Usage> Find(ModelElement model)
         {
             List<Usage> retVal = new List<Usage>();
 
@@ -223,6 +235,5 @@ namespace DataDictionary.Interpreter
 
             return retVal;
         }
-
     }
 }

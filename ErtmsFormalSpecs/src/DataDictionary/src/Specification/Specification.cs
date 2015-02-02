@@ -13,13 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DataDictionary.Generated;
+using Utils;
 
 namespace DataDictionary.Specification
 {
-    public class Specification : Generated.Specification, Utils.IFinder, IHoldsParagraphs
+    public class Specification : Generated.Specification, IFinder, IHoldsParagraphs
     {
         /// <summary>
         /// Used to temporarily store the list of chapters
@@ -32,7 +35,7 @@ namespace DataDictionary.Specification
         public Specification()
             : base()
         {
-            Utils.FinderRepository.INSTANCE.Register(this);
+            FinderRepository.INSTANCE.Register(this);
         }
 
         /// <summary>
@@ -47,13 +50,13 @@ namespace DataDictionary.Specification
         /// <summary>
         /// The chapters
         /// </summary>
-        public System.Collections.ArrayList Chapters
+        public ArrayList Chapters
         {
             get
             {
                 if (allChapters() == null)
                 {
-                    setAllChapters(new System.Collections.ArrayList());
+                    setAllChapters(new ArrayList());
                 }
                 return allChapters();
             }
@@ -62,7 +65,7 @@ namespace DataDictionary.Specification
         /// <summary>
         /// The cache
         /// </summary>
-        public System.Collections.Generic.Dictionary<String, Paragraph> TheCache = new Dictionary<string, Paragraph>();
+        public Dictionary<String, Paragraph> TheCache = new Dictionary<string, Paragraph>();
 
         /// <summary>
         /// Clears the caches
@@ -115,9 +118,9 @@ namespace DataDictionary.Specification
         /// <summary>
         /// The Guid cache
         /// </summary>
-        Dictionary<string, Paragraph> GuidCache = new Dictionary<string, Paragraph>();
+        private Dictionary<string, Paragraph> GuidCache = new Dictionary<string, Paragraph>();
 
-        private class GuidParagraphVisitor : Generated.Visitor
+        private class GuidParagraphVisitor : Visitor
         {
             /// <summary>
             /// The cache to update
@@ -140,7 +143,7 @@ namespace DataDictionary.Specification
             /// <param name="visitSubNodes"></param>
             public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
-                Paragraph paragraph = (Paragraph)obj;
+                Paragraph paragraph = (Paragraph) obj;
 
                 GuidCache[paragraph.getGuid()] = paragraph;
 
@@ -228,7 +231,6 @@ namespace DataDictionary.Specification
 
             foreach (Chapter chapter in Chapters)
             {
-
                 if (chapter.getId() == id)
                 {
                     retVal = chapter;
@@ -237,7 +239,6 @@ namespace DataDictionary.Specification
             }
 
             return retVal;
-
         }
 
         /// <summary>
@@ -414,21 +415,21 @@ namespace DataDictionary.Specification
         /// Gets all paragraphs from a specification
         /// </summary>
         /// <param name="paragraphs"></param>
-        public void GetParagraphs(List<DataDictionary.Specification.Paragraph> paragraphs)
+        public void GetParagraphs(List<Paragraph> paragraphs)
         {
-            foreach (DataDictionary.Specification.Chapter chapter in Chapters)
+            foreach (Chapter chapter in Chapters)
             {
                 chapter.GetParagraphs(paragraphs);
             }
         }
 
-        private class NotImplementedVisitor : Generated.Visitor
+        private class NotImplementedVisitor : Visitor
         {
             public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
-                DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)obj;
+                Paragraph paragraph = (Paragraph) obj;
 
-                if (paragraph.getImplementationStatus() == Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA)
+                if (paragraph.getImplementationStatus() == acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA)
                 {
                     paragraph.AddInfo("Not implemented");
                 }
@@ -446,11 +447,11 @@ namespace DataDictionary.Specification
             visitor.visit(this);
         }
 
-        private class NotReviewedVisitor : Generated.Visitor
+        private class NotReviewedVisitor : Visitor
         {
             public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
-                DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)obj;
+                Paragraph paragraph = (Paragraph) obj;
 
                 if (!paragraph.getReviewed())
                 {
@@ -470,13 +471,13 @@ namespace DataDictionary.Specification
             visitor.visit(this);
         }
 
-        private class NiewRevisionVisitor : Generated.Visitor
+        private class NiewRevisionVisitor : Visitor
         {
             public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
-                DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)obj;
+                Paragraph paragraph = (Paragraph) obj;
 
-                if (paragraph.getImplementationStatus() == Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable)
+                if (paragraph.getImplementationStatus() == acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable)
                 {
                     paragraph.AddInfo("New revision");
                 }
@@ -484,6 +485,7 @@ namespace DataDictionary.Specification
                 base.visit(obj, visitSubNodes);
             }
         }
+
         /// <summary>
         /// Indicates which requirement has been not reviewed 
         /// </summary>
@@ -493,11 +495,11 @@ namespace DataDictionary.Specification
             visitor.visit(this);
         }
 
-        private class ApplicableParagraphsVisitor : Generated.Visitor
+        private class ApplicableParagraphsVisitor : Visitor
         {
             public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
-                DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)obj;
+                Paragraph paragraph = (Paragraph) obj;
 
                 if (paragraph.isApplicable())
                 {
@@ -508,11 +510,11 @@ namespace DataDictionary.Specification
             }
         }
 
-        private class NonApplicableParagraphsVisitor : Generated.Visitor
+        private class NonApplicableParagraphsVisitor : Visitor
         {
             public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
-                DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)obj;
+                Paragraph paragraph = (Paragraph) obj;
 
                 if (!paragraph.isApplicable())
                 {
@@ -523,11 +525,11 @@ namespace DataDictionary.Specification
             }
         }
 
-        private class SpecIssuesParagraphsVisitor : Generated.Visitor
+        private class SpecIssuesParagraphsVisitor : Visitor
         {
             public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
-                DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)obj;
+                Paragraph paragraph = (Paragraph) obj;
 
                 if (paragraph.getSpecIssue())
                 {
@@ -557,11 +559,11 @@ namespace DataDictionary.Specification
         }
 
 
-        private class MoreInfoParagraphsVisitor : Generated.Visitor
+        private class MoreInfoParagraphsVisitor : Visitor
         {
             public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
-                DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)obj;
+                Paragraph paragraph = (Paragraph) obj;
 
                 if (paragraph.getMoreInfoRequired())
                 {
@@ -581,7 +583,7 @@ namespace DataDictionary.Specification
         /// <summary>
         /// Provides all ReqReferences
         /// </summary>
-        private class AllReferences : Generated.Visitor
+        private class AllReferences : Visitor
         {
             /// <summary>
             /// Provides the list of references found
@@ -598,7 +600,7 @@ namespace DataDictionary.Specification
 
             public override void visit(Generated.ReqRef obj, bool visitSubNodes)
             {
-                References.Add((ReqRef)obj);
+                References.Add((ReqRef) obj);
 
                 base.visit(obj, visitSubNodes);
             }
@@ -634,9 +636,8 @@ namespace DataDictionary.Specification
         /// <summary>
         /// Provides the paragraph which are implemented but where no functional test is present
         /// </summary>
-        private class ImplementedWithNoFunctionalTestVisitor : Generated.Visitor
+        private class ImplementedWithNoFunctionalTestVisitor : Visitor
         {
-
             /// <summary>
             /// Provides references to all functional tests
             /// </summary>
@@ -648,7 +649,7 @@ namespace DataDictionary.Specification
             public ImplementedWithNoFunctionalTestVisitor(Specification specification)
             {
                 FunctionalTests = new AllReferences();
-                foreach (DataDictionary.Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
+                foreach (Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
                 {
                     FunctionalTests.Initialize(dictionary);
                 }
@@ -656,9 +657,9 @@ namespace DataDictionary.Specification
 
             public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
-                DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)obj;
+                Paragraph paragraph = (Paragraph) obj;
 
-                if (paragraph.getImplementationStatus() == Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented)
+                if (paragraph.getImplementationStatus() == acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented)
                 {
                     if (!FunctionalTests.TestedParagraphs.Contains(paragraph))
                     {
@@ -683,7 +684,7 @@ namespace DataDictionary.Specification
         /// <summary>
         /// Provides the paragraph which are not set as tested but where a functional test is present
         /// </summary>
-        private class NotTestedWithFunctionalTestVisitor : Generated.Visitor
+        private class NotTestedWithFunctionalTestVisitor : Visitor
         {
             /// <summary>
             /// Provides references to all functional tests
@@ -696,7 +697,7 @@ namespace DataDictionary.Specification
             public NotTestedWithFunctionalTestVisitor(Specification specification)
             {
                 FunctionalTests = new AllReferences();
-                foreach (DataDictionary.Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
+                foreach (Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
                 {
                     FunctionalTests.Initialize(dictionary);
                 }
@@ -704,7 +705,7 @@ namespace DataDictionary.Specification
 
             public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
-                DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)obj;
+                Paragraph paragraph = (Paragraph) obj;
 
                 if (!paragraph.getTested())
                 {
@@ -730,13 +731,12 @@ namespace DataDictionary.Specification
         /// <summary>
         /// Provides the paragraph which are not marked as implemented but where implementation exists
         /// </summary>
-        private class NotImplementedButImplementationExistsVisitor : Generated.Visitor
+        private class NotImplementedButImplementationExistsVisitor : Visitor
         {
-
             /// <summary>
             /// Provides all ReqReferences
             /// </summary>
-            private class AllReferences : Generated.Visitor
+            private class AllReferences : Visitor
             {
                 /// <summary>
                 /// Provides the list of references found
@@ -753,7 +753,7 @@ namespace DataDictionary.Specification
 
                 public override void visit(Generated.ReqRef obj, bool visitSubNodes)
                 {
-                    References.Add((ReqRef)obj);
+                    References.Add((ReqRef) obj);
 
                     base.visit(obj, visitSubNodes);
                 }
@@ -763,7 +763,7 @@ namespace DataDictionary.Specification
                 /// </summary>
                 /// <param name="obj"></param>
                 /// <param name="visitSubNodes"></param>
-                public override void visit(Generated.Frame obj, bool visitSubNodes)
+                public override void visit(Frame obj, bool visitSubNodes)
                 {
                 }
 
@@ -803,7 +803,7 @@ namespace DataDictionary.Specification
             public NotImplementedButImplementationExistsVisitor(Specification specification)
             {
                 Implementations = new AllReferences();
-                foreach (DataDictionary.Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
+                foreach (Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
                 {
                     Implementations.Initialize(dictionary);
                 }
@@ -811,9 +811,9 @@ namespace DataDictionary.Specification
 
             public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
-                DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)obj;
+                Paragraph paragraph = (Paragraph) obj;
 
-                if (paragraph.getImplementationStatus() != Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented)
+                if (paragraph.getImplementationStatus() != acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented)
                 {
                     if (Implementations.ImplementedParagraphs.Contains(paragraph))
                     {
@@ -838,7 +838,7 @@ namespace DataDictionary.Specification
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             {
                 Chapter item = element as Chapter;
@@ -848,6 +848,5 @@ namespace DataDictionary.Specification
                 }
             }
         }
-
     }
 }

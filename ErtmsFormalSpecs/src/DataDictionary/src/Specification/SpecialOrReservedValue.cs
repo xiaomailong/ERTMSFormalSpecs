@@ -14,9 +14,11 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Generated;
+
 namespace DataDictionary.Specification
 {
-    public class SpecialOrReservedValue : Generated.special_or_reserved_value
+    public class SpecialOrReservedValue : special_or_reserved_value
     {
         /// <summary>
         /// The SpecialOrReservedValue content

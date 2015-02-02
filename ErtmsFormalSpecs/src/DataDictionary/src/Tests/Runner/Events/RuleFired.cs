@@ -15,7 +15,11 @@
 // ------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using DataDictionary.Rules;
+using DataDictionary.Generated;
+using DataDictionary.Variables;
+using NameSpace = DataDictionary.Types.NameSpace;
+using RuleCondition = DataDictionary.Rules.RuleCondition;
+
 namespace DataDictionary.Tests.Runner.Events
 {
     public class RuleFired : ModelEvent
@@ -28,23 +32,29 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The rule condition associated to this rule fired event
         /// </summary>
-        public Rules.RuleCondition RuleCondition { get { return Activation.RuleCondition; } }
+        public RuleCondition RuleCondition
+        {
+            get { return Activation.RuleCondition; }
+        }
 
         /// <summary>
         /// The namespace associated to this event
         /// </summary>
-        public override Types.NameSpace NameSpace { get { return RuleCondition.EnclosingRule.NameSpace; } }
+        public override NameSpace NameSpace
+        {
+            get { return RuleCondition.EnclosingRule.NameSpace; }
+        }
 
         /// <summary>
         /// The variable updates triggered by this rule event
         /// </summary>
-        private List<VariableUpdate> Updates { get; set; }      
+        private List<VariableUpdate> Updates { get; set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="id"></param>
-        public RuleFired(Runner.Activation activation, Generated.acceptor.RulePriority priority)
+        public RuleFired(Runner.Activation activation, acceptor.RulePriority priority)
             : base(activation.RuleCondition.Name, activation.RuleCondition, priority)
         {
             Activation = activation;
@@ -66,7 +76,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>
-        public bool ImpactVariable(Variables.IVariable variable)
+        public bool ImpactVariable(IVariable variable)
         {
             bool retVal = false;
 

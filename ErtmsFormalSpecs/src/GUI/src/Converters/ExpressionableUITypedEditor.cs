@@ -13,20 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.ComponentModel;
+using System.Drawing.Design;
+using System.Windows.Forms.Design;
+using DataDictionary;
+using DataDictionary.Tests;
+using GUI.EditorView;
+using WeifenLuo.WinFormsUI.Docking;
+
 namespace GUI.Converters
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Drawing.Design;
-    using System.ComponentModel;
-    using System.Windows.Forms.Design;
-    using DataDictionary;
-    using System.Windows.Forms;
-    using GUI.EditorView;
-    using DataDictionary.Tests;
-
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
@@ -37,18 +35,18 @@ namespace GUI.Converters
             return UITypeEditorEditStyle.Modal;
         }
 
-        public override object EditValue(ITypeDescriptorContext context, System.IServiceProvider provider, object value)
+        public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
-            IWindowsFormsEditorService svc = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
+            IWindowsFormsEditorService svc = provider.GetService(typeof (IWindowsFormsEditorService)) as IWindowsFormsEditorService;
             if (svc != null)
             {
                 IExpressionable expressionable = value as IExpressionable;
                 if (expressionable != null)
                 {
-                    EditorView.Window form = new EditorView.Window();                   
+                    Window form = new Window();
                     ExpressionableTextChangeHandler handler = new ExpressionableTextChangeHandler(expressionable as ModelElement);
                     form.setChangeHandler(handler);
-                    GUIUtils.MDIWindow.AddChildWindow(form, WeifenLuo.WinFormsUI.Docking.DockAreas.Float);
+                    GUIUtils.MDIWindow.AddChildWindow(form, DockAreas.Float);
                 }
             }
 
@@ -66,18 +64,18 @@ namespace GUI.Converters
             return UITypeEditorEditStyle.Modal;
         }
 
-        public override object EditValue(ITypeDescriptorContext context, System.IServiceProvider provider, object value)
+        public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
-            IWindowsFormsEditorService svc = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
+            IWindowsFormsEditorService svc = provider.GetService(typeof (IWindowsFormsEditorService)) as IWindowsFormsEditorService;
             if (svc != null)
             {
                 Expectation expectation = value as Expectation;
                 if (expectation != null)
                 {
-                    EditorView.Window form = new EditorView.Window();
+                    Window form = new Window();
                     ConditionTextChangeHandler handler = new ConditionTextChangeHandler(expectation);
                     form.setChangeHandler(handler);
-                    GUIUtils.MDIWindow.AddChildWindow(form, WeifenLuo.WinFormsUI.Docking.DockAreas.Float);
+                    GUIUtils.MDIWindow.AddChildWindow(form, DockAreas.Float);
                 }
             }
 

@@ -13,10 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary.Variables;
+using Utils;
+
 namespace DataDictionary.Interpreter.Filter
 {
-    using Utils;
-
     /// <summary>
     /// Predicates which indicates that the namable is either a variable (and not a structure element) or a value
     /// </summary>
@@ -45,14 +47,14 @@ namespace DataDictionary.Interpreter.Filter
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static new bool Predicate(INamable value)
+        public new static bool Predicate(INamable value)
         {
-            return value is Variables.IVariable || IsValue.Predicate(value);
+            return value is IVariable || IsValue.Predicate(value);
         }
 
         /// <summary>
         /// Singleton
         /// </summary>
-        public static new IsStrictVariableOrValue INSTANCE = new IsStrictVariableOrValue();
+        public new static IsStrictVariableOrValue INSTANCE = new IsStrictVariableOrValue();
     }
 }

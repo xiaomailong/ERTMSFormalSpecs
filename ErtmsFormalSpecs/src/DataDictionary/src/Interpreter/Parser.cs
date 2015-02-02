@@ -13,12 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using DataDictionary.Interpreter.ListOperators;
-using DataDictionary.Values;
-using DataDictionary.Interpreter.Filter;
 using System.Threading;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter.Filter;
+using DataDictionary.Interpreter.ListOperators;
+using DataDictionary.Interpreter.Statement;
+using DataDictionary.Values;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Interpreter
 {
@@ -53,6 +57,7 @@ namespace DataDictionary.Interpreter
         /// The buffer which holds the expression
         /// </summary>
         private char[] buffer;
+
         private char[] Buffer
         {
             get { return buffer; }
@@ -67,6 +72,7 @@ namespace DataDictionary.Interpreter
         /// The current index in the buffer
         /// </summary>
         private int index;
+
         private int Index
         {
             get { return index; }
@@ -95,7 +101,7 @@ namespace DataDictionary.Interpreter
             skipWhiteSpaces();
             if (Index < Buffer.Length)
             {
-                if (Char.IsLetter(Buffer[Index]) || Buffer[Index] == '_' || Buffer[Index] == '%' )
+                if (Char.IsLetter(Buffer[Index]) || Buffer[Index] == '_' || Buffer[Index] == '%')
                 {
                     int i = 1;
 
@@ -297,7 +303,7 @@ namespace DataDictionary.Interpreter
 
             int len = 0;
             bool digitFound = false;
-            Types.Type type = EFSSystem.IntegerType;
+            Type type = EFSSystem.IntegerType;
 
             if (Index < Buffer.Length && Buffer[Index] == '-')
             {
@@ -359,7 +365,7 @@ namespace DataDictionary.Interpreter
             {
                 Match("[");
                 List<Expression> list = new List<Expression>();
-                Types.Type elementType = null;
+                Type elementType = null;
 
                 if (LookAhead("]"))
                 {
@@ -427,7 +433,7 @@ namespace DataDictionary.Interpreter
                 if (LookAhead("{"))
                 {
                     Match("{");
-                    Dictionary<Designator, Expression> associations = new Dictionary<Designator, Interpreter.Expression>();
+                    Dictionary<Designator, Expression> associations = new Dictionary<Designator, Expression>();
 
                     if (LookAhead("}"))
                     {
@@ -499,7 +505,6 @@ namespace DataDictionary.Interpreter
                                 }
                                 break;
                             }
-
                         }
                     }
                 }
@@ -527,7 +532,7 @@ namespace DataDictionary.Interpreter
             string id = Identifier();
             while (id != null)
             {
-                Designator designator = new Interpreter.Designator(Root, RootLog, id, start, start + id.Length);
+                Designator designator = new Designator(Root, RootLog, id, start, start + id.Length);
                 Term term = new Term(Root, RootLog, designator, designator.Start, designator.End);
                 UnaryExpression unaryExpression = new UnaryExpression(Root, RootLog, term, term.Start, term.End);
                 derefArguments.Add(unaryExpression);
@@ -737,8 +742,8 @@ namespace DataDictionary.Interpreter
                 Expression expressionRight = Expression(expressionLevel + 1);
                 if (expressionRight != null)
                 {
-                    retVal = new BinaryExpression(Root, RootLog, expressionLeft, oper, expressionRight, expressionLeft.Start, expressionRight.End);  // {op_i+1} Expression_i+1
-                    retVal = ExpressionContinuation(expressionLevel, retVal);  // Expression_iCont
+                    retVal = new BinaryExpression(Root, RootLog, expressionLeft, oper, expressionRight, expressionLeft.Start, expressionRight.End); // {op_i+1} Expression_i+1
+                    retVal = ExpressionContinuation(expressionLevel, retVal); // Expression_iCont
                 }
             }
 
@@ -748,7 +753,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The continuation operators
         /// </summary>
-        private static string[] CONTINUATION_OPERATORS = new string[] { ".", "(" };
+        private static string[] CONTINUATION_OPERATORS = new string[] {".", "("};
 
         /// <summary>
         /// Implements the dot continuation or the function call continuation
@@ -889,14 +894,14 @@ namespace DataDictionary.Interpreter
 
             skipWhiteSpaces();
             int start = Index;
-            string listOp = LookAhead(ListOperators.ListOperatorExpression.LIST_OPERATORS);
+            string listOp = LookAhead(ListOperatorExpression.LIST_OPERATORS);
             if (listOp != null)
             {
                 Match(listOp);
 
-                if (listOp.CompareTo(ListOperators.MapExpression.OPERATOR) == 0
-                    || listOp.CompareTo(ListOperators.ReduceExpression.OPERATOR) == 0
-                    || listOp.CompareTo(ListOperators.SumExpression.OPERATOR) == 0)
+                if (listOp.CompareTo(MapExpression.OPERATOR) == 0
+                    || listOp.CompareTo(ReduceExpression.OPERATOR) == 0
+                    || listOp.CompareTo(SumExpression.OPERATOR) == 0)
                 {
                     Expression listExpression = Expression(0);
                     if (listExpression != null)
@@ -914,21 +919,21 @@ namespace DataDictionary.Interpreter
                         Expression iteratorExpression = Expression(0);
                         if (iteratorExpression != null)
                         {
-                            if (ListOperators.MapExpression.OPERATOR.CompareTo(listOp) == 0)
+                            if (MapExpression.OPERATOR.CompareTo(listOp) == 0)
                             {
-                                retVal = new ListOperators.MapExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, iteratorExpression, start, Index);
+                                retVal = new MapExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, iteratorExpression, start, Index);
                             }
-                            else if (ListOperators.SumExpression.OPERATOR.CompareTo(listOp) == 0)
+                            else if (SumExpression.OPERATOR.CompareTo(listOp) == 0)
                             {
-                                retVal = new ListOperators.SumExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, iteratorExpression, start, Index);
+                                retVal = new SumExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, iteratorExpression, start, Index);
                             }
-                            else if (ListOperators.ReduceExpression.OPERATOR.CompareTo(listOp) == 0)
+                            else if (ReduceExpression.OPERATOR.CompareTo(listOp) == 0)
                             {
                                 Match("INITIAL_VALUE");
                                 Expression initialValue = Expression(0);
                                 if (initialValue != null)
                                 {
-                                    retVal = new ListOperators.ReduceExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, iteratorExpression, initialValue, start, Index);
+                                    retVal = new ReduceExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, iteratorExpression, initialValue, start, Index);
                                 }
                                 else
                                 {
@@ -957,25 +962,25 @@ namespace DataDictionary.Interpreter
                         }
 
                         // Create the right class for this list operation
-                        if (ListOperators.ThereIsExpression.OPERATOR.CompareTo(listOp) == 0)
+                        if (ThereIsExpression.OPERATOR.CompareTo(listOp) == 0)
                         {
-                            retVal = new ListOperators.ThereIsExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, start, Index);
+                            retVal = new ThereIsExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, start, Index);
                         }
-                        else if (ListOperators.ForAllExpression.OPERATOR.CompareTo(listOp) == 0)
+                        else if (ForAllExpression.OPERATOR.CompareTo(listOp) == 0)
                         {
-                            retVal = new ListOperators.ForAllExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, start, Index);
+                            retVal = new ForAllExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, start, Index);
                         }
-                        else if (ListOperators.FirstExpression.OPERATOR.CompareTo(listOp) == 0)
+                        else if (FirstExpression.OPERATOR.CompareTo(listOp) == 0)
                         {
-                            retVal = new ListOperators.FirstExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, start, Index);
+                            retVal = new FirstExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, start, Index);
                         }
-                        else if (ListOperators.LastExpression.OPERATOR.CompareTo(listOp) == 0)
+                        else if (LastExpression.OPERATOR.CompareTo(listOp) == 0)
                         {
-                            retVal = new ListOperators.LastExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, start, Index);
+                            retVal = new LastExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, start, Index);
                         }
-                        else if (ListOperators.CountExpression.OPERATOR.CompareTo(listOp) == 0)
+                        else if (CountExpression.OPERATOR.CompareTo(listOp) == 0)
                         {
-                            retVal = new ListOperators.CountExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, start, Index);
+                            retVal = new CountExpression(Root, RootLog, listExpression, iteratorIdentifier, condition, start, Index);
                         }
                     }
                 }
@@ -1076,7 +1081,7 @@ namespace DataDictionary.Interpreter
                         string typeName = Identifier(true);
                         if (typeName != null)
                         {
-                            Parameter parameter = (Parameter)Generated.acceptor.getFactory().createParameter();
+                            Parameter parameter = (Parameter) acceptor.getFactory().createParameter();
                             parameter.Name = id;
                             parameter.TypeName = typeName;
                             parameters.Add(parameter);
@@ -1145,7 +1150,7 @@ namespace DataDictionary.Interpreter
             bool previousSilentMode = ModelElement.BeSilent;
             try
             {
-                Generated.ControllersManager.DesactivateAllNotifications();
+                ControllersManager.DesactivateAllNotifications();
                 ModelElement.BeSilent = ModelElement.BeSilent || silent;
 
                 // Setup context
@@ -1192,7 +1197,7 @@ namespace DataDictionary.Interpreter
             {
                 NoReentrance.ReleaseMutex();
                 ModelElement.BeSilent = previousSilentMode;
-                Generated.ControllersManager.ActivateAllNotifications();
+                ControllersManager.ActivateAllNotifications();
             }
 
             return retVal;
@@ -1201,7 +1206,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The assignment operators
         /// </summary>
-        private static string[] ASSIGN_OPS = new string[] { "<-", "=>" };
+        private static string[] ASSIGN_OPS = new string[] {"<-", "=>"};
 
         /// <summary>
         /// Parses a statement
@@ -1227,7 +1232,7 @@ namespace DataDictionary.Interpreter
                         Match("|");
                         condition = Expression(0);
                     }
-                    retVal = new Statement.ApplyStatement(Root, RootLog, appliedStatement, listExpression, condition, start, Index);
+                    retVal = new ApplyStatement(Root, RootLog, appliedStatement, listExpression, condition, start, Index);
                 }
                 else
                 {
@@ -1251,14 +1256,14 @@ namespace DataDictionary.Interpreter
 
                         replaceElement = Expression(0);
                     }
-                    retVal = new Statement.InsertStatement(Root, RootLog, value, list, replaceElement, start, Index);
+                    retVal = new InsertStatement(Root, RootLog, value, list, replaceElement, start, Index);
                 }
             }
             else if (LookAhead("REMOVE"))
             {
                 Match("REMOVE");
 
-                Statement.RemoveStatement.PositionEnum position = Interpreter.Statement.RemoveStatement.PositionEnum.First;
+                RemoveStatement.PositionEnum position = RemoveStatement.PositionEnum.First;
                 if (LookAhead("FIRST"))
                 {
                     Match("FIRST");
@@ -1266,12 +1271,12 @@ namespace DataDictionary.Interpreter
                 else if (LookAhead("LAST"))
                 {
                     Match("LAST");
-                    position = Interpreter.Statement.RemoveStatement.PositionEnum.Last;
+                    position = RemoveStatement.PositionEnum.Last;
                 }
                 else if (LookAhead("ALL"))
                 {
                     Match("ALL");
-                    position = Interpreter.Statement.RemoveStatement.PositionEnum.All;
+                    position = RemoveStatement.PositionEnum.All;
                 }
 
                 Expression condition = null;
@@ -1281,7 +1286,7 @@ namespace DataDictionary.Interpreter
                 }
                 Match("IN");
                 Expression list = Expression(0);
-                retVal = new Statement.RemoveStatement(Root, RootLog, condition, position, list, start, Index);
+                retVal = new RemoveStatement(Root, RootLog, condition, position, list, start, Index);
             }
             else if (LookAhead("REPLACE"))
             {
@@ -1292,7 +1297,7 @@ namespace DataDictionary.Interpreter
                 Match("BY");
                 Expression value = Expression(0);
 
-                retVal = new Statement.ReplaceStatement(Root, RootLog, value, list, condition, start, Index);
+                retVal = new ReplaceStatement(Root, RootLog, value, list, condition, start, Index);
             }
             else
             {
@@ -1312,7 +1317,7 @@ namespace DataDictionary.Interpreter
 
                         if (expression2 != null)
                         {
-                            retVal = new Statement.VariableUpdateStatement(Root, RootLog, expression, expression2, start, Index);
+                            retVal = new VariableUpdateStatement(Root, RootLog, expression, expression2, start, Index);
                         }
                         else
                         {
@@ -1326,7 +1331,7 @@ namespace DataDictionary.Interpreter
                         Call call = expression as Call;
                         if (call != null)
                         {
-                            retVal = new Statement.ProcedureCallStatement(Root, RootLog, call, start, Index);
+                            retVal = new ProcedureCallStatement(Root, RootLog, call, start, Index);
                         }
                     }
                 }
@@ -1385,7 +1390,7 @@ namespace DataDictionary.Interpreter
 
             try
             {
-                Generated.ControllersManager.DesactivateAllNotifications();
+                ControllersManager.DesactivateAllNotifications();
                 ModelElement.BeSilent = silent;
 
                 Root = root;
@@ -1413,7 +1418,7 @@ namespace DataDictionary.Interpreter
             finally
             {
                 ModelElement.BeSilent = previousSilentMode;
-                Generated.ControllersManager.ActivateAllNotifications();
+                ControllersManager.ActivateAllNotifications();
             }
 
             return retVal;
@@ -1426,7 +1431,7 @@ namespace DataDictionary.Interpreter
         /// <param name="root"></param>
         /// <param name="expression"></param>
         /// <returns></returns>
-        internal Interpreter.Term Term(ModelElement root, string expression)
+        internal Term Term(ModelElement root, string expression)
         {
             Term retVal = null;
 

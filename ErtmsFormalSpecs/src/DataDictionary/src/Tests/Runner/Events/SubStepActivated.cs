@@ -14,10 +14,14 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
 using DataDictionary.Values;
-using System;
+using Action = DataDictionary.Rules.Action;
+using NameSpace = DataDictionary.Types.NameSpace;
+
 namespace DataDictionary.Tests.Runner.Events
 {
     public class SubStepActivated : ModelEvent
@@ -25,8 +29,9 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The activated step
         /// </summary>
-        private Tests.SubStep subStep;
-        public Tests.SubStep SubStep
+        private SubStep subStep;
+
+        public SubStep SubStep
         {
             get { return subStep; }
             private set { subStep = value; }
@@ -36,7 +41,10 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The namespace associated to this event
         /// </summary>
-        public override Types.NameSpace NameSpace { get { return null; } }
+        public override NameSpace NameSpace
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// The list of changes related to this sub step
@@ -46,7 +54,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// Constructor
         /// </summary>
         /// <param name="step">The activated step</param>
-        public SubStepActivated(Tests.SubStep subStep, Generated.acceptor.RulePriority? priority)
+        public SubStepActivated(SubStep subStep, acceptor.RulePriority? priority)
             : base(subStep.Name, subStep, priority)
         {
             SubStep = subStep;
@@ -65,7 +73,7 @@ namespace DataDictionary.Tests.Runner.Events
             {
                 // Computes the list of variable updates
                 Updates = new List<VariableUpdate>();
-                foreach (DataDictionary.Rules.Action action in subStep.Actions)
+                foreach (Action action in subStep.Actions)
                 {
                     if (action.Statement != null)
                     {
@@ -100,11 +108,11 @@ namespace DataDictionary.Tests.Runner.Events
             {
                 bool addExpectation = true;
 
-                if (expectation.getKind() == Generated.acceptor.ExpectationKind.aInstantaneous)
+                if (expectation.getKind() == acceptor.ExpectationKind.aInstantaneous)
                 {
                     if (!String.IsNullOrEmpty(expectation.getCondition()))
                     {
-                        Expression expression = EFSSystem.INSTANCE.Parser.Expression(expectation ,expectation.getCondition());
+                        Expression expression = EFSSystem.INSTANCE.Parser.Expression(expectation, expectation.getCondition());
                         BoolValue value = expression.GetValue(new InterpretationContext(expectation), null) as BoolValue;
                         if (value != null)
                         {
@@ -119,7 +127,7 @@ namespace DataDictionary.Tests.Runner.Events
 
                 if (addExpectation)
                 {
-                    TimeLine.AddModelEvent(new Events.Expect(expectation, runner.CurrentPriority), runner, true);
+                    TimeLine.AddModelEvent(new Expect(expectation, runner.CurrentPriority), runner, true);
                 }
             }
         }

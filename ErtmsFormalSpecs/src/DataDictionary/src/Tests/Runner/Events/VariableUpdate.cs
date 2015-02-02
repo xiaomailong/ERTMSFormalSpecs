@@ -13,9 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
 using DataDictionary.Rules;
-using System.Text;
+using Utils;
+using Action = DataDictionary.Rules.Action;
+using NameSpace = DataDictionary.Types.NameSpace;
 
 namespace DataDictionary.Tests.Runner.Events
 {
@@ -24,12 +28,15 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The action to execute
         /// </summary>
-        public Rules.Action Action { get; private set; }
+        public Action Action { get; private set; }
 
         /// <summary>
         /// The namespace associated to this event
         /// </summary>
-        public override Types.NameSpace NameSpace { get { return Action.NameSpace; } }
+        public override NameSpace NameSpace
+        {
+            get { return Action.NameSpace; }
+        }
 
         /// <summary>
         /// The changes performed by this action execution
@@ -40,7 +47,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// Constructor
         /// </summary>
         /// <param name="action"The action which raised the variable update></param>
-        public VariableUpdate(Rules.Action action, Utils.IModelElement instance, Generated.acceptor.RulePriority? priority)
+        public VariableUpdate(Action action, IModelElement instance, acceptor.RulePriority? priority)
             : base(action.ExpressionText, instance, priority)
         {
             Action = action;
@@ -59,10 +66,10 @@ namespace DataDictionary.Tests.Runner.Events
             {
                 if (runner.Explain)
                 {
-                    Explanation = new Interpreter.ExplanationPart(Action, "Action ", Action);
+                    Explanation = new ExplanationPart(Action, "Action ", Action);
                 }
 
-                Interpreter.InterpretationContext context = new Interpreter.InterpretationContext(Instance);
+                InterpretationContext context = new InterpretationContext(Instance);
                 Changes = new ChangeList();
                 Action.GetChanges(context, Changes, Explanation, apply, runner);
                 Changes.CheckChanges(Action);
@@ -100,6 +107,5 @@ namespace DataDictionary.Tests.Runner.Events
         {
             return TextualExplainUtilities.Encapsule(Changes.ToString());
         }
-
     }
 }

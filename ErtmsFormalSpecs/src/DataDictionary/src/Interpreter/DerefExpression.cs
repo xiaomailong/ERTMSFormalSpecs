@@ -13,10 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using Utils;
+using DataDictionary.Functions;
 using DataDictionary.Interpreter.Filter;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Utils;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Interpreter
 {
@@ -62,7 +68,7 @@ namespace DataDictionary.Interpreter
 
                 if (retVal == null)
                 {
-                    Types.Type type = GetExpressionType();
+                    Type type = GetExpressionType();
                     if (type != null)
                     {
                         retVal = type.CastFunction;
@@ -79,7 +85,7 @@ namespace DataDictionary.Interpreter
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
+        public override bool SemanticAnalysis(INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
@@ -102,7 +108,7 @@ namespace DataDictionary.Interpreter
                     ReturnValueElement variable = null;
                     foreach (ReturnValueElement elem in tmp2.Values)
                     {
-                        if (elem.Value is Parameter || elem.Value is Variables.IVariable)
+                        if (elem.Value is Parameter || elem.Value is IVariable)
                         {
                             if (variable == null)
                             {
@@ -149,17 +155,17 @@ namespace DataDictionary.Interpreter
                     Ref = tmp.Values[0].Value;
                     StaticUsage.AddUsage(Ref, Root, null);
 
-                    Filter.References referenceFilter;
+                    References referenceFilter;
                     ReturnValueElement current = tmp.Values[0];
                     for (int i = Arguments.Count - 1; i > 0; i--)
                     {
-                        referenceFilter = new Filter.References(current.Value);
+                        referenceFilter = new References(current.Value);
                         current = current.PreviousElement;
                         Arguments[i].SemanticAnalysis(current.Value, referenceFilter);
                         StaticUsage.AddUsages(Arguments[i].StaticUsage, null);
                         StaticUsage.AddUsage(Arguments[i].Ref, Root, null);
                     }
-                    referenceFilter = new Filter.References(current.Value);
+                    referenceFilter = new References(current.Value);
                     Arguments[0].SemanticAnalysis(null, referenceFilter);
                     StaticUsage.AddUsages(Arguments[0].StaticUsage, null);
                     StaticUsage.AddUsage(Arguments[0].Ref, Root, null);
@@ -184,13 +190,13 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
-        public override Types.Type GetExpressionType()
+        public override Type GetExpressionType()
         {
-            Types.Type retVal = Ref as Types.Type;
+            Type retVal = Ref as Type;
 
             if (retVal == null)
             {
-                Types.ITypedElement typedElement = Ref as Types.ITypedElement;
+                ITypedElement typedElement = Ref as ITypedElement;
                 if (typedElement != null)
                 {
                     retVal = typedElement.Type;
@@ -206,7 +212,7 @@ namespace DataDictionary.Interpreter
         /// <param name="context">The context on which the variable must be found</param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public override Variables.IVariable GetVariable(InterpretationContext context)
+        public override IVariable GetVariable(InterpretationContext context)
         {
             INamable current = null;
 
@@ -226,7 +232,7 @@ namespace DataDictionary.Interpreter
                 }
             }
 
-            return current as Variables.IVariable;
+            return current as IVariable;
         }
 
         /// <summary>
@@ -235,9 +241,9 @@ namespace DataDictionary.Interpreter
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
+        public override IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
-            INamable retVal = Ref as Values.IValue;
+            INamable retVal = Ref as IValue;
 
             if (retVal == null)
             {
@@ -262,7 +268,7 @@ namespace DataDictionary.Interpreter
                 AddError(ToString() + " does not refer to a value");
             }
 
-            return retVal as Values.IValue;
+            return retVal as IValue;
         }
 
         /// <summary>
@@ -326,7 +332,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public override void fill(List<Utils.INamable> retVal, BaseFilter filter)
+        public override void fill(List<INamable> retVal, BaseFilter filter)
         {
             if (filter.AcceptableChoice(Ref))
             {
@@ -379,11 +385,11 @@ namespace DataDictionary.Interpreter
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public override Functions.Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
+        public override Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
-            Functions.Graph retVal = base.createGraph(context, parameter, explain);
+            Graph retVal = base.createGraph(context, parameter, explain);
 
-            retVal = Functions.Graph.createGraph(GetValue(context, explain), parameter, explain);
+            retVal = Graph.createGraph(GetValue(context, explain), parameter, explain);
 
             if (retVal == null)
             {
@@ -402,11 +408,11 @@ namespace DataDictionary.Interpreter
         /// <param name="yParam">The Y axis of this surface</param>
         /// <param name="explain"></param>
         /// <returns>The surface which corresponds to this expression</returns>
-        public override Functions.Surface createSurface(Interpreter.InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
+        public override Surface createSurface(InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
         {
-            Functions.Surface retVal = base.createSurface(context, xParam, yParam, explain);
+            Surface retVal = base.createSurface(context, xParam, yParam, explain);
 
-            retVal = Functions.Surface.createSurface(GetValue(context, explain), xParam, yParam);
+            retVal = Surface.createSurface(GetValue(context, explain), xParam, yParam);
 
             if (retVal == null)
             {
@@ -417,6 +423,5 @@ namespace DataDictionary.Interpreter
 
             return retVal;
         }
-
     }
 }

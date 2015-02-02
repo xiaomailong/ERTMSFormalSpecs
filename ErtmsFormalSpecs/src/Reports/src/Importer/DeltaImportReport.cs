@@ -13,10 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using Importers.RtfDeltaImporter;
+using Document = MigraDoc.DocumentObjectModel.Document;
+using Paragraph = Importers.RtfDeltaImporter.Paragraph;
+
 namespace Reports.Importer
 {
-    using MigraDoc.DocumentObjectModel;
-
     /// <summary>
     /// Generates the report based on the result of the Delta import
     /// </summary>
@@ -68,7 +71,7 @@ namespace Reports.Importer
 
             AddSubParagraph("Summary");
             AddParagraph("This section presents the summary of the document importation");
-            AddTable(new string[] { "Item", "Count", "Comment" }, new int[] { 40, 40, 60 });
+            AddTable(new string[] {"Item", "Count", "Comment"}, new int[] {40, 40, 60});
             AddRow("Paragraph count", importResult.Paragraphs.Count.ToString(), "This is the number of paragraphs processed during the importation of the document");
             AddRow("Modified paragraphs", importResult.ChangedParagraphs.Count.ToString(), "This is the number of paragraphs that have been changed between the two revisions");
             AddRow("New paragraphs", importResult.NewParagraphs.Count.ToString(), "The is the number of new paragraphs in this new revision");
@@ -78,7 +81,7 @@ namespace Reports.Importer
 
             AddSubParagraph("Modified paragraphs");
             AddParagraph("This section lists the paragraphs that have been modified during the importation");
-            foreach (Importers.RtfDeltaImporter.Paragraph paragraph in importResult.ChangedParagraphs)
+            foreach (Paragraph paragraph in importResult.ChangedParagraphs)
             {
                 AddSubParagraph(paragraph.Id);
                 AddSubParagraph("Original contents");
@@ -93,16 +96,16 @@ namespace Reports.Importer
 
             AddSubParagraph("New paragraphs");
             AddParagraph("This section lists the paragraphs that have been added during the importation");
-            AddTable(new string[] { "Paragraph", "Contents" }, new int[] { 40, 100 });
-            foreach (Importers.RtfDeltaImporter.Paragraph paragraph in importResult.NewParagraphs)
+            AddTable(new string[] {"Paragraph", "Contents"}, new int[] {40, 100});
+            foreach (Paragraph paragraph in importResult.NewParagraphs)
             {
                 AddRow(paragraph.Id, paragraph.Text);
             }
             CloseSubParagraph();
             AddSubParagraph("Removed paragraphs");
             AddParagraph("This section lists the paragraphs that have been removed during the importation");
-            AddTable(new string[] { "Paragraph", "Contents" }, new int[] { 40, 100 });
-            foreach (Importers.RtfDeltaImporter.Paragraph paragraph in importResult.RemovedParagraphs)
+            AddTable(new string[] {"Paragraph", "Contents"}, new int[] {40, 100});
+            foreach (Paragraph paragraph in importResult.RemovedParagraphs)
             {
                 AddRow(paragraph.Id, paragraph.Text);
             }
@@ -110,8 +113,8 @@ namespace Reports.Importer
 
             AddSubParagraph("Moved paragraphs");
             AddParagraph("This section lists the paragraphs that have been moved during the importation. No change has been performed in the model. Review should be performed manually.");
-            AddTable(new string[] { "Paragraph", "Contents", "Initial position" }, new int[] { 40, 100, 40 });
-            foreach (Importers.RtfDeltaImporter.Paragraph paragraph in importResult.MovedParagraphs)
+            AddTable(new string[] {"Paragraph", "Contents", "Initial position"}, new int[] {40, 100, 40});
+            foreach (Paragraph paragraph in importResult.MovedParagraphs)
             {
                 AddRow(paragraph.Id, paragraph.Text, paragraph.OriginalText);
             }
@@ -119,8 +122,8 @@ namespace Reports.Importer
 
             AddSubParagraph("Errors during importation");
             AddParagraph("This section lists the errors encountered during importation. No change has been performed in the model. Review should be performed manually.");
-            AddTable(new string[] { "Paragraph", "Text", "Error" }, new int[] { 30, 80, 80 });
-            foreach (Importers.RtfDeltaImporter.ImportationError error in importResult.Errors)
+            AddTable(new string[] {"Paragraph", "Text", "Error"}, new int[] {30, 80, 80});
+            foreach (ImportationError error in importResult.Errors)
             {
                 AddRow(error.Paragraph.Id, error.Paragraph.Text, error.Message);
             }
@@ -128,10 +131,10 @@ namespace Reports.Importer
 
             AddSubParagraph("List of paragraphs");
             AddParagraph("This section lists the paragraphs that have been processed during the importation");
-            AddTable(new string[] { "Paragraph", "", "", "", "" }, new int[] { 30, 30, 30, 30, 30 });
+            AddTable(new string[] {"Paragraph", "", "", "", ""}, new int[] {30, 30, 30, 30, 30});
             int i = 0;
-            string[] data = new string[5] { "", "", "", "", "" };
-            foreach (Importers.RtfDeltaImporter.Paragraph paragraph in importResult.Paragraphs.Values)
+            string[] data = new string[5] {"", "", "", "", ""};
+            foreach (Paragraph paragraph in importResult.Paragraphs.Values)
             {
                 data[i] = paragraph.Id;
                 i += 1;
@@ -140,7 +143,7 @@ namespace Reports.Importer
                 {
                     AddRow(data);
                     i = 0;
-                    data = new string[5] { "", "", "", "", "" };
+                    data = new string[5] {"", "", "", "", ""};
                 }
             }
 

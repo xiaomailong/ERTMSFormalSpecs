@@ -13,14 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.DataDictionaryView;
+using Action = DataDictionary.Rules.Action;
+using Expectation = DataDictionary.Tests.Expectation;
+using SubStep = DataDictionary.Tests.SubStep;
 
 namespace GUI.TestRunnerView
 {
-    public class SubStepTreeNode : ModelElementTreeNode<DataDictionary.Tests.SubStep>
+    public class SubStepTreeNode : ModelElementTreeNode<SubStep>
     {
         /// <summary>
         /// The value editor
@@ -43,14 +49,14 @@ namespace GUI.TestRunnerView
             }
         }
 
-        ActionsTreeNode actions;
-        ExpectationsTreeNode expectations;
+        private ActionsTreeNode actions;
+        private ExpectationsTreeNode expectations;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public SubStepTreeNode(DataDictionary.Tests.SubStep item, bool buildSubNodes)
+        public SubStepTreeNode(SubStep item, bool buildSubNodes)
             : base(item, buildSubNodes, null, true)
         {
         }
@@ -121,7 +127,7 @@ namespace GUI.TestRunnerView
         /// <param name="args"></param>
         public void AddActionHandler(object sender, EventArgs args)
         {
-            DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
+            Action action = (Action) acceptor.getFactory().createAction();
             action.Enclosing = Item;
             action.Name = "Action" + actions.Nodes.Count;
             createAction(action);
@@ -132,9 +138,9 @@ namespace GUI.TestRunnerView
         /// </summary>
         /// <param name="testCase"></param>
         /// <returns></returns>
-        public DataDictionaryView.ActionTreeNode createAction(DataDictionary.Rules.Action action)
+        public ActionTreeNode createAction(Action action)
         {
-            DataDictionaryView.ActionTreeNode retVal = new DataDictionaryView.ActionTreeNode(action, true);
+            ActionTreeNode retVal = new ActionTreeNode(action, true);
 
             Item.appendActions(action);
             actions.Nodes.Add(retVal);
@@ -149,7 +155,7 @@ namespace GUI.TestRunnerView
         /// <param name="args"></param>
         public void AddExpectationHandler(object sender, EventArgs args)
         {
-            DataDictionary.Tests.Expectation expectation = (DataDictionary.Tests.Expectation)DataDictionary.Generated.acceptor.getFactory().createExpectation();
+            Expectation expectation = (Expectation) acceptor.getFactory().createExpectation();
             expectation.Enclosing = Item;
             expectation.Name = "Expectation" + expectations.Nodes.Count;
             createExpectation(expectation);
@@ -160,7 +166,7 @@ namespace GUI.TestRunnerView
         /// </summary>
         /// <param name="testCase"></param>
         /// <returns></returns>
-        public ExpectationTreeNode createExpectation(DataDictionary.Tests.Expectation expectation)
+        public ExpectationTreeNode createExpectation(Expectation expectation)
         {
             ExpectationTreeNode retVal = new ExpectationTreeNode(expectation, true);
 
@@ -195,9 +201,9 @@ namespace GUI.TestRunnerView
         public override void AcceptDrop(BaseTreeNode SourceNode)
         {
             base.AcceptDrop(SourceNode);
-            if (SourceNode is DataDictionaryView.ActionTreeNode)
+            if (SourceNode is ActionTreeNode)
             {
-                DataDictionaryView.ActionTreeNode action = SourceNode as DataDictionaryView.ActionTreeNode;
+                ActionTreeNode action = SourceNode as ActionTreeNode;
                 if (action.Parent is ActionsTreeNode)
                 {
                     createAction(action.Item);

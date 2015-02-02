@@ -13,18 +13,22 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
-using DataDictionary.Tests;
-using DataDictionary.Tests.Translations;
-using System.Drawing.Design;
-
+using DataDictionary;
+using DataDictionary.Generated;
+using GUI.TestRunnerView;
+using Dictionary = DataDictionary.Dictionary;
+using SourceText = DataDictionary.Tests.Translations.SourceText;
+using SubStep = DataDictionary.Tests.SubStep;
+using Translation = DataDictionary.Tests.Translations.Translation;
 
 namespace GUI.TranslationRules
 {
-    public class TranslationTreeNode : ReferencesParagraphTreeNode<DataDictionary.Tests.Translations.Translation>
+    public class TranslationTreeNode : ReferencesParagraphTreeNode<Translation>
     {
         private class ItemEditor : ReferencesParagraphEditor
         {
@@ -47,7 +51,7 @@ namespace GUI.TranslationRules
             }
         }
 
-        SourceTextsTreeNode sources;
+        private SourceTextsTreeNode sources;
 
         /// <summary>
         /// Constructor
@@ -71,7 +75,7 @@ namespace GUI.TranslationRules
 
             foreach (SubStep subStep in Item.SubSteps)
             {
-                Nodes.Add(new TestRunnerView.SubStepTreeNode(subStep, buildSubNodes));
+                Nodes.Add(new SubStepTreeNode(subStep, buildSubNodes));
             }
         }
 
@@ -104,9 +108,9 @@ namespace GUI.TranslationRules
         /// </summary>
         /// <param name="testCase"></param>
         /// <returns></returns>
-        public TestRunnerView.SubStepTreeNode createSubStep(DataDictionary.Tests.SubStep subStep)
+        public SubStepTreeNode createSubStep(SubStep subStep)
         {
-            TestRunnerView.SubStepTreeNode retVal = new TestRunnerView.SubStepTreeNode(subStep, true);
+            SubStepTreeNode retVal = new SubStepTreeNode(subStep, true);
 
             Item.appendSubSteps(subStep);
             Nodes.Add(retVal);
@@ -121,7 +125,7 @@ namespace GUI.TranslationRules
         /// <param name="args"></param>
         public void AddSubStepHandler(object sender, EventArgs args)
         {
-            DataDictionary.Tests.SubStep subStep = (DataDictionary.Tests.SubStep)DataDictionary.Generated.acceptor.getFactory().createSubStep();
+            SubStep subStep = (SubStep) acceptor.getFactory().createSubStep();
             subStep.Name = "Sub-step" + Nodes.Count;
             subStep.Enclosing = Item;
             createSubStep(subStep);
@@ -130,7 +134,7 @@ namespace GUI.TranslationRules
         /// <summary>
         /// Finds all steps that are translated using a specific translation rule
         /// </summary>
-        private class MarkUsageVisitor : DataDictionary.Generated.Visitor
+        private class MarkUsageVisitor : Visitor
         {
             /// <summary>
             /// The translation to be found
@@ -146,13 +150,13 @@ namespace GUI.TranslationRules
                 Translation = translation;
             }
 
-            public override void  visit(DataDictionary.Generated.Step obj, bool visitSubNodes)
+            public override void visit(Step obj, bool visitSubNodes)
             {
-                Step step = (Step) obj;
+                DataDictionary.Tests.Step step = (DataDictionary.Tests.Step) obj;
 
-                if ( Translation == Translation.TranslationDictionary.findTranslation(step.getDescription(), step.Comment))
+                if (Translation == Translation.TranslationDictionary.findTranslation(step.getDescription(), step.Comment))
                 {
-                    step.AddInfo("Translation "+Translation.Name+" used");
+                    step.AddInfo("Translation " + Translation.Name + " used");
                 }
 
                 base.visit(obj, visitSubNodes);
@@ -168,7 +172,7 @@ namespace GUI.TranslationRules
         {
             GUIUtils.MDIWindow.ClearMarks();
             MarkUsageVisitor finder = new MarkUsageVisitor(Item);
-            foreach ( DataDictionary.Dictionary dictionary in DataDictionary.EFSSystem.INSTANCE.Dictionaries)
+            foreach (Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
             {
                 finder.visit(dictionary);
             }
@@ -213,13 +217,13 @@ namespace GUI.TranslationRules
             {
                 SourceTextTreeNode text = SourceNode as SourceTextTreeNode;
 
-                DataDictionary.Tests.Translations.SourceText otherText = (DataDictionary.Tests.Translations.SourceText) text.Item.Duplicate();
+                SourceText otherText = (SourceText) text.Item.Duplicate();
                 translationTreeNode.createSourceText(otherText);
                 text.Delete();
             }
-            else if (SourceNode is TestRunnerView.StepTreeNode)
+            else if (SourceNode is StepTreeNode)
             {
-                TestRunnerView.StepTreeNode step = SourceNode as TestRunnerView.StepTreeNode;
+                StepTreeNode step = SourceNode as StepTreeNode;
 
                 if (string.IsNullOrEmpty(step.Item.getDescription()))
                 {

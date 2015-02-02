@@ -13,19 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.ComponentModel;
+using System.Drawing.Design;
+using System.Windows.Forms.Design;
+using DataDictionary;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using GUI.EditorView;
+using WeifenLuo.WinFormsUI.Docking;
+
 namespace GUI.Converters
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Drawing.Design;
-    using System.ComponentModel;
-    using System.Windows.Forms.Design;
-    using DataDictionary;
-    using System.Windows.Forms;
-    using GUI.EditorView;
-
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
@@ -43,11 +43,11 @@ namespace GUI.Converters
         /// <param name="value"></param>
         private void HandleTextChange(ModelElement instance, string value)
         {
-            DataDictionary.Variables.IVariable variable = instance as DataDictionary.Variables.IVariable;
+            IVariable variable = instance as IVariable;
 
             if (variable != null && variable.Type != null)
             {
-                DataDictionary.Values.IValue val = variable.Type.getValue(value);
+                IValue val = variable.Type.getValue(value);
                 if (value != null)
                 {
                     variable.Value = val;
@@ -55,19 +55,19 @@ namespace GUI.Converters
             }
         }
 
-        public override object EditValue(ITypeDescriptorContext context, System.IServiceProvider provider, object value)
+        public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
-            IWindowsFormsEditorService svc = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
+            IWindowsFormsEditorService svc = provider.GetService(typeof (IWindowsFormsEditorService)) as IWindowsFormsEditorService;
             if (svc != null)
             {
-                DataDictionary.Variables.IVariable variable = value as DataDictionary.Variables.IVariable;
+                IVariable variable = value as IVariable;
                 if (variable != null)
                 {
-                    EditorView.Window form = new EditorView.Window();
+                    Window form = new Window();
                     form.AutoComplete = true;
                     VariableValueTextChangeHandler handler = new VariableValueTextChangeHandler(variable as ModelElement);
                     form.setChangeHandler(handler);
-                    GUIUtils.MDIWindow.AddChildWindow(form, WeifenLuo.WinFormsUI.Docking.DockAreas.Float);
+                    GUIUtils.MDIWindow.AddChildWindow(form, DockAreas.Float);
                 }
             }
 

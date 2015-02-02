@@ -14,6 +14,9 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Generated;
+using Type = DataDictionary.Types.Type;
+
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
@@ -34,12 +37,12 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public FunctionOnGraph(EFSSystem efsSystem, string name)
             : base(efsSystem, name)
         {
-            Returns = (Function)Generated.acceptor.getFactory().createFunction();
+            Returns = (Function) acceptor.getFactory().createFunction();
             Returns.Name = Name + "ReturnType";
             Returns.ReturnType = EFSSystem.DoubleType;
             Returns.setFather(this);
 
-            Parameter returnTypeParam = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Parameter returnTypeParam = (Parameter) acceptor.getFactory().createParameter();
             returnTypeParam.Name = Name + "ReturnTypeParam";
             returnTypeParam.Type = EFSSystem.DoubleType;
             returnTypeParam.setFather(Returns);
@@ -49,7 +52,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// The return type of the available function
         /// </summary>
-        public override Types.Type ReturnType
+        public override Type ReturnType
         {
             get { return Returns; }
         }

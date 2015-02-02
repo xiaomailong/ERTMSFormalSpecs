@@ -13,14 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-using DataDictionary.Types;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using DataDictionary.Tests.Runner.Events;
+using DataDictionary.Types;
 using DataDictionary.Variables;
 
 namespace GUI.TestRunnerView.TimeLineControl
@@ -134,6 +131,5 @@ namespace GUI.TestRunnerView.TimeLineControl
 
             return retVal;
         }
-
     }
 }

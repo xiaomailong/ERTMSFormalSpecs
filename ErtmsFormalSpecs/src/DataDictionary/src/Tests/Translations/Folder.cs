@@ -15,6 +15,9 @@
 // ------------------------------------------------------------------------------
 
 
+using System.Collections;
+using Utils;
+
 namespace DataDictionary.Tests.Translations
 {
     public class Folder : Generated.Folder, TextualExplain
@@ -30,39 +33,33 @@ namespace DataDictionary.Tests.Translations
         /// <summary>
         /// Provides the folders
         /// </summary>
-        public System.Collections.ArrayList Folders
+        public ArrayList Folders
         {
             get
             {
                 if (allFolders() == null)
                 {
-                    setAllFolders(new System.Collections.ArrayList());
+                    setAllFolders(new ArrayList());
                 }
                 return allFolders();
             }
-            set
-            {
-                setAllFolders(value);
-            }
+            set { setAllFolders(value); }
         }
 
         /// <summary>
         /// Provides the translations for this dictionary
         /// </summary>
-        public System.Collections.ArrayList Translations
+        public ArrayList Translations
         {
             get
             {
                 if (allTranslations() == null)
                 {
-                    setAllTranslations(new System.Collections.ArrayList());
+                    setAllTranslations(new ArrayList());
                 }
                 return allTranslations();
             }
-            set
-            {
-                setAllTranslations(value);
-            }
+            set { setAllTranslations(value); }
         }
 
         /// <summary>
@@ -84,19 +81,19 @@ namespace DataDictionary.Tests.Translations
         /// <summary>
         /// Provides the enclosing collection
         /// </summary>
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
-                System.Collections.ArrayList retVal = null;
-                Tests.Translations.TranslationDictionary dictionary = Enclosing as Tests.Translations.TranslationDictionary;
+                ArrayList retVal = null;
+                TranslationDictionary dictionary = Enclosing as TranslationDictionary;
                 if (dictionary != null)
                 {
                     retVal = dictionary.Folders;
                 }
                 else
                 {
-                    Tests.Translations.Folder folder = Enclosing as Tests.Translations.Folder;
+                    Folder folder = Enclosing as Folder;
                     if (folder != null)
                     {
                         retVal = folder.Folders;
@@ -110,7 +107,7 @@ namespace DataDictionary.Tests.Translations
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             Folder folder = element as Folder;
             if (folder != null)

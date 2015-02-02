@@ -13,24 +13,32 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.Collections;
+using System.Windows.Forms;
+using DataDictionary;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using DataDictionary.Interpreter.Filter;
+using DataDictionary.Tests.Runner.Events;
+using DataDictionary.Values;
+using GUI.DataDictionaryView;
+using GUI.EditorView;
+using Utils;
+using WeifenLuo.WinFormsUI.Docking;
+using Action = DataDictionary.Rules.Action;
+using Expectation = DataDictionary.Tests.Expectation;
+using ModelElement = DataDictionary.ModelElement;
+using Step = DataDictionary.Tests.Step;
+using Structure = DataDictionary.Types.Structure;
+using SubSequence = DataDictionary.Tests.SubSequence;
+using SubStep = DataDictionary.Tests.SubStep;
+using TestCase = DataDictionary.Tests.TestCase;
+using Translation = DataDictionary.Tests.Translations.Translation;
+
 namespace GUI.TestRunnerView.TimeLineControl
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary.Tests;
-    using DataDictionary.Tests.Runner.Events;
-    using System.Windows.Forms;
-    using DataDictionary;
-    using Utils;
-    using System.Collections;
-    using DataDictionary.Interpreter.Filter;
-    using DataDictionary.Interpreter;
-    using DataDictionary.Values;
-    using GUI.EditorView;
-    using DataDictionary.Tests.Translations;
-
     /// <summary>
     /// The static time line according to a test case
     /// </summary>
@@ -46,10 +54,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// </summary>
         public SubSequence SubSequence
         {
-            get
-            {
-                return __subSequence;
-            }
+            get { return __subSequence; }
             set
             {
                 __testCase = null;
@@ -69,15 +74,12 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// </summary>
         public TestCase TestCase
         {
-            get
-            {
-                return __testCase;
-            }
+            get { return __testCase; }
             set
             {
                 __subSequence = null;
                 __testCase = value;
-                __translation = null; 
+                __translation = null;
                 CleanEventPositions();
             }
         }
@@ -92,10 +94,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// </summary>
         public Translation Translation
         {
-            get
-            {
-                return __translation;
-            }
+            get { return __translation; }
             set
             {
                 __translation = value;
@@ -118,7 +117,7 @@ namespace GUI.TestRunnerView.TimeLineControl
                 {
                     retVal = TestCase.Steps;
                 }
-                else if ( SubSequence != null)
+                else if (SubSequence != null)
                 {
                     retVal = new ArrayList();
                     foreach (TestCase testCase in SubSequence.TestCases)
@@ -154,7 +153,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void TimeLineControl_DragEnter(object sender, DragEventArgs e)
+        private void TimeLineControl_DragEnter(object sender, DragEventArgs e)
         {
             if ((e.KeyState & CTRL) != 0)
             {
@@ -171,14 +170,14 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void TimeLineControl_DragDrop(object sender, DragEventArgs e)
+        private void TimeLineControl_DragDrop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
             {
                 BaseTreeNode sourceNode = e.Data.GetData("WindowsForms10PersistentObject") as BaseTreeNode;
                 if (sourceNode != null)
                 {
-                    DataDictionaryView.VariableTreeNode variableNode = sourceNode as DataDictionaryView.VariableTreeNode;
+                    VariableTreeNode variableNode = sourceNode as VariableTreeNode;
                     if (variableNode != null)
                     {
                         SubStep subStep = SubStepRelatedToMousePosition();
@@ -204,7 +203,7 @@ namespace GUI.TestRunnerView.TimeLineControl
 
                             if (value == null || value is EmptyValue)
                             {
-                                DataDictionary.Types.Structure structureType = variableNode.Item.Type as DataDictionary.Types.Structure;
+                                Structure structureType = variableNode.Item.Type as Structure;
                                 if (structureType != null)
                                 {
                                     const bool setDefaultValue = false;
@@ -217,13 +216,13 @@ namespace GUI.TestRunnerView.TimeLineControl
                             {
                                 if ((e.KeyState & CTRL) != 0)
                                 {
-                                    DataDictionary.Tests.Expectation expectation = (DataDictionary.Tests.Expectation)DataDictionary.Generated.acceptor.getFactory().createExpectation();
+                                    Expectation expectation = (Expectation) acceptor.getFactory().createExpectation();
                                     expectation.ExpressionText = variableNode.Item.FullName + " == " + value.FullName;
                                     subStep.appendExpectations(expectation);
                                 }
                                 else
                                 {
-                                    DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
+                                    Action action = (Action) acceptor.getFactory().createAction();
                                     action.ExpressionText = variableNode.Item.FullName + " <- " + value.FullName;
                                     subStep.appendActions(action);
                                 }
@@ -256,17 +255,17 @@ namespace GUI.TestRunnerView.TimeLineControl
                     Step step = evt.Instance as Step;
                     if (step != null && step.SubSteps.Count > 0)
                     {
-                        retVal = (SubStep)step.SubSteps[step.SubSteps.Count - 1];
+                        retVal = (SubStep) step.SubSteps[step.SubSteps.Count - 1];
                     }
                 }
             }
 
             if (retVal == null && Steps != null && Steps.Count > 0)
             {
-                Step step = (Step)Steps[Steps.Count - 1];
+                Step step = (Step) Steps[Steps.Count - 1];
                 if (step.SubSteps.Count > 0)
                 {
-                    retVal = (SubStep)step.SubSteps[step.SubSteps.Count - 1];
+                    retVal = (SubStep) step.SubSteps[step.SubSteps.Count - 1];
                 }
             }
 
@@ -280,7 +279,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         {
             HandledEvents = -1;
             IBaseForm enclosingForm = FormsUtils.EnclosingIBaseForm(this);
-            
+
             enclosingForm.RefreshModel();
             enclosingForm.Refresh();
         }
@@ -325,7 +324,8 @@ namespace GUI.TestRunnerView.TimeLineControl
 
                     if (Selected != null)
                     {
-                        retVal = EnclosingFinder<Step>.find(Selected.Instance as IEnclosed, true); ;
+                        retVal = EnclosingFinder<Step>.find(Selected.Instance as IEnclosed, true);
+                        ;
                     }
 
                     return retVal;
@@ -343,7 +343,8 @@ namespace GUI.TestRunnerView.TimeLineControl
 
                     if (Selected != null)
                     {
-                        retVal = EnclosingFinder<SubStep>.find(Selected.Instance as IEnclosed, true); ;
+                        retVal = EnclosingFinder<SubStep>.find(Selected.Instance as IEnclosed, true);
+                        ;
                     }
 
                     return retVal;
@@ -418,10 +419,10 @@ namespace GUI.TestRunnerView.TimeLineControl
             /// <param name="e"></param>
             protected override void OnClick(EventArgs e)
             {
-                Step newStep = (Step)DataDictionary.Generated.acceptor.getFactory().createStep();
+                Step newStep = (Step) acceptor.getFactory().createStep();
                 newStep.Enclosing = TimeLineControl.TestCase;
 
-                SubStep subStep = (SubStep)DataDictionary.Generated.acceptor.getFactory().createSubStep();
+                SubStep subStep = (SubStep) acceptor.getFactory().createSubStep();
                 subStep.Name = "Substep 1";
                 newStep.appendSubSteps(subStep);
 
@@ -463,7 +464,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             /// <param name="e"></param>
             protected override void OnClick(EventArgs e)
             {
-                SubStep newSubStep = (SubStep)DataDictionary.Generated.acceptor.getFactory().createSubStep();
+                SubStep newSubStep = (SubStep) acceptor.getFactory().createSubStep();
                 if (Step != null)
                 {
                     newSubStep.Enclosing = Step;
@@ -480,7 +481,7 @@ namespace GUI.TestRunnerView.TimeLineControl
                         Step.SubSteps.Add(newSubStep);
                     }
                 }
-                else if ( TimeLineControl.Translation != null )
+                else if (TimeLineControl.Translation != null)
                 {
                     newSubStep.Enclosing = TimeLineControl.Translation;
 
@@ -524,7 +525,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             {
                 if (SubStep != null)
                 {
-                    DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
+                    Action action = (Action) acceptor.getFactory().createAction();
                     action.Name = "";
                     SubStep.appendActions(action);
                 }
@@ -556,7 +557,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             {
                 if (SubStep != null)
                 {
-                    DataDictionary.Tests.Expectation expectation = (DataDictionary.Tests.Expectation)DataDictionary.Generated.acceptor.getFactory().createExpectation();
+                    Expectation expectation = (Expectation) acceptor.getFactory().createExpectation();
                     expectation.Name = "";
                     SubStep.appendExpectations(expectation);
                 }
@@ -569,7 +570,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void StaticTimeLineControl_MouseDown(object sender, MouseEventArgs e)
+        private void StaticTimeLineControl_MouseDown(object sender, MouseEventArgs e)
         {
             ContextMenu = new ContextMenu();
 
@@ -599,7 +600,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             /// </summary>
             /// <param name="instance"></param>
             public TimeLineExpressionableTextChangeHandler(StaticTimeLineControl timeLine, IExpressionable instance)
-                : base(instance as DataDictionary.ModelElement)
+                : base(instance as ModelElement)
             {
                 TimeLine = timeLine;
             }
@@ -620,7 +621,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void TimeLineControl_DoubleClick(object sender, EventArgs e)
+        private void TimeLineControl_DoubleClick(object sender, EventArgs e)
         {
             ModelEvent evt = GetEventUnderMouse();
 
@@ -630,7 +631,7 @@ namespace GUI.TestRunnerView.TimeLineControl
                 EditorView.Window form = new EditorView.Window();
                 TimeLineExpressionableTextChangeHandler handler = new TimeLineExpressionableTextChangeHandler(this, variableUpdate.Action);
                 form.setChangeHandler(handler);
-                GUIUtils.MDIWindow.AddChildWindow(form, WeifenLuo.WinFormsUI.Docking.DockAreas.Float);
+                GUIUtils.MDIWindow.AddChildWindow(form, DockAreas.Float);
             }
 
             Expect expect = evt as Expect;
@@ -639,7 +640,7 @@ namespace GUI.TestRunnerView.TimeLineControl
                 EditorView.Window form = new EditorView.Window();
                 TimeLineExpressionableTextChangeHandler handler = new TimeLineExpressionableTextChangeHandler(this, expect.Expectation);
                 form.setChangeHandler(handler);
-                GUIUtils.MDIWindow.AddChildWindow(form, WeifenLuo.WinFormsUI.Docking.DockAreas.Float);
+                GUIUtils.MDIWindow.AddChildWindow(form, DockAreas.Float);
             }
         }
 
@@ -657,7 +658,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             else if (SubSequence != null)
             {
                 UpdatePositionHandler();
-                UpdatePanelSize();                
+                UpdatePanelSize();
             }
             else if (Translation != null)
             {
@@ -674,7 +675,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         protected override void UpdatePositionHandler()
         {
             PositionHandler.CleanPositions();
-            if ((TestCase != null) || SubSequence != null )
+            if ((TestCase != null) || SubSequence != null)
             {
                 double currentTime = 0.0;
                 foreach (Step step in Steps)
@@ -721,7 +722,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             SubStepActivated subStepActivated = new SubStepActivated(subStep, null);
             subStepActivated.Time = currentTime;
             PositionHandler.RegisterEvent(subStepActivated);
-            foreach (DataDictionary.Rules.Action action in subStep.Actions)
+            foreach (Action action in subStep.Actions)
             {
                 VariableUpdate variableUpdate = new VariableUpdate(action, action, null);
                 PositionHandler.RegisterEvent(variableUpdate);

@@ -13,13 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using SourceText = DataDictionary.Tests.Translations.SourceText;
+using Translation = DataDictionary.Tests.Translations.Translation;
 
 namespace GUI.TranslationRules
 {
-    public class SourceTextsTreeNode : ModelElementTreeNode<DataDictionary.Tests.Translations.Translation>
+    public class SourceTextsTreeNode : ModelElementTreeNode<Translation>
     {
         private class ItemEditor : NamedEditor
         {
@@ -36,7 +40,7 @@ namespace GUI.TranslationRules
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public SourceTextsTreeNode(DataDictionary.Tests.Translations.Translation item, bool buildSubNodes)
+        public SourceTextsTreeNode(Translation item, bool buildSubNodes)
             : base(item, buildSubNodes, "Source texts", true)
         {
         }
@@ -49,7 +53,7 @@ namespace GUI.TranslationRules
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Tests.Translations.SourceText sourceText in Item.SourceTexts)
+            foreach (SourceText sourceText in Item.SourceTexts)
             {
                 Nodes.Add(new SourceTextTreeNode(sourceText, buildSubNodes));
             }
@@ -70,7 +74,7 @@ namespace GUI.TranslationRules
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public SourceTextTreeNode createSourceText(DataDictionary.Tests.Translations.SourceText sourceText)
+        public SourceTextTreeNode createSourceText(SourceText sourceText)
         {
             SourceTextTreeNode retVal;
 
@@ -84,7 +88,7 @@ namespace GUI.TranslationRules
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Tests.Translations.SourceText sourceText = (DataDictionary.Tests.Translations.SourceText)DataDictionary.Generated.acceptor.getFactory().createSourceText();
+            SourceText sourceText = (SourceText) acceptor.getFactory().createSourceText();
             sourceText.Name = "<SourceText " + (Item.SourceTexts.Count + 1) + ">";
             createSourceText(sourceText);
         }
@@ -131,7 +135,7 @@ namespace GUI.TranslationRules
         public override void AcceptDrop(BaseTreeNode SourceNode)
         {
             base.AcceptDrop(SourceNode);
-            TranslationTreeNode.AcceptDropForTranslation((TranslationTreeNode)Parent, SourceNode);
+            TranslationTreeNode.AcceptDropForTranslation((TranslationTreeNode) Parent, SourceNode);
         }
     }
 }

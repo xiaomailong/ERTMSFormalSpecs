@@ -14,9 +14,11 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Generated;
+
 namespace DataDictionary.Specification
 {
-    public class Mask : Generated.mask
+    public class Mask : mask
     {
         /// <summary>
         /// The Mask content

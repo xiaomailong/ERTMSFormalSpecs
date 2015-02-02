@@ -13,6 +13,9 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using HistoricalData.Generated;
+
 namespace DataDictionary.Compare
 {
     /// <summary>
@@ -20,13 +23,13 @@ namespace DataDictionary.Compare
     /// </summary>
     public class Factory : HistoricalData.Factory
     {
-        public override HistoricalData.Generated.Change createChange()
+        public override Change createChange()
         {
             Diff retVal = new Diff();
             return retVal;
         }
 
-        public override HistoricalData.Generated.Commit createCommit()
+        public override Commit createCommit()
         {
             VersionDiff retVal = new VersionDiff();
 
@@ -48,7 +51,7 @@ namespace DataDictionary.Compare
         /// <summary>
         /// The singleton instance
         /// </summary>
-        public static new Factory INSTANCE
+        public new static Factory INSTANCE
         {
             get { return __instance; }
         }

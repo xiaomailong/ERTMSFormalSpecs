@@ -13,17 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 namespace DataDictionary.Interpreter.Refactor
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// This visitor is used to handle refactoring of expressions.
     /// </summary>
-    public class BaseRefactorTree : Interpreter.Visitor
+    public class BaseRefactorTree : Visitor
     {
         /// <summary>
         /// The textual expression to be refactored

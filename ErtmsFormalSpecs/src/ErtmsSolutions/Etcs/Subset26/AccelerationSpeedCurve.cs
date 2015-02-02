@@ -13,11 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using ErtmsSolutions.SiUnits;
 
 namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 {
     /**@brief A 1 dimension curve that returns an SiAcceleration for every SiSpeed. Used to store braking capability over speed **/
+
     public class FlatAccelerationSpeedCurve : Curve<ConstantCurveSegment<SiSpeed, SiAcceleration>, SiSpeed, SiAcceleration>
     {
         public void Add(SiSpeed v0, SiSpeed v1, SiAcceleration a)
@@ -26,5 +28,3 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
     }
 }
-
-

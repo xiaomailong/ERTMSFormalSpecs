@@ -13,10 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections.Generic;
+
 namespace Importers.RtfDeltaImporter
 {
-    using System.Collections.Generic;
-
     /// <summary>
     /// A document, consisting of a set of paragraphs
     /// </summary>
@@ -176,10 +177,7 @@ namespace Importers.RtfDeltaImporter
         /// </summary>
         public List<Paragraph> NewParagraphs
         {
-            get
-            {
-                return findMatching(IsInserted);
-            }
+            get { return findMatching(IsInserted); }
         }
 
         /// <summary>
@@ -187,10 +185,7 @@ namespace Importers.RtfDeltaImporter
         /// </summary>
         public List<Paragraph> RemovedParagraphs
         {
-            get
-            {
-                return findMatching(IsDeleted);
-            }
+            get { return findMatching(IsDeleted); }
         }
 
         /// <summary>
@@ -198,10 +193,7 @@ namespace Importers.RtfDeltaImporter
         /// </summary>
         public List<Paragraph> ChangedParagraphs
         {
-            get
-            {
-                return findMatching(IsChanged);
-            }
+            get { return findMatching(IsChanged); }
         }
 
         /// <summary>
@@ -209,11 +201,9 @@ namespace Importers.RtfDeltaImporter
         /// </summary>
         public List<Paragraph> MovedParagraphs
         {
-            get
-            {
-                return findMatching(IsMoved);
-            }
+            get { return findMatching(IsMoved); }
         }
+
         /// <summary>
         /// Predicates on paragraphs
         /// </summary>

@@ -13,17 +13,27 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary;
-using System.Threading;
-using DataDictionary.Specification;
+using DataDictionary.Generated;
+using GUI.Converters;
+using Reports.Tests;
+using Utils;
+using Dictionary = DataDictionary.Dictionary;
+using Frame = DataDictionary.Tests.Frame;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using ReqRef = DataDictionary.ReqRef;
+using ReqRelated = DataDictionary.ReqRelated;
+using RequirementSet = DataDictionary.Specification.RequirementSet;
+using RequirementSetReference = DataDictionary.Specification.RequirementSetReference;
 
 namespace GUI.SpecificationView
 {
-    public class ParagraphTreeNode : ReferencesParagraphTreeNode<DataDictionary.Specification.Paragraph>
+    public class ParagraphTreeNode : ReferencesParagraphTreeNode<Paragraph>
     {
         /// <summary>
         /// The value editor
@@ -55,8 +65,8 @@ namespace GUI.SpecificationView
             /// <summary>
             /// Provides the type of the paragraph
             /// </summary>
-            [Category("\t\tDescription"), TypeConverter(typeof(Converters.SpecTypeConverter))]
-            public virtual DataDictionary.Generated.acceptor.Paragraph_type Type
+            [Category("\t\tDescription"), TypeConverter(typeof (SpecTypeConverter))]
+            public virtual acceptor.Paragraph_type Type
             {
                 get { return Item.getType(); }
                 set
@@ -79,8 +89,8 @@ namespace GUI.SpecificationView
             /// <summary>
             /// Indicates if the paragraph can be implemented by the EFS
             /// </summary>
-            [Category("Meta data"), TypeConverter(typeof(Converters.ImplementationStatusConverter))]
-            public virtual DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM ImplementationStatus
+            [Category("Meta data"), TypeConverter(typeof (ImplementationStatusConverter))]
+            public virtual acceptor.SPEC_IMPLEMENTED_ENUM ImplementationStatus
             {
                 get { return Item.getImplementationStatus(); }
                 set { Item.setImplementationStatus(value); }
@@ -121,7 +131,7 @@ namespace GUI.SpecificationView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ParagraphTreeNode(DataDictionary.Specification.Paragraph item, bool buildSubNodes)
+        public ParagraphTreeNode(Paragraph item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }
@@ -134,7 +144,7 @@ namespace GUI.SpecificationView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Specification.Paragraph paragraph in Item.SubParagraphs)
+            foreach (Paragraph paragraph in Item.SubParagraphs)
             {
                 Nodes.Add(new ParagraphTreeNode(paragraph, buildSubNodes));
             }
@@ -161,7 +171,7 @@ namespace GUI.SpecificationView
             if (window != null)
             {
                 window.specBrowserRuleView.Nodes.Clear();
-                foreach (DataDictionary.ReqRef reqRef in Item.Implementations)
+                foreach (ReqRef reqRef in Item.Implementations)
                 {
                     window.specBrowserRuleView.Nodes.Add(new ReqRefTreeNode(reqRef, true, false, reqRef.Model.Name));
                 }
@@ -177,7 +187,7 @@ namespace GUI.SpecificationView
         {
             if (Item.isApplicable())
             {
-                Item.setImplementationStatus(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented);
+                Item.setImplementationStatus(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented);
             }
 
             RefreshNode();
@@ -192,7 +202,7 @@ namespace GUI.SpecificationView
 
         public void NotImplementableHandler(object sender, EventArgs args)
         {
-            Item.setImplementationStatus(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
+            Item.setImplementationStatus(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
             RefreshNode();
         }
 
@@ -200,7 +210,7 @@ namespace GUI.SpecificationView
         /// Adds a new paragraph in this paragraph
         /// </summary>
         /// <param name="paragraph"></param>
-        public void AddParagraph(DataDictionary.Specification.Paragraph paragraph)
+        public void AddParagraph(Paragraph paragraph)
         {
             Item.appendParagraphs(paragraph);
             Nodes.Add(new ParagraphTreeNode(paragraph, true));
@@ -209,17 +219,17 @@ namespace GUI.SpecificationView
 
         public void AddParagraphHandler(object sender, EventArgs args)
         {
-            DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)DataDictionary.Generated.acceptor.getFactory().createParagraph();
+            Paragraph paragraph = (Paragraph) acceptor.getFactory().createParagraph();
             paragraph.FullId = Item.GetNewSubParagraphId(false);
             paragraph.Text = "";
-            paragraph.setType(DataDictionary.Generated.acceptor.Paragraph_type.aREQUIREMENT);
+            paragraph.setType(acceptor.Paragraph_type.aREQUIREMENT);
 
             SetupDefaultRequirementSets(paragraph);
 
             AddParagraph(paragraph);
         }
 
-        private void SetupDefaultRequirementSets(DataDictionary.Specification.Paragraph paragraph)
+        private void SetupDefaultRequirementSets(Paragraph paragraph)
         {
             foreach (RequirementSet requirementSet in Item.EFSSystem.RequirementSets)
             {
@@ -275,10 +285,10 @@ namespace GUI.SpecificationView
                 data = data.Replace("\r", "");
                 data = data.Replace("\n", "");
 
-                DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)DataDictionary.Generated.acceptor.getFactory().createParagraph();
+                Paragraph paragraph = (Paragraph) acceptor.getFactory().createParagraph();
                 paragraph.FullId = id;
                 paragraph.Text = data;
-                paragraph.setType(DataDictionary.Generated.acceptor.Paragraph_type.aREQUIREMENT);
+                paragraph.setType(acceptor.Paragraph_type.aREQUIREMENT);
                 SetupDefaultRequirementSets(paragraph);
                 AddParagraph(paragraph);
             }
@@ -302,9 +312,9 @@ namespace GUI.SpecificationView
                 {
                     if (MessageBox.Show("Are you sure you want to move the corresponding paragraph?", "Move paragraph", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        ParagraphTreeNode paragraphTreeNode = (ParagraphTreeNode)SourceNode;
+                        ParagraphTreeNode paragraphTreeNode = (ParagraphTreeNode) SourceNode;
 
-                        DataDictionary.Specification.Paragraph paragraph = paragraphTreeNode.Item;
+                        Paragraph paragraph = paragraphTreeNode.Item;
                         paragraphTreeNode.Delete();
                         AddParagraph(paragraph);
                     }
@@ -322,7 +332,7 @@ namespace GUI.SpecificationView
 
         public override void AcceptCopy(BaseTreeNode SourceNode)
         {
-            if (SourceNode is SpecificationView.ParagraphTreeNode)
+            if (SourceNode is ParagraphTreeNode)
             {
                 if (HandleRequirements && ReqReferences == null)
                 {
@@ -333,7 +343,7 @@ namespace GUI.SpecificationView
 
                 if (ReqReferences != null)
                 {
-                    SpecificationView.ParagraphTreeNode paragraphTreeNode = (SpecificationView.ParagraphTreeNode)SourceNode;
+                    ParagraphTreeNode paragraphTreeNode = (ParagraphTreeNode) SourceNode;
                     ReqReferences.CreateReqRef(paragraphTreeNode.Item);
                 }
             }
@@ -423,14 +433,14 @@ namespace GUI.SpecificationView
         /// <param name="efsSystem"></param>
         /// <param name="paragraphs"></param>
         /// <returns></returns>
-        public static ParagraphSetMetrics CreateParagraphSetMetrics(EFSSystem efsSystem, List<DataDictionary.Specification.Paragraph> paragraphs)
+        public static ParagraphSetMetrics CreateParagraphSetMetrics(EFSSystem efsSystem, List<Paragraph> paragraphs)
         {
             ParagraphSetMetrics retVal = new ParagraphSetMetrics();
 
             retVal.subParagraphCount = paragraphs.Count;
 
-            Dictionary<DataDictionary.Specification.Paragraph, List<ReqRef>> paragraphsReqRefDictionary = null;
-            foreach (DataDictionary.Specification.Paragraph p in paragraphs)
+            Dictionary<Paragraph, List<ReqRef>> paragraphsReqRefDictionary = null;
+            foreach (Paragraph p in paragraphs)
             {
                 if (paragraphsReqRefDictionary == null)
                 {
@@ -439,7 +449,7 @@ namespace GUI.SpecificationView
 
                 switch (p.getImplementationStatus())
                 {
-                    case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented:
+                    case acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented:
                         retVal.implementableCount += 1;
 
                         bool implemented = true;
@@ -453,7 +463,7 @@ namespace GUI.SpecificationView
                                 {
                                     ReqRelated reqRelated = implementations[i].Enclosing as ReqRelated;
                                     // Do not consider tests
-                                    if (Utils.EnclosingFinder<DataDictionary.Tests.Frame>.find(reqRelated) == null)
+                                    if (EnclosingFinder<Frame>.find(reqRelated) == null)
                                     {
                                         implemented = implemented && reqRelated.ImplementationCompleted;
                                     }
@@ -470,17 +480,17 @@ namespace GUI.SpecificationView
                         }
                         break;
 
-                    case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA:
-                    case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM:
+                    case acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA:
+                    case acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM:
                         retVal.implementableCount += 1;
                         retVal.unImplementedCount += 1;
                         break;
 
-                    case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable:
+                    case acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable:
                         retVal.notImplementable += 1;
                         break;
 
-                    case DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable:
+                    case acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable:
                         retVal.implementableCount += 1;
                         retVal.newRevisionAvailable += 1;
                         break;
@@ -488,16 +498,16 @@ namespace GUI.SpecificationView
             }
 
             // Count the tested paragraphs
-            HashSet<DataDictionary.Specification.Paragraph> testedParagraphs = new HashSet<DataDictionary.Specification.Paragraph>();
-            foreach (DataDictionary.Dictionary dictionary in efsSystem.Dictionaries)
+            HashSet<Paragraph> testedParagraphs = new HashSet<Paragraph>();
+            foreach (Dictionary dictionary in efsSystem.Dictionaries)
             {
-                foreach (DataDictionary.Specification.Paragraph p in Reports.Tests.TestsCoverageReport.CoveredRequirements(dictionary))
+                foreach (Paragraph p in TestsCoverageReport.CoveredRequirements(dictionary))
                 {
                     testedParagraphs.Add(p);
                 }
             }
 
-            foreach (DataDictionary.Specification.Paragraph p in paragraphs)
+            foreach (Paragraph p in paragraphs)
             {
                 if (testedParagraphs.Contains(p))
                 {
@@ -515,7 +525,7 @@ namespace GUI.SpecificationView
         /// <param name="paragraphs"></param>
         /// <param name="indicateSelected">Indicates that there are selected requirements</param>
         /// <returns></returns>
-        public static string CreateStatMessage(EFSSystem efsSystem, List<DataDictionary.Specification.Paragraph> paragraphs, bool indicateSelected)
+        public static string CreateStatMessage(EFSSystem efsSystem, List<Paragraph> paragraphs, bool indicateSelected)
         {
             string retVal = "Statistics : ";
 
@@ -524,11 +534,11 @@ namespace GUI.SpecificationView
             if (metrics.subParagraphCount > 0 && metrics.implementableCount > 0)
             {
                 retVal += metrics.subParagraphCount + (indicateSelected ? " selected" : "") + " requirements, ";
-                retVal += +metrics.implementableCount + " implementable (" + Math.Round(((float)metrics.implementableCount / metrics.subParagraphCount * 100), 2) + "%), ";
-                retVal += metrics.implementedCount + " implemented (" + Math.Round(((float)metrics.implementedCount / metrics.implementableCount * 100), 2) + "%), ";
-                retVal += +metrics.unImplementedCount + " not implemented (" + Math.Round(((float)metrics.unImplementedCount / metrics.implementableCount * 100), 2) + "%), ";
-                retVal += metrics.newRevisionAvailable + " with new revision (" + Math.Round(((float)metrics.newRevisionAvailable / metrics.implementableCount * 100), 2) + "%), ";
-                retVal += metrics.testedCount + " tested (" + Math.Round(((float)metrics.testedCount / metrics.implementableCount * 100), 2) + "%)";
+                retVal += +metrics.implementableCount + " implementable (" + Math.Round(((float) metrics.implementableCount/metrics.subParagraphCount*100), 2) + "%), ";
+                retVal += metrics.implementedCount + " implemented (" + Math.Round(((float) metrics.implementedCount/metrics.implementableCount*100), 2) + "%), ";
+                retVal += +metrics.unImplementedCount + " not implemented (" + Math.Round(((float) metrics.unImplementedCount/metrics.implementableCount*100), 2) + "%), ";
+                retVal += metrics.newRevisionAvailable + " with new revision (" + Math.Round(((float) metrics.newRevisionAvailable/metrics.implementableCount*100), 2) + "%), ";
+                retVal += metrics.testedCount + " tested (" + Math.Round(((float) metrics.testedCount/metrics.implementableCount*100), 2) + "%)";
             }
             else
             {

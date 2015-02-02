@@ -13,8 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Rules;
+using DataDictionary.Tests.Runner;
+using DataDictionary.Types;
+using DataDictionary.Variables;
+using Utils;
+using StructureElement = DataDictionary.Types.StructureElement;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Interpreter.Statement
 {
@@ -41,7 +49,7 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <returns>true if semantical analysis should be performed</returns>
-        public virtual bool SemanticAnalysis(Utils.INamable instance = null)
+        public virtual bool SemanticAnalysis(INamable instance = null)
         {
             bool retVal = !SemanticalAnalysisDone;
 
@@ -58,9 +66,9 @@ namespace DataDictionary.Interpreter.Statement
         /// Provides the type of this designator
         /// </summary>
         /// <returns></returns>
-        public Types.Type getExpressionType()
+        public Type getExpressionType()
         {
-            Types.Type retVal = null;
+            Type retVal = null;
 
             return retVal;
         }
@@ -75,7 +83,7 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         /// <param name="variable"></param>
         /// <returns>null if no statement modifies the element</returns>
-        public abstract VariableUpdateStatement Modifies(Types.ITypedElement variable);
+        public abstract VariableUpdateStatement Modifies(ITypedElement variable);
 
         /// <summary>
         /// Provides the list of update statements induced by this statement
@@ -88,11 +96,11 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>
-        public virtual bool Reads(Types.ITypedElement variable)
+        public virtual bool Reads(ITypedElement variable)
         {
             bool retVal = false;
 
-            List<Types.ITypedElement> variablesRead = new List<Types.ITypedElement>();
+            List<ITypedElement> variablesRead = new List<ITypedElement>();
             ReadElements(variablesRead);
             retVal = variablesRead.Contains(variable);
 
@@ -103,7 +111,7 @@ namespace DataDictionary.Interpreter.Statement
         /// Provides the list of variables read by this statement
         /// </summary>
         /// <param name="retVal">the list to fill</param>
-        public abstract void ReadElements(List<Types.ITypedElement> retVal);
+        public abstract void ReadElements(List<ITypedElement> retVal);
 
         /// <summary>
         /// Provides the changes performed by this statement
@@ -113,7 +121,7 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
         /// <param name="runner"></param>
-        public abstract void GetChanges(Interpreter.InterpretationContext context, ChangeList changes, Interpreter.ExplanationPart explanation, bool apply, Tests.Runner.Runner runner);
+        public abstract void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Runner runner);
 
         /// <summary>
         /// Provides a real short description of this statement
@@ -124,29 +132,37 @@ namespace DataDictionary.Interpreter.Statement
         /// <summary>
         /// What is affected by this statement
         /// </summary>
-        public enum ModeEnum { Unknown, In, Out, InOut, Internal, Call };
+        public enum ModeEnum
+        {
+            Unknown,
+            In,
+            Out,
+            InOut,
+            Internal,
+            Call
+        };
 
         /// <summary>
         /// Converts a VariableModeEnumType into a ModeEnum
         /// </summary>
         /// <param name="mode"></param>
         /// <returns></returns>
-        protected static ModeEnum ConvertMode(DataDictionary.Generated.acceptor.VariableModeEnumType mode)
+        protected static ModeEnum ConvertMode(acceptor.VariableModeEnumType mode)
         {
             ModeEnum retVal = ModeEnum.Unknown;
 
             switch (mode)
             {
-                case Generated.acceptor.VariableModeEnumType.aIncoming:
+                case acceptor.VariableModeEnumType.aIncoming:
                     retVal = ModeEnum.In;
                     break;
-                case Generated.acceptor.VariableModeEnumType.aInOut:
+                case acceptor.VariableModeEnumType.aInOut:
                     retVal = ModeEnum.InOut;
                     break;
-                case Generated.acceptor.VariableModeEnumType.aInternal:
+                case acceptor.VariableModeEnumType.aInternal:
                     retVal = ModeEnum.Internal;
                     break;
-                case Generated.acceptor.VariableModeEnumType.aOutgoing:
+                case acceptor.VariableModeEnumType.aOutgoing:
                     retVal = ModeEnum.Out;
                     break;
             }
@@ -163,13 +179,13 @@ namespace DataDictionary.Interpreter.Statement
             ModeEnum retVal = ModeEnum.Unknown;
 
             ModelElement target = AffectedElement();
-            Variables.IVariable variable = target as Variables.IVariable;
+            IVariable variable = target as IVariable;
             if (variable != null)
             {
                 retVal = ConvertMode(variable.Mode);
             }
 
-            Types.StructureElement element = target as Types.StructureElement;
+            StructureElement element = target as StructureElement;
             if (element != null)
             {
                 retVal = ConvertMode(element.Mode);
@@ -183,6 +199,5 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         /// <returns></returns>
         public abstract ModelElement AffectedElement();
-
     }
 }

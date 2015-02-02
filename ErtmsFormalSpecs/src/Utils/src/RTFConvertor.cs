@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Windows.Forms;
 
 namespace Utils
@@ -21,7 +22,7 @@ namespace Utils
     {
         public static string RTFToPlainText(string rtfText)
         {
-            RichTextBox rtBox = new System.Windows.Forms.RichTextBox();
+            RichTextBox rtBox = new RichTextBox();
             rtBox.Rtf = rtfText;
             return rtBox.Text;
         }

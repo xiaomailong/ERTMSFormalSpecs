@@ -13,14 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary;
+
 namespace GUI.SpecificationView
 {
-    public class SpecificationTreeView : TypedTreeView<DataDictionary.EFSSystem>
+    public class SpecificationTreeView : TypedTreeView<EFSSystem>
     {
         protected override void BuildModel()
         {
             Nodes.Clear();
-            foreach (DataDictionary.Dictionary dictionary in Root.Dictionaries)
+            foreach (Dictionary dictionary in Root.Dictionaries)
             {
                 Nodes.Add(new SpecificationsTreeNode(dictionary, true));
             }

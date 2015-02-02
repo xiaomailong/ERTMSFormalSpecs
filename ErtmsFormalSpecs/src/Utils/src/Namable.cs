@@ -13,6 +13,8 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Utils
@@ -22,16 +24,9 @@ namespace Utils
     /// </summary>
     public interface INamable
     {
-        string Name
-        {
-            get;
-            set;
-        }
+        string Name { get; set; }
 
-        string FullName
-        {
-            get;
-        }
+        string FullName { get; }
     }
 
     /// <summary>
@@ -44,7 +39,7 @@ namespace Utils
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static INamable findByName(string name, System.Collections.IEnumerable elements)
+        public static INamable findByName(string name, IEnumerable elements)
         {
             INamable retVal = null;
 
@@ -108,7 +103,7 @@ namespace Utils
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static INamable findByFullName(string name, System.Collections.IEnumerable elements)
+        public static INamable findByFullName(string name, IEnumerable elements)
         {
             INamable retVal = null;
 
@@ -163,6 +158,5 @@ namespace Utils
 
             return retVal;
         }
-
     }
 }

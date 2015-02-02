@@ -13,7 +13,10 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using MigraDoc.DocumentObjectModel;
+
+using DataDictionary;
+using Importers.RtfDeltaImporter;
+
 namespace Reports.Importer
 {
     /// <summary>
@@ -24,14 +27,14 @@ namespace Reports.Importer
         /// <summary>
         /// The document on which the report should be created
         /// </summary>
-        private Importers.RtfDeltaImporter.Document ImportResult { get; set; }
+        private Document ImportResult { get; set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="aDictionary"></param>
         /// <param name="importResult"></param>
-        public DeltaImportReportHandler(DataDictionary.Dictionary aDictionary, Importers.RtfDeltaImporter.Document importResult, string baseFileName)
+        public DeltaImportReportHandler(Dictionary aDictionary, Document importResult, string baseFileName)
             : base(aDictionary)
         {
             createFileName(baseFileName);
@@ -42,9 +45,9 @@ namespace Reports.Importer
         /// Creates a report on the model, according to user's choices
         /// </summary>
         /// <returns>The document created, or null</returns>
-        public override Document BuildDocument()
+        public override MigraDoc.DocumentObjectModel.Document BuildDocument()
         {
-            Document retVal = new Document();
+            MigraDoc.DocumentObjectModel.Document retVal = new MigraDoc.DocumentObjectModel.Document();
 
             Log.Info("Generating model report");
             retVal.Info.Title = "EFS Model report";

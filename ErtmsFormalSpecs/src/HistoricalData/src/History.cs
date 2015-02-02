@@ -13,11 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections;
+using System.Collections.Generic;
+using HistoricalData.Generated;
+
 namespace HistoricalData
 {
-    using System.Collections.Generic;
-    using System.Collections;
-
     /// <summary>
     /// The complete history
     /// </summary>
@@ -37,7 +39,7 @@ namespace HistoricalData
             {
                 if (allCommits() == null)
                 {
-                    setAllCommits(new System.Collections.ArrayList());
+                    setAllCommits(new ArrayList());
                 }
                 return allCommits();
             }
@@ -57,7 +59,7 @@ namespace HistoricalData
         /// </summary>
         protected Dictionary<string, SortedSet<Change>> Blame { get; private set; }
 
-        private class BlameVisitor : Generated.Visitor
+        private class BlameVisitor : Visitor
         {
             /// <summary>
             /// The blame cache to update
@@ -80,7 +82,7 @@ namespace HistoricalData
             /// <param name="visitSubNodes"></param>
             public override void visit(Generated.Change obj, bool visitSubNodes)
             {
-                Change change = (Change)obj;
+                Change change = (Change) obj;
 
                 SortedSet<Change> changes;
                 if (!Blame.TryGetValue(change.Guid, out changes))
@@ -132,7 +134,7 @@ namespace HistoricalData
             int index = 0;
             while (index < Commits.Count && found < 0)
             {
-                Commit other = (Commit)Commits[index];
+                Commit other = (Commit) Commits[index];
                 if (other.Sha == commit.Sha)
                 {
                     found = index;

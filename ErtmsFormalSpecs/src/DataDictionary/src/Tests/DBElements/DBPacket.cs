@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections;
 
 namespace DataDictionary.Tests.DBElements
@@ -24,10 +25,7 @@ namespace DataDictionary.Tests.DBElements
         /// </summary>
         public ArrayList Fields
         {
-            get
-            {
-                return allFields();
-            }
+            get { return allFields(); }
         }
 
         /// <summary>

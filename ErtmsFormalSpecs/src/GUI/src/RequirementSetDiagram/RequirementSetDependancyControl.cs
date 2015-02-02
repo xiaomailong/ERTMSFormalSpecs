@@ -13,15 +13,10 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
 using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-using DataDictionary.Rules;
-using DataDictionary.Types;
-using GUI.BoxArrowDiagram;
-using DataDictionary.Constants;
 using DataDictionary.Specification;
+using GUI.BoxArrowDiagram;
 
 namespace GUI.RequirementSetDiagram
 {

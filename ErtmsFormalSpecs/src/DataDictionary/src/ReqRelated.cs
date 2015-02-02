@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------------------
 
 using DataDictionary.Specification;
+
 namespace DataDictionary
 {
     public class ReqRelated : Generated.ReqRelated, ICommentable

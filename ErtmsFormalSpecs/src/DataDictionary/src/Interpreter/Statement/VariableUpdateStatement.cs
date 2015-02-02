@@ -13,12 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections.Generic;
+using DataDictionary.Interpreter.Filter;
+using DataDictionary.Rules;
+using DataDictionary.Tests.Runner;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Utils;
+
 namespace DataDictionary.Interpreter.Statement
 {
-    using System.Collections.Generic;
-    using DataDictionary.Rules;
-    using DataDictionary.Interpreter.Filter;
-
     public class VariableUpdateStatement : Statement
     {
         /// <summary>
@@ -52,7 +58,7 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance)
+        public override bool SemanticAnalysis(INamable instance)
         {
             bool retVal = base.SemanticAnalysis(instance);
 
@@ -73,11 +79,11 @@ namespace DataDictionary.Interpreter.Statement
         /// <summary>
         /// Provides the target of this update statement
         /// </summary>
-        public Types.ITypedElement Target
+        public ITypedElement Target
         {
             get
             {
-                Types.ITypedElement retVal = VariableIdentification.Ref as Types.ITypedElement;
+                ITypedElement retVal = VariableIdentification.Ref as ITypedElement;
 
                 return retVal;
             }
@@ -86,11 +92,11 @@ namespace DataDictionary.Interpreter.Statement
         /// <summary>
         /// Provides the type of the target variable
         /// </summary>
-        public Types.Type TargetType
+        public Type TargetType
         {
             get
             {
-                Types.Type retVal = null;
+                Type retVal = null;
 
                 if (Target != null)
                 {
@@ -98,7 +104,7 @@ namespace DataDictionary.Interpreter.Statement
                 }
                 else
                 {
-                    retVal = VariableIdentification.Ref as Types.Type;
+                    retVal = VariableIdentification.Ref as Type;
                 }
 
                 return retVal;
@@ -110,7 +116,7 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         /// <param name="variable"></param>
         /// <returns>null if no statement modifies the element</returns>
-        public override VariableUpdateStatement Modifies(Types.ITypedElement variable)
+        public override VariableUpdateStatement Modifies(ITypedElement variable)
         {
             VariableUpdateStatement retVal = null;
 
@@ -135,7 +141,7 @@ namespace DataDictionary.Interpreter.Statement
         /// Provides the list of elements read by this statement
         /// </summary>
         /// <param name="retVal">the list to fill</param>
-        public override void ReadElements(List<Types.ITypedElement> retVal)
+        public override void ReadElements(List<ITypedElement> retVal)
         {
             retVal.AddRange(Expression.GetVariables());
         }
@@ -156,7 +162,7 @@ namespace DataDictionary.Interpreter.Statement
                 Root.AddError("Cannot assign a value to " + VariableIdentification.ToString());
             }
 
-            Types.Type targetType = VariableIdentification.GetExpressionType();
+            Type targetType = VariableIdentification.GetExpressionType();
             if (targetType == null)
             {
                 Root.AddError("Cannot determine type of target " + VariableIdentification.ToString());
@@ -165,7 +171,7 @@ namespace DataDictionary.Interpreter.Statement
             {
                 Expression.checkExpression();
 
-                Types.Type type = Expression.GetExpressionType();
+                Type type = Expression.GetExpressionType();
                 if (type != null)
                 {
                     if (targetType != null)
@@ -184,10 +190,10 @@ namespace DataDictionary.Interpreter.Statement
                         }
                         else
                         {
-                            Types.Range rangeType = targetType as Types.Range;
+                            Range rangeType = targetType as Range;
                             if (rangeType != null)
                             {
-                                Values.IValue value = Expression.Ref as Values.IValue;
+                                IValue value = Expression.Ref as IValue;
                                 if (value != null)
                                 {
                                     if (rangeType.convert(value) == null)
@@ -200,7 +206,7 @@ namespace DataDictionary.Interpreter.Statement
 
                         if (Expression.Ref == EFSSystem.EmptyValue)
                         {
-                            if (targetType is Types.Collection)
+                            if (targetType is Collection)
                             {
                                 Root.AddError("Assignation of " + Expression.Ref.Name + " cannot be performed on variables of type collection. Use [] instead.");
                             }
@@ -230,18 +236,18 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
         /// <param name="runner"></param>
-        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Tests.Runner.Runner runner)
+        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Runner runner)
         {
-            Variables.IVariable var = VariableIdentification.GetVariable(context);
+            IVariable var = VariableIdentification.GetVariable(context);
             if (var != null)
             {
                 string tmp = var.FullName;
-                Values.IValue value = Expression.GetValue(context, explanation);
+                IValue value = Expression.GetValue(context, explanation);
                 if (value != null)
                 {
                     value = value.RightSide(var, true, true);
                 }
-                Rules.Change change = new Rules.Change(var, var.Value, value);
+                Change change = new Change(var, var.Value, value);
                 changes.Add(change, apply, runner);
                 ExplanationPart.CreateSubExplanation(explanation, Root, change);
             }
@@ -284,6 +290,5 @@ namespace DataDictionary.Interpreter.Statement
         {
             return VariableIdentification.Ref as ModelElement;
         }
-
     }
 }

@@ -13,10 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
-
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -38,7 +42,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// The return type of the function
         /// </summary>
-        public override DataDictionary.Types.Type ReturnType
+        public override Type ReturnType
         {
             get { return EFSSystem.DoubleType; }
         }
@@ -50,13 +54,13 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public RoundToMultiple(EFSSystem efsSystem)
             : base(efsSystem, "RoundToMultiple")
         {
-            Value = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Value = (Parameter) acceptor.getFactory().createParameter();
             Value.Name = "Value";
             Value.Type = EFSSystem.DoubleType;
             Value.setFather(this);
             FormalParameters.Add(Value);
 
-            Multiple = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Multiple = (Parameter) acceptor.getFactory().createParameter();
             Multiple.Name = "Multiple";
             Multiple.Type = EFSSystem.DoubleType;
             Multiple.setFather(this);
@@ -70,23 +74,23 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             int token = context.LocalScope.PushContext();
             AssignParameters(context, actuals);
 
-            Values.DoubleValue value = context.findOnStack(Value).Value as Values.DoubleValue;
-            Values.DoubleValue multiple = context.findOnStack(Multiple).Value as Values.DoubleValue;
+            DoubleValue value = context.findOnStack(Value).Value as DoubleValue;
+            DoubleValue multiple = context.findOnStack(Multiple).Value as DoubleValue;
             if (value != null && multiple != null)
             {
                 double res = Math.Floor(value.Val);
-                while (res > 0 && res % multiple.Val != 0)
+                while (res > 0 && res%multiple.Val != 0)
                 {
                     res--;
                 }
-                retVal = new Values.DoubleValue(ReturnType, res);
+                retVal = new DoubleValue(ReturnType, res);
             }
 
             context.LocalScope.PopContext(token);

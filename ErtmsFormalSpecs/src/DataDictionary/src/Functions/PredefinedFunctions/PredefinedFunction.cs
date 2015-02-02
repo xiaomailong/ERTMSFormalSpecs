@@ -13,8 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections;
 using System.Collections.Generic;
 using DataDictionary.Interpreter;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using DataDictionary.Variables;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -34,7 +39,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// The enclosing collection of the function
         /// </summary>
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get { return null; }
         }
@@ -42,7 +47,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// The type associated to this function
         /// </summary>
-        public override abstract Types.Type ReturnType { get; }
+        public abstract override Type ReturnType { get; }
 
         /// <summary>
         /// Provides the value of the function
@@ -51,7 +56,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="localScope">the values of local variables</param>
         /// <returns>The value for the function application</returns>
-        public override abstract Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain);
+        public abstract override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain);
 
 
         /// <summary>
@@ -73,9 +78,9 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="context">The context used to evaluate the expression</param>
         /// <param name="expression">The expression which references the function</param>
         /// <param name="count">the expected number of parameters</param>
-        protected virtual void CheckFunctionalParameter(ModelElement root, Interpreter.InterpretationContext context, Interpreter.Expression expression, int count)
+        protected virtual void CheckFunctionalParameter(ModelElement root, InterpretationContext context, Expression expression, int count)
         {
-            Types.Type type = expression.GetExpressionType();
+            Type type = expression.GetExpressionType();
 
             Function function = type as Function;
             if (function != null)
@@ -117,7 +122,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="parameter"></param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        protected Graph createGraphForValue(Interpreter.InterpretationContext context, Values.IValue value, ExplanationPart explain, Parameter parameter = null)
+        protected Graph createGraphForValue(InterpretationContext context, IValue value, ExplanationPart explain, Parameter parameter = null)
         {
             Graph retVal = new Graph();
 
@@ -126,7 +131,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
             {
                 if (parameter == null)
                 {
-                    parameter = (Parameter)function.FormalParameters[0];
+                    parameter = (Parameter) function.FormalParameters[0];
                     int token = context.LocalScope.PushContext();
                     context.LocalScope.setGraphParameter(parameter);
                     retVal = function.createGraph(context, parameter, explain);
@@ -139,7 +144,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
             }
             else
             {
-                Values.DoubleValue val = value as Values.DoubleValue;
+                DoubleValue val = value as DoubleValue;
                 retVal.addSegment(new Graph.Segment(0, double.MaxValue, new Graph.Segment.Curve(0.0, val.Val, 0.0)));
             }
 
@@ -153,7 +158,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="value"></param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        protected Surface createSurfaceForValue(Interpreter.InterpretationContext context, Values.IValue value, ExplanationPart explain)
+        protected Surface createSurfaceForValue(InterpretationContext context, IValue value, ExplanationPart explain)
         {
             Surface retVal = null;
 
@@ -164,10 +169,10 @@ namespace DataDictionary.Functions.PredefinedFunctions
             }
             else
             {
-                Values.DoubleValue val = value as Values.DoubleValue;
+                DoubleValue val = value as DoubleValue;
                 Graph graph = new Graph();
                 graph.addSegment(new Graph.Segment(0, double.MaxValue, new Graph.Segment.Curve(0, val.Val, 0)));
-                retVal = new Functions.Surface(null, null);
+                retVal = new Surface(null, null);
                 retVal.AddSegment(new Surface.Segment(0, double.MaxValue, graph));
             }
 

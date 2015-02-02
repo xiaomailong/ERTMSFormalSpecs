@@ -13,12 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using ErtmsSolutions.SiUnits;
 
 namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 {
     /**@brief A piece of a one dimensional curve where the value Y is constant on the domain.*/
+
     public class ConstantCurveSegment<XUnit, YUnit> : CurveSegment<XUnit, YUnit>
         where XUnit : ISiUnit<XUnit>
         where YUnit : ISiUnit<YUnit>
@@ -36,14 +38,16 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             return myY;
         }
 
-        public YUnit Y { get { return myY; } }
+        public YUnit Y
+        {
+            get { return myY; }
+        }
 
 
         public override string ToString()
         {
             return base.ToString() +
-                    String.Format(" Y:{0,7:F2}({1})", myY.ToUnits(), myY.UnitString());
+                   String.Format(" Y:{0,7:F2}({1})", myY.ToUnits(), myY.UnitString());
         }
-
     }
 }

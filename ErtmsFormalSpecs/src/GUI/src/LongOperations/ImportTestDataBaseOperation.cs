@@ -13,10 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.IO;
+using DataDictionary.Generated;
+using Importers;
+using Dictionary = DataDictionary.Dictionary;
+using Frame = DataDictionary.Tests.Frame;
+
 namespace GUI.LongOperations
 {
-    using DataDictionary;
-
     public class ImportTestDataBaseOperation : BaseLongOperation
     {
         /// <summary>
@@ -32,7 +37,7 @@ namespace GUI.LongOperations
         /// <summary>
         /// The dictionary in which the database should be imported
         /// </summary>
-        private DataDictionary.Dictionary Dictionary;
+        private Dictionary Dictionary;
 
         /// <summary>
         /// The name of the database to import
@@ -42,7 +47,11 @@ namespace GUI.LongOperations
         /// <summary>
         /// Should we import a file, or a directory containing a set of files?
         /// </summary>
-        public enum Mode { File, Directory };
+        public enum Mode
+        {
+            File,
+            Directory
+        };
 
         /// <summary>
         /// The import mode
@@ -67,24 +76,24 @@ namespace GUI.LongOperations
         /// <param name="arg"></param>
         public override void ExecuteWork()
         {
-            DataDictionary.Tests.Frame frame = Dictionary.findFrame(SUBSET_076);
+            Frame frame = Dictionary.findFrame(SUBSET_076);
             if (frame == null)
             {
-                frame = (DataDictionary.Tests.Frame)DataDictionary.Generated.acceptor.getFactory().createFrame();
+                frame = (Frame) acceptor.getFactory().createFrame();
                 frame.Name = SUBSET_076;
                 Dictionary.appendTests(frame);
             }
 
             if (ImportMode == Mode.File)
             {
-                Importers.TestImporter importer = new Importers.TestImporter(FileName, DB_PASSWORD);
+                TestImporter importer = new TestImporter(FileName, DB_PASSWORD);
                 importer.Import(frame);
             }
             else
             {
-                foreach (string fName in System.IO.Directory.GetFiles(FileName, "*.mdb"))
+                foreach (string fName in Directory.GetFiles(FileName, "*.mdb"))
                 {
-                    Importers.TestImporter importer = new Importers.TestImporter(fName, DB_PASSWORD);
+                    TestImporter importer = new TestImporter(fName, DB_PASSWORD);
                     importer.Import(frame);
                 }
             }

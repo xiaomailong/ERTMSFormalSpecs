@@ -14,6 +14,10 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Generated;
+using Utils;
+using NameSpace = DataDictionary.Types.NameSpace;
+
 namespace DataDictionary.Tests.Runner.Events
 {
     public class ModelInterpretationFailure : ModelEvent
@@ -21,13 +25,13 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The log associated to this failure
         /// </summary>
-        public Utils.ElementLog Log { get; private set; }
+        public ElementLog Log { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="id"></param>
-        public ModelInterpretationFailure(Utils.ElementLog log, Utils.INamable instance, Generated.acceptor.RulePriority? priority)
+        public ModelInterpretationFailure(ElementLog log, INamable instance, acceptor.RulePriority? priority)
             : base(log.Log, instance, priority)
         {
             Log = log;
@@ -53,7 +57,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The namespace associated to this event
         /// </summary>
-        public override Types.NameSpace NameSpace
+        public override NameSpace NameSpace
         {
             get { return null; }
         }

@@ -13,9 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.Collections.Generic;
-using DataDictionary.Interpreter;
 
+using System.Collections.Generic;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -50,30 +54,30 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public Override(EFSSystem efsSystem)
             : base(efsSystem, "Override")
         {
-            DefaultFunction = (Parameter)Generated.acceptor.getFactory().createParameter();
+            DefaultFunction = (Parameter) acceptor.getFactory().createParameter();
             DefaultFunction.Name = "Default";
             DefaultFunction.Type = EFSSystem.AnyType;
             DefaultFunction.setFather(this);
             FormalParameters.Add(DefaultFunction);
 
-            OverrideFunction = (Parameter)Generated.acceptor.getFactory().createParameter();
+            OverrideFunction = (Parameter) acceptor.getFactory().createParameter();
             OverrideFunction.Name = "Override";
             OverrideFunction.Type = EFSSystem.AnyType;
             OverrideFunction.setFather(this);
             FormalParameters.Add(OverrideFunction);
 
-            Returns = (Function)Generated.acceptor.getFactory().createFunction();
+            Returns = (Function) acceptor.getFactory().createFunction();
             Returns.Name = "Override";
             Returns.ReturnType = EFSSystem.DoubleType;
             Returns.setFather(this);
 
-            Parameter distanceParam = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Parameter distanceParam = (Parameter) acceptor.getFactory().createParameter();
             distanceParam.Name = "Distance";
             distanceParam.Type = EFSSystem.DoubleType;
             distanceParam.setFather(Returns);
             Returns.appendParameters(distanceParam);
 
-            Parameter speedParameter = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Parameter speedParameter = (Parameter) acceptor.getFactory().createParameter();
             speedParameter.Name = "Speed";
             speedParameter.Type = EFSSystem.DoubleType;
             speedParameter.setFather(Returns);
@@ -83,7 +87,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// The return type of the available function
         /// </summary>
-        public override Types.Type ReturnType
+        public override Type ReturnType
         {
             get { return Returns; }
         }
@@ -94,7 +98,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="root">The element on which the errors should be reported</param>
         /// <param name="context">The evaluation context</param>
         /// <param name="actualParameters">The parameters applied to this function call</param>
-        public override void additionalChecks(ModelElement root, Interpreter.InterpretationContext context, Dictionary<string, Interpreter.Expression> actualParameters)
+        public override void additionalChecks(ModelElement root, InterpretationContext context, Dictionary<string, Expression> actualParameters)
         {
             CheckFunctionalParameter(root, context, actualParameters[DefaultFunction.Name], 2);
             CheckFunctionalParameter(root, context, actualParameters[OverrideFunction.Name], 2);
@@ -106,7 +110,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="context">the context used to create the surface</param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public override Surface createSurface(Interpreter.InterpretationContext context, ExplanationPart explain)
+        public override Surface createSurface(InterpretationContext context, ExplanationPart explain)
         {
             Surface retVal = null;
 
@@ -138,24 +142,24 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             int token = context.LocalScope.PushContext();
             AssignParameters(context, actuals);
 
-            Function function = (Function)Generated.acceptor.getFactory().createFunction();
+            Function function = (Function) acceptor.getFactory().createFunction();
             function.Name = "Override ( Default => " + getName(DefaultFunction) + ", Override => " + getName(OverrideFunction) + ")";
             function.Enclosing = EFSSystem;
             function.Surface = createSurface(context, explain);
 
-            Parameter parameter = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Parameter parameter = (Parameter) acceptor.getFactory().createParameter();
             parameter.Name = "X";
             parameter.Type = EFSSystem.DoubleType;
             function.appendParameters(parameter);
 
-            parameter = (Parameter)Generated.acceptor.getFactory().createParameter();
+            parameter = (Parameter) acceptor.getFactory().createParameter();
             parameter.Name = "Y";
             parameter.Type = EFSSystem.DoubleType;
             function.appendParameters(parameter);

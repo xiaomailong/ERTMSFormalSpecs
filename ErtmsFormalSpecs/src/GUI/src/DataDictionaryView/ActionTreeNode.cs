@@ -13,15 +13,23 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using System.Drawing.Design;
 using System.ComponentModel;
+using System.Drawing.Design;
+using System.Windows.Forms;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using DataDictionary.Interpreter.Statement;
+using GUI.Converters;
+using Action = DataDictionary.Rules.Action;
+using RuleCondition = DataDictionary.Rules.RuleCondition;
+using SubStep = DataDictionary.Tests.SubStep;
 
 namespace GUI.DataDictionaryView
 {
-    public class ActionTreeNode : ModelElementTreeNode<DataDictionary.Rules.Action>
+    public class ActionTreeNode : ModelElementTreeNode<Action>
     {
         private class ItemEditor : Editor
         {
@@ -34,9 +42,9 @@ namespace GUI.DataDictionaryView
             }
 
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.ExpressionableUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.ExpressionableUITypeConverter))]
-            public DataDictionary.Rules.Action Expression
+            [Editor(typeof (ExpressionableUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (ExpressionableUITypeConverter))]
+            public Action Expression
             {
                 get { return Item; }
                 set
@@ -47,9 +55,9 @@ namespace GUI.DataDictionaryView
             }
 
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
-            public DataDictionary.Rules.Action Comment
+            [Editor(typeof (CommentableUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (CommentableUITypeConverter))]
+            public Action Comment
             {
                 get { return Item; }
                 set
@@ -76,7 +84,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ActionTreeNode(DataDictionary.Rules.Action item, bool buildSubNodes)
+        public ActionTreeNode(Action item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }
@@ -134,18 +142,18 @@ namespace GUI.DataDictionaryView
         /// </summary>
         public virtual void SplitHandler(object sender, EventArgs args)
         {
-            DataDictionary.Interpreter.Statement.Statement statement = Item.EFSSystem.Parser.Statement(Item, Item.ExpressionText);
-            DataDictionary.Interpreter.Statement.VariableUpdateStatement variableUpdateStatement = statement as DataDictionary.Interpreter.Statement.VariableUpdateStatement;
+            Statement statement = Item.EFSSystem.Parser.Statement(Item, Item.ExpressionText);
+            VariableUpdateStatement variableUpdateStatement = statement as VariableUpdateStatement;
             if (variableUpdateStatement != null)
             {
-                DataDictionary.Interpreter.Expression expression = variableUpdateStatement.Expression;
-                DataDictionary.Interpreter.StructExpression structExpression = expression as DataDictionary.Interpreter.StructExpression;
+                Expression expression = variableUpdateStatement.Expression;
+                StructExpression structExpression = expression as StructExpression;
                 if (structExpression != null)
                 {
-                    Dictionary<DataDictionary.Interpreter.Designator, DataDictionary.Interpreter.Expression> associations = structExpression.Associations;
-                    foreach (KeyValuePair<DataDictionary.Interpreter.Designator, DataDictionary.Interpreter.Expression> value in associations)
+                    Dictionary<Designator, Expression> associations = structExpression.Associations;
+                    foreach (KeyValuePair<Designator, Expression> value in associations)
                     {
-                        DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
+                        Action action = (Action) acceptor.getFactory().createAction();
                         action.ExpressionText = structExpression.Structure.ToString() + "." + value.Key + " <- " + value.Value.ToString();
                         string aString = value.Value.ToString();
                         ActionTreeNode actionTreeNode = new ActionTreeNode(action, true);
@@ -153,14 +161,14 @@ namespace GUI.DataDictionaryView
                         BaseTreeNode parent = Parent as BaseTreeNode;
                         if ((parent != null) && (parent.Nodes != null))
                         {
-                            DataDictionary.Rules.RuleCondition ruleCondition = Item.Enclosing as DataDictionary.Rules.RuleCondition;
+                            RuleCondition ruleCondition = Item.Enclosing as RuleCondition;
                             if (ruleCondition != null)
                             {
                                 ruleCondition.appendActions(action);
                             }
                             else
                             {
-                                DataDictionary.Tests.SubStep subStep = Item.Enclosing as DataDictionary.Tests.SubStep;
+                                SubStep subStep = Item.Enclosing as SubStep;
                                 if (subStep != null)
                                 {
                                     subStep.appendActions(action);

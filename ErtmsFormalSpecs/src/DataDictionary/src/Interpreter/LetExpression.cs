@@ -15,10 +15,12 @@
 // ------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Net.Mime;
-using System.Runtime.Remoting.Contexts;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter.Filter;
+using DataDictionary.Values;
 using Utils;
+using Type = DataDictionary.Types.Type;
+using Variable = DataDictionary.Variables.Variable;
 
 namespace DataDictionary.Interpreter
 {
@@ -26,13 +28,13 @@ namespace DataDictionary.Interpreter
     /// LET variable '<-' expression IN expression
     /// LET variable '=>' expression IN expression
     /// </summary>
-    public class LetExpression : Expression, Utils.ISubDeclarator
+    public class LetExpression : Expression, ISubDeclarator
     {
         /// <summary>
         /// The variable bound by the LET expression
         /// </summary>
-        public Variables.Variable BoundVariable { get; private set; }
-        
+        public Variable BoundVariable { get; private set; }
+
         /// <summary>
         /// The binding expression
         /// </summary>
@@ -55,7 +57,7 @@ namespace DataDictionary.Interpreter
         public LetExpression(ModelElement root, ModelElement log, string boundVariableName, Expression bindingExpression, Expression expression, int start, int end)
             : base(root, log, start, end)
         {
-            BoundVariable = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
+            BoundVariable = (Variable) acceptor.getFactory().createVariable();
             BoundVariable.Enclosing = this;
             BoundVariable.Name = boundVariableName;
 
@@ -74,22 +76,22 @@ namespace DataDictionary.Interpreter
         {
             DeclaredElements = new Dictionary<string, List<INamable>>();
 
-            Utils.ISubDeclaratorUtils.AppendNamable(this, BoundVariable);
+            ISubDeclaratorUtils.AppendNamable(this, BoundVariable);
         }
 
         /// <summary>
         /// The elements declared by this declarator
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; private set; }
+        public Dictionary<string, List<INamable>> DeclaredElements { get; private set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
-            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
+            ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>
@@ -98,7 +100,7 @@ namespace DataDictionary.Interpreter
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
+        public override bool SemanticAnalysis(INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
@@ -109,7 +111,7 @@ namespace DataDictionary.Interpreter
                 StaticUsage.AddUsages(BindingExpression.StaticUsage, Usage.ModeEnum.Read);
 
 
-                Types.Type  bindingExpressionType = BindingExpression.GetExpressionType();
+                Type bindingExpressionType = BindingExpression.GetExpressionType();
                 if (bindingExpressionType != null)
                 {
                     StaticUsage.AddUsage(bindingExpressionType, Root, Usage.ModeEnum.Type);
@@ -132,7 +134,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public override void fill(List<Utils.INamable> retVal, BaseFilter filter)
+        public override void fill(List<INamable> retVal, BaseFilter filter)
         {
             BindingExpression.fill(retVal, filter);
             Expression.fill(retVal, filter);
@@ -154,7 +156,7 @@ namespace DataDictionary.Interpreter
         /// Provides the type of this expression
         /// </summary>
         /// <returns></returns>
-        public override Types.Type GetExpressionType()
+        public override Type GetExpressionType()
         {
             return Expression.GetExpressionType();
         }
@@ -165,9 +167,9 @@ namespace DataDictionary.Interpreter
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
+        public override IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             ExplanationPart subPart = ExplanationPart.CreateSubExplanation(explain, BoundVariable.Name);
             BoundVariable.Value = BindingExpression.GetValue(context, explain);
@@ -188,10 +190,9 @@ namespace DataDictionary.Interpreter
         /// <returns></returns>
         public override string ToString(int indentLevel)
         {
-            string retVal = "LET " + BoundVariable.Name + " <- " +  BindingExpression.ToString(indentLevel) + " IN " + Expression.ToString(indentLevel);
+            string retVal = "LET " + BoundVariable.Name + " <- " + BindingExpression.ToString(indentLevel) + " IN " + Expression.ToString(indentLevel);
 
             return retVal;
         }
-
     }
 }

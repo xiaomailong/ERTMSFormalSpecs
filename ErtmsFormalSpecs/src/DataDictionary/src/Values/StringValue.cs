@@ -14,9 +14,11 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Types;
+
 namespace DataDictionary.Values
 {
-    public class StringValue : BaseValue<Types.StringType, string>
+    public class StringValue : BaseValue<StringType, string>
     {
         public override string Name
         {
@@ -42,7 +44,7 @@ namespace DataDictionary.Values
         /// Constructor
         /// </summary>
         /// <param name="type"></param>
-        public StringValue(Types.StringType type, string val)
+        public StringValue(StringType type, string val)
             : base(type, val)
         {
         }

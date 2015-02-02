@@ -14,9 +14,11 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Generated;
+
 namespace DataDictionary.Specification
 {
-    public class Meaning : Generated.meaning
+    public class Meaning : meaning
     {
         /// <summary>
         /// The Meaning content

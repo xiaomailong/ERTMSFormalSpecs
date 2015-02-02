@@ -13,14 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary;
+using DataDictionary.Types;
+
 namespace GUI.EditorView
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary;
-
     /// <summary>
     /// Sets the string value into the right property
     /// </summary>
@@ -44,7 +42,7 @@ namespace GUI.EditorView
         public override string GetText()
         {
             string retVal = "";
-            DataDictionary.Types.IDefaultValueElement defaultValueElement = Instance as DataDictionary.Types.IDefaultValueElement;
+            IDefaultValueElement defaultValueElement = Instance as IDefaultValueElement;
 
             if (defaultValueElement != null)
             {
@@ -59,7 +57,7 @@ namespace GUI.EditorView
         /// <returns></returns>
         public override void SetText(string text)
         {
-            DataDictionary.Types.IDefaultValueElement defaultValueElement = Instance as DataDictionary.Types.IDefaultValueElement;
+            IDefaultValueElement defaultValueElement = Instance as IDefaultValueElement;
 
             if (defaultValueElement != null)
             {

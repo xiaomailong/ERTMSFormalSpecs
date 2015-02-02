@@ -13,20 +13,25 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using DataDictionary.Functions;
-using DataDictionary.Specification;
-using DataDictionary.Tests;
-using DataDictionary.Tests.Translations;
-using DataDictionary.Types;
-using DataDictionary.Variables;
-using XmlBooster;
-using Utils;
-using System.Collections;
+using System.Reflection;
 using System.Threading;
+using DataDictionary.Generated;
+using log4net;
+using Utils;
+using XmlBooster;
+using Chapter = DataDictionary.Specification.Chapter;
+using ChapterRef = DataDictionary.Specification.ChapterRef;
+using Frame = DataDictionary.Tests.Frame;
+using FrameRef = DataDictionary.Tests.FrameRef;
+using NameSpaceRef = DataDictionary.Types.NameSpaceRef;
+using RequirementSet = DataDictionary.Specification.RequirementSet;
+using TranslationDictionary = DataDictionary.Tests.Translations.TranslationDictionary;
 
 namespace DataDictionary
 {
@@ -35,7 +40,7 @@ namespace DataDictionary
         /// <summary>
         /// The Logger
         /// </summary>
-        protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// Indicates that the files should be locked for edition when opened
@@ -66,9 +71,9 @@ namespace DataDictionary
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+            public override void visit(BaseModelElement obj, bool visitSubNodes)
             {
-                ModelElement element = (ModelElement)obj;
+                ModelElement element = (ModelElement) obj;
 
                 if (UpdateGuid)
                 {
@@ -141,12 +146,12 @@ namespace DataDictionary
             {
                 string expression = expressionable.ExpressionText;
 
-                expression = Replace(expression, "USING",       "USING X IN");
+                expression = Replace(expression, "USING", "USING X IN");
                 expression = Replace(expression, "THERE_IS_IN", "THERE_IS X IN");
-                expression = Replace(expression, "LAST_IN",     "LAST X IN");
-                expression = Replace(expression, "FIRST_IN",    "FIRST X IN");
-                expression = Replace(expression, "FORALL_IN",   "FORALL X IN");
-                expression = Replace(expression, "COUNT",       "COUNT X IN");
+                expression = Replace(expression, "LAST_IN", "LAST X IN");
+                expression = Replace(expression, "FIRST_IN", "FIRST X IN");
+                expression = Replace(expression, "FORALL_IN", "FORALL X IN");
+                expression = Replace(expression, "COUNT", "COUNT X IN");
 
                 expressionable.ExpressionText = expression;
             }
@@ -210,11 +215,11 @@ namespace DataDictionary
             /// <param name="visitSubNodes"></param>
             public override void visit(Generated.ReqRef obj, bool visitSubNodes)
             {
-                ReqRef reqRef = (ReqRef)obj;
+                ReqRef reqRef = (ReqRef) obj;
 
                 if (UpdateGuid)
                 {
-                    Paragraph paragraph = reqRef.Paragraph;
+                    Specification.Paragraph paragraph = reqRef.Paragraph;
                     if (paragraph != null)
                     {
                         // Updates the paragraph Guid
@@ -240,33 +245,33 @@ namespace DataDictionary
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Paragraph obj, bool visitSubNodes)
+            public override void visit(Paragraph obj, bool visitSubNodes)
             {
-                Specification.Paragraph paragraph = (Specification.Paragraph)obj;
+                Specification.Paragraph paragraph = (Specification.Paragraph) obj;
 
                 // WARNING : This phase is completed by the next phase to place all requirement in requirement sets
                 // Ensures the scope is located in the flags
                 switch (paragraph.getObsoleteScope())
                 {
-                    case Generated.acceptor.Paragraph_scope.aOBU:
+                    case acceptor.Paragraph_scope.aOBU:
                         paragraph.setObsoleteScopeOnBoard(true);
                         break;
 
-                    case Generated.acceptor.Paragraph_scope.aTRACK:
+                    case acceptor.Paragraph_scope.aTRACK:
                         paragraph.setObsoleteScopeTrackside(true);
                         break;
 
-                    case Generated.acceptor.Paragraph_scope.aOBU_AND_TRACK:
-                    case Generated.acceptor.Paragraph_scope.defaultParagraph_scope:
+                    case acceptor.Paragraph_scope.aOBU_AND_TRACK:
+                    case acceptor.Paragraph_scope.defaultParagraph_scope:
                         paragraph.setObsoleteScopeOnBoard(true);
                         paragraph.setObsoleteScopeTrackside(true);
                         break;
 
-                    case Generated.acceptor.Paragraph_scope.aROLLING_STOCK:
+                    case acceptor.Paragraph_scope.aROLLING_STOCK:
                         paragraph.setObsoleteScopeRollingStock(true);
                         break;
                 }
-                paragraph.setObsoleteScope(Generated.acceptor.Paragraph_scope.aFLAGS);
+                paragraph.setObsoleteScope(acceptor.Paragraph_scope.aFLAGS);
 
                 // WARNING : do not remove the preceding phase since it still required for previous versions of EFS files
                 // Based on the flag information, place the requirements in their corresponding requirement set
@@ -331,9 +336,9 @@ namespace DataDictionary
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.StateMachine obj, bool visitSubNodes)
+            public override void visit(StateMachine obj, bool visitSubNodes)
             {
-                Types.StateMachine stateMachine = (Types.StateMachine)obj;
+                Types.StateMachine stateMachine = (Types.StateMachine) obj;
 
                 if (string.IsNullOrEmpty(stateMachine.getDefault()))
                 {
@@ -350,17 +355,17 @@ namespace DataDictionary
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Step obj, bool visitSubNodes)
+            public override void visit(Step obj, bool visitSubNodes)
             {
-                Tests.Step step = (Tests.Step)obj;
+                Tests.Step step = (Tests.Step) obj;
 
                 if (!string.IsNullOrEmpty(step.getObsoleteComment()))
                 {
-                    if ( string.IsNullOrEmpty(step.getComment()))
+                    if (string.IsNullOrEmpty(step.getComment()))
                     {
                         step.setComment(step.getObsoleteComment());
                     }
-                    else 
+                    else
                     {
                         step.setComment(step.getComment() + "\n" + step.getObsoleteComment());
                     }
@@ -375,9 +380,9 @@ namespace DataDictionary
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.Translation obj, bool visitSubNodes)
+            public override void visit(Translation obj, bool visitSubNodes)
             {
-                Translation translation = (Translation)obj;
+                Tests.Translations.Translation translation = (Tests.Translations.Translation) obj;
 
                 if (!string.IsNullOrEmpty(translation.getObsoleteComment()))
                 {
@@ -400,7 +405,7 @@ namespace DataDictionary
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.TestCase obj, bool visitSubNodes)
+            public override void visit(TestCase obj, bool visitSubNodes)
             {
                 if (!string.IsNullOrEmpty(obj.getObsoleteComment()))
                 {
@@ -429,7 +434,7 @@ namespace DataDictionary
         /// <summary>
         /// Updates the dictionary contents
         /// </summary>
-        private class LoadDepends : Generated.Visitor
+        private class LoadDepends : Visitor
         {
             /// <summary>
             /// The base path used to load files
@@ -444,7 +449,10 @@ namespace DataDictionary
             /// <summary>
             /// Indicates that errors can occur during load, for instance, for comparison purposes
             /// </summary>
-            public bool AllowErrorsDuringLoad { get { return ErrorsDuringLoad != null; } }
+            public bool AllowErrorsDuringLoad
+            {
+                get { return ErrorsDuringLoad != null; }
+            }
 
             /// <summary>
             /// The errors that occured during the load of the file
@@ -466,13 +474,13 @@ namespace DataDictionary
 
             public override void visit(Generated.Dictionary obj, bool visitSubNodes)
             {
-                Dictionary dictionary = (Dictionary)obj;
+                Dictionary dictionary = (Dictionary) obj;
 
                 if (dictionary.allNameSpaceRefs() != null)
                 {
                     foreach (NameSpaceRef nameSpaceRef in dictionary.allNameSpaceRefs())
                     {
-                        NameSpace nameSpace = nameSpaceRef.LoadNameSpace(LockFiles, AllowErrorsDuringLoad);
+                        Types.NameSpace nameSpace = nameSpaceRef.LoadNameSpace(LockFiles, AllowErrorsDuringLoad);
                         if (nameSpace != null)
                         {
                             dictionary.appendNameSpaces(nameSpace);
@@ -506,15 +514,15 @@ namespace DataDictionary
                 base.visit(obj, visitSubNodes);
             }
 
-            public override void visit(Generated.NameSpace obj, bool visitSubNodes)
+            public override void visit(NameSpace obj, bool visitSubNodes)
             {
-                NameSpace nameSpace = (NameSpace)obj;
+                Types.NameSpace nameSpace = (Types.NameSpace) obj;
 
                 if (nameSpace.allNameSpaceRefs() != null)
                 {
                     foreach (NameSpaceRef nameSpaceRef in nameSpace.allNameSpaceRefs())
                     {
-                        NameSpace subNameSpace = nameSpaceRef.LoadNameSpace(LockFiles, AllowErrorsDuringLoad);
+                        Types.NameSpace subNameSpace = nameSpaceRef.LoadNameSpace(LockFiles, AllowErrorsDuringLoad);
                         if (subNameSpace != null)
                         {
                             nameSpace.appendNameSpaces(subNameSpace);
@@ -524,7 +532,6 @@ namespace DataDictionary
                         {
                             ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error, "Cannot load file " + nameSpaceRef.FileName));
                         }
-
                     }
                     nameSpace.allNameSpaceRefs().Clear();
                 }
@@ -534,7 +541,7 @@ namespace DataDictionary
 
             public override void visit(Generated.Specification obj, bool visitSubNodes)
             {
-                Specification.Specification specification = (Specification.Specification)obj;
+                Specification.Specification specification = (Specification.Specification) obj;
 
                 if (specification.allChapterRefs() != null)
                 {
@@ -681,8 +688,8 @@ namespace DataDictionary
 
                 try
                 {
-                    Generated.ControllersManager.DesactivateAllNotifications();
-                    retVal = Generated.acceptor.accept(ctxt) as T;
+                    ControllersManager.DesactivateAllNotifications();
+                    retVal = acceptor.accept(ctxt) as T;
                     if (retVal != null)
                     {
                         retVal.setFather(enclosing);
@@ -692,7 +699,7 @@ namespace DataDictionary
                         }
                     }
                 }
-                catch (XmlBooster.XmlBException excp)
+                catch (XmlBException excp)
                 {
                     Log.Error(ctxt.errorMessage());
                 }
@@ -702,7 +709,7 @@ namespace DataDictionary
                 }
                 finally
                 {
-                    Generated.ControllersManager.ActivateAllNotifications();
+                    ControllersManager.ActivateAllNotifications();
                 }
 
                 return retVal;
@@ -721,10 +728,10 @@ namespace DataDictionary
         /// <returns></returns>
         public static Dictionary load(String filePath, EFSSystem efsSystem, bool lockFiles, List<ElementLog> errors, bool updateGuid)
         {
-            Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             Dictionary retVal = null;
 
-            ObjectFactory factory = (ObjectFactory)Generated.acceptor.getFactory();
+            ObjectFactory factory = (ObjectFactory) acceptor.getFactory();
             try
             {
                 factory.AutomaticallyGenerateGuid = false;
@@ -740,7 +747,7 @@ namespace DataDictionary
                     // Loads the dependancies for this .efs file
                     try
                     {
-                        Generated.ControllersManager.DesactivateAllNotifications();
+                        ControllersManager.DesactivateAllNotifications();
                         LoadDepends loadDepends = new LoadDepends(retVal.BasePath, lockFiles, errors);
                         loadDepends.visit(retVal);
                     }
@@ -751,7 +758,7 @@ namespace DataDictionary
                     }
                     finally
                     {
-                        Generated.ControllersManager.ActivateAllNotifications();
+                        ControllersManager.ActivateAllNotifications();
                     }
                 }
 
@@ -760,7 +767,7 @@ namespace DataDictionary
                     // Updates the contents of this .efs file
                     try
                     {
-                        Generated.ControllersManager.DesactivateAllNotifications();
+                        ControllersManager.DesactivateAllNotifications();
 
                         Updater updater = new Updater(updateGuid);
                         updater.visit(retVal);
@@ -771,7 +778,7 @@ namespace DataDictionary
                     }
                     finally
                     {
-                        Generated.ControllersManager.ActivateAllNotifications();
+                        ControllersManager.ActivateAllNotifications();
                     }
                 }
             }
@@ -802,7 +809,7 @@ namespace DataDictionary
 
             if (retVal == null)
             {
-                throw new System.Exception("Cannot read file " + filePath);
+                throw new Exception("Cannot read file " + filePath);
             }
 
             return retVal;
@@ -815,13 +822,13 @@ namespace DataDictionary
         /// <param name="dictionary"></param>
         /// <param name="lockFiles">Indicates that the files should be locked</param>
         /// <returns></returns>
-        public static TranslationDictionary loadTranslationDictionary(string filePath, DataDictionary.Dictionary dictionary, bool lockFiles)
+        public static TranslationDictionary loadTranslationDictionary(string filePath, Dictionary dictionary, bool lockFiles)
         {
             TranslationDictionary retVal = DocumentLoader<TranslationDictionary>.loadFile(filePath, dictionary, lockFiles);
 
             if (retVal == null)
             {
-                throw new System.Exception("Cannot read file " + filePath);
+                throw new Exception("Cannot read file " + filePath);
             }
 
             return retVal;
@@ -835,15 +842,15 @@ namespace DataDictionary
         /// <param name="lockFiles"></param>
         /// <param name="allowErrors"></param>
         /// <returns></returns>
-        public static NameSpace loadNameSpace(string filePath, ModelElement enclosing, bool lockFiles, bool allowErrors)
+        public static Types.NameSpace loadNameSpace(string filePath, ModelElement enclosing, bool lockFiles, bool allowErrors)
         {
-            NameSpace retVal = DocumentLoader<NameSpace>.loadFile(filePath, enclosing, lockFiles);
+            Types.NameSpace retVal = DocumentLoader<Types.NameSpace>.loadFile(filePath, enclosing, lockFiles);
 
             if (retVal == null)
             {
                 if (!allowErrors)
                 {
-                    throw new System.Exception("Cannot read file " + filePath);
+                    throw new Exception("Cannot read file " + filePath);
                 }
             }
 
@@ -866,7 +873,7 @@ namespace DataDictionary
             {
                 if (!allowErrors)
                 {
-                    throw new System.Exception("Cannot read file " + filePath);
+                    throw new Exception("Cannot read file " + filePath);
                 }
             }
 
@@ -889,14 +896,14 @@ namespace DataDictionary
             {
                 if (!allowErrors)
                 {
-                    throw new System.Exception("Cannot read file " + filePath);
+                    throw new Exception("Cannot read file " + filePath);
                 }
             }
 
             return retVal;
         }
 
-        private class MessageInfoVisitor : Generated.Visitor
+        private class MessageInfoVisitor : Visitor
         {
             /// <summary>
             /// Constructor

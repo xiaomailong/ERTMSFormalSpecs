@@ -13,13 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using Dictionary = DataDictionary.Dictionary;
+using RuleDisabling = DataDictionary.Rules.RuleDisabling;
 
 namespace GUI.DataDictionaryView
 {
-    public class RuleDisablingsTreeNode : ModelElementTreeNode<DataDictionary.Dictionary>
+    public class RuleDisablingsTreeNode : ModelElementTreeNode<Dictionary>
     {
         private class ItemEditor : NamedEditor
         {
@@ -37,7 +41,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public RuleDisablingsTreeNode(DataDictionary.Dictionary item, bool buildSubNodes)
+        public RuleDisablingsTreeNode(Dictionary item, bool buildSubNodes)
             : base(item, buildSubNodes, "Disabled rules", true)
         {
         }
@@ -50,7 +54,7 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Rules.RuleDisabling ruleDisabling in Item.RuleDisablings)
+            foreach (RuleDisabling ruleDisabling in Item.RuleDisablings)
             {
                 Nodes.Add(new RuleDisablingTreeNode(ruleDisabling, buildSubNodes));
             }
@@ -68,7 +72,7 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Rules.RuleDisabling ruleDisabling = (DataDictionary.Rules.RuleDisabling)DataDictionary.Generated.acceptor.getFactory().createRuleDisabling();
+            RuleDisabling ruleDisabling = (RuleDisabling) acceptor.getFactory().createRuleDisabling();
             ruleDisabling.Name = "<RuleDisabling" + (GetNodeCount(false) + 1) + ">";
             Item.appendRuleDisablings(ruleDisabling);
             Nodes.Add(new RuleDisablingTreeNode(ruleDisabling, true));

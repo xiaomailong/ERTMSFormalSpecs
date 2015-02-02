@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,8 +59,9 @@ namespace GUI.BoxArrowDiagram
             reDisplayMenuItem.Click += new System.EventHandler(ReDisplayMenuItem_Click);
 
             contextMenu.Items.Clear();
-            contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                reDisplayMenuItem, 
+            contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[]
+            {
+                reDisplayMenuItem,
                 refreshMenuItem
             });
         }
@@ -73,6 +75,7 @@ namespace GUI.BoxArrowDiagram
         /// The image indexes used to retrieve images
         /// </summary>
         public const int PinnedImageIndex = 0;
+
         public const int UnPinnedImageIndex = 1;
 
         /// <summary>
@@ -88,7 +91,15 @@ namespace GUI.BoxArrowDiagram
         /// <summary>
         /// The model element for which this panel is built
         /// </summary>
-        public object Model { get { return __model; } set { __model = value; InitPositionHandling(); } }
+        public object Model
+        {
+            get { return __model; }
+            set
+            {
+                __model = value;
+                InitPositionHandling();
+            }
+        }
 
         /// <summary>
         /// Constructor
@@ -115,7 +126,7 @@ namespace GUI.BoxArrowDiagram
             Paint += new PaintEventHandler(BoxArrowPanel_Paint);
         }
 
-        void BoxArrowPanel_Click(object sender, EventArgs e)
+        private void BoxArrowPanel_Click(object sender, EventArgs e)
         {
             MouseEventArgs mouseEvent = e as MouseEventArgs;
 
@@ -156,7 +167,7 @@ namespace GUI.BoxArrowDiagram
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void DragEnterHandler(object sender, DragEventArgs e)
+        private void DragEnterHandler(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
         }
@@ -169,7 +180,7 @@ namespace GUI.BoxArrowDiagram
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void DragDropHandler(object sender, DragEventArgs e)
+        private void DragDropHandler(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
             {
@@ -245,7 +256,7 @@ namespace GUI.BoxArrowDiagram
                     {
                         pinned = "!";
                     }
-                    writer.WriteLine(string.Format(CultureInfo.InvariantCulture, "  \"{0}\"[shape=record,width={1},height={2},label={3},pos=\"{4},{5}{6}\"];", box.Guid, DefaultBoxSize.Width / 100.0, DefaultBoxSize.Height / 100.0, box.GraphicalName, box.X / 100.0, box.Y / 100.0, pinned));
+                    writer.WriteLine(string.Format(CultureInfo.InvariantCulture, "  \"{0}\"[shape=record,width={1},height={2},label={3},pos=\"{4},{5}{6}\"];", box.Guid, DefaultBoxSize.Width/100.0, DefaultBoxSize.Height/100.0, box.GraphicalName, box.X/100.0, box.Y/100.0, pinned));
                 }
 
                 // Generate the arrows
@@ -271,7 +282,7 @@ namespace GUI.BoxArrowDiagram
                     {
                         for (int j = i + 1; j < boxesOfAKind.Count; j++)
                         {
-                            writer.WriteLine(string.Format(CultureInfo.InvariantCulture, "  \"{0}\" -> \"{1}\"[penwidth=0,arrowhead=none,len={2}];", boxesOfAKind[i].Guid, boxesOfAKind[j].Guid, ((boxesOfAKind.Count + 5) / 5) * DefaultBoxSize.Width / 100.0));
+                            writer.WriteLine(string.Format(CultureInfo.InvariantCulture, "  \"{0}\" -> \"{1}\"[penwidth=0,arrowhead=none,len={2}];", boxesOfAKind[i].Guid, boxesOfAKind[j].Guid, ((boxesOfAKind.Count + 5)/5)*DefaultBoxSize.Width/100.0));
                         }
                     }
                 }
@@ -282,13 +293,13 @@ namespace GUI.BoxArrowDiagram
                 // Run graphviz
                 RunProcessExec pe = new RunProcessExec(
                     /* WorkingDirectory,    */ @".",
-                    /* Path,                */ @"c:\Program Files (x86)\Graphviz 2.28\bin",
-                    /* Program,             */ "neato.exe",
-                    /* Arguments,           */ "-O -Tplain " + filePath,
-                    /* FName_StandardInput, */ null,
-                    /* FName_StandardOutput,*/ null,
-                    /* FName_StandardError, */ null,
-                    /* TimeSpan TimeOut)    */ new TimeSpan(0, 0, 0, 1 /*second*/));
+                        /* Path,                */ @"c:\Program Files (x86)\Graphviz 2.28\bin",
+                        /* Program,             */ "neato.exe",
+                        /* Arguments,           */ "-O -Tplain " + filePath,
+                        /* FName_StandardInput, */ null,
+                        /* FName_StandardOutput,*/ null,
+                        /* FName_StandardError, */ null,
+                        /* TimeSpan TimeOut)    */ new TimeSpan(0, 0, 0, 1 /*second*/));
 
                 // Retrieve results
                 RunProcessExec.ProcessExecResult_Struct result = pe.StartAndWait();
@@ -303,14 +314,14 @@ namespace GUI.BoxArrowDiagram
                         {
                             if (words[0] == "node" && words.Length >= 6)
                             {
-                                string guid = words[1].Substring(1, words[1].Length - 2);     // Remove the quotes
+                                string guid = words[1].Substring(1, words[1].Length - 2); // Remove the quotes
                                 if (theBoxes.ContainsKey(guid))
                                 {
                                     BoxModel box = theBoxes[guid];
                                     if (!box.Pinned)
                                     {
-                                        box.X = (int)(Decimal.Parse(words[2], CultureInfo.InvariantCulture) * 100);
-                                        box.Y = (int)(Decimal.Parse(words[3], CultureInfo.InvariantCulture) * 100);
+                                        box.X = (int) (Decimal.Parse(words[2], CultureInfo.InvariantCulture)*100);
+                                        box.Y = (int) (Decimal.Parse(words[3], CultureInfo.InvariantCulture)*100);
                                         box.Width = DefaultBoxSize.Width;
                                         box.Height = DefaultBoxSize.Height;
                                     }
@@ -382,10 +393,16 @@ namespace GUI.BoxArrowDiagram
         /// <summary>
         /// The action that is applied on the arrow
         /// </summary>
-        private enum ChangeAction { None, InitialBox, TargetBox };
+        private enum ChangeAction
+        {
+            None,
+            InitialBox,
+            TargetBox
+        };
+
         private ChangeAction chaningArrowAction = ChangeAction.None;
 
-        void BoxArrowPanel_MouseDown(object sender, MouseEventArgs e)
+        private void BoxArrowPanel_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
@@ -395,14 +412,14 @@ namespace GUI.BoxArrowDiagram
                     if (around(arrow.StartLocation, clickPoint))
                     {
                         changingArrow = arrow;
-                        changingArrow.Parent = this;   // I do not know why...
+                        changingArrow.Parent = this; // I do not know why...
                         chaningArrowAction = ChangeAction.InitialBox;
                         break;
                     }
                     if (around(arrow.TargetLocation, clickPoint))
                     {
                         changingArrow = arrow;
-                        changingArrow.Parent = this;   // I do not know why...
+                        changingArrow.Parent = this; // I do not know why...
                         chaningArrowAction = ChangeAction.TargetBox;
                         break;
                     }
@@ -416,7 +433,7 @@ namespace GUI.BoxArrowDiagram
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void BoxArrowPanel_MouseMove(object sender, MouseEventArgs e)
+        private void BoxArrowPanel_MouseMove(object sender, MouseEventArgs e)
         {
             if (changingArrow != null && chaningArrowAction != ChangeAction.None)
             {
@@ -449,7 +466,7 @@ namespace GUI.BoxArrowDiagram
             }
         }
 
-        void BoxArrowPanel_MouseUp(object sender, MouseEventArgs e)
+        private void BoxArrowPanel_MouseUp(object sender, MouseEventArgs e)
         {
             changingArrow = null;
             chaningArrowAction = ChangeAction.None;
@@ -560,7 +577,7 @@ namespace GUI.BoxArrowDiagram
         /// <summary>
         /// Indicates whether the layout should be suspended
         /// </summary>
-        bool refreshingControl = false;
+        private bool refreshingControl = false;
 
         /// <summary>
         /// Refreshes the layout, if it is not suspended
@@ -659,7 +676,7 @@ namespace GUI.BoxArrowDiagram
             /// <summary>
             /// The allocated rectangles
             /// </summary>
-            List<Rectangle> AllocatedBoxes = new List<Rectangle>();
+            private List<Rectangle> AllocatedBoxes = new List<Rectangle>();
 
             /// <summary>
             /// Constructor
@@ -729,12 +746,12 @@ namespace GUI.BoxArrowDiagram
         /// <summary>
         /// The size of the shift between arrows to be used when overlap occurs (more or less horizontally)
         /// </summary>
-        static int HORIZONTAL_SHIFT_SIZE = 40;
+        private static int HORIZONTAL_SHIFT_SIZE = 40;
 
         /// <summary>
         /// The size of the shift between arrows to be used when overlap occurs (more or less horizontally)
         /// </summary>
-        static int VERTICAL_SHIFT_SIZE = 20;
+        private static int VERTICAL_SHIFT_SIZE = 20;
 
         /// <summary>
         /// Ensures that two arrowss do not overlap by computing an offset between the arrows
@@ -760,7 +777,7 @@ namespace GUI.BoxArrowDiagram
                         overlap.Add(t);
                     }
                     else if ((t.Model.Source == t1.Model.Target &&
-                        t.Model.Target == t1.Model.Source))
+                              t.Model.Target == t1.Model.Source))
                     {
                         overlap.Add(t);
                     }
@@ -775,21 +792,21 @@ namespace GUI.BoxArrowDiagram
                 // Shift arrows of this overlap set if they are overlapping (that is, if the set size > 1)
                 if (overlap.Count > 1)
                 {
-                    Point shift;        // the shift to be applied to the current arrow
-                    Point offset;       // the offset to apply on all arrows of this overlap set
+                    Point shift; // the shift to be applied to the current arrow
+                    Point offset; // the offset to apply on all arrows of this overlap set
 
                     double angle = overlap[0].Angle;
-                    if ((angle > Math.PI / 4 && angle < 3 * Math.PI / 4) ||
-                        (angle < -Math.PI / 4 && angle > -3 * Math.PI / 4))
+                    if ((angle > Math.PI/4 && angle < 3*Math.PI/4) ||
+                        (angle < -Math.PI/4 && angle > -3*Math.PI/4))
                     {
                         // Horizontal shift
-                        shift = new Point(-(overlap.Count - 1) * HORIZONTAL_SHIFT_SIZE / 2, 0);
+                        shift = new Point(-(overlap.Count - 1)*HORIZONTAL_SHIFT_SIZE/2, 0);
                         offset = new Point(HORIZONTAL_SHIFT_SIZE, 0);
                     }
                     else
                     {
                         // Vertical shift
-                        shift = new Point(0, -(overlap.Count - 1) * VERTICAL_SHIFT_SIZE / 2);
+                        shift = new Point(0, -(overlap.Count - 1)*VERTICAL_SHIFT_SIZE/2);
                         offset = new Point(0, VERTICAL_SHIFT_SIZE);
                     }
 
@@ -801,7 +818,7 @@ namespace GUI.BoxArrowDiagram
 
                         if (arrow.TargetBoxControl == null)
                         {
-                            arrow.EndOffset = new Point(0, VERTICAL_SHIFT_SIZE * i / 2);
+                            arrow.EndOffset = new Point(0, VERTICAL_SHIFT_SIZE*i/2);
                         }
                         i = i + 1;
                     }

@@ -13,10 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary.Values;
+using Utils;
+
 namespace DataDictionary.Interpreter.Filter
 {
-    using Utils;
-
     /// <summary>
     /// Predicates which indicates that the namable is either a variable or a value
     /// </summary>
@@ -47,7 +49,7 @@ namespace DataDictionary.Interpreter.Filter
         /// <returns></returns>
         public static bool Predicate(INamable value)
         {
-            return value is Values.IValue || value is Parameter;
+            return value is IValue || value is Parameter;
         }
 
         /// <summary>

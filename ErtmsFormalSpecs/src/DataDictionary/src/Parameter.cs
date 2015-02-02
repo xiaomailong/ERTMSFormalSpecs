@@ -14,16 +14,26 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System.Collections;
+using DataDictionary.Generated;
+using DataDictionary.Types;
+using DataDictionary.Variables;
+using Utils;
+using Function = DataDictionary.Functions.Function;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Procedure = DataDictionary.Functions.Procedure;
+using Type = DataDictionary.Types.Type;
+
 namespace DataDictionary
 {
-    public class Parameter : Generated.Parameter, Types.ITypedElement
+    public class Parameter : Generated.Parameter, ITypedElement
     {
         /// <summary>
         /// Parameter namespace
         /// </summary>
-        public DataDictionary.Types.NameSpace NameSpace
+        public NameSpace NameSpace
         {
-            get { return DataDictionary.EnclosingNameSpaceFinder.find(this); }
+            get { return EnclosingNameSpaceFinder.find(this); }
         }
 
         /// <summary>
@@ -31,10 +41,7 @@ namespace DataDictionary
         /// </summary>
         public string TypeName
         {
-            get
-            {
-                return getTypeName();
-            }
+            get { return getTypeName(); }
             set
             {
                 type = null;
@@ -45,8 +52,9 @@ namespace DataDictionary
         /// <summary>
         /// Parameter type
         /// </summary>
-        private Types.Type type;
-        public Types.Type Type
+        private Type type;
+
+        public Type Type
         {
             get
             {
@@ -66,17 +74,17 @@ namespace DataDictionary
         /// <summary>
         /// The enclosing collection of the parameter
         /// </summary>
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
-                if (this.Enclosing is DataDictionary.Functions.Function)
+                if (this.Enclosing is Function)
                 {
-                    return Utils.EnclosingFinder<Functions.Function>.find(this).FormalParameters;
+                    return EnclosingFinder<Function>.find(this).FormalParameters;
                 }
-                else if (this.Enclosing is Functions.Procedure)
+                else if (this.Enclosing is Procedure)
                 {
-                    return Utils.EnclosingFinder<Functions.Procedure>.find(this).FormalParameters;
+                    return EnclosingFinder<Procedure>.find(this).FormalParameters;
                 }
 
                 return null;
@@ -87,9 +95,9 @@ namespace DataDictionary
         /// Creates an actual parameter based on this formal parameter and the value assigned to that parameter
         /// </summary>
         /// <returns></returns>
-        public Variables.Actual createActual()
+        public Actual createActual()
         {
-            Variables.Actual retVal = new Variables.Actual();
+            Actual retVal = new Actual();
             retVal.Name = Name;
             retVal.Enclosing = Enclosing;
             retVal.Parameter = this;
@@ -100,9 +108,9 @@ namespace DataDictionary
         /// <summary>
         /// Provides the mode of the parameter
         /// </summary>
-        public DataDictionary.Generated.acceptor.VariableModeEnumType Mode
+        public acceptor.VariableModeEnumType Mode
         {
-            get { return DataDictionary.Generated.acceptor.VariableModeEnumType.aInternal; }
+            get { return acceptor.VariableModeEnumType.aInternal; }
             set { }
         }
 
@@ -119,7 +127,7 @@ namespace DataDictionary
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
         }
 

@@ -13,19 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using BrightIdeasSoftware;
 using DataDictionary;
-using DataDictionary.Values;
-using System.Collections;
-using DataDictionary.Variables;
 using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Utils;
 
 namespace GUI.StructureValueEditor
 {
@@ -47,31 +44,31 @@ namespace GUI.StructureValueEditor
             structureTreeListView.GetColumn(0).AspectGetter = CustomizeTreeView.FieldColumnStringonizer;
             structureTreeListView.GetColumn(1).AspectGetter = CustomizeTreeView.ValueColumnStringonizer;
             structureTreeListView.GetColumn(2).AspectGetter = CustomizeTreeView.DescriptionColumnStringonizer;
-            structureTreeListView.FormatCell += new EventHandler<BrightIdeasSoftware.FormatCellEventArgs>(CustomizeTreeView.FormatCell);
+            structureTreeListView.FormatCell += new EventHandler<FormatCellEventArgs>(CustomizeTreeView.FormatCell);
 
             // Tree structure
             structureTreeListView.CanExpandGetter = CustomizeTreeView.HasChildren;
             structureTreeListView.ChildrenGetter = CustomizeTreeView.GetChildren;
 
             // Contextual menu
-            structureTreeListView.CellRightClick += new EventHandler<BrightIdeasSoftware.CellRightClickEventArgs>(CustomizeTreeView.CreateContextualMenu);
+            structureTreeListView.CellRightClick += new EventHandler<CellRightClickEventArgs>(CustomizeTreeView.CreateContextualMenu);
 
             // Edition
-            structureTreeListView.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(CustomizeTreeView.HandleCellEditStarting);
-            structureTreeListView.CellEditValidating += new BrightIdeasSoftware.CellEditEventHandler(CustomizeTreeView.HandleCellEditValidating);
-            structureTreeListView.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(CustomizeTreeView.HandleCellEditFinishing);
+            structureTreeListView.CellEditStarting += new CellEditEventHandler(CustomizeTreeView.HandleCellEditStarting);
+            structureTreeListView.CellEditValidating += new CellEditEventHandler(CustomizeTreeView.HandleCellEditValidating);
+            structureTreeListView.CellEditFinishing += new CellEditEventHandler(CustomizeTreeView.HandleCellEditFinishing);
 
             structureTreeListView.ItemDrag += new ItemDragEventHandler(structureTreeListView_ItemDrag);
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
         }
 
-        void structureTreeListView_ItemDrag(object sender, ItemDragEventArgs e)
+        private void structureTreeListView_ItemDrag(object sender, ItemDragEventArgs e)
         {
             DoDragDrop(e.Item, DragDropEffects.Move);
         }
 
-        void Window_FormClosed(object sender, FormClosedEventArgs e)
+        private void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
             GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
@@ -89,7 +86,7 @@ namespace GUI.StructureValueEditor
             {
                 foreach (IValue value in listValue.Val)
                 {
-                    if (value != DataDictionary.EFSSystem.INSTANCE.EmptyValue)
+                    if (value != EFSSystem.INSTANCE.EmptyValue)
                     {
                         ObjectModel.Add(value);
                     }
@@ -124,7 +121,7 @@ namespace GUI.StructureValueEditor
         {
             if (Variable != null)
             {
-                Expression expression = EFSSystem.INSTANCE.Parser.Expression(Utils.EnclosingFinder<Dictionary>.find(Variable), Variable.FullName);
+                Expression expression = EFSSystem.INSTANCE.Parser.Expression(EnclosingFinder<Dictionary>.find(Variable), Variable.FullName);
                 IVariable variable = expression.GetVariable(new InterpretationContext());
                 if (variable != Variable)
                 {

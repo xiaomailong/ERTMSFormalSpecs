@@ -13,7 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
+using DataDictionary.Generated;
+using DataDictionary.Values;
+using Collection = DataDictionary.Types.Collection;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Interpreter.ListOperators
 {
@@ -43,14 +48,14 @@ namespace DataDictionary.Interpreter.ListOperators
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
-        public override Types.Type GetExpressionType()
+        public override Type GetExpressionType()
         {
-            Types.Type retVal = null;
+            Type retVal = null;
 
-            Types.Type iteratorType = IteratorExpression.GetExpressionType();
+            Type iteratorType = IteratorExpression.GetExpressionType();
             if (iteratorType != null)
             {
-                Types.Collection collection = (Types.Collection)Generated.acceptor.getFactory().createCollection();
+                Collection collection = (Collection) acceptor.getFactory().createCollection();
                 collection.Enclosing = EFSSystem;
                 collection.Type = iteratorType;
 
@@ -70,16 +75,16 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
+        public override IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
-            Values.ListValue retVal = null;
+            ListValue retVal = null;
 
-            Values.ListValue value = ListExpression.GetValue(context, explain) as Values.ListValue;
+            ListValue value = ListExpression.GetValue(context, explain) as ListValue;
             if (value != null)
             {
                 int token = PrepareIteration(context);
-                retVal = new Values.ListValue((Types.Collection)GetExpressionType(), new List<Values.IValue>());
-                foreach (Values.IValue v in value.Val)
+                retVal = new ListValue((Collection) GetExpressionType(), new List<IValue>());
+                foreach (IValue v in value.Val)
                 {
                     if (v != EFSSystem.EmptyValue)
                     {

@@ -13,7 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections;
 using System.Collections.Generic;
+using DataDictionary.Specification;
+using Utils;
 
 namespace DataDictionary
 {
@@ -22,13 +26,13 @@ namespace DataDictionary
         /// <summary>
         /// The requirements for this req related model element
         /// </summary>
-        public System.Collections.ArrayList Requirements
+        public ArrayList Requirements
         {
             get
             {
                 if (allRequirements() == null)
                 {
-                    setAllRequirements(new System.Collections.ArrayList());
+                    setAllRequirements(new ArrayList());
                 }
                 return allRequirements();
             }
@@ -54,11 +58,11 @@ namespace DataDictionary
         /// <summary>
         /// Provides the set of paragraphs modeled by this req related
         /// </summary>
-        public List<Specification.Paragraph> ModeledParagraphs
+        public List<Paragraph> ModeledParagraphs
         {
             get
             {
-                HashSet<Specification.Paragraph> paragraphs = new HashSet<Specification.Paragraph>();
+                HashSet<Paragraph> paragraphs = new HashSet<Paragraph>();
 
                 ReferencesParagraph reqRelated = this;
                 while (reqRelated != null)
@@ -70,10 +74,10 @@ namespace DataDictionary
                             paragraphs.Add(reqRef.Paragraph);
                         }
                     }
-                    reqRelated = Utils.EnclosingFinder<DataDictionary.ReqRelated>.find(reqRelated);
+                    reqRelated = EnclosingFinder<ReqRelated>.find(reqRelated);
                 }
 
-                List<Specification.Paragraph> retVal = new List<Specification.Paragraph>();
+                List<Paragraph> retVal = new List<Paragraph>();
                 retVal.AddRange(paragraphs);
                 retVal.Sort();
                 return retVal;
@@ -86,12 +90,12 @@ namespace DataDictionary
         /// </summary>
         /// <param name="paragraphs">The list of paragraphs to be filled</param>
         /// <returns></returns>
-        public virtual void findRelatedParagraphsRecursively(List<Specification.Paragraph> paragraphs)
+        public virtual void findRelatedParagraphsRecursively(List<Paragraph> paragraphs)
         {
             // Append the paragraphs related to the req refs of this req related
             foreach (ReqRef reqRef in Requirements)
             {
-                Specification.Paragraph paragraph = reqRef.Paragraph;
+                Paragraph paragraph = reqRef.Paragraph;
                 if (paragraph != null)
                 {
                     if (!paragraphs.Contains(paragraph))
@@ -110,9 +114,9 @@ namespace DataDictionary
         {
             string retVal = "";
 
-            List<Specification.Paragraph> paragraphs = new List<Specification.Paragraph>();
+            List<Paragraph> paragraphs = new List<Paragraph>();
             findRelatedParagraphsRecursively(paragraphs);
-            foreach (Specification.Paragraph paragraph in paragraphs)
+            foreach (Paragraph paragraph in paragraphs)
             {
                 if (EFSSystem.DisplayRequirementsAsList)
                 {
@@ -131,7 +135,7 @@ namespace DataDictionary
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             ReqRef reqRef = element as ReqRef;
             if (reqRef != null)

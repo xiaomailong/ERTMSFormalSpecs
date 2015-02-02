@@ -13,11 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections.Generic;
+using Net.Sgoliver.NRtfTree.Core;
+
 namespace Importers.RtfDeltaImporter
 {
-    using System.Collections.Generic;
-    using Net.Sgoliver.NRtfTree.Core;
-
     /// <summary>
     /// A simple RTF parser, which shall extract only the relevant data
     /// </summary>
@@ -49,6 +50,7 @@ namespace Importers.RtfDeltaImporter
         public override void StartRtfDocument()
         {
         }
+
         public override void EndRtfDocument()
         {
         }
@@ -56,12 +58,21 @@ namespace Importers.RtfDeltaImporter
         /// <summary>
         /// Indicates whether the prefix corresponds to a paragraph number
         /// </summary>
-        private enum ParagraphNumberEnum { None, ListText, PnText };
+        private enum ParagraphNumberEnum
+        {
+            None,
+            ListText,
+            PnText
+        };
 
         /// <summary>
         /// Indicates whether the text should be taken into consideration
         /// </summary>
-        private enum IgnoreTextEnum { IgnoreText, DoNotIgnore };
+        private enum IgnoreTextEnum
+        {
+            IgnoreText,
+            DoNotIgnore
+        };
 
         /// <summary>
         /// The current mode
@@ -146,7 +157,10 @@ namespace Importers.RtfDeltaImporter
             /// Provides the active frame
             /// </summary>
             /// <returns></returns>
-            public Mode CurrentFrame { get { return Stack[0]; } }
+            public Mode CurrentFrame
+            {
+                get { return Stack[0]; }
+            }
 
             /// <summary>
             /// Indicates whether the paragraph mode corresponds to the mode provided as parameter
@@ -194,14 +208,14 @@ namespace Importers.RtfDeltaImporter
             {
                 Stack.CurrentFrame.ParagraphNumberMode = ParagraphNumberEnum.ListText;
             }
-            // Try to recognise a list number \pntext
+                // Try to recognise a list number \pntext
             else if (key.Equals("pntext"))
             {
                 Stack.CurrentFrame.ParagraphNumberMode = ParagraphNumberEnum.PnText;
             }
 
 
-            // When an outline level is encountered, this starts a new paragraph
+                // When an outline level is encountered, this starts a new paragraph
             else if (key.Equals("outlinelevel"))
             {
                 if (CurrentParagraph != null && (CurrentParagraph.Text == null || CurrentParagraph.Text.Length == 0))
@@ -268,7 +282,9 @@ namespace Importers.RtfDeltaImporter
         /// The paragraph currently processed
         /// </summary>
         private Paragraph CurrentParagraph = null;
+
         private string EnclosingParagraphId = null;
+
         public override void RtfText(string text)
         {
             bool isParagraphNumber = false;

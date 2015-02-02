@@ -13,11 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections;
 using System.Collections.Generic;
+using DataDictionary.Constants;
+using DataDictionary.Values;
+using Utils;
 
 namespace DataDictionary.Types
 {
-    public class Enum : Generated.Enum, IEnumerateValues, Utils.ISubDeclarator, TextualExplain
+    public class Enum : Generated.Enum, IEnumerateValues, ISubDeclarator, TextualExplain
     {
         /// <summary>
         /// Indicates if this Enum contains implemented sub-elements
@@ -31,7 +36,7 @@ namespace DataDictionary.Types
                     return true;
                 }
 
-                foreach (DataDictionary.Types.Enum anEnum in SubEnums)
+                foreach (Enum anEnum in SubEnums)
                 {
                     if (anEnum.ImplementationPartiallyCompleted)
                     {
@@ -46,13 +51,13 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides all the enum values this enumeration can take
         /// </summary>
-        public System.Collections.ArrayList Values
+        public ArrayList Values
         {
             get
             {
                 if (allValues() == null)
                 {
-                    setAllValues(new System.Collections.ArrayList());
+                    setAllValues(new ArrayList());
                 }
                 return allValues();
             }
@@ -61,13 +66,13 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides all the sub enums this enumeration can define
         /// </summary>
-        public System.Collections.ArrayList SubEnums
+        public ArrayList SubEnums
         {
             get
             {
                 if (allSubEnums() == null)
                 {
-                    setAllSubEnums(new System.Collections.ArrayList());
+                    setAllSubEnums(new ArrayList());
                 }
                 return allSubEnums();
             }
@@ -80,7 +85,7 @@ namespace DataDictionary.Types
         /// <param name="retVal"></param>
         public void Constants(string scope, Dictionary<string, object> retVal)
         {
-            foreach (Constants.EnumValue value in Values)
+            foreach (EnumValue value in Values)
             {
                 string name = Utils.Utils.concat(scope, value.Name);
                 retVal[name] = retVal;
@@ -92,31 +97,31 @@ namespace DataDictionary.Types
         /// </summary>
         public void InitDeclaredElements()
         {
-            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+            DeclaredElements = new Dictionary<string, List<INamable>>();
 
-            foreach (Constants.EnumValue value in Values)
+            foreach (EnumValue value in Values)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, value);
+                ISubDeclaratorUtils.AppendNamable(this, value);
             }
-            foreach (Types.Enum subEnum in SubEnums)
+            foreach (Enum subEnum in SubEnums)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, subEnum);
+                ISubDeclaratorUtils.AppendNamable(this, subEnum);
             }
         }
 
         /// <summary>
         /// Provides all the values that can be stored in this structure
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
+        public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
-            foreach (Constants.EnumValue item in Values)
+            foreach (EnumValue item in Values)
             {
                 if (item.Name.CompareTo(name) == 0)
                 {
@@ -124,7 +129,7 @@ namespace DataDictionary.Types
                     break;
                 }
             }
-            foreach (Types.Enum item in SubEnums)
+            foreach (Enum item in SubEnums)
             {
                 if (item.Name.CompareTo(name) == 0)
                 {
@@ -147,9 +152,9 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public Constants.EnumValue findEnumValue(string name)
+        public EnumValue findEnumValue(string name)
         {
-            Constants.EnumValue retVal = (Constants.EnumValue)Utils.INamableUtils.findByName(name, Values);
+            EnumValue retVal = (EnumValue) INamableUtils.findByName(name, Values);
 
             if (retVal != null && EnclosingEnum != null)
             {
@@ -164,7 +169,7 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="index">the index in names to consider</param>
         /// <param name="names">the simple value names</param>
-        public Values.IValue findValue(string[] names, int index)
+        public IValue findValue(string[] names, int index)
         {
             // HaCK: we should check the enclosing enums names
             return findEnumValue(names[names.Length - 1]);
@@ -175,9 +180,9 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
-        public override Values.IValue getValue(string image)
+        public override IValue getValue(string image)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             string[] names = image.Split('.');
 
@@ -195,11 +200,11 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides the enclosing collection to allow deletion of this enumeration
         /// </summary>
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
-                System.Collections.ArrayList retVal = null;
+                ArrayList retVal = null;
 
                 if (EnclosingEnum != null)
                 {
@@ -225,7 +230,7 @@ namespace DataDictionary.Types
 
             if (!retVal && otherType is Enum)
             {
-                Enum current = (Enum)otherType;
+                Enum current = (Enum) otherType;
 
                 while (current != null && !retVal)
                 {
@@ -241,10 +246,10 @@ namespace DataDictionary.Types
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             {
-                Constants.EnumValue item = element as Constants.EnumValue;
+                EnumValue item = element as EnumValue;
                 if (item != null)
                 {
                     appendValues(item);
@@ -271,7 +276,7 @@ namespace DataDictionary.Types
             string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
             retVal += TextualExplainUtilities.Pad(Name + "{\\b : ENUMERATION}", indentLevel);
-            foreach (Constants.EnumValue enumValue in Values)
+            foreach (EnumValue enumValue in Values)
             {
                 retVal += "\\par" + enumValue.getExplain(indentLevel + 2);
             }
@@ -279,6 +284,7 @@ namespace DataDictionary.Types
 
             return retVal;
         }
+
         /// <summary>
         /// Provides an explanation of the enumeration
         /// </summary>

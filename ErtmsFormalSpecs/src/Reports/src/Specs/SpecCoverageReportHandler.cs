@@ -13,7 +13,10 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary;
 using MigraDoc.DocumentObjectModel;
+
 namespace Reports.Specs
 {
     public class SpecCoverageReportHandler : ReportHandler
@@ -22,7 +25,7 @@ namespace Reports.Specs
         /// Constructor
         /// </summary>
         /// <param name="dictionary"></param>
-        public SpecCoverageReportHandler(DataDictionary.Dictionary dictionary)
+        public SpecCoverageReportHandler(Dictionary dictionary)
             : base(dictionary)
         {
             createFileName("SpecificationCoverageReport");
@@ -87,4 +90,3 @@ namespace Reports.Specs
         public bool ShowAssociatedParagraphs { set; get; }
     }
 }
-

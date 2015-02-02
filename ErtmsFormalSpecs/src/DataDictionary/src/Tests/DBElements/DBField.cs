@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 namespace DataDictionary.Tests.DBElements
 {
     public class DBField : Generated.DBField
@@ -22,14 +23,8 @@ namespace DataDictionary.Tests.DBElements
         /// </summary>
         public string Variable
         {
-            get
-            {
-                return getVariable();
-            }
-            set
-            {
-                setVariable(value);
-            }
+            get { return getVariable(); }
+            set { setVariable(value); }
         }
 
         /// <summary>
@@ -37,14 +32,8 @@ namespace DataDictionary.Tests.DBElements
         /// </summary>
         public string Value
         {
-            get
-            {
-                return getValue();
-            }
-            set
-            {
-                setValue(value);
-            }
+            get { return getValue(); }
+            set { setValue(value); }
         }
 
         /// <summary>
@@ -55,7 +44,7 @@ namespace DataDictionary.Tests.DBElements
         {
             if (getVariable() == other.getVariable())
             {
-                setGuid(other.getGuid());    
+                setGuid(other.getGuid());
             }
         }
     }

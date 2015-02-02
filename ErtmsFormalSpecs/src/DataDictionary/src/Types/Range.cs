@@ -13,13 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using Utils;
+using EnumValue = DataDictionary.Constants.EnumValue;
 
 namespace DataDictionary.Types
 {
-    public class Range : Generated.Range, IEnumerateValues, Utils.ISubDeclarator, DataDictionary.TextualExplain
+    public class Range : Generated.Range, IEnumerateValues, ISubDeclarator, TextualExplain
     {
         /// <summary>
         /// The min value of the range
@@ -38,8 +45,10 @@ namespace DataDictionary.Types
         /// A cache for the min value
         /// </summary>
         private bool minValueSet;
+
         private Decimal minValueAsLong;
         private double minValueAsDouble;
+
         public Decimal MinValueAsLong
         {
             get
@@ -51,7 +60,6 @@ namespace DataDictionary.Types
                 }
                 return minValueAsLong;
             }
-
         }
 
         public double MinValueAsDouble
@@ -80,8 +88,10 @@ namespace DataDictionary.Types
         /// A cache for the min value
         /// </summary>
         private bool maxValueSet = false;
+
         private Decimal maxValueAsLong;
         private double maxValueAsDouble;
+
         public Decimal MaxValueAsLong
         {
             get
@@ -93,7 +103,6 @@ namespace DataDictionary.Types
                 }
                 return maxValueAsLong;
             }
-
         }
 
         public double MaxValueAsDouble
@@ -112,20 +121,17 @@ namespace DataDictionary.Types
         /// <summary>
         /// The special values of the range
         /// </summary>
-        public System.Collections.ArrayList SpecialValues
+        public ArrayList SpecialValues
         {
             get
             {
                 if (allSpecialValues() == null)
                 {
-                    setAllSpecialValues(new System.Collections.ArrayList());
+                    setAllSpecialValues(new ArrayList());
                 }
                 return allSpecialValues();
             }
-            set
-            {
-                setAllSpecialValues(value);
-            }
+            set { setAllSpecialValues(value); }
         }
 
         /// <summary>
@@ -144,7 +150,7 @@ namespace DataDictionary.Types
 
             if (!cache.TryGetValue(image, out retVal))
             {
-                retVal = double.Parse(image, System.Globalization.CultureInfo.InvariantCulture);
+                retVal = double.Parse(image, CultureInfo.InvariantCulture);
                 cache.Add(image, retVal);
             }
 
@@ -156,9 +162,9 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
-        public override Values.IValue getValue(string image)
+        public override IValue getValue(string image)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             if (Char.IsLetter(image[0]) || image[0] == '_')
             {
@@ -174,33 +180,32 @@ namespace DataDictionary.Types
                 {
                     switch (getPrecision())
                     {
-                        case Generated.acceptor.PrecisionEnum.aIntegerPrecision:
+                        case acceptor.PrecisionEnum.aIntegerPrecision:
+                        {
+                            Decimal val = Decimal.Parse(image);
+                            Decimal min = MinValueAsLong;
+                            Decimal max = MaxValueAsLong;
+                            if (val >= min && val <= max)
                             {
-                                Decimal val = Decimal.Parse(image);
-                                Decimal min = MinValueAsLong;
-                                Decimal max = MaxValueAsLong;
-                                if (val >= min && val <= max)
-                                {
-                                    retVal = new Values.IntValue(this, val);
-                                }
+                                retVal = new IntValue(this, val);
                             }
+                        }
                             break;
 
-                        case Generated.acceptor.PrecisionEnum.aDoublePrecision:
+                        case acceptor.PrecisionEnum.aDoublePrecision:
+                        {
+                            CultureInfo info = CultureInfo.InvariantCulture;
+
+                            double val = getDouble(image);
+                            double min = MinValueAsDouble;
+                            double max = MaxValueAsDouble;
+                            if (val >= min && val <= max && image.IndexOf('.') >= 0)
                             {
-                                System.Globalization.CultureInfo info = System.Globalization.CultureInfo.InvariantCulture;
-
-                                double val = getDouble(image);
-                                double min = MinValueAsDouble;
-                                double max = MaxValueAsDouble;
-                                if (val >= min && val <= max && image.IndexOf('.') >= 0)
-                                {
-                                    retVal = new Values.DoubleValue(this, val);
-                                }
-                                break;
+                                retVal = new DoubleValue(this, val);
                             }
+                            break;
+                        }
                     }
-
                 }
                 catch (Exception exception)
                 {
@@ -224,11 +229,11 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="value">The value to convert</param>
         /// <returns></returns>
-        public override Values.IValue convert(Values.IValue value)
+        public override IValue convert(IValue value)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
-            Constants.EnumValue enumValue = value as Constants.EnumValue;
+            EnumValue enumValue = value as EnumValue;
             if (enumValue != null && enumValue.Range != null)
             {
                 retVal = findEnumValue(enumValue.Name);
@@ -243,28 +248,28 @@ namespace DataDictionary.Types
                 {
                     switch (getPrecision())
                     {
-                        case Generated.acceptor.PrecisionEnum.aIntegerPrecision:
+                        case acceptor.PrecisionEnum.aIntegerPrecision:
+                        {
+                            Decimal val = getValueAsInt(value);
+                            Decimal min = MinValueAsLong;
+                            Decimal max = MaxValueAsLong;
+                            if (val >= min && val <= max)
                             {
-                                Decimal val = getValueAsInt(value);
-                                Decimal min = MinValueAsLong;
-                                Decimal max = MaxValueAsLong;
-                                if (val >= min && val <= max)
-                                {
-                                    retVal = new Values.IntValue(this, val);
-                                }
+                                retVal = new IntValue(this, val);
+                            }
+                        }
+                            break;
+                        case acceptor.PrecisionEnum.aDoublePrecision:
+                        {
+                            double val = getValueAsDouble(value);
+                            double min = MinValueAsDouble;
+                            double max = MaxValueAsDouble;
+                            if (val >= min && val <= max)
+                            {
+                                retVal = new DoubleValue(this, val);
                             }
                             break;
-                        case Generated.acceptor.PrecisionEnum.aDoublePrecision:
-                            {
-                                double val = getValueAsDouble(value);
-                                double min = MinValueAsDouble;
-                                double max = MaxValueAsDouble;
-                                if (val >= min && val <= max)
-                                {
-                                    retVal = new Values.DoubleValue(this, val);
-                                }
-                                break;
-                            }
+                        }
                     }
                 }
                 catch (Exception exception)
@@ -281,18 +286,18 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        private Decimal getValueAsInt(Values.IValue value)
+        private Decimal getValueAsInt(IValue value)
         {
             Decimal retVal;
 
-            Values.IntValue intVal = value as Values.IntValue;
+            IntValue intVal = value as IntValue;
             if (intVal != null)
             {
                 retVal = intVal.Val;
             }
             else
             {
-                Values.DoubleValue doubleVal = value as Values.DoubleValue;
+                DoubleValue doubleVal = value as DoubleValue;
                 if (doubleVal != null)
                 {
                     retVal = new Decimal(Math.Round(doubleVal.Val));
@@ -311,18 +316,18 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public Double getValueAsDouble(Values.IValue value)
+        public Double getValueAsDouble(IValue value)
         {
             Double retVal;
 
-            Values.IntValue intVal = value as Values.IntValue;
+            IntValue intVal = value as IntValue;
             if (intVal != null)
             {
                 retVal = Decimal.ToDouble(intVal.Val);
             }
             else
             {
-                Values.DoubleValue doubleVal = value as Values.DoubleValue;
+                DoubleValue doubleVal = value as DoubleValue;
                 if (doubleVal != null)
                 {
                     retVal = doubleVal.Val;
@@ -339,7 +344,7 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides the enclosing collection to allow deletion of a range
         /// </summary>
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get { return NameSpace.Ranges; }
         }
@@ -349,11 +354,11 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
-        private Values.IValue derefEnum(Values.IValue val)
+        private IValue derefEnum(IValue val)
         {
-            Values.IValue retVal = val;
+            IValue retVal = val;
 
-            Constants.EnumValue enumValue = retVal as Constants.EnumValue;
+            EnumValue enumValue = retVal as EnumValue;
             if (enumValue != null)
             {
                 retVal = enumValue.Value;
@@ -400,15 +405,15 @@ namespace DataDictionary.Types
         /// <param name="Operation"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public override Values.IValue PerformArithmericOperation(Interpreter.InterpretationContext context, Values.IValue left, Interpreter.BinaryExpression.OPERATOR Operation, Values.IValue right)  // left +/-/*/div/exp right
+        public override IValue PerformArithmericOperation(InterpretationContext context, IValue left, BinaryExpression.OPERATOR Operation, IValue right) // left +/-/*/div/exp right
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             left = derefEnumForArithmeticOperation(left);
             right = derefEnumForArithmeticOperation(right);
 
-            Values.IntValue int1 = left as Values.IntValue;
-            Values.IntValue int2 = right as Values.IntValue;
+            IntValue int1 = left as IntValue;
+            IntValue int2 = right as IntValue;
 
             if (int1 == null || int2 == null)
             {
@@ -427,11 +432,11 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        private static Values.IValue derefEnumForArithmeticOperation(Values.IValue value)
+        private static IValue derefEnumForArithmeticOperation(IValue value)
         {
-            Values.IValue retVal = value;
+            IValue retVal = value;
 
-            Constants.EnumValue enumValue = value as Constants.EnumValue;
+            EnumValue enumValue = value as EnumValue;
             if (enumValue != null)
             {
                 if (enumValue.getForbidArithmeticOperation())
@@ -453,15 +458,15 @@ namespace DataDictionary.Types
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public override bool CompareForEquality(Values.IValue left, Values.IValue right)
+        public override bool CompareForEquality(IValue left, IValue right)
         {
             bool retVal = false;
 
             left = derefEnum(left);
             right = derefEnum(right);
 
-            Values.IntValue int1 = left as Values.IntValue;
-            Values.IntValue int2 = right as Values.IntValue;
+            IntValue int1 = left as IntValue;
+            IntValue int2 = right as IntValue;
 
             if (int1 != null && int2 != null)
             {
@@ -469,12 +474,13 @@ namespace DataDictionary.Types
             }
             else
             {
-                Values.DoubleValue double1 = left as Values.DoubleValue;
-                Values.DoubleValue double2 = right as Values.DoubleValue;
+                DoubleValue double1 = left as DoubleValue;
+                DoubleValue double2 = right as DoubleValue;
 
                 if (double1 != null && double2 != null)
                 {
-                    retVal = Types.DoubleType.CompareDoubleForEquality(double1.Val, double2.Val); ;
+                    retVal = DoubleType.CompareDoubleForEquality(double1.Val, double2.Val);
+                    ;
                 }
                 else
                 {
@@ -485,15 +491,15 @@ namespace DataDictionary.Types
             return retVal;
         }
 
-        public override bool Less(Values.IValue left, Values.IValue right)  // left < right
+        public override bool Less(IValue left, IValue right) // left < right
         {
             bool retVal = false;
 
             left = derefEnum(left);
             right = derefEnum(right);
 
-            Values.IntValue int1 = left as Values.IntValue;
-            Values.IntValue int2 = right as Values.IntValue;
+            IntValue int1 = left as IntValue;
+            IntValue int2 = right as IntValue;
 
             if (int1 != null && int2 != null)
             {
@@ -507,15 +513,15 @@ namespace DataDictionary.Types
             return retVal;
         }
 
-        public override bool Greater(Values.IValue left, Values.IValue right)  // left > right
+        public override bool Greater(IValue left, IValue right) // left > right
         {
             bool retVal = false;
 
             left = derefEnum(left);
             right = derefEnum(right);
 
-            Values.IntValue int1 = left as Values.IntValue;
-            Values.IntValue int2 = right as Values.IntValue;
+            IntValue int1 = left as IntValue;
+            IntValue int2 = right as IntValue;
 
             if (int1 != null && int2 != null)
             {
@@ -536,7 +542,7 @@ namespace DataDictionary.Types
         /// <param name="retVal"></param>
         public void Constants(string scope, Dictionary<string, object> retVal)
         {
-            foreach (Constants.EnumValue value in SpecialValues)
+            foreach (EnumValue value in SpecialValues)
             {
                 string name = Utils.Utils.concat(scope, value.Name);
                 retVal[name] = retVal;
@@ -548,27 +554,27 @@ namespace DataDictionary.Types
         /// </summary>
         public void InitDeclaredElements()
         {
-            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+            DeclaredElements = new Dictionary<string, List<INamable>>();
 
-            foreach (Constants.EnumValue value in SpecialValues)
+            foreach (EnumValue value in SpecialValues)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, value);
+                ISubDeclaratorUtils.AppendNamable(this, value);
             }
         }
 
         /// <summary>
         /// Provides all the values that can be stored in this range
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
+        public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
-            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
+            ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>
@@ -576,11 +582,11 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public Constants.EnumValue findEnumValue(string name)
+        public EnumValue findEnumValue(string name)
         {
-            Constants.EnumValue retVal = null;
+            EnumValue retVal = null;
 
-            retVal = (Constants.EnumValue)Utils.INamableUtils.findByName(name, SpecialValues);
+            retVal = (EnumValue) INamableUtils.findByName(name, SpecialValues);
 
             return retVal;
         }
@@ -590,7 +596,7 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="index">the index in names to consider</param>
         /// <param name="names">the simple value names</param>
-        public Values.IValue findValue(string[] names, int index)
+        public IValue findValue(string[] names, int index)
         {
             // HaCK: we should check the enclosing range names
             return findEnumValue(names[names.Length - 1]);
@@ -607,17 +613,17 @@ namespace DataDictionary.Types
 
             if (!retVal)
             {
-                if (otherType is IntegerType && getPrecision() == Generated.acceptor.PrecisionEnum.aIntegerPrecision)
+                if (otherType is IntegerType && getPrecision() == acceptor.PrecisionEnum.aIntegerPrecision)
                 {
                     retVal = true;
                 }
-                else if (otherType is DoubleType && getPrecision() == Generated.acceptor.PrecisionEnum.aDoublePrecision)
+                else if (otherType is DoubleType && getPrecision() == acceptor.PrecisionEnum.aDoublePrecision)
                 {
                     retVal = true;
                 }
                 else
                 {
-                    Range otherRange = otherType as Types.Range;
+                    Range otherRange = otherType as Range;
                     if (otherRange != null && getPrecision() == otherRange.getPrecision())
                     {
                         retVal = true;
@@ -632,10 +638,10 @@ namespace DataDictionary.Types
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             {
-                Constants.EnumValue item = element as Constants.EnumValue;
+                EnumValue item = element as EnumValue;
                 if (item != null)
                 {
                     appendSpecialValues(item);
@@ -655,7 +661,7 @@ namespace DataDictionary.Types
             string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
             retVal += TextualExplainUtilities.Pad(Name + "{\\b : RANGE FROM }" + MinValue + " {\\b TO }" + MaxValue, indentLevel);
-            foreach (Constants.EnumValue enumValue in SpecialValues)
+            foreach (EnumValue enumValue in SpecialValues)
             {
                 retVal += "\\par " + enumValue.getExplain(indentLevel + 2);
             }
@@ -674,14 +680,15 @@ namespace DataDictionary.Types
 
             return TextualExplainUtilities.Encapsule(retVal);
         }
+
         /// <summary>
         /// Combines two types to create a new one
         /// </summary>
         /// <param name="right"></param>
         /// <returns></returns>
-        public override Types.Type CombineType(Type right, BinaryExpression.OPERATOR Operator)
+        public override Type CombineType(Type right, BinaryExpression.OPERATOR Operator)
         {
-            Types.Type retVal = null;
+            Type retVal = null;
 
             if (Operator == BinaryExpression.OPERATOR.MULT)
             {

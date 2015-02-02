@@ -13,12 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows.Forms;
-using DataDictionary.Functions;
 using System.Drawing.Design;
+using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.Converters;
+using Case = DataDictionary.Functions.Case;
+using PreCondition = DataDictionary.Rules.PreCondition;
 
 namespace GUI.DataDictionaryView
 {
@@ -35,9 +39,9 @@ namespace GUI.DataDictionaryView
             }
 
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.ExpressionableUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.ExpressionableUITypeConverter))]
-            public DataDictionary.Functions.Case Expression
+            [Editor(typeof (ExpressionableUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (ExpressionableUITypeConverter))]
+            public Case Expression
             {
                 get { return Item; }
                 set
@@ -94,7 +98,7 @@ namespace GUI.DataDictionaryView
 
         public void AddPreConditionHandler(object sender, EventArgs args)
         {
-            DataDictionary.Rules.PreCondition preCondition = (DataDictionary.Rules.PreCondition)DataDictionary.Generated.acceptor.getFactory().createPreCondition();
+            PreCondition preCondition = (PreCondition) acceptor.getFactory().createPreCondition();
             preCondition.Condition = "<empty>";
             PreConditions.AddPreCondition(preCondition);
         }

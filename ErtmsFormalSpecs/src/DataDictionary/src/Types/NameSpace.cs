@@ -13,15 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections;
 using System.Collections.Generic;
-using DataDictionary.Interpreter;
+using DataDictionary.Functions;
+using DataDictionary.Rules;
+using DataDictionary.Variables;
 using Utils;
-using DataDictionary.Types.AccessMode;
 
 namespace DataDictionary.Types
 {
-    public class NameSpace : Generated.NameSpace, Utils.ISubDeclarator, Utils.IFinder, IEnclosesNameSpaces, IGraphicalDisplay, ICommentable
+    public class NameSpace : Generated.NameSpace, ISubDeclarator, IFinder, IEnclosesNameSpaces, IGraphicalDisplay, ICommentable
     {
         /// <summary>
         /// Used to temporarily store the list of sub-namespaces
@@ -34,19 +36,19 @@ namespace DataDictionary.Types
         public NameSpace()
             : base()
         {
-            Utils.FinderRepository.INSTANCE.Register(this);
+            FinderRepository.INSTANCE.Register(this);
         }
 
         /// <summary>
         /// The sub namespaces
         /// </summary>
-        public System.Collections.ArrayList NameSpaces
+        public ArrayList NameSpaces
         {
             get
             {
                 if (allNameSpaces() == null)
                 {
-                    setAllNameSpaces(new System.Collections.ArrayList());
+                    setAllNameSpaces(new ArrayList());
                 }
                 return allNameSpaces();
             }
@@ -55,13 +57,13 @@ namespace DataDictionary.Types
         /// <summary>
         /// The ranges types
         /// </summary>
-        public System.Collections.ArrayList Ranges
+        public ArrayList Ranges
         {
             get
             {
                 if (allRanges() == null)
                 {
-                    setAllRanges(new System.Collections.ArrayList());
+                    setAllRanges(new ArrayList());
                 }
                 return allRanges();
             }
@@ -70,13 +72,13 @@ namespace DataDictionary.Types
         /// <summary>
         /// The enumeration types
         /// </summary>
-        public System.Collections.ArrayList Enumerations
+        public ArrayList Enumerations
         {
             get
             {
                 if (allEnumerations() == null)
                 {
-                    setAllEnumerations(new System.Collections.ArrayList());
+                    setAllEnumerations(new ArrayList());
                 }
                 return allEnumerations();
             }
@@ -85,13 +87,13 @@ namespace DataDictionary.Types
         /// <summary>
         /// The structure types
         /// </summary>
-        public System.Collections.ArrayList Structures
+        public ArrayList Structures
         {
             get
             {
                 if (allStructures() == null)
                 {
-                    setAllStructures(new System.Collections.ArrayList());
+                    setAllStructures(new ArrayList());
                 }
                 return allStructures();
             }
@@ -100,13 +102,13 @@ namespace DataDictionary.Types
         /// <summary>
         /// The collection types
         /// </summary>
-        public System.Collections.ArrayList Collections
+        public ArrayList Collections
         {
             get
             {
                 if (allCollections() == null)
                 {
-                    setAllCollections(new System.Collections.ArrayList());
+                    setAllCollections(new ArrayList());
                 }
                 return allCollections();
             }
@@ -115,13 +117,13 @@ namespace DataDictionary.Types
         /// <summary>
         /// The state machines types
         /// </summary>
-        public System.Collections.ArrayList StateMachines
+        public ArrayList StateMachines
         {
             get
             {
                 if (allStateMachines() == null)
                 {
-                    setAllStateMachines(new System.Collections.ArrayList());
+                    setAllStateMachines(new ArrayList());
                 }
                 return allStateMachines();
             }
@@ -130,13 +132,13 @@ namespace DataDictionary.Types
         /// <summary>
         /// The functions declared in the namespace
         /// </summary>
-        public System.Collections.ArrayList Functions
+        public ArrayList Functions
         {
             get
             {
                 if (allFunctions() == null)
                 {
-                    setAllFunctions(new System.Collections.ArrayList());
+                    setAllFunctions(new ArrayList());
                 }
                 return allFunctions();
             }
@@ -145,13 +147,13 @@ namespace DataDictionary.Types
         /// <summary>
         /// The procedures declared in the namespace
         /// </summary>
-        public System.Collections.ArrayList Procedures
+        public ArrayList Procedures
         {
             get
             {
                 if (allProcedures() == null)
                 {
-                    setAllProcedures(new System.Collections.ArrayList());
+                    setAllProcedures(new ArrayList());
                 }
                 return allProcedures();
             }
@@ -160,13 +162,13 @@ namespace DataDictionary.Types
         /// <summary>
         /// The variables declared in the namespace
         /// </summary>
-        public System.Collections.ArrayList Variables
+        public ArrayList Variables
         {
             get
             {
                 if (allVariables() == null)
                 {
-                    setAllVariables(new System.Collections.ArrayList());
+                    setAllVariables(new ArrayList());
                 }
                 return allVariables();
             }
@@ -175,13 +177,13 @@ namespace DataDictionary.Types
         /// <summary>
         /// The rules declared in the namespace
         /// </summary>
-        public System.Collections.ArrayList Rules
+        public ArrayList Rules
         {
             get
             {
                 if (allRules() == null)
                 {
-                    setAllRules(new System.Collections.ArrayList());
+                    setAllRules(new ArrayList());
                 }
                 return allRules();
             }
@@ -241,16 +243,17 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides all the values available through this namespace
         /// </summary>
-        private List<Variables.IVariable> cachedVariables;
-        public List<Variables.IVariable> AllVariables
+        private List<IVariable> cachedVariables;
+
+        public List<IVariable> AllVariables
         {
             get
             {
                 if (cachedVariables == null)
                 {
-                    cachedVariables = new List<Variables.IVariable>();
+                    cachedVariables = new List<IVariable>();
 
-                    foreach (Variables.IVariable value in Variables)
+                    foreach (IVariable value in Variables)
                     {
                         cachedVariables.Add(value);
                     }
@@ -259,17 +262,19 @@ namespace DataDictionary.Types
                 return cachedVariables;
             }
         }
+
         /// <summary>
         /// Provides all the types available through this namespace
         /// </summary>
-        private List<Types.Type> types;
-        public List<Types.Type> Types
+        private List<Type> types;
+
+        public List<Type> Types
         {
             get
             {
                 if (types == null)
                 {
-                    types = new List<Types.Type>();
+                    types = new List<Type>();
 
                     foreach (Range range in Ranges)
                     {
@@ -302,47 +307,47 @@ namespace DataDictionary.Types
         /// </summary>
         public void InitDeclaredElements()
         {
-            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+            DeclaredElements = new Dictionary<string, List<INamable>>();
 
             foreach (NameSpace nameSpace in NameSpaces)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, nameSpace);
+                ISubDeclaratorUtils.AppendNamable(this, nameSpace);
             }
 
-            foreach (Types.Type type in Types)
+            foreach (Type type in Types)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, type);
+                ISubDeclaratorUtils.AppendNamable(this, type);
             }
 
-            foreach (Variables.IVariable variable in AllVariables)
+            foreach (IVariable variable in AllVariables)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, variable);
+                ISubDeclaratorUtils.AppendNamable(this, variable);
             }
 
-            foreach (Functions.Procedure proc in Procedures)
+            foreach (Procedure proc in Procedures)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, proc);
+                ISubDeclaratorUtils.AppendNamable(this, proc);
             }
 
-            foreach (Functions.Function function in Functions)
+            foreach (Function function in Functions)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, function);
+                ISubDeclaratorUtils.AppendNamable(this, function);
             }
         }
 
         /// <summary>
         /// The elements declared by this declarator
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
+        public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
-            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
+            ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
 
@@ -361,7 +366,7 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public NameSpace findNameSpaceByName(string name)
         {
-            return (NameSpace)Utils.INamableUtils.findByName(name, NameSpaces);
+            return (NameSpace) INamableUtils.findByName(name, NameSpaces);
         }
 
         /// <summary>
@@ -387,11 +392,11 @@ namespace DataDictionary.Types
             string[] names = name.Split('.');
             if (names.Length == 1)
             {
-                retVal = (Type)Utils.INamableUtils.findByName(name, Types);
+                retVal = (Type) INamableUtils.findByName(name, Types);
             }
             else
             {
-                NameSpace nameSpace = (NameSpace)Utils.INamableUtils.findByName(names[0], NameSpaces);
+                NameSpace nameSpace = (NameSpace) INamableUtils.findByName(names[0], NameSpaces);
                 if (nameSpace != null)
                 {
                     retVal = nameSpace.innerFindTypeByName(name.Substring(nameSpace.Name.Length + 1), false);
@@ -425,11 +430,11 @@ namespace DataDictionary.Types
         /// <summary>
         /// The enclosing collection
         /// </summary>
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
-                System.Collections.ArrayList retVal = null;
+                ArrayList retVal = null;
 
                 if (EnclosingNameSpace != null)
                 {
@@ -448,7 +453,7 @@ namespace DataDictionary.Types
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             {
                 Range item = element as Range;
@@ -479,28 +484,28 @@ namespace DataDictionary.Types
                 }
             }
             {
-                Functions.Function item = element as Functions.Function;
+                Function item = element as Function;
                 if (item != null)
                 {
                     appendFunctions(item);
                 }
             }
             {
-                Functions.Procedure item = element as Functions.Procedure;
+                Procedure item = element as Procedure;
                 if (item != null)
                 {
                     appendProcedures(item);
                 }
             }
             {
-                Rules.Rule item = element as Rules.Rule;
+                Rule item = element as Rule;
                 if (item != null)
                 {
                     appendRules(item);
                 }
             }
             {
-                Variables.Variable item = element as Variables.Variable;
+                Variable item = element as Variable;
                 if (item != null)
                 {
                     appendVariables(item);
@@ -547,7 +552,10 @@ namespace DataDictionary.Types
         /// <summary>
         /// The name to be displayed
         /// </summary>
-        public string GraphicalName { get { return Name; } }
+        public string GraphicalName
+        {
+            get { return Name; }
+        }
 
         /// <summary>
         /// Indicates whether the namespace is hidden
@@ -561,7 +569,11 @@ namespace DataDictionary.Types
         /// <summary>
         /// Indicates that the element is pinned
         /// </summary>
-        public bool Pinned { get { return getPinned(); } set { setPinned(value); } }
+        public bool Pinned
+        {
+            get { return getPinned(); }
+            set { setPinned(value); }
+        }
 
         /// <summary>
         /// Provides an explanation of the namespace
@@ -602,6 +614,5 @@ namespace DataDictionary.Types
             get { return getComment(); }
             set { setComment(value); }
         }
-
     }
 }

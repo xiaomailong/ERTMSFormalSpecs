@@ -13,11 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Values
 {
-    public class IntValue : BaseValue<Types.Type, Decimal>
+    public class IntValue : BaseValue<Type, Decimal>
     {
         public override string Name
         {
@@ -28,7 +30,7 @@ namespace DataDictionary.Values
         /// Constructor
         /// </summary>
         /// <param name="type"></param>
-        public IntValue(Types.Type type, Decimal val)
+        public IntValue(Type type, Decimal val)
             : base(type, val)
         {
         }

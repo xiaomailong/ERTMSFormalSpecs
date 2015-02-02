@@ -13,13 +13,21 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.SpecificationView;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using ReqRef = DataDictionary.ReqRef;
+using Structure = DataDictionary.Types.Structure;
+using StructureElement = DataDictionary.Types.StructureElement;
 
 namespace GUI.DataDictionaryView
 {
-    public class StructuresTreeNode : ModelElementTreeNode<DataDictionary.Types.NameSpace>
+    public class StructuresTreeNode : ModelElementTreeNode<NameSpace>
     {
         private class ItemEditor : NamedEditor
         {
@@ -37,7 +45,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public StructuresTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+        public StructuresTreeNode(NameSpace item, bool buildSubNodes)
             : base(item, buildSubNodes, "Structures", true)
         {
         }
@@ -50,7 +58,7 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Types.Structure structure in Item.Structures)
+            foreach (Structure structure in Item.Structures)
             {
                 Nodes.Add(new StructureTreeNode(structure, buildSubNodes));
             }
@@ -68,7 +76,7 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Types.Structure structure = (DataDictionary.Types.Structure)DataDictionary.Generated.acceptor.getFactory().createStructure();
+            Structure structure = (Structure) acceptor.getFactory().createStructure();
             structure.Name = "<Structure" + (GetNodeCount(false) + 1) + ">";
             AddStructure(structure);
         }
@@ -78,7 +86,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="structure"></param>
         /// <returns></returns>
-        public StructureTreeNode AddStructure(DataDictionary.Types.Structure structure)
+        public StructureTreeNode AddStructure(Structure structure)
         {
             Item.appendStructures(structure);
 
@@ -100,36 +108,36 @@ namespace GUI.DataDictionaryView
             switch (aConfig.Type)
             {
                 case (CustomProcedure.CustomProcedureType.DMI_In):
-                    {
-                        AddDMIInStructure(aConfig);
-                        break;
-                    }
+                {
+                    AddDMIInStructure(aConfig);
+                    break;
+                }
                 case (CustomProcedure.CustomProcedureType.DMI_Out):
-                    {
-                        AddDMIOutStructure(aConfig);
-                        break;
-                    }
+                {
+                    AddDMIOutStructure(aConfig);
+                    break;
+                }
                 default:
-                    {
-                        break;
-                    }
+                {
+                    break;
+                }
             }
         }
 
 
         private void AddDMIInStructure(CustomProcedure.DMIProcedureConfig aConfig)
         {
-            DataDictionary.Types.Structure aStructure = (DataDictionary.Types.Structure)DataDictionary.Generated.acceptor.getFactory().createStructure();
+            Structure aStructure = (Structure) acceptor.getFactory().createStructure();
             aStructure.Name = aConfig.ProcedureName;
             aStructure.NeedsRequirement = true;
             Item.appendStructures(aStructure);
             StructureTreeNode aStructureTreeNode = new StructureTreeNode(aStructure, true);
             Nodes.Add(aStructureTreeNode);
 
-            DataDictionary.Types.StructureElement structElemIn = (DataDictionary.Types.StructureElement)DataDictionary.Generated.acceptor.getFactory().createStructureElement();
+            StructureElement structElemIn = (StructureElement) acceptor.getFactory().createStructureElement();
             structElemIn.Name = "InputInformation";
             structElemIn.TypeName = "DMI.InputInformation";
-            structElemIn.Mode = DataDictionary.Generated.acceptor.VariableModeEnumType.aIncoming;
+            structElemIn.Mode = acceptor.VariableModeEnumType.aIncoming;
             aStructureTreeNode.AddStructureElement(structElemIn);
 
             SortSubNodes();
@@ -138,17 +146,17 @@ namespace GUI.DataDictionaryView
 
         private void AddDMIOutStructure(CustomProcedure.DMIProcedureConfig aConfig)
         {
-            DataDictionary.Types.Structure aStructure = (DataDictionary.Types.Structure)DataDictionary.Generated.acceptor.getFactory().createStructure();
+            Structure aStructure = (Structure) acceptor.getFactory().createStructure();
             aStructure.Name = aConfig.ProcedureName;
             aStructure.NeedsRequirement = true;
             Item.appendStructures(aStructure);
             StructureTreeNode aStructureTreeNode = new StructureTreeNode(aStructure, true);
             Nodes.Add(aStructureTreeNode);
 
-            DataDictionary.Types.StructureElement structElemIn = (DataDictionary.Types.StructureElement)DataDictionary.Generated.acceptor.getFactory().createStructureElement();
+            StructureElement structElemIn = (StructureElement) acceptor.getFactory().createStructureElement();
             structElemIn.Name = "OutputInformation";
             structElemIn.TypeName = "DMI.OutputInformation";
-            structElemIn.Mode = DataDictionary.Generated.acceptor.VariableModeEnumType.aIncoming;
+            structElemIn.Mode = acceptor.VariableModeEnumType.aIncoming;
             aStructureTreeNode.AddStructureElement(structElemIn);
 
             SortSubNodes();
@@ -180,20 +188,20 @@ namespace GUI.DataDictionaryView
             if (SourceNode is StructureTreeNode)
             {
                 StructureTreeNode structureTreeNode = SourceNode as StructureTreeNode;
-                DataDictionary.Types.Structure structure = structureTreeNode.Item;
+                Structure structure = structureTreeNode.Item;
 
                 structureTreeNode.Delete();
                 AddStructure(structure);
             }
-            else if (SourceNode is SpecificationView.ParagraphTreeNode)
+            else if (SourceNode is ParagraphTreeNode)
             {
-                SpecificationView.ParagraphTreeNode node = SourceNode as SpecificationView.ParagraphTreeNode;
-                DataDictionary.Specification.Paragraph paragaph = node.Item;
+                ParagraphTreeNode node = SourceNode as ParagraphTreeNode;
+                Paragraph paragaph = node.Item;
 
-                DataDictionary.Types.Structure structure = (DataDictionary.Types.Structure)DataDictionary.Generated.acceptor.getFactory().createStructure();
+                Structure structure = (Structure) acceptor.getFactory().createStructure();
                 structure.Name = paragaph.Name;
 
-                DataDictionary.ReqRef reqRef = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
+                ReqRef reqRef = (ReqRef) acceptor.getFactory().createReqRef();
                 reqRef.Name = paragaph.FullId;
                 structure.appendRequirements(reqRef);
                 AddStructure(structure);

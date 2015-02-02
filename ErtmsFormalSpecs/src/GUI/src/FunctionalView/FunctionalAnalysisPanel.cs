@@ -13,18 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-using DataDictionary.Constants;
-using DataDictionary.Types;
-using GUI.BoxArrowDiagram;
-using DataDictionary.Rules;
-using DataDictionary.Variables;
 using DataDictionary;
+using DataDictionary.Types;
 using DataDictionary.Types.AccessMode;
+using GUI.BoxArrowDiagram;
 
 namespace GUI.FunctionalView
 {

@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Windows.Forms;
 using DataDictionary.Interpreter;
 using WeifenLuo.WinFormsUI.Docking;
@@ -42,7 +43,7 @@ namespace GUI.TestRunnerView
                 if (explanation != null)
                 {
                     Text = explanation.Message;
-                }             
+                }
             }
 
             /// <summary>
@@ -52,7 +53,8 @@ namespace GUI.TestRunnerView
             {
                 get
                 {
-                    return GUIUtils.EnclosingFinder<ExplainBox>.find(TreeView); ;
+                    return GUIUtils.EnclosingFinder<ExplainBox>.find(TreeView);
+                    ;
                 }
             }
 
@@ -84,10 +86,10 @@ namespace GUI.TestRunnerView
             explainTreeView.BeforeExpand += new TreeViewCancelEventHandler(explainTreeView_BeforeExpand);
         }
 
-        void explainTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+        private void explainTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
             ExplainTreeNode node = e.Node as ExplainTreeNode;
-            foreach ( ExplainTreeNode subNode in node.Nodes )
+            foreach (ExplainTreeNode subNode in node.Nodes)
             {
                 subNode.Nodes.Clear();
                 innerSetExplanation(subNode.Explanation, subNode, 1);
@@ -100,11 +102,11 @@ namespace GUI.TestRunnerView
         /// <param name="part"></param>
         /// <param name="node"></param>
         /// <param param name="level">the level in which the explanation is inserted</param>
-        private void innerSetExplanation(DataDictionary.Interpreter.ExplanationPart part, ExplainTreeNode node, int level)
+        private void innerSetExplanation(ExplanationPart part, ExplainTreeNode node, int level)
         {
             if (part != null)
             {
-                foreach (DataDictionary.Interpreter.ExplanationPart subPart in part.SubExplanations)
+                foreach (ExplanationPart subPart in part.SubExplanations)
                 {
                     if (level < 2)
                     {
@@ -120,7 +122,7 @@ namespace GUI.TestRunnerView
         /// Sets the explanation for this explain box
         /// </summary>
         /// <param name="explanation"></param>
-        public void setExplanation(DataDictionary.Interpreter.ExplanationPart explanation)
+        public void setExplanation(ExplanationPart explanation)
         {
             explainTreeView.Nodes.Clear();
             if (explanation != null)
@@ -141,7 +143,7 @@ namespace GUI.TestRunnerView
             ExplainTreeNode node = explainTreeView.SelectedNode as ExplainTreeNode;
             if (node != null)
             {
-                node.SelectModel(Control.ModifierKeys == Keys.Control);
+                node.SelectModel(ModifierKeys == Keys.Control);
             }
         }
     }

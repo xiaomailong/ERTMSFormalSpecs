@@ -13,13 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.SpecificationView;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using Procedure = DataDictionary.Functions.Procedure;
+using ReqRef = DataDictionary.ReqRef;
+using Rule = DataDictionary.Rules.Rule;
 
 namespace GUI.DataDictionaryView
 {
-    public class ProcedureRulesTreeNode : ModelElementTreeNode<DataDictionary.Functions.Procedure>
+    public class ProcedureRulesTreeNode : ModelElementTreeNode<Procedure>
     {
         /// <summary>
         /// The editor for message variables
@@ -40,7 +47,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public ProcedureRulesTreeNode(DataDictionary.Functions.Procedure item, bool buildSubNodes)
+        public ProcedureRulesTreeNode(Procedure item, bool buildSubNodes)
             : base(item, buildSubNodes, "Rules", true)
         {
         }
@@ -53,7 +60,7 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Rules.Rule rule in Item.Rules)
+            foreach (Rule rule in Item.Rules)
             {
                 Nodes.Add(new RuleTreeNode(rule, buildSubNodes));
             }
@@ -70,7 +77,7 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)DataDictionary.Generated.acceptor.getFactory().createRule();
+            Rule rule = (Rule) acceptor.getFactory().createRule();
             rule.Name = "<Rule" + (GetNodeCount(false) + 1) + ">";
             AddRule(rule);
         }
@@ -79,7 +86,7 @@ namespace GUI.DataDictionaryView
         /// Adds a rule in the corresponding namespace
         /// </summary>
         /// <param name="variable"></param>
-        public RuleTreeNode AddRule(DataDictionary.Rules.Rule rule)
+        public RuleTreeNode AddRule(Rule rule)
         {
             Item.appendRules(rule);
             RuleTreeNode retVal = new RuleTreeNode(rule, true);
@@ -112,20 +119,20 @@ namespace GUI.DataDictionaryView
             if (SourceNode is RuleTreeNode)
             {
                 RuleTreeNode ruleTreeNode = SourceNode as RuleTreeNode;
-                DataDictionary.Rules.Rule rule = ruleTreeNode.Item;
+                Rule rule = ruleTreeNode.Item;
 
                 ruleTreeNode.Delete();
                 AddRule(rule);
             }
-            else if (SourceNode is SpecificationView.ParagraphTreeNode)
+            else if (SourceNode is ParagraphTreeNode)
             {
-                SpecificationView.ParagraphTreeNode node = SourceNode as SpecificationView.ParagraphTreeNode;
-                DataDictionary.Specification.Paragraph paragaph = node.Item;
+                ParagraphTreeNode node = SourceNode as ParagraphTreeNode;
+                Paragraph paragaph = node.Item;
 
-                DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)DataDictionary.Generated.acceptor.getFactory().createRule();
+                Rule rule = (Rule) acceptor.getFactory().createRule();
                 rule.Name = paragaph.Name;
 
-                DataDictionary.ReqRef reqRef = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
+                ReqRef reqRef = (ReqRef) acceptor.getFactory().createReqRef();
                 reqRef.Name = paragaph.FullId;
                 rule.appendRequirements(reqRef);
                 AddRule(rule);

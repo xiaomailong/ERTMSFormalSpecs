@@ -13,17 +13,21 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
-using Utils;
-using System.Collections;
 using DataDictionary.Tests;
+using DataDictionary.Tests.Runner;
+using GUI.LongOperations;
+using GUI.Report;
+using Utils;
 
 namespace GUI.TestRunnerView
 {
-    public class FrameTreeNode : ModelElementTreeNode<DataDictionary.Tests.Frame>
+    public class FrameTreeNode : ModelElementTreeNode<Frame>
     {
         /// <summary>
         /// The value editor
@@ -53,7 +57,7 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public FrameTreeNode(DataDictionary.Tests.Frame item, bool buildSubNodes)
+        public FrameTreeNode(Frame item, bool buildSubNodes)
             : base(item, buildSubNodes, null, true)
         {
         }
@@ -66,7 +70,7 @@ namespace GUI.TestRunnerView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Tests.SubSequence subSequence in Item.SubSequences)
+            foreach (SubSequence subSequence in Item.SubSequences)
             {
                 Nodes.Add(new SubSequenceTreeNode(subSequence, buildSubNodes));
             }
@@ -87,7 +91,7 @@ namespace GUI.TestRunnerView
         /// </summary>
         /// <param name="subSequenceName"></param>
         /// <returns></returns>
-        public SubSequenceTreeNode createSubSequence(DataDictionary.Tests.SubSequence subSequence)
+        public SubSequenceTreeNode createSubSequence(SubSequence subSequence)
         {
             SubSequenceTreeNode retVal;
 
@@ -115,18 +119,19 @@ namespace GUI.TestRunnerView
         }
 
         #region Apply rules
+
         private class ApplyRulesOperation : ProgressHandler
         {
             /// <summary>
             /// The frams on which the rules should be applied
             /// </summary>
-            private DataDictionary.Tests.Frame Frame { get; set; }
+            private Frame Frame { get; set; }
 
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="frame"></param>
-            public ApplyRulesOperation(DataDictionary.Tests.Frame frame)
+            public ApplyRulesOperation(Frame frame)
             {
                 Frame = frame;
             }
@@ -136,15 +141,16 @@ namespace GUI.TestRunnerView
             /// </summary>
             public override void ExecuteWork()
             {
-                Utils.FinderRepository.INSTANCE.ClearCache();
+                FinderRepository.INSTANCE.ClearCache();
                 Frame.Translate(Frame.Dictionary.TranslationDictionary);
             }
         }
+
         #endregion
 
         public void AddHandler(object sender, EventArgs args)
         {
-            createSubSequence(DataDictionary.Tests.SubSequence.createDefault("Sequence" + (GetNodeCount(false) + 1)));
+            createSubSequence(SubSequence.createDefault("Sequence" + (GetNodeCount(false) + 1)));
         }
 
         private void ClearAll()
@@ -158,7 +164,8 @@ namespace GUI.TestRunnerView
         }
 
         #region ExecuteTests
-        private class ExecuteTestsOperation : LongOperations.BaseLongOperation
+
+        private class ExecuteTestsOperation : BaseLongOperation
         {
             /// <summary>
             /// The number of failed tests 
@@ -173,14 +180,14 @@ namespace GUI.TestRunnerView
             /// <summary>
             /// The frame to test
             /// </summary>
-            private DataDictionary.Tests.Frame Frame { get; set; }
+            private Frame Frame { get; set; }
 
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="window"></param>
             /// <param name="frame"></param>
-            public ExecuteTestsOperation(Window window, DataDictionary.Tests.Frame frame)
+            public ExecuteTestsOperation(Window window, Frame frame)
             {
                 Window = window;
                 Frame = frame;
@@ -202,10 +209,10 @@ namespace GUI.TestRunnerView
                         Failed = 0;
                         ArrayList subSequences = Frame.SubSequences;
                         subSequences.Sort();
-                        foreach (DataDictionary.Tests.SubSequence subSequence in subSequences)
+                        foreach (SubSequence subSequence in subSequences)
                         {
                             Dialog.UpdateMessage("Executing " + subSequence.Name);
-                            Frame.EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(subSequence, false, false);
+                            Frame.EFSSystem.Runner = new Runner(subSequence, false, false);
                             int testCasesFailed = subSequence.ExecuteAllTestCases(Frame.EFSSystem.Runner);
                             if (testCasesFailed > 0)
                             {
@@ -232,20 +239,20 @@ namespace GUI.TestRunnerView
         {
             ClearAll();
             ClearMessages();
-            Utils.ModelElement.LogCount = 0;
+            ModelElement.LogCount = 0;
 
             ExecuteTestsOperation executeTestsOperation = new ExecuteTestsOperation(BaseForm as Window, Item);
             executeTestsOperation.ExecuteUsingProgressDialog("Executing test sequences");
 
             string runtimeErrors = "";
-            if (Utils.ModelElement.LogCount > 0)
+            if (ModelElement.LogCount > 0)
             {
                 runtimeErrors += "Errors were raised while executing sub sequences(s).\n";
             }
 
             if (!executeTestsOperation.Dialog.Canceled)
             {
-                System.Windows.Forms.MessageBox.Show(Item.SubSequences.Count + " sub sequence(s) executed, " + executeTestsOperation.Failed + " sub sequence(s) failed.\n" + runtimeErrors + "Test duration : " + Math.Round(executeTestsOperation.Span.TotalSeconds) + " seconds", "Execution report");
+                MessageBox.Show(Item.SubSequences.Count + " sub sequence(s) executed, " + executeTestsOperation.Failed + " sub sequence(s) failed.\n" + runtimeErrors + "Test duration : " + Math.Round(executeTestsOperation.Span.TotalSeconds) + " seconds", "Execution report");
             }
         }
 
@@ -258,7 +265,7 @@ namespace GUI.TestRunnerView
         /// <param name="args"></param>
         public void ReportHandler(object sender, EventArgs args)
         {
-            Report.TestReport aReport = new Report.TestReport(Item);
+            TestReport aReport = new TestReport(Item);
             aReport.Show();
         }
 

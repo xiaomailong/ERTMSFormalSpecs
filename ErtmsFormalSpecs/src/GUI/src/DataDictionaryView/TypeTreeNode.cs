@@ -14,10 +14,12 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Types;
+
 namespace GUI.DataDictionaryView
 {
     public abstract class TypeTreeNode<T> : ReqRelatedTreeNode<T>
-        where T : DataDictionary.Types.Type
+        where T : Type
     {
         /// <summary>
         /// The editor for message variables

@@ -13,10 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections.Generic;
+
 namespace Utils
 {
-    using System.Collections.Generic;
-
     /// <summary>
     /// A finder utility class. 
     /// </summary>
@@ -68,7 +69,7 @@ namespace Utils
             {
                 if (current is IEnclosed)
                 {
-                    current = ((IEnclosed)current).Enclosing;
+                    current = ((IEnclosed) current).Enclosing;
                 }
                 else
                 {
@@ -396,7 +397,7 @@ namespace Utils
 
                     if (current is IEnclosed)
                     {
-                        current = ((IEnclosed)current).Enclosing;
+                        current = ((IEnclosed) current).Enclosing;
                     }
                     else
                     {

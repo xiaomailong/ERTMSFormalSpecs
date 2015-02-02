@@ -14,6 +14,11 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using Utils;
+using NameSpace = DataDictionary.Types.NameSpace;
+
 namespace DataDictionary.Tests.Runner.Events
 {
     public abstract class ModelEvent : TextualExplain
@@ -27,6 +32,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// The message associated to this event
         /// </summary>
         private string _message = null;
+
         public string Message
         {
             get
@@ -40,16 +46,13 @@ namespace DataDictionary.Tests.Runner.Events
 
                 return retVal;
             }
-            set
-            {
-                _message = value;
-            }
+            set { _message = value; }
         }
 
         /// <summary>
         /// The explanation about this model event
         /// </summary>
-        public DataDictionary.Interpreter.ExplanationPart Explanation { get; set; }
+        public ExplanationPart Explanation { get; set; }
 
         /// <summary>
         /// The event time
@@ -64,17 +67,17 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The instance on which this event occured
         /// </summary>
-        public Utils.INamable Instance { get; private set; }
+        public INamable Instance { get; private set; }
 
         /// <summary>
         /// The namespace associated to this event
         /// </summary>
-        public abstract Types.NameSpace NameSpace { get; }
+        public abstract NameSpace NameSpace { get; }
 
         /// <summary>
         /// The priority when the event occurs
         /// </summary>
-        public Generated.acceptor.RulePriority? Priority { get; private set; }
+        public acceptor.RulePriority? Priority { get; private set; }
 
         /// <summary>
         /// Constructor
@@ -82,7 +85,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// <param name="id"></param>
         /// <param name="instance"></param>
         /// <param name="priority"></param>
-        public ModelEvent(string id, Utils.INamable instance, Generated.acceptor.RulePriority? priority)
+        public ModelEvent(string id, INamable instance, acceptor.RulePriority? priority)
         {
             Id = id;
             Message = id;
@@ -95,7 +98,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// </summary>
         /// <param name="id"></param>
         /// <param name="message"></param>
-        public ModelEvent(string id, string message, Generated.acceptor.RulePriority? priority)
+        public ModelEvent(string id, string message, acceptor.RulePriority? priority)
         {
             Id = id;
             Message = message;

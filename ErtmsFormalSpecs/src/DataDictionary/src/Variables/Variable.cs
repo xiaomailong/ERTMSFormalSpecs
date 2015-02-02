@@ -13,15 +13,22 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
+using System.Collections;
 using System.Collections.Generic;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
 using DataDictionary.Types;
 using DataDictionary.Values;
 using Utils;
+using Collection = DataDictionary.Types.Collection;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Structure = DataDictionary.Types.Structure;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Variables
 {
-    public class Variable : Generated.Variable, IVariable, Utils.ISubDeclarator, TextualExplain, Types.IDefaultValueElement, IGraphicalDisplay
+    public class Variable : Generated.Variable, IVariable, ISubDeclarator, TextualExplain, IDefaultValueElement, IGraphicalDisplay
     {
         /// <summary>
         /// Indicates that the DeclaredElement dictionary is currently being built
@@ -38,11 +45,11 @@ namespace DataDictionary.Variables
         /// <summary>
         /// The elements declared by this variable
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements
+        public Dictionary<string, List<INamable>> DeclaredElements
         {
             get
             {
-                Dictionary<string, List<Utils.INamable>> retVal = new Dictionary<string, List<Utils.INamable>>();
+                Dictionary<string, List<INamable>> retVal = new Dictionary<string, List<INamable>>();
 
                 if (!BuildingDeclaredElements)
                 {
@@ -50,7 +57,7 @@ namespace DataDictionary.Variables
                     {
                         BuildingDeclaredElements = true;
 
-                        Values.StructureValue structureValue = Value as Values.StructureValue;
+                        StructureValue structureValue = Value as StructureValue;
                         if (structureValue != null)
                         {
                             if (structureValue.DeclaredElements == null)
@@ -82,7 +89,7 @@ namespace DataDictionary.Variables
                     return true;
                 }
 
-                foreach (DataDictionary.Variables.Variable subVariable in allSubVariables())
+                foreach (Variable subVariable in allSubVariables())
                 {
                     if (subVariable.ImplementationPartiallyCompleted)
                     {
@@ -99,7 +106,7 @@ namespace DataDictionary.Variables
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
             if (!BuildingDeclaredElements)
             {
@@ -107,14 +114,14 @@ namespace DataDictionary.Variables
                 {
                     BuildingDeclaredElements = true;
 
-                    Values.StructureValue structureValue = Value as Values.StructureValue;
+                    StructureValue structureValue = Value as StructureValue;
                     if (structureValue != null)
                     {
                         structureValue.Find(name, retVal);
                     }
 
                     // Dereference of an empty value holds the empty value
-                    Values.EmptyValue emptyValue = Value as Values.EmptyValue;
+                    EmptyValue emptyValue = Value as EmptyValue;
                     if (emptyValue != null)
                     {
                         retVal.Add(emptyValue);
@@ -130,7 +137,7 @@ namespace DataDictionary.Variables
         /// <summary>
         /// The enclosing name space
         /// </summary>
-        public Types.NameSpace NameSpace
+        public NameSpace NameSpace
         {
             get { return EnclosingNameSpaceFinder.find(this); }
         }
@@ -138,7 +145,7 @@ namespace DataDictionary.Variables
         /// <summary>
         /// Provides the mode of the variable
         /// </summary>
-        public DataDictionary.Generated.acceptor.VariableModeEnumType Mode
+        public acceptor.VariableModeEnumType Mode
         {
             get { return getVariableMode(); }
             set { setVariableMode(value); }
@@ -177,8 +184,9 @@ namespace DataDictionary.Variables
         /// <summary>
         /// Provides the expression tree associated to this action's expression
         /// </summary>
-        private Interpreter.Expression __expression;
-        public Interpreter.Expression Expression
+        private Expression __expression;
+
+        public Expression Expression
         {
             get
             {
@@ -189,13 +197,13 @@ namespace DataDictionary.Variables
 
                 return __expression;
             }
-            set
-            {
-                __expression = value;
-            }
+            set { __expression = value; }
         }
 
-        public Interpreter.InterpreterTreeNode Tree { get { return Expression; } }
+        public InterpreterTreeNode Tree
+        {
+            get { return Expression; }
+        }
 
         /// <summary>
         /// Clears the expression tree to ensure new compilation
@@ -208,7 +216,7 @@ namespace DataDictionary.Variables
         /// <summary>
         /// Creates the tree according to the expression text
         /// </summary>
-        public Interpreter.InterpreterTreeNode Compile()
+        public InterpreterTreeNode Compile()
         {
             // Side effect, builds the statement if it is not already built
             return Tree;
@@ -224,18 +232,15 @@ namespace DataDictionary.Variables
         {
             bool retVal = false;
 
-            Interpreter.Expression tree = EFSSystem.Parser.Expression(this, expression, null, false, null, true);
+            Expression tree = EFSSystem.Parser.Expression(this, expression, null, false, null, true);
             retVal = tree != null;
 
             return retVal;
         }
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
-            get
-            {
-                return NameSpace.Variables;
-            }
+            get { return NameSpace.Variables; }
         }
 
         /// <summary>
@@ -243,10 +248,7 @@ namespace DataDictionary.Variables
         /// </summary>
         public string TypeName
         {
-            get
-            {
-                return getTypeName();
-            }
+            get { return getTypeName(); }
             set
             {
                 setTypeName(value);
@@ -261,8 +263,9 @@ namespace DataDictionary.Variables
         /// <summary>
         /// The type associated to this variable
         /// </summary>
-        private Types.Type type;
-        public Types.Type Type
+        private Type type;
+
+        public Type Type
         {
             get
             {
@@ -295,7 +298,7 @@ namespace DataDictionary.Variables
             {
                 Dictionary<string, IVariable> retVal = retVal = new Dictionary<string, IVariable>();
 
-                Values.StructureValue structureValue = Value as Values.StructureValue;
+                StructureValue structureValue = Value as StructureValue;
                 if (structureValue != null)
                 {
                     retVal = structureValue.SubVariables;
@@ -308,11 +311,11 @@ namespace DataDictionary.Variables
         /// <summary>
         /// Provides the variable's default value
         /// </summary>
-        public Values.IValue DefaultValue
+        public IValue DefaultValue
         {
             get
             {
-                Values.IValue retVal = null;
+                IValue retVal = null;
 
                 if (Type != null)
                 {
@@ -326,7 +329,7 @@ namespace DataDictionary.Variables
                         // The variable defines a default value, try to interpret it
                         if (Expression != null)
                         {
-                            retVal = Expression.GetValue(new Interpreter.InterpretationContext(Type), null);
+                            retVal = Expression.GetValue(new InterpretationContext(Type), null);
                             if (retVal != null && !Type.Match(retVal.Type))
                             {
                                 AddError("Default value type (" + retVal.Type.Name + ")does not match variable type (" + Type.Name + ")");
@@ -353,9 +356,9 @@ namespace DataDictionary.Variables
             }
         }
 
-        public override void AddElementLog(Utils.ElementLog log)
+        public override void AddElementLog(ElementLog log)
         {
-            if (Enclosing is DataDictionary.Types.NameSpace)
+            if (Enclosing is NameSpace)
             {
                 base.AddElementLog(log);
             }
@@ -381,8 +384,9 @@ namespace DataDictionary.Variables
         /// <summary>
         /// The variable's value
         /// </summary>
-        public Values.IValue theValue;
-        public Values.IValue Value
+        public IValue theValue;
+
+        public IValue Value
         {
             get
             {
@@ -399,7 +403,7 @@ namespace DataDictionary.Variables
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             base.AddModelElement(element);
         }
@@ -464,14 +468,14 @@ namespace DataDictionary.Variables
 
             if (string.IsNullOrEmpty(retVal))
             {
-                Types.Structure structure = Type as Types.Structure;
+                Structure structure = Type as Structure;
                 if (structure != null)
                 {
                     retVal = structure.FullName + "{}";
                 }
                 else
                 {
-                    Types.Collection collection = Type as Types.Collection;
+                    Collection collection = Type as Collection;
                     if (collection != null)
                     {
                         retVal = "[]";
@@ -525,7 +529,10 @@ namespace DataDictionary.Variables
         /// <summary>
         /// The name to be displayed
         /// </summary>
-        public string GraphicalName { get { return Name; } }
+        public string GraphicalName
+        {
+            get { return Name; }
+        }
 
         /// <summary>
         /// Indicates whether the namespace is hidden
@@ -539,7 +546,11 @@ namespace DataDictionary.Variables
         /// <summary>
         /// Indicates that the element is pinned
         /// </summary>
-        public bool Pinned { get { return getPinned(); } set { setPinned(value); } }
+        public bool Pinned
+        {
+            get { return getPinned(); }
+            set { setPinned(value); }
+        }
 
         public override void HandleChange()
         {
