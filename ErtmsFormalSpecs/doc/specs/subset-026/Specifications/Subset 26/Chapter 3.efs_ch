@@ -34332,6 +34332,7 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  Name=""
@@ -34344,6 +34345,7 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  Name=""
@@ -34353,10 +34355,6 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="5ab7d301-39cc-46d0-ba7b-eec91b79145c"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="dc0d422c-ab29-440c-8c73-a8c7ff4be7ec"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.16.1.1.b"
@@ -34364,6 +34362,7 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  Name=""
@@ -34373,10 +34372,6 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="db234ed2-d3b6-4819-999a-bd7e13719c0f"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="2e24f8a3-5f72-4266-bdd9-6317194fdfde"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.16.1.1.c"
@@ -34384,6 +34379,7 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
  scope="FLAGS"
  bl=""
  name=""
+ reviewed="TRUE"
  status="NA"
  version="3.0.0"
  Name=""
@@ -34392,10 +34388,6 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="85174e62-1209-4942-8331-78397b5795a8"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="d0530c3b-290d-4dae-96a7-e842c7c5ce8f"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
@@ -34414,20 +34406,12 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="518cfddc-d281-48cb-be48-992098d2e00f"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="9819de31-ae80-4a2d-aac8-ea78e5a6fa0b"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="a91a85e5-38a5-4057-8bf3-b7055563e477"
->
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="22980737-d75e-4f33-9fdf-cc03303ca5ad"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
@@ -34472,12 +34456,12 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
 >Definitions<Sub>
 <Paragraph
  id="3.16.2.1.1"
- type="REQUIREMENT"
+ type="DEFINITION"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="Implemented"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="fd55eb84-5f75-4476-80bc-ac0f3d3de9f4"
@@ -34546,10 +34530,44 @@ The ERTMS/ETCS on-board equipment shall offer the possibility to display, only o
  version="3.0.0"
  Name=""
  Guid="bc35119f-f1da-40d4-b6f7-b73c9ba07d98"
->A balise within a balise group shall be regarded as missed if
-	a) No balise is found within the maximum distance between balises from the previous balise in the group.
-	or
-	b) A following balise within the group has been passed.<RequirementSets>
+>A balise within a balise group shall be regarded as missed if<Sub>
+<Paragraph
+ id="3.16.2.1.3.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="bb8f4e12-123f-4746-81d4-bd86e68fad6b"
+>No balise is found within the maximum distance between balises from the previous balise in the group.
+	or<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="a7746cfa-eb5c-418d-8d3b-a581cdb19c4f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.2.1.3.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="5c440e26-b092-4abd-8105-dca981501e3f"
+>A following balise within the group has been passed.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="65f66736-ef6f-4526-b2f4-7b3e97405c6a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="3a32b730-7b50-4e55-9181-f3822a70ae4d"
@@ -34816,10 +34834,6 @@ If linking information is used the on-board shall react according to the linking
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="08f94ea7-dfb4-422d-b999-4b61a35862f1"
 >
-</RequirementSetReference><RequirementSetReference
- RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
- Guid="619931c1-a153-40c3-8f1b-7dd5f3b1e045"
->
 </RequirementSetReference></RequirementSets>
 </Paragraph><Paragraph
  id="3.16.2.4"
@@ -34843,12 +34857,94 @@ If linking information is used the on-board shall react according to the linking
  version="3.0.0"
  Name=""
  Guid="00031a80-e9f3-4821-a0a6-1d322a75fa85"
-><Comment>&quot;Linking information is used&quot; is defined in 3.4.4.2.1.1 #morido, 14/01/20</Comment>
-If linking information is used, the on-board shall reject the message from a linked balise group found in the expected location and react according to the linking reaction in the following cases:
-	a) A balise is missed inside the group.
-	b) A balise is detected but no telegram is decoded (e.g. wrong CRC,...).
-	c) Variables in the balise group message have invalid values.
-	d) Message counters do not match (see 3.16.2.4.7)<RequirementSets>
+>If linking information is used, the on-board shall reject the message from a linked balise group found in the expected location and react according to the linking reaction in the following cases:<Sub>
+<Paragraph
+ id="3.16.2.4.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="3324bf1d-eedf-4227-a95f-86ca4e2d72e1"
+>A balise is missed inside the group.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ce2d430c-97a5-4bcd-8e55-44d4c58b045d"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="8583f972-be98-4a84-988a-2bbc142011ef"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.2.4.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="eab92131-53b1-4cd9-9251-e5b397a83350"
+><ReqRef
+ Id="99759e11-4ff9-40eb-b676-e66b36674967"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a64460c5-70e8-49ea-baa9-6a4a494cb22f"
+>
+</ReqRef>A balise is detected but no telegram is decoded (e.g. wrong CRC,...).<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="6b491424-f510-4c35-b0c2-a93990de302c"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="f6d32d17-e487-4f1f-aaa1-a3e90f45cf66"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.2.4.1.c"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="53747e4e-7f05-4bf8-9573-a743730e9af0"
+>Variables in the balise group message have invalid values.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="94821d4c-877f-41a1-be51-600deccf9886"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="1887b114-6af2-4589-88fa-83f34ce07637"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.2.4.1.d"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="752dcbf7-d97c-4790-bac1-1fc62dbf66f1"
+>Message counters do not match (see 3.16.2.4.7)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="2853a907-9a9b-4fc3-99d4-12e1a3f53d02"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="588d8590-6c73-4385-a3c3-294cb27c14b4"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="50ef95ff-793b-4ef5-8401-a68994fc1bce"
@@ -34889,8 +34985,7 @@ If linking information is used, the on-board shall reject the message from a lin
  version="3.0.0"
  Name=""
  Guid="dc13fa0f-3c6b-42d8-a367-9de75248768d"
-><Comment>&quot;Linking information is used&quot; is defined in 3.4.4.2.1.1 #morido, 14/01/20</Comment>
-If linking information is used, the on-board shall reject the message from a balise group marked as linked but not included in the linking information. No reaction shall be applied, even if errors in the reading of the balise group occur.<RequirementSets>
+>If linking information is used, the on-board shall reject the message from a balise group marked as linked but not included in the linking information. No reaction shall be applied, even if errors in the reading of the balise group occur.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="7fbfde3f-854d-424c-9ef9-46320ad858c4"
@@ -34910,13 +35005,93 @@ If linking information is used, the on-board shall reject the message from a bal
  version="3.0.0"
  Name=""
  Guid="a7df0f1f-2d5f-4baa-b656-9ddbc4393074"
-><Comment>&quot;Linking information is used&quot; is defined in 3.4.4.2.1.1 #morido, 14/01/20</Comment>
-If no linking information is used, the on-board shall reject the message from a balise group marked as linked and command application of the service brake in the following cases:
-	a) A balise is missed inside the group.
-	b) A balise is detected, but no telegram is decoded (e.g. wrong CRC).
-	c) Variables in the balise group message have invalid values.
-	d) Message counters do not match (see 3.16.2.4.7)<Sub>
+>If no linking information is used, the on-board shall reject the message from a balise group marked as linked and command application of the service brake in the following cases:<Sub>
 <Paragraph
+ id="3.16.2.4.4.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="d9803061-6365-4307-896d-2019de665b23"
+>A balise is missed inside the group.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="4ff05975-f357-402d-ba84-fa72c1198a26"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="3a582fe6-b9b1-4c9d-b6f6-eae6aebcccbf"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.2.4.4.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="88b4d9a8-c67f-451c-a109-b4bb259672ac"
+><ReqRef
+ Id="99759e11-4ff9-40eb-b676-e66b36674967"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d2eb7e57-9866-47bf-a7b5-efe8ac31b855"
+>
+</ReqRef>A balise is detected, but no telegram is decoded (e.g. wrong CRC).<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f56c90b8-b9cc-4aa0-b957-1444bd8ceeac"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="37465849-b351-4444-847b-405ca0029fe5"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.2.4.4.c"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="758b6d57-bd6b-465f-b091-3477da12be7d"
+>Variables in the balise group message have invalid values.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="6b80c6cf-c2d3-4efb-8c85-7f9ce5e5cc4f"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="eef7d186-5a9d-471e-b13b-3e89760b8205"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.2.4.4.d"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="68a7df3c-ca07-4adf-ac06-12ba8e631b5e"
+>Message counters do not match (see 3.16.2.4.7)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="1699c79a-7818-40d9-9189-e968fcd8d673"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="f13953d3-7572-4b30-8782-e6002427b334"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.16.2.4.4.1"
  type="NOTE"
  scope="FLAGS"
@@ -35255,12 +35430,93 @@ only data to be used by applications outside ERTMS/ETCS together with other info
  version="3.0.0"
  Name=""
  Guid="d40be57e-365b-4f3a-ad26-7ff1d347c5f9"
->An on-board equipment shall reject the message received from a balise group marked as unlinked and command application of the service brake in the following cases:
-	a) A balise is missed inside the unlinked balise group.
-	b) A balise is detected, but no telegram is decoded (e.g. wrong CRC).
-	c) Variables in the balise group message have invalid values.
-	d) Message counters do not match (see 3.16.2.4.7)<Sub>
+>An on-board equipment shall reject the message received from a balise group marked as unlinked and command application of the service brake in the following cases:<Sub>
 <Paragraph
+ id="3.16.2.5.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="8bb7feaf-24fe-4d1a-9775-87e913521f1d"
+>A balise is missed inside the unlinked balise group.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8999b808-498a-4602-9e85-ee983edb3f21"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="9e245498-85a4-4bef-909f-4f57bb54e4ce"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.2.5.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="856a18d9-8c51-4a1b-abea-c179ef01b3b7"
+><ReqRef
+ Id="99759e11-4ff9-40eb-b676-e66b36674967"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0c77f93f-d602-4b41-a29c-a35b175644db"
+>
+</ReqRef>A balise is detected, but no telegram is decoded (e.g. wrong CRC).<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="b4e05795-06d1-4041-8728-acd1f3572643"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="b8eb06be-ba97-4aab-b013-a1508f4537ce"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.2.5.1.c"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="91521e6e-52aa-4c7b-bb7f-957007e8cee5"
+>Variables in the balise group message have invalid values.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="3483801e-c5fa-4808-9df3-8dc037ce7d99"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="77e318e6-ca7a-499a-8468-d79b546701a7"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.2.5.1.d"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="04376925-d0f1-494f-bbdf-2723a7d3b9d4"
+>Message counters do not match (see 3.16.2.4.7)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="c8f81419-dc69-45d7-8952-ff5d8a0d4ae6"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="6511cb62-a10f-49d7-98aa-9a453357743d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.16.2.5.1.1"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -35270,14 +35526,54 @@ only data to be used by applications outside ERTMS/ETCS together with other info
  version="3.0.0"
  Name=""
  Guid="c714f3fb-5bad-4115-8fd3-588a1387795d"
->Exceptions: Concerning a) and b) of clause 3.16.2.5.1, the ERTMS/ETCS on-board equipment:
-	a)  shall not reject the message and shall not command application of the service brake if the balise not found, or not decoded, is duplicated within the balise group, the duplicating one is correctly read and contains:
+>Exceptions: Concerning a) and b) of clause 3.16.2.5.1, the ERTMS/ETCS on-board equipment:<Sub>
+<Paragraph
+ id="3.16.2.5.1.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="3fab5e71-23cc-47ba-ab1f-f945dfe4ed39"
+>shall not reject the message and shall not command application of the service brake if the balise not found, or not decoded, is duplicated within the balise group, the duplicating one is correctly read and contains:
 	- directional information while the orientation of the balise group can still be evaluated, or
 	- only information valid for both directions, or
 	- neither directional information nor information valid for both directions, or
 	- only data to be used by applications outside ERTMS/ETCS, or
-	- only data to be used by applications outside ERTMS/ETCS together with other information valid for both directions. 
-	b) shall not command application of the service brake if the telegram correctly read from another balise of the group contains the information &quot;Inhibition of balise group message consistency reaction&quot;.<RequirementSets>
+	- only data to be used by applications outside ERTMS/ETCS together with other information valid for both directions.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="8f5c9d14-3f9b-4c6f-b62f-b08fe3417140"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="d001a73c-de18-45d1-978f-e455f5aaad4a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.2.5.1.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="bc203fe9-a734-483d-acef-f8bc36a5ce00"
+>shall not command application of the service brake if the telegram correctly read from another balise of the group contains the information &quot;Inhibition of balise group message consistency reaction&quot;.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f0552ea7-cbee-4069-8898-4360ffede4a9"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="3d278507-957d-4768-966b-360e473a68aa"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="118f8d72-498c-4dcd-8119-fb275d9c2ae1"
@@ -35550,9 +35846,49 @@ only data to be used by applications outside ERTMS/ETCS together with other info
  version="3.0.0"
  Name=""
  Guid="6ae42f8d-795c-47e9-8a41-3f4433b18021"
->If repositioning is announced and the expected repositioning balise group has been found, the ERTMS/ETCS on-board equipment shall keep looking for a balise group that satisfies the same criteria as this previously expected and already found repositioning balise group, until one of the following events occurs:
-	a) the on-board antenna leaves the expectation window of the repositioning balise group that was announced and already found
-	b) a linked balise group that has been announced with known identity is found.<RequirementSets>
+>If repositioning is announced and the expected repositioning balise group has been found, the ERTMS/ETCS on-board equipment shall keep looking for a balise group that satisfies the same criteria as this previously expected and already found repositioning balise group, until one of the following events occurs:<Sub>
+<Paragraph
+ id="3.16.2.7.2.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="baeb0b9b-6e0d-4bcf-b5eb-cd57d7499198"
+>the on-board antenna leaves the expectation window of the repositioning balise group that was announced and already found<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="555378d1-475b-4f82-9426-a5b0bedd0112"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="31a62d90-2c89-40ce-a5f5-ccbc8251b80b"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.2.7.2.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="848fea93-159f-4a91-8e12-25254251ce91"
+>a linked balise group that has been announced with known identity is found.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="050647ea-3868-49de-97c0-5463c07aa444"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="679ce260-3633-4819-8317-b469c66f869f"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="59e3625a-87a3-4c3e-bce6-5751045e1220"
@@ -35681,11 +36017,68 @@ only data to be used by applications outside ERTMS/ETCS together with other info
  version="3.0.0"
  Name=""
  Guid="a3ae1dd4-1e9a-44e2-85d0-b0ebc947ebc1"
->A radio message is consistent when all checks have been completed successfully:
-	a) Checks performed by Euroradio protocol have been passed (see Subset-037)
-	b) Time stamps checks have been passed (see 3.16.3.3.3)
-	c) Variables in the messages do not have in-valid values.<Sub>
+>A radio message is consistent when all checks have been completed successfully:<Sub>
 <Paragraph
+ id="3.16.3.1.1.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="d1808800-4007-475a-803d-f7e37f00e391"
+>Checks performed by Euroradio protocol have been passed (see Subset-037)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="f796dde6-e168-4748-acc9-c9fe45a72e4f"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="0174e14e-2af9-4f7e-a07f-b1d9673b6a1d"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.3.1.1.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="6950f2b1-0c72-4e10-9f34-e93e44498694"
+>Time stamps checks have been passed (see 3.16.3.3.3)<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="beb3b770-c3a2-455e-9441-e111a00144e4"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="e2683f6a-94b4-4910-b225-dc4710ebe645"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.3.1.1.c"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="9e7a0583-df92-4eab-8868-236ab7137663"
+>Variables in the messages do not have in-valid values.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="e9a19f7d-a7a1-48e3-9fff-165e1419f409"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="36d34c5e-fb92-40d9-81d1-1cad550511b9"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
  id="3.16.3.1.1.1"
  type="REQUIREMENT"
  scope="FLAGS"
@@ -36174,10 +36567,69 @@ only data to be used by applications outside ERTMS/ETCS together with other info
  version="3.0.0"
  Name=""
  Guid="3d4a4bc1-0bca-4a3b-9856-b6e42e4c9d03"
->It shall be possible to select one of the following reactions (National value) :
-	a) Train trip
-	b) Apply service brake
-	c) No reaction<RequirementSets>
+>It shall be possible to select one of the following reactions (National value):<Sub>
+<Paragraph
+ id="3.16.3.4.2.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="4aafaa1d-6dad-4116-9c76-919faa0a29e7"
+>Train trip<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ae99bca4-e5d7-41fe-9b2b-4e648ba83c26"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="f67693a6-b121-4496-b8ab-1b75d30bd142"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.3.4.2.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="c70bfa9f-8666-4350-a99f-e648bd25c511"
+>Apply service brake<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0c8e29c7-6e8a-4dd2-bbf8-50531a02a677"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="40082199-22ab-4081-8208-ab3233d5d46a"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.3.4.2.c"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="75998632-b501-408b-884c-9389aefb1de7"
+>No reaction<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="6a22985d-5861-4799-b57a-1d51e3e55339"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="1123c038-1673-433f-91dd-21fb3d735be5"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="56624d73-fdd5-4fd3-af1d-bffc31575597"
@@ -36242,9 +36694,49 @@ only data to be used by applications outside ERTMS/ETCS together with other info
  version="3.0.0"
  Name=""
  Guid="4c72e2f8-34a5-4066-86d2-067ebbdb7465"
->If the service brake is initiated, the following reaction shall be taken;
-	a) For brake command release conditions refer to section 3.14.1.7.
-	b) If no new consistent message is received until the train reaches standstill, the location based information stored on-board shall be shortened to the current position. Refer to appendix A.3.4 for the exhaustive list of information, which shall be shortened.<RequirementSets>
+>If the service brake is initiated, the following reaction shall be taken;<Sub>
+<Paragraph
+ id="3.16.3.4.5.a"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="e7ac0b5d-5b94-4f8d-85af-20c7e79216b9"
+>For brake command release conditions refer to section 3.14.1.7.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="ef8bd2a3-60d8-4e41-8d9a-784eae662027"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="04e733b2-7c09-44b8-952c-480fc1f33e81"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="3.16.3.4.5.b"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="3fb26b04-e85c-4943-a152-64ddc3eac289"
+>If no new consistent message is received until the train reaches standstill, the location based information stored on-board shall be shortened to the current position. Refer to appendix A.3.4 for the exhaustive list of information, which shall be shortened.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="83973ca3-5b3d-46a7-acaa-b20822882333"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="f41b180b-5b5a-446b-ae3d-70822b6f48be"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="27846197-8542-4dce-909d-893d01bde8a6"

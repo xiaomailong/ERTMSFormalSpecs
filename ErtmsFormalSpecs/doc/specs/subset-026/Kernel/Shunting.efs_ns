@@ -126,9 +126,9 @@
  Guid="d67e003d-78e3-4271-811a-7eba7708ed34"
 >
 <Expression>THERE_IS ShuntingBG IN BaliseGroupsForShArea.BGs | 
-(FIRST Balise IN BaliseGroup).NID_C == ShuntingBG.NID_C
+(FIRST Balise IN BaliseGroup).Telegram.NID_C == ShuntingBG.NID_C
   AND  
-(FIRST Balise IN BaliseGroup).NID_BG == ShuntingBG.NID_BG</Expression>
+(FIRST Balise IN BaliseGroup).Telegram.NID_BG == ShuntingBG.NID_BG</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

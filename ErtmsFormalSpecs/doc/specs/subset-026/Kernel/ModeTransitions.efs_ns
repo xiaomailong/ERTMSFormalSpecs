@@ -1198,7 +1198,7 @@ DMI.MasterDMI().In_AcknOfUNMode.InputInformation.DriverAnswered</Expression>
 (
   NOT StaffResponsible.SRAuthorisation.BGListReceived
     OR  
-  FORALL BaliseGroup IN StaffResponsible.SRAuthorisation.BGs | ((FIRST X IN BTM.CurrentBaliseGroup).NID_BG != BaliseGroup.NID_BG  OR  (FIRST X IN BTM.CurrentBaliseGroup).NID_C != BaliseGroup.NID_C) 
+  FORALL BaliseGroup IN StaffResponsible.SRAuthorisation.BGs | ((FIRST X IN BTM.CurrentBaliseGroup).Telegram.NID_BG != BaliseGroup.NID_BG  OR  (FIRST X IN BTM.CurrentBaliseGroup).Telegram.NID_C != BaliseGroup.NID_C) 
 )
   AND  
 HandleModeChange not in HandleModeChangeSM.Override</Expression>
@@ -1685,6 +1685,7 @@ AND
  Y="840"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Condition36"
  Guid="1fc690af-dfaa-41dd-b3f3-723422e597f1"
 >
@@ -1693,12 +1694,15 @@ AND
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4f423955-8cdf-4344-b316-0c454cd72d72"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Unexpected Balise group passed in SR mode, while not in Override.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="315562f4-6a17-4612-829e-408ee5dbf910"
 >
-<Expression>False</Expression>
+<Expression>StaffResponsible.UnexpectedBGPassed
+  AND  
+HandleModeChange not in HandleModeChangeSM.Override</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2370,7 +2374,7 @@ BTM.CurrentBaliseGroup != []
 
   AND  
 
-( (FIRST X IN BTM.Linking.Linkings).BaliseGroupIdentifier == (FIRST X IN BTM.CurrentBaliseGroup).NID_BG )
+( (FIRST X IN BTM.Linking.Linkings).BaliseGroupIdentifier == (FIRST X IN BTM.CurrentBaliseGroup).Telegram.NID_BG )
 
   AND  
 
@@ -3322,6 +3326,7 @@ TIU.NonLeadingPermitted</Expression>
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Invalid to unknown"
  Guid="7d42bc91-5f19-40ed-b398-3aac9e8c0475"
 >
@@ -4445,6 +4450,7 @@ TIU.NonLeadingPermitted</Expression>
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Driver acknowledged"
  Guid="191ca14b-91f2-4120-8ec2-d3eeff866206"
 >
@@ -4910,6 +4916,7 @@ TIU.NonLeadingPermitted</Expression>
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Driver acknowledged"
  Guid="cc73864e-8909-4dd1-9fb8-260bef4ec1ea"
 >
@@ -6747,6 +6754,7 @@ TIU.NonLeadingPermitted</Expression>
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Acknowledgement of SH"
  Guid="00cdbaba-90cb-4ad6-ae68-89b383116e9e"
@@ -6754,6 +6762,7 @@ TIU.NonLeadingPermitted</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Acknowledgement of SH"
  Guid="dae7e7c1-5a89-4f64-9409-012c662e8e0a"

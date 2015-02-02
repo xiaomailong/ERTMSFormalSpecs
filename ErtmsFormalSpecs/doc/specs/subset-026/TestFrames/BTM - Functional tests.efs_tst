@@ -1200,7 +1200,7 @@
 >NOT Available ( BTM.LRBG )</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a95b1950-6311-4ab1-aa8a-07d4411ebcc7"
->( COUNT X IN BTM.CurrentBaliseGroup ) == 3</Expectation></Expectations>
+>( COUNT X IN BTM.CurrentBaliseGroup | NOT X.Missed ) == 3</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase

@@ -202,6 +202,33 @@
  Name="Timestamp"
  Guid="4ed3664e-befe-4a45-9b5d-42c4852d4240"
 >
+</StructureElement></Structure><Structure
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="StoredBaliseStruct"
+ Guid="3824a971-a03f-4913-9be2-55ee942cddf9"
+>
+<StructureElement
+ TypeName="Messages.EUROBALISE.Message"
+ Default=""
+ Mode="InOut"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Telegram"
+ Guid="ad863b60-3a1e-43a1-a9ee-a490ad1fdd90"
+>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Missed"
+ Guid="b1ba2f94-ae29-4f78-a71b-31f85e56796a"
+>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -220,7 +247,7 @@
 >
 <Comment>Represents the list of last received LRBGs.</Comment>
 </Collection><Collection
- TypeName="Messages.EUROBALISE.Message"
+ TypeName="StoredBaliseStruct"
  MaxSize="8"
  Default="[]"
  X="840"
@@ -555,9 +582,9 @@
 <PreConditions>
 <PreCondition
  Guid="682a9ec8-f37d-4d87-8dd6-9a4ca0648099"
->IsSingleBaliseGroup()</PreCondition><PreCondition
+>IsSingleBaliseGroup(CurrentBaliseGroup)</PreCondition><PreCondition
  Guid="3f4762dd-f337-493a-927f-479853f08788"
->Linking.CurrentLinking().BaliseGroupIdentifier== ( FIRST X IN CurrentBaliseGroup ).NID_BG</PreCondition></PreConditions>
+>Linking.CurrentLinking().BaliseGroupIdentifier== ( FIRST X IN CurrentBaliseGroup ).Telegram.NID_BG</PreCondition></PreConditions>
 <Expression>Linking.CurrentLinking().Orientation</Expression>
 </Case><Case
  Name="Less than two balises in the balise group, invalid linking information"
@@ -566,22 +593,59 @@
 <PreConditions>
 <PreCondition
  Guid="42e647d7-f4ec-404e-822d-0af260c9426c"
->IsSingleBaliseGroup()</PreCondition></PreConditions>
+>IsSingleBaliseGroup(CurrentBaliseGroup)</PreCondition></PreConditions>
 <Expression>Default.Orientation.Unknown</Expression>
 </Case><Case
- Name="First balise is the number 0"
+ Name="First balise is last in the group"
  Guid="1b917fc8-846c-477a-b9f8-6b1bbf9a1a07"
 >
 <PreConditions>
 <PreCondition
  Guid="99800f60-19c6-48c4-895b-d7aa823ecd0c"
->(FIRST X IN CurrentBaliseGroup).N_PIG == 0</PreCondition></PreConditions>
-<Expression>Default.Orientation.Nominal</Expression>
+>(FIRST X IN CurrentBaliseGroup).Telegram.N_PIG == (FIRST X IN CurrentBaliseGroup).Telegram.N_TOTAL</PreCondition></PreConditions>
+<Expression>Default.Orientation.Reverse</Expression>
 </Case><Case
- Name="Otherwise"
+ Name="First balise is first in the group"
  Guid="9ce6a19a-a14f-4efa-8a9d-6f7a4101f7ec"
 >
+<PreConditions>
+<PreCondition
+ Guid="a3515d8d-741c-40a4-8a64-acafbdeb205e"
+>(FIRST X IN CurrentBaliseGroup).Telegram.N_PIG == 0</PreCondition></PreConditions>
+<Expression>Default.Orientation.Nominal</Expression>
+</Case><Case
+ Name="Two balises stored, N_PIG_1 lower than N_PIG_2"
+ Guid="ae25aa1f-71a4-4d87-9b56-5ec6680f6877"
+>
+<Comment>This case covers the situation where the first encountered balise in the group was missed and the direction is nominal.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5c1a408b-2831-4d4c-9008-3db03c567c80"
+>(COUNT X IN CurrentBaliseGroup) &gt; 1
+
+  AND  
+
+(FIRST Balise IN CurrentBaliseGroup).Telegram.N_PIG &lt; (LAST Balise IN CurrentBaliseGroup).Telegram.N_PIG</PreCondition></PreConditions>
+<Expression>Default.Orientation.Nominal</Expression>
+</Case><Case
+ Name="Two balises stored, N_PIG_1 higher than N_PIG_2"
+ Guid="7c70fdb1-9f62-4151-b0ad-78ecf220a67e"
+>
+<PreConditions>
+<PreCondition
+ Guid="20d361f2-70ef-4a67-9c01-5e11cd5cfb34"
+>(COUNT X IN CurrentBaliseGroup) &gt; 1
+
+  AND  
+
+(FIRST Balise IN CurrentBaliseGroup).Telegram.N_PIG &gt; (LAST Balise IN CurrentBaliseGroup).Telegram.N_PIG</PreCondition></PreConditions>
 <Expression>Default.Orientation.Reverse</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="e8c38925-da03-4f17-a72e-f1d5e4ff496b"
+>
+<Comment>Default case.</Comment>
+<Expression>Default.Orientation.Unknown</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -625,7 +689,7 @@
  Name="Linking not available"
  Guid="c0fbb6a1-646f-4f71-8bbc-322f3a4f4ee9"
 >
-<Expression>FORALL X IN CurrentBaliseGroup | X.Q_LINK != Messages.Q_LINK.Unlinked</Expression>
+<Expression>FORALL X IN CurrentBaliseGroup | X.Telegram.Q_LINK != Messages.Q_LINK.Unlinked</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -836,12 +900,21 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Guid="9cb72f70-6397-4ae2-bad7-c2db450f2398"
 >
 </ReqRef><Comment>Returns true if the current balise group consists of only a single balise</Comment>
+<Parameters>
+<Parameter
+ Type="BaliseGroupMessages"
+ Name="BaliseGroup"
+ Guid="f45d0aae-d504-4d9b-a0f9-0a6d112387a1"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="Value"
  Guid="050bdffb-b0a0-4a7c-ad7c-995116a0edc3"
 >
-<Expression>(COUNT X IN CurrentBaliseGroup) == 1</Expression>
+<Expression>(COUNT X IN BaliseGroup) == 1
+  AND  
+(FIRST X IN BaliseGroup).Telegram.N_TOTAL == 0</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -894,7 +967,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Guid="2faa6422-23f7-41c4-85fb-699162e5f164"
 >Message.M_DUP == Messages.M_DUP.This_balise_is_a_duplicate_of_the_previous_balise__seen_in_the_nominal_direction_of_the_balise_group</PreCondition><PreCondition
  Guid="0841abe9-feff-42b3-bd02-a00031e66078"
->NOT ( THERE_IS X IN CurrentBaliseGroup | (X.N_PIG == 0) )</PreCondition></PreConditions>
+>NOT ( THERE_IS X IN CurrentBaliseGroup | (X.Telegram.N_PIG == 0) )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -1104,75 +1177,18 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1c73dec3-a299-4bc8-8cd6-1add7609a0ad"
 >
+</ReqRef><ReqRef
+ Id="8df559d7-4427-47e1-8a05-f0f049023f96"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9aba8498-a10c-4488-a059-ee074882dfd0"
+>
 </ReqRef><Comment>Returns the current balise group&apos;s M_MCOUNT value by taking the first one that</Comment>
 <Cases>
 <Case
  Name="Value"
  Guid="b6221c53-5616-4adf-a085-1fad71644c39"
 >
-<Expression>(FIRST X IN CurrentBaliseGroup | (X.M_MCOUNT != 255 AND X.M_MCOUNT != 254)).M_MCOUNT</Expression>
-</Case></Cases>
-</Function><Function
- Type="Boolean"
- Default=""
- X="260"
- Y="20"
- Width="100"
- Height="50"
- Name="BGMessageCountersAllFit"
- Guid="1df728ea-f633-4b9b-afd9-64c849022c95"
->
-<ReqRef
- Id="8df559d7-4427-47e1-8a05-f0f049023f96"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bd4a0f42-866c-4693-99fd-9ecc7c59dbd2"
->
-</ReqRef><ReqRef
- Id="5b83898b-9d38-4194-ba39-282256776162"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a2270781-43b4-4660-acfb-ef1d3a9541dc"
->
-</ReqRef><ReqRef
- Id="ff4a7424-8900-4f28-bd9d-78e5d8d68a96"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="647a0a24-36ec-42d6-8869-94836b3fac0b"
->
-</ReqRef><ReqRef
- Id="44ee1586-bb5c-42b3-b64d-c63e870d4d0e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a33e2098-002c-4de6-81cb-da3d25b00576"
->
-</ReqRef><ReqRef
- Id="d3960249-edd7-4e75-8c50-ba27a4b4af49"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6723ba96-0a63-4764-9d14-e04a9e2f534a"
->
-</ReqRef><Comment>Returns True if all the current balise group&apos;s M_MCOUNT values are the same (or 255), and if none of them are 254.
-This is a check for message consistency errors.</Comment>
-<Cases>
-<Case
- Name="There is a telegram that does not fit"
- Guid="a175f1e6-5eaa-4597-b226-a8c565f1774e"
->
-<PreConditions>
-<PreCondition
- Guid="3a2f7881-1d46-4fd1-97b8-44f8b393e60e"
->THERE_IS X IN CurrentBaliseGroup | X.M_MCOUNT == 254</PreCondition></PreConditions>
-<Expression>False</Expression>
-</Case><Case
- Name="All telegrams fit with all other telegrams by default"
- Guid="71b377f9-2ed6-4d2b-a739-071f55ff4689"
->
-<PreConditions>
-<PreCondition
- Guid="11da024b-eb6b-42b4-82f1-1d802dd613f8"
->FORALL X IN CurrentBaliseGroup | X.M_MCOUNT == 255</PreCondition></PreConditions>
-<Expression>True</Expression>
-</Case><Case
- Name="Standard case"
- Guid="1f2dd18d-fd20-4be5-98ad-a38e4d73bb6f"
->
-<Expression>FORALL X IN CurrentBaliseGroup | (X.M_MCOUNT == CurrentBGM_MCOUNT() OR X.M_MCOUNT == 255)</Expression>
+<Expression>(FIRST X IN CurrentBaliseGroup | (X.Telegram.M_MCOUNT != 255 AND X.Telegram.M_MCOUNT != 254)).Telegram.M_MCOUNT</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1294,8 +1310,479 @@ This is a check for message consistency errors.</Comment>
  Name="Value"
  Guid="ecba41eb-172e-43a6-a77b-432225e820eb"
 >
-<Expression>(FIRST X IN CurrentBaliseGroup).N_TOTAL == 0</Expression>
+<Expression>(FIRST X IN CurrentBaliseGroup).Telegram.N_TOTAL == 0</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="MessageIsInconsistent"
+ Guid="2fd2a28a-aa48-4284-999c-cfc3fc9edd19"
+>
+<ReqRef
+ Id="00031a80-e9f3-4821-a0a6-1d322a75fa85"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fcd73cc5-e5d4-4b99-ac40-d9d5479abed7"
+>
+</ReqRef><ReqRef
+ Id="3324bf1d-eedf-4227-a95f-86ca4e2d72e1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d0d69a02-d43f-46cd-94dd-18de7005d8e3"
+>
+</ReqRef><ReqRef
+ Id="53747e4e-7f05-4bf8-9573-a743730e9af0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b7219f3e-abbb-4b5c-81ca-7e9aa29ce5f0"
+>
+</ReqRef><ReqRef
+ Id="752dcbf7-d97c-4790-bac1-1fc62dbf66f1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="67c73332-6f54-4391-8e65-e7f8a8103e1c"
+>
+</ReqRef><ReqRef
+ Id="a7df0f1f-2d5f-4baa-b656-9ddbc4393074"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a61a4334-934a-4e20-ae18-7652e25c3b48"
+>
+</ReqRef><ReqRef
+ Id="d9803061-6365-4307-896d-2019de665b23"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ff880f2c-5909-409e-b570-bb633ebfc79c"
+>
+</ReqRef><ReqRef
+ Id="758b6d57-bd6b-465f-b091-3477da12be7d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="42b0abe5-841e-4aab-9644-7f4dacc8826f"
+>
+</ReqRef><ReqRef
+ Id="68a7df3c-ca07-4adf-ac06-12ba8e631b5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2e4e526d-f0fc-4a31-bb10-3d7d4fde29e7"
+>
+</ReqRef><Comment>Determines whether the Current Balise Group contains a message consistency error.</Comment>
+<Parameters>
+<Parameter
+ Type="Boolean"
+ Name="LinkingUsed"
+ Guid="9f307796-83dc-4ffc-be7b-bf4c8aef2369"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="772170b2-3d80-45ac-a1cd-17674feb3356"
+>
+<Comment>Check that the linked BG (that is present in the linking information) is consistent.
+A BG marked as linked but absent from the linking information will be rejected and no linking reaction will be applied.</Comment>
+<Expression>BaliseGroupIncomplete(LinkingUsed)
+  OR  
+IncorrectValuesInMessage()
+  OR  
+InconsistentMessageCounters()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="BaliseGroupIncomplete"
+ Guid="036c6c2b-15a1-405a-9afd-6a3bd4d66669"
+>
+<ReqRef
+ Id="3324bf1d-eedf-4227-a95f-86ca4e2d72e1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1790e72e-ac6b-4ea6-babc-99ace6047388"
+>
+</ReqRef><ReqRef
+ Id="00031a80-e9f3-4821-a0a6-1d322a75fa85"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="80118b6c-79dd-4f49-aae5-9b2cdcfbf8a2"
+>
+</ReqRef><ReqRef
+ Id="bc35119f-f1da-40d4-b6f7-b73c9ba07d98"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="334c1577-1d0b-4294-a4ba-48179288eeee"
+>
+</ReqRef><ReqRef
+ Id="bb8f4e12-123f-4746-81d4-bd86e68fad6b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="46b8f5fa-fcc0-4f8a-bba4-bad2f00be8ff"
+>
+</ReqRef><ReqRef
+ Id="5c440e26-b092-4abd-8105-dca981501e3f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4ae4c9cc-2c3d-4485-ab91-55206e30c45d"
+>
+</ReqRef><ReqRef
+ Id="d9803061-6365-4307-896d-2019de665b23"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c8f4befa-e34c-4027-b57b-43c11910ca5f"
+>
+</ReqRef><ReqRef
+ Id="a7df0f1f-2d5f-4baa-b656-9ddbc4393074"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d3442c50-933d-48a1-a1ad-0a25cf37a913"
+>
+</ReqRef><ReqRef
+ Id="d40be57e-365b-4f3a-ad26-7ff1d347c5f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a0b0cf3f-9220-4357-a9ad-fabc9c930d68"
+>
+</ReqRef><ReqRef
+ Id="8bb7feaf-24fe-4d1a-9775-87e913521f1d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2ee71460-e278-46ed-b8c2-60634e51de02"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="Boolean"
+ Name="LinkingUsed"
+ Guid="626278c0-418f-4515-b43c-e6555a3e4263"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Linking used"
+ Guid="91830afb-1eb6-4209-a2c4-02bf86f2962e"
+>
+<PreConditions>
+<PreCondition
+ Guid="f542a03d-bf03-4346-a2c9-fbb9fe2892b6"
+>LinkingUsed</PreCondition></PreConditions>
+<Expression>FORALL X IN CurrentBaliseGroup | 
+NOT X.Missed
+ OR 
+(
+PreviousBalise(X).Telegram.M_DUP == Messages.M_DUP.This_balise_is_a_duplicate_of_the_next_balise__seen_in_the_nominal_direction_of_the_balise_group
+  OR  
+NextBalise(X).Telegram.M_DUP == Messages.M_DUP.This_balise_is_a_duplicate_of_the_previous_balise__seen_in_the_nominal_direction_of_the_balise_group
+)</Expression>
+</Case><Case
+ Name="Linking not used"
+ Guid="e3eb75ad-5aa6-4b1c-8aa0-c2bc1ee9a5a3"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="IncorrectValuesInMessage"
+ Guid="3260aec8-acde-48a4-813c-60c18974cfa2"
+>
+<Cases>
+<Case
+ Name="Value"
+ Guid="6648ca8c-27e7-484f-b532-c80efeaf4c48"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="InconsistentMessageCounters"
+ Guid="a1e62178-d9df-4071-b48d-0ea402143296"
+>
+<ReqRef
+ Id="5b83898b-9d38-4194-ba39-282256776162"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dba29bb1-bbac-4c65-adb4-89944c702dbc"
+>
+</ReqRef><ReqRef
+ Id="ff4a7424-8900-4f28-bd9d-78e5d8d68a96"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="66cf7176-322d-48f1-bf2d-02b8b197fb43"
+>
+</ReqRef><ReqRef
+ Id="44ee1586-bb5c-42b3-b64d-c63e870d4d0e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9f3c4a24-38ea-4260-a3fb-555b70e12c0d"
+>
+</ReqRef><ReqRef
+ Id="d3960249-edd7-4e75-8c50-ba27a4b4af49"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5ad2fd8d-6136-4970-a8f0-d6d1b2cdc54d"
+>
+</ReqRef><Cases>
+<Case
+ Name="A telegram fits none of the others"
+ Guid="4eb04444-97ff-45c2-97c3-0a5be833fb59"
+>
+<PreConditions>
+<PreCondition
+ Guid="0922999e-5a02-4990-b933-752811cb95c6"
+>THERE_IS Message IN CurrentBaliseGroup | Message.Telegram.M_MCOUNT == Messages.M_MCOUNT.The_telegram_never_fits_any_message_of_the_group</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="There are two different message counters"
+ Guid="4a4aad7b-16a2-4058-b14a-8f29471350c7"
+>
+<Expression>THERE_IS Message IN CurrentBaliseGroup | Message.Telegram.M_MCOUNT != CurrentBGM_MCOUNT()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="StoredBaliseStruct"
+ Default=""
+ Y="120"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="PreviousBalise"
+ Guid="24f3f5b0-0930-42c6-9f98-2798965db389"
+>
+<Comment>The previous balise in the BG&apos;s nominal direction (N_PIG - 1)</Comment>
+<Parameters>
+<Parameter
+ Type="StoredBaliseStruct"
+ Name="Balise"
+ Guid="2df68c8a-3538-4009-a290-020a05ba0e21"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Is the first balise"
+ Guid="26527d65-b9e1-4d59-a084-dc246939456e"
+>
+<PreConditions>
+<PreCondition
+ Guid="5d77f4f5-b547-4a9c-b267-2f033ad6f535"
+>Balise.Telegram.N_PIG == 0</PreCondition></PreConditions>
+<Expression>EMPTY</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="de41cd39-d996-43c8-a2fd-2bab198aad1c"
+>
+<Expression>FIRST X IN CurrentBaliseGroup | X.Telegram.N_PIG == Balise.Telegram.N_PIG - 1</Expression>
+</Case></Cases>
+</Function><Function
+ Type="StoredBaliseStruct"
+ Default=""
+ X="110"
+ Y="120"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MissedBalise"
+ Guid="6323d562-2733-4469-9a0c-1c15df96e5d1"
+>
+<Comment>The missed balise of the current balise group. It is added to the collection CurrentBaliseGroup and marked as missed so that the group can be handled.</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="88fa3cb0-bfd1-4b65-9d2b-2086ce6b0d03"
+>
+<Expression>LET refBalise &lt;- (FIRST Balise IN CurrentBaliseGroup).Telegram
+
+IN
+StoredBaliseStruct{
+    Telegram =&gt; Messages.EUROBALISE.Message{
+        Q_UPDOWN =&gt; refBalise.Q_UPDOWN,
+        M_VERSION =&gt; refBalise.M_VERSION,
+        Q_MEDIA =&gt; refBalise.Q_MEDIA,
+        N_PIG =&gt; MissedBalise_N_PIG(),
+        N_TOTAL =&gt; refBalise.N_TOTAL,
+        M_DUP =&gt; 0,
+        M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+        NID_C =&gt; refBalise.NID_C,
+        NID_BG =&gt; refBalise.NID_BG,
+        Q_LINK =&gt; refBalise.Q_LINK,
+        Sequence1 =&gt; [],
+        BitField =&gt; &apos;&apos;
+    },
+    Missed =&gt; True
+}</Expression>
+</Case></Cases>
+</Function><Function
+ Type="StoredBaliseStruct"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="NextBalise"
+ Guid="fef8ac32-5aed-498a-86c0-9f0edc069b2e"
+>
+<Comment>The next balise in the BG&apos;s nominal direction (N_PIG + 1)</Comment>
+<Parameters>
+<Parameter
+ Type="StoredBaliseStruct"
+ Name="Balise"
+ Guid="1ce2bf6f-4cee-4870-ab21-09cfdff13924"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Is the last balise"
+ Guid="9644f69a-be11-4345-8d52-1e8bc44c5dcd"
+>
+<PreConditions>
+<PreCondition
+ Guid="595de1de-547e-4abb-ad2b-a8d06d89d477"
+>Balise.Telegram.N_PIG == Balise.Telegram.N_TOTAL</PreCondition></PreConditions>
+<Expression>EMPTY</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="f7acfe2d-b478-41f5-ba31-7a3b6317b206"
+>
+<Expression>FIRST X IN CurrentBaliseGroup | X.Telegram.N_PIG == Balise.Telegram.N_PIG + 1</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.N_PIG"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MissedBalise_N_PIG"
+ Guid="190b351a-a22f-4dae-bffa-f62ce58a886c"
+>
+<Comment>The position of the missed balise in the current balise group.</Comment>
+<Cases>
+<Case
+ Name="Nominal"
+ Guid="b9a0af5e-6abb-41b5-9af9-4b8e15f3b2b1"
+>
+<PreConditions>
+<PreCondition
+ Guid="e527dd06-8d8f-4ac9-aef1-75fbcae88607"
+>BaliseGroupOrientation() == Default.Orientation.Nominal</PreCondition></PreConditions>
+<Expression>(LAST X IN CurrentBaliseGroup).Telegram.N_PIG + 1</Expression>
+</Case><Case
+ Name="Reverse"
+ Guid="96841db8-5eee-4ccf-985d-c60ea87e31ab"
+>
+<PreConditions>
+<PreCondition
+ Guid="dccafee7-8c97-4e55-92e7-b52211cda954"
+>BaliseGroupOrientation() == Default.Orientation.Reverse</PreCondition></PreConditions>
+<Expression>(LAST X IN CurrentBaliseGroup).Telegram.N_PIG + 1</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="FullBGReceived"
+ Guid="8029ace7-da32-4bf8-a69c-b1628b25a1b4"
+>
+<Comment>Indicates whether the current balise group is complete.</Comment>
+<Cases>
+<Case
+ Name="All balises received"
+ Guid="35c3234e-81f9-4164-9fba-d17541b8e422"
+>
+<PreConditions>
+<PreCondition
+ Guid="ffbc3619-3161-4287-b261-cc5320a760c5"
+>(COUNT X IN CurrentBaliseGroup) == Message.N_TOTAL + 1</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="First balise(s) missed, nominal direction"
+ Guid="3ac07160-83d4-45d5-ba75-63b82db2221a"
+>
+<PreConditions>
+<PreCondition
+ Guid="e9da31c6-973c-49aa-9e61-b5d14d2b5ebc"
+>BaliseGroupOrientation() == Default.Orientation.Nominal
+  AND  
+(LAST X IN CurrentBaliseGroup).Telegram.N_PIG == (LAST X IN CurrentBaliseGroup).Telegram.N_TOTAL</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="First balise(s) missed, reverse direction"
+ Guid="74a01db0-056e-448a-98b2-080ae42b2a15"
+>
+<PreConditions>
+<PreCondition
+ Guid="c215fd2a-7ce8-464f-9671-48c87c63b97f"
+>BaliseGroupOrientation() == Default.Orientation.Reverse
+  AND  
+(LAST X IN CurrentBaliseGroup).Telegram.N_PIG == 0</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="f008b546-138f-49b4-8f75-d24d3fc0c073"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="DuplicatedBaliseIsUseable"
+ Guid="6ec5401f-9f2e-4c64-b301-dd0a209f5157"
+>
+<Comment>Determines whether the information in a duplicated balise can</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.EUROBALISE.Message"
+ Name="Balise"
+ Guid="0c7a658a-a2b8-42df-925e-d11dda5d31b1"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Orientation known, directional information in balise"
+ Guid="dd225fe6-f3f0-4de4-bcc4-1bba6fd0fd06"
+>
+<PreConditions>
+<PreCondition
+ Guid="7eb5830f-91b5-438b-b3b1-c9c98a7860e7"
+>Balise.Sequence1 != []
+  AND  
+THERE_IS X IN Balise.Sequence1 | 
+
+BaliseGroupOrientation() != Default.Orientation.Unknown</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="&lt;Case2&gt;"
+ Guid="bb8a5edf-3d78-478c-9b40-8419b7dca32d"
+>
+<Expression>True</Expression>
+</Case><Case
+ Name="&lt;Case3&gt;"
+ Guid="e75160c7-9683-4aea-aa2a-cd1307200da5"
+>
+<Expression>True</Expression>
+</Case><Case
+ Name="&lt;Case4&gt;"
+ Guid="0df1de30-0ad5-45c1-abfe-f84fae25312e"
+>
+<Expression>True</Expression>
+</Case><Case
+ Name="&lt;Case5&gt;"
+ Guid="fb6ea15f-32f5-4d40-a680-387c431526ae"
+>
+<Expression>True</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="3d14782b-0469-4fe8-8f6e-25ccc33ec535"
+>
+<Expression>False</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Messages.Q_DIR"
+ Cacheable="TRUE"
+ Default=""
+ Name="PacketOrientation"
+ Guid="6b7095c0-bf2d-486d-9655-238f2b00f6d5"
+>
+<Comment>Takes a Messages.PACKET.TRACK_TO_TRAIN.Message and returns the direction of the packet information.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.PACKET.TRACK_TO_TRAIN.Message"
+ Name="Packet"
+ Guid="b5fc9404-1187-4597-83d3-75e9edf21e47"
+>
+</Parameter></Parameters>
+<Cases>
+</Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -2138,14 +2625,14 @@ This is a check for message consistency errors.</Comment>
  Guid="229f8b76-fd9c-43fc-9e81-d3eeef35a300"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Q_DIR )</PreCondition><PreCondition
  Guid="63b7ef27-bbc6-42a7-8bf2-d97a8e0a60c8"
->THERE_IS X IN CurrentBaliseGroup | HasRevSupervisionInfo(Message=&gt;X)</PreCondition></PreConditions>
+>THERE_IS X IN CurrentBaliseGroup | HasRevSupervisionInfo(Message=&gt;X.Telegram)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1ee33c0c-afa3-45e6-af12-67634aef90fc"
 >Kernel.TrackDescription.ReversingArea.ReversingAreaInformationReceived
 (
     RVAreaPacket =&gt; Packet.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION,
-    RVSupervisionPacket =&gt; RevSupervisionPacket(FIRST X IN CurrentBaliseGroup | HasRevSupervisionInfo(X))
+    RVSupervisionPacket =&gt; RevSupervisionPacket((FIRST X IN CurrentBaliseGroup | HasRevSupervisionInfo(X.Telegram)).Telegram)
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -2173,7 +2660,7 @@ This is a check for message consistency errors.</Comment>
  Guid="84dbb76c-bf59-462a-9f3c-525182a0b7cf"
 >ConsiderPacket ( PacketOrientation =&gt; Packet.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.Q_DIR )</PreCondition><PreCondition
  Guid="248dc82c-f2d7-416f-ae54-eab951eba3be"
->NOT ( THERE_IS X IN CurrentBaliseGroup | HasRevAreaInfo(Message=&gt;X) )</PreCondition></PreConditions>
+>NOT ( THERE_IS X IN CurrentBaliseGroup | HasRevAreaInfo(Message=&gt;X.Telegram) )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a1a7e48f-51d5-472f-856b-f4e81ce62319"
@@ -3293,7 +3780,7 @@ If all the messages of the current balise group have been received, calls Handle
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Keep time of first encountered balise in the group"
+ Name="Keep record of the time and position of the location reference"
  Guid="7e3f7eb7-4732-4b05-aee5-6838c06ed5c5"
 >
 <ReqRef
@@ -3305,6 +3792,190 @@ If all the messages of the current balise group have been received, calls Handle
  Id="0d501890-d967-43e6-b663-c526a3371860"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="92afe681-91f8-4fdf-99b8-fcd57aee9371"
+>
+</ReqRef><Comment>The time is used for the MA section time-outs</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Keep time of first encountered balise in the group"
+ Guid="93775a88-0ffa-44f4-a42b-82fc8503f81f"
+>
+<PreConditions>
+<PreCondition
+ Guid="68fd0a29-085c-46b8-8d7a-13d05c0df54b"
+>IsLocationReference ( Message =&gt; Message )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a11e1a7b-5620-4f84-b0a8-20ae6f967732"
+>Kernel.MA.CurrentBGTimeOfPassage &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
+ Guid="97fe5801-fbb2-4588-b755-7418c4969256"
+>BGLocationReference &lt;- BTM.LocationReferenceStruct{
+    Position =&gt; PositionFromOdometry(),
+    Timestamp =&gt; Kernel.DateAndTime.Now()
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Keep note of missed balises"
+ Guid="2bac6cbb-3616-40c8-a658-72f42fddb191"
+>
+<Comment>If some balises in the</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Keep note of missed balises"
+ Guid="17b3e4af-63f3-4b16-93c8-efdcd0950260"
+>
+<PreConditions>
+<PreCondition
+ Guid="f9563cb3-4a7d-4ec0-b982-8a989233cfc1"
+>CurrentBaliseGroup != []
+
+  AND  
+
+Message.N_PIG != (LAST X IN CurrentBaliseGroup).Telegram.N_PIG + 1
+  AND  
+Message.N_PIG != (LAST X IN CurrentBaliseGroup).Telegram.N_PIG - 1</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Add missed balises to list"
+ Guid="c37a6131-48f8-4538-96f1-d0e80a225a25"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Balise group orientation known"
+ Guid="c801a564-49b2-4f3e-a03e-ffa9281add56"
+>
+<PreConditions>
+<PreCondition
+ Guid="f22d33c1-0c14-40e5-a78c-246730168bb4"
+>BaliseGroupOrientation() != Default.Orientation.Unknown</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="30f9dad9-8438-4379-8738-fbb67c753a09"
+>FillMissedBalises()</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Balise group orientation unknown, nominal direction"
+ Guid="90f11a70-cd77-42cd-a2c3-c316e2bd1b6b"
+>
+<PreConditions>
+<PreCondition
+ Guid="57f49648-3125-475b-b122-ad0fd95f36b3"
+>Message.N_PIG &gt; (LAST X IN CurrentBaliseGroup).Telegram.N_PIG</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Add a second balise to CurrentBaliseGroup"
+ Guid="9d23acde-90a3-4baf-af77-c13fd881958b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Add one balise in the nominal direction"
+ Guid="f458f4ed-c6a0-4dc3-8db5-0298fc6bc2ee"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="940d96d7-c1a0-457c-93f1-24eef2f82615"
+>INSERT
+StoredBaliseStruct{
+    Telegram =&gt; Messages.EUROBALISE.Message{
+        Q_UPDOWN =&gt; (LAST Balise IN CurrentBaliseGroup).Telegram.Q_UPDOWN,
+        M_VERSION =&gt; (LAST Balise IN CurrentBaliseGroup).Telegram.M_VERSION,
+        Q_MEDIA =&gt; (LAST Balise IN CurrentBaliseGroup).Telegram.Q_MEDIA,
+        N_PIG =&gt; (LAST Balise IN CurrentBaliseGroup).Telegram.N_PIG + 1,
+        N_TOTAL =&gt; (LAST Balise IN CurrentBaliseGroup).Telegram.N_TOTAL,
+        M_DUP =&gt; Messages.M_DUP.No_duplicates,
+        M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+        NID_C =&gt; (LAST Balise IN CurrentBaliseGroup).Telegram.NID_C,
+        NID_BG =&gt; (LAST Balise IN CurrentBaliseGroup).Telegram.NID_BG,
+        Q_LINK =&gt; (LAST Balise IN CurrentBaliseGroup).Telegram.Q_LINK,
+        Sequence1 =&gt; [],
+        BitField =&gt; &apos;&apos;
+    },
+    Missed =&gt; True
+}
+IN CurrentBaliseGroup</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Fill other missing balises"
+ Guid="3aa0e4a6-721c-4b7e-abd6-43e494b29bd2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Fill Missed Balises"
+ Guid="f2d47f76-4fae-4442-b49f-673b43f46a82"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="7dd2548f-9ba5-42c0-94dc-1aee74203bd0"
+>FillMissedBalises()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Name="Balise group orientation unknown, reverse direction"
+ Guid="d638d8bb-34d9-4ba6-b108-1e02673528c3"
+>
+<PreConditions>
+<PreCondition
+ Guid="52b1a78c-1123-450e-b6aa-4403d2641216"
+>Message.N_PIG &lt; (LAST X IN CurrentBaliseGroup).Telegram.N_PIG</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Add a second balise to CurrentBaliseGroup"
+ Guid="477aa7e5-2d35-428f-bde3-7e87b96fc4d2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Add one balise in the nominal direction"
+ Guid="22404532-dd16-4337-a6ed-23d624a25d7d"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="ceff6272-909c-4ca3-9ce6-7df72fb29734"
+>INSERT
+StoredBaliseStruct{
+    Telegram =&gt; Messages.EUROBALISE.Message{
+        Q_UPDOWN =&gt; (LAST Balise IN CurrentBaliseGroup).Telegram.Q_UPDOWN,
+        M_VERSION =&gt; (LAST Balise IN CurrentBaliseGroup).Telegram.M_VERSION,
+        Q_MEDIA =&gt; (LAST Balise IN CurrentBaliseGroup).Telegram.Q_MEDIA,
+        N_PIG =&gt; (LAST Balise IN CurrentBaliseGroup).Telegram.N_PIG - 1,
+        N_TOTAL =&gt; (LAST Balise IN CurrentBaliseGroup).Telegram.N_TOTAL,
+        M_DUP =&gt; Messages.M_DUP.No_duplicates,
+        M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group,
+        NID_C =&gt; (LAST Balise IN CurrentBaliseGroup).Telegram.NID_C,
+        NID_BG =&gt; (LAST Balise IN CurrentBaliseGroup).Telegram.NID_BG,
+        Q_LINK =&gt; (LAST Balise IN CurrentBaliseGroup).Telegram.Q_LINK,
+        Sequence1 =&gt; [],
+        BitField =&gt; &apos;&apos;
+    },
+    Missed =&gt; True
+}
+IN CurrentBaliseGroup</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Fill other missing balises"
+ Guid="d29af369-e613-40d6-be03-cd08c7e44853"
 >
 </ReqRef><ReqRef
  Id="f9ca42e2-644d-47a2-b6e3-80059c79e361"
@@ -3320,18 +3991,19 @@ If all the messages of the current balise group have been received, calls Handle
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Implemented="TRUE"
- Name="Keep time of first encountered balise in the group"
- Guid="93775a88-0ffa-44f4-a42b-82fc8503f81f"
+ Name="Fill Missed Balises"
+ Guid="a4628bc2-1d3a-4f1c-b9c2-903235212585"
 >
 <PreConditions>
-<PreCondition
- Guid="8fe19c66-0b4c-4f8b-9c03-95f752905437"
->CurrentBaliseGroup == []</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
 <Action
- Guid="a11e1a7b-5620-4f84-b0a8-20ae6f967732"
->Kernel.MA.MATimers.CurrentBGTimeOfPassage &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
+ Guid="f48e875d-60fc-4393-9404-d6e475ce83ec"
+>FillMissedBalises()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -3354,13 +4026,20 @@ If all the messages of the current balise group have been received, calls Handle
 <Actions>
 <Action
  Guid="989096bd-3294-40f5-81b7-908279de9c8e"
->INSERT Message IN CurrentBaliseGroup</Action></Actions>
+>INSERT 
+StoredBaliseStruct
+{
+    Telegram =&gt; Message,
+    Missed =&gt; False
+}
+
+IN CurrentBaliseGroup</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Keep position of the first balise"
+ Name="Keep position of the balise"
  Guid="1ec3b0d7-6c60-465f-87b2-a26fb677f799"
 >
 <Comment>Stores the position of the first balise of that balise group in order to be used later to compute the position of the new LRBG (in case that balise group will become the LRBG).</Comment>
@@ -3369,20 +4048,15 @@ If all the messages of the current balise group have been received, calls Handle
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Keep position of balise 1"
+ Name="Keep position of the balise"
  Guid="62e6627c-c2b6-4ac1-88e4-ffa9aa764485"
 >
 <PreConditions>
-<PreCondition
- Guid="68fd0a29-085c-46b8-8d7a-13d05c0df54b"
->IsLocationReference ( Message =&gt; Message )</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
 <Action
  Guid="2b0bea2f-701c-4d39-b9fb-f12ed87bc4e4"
->BGLocationReference &lt;- LocationReferenceStruct{
-    Position =&gt; PositionFromOdometry(),
-    Timestamp =&gt; Kernel.DateAndTime.Now()
-}</Action></Actions>
+>PrevBalisePosition &lt;- Odometry.NominalDistance</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -3404,9 +4078,7 @@ If all the messages of the current balise group have been received, calls Handle
 <PreConditions>
 <PreCondition
  Guid="4c98c872-6bf7-41f9-b74a-be01dbe0b55c"
->(COUNT X IN CurrentBaliseGroup) == Message.N_TOTAL + 1</PreCondition><PreCondition
- Guid="5c234098-e0ba-4346-af26-d08a73a3f179"
->BGMessageCountersAllFit()</PreCondition></PreConditions>
+>FullBGReceived()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e7bdbad0-03e6-4eab-af45-686bb9024af6"
@@ -3544,11 +4216,11 @@ The parameter DistanceFromLRBG is needed for the case when the handled BG will b
 <PreConditions>
 <PreCondition
  Guid="a4a26815-f310-42ac-9a12-55c06c9b7f2b"
->ReceivedSystemVersionIsHigher (aSystemVersion =&gt; (FIRST X IN CurrentBaliseGroup).M_VERSION )</PreCondition></PreConditions>
+>ReceivedSystemVersionIsHigher (aSystemVersion =&gt; (FIRST X IN CurrentBaliseGroup).Telegram.M_VERSION )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="947f5c13-b3ba-42c5-bebd-24f3bf75e2f2"
->Kernel.OperatedSystemVersion.Value &lt;- (FIRST X IN CurrentBaliseGroup).M_VERSION</Action></Actions>
+>Kernel.OperatedSystemVersion.Value &lt;- (FIRST X IN CurrentBaliseGroup).Telegram.M_VERSION</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3688,7 +4360,7 @@ The parameter DistanceFromLRBG is needed for the case when the handled BG will b
 <Actions>
 <Action
  Guid="71fe05ea-2e2a-441e-a4c5-fa8e04162cb8"
->APPLY HandleBaliseTelegram ( Message =&gt; X, DistanceFromLRBG =&gt; DistanceFromLRBG ) ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( Message =&gt; X )</Action></Actions>
+>APPLY HandleBaliseTelegram ( Message =&gt; X.Telegram, DistanceFromLRBG =&gt; DistanceFromLRBG ) ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( Message =&gt; X.Telegram )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3711,10 +4383,10 @@ The parameter DistanceFromLRBG is needed for the case when the handled BG will b
  Guid="2b02118c-1658-46b1-bae6-dc0ff97ec611"
 >APPLY HandleNewPacketMA
 (
-    aPacket =&gt; MAOfTelegram ( aTelegram=&gt; X ) ,
-    NID_BG =&gt; X.NID_BG
+    aPacket =&gt; MAOfTelegram ( aTelegram=&gt; X.Telegram ) ,
+    NID_BG =&gt; X.Telegram.NID_BG
 )
-ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
+ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X.Telegram )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3737,9 +4409,9 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
  Guid="42ecabaf-6fb9-4cf2-887a-2b6158ff1c6b"
 >APPLY HandleNewPacketModeProfile
 (
-    aPacket =&gt; ModeProfileOfTelegram ( aTelegram=&gt; X )
+    aPacket =&gt; ModeProfileOfTelegram ( aTelegram=&gt; X.Telegram )
 )
-ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
+ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X.Telegram )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3832,6 +4504,301 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="CheckMessageConsistency"
+ Guid="2f965c87-2f8c-4600-b483-b4f6a4727ef3"
+>
+<ReqRef
+ Id="00031a80-e9f3-4821-a0a6-1d322a75fa85"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ee841afd-b9d4-45b2-84d0-73e93644497d"
+>
+</ReqRef><ReqRef
+ Id="3324bf1d-eedf-4227-a95f-86ca4e2d72e1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e3836d49-aca0-49a1-948a-a461a3990755"
+>
+</ReqRef><ReqRef
+ Id="eab92131-53b1-4cd9-9251-e5b397a83350"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a02e38c5-2d32-4af1-b5f1-02a4b5e0eed5"
+>
+</ReqRef><ReqRef
+ Id="53747e4e-7f05-4bf8-9573-a743730e9af0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="10aa06fc-c00e-4664-a744-e3da17a8f538"
+>
+</ReqRef><ReqRef
+ Id="752dcbf7-d97c-4790-bac1-1fc62dbf66f1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="10d31135-1137-47a8-927b-01174773018b"
+>
+</ReqRef><ReqRef
+ Id="a7df0f1f-2d5f-4baa-b656-9ddbc4393074"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5b28b206-7ca5-4299-ba07-b501ebb0f6ab"
+>
+</ReqRef><ReqRef
+ Id="d9803061-6365-4307-896d-2019de665b23"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f101c92d-4f1f-4654-80fa-a354511ae9dd"
+>
+</ReqRef><ReqRef
+ Id="88b4d9a8-c67f-451c-a109-b4bb259672ac"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="957bb724-3a0d-4f68-beee-8ad9ddaf9aa0"
+>
+</ReqRef><ReqRef
+ Id="758b6d57-bd6b-465f-b091-3477da12be7d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c0d9f04-7890-4461-bc2b-8df1e24c66c4"
+>
+</ReqRef><ReqRef
+ Id="68a7df3c-ca07-4adf-ac06-12ba8e631b5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0ec4cff8-95f2-44a0-9a8b-6601e02be77d"
+>
+</ReqRef><Comment>Check the contents of the message before the contents are handled by the on-board.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="DistanceFromLRBG"
+ Guid="d26b4561-9b2c-4e0b-8088-f7fe08665fd3"
+>
+</Parameter><Parameter
+ Type="Boolean"
+ Name="LinkingUsed"
+ Guid="218ab384-067e-4bd6-b26e-9b940b2bb330"
+>
+</Parameter><Parameter
+ Type="Linking.LinkingReaction"
+ Name="LinkingReaction"
+ Guid="eeb450e8-3433-465f-8589-ce73709aeaf0"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Check message contents"
+ Guid="8abdf11d-ca6c-48d1-a863-bc481bfa758c"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Message is inconsistent"
+ Guid="9c7ee774-de31-4186-abe0-60ac91047dbf"
+>
+<Comment>Apply the linking reaction if the message is inconsistent.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="9a7ebaab-1cb6-4f18-be81-d5d8666bf161"
+>MessageIsInconsistent(LinkingUsed)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0fec3662-dbbc-49b3-b82f-212da0f1bec2"
+>Linking.ApplyLinkingReaction(LinkingReaction)</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Message is consistent"
+ Guid="2adbfee2-3a06-4ae6-b57d-09d8b5423297"
+>
+<Comment>Handle the message if the information is consistent.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="c46af0a5-54dd-4e2d-adbb-afc3406c6de9"
+>HandleBaliseMessage(DistanceFromLRBG)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FillMissedBalises"
+ Guid="e99e41d9-f8d3-423a-bd04-a0b2aabc3987"
+>
+<Comment>Adds up to 6 balises to the current balise group that were missed.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Fill first balise"
+ Guid="d1322e8e-c3f8-4c67-87ac-9003f5349526"
+>
+<Comment>Add one missed balise.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Fill first balise"
+ Guid="1406740e-f54c-42ce-8f23-93b168bfbfc0"
+>
+<PreConditions>
+<PreCondition
+ Guid="9fd64923-94f0-464b-82e9-a6243ada4bc6"
+>(LAST X IN CurrentBaliseGroup).Telegram.N_PIG != Message.N_PIG + 1
+ AND 
+(LAST X IN CurrentBaliseGroup).Telegram.N_PIG != Message.N_PIG - 1</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="269ffc58-b53a-4182-9558-421f80084683"
+>INSERT
+MissedBalise()
+IN CurrentBaliseGroup</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Fill second balise"
+ Guid="a0da1e9c-c7d5-4eb7-9b9b-ebac967f1369"
+>
+<Comment>Add a second missed balise.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Fill second balise"
+ Guid="e9f30030-5ed6-4527-941c-669ddc889dfd"
+>
+<PreConditions>
+<PreCondition
+ Guid="3800c011-d0cf-4915-bef9-99ef9ea72e9a"
+>(LAST X IN CurrentBaliseGroup).Telegram.N_PIG != Message.N_PIG + 1
+ AND 
+(LAST X IN CurrentBaliseGroup).Telegram.N_PIG != Message.N_PIG - 1</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d3c9bdd5-859e-40a0-bdb2-694159fc5769"
+>INSERT
+MissedBalise()
+IN CurrentBaliseGroup</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Fill third balise"
+ Guid="2dfea6f6-0814-4645-8606-e89b86d3c723"
+>
+<Comment>Add a third missed balise.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Fill third balise"
+ Guid="72694f04-4aca-4a24-9258-f7cc6cebeccc"
+>
+<PreConditions>
+<PreCondition
+ Guid="a200c8cf-88fa-4abe-8ca8-4b4dd1572ce7"
+>(LAST X IN CurrentBaliseGroup).Telegram.N_PIG != Message.N_PIG + 1
+ AND 
+(LAST X IN CurrentBaliseGroup).Telegram.N_PIG != Message.N_PIG - 1</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="810c1cad-4be1-483a-8474-bb40d256d36f"
+>INSERT
+MissedBalise()
+IN CurrentBaliseGroup</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Fill fourth balise"
+ Guid="17a638e7-97ca-4d0b-ba69-1e3b711354e1"
+>
+<Comment>Add a fourth missed balise.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Fill fourth balise"
+ Guid="3cb99b92-c0cb-4ade-b353-2a71042c3ff9"
+>
+<PreConditions>
+<PreCondition
+ Guid="0cb9b3ad-9837-4d08-afac-2ba347c89a90"
+>(LAST X IN CurrentBaliseGroup).Telegram.N_PIG != Message.N_PIG + 1
+ AND 
+(LAST X IN CurrentBaliseGroup).Telegram.N_PIG != Message.N_PIG - 1</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a9da04e6-a71a-4157-a364-9a9315fc5433"
+>INSERT
+MissedBalise()
+IN CurrentBaliseGroup</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Fill fifth balise"
+ Guid="ef79f102-ef8e-4586-9445-56a3c94b89a4"
+>
+<Comment>Add a fifth missed balise.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Fill fifth balise"
+ Guid="f297aedf-3482-4714-b468-810ba4bba120"
+>
+<PreConditions>
+<PreCondition
+ Guid="5ec57daa-1517-4d77-93ca-325a3c78f44c"
+>(LAST X IN CurrentBaliseGroup).Telegram.N_PIG != Message.N_PIG + 1
+ AND 
+(LAST X IN CurrentBaliseGroup).Telegram.N_PIG != Message.N_PIG - 1</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9402818a-0fb2-4a36-a5a8-e417a291cc7b"
+>INSERT
+MissedBalise()
+IN CurrentBaliseGroup</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Fill sixth balise"
+ Guid="0ea1bb86-7cb4-4649-851c-0f6278154734"
+>
+<Comment>Add a sixth missed balise.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Fill sixth balise"
+ Guid="a8786259-687a-4f83-8c79-9b7c70ef1f84"
+>
+<PreConditions>
+<PreCondition
+ Guid="7f6508d1-ee68-4d06-86bd-f5499686b99e"
+>(LAST X IN CurrentBaliseGroup).Telegram.N_PIG != Message.N_PIG + 1
+ AND 
+(LAST X IN CurrentBaliseGroup).Telegram.N_PIG != Message.N_PIG - 1</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="753b8a08-005a-4d7e-b8c7-9fe2979d9e59"
+>INSERT
+MissedBalise()
+IN CurrentBaliseGroup</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -3873,9 +4840,9 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
  Guid="2941a0d4-d55f-4c80-bb47-581b43815e79"
 >
 <ReqRef
- Id="fd55eb84-5f75-4476-80bc-ac0f3d3de9f4"
+ Id="8147a385-c93e-43f4-9eb0-fab4bf63ca62"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a8cf6e94-0462-426c-bc74-b67e839cdd98"
+ Guid="2db7d565-1f17-4df4-84b2-499dc3e16704"
 >
 </ReqRef><Comment>This variable holds the balise message to be processed.</Comment>
 </Variable><Variable
@@ -4006,6 +4973,38 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
 >
 </ReqRef><Comment>Distance between the front end of the train and the active Eurobalise antenna.
 [stan@ertmssolutions.com] We assume that ActiveAntennaPosition &gt; 0</Comment>
+</Variable><Variable
+ Type="BaseTypes.Distance"
+ DefaultValue=""
+ VariableMode="Internal"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="PrevBalisePosition"
+ Guid="a32948b1-dcc2-465c-8d69-ce4d370d4ed1"
+>
+<Comment>Keeps the position of the last seen balise in the current group.</Comment>
+</Variable><Variable
+ Type="BaseTypes.Distance"
+ DefaultValue="12.0"
+ VariableMode="Constant"
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MaxDistBetweenBalises"
+ Guid="7adda4ab-61a3-476d-bc72-847fb2c849ec"
+>
+<ReqRef
+ Id="9ffea548-e5d0-44d0-bd31-a689cd75d05b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="287db3e5-c003-44f7-b6f9-7ebcdff8ad05"
+>
+</ReqRef><Comment>The maximum distance between consecutive balises in the same balise group.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -4096,11 +5095,45 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
  Guid="ca2a5585-b8af-4d33-b11d-0f7a241172b0"
 >(COUNT X IN CurrentBaliseGroup ) &gt; 0</PreCondition><PreCondition
  Guid="facbef4e-0427-43dc-8246-9424d20c4b03"
->Message.NID_BG != (FIRST X IN CurrentBaliseGroup).NID_BG</PreCondition></PreConditions>
+>Message.NID_BG != (FIRST X IN CurrentBaliseGroup).Telegram.NID_BG</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c0bed554-3138-4c67-a342-dec6ad0a32dc"
 >CurrentBaliseGroup &lt;- []</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Verification"
+ X="40"
+ Y="470"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Max distance between Balises exceeded"
+ Guid="7e6a9210-0745-4b37-b68f-e2ec8da372b0"
+>
+<Comment>When the previously detected Balise&apos;s position was further in rear of the train than the maximum distance between Balises, the following Balise in the group is missed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Max distance exceeded"
+ Guid="03c505ea-2a74-4a49-a39a-49e282af800b"
+>
+<PreConditions>
+<PreCondition
+ Guid="2de86d72-0f6d-4b93-b0b6-31b88a21e1a4"
+>CurrentBaliseGroup != []</PreCondition><PreCondition
+ Guid="bcbaf299-4fb5-4823-af9f-f2b1a74d1582"
+>Odometry.NominalDistance &gt; PrevBalisePosition + MaxDistBetweenBalises</PreCondition><PreCondition
+ Guid="9ef66ef6-b578-4d26-b7c7-bc7dab3ace1c"
+>NOT Available(Message)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ba00487e-7656-41a0-9bd0-98cb43c0ceec"
+>INSERT MissedBalise() 
+IN CurrentBaliseGroup</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

@@ -111,9 +111,9 @@
  Name="Value"
  Guid="138c3e29-2865-4d85-9949-628b35db01f7"
 >
-<Expression>THERE_IS Telegram IN Messages | 
+<Expression>THERE_IS Message IN Messages | 
 (
-  THERE_IS Packet IN Telegram.Sequence1 |
+  THERE_IS Packet IN Message.Telegram.Sequence1 |
     BTM.ConsiderPacket(Packet.TRACK_TO_TRAIN.GENERIC_LS_FUNCTION_MARKER.Q_DIR)
 )</Expression>
 </Case></Cases>
