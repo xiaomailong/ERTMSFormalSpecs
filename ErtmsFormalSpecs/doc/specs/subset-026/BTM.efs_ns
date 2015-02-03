@@ -16,7 +16,7 @@
 <Structure
  Default=""
  X="690"
- Y="460"
+ Y="480"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -87,7 +87,7 @@
 </StructureElement></Structure><Structure
  Default=""
  X="560"
- Y="310"
+ Y="370"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -130,7 +130,7 @@
 </StructureElement></Structure><Structure
  Default=""
  X="690"
- Y="350"
+ Y="380"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -175,7 +175,7 @@
 </StructureElement></Structure><Structure
  Default=""
  X="440"
- Y="460"
+ Y="480"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -204,6 +204,8 @@
 >
 </StructureElement></Structure><Structure
  Default=""
+ X="820"
+ Y="560"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -236,7 +238,7 @@
  MaxSize="8"
  Default="[]"
  X="690"
- Y="280"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -250,8 +252,8 @@
  TypeName="StoredBaliseStruct"
  MaxSize="8"
  Default="[]"
- X="840"
- Y="460"
+ X="820"
+ Y="480"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -1315,6 +1317,8 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="40"
+ Y="400"
  Width="100"
  Height="50"
  Name="MessageIsInconsistent"
@@ -1384,7 +1388,8 @@ InconsistentMessageCounters()</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
- Y="60"
+ X="150"
+ Y="400"
  Width="100"
  Height="50"
  Name="BaliseGroupIncomplete"
@@ -1483,8 +1488,8 @@ NOT
 </Function><Function
  Type="Boolean"
  Default=""
- X="110"
- Y="60"
+ X="370"
+ Y="400"
  Width="100"
  Height="50"
  Name="IncorrectValuesInMessage"
@@ -1500,7 +1505,8 @@ NOT
 </Function><Function
  Type="Boolean"
  Default=""
- Y="120"
+ X="260"
+ Y="400"
  Width="100"
  Height="50"
  Name="InconsistentMessageCounters"
@@ -1554,7 +1560,8 @@ NOT
 </Function><Function
  Type="StoredBaliseStruct"
  Default=""
- Y="120"
+ X="260"
+ Y="460"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1589,8 +1596,8 @@ NOT
 </Function><Function
  Type="StoredBaliseStruct"
  Default=""
- X="110"
- Y="120"
+ X="40"
+ Y="460"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1628,6 +1635,8 @@ StoredBaliseStruct{
 </Function><Function
  Type="StoredBaliseStruct"
  Default=""
+ X="150"
+ Y="460"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1662,7 +1671,8 @@ StoredBaliseStruct{
 </Function><Function
  Type="Messages.N_PIG"
  Default=""
- X="110"
+ X="40"
+ Y="520"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1694,6 +1704,8 @@ StoredBaliseStruct{
 </Function><Function
  Type="Boolean"
  Default=""
+ X="260"
+ Y="20"
  Width="100"
  Height="50"
  Name="FullBGReceived"
@@ -1741,7 +1753,8 @@ StoredBaliseStruct{
 </Function><Function
  Type="Boolean"
  Default=""
- X="110"
+ X="150"
+ Y="520"
  Width="100"
  Height="50"
  Name="DuplicatedBaliseIsUseable"
@@ -1831,26 +1844,6 @@ FORALL X IN Balise.Sequence1 |
 >
 <Expression>False</Expression>
 </Case></Cases>
-</Function><Function
- Type="Messages.Q_DIR"
- Cacheable="TRUE"
- Default=""
- X="220"
- Width="100"
- Height="50"
- Name="PacketOrientation"
- Guid="6b7095c0-bf2d-486d-9655-238f2b00f6d5"
->
-<Comment>Takes a Messages.PACKET.TRACK_TO_TRAIN.Message and returns the direction of the packet information.</Comment>
-<Parameters>
-<Parameter
- Type="Messages.PACKET.TRACK_TO_TRAIN.Message"
- Name="Packet"
- Guid="b5fc9404-1187-4597-83d3-75e9edf21e47"
->
-</Parameter></Parameters>
-<Cases>
-</Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -4573,7 +4566,8 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X.Telegram )</Action></Actio
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- Y="60"
+ X="600"
+ Y="70"
  Width="100"
  Height="50"
  Name="CheckMessageConsistency"
@@ -4682,7 +4676,8 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X.Telegram )</Action></Actio
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- Y="60"
+ X="600"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -4956,8 +4951,8 @@ IN CurrentBaliseGroup</Action></Actions>
  Type="BaliseGroupsCol"
  DefaultValue="[]"
  VariableMode="Internal"
- X="830"
- Y="280"
+ X="820"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -4981,8 +4976,8 @@ IN CurrentBaliseGroup</Action></Actions>
  Type="BaliseGroupMessages"
  DefaultValue="[]"
  VariableMode="Internal"
- X="830"
- Y="350"
+ X="820"
+ Y="380"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -5045,7 +5040,8 @@ IN CurrentBaliseGroup</Action></Actions>
  Type="BaseTypes.Distance"
  DefaultValue=""
  VariableMode="Internal"
- Y="60"
+ X="940"
+ Y="300"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5058,8 +5054,8 @@ IN CurrentBaliseGroup</Action></Actions>
  Type="BaseTypes.Distance"
  DefaultValue="12.0"
  VariableMode="Constant"
- X="110"
- Y="60"
+ X="930"
+ Y="480"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -5077,8 +5073,8 @@ IN CurrentBaliseGroup</Action></Actions>
 <Rules>
 <Rule
  Priority="CleanUp"
- X="150"
- Y="530"
+ X="260"
+ Y="670"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -5140,7 +5136,7 @@ IN CurrentBaliseGroup</Action></Actions>
 </Rule><Rule
  Priority="Verification"
  X="40"
- Y="530"
+ Y="670"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -5171,8 +5167,8 @@ IN CurrentBaliseGroup</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Verification"
- X="40"
- Y="470"
+ X="150"
+ Y="670"
  Width="100"
  Height="50"
  Implemented="TRUE"
