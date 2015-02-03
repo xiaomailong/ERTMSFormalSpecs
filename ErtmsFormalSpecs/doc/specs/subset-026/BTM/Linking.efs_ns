@@ -613,6 +613,11 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="071565c3-97a5-424f-a42e-cbf0777f632c"
 >
+</ReqRef><ReqRef
+ Id="dc13fa0f-3c6b-42d8-a367-9de75248768d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="48985d3b-ea65-4129-a0d4-e89d0093552b"
+>
 </ReqRef><Comment>Verifies that the identifier of the current BG was announced by the linking (or that the linking has announced that the following balise group&apos;s identifier is unknown).</Comment>
 <Cases>
 <Case
@@ -861,6 +866,11 @@ Linking.CurrentBGWithinFrame()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="819c48ce-8cbf-4305-b83e-f747c8196b4b"
 >
+</ReqRef><ReqRef
+ Id="dc13fa0f-3c6b-42d8-a367-9de75248768d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c12cdcc0-b4fb-4d97-939d-5db6d594f159"
+>
 </ReqRef><Comment>Returns True if the current BG is linked and announced</Comment>
 <Cases>
 <Case
@@ -903,8 +913,8 @@ Linking.CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="BTM.Linking.LinkingData"
  Default=""
- X="860"
- Y="120"
+ X="640"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -932,8 +942,8 @@ Linking.CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
- X="640"
- Y="120"
+ X="750"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -965,8 +975,8 @@ Linking.CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
- X="750"
- Y="120"
+ X="860"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1683,7 +1693,12 @@ NOT Kernel.StaffResponsible.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
  Name="Linking"
  Guid="1fb15c41-3215-4765-a3ec-e3745a94adb7"
 >
-<Comment>Consider the BG with linking</Comment>
+<ReqRef
+ Id="dc13fa0f-3c6b-42d8-a367-9de75248768d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="568b2e62-5a2a-4d68-ae5c-66b129595653"
+>
+</ReqRef><Comment>Consider the BG with linking</Comment>
 <PreConditions>
 <PreCondition
  Guid="5f6b30d6-5215-4d2b-bd11-4191bbad5d7f"
@@ -1885,6 +1900,8 @@ As the first part of this procedure deletes the first (inconsistent) BG from the
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="640"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1931,6 +1948,11 @@ As the first part of this procedure deletes the first (inconsistent) BG from the
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2f3e1348-f97a-4e1f-9af3-9e3586e4831f"
 >
+</ReqRef><ReqRef
+ Id="d40be57e-365b-4f3a-ad26-7ff1d347c5f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="675e8dfd-79eb-499e-9596-e20c4d6deef9"
+>
 </ReqRef><Comment>Applies the linking reaction of the current linking.</Comment>
 <Parameters>
 <Parameter
@@ -1959,6 +1981,16 @@ As the first part of this procedure deletes the first (inconsistent) BG from the
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="95cdd889-a6df-4fd4-8409-67b0edc420e8"
 >
+</ReqRef><ReqRef
+ Id="c41b87f6-3ab7-4925-8ce9-eae8005f051f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d25c34a0-f247-495d-8234-5aeb046a7dab"
+>
+</ReqRef><ReqRef
+ Id="3c5e0f89-6000-4105-b9fb-8015551e56d8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8ce24dc2-b803-484d-ad50-a99ebde98a96"
+>
 </ReqRef><Comment>Linking reaction: command service brake.</Comment>
 <PreConditions>
 <PreCondition
@@ -1967,7 +1999,17 @@ As the first part of this procedure deletes the first (inconsistent) BG from the
 <Actions>
 <Action
  Guid="bfc6430f-ae00-42e0-8bd9-645cf6379bf4"
->Kernel.SpeedAndDistanceMonitoring.TriggerSBCommand()</Action></Actions>
+>Kernel.SpeedAndDistanceMonitoring.TriggerSBCommand()</Action><Action
+ Guid="98a091b7-4d8f-4619-befd-170f98fbc874"
+>INSERT Kernel.EmergencyStop{
+    IsConditional =&gt; False,
+    Id =&gt; 0,
+    StopLocation =&gt; 0.0,
+    Reason =&gt; Kernel.BrakeReason.BaliseGroupMessageConsistencyProblem
+}
+IN Kernel.EmergencyStops</Action><Action
+ Guid="dcddda32-ea7d-4603-a874-b66bdda37327"
+>DMI.MasterDMI().Out_BrakeReason.Display()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"

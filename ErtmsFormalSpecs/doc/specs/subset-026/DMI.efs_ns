@@ -1869,6 +1869,31 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
  Guid="eac716e5-5761-402e-8beb-0f7ffb2a3e08"
 >Out_LSSMA.Speed &lt;- Kernel.LimitedSupervision.LSSMA()</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateOUT"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update Brake Reason"
+ Guid="7ee104e8-843b-4f44-b03c-11d8c38e45dd"
+>
+<Comment>Updates the displayed ERTMS/ETCS Level</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Update Level"
+ Guid="5c2e4b2d-8d3f-4f61-9ecb-2caa5c5e4f7b"
+>
+<PreConditions>
+<PreCondition
+ Guid="e0784ef7-c597-4f99-822e-0cb6c3d70e16"
+>Out_BrakeReason.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8c9b5d46-f49d-403f-802e-3369b05632cc"
+>Out_BrakeReason.Reasons &lt;- Kernel.EmergencyStops</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
 <StructureElement

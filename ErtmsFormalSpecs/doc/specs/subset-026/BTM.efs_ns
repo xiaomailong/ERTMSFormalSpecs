@@ -213,6 +213,7 @@
  Name="StoredBaliseStruct"
  Guid="3824a971-a03f-4913-9be2-55ee942cddf9"
 >
+<Comment>Structure containing a single telegram received from a balise and a flag to see if the balise was missed.</Comment>
 <StructureElement
  TypeName="Messages.EUROBALISE.Message"
  Default=""
@@ -231,6 +232,9 @@
  Name="Missed"
  Guid="b1ba2f94-ae29-4f78-a71b-31f85e56796a"
 >
+<Comment>This variable indicates whether the Telegram was 
+a) received from the trackside or 
+b) is just a placeholder for a missed balise.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -1161,6 +1165,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Y="20"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="CurrentBGM_MCOUNT"
  Guid="92c7afe7-4312-43dc-895b-83398317885e"
 >
@@ -1321,6 +1326,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Y="400"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="MessageIsInconsistent"
  Guid="2fd2a28a-aa48-4284-999c-cfc3fc9edd19"
 >
@@ -1364,6 +1370,26 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2e4e526d-f0fc-4a31-bb10-3d7d4fde29e7"
 >
+</ReqRef><ReqRef
+ Id="d40be57e-365b-4f3a-ad26-7ff1d347c5f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c7bb4f41-996e-4873-935c-a685787d1b2e"
+>
+</ReqRef><ReqRef
+ Id="8bb7feaf-24fe-4d1a-9775-87e913521f1d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b7b3e636-9810-4a31-b14b-90f2881dad72"
+>
+</ReqRef><ReqRef
+ Id="91521e6e-52aa-4c7b-bb7f-957007e8cee5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7aa0b7de-eb25-47c9-b660-eab39b80215b"
+>
+</ReqRef><ReqRef
+ Id="04376925-d0f1-494f-bbdf-2723a7d3b9d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7a0a23e3-7ae2-4b76-bf54-b09c26cddc9e"
+>
 </ReqRef><Comment>Determines whether the Current Balise Group contains a message consistency error.</Comment>
 <Parameters>
 <Parameter
@@ -1392,6 +1418,7 @@ InconsistentMessageCounters()</Expression>
  Y="400"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="BaliseGroupIncomplete"
  Guid="036c6c2b-15a1-405a-9afd-6a3bd4d66669"
 >
@@ -1440,7 +1467,24 @@ InconsistentMessageCounters()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2ee71460-e278-46ed-b8c2-60634e51de02"
 >
-</ReqRef><Parameters>
+</ReqRef><ReqRef
+ Id="0eeafa43-5aca-4a22-b601-8acb4a81c8cd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0d6a3e4c-aae5-4bac-96a3-1beea1a0e6c0"
+>
+</ReqRef><ReqRef
+ Id="79632341-1718-4a2e-b6d6-dbdd628d9fa2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b39345f7-10da-47aa-be9a-a23d7feb516c"
+>
+</ReqRef><ReqRef
+ Id="c714f3fb-5bad-4115-8fd3-588a1387795d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1c4f0db6-3f95-41b0-b2af-02e03b3f4b97"
+>
+</ReqRef><Comment>Checks whether any balises were missed in the current balise group.
+If balises were missed, checks for an acceptable duplicate.</Comment>
+<Parameters>
 <Parameter
  Type="Boolean"
  Name="LinkingUsed"
@@ -1495,6 +1539,22 @@ NOT
  Name="IncorrectValuesInMessage"
  Guid="3260aec8-acde-48a4-813c-60c18974cfa2"
 >
+<ReqRef
+ Id="53747e4e-7f05-4bf8-9573-a743730e9af0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e3d71f43-4a31-47c7-8969-35c8d6cf85bf"
+>
+</ReqRef><ReqRef
+ Id="91521e6e-52aa-4c7b-bb7f-957007e8cee5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ad33275d-1d78-40f5-ba77-fc984ac71544"
+>
+</ReqRef><ReqRef
+ Id="758b6d57-bd6b-465f-b091-3477da12be7d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="568def3c-1745-40f9-a486-2b01b6c5244a"
+>
+</ReqRef><Comment>Checks whether any of the variables in the message contain incorrect or spare values.</Comment>
 <Cases>
 <Case
  Name="Value"
@@ -1509,6 +1569,7 @@ NOT
  Y="400"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="InconsistentMessageCounters"
  Guid="a1e62178-d9df-4071-b48d-0ea402143296"
 >
@@ -1532,7 +1593,33 @@ NOT
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5ad2fd8d-6136-4970-a8f0-d6d1b2cdc54d"
 >
-</ReqRef><Cases>
+</ReqRef><ReqRef
+ Id="752dcbf7-d97c-4790-bac1-1fc62dbf66f1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ea8ee672-ffc2-4aea-8472-b9b0f3ed3d50"
+>
+</ReqRef><ReqRef
+ Id="68a7df3c-ca07-4adf-ac06-12ba8e631b5e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="447ddcef-7468-471e-b430-5e18c9d47ff5"
+>
+</ReqRef><ReqRef
+ Id="00031a80-e9f3-4821-a0a6-1d322a75fa85"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e570ab3f-bd33-4724-875d-c61df23a1f5b"
+>
+</ReqRef><ReqRef
+ Id="d40be57e-365b-4f3a-ad26-7ff1d347c5f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b5d976e0-bde2-487e-9518-68a0622ded95"
+>
+</ReqRef><ReqRef
+ Id="04376925-d0f1-494f-bbdf-2723a7d3b9d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e4812f5-b89e-4a4a-b548-fc33bd61c90c"
+>
+</ReqRef><Comment>Checks that all the message counters in the received BG are consistent (or that they all fit all other telegrams in the message).</Comment>
+<Cases>
 <Case
  Name="All telegrams fit all others"
  Guid="4bdef627-9e9b-4909-80c2-52097e9aec50"
@@ -1708,6 +1795,8 @@ StoredBaliseStruct{
  Y="20"
  Width="100"
  Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="FullBGReceived"
  Guid="8029ace7-da32-4bf8-a69c-b1628b25a1b4"
 >
@@ -1757,10 +1846,31 @@ StoredBaliseStruct{
  Y="520"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="DuplicatedBaliseIsUseable"
  Guid="6ec5401f-9f2e-4c64-b301-dd0a209f5157"
 >
-<Comment>Determines whether the information in a duplicated balise can</Comment>
+<ReqRef
+ Id="79632341-1718-4a2e-b6d6-dbdd628d9fa2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7e1ba64b-7291-4cab-9d2a-67f4ed8317a6"
+>
+</ReqRef><ReqRef
+ Id="d60a5fe4-0902-42e6-bb3b-2580bb9112a0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1d619ef1-a56b-4640-bcc1-7773921ce729"
+>
+</ReqRef><ReqRef
+ Id="c714f3fb-5bad-4115-8fd3-588a1387795d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bac410b0-09a4-49c8-95fa-a78dbf87da5c"
+>
+</ReqRef><ReqRef
+ Id="3fab5e71-23cc-47ba-ab1f-f945dfe4ed39"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="421647a9-919d-4755-a1ae-a33daa434784"
+>
+</ReqRef><Comment>Determines whether the information in a duplicated balise can</Comment>
 <Parameters>
 <Parameter
  Type="Messages.EUROBALISE.Message"
@@ -3878,6 +3988,7 @@ If all the messages of the current balise group have been received, calls Handle
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Keep note of missed balises"
  Guid="2bac6cbb-3616-40c8-a658-72f42fddb191"
 >
@@ -3885,10 +3996,21 @@ If all the messages of the current balise group have been received, calls Handle
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Keep note of missed balises"
  Guid="17b3e4af-63f3-4b16-93c8-efdcd0950260"
 >
-<PreConditions>
+<ReqRef
+ Id="bc35119f-f1da-40d4-b6f7-b73c9ba07d98"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="753bb071-f4c3-46b1-bb34-f966feff3684"
+>
+</ReqRef><ReqRef
+ Id="5c440e26-b092-4abd-8105-dca981501e3f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ec10f95f-44ce-4e3c-9c1e-bc7fd6a9c1bc"
+>
+</ReqRef><PreConditions>
 <PreCondition
  Guid="f9563cb3-4a7d-4ec0-b982-8a989233cfc1"
 >CurrentBaliseGroup != []
@@ -3903,15 +4025,19 @@ Message.N_PIG != (LAST X IN CurrentBaliseGroup).Telegram.N_PIG - 1</PreCondition
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Add missed balises to list"
  Guid="c37a6131-48f8-4538-96f1-d0e80a225a25"
 >
+<Comment>If the received balise was not the next expected balise in the current group, the missed balise(s) will be added with the Missed flag.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Balise group orientation known"
  Guid="c801a564-49b2-4f3e-a03e-ffa9281add56"
 >
+<Comment>If the BG orientation is known (through linking) the missed balises are easy to fill in.</Comment>
 <PreConditions>
 <PreCondition
  Guid="f22d33c1-0c14-40e5-a78c-246730168bb4"
@@ -3921,9 +4047,11 @@ Message.N_PIG != (LAST X IN CurrentBaliseGroup).Telegram.N_PIG - 1</PreCondition
  Guid="30f9dad9-8438-4379-8738-fbb67c753a09"
 >FillMissedBalises()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Balise group orientation unknown, nominal direction"
  Guid="90f11a70-cd77-42cd-a2c3-c316e2bd1b6b"
 >
+<Comment>If the BG orientation is not known, but the N_PIG of the new balise is greater than the N_PIG of the previous one, the orientation of the BG is nominal and the missing balises can be added.</Comment>
 <PreConditions>
 <PreCondition
  Guid="57f49648-3125-475b-b122-ad0fd95f36b3"
@@ -3933,12 +4061,15 @@ Message.N_PIG != (LAST X IN CurrentBaliseGroup).Telegram.N_PIG - 1</PreCondition
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Add a second balise to CurrentBaliseGroup"
  Guid="9d23acde-90a3-4baf-af77-c13fd881958b"
 >
+<Comment>Add a second balise to the current balise group so that the orientation of the group is defined.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Add one balise in the nominal direction"
  Guid="f458f4ed-c6a0-4dc3-8db5-0298fc6bc2ee"
 >
@@ -3969,12 +4100,15 @@ IN CurrentBaliseGroup</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Fill other missing balises"
  Guid="3aa0e4a6-721c-4b7e-abd6-43e494b29bd2"
 >
+<Comment>Fill any otehr missing balises.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Fill Missed Balises"
  Guid="f2d47f76-4fae-4442-b49f-673b43f46a82"
 >
@@ -3987,9 +4121,11 @@ IN CurrentBaliseGroup</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Balise group orientation unknown, reverse direction"
  Guid="d638d8bb-34d9-4ba6-b108-1e02673528c3"
 >
+<Comment>If the BG orientation is not known, but the N_PIG of the new balise is less than the N_PIG of the previous one, the orientation of the BG is reverse and the missing balises can be added.</Comment>
 <PreConditions>
 <PreCondition
  Guid="52b1a78c-1123-450e-b6aa-4403d2641216"
@@ -3999,12 +4135,15 @@ IN CurrentBaliseGroup</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Add a second balise to CurrentBaliseGroup"
  Guid="477aa7e5-2d35-428f-bde3-7e87b96fc4d2"
 >
+<Comment>Add a second balise to the current balise group so that the orientation of the group is defined.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Add one balise in the nominal direction"
  Guid="22404532-dd16-4337-a6ed-23d624a25d7d"
 >
@@ -4035,23 +4174,15 @@ IN CurrentBaliseGroup</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Fill other missing balises"
  Guid="d29af369-e613-40d6-be03-cd08c7e44853"
 >
-</ReqRef><ReqRef
- Id="f9ca42e2-644d-47a2-b6e3-80059c79e361"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="cece19c0-f614-4c44-9d4b-25b27466f768"
->
-</ReqRef><ReqRef
- Id="0e6a08d0-98b2-451c-bd8b-74b39807dde8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7a3baac1-1971-42cb-abaa-3ce549c4e386"
->
-</ReqRef><Comment>The time is used for the MA section time-outs</Comment>
+<Comment>Fill any otehr missing balises.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Fill Missed Balises"
  Guid="a4628bc2-1d3a-4f1c-b9c2-903235212585"
 >
@@ -4570,6 +4701,7 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X.Telegram )</Action></Actio
  Y="70"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="CheckMessageConsistency"
  Guid="2f965c87-2f8c-4600-b483-b4f6a4727ef3"
 >
@@ -4623,6 +4755,26 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X.Telegram )</Action></Actio
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0ec4cff8-95f2-44a0-9a8b-6601e02be77d"
 >
+</ReqRef><ReqRef
+ Id="d40be57e-365b-4f3a-ad26-7ff1d347c5f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5218926e-e01d-4548-b20b-1c8564a0abad"
+>
+</ReqRef><ReqRef
+ Id="8bb7feaf-24fe-4d1a-9775-87e913521f1d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3f3dc563-fbb4-4d5b-b3db-8ed6b5674ad1"
+>
+</ReqRef><ReqRef
+ Id="91521e6e-52aa-4c7b-bb7f-957007e8cee5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3820debf-99dc-47a0-b652-5b2840e5af18"
+>
+</ReqRef><ReqRef
+ Id="04376925-d0f1-494f-bbdf-2723a7d3b9d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="de8c089e-8198-48d5-b244-6f74e528d741"
+>
 </ReqRef><Comment>Check the contents of the message before the contents are handled by the on-board.</Comment>
 <Parameters>
 <Parameter
@@ -4644,12 +4796,14 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X.Telegram )</Action></Actio
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Check message contents"
  Guid="8abdf11d-ca6c-48d1-a863-bc481bfa758c"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Message is inconsistent"
  Guid="9c7ee774-de31-4186-abe0-60ac91047dbf"
 >
@@ -4659,10 +4813,73 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X.Telegram )</Action></Actio
  Guid="9a7ebaab-1cb6-4f18-be81-d5d8666bf161"
 >MessageIsInconsistent(LinkingUsed)</PreCondition></PreConditions>
 <Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Apply the linking reaction or the service brake"
+ Guid="f540b567-9757-4617-8fb2-1ffbac46844e"
+>
+<Comment>If the message is inconsistent, apply the linking reaction (if the BG was linked) or the service brake.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Linked BG, apply the linking reaction"
+ Guid="19981dd2-0342-463c-a447-172153432f43"
+>
+<Comment>Apply the linkking reaction.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="14721962-4414-4fff-9854-c596dbf177bd"
+>LinkingUsed</PreCondition></PreConditions>
+<Actions>
 <Action
  Guid="0fec3662-dbbc-49b3-b82f-212da0f1bec2"
 >Linking.ApplyLinkingReaction(LinkingReaction)</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="No linking, check for Inhibition of service brake packet"
+ Guid="0773b7df-4bca-4564-9ef5-8fdcf72c4da5"
+>
+<ReqRef
+ Id="9a012f78-f887-493d-bdeb-3fe90b475b44"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="94c587d5-d271-4978-841d-91f4d8adeec7"
+>
+</ReqRef><ReqRef
+ Id="79632341-1718-4a2e-b6d6-dbdd628d9fa2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0a9686a9-dd4b-46c8-9fbb-1a324595063c"
+>
+</ReqRef><ReqRef
+ Id="c714f3fb-5bad-4115-8fd3-588a1387795d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7c940fd-91da-4fc1-8254-7e15fc6b6fca"
+>
+</ReqRef><ReqRef
+ Id="bc203fe9-a734-483d-acef-f8bc36a5ce00"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2edfa02a-d88d-4256-a9ae-217947b96438"
+>
+</ReqRef><Comment>Apply the service brake for an unlinked balise group, unless the BG information includes the packet &quot;Inhibition of the balise group message inconsistency reaction&quot;.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="b62df68a-af59-44c2-b28f-677c97e51814"
+>NOT THERE_IS balise IN CurrentBaliseGroup | 
+(
+    THERE_IS packet IN balise.Telegram.Sequence1 | 
+        Available(packet.TRACK_TO_TRAIN.INHIBITION_OF_BALISE_GROUP_MESSAGE_CONSISTENCY_REACTION) 
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e116e90f-40b7-447f-9f12-239d064059f9"
+>Linking.ApplyLinkingReaction(LinkingReaction)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Message is consistent"
  Guid="2adbfee2-3a06-4ae6-b57d-09d8b5423297"
 >
@@ -4685,7 +4902,7 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X.Telegram )</Action></Actio
  Name="FillMissedBalises"
  Guid="e99e41d9-f8d3-423a-bd04-a0b2aabc3987"
 >
-<Comment>Adds up to 6 balises to the current balise group that were missed.</Comment>
+<Comment>Adds up to 5 balises to the current balise group that were missed.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -4828,35 +5045,6 @@ IN CurrentBaliseGroup</Action></Actions>
 <Actions>
 <Action
  Guid="9402818a-0fb2-4a36-a5a8-e417a291cc7b"
->INSERT
-MissedBalise()
-IN CurrentBaliseGroup</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Fill sixth balise"
- Guid="0ea1bb86-7cb4-4649-851c-0f6278154734"
->
-<Comment>Add a sixth missed balise.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Fill sixth balise"
- Guid="a8786259-687a-4f83-8c79-9b7c70ef1f84"
->
-<PreConditions>
-<PreCondition
- Guid="7f6508d1-ee68-4d06-86bd-f5499686b99e"
->(LAST X IN CurrentBaliseGroup).Telegram.N_PIG != Message.N_PIG + 1
- AND 
-(LAST X IN CurrentBaliseGroup).Telegram.N_PIG != Message.N_PIG - 1</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="753b8a08-005a-4d7e-b8c7-9fe2979d9e59"
 >INSERT
 MissedBalise()
 IN CurrentBaliseGroup</Action></Actions>
@@ -5140,15 +5328,25 @@ IN CurrentBaliseGroup</Action></Actions>
  Width="100"
  Height="50"
  Pinned="TRUE"
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Incomplete balise group received"
  Guid="898a6047-388a-4c9c-85e6-9dade9e6c758"
 >
-<Comment>If the on-board receives a balise telegram of a balise group different from the currently handled balise group, the current balise group is considered as incomplete.</Comment>
+<ReqRef
+ Id="bc35119f-f1da-40d4-b6f7-b73c9ba07d98"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c3c391b3-dbad-4555-ae62-bae39fd7cfa2"
+>
+</ReqRef><ReqRef
+ Id="bb8f4e12-123f-4746-81d4-bd86e68fad6b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2fa68c28-14b8-43b1-91c9-6e1043f1429b"
+>
+</ReqRef><Comment>If the on-board receives a balise telegram of a balise group different from the currently handled balise group, the current balise group is considered as incomplete.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- NeedsRequirement="FALSE"
+ Implemented="TRUE"
  Name="Incomplete balise group received"
  Guid="dcd23c6f-268e-49a2-85cf-2797f253976c"
 >
