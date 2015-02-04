@@ -12,8 +12,8 @@
 <Enumerations>
 <Enum
  Default="LinkingReaction.NoReaction"
- X="840"
- Y="420"
+ X="340"
+ Y="510"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -47,6 +47,10 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="LinkingErrorEnum.NoError"
+ X="60"
+ Y="450"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="LinkingErrorEnum"
  Guid="f7d0d40f-d131-4a41-9de0-67722abc8cdd"
@@ -98,8 +102,8 @@
 <Structures>
 <Structure
  Default=""
- X="670"
- Y="420"
+ X="500"
+ Y="510"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -212,6 +216,10 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 </ReqRef><Comment>Identifier of the linked balise group.</Comment>
 </StructureElement></Structure><Structure
  Default=""
+ X="620"
+ Y="420"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RAMSSupervisionStruct"
  Guid="0bf11b83-db45-4b34-8b47-6bd23ef65f98"
@@ -526,7 +534,6 @@ BaliseGroupOrientation() == CurrentLinking().Orientation</Expression>
  Y="210"
  Width="100"
  Height="50"
- Pinned="TRUE"
  Implemented="TRUE"
  Verified="TRUE"
  Name="ConvertLinkingReaction"
@@ -1116,6 +1123,10 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="60"
+ Y="270"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="ExpectationWindowPassed"
  Guid="f5ae4295-6868-42ae-a35e-09289ccbec8b"
@@ -1136,6 +1147,10 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
+ X="390"
+ Y="210"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RAMSWindowPassed"
  Guid="f2260646-2faf-4e84-997d-ff6eb4f89e94"
@@ -2332,6 +2347,10 @@ IN Kernel.EmergencyStops</Action></Actions>
  Type="RAMSSupervisionStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
+ X="620"
+ Y="320"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RAMSSupervisedBG"
  Guid="42b47c1c-198d-4e03-a333-4d857d4c5421"
@@ -2347,7 +2366,7 @@ IN Kernel.EmergencyStops</Action></Actions>
 <Rule
  Priority="CleanUp"
  X="60"
- Y="320"
+ Y="360"
  Width="100"
  Height="50"
  Pinned="TRUE"
