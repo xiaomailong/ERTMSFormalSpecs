@@ -69,7 +69,7 @@
 >
 </ReqRef><Comment>Represents the distance from beginning of section to section timer stop location (if there is a time-out associated to this section).</Comment>
 </StructureElement><StructureElement
- TypeName="BaseTypes.Time"
+ TypeName="Default.BaseTypes.Time"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -295,7 +295,7 @@ X.TimeOut.TimerStart + X.TimeOut.TimeOut &lt; DateAndTime.CurrentTime)</PreCondi
 >
 </ReqRef><Comment>Stores the time of passage over the first balise encountered of any BG. If the BG contains an MA, this time is the section timer start for all section time-outs in that MA.</Comment>
 </Variable><Variable
- Type="BaseTypes.Time"
+ Type="Default.BaseTypes.Time"
  DefaultValue="BaseTypes.Time.NA"
  VariableMode="Internal"
  X="130"
@@ -362,7 +362,7 @@ Note that the &quot;TimeOut&quot; here is not the End Section time-out value, bu
 >
 </ReqRef><Comment>Time of reception of the MA, starting point of the section timers and EOA/LOA timer.</Comment>
 </Variable><Variable
- Type="BaseTypes.Time"
+ Type="Default.BaseTypes.Time"
  DefaultValue="BaseTypes.Time.NA"
  VariableMode="Internal"
  X="240"

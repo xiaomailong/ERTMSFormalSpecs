@@ -253,7 +253,7 @@ b) is just a placeholder for a missed balise.</Comment>
 >
 <Comment>Represents the list of last received LRBGs.</Comment>
 </Collection><Collection
- TypeName="StoredBaliseStruct"
+ TypeName="BTM.StoredBaliseStruct"
  MaxSize="8"
  Default="[]"
  X="820"
@@ -732,7 +732,7 @@ b) is just a placeholder for a missed balise.</Comment>
 </ReqRef><Comment>This function indicates whether a single balise needs to be processed. Only the second of a pair of duplicate balises is handled.</Comment>
 <Parameters>
 <Parameter
- Type="StoredBaliseStruct"
+ Type="BTM.StoredBaliseStruct"
  Name="Message"
  Guid="97fc975a-3d6b-44b1-b594-1bcd610e2aac"
 >
@@ -1681,7 +1681,7 @@ NOT
 <Expression>THERE_IS Message IN CurrentBaliseGroup | Message.Telegram.M_MCOUNT != CurrentBGM_MCOUNT()</Expression>
 </Case></Cases>
 </Function><Function
- Type="StoredBaliseStruct"
+ Type="BTM.StoredBaliseStruct"
  Default=""
  X="260"
  Y="460"
@@ -1695,7 +1695,7 @@ NOT
 <Comment>The previous balise in the BG&apos;s nominal direction (N_PIG - 1)</Comment>
 <Parameters>
 <Parameter
- Type="StoredBaliseStruct"
+ Type="BTM.StoredBaliseStruct"
  Name="Balise"
  Guid="2df68c8a-3538-4009-a290-020a05ba0e21"
 >
@@ -1717,7 +1717,7 @@ NOT
 <Expression>FIRST X IN CurrentBaliseGroup | X.Telegram.N_PIG == Balise.Telegram.N_PIG - 1</Expression>
 </Case></Cases>
 </Function><Function
- Type="StoredBaliseStruct"
+ Type="BTM.StoredBaliseStruct"
  Default=""
  X="40"
  Y="460"
@@ -1756,7 +1756,7 @@ StoredBaliseStruct{
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="StoredBaliseStruct"
+ Type="BTM.StoredBaliseStruct"
  Default=""
  X="150"
  Y="460"
@@ -1770,7 +1770,7 @@ StoredBaliseStruct{
 <Comment>The next balise in the BG&apos;s nominal direction (N_PIG + 1)</Comment>
 <Parameters>
 <Parameter
- Type="StoredBaliseStruct"
+ Type="BTM.StoredBaliseStruct"
  Name="Balise"
  Guid="1ce2bf6f-4cee-4870-ab21-09cfdff13924"
 >
@@ -1991,7 +1991,7 @@ FORALL X IN Balise.Sequence1 |
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
- Type="StoredBaliseStruct"
+ Type="BTM.StoredBaliseStruct"
  Default=""
  Width="100"
  Height="50"
@@ -5400,7 +5400,7 @@ IN CurrentBaliseGroup</Action></Actions>
 </ReqRef><Comment>Distance between the front end of the train and the active Eurobalise antenna.
 [stan@ertmssolutions.com] We assume that ActiveAntennaPosition &gt; 0</Comment>
 </Variable><Variable
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  DefaultValue=""
  VariableMode="Internal"
  X="940"
@@ -5414,7 +5414,7 @@ IN CurrentBaliseGroup</Action></Actions>
 >
 <Comment>Keeps the position of the last seen balise in the current group.</Comment>
 </Variable><Variable
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  DefaultValue="12.0"
  VariableMode="Constant"
  X="930"
