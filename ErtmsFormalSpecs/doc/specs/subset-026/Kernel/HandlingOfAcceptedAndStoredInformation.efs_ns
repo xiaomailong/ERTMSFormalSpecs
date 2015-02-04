@@ -170,6 +170,7 @@
  Y="20"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="SituationG"
  Guid="a7556fe6-a375-45b0-98f6-e12d98125464"
 >
@@ -184,15 +185,20 @@
  Name="Value"
  Guid="5c5536bf-5616-48bc-9b44-ec22975e219d"
 >
-<Expression>False</Expression>
+<Expression>UnlinkedBGInconsistency
+  AND  
+Odometry.TrainIsAtStandstill()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
- Default=""
+ Default="LinkingReactionAppliedServiceBrake
+  AND  
+Odometry.TrainIsAtStandstill()"
  X="360"
  Y="80"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="SituationH"
  Guid="be2f9e80-7a7a-4aa9-aad6-bf10f43935d6"
 >
@@ -309,6 +315,7 @@
  Y="20"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="SituationM"
  Guid="0b9cd9e1-60a4-4323-824a-81683d441a3a"
 >
@@ -323,7 +330,9 @@
  Name="Value"
  Guid="6e483044-a5eb-4d7d-a311-74fb0b66f37b"
 >
-<Expression>False</Expression>
+<Expression>LinkedBGInconsistency_NoLinking
+  AND  
+Odometry.TrainIsAtStandstill()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -3865,7 +3874,7 @@ SituationM()</Expression>
 </ReqRef><Comment>Indicates if a section timer reaches the time-out value, causing an MA shortening (Situation c)</Comment>
 </Variable><Variable
  Type="Boolean"
- DefaultValue=""
+ DefaultValue="False"
  VariableMode="Internal"
  X="580"
  Y="240"
@@ -3888,7 +3897,7 @@ SituationM()</Expression>
 </ReqRef><Comment>Indicates if the LOA became the EOA due to the target speed timeout.</Comment>
 </Variable><Variable
  Type="Boolean"
- DefaultValue=""
+ DefaultValue="False"
  VariableMode="Internal"
  X="690"
  Y="240"
@@ -3911,7 +3920,7 @@ SituationM()</Expression>
 </ReqRef><Comment>Indicates if the SvL was shifted due to the expiration of the overlap timer.</Comment>
 </Variable><Variable
  Type="Boolean"
- DefaultValue=""
+ DefaultValue="False"
  VariableMode="Internal"
  X="800"
  Y="240"
@@ -3932,6 +3941,68 @@ SituationM()</Expression>
  Guid="e192cd80-d5af-41b8-9acf-de65011638ee"
 >
 </ReqRef><Comment>Indicates if a cooperative MA revocation was granted by the onboard.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="UnlinkedBGInconsistency"
+ Guid="f3e0088e-a1b3-4c45-a729-b99fcd00ce4e"
+>
+<ReqRef
+ Id="b1d9b517-938a-43da-9291-9ec83dd85ea5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9744bbb0-5cc8-4e1b-8587-9b3193341b02"
+>
+</ReqRef><ReqRef
+ Id="d92c56a7-724f-43e7-846d-86012a4ec60e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bc335bd4-f311-4fec-ac46-d453c78c8cb7"
+>
+</ReqRef><Comment>Indicates if a data consistency error was detected in a balise group marked as unlinked was detected.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="LinkedBGInconsistency_NoLinking"
+ Guid="7ea68777-b071-4530-8aaf-19ca00a8e860"
+>
+<ReqRef
+ Id="800db7b0-ae5e-4ec5-a0bb-e69f79fd0905"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="11211c8c-4a86-4d26-8bd4-1a8ad52bced2"
+>
+</ReqRef><ReqRef
+ Id="ea29ed49-2305-4c0a-9a5f-18be4773caa4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9f64389d-0ec4-45dd-a396-a426b47493c3"
+>
+</ReqRef><Comment>Indicates if a data consistency error was detected in a balise group marked as linked was detected, with no linking information used on-board.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="LinkingReactionAppliedServiceBrake"
+ Guid="28cc908c-5c00-49f6-9fbb-c98034089f2d"
+>
+<ReqRef
+ Id="7c013696-353c-42ac-8a49-d0ea16376dca"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0415775c-815a-4dd1-a2d3-855c35fe647f"
+>
+</ReqRef><ReqRef
+ Id="00031a80-e9f3-4821-a0a6-1d322a75fa85"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c330167a-b9b2-4666-9887-86e2b6c5d685"
+>
+</ReqRef><ReqRef
+ Id="645b4e18-c87b-4cb7-85d9-44ac2e4bf60e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9cfdd7cc-e04b-422c-acbb-5e35f2b37ba6"
+>
+</ReqRef><Comment>Indicates if the service brake was applied because of a linking reaction.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule

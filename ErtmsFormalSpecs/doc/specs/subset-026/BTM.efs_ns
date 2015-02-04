@@ -4979,6 +4979,79 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
  Guid="e116e90f-40b7-447f-9f12-239d064059f9"
 >Linking.ApplyLinkingReaction(LinkingReaction)</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Delete stored information"
+ Guid="1ed17502-7942-4af5-885a-a37977d47cf1"
+>
+<Comment>If a message was rejected due to its data consistency, and the service brake is applied, store this information for future shortening of the location based data.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="No linking, BG marked as linked"
+ Guid="9a930249-e076-47e8-8d7b-0ebaf3e7f815"
+>
+<ReqRef
+ Id="ea29ed49-2305-4c0a-9a5f-18be4773caa4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0add2c8e-3b61-49b4-8663-0f9c16c6a9c4"
+>
+</ReqRef><Comment>First case: linking is not used on-board and the rejected BG is marked as linked.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="d295d0ec-d8e8-4fef-92ae-7e902958d77a"
+>(FIRST X IN CurrentBaliseGroup).Telegram.Q_LINK == Messages.Q_LINK.Linked</PreCondition><PreCondition
+ Guid="cecf9dc1-c9cf-4511-85dd-5fb4e42b0f3f"
+>NOT LinkingUsed</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="6ab93631-fbfd-45db-9678-e65420363e8c"
+>Kernel.HandlingOfAcceptedAndStoredInformation.LinkedBGInconsistency_NoLinking &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="No linking, BG marked as unlinked"
+ Guid="a5fdd935-9dbb-47a6-867a-cbd671e4c80e"
+>
+<ReqRef
+ Id="d92c56a7-724f-43e7-846d-86012a4ec60e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e68b5f1c-1948-4754-8beb-f840325d5ef3"
+>
+</ReqRef><Comment>Second case: the rejected BG is unlinked.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="3c0ea399-4765-47a4-bf81-775189917311"
+>NOT LinkingUsed</PreCondition><PreCondition
+ Guid="fcbdcef4-2c10-4095-839b-c8d711ab5ef8"
+>(FIRST X IN CurrentBaliseGroup).Telegram.Q_LINK == Messages.Q_LINK.Unlinked</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="23f3af28-61d8-4911-a424-2cb14b1149c6"
+>Kernel.HandlingOfAcceptedAndStoredInformation.UnlinkedBGInconsistency &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Linking used"
+ Guid="8ec790c6-961c-40ea-afd7-3c26605eb33b"
+>
+<ReqRef
+ Id="645b4e18-c87b-4cb7-85d9-44ac2e4bf60e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4e61788f-8398-4950-b223-91c62b0115aa"
+>
+</ReqRef><Comment>Third case: the rejected message is linked and was present in the linking data.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="9e4c8fbc-8558-43d1-b40a-9cc2b58fefa7"
+>LinkingUsed</PreCondition><PreCondition
+ Guid="74ff1606-3978-495d-8928-df9d3fd80853"
+>LinkingReaction == Linking.LinkingReaction.CommandServiceBrake</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="dcc88356-9b44-4c14-908e-20a1f05c099c"
+>Kernel.HandlingOfAcceptedAndStoredInformation.LinkingReactionAppliedServiceBrake &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
