@@ -10556,13 +10556,17 @@ INITIAL_VALUE EmergencyStop
  Guid="6d3b2490-aa01-4121-8abb-e05a55a842cc"
 >BTM.Linking.LinkingApplicable()
   AND  
-BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLinking().Distance + BTM.Linking.CurrentLinking().LocationAccuracy)</PreCondition><PreCondition
+(
+BTM.Linking.ExpectationWindowPassed()
+  OR  
+BTM.Linking.RAMSWindowPassed()
+)</PreCondition><PreCondition
  Guid="c890d07b-a440-4ec6-ba9a-57aec6e3798e"
 >ActiveFunctions.CheckLinkingConsistency()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d3d59ef2-1780-4145-90f8-d8a3cf0dfbcc"
->BTM.Linking.HandleLinkingError()</Action></Actions>
+>BTM.Linking.HandleLinkingError(BTM.Linking.LinkingErrorEnum.ExpectationWindowEnd)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -10948,6 +10952,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Train position"
  Guid="f56351d1-ad26-469d-a848-02640e64e865"
 >
+<Comment>Initialization of the LRBG, of the train position, of the train orientation and the odometer accuracy.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -11160,9 +11165,11 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Train integrity"
  Guid="4f1244da-71cc-4d18-8bcf-52621d1eff4b"
 >
+<Comment>Set the train integrity to confirmed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Train integrity"
  Guid="eb65a0f7-3e57-4ca8-aaa3-778605f6b193"
@@ -11180,6 +11187,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Power on"
  Guid="47ba31e2-ec3f-4faf-92d8-aea5dca9da87"
 >
+<Comment>Sets power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
