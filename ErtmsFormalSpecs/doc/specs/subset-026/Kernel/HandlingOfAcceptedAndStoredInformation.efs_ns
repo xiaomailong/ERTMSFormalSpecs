@@ -292,6 +292,7 @@ Odometry.TrainIsAtStandstill()"
  Y="80"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="SituationL"
  Guid="ba50aaa0-e01a-4061-bd44-1260cc611cb5"
 >
@@ -306,7 +307,9 @@ Odometry.TrainIsAtStandstill()"
  Name="Value"
  Guid="244e5af0-b989-48af-8657-9b0a11145ef9"
 >
-<Expression>False</Expression>
+<Expression>RAMSSupervisionFunctionLedToServiceBrake
+  AND  
+Odometry.TrainIsAtStandstill()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -3945,6 +3948,8 @@ SituationM()</Expression>
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="UnlinkedBGInconsistency"
  Guid="f3e0088e-a1b3-4c45-a729-b99fcd00ce4e"
@@ -3964,6 +3969,9 @@ SituationM()</Expression>
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
+ X="110"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="LinkedBGInconsistency_NoLinking"
  Guid="7ea68777-b071-4530-8aaf-19ca00a8e860"
@@ -3983,6 +3991,9 @@ SituationM()</Expression>
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
+ X="220"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="LinkingReactionAppliedServiceBrake"
  Guid="28cc908c-5c00-49f6-9fbb-c98034089f2d"
@@ -4003,6 +4014,25 @@ SituationM()</Expression>
  Guid="9cfdd7cc-e04b-422c-acbb-5e35f2b37ba6"
 >
 </ReqRef><Comment>Indicates if the service brake was applied because of a linking reaction.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue=""
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="RAMSSupervisionFunctionLedToServiceBrake"
+ Guid="8feaaa00-bcf1-4e41-99e1-45f776d0bc19"
+>
+<ReqRef
+ Id="7473dbeb-3f89-425b-b01e-fe59b80053d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6701ec7b-d1af-4109-8656-15bc431088e8"
+>
+</ReqRef><ReqRef
+ Id="59827ecc-eb52-4d61-8c08-58aa70975eea"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4215eaac-6f12-4a92-9cf3-4bb5b4e54e41"
+>
+</ReqRef><Comment>Indicates if the RAMS supervision function led to the appliaction of the service brake.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
