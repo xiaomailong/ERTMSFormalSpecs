@@ -1953,6 +1953,11 @@ As the first part of this procedure deletes the first (inconsistent) BG from the
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="675e8dfd-79eb-499e-9596-e20c4d6deef9"
 >
+</ReqRef><ReqRef
+ Id="11ea7b7f-ac4e-40fe-90ea-b1c4713fac8e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b555e6fe-262a-43ba-a4d1-64eb45d9f406"
+>
 </ReqRef><Comment>Applies the linking reaction of the current linking.</Comment>
 <Parameters>
 <Parameter
@@ -2034,7 +2039,18 @@ IN Kernel.EmergencyStops</Action><Action
 <Actions>
 <Action
  Guid="ae19ed3a-7f6d-4b56-88d8-3ad85658ff6d"
->Linking.TrainTripDueToLinkingInconsistency &lt;- True</Action></Actions>
+>Linking.TrainTripDueToLinkingInconsistency &lt;- True</Action><Action
+ Guid="dfa06d79-132e-4330-a9e1-9cf9c3095a11"
+>
+DMI.MasterDMI().Out_BrakeReason.Display()</Action><Action
+ Guid="14f5f361-4018-437e-aa02-d290a7048a2b"
+>INSERT Kernel.EmergencyStop{
+    IsConditional =&gt; False,
+    Id =&gt; 0,
+    StopLocation =&gt; 0.0,
+    Reason =&gt; Kernel.BrakeReason.BaliseGroupMessageConsistencyProblem
+}
+IN Kernel.EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
