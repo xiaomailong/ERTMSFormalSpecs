@@ -766,13 +766,13 @@ b) is just a placeholder for a missed balise.</Comment>
 >Message.Telegram.M_DUP != Messages.M_DUP.No_duplicates
   AND  
 (
-NOT THERE_IS packet IN Message.Telegram.Sequence1 |
-    Available(packet.TRACK_TO_TRAIN.DEFAULT_BALISE_LOOP_OR_RIU_INFORMATION)
+NOT THERE_IS packet1 IN Message.Telegram.Sequence1 |
+    Available(packet1.TRACK_TO_TRAIN.DEFAULT_BALISE_LOOP_OR_RIU_INFORMATION)
 )
   AND  
 (
-THERE_IS packet IN DuplicateBalise(Message.Telegram).Telegram.Sequence1 |
-    Available(packet.TRACK_TO_TRAIN.DEFAULT_BALISE_LOOP_OR_RIU_INFORMATION)
+THERE_IS packet2 IN DuplicateBalise(Message.Telegram).Telegram.Sequence1 |
+    Available(packet2.TRACK_TO_TRAIN.DEFAULT_BALISE_LOOP_OR_RIU_INFORMATION)
 )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
@@ -2017,7 +2017,7 @@ FORALL X IN Balise.Sequence1 |
 <PreCondition
  Guid="eff994b4-3615-45a8-aa7b-0f8ebe6856c6"
 >Balise.M_DUP == Messages.M_DUP.This_balise_is_a_duplicate_of_the_next_balise__seen_in_the_nominal_direction_of_the_balise_group</PreCondition></PreConditions>
-<Expression>FIRST X IN CurrentBaliseGroup | X.Telegram.NID_BG == Balise.NID_BG + 1</Expression>
+<Expression>FIRST X IN CurrentBaliseGroup | X.Telegram.N_PIG == Balise.N_PIG + 1</Expression>
 </Case><Case
  Name="Duplicate of the previous balise"
  Guid="49c7ee14-4263-4343-a897-558b4e36f7d6"
@@ -2026,7 +2026,7 @@ FORALL X IN Balise.Sequence1 |
 <PreCondition
  Guid="fcdc7999-90e2-4d29-adf7-6ce07cd84427"
 >Balise.M_DUP == Messages.M_DUP.This_balise_is_a_duplicate_of_the_previous_balise__seen_in_the_nominal_direction_of_the_balise_group</PreCondition></PreConditions>
-<Expression>FIRST X IN CurrentBaliseGroup | X.Telegram.NID_BG == Balise.NID_BG - 1</Expression>
+<Expression>FIRST X IN CurrentBaliseGroup | X.Telegram.N_PIG == Balise.N_PIG - 1</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
