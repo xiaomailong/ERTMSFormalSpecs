@@ -1395,6 +1395,11 @@ IN Linkings</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="34f2596f-54be-4597-bd2c-07f7ad17bc75"
 >
+</ReqRef><ReqRef
+ Id="6ae42f8d-795c-47e9-8a41-3f4433b18021"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="972ef265-6a0b-4c95-8efc-55ebe4330d5e"
+>
 </ReqRef><Comment>BGs are only considered in the order the linking was given to the train. This means that only the first element should ever be deleted.
 This function is called whenever it is appropriate, so it does not need any preconditions to its action.</Comment>
 <Parameters>
@@ -1426,6 +1431,31 @@ This function is called whenever it is appropriate, so it does not need any prec
 <Action
  Guid="f5e1d966-d547-4ac0-9400-f7ab8627a792"
 >REMOVE FIRST IN Linkings</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Start balise cross-talk supervision"
+ Guid="f834e2de-9329-4fd0-82db-3de962582e6e"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Start balise cross-talk supervision"
+ Guid="9f34ba0b-1ddb-4749-8bc7-0a094b87e2d0"
+>
+<PreConditions>
+<PreCondition
+ Guid="34acd0cd-de6a-4962-a47f-b88615655367"
+>CurrentLinking().BaliseGroupIdentifier == Messages.NID_BG.NID_UNKNOWN</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="87998e18-50ab-4356-b2d2-74b0e63528f2"
+>RAMSRepositioningBG &lt;- RAMSSupervisionStruct{
+    EndOfWindow =&gt; CurrentLinking().Distance + CurrentLinking().LocationAccuracy,
+    Id =&gt; Messages.NID_BG.NID_UNKNOWN
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1916,7 +1946,39 @@ NOT Kernel.StaffResponsible.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Check RAMS supervision"
+ Name="Check balise cross-talk RAMS"
+ Guid="84bb496a-8f09-4b15-80be-d4e46aa8e27b"
+>
+<ReqRef
+ Id="6ae42f8d-795c-47e9-8a41-3f4433b18021"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6a52c330-f335-47a7-9669-8c47a73c9b9d"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove RAMS if known, linked BG"
+ Guid="b2d4afb6-ba51-4ccb-9557-e58bd290d804"
+>
+<ReqRef
+ Id="848fea93-159f-4a91-8e12-25254251ce91"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9d9a39dd-ce42-4973-b858-899bf41e5a07"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="5c4ec92f-7397-4b1a-8e94-ab0d3f2c56b3"
+>CurrentLinking().BaliseGroupIdentifier != Messages.NID_BG.NID_UNKNOWN</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="369dfef1-1fae-4ce2-b6c1-777ef0432e42"
+>RAMSRepositioningBG &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Check balise reception RAMS"
  Guid="d830518c-e527-4ce2-8aba-7ea17d82d7b7"
 >
 <Comment>If the RAMS supervision function is active, check it against the cerrunt BG.
@@ -2014,6 +2076,39 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 >HandleConsistencyError()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Check RAMS repositioning function"
+ Guid="b9dec577-e68c-4cb0-83bc-4e13d56f5bec"
+>
+<ReqRef
+ Id="6ae42f8d-795c-47e9-8a41-3f4433b18021"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f9eabc81-580c-4d83-b081-34fbb10dd3d3"
+>
+</ReqRef><ReqRef
+ Id="aaa581cb-18a1-43c9-861e-43c4d76ec1fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f0a3dba2-4e71-4107-a0e9-129298deb930"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="5777b7bc-699f-45f1-89ed-9f7a10ab06d7"
+>Available(RAMSRepositioningBG)</PreCondition><PreCondition
+ Guid="e1a20219-11e1-4519-8332-9991357825e0"
+>THERE_IS message IN CurrentBaliseGroup | 
+(
+  THERE_IS packet IN message.Telegram.Sequence1 |
+    Available(packet.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION)
+)</PreCondition><PreCondition
+ Guid="97e201cd-7e8c-4cd0-9796-d3b94acf3a02"
+>(FIRST X IN CurrentBaliseGroup | NOT X.Missed).Telegram.Q_LINK == Messages.Q_LINK.Linked</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f898bb73-e730-4511-924e-65a22a77ddd7"
+>TIU.ServiceBrakeCommanded &lt;- True</Action><Action
+ Guid="f7aea1c2-1e1f-4d47-8f36-412e4107ba4b"
+>Kernel.HandlingOfAcceptedAndStoredInformation.RAMSSupervisionFunctionLedToServiceBrake &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2241,7 +2336,7 @@ As the first part of this procedure deletes the first (inconsistent) BG from the
     IsConditional =&gt; False,
     Id =&gt; 0,
     StopLocation =&gt; 0.0,
-    Reason =&gt; Kernel.BrakeReason.BaliseGroupMessageConsistencyProblem
+    Reason =&gt; Kernel.EmergencyBrakeReason.BaliseGroupMessageConsistencyProblem
 }
 IN Kernel.EmergencyStops</Action><Action
  Guid="dcddda32-ea7d-4603-a874-b66bdda37327"
@@ -2278,7 +2373,7 @@ IN Kernel.EmergencyStops</Action><Action
     IsConditional =&gt; False,
     Id =&gt; 0,
     StopLocation =&gt; 0.0,
-    Reason =&gt; Kernel.BrakeReason.BaliseGroupMessageConsistencyProblem
+    Reason =&gt; Kernel.EmergencyBrakeReason.BaliseGroupMessageConsistencyProblem
 }
 IN Kernel.EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
@@ -2361,6 +2456,22 @@ IN Kernel.EmergencyStops</Action></Actions>
  Guid="25adec3e-de83-4beb-a8eb-0043c6151409"
 >
 </ReqRef><Comment>The currently supervised BG for the RAMS (EMPTY unless the previous linked BG was not found before the end of its expectation window).</Comment>
+</Variable><Variable
+ Type="RAMSSupervisionStruct"
+ DefaultValue="EMPTY"
+ VariableMode="Internal"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="RAMSRepositioningBG"
+ Guid="d5b30f75-a35d-491b-a217-d777acd05fa0"
+>
+<ReqRef
+ Id="6ae42f8d-795c-47e9-8a41-3f4433b18021"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a6ba06db-a4c5-43ce-ba2d-9af8d6d7e61e"
+>
+</ReqRef><Comment>Contains the identity and end of expectation window of a linked repositioning BG.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -2390,6 +2501,44 @@ IN Kernel.EmergencyStops</Action></Actions>
 <Action
  Guid="a4712cfb-db0c-4f4d-bec4-dedbd6e4bb7a"
 >TrainTripDueToLinkingInconsistency &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="CleanUp"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Clean up RAMS repositioning"
+ Guid="27eeb240-ae1a-4396-9162-521d74f6416f"
+>
+<ReqRef
+ Id="6ae42f8d-795c-47e9-8a41-3f4433b18021"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3ab6949a-301f-49c0-b6fa-8eb30481bec6"
+>
+</ReqRef><ReqRef
+ Id="baeb0b9b-6e0d-4bcf-b5eb-cd57d7499198"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b99c4336-0b70-4185-9601-91bba3f52bc2"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Delete information at the end of the expectation window"
+ Guid="53ae84c5-99e8-4438-af01-fe85426c6086"
+>
+<PreConditions>
+<PreCondition
+ Guid="31e13c42-91f0-4f0d-80c6-0ac0955b0353"
+>Available(RAMSRepositioningBG)
+  AND  
+AntennaPosition( Default.DistanceInterval.Min ) &gt; RAMSRepositioningBG.EndOfWindow</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="05d233d1-f4fd-4e47-9d02-eec5223c9448"
+>RAMSRepositioningBG &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

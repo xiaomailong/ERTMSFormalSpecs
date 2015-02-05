@@ -155,14 +155,14 @@
 >
 </EnumValue></Values>
 </Enum><Enum
- Default="BrakeReason.DriverAckTimeOut"
+ Default="EmergencyBrakeReason.DriverAckTimeOut"
  X="970"
  Y="90"
  Width="100"
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="BrakeReason"
+ Name="EmergencyBrakeReason"
  Guid="0fb8e0ec-b6c6-4517-b005-253d3c0ebdea"
 >
 <ReqRef
@@ -186,6 +186,22 @@
  Value=""
  Name="BaliseGroupMessageConsistencyProblem"
  Guid="e008b5cc-8185-4108-9ae7-3d5a8e532bcf"
+>
+</EnumValue></Values>
+</Enum><Enum
+ Default="ServiceBrakeReason.BaliseGroupMessageConsistencyProblem"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ServiceBrakeReason"
+ Guid="997188e4-48e7-491c-bef3-fa55bf012ca4"
+>
+<Values>
+<EnumValue
+ Value=""
+ Name="BaliseGroupMessageConsistencyProblem"
+ Guid="a0fc363e-0030-4aa6-be6b-f9086d9b75f1"
 >
 </EnumValue></Values>
 </Enum></Enumerations>
@@ -379,7 +395,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 <Comment>The stop location of this emergency stop.</Comment>
 </StructureElement><StructureElement
- TypeName="BrakeReason"
+ TypeName="EmergencyBrakeReason"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -582,6 +598,17 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="5b8e157e-cc08-4e80-b8fb-5d051468dfa1"
 >
 </ReqRef><Comment>Collection of safety critical faults.</Comment>
+</Collection><Collection
+ TypeName="ServiceBrakeReason"
+ Default="[]"
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ServiceBrakesCol"
+ Guid="6669d59f-32a9-4f72-a752-3f117d072ea4"
+>
 </Collection></Collections>
 <StateMachines>
 <StateMachine
@@ -10326,7 +10353,7 @@ The report is handled in the EURORADIO namespace</Comment>
 >
 <Expression>EmergencyStop
  {
-    Reason =&gt; BrakeReason.OrderFromRBC,
+    Reason =&gt; EmergencyBrakeReason.OrderFromRBC,
     IsConditional =&gt; aIsConditional,
     Id =&gt; aId,
     StopLocation =&gt; aStopLocation
@@ -10362,7 +10389,7 @@ The report is handled in the EURORADIO namespace</Comment>
  Name="Return the closest conditional ES"
  Guid="6504658f-9677-4b71-97ed-e60c579ccab0"
 >
-<Expression>REDUCE aESCol | ( X.Reason == BrakeReason.OrderFromRBC AND X.IsConditional )
+<Expression>REDUCE aESCol | ( X.Reason == EmergencyBrakeReason.OrderFromRBC AND X.IsConditional )
     USING X IN Kernel.MinEmergencyStopDistance( EmergencyStop1 =&gt; X, EmergencyStop2 =&gt; RESULT )
 INITIAL_VALUE EmergencyStop
                             {
@@ -11370,7 +11397,7 @@ EmergencyStops</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="ed27c8f0-85f6-4b6b-a0a1-49ed462fa9b1"
->FORALL X IN EmergencyStops | X.Reason != BrakeReason.OrderFromRBC</PreCondition></PreConditions>
+>FORALL X IN EmergencyStops | X.Reason != EmergencyBrakeReason.OrderFromRBC</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e2602b9e-3c0d-4aac-a5bf-d0678874da0e"
@@ -11761,6 +11788,11 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3ee345c2-0b99-4b40-8956-1b00f302aabf"
 >
+</ReqRef><ReqRef
+ Id="8bf47cec-0b77-42d2-b42f-49c0c29dbcec"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a52fdbc3-f937-4ba4-b42e-e622867cc194"
+>
 </ReqRef><Comment>This holds all the different emergency stop messages the train currently has.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Distance"
@@ -11917,26 +11949,6 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 >
 <Comment>The NID of the engine, used for sending messages to the trackside.</Comment>
 </Variable><Variable
- Type="String"
- DefaultValue=""
- VariableMode="Internal"
- X="370"
- Y="470"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TripReason"
- Guid="43c5ccfb-3c8c-412b-8e4f-1d6940a91744"
->
-<ReqRef
- Id="8bf47cec-0b77-42d2-b42f-49c0c29dbcec"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d45e4027-040a-42fd-845a-8636423f92eb"
->
-</ReqRef><Comment>Represents the trip raison, if any.</Comment>
-</Variable><Variable
  Type="HandleModeChangeSM"
  DefaultValue=""
  VariableMode="Internal"
@@ -12038,6 +12050,16 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Guid="3e3e788d-551a-408d-8658-bedfe6e02eca"
 >
 </ReqRef><Comment>The detected safety critical faults that need to be handled.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue=""
+ VariableMode="Internal"
+ Y="120"
+ Width="100"
+ Height="50"
+ Name="ServiceBrakeCommands"
+ Guid="61248a07-d7a9-462c-b84e-8b9fbf6afbc0"
+>
 </Variable></Variables>
 <Rules>
 <Rule
