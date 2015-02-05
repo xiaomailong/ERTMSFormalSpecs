@@ -170,6 +170,7 @@
  Name="BrakeType"
  Guid="6f0a9929-283d-428e-b0c4-32596953e202"
 >
+<Comment>The brake types: emergency and service.</Comment>
 <Values>
 <EnumValue
  Value=""
@@ -1915,12 +1916,17 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Take emergency brakes"
  Guid="f9aea5bb-fb93-4ba5-85c3-bd48b3a32bfe"
 >
+<Comment>Copy the emergency brake commands to the DMI structure.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="EB"
  Guid="18515dfd-e91d-4429-bb55-5fa2ff6a1af6"
 >
@@ -1936,12 +1942,17 @@ ON Kernel.EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Take service brakes"
  Guid="55314190-6fd6-4f1d-adc8-b361b406b02d"
 >
+<Comment>Copy the service brake commands to the DMI structure.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="SB"
  Guid="2c5a9c34-3f62-4922-bb2d-eca351993e7d"
 >
@@ -3495,20 +3506,27 @@ ON Kernel.ServiceBrakeCommands</Action></Actions>
  Name="BrakeStruct"
  Guid="65788dc0-f03b-4041-9ba8-c87dc87449e7"
 >
+<Comment>Structure containig a brake reason and the brake applied.</Comment>
 <StructureElement
  TypeName="BrakeType"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Brake"
  Guid="e7ddd432-cab9-4ff4-8da8-c6ec64dc2e27"
 >
+<Comment>The brake applied.</Comment>
 </StructureElement><StructureElement
  TypeName="Kernel.BrakeReason"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Reason"
  Guid="62a3ab1b-d6e8-46a8-9d64-145d386f082a"
 >
+<Comment>The reason for braking.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -3555,6 +3573,7 @@ ON Kernel.ServiceBrakeCommands</Action></Actions>
  Name="BrakeReasonsCol"
  Guid="105ef0ea-b4fc-44e5-85c7-7294102c3ff4"
 >
+<Comment>Collection of brake reasons.</Comment>
 </Collection></Collections>
 <Functions>
 <Function

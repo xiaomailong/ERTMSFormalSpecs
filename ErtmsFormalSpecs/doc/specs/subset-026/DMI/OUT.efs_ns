@@ -4622,9 +4622,11 @@ IN MRSP</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Implemented="TRUE"
  Name="AddEmergencyBrake"
  Guid="3b584ccf-07db-4916-bc3b-a3b81032a0be"
 >
+<Comment>Converts an emergency brake command from the kernel to the DMI format, and adds it to the list.</Comment>
 <Parameters>
 <Parameter
  Type="Kernel.EmergencyStop"
@@ -4635,12 +4637,14 @@ IN MRSP</Action></Actions>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Add emergency brake"
  Guid="8465afbc-9cca-4eff-baa9-b557abf319af"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Add emergency brake"
  Guid="0ea0d2fe-125e-47fc-a00f-c16ee89281b6"
 >
@@ -4657,9 +4661,11 @@ IN THIS.Reasons</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Implemented="TRUE"
  Name="AddServiceBrake"
  Guid="638605f1-2541-415e-9800-0549106c9c2d"
 >
+<Comment>Converts an service brake command from the kernel to the DMI format, and adds it to the list.</Comment>
 <Parameters>
 <Parameter
  Type="Kernel.BrakeReason"
@@ -4670,12 +4676,14 @@ IN THIS.Reasons</Action></Actions>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Add service brake"
  Guid="7dbf4c61-383d-4e34-a008-5b2d66ad5eeb"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Add service brake"
  Guid="ca93ea61-894a-495a-ae6b-16dfa08c7f39"
 >
