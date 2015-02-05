@@ -1618,7 +1618,7 @@ Activate the service brake if a second linked BG in a row is missed.</Comment>
  Guid="646bc014-8b5c-47e1-9466-bd062ff89279"
 >Kernel.HandlingOfAcceptedAndStoredInformation.RAMSSupervisionFunctionLedToServiceBrake &lt;- True</Action><Action
  Guid="a4b0baca-b8ed-4220-8590-842a578e8b8f"
->INSERT Kernel.BrakeReason.RAMSSupervisionTriggered IN Kernel.ServiceBrakeCommands</Action></Actions>
+>Kernel.AddSBCommand(Kernel.BrakeReason.RAMSSupervisionTriggered)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2116,7 +2116,7 @@ If the BG was passed in the right direction, handle the message. If not, the tra
  Guid="f7aea1c2-1e1f-4d47-8f36-412e4107ba4b"
 >Kernel.HandlingOfAcceptedAndStoredInformation.RAMSSupervisionFunctionLedToServiceBrake &lt;- True</Action><Action
  Guid="294b1490-c94d-4bac-b054-feaef3d222b4"
->INSERT Kernel.BrakeReason.RAMSSupervisionTriggered IN Kernel.ServiceBrakeCommands</Action></Actions>
+>Kernel.AddSBCommand(Kernel.BrakeReason.RAMSSupervisionTriggered)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

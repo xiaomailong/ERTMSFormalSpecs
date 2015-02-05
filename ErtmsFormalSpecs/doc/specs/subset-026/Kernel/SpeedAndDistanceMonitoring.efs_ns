@@ -2726,7 +2726,7 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreCondi
  Guid="d89cc423-fae2-4789-8127-68c610145693"
 >SBSpecified &lt;- True</Action><Action
  Guid="e696e822-c0ee-4d0e-b934-9457870a1b12"
->INSERT BrakeReason.SpeedAndDistanceMonitoring IN ServiceBrakeCommands</Action></Actions>
+>AddSBCommand(BrakeReason.SpeedAndDistanceMonitoring)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2903,7 +2903,7 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Guid="4c3aacf3-5346-42c8-950b-be161a915d5f"
 >SBSpecified &lt;- False</Action><Action
  Guid="8e9bb0b4-29f2-4783-8066-9b7d714df901"
->REMOVE FIRST X == BrakeReason.SpeedAndDistanceMonitoring IN ServiceBrakeCommands</Action></Actions>
+>RemoveSBCommand(BrakeReason.SpeedAndDistanceMonitoring)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"

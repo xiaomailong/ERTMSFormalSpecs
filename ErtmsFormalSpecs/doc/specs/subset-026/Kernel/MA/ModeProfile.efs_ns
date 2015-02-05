@@ -1577,7 +1577,7 @@ IN
  Guid="3b3023f7-80d9-48c3-a8e0-f3fd51dea270"
 >TIU.ServiceBrakeCommanded &lt;- True</Action><Action
  Guid="12515599-816f-45c3-a4ed-2718041a2384"
->INSERT BrakeReason.DriverAckTimeOut IN ServiceBrakeCommands</Action></Actions>
+>AddSBCommand(BrakeReason.DriverAckTimeOut)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Driver ack timeout for LS"
@@ -1608,8 +1608,8 @@ IN
 <Action
  Guid="2c54df9e-310b-4ba6-a35c-bbd10d789e58"
 >TIU.ServiceBrakeCommanded &lt;- True</Action><Action
- Guid="ca1114f5-186d-486d-a481-34cc444927fb"
->INSERT BrakeReason.DriverAckTimeOut IN ServiceBrakeCommands</Action></Actions>
+ Guid="b68a8f26-94eb-42b9-91ea-4aed2aba5dc9"
+>AddSBCommand(BrakeReason.DriverAckTimeOut)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Driver ack timeout for SH"
@@ -1640,8 +1640,8 @@ IN
 <Action
  Guid="7cb462a7-f1fe-4184-970f-311588f9441d"
 >TIU.ServiceBrakeCommanded &lt;- True</Action><Action
- Guid="05813bc7-06d9-4884-ab2f-5049a994d117"
->INSERT BrakeReason.DriverAckTimeOut IN ServiceBrakeCommands</Action></Actions>
+ Guid="a87d2dab-f863-4b76-9696-75d17c940d96"
+>AddSBCommand(BrakeReason.DriverAckTimeOut)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
