@@ -3492,7 +3492,7 @@ IN EOAs</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="a7d3e9eb-090c-464f-ad59-e3fdb77f9e29"
->THERE_IS X IN EmergencyStops | ( (X.Reason == EmergencyBrakeReason.OrderFromRBC) AND (X.IsConditional) )</PreCondition></PreConditions>
+>THERE_IS X IN EmergencyStops | ( (X.Reason == BrakeReason.OrderFromRBC) AND (X.IsConditional) )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7c64880f-bfc1-476f-a9b1-9983265c63c0"

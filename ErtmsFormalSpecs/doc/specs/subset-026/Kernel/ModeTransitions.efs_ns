@@ -1604,7 +1604,7 @@ Shunting.StopShuntingOnDeskOpening</Expression>
 <Expression>THERE_IS X IN EmergencyStops | (
     NOT(X.IsConditional) 
 AND 
-    X.Reason == EmergencyBrakeReason.OrderFromRBC
+    X.Reason == BrakeReason.OrderFromRBC
 )</Expression>
 </Case></Cases>
 </Function><Function

@@ -161,6 +161,27 @@
  Guid="6c49c904-ae82-4ace-8345-777a1c613d7f"
 >
 </EnumValue></Values>
+</Enum><Enum
+ Default="BrakeType.Service"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="BrakeType"
+ Guid="6f0a9929-283d-428e-b0c4-32596953e202"
+>
+<Values>
+<EnumValue
+ Value=""
+ Name="Emergency"
+ Guid="2bfba4f6-00a7-4feb-992c-ca08b25216c7"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="Service"
+ Guid="37260d9a-208e-4e8e-8c9a-1fe9de2fa100"
+>
+</EnumValue></Values>
 </Enum></Enumerations>
 <Structures>
 <Structure
@@ -1882,7 +1903,7 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Update Level"
+ Name="Update brake reason"
  Guid="5c2e4b2d-8d3f-4f61-9ecb-2caa5c5e4f7b"
 >
 <PreConditions>
@@ -1890,9 +1911,51 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
  Guid="e0784ef7-c597-4f99-822e-0cb6c3d70e16"
 >Out_BrakeReason.OutputInformation.DisplayRequested</PreCondition></PreConditions>
 <Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Take emergency brakes"
+ Guid="f9aea5bb-fb93-4ba5-85c3-bd48b3a32bfe"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="EB"
+ Guid="18515dfd-e91d-4429-bb55-5fa2ff6a1af6"
+>
+<PreConditions>
+<PreCondition
+ Guid="582c7ddc-38fe-4560-8f7a-f5c0febe7f11"
+>Kernel.EmergencyStops != []</PreCondition></PreConditions>
+<Actions>
 <Action
- Guid="8c9b5d46-f49d-403f-802e-3369b05632cc"
->Out_BrakeReason.Reasons &lt;- Kernel.EmergencyStops</Action></Actions>
+ Guid="2b04e6eb-9e9b-49a8-b5be-bfaa91b8fa8a"
+>APPLY Out_BrakeReason.AddEmergencyBrake(X)
+ON Kernel.EmergencyStops</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Take service brakes"
+ Guid="55314190-6fd6-4f1d-adc8-b361b406b02d"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="SB"
+ Guid="2c5a9c34-3f62-4922-bb2d-eca351993e7d"
+>
+<PreConditions>
+<PreCondition
+ Guid="39a71975-ea64-4b73-94ca-297f56203894"
+>Kernel.ServiceBrakeCommands != []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b3535a8d-262e-4cdc-8ab6-c9834f4f6472"
+>APPLY Out_BrakeReason.AddServiceBrake(X)
+ON Kernel.ServiceBrakeCommands</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -3422,6 +3485,30 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
  Name="Value"
  Guid="fc4b1da1-54db-4a35-a408-3150beed20f2"
 >
+</StructureElement></Structure><Structure
+ Default=""
+ Y="60"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="BrakeStruct"
+ Guid="65788dc0-f03b-4041-9ba8-c87dc87449e7"
+>
+<StructureElement
+ TypeName="BrakeType"
+ Default=""
+ Mode="Internal"
+ Name="Brake"
+ Guid="e7ddd432-cab9-4ff4-8da8-c6ec64dc2e27"
+>
+</StructureElement><StructureElement
+ TypeName="Kernel.BrakeReason"
+ Default=""
+ Mode="Internal"
+ Name="Reason"
+ Guid="62a3ab1b-d6e8-46a8-9d64-145d386f082a"
+>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -3457,6 +3544,17 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
  Guid="c55a110b-fd1b-4aae-b2b1-6c506c761272"
 >
 </ReqRef><Comment>Actions that can be proposed to the driver for entering the RBC contact information.</Comment>
+</Collection><Collection
+ TypeName="BrakeStruct"
+ Default="[]"
+ Y="120"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="BrakeReasonsCol"
+ Guid="105ef0ea-b4fc-44e5-85c7-7294102c3ff4"
+>
 </Collection></Collections>
 <Functions>
 <Function

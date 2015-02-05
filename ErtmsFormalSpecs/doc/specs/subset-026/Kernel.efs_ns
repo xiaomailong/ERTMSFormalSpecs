@@ -155,14 +155,14 @@
 >
 </EnumValue></Values>
 </Enum><Enum
- Default="EmergencyBrakeReason.DriverAckTimeOut"
+ Default="BrakeReason.DriverAckTimeOut"
  X="970"
  Y="90"
  Width="100"
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="EmergencyBrakeReason"
+ Name="BrakeReason"
  Guid="0fb8e0ec-b6c6-4517-b005-253d3c0ebdea"
 >
 <ReqRef
@@ -187,21 +187,25 @@
  Name="BaliseGroupMessageConsistencyProblem"
  Guid="e008b5cc-8185-4108-9ae7-3d5a8e532bcf"
 >
-</EnumValue></Values>
-</Enum><Enum
- Default="ServiceBrakeReason.BaliseGroupMessageConsistencyProblem"
- Width="100"
- Height="50"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="ServiceBrakeReason"
- Guid="997188e4-48e7-491c-bef3-fa55bf012ca4"
->
-<Values>
-<EnumValue
+</EnumValue><EnumValue
  Value=""
- Name="BaliseGroupMessageConsistencyProblem"
- Guid="a0fc363e-0030-4aa6-be6b-f9086d9b75f1"
+ Name="DriverAckRequired"
+ Guid="c5b4fad0-6e35-4866-8dea-0423cc992f84"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="RAMSSupervisionTriggered"
+ Guid="31bfc0c1-770f-4d78-8706-6f1e43dbc5c6"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="SpeedAndDistanceMonitoring"
+ Guid="d3eeb92d-e1ef-4689-b1b2-889c691cac61"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="SupervisingStandstill"
+ Guid="dbdb40ad-af6e-4af1-9431-43d70d92385b"
 >
 </EnumValue></Values>
 </Enum></Enumerations>
@@ -395,7 +399,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 <Comment>The stop location of this emergency stop.</Comment>
 </StructureElement><StructureElement
- TypeName="EmergencyBrakeReason"
+ TypeName="BrakeReason"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -599,7 +603,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 </ReqRef><Comment>Collection of safety critical faults.</Comment>
 </Collection><Collection
- TypeName="ServiceBrakeReason"
+ TypeName="BrakeReason"
  Default="[]"
  Y="60"
  Width="100"
@@ -10353,7 +10357,7 @@ The report is handled in the EURORADIO namespace</Comment>
 >
 <Expression>EmergencyStop
  {
-    Reason =&gt; EmergencyBrakeReason.OrderFromRBC,
+    Reason =&gt; BrakeReason.OrderFromRBC,
     IsConditional =&gt; aIsConditional,
     Id =&gt; aId,
     StopLocation =&gt; aStopLocation
@@ -10389,7 +10393,7 @@ The report is handled in the EURORADIO namespace</Comment>
  Name="Return the closest conditional ES"
  Guid="6504658f-9677-4b71-97ed-e60c579ccab0"
 >
-<Expression>REDUCE aESCol | ( X.Reason == EmergencyBrakeReason.OrderFromRBC AND X.IsConditional )
+<Expression>REDUCE aESCol | ( X.Reason == BrakeReason.OrderFromRBC AND X.IsConditional )
     USING X IN Kernel.MinEmergencyStopDistance( EmergencyStop1 =&gt; X, EmergencyStop2 =&gt; RESULT )
 INITIAL_VALUE EmergencyStop
                             {
@@ -11397,7 +11401,7 @@ EmergencyStops</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="ed27c8f0-85f6-4b6b-a0a1-49ed462fa9b1"
->FORALL X IN EmergencyStops | X.Reason != EmergencyBrakeReason.OrderFromRBC</PreCondition></PreConditions>
+>FORALL X IN EmergencyStops | X.Reason != BrakeReason.OrderFromRBC</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e2602b9e-3c0d-4aac-a5bf-d0678874da0e"
@@ -12051,8 +12055,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 >
 </ReqRef><Comment>The detected safety critical faults that need to be handled.</Comment>
 </Variable><Variable
- Type="Boolean"
- DefaultValue=""
+ Type="ServiceBrakesCol"
+ DefaultValue="[]"
  VariableMode="Internal"
  Y="120"
  Width="100"

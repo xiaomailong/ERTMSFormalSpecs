@@ -1575,7 +1575,9 @@ IN
 <Actions>
 <Action
  Guid="3b3023f7-80d9-48c3-a8e0-f3fd51dea270"
->TIU.ServiceBrakeCommanded &lt;- True</Action></Actions>
+>TIU.ServiceBrakeCommanded &lt;- True</Action><Action
+ Guid="12515599-816f-45c3-a4ed-2718041a2384"
+>INSERT BrakeReason.DriverAckTimeOut IN ServiceBrakeCommands</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Driver ack timeout for LS"
@@ -1605,7 +1607,9 @@ IN
 <Actions>
 <Action
  Guid="2c54df9e-310b-4ba6-a35c-bbd10d789e58"
->TIU.ServiceBrakeCommanded &lt;- True</Action></Actions>
+>TIU.ServiceBrakeCommanded &lt;- True</Action><Action
+ Guid="ca1114f5-186d-486d-a481-34cc444927fb"
+>INSERT BrakeReason.DriverAckTimeOut IN ServiceBrakeCommands</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Driver ack timeout for SH"
@@ -1635,7 +1639,9 @@ IN
 <Actions>
 <Action
  Guid="7cb462a7-f1fe-4184-970f-311588f9441d"
->TIU.ServiceBrakeCommanded &lt;- True</Action></Actions>
+>TIU.ServiceBrakeCommanded &lt;- True</Action><Action
+ Guid="05813bc7-06d9-4884-ab2f-5049a994d117"
+>INSERT BrakeReason.DriverAckTimeOut IN ServiceBrakeCommands</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1691,7 +1697,7 @@ IN
  Guid="863fe0fb-623d-4d72-bdc1-9bfb5700e462"
 >TIU.EmergencyBrakeCommanded</PreCondition><PreCondition
  Guid="9a079a5e-29df-49b0-8e55-e5b5e245f253"
->THERE_IS X IN EmergencyStops | X.Reason == EmergencyBrakeReason.DriverAckTimeOut</PreCondition><PreCondition
+>THERE_IS X IN EmergencyStops | X.Reason == BrakeReason.DriverAckTimeOut</PreCondition><PreCondition
  Guid="3e004f42-4d6d-41f5-8591-0ea27887b80a"
 >( COUNT X IN EmergencyStops ) == 1</PreCondition></PreConditions>
 <Actions>

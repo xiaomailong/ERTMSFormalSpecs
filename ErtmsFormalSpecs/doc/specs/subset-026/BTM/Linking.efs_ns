@@ -1416,6 +1416,7 @@ This function is called whenever it is appropriate, so it does not need any prec
  Name="Stop expecting current BG"
  Guid="662b3dc5-53fd-490d-9fa5-d31299970ac2"
 >
+<Comment>Remove the current linking from the list of linkings.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1438,6 +1439,7 @@ This function is called whenever it is appropriate, so it does not need any prec
  Name="Start balise cross-talk supervision"
  Guid="f834e2de-9329-4fd0-82db-3de962582e6e"
 >
+<Comment>If the new first linking is for repositioning information, start the RAMS cross-talk supervision function.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1614,7 +1616,9 @@ Activate the service brake if a second linked BG in a row is missed.</Comment>
  Guid="12fbd64d-db68-4145-9895-cb630522e463"
 >RAMSSupervisedBG &lt;- EMPTY</Action><Action
  Guid="646bc014-8b5c-47e1-9466-bd062ff89279"
->Kernel.HandlingOfAcceptedAndStoredInformation.RAMSSupervisionFunctionLedToServiceBrake &lt;- True</Action></Actions>
+>Kernel.HandlingOfAcceptedAndStoredInformation.RAMSSupervisionFunctionLedToServiceBrake &lt;- True</Action><Action
+ Guid="a4b0baca-b8ed-4220-8590-842a578e8b8f"
+>INSERT Kernel.BrakeReason.RAMSSupervisionTriggered IN Kernel.ServiceBrakeCommands</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1954,7 +1958,8 @@ NOT Kernel.StaffResponsible.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6a52c330-f335-47a7-9669-8c47a73c9b9d"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If the RAMS cross-talk supervision function is active, check the linking. If the balise was linked and is expected in the linking information, delete the supervision information as it is no longer needed.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -1981,7 +1986,7 @@ NOT Kernel.StaffResponsible.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
  Name="Check balise reception RAMS"
  Guid="d830518c-e527-4ce2-8aba-7ea17d82d7b7"
 >
-<Comment>If the RAMS supervision function is active, check it against the cerrunt BG.
+<Comment>If the RAMS supervision function is active, check it against the current BG.
 If the IDs match, stop the RAMS supervision.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -2091,7 +2096,8 @@ If the BG was passed in the right direction, handle the message. If not, the tra
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f0a3dba2-4e71-4107-a0e9-129298deb930"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If the received BG is linked but is not present in the linking information while the RAMS cross-talk supervision function is active, active the service brake.</Comment>
+<PreConditions>
 <PreCondition
  Guid="5777b7bc-699f-45f1-89ed-9f7a10ab06d7"
 >Available(RAMSRepositioningBG)</PreCondition><PreCondition
@@ -2108,7 +2114,9 @@ If the BG was passed in the right direction, handle the message. If not, the tra
  Guid="f898bb73-e730-4511-924e-65a22a77ddd7"
 >TIU.ServiceBrakeCommanded &lt;- True</Action><Action
  Guid="f7aea1c2-1e1f-4d47-8f36-412e4107ba4b"
->Kernel.HandlingOfAcceptedAndStoredInformation.RAMSSupervisionFunctionLedToServiceBrake &lt;- True</Action></Actions>
+>Kernel.HandlingOfAcceptedAndStoredInformation.RAMSSupervisionFunctionLedToServiceBrake &lt;- True</Action><Action
+ Guid="294b1490-c94d-4bac-b054-feaef3d222b4"
+>INSERT Kernel.BrakeReason.RAMSSupervisionTriggered IN Kernel.ServiceBrakeCommands</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2336,7 +2344,7 @@ As the first part of this procedure deletes the first (inconsistent) BG from the
     IsConditional =&gt; False,
     Id =&gt; 0,
     StopLocation =&gt; 0.0,
-    Reason =&gt; Kernel.EmergencyBrakeReason.BaliseGroupMessageConsistencyProblem
+    Reason =&gt; Kernel.BrakeReason.BaliseGroupMessageConsistencyProblem
 }
 IN Kernel.EmergencyStops</Action><Action
  Guid="dcddda32-ea7d-4603-a874-b66bdda37327"
@@ -2373,7 +2381,7 @@ IN Kernel.EmergencyStops</Action><Action
     IsConditional =&gt; False,
     Id =&gt; 0,
     StopLocation =&gt; 0.0,
-    Reason =&gt; Kernel.EmergencyBrakeReason.BaliseGroupMessageConsistencyProblem
+    Reason =&gt; Kernel.BrakeReason.BaliseGroupMessageConsistencyProblem
 }
 IN Kernel.EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
@@ -2522,7 +2530,8 @@ IN Kernel.EmergencyStops</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b99c4336-0b70-4185-9601-91bba3f52bc2"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>At the end of the expectation window of the repositioning balise group, delete the information used by the RAMS supervision function.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"

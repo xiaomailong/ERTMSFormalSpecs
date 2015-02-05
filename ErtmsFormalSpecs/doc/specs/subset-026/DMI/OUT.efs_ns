@@ -1277,7 +1277,7 @@
 <Comment>Requests to display the corresponding information</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.EmergencyBrakeReason"
+ Type="Kernel.BrakeReason"
  Name="reason"
  Guid="1c80bc76-35ec-4d87-9998-d6a3b0a48f28"
 >
@@ -1349,7 +1349,7 @@
  Guid="ff369b12-8507-481f-a9c7-c9314092b2d2"
 >
 </StructureElement><StructureElement
- TypeName="Kernel.EmergencyBrakeReason"
+ TypeName="Kernel.BrakeReason"
  Default=""
  Mode="Outgoing"
  Implemented="TRUE"
@@ -4621,6 +4621,76 @@ IN MRSP</Action></Actions>
 >THIS.OutputInformation.DoNotDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Name="AddEmergencyBrake"
+ Guid="3b584ccf-07db-4916-bc3b-a3b81032a0be"
+>
+<Parameters>
+<Parameter
+ Type="Kernel.EmergencyStop"
+ Name="aBrake"
+ Guid="5b92a3d1-0a96-4fc9-8d23-b5991e83c424"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Add emergency brake"
+ Guid="8465afbc-9cca-4eff-baa9-b557abf319af"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Add emergency brake"
+ Guid="0ea0d2fe-125e-47fc-a00f-c16ee89281b6"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="c283a468-baad-4098-b142-4c2335e295d6"
+>INSERT BrakeStruct{
+    Brake =&gt; BrakeType.Emergency,
+    Reason =&gt; aBrake.Reason
+}
+IN THIS.Reasons</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="AddServiceBrake"
+ Guid="638605f1-2541-415e-9800-0549106c9c2d"
+>
+<Parameters>
+<Parameter
+ Type="Kernel.BrakeReason"
+ Name="aReason"
+ Guid="1f3d80ce-59df-4dae-8686-fe70348dd50f"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Add service brake"
+ Guid="7dbf4c61-383d-4e34-a008-5b2d66ad5eeb"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Add service brake"
+ Guid="ca93ea61-894a-495a-ae6b-16dfa08c7f39"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="dd0abde1-5fec-4a0e-8dd3-04b8231f18b7"
+>INSERT BrakeStruct{
+    Brake =&gt; BrakeType.Service,
+    Reason =&gt; aReason
+}
+IN THIS.Reasons</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="OutputInformation"
@@ -4633,7 +4703,7 @@ IN MRSP</Action></Actions>
 >
 <Comment>Provides the state of the information displayed to the driver</Comment>
 </StructureElement><StructureElement
- TypeName="Kernel.EmergencyStopsCol"
+ TypeName="BrakeReasonsCol"
  Default=""
  Mode="Outgoing"
  Implemented="TRUE"
