@@ -213,7 +213,7 @@
 <Structure
  Default=""
  X="970"
- Y="260"
+ Y="350"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -302,7 +302,7 @@
 </StructureElement></Structure><Structure
  Default=""
  X="970"
- Y="200"
+ Y="290"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -605,7 +605,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </Collection><Collection
  TypeName="BrakeReason"
  Default="[]"
- Y="60"
+ X="970"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -618,7 +619,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <StateMachine
  Default="NoProcedure"
  X="970"
- Y="320"
+ Y="410"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -10318,7 +10319,7 @@ The report is handled in the EURORADIO namespace</Comment>
 <Function
  Type="Kernel.EmergencyStop"
  Default=""
- X="180"
+ X="270"
  Y="90"
  Width="100"
  Height="50"
@@ -10366,7 +10367,7 @@ The report is handled in the EURORADIO namespace</Comment>
 </Function><Function
  Type="Kernel.EmergencyStop"
  Default=""
- X="180"
+ X="270"
  Y="150"
  Width="100"
  Height="50"
@@ -10403,7 +10404,7 @@ INITIAL_VALUE EmergencyStop
 </Function><Function
  Type="Kernel.EmergencyStop"
  Default=""
- X="180"
+ X="270"
  Y="210"
  Width="100"
  Height="50"
@@ -10445,7 +10446,7 @@ INITIAL_VALUE EmergencyStop
 </Function><Function
  Type="Boolean"
  Default=""
- X="180"
+ X="270"
  Y="30"
  Width="100"
  Height="50"
@@ -10931,8 +10932,8 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="30"
- Y="330"
+ X="140"
+ Y="30"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -11410,7 +11411,7 @@ EmergencyStops</Action></Actions>
 </Rule></Rules>
 </Procedure><Procedure
  X="30"
- Y="390"
+ Y="330"
  Width="100"
  Height="50"
  Name="DeleteStoredInformation"
@@ -11649,6 +11650,10 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="140"
+ Y="90"
+ Width="100"
+ Height="50"
  Name="AddSBCommand"
  Guid="5a495d62-a2ef-479c-a3b7-11df30c8c67c"
 >
@@ -11682,6 +11687,10 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="140"
+ Y="150"
+ Width="100"
+ Height="50"
  Name="RemoveSBCommand"
  Guid="09f7fe8a-1a47-4e68-97e6-b24cb889655e"
 >
@@ -11719,7 +11728,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  DefaultValue=""
  VariableMode="Internal"
  X="800"
- Y="260"
+ Y="350"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -11804,7 +11813,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  DefaultValue=""
  VariableMode="Internal"
  X="800"
- Y="200"
+ Y="290"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12021,7 +12030,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  DefaultValue=""
  VariableMode="Internal"
  X="800"
- Y="320"
+ Y="410"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12089,7 +12098,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Type="SafetyCriticalFaultsCol"
  DefaultValue=""
  VariableMode="Internal"
- X="810"
+ X="800"
  Y="470"
  Width="100"
  Height="50"
@@ -12122,12 +12131,16 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Type="ServiceBrakesCol"
  DefaultValue="[]"
  VariableMode="Internal"
- Y="120"
+ X="800"
+ Y="180"
  Width="100"
  Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="ServiceBrakeCommands"
  Guid="61248a07-d7a9-462c-b84e-8b9fbf6afbc0"
 >
+<Comment>The list of current events that trigger the service brake.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
