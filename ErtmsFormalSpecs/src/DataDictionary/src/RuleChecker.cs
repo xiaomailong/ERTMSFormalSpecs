@@ -488,7 +488,33 @@ namespace DataDictionary
                 }
             }
 
+            checkSubElementNames(structure);
+
             base.visit(obj, visitSubNodes);
+        }
+
+        /// <summary>
+        /// Check that all the SubElements of the structure have different names
+        /// </summary>
+        /// <param name="structure"></param>
+        public void checkSubElementNames(Types.Structure structure)
+        {
+            Dictionary<string, StructureElement> subElements = new Dictionary<string,StructureElement>();
+
+            string ERROR_MESSAGE = "Structure elements should have unique names.";
+
+            foreach (StructureElement element in structure.Elements)
+            {
+                if (subElements.ContainsKey(element.Name))
+                {
+                    element.AddError(ERROR_MESSAGE);
+                    subElements[element.Name].AddError(ERROR_MESSAGE);
+                }
+                else
+                {
+                    subElements.Add(element.Name, element);
+                }
+            }
         }
 
         public override void visit(Generated.ReqRef obj, bool visitSubNodes)
