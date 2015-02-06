@@ -53,7 +53,7 @@
  Guid="e733ca20-72f9-4ca9-9f23-8442789c2b3d"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -79,7 +79,7 @@
  Guid="6fe94d77-7bf9-4f9d-ac75-bc6c92e5848e"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -144,4 +144,139 @@
  Guid="b31c37cd-7f8e-420f-9cd4-7cf2c4c036ba"
 >
 </ReqRef></StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="75f82bee-f5d2-4fec-8d6f-f1e1aead48e9"
+>
+<Comment>Checks the values in a structure of type RBC_TRANSITION_ORDER.Message</Comment>
+<Parameters>
+<Parameter
+ Type="RBC_TRANSITION_ORDER.Message"
+ Name="struct"
+ Guid="2146a099-ecc3-4f06-8803-fa235593da61"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="3228be4c-fcc7-4899-8a8a-c5a9a32cd711"
+>
+<PreConditions>
+<PreCondition
+ Guid="541f0465-ad5c-4712-9739-23796a8454f9"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="6e243833-1d99-4f19-91df-ed703822a277"
+>
+<PreConditions>
+<PreCondition
+ Guid="9424f3c2-0127-48e2-8050-aea67d4ac3e9"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="665c2866-0149-4d47-be2d-a7dfa1113d47"
+>
+<PreConditions>
+<PreCondition
+ Guid="16e7278f-4cb6-4ee5-bf82-bfa742c5a27c"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="901d233d-dc9d-4fac-a8e1-7c728cf33bb0"
+>
+<PreConditions>
+<PreCondition
+ Guid="569aadb5-63b0-4330-b211-1c75023f13d8"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_SCALE invalid"
+ Guid="5bff2310-b8aa-430b-aa16-a59cbb36c9b8"
+>
+<PreConditions>
+<PreCondition
+ Guid="776dbddc-263c-43f9-837a-a06d8f72ff7e"
+>struct.Q_SCALE &lt; 0
+  AND  
+struct.Q_SCALE &gt;= 4
+  AND  
+struct.Q_SCALE != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.D_RBCTR invalid"
+ Guid="315bf594-f415-4788-8bbc-6157d5e43e51"
+>
+<PreConditions>
+<PreCondition
+ Guid="b60cbbc8-208d-4225-9a3f-98e3937dea00"
+>struct.D_RBCTR &lt; 0
+  AND  
+struct.D_RBCTR &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_C invalid"
+ Guid="cab2507f-2061-46fe-8922-56e2f3302065"
+>
+<PreConditions>
+<PreCondition
+ Guid="35a23e94-239b-452e-88a3-2ede3caad0e5"
+>struct.NID_C &lt; 0
+  AND  
+struct.NID_C &gt;= 1024</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_RBC invalid"
+ Guid="a6b101e7-35cc-43a3-abf6-b4491549497b"
+>
+<PreConditions>
+<PreCondition
+ Guid="f557abb5-6c5c-4611-81f3-a261cbba8069"
+>struct.NID_RBC &lt; 0
+  AND  
+struct.NID_RBC &gt;= 16384</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_RADIO invalid"
+ Guid="d72b3a60-062d-417e-b7a2-8769166a6d78"
+>
+<PreConditions>
+<PreCondition
+ Guid="62edc193-3496-4871-a37e-3bf0cbae0869"
+>struct.NID_RADIO != &apos;&apos;
+  AND  
+CheckNumber(struct.NID_RADIO)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_SLEEPSESSION invalid"
+ Guid="ef74f291-8fdd-484b-8a18-f0c3bcae4633"
+>
+<PreConditions>
+<PreCondition
+ Guid="348a224c-7600-44ca-b345-76459a01e834"
+>struct.Q_SLEEPSESSION &lt; 0
+  AND  
+struct.Q_SLEEPSESSION &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="62cdc935-7218-4357-bc97-92a523c709d9"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

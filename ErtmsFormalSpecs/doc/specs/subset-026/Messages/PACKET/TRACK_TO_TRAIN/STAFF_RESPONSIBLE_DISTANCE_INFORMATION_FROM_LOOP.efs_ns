@@ -53,7 +53,7 @@
  Guid="775896c0-a6b4-4897-b9d7-cac61ca7183e"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -139,7 +139,7 @@
  Guid="d9e4e2bc-bc7a-4df6-bbb6-c9bebf03c736"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -223,7 +223,7 @@
  Guid="311afd8c-b550-4669-a1db-2bc98346baf9"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -238,7 +238,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Messages.PACKET.TRACK_TO_TRAIN.STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP.SubStructure1"
+ TypeName="SubStructure1"
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
@@ -250,4 +250,200 @@
  Guid="750f47f2-4410-437d-ace1-0d99f5ef8798"
 >
 </ReqRef></Collection></Collections>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="3a12c1d0-8578-4ae0-a5c1-c985664d90c6"
+>
+<Comment>Checks the values in a structure of type STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP.Message</Comment>
+<Parameters>
+<Parameter
+ Type="STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP.Message"
+ Name="struct"
+ Guid="1b268c3e-f4aa-4c5e-84f9-e8f08c08436f"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="95fca2de-5a58-45e5-b118-5c6431954073"
+>
+<PreConditions>
+<PreCondition
+ Guid="79013e6f-60e4-47db-9963-5b9c364ead8e"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="f97239d0-64ba-429a-9878-142d99cee744"
+>
+<PreConditions>
+<PreCondition
+ Guid="79691b88-ef76-4462-8e05-cd581593df4e"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="52b7d173-56ad-47ee-8204-4f490dacb1ff"
+>
+<PreConditions>
+<PreCondition
+ Guid="31abc8b9-10dd-4096-a4f0-8752cd34a4b7"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="03562a60-fa8a-437d-a0c8-5f255a8b281a"
+>
+<PreConditions>
+<PreCondition
+ Guid="cc49ad27-66a9-498e-a480-279d2b7edb29"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_SCALE invalid"
+ Guid="46520e80-94d7-40ea-a2c8-3acf9d0deee6"
+>
+<PreConditions>
+<PreCondition
+ Guid="0267a353-9e78-4d24-b31b-77c177199fac"
+>struct.Q_SCALE &lt; 0
+  AND  
+struct.Q_SCALE &gt;= 4
+  AND  
+struct.Q_SCALE != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_C invalid"
+ Guid="5af4bfa3-2d64-43f2-8679-ceaa4891ac49"
+>
+<PreConditions>
+<PreCondition
+ Guid="2098f23f-86d7-4da9-a315-2489cc1853c0"
+>struct.NID_C &lt; 0
+  AND  
+struct.NID_C &gt;= 1024</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.D_SR invalid"
+ Guid="748ff596-0e6d-488e-8fef-7cec3ef4ea45"
+>
+<PreConditions>
+<PreCondition
+ Guid="2ea5316e-90aa-4d12-99b8-babae54484c2"
+>struct.D_SR &lt; 0
+  AND  
+struct.D_SR &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.N_ITER invalid"
+ Guid="96515178-7264-42cf-87a7-9ddf9626641a"
+>
+<PreConditions>
+<PreCondition
+ Guid="307c8297-d64f-443a-8a47-9469b1c3dec0"
+>struct.N_ITER &lt; 0
+  AND  
+struct.N_ITER &gt;= 32</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Sequence1 invalid"
+ Guid="7cabf98d-93bb-41f8-bca6-9fbffe0ab0a3"
+>
+<PreConditions>
+<PreCondition
+ Guid="9b2d7780-3280-4789-b7b6-b8bf4a1b1692"
+>THERE_IS X IN struct.Sequence1 | NOT STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP.CheckSubStructure1Values(X)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="b2ebbe14-e5bf-4e4c-8bd7-db186cb0132b"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="CheckSubStructure1Values"
+ Guid="95cba2d1-7e24-4789-8c31-1a46333de6a1"
+>
+<Comment>Checks the values in a structure of type STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP.SubStructure1</Comment>
+<Parameters>
+<Parameter
+ Type="STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP.SubStructure1"
+ Name="struct"
+ Guid="461a5631-25eb-4f22-8baa-37fdb43f7d34"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SubStructure1 empty"
+ Guid="dd87d7d8-4f97-4ee9-bf36-66f339eb9bd7"
+>
+<PreConditions>
+<PreCondition
+ Guid="da7f5643-c994-4ff0-bebe-92f1b6f7c0f0"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.Q_NEWCOUNTRY invalid"
+ Guid="7ff77228-657b-48d2-9929-e765a5563f1e"
+>
+<PreConditions>
+<PreCondition
+ Guid="20a098b1-1fe2-4e94-b053-3eaad4b14f35"
+>struct.Q_NEWCOUNTRY &lt; 0
+  AND  
+struct.Q_NEWCOUNTRY &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_C invalid"
+ Guid="89d249dc-6e0c-45ae-84af-80324ad511e3"
+>
+<PreConditions>
+<PreCondition
+ Guid="00c3908b-f131-4853-9e3b-c51f7e4181f4"
+>struct.NID_C &lt; 0
+  AND  
+struct.NID_C &gt;= 1024</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_BG invalid"
+ Guid="acefa0bf-7465-4da9-ba2e-e919042a1728"
+>
+<PreConditions>
+<PreCondition
+ Guid="54c04ac1-b1d2-4ddc-b1a4-a022ef604821"
+>struct.NID_BG &lt; 0
+  AND  
+struct.NID_BG &gt;= 16384</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.D_SR invalid"
+ Guid="49ab4f0b-3dfb-4335-92df-716bdbcc2f50"
+>
+<PreConditions>
+<PreCondition
+ Guid="bba390e2-a93b-43dc-97e2-0dcc7411331f"
+>struct.D_SR &lt; 0
+  AND  
+struct.D_SR &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="cde6559d-eadc-4551-b0a2-317907c02e15"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

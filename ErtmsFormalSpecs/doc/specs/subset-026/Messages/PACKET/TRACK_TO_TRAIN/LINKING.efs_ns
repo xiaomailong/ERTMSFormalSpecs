@@ -52,7 +52,7 @@
  Guid="805531d5-093d-4851-8b9c-9823729aace1"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -78,7 +78,7 @@
  Guid="ebc35098-f790-4eed-895a-4fbbd454cfc6"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -201,7 +201,7 @@
  Guid="f0443afd-4ea2-4c49-a640-559dad500755"
 >
 </ReqRef><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -289,7 +289,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Messages.PACKET.TRACK_TO_TRAIN.LINKING.SubStructure1"
+ TypeName="SubStructure1"
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
@@ -301,4 +301,292 @@
  Guid="e5d17c6e-353e-4f65-bdf3-c1320b749f3f"
 >
 </ReqRef></Collection></Collections>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="25c30b00-d820-4293-9579-e0aee74ff117"
+>
+<Comment>Checks the values in a structure of type LINKING.Message</Comment>
+<Parameters>
+<Parameter
+ Type="LINKING.Message"
+ Name="struct"
+ Guid="ae449152-6437-4262-8c26-3e0eda5d3ab4"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="141571cc-e085-4da0-b118-3952ea563bef"
+>
+<PreConditions>
+<PreCondition
+ Guid="a869141c-bdd6-4e60-ba2c-4fb2ba268780"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="492d280b-26cf-403a-8e1f-e823c4c626cf"
+>
+<PreConditions>
+<PreCondition
+ Guid="a018268f-488f-40e2-a22a-d52592fa8fd5"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="0aceeaff-7277-4db2-a035-41ef2238e776"
+>
+<PreConditions>
+<PreCondition
+ Guid="d35cf62a-e8e5-411b-908f-e311a6625e31"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="e4d3f8ca-6e29-4982-99a6-f33622b65ea0"
+>
+<PreConditions>
+<PreCondition
+ Guid="1f61ff34-e973-4769-a0d3-901f3687de69"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_SCALE invalid"
+ Guid="e9e6fe4e-1f7c-4f96-a482-d1debf3d4e51"
+>
+<PreConditions>
+<PreCondition
+ Guid="92a0d8b1-114f-4c16-8c08-1acc869cba79"
+>struct.Q_SCALE &lt; 0
+  AND  
+struct.Q_SCALE &gt;= 4
+  AND  
+struct.Q_SCALE != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.D_LINK invalid"
+ Guid="0ad56d3a-f718-423e-aeab-c01cc964b8d8"
+>
+<PreConditions>
+<PreCondition
+ Guid="14d44cf5-11c5-4958-83b9-61cbfb7d8235"
+>struct.D_LINK &lt; 0
+  AND  
+struct.D_LINK &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_NEWCOUNTRY invalid"
+ Guid="c29876df-b540-44b5-8cc9-328907e56943"
+>
+<PreConditions>
+<PreCondition
+ Guid="da16067a-6ee4-4ac0-9de4-4d152f389101"
+>struct.Q_NEWCOUNTRY &lt; 0
+  AND  
+struct.Q_NEWCOUNTRY &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_C invalid"
+ Guid="b59e0918-5523-4409-9024-8471b969360e"
+>
+<PreConditions>
+<PreCondition
+ Guid="0630c1fa-85ff-4237-9861-7aeab90d82e5"
+>struct.NID_C &lt; 0
+  AND  
+struct.NID_C &gt;= 1024</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_BG invalid"
+ Guid="ec4979bb-21e6-4fad-80c3-376114b6ef68"
+>
+<PreConditions>
+<PreCondition
+ Guid="fc26a0d6-76f6-4478-889a-d6534f88e554"
+>struct.NID_BG &lt; 0
+  AND  
+struct.NID_BG &gt;= 16384</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_LINKORIENTATION invalid"
+ Guid="fda8b171-f844-41fd-af8e-fdd46efe7955"
+>
+<PreConditions>
+<PreCondition
+ Guid="e4996893-89b1-408b-a8ba-773135e40b1a"
+>struct.Q_LINKORIENTATION &lt; 0
+  AND  
+struct.Q_LINKORIENTATION &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_LINKREACTION invalid"
+ Guid="28824a6b-b76a-4738-834c-7463072d7f52"
+>
+<PreConditions>
+<PreCondition
+ Guid="310a236c-24a9-433c-ad67-1e90a132b96a"
+>struct.Q_LINKREACTION &lt; 0
+  AND  
+struct.Q_LINKREACTION &gt;= 4
+  AND  
+struct.Q_LINKREACTION != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_LOCACC invalid"
+ Guid="2cae604b-afb3-4886-90e4-77ddadc79556"
+>
+<PreConditions>
+<PreCondition
+ Guid="bc6d845d-0667-4e50-b8ab-0946cd53a81b"
+>struct.Q_LOCACC &lt; 0
+  AND  
+struct.Q_LOCACC &gt;= 64</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.N_ITER invalid"
+ Guid="c4f51b6b-af86-4549-9a0a-615f938395d8"
+>
+<PreConditions>
+<PreCondition
+ Guid="570a56bc-1037-4a28-9949-ecd2e40d79ab"
+>struct.N_ITER &lt; 0
+  AND  
+struct.N_ITER &gt;= 32</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Sequence1 invalid"
+ Guid="6cb21ccb-a462-40f0-9535-fa1d6cd223b8"
+>
+<PreConditions>
+<PreCondition
+ Guid="c70089c6-2661-4f33-8576-5a0d37b6cdce"
+>THERE_IS X IN struct.Sequence1 | NOT LINKING.CheckSubStructure1Values(X)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="7da82039-580b-4e81-b139-b398c66b94ba"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="CheckSubStructure1Values"
+ Guid="e57f1f56-32c8-4bfe-9b84-6f49aaaa4da2"
+>
+<Comment>Checks the values in a structure of type LINKING.SubStructure1</Comment>
+<Parameters>
+<Parameter
+ Type="LINKING.SubStructure1"
+ Name="struct"
+ Guid="8be6c7c1-6e0d-43a8-8d8c-6491ec315df5"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SubStructure1 empty"
+ Guid="747bf7a6-2a81-4836-b2ac-ee2bb1e6919c"
+>
+<PreConditions>
+<PreCondition
+ Guid="41403951-f050-4029-ab19-d0fe1625e8a8"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.D_LINK invalid"
+ Guid="92a9e9d6-cfac-49f5-a7c6-70e6cbdb1db4"
+>
+<PreConditions>
+<PreCondition
+ Guid="a75b1d36-3769-414a-92fd-9dc3ddd0ef13"
+>struct.D_LINK &lt; 0
+  AND  
+struct.D_LINK &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_NEWCOUNTRY invalid"
+ Guid="5ff62d46-6def-4268-84b9-118a7a8e83be"
+>
+<PreConditions>
+<PreCondition
+ Guid="039d4c1a-7d9f-4753-bf78-6f1861acf7ca"
+>struct.Q_NEWCOUNTRY &lt; 0
+  AND  
+struct.Q_NEWCOUNTRY &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_C invalid"
+ Guid="3f7be975-e059-4187-b4d4-1dcf9868a047"
+>
+<PreConditions>
+<PreCondition
+ Guid="470bccd3-173b-4212-b9ce-ab4844bad2c5"
+>struct.NID_C &lt; 0
+  AND  
+struct.NID_C &gt;= 1024</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_BG invalid"
+ Guid="af98e4b2-9328-4788-a5fb-9f6bbd801e9e"
+>
+<PreConditions>
+<PreCondition
+ Guid="e45e4bd7-5b06-4173-82ba-f26688bde773"
+>struct.NID_BG &lt; 0
+  AND  
+struct.NID_BG &gt;= 16384</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_LINKORIENTATION invalid"
+ Guid="ad021aa8-fd92-4ffa-be2e-5a59cead2ae1"
+>
+<PreConditions>
+<PreCondition
+ Guid="6a26bb1e-3f83-4127-b563-0f2b8f9b2803"
+>struct.Q_LINKORIENTATION &lt; 0
+  AND  
+struct.Q_LINKORIENTATION &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_LINKREACTION invalid"
+ Guid="6f1546d6-ff55-4a07-b985-54ba0fca7d4f"
+>
+<PreConditions>
+<PreCondition
+ Guid="59329145-abd4-4aaa-8af2-7c7ec7a3e991"
+>struct.Q_LINKREACTION &lt; 0
+  AND  
+struct.Q_LINKREACTION &gt;= 4
+  AND  
+struct.Q_LINKREACTION != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_LOCACC invalid"
+ Guid="acaf8ef6-0f39-428e-8f25-7f57e3f8f707"
+>
+<PreConditions>
+<PreCondition
+ Guid="c04d6838-3f0a-4d3d-b087-c34024896806"
+>struct.Q_LOCACC &lt; 0
+  AND  
+struct.Q_LOCACC &gt;= 64</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="31a7fb35-a29c-47c9-afe9-fa96772dfd10"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

@@ -53,7 +53,7 @@
  Guid="afdb8d5c-2d51-4dd7-94d1-37598cacbe7a"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -79,7 +79,7 @@
  Guid="c013116c-2d93-448f-a33a-049a26c8934e"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -92,7 +92,7 @@
  Guid="c5ff3569-6ad5-441b-8b7a-47f5cc6b1f59"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -118,4 +118,117 @@
  Guid="1942d329-06fe-4b72-9291-273190732120"
 >
 </ReqRef></StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="9bde445f-30b3-426a-9b19-2ebb8a8ea308"
+>
+<Comment>Checks the values in a structure of type ADHESION_FACTOR.Message</Comment>
+<Parameters>
+<Parameter
+ Type="ADHESION_FACTOR.Message"
+ Name="struct"
+ Guid="a4141068-8915-484f-a6cd-fb88b7eaeb53"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="eeb5f3c9-b32b-4992-b7a6-b115d641ecc9"
+>
+<PreConditions>
+<PreCondition
+ Guid="5759ebbf-202d-4890-ae3b-d2fac9d72bdc"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="350006bd-4fd3-4ee7-926b-a5a59b215a7b"
+>
+<PreConditions>
+<PreCondition
+ Guid="d36b5635-1891-4ecf-bf59-cb83e85b4081"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="602363b2-753d-4639-bf2a-6eaa5c064378"
+>
+<PreConditions>
+<PreCondition
+ Guid="55a8c42b-c6ba-46e2-98b5-2335ab7c959e"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="dd1d1533-db2c-4eec-9934-7e7d6436087e"
+>
+<PreConditions>
+<PreCondition
+ Guid="7120d256-2d47-4f6c-9d95-be2bc8a2aa42"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_SCALE invalid"
+ Guid="aefaca3c-f396-4941-a40a-b410c5fc7ace"
+>
+<PreConditions>
+<PreCondition
+ Guid="22150714-8c6a-4c10-a305-8ce463d71e0d"
+>struct.Q_SCALE &lt; 0
+  AND  
+struct.Q_SCALE &gt;= 4
+  AND  
+struct.Q_SCALE != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.D_ADHESION invalid"
+ Guid="d6690bf7-a2d7-487b-b0c9-e77411ce797d"
+>
+<PreConditions>
+<PreCondition
+ Guid="9c511a26-2980-4722-81fd-ca1cbcf8e474"
+>struct.D_ADHESION &lt; 0
+  AND  
+struct.D_ADHESION &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_ADHESION invalid"
+ Guid="d78aa466-4902-479a-bf74-a587b046ebe4"
+>
+<PreConditions>
+<PreCondition
+ Guid="d0be581b-2595-48e0-a445-7624784aa796"
+>struct.L_ADHESION &lt; 0
+  AND  
+struct.L_ADHESION &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.M_ADHESION invalid"
+ Guid="f46b48c9-fb42-4683-8e4a-899b06adfd67"
+>
+<PreConditions>
+<PreCondition
+ Guid="f6910d98-cb7b-4d47-b039-88c4098c7ebe"
+>struct.M_ADHESION &lt; 0
+  AND  
+struct.M_ADHESION &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="9f28337e-e6f2-4626-9dae-7126993be8cf"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

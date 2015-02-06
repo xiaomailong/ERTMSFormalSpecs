@@ -53,7 +53,7 @@
  Guid="96b8a886-c616-46b0-8a78-8ee5e223b72d"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -79,7 +79,7 @@
  Guid="0c285374-f8ed-477a-a764-3b6175c4a5fc"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -92,7 +92,7 @@
  Guid="dff2eb64-d930-4ec2-b670-116e26568758"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Speed"
+ TypeName="MessageTypes.Speed"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -210,7 +210,7 @@
  Guid="5bd4d367-7819-4cca-8fc2-1458447e3278"
 >
 </StructureElement><StructureElement
- TypeName="Default.MessageTypes.Speed"
+ TypeName="MessageTypes.Speed"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -234,7 +234,7 @@
  Guid="7bc3826a-9ef4-494a-b1bd-de728b7dfbb5"
 >
 </ReqRef><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -247,7 +247,7 @@
  Guid="05ce48da-be1c-492a-930c-2997a50078e1"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Speed"
+ TypeName="MessageTypes.Speed"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -339,7 +339,7 @@
  Guid="731e9c85-17a5-45b0-af04-d0bd3501f5e2"
 >
 </StructureElement><StructureElement
- TypeName="Default.MessageTypes.Speed"
+ TypeName="MessageTypes.Speed"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -354,7 +354,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1"
+ TypeName="SubStructure1"
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
@@ -366,7 +366,7 @@
  Guid="0d2a22f5-abbb-4a17-9697-37f5ced329fb"
 >
 </ReqRef></Collection><Collection
- TypeName="Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3"
+ TypeName="SubStructure3"
  Default="[]"
  Implemented="TRUE"
  Name="Collection2"
@@ -378,7 +378,7 @@
  Guid="d6fe0b75-764b-406d-9c6a-51893ae42a1f"
 >
 </ReqRef></Collection><Collection
- TypeName="Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2"
+ TypeName="SubStructure2"
  Default="[]"
  Implemented="TRUE"
  Name="Collection3"
@@ -390,4 +390,390 @@
  Guid="6a3f549b-f48e-44be-b70b-d0e96bc97d9f"
 >
 </ReqRef></Collection></Collections>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="d320d43e-3c6f-49f0-a91c-58d5f43baf30"
+>
+<Comment>Checks the values in a structure of type INTERNATIONAL_STATIC_SPEED_PROFILE.Message</Comment>
+<Parameters>
+<Parameter
+ Type="INTERNATIONAL_STATIC_SPEED_PROFILE.Message"
+ Name="struct"
+ Guid="67a7693a-8bdc-4849-adee-f7243b07ed21"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="33d58f8e-b2c9-4fba-ae91-123e6814735a"
+>
+<PreConditions>
+<PreCondition
+ Guid="da4cfc27-484b-4b99-8d65-56190eca6206"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="664fd652-e882-4679-a1e7-54b5528a0093"
+>
+<PreConditions>
+<PreCondition
+ Guid="c2d783a8-0ab4-41ca-b053-a2cfa4ff0cc5"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="42b5ad97-767b-40d9-9b6c-47a3cae125a6"
+>
+<PreConditions>
+<PreCondition
+ Guid="4664747e-a6d3-41f5-8074-131a49c57afb"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="3a9c3ea9-d1a0-4175-9125-f4aaa1e4f30e"
+>
+<PreConditions>
+<PreCondition
+ Guid="24acd7fe-9b35-4af6-9863-3d773bacbd21"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_SCALE invalid"
+ Guid="5fbf4a49-6888-4f17-9056-93ba7088de47"
+>
+<PreConditions>
+<PreCondition
+ Guid="76481278-3b0b-4fac-87cb-934a5a8a498a"
+>struct.Q_SCALE &lt; 0
+  AND  
+struct.Q_SCALE &gt;= 4
+  AND  
+struct.Q_SCALE != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.D_STATIC invalid"
+ Guid="bd12029b-d502-4fc6-ab52-50f3046e0bca"
+>
+<PreConditions>
+<PreCondition
+ Guid="1178433e-337c-49b1-a6c3-7dac58ee1bc6"
+>struct.D_STATIC &lt; 0
+  AND  
+struct.D_STATIC &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.V_STATIC invalid"
+ Guid="3194f4ca-e746-433a-a677-b7e211ff3bbe"
+>
+<PreConditions>
+<PreCondition
+ Guid="37babf96-6f28-4254-ae33-a779cdb49073"
+>struct.V_STATIC &lt; 0
+  AND  
+struct.V_STATIC &gt;= 128
+  AND  
+struct.V_STATIC &lt; 121
+  AND  
+struct.V_STATIC &gt; 126</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_FRONT invalid"
+ Guid="7543ef1e-3ba6-4ce3-8001-e482fd58eced"
+>
+<PreConditions>
+<PreCondition
+ Guid="5ac49783-b7a5-414b-b5a3-a3bc0d3c77b5"
+>struct.Q_FRONT &lt; 0
+  AND  
+struct.Q_FRONT &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Sequence1 invalid"
+ Guid="2f3d88f0-dec8-4bbf-b009-d55e7ce90212"
+>
+<PreConditions>
+<PreCondition
+ Guid="aee41090-4913-48cf-b430-edc80bdf8e78"
+>THERE_IS X IN struct.Sequence1 | NOT INTERNATIONAL_STATIC_SPEED_PROFILE.CheckSubStructure1Values(X)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Sequence3 invalid"
+ Guid="14dcede7-b3ec-4958-9430-a449b9c77b04"
+>
+<PreConditions>
+<PreCondition
+ Guid="319bedc4-8e7d-4d45-895d-d836457cd0fb"
+>THERE_IS X IN struct.Sequence3 | NOT INTERNATIONAL_STATIC_SPEED_PROFILE.CheckSubStructure2Values(X)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="a50726b1-0f7e-463b-b6ae-07a7ea07f895"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="CheckSubStructure1Values"
+ Guid="514dfd29-e034-4a5f-80bb-1fde7e9892f0"
+>
+<Comment>Checks the values in a structure of type INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1</Comment>
+<Parameters>
+<Parameter
+ Type="INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1"
+ Name="struct"
+ Guid="3240b688-c0d5-4d31-a5a9-85581279a377"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SubStructure1 empty"
+ Guid="b714b773-a4d7-4e87-bc3d-e95004969813"
+>
+<PreConditions>
+<PreCondition
+ Guid="0e372d93-2ba5-4bad-8d7c-0303531e9bd3"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.Q_DIFF invalid"
+ Guid="cab8d06d-a8db-4743-81c9-921dd9f4054a"
+>
+<PreConditions>
+<PreCondition
+ Guid="68ac7d69-2148-4648-86d8-985caf5348bc"
+>struct.Q_DIFF &lt; 0
+  AND  
+struct.Q_DIFF &gt;= 4</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NC_CDDIFF invalid"
+ Guid="1ee1e083-5c4b-4f6b-b1e2-8715ff1a9b7d"
+>
+<PreConditions>
+<PreCondition
+ Guid="dfc73204-d1ca-4da3-867c-a9422f0fb88d"
+>struct.NC_CDDIFF &lt; 0
+  AND  
+struct.NC_CDDIFF &gt;= 16
+  AND  
+struct.NC_CDDIFF &lt; 11
+  AND  
+struct.NC_CDDIFF &gt; 15</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NC_DIFF invalid"
+ Guid="04bc9416-1fef-4474-b153-45b11d08bcea"
+>
+<PreConditions>
+<PreCondition
+ Guid="ed1c8c95-bf6d-4ec0-ab19-ea7c66a059ca"
+>struct.NC_DIFF &lt; 0
+  AND  
+struct.NC_DIFF &gt;= 16
+  AND  
+struct.NC_DIFF &lt; 3
+  AND  
+struct.NC_DIFF &gt; 15</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.V_DIFF invalid"
+ Guid="ee9bdef4-7b2a-4e29-b921-2806afab077d"
+>
+<PreConditions>
+<PreCondition
+ Guid="0c8b704a-7e25-4dfd-9cbc-ecefa3903ab6"
+>struct.V_DIFF &lt; 0
+  AND  
+struct.V_DIFF &gt;= 128</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="6285da3b-c956-4bb5-bbfc-260675f52f07"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="CheckSubStructure2Values"
+ Guid="2bb7d231-4894-4ce9-8c76-d3ab2268e8b8"
+>
+<Comment>Checks the values in a structure of type INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2</Comment>
+<Parameters>
+<Parameter
+ Type="INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2"
+ Name="struct"
+ Guid="405a416b-339f-4eff-898c-7b501b033262"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SubStructure2 empty"
+ Guid="1e3cbee8-c1b1-4568-9927-64ac2834ccde"
+>
+<PreConditions>
+<PreCondition
+ Guid="6c93fa30-9a6e-4013-a789-7689f686ad44"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.D_STATIC invalid"
+ Guid="86beadce-455d-46ba-b400-a6b080f5b190"
+>
+<PreConditions>
+<PreCondition
+ Guid="6717ce5b-df58-4cf3-8067-1357383898b9"
+>struct.D_STATIC &lt; 0
+  AND  
+struct.D_STATIC &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.V_STATIC invalid"
+ Guid="acedeec2-b458-478b-9295-0947d1250464"
+>
+<PreConditions>
+<PreCondition
+ Guid="c0b41437-3ac9-4b19-aba2-b839cd3669d9"
+>struct.V_STATIC &lt; 0
+  AND  
+struct.V_STATIC &gt;= 128
+  AND  
+struct.V_STATIC &lt; 121
+  AND  
+struct.V_STATIC &gt; 126</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_FRONT invalid"
+ Guid="9d17cc50-664a-4da3-a340-ecb132494f06"
+>
+<PreConditions>
+<PreCondition
+ Guid="5811064e-d5fb-4d45-8261-915e1f530442"
+>struct.Q_FRONT &lt; 0
+  AND  
+struct.Q_FRONT &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.N_ITER invalid"
+ Guid="4ccacd55-23e1-4f5a-8241-be159c0c692a"
+>
+<PreConditions>
+<PreCondition
+ Guid="53ad3fba-8252-445e-9628-a66ec33f9cbd"
+>struct.N_ITER &lt; 0
+  AND  
+struct.N_ITER &gt;= 32</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Sequence2 invalid"
+ Guid="301baba3-8db4-4962-9a18-02fe899c7ccb"
+>
+<PreConditions>
+<PreCondition
+ Guid="bc3bb304-fd9f-4f5f-a0e7-893357c604aa"
+>THERE_IS X IN struct.Sequence2 | NOT INTERNATIONAL_STATIC_SPEED_PROFILE.CheckSubStructure3Values(X)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="c7185f83-7fee-4b33-90ec-61e1b65fd6f2"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="CheckSubStructure3Values"
+ Guid="634bc5c1-bad0-4894-a6c5-207d01e1b36e"
+>
+<Comment>Checks the values in a structure of type INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3</Comment>
+<Parameters>
+<Parameter
+ Type="INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3"
+ Name="struct"
+ Guid="7100f00a-47c2-41fd-9233-ea89f1839288"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SubStructure3 empty"
+ Guid="efabafe6-63a0-4dc1-ba19-ca6f4957952f"
+>
+<PreConditions>
+<PreCondition
+ Guid="0842691d-e058-4730-927c-848a2e5c192a"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.Q_DIFF invalid"
+ Guid="c7cd5eae-45d8-4cba-8deb-b620423b4cd9"
+>
+<PreConditions>
+<PreCondition
+ Guid="458d0d77-1b5d-4841-a5d2-08906770a0f7"
+>struct.Q_DIFF &lt; 0
+  AND  
+struct.Q_DIFF &gt;= 4</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NC_CDDIFF invalid"
+ Guid="64b73d38-92a9-4250-ba94-31151b5d0693"
+>
+<PreConditions>
+<PreCondition
+ Guid="5c4622c4-0cbd-416b-a66d-7a21b63925fa"
+>struct.NC_CDDIFF &lt; 0
+  AND  
+struct.NC_CDDIFF &gt;= 16
+  AND  
+struct.NC_CDDIFF &lt; 11
+  AND  
+struct.NC_CDDIFF &gt; 15</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NC_DIFF invalid"
+ Guid="96291668-c1ad-4295-b7e9-5b0b710df5ed"
+>
+<PreConditions>
+<PreCondition
+ Guid="06cbf470-b410-4c28-938f-560f0fcf75bb"
+>struct.NC_DIFF &lt; 0
+  AND  
+struct.NC_DIFF &gt;= 16
+  AND  
+struct.NC_DIFF &lt; 3
+  AND  
+struct.NC_DIFF &gt; 15</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.V_DIFF invalid"
+ Guid="62cc5d6f-5e98-4607-9d07-d0b1f85ba224"
+>
+<PreConditions>
+<PreCondition
+ Guid="cd3f6a80-38fd-4b7d-afb3-66fe99609529"
+>struct.V_DIFF &lt; 0
+  AND  
+struct.V_DIFF &gt;= 128</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="3ee51fd8-09b1-4358-9cab-8408c3cdb7bc"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

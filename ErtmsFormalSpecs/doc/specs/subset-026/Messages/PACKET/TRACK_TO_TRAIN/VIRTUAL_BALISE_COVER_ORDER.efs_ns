@@ -53,7 +53,7 @@
  Guid="df484095-768e-4fe7-a508-14e2a0e40253"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -113,4 +113,115 @@
  Guid="835db7ea-ce35-4219-af1c-cd89ca94d9b5"
 >
 </StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="fcdd86b2-70b7-42bb-9e4b-712cc08baf21"
+>
+<Comment>Checks the values in a structure of type VIRTUAL_BALISE_COVER_ORDER.Message</Comment>
+<Parameters>
+<Parameter
+ Type="VIRTUAL_BALISE_COVER_ORDER.Message"
+ Name="struct"
+ Guid="8d91523a-b9b0-4094-991e-7e5954c9fe73"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="b97e3d09-786a-4561-b14b-dade44978c26"
+>
+<PreConditions>
+<PreCondition
+ Guid="196e3db6-92e8-4f7f-b211-8d4ce926e154"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="7ea39e18-a22a-465a-b734-f646f127b7aa"
+>
+<PreConditions>
+<PreCondition
+ Guid="90369084-9d88-4f14-ae19-3f51fed86f95"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="52790fdc-4373-4e5a-8807-721bf0476d50"
+>
+<PreConditions>
+<PreCondition
+ Guid="b45a1217-491d-4387-bb42-c7873a6ef189"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="8c6a5f65-07ab-46e0-a350-38c4e9c15edb"
+>
+<PreConditions>
+<PreCondition
+ Guid="faa786c8-506e-4014-b39f-93ae16d797d3"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_VBCO invalid"
+ Guid="890ce2a9-547a-480f-baa7-fe7429031fd0"
+>
+<PreConditions>
+<PreCondition
+ Guid="e6e5d5c3-836e-4bc6-a3f8-18d9e329baf5"
+>struct.Q_VBCO &lt; 0
+  AND  
+struct.Q_VBCO &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_VBCMK invalid"
+ Guid="174f7300-53e3-4962-bfe3-ad99e6a01814"
+>
+<PreConditions>
+<PreCondition
+ Guid="2cb893ad-11eb-4dc7-a70e-6a10d55cc8c6"
+>struct.NID_VBCMK &lt; 0
+  AND  
+struct.NID_VBCMK &gt;= 64</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_C invalid"
+ Guid="51c10bee-5b76-4694-92a7-23891936da13"
+>
+<PreConditions>
+<PreCondition
+ Guid="06377474-1caa-4a5a-a82d-d1d5b26d896b"
+>struct.NID_C &lt; 0
+  AND  
+struct.NID_C &gt;= 1024</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.T_VBC invalid"
+ Guid="3be98872-be62-45a3-aa70-50d461dd5789"
+>
+<PreConditions>
+<PreCondition
+ Guid="5b0dfd95-d8a3-4553-abad-b6c79e77617a"
+>struct.T_VBC &lt; 0
+  AND  
+struct.T_VBC &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="6ba650a1-4d42-46a8-a1b6-0f81fc92fef7"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

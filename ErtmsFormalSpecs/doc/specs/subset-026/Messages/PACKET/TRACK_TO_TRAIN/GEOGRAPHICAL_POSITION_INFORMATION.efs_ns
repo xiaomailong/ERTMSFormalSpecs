@@ -55,7 +55,7 @@
  Guid="eafa0025-0136-4ca1-b3aa-af2ac09cf2b7"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -115,7 +115,7 @@
  Guid="1b084a64-1ec7-45de-afea-1313257946cb"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -228,7 +228,7 @@
  Guid="64809b88-535f-4f5c-85fd-092e74a49feb"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -269,7 +269,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Messages.PACKET.TRACK_TO_TRAIN.GEOGRAPHICAL_POSITION_INFORMATION.SubStructure1"
+ TypeName="SubStructure1"
  Default="[]"
  Y="60"
  Width="100"
@@ -284,4 +284,266 @@
  Guid="996e2d84-cf3a-48e4-84af-8957820cbf3b"
 >
 </ReqRef></Collection></Collections>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="b189bb6f-a6d3-4925-af9a-d873b4e05a66"
+>
+<Comment>Checks the values in a structure of type GEOGRAPHICAL_POSITION_INFORMATION.Message</Comment>
+<Parameters>
+<Parameter
+ Type="GEOGRAPHICAL_POSITION_INFORMATION.Message"
+ Name="struct"
+ Guid="170e49a3-0afc-460f-b29f-95702d9bda88"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="2f7f159d-e3a3-4548-97b1-badbf2ff3d82"
+>
+<PreConditions>
+<PreCondition
+ Guid="9fcc3371-aa7e-4d28-86a9-688f88004339"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="5bbab7ed-0585-40e2-ab7a-120d885dc89e"
+>
+<PreConditions>
+<PreCondition
+ Guid="8b3c2c8f-20fb-4514-9e4e-1a3ce4e65c3b"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="0e72f77d-7e98-4197-9625-107799eb1dec"
+>
+<PreConditions>
+<PreCondition
+ Guid="82da55f1-931a-4045-8461-9a36ead98092"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="b0fda6b5-4785-4fca-810c-e09f1edd916c"
+>
+<PreConditions>
+<PreCondition
+ Guid="1287b36a-e955-4d39-97de-b3544601e915"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_SCALE invalid"
+ Guid="85f37c2a-c6a0-4a37-8d34-ee17527356dd"
+>
+<PreConditions>
+<PreCondition
+ Guid="0dd404c7-c56a-455b-8362-625f97a047b4"
+>struct.Q_SCALE &lt; 0
+  AND  
+struct.Q_SCALE &gt;= 4
+  AND  
+struct.Q_SCALE != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_NEWCOUNTRY invalid"
+ Guid="d7688999-5f39-42ce-9abf-7a4c9e98335c"
+>
+<PreConditions>
+<PreCondition
+ Guid="1146f882-2644-440c-92c6-48f76d9adced"
+>struct.Q_NEWCOUNTRY &lt; 0
+  AND  
+struct.Q_NEWCOUNTRY &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_C invalid"
+ Guid="cf75a2ce-1ece-4a9a-9285-c030aa924b99"
+>
+<PreConditions>
+<PreCondition
+ Guid="079cae22-fd89-428f-a6ae-2518ea34ad5f"
+>struct.NID_C &lt; 0
+  AND  
+struct.NID_C &gt;= 1024</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_BG invalid"
+ Guid="5d7bdced-4b8f-4024-9bef-293e37c9983f"
+>
+<PreConditions>
+<PreCondition
+ Guid="c16c1309-5cc3-4f18-9364-851acf9b1333"
+>struct.NID_BG &lt; 0
+  AND  
+struct.NID_BG &gt;= 16384</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.D_POSOFF invalid"
+ Guid="b1147e58-7c1d-426e-82e0-e419629cea52"
+>
+<PreConditions>
+<PreCondition
+ Guid="bf90e690-93b2-47e6-812a-1016a5f9a11c"
+>struct.D_POSOFF &lt; 0
+  AND  
+struct.D_POSOFF &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_MPOSITION invalid"
+ Guid="aa5399ed-d426-48e9-9a0c-1e6e90611b4a"
+>
+<PreConditions>
+<PreCondition
+ Guid="e3a9698a-60bd-4ebb-98c5-9178c1c77d7f"
+>struct.Q_MPOSITION &lt; 0
+  AND  
+struct.Q_MPOSITION &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.M_POSITION invalid"
+ Guid="2a972166-dc37-487d-9947-0829f66c5901"
+>
+<PreConditions>
+<PreCondition
+ Guid="532ab64c-a3b6-42b9-a931-542d06e9ad78"
+>struct.M_POSITION &lt; 0
+  AND  
+struct.M_POSITION &gt;= 16777216</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.N_ITER invalid"
+ Guid="3841afd2-a5e4-4d78-9b5c-be3f3b751868"
+>
+<PreConditions>
+<PreCondition
+ Guid="09d383a4-b800-4682-97ae-6b8e705bd036"
+>struct.N_ITER &lt; 0
+  AND  
+struct.N_ITER &gt;= 32</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Sequence1 invalid"
+ Guid="df2a1247-1ff4-45f5-8b6b-7d927e39f3e4"
+>
+<PreConditions>
+<PreCondition
+ Guid="7c4f322e-7acf-4d74-b6e3-74733727ab0c"
+>THERE_IS X IN struct.Sequence1 | NOT GEOGRAPHICAL_POSITION_INFORMATION.CheckSubStructure1Values(X)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="c940e7dc-0851-4c25-906f-e3f0c4921c84"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="CheckSubStructure1Values"
+ Guid="fc2276cd-2897-4891-ae52-c6ff96916375"
+>
+<Comment>Checks the values in a structure of type GEOGRAPHICAL_POSITION_INFORMATION.SubStructure1</Comment>
+<Parameters>
+<Parameter
+ Type="GEOGRAPHICAL_POSITION_INFORMATION.SubStructure1"
+ Name="struct"
+ Guid="642daf5f-9445-4030-9d35-62579b0e6ebf"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SubStructure1 empty"
+ Guid="312fbef9-0ef3-484c-b3ac-e9b968230b91"
+>
+<PreConditions>
+<PreCondition
+ Guid="ebf0092f-c5ab-46b8-a3ef-ce6e32bfc4b3"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.Q_NEWCOUNTRY invalid"
+ Guid="100e0521-cf09-4cd3-8957-36c2eb00fae2"
+>
+<PreConditions>
+<PreCondition
+ Guid="9ec4e81c-0bc4-4895-b059-2ee19c646387"
+>struct.Q_NEWCOUNTRY &lt; 0
+  AND  
+struct.Q_NEWCOUNTRY &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_C invalid"
+ Guid="eceeafd0-cddf-48ba-ab30-f56dc9d0a443"
+>
+<PreConditions>
+<PreCondition
+ Guid="963744ea-2ebc-429a-ba75-49372d536153"
+>struct.NID_C &lt; 0
+  AND  
+struct.NID_C &gt;= 1024</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_BG invalid"
+ Guid="ce162fe3-07d4-4c51-a29b-d3351bd18672"
+>
+<PreConditions>
+<PreCondition
+ Guid="f251d4f7-400b-4a38-ae26-8da56a9a95e7"
+>struct.NID_BG &lt; 0
+  AND  
+struct.NID_BG &gt;= 16384</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.D_POSOFF invalid"
+ Guid="a71b976f-49bd-4f6c-a7dd-c500f28df1d8"
+>
+<PreConditions>
+<PreCondition
+ Guid="0a224ab5-7fa6-4ac5-94eb-ae20ce5d5894"
+>struct.D_POSOFF &lt; 0
+  AND  
+struct.D_POSOFF &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_MPOSITION invalid"
+ Guid="0eb5d0c5-abf1-4bf7-8cc9-0acdbaf84bf2"
+>
+<PreConditions>
+<PreCondition
+ Guid="59bf9f17-0819-4c6f-b474-43d410528987"
+>struct.Q_MPOSITION &lt; 0
+  AND  
+struct.Q_MPOSITION &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.M_POSITION invalid"
+ Guid="68a467fe-4640-4fb7-b3e9-4ada7dc70434"
+>
+<PreConditions>
+<PreCondition
+ Guid="30ca19c3-8155-4157-a14c-c1dee1e942ea"
+>struct.M_POSITION &lt; 0
+  AND  
+struct.M_POSITION &gt;= 16777216</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="3129f581-afe9-43b7-8099-e73817ff1b2d"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

@@ -53,7 +53,7 @@
  Guid="46ffc967-0c84-4fe7-a6fc-e2cb1670e9dd"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -66,4 +66,71 @@
  Guid="e851e31a-de24-4b46-967f-da487e45f304"
 >
 </ReqRef></StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="56b14251-fd31-400e-9649-73d23c075906"
+>
+<Comment>Checks the values in a structure of type STOP_SHUNTING_ON_DESK_OPENING.Message</Comment>
+<Parameters>
+<Parameter
+ Type="STOP_SHUNTING_ON_DESK_OPENING.Message"
+ Name="struct"
+ Guid="80fdf692-c50f-4874-b377-f89582194779"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="5029794a-5358-47c5-89e6-589cbda101e1"
+>
+<PreConditions>
+<PreCondition
+ Guid="ea901548-556f-459b-8fa3-478cb2f654c6"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="1f82682b-8df1-44df-a3aa-442f33c90258"
+>
+<PreConditions>
+<PreCondition
+ Guid="4281a721-f744-4b9e-89f7-2846d5cea520"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="9390ebb7-a828-4439-bd4a-362f56807d52"
+>
+<PreConditions>
+<PreCondition
+ Guid="6743df12-9751-4a4b-a918-8804a7b42372"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="deab677c-3ece-4ee1-b230-8ea742195c18"
+>
+<PreConditions>
+<PreCondition
+ Guid="cd4130bf-d32b-4437-ab8f-fb227ac0d871"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="4f1865da-287d-4439-b945-93433129490d"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

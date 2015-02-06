@@ -53,7 +53,7 @@
  Guid="ddc48ec7-375a-471e-8285-1070c70693b2"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -79,7 +79,7 @@
  Guid="0ca5d70d-6f8e-4461-a88f-cd2e8801b384"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -92,7 +92,7 @@
  Guid="0fbd7a92-68bc-4a54-9f95-8ca032cacce6"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -142,7 +142,7 @@
  Guid="337c9f60-63ca-4e5d-b217-3c6d1ed8ddbe"
 >
 </ReqRef><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -155,7 +155,7 @@
  Guid="5f2367a2-0dd4-4f9d-81e3-eaea93ffb95a"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -170,7 +170,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_BIG_METAL_MASSES.SubStructure1"
+ TypeName="SubStructure1"
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
@@ -182,4 +182,178 @@
  Guid="b1aaf09a-0dea-4900-9f1d-8634430b912d"
 >
 </ReqRef></Collection></Collections>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="62d795ab-77e9-4170-84c8-9d6da1359985"
+>
+<Comment>Checks the values in a structure of type TRACK_CONDITION_BIG_METAL_MASSES.Message</Comment>
+<Parameters>
+<Parameter
+ Type="TRACK_CONDITION_BIG_METAL_MASSES.Message"
+ Name="struct"
+ Guid="df40b126-706a-414b-a983-815dfe5c7563"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="94ff3056-0f54-4899-befa-646fc68f61a2"
+>
+<PreConditions>
+<PreCondition
+ Guid="cee3c784-71c1-4433-82a1-953c225b2570"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="7d30dc87-33e4-4fcb-9e93-e11a0aae40fe"
+>
+<PreConditions>
+<PreCondition
+ Guid="9e181ad3-d67b-4c65-9ff3-1e4b1ba92d1c"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="50ff8ad4-288d-4ecb-b967-4e8f80df43e4"
+>
+<PreConditions>
+<PreCondition
+ Guid="6ebbe415-98f5-414f-9333-43035016ba87"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="8fcbf3e0-b290-465d-be21-f743637b21e3"
+>
+<PreConditions>
+<PreCondition
+ Guid="c374ee38-1cff-441f-96a7-a53e952335db"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_SCALE invalid"
+ Guid="fefd1148-d50e-46de-87ec-3567da9519dc"
+>
+<PreConditions>
+<PreCondition
+ Guid="62b8695e-c2ae-4f21-ad86-f657c3899539"
+>struct.Q_SCALE &lt; 0
+  AND  
+struct.Q_SCALE &gt;= 4
+  AND  
+struct.Q_SCALE != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.D_TRACKCOND invalid"
+ Guid="104c2351-05a7-4143-aff1-87a7013ad2e6"
+>
+<PreConditions>
+<PreCondition
+ Guid="b1f40097-6251-4964-8986-5d7f95c85e28"
+>struct.D_TRACKCOND &lt; 0
+  AND  
+struct.D_TRACKCOND &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_TRACKCOND invalid"
+ Guid="27fb1e17-3ae4-40b1-9543-5055438a9dbb"
+>
+<PreConditions>
+<PreCondition
+ Guid="e43066f4-85de-403d-b52f-9bd74ec19246"
+>struct.L_TRACKCOND &lt; 0
+  AND  
+struct.L_TRACKCOND &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.N_ITER invalid"
+ Guid="ab8c93eb-bfbc-4202-ac9d-b414ce8c464c"
+>
+<PreConditions>
+<PreCondition
+ Guid="da4ed2ec-cdd7-4283-9967-313746ea8963"
+>struct.N_ITER &lt; 0
+  AND  
+struct.N_ITER &gt;= 32</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Sequence1 invalid"
+ Guid="10bb42b0-d997-4d95-b081-fa21eb80838c"
+>
+<PreConditions>
+<PreCondition
+ Guid="1048d213-997b-4d8b-90c7-6bc9e29d5175"
+>THERE_IS X IN struct.Sequence1 | NOT TRACK_CONDITION_BIG_METAL_MASSES.CheckSubStructure1Values(X)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="fea598db-3a6a-4019-a9dd-60ea5706d91b"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="CheckSubStructure1Values"
+ Guid="5ccdefe4-a560-4968-908b-ef53bc37eadd"
+>
+<Comment>Checks the values in a structure of type TRACK_CONDITION_BIG_METAL_MASSES.SubStructure1</Comment>
+<Parameters>
+<Parameter
+ Type="TRACK_CONDITION_BIG_METAL_MASSES.SubStructure1"
+ Name="struct"
+ Guid="fa989206-74d8-4ee4-987c-26cf7d2b8a03"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SubStructure1 empty"
+ Guid="8923d99c-3f7b-44cb-ad60-87846e1f274c"
+>
+<PreConditions>
+<PreCondition
+ Guid="25eb3901-087f-4d7a-94a3-0ad7ed00badc"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.D_TRACKCOND invalid"
+ Guid="31eec137-8a5b-41e8-9fc0-ea4aa3864077"
+>
+<PreConditions>
+<PreCondition
+ Guid="fc352d13-1817-4689-a570-7185d1279058"
+>struct.D_TRACKCOND &lt; 0
+  AND  
+struct.D_TRACKCOND &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_TRACKCOND invalid"
+ Guid="19ec08e1-f434-486e-a641-cb8c07869979"
+>
+<PreConditions>
+<PreCondition
+ Guid="46bc0b17-a7f2-43f9-a5c6-e7b6a4109828"
+>struct.L_TRACKCOND &lt; 0
+  AND  
+struct.L_TRACKCOND &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="c69b40d7-f390-41e1-8a4f-560aa5c31ef5"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

@@ -67,7 +67,7 @@
  Guid="02f4681f-9737-4a0c-b6e0-d91c1b6e79bc"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -85,7 +85,7 @@
  Guid="4a715381-0db4-4e20-85a9-2b03fc9b6aad"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -103,4 +103,88 @@
  Guid="f9b491cd-35e5-4e17-8e34-5177572f0924"
 >
 </ReqRef></StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="9e6f8028-c753-4d89-81c2-a089726ed676"
+>
+<Comment>Checks the values in a structure of type SYSTEM_VERSION_ORDER.Message</Comment>
+<Parameters>
+<Parameter
+ Type="SYSTEM_VERSION_ORDER.Message"
+ Name="struct"
+ Guid="f5314889-307a-467d-aa69-609c7803117b"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="d07a2869-a08e-448a-bf85-a4fc20620059"
+>
+<PreConditions>
+<PreCondition
+ Guid="5910822a-8904-4c13-ade8-091c019ba8a9"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="0c616aaa-dea6-45eb-a577-1e6d2f5c4aa3"
+>
+<PreConditions>
+<PreCondition
+ Guid="ea81e49b-11d1-482b-b978-ffe19e47168f"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="532ab01c-2d59-4059-8ac9-edfdf7916bcd"
+>
+<PreConditions>
+<PreCondition
+ Guid="5f8a3f2d-ef3d-4b38-9171-2c001b3aac72"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="232feaa4-bb8e-4a1e-acf6-f96a409a9e88"
+>
+<PreConditions>
+<PreCondition
+ Guid="b9500e6b-22a4-461c-9fa4-82edad163697"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.M_VERSION invalid"
+ Guid="ba936f26-6242-4df1-ae6e-3870e30cad78"
+>
+<PreConditions>
+<PreCondition
+ Guid="9a0e8fd4-9309-45e0-b761-8f733e6a6c5c"
+>struct.M_VERSION &lt; 0
+  AND  
+struct.M_VERSION &gt;= 128
+  AND  
+struct.M_VERSION &lt; 18
+  AND  
+struct.M_VERSION &gt; 31
+  AND  
+struct.M_VERSION != 32</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="241588c6-4fb8-40a5-beae-d0d30968a874"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

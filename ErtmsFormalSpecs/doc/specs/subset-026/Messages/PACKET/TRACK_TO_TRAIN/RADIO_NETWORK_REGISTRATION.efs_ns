@@ -54,7 +54,7 @@
  Guid="5c206aef-6972-46bf-af55-336ebb1eee22"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -80,4 +80,82 @@
  Guid="d08be518-1f52-4181-8575-2f5252dd3ac8"
 >
 </ReqRef></StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="e51796d0-2cc2-4be8-96bf-f7ca53519626"
+>
+<Comment>Checks the values in a structure of type RADIO_NETWORK_REGISTRATION.Message</Comment>
+<Parameters>
+<Parameter
+ Type="RADIO_NETWORK_REGISTRATION.Message"
+ Name="struct"
+ Guid="aa298c37-e738-4c0c-bdef-b3e32a5e1e3c"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="ef516fdd-9068-49a4-a96e-f6a184203be3"
+>
+<PreConditions>
+<PreCondition
+ Guid="2d613a05-7897-4677-adc3-58dde11aa5c4"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="f19b18fd-ecb6-43b8-983a-8a2a833168e9"
+>
+<PreConditions>
+<PreCondition
+ Guid="03f5a804-865c-4e99-868e-430c0e03ae38"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="b95796c7-f755-458c-9b45-e07ddfb567ad"
+>
+<PreConditions>
+<PreCondition
+ Guid="078337fd-4753-46d1-ba95-d14f2d5120d6"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="6e869887-8a7b-4449-a4a8-2f854aca1b6a"
+>
+<PreConditions>
+<PreCondition
+ Guid="c9320cb3-83d7-4ceb-b1f8-3c2eddcba181"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_MN invalid"
+ Guid="9d938041-3f65-4676-b923-7dffca07b603"
+>
+<PreConditions>
+<PreCondition
+ Guid="556d81ed-e54b-4b04-9cc6-cec6722bcd74"
+>struct.NID_MN != &apos;&apos;
+  AND  
+CheckNumber(struct.NID_MN)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="b4d22ef6-5009-490b-adef-795373079df0"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

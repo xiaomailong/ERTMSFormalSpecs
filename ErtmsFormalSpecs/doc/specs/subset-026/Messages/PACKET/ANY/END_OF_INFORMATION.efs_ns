@@ -38,4 +38,47 @@
  Guid="a2ac765a-d7ef-4c80-8cb6-83453c6c215b"
 >
 </ReqRef></StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="b86f1179-c151-4828-9802-12c8ec739a5b"
+>
+<Comment>Checks the values in a structure of type END_OF_INFORMATION.Message</Comment>
+<Parameters>
+<Parameter
+ Type="END_OF_INFORMATION.Message"
+ Name="struct"
+ Guid="c0ae9b4c-688f-42c2-a0b5-0d935297655c"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="2b8d414b-9d0f-462e-b8d1-06ff55b841ef"
+>
+<PreConditions>
+<PreCondition
+ Guid="174c7ddd-833c-41fe-94d5-c2759f4202e3"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="957e5a56-6f66-4083-a298-b6073469ba43"
+>
+<PreConditions>
+<PreCondition
+ Guid="b87ca252-e179-4bd1-a033-d97293f86caf"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="6540946f-845b-4c7c-8a00-34af94eb674e"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>
