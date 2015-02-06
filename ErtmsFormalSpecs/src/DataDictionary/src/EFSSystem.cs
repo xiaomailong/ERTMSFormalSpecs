@@ -642,6 +642,23 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// The predefined checkNumber function
+        /// </summary>
+        private CheckNumber checkNumberPredefinedFunction;
+
+        public CheckNumber CheckNumberPredefinedFunction
+        {
+            get
+            {
+                if (checkNumberPredefinedFunction == null)
+                {
+                    checkNumberPredefinedFunction = new CheckNumber(this);
+                }
+                return checkNumberPredefinedFunction;
+            }
+        }
+
+        /// <summary>
         /// The predefined AddIncrement function
         /// </summary>
         private AddIncrement addIncrementPredefinedFunction;
@@ -767,6 +784,7 @@ namespace DataDictionary
                     predefinedFunctions[DoubleToIntegerPredefinedFunction.Name] = DoubleToIntegerPredefinedFunction;
                     predefinedFunctions[DecelerationProfilePredefinedFunction.Name] = DecelerationProfilePredefinedFunction;
                     predefinedFunctions[BeforePredefinedFunction.Name] = BeforePredefinedFunction;
+                    predefinedFunctions[CheckNumberPredefinedFunction.Name] = CheckNumberPredefinedFunction;
                     predefinedFunctions[AddIncrementPredefinedFunction.Name] = AddIncrementPredefinedFunction;
                     predefinedFunctions[AddToDatePredefinedFunction.Name] = AddToDatePredefinedFunction;
                     predefinedFunctions[OverridePredefinedFunction.Name] = OverridePredefinedFunction;
