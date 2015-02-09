@@ -44,7 +44,6 @@ namespace GUI.Report
         private void InitializeComponent()
         {
             this.GrB_Options = new System.Windows.Forms.GroupBox();
-            this.assumptionsAndCommentsCheckBox = new System.Windows.Forms.CheckBox();
             this.moreInformationNeededCheckBox = new System.Windows.Forms.CheckBox();
             this.CB_ShowDesignChoices = new System.Windows.Forms.CheckBox();
             this.CB_ShowIssues = new System.Windows.Forms.CheckBox();
@@ -56,7 +55,6 @@ namespace GUI.Report
             // 
             // GrB_Options
             // 
-            this.GrB_Options.Controls.Add(this.assumptionsAndCommentsCheckBox);
             this.GrB_Options.Controls.Add(this.moreInformationNeededCheckBox);
             this.GrB_Options.Controls.Add(this.CB_ShowDesignChoices);
             this.GrB_Options.Controls.Add(this.CB_ShowIssues);
@@ -67,19 +65,6 @@ namespace GUI.Report
             this.GrB_Options.TabIndex = 0;
             this.GrB_Options.TabStop = false;
             this.GrB_Options.Text = "Options";
-            // 
-            // assumptionsAndCommentsCheckBox
-            // 
-            this.assumptionsAndCommentsCheckBox.AutoSize = true;
-            this.assumptionsAndCommentsCheckBox.Checked = true;
-            this.assumptionsAndCommentsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.assumptionsAndCommentsCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.assumptionsAndCommentsCheckBox.Location = new System.Drawing.Point(6, 89);
-            this.assumptionsAndCommentsCheckBox.Name = "assumptionsAndCommentsCheckBox";
-            this.assumptionsAndCommentsCheckBox.Size = new System.Drawing.Size(157, 17);
-            this.assumptionsAndCommentsCheckBox.TabIndex = 3;
-            this.assumptionsAndCommentsCheckBox.Text = "Assumptions and comments";
-            this.assumptionsAndCommentsCheckBox.UseVisualStyleBackColor = true;
             // 
             // moreInformationNeededCheckBox
             // 
@@ -176,6 +161,5 @@ namespace GUI.Report
         private System.Windows.Forms.CheckBox CB_ShowDesignChoices;
         private System.Windows.Forms.CheckBox CB_ShowIssues;
         private System.Windows.Forms.CheckBox moreInformationNeededCheckBox;
-        private System.Windows.Forms.CheckBox assumptionsAndCommentsCheckBox;
     }
 }

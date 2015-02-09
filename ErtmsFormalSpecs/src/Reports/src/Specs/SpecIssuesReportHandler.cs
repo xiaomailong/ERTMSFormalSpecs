@@ -64,11 +64,6 @@ namespace Reports.Specs
                 Log.Info("..generating design choices");
                 report.CreateDesignChoicesArticle(this);
             }
-            if (AddComments)
-            {
-                Log.Info("..generating comments");
-                report.CreateMoreInformationArticle(this);
-            }
 
             return retVal;
         }
