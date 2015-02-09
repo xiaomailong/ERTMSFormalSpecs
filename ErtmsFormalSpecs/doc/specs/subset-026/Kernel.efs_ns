@@ -12364,5 +12364,97 @@ When the rear end of the train passes the start of the profiles, the message is 
     reason =&gt; (FIRST X IN EmergencyStops).Reason
 )</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Activate override"
+ Guid="b1e3dc85-1f10-41dd-825e-decee298c974"
+>
+<ReqRef
+ Id="d49a941c-d8b5-4e50-b2ec-1b316ac95380"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="442e638b-b9ae-416a-9502-b86495fbebdd"
+>
+</ReqRef><ReqRef
+ Id="b6c74cc9-fab4-4443-8044-94744d509710"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="60815184-e046-47fc-b7d1-99409d485f21"
+>
+</ReqRef><ReqRef
+ Id="eacc4d2f-2afc-4984-8b90-39c8df55a09c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0dbc5fc0-707a-4e47-8af7-997c80c0ed8e"
+>
+</ReqRef><ReqRef
+ Id="efea06c4-e975-4824-a134-e96d2951823a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dc9b11c5-dbaa-4cfd-8a6d-bc9a209a7c2e"
+>
+</ReqRef><ReqRef
+ Id="05727841-f740-43e0-b45d-53ac5d5b8d94"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="96a71151-6d24-4008-ad49-7e07df284d16"
+>
+</ReqRef><Comment>Offer selection of &quot;Override&quot; to the driver when the conditions are met and, if the driver selects &quot;Override&quot;, start the procedure.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Offer selection of Override function to the driver"
+ Guid="34934ae3-8cac-42ba-8d97-008701286c8e"
+>
+<Comment>The &quot;Override&quot; button shall be presented to the driver if
+the speed is below the override speed limit
+the current mode is in the list
+train data is valid (or the mode is shunting)</Comment>
+<PreConditions>
+<PreCondition
+ Guid="f3325596-5c2a-4e9e-8e9d-b04bb76b9f22"
+>Odometry.TrainSpeed() &lt;= NationalValues.ApplicableNationalValues.Value.OverrideSpeedLimitToBeSupervisedWhenOverrideIsActive</PreCondition><PreCondition
+ Guid="89bc026e-9e30-4588-8f51-bda92c55e80f"
+>Mode in [Mode.FS, Mode.LS, Mode.OS, Mode.SR, Mode.SH, Mode.UN, Mode.PT]
+
+  OR  
+
+(
+  Level.Value.Value in [Default.Level.L2, Default.Level.L3]
+    AND  
+  Mode == Mode.SB
+)
+
+  OR  
+
+(
+  Level.Value.Value == Default.Level.LNTC
+    AND  
+  Mode == Mode.SN
+)</PreCondition><PreCondition
+ Guid="ae0dfdfe-20fd-4409-9b91-c08c8f9c6ce1"
+>TrainData.TrainData.DataState == Default.DataState.Valid
+
+  OR  
+
+Mode == Mode.SH</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="bab8de6a-7a28-4649-98e6-e6e684ccc6f2"
+>DMI.MasterDMI().In_OverrideRequest.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Accept the driver&apos;s response"
+ Guid="70041744-24fb-432f-8da1-0c18b8ddab30"
+>
+<Comment>When the driver pressed the &quot;Override&quot; button, the procedure is triggered.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="c3d34939-8730-4858-9a80-7cbe26ec1e36"
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9671b9e3-b5c2-4c92-ae08-5647f5bd03bf"
+>HandleModeChange &lt;- HandleModeChangeSM.Override</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
