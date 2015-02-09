@@ -213,7 +213,7 @@
 <Structure
  Default=""
  X="970"
- Y="350"
+ Y="360"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -302,7 +302,7 @@
 </StructureElement></Structure><Structure
  Default=""
  X="970"
- Y="290"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -491,7 +491,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </StructureElement></Structure><Structure
  Default=""
  X="970"
- Y="550"
+ Y="570"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -531,6 +531,36 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  NeedsRequirement="FALSE"
  Name="Fault"
  Guid="e169a2e4-2862-45e5-b5df-a64026585e87"
+>
+</StructureElement></Structure><Structure
+ Default=""
+ X="970"
+ Y="240"
+ Width="100"
+ Height="50"
+ Name="OverrideStruct"
+ Guid="6846afff-0879-454d-808c-c741e2c2be09"
+>
+<StructureElement
+ TypeName="BaseTypes.Time"
+ Default="BaseTypes.Time.Infinity"
+ Mode="Internal"
+ Name="Time"
+ Guid="6c2d41ef-ee1d-43d1-ab48-93cd103471f1"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Distance"
+ Default="BaseTypes.Distance.Infinity"
+ Mode="Internal"
+ Name="Location"
+ Guid="b1fd4423-0b7f-4a90-a6e0-0db208bb07d9"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Distance"
+ Default="BaseTypes.Distance.Infinity"
+ Mode="Internal"
+ Name="FormerEOA"
+ Guid="b8f6f2a0-ea1f-4d1a-9996-f07696441220"
 >
 </StructureElement></Structure></Structures>
 <Collections>
@@ -584,7 +614,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  TypeName="Kernel.SafetyCriticalFaultStruct"
  Default="[]"
  X="970"
- Y="470"
+ Y="480"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -619,7 +649,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <StateMachine
  Default="NoProcedure"
  X="970"
- Y="410"
+ Y="420"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -3053,73 +3083,19 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 </StateMachine><LeaveAction>
 <Rule
  Priority="Processing"
- Implemented="TRUE"
  Name="Leave action"
- Guid="feb61fde-0cda-4c1d-8da7-064275b10a7f"
+ Guid="5d4880de-25b3-4932-9c8b-e20512a2a002"
 >
-<ReqRef
- Id="c01d4cc9-6034-43bf-ba70-4d4fe10dffd9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="301f0be2-55bb-4943-ad61-22ddd9084dbe"
->
-</ReqRef><ReqRef
- Id="b9721346-42ac-4a79-8f62-10d5ff6a5abb"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2d7ddca6-5e75-4caf-a9cd-3586b20e5b6a"
->
-</ReqRef><ReqRef
- Id="1e7f3c89-d89b-4d31-b758-514c92ae3bf1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="47a6ecc9-9e7e-403c-80ee-4a8dde58949a"
->
-</ReqRef><ReqRef
- Id="aba0e684-4967-4fc6-850e-d080a2909bc5"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6235a17c-27bc-4bfa-ac67-dde5ba1ae340"
->
-</ReqRef><ReqRef
- Id="28015708-3b6f-4bfb-87a2-4901cf481c50"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1d6af73d-7732-40f6-a19e-0fb8843d1766"
->
-</ReqRef><ReqRef
- Id="414a7ad9-32f1-4118-b34f-18656d60445f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="014f5ea7-4a22-41b9-978b-e558ac8c98a5"
->
-</ReqRef><ReqRef
- Id="2812be46-6d39-4894-be55-c728964a7c49"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d0870146-e7b9-4677-9254-54c747cadca6"
->
-</ReqRef><Comment>Actions to reset the data entry options upon leaving state S10</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Implemented="TRUE"
- Name="Cancel DMI input requests"
- Guid="7227be0b-4eb7-48cc-957e-0fb861292fab"
+ Name="Driver selected override"
+ Guid="f3bbc868-40da-461e-b97a-e551bed5f24a"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
-<Action
- Guid="44d5b949-e56c-4db5-888d-5bf8d1757150"
->DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.Disable()</Action><Action
- Guid="c3eb797f-cdda-4842-97dd-ba697f8dd605"
->DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.Disable()</Action><Action
- Guid="c487150b-f3a6-4ae1-9293-049b58b096f9"
->DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.Disable()</Action><Action
- Guid="2538a003-68f5-48d1-927d-d5d3aa7b5d26"
->DMI.MasterDMI().In_Start.InputInformation.Disable()</Action><Action
- Guid="f9d715f4-3bc8-4161-9869-b5c42e708111"
->DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.Disable()</Action><Action
- Guid="3faf2dd7-45fa-40b8-966f-f206552cb0f9"
->DMI.MasterDMI().In_NonLeadingRequest.InputInformation.Disable()</Action><Action
- Guid="28a3453f-a59a-46eb-a76f-b672c9f3c4b2"
->DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action><Action
- Guid="ee563fbd-36f5-4979-8fe7-260fd7fa2414"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.Disable()</Action></Actions>
+</Actions>
 </RuleCondition></Conditions>
 </Rule></LeaveAction>
 </State><State
@@ -6001,10 +5977,10 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Allow override for states S10 and S20"
+ Name="Propose override for states S10 and S20"
  Guid="c9ee8de7-2b98-4b64-9126-b8c58c5b84fe"
 >
-<Comment>Enable override only in states S10 and S20</Comment>
+<Comment>Propose override only in states S10 and S20</Comment>
 <PreConditions>
 <PreCondition
  Guid="7e8aca9e-bed4-4228-a2b5-d53dc47080f8"
@@ -6012,80 +5988,9 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
  Guid="e5583ad4-e0b3-48b8-968c-2ff42b9ff8df"
 >Kernel.TrainData.TrainData.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
-</Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Allow override"
- Guid="e4ce4dbe-532b-4a82-93f2-dc0ccdb761ea"
->
-<Comment>Allow override</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Driver selected Override"
- Guid="73e660b9-f79f-42c2-959a-b1aa2f8e884e"
->
-<ReqRef
- Id="ea9d2d52-6bdb-4a6e-9836-53be43a10271"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e51ea05b-31db-43a5-a193-667ee060ebaf"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="550b9573-3395-4c22-a180-c243c8042fac"
->DMI.MasterDMI().In_OverrideRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
-<Actions>
 <Action
- Guid="0a1836c1-218e-4000-9fb8-cbbcf0eed705"
->DMI.MasterDMI().In_OverrideRequest.InputInformation.Disable()</Action><Action
- Guid="2f1888d3-498c-42e6-bce6-a20108245259"
->HandleModeChange &lt;- Override</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Check position validity"
- Guid="89c9e6f1-3b82-4093-992f-8d03149f3472"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Invalid position"
- Guid="f694dbd5-596a-450d-abab-e0404221cdb6"
->
-<PreConditions>
-<PreCondition
- Guid="0268e2fd-6bf0-4239-8746-54f92664f56a"
->TrainPosition.Position.DataState == Default.DataState.Invalid</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="145d3b3a-2ecc-42c2-9a6a-3141c7304309"
->TrainPosition.Position.DataState &lt;- Default.DataState.Unknown</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Override not yet proposed to driver"
- Guid="1a58ffff-91cd-49e5-95bc-410c925e1edf"
->
-<PreConditions>
-<PreCondition
- Guid="696a92b3-117e-4908-9145-3c17a8f193de"
->DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="c411416d-7cd7-478a-b5f4-22a11a609f78"
+ Guid="05cd468b-cd97-4e44-8932-f2bcfe89a0d7"
 >DMI.MasterDMI().In_OverrideRequest.InitiateRequest()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Override is not available for the other states of the state machine"
@@ -9873,7 +9778,138 @@ The report is handled in the EURORADIO namespace</Comment>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="98268028-aac4-4c46-b113-a5e640ca5c8d"
 >
-</ReqRef></StateMachine></State><State
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="End override"
+ Guid="459b6728-145f-4a43-b3a5-6e9e62fec8b6"
+>
+<ReqRef
+ Id="772e0087-dcb8-45bf-a888-56863cd592af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="576b0867-46ab-4c9e-b254-470759ee37c9"
+>
+</ReqRef><ReqRef
+ Id="c9c7c7f3-3d1c-42b1-b80c-061de2d83f8e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="75fdbfc1-7e12-46cb-80a4-be1ddcafd81f"
+>
+</ReqRef><Comment>When any of the following occur, the override function is ended:
+the time/distance to run with override active is exceeded
+the former EOA is passed with the active BTM antenna
+the train overpasses the maximum allowed distance to run in SR</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Max time/dist exceeded"
+ Guid="01c24176-1799-4de1-a467-a404cc9cb2e6"
+>
+<ReqRef
+ Id="8cf2cb63-f4b5-47e6-8f30-09f773417468"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cbb11da2-aab1-47fb-ab9c-cae91a5d0771"
+>
+</ReqRef><ReqRef
+ Id="53125a9b-26fb-4d1d-bc8f-0e7ab8e929ee"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fcaa66f8-b2f2-4125-9f5f-9a2f68855fe1"
+>
+</ReqRef><Comment>If the maximum time/distance to run with override active are exceeded, the override will end.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="6eb0fb0e-c294-4570-b6fd-d5eaaeb351e6"
+>DateAndTime.CurrentTime &gt; OverrideSupervision.Time
+  OR  
+Odometry.NominalDistance &gt; OverrideSupervision.Location</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5c90190f-97b9-4212-afbe-5e0fc175eadc"
+>THIS &lt;- NoProcedure</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Former EOA passed"
+ Guid="dd1e6919-605f-4646-9ea0-8210dc08a70f"
+>
+<ReqRef
+ Id="89900100-9bcf-431a-af98-adc2b2350eea"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="504eab9a-ccb5-48e0-a328-c6fa5fe0ec51"
+>
+</ReqRef><Comment>If the former EOA is overpassed, the override will end.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="eead167b-1d92-4209-89a8-4d46d6a60d05"
+>Mode not in [Mode.UN, Mode.SN]
+  AND  
+OverrideSupervision.FormerEOA &lt; BTM.AntennaPosition(DistanceInterval.Min)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="67ae36be-5bd9-4e9b-8d8a-2842068e454c"
+>THIS &lt;- NoProcedure</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Train overpasses max dist to run in SR"
+ Guid="65af4354-9251-44a0-8a10-0d7e13665781"
+>
+<Comment>If the maximum distance to run in SR mode is exceeded, the override will end.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="7e7add7b-abc7-4cfc-af16-a6fbb11b1e39"
+>Mode not in [Mode.UN, Mode.SN]
+  AND  
+TrainPosition.DistanceRunInSR(DistanceInterval.Nom) &gt; StaffResponsible.DistanceToRun()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="192f8825-d3ec-42a6-80c0-9875a6d04ff0"
+>THIS &lt;- NoProcedure</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</StateMachine><EnterAction>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Enter action"
+ Guid="f7ff0408-5fbe-4d93-a2da-869aaaab03fe"
+>
+<ReqRef
+ Id="8cf2cb63-f4b5-47e6-8f30-09f773417468"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="91adc192-6b48-4cf1-a517-0ce50cb2dd72"
+>
+</ReqRef><ReqRef
+ Id="53125a9b-26fb-4d1d-bc8f-0e7ab8e929ee"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="36fa4220-e0b3-41e8-a9d2-4c6060065a1d"
+>
+</ReqRef><ReqRef
+ Id="772e0087-dcb8-45bf-a888-56863cd592af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="136f294b-fec3-4d76-9b38-98844238deb5"
+>
+</ReqRef><Comment>Action to execute when Override is entered.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Keep time/position"
+ Guid="818a83cf-a514-4750-97fb-fb63cd3cf4b3"
+>
+<Comment>When the override function is started, keep track of the time and the train&apos;s position.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="50a004ec-46ec-4689-a29b-ad545f58ee5d"
+>OverrideSupervision &lt;- OverrideStruct{
+    Time =&gt; DateAndTime.CurrentTime + NationalValues.ApplicableNationalValues.Value.MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered,
+    Location =&gt; Odometry.NominalDistance + NationalValues.ApplicableNationalValues.Value.DistForTrainTripSuppressionWhenOverrideIsTriggered,
+    FormerEOA =&gt; MA.ClosestEOA().Location
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></EnterAction>
+</State><State
  X="30"
  Y="60"
  Width="380"
@@ -11721,6 +11757,63 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 >REMOVE FIRST X == Command IN ServiceBrakeCommands</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ X="140"
+ Y="210"
+ Width="100"
+ Height="50"
+ Name="EntryInOverride"
+ Guid="ed94cf2e-a14c-45bd-8258-bca590c0bf58"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Delete train position in SoM"
+ Guid="6dce938d-d516-44be-ab40-1546e1ef1d8e"
+>
+<ReqRef
+ Id="ea9d2d52-6bdb-4a6e-9836-53be43a10271"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f36a0c7b-f5bb-4f3a-b84b-9776cdc78423"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Delete train position in SoM"
+ Guid="21f38b96-59db-4282-a0ef-c8ecbaaea010"
+>
+<PreConditions>
+<PreCondition
+ Guid="233d466f-c13c-48ce-b531-3f6d6409cf04"
+>TrainData.TrainData.DataState == DataState.Valid</PreCondition><PreCondition
+ Guid="3f8076a9-083b-45f2-8b1e-a94cdecf7ee6"
+>HandleModeChange in [HandleModeChangeSM.StartOfMission.S10, HandleModeChangeSM.StartOfMission.S20]</PreCondition><PreCondition
+ Guid="54366b06-846d-4f54-9579-7705393fafe6"
+>TrainPosition.Position.DataState == Default.DataState.Invalid</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e4a4be8d-1fcb-4ea1-945a-bbb90d84c8ad"
+>TrainPosition.Position.DataState &lt;- Default.DataState.Unknown</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Start Override"
+ Guid="320bf327-4cdf-4db7-90c9-adcb5eb8e75a"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Start Override"
+ Guid="7ef77041-24a9-43ef-9bba-d11046e37500"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="45c6dd0a-b525-4d63-b8ac-302a43f9eaed"
+>HandleModeChange &lt;- HandleModeChangeSM.Override</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -11728,7 +11821,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  DefaultValue=""
  VariableMode="Internal"
  X="800"
- Y="350"
+ Y="360"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -11813,7 +11906,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  DefaultValue=""
  VariableMode="Internal"
  X="800"
- Y="290"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12030,7 +12123,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  DefaultValue=""
  VariableMode="Internal"
  X="800"
- Y="410"
+ Y="420"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12099,7 +12192,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  DefaultValue=""
  VariableMode="Internal"
  X="800"
- Y="470"
+ Y="480"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12141,6 +12234,17 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Guid="61248a07-d7a9-462c-b84e-8b9fbf6afbc0"
 >
 <Comment>The list of current events that trigger the service brake.</Comment>
+</Variable><Variable
+ Type="OverrideStruct"
+ DefaultValue=""
+ VariableMode="Internal"
+ X="800"
+ Y="240"
+ Width="100"
+ Height="50"
+ Name="OverrideSupervision"
+ Guid="cf58c50f-847f-4c1c-a73d-58f17831de7c"
+>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -12366,6 +12470,8 @@ When the rear end of the train passes the start of the profiles, the message is 
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ X="820"
+ Y="790"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12441,20 +12547,6 @@ Mode == Mode.SH</PreCondition></PreConditions>
 <Action
  Guid="bab8de6a-7a28-4649-98e6-e6e684ccc6f2"
 >DMI.MasterDMI().In_OverrideRequest.InitiateRequest()</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Accept the driver&apos;s response"
- Guid="70041744-24fb-432f-8da1-0c18b8ddab30"
->
-<Comment>When the driver pressed the &quot;Override&quot; button, the procedure is triggered.</Comment>
-<PreConditions>
-<PreCondition
- Guid="c3d34939-8730-4858-9a80-7cbe26ec1e36"
->DMI.MasterDMI().In_OverrideRequest.InputInformation.DriverAnswered</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="9671b9e3-b5c2-4c92-ae08-5647f5bd03bf"
->HandleModeChange &lt;- HandleModeChangeSM.Override</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

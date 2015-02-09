@@ -378,6 +378,16 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e8a1385c-eb2b-4802-a6bb-56933b4ceb92"
 >
+</ReqRef><ReqRef
+ Id="d932cea7-ce9f-4909-afff-2c36046cea2a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2efa10f3-1b18-4466-b094-b4d404011635"
+>
+</ReqRef><ReqRef
+ Id="772e0087-dcb8-45bf-a888-56863cd592af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="250c696b-ac8a-4198-bb31-4311ad622817"
+>
 </ReqRef><Comment>Handles reception of a packet &quot;Stop if in SR mode&quot;.</Comment>
 <Parameters>
 <Parameter
@@ -396,6 +406,30 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Name="Override active"
+ Guid="89a474df-0208-4696-8fdb-0b46115c5b24"
+>
+<ReqRef
+ Id="353d33b3-3a7a-4759-8b9b-62204429d75a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1c852c64-1b7c-4809-99ea-d6fea9bcd656"
+>
+</ReqRef><ReqRef
+ Id="1503ba8c-af0d-46c6-b258-a866be408e80"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8146747c-a2b6-414c-9128-aa9edb39338a"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="c6ccbc54-4698-42e2-84cf-735584fc7270"
+>HandleModeChange in HandleModeChangeSM.Override</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="cfba8bf9-5231-4e99-acf5-5b104f9d1dde"
+>HandleModeChange &lt;- HandleModeChangeSM.NoProcedure</Action><Action
+ Guid="45832735-94b6-4547-8eb7-b67da242a248"
+>OverrideSupervision.FormerEOA &lt;- Default.BaseTypes.Distance.Infinity</Action></Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Handle packet"
  Guid="77e9d509-9333-4cfa-9903-271166cb80be"

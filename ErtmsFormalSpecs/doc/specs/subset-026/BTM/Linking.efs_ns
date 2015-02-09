@@ -1749,6 +1749,30 @@ Activate the service brake if a second linked BG in a row is missed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Name="Override active"
+ Guid="272b023c-4a15-4208-8a1d-4301d4d569e6"
+>
+<ReqRef
+ Id="f8000cfa-0807-4266-8df9-c687e29b4770"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="704cdf57-691a-44ed-9a9e-7b079a5cef51"
+>
+</ReqRef><ReqRef
+ Id="772e0087-dcb8-45bf-a888-56863cd592af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb530021-9a7d-4b85-b083-12e848f3f90c"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="61d3ebc3-1b74-4c14-a6a9-11aff089b045"
+>Kernel.Mode in [Mode.SH, Mode.SR]</PreCondition><PreCondition
+ Guid="88b9559e-185c-4355-bb44-804cd836e6bc"
+>Kernel.HandleModeChange in Kernel.HandleModeChangeSM.Override</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0e409f2a-e7a9-4709-a5cb-4b01b64496f1"
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.NoProcedure</Action></Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="In SH mode"
  Guid="5aa01674-ac6a-41a6-ad84-8971d1ae9e14"
