@@ -14,23 +14,28 @@
 // --
 // ------------------------------------------------------------------------------
 
-using System.Text;
-using System.Collections.Generic;
-using DataDictionary.Interpreter;
 using System;
+using System.Collections.Generic;
+using System.Text;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using Utils;
+using XmlBooster;
+using NameSpace = DataDictionary.Types.NameSpace;
+using StateMachine = DataDictionary.Types.StateMachine;
+using Structure = DataDictionary.Types.Structure;
+using Visitor = DataDictionary.Generated.Visitor;
+
 namespace DataDictionary
 {
-    public abstract class ModelElement : Generated.BaseModelElement
+    public abstract class ModelElement : BaseModelElement
     {
         /// <summary>
         /// Provides the EFS System in which this element belongs
         /// </summary>
         public EFSSystem EFSSystem
         {
-            get
-            {
-                return EFSSystem.INSTANCE;
-            }
+            get { return EFSSystem.INSTANCE; }
         }
 
         /// <summary>
@@ -38,21 +43,18 @@ namespace DataDictionary
         /// </summary>
         public Dictionary Dictionary
         {
-            get
-            {
-                return Utils.EnclosingFinder<Dictionary>.find(this);
-            }
+            get { return EnclosingFinder<Dictionary>.find(this); }
         }
 
         /// <summary>
         /// Adds a new element log attached to this model element
         /// </summary>
         /// <param name="log"></param>
-        public override void AddElementLog(Utils.ElementLog log)
+        public override void AddElementLog(ElementLog log)
         {
             if (!BeSilent)
             {
-                Parameter enclosingParameter = Utils.EnclosingFinder<Parameter>.find(this);
+                Parameter enclosingParameter = EnclosingFinder<Parameter>.find(this);
                 if (enclosingParameter != null)
                 {
                     log.Log = "In " + FullName + ":" + log.Log;
@@ -101,7 +103,7 @@ namespace DataDictionary
         {
             get
             {
-                ObjectFactory factory = (ObjectFactory)Generated.acceptor.getFactory();
+                ObjectFactory factory = (ObjectFactory) acceptor.getFactory();
                 if (string.IsNullOrEmpty(getGuid()))
                 {
                     EnsureGuid();
@@ -147,8 +149,8 @@ namespace DataDictionary
             {
                 string prefix = "";
 
-                Types.Structure structure1 = Utils.EnclosingFinder<Types.Structure>.find(this, true);
-                Types.Structure structure2 = Utils.EnclosingFinder<Types.Structure>.find(modelElement, true);
+                Structure structure1 = EnclosingFinder<Structure>.find(this, true);
+                Structure structure2 = EnclosingFinder<Structure>.find(modelElement, true);
                 if (structure1 != null)
                 {
                     if (structure2 != null)
@@ -157,7 +159,7 @@ namespace DataDictionary
                     }
                     else
                     {
-                        if (!(this is Types.Structure))
+                        if (!(this is Structure))
                         {
                             retVal = Name;
                             prefix = "";
@@ -170,16 +172,16 @@ namespace DataDictionary
                 }
                 else
                 {
-                    Types.StateMachine stateMachine1 = Utils.EnclosingFinder<Types.StateMachine>.find(this, true);
-                    Types.StateMachine stateMachine2 = Utils.EnclosingFinder<Types.StateMachine>.find(modelElement, true);
+                    StateMachine stateMachine1 = EnclosingFinder<StateMachine>.find(this, true);
+                    StateMachine stateMachine2 = EnclosingFinder<StateMachine>.find(modelElement, true);
                     if (stateMachine1 != null && stateMachine2 != null)
                     {
                         prefix = CommonPrefix(stateMachine1.FullName + ".", stateMachine2.FullName + ".");
                     }
                     else
                     {
-                        Types.NameSpace nameSpace1 = Utils.EnclosingFinder<Types.NameSpace>.find(this, true);
-                        Types.NameSpace nameSpace2 = Utils.EnclosingFinder<Types.NameSpace>.find(modelElement, true);
+                        NameSpace nameSpace1 = EnclosingFinder<NameSpace>.find(this, true);
+                        NameSpace nameSpace2 = EnclosingFinder<NameSpace>.find(modelElement, true);
 
                         if (nameSpace1 != null && nameSpace2 != null)
                         {
@@ -209,7 +211,7 @@ namespace DataDictionary
         {
             string retVal = "";
 
-            ReqRelated reqRelated = Utils.EnclosingFinder<ReqRelated>.find(this, true);
+            ReqRelated reqRelated = EnclosingFinder<ReqRelated>.find(this, true);
             if (reqRelated != null)
             {
                 retVal = reqRelated.RequirementDescription();
@@ -222,16 +224,16 @@ namespace DataDictionary
         /// <summary>
         /// Generates new GUID for the element
         /// </summary>
-        private class RegererateGuidVisitor : DataDictionary.Generated.Visitor
+        private class RegererateGuidVisitor : Visitor
         {
             /// <summary>
             /// Ensures that all elements have a new Guid
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(DataDictionary.Generated.BaseModelElement obj, bool visitSubNodes)
+            public override void visit(BaseModelElement obj, bool visitSubNodes)
             {
-                ModelElement element = (ModelElement)obj;
+                ModelElement element = (ModelElement) obj;
 
                 // Side effect : creates a new Guid if it is empty
                 element.setGuid(null);
@@ -249,10 +251,10 @@ namespace DataDictionary
         {
             ModelElement retVal = null;
 
-            XmlBooster.XmlBStringContext ctxt = new XmlBooster.XmlBStringContext(ToXMLString());
+            XmlBStringContext ctxt = new XmlBStringContext(ToXMLString());
             try
             {
-                retVal = DataDictionary.Generated.acceptor.accept(ctxt) as DataDictionary.ModelElement;
+                retVal = acceptor.accept(ctxt) as ModelElement;
                 RegererateGuidVisitor visitor = new RegererateGuidVisitor();
                 visitor.visit(retVal, true);
             }
@@ -305,11 +307,11 @@ namespace DataDictionary
             {
                 if (string.IsNullOrEmpty(expressionable.ExpressionText))
                 {
-                    retVal = TextualExplainUtilities.Pad("<Undefined expression or statement>", padlen);
+                    retVal = Pad("<Undefined expression or statement>", padlen);
                 }
                 else
                 {
-                    retVal = TextualExplainUtilities.Pad(expressionable.ExpressionText, padlen);
+                    retVal = Pad(expressionable.ExpressionText, padlen);
                 }
             }
 
@@ -366,7 +368,7 @@ namespace DataDictionary
             Namable namable = element as Namable;
             if (namable != null)
             {
-                retVal = TextualExplainUtilities.Pad("{\\cf11 // " + namable.Name + "}\\cf1\\par", padlen);
+                retVal = Pad("{\\cf11 // " + namable.Name + "}\\cf1\\par", padlen);
             }
 
             return retVal;
@@ -407,7 +409,11 @@ namespace DataDictionary
         /// <summary>
         /// The kind of opening brace
         /// </summary>
-        private enum BraceType { command, character };
+        private enum BraceType
+        {
+            command,
+            character
+        };
 
         /// <summary>
         /// Adds RTF prefixes and postfixes

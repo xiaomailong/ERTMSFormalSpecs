@@ -13,15 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary.Types;
+
 namespace GUI.ModelDiagram
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary;
-    using DataDictionary.Types;
-
     /// <summary>
     /// The boxes that represent a state machine
     /// </summary>
@@ -38,6 +34,9 @@ namespace GUI.ModelDiagram
         /// <summary>
         /// The name of the kind of type
         /// </summary>
-        public override string ModelName { get { return "State machine"; } }
+        public override string ModelName
+        {
+            get { return "State machine"; }
+        }
     }
 }

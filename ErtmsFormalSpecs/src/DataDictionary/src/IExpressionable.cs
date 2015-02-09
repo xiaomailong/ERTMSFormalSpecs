@@ -13,6 +13,9 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary.Interpreter;
+
 namespace DataDictionary
 {
     public interface IExpressionable
@@ -25,7 +28,7 @@ namespace DataDictionary
         /// <summary>
         /// The corresponding expression tree
         /// </summary>
-        Interpreter.InterpreterTreeNode Tree { get; }
+        InterpreterTreeNode Tree { get; }
 
         /// <summary>
         /// Indicates that the expression is valid for this IExpressionable
@@ -42,6 +45,6 @@ namespace DataDictionary
         /// <summary>
         /// Creates the tree according to the expression text
         /// </summary>
-        Interpreter.InterpreterTreeNode Compile();
+        InterpreterTreeNode Compile();
     }
 }

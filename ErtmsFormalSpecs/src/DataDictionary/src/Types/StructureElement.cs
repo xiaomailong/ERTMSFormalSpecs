@@ -13,11 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections;
 using System.Collections.Generic;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using Utils;
 
 namespace DataDictionary.Types
 {
-    public class StructureElement : Generated.StructureElement, ITypedElement, Utils.ISubDeclarator, TextualExplain, IDefaultValueElement
+    public class StructureElement : Generated.StructureElement, ITypedElement, ISubDeclarator, TextualExplain, IDefaultValueElement
     {
         public NameSpace NameSpace
         {
@@ -27,7 +33,7 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides the mode of the structure element
         /// </summary>
-        public DataDictionary.Generated.acceptor.VariableModeEnumType Mode
+        public acceptor.VariableModeEnumType Mode
         {
             get { return getMode(); }
 
@@ -44,11 +50,11 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides all the values that can be stored in this structure
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements
+        public Dictionary<string, List<INamable>> DeclaredElements
         {
             get
             {
-                Dictionary<string, List<Utils.INamable>> retVal = new Dictionary<string, List<Utils.INamable>>();
+                Dictionary<string, List<INamable>> retVal = new Dictionary<string, List<INamable>>();
 
                 if (Type is Structure)
                 {
@@ -70,7 +76,7 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
             if (Type is Structure)
             {
@@ -84,10 +90,7 @@ namespace DataDictionary.Types
         /// </summary>
         public string TypeName
         {
-            get
-            {
-                return getTypeName();
-            }
+            get { return getTypeName(); }
             set
             {
                 Type = null;
@@ -115,10 +118,10 @@ namespace DataDictionary.Types
                 if (retVal == null)
                 {
                     // Find the corresponding state machine in the structure's state machines
-                    Structure structure = (Structure)Enclosing;
-                    List<Utils.INamable> tmp = new List<Utils.INamable>();
+                    Structure structure = (Structure) Enclosing;
+                    List<INamable> tmp = new List<INamable>();
                     structure.Find(getTypeName(), tmp);
-                    foreach (Utils.INamable namable in tmp)
+                    foreach (INamable namable in tmp)
                     {
                         StateMachine stateMachine = namable as StateMachine;
                         if (stateMachine != null)
@@ -155,13 +158,13 @@ namespace DataDictionary.Types
         /// </summary>
         public Structure Structure
         {
-            get { return (Structure)getFather(); }
+            get { return (Structure) getFather(); }
         }
 
         /// <summary>
         /// The enclosing collection
         /// </summary>
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get { return Structure.Elements; }
         }
@@ -198,8 +201,9 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides the expression tree associated to this action's expression
         /// </summary>
-        private Interpreter.Expression __expression;
-        public Interpreter.Expression Expression
+        private Expression __expression;
+
+        public Expression Expression
         {
             get
             {
@@ -210,13 +214,13 @@ namespace DataDictionary.Types
 
                 return __expression;
             }
-            set
-            {
-                __expression = value;
-            }
+            set { __expression = value; }
         }
 
-        public Interpreter.InterpreterTreeNode Tree { get { return Expression; } }
+        public InterpreterTreeNode Tree
+        {
+            get { return Expression; }
+        }
 
         /// <summary>
         /// Clears the expression tree to ensure new compilation
@@ -229,7 +233,7 @@ namespace DataDictionary.Types
         /// <summary>
         /// Creates the tree according to the expression text
         /// </summary>
-        public Interpreter.InterpreterTreeNode Compile()
+        public InterpreterTreeNode Compile()
         {
             // Side effect, builds the statement if it is not already built
             return Tree;
@@ -245,7 +249,7 @@ namespace DataDictionary.Types
         {
             bool retVal = false;
 
-            Interpreter.Expression tree = EFSSystem.Parser.Expression(this, expression, null, false, null, true);
+            Expression tree = EFSSystem.Parser.Expression(this, expression, null, false, null, true);
             retVal = tree != null;
 
             return retVal;
@@ -254,11 +258,11 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides the variable's default value
         /// </summary>
-        public Values.IValue DefaultValue
+        public IValue DefaultValue
         {
             get
             {
-                Values.IValue retVal = null;
+                IValue retVal = null;
 
                 if (Type != null)
                 {
@@ -274,7 +278,7 @@ namespace DataDictionary.Types
                         {
                             if (Expression != null)
                             {
-                                retVal = Expression.GetValue(new Interpreter.InterpretationContext(this), null);
+                                retVal = Expression.GetValue(new InterpretationContext(this), null);
                                 if (retVal != null && !Type.Match(retVal.Type))
                                 {
                                     AddError("Default value type (" + retVal.Type.Name + ")does not match variable type (" + Type.Name + ")");
@@ -302,7 +306,7 @@ namespace DataDictionary.Types
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             base.AddModelElement(element);
         }
@@ -321,7 +325,7 @@ namespace DataDictionary.Types
             {
                 typeName = Type.FullName;
             }
-            
+
             retVal += TextualExplainUtilities.Pad(Name + " : " + typeName, indentLevel);
 
             return retVal;
@@ -338,6 +342,5 @@ namespace DataDictionary.Types
 
             return TextualExplainUtilities.Encapsule(retVal);
         }
-
     }
 }

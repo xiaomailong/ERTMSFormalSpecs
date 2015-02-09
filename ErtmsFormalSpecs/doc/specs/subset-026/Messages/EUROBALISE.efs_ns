@@ -238,7 +238,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Messages.EUROBALISE.SubStructure1"
+ TypeName="SubStructure1"
  Default="[]"
  Y="60"
  Width="100"
@@ -258,4 +258,207 @@
  Guid="cb0f6e84-e35a-453c-9663-99182e861bc0"
 >
 </ReqRef></Collection></Collections>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Width="100"
+ Height="50"
+ Name="CheckMessageValues"
+ Guid="0abeebf3-977a-4433-92ba-16e7c7d138c4"
+>
+<Comment>Checks the values in a structure of type EUROBALISE.Message</Comment>
+<Parameters>
+<Parameter
+ Type="EUROBALISE.Message"
+ Name="struct"
+ Guid="7bd3ddad-068a-46a3-9ca4-90a58b912ad3"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="c5b27a0b-bf7a-42a6-a455-e9dfd9f63b6c"
+>
+<PreConditions>
+<PreCondition
+ Guid="be95fabc-90f2-4352-a813-9f738c3745a2"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.Q_UPDOWN invalid"
+ Guid="808ab652-fb81-4130-a886-4bf420e46954"
+>
+<PreConditions>
+<PreCondition
+ Guid="89228ac8-091a-4334-b983-4f18b02b0b22"
+>struct.Q_UPDOWN &lt; 0
+  AND  
+struct.Q_UPDOWN &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.M_VERSION invalid"
+ Guid="442abd37-e8c4-47ca-abfd-02ab44e80349"
+>
+<PreConditions>
+<PreCondition
+ Guid="9c01ab11-28ec-4141-80d5-898967f44074"
+>struct.M_VERSION &lt; 0
+  AND  
+struct.M_VERSION &gt;= 128
+  AND  
+struct.M_VERSION &lt; 18
+  AND  
+struct.M_VERSION &gt; 31
+  AND  
+struct.M_VERSION != 32</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_MEDIA invalid"
+ Guid="96bde99a-d794-4a6a-aea6-6b376b03a0a2"
+>
+<PreConditions>
+<PreCondition
+ Guid="d24f69d1-6047-4059-8988-813c5a1151ee"
+>struct.Q_MEDIA &lt; 0
+  AND  
+struct.Q_MEDIA &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.N_PIG invalid"
+ Guid="c23ad40e-5986-412c-bf49-750dd9e00d9b"
+>
+<PreConditions>
+<PreCondition
+ Guid="3393e1c9-dacd-48d2-a6df-4b858f2f31ee"
+>struct.N_PIG &lt; 0
+  AND  
+struct.N_PIG &gt;= 8</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.N_TOTAL invalid"
+ Guid="fbc27bfc-5d16-431b-a4cd-2f00f5451ff0"
+>
+<PreConditions>
+<PreCondition
+ Guid="56fa8b1b-0507-477a-9f36-97891871be03"
+>struct.N_TOTAL &lt; 0
+  AND  
+struct.N_TOTAL &gt;= 8</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.M_DUP invalid"
+ Guid="430487ef-4e34-4a75-9496-f9c0b3a2b0c5"
+>
+<PreConditions>
+<PreCondition
+ Guid="a4ffc8b0-22b1-45d5-9b59-3a076be81d9b"
+>struct.M_DUP &lt; 0
+  AND  
+struct.M_DUP &gt;= 4
+  AND  
+struct.M_DUP != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.M_MCOUNT invalid"
+ Guid="67817cf0-f7f5-4ecc-b645-e08eacc42389"
+>
+<PreConditions>
+<PreCondition
+ Guid="79b27259-ab4f-48a5-9a74-ddc26268613f"
+>struct.M_MCOUNT &lt; 0
+  AND  
+struct.M_MCOUNT &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_C invalid"
+ Guid="e15ed1b0-ed3f-46ec-8f13-2c404fd7ae3a"
+>
+<PreConditions>
+<PreCondition
+ Guid="45e0039f-cffd-4eaa-8c28-d38c6482de68"
+>struct.NID_C &lt; 0
+  AND  
+struct.NID_C &gt;= 1024</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_BG invalid"
+ Guid="9fe103f3-97f5-4968-a962-6d0cad971ef9"
+>
+<PreConditions>
+<PreCondition
+ Guid="c4d91b4b-757e-4912-bfd7-eacc9bccce48"
+>struct.NID_BG &lt; 0
+  AND  
+struct.NID_BG &gt;= 16384</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_LINK invalid"
+ Guid="99313de8-dd25-47a1-94d6-66abb2017eab"
+>
+<PreConditions>
+<PreCondition
+ Guid="e9421ced-0e87-4d5f-8d96-fdabee2098d3"
+>struct.Q_LINK &lt; 0
+  AND  
+struct.Q_LINK &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Sequence1 invalid"
+ Guid="213cc497-a8c1-4b79-bec6-9dd58980f8b1"
+>
+<PreConditions>
+<PreCondition
+ Guid="36c2f222-6b45-4d3d-b23a-2da2385ec41c"
+>THERE_IS X IN struct.Sequence1 | NOT EUROBALISE.CheckSubStructure1Values(X)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="17f528c2-67f9-40cc-8905-4e14a2c256d6"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Name="CheckSubStructure1Values"
+ Guid="5a955d42-f8ff-45d0-b661-a79491503cd9"
+>
+<Comment>Checks the values in a structure of type EUROBALISE.SubStructure1</Comment>
+<Parameters>
+<Parameter
+ Type="EUROBALISE.SubStructure1"
+ Name="struct"
+ Guid="8a0d0b6b-52a0-4719-ab36-80cf468bb581"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SubStructure1 empty"
+ Guid="7c4fd01a-a82f-43fd-9bd5-425b9fc9cd0e"
+>
+<PreConditions>
+<PreCondition
+ Guid="a385d5d9-b366-4956-8a7b-168d5d7828f7"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="TRACK_TO_TRAIN invalid"
+ Guid="e7be760b-bb1f-4dba-adb9-2952daf08db6"
+>
+<PreConditions>
+<PreCondition
+ Guid="14973cd5-6754-4db1-ac6f-fdfd0cb3ae3d"
+>NOT Messages.PACKET.TRACK_TO_TRAIN.CheckMessageValues(struct.TRACK_TO_TRAIN)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="aea205b4-aa24-42ff-be81-68b7edb36eb0"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

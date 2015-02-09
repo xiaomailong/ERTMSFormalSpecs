@@ -13,9 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.Collections.Generic;
+
 using System;
+using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Structure = DataDictionary.Types.Structure;
+using Type = DataDictionary.Types.Type;
+using Variable = DataDictionary.Variables.Variable;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -41,13 +49,13 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public AddToDate(EFSSystem efsSystem)
             : base(efsSystem, "AddToDate")
         {
-            StartDate = (Parameter)Generated.acceptor.getFactory().createParameter();
+            StartDate = (Parameter) acceptor.getFactory().createParameter();
             StartDate.Name = "StartDate";
             StartDate.Type = EFSSystem.AnyType;
             StartDate.setFather(this);
             FormalParameters.Add(StartDate);
 
-            Increment = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Increment = (Parameter) acceptor.getFactory().createParameter();
             Increment.Name = "Increment";
             Increment.Type = EFSSystem.DoubleType;
             Increment.setFather(this);
@@ -57,19 +65,18 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// The return type of the function
         /// </summary>
-        public override Types.Type ReturnType
+        public override Type ReturnType
         {
             get { return EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default"), "Default.DateAndTime"); }
         }
 
 
-        private Values.StructureValue GetStructFromParam(Parameter parameter)
+        private StructureValue GetStructFromParam(Parameter parameter)
         {
-            Values.StructureValue retVal = null;
+            StructureValue retVal = null;
 
             if (parameter != null)
             {
-
             }
 
             return retVal;
@@ -81,12 +88,12 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="structure"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        private int GetIntValue(Values.StructureValue structure, string name)
+        private int GetIntValue(StructureValue structure, string name)
         {
             int retVal = 0;
 
-            Variables.Variable variable = structure.Val[name] as Variables.Variable;
-            Values.IntValue intValue = variable.Value as Values.IntValue;
+            Variable variable = structure.Val[name] as Variable;
+            IntValue intValue = variable.Value as IntValue;
             retVal = (int) intValue.Val;
 
             return retVal;
@@ -97,9 +104,9 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// </summary>
         /// <param name="value">The int value to be converted</param>
         /// <returns></returns>
-        private Values.IntValue ToEFSInt(int value)
+        private IntValue ToEFSInt(int value)
         {
-            return new Values.IntValue(new Types.IntegerType(EFSSystem), value);
+            return new IntValue(new IntegerType(EFSSystem), value);
         }
 
         /// <summary>
@@ -108,11 +115,11 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="value">The values that will go into the structure</param>
         /// <param name="structureType">The structure type</param>
         /// <returns></returns>
-        private Values.IValue GetEFSDate(DateTime value, Types.Structure structureType)
+        private IValue GetEFSDate(DateTime value, Structure structureType)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
-            Values.StructureValue structure = new Values.StructureValue(structureType);
+            StructureValue structure = new StructureValue(structureType);
 
             structure.SubVariables["Year"].Value = ToEFSInt(value.Year);
             structure.SubVariables["Month"].Value = ToEFSInt(value.Month);
@@ -134,14 +141,14 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             int token = context.LocalScope.PushContext();
             AssignParameters(context, actuals);
 
-            Values.StructureValue startDate = context.findOnStack(StartDate).Value as Values.StructureValue;
+            StructureValue startDate = context.findOnStack(StartDate).Value as StructureValue;
             if (startDate != null)
             {
                 int year = GetIntValue(startDate, "Year");
@@ -152,20 +159,19 @@ namespace DataDictionary.Functions.PredefinedFunctions
                 int second = GetIntValue(startDate, "Second");
                 int tts = GetIntValue(startDate, "TTS");
 
-                Values.DoubleValue addedTime = context.findOnStack(Increment).Value as Values.DoubleValue;
+                DoubleValue addedTime = context.findOnStack(Increment).Value as DoubleValue;
                 if (addedTime != null)
                 {
-                    System.DateTime start = new System.DateTime(year, month, day, hour, minute, second, tts);
-                    System.DateTime currentTime = start.AddSeconds((double)addedTime.Val);
+                    DateTime start = new DateTime(year, month, day, hour, minute, second, tts);
+                    DateTime currentTime = start.AddSeconds((double) addedTime.Val);
 
-                    retVal = GetEFSDate(currentTime, startDate.Type as Types.Structure);
+                    retVal = GetEFSDate(currentTime, startDate.Type as Structure);
                 }
             }
-            
+
             context.LocalScope.PopContext(token);
 
             return retVal;
         }
-
     }
 }

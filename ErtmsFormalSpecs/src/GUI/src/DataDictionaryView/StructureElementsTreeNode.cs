@@ -13,9 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.SpecificationView;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using ReqRef = DataDictionary.ReqRef;
+using Structure = DataDictionary.Types.Structure;
+using StructureElement = DataDictionary.Types.StructureElement;
 
 namespace GUI.DataDictionaryView
 {
@@ -25,7 +32,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public StructureElementsTreeNode(DataDictionary.Types.Structure item, bool buildSubNodes)
+        public StructureElementsTreeNode(Structure item, bool buildSubNodes)
             : base(item, buildSubNodes, "Sub elements", true, false)
         {
         }
@@ -38,7 +45,7 @@ namespace GUI.DataDictionaryView
         {
             Nodes.Clear();
 
-            foreach (DataDictionary.Types.StructureElement structureElement in Item.Elements)
+            foreach (StructureElement structureElement in Item.Elements)
             {
                 Nodes.Add(new StructureElementTreeNode(structureElement, buildSubNodes));
             }
@@ -50,7 +57,7 @@ namespace GUI.DataDictionaryView
         /// Adds a structure element to the model
         /// </summary>
         /// <param name="element"></param>
-        public void AddElement(DataDictionary.Types.StructureElement element)
+        public void AddElement(StructureElement element)
         {
             Item.appendElements(element);
             Nodes.Add(new StructureElementTreeNode(element, true));
@@ -59,7 +66,7 @@ namespace GUI.DataDictionaryView
 
         private void AddStructureElementHandler(object sender, EventArgs args)
         {
-            DataDictionary.Types.StructureElement element = (DataDictionary.Types.StructureElement)DataDictionary.Generated.acceptor.getFactory().createStructureElement();
+            StructureElement element = (StructureElement) acceptor.getFactory().createStructureElement();
             element.Name = "<Element" + (GetNodeCount(false) + 1) + ">";
             AddElement(element);
         }
@@ -88,25 +95,24 @@ namespace GUI.DataDictionaryView
             if (SourceNode is StructureElementTreeNode)
             {
                 StructureElementTreeNode structureElementTreeNode = SourceNode as StructureElementTreeNode;
-                DataDictionary.Types.StructureElement element = structureElementTreeNode.Item;
+                StructureElement element = structureElementTreeNode.Item;
 
                 structureElementTreeNode.Delete();
                 AddElement(element);
             }
-            else if (SourceNode is SpecificationView.ParagraphTreeNode)
+            else if (SourceNode is ParagraphTreeNode)
             {
-                SpecificationView.ParagraphTreeNode node = SourceNode as SpecificationView.ParagraphTreeNode;
-                DataDictionary.Specification.Paragraph paragaph = node.Item;
+                ParagraphTreeNode node = SourceNode as ParagraphTreeNode;
+                Paragraph paragaph = node.Item;
 
-                DataDictionary.Types.StructureElement element = (DataDictionary.Types.StructureElement)DataDictionary.Generated.acceptor.getFactory().createStructureElement();
+                StructureElement element = (StructureElement) acceptor.getFactory().createStructureElement();
                 element.Name = paragaph.Name;
 
-                DataDictionary.ReqRef reqRef = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
+                ReqRef reqRef = (ReqRef) acceptor.getFactory().createReqRef();
                 reqRef.Name = paragaph.FullId;
                 element.appendRequirements(reqRef);
                 AddElement(element);
             }
         }
-
     }
 }

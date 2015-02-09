@@ -1,4 +1,3 @@
-using System;
 // ------------------------------------------------------------------------------
 // -- Copyright ERTMS Solutions
 // -- Licensed under the EUPL V.1.1
@@ -14,8 +13,20 @@ using System;
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
+using DataDictionary.Interpreter.Statement;
+using DataDictionary.Tests.Runner;
+using DataDictionary.Types;
+using Utils;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Step = DataDictionary.Tests.Step;
+using Structure = DataDictionary.Types.Structure;
+using SubStep = DataDictionary.Tests.SubStep;
+using Translation = DataDictionary.Tests.Translations.Translation;
 
 namespace DataDictionary.Rules
 {
@@ -48,9 +59,9 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Provides the expression tree associated to this action's expression
         /// </summary>
-        private Interpreter.Statement.Statement statement;
+        private Statement statement;
 
-        public Interpreter.Statement.Statement Statement
+        public Statement Statement
         {
             get
             {
@@ -60,13 +71,13 @@ namespace DataDictionary.Rules
                 }
                 return statement;
             }
-            set
-            {
-                statement = value;
-            }
+            set { statement = value; }
         }
 
-        public Interpreter.InterpreterTreeNode Tree { get { return Statement; } }
+        public InterpreterTreeNode Tree
+        {
+            get { return Statement; }
+        }
 
         /// <summary>
         /// Clears the statement tree to ensure new compilation
@@ -79,7 +90,7 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Creates the tree according to the statement text
         /// </summary>
-        public Interpreter.InterpreterTreeNode Compile()
+        public InterpreterTreeNode Compile()
         {
             // Side effect, builds the statement if it is not already built
             return Tree;
@@ -94,7 +105,7 @@ namespace DataDictionary.Rules
         {
             bool retVal = false;
 
-            Interpreter.Statement.Statement tree = EFSSystem.Parser.Statement(this, expression, true);
+            Statement tree = EFSSystem.Parser.Statement(this, expression, true);
             retVal = tree != null;
 
             return retVal;
@@ -119,15 +130,15 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Finds the enclosing structure
         /// </summary>
-        public Types.Structure EnclosingStructure
+        public Structure EnclosingStructure
         {
-            get { return Utils.EnclosingFinder<Types.Structure>.find(this); }
+            get { return EnclosingFinder<Structure>.find(this); }
         }
 
         /// <summary>
         /// Finds the enclosing namespace
         /// </summary>
-        public Types.NameSpace NameSpace
+        public NameSpace NameSpace
         {
             get { return EnclosingNameSpaceFinder.find(this); }
         }
@@ -135,15 +146,15 @@ namespace DataDictionary.Rules
         /// <summary>
         /// The enclosing sub-step, if any
         /// </summary>
-        public Tests.SubStep SubStep
+        public SubStep SubStep
         {
-            get { return Enclosing as Tests.SubStep; }
+            get { return Enclosing as SubStep; }
         }
 
         /// <summary>
         /// The enclosing step, if any
         /// </summary>
-        public Tests.Step Step
+        public Step Step
         {
             get { return SubStep.Step; }
         }
@@ -151,11 +162,11 @@ namespace DataDictionary.Rules
         /// <summary>
         /// The enclosing translation, if any
         /// </summary>
-        public Tests.Translations.Translation Translation
+        public Translation Translation
         {
             get
             {
-                Tests.Translations.Translation result = null;
+                Translation result = null;
                 if (SubStep != null)
                 {
                     result = SubStep.Translation;
@@ -164,11 +175,11 @@ namespace DataDictionary.Rules
             }
         }
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
-                System.Collections.ArrayList retVal = null;
+                ArrayList retVal = null;
 
                 if (RuleCondition != null)
                 {
@@ -186,11 +197,11 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Provides the list of update statements induced by this action
         /// </summary>
-        public List<Interpreter.Statement.VariableUpdateStatement> UpdateStatements
+        public List<VariableUpdateStatement> UpdateStatements
         {
             get
             {
-                List<Interpreter.Statement.VariableUpdateStatement> retVal = new List<Interpreter.Statement.VariableUpdateStatement>();
+                List<VariableUpdateStatement> retVal = new List<VariableUpdateStatement>();
 
                 if (Statement != null)
                 {
@@ -210,7 +221,7 @@ namespace DataDictionary.Rules
         /// </summary>
         /// <param name="variable"></param>
         /// <returns>null if no statement modifies the element</returns>
-        public Interpreter.Statement.VariableUpdateStatement Modifies(Types.ITypedElement variable)
+        public VariableUpdateStatement Modifies(ITypedElement variable)
         {
             if (Statement != null)
             {
@@ -225,7 +236,7 @@ namespace DataDictionary.Rules
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>
-        public bool Reads(Types.ITypedElement variable)
+        public bool Reads(ITypedElement variable)
         {
             if (Statement != null)
             {
@@ -244,9 +255,9 @@ namespace DataDictionary.Rules
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
         /// <param name="runner"></param>
         /// <returns>The list to fill with the changes</param>
-        public virtual void GetChanges(Interpreter.InterpretationContext context, ChangeList changes, Interpreter.ExplanationPart explanation, bool apply, Tests.Runner.Runner runner)
+        public virtual void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Runner runner)
         {
-            long start = System.Environment.TickCount;
+            long start = Environment.TickCount;
 
             try
             {
@@ -264,7 +275,7 @@ namespace DataDictionary.Rules
                 AddException(e);
             }
 
-            long stop = System.Environment.TickCount;
+            long stop = Environment.TickCount;
             long span = (stop - start);
 
             if (RuleCondition != null && RuleCondition.EnclosingRule != null)
@@ -294,7 +305,7 @@ namespace DataDictionary.Rules
         {
             string retVal = null;
 
-            Interpreter.Statement.VariableUpdateStatement update = Statement as Interpreter.Statement.VariableUpdateStatement;
+            VariableUpdateStatement update = Statement as VariableUpdateStatement;
             if (update != null)
             {
                 retVal = update.VariableIdentification.ToString();
@@ -307,7 +318,7 @@ namespace DataDictionary.Rules
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
         }
 
@@ -317,7 +328,7 @@ namespace DataDictionary.Rules
         /// <returns></returns>
         public Action duplicate()
         {
-            Action retVal = (Action)Generated.acceptor.getFactory().createAction();
+            Action retVal = (Action) acceptor.getFactory().createAction();
             retVal.Name = Name;
             retVal.ExpressionText = ExpressionText;
 
@@ -341,7 +352,6 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Provides an explanation of the step's behaviour
         /// </summary>
-
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
         public string getExplain(bool explainSubElements)
@@ -361,6 +371,5 @@ namespace DataDictionary.Rules
             get { return getComment(); }
             set { setComment(value); }
         }
-
     }
 }

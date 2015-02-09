@@ -14,7 +14,11 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
+using Utils;
+using NameSpace = DataDictionary.Types.NameSpace;
+
 namespace DataDictionary.Tests.Runner.Events
 {
     public class ExpectationStateChange : ModelEvent
@@ -27,12 +31,15 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The namespace associated to this event
         /// </summary>
-        public override Types.NameSpace NameSpace { get { return Expect.NameSpace; } }
+        public override NameSpace NameSpace
+        {
+            get { return Expect.NameSpace; }
+        }
 
         /// <summary>
         /// The new expectation state
         /// </summary>
-        public Expect.EventState NewState {get; set;}
+        public Expect.EventState NewState { get; set; }
 
         /// <summary>
         /// The previous expectation state
@@ -46,7 +53,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// <param name="newState">the new expectation state</param>
         /// <param name="prevState">the previous expectation state</param>
         /// <param name="message">the message associated to this expectation state change</param>
-        public ExpectationStateChange(Expect expect, Generated.acceptor.RulePriority? priority, ExplanationPart explain)
+        public ExpectationStateChange(Expect expect, acceptor.RulePriority? priority, ExplanationPart explain)
             : base("Expectation state change", expect.Expectation, priority)
         {
             Expect = expect;
@@ -79,8 +86,9 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The log associated to this expectation state change
         /// </summary>
-        private Utils.ElementLog elementLog;
-        private Utils.ElementLog ElementLog
+        private ElementLog elementLog;
+
+        private ElementLog ElementLog
         {
             get { return elementLog; }
             set { elementLog = value; }
@@ -92,7 +100,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// <param name="expect"></param>
         /// <param name="priority"></param>
         /// <param name="explain"></param>
-        public FailedExpectation(Expect expect, Generated.acceptor.RulePriority? priority, ExplanationPart explain)
+        public FailedExpectation(Expect expect, acceptor.RulePriority? priority, ExplanationPart explain)
             : base(expect, priority, explain)
         {
             Message = "Failed expectation : " + Expect.Expectation.Name;
@@ -106,7 +114,7 @@ namespace DataDictionary.Tests.Runner.Events
         {
             base.Apply(runner);
 
-            Expect.State = Events.Expect.EventState.TimeOut;
+            Expect.State = Expect.EventState.TimeOut;
             Expect.Explanation = Explanation;
             TimeLine.ActiveExpectations.Remove(Expect);
             ElementLog = Expect.Expectation.AddError(Message, true);
@@ -133,7 +141,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// <param name="expect"></param>
         /// <param name="priority"></param>
         /// <param name="explain"></param>
-        public ExpectationReached(Expect expect, Generated.acceptor.RulePriority? priority, ExplanationPart explain)
+        public ExpectationReached(Expect expect, acceptor.RulePriority? priority, ExplanationPart explain)
             : base(expect, priority, explain)
         {
             Message = "Expectation reached : " + Expect.Expectation.Name;
@@ -147,7 +155,7 @@ namespace DataDictionary.Tests.Runner.Events
         {
             base.Apply(runner);
 
-            Expect.State = Events.Expect.EventState.Fullfilled;
+            Expect.State = Expect.EventState.Fullfilled;
             Expect.Explanation = Explanation;
             TimeLine.ActiveExpectations.Remove(Expect);
         }

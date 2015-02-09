@@ -14,21 +14,34 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Generated;
+using DataDictionary.Specification;
+using Chapter = DataDictionary.Generated.Chapter;
+using ChapterRef = DataDictionary.Generated.ChapterRef;
+using Message = DataDictionary.Generated.Message;
+using MsgVariable = DataDictionary.Generated.MsgVariable;
+using Paragraph = DataDictionary.Generated.Paragraph;
+using ParagraphRevision = DataDictionary.Generated.ParagraphRevision;
+using RequirementSet = DataDictionary.Generated.RequirementSet;
+using RequirementSetDependancy = DataDictionary.Generated.RequirementSetDependancy;
+using RequirementSetReference = DataDictionary.Generated.RequirementSetReference;
+using TypeSpec = DataDictionary.Generated.TypeSpec;
+
 namespace DataDictionary
 {
     /// <summary>
     /// Sets the default values of the objects
     /// </summary>
-    public class DefaultValueSetter : Generated.Visitor
+    public class DefaultValueSetter : Visitor
     {
         /// <summary>
         /// Indicates that the Guid should be automatically set when creating a new object
         /// </summary>
         public bool AutomaticallyGenerateGuid { get; set; }
 
-        public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+        public override void visit(BaseModelElement obj, bool visitSubNodes)
         {
-            ModelElement element = (ModelElement)obj;
+            ModelElement element = (ModelElement) obj;
 
             if (AutomaticallyGenerateGuid)
             {
@@ -48,7 +61,7 @@ namespace DataDictionary
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.NameSpace obj, bool visitSubNodes)
+        public override void visit(NameSpace obj, bool visitSubNodes)
         {
             obj.setX(0);
             obj.setY(0);
@@ -60,14 +73,14 @@ namespace DataDictionary
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.EnumValue obj, bool visitSubNodes)
+        public override void visit(EnumValue obj, bool visitSubNodes)
         {
             obj.setValue("0");
 
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.Type obj, bool visitSubNodes)
+        public override void visit(Type obj, bool visitSubNodes)
         {
             obj.setX(0);
             obj.setY(0);
@@ -80,36 +93,36 @@ namespace DataDictionary
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.Range obj, bool visitSubNodes)
+        public override void visit(Range obj, bool visitSubNodes)
         {
-            obj.setPrecision(Generated.acceptor.PrecisionEnum.aIntegerPrecision);
+            obj.setPrecision(acceptor.PrecisionEnum.aIntegerPrecision);
 
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.StructureElement obj, bool visitSubNodes)
+        public override void visit(StructureElement obj, bool visitSubNodes)
         {
             obj.setDefault("");
-            obj.setMode(Generated.acceptor.VariableModeEnumType.aInternal);
+            obj.setMode(acceptor.VariableModeEnumType.aInternal);
 
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.Collection obj, bool visitSubNodes)
+        public override void visit(Collection obj, bool visitSubNodes)
         {
             obj.setMaxSize(10);
 
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.Function obj, bool visitSubNodes)
+        public override void visit(Function obj, bool visitSubNodes)
         {
             obj.setCacheable(false);
 
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.Procedure obj, bool visitSubNodes)
+        public override void visit(Procedure obj, bool visitSubNodes)
         {
             obj.setX(0);
             obj.setY(0);
@@ -121,7 +134,7 @@ namespace DataDictionary
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.State obj, bool visitSubNodes)
+        public override void visit(State obj, bool visitSubNodes)
         {
             obj.setX(0);
             obj.setY(0);
@@ -131,22 +144,9 @@ namespace DataDictionary
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.Variable obj, bool visitSubNodes)
+        public override void visit(Variable obj, bool visitSubNodes)
         {
-            obj.setVariableMode(Generated.acceptor.VariableModeEnumType.aInternal);
-            obj.setX(0);
-            obj.setY(0);
-            obj.setWidth(0);
-            obj.setHeight(0);
-            obj.setHidden(false);
-            obj.setPinned(false);
-
-            base.visit(obj, visitSubNodes);
-        }
-
-        public override void visit(Generated.Rule obj, bool visitSubNodes)
-        {
-            obj.setPriority(Generated.acceptor.RulePriority.aProcessing);
+            obj.setVariableMode(acceptor.VariableModeEnumType.aInternal);
             obj.setX(0);
             obj.setY(0);
             obj.setWidth(0);
@@ -157,14 +157,27 @@ namespace DataDictionary
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.Frame obj, bool visitSubNodes)
+        public override void visit(Rule obj, bool visitSubNodes)
+        {
+            obj.setPriority(acceptor.RulePriority.aProcessing);
+            obj.setX(0);
+            obj.setY(0);
+            obj.setWidth(0);
+            obj.setHeight(0);
+            obj.setHidden(false);
+            obj.setPinned(false);
+
+            base.visit(obj, visitSubNodes);
+        }
+
+        public override void visit(Frame obj, bool visitSubNodes)
         {
             obj.setCycleDuration("0.1");
 
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.SubSequence obj, bool visitSubNodes)
+        public override void visit(SubSequence obj, bool visitSubNodes)
         {
             obj.setD_LRBG("");
             obj.setLevel("");
@@ -180,7 +193,7 @@ namespace DataDictionary
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.TestCase obj, bool visitSubNodes)
+        public override void visit(TestCase obj, bool visitSubNodes)
         {
             obj.setFeature(9999);
             obj.setCase(9999);
@@ -188,64 +201,64 @@ namespace DataDictionary
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.Step obj, bool visitSubNodes)
+        public override void visit(Step obj, bool visitSubNodes)
         {
             obj.setTCS_Order(0);
             obj.setDistance(0);
-            obj.setIO(Generated.acceptor.ST_IO.StIO_NA);
-            obj.setLevelIN(Generated.acceptor.ST_LEVEL.StLevel_NA);
-            obj.setLevelOUT(Generated.acceptor.ST_LEVEL.StLevel_NA);
-            obj.setModeIN(Generated.acceptor.ST_MODE.Mode_NA);
-            obj.setModeOUT(Generated.acceptor.ST_MODE.Mode_NA);
+            obj.setIO(acceptor.ST_IO.StIO_NA);
+            obj.setLevelIN(acceptor.ST_LEVEL.StLevel_NA);
+            obj.setLevelOUT(acceptor.ST_LEVEL.StLevel_NA);
+            obj.setModeIN(acceptor.ST_MODE.Mode_NA);
+            obj.setModeOUT(acceptor.ST_MODE.Mode_NA);
             obj.setTranslationRequired(false);
             obj.setTranslated(false);
 
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.SubStep obj, bool visitSubNodes)
+        public override void visit(SubStep obj, bool visitSubNodes)
         {
             obj.setSkipEngine(false);
 
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.Expectation obj, bool visitSubNodes)
+        public override void visit(Expectation obj, bool visitSubNodes)
         {
-            obj.setKind(Generated.acceptor.ExpectationKind.aInstantaneous);
+            obj.setKind(acceptor.ExpectationKind.aInstantaneous);
             obj.setBlocking(true);
             obj.setDeadLine(1);
 
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.DBMessage obj, bool visitSubNodes)
+        public override void visit(DBMessage obj, bool visitSubNodes)
         {
             obj.setMessageOrder(0);
-            obj.setMessageType(Generated.acceptor.DBMessageType.aEUROBALISE);
+            obj.setMessageType(acceptor.DBMessageType.aEUROBALISE);
 
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.DBField obj, bool visitSubNodes)
+        public override void visit(DBField obj, bool visitSubNodes)
         {
             obj.setValue("");
 
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.Translation obj, bool visitSubNodes)
+        public override void visit(Translation obj, bool visitSubNodes)
         {
             obj.setImplemented(false);
 
             base.visit(obj, visitSubNodes);
         }
 
-        public override void visit(Generated.Paragraph obj, bool visitSubNodes)
+        public override void visit(Paragraph obj, bool visitSubNodes)
         {
             obj.setGuid("");
-            obj.setType(Generated.acceptor.Paragraph_type.aREQUIREMENT);
-            obj.setObsoleteScope(Generated.acceptor.Paragraph_scope.aFLAGS);
+            obj.setType(acceptor.Paragraph_type.aREQUIREMENT);
+            obj.setObsoleteScope(acceptor.Paragraph_scope.aFLAGS);
             obj.setObsoleteScopeOnBoard(false);
             obj.setObsoleteScopeTrackside(false);
             obj.setObsoleteScopeRollingStock(false);
@@ -253,7 +266,7 @@ namespace DataDictionary
             obj.setOptional(true);
             obj.setName("");
             obj.setReviewed(false);
-            obj.setImplementationStatus(Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
+            obj.setImplementationStatus(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA);
             obj.setTested(false);
             obj.setVersion("3.0.0");
             obj.setMoreInfoRequired(false);
@@ -268,7 +281,7 @@ namespace DataDictionary
     /// <summary>
     /// The factory
     /// </summary>
-    public class ObjectFactory : Generated.Factory
+    public class ObjectFactory : Factory
     {
         /// <summary>
         /// The class used to set the default values
@@ -280,14 +293,8 @@ namespace DataDictionary
         /// </summary>
         public bool AutomaticallyGenerateGuid
         {
-            get
-            {
-                return DefaultValueSetter.AutomaticallyGenerateGuid;
-            }
-            set
-            {
-                DefaultValueSetter.AutomaticallyGenerateGuid = value;
-            }
+            get { return DefaultValueSetter.AutomaticallyGenerateGuid; }
+            set { DefaultValueSetter.AutomaticallyGenerateGuid = value; }
         }
 
         public override Generated.Dictionary createDictionary()
@@ -305,93 +312,92 @@ namespace DataDictionary
 
             DefaultValueSetter.visit(retVal);
             return retVal;
-
         }
 
-        public override Generated.RuleDisabling createRuleDisabling()
+        public override RuleDisabling createRuleDisabling()
         {
-            Generated.RuleDisabling retVal = new Rules.RuleDisabling();
+            RuleDisabling retVal = new Rules.RuleDisabling();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.NameSpace createNameSpace()
+        public override NameSpace createNameSpace()
         {
-            Generated.NameSpace retVal = new Types.NameSpace();
+            NameSpace retVal = new Types.NameSpace();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.NameSpaceRef createNameSpaceRef()
+        public override NameSpaceRef createNameSpaceRef()
         {
-            Generated.NameSpaceRef retVal = new Types.NameSpaceRef();
+            NameSpaceRef retVal = new Types.NameSpaceRef();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Enum createEnum()
+        public override Enum createEnum()
         {
-            Generated.Enum retVal = new Types.Enum();
+            Enum retVal = new Types.Enum();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.EnumValue createEnumValue()
+        public override EnumValue createEnumValue()
         {
-            Generated.EnumValue retVal = new Constants.EnumValue();
+            EnumValue retVal = new Constants.EnumValue();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Range createRange()
+        public override Range createRange()
         {
-            Generated.Range retVal = new Types.Range();
+            Range retVal = new Types.Range();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Structure createStructure()
+        public override Structure createStructure()
         {
-            Generated.Structure retVal = new Types.Structure();
+            Structure retVal = new Types.Structure();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Collection createCollection()
+        public override Collection createCollection()
         {
-            Generated.Collection retVal = new Types.Collection();
+            Collection retVal = new Types.Collection();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.StructureElement createStructureElement()
+        public override StructureElement createStructureElement()
         {
-            Generated.StructureElement retVal = new Types.StructureElement();
+            StructureElement retVal = new Types.StructureElement();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Function createFunction()
+        public override Function createFunction()
         {
-            Generated.Function retVal = new Functions.Function();
+            Function retVal = new Functions.Function();
 
             DefaultValueSetter.visit(retVal);
 
@@ -407,171 +413,171 @@ namespace DataDictionary
             return retVal;
         }
 
-        public override Generated.Case createCase()
+        public override Case createCase()
         {
-            Generated.Case retVal = new Functions.Case();
+            Case retVal = new Functions.Case();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Procedure createProcedure()
+        public override Procedure createProcedure()
         {
-            Generated.Procedure retVal = new Functions.Procedure();
+            Procedure retVal = new Functions.Procedure();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.StateMachine createStateMachine()
+        public override StateMachine createStateMachine()
         {
-            Generated.StateMachine retVal = new Types.StateMachine();
+            StateMachine retVal = new Types.StateMachine();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.State createState()
+        public override State createState()
         {
-            Generated.State retVal = new Constants.State();
+            State retVal = new Constants.State();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Variable createVariable()
+        public override Variable createVariable()
         {
-            Generated.Variable retVal = new Variables.Variable();
+            Variable retVal = new Variables.Variable();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Rule createRule()
+        public override Rule createRule()
         {
-            Generated.Rule retVal = new Rules.Rule();
+            Rule retVal = new Rules.Rule();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.RuleCondition createRuleCondition()
+        public override RuleCondition createRuleCondition()
         {
-            Generated.RuleCondition retVal = new Rules.RuleCondition();
+            RuleCondition retVal = new Rules.RuleCondition();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.PreCondition createPreCondition()
+        public override PreCondition createPreCondition()
         {
-            Generated.PreCondition retVal = new Rules.PreCondition();
+            PreCondition retVal = new Rules.PreCondition();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Action createAction()
+        public override Action createAction()
         {
-            Generated.Action retVal = new Rules.Action();
+            Action retVal = new Rules.Action();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.FrameRef createFrameRef()
+        public override FrameRef createFrameRef()
         {
-            Generated.FrameRef retVal = new Tests.FrameRef();
+            FrameRef retVal = new Tests.FrameRef();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Frame createFrame()
+        public override Frame createFrame()
         {
-            Generated.Frame retVal = new Tests.Frame();
+            Frame retVal = new Tests.Frame();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.SubSequence createSubSequence()
+        public override SubSequence createSubSequence()
         {
-            Generated.SubSequence retVal = new Tests.SubSequence();
+            SubSequence retVal = new Tests.SubSequence();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.TestCase createTestCase()
+        public override TestCase createTestCase()
         {
-            Generated.TestCase retVal = new Tests.TestCase();
+            TestCase retVal = new Tests.TestCase();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Step createStep()
+        public override Step createStep()
         {
-            Generated.Step retVal = new Tests.Step();
+            Step retVal = new Tests.Step();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.SubStep createSubStep()
+        public override SubStep createSubStep()
         {
-            Generated.SubStep retVal = new Tests.SubStep();
+            SubStep retVal = new Tests.SubStep();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Expectation createExpectation()
+        public override Expectation createExpectation()
         {
-            Generated.Expectation retVal = new Tests.Expectation();
+            Expectation retVal = new Tests.Expectation();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.DBMessage createDBMessage()
+        public override DBMessage createDBMessage()
         {
-            Generated.DBMessage retVal = new Tests.DBElements.DBMessage();
+            DBMessage retVal = new Tests.DBElements.DBMessage();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.DBPacket createDBPacket()
+        public override DBPacket createDBPacket()
         {
-            Generated.DBPacket retVal = new Tests.DBElements.DBPacket();
+            DBPacket retVal = new Tests.DBElements.DBPacket();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.DBField createDBField()
+        public override DBField createDBField()
         {
-            Generated.DBField retVal = new Tests.DBElements.DBField();
+            DBField retVal = new Tests.DBElements.DBField();
 
             DefaultValueSetter.visit(retVal);
 
@@ -587,81 +593,81 @@ namespace DataDictionary
             return retVal;
         }
 
-        public override Generated.RequirementSet createRequirementSet()
+        public override RequirementSet createRequirementSet()
         {
-            Generated.RequirementSet retVal = new Specification.RequirementSet();
+            RequirementSet retVal = new Specification.RequirementSet();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.RequirementSetDependancy createRequirementSetDependancy()
+        public override RequirementSetDependancy createRequirementSetDependancy()
         {
-            Generated.RequirementSetDependancy retVal = new Specification.RequirementSetDependancy();
+            RequirementSetDependancy retVal = new Specification.RequirementSetDependancy();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.RequirementSetReference createRequirementSetReference()
+        public override RequirementSetReference createRequirementSetReference()
         {
-            Generated.RequirementSetReference retVal = new Specification.RequirementSetReference();
+            RequirementSetReference retVal = new Specification.RequirementSetReference();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Chapter createChapter()
+        public override Chapter createChapter()
         {
-            Generated.Chapter retVal = new Specification.Chapter();
+            Chapter retVal = new Specification.Chapter();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.ChapterRef createChapterRef()
+        public override ChapterRef createChapterRef()
         {
-            Generated.ChapterRef retVal = new Specification.ChapterRef();
+            ChapterRef retVal = new Specification.ChapterRef();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Paragraph createParagraph()
+        public override Paragraph createParagraph()
         {
-            Generated.Paragraph retVal = new Specification.Paragraph();
+            Paragraph retVal = new Specification.Paragraph();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Message createMessage()
+        public override Message createMessage()
         {
-            Generated.Message retVal = new Specification.Message();
+            Message retVal = new Specification.Message();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.MsgVariable createMsgVariable()
+        public override MsgVariable createMsgVariable()
         {
-            Generated.MsgVariable retVal = new Specification.MsgVariable();
+            MsgVariable retVal = new Specification.MsgVariable();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.TypeSpec createTypeSpec()
+        public override TypeSpec createTypeSpec()
         {
-            Generated.TypeSpec retVal = new Specification.TypeSpec();
+            TypeSpec retVal = new Specification.TypeSpec();
 
             DefaultValueSetter.visit(retVal);
 
@@ -677,162 +683,162 @@ namespace DataDictionary
             return retVal;
         }
 
-        public override Generated.special_or_reserved_values createspecial_or_reserved_values()
+        public override special_or_reserved_values createspecial_or_reserved_values()
         {
-            Generated.special_or_reserved_values retVal = new Specification.SpecialOrReservedValues();
+            special_or_reserved_values retVal = new SpecialOrReservedValues();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.special_or_reserved_value createspecial_or_reserved_value()
+        public override special_or_reserved_value createspecial_or_reserved_value()
         {
-            Generated.special_or_reserved_value retVal = new Specification.SpecialOrReservedValue();
+            special_or_reserved_value retVal = new SpecialOrReservedValue();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.mask createmask()
+        public override mask createmask()
         {
-            Generated.mask retVal = new Specification.Mask();
+            mask retVal = new Mask();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.match creatematch()
+        public override match creatematch()
         {
-            Generated.match retVal = new Specification.Match();
+            match retVal = new Match();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.meaning createmeaning()
+        public override meaning createmeaning()
         {
-            Generated.meaning retVal = new Specification.Meaning();
+            meaning retVal = new Meaning();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.match_range creatematch_range()
+        public override match_range creatematch_range()
         {
-            Generated.match_range retVal = new Specification.MatchRange();
+            match_range retVal = new MatchRange();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.resolution_formula createresolution_formula()
+        public override resolution_formula createresolution_formula()
         {
-            Generated.resolution_formula retVal = new Specification.ResolutionFormula();
+            resolution_formula retVal = new ResolutionFormula();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.value createvalue()
+        public override value createvalue()
         {
-            Generated.value retVal = new Specification.Value();
+            value retVal = new Value();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.char_value createchar_value()
+        public override char_value createchar_value()
         {
-            Generated.char_value retVal = new Specification.CharValue();
+            char_value retVal = new CharValue();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.ParagraphRevision createParagraphRevision()
+        public override ParagraphRevision createParagraphRevision()
         {
-            Generated.ParagraphRevision retVal = new Specification.ParagraphRevision();
+            ParagraphRevision retVal = new Specification.ParagraphRevision();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.TranslationDictionary createTranslationDictionary()
+        public override TranslationDictionary createTranslationDictionary()
         {
-            Generated.TranslationDictionary retVal = new Tests.Translations.TranslationDictionary();
+            TranslationDictionary retVal = new Tests.Translations.TranslationDictionary();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Folder createFolder()
+        public override Folder createFolder()
         {
-            Generated.Folder retVal = new Tests.Translations.Folder();
+            Folder retVal = new Tests.Translations.Folder();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Translation createTranslation()
+        public override Translation createTranslation()
         {
-            Generated.Translation retVal = new Tests.Translations.Translation();
+            Translation retVal = new Tests.Translations.Translation();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.SourceText createSourceText()
+        public override SourceText createSourceText()
         {
-            Generated.SourceText retVal = new Tests.Translations.SourceText();
+            SourceText retVal = new Tests.Translations.SourceText();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.SourceTextComment createSourceTextComment()
+        public override SourceTextComment createSourceTextComment()
         {
-            Generated.SourceTextComment retVal = new Tests.Translations.SourceTextComment();
+            SourceTextComment retVal = new Tests.Translations.SourceTextComment();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.ShortcutDictionary createShortcutDictionary()
+        public override ShortcutDictionary createShortcutDictionary()
         {
-            Generated.ShortcutDictionary retVal = new Shortcuts.ShortcutDictionary();
+            ShortcutDictionary retVal = new Shortcuts.ShortcutDictionary();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.ShortcutFolder createShortcutFolder()
+        public override ShortcutFolder createShortcutFolder()
         {
-            Generated.ShortcutFolder retVal = new Shortcuts.ShortcutFolder();
+            ShortcutFolder retVal = new Shortcuts.ShortcutFolder();
 
             DefaultValueSetter.visit(retVal);
 
             return retVal;
         }
 
-        public override Generated.Shortcut createShortcut()
+        public override Shortcut createShortcut()
         {
-            Generated.Shortcut retVal = new Shortcuts.Shortcut();
+            Shortcut retVal = new Shortcuts.Shortcut();
 
             DefaultValueSetter.visit(retVal);
 

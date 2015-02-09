@@ -13,15 +13,21 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
-using System.Configuration;
+using System.Globalization;
 using System.IO;
-using System.Windows.Forms;
+using System.Reflection;
 using System.ServiceModel;
-using System.ServiceModel.Description;
-using GUI.IPCInterface;
-using DataDictionary;
 using System.Threading;
+using System.Windows.Forms;
+using DataDictionary;
+using GUI;
+using GUI.IPCInterface;
+using GUI.Options;
+using log4net;
+using log4net.Config;
+using Utils;
 
 namespace ERTMSFormalSpecs
 {
@@ -65,28 +71,28 @@ namespace ERTMSFormalSpecs
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         [STAThread]
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             try
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                log4net.Config.XmlConfigurator.Configure(new FileInfo("logconfig.xml"));
+                XmlConfigurator.Configure(new FileInfo("logconfig.xml"));
 
-                GUI.Options.Options.setSettings(EFSSystem.INSTANCE);
+                Options.setSettings(EFSSystem.INSTANCE);
 
-                GUI.MainWindow window = new GUI.MainWindow();
-                Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+                MainWindow window = new MainWindow();
+                Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
                 {
                     // TRICKY SECTION
                     // This thread is mandatory otherwise WCF does not create a new thread to handle the service requests. 
                     // Since the call to Cycle is blocking, creating such threads is mandatory
-                    Thread thread = Utils.ThreadUtil.CreateThread((ThreadStart)HostEFSService);
+                    Thread thread = ThreadUtil.CreateThread((ThreadStart) HostEFSService);
                     thread.Start();
                 }
 
@@ -95,12 +101,12 @@ namespace ERTMSFormalSpecs
             }
             finally
             {
-                DataDictionary.Util.UnlockAllFiles();
+                Util.UnlockAllFiles();
             }
 
 
-            DataDictionary.EFSSystem.INSTANCE.Stop();
-            GUI.SynchronizerList.Stop();
+            EFSSystem.INSTANCE.Stop();
+            SynchronizerList.Stop();
         }
     }
 }

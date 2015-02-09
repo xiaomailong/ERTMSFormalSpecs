@@ -13,10 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using Utils;
+
 namespace DataDictionary.Interpreter.Filter
 {
-    using Utils;
-
     /// <summary>
     /// Predicates which indicates that the namable is either a variable or a value
     /// </summary>
@@ -50,6 +51,6 @@ namespace DataDictionary.Interpreter.Filter
         /// <summary>
         /// Singleton
         /// </summary>
-        public static new IsVariableOrValue INSTANCE = new IsVariableOrValue();
+        public new static IsVariableOrValue INSTANCE = new IsVariableOrValue();
     }
 }

@@ -1,22 +1,23 @@
 using System;
 
-namespace XmlBooster 
+namespace XmlBooster
 {
-	
-	[Serializable()]
-	public class xmlBDate
-	{
-		string theStr;
+    [Serializable()]
+    public class xmlBDate
+    {
+        private string theStr;
 
-		public xmlBDate (string a)
-		{
-			theStr = a;
-		}
-		//---------------------------------------
-		public string toString()
-		{
-			return theStr;
-		}
-		//---------------------------------------
-	}
+        public xmlBDate(string a)
+        {
+            theStr = a;
+        }
+
+        //---------------------------------------
+        public string toString()
+        {
+            return theStr;
+        }
+
+        //---------------------------------------
+    }
 }

@@ -13,16 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
-using System.Windows.Forms;
 using System.ComponentModel;
 using System.Drawing.Design;
-
+using System.Windows.Forms;
+using DataDictionary;
+using GUI.Converters;
+using GUI.SpecificationView;
 
 namespace GUI
 {
     public abstract class ReferencesParagraphTreeNode<T> : ModelElementTreeNode<T>
-        where T : DataDictionary.ReferencesParagraph
+        where T : ReferencesParagraph
     {
         /// <summary>
         /// The editor for message variables
@@ -52,8 +55,8 @@ namespace GUI
             }
 
             [Category("Meta data")]
-            [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
+            [Editor(typeof (CommentableUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (CommentableUITypeConverter))]
             public T Comment
             {
                 get { return Item; }
@@ -111,7 +114,7 @@ namespace GUI
         {
             base.AcceptDrop(SourceNode);
 
-            if (SourceNode is SpecificationView.ParagraphTreeNode)
+            if (SourceNode is ParagraphTreeNode)
             {
                 if (HandleRequirements && ReqReferences == null)
                 {
@@ -121,7 +124,7 @@ namespace GUI
 
                 if (ReqReferences != null)
                 {
-                    SpecificationView.ParagraphTreeNode paragraphTreeNode = (SpecificationView.ParagraphTreeNode)SourceNode;
+                    ParagraphTreeNode paragraphTreeNode = (ParagraphTreeNode) SourceNode;
                     ReqReferences.CreateReqRef(paragraphTreeNode.Item);
                 }
             }
@@ -137,6 +140,5 @@ namespace GUI
 
             return retVal;
         }
-
     }
 }

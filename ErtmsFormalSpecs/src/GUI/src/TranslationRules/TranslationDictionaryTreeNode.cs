@@ -13,14 +13,21 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using DataDictionary.Tests.Translations;
+using DataDictionary.Generated;
+using GUI.TestRunnerView;
+using Folder = DataDictionary.Tests.Translations.Folder;
+using SourceText = DataDictionary.Tests.Translations.SourceText;
+using Step = DataDictionary.Tests.Step;
+using Translation = DataDictionary.Tests.Translations.Translation;
+using TranslationDictionary = DataDictionary.Tests.Translations.TranslationDictionary;
 
 namespace GUI.TranslationRules
 {
-    public class TranslationDictionaryTreeNode : ModelElementTreeNode<DataDictionary.Tests.Translations.TranslationDictionary>
+    public class TranslationDictionaryTreeNode : ModelElementTreeNode<TranslationDictionary>
     {
         private class ItemEditor : NamedEditor
         {
@@ -37,7 +44,7 @@ namespace GUI.TranslationRules
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public TranslationDictionaryTreeNode(DataDictionary.Tests.Translations.TranslationDictionary item, bool buildSubNodes)
+        public TranslationDictionaryTreeNode(TranslationDictionary item, bool buildSubNodes)
             : base(item, buildSubNodes, "Dictionary", true)
         {
         }
@@ -50,11 +57,11 @@ namespace GUI.TranslationRules
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Tests.Translations.Folder folder in Item.Folders)
+            foreach (Folder folder in Item.Folders)
             {
                 Nodes.Add(new FolderTreeNode(folder, buildSubNodes));
             }
-            foreach (DataDictionary.Tests.Translations.Translation translation in Item.Translations)
+            foreach (Translation translation in Item.Translations)
             {
                 Nodes.Add(new TranslationTreeNode(translation, buildSubNodes));
             }
@@ -75,7 +82,7 @@ namespace GUI.TranslationRules
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public FolderTreeNode createFolder(DataDictionary.Tests.Translations.Folder folder)
+        public FolderTreeNode createFolder(Folder folder)
         {
             FolderTreeNode retVal = new FolderTreeNode(folder, true);
 
@@ -88,7 +95,7 @@ namespace GUI.TranslationRules
 
         public void AddFolderHandler(object sender, EventArgs args)
         {
-            DataDictionary.Tests.Translations.Folder folder = (DataDictionary.Tests.Translations.Folder)DataDictionary.Generated.acceptor.getFactory().createFolder();
+            Folder folder = (Folder) acceptor.getFactory().createFolder();
             folder.Name = "<Folder " + (Item.Folders.Count + 1) + ">";
             createFolder(folder);
         }
@@ -98,7 +105,7 @@ namespace GUI.TranslationRules
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public TranslationTreeNode createTranslation(DataDictionary.Tests.Translations.Translation translation)
+        public TranslationTreeNode createTranslation(Translation translation)
         {
             TranslationTreeNode retVal = null;
 
@@ -121,7 +128,7 @@ namespace GUI.TranslationRules
                 }
                 else
                 {
-                    retVal = (TranslationTreeNode)BaseTreeView.Select(existingTranslation);
+                    retVal = (TranslationTreeNode) BaseTreeView.Select(existingTranslation);
                 }
             }
 
@@ -140,7 +147,7 @@ namespace GUI.TranslationRules
 
         public void AddTranslationHandler(object sender, EventArgs args)
         {
-            DataDictionary.Tests.Translations.Translation translation = (DataDictionary.Tests.Translations.Translation)DataDictionary.Generated.acceptor.getFactory().createTranslation();
+            Translation translation = (Translation) acceptor.getFactory().createTranslation();
             translation.Name = "<Translation " + (Item.Translations.Count + 1) + ">";
             createTranslation(translation);
         }
@@ -197,9 +204,9 @@ namespace GUI.TranslationRules
         /// Creates a new translation based on a step
         /// </summary>
         /// <param name="step"></param>
-        private void createTranslation(DataDictionary.Tests.Step step)
+        private void createTranslation(Step step)
         {
-            Translation translation = (Translation)DataDictionary.Generated.acceptor.getFactory().createTranslation();
+            Translation translation = (Translation) acceptor.getFactory().createTranslation();
             translation.appendSourceTexts(step.createSourceText());
             createTranslation(translation);
         }
@@ -211,16 +218,16 @@ namespace GUI.TranslationRules
         public override void AcceptDrop(BaseTreeNode SourceNode)
         {
             base.AcceptDrop(SourceNode);
-            if (SourceNode is TestRunnerView.StepTreeNode)
+            if (SourceNode is StepTreeNode)
             {
-                TestRunnerView.StepTreeNode step = SourceNode as TestRunnerView.StepTreeNode;
+                StepTreeNode step = SourceNode as StepTreeNode;
 
                 createTranslation(step.Item);
             }
             else if (SourceNode is TranslationTreeNode)
             {
                 TranslationTreeNode translation = SourceNode as TranslationTreeNode;
-                DataDictionary.Tests.Translations.Translation otherTranslation = translation.Item;
+                Translation otherTranslation = translation.Item;
                 translation.Delete();
                 createTranslation(otherTranslation);
             }

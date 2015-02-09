@@ -13,9 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
+using DataDictionary.Functions;
+using DataDictionary.Functions.PredefinedFunctions;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using Utils;
+using Function = DataDictionary.Functions.Function;
+using Visitor = DataDictionary.Generated.Visitor;
 
 namespace DataDictionary.Types
 {
@@ -30,7 +38,7 @@ namespace DataDictionary.Types
     /// <summary>
     /// This is an element which has a type
     /// </summary>
-    public interface ITypedElement : Utils.INamable, Utils.IEnclosed, Utils.IModelElement
+    public interface ITypedElement : INamable, IEnclosed, IModelElement
     {
         /// <summary>
         /// The namespace related to the typed element
@@ -50,7 +58,7 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides the mode of the typed element
         /// </summary>
-        DataDictionary.Generated.acceptor.VariableModeEnumType Mode { get; }
+        acceptor.VariableModeEnumType Mode { get; }
 
         /// <summary>
         /// Provides the default value of the typed element
@@ -75,7 +83,7 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="index">the index in names to consider</param>
         /// <param name="names">the simple value names</param>
-        Values.IValue findValue(string[] names, int index);
+        IValue findValue(string[] names, int index);
     }
 
     /// <summary>
@@ -107,7 +115,7 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
-        public virtual Values.IValue getValue(string image)
+        public virtual IValue getValue(string image)
         {
             //            Log.ErrorFormat("Value is not available for base type: {0}", Name);
             return null;
@@ -146,8 +154,9 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides the expression tree associated to this action's expression
         /// </summary>
-        private Interpreter.Expression __expression;
-        public Interpreter.Expression Expression
+        private Expression __expression;
+
+        public Expression Expression
         {
             get
             {
@@ -158,13 +167,13 @@ namespace DataDictionary.Types
 
                 return __expression;
             }
-            set
-            {
-                __expression = value;
-            }
+            set { __expression = value; }
         }
 
-        public Interpreter.InterpreterTreeNode Tree { get { return Expression; } }
+        public InterpreterTreeNode Tree
+        {
+            get { return Expression; }
+        }
 
         /// <summary>
         /// Clears the expression tree to ensure new compilation
@@ -177,7 +186,7 @@ namespace DataDictionary.Types
         /// <summary>
         /// Creates the tree according to the expression text
         /// </summary>
-        public Interpreter.InterpreterTreeNode Compile()
+        public InterpreterTreeNode Compile()
         {
             // Side effect, builds the statement if it is not already built
             return Tree;
@@ -202,11 +211,11 @@ namespace DataDictionary.Types
         /// <summary>
         /// The default value
         /// </summary>
-        public virtual Values.IValue DefaultValue
+        public virtual IValue DefaultValue
         {
             get
             {
-                Values.IValue retVal = null;
+                IValue retVal = null;
 
                 try
                 {
@@ -237,14 +246,15 @@ namespace DataDictionary.Types
         /// </summary>
         public virtual bool CanBeCastInto
         {
-            get { return false; }    
+            get { return false; }
         }
 
         /// <summary>
         /// A function which allows to cast a value as a new value of this type
         /// </summary>
-        public Functions.Function castFunction;
-        public Functions.Function CastFunction
+        public Function castFunction;
+
+        public Function CastFunction
         {
             get
             {
@@ -252,12 +262,12 @@ namespace DataDictionary.Types
                 {
                     try
                     {
-                        DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
-                        castFunction = new Functions.PredefinedFunctions.Cast(this);
+                        ControllersManager.DesactivateAllNotifications();
+                        castFunction = new Cast(this);
                     }
                     finally
                     {
-                        DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+                        ControllersManager.ActivateAllNotifications();
                     }
                 }
 
@@ -270,7 +280,7 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="value">The value to convert</param>
         /// <returns></returns>
-        public virtual Values.IValue convert(Values.IValue value)
+        public virtual IValue convert(IValue value)
         {
             return null;
         }
@@ -278,7 +288,7 @@ namespace DataDictionary.Types
         /// <summary>
         /// Finds all references to a specific type
         /// </summary>
-        private class TypeUsageFinder : Generated.Visitor
+        private class TypeUsageFinder : Visitor
         {
             /// <summary>
             /// The usages of the type
@@ -288,21 +298,21 @@ namespace DataDictionary.Types
             /// <summary>
             /// The type looked for
             /// </summary>
-            public Types.Type Target { get; private set; }
+            public Type Target { get; private set; }
 
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="target"></param>
-            public TypeUsageFinder(Types.Type target)
+            public TypeUsageFinder(Type target)
             {
                 Target = target;
                 Usages = new HashSet<ITypedElement>();
             }
 
-            public override void visit(Generated.Variable obj, bool visitSubNodes)
+            public override void visit(Variable obj, bool visitSubNodes)
             {
-                Variables.Variable variable = (Variables.Variable)obj;
+                Variables.Variable variable = (Variables.Variable) obj;
 
                 if (variable.Type == Target)
                 {
@@ -314,7 +324,7 @@ namespace DataDictionary.Types
 
             public override void visit(Generated.StructureElement obj, bool visitSubNodes)
             {
-                Types.StructureElement element = (Types.StructureElement)obj;
+                StructureElement element = (StructureElement) obj;
 
                 if (element.Type == Target)
                 {
@@ -323,7 +333,6 @@ namespace DataDictionary.Types
 
                 base.visit(obj, visitSubNodes);
             }
-
         }
 
 
@@ -332,11 +341,11 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="type">the type to be referenced by the typed elements</param>
         /// <returns>the set of typed elements which have 'type' as type</returns>
-        public static HashSet<ITypedElement> ElementsOfType(Types.Type type)
+        public static HashSet<ITypedElement> ElementsOfType(Type type)
         {
             TypeUsageFinder visitor = new TypeUsageFinder(type);
 
-            EFSSystem efsSystem = Utils.EnclosingFinder<EFSSystem>.find(type);
+            EFSSystem efsSystem = EnclosingFinder<EFSSystem>.find(type);
             if (efsSystem != null)
             {
                 foreach (Dictionary dictionary in efsSystem.Dictionaries)
@@ -356,12 +365,12 @@ namespace DataDictionary.Types
         /// <param name="Operation"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public virtual Values.IValue PerformArithmericOperation(Interpreter.InterpretationContext context, Values.IValue left, BinaryExpression.OPERATOR Operation, Values.IValue right)  // left +/-/*/div/exp right
+        public virtual IValue PerformArithmericOperation(InterpretationContext context, IValue left, BinaryExpression.OPERATOR Operation, IValue right) // left +/-/*/div/exp right
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
-            Functions.Function leftFunction = left as Functions.Function;
-            Functions.Function rigthFunction = right as Functions.Function;
+            Function leftFunction = left as Function;
+            Function rigthFunction = right as Function;
 
             if (leftFunction != null)
             {
@@ -369,19 +378,19 @@ namespace DataDictionary.Types
                 {
                     if (leftFunction.Graph != null)
                     {
-                        Functions.Graph graph = Functions.Graph.createGraph(Functions.Function.getDoubleValue(right));
+                        Graph graph = Graph.createGraph(Function.getDoubleValue(right));
                         rigthFunction = graph.Function;
                     }
                     else
                     {
-                        Functions.Surface surface = Functions.Surface.createSurface(Functions.Function.getDoubleValue(right), leftFunction.Surface.XParameter, leftFunction.Surface.YParameter);
+                        Surface surface = Surface.createSurface(Function.getDoubleValue(right), leftFunction.Surface.XParameter, leftFunction.Surface.YParameter);
                         rigthFunction = surface.Function;
                     }
                 }
 
                 if (leftFunction.Graph != null)
                 {
-                    Functions.Graph tmp = null;
+                    Graph tmp = null;
                     switch (Operation)
                     {
                         case BinaryExpression.OPERATOR.ADD:
@@ -404,8 +413,8 @@ namespace DataDictionary.Types
                 }
                 else
                 {
-                    Functions.Surface rightSurface = rigthFunction.getSurface(leftFunction.Surface.XParameter, leftFunction.Surface.YParameter);
-                    Functions.Surface tmp = null;
+                    Surface rightSurface = rigthFunction.getSurface(leftFunction.Surface.XParameter, leftFunction.Surface.YParameter);
+                    Surface tmp = null;
                     switch (Operation)
                     {
                         case BinaryExpression.OPERATOR.ADD:
@@ -431,22 +440,22 @@ namespace DataDictionary.Types
             return retVal;
         }
 
-        public virtual bool CompareForEquality(Values.IValue left, Values.IValue right)  // left == right
+        public virtual bool CompareForEquality(IValue left, IValue right) // left == right
         {
             return left == right;
         }
 
-        public virtual bool Less(Values.IValue left, Values.IValue right)  // left < right
+        public virtual bool Less(IValue left, IValue right) // left < right
         {
             throw new TypeInconsistancyException("Cannot compare " + left.ToString() + " with " + right.ToString());
         }
 
-        public virtual bool Greater(Values.IValue left, Values.IValue right)  // left > right
+        public virtual bool Greater(IValue left, IValue right) // left > right
         {
             throw new TypeInconsistancyException("Cannot compare " + left.ToString() + " with " + right.ToString());
         }
 
-        public virtual bool Contains(Values.IValue right, Values.IValue left)  // left in right
+        public virtual bool Contains(IValue right, IValue left) // left in right
         {
             throw new TypeInconsistancyException("Variable of type " + GetType() + " cannot contain a variable of type " + left.GetType());
         }
@@ -507,10 +516,10 @@ namespace DataDictionary.Types
         {
             bool retVal = false;
 
-            Types.Range range = this as Types.Range;
+            Range range = this as Range;
             if (range != null)
             {
-                retVal = range.getPrecision() == Generated.acceptor.PrecisionEnum.aDoublePrecision;
+                retVal = range.getPrecision() == acceptor.PrecisionEnum.aDoublePrecision;
             }
             else
             {
@@ -524,7 +533,7 @@ namespace DataDictionary.Types
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             base.AddModelElement(element);
         }
@@ -578,7 +587,10 @@ namespace DataDictionary.Types
         /// <summary>
         /// The name to be displayed
         /// </summary>
-        public virtual string GraphicalName { get { return Name; } }
+        public virtual string GraphicalName
+        {
+            get { return Name; }
+        }
 
         /// <summary>
         /// Indicates whether the namespace is hidden
@@ -592,7 +604,11 @@ namespace DataDictionary.Types
         /// <summary>
         /// Indicates that the element is pinned
         /// </summary>
-        public bool Pinned { get { return getPinned(); } set { setPinned(value); } }
+        public bool Pinned
+        {
+            get { return getPinned(); }
+            set { setPinned(value); }
+        }
 
         /// <summary>
         /// Provides an explanation of the range
@@ -629,7 +645,7 @@ namespace DataDictionary.Types
             Enclosing = efsSystem;
         }
 
-        public override Values.IValue PerformArithmericOperation(InterpretationContext context, Values.IValue left, BinaryExpression.OPERATOR Operation, Values.IValue right)
+        public override IValue PerformArithmericOperation(InterpretationContext context, IValue left, BinaryExpression.OPERATOR Operation, IValue right)
         {
             throw new Exception("Cannot perform arithmetic operation between " + left.LiteralName + " and " + right.LiteralName);
         }
@@ -673,7 +689,7 @@ namespace DataDictionary.Types
             Enclosing = efsSystem;
         }
 
-        public override Values.IValue PerformArithmericOperation(InterpretationContext context, Values.IValue left, BinaryExpression.OPERATOR Operation, Values.IValue right)
+        public override IValue PerformArithmericOperation(InterpretationContext context, IValue left, BinaryExpression.OPERATOR Operation, IValue right)
         {
             throw new Exception("Cannot perform arithmetic operation between " + left.LiteralName + " and " + right.LiteralName);
         }

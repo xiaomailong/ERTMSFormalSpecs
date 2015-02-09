@@ -73,7 +73,7 @@
 </StructureElement></Structure></Structures>
 <Functions>
 <Function
- Type="BaliseGroups"
+ Type="Kernel.BaliseGroups"
  Default=""
  X="20"
  Y="150"
@@ -209,14 +209,14 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
  Guid="ee3f88ec-f193-44c3-89c3-4adbb14ed494"
 >
 <Expression>THERE_IS StaffResponsibleBG IN SRAuthorisation.BGs | 
-(FIRST Balise IN BaliseGroup).NID_C == StaffResponsibleBG.NID_C
+(FIRST Balise IN BaliseGroup).Telegram.NID_C == StaffResponsibleBG.NID_C
   AND  
-(FIRST Balise IN BaliseGroup).NID_BG == StaffResponsibleBG.NID_BG</Expression>
+(FIRST Balise IN BaliseGroup).Telegram.NID_BG == StaffResponsibleBG.NID_BG</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="130"
+ X="20"
  Y="290"
  Width="100"
  Height="50"
@@ -276,8 +276,8 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 </Function></Functions>
 <Procedures>
 <Procedure
- X="20"
- Y="290"
+ X="130"
+ Y="30"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -463,10 +463,29 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
  Guid="b71f4b38-c59f-492a-bb9f-f8f1105bb553"
 >
 </ReqRef><Comment>Signals that a Balise with the message &quot;stop if in SR mode&quot; has been read</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ X="550"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="UnexpectedBGPassed"
+ Guid="60e75a9e-b691-4b0b-83af-18ad2c7fd55f"
+>
+<ReqRef
+ Id="f7cb96a8-a052-46e7-a159-d08ccb5dac88"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8975fbf4-d357-447b-b0ab-b3ff5795b3b5"
+>
+</ReqRef><Comment>Notification that the engine has passed a BG, in SH mode, that was not expected.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
  Priority="Processing"
+ X="310"
+ Y="250"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -531,8 +550,10 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 <Actions>
 <Action
  Guid="46dbfab0-2d80-4d37-a202-f2046e4ae97d"
->EURORADIO.CurrentRBCConnection().SendMARequest(
-    aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver
+>EURORADIO.CurrentRBCConnection().SendMARequest
+(
+    aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver,
+    aPacket =&gt; EMPTY
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>

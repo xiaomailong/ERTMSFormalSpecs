@@ -13,35 +13,37 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections;
+using System.Reflection;
 using System.Windows.Forms;
-using Reports;
-using Reports.Tests;
 using DataDictionary;
-
+using DataDictionary.Tests;
+using log4net;
+using Reports.Tests;
 
 namespace GUI.Report
 {
     public partial class TestReport : Form
     {
-        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private TestsCoverageReportHandler reportHandler;
         private int currentLevel; // level in filters (frame = 1, sub sequence = 2, test case = 3)
 
         /// <summary>
         /// The EFSSystem for which this report is built
         /// </summary>
-        public DataDictionary.EFSSystem EFSSystem { get; private set; }
+        public EFSSystem EFSSystem { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="efsSystem">The system for which this frame is built</param>
-        public TestReport(DataDictionary.EFSSystem efsSystem)
+        public TestReport(EFSSystem efsSystem)
         {
             InitializeComponent();
-            reportHandler = new TestsCoverageReportHandler((Dictionary)null);
+            reportHandler = new TestsCoverageReportHandler((Dictionary) null);
             TxtB_Path.Text = reportHandler.FileName;
             EFSSystem = efsSystem;
         }
@@ -51,7 +53,7 @@ namespace GUI.Report
         /// Constructor: creates a report for the dictionary
         /// </summary>
         /// <param name="aDictionary"></param>
-        public TestReport(DataDictionary.Dictionary aDictionary)
+        public TestReport(Dictionary aDictionary)
         {
             InitializeComponent();
             EFSSystem = aDictionary.EFSSystem;
@@ -68,7 +70,7 @@ namespace GUI.Report
         /// Constructor: creates a report for the selected frame
         /// </summary>
         /// <param name="aFrame"></param>
-        public TestReport(DataDictionary.Tests.Frame aFrame)
+        public TestReport(Frame aFrame)
         {
             InitializeComponent();
             EFSSystem = aFrame.EFSSystem;
@@ -83,7 +85,7 @@ namespace GUI.Report
         /// Constructor: creates a report for the selected sub sequence
         /// </summary>
         /// <param name="aSubSequence"></param>
-        public TestReport(DataDictionary.Tests.SubSequence aSubSequence)
+        public TestReport(SubSequence aSubSequence)
         {
             InitializeComponent();
             EFSSystem = aSubSequence.EFSSystem;
@@ -98,7 +100,7 @@ namespace GUI.Report
         /// Consctructor: creates a report for a selected test case
         /// </summary>
         /// <param name="aTestCase"></param>
-        public TestReport(DataDictionary.Tests.TestCase aTestCase)
+        public TestReport(TestCase aTestCase)
         {
             InitializeComponent();
             EFSSystem = aTestCase.EFSSystem;
@@ -117,7 +119,7 @@ namespace GUI.Report
         {
             get
             {
-                System.Collections.ArrayList retVal = new System.Collections.ArrayList();
+                ArrayList retVal = new ArrayList();
                 retVal.AddRange(this.Controls);
                 retVal.AddRange(this.GrB_Filters.Controls);
                 return retVal;
@@ -208,7 +210,7 @@ namespace GUI.Report
                     if ((cbLevel == level && cbProperty.Equals("STAT")) || (cbLevel == level + 1 && cbProperty.Equals("FILTER")))
                     {
                         if ((cb.Name != "CB_ActivatedRulesInSteps" &&
-                             cb.Name != "CB_Log" ) ||
+                             cb.Name != "CB_Log") ||
                             (reportHandler.Frame != null ||
                              reportHandler.SubSequence != null ||
                              reportHandler.TestCase != null))
@@ -281,7 +283,6 @@ namespace GUI.Report
                 SynchronizerList.ResumeSynchronization();
             }
         }
-
 
 
         /// <summary>

@@ -21,11 +21,13 @@
  ********************************************************************************/
 
 using System;
+
 /**@brief International System of Units encapsulation. */
+
 namespace ErtmsSolutions.SiUnits
 {
-
     /**@brief List of possible representations of a SiDistance */
+
     public enum SiDistance_SubUnits
     {
         Meter, // Symbol : 'm', Factor : 1.0
@@ -36,6 +38,7 @@ namespace ErtmsSolutions.SiUnits
     }
 
     /**@brief Represents a distance expressed in number of meters */
+
     public struct SiDistance : ISiUnit<SiDistance>
     {
         /****************** private members and functions ***************/
@@ -46,41 +49,36 @@ namespace ErtmsSolutions.SiUnits
         private static double the_epsilon = 0.0001;
 
         /**@brief The minimum difference between two SiDistance objects. */
+
         public static double Epsilon
         {
-            get
-            {
-                return the_epsilon;
-            }
-            set
-            {
-                the_epsilon = value;
-            }
+            get { return the_epsilon; }
+            set { the_epsilon = value; }
         }
 
         /****************** constructors ******************************/
         /**@brief A constructor where the value unit's is specified. */
         /**@param "x" The internal value is assigned to it. It is assumed x is distances */
         /**@param "SubUnit" The units in wich 'x' is expressed. */
+
         public SiDistance(double x, SiDistance_SubUnits SubUnit)
         {
             this.the_value = 0.0;
-            this.the_value = x / SubUnitFactor(SubUnit);
+            this.the_value = x/SubUnitFactor(SubUnit);
         }
 
         /**@brief A constructor where the default unit is assumed. */
+
         public SiDistance(double x)
             : this(x, SiDistance_SubUnits.Meter)
         {
         }
 
         /**@brief Returns the value as a double. */
+
         public double Value
         {
-            get
-            {
-                return this.the_value;
-            }
+            get { return this.the_value; }
         }
 
         /****************** Constants *********************************/
@@ -97,6 +95,7 @@ namespace ErtmsSolutions.SiUnits
         public static readonly SiDistance MaxValue = new SiDistance(double.MaxValue);
 
         /****************** functions ***********************************/
+
         public bool Equals(SiDistance obj)
         {
             return (this == obj);
@@ -104,7 +103,7 @@ namespace ErtmsSolutions.SiUnits
 
         public override bool Equals(object obj)
         {
-            return (obj.GetType() != this.GetType()) ? false : this.Equals((SiDistance)obj);
+            return (obj.GetType() != this.GetType()) ? false : this.Equals((SiDistance) obj);
         }
 
         public override int GetHashCode()
@@ -114,12 +113,12 @@ namespace ErtmsSolutions.SiUnits
 
         public static SiDistance Min(SiDistance a, SiDistance b)
         {
-            return SiDistance.One * Math.Min(a.Value, b.Value);
+            return One*Math.Min(a.Value, b.Value);
         }
 
         public static SiDistance Max(SiDistance a, SiDistance b)
         {
-            return SiDistance.One * Math.Max(a.Value, b.Value);
+            return One*Math.Max(a.Value, b.Value);
         }
 
         public bool IsLessOrEqualThan(SiDistance other)
@@ -144,12 +143,12 @@ namespace ErtmsSolutions.SiUnits
 
         public SiDistance Min(SiDistance other)
         {
-            return SiDistance.Min(this, other);
+            return Min(this, other);
         }
 
         public SiDistance Max(SiDistance other)
         {
-            return SiDistance.Max(this, other);
+            return Max(this, other);
         }
 
         /****************** operators ***********************************/
@@ -157,6 +156,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first distance. */
         /**@param "b" The second distance. */
         /**@return 'true' if a.Value and b.Value differ less than Epsilon. Otherwise, 'else' is returned */
+
         public static bool operator ==(SiDistance a, SiDistance b)
         {
             return (Math.Abs(a.the_value - b.the_value) < the_epsilon);
@@ -166,6 +166,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first distance. */
         /**@param "b" The second distance. */
         /**@return 'true' if a.Value and b.Value differ more than Epsilon. Otherwise, 'else' is returned */
+
         public static bool operator !=(SiDistance a, SiDistance b)
         {
             return (!(a == b));
@@ -175,6 +176,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first distance. */
         /**@param "b" The second distance. */
         /**@return 'true' if a.Value is less or equal than b.Value. Otherwise, 'else' is returned */
+
         public static bool operator <=(SiDistance a, SiDistance b)
         {
             return (a.the_value <= b.the_value);
@@ -184,6 +186,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first distance. */
         /**@param "b" The second distance. */
         /**@return 'true' if a.Value is greater or equal than b.Value. Otherwise, 'else' is returned */
+
         public static bool operator >=(SiDistance a, SiDistance b)
         {
             return (a.the_value >= b.the_value);
@@ -193,6 +196,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first distance. */
         /**@param "b" The second distance. */
         /**@return 'true' if a.Value is less than b.Value. Otherwise, 'else' is returned */
+
         public static bool operator <(SiDistance a, SiDistance b)
         {
             return (a.the_value < b.the_value);
@@ -202,6 +206,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first distance. */
         /**@param "b" The second distance. */
         /**@return 'true' if a.Value is bigger than b.Value. Otherwise, 'else' is returned */
+
         public static bool operator >(SiDistance a, SiDistance b)
         {
             return (a.the_value > b.the_value);
@@ -211,6 +216,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first term of the sum. */
         /**@param "b" The second term of the sum. */
         /**@return The sum of a.Value and b.Value as a new SiDistance object */
+
         public static SiDistance operator +(SiDistance a, SiDistance b)
         {
             return new SiDistance(a.the_value + b.the_value);
@@ -220,6 +226,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first term of the difference. */
         /**@param "b" The second term of the difference. */
         /**@return The difference of (a.Value - b.Value) as a new SiDistance object */
+
         public static SiDistance operator -(SiDistance a, SiDistance b)
         {
             return new SiDistance(a.the_value - b.the_value);
@@ -229,36 +236,40 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The numerator of the ratio. */
         /**@param "b" The denominator of the ratio. */
         /**@return The ratio (a.Value / b.Value) as a double. */
+
         public static double operator /(SiDistance a, SiDistance b)
         {
-            return (a.the_value / b.the_value);
+            return (a.the_value/b.the_value);
         }
 
         /**@brief Multiplies by a scalar (dimensionless) */
         /**@param "a" A SiDistance object. */
         /**@param "b" The scalar multiplier. */
         /**@return The value (a.Value * b) as a new .SiDistance object */
+
         public static SiDistance operator *(SiDistance a, double b)
         {
-            return new SiDistance(a.the_value * b);
+            return new SiDistance(a.the_value*b);
         }
 
         /**@brief Multiplies by a scalar (dimensionless) */
         /**@param "a" The scalar multiplier. */
         /**@param "b" A SiDistance object. */
         /**@return The value (a.Value * b) as a new .SiDistance object */
+
         public static SiDistance operator *(double a, SiDistance b)
         {
-            return new SiDistance(a * b.the_value);
+            return new SiDistance(a*b.the_value);
         }
 
         /**@brief Divides by a scalar (dimensionless) */
         /**@param "a" A SiDistance object. */
         /**@param "b" The scalar divisor. */
         /**@return The value (a.Value / b) as a new .SiDistance object */
+
         public static SiDistance operator /(SiDistance a, double b)
         {
-            return new SiDistance(a.the_value / b);
+            return new SiDistance(a.the_value/b);
         }
 
         /****************** operators for other classes *****************/
@@ -266,13 +277,15 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" A distance. */
         /**@param "b" A time. */
         /**@return a.Value '/ b.Value as a speed. */
+
         public static SiSpeed operator /(SiDistance a, SiTime b)
         {
-            return new SiSpeed(a.Value / b.Value);
+            return new SiSpeed(a.Value/b.Value);
         }
 
         /****************************************************************/
         /******************************************************************/
+
         public string SubUnitString(SiDistance_SubUnits SubUnit)
         {
             string sub_unit_name = "";
@@ -298,6 +311,7 @@ namespace ErtmsSolutions.SiUnits
         }
 
         /******************************************************************/
+
         public double SubUnitFactor(SiDistance_SubUnits SubUnit)
         {
             double factor = 1.0;
@@ -307,13 +321,13 @@ namespace ErtmsSolutions.SiUnits
                     factor = 1.0;
                     break;
                 case SiDistance_SubUnits.DecaMeter:
-                    factor = 1.0 / 10.0;
+                    factor = 1.0/10.0;
                     break;
                 case SiDistance_SubUnits.HectoMeter:
-                    factor = 1.0 / 100.0;
+                    factor = 1.0/100.0;
                     break;
                 case SiDistance_SubUnits.KiloMeter:
-                    factor = 1.0 / 1000.0;
+                    factor = 1.0/1000.0;
                     break;
                 case SiDistance_SubUnits.Centimeter:
                     factor = 100.0;
@@ -323,21 +337,25 @@ namespace ErtmsSolutions.SiUnits
         }
 
         /**@brief Returns the value converted to the selected units. */
+
         public double ToSubUnits(SiDistance_SubUnits SubUnit)
         {
-            return this.Value * SubUnitFactor(SubUnit);
+            return this.Value*SubUnitFactor(SubUnit);
         }
+
         /**@brief Returns the value converted to the default units. */
+
         public double ToUnits()
         {
             return ToSubUnits(SiDistance_SubUnits.Meter);
         }
+
         /**@brief Returns the value converted to the default units. */
+
         public string UnitString()
         {
             return SubUnitString(SiDistance_SubUnits.Meter);
         }
-
     } /* End of 'SiDistance' class.*/
 } /* End of 'ErtmsSolutions.SiUnits' name space. */
 

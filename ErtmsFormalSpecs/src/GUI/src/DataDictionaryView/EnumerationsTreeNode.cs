@@ -13,13 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.SpecificationView;
+using Enum = DataDictionary.Types.Enum;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using ReqRef = DataDictionary.ReqRef;
 
 namespace GUI.DataDictionaryView
 {
-    public class EnumerationsTreeNode : ModelElementTreeNode<DataDictionary.Types.NameSpace>
+    public class EnumerationsTreeNode : ModelElementTreeNode<NameSpace>
     {
         private class ItemEditor : NamedEditor
         {
@@ -37,7 +44,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public EnumerationsTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+        public EnumerationsTreeNode(NameSpace item, bool buildSubNodes)
             : base(item, buildSubNodes, "Enumerations", true)
         {
         }
@@ -50,7 +57,7 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Types.Enum enumeration in Item.Enumerations)
+            foreach (Enum enumeration in Item.Enumerations)
             {
                 Nodes.Add(new EnumerationTreeNode(enumeration, buildSubNodes));
             }
@@ -71,7 +78,7 @@ namespace GUI.DataDictionaryView
             DataDictionaryTreeView treeView = BaseTreeView as DataDictionaryTreeView;
             if (treeView != null)
             {
-                DataDictionary.Types.Enum enumeration = (DataDictionary.Types.Enum)DataDictionary.Generated.acceptor.getFactory().createEnum();
+                Enum enumeration = (Enum) acceptor.getFactory().createEnum();
                 enumeration.Name = "<Enumeration" + (GetNodeCount(false) + 1) + ">";
                 AddEnum(enumeration);
             }
@@ -81,7 +88,7 @@ namespace GUI.DataDictionaryView
         /// Adds a new enumeration
         /// </summary>
         /// <param name="enumeration"></param>
-        public void AddEnum(DataDictionary.Types.Enum enumeration)
+        public void AddEnum(Enum enumeration)
         {
             Item.appendEnumerations(enumeration);
             Nodes.Add(new EnumerationTreeNode(enumeration, true));
@@ -112,20 +119,20 @@ namespace GUI.DataDictionaryView
             if (SourceNode is EnumerationTreeNode)
             {
                 EnumerationTreeNode enumerationTreeNode = SourceNode as EnumerationTreeNode;
-                DataDictionary.Types.Enum enumeration = enumerationTreeNode.Item;
+                Enum enumeration = enumerationTreeNode.Item;
 
                 enumerationTreeNode.Delete();
                 AddEnum(enumeration);
             }
-            else if (SourceNode is SpecificationView.ParagraphTreeNode)
+            else if (SourceNode is ParagraphTreeNode)
             {
-                SpecificationView.ParagraphTreeNode node = SourceNode as SpecificationView.ParagraphTreeNode;
-                DataDictionary.Specification.Paragraph paragaph = node.Item;
+                ParagraphTreeNode node = SourceNode as ParagraphTreeNode;
+                Paragraph paragaph = node.Item;
 
-                DataDictionary.Types.Enum enumeration = (DataDictionary.Types.Enum)DataDictionary.Generated.acceptor.getFactory().createEnum();
+                Enum enumeration = (Enum) acceptor.getFactory().createEnum();
                 enumeration.Name = paragaph.Name;
 
-                DataDictionary.ReqRef reqRef = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
+                ReqRef reqRef = (ReqRef) acceptor.getFactory().createReqRef();
                 reqRef.Name = paragaph.FullId;
                 enumeration.appendRequirements(reqRef);
                 AddEnum(enumeration);

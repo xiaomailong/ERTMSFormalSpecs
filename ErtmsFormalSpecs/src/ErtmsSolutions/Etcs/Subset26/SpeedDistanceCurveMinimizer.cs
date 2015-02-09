@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using ErtmsSolutions.SiUnits;
 
@@ -20,10 +21,10 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 {
     /************************************************************/
     /************************************************************/
+
     public class SpeedDistanceCurveMinimizer
     {
-
-        static int CompareDistances(SiDistance a, SiDistance b)
+        private static int CompareDistances(SiDistance a, SiDistance b)
         {
             if (a.ToUnits() < b.ToUnits())
             {
@@ -42,7 +43,6 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-
         public static FlatSpeedDistanceCurve Min(FlatSpeedDistanceCurve left, FlatSpeedDistanceCurve right)
         {
             /* Here goes the result */

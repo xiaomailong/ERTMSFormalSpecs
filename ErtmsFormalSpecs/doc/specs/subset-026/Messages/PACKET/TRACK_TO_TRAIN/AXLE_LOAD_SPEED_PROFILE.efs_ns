@@ -53,7 +53,7 @@
  Guid="7cc8f7ab-b2b0-49ed-987d-485e945b14f5"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -92,7 +92,7 @@
  Guid="616409f0-f735-4d17-8780-d76cb91a0828"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -100,7 +100,7 @@
  Guid="fdae6f11-3ddb-49b0-8d25-10cbeb444fef"
 >
 </StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -148,7 +148,7 @@
  Guid="e56b4af4-9fad-4fcf-9212-c52de7cae61a"
 >
 </StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -175,7 +175,7 @@
  Guid="2493b26b-1bfb-47f2-a2c3-75acd71d1f84"
 >
 </StructureElement><StructureElement
- TypeName="Default.MessageTypes.Speed"
+ TypeName="MessageTypes.Speed"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -194,7 +194,7 @@
  Guid="a72e36bf-b26b-4fae-bdf0-fb25876600fa"
 >
 </ReqRef><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -202,7 +202,7 @@
  Guid="44f97971-52ae-4ec9-89db-77fd54fca9d2"
 >
 </StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -253,7 +253,7 @@
  Guid="ea456715-7130-4ce2-b1d7-920e536643e7"
 >
 </StructureElement><StructureElement
- TypeName="Default.MessageTypes.Speed"
+ TypeName="MessageTypes.Speed"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -263,7 +263,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure1"
+ TypeName="SubStructure1"
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
@@ -275,7 +275,7 @@
  Guid="5b25d194-9e48-425c-8c5a-1a8fee8b4e7f"
 >
 </ReqRef></Collection><Collection
- TypeName="Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure3"
+ TypeName="SubStructure3"
  Default="[]"
  Implemented="TRUE"
  Name="Collection2"
@@ -287,7 +287,7 @@
  Guid="4aa8b912-2649-46c9-b3e3-94bb5655fa8d"
 >
 </ReqRef></Collection><Collection
- TypeName="Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.SubStructure2"
+ TypeName="SubStructure2"
  Default="[]"
  Implemented="TRUE"
  Name="Collection3"
@@ -299,4 +299,352 @@
  Guid="95651a30-7452-4cf7-b9b1-0fbef17dd663"
 >
 </ReqRef></Collection></Collections>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="7c84d645-6e41-4e7b-9e68-6d9938808109"
+>
+<Comment>Checks the values in a structure of type AXLE_LOAD_SPEED_PROFILE.Message</Comment>
+<Parameters>
+<Parameter
+ Type="AXLE_LOAD_SPEED_PROFILE.Message"
+ Name="struct"
+ Guid="6f6619e2-ea89-4e28-9be7-a97576d76171"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="2748676e-b92b-46d5-812a-cc1af7d5b58c"
+>
+<PreConditions>
+<PreCondition
+ Guid="21e66ef7-e835-44ea-b4c1-5e62d887fe9d"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="f8f16b9c-117b-464f-96b1-452c828e13b6"
+>
+<PreConditions>
+<PreCondition
+ Guid="9e7a899b-613a-4731-b614-86649ecd3a7e"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="c574b58f-3188-49c9-89d9-5a772d045d9e"
+>
+<PreConditions>
+<PreCondition
+ Guid="730f2e78-ec3c-4312-92d8-7197713f5cb3"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="2e6303a1-1d5f-4910-a7ca-cebb08052afe"
+>
+<PreConditions>
+<PreCondition
+ Guid="93550510-ffa3-4888-991b-623696b38aad"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_SCALE invalid"
+ Guid="fefe83e9-cd5f-47fe-b6c0-0f050f49ad95"
+>
+<PreConditions>
+<PreCondition
+ Guid="4223dd22-33cc-4f06-980b-c9456a4410cd"
+>struct.Q_SCALE &lt; 0
+  AND  
+struct.Q_SCALE &gt;= 4
+  AND  
+struct.Q_SCALE != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_TRACKINIT invalid"
+ Guid="8ed0cbf3-dec3-472b-8942-45ef39554f0c"
+>
+<PreConditions>
+<PreCondition
+ Guid="98008944-0bf3-4c9a-b07b-8e960aadcc6b"
+>struct.Q_TRACKINIT &lt; 0
+  AND  
+struct.Q_TRACKINIT &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.D_AXLELOAD invalid"
+ Guid="8363e087-a7fc-4af0-82a4-eed00da365d1"
+>
+<PreConditions>
+<PreCondition
+ Guid="a6238de6-c236-4013-b1ec-2c8141df1be0"
+>struct.D_AXLELOAD &lt; 0
+  AND  
+struct.D_AXLELOAD &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_AXLELOAD invalid"
+ Guid="027eac81-7cef-46a2-8902-73b5c696d751"
+>
+<PreConditions>
+<PreCondition
+ Guid="ca1bcee8-fb64-4d1f-969e-979d30a78840"
+>struct.L_AXLELOAD &lt; 0
+  AND  
+struct.L_AXLELOAD &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_FRONT invalid"
+ Guid="b52f1cb5-649f-479f-95e9-8c24c792c85f"
+>
+<PreConditions>
+<PreCondition
+ Guid="3b5d24d3-f86b-4d7e-a75b-d2fe5e47d9e0"
+>struct.Q_FRONT &lt; 0
+  AND  
+struct.Q_FRONT &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Sequence1 invalid"
+ Guid="c2fc98be-1540-4fea-8ba5-46c5eb6fe76c"
+>
+<PreConditions>
+<PreCondition
+ Guid="ad5e55c9-58ff-4314-ad26-c8c53526e8cc"
+>THERE_IS X IN struct.Sequence1 | NOT AXLE_LOAD_SPEED_PROFILE.CheckSubStructure1Values(X)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Sequence3 invalid"
+ Guid="f87fbcfd-940b-48d3-b827-ebba4dc37aba"
+>
+<PreConditions>
+<PreCondition
+ Guid="d9dedab0-6953-4fe6-b52c-1e68ccb302d3"
+>THERE_IS X IN struct.Sequence3 | NOT AXLE_LOAD_SPEED_PROFILE.CheckSubStructure2Values(X)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.D_TRACKINIT invalid"
+ Guid="64893b9b-cd8c-49f0-bdc6-30da2878b689"
+>
+<PreConditions>
+<PreCondition
+ Guid="41282208-b551-4217-9439-d3ba401d353a"
+>struct.D_TRACKINIT &lt; 0
+  AND  
+struct.D_TRACKINIT &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="86e2d738-2278-4c65-8e87-09670d076ee0"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="CheckSubStructure1Values"
+ Guid="0e874c44-a420-462b-b9fd-8464d23be045"
+>
+<Comment>Checks the values in a structure of type AXLE_LOAD_SPEED_PROFILE.SubStructure1</Comment>
+<Parameters>
+<Parameter
+ Type="AXLE_LOAD_SPEED_PROFILE.SubStructure1"
+ Name="struct"
+ Guid="df3248af-7863-47a9-b002-1feeb6d67fdf"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SubStructure1 empty"
+ Guid="3ecd790e-468b-499d-af86-5467cdf89bbf"
+>
+<PreConditions>
+<PreCondition
+ Guid="7fc2abb8-b830-4aa3-ac13-c506d9075efa"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.M_AXLELOADCAT invalid"
+ Guid="17c53e6f-345c-47a8-92fa-2a3e090cea25"
+>
+<PreConditions>
+<PreCondition
+ Guid="13410057-6b6d-4ccd-ad41-b0ecc85c4b90"
+>struct.M_AXLELOADCAT &lt; 0
+  AND  
+struct.M_AXLELOADCAT &gt;= 128
+  AND  
+struct.M_AXLELOADCAT &lt; 13
+  AND  
+struct.M_AXLELOADCAT &gt; 127</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.V_AXLELOAD invalid"
+ Guid="d581357b-4748-4dca-ab98-3321da109962"
+>
+<PreConditions>
+<PreCondition
+ Guid="11cadbe8-90cd-4ed9-a063-cb0e7f837bed"
+>struct.V_AXLELOAD &lt; 0
+  AND  
+struct.V_AXLELOAD &gt;= 128</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="4868d3dc-0f2b-4ebb-aa68-9e3934d31f71"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="CheckSubStructure2Values"
+ Guid="b7ccbefd-e0b8-4cf0-8592-9b0c2bf4b675"
+>
+<Comment>Checks the values in a structure of type AXLE_LOAD_SPEED_PROFILE.SubStructure2</Comment>
+<Parameters>
+<Parameter
+ Type="AXLE_LOAD_SPEED_PROFILE.SubStructure2"
+ Name="struct"
+ Guid="37575b19-db22-4539-90ef-68498ad03843"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SubStructure2 empty"
+ Guid="61d044b9-952b-4b18-84be-d631d31d1e4f"
+>
+<PreConditions>
+<PreCondition
+ Guid="4785ff84-c7dd-4b3f-87fa-84c096166d0e"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.D_AXLELOAD invalid"
+ Guid="54ff5332-3587-41ac-becd-1b544151596b"
+>
+<PreConditions>
+<PreCondition
+ Guid="85081a26-f27e-48be-be50-7bd47171bea2"
+>struct.D_AXLELOAD &lt; 0
+  AND  
+struct.D_AXLELOAD &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_AXLELOAD invalid"
+ Guid="f7c4465d-ee8b-4101-bff5-ca02a96f483e"
+>
+<PreConditions>
+<PreCondition
+ Guid="4d07864a-1f99-4a4a-af92-824ae814d82d"
+>struct.L_AXLELOAD &lt; 0
+  AND  
+struct.L_AXLELOAD &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_FRONT invalid"
+ Guid="1650cc18-b926-4b04-a26d-f0532f7d3b10"
+>
+<PreConditions>
+<PreCondition
+ Guid="a8202d23-d20f-4677-816c-7ff9f7019fa6"
+>struct.Q_FRONT &lt; 0
+  AND  
+struct.Q_FRONT &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.N_ITER invalid"
+ Guid="3e03d15f-9afe-48c0-80d8-79aaa5ef7eab"
+>
+<PreConditions>
+<PreCondition
+ Guid="8394431e-9cef-47dd-a53b-c90b37520ef9"
+>struct.N_ITER &lt; 0
+  AND  
+struct.N_ITER &gt;= 32</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Sequence2 invalid"
+ Guid="c8a27e88-57d6-463c-a497-b7b024d627e6"
+>
+<PreConditions>
+<PreCondition
+ Guid="9ed6a2fd-bb6b-4261-a586-43dff8d287ed"
+>THERE_IS X IN struct.Sequence2 | NOT AXLE_LOAD_SPEED_PROFILE.CheckSubStructure3Values(X)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="ce8d07c5-d45a-4b9b-998e-505fd7e369dd"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="CheckSubStructure3Values"
+ Guid="f41586fe-ed7c-4235-9b35-b180ed126954"
+>
+<Comment>Checks the values in a structure of type AXLE_LOAD_SPEED_PROFILE.SubStructure3</Comment>
+<Parameters>
+<Parameter
+ Type="AXLE_LOAD_SPEED_PROFILE.SubStructure3"
+ Name="struct"
+ Guid="d7c0722a-42c7-4f9a-887f-3c02be18e611"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SubStructure3 empty"
+ Guid="722cd2a8-dcf8-4134-9e3d-d1fa3d887778"
+>
+<PreConditions>
+<PreCondition
+ Guid="31dfab9a-0be3-4803-b5dc-482c8b1d1dad"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.M_AXLELOADCAT invalid"
+ Guid="46ae3890-f4d7-4896-9928-5787cf6ac90d"
+>
+<PreConditions>
+<PreCondition
+ Guid="0e5188a5-ebbc-4cc6-b075-36a06a79d673"
+>struct.M_AXLELOADCAT &lt; 0
+  AND  
+struct.M_AXLELOADCAT &gt;= 128
+  AND  
+struct.M_AXLELOADCAT &lt; 13
+  AND  
+struct.M_AXLELOADCAT &gt; 127</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.V_AXLELOAD invalid"
+ Guid="b0a4e30a-d7b7-418c-b7d2-52b0282b8035"
+>
+<PreConditions>
+<PreCondition
+ Guid="e71e88b0-c8b4-419d-bfc0-e25ee7023b78"
+>struct.V_AXLELOAD &lt; 0
+  AND  
+struct.V_AXLELOAD &gt;= 128</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="bd81c3ae-e66b-4c73-9c23-d853b6662a13"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

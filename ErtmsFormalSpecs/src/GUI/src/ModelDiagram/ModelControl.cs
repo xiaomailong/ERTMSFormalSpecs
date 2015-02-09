@@ -13,19 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Drawing;
+using System.Windows.Forms;
+using DataDictionary;
+using GUI.BoxArrowDiagram;
+
 namespace GUI.ModelDiagram
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary;
-    using System.Drawing;
-
     /// <summary>
     /// The boxes that represent a model element
     /// </summary>
-    public abstract class ModelControl : BoxArrowDiagram.BoxControl<IGraphicalDisplay, ModelArrow>
+    public abstract class ModelControl : BoxControl<IGraphicalDisplay, ModelArrow>
     {
         /// <summary>
         /// Constructor
@@ -36,19 +35,21 @@ namespace GUI.ModelDiagram
             Model = model;
             BoxMode = BoxModeEnum.Rectangle;
 
-            MouseUp += new System.Windows.Forms.MouseEventHandler(ModelControl_MouseUp);
+            MouseUp += new MouseEventHandler(ModelControl_MouseUp);
         }
 
-        void ModelControl_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void ModelControl_MouseUp(object sender, MouseEventArgs e)
         {
-
         }
 
         /// <summary>
         /// Avoid the control displaying the graphical name itself.
         /// Tt shall be done during the PaintInBoxArrowPanel method
         /// </summary>
-        public override string Text { get { return ""; } }
+        public override string Text
+        {
+            get { return ""; }
+        }
 
         /// <summary>
         /// The name of the kind of model
@@ -71,7 +72,7 @@ namespace GUI.ModelDiagram
             string name = GUIUtils.AdjustForDisplay(graphics, Model.GraphicalName, Width, Font);
             SizeF textSize = graphics.MeasureString(name, Font);
             int boxHeight = Height - bold.Height - 4;
-            graphics.DrawString(name, Font, textBrush, Location.X + Width / 2 - textSize.Width / 2, Location.Y + bold.Height + 4 + boxHeight / 2 - Font.Height / 2);
+            graphics.DrawString(name, Font, textBrush, Location.X + Width/2 - textSize.Width/2, Location.Y + bold.Height + 4 + boxHeight/2 - Font.Height/2);
         }
     }
 }

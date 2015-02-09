@@ -13,17 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using DataDictionary.Constants;
-using DataDictionary.Variables;
-using GUI.BoxArrowDiagram;
-using DataDictionary.Rules;
-using DataDictionary.Specification;
 using DataDictionary;
-using System.Collections.Generic;
+using DataDictionary.Specification;
+using GUI.BoxArrowDiagram;
+using GUI.SpecificationView;
+using ModelElement = Utils.ModelElement;
 
 namespace GUI.RequirementSetDiagram
 {
@@ -32,7 +31,7 @@ namespace GUI.RequirementSetDiagram
         /// <summary>
         /// The metrics associates to this requirements set
         /// </summary>
-        private GUI.SpecificationView.ParagraphTreeNode.ParagraphSetMetrics Metrics { get; set; }
+        private ParagraphTreeNode.ParagraphSetMetrics Metrics { get; set; }
 
         /// <summary>
         /// Constructor
@@ -60,11 +59,11 @@ namespace GUI.RequirementSetDiagram
                 base.Model = value;
                 List<Paragraph> paragraphs = new List<Paragraph>();
                 Model.GetParagraphs(paragraphs);
-                Metrics = GUI.SpecificationView.ParagraphTreeNode.CreateParagraphSetMetrics(EFSSystem.INSTANCE, paragraphs);
+                Metrics = ParagraphTreeNode.CreateParagraphSetMetrics(EFSSystem.INSTANCE, paragraphs);
             }
         }
 
-        public override void AcceptDrop(Utils.ModelElement element)
+        public override void AcceptDrop(ModelElement element)
         {
             base.AcceptDrop(element);
 
@@ -92,11 +91,11 @@ namespace GUI.RequirementSetDiagram
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void HandleMouseDoubleClick(object sender, MouseEventArgs e)
+        private void HandleMouseDoubleClick(object sender, MouseEventArgs e)
         {
             SelectBox();
 
-            RequirementSetPanel panel = (RequirementSetPanel)Panel;
+            RequirementSetPanel panel = (RequirementSetPanel) Panel;
             if (panel != null)
             {
                 RequirementSetDiagramWindow window = new RequirementSetDiagramWindow();
@@ -110,12 +109,14 @@ namespace GUI.RequirementSetDiagram
         /// Implemented color
         /// </summary>
         public static Color IMPLEMENTED_COLOR = Color.Green;
+
         public static Pen IMPLEMENTED_PEN = new Pen(IMPLEMENTED_COLOR);
 
         /// <summary>
         /// Tested color
         /// </summary>
         public static Color TESTED_COLOR = Color.Yellow;
+
         public static Pen TESTED_PEN = new Pen(TESTED_COLOR);
 
         /// <summary>
@@ -148,9 +149,9 @@ namespace GUI.RequirementSetDiagram
             double ratio = 1;
             if (total > 0)
             {
-                ratio = (double)performed / (double)total;
+                ratio = (double) performed/(double) total;
             }
-            g.FillRectangle(new SolidBrush(color), Location.X + 10 + 1, Location.Y + Height - 20 + 10 - width + 1, (int)((Width - 20) * ratio) - 1, width - 1);
+            g.FillRectangle(new SolidBrush(color), Location.X + 10 + 1, Location.Y + Height - 20 + 10 - width + 1, (int) ((Width - 20)*ratio) - 1, width - 1);
         }
     }
 }

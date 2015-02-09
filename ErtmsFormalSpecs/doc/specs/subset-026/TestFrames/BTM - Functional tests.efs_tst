@@ -1200,7 +1200,7 @@
 >NOT Available ( BTM.LRBG )</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a95b1950-6311-4ab1-aa8a-07d4411ebcc7"
->( COUNT X IN BTM.CurrentBaliseGroup ) == 3</Expectation></Expectations>
+>( COUNT X IN BTM.CurrentBaliseGroup | NOT X.Missed ) == 3</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1253,6 +1253,214 @@
  Kind="Instantaneous"
  Guid="a90a5241-f3ef-4abc-a215-a6f2eff1951f"
 >( COUNT X IN BTM.CurrentBaliseGroup ) == 1</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Balise reception, missed balises in current BG"
+ Guid="21f32b92-4911-48ed-8dde-caa62dd0254a"
+>
+<TestCases>
+<TestCase
+ Implemented="TRUE"
+ Name="Initial configuration"
+ Guid="ec459605-e0fe-4a3e-b1ef-54bbeffbaf1c"
+>
+<ReqRef
+ Id="bc35119f-f1da-40d4-b6f7-b73c9ba07d98"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="46283c8d-e949-43f6-9c36-d852def81cec"
+>
+</ReqRef><ReqRef
+ Id="bb8f4e12-123f-4746-81d4-bd86e68fad6b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c3c0e15e-26b7-422e-b40b-e0d93c61e5ba"
+>
+</ReqRef><ReqRef
+ Id="5c440e26-b092-4abd-8105-dca981501e3f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e6d007df-e344-4ab7-82d1-dfabfef59c0f"
+>
+</ReqRef><Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1 - Initialize test environment"
+ Guid="c3751bec-f27c-4c48-9330-042087e978fc"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="6075bfda-2337-4412-a842-fb973f9e6f84"
+>
+<Actions>
+<Action
+ Guid="4c100790-e6f0-46fa-ba69-2b7dd969943c"
+>Kernel.InitializeTestEnvironment()</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step2 - Set up the partially received BG"
+ Guid="6ba69804-6aeb-44b4-ae92-16b4d63d4d07"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="21fe3969-f405-441c-8104-eee60f212a93"
+>
+<Actions>
+<Action
+ Guid="c3298322-b036-4d1f-bb39-a305e97480d0"
+>BTM.CurrentBaliseGroup &lt;- 
+[
+    BTM.StoredBaliseStruct
+    {
+        Telegram =&gt; Messages.EUROBALISE.Message
+        {
+            Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+            M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+            Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+            N_PIG =&gt; 0,
+            N_TOTAL =&gt; Messages.N_TOTAL._8_balises_in_groupC,
+            M_DUP =&gt; Messages.M_DUP.No_duplicates,
+            M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_never_fits_any_message_of_the_group,
+            NID_C =&gt; 85,
+            NID_BG =&gt; 1234,
+            Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+            Sequence1 =&gt; 
+            [
+                
+            ],
+            BitField =&gt; &apos;&apos;
+        },
+        Missed =&gt; Boolean.False
+    },
+BTM.StoredBaliseStruct
+    {
+        Telegram =&gt; Messages.EUROBALISE.Message
+        {
+            Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+            M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+            Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+            N_PIG =&gt; 1,
+            N_TOTAL =&gt; Messages.N_TOTAL._8_balises_in_groupC,
+            M_DUP =&gt; Messages.M_DUP.No_duplicates,
+            M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_never_fits_any_message_of_the_group,
+            NID_C =&gt; 85,
+            NID_BG =&gt; 1234,
+            Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+            Sequence1 =&gt; 
+            [
+                
+            ],
+            BitField =&gt; &apos;&apos;
+        },
+        Missed =&gt; Boolean.False
+    }
+]</Action><Action
+ Guid="aae398d3-2cba-4838-8c3e-8dadb7d5e105"
+>BTM.PrevBalisePosition &lt;- Odometry.NominalDistance</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="05eddfe4-dde5-4170-a401-56ca81348a80"
+>(COUNT X IN BTM.CurrentBaliseGroup) == 2</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Receive a much later balise in the group"
+ Guid="0b81d8ce-56e0-4eb4-a764-847f8d8a7d60"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="a505ca77-5082-421e-95db-ab791c9d8adc"
+>
+<Actions>
+<Action
+ Guid="68661380-f9b3-45f7-9fcb-1eaf0a3263ed"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; Messages.M_VERSION.Version_1_1__introduced_in_SRS_3_0_0,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 5,
+    N_TOTAL =&gt; Messages.N_TOTAL._8_balises_in_groupC,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; Messages.M_MCOUNT.The_telegram_never_fits_any_message_of_the_group,
+    NID_C =&gt; 85,
+    NID_BG =&gt; 1234,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; 
+    [
+        
+    ],
+    BitField =&gt; &apos;&apos;
+}</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="8a48aab5-b5c5-49e7-a146-a3cbcd0356f6"
+>COUNT X IN BTM.CurrentBaliseGroup == 6</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="301a2ea0-837d-4546-9ecb-342ed33d6a4e"
+>(COUNT X IN BTM.CurrentBaliseGroup | X.Missed) == 3</Expectation></Expectations>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4 - Miss the next balise, is added as virtual"
+ Guid="88dabec1-ae07-4d9f-9b51-01e9602f7b84"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="6634a744-f596-4fa4-95ae-b079056b3029"
+>
+<Actions>
+<Action
+ Guid="df665fe4-9362-4922-93a7-e2fb5259630d"
+>Odometry.NominalDistance &lt;- Odometry.NominalDistance + BTM.MaxDistBetweenBalises + 1.0</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="7a336339-9f5c-4d99-9e63-093a2b63cc95"
+>COUNT X IN BTM.CurrentBaliseGroup == 7</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="089ee130-68cc-40d8-a9bc-86ae45f361b5"
+>(COUNT X IN BTM.CurrentBaliseGroup | X.Missed) == 4</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

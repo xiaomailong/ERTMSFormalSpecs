@@ -13,31 +13,34 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
 
+using System;
 using DataDictionary;
+using DataDictionary.Tests;
+using DataDictionary.Tests.Runner;
+using DataDictionary.Tests.Runner.Events;
+using Utils;
 
 namespace EFSTester
 {
-    class Program
+    internal class Program
     {
         /// <summary>
         /// Perform all functional tests defined in the .EFS file provided
         /// </summary>
         /// <param name="args"></param>
         /// <returns>the error code of the program</returns>
-        static int Main(string[] args)
+        private static int Main(string[] args)
         {
             int retVal = 0;
 
             EFSSystem efsSystem = EFSSystem.INSTANCE;
             try
             {
-
                 Console.Out.WriteLine("EFS Tester");
 
                 // Load the dictionaries provided as parameters
-                DataDictionary.Util.PleaseLockFiles = false;
+                Util.PleaseLockFiles = false;
                 foreach (string arg in args)
                 {
                     Console.Out.WriteLine("Loading dictionary " + arg);
@@ -54,10 +57,10 @@ namespace EFSTester
                 foreach (Dictionary dictionary in efsSystem.Dictionaries)
                 {
                     Console.Out.WriteLine("Processing tests from dictionary " + dictionary.Name);
-                    foreach (DataDictionary.Tests.Frame frame in dictionary.Tests)
+                    foreach (Frame frame in dictionary.Tests)
                     {
                         Console.Out.WriteLine("Executing frame " + frame.FullName);
-                        foreach (DataDictionary.Tests.SubSequence subSequence in frame.SubSequences)
+                        foreach (SubSequence subSequence in frame.SubSequences)
                         {
                             Console.Out.WriteLine("Executing sub sequence " + subSequence.FullName);
                             if (subSequence.getCompleted())
@@ -68,17 +71,17 @@ namespace EFSTester
                                     subSequence.Translate(dictionary.TranslationDictionary);
                                 }
 
-                                DataDictionary.Tests.Runner.Runner runner = new DataDictionary.Tests.Runner.Runner(subSequence, false, false);
+                                Runner runner = new Runner(subSequence, false, false);
                                 runner.RunUntilStep(null);
 
                                 bool failed = false;
-                                foreach (DataDictionary.Tests.Runner.Events.ModelEvent evt in runner.FailedExpectations())
+                                foreach (ModelEvent evt in runner.FailedExpectations())
                                 {
-                                    DataDictionary.Tests.Runner.Events.Expect expect = evt as DataDictionary.Tests.Runner.Events.Expect;
+                                    Expect expect = evt as Expect;
                                     if (expect != null)
                                     {
                                         string message = expect.Message.Replace('\n', ' ');
-                                        DataDictionary.Tests.TestCase testCase = Utils.EnclosingFinder<DataDictionary.Tests.TestCase>.find(expect.Expectation);
+                                        TestCase testCase = EnclosingFinder<TestCase>.find(expect.Expectation);
                                         if (testCase.ImplementationCompleted)
                                         {
                                             Console.Out.WriteLine(" failed (unexpected) :" + message);
@@ -91,7 +94,7 @@ namespace EFSTester
                                     }
                                     else
                                     {
-                                        DataDictionary.Tests.Runner.Events.ModelInterpretationFailure modelInterpretationFailure = evt as DataDictionary.Tests.Runner.Events.ModelInterpretationFailure;
+                                        ModelInterpretationFailure modelInterpretationFailure = evt as ModelInterpretationFailure;
                                         if (modelInterpretationFailure != null)
                                         {
                                             Console.Out.WriteLine(" failed : " + modelInterpretationFailure.Message);
@@ -120,7 +123,7 @@ namespace EFSTester
             }
             finally
             {
-                DataDictionary.Util.UnlockAllFiles();
+                Util.UnlockAllFiles();
                 efsSystem.Stop();
             }
 

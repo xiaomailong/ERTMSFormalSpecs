@@ -13,33 +13,36 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing.Design;
 using System.Windows.Forms;
 using DataDictionary;
-using System.Drawing.Design;
+using DataDictionary.Types;
+using GUI.Converters;
 
 namespace GUI.DataDictionaryView
 {
     public class ParameterTreeNode : ModelElementTreeNode<Parameter>
     {
-        private class InternalNameSpaceConverter : Converters.NameSpaceConverter
+        private class InternalNameSpaceConverter : NameSpaceConverter
         {
             public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
             {
-                ItemEditor editor = ((ItemEditor)context.Instance);
+                ItemEditor editor = ((ItemEditor) context.Instance);
 
                 return new StandardValuesCollection(GetValues(editor.Item.Dictionary));
             }
         }
 
-        private class InternalTypesConverter : Converters.TypesConverter
+        private class InternalTypesConverter : TypesConverter
         {
             public override StandardValuesCollection
-            GetStandardValues(ITypeDescriptorContext context)
+                GetStandardValues(ITypeDescriptorContext context)
             {
-                ItemEditor editor = (ItemEditor)context.Instance;
+                ItemEditor editor = (ItemEditor) context.Instance;
                 return GetValues(editor.Item);
             }
         }
@@ -58,14 +61,15 @@ namespace GUI.DataDictionaryView
             /// The parameter namespace
             /// </summary>
             private string namSpace;
-            [Category("Description"), TypeConverter(typeof(InternalNameSpaceConverter))]
+
+            [Category("Description"), TypeConverter(typeof (InternalNameSpaceConverter))]
             public string NameSpace
             {
                 get
                 {
                     if (namSpace == null)
                     {
-                        DataDictionary.Types.ITypedElement element = DataDictionary.OverallTypedElementFinder.INSTANCE.findByName(Item, Item.NameSpace.Name);
+                        ITypedElement element = OverallTypedElementFinder.INSTANCE.findByName(Item, Item.NameSpace.Name);
 
                         if (element != null && element.NameSpace != null)
                         {
@@ -95,9 +99,9 @@ namespace GUI.DataDictionaryView
             /// The parameter type
             /// </summary>
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.TypeUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.TypeUITypeConverter))]
-            public DataDictionary.Parameter Type
+            [Editor(typeof (TypeUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (TypeUITypeConverter))]
+            public Parameter Type
             {
                 get { return Item; }
                 set
@@ -140,4 +144,3 @@ namespace GUI.DataDictionaryView
         }
     }
 }
-

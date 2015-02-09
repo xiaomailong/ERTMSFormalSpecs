@@ -13,10 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
+using DataDictionary.Generated;
+using Parameter = DataDictionary.Parameter;
+using Procedure = DataDictionary.Functions.Procedure;
 
 namespace GUI.DataDictionaryView
 {
@@ -37,7 +40,7 @@ namespace GUI.DataDictionaryView
         /// Constructor (for function)
         /// </summary>
         /// <param name="item"></param>
-        public ProcedureParametersTreeNode(DataDictionary.Functions.Procedure item, bool buildSubNodes)
+        public ProcedureParametersTreeNode(Procedure item, bool buildSubNodes)
             : base(item, buildSubNodes, "Parameters", true, false)
         {
         }
@@ -50,7 +53,7 @@ namespace GUI.DataDictionaryView
         {
             Nodes.Clear();
 
-            foreach (DataDictionary.Parameter parameter in Item.FormalParameters)
+            foreach (Parameter parameter in Item.FormalParameters)
             {
                 Nodes.Add(new ParameterTreeNode(parameter, buildSubNodes));
             }
@@ -77,7 +80,7 @@ namespace GUI.DataDictionaryView
             if (SourceNode is ParameterTreeNode)
             {
                 ParameterTreeNode node = SourceNode as ParameterTreeNode;
-                DataDictionary.Parameter parameter = node.Item;
+                Parameter parameter = node.Item;
                 node.Delete();
                 AddParameter(parameter);
             }
@@ -88,7 +91,7 @@ namespace GUI.DataDictionaryView
             DataDictionaryTreeView treeView = BaseTreeView as DataDictionaryTreeView;
             if (treeView != null)
             {
-                DataDictionary.Parameter parameter = (DataDictionary.Parameter)DataDictionary.Generated.acceptor.getFactory().createParameter();
+                Parameter parameter = (Parameter) acceptor.getFactory().createParameter();
                 parameter.Name = "<Parameter" + (GetNodeCount(false) + 1) + ">";
                 AddParameter(parameter);
             }
@@ -98,7 +101,7 @@ namespace GUI.DataDictionaryView
         /// Adds a new parameter
         /// </summary>
         /// <param name="function"></param>
-        public ParameterTreeNode AddParameter(DataDictionary.Parameter parameter)
+        public ParameterTreeNode AddParameter(Parameter parameter)
         {
             Item.appendParameters(parameter);
             ParameterTreeNode retVal = new ParameterTreeNode(parameter, true);

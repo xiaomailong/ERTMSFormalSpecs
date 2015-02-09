@@ -13,16 +13,23 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary;
 using DataDictionary.Tests;
-using System.ComponentModel;
+using DataDictionary.Tests.Runner;
+using GUI.LongOperations;
+using GUI.Report;
+using Utils;
+using Action = DataDictionary.Rules.Action;
+using ModelElement = Utils.ModelElement;
 
 namespace GUI.TestRunnerView
 {
-    public class SubSequenceTreeNode : ModelElementTreeNode<DataDictionary.Tests.SubSequence>
+    public class SubSequenceTreeNode : ModelElementTreeNode<SubSequence>
     {
         /// <summary>
         /// The value editor
@@ -37,42 +44,73 @@ namespace GUI.TestRunnerView
             {
             }
 
-            [Category("Process"), DescriptionAttribute("This flag indicates that the sequence is complete and can be executed during nightbuild")]
-            public Boolean Completed { get { return Item.getCompleted(); }   set { Item.setCompleted(value);} }
+            [Category("Process"), Description("This flag indicates that the sequence is complete and can be executed during nightbuild")]
+            public Boolean Completed
+            {
+                get { return Item.getCompleted(); }
+                set { Item.setCompleted(value); }
+            }
 
             [Category("Subset-076 Description")]
-            public string D_LRBG { get { return Item.getD_LRBG(); } }
+            public string D_LRBG
+            {
+                get { return Item.getD_LRBG(); }
+            }
 
             [Category("Subset-076 Description")]
-            public string Level { get { return Item.getLevel(); } }
+            public string Level
+            {
+                get { return Item.getLevel(); }
+            }
 
             [Category("Subset-076 Description")]
-            public string Mode { get { return Item.getMode(); } }
+            public string Mode
+            {
+                get { return Item.getMode(); }
+            }
 
             [Category("Subset-076 Description")]
-            public string NID_LRBG { get { return Item.getNID_LRBG(); } }
+            public string NID_LRBG
+            {
+                get { return Item.getNID_LRBG(); }
+            }
 
             [Category("Subset-076 Description")]
-            public string Q_DIRLRBG { get { return Item.getQ_DIRLRBG(); } }
+            public string Q_DIRLRBG
+            {
+                get { return Item.getQ_DIRLRBG(); }
+            }
 
             [Category("Subset-076 Description")]
-            public string Q_DIRTRAIN { get { return Item.getQ_DIRTRAIN(); } }
+            public string Q_DIRTRAIN
+            {
+                get { return Item.getQ_DIRTRAIN(); }
+            }
 
             [Category("Subset-076 Description")]
-            public string Q_DLRBG { get { return Item.getQ_DLRBG(); } }
+            public string Q_DLRBG
+            {
+                get { return Item.getQ_DLRBG(); }
+            }
 
             [Category("Subset-076 Description")]
-            public string RBC_Phone { get { return Item.getRBCPhone(); } }
+            public string RBC_Phone
+            {
+                get { return Item.getRBCPhone(); }
+            }
 
             [Category("Subset-076 Description")]
-            public string RBC_ID { get { return Item.getRBC_ID(); } }
+            public string RBC_ID
+            {
+                get { return Item.getRBC_ID(); }
+            }
         }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public SubSequenceTreeNode(DataDictionary.Tests.SubSequence item, bool buildSubNodes)
+        public SubSequenceTreeNode(SubSequence item, bool buildSubNodes)
             : base(item, buildSubNodes, null, true)
         {
         }
@@ -85,7 +123,7 @@ namespace GUI.TestRunnerView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Tests.TestCase testCase in Item.TestCases)
+            foreach (TestCase testCase in Item.TestCases)
             {
                 Nodes.Add(new TestCaseTreeNode(testCase, buildSubNodes));
             }
@@ -105,7 +143,7 @@ namespace GUI.TestRunnerView
         /// </summary>
         /// <param name="testCase"></param>
         /// <returns></returns>
-        public TestCaseTreeNode createTestCase(DataDictionary.Tests.TestCase testCase)
+        public TestCaseTreeNode createTestCase(TestCase testCase)
         {
             TestCaseTreeNode retVal = new TestCaseTreeNode(testCase, true);
 
@@ -116,7 +154,8 @@ namespace GUI.TestRunnerView
         }
 
         #region Apply translation rules
-        private class ApplyTranslationRulesHandler : Utils.ProgressHandler
+
+        private class ApplyTranslationRulesHandler : ProgressHandler
         {
             /// <summary>
             /// The subsequence on which the translation rules should be applied
@@ -138,10 +177,11 @@ namespace GUI.TestRunnerView
             /// <param name="arg"></param>
             public override void ExecuteWork()
             {
-                Utils.FinderRepository.INSTANCE.ClearCache();
+                FinderRepository.INSTANCE.ClearCache();
                 SubSequence.Translate(SubSequence.Dictionary.TranslationDictionary);
             }
         }
+
         #endregion
 
         /// <summary>
@@ -159,7 +199,7 @@ namespace GUI.TestRunnerView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Tests.TestCase testCase = DataDictionary.Tests.TestCase.createDefault("Test case" + (Item.TestCases.Count + 1));
+            TestCase testCase = TestCase.createDefault("Test case" + (Item.TestCases.Count + 1));
             testCase.Enclosing = Item;
 
             createTestCase(testCase);
@@ -168,16 +208,14 @@ namespace GUI.TestRunnerView
         /// <summary>
         /// Provides the EFS System in which this element belongs
         /// </summary>
-        public DataDictionary.EFSSystem EFSSystem
+        public EFSSystem EFSSystem
         {
-            get
-            {
-                return Utils.EnclosingFinder<DataDictionary.EFSSystem>.find(Item);
-            }
+            get { return EnclosingFinder<EFSSystem>.find(Item); }
         }
 
         #region Execute tests
-        private class ExecuteTestsHandler : LongOperations.BaseLongOperation
+
+        private class ExecuteTestsHandler : BaseLongOperation
         {
             /// <summary>
             /// The window for which theses tests should be executed
@@ -192,7 +230,10 @@ namespace GUI.TestRunnerView
             /// <summary>
             /// The EFS system 
             /// </summary>
-            private EFSSystem EFSSystem { get { return SubSequence.EFSSystem; } }
+            private EFSSystem EFSSystem
+            {
+                get { return SubSequence.EFSSystem; }
+            }
 
             /// <summary>
             /// Constructor
@@ -214,7 +255,7 @@ namespace GUI.TestRunnerView
                 if (Window != null)
                 {
                     Window.setSubSequence(SubSequence);
-                    EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(SubSequence, true, false);
+                    EFSSystem.Runner = new Runner(SubSequence, true, false);
                     EFSSystem.Runner.RunUntilStep(null);
                 }
             }
@@ -228,7 +269,7 @@ namespace GUI.TestRunnerView
         public void RunHandler(object sender, EventArgs args)
         {
             ClearMessages();
-            Utils.ModelElement.LogCount = 0;
+            ModelElement.LogCount = 0;
 
             ExecuteTestsHandler executeTestHandler = new ExecuteTestsHandler(BaseForm as Window, Item);
             executeTestHandler.ExecuteUsingProgressDialog("Executing test steps");
@@ -240,18 +281,19 @@ namespace GUI.TestRunnerView
             }
 
             string runtimeErrors = "Succesful sub sequence execution.\n";
-            if (Utils.ModelElement.LogCount > 0)
+            if (ModelElement.LogCount > 0)
             {
                 runtimeErrors = "Errors were raised while executing sub sequence.\n";
             }
 
             if (!executeTestHandler.Dialog.Canceled)
             {
-                System.Windows.Forms.MessageBox.Show("Sub sequence execution report.\n" + runtimeErrors + "Test duration : " + Math.Round(executeTestHandler.Span.TotalSeconds) + " seconds", "Execution report");
+                MessageBox.Show("Sub sequence execution report.\n" + runtimeErrors + "Test duration : " + Math.Round(executeTestHandler.Span.TotalSeconds) + " seconds", "Execution report");
             }
 
             GUIUtils.MDIWindow.RefreshAfterStep();
         }
+
         #endregion
 
         /// <summary>
@@ -261,10 +303,10 @@ namespace GUI.TestRunnerView
         /// <param name="args"></param>
         public void ReportHandler(object sender, EventArgs args)
         {
-            Report.TestReport aReport = new Report.TestReport(Item);
+            TestReport aReport = new TestReport(Item);
             aReport.Show();
         }
-        
+
         public void InsertTest(object sender, EventArgs args)
         {
             TextEntry dataEntry = new TextEntry();
@@ -287,7 +329,7 @@ namespace GUI.TestRunnerView
             {
                 foreach (SubStep subStep in step.SubSteps)
                 {
-                    foreach (DataDictionary.Rules.Action action in subStep.Actions)
+                    foreach (Action action in subStep.Actions)
                     {
                         action.ExpressionText = action.ExpressionText.Replace("DriverId", dataEntry.Value);
                     }

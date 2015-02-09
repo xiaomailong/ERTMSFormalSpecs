@@ -13,15 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
-using DataDictionary.Specification;
+using DataDictionary.Generated;
+using Chapter = DataDictionary.Specification.Chapter;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using RequirementSet = DataDictionary.Specification.RequirementSet;
+using RequirementSetReference = DataDictionary.Specification.RequirementSetReference;
 
 namespace GUI.SpecificationView
 {
-    public class ChapterTreeNode : ModelElementTreeNode<DataDictionary.Specification.Chapter>
+    public class ChapterTreeNode : ModelElementTreeNode<Chapter>
     {
         /// <summary>
         /// The value editor
@@ -58,7 +63,7 @@ namespace GUI.SpecificationView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ChapterTreeNode(DataDictionary.Specification.Chapter item, bool buildSubNodes)
+        public ChapterTreeNode(Chapter item, bool buildSubNodes)
             : base(item, buildSubNodes, null, true)
         {
         }
@@ -71,7 +76,7 @@ namespace GUI.SpecificationView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Specification.Paragraph paragraph in Item.Paragraphs)
+            foreach (Paragraph paragraph in Item.Paragraphs)
             {
                 Nodes.Add(new ParagraphTreeNode(paragraph, buildSubNodes));
             }
@@ -90,7 +95,7 @@ namespace GUI.SpecificationView
         /// Adds a new paragraph to this chapter
         /// </summary>
         /// <param name="paragraph"></param>
-        public void AddParagraph(DataDictionary.Specification.Paragraph paragraph)
+        public void AddParagraph(Paragraph paragraph)
         {
             Item.appendParagraphs(paragraph);
             Nodes.Add(new ParagraphTreeNode(paragraph, true));
@@ -99,7 +104,7 @@ namespace GUI.SpecificationView
 
         public void AddParagraphHandler(object sender, EventArgs args)
         {
-            DataDictionary.Specification.Paragraph paragraph = (DataDictionary.Specification.Paragraph)DataDictionary.Generated.acceptor.getFactory().createParagraph();
+            Paragraph paragraph = (Paragraph) acceptor.getFactory().createParagraph();
             paragraph.FullId = Item.getId() + "." + (Item.countParagraphs() + 1);
             paragraph.Text = "";
 
@@ -108,7 +113,7 @@ namespace GUI.SpecificationView
             AddParagraph(paragraph);
         }
 
-        private void SetupDefaultRequirementSets(DataDictionary.Specification.Paragraph paragraph)
+        private void SetupDefaultRequirementSets(Paragraph paragraph)
         {
             foreach (RequirementSet requirementSet in Item.EFSSystem.RequirementSets)
             {
@@ -118,9 +123,9 @@ namespace GUI.SpecificationView
 
         public void ChangeRequirementToNoteHandler(object sender, EventArgs args)
         {
-            foreach (DataDictionary.Specification.Paragraph paragraph in Item.Paragraphs)
+            foreach (Paragraph paragraph in Item.Paragraphs)
             {
-                paragraph.ChangeType(DataDictionary.Generated.acceptor.Paragraph_type.aREQUIREMENT, DataDictionary.Generated.acceptor.Paragraph_type.aNOTE);
+                paragraph.ChangeType(acceptor.Paragraph_type.aREQUIREMENT, acceptor.Paragraph_type.aNOTE);
             }
         }
 
@@ -134,9 +139,9 @@ namespace GUI.SpecificationView
             {
                 if (MessageBox.Show("Are you sure you want to move the corresponding paragraph?", "Move paragraph", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    ParagraphTreeNode paragraphTreeNode = (ParagraphTreeNode)SourceNode;
+                    ParagraphTreeNode paragraphTreeNode = (ParagraphTreeNode) SourceNode;
 
-                    DataDictionary.Specification.Paragraph paragraph = paragraphTreeNode.Item;
+                    Paragraph paragraph = paragraphTreeNode.Item;
                     paragraphTreeNode.Delete();
                     AddParagraph(paragraph);
                 }

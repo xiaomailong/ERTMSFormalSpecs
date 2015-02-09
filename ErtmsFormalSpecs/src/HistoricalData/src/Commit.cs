@@ -13,11 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.Collections;
+
 namespace HistoricalData
 {
-    using System.Collections;
-    using System;
-
     /// <summary>
     /// A commit
     /// </summary>
@@ -32,7 +33,7 @@ namespace HistoricalData
             {
                 if (allChanges() == null)
                 {
-                    setAllChanges(new System.Collections.ArrayList());
+                    setAllChanges(new ArrayList());
                 }
                 return allChanges();
             }
@@ -61,7 +62,7 @@ namespace HistoricalData
         /// </summary>
         public DateTime Date
         {
-            get 
+            get
             {
                 DateTime retVal = DateTime.MinValue;
 

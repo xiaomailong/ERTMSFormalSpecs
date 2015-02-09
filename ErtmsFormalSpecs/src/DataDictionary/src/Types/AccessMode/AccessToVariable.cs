@@ -13,15 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using DataDictionary.Interpreter;
+using DataDictionary.Variables;
+
 namespace DataDictionary.Types.AccessMode
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary.Interpreter;
-    using DataDictionary.Variables;
-
     /// <summary>
     /// This class represents an access to a variable
     /// </summary>
@@ -51,7 +49,7 @@ namespace DataDictionary.Types.AccessMode
         /// </summary>
         public override ModelElement ReferencedModel
         {
-            get { return (ModelElement)Variable; }
+            get { return (ModelElement) Variable; }
         }
 
         /// <summary>
@@ -62,7 +60,10 @@ namespace DataDictionary.Types.AccessMode
         /// <summary>
         /// The name to be displayed
         /// </summary>
-        public override string GraphicalName { get { return Variable.Name; } }
+        public override string GraphicalName
+        {
+            get { return Variable.Name; }
+        }
 
         // Summary:
         //     Compares the current object with another object of the same type.
@@ -78,7 +79,7 @@ namespace DataDictionary.Types.AccessMode
         //     other. Greater than zero This object is greater than other.
         public int CompareTo(AccessToVariable other)
         {
-            int retVal = base.CompareTo((AccessMode)other);
+            int retVal = base.CompareTo((AccessMode) other);
 
             if (retVal == 0)
             {

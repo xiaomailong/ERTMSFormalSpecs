@@ -14,6 +14,12 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System.Collections;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using Utils;
+
 namespace DataDictionary.Types
 {
     public class Collection : Generated.Collection, TextualExplain, ITypedElement
@@ -29,18 +35,15 @@ namespace DataDictionary.Types
                 }
                 return retVal;
             }
-            set
-            {
-                Default = value;
-            }
+            set { Default = value; }
         }
 
         /// <summary>
         /// Provides the mode of the typed element
         /// </summary>
-        public DataDictionary.Generated.acceptor.VariableModeEnumType Mode
+        public acceptor.VariableModeEnumType Mode
         {
-            get { return Generated.acceptor.VariableModeEnumType.defaultVariableModeEnumType; }
+            get { return acceptor.VariableModeEnumType.defaultVariableModeEnumType; }
         }
 
         /// <summary>
@@ -48,20 +51,15 @@ namespace DataDictionary.Types
         /// </summary>
         public string TypeName
         {
-            get
-            {
-                return getTypeName();
-            }
-            set
-            {
-                setTypeName(value);
-            }
+            get { return getTypeName(); }
+            set { setTypeName(value); }
         }
 
         /// <summary>
         /// The type associated to this structure element
         /// </summary>
         private Type type;
+
         public virtual Type Type
         {
             get
@@ -86,7 +84,7 @@ namespace DataDictionary.Types
             }
         }
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get { return NameSpace.Collections; }
         }
@@ -97,24 +95,24 @@ namespace DataDictionary.Types
         /// <param name="first"></param>
         /// <param name="other"></param>
         /// <returns></returns>
-        public override bool CompareForEquality(Values.IValue first, Values.IValue other)
+        public override bool CompareForEquality(IValue first, IValue other)
         {
             bool retVal = false;
 
-            Values.ListValue list1 = first as Values.ListValue;
-            Values.ListValue list2 = other as Values.ListValue;
+            ListValue list1 = first as ListValue;
+            ListValue list2 = other as ListValue;
             if (list1 != null && list2 != null)
             {
                 if (list1.ElementCount == list2.ElementCount)
                 {
                     retVal = true;
-                    foreach (Values.IValue val1 in list1.Val)
+                    foreach (IValue val1 in list1.Val)
                     {
-                        if (!(val1 is Values.EmptyValue))
+                        if (!(val1 is EmptyValue))
                         {
                             bool found = false;
 
-                            foreach (Values.IValue val2 in list2.Val)
+                            foreach (IValue val2 in list2.Val)
                             {
                                 if (val1.Type.CompareForEquality(val1, val2))
                                 {
@@ -136,14 +134,14 @@ namespace DataDictionary.Types
             return retVal;
         }
 
-        public override bool Contains(Values.IValue first, Values.IValue other)
+        public override bool Contains(IValue first, IValue other)
         {
             bool retVal = false;
 
-            Values.ListValue listValue = first as Values.ListValue;
+            ListValue listValue = first as ListValue;
             if (listValue != null)
             {
-                foreach (Values.IValue value in listValue.Val)
+                foreach (IValue value in listValue.Val)
                 {
                     StateMachine stateMachine = value.Type as StateMachine;
                     if (stateMachine != null)
@@ -173,14 +171,14 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
-        public override Values.IValue getValue(string image)
+        public override IValue getValue(string image)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
-            Interpreter.Expression expression = EFSSystem.Parser.Expression(this, image);
+            Expression expression = EFSSystem.Parser.Expression(this, image);
             if (expression != null)
             {
-                retVal = expression.GetValue(new Interpreter.InterpretationContext(this), null);
+                retVal = expression.GetValue(new InterpretationContext(this), null);
             }
 
             return retVal;
@@ -197,7 +195,7 @@ namespace DataDictionary.Types
 
             if (!retVal && otherType is Collection)
             {
-                Collection otherCollection = (Collection)otherType;
+                Collection otherCollection = (Collection) otherType;
 
                 if (Type != null)
                 {
@@ -225,7 +223,7 @@ namespace DataDictionary.Types
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             base.AddModelElement(element);
         }

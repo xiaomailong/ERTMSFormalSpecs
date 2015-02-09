@@ -13,11 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Threading;
-using System.Collections.Generic;
+using DataDictionary;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using GUI.Properties;
+using Utils;
+using ModelElement = Utils.ModelElement;
 
 namespace GUI
 {
@@ -79,18 +84,18 @@ namespace GUI
             /// <param name="instance"></param>
             public override void HandleSynchronization(BaseTreeView instance)
             {
-                if (LastMessageCount != Utils.ModelElement.LogCount)
+                if (LastMessageCount != ModelElement.LogCount)
                 {
-                    LastMessageCount = Utils.ModelElement.LogCount;
+                    LastMessageCount = ModelElement.LogCount;
 
                     foreach (BaseTreeNode node in instance.Nodes)
                     {
                         if (node.Model is DataDictionary.ModelElement)
                         {
-                            DataDictionary.Util.UpdateMessageInfo((DataDictionary.ModelElement)node.Model);
+                            Util.UpdateMessageInfo((DataDictionary.ModelElement) node.Model);
                         }
                     }
-                    instance.Invoke((MethodInvoker)delegate
+                    instance.Invoke((MethodInvoker) delegate
                     {
                         instance.SuspendLayout();
                         foreach (BaseTreeNode node in instance.Nodes)
@@ -123,7 +128,7 @@ namespace GUI
             /// <param name="instance"></param>
             public override void HandleSynchronization(BaseTreeView instance)
             {
-                instance.Invoke((MethodInvoker)delegate
+                instance.Invoke((MethodInvoker) delegate
                 {
                     instance.SuspendLayout();
                     if (instance.Selected != null)
@@ -139,6 +144,7 @@ namespace GUI
         /// Indicates that synchronization is required
         /// </summary>
         private ColorSynchronizer NodeColorSynchronizer { get; set; }
+
         private NameSynchronizer NodeNameSynchronizer { get; set; }
 
         /// <summary>
@@ -173,16 +179,16 @@ namespace GUI
             HideSelection = false;
 
             ImageList = new ImageList();
-            ImageList.Images.Add(GUI.Properties.Resources.file);
-            ImageList.Images.Add(GUI.Properties.Resources.folder_closed);
-            ImageList.Images.Add(GUI.Properties.Resources.folder_opened);
-            ImageList.Images.Add(GUI.Properties.Resources.req_icon);
-            ImageList.Images.Add(GUI.Properties.Resources.model_icon);
-            ImageList.Images.Add(GUI.Properties.Resources.test_icon);
-            ImageList.Images.Add(GUI.Properties.Resources.read_icon);
-            ImageList.Images.Add(GUI.Properties.Resources.write_icon);
-            ImageList.Images.Add(GUI.Properties.Resources.call_icon);
-            ImageList.Images.Add(GUI.Properties.Resources.type_icon);
+            ImageList.Images.Add(Resources.file);
+            ImageList.Images.Add(Resources.folder_closed);
+            ImageList.Images.Add(Resources.folder_opened);
+            ImageList.Images.Add(Resources.req_icon);
+            ImageList.Images.Add(Resources.model_icon);
+            ImageList.Images.Add(Resources.test_icon);
+            ImageList.Images.Add(Resources.read_icon);
+            ImageList.Images.Add(Resources.write_icon);
+            ImageList.Images.Add(Resources.call_icon);
+            ImageList.Images.Add(Resources.type_icon);
 
             ImageIndex = 0;
             FileImageIndex = 0;
@@ -206,7 +212,7 @@ namespace GUI
             Refactor = true;
         }
 
-        void BaseTreeView_KeyUp(object sender, KeyEventArgs e)
+        private void BaseTreeView_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
@@ -223,20 +229,20 @@ namespace GUI
         /// <summary>
         /// Indicates that an expand all operation is currently being done
         /// </summary>
-        bool ExpandingAll = false;
+        private bool ExpandingAll = false;
 
         /// <summary>
         /// Handles an expand event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void BeforeExpandHandler(object sender, TreeViewCancelEventArgs e)
+        private void BeforeExpandHandler(object sender, TreeViewCancelEventArgs e)
         {
             try
             {
                 GUIUtils.MDIWindow.HandlingSelection = true;
                 Selected = e.Node as BaseTreeNode;
-                if (Control.ModifierKeys == Keys.Control && !ExpandingAll && !Selecting)
+                if (ModifierKeys == Keys.Control && !ExpandingAll && !Selecting)
                 {
                     try
                     {
@@ -264,7 +270,7 @@ namespace GUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void BeforeCollapseHandler(object sender, TreeViewCancelEventArgs e)
+        private void BeforeCollapseHandler(object sender, TreeViewCancelEventArgs e)
         {
             try
             {
@@ -294,7 +300,7 @@ namespace GUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void ItemDragHandler(object sender, ItemDragEventArgs e)
+        private void ItemDragHandler(object sender, ItemDragEventArgs e)
         {
             DoDragDrop(e.Item, DragDropEffects.Move);
         }
@@ -304,7 +310,7 @@ namespace GUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void DragEnterHandler(object sender, DragEventArgs e)
+        private void DragEnterHandler(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
         }
@@ -317,12 +323,12 @@ namespace GUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void DragDropHandler(object sender, DragEventArgs e)
+        private void DragDropHandler(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
             {
-                Point pt = ((TreeView)sender).PointToClient(new Point(e.X, e.Y));
-                BaseTreeNode destinationNode = (BaseTreeNode)((BaseTreeView)sender).GetNodeAt(pt);
+                Point pt = ((TreeView) sender).PointToClient(new Point(e.X, e.Y));
+                BaseTreeNode destinationNode = (BaseTreeNode) ((BaseTreeView) sender).GetNodeAt(pt);
                 object data = e.Data.GetData("WindowsForms10PersistentObject");
                 BaseTreeNode sourceNode = data as BaseTreeNode;
                 if (destinationNode != null)
@@ -337,7 +343,7 @@ namespace GUI
                     }
                     else
                     {
-                        DataDictionary.Interpreter.Compiler compiler = DataDictionary.EFSSystem.INSTANCE.Compiler;
+                        Compiler compiler = EFSSystem.INSTANCE.Compiler;
 
                         compiler.Compile_Synchronous(false, true);
                         destinationNode.AcceptDrop(sourceNode);
@@ -379,10 +385,7 @@ namespace GUI
         public BaseTreeNode Selected
         {
             get { return SelectedNode as BaseTreeNode; }
-            set
-            {
-                SelectedNode = value;
-            }
+            set { SelectedNode = value; }
         }
 
         /// <summary>
@@ -395,7 +398,7 @@ namespace GUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void BeforeSelectHandler(object sender, TreeViewCancelEventArgs e)
+        private void BeforeSelectHandler(object sender, TreeViewCancelEventArgs e)
         {
             if (currentSelection != null)
             {
@@ -457,7 +460,7 @@ namespace GUI
         /// Sets the root elements of the tree view (untyped)
         /// </summary>
         /// <param name="Model"></param>
-        public abstract void SetRoot(Utils.IModelElement Model);
+        public abstract void SetRoot(IModelElement Model);
 
 
         /// <summary>
@@ -467,17 +470,16 @@ namespace GUI
         /// <param name="element"></param>
         /// <param name="parent"></param>
         /// <returns></returns>
-        private bool IsParent(Utils.IModelElement element, Utils.IModelElement parent)
+        private bool IsParent(IModelElement element, IModelElement parent)
         {
             bool retVal;
 
-            Utils.IModelElement current = element;
+            IModelElement current = element;
             do
             {
                 retVal = current == parent;
-                current = Utils.EnclosingFinder<Utils.IModelElement>.find(current);
-            }
-            while (!retVal && current != null);
+                current = EnclosingFinder<IModelElement>.find(current);
+            } while (!retVal && current != null);
 
             return retVal;
         }
@@ -488,7 +490,7 @@ namespace GUI
         /// <param name="node"></param>
         /// <param name="element"></param>
         /// <returns></returns>
-        private BaseTreeNode InnerFindNode(BaseTreeNode node, Utils.IModelElement element)
+        private BaseTreeNode InnerFindNode(BaseTreeNode node, IModelElement element)
         {
             BaseTreeNode retVal = null;
 
@@ -520,12 +522,13 @@ namespace GUI
 
             return retVal;
         }
+
         /// <summary>
         /// Provides the node which corresponds to the model element provided
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public BaseTreeNode FindNode(Utils.IModelElement model)
+        public BaseTreeNode FindNode(IModelElement model)
         {
             BaseTreeNode retVal = null;
 
@@ -552,7 +555,7 @@ namespace GUI
         /// <param name="element"></param>
         /// <param name="getFocus">Indicates whether the focus should be given to the enclosing form</param>
         /// <returns>the selected node</returns>
-        public BaseTreeNode Select(Utils.IModelElement element, bool getFocus = false)
+        public BaseTreeNode Select(IModelElement element, bool getFocus = false)
         {
             BaseTreeNode retVal = null;
 
@@ -600,7 +603,7 @@ namespace GUI
             BaseTreeNode selected = Selected;
             try
             {
-                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                ControllersManager.DesactivateAllNotifications();
 
                 SuspendLayout();
                 RefreshNodeContent = false;
@@ -613,7 +616,7 @@ namespace GUI
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+                ControllersManager.ActivateAllNotifications();
 
                 ResumeLayout(true);
                 RefreshNodeContent = true;
@@ -628,13 +631,13 @@ namespace GUI
         /// <param name="levelEnum"></param>
         /// <param name="considerThisOne">Indicates that the current node should be considered by the search</param>
         /// <returns>the node to select</returns>
-        private BaseTreeNode RecursivelySelectNext(Utils.IModelElement current, BaseTreeNode node, Utils.ElementLog.LevelEnum levelEnum, bool considerThisOne)
+        private BaseTreeNode RecursivelySelectNext(IModelElement current, BaseTreeNode node, ElementLog.LevelEnum levelEnum, bool considerThisOne)
         {
             BaseTreeNode retVal = null;
 
             if (current != null)
             {
-                if (considerThisOne && (node.Parent == null || node.Model != ((BaseTreeNode)node.Parent).Model))
+                if (considerThisOne && (node.Parent == null || node.Model != ((BaseTreeNode) node.Parent).Model))
                 {
                     if (node.Model.HasMessage(levelEnum) && node.Model != current)
                     {
@@ -648,23 +651,23 @@ namespace GUI
                     {
                         // Maybe the correspponding subnodes have not yet been built
                         // Do we need to look through these ? 
-                        if (levelEnum == Utils.ElementLog.LevelEnum.Error &&
-                                (current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError ||
-                                 current.MessagePathInfo == Utils.MessagePathInfoEnum.Error))
+                        if (levelEnum == ElementLog.LevelEnum.Error &&
+                            (current.MessagePathInfo == MessagePathInfoEnum.PathToError ||
+                             current.MessagePathInfo == MessagePathInfoEnum.Error))
                         {
                             node.BuildSubNodes(false);
                             node.UpdateColor();
                         }
-                        else if (levelEnum == Utils.ElementLog.LevelEnum.Warning &&
-                                (current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToError ||
-                                 current.MessagePathInfo == Utils.MessagePathInfoEnum.Error ||
-                                 current.MessagePathInfo == Utils.MessagePathInfoEnum.Warning ||
-                                 current.MessagePathInfo == Utils.MessagePathInfoEnum.PathToWarning))
+                        else if (levelEnum == ElementLog.LevelEnum.Warning &&
+                                 (current.MessagePathInfo == MessagePathInfoEnum.PathToError ||
+                                  current.MessagePathInfo == MessagePathInfoEnum.Error ||
+                                  current.MessagePathInfo == MessagePathInfoEnum.Warning ||
+                                  current.MessagePathInfo == MessagePathInfoEnum.PathToWarning))
                         {
                             node.BuildSubNodes(false);
                             node.UpdateColor();
                         }
-                        else if (levelEnum == Utils.ElementLog.LevelEnum.Info && current.MessagePathInfo != Utils.MessagePathInfoEnum.Nothing)
+                        else if (levelEnum == ElementLog.LevelEnum.Info && current.MessagePathInfo != MessagePathInfoEnum.Nothing)
                         {
                             node.BuildSubNodes(false);
                             node.UpdateColor();
@@ -691,14 +694,14 @@ namespace GUI
         /// Selects the next node whose error level corresponds to the levelEnum provided
         /// </summary>
         /// <param name="levelEnum"></param>
-        public void SelectNext(Utils.ElementLog.LevelEnum levelEnum)
+        public void SelectNext(ElementLog.LevelEnum levelEnum)
         {
             BaseTreeNode node = Selected;
             BaseTreeNode toSelect = null;
 
             if (node != null)
             {
-                Utils.IModelElement current = node.Model;
+                IModelElement current = node.Model;
                 toSelect = RecursivelySelectNext(current, node, levelEnum, false);
                 while (toSelect == null && node != null)
                 {
@@ -731,12 +734,13 @@ namespace GUI
     }
 
     public abstract class TypedTreeView<RootType> : BaseTreeView
-        where RootType : class, Utils.IModelElement
+        where RootType : class, IModelElement
     {
         /// <summary>
         /// The root of this tree view
         /// </summary>
         private RootType root;
+
         public RootType Root
         {
             get { return root; }
@@ -758,7 +762,7 @@ namespace GUI
         /// Sets the root of this tree view
         /// </summary>
         /// <param name="Model"></param>
-        public override void SetRoot(Utils.IModelElement Model)
+        public override void SetRoot(IModelElement Model)
         {
             Root = Model as RootType;
         }

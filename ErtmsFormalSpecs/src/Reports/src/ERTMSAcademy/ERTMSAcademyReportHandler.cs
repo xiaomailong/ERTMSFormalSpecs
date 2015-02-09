@@ -13,13 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
-using MigraDoc.DocumentObjectModel;
-using System.IO;
-using System.Diagnostics;
-using LibGit2Sharp;
-using System.Collections.Generic;
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using DataDictionary;
+using LibGit2Sharp;
+using MigraDoc.DocumentObjectModel;
 
 namespace Reports.ERTMSAcademy
 {
@@ -44,7 +44,7 @@ namespace Reports.ERTMSAcademy
         /// Constructor
         /// </summary>
         /// <param name="dictionary">The dictionary to use to create the report</param>
-        public ERTMSAcademyReportHandler(DataDictionary.Dictionary dictionary)
+        public ERTMSAcademyReportHandler(Dictionary dictionary)
             : base(dictionary)
         {
             createFileName("ERTMSAcademyReport");
@@ -110,6 +110,7 @@ namespace Reports.ERTMSAcademy
             public DateTimeOffset Date { get; private set; }
             public string Comment { get; private set; }
             public List<Statistics> Statistics { get; private set; }
+
             public int Additions
             {
                 get
@@ -197,7 +198,7 @@ namespace Reports.ERTMSAcademy
                 List<Activity> TestActivity = new List<Activity>();
                 foreach (Commit commit in Repository.Commits)
                 {
-                    TimeSpan span = System.DateTime.Now - commit.Author.When;
+                    TimeSpan span = DateTime.Now - commit.Author.When;
                     if (span.Days > SinceHowManyDays)
                     {
                         break;
@@ -262,7 +263,7 @@ namespace Reports.ERTMSAcademy
         /// <param name="activity"></param>
         private void reportActivity(ERTMSAcademyReport report, Activity activity)
         {
-            report.AddTable(new string[] { "Added on " + activity.Date }, new int[] { 20, 120 });
+            report.AddTable(new string[] {"Added on " + activity.Date}, new int[] {20, 120});
             report.AddRow("Author", activity.User + "(" + activity.Email + ")");
             report.AddRow("Comment", activity.Comment);
             report.AddRow("Statistics", activity.getStatistics());

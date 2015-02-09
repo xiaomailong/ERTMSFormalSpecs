@@ -14,34 +14,30 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Types;
+
 namespace DataDictionary.Values
 {
     /// <summary>
     /// A place holder value, not available through the EFS interface
     /// </summary>
-    public class PlaceHolder : BaseValue<Types.Type, int>
+    public class PlaceHolder : BaseValue<Type, int>
     {
         public override string Name
         {
-            get
-            {
-                return "PlaceHolder" + Val;
-            }
+            get { return "PlaceHolder" + Val; }
         }
 
         public override string LiteralName
         {
-            get
-            {
-                return Name;
-            }
+            get { return Name; }
         }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="type"></param>
-        public PlaceHolder(Types.Type type, int val)
+        public PlaceHolder(Type type, int val)
             : base(type, val)
         {
         }

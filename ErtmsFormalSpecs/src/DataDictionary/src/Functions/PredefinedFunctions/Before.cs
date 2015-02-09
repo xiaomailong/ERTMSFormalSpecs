@@ -13,8 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -44,19 +49,19 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public Before(EFSSystem efsSystem)
             : base(efsSystem, "Before")
         {
-            ExpectedFirst = (Parameter)Generated.acceptor.getFactory().createParameter();
+            ExpectedFirst = (Parameter) acceptor.getFactory().createParameter();
             ExpectedFirst.Name = "ExpectedFirst";
             ExpectedFirst.Type = EFSSystem.AnyType;
             ExpectedFirst.setFather(this);
             FormalParameters.Add(ExpectedFirst);
 
-            ExpectedSecond = (Parameter)Generated.acceptor.getFactory().createParameter();
+            ExpectedSecond = (Parameter) acceptor.getFactory().createParameter();
             ExpectedSecond.Name = "ExpectedSecond";
             ExpectedSecond.Type = EFSSystem.AnyType;
             ExpectedSecond.setFather(this);
             FormalParameters.Add(ExpectedSecond);
 
-            Collection = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Collection = (Parameter) acceptor.getFactory().createParameter();
             Collection.Name = "Collection";
             Collection.Type = EFSSystem.GenericCollection;
             Collection.setFather(this);
@@ -66,7 +71,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// The return type of the before function
         /// </summary>
-        public override Types.Type ReturnType
+        public override Type ReturnType
         {
             get { return EFSSystem.BoolType; }
         }
@@ -78,23 +83,23 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
         {
-            Values.IValue retVal = EFSSystem.BoolType.False;
+            IValue retVal = EFSSystem.BoolType.False;
 
             int token = context.LocalScope.PushContext();
             AssignParameters(context, actuals);
 
-            Values.ListValue collection = context.findOnStack(Collection).Value as Values.ListValue;
+            ListValue collection = context.findOnStack(Collection).Value as ListValue;
             if (collection != null)
             {
-                Values.IValue expectedFirst = context.findOnStack(ExpectedFirst).Value;
+                IValue expectedFirst = context.findOnStack(ExpectedFirst).Value;
                 if (expectedFirst != null)
                 {
                     int firstIndex = collection.Val.IndexOf(expectedFirst);
                     if (firstIndex >= 0)
                     {
-                        Values.IValue expectedSecond = context.findOnStack(ExpectedSecond).Value;
+                        IValue expectedSecond = context.findOnStack(ExpectedSecond).Value;
                         if (expectedSecond != null)
                         {
                             int secondIndex = collection.Val.IndexOf(expectedSecond);

@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using ErtmsSolutions.SiUnits;
 
@@ -20,22 +21,34 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 {
     /************************************************************/
     /************************************************************/
+
     public class QuadraticCurveSegment : CurveSegment<SiDistance, SiSpeed>
     {
         private SiAcceleration myA;
         private SiSpeed myV0;
         private SiDistance myD0;
 
-        public SiAcceleration A { get { return myA; } }
-        public SiSpeed V0 { get { return myV0; } }
-        public SiDistance D0 { get { return myD0; } }
+        public SiAcceleration A
+        {
+            get { return myA; }
+        }
+
+        public SiSpeed V0
+        {
+            get { return myV0; }
+        }
+
+        public SiDistance D0
+        {
+            get { return myD0; }
+        }
 
 
         public QuadraticCurveSegment(SiDistance x0,
-                                      SiDistance x1,
-                                      SiAcceleration a,
-                                      SiSpeed v0,
-                                      SiDistance d0)
+            SiDistance x1,
+            SiAcceleration a,
+            SiSpeed v0,
+            SiDistance d0)
             : base(x0, x1)
         {
             myV0 = v0;
@@ -46,6 +59,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         /******************************************************************************/
         /**@brief Returns the speed at some position x                                */
         /******************************************************************************/
+
         public override SiSpeed Get(SiDistance x)
         {
             if (x > X.X1)
@@ -60,7 +74,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             if (Math.Abs(A.ToUnits()) > 0.0)
             {
                 SiDistance dx = x - D0;
-                SiSpeed v = new SiSpeed(Math.Sqrt((V0.ToUnits() * V0.ToUnits()) + (2.0 * A.ToUnits() * dx.ToUnits())));
+                SiSpeed v = new SiSpeed(Math.Sqrt((V0.ToUnits()*V0.ToUnits()) + (2.0*A.ToUnits()*dx.ToUnits())));
                 return v;
             }
             else
@@ -71,6 +85,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         /**@brief Returns the position (distance) at wich this arc intersects the     
                   horizontal line 'v'                                                 */
         /******************************************************************************/
+
         public SiDistance IntersectAt(SiSpeed v)
         {
             /* We must solve this equation:                      */
@@ -85,10 +100,10 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             {
                 SiDistance d = this.D0 +
                                new SiDistance(
-                                                   ((v.ToUnits() * v.ToUnits()) - (this.V0.ToUnits() * this.V0.ToUnits()))
-                                                                               /
-                                                                       (2.0 * this.A.ToUnits())
-                                              );
+                                   ((v.ToUnits()*v.ToUnits()) - (this.V0.ToUnits()*this.V0.ToUnits()))
+                                   /
+                                   (2.0*this.A.ToUnits())
+                                   );
 
                 return d;
             }
@@ -96,13 +111,13 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /******************************************************************/
+
         public override string ToString()
         {
             return base.ToString() +
-                    String.Format(" A:{0,7:F2}({1})", myA.ToUnits(), myA.UnitString()) +
-                    String.Format(" V:{0,7:F2}({1})", myV0.ToUnits(), myV0.UnitString()) +
-                    String.Format(" D:{0,7:F2}({1})", myD0.ToUnits(), myD0.UnitString());
+                   String.Format(" A:{0,7:F2}({1})", myA.ToUnits(), myA.UnitString()) +
+                   String.Format(" V:{0,7:F2}({1})", myV0.ToUnits(), myV0.UnitString()) +
+                   String.Format(" D:{0,7:F2}({1})", myD0.ToUnits(), myD0.UnitString());
         }
-
     }
 }

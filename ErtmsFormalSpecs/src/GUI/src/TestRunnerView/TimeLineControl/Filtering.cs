@@ -13,10 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary;
+using DataDictionary.Types;
 using DataDictionary.Variables;
+using Utils;
 
 namespace GUI.TestRunnerView.TimeLineControl
 {
@@ -29,7 +33,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             nameSpaceTreeView.AfterCheck += new TreeViewEventHandler(nameSpaceTreeView_AfterCheck);
         }
 
-        void nameSpaceTreeView_AfterCheck(object sender, TreeViewEventArgs e)
+        private void nameSpaceTreeView_AfterCheck(object sender, TreeViewEventArgs e)
         {
             NamableTreeNode node = e.Node as NamableTreeNode;
             foreach (NamableTreeNode subNode in node.Nodes)
@@ -46,13 +50,13 @@ namespace GUI.TestRunnerView.TimeLineControl
             /// <summary>
             /// The referenced namable
             /// </summary>
-            public Utils.INamable Namable { get; private set; }
+            public INamable Namable { get; private set; }
 
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="namable"></param>
-            public NamableTreeNode(Utils.INamable namable)
+            public NamableTreeNode(INamable namable)
             {
                 Namable = namable;
                 Text = Namable.Name;
@@ -65,27 +69,27 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// </summary>
         /// <param name="efsSystem"></param>
         /// <param name="filterConfiguration"></param>
-        public void Configure(DataDictionary.EFSSystem efsSystem, FilterConfiguration filterConfiguration)
+        public void Configure(EFSSystem efsSystem, FilterConfiguration filterConfiguration)
         {
             ruleActivationCheckBox.Checked = filterConfiguration.RuleFired;
             expectationsCheckBox.Checked = filterConfiguration.Expect;
             variableUpdateCheckBox.Checked = filterConfiguration.VariableUpdate;
 
-            List<DataDictionary.Dictionary> dictionaries = new List<DataDictionary.Dictionary>(efsSystem.Dictionaries);
+            List<Dictionary> dictionaries = new List<Dictionary>(efsSystem.Dictionaries);
             dictionaries.Sort(compare);
-            foreach (DataDictionary.Dictionary dictionary in dictionaries)
+            foreach (Dictionary dictionary in dictionaries)
             {
                 NamableTreeNode dictionaryTreeNode = new NamableTreeNode(dictionary);
                 nameSpaceTreeView.Nodes.Add(dictionaryTreeNode);
 
-                List<DataDictionary.Types.NameSpace> nameSpaces = new List<DataDictionary.Types.NameSpace>();
-                foreach (DataDictionary.Types.NameSpace nameSpace in dictionary.NameSpaces)
+                List<NameSpace> nameSpaces = new List<NameSpace>();
+                foreach (NameSpace nameSpace in dictionary.NameSpaces)
                 {
                     nameSpaces.Add(nameSpace);
                 }
                 nameSpaces.Sort();
 
-                foreach (DataDictionary.Types.NameSpace nameSpace in nameSpaces)
+                foreach (NameSpace nameSpace in nameSpaces)
                 {
                     GatherNamespaces(dictionaryTreeNode, nameSpace, filterConfiguration);
                 }
@@ -100,14 +104,14 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// <param name="x">First dictionary</param>
         /// <param name="y">Second discionary</param>
         /// <returns></returns>
-        private static int compare(DataDictionary.Dictionary x, DataDictionary.Dictionary y)
+        private static int compare(Dictionary x, Dictionary y)
         {
-            int retVal = 0;  // x = y
-            if (String.Compare(x.Name, y.Name) < 0)  // x < y
+            int retVal = 0; // x = y
+            if (String.Compare(x.Name, y.Name) < 0) // x < y
             {
                 retVal = -1;
             }
-            else if (String.Compare(x.Name, y.Name) > 0)  // x > y
+            else if (String.Compare(x.Name, y.Name) > 0) // x > y
             {
                 retVal = 1;
             }
@@ -120,7 +124,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// <param name="treeNode"></param>
         /// <param name="nameSpace"></param>
         /// <param name="filterConfiguration">The filter configuration used to set up the check boxes</param>
-        private void GatherNamespaces(TreeNode treeNode, DataDictionary.Types.NameSpace nameSpace, FilterConfiguration filterConfiguration)
+        private void GatherNamespaces(TreeNode treeNode, NameSpace nameSpace, FilterConfiguration filterConfiguration)
         {
             NamableTreeNode nameSpaceTreeNode = new NamableTreeNode(nameSpace);
             nameSpaceTreeNode.Checked = filterConfiguration.NameSpaces.Contains(nameSpace);
@@ -143,14 +147,14 @@ namespace GUI.TestRunnerView.TimeLineControl
             }
 
             // Adds the subnamespaces to the selection
-            List<DataDictionary.Types.NameSpace> subNameSpaces = new List<DataDictionary.Types.NameSpace>();
-            foreach (DataDictionary.Types.NameSpace otherNameSpace in nameSpace.NameSpaces)
+            List<NameSpace> subNameSpaces = new List<NameSpace>();
+            foreach (NameSpace otherNameSpace in nameSpace.NameSpaces)
             {
                 subNameSpaces.Add(otherNameSpace);
             }
             subNameSpaces.Sort();
 
-            foreach (DataDictionary.Types.NameSpace subNameSpace in subNameSpaces)
+            foreach (NameSpace subNameSpace in subNameSpaces)
             {
                 GatherNamespaces(nameSpaceTreeNode, subNameSpace, filterConfiguration);
             }
@@ -183,7 +187,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         /// <param name="filterConfiguration"></param>
         private void UpdateConfiguration(NamableTreeNode node, FilterConfiguration filterConfiguration)
         {
-            DataDictionary.Types.NameSpace nameSpace = node.Namable as DataDictionary.Types.NameSpace;
+            NameSpace nameSpace = node.Namable as NameSpace;
             if (nameSpace != null)
             {
                 if (node.Checked)
@@ -211,6 +215,5 @@ namespace GUI.TestRunnerView.TimeLineControl
         {
             Close();
         }
-
     }
 }

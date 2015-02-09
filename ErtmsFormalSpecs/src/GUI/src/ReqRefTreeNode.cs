@@ -13,26 +13,31 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows.Forms;
 using System.Drawing.Design;
+using System.Windows.Forms;
+using DataDictionary;
+using GUI.Converters;
+using GUI.SpecificationView;
+using Window = GUI.DataDictionaryView.Window;
 
 namespace GUI
 {
-    public class ReqRefTreeNode : ModelElementTreeNode<DataDictionary.ReqRef>
+    public class ReqRefTreeNode : ModelElementTreeNode<ReqRef>
     {
         /// <summary>
         /// Indicates that this req ref can be removed from its model
         /// </summary>
         private bool CanBeDeleted { get; set; }
 
-        public class InternalTracesConverter : Converters.TracesConverter
+        public class InternalTracesConverter : TracesConverter
         {
             public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
             {
-                return GetValues(((ItemEditor)context.Instance).Item);
+                return GetValues(((ItemEditor) context.Instance).Item);
             }
         }
 
@@ -46,19 +51,16 @@ namespace GUI
             {
             }
 
-            [Category("Description"), TypeConverter(typeof(InternalTracesConverter))]
+            [Category("Description"), TypeConverter(typeof (InternalTracesConverter))]
             public string Name
             {
-                get
-                {
-                    return Item.Name;
-                }
+                get { return Item.Name; }
             }
 
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
-            public DataDictionary.ReqRef Comment
+            [Editor(typeof (CommentableUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (CommentableUITypeConverter))]
+            public ReqRef Comment
             {
                 get { return Item; }
                 set
@@ -74,7 +76,7 @@ namespace GUI
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public ReqRefTreeNode(DataDictionary.ReqRef item, bool buildSubNodes, bool canBeDeleted, string name = null)
+        public ReqRefTreeNode(ReqRef item, bool buildSubNodes, bool canBeDeleted, string name = null)
             : base(item, buildSubNodes, name)
         {
             CanBeDeleted = canBeDeleted;
@@ -98,19 +100,19 @@ namespace GUI
             foreach (Form form in mainWindow.SubWindows)
             {
                 {
-                    DataDictionaryView.Window window = form as DataDictionaryView.Window;
+                    Window window = form as Window;
                     if (window != null)
                     {
-                        window.TreeView.Select(Item.Model);                        
-                    }                   
+                        window.TreeView.Select(Item.Model);
+                    }
                 }
 
                 {
                     SpecificationView.Window window = form as SpecificationView.Window;
                     if (window != null)
                     {
-                        window.TreeView.Select(Item.Paragraph);                        
-                    }                   
+                        window.TreeView.Select(Item.Paragraph);
+                    }
                 }
 
                 {
@@ -127,7 +129,7 @@ namespace GUI
                     {
                         window.TreeView.Select(Item.Model);
                     }
-                }                
+                }
             }
         }
 
@@ -167,9 +169,9 @@ namespace GUI
         {
             base.AcceptDrop(SourceNode);
 
-            if (SourceNode is SpecificationView.ParagraphTreeNode)
+            if (SourceNode is ParagraphTreeNode)
             {
-                SpecificationView.ParagraphTreeNode paragraph = SourceNode as SpecificationView.ParagraphTreeNode;
+                ParagraphTreeNode paragraph = SourceNode as ParagraphTreeNode;
 
                 Item.Name = paragraph.Item.FullId;
                 RefreshNode();

@@ -13,14 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using DataDictionary.Tests.Translations;
+using DataDictionary.Generated;
+using SourceText = DataDictionary.Tests.Translations.SourceText;
+using SourceTextComment = DataDictionary.Tests.Translations.SourceTextComment;
 
 namespace GUI.TranslationRules
 {
-    public class SourceTextTreeNode : ModelElementTreeNode<DataDictionary.Tests.Translations.SourceText>
+    public class SourceTextTreeNode : ModelElementTreeNode<SourceText>
     {
         private class ItemEditor : CommentableEditor
         {
@@ -33,13 +36,13 @@ namespace GUI.TranslationRules
             }
         }
 
-        SourceTextCommentsTreeNode comments = null;
+        private SourceTextCommentsTreeNode comments = null;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public SourceTextTreeNode(DataDictionary.Tests.Translations.SourceText item, bool buildSubNodes)
+        public SourceTextTreeNode(SourceText item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }
@@ -143,7 +146,7 @@ namespace GUI.TranslationRules
         /// </summary>
         public void AddHandler(object sender, EventArgs args)
         {
-            SourceTextComment comment = (SourceTextComment) DataDictionary.Generated.acceptor.getFactory().createSourceTextComment();
+            SourceTextComment comment = (SourceTextComment) acceptor.getFactory().createSourceTextComment();
             comment.Name = "<unknown>";
             createComment(comment);
         }
@@ -159,7 +162,7 @@ namespace GUI.TranslationRules
             {
                 SourceTextCommentTreeNode comment = SourceNode as SourceTextCommentTreeNode;
 
-                SourceTextComment otherText = (SourceTextComment)comment.Item.Duplicate();
+                SourceTextComment otherText = (SourceTextComment) comment.Item.Duplicate();
                 sourceTextTreeNode.createComment(otherText);
                 comment.Delete();
             }

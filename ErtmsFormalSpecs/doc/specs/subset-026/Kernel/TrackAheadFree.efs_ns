@@ -1,0 +1,308 @@
+<NameSpace
+ X="820"
+ Y="720"
+ Width="100"
+ Height="50"
+ Name="TrackAheadFree"
+ Guid="906625e2-b78d-463b-b189-e7d9e60b4f43"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Default=""
+ X="20"
+ Y="20"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="TrackAheadFreeStruct"
+ Guid="913f9800-ccf2-4f5f-b1ca-5a86904fdac4"
+>
+<ReqRef
+ Id="317daa11-e8a3-482d-9b98-a8ee6a882b28"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6e8ca9ec-66b2-4d95-b47e-33fdfdb89c62"
+>
+</ReqRef><ReqRef
+ Id="2c9bebd4-e758-4982-ae9b-92e657bfcba2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="58a49419-cc52-413e-b721-c8fa183dd36b"
+>
+</ReqRef><ReqRef
+ Id="9f590dd5-5917-4dd1-bc6d-a17f6fff66a8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="098e4a9a-c91c-45cc-92f8-b4c89afd8e7f"
+>
+</ReqRef><Comment>Contains the information related to the track ahead free request provided by the trackside.</Comment>
+<StructureElement
+ TypeName="Default.BaseTypes.Distance"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="StartDisplayLocation"
+ Guid="9a2aa3f9-c3b4-4bd4-bd2a-5fedbae59f01"
+>
+<ReqRef
+ Id="8f2786c1-d114-44ea-a244-7cc5e566dd3b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e8cf7ea0-cf56-4a07-bea9-4d31df51acdc"
+>
+</ReqRef><ReqRef
+ Id="ba1fb5c4-6678-4ee8-93a6-eb199f78f16c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5c7a94b5-ab85-4eb8-9181-1092e64f41e3"
+>
+</ReqRef></StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Length"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="StopDisplayLocation"
+ Guid="107fa005-3d0c-4657-830d-8ca6c54c8b82"
+>
+<ReqRef
+ Id="972fbe51-1072-44da-980b-ea076a4d9e79"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="074093c7-494b-4a74-aaa0-273a14d5c87a"
+>
+</ReqRef><ReqRef
+ Id="3fe4ee9c-41b8-472e-b3cd-284b830ad3fb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a14aa49a-e37f-49c0-8abe-d06a4f05c2f9"
+>
+</ReqRef></StructureElement></Structure></Structures>
+<Procedures>
+<Procedure
+ X="20"
+ Y="130"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="TrackAheadFreeRequestReceived"
+ Guid="269d8d74-da4a-4592-bd5d-401cf52af060"
+>
+<ReqRef
+ Id="a5cab7d5-9533-4bee-9cb2-2fb89da811cd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="992bf050-f2b1-46b3-8a73-bf40cc0b90a7"
+>
+</ReqRef><ReqRef
+ Id="317daa11-e8a3-482d-9b98-a8ee6a882b28"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="35c8b1ff-e0a0-44fe-ba13-20c93c6f50b1"
+>
+</ReqRef><ReqRef
+ Id="8f2786c1-d114-44ea-a244-7cc5e566dd3b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1b3f5177-a0fb-42bd-9848-bccbc819c529"
+>
+</ReqRef><ReqRef
+ Id="972fbe51-1072-44da-980b-ea076a4d9e79"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="50bf3315-feef-408c-84d1-cf6f09ca56e9"
+>
+</ReqRef><ReqRef
+ Id="ba1fb5c4-6678-4ee8-93a6-eb199f78f16c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="91d70cf7-8e30-4960-a05a-4c10aa075100"
+>
+</ReqRef><ReqRef
+ Id="3fe4ee9c-41b8-472e-b3cd-284b830ad3fb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6839ac1b-99de-453f-979d-e04d42764873"
+>
+</ReqRef><ReqRef
+ Id="2c9bebd4-e758-4982-ae9b-92e657bfcba2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4edb4d39-0574-4882-a1f1-adf097407802"
+>
+</ReqRef><ReqRef
+ Id="9f590dd5-5917-4dd1-bc6d-a17f6fff66a8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="04759a53-fc7e-4c92-accb-c4a8a091dcf7"
+>
+</ReqRef><ReqRef
+ Id="6843fde0-7c61-40e2-a130-d778bcc5e1fa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="33fd1430-ad0e-4009-9bb9-37c4112ef701"
+>
+</ReqRef><Comment>Stores the track ahead free request received from the trackside.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.TRACK_AHEAD_FREE_REQUEST.Message"
+ Name="aMessage"
+ Guid="fcb8a8fd-a429-4ced-af58-71c9c84462d5"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Store the information"
+ Guid="23bb2207-d046-4b53-9c54-55757e0b62a0"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Store the information"
+ Guid="0470b1d1-e140-4b5f-872c-cf5eaf6c4201"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a67faa58-e1df-4ebe-9791-6bb26e592bfd"
+>TrackAheadFreeRequest &lt;- TrackAheadFreeStruct
+{
+    StartDisplayLocation =&gt; MessageTypes.QScaleDistance
+    (
+        distance =&gt; aMessage.D_TAFDISPLAY,
+        scale =&gt; aMessage.Q_SCALE
+    ),
+    StopDisplayLocation =&gt; MessageTypes.QScaleLength
+    (
+        length =&gt; aMessage.L_TAFDISPLAY,
+        scale =&gt; aMessage.Q_SCALE
+    )
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+<Variables>
+<Variable
+ Type="Kernel.TrackAheadFree.TrackAheadFreeStruct"
+ DefaultValue="EMPTY"
+ VariableMode="Internal"
+ X="220"
+ Y="20"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="TrackAheadFreeRequest"
+ Guid="b7de6cfe-08be-4a61-939a-a58f32cfc51c"
+>
+<ReqRef
+ Id="a5cab7d5-9533-4bee-9cb2-2fb89da811cd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a6d08b47-2bf8-4635-84e6-593d8d012e81"
+>
+</ReqRef><ReqRef
+ Id="39d3a3da-a2a7-44e3-858d-5549ecf03336"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1212cae1-c082-4710-8121-90385ac96812"
+>
+</ReqRef><ReqRef
+ Id="d791550a-a843-44fe-8bf3-174bad2c8112"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f3cea723-0aa8-422e-87db-d5c0790bdfc7"
+>
+</ReqRef><ReqRef
+ Id="2a9d3fd0-c8d7-4772-96d9-a87b680e4435"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1efc6f2-c394-45fa-873c-466a878cf05f"
+>
+</ReqRef></Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ X="20"
+ Y="240"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Handle display of track ahead free request"
+ Guid="f1717e1e-5aa0-4ced-8d48-dfe9912870b5"
+>
+<ReqRef
+ Id="39d3a3da-a2a7-44e3-858d-5549ecf03336"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bd06a4c2-dbd7-4f91-bfd2-9f9eb99afb3f"
+>
+</ReqRef><ReqRef
+ Id="d791550a-a843-44fe-8bf3-174bad2c8112"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8f6c27f4-8395-4fca-bb87-78bd3816e76f"
+>
+</ReqRef><ReqRef
+ Id="2a9d3fd0-c8d7-4772-96d9-a87b680e4435"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="afa4cc59-faf6-499f-8458-e8088b122fd7"
+>
+</ReqRef><Comment>Until the driver has answered the track ahead free request received from the RBC, keep the display of the request up.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Display track ahead free request to the driver"
+ Guid="92f0d805-e1a4-46da-aed1-5c107935d0e4"
+>
+<ReqRef
+ Id="bb7b8945-b977-4e95-976b-bb8d2f76bca8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c0d2f1b9-0e83-4ba1-b809-eb4d2512ef85"
+>
+</ReqRef><Comment>If a track ahead free request was received from the trackside, the driver is requested to ackwnowledge it within the interval indicated by the trackside.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5b98706c-3564-43f5-9a5b-3e026df073d0"
+>TrackAheadFreeRequest != EMPTY
+  AND
+TrackAheadFreeRequest.StartDisplayLocation &gt;= TrainPosition.FrontEndPosition( PointOfInterest=&gt;DistanceInterval.Nom )
+  AND
+TrainPosition.FrontEndPosition( PointOfInterest=&gt;DistanceInterval.Nom ) &lt;
+TrackAheadFreeRequest.StartDisplayLocation + BaseTypes.DistanceToLength ( Distance =&gt; TrackAheadFreeRequest.StopDisplayLocation )</PreCondition><PreCondition
+ Guid="9861b232-c07b-4950-9280-6185b8be54c7"
+>NOT DMI.MasterDMI().In_TrackAheadFree.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="141a635d-b107-44bf-bd3f-b36115ff8ee1"
+>DMI.MasterDMI().In_TrackAheadFree.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="If the display distance is exceeded =&gt; remove the request"
+ Guid="067e51cd-6a79-487a-8478-869beb4c0a35"
+>
+<ReqRef
+ Id="e355dda4-803b-47ed-8c58-67ed057aa194"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="47499a71-02a1-4685-a67b-89372dd9e7d2"
+>
+</ReqRef><Comment>Id the driver doesn&apos;t acknowledge the track ahead free reqeust within the interval asked by the trackside, the display is removed.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="b82b52ff-78ea-4525-95ec-50fd11756e53"
+>TrackAheadFreeRequest != EMPTY
+  AND
+TrackAheadFreeRequest.StartDisplayLocation + BaseTypes.DistanceToLength ( Distance =&gt; TrackAheadFreeRequest.StopDisplayLocation ) &gt;= TrainPosition.FrontEndPosition( PointOfInterest=&gt;DistanceInterval.Nom )</PreCondition><PreCondition
+ Guid="37529bb1-58d2-46dd-872f-7c1156f91bcb"
+>NOT DMI.MasterDMI().In_TrackAheadFree.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="dd7b6c32-2829-427a-adcc-90cac4a6049a"
+>DMI.MasterDMI().In_TrackAheadFree.InputInformation.Disable()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="If the driver answered, send confirmation to the RBC"
+ Guid="f032bc8c-9c87-44e2-910b-bdc19f41b817"
+>
+<ReqRef
+ Id="cf04ffbe-1da0-4fb9-ad6a-12a84b219244"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0a02d3a7-dd74-48dc-96eb-9102e01aa9bf"
+>
+</ReqRef><Comment>IF the driver acknowledges the track ahead free request, the RBC is informed.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="806e026f-2feb-4ba7-b103-a649da675deb"
+>DMI.MasterDMI().In_TrackAheadFree.InputInformation.DriverAnswered</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9cf1f864-bda2-4aac-9c97-260bcb92f94f"
+>Kernel.TrackAheadFree.TrackAheadFreeRequest &lt;- EMPTY</Action><Action
+ Guid="de8de7fb-9cf8-4cb3-8e47-0a6c0cc774dc"
+>EURORADIO.CurrentRBCConnection().SendTrackAheadFreeGranted()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>

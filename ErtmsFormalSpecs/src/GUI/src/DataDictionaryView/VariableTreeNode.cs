@@ -13,38 +13,47 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows.Forms;
-using DataDictionary;
-using DataDictionary.Types;
 using System.Drawing.Design;
-using DataDictionary.Values;
+using System.Windows.Forms;
+using DataDictionary.Functions;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using GUI.Converters;
+using GUI.StateDiagram;
 using WeifenLuo.WinFormsUI.Docking;
+using Function = DataDictionary.Functions.Function;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Parameter = DataDictionary.Parameter;
+using StateMachine = DataDictionary.Types.StateMachine;
+using Type = DataDictionary.Types.Type;
+using Variable = DataDictionary.Variables.Variable;
 
 namespace GUI.DataDictionaryView
 {
-    public class VariableTreeNode : ReqRelatedTreeNode<DataDictionary.Variables.Variable>
+    public class VariableTreeNode : ReqRelatedTreeNode<Variable>
     {
-        private class InternalTypesConverter : Converters.TypesConverter
+        private class InternalTypesConverter : TypesConverter
         {
             public override StandardValuesCollection
-            GetStandardValues(ITypeDescriptorContext context)
+                GetStandardValues(ITypeDescriptorContext context)
             {
-                ItemEditor editor = (ItemEditor)context.Instance;
+                ItemEditor editor = (ItemEditor) context.Instance;
                 return GetValues(editor.Item);
             }
         }
 
-        private class InternalValuesConverter : Converters.ValuesConverter
+        private class InternalValuesConverter : ValuesConverter
         {
             public override StandardValuesCollection
-            GetStandardValues(ITypeDescriptorContext context)
+                GetStandardValues(ITypeDescriptorContext context)
             {
-                ItemEditor editor = (ItemEditor)context.Instance;
-                DataDictionary.Types.NameSpace nameSpace = editor.Item.NameSpace;
-                DataDictionary.Types.Type type = editor.Item.Type;
+                ItemEditor editor = (ItemEditor) context.Instance;
+                NameSpace nameSpace = editor.Item.NameSpace;
+                Type type = editor.Item.Type;
 
                 return GetValues(nameSpace, type);
             }
@@ -74,9 +83,9 @@ namespace GUI.DataDictionaryView
             /// The variable type
             /// </summary>
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.TypeUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.TypeUITypeConverter))]
-            public DataDictionary.Variables.Variable Type
+            [Editor(typeof (TypeUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (TypeUITypeConverter))]
+            public Variable Type
             {
                 get { return Item; }
                 set
@@ -90,9 +99,9 @@ namespace GUI.DataDictionaryView
             /// The variable default value
             /// </summary>
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.DefaultValueUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.DefaultValueUITypeConverter))]
-            public DataDictionary.Variables.Variable DefaultValue
+            [Editor(typeof (DefaultValueUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (DefaultValueUITypeConverter))]
+            public Variable DefaultValue
             {
                 get { return Item; }
                 set
@@ -105,8 +114,8 @@ namespace GUI.DataDictionaryView
             /// <summary>
             /// The variable mode
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(Converters.VariableModeConverter))]
-            public DataDictionary.Generated.acceptor.VariableModeEnumType Mode
+            [Category("Description"), TypeConverter(typeof (VariableModeConverter))]
+            public acceptor.VariableModeEnumType Mode
             {
                 get { return Item.getVariableMode(); }
                 set { Item.setVariableMode(value); }
@@ -116,9 +125,9 @@ namespace GUI.DataDictionaryView
             /// The variable value
             /// </summary>
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.VariableValueUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.VariableValueUITypeConverter))]
-            public DataDictionary.Variables.Variable Value
+            [Editor(typeof (VariableValueUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (VariableValueUITypeConverter))]
+            public Variable Value
             {
                 get { return Item; }
                 set
@@ -135,7 +144,7 @@ namespace GUI.DataDictionaryView
         /// <param name="item"></param>
         /// <param name="children"></param>
         /// <param name="encounteredTypes">the types that have already been encountered in the path to create this variable </param>
-        public VariableTreeNode(DataDictionary.Variables.Variable item, bool buildSubNodes, HashSet<DataDictionary.Types.Type> encounteredTypes)
+        public VariableTreeNode(Variable item, bool buildSubNodes, HashSet<Type> encounteredTypes)
             : base(item, buildSubNodes)
         {
             encounteredTypes.Add(item.Type);
@@ -148,7 +157,7 @@ namespace GUI.DataDictionaryView
         /// <param name="item"></param>
         /// <param name="children"></param>
         /// <param name="encounteredTypes">the types that have already been encountered in the path to create this variable </param>
-        public VariableTreeNode(DataDictionary.Variables.Variable item, bool buildSubNodes, string name, HashSet<DataDictionary.Types.Type> encounteredTypes)
+        public VariableTreeNode(Variable item, bool buildSubNodes, string name, HashSet<Type> encounteredTypes)
             : base(item, buildSubNodes, name, false)
         {
             encounteredTypes.Add(item.Type);
@@ -171,7 +180,7 @@ namespace GUI.DataDictionaryView
         {
             if (Item.Type is StateMachine)
             {
-                StateDiagram.StateDiagramWindow window = new StateDiagram.StateDiagramWindow();
+                StateDiagramWindow window = new StateDiagramWindow();
                 GUIUtils.MDIWindow.AddChildWindow(window);
                 window.SetStateMachine(Item);
                 window.Text = Item.Name + " state diagram";
@@ -194,14 +203,14 @@ namespace GUI.DataDictionaryView
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
             retVal.AddRange(base.GetMenuItems());
 
-            DataDictionary.Functions.Function function = Item.Value as DataDictionary.Functions.Function;
+            Function function = Item.Value as Function;
             if (function != null)
             {
-                DataDictionary.Interpreter.InterpretationContext context = new DataDictionary.Interpreter.InterpretationContext(Item);
+                InterpretationContext context = new InterpretationContext(Item);
                 if (function.FormalParameters.Count == 1)
                 {
-                    Parameter parameter = (Parameter)function.FormalParameters[0];
-                    DataDictionary.Functions.Graph graph = function.createGraph(context, parameter, null);
+                    Parameter parameter = (Parameter) function.FormalParameters[0];
+                    Graph graph = function.createGraph(context, parameter, null);
                     if (graph != null && graph.Segments.Count != 0)
                     {
                         retVal.Insert(5, new MenuItem("-"));
@@ -210,7 +219,7 @@ namespace GUI.DataDictionaryView
                 }
                 else if (function.FormalParameters.Count == 2)
                 {
-                    DataDictionary.Functions.Surface surface = function.createSurface(context, null);
+                    Surface surface = function.createSurface(context, null);
                     if (surface != null && surface.Segments.Count != 0)
                     {
                         retVal.Insert(5, new MenuItem("-"));
@@ -218,7 +227,7 @@ namespace GUI.DataDictionaryView
                     }
                 }
             }
-            else 
+            else
             {
                 retVal.Insert(5, new MenuItem("-"));
                 retVal.Insert(6, new MenuItem("Display", new EventHandler(DisplayHandler)));
@@ -240,7 +249,7 @@ namespace GUI.DataDictionaryView
         /// <param name="args"></param>
         public void DisplayHandler(object sender, EventArgs args)
         {
-            DataDictionary.Functions.Function function = Item.Value as DataDictionary.Functions.Function;
+            Function function = Item.Value as Function;
             if (function != null)
             {
                 GraphView.GraphView view = new GraphView.GraphView();
@@ -253,10 +262,10 @@ namespace GUI.DataDictionaryView
                 StructureValueEditor.Window window = new StructureValueEditor.Window();
                 window.SetVariable(Item);
 
-                if ( GUIUtils.MDIWindow.DataDictionaryWindow != null )
+                if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
                 {
-                    GUIUtils.MDIWindow.AddChildWindow(window, WeifenLuo.WinFormsUI.Docking.DockAreas.Document);
-                    window.Show(GUIUtils.MDIWindow.DataDictionaryWindow.Pane, WeifenLuo.WinFormsUI.Docking.DockAlignment.Right, 0.20);
+                    GUIUtils.MDIWindow.AddChildWindow(window, DockAreas.Document);
+                    window.Show(GUIUtils.MDIWindow.DataDictionaryWindow.Pane, DockAlignment.Right, 0.20);
                 }
             }
         }

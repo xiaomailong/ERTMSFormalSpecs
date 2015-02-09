@@ -32,8 +32,8 @@
 <StateMachines>
 <StateMachine
  Default="Idle"
- X="790"
- Y="550"
+ X="420"
+ Y="110"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -2313,7 +2313,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedM
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
- Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets"
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets"
  Cacheable="TRUE"
  Default=""
  X="90"
@@ -2413,7 +2413,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
 <Expression>Monitoring in MonitoringTypeSM.Release</Expression>
 </Case></Cases>
 </Function><Function
- Type="SupervisionStatus"
+ Type="Kernel.SupervisionStatus"
  Cacheable="TRUE"
  Default=""
  X="420"
@@ -2724,7 +2724,9 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreCondi
  Guid="53eeb1fe-321f-4cd1-badf-82567a688616"
 >TIU.ServiceBrakeCommanded &lt;- True</Action><Action
  Guid="d89cc423-fae2-4789-8127-68c610145693"
->SBSpecified &lt;- True</Action></Actions>
+>SBSpecified &lt;- True</Action><Action
+ Guid="e696e822-c0ee-4d0e-b934-9457870a1b12"
+>AddSBCommand(BrakeReason.SpeedAndDistanceMonitoring)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2899,7 +2901,9 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Guid="2a6f82f8-80a2-4496-bfa4-445fd6c1d335"
 >TIU.ServiceBrakeCommanded &lt;- False</Action><Action
  Guid="4c3aacf3-5346-42c8-950b-be161a915d5f"
->SBSpecified &lt;- False</Action></Actions>
+>SBSpecified &lt;- False</Action><Action
+ Guid="8e9bb0b4-29f2-4783-8066-9b7d714df901"
+>RemoveSBCommand(BrakeReason.SpeedAndDistanceMonitoring)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -3091,7 +3095,7 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="370"
+ X="720"
  Y="120"
  Width="100"
  Height="50"
@@ -3210,8 +3214,8 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Type="MonitoringTypeSM"
  DefaultValue="MonitoringTypeSM.Ceiling"
  VariableMode="Internal"
- X="790"
- Y="460"
+ X="420"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3278,8 +3282,8 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Type="Boolean"
  DefaultValue="Boolean.False"
  VariableMode="Internal"
- X="400"
- Y="460"
+ X="350"
+ Y="370"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3316,8 +3320,8 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Type="Boolean"
  DefaultValue="Boolean.False"
  VariableMode="Internal"
- X="70"
- Y="460"
+ X="570"
+ Y="370"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3344,8 +3348,8 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Type="Boolean"
  DefaultValue="Boolean.False"
  VariableMode="Internal"
- X="620"
- Y="460"
+ X="240"
+ Y="370"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3362,8 +3366,8 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Type="Boolean"
  DefaultValue="Boolean.False"
  VariableMode="Internal"
- X="510"
- Y="460"
+ X="460"
+ Y="370"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3381,8 +3385,8 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Type="TargetSpeedMonitoring.Targets"
  DefaultValue="[]"
  VariableMode="Internal"
- X="70"
- Y="580"
+ X="20"
+ Y="370"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -3409,8 +3413,8 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
  Type="Boolean"
  DefaultValue=""
  VariableMode="Internal"
- X="180"
- Y="580"
+ X="130"
+ Y="370"
  Width="100"
  Height="50"
  Implemented="TRUE"

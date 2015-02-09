@@ -13,12 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using HistoricalData.Generated;
+
 namespace HistoricalData
 {
-    using System;
-    using System.Collections.Generic;
-    using Utils;
-
     /// <summary>
     /// A single change in a commit
     /// </summary>
@@ -35,13 +35,13 @@ namespace HistoricalData
 
                 switch (Action)
                 {
-                    case Generated.acceptor.ChangeOperationEnum.aAdd:
+                    case acceptor.ChangeOperationEnum.aAdd:
                         retVal += "Add " + After + " in " + Field;
                         break;
-                    case Generated.acceptor.ChangeOperationEnum.aChange:
+                    case acceptor.ChangeOperationEnum.aChange:
                         retVal += "Change in " + Field;
                         break;
-                    case Generated.acceptor.ChangeOperationEnum.aRemove:
+                    case acceptor.ChangeOperationEnum.aRemove:
                         retVal += "Remove " + Before + " from " + Field;
                         break;
                 }
@@ -62,7 +62,7 @@ namespace HistoricalData
         /// <summary>
         /// The action performed during the change
         /// </summary>
-        public Generated.acceptor.ChangeOperationEnum Action
+        public acceptor.ChangeOperationEnum Action
         {
             get { return getOperation(); }
             protected set { setOperation(value); }
@@ -111,7 +111,7 @@ namespace HistoricalData
         /// <param name="field"></param>
         /// <param name="before"></param>
         /// <param name="after"></param>
-        public Change(string guid, Generated.acceptor.ChangeOperationEnum action, string field, string before, string after)
+        public Change(string guid, acceptor.ChangeOperationEnum action, string field, string before, string after)
             : base()
         {
             Guid = guid;

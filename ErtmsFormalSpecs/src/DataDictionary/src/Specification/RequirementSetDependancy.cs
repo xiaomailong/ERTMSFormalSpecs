@@ -14,14 +14,10 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System.Collections;
+
 namespace DataDictionary.Specification
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Collections;
-
     /// <summary>
     /// Represents a requirement set
     /// </summary>
@@ -32,19 +28,17 @@ namespace DataDictionary.Specification
         /// </summary>
         public override string Name
         {
-            get
-            {
-                return "Depends on";
-            }
-            set
-            {
-            }
+            get { return "Depends on"; }
+            set { }
         }
 
         /// <summary>
         /// The source of the arrow
         /// </summary>
-        public RequirementSet Source { get { return Enclosing as RequirementSet; } }
+        public RequirementSet Source
+        {
+            get { return Enclosing as RequirementSet; }
+        }
 
         /// <summary>
         /// Sets the source box for this arrow
@@ -53,7 +47,7 @@ namespace DataDictionary.Specification
         public void SetInitialBox(IGraphicalDisplay initialBox)
         {
             Source.removeDependancies(this);
-            RequirementSet newSource = (RequirementSet)initialBox;
+            RequirementSet newSource = (RequirementSet) initialBox;
             newSource.appendDependancies(this);
         }
 
@@ -62,10 +56,7 @@ namespace DataDictionary.Specification
         /// </summary>
         public RequirementSet Target
         {
-            get
-            {
-                return GuidCache.INSTANCE.GetModel(getTarget()) as RequirementSet;
-            }
+            get { return GuidCache.INSTANCE.GetModel(getTarget()) as RequirementSet; }
         }
 
         /// <summary>
@@ -74,19 +65,25 @@ namespace DataDictionary.Specification
         /// <param name="targetBox"></param>
         public void SetTargetBox(IGraphicalDisplay targetBox)
         {
-            RequirementSet target = (RequirementSet)targetBox;
+            RequirementSet target = (RequirementSet) targetBox;
             setTarget(target.Guid);
         }
 
         /// <summary>
         /// The name to be displayed
         /// </summary>
-        public string GraphicalName { get { return Name; } }
+        public string GraphicalName
+        {
+            get { return Name; }
+        }
 
         /// <summary>
         /// The model element which is referenced by this arrow
         /// </summary>
-        public ModelElement ReferencedModel { get { return this; } }
+        public ModelElement ReferencedModel
+        {
+            get { return this; }
+        }
 
         /// <summary>
         /// The collection in which this model element lies
@@ -100,6 +97,5 @@ namespace DataDictionary.Specification
                 return retVal;
             }
         }
-
     }
 }

@@ -13,15 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Reflection;
 using ErtmsSolutions.SiUnits;
+using log4net;
 
 namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 {
     public static class EtcsBrakingCurveBuilder_Obsolete
     {
         /************************************************************/
-        public static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private static bool debug = false;
 
 
@@ -104,10 +107,10 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                   We must find out the domain left limit.
                  *****************************************************************/
                 QuadraticCurveSegment current_curve = new QuadraticCurveSegment(SiDistance.Zero,
-                                                                                 current_position,
-                                                                                 current_acceleration,
-                                                                                 current_speed,
-                                                                                 current_position);
+                    current_position,
+                    current_acceleration,
+                    current_speed,
+                    current_position);
 
                 if (debug)
                 {

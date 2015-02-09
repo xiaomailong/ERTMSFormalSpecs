@@ -13,15 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
+using DataDictionary;
+using MigraDoc.DocumentObjectModel;
 
 namespace Reports.Specs
 {
-    using MigraDoc.DocumentObjectModel;
-
     public class FindingsReportHandler : ReportHandler
     {
         public bool addQuestions { set; get; }
@@ -35,8 +32,8 @@ namespace Reports.Specs
         /// Constructor
         /// </summary>
         /// <param name="dictionary"></param>
-        public FindingsReportHandler(DataDictionary.Dictionary dictionary)
-            :base(dictionary)
+        public FindingsReportHandler(Dictionary dictionary)
+            : base(dictionary)
         {
             createFileName("FindingsReport");
             addQuestions = false;
@@ -48,7 +45,7 @@ namespace Reports.Specs
         }
 
 
-        public override Document  BuildDocument()
+        public override Document BuildDocument()
         {
             Document retVal = new Document();
 
@@ -78,9 +75,8 @@ namespace Reports.Specs
         /// Add an Issues, Comments and Questions section to the report, as requested
         /// </summary>
         /// <param name="report"></param>
-        void BuildSections(FindingsReport report)
+        private void BuildSections(FindingsReport report)
         {
-
             if (report.ReviewedParagraphs)
             {
                 report.AddSubParagraph("Addressed findings");
@@ -92,7 +88,6 @@ namespace Reports.Specs
             }
 
 
-            
             if (addBugs)
             {
                 Log.Info("..generating issues");
@@ -113,6 +108,5 @@ namespace Reports.Specs
 
             report.CloseSubParagraph();
         }
-
     }
 }

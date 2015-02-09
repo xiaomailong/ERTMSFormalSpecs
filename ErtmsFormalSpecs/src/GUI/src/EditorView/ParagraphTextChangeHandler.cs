@@ -13,15 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary;
+using DataDictionary.Specification;
+
 namespace GUI.EditorView
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary;
-    using DataDictionary.Specification;
-
     /// <summary>
     /// Sets the string value into the right property
     /// </summary>

@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 
 namespace DataDictionary.Interpreter
@@ -67,4 +68,3 @@ namespace DataDictionary.Interpreter
         }
     }
 }
-

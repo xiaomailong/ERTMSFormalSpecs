@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 // ------------------------------------------------------------------------------
 // -- Copyright ERTMS Solutions
 // -- Licensed under the EUPL V.1.1
@@ -15,8 +13,14 @@ using System.Collections.Generic;
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using Utils;
+using System.Collections.Generic;
+using DataDictionary.Constants;
 using DataDictionary.Interpreter.Filter;
+using DataDictionary.Interpreter.ListOperators;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Utils;
 
 namespace DataDictionary.Interpreter
 {
@@ -31,6 +35,7 @@ namespace DataDictionary.Interpreter
         /// Predefined designators
         /// </summary>
         public const string THIS = "THIS";
+
         public const string ENCLOSING = "ENCLOSING";
 
         /// <summary>
@@ -50,7 +55,15 @@ namespace DataDictionary.Interpreter
         ///   - reference to THIS
         ///   - reference to the enclosing structure
         /// </summary>
-        public enum LocationEnum { NotDefined, Stack, Model, Instance, This, Enclosing };
+        public enum LocationEnum
+        {
+            NotDefined,
+            Stack,
+            Model,
+            Instance,
+            This,
+            Enclosing
+        };
 
         /// <summary>
         /// The location referenced by this designator
@@ -75,12 +88,12 @@ namespace DataDictionary.Interpreter
                     {
                         retVal = LocationEnum.Stack;
                     }
-                    else if (Ref is Variables.IVariable)
+                    else if (Ref is IVariable)
                     {
                         INamable current = INamableUtils.getEnclosing(Ref);
                         while (current != null && retVal == LocationEnum.NotDefined)
                         {
-                            if ((current is ListOperators.ListOperatorExpression) ||
+                            if ((current is ListOperatorExpression) ||
                                 (current is Statement.Statement) ||
                                 (current is StabilizeExpression) ||
                                 (current is LetExpression))
@@ -91,11 +104,11 @@ namespace DataDictionary.Interpreter
                                     retVal = LocationEnum.Stack;
                                 }
                             }
-                            else if (current is Types.Structure)
+                            else if (current is Structure)
                             {
                                 retVal = LocationEnum.Instance;
                             }
-                            else if (current is Types.NameSpace)
+                            else if (current is NameSpace)
                             {
                                 retVal = LocationEnum.Model;
                             }
@@ -103,7 +116,7 @@ namespace DataDictionary.Interpreter
                             current = INamableUtils.getEnclosing(current);
                         }
                     }
-                    else if (Ref is Types.StructureElement)
+                    else if (Ref is StructureElement)
                     {
                         retVal = LocationEnum.Instance;
                     }
@@ -149,10 +162,10 @@ namespace DataDictionary.Interpreter
                     INamable currentElem = Root;
                     while (currentElem != null)
                     {
-                        Types.Type type = currentElem as Types.Type;
+                        Type type = currentElem as Type;
                         if (type != null)
                         {
-                            Types.StateMachine stateMachine = type as Types.StateMachine;
+                            StateMachine stateMachine = type as StateMachine;
                             while (stateMachine != null)
                             {
                                 type = stateMachine;
@@ -161,7 +174,7 @@ namespace DataDictionary.Interpreter
 
 
                             // Enclosing does not references state machines. 
-                            if (!(Image == ENCLOSING && type is Types.StateMachine))
+                            if (!(Image == ENCLOSING && type is StateMachine))
                             {
                                 retVal.Add(type);
                                 return retVal;
@@ -205,7 +218,7 @@ namespace DataDictionary.Interpreter
                 INamable currentNamable = Root;
                 while (currentNamable != null)
                 {
-                    Utils.ISubDeclarator subDeclarator = currentNamable as Utils.ISubDeclarator;
+                    ISubDeclarator subDeclarator = currentNamable as ISubDeclarator;
                     if (subDeclarator != null && !(subDeclarator is Dictionary))
                     {
                         if (FillBySubdeclarator(subDeclarator, expectation, false, retVal) > 0 && lastElement)
@@ -225,7 +238,7 @@ namespace DataDictionary.Interpreter
                         return retVal;
                     }
 
-                    Types.NameSpace defaultNameSpace = dictionary.findNameSpace("Default");
+                    NameSpace defaultNameSpace = dictionary.findNameSpace("Default");
                     if (defaultNameSpace != null)
                     {
                         if (FillBySubdeclarator(defaultNameSpace, expectation, false, retVal) > 0 && lastElement)
@@ -239,10 +252,10 @@ namespace DataDictionary.Interpreter
             {
                 // The instance is provided, hence, this is not the first designator in the . separated list of designators
                 bool asType = false;
-                if (instance is Types.ITypedElement && !(instance is Constants.State))
+                if (instance is ITypedElement && !(instance is State))
                 {
                     // If the instance is a typed element, dereference it to its corresponding type
-                    Types.ITypedElement element = instance as Types.ITypedElement;
+                    ITypedElement element = instance as ITypedElement;
                     if (element.Type != EFSSystem.NoType)
                     {
                         instance = element.Type;
@@ -253,7 +266,7 @@ namespace DataDictionary.Interpreter
                 // Find the element in all enclosing sub declarators of the instance
                 while (instance != null)
                 {
-                    Utils.ISubDeclarator subDeclarator = instance as Utils.ISubDeclarator;
+                    ISubDeclarator subDeclarator = instance as ISubDeclarator;
                     if (FillBySubdeclarator(subDeclarator, expectation, asType, retVal) > 0)
                     {
                         instance = null;
@@ -292,12 +305,12 @@ namespace DataDictionary.Interpreter
                 {
                     if (asType)
                     {
-                        if (!(namable is Values.IValue) && !(namable is Types.Type))
+                        if (!(namable is IValue) && !(namable is Type))
                         {
                             resultSet.Add(namable);
                             retVal += 1;
                         }
-                        else if (namable is Constants.State)
+                        else if (namable is State)
                         {
                             // TODO : Refactor model to avoid this
                             resultSet.Add(namable);
@@ -324,15 +337,15 @@ namespace DataDictionary.Interpreter
         /// <param name="asType">Indicates that we had to go from the values to the types to perform dereferencing</param>
         /// <param name="values">The return value to update</param>
         /// <return>the number of elements added</return>
-        private int FillBySubdeclarator(Utils.ISubDeclarator subDeclarator, BaseFilter expectation, bool asType, ReturnValue values)
+        private int FillBySubdeclarator(ISubDeclarator subDeclarator, BaseFilter expectation, bool asType, ReturnValue values)
         {
             int retVal = 0;
 
             if (subDeclarator != null)
             {
-                List<Utils.INamable> tmp = new List<Utils.INamable>();
+                List<INamable> tmp = new List<INamable>();
                 subDeclarator.Find(Image, tmp);
-                foreach (Utils.INamable namable in tmp)
+                foreach (INamable namable in tmp)
                 {
                     retVal += addReference(namable, expectation, asType, values);
                 }
@@ -354,7 +367,7 @@ namespace DataDictionary.Interpreter
         /// <para name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <param name="lastElement">Indicates that this element is the last one in a dereference chain</param>
         /// <returns>True if semantic analysis should be continued</returns>
-        public void SemanticAnalysis(Utils.INamable instance, BaseFilter expectation, bool lastElement)
+        public void SemanticAnalysis(INamable instance, BaseFilter expectation, bool lastElement)
         {
             ReturnValue tmp = getReferences(instance, expectation, lastElement);
             if (Image != THIS && Image != ENCLOSING)
@@ -394,7 +407,7 @@ namespace DataDictionary.Interpreter
                     break;
 
                 case LocationEnum.Instance:
-                    Utils.INamable instance = context.Instance;
+                    INamable instance = context.Instance;
 
                     while (instance != null)
                     {
@@ -426,13 +439,13 @@ namespace DataDictionary.Interpreter
                     break;
 
                 case LocationEnum.Enclosing:
-                    Types.ITypedElement typedElement = context.Instance as Types.ITypedElement;
-                    while (typedElement != null && !(typedElement.Type is Types.Structure))
+                    ITypedElement typedElement = context.Instance as ITypedElement;
+                    while (typedElement != null && !(typedElement.Type is Structure))
                     {
                         IEnclosed enclosed = typedElement as IEnclosed;
                         if (enclosed != null)
                         {
-                            typedElement = enclosed.Enclosing as Types.ITypedElement;
+                            typedElement = enclosed.Enclosing as ITypedElement;
                         }
                         else
                         {
@@ -465,13 +478,13 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal"></param>
         /// <returns></returns>
-        private Utils.INamable enclosing(Utils.INamable retVal)
+        private INamable enclosing(INamable retVal)
         {
-            Utils.IEnclosed enclosed = retVal as Utils.IEnclosed;
+            IEnclosed enclosed = retVal as IEnclosed;
 
             if (enclosed != null)
             {
-                retVal = enclosed.Enclosing as Utils.INamable;
+                retVal = enclosed.Enclosing as INamable;
             }
             else
             {
@@ -486,14 +499,14 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="instance"></param>
         /// <returns></returns>
-        private Utils.INamable enclosingSubDeclarator(Utils.INamable instance)
+        private INamable enclosingSubDeclarator(INamable instance)
         {
-            Utils.INamable retVal = instance;
+            INamable retVal = instance;
 
             do
             {
                 retVal = enclosing(retVal);
-            } while (retVal != null && !(retVal is Utils.ISubDeclarator));
+            } while (retVal != null && !(retVal is ISubDeclarator));
 
             return retVal;
         }
@@ -529,12 +542,12 @@ namespace DataDictionary.Interpreter
                     {
                         tmp2.Add(namable);
 
-                        if (EFSSystem.INSTANCE.CheckParentRelationship && !(namable is Values.EmptyValue))
+                        if (EFSSystem.INSTANCE.CheckParentRelationship && !(namable is EmptyValue))
                         {
                             // Consistency check. 
                             // Empty value should not be considered because we can dereference 'Empty'
-                            Variables.IVariable subDeclVar = subDeclarator as Variables.Variable;
-                            object enclosed = ((IEnclosed)namable).Enclosing;
+                            IVariable subDeclVar = subDeclarator as Variable;
+                            object enclosed = ((IEnclosed) namable).Enclosing;
                             if (subDeclVar != null)
                             {
                                 if (enclosed != subDeclVar.Value)
@@ -571,17 +584,17 @@ namespace DataDictionary.Interpreter
         /// Provides the type designated by this designator
         /// </summary>
         /// <returns></returns>
-        public Types.Type GetDesignatorType()
+        public Type GetDesignatorType()
         {
-            Types.Type retVal = null;
+            Type retVal = null;
 
-            if (Ref is Types.ITypedElement)
+            if (Ref is ITypedElement)
             {
-                retVal = (Ref as Types.ITypedElement).Type;
+                retVal = (Ref as ITypedElement).Type;
             }
             else
             {
-                retVal = Ref as Types.Type;
+                retVal = Ref as Type;
             }
 
             if (retVal == null)
@@ -597,7 +610,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public void fill(List<Utils.INamable> retVal, BaseFilter filter)
+        public void fill(List<INamable> retVal, BaseFilter filter)
         {
             if (filter.AcceptableChoice(Ref))
             {
@@ -605,30 +618,30 @@ namespace DataDictionary.Interpreter
             }
         }
 
-        public Variables.IVariable GetVariable(InterpretationContext context)
+        public IVariable GetVariable(InterpretationContext context)
         {
-            Variables.IVariable retVal = null;
+            IVariable retVal = null;
 
             INamable reference = getReference(context);
-            retVal = reference as Variables.IVariable;
+            retVal = reference as IVariable;
 
             return retVal;
         }
 
-        public Values.IValue GetValue(InterpretationContext context)
+        public IValue GetValue(InterpretationContext context)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             INamable reference = getReference(context);
 
             // Deref the reference, if required
-            if (reference is Variables.IVariable)
+            if (reference is IVariable)
             {
-                retVal = (reference as Variables.IVariable).Value;
+                retVal = (reference as IVariable).Value;
             }
             else
             {
-                retVal = reference as Values.IValue;
+                retVal = reference as IValue;
             }
 
             return retVal;
@@ -640,7 +653,7 @@ namespace DataDictionary.Interpreter
 
             if (retVal == null)
             {
-                Types.Type type = GetDesignatorType();
+                Type type = GetDesignatorType();
                 if (type != null)
                 {
                     retVal = type.CastFunction;

@@ -13,10 +13,21 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Data;
 using System.Data.OleDb;
+using System.Reflection;
+using DataDictionary.Generated;
 using DataDictionary.Tests.Translations;
+using log4net;
+using DBField = DataDictionary.Tests.DBElements.DBField;
+using DBMessage = DataDictionary.Tests.DBElements.DBMessage;
+using DBPacket = DataDictionary.Tests.DBElements.DBPacket;
+using Frame = DataDictionary.Tests.Frame;
+using Step = DataDictionary.Tests.Step;
+using SubSequence = DataDictionary.Tests.SubSequence;
+using TestCase = DataDictionary.Tests.TestCase;
 
 namespace Importers
 {
@@ -25,25 +36,24 @@ namespace Importers
         /// <summary>
         /// The Logger
         /// </summary>
-        protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// The path to the access database
         /// </summary>
         private string filePath;
+
         public string FilePath
         {
             get { return filePath; }
-            private set
-            {
-                filePath = value.Replace("\\", "/");
-            }
+            private set { filePath = value.Replace("\\", "/"); }
         }
 
         /// <summary>
         /// The password used to access the database, if any
         /// </summary>
         private string password;
+
         public string Password
         {
             get { return password; }
@@ -54,6 +64,7 @@ namespace Importers
         /// The connection to the database
         /// </summary>
         private OleDbConnection connection;
+
         public OleDbConnection Connection
         {
             get
@@ -92,7 +103,7 @@ namespace Importers
         /// Imports the database into the corresponding frame by creating a new subsequence
         /// </summary>
         /// <param name="frame"></param>
-        public void Import(DataDictionary.Tests.Frame frame)
+        public void Import(Frame frame)
         {
             try
             {
@@ -108,7 +119,7 @@ namespace Importers
         /// Imports the subsequence stored in the database
         /// </summary>
         /// <param name="frame"></param>
-        private void importSubSequence(DataDictionary.Tests.Frame frame)
+        private void importSubSequence(Frame frame)
         {
             string sql = "SELECT TestSequenceID, TestSequenceName FROM TSW_TestSequence";
 
@@ -121,24 +132,24 @@ namespace Importers
             {
                 foreach (DataRow dataRow in dataSet.Tables[0].Rows)
                 {
-                    int subSequenceID = (int)dataRow.ItemArray.GetValue(0);
-                    string subSequenceName = (string)dataRow.ItemArray.GetValue(1);
+                    int subSequenceID = (int) dataRow.ItemArray.GetValue(0);
+                    string subSequenceName = (string) dataRow.ItemArray.GetValue(1);
 
-                    DataDictionary.Tests.SubSequence newSubSequence = (DataDictionary.Tests.SubSequence)DataDictionary.Generated.acceptor.getFactory().createSubSequence();
+                    SubSequence newSubSequence = (SubSequence) acceptor.getFactory().createSubSequence();
                     newSubSequence.Name = subSequenceName;
                     importInitialValues(newSubSequence, subSequenceID);
                     importSteps(newSubSequence);
 
-                    DataDictionary.Tests.SubSequence oldSubSequence = frame.findSubSequence(subSequenceName);
+                    SubSequence oldSubSequence = frame.findSubSequence(subSequenceName);
                     if (oldSubSequence != null)
                     {
                         newSubSequence.setGuid(oldSubSequence.getGuid());
                         int cnt = 0;
-                        foreach (DataDictionary.Tests.TestCase oldTestCase in oldSubSequence.TestCases)
+                        foreach (TestCase oldTestCase in oldSubSequence.TestCases)
                         {
                             if (cnt < newSubSequence.TestCases.Count)
                             {
-                                DataDictionary.Tests.TestCase newTestCase = newSubSequence.TestCases[cnt] as DataDictionary.Tests.TestCase;
+                                TestCase newTestCase = newSubSequence.TestCases[cnt] as TestCase;
                                 if (newTestCase != null)
                                 {
                                     if (oldTestCase.Name.Equals(newTestCase.Name))
@@ -174,7 +185,7 @@ namespace Importers
         /// Imports the subsequence stored in the database
         /// </summary>
         /// <param name="frame"></param>
-        private void importInitialValues(DataDictionary.Tests.SubSequence subSequence, int subSequenceID)
+        private void importInitialValues(SubSequence subSequence, int subSequenceID)
         {
             // Level is a reserved word...
             string sql = "SELECT D_LRBG, TSW_TestSeqSCItl.Level, Mode, NID_LRBG, Q_DIRLRBG, Q_DIRTRAIN, Q_DLRBG, RBC_ID, RBCPhone FROM TSW_TestSeqSCItl WHERE TestSequenceID = " + subSequenceID;
@@ -208,25 +219,28 @@ namespace Importers
                     subSequence.setRBC_ID(RBC_ID);
                     subSequence.setRBCPhone(RBCPhone);
 
-                    DataDictionary.Tests.TestCase testCase = (DataDictionary.Tests.TestCase)DataDictionary.Generated.acceptor.getFactory().createTestCase();
+                    TestCase testCase = (TestCase) acceptor.getFactory().createTestCase();
                     testCase.Name = "Setup";
                     subSequence.appendTestCases(testCase);
 
-                    DataDictionary.Tests.Step initializeTrainDataStep = (DataDictionary.Tests.Step)DataDictionary.Generated.acceptor.getFactory().createStep(); ;
+                    Step initializeTrainDataStep = (Step) acceptor.getFactory().createStep();
+                    ;
                     initializeTrainDataStep.setTCS_Order(0);
                     initializeTrainDataStep.setDistance(0);
                     initializeTrainDataStep.setDescription("Initialize train data");
                     initializeTrainDataStep.setTranslationRequired(true);
                     testCase.appendSteps(initializeTrainDataStep);
 
-                    DataDictionary.Tests.Step DefaultValuesStep = (DataDictionary.Tests.Step)DataDictionary.Generated.acceptor.getFactory().createStep(); ;
+                    Step DefaultValuesStep = (Step) acceptor.getFactory().createStep();
+                    ;
                     DefaultValuesStep.setTCS_Order(0);
                     DefaultValuesStep.setDistance(0);
                     DefaultValuesStep.setDescription("Set default values");
                     DefaultValuesStep.setTranslationRequired(true);
                     testCase.appendSteps(DefaultValuesStep);
 
-                    DataDictionary.Tests.Step manualSetupStep = (DataDictionary.Tests.Step)DataDictionary.Generated.acceptor.getFactory().createStep(); ;
+                    Step manualSetupStep = (Step) acceptor.getFactory().createStep();
+                    ;
                     manualSetupStep.setTCS_Order(0);
                     manualSetupStep.setDistance(0);
                     manualSetupStep.setDescription("Manual setup test sequence");
@@ -244,7 +258,7 @@ namespace Importers
         /// Imports the steps in a sub sequence
         /// </summary>
         /// <param name="subSequence"></param>
-        private void importSteps(DataDictionary.Tests.SubSequence subSequence)
+        private void importSteps(SubSequence subSequence)
         {
             string sql = "SELECT TCSOrder, Distance, FT_NUMBER, TC_NUMBER, ST_STEP, ST_DESCRIPTION, UserComment, ST_IO, ST_INTERFACE, ST_COMMENTS, TestLevelIn, TestLevelOut, TestModeIn, TestModeOut FROM TSW_TCStep ORDER BY TCSOrder";
 
@@ -254,15 +268,15 @@ namespace Importers
             adapter.Fill(dataSet);
             if (dataSet.Tables.Count > 0)
             {
-                DataDictionary.Tests.TestCase testCase = null;
+                TestCase testCase = null;
 
                 foreach (DataRow dataRow in dataSet.Tables[0].Rows)
                 {
                     object[] items = dataRow.ItemArray;
-                    int order = (int)items[0];
-                    int distance = (int)items[1];
-                    int feature = (int)items[2];
-                    int testCaseNr = (int)items[3];
+                    int order = (int) items[0];
+                    int distance = (int) items[1];
+                    int feature = (int) items[2];
+                    int testCaseNr = (int) items[3];
                     string stepType = items[4] as string;
                     string description = items[5] as string;
                     string userComment = items[6] as string;
@@ -287,12 +301,12 @@ namespace Importers
 
                         if (testCase == null)
                         {
-                            testCase = (DataDictionary.Tests.TestCase)DataDictionary.Generated.acceptor.getFactory().createTestCase();
+                            testCase = (TestCase) acceptor.getFactory().createTestCase();
                             testCase.Name = "Feature " + feature + " Test case " + testCaseNr;
                             testCase.setCase(testCaseNr);
                             testCase.setFeature(feature);
                             subSequence.appendTestCases(testCase);
-                            DataDictionary.Tests.Step setupTestCaseStep = (DataDictionary.Tests.Step)DataDictionary.Generated.acceptor.getFactory().createStep();
+                            Step setupTestCaseStep = (Step) acceptor.getFactory().createStep();
                             setupTestCaseStep.Name = "Setup test case";
                             setupTestCaseStep.setDescription(setupTestCaseStep.Name);
                             setupTestCaseStep.setComment("This step is used to setup the test case " + testCaseNr + " feature " + feature);
@@ -300,7 +314,7 @@ namespace Importers
                             testCase.appendSteps(setupTestCaseStep);
                         }
 
-                        DataDictionary.Tests.Step step = (DataDictionary.Tests.Step)DataDictionary.Generated.acceptor.getFactory().createStep();
+                        Step step = (Step) acceptor.getFactory().createStep();
                         step.Name = "Step " + order;
                         step.setTCS_Order(order);
                         step.setDistance(distance);
@@ -340,7 +354,6 @@ namespace Importers
             {
                 Log.Error("Cannot find sub sequence table in database");
             }
-
         }
 
 
@@ -348,7 +361,7 @@ namespace Importers
         /// Imports all the messages used by this step
         /// </summary>
         /// <param name="aStep"></param>
-        private void importStepMessages(DataDictionary.Tests.Step aStep)
+        private void importStepMessages(Step aStep)
         {
             string sql = "SELECT TCSOrder, MessageOrder, MessageType, Var_Name, Var_Value FROM TSW_MessageHeader ORDER BY MessageOrder, Var_Row";
 
@@ -359,42 +372,42 @@ namespace Importers
             if (dataSet.Tables.Count > 0)
             {
                 int messageNumber = 0;
-                DataDictionary.Tests.DBElements.DBMessage message = null;
+                DBMessage message = null;
                 int order = -1;
                 foreach (DataRow dataRow in dataSet.Tables[0].Rows)
                 {
                     object[] items = dataRow.ItemArray;
-                    order = (int)items[0];
+                    order = (int) items[0];
                     if (order == aStep.getTCS_Order())
                     {
-                        short messageOrder = (short)items[1];
-                        if (messageNumber != messageOrder)  // we create a new Message
+                        short messageOrder = (short) items[1];
+                        if (messageNumber != messageOrder) // we create a new Message
                         {
                             if (messageNumber != 0)
                             {
                                 aStep.AddMessage(message);
                                 importPackets(message, order);
                             }
-                            short messageTypeNumber = (short)items[2];
-                            DataDictionary.Generated.acceptor.DBMessageType messageType = DataDictionary.Generated.acceptor.DBMessageType.defaultDBMessageType;
+                            short messageTypeNumber = (short) items[2];
+                            acceptor.DBMessageType messageType = acceptor.DBMessageType.defaultDBMessageType;
                             switch (messageTypeNumber)
                             {
                                 case 0:
-                                    messageType = DataDictionary.Generated.acceptor.DBMessageType.aEUROBALISE;
+                                    messageType = acceptor.DBMessageType.aEUROBALISE;
                                     break;
                                 case 1:
-                                    messageType = DataDictionary.Generated.acceptor.DBMessageType.aEUROLOOP;
+                                    messageType = acceptor.DBMessageType.aEUROLOOP;
                                     break;
                                 case 2:
-                                    messageType = DataDictionary.Generated.acceptor.DBMessageType.aEURORADIO;
+                                    messageType = acceptor.DBMessageType.aEURORADIO;
                                     break;
                             }
-                            message = (DataDictionary.Tests.DBElements.DBMessage)DataDictionary.Generated.acceptor.getFactory().createDBMessage();
+                            message = (DBMessage) acceptor.getFactory().createDBMessage();
                             message.MessageOrder = messageOrder;
                             message.MessageType = messageType;
                             messageNumber = messageOrder;
                         }
-                        DataDictionary.Tests.DBElements.DBField field = (DataDictionary.Tests.DBElements.DBField)DataDictionary.Generated.acceptor.getFactory().createDBField();
+                        DBField field = (DBField) acceptor.getFactory().createDBField();
                         string variable = items[3] as string;
                         if (variable != null)
                         {
@@ -421,9 +434,9 @@ namespace Importers
         /// Impports all the packets for a given message
         /// </summary>
         /// <param name="aMessage"></param>
-        private void importPackets(DataDictionary.Tests.DBElements.DBMessage aMessage, int TCS_order)
+        private void importPackets(DBMessage aMessage, int TCS_order)
         {
-            string sql = "SELECT Pac_ID, Var_Name, Var_Value FROM TSW_MessageBody WHERE (TCSOrder = "+TCS_order+") AND (MessageOrder = "+aMessage.MessageOrder+") ORDER BY Var_Row";
+            string sql = "SELECT Pac_ID, Var_Name, Var_Value FROM TSW_MessageBody WHERE (TCSOrder = " + TCS_order + ") AND (MessageOrder = " + aMessage.MessageOrder + ") ORDER BY Var_Row";
 
             OleDbDataAdapter adapter = new OleDbDataAdapter(sql, Connection);
             DataSet dataSet = new DataSet();
@@ -431,23 +444,23 @@ namespace Importers
             adapter.Fill(dataSet);
 
             int packetNumber = 0;
-            DataDictionary.Tests.DBElements.DBPacket packet = (DataDictionary.Tests.DBElements.DBPacket)DataDictionary.Generated.acceptor.getFactory().createDBPacket();
+            DBPacket packet = (DBPacket) acceptor.getFactory().createDBPacket();
             if (dataSet.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow dataRow in dataSet.Tables[0].Rows)
                 {
                     object[] items = dataRow.ItemArray;
-                    short pacId = (short)items[0];
+                    short pacId = (short) items[0];
                     if (packetNumber != pacId)
                     {
                         if (packetNumber != 0)
                         {
                             aMessage.AddPacket(packet);
                         }
-                        packet = (DataDictionary.Tests.DBElements.DBPacket)DataDictionary.Generated.acceptor.getFactory().createDBPacket();
+                        packet = (DBPacket) acceptor.getFactory().createDBPacket();
                         packetNumber = pacId;
                     }
-                    DataDictionary.Tests.DBElements.DBField field = (DataDictionary.Tests.DBElements.DBField)DataDictionary.Generated.acceptor.getFactory().createDBField();
+                    DBField field = (DBField) acceptor.getFactory().createDBField();
                     string variable = items[1] as string;
                     if (variable != null)
                     {
@@ -456,7 +469,7 @@ namespace Importers
                     string value = items[2] as string;
                     if (value != null)
                     {
-                        field.Value = VariableConverter.INSTANCE.Convert(variable, value).ToString(); 
+                        field.Value = VariableConverter.INSTANCE.Convert(variable, value).ToString();
                     }
                     packet.AddField(field);
                 }

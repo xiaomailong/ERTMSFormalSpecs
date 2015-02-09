@@ -13,10 +13,8 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
+using System.Globalization;
 using System.Threading;
 
 namespace Utils
@@ -26,7 +24,7 @@ namespace Utils
         public static Thread CreateThread(ParameterizedThreadStart threadStart)
         {
             Thread retVal = new Thread(threadStart);
-            retVal.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+            retVal.CurrentCulture = CultureInfo.InvariantCulture;
 
             return retVal;
         }
@@ -35,7 +33,7 @@ namespace Utils
         public static Thread CreateThread(ThreadStart threadStart)
         {
             Thread retVal = new Thread(threadStart);
-            retVal.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+            retVal.CurrentCulture = CultureInfo.InvariantCulture;
 
             return retVal;
         }

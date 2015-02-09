@@ -13,9 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using Case = DataDictionary.Functions.Case;
+using Function = DataDictionary.Functions.Function;
 
 namespace GUI.DataDictionaryView
 {
@@ -37,7 +41,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public CasesTreeNode(DataDictionary.Functions.Function item, bool buildSubNodes)
+        public CasesTreeNode(Function item, bool buildSubNodes)
             : base(item, buildSubNodes, "Cases", true, false)
         {
         }
@@ -50,7 +54,7 @@ namespace GUI.DataDictionaryView
         {
             Nodes.Clear();
 
-            foreach (DataDictionary.Functions.Case aCase in Item.Cases)
+            foreach (Case aCase in Item.Cases)
             {
                 Nodes.Add(new CaseTreeNode(aCase, buildSubNodes));
             }
@@ -77,7 +81,7 @@ namespace GUI.DataDictionaryView
             if (SourceNode is CaseTreeNode)
             {
                 CaseTreeNode node = SourceNode as CaseTreeNode;
-                DataDictionary.Functions.Case aCase = node.Item;
+                Case aCase = node.Item;
                 node.Delete();
                 AddCase(aCase);
             }
@@ -88,7 +92,7 @@ namespace GUI.DataDictionaryView
             DataDictionaryTreeView treeView = BaseTreeView as DataDictionaryTreeView;
             if (treeView != null)
             {
-                DataDictionary.Functions.Case aCase = (DataDictionary.Functions.Case)DataDictionary.Generated.acceptor.getFactory().createCase();
+                Case aCase = (Case) acceptor.getFactory().createCase();
                 aCase.Name = "<Case" + (GetNodeCount(false) + 1) + ">";
                 AddCase(aCase);
             }
@@ -98,7 +102,7 @@ namespace GUI.DataDictionaryView
         /// Adds a new case
         /// </summary>
         /// <param name="function"></param>
-        public CaseTreeNode AddCase(DataDictionary.Functions.Case aCase)
+        public CaseTreeNode AddCase(Case aCase)
         {
             Item.appendCases(aCase);
             CaseTreeNode retVal = new CaseTreeNode(aCase, true);

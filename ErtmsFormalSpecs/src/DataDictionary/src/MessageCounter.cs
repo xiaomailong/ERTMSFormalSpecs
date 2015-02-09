@@ -13,17 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary.Generated;
+using Utils;
+
 namespace DataDictionary
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// Counts the number of messages in the model
     /// </summary>
-    public class MessageCounter : Generated.Visitor
+    public class MessageCounter : Visitor
     {
         /// <summary>
         /// The number of information found
@@ -60,7 +59,7 @@ namespace DataDictionary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="visitSubNodes"></param>
-        public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+        public override void visit(BaseModelElement obj, bool visitSubNodes)
         {
             count(obj);
 
@@ -83,19 +82,19 @@ namespace DataDictionary
         /// Actually counts 
         /// </summary>
         /// <param name="obj"></param>
-        private void count(Generated.BaseModelElement obj)
+        private void count(BaseModelElement obj)
         {
-            foreach (Utils.ElementLog log in obj.Messages)
+            foreach (ElementLog log in obj.Messages)
             {
                 switch (log.Level)
                 {
-                    case Utils.ElementLog.LevelEnum.Error:
+                    case ElementLog.LevelEnum.Error:
                         Error += 1;
                         break;
-                    case Utils.ElementLog.LevelEnum.Warning:
+                    case ElementLog.LevelEnum.Warning:
                         Warning += 1;
                         break;
-                    case Utils.ElementLog.LevelEnum.Info:
+                    case ElementLog.LevelEnum.Info:
                         Info += 1;
                         break;
                 }

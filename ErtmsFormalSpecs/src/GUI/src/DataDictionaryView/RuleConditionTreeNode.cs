@@ -13,14 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
+using DataDictionary.Rules;
+using Action = DataDictionary.Rules.Action;
 
 namespace GUI.DataDictionaryView
 {
-    public class RuleConditionTreeNode : ReqRelatedTreeNode<DataDictionary.Rules.RuleCondition>
+    public class RuleConditionTreeNode : ReqRelatedTreeNode<RuleCondition>
     {
         private class ItemEditor : ReqRelatedEditor
         {
@@ -41,7 +43,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public RuleConditionTreeNode(DataDictionary.Rules.RuleCondition item, bool buildSubNodes)
+        public RuleConditionTreeNode(RuleCondition item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }
@@ -50,7 +52,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public RuleConditionTreeNode(DataDictionary.Rules.RuleCondition item, bool buildSubNodes, string name, bool isFolder = false, bool addRequirements = true)
+        public RuleConditionTreeNode(RuleCondition item, bool buildSubNodes, string name, bool isFolder = false, bool addRequirements = true)
             : base(item, buildSubNodes, name, false, addRequirements)
         {
         }
@@ -117,7 +119,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="preCondition"></param>
         /// <returns></returns>
-        public virtual PreConditionTreeNode AddPreCondition(DataDictionary.Rules.PreCondition preCondition)
+        public virtual PreConditionTreeNode AddPreCondition(PreCondition preCondition)
         {
             return PreConditions.AddPreCondition(preCondition);
         }
@@ -135,7 +137,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="action"></param>
         /// <returns></returns>
-        public virtual ActionTreeNode AddAction(DataDictionary.Rules.Action action)
+        public virtual ActionTreeNode AddAction(Action action)
         {
             return Actions.AddAction(action);
         }

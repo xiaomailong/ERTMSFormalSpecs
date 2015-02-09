@@ -1,21 +1,19 @@
 using System;
 
-namespace XmlBooster 
+namespace XmlBooster
 {
+    public class XmlBRecoveryException : Exception
+    {
+        private String theMsg;
 
-	public class XmlBRecoveryException: Exception
-		{
+        public XmlBRecoveryException(String msg)
+        {
+            theMsg = msg;
+        }
 
-			private String theMsg;
-
-			public XmlBRecoveryException (String msg)
-	{
-		theMsg = msg;
-	}
-
-	public String getMsg()
-{
-	return theMsg;
-}
-}
+        public String getMsg()
+        {
+            return theMsg;
+        }
+    }
 }

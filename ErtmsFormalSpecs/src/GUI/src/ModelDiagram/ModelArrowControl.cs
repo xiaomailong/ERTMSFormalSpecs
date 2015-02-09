@@ -13,15 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary;
+using DataDictionary.Variables;
+using GUI.BoxArrowDiagram;
+
 namespace GUI.ModelDiagram
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary;
-    using DataDictionary.Variables;
-
     /// <summary>
     /// An arrow
     /// </summary>
@@ -84,7 +82,7 @@ namespace GUI.ModelDiagram
     /// <summary>
     /// An arrow between the models
     /// </summary>
-    public class ModelArrowControl : BoxArrowDiagram.ArrowControl<IGraphicalDisplay, ModelArrow>
+    public class ModelArrowControl : ArrowControl<IGraphicalDisplay, ModelArrow>
     {
         /// <summary>
         /// Constructor

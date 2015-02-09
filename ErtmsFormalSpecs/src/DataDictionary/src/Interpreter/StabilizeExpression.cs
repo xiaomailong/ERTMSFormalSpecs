@@ -13,12 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
+using DataDictionary.Functions;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter.Filter;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using Utils;
+using Type = DataDictionary.Types.Type;
+using Variable = DataDictionary.Variables.Variable;
 
 namespace DataDictionary.Interpreter
 {
-    public class StabilizeExpression : Expression, Utils.ISubDeclarator
+    public class StabilizeExpression : Expression, ISubDeclarator
     {
         /// <summary>
         /// The expression to stabilize
@@ -38,12 +46,12 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The value of the last iteration
         /// </summary>
-        private Variables.Variable LastIteration { get; set; }
+        private Variable LastIteration { get; set; }
 
         /// <summary>
         /// The value of the current iteration
         /// </summary>
-        private Variables.Variable CurrentIteration { get; set; }
+        private Variable CurrentIteration { get; set; }
 
         /// <summary>
         /// Constructor
@@ -66,11 +74,11 @@ namespace DataDictionary.Interpreter
             Condition = condition;
             Condition.Enclosing = this;
 
-            LastIteration = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
+            LastIteration = (Variable) acceptor.getFactory().createVariable();
             LastIteration.Enclosing = this;
             LastIteration.Name = "PREVIOUS";
 
-            CurrentIteration = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
+            CurrentIteration = (Variable) acceptor.getFactory().createVariable();
             CurrentIteration.Enclosing = this;
             CurrentIteration.Name = "CURRENT";
 
@@ -82,25 +90,25 @@ namespace DataDictionary.Interpreter
         /// </summary>
         public void InitDeclaredElements()
         {
-            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+            DeclaredElements = new Dictionary<string, List<INamable>>();
 
-            Utils.ISubDeclaratorUtils.AppendNamable(this, LastIteration);
-            Utils.ISubDeclaratorUtils.AppendNamable(this, CurrentIteration);
+            ISubDeclaratorUtils.AppendNamable(this, LastIteration);
+            ISubDeclaratorUtils.AppendNamable(this, CurrentIteration);
         }
 
         /// <summary>
         /// The elements declared by this declarator
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; private set; }
+        public Dictionary<string, List<INamable>> DeclaredElements { get; private set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
-            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
+            ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>
@@ -109,7 +117,7 @@ namespace DataDictionary.Interpreter
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
+        public override bool SemanticAnalysis(INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
@@ -140,7 +148,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
-        public override Types.Type GetExpressionType()
+        public override Type GetExpressionType()
         {
             return InitialValue.GetExpressionType();
         }
@@ -151,7 +159,7 @@ namespace DataDictionary.Interpreter
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
+        public override IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
             ExplanationPart stabilizeExpressionExplanation = ExplanationPart.CreateSubExplanation(explain, ToString() + " = ");
 
@@ -171,7 +179,7 @@ namespace DataDictionary.Interpreter
 
                 ExplanationPart stopValueExplanation = ExplanationPart.CreateSubExplanation(iterationExplanation, "Stop expression value = ");
                 context.LocalScope.setVariable(CurrentIteration);
-                Values.BoolValue stopCondition = Condition.GetValue(context, stopValueExplanation) as Values.BoolValue;
+                BoolValue stopCondition = Condition.GetValue(context, stopValueExplanation) as BoolValue;
                 ExplanationPart.SetNamable(stopValueExplanation, stopCondition);
                 if (stopCondition != null)
                 {
@@ -197,7 +205,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public override void fill(List<Utils.INamable> retVal, BaseFilter filter)
+        public override void fill(List<INamable> retVal, BaseFilter filter)
         {
             Expression.fill(retVal, filter);
             InitialValue.fill(retVal, filter);
@@ -225,11 +233,11 @@ namespace DataDictionary.Interpreter
             base.checkExpression();
 
             InitialValue.checkExpression();
-            Types.Type initialValueType = InitialValue.GetExpressionType();
+            Type initialValueType = InitialValue.GetExpressionType();
             if (initialValueType != null)
             {
                 Expression.checkExpression();
-                Types.Type expressionType = Expression.GetExpressionType();
+                Type expressionType = Expression.GetExpressionType();
                 if (expressionType != null)
                 {
                     if (expressionType != initialValueType)
@@ -242,10 +250,10 @@ namespace DataDictionary.Interpreter
                     AddError("Cannot determine type of expression " + Expression);
                 }
 
-                Types.Type conditionType = Condition.GetExpressionType();
+                Type conditionType = Condition.GetExpressionType();
                 if (conditionType != null)
                 {
-                    if (!(conditionType is Types.BoolType))
+                    if (!(conditionType is BoolType))
                     {
                         AddError("Condition " + Condition + " does not evaluate to a boolean");
                     }
@@ -268,11 +276,11 @@ namespace DataDictionary.Interpreter
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public override Functions.Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
+        public override Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
-            Functions.Graph retVal = base.createGraph(context, parameter, explain);
+            Graph retVal = base.createGraph(context, parameter, explain);
 
-            retVal = Functions.Graph.createGraph(GetValue(context, explain), parameter, explain);
+            retVal = Graph.createGraph(GetValue(context, explain), parameter, explain);
 
             return retVal;
         }

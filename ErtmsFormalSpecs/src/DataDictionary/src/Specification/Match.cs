@@ -14,9 +14,11 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Generated;
+
 namespace DataDictionary.Specification
 {
-    public class Match : Generated.match
+    public class Match : match
     {
         /// <summary>
         /// The Match content

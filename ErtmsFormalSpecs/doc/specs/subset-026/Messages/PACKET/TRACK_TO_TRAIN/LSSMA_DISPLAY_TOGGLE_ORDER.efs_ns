@@ -54,7 +54,7 @@
  Guid="f34fac66-ed8d-4802-917d-874841b4010e"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -80,7 +80,7 @@
  Guid="e8875e88-f518-4f62-85ca-2cc556556361"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Time"
+ TypeName="MessageTypes.Time"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
@@ -88,4 +88,93 @@
  Guid="0843335e-c7ce-4032-9399-b6777c9c70eb"
 >
 </StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="6f6d50b4-21b0-476e-99c0-14edeea2d4ef"
+>
+<Comment>Checks the values in a structure of type LSSMA_DISPLAY_TOGGLE_ORDER.Message</Comment>
+<Parameters>
+<Parameter
+ Type="LSSMA_DISPLAY_TOGGLE_ORDER.Message"
+ Name="struct"
+ Guid="3f166b57-0645-4662-b5cf-fafd46a9e85e"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="604f7b8a-5fa9-4a56-ac47-81d3e9808e4d"
+>
+<PreConditions>
+<PreCondition
+ Guid="7e91a9ce-3c65-4027-9cd0-df48e0538c1a"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="9716a897-0b82-49a0-876d-e30ed5958f15"
+>
+<PreConditions>
+<PreCondition
+ Guid="eef6e7cc-a202-4a30-bc33-4468c338ab6c"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="b42240ae-1cbf-4743-bfee-15b5652d5944"
+>
+<PreConditions>
+<PreCondition
+ Guid="6d6bd743-dec2-475a-bf89-16803ff78f6d"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="048a749c-92ee-48d6-9099-7398c4950fce"
+>
+<PreConditions>
+<PreCondition
+ Guid="a8887539-a14e-41ca-a1c1-2a5433bce52d"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_LSSMA invalid"
+ Guid="30144caf-f993-403a-bc2a-024177cc3d4e"
+>
+<PreConditions>
+<PreCondition
+ Guid="607b7b93-18da-40cc-8053-d966b6674e70"
+>struct.Q_LSSMA &lt; 0
+  AND  
+struct.Q_LSSMA &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.T_LSSMA invalid"
+ Guid="f286516a-227c-44bb-8d64-382289db5003"
+>
+<PreConditions>
+<PreCondition
+ Guid="59b49264-8307-4bba-8741-0a3c47f1741b"
+>struct.T_LSSMA &lt; 0
+  AND  
+struct.T_LSSMA &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="febcb920-b394-4cfb-8534-63b2bcb95e74"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

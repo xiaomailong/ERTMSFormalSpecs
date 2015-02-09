@@ -13,9 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using PreCondition = DataDictionary.Rules.PreCondition;
+using RuleCondition = DataDictionary.Rules.RuleCondition;
 
 namespace GUI.DataDictionaryView
 {
@@ -26,7 +30,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="children"></param>
-        public RulePreConditionsTreeNode(DataDictionary.Rules.RuleCondition item, bool buildSubNodes)
+        public RulePreConditionsTreeNode(RuleCondition item, bool buildSubNodes)
             : base(item, buildSubNodes, "Pre conditions", true, false)
         {
         }
@@ -39,7 +43,7 @@ namespace GUI.DataDictionaryView
         {
             Nodes.Clear();
 
-            foreach (DataDictionary.Rules.PreCondition preCondition in Item.PreConditions)
+            foreach (PreCondition preCondition in Item.PreConditions)
             {
                 Nodes.Add(new PreConditionTreeNode(preCondition, buildSubNodes));
             }
@@ -51,7 +55,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="preCondition"></param>
         /// <returns></returns>
-        public override PreConditionTreeNode AddPreCondition(DataDictionary.Rules.PreCondition preCondition)
+        public override PreConditionTreeNode AddPreCondition(PreCondition preCondition)
         {
             PreConditionTreeNode retVal = new PreConditionTreeNode(preCondition, true);
 
@@ -66,7 +70,7 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Rules.PreCondition preCondition = (DataDictionary.Rules.PreCondition)DataDictionary.Generated.acceptor.getFactory().createPreCondition();
+            PreCondition preCondition = (PreCondition) acceptor.getFactory().createPreCondition();
             preCondition.Condition = "";
             AddPreCondition(preCondition);
         }
@@ -77,13 +81,13 @@ namespace GUI.DataDictionaryView
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)
         {
-            if (SourceNode is DataDictionaryView.PreConditionTreeNode)
+            if (SourceNode is PreConditionTreeNode)
             {
                 if (MessageBox.Show("Are you sure you want to move the corresponding pre-condition ?", "Move pre-condition", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    DataDictionaryView.PreConditionTreeNode preConditionTreeNode = (DataDictionaryView.PreConditionTreeNode)SourceNode;
+                    PreConditionTreeNode preConditionTreeNode = (PreConditionTreeNode) SourceNode;
 
-                    DataDictionary.Rules.PreCondition preCondition = preConditionTreeNode.Item;
+                    PreCondition preCondition = preConditionTreeNode.Item;
                     preConditionTreeNode.Delete();
                     AddPreCondition(preCondition);
                 }

@@ -54,7 +54,7 @@
  Guid="ef3a757c-1a10-4e56-8dcf-7b7321797f74"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -80,4 +80,82 @@
  Guid="c1c3bc18-8367-4f06-99d9-13204d031550"
 >
 </ReqRef></StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="0cc849f3-694d-417a-8011-35d0bb06844e"
+>
+<Comment>Checks the values in a structure of type STOP_IF_IN_STAFF_RESPONSIBLE.Message</Comment>
+<Parameters>
+<Parameter
+ Type="STOP_IF_IN_STAFF_RESPONSIBLE.Message"
+ Name="struct"
+ Guid="5665a3a4-db02-481d-bd29-b0d92616d34b"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="4a94889f-efa2-4dc6-96b1-2eadefae75cd"
+>
+<PreConditions>
+<PreCondition
+ Guid="788eae49-31c1-4f50-93a9-83107f48842a"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="740e9341-c9f5-4693-86d9-6ce23bc2fa7f"
+>
+<PreConditions>
+<PreCondition
+ Guid="985b85c1-12e5-49dd-b5fa-7314b5af827a"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="c06d53d9-90d7-4ea0-aa89-da122334c3e7"
+>
+<PreConditions>
+<PreCondition
+ Guid="b03f6a90-5786-467a-abc6-7b4beb69dafd"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="20c7f062-685b-4cde-9933-606baa3a1d71"
+>
+<PreConditions>
+<PreCondition
+ Guid="1de1f59d-da20-4dcc-a4be-38823647472a"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_SRSTOP invalid"
+ Guid="340b02c7-1a1f-49a0-8556-cbf805e84e3c"
+>
+<PreConditions>
+<PreCondition
+ Guid="11cf950b-a5b1-43e5-8fe7-57c91471b1a5"
+>struct.Q_SRSTOP &lt; 0
+  AND  
+struct.Q_SRSTOP &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="4b24f617-eff2-415a-a035-b451525bfabb"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

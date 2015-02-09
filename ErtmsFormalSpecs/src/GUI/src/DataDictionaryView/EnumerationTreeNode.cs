@@ -13,24 +13,31 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows.Forms;
 using System.Drawing.Design;
+using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.Converters;
+using Enum = DataDictionary.Types.Enum;
+using EnumValue = DataDictionary.Constants.EnumValue;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Type = DataDictionary.Types.Type;
 
 namespace GUI.DataDictionaryView
 {
-    public class EnumerationTreeNode : TypeTreeNode<DataDictionary.Types.Enum>
+    public class EnumerationTreeNode : TypeTreeNode<Enum>
     {
-        private class InternalValuesConverter : Converters.ValuesConverter
+        private class InternalValuesConverter : ValuesConverter
         {
             public override StandardValuesCollection
-            GetStandardValues(ITypeDescriptorContext context)
+                GetStandardValues(ITypeDescriptorContext context)
             {
-                ItemEditor editor = (ItemEditor)context.Instance;
-                DataDictionary.Types.NameSpace nameSpace = editor.Item.NameSpace;
-                DataDictionary.Types.Type type = editor.Item;
+                ItemEditor editor = (ItemEditor) context.Instance;
+                NameSpace nameSpace = editor.Item.NameSpace;
+                Type type = editor.Item;
 
                 return GetValues(nameSpace, type);
             }
@@ -50,9 +57,9 @@ namespace GUI.DataDictionaryView
             /// The enumeration default value
             /// </summary>
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.DefaultValueUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.DefaultValueUITypeConverter))]
-            public DataDictionary.Types.Enum DefaultValue
+            [Editor(typeof (DefaultValueUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (DefaultValueUITypeConverter))]
+            public Enum DefaultValue
             {
                 get { return Item; }
                 set
@@ -62,13 +69,13 @@ namespace GUI.DataDictionaryView
                 }
             }
 
-            [Category("Description"), Editor(@"System.Windows.Forms.Design.StringCollectionEditor,System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
+            [Category("Description"), Editor(@"System.Windows.Forms.Design.StringCollectionEditor,System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof (UITypeEditor))]
             public List<string> Values
             {
                 get
                 {
                     List<string> result = new List<string>();
-                    foreach (DataDictionary.Constants.EnumValue val in Item.Values)
+                    foreach (EnumValue val in Item.Values)
                     {
                         result.Add(val.getName());
                     }
@@ -79,7 +86,7 @@ namespace GUI.DataDictionaryView
                     Item.Values.Clear();
                     foreach (string s in value)
                     {
-                        DataDictionary.Constants.EnumValue val = new DataDictionary.Constants.EnumValue();
+                        EnumValue val = new EnumValue();
                         val.Name = s;
                         Item.Values.Add(val);
                     }
@@ -94,7 +101,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public EnumerationTreeNode(DataDictionary.Types.Enum item, bool buildSubNodes)
+        public EnumerationTreeNode(Enum item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }
@@ -104,7 +111,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public EnumerationTreeNode(DataDictionary.Types.Enum item, bool buildSubNodes, string name, bool isFolder, bool addRequirements)
+        public EnumerationTreeNode(Enum item, bool buildSubNodes, string name, bool isFolder, bool addRequirements)
             : base(item, buildSubNodes, name, isFolder, addRequirements)
         {
         }
@@ -133,7 +140,7 @@ namespace GUI.DataDictionaryView
 
         public void AddValueHandler(object sender, EventArgs args)
         {
-            DataDictionary.Constants.EnumValue value = (DataDictionary.Constants.EnumValue)DataDictionary.Generated.acceptor.getFactory().createEnumValue();
+            EnumValue value = (EnumValue) acceptor.getFactory().createEnumValue();
             valuesTreeNode.AddValue(value);
         }
 

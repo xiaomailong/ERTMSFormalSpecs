@@ -1,0 +1,429 @@
+<NameSpace
+ X="970"
+ Y="10"
+ Width="100"
+ Height="50"
+ Name="MARequest"
+ Guid="abb0bff1-ee1e-4be0-8789-6cae7a695ba2"
+>
+<NameSpaces>
+</NameSpaces>
+<Structures>
+<Structure
+ Default=""
+ X="20"
+ Y="100"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="MARequestParametersStruct"
+ Guid="9d7a57c5-16b7-49c4-a5ae-7c349742e6f1"
+>
+<ReqRef
+ Id="b74d1689-f942-4e2a-abdb-aa241f4f117f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86ba9eb8-9104-4dd0-8208-ab19a713f8d4"
+>
+</ReqRef><ReqRef
+ Id="f1ea734b-e726-48f2-96ea-1c70bef0a48f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0778d2a3-b667-448e-8ba9-52aedffb80a0"
+>
+</ReqRef><Comment>Contains the parameters for the MA request.</Comment>
+<StructureElement
+ TypeName="Default.BaseTypes.Time"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="PreindicationLocationTime"
+ Guid="7a06a620-fa06-4db1-b6cd-70855746f090"
+>
+<ReqRef
+ Id="628ac46e-918d-47a4-9804-1bae59216f63"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="008aee12-76b5-4f6a-b96c-5b57008d736c"
+>
+</ReqRef><ReqRef
+ Id="f1ea734b-e726-48f2-96ea-1c70bef0a48f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d639d100-4f29-4fbb-885b-3a52416aca8a"
+>
+</ReqRef><Comment>A defined time before the train reaches the pre-indication location for the EOA/LOA assuming it is running at the warning speed.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Time"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="SectionTimerTime"
+ Guid="61b511aa-6e78-4c29-86e5-94796558e1c5"
+>
+<ReqRef
+ Id="95d3b6c1-0843-4142-a7aa-9589d026598d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="195f61fd-1fc4-4337-b0a8-a0cff448d0bc"
+>
+</ReqRef><ReqRef
+ Id="f1ea734b-e726-48f2-96ea-1c70bef0a48f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a44bd3bf-127b-44de-9bdb-180758d8036c"
+>
+</ReqRef><Comment>A defined time before the Section timer (not the End Section timer, not the Overlap timer) for any section of the MA expires, or before the LOA speed timer expires.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Time"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="RepetitionTime"
+ Guid="919bcae0-9652-4d12-9a00-97b03d9cf4a7"
+>
+<ReqRef
+ Id="b2206740-ee3b-42bc-9b69-b3ef064476be"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26c9d53d-e59f-405c-94a1-7b86c15f039d"
+>
+</ReqRef><Comment>Indicates the timbe between each repetition of the MA request if it has to be repeated until a new MA is received.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="HandleRepetitions"
+ Guid="352665ed-7ee9-445c-9429-dadb1453eae5"
+>
+<ReqRef
+ Id="b2206740-ee3b-42bc-9b69-b3ef064476be"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6e1f9242-7e78-4822-9fba-3689c0395dab"
+>
+</ReqRef><Comment>Indicates whether the MA request shall be repeated until a new MA is received or not.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="HandleTimeouts"
+ Guid="d33dfcaf-77bc-4946-94a9-52b60ce95d02"
+>
+<ReqRef
+ Id="95d3b6c1-0843-4142-a7aa-9589d026598d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8978512a-1560-464d-994b-2ee9be1ea942"
+>
+</ReqRef><Comment>Indicates whether the MA requests due to section timeouts have to be handled.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="HandlePreindicationLocation"
+ Guid="e1a46e17-bcc4-4c3f-a825-45ce186b486a"
+>
+<ReqRef
+ Id="628ac46e-918d-47a4-9804-1bae59216f63"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4e199458-83df-461a-97a8-fa9f09152bcc"
+>
+</ReqRef><Comment>Indicates whether the MA requests due to the pre-indication location have to be handled.</Comment>
+</StructureElement><StructureElement
+ TypeName="Messages.Q_MARQSTREASON"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Reason"
+ Guid="1a418846-eb42-4e59-a80b-6e2f56dd0197"
+>
+<ReqRef
+ Id="4443416b-4b5b-4896-a845-222b762d3950"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="489e7195-cd2b-4dc6-ba12-f4870c429b60"
+>
+</ReqRef><Comment>Indicates the reason of sending of MA request (for the future repetitions).</Comment>
+</StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ X="20"
+ Y="220"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SendMARequestCyclically"
+ Guid="0e49656b-97d2-415e-bd4e-3670786d3aa6"
+>
+<ReqRef
+ Id="b2206740-ee3b-42bc-9b69-b3ef064476be"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b1f39008-ad0c-47ae-8c69-96bf9cc1e700"
+>
+</ReqRef><ReqRef
+ Id="df2a365f-7f10-4a9e-afb1-33998fd5cacd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="59daeac7-2b06-48ae-b891-53190198d0da"
+>
+</ReqRef><Comment>Indicates if the MA request has to be repeated due to timeout.</Comment>
+<Cases>
+<Case
+ Name="MA request parameters are available"
+ Guid="64e3f52b-f42b-4f71-a416-c6fedb376a62"
+>
+<PreConditions>
+<PreCondition
+ Guid="c238a5b1-36a6-4190-9b53-2dca70c6fa61"
+>Kernel.MA.MARequest.MARequestParameters != EMPTY
+  AND
+Kernel.MA.MARequest.MARequestParameters.HandleRepetitions</PreCondition></PreConditions>
+<Expression>LastMARequestRepetitionTime + Kernel.MA.MARequest.MARequestParameters.RepetitionTime &gt;= DateAndTime.CurrentTime</Expression>
+</Case><Case
+ Name="No MA request parameters available"
+ Guid="55ec0701-fd5e-43b2-9640-bc3cb868d66c"
+>
+<Expression>LastMARequestRepetitionTime + MARequestRepetitionCycle &gt;= DateAndTime.CurrentTime</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Time"
+ Default=""
+ X="130"
+ Y="220"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="TimeBeforePreIndicationLocation"
+ Guid="76f18bea-27ad-4ac4-9674-350f3e11dd47"
+>
+<ReqRef
+ Id="628ac46e-918d-47a4-9804-1bae59216f63"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="787aff4e-1dfb-4bc5-9f49-a70433ce9aa3"
+>
+</ReqRef><Comment>Computes the time before the train reaches the pre-indication location for the EOA/LOA assuming it is running at the warning speed. The time is computed as follows:
+
+(d_preindication(EOA) - front end position)
+/
+(MRSP + V_warning(MRSP)).</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="6f39c4fd-7076-42ba-a872-3d10a271f0f8"
+>
+<Expression>(SpeedAndDistanceMonitoring.PreIndicationLocation.Compute_d_preindication( MRSPnTarget =&gt; MA.ClosestEOA() ) - TrainPosition.FrontEndPosition( PointOfInterest=&gt;DistanceInterval.Nom ))
+  /
+(MRSP.V_MRSP() + SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_warning( V =&gt; MRSP.V_MRSP() ))</Expression>
+</Case></Cases>
+</Function></Functions>
+<Variables>
+<Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="Default.BaseTypes.Time.Infinity"
+ VariableMode="Internal"
+ X="150"
+ Y="10"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="LastMARequestRepetitionTime"
+ Guid="42499037-eacb-4a2c-9995-d6b551546ac0"
+>
+<ReqRef
+ Id="b2206740-ee3b-42bc-9b69-b3ef064476be"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e054e9c5-498b-44fe-83b0-afbb90107c6a"
+>
+</ReqRef><ReqRef
+ Id="df2a365f-7f10-4a9e-afb1-33998fd5cacd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cc23d7a2-7266-45ad-bbca-8ace43053e5d"
+>
+</ReqRef><Comment>Keeps the time of the last cyclic sending of MA request.</Comment>
+</Variable><Variable
+ Type="Kernel.MA.MARequest.MARequestParametersStruct"
+ DefaultValue="EMPTY"
+ VariableMode="Internal"
+ X="20"
+ Y="10"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="MARequestParameters"
+ Guid="4ad80678-7cc9-40d9-8f70-14d50a56c72f"
+>
+<ReqRef
+ Id="b74d1689-f942-4e2a-abdb-aa241f4f117f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="18564ce8-692b-482e-96b4-d018059c6e4d"
+>
+</ReqRef><Comment>Contains the parameters for the MA request. If no parameters are stored, the variable is EMPTY.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="60.0"
+ VariableMode="Constant"
+ X="280"
+ Y="10"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="MARequestRepetitionCycle"
+ Guid="6a22e88e-6255-4726-b168-1485e59e5ec2"
+>
+<ReqRef
+ Id="d4adece7-cd9f-470c-902e-5ba540e38a39"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0c350f14-73df-4ed3-bd00-27a8f5e181ff"
+>
+</ReqRef><ReqRef
+ Id="df2a365f-7f10-4a9e-afb1-33998fd5cacd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a013104-1a4a-47fe-bf1c-857c5be7ea96"
+>
+</ReqRef><Comment>Provides the time to wait before each MA request repetition, if not defined by MA request parameters.</Comment>
+</Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ X="20"
+ Y="330"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Handle MA request"
+ Guid="b6fe4009-631a-407e-8ee9-0a3a70ba38d0"
+>
+<Comment>Handles sending of the MA requests.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle MA request repetition"
+ Guid="f6eae321-bc57-4cdb-a868-3a6ee0d3ec51"
+>
+<ReqRef
+ Id="b2206740-ee3b-42bc-9b69-b3ef064476be"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1b9cb5b4-89ae-4e93-832e-c5c00d97794c"
+>
+</ReqRef><Comment>If an MA request was already sent and has to be repeated, it is sent again with the same reason.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="53e855c9-b753-4641-ac2b-9b49fc28f518"
+>SendMARequestCyclically()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="58a5e02d-bea3-48dd-9228-d97c67fae1e5"
+>EURORADIO.CurrentRBCConnection().SendMARequest
+(
+    aReason =&gt; MARequestParameters.Reason,
+    aPacket =&gt; EMPTY
+)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Handle reasons from MA request parameters"
+ Guid="c130a0b8-847f-491a-b875-91cafe360dc3"
+>
+<ReqRef
+ Id="4443416b-4b5b-4896-a845-222b762d3950"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f56cce4f-a1e0-4135-8893-71e9a4d152c4"
+>
+</ReqRef><Comment>Handles sending of MA requests due to MA request parameters received from the trackside.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="edf7066d-883f-4a26-9e91-e1d0a67208e0"
+>MARequestParameters != EMPTY</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Handle reasons from MA request parameters"
+ Guid="c287a55d-b980-49c5-b6cd-901cc413cafd"
+>
+<Comment>Handles sending of MA requests due to MA request parameters received from the trackside.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Pre-indication location"
+ Guid="a465fd26-28bd-4009-bcd6-7d5312aee61c"
+>
+<ReqRef
+ Id="628ac46e-918d-47a4-9804-1bae59216f63"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="17d02aa3-bea5-40c0-97df-fe7cb93784c3"
+>
+</ReqRef><ReqRef
+ Id="4443416b-4b5b-4896-a845-222b762d3950"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="79a49419-c5fc-42c2-ba64-8f2f57fc7f0f"
+>
+</ReqRef><ReqRef
+ Id="eb7bd973-d941-4888-8899-07818ab3217b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0e2db475-9ea7-4b1d-8766-ba860c42126b"
+>
+</ReqRef><ReqRef
+ Id="0bb59d0f-92eb-47be-bb58-690eb329f45d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="848fac96-ca86-4fa9-8e46-c3f79a88ba46"
+>
+</ReqRef><Comment>Checks if the MA request has to be sent due to time before reaching pre-indication locations is reached.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="1816e72f-c1f3-4f6d-ab81-66689104e3bd"
+>MARequestParameters.HandlePreindicationLocation</PreCondition><PreCondition
+ Guid="b676bd39-5164-4702-a2f5-d5193febdf24"
+>TimeBeforePreIndicationLocation() &gt;= MARequestParameters.PreindicationLocationTime</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="abb36a2d-bc88-48e0-961e-c1eb5f58e19c"
+>EURORADIO.CurrentRBCConnection().SendMARequest
+(
+    aReason =&gt; Messages.Q_MARQSTREASON.Time_before_reaching_pre_indication_location_for_the_EOA_LOA_reached,
+    aPacket =&gt; EMPTY
+)</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Section time-outs"
+ Guid="6cd94d22-28f3-4d7c-901b-3fc70585274c"
+>
+<ReqRef
+ Id="95d3b6c1-0843-4142-a7aa-9589d026598d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2e2d2942-0317-40e2-86cf-e60159ba4b48"
+>
+</ReqRef><ReqRef
+ Id="4443416b-4b5b-4896-a845-222b762d3950"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7f0485ce-3cc5-4be9-87f0-cab3ff32238f"
+>
+</ReqRef><ReqRef
+ Id="6d375b3d-053e-4f1d-9101-214f14d621fa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8ee43ed6-3f9c-4373-9584-f582b97eaa62"
+>
+</ReqRef><Comment>Checks if the MA request has to be sent due to time before a section timer is reached.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="03474a48-a662-43c9-babb-ed036ca243ed"
+>MARequestParameters.HandleTimeouts
+  AND
+(
+  THERE_IS Section IN MA.Sections | (Section.TimeOut.TimerStart + Section.TimeOut.TimeOut &gt;= MARequestParameters.SectionTimerTime)
+    OR
+  MATimers.LOATimerStart + MA.TargetSpeedTimeOut &gt;= MARequestParameters.SectionTimerTime
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3c9a6e23-bdb4-41fb-9f85-d007c79c450e"
+>EURORADIO.CurrentRBCConnection().SendMARequest
+(
+    aReason =&gt; Messages.Q_MARQSTREASON.Time_before_a_section_timer_LOA_speed_timer_expires_reached,
+    aPacket =&gt; EMPTY
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>

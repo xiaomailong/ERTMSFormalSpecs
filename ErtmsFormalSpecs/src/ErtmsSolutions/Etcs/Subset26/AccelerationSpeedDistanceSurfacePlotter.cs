@@ -13,18 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-
 namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 {
     /**@brief GnuPlots a A(V,d) surface as a SnuPlot surface (splot).*/
+
     public class AccelerationSpeedDistanceCurvePlotter : GnuPlotter
     {
-
         /* Default creator */
+
         public AccelerationSpeedDistanceCurvePlotter()
             : base()
         {
@@ -34,6 +35,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         public AccelerationSpeedDistanceSurface A_V_D;
 
         /******************************************************************************************************/
+
         protected override void Build_Gnuplot_Files(string job_filename, string png_filename)
         {
             StreamWriter swj = new StreamWriter(job_filename);
@@ -49,7 +51,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                     {
                         swd.WriteLine("");
                     }
-                    Emit_d_v_a(swd, Tripples[i].D, -1.0 * Tripples[i].V, -1.0 * Tripples[i].A);
+                    Emit_d_v_a(swd, Tripples[i].D, -1.0*Tripples[i].V, -1.0*Tripples[i].A);
                 }
                 swd.Close();
             }
@@ -72,4 +74,3 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
     }
 }
-

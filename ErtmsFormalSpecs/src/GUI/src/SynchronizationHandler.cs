@@ -13,14 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using Utils;
+
 namespace GUI
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading;
-
     /// <summary>
     /// Performs synchronization between model and view
     /// </summary>
@@ -98,7 +98,7 @@ namespace GUI
             : base(cycleTime)
         {
             Instance = instance;
-            Thread = Utils.ThreadUtil.CreateThread(DoSynchronize);
+            Thread = ThreadUtil.CreateThread(DoSynchronize);
             Thread.Start(Instance);
         }
 
@@ -128,7 +128,7 @@ namespace GUI
         /// <param name="obj"></param>
         public override void DoSynchronize(object obj)
         {
-            T instance = (T)obj;
+            T instance = (T) obj;
 
             Initialize(instance);
             while (Synchronize)
@@ -167,7 +167,7 @@ namespace GUI
         /// <summary>
         /// The registered handlers
         /// </summary>
-        static List<SynchronizationHandler> Handlers = new List<SynchronizationHandler>();
+        private static List<SynchronizationHandler> Handlers = new List<SynchronizationHandler>();
 
         /// <summary>
         /// Registers a new handler

@@ -13,13 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+
 namespace DataDictionary.Types.AccessMode
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// References an access to a model element, referencing the source and target namespaces
     /// </summary>
@@ -35,6 +33,7 @@ namespace DataDictionary.Types.AccessMode
             Source = source;
             Target = target;
         }
+
         /// <summary>
         /// The source of the arrow
         /// </summary>

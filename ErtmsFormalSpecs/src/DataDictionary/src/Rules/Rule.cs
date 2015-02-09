@@ -13,11 +13,21 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.Collections.Generic;
 
-using DataDictionary.Specification;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
 using DataDictionary.Tests.Runner;
+using DataDictionary.Variables;
+using Utils;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using Procedure = DataDictionary.Functions.Procedure;
+using StateMachine = DataDictionary.Types.StateMachine;
+using Structure = DataDictionary.Types.Structure;
+using Visitor = DataDictionary.Generated.Visitor;
 
 namespace DataDictionary.Rules
 {
@@ -45,7 +55,7 @@ namespace DataDictionary.Rules
                     return true;
                 }
 
-                foreach (DataDictionary.Rules.RuleCondition ruleCondition in RuleConditions)
+                foreach (RuleCondition ruleCondition in RuleConditions)
                 {
                     if (ruleCondition.ImplementationPartiallyCompleted)
                     {
@@ -60,7 +70,7 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Provides the namespace associated to the rule
         /// </summary>
-        public Types.NameSpace NameSpace
+        public NameSpace NameSpace
         {
             get { return EnclosingNameSpaceFinder.find(this); }
         }
@@ -68,13 +78,13 @@ namespace DataDictionary.Rules
         /// <summary>
         /// The preconditions for this rule
         /// </summary>
-        public System.Collections.ArrayList RuleConditions
+        public ArrayList RuleConditions
         {
             get
             {
                 if (allConditions() == null)
                 {
-                    setAllConditions(new System.Collections.ArrayList());
+                    setAllConditions(new ArrayList());
                 }
                 return allConditions();
             }
@@ -83,13 +93,13 @@ namespace DataDictionary.Rules
         /// <summary>
         /// The traces to the specifications
         /// </summary>
-        public System.Collections.ArrayList Traces
+        public ArrayList Traces
         {
             get
             {
                 if (allRequirements() == null)
                 {
-                    setAllRequirements(new System.Collections.ArrayList());
+                    setAllRequirements(new ArrayList());
                 }
                 return allRequirements();
             }
@@ -114,28 +124,28 @@ namespace DataDictionary.Rules
         /// <summary>
         /// The enclosing procedure, if any
         /// </summary>
-        public Functions.Procedure EnclosingProcedure
+        public Procedure EnclosingProcedure
         {
-            get { return Enclosing as Functions.Procedure; }
+            get { return Enclosing as Procedure; }
         }
 
         /// <summary>
         /// The enclosing structure (if any)
         /// </summary>
-        public Types.Structure EnclosingStructure
+        public Structure EnclosingStructure
         {
-            get { return Utils.EnclosingFinder<Types.Structure>.find(this); }
+            get { return EnclosingFinder<Structure>.find(this); }
         }
 
         /// <summary>
         /// The enclosing state machine (if any)
         /// </summary>
-        public Types.StateMachine EnclosingStateMachine
+        public StateMachine EnclosingStateMachine
         {
-            get { return Utils.EnclosingFinder<Types.StateMachine>.find(this); }
+            get { return EnclosingFinder<StateMachine>.find(this); }
         }
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
@@ -211,7 +221,6 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Provides an explanation of the rule's behaviour
         /// </summary>
-
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
         public string getExplain(bool explainSubRules)
@@ -229,7 +238,7 @@ namespace DataDictionary.Rules
             {
                 retVal = retVal + getExplain(0, explainSubRules);
             }
-            else  // we will only display enclosing preconditions for the report, when explainSubRules == true
+            else // we will only display enclosing preconditions for the report, when explainSubRules == true
             {
                 bool first = true;
                 foreach (PreCondition preCondition in enclosingPreConditions)
@@ -317,15 +326,15 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Provides the activation priority list for this rule
         /// </summary>
-        private HashSet<Generated.acceptor.RulePriority> activationPriorities;
+        private HashSet<acceptor.RulePriority> activationPriorities;
 
-        public HashSet<Generated.acceptor.RulePriority> ActivationPriorities
+        public HashSet<acceptor.RulePriority> ActivationPriorities
         {
             get
             {
                 if (activationPriorities == null)
                 {
-                    activationPriorities = new HashSet<Generated.acceptor.RulePriority>();
+                    activationPriorities = new HashSet<acceptor.RulePriority>();
                     activationPriorities.Add(getPriority());
                     foreach (RuleCondition condition in RuleConditions)
                     {
@@ -337,10 +346,7 @@ namespace DataDictionary.Rules
                 }
                 return activationPriorities;
             }
-            set
-            {
-                activationPriorities = value;
-            }
+            set { activationPriorities = value; }
         }
 
         /// <summary>
@@ -353,11 +359,11 @@ namespace DataDictionary.Rules
         /// <param name="explanation">The explanation part to be filled</param>
         /// <param name="runner"></param>
         /// <returns>the number of actions that were activated during this evaluation</returns>
-        public bool Evaluate(Tests.Runner.Runner runner, Generated.acceptor.RulePriority priority, Utils.IModelElement instance, HashSet<Runner.Activation> activations, ExplanationPart explanation)
+        public bool Evaluate(Runner runner, acceptor.RulePriority priority, IModelElement instance, HashSet<Runner.Activation> activations, ExplanationPart explanation)
         {
             bool retVal = false;
 
-            long start = System.Environment.TickCount;
+            long start = Environment.TickCount;
 
             if (Disabled == false && ActivationPriorities.Contains(priority))
             {
@@ -372,7 +378,7 @@ namespace DataDictionary.Rules
             }
 
             // Guard evaluation execution time
-            long stop = System.Environment.TickCount;
+            long stop = Environment.TickCount;
             long span = (stop - start);
             ExecutionTimeInMilli += span;
 
@@ -382,7 +388,7 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Finds all usages of a TypedElement
         /// </summary>
-        private class UsageVisitor : Generated.Visitor
+        private class UsageVisitor : Visitor
         {
             /// <summary>
             /// The usages
@@ -392,13 +398,13 @@ namespace DataDictionary.Rules
             /// <summary>
             /// The element looked for
             /// </summary>
-            public Variables.IVariable Target { get; private set; }
+            public IVariable Target { get; private set; }
 
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="target"></param>
-            public UsageVisitor(Variables.IVariable target)
+            public UsageVisitor(IVariable target)
             {
                 Target = target;
                 Usages = new HashSet<RuleCondition>();
@@ -411,7 +417,7 @@ namespace DataDictionary.Rules
             /// <param name="visitSubNodes"></param>
             public override void visit(Generated.RuleCondition obj, bool visitSubNodes)
             {
-                RuleCondition ruleCondition = (RuleCondition)obj;
+                RuleCondition ruleCondition = (RuleCondition) obj;
 
                 if (ruleCondition.Uses(Target))
                 {
@@ -427,11 +433,11 @@ namespace DataDictionary.Rules
         /// </summary>
         /// <param name="node">the element to find in rules</param>
         /// <returns>the list of rules which use the element provided</returns>
-        public static HashSet<Rules.RuleCondition> RulesUsingThisElement(Variables.IVariable node)
+        public static HashSet<RuleCondition> RulesUsingThisElement(IVariable node)
         {
             UsageVisitor visitor = new UsageVisitor(node);
 
-            EFSSystem efsSystem = Utils.EnclosingFinder<EFSSystem>.find(node);
+            EFSSystem efsSystem = EnclosingFinder<EFSSystem>.find(node);
             if (efsSystem != null)
             {
                 foreach (Dictionary dictionary in efsSystem.Dictionaries)
@@ -448,7 +454,7 @@ namespace DataDictionary.Rules
         /// </summary>
         /// <param name="paragraphs">The list of paragraphs to be filled</param>
         /// <returns></returns>
-        public override void findRelatedParagraphsRecursively(List<Specification.Paragraph> paragraphs)
+        public override void findRelatedParagraphsRecursively(List<Paragraph> paragraphs)
         {
             base.findRelatedParagraphsRecursively(paragraphs);
 
@@ -467,17 +473,14 @@ namespace DataDictionary.Rules
         /// </summary>
         public bool Disabled
         {
-            get
-            {
-                return EFSSystem.isDisabled(this);
-            }
+            get { return EFSSystem.isDisabled(this); }
         }
 
         /// <summary>
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             {
                 RuleCondition item = element as RuleCondition;
@@ -496,7 +499,7 @@ namespace DataDictionary.Rules
         /// <returns></returns>
         public bool BelongsToAProcedure()
         {
-            Functions.Procedure procedure = Utils.EnclosingFinder<Functions.Procedure>.find(this);
+            Procedure procedure = EnclosingFinder<Procedure>.find(this);
 
             return procedure != null;
         }
@@ -507,7 +510,7 @@ namespace DataDictionary.Rules
         /// <returns></returns>
         public Rule duplicate()
         {
-            Rule retVal = (Rule)Generated.acceptor.getFactory().createRule();
+            Rule retVal = (Rule) acceptor.getFactory().createRule();
             retVal.Name = Name;
             foreach (RuleCondition ruleCondition in RuleConditions)
             {
@@ -557,7 +560,10 @@ namespace DataDictionary.Rules
         /// <summary>
         /// The name to be displayed
         /// </summary>
-        public string GraphicalName { get { return Name; } }
+        public string GraphicalName
+        {
+            get { return Name; }
+        }
 
         /// <summary>
         /// Indicates whether the namespace is hidden
@@ -571,6 +577,10 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Indicates that the element is pinned
         /// </summary>
-        public bool Pinned { get { return getPinned(); } set { setPinned(value); } }
+        public bool Pinned
+        {
+            get { return getPinned(); }
+            set { setPinned(value); }
+        }
     }
 }

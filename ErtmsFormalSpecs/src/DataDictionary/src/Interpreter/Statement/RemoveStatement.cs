@@ -13,12 +13,21 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Rules;
+using DataDictionary.Tests.Runner;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Utils;
+using Collection = DataDictionary.Types.Collection;
+using Variable = DataDictionary.Variables.Variable;
 
 namespace DataDictionary.Interpreter.Statement
 {
-    public class RemoveStatement : Statement, Utils.ISubDeclarator
+    public class RemoveStatement : Statement, ISubDeclarator
     {
         /// <summary>
         /// The condition which should be true on the element to be removed
@@ -33,7 +42,12 @@ namespace DataDictionary.Interpreter.Statement
         /// <summary>
         /// Indicates which element should be removed
         /// </summary>
-        public enum PositionEnum { First, Last, All };
+        public enum PositionEnum
+        {
+            First,
+            Last,
+            All
+        };
 
         /// <summary>
         /// The remove position
@@ -43,7 +57,7 @@ namespace DataDictionary.Interpreter.Statement
         /// <summary>
         /// The iterator variable
         /// </summary>
-        public Variables.Variable IteratorVariable { get; private set; }
+        public Variable IteratorVariable { get; private set; }
 
         /// <summary>
         /// Constructor
@@ -66,7 +80,7 @@ namespace DataDictionary.Interpreter.Statement
             ListExpression = listExpression;
             ListExpression.Enclosing = this;
 
-            IteratorVariable = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
+            IteratorVariable = (Variable) acceptor.getFactory().createVariable();
             IteratorVariable.Enclosing = this;
             IteratorVariable.Name = "X";
             InitDeclaredElements();
@@ -77,24 +91,24 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         public void InitDeclaredElements()
         {
-            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+            DeclaredElements = new Dictionary<string, List<INamable>>();
 
-            Utils.ISubDeclaratorUtils.AppendNamable(this, IteratorVariable);
+            ISubDeclaratorUtils.AppendNamable(this, IteratorVariable);
         }
 
         /// <summary>
         /// The elements declared by this declarator
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; private set; }
+        public Dictionary<string, List<INamable>> DeclaredElements { get; private set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
-            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
+            ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>
@@ -102,7 +116,7 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance)
+        public override bool SemanticAnalysis(INamable instance)
         {
             bool retVal = base.SemanticAnalysis(instance);
 
@@ -112,7 +126,7 @@ namespace DataDictionary.Interpreter.Statement
                 ListExpression.SemanticAnalysis(instance);
                 StaticUsage.AddUsages(ListExpression.StaticUsage, Usage.ModeEnum.ReadAndWrite);
 
-                Types.Collection collectionType = ListExpression.GetExpressionType() as Types.Collection;
+                Collection collectionType = ListExpression.GetExpressionType() as Collection;
                 if (collectionType != null)
                 {
                     IteratorVariable.Type = collectionType.Type;
@@ -133,7 +147,7 @@ namespace DataDictionary.Interpreter.Statement
         /// Provides the list of variable read by this statement
         /// </summary>
         /// <param name="retVal">the list to fill</param>
-        public override void ReadElements(List<Types.ITypedElement> retVal)
+        public override void ReadElements(List<ITypedElement> retVal)
         {
             retVal.AddRange(ListExpression.GetVariables());
 
@@ -148,7 +162,7 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         /// <param name="element"></param>
         /// <returns>null if no statement modifies the element</returns>
-        public override VariableUpdateStatement Modifies(Types.ITypedElement element)
+        public override VariableUpdateStatement Modifies(ITypedElement element)
         {
             VariableUpdateStatement retVal = null;
 
@@ -176,7 +190,7 @@ namespace DataDictionary.Interpreter.Statement
 
             if (Condition != null)
             {
-                Values.BoolValue b = Condition.GetValue(context, explain) as Values.BoolValue;
+                BoolValue b = Condition.GetValue(context, explain) as BoolValue;
                 if (b == null)
                 {
                     retVal = false;
@@ -208,7 +222,7 @@ namespace DataDictionary.Interpreter.Statement
             }
 
 
-            Types.Collection targetListType = ListExpression.GetExpressionType() as Types.Collection;
+            Collection targetListType = ListExpression.GetExpressionType() as Collection;
             if (targetListType == null)
             {
                 Root.AddError("Cannot determine type of " + ListExpression);
@@ -218,7 +232,7 @@ namespace DataDictionary.Interpreter.Statement
                 if (Condition != null)
                 {
                     Condition.checkExpression();
-                    Types.BoolType conditionType = Condition.GetExpressionType() as Types.BoolType;
+                    BoolType conditionType = Condition.GetExpressionType() as BoolType;
                     if (conditionType == null)
                     {
                         Root.AddError("Condition does not evaluates to boolean");
@@ -235,18 +249,18 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
         /// <param name="runner"></param>
-        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Tests.Runner.Runner runner)
+        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Runner runner)
         {
-            Variables.IVariable variable = ListExpression.GetVariable(context);
+            IVariable variable = ListExpression.GetVariable(context);
             if (variable != null)
             {
                 // HacK : ensure that the value is a correct rigth side
                 // and keep the result of the right side operation
-                Values.ListValue listValue = variable.Value.RightSide(variable, false, false) as Values.ListValue;
+                ListValue listValue = variable.Value.RightSide(variable, false, false) as ListValue;
                 variable.Value = listValue;
                 if (listValue != null)
                 {
-                    Values.ListValue newListValue = new Values.ListValue(listValue.CollectionType, new List<Values.IValue>());
+                    ListValue newListValue = new ListValue(listValue.CollectionType, new List<IValue>());
 
                     int token = context.LocalScope.PushContext();
                     context.LocalScope.setVariable(IteratorVariable);
@@ -260,7 +274,7 @@ namespace DataDictionary.Interpreter.Statement
                     // Remove the element while required to do so
                     while (index >= 0 && index < listValue.Val.Count)
                     {
-                        Values.IValue value = listValue.Val[index];
+                        IValue value = listValue.Val[index];
                         index = nextIndex(index);
 
                         if (value == EFSSystem.EmptyValue)
@@ -287,7 +301,7 @@ namespace DataDictionary.Interpreter.Statement
                     // Complete the list
                     while (index >= 0 && index < listValue.Val.Count)
                     {
-                        Values.IValue value = listValue.Val[index];
+                        IValue value = listValue.Val[index];
 
                         InsertInResult(newListValue, value);
                         index = nextIndex(index);
@@ -299,7 +313,7 @@ namespace DataDictionary.Interpreter.Statement
                         newListValue.Val.Add(EFSSystem.EmptyValue);
                     }
 
-                    Rules.Change change = new Rules.Change(variable, variable.Value, newListValue);
+                    Change change = new Change(variable, variable.Value, newListValue);
                     changes.Add(change, apply, runner);
                     ExplanationPart.CreateSubExplanation(explanation, Root, change);
 
@@ -331,7 +345,7 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         /// <param name="newListValue"></param>
         /// <param name="value"></param>
-        private void InsertInResult(Values.ListValue newListValue, Values.IValue value)
+        private void InsertInResult(ListValue newListValue, IValue value)
         {
             if (Position == PositionEnum.Last)
             {
@@ -365,7 +379,6 @@ namespace DataDictionary.Interpreter.Statement
             if (Condition != null)
             {
                 retVal += Condition.ToString();
-
             }
             retVal += " IN " + ListExpression.ToString();
 

@@ -54,7 +54,7 @@
  Guid="d393f8d8-9c1e-4e30-a021-60c497b4a87b"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -67,4 +67,71 @@
  Guid="2d442eec-5c67-4d4e-9199-38557619dac5"
 >
 </ReqRef></StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="375264df-7d73-4e50-a26e-734bfc563d10"
+>
+<Comment>Checks the values in a structure of type GENERIC_LS_FUNCTION_MARKER.Message</Comment>
+<Parameters>
+<Parameter
+ Type="GENERIC_LS_FUNCTION_MARKER.Message"
+ Name="struct"
+ Guid="0c44f4f9-6860-49e4-a06c-c5b48bcfca7b"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="b5fac105-2698-4086-9db2-24d5c3e2932c"
+>
+<PreConditions>
+<PreCondition
+ Guid="452b6cb2-8ddf-4753-b3db-cb4a8da3c855"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="f2b4c42b-9a9c-4ec7-89b0-758a90b5e984"
+>
+<PreConditions>
+<PreCondition
+ Guid="39b6a9a8-5e1d-4222-8a80-d9396919bd4d"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="70de332b-6374-4ea8-81e3-903310bd46d8"
+>
+<PreConditions>
+<PreCondition
+ Guid="82b074f4-530d-41b2-9c5f-e6d0f33402b4"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="b487257d-7d3e-42bc-9fdb-deeded3170bd"
+>
+<PreConditions>
+<PreCondition
+ Guid="07a05b63-4b5a-4f04-a2a3-db4d9ac0df59"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="9dc01fae-7c1b-4591-9e2a-d4b4cbe726b4"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

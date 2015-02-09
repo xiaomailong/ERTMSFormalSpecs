@@ -13,19 +13,24 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Collections;
+using DataDictionary.Generated;
+using Utils;
+using TranslationDictionary = DataDictionary.Tests.Translations.TranslationDictionary;
 
 namespace DataDictionary.Tests
 {
     public class TestCase : Generated.TestCase, TextualExplain, ICommentable
     {
-        public System.Collections.ArrayList Steps
+        public ArrayList Steps
         {
             get
             {
                 if (allSteps() == null)
                 {
-                    setAllSteps(new System.Collections.ArrayList());
+                    setAllSteps(new ArrayList());
                 }
                 return allSteps();
             }
@@ -44,10 +49,7 @@ namespace DataDictionary.Tests
 
                 return retVal;
             }
-            set
-            {
-                base.Name = value;
-            }
+            set { base.Name = value; }
         }
 
         /// <summary>
@@ -55,11 +57,11 @@ namespace DataDictionary.Tests
         /// </summary>
         public SubSequence SubSequence
         {
-            get { return Utils.EnclosingFinder<SubSequence>.find(this); }
+            get { return EnclosingFinder<SubSequence>.find(this); }
         }
 
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get { return SubSequence.TestCases; }
         }
@@ -68,7 +70,7 @@ namespace DataDictionary.Tests
         /// Translates the current step, according to the translation dictionary
         /// </summary>
         /// <param name="translationDictionary"></param>
-        public void Translate(Translations.TranslationDictionary translationDictionary)
+        public void Translate(TranslationDictionary translationDictionary)
         {
             foreach (Step step in Steps)
             {
@@ -80,7 +82,7 @@ namespace DataDictionary.Tests
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             {
                 Step item = element as Step;
@@ -122,7 +124,7 @@ namespace DataDictionary.Tests
                         }
                         else
                         {
-                             throw new Exception("The new version of the test case " + Name + " contains the step " + step.Name + " instead of " + oldStep.Name);
+                            throw new Exception("The new version of the test case " + Name + " contains the step " + step.Name + " instead of " + oldStep.Name);
                         }
                     }
                 }
@@ -136,7 +138,7 @@ namespace DataDictionary.Tests
         /// <returns></returns>
         public static TestCase createDefault(string name)
         {
-            TestCase retVal = (TestCase)DataDictionary.Generated.acceptor.getFactory().createTestCase();
+            TestCase retVal = (TestCase) acceptor.getFactory().createTestCase();
             retVal.Name = name;
 
             retVal.appendSteps(Step.createDefault("Step1"));
@@ -156,7 +158,6 @@ namespace DataDictionary.Tests
             foreach (Step step in Steps)
             {
                 retVal += step.getExplain(indentLevel + 2, explainSubElements) + "\\par";
-
             }
             return retVal;
         }
@@ -164,7 +165,6 @@ namespace DataDictionary.Tests
         /// <summary>
         /// Provides an explanation of the test case's behaviour
         /// </summary>
-
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
         public string getExplain(bool explainSubElements)

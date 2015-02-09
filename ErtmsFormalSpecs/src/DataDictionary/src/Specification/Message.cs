@@ -18,7 +18,6 @@ namespace DataDictionary.Specification
 {
     public class Message : Generated.Message
     {
-
         /// <summary>
         /// The message content
         /// </summary>
@@ -39,6 +38,5 @@ namespace DataDictionary.Specification
                 return retVal;
             }
         }
-
     }
 }

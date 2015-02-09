@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.ComponentModel;
 using System.Threading;
@@ -45,7 +46,7 @@ namespace GUI
         {
             BackgroundWorker worker = sender as BackgroundWorker;
 
-            Thread thread = Utils.ThreadUtil.CreateThread(Work.TreadStart);
+            Thread thread = ThreadUtil.CreateThread(Work.TreadStart);
             thread.Start(Work);
 
             int percent = 0;
@@ -95,10 +96,7 @@ namespace GUI
         /// <param name="message"></param>
         public void UpdateMessage(string message)
         {
-            Invoke((MethodInvoker)delegate
-            {
-                label1.Text = message;
-            });
+            Invoke((MethodInvoker) delegate { label1.Text = message; });
         }
 
         /// <summary>
@@ -106,7 +104,7 @@ namespace GUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void ProgressDialog_KeyUp(object sender, KeyEventArgs e)
+        private void ProgressDialog_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {

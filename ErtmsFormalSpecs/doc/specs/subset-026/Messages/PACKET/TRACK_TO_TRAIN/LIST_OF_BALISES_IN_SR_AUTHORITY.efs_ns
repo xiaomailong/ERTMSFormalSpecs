@@ -53,7 +53,7 @@
  Guid="c03cc5a3-dbda-4401-b4ea-67faf13f0771"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -139,7 +139,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_IN_SR_AUTHORITY.SubStructure1"
+ TypeName="SubStructure1"
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
@@ -151,4 +151,154 @@
  Guid="bf5c2fd7-b6fe-4748-86b4-c90e19b4093f"
 >
 </ReqRef></Collection></Collections>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="9d92225c-0b9c-4189-8e15-473e94a50335"
+>
+<Comment>Checks the values in a structure of type LIST_OF_BALISES_IN_SR_AUTHORITY.Message</Comment>
+<Parameters>
+<Parameter
+ Type="LIST_OF_BALISES_IN_SR_AUTHORITY.Message"
+ Name="struct"
+ Guid="3db05e16-b1a7-46f2-8f08-5d3c3207cfb9"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="4cad1fe0-f60c-4f66-98ea-cd3907fe9f90"
+>
+<PreConditions>
+<PreCondition
+ Guid="e03b0678-d736-4b36-8a69-8297cb9dc3a3"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="50a4df32-61b4-4123-813c-1560b704d846"
+>
+<PreConditions>
+<PreCondition
+ Guid="78224bdf-cbaa-400f-ad60-67c69d016cfe"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="320e8b85-ea8d-4e1f-9507-6b8b1bf1e8d8"
+>
+<PreConditions>
+<PreCondition
+ Guid="5442c85c-5bf4-4e2d-8c15-6725923092f3"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="321a0754-368d-45e6-9f68-644e7cca10bc"
+>
+<PreConditions>
+<PreCondition
+ Guid="1a1dbb90-95f4-4543-a1f3-9ebc80120e34"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.N_ITER invalid"
+ Guid="ab459e4e-9025-4b00-8c9a-efa0a818207d"
+>
+<PreConditions>
+<PreCondition
+ Guid="399743a8-e12a-438b-bb86-8b6b32362ca9"
+>struct.N_ITER &lt; 0
+  AND  
+struct.N_ITER &gt;= 32</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Sequence1 invalid"
+ Guid="9333a645-4ae3-4f77-a928-5d8e4fb48301"
+>
+<PreConditions>
+<PreCondition
+ Guid="53af8b0b-3ce6-414b-8bbb-38175456131d"
+>THERE_IS X IN struct.Sequence1 | NOT LIST_OF_BALISES_IN_SR_AUTHORITY.CheckSubStructure1Values(X)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="cc9e1cf5-8008-4098-9a78-788add14ee74"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="CheckSubStructure1Values"
+ Guid="0f0069a4-f2a7-4cdc-b80f-4edf81dc2fe3"
+>
+<Comment>Checks the values in a structure of type LIST_OF_BALISES_IN_SR_AUTHORITY.SubStructure1</Comment>
+<Parameters>
+<Parameter
+ Type="LIST_OF_BALISES_IN_SR_AUTHORITY.SubStructure1"
+ Name="struct"
+ Guid="343190b3-b6c2-4595-80d5-a029e696ce3b"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SubStructure1 empty"
+ Guid="599d97bc-8ade-42d4-b1ac-c6c1e9bee098"
+>
+<PreConditions>
+<PreCondition
+ Guid="4739b344-d1f6-43ea-ad68-99d7745e3378"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.Q_NEWCOUNTRY invalid"
+ Guid="6ea58888-4782-4f43-9da0-6018c41b2037"
+>
+<PreConditions>
+<PreCondition
+ Guid="49b1b684-ec38-489a-a643-6c80187914b9"
+>struct.Q_NEWCOUNTRY &lt; 0
+  AND  
+struct.Q_NEWCOUNTRY &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_C invalid"
+ Guid="344f08f7-c059-4a45-9c30-91cd3b90bd83"
+>
+<PreConditions>
+<PreCondition
+ Guid="b6eea156-f044-43d8-ab72-47a2911d2f7d"
+>struct.NID_C &lt; 0
+  AND  
+struct.NID_C &gt;= 1024</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_BG invalid"
+ Guid="bc56d483-106e-4def-ae5a-312a2f34984e"
+>
+<PreConditions>
+<PreCondition
+ Guid="c66d78d7-42df-4398-8fe5-7e608e14408f"
+>struct.NID_BG &lt; 0
+  AND  
+struct.NID_BG &gt;= 16384</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="b26af90a-15ca-405d-a002-b93d3c202332"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

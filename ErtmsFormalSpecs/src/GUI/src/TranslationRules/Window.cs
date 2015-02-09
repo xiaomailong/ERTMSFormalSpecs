@@ -13,11 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Windows.Forms;
-using WeifenLuo.WinFormsUI.Docking;
-using DataDictionary;
 using DataDictionary.Tests.Translations;
+using Utils;
 
 namespace GUI.TranslationRules
 {
@@ -62,7 +62,7 @@ namespace GUI.TranslationRules
         /// Constructor
         /// </summary>
         /// <param name="dictionary"></param>
-        public Window(DataDictionary.Tests.Translations.TranslationDictionary dictionary)
+        public Window(TranslationDictionary dictionary)
         {
             InitializeComponent();
 
@@ -79,14 +79,15 @@ namespace GUI.TranslationRules
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Window_FormClosed(object sender, FormClosedEventArgs e)
+        private void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
             GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
+
         /// <summary>
         /// Refreshes the display
         /// </summary>
-        override public void Refresh()
+        public override void Refresh()
         {
             translationTreeView.Refresh();
             staticTimeLineControl.Refresh();
@@ -119,7 +120,7 @@ namespace GUI.TranslationRules
         /// <param name="e"></param>
         private void nextErrortoolStripButton_Click(object sender, EventArgs e)
         {
-            TreeView.SelectNext(Utils.ElementLog.LevelEnum.Error);
+            TreeView.SelectNext(ElementLog.LevelEnum.Error);
         }
 
         /// <summary>
@@ -129,7 +130,7 @@ namespace GUI.TranslationRules
         /// <param name="e"></param>
         private void nextWarningToolStripButton_Click(object sender, EventArgs e)
         {
-            TreeView.SelectNext(Utils.ElementLog.LevelEnum.Warning);
+            TreeView.SelectNext(ElementLog.LevelEnum.Warning);
         }
 
         /// <summary>
@@ -139,7 +140,7 @@ namespace GUI.TranslationRules
         /// <param name="e"></param>
         private void nextInfoToolStripButton_Click(object sender, EventArgs e)
         {
-            TreeView.SelectNext(Utils.ElementLog.LevelEnum.Info);
+            TreeView.SelectNext(ElementLog.LevelEnum.Info);
         }
 
         /// <summary>

@@ -13,9 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using System.Linq;
+using DataDictionary.Rules;
+using DataDictionary.Types;
 using DataDictionary.Variables;
+using Utils;
 
 namespace DataDictionary.Tests.Runner.Events
 {
@@ -24,12 +28,12 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The current time
         /// </summary>
-        public double CurrentTime {get; set;}
+        public double CurrentTime { get; set; }
 
         /// <summary>
         /// The list of events handled by this time line
         /// </summary>
-        public List<ModelEvent> Events { get; set;}
+        public List<ModelEvent> Events { get; set; }
 
         /// <summary>
         /// Provides the maximum number of events that are stored in the time-line.
@@ -46,6 +50,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// Keeps track of step activation
         /// </summary>
         private Dictionary<SubStep, SubStepActivated> subStepActivationCache = new Dictionary<SubStep, SubStepActivated>();
+
         internal Dictionary<SubStep, SubStepActivated> SubStepActivationCache
         {
             get { return subStepActivationCache; }
@@ -55,6 +60,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// The expectations currently active
         /// </summary>
         private HashSet<Expect> activeExpectations = new HashSet<Expect>();
+
         public HashSet<Expect> ActiveExpectations
         {
             get { return activeExpectations; }
@@ -99,7 +105,7 @@ namespace DataDictionary.Tests.Runner.Events
 
             foreach (Expect expect in ActiveExpectations)
             {
-                if (expect.State == DataDictionary.Tests.Runner.Events.Expect.EventState.Active && expect.Expectation.Blocking)
+                if (expect.State == Expect.EventState.Active && expect.Expectation.Blocking)
                 {
                     retVal.Add(expect);
                 }
@@ -120,7 +126,7 @@ namespace DataDictionary.Tests.Runner.Events
             foreach (ModelEvent modelEvent in Events)
             {
                 Expect expect = modelEvent as Expect;
-                if ((expect != null) && expect.State == DataDictionary.Tests.Runner.Events.Expect.EventState.TimeOut)
+                if ((expect != null) && expect.State == Expect.EventState.TimeOut)
                 {
                     retVal.Add(expect);
                 }
@@ -133,6 +139,7 @@ namespace DataDictionary.Tests.Runner.Events
 
             return retVal;
         }
+
         /// <summary>
         /// Provides all the events between two time bounds
         /// </summary>
@@ -296,9 +303,9 @@ namespace DataDictionary.Tests.Runner.Events
         /// <param name="rule"></param>
         /// <param name="time"></param>
         /// <returns></returns>
-        public HashSet<DataDictionary.Rules.RuleCondition> GetActivatedRules()
+        public HashSet<RuleCondition> GetActivatedRules()
         {
-            HashSet<DataDictionary.Rules.RuleCondition> retVal = new HashSet<DataDictionary.Rules.RuleCondition>();
+            HashSet<RuleCondition> retVal = new HashSet<RuleCondition>();
 
             foreach (ModelEvent modelEvent in Events)
             {
@@ -318,9 +325,9 @@ namespace DataDictionary.Tests.Runner.Events
         /// <param name="rule"></param>
         /// <param name="time"></param>
         /// <returns></returns>
-        public List<DataDictionary.Rules.RuleCondition> GetActivatedRulesInRange(double start, double end)
+        public List<RuleCondition> GetActivatedRulesInRange(double start, double end)
         {
-            List<DataDictionary.Rules.RuleCondition> retVal = new List<DataDictionary.Rules.RuleCondition>();
+            List<RuleCondition> retVal = new List<RuleCondition>();
 
             foreach (ModelEvent modelEvent in Events)
             {
@@ -341,7 +348,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// <param name="time">the time when the rule condition should be activated</param>
         /// <param name="variable">The variable impacted by this rule condition, if any</param>
         /// <returns>True if the provided rule condition has been activated</returns>
-        public bool RuleActivatedAtTime(Rules.RuleCondition ruleCondition, double time, IVariable variable)
+        public bool RuleActivatedAtTime(RuleCondition ruleCondition, double time, IVariable variable)
         {
             bool retVal = false;
 
@@ -402,7 +409,7 @@ namespace DataDictionary.Tests.Runner.Events
             VariableUpdate update = evt as VariableUpdate;
             if (update != null)
             {
-                retVal = Utils.EnclosingFinder<DataDictionary.Types.NameSpace>.find(update.Action) == null;
+                retVal = EnclosingFinder<NameSpace>.find(update.Action) == null;
             }
 
             return retVal;

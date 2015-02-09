@@ -13,13 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections.Generic;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+
 namespace DataDictionary.Functions
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// Caches the result of a function in a Curry-like fashion 
     /// </summary>
@@ -33,12 +33,12 @@ namespace DataDictionary.Functions
         /// <summary>
         /// A curried cache 
         /// </summary>
-        private class FunctionCache : Dictionary<Values.IValue, FunctionCache>
+        private class FunctionCache : Dictionary<IValue, FunctionCache>
         {
             /// <summary>
             /// The value associated to the last parameter of the function
             /// </summary>
-            public Values.IValue Value { get; set; }
+            public IValue Value { get; set; }
 
             /// <summary>
             /// Constructor
@@ -68,12 +68,12 @@ namespace DataDictionary.Functions
         /// </summary>
         /// <param name="association"></param>
         /// <returns></returns>
-        public Values.IValue GetValue(Dictionary<Variables.Actual, Values.IValue> association)
+        public IValue GetValue(Dictionary<Actual, IValue> association)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             FunctionCache current = Curry;
-            foreach (Values.IValue val in OrderedParameters(association))
+            foreach (IValue val in OrderedParameters(association))
             {
                 FunctionCache next;
                 if (current.TryGetValue(val, out next))
@@ -100,10 +100,10 @@ namespace DataDictionary.Functions
         /// </summary>
         /// <param name="association"></param>
         /// <param name="value"></param>
-        public void SetValue(Dictionary<Variables.Actual, Values.IValue> association, Values.IValue value)
+        public void SetValue(Dictionary<Actual, IValue> association, IValue value)
         {
             FunctionCache current = Curry;
-            foreach (Values.IValue val in OrderedParameters(association))
+            foreach (IValue val in OrderedParameters(association))
             {
                 FunctionCache next;
                 if (!current.TryGetValue(val, out next))
@@ -122,14 +122,14 @@ namespace DataDictionary.Functions
         /// </summary>
         /// <param name="association"></param>
         /// <returns></returns>
-        private List<Values.IValue> OrderedParameters(Dictionary<Variables.Actual, Values.IValue> association)
+        private List<IValue> OrderedParameters(Dictionary<Actual, IValue> association)
         {
-            List<Values.IValue> retVal = new List<Values.IValue>();
+            List<IValue> retVal = new List<IValue>();
 
             foreach (Parameter p in Function.FormalParameters)
             {
                 // Order the actual according to the function parameter 
-                foreach (KeyValuePair<Variables.Actual, Values.IValue> pair in association)
+                foreach (KeyValuePair<Actual, IValue> pair in association)
                 {
                     if (pair.Key.Parameter == p)
                     {

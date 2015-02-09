@@ -99,6 +99,10 @@
  Name="LimitedSupervision"
  Guid="6680e38c-166c-45a7-a971-8712310bb80c"
 >
+</NameSpaceRef><NameSpaceRef
+ Name="TrackAheadFree"
+ Guid="ce8ea0b2-9a21-45f2-b90f-db2be131ec8b"
+>
 </NameSpaceRef></NameSpaces>
 <Enumerations>
 <Enum
@@ -151,7 +155,7 @@
 >
 </EnumValue></Values>
 </Enum><Enum
- Default="DriverAckTimeOut"
+ Default="BrakeReason.DriverAckTimeOut"
  X="970"
  Y="90"
  Width="100"
@@ -178,13 +182,38 @@
  Name="OrderFromRBC"
  Guid="0b225f61-844c-4a87-8946-d28a505473e4"
 >
+</EnumValue><EnumValue
+ Value=""
+ Name="BaliseGroupMessageConsistencyProblem"
+ Guid="e008b5cc-8185-4108-9ae7-3d5a8e532bcf"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="DriverAckRequired"
+ Guid="c5b4fad0-6e35-4866-8dea-0423cc992f84"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="RAMSSupervisionTriggered"
+ Guid="31bfc0c1-770f-4d78-8706-6f1e43dbc5c6"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="SpeedAndDistanceMonitoring"
+ Guid="d3eeb92d-e1ef-4689-b1b2-889c691cac61"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="SupervisingStandstill"
+ Guid="dbdb40ad-af6e-4af1-9431-43d70d92385b"
+>
 </EnumValue></Values>
 </Enum></Enumerations>
 <Structures>
 <Structure
  Default=""
  X="970"
- Y="260"
+ Y="350"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -273,7 +302,7 @@
 </StructureElement></Structure><Structure
  Default=""
  X="970"
- Y="200"
+ Y="290"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -486,7 +515,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 </ReqRef><Comment>Structure containing a record of a safety critical fault.</Comment>
 <StructureElement
- TypeName="DateAndTime"
+ TypeName="Default.DateAndTime"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -552,7 +581,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="2d4a2ec1-4f05-498c-b32f-0fdb39c34093"
 >
 </ReqRef></Collection><Collection
- TypeName="SafetyCriticalFaultStruct"
+ TypeName="Kernel.SafetyCriticalFaultStruct"
  Default="[]"
  X="970"
  Y="470"
@@ -573,12 +602,24 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="5b8e157e-cc08-4e80-b8fb-5d051468dfa1"
 >
 </ReqRef><Comment>Collection of safety critical faults.</Comment>
+</Collection><Collection
+ TypeName="BrakeReason"
+ Default="[]"
+ X="970"
+ Y="180"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ServiceBrakesCol"
+ Guid="6669d59f-32a9-4f72-a752-3f117d072ea4"
+>
 </Collection></Collections>
 <StateMachines>
 <StateMachine
  Default="NoProcedure"
  X="970"
- Y="320"
+ Y="410"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -5562,7 +5603,11 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <Actions>
 <Action
  Guid="d8168522-2e95-455d-b009-9b8a1f790460"
->EURORADIO.CurrentRBCConnection().SendMARequest ( aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver )</Action><Action
+>EURORADIO.CurrentRBCConnection().SendMARequest
+(
+    aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver,
+    aPacket =&gt; EMPTY
+)</Action><Action
  Guid="90885e9c-cbaf-452c-80fe-9e7324d8b5a0"
 >THIS &lt;- HandleModeChange.StartOfMission.S21.MARequestSent</Action></Actions>
 </RuleCondition></Conditions>
@@ -5874,51 +5919,6 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
  Guid="79ce1471-6ea2-4c06-b9f6-b07269453120"
 >
 <ReqRef
- Id="608406fc-a153-4f2f-926d-023b26c6965b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0729b066-d6a1-4030-aba1-b587452fd028"
->
-</ReqRef><ReqRef
- Id="826a1ea7-693d-4abb-9475-72996312573e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ac758d00-f102-4eff-b92e-419e62a96486"
->
-</ReqRef><ReqRef
- Id="62447353-db71-4da7-ae7c-c93316af9ecd"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e7c12008-3843-479e-ba8e-2f7c3c16321e"
->
-</ReqRef><ReqRef
- Id="adc2c38e-7f74-4a2a-8cf4-5f8966540e5b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="cbcccf26-1b3d-4ac7-b13c-0f6b7a651a27"
->
-</ReqRef><ReqRef
- Id="e03c410e-3ebf-44e4-9c9e-bf1a71f283e8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="39195f3b-a609-44e3-9e87-fe9c07070e43"
->
-</ReqRef><ReqRef
- Id="ed3df83d-be18-41a0-98f2-30f3879fdf96"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6f9d60b5-e313-4d7d-abfc-871cbc75c9de"
->
-</ReqRef><ReqRef
- Id="00f5d4b3-3539-4dee-a16b-8445554306d2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6a4d587a-fe6b-43c2-99ce-57dd15032851"
->
-</ReqRef><ReqRef
- Id="5964ef59-e4aa-4ee3-bb6a-f1056fa3b656"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="28d8d032-9559-44ac-ac18-6be2175e61fb"
->
-</ReqRef><ReqRef
- Id="ab0153d8-5c2f-4e9a-b689-74694042a017"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fb609527-326a-41f1-828b-0628243096b8"
->
-</ReqRef><ReqRef
  Id="fe20e6f0-0c95-465f-86a8-bfa2963de515"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f63f5590-0bec-4100-9c10-d61ef5278c38"
@@ -5929,34 +5929,9 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
  Guid="8dd6a52a-d3b6-45f8-a725-f7a1cb6b8569"
 >
 </ReqRef><ReqRef
- Id="00ea92e0-e83e-498f-ae22-9c7c39f07162"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e8d964b0-2904-4ec2-b0a3-ae8f25852983"
->
-</ReqRef><ReqRef
  Id="51668b83-2011-4cfe-b5d6-d55503b8349d"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a0eff926-3ec4-4fa1-9c12-04f165c1f3a5"
->
-</ReqRef><ReqRef
- Id="d6a971ed-2255-4bd4-851b-bf9a20c6697c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5fc6312d-386d-4ea6-a7e9-ac1f149e0853"
->
-</ReqRef><ReqRef
- Id="43f7bd10-27ce-491f-83f9-b80556c00900"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3f3ee378-24ef-430c-b51d-ffd7cc0ecf5d"
->
-</ReqRef><ReqRef
- Id="84ba275c-56ed-4a57-9fa7-83653416a2da"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="048a22ad-4233-45d7-95bd-c0b10cf1018b"
->
-</ReqRef><ReqRef
- Id="804ec746-0da5-4425-83ca-696c55289bc0"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3e46fd7a-a5ae-4dd7-85f7-0e9c84c569fd"
 >
 </ReqRef><PreConditions>
 <PreCondition
@@ -7888,7 +7863,11 @@ If the Driver selects Entry in SH, initiate &quot;Shunting initiated by Driver&q
 <Actions>
 <Action
  Guid="39540147-4615-44eb-84a8-9083d135c7c0"
->EURORADIO.CurrentRBCConnection().SendMARequest ( aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver )</Action><Action
+>EURORADIO.CurrentRBCConnection().SendMARequest
+(
+    aReason =&gt; Messages.Q_MARQSTREASON.Start_selected_by_driver,
+    aPacket =&gt; EMPTY
+)</Action><Action
  Guid="fed8c181-694f-4bae-b0ce-bceb028acba9"
 >THIS &lt;- HandleModeChange.TrainTrip.S150.MARequestSent</Action></Actions>
 </RuleCondition></Conditions>
@@ -10340,7 +10319,7 @@ The report is handled in the EURORADIO namespace</Comment>
 <Function
  Type="Kernel.EmergencyStop"
  Default=""
- X="180"
+ X="270"
  Y="90"
  Width="100"
  Height="50"
@@ -10379,7 +10358,7 @@ The report is handled in the EURORADIO namespace</Comment>
 >
 <Expression>EmergencyStop
  {
-    Reason =&gt; Kernel.BrakeReason.OrderFromRBC,
+    Reason =&gt; BrakeReason.OrderFromRBC,
     IsConditional =&gt; aIsConditional,
     Id =&gt; aId,
     StopLocation =&gt; aStopLocation
@@ -10388,7 +10367,7 @@ The report is handled in the EURORADIO namespace</Comment>
 </Function><Function
  Type="Kernel.EmergencyStop"
  Default=""
- X="180"
+ X="270"
  Y="150"
  Width="100"
  Height="50"
@@ -10415,7 +10394,7 @@ The report is handled in the EURORADIO namespace</Comment>
  Name="Return the closest conditional ES"
  Guid="6504658f-9677-4b71-97ed-e60c579ccab0"
 >
-<Expression>REDUCE aESCol | ( X.Reason == Kernel.BrakeReason.OrderFromRBC AND X.IsConditional )
+<Expression>REDUCE aESCol | ( X.Reason == BrakeReason.OrderFromRBC AND X.IsConditional )
     USING X IN Kernel.MinEmergencyStopDistance( EmergencyStop1 =&gt; X, EmergencyStop2 =&gt; RESULT )
 INITIAL_VALUE EmergencyStop
                             {
@@ -10425,7 +10404,7 @@ INITIAL_VALUE EmergencyStop
 </Function><Function
  Type="Kernel.EmergencyStop"
  Default=""
- X="180"
+ X="270"
  Y="210"
  Width="100"
  Height="50"
@@ -10467,7 +10446,7 @@ INITIAL_VALUE EmergencyStop
 </Function><Function
  Type="Boolean"
  Default=""
- X="180"
+ X="270"
  Y="30"
  Width="100"
  Height="50"
@@ -10609,13 +10588,17 @@ INITIAL_VALUE EmergencyStop
  Guid="6d3b2490-aa01-4121-8abb-e05a55a842cc"
 >BTM.Linking.LinkingApplicable()
   AND  
-BTM.AntennaPosition ( Default.DistanceInterval.Min ) &gt; (BTM.Linking.CurrentLinking().Distance + BTM.Linking.CurrentLinking().LocationAccuracy)</PreCondition><PreCondition
+(
+BTM.Linking.ExpectationWindowPassed()
+  OR  
+BTM.Linking.RAMSWindowPassed()
+)</PreCondition><PreCondition
  Guid="c890d07b-a440-4ec6-ba9a-57aec6e3798e"
 >ActiveFunctions.CheckLinkingConsistency()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d3d59ef2-1780-4145-90f8-d8a3cf0dfbcc"
->BTM.Linking.HandleLinkingError()</Action></Actions>
+>BTM.Linking.HandleLinkingError(BTM.Linking.LinkingErrorEnum.ExpectationWindowEnd)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateINTERNAL"
@@ -10949,8 +10932,8 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="30"
- Y="330"
+ X="140"
+ Y="30"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -11001,6 +10984,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Train position"
  Guid="f56351d1-ad26-469d-a848-02640e64e865"
 >
+<Comment>Initialization of the LRBG, of the train position, of the train orientation and the odometer accuracy.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -11213,9 +11197,11 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Train integrity"
  Guid="4f1244da-71cc-4d18-8bcf-52621d1eff4b"
 >
+<Comment>Set the train integrity to confirmed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Train integrity"
  Guid="eb65a0f7-3e57-4ca8-aaa3-778605f6b193"
@@ -11233,6 +11219,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="Power on"
  Guid="47ba31e2-ec3f-4faf-92d8-aea5dca9da87"
 >
+<Comment>Sets power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -11415,7 +11402,7 @@ EmergencyStops</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="ed27c8f0-85f6-4b6b-a0a1-49ed462fa9b1"
->FORALL X IN EmergencyStops | X.Reason != Kernel.BrakeReason.OrderFromRBC</PreCondition></PreConditions>
+>FORALL X IN EmergencyStops | X.Reason != BrakeReason.OrderFromRBC</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e2602b9e-3c0d-4aac-a5bf-d0678874da0e"
@@ -11424,7 +11411,7 @@ EmergencyStops</Action></Actions>
 </Rule></Rules>
 </Procedure><Procedure
  X="30"
- Y="390"
+ Y="330"
  Width="100"
  Height="50"
  Name="DeleteStoredInformation"
@@ -11662,6 +11649,78 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ X="140"
+ Y="90"
+ Width="100"
+ Height="50"
+ Name="AddSBCommand"
+ Guid="5a495d62-a2ef-479c-a3b7-11df30c8c67c"
+>
+<Parameters>
+<Parameter
+ Type="BrakeReason"
+ Name="Command"
+ Guid="a5c11b88-65cd-4366-9e8b-7b131dc64ed3"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Add if not present"
+ Guid="ec11b3ba-2c81-42d4-9855-519dca1f21cd"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Add if not present"
+ Guid="5884d6e5-3bb9-42f2-8e7c-fd5b7d5f55be"
+>
+<PreConditions>
+<PreCondition
+ Guid="c7497b8b-3030-47ee-a3a3-f9eb29a145f9"
+>NOT THERE_IS X IN ServiceBrakeCommands | X == Command</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="64ab9c81-b890-4cad-a60e-97c4f903ec11"
+>INSERT Command IN ServiceBrakeCommands</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="140"
+ Y="150"
+ Width="100"
+ Height="50"
+ Name="RemoveSBCommand"
+ Guid="09f7fe8a-1a47-4e68-97e6-b24cb889655e"
+>
+<Parameters>
+<Parameter
+ Type="BrakeReason"
+ Name="Command"
+ Guid="9fc434a0-e53e-4ee8-95b2-a9dd17195ade"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Delete from Service brake commands"
+ Guid="caee3add-47e5-4262-aee0-5b811736ed66"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Delete from Service brake commands"
+ Guid="12f7528c-7738-41cf-abd0-ffafacc69e5c"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="38d53262-df6c-44d6-b1c6-41d228de97e8"
+>REMOVE FIRST X == Command IN ServiceBrakeCommands</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
@@ -11669,7 +11728,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  DefaultValue=""
  VariableMode="Internal"
  X="800"
- Y="260"
+ Y="350"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -11754,7 +11813,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  DefaultValue=""
  VariableMode="Internal"
  X="800"
- Y="200"
+ Y="290"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -11805,6 +11864,11 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Id="3e7cc969-494c-45a5-b39a-09b8d70e8ee3"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3ee345c2-0b99-4b40-8956-1b00f302aabf"
+>
+</ReqRef><ReqRef
+ Id="8bf47cec-0b77-42d2-b42f-49c0c29dbcec"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a52fdbc3-f937-4ba4-b42e-e622867cc194"
 >
 </ReqRef><Comment>This holds all the different emergency stop messages the train currently has.</Comment>
 </Variable><Variable
@@ -11962,31 +12026,11 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 >
 <Comment>The NID of the engine, used for sending messages to the trackside.</Comment>
 </Variable><Variable
- Type="String"
- DefaultValue=""
- VariableMode="Internal"
- X="370"
- Y="470"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="TripReason"
- Guid="43c5ccfb-3c8c-412b-8e4f-1d6940a91744"
->
-<ReqRef
- Id="8bf47cec-0b77-42d2-b42f-49c0c29dbcec"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d45e4027-040a-42fd-845a-8636423f92eb"
->
-</ReqRef><Comment>Represents the trip raison, if any.</Comment>
-</Variable><Variable
  Type="HandleModeChangeSM"
  DefaultValue=""
  VariableMode="Internal"
  X="800"
- Y="320"
+ Y="410"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12054,7 +12098,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Type="SafetyCriticalFaultsCol"
  DefaultValue=""
  VariableMode="Internal"
- X="810"
+ X="800"
  Y="470"
  Width="100"
  Height="50"
@@ -12083,6 +12127,20 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Guid="3e3e788d-551a-408d-8658-bedfe6e02eca"
 >
 </ReqRef><Comment>The detected safety critical faults that need to be handled.</Comment>
+</Variable><Variable
+ Type="ServiceBrakesCol"
+ DefaultValue="[]"
+ VariableMode="Internal"
+ X="800"
+ Y="180"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ServiceBrakeCommands"
+ Guid="61248a07-d7a9-462c-b84e-8b9fbf6afbc0"
+>
+<Comment>The list of current events that trigger the service brake.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -12196,8 +12254,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- X="560"
- Y="10"
+ X="600"
+ Y="790"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12272,8 +12330,8 @@ When the rear end of the train passes the start of the profiles, the message is 
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- X="670"
- Y="10"
+ X="710"
+ Y="790"
  Width="100"
  Height="50"
  Implemented="TRUE"

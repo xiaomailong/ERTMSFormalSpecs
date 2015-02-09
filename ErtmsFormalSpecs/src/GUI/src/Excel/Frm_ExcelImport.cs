@@ -13,20 +13,23 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections;
 using System.Globalization;
+using System.Reflection;
 using System.Windows.Forms;
 using DataDictionary;
 using DataDictionary.Tests;
-
+using Importers.ExcelImporter;
+using log4net;
 
 namespace GUI.ExcelImport
 {
     public partial class Frm_ExcelImport : Form
     {
-        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private Importers.ExcelImporter.BrakingCurvesImporter brakingCurvesImporter = new Importers.ExcelImporter.BrakingCurvesImporter();
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private BrakingCurvesImporter brakingCurvesImporter = new BrakingCurvesImporter();
 
 
         public Frm_ExcelImport(Dictionary aDictionary)
@@ -67,7 +70,7 @@ namespace GUI.ExcelImport
         {
             get
             {
-                System.Collections.ArrayList retVal = new System.Collections.ArrayList();
+                ArrayList retVal = new ArrayList();
                 retVal.AddRange(this.Controls);
                 return retVal;
             }
@@ -120,7 +123,7 @@ namespace GUI.ExcelImport
 
         private void CB_Select_CheckedChanged(object sender, EventArgs e)
         {
-            System.Windows.Forms.CheckBox cb = sender as System.Windows.Forms.CheckBox;
+            CheckBox cb = sender as CheckBox;
             if (cb.Tag.Equals("GLOBAL_FILTER"))
             {
                 if (cb.Checked)
@@ -128,9 +131,9 @@ namespace GUI.ExcelImport
                     cb.Text = "Deselect all";
                     foreach (Control control in AllControls)
                     {
-                        if (control is System.Windows.Forms.CheckBox)
+                        if (control is CheckBox)
                         {
-                            System.Windows.Forms.CheckBox checkBox = control as System.Windows.Forms.CheckBox;
+                            CheckBox checkBox = control as CheckBox;
                             if (checkBox.Tag.Equals("FILTER"))
                             {
                                 checkBox.Checked = true;
@@ -143,9 +146,9 @@ namespace GUI.ExcelImport
                     cb.Text = "Select all";
                     foreach (Control control in AllControls)
                     {
-                        if (control is System.Windows.Forms.CheckBox)
+                        if (control is CheckBox)
                         {
-                            System.Windows.Forms.CheckBox checkBox = control as System.Windows.Forms.CheckBox;
+                            CheckBox checkBox = control as CheckBox;
                             if (checkBox.Tag.Equals("FILTER"))
                             {
                                 checkBox.Checked = false;

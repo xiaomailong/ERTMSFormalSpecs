@@ -13,11 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.IO;
+using System.Reflection;
+using HistoricalData.Generated;
+using log4net;
+using XmlBooster;
+
 namespace HistoricalData
 {
-    using XmlBooster;
-    using System.IO;
-
     /// <summary>
     /// Utility class for historical data
     /// </summary>
@@ -26,7 +30,7 @@ namespace HistoricalData
         /// <summary>
         /// The Logger
         /// </summary>
-        protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// Initializes the Historical data package
@@ -37,7 +41,7 @@ namespace HistoricalData
         {
             History retVal = null;
 
-            Generated.acceptor.setFactory(factory);
+            acceptor.setFactory(factory);
             if (File.Exists(filePath))
             {
                 // Do not rely on XmlBFileContext since it does not care about encoding. 
@@ -51,9 +55,9 @@ namespace HistoricalData
 
                 try
                 {
-                    retVal = Generated.acceptor.accept(ctxt) as History;
+                    retVal = acceptor.accept(ctxt) as History;
                 }
-                catch (XmlBooster.XmlBException excp)
+                catch (XmlBException excp)
                 {
                     Log.Error(ctxt.errorMessage());
                 }

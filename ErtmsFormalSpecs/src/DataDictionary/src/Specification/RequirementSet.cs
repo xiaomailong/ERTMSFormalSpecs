@@ -14,14 +14,12 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System.Collections;
+using System.Collections.Generic;
+using DataDictionary.Generated;
+
 namespace DataDictionary.Specification
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Collections;
-
     /// <summary>
     /// Represents a requirement set
     /// </summary>
@@ -62,37 +60,64 @@ namespace DataDictionary.Specification
         /// <summary>
         /// The X position
         /// </summary>
-        public int X { get { return getX(); } set { setX(value); } }
+        public int X
+        {
+            get { return getX(); }
+            set { setX(value); }
+        }
 
         /// <summary>
         /// The Y position
         /// </summary>
-        public int Y { get { return getY(); } set { setY(value); } }
+        public int Y
+        {
+            get { return getY(); }
+            set { setY(value); }
+        }
 
         /// <summary>
         /// The width
         /// </summary>
-        public int Width { get { return getWidth(); } set { setWidth(value); } }
+        public int Width
+        {
+            get { return getWidth(); }
+            set { setWidth(value); }
+        }
 
         /// <summary>
         /// The height
         /// </summary>
-        public int Height { get { return getHeight(); } set { setHeight(value); } }
+        public int Height
+        {
+            get { return getHeight(); }
+            set { setHeight(value); }
+        }
 
         /// <summary>
         /// The name to be displayed
         /// </summary>
-        public string GraphicalName { get { return Name; } }
+        public string GraphicalName
+        {
+            get { return Name; }
+        }
 
         /// <summary>
         /// Indicates that the element is hiddent
         /// </summary>
-        public bool Hidden { get { return false; } set { } }
+        public bool Hidden
+        {
+            get { return false; }
+            set { }
+        }
 
         /// <summary>
         /// Indicates that the element is pinned
         /// </summary>
-        public bool Pinned { get { return getPinned(); } set { setPinned(value); } }
+        public bool Pinned
+        {
+            get { return getPinned(); }
+            set { setPinned(value); }
+        }
 
         /// <summary>
         /// The explanation of the element
@@ -127,7 +152,7 @@ namespace DataDictionary.Specification
             }
         }
 
-        private class ParagraphForRequirementSet : Generated.Visitor
+        private class ParagraphForRequirementSet : Visitor
         {
             /// <summary>
             /// The requirement set for which the paragraphs should be found
@@ -151,7 +176,7 @@ namespace DataDictionary.Specification
 
             public override void visit(Generated.Paragraph obj, bool visitSubNodes)
             {
-                Paragraph paragraph = (Paragraph)obj;
+                Paragraph paragraph = (Paragraph) obj;
 
                 if (paragraph.BelongsToRequirementSet(RequirementSet))
                 {
@@ -180,7 +205,7 @@ namespace DataDictionary.Specification
         public void GetParagraphs(List<Paragraph> paragraphs)
         {
             ParagraphForRequirementSet gatherer = new ParagraphForRequirementSet(this, paragraphs);
-            foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+            foreach (Dictionary dictionary in EFSSystem.Dictionaries)
             {
                 gatherer.visit(dictionary);
             }
@@ -225,7 +250,7 @@ namespace DataDictionary.Specification
 
             if (retVal == null && create)
             {
-                retVal = (RequirementSet)Generated.acceptor.getFactory().createRequirementSet();
+                retVal = (RequirementSet) acceptor.getFactory().createRequirementSet();
                 retVal.Name = name;
                 appendSubSets(retVal);
             }

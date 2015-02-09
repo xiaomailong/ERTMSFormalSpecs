@@ -13,10 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using DataDictionary;
+using DataDictionary.Compare;
 
 namespace GUI.SearchDialog
 {
@@ -25,7 +27,7 @@ namespace GUI.SearchDialog
         /// <summary>
         /// The system for which this dialog is built
         /// </summary>
-        public DataDictionary.EFSSystem EFSSystem { get; private set; }
+        public EFSSystem EFSSystem { get; private set; }
 
         /// <summary>
         /// Constructor
@@ -39,7 +41,7 @@ namespace GUI.SearchDialog
         /// Initialises the dialog
         /// </summary>
         /// <param name="efsSystem"></param>
-        public void Initialise(DataDictionary.EFSSystem efsSystem)
+        public void Initialise(EFSSystem efsSystem)
         {
             EFSSystem = efsSystem;
 
@@ -51,7 +53,7 @@ namespace GUI.SearchDialog
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void searchTextBox_KeyUp(object sender, KeyEventArgs e)
+        private void searchTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
@@ -81,7 +83,7 @@ namespace GUI.SearchDialog
             List<ModelElement> occurences = new List<ModelElement>();
             foreach (Dictionary dictionary in EFSSystem.Dictionaries)
             {
-                DataDictionary.Compare.Comparer.searchDictionary(dictionary, searchString, occurences);
+                Comparer.searchDictionary(dictionary, searchString, occurences);
             }
 
             // Clears all messages and mark the occurences
@@ -107,7 +109,7 @@ namespace GUI.SearchDialog
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void searchTextBox_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        private void searchTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {

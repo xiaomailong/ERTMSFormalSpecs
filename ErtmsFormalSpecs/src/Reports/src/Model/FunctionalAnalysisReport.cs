@@ -13,22 +13,24 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
 using DataDictionary;
-using MigraDoc.DocumentObjectModel;
-using MigraDoc.DocumentObjectModel.Tables;
+using DataDictionary.Functions;
+using DataDictionary.Interpreter;
 using DataDictionary.Types;
 using DataDictionary.Types.AccessMode;
-using System.Collections.Generic;
-using DataDictionary.Functions;
 using DataDictionary.Variables;
-using DataDictionary.Interpreter;
+using log4net;
+using MigraDoc.DocumentObjectModel;
 
 namespace Reports.Model
 {
     public class FunctionalAnalysisReport : ReportTools
     {
-        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// Constructor
@@ -157,7 +159,7 @@ namespace Reports.Model
         /// <returns></returns>
         private void CreateProcedureOrFunctionHeader(ICallable callable)
         {
-            AddTable(new string[] { callable.Name }, new int[] { 40, 80 });
+            AddTable(new string[] {callable.Name}, new int[] {40, 80});
 
             ICommentable commentable = callable as ICommentable;
             if (commentable != null && !string.IsNullOrEmpty(commentable.Comment))
@@ -169,7 +171,7 @@ namespace Reports.Model
             {
                 AddTableHeader("Parameters");
                 AddTableHeader("Name", "Type");
-                foreach (DataDictionary.Parameter parameter in callable.FormalParameters)
+                foreach (Parameter parameter in callable.FormalParameters)
                 {
                     AddRow(parameter.Name, parameter.getTypeName());
                 }
@@ -198,7 +200,7 @@ namespace Reports.Model
         {
             AddSubParagraph("Known usages");
 
-            AddTable(new string[] { "Usage" }, new int[] { 100 });
+            AddTable(new string[] {"Usage"}, new int[] {100});
             foreach (ProcedureOrFunctionCall call in usages)
             {
                 AddRow(call.Source.FullName);
@@ -215,7 +217,7 @@ namespace Reports.Model
         /// <returns></returns>
         private void CreateVariableHeader(IVariable variable)
         {
-            AddTable(new string[] { variable.Name }, new int[] { 40, 80 });
+            AddTable(new string[] {variable.Name}, new int[] {40, 80});
 
             ICommentable commentable = variable as ICommentable;
             if (commentable != null && !string.IsNullOrEmpty(commentable.Comment))
@@ -245,7 +247,7 @@ namespace Reports.Model
         {
             AddSubParagraph("Known usages");
 
-            AddTable(new string[] { "Usage", "Mode" }, new int[] { 80, 20 });
+            AddTable(new string[] {"Usage", "Mode"}, new int[] {80, 20});
             foreach (AccessToVariable access in usages)
             {
                 AddRow(access.Source.FullName, access.AccessMode.ToString());
@@ -266,7 +268,7 @@ namespace Reports.Model
             if (requirements.Count > 0)
             {
                 bool first = true;
-                foreach (DataDictionary.ReqRef reqRef in requirements)
+                foreach (ReqRef reqRef in requirements)
                 {
                     if (first)
                     {

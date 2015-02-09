@@ -13,9 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.Collections.Generic;
-using DataDictionary.Interpreter;
 
+using System.Collections.Generic;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using EnumValue = DataDictionary.Constants.EnumValue;
+using Range = DataDictionary.Types.Range;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -42,13 +48,13 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public DistanceForSpeed(EFSSystem efsSystem)
             : base(efsSystem, "DistanceForSpeed")
         {
-            Function = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Function = (Parameter) acceptor.getFactory().createParameter();
             Function.Name = "Function";
             Function.Type = EFSSystem.AnyType;
             Function.setFather(this);
             FormalParameters.Add(Function);
 
-            Speed = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Speed = (Parameter) acceptor.getFactory().createParameter();
             Speed.Name = "Speed";
             Speed.Type = EFSSystem.DoubleType;
             Speed.setFather(this);
@@ -58,7 +64,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// The return type of the function
         /// </summary>
-        public override Types.Type ReturnType
+        public override Type ReturnType
         {
             get { return EFSSystem.DoubleType; }
         }
@@ -69,7 +75,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="root">The element on which the errors should be reported</param>
         /// <param name="context">The evaluation context</param>
         /// <param name="actualParameters">The parameters applied to this function call</param>
-        public override void additionalChecks(ModelElement root, Interpreter.InterpretationContext context, Dictionary<string, Interpreter.Expression> actualParameters)
+        public override void additionalChecks(ModelElement root, InterpretationContext context, Dictionary<string, Expression> actualParameters)
         {
             CheckFunctionalParameter(root, context, actualParameters[Function.Name], 1);
         }
@@ -79,20 +85,20 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// </summary>
         /// <param name="context">the context used to create the graph</param>
         /// <returns></returns>
-        public override Graph createGraph(Interpreter.InterpretationContext context, Parameter parameter, ExplanationPart explain)
+        public override Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
             Graph retVal = null;
 
             Graph graph = createGraphForValue(context, context.findOnStack(Function).Value, explain, parameter);
             if (graph != null)
             {
-                double speed = Functions.Function.getDoubleValue(context.findOnStack(Speed).Value);
+                double speed = getDoubleValue(context.findOnStack(Speed).Value);
                 double solutionX = graph.SolutionX(speed);
                 if (solutionX == double.MaxValue)
                 {
                     // No value found, return Unknown
-                    Types.Range distanceType = (Types.Range)EFSSystem.findByFullName("Default.BaseTypes.Distance");
-                    Constants.EnumValue unknownDistance = distanceType.findEnumValue("Unknown");
+                    Range distanceType = (Range) EFSSystem.findByFullName("Default.BaseTypes.Distance");
+                    EnumValue unknownDistance = distanceType.findEnumValue("Unknown");
                     retVal = Graph.createGraph(distanceType.getValueAsDouble(unknownDistance));
                 }
                 else
@@ -116,31 +122,31 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             int token = context.LocalScope.PushContext();
             AssignParameters(context, actuals);
-            Functions.Function function = context.findOnStack(Function).Value as Functions.Function;
+            Function function = context.findOnStack(Function).Value as Function;
             if (function != null)
             {
-                double speed = Functions.Function.getDoubleValue(context.findOnStack(Speed).Value);
+                double speed = getDoubleValue(context.findOnStack(Speed).Value);
 
-                Parameter parameter = (Parameter)function.FormalParameters[0];
+                Parameter parameter = (Parameter) function.FormalParameters[0];
                 int token2 = context.LocalScope.PushContext();
                 context.LocalScope.setGraphParameter(parameter);
-                Graph graph = function.createGraph(context, (Parameter)function.FormalParameters[0], explain);
+                Graph graph = function.createGraph(context, (Parameter) function.FormalParameters[0], explain);
                 context.LocalScope.PopContext(token2);
                 double solutionX = graph.SolutionX(speed);
-                if ( solutionX == double.MaxValue )
+                if (solutionX == double.MaxValue)
                 {
-                    Types.Range distanceType = (Types.Range)EFSSystem.findByFullName("Default.BaseTypes.Distance");
+                    Range distanceType = (Range) EFSSystem.findByFullName("Default.BaseTypes.Distance");
                     retVal = distanceType.findEnumValue("Unknown");
                 }
                 else
                 {
-                    retVal = new Values.DoubleValue(EFSSystem.DoubleType, solutionX);                
+                    retVal = new DoubleValue(EFSSystem.DoubleType, solutionX);
                 }
             }
             else

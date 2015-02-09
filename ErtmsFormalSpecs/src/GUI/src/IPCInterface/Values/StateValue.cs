@@ -13,15 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Runtime.Serialization;
+using DataDictionary.Types;
+using DataDictionary.Values;
+
 namespace GUI.IPCInterface.Values
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Runtime.Serialization;
-    using System.ServiceModel;
-
     [DataContract]
     public class StateValue : Value
     {
@@ -53,9 +51,9 @@ namespace GUI.IPCInterface.Values
         /// Converts the value provided as an EFS value
         /// </summary>
         /// <returns></returns>
-        public override DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type)
+        public override IValue convertBack(Type type)
         {
-            DataDictionary.Values.IValue retVal = type.getValue(Name);
+            IValue retVal = type.getValue(Name);
 
             CheckReturnValue(retVal, type);
             return retVal;

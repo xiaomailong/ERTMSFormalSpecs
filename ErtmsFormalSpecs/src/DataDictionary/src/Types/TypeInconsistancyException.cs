@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 
 namespace DataDictionary.Types
@@ -22,7 +23,6 @@ namespace DataDictionary.Types
         public TypeInconsistancyException(string message)
             : base(message)
         {
-
         }
     }
 }

@@ -13,8 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using DataDictionary.Generated;
+using Utils;
+using Comparer = Utils.Comparer;
+using TranslationDictionary = DataDictionary.Tests.Translations.TranslationDictionary;
 
 namespace DataDictionary.Tests
 {
@@ -27,7 +33,7 @@ namespace DataDictionary.Tests
         /// <returns></returns>
         public int CompareTo(SubSequence other)
         {
-            return Utils.Comparer.StringComparer.Compare(Name, other.Name);
+            return Comparer.StringComparer.Compare(Name, other.Name);
         }
 
         public override string ExpressionText
@@ -50,13 +56,13 @@ namespace DataDictionary.Tests
             }
         }
 
-        public System.Collections.ArrayList TestCases
+        public ArrayList TestCases
         {
             get
             {
                 if (allTestCases() == null)
                 {
-                    setAllTestCases(new System.Collections.ArrayList());
+                    setAllTestCases(new ArrayList());
                 }
                 return allTestCases();
             }
@@ -75,11 +81,11 @@ namespace DataDictionary.Tests
         /// </summary>
         /// <param name="runner">The runner used to execute the test case</param>
         /// <returns>the number of failed test cases</returns>
-        public int ExecuteAllTestCases(Tests.Runner.Runner runner)
+        public int ExecuteAllTestCases(Runner.Runner runner)
         {
             int retVal = 0;
 
-            foreach (DataDictionary.Tests.TestCase testCase in TestCases)
+            foreach (TestCase testCase in TestCases)
             {
                 int currentFailed = runner.FailedExpectations().Count;
                 runner.RunUntilStep(null);
@@ -92,7 +98,7 @@ namespace DataDictionary.Tests
             return retVal;
         }
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get { return Frame.SubSequences; }
         }
@@ -113,7 +119,7 @@ namespace DataDictionary.Tests
         /// Translates the sub sequence, according to the tanslation dictionary provided
         /// </summary>
         /// <param name="translationDictionary"></param>
-        public void Translate(Translations.TranslationDictionary translationDictionary)
+        public void Translate(TranslationDictionary translationDictionary)
         {
             foreach (TestCase testCase in TestCases)
             {
@@ -125,7 +131,7 @@ namespace DataDictionary.Tests
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             {
                 TestCase item = element as TestCase;
@@ -144,7 +150,7 @@ namespace DataDictionary.Tests
         /// <returns></returns>
         public static SubSequence createDefault(string name)
         {
-            SubSequence retVal = (SubSequence)DataDictionary.Generated.acceptor.getFactory().createSubSequence();
+            SubSequence retVal = (SubSequence) acceptor.getFactory().createSubSequence();
             retVal.Name = name;
 
             retVal.appendTestCases(TestCase.createDefault("Test case1"));
@@ -160,6 +166,5 @@ namespace DataDictionary.Tests
             get { return getComment(); }
             set { setComment(value); }
         }
-
     }
 }

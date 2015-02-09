@@ -13,8 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Collections;
 using System.Windows.Forms;
+using DataDictionary;
 
 namespace GUI.DictionarySelector
 {
@@ -28,18 +31,21 @@ namespace GUI.DictionarySelector
             /// <summary>
             /// The reference entry
             /// </summary>
-            public DataDictionary.Dictionary Dictionary { get; private set; }
+            public Dictionary Dictionary { get; private set; }
 
             /// <summary>
             /// The display name of the entry
             /// </summary>
-            public string Name { get { return Dictionary.Name; } }
+            public string Name
+            {
+                get { return Dictionary.Name; }
+            }
 
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="dictionary"></param>
-            public ListBoxEntry(DataDictionary.Dictionary dictionary)
+            public ListBoxEntry(Dictionary dictionary)
             {
                 Dictionary = dictionary;
             }
@@ -57,7 +63,7 @@ namespace GUI.DictionarySelector
         /// Constructor
         /// </summary>
         /// <param name="efsSystem">The EFSSystem for which this rule set selector is created</param>
-        public DictionarySelector(DataDictionary.EFSSystem efsSystem)
+        public DictionarySelector(EFSSystem efsSystem)
         {
             InitializeComponent();
             EFSSystem = efsSystem;
@@ -66,15 +72,16 @@ namespace GUI.DictionarySelector
         /// <summary>
         /// The associated EFS System
         /// </summary>
-        private DataDictionary.EFSSystem efsSystem;
-        public DataDictionary.EFSSystem EFSSystem
+        private EFSSystem efsSystem;
+
+        public EFSSystem EFSSystem
         {
             get { return efsSystem; }
             private set
             {
                 efsSystem = value;
-                System.Collections.ArrayList entries = new System.Collections.ArrayList();
-                foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+                ArrayList entries = new ArrayList();
+                foreach (Dictionary dictionary in EFSSystem.Dictionaries)
                 {
                     entries.Add(new ListBoxEntry(dictionary));
                 }
@@ -87,7 +94,7 @@ namespace GUI.DictionarySelector
         /// <summary>
         /// The selected dictionary
         /// </summary>
-        public DataDictionary.Dictionary Selected { get; private set; }
+        public Dictionary Selected { get; private set; }
 
         /// <summary>
         /// Handles the click event on the select button : 

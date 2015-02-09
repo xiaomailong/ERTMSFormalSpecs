@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 
@@ -156,7 +157,7 @@ namespace Reports
             if (text != null)
             {
                 Paragraph p = section.AddParagraph(text, "Normal");
-                p.Format.ListInfo.ListType = MigraDoc.DocumentObjectModel.ListType.BulletList1;
+                p.Format.ListInfo.ListType = ListType.BulletList1;
             }
         }
 
@@ -231,7 +232,6 @@ namespace Reports
                 {
                     elementCount += 1;
                 }
-
             }
 
             if (elementCount > 0)

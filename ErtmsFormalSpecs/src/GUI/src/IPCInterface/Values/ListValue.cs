@@ -13,15 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using DataDictionary.Types;
+using DataDictionary.Values;
+
 namespace GUI.IPCInterface.Values
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Runtime.Serialization;
-    using System.ServiceModel;
-
     [DataContract]
     public class ListValue : Value
     {
@@ -67,14 +66,14 @@ namespace GUI.IPCInterface.Values
         /// Converts the value provided as an EFS value
         /// </summary>
         /// <returns></returns>
-        public override DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type)
+        public override IValue convertBack(Type type)
         {
-            DataDictionary.Values.IValue retVal = null;
+            IValue retVal = null;
 
-            DataDictionary.Types.Collection collectionType = type as DataDictionary.Types.Collection;
+            Collection collectionType = type as Collection;
             if (collectionType != null)
             {
-                List<DataDictionary.Values.IValue> values = new List<DataDictionary.Values.IValue>();
+                List<IValue> values = new List<IValue>();
 
                 int i = 0;
                 foreach (Value item in Value)

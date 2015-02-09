@@ -13,14 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary;
 using DataDictionary.Interpreter;
 
 namespace GUI.DataDictionaryView.UsageTreeView
 {
-    public class UsageTreeNode : ModelElementTreeNode<DataDictionary.ModelElement>
+    public class UsageTreeNode : ModelElementTreeNode<ModelElement>
     {
         /// <summary>
         /// The usage for which this tree node is built

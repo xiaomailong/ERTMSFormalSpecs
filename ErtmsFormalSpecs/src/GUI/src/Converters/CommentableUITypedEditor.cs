@@ -13,19 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.ComponentModel;
+using System.Drawing.Design;
+using System.Windows.Forms.Design;
+using DataDictionary;
+using GUI.EditorView;
+using WeifenLuo.WinFormsUI.Docking;
+
 namespace GUI.Converters
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Drawing.Design;
-    using System.ComponentModel;
-    using System.Windows.Forms.Design;
-    using DataDictionary;
-    using System.Windows.Forms;
-    using GUI.EditorView;
-
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
@@ -51,20 +49,20 @@ namespace GUI.Converters
             }
         }
 
-        public override object EditValue(ITypeDescriptorContext context, System.IServiceProvider provider, object value)
+        public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
-            IWindowsFormsEditorService svc = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
+            IWindowsFormsEditorService svc = provider.GetService(typeof (IWindowsFormsEditorService)) as IWindowsFormsEditorService;
             if (svc != null)
             {
                 ICommentable commentable = value as ICommentable;
                 if (commentable != null)
                 {
-                    EditorView.Window form = new EditorView.Window();
-                    form.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Float;
+                    Window form = new Window();
+                    form.DockAreas = DockAreas.Float;
                     form.AutoComplete = false;
                     CommentableTextChangeHandler handler = new CommentableTextChangeHandler(commentable as ModelElement);
                     form.setChangeHandler(handler);
-                    GUIUtils.MDIWindow.AddChildWindow(form, WeifenLuo.WinFormsUI.Docking.DockAreas.Float);
+                    GUIUtils.MDIWindow.AddChildWindow(form, DockAreas.Float);
                 }
             }
 

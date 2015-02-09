@@ -13,17 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using Utils;
+
 namespace DataDictionary
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// Something that can be graphically displayed
     /// </summary>
-    public interface IGraphicalDisplay : Utils.IModelElement, Utils.INamable, TextualExplain
+    public interface IGraphicalDisplay : IModelElement, INamable, TextualExplain
     {
         /// <summary>
         /// The X position

@@ -13,17 +13,23 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 using DataDictionary;
-using DataDictionary.Tests;
+using DataDictionary.Generated;
+using DataDictionary.Tests.Runner;
+using GUI.Report;
+using Utils;
+using Step = DataDictionary.Tests.Step;
+using SubSequence = DataDictionary.Tests.SubSequence;
+using TestCase = DataDictionary.Tests.TestCase;
 
 namespace GUI.TestRunnerView
 {
-    public class TestCaseTreeNode : ReqRelatedTreeNode<DataDictionary.Tests.TestCase>
+    public class TestCaseTreeNode : ReqRelatedTreeNode<TestCase>
     {
         /// <summary>
         /// The value editor
@@ -83,13 +89,13 @@ namespace GUI.TestRunnerView
         /// <summary>
         /// The steps tree node
         /// </summary>
-        StepsTreeNode steps = null;
+        private StepsTreeNode steps = null;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public TestCaseTreeNode(DataDictionary.Tests.TestCase item, bool buildSubNodes)
+        public TestCaseTreeNode(TestCase item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }
@@ -134,13 +140,14 @@ namespace GUI.TestRunnerView
         /// <param name="args"></param>
         public void TranslateHandler(object sender, EventArgs args)
         {
-            Utils.FinderRepository.INSTANCE.ClearCache();
+            FinderRepository.INSTANCE.ClearCache();
             Item.Translate(Item.Dictionary.TranslationDictionary);
             GUIUtils.MDIWindow.RefreshModel();
         }
 
         #region Execute tests
-        private class ExecuteTestsHandler : Utils.ProgressHandler
+
+        private class ExecuteTestsHandler : ProgressHandler
         {
             /// <summary>
             /// The window for which theses tests should be executed
@@ -155,7 +162,10 @@ namespace GUI.TestRunnerView
             /// <summary>
             /// The EFS system 
             /// </summary>
-            private EFSSystem EFSSystem { get { return TestCase.EFSSystem; } }
+            private EFSSystem EFSSystem
+            {
+                get { return TestCase.EFSSystem; }
+            }
 
             /// <summary>
             /// Constructor
@@ -193,11 +203,11 @@ namespace GUI.TestRunnerView
                             found = (current == TestCase);
                         }
 
-                        DataDictionary.Tests.Runner.Runner runner = Window.getRunner(subSequence);
+                        Runner runner = Window.getRunner(subSequence);
                         runner.RunUntilStep(step);
                     }
                     SynchronizerList.ResumeSynchronization();
-               }
+                }
             }
         }
 
@@ -222,6 +232,7 @@ namespace GUI.TestRunnerView
                 window.tabControl1.SelectedTab = window.testExecutionTabPage;
             }
         }
+
         #endregion
 
         /// <summary>
@@ -231,7 +242,7 @@ namespace GUI.TestRunnerView
         /// <param name="args"></param>
         public void ReportHandler(object sender, EventArgs args)
         {
-            Report.TestReport aReport = new Report.TestReport(Item);
+            TestReport aReport = new TestReport(Item);
             aReport.Show();
         }
 
@@ -239,7 +250,7 @@ namespace GUI.TestRunnerView
         /// Creates a new step
         /// </summary>
         /// <param name="step"></param>
-        public StepTreeNode createStep(DataDictionary.Tests.Step step)
+        public StepTreeNode createStep(Step step)
         {
             return steps.createStep(step);
         }
@@ -261,14 +272,14 @@ namespace GUI.TestRunnerView
 
             try
             {
-                DataDictionary.Tests.SubSequence subSequence = (DataDictionary.Tests.SubSequence)DataDictionary.Generated.acceptor.getFactory().createSubSequence();
+                SubSequence subSequence = (SubSequence) acceptor.getFactory().createSubSequence();
                 subSequence.Name = Item.Name;
 
                 FrameTreeNode frameTreeNode = Parent.Parent as FrameTreeNode;
                 SubSequenceTreeNode newSubSequence = frameTreeNode.createSubSequence(subSequence);
 
                 SubSequenceTreeNode subSequenceTreeNode = Parent as SubSequenceTreeNode;
-                newSubSequence.AcceptCopy((BaseTreeNode)subSequenceTreeNode.Nodes[0]);
+                newSubSequence.AcceptCopy((BaseTreeNode) subSequenceTreeNode.Nodes[0]);
                 newSubSequence.AcceptDrop(this);
             }
             finally

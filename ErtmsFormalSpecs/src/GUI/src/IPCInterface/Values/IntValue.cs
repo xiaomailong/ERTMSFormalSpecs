@@ -13,15 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.Globalization;
+using System.Runtime.Serialization;
+using DataDictionary.Values;
+using Type = DataDictionary.Types.Type;
+
 namespace GUI.IPCInterface.Values
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Runtime.Serialization;
-    using System.ServiceModel;
-
     [DataContract]
     public class IntValue : Value
     {
@@ -37,7 +37,8 @@ namespace GUI.IPCInterface.Values
         /// <param name="value"></param>
         public IntValue(Decimal value)
         {
-            Image = value.ToString(System.Globalization.CultureInfo.InvariantCulture); ;
+            Image = value.ToString(CultureInfo.InvariantCulture);
+            ;
         }
 
         /// <summary>
@@ -62,9 +63,9 @@ namespace GUI.IPCInterface.Values
         /// Converts the value provided as an EFS value
         /// </summary>
         /// <returns></returns>
-        public override DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type)
+        public override IValue convertBack(Type type)
         {
-            DataDictionary.Values.IValue retVal = type.getValue(Image);
+            IValue retVal = type.getValue(Image);
 
             CheckReturnValue(retVal, type);
             return retVal;

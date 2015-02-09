@@ -14,7 +14,9 @@
 // --
 // ------------------------------------------------------------------------------
 
-using DataDictionary.Interpreter;
+using DataDictionary.Generated;
+using NameSpace = DataDictionary.Types.NameSpace;
+
 namespace DataDictionary.Tests.Runner.Events
 {
     public class Expect : ModelEvent
@@ -46,9 +48,13 @@ namespace DataDictionary.Tests.Runner.Events
         /// </summary>
         public enum EventState
         {
-            Active, Fullfilled, TimeOut
+            Active,
+            Fullfilled,
+            TimeOut
         }
+
         private EventState state = EventState.Active;
+
         public EventState State
         {
             get { return state; }
@@ -59,6 +65,7 @@ namespace DataDictionary.Tests.Runner.Events
         /// The corresponding expectation
         /// </summary>
         private Expectation expectation;
+
         public Expectation Expectation
         {
             get { return expectation; }
@@ -68,13 +75,16 @@ namespace DataDictionary.Tests.Runner.Events
         /// <summary>
         /// The namespace associated to this event
         /// </summary>
-        public override Types.NameSpace NameSpace { get { return null; } }
+        public override NameSpace NameSpace
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="id"></param>
-        public Expect(Expectation expectation, Generated.acceptor.RulePriority? priority)
+        public Expect(Expectation expectation, acceptor.RulePriority? priority)
             : base(expectation.ExpressionText, expectation, priority)
         {
             Expectation = expectation;

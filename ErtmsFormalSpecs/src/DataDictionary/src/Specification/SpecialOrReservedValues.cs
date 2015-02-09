@@ -14,9 +14,11 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Generated;
+
 namespace DataDictionary.Specification
 {
-    public class SpecialOrReservedValues : Generated.special_or_reserved_values
+    public class SpecialOrReservedValues : special_or_reserved_values
     {
         /// <summary>
         /// The SpecialOrReservedValues content
@@ -31,7 +33,7 @@ namespace DataDictionary.Specification
             string retVal = tab + "SpecialOrReservedValues:\n";
             if (allSpecial_or_reserved_values() != null)
             {
-                foreach (Generated.special_or_reserved_value value in allSpecial_or_reserved_values())
+                foreach (special_or_reserved_value value in allSpecial_or_reserved_values())
                 {
                     SpecialOrReservedValue specialValue = value as SpecialOrReservedValue;
                     retVal += specialValue.GetText(depth + 1);

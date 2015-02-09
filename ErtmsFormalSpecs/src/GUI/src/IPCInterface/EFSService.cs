@@ -13,18 +13,38 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.ServiceModel;
+using System.Threading;
+using System.Windows.Forms;
+using DataDictionary;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using DataDictionary.Interpreter.Statement;
+using DataDictionary.Rules;
+using DataDictionary.Tests.Runner;
+using DataDictionary.Tests.Runner.Events;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using GUI.IPCInterface.Values;
+using Utils;
+using Action = DataDictionary.Rules.Action;
+using BoolValue = DataDictionary.Values.BoolValue;
+using DoubleValue = DataDictionary.Values.DoubleValue;
+using Enum = System.Enum;
+using EnumValue = DataDictionary.Constants.EnumValue;
+using IntValue = DataDictionary.Values.IntValue;
+using ListValue = DataDictionary.Values.ListValue;
+using State = DataDictionary.Constants.State;
+using StringValue = DataDictionary.Values.StringValue;
+using StructureValue = DataDictionary.Values.StructureValue;
+using Value = GUI.IPCInterface.Values.Value;
+
 namespace GUI.IPCInterface
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary.Tests.Runner;
-    using DataDictionary;
-    using System.ServiceModel;
-    using System.Windows.Forms;
-    using System.Threading;
-
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple)]
     public class EFSService : IEFSService
     {
@@ -122,11 +142,21 @@ namespace GUI.IPCInterface
 
             switch (current)
             {
-                case Step.CleanUp: retVal = Step.Verification; break;
-                case Step.Verification: retVal = Step.UpdateInternal; break;
-                case Step.UpdateInternal: retVal = Step.Process; break;
-                case Step.Process: retVal = Step.UpdateOutput; break;
-                case Step.UpdateOutput: retVal = Step.CleanUp; break;
+                case Step.CleanUp:
+                    retVal = Step.Verification;
+                    break;
+                case Step.Verification:
+                    retVal = Step.UpdateInternal;
+                    break;
+                case Step.UpdateInternal:
+                    retVal = Step.Process;
+                    break;
+                case Step.Process:
+                    retVal = Step.UpdateOutput;
+                    break;
+                case Step.UpdateOutput:
+                    retVal = Step.CleanUp;
+                    break;
             }
 
             return retVal;
@@ -322,7 +352,7 @@ namespace GUI.IPCInterface
                             Runner.ExecuteOnePriority(convertStep2Priority(LastStep));
                             if (LastStep == Step.CleanUp)
                             {
-                                GUIUtils.MDIWindow.Invoke((MethodInvoker)delegate { GUIUtils.MDIWindow.RefreshAfterStep(); });
+                                GUIUtils.MDIWindow.Invoke((MethodInvoker) delegate { GUIUtils.MDIWindow.RefreshAfterStep(); });
                             }
                         }
                         catch (Exception)
@@ -346,7 +376,7 @@ namespace GUI.IPCInterface
             }
             catch (Exception)
             {
-                System.Diagnostics.Debugger.Break();
+                Debugger.Break();
             }
             finally
             {
@@ -376,7 +406,7 @@ namespace GUI.IPCInterface
             public override void Initialize(EFSService instance)
             {
                 // Allocates all critical section
-                foreach (Step step in Enum.GetValues(typeof(Step)))
+                foreach (Step step in Enum.GetValues(typeof (Step)))
                 {
                     instance.StepAccess[step] = new Mutex(true, step.ToString());
                 }
@@ -401,7 +431,7 @@ namespace GUI.IPCInterface
         public bool Cycle(int clientId, Step step)
         {
             bool retVal = false;
-            
+
             Runner runner = Runner;
             if (runner != null && !runner.PleaseWait)
             {
@@ -471,14 +501,14 @@ namespace GUI.IPCInterface
         /// </summary>
         /// <param name="variableName"></param>
         /// <returns></returns>
-        public Values.Value GetVariableValue(string variableName)
+        public Value GetVariableValue(string variableName)
         {
-            Values.Value retVal = null;
+            Value retVal = null;
 
             EFSAccess.WaitOne();
             try
             {
-                DataDictionary.Variables.IVariable variable = EFSSystem.INSTANCE.findByFullName(variableName) as DataDictionary.Variables.IVariable;
+                IVariable variable = EFSSystem.INSTANCE.findByFullName(variableName) as IVariable;
                 if (variable != null)
                 {
                     retVal = convertOut(variable.Value);
@@ -501,17 +531,17 @@ namespace GUI.IPCInterface
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
-        public Values.Value GetExpressionValue(string expression)
+        public Value GetExpressionValue(string expression)
         {
-            Values.Value retVal = null;
+            Value retVal = null;
 
             EFSAccess.WaitOne();
             try
             {
-                DataDictionary.Interpreter.Expression expressionTree = EFSSystem.INSTANCE.Parser.Expression(EFSSystem.INSTANCE.Dictionaries[0], expression);
+                Expression expressionTree = EFSSystem.INSTANCE.Parser.Expression(EFSSystem.INSTANCE.Dictionaries[0], expression);
                 if (expressionTree != null)
                 {
-                    retVal = convertOut(expressionTree.GetValue(new DataDictionary.Interpreter.InterpretationContext(), null));
+                    retVal = convertOut(expressionTree.GetValue(new InterpretationContext(), null));
                 }
                 else
                 {
@@ -531,11 +561,11 @@ namespace GUI.IPCInterface
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        private Values.Value convertOut(DataDictionary.Values.IValue value)
+        private Value convertOut(IValue value)
         {
             // Handles the boolean case
             {
-                DataDictionary.Values.BoolValue v = value as DataDictionary.Values.BoolValue;
+                BoolValue v = value as BoolValue;
                 if (v != null)
                 {
                     return new Values.BoolValue(v.Val);
@@ -544,7 +574,7 @@ namespace GUI.IPCInterface
 
             // Handles the integer case
             {
-                DataDictionary.Values.IntValue v = value as DataDictionary.Values.IntValue;
+                IntValue v = value as IntValue;
                 if (v != null)
                 {
                     return new Values.IntValue(v.Val);
@@ -553,7 +583,7 @@ namespace GUI.IPCInterface
 
             // Handles the double case
             {
-                DataDictionary.Values.DoubleValue v = value as DataDictionary.Values.DoubleValue;
+                DoubleValue v = value as DoubleValue;
                 if (v != null)
                 {
                     return new Values.DoubleValue(v.Val);
@@ -562,7 +592,7 @@ namespace GUI.IPCInterface
 
             // Handles the string case
             {
-                DataDictionary.Values.StringValue v = value as DataDictionary.Values.StringValue;
+                StringValue v = value as StringValue;
                 if (v != null)
                 {
                     return new Values.StringValue(v.Val);
@@ -571,16 +601,16 @@ namespace GUI.IPCInterface
 
             // Handles the state case
             {
-                DataDictionary.Constants.State v = value as DataDictionary.Constants.State;
+                State v = value as State;
                 if (v != null)
                 {
-                    return new Values.StateValue(v.FullName);
+                    return new StateValue(v.FullName);
                 }
             }
 
             // Handles the enumeration value case
             {
-                DataDictionary.Constants.EnumValue v = value as DataDictionary.Constants.EnumValue;
+                EnumValue v = value as EnumValue;
                 if (v != null)
                 {
                     return new Values.EnumValue(v.FullName);
@@ -589,12 +619,12 @@ namespace GUI.IPCInterface
 
             // Handles the list case
             {
-                DataDictionary.Values.ListValue v = value as DataDictionary.Values.ListValue;
+                ListValue v = value as ListValue;
                 if (v != null)
                 {
-                    List<Values.Value> list = new List<Values.Value>();
+                    List<Value> list = new List<Value>();
 
-                    foreach (DataDictionary.Values.IValue item in v.Val)
+                    foreach (IValue item in v.Val)
                     {
                         list.Add(convertOut(item));
                     }
@@ -605,14 +635,14 @@ namespace GUI.IPCInterface
 
             // Handles the structure case
             {
-                DataDictionary.Values.StructureValue v = value as DataDictionary.Values.StructureValue;
+                StructureValue v = value as StructureValue;
                 if (v != null)
                 {
-                    Dictionary<string, Values.Value> record = new Dictionary<string, Values.Value>();
+                    Dictionary<string, Value> record = new Dictionary<string, Value>();
 
-                    foreach (KeyValuePair<string, Utils.INamable> pair in v.Val)
+                    foreach (KeyValuePair<string, INamable> pair in v.Val)
                     {
-                        DataDictionary.Variables.IVariable variable = pair.Value as DataDictionary.Variables.IVariable;
+                        IVariable variable = pair.Value as IVariable;
                         if (variable != null)
                         {
                             record.Add(variable.Name, convertOut(variable.Value));
@@ -625,7 +655,7 @@ namespace GUI.IPCInterface
 
             // Handles the 'empty' value
             {
-                DataDictionary.Values.EmptyValue emptyValue = value as DataDictionary.Values.EmptyValue;
+                EmptyValue emptyValue = value as EmptyValue;
                 if (emptyValue != null)
                 {
                     return null;
@@ -635,24 +665,24 @@ namespace GUI.IPCInterface
             throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot convert value " + value));
         }
 
-        private class SyntheticVariableUpdateAction : DataDictionary.Rules.Action
+        private class SyntheticVariableUpdateAction : Action
         {
             /// <summary>
             /// The variable identification that is modified by this variable update action
             /// </summary>
-            public DataDictionary.Variables.IVariable Variable { get; private set; }
+            public IVariable Variable { get; private set; }
 
             /// <summary>
             /// The value that is assigned to this variable
             /// </summary>
-            public DataDictionary.Values.IValue Value { get; private set; }
+            public IValue Value { get; private set; }
 
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="variable"></param>
             /// <param name="value"></param>
-            public SyntheticVariableUpdateAction(DataDictionary.Variables.IVariable variable, DataDictionary.Values.IValue value)
+            public SyntheticVariableUpdateAction(IVariable variable, IValue value)
             {
                 Variable = variable;
                 Value = value;
@@ -660,15 +690,12 @@ namespace GUI.IPCInterface
 
             public override string ExpressionText
             {
-                get
-                {
-                    return Variable.FullName + " <- " + Value.FullName;
-                }
+                get { return Variable.FullName + " <- " + Value.FullName; }
             }
 
-            public override void GetChanges(DataDictionary.Interpreter.InterpretationContext context, DataDictionary.Rules.ChangeList changes, DataDictionary.Interpreter.ExplanationPart explanation, bool apply, Runner runner)
+            public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Runner runner)
             {
-                DataDictionary.Rules.Change change = new DataDictionary.Rules.Change(Variable, Variable.Value, Value);
+                Change change = new Change(Variable, Variable.Value, Value);
                 changes.Add(change, apply, runner);
             }
         }
@@ -678,19 +705,19 @@ namespace GUI.IPCInterface
         /// </summary>
         /// <param name="variableName"></param>
         /// <param name="value"></param>
-        public void SetVariableValue(string variableName, Values.Value value)
+        public void SetVariableValue(string variableName, Value value)
         {
             EFSAccess.WaitOne();
             try
             {
                 if (Runner != null)
                 {
-                    DataDictionary.Variables.IVariable variable = Runner.EFSSystem.findByFullName(variableName) as DataDictionary.Variables.IVariable;
+                    IVariable variable = Runner.EFSSystem.findByFullName(variableName) as IVariable;
 
                     if (variable != null)
                     {
                         SyntheticVariableUpdateAction action = new SyntheticVariableUpdateAction(variable, value.convertBack(variable.Type));
-                        DataDictionary.Tests.Runner.Events.VariableUpdate variableUpdate = new DataDictionary.Tests.Runner.Events.VariableUpdate(action, null, null);
+                        VariableUpdate variableUpdate = new VariableUpdate(action, null, null);
                         Runner.EventTimeLine.AddModelEvent(variableUpdate, Runner, true);
                     }
                     else
@@ -714,17 +741,16 @@ namespace GUI.IPCInterface
             EFSAccess.WaitOne();
             try
             {
-
                 if (Runner != null)
                 {
                     bool silent = true;
-                    DataDictionary.Interpreter.Statement.Statement statement = EFSSystem.INSTANCE.Parser.Statement(EFSSystem.INSTANCE.Dictionaries[0], statementText, silent);
+                    Statement statement = EFSSystem.INSTANCE.Parser.Statement(EFSSystem.INSTANCE.Dictionaries[0], statementText, silent);
 
                     if (statement != null)
                     {
-                        DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
+                        Action action = (Action) acceptor.getFactory().createAction();
                         action.ExpressionText = statementText;
-                        DataDictionary.Tests.Runner.Events.VariableUpdate variableUpdate = new DataDictionary.Tests.Runner.Events.VariableUpdate(action, null, null);
+                        VariableUpdate variableUpdate = new VariableUpdate(action, null, null);
                         Runner.EventTimeLine.AddModelEvent(variableUpdate, Runner, true);
                     }
                     else
@@ -743,30 +769,30 @@ namespace GUI.IPCInterface
         /// Converts an interface priority to a Runner priority
         /// </summary>
         /// <param name="priority"></param>
-        private DataDictionary.Generated.acceptor.RulePriority convertStep2Priority(Step priority)
+        private acceptor.RulePriority convertStep2Priority(Step priority)
         {
-            DataDictionary.Generated.acceptor.RulePriority retVal = DataDictionary.Generated.acceptor.RulePriority.defaultRulePriority;
+            acceptor.RulePriority retVal = acceptor.RulePriority.defaultRulePriority;
 
             switch (priority)
             {
                 case Step.Verification:
-                    retVal = DataDictionary.Generated.acceptor.RulePriority.aVerification;
+                    retVal = acceptor.RulePriority.aVerification;
                     break;
 
                 case Step.UpdateInternal:
-                    retVal = DataDictionary.Generated.acceptor.RulePriority.aUpdateINTERNAL;
+                    retVal = acceptor.RulePriority.aUpdateINTERNAL;
                     break;
 
                 case Step.Process:
-                    retVal = DataDictionary.Generated.acceptor.RulePriority.aProcessing;
+                    retVal = acceptor.RulePriority.aProcessing;
                     break;
 
                 case Step.UpdateOutput:
-                    retVal = DataDictionary.Generated.acceptor.RulePriority.aUpdateOUT;
+                    retVal = acceptor.RulePriority.aUpdateOUT;
                     break;
 
                 case Step.CleanUp:
-                    retVal = DataDictionary.Generated.acceptor.RulePriority.aCleanUp;
+                    retVal = acceptor.RulePriority.aCleanUp;
                     break;
             }
 
@@ -777,29 +803,29 @@ namespace GUI.IPCInterface
         /// Converts an interface priority to a Runner priority
         /// </summary>
         /// <param name="priority"></param>
-        private Step convertPriority2Step(DataDictionary.Generated.acceptor.RulePriority priority)
+        private Step convertPriority2Step(acceptor.RulePriority priority)
         {
             Step retVal = Step.Process;
 
             switch (priority)
             {
-                case DataDictionary.Generated.acceptor.RulePriority.aUpdateINTERNAL:
+                case acceptor.RulePriority.aUpdateINTERNAL:
                     retVal = Step.UpdateInternal;
                     break;
 
-                case DataDictionary.Generated.acceptor.RulePriority.aVerification:
+                case acceptor.RulePriority.aVerification:
                     retVal = Step.Verification;
                     break;
 
-                case DataDictionary.Generated.acceptor.RulePriority.aProcessing:
+                case acceptor.RulePriority.aProcessing:
                     retVal = Step.Process;
                     break;
 
-                case DataDictionary.Generated.acceptor.RulePriority.aUpdateOUT:
+                case acceptor.RulePriority.aUpdateOUT:
                     retVal = Step.UpdateOutput;
                     break;
 
-                case DataDictionary.Generated.acceptor.RulePriority.aCleanUp:
+                case acceptor.RulePriority.aCleanUp:
                     retVal = Step.CleanUp;
                     break;
             }

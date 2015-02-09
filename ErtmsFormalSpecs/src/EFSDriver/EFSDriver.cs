@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+using System.Globalization;
 using System.ServiceModel;
 using System.Threading;
+using System.Windows.Forms;
 using EFSService;
 
 namespace EFSDriver
@@ -37,13 +32,13 @@ namespace EFSDriver
                     try
                     {
                         EstablishCommunication();
-                        Invoke((MethodInvoker)delegate { variableValueTextBox.Enabled = true; });
+                        Invoke((MethodInvoker) delegate { variableValueTextBox.Enabled = true; });
 
                         EFS.Cycle(ClientId, Step.CleanUp);
-                        Invoke((MethodInvoker)delegate { SetVariableValue(); });
+                        Invoke((MethodInvoker) delegate { SetVariableValue(); });
 
                         EFS.Cycle(ClientId, Step.UpdateOutput);
-                        Invoke((MethodInvoker)delegate { UpdateVariableValue(); });
+                        Invoke((MethodInvoker) delegate { UpdateVariableValue(); });
                     }
                     catch (InvalidOperationException)
                     {
@@ -56,7 +51,8 @@ namespace EFSDriver
                 }
                 else
                 {
-                    Invoke((MethodInvoker)delegate { variableValueTextBox.Enabled = false; }); ;
+                    Invoke((MethodInvoker) delegate { variableValueTextBox.Enabled = false; });
+                    ;
                 }
             }
         }
@@ -99,8 +95,8 @@ namespace EFSDriver
             TopMost = true;
             cycleCheckBox.Checked = false;
 
-            BackgroundThread = new Thread((ThreadStart)HandleBackgroundProcess);
-            BackgroundThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+            BackgroundThread = new Thread((ThreadStart) HandleBackgroundProcess);
+            BackgroundThread.CurrentCulture = CultureInfo.InvariantCulture;
             BackgroundThread.Start();
         }
 

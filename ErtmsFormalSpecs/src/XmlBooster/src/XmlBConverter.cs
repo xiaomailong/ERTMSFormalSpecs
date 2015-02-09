@@ -1,12 +1,10 @@
-namespace XmlBooster 
+namespace XmlBooster
 {
+    public interface XmlBConverter
+    {
+        double stringToDouble(string a);
+        //	throws Exception;
 
-	public interface XmlBConverter
-	{
-		double stringToDouble(string a);
-		//	throws Exception;
-
-		string doubleToString(double d);
-	}
-
+        string doubleToString(double d);
+    }
 }

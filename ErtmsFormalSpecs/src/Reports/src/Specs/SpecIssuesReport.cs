@@ -13,15 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Reflection;
 using DataDictionary;
-using MigraDoc.DocumentObjectModel;
+using DataDictionary.Specification;
 using DataDictionary.Tests;
+using log4net;
+using MigraDoc.DocumentObjectModel;
+using Paragraph = DataDictionary.Specification.Paragraph;
 
 namespace Reports.Specs
 {
     public class SpecIssuesReport : ReportTools
     {
-        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// Constructor
@@ -41,7 +46,7 @@ namespace Reports.Specs
         {
             int retVal = 0;
 
-            foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+            foreach (Specification specification in dictionary.Specifications)
             {
                 retVal += specification.MoreInformationNeeded.Count;
             }
@@ -71,7 +76,7 @@ namespace Reports.Specs
         {
             int retVal = 0;
 
-            foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+            foreach (Specification specification in dictionary.Specifications)
             {
                 retVal += specification.SpecIssues.Count;
             }
@@ -101,7 +106,7 @@ namespace Reports.Specs
         {
             int retVal = 0;
 
-            foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+            foreach (Specification specification in dictionary.Specifications)
             {
                 retVal += specification.DesignChoices.Count;
             }
@@ -131,7 +136,7 @@ namespace Reports.Specs
         {
             int retVal = 0;
 
-            foreach (DataDictionary.Specification.Specification specification in dictionary.Specifications)
+            foreach (Specification specification in dictionary.Specifications)
             {
                 retVal += specification.OnlyComments.Count;
             }
@@ -160,10 +165,10 @@ namespace Reports.Specs
         private void GenerateMoreInformationNeeded(Dictionary aDictionary)
         {
             AddSubParagraph("More information needed");
-            foreach (DataDictionary.Specification.Paragraph paragraph in aDictionary.MoreInformationNeeded)
+            foreach (Paragraph paragraph in aDictionary.MoreInformationNeeded)
             {
                 AddSubParagraph(paragraph.FullId + " is not precise enough");
-                AddTable(new string[] { paragraph.FullId }, new int[] { 30, 100 });
+                AddTable(new string[] {paragraph.FullId}, new int[] {30, 100});
                 AddRow("Description", paragraph.Text);
                 AddRow("Comment", paragraph.Comment);
                 CloseSubParagraph();
@@ -179,10 +184,10 @@ namespace Reports.Specs
         private void GenerateSpecIssues(Dictionary aDictionary)
         {
             AddSubParagraph("Specification issues");
-            foreach (DataDictionary.Specification.Paragraph paragraph in aDictionary.SpecIssues)
+            foreach (Paragraph paragraph in aDictionary.SpecIssues)
             {
                 AddSubParagraph("Issue on " + paragraph.FullId);
-                AddTable(new string[] { "Issue on " + paragraph.FullId }, new int[] { 30, 100 });
+                AddTable(new string[] {"Issue on " + paragraph.FullId}, new int[] {30, 100});
                 AddRow("Description", paragraph.Text);
                 AddRow("Comment", paragraph.Comment);
                 CloseSubParagraph();
@@ -198,15 +203,15 @@ namespace Reports.Specs
         private void GenerateDesignChoices(Dictionary aDictionary)
         {
             AddSubParagraph("Design choices");
-            foreach (DataDictionary.Specification.Paragraph paragraph in aDictionary.DesignChoices)
+            foreach (Paragraph paragraph in aDictionary.DesignChoices)
             {
                 AddSubParagraph("Design choice " + paragraph.FullId);
-                AddTable(new string[] { "Design choice " + paragraph.FullId }, new int[] { 60, 100 });
+                AddTable(new string[] {"Design choice " + paragraph.FullId}, new int[] {60, 100});
                 AddRow(paragraph.Text);
-                
+
                 // If the paragraph references steps, indicate them
                 bool first = true;
-                foreach ( ReqRef refParagraph in paragraph.Implementations )
+                foreach (ReqRef refParagraph in paragraph.Implementations)
                 {
                     Step step = refParagraph.Enclosing as Step;
                     if (step != null)
@@ -232,10 +237,10 @@ namespace Reports.Specs
         private void GenerateComments(Dictionary aDictionary)
         {
             AddSubParagraph("Design choices");
-            foreach (DataDictionary.Specification.Paragraph paragraph in aDictionary.OnlyComments)
+            foreach (Paragraph paragraph in aDictionary.OnlyComments)
             {
                 AddSubParagraph("Comments for " + paragraph.FullId);
-                AddTable(new string[] { paragraph.FullId }, new int[] { 30, 100 });
+                AddTable(new string[] {paragraph.FullId}, new int[] {30, 100});
                 AddRow("Description", paragraph.Text);
                 AddRow("Comment", paragraph.Comment);
                 CloseSubParagraph();

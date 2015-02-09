@@ -13,13 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.IO;
+using System.Windows.Forms;
+using DataDictionary.Compare;
+using DataDictionary.Generated;
+using LibGit2Sharp;
+using Utils;
+using Commit = LibGit2Sharp.Commit;
+using Comparer = DataDictionary.Compare.Comparer;
+using Dictionary = DataDictionary.Dictionary;
+using History = HistoricalData.History;
+
 namespace GUI.LongOperations
 {
-    using DataDictionary;
-    using System.Windows.Forms;
-    using LibGit2Sharp;
-    using System.IO;
-
     public class UpdateBlameInformationOperation : BaseCompareWithRepositoryOperation
     {
         /// <summary>
@@ -52,7 +59,7 @@ namespace GUI.LongOperations
                 string DictionaryDirectory = Path.GetDirectoryName(Dictionary.FilePath);
                 DictionaryDirectory = DictionaryDirectory.Substring(RepositoryPath.Length + 1, DictionaryDirectory.Length - RepositoryPath.Length - 1);
 
-                HistoricalData.History history = Dictionary.EFSSystem.History;
+                History history = Dictionary.EFSSystem.History;
                 if (history.Commit(LastCommit.Sha) == null)
                 {
                     // Processes all commits until the one that has been selected
@@ -77,7 +84,7 @@ namespace GUI.LongOperations
                             else
                             {
                                 previousVersion = DictionaryByVersion(previousCommit);
-                                DataDictionary.Compare.Comparer.ensureGuidDictionary(previousVersion, currentVersion);
+                                Comparer.ensureGuidDictionary(previousVersion, currentVersion);
                             }
 
                             bool changesAvailable = true;
@@ -115,7 +122,7 @@ namespace GUI.LongOperations
 
                                 if (currentVersion != null)
                                 {
-                                    DataDictionary.Compare.VersionDiff versionDiff = new DataDictionary.Compare.VersionDiff();
+                                    VersionDiff versionDiff = new VersionDiff();
                                     if (commitToRefer != null)
                                     {
                                         versionDiff.setCommitter(commitToRefer.Author.Name);
@@ -124,8 +131,8 @@ namespace GUI.LongOperations
                                         versionDiff.setMessage(commitToRefer.Message);
                                     }
 
-                                    DataDictionary.Compare.Comparer.ensureGuidDictionary(previousVersion, currentVersion);
-                                    DataDictionary.Compare.Comparer.compareDictionary(previousVersion, currentVersion, versionDiff);
+                                    Comparer.ensureGuidDictionary(previousVersion, currentVersion);
+                                    Comparer.compareDictionary(previousVersion, currentVersion, versionDiff);
                                     history.AppendOrReplaceCommit(versionDiff);
                                     history.save();
                                 }
@@ -168,15 +175,15 @@ namespace GUI.LongOperations
             }
         }
 
-        private class CleanUpCaches : DataDictionary.Generated.Visitor
+        private class CleanUpCaches : Visitor
         {
-            public override void visit(DataDictionary.Generated.BaseModelElement obj, bool visitSubNodes)
+            public override void visit(BaseModelElement obj, bool visitSubNodes)
             {
-                Utils.IFinder finder = obj as Utils.IFinder;
+                IFinder finder = obj as IFinder;
 
                 if (finder != null)
                 {
-                    Utils.FinderRepository.INSTANCE.UnRegister(finder);
+                    FinderRepository.INSTANCE.UnRegister(finder);
                 }
 
                 base.visit(obj, visitSubNodes);

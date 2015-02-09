@@ -13,11 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DataDictionary;
+using DataDictionary.Generated;
 using DataDictionary.Tests.Runner;
+using GUI.IPCInterface;
+using Utils;
+using Dictionary = DataDictionary.Dictionary;
+using Frame = DataDictionary.Tests.Frame;
+using Step = DataDictionary.Tests.Step;
+using SubSequence = DataDictionary.Tests.SubSequence;
 
 namespace GUI.TestRunnerView
 {
@@ -52,8 +60,9 @@ namespace GUI.TestRunnerView
         /// <summary>
         /// The data dictionary for this view
         /// </summary>
-        private DataDictionary.EFSSystem efsSystem;
-        public DataDictionary.EFSSystem EFSSystem
+        private EFSSystem efsSystem;
+
+        public EFSSystem EFSSystem
         {
             get { return efsSystem; }
             private set
@@ -66,7 +75,7 @@ namespace GUI.TestRunnerView
         /// <summary>
         /// The runner
         /// </summary>
-        public DataDictionary.Tests.Runner.Runner getRunner(DataDictionary.Tests.SubSequence subSequence)
+        public Runner getRunner(SubSequence subSequence)
         {
             Runner runner = EFSSystem.Runner;
 
@@ -74,7 +83,7 @@ namespace GUI.TestRunnerView
             {
                 if (subSequence != null)
                 {
-                    EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(subSequence, false, false);
+                    EFSSystem.Runner = new Runner(subSequence, false, false);
                 }
             }
 
@@ -101,7 +110,7 @@ namespace GUI.TestRunnerView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Window_FormClosed(object sender, FormClosedEventArgs e)
+        private void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
             GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
@@ -115,9 +124,9 @@ namespace GUI.TestRunnerView
         /// Sets the current frame parameters
         /// </summary>
         /// <param name="frame"></param>
-        public void setFrame(DataDictionary.Tests.Frame frame)
+        public void setFrame(Frame frame)
         {
-            Invoke((MethodInvoker)delegate
+            Invoke((MethodInvoker) delegate
             {
                 frameToolStripComboBox.Text = frame.Name;
                 Refresh();
@@ -128,9 +137,9 @@ namespace GUI.TestRunnerView
         /// Sets the current sub sequence window parameters
         /// </summary>
         /// <param name="subSequence"></param>
-        public void setSubSequence(DataDictionary.Tests.SubSequence subSequence)
+        public void setSubSequence(SubSequence subSequence)
         {
-            Invoke((MethodInvoker)delegate
+            Invoke((MethodInvoker) delegate
             {
                 subSequenceSelectorComboBox.Text = subSequence.Name;
                 setFrame(subSequence.Frame);
@@ -160,7 +169,7 @@ namespace GUI.TestRunnerView
                     else
                     {
                         toolStripTimeTextBox.Text = "" + EFSSystem.Runner.Time;
-                        DataDictionary.Tests.Step currentStep = EFSSystem.Runner.CurrentStep();
+                        Step currentStep = EFSSystem.Runner.CurrentStep();
                         if (currentStep != null)
                         {
                             toolStripCurrentStepTextBox.Text = currentStep.Name;
@@ -187,9 +196,9 @@ namespace GUI.TestRunnerView
 
                     frameToolStripComboBox.Items.Clear();
                     List<string> frames = new List<string>();
-                    foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+                    foreach (Dictionary dictionary in EFSSystem.Dictionaries)
                     {
-                        foreach (DataDictionary.Tests.Frame frame in dictionary.Tests)
+                        foreach (Frame frame in dictionary.Tests)
                         {
                             frames.Add(frame.Name);
                         }
@@ -209,13 +218,13 @@ namespace GUI.TestRunnerView
                     if (Frame == null || frameToolStripComboBox.Text.CompareTo(Frame.Name) != 0)
                     {
                         subSequenceSelectorComboBox.Items.Clear();
-                        foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+                        foreach (Dictionary dictionary in EFSSystem.Dictionaries)
                         {
                             Frame = dictionary.findFrame(frameToolStripComboBox.Text);
                             if (Frame != null)
                             {
                                 List<string> subSequences = new List<string>();
-                                foreach (DataDictionary.Tests.SubSequence subSequence in Frame.SubSequences)
+                                foreach (SubSequence subSequence in Frame.SubSequences)
                                 {
                                     subSequences.Add(subSequence.Name);
                                 }
@@ -265,7 +274,7 @@ namespace GUI.TestRunnerView
         {
             try
             {
-                DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                ControllersManager.DesactivateAllNotifications();
 
                 CheckRunner();
                 if (EFSSystem.Runner != null)
@@ -276,7 +285,7 @@ namespace GUI.TestRunnerView
             }
             finally
             {
-                DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+                ControllersManager.ActivateAllNotifications();
             }
         }
 
@@ -302,7 +311,7 @@ namespace GUI.TestRunnerView
         {
             CheckRunner();
 
-            foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+            foreach (Dictionary dictionary in EFSSystem.Dictionaries)
             {
                 dictionary.ClearMessages();
             }
@@ -317,15 +326,15 @@ namespace GUI.TestRunnerView
             {
                 if (Frame != null)
                 {
-                    DataDictionary.Tests.SubSequence subSequence = Frame.findSubSequence(subSequenceSelectorComboBox.Text);
+                    SubSequence subSequence = Frame.findSubSequence(subSequenceSelectorComboBox.Text);
                     if (subSequence != null)
                     {
-                        EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(subSequence, true, false);
+                        EFSSystem.Runner = new Runner(subSequence, true, false);
                     }
                 }
                 else
                 {
-                    EFSSystem.Runner = GUI.IPCInterface.EFSService.INSTANCE.Runner;
+                    EFSSystem.Runner = EFSService.INSTANCE.Runner;
                 }
             }
         }
@@ -348,7 +357,7 @@ namespace GUI.TestRunnerView
 
         private void testCaseSelectorComboBox_SelectionChanged(object sender, EventArgs e)
         {
-            DataDictionary.Tests.Runner.Runner runner = EFSSystem.Runner;
+            Runner runner = EFSSystem.Runner;
             if (runner != null && (runner.SubSequence == null || runner.SubSequence.Name.CompareTo(subSequenceSelectorComboBox.Text) != 0))
             {
                 EFSSystem.Runner = null;
@@ -373,7 +382,7 @@ namespace GUI.TestRunnerView
         {
             if (EFSSystem.Runner != null)
             {
-                DataDictionary.Tests.Step step = EFSSystem.Runner.CurrentStep();
+                Step step = EFSSystem.Runner.CurrentStep();
                 if (step != null)
                 {
                     GUIUtils.MDIWindow.Select(step);
@@ -390,7 +399,7 @@ namespace GUI.TestRunnerView
         {
             if (EFSSystem.Runner != null)
             {
-                DataDictionary.Tests.SubSequence subSequence = EFSSystem.Runner.SubSequence;
+                SubSequence subSequence = EFSSystem.Runner.SubSequence;
                 if (subSequence != null)
                 {
                     GUIUtils.MDIWindow.Select(subSequence);
@@ -405,7 +414,7 @@ namespace GUI.TestRunnerView
         /// <param name="e"></param>
         private void nextInfoToolStripButton_Click(object sender, EventArgs e)
         {
-            TreeView.SelectNext(Utils.ElementLog.LevelEnum.Info);
+            TreeView.SelectNext(ElementLog.LevelEnum.Info);
         }
 
         /// <summary>
@@ -415,7 +424,7 @@ namespace GUI.TestRunnerView
         /// <param name="e"></param>
         private void nextWarningToolStripButton_Click(object sender, EventArgs e)
         {
-            TreeView.SelectNext(Utils.ElementLog.LevelEnum.Warning);
+            TreeView.SelectNext(ElementLog.LevelEnum.Warning);
         }
 
         /// <summary>
@@ -425,13 +434,13 @@ namespace GUI.TestRunnerView
         /// <param name="e"></param>
         private void nextErrortoolStripButton_Click(object sender, EventArgs e)
         {
-            TreeView.SelectNext(Utils.ElementLog.LevelEnum.Error);
+            TreeView.SelectNext(ElementLog.LevelEnum.Error);
         }
 
         /// <summary>
         /// The frame currently selected
         /// </summary>
-        private DataDictionary.Tests.Frame Frame { get; set; }
+        private Frame Frame { get; set; }
 
         private void frameSelectorComboBox_SelectionChanged(object sender, EventArgs e)
         {

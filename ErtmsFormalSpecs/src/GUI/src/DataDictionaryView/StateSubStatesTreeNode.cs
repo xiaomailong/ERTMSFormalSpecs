@@ -13,21 +13,25 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.Converters;
+using State = DataDictionary.Constants.State;
 
 namespace GUI.DataDictionaryView
 {
-    public class StateSubStatesTreeNode : ModelElementTreeNode<DataDictionary.Constants.State>
+    public class StateSubStatesTreeNode : ModelElementTreeNode<State>
     {
-        private class InternalStateTypeConverter : Converters.StateTypeConverter
+        private class InternalStateTypeConverter : StateTypeConverter
         {
             public override StandardValuesCollection
-            GetStandardValues(ITypeDescriptorContext context)
+                GetStandardValues(ITypeDescriptorContext context)
             {
-                return GetValues(((ItemEditor)context.Instance).Item);
+                return GetValues(((ItemEditor) context.Instance).Item);
             }
         }
 
@@ -47,7 +51,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="children"></param>
-        public StateSubStatesTreeNode(DataDictionary.Constants.State item, bool buildSubNodes)
+        public StateSubStatesTreeNode(State item, bool buildSubNodes)
             : base(item, buildSubNodes, "States", true)
         {
         }
@@ -60,7 +64,7 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Constants.State state in Item.StateMachine.States)
+            foreach (State state in Item.StateMachine.States)
             {
                 Nodes.Add(new StateTreeNode(state, buildSubNodes));
             }
@@ -78,7 +82,7 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Constants.State state = (DataDictionary.Constants.State)DataDictionary.Generated.acceptor.getFactory().createState();
+            State state = (State) acceptor.getFactory().createState();
             state.Name = "<State" + (GetNodeCount(false) + 1) + ">";
             AddState(state);
         }
@@ -87,7 +91,7 @@ namespace GUI.DataDictionaryView
         /// Adds a new state 
         /// </summary>
         /// <param name="state"></param>
-        public StateTreeNode AddState(DataDictionary.Constants.State state)
+        public StateTreeNode AddState(State state)
         {
             Item.StateMachine.appendStates(state);
             StateTreeNode retVal = new StateTreeNode(state, true);

@@ -13,9 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.Collections.Generic;
-using DataDictionary.Interpreter;
 
+using System.Collections.Generic;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using DataDictionary.Variables;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -42,13 +45,13 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public AddIncrement(EFSSystem efsSystem)
             : base(efsSystem, "AddIncrement")
         {
-            Function = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Function = (Parameter) acceptor.getFactory().createParameter();
             Function.Name = "Function";
             Function.Type = EFSSystem.AnyType;
             Function.setFather(this);
             FormalParameters.Add(Function);
 
-            Increment = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Increment = (Parameter) acceptor.getFactory().createParameter();
             Increment.Name = "Increment";
             Increment.Type = EFSSystem.AnyType;
             Increment.setFather(this);
@@ -61,7 +64,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="root">The element on which the errors should be reported</param>
         /// <param name="context">The evaluation context</param>
         /// <param name="actualParameters">The parameters applied to this function call</param>
-        public override void additionalChecks(ModelElement root, Interpreter.InterpretationContext context, Dictionary<string, Interpreter.Expression> actualParameters)
+        public override void additionalChecks(ModelElement root, InterpretationContext context, Dictionary<string, Expression> actualParameters)
         {
             CheckFunctionalParameter(root, context, actualParameters[Function.Name], 1);
             CheckFunctionalParameter(root, context, actualParameters[Increment.Name], 1);
@@ -74,7 +77,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="parameter"></param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public override Graph createGraph(Interpreter.InterpretationContext context, Parameter parameter, ExplanationPart explain)
+        public override Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
             Graph retVal = null;
 
@@ -84,7 +87,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
             if (function != null)
             {
                 int token = context.LocalScope.PushContext();
-                Parameter p = (Parameter)function.FormalParameters[0];
+                Parameter p = (Parameter) function.FormalParameters[0];
                 context.LocalScope.setGraphParameter(p);
                 graph = createGraphForValue(context, function, explain, p);
                 context.LocalScope.PopContext(token);
@@ -112,17 +115,17 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="localScope">the values of local variables</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             int token = context.LocalScope.PushContext();
             AssignParameters(context, actuals);
 
-            Function function = (Function)Generated.acceptor.getFactory().createFunction();
+            Function function = (Function) acceptor.getFactory().createFunction();
             function.Name = "AddIncrement ( Function => " + getName(Function) + ", Value => " + getName(Increment) + ")";
             function.Enclosing = EFSSystem;
-            Parameter parameter = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Parameter parameter = (Parameter) acceptor.getFactory().createParameter();
             parameter.Name = "X";
             parameter.Type = EFSSystem.DoubleType;
             function.appendParameters(parameter);

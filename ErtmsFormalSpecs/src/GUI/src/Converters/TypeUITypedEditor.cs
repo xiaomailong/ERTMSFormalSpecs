@@ -13,19 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.ComponentModel;
+using System.Drawing.Design;
+using System.Windows.Forms.Design;
+using DataDictionary;
+using DataDictionary.Types;
+using GUI.EditorView;
+using WeifenLuo.WinFormsUI.Docking;
+
 namespace GUI.Converters
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Drawing.Design;
-    using System.ComponentModel;
-    using System.Windows.Forms.Design;
-    using DataDictionary;
-    using System.Windows.Forms;
-    using GUI.EditorView;
-
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
@@ -43,7 +42,7 @@ namespace GUI.Converters
         /// <param name="value"></param>
         private void HandleTextChange(ModelElement instance, string value)
         {
-            DataDictionary.Types.ITypedElement typedElement = instance as DataDictionary.Types.ITypedElement;
+            ITypedElement typedElement = instance as ITypedElement;
 
             if (typedElement != null)
             {
@@ -51,20 +50,20 @@ namespace GUI.Converters
             }
         }
 
-        public override object EditValue(ITypeDescriptorContext context, System.IServiceProvider provider, object value)
+        public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
-            IWindowsFormsEditorService svc = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
+            IWindowsFormsEditorService svc = provider.GetService(typeof (IWindowsFormsEditorService)) as IWindowsFormsEditorService;
             if (svc != null)
             {
-                DataDictionary.Types.ITypedElement typedElement = value as DataDictionary.Types.ITypedElement;
+                ITypedElement typedElement = value as ITypedElement;
                 if (typedElement != null)
                 {
-                    EditorView.Window form = new EditorView.Window();
+                    Window form = new Window();
                     form.AutoComplete = true;
                     form.ConsiderOnlyTypes = true;
                     TypeTextChangeHandler handler = new TypeTextChangeHandler(typedElement as ModelElement);
                     form.setChangeHandler(handler);
-                    GUIUtils.MDIWindow.AddChildWindow(form, WeifenLuo.WinFormsUI.Docking.DockAreas.Float);
+                    GUIUtils.MDIWindow.AddChildWindow(form, DockAreas.Float);
                 }
             }
 

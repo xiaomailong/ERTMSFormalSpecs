@@ -13,28 +13,34 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using DataDictionary;
-using DataDictionary.Constants;
-using DataDictionary.Types;
-using GUI.BoxArrowDiagram;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
 using DataDictionary.Rules;
 using DataDictionary.Variables;
+using GUI.BoxArrowDiagram;
+using GUI.DataDictionaryView;
 using Utils;
-using DataDictionary.Interpreter;
+using Action = DataDictionary.Rules.Action;
+using Rule = DataDictionary.Rules.Rule;
+using RuleCondition = DataDictionary.Rules.RuleCondition;
+using State = DataDictionary.Constants.State;
+using StateMachine = DataDictionary.Types.StateMachine;
 
 namespace GUI.StateDiagram
 {
     public class StatePanel : BoxArrowPanel<State, Transition>
     {
-        private System.Windows.Forms.ToolStripMenuItem addStateMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addTransitionMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
-        private System.Windows.Forms.ToolStripMenuItem deleteMenuItem;
+        private ToolStripMenuItem addStateMenuItem;
+        private ToolStripMenuItem addTransitionMenuItem;
+        private ToolStripSeparator toolStripSeparator;
+        private ToolStripMenuItem deleteMenuItem;
 
         /// <summary>
         /// Initializes the start menu
@@ -43,42 +49,44 @@ namespace GUI.StateDiagram
         {
             base.InitializeStartMenu();
 
-            addStateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            addTransitionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            deleteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            addStateMenuItem = new ToolStripMenuItem();
+            addTransitionMenuItem = new ToolStripMenuItem();
+            toolStripSeparator = new ToolStripSeparator();
+            deleteMenuItem = new ToolStripMenuItem();
             // 
             // addStateMenuItem
             // 
             addStateMenuItem.Name = "addStateMenuItem";
-            addStateMenuItem.Size = new System.Drawing.Size(161, 22);
+            addStateMenuItem.Size = new Size(161, 22);
             addStateMenuItem.Text = "Add State";
-            addStateMenuItem.Click += new System.EventHandler(addBoxMenuItem_Click);
+            addStateMenuItem.Click += new EventHandler(addBoxMenuItem_Click);
             // 
             // addTransitionMenuItem
             // 
             addTransitionMenuItem.Name = "addTransitionMenuItem";
-            addTransitionMenuItem.Size = new System.Drawing.Size(161, 22);
+            addTransitionMenuItem.Size = new Size(161, 22);
             addTransitionMenuItem.Text = "Add transition";
-            addTransitionMenuItem.Click += new System.EventHandler(addArrowMenuItem_Click);
+            addTransitionMenuItem.Click += new EventHandler(addArrowMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator.Name = "toolStripSeparator1";
-            toolStripSeparator.Size = new System.Drawing.Size(158, 6);
+            toolStripSeparator.Size = new Size(158, 6);
             // 
             // toolStripMenuItem1
             // 
             deleteMenuItem.Name = "toolStripMenuItem1";
-            deleteMenuItem.Size = new System.Drawing.Size(153, 22);
+            deleteMenuItem.Size = new Size(153, 22);
             deleteMenuItem.Text = "Delete selected";
-            deleteMenuItem.Click += new System.EventHandler(deleteMenuItem1_Click);
+            deleteMenuItem.Click += new EventHandler(deleteMenuItem1_Click);
 
-            contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            contextMenu.Items.AddRange(new ToolStripItem[]
+            {
                 addStateMenuItem,
                 addTransitionMenuItem,
                 toolStripSeparator,
-                deleteMenuItem});
+                deleteMenuItem
+            });
         }
 
         /// <summary>
@@ -131,7 +139,11 @@ namespace GUI.StateDiagram
         /// <summary>
         /// The state machine displayed by this panel
         /// </summary>
-        public StateMachine StateMachine { get { return Model as StateMachine; } set { Model = value; } }
+        public StateMachine StateMachine
+        {
+            get { return Model as StateMachine; }
+            set { Model = value; }
+        }
 
         /// <summary>
         /// The expressiong required to get the state machine variable (if any) displayed by this panel
@@ -183,12 +195,12 @@ namespace GUI.StateDiagram
 
         private void addBoxMenuItem_Click(object sender, EventArgs e)
         {
-            State state = (State)DataDictionary.Generated.acceptor.getFactory().createState();
+            State state = (State) acceptor.getFactory().createState();
             state.Name = "State" + (StateMachine.States.Count + 1);
 
             if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
             {
-                DataDictionaryView.StateMachineTreeNode node = GUIUtils.MDIWindow.DataDictionaryWindow.FindNode(StateMachine) as DataDictionaryView.StateMachineTreeNode;
+                StateMachineTreeNode node = GUIUtils.MDIWindow.DataDictionaryWindow.FindNode(StateMachine) as StateMachineTreeNode;
                 if (node != null)
                 {
                     node.AddState(state);
@@ -206,21 +218,21 @@ namespace GUI.StateDiagram
         {
             if (StateMachine.States.Count > 1)
             {
-                DataDictionary.ObjectFactory factory = (DataDictionary.ObjectFactory)DataDictionary.Generated.acceptor.getFactory();
-                DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)factory.createRule();
+                ObjectFactory factory = (ObjectFactory) acceptor.getFactory();
+                Rule rule = (Rule) factory.createRule();
                 rule.Name = "Rule" + (StateMachine.Rules.Count + 1);
 
-                DataDictionary.Rules.RuleCondition ruleCondition = (DataDictionary.Rules.RuleCondition)factory.createRuleCondition();
+                RuleCondition ruleCondition = (RuleCondition) factory.createRuleCondition();
                 ruleCondition.Name = "RuleCondition" + (rule.RuleConditions.Count + 1);
                 rule.appendConditions(ruleCondition);
 
-                DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)factory.createAction();
-                action.ExpressionText = "THIS <- " + ((State)StateMachine.States[1]).LiteralName;
+                Action action = (Action) factory.createAction();
+                action.ExpressionText = "THIS <- " + ((State) StateMachine.States[1]).LiteralName;
                 ruleCondition.appendActions(action);
 
                 if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
                 {
-                    DataDictionaryView.StateTreeNode stateNode = GUIUtils.MDIWindow.DataDictionaryWindow.FindNode((State)StateMachine.States[0]) as DataDictionaryView.StateTreeNode;
+                    StateTreeNode stateNode = GUIUtils.MDIWindow.DataDictionaryWindow.FindNode((State) StateMachine.States[0]) as StateTreeNode;
                     if (stateNode != null)
                     {
                         if (!stateNode.SubNodesBuilt)
@@ -228,7 +240,7 @@ namespace GUI.StateDiagram
                             stateNode.BuildSubNodes(false);
                             stateNode.UpdateColor();
                         }
-                        DataDictionaryView.RuleTreeNode ruleNode = stateNode.Rules.AddRule(rule);
+                        RuleTreeNode ruleNode = stateNode.Rules.AddRule(rule);
                     }
                 }
 
@@ -261,7 +273,6 @@ namespace GUI.StateDiagram
                 {
                     model = ruleCondition;
                 }
-
             }
 
             if (GUIUtils.MDIWindow.DataDictionaryWindow != null)

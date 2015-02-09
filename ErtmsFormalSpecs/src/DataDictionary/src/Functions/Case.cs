@@ -13,10 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
+using System.Collections;
 using System.Collections.Generic;
 using DataDictionary.Interpreter;
 using DataDictionary.Rules;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Utils;
 
 namespace DataDictionary.Functions
 {
@@ -36,13 +41,13 @@ namespace DataDictionary.Functions
         /// <summary>
         /// Pre-conditions of the case
         /// </summary>
-        public System.Collections.ArrayList PreConditions
+        public ArrayList PreConditions
         {
             get
             {
-                System.Collections.ArrayList retVal = allPreConditions();
+                ArrayList retVal = allPreConditions();
                 if (retVal == null)
-                    retVal = new System.Collections.ArrayList();
+                    retVal = new ArrayList();
                 return retVal;
             }
             set { this.setAllPreConditions(value); }
@@ -84,7 +89,10 @@ namespace DataDictionary.Functions
             set { expression = value; }
         }
 
-        public Interpreter.InterpreterTreeNode Tree { get { return Expression; } }
+        public InterpreterTreeNode Tree
+        {
+            get { return Expression; }
+        }
 
 
         /// <summary>
@@ -98,7 +106,7 @@ namespace DataDictionary.Functions
         /// <summary>
         /// Creates the tree according to the expression text
         /// </summary>
-        public Interpreter.InterpreterTreeNode Compile()
+        public InterpreterTreeNode Compile()
         {
             // Side effect, builds the statement if it is not already built
             return Tree;
@@ -122,12 +130,9 @@ namespace DataDictionary.Functions
         /// <summary>
         /// The enclosing collection of the parameter
         /// </summary>
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
-            get
-            {
-                return Utils.EnclosingFinder<Functions.Function>.find(this).Cases;
-            }
+            get { return EnclosingFinder<Function>.find(this).Cases; }
         }
 
         /// <summary>
@@ -138,10 +143,10 @@ namespace DataDictionary.Functions
         public bool EvaluatePreConditions(InterpretationContext context, ExplanationPart explain)
         {
             bool retVal = true;
-            foreach (DataDictionary.Rules.PreCondition preCondition in PreConditions)
+            foreach (PreCondition preCondition in PreConditions)
             {
-                Interpreter.Expression expression = preCondition.Expression;
-                Values.BoolValue value = expression.GetValue(context, explain) as Values.BoolValue;
+                Expression expression = preCondition.Expression;
+                BoolValue value = expression.GetValue(context, explain) as BoolValue;
 
                 if (value != null)
                 {
@@ -170,9 +175,9 @@ namespace DataDictionary.Functions
             string retVal = "";
             if (PreConditions.Count > 0)
             {
-                retVal = retVal  + " {\\b IF }";
+                retVal = retVal + " {\\b IF }";
                 bool first = true;
-                foreach (Rules.PreCondition preCondition in PreConditions)
+                foreach (PreCondition preCondition in PreConditions)
                 {
                     if (first)
                     {
@@ -200,7 +205,6 @@ namespace DataDictionary.Functions
         /// <summary>
         /// Provides an explanation of the rule's behaviour
         /// </summary>
-
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
         public string getExplain(bool explainSubElements)
@@ -214,10 +218,10 @@ namespace DataDictionary.Functions
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             {
-                Rules.PreCondition item = element as Rules.PreCondition;
+                PreCondition item = element as PreCondition;
                 if (item != null)
                 {
                     appendPreConditions(item);
@@ -226,7 +230,7 @@ namespace DataDictionary.Functions
         }
 
 
-        public bool Read(Types.ITypedElement variable)
+        public bool Read(ITypedElement variable)
         {
             bool retVal = false;
 
@@ -241,7 +245,7 @@ namespace DataDictionary.Functions
 
             if (!retVal && Expression != null)
             {
-                foreach (Variables.IVariable var in Expression.GetVariables())
+                foreach (IVariable var in Expression.GetVariables())
                 {
                     if (var == variable)
                     {
@@ -254,9 +258,9 @@ namespace DataDictionary.Functions
             return retVal;
         }
 
-        public List<Values.IValue> GetLiterals()
+        public List<IValue> GetLiterals()
         {
-            List<Values.IValue> retVal = new List<Values.IValue>();
+            List<IValue> retVal = new List<IValue>();
 
             foreach (PreCondition preCondition in PreConditions)
             {
@@ -282,6 +286,5 @@ namespace DataDictionary.Functions
             get { return getComment(); }
             set { setComment(value); }
         }
-
     }
 }

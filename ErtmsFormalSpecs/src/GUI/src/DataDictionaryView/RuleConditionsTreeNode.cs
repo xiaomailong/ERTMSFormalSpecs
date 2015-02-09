@@ -13,13 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.SpecificationView;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using ReqRef = DataDictionary.ReqRef;
+using Rule = DataDictionary.Rules.Rule;
+using RuleCondition = DataDictionary.Rules.RuleCondition;
 
 namespace GUI.DataDictionaryView
 {
-    public class RuleConditionsTreeNode : ModelElementTreeNode<DataDictionary.Rules.Rule>
+    public class RuleConditionsTreeNode : ModelElementTreeNode<Rule>
     {
         private class ItemEditor : NamedEditor
         {
@@ -36,7 +43,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public RuleConditionsTreeNode(DataDictionary.Rules.Rule item, bool buildSubNodes)
+        public RuleConditionsTreeNode(Rule item, bool buildSubNodes)
             : base(item, buildSubNodes, "Conditions", true)
         {
         }
@@ -49,7 +56,7 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Rules.RuleCondition ruleCondition in Item.RuleConditions)
+            foreach (RuleCondition ruleCondition in Item.RuleConditions)
             {
                 Nodes.Add(new RuleConditionTreeNode(ruleCondition, buildSubNodes));
             }
@@ -75,19 +82,19 @@ namespace GUI.DataDictionaryView
             if (SourceNode is RuleConditionTreeNode)
             {
                 RuleConditionTreeNode node = SourceNode as RuleConditionTreeNode;
-                DataDictionary.Rules.RuleCondition ruleCondition = node.Item;
+                RuleCondition ruleCondition = node.Item;
                 node.Delete();
                 AddRuleCondition(ruleCondition);
             }
-            else if (SourceNode is SpecificationView.ParagraphTreeNode)
+            else if (SourceNode is ParagraphTreeNode)
             {
-                SpecificationView.ParagraphTreeNode node = SourceNode as SpecificationView.ParagraphTreeNode;
-                DataDictionary.Specification.Paragraph paragaph = node.Item;
+                ParagraphTreeNode node = SourceNode as ParagraphTreeNode;
+                Paragraph paragaph = node.Item;
 
-                DataDictionary.Rules.RuleCondition ruleCondition = (DataDictionary.Rules.RuleCondition)DataDictionary.Generated.acceptor.getFactory().createRuleCondition();
+                RuleCondition ruleCondition = (RuleCondition) acceptor.getFactory().createRuleCondition();
                 ruleCondition.Name = paragaph.Name;
 
-                DataDictionary.ReqRef reqRef = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
+                ReqRef reqRef = (ReqRef) acceptor.getFactory().createReqRef();
                 reqRef.Name = paragaph.FullId;
                 ruleCondition.appendRequirements(reqRef);
                 AddRuleCondition(ruleCondition);
@@ -96,7 +103,7 @@ namespace GUI.DataDictionaryView
 
         private void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Rules.RuleCondition rule = (DataDictionary.Rules.RuleCondition)DataDictionary.Generated.acceptor.getFactory().createRuleCondition();
+            RuleCondition rule = (RuleCondition) acceptor.getFactory().createRuleCondition();
             if (Item.RuleConditions.Count == 0)
             {
                 rule.Name = Item.Name;
@@ -112,10 +119,10 @@ namespace GUI.DataDictionaryView
         /// Adds a new rule to the model
         /// </summary>
         /// <param name="ruleCondition"></param>
-        public void AddRuleCondition(DataDictionary.Rules.RuleCondition ruleCondition)
+        public void AddRuleCondition(RuleCondition ruleCondition)
         {
             Item.appendConditions(ruleCondition);
-            Nodes.Add(new DataDictionaryView.RuleConditionTreeNode(ruleCondition, true));
+            Nodes.Add(new RuleConditionTreeNode(ruleCondition, true));
         }
 
         /// <summary>

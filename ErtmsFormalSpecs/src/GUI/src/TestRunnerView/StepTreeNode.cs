@@ -13,22 +13,28 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
-using System.Drawing.Design;
-using DataDictionary.Tests;
-using DataDictionary.Tests.Translations;
 using DataDictionary;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
-using DataDictionary.Specification;
-using GUI.TranslationRules;
+using DataDictionary.Tests.Runner;
+using DataDictionary.Values;
+using GUI.LongOperations;
+using Utils;
 using WeifenLuo.WinFormsUI.Docking;
+using DBMessage = DataDictionary.Tests.DBElements.DBMessage;
+using Step = DataDictionary.Tests.Step;
+using SubStep = DataDictionary.Tests.SubStep;
+using Translation = DataDictionary.Tests.Translations.Translation;
+using TranslationDictionary = DataDictionary.Tests.Translations.TranslationDictionary;
 
 namespace GUI.TestRunnerView
 {
-    public class StepTreeNode : ReferencesParagraphTreeNode<DataDictionary.Tests.Step>
+    public class StepTreeNode : ReferencesParagraphTreeNode<Step>
     {
         /// <summary>
         /// The value editor
@@ -96,7 +102,7 @@ namespace GUI.TestRunnerView
             /// The step I/O mode
             /// </summary>
             [Category("Subset76")]
-            public DataDictionary.Generated.acceptor.ST_IO InputOutput
+            public acceptor.ST_IO InputOutput
             {
                 get { return Item.getIO(); }
                 set { Item.setIO(value); }
@@ -106,7 +112,7 @@ namespace GUI.TestRunnerView
             /// The step Interface
             /// </summary>
             [Category("Subset76")]
-            public DataDictionary.Generated.acceptor.ST_INTERFACE Interface
+            public acceptor.ST_INTERFACE Interface
             {
                 get { return Item.getInterface(); }
                 set { Item.setInterface(value); }
@@ -116,7 +122,7 @@ namespace GUI.TestRunnerView
             /// The step level in
             /// </summary>
             [Category("Subset76")]
-            public DataDictionary.Generated.acceptor.ST_LEVEL TestLevelIn
+            public acceptor.ST_LEVEL TestLevelIn
             {
                 get { return Item.getLevelIN(); }
                 set { Item.setLevelIN(value); }
@@ -126,7 +132,7 @@ namespace GUI.TestRunnerView
             /// The step level out
             /// </summary>
             [Category("Subset76")]
-            public DataDictionary.Generated.acceptor.ST_LEVEL TestLevelOut
+            public acceptor.ST_LEVEL TestLevelOut
             {
                 get { return Item.getLevelOUT(); }
                 set { Item.setLevelOUT(value); }
@@ -136,7 +142,7 @@ namespace GUI.TestRunnerView
             /// The step mode in
             /// </summary>
             [Category("Subset76")]
-            public DataDictionary.Generated.acceptor.ST_MODE TestModeIn
+            public acceptor.ST_MODE TestModeIn
             {
                 get { return Item.getModeIN(); }
                 set { Item.setModeIN(value); }
@@ -146,7 +152,7 @@ namespace GUI.TestRunnerView
             /// The step mode out
             /// </summary>
             [Category("Subset76")]
-            public DataDictionary.Generated.acceptor.ST_MODE TestModeOut
+            public acceptor.ST_MODE TestModeOut
             {
                 get { return Item.getModeOUT(); }
                 set { Item.setModeOUT(value); }
@@ -187,7 +193,7 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public StepTreeNode(DataDictionary.Tests.Step item, bool buildSubNodes)
+        public StepTreeNode(Step item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }
@@ -200,7 +206,7 @@ namespace GUI.TestRunnerView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Tests.SubStep subStep in Item.SubSteps)
+            foreach (SubStep subStep in Item.SubSteps)
             {
                 Nodes.Add(new SubStepTreeNode(subStep, buildSubNodes));
             }
@@ -225,7 +231,7 @@ namespace GUI.TestRunnerView
             string messageExpression = "[";
 
             bool first = true;
-            foreach (DataDictionary.Tests.DBElements.DBMessage message in Item.StepMessages)
+            foreach (DBMessage message in Item.StepMessages)
             {
                 if (!first)
                 {
@@ -241,7 +247,7 @@ namespace GUI.TestRunnerView
             messageExpression += "]";
 
             Expression expression = EFSSystem.INSTANCE.Parser.Expression(Item.Dictionary, messageExpression);
-            DataDictionary.Values.IValue value = expression.GetValue(new InterpretationContext(), null);
+            IValue value = expression.GetValue(new InterpretationContext(), null);
 
             StructureValueEditor.Window editor = new StructureValueEditor.Window();
             editor.SetModel(value);
@@ -297,7 +303,7 @@ namespace GUI.TestRunnerView
         /// <param name="args"></param>
         public void TranslateHandler(object sender, EventArgs args)
         {
-            Utils.FinderRepository.INSTANCE.ClearCache();
+            FinderRepository.INSTANCE.ClearCache();
             Item.Translate(Item.Dictionary.TranslationDictionary);
             GUIUtils.MDIWindow.RefreshModel();
         }
@@ -321,7 +327,7 @@ namespace GUI.TestRunnerView
         /// <param name="args"></param>
         public void AddSubStepHandler(object sender, EventArgs args)
         {
-            DataDictionary.Tests.SubStep subStep = (DataDictionary.Tests.SubStep)DataDictionary.Generated.acceptor.getFactory().createSubStep();
+            SubStep subStep = (SubStep) acceptor.getFactory().createSubStep();
             subStep.Name = "Sub-step" + (Nodes.Count + 1);
             subStep.Enclosing = Item;
             createSubStep(subStep);
@@ -332,7 +338,7 @@ namespace GUI.TestRunnerView
         /// </summary>
         /// <param name="testCase"></param>
         /// <returns></returns>
-        public SubStepTreeNode createSubStep(DataDictionary.Tests.SubStep subStep)
+        public SubStepTreeNode createSubStep(SubStep subStep)
         {
             SubStepTreeNode retVal = new SubStepTreeNode(subStep, true);
 
@@ -342,7 +348,7 @@ namespace GUI.TestRunnerView
             return retVal;
         }
 
-        private class ExecuteTestsHandler : LongOperations.BaseLongOperation
+        private class ExecuteTestsHandler : BaseLongOperation
         {
             /// <summary>
             /// The window for which theses tests should be executed
@@ -380,10 +386,10 @@ namespace GUI.TestRunnerView
                 if (Window != null)
                 {
                     Window.setSubSequence(Step.SubSequence);
-                    DataDictionary.Tests.Runner.Runner runner = Window.getRunner(Step.SubSequence);
+                    Runner runner = Window.getRunner(Step.SubSequence);
 
                     runner.RunUntilStep(Step);
-                    foreach (DataDictionary.Tests.SubStep subStep in Step.SubSteps)
+                    foreach (SubStep subStep in Step.SubSteps)
                     {
                         runner.SetupSubStep(subStep);
                         if (!subStep.getSkipEngine())

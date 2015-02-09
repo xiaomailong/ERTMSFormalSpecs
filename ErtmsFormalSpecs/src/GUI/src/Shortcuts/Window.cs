@@ -13,8 +13,10 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Windows.Forms;
-using System.Collections.Generic;
+using DataDictionary;
+using Utils;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.Shortcuts
@@ -31,10 +33,10 @@ namespace GUI.Shortcuts
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
 
             Visible = false;
-            shortcutTreeView.Root = DataDictionary.EFSSystem.INSTANCE;
+            shortcutTreeView.Root = EFSSystem.INSTANCE;
             Text = "Shortcuts view";
 
-            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight;
+            DockAreas = DockAreas.DockRight;
             Refresh();
         }
 
@@ -43,7 +45,7 @@ namespace GUI.Shortcuts
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Window_FormClosed(object sender, FormClosedEventArgs e)
+        private void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
             GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
@@ -65,11 +67,11 @@ namespace GUI.Shortcuts
         /// <summary>
         /// Provides the model element currently selected in this IBaseForm
         /// </summary>
-        public override Utils.IModelElement Selected
+        public override IModelElement Selected
         {
             get
             {
-                Utils.IModelElement retVal = null;
+                IModelElement retVal = null;
 
                 if (TreeView != null && TreeView.Selected != null)
                 {

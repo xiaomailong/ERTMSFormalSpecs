@@ -21,11 +21,13 @@
  ********************************************************************************/
 
 using System;
+
 /**@brief International System of Units encapsulation. */
+
 namespace ErtmsSolutions.SiUnits
 {
-
     /**@brief List of possible representations of a SiTime */
+
     public enum SiTime_SubUnits
     {
         Second, // Symbol : 's', Factor : 1.0
@@ -35,6 +37,7 @@ namespace ErtmsSolutions.SiUnits
     }
 
     /**@brief Represents a time expressed in number of seconds */
+
     public struct SiTime : ISiUnit<SiTime>
     {
         /****************** private members and functions ***************/
@@ -45,41 +48,36 @@ namespace ErtmsSolutions.SiUnits
         private static double the_epsilon = 0.0001;
 
         /**@brief The minimum difference between two SiTime objects. */
+
         public static double Epsilon
         {
-            get
-            {
-                return the_epsilon;
-            }
-            set
-            {
-                the_epsilon = value;
-            }
+            get { return the_epsilon; }
+            set { the_epsilon = value; }
         }
 
         /****************** constructors ******************************/
         /**@brief A constructor where the value unit's is specified. */
         /**@param "x" The internal value is assigned to it. It is assumed x is times */
         /**@param "SubUnit" The units in wich 'x' is expressed. */
+
         public SiTime(double x, SiTime_SubUnits SubUnit)
         {
             this.the_value = 0.0;
-            this.the_value = x / SubUnitFactor(SubUnit);
+            this.the_value = x/SubUnitFactor(SubUnit);
         }
 
         /**@brief A constructor where the default unit is assumed. */
+
         public SiTime(double x)
             : this(x, SiTime_SubUnits.Second)
         {
         }
 
         /**@brief Returns the value as a double. */
+
         public double Value
         {
-            get
-            {
-                return this.the_value;
-            }
+            get { return this.the_value; }
         }
 
         /****************** Constants *********************************/
@@ -96,6 +94,7 @@ namespace ErtmsSolutions.SiUnits
         public static readonly SiTime MaxValue = new SiTime(double.MaxValue);
 
         /****************** functions ***********************************/
+
         public bool Equals(SiTime obj)
         {
             return (this == obj);
@@ -103,7 +102,7 @@ namespace ErtmsSolutions.SiUnits
 
         public override bool Equals(object obj)
         {
-            return (obj.GetType() != this.GetType()) ? false : this.Equals((SiTime)obj);
+            return (obj.GetType() != this.GetType()) ? false : this.Equals((SiTime) obj);
         }
 
         public override int GetHashCode()
@@ -113,12 +112,12 @@ namespace ErtmsSolutions.SiUnits
 
         public static SiTime Min(SiTime a, SiTime b)
         {
-            return SiTime.One * Math.Min(a.Value, b.Value);
+            return One*Math.Min(a.Value, b.Value);
         }
 
         public static SiTime Max(SiTime a, SiTime b)
         {
-            return SiTime.One * Math.Max(a.Value, b.Value);
+            return One*Math.Max(a.Value, b.Value);
         }
 
         public bool IsLessOrEqualThan(SiTime other)
@@ -143,12 +142,12 @@ namespace ErtmsSolutions.SiUnits
 
         public SiTime Min(SiTime other)
         {
-            return SiTime.Min(this, other);
+            return Min(this, other);
         }
 
         public SiTime Max(SiTime other)
         {
-            return SiTime.Max(this, other);
+            return Max(this, other);
         }
 
         /****************** operators ***********************************/
@@ -156,6 +155,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first time. */
         /**@param "b" The second time. */
         /**@return 'true' if a.Value and b.Value differ less than Epsilon. Otherwise, 'else' is returned */
+
         public static bool operator ==(SiTime a, SiTime b)
         {
             return (Math.Abs(a.the_value - b.the_value) < the_epsilon);
@@ -165,6 +165,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first time. */
         /**@param "b" The second time. */
         /**@return 'true' if a.Value and b.Value differ more than Epsilon. Otherwise, 'else' is returned */
+
         public static bool operator !=(SiTime a, SiTime b)
         {
             return (!(a == b));
@@ -174,6 +175,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first time. */
         /**@param "b" The second time. */
         /**@return 'true' if a.Value is less or equal than b.Value. Otherwise, 'else' is returned */
+
         public static bool operator <=(SiTime a, SiTime b)
         {
             return (a.the_value <= b.the_value);
@@ -183,6 +185,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first time. */
         /**@param "b" The second time. */
         /**@return 'true' if a.Value is greater or equal than b.Value. Otherwise, 'else' is returned */
+
         public static bool operator >=(SiTime a, SiTime b)
         {
             return (a.the_value >= b.the_value);
@@ -192,6 +195,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first time. */
         /**@param "b" The second time. */
         /**@return 'true' if a.Value is less than b.Value. Otherwise, 'else' is returned */
+
         public static bool operator <(SiTime a, SiTime b)
         {
             return (a.the_value < b.the_value);
@@ -201,6 +205,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first time. */
         /**@param "b" The second time. */
         /**@return 'true' if a.Value is bigger than b.Value. Otherwise, 'else' is returned */
+
         public static bool operator >(SiTime a, SiTime b)
         {
             return (a.the_value > b.the_value);
@@ -210,6 +215,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first term of the sum. */
         /**@param "b" The second term of the sum. */
         /**@return The sum of a.Value and b.Value as a new SiTime object */
+
         public static SiTime operator +(SiTime a, SiTime b)
         {
             return new SiTime(a.the_value + b.the_value);
@@ -219,6 +225,7 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The first term of the difference. */
         /**@param "b" The second term of the difference. */
         /**@return The difference of (a.Value - b.Value) as a new SiTime object */
+
         public static SiTime operator -(SiTime a, SiTime b)
         {
             return new SiTime(a.the_value - b.the_value);
@@ -228,36 +235,40 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" The numerator of the ratio. */
         /**@param "b" The denominator of the ratio. */
         /**@return The ratio (a.Value / b.Value) as a double. */
+
         public static double operator /(SiTime a, SiTime b)
         {
-            return (a.the_value / b.the_value);
+            return (a.the_value/b.the_value);
         }
 
         /**@brief Multiplies by a scalar (dimensionless) */
         /**@param "a" A SiTime object. */
         /**@param "b" The scalar multiplier. */
         /**@return The value (a.Value * b) as a new .SiTime object */
+
         public static SiTime operator *(SiTime a, double b)
         {
-            return new SiTime(a.the_value * b);
+            return new SiTime(a.the_value*b);
         }
 
         /**@brief Multiplies by a scalar (dimensionless) */
         /**@param "a" The scalar multiplier. */
         /**@param "b" A SiTime object. */
         /**@return The value (a.Value * b) as a new .SiTime object */
+
         public static SiTime operator *(double a, SiTime b)
         {
-            return new SiTime(a * b.the_value);
+            return new SiTime(a*b.the_value);
         }
 
         /**@brief Divides by a scalar (dimensionless) */
         /**@param "a" A SiTime object. */
         /**@param "b" The scalar divisor. */
         /**@return The value (a.Value / b) as a new .SiTime object */
+
         public static SiTime operator /(SiTime a, double b)
         {
-            return new SiTime(a.the_value / b);
+            return new SiTime(a.the_value/b);
         }
 
         /****************** operators for other classes *****************/
@@ -265,22 +276,25 @@ namespace ErtmsSolutions.SiUnits
         /**@param "a" A time. */
         /**@param "b" A speed. */
         /**@return a.Value '* b.Value as a distance. */
+
         public static SiDistance operator *(SiTime a, SiSpeed b)
         {
-            return new SiDistance(a.Value * b.Value);
+            return new SiDistance(a.Value*b.Value);
         }
 
         /**@brief Computes a(time) '*' b(acceleration) and returns a speed. */
         /**@param "a" A time. */
         /**@param "b" A acceleration. */
         /**@return a.Value '* b.Value as a speed. */
+
         public static SiSpeed operator *(SiTime a, SiAcceleration b)
         {
-            return new SiSpeed(a.Value * b.Value);
+            return new SiSpeed(a.Value*b.Value);
         }
 
         /****************************************************************/
         /******************************************************************/
+
         public string SubUnitString(SiTime_SubUnits SubUnit)
         {
             string sub_unit_name = "";
@@ -303,6 +317,7 @@ namespace ErtmsSolutions.SiUnits
         }
 
         /******************************************************************/
+
         public double SubUnitFactor(SiTime_SubUnits SubUnit)
         {
             double factor = 1.0;
@@ -312,10 +327,10 @@ namespace ErtmsSolutions.SiUnits
                     factor = 1.0;
                     break;
                 case SiTime_SubUnits.Minute:
-                    factor = 1.0 / 60.0;
+                    factor = 1.0/60.0;
                     break;
                 case SiTime_SubUnits.Hour:
-                    factor = 1.0 / 3600.0;
+                    factor = 1.0/3600.0;
                     break;
                 case SiTime_SubUnits.Millisecond:
                     factor = 1000.0;
@@ -325,21 +340,25 @@ namespace ErtmsSolutions.SiUnits
         }
 
         /**@brief Returns the value converted to the selected units. */
+
         public double ToSubUnits(SiTime_SubUnits SubUnit)
         {
-            return this.Value * SubUnitFactor(SubUnit);
+            return this.Value*SubUnitFactor(SubUnit);
         }
+
         /**@brief Returns the value converted to the default units. */
+
         public double ToUnits()
         {
             return ToSubUnits(SiTime_SubUnits.Second);
         }
+
         /**@brief Returns the value converted to the default units. */
+
         public string UnitString()
         {
             return SubUnitString(SiTime_SubUnits.Second);
         }
-
     } /* End of 'SiTime' class.*/
 } /* End of 'ErtmsSolutions.SiUnits' name space. */
 

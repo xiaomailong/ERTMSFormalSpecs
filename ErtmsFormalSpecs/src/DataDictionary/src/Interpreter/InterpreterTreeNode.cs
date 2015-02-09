@@ -14,18 +14,18 @@
 // --
 // ------------------------------------------------------------------------------
 
-using System;
-using DataDictionary.Functions;
+using System.Reflection;
+using log4net;
 using Utils;
-using System.Collections.Generic;
+
 namespace DataDictionary.Interpreter
 {
-    public class InterpreterTreeNode : Utils.INamable
+    public class InterpreterTreeNode : INamable
     {
         /// <summary>
         /// Some logging facility
         /// </summary>
-        static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// The root element for which this interpreter tree node is created and interpreted
@@ -73,18 +73,32 @@ namespace DataDictionary.Interpreter
             End = end;
         }
 
-        public string Name { get { return ToString(); } set { } }
-        public string FullName { get { return Name; } }
+        public string Name
+        {
+            get { return ToString(); }
+            set { }
+        }
+
+        public string FullName
+        {
+            get { return Name; }
+        }
 
         /// <summary>
         /// The EFS System for which this interpreter tree node is created
         /// </summary>
-        public EFSSystem EFSSystem { get { return Root.EFSSystem; } }
+        public EFSSystem EFSSystem
+        {
+            get { return Root.EFSSystem; }
+        }
 
         /// <summary>
         /// The Dictionary for which this interpreter tree node is created
         /// </summary>
-        public Dictionary Dictionary { get { return Root.Dictionary; } }
+        public Dictionary Dictionary
+        {
+            get { return Root.Dictionary; }
+        }
 
         /// <summary>
         /// Adds an error message to the root element

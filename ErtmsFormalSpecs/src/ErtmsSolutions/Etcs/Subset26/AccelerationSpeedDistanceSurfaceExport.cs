@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using ErtmsSolutions.SiUnits;
 
@@ -20,9 +21,11 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 {
     /**@brief GnuPlot requires that surface data is sorted. 
       This utility class presents the data in a way that satisfies GnuPlot */
+
     public static class AccelerationSpeedDistanceSurfaceExport
     {
         /******************************************************************************************************/
+
         public class SurfaceTripple
         {
             public SiDistance D;
@@ -65,6 +68,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /******************************************************************************************************/
+
         public static List<SurfaceTripple> Collect_And_Sort_Surface(AccelerationSpeedDistanceSurface A_V_D)
         {
             List<SurfaceTripple> Tripples = new List<SurfaceTripple>();
@@ -85,8 +89,5 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
             return Tripples;
         }
-
     }
 }
-
-

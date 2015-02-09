@@ -13,11 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows.Forms;
-using HistoricalData;
+using GUI.Converters;
+using HistoricalData.Generated;
+using Change = HistoricalData.Change;
 
 namespace GUI.HistoryView
 {
@@ -39,36 +40,51 @@ namespace GUI.HistoryView
             /// <summary>
             /// The commit author
             /// </summary>
-            public string Author { get { return Item.Commit.getCommitter(); } }
+            public string Author
+            {
+                get { return Item.Commit.getCommitter(); }
+            }
 
             /// <summary>
             /// The commit message
             /// </summary>
-            public string Message { get { return Item.Commit.getMessage(); } }
+            public string Message
+            {
+                get { return Item.Commit.getMessage(); }
+            }
 
             /// <summary>
             /// The commit date
             /// </summary>
-            public DateTime Date { get { return Item.Commit.Date; } }
+            public DateTime Date
+            {
+                get { return Item.Commit.Date; }
+            }
 
             /// <summary>
             /// The commit action
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(Converters.ChangeActionConverter))]
-            public HistoricalData.Generated.acceptor.ChangeOperationEnum Action { get { return Item.Action; } }
+            [Category("Description"), TypeConverter(typeof (ChangeActionConverter))]
+            public acceptor.ChangeOperationEnum Action
+            {
+                get { return Item.Action; }
+            }
 
             /// <summary>
             /// The commit field change
             /// </summary>
             [Category("Description")]
-            public string Field { get { return Item.Field; } }
+            public string Field
+            {
+                get { return Item.Field; }
+            }
         }
 
         /// <summary>
         /// Instanciates the editor
         /// </summary>
         /// <returns></returns>
-        protected override ModelElementTreeNode<Change>.Editor createEditor()
+        protected override Editor createEditor()
         {
             return new ChangeEditor();
         }
@@ -77,7 +93,7 @@ namespace GUI.HistoryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ChangeTreeNode(HistoricalData.Change item, bool buildSubNodes)
+        public ChangeTreeNode(Change item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }

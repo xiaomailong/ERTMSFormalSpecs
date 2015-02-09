@@ -13,11 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Windows.Forms;
+using DataDictionary;
+using DataDictionary.Compare;
+
 namespace GUI.LongOperations
 {
-    using DataDictionary;
-    using System.Windows.Forms;
-
     public class CompareWithFileOperation : BaseLongOperation
     {
         /// <summary>
@@ -55,9 +57,9 @@ namespace GUI.LongOperations
             // Compare the files
             if (openFileOperation.Dictionary != null)
             {
-                DataDictionary.Compare.VersionDiff versionDiff = new DataDictionary.Compare.VersionDiff();
-                DataDictionary.Compare.Comparer.ensureGuidDictionary(Dictionary, openFileOperation.Dictionary);
-                DataDictionary.Compare.Comparer.compareDictionary(Dictionary, openFileOperation.Dictionary, versionDiff);
+                VersionDiff versionDiff = new VersionDiff();
+                Comparer.ensureGuidDictionary(Dictionary, openFileOperation.Dictionary);
+                Comparer.compareDictionary(Dictionary, openFileOperation.Dictionary, versionDiff);
                 versionDiff.markVersionChanges(Dictionary);
             }
             else

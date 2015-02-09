@@ -14,6 +14,9 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Types;
+using DataDictionary.Values;
+
 namespace DataDictionary.Interpreter.ListOperators
 {
     public class CountExpression : ConditionBasedListExpression
@@ -42,7 +45,7 @@ namespace DataDictionary.Interpreter.ListOperators
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
-        public override Types.Type GetExpressionType()
+        public override Type GetExpressionType()
         {
             return EFSSystem.IntegerType;
         }
@@ -53,14 +56,14 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
+        public override IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
             int count = 0;
-            Values.ListValue value = ListExpression.GetValue(context, explain) as Values.ListValue;
+            ListValue value = ListExpression.GetValue(context, explain) as ListValue;
             if (value != null)
             {
                 int token = PrepareIteration(context);
-                foreach (Values.IValue v in value.Val)
+                foreach (IValue v in value.Val)
                 {
                     if (v != EFSSystem.EmptyValue)
                     {
@@ -77,7 +80,8 @@ namespace DataDictionary.Interpreter.ListOperators
                 EndIteration(context, explain, token);
             }
 
-            return new Values.IntValue(EFSSystem.IntegerType, count); ;
+            return new IntValue(EFSSystem.IntegerType, count);
+            ;
         }
 
         /// <summary>

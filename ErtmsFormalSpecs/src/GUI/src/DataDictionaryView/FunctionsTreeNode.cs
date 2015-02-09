@@ -13,13 +13,21 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary;
+using DataDictionary.Generated;
+using GUI.SpecificationView;
+using Function = DataDictionary.Functions.Function;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using ReqRef = DataDictionary.ReqRef;
 
 namespace GUI.DataDictionaryView
 {
-    public class FunctionsTreeNode : ModelElementTreeNode<DataDictionary.Types.NameSpace>
+    public class FunctionsTreeNode : ModelElementTreeNode<NameSpace>
     {
         private class ItemEditor : NamedEditor
         {
@@ -37,7 +45,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public FunctionsTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+        public FunctionsTreeNode(NameSpace item, bool buildSubNodes)
             : base(item, buildSubNodes, "Functions", true)
         {
         }
@@ -50,7 +58,7 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Functions.Function function in Item.Functions)
+            foreach (Function function in Item.Functions)
             {
                 Nodes.Add(new FunctionTreeNode(function, buildSubNodes));
             }
@@ -71,7 +79,7 @@ namespace GUI.DataDictionaryView
             DataDictionaryTreeView treeView = BaseTreeView as DataDictionaryTreeView;
             if (treeView != null)
             {
-                DataDictionary.Functions.Function function = (DataDictionary.Functions.Function)DataDictionary.Generated.acceptor.getFactory().createFunction();
+                Function function = (Function) acceptor.getFactory().createFunction();
                 function.Name = "<Function" + (GetNodeCount(false) + 1) + ">";
                 AddFunction(function);
             }
@@ -81,7 +89,7 @@ namespace GUI.DataDictionaryView
         /// Adds a new function
         /// </summary>
         /// <param name="function"></param>
-        public FunctionTreeNode AddFunction(DataDictionary.Functions.Function function)
+        public FunctionTreeNode AddFunction(Function function)
         {
             // Ensure that functions always have a type
             if (function.ReturnType == null)
@@ -121,8 +129,8 @@ namespace GUI.DataDictionaryView
             if (SourceNode is FunctionTreeNode)
             {
                 FunctionTreeNode node = SourceNode as FunctionTreeNode;
-                DataDictionary.Functions.Function function = node.Item;
-                DataDictionary.Functions.Function duplFunction = DataDictionary.OverallFunctionFinder.INSTANCE.findByName(function.Dictionary, function.Name);
+                Function function = node.Item;
+                Function duplFunction = OverallFunctionFinder.INSTANCE.findByName(function.Dictionary, function.Name);
                 if (duplFunction != null) // If there is a function with the same name, we must delete it
                 {
                     if (MessageBox.Show("Are you sure you want to move the corresponding function?", "Move action", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -145,15 +153,15 @@ namespace GUI.DataDictionaryView
                     AddFunction(function);
                 }
             }
-            else if (SourceNode is SpecificationView.ParagraphTreeNode)
+            else if (SourceNode is ParagraphTreeNode)
             {
-                SpecificationView.ParagraphTreeNode node = SourceNode as SpecificationView.ParagraphTreeNode;
-                DataDictionary.Specification.Paragraph paragaph = node.Item;
+                ParagraphTreeNode node = SourceNode as ParagraphTreeNode;
+                Paragraph paragaph = node.Item;
 
-                DataDictionary.Functions.Function function = (DataDictionary.Functions.Function)DataDictionary.Generated.acceptor.getFactory().createFunction();
+                Function function = (Function) acceptor.getFactory().createFunction();
                 function.Name = paragaph.Name;
 
-                DataDictionary.ReqRef reqRef = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
+                ReqRef reqRef = (ReqRef) acceptor.getFactory().createReqRef();
                 reqRef.Name = paragaph.FullId;
                 function.appendRequirements(reqRef);
                 AddFunction(function);

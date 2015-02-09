@@ -13,16 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 using DataDictionary;
 using DataDictionary.Functions;
 using DataDictionary.Interpreter;
 using ErtmsSolutions.Etcs.Subset26.BrakingCurves;
 using ErtmsSolutions.SiUnits;
+using GUI.DataDictionaryView;
+using GUI.Shortcuts;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.GraphView
@@ -32,7 +36,7 @@ namespace GUI.GraphView
         /// <summary>
         /// The functions to be displayed in this graph view
         /// </summary>
-        public List<DataDictionary.Functions.Function> Functions { get; set; }
+        public List<Function> Functions { get; set; }
 
         /// <summary>
         /// The bitmap as proposed by gnuplot
@@ -57,31 +61,31 @@ namespace GUI.GraphView
             DragEnter += new DragEventHandler(GraphView_DragEnter);
             DragDrop += new DragEventHandler(GraphView_DragDrop);
 
-            Functions = new List<DataDictionary.Functions.Function>();
+            Functions = new List<Function>();
 
-            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
+            DockAreas = DockAreas.Document;
         }
 
-        void GraphView_DragEnter(object sender, DragEventArgs e)
+        private void GraphView_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
         }
 
-        void GraphView_DragDrop(object sender, DragEventArgs e)
+        private void GraphView_DragDrop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
             {
                 BaseTreeNode sourceNode = e.Data.GetData("WindowsForms10PersistentObject") as BaseTreeNode;
                 if (sourceNode != null)
                 {
-                    DataDictionaryView.FunctionTreeNode functionTreeNode = sourceNode as DataDictionaryView.FunctionTreeNode;
+                    FunctionTreeNode functionTreeNode = sourceNode as FunctionTreeNode;
                     if (functionTreeNode != null)
                     {
                         AddFunction(functionTreeNode.Item, null);
                     }
                     else
                     {
-                        Shortcuts.ShortcutTreeNode shortcutTreeNode = sourceNode as Shortcuts.ShortcutTreeNode;
+                        ShortcutTreeNode shortcutTreeNode = sourceNode as ShortcutTreeNode;
                         if (shortcutTreeNode != null)
                         {
                             AddFunction(shortcutTreeNode.Item.GetReference() as Function, null);
@@ -103,7 +107,7 @@ namespace GUI.GraphView
                 InterpretationContext context = new InterpretationContext(function);
                 if (function.FormalParameters.Count == 1)
                 {
-                    Parameter parameter = (Parameter)function.FormalParameters[0];
+                    Parameter parameter = (Parameter) function.FormalParameters[0];
                     Graph graph = function.createGraph(context, parameter, explain);
                     if (graph != null)
                     {
@@ -132,7 +136,7 @@ namespace GUI.GraphView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void GraphView_SizeChanged(object sender, EventArgs e)
+        private void GraphView_SizeChanged(object sender, EventArgs e)
         {
             if (SizedBitmap != null)
             {
@@ -152,7 +156,7 @@ namespace GUI.GraphView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void GraphView_FormClosed(object sender, FormClosedEventArgs e)
+        private void GraphView_FormClosed(object sender, FormClosedEventArgs e)
         {
             CleanUp();
             GUIUtils.MDIWindow.HandleSubWindowClosed(this);
@@ -202,7 +206,7 @@ namespace GUI.GraphView
         /// <summary>
         /// Colors used to display functions
         /// </summary>
-        private static string[] COLORS = { "blue", "red", "green", "orange", "black", "purple", "yellow" };
+        private static string[] COLORS = {"blue", "red", "green", "orange", "black", "purple", "yellow"};
 
         /// <summary>
         /// Creates the picture associated to this graph
@@ -224,7 +228,7 @@ namespace GUI.GraphView
                 InterpretationContext context = new InterpretationContext(function);
                 if (function.FormalParameters.Count == 1)
                 {
-                    Parameter parameter = (Parameter)function.FormalParameters[0];
+                    Parameter parameter = (Parameter) function.FormalParameters[0];
                     Graph graph = function.createGraph(context, parameter, null);
                     if (graph != null)
                     {
@@ -277,12 +281,12 @@ namespace GUI.GraphView
                     if (graph.IsFlat())
                     {
                         FlatSpeedDistanceCurve curve = graph.FlatSpeedDistanceCurve(expectedEndX);
-                        display.AddCurve(curve, function.FullName, COLORS[i % COLORS.Length]);
+                        display.AddCurve(curve, function.FullName, COLORS[i%COLORS.Length]);
                     }
                     else
                     {
                         QuadraticSpeedDistanceCurve curve = graph.QuadraticSpeedDistanceCurve(expectedEndX);
-                        display.AddCurve(curve, function.FullName, COLORS[i % COLORS.Length]);
+                        display.AddCurve(curve, function.FullName, COLORS[i%COLORS.Length]);
                     }
 
                     if (name == null)
@@ -313,8 +317,8 @@ namespace GUI.GraphView
             if (name != null)
             {
                 display.GnuPlot_Home_Path = Path.GetDirectoryName(Application.ExecutablePath) + "\\gnuplot\\bin";
-                string outputDir = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData) + "\\ERTMSFormalSpecs";
-                System.IO.Directory.CreateDirectory(outputDir);
+                string outputDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\ERTMSFormalSpecs";
+                Directory.CreateDirectory(outputDir);
                 display.Output_Path = outputDir;
                 display.Base_Name = "EFSPicture_" + name;
                 display.ImageWidth = 1200;
@@ -350,18 +354,18 @@ namespace GUI.GraphView
                 {
                     // Sometimes, a handle is still open on the corresponding file which forbids opening the stream on it
                     // Wait a bit until the handle is no more open
-                    System.IO.FileStream stream = null;
+                    FileStream stream = null;
 
-                    System.DateTime start = System.DateTime.Now;
-                    while (stream == null && System.DateTime.Now - start < new TimeSpan(0, 0, 5))
+                    DateTime start = DateTime.Now;
+                    while (stream == null && DateTime.Now - start < new TimeSpan(0, 0, 5))
                     {
                         try
                         {
-                            stream = new System.IO.FileStream(display.ImageFileName, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                            stream = new FileStream(display.ImageFileName, FileMode.Open, FileAccess.Read);
                         }
                         catch (Exception)
                         {
-                            System.Threading.Thread.Sleep(100);
+                            Thread.Sleep(100);
                         }
                     }
 

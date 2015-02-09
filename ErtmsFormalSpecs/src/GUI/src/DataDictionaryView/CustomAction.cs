@@ -13,9 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Drawing;
 using System.Windows.Forms;
-using DataDictionary.Types;
+using DataDictionary;
+using DataDictionary.Generated;
+using Action = DataDictionary.Rules.Action;
+using Enum = System.Enum;
+using Procedure = DataDictionary.Functions.Procedure;
+using Structure = DataDictionary.Types.Structure;
+using StructureElement = DataDictionary.Types.StructureElement;
 
 namespace GUI.DataDictionaryView
 {
@@ -32,7 +40,8 @@ namespace GUI.DataDictionaryView
             NotAvailable
         }
 
-        public delegate ActionTreeNode CustomActionCreator(DataDictionary.Rules.Action anAction);
+        public delegate ActionTreeNode CustomActionCreator(Action anAction);
+
         public CustomActionCreator CreateCustomAction;
 
 
@@ -45,7 +54,7 @@ namespace GUI.DataDictionaryView
             InitializeComponent();
 
             myStructure = aStructure;
-            CbB_StateName.DataSource = System.Enum.GetValues(typeof(StateNames));
+            CbB_StateName.DataSource = Enum.GetValues(typeof (StateNames));
 
             /* Creation of the list of check boxes */
             if (myStructure != null)
@@ -56,16 +65,16 @@ namespace GUI.DataDictionaryView
                 {
                     if (element.Type is Structure)
                     {
-                        Structure structure = DataDictionary.OverallStructureFinder.INSTANCE.findByName(myStructure.Dictionary, element.Type.FullName);
+                        Structure structure = OverallStructureFinder.INSTANCE.findByName(myStructure.Dictionary, element.Type.FullName);
                         if (structure != null)
                         {
-                            foreach (DataDictionary.Functions.Procedure procedure in structure.Procedures)
+                            foreach (Procedure procedure in structure.Procedures)
                             {
-                                System.Windows.Forms.CheckBox aCheckBox = new System.Windows.Forms.CheckBox();
+                                CheckBox aCheckBox = new CheckBox();
                                 aCheckBox.AutoSize = true;
-                                aCheckBox.Location = new System.Drawing.Point(X, Y);
+                                aCheckBox.Location = new Point(X, Y);
                                 aCheckBox.Name = "Cb_StateType";
-                                aCheckBox.Size = new System.Drawing.Size(74, 17);
+                                aCheckBox.Size = new Size(74, 17);
                                 aCheckBox.Text = element.Name + "." + procedure.Name;
                                 aCheckBox.UseVisualStyleBackColor = true;
                                 this.GrB_Procedures.Controls.Add(aCheckBox);
@@ -92,7 +101,7 @@ namespace GUI.DataDictionaryView
                     CheckBox aCheckBox = control as CheckBox;
                     if (aCheckBox.Checked == true)
                     {
-                        DataDictionary.Rules.Action anAction = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
+                        Action anAction = (Action) acceptor.getFactory().createAction();
                         anAction.ExpressionText = aCheckBox.Text + " <- " + aCheckBox.Text + "." + CbB_StateName.SelectedItem.ToString();
                         CreateCustomAction(anAction);
                     }

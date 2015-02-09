@@ -13,15 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
+using DataDictionary;
+using ICSharpCode.SharpZipLib.Zip;
+using LibGit2Sharp;
+
 namespace GUI.LongOperations
 {
-    using DataDictionary;
-    using System.IO;
-    using LibGit2Sharp;
-    using System.Diagnostics;
-    using System;
-    using System.Windows.Forms;
-
     public abstract class BaseCompareWithRepositoryOperation : BaseLongOperation
     {
         /// <summary>
@@ -32,12 +34,18 @@ namespace GUI.LongOperations
         /// <summary>
         /// The dictionary working directory
         /// </summary>
-        protected string WorkingDir { get { return Path.GetDirectoryName(Dictionary.FilePath); } }
+        protected string WorkingDir
+        {
+            get { return Path.GetDirectoryName(Dictionary.FilePath); }
+        }
 
         /// <summary>
         /// The dictionary file name
         /// </summary>
-        protected string DictionaryFileName { get { return Path.GetFileName(Dictionary.FilePath); } }
+        protected string DictionaryFileName
+        {
+            get { return Path.GetFileName(Dictionary.FilePath); }
+        }
 
         /// <summary>
         /// Provides the path of the repository
@@ -86,7 +94,7 @@ namespace GUI.LongOperations
         /// <returns>The specific version of the dictionary provided as parameter</returns>
         protected Dictionary DictionaryByVersion(Commit commit)
         {
-            DataDictionary.Dictionary retVal = null;
+            Dictionary retVal = null;
 
             if (commit != null)
             {
@@ -118,7 +126,7 @@ namespace GUI.LongOperations
                 try
                 {
                     // Unzip the archive
-                    ICSharpCode.SharpZipLib.Zip.FastZip zip = new ICSharpCode.SharpZipLib.Zip.FastZip();
+                    FastZip zip = new FastZip();
                     zip.ExtractZip(tempDirectory + "\\specs.zip", tempDirectory, null);
                 }
                 catch (Exception exception)
@@ -149,7 +157,6 @@ namespace GUI.LongOperations
                 {
                     MessageBox.Show("Exception raised during operation " + exception2.Message, "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
 
             return retVal;

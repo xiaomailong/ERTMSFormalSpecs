@@ -13,11 +13,26 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections;
 using System.Collections.Generic;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using DataDictionary.Interpreter.Statement;
+using DataDictionary.Rules;
+using DataDictionary.Values;
+using Utils;
+using Action = DataDictionary.Rules.Action;
+using Function = DataDictionary.Functions.Function;
+using PreCondition = DataDictionary.Rules.PreCondition;
+using Rule = DataDictionary.Rules.Rule;
+using RuleCondition = DataDictionary.Generated.RuleCondition;
+using State = DataDictionary.Constants.State;
+using Visitor = DataDictionary.Generated.Visitor;
 
 namespace DataDictionary.Types
 {
-    public class StateMachine : Generated.StateMachine, IEnumerateValues, Utils.ISubDeclarator, Utils.IFinder
+    public class StateMachine : Generated.StateMachine, IEnumerateValues, ISubDeclarator, IFinder
     {
         public override string FullName
         {
@@ -42,11 +57,11 @@ namespace DataDictionary.Types
                 // Current.EnclosingStateMachine is null
                 if (string.IsNullOrEmpty(retVal))
                 {
-                    retVal = ((Utils.INamable)current.Enclosing).FullName + "." + current.Name;
+                    retVal = ((INamable) current.Enclosing).FullName + "." + current.Name;
                 }
                 else
                 {
-                    retVal = ((Utils.INamable)current.Enclosing).FullName + "." + current.Name + "." + retVal;
+                    retVal = ((INamable) current.Enclosing).FullName + "." + current.Name + "." + retVal;
                 }
 
                 return retVal;
@@ -65,7 +80,7 @@ namespace DataDictionary.Types
                     return true;
                 }
 
-                foreach (DataDictionary.Rules.Rule rule in Rules)
+                foreach (Rule rule in Rules)
                 {
                     if (rule.ImplementationPartiallyCompleted)
                     {
@@ -82,19 +97,19 @@ namespace DataDictionary.Types
         /// </summary>
         public StateMachine()
         {
-            Utils.FinderRepository.INSTANCE.Register(this);
+            FinderRepository.INSTANCE.Register(this);
         }
 
         /// <summary>
         /// The states 
         /// </summary>
-        public System.Collections.ArrayList States
+        public ArrayList States
         {
             get
             {
                 if (allStates() == null)
                 {
-                    setAllStates(new System.Collections.ArrayList());
+                    setAllStates(new ArrayList());
                 }
                 return allStates();
             }
@@ -105,11 +120,11 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
-        public override Values.IValue getValue(string image)
+        public override IValue getValue(string image)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
-            foreach (Constants.State state in States)
+            foreach (State state in States)
             {
                 if (state.Name.CompareTo(image) == 0)
                 {
@@ -124,13 +139,13 @@ namespace DataDictionary.Types
         /// <summary>
         /// The rules
         /// </summary>
-        public System.Collections.ArrayList Rules
+        public ArrayList Rules
         {
             get
             {
                 if (allRules() == null)
                 {
-                    setAllRules(new System.Collections.ArrayList());
+                    setAllRules(new ArrayList());
                 }
                 return allRules();
             }
@@ -141,20 +156,21 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="index">the index in names to consider</param>
         /// <param name="names">the simple value names</param>
-        public Values.IValue findValue(string[] names, int index)
+        public IValue findValue(string[] names, int index)
         {
-            Constants.State retVal = null;
+            State retVal = null;
 
             if (index < names.Length)
             {
-                retVal = (Constants.State)Utils.INamableUtils.findByName(names[index], States); ;
+                retVal = (State) INamableUtils.findByName(names[index], States);
+                ;
 
                 if (retVal != null && index < names.Length - 1)
                 {
                     StateMachine stateMachine = retVal.StateMachine;
                     if (stateMachine != null)
                     {
-                        retVal = (Constants.State)stateMachine.findValue(names, index + 1);
+                        retVal = (State) stateMachine.findValue(names, index + 1);
                     }
                 }
             }
@@ -167,9 +183,9 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public Constants.State findState(string name)
+        public State findState(string name)
         {
-            Constants.State retVal = (Constants.State)findValue(name.Split('.'), 0);
+            State retVal = (State) findValue(name.Split('.'), 0);
 
             if (retVal == null)
             {
@@ -179,9 +195,9 @@ namespace DataDictionary.Types
             return retVal;
         }
 
-        public Constants.State EnclosingState
+        public State EnclosingState
         {
-            get { return Enclosing as Constants.State; }
+            get { return Enclosing as State; }
         }
 
         public NameSpace EnclosingNameSpace
@@ -209,11 +225,11 @@ namespace DataDictionary.Types
             }
         }
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
-                System.Collections.ArrayList retVal = base.EnclosingCollection;
+                ArrayList retVal = base.EnclosingCollection;
 
                 if (EnclosingNameSpace != null)
                 {
@@ -234,7 +250,7 @@ namespace DataDictionary.Types
 
         public void Constants(string scope, Dictionary<string, object> retVal)
         {
-            foreach (Constants.State state in this.States)
+            foreach (State state in this.States)
             {
                 state.Constants(scope, retVal);
             }
@@ -249,16 +265,17 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides the set of states available in this state machine 
         /// </summary>
-        public List<Values.IValue> cachedValues;
-        public List<Values.IValue> AllValues
+        public List<IValue> cachedValues;
+
+        public List<IValue> AllValues
         {
             get
             {
                 if (cachedValues == null)
                 {
-                    cachedValues = new List<Values.IValue>();
+                    cachedValues = new List<IValue>();
 
-                    foreach (Constants.State state in StateFinder.INSTANCE.find(this))
+                    foreach (State state in StateFinder.INSTANCE.find(this))
                     {
                         cachedValues.Add(state);
                     }
@@ -268,17 +285,17 @@ namespace DataDictionary.Types
             }
         }
 
-        public override bool Contains(Values.IValue first, Values.IValue other)
+        public override bool Contains(IValue first, IValue other)
         {
             bool retVal = false;
 
-            Constants.State state1 = first as Constants.State;
-            Constants.State state2 = other as Constants.State;
+            State state1 = first as State;
+            State state2 = other as State;
             if (state1 != null && state2 != null)
             {
                 if (state1.Type == state2.Type)
                 {
-                    Constants.State current = state2;
+                    State current = state2;
                     while (current != null & retVal == false)
                     {
                         retVal = (current == state1);
@@ -295,27 +312,27 @@ namespace DataDictionary.Types
         /// </summary>
         public void InitDeclaredElements()
         {
-            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+            DeclaredElements = new Dictionary<string, List<INamable>>();
 
-            foreach (Constants.State state in States)
+            foreach (State state in States)
             {
-                Utils.ISubDeclaratorUtils.AppendNamable(this, state);
+                ISubDeclaratorUtils.AppendNamable(this, state);
             }
         }
 
         /// <summary>
         /// Provides all the states that can be stored in this state machine
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
+        public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
-            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
+            ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>
@@ -323,30 +340,30 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
-        public static List<Constants.State> GetStates(Interpreter.Expression expression)
+        public static List<State> GetStates(Expression expression)
         {
-            List<Constants.State> retval = new List<Constants.State>();
+            List<State> retval = new List<State>();
 
             if (expression != null)
             {
-                foreach (Values.IValue value in expression.GetLiterals())
+                foreach (IValue value in expression.GetLiterals())
                 {
-                    Constants.State state = value as Constants.State;
+                    State state = value as State;
                     if (state != null)
                     {
                         retval.Add(state);
                     }
                 }
 
-                Interpreter.Call call = expression as Interpreter.Call;
+                Call call = expression as Call;
                 if (call != null)
                 {
-                    Functions.Function function = call.Called.getStaticCallable() as Functions.Function;
+                    Function function = call.Called.getStaticCallable() as Function;
                     if (function != null)
                     {
-                        foreach (Values.IValue value in function.GetLiterals())
+                        foreach (IValue value in function.GetLiterals())
                         {
-                            Constants.State state = value as Constants.State;
+                            State state = value as State;
                             if (state != null)
                             {
                                 retval.Add(state);
@@ -362,13 +379,14 @@ namespace DataDictionary.Types
         /// <summary>
         /// This class is used to find all transitions in the model
         /// </summary>
-        private class TransitionFinder : Generated.Visitor
+        private class TransitionFinder : Visitor
         {
             /// <summary>
             /// The transitions currently found
             /// </summary>
-            private List<Rules.Transition> transitions = new List<Rules.Transition>();
-            public List<Rules.Transition> Transitions
+            private List<Transition> transitions = new List<Transition>();
+
+            public List<Transition> Transitions
             {
                 get { return transitions; }
             }
@@ -377,13 +395,11 @@ namespace DataDictionary.Types
             /// The state machine for which this transition creator has been created
             /// </summary>
             private StateMachine stateMachine;
+
             public StateMachine StateMachine
             {
                 get { return stateMachine; }
-                private set
-                {
-                    stateMachine = value;
-                }
+                private set { stateMachine = value; }
             }
 
             /// <summary>
@@ -392,13 +408,13 @@ namespace DataDictionary.Types
             /// <param name="stateMachine"></param>
             public TransitionFinder(StateMachine stateMachine)
             {
-                Utils.FinderRepository.INSTANCE.ClearCache();
+                FinderRepository.INSTANCE.ClearCache();
                 Transitions.Clear();
                 StateMachine = stateMachine;
-                Constants.State initialState = StateMachine.DefaultValue as Constants.State;
+                State initialState = StateMachine.DefaultValue as State;
                 if (initialState != null)
                 {
-                    Transitions.Add(new Rules.Transition(null, null, null, initialState));
+                    Transitions.Add(new Transition(null, null, null, initialState));
                 }
             }
 
@@ -407,31 +423,31 @@ namespace DataDictionary.Types
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(Generated.RuleCondition obj, bool visitSubNodes)
+            public override void visit(RuleCondition obj, bool visitSubNodes)
             {
-                Rules.RuleCondition ruleCondition = (Rules.RuleCondition)obj;
+                Rules.RuleCondition ruleCondition = (Rules.RuleCondition) obj;
 
-                foreach (Rules.Action action in ruleCondition.Actions)
+                foreach (Action action in ruleCondition.Actions)
                 {
-                    foreach (Interpreter.Statement.VariableUpdateStatement update in action.UpdateStatements)
+                    foreach (VariableUpdateStatement update in action.UpdateStatements)
                     {
-                        Types.Type targetType = update.TargetType;
+                        Type targetType = update.TargetType;
                         if (targetType is StateMachine)
                         {
-                            Interpreter.Expression expressionTree = update.Expression;
+                            Expression expressionTree = update.Expression;
                             if (expressionTree != null)
                             {
                                 // HaCK: This is a bit rough, but should be sufficient for now...
-                                foreach (Constants.State stt1 in GetStates(expressionTree))
+                                foreach (State stt1 in GetStates(expressionTree))
                                 {
                                     // TargetState is the target state either in this state machine or in a sub state machine
-                                    Constants.State targetState = StateMachine.StateInThisStateMachine(stt1);
+                                    State targetState = StateMachine.StateInThisStateMachine(stt1);
 
                                     int transitionCount = Transitions.Count;
                                     bool filteredOut = false;
 
                                     // Finds the enclosing state of this action to determine the source state of this transition
-                                    Constants.State enclosingState = Utils.EnclosingFinder<Constants.State>.find(action);
+                                    State enclosingState = EnclosingFinder<State>.find(action);
                                     if (enclosingState != null)
                                     {
                                         filteredOut = filteredOut || AddTransition(update, stt1, null, enclosingState);
@@ -439,10 +455,10 @@ namespace DataDictionary.Types
 
                                     if (!filteredOut)
                                     {
-                                        foreach (Rules.PreCondition preCondition in ruleCondition.AllPreConditions)
+                                        foreach (PreCondition preCondition in ruleCondition.AllPreConditions)
                                         {
                                             // A transition from one state to another has been found
-                                            foreach (Constants.State stt2 in GetStates(preCondition.Expression))
+                                            foreach (State stt2 in GetStates(preCondition.Expression))
                                             {
                                                 filteredOut = filteredOut || AddTransition(update, stt1, preCondition, stt2);
                                             }
@@ -456,7 +472,7 @@ namespace DataDictionary.Types
                                             if (!filteredOut)
                                             {
                                                 // No precondition could be found => one can reach this state at anytime
-                                                Transitions.Add(new Rules.Transition(null, null, update, targetState));
+                                                Transitions.Add(new Transition(null, null, update, targetState));
                                             }
                                         }
                                     }
@@ -483,21 +499,21 @@ namespace DataDictionary.Types
             /// <param name="initial">The initial state</param>
             /// <returns>true if the transition has been filtered out. A transition can be filtered out if the target state is equal to the initial state or the initial state is null
             /// </returns>
-            private bool AddTransition(Interpreter.Statement.VariableUpdateStatement update, Constants.State target, Rules.PreCondition preCondition, Constants.State initial)
+            private bool AddTransition(VariableUpdateStatement update, State target, PreCondition preCondition, State initial)
             {
                 bool retVal = false;
 
                 if (SameParentStateMachine(initial, target))
                 {
-                    Constants.State initialState = StateMachine.StateInThisStateMachine(initial);
+                    State initialState = StateMachine.StateInThisStateMachine(initial);
                     // TargetState is the target state either in this state machine or in a sub state machine
-                    Constants.State targetState = StateMachine.StateInThisStateMachine(target);
+                    State targetState = StateMachine.StateInThisStateMachine(target);
 
                     // Determine the rule condition (if any) related to this state machine
                     Rules.RuleCondition condition = null;
                     if (update != null)
                     {
-                        Rules.Action action = update.Root as Rules.Action;
+                        Action action = update.Root as Action;
                         condition = action.RuleCondition;
                     }
 
@@ -511,7 +527,7 @@ namespace DataDictionary.Types
                             // in a substate machine. Only draws the transition once.
                             if (!findMatchingTransition(condition, initialState, targetState))
                             {
-                                Transitions.Add(new Rules.Transition(preCondition, initialState, update, targetState));
+                                Transitions.Add(new Transition(preCondition, initialState, update, targetState));
                             }
                         }
                         else
@@ -533,7 +549,7 @@ namespace DataDictionary.Types
             /// <param name="state1"></param>
             /// <param name="state2"></param>
             /// <returns></returns>
-            private bool SameParentStateMachine(Constants.State state1, Constants.State state2)
+            private bool SameParentStateMachine(State state1, State state2)
             {
                 return GetParentStateMachine(state1) == GetParentStateMachine(state2);
             }
@@ -543,7 +559,7 @@ namespace DataDictionary.Types
             /// </summary>
             /// <param name="state"></param>
             /// <returns></returns>
-            private StateMachine GetParentStateMachine(Constants.State state)
+            private StateMachine GetParentStateMachine(State state)
             {
                 StateMachine retVal = state.EnclosingStateMachine;
 
@@ -562,11 +578,11 @@ namespace DataDictionary.Types
             /// <param name="initialState"></param>
             /// <param name="targetState"></param>
             /// <returns></returns>
-            private bool findMatchingTransition(Rules.RuleCondition condition, Constants.State initialState, Constants.State targetState)
+            private bool findMatchingTransition(Rules.RuleCondition condition, State initialState, State targetState)
             {
                 bool retVal = false;
 
-                foreach (Rules.Transition t in Transitions)
+                foreach (Transition t in Transitions)
                 {
                     if (t.RuleCondition == condition && t.Source == initialState && t.Target == targetState)
                     {
@@ -582,7 +598,7 @@ namespace DataDictionary.Types
         /// <summary>
         /// Provides the transitions associated to this state machine, based on the underlying rules
         /// </summary>
-        public List<Rules.Transition> Transitions
+        public List<Transition> Transitions
         {
             get
             {
@@ -600,11 +616,11 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="state"></param>
         /// <returns></returns>
-        internal Constants.State StateInThisStateMachine(DataDictionary.Constants.State state)
+        internal State StateInThisStateMachine(State state)
         {
-            Constants.State retVal = null;
+            State retVal = null;
 
-            foreach (Constants.State other in States)
+            foreach (State other in States)
             {
                 if (other == state)
                 {
@@ -664,17 +680,17 @@ namespace DataDictionary.Types
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             {
-                Constants.State item = element as Constants.State;
+                State item = element as State;
                 if (item != null)
                 {
                     appendStates(item);
                 }
             }
             {
-                Rules.Rule item = element as Rules.Rule;
+                Rule item = element as Rule;
                 if (item != null)
                 {
                     appendRules(item);
@@ -690,18 +706,18 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public StateMachine instanciate()
         {
-            StateMachine retVal = (StateMachine)Generated.acceptor.getFactory().createStateMachine();
+            StateMachine retVal = (StateMachine) acceptor.getFactory().createStateMachine();
             retVal.Name = Name;
             retVal.setFather(getFather());
             retVal.Default = Default;
-            foreach (Constants.State state in States)
+            foreach (State state in States)
             {
-                Constants.State newState = state.duplicate();
+                State newState = state.duplicate();
                 retVal.appendStates(newState);
             }
-            foreach (Rules.Rule rule in Rules)
+            foreach (Rule rule in Rules)
             {
-                Rules.Rule newRule = rule.duplicate();
+                Rule newRule = rule.duplicate();
                 retVal.appendRules(newRule);
             }
 

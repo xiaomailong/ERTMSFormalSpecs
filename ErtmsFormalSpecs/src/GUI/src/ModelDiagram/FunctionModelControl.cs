@@ -13,16 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Windows.Forms;
+using DataDictionary.Functions;
+
 namespace GUI.ModelDiagram
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary;
-    using DataDictionary.Functions;
-    using System.Windows.Forms;
-
     /// <summary>
     /// The boxes that represent a function
     /// </summary>
@@ -42,9 +38,9 @@ namespace GUI.ModelDiagram
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void HandleMouseClick(object sender, MouseEventArgs e)
+        private void HandleMouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 Panel.Select(this, true);
             }
@@ -53,6 +49,9 @@ namespace GUI.ModelDiagram
         /// <summary>
         /// The name of the kind of model
         /// </summary>
-        public override string ModelName { get { return "Function"; } }
+        public override string ModelName
+        {
+            get { return "Function"; }
+        }
     }
 }

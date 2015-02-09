@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -37,7 +38,7 @@ namespace GUI.TranslationRules
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public SourceTextCommentTreeNode(DataDictionary.Tests.Translations.SourceTextComment item, bool buildSubNodes)
+        public SourceTextCommentTreeNode(SourceTextComment item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }

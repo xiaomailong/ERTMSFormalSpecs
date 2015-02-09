@@ -13,9 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.Windows.Forms;
+
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using Utils;
 using WeifenLuo.WinFormsUI.Docking;
+using ModelElement = DataDictionary.ModelElement;
 
 namespace GUI.SelectionHistory
 {
@@ -29,22 +34,22 @@ namespace GUI.SelectionHistory
             InitializeComponent();
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
-            historyDataGridView.DoubleClick += new System.EventHandler(historyDataGridView_DoubleClick);
+            historyDataGridView.DoubleClick += new EventHandler(historyDataGridView_DoubleClick);
 
             Visible = false;
             Text = "Selection history view";
 
-            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight;
+            DockAreas = DockAreas.DockRight;
             Refresh();
         }
 
-        void historyDataGridView_DoubleClick(object sender, System.EventArgs e)
+        private void historyDataGridView_DoubleClick(object sender, EventArgs e)
         {
-            DataDictionary.ModelElement selected = null;
+            ModelElement selected = null;
 
             if (historyDataGridView.SelectedCells.Count == 1)
             {
-                selected = ((List<HistoryObject>)historyDataGridView.DataSource)[historyDataGridView.SelectedCells[0].OwningRow.Index].Reference;
+                selected = ((List<HistoryObject>) historyDataGridView.DataSource)[historyDataGridView.SelectedCells[0].OwningRow.Index].Reference;
             }
 
             if (selected != null)
@@ -66,7 +71,7 @@ namespace GUI.SelectionHistory
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Window_FormClosed(object sender, FormClosedEventArgs e)
+        private void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
             GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
@@ -80,9 +85,9 @@ namespace GUI.SelectionHistory
             {
                 List<HistoryObject> history = new List<HistoryObject>();
 
-                foreach (Utils.IModelElement element in GUIUtils.MDIWindow.SelectionHistory)
+                foreach (IModelElement element in GUIUtils.MDIWindow.SelectionHistory)
                 {
-                    DataDictionary.ModelElement modelElement = element as DataDictionary.ModelElement;
+                    ModelElement modelElement = element as ModelElement;
                     if (modelElement != null)
                     {
                         history.Add(new HistoryObject(modelElement));
@@ -98,11 +103,11 @@ namespace GUI.SelectionHistory
         /// <summary>
         /// Provides the model element currently selected in this IBaseForm
         /// </summary>
-        public override Utils.IModelElement Selected
+        public override IModelElement Selected
         {
             get
             {
-                Utils.IModelElement retVal = null;
+                IModelElement retVal = null;
 
                 if (TreeView != null && TreeView.Selected != null)
                 {
@@ -118,18 +123,15 @@ namespace GUI.SelectionHistory
             /// <summary>
             /// The object that is referenced for history
             /// </summary>
-            [System.ComponentModel.Browsable(false)]
-            public DataDictionary.ModelElement Reference { get; private set; }
+            [Browsable(false)]
+            public ModelElement Reference { get; private set; }
 
             /// <summary>
             /// The identification of the history element
             /// </summary>
             public string Model
             {
-                get
-                {
-                    return Reference.Name;
-                }
+                get { return Reference.Name; }
             }
 
             /// <summary>
@@ -137,16 +139,14 @@ namespace GUI.SelectionHistory
             /// </summary>
             public string Type
             {
-                get
-                {
-                    return Reference.GetType().Name;
-                }
+                get { return Reference.GetType().Name; }
             }
+
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="reference"></param>
-            public HistoryObject(DataDictionary.ModelElement reference)
+            public HistoryObject(ModelElement reference)
             {
                 Reference = reference;
             }

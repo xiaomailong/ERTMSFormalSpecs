@@ -1,4 +1,3 @@
-using System.IO;
 // ------------------------------------------------------------------------------
 // -- Copyright ERTMS Solutions
 // -- Licensed under the EUPL V.1.1
@@ -14,7 +13,9 @@ using System.IO;
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+using System.IO;
 using Utils;
+
 namespace DataDictionary.Types
 {
     public class NameSpaceRef : Generated.NameSpaceRef

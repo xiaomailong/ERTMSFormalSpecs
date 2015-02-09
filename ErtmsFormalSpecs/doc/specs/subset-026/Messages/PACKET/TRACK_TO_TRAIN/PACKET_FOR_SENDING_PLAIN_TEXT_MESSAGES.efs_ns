@@ -51,7 +51,7 @@
  Guid="44b39002-3c6b-4fef-83fe-1fc75758d00d"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -103,7 +103,7 @@
  Guid="9548523e-7d6c-4675-9f80-103cf7386219"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -150,7 +150,7 @@
  Guid="b5c25d1a-5d4c-4fc8-a3cd-6515d4503ee0"
 >
 </StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -163,7 +163,7 @@
  Guid="6d68effb-bcba-4492-b1c4-a463854c3dcc"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Time"
+ TypeName="MessageTypes.Time"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
@@ -255,7 +255,7 @@
  Guid="c1f70353-06a4-483a-893e-8e0735831588"
 >
 </StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -307,7 +307,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Messages.PACKET.TRACK_TO_TRAIN.PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES.SubStructure1"
+ TypeName="SubStructure1"
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
@@ -319,4 +319,279 @@
  Guid="ca34a09c-42c3-4498-8397-2969a3e28e41"
 >
 </ReqRef></Collection></Collections>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="2b1a1245-e8ba-4236-b903-aa3b99aa7d0b"
+>
+<Comment>Checks the values in a structure of type PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES.Message</Comment>
+<Parameters>
+<Parameter
+ Type="PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES.Message"
+ Name="struct"
+ Guid="9473aa88-d900-4815-b7ef-4c83ceae6091"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="0b7f13b5-fc56-4a59-b797-8b1968c1489c"
+>
+<PreConditions>
+<PreCondition
+ Guid="00706aaf-5e5d-4af0-bc3c-3c2899a8d5f6"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="90af0ad3-f70a-4a7e-a348-5f40d645de45"
+>
+<PreConditions>
+<PreCondition
+ Guid="eb2e6100-51b8-4f27-a3ad-7ebebafc9d5a"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="32e0e5a1-ca33-48b3-b742-ba269e538ea8"
+>
+<PreConditions>
+<PreCondition
+ Guid="46d4d93c-05dd-4c05-83f5-0996c5a37adf"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="e7060f81-7bc4-4048-be16-8378cef93cc2"
+>
+<PreConditions>
+<PreCondition
+ Guid="a9d4895a-b323-4c68-a199-e3406d3b6e7e"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_SCALE invalid"
+ Guid="bdbfdb49-3902-4b7e-a807-11ee8236da1b"
+>
+<PreConditions>
+<PreCondition
+ Guid="9119b496-206e-4284-aa06-2bb15bbc1a22"
+>struct.Q_SCALE &lt; 0
+  AND  
+struct.Q_SCALE &gt;= 4
+  AND  
+struct.Q_SCALE != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_TEXTCLASS invalid"
+ Guid="f891e179-1d85-4c6d-8838-451f52dad68d"
+>
+<PreConditions>
+<PreCondition
+ Guid="9421545d-3c19-4547-a2de-03f370320226"
+>struct.Q_TEXTCLASS &lt; 0
+  AND  
+struct.Q_TEXTCLASS &gt;= 4
+  AND  
+struct.Q_TEXTCLASS != 2
+  AND  
+struct.Q_TEXTCLASS != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_TEXTDISPLAY invalid"
+ Guid="91976f56-aa7d-445d-a3ac-ee728ca99650"
+>
+<PreConditions>
+<PreCondition
+ Guid="caf2d617-b9a1-4006-8edb-eaf81c23dca4"
+>struct.Q_TEXTDISPLAY &lt; 0
+  AND  
+struct.Q_TEXTDISPLAY &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.D_TEXTDISPLAY invalid"
+ Guid="e158656d-d32b-4cd5-bf8c-44fb046fffa5"
+>
+<PreConditions>
+<PreCondition
+ Guid="ef980881-8aac-47c5-aaa4-e4d06981211f"
+>struct.D_TEXTDISPLAY &lt; 0
+  AND  
+struct.D_TEXTDISPLAY &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_NTC invalid"
+ Guid="bed63385-37c3-4116-8fb5-6732d247788e"
+>
+<PreConditions>
+<PreCondition
+ Guid="e1d69382-2cdd-4adc-a161-62f3090956fd"
+>struct.NID_NTC &lt; 0
+  AND  
+struct.NID_NTC &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_TEXTDISPLAY invalid"
+ Guid="33e53019-d762-414c-baf5-939a98c56160"
+>
+<PreConditions>
+<PreCondition
+ Guid="79fbacce-389c-4aab-962b-f935bd910f5b"
+>struct.L_TEXTDISPLAY &lt; 0
+  AND  
+struct.L_TEXTDISPLAY &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.T_TEXTDISPLAY invalid"
+ Guid="df2f7a27-2c88-4c01-b06f-e0b029fa0d35"
+>
+<PreConditions>
+<PreCondition
+ Guid="c779d28d-c498-4ef6-b147-23fb90a9714c"
+>struct.T_TEXTDISPLAY &lt; 0
+  AND  
+struct.T_TEXTDISPLAY &gt;= 1024</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_TEXTCONFIRM invalid"
+ Guid="bd3ec845-db85-4f88-ad62-520deb4df52c"
+>
+<PreConditions>
+<PreCondition
+ Guid="c37eb7d9-8e98-486d-a867-ef301ebd8c63"
+>struct.Q_TEXTCONFIRM &lt; 0
+  AND  
+struct.Q_TEXTCONFIRM &gt;= 4</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_CONFTEXTDISPLAY invalid"
+ Guid="f685a1bf-2540-46fb-b570-f3c89545e356"
+>
+<PreConditions>
+<PreCondition
+ Guid="22183273-138b-4983-bddb-f308610dca5a"
+>struct.Q_CONFTEXTDISPLAY &lt; 0
+  AND  
+struct.Q_CONFTEXTDISPLAY &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_TEXTREPORT invalid"
+ Guid="80621d00-8aa8-4f2a-a530-a33df50483ef"
+>
+<PreConditions>
+<PreCondition
+ Guid="4ead6d4b-0e8e-4837-862b-8dca3b01f692"
+>struct.Q_TEXTREPORT &lt; 0
+  AND  
+struct.Q_TEXTREPORT &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_TEXTMESSAGE invalid"
+ Guid="a0c07a05-2d7e-406b-ba45-e61de69c59a3"
+>
+<PreConditions>
+<PreCondition
+ Guid="78affec7-368a-4729-84cc-c90d6d8450ae"
+>struct.NID_TEXTMESSAGE &lt; 0
+  AND  
+struct.NID_TEXTMESSAGE &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_C invalid"
+ Guid="9e5ab421-5c2d-4f76-8bc6-60606bc78c5b"
+>
+<PreConditions>
+<PreCondition
+ Guid="c6b6669a-adcf-40cc-91ca-7e1c119951ee"
+>struct.NID_C &lt; 0
+  AND  
+struct.NID_C &gt;= 1024</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_RBC invalid"
+ Guid="6edac3b6-4bf8-46f5-8d51-df9d0f4f3a29"
+>
+<PreConditions>
+<PreCondition
+ Guid="058ca784-83c8-4122-8daf-a405147b1df2"
+>struct.NID_RBC &lt; 0
+  AND  
+struct.NID_RBC &gt;= 16384</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_TEXT invalid"
+ Guid="919cb5a4-d667-4c13-9ff6-dc2664b70b97"
+>
+<PreConditions>
+<PreCondition
+ Guid="70120733-ab4f-4e18-b9dc-52cf9c3cff67"
+>struct.L_TEXT &lt; 0
+  AND  
+struct.L_TEXT &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Sequence1 invalid"
+ Guid="80b3ebc0-1f95-46ed-ae5a-a724cd95b120"
+>
+<PreConditions>
+<PreCondition
+ Guid="0638f6f1-7538-4fd6-9bc5-054a473bcfce"
+>THERE_IS X IN struct.Sequence1 | NOT PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES.CheckSubStructure1Values(X)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="d3b64628-6a4b-4797-ac9e-65149a1a3169"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="CheckSubStructure1Values"
+ Guid="63373671-efa7-4123-adcf-6c9be8e41b1d"
+>
+<Comment>Checks the values in a structure of type PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES.SubStructure1</Comment>
+<Parameters>
+<Parameter
+ Type="PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES.SubStructure1"
+ Name="struct"
+ Guid="2c595b4e-2961-405a-a36c-e67e86221422"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="SubStructure1 empty"
+ Guid="51c8fb1a-63e5-4920-a0d7-13ea8473389b"
+>
+<PreConditions>
+<PreCondition
+ Guid="2a00bfe4-2202-47d5-9bcd-69206e63717d"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.X_TEXT invalid"
+ Guid="5ff75ebe-981d-458d-9775-7510f4c07149"
+>
+<PreConditions>
+<PreCondition
+ Guid="785aa604-c14b-44d3-9b95-431047c95eb2"
+>struct.X_TEXT != &apos;&apos;</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="63e69ed5-6f33-4b2e-bdc5-c248113b6184"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

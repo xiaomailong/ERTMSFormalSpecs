@@ -13,9 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary;
+
 namespace GUI.Shortcuts
 {
-    public partial class ShortcutTreeView : TypedTreeView<DataDictionary.EFSSystem>
+    public partial class ShortcutTreeView : TypedTreeView<EFSSystem>
     {
         /// <summary>
         /// Constructor
@@ -32,7 +35,7 @@ namespace GUI.Shortcuts
         protected override void BuildModel()
         {
             Nodes.Clear();
-            foreach (DataDictionary.Dictionary dictionary in Root.Dictionaries)
+            foreach (Dictionary dictionary in Root.Dictionaries)
             {
                 Nodes.Add(new ShortcutDictionaryTreeNode(dictionary.ShortcutsDictionary, true));
             }

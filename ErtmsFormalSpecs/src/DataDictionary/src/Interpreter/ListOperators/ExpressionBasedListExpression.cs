@@ -15,6 +15,8 @@
 // ------------------------------------------------------------------------------
 
 using DataDictionary.Interpreter.Filter;
+using Utils;
+
 namespace DataDictionary.Interpreter.ListOperators
 {
     public abstract class ExpressionBasedListExpression : ConditionBasedListExpression
@@ -46,7 +48,7 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
+        public override bool SemanticAnalysis(INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 

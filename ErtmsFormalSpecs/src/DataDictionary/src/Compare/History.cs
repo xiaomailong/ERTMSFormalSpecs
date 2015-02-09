@@ -13,11 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections.Generic;
+using HistoricalData;
+
 namespace DataDictionary.Compare
 {
-    using System.Collections.Generic;
-    using HistoricalData;
-
     /// <summary>
     /// The model related history
     /// </summary>

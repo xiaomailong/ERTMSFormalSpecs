@@ -13,15 +13,31 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.Drawing.Design;
 using System.Reflection;
 using System.Windows.Forms;
 using DataDictionary;
-using DataDictionary.Specification;
-using GUI.SpecificationView;
-using System.Drawing.Design;
+using DataDictionary.Generated;
+using DataDictionary.Types;
+using GUI.Converters;
+using Utils;
+using XmlBooster;
+using Chapter = DataDictionary.Specification.Chapter;
+using Frame = DataDictionary.Tests.Frame;
+using ModelElement = DataDictionary.ModelElement;
+using ReqRef = DataDictionary.ReqRef;
+using ReqRelated = DataDictionary.Generated.ReqRelated;
+using ShortcutDictionary = DataDictionary.Shortcuts.ShortcutDictionary;
+using Specification = DataDictionary.Specification.Specification;
+using Step = DataDictionary.Tests.Step;
+using SubSequence = DataDictionary.Tests.SubSequence;
+using TestCase = DataDictionary.Tests.TestCase;
 
 namespace GUI
 {
@@ -39,7 +55,7 @@ namespace GUI
             /// The model element currently edited
             /// </summary>
             [Browsable(false)]
-            public Utils.IModelElement Model { get; set; }
+            public IModelElement Model { get; set; }
 
             /// <summary>
             /// Constructor
@@ -59,6 +75,7 @@ namespace GUI
         /// The fixed node name
         /// </summary>
         private string defaultName;
+
         private string DefaultName
         {
             get { return defaultName; }
@@ -68,17 +85,14 @@ namespace GUI
         /// <summary>
         /// The model represented by this node
         /// </summary>
-        public Utils.IModelElement Model { get; set; }
+        public IModelElement Model { get; set; }
 
         /// <summary>
         /// Provides the base tree view which holds this node
         /// </summary>
         public BaseTreeView BaseTreeView
         {
-            get
-            {
-                return TreeView as BaseTreeView;
-            }
+            get { return TreeView as BaseTreeView; }
         }
 
         /// <summary>
@@ -105,7 +119,7 @@ namespace GUI
         /// </summary>
         /// <param name="name"></param>
         /// <param name="value"></param>
-        public BaseTreeNode(Utils.IModelElement value, string name = null, bool isFolder = false)
+        public BaseTreeNode(IModelElement value, string name = null, bool isFolder = false)
             : base(name)
         {
             Model = value;
@@ -161,20 +175,20 @@ namespace GUI
                 }
                 else
                 {
-                    Utils.IModelElement element = Model;
+                    IModelElement element = Model;
                     while (element != null && ImageIndex == BaseTreeView.ModelImageIndex)
                     {
-                        element = element.Enclosing as Utils.IModelElement;
-                        if (element is DataDictionary.Tests.Frame
-                            || element is DataDictionary.Tests.SubSequence
-                            || element is DataDictionary.Tests.TestCase
-                            || element is DataDictionary.Tests.Step)
+                        element = element.Enclosing as IModelElement;
+                        if (element is Frame
+                            || element is SubSequence
+                            || element is TestCase
+                            || element is Step)
                         {
                             ChangeImageIndex(BaseTreeView.TestImageIndex);
                         }
 
-                        if (element is DataDictionary.Specification.Specification
-                            || element is DataDictionary.Specification.Chapter
+                        if (element is Specification
+                            || element is Chapter
                             || element is DataDictionary.Specification.Paragraph)
                         {
                             ChangeImageIndex(BaseTreeView.RequirementImageIndex);
@@ -227,8 +241,8 @@ namespace GUI
         /// <returns></returns>
         private bool isShortCut()
         {
-            return Utils.EnclosingFinder<DataDictionary.Shortcuts.ShortcutDictionary>.find(Model) != null
-                || (Model is DataDictionary.Shortcuts.ShortcutDictionary);
+            return EnclosingFinder<ShortcutDictionary>.find(Model) != null
+                   || (Model is ShortcutDictionary);
         }
 
         /// <summary>
@@ -237,7 +251,7 @@ namespace GUI
         /// <returns></returns>
         private bool ShouldExplain()
         {
-            bool retVal = (Model is DataDictionary.Types.IDefaultValueElement) || !(Model is IExpressionable);
+            bool retVal = (Model is IDefaultValueElement) || !(Model is IExpressionable);
 
             return retVal;
         }
@@ -282,7 +296,7 @@ namespace GUI
                 }
                 else
                 {
-                    ReqRelated reqRelated = Utils.EnclosingFinder<ReqRelated>.find(Model, true);
+                    DataDictionary.ReqRelated reqRelated = EnclosingFinder<DataDictionary.ReqRelated>.find(Model, true);
                     if (reqRelated != null)
                     {
                         requirements = reqRelated.RequirementDescription();
@@ -300,7 +314,7 @@ namespace GUI
                     IExpressionable expressionable = Model as IExpressionable;
                     if (expressionable != null && !ShouldExplain())
                     {
-                        baseForm.ExpressionEditorTextBox.Instance = Model as DataDictionary.ModelElement;
+                        baseForm.ExpressionEditorTextBox.Instance = Model as ModelElement;
                         baseForm.ExpressionEditorTextBox.Text = expressionable.ExpressionText;
                         if (!baseForm.ExpressionEditorTextBox.Visible)
                         {
@@ -342,7 +356,7 @@ namespace GUI
         /// </summary>
         public virtual void UpdateColor()
         {
-            System.Drawing.Color color = ComputedColor;
+            Color color = ComputedColor;
 
             if (color != ForeColor)
             {
@@ -358,51 +372,52 @@ namespace GUI
         /// <summary>
         /// The colors used to display things
         /// </summary>
-        private System.Drawing.Color ERROR_COLOR = System.Drawing.Color.Red;
-        private System.Drawing.Color PATH_TO_ERROR_COLOR = System.Drawing.Color.Orange;
-        private System.Drawing.Color WARNING_COLOR = System.Drawing.Color.Brown;
-        private System.Drawing.Color PATH_TO_WARNING_COLOR = System.Drawing.Color.LightCoral;
-        private System.Drawing.Color INFO_COLOR = System.Drawing.Color.Blue;
-        private System.Drawing.Color PATH_TO_INFO_COLOR = System.Drawing.Color.LightBlue;
-        private System.Drawing.Color NOTHING_COLOR = System.Drawing.Color.Black;
+        private Color ERROR_COLOR = Color.Red;
+
+        private Color PATH_TO_ERROR_COLOR = Color.Orange;
+        private Color WARNING_COLOR = Color.Brown;
+        private Color PATH_TO_WARNING_COLOR = Color.LightCoral;
+        private Color INFO_COLOR = Color.Blue;
+        private Color PATH_TO_INFO_COLOR = Color.LightBlue;
+        private Color NOTHING_COLOR = Color.Black;
 
         /// <summary>
         /// Provides the color according to the info status
         /// </summary>
         /// <param name="info"></param>
         /// <returns></returns>
-        protected System.Drawing.Color ColorBasedOnInfo(Utils.MessagePathInfoEnum info)
+        protected Color ColorBasedOnInfo(MessagePathInfoEnum info)
         {
-            System.Drawing.Color retVal = NOTHING_COLOR;
+            Color retVal = NOTHING_COLOR;
 
             switch (info)
             {
-                case Utils.MessagePathInfoEnum.Error:
+                case MessagePathInfoEnum.Error:
                     retVal = ERROR_COLOR;
                     break;
 
-                case Utils.MessagePathInfoEnum.PathToError:
+                case MessagePathInfoEnum.PathToError:
                     retVal = PATH_TO_ERROR_COLOR;
                     break;
 
-                case Utils.MessagePathInfoEnum.Warning:
+                case MessagePathInfoEnum.Warning:
                     retVal = WARNING_COLOR;
                     break;
 
-                case Utils.MessagePathInfoEnum.PathToWarning:
+                case MessagePathInfoEnum.PathToWarning:
                     retVal = PATH_TO_WARNING_COLOR;
                     break;
 
-                case Utils.MessagePathInfoEnum.Info:
+                case MessagePathInfoEnum.Info:
                     retVal = INFO_COLOR;
                     break;
 
-                case Utils.MessagePathInfoEnum.PathToInfo:
+                case MessagePathInfoEnum.PathToInfo:
                     retVal = PATH_TO_INFO_COLOR;
                     break;
 
-                case Utils.MessagePathInfoEnum.Nothing:
-                case Utils.MessagePathInfoEnum.NotComputed:
+                case MessagePathInfoEnum.Nothing:
+                case MessagePathInfoEnum.NotComputed:
                     retVal = NOTHING_COLOR;
                     break;
             }
@@ -415,21 +430,21 @@ namespace GUI
         /// </summary>
         /// <param name="info"></param>
         /// <returns></returns>
-        private Utils.MessagePathInfoEnum PathTo(Utils.MessagePathInfoEnum info)
+        private MessagePathInfoEnum PathTo(MessagePathInfoEnum info)
         {
-            Utils.MessagePathInfoEnum retVal = info;
+            MessagePathInfoEnum retVal = info;
 
-            if (info == Utils.MessagePathInfoEnum.Error)
+            if (info == MessagePathInfoEnum.Error)
             {
-                retVal = Utils.MessagePathInfoEnum.PathToError;
+                retVal = MessagePathInfoEnum.PathToError;
             }
-            else if (info == Utils.MessagePathInfoEnum.Warning)
+            else if (info == MessagePathInfoEnum.Warning)
             {
-                retVal = Utils.MessagePathInfoEnum.PathToWarning;
+                retVal = MessagePathInfoEnum.PathToWarning;
             }
-            else if (info == Utils.MessagePathInfoEnum.Info)
+            else if (info == MessagePathInfoEnum.Info)
             {
-                retVal = Utils.MessagePathInfoEnum.PathToInfo;
+                retVal = MessagePathInfoEnum.PathToInfo;
             }
 
             return retVal;
@@ -441,9 +456,9 @@ namespace GUI
         /// <param name="c1"></param>
         /// <param name="c2"></param>
         /// <returns></returns>
-        private Utils.MessagePathInfoEnum CombineInfo(Utils.MessagePathInfoEnum info1, Utils.MessagePathInfoEnum info2)
+        private MessagePathInfoEnum CombineInfo(MessagePathInfoEnum info1, MessagePathInfoEnum info2)
         {
-            Utils.MessagePathInfoEnum retVal;
+            MessagePathInfoEnum retVal;
 
             if (info1 < info2)
             {
@@ -461,7 +476,7 @@ namespace GUI
         /// Computes this node's color based on its sub nodes
         /// </summary>
         /// <returns></returns>
-        protected System.Drawing.Color ComputeColorBasedOnItsSubNodes()
+        protected Color ComputeColorBasedOnItsSubNodes()
         {
             if (!SubNodesBuilt)
             {
@@ -469,7 +484,7 @@ namespace GUI
                 UpdateColor();
             }
 
-            Utils.MessagePathInfoEnum retVal = Utils.MessagePathInfoEnum.Nothing;
+            MessagePathInfoEnum retVal = MessagePathInfoEnum.Nothing;
             foreach (BaseTreeNode subNode in Nodes)
             {
                 retVal = CombineInfo(retVal, PathTo(subNode.Model.MessagePathInfo));
@@ -481,12 +496,9 @@ namespace GUI
         /// <summary>
         /// Provides the computed color
         /// </summary>
-        public virtual System.Drawing.Color ComputedColor
+        public virtual Color ComputedColor
         {
-            get
-            {
-                return System.Drawing.Color.Black;
-            }
+            get { return Color.Black; }
         }
 
         /// <summary>
@@ -525,11 +537,11 @@ namespace GUI
 
                 if (Model is DataDictionary.ReqRelated)
                 {
-                    DataDictionary.ReqRelated reqRelated = (DataDictionary.ReqRelated)Model;
+                    DataDictionary.ReqRelated reqRelated = (DataDictionary.ReqRelated) Model;
                     reqRelated.setVerified(false);
                 }
 
-                DataDictionary.Generated.ControllersManager.BaseModelElementController.alertChange(null, null);
+                ControllersManager.BaseModelElementController.alertChange(null, null);
             }
             else
             {
@@ -548,17 +560,17 @@ namespace GUI
         /// <summary>
         /// Marks all model elements as implemented
         /// </summary>
-        private class MarkAsImplementedVisitor : DataDictionary.Generated.Visitor
+        private class MarkAsImplementedVisitor : Visitor
         {
             /// <summary>
             /// Constructor
             /// </summary>
-            public MarkAsImplementedVisitor(Utils.IModelElement element)
+            public MarkAsImplementedVisitor(IModelElement element)
             {
-                if (element is DataDictionary.ModelElement)
+                if (element is ModelElement)
                 {
-                    visit((DataDictionary.ModelElement)element);
-                    dispatch((DataDictionary.ModelElement)element);
+                    visit((ModelElement) element);
+                    dispatch((ModelElement) element);
                 }
             }
 
@@ -567,7 +579,7 @@ namespace GUI
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(DataDictionary.Generated.ReqRelated obj, bool visitSubNodes)
+            public override void visit(ReqRelated obj, bool visitSubNodes)
             {
                 obj.setImplemented(true);
 
@@ -579,13 +591,12 @@ namespace GUI
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(DataDictionary.Generated.Paragraph obj, bool visitSubNodes)
+            public override void visit(Paragraph obj, bool visitSubNodes)
             {
-                obj.setImplementationStatus(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented);
+                obj.setImplementationStatus(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented);
 
                 base.visit(obj, visitSubNodes);
             }
-
         }
 
         /// <summary>
@@ -596,7 +607,7 @@ namespace GUI
         protected void Check(object sender, EventArgs e)
         {
             GUIUtils.MDIWindow.ClearMarks();
-            DataDictionary.ModelElement modelElement = Model as DataDictionary.ModelElement;
+            ModelElement modelElement = Model as ModelElement;
             if (modelElement != null)
             {
                 RuleCheckerVisitor visitor = new RuleCheckerVisitor(modelElement.Dictionary);
@@ -612,23 +623,23 @@ namespace GUI
         /// <param name="e"></param>
         protected void MarkAsImplemented(object sender, EventArgs e)
         {
-                MarkAsImplementedVisitor visitor = new MarkAsImplementedVisitor(Model);
+            MarkAsImplementedVisitor visitor = new MarkAsImplementedVisitor(Model);
         }
 
         /// <summary>
         /// Marks all model elements as verified
         /// </summary>
-        private class MarkAsVerifiedVisitor : DataDictionary.Generated.Visitor
+        private class MarkAsVerifiedVisitor : Visitor
         {
             /// <summary>
             /// Constructor
             /// </summary>
-            public MarkAsVerifiedVisitor(Utils.IModelElement element)
+            public MarkAsVerifiedVisitor(IModelElement element)
             {
-                if (element is DataDictionary.ModelElement)
+                if (element is ModelElement)
                 {
-                    visit((DataDictionary.ModelElement)element);
-                    dispatch((DataDictionary.ModelElement)element);
+                    visit((ModelElement) element);
+                    dispatch((ModelElement) element);
                 }
             }
 
@@ -637,7 +648,7 @@ namespace GUI
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(DataDictionary.Generated.ReqRelated obj, bool visitSubNodes)
+            public override void visit(ReqRelated obj, bool visitSubNodes)
             {
                 obj.setVerified(true);
 
@@ -649,7 +660,7 @@ namespace GUI
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(DataDictionary.Generated.Paragraph obj, bool visitSubNodes)
+            public override void visit(Paragraph obj, bool visitSubNodes)
             {
                 obj.setReviewed(true);
 
@@ -728,10 +739,7 @@ namespace GUI
         /// </summary>
         public override ContextMenu ContextMenu
         {
-            get
-            {
-                return new ContextMenu(GetMenuItems().ToArray());
-            }
+            get { return new ContextMenu(GetMenuItems().ToArray()); }
         }
 
         /// <summary>
@@ -802,16 +810,16 @@ namespace GUI
         /// <summary>
         /// Generates new GUID for the element
         /// </summary>
-        private class RegererateGuidVisitor : DataDictionary.Generated.Visitor
+        private class RegererateGuidVisitor : Visitor
         {
             /// <summary>
             /// Ensures that all elements have a new Guid
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(DataDictionary.Generated.BaseModelElement obj, bool visitSubNodes)
+            public override void visit(BaseModelElement obj, bool visitSubNodes)
             {
-                ModelElement element = (ModelElement)obj;
+                ModelElement element = (ModelElement) obj;
 
                 // Side effect : creates a new Guid if it is empty
                 element.setGuid(null);
@@ -827,21 +835,21 @@ namespace GUI
         /// <param name="SourceNode"></param>
         public virtual void AcceptCopy(BaseTreeNode SourceNode)
         {
-            XmlBooster.XmlBBase xmlBBase = SourceNode.Model as XmlBooster.XmlBBase;
+            XmlBBase xmlBBase = SourceNode.Model as XmlBBase;
             if (xmlBBase != null)
             {
                 string data = xmlBBase.ToXMLString();
-                XmlBooster.XmlBStringContext ctxt = new XmlBooster.XmlBStringContext(data);
+                XmlBStringContext ctxt = new XmlBStringContext(data);
                 try
                 {
-                    DataDictionary.ModelElement copy = DataDictionary.Generated.acceptor.accept(ctxt) as DataDictionary.ModelElement;
+                    ModelElement copy = acceptor.accept(ctxt) as ModelElement;
                     RegererateGuidVisitor visitor = new RegererateGuidVisitor();
                     visitor.visit(copy, true);
 
                     Model.AddModelElement(copy);
-                    System.Collections.ArrayList targetCollection = copy.EnclosingCollection;
+                    ArrayList targetCollection = copy.EnclosingCollection;
                     copy.Delete();
-                    Utils.INamable namable = copy as Utils.INamable;
+                    INamable namable = copy as INamable;
                     if (namable != null && targetCollection != null)
                     {
                         int previousIndex = -1;
@@ -849,7 +857,7 @@ namespace GUI
                         while (previousIndex != index)
                         {
                             previousIndex = index;
-                            foreach (Utils.INamable other in targetCollection)
+                            foreach (INamable other in targetCollection)
                             {
                                 if (index > 0)
                                 {
@@ -895,8 +903,8 @@ namespace GUI
         /// <param name="SourceNode"></param>
         public virtual void AcceptMove(BaseTreeNode SourceNode)
         {
-            System.Collections.ArrayList SourceCollection = SourceNode.Model.EnclosingCollection;
-            System.Collections.ArrayList ThisCollection = Model.EnclosingCollection;
+            ArrayList SourceCollection = SourceNode.Model.EnclosingCollection;
+            ArrayList ThisCollection = Model.EnclosingCollection;
 
             if (ThisCollection != null && SourceCollection == ThisCollection)
             {
@@ -969,14 +977,14 @@ namespace GUI
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public abstract class ModelElementTreeNode<T> : BaseTreeNode
-        where T : class, Utils.IModelElement
+        where T : class, IModelElement
     {
         /// <summary>
         /// An editor for an item. It is the responsibility of this class to implement attributes 
         /// for the elements to be edited.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public abstract class Editor : BaseTreeNode.BaseEditor
+        public abstract class Editor : BaseEditor
         {
             /// <summary>
             /// The item that is edited. 
@@ -999,6 +1007,7 @@ namespace GUI
             /// The node that holds the item. 
             /// </summary>
             private ModelElementTreeNode<T> node;
+
             internal ModelElementTreeNode<T> Node
             {
                 get { return node; }
@@ -1038,8 +1047,8 @@ namespace GUI
             protected void UpdateFieldActivation(string name, bool value)
             {
                 PropertyDescriptor descriptor = TypeDescriptor.GetProperties(this.GetType())[name];
-                ReadOnlyAttribute attribute = (ReadOnlyAttribute)descriptor.Attributes[typeof(ReadOnlyAttribute)];
-                FieldInfo fieldToChange = attribute.GetType().GetField("isReadOnly", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                ReadOnlyAttribute attribute = (ReadOnlyAttribute) descriptor.Attributes[typeof (ReadOnlyAttribute)];
+                FieldInfo fieldToChange = attribute.GetType().GetField("isReadOnly", BindingFlags.NonPublic | BindingFlags.Instance);
                 fieldToChange.SetValue(attribute, value);
             }
         }
@@ -1102,7 +1111,7 @@ namespace GUI
         /// for the elements to be edited.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public abstract class NamedEditor : ModelElementTreeNode<T>.Editor
+        public abstract class NamedEditor : Editor
         {
             /// <summary>
             /// The item name
@@ -1116,10 +1125,10 @@ namespace GUI
                     if (Item.EnclosingCollection != null)
                     {
                         bool unique = true;
-                        foreach (Utils.IModelElement model in Item.EnclosingCollection)
+                        foreach (IModelElement model in Item.EnclosingCollection)
                         {
-                            Utils.INamable namable = model as Utils.INamable;
-                            Utils.INamable namableItem = Item as Utils.INamable;
+                            INamable namable = model as INamable;
+                            INamable namableItem = Item as INamable;
                             if (namable != namableItem && namable != null && namable.Name.CompareTo(value) == 0)
                             {
                                 unique = false;
@@ -1167,8 +1176,8 @@ namespace GUI
         public abstract class CommentableEditor : NamedEditor
         {
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.CommentableUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.CommentableUITypeConverter))]
+            [Editor(typeof (CommentableUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (CommentableUITypeConverter))]
             public ICommentable Comment
             {
                 get { return Item as ICommentable; }
@@ -1220,11 +1229,11 @@ namespace GUI
             }
         }
 
-        public override System.Drawing.Color ComputedColor
+        public override Color ComputedColor
         {
             get
             {
-                System.Drawing.Color retVal = base.ComputedColor;
+                Color retVal = base.ComputedColor;
 
                 if (Item != null)
                 {
@@ -1232,16 +1241,16 @@ namespace GUI
 
                     switch (Item.MessagePathInfo)
                     {
-                        case Utils.MessagePathInfoEnum.Nothing:
-                        case Utils.MessagePathInfoEnum.NotComputed:
-                            retVal = System.Drawing.Color.Black;
+                        case MessagePathInfoEnum.Nothing:
+                        case MessagePathInfoEnum.NotComputed:
+                            retVal = Color.Black;
                             break;
 
-                        case Utils.MessagePathInfoEnum.Error:
-                            parentNode = (BaseTreeNode)Parent;
+                        case MessagePathInfoEnum.Error:
+                            parentNode = (BaseTreeNode) Parent;
                             if (parentNode == null || parentNode.Model != Model)
                             {
-                                retVal = System.Drawing.Color.Red;
+                                retVal = Color.Red;
                             }
                             else
                             {
@@ -1249,15 +1258,15 @@ namespace GUI
                             }
                             break;
 
-                        case Utils.MessagePathInfoEnum.PathToError:
+                        case MessagePathInfoEnum.PathToError:
                             retVal = ComputeColorBasedOnItsSubNodes();
                             break;
 
-                        case Utils.MessagePathInfoEnum.Warning:
-                            parentNode = (BaseTreeNode)Parent;
+                        case MessagePathInfoEnum.Warning:
+                            parentNode = (BaseTreeNode) Parent;
                             if (parentNode == null || parentNode.Model != Model)
                             {
-                                retVal = System.Drawing.Color.Brown;
+                                retVal = Color.Brown;
                             }
                             else
                             {
@@ -1265,15 +1274,15 @@ namespace GUI
                             }
                             break;
 
-                        case Utils.MessagePathInfoEnum.PathToWarning:
+                        case MessagePathInfoEnum.PathToWarning:
                             retVal = ComputeColorBasedOnItsSubNodes();
                             break;
 
-                        case Utils.MessagePathInfoEnum.Info:
-                            parentNode = (BaseTreeNode)Parent;
+                        case MessagePathInfoEnum.Info:
+                            parentNode = (BaseTreeNode) Parent;
                             if (parentNode == null || parentNode.Model != Model)
                             {
-                                retVal = System.Drawing.Color.Blue;
+                                retVal = Color.Blue;
                             }
                             else
                             {
@@ -1281,7 +1290,7 @@ namespace GUI
                             }
                             break;
 
-                        case Utils.MessagePathInfoEnum.PathToInfo:
+                        case MessagePathInfoEnum.PathToInfo:
                             retVal = ComputeColorBasedOnItsSubNodes();
                             break;
                     }

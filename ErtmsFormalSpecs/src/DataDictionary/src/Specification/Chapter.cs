@@ -13,8 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Utils;
 
 namespace DataDictionary.Specification
 {
@@ -32,39 +35,33 @@ namespace DataDictionary.Specification
         /// <summary>
         /// The paragraphs
         /// </summary>
-        public System.Collections.ArrayList Paragraphs
+        public ArrayList Paragraphs
         {
             get
             {
                 if (allParagraphs() == null)
                 {
-                    setAllParagraphs(new System.Collections.ArrayList());
+                    setAllParagraphs(new ArrayList());
                 }
                 return allParagraphs();
             }
-            private set
-            {
-                setAllParagraphs(value);
-            }
+            private set { setAllParagraphs(value); }
         }
 
         /// <summary>
         /// The type specs
         /// </summary>
-        public System.Collections.ArrayList TypeSpecs
+        public ArrayList TypeSpecs
         {
             get
             {
                 if (allTypeSpecs() == null)
                 {
-                    setAllTypeSpecs(new System.Collections.ArrayList());
+                    setAllTypeSpecs(new ArrayList());
                 }
                 return allTypeSpecs();
             }
-            set
-            {
-                setAllTypeSpecs(value);
-            }
+            set { setAllTypeSpecs(value); }
         }
 
         /// <summary>
@@ -95,6 +92,7 @@ namespace DataDictionary.Specification
         /**
          * Provides the paragraphs that require an implementation
          */
+
         public ICollection<Paragraph> applicableParagraphs()
         {
             ICollection<Paragraph> retVal = new HashSet<Paragraph>();
@@ -130,7 +128,7 @@ namespace DataDictionary.Specification
         /// <summary>
         /// Provides the enclosing collection
         /// </summary>
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get { return EnclosingSpecification.Chapters; }
         }
@@ -154,14 +152,14 @@ namespace DataDictionary.Specification
         /// </summary>
         /// <param name="elements">The elements to be placed in the node</param>
         /// <param name="level">The current paragraph level</param>
-        private static System.Collections.ArrayList InnerRestructureParagraphs(System.Collections.ArrayList elements, int level)
+        private static ArrayList InnerRestructureParagraphs(ArrayList elements, int level)
         {
-            System.Collections.ArrayList retVal = new System.Collections.ArrayList();
+            ArrayList retVal = new ArrayList();
             Paragraph current = null;
 
             while (index < elements.Count)
             {
-                Paragraph paragraph = (Paragraph)elements[index];
+                Paragraph paragraph = (Paragraph) elements[index];
                 List<Paragraph> subNodes = new List<Paragraph>();
 
                 if (paragraph.Level == level)
@@ -242,7 +240,7 @@ namespace DataDictionary.Specification
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             {
                 Paragraph item = element as Paragraph;

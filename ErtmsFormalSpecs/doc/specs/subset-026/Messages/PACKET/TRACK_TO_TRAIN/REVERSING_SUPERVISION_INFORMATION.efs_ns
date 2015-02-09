@@ -53,7 +53,7 @@
  Guid="aa7bc245-cf79-404a-b6d3-4c088eb0c90f"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -79,7 +79,7 @@
  Guid="5ecc5a22-3acb-40f8-8ae1-f2b862d460db"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -92,7 +92,7 @@
  Guid="eb7b50f3-66f9-4298-bea3-7023f4d7ee99"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Speed"
+ TypeName="MessageTypes.Speed"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -105,4 +105,106 @@
  Guid="c8e1d101-6ba2-4b83-9c40-ebefc84fb617"
 >
 </ReqRef></StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="20b47ac9-8f82-4334-beea-f176dc0e979d"
+>
+<Comment>Checks the values in a structure of type REVERSING_SUPERVISION_INFORMATION.Message</Comment>
+<Parameters>
+<Parameter
+ Type="REVERSING_SUPERVISION_INFORMATION.Message"
+ Name="struct"
+ Guid="896ff5cf-8d1e-418f-88fd-a9232e0e5863"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="54e2ce41-0490-4f53-a8c6-0891798919d9"
+>
+<PreConditions>
+<PreCondition
+ Guid="72f2eb3a-d1c0-4fb6-ba9f-1fe8dc9b49b9"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="c6bdce71-6499-4970-a2e9-0bf279f0c70c"
+>
+<PreConditions>
+<PreCondition
+ Guid="044499fd-3111-4fcc-9d5b-48d19ad25256"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="2159d5ae-ae3e-4e1e-86ff-27bb28021a9f"
+>
+<PreConditions>
+<PreCondition
+ Guid="e7b0fb9f-cca4-469c-b366-72578a673cab"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="f98f83ab-b151-4e1e-9aaf-3147a5362a83"
+>
+<PreConditions>
+<PreCondition
+ Guid="cb31bfa4-34b6-4770-be4a-977331c8d97f"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_SCALE invalid"
+ Guid="691bc9a1-a98b-46fa-bc55-021b09e9504e"
+>
+<PreConditions>
+<PreCondition
+ Guid="cd66d2bf-6e88-43b2-9e94-b481762225d2"
+>struct.Q_SCALE &lt; 0
+  AND  
+struct.Q_SCALE &gt;= 4
+  AND  
+struct.Q_SCALE != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.D_REVERSE invalid"
+ Guid="5f769aae-ee4a-4ada-84b3-9999a807c5f6"
+>
+<PreConditions>
+<PreCondition
+ Guid="85d609d5-0484-429d-a19c-08f5bbc003a4"
+>struct.D_REVERSE &lt; 0
+  AND  
+struct.D_REVERSE &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.V_REVERSE invalid"
+ Guid="2c1d0398-d904-4758-a0ec-97442047b3f2"
+>
+<PreConditions>
+<PreCondition
+ Guid="e7d71d08-ec15-4c5e-bb4e-65eb474822a3"
+>struct.V_REVERSE &lt; 0
+  AND  
+struct.V_REVERSE &gt;= 128</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="168a8eed-053b-4643-a01c-bdba202df659"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

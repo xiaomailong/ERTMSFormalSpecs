@@ -13,10 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
+using DataDictionary;
+using DataDictionary.Generated;
 using WeifenLuo.WinFormsUI.Docking;
+using Dictionary = DataDictionary.Dictionary;
+using Rule = DataDictionary.Rules.Rule;
 
 namespace GUI.RulePerformances
 {
@@ -25,7 +29,7 @@ namespace GUI.RulePerformances
         /// <summary>
         /// The EFS System for which this view is built
         /// </summary>
-        private DataDictionary.EFSSystem EFSSystem { get; set; }
+        private EFSSystem EFSSystem { get; set; }
 
         /// <summary>
         /// Constructor
@@ -34,14 +38,14 @@ namespace GUI.RulePerformances
         {
             InitializeComponent();
 
-            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom;
+            DockAreas = DockAreas.DockBottom;
         }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="efsSystem"></param>
-        public RulesPerformances(DataDictionary.EFSSystem efsSystem)
+        public RulesPerformances(EFSSystem efsSystem)
         {
             EFSSystem = efsSystem;
             InitializeComponent();
@@ -51,17 +55,17 @@ namespace GUI.RulePerformances
         /// <summary>
         /// Provides the rules that consumed most of the time
         /// </summary>
-        private class GetSlowest : DataDictionary.Generated.Visitor
+        private class GetSlowest : Visitor
         {
             /// <summary>
             /// The list of rules
             /// </summary>
-            private List<DataDictionary.Rules.Rule> Rules { get; set; }
+            private List<Rule> Rules { get; set; }
 
-            public GetSlowest(DataDictionary.EFSSystem efsSystem)
+            public GetSlowest(EFSSystem efsSystem)
             {
-                Rules = new List<DataDictionary.Rules.Rule>();
-                foreach (DataDictionary.Dictionary dictionary in efsSystem.Dictionaries)
+                Rules = new List<Rule>();
+                foreach (Dictionary dictionary in efsSystem.Dictionaries)
                 {
                     visit(dictionary, true);
                 }
@@ -69,12 +73,12 @@ namespace GUI.RulePerformances
 
             public override void visit(DataDictionary.Generated.Rule obj, bool visitSubNodes)
             {
-                DataDictionary.Rules.Rule rule = obj as DataDictionary.Rules.Rule;
+                Rule rule = obj as Rule;
 
                 Rules.Add(rule);
             }
 
-            private int Comparer(DataDictionary.Rules.Rule r1, DataDictionary.Rules.Rule r2)
+            private int Comparer(Rule r1, Rule r2)
             {
                 if (r1.ExecutionTimeInMilli < r2.ExecutionTimeInMilli)
                 {
@@ -92,11 +96,11 @@ namespace GUI.RulePerformances
             /// Provides the rules associated with their descending execution time
             /// </summary>
             /// <returns></returns>
-            public List<DataDictionary.Rules.Rule> getRulesDesc()
+            public List<Rule> getRulesDesc()
             {
-                List<DataDictionary.Rules.Rule> retVal = Rules;
+                List<Rule> retVal = Rules;
 
-                retVal.Sort(new Comparison<DataDictionary.Rules.Rule>(Comparer));
+                retVal.Sort(new Comparison<Rule>(Comparer));
 
                 return retVal;
             }
@@ -104,18 +108,27 @@ namespace GUI.RulePerformances
 
         private class DisplayObject
         {
-            private DataDictionary.Rules.Rule Rule { get; set; }
+            private Rule Rule { get; set; }
 
-            public DisplayObject(DataDictionary.Rules.Rule rule)
+            public DisplayObject(Rule rule)
             {
                 Rule = rule;
             }
 
-            public String RuleName { get { return Rule.FullName; } }
+            public String RuleName
+            {
+                get { return Rule.FullName; }
+            }
 
-            public long ExecutionTime { get { return Rule.ExecutionTimeInMilli; } }
+            public long ExecutionTime
+            {
+                get { return Rule.ExecutionTimeInMilli; }
+            }
 
-            public int ExecutionCount { get { return Rule.ExecutionCount; } }
+            public int ExecutionCount
+            {
+                get { return Rule.ExecutionCount; }
+            }
 
             public int Average
             {
@@ -123,7 +136,7 @@ namespace GUI.RulePerformances
                 {
                     if (ExecutionCount > 0)
                     {
-                        return (int)(ExecutionTime / ExecutionCount);
+                        return (int) (ExecutionTime/ExecutionCount);
                     }
                     else
                     {
@@ -138,9 +151,9 @@ namespace GUI.RulePerformances
             if (EFSSystem != null && dataGridView != null)
             {
                 GetSlowest getter = new GetSlowest(EFSSystem);
-                List<DataDictionary.Rules.Rule> rules = getter.getRulesDesc();
+                List<Rule> rules = getter.getRulesDesc();
                 List<DisplayObject> source = new List<DisplayObject>();
-                foreach (DataDictionary.Rules.Rule rule in rules)
+                foreach (Rule rule in rules)
                 {
                     source.Add(new DisplayObject(rule));
                 }

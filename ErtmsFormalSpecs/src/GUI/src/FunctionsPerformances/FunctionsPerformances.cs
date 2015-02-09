@@ -13,10 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
+using DataDictionary;
+using DataDictionary.Generated;
 using WeifenLuo.WinFormsUI.Docking;
+using Dictionary = DataDictionary.Dictionary;
+using Function = DataDictionary.Functions.Function;
 
 namespace GUI.FunctionsPerformances
 {
@@ -25,7 +29,7 @@ namespace GUI.FunctionsPerformances
         /// <summary>
         /// The EFS System for which this view is built
         /// </summary>
-        private DataDictionary.EFSSystem EFSSystem { get; set; }
+        private EFSSystem EFSSystem { get; set; }
 
         /// <summary>
         /// Constructor
@@ -39,7 +43,7 @@ namespace GUI.FunctionsPerformances
         /// Constructor
         /// </summary>
         /// <param name="efsSystem"></param>
-        public FunctionsPerformances(DataDictionary.EFSSystem efsSystem)
+        public FunctionsPerformances(EFSSystem efsSystem)
         {
             EFSSystem = efsSystem;
             InitializeComponent();
@@ -49,17 +53,17 @@ namespace GUI.FunctionsPerformances
         /// <summary>
         /// Provides the functions that consumed most of the time
         /// </summary>
-        private class GetSlowest : DataDictionary.Generated.Visitor
+        private class GetSlowest : Visitor
         {
             /// <summary>
             /// The list of functions
             /// </summary>
-            private List<DataDictionary.Functions.Function> Functions { get; set; }
+            private List<Function> Functions { get; set; }
 
-            public GetSlowest(DataDictionary.EFSSystem efsSystem)
+            public GetSlowest(EFSSystem efsSystem)
             {
-                Functions = new List<DataDictionary.Functions.Function>();
-                foreach (DataDictionary.Dictionary dictionary in efsSystem.Dictionaries)
+                Functions = new List<Function>();
+                foreach (Dictionary dictionary in efsSystem.Dictionaries)
                 {
                     visit(dictionary, true);
                 }
@@ -67,12 +71,12 @@ namespace GUI.FunctionsPerformances
 
             public override void visit(DataDictionary.Generated.Function obj, bool visitSubNodes)
             {
-                DataDictionary.Functions.Function function = obj as DataDictionary.Functions.Function;
+                Function function = obj as Function;
 
                 Functions.Add(function);
             }
 
-            private int Comparer(DataDictionary.Functions.Function f1, DataDictionary.Functions.Function f2)
+            private int Comparer(Function f1, Function f2)
             {
                 if (f1.ExecutionTimeInMilli < f2.ExecutionTimeInMilli)
                 {
@@ -90,11 +94,11 @@ namespace GUI.FunctionsPerformances
             /// Provides the functions associated with their descending execution time
             /// </summary>
             /// <returns></returns>
-            public List<DataDictionary.Functions.Function> getFunctionsDesc()
+            public List<Function> getFunctionsDesc()
             {
-                List<DataDictionary.Functions.Function> retVal = Functions;
+                List<Function> retVal = Functions;
 
-                retVal.Sort(new Comparison<DataDictionary.Functions.Function>(Comparer));
+                retVal.Sort(new Comparison<Function>(Comparer));
 
                 return retVal;
             }
@@ -102,18 +106,27 @@ namespace GUI.FunctionsPerformances
 
         private class DisplayObject
         {
-            private DataDictionary.Functions.Function Function { get; set; }
+            private Function Function { get; set; }
 
-            public DisplayObject(DataDictionary.Functions.Function function)
+            public DisplayObject(Function function)
             {
                 Function = function;
             }
 
-            public String FunctionName { get { return Function.FullName; } }
+            public String FunctionName
+            {
+                get { return Function.FullName; }
+            }
 
-            public long ExecutionTime { get { return Function.ExecutionTimeInMilli; } }
+            public long ExecutionTime
+            {
+                get { return Function.ExecutionTimeInMilli; }
+            }
 
-            public int ExecutionCount { get { return Function.ExecutionCount; } }
+            public int ExecutionCount
+            {
+                get { return Function.ExecutionCount; }
+            }
 
             public int Average
             {
@@ -121,7 +134,7 @@ namespace GUI.FunctionsPerformances
                 {
                     if (ExecutionCount > 0)
                     {
-                        return (int)(ExecutionTime / ExecutionCount);
+                        return (int) (ExecutionTime/ExecutionCount);
                     }
                     else
                     {
@@ -136,9 +149,9 @@ namespace GUI.FunctionsPerformances
             if (EFSSystem != null && dataGridView != null)
             {
                 GetSlowest getter = new GetSlowest(EFSSystem);
-                List<DataDictionary.Functions.Function> functions = getter.getFunctionsDesc();
+                List<Function> functions = getter.getFunctionsDesc();
                 List<DisplayObject> source = new List<DisplayObject>();
-                foreach (DataDictionary.Functions.Function function in functions)
+                foreach (Function function in functions)
                 {
                     source.Add(new DisplayObject(function));
                 }

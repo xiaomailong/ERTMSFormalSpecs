@@ -13,9 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.Collections.Generic;
-using DataDictionary.Interpreter;
+
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using Utils;
+using TranslationDictionary = DataDictionary.Tests.Translations.TranslationDictionary;
 
 namespace DataDictionary.Tests
 {
@@ -24,13 +29,13 @@ namespace DataDictionary.Tests
         /// <summary>
         /// The frame sub sequences
         /// </summary>
-        public System.Collections.ArrayList SubSequences
+        public ArrayList SubSequences
         {
             get
             {
                 if (allSubSequences() == null)
                 {
-                    setAllSubSequences(new System.Collections.ArrayList());
+                    setAllSubSequences(new ArrayList());
                 }
                 return allSubSequences();
             }
@@ -47,7 +52,7 @@ namespace DataDictionary.Tests
 
             try
             {
-                foreach (DataDictionary.Tests.SubSequence subSequence in SubSequences)
+                foreach (SubSequence subSequence in SubSequences)
                 {
                     EFSSystem.Runner = new Runner.Runner(subSequence, false, false);
                     int testCasesFailed = subSequence.ExecuteAllTestCases(EFSSystem.Runner);
@@ -66,7 +71,7 @@ namespace DataDictionary.Tests
             return retVal;
         }
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get { return Dictionary.Tests; }
         }
@@ -102,14 +107,14 @@ namespace DataDictionary.Tests
         /// <returns></returns>
         public SubSequence findSubSequence(string name)
         {
-            return (SubSequence)Utils.INamableUtils.findByName(name, SubSequences);
+            return (SubSequence) INamableUtils.findByName(name, SubSequences);
         }
 
         /// <summary>
         /// Translates the frame according to the translation dictionary provided
         /// </summary>
         /// <param name="translationDictionary"></param>
-        public void Translate(Translations.TranslationDictionary translationDictionary)
+        public void Translate(TranslationDictionary translationDictionary)
         {
             foreach (SubSequence subSequence in SubSequences)
             {
@@ -121,7 +126,7 @@ namespace DataDictionary.Tests
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             {
                 SubSequence item = element as SubSequence;
@@ -136,6 +141,7 @@ namespace DataDictionary.Tests
         /// Provides the cycle time value
         /// </summary>
         private Expression __cycleTime = null;
+
         public Expression CycleDuration
         {
             get
@@ -155,10 +161,7 @@ namespace DataDictionary.Tests
 
                 return __cycleTime;
             }
-            set
-            {
-                __cycleTime = null;
-            }
+            set { __cycleTime = null; }
         }
 
         /// <summary>
@@ -166,10 +169,7 @@ namespace DataDictionary.Tests
         /// </summary>
         public override string ExpressionText
         {
-            get
-            {
-                return getCycleDuration();
-            }
+            get { return getCycleDuration(); }
             set
             {
                 CycleDuration = null;
@@ -180,7 +180,10 @@ namespace DataDictionary.Tests
         /// <summary>
         /// The corresponding expression tree
         /// </summary>
-        public Interpreter.InterpreterTreeNode Tree { get { return CycleDuration; } }
+        public InterpreterTreeNode Tree
+        {
+            get { return CycleDuration; }
+        }
 
         /// <summary>
         /// Clears the expression tree to ensure new compilation
@@ -193,7 +196,7 @@ namespace DataDictionary.Tests
         /// <summary>
         /// Creates the tree according to the expression text
         /// </summary>
-        public Interpreter.InterpreterTreeNode Compile()
+        public InterpreterTreeNode Compile()
         {
             return CycleDuration;
         }
@@ -221,7 +224,7 @@ namespace DataDictionary.Tests
         /// <returns></returns>
         public static Frame createDefault(string name)
         {
-            Frame retVal = (Frame)DataDictionary.Generated.acceptor.getFactory().createFrame();
+            Frame retVal = (Frame) acceptor.getFactory().createFrame();
             retVal.Name = name;
             retVal.setCycleDuration("0.1");
             retVal.appendSubSequences(SubSequence.createDefault("Sequence1"));
@@ -242,6 +245,5 @@ namespace DataDictionary.Tests
             get { return getComment(); }
             set { setComment(value); }
         }
-
     }
 }

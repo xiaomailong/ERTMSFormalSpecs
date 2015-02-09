@@ -13,15 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
-using System.Security;
+using Utils;
 
 namespace DataDictionary
 {
     /// <summary>
     /// Something that has a name
     /// </summary>
-    public abstract class Namable : Generated.Namable, Utils.INamable, IComparable<Namable>, IComparable
+    public abstract class Namable : Generated.Namable, INamable, IComparable<Namable>, IComparable
     {
         /// <summary>
         /// The name separator
@@ -38,7 +39,7 @@ namespace DataDictionary
             {
                 if (value == null)
                 {
-                    setName("");                
+                    setName("");
                 }
                 else
                 {
@@ -67,7 +68,7 @@ namespace DataDictionary
             {
                 if (__fullName == null)
                 {
-                    Namable enclosing = Utils.EnclosingFinder<Namable>.find(this);
+                    Namable enclosing = EnclosingFinder<Namable>.find(this);
                     if (enclosing != null)
                     {
                         __fullName = enclosing.FullName + "." + Name;
@@ -94,7 +95,7 @@ namespace DataDictionary
         /// <returns></returns>
         public int CompareTo(Namable other)
         {
-            return Utils.Comparer.StringComparer.Compare(Name, other.Name);
+            return Comparer.StringComparer.Compare(Name, other.Name);
         }
 
         /// <summary>
@@ -107,7 +108,7 @@ namespace DataDictionary
             Namable namable = other as Namable;
             if (namable != null)
             {
-                return Utils.Comparer.StringComparer.Compare(Name, namable.Name);
+                return Comparer.StringComparer.Compare(Name, namable.Name);
             }
 
             return 0;

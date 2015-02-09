@@ -14,9 +14,11 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Types;
+
 namespace DataDictionary.Values
 {
-    public class BoolValue : BaseValue<Types.Type, bool>
+    public class BoolValue : BaseValue<Type, bool>
     {
         public override string Name
         {
@@ -32,25 +34,19 @@ namespace DataDictionary.Values
 
         public override string FullName
         {
-            get
-            {
-                return Type.FullName + "." + Name;
-            }
+            get { return Type.FullName + "." + Name; }
         }
 
         public override string LiteralName
         {
-            get
-            {
-                return Name;
-            }
+            get { return Name; }
         }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="type"></param>
-        public BoolValue(Types.Type type, bool val)
+        public BoolValue(Type type, bool val)
             : base(type, val)
         {
         }

@@ -14,6 +14,9 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System.Collections;
+using Utils;
+
 namespace DataDictionary.Shortcuts
 {
     public class ShortcutDictionary : Generated.ShortcutDictionary
@@ -29,39 +32,33 @@ namespace DataDictionary.Shortcuts
         /// <summary>
         /// Provides the folders
         /// </summary>
-        public System.Collections.ArrayList Folders
+        public ArrayList Folders
         {
             get
             {
                 if (allFolders() == null)
                 {
-                    setAllFolders(new System.Collections.ArrayList());
+                    setAllFolders(new ArrayList());
                 }
                 return allFolders();
             }
-            set
-            {
-                setAllFolders(value);
-            }
+            set { setAllFolders(value); }
         }
 
         /// <summary>
         /// Provides the shortcuts for this dictionary
         /// </summary>
-        public System.Collections.ArrayList Shortcuts
+        public ArrayList Shortcuts
         {
             get
             {
                 if (allShortcuts() == null)
                 {
-                    setAllShortcuts(new System.Collections.ArrayList());
+                    setAllShortcuts(new ArrayList());
                 }
                 return allShortcuts();
             }
-            set
-            {
-                setAllShortcuts(value);
-            }
+            set { setAllShortcuts(value); }
         }
 
         /// <summary>
@@ -84,7 +81,7 @@ namespace DataDictionary.Shortcuts
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             ShortcutFolder folder = element as ShortcutFolder;
             if (folder != null)
@@ -100,6 +97,5 @@ namespace DataDictionary.Shortcuts
                 }
             }
         }
-
     }
 }

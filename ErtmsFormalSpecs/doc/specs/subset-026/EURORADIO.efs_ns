@@ -883,12 +883,17 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="715b48c3-af70-479c-9314-7eaf9aa4bab2"
 >
-</ReqRef><Comment>Sends the MA request message.</Comment>
+</ReqRef><Comment>Sends the MA request message, possibly with an additional packet (Packet 9: Level 2/3 transition information).</Comment>
 <Parameters>
 <Parameter
  Type="Messages.Q_MARQSTREASON"
  Name="aReason"
  Guid="5c0da812-a270-4cf0-b8e8-c58eb2c798db"
+>
+</Parameter><Parameter
+ Type="Messages.PACKET.TRAIN_TO_TRACK.LEVEL_2_3_TRANSITION_INFORMATION.Message"
+ Name="aPacket"
+ Guid="efa70ad2-1b31-4fba-8e5b-1394f640af26"
 >
 </Parameter></Parameters>
 <Rules>
@@ -911,6 +916,25 @@
  Guid="48295035-e9ad-4544-9df0-05b1d725b286"
 >MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
 <Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Fill the message"
+ Guid="6a8d7932-914e-4d24-a047-ae5a2b06ff00"
+>
+<Comment>First, fill the fields of the message.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Fill the message"
+ Guid="028126ab-0258-4ee6-819e-a978c06643da"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
 <Action
  Guid="bd0bff4f-a385-4604-9275-9ca2e8029bb5"
 >InitializeOutMessage()</Action><Action
@@ -924,6 +948,72 @@
     Q_MARQSTREASON =&gt; aReason,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
 }</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Add the optional packet, if any"
+ Guid="1e128daf-b918-4719-9653-73eb5ae01642"
+>
+<ReqRef
+ Id="c2016b38-4117-4913-9885-bc04bda19872"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eb2fb9bf-eb81-4102-b4e2-4be112bc2963"
+>
+</ReqRef><Comment>Then, add the optional packet, if any.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Add the optional packet, if any"
+ Guid="ac36f825-e92f-4ee9-8831-a81f5a88f097"
+>
+<PreConditions>
+<PreCondition
+ Guid="2dd7f6aa-12b8-4aa9-8130-0d8662cb6f64"
+>aPacket != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f44318cf-785d-4f2d-b554-9b4fc910b4f0"
+>INSERT
+Messages.MESSAGE.TRAIN_TO_TRACK.MA_REQUEST.SubStructure1
+{
+    LEVEL_2_3_TRANSITION_INFORMATION =&gt; aPacket
+}
+  IN
+MessageOut.MA_REQUEST.Sequence1</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update MA request parameters"
+ Guid="9d1fd56f-96df-4f78-9cad-0936c95e17ac"
+>
+<ReqRef
+ Id="b2206740-ee3b-42bc-9b69-b3ef064476be"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cafe6bb4-a15b-4ea9-9165-f0ae350e5c42"
+>
+</ReqRef><Comment>Finally, if MA request parameters are stored on-board, the current time and the reason are stored in order to be able to resend the MA cyclically, if needed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update MA request parameters"
+ Guid="a918565b-068a-41c0-8290-cc43a8c4ac0f"
+>
+<PreConditions>
+<PreCondition
+ Guid="3acc2481-ba85-4ccd-b7fc-ed2acaac77e7"
+>Kernel.MA.MARequest.MARequestParameters != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d3ec36ee-64d3-4339-b85a-967e5ce5a6ca"
+>Kernel.MA.MARequest.LastMARequestRepetitionTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
+ Guid="b5a94a6c-2159-44bd-9c71-7c81d6c057f9"
+>Kernel.MA.MARequest.MARequestParameters.Reason &lt;- aReason</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1812,6 +1902,130 @@ THERE_IS X IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
     L_MESSAGE =&gt; 0,
     T_TRAIN =&gt; Default.MessageTypes.UnResolveTime(Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
+    POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendRequestToShortenMAIsGranted"
+ Guid="916f41b1-9578-4f84-a30a-18ac768afdf1"
+>
+<ReqRef
+ Id="a923ad08-9cd1-4b6d-9132-8fec6102d784"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="558e6797-585a-4acd-9c4f-041e9e755f25"
+>
+</ReqRef><ReqRef
+ Id="bc02069a-b3f9-44d3-ae1b-fb27d71bb51d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4e19e7f6-aee9-4cfc-ab6c-49e400eceb39"
+>
+</ReqRef><ReqRef
+ Id="26d39c75-1c24-46e6-b725-d71bd2fbd1c3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d76a2c81-7b86-4250-9ad8-5f6a454270be"
+>
+</ReqRef><Comment>Sends the message indicating that the shortened MA is granted.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.MessageTypes.Time"
+ Name="TimeStamp"
+ Guid="54af5444-8191-4280-b5d4-60f99316da84"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle sending of the message"
+ Guid="ad27e878-f406-4859-9052-1e5e67ff13e0"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle sending of the message"
+ Guid="1555cd5a-31ed-4158-9b54-734b377c6843"
+>
+<PreConditions>
+<PreCondition
+ Guid="1d902fe6-ea84-4af6-bbaa-8fd69eb809c1"
+>MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="43edf13b-9cdd-474c-85b2-dc247f443bbe"
+>InitializeOutMessage()</Action><Action
+ Guid="74740856-044d-4604-8674-3d69b129c01e"
+>MessageOut.REQUEST_TO_SHORTEN_MA_IS_GRANTED &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.REQUEST_TO_SHORTEN_MA_IS_GRANTED.Message
+{
+    NID_MESSAGE =&gt; 137,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN_0 =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
+    NID_ENGINE =&gt; Kernel.NidEngine,
+    T_TRAIN_1 =&gt; TimeStamp,
+    POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="SendRequestToShortenMAIsRejected"
+ Guid="1abc60a8-acf1-4bc2-954a-7e07f6a59848"
+>
+<ReqRef
+ Id="e69fe417-33db-4400-94f9-091961d6b6db"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64906c5e-acbf-4395-a785-2de200f06078"
+>
+</ReqRef><ReqRef
+ Id="bc02069a-b3f9-44d3-ae1b-fb27d71bb51d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6a7cf521-7ad3-41b5-835b-452c06923fef"
+>
+</ReqRef><ReqRef
+ Id="26d39c75-1c24-46e6-b725-d71bd2fbd1c3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c5b153d8-1e29-4b1a-ac7a-7d2d26432f6d"
+>
+</ReqRef><Comment>Sends the message indicating that the shortened MA is rejected.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.MessageTypes.Time"
+ Name="TimeStamp"
+ Guid="b9c1c363-b714-43c5-ac5d-f3de0a693de2"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle sending of the message"
+ Guid="39f84bff-762f-4177-b2aa-20a9830468b7"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle sending of the message"
+ Guid="adb017a3-df0e-4a22-97b3-436cfc410548"
+>
+<PreConditions>
+<PreCondition
+ Guid="587bce12-1b33-45d4-b051-bd8e6b1c2816"
+>MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7ed237dc-daab-4130-b9a9-b5705be38e8f"
+>InitializeOutMessage()</Action><Action
+ Guid="161b0fe4-e5f5-4031-ad42-d8dead2fea9a"
+>MessageOut.REQUEST_TO_SHORTEN_MA_IS_REJECTED &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.REQUEST_TO_SHORTEN_MA_IS_REJECTED.Message
+{
+    NID_MESSAGE =&gt; 138,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN_0 =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
+    NID_ENGINE =&gt; Kernel.NidEngine,
+    T_TRAIN_1 =&gt; TimeStamp,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
 }</Action></Actions>
 </RuleCondition></Conditions>
@@ -4792,121 +5006,6 @@ After that, if an order to contact an Accepting RBC was received, it will be han
  Guid="1d98ef8a-fbe4-4fe6-affb-c0d0d99bb986"
 >
 <Comment>The data state of the system version.</Comment>
-</StructureElement></Structure><Structure
- Default=""
- X="680"
- Y="390"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="MARequestParametersStruct"
- Guid="9d7a57c5-16b7-49c4-a5ae-7c349742e6f1"
->
-<ReqRef
- Id="b74d1689-f942-4e2a-abdb-aa241f4f117f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="86ba9eb8-9104-4dd0-8208-ab19a713f8d4"
->
-</ReqRef><ReqRef
- Id="f1ea734b-e726-48f2-96ea-1c70bef0a48f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0778d2a3-b667-448e-8ba9-52aedffb80a0"
->
-</ReqRef><Comment>Contains the parameters for the MA request.</Comment>
-<StructureElement
- TypeName="BaseTypes.Time"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="PreindicationLocationTime"
- Guid="7a06a620-fa06-4db1-b6cd-70855746f090"
->
-<ReqRef
- Id="628ac46e-918d-47a4-9804-1bae59216f63"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="008aee12-76b5-4f6a-b96c-5b57008d736c"
->
-</ReqRef><ReqRef
- Id="f1ea734b-e726-48f2-96ea-1c70bef0a48f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d639d100-4f29-4fbb-885b-3a52416aca8a"
->
-</ReqRef><Comment>A defined time before the train reaches the pre-indication location for the EOA/LOA assuming it is running at the warning speed.</Comment>
-</StructureElement><StructureElement
- TypeName="BaseTypes.Time"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="SectionTimerTime"
- Guid="61b511aa-6e78-4c29-86e5-94796558e1c5"
->
-<ReqRef
- Id="95d3b6c1-0843-4142-a7aa-9589d026598d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="195f61fd-1fc4-4337-b0a8-a0cff448d0bc"
->
-</ReqRef><ReqRef
- Id="f1ea734b-e726-48f2-96ea-1c70bef0a48f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a44bd3bf-127b-44de-9bdb-180758d8036c"
->
-</ReqRef><Comment>A defined time before the Section timer (not the End Section timer, not the Overlap timer) for any section of the MA expires, or before the LOA speed timer expires.</Comment>
-</StructureElement><StructureElement
- TypeName="BaseTypes.Time"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="RepetitionTime"
- Guid="919bcae0-9652-4d12-9a00-97b03d9cf4a7"
->
-<ReqRef
- Id="b2206740-ee3b-42bc-9b69-b3ef064476be"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="26c9d53d-e59f-405c-94a1-7b86c15f039d"
->
-</ReqRef><Comment>Indicates the timbe between each repetition of the MA request if it has to be repeated until a new MA is received.</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Implemented="TRUE"
- Name="HandleRepetitions"
- Guid="352665ed-7ee9-445c-9429-dadb1453eae5"
->
-<ReqRef
- Id="b2206740-ee3b-42bc-9b69-b3ef064476be"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6e1f9242-7e78-4822-9fba-3689c0395dab"
->
-</ReqRef><Comment>Indicates whether the MA request shall be repeated until a new MA is received or not.</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="HandleTimeouts"
- Guid="d33dfcaf-77bc-4946-94a9-52b60ce95d02"
->
-<ReqRef
- Id="95d3b6c1-0843-4142-a7aa-9589d026598d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8978512a-1560-464d-994b-2ee9be1ea942"
->
-</ReqRef><Comment>Indicates whether the MA requests due to section timeouts have to be handled.</Comment>
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default=""
- Mode="Internal"
- Implemented="TRUE"
- Name="HandlePreindicationLocation"
- Guid="e1a46e17-bcc4-4c3f-a825-45ce186b486a"
->
-<ReqRef
- Id="628ac46e-918d-47a4-9804-1bae59216f63"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4e199458-83df-461a-97a8-fa9f09152bcc"
->
-</ReqRef><Comment>Indicates whether the MA requests due to the pre-indication location have to be handled.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -5887,6 +5986,7 @@ Kernel.Mode not in [Mode.SH, Mode.PS]</Expression>
 </Function></Functions>
 <Procedures>
 <Procedure
+ X="440"
  Y="780"
  Width="100"
  Height="50"
@@ -6060,7 +6160,7 @@ Kernel.Mode not in [Mode.SH, Mode.PS]</Expression>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="110"
+ X="550"
  Y="780"
  Width="100"
  Height="50"
@@ -6438,7 +6538,6 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="330"
  Y="840"
  Width="100"
  Height="50"
@@ -6482,6 +6581,7 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="220"
  Y="840"
  Width="100"
  Height="50"
@@ -6835,8 +6935,7 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="220"
- Y="840"
+ Y="780"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -6926,16 +7025,6 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  Id="200c6541-d8d8-43b9-b5c0-4f586318bbce"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0b95f307-32e9-4b7f-a263-33d54c3b4cee"
->
-</ReqRef><ReqRef
- Id="d833d8f6-90b9-499b-bdb1-408971c2cbfe"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="eac3e3bf-733f-427a-8d04-fe84a6b58c8a"
->
-</ReqRef><ReqRef
- Id="f0c86934-5f4c-4832-bb8d-5fce455e3e7e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d5fb7916-0ab9-4d5d-9d3d-3d810023d757"
 >
 </ReqRef><Comment>Handles reception of the MA.</Comment>
 <SubRules></SubRules>
@@ -7457,6 +7546,26 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2d0a8ab9-9dae-4ed6-a748-95a39c9b153d"
 >
+</ReqRef><ReqRef
+ Id="d833d8f6-90b9-499b-bdb1-408971c2cbfe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a622f005-ec93-4509-9936-58883e29eaa3"
+>
+</ReqRef><ReqRef
+ Id="f0c86934-5f4c-4832-bb8d-5fce455e3e7e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="551b8673-8961-4cd9-8469-961d3530f9e6"
+>
+</ReqRef><ReqRef
+ Id="f9ca42e2-644d-47a2-b6e3-80059c79e361"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e80f884d-b06d-4fb7-89ee-1fb58f2f242f"
+>
+</ReqRef><ReqRef
+ Id="00601485-94ca-4c66-a312-5037844661af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="626ef3ec-8126-47b1-8d9a-a4507f600f1d"
+>
 </ReqRef><Comment>At the end, handles the Movement Authority. This is done after all the packets were handled in order to be able to evaluate the track description, if any.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -7473,13 +7582,11 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 >Kernel.MA.MALvl2or3Received
 (
     Packet =&gt; aMessage.MOVEMENT_AUTHORITY.LEVEL_2_3_MOVEMENT_AUTHORITY,
-    NID_BG =&gt; aMessage.MOVEMENT_AUTHORITY.NID_LRBG
+    NID_BG =&gt; aMessage.MOVEMENT_AUTHORITY.NID_LRBG,
+    SectionStartTimer =&gt; MessageTypes.TimeResolution ( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )
 )</Action><Action
- Guid="ea27a22e-702a-469f-b2a7-d06724785ce8"
-><Comment>Save the time stamp of the new MA for section timers</Comment>
-Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
-    time=&gt;aMessage.MOVEMENT_AUTHORITY.T_TRAIN
-)</Action></Actions>
+ Guid="03bcefd6-b932-4560-84fe-4d09a3f2be6f"
+>Kernel.MA.MATimers.LOATimerStart &lt;- Default.MessageTypes.TimeResolution( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -7642,7 +7749,37 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d45e8c84-d628-48f9-89b7-7969ac7f5b82"
 >
-</ReqRef><Comment>If the MA is accepted, it is handled normally and the section timer will be started</Comment>
+</ReqRef><ReqRef
+ Id="f9ca42e2-644d-47a2-b6e3-80059c79e361"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="88086661-9850-4991-86d6-fdc3f7d416d2"
+>
+</ReqRef><ReqRef
+ Id="00601485-94ca-4c66-a312-5037844661af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ce54f0d-e573-46c8-ab8a-4cb9a0f66dda"
+>
+</ReqRef><ReqRef
+ Id="26d39c75-1c24-46e6-b725-d71bd2fbd1c3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68b21689-1656-4950-ba6d-9f6f2acfd329"
+>
+</ReqRef><ReqRef
+ Id="c11c2ace-e3a5-4fe7-9621-b28a5a50f720"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26c9e98c-6dfc-4341-8953-1c86b2181fe4"
+>
+</ReqRef><ReqRef
+ Id="d88061c9-dc9a-4ffc-8134-4bc8eef39511"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3351e4ec-4c63-42a2-b92c-f33d8f68049d"
+>
+</ReqRef><ReqRef
+ Id="0385292a-59d1-48df-b95b-ac8936ef26aa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d51832e2-d31d-449a-9e23-92956ae8e466"
+>
+</ReqRef><Comment>If the MA is accepted, it is handled normally and the LOA timer is handled.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -7650,17 +7787,39 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
  Name="Shortened MA accepted"
  Guid="1ae7c0c9-87c4-4840-a378-4f75c26cbdbb"
 >
+<Comment>If the shortened MA is accepted, it is stored on-board and the RBC is informed.</Comment>
 <PreConditions>
 <PreCondition
  Guid="cc96c7be-eee9-4b2b-9b03-f57493fb0d0d"
->Kernel.MA.ShortenedMAIsAccepted()</PreCondition></PreConditions>
+>Kernel.MA.ShortenedMAIsAccepted( aShortenedMA =&gt; aMessage.REQUEST_TO_SHORTEN_MA.LEVEL_2_3_MOVEMENT_AUTHORITY )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d4fb8501-640d-4856-92c1-a168eeed555f"
-><Comment>Save the time stamp of the new MA for section timers</Comment>
-Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
-    time=&gt;aMessage.MOVEMENT_AUTHORITY.T_TRAIN
-)</Action></Actions>
+><Comment>Saves the time stamp of the new MA for the LOA timer.</Comment>
+Kernel.MA.MATimers.LOATimerStart &lt;- Default.MessageTypes.TimeResolution( time =&gt; aMessage.REQUEST_TO_SHORTEN_MA.T_TRAIN )</Action><Action
+ Guid="6702a997-d01c-4601-b7d0-cf2f0f22ec85"
+>Kernel.MA.MALvl2or3Received
+(
+    Packet =&gt; aMessage.REQUEST_TO_SHORTEN_MA.LEVEL_2_3_MOVEMENT_AUTHORITY,
+    NID_BG =&gt; aMessage.MOVEMENT_AUTHORITY.NID_LRBG,
+    SectionStartTimer =&gt; MessageTypes.TimeResolution ( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )
+)</Action><Action
+ Guid="02fcd07f-ac43-4f48-82e0-6a487cf9d95a"
+>Kernel.HandlingOfAcceptedAndStoredInformation.CooperativeMARevocationIsGranted &lt;- True</Action><Action
+ Guid="47bf888f-72f4-47d4-92c7-32847fd36109"
+>CurrentRBCConnection().SendRequestToShortenMAIsGranted( TimeStamp =&gt; aMessage.REQUEST_TO_SHORTEN_MA.T_TRAIN )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Shortened MA rejected"
+ Guid="5c78aaf4-7c26-4359-8c40-b958d51f3776"
+>
+<Comment>If the shortened MA is rejected, the RBC is informed.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="bb347d32-fad8-4c16-80dc-e39b3329c50d"
+>CurrentRBCConnection().SendRequestToShortenMAIsRejected( TimeStamp =&gt; aMessage.REQUEST_TO_SHORTEN_MA.T_TRAIN )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -8275,6 +8434,11 @@ Default.MessageTypes.QScaleDistance(
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0a17f545-62a2-415b-9648-05f864f135d4"
 >
+</ReqRef><ReqRef
+ Id="00601485-94ca-4c66-a312-5037844661af"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="297eefcb-fe92-4160-b242-3593360731db"
+>
 </ReqRef><Comment>Handles reception of MA with shifted location reference.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -8284,7 +8448,12 @@ Default.MessageTypes.QScaleDistance(
  Name="MA with shifted location reference"
  Guid="e0951c53-d0ce-491c-8f51-9d84c8f49e55"
 >
-<PreConditions>
+<ReqRef
+ Id="f9ca42e2-644d-47a2-b6e3-80059c79e361"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d62bbe47-2ec4-482e-b95a-9f103e40bfeb"
+>
+</ReqRef><PreConditions>
 <PreCondition
  Guid="4b26ec5f-a027-4caa-bca8-cd8c1bb56153"
 >Available ( aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE )</PreCondition><PreCondition
@@ -8296,13 +8465,11 @@ Default.MessageTypes.QScaleDistance(
 >Kernel.MA.MALvl2or3Received
 (
     Packet =&gt; aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.LEVEL_2_3_MOVEMENT_AUTHORITY,
-    NID_BG =&gt; aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.NID_LRBG
+    NID_BG =&gt; aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.NID_LRBG,
+    SectionStartTimer =&gt; MessageTypes.TimeResolution ( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )
 )</Action><Action
- Guid="99284f00-6c38-42f0-9a3c-fa2f5e7f6d9b"
-><Comment>Save the time stamp of the new MA for section timers</Comment>
-Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
-    time=&gt;aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.T_TRAIN
-)</Action></Actions>
+ Guid="50e62eff-bd12-4fa0-b4e8-45ee5c8367fa"
+>Kernel.MA.MATimers.LOATimerStart &lt;- Default.MessageTypes.TimeResolution( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -9021,12 +9188,12 @@ Kernel.MA.SectionTimerStart &lt;- Default.MessageTypes.TimeResolution(
 <Actions>
 <Action
  Guid="a9e8f466-9aaf-47c1-ae92-7d4f01e53b0c"
->Kernel.TrackDescription.TrackAheadFreeRequested &lt;- True</Action></Actions>
+>Kernel.TrackAheadFree.TrackAheadFreeRequestReceived(  aMessage =&gt; aMessage.TRACK_AHEAD_FREE_REQUEST )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="440"
- Y="780"
+ Y="900"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9507,8 +9674,8 @@ NOT
 >
 </Parameter></Parameters>
 </Procedure><Procedure
- X="440"
- Y="720"
+ X="330"
+ Y="840"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9551,8 +9718,8 @@ NOT
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="330"
- Y="720"
+ X="110"
+ Y="780"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9589,7 +9756,7 @@ But at the end of the cycle the conditions required for sending of position repo
 </Rule></Rules>
 </Procedure><Procedure
  X="550"
- Y="480"
+ Y="840"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -9659,7 +9826,7 @@ But at the end of the cycle the conditions required for sending of position repo
 <Actions>
 <Action
  Guid="320b109a-792e-416d-bbba-d48ea2c1833b"
->MARequestParameters &lt;- MARequestParametersStruct
+>Kernel.MA.MARequest.MARequestParameters &lt;- Kernel.MA.MARequest.MARequestParametersStruct
 {
     PreindicationLocationTime =&gt; MessageTypes.TimeResolution( time =&gt; Packet.T_MAR ),
     SectionTimerTime =&gt; MessageTypes.TimeResolution( time =&gt; Packet.T_TIMEOUTRQST ),
@@ -9698,7 +9865,7 @@ But at the end of the cycle the conditions required for sending of position repo
 <Actions>
 <Action
  Guid="30f9257a-8ea3-4ecc-8601-24c70ff492d7"
->MARequestParameters.HandlePreindicationLocation &lt;- True</Action></Actions>
+>Kernel.MA.MARequest.MARequestParameters.HandlePreindicationLocation &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Pre-indication location has not to be handled"
@@ -9710,7 +9877,7 @@ But at the end of the cycle the conditions required for sending of position repo
 <Actions>
 <Action
  Guid="18636c9f-9aaa-4ff5-8c27-049f405a5abf"
->MARequestParameters.HandlePreindicationLocation &lt;- False</Action></Actions>
+>Kernel.MA.MARequest.MARequestParameters.HandlePreindicationLocation &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9734,7 +9901,7 @@ But at the end of the cycle the conditions required for sending of position repo
 <Actions>
 <Action
  Guid="6ba53e46-8e54-4dc0-bf70-f290747fac02"
->MARequestParameters.HandleTimeouts &lt;- True</Action></Actions>
+>Kernel.MA.MARequest.MARequestParameters.HandleTimeouts &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Timeouts have not to be handled"
@@ -9746,7 +9913,7 @@ But at the end of the cycle the conditions required for sending of position repo
 <Actions>
 <Action
  Guid="68f887a6-fb71-4685-92d2-ea6e3dbda166"
->MARequestParameters.HandleTimeouts &lt;- False</Action></Actions>
+>Kernel.MA.MARequest.MARequestParameters.HandleTimeouts &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -9770,7 +9937,7 @@ But at the end of the cycle the conditions required for sending of position repo
 <Actions>
 <Action
  Guid="c7436dc7-bf48-4b23-92f3-88f26cacf70c"
->MARequestParameters.HandleRepetitions &lt;- True</Action></Actions>
+>Kernel.MA.MARequest.MARequestParameters.HandleRepetitions &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Requests have not to be repeated"
@@ -9782,7 +9949,7 @@ But at the end of the cycle the conditions required for sending of position repo
 <Actions>
 <Action
  Guid="90d2fcd9-38c9-4dc2-8519-b67f724b95ae"
->MARequestParameters.HandleRepetitions &lt;- False</Action></Actions>
+>Kernel.MA.MARequest.MARequestParameters.HandleRepetitions &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -10111,7 +10278,7 @@ But at the end of the cycle the conditions required for sending of position repo
 >
 </ReqRef><Comment>Stores the messages sent by the Accepting RBC before it becomes the supervising RBC.</Comment>
 </Variable><Variable
- Type="ContactOrderStruct"
+ Type="EURORADIO.ContactOrderStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="140"
@@ -10128,24 +10295,6 @@ But at the end of the cycle the conditions required for sending of position repo
  Guid="88e78b40-3606-492a-9021-fd45199aaf6a"
 >
 </ReqRef><Comment>If the first attempt to contact the RBC failed, the corresponding contact order is stored in order to retry contacting the RBC.</Comment>
-</Variable><Variable
- Type="MARequestParametersStruct"
- DefaultValue="EMPTY"
- VariableMode="Internal"
- X="680"
- Y="490"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="MARequestParameters"
- Guid="4ad80678-7cc9-40d9-8f70-14d50a56c72f"
->
-<ReqRef
- Id="b74d1689-f942-4e2a-abdb-aa241f4f117f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="18564ce8-692b-482e-96b4-d018059c6e4d"
->
-</ReqRef><Comment>Contains the parameters for the MA request. If no parameters are stored, the variable is EMPTY.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule

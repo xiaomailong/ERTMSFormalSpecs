@@ -13,13 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.Threading;
+
+using System;
 using System.Collections.Generic;
+using System.Threading;
 using DataDictionary.Generated;
+using DataDictionary.Interpreter.Refactor;
+using DataDictionary.Types;
 using Utils;
+using XmlBooster;
 using Function = DataDictionary.Functions.Function;
 using NameSpace = DataDictionary.Types.NameSpace;
 using StructureElement = DataDictionary.Types.StructureElement;
+using Type = DataDictionary.Types.Type;
 using Variable = DataDictionary.Variables.Variable;
 
 namespace DataDictionary.Interpreter
@@ -44,15 +50,15 @@ namespace DataDictionary.Interpreter
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
-            public override void visit(XmlBooster.IXmlBBase obj, bool visitSubNodes)
+            public override void visit(IXmlBBase obj, bool visitSubNodes)
             {
-                Utils.ISubDeclarator subDeclarator = obj as Utils.ISubDeclarator;
+                ISubDeclarator subDeclarator = obj as ISubDeclarator;
                 if (subDeclarator != null)
                 {
                     subDeclarator.InitDeclaredElements();
                 }
 
-                Utils.IFinder finder = obj as Utils.IFinder;
+                IFinder finder = obj as IFinder;
                 if (finder != null)
                 {
                     finder.ClearCache();
@@ -159,7 +165,7 @@ namespace DataDictionary.Interpreter
             EFSSystem = system;
 
             DoCompile = true;
-            CompilerThread = Utils.ThreadUtil.CreateThread(CompileContinuously);
+            CompilerThread = ThreadUtil.CreateThread(CompileContinuously);
             CompilerThread.Start();
         }
 
@@ -263,7 +269,7 @@ namespace DataDictionary.Interpreter
                     }
                 }
             }
-            
+
 
             /// <summary>
             /// The reference visitor
@@ -286,18 +292,18 @@ namespace DataDictionary.Interpreter
             {
                 TheReferenceVisitor = new ReferenceVisitor();
 
-                foreach (DataDictionary.Dictionary dictionary in system.Dictionaries)
+                foreach (Dictionary dictionary in system.Dictionaries)
                 {
                     visit(dictionary, true);
                 }
             }
 
-            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+            public override void visit(BaseModelElement obj, bool visitSubNodes)
             {
                 IExpressionable expressionnable = obj as IExpressionable;
                 if (expressionnable != null)
                 {
-                    Functions.Function enclosingFunction = EnclosingFinder<Functions.Function>.find(obj, true);
+                    Function enclosingFunction = EnclosingFinder<Function>.find(obj, true);
                     if (enclosingFunction != null)
                     {
                         // The value of the function depends on this. 
@@ -317,7 +323,7 @@ namespace DataDictionary.Interpreter
             /// <summary>
             /// The elements that have already been browsed
             /// </summary>
-            private HashSet<Utils.ModelElement> BrowsedElements { get; set; } 
+            private HashSet<Utils.ModelElement> BrowsedElements { get; set; }
 
             /// <summary>
             /// Constructor
@@ -325,7 +331,7 @@ namespace DataDictionary.Interpreter
             /// <param name="system"></param>
             public FlattenDependancy(EFSSystem system)
             {
-                foreach (DataDictionary.Dictionary dictionary in system.Dictionaries)
+                foreach (Dictionary dictionary in system.Dictionaries)
                 {
                     foreach (NameSpace nameSpace in dictionary.NameSpaces)
                     {
@@ -429,7 +435,7 @@ namespace DataDictionary.Interpreter
                 CleanBeforeCompilation cleanBeforeCompilation = new CleanBeforeCompilation(options, EFSSystem);
 
                 // Compiles each expression and each statement encountered in the nodes
-                foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+                foreach (Dictionary dictionary in EFSSystem.Dictionaries)
                 {
                     visit(dictionary, true);
                 }
@@ -443,7 +449,7 @@ namespace DataDictionary.Interpreter
                     }
                 }
             }
-            catch (System.Exception)
+            catch (Exception)
             {
             }
             finally
@@ -510,7 +516,8 @@ namespace DataDictionary.Interpreter
         }
 
         #region Compilation
-        public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+
+        public override void visit(BaseModelElement obj, bool visitSubNodes)
         {
             IExpressionable expressionnable = obj as IExpressionable;
             if (expressionnable != null)
@@ -524,11 +531,11 @@ namespace DataDictionary.Interpreter
                 expressionnable.Compile();
             }
 
-            Types.ITypedElement typedElement = obj as Types.ITypedElement;
+            ITypedElement typedElement = obj as ITypedElement;
             if (typedElement != null)
             {
                 // Ensures that the type of the corresponding element is cached
-                Types.Type type = typedElement.Type;
+                Type type = typedElement.Type;
             }
 
             base.visit(obj, visitSubNodes);
@@ -536,15 +543,17 @@ namespace DataDictionary.Interpreter
 
         public override void visit(Generated.Namable obj, bool visitSubNodes)
         {
-            Namable namable = (Namable)obj;
+            Namable namable = (Namable) obj;
 
             namable.ClearFullName();
 
             base.visit(obj, visitSubNodes);
         }
+
         #endregion
 
         #region Refactoring
+
         /// <summary>
         /// Cleans the caches of the full names
         /// </summary>
@@ -552,7 +561,7 @@ namespace DataDictionary.Interpreter
         {
             public override void visit(Generated.Namable obj, bool visitSubNodes)
             {
-                Namable namable = (Namable)obj;
+                Namable namable = (Namable) obj;
 
                 namable.ClearFullName();
 
@@ -573,12 +582,12 @@ namespace DataDictionary.Interpreter
                 {
                     string name = element.ReferenceName(user as ModelElement);
 
-                    Refactor.RefactorTree refactorer = new Refactor.RefactorTree(element, name);
+                    RefactorTree refactorer = new RefactorTree(element, name);
                     refactorer.PerformUpdate(user);
                 }
-                catch (System.Exception e)
+                catch (Exception e)
                 {
-                    ((ModelElement)user).AddError("Cannot refactor this element, reason = " + e.Message);
+                    ((ModelElement) user).AddError("Cannot refactor this element, reason = " + e.Message);
                 }
             }
         }
@@ -588,13 +597,13 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="element">The element that has been modified</param>
         /// <param name="user">The user which references this type</param>
-        private static void RefactorTypedElement(ModelElement element, Types.ITypedElement user)
+        private static void RefactorTypedElement(ModelElement element, ITypedElement user)
         {
             if (user != null)
             {
                 try
                 {
-                    Functions.Function userFunction = user as Functions.Function;
+                    Function userFunction = user as Function;
                     if ((user.Type == element))
                     {
                         string newName = element.ReferenceName(user as ModelElement);
@@ -602,12 +611,12 @@ namespace DataDictionary.Interpreter
                     }
                     else if (userFunction != null && userFunction.ReturnType == element)
                     {
-                        userFunction.ReturnType = element as Types.Type;
+                        userFunction.ReturnType = element as Type;
                     }
-                    else if (element is Types.NameSpace)
+                    else if (element is NameSpace)
                     {
                         string newName;
-                        Functions.Function function = user as Functions.Function;
+                        Function function = user as Function;
                         if (function != null)
                         {
                             newName = function.ReturnType.ReferenceName(element);
@@ -620,9 +629,9 @@ namespace DataDictionary.Interpreter
                         }
                     }
                 }
-                catch (System.Exception e)
+                catch (Exception e)
                 {
-                    ((ModelElement)user).AddError("Cannot refactor this element, reason = " + e.Message);
+                    ((ModelElement) user).AddError("Cannot refactor this element, reason = " + e.Message);
                 }
             }
         }
@@ -635,21 +644,21 @@ namespace DataDictionary.Interpreter
             /// <summary>
             /// The namespace that has been modified, and for which the process is launched
             /// </summary>
-            private Types.NameSpace NameSpace { get; set; }
+            private NameSpace NameSpace { get; set; }
 
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="dictionary"></param>
-            public NameSpaceRefactorer(Types.NameSpace nameSpace)
+            public NameSpaceRefactorer(NameSpace nameSpace)
             {
                 NameSpace = nameSpace;
             }
 
-            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+            public override void visit(BaseModelElement obj, bool visitSubNodes)
             {
                 RefactorIExpressionable(NameSpace, obj as IExpressionable);
-                RefactorTypedElement(NameSpace, obj as Types.ITypedElement);
+                RefactorTypedElement(NameSpace, obj as ITypedElement);
 
                 base.visit(obj, visitSubNodes);
             }
@@ -665,16 +674,16 @@ namespace DataDictionary.Interpreter
             {
                 // Cleans fullname cache
                 FullNameCleaner cleaner = new FullNameCleaner();
-                foreach (DataDictionary.Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
+                foreach (Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
                 {
                     cleaner.visit(dictionary);
                 }
 
-                Types.NameSpace nameSpace = element as Types.NameSpace;
+                NameSpace nameSpace = element as NameSpace;
                 if (nameSpace != null)
                 {
                     NameSpaceRefactorer refactorer = new NameSpaceRefactorer(nameSpace);
-                    foreach (DataDictionary.Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
+                    foreach (Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
                     {
                         refactorer.visit(dictionary);
                     }
@@ -686,7 +695,7 @@ namespace DataDictionary.Interpreter
                     foreach (Usage usage in usages)
                     {
                         RefactorIExpressionable(element, usage.User as IExpressionable);
-                        RefactorTypedElement(element, usage.User as Types.ITypedElement);
+                        RefactorTypedElement(element, usage.User as ITypedElement);
                     }
                 }
             }
@@ -699,12 +708,12 @@ namespace DataDictionary.Interpreter
             /// </summary>
             private ModelElement BaseLocation { get; set; }
 
-            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+            public override void visit(BaseModelElement obj, bool visitSubNodes)
             {
                 IExpressionable expressionable = obj as IExpressionable;
                 if (expressionable != null)
                 {
-                    Interpreter.Refactor.RelocateTree refactorer = new Refactor.RelocateTree(BaseLocation);
+                    RelocateTree refactorer = new RelocateTree(BaseLocation);
                     refactorer.PerformUpdate(expressionable);
                 }
 
@@ -719,7 +728,7 @@ namespace DataDictionary.Interpreter
             {
                 ModelElement current = modelElement;
 
-                while (current != null && !(current is Types.Type) && !(current is Types.NameSpace))
+                while (current != null && !(current is Type) && !(current is NameSpace))
                 {
                     current = current.Enclosing as ModelElement;
                 }
@@ -742,6 +751,7 @@ namespace DataDictionary.Interpreter
                 relocator.visit(model);
             }
         }
+
         #endregion
     }
 }

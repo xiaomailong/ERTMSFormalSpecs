@@ -13,13 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
 using System.Drawing;
-using System.Windows.Forms;
 using System.Reflection;
+using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.EditorView;
+using Utils;
+using Type = System.Type;
 
 namespace GUI
 {
@@ -34,11 +35,11 @@ namespace GUI
         /// Refreshes the view according to the model element that has been changed
         /// </summary>
         /// <param name="model"></param>
-        public static void RefreshViewAccordingToModel(DataDictionary.Generated.BaseModelElement model)
+        public static void RefreshViewAccordingToModel(BaseModelElement model)
         {
-            MDIWindow.Invoke((MethodInvoker)delegate
+            MDIWindow.Invoke((MethodInvoker) delegate
             {
-                foreach (EditorView.Window editor in MDIWindow.Editors)
+                foreach (Window editor in MDIWindow.Editors)
                 {
                     if (editor.Instance == model)
                     {
@@ -60,7 +61,7 @@ namespace GUI
         /// Finds in an enclosing element the element whose type matches T
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public class EnclosingFinder<T> : Utils.IFinder
+        public class EnclosingFinder<T> : IFinder
             where T : class
         {
             /// <summary>
@@ -68,7 +69,7 @@ namespace GUI
             /// </summary>
             public EnclosingFinder()
             {
-                Utils.FinderRepository.INSTANCE.Register(this);
+                FinderRepository.INSTANCE.Register(this);
             }
 
             /// <summary>
@@ -76,7 +77,7 @@ namespace GUI
             /// </summary>
             /// <param name="el"></param>
             /// <returns></returns>
-            public static T find(System.Windows.Forms.Control el)
+            public static T find(Control el)
             {
                 while (el != null && !(el is T))
                 {
@@ -98,27 +99,27 @@ namespace GUI
             PropertyGrid propertyGrid,
             int labelColumnPercentageWidth)
         {
-            var width =
-                propertyGrid.Width * (labelColumnPercentageWidth / 100.0);
+            double width =
+                propertyGrid.Width*(labelColumnPercentageWidth/100.0);
 
             // Go up in hierarchy until found real property grid type.
-            var realType = propertyGrid.GetType();
-            while (realType != null && realType != typeof(PropertyGrid))
+            Type realType = propertyGrid.GetType();
+            while (realType != null && realType != typeof (PropertyGrid))
             {
                 realType = realType.BaseType;
             }
 
-            var gvf = realType.GetField(@"gridView",
+            FieldInfo gvf = realType.GetField(@"gridView",
                 BindingFlags.NonPublic |
                 BindingFlags.GetField |
                 BindingFlags.Instance);
-            var gv = gvf.GetValue(propertyGrid);
+            object gv = gvf.GetValue(propertyGrid);
 
-            var mtf = gv.GetType().GetMethod(@"MoveSplitterTo",
+            MethodInfo mtf = gv.GetType().GetMethod(@"MoveSplitterTo",
                 BindingFlags.NonPublic |
                 BindingFlags.InvokeMethod |
                 BindingFlags.Instance);
-            mtf.Invoke(gv, new object[] { (int)width });
+            mtf.Invoke(gv, new object[] {(int) width});
         }
 
         /// <summary>
@@ -133,13 +134,13 @@ namespace GUI
 
             if (graphics.MeasureString(text, font).Width > width)
             {
-                width = (int)(width - graphics.MeasureString("...", font).Width);
+                width = (int) (width - graphics.MeasureString("...", font).Width);
                 int i = text.Length;
-                int step = i / 2;
-                while (step > 0  && graphics.MeasureString(text.Substring(0, i), font).Width > width)
+                int step = i/2;
+                while (step > 0 && graphics.MeasureString(text.Substring(0, i), font).Width > width)
                 {
                     i = i - step;
-                    step = step / 2;
+                    step = step/2;
                     while (graphics.MeasureString(text.Substring(0, i), font).Width < width && step > 0)
                     {
                         i = i + step;

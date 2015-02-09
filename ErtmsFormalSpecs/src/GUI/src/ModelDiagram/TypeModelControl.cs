@@ -13,16 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Drawing;
+using System.Windows.Forms;
+using DataDictionary.Types;
+
 namespace GUI.ModelDiagram
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary;
-    using System.Drawing;
-    using System.Windows.Forms;
-
     /// <summary>
     /// The boxes that represent a type 
     /// </summary>
@@ -31,7 +28,7 @@ namespace GUI.ModelDiagram
         /// <summary>
         /// Constructor
         /// </summary>
-        public TypeModelControl(DataDictionary.Types.Type model)
+        public TypeModelControl(Type model)
             : base(model)
         {
             NORMAL_COLOR = Color.LightSteelBlue;
@@ -43,9 +40,9 @@ namespace GUI.ModelDiagram
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void HandleMouseClick(object sender, MouseEventArgs e)
+        private void HandleMouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 Panel.Select(this, true);
             }

@@ -13,15 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows.Forms;
 using System.Drawing.Design;
+using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.Converters;
+using Range = DataDictionary.Types.Range;
 
 namespace GUI.DataDictionaryView
 {
-    public class RangeTreeNode : TypeTreeNode<DataDictionary.Types.Range>
+    public class RangeTreeNode : TypeTreeNode<Range>
     {
         /// <summary>
         /// The editor for Range types
@@ -36,8 +40,8 @@ namespace GUI.DataDictionaryView
             {
             }
 
-            [Category("Description"), TypeConverter(typeof(Converters.RangePrecisionConverter))]
-            public DataDictionary.Generated.acceptor.PrecisionEnum Precision
+            [Category("Description"), TypeConverter(typeof (RangePrecisionConverter))]
+            public acceptor.PrecisionEnum Precision
             {
                 get { return Item.getPrecision(); }
                 set { Item.setPrecision(value); }
@@ -61,9 +65,9 @@ namespace GUI.DataDictionaryView
             /// The range default value
             /// </summary>
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.DefaultValueUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.DefaultValueUITypeConverter))]
-            public DataDictionary.Types.Range DefaultValue
+            [Editor(typeof (DefaultValueUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (DefaultValueUITypeConverter))]
+            public Range DefaultValue
             {
                 get { return Item; }
                 set
@@ -74,14 +78,14 @@ namespace GUI.DataDictionaryView
             }
         }
 
-        RangeValuesTreeNode specialValues;
+        private RangeValuesTreeNode specialValues;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public RangeTreeNode(DataDictionary.Types.Range item, bool buildSubNodes)
+        public RangeTreeNode(Range item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }
@@ -91,7 +95,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public RangeTreeNode(DataDictionary.Types.Range item, bool buildSubNodes, string name, bool isFolder, bool addRequirements)
+        public RangeTreeNode(Range item, bool buildSubNodes, string name, bool isFolder, bool addRequirements)
             : base(item, buildSubNodes, name, isFolder, addRequirements)
         {
         }

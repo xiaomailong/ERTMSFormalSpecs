@@ -13,10 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Windows.Forms;
+using DataDictionary;
+
 namespace GUI.LongOperations
 {
-    using System.Windows.Forms;
-
     /// <summary>
     /// A save file configuration
     /// </summary>
@@ -30,19 +32,19 @@ namespace GUI.LongOperations
         /// <summary>
         /// The dictionary to save
         /// </summary>
-        private DataDictionary.Dictionary Dictionary { get; set; }
+        private Dictionary Dictionary { get; set; }
 
         /// <summary>
         /// The system to save
         /// </summary>
-        private DataDictionary.EFSSystem System { get; set; }
+        private EFSSystem System { get; set; }
 
         /// <summary>
         /// Constructor used to save a single dictionary
         /// </summary>
         /// <param name="mainWindow"></param>
         /// <param name="dictionary"></param>
-        public SaveOperation(MainWindow mainWindow, DataDictionary.Dictionary dictionary)
+        public SaveOperation(MainWindow mainWindow, Dictionary dictionary)
         {
             MainWindow = mainWindow;
             Dictionary = dictionary;
@@ -54,7 +56,7 @@ namespace GUI.LongOperations
         /// </summary>
         /// <param name="mainWindow"></param>
         /// <param name="system"></param>
-        public SaveOperation(MainWindow mainWindow, DataDictionary.EFSSystem system)
+        public SaveOperation(MainWindow mainWindow, EFSSystem system)
         {
             MainWindow = mainWindow;
             System = system;
@@ -66,7 +68,7 @@ namespace GUI.LongOperations
         /// <param name="arg"></param>
         public override void ExecuteWork()
         {
-            DataDictionary.Util.UnlockAllFiles();
+            Util.UnlockAllFiles();
 
             try
             {
@@ -77,7 +79,7 @@ namespace GUI.LongOperations
                 else
                 {
                     // Save all dictionaries
-                    foreach (DataDictionary.Dictionary dictionary in System.Dictionaries)
+                    foreach (Dictionary dictionary in System.Dictionaries)
                     {
                         dictionary.save();
                     }
@@ -85,12 +87,9 @@ namespace GUI.LongOperations
             }
             finally
             {
-                DataDictionary.Util.LockAllFiles();
+                Util.LockAllFiles();
                 System.ShouldSave = false;
-                MainWindow.Invoke((MethodInvoker)delegate
-                {
-                    MainWindow.UpdateTitle();
-                });
+                MainWindow.Invoke((MethodInvoker) delegate { MainWindow.UpdateTitle(); });
             }
         }
     }

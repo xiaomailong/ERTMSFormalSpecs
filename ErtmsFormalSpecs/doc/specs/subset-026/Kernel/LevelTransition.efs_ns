@@ -1382,7 +1382,9 @@ AcknowledgementRequiredForLT( anLTO =&gt; LevelTransitionToProcess )</PreConditi
 <Actions>
 <Action
  Guid="617b5f25-4fc9-4476-a25c-ce5ca0b97228"
->TIU.ServiceBrakeCommanded &lt;- True</Action></Actions>
+>TIU.ServiceBrakeCommanded &lt;- True</Action><Action
+ Guid="62fd7a18-4152-4c77-84ab-a04f6e72c0f6"
+>AddSBCommand(BrakeReason.DriverAckRequired)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Service brake applied, driver acknowledges"
@@ -1405,10 +1407,14 @@ AcknowledgementRequiredForLT( anLTO =&gt; LevelTransitionToProcess )</PreConditi
  Guid="bb75a97e-9347-4f16-9157-f1243bcaeff9"
 >TIU.ServiceBrakeCommanded &lt;- False</Action><Action
  Guid="3b2c7e90-7a82-4030-b7be-38fdead76ad1"
->AcknowledgementTime &lt;- BaseTypes.Time.NA</Action></Actions>
+>AcknowledgementTime &lt;- BaseTypes.Time.NA</Action><Action
+ Guid="fb3a834b-5301-4613-b62c-7cb025633ba8"
+>RemoveSBCommand(BrakeReason.DriverAckRequired)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ X="240"
+ Y="440"
  Width="100"
  Height="50"
  Implemented="TRUE"

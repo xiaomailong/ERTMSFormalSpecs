@@ -13,25 +13,31 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using Microsoft.Office.Interop.Excel;
-using DataDictionary;
-using DataDictionary.Specification;
-using Utils;
 
+using System;
+using System.Reflection;
+using DataDictionary.Generated;
+using log4net;
+using Microsoft.Office.Interop.Excel;
+using Utils;
+using Chapter = DataDictionary.Specification.Chapter;
+using Dictionary = DataDictionary.Dictionary;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using Range = Microsoft.Office.Interop.Excel.Range;
+using ReqRef = DataDictionary.ReqRef;
+using RequirementSet = DataDictionary.Specification.RequirementSet;
+using RequirementSetReference = DataDictionary.Specification.RequirementSetReference;
+using Specification = DataDictionary.Specification.Specification;
 
 namespace Importers.ExcelImporter
 {
     public class SpecsImporter : ProgressHandler
     {
-        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
 
         public Dictionary TheDictionary;
         public string FileName;
-
 
 
         // The sheets of the workbook are:
@@ -56,23 +62,23 @@ namespace Importers.ExcelImporter
         {
             if (TheDictionary != null)
             {
-                Microsoft.Office.Interop.Excel.Application application = new Microsoft.Office.Interop.Excel.Application();
+                Application application = new Application();
                 if (application != null)
                 {
                     Workbook workbook = application.Workbooks.Open(FileName);
                     if (workbook.Sheets.Count == 11)
                     {
-                        Specification newSpecification = (Specification)DataDictionary.Generated.acceptor.getFactory().createSpecification();
+                        Specification newSpecification = (Specification) acceptor.getFactory().createSpecification();
                         newSpecification.Name = "Start Stop Conditions";
                         TheDictionary.appendSpecifications(newSpecification);
 
-                        Chapter newChapter = (Chapter)DataDictionary.Generated.acceptor.getFactory().createChapter();
+                        Chapter newChapter = (Chapter) acceptor.getFactory().createChapter();
                         newChapter.setId("1 - DMI inputs");
                         newSpecification.appendChapters(newChapter);
                         Worksheet aWorksheet = workbook.Sheets[7] as Worksheet;
                         importParagraphs(newChapter, "1", aWorksheet);
 
-                        newChapter = (Chapter)DataDictionary.Generated.acceptor.getFactory().createChapter();
+                        newChapter = (Chapter) acceptor.getFactory().createChapter();
                         newChapter.setId("2 - DMI outputs");
                         newSpecification.appendChapters(newChapter);
                         aWorksheet = workbook.Sheets[8] as Worksheet;
@@ -103,21 +109,21 @@ namespace Importers.ExcelImporter
 
             for (int i = 2; i <= aRange.Rows.Count; i++)
             {
-                string specId = (string)(aRange.Cells[i, 1] as Range).Value2;
+                string specId = (string) (aRange.Cells[i, 1] as Range).Value2;
                 if (specId != null)
                 {
                     // Create the new paragraph
-                    Paragraph aParagraph = (Paragraph)DataDictionary.Generated.acceptor.getFactory().createParagraph();
+                    Paragraph aParagraph = (Paragraph) acceptor.getFactory().createParagraph();
                     aParagraph.setId(chapterId + "." + paragraphId.ToString());
                     paragraphId++;
-                    aParagraph.setType(DataDictionary.Generated.acceptor.Paragraph_type.aNOTE);
-                    aParagraph.setImplementationStatus(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
+                    aParagraph.setType(acceptor.Paragraph_type.aNOTE);
+                    aParagraph.setImplementationStatus(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable);
 
 
                     // Add the requirement set "Onboard"
                     aParagraph.setObsoleteScopeOnBoard(false);
                     aParagraph.setObsoleteScopeTrackside(false);
-                    RequirementSetReference requirementSetReference = (RequirementSetReference)DataDictionary.Generated.acceptor.getFactory().createRequirementSetReference();
+                    RequirementSetReference requirementSetReference = (RequirementSetReference) acceptor.getFactory().createRequirementSetReference();
                     RequirementSet requirementSet = TheDictionary.findRequirementSet("Scope", false);
                     if (requirementSet != null)
                     {
@@ -142,27 +148,27 @@ namespace Importers.ExcelImporter
 
 
                     // Create of the text of paragraph
-                    aParagraph.Text = (string)(aRange.Cells[i, 2] as Range).Value2 + "\n";  // description
-                    text = (string)(aRange.Cells[i, 6] as Range).Value2;  // start condition
+                    aParagraph.Text = (string) (aRange.Cells[i, 2] as Range).Value2 + "\n"; // description
+                    text = (string) (aRange.Cells[i, 6] as Range).Value2; // start condition
                     if (text != null)
                     {
                         aParagraph.Text += "START: " + text + "\n";
-                        if (specId.Equals((string)(aRange.Cells[i + 1, 1] as Range).Value2))  // the following element can give the stop condition for the current element
+                        if (specId.Equals((string) (aRange.Cells[i + 1, 1] as Range).Value2)) // the following element can give the stop condition for the current element
                         {
-                            text = (string)(aRange.Cells[i + 1, 7] as Range).Value2;  // stop condition
+                            text = (string) (aRange.Cells[i + 1, 7] as Range).Value2; // stop condition
                             if (text != null)
                             {
                                 aParagraph.Text += "STOP: " + text + "\n";
-                                skipRow = true;  // the remaining information of the following document is identical => let's skip it
+                                skipRow = true; // the remaining information of the following document is identical => let's skip it
                             }
                         }
                     }
-                    text = (string)(aRange.Cells[i, 7] as Range).Value2;  // stop condition
+                    text = (string) (aRange.Cells[i, 7] as Range).Value2; // stop condition
                     if (text != null)
                     {
                         aParagraph.Text += "STOP: " + text + "\n";
                     }
-                    text = (string)(aRange.Cells[i, 8] as Range).Value2;  // comment
+                    text = (string) (aRange.Cells[i, 8] as Range).Value2; // comment
                     if (text != null)
                     {
                         aParagraph.Text += "Comment: " + text + "\n";
@@ -177,27 +183,27 @@ namespace Importers.ExcelImporter
 
                     if (refParagraph != null)
                     {
-                        ReqRef aReqRef = (ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
+                        ReqRef aReqRef = (ReqRef) acceptor.getFactory().createReqRef();
                         aReqRef.Paragraph = aParagraph;
                         refParagraph.appendRequirements(aReqRef);
                     }
                     else
                     {
-                        aParagraph.Text += "SUBSET-026 REFERENCE: " + specId + "\n"; 
+                        aParagraph.Text += "SUBSET-026 REFERENCE: " + specId + "\n";
                         Log.ErrorFormat("Paragraph id " + specId + " could not be found.");
                     }
 
 
                     // DMI references
-                    text = (string)(aRange.Cells[i, 3] as Range).Value2;  // DMI object
+                    text = (string) (aRange.Cells[i, 3] as Range).Value2; // DMI object
                     if (text != null)
                     {
                         aParagraph.Text += "DMI OBJECT: " + text + "\n";
-                        text = (string)(aRange.Cells[i, 4] as Range).Value2;  // DMI area
+                        text = (string) (aRange.Cells[i, 4] as Range).Value2; // DMI area
                         if (text != null)
                         {
                             aParagraph.Text += "DMI AREA: " + text + "\n";
-                            object reference = (aRange.Cells[i, 5] as Range).Value2;  // DMI reference
+                            object reference = (aRange.Cells[i, 5] as Range).Value2; // DMI reference
                             if (reference != null)
                             {
                                 aParagraph.Text += "DMI REFERENCE: " + reference.ToString();

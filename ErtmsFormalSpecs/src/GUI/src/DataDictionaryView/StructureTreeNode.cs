@@ -13,13 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Types;
 
 namespace GUI.DataDictionaryView
 {
-    public class StructureTreeNode : TypeTreeNode<DataDictionary.Types.Structure>
+    public class StructureTreeNode : TypeTreeNode<Structure>
     {
         private class ItemEditor : TypeEditor
         {
@@ -47,7 +49,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public StructureTreeNode(DataDictionary.Types.Structure item, bool buildSubNodes)
+        public StructureTreeNode(Structure item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }
@@ -57,7 +59,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public StructureTreeNode(DataDictionary.Types.Structure item, bool buildSubNodes, string name, bool isFolder, bool addRequirements)
+        public StructureTreeNode(Structure item, bool buildSubNodes, string name, bool isFolder, bool addRequirements)
             : base(item, buildSubNodes, name, isFolder, addRequirements)
         {
         }
@@ -89,7 +91,7 @@ namespace GUI.DataDictionaryView
             return new ItemEditor();
         }
 
-        public void AddStructureElement(DataDictionary.Types.StructureElement element)
+        public void AddStructureElement(StructureElement element)
         {
             elements.AddElement(element);
         }

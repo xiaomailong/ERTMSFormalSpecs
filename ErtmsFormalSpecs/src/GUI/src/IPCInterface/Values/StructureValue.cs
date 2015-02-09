@@ -13,15 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using DataDictionary.Generated;
+using DataDictionary.Values;
+using Structure = DataDictionary.Types.Structure;
+using StructureElement = DataDictionary.Types.StructureElement;
+using Type = DataDictionary.Types.Type;
+using Variable = DataDictionary.Variables.Variable;
+
 namespace GUI.IPCInterface.Values
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Runtime.Serialization;
-    using System.ServiceModel;
-
     [DataContract]
     public class StructureValue : Value
     {
@@ -67,21 +71,21 @@ namespace GUI.IPCInterface.Values
         /// Converts the value provided as an EFS value
         /// </summary>
         /// <returns></returns>
-        public override DataDictionary.Values.IValue convertBack(DataDictionary.Types.Type type)
+        public override IValue convertBack(Type type)
         {
             DataDictionary.Values.StructureValue retVal = null;
 
-            DataDictionary.Types.Structure structureType = type as DataDictionary.Types.Structure;
+            Structure structureType = type as Structure;
             if (structureType != null)
             {
                 retVal = new DataDictionary.Values.StructureValue(structureType);
 
                 foreach (KeyValuePair<string, Value> pair in Value)
                 {
-                    DataDictionary.Types.StructureElement element = structureType.findStructureElement(pair.Key);
+                    StructureElement element = structureType.findStructureElement(pair.Key);
                     if (element != null)
                     {
-                        DataDictionary.Variables.Variable variable = (DataDictionary.Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
+                        Variable variable = (Variable) acceptor.getFactory().createVariable();
                         variable.Name = element.Name;
                         variable.Value = pair.Value.convertBack(element.Type);
                         retVal.set(variable);

@@ -1,22 +1,19 @@
 using System;
 
-namespace XmlBooster 
+namespace XmlBooster
 {
+    public class XmlBException : Exception
+    {
+        private string theMsg;
 
+        public XmlBException(string msg)
+        {
+            theMsg = msg;
+        }
 
-	public class XmlBException: Exception
-		{
-
-			private string theMsg;
-
-			public XmlBException (string msg)
-	{
-		theMsg = msg;
-	}
-
-	public string getMsg()
-{
-	return theMsg;
-}
-}
+        public string getMsg()
+        {
+            return theMsg;
+        }
+    }
 }

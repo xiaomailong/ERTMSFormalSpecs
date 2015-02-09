@@ -14,9 +14,11 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Generated;
+
 namespace DataDictionary.Specification
 {
-    public class Value : Generated.value
+    public class Value : value
     {
         /// <summary>
         /// The Value content

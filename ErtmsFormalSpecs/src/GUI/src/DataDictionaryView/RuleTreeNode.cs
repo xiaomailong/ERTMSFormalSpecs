@@ -13,15 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
-
+using DataDictionary.Generated;
+using GUI.Converters;
+using Dictionary = DataDictionary.Dictionary;
+using Rule = DataDictionary.Rules.Rule;
 
 namespace GUI.DataDictionaryView
 {
-    public class RuleTreeNode : ReqRelatedTreeNode<DataDictionary.Rules.Rule>
+    public class RuleTreeNode : ReqRelatedTreeNode<Rule>
     {
         private class ItemEditor : ReqRelatedEditor
         {
@@ -36,8 +40,8 @@ namespace GUI.DataDictionaryView
             /// <summary>
             /// The item name
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(Converters.RulePriorityConverter))]
-            public DataDictionary.Generated.acceptor.RulePriority Priority
+            [Category("Description"), TypeConverter(typeof (RulePriorityConverter))]
+            public acceptor.RulePriority Priority
             {
                 get { return Item.getPriority(); }
                 set { Item.setPriority(value); }
@@ -50,7 +54,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public RuleTreeNode(DataDictionary.Rules.Rule item, bool buildSubNodes)
+        public RuleTreeNode(Rule item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }
@@ -59,7 +63,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public RuleTreeNode(string name, DataDictionary.Rules.Rule item, bool buildSubNodes)
+        public RuleTreeNode(string name, Rule item, bool buildSubNodes)
             : base(item, buildSubNodes, name, false, true)
         {
         }
@@ -99,7 +103,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         public void DisableHandler(object sender, EventArgs args)
         {
-            DataDictionary.Dictionary dictionary = GUIUtils.MDIWindow.GetActiveDictionary();
+            Dictionary dictionary = GUIUtils.MDIWindow.GetActiveDictionary();
 
             if (dictionary != null)
             {

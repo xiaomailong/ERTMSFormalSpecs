@@ -13,13 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary.Types;
+
 namespace DataDictionary.Interpreter.Refactor
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// This visitor is used to handle refactoring of expressions.
     /// </summary>
@@ -34,10 +32,10 @@ namespace DataDictionary.Interpreter.Refactor
         {
             bool replaced = false;
 
-            if (!(derefExpression.Ref is Types.StructureElement))
+            if (!(derefExpression.Ref is StructureElement))
             {
                 ModelElement model = derefExpression.Ref as ModelElement;
-                ModelElement enclosingModel = derefExpression.Arguments[derefExpression.Arguments.Count-2].Ref as ModelElement;
+                ModelElement enclosingModel = derefExpression.Arguments[derefExpression.Arguments.Count - 2].Ref as ModelElement;
                 if (model != null && enclosingModel != null)
                 {
                     ReplaceText(model.ReferenceName(BaseLocation), derefExpression.Start, derefExpression.End);

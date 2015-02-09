@@ -13,15 +13,21 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
-using DataDictionary.Specification;
+using DataDictionary.Generated;
+using Importers.RtfDeltaImporter;
+using Reports.Importer;
+using Chapter = DataDictionary.Specification.Chapter;
+using RequirementSetReference = DataDictionary.Specification.RequirementSetReference;
+using Specification = DataDictionary.Specification.Specification;
 
 namespace GUI.SpecificationView
 {
-    public class SpecificationTreeNode : ModelElementTreeNode<DataDictionary.Specification.Specification>
+    public class SpecificationTreeNode : ModelElementTreeNode<Specification>
     {
         /// <summary>
         /// The value editor
@@ -69,7 +75,7 @@ namespace GUI.SpecificationView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public SpecificationTreeNode(DataDictionary.Specification.Specification item, bool buildSubNodes)
+        public SpecificationTreeNode(Specification item, bool buildSubNodes)
             : base(item, buildSubNodes, null, true)
         {
         }
@@ -82,7 +88,7 @@ namespace GUI.SpecificationView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Specification.Chapter chapter in Item.Chapters)
+            foreach (Chapter chapter in Item.Chapters)
             {
                 Nodes.Add(new ChapterTreeNode(chapter, buildSubNodes));
             }
@@ -104,7 +110,7 @@ namespace GUI.SpecificationView
         /// Adds a new chapter to this specification
         /// </summary>
         /// <param name="chapter"></param>
-        public void AddChapter(DataDictionary.Specification.Chapter chapter)
+        public void AddChapter(Chapter chapter)
         {
             Item.appendChapters(chapter);
             Nodes.Add(new ChapterTreeNode(chapter, true));
@@ -113,7 +119,7 @@ namespace GUI.SpecificationView
 
         public void AddChapterHandler(object sender, EventArgs args)
         {
-            DataDictionary.Specification.Chapter chapter = (DataDictionary.Specification.Chapter)DataDictionary.Generated.acceptor.getFactory().createChapter();
+            Chapter chapter = (Chapter) acceptor.getFactory().createChapter();
             chapter.setId("" + (Item.countChapters() + 1));
             AddChapter(chapter);
         }
@@ -170,7 +176,6 @@ namespace GUI.SpecificationView
         /// ------------------------------------------------------
         ///    IMPORT SPEC OPERATIONS
         /// ------------------------------------------------------
-
         private void ImportNewSpecificationReleaseHandler(object sender, EventArgs args)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -188,12 +193,12 @@ namespace GUI.SpecificationView
                     string baseFileName = createBaseFileName(OriginalFileName, NewFileName);
 
                     /// Perform the importation
-                    Importers.RtfDeltaImporter.Importer importer = new Importers.RtfDeltaImporter.Importer(OriginalFileName, NewFileName, Item);
+                    Importer importer = new Importer(OriginalFileName, NewFileName, Item);
                     ProgressDialog dialog = new ProgressDialog("Opening file", importer);
                     dialog.ShowDialog();
 
                     /// Creates the report based on the importation result
-                    Reports.Importer.DeltaImportReportHandler reportHandler = new Reports.Importer.DeltaImportReportHandler(Item.Dictionary, importer.NewDocument, baseFileName);
+                    DeltaImportReportHandler reportHandler = new DeltaImportReportHandler(Item.Dictionary, importer.NewDocument, baseFileName);
                     dialog = new ProgressDialog("Opening file", reportHandler);
                     dialog.ShowDialog();
 
@@ -234,6 +239,5 @@ namespace GUI.SpecificationView
 
             return baseFileName;
         }
-
     }
 }

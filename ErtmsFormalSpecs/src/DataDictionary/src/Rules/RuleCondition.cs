@@ -13,10 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
+using DataDictionary.Interpreter.Statement;
 using DataDictionary.Tests.Runner;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Utils;
+using Structure = DataDictionary.Types.Structure;
 
 namespace DataDictionary.Rules
 {
@@ -41,7 +50,7 @@ namespace DataDictionary.Rules
                     return true;
                 }
 
-                foreach (DataDictionary.Rules.Rule rule in SubRules)
+                foreach (Rule rule in SubRules)
                 {
                     if (rule.ImplementationPartiallyCompleted)
                     {
@@ -56,13 +65,13 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Provides the preconditions associated to this rule condition
         /// </summary>
-        public System.Collections.ArrayList PreConditions
+        public ArrayList PreConditions
         {
             get
             {
                 if (allPreConditions() == null)
                 {
-                    setAllPreConditions(new System.Collections.ArrayList());
+                    setAllPreConditions(new ArrayList());
                 }
                 return allPreConditions();
             }
@@ -97,13 +106,13 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Provides the actions associated to this rule condition
         /// </summary>
-        public System.Collections.ArrayList Actions
+        public ArrayList Actions
         {
             get
             {
                 if (allActions() == null)
                 {
-                    setAllActions(new System.Collections.ArrayList());
+                    setAllActions(new ArrayList());
                 }
                 return allActions();
             }
@@ -113,13 +122,13 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Provides the sub rules associated to this rule condition
         /// </summary>
-        public System.Collections.ArrayList SubRules
+        public ArrayList SubRules
         {
             get
             {
                 if (allSubRules() == null)
                 {
-                    setAllSubRules(new System.Collections.ArrayList());
+                    setAllSubRules(new ArrayList());
                 }
                 return allSubRules();
             }
@@ -129,17 +138,23 @@ namespace DataDictionary.Rules
         /// <summary>
         /// Provides the enclosing rule
         /// </summary>
-        public Rule EnclosingRule { get { return getFather() as Rules.Rule; } }
+        public Rule EnclosingRule
+        {
+            get { return getFather() as Rule; }
+        }
 
         /// <summary>
         /// Provides the enclosing structure
         /// </summary>
-        public Types.Structure EnclosingStructure { get { return Utils.EnclosingFinder<Types.Structure>.find(this); } }
+        public Structure EnclosingStructure
+        {
+            get { return EnclosingFinder<Structure>.find(this); }
+        }
 
         /// <summary>
         /// Provides the enclosing collection
         /// </summary>
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get { return EnclosingRule.RuleConditions; }
         }
@@ -149,7 +164,7 @@ namespace DataDictionary.Rules
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>
-        public bool Uses(Variables.IVariable variable)
+        public bool Uses(IVariable variable)
         {
             return Modifies(variable) != null || Reads(variable);
         }
@@ -159,9 +174,9 @@ namespace DataDictionary.Rules
         /// </summary>
         /// <param name="variable"></param>
         /// <returns>null if no statement modifies the element</returns>
-        public Interpreter.Statement.VariableUpdateStatement Modifies(Types.ITypedElement variable)
+        public VariableUpdateStatement Modifies(ITypedElement variable)
         {
-            Interpreter.Statement.VariableUpdateStatement retVal = null;
+            VariableUpdateStatement retVal = null;
 
             foreach (Action action in Actions)
             {
@@ -181,7 +196,7 @@ namespace DataDictionary.Rules
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>
-        public bool Reads(Types.ITypedElement variable)
+        public bool Reads(ITypedElement variable)
         {
             foreach (PreCondition precondition in PreConditions)
             {
@@ -213,12 +228,12 @@ namespace DataDictionary.Rules
         /// <param name="explanation">The explanation part to be filled</param>
         /// <param name="runner"></param>
         /// <returns>the number of actions that were activated during this evaluation</returns>
-        public bool Evaluate(Tests.Runner.Runner runner, Generated.acceptor.RulePriority priority, Utils.IModelElement instance, HashSet<Runner.Activation> activations, ExplanationPart explanation)
+        public bool Evaluate(Runner runner, acceptor.RulePriority priority, IModelElement instance, HashSet<Runner.Activation> activations, ExplanationPart explanation)
         {
             bool retVal = false;
 
             ExplanationPart conditionExplanation = ExplanationPart.CreateSubExplanation(explanation, Name);
-            Interpreter.InterpretationContext context = new Interpreter.InterpretationContext(instance);
+            InterpretationContext context = new InterpretationContext(instance);
             retVal = EvaluatePreConditions(context, conditionExplanation, runner);
 
             if (retVal)
@@ -258,17 +273,17 @@ namespace DataDictionary.Rules
         /// <param name="log">indicates that this should be logged</param>
         /// <param name="runner"></param>
         /// <returns></returns>
-        public bool EvaluatePreConditions(Interpreter.InterpretationContext context, ExplanationPart explanation, Tests.Runner.Runner runner)
+        public bool EvaluatePreConditions(InterpretationContext context, ExplanationPart explanation, Runner runner)
         {
             bool retVal = true;
 
-            foreach (DataDictionary.Rules.PreCondition preCondition in PreConditions)
+            foreach (PreCondition preCondition in PreConditions)
             {
                 try
                 {
-                    Interpreter.Expression expression = preCondition.Expression;
+                    Expression expression = preCondition.Expression;
 
-                    Values.BoolValue value = expression.GetValue(context, ExplanationPart.CreateSubExplanation(explanation, expression)) as Values.BoolValue;
+                    BoolValue value = expression.GetValue(context, ExplanationPart.CreateSubExplanation(explanation, expression)) as BoolValue;
                     if (value != null)
                     {
                         retVal = retVal && value.Val;
@@ -376,7 +391,7 @@ namespace DataDictionary.Rules
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             {
                 PreCondition item = element as PreCondition;
@@ -428,7 +443,7 @@ namespace DataDictionary.Rules
         /// <returns></returns>
         public RuleCondition duplicate()
         {
-            RuleCondition retVal = (RuleCondition)Generated.acceptor.getFactory().createRuleCondition();
+            RuleCondition retVal = (RuleCondition) acceptor.getFactory().createRuleCondition();
             retVal.Name = Name;
             foreach (PreCondition preCondition in PreConditions)
             {

@@ -13,14 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using DataDictionary.Interpreter;
+
 namespace DataDictionary.Types.AccessMode
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary.Interpreter;
-
     /// <summary>
     /// This class represents a procedure or function call
     /// </summary>
@@ -48,13 +46,16 @@ namespace DataDictionary.Types.AccessMode
         /// </summary>
         public override ModelElement ReferencedModel
         {
-            get { return (ModelElement)Called; }
+            get { return (ModelElement) Called; }
         }
 
         /// <summary>
         /// The name to be displayed
         /// </summary>
-        public override string GraphicalName { get { return Called.Name; } }
+        public override string GraphicalName
+        {
+            get { return Called.Name; }
+        }
 
         // Summary:
         //     Compares the current object with another object of the same type.
@@ -70,7 +71,7 @@ namespace DataDictionary.Types.AccessMode
         //     other. Greater than zero This object is greater than other.
         public int CompareTo(ProcedureOrFunctionCall other)
         {
-            int retVal = base.CompareTo((AccessMode)other);
+            int retVal = base.CompareTo((AccessMode) other);
 
             if (retVal == 0)
             {

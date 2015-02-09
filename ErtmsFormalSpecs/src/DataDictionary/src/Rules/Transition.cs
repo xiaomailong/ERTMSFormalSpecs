@@ -13,10 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-
-using DataDictionary.Constants;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter.Statement;
+using Utils;
+using State = DataDictionary.Constants.State;
+using StateMachine = DataDictionary.Types.StateMachine;
 
 namespace DataDictionary.Rules
 {
@@ -37,7 +41,7 @@ namespace DataDictionary.Rules
         /// <summary>
         /// The statment which modifies the state machine's state
         /// </summary>
-        public Interpreter.Statement.VariableUpdateStatement Update { get; private set; }
+        public VariableUpdateStatement Update { get; private set; }
 
         /// <summary>
         /// The action associated to this transaction
@@ -48,7 +52,7 @@ namespace DataDictionary.Rules
             {
                 if (Update != null)
                 {
-                    return (Action)Update.Root;
+                    return (Action) Update.Root;
                 }
                 return null;
             }
@@ -82,7 +86,10 @@ namespace DataDictionary.Rules
         /// <summary>
         /// The model element which is referenced by this transition
         /// </summary>
-        public ModelElement ReferencedModel { get { return RuleCondition; } }
+        public ModelElement ReferencedModel
+        {
+            get { return RuleCondition; }
+        }
 
         /// <summary>
         /// Constructor
@@ -92,7 +99,7 @@ namespace DataDictionary.Rules
         /// <param name="initialState">The initial stae of this transition</param>
         /// <param name="update">The statement which set up the target state</param>
         /// <param name="targetState">The target state of this transition</param>
-        public Transition(PreCondition preCondition, State initialState, Interpreter.Statement.VariableUpdateStatement update, State targetState)
+        public Transition(PreCondition preCondition, State initialState, VariableUpdateStatement update, State targetState)
         {
             PreCondition = preCondition;
             Source = initialState;
@@ -118,7 +125,7 @@ namespace DataDictionary.Rules
         /// <param name="initialState"></param>
         public void SetInitialBox(IGraphicalDisplay initialBox)
         {
-            State initialState = (State)initialBox;
+            State initialState = (State) initialBox;
 
             if (Action != null)
             {
@@ -126,7 +133,7 @@ namespace DataDictionary.Rules
                 {
                     if (PreCondition.Rule == Action.Rule)
                     {
-                        List<State> states = DataDictionary.Types.StateMachine.GetStates(PreCondition.Expression);
+                        List<State> states = StateMachine.GetStates(PreCondition.Expression);
                         if (states.Count == 1)
                         {
                             PreCondition.ExpressionText = "THIS == " + initialState.FullName;
@@ -147,7 +154,7 @@ namespace DataDictionary.Rules
                     RuleCondition ruleCondition = Action.Enclosing as RuleCondition;
                     Rule rule = ruleCondition.EnclosingRule;
 
-                    if (Utils.EnclosingFinder<Constants.State>.find(rule) == Source)
+                    if (EnclosingFinder<State>.find(rule) == Source)
                     {
                         if (rule.RuleConditions.Count == 1)
                         {
@@ -159,7 +166,7 @@ namespace DataDictionary.Rules
                         {
                             rule.removeConditions(ruleCondition);
                             Source = initialState;
-                            Rule newRule = (Rule)Generated.acceptor.getFactory().createRule();
+                            Rule newRule = (Rule) acceptor.getFactory().createRule();
                             newRule.Name = rule.Name;
                             newRule.appendConditions(ruleCondition);
                             Source.StateMachine.appendRules(newRule);
@@ -180,7 +187,7 @@ namespace DataDictionary.Rules
         /// <param name="targetState"></param>
         public void SetTargetBox(IGraphicalDisplay targetBox)
         {
-            State targetState = (State)targetBox;
+            State targetState = (State) targetBox;
 
             if (Action != null)
             {

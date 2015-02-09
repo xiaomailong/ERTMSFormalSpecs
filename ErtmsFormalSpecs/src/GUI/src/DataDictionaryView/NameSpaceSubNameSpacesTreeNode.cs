@@ -13,9 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using NameSpace = DataDictionary.Types.NameSpace;
 
 namespace GUI.DataDictionaryView
 {
@@ -26,7 +29,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public NameSpaceSubNameSpacesTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+        public NameSpaceSubNameSpacesTreeNode(NameSpace item, bool buildSubNodes)
             : base(item, buildSubNodes, "Namespaces", true)
         {
         }
@@ -39,7 +42,7 @@ namespace GUI.DataDictionaryView
         {
             Nodes.Clear();
 
-            foreach (DataDictionary.Types.NameSpace nameSpace in Item.NameSpaces)
+            foreach (NameSpace nameSpace in Item.NameSpaces)
             {
                 Nodes.Add(new NameSpaceTreeNode(nameSpace, buildSubNodes));
             }
@@ -49,7 +52,7 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Types.NameSpace nameSpace = (DataDictionary.Types.NameSpace)DataDictionary.Generated.acceptor.getFactory().createNameSpace();
+            NameSpace nameSpace = (NameSpace) acceptor.getFactory().createNameSpace();
             nameSpace.Name = "<NameSpace" + (GetNodeCount(false) + 1) + ">";
             AddSubNameSpace(nameSpace);
         }
@@ -58,7 +61,7 @@ namespace GUI.DataDictionaryView
         /// Adds a namespace in the corresponding namespace
         /// </summary>
         /// <param name="nameSpace"></param>
-        public NameSpaceTreeNode AddSubNameSpace(DataDictionary.Types.NameSpace nameSpace)
+        public NameSpaceTreeNode AddSubNameSpace(NameSpace nameSpace)
         {
             Item.appendNameSpaces(nameSpace);
             NameSpaceTreeNode retVal = new NameSpaceTreeNode(nameSpace, true);
@@ -89,13 +92,13 @@ namespace GUI.DataDictionaryView
         {
             base.SelectionChanged(false);
 
-            List<DataDictionary.Types.NameSpace> namespaces = new List<DataDictionary.Types.NameSpace>();
-            foreach (DataDictionary.Types.NameSpace aNamespace in Item.NameSpaces)
+            List<NameSpace> namespaces = new List<NameSpace>();
+            foreach (NameSpace aNamespace in Item.NameSpaces)
             {
                 namespaces.Add(aNamespace);
             }
 
-            GUIUtils.MDIWindow.SetStatus(NameSpaceTreeNode.CreateStatMessage(namespaces, true));
+            GUIUtils.MDIWindow.SetStatus(CreateStatMessage(namespaces, true));
         }
     }
 }

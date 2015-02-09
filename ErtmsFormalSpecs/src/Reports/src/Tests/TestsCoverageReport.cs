@@ -13,12 +13,23 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using DataDictionary.Rules;
-using DataDictionary.Tests;
-using DataDictionary.Tests.Runner.Events;
+using DataDictionary.Generated;
+using DataDictionary.Tests.Runner;
 using MigraDoc.DocumentObjectModel;
+using Dictionary = DataDictionary.Dictionary;
+using Frame = DataDictionary.Tests.Frame;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using ReqRef = DataDictionary.ReqRef;
+using ReqRelated = DataDictionary.ReqRelated;
+using Rule = DataDictionary.Rules.Rule;
+using RuleCondition = DataDictionary.Rules.RuleCondition;
+using Step = DataDictionary.Tests.Step;
+using SubSequence = DataDictionary.Tests.SubSequence;
+using SubStep = DataDictionary.Tests.SubStep;
+using TestCase = DataDictionary.Tests.TestCase;
 
 namespace Reports.Tests
 {
@@ -58,10 +69,10 @@ namespace Reports.Tests
         /// <param name="applicableParagraphs">Number of applicable paragraphs</param>
         /// <param name="allParagraphs">Total number of paragraphs</param>
         /// <returns></returns>
-        private void GenerateStatistics(DataDictionary.Dictionary aDictionary, bool coveredParagraphs, bool nonCoveredParagraphs, bool applicableParagraphs, bool allParagraphs)
+        private void GenerateStatistics(Dictionary aDictionary, bool coveredParagraphs, bool nonCoveredParagraphs, bool applicableParagraphs, bool allParagraphs)
         {
             AddSubParagraph("Statistics");
-            AddTable(new string[] { "", "Value" }, new int[] { 70, 70 });
+            AddTable(new string[] {"", "Value"}, new int[] {70, 70});
 
             if (allParagraphs)
             {
@@ -76,7 +87,7 @@ namespace Reports.Tests
 
             double applicableParagraphsCount = aDictionary.ApplicableParagraphs.Count;
             double coveredParagraphsCount = CoveredRequirements(aDictionary).Count;
-            double coveredPercentage = (coveredParagraphsCount / applicableParagraphsCount) * 100;
+            double coveredPercentage = (coveredParagraphsCount/applicableParagraphsCount)*100;
             double nonCoveredParagraphsCount = applicableParagraphsCount - coveredParagraphsCount;
             double nonCoveredPercentage = 100 - coveredPercentage;
 
@@ -117,9 +128,9 @@ namespace Reports.Tests
 
             // now we  can create the section containing the activated rules of the frame
             CreateActivatedRulesSection(title,
-                                        activatedRules,
-                                        aReportConfig.Dictionary.ImplementedRules,
-                                        aReportConfig.AddActivatedRulesInFrames);
+                activatedRules,
+                aReportConfig.Dictionary.ImplementedRules,
+                aReportConfig.AddActivatedRulesInFrames);
             CloseSubParagraph();
         }
 
@@ -140,7 +151,7 @@ namespace Reports.Tests
             }
 
             HashSet<RuleCondition> rules = new HashSet<RuleCondition>();
-            aSubSequence.EFSSystem.Runner = new DataDictionary.Tests.Runner.Runner(aSubSequence, false, false);
+            aSubSequence.EFSSystem.Runner = new Runner(aSubSequence, false, false);
             foreach (TestCase testCase in aSubSequence.TestCases)
             {
                 // SIDE EFFECT:
@@ -154,9 +165,9 @@ namespace Reports.Tests
             if (createPdf)
             {
                 CreateActivatedRulesSection(title,
-                                            rules,
-                                            aReportConfig.Dictionary.ImplementedRules,
-                                            aReportConfig.AddActivatedRulesInSubSequences);
+                    rules,
+                    aReportConfig.Dictionary.ImplementedRules,
+                    aReportConfig.AddActivatedRulesInSubSequences);
 
                 CloseSubParagraph();
             }
@@ -171,7 +182,7 @@ namespace Reports.Tests
         /// <param name="aReportConfig">The report configuration containing display details</param>
         /// <param name="activatedRuleConditions">The list that will contain the rules activated by this test case</param>
         /// <param name="createPdf">Indicates if the information about this sub-sequence has to be added to the pdf</param>
-        public void CreateTestCaseSection(DataDictionary.Tests.Runner.Runner runner, TestCase aTestCase, TestsCoverageReportHandler aReportConfig, HashSet<RuleCondition> activatedRuleConditions, bool createPdf)
+        public void CreateTestCaseSection(Runner runner, TestCase aTestCase, TestsCoverageReportHandler aReportConfig, HashSet<RuleCondition> activatedRuleConditions, bool createPdf)
         {
             string title = "Test case " + aTestCase.Name;
             if (createPdf)
@@ -181,7 +192,7 @@ namespace Reports.Tests
                 if (aTestCase.Requirements.Count > 0)
                 {
                     AddSubParagraph(title + ": verified requirements:");
-                    foreach (DataDictionary.ReqRef reqRef in aTestCase.Requirements)
+                    foreach (ReqRef reqRef in aTestCase.Requirements)
                     {
                         string text = "Requirement " + reqRef.Name;
                         if (!Utils.Utils.isEmpty(reqRef.Comment))
@@ -206,8 +217,8 @@ namespace Reports.Tests
                     {
                         if (step.SubSteps.Count > 0)
                         {
-                            DataDictionary.Tests.SubStep firstSubStep = step.SubSteps[0] as DataDictionary.Tests.SubStep;
-                            DataDictionary.Tests.SubStep lastSubStep = step.SubSteps[step.SubSteps.Count - 1] as DataDictionary.Tests.SubStep;
+                            SubStep firstSubStep = step.SubSteps[0] as SubStep;
+                            SubStep lastSubStep = step.SubSteps[step.SubSteps.Count - 1] as SubStep;
                             double start = runner.EventTimeLine.GetSubStepActivationTime(firstSubStep);
                             double end = runner.EventTimeLine.GetNextSubStepActivationTime(lastSubStep);
                             List<RuleCondition> activatedRules = runner.EventTimeLine.GetActivatedRulesInRange(start, end);
@@ -219,9 +230,9 @@ namespace Reports.Tests
 
 
                 CreateActivatedRulesSection(title,
-                                            runner.EventTimeLine.GetActivatedRules(),
-                                            aReportConfig.Dictionary.ImplementedRules,
-                                            aReportConfig.AddActivatedRulesInTestCases);
+                    runner.EventTimeLine.GetActivatedRules(),
+                    aReportConfig.Dictionary.ImplementedRules,
+                    aReportConfig.AddActivatedRulesInTestCases);
 
                 CloseSubParagraph();
             }
@@ -240,9 +251,9 @@ namespace Reports.Tests
             AddSubParagraph(title);
 
             CreateActivatedRulesSection("",
-                                        new HashSet<RuleCondition>(activatedRules),
-                                        aReportConfig.Dictionary.ImplementedRules,
-                                        aReportConfig.AddActivatedRulesInTestCases);
+                new HashSet<RuleCondition>(activatedRules),
+                aReportConfig.Dictionary.ImplementedRules,
+                aReportConfig.AddActivatedRulesInTestCases);
 
             CloseSubParagraph();
         }
@@ -255,7 +266,7 @@ namespace Reports.Tests
         /// <param name="implementedRules">The list of implemented rules</param>
         private void CreateActivatedRulesSection(string title, HashSet<RuleCondition> activatedRules, HashSet<Rule> implementedRules, bool addActivatedRules)
         {
-            double implementedPercentage = (double)((double)activatedRules.Count / (double)implementedRules.Count) * 100;
+            double implementedPercentage = (double) ((double) activatedRules.Count/(double) implementedRules.Count)*100;
             string titleOfParagraph;
             if (title != "")
             {
@@ -265,7 +276,7 @@ namespace Reports.Tests
             {
                 titleOfParagraph = String.Format("Activated rules: {0} ({1:0.##}%)", activatedRules.Count.ToString(), implementedPercentage);
             }
-            
+
             if (addActivatedRules)
             {
                 AddSubParagraph(titleOfParagraph);
@@ -287,24 +298,24 @@ namespace Reports.Tests
         /// </summary>
         /// <param name="aDictionary">The model</param>
         /// <returns></returns>
-        public static HashSet<DataDictionary.Specification.Paragraph> CoveredRequirements(DataDictionary.Dictionary aDictionary)
+        public static HashSet<Paragraph> CoveredRequirements(Dictionary aDictionary)
         {
-            HashSet<DataDictionary.Specification.Paragraph> retVal = new HashSet<DataDictionary.Specification.Paragraph>();
-            ICollection<DataDictionary.Specification.Paragraph> applicableParagraphs = aDictionary.ApplicableParagraphs;
-            Dictionary<DataDictionary.Specification.Paragraph, List<DataDictionary.ReqRef>> paragraphsReqRefDictionary = aDictionary.ParagraphsReqRefs;
+            HashSet<Paragraph> retVal = new HashSet<Paragraph>();
+            ICollection<Paragraph> applicableParagraphs = aDictionary.ApplicableParagraphs;
+            Dictionary<Paragraph, List<ReqRef>> paragraphsReqRefDictionary = aDictionary.ParagraphsReqRefs;
 
-            foreach (DataDictionary.Specification.Paragraph paragraph in applicableParagraphs)
+            foreach (Paragraph paragraph in applicableParagraphs)
             {
-                bool implemented = paragraph.getImplementationStatus() == DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented;
+                bool implemented = paragraph.getImplementationStatus() == acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented;
                 bool tested = false;
                 if (implemented)
                 {
                     if (paragraphsReqRefDictionary.ContainsKey(paragraph))
                     {
-                        List<DataDictionary.ReqRef> implementations = paragraphsReqRefDictionary[paragraph];
+                        List<ReqRef> implementations = paragraphsReqRefDictionary[paragraph];
                         for (int i = 0; i < implementations.Count; i++)
                         {
-                            DataDictionary.ReqRelated reqRelated = implementations[i].Enclosing as DataDictionary.ReqRelated;
+                            ReqRelated reqRelated = implementations[i].Enclosing as ReqRelated;
                             if (reqRelated is TestCase && reqRelated.ImplementationCompleted == true)
                             {
                                 tested = true;
@@ -321,6 +332,5 @@ namespace Reports.Tests
 
             return retVal;
         }
-
     }
 }

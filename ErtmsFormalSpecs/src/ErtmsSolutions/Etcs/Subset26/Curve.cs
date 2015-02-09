@@ -13,29 +13,36 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Reflection;
 using ErtmsSolutions.SiUnits;
+using log4net;
 
 namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 {
     /**@brief A one-dimensional curve, where X and Y are SiUnits. The CurveSegment S parameter can be a ConstantSegment or a QuadraticSegment */
+
     public class Curve<S, XUnit, YUnit>
         where S : CurveSegment<XUnit, YUnit>
         where XUnit : ISiUnit<XUnit>
         where YUnit : ISiUnit<YUnit>
     {
         /************************************************************/
-        protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private List<S> mySegments;
 
         /************************************************************/
+
         public Curve()
         {
             mySegments = new List<S>();
         }
 
         /************************************************************/
+
         public void AddSegment(S aSegment)
         {
             mySegments.Add(aSegment);
@@ -44,7 +51,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /**@brief dor sorting purposes */
-        static public int CompareSegments(S a, S b)
+
+        public static int CompareSegments(S a, S b)
         {
             if (a.X.X0.ToUnits() < b.X.X0.ToUnits())
             {
@@ -61,12 +69,21 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /**@brief Public access to the segments for plotting, ...*/
-        public int SegmentCount { get { return mySegments.Count; } }
+
+        public int SegmentCount
+        {
+            get { return mySegments.Count; }
+        }
 
         /**@brief Public access to the segments for plotting, ...*/
-        public S this[int idx] { get { return mySegments[idx]; } }
+
+        public S this[int idx]
+        {
+            get { return mySegments[idx]; }
+        }
 
         /**@brief Return the value Y at any position X inside the curve segments. Throws if x is outside curve domain.*/
+
         public YUnit GetValueAt(XUnit x, BrakingCurveDirectionEnum dir)
         {
             S theSegment = GetSegmentAt(x, dir);
@@ -76,12 +93,13 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             }
             else
             {
-                System.Diagnostics.Debugger.Launch();
+                Debugger.Launch();
             }
             throw new ArgumentException();
         }
 
         /**@brief Return segment that contains X or null */
+
         public S GetSegmentAt(XUnit x, BrakingCurveDirectionEnum dir)
         {
             switch (dir)
@@ -104,20 +122,18 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                         }
                     }
                     break;
-
             }
             return null;
         }
 
 
         /************************************************************/
+
         public void Dump(string Title)
         {
             Log.DebugFormat("**************{0}**************", Title);
             foreach (S s in mySegments)
                 Log.DebugFormat(s.ToString());
         }
-
     }
 }
-

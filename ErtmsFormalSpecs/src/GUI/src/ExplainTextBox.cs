@@ -15,6 +15,8 @@
 // ------------------------------------------------------------------------------
 
 using DataDictionary;
+using Utils;
+
 namespace GUI
 {
     public class ExplainTextBox : EditorTextBox
@@ -31,7 +33,7 @@ namespace GUI
         /// Sets the model for this explain text box
         /// </summary>
         /// <param name="model"></param>
-        public void SetModel(Utils.IModelElement model)
+        public void SetModel(IModelElement model)
         {
             Instance = model;
             RefreshData();
@@ -49,7 +51,7 @@ namespace GUI
         {
             SuspendLayout();
 
-            DataDictionary.TextualExplain explainable = Instance as DataDictionary.TextualExplain;
+            TextualExplain explainable = Instance as TextualExplain;
 
             if (explainable != null)
             {

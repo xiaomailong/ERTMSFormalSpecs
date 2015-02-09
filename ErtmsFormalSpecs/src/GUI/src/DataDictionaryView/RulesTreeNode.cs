@@ -13,13 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.SpecificationView;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using ReqRef = DataDictionary.ReqRef;
+using Rule = DataDictionary.Rules.Rule;
+using Structure = DataDictionary.Types.Structure;
 
 namespace GUI.DataDictionaryView
 {
-    public class RulesTreeNode : TypeTreeNode<DataDictionary.Types.Structure>
+    public class RulesTreeNode : TypeTreeNode<Structure>
     {
         private class ItemEditor : TypeEditor
         {
@@ -40,7 +47,7 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Rules.Rule rule in Item.Rules)
+            foreach (Rule rule in Item.Rules)
             {
                 Nodes.Add(new RuleTreeNode(rule, buildSubNodes));
             }
@@ -50,7 +57,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public RulesTreeNode(DataDictionary.Types.Structure item, bool buildSubNodes)
+        public RulesTreeNode(Structure item, bool buildSubNodes)
             : base(item, buildSubNodes, "Rules", true, false)
         {
         }
@@ -75,19 +82,19 @@ namespace GUI.DataDictionaryView
             if (SourceNode is RuleTreeNode)
             {
                 RuleTreeNode node = SourceNode as RuleTreeNode;
-                DataDictionary.Rules.Rule rule = node.Item;
+                Rule rule = node.Item;
                 node.Delete();
                 AddRule(rule);
             }
-            else if (SourceNode is SpecificationView.ParagraphTreeNode)
+            else if (SourceNode is ParagraphTreeNode)
             {
-                SpecificationView.ParagraphTreeNode node = SourceNode as SpecificationView.ParagraphTreeNode;
-                DataDictionary.Specification.Paragraph paragaph = node.Item;
+                ParagraphTreeNode node = SourceNode as ParagraphTreeNode;
+                Paragraph paragaph = node.Item;
 
-                DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)DataDictionary.Generated.acceptor.getFactory().createRule();
+                Rule rule = (Rule) acceptor.getFactory().createRule();
                 rule.Name = paragaph.Name;
 
-                DataDictionary.ReqRef reqRef = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
+                ReqRef reqRef = (ReqRef) acceptor.getFactory().createReqRef();
                 reqRef.Name = paragaph.FullId;
                 rule.appendRequirements(reqRef);
                 AddRule(rule);
@@ -96,7 +103,7 @@ namespace GUI.DataDictionaryView
 
         private void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Rules.Rule rule = (DataDictionary.Rules.Rule)DataDictionary.Generated.acceptor.getFactory().createRule();
+            Rule rule = (Rule) acceptor.getFactory().createRule();
             rule.Name = "<Rule" + (GetNodeCount(false) + 1) + ">";
             AddRule(rule);
         }
@@ -105,10 +112,10 @@ namespace GUI.DataDictionaryView
         /// Adds a new rule to the model
         /// </summary>
         /// <param name="rule"></param>
-        public void AddRule(DataDictionary.Rules.Rule rule)
+        public void AddRule(Rule rule)
         {
             Item.appendRules(rule);
-            Nodes.Add(new DataDictionaryView.RuleTreeNode(rule, true));
+            Nodes.Add(new RuleTreeNode(rule, true));
             SortSubNodes();
         }
 

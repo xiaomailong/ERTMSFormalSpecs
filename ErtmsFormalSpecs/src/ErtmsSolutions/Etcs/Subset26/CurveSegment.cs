@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using ErtmsSolutions.SiUnits;
 
@@ -21,6 +22,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
     /**@brief The base class for other curve segments. 
     The domain interval is X. The value (Y) must be defined 
     by derived classes in Get method */
+
     public abstract class CurveSegment<XUnit, YUnit>
         where XUnit : ISiUnit<XUnit>
         where YUnit : ISiUnit<YUnit>
@@ -28,7 +30,11 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         private Interval<XUnit> myX;
 
         /**@brief The domain of definition of this curve element. */
-        public Interval<XUnit> X { get { return myX; } }
+
+        public Interval<XUnit> X
+        {
+            get { return myX; }
+        }
 
 
         public CurveSegment(XUnit x0, XUnit x1)
@@ -42,9 +48,9 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         public override string ToString()
         {
             return String.Format(" [{0,7:F2}..{1,7:F2}]({2})",
-                                  X.X0.ToUnits(),
-                                  X.X1.ToUnits(),
-                                  X.X0.UnitString());
+                X.X0.ToUnits(),
+                X.X1.ToUnits(),
+                X.X0.UnitString());
         }
     }
 }

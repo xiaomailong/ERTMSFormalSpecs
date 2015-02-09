@@ -13,17 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
-using System.Collections;
+using System.Reflection;
 using System.Windows.Forms;
 using DataDictionary;
+using log4net;
 using Reports.Model;
 
 namespace GUI.Report
 {
     public partial class FunctionalAnalysisReport : Form
     {
-        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// The report handler

@@ -15,8 +15,11 @@
 // ------------------------------------------------------------------------------
 
 
+using System.Collections;
 using DataDictionary.Generated;
-using DataDictionary.Interpreter;
+using Utils;
+using Action = DataDictionary.Rules.Action;
+using Translation = DataDictionary.Tests.Translations.Translation;
 
 namespace DataDictionary.Tests
 {
@@ -25,13 +28,13 @@ namespace DataDictionary.Tests
         /// <summary>
         /// This step changes
         /// </summary>
-        public System.Collections.ArrayList Actions
+        public ArrayList Actions
         {
             get
             {
                 if (allActions() == null)
                 {
-                    setAllActions(new System.Collections.ArrayList());
+                    setAllActions(new ArrayList());
                 }
                 return allActions();
             }
@@ -41,13 +44,13 @@ namespace DataDictionary.Tests
         /// <summary>
         /// This step expectations
         /// </summary>
-        public System.Collections.ArrayList Expectations
+        public ArrayList Expectations
         {
             get
             {
                 if (allExpectations() == null)
                 {
-                    setAllExpectations(new System.Collections.ArrayList());
+                    setAllExpectations(new ArrayList());
                 }
                 return allExpectations();
             }
@@ -64,16 +67,16 @@ namespace DataDictionary.Tests
         /// <summary>
         /// The enclosing translation, if any
         /// </summary>
-        public Translations.Translation Translation
+        public Translation Translation
         {
-            get { return Enclosing as Translations.Translation; }
+            get { return Enclosing as Translation; }
         }
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
-                System.Collections.ArrayList retVal = null;
+                ArrayList retVal = null;
 
                 if (Step != null)
                 {
@@ -92,11 +95,11 @@ namespace DataDictionary.Tests
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
-            if (element is Rules.Action)
+            if (element is Action)
             {
-                Rules.Action item = element as Rules.Action;
+                Action item = element as Action;
                 if (item != null)
                 {
                     appendActions(item);
@@ -104,7 +107,7 @@ namespace DataDictionary.Tests
             }
             else if (element is Expectation)
             {
-                Tests.Expectation item = element as Tests.Expectation;
+                Expectation item = element as Expectation;
                 if (item != null)
                 {
                     appendExpectations(item);
@@ -134,7 +137,7 @@ namespace DataDictionary.Tests
         {
             string retVal = "";
 
-            foreach (Rules.Action action in Actions)
+            foreach (Action action in Actions)
             {
                 retVal = retVal + action.Name + "\n";
             }
@@ -158,7 +161,7 @@ namespace DataDictionary.Tests
         /// <returns></returns>
         public static SubStep createDefault(string name)
         {
-            SubStep retVal = (SubStep)DataDictionary.Generated.acceptor.getFactory().createSubStep();
+            SubStep retVal = (SubStep) acceptor.getFactory().createSubStep();
             retVal.Name = name;
 
             return retVal;
@@ -174,7 +177,7 @@ namespace DataDictionary.Tests
         {
             string retVal = TextualExplainUtilities.Pad("{\\cf11 // " + Name + "}\\cf1\\par", indentLevel);
 
-            foreach (Rules.Action action in Actions)
+            foreach (Action action in Actions)
             {
                 retVal += action.getExplain(indentLevel + 2, explainSubElements) + "\\par";
             }
@@ -190,7 +193,6 @@ namespace DataDictionary.Tests
         /// <summary>
         /// Provides an explanation of the step's behaviour
         /// </summary>
-
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
         public string getExplain(bool explainSubElements)
@@ -220,7 +222,7 @@ namespace DataDictionary.Tests
         {
             bool retVal = false;
 
-            foreach (Action action in Actions)
+            foreach (Generated.Action action in Actions)
             {
                 if (action.ExpressionText.Contains("%Message"))
                 {
@@ -236,11 +238,9 @@ namespace DataDictionary.Tests
                     retVal = true;
                     break;
                 }
-                
             }
 
             return retVal;
         }
-
     }
 }

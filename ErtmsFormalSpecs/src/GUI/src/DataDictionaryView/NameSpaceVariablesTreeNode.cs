@@ -13,13 +13,21 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.SpecificationView;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using ReqRef = DataDictionary.ReqRef;
+using Type = DataDictionary.Types.Type;
+using Variable = DataDictionary.Variables.Variable;
 
 namespace GUI.DataDictionaryView
 {
-    public class NameSpaceVariablesTreeNode : ModelElementTreeNode<DataDictionary.Types.NameSpace>
+    public class NameSpaceVariablesTreeNode : ModelElementTreeNode<NameSpace>
     {
         /// <summary>
         /// The editor for message variables
@@ -40,7 +48,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public NameSpaceVariablesTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+        public NameSpaceVariablesTreeNode(NameSpace item, bool buildSubNodes)
             : base(item, buildSubNodes, "Variables", true)
         {
         }
@@ -53,9 +61,9 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Variables.Variable variable in Item.Variables)
+            foreach (Variable variable in Item.Variables)
             {
-                Nodes.Add(new VariableTreeNode(variable, buildSubNodes, new HashSet<DataDictionary.Types.Type>()));
+                Nodes.Add(new VariableTreeNode(variable, buildSubNodes, new HashSet<Type>()));
             }
             SortSubNodes();
         }
@@ -71,7 +79,7 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Variables.Variable variable = (DataDictionary.Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
+            Variable variable = (Variable) acceptor.getFactory().createVariable();
             variable.Name = "<Variable" + (GetNodeCount(false) + 1) + ">";
             AddVariable(variable);
         }
@@ -80,7 +88,7 @@ namespace GUI.DataDictionaryView
         /// Adds a variable in the corresponding namespace
         /// </summary>
         /// <param name="variable"></param>
-        public VariableTreeNode AddVariable(DataDictionary.Variables.Variable variable)
+        public VariableTreeNode AddVariable(Variable variable)
         {
             // Ensure that variables always have a type
             if (variable.Type == null)
@@ -89,7 +97,7 @@ namespace GUI.DataDictionaryView
             }
 
             Item.appendVariables(variable);
-            VariableTreeNode retVal = new VariableTreeNode(variable, true, new HashSet<DataDictionary.Types.Type>());
+            VariableTreeNode retVal = new VariableTreeNode(variable, true, new HashSet<Type>());
             Nodes.Add(retVal);
             SortSubNodes();
 
@@ -120,20 +128,20 @@ namespace GUI.DataDictionaryView
             if (SourceNode is VariableTreeNode)
             {
                 VariableTreeNode variableTreeNode = SourceNode as VariableTreeNode;
-                DataDictionary.Variables.Variable variable = variableTreeNode.Item;
+                Variable variable = variableTreeNode.Item;
 
                 variableTreeNode.Delete();
                 AddVariable(variable);
             }
-            else if (SourceNode is SpecificationView.ParagraphTreeNode)
+            else if (SourceNode is ParagraphTreeNode)
             {
-                SpecificationView.ParagraphTreeNode node = SourceNode as SpecificationView.ParagraphTreeNode;
-                DataDictionary.Specification.Paragraph paragaph = node.Item;
+                ParagraphTreeNode node = SourceNode as ParagraphTreeNode;
+                Paragraph paragaph = node.Item;
 
-                DataDictionary.Variables.Variable variable = (DataDictionary.Variables.Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
+                Variable variable = (Variable) acceptor.getFactory().createVariable();
                 variable.Name = paragaph.Name;
 
-                DataDictionary.ReqRef reqRef = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
+                ReqRef reqRef = (ReqRef) acceptor.getFactory().createReqRef();
                 reqRef.Name = paragaph.FullId;
                 variable.appendRequirements(reqRef);
                 AddVariable(variable);

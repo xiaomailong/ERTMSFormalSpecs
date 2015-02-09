@@ -55,7 +55,7 @@
  Guid="8da582af-81fe-4471-8ea8-bf1892699e23"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -81,4 +81,82 @@
  Guid="19b0ae11-31ed-4f7e-b78c-8d5672efbaea"
 >
 </ReqRef></StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="02a901bb-b494-4313-a79d-b75f57f9e061"
+>
+<Comment>Checks the values in a structure of type DANGER_FOR_SHUNTING_INFORMATION.Message</Comment>
+<Parameters>
+<Parameter
+ Type="DANGER_FOR_SHUNTING_INFORMATION.Message"
+ Name="struct"
+ Guid="048d0101-deda-448a-9264-5ff9df822e8b"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="84733890-5c95-4ccd-a576-737ddacb56db"
+>
+<PreConditions>
+<PreCondition
+ Guid="30800e5b-c8a8-4d55-97d2-48688a43dc38"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="93d979b3-ce19-48ad-84bc-64cfab344cdc"
+>
+<PreConditions>
+<PreCondition
+ Guid="08024a38-2a92-4da7-97d8-8ae0060cfa34"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="5c697c3c-27fd-4b70-b2b8-1b367ecbada8"
+>
+<PreConditions>
+<PreCondition
+ Guid="a07944cf-8208-490a-85c8-013a18b42415"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="7f3e5f22-724b-458c-91e7-83621a8eaed1"
+>
+<PreConditions>
+<PreCondition
+ Guid="40c9dd03-3fea-486d-afee-d8180ce611c6"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_ASPECT invalid"
+ Guid="8b152896-84a3-4fc4-ae56-3834b6cc2dbe"
+>
+<PreConditions>
+<PreCondition
+ Guid="b4457024-2310-4209-a1aa-2e55385ea131"
+>struct.Q_ASPECT &lt; 0
+  AND  
+struct.Q_ASPECT &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="e2205aec-8610-48a9-8b8d-4710aad6c868"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

@@ -14,9 +14,11 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Generated;
+
 namespace DataDictionary.Specification
 {
-    public class ResolutionFormula : Generated.resolution_formula
+    public class ResolutionFormula : resolution_formula
     {
         /// <summary>
         /// The ResolutionFormula content

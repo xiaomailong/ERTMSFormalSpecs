@@ -1,12 +1,13 @@
+using DataDictionary;
 
 namespace GUI.TestRunnerView
 {
-    public class TestTreeView : TypedTreeView<DataDictionary.EFSSystem>
+    public class TestTreeView : TypedTreeView<EFSSystem>
     {
         /// <summary>
         /// The tests tree node
         /// </summary>
-        TestsTreeNode tests;
+        private TestsTreeNode tests;
 
         /// <summary>
         /// Builds the tree model according to the root node
@@ -14,9 +15,9 @@ namespace GUI.TestRunnerView
         protected override void BuildModel()
         {
             Nodes.Clear();
-            foreach (DataDictionary.Dictionary dictionary in Root.Dictionaries)
+            foreach (Dictionary dictionary in Root.Dictionaries)
             {
-                tests = new TestRunnerView.TestsTreeNode(dictionary, true);
+                tests = new TestsTreeNode(dictionary, true);
                 Nodes.Add(tests);
             }
         }
@@ -38,7 +39,7 @@ namespace GUI.TestRunnerView
         /// <returns></returns>
         public FrameTreeNode findFrame(string name)
         {
-            FrameTreeNode retVal = (FrameTreeNode)tests.findSubNode(name);
+            FrameTreeNode retVal = (FrameTreeNode) tests.findSubNode(name);
 
             return retVal;
         }

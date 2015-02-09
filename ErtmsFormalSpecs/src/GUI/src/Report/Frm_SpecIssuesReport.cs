@@ -13,18 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections;
+using System.Reflection;
 using System.Windows.Forms;
 using DataDictionary;
+using log4net;
 using Reports.Specs;
-
 
 namespace GUI.Report
 {
     public partial class SpecIssuesReport : Form
     {
-        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private SpecIssuesReportHandler reportHandler;
 
         /// <summary>
@@ -47,7 +49,7 @@ namespace GUI.Report
         {
             get
             {
-                System.Collections.ArrayList retVal = new System.Collections.ArrayList();
+                ArrayList retVal = new ArrayList();
                 retVal.AddRange(this.Controls);
                 retVal.AddRange(this.GrB_Options.Controls);
                 return retVal;
@@ -143,15 +145,12 @@ namespace GUI.Report
             reportHandler.AddSpecIssues = CB_ShowIssues.Checked;
             reportHandler.AddDesignChoices = CB_ShowDesignChoices.Checked;
             reportHandler.AddInformationNeeded = moreInformationNeededCheckBox.Checked;
-            reportHandler.AddComments = assumptionsAndCommentsCheckBox.Checked;
 
             Hide();
 
             ProgressDialog dialog = new ProgressDialog("Generating report", reportHandler);
             dialog.ShowDialog(Owner);
         }
-
-
 
 
         /// <summary>

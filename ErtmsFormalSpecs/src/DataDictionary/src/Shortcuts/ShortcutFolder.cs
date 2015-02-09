@@ -13,6 +13,10 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections;
+using Utils;
+
 namespace DataDictionary.Shortcuts
 {
     public class ShortcutFolder : Generated.ShortcutFolder
@@ -28,39 +32,33 @@ namespace DataDictionary.Shortcuts
         /// <summary>
         /// Provides the folders
         /// </summary>
-        public System.Collections.ArrayList Folders
+        public ArrayList Folders
         {
             get
             {
                 if (allFolders() == null)
                 {
-                    setAllFolders(new System.Collections.ArrayList());
+                    setAllFolders(new ArrayList());
                 }
                 return allFolders();
             }
-            set
-            {
-                setAllFolders(value);
-            }
+            set { setAllFolders(value); }
         }
 
         /// <summary>
         /// Provides the shortcuts contained in this folder
         /// </summary>
-        public System.Collections.ArrayList Shortcuts
+        public ArrayList Shortcuts
         {
             get
             {
                 if (allShortcuts() == null)
                 {
-                    setAllShortcuts(new System.Collections.ArrayList());
+                    setAllShortcuts(new ArrayList());
                 }
                 return allShortcuts();
             }
-            set
-            {
-                setAllShortcuts(value);
-            }
+            set { setAllShortcuts(value); }
         }
 
         /// <summary>
@@ -82,11 +80,11 @@ namespace DataDictionary.Shortcuts
         /// <summary>
         /// Provides the enclosing collection
         /// </summary>
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
-                System.Collections.ArrayList retVal = null;
+                ArrayList retVal = null;
                 ShortcutDictionary dictionary = Enclosing as ShortcutDictionary;
                 if (dictionary != null)
                 {
@@ -108,7 +106,7 @@ namespace DataDictionary.Shortcuts
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             ShortcutFolder folder = element as ShortcutFolder;
             if (folder != null)

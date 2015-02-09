@@ -14,8 +14,10 @@
 // --
 // ------------------------------------------------------------------------------
 
-using DataDictionary.Interpreter;
 using System.Collections;
+using DataDictionary.Interpreter;
+using Utils;
+
 namespace DataDictionary.Tests.Translations
 {
     public class SourceText : Generated.SourceText, IExpressionable
@@ -39,12 +41,12 @@ namespace DataDictionary.Tests.Translations
         /// <summary>
         /// The enclosing translation, if any
         /// </summary>
-        public Tests.Translations.Translation Translation
+        public Translation Translation
         {
-            get { return Enclosing as Tests.Translations.Translation; }
+            get { return Enclosing as Translation; }
         }
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get { return Translation.SourceTexts; }
         }
@@ -53,7 +55,7 @@ namespace DataDictionary.Tests.Translations
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
         }
 
@@ -78,12 +80,19 @@ namespace DataDictionary.Tests.Translations
         /// <summary>
         /// The expression text for this expressionable
         /// </summary>
-        public override string ExpressionText { get { return Name; } set { Name = value; } }
+        public override string ExpressionText
+        {
+            get { return Name; }
+            set { Name = value; }
+        }
 
         /// <summary>
         /// The corresponding expression tree
         /// </summary>
-        public Interpreter.InterpreterTreeNode Tree { get { return null; } }
+        public InterpreterTreeNode Tree
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// Indicates that the expression is valid for this IExpressionable

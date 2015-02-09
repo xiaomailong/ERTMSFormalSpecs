@@ -14,9 +14,11 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Tests.Translations;
+
 namespace GUI.TranslationRules
 {
-    public class TranslationTreeView : TypedTreeView<DataDictionary.Tests.Translations.TranslationDictionary>
+    public class TranslationTreeView : TypedTreeView<TranslationDictionary>
     {
         /// <summary>
         /// The tests tree node
@@ -46,7 +48,7 @@ namespace GUI.TranslationRules
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public TranslationTreeNode createTranslation(DataDictionary.Tests.Translations.Translation translation)
+        public TranslationTreeNode createTranslation(Translation translation)
         {
             return dictionary.createTranslation(translation);
         }

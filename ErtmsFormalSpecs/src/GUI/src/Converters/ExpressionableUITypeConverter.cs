@@ -13,17 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.ComponentModel;
+using System.Globalization;
+using DataDictionary;
+using DataDictionary.Tests;
+
 namespace GUI.Converters
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.ComponentModel;
-    using System.Globalization;
-    using DataDictionary;
-    using DataDictionary.Tests;
-
     /// <summary>
     /// Converts IExpressionable to string, by getting the Expression property
     /// </summary>

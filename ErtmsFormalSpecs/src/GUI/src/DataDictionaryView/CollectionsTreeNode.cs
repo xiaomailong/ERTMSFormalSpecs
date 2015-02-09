@@ -13,13 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.SpecificationView;
+using Collection = DataDictionary.Types.Collection;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Paragraph = DataDictionary.Specification.Paragraph;
+using ReqRef = DataDictionary.ReqRef;
 
 namespace GUI.DataDictionaryView
 {
-    public class CollectionsTreeNode : ModelElementTreeNode<DataDictionary.Types.NameSpace>
+    public class CollectionsTreeNode : ModelElementTreeNode<NameSpace>
     {
         private class ItemEditor : NamedEditor
         {
@@ -37,7 +44,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public CollectionsTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+        public CollectionsTreeNode(NameSpace item, bool buildSubNodes)
             : base(item, buildSubNodes, "Collections", true)
         {
         }
@@ -50,7 +57,7 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Types.Collection collection in Item.Collections)
+            foreach (Collection collection in Item.Collections)
             {
                 Nodes.Add(new CollectionTreeNode(collection, buildSubNodes));
             }
@@ -71,7 +78,7 @@ namespace GUI.DataDictionaryView
             DataDictionaryTreeView treeView = BaseTreeView as DataDictionaryTreeView;
             if (treeView != null)
             {
-                DataDictionary.Types.Collection collection = (DataDictionary.Types.Collection)DataDictionary.Generated.acceptor.getFactory().createCollection();
+                Collection collection = (Collection) acceptor.getFactory().createCollection();
                 collection.Name = "<Collection" + (GetNodeCount(false) + 1) + ">";
                 AddCollection(collection);
             }
@@ -81,7 +88,7 @@ namespace GUI.DataDictionaryView
         /// Adds a new collection
         /// </summary>
         /// <param name="collection"></param>
-        public void AddCollection(DataDictionary.Types.Collection collection)
+        public void AddCollection(Collection collection)
         {
             Item.appendCollections(collection);
             Nodes.Add(new CollectionTreeNode(collection, true));
@@ -113,20 +120,20 @@ namespace GUI.DataDictionaryView
             if (SourceNode is CollectionTreeNode)
             {
                 CollectionTreeNode collectionTreeNode = SourceNode as CollectionTreeNode;
-                DataDictionary.Types.Collection collection = collectionTreeNode.Item;
+                Collection collection = collectionTreeNode.Item;
 
                 collectionTreeNode.Delete();
                 AddCollection(collection);
             }
-            else if (SourceNode is SpecificationView.ParagraphTreeNode)
+            else if (SourceNode is ParagraphTreeNode)
             {
-                SpecificationView.ParagraphTreeNode node = SourceNode as SpecificationView.ParagraphTreeNode;
-                DataDictionary.Specification.Paragraph paragaph = node.Item;
+                ParagraphTreeNode node = SourceNode as ParagraphTreeNode;
+                Paragraph paragaph = node.Item;
 
-                DataDictionary.Types.Collection collection = (DataDictionary.Types.Collection)DataDictionary.Generated.acceptor.getFactory().createCollection();
+                Collection collection = (Collection) acceptor.getFactory().createCollection();
                 collection.Name = paragaph.Name;
 
-                DataDictionary.ReqRef reqRef = (DataDictionary.ReqRef)DataDictionary.Generated.acceptor.getFactory().createReqRef();
+                ReqRef reqRef = (ReqRef) acceptor.getFactory().createReqRef();
                 reqRef.Name = paragaph.FullId;
                 collection.appendRequirements(reqRef);
                 AddCollection(collection);

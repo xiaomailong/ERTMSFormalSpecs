@@ -13,22 +13,25 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows.Forms;
 using System.Drawing.Design;
+using System.Windows.Forms;
+using DataDictionary.Types;
+using GUI.Converters;
 
 namespace GUI.DataDictionaryView
 {
-    public class CollectionTreeNode : TypeTreeNode<DataDictionary.Types.Collection>
+    public class CollectionTreeNode : TypeTreeNode<Collection>
     {
-        private class InternalTypesConverter : Converters.TypesConverter
+        private class InternalTypesConverter : TypesConverter
         {
             public override StandardValuesCollection
-            GetStandardValues(ITypeDescriptorContext context)
+                GetStandardValues(ITypeDescriptorContext context)
             {
-                return GetValues(((ItemEditor)context.Instance).Item);
+                return GetValues(((ItemEditor) context.Instance).Item);
             }
         }
 
@@ -56,9 +59,9 @@ namespace GUI.DataDictionaryView
             /// The variable type
             /// </summary>
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.TypeUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.TypeUITypeConverter))]
-            public DataDictionary.Types.Collection Type
+            [Editor(typeof (TypeUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (TypeUITypeConverter))]
+            public Collection Type
             {
                 get { return Item; }
                 set
@@ -72,9 +75,9 @@ namespace GUI.DataDictionaryView
             /// The structure element default value
             /// </summary>
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.DefaultValueUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.DefaultValueUITypeConverter))]
-            public DataDictionary.Types.Collection DefaultValue
+            [Editor(typeof (DefaultValueUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (DefaultValueUITypeConverter))]
+            public Collection DefaultValue
             {
                 get { return Item; }
                 set
@@ -99,7 +102,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public CollectionTreeNode(DataDictionary.Types.Collection item, bool buildSubNodes)
+        public CollectionTreeNode(Collection item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }

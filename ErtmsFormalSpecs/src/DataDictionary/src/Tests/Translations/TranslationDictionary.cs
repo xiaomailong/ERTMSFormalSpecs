@@ -13,12 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Utils;
 
 namespace DataDictionary.Tests.Translations
 {
-    public class TranslationDictionary : Generated.TranslationDictionary, Utils.IFinder
+    public class TranslationDictionary : Generated.TranslationDictionary, IFinder
     {
         /// <summary>
         /// Constructor
@@ -26,45 +29,39 @@ namespace DataDictionary.Tests.Translations
         public TranslationDictionary()
             : base()
         {
-            Utils.FinderRepository.INSTANCE.Register(this);
+            FinderRepository.INSTANCE.Register(this);
         }
 
         /// <summary>
         /// Provides the folders
         /// </summary>
-        public System.Collections.ArrayList Folders
+        public ArrayList Folders
         {
             get
             {
                 if (allFolders() == null)
                 {
-                    setAllFolders(new System.Collections.ArrayList());
+                    setAllFolders(new ArrayList());
                 }
                 return allFolders();
             }
-            set
-            {
-                setAllFolders(value);
-            }
+            set { setAllFolders(value); }
         }
 
         /// <summary>
         /// Provides the translations for this dictionary
         /// </summary>
-        public System.Collections.ArrayList Translations
+        public ArrayList Translations
         {
             get
             {
                 if (allTranslations() == null)
                 {
-                    setAllTranslations(new System.Collections.ArrayList());
+                    setAllTranslations(new ArrayList());
                 }
                 return allTranslations();
             }
-            set
-            {
-                setAllTranslations(value);
-            }
+            set { setAllTranslations(value); }
         }
 
         /// <summary>
@@ -110,7 +107,7 @@ namespace DataDictionary.Tests.Translations
                     i += 1;
                 }
 
-                retVal = new string(tmp, 0, j); 
+                retVal = new string(tmp, 0, j);
             }
 
             return retVal;
@@ -120,6 +117,7 @@ namespace DataDictionary.Tests.Translations
         /// The cache
         /// </summary>
         private Dictionary<string, Dictionary<string, Translation>> theCache = null;
+
         public Dictionary<string, Dictionary<string, Translation>> TheCache
         {
             get
@@ -176,7 +174,7 @@ namespace DataDictionary.Tests.Translations
                 {
                     foreach (SourceTextComment comment in sourceText.Comments)
                     {
-                        string commentValue  = StripText(comment.Name);
+                        string commentValue = StripText(comment.Name);
                         tmp[commentValue] = translation;
                     }
                 }
@@ -229,7 +227,7 @@ namespace DataDictionary.Tests.Translations
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
             Folder folder = element as Folder;
             if (folder != null)

@@ -13,15 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary.Types;
+
 namespace GUI.ModelDiagram
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using DataDictionary;
-    using DataDictionary.Types;
-
     /// <summary>
     /// The boxes that represent an enumeration
     /// </summary>
@@ -30,7 +26,7 @@ namespace GUI.ModelDiagram
         /// <summary>
         /// Constructor
         /// </summary>
-        public EnumModelControl(DataDictionary.Types.Enum model)
+        public EnumModelControl(Enum model)
             : base(model)
         {
         }
@@ -38,6 +34,9 @@ namespace GUI.ModelDiagram
         /// <summary>
         /// The name of the kind of type
         /// </summary>
-        public override string ModelName { get { return "Enumeration"; } }
+        public override string ModelName
+        {
+            get { return "Enumeration"; }
+        }
     }
 }

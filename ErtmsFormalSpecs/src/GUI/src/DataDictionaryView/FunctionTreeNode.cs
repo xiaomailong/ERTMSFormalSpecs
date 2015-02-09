@@ -13,24 +13,31 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing.Design;
 using System.Windows.Forms;
 using DataDictionary;
 using DataDictionary.Functions;
-using System.Drawing.Design;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
+using GUI.Converters;
+using Case = DataDictionary.Functions.Case;
+using Function = DataDictionary.Functions.Function;
+using Parameter = DataDictionary.Parameter;
 
 namespace GUI.DataDictionaryView
 {
     public class FunctionTreeNode : ReqRelatedTreeNode<Function>
     {
-        private class InternalTypesConverter : Converters.TypesConverter
+        private class InternalTypesConverter : TypesConverter
         {
             public override StandardValuesCollection
-            GetStandardValues(ITypeDescriptorContext context)
+                GetStandardValues(ITypeDescriptorContext context)
             {
-                ItemEditor editor = (ItemEditor)context.Instance;
+                ItemEditor editor = (ItemEditor) context.Instance;
                 return GetValues(editor.Item);
             }
         }
@@ -56,9 +63,9 @@ namespace GUI.DataDictionaryView
             /// The variable type
             /// </summary>
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.TypeUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.TypeUITypeConverter))]
-            public DataDictionary.Functions.Function Type
+            [Editor(typeof (TypeUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (TypeUITypeConverter))]
+            public Function Type
             {
                 get { return Item; }
                 set
@@ -75,10 +82,7 @@ namespace GUI.DataDictionaryView
             public bool IsCacheable
             {
                 get { return Item.getCacheable(); }
-                set
-                {
-                    Item.setCacheable(value);
-                }
+                set { Item.setCacheable(value); }
             }
         }
 
@@ -147,7 +151,7 @@ namespace GUI.DataDictionaryView
             DataDictionaryTreeView treeView = BaseTreeView as DataDictionaryTreeView;
             if (treeView != null)
             {
-                DataDictionary.Parameter parameter = (DataDictionary.Parameter)DataDictionary.Generated.acceptor.getFactory().createParameter();
+                Parameter parameter = (Parameter) acceptor.getFactory().createParameter();
                 parameter.Name = "Parameter" + (Item.FormalParameters.Count + 1);
                 Parameters.AddParameter(parameter);
             }
@@ -158,7 +162,7 @@ namespace GUI.DataDictionaryView
             DataDictionaryTreeView treeView = BaseTreeView as DataDictionaryTreeView;
             if (treeView != null)
             {
-                DataDictionary.Functions.Case aCase = (DataDictionary.Functions.Case)DataDictionary.Generated.acceptor.getFactory().createCase();
+                Case aCase = (Case) acceptor.getFactory().createCase();
                 aCase.Name = "Case" + (Item.Cases.Count + 1);
                 Cases.AddCase(aCase);
             }
@@ -191,11 +195,11 @@ namespace GUI.DataDictionaryView
             try
             {
                 ModelElement.BeSilent = true;
-                DataDictionary.Interpreter.InterpretationContext context = new DataDictionary.Interpreter.InterpretationContext(Item);
+                InterpretationContext context = new InterpretationContext(Item);
                 if (Item.FormalParameters.Count == 1)
                 {
-                    Parameter parameter = (Parameter)Item.FormalParameters[0];
-                    DataDictionary.Functions.Graph graph = Item.createGraph(context, parameter, null);
+                    Parameter parameter = (Parameter) Item.FormalParameters[0];
+                    Graph graph = Item.createGraph(context, parameter, null);
                     if (graph != null && graph.Segments.Count != 0)
                     {
                         retVal.Insert(7, new MenuItem("Display", new EventHandler(DisplayHandler)));
@@ -204,7 +208,7 @@ namespace GUI.DataDictionaryView
                 }
                 else if (Item.FormalParameters.Count == 2)
                 {
-                    DataDictionary.Functions.Surface surface = Item.createSurface(context, null);
+                    Surface surface = Item.createSurface(context, null);
                     if (surface != null && surface.Segments.Count != 0)
                     {
                         retVal.Insert(7, new MenuItem("Display", new EventHandler(DisplayHandler)));

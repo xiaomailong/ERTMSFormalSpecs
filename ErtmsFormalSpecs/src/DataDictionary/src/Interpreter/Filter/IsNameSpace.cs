@@ -13,10 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary.Types;
+using Utils;
+
 namespace DataDictionary.Interpreter.Filter
 {
-    using Utils;
-
     /// <summary>
     /// Predicates which indicates that the namable is a structure type
     /// </summary>
@@ -45,14 +47,14 @@ namespace DataDictionary.Interpreter.Filter
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static new bool Predicate(INamable value)
+        public new static bool Predicate(INamable value)
         {
-            return value is Types.NameSpace;
+            return value is NameSpace;
         }
 
         /// <summary>
         /// Singleton
         /// </summary>
-        public static new IsNameSpace INSTANCE = new IsNameSpace();
+        public new static IsNameSpace INSTANCE = new IsNameSpace();
     }
 }

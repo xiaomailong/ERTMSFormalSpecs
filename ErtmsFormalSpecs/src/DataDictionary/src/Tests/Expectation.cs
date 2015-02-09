@@ -14,6 +14,12 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System.Collections;
+using DataDictionary.Interpreter;
+using DataDictionary.Interpreter.Statement;
+using DataDictionary.Tests.Translations;
+using Utils;
+
 namespace DataDictionary.Tests
 {
     public class Expectation : Generated.Expectation, IExpressionable, TextualExplain
@@ -37,11 +43,11 @@ namespace DataDictionary.Tests
         /// <summary>
         /// The enclosing translation, if any
         /// </summary>
-        public Translations.Translation Translation
+        public Translation Translation
         {
             get
             {
-                Translations.Translation result = null;
+                Translation result = null;
                 if (SubStep != null)
                 {
                     result = SubStep.Translation;
@@ -55,7 +61,7 @@ namespace DataDictionary.Tests
         /// </summary>
         public Frame Frame
         {
-            get { return Utils.EnclosingFinder<Tests.Frame>.find(this); }
+            get { return EnclosingFinder<Frame>.find(this); }
         }
 
         /// <summary>
@@ -103,8 +109,9 @@ namespace DataDictionary.Tests
             set { Value = value; }
         }
 
-        public Interpreter.Expression __expression;
-        public Interpreter.Expression Expression
+        public Expression __expression;
+
+        public Expression Expression
         {
             get
             {
@@ -114,13 +121,13 @@ namespace DataDictionary.Tests
                 }
                 return __expression;
             }
-            set
-            {
-                __expression = value;
-            }
+            set { __expression = value; }
         }
 
-        public Interpreter.InterpreterTreeNode Tree { get { return Expression; } }
+        public InterpreterTreeNode Tree
+        {
+            get { return Expression; }
+        }
 
 
         /// <summary>
@@ -135,10 +142,10 @@ namespace DataDictionary.Tests
         /// <summary>
         /// Creates the tree according to the expression text
         /// </summary>
-        public Interpreter.InterpreterTreeNode Compile()
+        public InterpreterTreeNode Compile()
         {
             // Side effect, builds the expressions if they are not already built
-            Interpreter.Expression expression = ConditionTree;
+            Expression expression = ConditionTree;
             return Tree;
         }
 
@@ -152,14 +159,15 @@ namespace DataDictionary.Tests
         {
             bool retVal = false;
 
-            Interpreter.Statement.Statement tree = EFSSystem.Parser.Statement(this, expression, true);
+            Statement tree = EFSSystem.Parser.Statement(this, expression, true);
             retVal = tree != null;
 
             return retVal;
         }
 
-        public Interpreter.Expression conditionTree;
-        public Interpreter.Expression ConditionTree
+        public Expression conditionTree;
+
+        public Expression ConditionTree
         {
             get
             {
@@ -169,10 +177,7 @@ namespace DataDictionary.Tests
                 }
                 return conditionTree;
             }
-            set
-            {
-                conditionTree = value;
-            }
+            set { conditionTree = value; }
         }
 
         public override string Name
@@ -181,11 +186,11 @@ namespace DataDictionary.Tests
             set { }
         }
 
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
-                System.Collections.ArrayList retVal = null;
+                ArrayList retVal = null;
 
                 if (SubStep != null)
                 {
@@ -200,14 +205,14 @@ namespace DataDictionary.Tests
         /// Indicates the name of the checked variable, if any
         /// </summary>
         /// <returns></returns>
-        public Interpreter.Designator CheckedVariable()
+        public Designator CheckedVariable()
         {
-            Interpreter.Designator retVal = null;
+            Designator retVal = null;
 
-            Interpreter.BinaryExpression binaryExpression = Expression as Interpreter.BinaryExpression;
+            BinaryExpression binaryExpression = Expression as BinaryExpression;
             if (binaryExpression != null)
             {
-                Interpreter.UnaryExpression unaryExpression = binaryExpression.Left as Interpreter.UnaryExpression;
+                UnaryExpression unaryExpression = binaryExpression.Left as UnaryExpression;
                 if (unaryExpression != null && unaryExpression.Term != null && unaryExpression.Term.Designator != null)
                 {
                     retVal = unaryExpression.Term.Designator;
@@ -221,7 +226,7 @@ namespace DataDictionary.Tests
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public override void AddModelElement(Utils.IModelElement element)
+        public override void AddModelElement(IModelElement element)
         {
         }
 
@@ -239,7 +244,7 @@ namespace DataDictionary.Tests
                 retVal += " {\\b IF }" + getCondition() + " {\\b THEN }\\par";
                 if (Expression != null)
                 {
-                    retVal += TextualExplainUtilities.Pad(Expression.ToString(), indentLevel + 2);                    
+                    retVal += TextualExplainUtilities.Pad(Expression.ToString(), indentLevel + 2);
                 }
                 retVal += "\\par {\\b END IF}\\par";
             }
@@ -257,7 +262,6 @@ namespace DataDictionary.Tests
         /// <summary>
         /// Provides an explanation of the step's behaviour
         /// </summary>
-
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
         public string getExplain(bool explainSubElements)

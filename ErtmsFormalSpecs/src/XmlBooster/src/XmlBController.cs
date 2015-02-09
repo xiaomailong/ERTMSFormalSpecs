@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace XmlBooster
 {
@@ -148,6 +145,7 @@ namespace XmlBooster
         /// The listeners
         /// </summary>
         private List<IListener<T>> listeners = new List<IListener<T>>();
+
         public List<IListener<T>> Listeners
         {
             get { return listeners; }
@@ -170,4 +168,3 @@ namespace XmlBooster
         }
     }
 }
-

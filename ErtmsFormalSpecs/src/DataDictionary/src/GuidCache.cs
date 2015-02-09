@@ -13,12 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using DataDictionary.Generated;
+using Utils;
+
 namespace DataDictionary
 {
-    using Utils;
-    using System.Collections.Generic;
-    using System;
-
     /// <summary>
     /// Cache for Guid -> ModelElement lookup
     /// </summary>
@@ -54,7 +56,7 @@ namespace DataDictionary
         /// <summary>
         /// Updates the cache according to the model
         /// </summary>
-        private class GuidVisitor : DataDictionary.Generated.Visitor
+        private class GuidVisitor : Visitor
         {
             /// <summary>
             /// The dictionary to update
@@ -70,9 +72,9 @@ namespace DataDictionary
                 Dictionary = dictionary;
             }
 
-            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+            public override void visit(BaseModelElement obj, bool visitSubNodes)
             {
-                ModelElement element = (ModelElement)obj;
+                ModelElement element = (ModelElement) obj;
 
                 string guid = element.Guid;
                 if (guid != null)
@@ -108,7 +110,7 @@ namespace DataDictionary
             {
                 // Update cache's contents
                 GuidVisitor visitor = new GuidVisitor(cache);
-                foreach (DataDictionary.Dictionary dictionary in EFSSystem.Dictionaries)
+                foreach (Dictionary dictionary in EFSSystem.Dictionaries)
                 {
                     visitor.visit(dictionary, true);
                 }

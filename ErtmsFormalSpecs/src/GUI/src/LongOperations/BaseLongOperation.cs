@@ -13,11 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using Utils;
+
 namespace GUI.LongOperations
 {
-    using Utils;
-    using System;
-
     /// <summary>
     /// The base class used to handle long operations
     /// </summary>

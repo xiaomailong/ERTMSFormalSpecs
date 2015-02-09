@@ -13,8 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter.Filter;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using Utils;
+using Structure = DataDictionary.Types.Structure;
+using Type = DataDictionary.Types.Type;
+using Variable = DataDictionary.Variables.Variable;
 
 namespace DataDictionary.Interpreter
 {
@@ -53,7 +61,7 @@ namespace DataDictionary.Interpreter
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
+        public override bool SemanticAnalysis(INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
@@ -63,7 +71,7 @@ namespace DataDictionary.Interpreter
                 Structure.SemanticAnalysis(instance, IsStructure.INSTANCE);
                 StaticUsage.AddUsages(Structure.StaticUsage, Usage.ModeEnum.Type);
 
-                Types.Structure structureType = Structure.Ref as Types.Structure;
+                Structure structureType = Structure.Ref as Structure;
                 // Structure field Association
                 foreach (KeyValuePair<Designator, Expression> pair in Associations)
                 {
@@ -86,7 +94,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
-        public override Types.Type GetExpressionType()
+        public override Type GetExpressionType()
         {
             return Structure.GetExpressionType();
         }
@@ -97,24 +105,24 @@ namespace DataDictionary.Interpreter
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
+        public override IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
-            Values.StructureValue retVal = null;
+            StructureValue retVal = null;
 
-            Types.Structure structureType = Structure.GetExpressionType() as Types.Structure;
+            Structure structureType = Structure.GetExpressionType() as Structure;
             if (structureType != null)
             {
-                retVal = new Values.StructureValue(structureType, context.UseDefaultValue);
+                retVal = new StructureValue(structureType, context.UseDefaultValue);
 
                 try
                 {
-                    DataDictionary.Generated.ControllersManager.DesactivateAllNotifications();
+                    ControllersManager.DesactivateAllNotifications();
                     foreach (KeyValuePair<Designator, Expression> pair in Associations)
                     {
-                        Values.IValue val = pair.Value.GetValue(new InterpretationContext(context), explain);
+                        IValue val = pair.Value.GetValue(new InterpretationContext(context), explain);
                         if (val != null)
                         {
-                            Variables.Variable var = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
+                            Variable var = (Variable) acceptor.getFactory().createVariable();
                             var.Name = pair.Key.Image;
                             var.Value = val;
                             var.Enclosing = retVal;
@@ -128,7 +136,7 @@ namespace DataDictionary.Interpreter
                 }
                 finally
                 {
-                    DataDictionary.Generated.ControllersManager.ActivateAllNotifications();
+                    ControllersManager.ActivateAllNotifications();
                 }
             }
             else
@@ -144,7 +152,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public override void fill(List<Utils.INamable> retVal, BaseFilter filter)
+        public override void fill(List<INamable> retVal, BaseFilter filter)
         {
             foreach (Expression expression in Associations.Values)
             {
@@ -199,7 +207,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         public override void checkExpression()
         {
-            Types.Structure structureType = Structure.GetExpressionType() as Types.Structure;
+            Structure structureType = Structure.GetExpressionType() as Structure;
             if (structureType != null)
             {
                 foreach (KeyValuePair<Designator, Expression> pair in Associations)
@@ -207,17 +215,17 @@ namespace DataDictionary.Interpreter
                     Designator name = pair.Key;
                     Expression expression = pair.Value;
 
-                    List<Utils.INamable> targets = new List<Utils.INamable>();
+                    List<INamable> targets = new List<INamable>();
                     structureType.Find(name.Image, targets);
                     if (targets.Count > 0)
                     {
                         expression.checkExpression();
-                        Types.Type type = expression.GetExpressionType();
+                        Type type = expression.GetExpressionType();
                         if (type != null)
                         {
-                            foreach (Utils.INamable namable in targets)
+                            foreach (INamable namable in targets)
                             {
-                                Types.ITypedElement element = namable as Types.ITypedElement;
+                                ITypedElement element = namable as ITypedElement;
                                 if (element != null && element.Type != null)
                                 {
                                     if (!element.Type.Match(type))

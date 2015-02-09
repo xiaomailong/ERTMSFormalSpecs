@@ -13,8 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Collection = DataDictionary.Types.Collection;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -34,7 +40,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public Allocate(EFSSystem efsSystem)
             : base(efsSystem, "Allocate")
         {
-            Collection = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Collection = (Parameter) acceptor.getFactory().createParameter();
             Collection.Name = "Collection";
             Collection.Type = EFSSystem.GenericCollection;
             Collection.setFather(this);
@@ -44,7 +50,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <summary>
         /// The return type of the available function
         /// </summary>
-        public override Types.Type ReturnType
+        public override Type ReturnType
         {
             get { return EFSSystem.AnyType; }
         }
@@ -56,20 +62,20 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             int token = context.LocalScope.PushContext();
             AssignParameters(context, actuals);
 
-            Values.ListValue value = context.findOnStack(Collection) as Values.ListValue;
+            ListValue value = context.findOnStack(Collection) as ListValue;
             if (value != null)
             {
-                Types.Collection collectionType = value.Type as Types.Collection;
+                Collection collectionType = value.Type as Collection;
                 if (collectionType != null && collectionType.Type != null)
                 {
-                    Types.Type elementType = collectionType.Type;
+                    Type elementType = collectionType.Type;
 
                     int i = 0;
                     while (i < value.Val.Count && value.Val[i] != EFSSystem.EmptyValue)

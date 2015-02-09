@@ -13,17 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary;
+using MigraDoc.DocumentObjectModel;
+
 namespace Reports.Specs
 {
-    using MigraDoc.DocumentObjectModel;
-
     public class SpecIssuesReportHandler : ReportHandler
     {
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="dictionary"></param>
-        public SpecIssuesReportHandler(DataDictionary.Dictionary dictionary)
+        public SpecIssuesReportHandler(Dictionary dictionary)
             : base(dictionary)
         {
             createFileName("SpecificationIssuesReport");
@@ -62,11 +64,6 @@ namespace Reports.Specs
                 Log.Info("..generating design choices");
                 report.CreateDesignChoicesArticle(this);
             }
-            if (AddComments)
-            {
-                Log.Info("..generating comments");
-                report.CreateMoreInformationArticle(this);
-            }
 
             return retVal;
         }
@@ -77,4 +74,3 @@ namespace Reports.Specs
         public bool AddComments { set; get; }
     }
 }
-

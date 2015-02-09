@@ -13,8 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using DataDictionary.Interpreter.Filter;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using Utils;
 
 namespace DataDictionary.Interpreter.ListOperators
 {
@@ -50,7 +54,7 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
+        public override bool SemanticAnalysis(INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
@@ -72,7 +76,7 @@ namespace DataDictionary.Interpreter.ListOperators
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public override void fill(List<Utils.INamable> retVal, BaseFilter filter)
+        public override void fill(List<INamable> retVal, BaseFilter filter)
         {
             base.fill(retVal, filter);
 
@@ -95,7 +99,7 @@ namespace DataDictionary.Interpreter.ListOperators
 
             if (Condition != null)
             {
-                Values.BoolValue b = Condition.GetValue(context, explain) as Values.BoolValue;
+                BoolValue b = Condition.GetValue(context, explain) as BoolValue;
                 if (b == null)
                 {
                     retVal = false;
@@ -116,11 +120,11 @@ namespace DataDictionary.Interpreter.ListOperators
         {
             base.checkExpression();
 
-            Types.Type conditionType = null;
+            Type conditionType = null;
             if (Condition != null)
             {
                 Condition.checkExpression();
-                conditionType = Condition.GetExpressionType() as Types.BoolType;
+                conditionType = Condition.GetExpressionType() as BoolType;
                 if (conditionType == null)
                 {
                     AddError("Conditions on list expressions should be a predicate (return a boolean value)");

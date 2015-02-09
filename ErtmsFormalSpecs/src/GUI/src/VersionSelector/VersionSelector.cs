@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using LibGit2Sharp;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using DataDictionary;
+using LibGit2Sharp;
 
 namespace GUI.VersionSelector
 {
@@ -17,7 +13,7 @@ namespace GUI.VersionSelector
         /// <summary>
         /// The dictionary for which this selection is built
         /// </summary>
-        public DataDictionary.Dictionary Dictionary { get; private set; }
+        public Dictionary Dictionary { get; private set; }
 
         /// <summary>
         /// The selected commit
@@ -36,7 +32,7 @@ namespace GUI.VersionSelector
         /// Constructor
         /// </summary>
         /// <param name="dictionary"></param>
-        public VersionSelector(DataDictionary.Dictionary dictionary)
+        public VersionSelector(Dictionary dictionary)
         {
             InitializeComponent();
             Dictionary = dictionary;
@@ -51,13 +47,13 @@ namespace GUI.VersionSelector
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void dataGridView_DoubleClick(object sender, EventArgs e)
+        private void dataGridView_DoubleClick(object sender, EventArgs e)
         {
             Selected = null;
 
             if (dataGridView.SelectedCells.Count == 1)
             {
-                Selected = ((List<DisplayObject>)dataGridView.DataSource)[dataGridView.SelectedCells[0].OwningRow.Index].Commit;
+                Selected = ((List<DisplayObject>) dataGridView.DataSource)[dataGridView.SelectedCells[0].OwningRow.Index].Commit;
             }
 
             if (Selected != null)
@@ -71,17 +67,26 @@ namespace GUI.VersionSelector
             /// <summary>
             /// The date of the commit
             /// </summary>
-            public DateTimeOffset Date { get { return Commit.Committer.When; } }
+            public DateTimeOffset Date
+            {
+                get { return Commit.Committer.When; }
+            }
 
             /// <summary>
             /// The author of the commit
             /// </summary>
-            public String Author { get { return Commit.Committer.Name; } }
+            public String Author
+            {
+                get { return Commit.Committer.Name; }
+            }
 
             /// <summary>
             /// The message of the commit
             /// </summary>
-            public String Message { get { return Commit.Message; } }
+            public String Message
+            {
+                get { return Commit.Message; }
+            }
 
             /// <summary>
             /// The commit to be displayed
@@ -184,17 +189,14 @@ namespace GUI.VersionSelector
 
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
-
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

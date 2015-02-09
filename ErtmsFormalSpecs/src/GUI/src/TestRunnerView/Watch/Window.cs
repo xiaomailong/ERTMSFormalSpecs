@@ -13,16 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.Windows.Forms;
-using System.Collections.Generic;
-using WeifenLuo.WinFormsUI.Docking;
-using DataDictionary.Interpreter;
-using DataDictionary;
+
 using System;
-using DataDictionary.Values;
-using System.Drawing;
-using DataDictionary.Variables;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows.Forms;
+using BrightIdeasSoftware;
+using DataDictionary;
+using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using WeifenLuo.WinFormsUI.Docking;
+using Shortcut = DataDictionary.Shortcuts.Shortcut;
+using Type = DataDictionary.Types.Type;
 
 namespace GUI.TestRunnerView.Watch
 {
@@ -37,7 +40,7 @@ namespace GUI.TestRunnerView.Watch
             InitializeComponent();
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
-            DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom;
+            DockAreas = DockAreas.DockBottom;
 
             watchDataGridView.AllowDrop = true;
             watchDataGridView.DragEnter += new DragEventHandler(watchDataGridView_DragEnter);
@@ -148,7 +151,7 @@ namespace GUI.TestRunnerView.Watch
             {
                 HandlingDoubleClick = true;
 
-                List<WatchedExpression> watches = (List<WatchedExpression>)watchDataGridView.DataSource;
+                List<WatchedExpression> watches = (List<WatchedExpression>) watchDataGridView.DataSource;
 
                 // Open a editor to edit the cell contents
                 WatchedExpression selected = SelectedWatch;
@@ -193,7 +196,7 @@ namespace GUI.TestRunnerView.Watch
 
                 if (watchDataGridView.SelectedCells.Count == 1)
                 {
-                    retVal = ((List<WatchedExpression>)watchDataGridView.DataSource)[watchDataGridView.SelectedCells[0].OwningRow.Index];
+                    retVal = ((List<WatchedExpression>) watchDataGridView.DataSource)[watchDataGridView.SelectedCells[0].OwningRow.Index];
                 }
 
                 return retVal;
@@ -205,7 +208,7 @@ namespace GUI.TestRunnerView.Watch
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void watchDataGridView_KeyUp(object sender, KeyEventArgs e)
+        private void watchDataGridView_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
             {
@@ -213,7 +216,7 @@ namespace GUI.TestRunnerView.Watch
                 WatchedExpression selected = SelectedWatch;
                 if (selected != null)
                 {
-                    List<WatchedExpression> watches = (List<WatchedExpression>)watchDataGridView.DataSource;
+                    List<WatchedExpression> watches = (List<WatchedExpression>) watchDataGridView.DataSource;
                     watches.Remove(selected);
 
                     watchDataGridView.DataSource = null;
@@ -229,7 +232,7 @@ namespace GUI.TestRunnerView.Watch
         /// </summary>
         private void EnsureEmptyRoom()
         {
-            List<WatchedExpression> watches = (List<WatchedExpression>)watchDataGridView.DataSource;
+            List<WatchedExpression> watches = (List<WatchedExpression>) watchDataGridView.DataSource;
 
             bool emptyFound = false;
             foreach (WatchedExpression watch in watches)
@@ -254,7 +257,7 @@ namespace GUI.TestRunnerView.Watch
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void watchDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void watchDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (!HandlingDoubleClick)
             {
@@ -268,7 +271,7 @@ namespace GUI.TestRunnerView.Watch
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void watchDataGridView_DragEnter(object sender, DragEventArgs e)
+        private void watchDataGridView_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
         }
@@ -280,7 +283,7 @@ namespace GUI.TestRunnerView.Watch
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void watchDataGridView_DragDrop(object sender, DragEventArgs e)
+        private void watchDataGridView_DragDrop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
             {
@@ -291,7 +294,7 @@ namespace GUI.TestRunnerView.Watch
                     Variable variable = sourceNode.Model as Variable;
                     if (variable == null)
                     {
-                        DataDictionary.Shortcuts.Shortcut shortCut = sourceNode.Model as DataDictionary.Shortcuts.Shortcut;
+                        Shortcut shortCut = sourceNode.Model as Shortcut;
                         if (shortCut != null)
                         {
                             variable = shortCut.GetReference() as Variable;
@@ -304,8 +307,8 @@ namespace GUI.TestRunnerView.Watch
                     }
                 }
 
-                BrightIdeasSoftware.OLVListItem item = data as BrightIdeasSoftware.OLVListItem;
-                if ( item != null )
+                OLVListItem item = data as OLVListItem;
+                if (item != null)
                 {
                     Variable variable = item.RowObject as Variable;
                     if (variable != null)
@@ -318,7 +321,7 @@ namespace GUI.TestRunnerView.Watch
 
         private void AddVariable(Variable variable)
         {
-            List<WatchedExpression> watches = (List<WatchedExpression>)watchDataGridView.DataSource;
+            List<WatchedExpression> watches = (List<WatchedExpression>) watchDataGridView.DataSource;
             watches.Insert(watches.Count - 1, new WatchedExpression(Instance, variable.FullName));
             watchDataGridView.DataSource = null;
             watchDataGridView.DataSource = watches;
@@ -330,7 +333,7 @@ namespace GUI.TestRunnerView.Watch
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Window_FormClosed(object sender, FormClosedEventArgs e)
+        private void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
             GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
@@ -422,7 +425,6 @@ namespace GUI.TestRunnerView.Watch
                             {
                             }
                         }
-
                     }
 
                     return retVal;
@@ -437,7 +439,7 @@ namespace GUI.TestRunnerView.Watch
                             Variable variable = expression.Ref as Variable;
                             if (variable != null)
                             {
-                                DataDictionary.Types.Type type = variable.Type;
+                                Type type = variable.Type;
                                 if (type != null)
                                 {
                                     IValue val = type.getValue(value);

@@ -55,7 +55,7 @@
  Guid="0b1c1e56-0a00-40a0-a9dc-dbf2d66bbd91"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -94,7 +94,7 @@
  Guid="53bd24c1-64e1-40c9-9051-fb73472dabbd"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -107,7 +107,7 @@
  Guid="e71c4734-175e-4d8f-b34c-1505600b4cf9"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -146,4 +146,139 @@
  Guid="bb1533a9-5941-4e29-a301-af248dc7a388"
 >
 </ReqRef></StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="abfe4f5f-ea27-46e1-a316-5cacc5fa4db1"
+>
+<Comment>Checks the values in a structure of type EOLM_PACKET.Message</Comment>
+<Parameters>
+<Parameter
+ Type="EOLM_PACKET.Message"
+ Name="struct"
+ Guid="7696aaf0-18bb-4a53-97a8-299a8b59dcb3"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="4bde1152-bbb2-4f58-bcd6-89ef40cffb93"
+>
+<PreConditions>
+<PreCondition
+ Guid="79d57ca7-3de8-4e32-ad69-7cbf30fe01ac"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="50307965-641a-433d-81f0-46fa2f4feff6"
+>
+<PreConditions>
+<PreCondition
+ Guid="5e823e61-1c31-4224-89b7-cd85aeb6fc68"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="723d0d67-60ba-4c4c-b9af-946f326a1e46"
+>
+<PreConditions>
+<PreCondition
+ Guid="c2d832b3-a1e9-4ead-8410-4532abc81623"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="8e9d11a3-9e47-4b97-8fee-a2afd9ee89d6"
+>
+<PreConditions>
+<PreCondition
+ Guid="97038969-646e-4ead-be16-7855e9a64dd4"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_SCALE invalid"
+ Guid="a2483603-e72a-4a8d-bb60-2b717843cad2"
+>
+<PreConditions>
+<PreCondition
+ Guid="20f15a10-d0c3-429f-9986-7ad939892610"
+>struct.Q_SCALE &lt; 0
+  AND  
+struct.Q_SCALE &gt;= 4
+  AND  
+struct.Q_SCALE != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_LOOP invalid"
+ Guid="e82354e5-0444-4bb0-968a-25af0c7558d0"
+>
+<PreConditions>
+<PreCondition
+ Guid="30379828-c060-495a-ae8f-d25e52423763"
+>struct.NID_LOOP &lt; 0
+  AND  
+struct.NID_LOOP &gt;= 16384</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.D_LOOP invalid"
+ Guid="2541d53a-51fc-4cef-9a88-da02855b9957"
+>
+<PreConditions>
+<PreCondition
+ Guid="b99068be-d278-437b-91c3-1b099b3db882"
+>struct.D_LOOP &lt; 0
+  AND  
+struct.D_LOOP &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_LOOP invalid"
+ Guid="8ae88efe-54f3-49ee-b99a-7aaefec19a81"
+>
+<PreConditions>
+<PreCondition
+ Guid="05cc0234-1a42-4253-ae54-a65b17a5859c"
+>struct.L_LOOP &lt; 0
+  AND  
+struct.L_LOOP &gt;= 32768</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_LOOPDIR invalid"
+ Guid="26ff2a26-fad0-4b35-8ff8-173e3a2f1bc3"
+>
+<PreConditions>
+<PreCondition
+ Guid="1e9195c4-046d-441d-976a-2edb488e2b70"
+>struct.Q_LOOPDIR &lt; 0
+  AND  
+struct.Q_LOOPDIR &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_SSCODE invalid"
+ Guid="9d0b7683-c040-4e5a-b853-eb36079ba22e"
+>
+<PreConditions>
+<PreCondition
+ Guid="9a29fd73-a2b1-4583-b3ec-82d6229fd54d"
+>struct.Q_SSCODE &lt; 0
+  AND  
+struct.Q_SSCODE &gt;= 16</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="bc35c334-014d-436a-8c9b-44914233626a"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

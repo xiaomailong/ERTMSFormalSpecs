@@ -13,20 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections.Generic;
+using DataDictionary.Generated;
+using Utils;
+
 namespace DataDictionary
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using Utils;
-
     /// <summary>
     /// Keeps track of all the model element which have a message
     /// </summary>
     public class Marking
     {
-        private class Gatherer : Generated.Visitor
+        private class Gatherer : Visitor
         {
             /// <summary>
             /// Provides the logs associated to the model elements
@@ -46,9 +45,9 @@ namespace DataDictionary
                 }
             }
 
-            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
+            public override void visit(BaseModelElement obj, bool visitSubNodes)
             {
-                ModelElement element = (ModelElement)obj;
+                ModelElement element = (ModelElement) obj;
 
                 if (element.Messages.Count > 0)
                 {

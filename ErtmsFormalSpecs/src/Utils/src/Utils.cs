@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 
@@ -30,7 +31,7 @@ namespace Utils
             return data == null || data.Equals("");
         }
 
-        private static char[] END_LINE = { '\r', '\n' };
+        private static char[] END_LINE = {'\r', '\n'};
 
         /// <summary>
         /// Converts a string into a list of string, splitted by eol

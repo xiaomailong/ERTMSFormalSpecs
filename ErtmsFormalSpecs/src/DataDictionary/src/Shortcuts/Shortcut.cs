@@ -14,6 +14,8 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System.Collections;
+
 namespace DataDictionary.Shortcuts
 {
     public class Shortcut : Generated.Shortcut
@@ -46,11 +48,11 @@ namespace DataDictionary.Shortcuts
         /// <summary>
         /// Provides the enclosing collection
         /// </summary>
-        public override System.Collections.ArrayList EnclosingCollection
+        public override ArrayList EnclosingCollection
         {
             get
             {
-                System.Collections.ArrayList retVal = null;
+                ArrayList retVal = null;
                 ShortcutDictionary dictionary = Enclosing as ShortcutDictionary;
                 if (dictionary != null)
                 {
@@ -84,7 +86,7 @@ namespace DataDictionary.Shortcuts
         /// <returns></returns>
         public Namable GetReference()
         {
-            return (DataDictionary.Namable)EFSSystem.findByFullName(ShortcutName);
+            return (Namable) EFSSystem.findByFullName(ShortcutName);
         }
     }
 }

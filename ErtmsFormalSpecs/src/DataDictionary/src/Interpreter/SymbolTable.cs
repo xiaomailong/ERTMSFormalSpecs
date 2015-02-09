@@ -13,8 +13,11 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using System.Linq;
+using DataDictionary.Values;
+using DataDictionary.Variables;
 
 namespace DataDictionary.Interpreter
 {
@@ -23,7 +26,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The values stored in the symbol table
         /// </summary>
-        private List<Variables.IVariable> Values { get; set; }
+        private List<IVariable> Values { get; set; }
 
         /// <summary>
         /// Handles the stack
@@ -35,7 +38,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         public SymbolTable()
         {
-            Values = new List<Variables.IVariable>();
+            Values = new List<IVariable>();
             StackIndex = new List<int>();
         }
 
@@ -69,7 +72,7 @@ namespace DataDictionary.Interpreter
         /// Stores the variable in this symbol table
         /// </summary>
         /// <param name="variable"></param>
-        public void setVariable(Variables.IVariable variable)
+        public void setVariable(IVariable variable)
         {
             Values.Add(variable);
         }
@@ -79,7 +82,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="variable"></param>
         /// <param name="value"></param>
-        public void setVariable(Variables.IVariable variable, Values.IValue value)
+        public void setVariable(IVariable variable, IValue value)
         {
             variable.Value = value;
             Values.Add(variable);
@@ -90,9 +93,9 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="parameter"></param>
         /// <param name="value"></param>
-        public void setParameter(Parameter parameter, Values.IValue value)
+        public void setParameter(Parameter parameter, IValue value)
         {
-            Variables.IVariable actual = parameter.createActual();
+            IVariable actual = parameter.createActual();
             actual.Value = value;
             Values.Add(actual);
         }
@@ -103,7 +106,7 @@ namespace DataDictionary.Interpreter
         /// <param name="xAxis"></param>
         public void setGraphParameter(Parameter xAxis)
         {
-            setParameter(xAxis, new Values.PlaceHolder(xAxis.Type, 0));
+            setParameter(xAxis, new PlaceHolder(xAxis.Type, 0));
         }
 
         /// <summary>
@@ -113,8 +116,8 @@ namespace DataDictionary.Interpreter
         /// <param name="yAxis"></param>
         public void setSurfaceParameters(Parameter xAxis, Parameter yAxis)
         {
-            setParameter(xAxis, new Values.PlaceHolder(xAxis.Type, 0));
-            setParameter(yAxis, new Values.PlaceHolder(yAxis.Type, 1));
+            setParameter(xAxis, new PlaceHolder(xAxis.Type, 0));
+            setParameter(yAxis, new PlaceHolder(yAxis.Type, 1));
         }
 
         /// <summary>
@@ -122,13 +125,13 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public Variables.IVariable getVariable(string name)
+        public IVariable getVariable(string name)
         {
-            Variables.IVariable retVal = null;
+            IVariable retVal = null;
 
             for (int i = Values.Count - 1; i >= 0; i--)
             {
-                Variables.IVariable element = Values[i];
+                IVariable element = Values[i];
                 if (element.Name.CompareTo(name) == 0)
                 {
                     retVal = element;
@@ -149,10 +152,10 @@ namespace DataDictionary.Interpreter
 
             for (int i = Values.Count - 1; i >= 0; i--)
             {
-                Variables.Actual actual = Values[i] as Variables.Actual;
+                Actual actual = Values[i] as Actual;
                 if (actual != null)
                 {
-                    if (actual.Value is Values.PlaceHolder)
+                    if (actual.Value is PlaceHolder)
                     {
                         // Insert if no other parameter with the same name is present in the result
                         bool found = false;
@@ -181,13 +184,13 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        public Variables.IVariable find(Parameter parameter)
+        public IVariable find(Parameter parameter)
         {
-            Variables.IVariable retVal = null;
+            IVariable retVal = null;
 
             for (int i = Values.Count - 1; i >= 0; i--)
             {
-                Variables.IVariable var = Values[i];
+                IVariable var = Values[i];
                 if (parameter.Name.Equals(var.Name))
                 {
                     retVal = var;
@@ -201,6 +204,9 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Provides the current stack index
         /// </summary>
-        public int Index { get { return Values.Count; } }
+        public int Index
+        {
+            get { return Values.Count; }
+        }
     }
 }

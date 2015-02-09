@@ -13,35 +13,31 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using HistoricalData.Generated;
+using Change = HistoricalData.Change;
+using Commit = HistoricalData.Commit;
+
 namespace DataDictionary.Compare
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Collections;
-
     /// <summary>
     /// Stores a difference between two versions of a dictionary
     /// </summary>
-    public class Diff : HistoricalData.Change
+    public class Diff : Change
     {
         /// <summary>
         /// The element affected by that change
         /// </summary>
         public ModelElement Model
         {
-            get
-            {
-                return GuidCache.INSTANCE.GetModel(Guid);
-            }
+            get { return GuidCache.INSTANCE.GetModel(Guid); }
         }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="action"></param>
-        public Diff(ModelElement model, HistoricalData.Generated.acceptor.ChangeOperationEnum action, string field = "", string before = "", string after = "") :
+        public Diff(ModelElement model, acceptor.ChangeOperationEnum action, string field = "", string before = "", string after = "") :
             base(model.Guid, action, field, before, after)
         {
         }
@@ -61,22 +57,22 @@ namespace DataDictionary.Compare
         {
             switch (Action)
             {
-                case HistoricalData.Generated.acceptor.ChangeOperationEnum.aAdd:
+                case acceptor.ChangeOperationEnum.aAdd:
                     Model.AddInfo("ADDED");
                     break;
 
-                case HistoricalData.Generated.acceptor.ChangeOperationEnum.aRemove:
+                case acceptor.ChangeOperationEnum.aRemove:
                     Model.AddInfo("REMOVED " + Field + ", previously was : " + Before);
                     break;
 
-                case HistoricalData.Generated.acceptor.ChangeOperationEnum.aChange:
+                case acceptor.ChangeOperationEnum.aChange:
                     Model.AddInfo("CHANGED " + Field + " \nFROM : " + Before + " \nTO : " + After + "\n");
                     break;
             }
         }
     }
 
-    public class VersionDiff : HistoricalData.Commit
+    public class VersionDiff : Commit
     {
         /// <summary>
         /// Constructor

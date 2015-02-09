@@ -1,4 +1,3 @@
-using System;
 // ------------------------------------------------------------------------------
 // -- Copyright ERTMS Solutions
 // -- Licensed under the EUPL V.1.1
@@ -14,8 +13,16 @@ using System;
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
+using System.Globalization;
+using DataDictionary.Functions;
+using DataDictionary.Generated;
+using DataDictionary.Interpreter;
 using DataDictionary.Values;
+using Utils;
+using EnumValue = DataDictionary.Constants.EnumValue;
+using Function = DataDictionary.Functions.Function;
 
 namespace DataDictionary.Types
 {
@@ -37,9 +44,9 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="index">the index in names to consider</param>
         /// <param name="names">the simple value names</param>
-        public virtual Values.IValue findValue(string[] names, int index)
+        public virtual IValue findValue(string[] names, int index)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             if (index == names.Length - 1)
             {
@@ -50,7 +57,7 @@ namespace DataDictionary.Types
         }
     }
 
-    public class BoolType : PredefinedType, IEnumerateValues, Utils.ISubDeclarator
+    public class BoolType : PredefinedType, IEnumerateValues, ISubDeclarator
     {
         public override string Name
         {
@@ -61,8 +68,9 @@ namespace DataDictionary.Types
         /// <summary>
         /// The true constant value
         /// </summary>
-        private Values.BoolValue trueValue;
-        public Values.BoolValue True
+        private BoolValue trueValue;
+
+        public BoolValue True
         {
             get { return trueValue; }
             private set { trueValue = value; }
@@ -71,8 +79,9 @@ namespace DataDictionary.Types
         /// <summary>
         /// The false constant value
         /// </summary>
-        private Values.BoolValue falseValue;
-        public Values.BoolValue False
+        private BoolValue falseValue;
+
+        public BoolValue False
         {
             get { return falseValue; }
             private set { falseValue = value; }
@@ -83,25 +92,25 @@ namespace DataDictionary.Types
         /// </summary>
         public void InitDeclaredElements()
         {
-            DeclaredElements = new Dictionary<string, List<Utils.INamable>>();
+            DeclaredElements = new Dictionary<string, List<INamable>>();
 
-            Utils.ISubDeclaratorUtils.AppendNamable(this, True);
-            Utils.ISubDeclaratorUtils.AppendNamable(this, False);
+            ISubDeclaratorUtils.AppendNamable(this, True);
+            ISubDeclaratorUtils.AppendNamable(this, False);
         }
 
         /// <summary>
         /// The elements declared by this declarator
         /// </summary>
-        public Dictionary<string, List<Utils.INamable>> DeclaredElements { get; set; }
+        public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
         /// Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
-        public void Find(string name, List<Utils.INamable> retVal)
+        public void Find(string name, List<INamable> retVal)
         {
-            Utils.ISubDeclaratorUtils.Find(this, name, retVal);
+            ISubDeclaratorUtils.Find(this, name, retVal);
         }
 
         /// <summary>
@@ -111,8 +120,8 @@ namespace DataDictionary.Types
         public BoolType(EFSSystem efsSystem)
             : base(efsSystem, "Boolean")
         {
-            True = new Values.BoolValue(this, true);
-            False = new Values.BoolValue(this, false);
+            True = new BoolValue(this, true);
+            False = new BoolValue(this, false);
 
             InitDeclaredElements();
         }
@@ -122,7 +131,7 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
-        public override Values.IValue getValue(string image)
+        public override IValue getValue(string image)
         {
             image = image.ToLowerInvariant();
             if (image.CompareTo("false") == 0)
@@ -155,12 +164,12 @@ namespace DataDictionary.Types
             get { return "false"; }
         }
 
-        public override bool CompareForEquality(Values.IValue left, Values.IValue right)
+        public override bool CompareForEquality(IValue left, IValue right)
         {
             bool retVal = false;
 
-            Values.BoolValue bool1 = left as Values.BoolValue;
-            Values.BoolValue bool2 = right as Values.BoolValue;
+            BoolValue bool1 = left as BoolValue;
+            BoolValue bool2 = right as BoolValue;
 
             if (bool1 != null && bool2 != null)
             {
@@ -191,11 +200,11 @@ namespace DataDictionary.Types
         /// <summary>
         /// The default value
         /// </summary>
-        public override Values.IValue DefaultValue
+        public override IValue DefaultValue
         {
             get
             {
-                Values.IValue retVal = new Values.IntValue(EFSSystem.IntegerType, 0);
+                IValue retVal = new IntValue(EFSSystem.IntegerType, 0);
 
                 return retVal;
             }
@@ -213,7 +222,7 @@ namespace DataDictionary.Types
             if (!retVal)
             {
                 Range range = otherType as Range;
-                if (range != null && range.getPrecision() == Generated.acceptor.PrecisionEnum.aIntegerPrecision)
+                if (range != null && range.getPrecision() == acceptor.PrecisionEnum.aIntegerPrecision)
                 {
                     retVal = true;
                 }
@@ -227,13 +236,13 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
-        public override Values.IValue getValue(string image)
+        public override IValue getValue(string image)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             try
             {
-                retVal = new Values.IntValue(this, Decimal.Parse(image));
+                retVal = new IntValue(this, Decimal.Parse(image));
             }
             catch (Exception e)
             {
@@ -248,20 +257,20 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
-        private int getValue(Values.IValue val)
+        private int getValue(IValue val)
         {
             int retVal = 0;
 
-            Constants.EnumValue enumValue = val as Constants.EnumValue;
+            EnumValue enumValue = val as EnumValue;
             if (enumValue != null)
             {
                 val = enumValue.Value;
             }
 
-            Values.IntValue vi = val as Values.IntValue;
+            IntValue vi = val as IntValue;
             if (vi != null)
             {
-                retVal = (int)vi.Val;
+                retVal = (int) vi.Val;
             }
             else
             {
@@ -279,43 +288,43 @@ namespace DataDictionary.Types
         /// <param name="Operation"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public override Values.IValue PerformArithmericOperation(Interpreter.InterpretationContext context, Values.IValue left, Interpreter.BinaryExpression.OPERATOR Operation, Values.IValue right)  // left +/-/*/div/exp right
+        public override IValue PerformArithmericOperation(InterpretationContext context, IValue left, BinaryExpression.OPERATOR Operation, IValue right) // left +/-/*/div/exp right
         {
-            Values.IntValue retVal = null;
+            IntValue retVal = null;
 
             int int1 = getValue(left);
             int int2 = getValue(right);
 
             switch (Operation)
             {
-                case Interpreter.BinaryExpression.OPERATOR.EXP:
-                    retVal = new Values.IntValue(EFSSystem.IntegerType, (Decimal)Math.Pow((double)int1, (double)int2));
+                case BinaryExpression.OPERATOR.EXP:
+                    retVal = new IntValue(EFSSystem.IntegerType, (Decimal) Math.Pow((double) int1, (double) int2));
                     break;
 
-                case Interpreter.BinaryExpression.OPERATOR.MULT:
-                    retVal = new Values.IntValue(EFSSystem.IntegerType, (int1 * int2));
+                case BinaryExpression.OPERATOR.MULT:
+                    retVal = new IntValue(EFSSystem.IntegerType, (int1*int2));
                     break;
 
-                case Interpreter.BinaryExpression.OPERATOR.DIV:
+                case BinaryExpression.OPERATOR.DIV:
                     if (int2 == 0)
                         throw new Exception("Division by zero");
                     else
-                        retVal = new Values.IntValue(EFSSystem.IntegerType, (int1 / int2));
+                        retVal = new IntValue(EFSSystem.IntegerType, (int1/int2));
                     break;
 
-                case Interpreter.BinaryExpression.OPERATOR.ADD:
-                    retVal = new Values.IntValue(EFSSystem.IntegerType, (int1 + int2));
+                case BinaryExpression.OPERATOR.ADD:
+                    retVal = new IntValue(EFSSystem.IntegerType, (int1 + int2));
                     break;
 
-                case Interpreter.BinaryExpression.OPERATOR.SUB:
-                    retVal = new Values.IntValue(EFSSystem.IntegerType, (int1 - int2));
+                case BinaryExpression.OPERATOR.SUB:
+                    retVal = new IntValue(EFSSystem.IntegerType, (int1 - int2));
                     break;
             }
 
             return retVal;
         }
 
-        public override bool CompareForEquality(Values.IValue left, Values.IValue right)
+        public override bool CompareForEquality(IValue left, IValue right)
         {
             bool retVal = false;
 
@@ -327,7 +336,7 @@ namespace DataDictionary.Types
             return retVal;
         }
 
-        public override bool Less(Values.IValue left, Values.IValue right)  // left < right
+        public override bool Less(IValue left, IValue right) // left < right
         {
             bool retVal = false;
 
@@ -339,7 +348,7 @@ namespace DataDictionary.Types
             return retVal;
         }
 
-        public override bool Greater(Values.IValue left, Values.IValue right)  // left > right
+        public override bool Greater(IValue left, IValue right) // left > right
         {
             bool retVal = false;
 
@@ -370,7 +379,6 @@ namespace DataDictionary.Types
 
             return retVal;
         }
-
     }
 
     public class DoubleType : PredefinedType
@@ -393,11 +401,11 @@ namespace DataDictionary.Types
         /// <summary>
         /// The default value
         /// </summary>
-        public override Values.IValue DefaultValue
+        public override IValue DefaultValue
         {
             get
             {
-                Values.IValue retVal = new Values.DoubleValue(EFSSystem.DoubleType, 0.0);
+                IValue retVal = new DoubleValue(EFSSystem.DoubleType, 0.0);
 
                 return retVal;
             }
@@ -415,7 +423,7 @@ namespace DataDictionary.Types
             if (!retVal)
             {
                 Range range = otherType as Range;
-                if (range != null && range.getPrecision() == Generated.acceptor.PrecisionEnum.aDoublePrecision)
+                if (range != null && range.getPrecision() == acceptor.PrecisionEnum.aDoublePrecision)
                 {
                     retVal = true;
                 }
@@ -429,10 +437,10 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
-        public override Values.IValue getValue(string image)
+        public override IValue getValue(string image)
         {
-            System.Globalization.CultureInfo info = System.Globalization.CultureInfo.InvariantCulture;
-            Values.DoubleValue retVal = new Values.DoubleValue(this, double.Parse(image, info.NumberFormat));
+            CultureInfo info = CultureInfo.InvariantCulture;
+            DoubleValue retVal = new DoubleValue(this, double.Parse(image, info.NumberFormat));
 
             return retVal;
         }
@@ -442,34 +450,34 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
-        private double getValue(Values.IValue val)
+        private double getValue(IValue val)
         {
             double retVal = 0;
 
-            Constants.EnumValue enumValue = val as Constants.EnumValue;
+            EnumValue enumValue = val as EnumValue;
             if (enumValue != null)
             {
                 val = enumValue.Value;
             }
 
-            Values.DoubleValue vd = val as Values.DoubleValue;
+            DoubleValue vd = val as DoubleValue;
             if (vd != null)
             {
                 retVal = vd.Val;
             }
             else
             {
-                Values.IntValue vi = val as Values.IntValue;
+                IntValue vi = val as IntValue;
                 if (vi != null)
                 {
-                    retVal = (double)vi.Val;
+                    retVal = (double) vi.Val;
                 }
                 else
                 {
-                    Functions.Function function = val as Functions.Function;
+                    Function function = val as Function;
                     if (function != null)
                     {
-                        Functions.Graph graph = function.Graph;
+                        Graph graph = function.Graph;
                         if (graph != null)
                         {
                             if (graph.Segments.Count == 1)
@@ -492,43 +500,43 @@ namespace DataDictionary.Types
         /// <param name="Operation"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public override Values.IValue PerformArithmericOperation(Interpreter.InterpretationContext context, Values.IValue left, Interpreter.BinaryExpression.OPERATOR Operation, Values.IValue right)  // left +/-/*/div/exp right
+        public override IValue PerformArithmericOperation(InterpretationContext context, IValue left, BinaryExpression.OPERATOR Operation, IValue right) // left +/-/*/div/exp right
         {
-            Values.DoubleValue retVal = null;
+            DoubleValue retVal = null;
 
             double double1 = getValue(left);
             double double2 = getValue(right);
 
             switch (Operation)
             {
-                case Interpreter.BinaryExpression.OPERATOR.EXP:
-                    retVal = new Values.DoubleValue(this, Math.Pow(double1, double2));
+                case BinaryExpression.OPERATOR.EXP:
+                    retVal = new DoubleValue(this, Math.Pow(double1, double2));
                     break;
 
-                case Interpreter.BinaryExpression.OPERATOR.MULT:
-                    retVal = new Values.DoubleValue(this, (double1 * double2));
+                case BinaryExpression.OPERATOR.MULT:
+                    retVal = new DoubleValue(this, (double1*double2));
                     break;
 
-                case Interpreter.BinaryExpression.OPERATOR.DIV:
+                case BinaryExpression.OPERATOR.DIV:
                     if (double2 == 0)
                         throw new Exception("Division by zero");
                     else
-                        retVal = new Values.DoubleValue(this, (double1 / double2));
+                        retVal = new DoubleValue(this, (double1/double2));
                     break;
 
-                case Interpreter.BinaryExpression.OPERATOR.ADD:
-                    retVal = new Values.DoubleValue(this, (double1 + double2));
+                case BinaryExpression.OPERATOR.ADD:
+                    retVal = new DoubleValue(this, (double1 + double2));
                     break;
 
-                case Interpreter.BinaryExpression.OPERATOR.SUB:
-                    retVal = new Values.DoubleValue(this, (double1 - double2));
+                case BinaryExpression.OPERATOR.SUB:
+                    retVal = new DoubleValue(this, (double1 - double2));
                     break;
             }
 
             return retVal;
         }
 
-        public override bool CompareForEquality(Values.IValue left, Values.IValue right)
+        public override bool CompareForEquality(IValue left, IValue right)
         {
             return CompareDoubleForEquality(getValue(left), getValue(right));
         }
@@ -549,7 +557,7 @@ namespace DataDictionary.Types
             return retVal;
         }
 
-        public override bool Less(Values.IValue left, Values.IValue right)  // left < right
+        public override bool Less(IValue left, IValue right) // left < right
         {
             bool retVal = false;
 
@@ -560,7 +568,7 @@ namespace DataDictionary.Types
             return retVal;
         }
 
-        public override bool Greater(Values.IValue left, Values.IValue right)  // left > right
+        public override bool Greater(IValue left, IValue right) // left > right
         {
             bool retVal = false;
 
@@ -576,16 +584,16 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="right"></param>
         /// <returns></returns>
-        public override Types.Type CombineType(Type right, DataDictionary.Interpreter.BinaryExpression.OPERATOR Operator)
+        public override Type CombineType(Type right, BinaryExpression.OPERATOR Operator)
         {
-            Types.Type retVal = null;
+            Type retVal = null;
 
-            if (Operator == DataDictionary.Interpreter.BinaryExpression.OPERATOR.MULT)
+            if (Operator == BinaryExpression.OPERATOR.MULT)
             {
                 Range range = right as Range;
                 if (range != null)
                 {
-                    if (range.getPrecision() == Generated.acceptor.PrecisionEnum.aIntegerPrecision)
+                    if (range.getPrecision() == acceptor.PrecisionEnum.aIntegerPrecision)
                     {
                         retVal = this;
                     }
@@ -634,9 +642,9 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
-        public override Values.IValue getValue(string image)
+        public override IValue getValue(string image)
         {
-            return new Values.StringValue(this, image);
+            return new StringValue(this, image);
         }
 
         public override string Default
@@ -644,20 +652,17 @@ namespace DataDictionary.Types
             get { return ""; }
         }
 
-        public override Values.IValue DefaultValue
+        public override IValue DefaultValue
         {
-            get
-            {
-                return getValue(Default);
-            }
+            get { return getValue(Default); }
         }
 
-        public override bool CompareForEquality(Values.IValue left, Values.IValue right)
+        public override bool CompareForEquality(IValue left, IValue right)
         {
             bool retVal = false;
 
-            Values.StringValue val1 = left as Values.StringValue;
-            Values.StringValue val2 = right as Values.StringValue;
+            StringValue val1 = left as StringValue;
+            StringValue val2 = right as StringValue;
 
             if (val1 != null && val2 != null)
             {

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using DataDictionary;
+using DataDictionary.Generated;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace GUI.EditorView
@@ -72,12 +68,12 @@ namespace GUI.EditorView
             Text = EditorName;
         }
 
-        void TextBox_KeyUp(object sender, KeyEventArgs e)
+        private void TextBox_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
                 case Keys.Escape:
-                    if (DockState == WeifenLuo.WinFormsUI.Docking.DockState.Float || DockState == WeifenLuo.WinFormsUI.Docking.DockState.Unknown)
+                    if (DockState == DockState.Float || DockState == DockState.Unknown)
                     {
                         __textChangeHandler.SetText(editorTextBox.TextBox.Text);
                         Close();
@@ -95,7 +91,7 @@ namespace GUI.EditorView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Window_FormClosed(object sender, FormClosedEventArgs e)
+        private void Window_FormClosed(object sender, FormClosedEventArgs e)
         {
             GUIUtils.MDIWindow.HandleSubWindowClosed(this);
         }
@@ -119,10 +115,7 @@ namespace GUI.EditorView
         /// </summary>
         public bool AutoComplete
         {
-            set
-            {
-                editorTextBox.AutoComplete = value;
-            }
+            set { editorTextBox.AutoComplete = value; }
         }
 
         /// <summary>
@@ -133,7 +126,10 @@ namespace GUI.EditorView
         /// <summary>
         /// The name of the editor
         /// </summary>
-        protected virtual string EditorName { get { return "Editor"; } }
+        protected virtual string EditorName
+        {
+            get { return "Editor"; }
+        }
 
         /// <summary>
         /// The element on which this editor is built
@@ -188,7 +184,7 @@ namespace GUI.EditorView
             get { return editorTextBox.TextBox.Text; }
             set
             {
-                editorTextBox.TextBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                editorTextBox.TextBox.Font = new Font("Courier New", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte) (0)));
                 editorTextBox.TextBox.Text = value;
             }
         }
@@ -196,11 +192,11 @@ namespace GUI.EditorView
         /// <summary>
         /// The instance currently edited by the editor
         /// </summary>
-        public DataDictionary.Generated.BaseModelElement Instance
+        public BaseModelElement Instance
         {
             get
             {
-                DataDictionary.Generated.BaseModelElement retVal = null;
+                BaseModelElement retVal = null;
 
                 if (__textChangeHandler != null)
                 {

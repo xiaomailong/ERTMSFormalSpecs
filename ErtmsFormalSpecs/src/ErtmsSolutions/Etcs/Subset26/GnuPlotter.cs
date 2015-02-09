@@ -13,12 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Reflection;
 using ErtmsSolutions.SiUnits;
 using ErtmsSolutions.Utils.RunProcessExec;
-
+using log4net;
 
 namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 {
@@ -36,34 +39,69 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
 
     /* Uses GnuPlot to build graphs with curves .*/
+
     public abstract class GnuPlotter
     {
         /**@brief How much time (in seconds) we allocate to GnuPlot process. Default 10 seconds. */
-        public int GnuPlotTimeOut { get { return my_gnuplot_time_out; } set { my_gnuplot_time_out = value; } }
+
+        public int GnuPlotTimeOut
+        {
+            get { return my_gnuplot_time_out; }
+            set { my_gnuplot_time_out = value; }
+        }
 
         /**@brief When Plot() in invoked it shall launch gnuplot.exe from here */
-        public string GnuPlot_Home_Path { set { my_gnuplot_home_path = value; } }
+
+        public string GnuPlot_Home_Path
+        {
+            set { my_gnuplot_home_path = value; }
+        }
 
         /**@brief Temporary files and resulting bitmaps are produced here */
-        public string Output_Path { set { my_output_path = value; } }
+
+        public string Output_Path
+        {
+            set { my_output_path = value; }
+        }
 
         /**@brief The base of all output file names */
-        public string Base_Name { set { my_base_name = value; } }
+
+        public string Base_Name
+        {
+            set { my_base_name = value; }
+        }
 
         /**@brief The generated bitmap width (default 1600)*/
-        public int ImageWidth { set { my_bitmap_width = value; } }
+
+        public int ImageWidth
+        {
+            set { my_bitmap_width = value; }
+        }
 
         /**@brief The generated bitmap height (default 800)*/
-        public int ImageHeight { set { my_bitmap_height = value; } }
+
+        public int ImageHeight
+        {
+            set { my_bitmap_height = value; }
+        }
 
         /**@brief Upon GnuPlot success, temporary files are erased if set to true (default). Upon failure, files are not erased. */
-        public bool EraseTemporaryFiles { set { my_erase_temporary_files = value; } }
+
+        public bool EraseTemporaryFiles
+        {
+            set { my_erase_temporary_files = value; }
+        }
 
         /**@brief Returns the name of the image file that was produced by GnuPlot. */
-        public string ImageFileName { get { return my_image_file_name; } }
+
+        public string ImageFileName
+        {
+            get { return my_image_file_name; }
+        }
 
 
         /**@brief Default creator */
+
         public GnuPlotter()
         {
             Base_Name = "undefined";
@@ -82,7 +120,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
 
         /************************************************************************/
-        protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         protected bool my_erase_temporary_files;
         protected string my_base_name;
         protected string my_output_path;
@@ -94,46 +132,49 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         protected List<string> my_list_of_temporary_files;
 
 
-
         /******************************************************************************************************/
+
         protected void Emit_d_v_a(StreamWriter swd, SiDistance d, SiSpeed V, SiAcceleration a)
         {
             swd.WriteLine("{0} {1} {2}",
-                           d.ToUnits().ToString(System.Globalization.CultureInfo.InvariantCulture),
-                           V.ToSubUnits(SiSpeed_SubUnits.KiloMeter_per_Hour).ToString(System.Globalization.CultureInfo.InvariantCulture),
-                           a.ToUnits().ToString(System.Globalization.CultureInfo.InvariantCulture));
+                d.ToUnits().ToString(CultureInfo.InvariantCulture),
+                V.ToSubUnits(SiSpeed_SubUnits.KiloMeter_per_Hour).ToString(CultureInfo.InvariantCulture),
+                a.ToUnits().ToString(CultureInfo.InvariantCulture));
         }
 
         /******************************************************************************************************/
+
         protected void Emit_d_a(StreamWriter swd, SiDistance d, SiAcceleration a)
         {
             swd.WriteLine("{0} {1}",
-                           d.ToUnits().ToString(System.Globalization.CultureInfo.InvariantCulture),
-                           a.ToUnits().ToString(System.Globalization.CultureInfo.InvariantCulture));
+                d.ToUnits().ToString(CultureInfo.InvariantCulture),
+                a.ToUnits().ToString(CultureInfo.InvariantCulture));
         }
 
         /******************************************************************************************************/
+
         protected void Emit_d_d(StreamWriter swd, SiDistance d1, SiDistance d2)
         {
             swd.WriteLine("{0} {1}",
-                           d1.ToUnits().ToString(System.Globalization.CultureInfo.InvariantCulture),
-                           d2.ToUnits().ToString(System.Globalization.CultureInfo.InvariantCulture));
+                d1.ToUnits().ToString(CultureInfo.InvariantCulture),
+                d2.ToUnits().ToString(CultureInfo.InvariantCulture));
         }
 
 
         /******************************************************************************************************/
+
         protected void Emit_d_V(StreamWriter swd, SiDistance d, SiSpeed V)
         {
             swd.WriteLine("{0} {1}",
-                           d.ToUnits().ToString(System.Globalization.CultureInfo.InvariantCulture),
-                           V.ToSubUnits(SiSpeed_SubUnits.KiloMeter_per_Hour).ToString(System.Globalization.CultureInfo.InvariantCulture));
+                d.ToUnits().ToString(CultureInfo.InvariantCulture),
+                V.ToSubUnits(SiSpeed_SubUnits.KiloMeter_per_Hour).ToString(CultureInfo.InvariantCulture));
         }
 
 
         /******************************************************************************************************/
+
         protected void Emit_Constant_Segment(StreamWriter swd, ConstantCurveSegment<SiDistance, SiSpeed> aSegment, SiSpeed v_offset, SiDistance d_offset)
         {
-
             SiDistance d0 = aSegment.X.X0;
             SiDistance d1 = aSegment.X.X1;
 
@@ -156,6 +197,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
 
         /******************************************************************************************************/
+
         protected void Emit_Segment(StreamWriter swd, SiDistance d0, SiDistance d1, SiSpeed v, SiSpeed v_offset, SiDistance d_offset)
         {
             Emit_d_V(swd, d0 + d_offset, v + v_offset);
@@ -178,6 +220,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /******************************************************************************************************/
+
         protected void Emit_Segment(StreamWriter swd, SiSpeed v0, SiSpeed v1, SiDistance d, SiSpeed v_offset, SiDistance d_offset)
         {
             Emit_d_V(swd, d + d_offset, v0 + v_offset);
@@ -200,8 +243,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
 
-
         /******************************************************************************************************/
+
         protected void Emit_Quadratic_Segment(StreamWriter swd, QuadraticCurveSegment aSegment, SiSpeed v_offset, SiDistance d_offset)
         {
             SiDistance d0 = aSegment.X.X0;
@@ -225,6 +268,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /******************************************************************************************************/
+
         protected string BuildTempFile(bool Mark_As_Temporary, string name)
         {
             string some_file_name = Path.Combine(my_output_path, name);
@@ -240,12 +284,12 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
 
-
         /******************************************************************************************************/
         protected abstract void Build_Gnuplot_Files(string job, string png);
 
 
         /******************************************************************************************************/
+
         public bool Plot()
         {
             string job = BuildTempFile(true, my_base_name + ".job");
@@ -262,7 +306,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                     foreach (string s in my_list_of_temporary_files)
                     {
                         Log.DebugFormat("  erasing {0}", s);
-                        System.IO.File.Delete(s);
+                        File.Delete(s);
                     }
                 }
 
@@ -275,6 +319,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
 
         /******************************************************************************************************/
+
         private bool Run_Gnu_Plot(string job_filename)
         {
             RunProcessExec pe;
@@ -282,7 +327,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             string std_out = BuildTempFile(true, "gnuplot.out");
             string std_err = BuildTempFile(true, "gnuplot.err");
 
-            pe = new RunProcessExec(/* WorkingDirectory,    */ "./",
+            pe = new RunProcessExec( /* WorkingDirectory,    */ "./",
                 /* Path,                */ my_gnuplot_home_path,
                 /* Program,             */ "pgnuplot.exe",
                 /* Arguments,           */ job_filename,
@@ -297,8 +342,5 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
             return (result.ExecResult == RunProcessExec.ProcessExecResult_Enum.OK);
         }
-
-
     }
 }
-

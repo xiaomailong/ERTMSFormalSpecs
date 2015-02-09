@@ -13,13 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using DataDictionary.Interpreter.ListOperators;
+using DataDictionary.Interpreter.Statement;
+
 namespace DataDictionary.Interpreter
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// Hand written visitor for expressions
     /// </summary>
@@ -94,79 +95,79 @@ namespace DataDictionary.Interpreter
             {
                 if (expression is BinaryExpression)
                 {
-                    VisitBinaryExpression((BinaryExpression)expression);
+                    VisitBinaryExpression((BinaryExpression) expression);
                 }
                 else if (expression is Call)
                 {
-                    VisitCall((Call)expression);
+                    VisitCall((Call) expression);
                 }
                 else if (expression is DerefExpression)
                 {
-                    VisitDerefExpression((DerefExpression)expression);
+                    VisitDerefExpression((DerefExpression) expression);
                 }
                 else if (expression is FunctionExpression)
                 {
-                    VisitFunctionExpression((FunctionExpression)expression);
+                    VisitFunctionExpression((FunctionExpression) expression);
                 }
                 else if (expression is ListExpression)
                 {
-                    VisitListExpression((ListExpression)expression);
+                    VisitListExpression((ListExpression) expression);
                 }
                 else if (expression is NumberExpression)
                 {
-                    VisitNumberExpression((NumberExpression)expression);
+                    VisitNumberExpression((NumberExpression) expression);
                 }
                 else if (expression is StringExpression)
                 {
-                    VisitStringExpression((StringExpression)expression);
+                    VisitStringExpression((StringExpression) expression);
                 }
                 else if (expression is StructExpression)
                 {
-                    VisitStructExpression((StructExpression)expression);
+                    VisitStructExpression((StructExpression) expression);
                 }
                 else if (expression is UnaryExpression)
                 {
-                    VisitUnaryExpression((UnaryExpression)expression);
+                    VisitUnaryExpression((UnaryExpression) expression);
                 }
-                else if (expression is ListOperators.CountExpression)
+                else if (expression is CountExpression)
                 {
-                    VisitCountExpression((ListOperators.CountExpression)expression);
+                    VisitCountExpression((CountExpression) expression);
                 }
-                else if (expression is ListOperators.FirstExpression)
+                else if (expression is FirstExpression)
                 {
-                    VisitFirstExpression((ListOperators.FirstExpression)expression);
+                    VisitFirstExpression((FirstExpression) expression);
                 }
-                else if (expression is ListOperators.ForAllExpression)
+                else if (expression is ForAllExpression)
                 {
-                    VisitForAllExpression((ListOperators.ForAllExpression)expression);
+                    VisitForAllExpression((ForAllExpression) expression);
                 }
-                else if (expression is ListOperators.LastExpression)
+                else if (expression is LastExpression)
                 {
-                    VisitLastExpression((ListOperators.LastExpression)expression);
+                    VisitLastExpression((LastExpression) expression);
                 }
-                else if (expression is ListOperators.MapExpression)
+                else if (expression is MapExpression)
                 {
-                    VisitMapExpression((ListOperators.MapExpression)expression);
+                    VisitMapExpression((MapExpression) expression);
                 }
-                else if (expression is ListOperators.ReduceExpression)
+                else if (expression is ReduceExpression)
                 {
-                    VisitReduceExpression((ListOperators.ReduceExpression)expression);
+                    VisitReduceExpression((ReduceExpression) expression);
                 }
-                else if (expression is ListOperators.SumExpression)
+                else if (expression is SumExpression)
                 {
-                    VisitSumExpression((ListOperators.SumExpression)expression);
+                    VisitSumExpression((SumExpression) expression);
                 }
-                else if (expression is ListOperators.ThereIsExpression)
+                else if (expression is ThereIsExpression)
                 {
-                    VisitThereIsExpression((ListOperators.ThereIsExpression)expression);
+                    VisitThereIsExpression((ThereIsExpression) expression);
                 }
                 else if (expression is StabilizeExpression)
                 {
-                    VisitStabilizeExpression((StabilizeExpression)expression);
+                    VisitStabilizeExpression((StabilizeExpression) expression);
                 }
                 else if (expression is LetExpression)
                 {
-                    VisitLetExpression((LetExpression)expression);
+                    VisitLetExpression((LetExpression) expression);
                 }
             }
         }
@@ -175,7 +176,7 @@ namespace DataDictionary.Interpreter
         /// Visits a condition based list expression
         /// </summary>
         /// <param name="conditionBasedListExpression"></param>
-        protected virtual void VisitConditionBasedListExpression(ListOperators.ConditionBasedListExpression conditionBasedListExpression)
+        protected virtual void VisitConditionBasedListExpression(ConditionBasedListExpression conditionBasedListExpression)
         {
             if (conditionBasedListExpression != null)
             {
@@ -194,7 +195,7 @@ namespace DataDictionary.Interpreter
         /// Visits a THERE IS expression
         /// </summary>
         /// <param name="thereIsExpression"></param>
-        protected virtual void VisitThereIsExpression(ListOperators.ThereIsExpression thereIsExpression)
+        protected virtual void VisitThereIsExpression(ThereIsExpression thereIsExpression)
         {
             if (thereIsExpression != null)
             {
@@ -215,11 +216,12 @@ namespace DataDictionary.Interpreter
                 VisitExpression(stabilizeExpression.InitialValue);
             }
         }
+
         /// <summary>
         /// Visits a SUM expression
         /// </summary>
         /// <param name="sumExpression"></param>
-        protected virtual void VisitSumExpression(ListOperators.SumExpression sumExpression)
+        protected virtual void VisitSumExpression(SumExpression sumExpression)
         {
             if (sumExpression != null)
             {
@@ -235,7 +237,7 @@ namespace DataDictionary.Interpreter
         /// Visits an expression based list expression
         /// </summary>
         /// <param name="expressionBasedListExpression"></param>
-        protected virtual void VisitExpressionBasedListExpression(ListOperators.ExpressionBasedListExpression expressionBasedListExpression)
+        protected virtual void VisitExpressionBasedListExpression(ExpressionBasedListExpression expressionBasedListExpression)
         {
             if (expressionBasedListExpression != null)
             {
@@ -251,7 +253,7 @@ namespace DataDictionary.Interpreter
         /// Visits a REDUCE expression
         /// </summary>
         /// <param name="reduceExpression"></param>
-        protected virtual void VisitReduceExpression(ListOperators.ReduceExpression reduceExpression)
+        protected virtual void VisitReduceExpression(ReduceExpression reduceExpression)
         {
             if (reduceExpression != null)
             {
@@ -267,7 +269,7 @@ namespace DataDictionary.Interpreter
         /// Visits a MAP expression
         /// </summary>
         /// <param name="mapExpression"></param>
-        protected virtual void VisitMapExpression(ListOperators.MapExpression mapExpression)
+        protected virtual void VisitMapExpression(MapExpression mapExpression)
         {
             if (mapExpression != null)
             {
@@ -279,7 +281,7 @@ namespace DataDictionary.Interpreter
         /// Visits a LAST expression
         /// </summary>
         /// <param name="lastExpression"></param>
-        protected virtual void VisitLastExpression(ListOperators.LastExpression lastExpression)
+        protected virtual void VisitLastExpression(LastExpression lastExpression)
         {
             if (lastExpression != null)
             {
@@ -291,7 +293,7 @@ namespace DataDictionary.Interpreter
         /// Visits a FOR ALL expression
         /// </summary>
         /// <param name="forAllExpression"></param>
-        protected virtual void VisitForAllExpression(ListOperators.ForAllExpression forAllExpression)
+        protected virtual void VisitForAllExpression(ForAllExpression forAllExpression)
         {
             if (forAllExpression != null)
             {
@@ -303,7 +305,7 @@ namespace DataDictionary.Interpreter
         /// Visits a FIRST expression
         /// </summary>
         /// <param name="firstExpression"></param>
-        protected virtual void VisitFirstExpression(ListOperators.FirstExpression firstExpression)
+        protected virtual void VisitFirstExpression(FirstExpression firstExpression)
         {
             if (firstExpression != null)
             {
@@ -315,7 +317,7 @@ namespace DataDictionary.Interpreter
         /// Visits a COUNT expression
         /// </summary>
         /// <param name="countExpression"></param>
-        protected virtual void VisitCountExpression(ListOperators.CountExpression countExpression)
+        protected virtual void VisitCountExpression(CountExpression countExpression)
         {
             if (countExpression != null)
             {
@@ -490,29 +492,29 @@ namespace DataDictionary.Interpreter
         {
             if (statement != null)
             {
-                if (statement is Statement.ApplyStatement)
+                if (statement is ApplyStatement)
                 {
-                    VisitApplyStatement((Statement.ApplyStatement)statement);
+                    VisitApplyStatement((ApplyStatement) statement);
                 }
-                else if (statement is Statement.InsertStatement)
+                else if (statement is InsertStatement)
                 {
-                    VisitInsertStatement((Statement.InsertStatement)statement);
+                    VisitInsertStatement((InsertStatement) statement);
                 }
-                else if (statement is Statement.ProcedureCallStatement)
+                else if (statement is ProcedureCallStatement)
                 {
-                    VisitProcedureCallStatement((Statement.ProcedureCallStatement)statement);
+                    VisitProcedureCallStatement((ProcedureCallStatement) statement);
                 }
-                else if (statement is Statement.RemoveStatement)
+                else if (statement is RemoveStatement)
                 {
-                    VisitRemoveStatement((Statement.RemoveStatement)statement);
+                    VisitRemoveStatement((RemoveStatement) statement);
                 }
-                else if (statement is Statement.ReplaceStatement)
+                else if (statement is ReplaceStatement)
                 {
-                    VisitReplaceStatement((Statement.ReplaceStatement)statement);
+                    VisitReplaceStatement((ReplaceStatement) statement);
                 }
-                else if (statement is Statement.VariableUpdateStatement)
+                else if (statement is VariableUpdateStatement)
                 {
-                    VisitVariableUpdateStatement((Statement.VariableUpdateStatement)statement);
+                    VisitVariableUpdateStatement((VariableUpdateStatement) statement);
                 }
             }
         }
@@ -521,7 +523,7 @@ namespace DataDictionary.Interpreter
         /// Visits a Variable update statement
         /// </summary>
         /// <param name="variableUpdateStatement"></param>
-        protected virtual void VisitVariableUpdateStatement(Statement.VariableUpdateStatement variableUpdateStatement)
+        protected virtual void VisitVariableUpdateStatement(VariableUpdateStatement variableUpdateStatement)
         {
             if (variableUpdateStatement.VariableIdentification != null)
             {
@@ -537,7 +539,7 @@ namespace DataDictionary.Interpreter
         /// Visits a REPLACE statement
         /// </summary>
         /// <param name="replaceStatement"></param>
-        protected virtual void VisitReplaceStatement(Statement.ReplaceStatement replaceStatement)
+        protected virtual void VisitReplaceStatement(ReplaceStatement replaceStatement)
         {
             if (replaceStatement.ListExpression != null)
             {
@@ -557,7 +559,7 @@ namespace DataDictionary.Interpreter
         /// Visits a REMOVE statement
         /// </summary>
         /// <param name="removeStatement"></param>
-        protected virtual void VisitRemoveStatement(Statement.RemoveStatement removeStatement)
+        protected virtual void VisitRemoveStatement(RemoveStatement removeStatement)
         {
             if (removeStatement.ListExpression != null)
             {
@@ -573,7 +575,7 @@ namespace DataDictionary.Interpreter
         /// Visits a Procedure call statement
         /// </summary>
         /// <param name="procedureCallStatement"></param>
-        protected virtual void VisitProcedureCallStatement(Statement.ProcedureCallStatement procedureCallStatement)
+        protected virtual void VisitProcedureCallStatement(ProcedureCallStatement procedureCallStatement)
         {
             if (procedureCallStatement.Call != null)
             {
@@ -585,7 +587,7 @@ namespace DataDictionary.Interpreter
         /// Visits an INSERT statement
         /// </summary>
         /// <param name="insertStatement"></param>
-        protected virtual void VisitInsertStatement(Statement.InsertStatement insertStatement)
+        protected virtual void VisitInsertStatement(InsertStatement insertStatement)
         {
             if (insertStatement.ListExpression != null)
             {
@@ -605,7 +607,7 @@ namespace DataDictionary.Interpreter
         /// Visits an APPLY statement
         /// </summary>
         /// <param name="applyStatement"></param>
-        protected virtual void VisitApplyStatement(Statement.ApplyStatement applyStatement)
+        protected virtual void VisitApplyStatement(ApplyStatement applyStatement)
         {
             if (applyStatement.AppliedStatement != null)
             {

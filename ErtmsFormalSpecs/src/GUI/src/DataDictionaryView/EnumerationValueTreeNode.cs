@@ -13,14 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using DataDictionary.Constants;
 
 namespace GUI.DataDictionaryView
 {
-    public class EnumerationValueTreeNode : ModelElementTreeNode<DataDictionary.Constants.EnumValue>
+    public class EnumerationValueTreeNode : ModelElementTreeNode<EnumValue>
     {
         private class ItemEditor : NamedEditor
         {
@@ -47,7 +49,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public EnumerationValueTreeNode(DataDictionary.Constants.EnumValue item, bool buildSubNodes)
+        public EnumerationValueTreeNode(EnumValue item, bool buildSubNodes)
             : base(item, buildSubNodes)
         {
         }

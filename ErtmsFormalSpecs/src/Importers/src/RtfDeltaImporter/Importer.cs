@@ -13,10 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using DataDictionary.Generated;
+using Utils;
+using ReqRef = DataDictionary.ReqRef;
+using ReqRelated = DataDictionary.ReqRelated;
+using Specification = DataDictionary.Specification.Specification;
+
 namespace Importers.RtfDeltaImporter
 {
-    using DataDictionary.Specification;
-
     /// <summary>
     /// This class is used to import a delta in the specifications based on a delta operation 
     /// performed in Word and saved in Rtf file format. 
@@ -27,7 +32,7 @@ namespace Importers.RtfDeltaImporter
     ///   - sets the paragraph as needing a manual review 
     ///   - invalidates the models to take this change into consideration
     /// </summary>
-    public class Importer : Utils.ProgressHandler
+    public class Importer : ProgressHandler
     {
         /// <summary>
         /// The file path of the original file
@@ -72,7 +77,7 @@ namespace Importers.RtfDeltaImporter
         /// </summary>
         /// <param name="delta"></param>
         /// <param name="specifications"></param>
-        private void PerformDelta(DataDictionary.Specification.Specification specifications)
+        private void PerformDelta(Specification specifications)
         {
             foreach (Paragraph p in NewDocument.ChangedParagraphs)
             {
@@ -142,13 +147,13 @@ namespace Importers.RtfDeltaImporter
                 par.Comment = "";
             }
             par.Comment = par.Comment + "\nPrevious revision status was " + par.getImplementationStatus_AsString();
-            par.setImplementationStatus(DataDictionary.Generated.acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable);
+            par.setImplementationStatus(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable);
             par.setReviewed(false);
             par.setBl("3.2.0");
             par.setVersion("3.2.0");
-            foreach (DataDictionary.ReqRef reqRef in par.Implementations)
+            foreach (ReqRef reqRef in par.Implementations)
             {
-                DataDictionary.ReqRelated reqRelated = reqRef.Model as DataDictionary.ReqRelated;
+                ReqRelated reqRelated = reqRef.Model as ReqRelated;
                 if (reqRelated != null)
                 {
                     reqRelated.setImplemented(false);
@@ -163,7 +168,7 @@ namespace Importers.RtfDeltaImporter
         /// <param name="specifications"></param>
         /// <param name="p"></param>
         /// <param name="error"></param>
-        private void AddError(DataDictionary.Specification.Specification specifications, Paragraph p, string error)
+        private void AddError(Specification specifications, Paragraph p, string error)
         {
             specifications.AddError(error);
             NewDocument.Errors.Add(new ImportationError(error, p));

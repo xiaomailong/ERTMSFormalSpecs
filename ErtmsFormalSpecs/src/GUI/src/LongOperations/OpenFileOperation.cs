@@ -13,12 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
+using System.Collections.Generic;
+using System.Windows.Forms;
+using DataDictionary;
+using DataDictionary.Generated;
+using Utils;
+using Dictionary = DataDictionary.Dictionary;
+using ModelElement = DataDictionary.ModelElement;
+
 namespace GUI.LongOperations
 {
-    using System.Windows.Forms;
-    using System.Collections.Generic;
-    using Utils;
-
     public class OpenFileOperation : BaseLongOperation
     {
         /// <summary>
@@ -29,17 +34,20 @@ namespace GUI.LongOperations
         /// <summary>
         /// The system in which the dictionary should be loaded
         /// </summary>
-        private DataDictionary.EFSSystem System { get; set; }
+        private EFSSystem System { get; set; }
 
         /// <summary>
         /// The dictionary that has been opened
         /// </summary>
-        public DataDictionary.Dictionary Dictionary { get; private set; }
+        public Dictionary Dictionary { get; private set; }
 
         /// <summary>
         /// Indicates that errors can occur during load, for instance, for comparison purposes
         /// </summary>
-        public bool AllowErrorsDuringLoad { get { return ErrorsDuringLoad != null; } }
+        public bool AllowErrorsDuringLoad
+        {
+            get { return ErrorsDuringLoad != null; }
+        }
 
         /// <summary>
         /// The errors encountered during load of the file. 
@@ -64,7 +72,7 @@ namespace GUI.LongOperations
         /// <param name="system">The EFS system for which the load is performed</param>
         /// <param name="allowErrors">Indicates that errors are allowed during load</param>
         /// <param name="updateGuid">Indicates that the GUID should be set during load</param>
-        public OpenFileOperation(string fileName, DataDictionary.EFSSystem system, bool allowErrors, bool updateGuid)
+        public OpenFileOperation(string fileName, EFSSystem system, bool allowErrors, bool updateGuid)
         {
             FileName = fileName;
             System = system;
@@ -77,7 +85,7 @@ namespace GUI.LongOperations
                 ErrorsDuringLoad = null;
             }
             UpdateGuid = updateGuid;
-            PleaseLockFiles = DataDictionary.Util.PleaseLockFiles;
+            PleaseLockFiles = Util.PleaseLockFiles;
         }
 
         /// <summary>
@@ -86,13 +94,13 @@ namespace GUI.LongOperations
         /// <param name="arg"></param>
         public override void ExecuteWork()
         {
-            Dictionary = DataDictionary.Util.load(FileName, System, PleaseLockFiles, ErrorsDuringLoad, UpdateGuid);
+            Dictionary = Util.load(FileName, System, PleaseLockFiles, ErrorsDuringLoad, UpdateGuid);
         }
 
         /// <summary>
         /// Gather errors during load
         /// </summary>
-        private class ErrorGathered : DataDictionary.Generated.Visitor
+        private class ErrorGathered : Visitor
         {
             /// <summary>
             /// The logs during load
@@ -107,9 +115,9 @@ namespace GUI.LongOperations
                 Logs = new List<ElementLog>();
             }
 
-            public override void visit(DataDictionary.Generated.BaseModelElement obj, bool visitSubNodes)
+            public override void visit(BaseModelElement obj, bool visitSubNodes)
             {
-                DataDictionary.ModelElement element = (DataDictionary.ModelElement)obj;
+                ModelElement element = (ModelElement) obj;
 
                 Logs.AddRange(element.Messages);
 

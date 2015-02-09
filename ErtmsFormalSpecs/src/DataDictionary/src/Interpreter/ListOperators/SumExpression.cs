@@ -14,10 +14,18 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Generated;
 using DataDictionary.Interpreter.Filter;
+using DataDictionary.Values;
+using Utils;
+using Collection = DataDictionary.Types.Collection;
+using Range = DataDictionary.Types.Range;
+using Type = DataDictionary.Types.Type;
+using Variable = DataDictionary.Variables.Variable;
+
 namespace DataDictionary.Interpreter.ListOperators
 {
-    public class SumExpression : ExpressionBasedListExpression, Utils.ISubDeclarator
+    public class SumExpression : ExpressionBasedListExpression, ISubDeclarator
     {
         /// <summary>
         /// The operator for this expression
@@ -27,7 +35,7 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <summary>
         /// The accumulator variable
         /// </summary>
-        public Variables.Variable AccumulatorVariable { get; private set; }
+        public Variable AccumulatorVariable { get; private set; }
 
         /// <summary>
         /// The accumulation expression, as defined in the statement
@@ -52,10 +60,10 @@ namespace DataDictionary.Interpreter.ListOperators
         public SumExpression(ModelElement root, ModelElement log, Expression listExpression, string iteratorVariableName, Expression condition, Expression expression, int start, int end)
             : base(root, log, listExpression, iteratorVariableName, condition, expression, start, end)
         {
-            AccumulatorVariable = (Variables.Variable)Generated.acceptor.getFactory().createVariable();
+            AccumulatorVariable = (Variable) acceptor.getFactory().createVariable();
             AccumulatorVariable.Enclosing = this;
             AccumulatorVariable.Name = "RESULT";
-            Utils.ISubDeclaratorUtils.AppendNamable(this, AccumulatorVariable);
+            ISubDeclaratorUtils.AppendNamable(this, AccumulatorVariable);
 
             DefinedAccumulator = expression;
             DefinedAccumulator.Enclosing = this;
@@ -70,7 +78,7 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
+        public override bool SemanticAnalysis(INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
@@ -93,7 +101,7 @@ namespace DataDictionary.Interpreter.ListOperators
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
-        public override Types.Type GetExpressionType()
+        public override Type GetExpressionType()
         {
             return IteratorExpression.GetExpressionType();
         }
@@ -104,21 +112,21 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
+        public override IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
-            Values.ListValue value = ListExpression.GetValue(context, explain) as Values.ListValue;
+            ListValue value = ListExpression.GetValue(context, explain) as ListValue;
             if (value != null)
             {
                 int token = PrepareIteration(context);
                 context.LocalScope.setVariable(AccumulatorVariable);
 
-                Types.Type resultType = GetExpressionType();
+                Type resultType = GetExpressionType();
                 if (resultType != null)
                 {
                     AccumulatorVariable.Value = resultType.getValue("0");
-                    foreach (Values.IValue v in value.Val)
+                    foreach (IValue v in value.Val)
                     {
                         if (v != EFSSystem.EmptyValue)
                         {
@@ -167,14 +175,14 @@ namespace DataDictionary.Interpreter.ListOperators
         {
             base.checkExpression();
 
-            Types.Collection listExpressionType = ListExpression.GetExpressionType() as Types.Collection;
+            Collection listExpressionType = ListExpression.GetExpressionType() as Collection;
             if (listExpressionType != null)
             {
                 IteratorExpression.checkExpression();
             }
 
             Accumulator.checkExpression();
-            if (!(DefinedAccumulator.GetExpressionType() is Types.Range))
+            if (!(DefinedAccumulator.GetExpressionType() is Range))
             {
                 AddError("Accumulator expression should be a range");
             }

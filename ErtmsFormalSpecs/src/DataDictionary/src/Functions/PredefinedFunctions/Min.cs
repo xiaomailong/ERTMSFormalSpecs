@@ -13,8 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
+using DataDictionary.Generated;
 using DataDictionary.Interpreter;
+using DataDictionary.Values;
+using DataDictionary.Variables;
 
 namespace DataDictionary.Functions.PredefinedFunctions
 {
@@ -41,13 +45,13 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public Min(EFSSystem efsSystem)
             : base(efsSystem, "MIN")
         {
-            First = (Parameter)Generated.acceptor.getFactory().createParameter();
+            First = (Parameter) acceptor.getFactory().createParameter();
             First.Name = "First";
             First.Type = EFSSystem.AnyType;
             First.setFather(this);
             FormalParameters.Add(First);
 
-            Second = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Second = (Parameter) acceptor.getFactory().createParameter();
             Second.Name = "Second";
             Second.Type = EFSSystem.AnyType;
             Second.setFather(this);
@@ -60,7 +64,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="root">The element on which the errors should be reported</param>
         /// <param name="context">The evaluation context</param>
         /// <param name="actualParameters">The parameters applied to this function call</param>
-        public override void additionalChecks(ModelElement root, Interpreter.InterpretationContext context, Dictionary<string, Interpreter.Expression> actualParameters)
+        public override void additionalChecks(ModelElement root, InterpretationContext context, Dictionary<string, Expression> actualParameters)
         {
             CheckFunctionalParameter(root, context, actualParameters[First.Name], 1);
             CheckFunctionalParameter(root, context, actualParameters[Second.Name], 1);
@@ -72,8 +76,8 @@ namespace DataDictionary.Functions.PredefinedFunctions
             {
                 if (function1.FormalParameters.Count == 1 && function2.FormalParameters.Count == 1)
                 {
-                    Parameter p1 = (Parameter)function1.FormalParameters[0];
-                    Parameter p2 = (Parameter)function2.FormalParameters[0];
+                    Parameter p1 = (Parameter) function1.FormalParameters[0];
+                    Parameter p2 = (Parameter) function2.FormalParameters[0];
 
                     if (p1.Type != p2.Type && p1.Type != EFSSystem.DoubleType && p2.Type != EFSSystem.DoubleType)
                     {
@@ -95,7 +99,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="parameter"></param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public override Graph createGraph(Interpreter.InterpretationContext context, Parameter parameter, ExplanationPart explain)
+        public override Graph createGraph(InterpretationContext context, Parameter parameter, ExplanationPart explain)
         {
             Graph retVal = null;
 
@@ -127,17 +131,17 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override Values.IValue Evaluate(Interpreter.InterpretationContext context, Dictionary<Variables.Actual, Values.IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
         {
-            Values.IValue retVal = null;
+            IValue retVal = null;
 
             int token = context.LocalScope.PushContext();
             AssignParameters(context, actuals);
 
-            Function function = (Function)Generated.acceptor.getFactory().createFunction();
+            Function function = (Function) acceptor.getFactory().createFunction();
             function.Name = "MIN (" + getName(First) + ", " + getName(Second) + ")";
             function.Enclosing = EFSSystem;
-            Parameter parameter = (Parameter)Generated.acceptor.getFactory().createParameter();
+            Parameter parameter = (Parameter) acceptor.getFactory().createParameter();
             parameter.Name = "X";
             parameter.Type = EFSSystem.DoubleType;
             function.appendParameters(parameter);

@@ -197,19 +197,19 @@
 >
 <Expression>Kernel.GeographicalPosition.GeographicalPositionItemStruct
 {
-    Offset =&gt; MessageTypes.QScaleDistance
+    Offset =&gt; Default.MessageTypes.QScaleDistance
     (
         distance =&gt; anOffset,
         scale =&gt; aScale
     ),
     ReferenceBG =&gt; aReferenceBG,
     Direction =&gt; aDirection,
-    Position =&gt; MessageTypes.QScaleDistance
+    Position =&gt; Default.MessageTypes.QScaleDistance
     (
         distance =&gt; aPosition,
         scale =&gt; aScale
     ),
-    NewCountry =&gt; Q_NEWCOUNTRY_To_Bool(aNewCountry),
+    NewCountry =&gt; Default.Q_NEWCOUNTRY_To_Bool(aNewCountry),
     Country =&gt; aCountry
 }</Expression>
 </Case></Cases>
@@ -294,7 +294,7 @@ BTM.TravelledDistanceFromBG( aBG =&gt; ApplicableItem.ReferenceBG ) - Applicable
  Name="Otherwise"
  Guid="2f4846d6-134d-4c5b-a4ea-c1f5f01f87ff"
 >
-<Expression>BaseTypes.Distance.Unknown</Expression>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"

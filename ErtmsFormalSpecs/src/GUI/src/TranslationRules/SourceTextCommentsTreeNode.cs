@@ -13,14 +13,17 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using DataDictionary.Tests.Translations;
+using DataDictionary.Generated;
+using SourceText = DataDictionary.Tests.Translations.SourceText;
+using SourceTextComment = DataDictionary.Tests.Translations.SourceTextComment;
 
 namespace GUI.TranslationRules
 {
-    public class SourceTextCommentsTreeNode : ModelElementTreeNode<DataDictionary.Tests.Translations.SourceText>
+    public class SourceTextCommentsTreeNode : ModelElementTreeNode<SourceText>
     {
         private class ItemEditor : NamedEditor
         {
@@ -37,7 +40,7 @@ namespace GUI.TranslationRules
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public SourceTextCommentsTreeNode(DataDictionary.Tests.Translations.SourceText item, bool buildSubNodes)
+        public SourceTextCommentsTreeNode(SourceText item, bool buildSubNodes)
             : base(item, buildSubNodes, "Comments", true)
         {
         }
@@ -85,7 +88,7 @@ namespace GUI.TranslationRules
 
         public void AddHandler(object sender, EventArgs args)
         {
-            SourceTextComment comment = (SourceTextComment)DataDictionary.Generated.acceptor.getFactory().createSourceTextComment();
+            SourceTextComment comment = (SourceTextComment) acceptor.getFactory().createSourceTextComment();
             comment.Name = "<Comment" + (Item.Comments.Count + 1) + ">";
             createComment(comment);
         }
@@ -110,7 +113,7 @@ namespace GUI.TranslationRules
         public override void AcceptDrop(BaseTreeNode SourceNode)
         {
             base.AcceptDrop(SourceNode);
-            SourceTextTreeNode.AcceptDropForSourceText((SourceTextTreeNode)Parent, SourceNode);
+            SourceTextTreeNode.AcceptDropForSourceText((SourceTextTreeNode) Parent, SourceNode);
         }
     }
 }

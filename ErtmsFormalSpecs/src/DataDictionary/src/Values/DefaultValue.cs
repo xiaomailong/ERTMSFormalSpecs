@@ -14,6 +14,8 @@
 // --
 // ------------------------------------------------------------------------------
 
+using DataDictionary.Variables;
+
 namespace DataDictionary.Values
 {
     /// <summary>
@@ -25,17 +27,14 @@ namespace DataDictionary.Values
 
         public override string LiteralName
         {
-            get
-            {
-                return Name;
-            }
+            get { return Name; }
         }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="type"></param>
-        public DefaultValue(Variables.Variable variable)
+        public DefaultValue(Variable variable)
             : base(variable.Type)
         {
             Name = variable.GetDefaultValueText();

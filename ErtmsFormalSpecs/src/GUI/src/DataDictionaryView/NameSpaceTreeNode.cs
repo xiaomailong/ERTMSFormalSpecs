@@ -13,13 +13,16 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Types;
+using GUI.FunctionalView;
 
 namespace GUI.DataDictionaryView
 {
-    public class NameSpaceTreeNode : ModelElementTreeNode<DataDictionary.Types.NameSpace>
+    public class NameSpaceTreeNode : ModelElementTreeNode<NameSpace>
     {
         private class ItemEditor : CommentableEditor
         {
@@ -32,25 +35,25 @@ namespace GUI.DataDictionaryView
             }
         }
 
-        NameSpaceSubNameSpacesTreeNode subNameSpaces;
-        RangesTreeNode ranges;
-        EnumerationsTreeNode enumerations;
-        StructuresTreeNode structures;
-        CollectionsTreeNode collections;
-        StateMachinesTreeNode stateMachines;
-        FunctionsTreeNode functions;
-        NameSpaceProceduresTreeNode procedures;
-        NameSpaceVariablesTreeNode variables;
-        NameSpaceRulesTreeNode rules;
+        private NameSpaceSubNameSpacesTreeNode subNameSpaces;
+        private RangesTreeNode ranges;
+        private EnumerationsTreeNode enumerations;
+        private StructuresTreeNode structures;
+        private CollectionsTreeNode collections;
+        private StateMachinesTreeNode stateMachines;
+        private FunctionsTreeNode functions;
+        private NameSpaceProceduresTreeNode procedures;
+        private NameSpaceVariablesTreeNode variables;
+        private NameSpaceRulesTreeNode rules;
 
-        bool isDirectory = false;
+        private bool isDirectory = false;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public NameSpaceTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes)
+        public NameSpaceTreeNode(NameSpace item, bool buildSubNodes)
             : base(item, buildSubNodes, null, false)
         {
         }
@@ -91,7 +94,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        protected NameSpaceTreeNode(DataDictionary.Types.NameSpace item, bool buildSubNodes, string name, bool isFolder)
+        protected NameSpaceTreeNode(NameSpace item, bool buildSubNodes, string name, bool isFolder)
             : base(item, buildSubNodes, name, isFolder)
         {
             isDirectory = true;
@@ -161,7 +164,7 @@ namespace GUI.DataDictionaryView
         /// Adds a namespace in the corresponding namespace
         /// </summary>
         /// <param name="nameSpace"></param>
-        public NameSpaceTreeNode AddNameSpace(DataDictionary.Types.NameSpace nameSpace)
+        public NameSpaceTreeNode AddNameSpace(NameSpace nameSpace)
         {
             return subNameSpaces.AddSubNameSpace(nameSpace);
         }
@@ -173,7 +176,7 @@ namespace GUI.DataDictionaryView
         /// <param name="args"></param>
         protected void ShowFunctionalViewHandler(object sender, EventArgs args)
         {
-            FunctionalView.FunctionalAnalysisWindow window = new FunctionalView.FunctionalAnalysisWindow();
+            FunctionalAnalysisWindow window = new FunctionalAnalysisWindow();
             GUIUtils.MDIWindow.AddChildWindow(window);
             window.SetNameSpaceContainer(Item);
             window.Text = Item.Name + " functional view";
@@ -244,7 +247,7 @@ namespace GUI.DataDictionaryView
                     if (result == DialogResult.OK)
                     {
                         NameSpaceTreeNode nameSpaceTreeNode = SourceNode as NameSpaceTreeNode;
-                        DataDictionary.Types.NameSpace nameSpace = nameSpaceTreeNode.Item;
+                        NameSpace nameSpace = nameSpaceTreeNode.Item;
 
                         nameSpaceTreeNode.Delete();
                         AddNameSpace(nameSpace);
@@ -262,7 +265,7 @@ namespace GUI.DataDictionaryView
         {
             base.SelectionChanged(false);
 
-            List<DataDictionary.Types.NameSpace> namespaces = new List<DataDictionary.Types.NameSpace>();
+            List<NameSpace> namespaces = new List<NameSpace>();
             namespaces.Add(Item);
             Window window = BaseForm as Window;
             if (window != null && window.modelDiagramPanel.Model != Item)
@@ -280,7 +283,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="paragraphs"></param>
         /// <returns></returns>
-        public static string CreateStatMessage(List<DataDictionary.Types.NameSpace> namespaces, bool isFolder)
+        public static string CreateStatMessage(List<NameSpace> namespaces, bool isFolder)
         {
             string result = "";
 
@@ -293,13 +296,13 @@ namespace GUI.DataDictionaryView
             int variables = 0;
             int rules = 0;
 
-            List<DataDictionary.Types.NameSpace> allNamespaces = new List<DataDictionary.Types.NameSpace>();
-            foreach (DataDictionary.Types.NameSpace aNamespace in namespaces)
+            List<NameSpace> allNamespaces = new List<NameSpace>();
+            foreach (NameSpace aNamespace in namespaces)
             {
                 allNamespaces.AddRange(collectNamespaces(aNamespace));
             }
 
-            foreach (DataDictionary.Types.NameSpace aNamespace in allNamespaces)
+            foreach (NameSpace aNamespace in allNamespaces)
             {
                 ranges += aNamespace.Ranges.Count;
                 enumerations += aNamespace.Enumerations.Count;
@@ -331,15 +334,14 @@ namespace GUI.DataDictionaryView
                       rules + (rules > 1 ? " rules." : " rule.");
 
             return result;
-
         }
 
 
-        private static List<DataDictionary.Types.NameSpace> collectNamespaces(DataDictionary.Types.NameSpace aNamespace)
+        private static List<NameSpace> collectNamespaces(NameSpace aNamespace)
         {
-            List<DataDictionary.Types.NameSpace> result = new List<DataDictionary.Types.NameSpace>();
+            List<NameSpace> result = new List<NameSpace>();
             result.Add(aNamespace);
-            foreach (DataDictionary.Types.NameSpace aSubNamespace in aNamespace.NameSpaces)
+            foreach (NameSpace aSubNamespace in aNamespace.NameSpaces)
             {
                 result.AddRange(collectNamespaces(aSubNamespace));
             }

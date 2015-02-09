@@ -13,9 +13,15 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
-using DataDictionary.Rules;
 using DataDictionary.Interpreter.Filter;
+using DataDictionary.Rules;
+using DataDictionary.Tests.Runner;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using DataDictionary.Variables;
+using Utils;
 
 namespace DataDictionary.Interpreter.Statement
 {
@@ -65,7 +71,7 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance)
+        public override bool SemanticAnalysis(INamable instance)
         {
             bool retVal = base.SemanticAnalysis(instance);
 
@@ -94,7 +100,7 @@ namespace DataDictionary.Interpreter.Statement
         /// Provides the list of elements read by this statement
         /// </summary>
         /// <param name="retVal">the list to fill</param>
-        public override void ReadElements(List<Types.ITypedElement> retVal)
+        public override void ReadElements(List<ITypedElement> retVal)
         {
             retVal.AddRange(Value.GetVariables());
             retVal.AddRange(ListExpression.GetVariables());
@@ -105,7 +111,7 @@ namespace DataDictionary.Interpreter.Statement
         /// </summary>
         /// <param name="variable"></param>
         /// <returns>null if no statement modifies the element</returns>
-        public override VariableUpdateStatement Modifies(Types.ITypedElement variable)
+        public override VariableUpdateStatement Modifies(ITypedElement variable)
         {
             VariableUpdateStatement retVal = null;
 
@@ -148,10 +154,10 @@ namespace DataDictionary.Interpreter.Statement
                 Root.AddError("Value should be specified");
             }
 
-            Types.Collection targetListType = ListExpression.GetExpressionType() as Types.Collection;
+            Collection targetListType = ListExpression.GetExpressionType() as Collection;
             if (targetListType != null)
             {
-                Types.Type elementType = Value.GetExpressionType();
+                Type elementType = Value.GetExpressionType();
                 if (elementType != targetListType.Type)
                 {
                     Root.AddError("Inserted element type does not corresponds to list type");
@@ -166,7 +172,7 @@ namespace DataDictionary.Interpreter.Statement
             {
                 ReplaceElement.checkExpression();
 
-                Types.Type replaceElementType = ReplaceElement.GetExpressionType();
+                Type replaceElementType = ReplaceElement.GetExpressionType();
                 if (replaceElementType != null)
                 {
                     if (targetListType.Type != null)
@@ -196,23 +202,23 @@ namespace DataDictionary.Interpreter.Statement
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
         /// <param name="runner"></param>
-        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Tests.Runner.Runner runner)
+        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Runner runner)
         {
-            Variables.IVariable variable = ListExpression.GetVariable(context);
+            IVariable variable = ListExpression.GetVariable(context);
             if (variable != null)
             {
                 // HacK : ensure that the value is a correct rigth side
                 // and keep the result of the right side operation
-                Values.ListValue listValue = variable.Value.RightSide(variable, false, false) as Values.ListValue;
+                ListValue listValue = variable.Value.RightSide(variable, false, false) as ListValue;
                 variable.Value = listValue;
                 if (listValue != null)
                 {
-                    Values.IValue value = Value.GetValue(context, explanation);
+                    IValue value = Value.GetValue(context, explanation);
                     if (value != null)
                     {
                         if (!listValue.Val.Contains(value))
                         {
-                            Values.ListValue newListValue = new Values.ListValue(listValue);
+                            ListValue newListValue = new ListValue(listValue);
                             int index = newListValue.Val.IndexOf(EFSSystem.EmptyValue);
                             if (index >= 0)
                             {
@@ -223,7 +229,7 @@ namespace DataDictionary.Interpreter.Statement
                                 // List is full, try to remove an element before inserting the new element
                                 if (ReplaceElement != null)
                                 {
-                                    Values.IValue removeValue = ReplaceElement.GetValue(context, explanation);
+                                    IValue removeValue = ReplaceElement.GetValue(context, explanation);
                                     index = newListValue.Val.IndexOf(removeValue);
                                     if (index >= 0)
                                     {
@@ -240,7 +246,7 @@ namespace DataDictionary.Interpreter.Statement
                                 }
                             }
 
-                            Rules.Change change = new Rules.Change(variable, variable.Value, newListValue);
+                            Change change = new Change(variable, variable.Value, newListValue);
                             changes.Add(change, apply, runner);
                             ExplanationPart.CreateSubExplanation(explanation, Root, change);
                         }

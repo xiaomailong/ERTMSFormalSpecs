@@ -13,16 +13,20 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DataDictionary;
-using System.Collections;
 using DataDictionary.Tests;
+using GUI.ExcelImport;
+using GUI.LongOperations;
+using GUI.Report;
 
 namespace GUI.TestRunnerView
 {
-    public class TestsTreeNode : ModelElementTreeNode<DataDictionary.Dictionary>
+    public class TestsTreeNode : ModelElementTreeNode<Dictionary>
     {
         private class ItemEditor : NamedEditor
         {
@@ -39,7 +43,7 @@ namespace GUI.TestRunnerView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public TestsTreeNode(DataDictionary.Dictionary item, bool buildSubNodes)
+        public TestsTreeNode(Dictionary item, bool buildSubNodes)
             : base(item, buildSubNodes, null, true)
         {
         }
@@ -52,7 +56,7 @@ namespace GUI.TestRunnerView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Tests.Frame frame in Item.Tests)
+            foreach (Frame frame in Item.Tests)
             {
                 Nodes.Add(new FrameTreeNode(frame, buildSubNodes));
             }
@@ -77,7 +81,7 @@ namespace GUI.TestRunnerView
         {
             FrameTreeNode retVal;
 
-            DataDictionary.Tests.Frame frame = DataDictionary.Tests.Frame.createDefault(name);
+            Frame frame = Frame.createDefault(name);
             Item.appendTests(frame);
 
             retVal = new FrameTreeNode(frame, false);
@@ -103,7 +107,8 @@ namespace GUI.TestRunnerView
         }
 
         #region Execute tests
-        private class ExecuteTestsHandler : LongOperations.BaseLongOperation
+
+        private class ExecuteTestsHandler : BaseLongOperation
         {
             /// <summary>
             /// The window for which theses tests should be executed
@@ -118,7 +123,10 @@ namespace GUI.TestRunnerView
             /// <summary>
             /// The EFS system 
             /// </summary>
-            private EFSSystem EFSSystem { get { return Dictionary.EFSSystem; } }
+            private EFSSystem EFSSystem
+            {
+                get { return Dictionary.EFSSystem; }
+            }
 
             /// <summary>
             /// The number of failed tests
@@ -149,7 +157,7 @@ namespace GUI.TestRunnerView
                 Failed = 0;
                 ArrayList tests = Dictionary.Tests;
                 tests.Sort();
-                foreach (DataDictionary.Tests.Frame frame in tests)
+                foreach (Frame frame in tests)
                 {
                     Dialog.UpdateMessage("Executing " + frame.Name);
                     int failedFrames = frame.ExecuteAllTests();
@@ -180,11 +188,11 @@ namespace GUI.TestRunnerView
 
             if (!executeTestsHandler.Dialog.Canceled)
             {
-                System.Windows.Forms.MessageBox.Show(Item.Tests.Count + " test frame(s) executed, " + executeTestsHandler.Failed + " test frame(s) failed.\nTest duration : " + Math.Round(executeTestsHandler.Span.TotalSeconds) + " seconds", "Execution report");
+                MessageBox.Show(Item.Tests.Count + " test frame(s) executed, " + executeTestsHandler.Failed + " test frame(s) failed.\nTest duration : " + Math.Round(executeTestsHandler.Span.TotalSeconds) + " seconds", "Execution report");
             }
         }
-        #endregion
 
+        #endregion
 
         /// <summary>
         /// Handles a run event on these tests and creates the associated report
@@ -193,7 +201,7 @@ namespace GUI.TestRunnerView
         /// <param name="args"></param>
         public void ReportHandler(object sender, EventArgs args)
         {
-            Report.TestReport aReport = new Report.TestReport(Item);
+            TestReport aReport = new TestReport(Item);
             aReport.Show();
         }
 
@@ -250,7 +258,7 @@ namespace GUI.TestRunnerView
             Window window = BaseForm as Window;
             if (window != null)
             {
-                ExcelImport.Frm_ExcelImport excelImport = new ExcelImport.Frm_ExcelImport(this.Item);
+                Frm_ExcelImport excelImport = new Frm_ExcelImport(this.Item);
                 excelImport.ShowDialog();
                 GUIUtils.MDIWindow.RefreshModel();
             }

@@ -13,16 +13,18 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Utils;
-using DataDictionary;
-
+using DataDictionary.Generated;
+using Namable = DataDictionary.Namable;
+using Shortcut = DataDictionary.Shortcuts.Shortcut;
+using ShortcutFolder = DataDictionary.Shortcuts.ShortcutFolder;
 
 namespace GUI.Shortcuts
 {
-    public class ShortcutFolderTreeNode : ModelElementTreeNode<DataDictionary.Shortcuts.ShortcutFolder>
+    public class ShortcutFolderTreeNode : ModelElementTreeNode<ShortcutFolder>
     {
         private class ItemEditor : NamedEditor
         {
@@ -39,7 +41,7 @@ namespace GUI.Shortcuts
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ShortcutFolderTreeNode(DataDictionary.Shortcuts.ShortcutFolder item, bool buildSubNodes)
+        public ShortcutFolderTreeNode(ShortcutFolder item, bool buildSubNodes)
             : base(item, buildSubNodes, null, true)
         {
         }
@@ -52,12 +54,12 @@ namespace GUI.Shortcuts
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Shortcuts.ShortcutFolder folder in Item.Folders)
+            foreach (ShortcutFolder folder in Item.Folders)
             {
                 Nodes.Add(new ShortcutFolderTreeNode(folder, buildSubNodes));
             }
 
-            foreach (DataDictionary.Shortcuts.Shortcut shortcut in Item.Shortcuts)
+            foreach (Shortcut shortcut in Item.Shortcuts)
             {
                 Nodes.Add(new ShortcutTreeNode(shortcut, buildSubNodes));
             }
@@ -77,7 +79,7 @@ namespace GUI.Shortcuts
         /// </summary>
         /// <param name="folder"></param>
         /// <returns></returns>
-        public ShortcutFolderTreeNode createFolder(DataDictionary.Shortcuts.ShortcutFolder folder)
+        public ShortcutFolderTreeNode createFolder(ShortcutFolder folder)
         {
             ShortcutFolderTreeNode retVal;
 
@@ -91,7 +93,7 @@ namespace GUI.Shortcuts
 
         public void AddFolderHandler(object sender, EventArgs args)
         {
-            DataDictionary.Shortcuts.ShortcutFolder folder = (DataDictionary.Shortcuts.ShortcutFolder)DataDictionary.Generated.acceptor.getFactory().createShortcutFolder();
+            ShortcutFolder folder = (ShortcutFolder) acceptor.getFactory().createShortcutFolder();
             folder.Name = "<Folder" + (Item.Folders.Count + 1) + ">";
             AddFolder(folder);
         }
@@ -100,7 +102,7 @@ namespace GUI.Shortcuts
         /// Adds a sub folder in the corresponding folder
         /// </summary>
         /// <param name="nameSpace"></param>
-        public ShortcutFolderTreeNode AddFolder(DataDictionary.Shortcuts.ShortcutFolder folder)
+        public ShortcutFolderTreeNode AddFolder(ShortcutFolder folder)
         {
             Item.appendFolders(folder);
             ShortcutFolderTreeNode retVal = new ShortcutFolderTreeNode(folder, true);
@@ -114,9 +116,9 @@ namespace GUI.Shortcuts
         /// Creates a new shortcut based on a namable element
         /// </summary>
         /// <param name="step"></param>
-        private void createShortcut(DataDictionary.Namable namable)
+        private void createShortcut(Namable namable)
         {
-            DataDictionary.Shortcuts.Shortcut shortcut = (DataDictionary.Shortcuts.Shortcut)DataDictionary.Generated.acceptor.getFactory().createShortcut();
+            Shortcut shortcut = (Shortcut) acceptor.getFactory().createShortcut();
 
             createShortcut(shortcut);
         }
@@ -126,7 +128,7 @@ namespace GUI.Shortcuts
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public ShortcutTreeNode createShortcut(DataDictionary.Shortcuts.Shortcut shortcut)
+        public ShortcutTreeNode createShortcut(Shortcut shortcut)
         {
             ShortcutTreeNode retVal;
 
@@ -200,7 +202,7 @@ namespace GUI.Shortcuts
 
                 if (shortcut.Item.Dictionary == Item.Dictionary)
                 {
-                    DataDictionary.Shortcuts.Shortcut otherShortcut = (DataDictionary.Shortcuts.Shortcut)shortcut.Item.Duplicate();
+                    Shortcut otherShortcut = (Shortcut) shortcut.Item.Duplicate();
                     createShortcut(otherShortcut);
 
                     shortcut.Delete();
@@ -212,7 +214,7 @@ namespace GUI.Shortcuts
 
                 if (folder.Item.Dictionary == Item.Dictionary)
                 {
-                    DataDictionary.Shortcuts.ShortcutFolder otherFolder = (DataDictionary.Shortcuts.ShortcutFolder)folder.Item.Duplicate();
+                    ShortcutFolder otherFolder = (ShortcutFolder) folder.Item.Duplicate();
                     createFolder(otherFolder);
 
                     folder.Delete();
@@ -222,7 +224,7 @@ namespace GUI.Shortcuts
             {
                 Namable namable = SourceNode.Model as Namable;
 
-                DataDictionary.Shortcuts.Shortcut shortcut = (DataDictionary.Shortcuts.Shortcut)DataDictionary.Generated.acceptor.getFactory().createShortcut();
+                Shortcut shortcut = (Shortcut) acceptor.getFactory().createShortcut();
                 shortcut.CopyFrom(namable);
                 createShortcut(shortcut);
             }

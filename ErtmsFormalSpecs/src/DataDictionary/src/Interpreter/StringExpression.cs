@@ -13,8 +13,12 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using DataDictionary.Interpreter.Filter;
+using DataDictionary.Types;
+using DataDictionary.Values;
+using Utils;
 
 namespace DataDictionary.Interpreter
 {
@@ -23,7 +27,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// The value associated to this string expression
         /// </summary>
-        private Values.StringValue Value { get; set; }
+        private StringValue Value { get; set; }
 
         /// <summary>
         /// The image of the string
@@ -50,14 +54,14 @@ namespace DataDictionary.Interpreter
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
-        public override bool SemanticAnalysis(Utils.INamable instance, BaseFilter expectation)
+        public override bool SemanticAnalysis(INamable instance, BaseFilter expectation)
         {
             bool retVal = base.SemanticAnalysis(instance, expectation);
 
             if (retVal)
             {
                 // Value
-                Value = new Values.StringValue(EFSSystem.StringType, Image);
+                Value = new StringValue(EFSSystem.StringType, Image);
             }
 
             return retVal;
@@ -66,7 +70,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Provides the INamable which is referenced by this expression, if any
         /// </summary>
-        public override Utils.INamable Ref
+        public override INamable Ref
         {
             get { return Value; }
         }
@@ -76,7 +80,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
-        public override Types.Type GetExpressionType()
+        public override Type GetExpressionType()
         {
             return EFSSystem.StringType;
         }
@@ -87,7 +91,7 @@ namespace DataDictionary.Interpreter
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
-        public override Values.IValue GetValue(InterpretationContext context, ExplanationPart explain)
+        public override IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
             return Value;
         }
@@ -97,7 +101,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
-        public override void fill(List<Utils.INamable> retVal, BaseFilter filter)
+        public override void fill(List<INamable> retVal, BaseFilter filter)
         {
             if (filter.AcceptableChoice(Value))
             {

@@ -14,23 +14,30 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+using BrightIdeasSoftware;
+using DataDictionary;
+using DataDictionary.Generated;
+using DataDictionary.Values;
+using DataDictionary.Variables;
 using GUI.Properties;
+using GUI.StateDiagram;
+using Utils;
+using Collection = DataDictionary.Types.Collection;
+using Enum = DataDictionary.Types.Enum;
+using EnumValue = DataDictionary.Constants.EnumValue;
+using Range = DataDictionary.Types.Range;
+using StateMachine = DataDictionary.Types.StateMachine;
+using Structure = DataDictionary.Types.Structure;
+using StructureElement = DataDictionary.Types.StructureElement;
+using Variable = DataDictionary.Variables.Variable;
 
 namespace GUI.StructureValueEditor
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Collections;
-    using DataDictionary;
-    using DataDictionary.Values;
-    using DataDictionary.Variables;
-    using DataDictionary.Types;
-    using BrightIdeasSoftware;
-    using System.Windows.Forms;
-    using System.Drawing;
-
     /// <summary>
     /// Customize the tree view according to the model element to display
     /// </summary>
@@ -55,6 +62,7 @@ namespace GUI.StructureValueEditor
         }
 
         #region Stringonizer
+
         /// <summary>
         /// Provides the field column string value for the object provided
         /// </summary>
@@ -71,7 +79,7 @@ namespace GUI.StructureValueEditor
                 if (enclosingListValue != null)
                 {
                     int index = enclosingListValue.Val.IndexOf(structureValue) + 1;
-                    Variable enclosingListVariable = (Variable)enclosingListValue.Enclosing;
+                    Variable enclosingListVariable = (Variable) enclosingListValue.Enclosing;
                     retVal = enclosingListVariable.Name + "[" + index + "]";
                 }
                 else
@@ -189,7 +197,7 @@ namespace GUI.StructureValueEditor
             return retVal;
         }
 
-        public static void FormatCell(object sender, BrightIdeasSoftware.FormatCellEventArgs e)
+        public static void FormatCell(object sender, FormatCellEventArgs e)
         {
             if (e.Column.Index == 1)
             {
@@ -203,9 +211,11 @@ namespace GUI.StructureValueEditor
                 }
             }
         }
+
         #endregion
 
         #region Tree Structure
+
         public static bool HasChildren(object obj)
         {
             bool retVal = false;
@@ -300,9 +310,11 @@ namespace GUI.StructureValueEditor
 
             return retVal;
         }
+
         #endregion
 
         #region Contextual menu
+
         /// <summary>
         /// Creates a variable according to the structure element provided
         /// </summary>
@@ -310,10 +322,10 @@ namespace GUI.StructureValueEditor
         /// <returns></returns>
         private static Variable CreateVariable(StructureElement element)
         {
-            Structure elementStructureType = (Structure)element.Type;
+            Structure elementStructureType = (Structure) element.Type;
             StructureValue subValue = new StructureValue(elementStructureType, false);
 
-            Variable retVal = (Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
+            Variable retVal = (Variable) acceptor.getFactory().createVariable();
             retVal.Name = element.Name;
             retVal.Type = element.Type;
             retVal.Value = subValue;
@@ -339,7 +351,7 @@ namespace GUI.StructureValueEditor
                 : base(text)
             {
                 Args = args;
-                Width = Text.Length * 8;
+                Width = Text.Length*8;
             }
 
             /// <summary>
@@ -386,13 +398,13 @@ namespace GUI.StructureValueEditor
             /// </summary>
             protected override void OnClick(EventArgs e)
             {
-                Collection collectionType = (Collection)Variable.Type;
-                Structure structureType = (Structure)collectionType.Type;
+                Collection collectionType = (Collection) Variable.Type;
+                Structure structureType = (Structure) collectionType.Type;
                 StructureValue element = new StructureValue(structureType, false);
 
                 if (structureType.Elements.Count == 1)
                 {
-                    StructureElement subElement = (StructureElement)structureType.Elements[0];
+                    StructureElement subElement = (StructureElement) structureType.Elements[0];
                     Structure subElementStructureType = subElement.Type as Structure;
                     if (subElementStructureType != null)
                     {
@@ -498,9 +510,9 @@ namespace GUI.StructureValueEditor
             /// </summary>
             protected override void OnClick(EventArgs e)
             {
-                Structure elementStructureType = (Structure)Element.Type;
+                Structure elementStructureType = (Structure) Element.Type;
                 StructureValue subValue = new StructureValue(elementStructureType, false);
-                Variable subVariable = (Variable)DataDictionary.Generated.acceptor.getFactory().createVariable();
+                Variable subVariable = (Variable) acceptor.getFactory().createVariable();
                 subVariable.Name = Element.Name;
                 subVariable.Type = Element.Type;
                 subVariable.Value = subValue;
@@ -568,7 +580,7 @@ namespace GUI.StructureValueEditor
             /// </summary>
             protected override void OnClick(EventArgs e)
             {
-                StateDiagram.StateDiagramWindow window = new StateDiagram.StateDiagramWindow();
+                StateDiagramWindow window = new StateDiagramWindow();
                 GUIUtils.MDIWindow.AddChildWindow(window);
                 window.SetStateMachine(Variable);
                 window.Text = Variable.Name + " state diagram";
@@ -588,14 +600,14 @@ namespace GUI.StructureValueEditor
             StructureValue structureValue = obj as StructureValue;
             if (structureValue != null)
             {
-                Structure structureType = (Structure)structureValue.Type;
+                Structure structureType = (Structure) structureValue.Type;
                 foreach (StructureElement element in structureType.Elements)
                 {
                     if (element.Type is Structure)
                     {
                         Variable subVariable = null;
 
-                        Utils.INamable tmp = null;
+                        INamable tmp = null;
                         if (structureValue.Val.TryGetValue(element.Name, out tmp))
                         {
                             subVariable = tmp as Variable;
@@ -629,7 +641,7 @@ namespace GUI.StructureValueEditor
             {
                 if (enclosingVariable != null)
                 {
-                    Collection collection = (Collection)enclosingVariable.Type;
+                    Collection collection = (Collection) enclosingVariable.Type;
                     if (listValue.ElementCount < collection.getMaxSize())
                     {
                         items.Add(new ToolStripAddValueInList(args, enclosingVariable));
@@ -645,10 +657,7 @@ namespace GUI.StructureValueEditor
                 }
             }
 
-            items.Sort(delegate(BaseToolStripButton b1, BaseToolStripButton b2)
-            {
-                return b1.Text.CompareTo(b2.Text);
-            });
+            items.Sort(delegate(BaseToolStripButton b1, BaseToolStripButton b2) { return b1.Text.CompareTo(b2.Text); });
             foreach (BaseToolStripButton menuItem in items)
             {
                 menuStrip.Items.Add(menuItem);
@@ -656,23 +665,25 @@ namespace GUI.StructureValueEditor
 
             args.MenuStrip = menuStrip;
         }
+
         #endregion
 
         #region Edition
+
         public static void HandleCellEditStarting(object sender, CellEditEventArgs e)
         {
             Variable variable = e.RowObject as Variable;
             if (variable != null)
             {
-                DataDictionary.Types.Enum enumType = variable.Type as DataDictionary.Types.Enum;
+                Enum enumType = variable.Type as Enum;
                 if (enumType != null)
                 {
                     ComboBox control = new ComboBox();
                     control.Bounds = e.CellBounds;
-                    control.Font = ((ObjectListView)sender).Font;
+                    control.Font = ((ObjectListView) sender).Font;
                     control.DropDownStyle = ComboBoxStyle.DropDownList;
-                    control.Text = (string)e.Value;
-                    foreach (DataDictionary.Constants.EnumValue enumValue in enumType.Values)
+                    control.Text = (string) e.Value;
+                    foreach (EnumValue enumValue in enumType.Values)
                     {
                         control.Items.Add(enumValue.Name);
                     }
@@ -681,15 +692,15 @@ namespace GUI.StructureValueEditor
                     e.Control = control;
                 }
 
-                DataDictionary.Types.Range rangeType = variable.Type as DataDictionary.Types.Range;
+                Range rangeType = variable.Type as Range;
                 if (rangeType != null)
                 {
                     ComboBox control = new ComboBox();
                     control.Bounds = e.CellBounds;
-                    control.Font = ((ObjectListView)sender).Font;
+                    control.Font = ((ObjectListView) sender).Font;
                     control.DropDownStyle = ComboBoxStyle.DropDown;
-                    control.Text = (string)e.Value;
-                    foreach (DataDictionary.Constants.EnumValue enumValue in rangeType.SpecialValues)
+                    control.Text = (string) e.Value;
+                    foreach (EnumValue enumValue in rangeType.SpecialValues)
                     {
                         control.Items.Add(enumValue.Name);
                     }
@@ -753,6 +764,7 @@ namespace GUI.StructureValueEditor
                 }
             }
         }
+
         #endregion
     }
 }

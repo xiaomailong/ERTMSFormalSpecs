@@ -13,9 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using Action = DataDictionary.Rules.Action;
+using RuleCondition = DataDictionary.Rules.RuleCondition;
 
 namespace GUI.DataDictionaryView
 {
@@ -25,7 +29,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public ActionsTreeNode(DataDictionary.Rules.RuleCondition item, bool buildSubNodes)
+        public ActionsTreeNode(RuleCondition item, bool buildSubNodes)
             : base(item, buildSubNodes, "Actions", true, false)
         {
         }
@@ -38,7 +42,7 @@ namespace GUI.DataDictionaryView
         {
             Nodes.Clear();
 
-            foreach (DataDictionary.Rules.Action action in Item.Actions)
+            foreach (Action action in Item.Actions)
             {
                 Nodes.Add(new ActionTreeNode(action, buildSubNodes));
             }
@@ -49,7 +53,7 @@ namespace GUI.DataDictionaryView
             SubNodesBuilt = true;
         }
 
-        public override ActionTreeNode AddAction(DataDictionary.Rules.Action action)
+        public override ActionTreeNode AddAction(Action action)
         {
             ActionTreeNode retVal = new ActionTreeNode(action, true);
             Item.appendActions(action);
@@ -66,7 +70,7 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            DataDictionary.Rules.Action action = (DataDictionary.Rules.Action)DataDictionary.Generated.acceptor.getFactory().createAction();
+            Action action = (Action) acceptor.getFactory().createAction();
             action.ExpressionText = "";
             AddAction(action);
         }
@@ -88,9 +92,9 @@ namespace GUI.DataDictionaryView
             {
                 if (MessageBox.Show("Are you sure you want to move the corresponding action ?", "Move action", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    ActionTreeNode actionTreeNode = (ActionTreeNode)SourceNode;
+                    ActionTreeNode actionTreeNode = (ActionTreeNode) SourceNode;
 
-                    DataDictionary.Rules.Action action = actionTreeNode.Item;
+                    Action action = actionTreeNode.Item;
                     actionTreeNode.Delete();
                     AddAction(action);
                 }

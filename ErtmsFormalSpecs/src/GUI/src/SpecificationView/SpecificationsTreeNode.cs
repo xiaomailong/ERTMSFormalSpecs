@@ -13,28 +13,30 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
+using DataDictionary.Generated;
+using Dictionary = DataDictionary.Dictionary;
+using Specification = DataDictionary.Specification.Specification;
 
 namespace GUI.SpecificationView
 {
-    public class SpecificationsTreeNode : ModelElementTreeNode<DataDictionary.Dictionary>
+    public class SpecificationsTreeNode : ModelElementTreeNode<Dictionary>
     {
         /// <summary>
         /// The editor
         /// </summary>
         private class SpecificationEditor : NamedEditor
         {
-
         }
 
         /// <summary>
         /// Instanciates the editor
         /// </summary>
         /// <returns></returns>
-        protected override ModelElementTreeNode<DataDictionary.Dictionary>.Editor createEditor()
+        protected override Editor createEditor()
         {
             return new SpecificationEditor();
         }
@@ -43,7 +45,7 @@ namespace GUI.SpecificationView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public SpecificationsTreeNode(DataDictionary.Dictionary item, bool buildSubNodes)
+        public SpecificationsTreeNode(Dictionary item, bool buildSubNodes)
             : base(item, buildSubNodes, "Specifications", true)
         {
         }
@@ -56,7 +58,7 @@ namespace GUI.SpecificationView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            foreach (DataDictionary.Specification.Specification specification in Item.Specifications)
+            foreach (Specification specification in Item.Specifications)
             {
                 Nodes.Add(new SpecificationTreeNode(specification, buildSubNodes));
             }
@@ -67,7 +69,7 @@ namespace GUI.SpecificationView
         /// Adds a new specification to this dictionary
         /// </summary>
         /// <param name="specification"></param>
-        public void AddSpecification(DataDictionary.Specification.Specification specification)
+        public void AddSpecification(Specification specification)
         {
             Item.appendSpecifications(specification);
             Nodes.Add(new SpecificationTreeNode(specification, true));
@@ -76,7 +78,7 @@ namespace GUI.SpecificationView
 
         public void AddSpecificationHandler(object sender, EventArgs args)
         {
-            DataDictionary.Specification.Specification specification = (DataDictionary.Specification.Specification)DataDictionary.Generated.acceptor.getFactory().createSpecification();
+            Specification specification = (Specification) acceptor.getFactory().createSpecification();
             specification.setName("Specification" + (Item.countSpecifications() + 1));
             AddSpecification(specification);
         }

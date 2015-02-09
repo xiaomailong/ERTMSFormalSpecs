@@ -13,14 +13,13 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
 using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
 using DataDictionary.Constants;
+using DataDictionary.Rules;
 using DataDictionary.Variables;
 using GUI.BoxArrowDiagram;
-using DataDictionary.Rules;
 
 namespace GUI.StateDiagram
 {
@@ -55,7 +54,7 @@ namespace GUI.StateDiagram
 
             if (!retVal)
             {
-                StatePanel panel = (StatePanel)Panel;
+                StatePanel panel = (StatePanel) Panel;
                 IVariable variable = panel.StateMachineVariable;
                 if (variable != null && panel.StateMachine.Contains(Model, variable.Value))
                 {
@@ -71,11 +70,11 @@ namespace GUI.StateDiagram
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void HandleMouseDoubleClick(object sender, MouseEventArgs e)
+        private void HandleMouseDoubleClick(object sender, MouseEventArgs e)
         {
             SelectBox();
 
-            StatePanel panel = (StatePanel)Panel;
+            StatePanel panel = (StatePanel) Panel;
             if (panel != null)
             {
                 StateDiagramWindow window = new StateDiagramWindow();

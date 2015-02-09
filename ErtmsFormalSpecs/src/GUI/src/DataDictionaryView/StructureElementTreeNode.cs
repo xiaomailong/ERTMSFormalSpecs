@@ -13,33 +13,39 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows.Forms;
 using System.Drawing.Design;
+using System.Windows.Forms;
+using DataDictionary.Generated;
+using GUI.Converters;
+using NameSpace = DataDictionary.Types.NameSpace;
+using StructureElement = DataDictionary.Types.StructureElement;
+using Type = DataDictionary.Types.Type;
 
 namespace GUI.DataDictionaryView
 {
-    public class StructureElementTreeNode : ReqRelatedTreeNode<DataDictionary.Types.StructureElement>
+    public class StructureElementTreeNode : ReqRelatedTreeNode<StructureElement>
     {
-        private class InternalTypesConverter : Converters.TypesConverter
+        private class InternalTypesConverter : TypesConverter
         {
             public override StandardValuesCollection
-            GetStandardValues(ITypeDescriptorContext context)
+                GetStandardValues(ITypeDescriptorContext context)
             {
-                return GetValues(((ItemEditor)context.Instance).Item);
+                return GetValues(((ItemEditor) context.Instance).Item);
             }
         }
 
-        private class InternalValuesConverter : Converters.ValuesConverter
+        private class InternalValuesConverter : ValuesConverter
         {
             public override StandardValuesCollection
-            GetStandardValues(ITypeDescriptorContext context)
+                GetStandardValues(ITypeDescriptorContext context)
             {
-                ItemEditor editor = (ItemEditor)context.Instance;
-                DataDictionary.Types.NameSpace nameSpace = editor.Item.NameSpace;
-                DataDictionary.Types.Type type = editor.Item.Type;
+                ItemEditor editor = (ItemEditor) context.Instance;
+                NameSpace nameSpace = editor.Item.NameSpace;
+                Type type = editor.Item.Type;
 
                 return GetValues(nameSpace, type);
             }
@@ -66,9 +72,9 @@ namespace GUI.DataDictionaryView
             /// The structure element type
             /// </summary>
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.TypeUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.TypeUITypeConverter))]
-            public DataDictionary.Types.StructureElement Type
+            [Editor(typeof (TypeUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (TypeUITypeConverter))]
+            public StructureElement Type
             {
                 get { return Item; }
                 set
@@ -82,9 +88,9 @@ namespace GUI.DataDictionaryView
             /// The structure element default value
             /// </summary>
             [Category("Description")]
-            [System.ComponentModel.Editor(typeof(Converters.DefaultValueUITypedEditor), typeof(UITypeEditor))]
-            [System.ComponentModel.TypeConverter(typeof(Converters.DefaultValueUITypeConverter))]
-            public DataDictionary.Types.StructureElement DefaultValue
+            [Editor(typeof (DefaultValueUITypedEditor), typeof (UITypeEditor))]
+            [TypeConverter(typeof (DefaultValueUITypeConverter))]
+            public StructureElement DefaultValue
             {
                 get { return Item; }
                 set
@@ -97,8 +103,8 @@ namespace GUI.DataDictionaryView
             /// <summary>
             /// The variable mode
             /// </summary>
-            [Category("Description"), TypeConverter(typeof(Converters.VariableModeConverter))]
-            public DataDictionary.Generated.acceptor.VariableModeEnumType Mode
+            [Category("Description"), TypeConverter(typeof (VariableModeConverter))]
+            public acceptor.VariableModeEnumType Mode
             {
                 get { return Item.Mode; }
                 set { Item.Mode = value; }
@@ -109,7 +115,7 @@ namespace GUI.DataDictionaryView
         /// Constructor
         /// </summary>
         /// <param name="item"></param>
-        public StructureElementTreeNode(DataDictionary.Types.StructureElement item, bool buildSubNodes)
+        public StructureElementTreeNode(StructureElement item, bool buildSubNodes)
             : base(item, buildSubNodes, null, false)
         {
         }

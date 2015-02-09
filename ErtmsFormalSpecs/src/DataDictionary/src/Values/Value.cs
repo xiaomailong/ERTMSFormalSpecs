@@ -13,13 +13,19 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System;
+
+using System.Collections;
 using System.Collections.Generic;
+using DataDictionary.Generated;
+using DataDictionary.Types;
+using DataDictionary.Variables;
 using Utils;
+using NameSpace = DataDictionary.Types.NameSpace;
+using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Values
 {
-    public interface IValue : Utils.INamable, Types.ITypedElement, TextualExplain
+    public interface IValue : INamable, ITypedElement, TextualExplain
     {
         /// <summary>
         /// Provides the EFS system in which this value is created
@@ -38,7 +44,7 @@ namespace DataDictionary.Values
         /// <param name="duplicate">Indicates that a duplication of the variable should be performed</param>
         /// <param name="setEnclosing">Indicates that the new value enclosing element should be set</param>
         /// <returns></returns>
-        IValue RightSide(Variables.IVariable variable, bool duplicate, bool setEnclosing);
+        IValue RightSide(IVariable variable, bool duplicate, bool setEnclosing);
 
         /// <summary>
         /// Converts a structure value to its corresponding structure expression.
@@ -85,7 +91,7 @@ namespace DataDictionary.Values
         /// Constructor
         /// </summary>
         /// <param name="type"></param>
-        public Value(Types.Type type)
+        public Value(Type type)
         {
             Type = type;
         }
@@ -97,7 +103,7 @@ namespace DataDictionary.Values
         /// <param name="duplicate">Indicates that a duplication of the variable should be performed</param>
         /// <param name="setEnclosing">Indicates that the new value enclosing element should be set</param>
         /// <returns></returns>
-        public virtual Values.IValue RightSide(Variables.IVariable variable, bool duplicate, bool setEnclosing)
+        public virtual IValue RightSide(IVariable variable, bool duplicate, bool setEnclosing)
         {
             if (setEnclosing)
             {
@@ -110,27 +116,41 @@ namespace DataDictionary.Values
         /// <summary>
         /// The namespace related to the typed element
         /// </summary>
-        public Types.NameSpace NameSpace { get { return null; } }
+        public NameSpace NameSpace
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// Provides the type name of the element
         /// </summary>
-        public string TypeName { get { return Type.FullName; } set { } }
+        public string TypeName
+        {
+            get { return Type.FullName; }
+            set { }
+        }
 
         /// <summary>
         /// The type of the element
         /// </summary>
-        public Types.Type Type { get; set; }
+        public Type Type { get; set; }
 
         /// <summary>
         /// Provides the mode of the typed element
         /// </summary>
-        public DataDictionary.Generated.acceptor.VariableModeEnumType Mode { get { return Generated.acceptor.VariableModeEnumType.aInternal; } }
+        public acceptor.VariableModeEnumType Mode
+        {
+            get { return acceptor.VariableModeEnumType.aInternal; }
+        }
 
         /// <summary>
         /// Provides the default value of the typed element
         /// </summary>
-        public string Default { get { return this.FullName; } set { } }
+        public string Default
+        {
+            get { return this.FullName; }
+            set { }
+        }
 
         /// <summary>
         /// The enclosing model element
@@ -142,7 +162,7 @@ namespace DataDictionary.Values
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public int CompareTo(Utils.IModelElement other)
+        public int CompareTo(IModelElement other)
         {
             if (this == other)
             {
@@ -154,46 +174,68 @@ namespace DataDictionary.Values
         /// <summary>
         /// Nothing to do
         /// </summary>
-        public void Delete() { }
+        public void Delete()
+        {
+        }
 
         /// <summary>
         /// The enclosing collection
         /// </summary>
-        public System.Collections.ArrayList EnclosingCollection { get { return null; } }
+        public ArrayList EnclosingCollection
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// The expression text data of this model element
         /// </summary>
         /// <param name="text"></param>
-        public string ExpressionText { get { return null; } set { } }
+        public string ExpressionText
+        {
+            get { return null; }
+            set { }
+        }
 
         /// <summary>
         /// The messages logged on the model element
         /// </summary>
-        public List<Utils.ElementLog> Messages { get { return null; } }
+        public List<ElementLog> Messages
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// Nothing to do
         /// </summary>
-        public void ClearMessages() { }
+        public void ClearMessages()
+        {
+        }
 
         /// <summary>
         /// Indicates that at least one message of type levelEnum is attached to the element
         /// </summary>
         /// <param name="levelEnum"></param>
         /// <returns></returns>
-        public bool HasMessage(Utils.ElementLog.LevelEnum levelEnum) { return false; }
+        public bool HasMessage(ElementLog.LevelEnum levelEnum)
+        {
+            return false;
+        }
 
         /// <summary>
         /// The sub elements of this model element
         /// </summary>
-        public System.Collections.ArrayList SubElements { get { return null; } }
+        public ArrayList SubElements
+        {
+            get { return null; }
+        }
 
         /// <summary>
         /// Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
-        public void AddModelElement(Utils.IModelElement element) { }
+        public void AddModelElement(IModelElement element)
+        {
+        }
 
         /// <summary>
         /// Provides an RTF explanation of the value
@@ -227,17 +269,17 @@ namespace DataDictionary.Values
         /// <summary>
         /// Indicates if the element holds messages, or is part of a path to a message 
         /// </summary>
-        public MessagePathInfoEnum MessagePathInfo { get { return MessagePathInfoEnum.Nothing; } }
+        public MessagePathInfoEnum MessagePathInfo
+        {
+            get { return MessagePathInfoEnum.Nothing; }
+        }
 
         /// <summary>
         /// The enclosing value, if exists
         /// </summary>
         public Value EnclosingValue
         {
-            get
-            {
-                return Utils.EnclosingFinder<Value>.find(this);
-            }
+            get { return EnclosingFinder<Value>.find(this); }
         }
 
         /// <summary>
@@ -252,12 +294,13 @@ namespace DataDictionary.Values
     }
 
     public abstract class BaseValue<CorrespondingType, StorageType> : Value
-        where CorrespondingType : Types.Type
+        where CorrespondingType : Type
     {
         /// <summary>
         /// The actual value of this value
         /// </summary>
         private StorageType val;
+
         public StorageType Val
         {
             get { return val; }

@@ -53,7 +53,7 @@
  Guid="b7d57eb9-62f1-48f1-80a8-45698e60f70a"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -66,7 +66,7 @@
  Guid="5e35240f-34f0-4947-9879-d33176798713"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Time"
+ TypeName="MessageTypes.Time"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
@@ -79,7 +79,7 @@
  Guid="d72c34b6-b937-4043-8b55-cb8c3cb6003a"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Time"
+ TypeName="MessageTypes.Time"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
@@ -92,7 +92,7 @@
  Guid="754462af-a8d0-4e8a-a4c4-d1e75e0ca30d"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Time"
+ TypeName="MessageTypes.Time"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
@@ -105,4 +105,104 @@
  Guid="4996a877-9f79-4fd6-a9f8-f608ab80ca4c"
 >
 </ReqRef></StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="CheckMessageValues"
+ Guid="5fe2cf5f-e592-4991-974d-5982656a9674"
+>
+<Comment>Checks the values in a structure of type MOVEMENT_AUTHORITY_REQUEST_PARAMETERS.Message</Comment>
+<Parameters>
+<Parameter
+ Type="MOVEMENT_AUTHORITY_REQUEST_PARAMETERS.Message"
+ Name="struct"
+ Guid="a331d320-1230-406d-95dc-a121df550be2"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="015b4399-57c2-4ea4-bbcd-32638fadca10"
+>
+<PreConditions>
+<PreCondition
+ Guid="be36c8a7-2acc-48ad-8c54-a450c39dffd3"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_PACKET invalid"
+ Guid="679c96d5-0e5a-4b02-aeb2-f2c271263b15"
+>
+<PreConditions>
+<PreCondition
+ Guid="2cced382-7c10-4a1d-a02b-6f2d3a02e649"
+>struct.NID_PACKET &lt; 0
+  AND  
+struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.Q_DIR invalid"
+ Guid="62dbf3cd-afcd-42d2-8ba0-a247e39cb59a"
+>
+<PreConditions>
+<PreCondition
+ Guid="0274e5cc-4101-45fc-9da6-8c42c6d9b886"
+>struct.Q_DIR &lt; 0
+  AND  
+struct.Q_DIR &gt;= 4
+  AND  
+struct.Q_DIR != 3</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_PACKET invalid"
+ Guid="711d92af-948a-4b4e-b71c-0372d678c948"
+>
+<PreConditions>
+<PreCondition
+ Guid="180bff06-962e-40fd-a2a8-73346a7f034d"
+>struct.L_PACKET &lt; 0
+  AND  
+struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.T_MAR invalid"
+ Guid="593910f6-344b-4021-a78f-2f0ef91d54d1"
+>
+<PreConditions>
+<PreCondition
+ Guid="66d372fc-aa93-4005-8506-8f5cfd6c2d73"
+>struct.T_MAR &lt; 0
+  AND  
+struct.T_MAR &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.T_TIMEOUTRQST invalid"
+ Guid="191b8062-507d-426c-9b73-23f673dd3d2a"
+>
+<PreConditions>
+<PreCondition
+ Guid="0b4afe0e-6161-4588-bff0-500581a87da3"
+>struct.T_TIMEOUTRQST &lt; 0
+  AND  
+struct.T_TIMEOUTRQST &gt;= 1024</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.T_CYCRQST invalid"
+ Guid="dfca89a2-f013-425a-8189-7278cb7f2679"
+>
+<PreConditions>
+<PreCondition
+ Guid="7052cae4-62db-424f-bbfd-0f2579805556"
+>struct.T_CYCRQST &lt; 0
+  AND  
+struct.T_CYCRQST &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="ce4b52ff-d332-4710-b4c6-8a0a0858d40b"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>
