@@ -767,6 +767,7 @@ Level.Value.Value == Level.L1</Expression>
  Y="420"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Condition43"
  Guid="268b8ff9-0594-450d-8148-9d8e007b0ac9"
 >
@@ -775,12 +776,23 @@ Level.Value.Value == Level.L1</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a02526b1-cabe-4dbe-8962-b23f127a152f"
 >
+</ReqRef><ReqRef
+ Id="3419ac3c-8b3b-4465-8ba8-a0628cc3c11b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="77e46ecd-3843-43b3-b7ae-379e93c9eee2"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="f213656b-b350-4d20-852b-1d46f86d6e64"
 >
-<Expression>False</Expression>
+<Expression>(
+OverrideSupervision.FormerEOA &lt; TrainPosition.FrontEndPosition(DistanceInterval.Min)
+  AND  
+NOT OverrideSupervision.FormerEOAPassed
+)
+  AND  
+HandleModeChange not in HandleModeChangeSM.Override</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1205,6 +1217,11 @@ DMI.MasterDMI().In_AcknOfUNMode.InputInformation.DriverAnswered</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="99f88663-7201-4057-ba33-4d460e44a7bf"
 >
+</ReqRef><ReqRef
+ Id="3419ac3c-8b3b-4465-8ba8-a0628cc3c11b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8d627100-6d4d-4246-8ee3-0a733e9fd219"
+>
 </ReqRef><Comment>&quot;Stop if in SR&quot; received and override is not active.</Comment>
 <Cases>
 <Case
@@ -1228,6 +1245,7 @@ HandleModeChange not in HandleModeChangeSM.Override</Expression>
  Y="600"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Condition42"
  Guid="e4a0c0be-ab8f-406f-96c9-80087a307ec9"
 >
@@ -1236,12 +1254,19 @@ HandleModeChange not in HandleModeChangeSM.Override</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4ca7ef8b-943c-4251-97e7-65d723eb816a"
 >
+</ReqRef><ReqRef
+ Id="3419ac3c-8b3b-4465-8ba8-a0628cc3c11b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cc49f95e-ff5b-4149-9355-badfc37c8a0a"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="d38d55bd-0075-453f-9c99-d47d90b65f9d"
 >
-<Expression>False</Expression>
+<Expression>TrainPosition.DistanceRunInSR(DistanceInterval.Nom) &gt; StaffResponsible.DistanceToRun()
+  AND  
+HandleModeChange not in HandleModeChangeSM.Override</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1472,6 +1497,7 @@ TIU.PassiveShuntingPermitted</Expression>
  Y="720"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Condition18"
  Guid="3b751aad-8b9f-4eee-a867-f46f5b060126"
 >
@@ -1480,12 +1506,19 @@ TIU.PassiveShuntingPermitted</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6cbb0bdf-5040-47e5-871a-bbb28bf546f7"
 >
+</ReqRef><ReqRef
+ Id="3419ac3c-8b3b-4465-8ba8-a0628cc3c11b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9d2b7464-6a9a-48a3-add0-898fd26abc84"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="59d96538-41f7-4367-8877-a4782790499e"
 >
-<Expression>False</Expression>
+<Expression>Kernel.SpeedAndDistanceMonitoring.TrainTripped
+  AND  
+HandleModeChange not in HandleModeChangeSM.Override</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1614,6 +1647,11 @@ Shunting.StopShuntingOnDeskOpening</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="39fcf35b-6892-4f83-b65e-23b48430ec22"
 >
+</ReqRef><ReqRef
+ Id="a4e2bd0e-5e3f-43c4-ae8d-7de81347dfed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d85c216f-92c4-4d0a-9eb2-bf34cd66a227"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -1691,6 +1729,11 @@ AND
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bface6f2-bee0-476f-9361-2a99c20e2174"
 >
+</ReqRef><ReqRef
+ Id="0882a887-8e70-4391-9d2b-97be7cebd091"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c281e1a3-f940-47ba-ab42-ca4f58a3824c"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -1714,6 +1757,11 @@ Odometry.TrainSpeed() &lt; NationalValues.ApplicableNationalValues.Value.SpeedLi
  Id="4194dc47-a12e-4906-99ac-3f43ccf3b796"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4f423955-8cdf-4344-b316-0c454cd72d72"
+>
+</ReqRef><ReqRef
+ Id="3419ac3c-8b3b-4465-8ba8-a0628cc3c11b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="102f67d5-0682-486a-8823-c8abfcccd1e7"
 >
 </ReqRef><Comment>Unexpected Balise group passed in SR mode, while not in Override.</Comment>
 <Cases>
@@ -1829,6 +1877,11 @@ MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.OS</Expression>
  Id="77503400-7492-4687-93e6-d51364d37209"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="452fa670-1fa7-40aa-9272-bb2f7acc6669"
+>
+</ReqRef><ReqRef
+ Id="a4e2bd0e-5e3f-43c4-ae8d-7de81347dfed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="860b076d-353c-412a-a783-eb12fcd3b2bc"
 >
 </ReqRef><Cases>
 <Case
@@ -2416,6 +2469,11 @@ BTM.CurrentBaliseGroup != []
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="95acbe73-2170-4130-9ce8-1ac2acafeaad"
 >
+</ReqRef><ReqRef
+ Id="a4e2bd0e-5e3f-43c4-ae8d-7de81347dfed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1370919-ce0a-4aee-a2e8-1a44b439b695"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -2458,6 +2516,7 @@ BTM.CurrentBaliseGroup != []
  Y="1080"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Condition67"
  Guid="e32dd89b-48c7-49c7-a22b-99e77fb4d24e"
 >
@@ -2471,12 +2530,21 @@ BTM.CurrentBaliseGroup != []
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="355acf8d-4476-4e2a-a058-53b6e6a2f5f1"
 >
+</ReqRef><ReqRef
+ Id="3419ac3c-8b3b-4465-8ba8-a0628cc3c11b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0fb88dca-045d-4096-93f6-352d603c8caa"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="254a42ce-42ff-4bfa-bb57-6311a6aca2a6"
 >
-<Expression>False</Expression>
+<Expression>Level.Value.Value == Level.L1
+  AND  
+THERE_IS EmergencyStop IN EmergencyStops
+  AND  
+HandleModeChange not in HandleModeChangeSM.Override</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2769,6 +2837,11 @@ NOT MA.ModeProfile.ModeProfileIsApplicable()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="12326fa6-f55b-4d1c-b64c-41a4b14c50b2"
 >
+</ReqRef><ReqRef
+ Id="0882a887-8e70-4391-9d2b-97be7cebd091"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86afb637-2bd6-49a2-9eb0-3a540f4a822b"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
@@ -2869,6 +2942,11 @@ DMI.MasterDMI().In_AcknOfSRMode.InputInformation.DriverAnswered</Expression>
  Id="105c2ac3-690d-4d9f-805f-76ae298a3ab7"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4bddfd58-66b1-4dd5-85d9-ec3f4d84c70f"
+>
+</ReqRef><ReqRef
+ Id="0882a887-8e70-4391-9d2b-97be7cebd091"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="696e7ac2-25a9-45ff-81b2-dfda8fd82a89"
 >
 </ReqRef><Cases>
 <Case
@@ -7724,12 +7802,14 @@ TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0f56c8d0-70ff-4fea-b79f-b74ffc058eab"
 >
-</ReqRef><Comment>When the SR mode is entered, keep a record of the train&apos;s position for the max allowed distance to run in SR mode.</Comment>
+</ReqRef><Comment>When the SR mode is entered:
+ keep a record of the train&apos;s position for the max allowed distance to run in SR mode
+ revoke all emergency stops if the transition was caused by selecting override (in Level 2 or 3)</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="SR start distance"
+ Name="SR"
  Guid="542a293f-0bbe-4b7e-8564-f58bb6df0072"
 >
 <PreConditions>
@@ -7737,9 +7817,60 @@ TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom
  Guid="d1fb763d-8eb4-449e-b9fb-3ab9c203ce8f"
 >Mode == Default.Mode.SR</PreCondition></PreConditions>
 <Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="SR start distance"
+ Guid="d4c717aa-3340-44ce-849c-7ee75429742f"
+>
+<Comment>Keep the current location for tracking the maximum distance to run in SR.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="SR start distance"
+ Guid="b6b6416f-c41a-4755-8eac-3de5193c6825"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
 <Action
  Guid="9861dab1-0ea0-474a-a570-5c9f716e8ed6"
 >TrainPosition.SRStartDistance &lt;- Odometry.NominalDistance</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Override emergency stops"
+ Guid="e77a41de-011e-4a67-b0b9-f65424882e49"
+>
+<ReqRef
+ Id="f9493d17-4616-4ea8-b1c6-66d4c67d37c7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="492e0e8e-e162-4200-a804-dc88d5d4ed7c"
+>
+</ReqRef><Comment>In Level 2 or 3, the transition to SR due to selecting Override revokes all emergency stops.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Override emergency stops"
+ Guid="849927c4-8585-4ee7-9926-a83a7087f426"
+>
+<PreConditions>
+<PreCondition
+ Guid="3e6ea886-5b5f-4381-be51-f5bbba1f6269"
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
+ Guid="c6fe72fa-111f-4ee5-bc98-fee5bfd679f6"
+>Condition37()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="12cd0b21-f7bb-489e-a62c-37d6a11a5429"
+>EmergencyStops &lt;- []</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

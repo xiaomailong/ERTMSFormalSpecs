@@ -604,6 +604,16 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="127c1e54-38d8-411a-ae3c-956ee67ff50c"
 >
 </ReqRef><Comment>When the former distance to run in SR (if the mode was SR before the driver pressed &quot;Override&quot;) is passed with the train front end, the Override ends.</Comment>
+</StructureElement><StructureElement
+ TypeName="Boolean"
+ Default="False"
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FormerEOAPassed"
+ Guid="f75532ee-2783-49a2-9925-9866fdff39f7"
+>
+<Comment>Indicates that the former EOA was passed while Override was active.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -9928,9 +9938,7 @@ Odometry.NominalDistance &gt; OverrideSupervision.Location</PreCondition></PreCo
 <Actions>
 <Action
  Guid="5c90190f-97b9-4212-afbe-5e0fc175eadc"
->THIS &lt;- HandleModeChangeSM.NoProcedure</Action><Action
- Guid="9bf9ef3a-ce4f-43c5-b5de-423a46d39bd5"
->OverrideSupervision &lt;- EMPTY</Action></Actions>
+>EndOverride()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Former EOA passed"
@@ -9951,9 +9959,9 @@ OverrideSupervision.FormerEOA &lt; BTM.AntennaPosition(DistanceInterval.Min)</Pr
 <Actions>
 <Action
  Guid="67ae36be-5bd9-4e9b-8d8a-2842068e454c"
->THIS &lt;- HandleModeChangeSM.NoProcedure</Action><Action
+>EndOverride()</Action><Action
  Guid="7af318c3-302f-4bc3-9219-1a508e47bc8f"
->OverrideSupervision &lt;- EMPTY</Action></Actions>
+>OverrideSupervision.FormerEOAPassed &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Train overpasses former max dist to run in SR"
@@ -9974,7 +9982,7 @@ OverrideSupervision.FormerSRDistance &lt; TrainPosition.FrontEndPosition(Distanc
 <Actions>
 <Action
  Guid="192f8825-d3ec-42a6-80c0-9875a6d04ff0"
->THIS &lt;- HandleModeChangeSM.NoProcedure</Action></Actions>
+>EndOverride()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -10007,6 +10015,34 @@ OverrideSupervision.FormerSRDistance &lt; TrainPosition.FrontEndPosition(Distanc
 >OverrideSupervision.FormerEOA &lt;- BaseTypes.Distance.Infinity</Action><Action
  Guid="05bdf6c2-bfb5-4f91-b20d-55d9f8e5777f"
 >OverrideSupervision.FormerSRDistance &lt;- BaseTypes.Distance.Infinity</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Display to driver"
+ Guid="ec4abf5c-00f2-4f7d-959d-53c21a1c0915"
+>
+<ReqRef
+ Id="6bfffc4c-98dc-4742-aa70-9301ecbe28b5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="20455f06-9aeb-47d2-907d-dbe1863814e7"
+>
+</ReqRef><Comment>Display the information &quot;Override active&quot; to the driver.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Display &quot;Override&quot;"
+ Guid="3a28f37f-3a59-4ef1-8532-bc909819e29b"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="508908a2-7410-4dcc-8a2c-1c051c0d09be"
+>DMI.MasterDMI().Out_OverrideStatus.Display()</Action><Action
+ Guid="949e79c0-9662-49b9-b39c-a37fd4d36ee5"
+>DMI.MasterDMI().Out_OverrideStatus.OverrideStatus &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine><EnterAction>
@@ -10059,6 +10095,11 @@ OverrideSupervision.FormerSRDistance &lt; TrainPosition.FrontEndPosition(Distanc
  Id="b5348bb2-ed11-48b7-89f4-8e3118fd396a"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ac8389bc-4b64-4d70-8696-8b1b5bcdcd62"
+>
+</ReqRef><ReqRef
+ Id="2e017c9a-dfbb-4e5e-845b-7cb9c2043788"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="78b02fb8-3c79-4d40-a7b6-87bc60cb8537"
 >
 </ReqRef><Comment>If the driver presses &quot;Override&quot; while the override function is active, only the time and distance to run with Override will be changed.</Comment>
 <PreConditions>
@@ -10751,6 +10792,7 @@ INITIAL_VALUE Kernel.EmergencyStop
     Time =&gt; DateAndTime.CurrentTime + NationalValues.ApplicableNationalValues.Value.MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered,
     Location =&gt; Odometry.NominalDistance + NationalValues.ApplicableNationalValues.Value.DistForTrainTripSuppressionWhenOverrideIsTriggered,
     FormerEOA =&gt; Odometry.NominalDistance,
+    FormerEOAPassed =&gt; False,
     FormerSRDistance =&gt; Default.BaseTypes.Distance.Infinity
 }</Expression>
 </Case><Case
@@ -10767,6 +10809,7 @@ INITIAL_VALUE Kernel.EmergencyStop
     Time =&gt; DateAndTime.CurrentTime + NationalValues.ApplicableNationalValues.Value.MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered,
     Location =&gt; Odometry.NominalDistance + NationalValues.ApplicableNationalValues.Value.DistForTrainTripSuppressionWhenOverrideIsTriggered,
     FormerEOA =&gt; MA.ClosestEOA().Location,
+    FormerEOAPassed =&gt; False,
     FormerSRDistance =&gt; TrainPosition.SRStartDistance + StaffResponsible.DistanceToRun()
 }</Expression>
 </Case><Case
@@ -10781,6 +10824,7 @@ INITIAL_VALUE Kernel.EmergencyStop
     Time =&gt; DateAndTime.CurrentTime + NationalValues.ApplicableNationalValues.Value.MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered,
     Location =&gt; Odometry.NominalDistance + NationalValues.ApplicableNationalValues.Value.DistForTrainTripSuppressionWhenOverrideIsTriggered,
     FormerEOA =&gt; Default.BaseTypes.Distance.Infinity,
+    FormerEOAPassed =&gt; False,
     FormerSRDistance =&gt; TrainPosition.SRStartDistance + StaffResponsible.DistanceToRun()
 }</Expression>
 </Case><Case
@@ -10795,6 +10839,7 @@ INITIAL_VALUE Kernel.EmergencyStop
     Time =&gt; DateAndTime.CurrentTime + NationalValues.ApplicableNationalValues.Value.MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered,
     Location =&gt; Odometry.NominalDistance + NationalValues.ApplicableNationalValues.Value.DistForTrainTripSuppressionWhenOverrideIsTriggered,
     FormerEOA =&gt; MA.ClosestEOA().Location,
+    FormerEOAPassed =&gt; False,
     FormerSRDistance =&gt; Default.BaseTypes.Distance.Infinity
 }</Expression>
 </Case><Case
@@ -10805,6 +10850,7 @@ INITIAL_VALUE Kernel.EmergencyStop
     Time =&gt; DateAndTime.CurrentTime + NationalValues.ApplicableNationalValues.Value.MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered,
     Location =&gt; Odometry.NominalDistance + NationalValues.ApplicableNationalValues.Value.DistForTrainTripSuppressionWhenOverrideIsTriggered,
     FormerEOA =&gt; Default.BaseTypes.Distance.Infinity,
+    FormerEOAPassed =&gt; False,
     FormerSRDistance =&gt; Default.BaseTypes.Distance.Infinity
 }</Expression>
 </Case></Cases>
@@ -12145,8 +12191,6 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="ea7ebf68-7921-4172-b558-b45edf12a8f3"
->OverrideSupervision &lt;- EMPTY</Action><Action
  Guid="70a4411a-1087-4c86-b65c-3de7854e4391"
 >HandleModeChange &lt;- HandleModeChangeSM.NoProcedure</Action></Actions>
 </RuleCondition></Conditions>
