@@ -2206,7 +2206,7 @@ Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreCond
 <Actions>
 <Action
  Guid="fec4ea71-9030-4796-a90a-2d1c21a90d00"
->HandleModeChange &lt;- HandleModeChangeSM.NoProcedure</Action></Actions>
+>EndOverride()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2388,7 +2388,7 @@ MATimers.LOATimerStart &lt;- MATimers.CurrentBGTimeOfPassage</Action><Action
 <Actions>
 <Action
  Guid="2b82f74d-810e-4f72-977c-0ca411d9a9bd"
->HandleModeChange &lt;- HandleModeChangeSM.NoProcedure</Action></Actions>
+>EndOverride()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

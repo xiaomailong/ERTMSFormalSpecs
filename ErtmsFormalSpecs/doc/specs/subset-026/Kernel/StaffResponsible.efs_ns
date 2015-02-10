@@ -428,9 +428,7 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 <Actions>
 <Action
  Guid="cfba8bf9-5231-4e99-acf5-5b104f9d1dde"
->HandleModeChange &lt;- HandleModeChangeSM.NoProcedure</Action><Action
- Guid="45832735-94b6-4547-8eb7-b67da242a248"
->OverrideSupervision.FormerEOA &lt;- Default.BaseTypes.Distance.Infinity</Action></Actions>
+>EndOverride()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Handle packet"

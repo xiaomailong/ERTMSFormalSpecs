@@ -727,6 +727,7 @@ HandleModeChange not in HandleModeChangeSM.Override</Expression>
  Y="420"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Condition44"
  Guid="b93769bb-3703-48be-9252-578f342e68ae"
 >
@@ -745,12 +746,19 @@ HandleModeChange not in HandleModeChangeSM.Override</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e0fa855f-47b4-400f-842a-bd214a1fec65"
 >
+</ReqRef><ReqRef
+ Id="c8b3f989-1504-46c0-84e3-3b54fdc4e132"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4745d9fc-40d9-4a4a-8e0c-abe373d601f1"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="5686c435-0bc4-418f-8e0c-8a3b1ddb1349"
 >
-<Expression>False</Expression>
+<Expression>HandleModeChange in HandleModeChangeSM.Override
+  AND  
+Level.Value.Value == Level.L1</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -827,6 +835,7 @@ TIU.NonLeadingPermitted</Expression>
  Y="420"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Condition45"
  Guid="df98bf4a-c177-46e2-b968-d88a3683f292"
 >
@@ -845,12 +854,21 @@ TIU.NonLeadingPermitted</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b7a02818-dcd2-4164-90f0-ba90b91d40ad"
 >
+</ReqRef><ReqRef
+ Id="c8b3f989-1504-46c0-84e3-3b54fdc4e132"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="98baa48d-3585-4ac7-8ea4-a342b2f68570"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="6e85bf2e-e3a7-472c-9cea-c751c8b54f03"
 >
-<Expression>False</Expression>
+<Expression>HandleModeChange in HandleModeChangeSM.Override
+  AND  
+NOT THERE_IS EmergencyStop IN EmergencyStops | (NOT EmergencyStop.IsConditional)
+  AND  
+Level.Value.Value in [Level.L2, Level.L3]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1664,6 +1682,7 @@ AND
  Y="780"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Condition37"
  Guid="a72d519b-d616-46c1-b834-5be99244b9ab"
 >
@@ -1677,7 +1696,9 @@ AND
  Name="Value"
  Guid="e322a5e8-a872-4bb1-b82a-a30c01a9deb1"
 >
-<Expression>False</Expression>
+<Expression>DMI.MasterDMI().In_OverrideRequest.InputInformation.DriverAnswered
+  AND  
+Odometry.TrainSpeed() &lt; NationalValues.ApplicableNationalValues.Value.SpeedLimitForTriggeringTheOverrideFunction</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -2840,6 +2861,7 @@ DMI.MasterDMI().In_AcknOfSRMode.InputInformation.DriverAnswered</Expression>
  Y="1260"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Condition37_SB"
  Guid="429d46ed-070b-437d-a553-7516104a68ae"
 >
@@ -7650,7 +7672,7 @@ PrevMode == Default.Mode.SL</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ee358f3f-d928-46e8-ac43-a1dd68c8eb36"
->HandleModeChange &lt;- HandleModeChangeSM.NoProcedure</Action></Actions>
+>EndOverride()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -7801,7 +7823,7 @@ TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom
 <Actions>
 <Action
  Guid="ba6e3c1d-7690-45df-a0ff-a98a1f8826a4"
->HandleModeChange &lt;- HandleModeChangeSM.NoProcedure</Action></Actions>
+>EndOverride()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -7857,7 +7879,7 @@ TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom
 <Actions>
 <Action
  Guid="16e40cc4-8592-40b3-849d-0ccd8c8fdbd1"
->HandleModeChange &lt;- HandleModeChangeSM.NoProcedure</Action></Actions>
+>EndOverride()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -7983,7 +8005,7 @@ TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom
 <Actions>
 <Action
  Guid="1c899d8a-8bc7-4e1c-859a-38868650e6f6"
->HandleModeChange &lt;- HandleModeChangeSM.NoProcedure</Action></Actions>
+>EndOverride()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -8032,6 +8054,6 @@ TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom
  Name="PrevMode"
  Guid="1c13dfb6-c156-4096-b11b-0b4752ff6ab6"
 >
-<Comment>Used to detech that the mode of the train has changed.</Comment>
+<Comment>Used to detect that the mode of the train has changed.</Comment>
 </Variable></Variables>
 </NameSpace>
