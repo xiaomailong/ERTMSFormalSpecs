@@ -406,6 +406,7 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Override active"
  Guid="89a474df-0208-4696-8fdb-0b46115c5b24"
 >
@@ -419,7 +420,8 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8146747c-a2b6-414c-9128-aa9edb39338a"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If the Override function is active, the train does not stop but Override is ended.</Comment>
+<PreConditions>
 <PreCondition
  Guid="c6ccbc54-4698-42e2-84cf-735584fc7270"
 >HandleModeChange in HandleModeChangeSM.Override</PreCondition></PreConditions>
@@ -434,6 +436,7 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
  Name="Handle packet"
  Guid="77e9d509-9333-4cfa-9903-271166cb80be"
 >
+<Comment>Handle the packet otherwise.</Comment>
 <PreConditions>
 <PreCondition
  Guid="1af23fe5-a5a6-41f8-824b-5238b8ff70f8"

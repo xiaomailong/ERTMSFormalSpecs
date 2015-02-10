@@ -231,9 +231,11 @@
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Override active"
  Guid="1857fd33-3da2-40b2-ad13-85a503098a0f"
 >
+<Comment>If the Override function is active, the train does not stop but Override is ended.</Comment>
 <PreConditions>
 <PreCondition
  Guid="4d39a90f-c81a-4f51-a5b1-20e9d9c1f07c"
@@ -247,6 +249,7 @@
  Name="Stop if required"
  Guid="e688dd05-2d56-4068-897e-9f93c0fa08f1"
 >
+<Comment>Handle the packet otherwise.</Comment>
 <PreConditions>
 <PreCondition
  Guid="8da76a80-09a8-4469-8549-ff75099c9d6b"
