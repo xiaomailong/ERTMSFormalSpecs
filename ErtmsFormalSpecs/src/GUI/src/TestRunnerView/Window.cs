@@ -99,10 +99,22 @@ namespace GUI.TestRunnerView
             InitializeComponent();
 
             FormClosed += new FormClosedEventHandler(Window_FormClosed);
+            frameToolStripComboBox.DropDown += new EventHandler(frameToolStripComboBox_DropDown);
+            subSequenceSelectorComboBox.DropDown += new EventHandler(subSequenceSelectorComboBox_DropDown);
             Text = "System test view";
             Visible = false;
             EFSSystem = EFSSystem.INSTANCE;
             Refresh();
+        }
+
+        void frameToolStripComboBox_DropDown(object sender, EventArgs e)
+        {
+            RebuildFramesComboBox();
+        }
+
+        void subSequenceSelectorComboBox_DropDown(object sender, EventArgs e)
+        {
+            RebuildSubSequencesComboBox();
         }
 
         /// <summary>
@@ -194,56 +206,13 @@ namespace GUI.TestRunnerView
                     testDescriptionTimeLineControl.Refresh();
                     testExecutionTimeLineControl.Refresh();
 
-                    frameToolStripComboBox.Items.Clear();
-                    List<string> frames = new List<string>();
-                    foreach (Dictionary dictionary in EFSSystem.Dictionaries)
-                    {
-                        foreach (Frame frame in dictionary.Tests)
-                        {
-                            frames.Add(frame.Name);
-                        }
-                    }
-                    frames.Sort();
-
-                    foreach (string frame in frames)
-                    {
-                        if (frame != null)
-                        {
-                            frameToolStripComboBox.Items.Add(frame);
-                        }
-                    }
+                    RebuildFramesComboBox();
                     frameToolStripComboBox.Text = selectedFrame;
                     frameToolStripComboBox.ToolTipText = selectedFrame;
 
                     if (Frame == null || frameToolStripComboBox.Text.CompareTo(Frame.Name) != 0)
                     {
-                        subSequenceSelectorComboBox.Items.Clear();
-                        foreach (Dictionary dictionary in EFSSystem.Dictionaries)
-                        {
-                            Frame = dictionary.findFrame(frameToolStripComboBox.Text);
-                            if (Frame != null)
-                            {
-                                List<string> subSequences = new List<string>();
-                                foreach (SubSequence subSequence in Frame.SubSequences)
-                                {
-                                    subSequences.Add(subSequence.Name);
-                                }
-                                subSequences.Sort();
-                                foreach (string subSequence in subSequences)
-                                {
-                                    subSequenceSelectorComboBox.Items.Add(subSequence);
-                                }
-                                break;
-                            }
-                        }
-                        if (subSequenceSelectorComboBox.Items.Count > 0)
-                        {
-                            subSequenceSelectorComboBox.Text = subSequenceSelectorComboBox.Items[0].ToString();
-                        }
-                        else
-                        {
-                            subSequenceSelectorComboBox.Text = "";
-                        }
+                        RebuildSubSequencesComboBox();
 
                         if (EFSSystem.Runner != null && EFSSystem.Runner.SubSequence != null)
                         {
@@ -265,6 +234,65 @@ namespace GUI.TestRunnerView
             }
 
             base.Refresh();
+        }
+
+        /// <summary>
+        /// Rebuilds the contents of the frames combo box
+        /// </summary>
+        private void RebuildFramesComboBox()
+        {
+            frameToolStripComboBox.Items.Clear();
+            List<string> frames = new List<string>();
+            foreach (Dictionary dictionary in EFSSystem.Dictionaries)
+            {
+                foreach (Frame frame in dictionary.Tests)
+                {
+                    frames.Add(frame.Name);
+                }
+            }
+            frames.Sort();
+
+            foreach (string frame in frames)
+            {
+                if (frame != null)
+                {
+                    frameToolStripComboBox.Items.Add(frame);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Rebuilds the contents of the subsequence combo box, according to the frame selected in the frames combo box
+        /// </summary>
+        private void RebuildSubSequencesComboBox()
+        {
+            subSequenceSelectorComboBox.Items.Clear();
+            foreach (Dictionary dictionary in EFSSystem.Dictionaries)
+            {
+                Frame = dictionary.findFrame(frameToolStripComboBox.Text);
+                if (Frame != null)
+                {
+                    List<string> subSequences = new List<string>();
+                    foreach (SubSequence subSequence in Frame.SubSequences)
+                    {
+                        subSequences.Add(subSequence.Name);
+                    }
+                    subSequences.Sort();
+                    foreach (string subSequence in subSequences)
+                    {
+                        subSequenceSelectorComboBox.Items.Add(subSequence);
+                    }
+                    break;
+                }
+            }
+            if (subSequenceSelectorComboBox.Items.Count > 0)
+            {
+                subSequenceSelectorComboBox.Text = subSequenceSelectorComboBox.Items[0].ToString();
+            }
+            else
+            {
+                subSequenceSelectorComboBox.Text = "";
+            }
         }
 
         /// <summary>
