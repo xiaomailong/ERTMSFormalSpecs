@@ -45,7 +45,7 @@ namespace GUI.TestRunnerView
         {
             this.explainTreeView = new System.Windows.Forms.TreeView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.explainRichTextBox = new EditorTextBox();
+            this.explainRichTextBox = new GUI.EditorTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -54,6 +54,7 @@ namespace GUI.TestRunnerView
             // 
             // explainTreeView
             // 
+            this.explainTreeView.AllowDrop = true;
             this.explainTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.explainTreeView.Location = new System.Drawing.Point(0, 0);
             this.explainTreeView.Name = "explainTreeView";
@@ -80,12 +81,17 @@ namespace GUI.TestRunnerView
             // 
             // explainRichTextBox
             // 
+            this.explainRichTextBox.AutoComplete = true;
+            this.explainRichTextBox.ConsiderOnlyTypes = false;
             this.explainRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.explainRichTextBox.Instance = null;
             this.explainRichTextBox.Location = new System.Drawing.Point(0, 0);
             this.explainRichTextBox.Name = "explainRichTextBox";
+            this.explainRichTextBox.ReadOnly = false;
+            this.explainRichTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
+    "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs17\\par\r\n}\r\n";
             this.explainRichTextBox.Size = new System.Drawing.Size(819, 135);
             this.explainRichTextBox.TabIndex = 0;
-            this.explainRichTextBox.Text = "";
             // 
             // ExplainBox
             // 
@@ -93,6 +99,7 @@ namespace GUI.TestRunnerView
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(819, 389);
             this.Controls.Add(this.splitContainer1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "ExplainBox";
             this.ShowInTaskbar = false;

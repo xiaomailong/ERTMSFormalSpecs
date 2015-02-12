@@ -110,6 +110,34 @@ namespace DataDictionary.Rules
                 variable.HandleChange();
             }
         }
+
+        /// <summary>
+        /// Indicates whether this change impacts the selected variable
+        /// </summary>
+        /// <param name="variable"></param>
+        /// <returns></returns>
+        public bool ImpactVariable(IVariable variable)
+        {
+            bool retVal = false;
+
+            IVariable current = Variable;
+            while (!retVal && current != null)
+            {
+                retVal = current == variable;
+
+                StructureValue enclosingStructureValue = current.Enclosing as StructureValue;
+                if (enclosingStructureValue != null)
+                {
+                    current = enclosingStructureValue.Enclosing as IVariable;
+                }
+                else
+                {
+                    current = null;
+                }
+            }
+
+            return retVal;
+        }
     }
 
     /// <summary>
@@ -199,21 +227,7 @@ namespace DataDictionary.Rules
 
             foreach (Change change in Changes)
             {
-                IVariable current = change.Variable;
-                while (!retVal && current != null)
-                {
-                    retVal = current == variable;
-
-                    StructureValue enclosingStructureValue = current.Enclosing as StructureValue;
-                    if (enclosingStructureValue != null)
-                    {
-                        current = enclosingStructureValue.Enclosing as IVariable;
-                    }
-                    else
-                    {
-                        current = null;
-                    }
-                }
+                retVal = change.ImpactVariable(variable);
 
                 if (retVal)
                 {
