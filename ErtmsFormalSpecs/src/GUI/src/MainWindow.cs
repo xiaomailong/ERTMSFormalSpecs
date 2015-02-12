@@ -1377,8 +1377,11 @@ namespace GUI
             {
                 DataDictionary.Rules.Rule rule = obj as DataDictionary.Rules.Rule;
 
-                rule.ExecutionTimeInMilli = 0;
-                rule.ExecutionCount = 0;
+                if (rule != null)
+                {
+                    rule.ExecutionTimeInMilli = 0;
+                    rule.ExecutionCount = 0;
+                }
 
                 base.visit(obj, visitSubNodes);
             }
