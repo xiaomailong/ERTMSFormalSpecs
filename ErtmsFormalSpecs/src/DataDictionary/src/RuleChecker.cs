@@ -586,7 +586,8 @@ namespace DataDictionary
                     {
                         if (other.getImplemented())
                         {
-                            other.AddWarning("This element is set as implemented whereas one of its children " + current.FullName + " is not");
+                            other.AddWarning("This element is set as implemented whereas one of its children is not");
+                            current.AddWarning("This element is set as not implemented whereas its parent is marked implemented");
                         }
                     }
                     parent = parent.getFather() as ModelElement;
