@@ -15,11 +15,39 @@
 // ------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using DataDictionary.Interpreter;
 using DataDictionary.Values;
 using DataDictionary.Variables;
 
 namespace DataDictionary.Functions
 {
+    /// <summary>
+    /// An association between a value and its explanation
+    /// </summary>
+    public class ExplainedValue
+    {
+        /// <summary>
+        /// The value
+        /// </summary>
+        public IValue Value { get; private set; }
+
+        /// <summary>
+        /// The value's computation explanation
+        /// </summary>
+        public ExplanationPart Explanation { get; private set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="explanation"></param>
+        public ExplainedValue(IValue value, ExplanationPart explanation)
+        {
+            Value = value;
+            Explanation = explanation;
+        }
+    }
+
     /// <summary>
     /// Caches the result of a function in a Curry-like fashion 
     /// </summary>
@@ -38,7 +66,7 @@ namespace DataDictionary.Functions
             /// <summary>
             /// The value associated to the last parameter of the function
             /// </summary>
-            public IValue Value { get; set; }
+            public ExplainedValue Value { get; set; }
 
             /// <summary>
             /// Constructor
@@ -68,9 +96,9 @@ namespace DataDictionary.Functions
         /// </summary>
         /// <param name="association"></param>
         /// <returns></returns>
-        public IValue GetValue(Dictionary<Actual, IValue> association)
+        public ExplainedValue GetValue(Dictionary<Actual, IValue> association)
         {
-            IValue retVal = null;
+            ExplainedValue retVal = null;
 
             FunctionCache current = Curry;
             foreach (IValue val in OrderedParameters(association))
@@ -100,7 +128,7 @@ namespace DataDictionary.Functions
         /// </summary>
         /// <param name="association"></param>
         /// <param name="value"></param>
-        public void SetValue(Dictionary<Actual, IValue> association, IValue value)
+        public void SetValue(Dictionary<Actual, IValue> association, IValue value, ExplanationPart explanation)
         {
             FunctionCache current = Curry;
             foreach (IValue val in OrderedParameters(association))
@@ -114,7 +142,7 @@ namespace DataDictionary.Functions
                 current = next;
             }
 
-            current.Value = value;
+            current.Value = new ExplainedValue(value, explanation);
         }
 
         /// <summary>

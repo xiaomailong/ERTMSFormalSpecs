@@ -1010,11 +1010,6 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// The cached value for the latests evaluation
-        /// </summary>
-        private IValue CachedValue = null;
-
-        /// <summary>
         /// The cached results for this function
         /// </summary>
         private CurryCache CachedResult = null;
@@ -1049,28 +1044,22 @@ namespace DataDictionary.Functions
             IValue retVal = null;
 
             bool useCache = EFSSystem.CacheFunctions;
+            ExplainedValue explainedValue = null;
+
             // Only use the cached value when the EFSSystem indicates that caches should be used
             // This condition has been added to handle the fact that the user changes the status 
             // of EFSSystem.CacheFunctions within a test session
             if (useCache)
             {
-                retVal = CachedValue;
-
-                if (retVal == null)
+                if (CachedResult == null)
                 {
-                    if (CachedResult == null)
-                    {
-                        CachedResult = new CurryCache(this);
-                    }
-
-                    if (EFSSystem.CacheFunctions)
-                    {
-                        retVal = CachedResult.GetValue(actuals);
-                    }
+                    CachedResult = new CurryCache(this);
                 }
+
+                explainedValue = CachedResult.GetValue(actuals);
             }
 
-            if (retVal == null)
+            if (explainedValue == null)
             {
                 int token = context.LocalScope.PushContext();
                 AssignParameters(context, actuals);
@@ -1134,20 +1123,24 @@ namespace DataDictionary.Functions
                 ExplanationPart.SetNamable(explain, retVal);
                 if (useCache)
                 {
-                    if (actuals.Count == 0)
-                    {
-                        CachedValue = retVal;
-                    }
-                    else
-                    {
-                        CachedResult.SetValue(actuals, retVal);
-                    }
+                    CachedResult.SetValue(actuals, retVal, explain);
                 }
             }
             else
             {
+                retVal = explainedValue.Value;
                 ExplanationPart subExplain = ExplanationPart.CreateSubExplanation(explain, "Cached result = ");
                 ExplanationPart.SetNamable(subExplain, retVal);
+
+                // Reuse the explanation of the return value computation
+                // Topmost entry is the function call, useless, so don't provide it
+                if (explainedValue.Explanation != null)
+                {
+                    foreach (ExplanationPart part in explainedValue.Explanation.SubExplanations)
+                    {
+                        ExplanationPart.AddSubExplanation(subExplain, part);                        
+                    }
+                }
             }
 
             return retVal;
@@ -1387,9 +1380,7 @@ namespace DataDictionary.Functions
         {
             base.ClearCache();
 
-            CachedValue = null;
             CachedResult = null;
-
             Graph = null;
             Surface = null;
         }

@@ -169,6 +169,19 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
+        /// Adds a sub explanation for the explain provided as parameter
+        /// </summary>
+        /// <param name="explain"></param>
+        /// <param name="subExplain"></param>
+        public static void AddSubExplanation(ExplanationPart explain, ExplanationPart subExplain)
+        {
+            if (explain != null)
+            {
+                explain.SubExplanations.Add(subExplain);
+            }
+        }
+
+        /// <summary>
         /// Creates a sub explanation for the explain provided as parameter
         /// </summary>
         /// <param name="explain"></param>
