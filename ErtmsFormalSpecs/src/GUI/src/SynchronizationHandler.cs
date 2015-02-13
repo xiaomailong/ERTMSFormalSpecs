@@ -98,7 +98,7 @@ namespace GUI
             : base(cycleTime)
         {
             Instance = instance;
-            Thread = ThreadUtil.CreateThread(DoSynchronize);
+            Thread = ThreadUtil.CreateThread("UI Synchronization", DoSynchronize);
             Thread.Start(Instance);
         }
 

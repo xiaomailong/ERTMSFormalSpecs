@@ -130,7 +130,8 @@ namespace DataDictionary.Tests.Runner
         /// <param name="subSequence"></param>
         /// <param name="explain"></param>
         /// <param name="logEvents">Indicates whether events should be logged</param>
-        public Runner(SubSequence subSequence, bool explain, bool logEvents)
+        /// <param name="ensureCompilation">Indicates that the runner should make sure that the system is compiled</param>
+        public Runner(SubSequence subSequence, bool explain, bool logEvents, bool ensureCompilation)
         {
             EventTimeLine = new EventTimeLine();
             SubSequence = subSequence;
@@ -138,9 +139,12 @@ namespace DataDictionary.Tests.Runner
             LogEvents = logEvents;
             Explain = explain;
 
-            // Compile everything
-            EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
-            EFSSystem.ShouldRebuild = false;
+            if (ensureCompilation)
+            {
+                // Compile everything
+                EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
+                EFSSystem.ShouldRebuild = false;
+            }
 
             Setup();
             PleaseWait = true;

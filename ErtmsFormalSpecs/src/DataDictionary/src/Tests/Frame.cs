@@ -44,17 +44,27 @@ namespace DataDictionary.Tests
         /// <summary>
         /// Executes the test cases for this test sequence
         /// </summary>
-        /// <param name="runner">The runner used to execute the tests</param>
+        /// <param name="ensureCompilationDone"></param>
         /// <returns>the number of failed sub sequences</returns>
-        public int ExecuteAllTests()
+        public int ExecuteAllTests(bool ensureCompilationDone)
         {
             int retVal = 0;
 
             try
             {
+                if (ensureCompilationDone)
+                {
+                    // Compile everything
+                    EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
+                    EFSSystem.ShouldRebuild = false;
+                }
+
                 foreach (SubSequence subSequence in SubSequences)
                 {
-                    EFSSystem.Runner = new Runner.Runner(subSequence, false, false);
+                    const bool explain = false;
+                    const bool logEvents = false;
+                    const bool ensureCompiled = false;
+                    EFSSystem.Runner = new Runner.Runner(subSequence, explain, logEvents, ensureCompiled);
                     int testCasesFailed = subSequence.ExecuteAllTestCases(EFSSystem.Runner);
                     if (testCasesFailed > 0)
                     {

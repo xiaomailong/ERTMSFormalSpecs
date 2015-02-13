@@ -46,7 +46,7 @@ namespace GUI
         {
             BackgroundWorker worker = sender as BackgroundWorker;
 
-            Thread thread = ThreadUtil.CreateThread(Work.TreadStart);
+            Thread thread = ThreadUtil.CreateThread("Progress" + Text, Work.TreadStart);
             thread.Start(Work);
 
             int percent = 0;

@@ -154,13 +154,19 @@ namespace GUI.TestRunnerView
 
                 SynchronizerList.SuspendSynchronization();
 
+                // Compile everything
+                EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
+                EFSSystem.ShouldRebuild = false;
+
                 Failed = 0;
                 ArrayList tests = Dictionary.Tests;
                 tests.Sort();
                 foreach (Frame frame in tests)
                 {
                     Dialog.UpdateMessage("Executing " + frame.Name);
-                    int failedFrames = frame.ExecuteAllTests();
+
+                    const bool ensureCompilationDone = false;
+                    int failedFrames = frame.ExecuteAllTests(ensureCompilationDone);
                     if (failedFrames > 0)
                     {
                         Failed += 1;

@@ -71,7 +71,7 @@ namespace EFSTester
                                     subSequence.Translate(dictionary.TranslationDictionary);
                                 }
 
-                                Runner runner = new Runner(subSequence, false, false);
+                                Runner runner = new Runner(subSequence, false, false, true);
                                 runner.RunUntilStep(null);
 
                                 bool failed = false;

@@ -21,18 +21,31 @@ namespace Utils
 {
     public static class ThreadUtil
     {
-        public static Thread CreateThread(ParameterizedThreadStart threadStart)
+        /// <summary>
+        /// Single location where threads are created
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="threadStart"></param>
+        /// <returns></returns>
+        public static Thread CreateThread(string name, ParameterizedThreadStart threadStart)
         {
             Thread retVal = new Thread(threadStart);
+            retVal.Name = name;
             retVal.CurrentCulture = CultureInfo.InvariantCulture;
 
             return retVal;
         }
 
-
-        public static Thread CreateThread(ThreadStart threadStart)
+        /// <summary>
+        /// Single location where threads are created
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="threadStart"></param>
+        /// <returns></returns>
+        public static Thread CreateThread(string name, ThreadStart threadStart)
         {
             Thread retVal = new Thread(threadStart);
+            retVal.Name = name;
             retVal.CurrentCulture = CultureInfo.InvariantCulture;
 
             return retVal;

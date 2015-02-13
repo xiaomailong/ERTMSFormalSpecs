@@ -255,7 +255,7 @@ namespace GUI.TestRunnerView
                 if (Window != null)
                 {
                     Window.setSubSequence(SubSequence);
-                    EFSSystem.Runner = new Runner(SubSequence, true, false);
+                    EFSSystem.Runner = new Runner(SubSequence, true, false, true);
                     EFSSystem.Runner.RunUntilStep(null);
                 }
             }

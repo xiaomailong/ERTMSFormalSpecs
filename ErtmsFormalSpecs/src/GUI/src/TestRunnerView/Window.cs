@@ -83,7 +83,7 @@ namespace GUI.TestRunnerView
             {
                 if (subSequence != null)
                 {
-                    EFSSystem.Runner = new Runner(subSequence, false, false);
+                    EFSSystem.Runner = new Runner(subSequence, false, false, true);
                 }
             }
 
@@ -337,7 +337,7 @@ namespace GUI.TestRunnerView
 
         public void Clear()
         {
-            CheckRunner();
+            EFSSystem.Runner = null;
 
             foreach (Dictionary dictionary in EFSSystem.Dictionaries)
             {
@@ -357,7 +357,7 @@ namespace GUI.TestRunnerView
                     SubSequence subSequence = Frame.findSubSequence(subSequenceSelectorComboBox.Text);
                     if (subSequence != null)
                     {
-                        EFSSystem.Runner = new Runner(subSequence, true, false);
+                        EFSSystem.Runner = new Runner(subSequence, true, false, true);
                     }
                 }
                 else

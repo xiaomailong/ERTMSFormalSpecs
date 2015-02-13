@@ -108,7 +108,7 @@ namespace Reports.Tests
             if (TestCase != null) /* We generate a report for a selected test case */
             {
                 Log.Info("..creating test case report " + TestCase.Name);
-                EFSSystem.Runner = new Runner(TestCase.SubSequence, false, false);
+                EFSSystem.Runner = new Runner(TestCase.SubSequence, false, false, true);
                 Dictionary = TestCase.Dictionary;
                 report.CreateTestCaseSection(EFSSystem.Runner, TestCase, this, activatedRules, true);
             }

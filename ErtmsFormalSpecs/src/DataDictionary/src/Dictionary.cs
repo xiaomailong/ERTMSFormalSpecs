@@ -1038,9 +1038,14 @@ namespace DataDictionary
         {
             int retVal = 0;
 
+            // Compile everything
+            EFSSystem.Compiler.Compile_Synchronous(EFSSystem.ShouldRebuild);
+            EFSSystem.ShouldRebuild = false;
+
             foreach (Frame frame in Tests)
             {
-                int failedFrames = frame.ExecuteAllTests();
+                const bool ensureCompilationDone = false;
+                int failedFrames = frame.ExecuteAllTests(ensureCompilationDone);
                 if (failedFrames > 0)
                 {
                     retVal += 1;

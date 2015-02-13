@@ -206,13 +206,22 @@ namespace GUI.TestRunnerView
 
                     try
                     {
+                        // Compile everything
+                        Frame.EFSSystem.Compiler.Compile_Synchronous(Frame.EFSSystem.ShouldRebuild);
+                        Frame.EFSSystem.ShouldRebuild = false;
+
                         Failed = 0;
                         ArrayList subSequences = Frame.SubSequences;
                         subSequences.Sort();
                         foreach (SubSequence subSequence in subSequences)
                         {
                             Dialog.UpdateMessage("Executing " + subSequence.Name);
-                            Frame.EFSSystem.Runner = new Runner(subSequence, false, false);
+
+                            const bool explain = false;
+                            const bool logEvents = false;
+                            const bool ensureCompiled = false;
+                            Frame.EFSSystem.Runner = new Runner(subSequence, explain, logEvents, ensureCompiled);
+
                             int testCasesFailed = subSequence.ExecuteAllTestCases(Frame.EFSSystem.Runner);
                             if (testCasesFailed > 0)
                             {

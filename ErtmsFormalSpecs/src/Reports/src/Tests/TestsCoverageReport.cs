@@ -151,7 +151,7 @@ namespace Reports.Tests
             }
 
             HashSet<RuleCondition> rules = new HashSet<RuleCondition>();
-            aSubSequence.EFSSystem.Runner = new Runner(aSubSequence, false, false);
+            aSubSequence.EFSSystem.Runner = new Runner(aSubSequence, false, false, true);
             foreach (TestCase testCase in aSubSequence.TestCases)
             {
                 // SIDE EFFECT:

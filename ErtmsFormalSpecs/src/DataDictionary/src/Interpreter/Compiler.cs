@@ -165,7 +165,7 @@ namespace DataDictionary.Interpreter
             EFSSystem = system;
 
             DoCompile = true;
-            CompilerThread = ThreadUtil.CreateThread(CompileContinuously);
+            CompilerThread = ThreadUtil.CreateThread("Compiler", CompileContinuously);
             CompilerThread.Start();
         }
 
