@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using DataDictionary.Generated;
+using DataDictionary.Interpreter;
 using DataDictionary.Variables;
 using Utils;
 using Structure = DataDictionary.Types.Structure;
@@ -42,20 +43,21 @@ namespace DataDictionary.Values
         /// Constructor
         /// </summary>
         /// <param name="structure"></param>
-        /// <paraparam name="setDefaultValue">Indicates that default values should be set</paraparam>
+        /// <param name="setDefaultValue">Indicates that default values should be set</param>
         public StructureValue(Structure structure, bool setDefaultValue = true)
             : base(structure, new Dictionary<string, INamable>())
         {
             Enclosing = structure;
 
+            depth += 1;
+            if (depth > 100)
+            {
+                throw new Exception("Possible structure recursion found");
+            }
             try
             {
-                depth += 1;
-                if (depth > 100)
-                {
-                    throw new Exception("Possible structure recursion found");
-                }
                 ControllersManager.DesactivateAllNotifications();
+
                 foreach (StructureElement element in Structure.Elements)
                 {
                     Variable variable = (Variable) acceptor.getFactory().createVariable();
@@ -74,7 +76,6 @@ namespace DataDictionary.Values
                     }
                     else
                     {
-                        string defaultValue = variable.GetDefaultValueText();
                         variable.Value = new DefaultValue(variable);
                     }
                     set(variable);
@@ -83,7 +84,66 @@ namespace DataDictionary.Values
             finally
             {
                 ControllersManager.ActivateAllNotifications();
+                depth -= 1;
+                DeclaredElements = null;
+            }
+        }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="structureExpression"></param>
+        /// <param name="context"></param>
+        /// <param name="explain"></param>
+        public StructureValue(StructExpression structureExpression, InterpretationContext context, ExplanationPart explain)
+            : base(structureExpression.GetExpressionType() as Structure, new Dictionary<string, INamable>())
+        {
+            Enclosing = Structure;
+
+            try
+            {
+                ControllersManager.DesactivateAllNotifications();
+
+                HashSet<string> members = new HashSet<string>();
+                foreach (KeyValuePair<Designator, Expression> pair in structureExpression.Associations)
+                {
+                    IValue val = pair.Value.GetValue(new InterpretationContext(context), explain);
+                    if (val != null)
+                    {
+                        Variable var = (Variable)acceptor.getFactory().createVariable();
+                        var.Name = pair.Key.Image;
+                        var.Value = val;
+                        var.Enclosing = this;
+                        set(var);
+                        members.Add(var.Name);
+                    }
+                    else
+                    {
+                        structureExpression.AddError("Cannot evaluate value for " + pair.Value);
+                    }
+                }
+
+                foreach (StructureElement element in Structure.Elements)
+                {
+                    if (!members.Contains(element.Name))
+                    {
+                        Variable variable = (Variable) acceptor.getFactory().createVariable();
+                        variable.Enclosing = this;
+                        if (element.Type != null)
+                        {
+                            variable.Type = element.Type;
+                        }
+                        variable.Name = element.Name;
+                        variable.Mode = element.Mode;
+                        variable.Default = element.Default;
+                        variable.Value = variable.DefaultValue;
+                        set(variable);
+                    }
+                }
+            }
+            finally
+            {
+                ControllersManager.ActivateAllNotifications();
                 depth -= 1;
                 DeclaredElements = null;
             }
