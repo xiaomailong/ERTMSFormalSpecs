@@ -19,6 +19,7 @@ using DataDictionary.Generated;
 using DataDictionary.Interpreter.Filter;
 using DataDictionary.Types;
 using DataDictionary.Values;
+using DataDictionary.Variables;
 using Utils;
 using Structure = DataDictionary.Types.Structure;
 using Type = DataDictionary.Types.Type;
@@ -112,32 +113,7 @@ namespace DataDictionary.Interpreter
             Structure structureType = Structure.GetExpressionType() as Structure;
             if (structureType != null)
             {
-                retVal = new StructureValue(structureType, context.UseDefaultValue);
-
-                try
-                {
-                    ControllersManager.DesactivateAllNotifications();
-                    foreach (KeyValuePair<Designator, Expression> pair in Associations)
-                    {
-                        IValue val = pair.Value.GetValue(new InterpretationContext(context), explain);
-                        if (val != null)
-                        {
-                            Variable var = (Variable) acceptor.getFactory().createVariable();
-                            var.Name = pair.Key.Image;
-                            var.Value = val;
-                            var.Enclosing = retVal;
-                            retVal.set(var);
-                        }
-                        else
-                        {
-                            AddError("Cannot evaluate value for " + pair.Value);
-                        }
-                    }
-                }
-                finally
-                {
-                    ControllersManager.ActivateAllNotifications();
-                }
+                retVal = new StructureValue(this, context, explain);
             }
             else
             {
