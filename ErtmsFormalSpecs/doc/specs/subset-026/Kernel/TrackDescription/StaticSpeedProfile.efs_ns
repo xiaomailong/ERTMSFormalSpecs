@@ -89,7 +89,7 @@
  Guid="bf325d74-32aa-485a-8c3b-e78dc3b27538"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="SSPCategories"
+ TypeName="SSPCategoriesCol"
  Default="[]"
  Mode="Internal"
  Implemented="TRUE"
@@ -192,7 +192,7 @@
  Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="SSPCategories"
+ Name="SSPCategoriesCol"
  Guid="d39ee7dd-0392-4d3e-a844-e1b7df48eaf7"
 >
 <Comment>A collection of speed restrictions for train categories, received from the trackside.</Comment>
@@ -205,7 +205,7 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="StaticSpeedRestrictions"
+ Name="StaticSpeedRestrictionsCol"
  Guid="e150645e-2133-46d1-a4ed-82ce79f51dff"
 >
 <ReqRef
@@ -1230,10 +1230,54 @@ IN
     SSP</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Width="100"
+ Height="50"
+ Name="DeleteSSPFromLocation"
+ Guid="441952f2-c0b8-427f-961e-1cef74d38580"
+>
+<ReqRef
+ Id="32cdac05-1927-4110-9b53-fd54de0c7d76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d0613e08-a2c0-4c5b-9a60-a0e5022114f1"
+>
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b02e120e-fa6c-4fd1-bb9c-8c09ff3dcf13"
+>
+</ReqRef><Comment>Deletes the static speed profile information beyond the provided location.</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="aLocation"
+ Guid="f33560a7-0b94-4989-92c9-7ed3a801f349"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Delete SSP from the given location"
+ Guid="07a9aee7-731a-450d-bec1-c45f6b597106"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Delete SSP from the given location"
+ Guid="f2f3600e-8606-44c2-9f22-95071495c0a1"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="cc46a7b4-f4fe-4c91-ba39-baf6f39aa177"
+>SSP &lt;- MAP SSP | X.Distance &gt;= aLocation USING X IN X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="StaticSpeedRestrictions"
+ Type="StaticSpeedRestrictionsCol"
  DefaultValue=""
  VariableMode="Internal"
  Y="120"

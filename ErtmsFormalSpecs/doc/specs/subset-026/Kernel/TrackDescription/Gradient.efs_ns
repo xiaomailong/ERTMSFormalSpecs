@@ -1342,6 +1342,53 @@ ON Packet.Sequence1</Action></Actions>
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DeleteGradientsFromLocation"
+ Guid="df17d220-0f89-4c6e-930e-e839315e449d"
+>
+<ReqRef
+ Id="6443098f-2d6f-47bb-9f02-bed7f2c9808e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64fb6e24-6bc8-42e8-99e5-84252b82e6fe"
+>
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="818ec905-eb73-40e1-b18d-c870f73d26c1"
+>
+</ReqRef><Comment>Deletes the gradient profile information beyond the provided location.</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="aLocation"
+ Guid="64c70097-eb96-4078-ba2f-35da3eb57d5e"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Delete gradients from the given location"
+ Guid="49af429f-abb5-4a0e-842e-7f6171bc1ed4"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Delete gradients from the given location"
+ Guid="34050a5d-e23b-4051-a69e-5c88b49c8ace"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a45aa091-11f4-4232-acc7-4d23db35c4bb"
+>Gradients &lt;- MAP Gradients | X.Distance &gt;= aLocation USING X IN X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable

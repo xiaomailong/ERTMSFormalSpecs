@@ -805,6 +805,7 @@ SituationM()</Expression>
 <Actions>
 </Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the second category"
  Guid="65a701ef-8068-4a97-a07f-80659e60a928"
 >
@@ -819,8 +820,11 @@ SituationM()</Expression>
  Guid="00b55384-eccc-44c8-9237-37ce8ab583d4"
 >SecondCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="dde2f655-d696-4e14-ba39-372609509136"
+>TrackDescription.Gradient.DeleteGradientsFromLocation( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the third category"
  Guid="63c8e574-da7f-459a-9e88-196d04e468f1"
 >
@@ -835,7 +839,9 @@ SituationM()</Expression>
  Guid="ff56a657-5495-4da4-b66c-6ab1e388682f"
 >ThirdCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="12106fd0-9f22-4406-bb1f-8e1b6a1cfa9f"
+>TrackDescription.Gradient.Gradients &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -863,6 +869,7 @@ SituationM()</Expression>
 <Actions>
 </Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the second category"
  Guid="77d02a2c-1d7c-4e04-b64e-94b7c4b7ffc2"
 >
@@ -877,8 +884,11 @@ SituationM()</Expression>
  Guid="9bd37d44-ca09-470e-b005-c1189fb3aa23"
 >SecondCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="17e9704b-59b0-427c-ad0f-2dea0c54c8ec"
+>TrackDescription.StaticSpeedProfile.DeleteSSPFromLocation ( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the third category"
  Guid="7c1f0741-579a-4949-924a-c7721f111415"
 >
@@ -893,7 +903,9 @@ SituationM()</Expression>
  Guid="c0fb9300-379b-4008-ae24-61dab4bce190"
 >ThirdCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="0a8f449b-f976-42b9-942b-fad17d99d823"
+>TrackDescription.StaticSpeedProfile.SSP &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -4111,7 +4123,9 @@ SituationM()</Expression>
  Guid="cc633673-ad54-48db-a9d8-27d2b5295769"
 >CooperativeMARevocationIsGranted &lt;- False</Action><Action
  Guid="a4f7b2c0-61dc-4d2e-be64-f3684558c166"
->SvLShiftedDueToOverlapTimeout &lt;- False</Action></Actions>
+>SvLShiftedDueToOverlapTimeout &lt;- False</Action><Action
+ Guid="bf009d04-a2a8-4914-a446-bca8f239ca0f"
+>DeskClosedDuringSoM &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
