@@ -45,7 +45,7 @@
 <Actions>
 <Action
  Guid="e29cc7e1-c41c-4cd2-a31d-1217e9e21b62"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -269,37 +269,9 @@
 <Actions>
 <Action
  Guid="7377ddb2-874f-4dbd-9421-ac30d26ac8a1"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="0cd2c13f-8ffc-4635-b22b-07a12b3845de"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+>Testing.SetFSMode()</Action><Action
  Guid="dd15225d-23c6-4d72-82ce-03140644cbf2"
->DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="f1ae09c1-0fde-41c9-95de-c570d1226690"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 3000.0
-    }
-}</Action><Action
- Guid="7715da82-7aa0-4e77-b3fd-74e2d30a2df3"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
-[
-  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
-    Distance =&gt; 0.0,
-    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
-    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-    Categories =&gt; []
-  }
-]</Action><Action
- Guid="127fab83-f157-412a-95ff-e6714e482adf"
->Kernel.TrackDescription.Gradient.Gradients &lt;- 
-[
-  Kernel.TrackDescription.Gradient.GradientInfo{
-    Distance =&gt; 0.0,
-    Gradient =&gt; 0.0
-  }
-]</Action></Actions>
+>DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -884,7 +856,7 @@
 <Actions>
 <Action
  Guid="8fbea880-12f6-4804-b489-6b0e1fc9e756"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1108,37 +1080,9 @@
 <Actions>
 <Action
  Guid="a10b3ea1-4c7f-40e3-b44f-f616fcee72e2"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="278b533e-e993-43f6-a2b8-698b5ad77527"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+>Testing.SetFSMode()</Action><Action
  Guid="a1b5e535-74e6-46ed-989b-1a97a9a3b5dd"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="45d12de1-9e1e-4cc1-b2cb-70a19f98a769"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 3000.0
-    }
-}</Action><Action
- Guid="2e62bd8b-4911-433c-ab79-a799bab955e1"
->Kernel.TrackDescription.Gradient.Gradients &lt;- 
-[
-  Kernel.TrackDescription.Gradient.GradientInfo{
-    Distance =&gt; 0.0,
-    Gradient =&gt; 0.0
-  }
-]</Action><Action
- Guid="dc008d7f-3ef0-4406-9222-3bdbd54d8dc1"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
-[
-  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
-    Distance =&gt; 0.0,
-    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
-    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-    Categories =&gt; []
-  }
-]</Action></Actions>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1723,7 +1667,7 @@
 <Actions>
 <Action
  Guid="efb49109-936b-4a4c-b9ef-32efd4d4f523"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1946,38 +1890,10 @@
 >
 <Actions>
 <Action
- Guid="c716214a-ba8f-484b-9306-6d42b865031e"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="d5067906-5820-45e3-9a0f-1e6d88682365"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="6d436ad0-4b36-4fd7-acb7-87bac16741d1"
 >DMI.MasterDMI().In_AcknForReversingDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="f44d9fa0-cc4f-42e6-8097-09d0b7e88f35"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 3000.0
-    }
-}</Action><Action
  Guid="4b4b9fb2-ee4b-4ee4-a3b8-16551f33056c"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
-[
-  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
-    Distance =&gt; 0.0,
-    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
-    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-    Categories =&gt; []
-  }
-]</Action><Action
- Guid="aea5c5a0-85fc-49ba-9660-56a486e5cb4a"
->Kernel.TrackDescription.Gradient.Gradients &lt;- 
-[
-  Kernel.TrackDescription.Gradient.GradientInfo{
-    Distance =&gt; 0.0,
-    Gradient =&gt; 0.0
-  }
-]</Action></Actions>
+>Testing.SetFSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2562,7 +2478,7 @@
 <Actions>
 <Action
  Guid="124939b5-d83a-4862-b3e2-f06ed8cac87c"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2786,37 +2702,9 @@
 <Actions>
 <Action
  Guid="c0824652-d360-465f-8217-94a1be5e776c"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="8fd7b25f-46d4-4683-bdf1-4acc15cb19f2"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+>Testing.SetFSMode()</Action><Action
  Guid="6ff0702f-dcaf-497c-984e-b3f710cff669"
->DMI.MasterDMI().In_AcknForRollAwayProtection.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="c394739c-8be5-41e6-8679-3526e70befeb"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 3000.0
-    }
-}</Action><Action
- Guid="82a0847b-7712-4f41-a0ee-a1a39f1a5364"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
-[
-  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
-    Distance =&gt; 0.0,
-    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
-    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-    Categories =&gt; []
-  }
-]</Action><Action
- Guid="d67cb8fb-eb60-4d57-8a25-7176527a75eb"
->Kernel.TrackDescription.Gradient.Gradients &lt;- 
-[
-  Kernel.TrackDescription.Gradient.GradientInfo{
-    Distance =&gt; 0.0,
-    Gradient =&gt; 0.0
-  }
-]</Action></Actions>
+>DMI.MasterDMI().In_AcknForRollAwayProtection.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3401,7 +3289,7 @@
 <Actions>
 <Action
  Guid="3cee3c00-6c6c-465e-8121-fb87297c2f29"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3625,23 +3513,9 @@
 <Actions>
 <Action
  Guid="9e857a68-67dc-4fea-9bcf-6da0b72c5b6b"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="9c758a74-0937-44a3-9214-1f5f8b8fc8b4"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+>Testing.SetFSMode()</Action><Action
  Guid="1a72e352-6c99-4fcf-952d-c50436860ac3"
->DMI.MasterDMI().In_AcknForStandstillSupervision.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="0a7212f6-baf1-48ce-a3c7-c1df677985e9"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 3000.0
-    }
-}</Action><Action
- Guid="9ac687e3-887f-4d97-97c5-9ce219bb218d"
->Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
- Guid="47f3d8a6-94fb-4530-827b-a7d13fd7cc9b"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
+>DMI.MasterDMI().In_AcknForStandstillSupervision.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4226,7 +4100,7 @@
 <Actions>
 <Action
  Guid="aabc0229-84b2-4d1b-90b9-fc38b31edc45"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4454,21 +4328,9 @@
 <Actions>
 <Action
  Guid="8d184ef9-ff2a-494a-941b-eac3e9dea656"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
+>Testing.SetFSMode()</Action><Action
  Guid="eaab459c-4e6f-49bf-89b4-729a9ea6511a"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
- Guid="fdabb8c9-234d-4ac2-bf60-3b5f99148f2f"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 3000.0
-    }
-}</Action><Action
- Guid="621de2d8-f0c7-4644-ab71-99f5ae48d092"
->Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
- Guid="b9b77fea-6b41-4692-953b-c2623fab27bb"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="257af298-2519-489e-8081-c83d8b806232"
@@ -5038,7 +4900,7 @@
 <Actions>
 <Action
  Guid="bad01d93-f398-4ad2-93b8-814ed0ad7470"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5282,21 +5144,9 @@
 <Actions>
 <Action
  Guid="7bec8ed4-15fd-4dd2-ac4d-884875cde99a"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
+>Testing.SetFSMode()</Action><Action
  Guid="5a69ffa4-8e5d-401c-b85d-d97e84a09a5b"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
- Guid="3c1af714-2f9b-4180-8c98-1ca10c4cf23b"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 3000.0
-    }
-}</Action><Action
- Guid="4595ec50-0022-406d-9b7a-c174d1ea1093"
->Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
- Guid="88eb5b0f-01e2-493f-ad3c-873b06142799"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="9f526e7d-0b79-4c6e-8cdc-e70d8e62723d"
@@ -5918,7 +5768,7 @@
 <Actions>
 <Action
  Guid="00f01bc6-747f-492c-adbd-5bd76839cccb"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6142,23 +5992,9 @@
 <Actions>
 <Action
  Guid="6be3a90b-2eba-4b64-9d07-6bec97114c4a"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="290157ad-f2d1-48c6-8737-a0c05dd9d019"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+>Testing.SetFSMode()</Action><Action
  Guid="4ead613a-7762-4b45-b34b-93b8b31a413d"
->DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="825ee374-fe12-4756-91d5-9e0f10af5df6"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 3000.0
-    }
-}</Action><Action
- Guid="441ef555-ad86-4288-911d-8beb68359c19"
->Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
- Guid="08add592-9c2a-466b-962a-dceedcca3a8a"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6743,7 +6579,7 @@
 <Actions>
 <Action
  Guid="07e57958-0fcf-4826-a008-417c830a9d37"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6967,23 +6803,9 @@
 <Actions>
 <Action
  Guid="3799e956-e20f-4597-bb6b-6c0dc6c180e9"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="b9970bb1-9ee7-4ff1-bcee-eb793e647012"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+>Testing.SetFSMode()</Action><Action
  Guid="2a3b74b5-f2d1-4c47-ae05-0a27df1cbaba"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="1a5ca125-a988-4ecf-a0fb-0bef77085374"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 3000.0
-    }
-}</Action><Action
- Guid="7a099aad-2f25-4065-96df-b7fbaf8d8a1c"
->Kernel.TrackDescription.Gradient.Gradients &lt;- [Kernel.TrackDescription.Gradient.GradientInfo{Distance =&gt; 0.0, Gradient =&gt; 0.0}]</Action><Action
- Guid="0c27bb25-40b3-41be-b8b8-ef569df44d3b"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- [Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{ Distance =&gt; 0.0, BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed}]</Action></Actions>
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7568,7 +7390,7 @@
 <Actions>
 <Action
  Guid="b1fa95fb-7d34-44ce-bb50-13c34e072dbe"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -8380,7 +8202,7 @@
 <Actions>
 <Action
  Guid="718babaf-80a1-413b-a655-1462a1db4f77"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -9205,7 +9027,7 @@
 <Actions>
 <Action
  Guid="2c5305b4-a0b3-4576-8487-11047d0519fa"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -10030,7 +9852,7 @@
 <Actions>
 <Action
  Guid="a466f146-f8bf-4501-818f-ccffa47e7126"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -10842,7 +10664,7 @@
 <Actions>
 <Action
  Guid="32462fd3-afce-4f5e-a1cb-baac664ac559"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -11667,7 +11489,7 @@
 <Actions>
 <Action
  Guid="cbfd6aaf-a099-468a-978b-7e348cfd45d7"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -12428,7 +12250,7 @@
 <Actions>
 <Action
  Guid="10199b86-59f1-4fef-af0e-3df3648dc8d0"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -13253,7 +13075,7 @@
 <Actions>
 <Action
  Guid="06816abc-6964-4ca2-b77c-d1e952b94f17"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -14078,7 +13900,7 @@
 <Actions>
 <Action
  Guid="bc6168a7-cc7e-420f-acdd-ba04c40babb7"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -14903,7 +14725,7 @@
 <Actions>
 <Action
  Guid="4e7acd18-7278-4484-b53f-496e800069c4"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -15813,7 +15635,7 @@
 <Actions>
 <Action
  Guid="0e6ab069-fc40-48bc-802d-9dd3888d9a70"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -16744,7 +16566,7 @@
 <Actions>
 <Action
  Guid="cfdf9eee-b8f9-4fc2-961a-b75e2d8df5b2"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -17569,7 +17391,7 @@
 <Actions>
 <Action
  Guid="9c6982dd-d65e-431a-9cc9-d84772ea2d0b"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -18394,7 +18216,7 @@
 <Actions>
 <Action
  Guid="0a3e11d7-8114-4709-bf6d-917a0235e09f"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -19238,7 +19060,7 @@
 <Actions>
 <Action
  Guid="43ddb43c-d274-4bae-ba1c-29fae31dde2c"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -20080,7 +19902,7 @@
 <Actions>
 <Action
  Guid="18973fdf-9b73-42c3-b8fd-8e72cce6a013"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -21075,7 +20897,7 @@
 <Actions>
 <Action
  Guid="d3432a4d-bd7d-4361-a1b2-17bf45aca3ee"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -21900,7 +21722,7 @@
 <Actions>
 <Action
  Guid="ca1a8767-4cc6-4f96-93e9-3f1296af0164"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -22725,7 +22547,7 @@
 <Actions>
 <Action
  Guid="d842a356-0e9e-46f4-adb9-eea22bb5febf"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -23550,7 +23372,7 @@
 <Actions>
 <Action
  Guid="ed209642-5f72-4d3f-8bbf-1608fdbc9582"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -24311,7 +24133,7 @@
 <Actions>
 <Action
  Guid="1b2c7bb6-774d-4f5a-ad66-05a05aab78fe"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -25136,7 +24958,7 @@
 <Actions>
 <Action
  Guid="0d5f6830-96a5-4f49-903b-8c3204ba920d"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -25978,7 +25800,7 @@
 <Actions>
 <Action
  Guid="1bd87a03-58ad-4949-876d-6b00a7262960"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -26731,7 +26553,7 @@
 <Actions>
 <Action
  Guid="8892a04b-4010-4ede-a38a-a25bfac30fd6"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -27556,7 +27378,7 @@
 <Actions>
 <Action
  Guid="37a187f2-98c3-463e-9956-b0b7fea58d46"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28402,7 +28224,7 @@
 <Actions>
 <Action
  Guid="70a27594-2b06-4d63-83e6-2b629cf52b74"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -29278,7 +29100,7 @@
 <Actions>
 <Action
  Guid="4228b731-023d-4c48-9a13-a5c5bd718905"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -30103,7 +29925,7 @@
 <Actions>
 <Action
  Guid="b9316f9a-f75d-4b1f-acad-c6b7308ab81b"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -30928,7 +30750,7 @@
 <Actions>
 <Action
  Guid="d4d712ed-1582-43bc-9995-06ac8e3175cf"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -31753,7 +31575,7 @@
 <Actions>
 <Action
  Guid="461a3d62-76c5-4a41-ae35-0aef73821c74"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -32578,7 +32400,7 @@
 <Actions>
 <Action
  Guid="a4dc1d38-da5f-42eb-b675-32d15b9df256"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -33403,7 +33225,7 @@
 <Actions>
 <Action
  Guid="b2474321-ea8c-479c-bf48-e19cbfcf2319"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -34228,7 +34050,7 @@
 <Actions>
 <Action
  Guid="82f6cdfa-2228-4fb3-96fc-efe0b4bb90d2"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -35099,7 +34921,7 @@
 <Actions>
 <Action
  Guid="cd24e638-9cae-4a68-9932-4da6e4003763"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -35924,7 +35746,7 @@
 <Actions>
 <Action
  Guid="31c7038d-f669-4231-9444-4672f45f4c00"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -36749,7 +36571,7 @@
 <Actions>
 <Action
  Guid="ae026fa9-628b-4aa7-afc3-f9df81c003f9"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -37574,7 +37396,7 @@
 <Actions>
 <Action
  Guid="a164151d-cf7b-4a85-8f7a-19e353ec3f0f"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -38177,7 +37999,7 @@
 <Actions>
 <Action
  Guid="1d3cf091-a42a-48d1-8aad-763bef412c4e"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -39002,7 +38824,7 @@
 <Actions>
 <Action
  Guid="d13d4e96-303e-4fef-8140-3a1b56a07b7d"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -39829,7 +39651,7 @@
 <Actions>
 <Action
  Guid="abc4462c-eeb1-48d8-b1ea-1db37db46d69"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -40654,7 +40476,7 @@
 <Actions>
 <Action
  Guid="174c6282-2a94-415c-9041-f7adc4b36b44"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -41479,7 +41301,7 @@
 <Actions>
 <Action
  Guid="29d047c4-2719-4fd0-8bc0-e351e68bfe01"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -42304,7 +42126,7 @@
 <Actions>
 <Action
  Guid="6672ce2e-c0ae-433d-bc16-42c1bb0dcca7"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -43129,7 +42951,7 @@
 <Actions>
 <Action
  Guid="4301dc28-c515-4181-93d0-f7f5dcd162c8"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -43954,7 +43776,7 @@
 <Actions>
 <Action
  Guid="ee959e27-8c2c-4297-8a64-e1176c497247"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -44781,7 +44603,7 @@
 <Actions>
 <Action
  Guid="d697dfab-50af-4809-9066-e9234397e053"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -45606,7 +45428,7 @@
 <Actions>
 <Action
  Guid="4fe77cee-8bbc-466f-bfaf-676fb35b6dbb"
->Kernel.InitializeTestEnvironment()</Action><Action
+>Testing.InitializeTestEnvironment()</Action><Action
  Guid="ed764cc7-f994-445e-824d-3e86312bfcb2"
 >Odometry.NominalDistance &lt;- 2000.0</Action><Action
  Guid="b6af34ff-b263-4cc8-a4ae-adb1698248ac"
@@ -46451,7 +46273,7 @@
 <Actions>
 <Action
  Guid="6073b333-3e41-42f6-ab67-519f7769c3e4"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -47276,7 +47098,7 @@
 <Actions>
 <Action
  Guid="fdb84c74-b1a9-491a-a9cc-d0c6744cba5f"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -48101,7 +47923,7 @@
 <Actions>
 <Action
  Guid="c3d4ead0-14a7-416a-8e9f-06110ee2ae28"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -48926,7 +48748,7 @@
 <Actions>
 <Action
  Guid="2ad1434f-dabe-4a60-ac56-d89c8e4fb3c4"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -49751,7 +49573,7 @@
 <Actions>
 <Action
  Guid="0b5f6540-772d-4b82-8945-202c9ebbbc2f"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -50576,7 +50398,7 @@
 <Actions>
 <Action
  Guid="9e434cab-8e05-4c6e-a88d-34462cd6deba"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -51401,7 +51223,7 @@
 <Actions>
 <Action
  Guid="d69c4664-0117-4f47-8f42-5867fd88f45a"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -52226,7 +52048,7 @@
 <Actions>
 <Action
  Guid="89dedfe7-cb58-4dc0-b549-3c523bda46bd"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -53051,7 +52873,7 @@
 <Actions>
 <Action
  Guid="e09b5478-85ac-419e-aa1d-42b5465b91a3"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -53876,7 +53698,7 @@
 <Actions>
 <Action
  Guid="dd02db9e-1fbe-4240-83ef-a1a020717b53"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -54701,7 +54523,7 @@
 <Actions>
 <Action
  Guid="900b44cc-05f6-4d03-a72c-be95450bb025"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -55526,7 +55348,7 @@
 <Actions>
 <Action
  Guid="9f8ab4b9-2605-4db1-b418-f9e1f514b7f9"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -56351,7 +56173,7 @@
 <Actions>
 <Action
  Guid="08701a85-dd2c-4855-907d-e5f38021c4d9"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -57176,7 +56998,7 @@
 <Actions>
 <Action
  Guid="19e49879-740c-4f3a-af6f-b6b23fe53a21"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -58001,7 +57823,7 @@
 <Actions>
 <Action
  Guid="7061517c-3713-4001-b4d1-e0d2fce82290"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -58826,7 +58648,7 @@
 <Actions>
 <Action
  Guid="6a37e819-0fa9-40ee-b6b8-901bb68094f0"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -59651,7 +59473,7 @@
 <Actions>
 <Action
  Guid="f3ac519e-84f9-4ff6-b9df-68825a63b482"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -60476,7 +60298,7 @@
 <Actions>
 <Action
  Guid="1d228bff-b27f-4f99-9469-a008eede8120"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -61301,7 +61123,7 @@
 <Actions>
 <Action
  Guid="e710d14b-5924-4799-addc-d0ce019e50e1"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -62126,7 +61948,7 @@
 <Actions>
 <Action
  Guid="68c69ac0-02ea-4e2c-97af-2e7756839877"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -62951,7 +62773,7 @@
 <Actions>
 <Action
  Guid="e85d14aa-9e75-4e5d-9b12-078a6574f0ef"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -63776,7 +63598,7 @@
 <Actions>
 <Action
  Guid="9b3f818b-7322-4389-ad80-5bd2fecc0a98"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -64601,7 +64423,7 @@
 <Actions>
 <Action
  Guid="20246769-a493-4c62-b08e-62888ac90129"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -65426,7 +65248,7 @@
 <Actions>
 <Action
  Guid="7269a017-f78f-4cb7-b66a-219c9829a947"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

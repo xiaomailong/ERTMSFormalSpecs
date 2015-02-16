@@ -46,7 +46,7 @@
 <Actions>
 <Action
  Guid="8df25f55-a878-49c3-9cb0-35764cb3d6e9"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -170,7 +170,7 @@
 <Actions>
 <Action
  Guid="8bddee8b-51d2-4499-a669-5b57e409d24c"
->Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
+>Testing.SetFSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

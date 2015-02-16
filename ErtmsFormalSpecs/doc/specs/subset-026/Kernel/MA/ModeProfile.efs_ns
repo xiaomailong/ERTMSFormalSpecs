@@ -619,10 +619,23 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Type="BaseTypes.Speed"
  Cacheable="TRUE"
  Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
  Name="GetSpeedResolution"
  Guid="5ae2e65d-dd28-4c75-84a9-fae6d4e17967"
 >
-<Comment>Converts the speed received in a Mode Profile packet to EFS speed, accounting for the special value.</Comment>
+<ReqRef
+ Id="64e2f87a-5cf2-41b5-880c-dd026169eb44"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ecdf5b1-37a6-4686-a0c7-e3b95c91e981"
+>
+</ReqRef><ReqRef
+ Id="d2ddd6a4-4c33-45a5-a596-27232819b185"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="53ed1055-eef9-41c3-b274-d4c13255d425"
+>
+</ReqRef><Comment>Converts the speed received in a Mode Profile packet to EFS speed, accounting for the special value.</Comment>
 <Parameters>
 <Parameter
  Type="MessageTypes.Speed"

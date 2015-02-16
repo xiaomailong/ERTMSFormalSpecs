@@ -1,0 +1,458 @@
+<NameSpace
+ Width="100"
+ Height="50"
+ Name="Testing"
+ Guid="8512c7c4-384c-4f40-9183-c048e1549caf"
+>
+<NameSpaces>
+</NameSpaces>
+<Procedures>
+<Procedure
+ X="20"
+ Y="20"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ NeedsRequirement="FALSE"
+ Name="InitializeTestEnvironment"
+ Guid="7cde642d-80d9-4a06-9f70-c9a305706ab2"
+>
+<Comment>Sets variables to standard values for testing.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="DMI"
+ Guid="cbc776e4-b71e-47fd-9dd9-8530d55725a0"
+>
+<Comment>DMI1 will be the master and will be connected to the first desk of the CabA.
+DMI2 will be the slave and will be connected to the first desk of the CabB.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="DMI"
+ Guid="ba51faed-8c84-4ab5-ba53-a295afb44b14"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="e1ee2cc9-4190-4538-a31b-abec6da6eee2"
+>TIU.CabA.Desk1IsActive &lt;- True</Action><Action
+ Guid="eb11d587-0237-4dab-9017-68297f3de1ab"
+>DMI.DMI1.IsMaster &lt;- True</Action><Action
+ Guid="21856a04-ea9e-4f80-b170-359f928e25e2"
+>TIU.CabB.Desk1IsActive &lt;- False</Action><Action
+ Guid="880fb6ea-f93f-426d-a18f-3cb85df1ab07"
+>DMI.DMI2.IsMaster &lt;- False</Action><Action
+ Guid="1701afb0-1c92-46ba-9854-71e4cf3da43f"
+>DMI.DMI1.Cab &lt;- DMI.CabEnum.CabA</Action><Action
+ Guid="fa57a880-158c-4211-964e-7c9419e83669"
+>DMI.DMI2.Cab &lt;- DMI.CabEnum.CabB</Action><Action
+ Guid="1b5980f5-92fd-4d2c-b57d-9b86789ecdf0"
+>DMI.DMI1.Desk &lt;- DMI.CabDeskEnum.Desk1</Action><Action
+ Guid="66b762d5-1b65-4766-8a1e-c2ac2170184d"
+>DMI.DMI2.Desk &lt;- DMI.CabDeskEnum.Desk1</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Train position"
+ Guid="f56351d1-ad26-469d-a848-02640e64e865"
+>
+<Comment>Initialization of the LRBG, of the train position, of the train orientation and the odometer accuracy.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Train position"
+ Guid="c14ed61e-ab9c-400b-83ee-54c852292cc0"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="948430d8-d5d7-4d6e-968a-5c8458525168"
+>BTM.LRBG &lt;- BTM.BaliseGroupStruct
+{
+    Timestamp =&gt; Kernel.DateAndTime.StartDate,
+    Position =&gt; BTM.Position
+    {
+        Position =&gt; 50.0,
+        UnderReadingAmountOdo =&gt; 2.0,
+        OverReadingAmountOdo =&gt; 1.0
+    },
+    NID =&gt; 1986,
+    Orientation =&gt; Default.Orientation.Nominal
+}</Action><Action
+ Guid="278b2665-4f56-474f-a4b7-b6cbc08f01a6"
+>Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPosition
+{
+    DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformation
+    {
+        TrainFrontEndPosition =&gt; Default.Orientation.Nominal,
+        TrainOrientation =&gt; Default.Orientation.Nominal,
+        TrainRunningDirection =&gt; Default.Orientation.Nominal
+    },
+    DataState =&gt; Default.DataState.Valid
+}</Action><Action
+ Guid="b179176e-e37d-4e0e-9d73-12f61aeb9d8c"
+>Odometry.NominalDistance &lt;- 150.0</Action><Action
+ Guid="98e08c63-83b7-41b2-ab3c-cd186f5db212"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
+{
+    D_ura =&gt; 12.0,
+    D_ora =&gt; 14.0,
+    V_ora =&gt; 1.0,
+    V_ura =&gt; 2.0
+}</Action><Action
+ Guid="35f34f07-d5ae-493e-8f02-ef3b67c0d497"
+>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Train data"
+ Guid="5e656b5e-7ed2-486d-996f-eaadfee75e20"
+>
+<Comment>Initialization of the train data.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Train data"
+ Guid="d7b78f5d-ebe0-4cdc-a1b7-859024629a52"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="9df8c9b3-bd08-4a3b-a4cb-9e123bb2c01a"
+>Kernel.TrainData.Initialize()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Speed and distance monitoring"
+ Guid="6392bf44-c658-446b-91a9-ba9b25a136e9"
+>
+<Comment>Initialization of the data needed for computation of braking curves.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Speed and distance monitoring"
+ Guid="3620e326-821d-4c09-bf9c-a8ffb2146b71"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="National values"
+ Guid="4d1d13f7-1f0f-4137-bca5-e73b0d016644"
+>
+<Comment>Initialization of the national values for computation of deceleration curves.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="National values"
+ Guid="90f809a4-ad63-443e-89dc-4d1a34ca7eed"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="f4ebe780-f667-464d-a49f-061edbb13d79"
+>Kernel.NationalValues.Initialize()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Fixed values"
+ Guid="b384ca9b-7a57-409f-80f7-c928b7bf38ce"
+>
+<Comment>Initialization of fixed values for computation of the braking curves.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Fixed values"
+ Guid="b3f1dfe0-1bd8-47b2-836a-5de04db07ca6"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="54fb3108-01eb-4c24-85be-eb7066379de5"
+>Kernel.SpeedAndDistanceMonitoring.InitializeFixedValues()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TimeIntervals"
+ Guid="3f2d9ede-5b5f-4755-aece-27db2d03c2dd"
+>
+<Comment>Initialization of the time intervals.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="TimeIntervals"
+ Guid="0a1591cd-e887-4a26-b1b4-4e9f0c6e76e3"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="0361adbf-b6aa-4058-87ae-8ada5224f5e6"
+>Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.InitializeTimeIntervals()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ReleaseSpeed"
+ Guid="fe586122-e5ef-4a7c-9a94-d6a4b2d512eb"
+>
+<Comment>Initialization of the release speed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="ReleaseSpeed"
+ Guid="7effa754-2fad-4bf6-a6af-a52ef46f9ee8"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="0c072176-e823-4329-a6f7-99664157752b"
+>Kernel.SpeedAndDistanceMonitoring.ReleaseSpeedMonitoring.UpdateReleaseSpeed()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Euroradio"
+ Guid="ae16712e-1456-4e46-aee5-dee11cbe20a3"
+>
+<Comment>TODO</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Euroradio"
+ Guid="65d47938-0471-4616-831d-740c047ed457"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Train integrity"
+ Guid="4f1244da-71cc-4d18-8bcf-52621d1eff4b"
+>
+<Comment>Set the train integrity to confirmed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Train integrity"
+ Guid="eb65a0f7-3e57-4ca8-aaa3-778605f6b193"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="f4b53bdc-821b-40c5-9833-b1d9bf484700"
+>TIU.TrainIntegrity.Status &lt;- Messages.Q_LENGTH.Train_integrity_confirmed_by_driver</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Power on"
+ Guid="47ba31e2-ec3f-4faf-92d8-aea5dca9da87"
+>
+<Comment>Sets power on.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Power on"
+ Guid="5bf5a5f8-183f-49cd-98f0-267e30b9664d"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="e2e35dfb-2542-4a77-afc3-0648bf2da90b"
+>Kernel.PowerOn &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="20"
+ Y="80"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="InitializeElementsForMA"
+ Guid="308f7a88-e9cd-4e48-bbc1-66b9b6ccc0a1"
+>
+<Comment>Sets default values for tests involving the Movement Authority</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ NeedsRequirement="FALSE"
+ Name="Initialize SSP + Gradients"
+ Guid="1e2c9bd5-c3d2-4d13-aada-2bd07896904a"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Initialize SSP + Gradients"
+ Guid="d7839432-4eec-4ec7-971d-4648f059b30c"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3615ce68-522a-4f37-9745-49d04c0543b3"
+>Kernel.TrackDescription.Gradient.Gradients &lt;-
+[
+    Kernel.TrackDescription.Gradient.GradientInfo
+    {
+        Distance =&gt; 0.0,
+        Gradient =&gt; 0.7
+    },
+    Kernel.TrackDescription.Gradient.GradientInfo
+    {
+        Distance =&gt; 4800.0,
+        Gradient =&gt; 0.94
+    }
+]</Action><Action
+ Guid="1613d496-73f3-4873-ac23-ca4bc8624aa1"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;-
+[
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    {
+        Distance =&gt; 0.0,
+        BasicSpeed =&gt; 70.0,
+        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
+        Categories =&gt;
+        [
+            Kernel.TrackDescription.StaticSpeedProfile.SSPCategory
+            {
+                CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_130_mm,
+                OtherSpecific =&gt; Kernel.TrainData.TrainCategoryEnum.FreightTrainInG,
+                Qualifier =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category ,
+                Speed =&gt; 70.0
+            }
+        ]
+    }
+]</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="SetFSMode"
+ Guid="5544ad42-1088-4018-a928-96fe3bddc890"
+>
+<Comment>Procedure that sets the mode to FS and sets all data so maintain this level.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set FS mode"
+ Guid="371c612d-f47d-4ada-8516-5497c6e7b793"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set FS mode"
+ Guid="6eb404d9-c163-43d0-8582-8c12e44b7d70"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="86929d9e-0c8c-4cea-9ddb-fcbac74fa271"
+>Kernel.Mode &lt;- Mode.FS</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set level (if required)"
+ Guid="1fb5fcb7-4432-4efe-9fdc-396ff358a4f2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Level is 0 or NTC"
+ Guid="87a769a4-72eb-4416-b715-1d586fc6dd77"
+>
+<PreConditions>
+<PreCondition
+ Guid="5f9fa1b8-46b2-4648-8e29-eeccf792e51a"
+>Kernel.Level.Value.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8fcea4c8-c27d-4f60-9427-0db970b3911b"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; LevelDataStruct{
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L1
+    },
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set MA (+gradient and SSP)"
+ Guid="760f0db1-906b-4ed8-9864-d8a23f61c0ba"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set MA (+gradient and SSP)"
+ Guid="8c6fc49c-2185-4d06-912f-26c0a2314e69"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="7de82623-f8c8-4c96-a338-2212f61232c3"
+>InitializeElementsForMA()</Action><Action
+ Guid="27b80ae3-1415-4735-9109-7188d6cf5435"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 4500.0
+    }
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
+</NameSpace>
