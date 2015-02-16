@@ -75,21 +75,20 @@ namespace DataDictionary.Functions.PredefinedFunctions
             {
                 char[] tmp = number.ToCharArray();
 
-                // Check that the only letters in 'number' are the string of F at the end
+                // Each character in the string is checked. The expected format is
+                // #########FFFFF
+                // ie. a sequence of digits, possibly followed by a sequence of 'F'.
+                // numbersequence indicates that we are in the first part of the string
                 bool numberSequence = true;
                 for (int i = 0; i < tmp.Length; i++)
                 {
-                    // Each character in the string is checked. The expected format is
-                    // #########FFFFF
-                    // ie. a sequence of digits, possibly followed by 'F'.
-                    // numbersequence indicates that we are in the first part of the string
-
                     // If we encounter a letter that is not F, the value is incorrect
                     if (System.Char.IsLetter(tmp[i]) && !tmp[i].Equals('F'))
                     {
                         break;
                     }
-                    // If we encounter a number after the first F, the value is incorrect
+
+                    // If we encounter a number after the first 'F' character, the value is incorrect
                     if (!numberSequence && System.Char.IsDigit(tmp[i]))
                     {
                         break;
