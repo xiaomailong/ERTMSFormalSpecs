@@ -47,7 +47,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// </summary>
         /// <param name="efsSystem"></param>
         public Discontinuities(EFSSystem efsSystem)
-            : base(efsSystem, "DISCONT")
+            : base(efsSystem, "Discontinuities")
         {
             Targets = (Parameter) acceptor.getFactory().createParameter();
             Targets.Name = "Targets";
