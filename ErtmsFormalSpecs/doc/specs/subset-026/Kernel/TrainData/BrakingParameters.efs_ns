@@ -2056,7 +2056,7 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
 <Parameters>
 <Parameter
  Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
+ Name="NoA_est"
  Guid="06fa82cb-9f33-433a-b744-224af19080a1"
 >
 </Parameter></Parameters>
@@ -2068,7 +2068,7 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
 <PreConditions>
 <PreCondition
  Guid="824adb2b-e2ef-4e5f-be90-7f73efad4943"
->EstimatedAccelerationSetToZero</PreCondition></PreConditions>
+>NoA_est</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Time ( TrainData.Value.TractionModel.Coefficient * A_traction ( EstimatedTrainAcceleration=&gt;0.0, Gradient=&gt;TrackDescription.Gradient.A_gradient ( Odometry.NominalDistance ) ) + TrainData.Value.TractionModel.Constant )</Expression>
 </Case><Case
  Name="Estimated acceleration is considered"

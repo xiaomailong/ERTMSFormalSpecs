@@ -71,55 +71,6 @@ STOP_CONDITION
  Type="Default.BaseTypes.Distance"
  Cacheable="TRUE"
  Default=""
- X="220"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="d_EBI"
- Guid="1db9768f-f73d-453e-b0db-b4fd46e74e53"
->
-<ReqRef
- Id="7d29645c-18cf-4661-9edb-e3fcb091bc29"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ee407023-ec73-4873-a624-f5b556101e62"
->
-</ReqRef><ReqRef
- Id="0e91b525-553f-4f68-8970-8bed83e88948"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4d463fc5-dd8f-44c4-b2ca-e79b0d68ab04"
->
-</ReqRef><ReqRef
- Id="faa860d4-6ec0-42c7-921a-65ae72f044ad"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e344c003-f6a4-4793-9786-9cafd3450f61"
->
-</ReqRef><Comment>Provides the location of the EBI supervision limit.</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Speed"
- Name="Vrelease"
- Guid="2668f18b-5764-40a5-abb1-6a5717bbc939"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
- Guid="ca0dae3f-9c52-4098-9a92-385c71b8e619"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Value"
- Guid="1d0d3250-0301-4809-915d-d662a0e65dcd"
->
-<Expression>DistanceForSpeed (
-    Function =&gt; DecelerationCurves.EBD,
-    Speed =&gt; Vrelease + f41 ( Vrelease ) )
-- BaseTypes.SpeedToMS (Vrelease + f41(Vrelease)) * ( DecelerationCurves.T_berem(EstimatedAccelerationSetToZero) + DecelerationCurves.T_traction(EstimatedAccelerationSetToZero) )</Expression>
-</Case></Cases>
-</Function><Function
- Type="Default.BaseTypes.Distance"
- Cacheable="TRUE"
- Default=""
  X="660"
  Y="210"
  Width="100"
@@ -151,7 +102,7 @@ STOP_CONDITION
  Name="Value"
  Guid="17beface-fcb0-4eb8-b204-80baed457e28"
 >
-<Expression>BaseTypes.SpeedToMS( Vrelease + Vdelta0rsob ( Vrelease ) ) * ( DecelerationCurves.T_traction(EstimatedAccelerationSetToZero=&gt;True) + DecelerationCurves.T_berem(EstimatedAccelerationSetToZero=&gt;True) )</Expression>
+<Expression>BaseTypes.SpeedToMS( Vrelease + Vdelta0rsob ( Vrelease ) ) * ( DecelerationCurves.T_traction(NoA_est=&gt;True) + DecelerationCurves.T_berem(NoA_est=&gt;True) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -274,7 +225,7 @@ BaseTypes.MaxDistance(
 (
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; aTarget,
-    EstimatedAccelerationSetToZero =&gt; True
+    NoA_est =&gt; True
 )</PreCondition><PreCondition
  Guid="b7339d74-9848-460e-b4e5-8cb15e9f1566"
 >DecelerationCurves.EBD_Target ( Distance =&gt; ( d_tripEOA() + Dbec ( Vrelease_prev ) - Vdelta0rsob ( Vrelease_prev ) ), aTarget =&gt; aTarget ) &gt; aTarget.Speed</PreCondition></PreConditions>
@@ -361,8 +312,7 @@ BaseTypes.MaxDistance(
 >MA.SvL() == EMPTY</PreCondition></PreConditions>
 <Expression>BaseTypes.MinDistance(
 X1 =&gt; TargetSpeedMonitoring.d_SBI1(
-        Vest =&gt; Vrelease,
-        EstimatedAccelerationSetToZero =&gt; True ),
+        Vest =&gt; Vrelease ),
 X2 =&gt; ComputeStartRSM_otherTargets(Vrelease)
 )</Expression>
 </Case><Case
@@ -372,13 +322,12 @@ X2 =&gt; ComputeStartRSM_otherTargets(Vrelease)
 <Expression>BaseTypes.MinDistance(
 X1 =&gt; BaseTypes.MinDistance(
     X1 =&gt; TargetSpeedMonitoring.d_SBI1(
-        Vest =&gt; Vrelease,
-        EstimatedAccelerationSetToZero =&gt; True
+        Vest =&gt; Vrelease
         ),
     X2 =&gt; TargetSpeedMonitoring.d_SBI2(
         Vest =&gt; Vrelease,
         aTarget =&gt; MA.SvL(),
-        EstimatedAccelerationSetToZero =&gt; True
+        NoA_est =&gt; True
         )
     ),
 X2 =&gt; ComputeStartRSM_otherTargets(Vrelease)
@@ -590,7 +539,7 @@ INITIAL_VALUE
           X1 =&gt; TargetSpeedMonitoring.d_SBI2(
                     Vest =&gt; Vrelease,
                     aTarget =&gt; X,
-                    EstimatedAccelerationSetToZero =&gt; True
+                    NoA_est =&gt; True
                     ),
           X2 =&gt; RESULT
         )

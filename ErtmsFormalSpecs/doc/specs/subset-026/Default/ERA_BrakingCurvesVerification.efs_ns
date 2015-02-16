@@ -231,7 +231,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_EBI(
 Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2(
     Vest =&gt; aSpeed,
     aTarget =&gt; aTarget,
-    EstimatedAccelerationSetToZero =&gt; False
+    NoA_est =&gt; False
 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -305,7 +305,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_W_Ta
 (
   Vest =&gt; aSpeed,
   aTarget =&gt; aTarget,
-  anEstimatedAccelerationSetToZero =&gt; False
+  NoA_est =&gt; False
 )</Expression>
 </Case><Case
  Name="In CSM, before the target"
@@ -319,7 +319,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_W_Ta
 (
   Vest =&gt; Kernel.MRSP.V_MRSP(),
   aTarget =&gt; aTarget,
-  anEstimatedAccelerationSetToZero =&gt; False
+  NoA_est =&gt; False
 )</Expression>
 </Case><Case
  Name="In CSM, after the target"

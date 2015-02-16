@@ -120,7 +120,7 @@
 >
 </Parameter><Parameter
  Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
+ Name="NoA_est"
  Guid="f3b01b30-3b40-47e7-bcec-6ea52e210ccc"
 >
 </Parameter></Parameters>
@@ -132,13 +132,13 @@
 <PreConditions>
 <PreCondition
  Guid="a9d4c728-e23f-4e83-884d-b41a5a7f7494"
->EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget, NoA_est =&gt; NoA_est ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="fd21b39b-f325-40fa-a78d-5ff23258542b"
 >
-<Expression>EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero )  - BaseTypes.SpeedToMS ( Vest ) * T_bs2</Expression>
+<Expression>EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget, NoA_est =&gt; NoA_est )  - BaseTypes.SpeedToMS ( Vest ) * T_bs2</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -195,13 +195,13 @@
  Guid="e21e5249-9a0e-4300-92e7-262b91c17598"
 >ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable ( aTarget )</PreCondition><PreCondition
  Guid="afbb53f6-839f-4368-8e93-2501f82a48f1"
->TargetSpeedMonitoring.EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget, EstimatedAccelerationSetToZero =&gt; False ) &gt;= ReleaseSpeedMonitoring.StartRSM ( ReleaseSpeedMonitoring.ReleaseSpeed )</PreCondition></PreConditions>
+>TargetSpeedMonitoring.EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget, NoA_est =&gt; False ) &gt;= ReleaseSpeedMonitoring.StartRSM ( ReleaseSpeedMonitoring.ReleaseSpeed )</PreCondition></PreConditions>
 <Expression>ReleaseSpeedMonitoring.StartRSM ( ReleaseSpeedMonitoring.ReleaseSpeed )</Expression>
 </Case><Case
  Name="Value"
  Guid="1ef44712-63ce-42dc-8422-66cfdb895afb"
 >
-<Expression>EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget, EstimatedAccelerationSetToZero =&gt; False )</Expression>
+<Expression>EBIvalue ( Vest =&gt; Vest, aTarget =&gt; aTarget, NoA_est =&gt; False )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -233,7 +233,7 @@
 >
 </Parameter><Parameter
  Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
+ Name="NoA_est"
  Guid="0f25fef4-61f0-4fea-8268-a95c3e39b69b"
 >
 </Parameter></Parameters>
@@ -245,7 +245,11 @@
 <PreConditions>
 <PreCondition
  Guid="0d079f8d-23af-45e8-883b-25f7de1f76d3"
->DecelerationCurves.EBDForSpeed(Vtarget) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>DecelerationCurves.EBD_TargetForSpeed(
+    Vest =&gt; Vtarget,
+    NoA_est =&gt; False,
+    aTarget =&gt; TargetSpeedMonitoring.MRDT()
+) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)</Expression>
 </Case><Case
  Name="After EBD(Vtarget)"
@@ -254,16 +258,26 @@
 <PreConditions>
 <PreCondition
  Guid="af655905-681c-467c-8a8c-2b474bb03a43"
->Dmaxsafefrontend + Default.BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs2 + DecelerationCurves.Dbe_display ( Vest =&gt; Odometry.TrainSpeed(), EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero )
+>Dmaxsafefrontend + Default.BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs2 + DecelerationCurves.Dbe_display ( Vest =&gt; Odometry.TrainSpeed(), NoA_est =&gt; NoA_est )
  &gt; 
-DecelerationCurves.EBDForSpeed(Vtarget)</PreCondition></PreConditions>
+DecelerationCurves.EBD_TargetForSpeed(
+    Vest =&gt; Vtarget,
+    NoA_est =&gt; False,
+    aTarget =&gt; TargetSpeedMonitoring.MRDT()
+)</PreCondition></PreConditions>
 <Expression>Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)</Expression>
 </Case><Case
  Name="Before EBD(Vtarget)"
  Guid="98ddd973-1247-4b2e-a164-ff0954d53d7e"
 >
 <Expression>Default.BaseTypes.MaxSpeed(
-X1=&gt; DecelerationCurves.EBD ( Dmaxsafefrontend + Default.BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs2 + DecelerationCurves.Dbe_display ( Vest =&gt; Odometry.TrainSpeed(), EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) ) - (DecelerationCurves.Vdelta0() + DecelerationCurves.Vdelta1(EstimatedAccelerationSetToZero) + DecelerationCurves.Vdelta2(EstimatedAccelerationSetToZero)),
+X1 =&gt; DecelerationCurves.EBD_Target(
+    Distance =&gt; Dmaxsafefrontend + 
+        Default.BaseTypes.SpeedToMS( Odometry.TrainSpeed() ) * T_bs2 + 
+        DecelerationCurves.Dbe_display ( Vest =&gt; Odometry.TrainSpeed(), NoA_est =&gt; NoA_est) - 
+        (DecelerationCurves.Vdelta0() + DecelerationCurves.Vdelta1(NoA_est) + DecelerationCurves.Vdelta2(NoA_est)),
+    aTarget =&gt; TargetSpeedMonitoring.MRDT()
+),
 X2=&gt; Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)
 )</Expression>
 </Case></Cases>
@@ -300,7 +314,10 @@ X2=&gt; Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)
 <PreCondition
  Guid="bde98596-9ac7-46ec-90e4-42cd4ac651a0"
 >Destfront + BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs1 &lt; MA.ClosestEOA().Location</PreCondition></PreConditions>
-<Expression>DecelerationCurves.SBD ( Destfront + BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs1 )</Expression>
+<Expression>DecelerationCurves.SBD_Target(
+    Distance =&gt; Destfront + BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs1,
+    aTarget =&gt; MRDT()
+)</Expression>
 </Case><Case
  Name="After EOA"
  Guid="f573b2a7-2c7b-41d0-b632-c6954262beea"
@@ -333,7 +350,7 @@ X2=&gt; Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)
 >
 </Parameter><Parameter
  Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
+ Name="NoA_est"
  Guid="4b24f1f4-29bb-4b17-89e4-0976cb1beb13"
 >
 </Parameter></Parameters>
@@ -345,7 +362,7 @@ X2=&gt; Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)
 <PreConditions>
 <PreCondition
  Guid="f3765bd0-74d9-4a3a-8931-9cd8e64befb5"
->FORALL X IN EBDTargetsList() | d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>FORALL X IN EBDTargetsList() | d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X, NoA_est =&gt; NoA_est ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
@@ -354,7 +371,7 @@ X2=&gt; Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)
 <Expression>REDUCE
 EBDTargetsList() | X.Speed &lt;= Vest
 USING X IN
-    BaseTypes.MinDistance ( X1 =&gt; d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X, EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero ), X2 =&gt; RESULT )
+    BaseTypes.MinDistance ( X1 =&gt; d_SBI2 ( Vest =&gt; Vest, aTarget =&gt; X, NoA_est =&gt; NoA_est ), X2 =&gt; RESULT )
 INITIAL_VALUE
     Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
@@ -517,17 +534,17 @@ INITIAL_VALUE
 <PreConditions>
 <PreCondition
  Guid="7b9f6890-4be7-49cf-9750-bc2b6d56cfb4"
->d_maxsafefront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs2 ) + DecelerationCurves.Dbe_display( Vest =&gt; Vest, EstimatedAccelerationSetToZero=&gt;False)
+>d_maxsafefront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs2 ) + DecelerationCurves.Dbe_display( Vest =&gt; Vest, NoA_est=&gt;False)
   &lt;  
 DecelerationCurves.EBD_TargetForSpeed(
     Vest =&gt; aTarget.Speed,
     aTarget =&gt; aTarget,
-    EstimatedAccelerationSetToZero =&gt; False )</PreCondition><PreCondition
+    NoA_est =&gt; False )</PreCondition><PreCondition
  Guid="2784bf61-3ed4-4bb9-ba3c-cfa74d731b58"
 >NOT NationalValues.ComputationOfGUIIsEnabled ()</PreCondition></PreConditions>
 <Expression>BaseTypes.MaxSpeed(
     X1 =&gt; DecelerationCurves.EBD_Target(
-    Distance =&gt; d_maxsafefront + BaseTypes.SpeedToMS(Vest)*(T_driver + T_bs2) + DecelerationCurves.Dbe_display( Vest =&gt; Vest , EstimatedAccelerationSetToZero =&gt; False ),
+    Distance =&gt; d_maxsafefront + BaseTypes.SpeedToMS(Vest)*(T_driver + T_bs2) + DecelerationCurves.Dbe_display( Vest =&gt; Vest , NoA_est =&gt; False ),
     aTarget =&gt; aTarget
 ) - ( DecelerationCurves.Vdelta0() + DecelerationCurves.Vdelta1(False) + DecelerationCurves.Vdelta2(False)),
     X2 =&gt; aTarget.Speed
@@ -541,12 +558,12 @@ DecelerationCurves.EBD_TargetForSpeed(
  Guid="0eca90da-8457-4dee-9fe8-edd31394c8f9"
 >NationalValues.ComputationOfGUIIsEnabled ()</PreCondition><PreCondition
  Guid="b6dbd2ec-7f55-4672-b4b9-9c4635a43455"
->d_maxsafefront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs2 ) + DecelerationCurves.Dbe_display ( Vest =&gt; Vest, EstimatedAccelerationSetToZero =&gt; False )
+>d_maxsafefront + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs2 ) + DecelerationCurves.Dbe_display ( Vest =&gt; Vest, NoA_est =&gt; False )
   &lt;
 DecelerationCurves.EBD_TargetForSpeed(
     Vest =&gt; aTarget.Speed,
     aTarget =&gt; aTarget,
-    EstimatedAccelerationSetToZero =&gt; False )</PreCondition><PreCondition
+    NoA_est =&gt; False )</PreCondition><PreCondition
  Guid="d74cbcd2-5d36-4d92-ac09-52e9c8b2c16a"
 >d_maxsafefront &lt; DistanceForSpeed(
     Function =&gt; FUNCTION d : BaseTypes.Distance =&gt; DecelerationCurves.GUI_Target(
@@ -559,7 +576,7 @@ X1 =&gt; BaseTypes.MinSpeed(
     X1 =&gt; DecelerationCurves.EBD_Target(
         Distance =&gt; d_maxsafefront 
               + BaseTypes.SpeedToMS(Vest) * ( T_driver + T_bs2 )
-              + DecelerationCurves.Dbe_display ( Vest =&gt; Vest, EstimatedAccelerationSetToZero =&gt; False ),
+              + DecelerationCurves.Dbe_display ( Vest =&gt; Vest, NoA_est =&gt; False ),
         aTarget =&gt; aTarget )
           - ( DecelerationCurves.Vdelta0() + DecelerationCurves.Vdelta1(False) + DecelerationCurves.Vdelta2(False) ),
     X2 =&gt; DecelerationCurves.GUI_Target(
@@ -812,6 +829,15 @@ V_P_EBD_Target(
 </ReqRef><Comment>The most restrictive SBI speed as reported to the driver.</Comment>
 <Cases>
 <Case
+ Name="Invalid position"
+ Guid="8aa5b468-e884-4dcb-89e4-931b977bf6b7"
+>
+<PreConditions>
+<PreCondition
+ Guid="ded8a579-9aab-40e6-8f39-1c32b6903f6f"
+>TrainPosition.Position.DataState != DataState.Valid</PreCondition></PreConditions>
+<Expression>BaseTypes.Speed.NA</Expression>
+</Case><Case
  Name="Value"
  Guid="20305c0b-b18d-4d3b-b937-1488474eccf8"
 >
@@ -833,7 +859,7 @@ V_P_EBD_Target(
     X1 =&gt; Vsbi2(
         Dmaxsafefrontend=&gt;TrainPosition.FrontEndPosition(DistanceInterval.Max),
         Vtarget=&gt;MRDT().Speed,
-        EstimatedAccelerationSetToZero=&gt;False),
+        NoA_est=&gt;False),
     X2 =&gt; MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_sbi ( MRSP.V_MRSP() )
     )
 )</Expression>
@@ -882,11 +908,6 @@ V_P_EBD_Target(
  Name="Vest"
  Guid="62759084-4403-4c1c-b5ee-224fba41c002"
 >
-</Parameter><Parameter
- Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
- Guid="861e2a6e-bbd2-4460-b6b8-f53a1d2f9a0c"
->
 </Parameter></Parameters>
 <Cases>
 <Case
@@ -896,10 +917,10 @@ V_P_EBD_Target(
 <PreConditions>
 <PreCondition
  Guid="8ccbaeff-7580-487f-bed3-10470968e535"
->DecelerationCurves.SBD(
-    Distance=&gt; TrainPosition.FrontEndPosition(
-    PointOfInterest=&gt;Default.DistanceInterval.Nom
-)) == Default.BaseTypes.Speed.NA</PreCondition></PreConditions>
+>DecelerationCurves.SBD_Target(
+    Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    aTarget =&gt; MRDT()
+) == Default.BaseTypes.Speed.NA</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="SBD below Vest"
@@ -908,16 +929,19 @@ V_P_EBD_Target(
 <PreConditions>
 <PreCondition
  Guid="9e1abeb5-4d09-483c-8f53-24d85fe1e9da"
->DistanceForSpeed(
-    Function=&gt; DecelerationCurves.SBD,
-    Speed=&gt; Vest
+>DecelerationCurves.SBD_TargetForSpeed(
+    Vest =&gt; Vest,
+    aTarget =&gt; MRDT()
 ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="38aef605-7d44-466d-a6ca-9d9140f030b8"
 >
-<Expression>DistanceForSpeed ( Function =&gt; DecelerationCurves.SBD, Speed =&gt; Vest )  - Default.BaseTypes.SpeedToMS ( Vest ) * T_bs1</Expression>
+<Expression>DecelerationCurves.SBD_TargetForSpeed(
+    Vest =&gt; Vest,
+    aTarget =&gt; MRDT()
+)  - Default.BaseTypes.SpeedToMS ( Vest ) * T_bs1</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -1043,7 +1067,7 @@ d_P(Vest, False) == BaseTypes.Distance.Infinity</PreCondition></PreConditions>
 >
 </Parameter><Parameter
  Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
+ Name="NoA_est"
  Guid="83551c0f-01b9-41a3-85d4-28028c0d6894"
 >
 </Parameter></Parameters>
@@ -1055,7 +1079,7 @@ d_P(Vest, False) == BaseTypes.Distance.Infinity</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="8a9bb99e-e31d-4a5b-b950-a5d567a162f2"
->d_SBI1(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknown</PreCondition><PreCondition
+>d_SBI1(Vest) == BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="cf597bcc-a37d-44c6-89af-62f6770a89cb"
 >MA.IsEOA(MRDT())</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Infinity</Expression>
@@ -1070,7 +1094,7 @@ d_P(Vest, False) == BaseTypes.Distance.Infinity</PreCondition></PreConditions>
 
   AND  
 
-d_SBI2_MREBDT(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+d_SBI2_MREBDT(Vest, NoA_est) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Infinity</Expression>
 </Case><Case
  Name="GUI inhibited, target is EOA"
@@ -1082,7 +1106,7 @@ d_SBI2_MREBDT(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknow
 >NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition><PreCondition
  Guid="3bec59ce-8eb8-400e-9082-c1c388aff52b"
 >MA.IsEOA(MRDT())</PreCondition></PreConditions>
-<Expression>d_SBI1(Vest, EstimatedAccelerationSetToZero) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver</Expression>
+<Expression>d_SBI1(Vest) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver</Expression>
 </Case><Case
  Name="GUI inhibited, EBD based target"
  Guid="67ad0b11-b263-492d-9c49-9312340e4b07"
@@ -1091,7 +1115,7 @@ d_SBI2_MREBDT(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknow
 <PreCondition
  Guid="83e9d303-ca77-4dae-9723-1116a0bcd743"
 >NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
-<Expression>d_SBI2_MREBDT(Vest, EstimatedAccelerationSetToZero) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver</Expression>
+<Expression>d_SBI2_MREBDT(Vest, NoA_est) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver</Expression>
 </Case><Case
  Name="GUI enabled, target is EOA"
  Guid="a2617cac-24b8-462a-b50f-024412f2faa6"
@@ -1101,15 +1125,15 @@ d_SBI2_MREBDT(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknow
  Guid="a7bc345d-8d50-4c6a-8832-5dd65bdf1241"
 >MA.IsEOA(MRDT())</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.MinDistance (
-    X1 =&gt; d_SBI1 ( Vest, EstimatedAccelerationSetToZero ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver,
-    X2 =&gt; DistanceForSpeed ( Function =&gt; DecelerationCurves.GUI, Speed =&gt; Vest ) )</Expression>
+    X1 =&gt; d_SBI1 ( Vest ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver,
+    X2 =&gt; DistanceForSpeed ( Function =&gt; DecelerationCurves.Display.GUI, Speed =&gt; Vest ) )</Expression>
 </Case><Case
  Name="GUI enabled, EBD based target"
  Guid="1d474c90-b426-47ae-9aa9-f0992244d9b7"
 >
 <Expression>Default.BaseTypes.MinDistance (
-    X1 =&gt; d_SBI2_MREBDT ( Vest, EstimatedAccelerationSetToZero ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver,
-    X2 =&gt; DistanceForSpeed ( Function =&gt; DecelerationCurves.GUI, Speed =&gt; Vest ) )</Expression>
+    X1 =&gt; d_SBI2_MREBDT ( Vest, NoA_est ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver,
+    X2 =&gt; DistanceForSpeed ( Function =&gt; DecelerationCurves.Display.GUI, Speed =&gt; Vest ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -1162,7 +1186,7 @@ d_SBI2_MREBDT(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknow
 >
 </Parameter><Parameter
  Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
+ Name="NoA_est"
  Guid="473a1c9b-1cdd-4a8d-9619-e307d2a462db"
 >
 </Parameter></Parameters>
@@ -1175,12 +1199,12 @@ d_SBI2_MREBDT(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknow
 <PreCondition
  Guid="f00aced6-9aec-41aa-ba5c-a1f314c5c26c"
 >MA.IsEOA(MRDT())</PreCondition></PreConditions>
-<Expression>d_SBI1(Vest,EstimatedAccelerationSetToZero) - BaseTypes.SpeedToMS ( Vest ) * T_warning</Expression>
+<Expression>d_SBI1(Vest) - BaseTypes.SpeedToMS ( Vest ) * T_warning</Expression>
 </Case><Case
  Name="Supervised target is an EBD based target"
  Guid="1fdc7a88-028a-4814-b78c-5309fb73739c"
 >
-<Expression>d_SBI2_MREBDT(Vest,EstimatedAccelerationSetToZero) - BaseTypes.SpeedToMS ( Vest ) * T_warning</Expression>
+<Expression>d_SBI2_MREBDT(Vest,NoA_est) - BaseTypes.SpeedToMS ( Vest ) * T_warning</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -1254,7 +1278,7 @@ d_SBI2_MREBDT(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknow
 >
 </Parameter><Parameter
  Type="Boolean"
- Name="EstimatedAccelerationSetToZero"
+ Name="NoA_est"
  Guid="71e6f052-cda0-4e9a-a84c-f3124a6b9a5a"
 >
 </Parameter></Parameters>
@@ -1268,20 +1292,20 @@ d_SBI2_MREBDT(Vest, EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknow
  Guid="b5f767c0-d69b-47fb-910e-58b4f9b0ec0b"
 >aTarget.Location == BaseTypes.Distance.Infinity
   OR  
-DecelerationCurves.EBD_TargetForSpeed(aTarget=&gt;aTarget, Vest=&gt;Vest, EstimatedAccelerationSetToZero=&gt;EstimatedAccelerationSetToZero) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+DecelerationCurves.EBD_TargetForSpeed(aTarget=&gt;aTarget, Vest=&gt;Vest, NoA_est=&gt;NoA_est) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="f6c71c64-a1ed-4e52-9eee-68edbd4d2eb7"
 >
 <Expression>DecelerationCurves.EBD_TargetForSpeed(
-    aTarget=&gt;aTarget,
-    Vest=&gt;Vest,
-    EstimatedAccelerationSetToZero=&gt;EstimatedAccelerationSetToZero
+    aTarget =&gt; aTarget,
+    Vest =&gt; Vest,
+    NoA_est =&gt; NoA_est
 ) - DecelerationCurves.Dbec (
     Vest =&gt; Vest,
     Vtarget =&gt; aTarget.Speed,
-    EstimatedAccelerationSetToZero =&gt; EstimatedAccelerationSetToZero 
+    NoA_est =&gt; NoA_est
 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -1486,7 +1510,7 @@ This protection is used in the case where V_SBI_DMI is calculated but the train 
 <Expression>Vsbi2(
     Dmaxsafefrontend =&gt; Dmaxsafefrontend,
     Vtarget =&gt; MA.SvL().Speed,
-    EstimatedAccelerationSetToZero =&gt; False
+    NoA_est =&gt; False
 )</Expression>
 </Case><Case
  Name="Otherwise"

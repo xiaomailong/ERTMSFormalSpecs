@@ -668,9 +668,15 @@ It is satisfied if the estimated or the max safe front end (depending whether th
 <PreCondition
  Guid="27fd513f-4347-436d-a985-58b252376701"
 >(
-  SpeedAndDistanceMonitoring.DecelerationCurves.SBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) == BaseTypes.Speed.NA
+  SpeedAndDistanceMonitoring.DecelerationCurves.SBD_Target(
+    Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT()
+) == BaseTypes.Speed.NA
   OR
-  SpeedAndDistanceMonitoring.DecelerationCurves.SBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) &lt; aLX.Speed
+  SpeedAndDistanceMonitoring.DecelerationCurves.SBD_Target(
+    Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT()
+) &lt; aLX.Speed
 )
   AND
 SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
@@ -728,7 +734,7 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
       Location =&gt; aLX.Location
     },
     Vest =&gt; aLX.Speed + SpeedAndDistanceMonitoring.f41( V =&gt; aLX.Speed ),
-    anEstimatedAccelerationSetToZero =&gt; True 
+    NoA_est =&gt; True 
 ) &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Max))</Expression>
 </Case><Case
  Name="EBD undefined, SBD defined"
@@ -737,9 +743,15 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
 <PreConditions>
 <PreCondition
  Guid="6defd243-0751-4c79-a330-29ec47356a78"
->SpeedAndDistanceMonitoring.DecelerationCurves.SBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) != BaseTypes.Speed.NA
+>SpeedAndDistanceMonitoring.DecelerationCurves.SBD_Target(
+    Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT()
+) != BaseTypes.Speed.NA
   AND
-SpeedAndDistanceMonitoring.DecelerationCurves.SBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) &gt;= aLX.Speed
+SpeedAndDistanceMonitoring.DecelerationCurves.SBD_Target(
+    Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT()
+) &gt;= aLX.Speed
   AND
 SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
 (
@@ -757,7 +769,7 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
       Location =&gt; aLX.Location
     },
     Vest =&gt; aLX.Speed + SpeedAndDistanceMonitoring.f41( V =&gt; aLX.Speed ),
-    anEstimatedAccelerationSetToZero =&gt; True
+    NoA_est =&gt; True
 ) &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Max))</Expression>
 </Case><Case
  Name="Value for SBI1"
@@ -774,7 +786,7 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
       Location =&gt; aLX.Location
     },
     Vest =&gt; aLX.Speed + SpeedAndDistanceMonitoring.f41( V =&gt; aLX.Speed ),
-    anEstimatedAccelerationSetToZero =&gt; True
+    NoA_est =&gt; True
 ) &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Nom))</Expression>
 </Case><Case
  Name="Value for SBI2"
@@ -787,7 +799,7 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
       Location =&gt; aLX.Location
     },
     Vest =&gt; aLX.Speed + SpeedAndDistanceMonitoring.f41( V =&gt; aLX.Speed ),
-    anEstimatedAccelerationSetToZero =&gt; True
+    NoA_est =&gt; True
 ) &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Max))</Expression>
 </Case></Cases>
 </Function><Function
@@ -843,7 +855,7 @@ SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2
     Speed =&gt; 0.0,
     Length =&gt; aLX.Length
   },
-  EstimatedAccelerationSetToZero =&gt; True
+  NoA_est =&gt; True
 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -883,7 +895,10 @@ SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2
 <PreConditions>
 <PreCondition
  Guid="85a39cd2-0e93-44b6-86bb-795272712381"
->SpeedAndDistanceMonitoring.DecelerationCurves.SBD(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)) != BaseTypes.Speed.NA
+>SpeedAndDistanceMonitoring.DecelerationCurves.SBD_Target(
+    Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT()
+) != BaseTypes.Speed.NA
   AND
 SBI1IsMostRestrictive( aLX =&gt; aLX )</PreCondition></PreConditions>
 <Expression>DistanceInterval.Nom</Expression>
