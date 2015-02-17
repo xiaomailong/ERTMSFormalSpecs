@@ -397,6 +397,8 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="180"
+ Y="20"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -517,6 +519,8 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="290"
+ Y="20"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -649,13 +653,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="110"
+ X="180"
+ Y="80"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
  Name="SetSRMode"
  Guid="85e02aac-468a-4ad5-a199-7ed7a4201f73"
 >
+<Comment>Procedure that sets the mode to FS and sets all data so maintain this mode.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -674,6 +680,32 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Action
  Guid="b501904c-c6c8-45fa-9042-2f1415bd8ba1"
 >Kernel.Mode &lt;- Mode.SR</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set level (if required)"
+ Guid="1e67dc91-cbf0-4e7b-8a09-d2957471e2fe"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Level is 0 or NTC"
+ Guid="d1472685-a3ed-412d-bd76-2f35b2125972"
+>
+<PreConditions>
+<PreCondition
+ Guid="87975c30-4872-4018-a95a-1e815b12b6c4"
+>Kernel.Level.Value.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c1336c53-104c-4179-b106-61e11e9798e1"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; LevelDataStruct{
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L1
+    },
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -710,6 +742,30 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Action
  Guid="4f962ed9-3d1a-41d2-95a4-8b038aae6445"
 >Kernel.MA.ModeProfile.Profile &lt;- []</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set the SR information"
+ Guid="0abde4d6-83e1-40e6-8836-e66a2df5f0cb"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set the SR information"
+ Guid="c0eb75d7-e692-4313-8df8-bc3d0f2ab670"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="01e42c58-bc2e-46cb-ac4b-78155e509058"
+>Kernel.StaffResponsible.SRAuthorisation &lt;- Kernel.StaffResponsible.SR{
+    BGs =&gt; [],
+    BGListReceived =&gt; False,
+    Distance =&gt; 600.0
+}</Action><Action
+ Guid="4597d7e8-771e-4f88-a32a-b7ac0cc7a208"
+>Kernel.TrainPosition.SRStartDistance &lt;- Odometry.NominalDistance</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

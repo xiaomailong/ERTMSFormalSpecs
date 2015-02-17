@@ -222,8 +222,8 @@ Messages.EUROBALISE.SubStructure1
 >
 <Actions>
 <Action
- Guid="395b0047-2002-45ab-8c4c-e5ee35823a63"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="f5089774-a0c4-4321-a05e-53ea67bcb8f8"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -548,8 +548,8 @@ TIU.ServiceBrakeCommanded == True</Expectation></Expectations>
 >
 <Actions>
 <Action
- Guid="2e2189b1-45f8-4a22-a555-10d5f3fbd5cf"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="bd1c5711-b3b6-4b6c-835b-8cc965404469"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -732,12 +732,8 @@ TIU.ServiceBrakeCommanded == True</Expectation></Expectations>
 >
 <Actions>
 <Action
- Guid="393016fe-2789-467a-a965-145cffddf400"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
- Guid="56f69a51-7766-47c4-9db1-acb6a070d9e4"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
- Guid="a7657925-6c62-4484-8c78-5972ae2e0ae9"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="9a08878c-670f-41fe-8845-da370bda7d8b"
+>Testing.SetSRMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1012,10 +1008,10 @@ Messages.EUROBALISE.SubStructure1
 >
 <Actions>
 <Action
- Guid="a245efc3-36d3-456c-a877-c1d8801771ab"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="43e487f1-5b14-4440-a9d1-4216a124bce0"
->Kernel.Level.Value.Value &lt;- Default.Level.L3</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Default.Level.L3</Action><Action
+ Guid="2157e663-9329-404f-ade6-324668a54a54"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

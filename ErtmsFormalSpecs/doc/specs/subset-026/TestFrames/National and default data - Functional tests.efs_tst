@@ -4803,8 +4803,8 @@
 >
 <Actions>
 <Action
- Guid="43dab0e2-1979-4f46-b791-0a5f60856263"
->Kernel.Mode &lt;- Mode.SR</Action></Actions>
+ Guid="0a409a1e-5bf3-4043-a012-dce0b10f6d3b"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5109,8 +5109,8 @@
 >
 <Actions>
 <Action
- Guid="1bac778d-da41-4d86-94ac-94ed0fd5f09c"
->Kernel.Mode &lt;- Mode.SR</Action></Actions>
+ Guid="bcd439e1-f521-4895-b511-70b10e290f67"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5345,8 +5345,8 @@ Kernel.MA.ModeProfile.Profile</Action><Action
 >
 <Actions>
 <Action
- Guid="f70c685b-4fb5-4e2a-b877-a167d502f47f"
->Kernel.Mode &lt;- Mode.SR</Action></Actions>
+ Guid="53910db8-3235-43d3-86ca-54c1d6d187f9"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5455,15 +5455,15 @@ Kernel.MA.ModeProfile.Profile</Action><Action
 <Actions>
 <Action
  Guid="753697a8-1fc4-4433-9d73-32f7a6e4304e"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.Override</Action><Action
- Guid="b483c6e6-cd43-4ddc-86c4-5767d6fe520e"
->Kernel.Mode &lt;- Mode.SR</Action><Action
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.Override</Action><Action
  Guid="abede0fa-384a-492c-bdfc-1de32036b32a"
 >Kernel.OverrideSupervision &lt;- Kernel.OverrideStruct{
     Time =&gt; 120.0,
     Location =&gt; 500.0,
     FormerEOA =&gt; 650.0
-}</Action></Actions>
+}</Action><Action
+ Guid="0aabe223-dd09-43fb-9772-210dccd2b1e0"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5659,7 +5659,7 @@ Kernel.MA.ModeProfile.Profile</Action><Action
 <Actions>
 <Action
  Guid="6a37ef0b-2521-48b2-8e52-8ee998915e55"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action></Actions>
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
