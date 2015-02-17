@@ -423,15 +423,7 @@
  Guid="a4e6e6b8-effa-4367-a651-06b7d80948fe"
 >Testing.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 2 - Initialize elements for MA"
- Guid="ff938e8b-0184-4890-b16e-c38c7828f699"
->
-<Actions>
-<Action
- Guid="b3435b61-7a92-4d7a-9aaf-a03f82fa4fba"
->Testing.InitializeElementsForMA()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step 3 - Balise Group setup"
+ Name="Sub-step 2 - Balise Group setup"
  Guid="092959b1-39ea-4e07-b44f-a111932be729"
 >
 <Actions>
@@ -441,37 +433,35 @@
  Guid="2e060564-cb52-4933-9704-e8d806049d73"
 >Odometry.NominalDistance &lt;- 100.0</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 4 - Give the train some data"
+ Name="Sub-step 3 - Give the train some data"
  Guid="20af7b53-bc06-41d3-a98a-9ac9bd3e9716"
 >
 <Actions>
 <Action
  Guid="cff7c100-3d03-4b57-9958-6da33d55410b"
->Kernel.TrainData.TrainData &lt;- Kernel.TrainData.TrainDataStruct
- {
-    DataState =&gt; DataState.Valid,
-    Value =&gt; Kernel.TrainData.TrainDataValues
-     {
-        AxleLoadCategory =&gt; Messages.M_AXLELOADCAT.C3,
-        LoadingGauge =&gt; Messages.M_LOADINGGAUGE.GA,
-        TractionSystems =&gt;
-         [
-            Kernel.TrainData.TractionSystem
-             {
-                Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
-                Country =&gt; 85
-             }
-            ,
-            Kernel.TrainData.TractionSystem
-             {
-                Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
-                Country =&gt; 85
-             }
-         ]
-     }
- }</Action><Action
+>Kernel.TrainData.TrainData.Value.TractionSystems &lt;- 
+[
+    Kernel.TrainData.TractionSystem
+    {
+        Voltage =&gt; Messages.M_VOLTAGE.AC_25_kV_50_Hz,
+        Country =&gt; 85
+    }
+    ,
+    Kernel.TrainData.TractionSystem
+    {
+        Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
+        Country =&gt; 85
+    }
+]
+</Action><Action
  Guid="663a8233-0c68-4e0d-b5e6-25e08c1eb4de"
->Testing.SetLSMode()</Action></Actions>
+>Testing.SetLSMode()</Action><Action
+ Guid="73f9498d-1fef-41b1-bc52-3551f92e8008"
+>Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.C3</Action><Action
+ Guid="f5d7a1b6-09f5-4aca-bdf7-e41640d7a1b0"
+>Kernel.TrainData.TrainData.Value.LoadingGauge &lt;- Messages.M_LOADINGGAUGE.GA</Action><Action
+ Guid="b4137faa-681f-4c5c-ae67-3fd9860d05fb"
+>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
