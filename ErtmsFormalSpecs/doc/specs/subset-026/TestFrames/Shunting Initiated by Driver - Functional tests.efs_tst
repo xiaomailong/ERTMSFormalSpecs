@@ -683,37 +683,11 @@
  Guid="7422ad74-a3d5-4e8a-a317-eaf6c0715e01"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action
  Guid="98d05541-1682-459b-a3b1-70024d2460a4"
->Kernel.Mode &lt;- Mode.FS</Action><Action
+>Testing.SetFSMode()</Action><Action
  Guid="fb831ad2-0978-4e06-b2f4-87b6d6280a42"
 >DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action><Action
  Guid="b32a719c-c895-4619-81b4-deb261d98ceb"
->Kernel.Level.Value.Value &lt;- Level.L2</Action><Action
- Guid="a329e82c-0d0f-459e-8548-cf666c018a8e"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 3000.0
-    }
-}</Action><Action
- Guid="042d95f1-692e-418e-9180-e514d44abc42"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
-[
-  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
-    Distance =&gt; 0.0,
-    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
-    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-    Categories =&gt; []
-  }
-]</Action><Action
- Guid="a1a052a2-7fdf-468a-b193-ddb798c6368a"
->Kernel.TrackDescription.Gradient.Gradients &lt;- 
-[
-  Kernel.TrackDescription.Gradient.GradientInfo{
-    Distance =&gt; 0.0,
-    Gradient =&gt; 0.0
-  }
-]</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1844,7 +1818,7 @@
 <Actions>
 <Action
  Guid="6e9e4a2a-961e-445b-ba05-840b3583b4dc"
->Kernel.Mode &lt;- Mode.FS</Action><Action
+>Testing.SetFSMode()</Action><Action
  Guid="74557b1d-0cfe-4967-b463-3617a3d1b2b0"
 >Odometry.EstimatedSpeed &lt;- 0.0</Action><Action
  Guid="e4444f60-bae9-447d-b7e8-71070359a783"
@@ -1852,33 +1826,7 @@
  Guid="b2a15b8c-8287-49df-a893-9c761539a7c0"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="13e6a832-9499-4586-a816-8503c12499b8"
->Kernel.Level.Value.Value &lt;- Level.L2</Action><Action
- Guid="b1c780c3-d3d0-42f2-85c6-fc5b12f4381a"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 3000.0
-    }
-}</Action><Action
- Guid="80f02776-df77-4ae9-936c-bb81ffd85784"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
-[
-  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
-    Distance =&gt; 0.0,
-    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
-    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-    Categories =&gt; []
-  }
-]</Action><Action
- Guid="ff0c43e2-fc2f-431c-ba57-bd7c0e91bd05"
->Kernel.TrackDescription.Gradient.Gradients &lt;- 
-[
-  Kernel.TrackDescription.Gradient.GradientInfo{
-    Distance =&gt; 0.0,
-    Gradient =&gt; 0.0
-  }
-]</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

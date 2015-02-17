@@ -330,7 +330,7 @@ BTM.Linking.Linkings</Action></Actions>
     Sequence1=&gt;[]
 }</Action><Action
  Guid="340b9d3f-3766-4bf0-801a-64d225aff07c"
->Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
+>Testing.SetFSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -625,13 +625,25 @@ BTM.Linking.Linkings</Action></Actions>
 
 )</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step2 - Initialize elements to accept MA"
+ Name="Sub-step2 -  Reset MA (+Grad+SSP)"
  Guid="a58a93d8-8899-4314-a596-95b38c07d4a0"
 >
 <Actions>
 <Action
- Guid="e8a97b53-9886-44f8-bd50-8b25490d96ca"
->Testing.InitializeElementsForMA()</Action></Actions>
+ Guid="7c7423f3-d8b4-408e-b405-71a34d2c03b8"
+>Kernel.TrackDescription.Gradient.Gradients &lt;- []</Action><Action
+ Guid="cb892363-7c5a-40f2-8868-31e16a98d340"
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- []</Action><Action
+ Guid="2bd4c535-305f-4090-82dd-868186178b16"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3 - Set FS mode"
+ Guid="4abc4aa8-c076-4296-8104-0121b1e269bc"
+>
+<Actions>
+<Action
+ Guid="851e79be-bb39-4eb2-9bfa-d90c79f36350"
+>Testing.SetFSMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -650,14 +662,6 @@ BTM.Linking.Linkings</Action></Actions>
 >
 <Actions>
 <Action
- Guid="1bfda77d-1448-44b5-bdfe-c80edd013a94"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
- Guid="06694a08-b3cb-4eaf-b49b-889af96a480d"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
- Guid="851e79be-bb39-4eb2-9bfa-d90c79f36350"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
- Guid="be2ff6e5-079e-4d29-88fb-a16e9e845175"
->Kernel.MA.MA &lt;- EMPTY</Action><Action
  Guid="690069b3-72aa-405c-93ae-1bc1771979d6"
 >Kernel.Infill.Data &lt;- EMPTY</Action><Action
  Guid="937b5cd3-2dcc-40f0-8cf7-47d517315d38"
@@ -675,7 +679,11 @@ BTM.Linking.Linkings</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="4d54e3e7-df02-4bbb-9764-5198507b8707"
->Kernel.MA.MA == EMPTY</Expectation></Expectations>
+>Kernel.MA.MA != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="b6677a0f-4668-464b-9d2d-bd976c05df72"
+>Kernel.MA.MA.Sections == []</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1321,53 +1329,21 @@ BTM.Linking.Linkings</Action></Actions>
  Guid="70d64647-6a83-4cb1-b705-d9888a212c0c"
 >Testing.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 2 - Initialize elements for MA"
- Guid="d7fe1df8-1db8-4721-a59b-366bd41efbd6"
->
-<Actions>
-<Action
- Guid="18a490ce-c903-4244-8f3d-eec3fee26936"
->Testing.InitializeElementsForMA()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step 3 - Put the train in FS mode"
+ Name="Sub-step 2 - Put the train in FS mode"
  Guid="709ba5f4-41fe-41e0-b69a-1a78916665f5"
 >
 <Actions>
 <Action
  Guid="04d18e63-f531-47e5-9530-3d1987d063f8"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="6288ada8-1333-4efc-9670-030a94154b22"
->Kernel.Level &lt;- Kernel.LevelData
- {
-    Value =&gt; Default.LevelDataStruct
-    {
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L1
-    },
-    DataState =&gt; Default.DataState.Valid
- }</Action><Action
- Guid="2bad1577-28d2-4d6b-9969-9bd14ba3af8b"
->Odometry.EstimatedSpeed &lt;- 65.0</Action></Actions>
+>Testing.SetFSMode()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 4 - Set up a simple MA to work with"
- Guid="5008faa4-a6ce-48ed-8504-c50e85563b9b"
+ Name="Sub-step 3 - Set the train speed"
+ Guid="c3b3428a-c26b-4796-95f7-aba3839f9b0a"
 >
 <Actions>
 <Action
- Guid="991b559c-ac47-4c61-ad4b-a9aa6953c133"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct
-{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection
-    {
-        EndSectionTimeOut =&gt; EMPTY,
-        TimeOut =&gt; EMPTY,
-        Length =&gt; 12345.0,
-        DangerPoint =&gt; EMPTY,
-        Overlap =&gt; EMPTY
-    }
-}</Action></Actions>
+ Guid="2bad1577-28d2-4d6b-9969-9bd14ba3af8b"
+>Odometry.EstimatedSpeed &lt;- 65.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1376,12 +1352,12 @@ BTM.Linking.Linkings</Action></Actions>
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step 2 - Give the train linking information"
+ Name="Step 2 - Set linking information"
  Guid="68b015bb-0548-42ae-af00-0b4eb5565d21"
 >
 <SubSteps>
 <SubStep
- Name="Sub-step 1 - Get rid of any residual linking data around"
+ Name="Sub-step 1 - Remove previous linking data"
  Guid="6cba92bf-59b7-490d-b7e5-b8ef24892535"
 >
 <Actions>
@@ -1389,7 +1365,7 @@ BTM.Linking.Linkings</Action></Actions>
  Guid="576a3aa0-ed0e-4309-bc0b-c5878c35608a"
 >BTM.Linking.Linkings &lt;- []</Action></Actions>
 </SubStep><SubStep
- Name="SubStep 1 - Manually insert linking information"
+ Name="SubStep 1 - Manually insert new linking information"
  Guid="9eee11fa-4782-4772-9f90-81952f3fa7a5"
 >
 <Actions>
@@ -3371,15 +3347,15 @@ IN BTM.Linking.Linkings</Action></Actions>
  Guid="81cf7e2c-6f75-4878-beb6-8fd81694ede9"
 >Testing.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 2 - Initialize elements for MA"
+ Name="Sub-step 2 - Set mode"
  Guid="14353223-b296-43a4-9e1b-0eb79f1db4f6"
 >
 <Actions>
 <Action
  Guid="107bbff6-500d-4b7f-ae85-d239ccc33bd8"
->Testing.InitializeElementsForMA()</Action></Actions>
+>Testing.SetFSMode()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 3 - Set up a simple MA to work with"
+ Name="Sub-step 3 - Set up an MA"
  Guid="3eb57c89-dc95-416a-a971-ebdb005fedec"
 >
 <Actions>
@@ -3406,24 +3382,13 @@ IN BTM.Linking.Linkings</Action></Actions>
  Guid="5b03286f-4783-4b1e-9cd9-36b0bb27d319"
 >Kernel.MA.SvL() == EMPTY</Expectation></Expectations>
 </SubStep><SubStep
- Name="Sub-step 4 - Train data that is useful"
+ Name="Sub-step 4 - Set nominal orientation"
  Guid="51d8e07d-6e8e-40eb-adf1-08d26cd17458"
 >
 <Actions>
 <Action
  Guid="542d1990-1927-4994-b849-f4cb692c788e"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action><Action
- Guid="6055eb45-9e31-47f4-bf3e-a6231519dd23"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="9095ba07-56a6-4140-a281-e6626f992559"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; Default.LevelDataStruct
-    {
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L1
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action></Actions>
+>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3873,13 +3838,13 @@ IN BTM.Linking.Linkings</Action></Actions>
  Guid="36f92aba-c6d0-4333-98c3-d169aa531756"
 >Testing.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 2 - Initialize elements for MA"
+ Name="Sub-step 2 - Set FS mode"
  Guid="d3af7ffb-ba0e-4323-a0bd-f0919404817c"
 >
 <Actions>
 <Action
  Guid="f5a0ac0a-4021-4bcf-a2cb-473c8e775a34"
->Testing.InitializeElementsForMA()</Action></Actions>
+>Testing.SetFSMode()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 3 - Give the train an MA"
  Guid="ca6e9397-1c7e-4907-a7b4-0bdf2e5cf4d6"
@@ -3906,17 +3871,6 @@ IN BTM.Linking.Linkings</Action></Actions>
 >
 <Actions>
 <Action
- Guid="5b6ff883-5f83-4e2d-919e-83298256212d"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; Default.LevelDataStruct
-    {
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L1
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action><Action
- Guid="5a4fa7bb-ecea-4d51-9777-bf5e5d5c7ab9"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Guid="07091361-7ee9-4ea9-b107-34eb13d3f799"
 >Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
 </SubStep><SubStep

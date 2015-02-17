@@ -247,19 +247,15 @@
 <Actions>
 <Action
  Guid="33530600-366a-4095-9aa1-c9289de072c8"
->Testing.InitializeTestEnvironment()</Action><Action
- Guid="e1b32cd4-9e69-40b0-99ba-f0cb9da040f2"
->Testing.InitializeElementsForMA()</Action><Action
- Guid="abb6155c-8668-4012-8452-638ab56b11ff"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 10000.0
-    }
-}</Action><Action
- Guid="2317c6d7-5ec8-4feb-bb23-d20703f92553"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
+>Testing.InitializeTestEnvironment()</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2 - Set FS mode"
+ Guid="a05dc2ae-1481-42f5-9c32-ae0f2f9bed87"
+>
+<Actions>
+<Action
+ Guid="e8ca7193-30ea-4b20-8203-631df913e693"
+>Testing.SetFSMode()</Action><Action
  Guid="ea8973ad-6173-476b-a7ba-cd60e1ef6c0e"
 >Kernel.Level &lt;- Kernel.LevelData{
     Value =&gt; Default.LevelDataStruct
@@ -268,6 +264,14 @@
         Value =&gt; Default.Level.L2
     },
     DataState =&gt; DataState.Valid
+}</Action><Action
+ Guid="abb6155c-8668-4012-8452-638ab56b11ff"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 10000.0
+    }
 }</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -892,7 +896,7 @@ DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DoNotDisplay()</Action></
  Guid="62f760d1-0d53-43aa-85b5-c21581e3db84"
 >Odometry.NominalDistance &lt;- 2100.0</Action><Action
  Guid="7ec4d4ae-5632-4675-b048-dafb8d059777"
->Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
+>Testing.SetFSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

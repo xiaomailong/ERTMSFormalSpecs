@@ -294,8 +294,8 @@ namespace GUI.TestRunnerView
             retVal.Insert(7, new MenuItem("-"));
             retVal.Insert(8, new MenuItem("Execute", new EventHandler(RunHandler)));
             retVal.Insert(9, new MenuItem("Create report", new EventHandler(ReportHandler)));
-            retVal.Insert(6, new MenuItem("-"));
-            retVal.Insert(7, new MenuItem("Set FS mode", new EventHandler(SetFSMode)));
+            retVal.Insert(10, new MenuItem("-"));
+            retVal.Insert(11, new MenuItem("Set FS mode", new EventHandler(SetFSMode)));
 
             return retVal;
         }
@@ -319,7 +319,8 @@ namespace GUI.TestRunnerView
 
                                 foreach (DataDictionary.Rules.Action action in tempActions)
                                 {
-                                    if (action.ExpressionText.Contains("InputInformation.RequestStatus"))
+                                    if (action.ExpressionText.Contains("InputInformation") ||
+                                        action.ExpressionText.Contains("OutputInformation"))
                                     {
                                         subStep.appendActions(action);
                                     }

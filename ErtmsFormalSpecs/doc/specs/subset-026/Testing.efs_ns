@@ -135,6 +135,26 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Name="Level and Mode"
+ Guid="23241729-77da-4af7-95bc-a581e75caa00"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Level and Mode"
+ Guid="2832e592-a77a-420d-b930-d88d251d8e13"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="087defa8-343b-4b96-8b73-b683fccec68c"
+>Kernel.Mode &lt;- Mode.NP</Action><Action
+ Guid="d06920a7-6f22-4431-934e-43981011947e"
+>Kernel.Level.Value.Value &lt;- Level.L0</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Speed and distance monitoring"
@@ -377,6 +397,8 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="SetFSMode"
  Guid="5544ad42-1088-4018-a928-96fe3bddc890"
@@ -429,21 +451,43 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- Name="Set MA (+gradient and SSP)"
+ Name="Set gradient and SSP"
  Guid="760f0db1-906b-4ed8-9864-d8a23f61c0ba"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="Set MA (+gradient and SSP)"
+ Name="No gradient or SSP"
  Guid="8c6fc49c-2185-4d06-912f-26c0a2314e69"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="5ef111cd-1c69-427b-940d-38f128fbd20c"
+>Kernel.TrackDescription.Gradient.Gradients == []
+  OR  
+Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7de82623-f8c8-4c96-a338-2212f61232c3"
->InitializeElementsForMA()</Action><Action
+>InitializeElementsForMA()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set MA"
+ Guid="213ea090-b589-46c5-b55c-e2979c5f5cd1"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No MA"
+ Guid="47994e99-a7a6-49f9-afd3-efe13aa2f324"
+>
+<PreConditions>
+<PreCondition
+ Guid="c563d454-9695-44a6-81dd-2e8d7ce8177a"
+>Kernel.MA.MA == EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
  Guid="27b80ae3-1415-4735-9109-7188d6cf5435"
 >Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
     TargetSpeed =&gt; 0.0,

@@ -1158,17 +1158,6 @@ Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Dbec ( Vest =&gt; 75.0, Vta
 >
 <Actions>
 <Action
- Guid="8167a609-6c8e-44e4-9179-07abd6c18ce1"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct
-{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection
-    {
-        Length =&gt; 10000.0
-    },
-    TargetSpeedTimeOut =&gt; 0.0
-}</Action><Action
  Guid="56b91c11-59ca-4800-8392-243239527215"
 >Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 150.0</Action><Action
  Guid="a7d0249a-c02e-41f9-81c8-96c8a8bf1d6e"
@@ -1597,27 +1586,9 @@ Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
             }
         }</Action><Action
  Guid="762c291e-9b89-469c-ada8-ab649609d840"
->Kernel.Mode &lt;- Mode.FS</Action><Action
- Guid="39383703-45b4-42f3-9805-e8dea5012820"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
- Guid="88bde159-7f88-4cb9-b13c-46ac39e22b2f"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
-[
-  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
-    Distance =&gt; 0.0,
-    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
-    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-    Categories =&gt; []
-  }
-]</Action><Action
- Guid="f5c3eb39-7560-4e7c-9a93-3617eb9c39ec"
->Kernel.TrackDescription.Gradient.Gradients &lt;- 
-[
-  Kernel.TrackDescription.Gradient.GradientInfo{
-    Distance =&gt; 0.0,
-    Gradient =&gt; 0.0
-  }
-]</Action></Actions>
+>Testing.SetFSMode()</Action><Action
+ Guid="57d9d4c0-4785-4fa7-b8c0-3f124416639e"
+>Kernel.MA.MA.EndSection.Length &lt;- 10000.0</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2307,7 +2278,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P  ( Vest =&gt; 25.0, 
  Guid="379d2618-afba-4200-bf3b-c2ff53384670"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.NoProcedure</Action><Action
  Guid="047e5d96-20fe-4e3c-8b70-75db90e929c4"
->Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
+>Testing.SetFSMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase

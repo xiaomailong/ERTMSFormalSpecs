@@ -1769,7 +1769,7 @@
 <Actions>
 <Action
  Guid="4dea5d47-e00f-4e19-bc47-c7714d03e486"
->Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
+>Testing.SetFSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2745,26 +2745,8 @@
 >
 <Actions>
 <Action
- Guid="85637054-dc20-4bd3-bc85-695bea7c08b4"
->Kernel.Level &lt;- Kernel.LevelData
-{
-    Value =&gt; Default.LevelDataStruct
-    {
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L1
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action><Action
  Guid="599e97a8-3a47-4b35-8b78-8255b84370ce"
->Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="5e0f168a-5705-40c7-a192-1cb663349013"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 3000.0
-    }
-}</Action></Actions>
+>Testing.SetFSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

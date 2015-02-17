@@ -1358,23 +1358,7 @@
 <Actions>
 <Action
  Guid="d8d22f82-2cc4-4448-9066-c9b0218cf823"
->Kernel.Mode &lt;- Mode.FS</Action><Action
- Guid="bfbbbd2e-5cf7-4668-93c7-59a0dabb973f"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; LevelDataStruct{
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L1
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action><Action
- Guid="11b91eb0-a0f6-4ede-93bd-7aed880a6464"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 2500.0
-    }
-}</Action></Actions>
+>Testing.SetFSMode()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step3 - Train data is valid"
  Guid="33388dd7-3ab8-4d41-8888-23c74fc99b7d"
@@ -1487,7 +1471,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="2b147bde-1b57-4498-96a6-bb74d88fadc3"
->Kernel.MA.MA.EndSection.Length == 2500.0</Expectation></Expectations>
+>Kernel.MA.MA.EndSection.Length == 4500.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1669,37 +1653,13 @@
  Guid="217d4391-49ae-4e99-bae7-5c13ec6197bc"
 >Testing.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step2 - Initialize elements for MA"
- Guid="9d7434d9-d975-4cae-b748-1e5741deceaa"
->
-<Actions>
-<Action
- Guid="a5e63a8d-70cf-46c8-bfa9-d8e1124bbcb7"
->Testing.InitializeElementsForMA()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step3 - Set Level and Mode"
+ Name="Sub-step3 - Set Mode"
  Guid="c4f13228-2b9f-4804-aeb6-f441433dc9cb"
 >
 <Actions>
 <Action
  Guid="d5dbc677-46dc-4b77-a151-3796963da174"
->Kernel.Mode &lt;- Mode.FS</Action><Action
- Guid="a3cfd791-7ce4-4f5a-9cf5-76f114955511"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; LevelDataStruct{
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L1
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action><Action
- Guid="b9a7a770-948c-478a-8ce8-e25779bd565c"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 2500.0
-    }
-}</Action></Actions>
+>Testing.SetFSMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1794,7 +1754,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="d846927a-e4a1-4fb7-a786-fb15eb2a7ab4"
->Kernel.MA.MA.EndSection.Length == 2500.0</Expectation></Expectations>
+>Kernel.MA.MA.EndSection.Length == 4500.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1830,7 +1790,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="2a0329bc-45c0-4008-a0e4-fed07a837ee0"
->Kernel.MA.MA.EndSection.Length == 2500.0</Expectation><Expectation
+>Kernel.MA.MA.EndSection.Length == 4500.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="43b1537f-5e78-4376-916e-e794b60d4bd8"
@@ -1882,21 +1842,11 @@
  Guid="85f58faa-cb5b-4dff-8325-36a34f0dec59"
 >Testing.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step2 - Initialize elements for MA"
- Guid="f4e36036-27de-40aa-b017-9be8b8895118"
->
-<Actions>
-<Action
- Guid="15ddd14a-2870-4116-ac46-95165732d87a"
->Testing.InitializeElementsForMA()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step3 - Set Level and Mode"
+ Name="Sub-step3 - Set Level"
  Guid="9c5d2e06-c644-45a2-b897-829fe705cc5c"
 >
 <Actions>
 <Action
- Guid="154f29fb-844a-4a03-8638-0899a8d206cb"
->Kernel.Mode &lt;- Mode.FS</Action><Action
  Guid="504fd31d-d4c2-4eeb-8180-4188b5d95281"
 >Kernel.Level &lt;- Kernel.LevelData{
     Value =&gt; LevelDataStruct{
@@ -1904,15 +1854,15 @@
         Value =&gt; Default.Level.L2
     },
     DataState =&gt; Default.DataState.Valid
-}</Action><Action
- Guid="56fe791c-dee6-494d-a12a-e83e5045adde"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 2500.0
-    }
 }</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step4 - Set mode"
+ Guid="a3f305d8-c3a5-41e7-abaa-26370b80c833"
+>
+<Actions>
+<Action
+ Guid="be19dd4a-8fdc-4a0c-8c70-bb8f0debe4f5"
+>Testing.SetFSMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2007,7 +1957,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="77e4b0fb-1f45-4134-98bb-8629a6406893"
->Kernel.MA.MA.EndSection.Length == 2500.0</Expectation></Expectations>
+>Kernel.MA.MA.EndSection.Length == 4500.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2043,7 +1993,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="18ed4dcb-62ef-4af4-946a-44d902fdf0f4"
->Kernel.MA.MA.EndSection.Length == 2500.0</Expectation><Expectation
+>Kernel.MA.MA.EndSection.Length == 4500.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="1b8d572a-05d4-4c9e-8f87-c9dbbc6fbffe"
