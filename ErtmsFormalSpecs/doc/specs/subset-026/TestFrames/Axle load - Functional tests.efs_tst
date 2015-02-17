@@ -352,17 +352,7 @@ IN BTM.Linking.Linkings</Action><Action
 }
 ]</Action><Action
  Guid="ea515edc-dab0-4812-875e-0df9c643ca22"
->Kernel.Mode &lt;- Mode.LS</Action><Action
- Guid="19594444-10e3-44c0-a323-9a4f0a741cdd"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; LevelDataStruct{
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L1
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action><Action
- Guid="9ee2ce9e-7f28-4973-8254-f46c77649e3f"
->Testing.InitializeElementsForMA()</Action></Actions>
+>Testing.SetLSMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase

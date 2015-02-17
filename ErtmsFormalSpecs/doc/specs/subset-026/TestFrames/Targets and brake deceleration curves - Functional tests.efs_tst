@@ -80,41 +80,8 @@
 >Kernel.TSR.TSRs &lt;- []</Action><Action
  Guid="b2f761ee-af09-4682-82e3-382d52566756"
 >Odometry.NominalDistance &lt;- 200.0</Action><Action
- Guid="76197ddf-b82c-436b-8882-b643f673271d"
->Kernel.MA.MA &lt;- EMPTY</Action><Action
- Guid="feb11f14-3b53-426b-9983-38af3fd2d805"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="b4a7ee50-9789-4535-8685-b2258ce215bd"
->Kernel.Mode &lt;- Mode.LS</Action><Action
- Guid="4f0b567a-fa27-4777-8ebe-bc739dace820"
->Kernel.TrackDescription.Gradient.Gradients &lt;- 
-[
-    Kernel.TrackDescription.Gradient.GradientInfo
-    {
-        Gradient =&gt; 0.0,
-        Distance =&gt; 0.0
-    },
-    Kernel.TrackDescription.Gradient.GradientInfo
-    {
-        Gradient =&gt; 0.004,
-        Distance =&gt; 1400.0
-    },
-    Kernel.TrackDescription.Gradient.GradientInfo
-    {
-        Gradient =&gt; 0.007,
-        Distance =&gt; 2600.0
-    },
-    Kernel.TrackDescription.Gradient.GradientInfo
-    {
-        Gradient =&gt; 0.002,
-        Distance =&gt; 5000.0
-    },
-    Kernel.TrackDescription.Gradient.GradientInfo
-    {
-        Gradient =&gt; 0.0,
-        Distance =&gt; 5700.0
-    }
-]</Action><Action
+>Testing.SetLSMode()</Action><Action
  Guid="1d2048b8-e3f1-4313-bc12-03eae79c07c8"
 >Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValuesStruct
 {
@@ -702,26 +669,6 @@
     V_ora =&gt; 0.0,
     V_ura =&gt; 0.0
 }</Action><Action
- Guid="20528748-38c3-4d99-ae44-8dba2e0f6f44"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;-
-[
-    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
-    {
-        Distance =&gt; 140.0,
-        BasicSpeed =&gt; 70.0,
-        TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-        Categories =&gt;
-        [
-            Kernel.TrackDescription.StaticSpeedProfile.SSPCategory
-            {
-                CantDeficiency =&gt; Messages.NC_CDTRAIN.Cant_Deficiency_130_mm,
-                OtherSpecific =&gt; Kernel.TrainData.TrainCategoryEnum.FreightTrainInG,
-                Qualifier =&gt; Messages.Q_DIFF.Cant_Deficiency_specific_category ,
-                Speed =&gt; 190.0
-            }
-        ]
-    }
-]</Action><Action
  Guid="2fd51c3c-4c13-4928-ae89-1fed58082f50"
 >TIU.SpecialBrakeStatus.MagneticShoeBrakeIsActive &lt;- True</Action><Action
  Guid="0b2f8a33-16ca-419d-a894-de4699238884"

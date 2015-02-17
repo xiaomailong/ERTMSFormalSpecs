@@ -403,7 +403,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
  Name="SetFSMode"
  Guid="5544ad42-1088-4018-a928-96fe3bddc890"
 >
-<Comment>Procedure that sets the mode to FS and sets all data so maintain this level.</Comment>
+<Comment>Procedure that sets the mode to FS and sets all data so maintain this mode.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -496,6 +496,220 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
         Length =&gt; 4500.0
     }
 }</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="No Mode Profile"
+ Guid="c082e94c-47bf-4d95-898c-6e0749272cc6"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No Mode Profile"
+ Guid="5b82daa9-9aec-4968-aab8-d57682e5f381"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="c39eb533-d302-4b9e-937b-a28026c72ea0"
+>Kernel.MA.ModeProfile.Profile &lt;- []</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="SetLSMode"
+ Guid="843f9b0d-e290-43ff-b1cd-4998914a6436"
+>
+<Comment>Procedure that sets the mode to LS and sets all data so maintain this mode.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set LS mode"
+ Guid="675162e4-02d3-472f-8960-71ab1500ee0c"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set LS mode"
+ Guid="772e227e-93a3-4a31-8401-f343b2798987"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="c3f3f425-ec4d-4ee2-9646-a5dda9669323"
+>Kernel.Mode &lt;- Mode.LS</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set level (if required)"
+ Guid="03787445-aafb-4da2-9944-f87e05e0cf94"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Level is 0 or NTC"
+ Guid="b2f6292f-1382-4352-bcb5-b7def687e60d"
+>
+<PreConditions>
+<PreCondition
+ Guid="2460b6e7-9d68-433a-9594-fd98160bcfa3"
+>Kernel.Level.Value.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c23b5fc5-f7d9-43d6-be8d-8b1aa6c8bad0"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; LevelDataStruct{
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L1
+    },
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set gradient and SSP"
+ Guid="59cbd8bb-f239-4b67-a591-ee1b1db25aed"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No gradient or SSP"
+ Guid="96a8b6a3-d53f-49a4-b842-a77c4b5fa6e6"
+>
+<PreConditions>
+<PreCondition
+ Guid="6393f002-643e-4185-9aa3-164b269097d9"
+>Kernel.TrackDescription.Gradient.Gradients == []
+  OR  
+Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="79df0afc-6e6d-4c17-bdfc-57f58b7cbfe0"
+>InitializeElementsForMA()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set MA"
+ Guid="46054fd8-dd97-4c90-b6c3-94f63075e04e"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No MA"
+ Guid="6167554b-b2df-49e7-bd5b-a41b69724d68"
+>
+<PreConditions>
+<PreCondition
+ Guid="fa520447-9f40-4fdd-b7f8-942b00d3b71b"
+>Kernel.MA.MA == EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3e84671b-e591-401f-acc8-a48b81913343"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 4500.0
+    }
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set LS mode profile"
+ Guid="9bf9f375-c3a0-4994-a177-fa1629b59ffb"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set LS mode profile"
+ Guid="bee4a01e-c52b-4272-9c2c-46d136690011"
+>
+<PreConditions>
+<PreCondition
+ Guid="e13baae8-2425-4495-b05f-d8a6969afe11"
+>Kernel.MA.ModeProfile.Profile == []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d4b4461f-f590-4be9-abca-0fe04cbc2a24"
+>Kernel.MA.ModeProfile.Profile &lt;- 
+[
+Kernel.MA.ModeProfile.ModeProfileStruct{
+    Distance =&gt; 0.0,
+    Mode =&gt; Default.Mode.ModeProfile.LS,
+    Speed =&gt; Default.BaseTypes.Speed.UseNV,
+    Length =&gt; 4500.0,
+    AcknLength =&gt; 0.0,
+    SupervisionQualifier =&gt; Messages.Q_MAMODE.as_the_EOA__keeping_the_SvL_given_by_the_MA
+}
+]</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="110"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="SetSRMode"
+ Guid="85e02aac-468a-4ad5-a199-7ed7a4201f73"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set SR mode"
+ Guid="df9b0350-3626-4781-8c03-3b3457920b1f"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set SR mode"
+ Guid="e1ad8f4a-82ab-4a90-bfb7-efc319198d1b"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="b501904c-c6c8-45fa-9042-2f1415bd8ba1"
+>Kernel.Mode &lt;- Mode.SR</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Delete the MA"
+ Guid="258f00dd-ebc4-47c8-b82f-4df206ef6e06"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Delete the MA"
+ Guid="2df7e86c-3162-4bbc-b91e-f83e97b1794d"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="ddc4c703-c2bc-47f1-a8fa-5ff2684cec24"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Empty the mode profile"
+ Guid="0b688d7f-db41-48cc-8f9d-725a46a5689b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Empty the mode profile"
+ Guid="bcbe415d-cad2-4143-a3e1-8e3435e6809a"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="4f962ed9-3d1a-41d2-95a4-8b038aae6445"
+>Kernel.MA.ModeProfile.Profile &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

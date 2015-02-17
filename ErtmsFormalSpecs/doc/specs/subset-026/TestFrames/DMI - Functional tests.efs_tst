@@ -310,12 +310,10 @@
 >
 <Actions>
 <Action
- Guid="648f084b-f4a5-49c4-ac48-36696da4e34e"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="08b049f2-681b-4d23-ba48-930fc3923d1d"
 >DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="764a8fc8-01af-41f2-ab16-f705802e62ce"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="db52103d-90ba-48ca-832c-8994d15f8a51"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -354,10 +352,10 @@
 >
 <Actions>
 <Action
- Guid="51de410d-a70a-44b7-9072-97788dda6d24"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="dc271f9b-974b-456d-8ebc-1baa86522202"
->DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="7e79c09b-0d0d-4b90-8176-26de0c28810e"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1121,12 +1119,10 @@
 >
 <Actions>
 <Action
- Guid="a9a8ac49-4668-4a77-825d-2d600e6bf170"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="8a6f3ffe-af79-47c8-a853-300b96ffcf16"
 >DMI.MasterDMI().In_AcknForReverseMovementProtection.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="d5f5a3bb-eb19-4994-9c7a-5c36bbfcd785"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="315227fb-4f7b-4001-b613-66a507d0a24c"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1165,10 +1161,10 @@
 >
 <Actions>
 <Action
- Guid="7356fc82-5d8d-4f2e-9085-785e64dd519c"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="51aa7498-51df-4257-8276-1b279661ca20"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="76e11e58-329e-4da6-9369-aaa410c6053b"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1932,12 +1928,10 @@
 >
 <Actions>
 <Action
- Guid="d84d71f5-4eb3-4b3e-a6d7-58f1fe9c31fd"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="3c80f300-dcca-4b9c-af33-2fbabf622948"
 >DMI.MasterDMI().In_AcknForReversingDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="9e5ec820-3aee-42a4-ba40-c9273b0a549d"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="9896973a-c827-4776-a92b-e9d7849aca8d"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1976,10 +1970,10 @@
 >
 <Actions>
 <Action
- Guid="c57df9b6-eb4b-43d3-891f-99d7c6f071aa"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="52712a5b-4049-437c-8569-372a43e89848"
->DMI.MasterDMI().In_AcknForReversingDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForReversingDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="262c09bc-ff30-4a77-9570-a6af784b27dd"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2743,12 +2737,10 @@
 >
 <Actions>
 <Action
- Guid="27f55cbb-96bc-4d30-ae11-500e60125fba"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="3c1b4d70-f914-4943-84e8-823fd731db31"
 >DMI.MasterDMI().In_AcknForRollAwayProtection.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="061aec98-a49a-4fa7-ae86-a6d384dd8201"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="2400c7a8-d444-491e-9f30-e0c08c4135f4"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2787,10 +2779,10 @@
 >
 <Actions>
 <Action
- Guid="3299e2d4-7cf1-48f2-b18a-2c66ec03a8c6"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="6ba23377-47b2-43d6-ae7e-fe126a30fab7"
->DMI.MasterDMI().In_AcknForRollAwayProtection.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForRollAwayProtection.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="b0e6b97b-fc3e-4642-9980-d4642ea0008e"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3554,12 +3546,10 @@
 >
 <Actions>
 <Action
- Guid="c946f963-bf77-45e7-886e-5c1e7337ced9"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="f5f193b6-80cb-4021-ad01-834f2495eed7"
 >DMI.MasterDMI().In_AcknForStandstillSupervision.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="3a46a044-5eb3-4c1a-97d0-c1bfb846c18f"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="185e6120-da19-4eed-a780-0eda6ec20a92"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3598,10 +3588,10 @@
 >
 <Actions>
 <Action
- Guid="bbe616fd-de60-4b9a-aaa4-463a78298c57"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="efa2362d-f402-4014-86ae-37d304503d1c"
->DMI.MasterDMI().In_AcknForStandstillSupervision.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForStandstillSupervision.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="fa99b0b1-6352-4962-ac0d-b1c4e44a96db"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4364,10 +4354,8 @@
 >
 <Actions>
 <Action
- Guid="1fc98029-9d85-429a-b0bd-18928c99e76c"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
- Guid="801efc06-c52c-4cc9-bd4c-74c5ecd84f4d"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="89baabe8-ef49-4014-a7eb-c0f6f6295a45"
+>Testing.SetLSMode()</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="dcde0770-9fee-48e7-8c65-cbacff08231c"
@@ -4403,8 +4391,8 @@
 >
 <Actions>
 <Action
- Guid="1e443468-82c1-48a2-a743-db5f635f60ad"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="593b03f5-75ca-48b1-82e2-56157a03acc7"
+>Testing.SetSRMode()</Action></Actions>
 </SubStep><SubStep
  Name="SubStep 2"
  Guid="52382de2-c806-413e-a2bf-22fe9d431b70"
@@ -5182,10 +5170,8 @@
 >
 <Actions>
 <Action
- Guid="0532930f-20ff-41c7-9968-26566afb3760"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
- Guid="3a47f181-5a27-488e-8cef-188884f78e4a"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="c6ce8ea3-0462-4e77-aa7f-95a893ff300d"
+>Testing.SetLSMode()</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="6a44af97-c5ef-4fb3-beaf-0b5c7e2ff0fa"
@@ -5225,8 +5211,8 @@
 >
 <Actions>
 <Action
- Guid="72e22e1d-dfec-4bf8-ba5a-8281180663ea"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="ef7d5c79-4af3-406d-a274-e8d3e55e091e"
+>Testing.SetSRMode()</Action></Actions>
 </SubStep><SubStep
  Name="SubStep 2"
  Guid="77122788-d2d1-4bea-bb3d-e50318ec90d7"
@@ -6029,12 +6015,10 @@
 >
 <Actions>
 <Action
- Guid="d70b651a-393a-46c3-8e2e-f081dc8972e9"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="f37b6e9c-9c1a-4755-ad49-d099bd8e40e0"
 >DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="ce82f2e4-71f3-48b1-afbd-db72e7ad2536"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="c9ac37ea-0d7d-41c5-a412-a6ccf677bfb3"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6073,10 +6057,10 @@
 >
 <Actions>
 <Action
- Guid="657b058e-1277-4ec1-88ed-401c6e85a4f6"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="30c8a02a-d8ce-469d-a950-9fc67c2b641f"
->DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="a77c18dd-969d-4595-8776-a7cfc927fa1e"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6840,12 +6824,10 @@
 >
 <Actions>
 <Action
- Guid="08093eab-8010-4e70-8659-36100d313a9d"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="9a4e8cda-b87d-4611-aff0-cca2619a4f8c"
 >DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="a2ffd3b8-9b18-4cf5-b8fd-608822021f3f"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="93bb626b-82f6-4c1c-a768-50550e2a00cf"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6884,10 +6866,10 @@
 >
 <Actions>
 <Action
- Guid="2394920b-ee2c-4514-9d99-ed9c912637f2"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="7df3542a-8944-4eab-9c64-3e4708e39f31"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="cfac43a1-08f3-4e56-bf27-43de4c8e6eb4"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7650,10 +7632,8 @@
 >
 <Actions>
 <Action
- Guid="be0bffda-61aa-4f3b-ae91-0a9ab325373d"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
- Guid="dd4de665-2bce-4013-86af-1ef5982e3acb"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="27f918f2-a854-4a1f-ab01-a304f3a148c1"
+>Testing.SetLSMode()</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="313dbe42-cd0a-4ed4-a75a-bdcf079ad0c6"
@@ -7689,8 +7669,8 @@
 >
 <Actions>
 <Action
- Guid="61f51aa6-2259-412c-84db-44d27216e0f5"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="ad210384-e27d-4685-8d3a-60f35637e2ae"
+>Testing.SetSRMode()</Action></Actions>
 </SubStep><SubStep
  Name="SubStep 2"
  Guid="357c2dc4-c02b-4ff1-9056-6f1041182349"
@@ -8449,12 +8429,10 @@
 >
 <Actions>
 <Action
- Guid="64b3d212-c574-4112-9b11-04f11947d63c"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="ae3fba50-1e90-477e-92d7-34843dc52726"
 >DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="ebfd6caa-1989-43ea-976a-43d3a2429b62"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="8f2915ff-935c-4d29-977a-6a70073b2816"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -8493,10 +8471,10 @@
 >
 <Actions>
 <Action
- Guid="de4c4b26-899d-4149-a13e-e515e661e665"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="a7186a2f-3208-46f8-89db-a859b0e52bc6"
->DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="02d9b1b5-a0f1-497e-b339-073f42787302"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -9260,12 +9238,10 @@
 >
 <Actions>
 <Action
- Guid="f5f6bcd5-0e70-42bf-9af6-bd5bb775e604"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="1d4d2adb-f3a7-419f-af76-33fca3c81c4e"
 >DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="f7ad4932-7205-45d6-bd45-88144bd87998"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="813e5b11-1c48-4a37-b5ee-be98d4e99879"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -9304,10 +9280,10 @@
 >
 <Actions>
 <Action
- Guid="c394db45-f06d-4c39-9365-e96e11af4ae2"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="800a92ca-b5cb-4a01-8742-8ffcbcb0e860"
->DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="484504ad-a86c-434d-98ae-c8ae0b623432"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -10070,10 +10046,8 @@
 >
 <Actions>
 <Action
- Guid="4852940e-873d-4b68-8376-2409345c4b38"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
- Guid="de9ade5c-a86f-4017-86ea-e01dbf716375"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="e28ee6dc-91a2-4c2f-9fdb-7b4276caa3bb"
+>Testing.SetLSMode()</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="9b9e1c62-5956-4088-a062-439b786e5404"
@@ -10109,8 +10083,8 @@
 >
 <Actions>
 <Action
- Guid="57e8712a-55c8-447d-b222-e97a31033b86"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="07b3fd3b-a6a3-4fc4-a483-d0fac18ea8b6"
+>Testing.SetSRMode()</Action></Actions>
 </SubStep><SubStep
  Name="SubStep 2"
  Guid="4387fb0c-003c-416d-baab-cbe33c0d2019"
@@ -10869,12 +10843,10 @@
 >
 <Actions>
 <Action
- Guid="a1dada00-ba80-4d4c-aa01-fd206f72b47a"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="4ecdcbf9-e56d-4903-929b-6c7c062afcba"
 >DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="216d0f39-0e79-4841-96c8-c319702bef00"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="215cef8a-16ea-4016-bfda-d0a063d04b37"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -10913,10 +10885,10 @@
 >
 <Actions>
 <Action
- Guid="ec4b6ad1-47e4-4826-b36c-a6c6c1d591ef"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="3d979c56-e090-4684-91bf-f9f370395790"
->DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="e570ffb7-afbc-4481-990f-31eb5be0326e"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -11664,10 +11636,8 @@
 >
 <Actions>
 <Action
- Guid="b7701858-ab55-4216-8b0b-d071c3069ba5"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
- Guid="cd0a9e4d-1c75-492f-aa0c-0eb0875a3755"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="c2022fd6-9f3c-402b-8e10-44c0ccc519b0"
+>Testing.SetLSMode()</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="8b7f0771-24ca-42be-a9f7-81b1fb9b1b96"
@@ -11700,8 +11670,8 @@
 >
 <Actions>
 <Action
- Guid="cc73f9a3-38bb-44eb-81e1-6d3177e204b4"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="6e6e3ea6-87f7-4929-848d-cccfc6bd717e"
+>Testing.SetSRMode()</Action></Actions>
 </SubStep><SubStep
  Name="SubStep 2"
  Guid="ca1a4507-7f4c-496d-a6a0-ec45c38bfdd8"
@@ -12427,12 +12397,10 @@
 >
 <Actions>
 <Action
- Guid="bd14da25-55e3-4605-a04f-a3b6314d36c4"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="bcb3ac54-2bf0-480c-82f7-944501ea05ac"
 >DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="6c3f22f7-2b93-45a0-abe1-94dbb6d09877"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="3b532817-5dd3-4deb-b3d6-ffa6d2b9f8e6"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -12471,10 +12439,10 @@
 >
 <Actions>
 <Action
- Guid="473313f9-d491-4254-8c4c-ba9d0bd0709f"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="75cf9274-427c-41ac-99a0-ab17cb792f27"
->DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="99fa7f0b-bcbd-4e72-b194-9ca1e151052f"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -13238,12 +13206,10 @@
 >
 <Actions>
 <Action
- Guid="97473e92-8761-43fe-9a03-29ff9d4d3ee5"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="6ea102ae-6d58-4032-906d-2f89ce5e33de"
 >DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="3a7b7ad3-55b8-43da-9ac9-234fadcc56f9"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="32d6b504-3575-42c2-a4ac-7a005d92c77c"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -13282,10 +13248,10 @@
 >
 <Actions>
 <Action
- Guid="7fe9ca72-06bc-4a4c-8287-4e95e790214f"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="38ddc50b-047a-4c13-99a3-28432566b090"
->DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="82534a7b-1beb-4754-8424-8004ba56b8ff"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -14049,12 +14015,10 @@
 >
 <Actions>
 <Action
- Guid="a52392d0-8f72-4c9c-8336-bfb046da27c0"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="fe6402c1-e935-4338-8c5f-a73d1846f826"
 >DMI.MasterDMI().In_ContinueShuntingOnDeskClosureRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="aebd2b9f-83cc-4101-82f6-e67a2ff53900"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="e57d9959-50cf-45d4-a580-a77edcf153c7"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -14093,10 +14057,10 @@
 >
 <Actions>
 <Action
- Guid="55cd60a7-420e-44d7-811e-64d5af75ec34"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="cbe95e1a-ea38-4d87-b6a1-25bb0e13407e"
->DMI.MasterDMI().In_ContinueShuntingOnDeskClosureRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_ContinueShuntingOnDeskClosureRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="eaee8565-b216-4284-bca2-9d48e8256725"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -14885,12 +14849,10 @@
 >
 <Actions>
 <Action
- Guid="747e3505-5327-461d-99fb-709a1d01ca44"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="807e4676-712f-4aca-b57f-aac1e6fb4a87"
 >DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="8bb29c78-bd4c-4626-a16d-391beb6ff4e6"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="58df8fff-21f3-4f87-ab9b-5c8541efe0ce"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -14934,10 +14896,10 @@
 >
 <Actions>
 <Action
- Guid="3b300387-46c5-4146-a90a-876c1f471115"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="a8345d85-0cce-41eb-b0dc-41326e04b764"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="725ad830-3f3d-441b-9a50-b252553bd402"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -15790,10 +15752,8 @@
 >
 <Actions>
 <Action
- Guid="6448ae4e-2e9c-45cd-9fd8-922f0948270f"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
- Guid="b9a78321-195a-463e-9724-1c29a848c60f"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="9473ce45-a173-4ff3-8e2e-2dc028e3f2be"
+>Testing.SetLSMode()</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="732db1d9-a29d-4b52-a219-9220c7f0f7ec"
@@ -15836,8 +15796,8 @@
 >
 <Actions>
 <Action
- Guid="22c8e638-a679-4196-b931-b4fcb99515cd"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="6294f0ad-21e6-4756-8ec1-e879648b2542"
+>Testing.SetSRMode()</Action></Actions>
 </SubStep><SubStep
  Name="SubStep 2"
  Guid="6d49713a-933e-474f-bd7f-9e47051dbb36"
@@ -16673,12 +16633,10 @@
 >
 <Actions>
 <Action
- Guid="75c530ff-ef82-46ef-aad9-4f917121597e"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="729def53-49f1-47e4-98bd-7d0b5a35d0b9"
 >DMI.MasterDMI().In_ExitOfShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="e2883b3f-2aa7-4108-92a6-e6f65855b153"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="e2b2c30b-c754-45f9-a94b-a8146d11fad6"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -16717,10 +16675,10 @@
 >
 <Actions>
 <Action
- Guid="3a6fa3c1-5fb9-4529-8535-a9c40215906e"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="cd6f6dd4-99b2-4ab3-96e8-bdac90fb2f3a"
->DMI.MasterDMI().In_ExitOfShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_ExitOfShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="23cf9158-1cdd-451f-8dc4-5e04f46a35dc"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -17484,12 +17442,10 @@
 >
 <Actions>
 <Action
- Guid="728e3587-1329-42d4-b3fb-a39cbb43123c"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="7b1da4a4-0c21-4700-be32-365f3fcc6ea0"
 >DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="84b9c40b-fbfd-490b-a964-a241a6823e86"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="3633401f-3875-4f85-964e-5d8dab141391"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -17528,10 +17484,10 @@
 >
 <Actions>
 <Action
- Guid="56a7c04f-f616-439c-a935-abdefc4d65ce"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="b75f98aa-0c3d-49da-a0f8-9b96d1b2902a"
->DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="28e68d15-43b4-419b-9128-0afcc152fe00"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -18302,12 +18258,10 @@
 >
 <Actions>
 <Action
- Guid="d416b385-8aee-4085-ac2c-1ae7bb3d2f6c"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="eba39a68-3160-413b-b9da-6209ef01ce18"
 >DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="75711872-eb5f-4af7-a92f-3b4f20a26456"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="9b091550-e7f5-4d6e-b422-69bd3ce6a3f2"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -18347,10 +18301,10 @@
 >
 <Actions>
 <Action
- Guid="7faeb7a4-588b-4708-8571-2245993d7098"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="f2edbafd-669a-4216-bd7d-c11168fa0a79"
->DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="962fa837-d622-4b2a-90a1-4fdf6b49b3c1"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -19130,12 +19084,10 @@
 >
 <Actions>
 <Action
- Guid="b74cd4ff-8dcf-4eb2-acbb-adfc58bb8e47"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="6dd81b2c-534a-4d61-9930-4792258aa8b1"
 >DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="cca40bcb-28f3-4cb7-81b0-15b60d35362b"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="be3c0523-433f-42bf-b0b4-5807944267b3"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -19175,10 +19127,10 @@
 >
 <Actions>
 <Action
- Guid="54cde93e-e000-4130-a2e9-99eb56897a80"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="bdf9e1f1-23c0-4d01-86ae-2bf8486b057f"
->DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="b01497f2-79b7-4e3b-b04b-775c85f7bd24"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -20003,12 +19955,10 @@
 >
 <Actions>
 <Action
- Guid="2b0f5808-45c9-4aa5-9506-3479280e7670"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="14e274c3-ae46-4599-a752-1b30accb7920"
 >DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="83cc368d-c59d-4d6f-b6bf-15b83bc16176"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="a8e10346-4f98-48be-97ba-a25260da5d58"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -20057,10 +20007,10 @@
 >
 <Actions>
 <Action
- Guid="8127b845-86e6-4594-b17f-13434b81fbda"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="e7c2cafb-7e68-4bf5-b4b4-ffc8f78396df"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="5233454a-b31c-41a6-b4ec-2c66d91feba2"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -20934,12 +20884,10 @@
 >
 <Actions>
 <Action
- Guid="85060b4d-3a20-43f4-a2d8-931647fba9bc"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="613c3f99-e418-4b2f-8883-5495355fd906"
 >DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="fe41f90c-1c1a-4be3-b5b9-626508928dc2"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="f21ee1a9-2f41-4023-ae4f-2f001562d1a6"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -20978,10 +20926,10 @@
 >
 <Actions>
 <Action
- Guid="7d48e3da-d15e-4b0b-8b2e-e036c74bd4c3"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="cba027b0-0e9c-4846-8149-89e719a45564"
->DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="c16a01e7-676f-47fe-9dbf-4a41a7ed8306"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -21745,12 +21693,10 @@
 >
 <Actions>
 <Action
- Guid="2ffea8c5-cfe9-40e5-9fec-1bcb187d78c2"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="b1604fd9-c7fc-43b8-a07a-083f7dc1cf7c"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="0912a0c1-2eef-4a94-bcaf-3c9cda4c8edf"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="13e3abe0-8abc-4580-b021-01049eb1cca9"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -21789,10 +21735,10 @@
 >
 <Actions>
 <Action
- Guid="c491fda9-f11d-4818-bf41-3d513e99c6c6"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="cb5c4a6c-d72d-474c-a683-e8fb21f72a46"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="be9ce4e6-0991-4a43-84f8-e01e856a937b"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -22556,12 +22502,10 @@
 >
 <Actions>
 <Action
- Guid="c6441a4d-df05-48ca-b9b5-2ef96ad82820"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="121f66ed-5072-4360-9fa7-c1c3213216c0"
 >DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="a699f7d2-c96d-4ee8-b25d-9bf7c5a68420"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="2f60c36b-8296-41cc-ab55-659c9bb83420"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -22600,10 +22544,10 @@
 >
 <Actions>
 <Action
- Guid="cb2b40b9-4ec8-4f5e-ae11-5bd96f4e6062"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="1634b889-661f-45d9-9665-b961d84a4834"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="b0fe8d15-0e9a-4db1-872c-71a235690384"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -23351,10 +23295,8 @@
 >
 <Actions>
 <Action
- Guid="c3d5dca9-b8d1-421c-896e-0ce205aa5766"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
- Guid="9d85aaeb-37e3-4e5c-864d-4f2423aa4c8b"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="9639f507-0fa1-4e01-a450-81354df18fee"
+>Testing.SetLSMode()</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="dceec359-56b5-4e64-a998-8fcf9442381e"
@@ -23387,8 +23329,8 @@
 >
 <Actions>
 <Action
- Guid="e4de4530-e045-4d1e-90ee-469138c6240b"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="d70300a0-755c-41ff-891e-bc43cc150438"
+>Testing.SetSRMode()</Action></Actions>
 </SubStep><SubStep
  Name="SubStep 2"
  Guid="b6ab85bd-faa2-4186-a192-c3407849a7df"
@@ -24114,12 +24056,10 @@
 >
 <Actions>
 <Action
- Guid="cb0e5e66-b6e5-4748-a9e2-4fceecf03497"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="ed4e3c93-fde8-4d4a-b1f3-fc8ed340dbdd"
 >DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="5c8c0324-ca3f-44bb-a219-334ea41ab9df"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="f944a7fd-19fe-4a11-82fe-abb090becc2d"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -24158,10 +24098,10 @@
 >
 <Actions>
 <Action
- Guid="eeba5c50-4c29-4093-87ad-0cd1357ebbb8"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="5b22c535-3d94-4fa3-958c-f9082da3813f"
->DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="5fcef607-32d0-4578-a9f2-501d88a27b2b"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -24930,12 +24870,10 @@
 >
 <Actions>
 <Action
- Guid="10c73228-1eef-42f9-a2dc-187c6c4fc156"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="35a9f9f9-9eae-4a8b-96b6-9bb0902346bb"
 >DMI.MasterDMI().In_TrackAheadFree.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="1fb6b64d-cb6e-45b0-9cb8-1b76fc68e92c"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="3ac79d8a-11d4-4ad0-8b48-e285c19609c0"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -24975,10 +24913,10 @@
 >
 <Actions>
 <Action
- Guid="8384cba7-ada9-4d18-b4e1-d69d0f52bb65"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="187e4854-552f-4cb7-9182-31e4923f0dbb"
->DMI.MasterDMI().In_TrackAheadFree.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_TrackAheadFree.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="6e21418b-5c14-4c4c-9a05-bec989fc223c"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -25721,10 +25659,8 @@
 >
 <Actions>
 <Action
- Guid="b800f496-1246-4abd-941d-83f8fdcd79de"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
- Guid="7f3dc532-01a2-43c4-ad43-a2b1d9985566"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="09fd8627-bed6-4b63-b6d7-036c6674a049"
+>Testing.SetLSMode()</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="5ccd0812-30d4-454e-ada0-14b3e40a29f6"
@@ -25757,8 +25693,8 @@
 >
 <Actions>
 <Action
- Guid="41a1ce9a-ceb4-46c4-a863-86f704db1bd7"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="0904c440-175e-4c2a-9d3d-133785876ca9"
+>Testing.SetSRMode()</Action></Actions>
 </SubStep><SubStep
  Name="SubStep 2"
  Guid="e63e3bf6-1d1b-416a-bfcb-f4318c5d8c64"
@@ -26492,12 +26428,10 @@
 >
 <Actions>
 <Action
- Guid="44b74afa-908d-434b-815b-aae08ad32d7f"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="bfa8e8ed-0c4a-482f-9651-c27313f8a94b"
 >DMI.MasterDMI().In_TrainIntegrityConfirmation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="8597451d-bd7a-4907-b201-91e9066ad743"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="df7405b3-52d2-429d-acb4-5f600ce9d9c2"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -26536,10 +26470,10 @@
 >
 <Actions>
 <Action
- Guid="d35d1c2e-4e82-4890-a26e-2225e718cb79"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="7414eb39-bc3d-44de-8d40-68118032ad7c"
->DMI.MasterDMI().In_TrainIntegrityConfirmation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_TrainIntegrityConfirmation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="826fcc2f-23c0-4948-b8b0-e75396979ca5"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -27304,10 +27238,8 @@
 >
 <Actions>
 <Action
- Guid="ceb3620d-9777-4800-bcb6-6b8b3112802e"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
- Guid="15ca97aa-0c66-416c-8c9a-08044be51d15"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="ec412c4a-d728-40a1-b806-fd19b1ea9e34"
+>Testing.SetLSMode()</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="2ca0adb5-adab-4009-9b5e-acc5faadf535"
@@ -27345,8 +27277,8 @@
 >
 <Actions>
 <Action
- Guid="f3f6a92b-3b98-4f63-9b28-54eb9721aa6e"
->Kernel.Mode &lt;- Default.Mode.SR</Action></Actions>
+ Guid="708fe5db-3bdb-483a-8712-0a445be7c0b7"
+>Testing.SetSRMode()</Action></Actions>
 </SubStep><SubStep
  Name="SubStep 2"
  Guid="ef3b5870-0168-40ee-9dc6-5b91d2911042"
@@ -28150,12 +28082,10 @@
 >
 <Actions>
 <Action
- Guid="a2776b5c-3017-4f16-bbd3-fd111f05d39b"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="d708d76f-a433-49b3-91cb-0e39ccb42530"
 >DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
- Guid="6046aec4-adce-41d5-85df-8ff2cf960839"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="2c446883-f9ec-4380-a6b3-c0896e85fd7a"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28197,10 +28127,10 @@
 >
 <Actions>
 <Action
- Guid="da7d2115-458a-4235-beca-066162923896"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="25ed31fc-1dc7-4f9c-a495-4faa4b8442b0"
->DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="c9254411-3de0-4f1a-9722-8231d66eea2f"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28997,12 +28927,10 @@
 >
 <Actions>
 <Action
- Guid="06a18c2c-a759-44ee-8eb9-b1d12bbe07e0"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="3f48f6da-9547-4230-8ffd-87102f561278"
 >DMI.MasterDMI().Out_AcceptedEmergencyStops.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="1ea3654d-28b1-4baf-a1b5-122790359a20"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="ca144f55-fe09-430c-874b-d9d3a4093929"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -29041,10 +28969,10 @@
 >
 <Actions>
 <Action
- Guid="74bd5312-f7e3-4d3c-a1eb-6420d968f957"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="6800c081-a71e-4eb4-8115-e8dcdb9b6195"
->DMI.MasterDMI().Out_AcceptedEmergencyStops.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_AcceptedEmergencyStops.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="4f3275b5-d025-4761-8a43-fe41fb3b12ae"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -29808,12 +29736,10 @@
 >
 <Actions>
 <Action
- Guid="b24e63fe-7f70-4f7e-aed0-30b0a4e2be7d"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="d494692e-fdc1-4329-b819-d5010219420c"
 >DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="7914e70e-842f-4c47-9d50-901a78a252b7"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="18ba7f05-704d-4e5e-9e5d-1a83b6a15985"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -29852,10 +29778,10 @@
 >
 <Actions>
 <Action
- Guid="e8b3af0f-b89d-466b-a9b1-257e399777b2"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="60410c77-cd3a-4b04-b372-da13ada02101"
->DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="1f9a7572-60fb-41e0-b04b-76c90bd085e3"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -30619,12 +30545,10 @@
 >
 <Actions>
 <Action
- Guid="94d6deca-2160-4824-913e-694ba7c154f7"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="14b0cc3a-6a43-4af4-b102-c8dbae4c62d9"
 >DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="6f37a0de-f643-482b-994f-8512d0b0d7d0"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="e47b7d67-1636-4f56-a7ea-085be1f63fc9"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -30663,10 +30587,10 @@
 >
 <Actions>
 <Action
- Guid="5b396e01-85d3-4f3b-ae49-3307ab01789f"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="53f69981-7109-40b1-9792-11d6f9504214"
->DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="bedf1d36-68ea-46a6-820f-d031fe131fe3"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -31430,12 +31354,10 @@
 >
 <Actions>
 <Action
- Guid="33f931f6-984a-4c9f-bc5f-87bf600a75b7"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="6d612dbb-ab41-4aa8-97b8-2abe515752fa"
 >DMI.MasterDMI().Out_BrakeReason.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="592471f1-b476-4350-b3d5-dbf0b227fa35"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="8573f8e9-a3dc-4e5b-84a8-eb187fbec3e8"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -31474,10 +31396,10 @@
 >
 <Actions>
 <Action
- Guid="f7875ddc-7513-4038-9cd3-29f3c8f41527"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="0a6b97fa-62bf-4af3-948d-7786d7a19ba8"
->DMI.MasterDMI().Out_BrakeReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_BrakeReason.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="e7736f2c-cc3b-4a28-8f75-a712172e9ba3"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -32241,12 +32163,10 @@
 >
 <Actions>
 <Action
- Guid="8a9909ea-02de-4532-bcc8-c7cda22d5bd0"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="76a2e6f5-8ea7-4ad2-8bed-22fa51cfe731"
 >DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested  &lt;- False</Action><Action
- Guid="2c7498d0-0251-44a7-a2ac-155c74f0fadc"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="d3f87254-b421-4673-82ce-aa6d77bb5e9d"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -32285,10 +32205,10 @@
 >
 <Actions>
 <Action
- Guid="e8f05a81-d7ba-42ac-8a20-a893a445b102"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="416215e1-b2ce-4afd-9d1a-68b625cd349b"
->DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="100f6a35-832e-4bf9-b1ee-f29018bdf5f9"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -33052,12 +32972,10 @@
 >
 <Actions>
 <Action
- Guid="8d077220-ef02-44ca-a565-421ef0dbecba"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="1a83ee62-b7be-41bd-bea4-723bd2bdc5de"
 >DMI.MasterDMI().Out_DriverId.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="185b666f-8516-4013-8cd6-d6bb87ef8962"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="9b4a1847-e2fa-4b3b-819d-547dca63a0a3"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -33096,10 +33014,10 @@
 >
 <Actions>
 <Action
- Guid="c4f78dcc-660d-42fc-be00-df79b44f6a42"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="83a88e5f-6f40-440d-857b-9e255eab1eff"
->DMI.MasterDMI().Out_DriverId.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_DriverId.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="a7e3c2bf-866f-4ce6-83b4-ee7194cdf7de"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -33864,14 +33782,10 @@
 >
 <Actions>
 <Action
- Guid="69754cdf-b391-4100-b700-6343122fe028"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="b2dd33f0-f2a6-44a2-b97a-f4fb8bff06cf"
 >DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="8f557492-0062-4fbf-be60-69a2a25eea7f"
->Kernel.MA.MA &lt;- EMPTY</Action><Action
- Guid="53a3f34a-4ebe-4f88-b54d-1d13c2a04650"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="1a9d8f97-479c-4f55-b275-1aa6d4bf742f"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -33910,10 +33824,10 @@
 >
 <Actions>
 <Action
- Guid="d709f1aa-7500-4a81-bcb8-dfcb70fa7a32"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="96969d36-ea42-4f80-abd2-a06fdf7c8492"
->DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="86e2a351-3007-427c-8c05-e59ca49dd23a"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -34677,12 +34591,10 @@
 >
 <Actions>
 <Action
- Guid="4318c9ff-ab57-400f-8d24-58c826fe8468"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="bd80e72d-296d-405e-b2d7-500aeda84fa6"
 >DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested  &lt;- False</Action><Action
- Guid="d512ddec-04f7-4644-8eff-1ea71930b15e"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="310e8f42-3409-43e6-86ff-a4282f88cd40"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -34721,10 +34633,10 @@
 >
 <Actions>
 <Action
- Guid="be3ed40e-ee88-42e5-8705-e337c6a1f749"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="cbac845f-c2f6-4e3f-8821-55abaf6862b2"
->DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="faa1c747-0d34-4ef3-aecc-c858d1d5e8af"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -35488,12 +35400,10 @@
 >
 <Actions>
 <Action
- Guid="3611983e-2d49-401c-9284-251c777d6076"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="c0a125b0-85ee-4829-8108-62c0c988b957"
 >DMI.MasterDMI().Out_FirstTargetAtZeroSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="5f988a8e-aa3a-4994-85cd-1b23308d4ce4"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="c8a95e28-c37e-47fe-a65c-3bacb3690d79"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -35532,10 +35442,10 @@
 >
 <Actions>
 <Action
- Guid="6c8e7d6b-530d-4ffe-887d-ff95eacb5cad"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="d1c4abc5-0d0e-48dc-9206-82bbb1eb0966"
->DMI.MasterDMI().Out_FirstTargetAtZeroSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_FirstTargetAtZeroSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="d443cc0b-8917-45ee-aed9-bfe6ab8577d6"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -36299,12 +36209,10 @@
 >
 <Actions>
 <Action
- Guid="7552b165-9693-46b4-9e7d-e231756f3458"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="c1429da1-5df5-4dcf-8abf-87c68688aaed"
 >DMI.MasterDMI().Out_FixedTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="41bb61bd-abe5-4683-bb12-d7057fd325c8"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="5bcdec6f-c20a-4943-bb5c-8f4417e2aeaa"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -36343,10 +36251,10 @@
 >
 <Actions>
 <Action
- Guid="a85d4585-ace9-466c-bb27-c5167d458923"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="4ba980ee-daf3-41e9-8527-c765728791d5"
->DMI.MasterDMI().Out_FixedTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_FixedTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="23939ab6-cf5c-432f-a91e-e5fb1346b129"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -37056,12 +36964,10 @@
 >
 <Actions>
 <Action
- Guid="5e2217a2-eb3e-4ed8-be62-5ca98113f1ce"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="30a0e8d3-267b-4bb8-945e-8ce51b934bc1"
 >DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="73d07819-4be3-4324-ba42-b01f2d6b3997"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="6d6d2743-4b3b-4174-ad5a-8fe187d9d2c3"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -37086,10 +36992,10 @@
 >
 <Actions>
 <Action
- Guid="536bff40-e904-43f1-857e-24807287387d"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="bb4f979b-af4e-45a8-b158-5f1316e553f1"
->DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="6c94f40e-ed39-4851-80a8-d7fd5087502f"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -37699,12 +37605,10 @@
 >
 <Actions>
 <Action
- Guid="9d7efcfb-8694-45d2-81e8-0b9bc0c68696"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="625bab36-0e7f-4d63-9c83-ce59bf657236"
 >DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="9004c644-423a-4f38-908f-b6a422919241"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="fecac30b-f2cd-4a83-a9f7-dcb08ba4e3f4"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -37743,10 +37647,10 @@
 >
 <Actions>
 <Action
- Guid="6c7a88d4-765d-4388-b939-60c230afaa75"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="8cacc361-f95a-47a2-9c81-b16d3af709ee"
->DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="ee484bca-1f3b-4634-a56c-a5a1a259ede4"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -38512,12 +38416,10 @@
 >
 <Actions>
 <Action
- Guid="2fa75e19-8462-4c61-b137-0e633204dce5"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="317a647b-b175-4f77-923b-2a7e5294d91d"
 >DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="c89262ce-8e84-4690-bd42-3d930606cf89"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="a81e362a-c257-4463-a6c1-08f2e938d07e"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -38556,10 +38458,10 @@
 >
 <Actions>
 <Action
- Guid="c1a54bb0-bc5b-404b-b950-ed342a47c522"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="6414fff6-1b6d-4ad7-b8ba-7047a162a305"
->DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="5c7f6d3a-2ba0-421c-85fe-5c7351fb7be5"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -39323,12 +39225,10 @@
 >
 <Actions>
 <Action
- Guid="8eeebab6-9b07-48a9-8cb7-5674c713a26f"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="dd6db097-662b-4c9e-9d80-8a5d971745ba"
 >DMI.MasterDMI().Out_LevelTransitionAnnouncement.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="c610559a-67c5-4d56-8b03-e474578e688f"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="22141d16-7286-4f33-9c7d-0fd921599f7d"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -39367,10 +39267,10 @@
 >
 <Actions>
 <Action
- Guid="a5b697aa-7017-4d72-b1ee-a41b406098ab"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="fd73d29e-dcb2-4ab4-ab94-d931613894a2"
->DMI.MasterDMI().Out_LevelTransitionAnnouncement.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_LevelTransitionAnnouncement.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="61d6d704-8fd1-412f-8514-81c7a26d3717"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -40134,12 +40034,10 @@
 >
 <Actions>
 <Action
- Guid="b0ca3508-6e3d-4670-91e2-7110773f3cd4"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="91adcfbb-74b2-4366-859c-c9f66f3bd1c1"
 >DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</Action><Action
- Guid="7dd3755f-59c8-4eb7-97d2-fad737997c2e"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="a1781d58-9957-4c28-98fa-64d9dd228849"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -40178,10 +40076,10 @@
 >
 <Actions>
 <Action
- Guid="a3478951-0e44-46b2-92c9-545b674f74f4"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="ae49dd70-6ad7-47fc-80c2-6699de781b5e"
->DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="cd86a84b-4f8f-4f9d-851d-7e214b4833a8"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -40945,12 +40843,10 @@
 >
 <Actions>
 <Action
- Guid="d6f55d0d-b5ca-408f-a5c2-1197a0a2fc61"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="268cd20e-5db0-45f5-900c-46f0bda2ebbb"
 >DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="aa69a314-31dd-46e4-ab25-6fbbd62a43ed"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="9ef1ca3b-2a3b-4a9a-a3e5-019c851e5551"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -40989,10 +40885,10 @@
 >
 <Actions>
 <Action
- Guid="b961d5a0-e654-46e4-9115-9e42f74f048a"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="05b46d3d-9417-4cbc-832c-09c3829dd162"
->DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="d783fa88-5bc9-4729-82e9-b772b3901518"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -41756,12 +41652,10 @@
 >
 <Actions>
 <Action
- Guid="2809b23c-3d30-4694-a010-b58e341e1d82"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="c52c30f1-689d-4418-8538-72508b3d7b9f"
 >DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- True</Action><Action
- Guid="ed9ad481-9b9f-4520-b816-fd43343d97e3"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="598b3848-112f-467b-b69b-698675b0bb50"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -41800,10 +41694,10 @@
 >
 <Actions>
 <Action
- Guid="f4f978f1-5a5c-478a-baf0-42fc2656238a"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="ca87fa7f-6e20-4220-a5fe-96f429660848"
->DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="149dba77-9315-422e-92d3-24863c937f79"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -42567,12 +42461,10 @@
 >
 <Actions>
 <Action
- Guid="6af87894-63c3-43c2-95d7-d5e7925c4a4d"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="81cb91c7-5311-4fe1-a542-ec3c63e25e08"
 >DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="f6f92662-b7ac-487c-862f-5e6d21ec3196"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="a93a32b9-6246-4691-9095-2a893fe7c04c"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -42611,10 +42503,10 @@
 >
 <Actions>
 <Action
- Guid="7a39d4ad-c671-4c50-93cc-7a7162e1ddce"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="98340934-6992-4c09-a7e7-108382bb9401"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="b3c93556-b0cf-4080-83cc-3f1dda3bdeea"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -43380,12 +43272,10 @@
 >
 <Actions>
 <Action
- Guid="3b8a70f3-25ae-4667-8ec2-8610afa265b2"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="fa80f97a-eb73-480d-a1cc-92b55bb06810"
 >DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="667e0a31-00f2-41ef-9216-238dbcbf065a"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="aa035b3e-3140-4d62-9ab0-747ebca7202b"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -43424,10 +43314,10 @@
 >
 <Actions>
 <Action
- Guid="133e73b3-b4a0-4964-9566-5ac58d53f428"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="1d52b871-4b2d-4b5b-a12c-f60c7d314817"
->DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="8dc492d0-f347-43f1-8b81-01e26407c621"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -44191,12 +44081,10 @@
 >
 <Actions>
 <Action
- Guid="bb197310-7dc0-444c-b625-eb8601a43ba8"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="0ac214cf-1699-4f03-b5ad-17ea1f3980b3"
 >DMI.MasterDMI().Out_OverrideStatus.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="c849e163-3877-4e80-a36d-3b1317cf6fff"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="2d5cf45d-2e8c-49e4-9c40-bbd91612becd"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -44235,10 +44123,10 @@
 >
 <Actions>
 <Action
- Guid="4b9b36e4-0fa7-4802-a3b5-85dbf5a7269c"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="c1c93494-63b9-4da8-bcaa-dd2211b33ed2"
->DMI.MasterDMI().Out_OverrideStatus.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_OverrideStatus.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="bbc15587-0b69-4962-af1b-63135ed0b3a5"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -45020,12 +44908,10 @@
 >
 <Actions>
 <Action
- Guid="5c9f6e29-2b21-49ad-8348-e80208835786"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="2ec97cf4-cbca-419a-84ae-bd223b4e6399"
 >DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="64b6206a-8201-4bbe-a117-73efc4f37888"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="f433dfc7-3184-4a6a-9e45-60674be11cfe"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -45064,12 +44950,10 @@
 >
 <Actions>
 <Action
- Guid="951d16a8-981f-4c67-95f4-3f81e8607655"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="0ac0fd46-8470-49fb-921a-a25e1e4b0e8e"
 >DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="6a11e46b-eadc-489b-897c-6f46b64504ea"
->Kernel.ModeTransitions.PrevMode &lt;- Default.Mode.LS</Action></Actions>
+ Guid="921014e8-5bb4-4601-805d-6ec0a5899d22"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -45833,12 +45717,10 @@
 >
 <Actions>
 <Action
- Guid="02ebd656-9358-443f-88ee-888d510bea72"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="6ec7ac25-8e72-4431-b610-90a14f4feb38"
 >DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="ec3829fa-56f7-4611-9f38-0e4cd2bbe44c"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="3554ea33-6570-4caf-ba12-ab96ec6df3c4"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -45877,10 +45759,10 @@
 >
 <Actions>
 <Action
- Guid="f7ea9fa7-2145-4ec7-a0e5-6ff58e0e2553"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="609bb38d-b52c-4e9c-9aac-743a71fd0704"
->DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="a1c3db0a-6e92-4a4b-bba6-c53ba91350d2"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -46644,12 +46526,10 @@
 >
 <Actions>
 <Action
- Guid="3d795705-a6de-477a-8748-a0e3e125b94f"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="22ee352d-f236-4904-b871-3e2b7bb0929e"
 >DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="5af11c86-f137-465d-bec0-8d8c4484fd65"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="3c86aacb-558e-4dd1-8fa8-562560e3f869"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -46688,10 +46568,10 @@
 >
 <Actions>
 <Action
- Guid="c8c4a1a4-ed98-40b7-84ef-7879e4a80bda"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="5d14899d-a84d-4cb4-bacc-09576531340d"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="c12b121a-a8e4-4846-bbae-934878a93f9b"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -47455,12 +47335,10 @@
 >
 <Actions>
 <Action
- Guid="7865050d-8872-4656-bbfb-7cb98851850a"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="c6156c78-e62c-40be-b482-d0daa2aeca3c"
 >DMI.MasterDMI().Out_RBCContactInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="86edd8c9-64d7-4060-90ba-68002f0dbc8c"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="4bb0e1c4-c665-4f65-9491-6d01bcc545d8"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -47499,10 +47377,10 @@
 >
 <Actions>
 <Action
- Guid="87c466b2-33a2-4428-a9f3-7ea145d246e6"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="a26aa8f1-c3e0-49c5-acb0-8d9be1a77e56"
->DMI.MasterDMI().Out_RBCContactInformation.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_RBCContactInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="dbe28950-26d1-4a06-be94-be9f0fffceaf"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -48266,12 +48144,10 @@
 >
 <Actions>
 <Action
- Guid="3a82b4d3-9b4d-4fe2-915b-d3e0a0480575"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="d5478c09-ac92-4a7c-bee2-3694e8ea1841"
 >DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="4a1f09a2-aeab-464d-b511-e4f385cbb085"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="fa20df13-2356-4a54-8af6-3043dd0db128"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -48310,10 +48186,10 @@
 >
 <Actions>
 <Action
- Guid="74942fe9-f506-42a3-9781-8c76545af728"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="d2498f93-8ffa-463b-adf4-0c76088eca0a"
->DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="ed2426cd-8dce-43f3-a0d5-b69bc50f58af"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -49077,12 +48953,10 @@
 >
 <Actions>
 <Action
- Guid="ecf8956f-f4b2-429a-8842-1ba90ab37ca6"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="8920fed5-efa9-43fb-b980-a855535f4593"
 >DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="2f3e75fc-fcac-41de-821c-52222e1b188b"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="2b46752a-c3b3-437d-b7dd-0d091ca7ce27"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -49121,10 +48995,10 @@
 >
 <Actions>
 <Action
- Guid="d6ac3624-89fc-4cbb-a99e-d81c32034fcc"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="629037da-e4db-410c-bab8-9606d0e4bdd9"
->DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="708dfc62-0d5d-4d18-9f7b-5151091207e7"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -49888,12 +49762,10 @@
 >
 <Actions>
 <Action
- Guid="faf9a8f4-a58f-4a40-b080-867bee2cfcf6"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="583a34cf-f945-4061-b49e-56f811f91023"
 >DMI.MasterDMI().Out_RouteUnsuitabilities.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="2620a715-5d4a-4b7a-8667-0aa15434d179"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="f6de5dd0-a116-45dd-ae3d-4844d4e77426"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -49932,10 +49804,10 @@
 >
 <Actions>
 <Action
- Guid="577ed8c0-6dc8-436d-ab30-aafc7af757a5"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="a7c79b33-598f-4bbd-959f-58803f316834"
->DMI.MasterDMI().Out_RouteUnsuitabilities.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_RouteUnsuitabilities.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="8fa76462-b955-4bb1-9a37-4272ec54b9d7"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -50699,12 +50571,10 @@
 >
 <Actions>
 <Action
- Guid="31ca8dcd-d12c-4338-a667-97c07fcfc7fc"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="d42c0742-89b6-4dd4-aa33-accd135041de"
 >DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="96cca5fa-9726-4e5d-9775-0781e08aebfe"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="1df6a216-eaf5-43e9-85fb-f78e85064885"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -50743,10 +50613,10 @@
 >
 <Actions>
 <Action
- Guid="86d7c1c4-915c-4697-8449-20e2b5ac428a"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="a34f5601-4c62-4758-94ff-7fc09907b7a3"
->DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="43d7b1b3-9e1e-4dee-9151-5f5f0a82d7f2"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -51510,12 +51380,10 @@
 >
 <Actions>
 <Action
- Guid="287e342d-e41f-4e81-bf9e-c24644e64263"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="f6e4ffce-efde-413b-ac18-6fb2b6b31d80"
 >DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="f24c8277-d47a-4d98-9a69-4badab26d0a9"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="1973f3da-7248-440b-8c97-19a139354c88"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -51554,10 +51422,10 @@
 >
 <Actions>
 <Action
- Guid="dd936964-bd66-4f94-8535-cb794ee4db76"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="94c04b09-1907-4524-88e9-8e85ea806c04"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="31fbbd5c-56eb-45ee-b3d4-66d189f783b9"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -52321,12 +52189,10 @@
 >
 <Actions>
 <Action
- Guid="d6d47db5-bd4d-41e7-9f49-4e9d9e8beb54"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="e93c61b3-3ddb-4754-81f7-09387019e297"
 >DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="5f697a75-2cb6-4172-ac84-2e9b7c75e3c8"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="8139bc14-5641-42ac-a4dc-19a9dac89b03"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -52365,10 +52231,10 @@
 >
 <Actions>
 <Action
- Guid="35dc5560-832e-45aa-b593-563e56eb5a9d"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="545e388e-4ae8-4bd6-a6fd-46e3146385bb"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="176cd19f-367b-4b1f-8e45-e5097740e338"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -53132,12 +52998,10 @@
 >
 <Actions>
 <Action
- Guid="7b024638-1580-4f66-9a45-d999d7661908"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="9c720ea8-a67e-455d-8cc4-73afc8811f4d"
 >DMI.MasterDMI().Out_ShuntingRequestNotAnsweredByRbc.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="7302ce57-fc02-46ed-9524-4baccf4ffa9a"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="be69e81c-5c32-4fba-ba24-8ef611bfd134"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -53176,10 +53040,10 @@
 >
 <Actions>
 <Action
- Guid="1d920d9a-f283-47c0-bd44-c7c3ff1a6619"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="f3a89f7a-f104-4525-8a2a-69e7f0afe2ad"
->DMI.MasterDMI().Out_ShuntingRequestNotAnsweredByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ShuntingRequestNotAnsweredByRbc.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="81171742-fcda-4c0d-8c76-8907c17722d3"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -53943,12 +53807,10 @@
 >
 <Actions>
 <Action
- Guid="b5e9d683-7824-42f8-84d9-b4f7649cb005"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="b9b809fa-6272-4b4d-bed9-a3640fd7be19"
 >DMI.MasterDMI().Out_SpeedAndDistanceMonitoringSupervisionStatus.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="01c5f626-c08b-40cb-a421-a606cc509ee6"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="b6e8a912-1ecf-40ee-8e6c-3d8dde3a8b5f"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -53987,10 +53849,10 @@
 >
 <Actions>
 <Action
- Guid="0c77e4ac-8003-480f-be1c-812e065e5785"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="b430ce25-e299-4a4f-a9a9-8c31f848425f"
->DMI.MasterDMI().Out_SpeedAndDistanceMonitoringSupervisionStatus.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_SpeedAndDistanceMonitoringSupervisionStatus.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="2be1112a-76fc-42c5-888c-aad33a3038ba"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -54754,12 +54616,10 @@
 >
 <Actions>
 <Action
- Guid="ccb2cb14-6328-497c-b768-0a38753a2c9c"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="1742766c-733f-4905-a7e1-f01d6c8980c1"
 >DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="a3ffe612-0787-49d7-8bcf-f41eeea4a8df"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="c3f27499-789b-40e6-92f0-bff4f5ae7a7e"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -54798,10 +54658,10 @@
 >
 <Actions>
 <Action
- Guid="c83d6845-8380-4453-b76b-70c2873a2102"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="48e99ba5-0e44-4145-98bd-c96ec4074b96"
->DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="40e972bf-a849-4021-92dc-e6dd2b71993d"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -55565,12 +55425,10 @@
 >
 <Actions>
 <Action
- Guid="05bc8352-1f0a-4f5d-8e6e-b3b57cd960e2"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="4ae97a89-1ff2-4658-83f2-c1073e8f34eb"
 >DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="2c1f3d0e-1b12-48cf-a9b9-017b770accbe"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="c324b4d0-9580-46b8-919c-0fd881b15900"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -55609,10 +55467,10 @@
 >
 <Actions>
 <Action
- Guid="d81e4c2e-8456-443b-971f-a3803194584c"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="73218072-c995-48e2-b677-03a9c6ad74f0"
->DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="e21c1a67-497e-427a-9bb0-bceab406009b"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -56376,12 +56234,10 @@
 >
 <Actions>
 <Action
- Guid="01e9884e-7cf2-4cb7-b535-dfbb8abf3d24"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="cea287ac-3db6-4189-9072-d7aa752bcacd"
 >DMI.MasterDMI().Out_TrackAheadFreeRequest.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="cb02476d-6485-4bc8-863f-06a27d9421d4"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="f0db2596-7dd2-465d-b2e6-ef0a6e13a929"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -56420,10 +56276,10 @@
 >
 <Actions>
 <Action
- Guid="235a7110-975a-4f11-aff9-a1cfad7bbb62"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="6deff8f4-efd9-4aec-a219-71d2b0e36c95"
->DMI.MasterDMI().Out_TrackAheadFreeRequest.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrackAheadFreeRequest.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="fc09c934-1eec-4749-bf08-73cef1677f72"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -57187,12 +57043,10 @@
 >
 <Actions>
 <Action
- Guid="5ad6e0e1-e7ac-4e7d-b1b6-1fa24601da53"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="d91a73bc-f78a-4f83-a582-c50ddcff7053"
 >DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="034d7814-4dd2-4c29-beeb-a39b75bedab4"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="62e34aa7-fd34-4d4b-8f8f-1928a15da0a9"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -57231,10 +57085,10 @@
 >
 <Actions>
 <Action
- Guid="6981d224-36bd-4524-80fb-4c12104629b0"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="f01f77ad-c9e4-4136-8bbb-b2453433951e"
->DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="6c7aaa9e-293c-4a08-87e6-750c1aa8049a"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -57998,12 +57852,10 @@
 >
 <Actions>
 <Action
- Guid="cb244a90-1152-44ff-9d24-4f5b4c836fb4"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="003ec9f4-b9e9-48f7-9734-e4c387f2e18e"
 >DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="198df9cb-f970-4e33-8e7d-fec2fdb2458e"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="91ee2e7c-886d-45ea-ad3e-8fc8ef1f5ef8"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -58042,10 +57894,10 @@
 >
 <Actions>
 <Action
- Guid="0e925ffc-c893-4331-9c5a-4d29a6981be1"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="e9d4c73b-933b-4523-9649-773530595aa0"
->DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="1ee4ad65-a59a-44f9-ad4d-b81d8f0e23f6"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -58809,12 +58661,10 @@
 >
 <Actions>
 <Action
- Guid="aa21eed6-0ce2-4ae3-8b8e-f8feebf6c97c"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="22f32f9d-0fca-4919-bfe7-e4f7f38b1de1"
 >DMI.MasterDMI().Out_TracksideMalfunction.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="9824daed-fd8e-4e1e-be6b-1d52433e4d10"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="4d3e3460-814c-44fe-b472-78459f390c03"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -58853,10 +58703,10 @@
 >
 <Actions>
 <Action
- Guid="83c3ae6f-3109-47a8-ad1f-c19d26c0c305"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="31d0171c-57a1-4534-a6fc-8bc6631b2955"
->DMI.MasterDMI().Out_TracksideMalfunction.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TracksideMalfunction.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="160b381a-9274-440a-97c7-bc1a6c87e669"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -59620,12 +59470,10 @@
 >
 <Actions>
 <Action
- Guid="606aea0c-c636-4ee8-b172-ea2c289c8dd0"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="7cbd4b7b-1bfd-4d2c-b67b-8900fafa1aed"
 >DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="2dc6266e-2d31-454f-a115-ebe93cf21340"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="222dd36a-beb9-4dda-b727-893016845e0c"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -59664,10 +59512,10 @@
 >
 <Actions>
 <Action
- Guid="3bd32431-accd-46c1-89e0-0ef0dc302d03"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="65706dd7-85c8-4d9a-ac8a-4aaafdc3cebf"
->DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="dd966624-867f-42e8-98c4-62098b126b25"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -60431,12 +60279,10 @@
 >
 <Actions>
 <Action
- Guid="e19939f9-9a06-4b17-a99d-b90681bea03a"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="f661ffdc-894c-4225-9744-9de1e1f76d5d"
 >DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="dd33fd3c-c421-4b10-b1ae-472fb10f3723"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="d7d9231e-16db-4754-8c62-c0d137e12e80"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -60475,10 +60321,10 @@
 >
 <Actions>
 <Action
- Guid="263d7200-447c-48d5-a4ca-65a2b38a37d2"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="8c008f13-f1e4-43bd-87c6-ff167f957868"
->DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="9e3a1687-98ed-4c32-867b-95fdb1ba04ce"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -61242,12 +61088,10 @@
 >
 <Actions>
 <Action
- Guid="ee741a51-ecf3-4e16-b66f-09cd24d49841"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="d9c902d4-a14d-4d00-b341-0afe90ba1fd1"
 >DMI.MasterDMI().Out_TrainIsRejected.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="ac4c97e5-c02f-4e35-99a1-25308597507c"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="caa1a60d-0c93-47ed-806e-2a38dab23122"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -61286,10 +61130,10 @@
 >
 <Actions>
 <Action
- Guid="96b688d4-94e6-4681-8a77-31d5a1559e4b"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="47016671-79ee-4f31-a204-5465d953171d"
->DMI.MasterDMI().Out_TrainIsRejected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrainIsRejected.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="c3ad09a5-d64b-4274-924d-195a327055c0"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -62053,12 +61897,10 @@
 >
 <Actions>
 <Action
- Guid="9606673a-84d7-41fb-af8e-cdee5641cd39"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="7292c095-fdce-448d-8a71-36fa38faca51"
 >DMI.MasterDMI().Out_TrainRunningNumber.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="8737d9ee-2760-4327-9cbe-b37fdc8f6c47"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="134036d9-ded8-49db-b0ec-86ecb8a4e47e"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -62097,10 +61939,10 @@
 >
 <Actions>
 <Action
- Guid="764e6391-c431-496f-b717-d088cf12effb"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="abd6ceb2-7480-4230-873d-bc70c95b237c"
->DMI.MasterDMI().Out_TrainRunningNumber.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrainRunningNumber.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="caac9f11-9854-46e3-aa7a-2e53171de8b2"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -62864,12 +62706,10 @@
 >
 <Actions>
 <Action
- Guid="771e9405-dced-461e-bcc1-14c2ae177aa1"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="acb44122-7204-442d-9c91-266ecf00c885"
 >DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</Action><Action
- Guid="fcd1c897-e998-4f1a-b51b-6f3d01075d57"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="3835002e-4c7b-4639-9d36-df42b57cf5ef"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -62908,10 +62748,10 @@
 >
 <Actions>
 <Action
- Guid="b3efc069-cd89-4799-969f-e969d32b2bb1"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="751c9982-663c-4498-85a8-95ee6aa203b2"
->DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="08d55fcb-98dc-438a-ac59-45649fc27738"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -63675,12 +63515,10 @@
 >
 <Actions>
 <Action
- Guid="fd8deb73-cf08-4528-a383-b48c77ac9a83"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="2423b1c7-530d-4ac1-b85f-24eef4a5504a"
 >DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="ba61c6d3-e52b-4ba9-beab-0009f9b66af3"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="57b0f7eb-496f-477f-b1a2-0dc50e1b9a90"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -63719,10 +63557,10 @@
 >
 <Actions>
 <Action
- Guid="b19ba4ea-1b2f-44df-9b28-411087c388be"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="176c4636-bf99-407b-89a7-e685a1873659"
->DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="20d89fb2-f5be-4a17-a9c0-044b74d6c1f4"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -64486,12 +64324,10 @@
 >
 <Actions>
 <Action
- Guid="c421b2b9-76b0-4e99-9d3b-6fd96812f4a5"
->Kernel.Mode &lt;- Default.Mode.LS</Action><Action
  Guid="24f32dc4-9099-47c5-8c4d-8391f6032626"
 >DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action><Action
- Guid="8fefc2ea-c529-4ef3-95be-f263d9aa61bb"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="04df1a50-a664-47dc-9aed-3ead038d5d65"
+>Testing.SetLSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -64530,10 +64366,10 @@
 >
 <Actions>
 <Action
- Guid="8ed77000-169a-473e-8fec-da420069163b"
->Kernel.Mode &lt;- Default.Mode.SR</Action><Action
  Guid="ef8cd31f-b50a-4483-98ab-0d90e7543b0f"
->DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="282fb6f4-a107-4037-a8ba-9a816400c356"
+>Testing.SetSRMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
