@@ -58,14 +58,6 @@
 <Action
  Guid="bdd61a93-0235-4ee8-b6c5-ffe9f42f2813"
 >Testing.InitializeTestEnvironment()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2 - Initialize elements to accept MA"
- Guid="4dcb58ca-06b9-4898-b526-66737461e02f"
->
-<Actions>
-<Action
- Guid="8e564aec-6990-4d51-ba35-206a59ed0e25"
->Testing.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -84,12 +76,8 @@
 >
 <Actions>
 <Action
- Guid="4a0a4d7b-9b6d-49d8-98f1-369115685544"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
- Guid="af946fd8-c54c-45e7-b661-0a0764290db9"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
- Guid="3f5bc136-268c-4db2-8cc9-a1ce6175baf9"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="00cfd274-d88c-4af4-a3c6-4b9cc4c052b8"
+>Testing.SetOSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -389,14 +377,6 @@ TIU.ServiceBrakeCommanded == True</Expectation></Expectations>
 <Action
  Guid="1f6188e7-7f95-4369-b53a-502bf13f7a66"
 >Testing.InitializeTestEnvironment()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2 - Initialize elements to accept MA"
- Guid="8d4fddf8-ac32-46ba-b810-26c98d8a804c"
->
-<Actions>
-<Action
- Guid="dbcff68d-de2c-4272-b46d-b40a9741d691"
->Testing.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -420,8 +400,8 @@ TIU.ServiceBrakeCommanded == True</Expectation></Expectations>
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="004582be-59ab-4517-bc66-927226eba055"
 >Kernel.Level.Value.Value &lt;- Default.Level.L2</Action><Action
- Guid="eef7f708-3987-4a61-beaf-e74ae795f82c"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="0dabce00-6076-4ca8-90fb-9af44279f3e0"
+>Testing.SetOSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

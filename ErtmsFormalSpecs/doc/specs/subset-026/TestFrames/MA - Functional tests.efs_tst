@@ -62,14 +62,6 @@
 <Action
  Guid="5760df5d-2cdf-41ef-aa12-9fb65d94b437"
 >Testing.InitializeTestEnvironment()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2 - Initialize elements to accept MA"
- Guid="a8e878a4-b34a-44a8-9f91-0428a0d27cd3"
->
-<Actions>
-<Action
- Guid="881401de-e9c9-4a2d-a021-44857c77c981"
->Testing.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -90,14 +82,18 @@
 <Actions>
 <Action
  Guid="8310c54d-3c6f-43a4-ae0e-0966b5828271"
->Kernel.Mode &lt;- Default.Mode.OS</Action><Action
- Guid="b4e1d9e5-0242-4859-82cf-c382e93985f5"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
- Guid="57ed2d6d-5444-4fa6-a577-2e40ab498dcd"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
+>Testing.SetOSMode()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="8254375b-a829-4a96-8138-f881096667b6"
+>
+<Actions>
+<Action
+ Guid="609bf5d2-b7dd-4a10-a8ce-fb12493762b3"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3"
+ Guid="4fee872b-e11e-489c-a3cf-c063d7bc944d"
 >
 <Expectations>
 <Expectation
@@ -4285,14 +4281,6 @@ BTM.Linking.Linkings</Action><Action
 >Testing.InitializeTestEnvironment(
 
 )</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2 - Initialize elements to accept MA"
- Guid="aae2eff5-49b9-45a1-a9e7-4c3112f577f8"
->
-<Actions>
-<Action
- Guid="d0ec3b6e-eab7-4c7d-9507-e8c07090a34f"
->Testing.InitializeElementsForMA()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4311,26 +4299,30 @@ BTM.Linking.Linkings</Action><Action
 >
 <Actions>
 <Action
- Guid="215ca8ee-6912-4cc3-a3ac-46373b4a3a4b"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
- Guid="31e2e050-eb59-4912-8df4-bffe34880384"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
- Guid="4291347a-5072-4875-b465-8d92c534fbdc"
->Kernel.Mode &lt;- Default.Mode.OS</Action></Actions>
+ Guid="ee2ab38c-de10-4959-b02b-2784d1849bbc"
+>Testing.SetOSMode()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="0d71a32a-d982-46b8-b2b5-585136f1dc90"
+>
+<Actions>
+<Action
+ Guid="146d54f2-fef5-4353-ba31-8bd3c2c557fd"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3"
+ Guid="920f0b9b-d4ce-4d50-be26-88fb5606a432"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="1d745bc0-21e7-4db7-9667-35f04b88b8da"
->Kernel.Infill.Data == EMPTY</Expectation><Expectation
+ Guid="70ff0427-d071-42a5-a322-630fe596a833"
+>Kernel.MA.MA == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="70ff0427-d071-42a5-a322-630fe596a833"
->Kernel.MA.MA == EMPTY</Expectation></Expectations>
+ Guid="1d745bc0-21e7-4db7-9667-35f04b88b8da"
+>Kernel.Infill.Data == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4833,24 +4825,30 @@ BTM.Linking.Linkings</Action><Action
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="1340d3bf-a5d6-44d3-8183-df4cab6f1e24"
 >Kernel.Level.Value.Value &lt;- Default.Level.L2</Action><Action
- Guid="1298054f-8256-4fc6-9dff-bffcfe6642cf"
->Kernel.Mode &lt;- Default.Mode.OS</Action><Action
- Guid="e84974d8-8a82-4055-82bf-da0b1d0c4ba6"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="973cc5e6-ff29-4493-8ed4-23a103be3dfb"
+>Testing.SetOSMode()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="6ab4210b-aadc-4c55-b54c-da0fe11c993d"
+>
+<Actions>
+<Action
+ Guid="e84974d8-8a82-4055-82bf-da0b1d0c4ba6"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3"
+ Guid="f558725c-15da-4b4e-a486-f458bb0fead4"
 >
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="db49fde4-cd8d-4e42-9a34-63a6f4d01b86"
->Kernel.Infill.Data == EMPTY</Expectation><Expectation
+ Guid="f2cad2a8-af41-48aa-a71b-8077556cb5d2"
+>Kernel.MA.MA == EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="e9f6870d-0de6-4478-a63b-56d3d150a4ea"
->Kernel.MA.MA == EMPTY</Expectation></Expectations>
+ Guid="db49fde4-cd8d-4e42-9a34-63a6f4d01b86"
+>Kernel.Infill.Data == EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -5287,13 +5285,19 @@ BTM.Linking.Linkings</Action><Action
 >Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
  Guid="ce6b8e51-a4bb-462f-a82b-2b0c32791a17"
 >Kernel.Level.Value.Value &lt;- Default.Level.L2</Action><Action
- Guid="07775d8d-84e3-40af-a42a-e9eca411f3bb"
->Kernel.Mode &lt;- Default.Mode.OS</Action><Action
- Guid="e4034b1b-9aac-4fcf-8055-6f149ba6ca62"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+ Guid="89c1b1b6-1c16-43b0-b190-e9e45290b579"
+>Testing.SetOSMode()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="5dda5265-1513-4bd4-8a82-260d397dccbf"
+>
+<Actions>
+<Action
+ Guid="e4034b1b-9aac-4fcf-8055-6f149ba6ca62"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3"
+ Guid="3e42d02a-4b28-40fa-adfd-dd497e0a0ea8"
 >
 <Expectations>
 <Expectation

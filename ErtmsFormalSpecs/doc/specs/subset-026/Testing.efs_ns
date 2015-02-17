@@ -768,5 +768,133 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 >Kernel.TrainPosition.SRStartDistance &lt;- Odometry.NominalDistance</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Name="SetOSMode"
+ Guid="70057ba0-9886-4073-9e8d-8543bb873665"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set OS mode"
+ Guid="399d52b3-5029-4a01-b432-7f71f0b3030f"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set OS mode"
+ Guid="4c754b26-623c-479a-9949-eb0a77eae594"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="04ec064e-082f-4ebb-8ef3-d325b13b36ac"
+>Kernel.Mode &lt;- Mode.OS</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set level (if required)"
+ Guid="4805dbc8-42ee-422f-95bb-27ca928b9ac0"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Level is 0 or NTC"
+ Guid="518d706c-d6ed-4793-9221-c8354b500300"
+>
+<PreConditions>
+<PreCondition
+ Guid="8bc69586-f270-4153-8797-9a68eb9ae4f4"
+>Kernel.Level.Value.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e962e589-4561-4633-9d18-f6cdedbb891d"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; LevelDataStruct{
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L1
+    },
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set gradient and SSP"
+ Guid="9b0b7b26-3dae-4240-833e-32520ada053d"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No gradient or SSP"
+ Guid="38019a22-8337-4071-9196-8e0a9072a8df"
+>
+<PreConditions>
+<PreCondition
+ Guid="3c66a98e-75b2-4e89-87ce-3b90b2a8e9d2"
+>Kernel.TrackDescription.Gradient.Gradients == []
+  OR  
+Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9abe323c-463d-4d1c-a111-0bd7ec21071b"
+>InitializeElementsForMA()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set MA"
+ Guid="07869aeb-5b0c-48e5-a0be-0534c2e86f6f"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No MA"
+ Guid="04f5cc49-902b-4b52-9192-510661156271"
+>
+<PreConditions>
+<PreCondition
+ Guid="97d81a49-1f86-4878-8db2-a6981e8993f0"
+>Kernel.MA.MA == EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="970b24d5-0e0c-4afa-a1fc-cd764e3a8107"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 4500.0
+    }
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set OS mode profile"
+ Guid="ab2d4931-04d0-44d3-9937-b60a16c8e81e"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set LS mode profile"
+ Guid="1dc3e362-4992-4fc9-bf45-eb0fa59f1182"
+>
+<PreConditions>
+<PreCondition
+ Guid="a83c2aa9-79bf-45a5-b1ae-8a9a2498743b"
+>Kernel.MA.ModeProfile.Profile == []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="566f5349-a4a2-4967-bd62-56451428e117"
+>Kernel.MA.ModeProfile.Profile &lt;- 
+[
+Kernel.MA.ModeProfile.ModeProfileStruct{
+    Distance =&gt; 0.0,
+    Mode =&gt; Default.Mode.ModeProfile.OS,
+    Speed =&gt; Default.BaseTypes.Speed.UseNV,
+    Length =&gt; 4500.0,
+    AcknLength =&gt; 0.0,
+    SupervisionQualifier =&gt; Messages.Q_MAMODE.as_the_EOA__keeping_the_SvL_given_by_the_MA
+}
+]</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 </NameSpace>

@@ -133,9 +133,7 @@
 <Actions>
 <Action
  Guid="7dc895b6-09f8-461d-8cfc-3782b47e905c"
->Kernel.Mode &lt;- Mode.OS</Action><Action
- Guid="ade92216-05a7-41af-87da-438f508e9cd7"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
+>Testing.SetOSMode()</Action><Action
  Guid="88a4c24d-98d5-4990-bb07-aab8c362f785"
 >Kernel.ModeTransitions.PrevMode &lt;- Mode.SB</Action></Actions>
 </SubStep></SubSteps>
@@ -699,7 +697,7 @@
     TargetSpeedTimeOut =&gt; 0.0
 }</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 4 - Give the train some data"
+ Name="Sub-step 4 - Set the train data"
  Guid="f0647dbf-6179-479c-8cf4-151604f7a58b"
 >
 <Actions>
@@ -731,10 +729,9 @@
 >
 <Actions>
 <Action
- Guid="5796fcd2-5cb0-4f88-9345-3cf70db5df2f"
->Kernel.Mode &lt;- Default.Mode.OS</Action><Action
- Guid="a468a3dd-6809-4e75-bcce-36dd44b64f7a"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
+ Guid="143ee9dc-c252-4200-bc5e-e76b5ce6f820"
+>
+Testing.SetOSMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -934,15 +931,7 @@
  Guid="882a70a3-530c-49fd-83fb-ac3c41115c89"
 >Testing.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 2 - Inuitialize elements for MA"
- Guid="28da8ff6-7e96-4068-aed7-ba3e6c2edc5c"
->
-<Actions>
-<Action
- Guid="e085f193-8bbf-4fcc-95ce-f649f5f22f45"
->Testing.InitializeElementsForMA()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step 3 - Setup"
+ Name="Sub-step 2 - Setup"
  Guid="25de3e75-cca1-4b0b-91a1-f2eead292cdf"
 >
 <Actions>
@@ -962,39 +951,12 @@
 
     }
 }</Action><Action
- Guid="b8a91470-c604-4a5e-8de8-2a72db649698"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
-    TargetSpeed =&gt; 0.0,
-    Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        Length =&gt; 2000.0
-    },
-    TargetSpeedTimeOut =&gt; 0.0
-}</Action><Action
- Guid="0e4d0fe2-aaf1-42a3-9e4a-4510680612dc"
->Kernel.Mode &lt;- Mode.OS</Action><Action
- Guid="9c032315-6052-4830-b5f3-fd8e1ff5d237"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
- Guid="088222b8-5a65-4e26-a3b9-38c7cf293baf"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
-[
-  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
-    Distance =&gt; 0.0,
-    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
-    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-    Categories =&gt; []
-  }
-]</Action><Action
- Guid="d632e5e1-91d9-4382-bc91-16163c44adaf"
->Kernel.TrackDescription.Gradient.Gradients &lt;-
-[
-Kernel.TrackDescription.Gradient.GradientInfo{
-    Distance =&gt; 0.0,
-    Gradient =&gt; 0.0
-  }
-]</Action></Actions>
+ Guid="a1be0c75-03d9-4aed-b84f-7db0a5027cc2"
+>
+
+Testing.SetOSMode()</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 4 - Start radio connection"
+ Name="Sub-step 3 - Start radio connection"
  Guid="b1b911c1-96d3-48bf-8a50-ac706ce508b2"
 >
 <Actions>
@@ -1002,7 +964,7 @@ Kernel.TrackDescription.Gradient.GradientInfo{
  Guid="7d20c1d7-70a0-4e59-9dc6-0e6a66d18c06"
 >EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- Default.DataState.Valid</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 5 - Give the train some data"
+ Name="Sub-step 4 - Give the train some data"
  Guid="811864bb-cbae-464b-8121-49f1f6002fd9"
 >
 <Actions>
@@ -1235,7 +1197,7 @@ Kernel.TrackDescription.Gradient.GradientInfo{
  Guid="7406e63d-5f24-45be-a27e-037c5831b2ea"
 >Odometry.NominalDistance &lt;- 0.0</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 3 - Give the train some data"
+ Name="Sub-step 3 - Set the train data"
  Guid="d7c01eb5-0e9d-4417-a75c-6806e7c200c8"
 >
 <Actions>
@@ -1260,35 +1222,18 @@ Kernel.TrackDescription.Gradient.GradientInfo{
  Guid="905ffffc-20cc-4180-abdb-4dca8e908575"
 >Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.C3</Action><Action
  Guid="9270577f-542b-430d-9189-443a2ec3e31e"
->Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action
- Guid="eb5b60df-ac22-4e69-9904-9e6d8cf6dad2"
->Kernel.TrackDescription.Gradient.Gradients &lt;-
-[
-Kernel.TrackDescription.Gradient.GradientInfo{
-    Distance =&gt; 0.0,
-    Gradient =&gt; 0.0
-  }
-]</Action><Action
- Guid="81521b41-edb1-4cb9-9616-eb66d221b601"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
-[
-  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
-    Distance =&gt; 0.0,
-    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
-    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-    Categories =&gt; []
-  }
-]</Action></Actions>
+>Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 4 - Set mode and level"
  Guid="b3d6363e-834c-4d09-8782-02ffda5ee5a8"
 >
 <Actions>
 <Action
- Guid="f5ec612f-224a-456f-8f63-ae611b6ddd5e"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
- Guid="c9494d0d-925d-4351-8b9f-2ce0a25bf95e"
->Kernel.Mode &lt;- Mode.OS</Action></Actions>
+ Guid="a619a069-a2e1-4c29-a13c-66298bcdcb08"
+>
+
+
+Testing.SetOSMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1543,7 +1488,7 @@ Kernel.TrackDescription.Gradient.GradientInfo{
  Guid="e795c3ea-2e2d-45a2-b3c0-2ae3dc050eeb"
 >Odometry.NominalDistance &lt;- 0.0</Action></Actions>
 </SubStep><SubStep
- Name="Sub-step 3 - Give the train some data"
+ Name="Sub-step 3 - Set the train data"
  Guid="494dda87-d9a0-456d-8aef-1affea3fca9c"
 >
 <Actions>
@@ -1568,24 +1513,6 @@ Kernel.TrackDescription.Gradient.GradientInfo{
         Voltage =&gt; Messages.M_VOLTAGE.DC_3_kV,
         Country =&gt; 80
     }
-]</Action><Action
- Guid="fdddaa02-e18d-40b8-97a2-4bbeff66bf00"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
-[
-  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
-    Distance =&gt; 0.0,
-    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
-    TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
-    Categories =&gt; []
-  }
-]</Action><Action
- Guid="e5510077-b0a1-4967-8620-b5502fa8b863"
->Kernel.TrackDescription.Gradient.Gradients &lt;-
-[
-Kernel.TrackDescription.Gradient.GradientInfo{
-    Distance =&gt; 0.0,
-    Gradient =&gt; 0.0
-  }
 ]</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 4 - Set mode and level"
@@ -1593,10 +1520,12 @@ Kernel.TrackDescription.Gradient.GradientInfo{
 >
 <Actions>
 <Action
- Guid="752db0d0-6e9c-4543-9499-06f2fcb1c2b2"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
- Guid="b92c3db1-aa85-4a54-a209-45e5cf395c23"
->Kernel.Mode &lt;- Mode.OS</Action></Actions>
+ Guid="97823117-fb26-42d9-ba19-cdf70a5ad1ba"
+>
+
+
+
+Testing.SetOSMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1861,10 +1790,13 @@ Kernel.TrackDescription.Gradient.GradientInfo{
 >
 <Actions>
 <Action
- Guid="3b83027a-ac95-41e8-9055-678a9dbdd410"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
- Guid="f7dbc432-c6d0-4c68-b1ea-6fdcbfc1d5ce"
->Kernel.Mode &lt;- Mode.OS</Action></Actions>
+ Guid="7b54e93e-d9c5-4a9f-91d4-3e1339f9ceaf"
+>
+
+
+
+
+Testing.SetOSMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

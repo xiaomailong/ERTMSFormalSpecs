@@ -352,17 +352,23 @@ N_ITER=&gt;0
  Guid="b68f5849-3fd0-4682-ba6f-fdf5e647cfaa"
 >Testing.InitializeTestEnvironment()</Action><Action
  Guid="6a9caf99-cc2f-4d47-8e46-134842537a11"
->Odometry.NominalDistance &lt;- 0.0</Action><Action
- Guid="d317192f-f96d-4d90-9346-527c8e893f6e"
->BTM.LRBG &lt;- EMPTY</Action><Action
+>Odometry.NominalDistance &lt;- 2000.0</Action><Action
  Guid="69d1771f-a2b4-4223-a819-3561976e813a"
 >BTM.PreviousBaliseGroups &lt;- []</Action><Action
  Guid="56435b17-a4a6-4bc3-a78e-c3f91875383b"
->Kernel.Mode &lt;- Mode.OS</Action><Action
- Guid="46e71f9f-4d55-4dd5-a49c-c800a418490d"
->Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
- Guid="391ee971-25a4-4bd7-a5b5-e8f4195cd1e1"
->Testing.InitializeElementsForMA()</Action></Actions>
+>Testing.SetOSMode()</Action><Action
+ Guid="bbb8ab2d-67f9-434a-9bde-3f743d24dce6"
+>BTM.LRBG &lt;- BTM.BaliseGroupStruct
+{
+    NID =&gt; 9618,
+    Orientation =&gt; Orientation.Nominal,
+    Position =&gt; BTM.Position
+    {
+        OverReadingAmountOdo =&gt; 4.0,
+        Position =&gt; 2000.0,
+        UnderReadingAmountOdo =&gt; 4.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -422,18 +428,6 @@ N_ITER=&gt;0
             }
         }
     ]
-}</Action><Action
- Guid="bbb8ab2d-67f9-434a-9bde-3f743d24dce6"
->BTM.LRBG &lt;- BTM.BaliseGroupStruct
-{
-    NID =&gt; 9618,
-    Orientation =&gt; Orientation.Nominal,
-    Position =&gt; BTM.Position
-    {
-        OverReadingAmountOdo =&gt; 4.0,
-        Position =&gt; 2000.0,
-        UnderReadingAmountOdo =&gt; 4.0
-    }
 }</Action><Action
  Guid="988dd34c-be71-42d0-8399-f40b0ecf11d4"
 >Odometry.NominalDistance &lt;- 3000.0</Action></Actions>
