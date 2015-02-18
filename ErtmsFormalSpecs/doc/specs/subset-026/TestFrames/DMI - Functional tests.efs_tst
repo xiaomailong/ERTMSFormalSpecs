@@ -60,7 +60,7 @@
 >
 <Actions>
 <Action
- Guid="f1b8edb4-667f-443e-9893-26813e9f3832"
+ Guid="843bcb9f-c6f3-49c9-bea1-5813670a46de"
 >DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- False</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
@@ -224,12 +224,10 @@
 >
 <Actions>
 <Action
- Guid="03e2aa1b-a4cc-40aa-8f1a-c3663dfcf70d"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="05a54540-9269-40a3-95de-d8f4985aec83"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="a97c3b80-58d4-43ca-a115-17ed63cc4bab"
->DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="c14e295a-f3a4-44a6-bcd7-3aea46e3ac04"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1033,12 +1031,10 @@
 >
 <Actions>
 <Action
- Guid="af9fa885-f9d0-4990-872e-144df395e045"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="beabe917-1739-4a5b-861f-67f2ec2a39e1"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="c09dc6c6-c281-4ecb-b5f3-af0df2a976d0"
->DMI.MasterDMI().In_AcknForReverseMovementProtection.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForReverseMovementProtection.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="b2dc9f02-9a17-414e-9efc-649a5263b960"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1842,12 +1838,10 @@
 >
 <Actions>
 <Action
- Guid="66ebc824-5ff2-474e-b00a-9830d124b322"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="e2c89da3-f14b-41a3-96c2-10f51bba0b64"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="ced24b2a-0a94-47b2-a938-1c7890b38c3a"
->DMI.MasterDMI().In_AcknForReversingDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForReversingDistanceExceeded.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="7dbe53af-0ea9-448c-badb-0d8dde9067a4"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2651,12 +2645,10 @@
 >
 <Actions>
 <Action
- Guid="b8671289-87bb-4bf5-ad90-0578759869d5"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="81e96ef2-798a-4cee-8d5b-77daef6e0b89"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="1504c89d-49db-4483-ad43-439497f8116f"
->DMI.MasterDMI().In_AcknForRollAwayProtection.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForRollAwayProtection.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="fc92cacc-5182-4ab8-8691-9e25ad18ad7d"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3460,12 +3452,10 @@
 >
 <Actions>
 <Action
- Guid="a9867f2e-999d-4a6d-9c2c-9dfff3f43939"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="1a0d4902-211f-44d2-b93c-a07458d13e64"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="51cce74c-096b-4587-8ba0-0a40ac0a8629"
->DMI.MasterDMI().In_AcknForStandstillSupervision.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknForStandstillSupervision.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="6971ac0a-537e-4b50-9270-093ab768f535"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -4270,12 +4260,10 @@
 >
 <Actions>
 <Action
- Guid="7cb9af3a-2412-4434-a981-eea4b2a18791"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="bdbd636b-08a1-4ff4-8654-d475f54715c2"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="a7e04681-8ab3-4496-a253-14c64a2edaac"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="b1033194-c4ed-4043-8613-f6f4f377b962"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5078,12 +5066,10 @@
 >
 <Actions>
 <Action
- Guid="0ea7532d-db6f-46c4-a282-f48a28f0bef6"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="f7ef60f6-a3ab-4b09-9011-6d319a950c84"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="f7e65111-cada-4b97-b7f9-22f8f61d939c"
->DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="7ecee40a-f330-4ab5-afa7-db3a46f02c0b"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5929,12 +5915,10 @@
 >
 <Actions>
 <Action
- Guid="2cb247ef-6a82-4fbb-b770-ac12c76fa00a"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="b43cd39a-061f-4a29-aa73-eaef7aefc634"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="6674f338-7aab-48fb-9daa-9b4bcc8ed546"
->DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="939562cd-c720-4aa1-b7bb-f2218f4a887b"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6738,12 +6722,10 @@
 >
 <Actions>
 <Action
- Guid="ad7c7e9d-2873-42ac-9ecf-bccb7fa653cb"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="08cd670d-03bb-481d-826e-2e0fecf3d7fd"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="a5104a03-a857-4ef1-a5b9-712a75505633"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="181791ba-bf86-439d-a603-3bd56520173d"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7548,12 +7530,10 @@
 >
 <Actions>
 <Action
- Guid="67b8abce-ae91-48f4-af4c-388706c3a16d"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="8f8bdea0-457b-4ef4-ace0-3ca5e4ccb628"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="cf8aea1b-f756-424e-864c-1dbea89b63e5"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="9049da21-0564-4af7-a799-cc6b875c3810"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -8343,12 +8323,10 @@
 >
 <Actions>
 <Action
- Guid="33bfde69-9f85-45e9-a481-879cd2238d4d"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="85f398f6-a271-4760-87ab-c1f184a073a6"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="14ff1817-67e9-40c8-b92e-d3c91f4ca094"
->DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfRVMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="34777072-45a0-4e04-b508-9171d4c7f0b4"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -9152,12 +9130,10 @@
 >
 <Actions>
 <Action
- Guid="7e9d53f3-913b-4fa4-a131-191eacf74c4f"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="b2ca7c8f-9609-458c-b4e7-9a9c70d9998f"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="a8b4b961-cc25-4908-a094-3d7e95502bad"
->DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="a077ad72-71ea-4e28-b486-d4245f005de4"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -9962,12 +9938,10 @@
 >
 <Actions>
 <Action
- Guid="d0341c69-4cc4-4294-b20d-2b671df8ce33"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="b02fd453-460a-4ccc-a406-e4fe12cfb3fe"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="7ca954c1-265c-43e4-b547-ee438c6e5add"
->DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="e69404eb-9bed-4215-9d0d-7865708a5aff"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -10757,12 +10731,10 @@
 >
 <Actions>
 <Action
- Guid="06f030d2-d5ed-42c4-8bfd-1859b25b1703"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="e36bfae0-35d8-45d3-8c91-02680ce2e3ef"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="545f8c4f-3d66-4f72-8702-ec462213f616"
->DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="0427de12-3dd3-41ba-8694-94eec640bcb0"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -11558,12 +11530,10 @@
 >
 <Actions>
 <Action
- Guid="ddda69ec-42e7-4ef6-b336-a64b46cedc74"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="97e09bb0-9474-4455-a6fd-2c303bb7cc93"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="d8980570-10bc-409e-9eac-f073d6e1fb62"
->DMI.MasterDMI().In_AcknOfTrainDataChangeFromOtherSource.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfTrainDataChangeFromOtherSource.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="1613e23b-68b4-4e66-b508-adbc457af6a6"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -12311,12 +12281,10 @@
 >
 <Actions>
 <Action
- Guid="4726628e-f6d4-4ed0-818b-619ea815989b"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="c6acbecd-86d3-40bd-bb81-be4dc29b74ba"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="a928948e-4e24-49b6-ace1-b370eb385d33"
->DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="2b698a23-1ae7-4b18-927a-018434d7d112"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -13120,12 +13088,10 @@
 >
 <Actions>
 <Action
- Guid="09443485-1821-41b0-bc52-9d11114078ea"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="cdd7b4d1-1020-4b80-85ce-2c04a0d42cc1"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="6af450f8-a65f-49d0-a936-b7635fd95437"
->DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="8855548b-a2c1-4d1a-802a-f7ed2d611a2f"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -13929,12 +13895,10 @@
 >
 <Actions>
 <Action
- Guid="d473d661-5c7d-4d11-bc4f-2361b4dd5fd7"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="6d9bea17-abd2-4450-bd0b-7435aecd022a"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="15cfda64-914e-4049-8699-9932bddcd03f"
->DMI.MasterDMI().In_ContinueShuntingOnDeskClosureRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_ContinueShuntingOnDeskClosureRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="cabd41ca-cf2e-484a-8016-d8bd8be6c15a"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -14753,12 +14717,10 @@
 >
 <Actions>
 <Action
- Guid="ebfa6d5d-e686-4152-900d-e9d5da0333e5"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="530aeffc-425f-4432-8475-ddfa3591f9f8"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="3322f11a-1b19-4200-9234-a3c45468de22"
->DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_DriverId.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="5c2e4028-a602-456d-a26f-d01ebc1b280e"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -15654,12 +15616,10 @@
 >
 <Actions>
 <Action
- Guid="2ae417f3-741c-4134-812b-c2fe0cf842ba"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="f9c831bb-5e5a-4ca6-8cff-cf76a6b1add1"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="13d4f77d-93b4-4fde-a67f-367bc9391d4e"
->DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="abd65088-5fcd-4069-b211-a54f7b58ba55"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -16547,12 +16507,10 @@
 >
 <Actions>
 <Action
- Guid="5480fe1a-483d-417c-9109-2cc702ee5790"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="b0709a42-e718-4965-82b5-6ad23443f718"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="0504314d-7578-4aa2-9466-c32c812b26ba"
->DMI.MasterDMI().In_ExitOfShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_ExitOfShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="c394490a-13ae-455d-9209-16c80f133495"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -17356,12 +17314,10 @@
 >
 <Actions>
 <Action
- Guid="89dede16-6237-48f4-b05a-0ae746601c26"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="fd61700f-dbe6-439b-91c2-89690b3f6f94"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="823145a5-aaf6-43c7-bee2-f8e995adccce"
->DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_Isolation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="aa6ebee1-b865-4313-a052-8793b7d30a9a"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -18170,12 +18126,10 @@
 >
 <Actions>
 <Action
- Guid="96a654ca-dd9d-4c10-9add-427a31c5a567"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="addee8d8-acc3-41cd-b07e-5852aea22bdc"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="12bb41cf-dbe2-4c61-853d-dfa5de624551"
->DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_NonLeadingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="70f70060-f831-4b0a-bb98-655750efacfa"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -18996,12 +18950,10 @@
 >
 <Actions>
 <Action
- Guid="51249c22-7145-48a9-8ffc-b56fc558f1e3"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="f7d3aec0-0732-4a15-9829-c1e0f2c338f1"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="1eabc37a-2bdb-41fa-a885-76c7f0801c69"
->DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_OverrideRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="ffbcea2d-0482-4a53-83d2-1ebb36e31c72"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -19849,12 +19801,10 @@
 >
 <Actions>
 <Action
- Guid="75ff9c95-6b0a-4f16-90c1-14ef40d49966"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="d4237098-306b-4714-97c2-619dcf7e843f"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="b604a51d-596f-4b45-9fc2-bbf4c94f3e12"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="836f8b4a-3d2b-4ff5-9633-e23faea07e68"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -20798,12 +20748,10 @@
 >
 <Actions>
 <Action
- Guid="6a142b5a-b952-460e-aaec-45aae581699a"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="a560f262-652a-4f17-ae8d-b4132251acd6"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="12b240f2-cb3c-4419-bcc4-6cd05bae1043"
->DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_SelectionOfLanguage.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="e257877f-ea4b-49d4-8087-118b64434731"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -21607,12 +21555,10 @@
 >
 <Actions>
 <Action
- Guid="c819d178-d393-4de5-ba7c-b927cd8e4177"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="cf871cc2-9a83-43ac-a7e8-04e15966c87b"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="6ae4e07b-a8b5-4fe3-9749-d4bb53dd2925"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="e93bc478-a734-4625-adff-694993a99b43"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -22416,12 +22362,10 @@
 >
 <Actions>
 <Action
- Guid="caa3ed95-9613-4b1a-8e07-87378088bdcf"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="c2588c8d-aca9-4886-b63b-6e966def237d"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="3a04efff-a658-46e5-bbdd-2417495060d2"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="e4dc27b3-c66f-424f-a065-ac901022dbfa"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -23217,12 +23161,10 @@
 >
 <Actions>
 <Action
- Guid="e3037f87-fe23-41d6-9b47-756e7fb6210e"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="8a42b6a5-3ae5-4b22-8d17-1302ae667ea3"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="8446c306-9f3e-49ad-a502-881774121865"
->DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="44672e7b-7014-4f2d-a010-0796bfc056ee"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -23970,12 +23912,10 @@
 >
 <Actions>
 <Action
- Guid="fea121c0-9e0e-45ba-b4bc-ede8a17b1c6a"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="c701bc02-5fee-4e8b-9be6-c197286c0cc2"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="bdab7cb4-acb7-42c1-8930-a580cefcf8f5"
->DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="91eb2a0f-1379-48e5-bc56-ad1224f5135f"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -24782,12 +24722,10 @@
 >
 <Actions>
 <Action
- Guid="7620c5f6-38a2-4890-8259-1cc2eee50c8b"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="1e37ff3a-0b32-4252-935c-3cac8c977984"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="6f1b953a-f29f-47bf-9c48-7244130e6d30"
->DMI.MasterDMI().In_TrackAheadFree.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_TrackAheadFree.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="3dbae9c0-6abd-42ad-be15-ce6d36f3896b"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -25589,10 +25527,8 @@
 >
 <Actions>
 <Action
- Guid="38104c3d-afa1-48c9-866f-daf07d3b9259"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="7a907041-2e40-428e-89bc-af28d8ddeb69"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="0c29964f-dbe7-4ca8-a405-305284d01a3a"
+>Testing.SetSHMode()</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="2bdc42ee-95a7-4246-b0ed-3a36e5b036c8"
@@ -26342,12 +26278,10 @@
 >
 <Actions>
 <Action
- Guid="54beb655-1c7e-4f9d-8706-f38be4882bed"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="43be21d6-1863-43de-9047-486c8eae22b6"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="7ac719f4-0d4f-4e52-bfee-604db1a697f8"
->DMI.MasterDMI().In_TrainIntegrityConfirmation.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_TrainIntegrityConfirmation.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="81d2adba-7c3b-43d0-8d38-fcd28c9feb5e"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -27158,10 +27092,8 @@
 >
 <Actions>
 <Action
- Guid="053314a0-964b-4e99-ad07-8922e289891f"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="d913eae3-2771-4b96-9749-a719c72d4692"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action></Actions>
+ Guid="8a9a2180-66bd-421b-8a5f-b466f7422317"
+>Testing.SetSHMode()</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="19d8e4cb-9f53-43f1-9e7d-46090b8b14a6"
@@ -27990,12 +27922,10 @@
 >
 <Actions>
 <Action
- Guid="e023a5d8-cc78-4bd5-b5ca-2aca0c794fc8"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="9419047b-6847-4c79-be1f-c449602f80ea"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="73b97bbf-2e32-46a2-bb7a-d13269af331b"
->DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Request</Action></Actions>
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Request</Action><Action
+ Guid="8ea22515-a731-4573-8863-5e97e6359859"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -28841,12 +28771,10 @@
 >
 <Actions>
 <Action
- Guid="8b4deb98-d8c6-4d2e-b55d-d809dfb7d91a"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="ce48597c-e1cd-4b29-a0de-5f00efa2e379"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="5b7bd778-0612-4c6a-ad47-e22221c64857"
->DMI.MasterDMI().Out_AcceptedEmergencyStops.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_AcceptedEmergencyStops.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="11709000-da96-4da5-a9b4-e64ab1bfebce"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -29650,12 +29578,10 @@
 >
 <Actions>
 <Action
- Guid="0be98b8d-15fe-457a-85bf-0be390513c70"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="43377ed4-f197-4311-b9db-1f147083921b"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="57d6197a-875e-486d-b85a-988e5a9425de"
->DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="2f332cfa-11ab-4039-aece-159623820ff0"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -30459,12 +30385,10 @@
 >
 <Actions>
 <Action
- Guid="9814703c-aaa4-4d8f-9d72-f66e94cf5edf"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="24531276-1172-4546-876a-2967c6d35ee2"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="689048fe-0cf4-45a3-9233-9e3e40aaf8a5"
->DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="583b223f-465a-485d-9e2a-85e39973decc"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -31268,12 +31192,10 @@
 >
 <Actions>
 <Action
- Guid="a945134d-c28b-4fae-aca0-813793022b2b"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="d408b73e-4afa-4e66-8761-accec69c991c"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="beb5c802-e513-40e4-93ed-2479f1f22bf6"
->DMI.MasterDMI().Out_BrakeReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_BrakeReason.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="997ab784-f846-4af7-b65e-92727e97093c"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -32077,12 +31999,10 @@
 >
 <Actions>
 <Action
- Guid="412871ba-e026-493e-8680-95784e2b7aa0"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="63d81235-9db6-4b39-8d91-58bde4dadd00"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="70cee01e-9b76-4ce8-9dcc-062f5166c34c"
->DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_CurrentErtmsEtcsLevel.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="a8397bc2-6bef-4ca2-a8af-4bc1fa5f171b"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -32886,12 +32806,10 @@
 >
 <Actions>
 <Action
- Guid="005073d7-470d-4fc0-8dc3-49c25d6dd716"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="a18bf6f6-1b96-4f4f-956a-70949138ca16"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="d09ad9fe-c2ae-41b4-a5e8-0b1ab6d9c287"
->DMI.MasterDMI().Out_DriverId.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_DriverId.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="b94a0bb0-1edd-4c02-b85c-4d2718a17f90"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -33695,12 +33613,10 @@
 >
 <Actions>
 <Action
- Guid="442c71b9-3c54-4c50-9d3e-dfab02c217e3"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="861fa93a-cd78-4ca7-bdad-cbe33f678470"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="802d350b-f9d3-49d5-8304-2dff16d6eb07"
->DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="7ced840b-f3c7-4144-b0d8-79bbe6c2c752"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -34505,12 +34421,10 @@
 >
 <Actions>
 <Action
- Guid="f4c1c027-3cec-486b-837d-16a13d7e76b4"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="1bbb8f38-a431-4d44-888a-583e9ef9d1bb"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="b89d450f-4a0c-45f5-8893-85893b92675a"
->DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_ErtmsEtcsMode.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="b84f9f49-ea90-488c-9576-2853298e3942"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -35314,12 +35228,10 @@
 >
 <Actions>
 <Action
- Guid="18eb0517-6f40-464b-a3d4-8e740e2c441d"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="55826b13-72a7-4d96-993e-13b95abc1c5b"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="9a6c18ab-af69-4039-8d76-f74127fffee0"
->DMI.MasterDMI().Out_FirstTargetAtZeroSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_FirstTargetAtZeroSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="f409b549-dac3-409a-a401-366a971371e6"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -36123,12 +36035,10 @@
 >
 <Actions>
 <Action
- Guid="1f2d92ab-5ff8-4764-8460-43544b6f7743"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="fa5500a4-3ace-4376-91d9-4472661e86bb"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="018a508a-b385-4e7a-af87-c80765b4244e"
->DMI.MasterDMI().Out_FixedTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_FixedTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="d57b5405-9d57-4d80-a18d-2720b97b02a3"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -36906,12 +36816,10 @@
 >
 <Actions>
 <Action
- Guid="ddea2453-1fcd-4bd7-9acf-65914b4cf0ac"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="29a35e75-03be-4dfa-b4a1-d6ece033392e"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="18201b7b-8654-41ac-9612-90e560ce8d85"
->DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_GeographicalPosition.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="1299b96a-3390-48ac-a92a-7072cb00b315"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -37519,12 +37427,10 @@
 >
 <Actions>
 <Action
- Guid="ef34913d-f8a4-4482-b663-74f38b941ec1"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="ed455653-158e-4b79-961f-efd06f59a8dc"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="e9a01f57-2af3-4a5f-9564-97afe154490a"
->DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_Gradient.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="3128f6ec-70dc-43e7-be19-eb73ad241d4f"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -38328,12 +38234,10 @@
 >
 <Actions>
 <Action
- Guid="1ac28864-6f88-465a-9bb3-4b147b3c3343"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="32a3535c-77b4-47ff-8d6e-8654ac4a717a"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="e0dae616-caa4-4578-bbf5-a61a60b36ae7"
->DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="00088118-6e23-46f8-b428-05eb0e918e94"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -39139,12 +39043,10 @@
 >
 <Actions>
 <Action
- Guid="3ad9bc40-c249-42df-a350-bc95fabd9f78"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="111508e4-16fc-457d-bd8e-f55c4ef63242"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="7cc29f7f-43ce-41b9-ab83-b4ab84e67c6f"
->DMI.MasterDMI().Out_LevelTransitionAnnouncement.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_LevelTransitionAnnouncement.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="3a4a883f-adc5-45dc-97fa-ce396944c7ea"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -39948,12 +39850,10 @@
 >
 <Actions>
 <Action
- Guid="d4791871-88db-4f5e-8011-73c9df3a72eb"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="9a853b21-3576-40bc-94ef-8313483d752a"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="2dfb5749-4e64-4ab2-9ad3-b133ede6325f"
->DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_LocalTime.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="245be6c6-83b6-4b35-b5d0-5fc48290c831"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -40757,12 +40657,10 @@
 >
 <Actions>
 <Action
- Guid="311f96b0-0eea-4429-867a-6fff5ec6b260"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="b79cd763-d27c-414e-9ce7-e591fb3accf6"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="1f7ea1ae-819a-4b67-89b7-e26e95bc0239"
->DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="48453686-8378-4de7-9c85-b58c32930479"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -41566,12 +41464,10 @@
 >
 <Actions>
 <Action
- Guid="1ec8dbf2-1ed9-44bb-94ad-c14c0b9ea706"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="9e2976b2-e463-496f-895a-9492b4b18d1e"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="f6cfffc4-f273-4fbc-951b-99a357bf811f"
->DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_MRSP.OutputInformation.DisplayRequested &lt;- True</Action><Action
+ Guid="c01fdb0f-d35c-446a-9433-1665e410d355"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -42375,12 +42271,10 @@
 >
 <Actions>
 <Action
- Guid="e052e418-1cff-4070-b4c4-7a9b4960b68f"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="83f55c64-62a7-411c-9ab9-c13ee7c889df"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="1ec50055-cb13-4208-b435-1c1197b078e6"
->DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_NotificationOfTrainDataChangeFromOtherSource.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="b094ad71-06bc-40c7-a8ec-d98f5351ca7c"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -43186,12 +43080,10 @@
 >
 <Actions>
 <Action
- Guid="6e55fe9a-c314-474e-a6c1-caf6dbcc6c0c"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="2301c951-6aca-4fc9-8730-56300dc3fee3"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="318a7c0a-7751-43b3-85e4-486c6d0b698b"
->DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_OperatedSystemVersion.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="b1d94396-5622-4fdf-906a-2a0629e61156"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -43995,12 +43887,10 @@
 >
 <Actions>
 <Action
- Guid="78d44a6b-082a-4b0c-b95d-16ccb4d240b4"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="b7d63d69-5974-4d16-892e-d569d9c4e5c7"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="5786fda8-ba7c-4ae4-9fac-b7268cc8342a"
->DMI.MasterDMI().Out_OverrideStatus.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_OverrideStatus.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="31f6e3ce-e52e-4be4-a9b5-3b98dff36ee3"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -44822,12 +44712,10 @@
 >
 <Actions>
 <Action
- Guid="bce36ef6-6789-469c-9226-cb3cbd1925cd"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="7c09e646-22d3-464f-8d39-238f23b6f455"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="592b133c-e160-4f1c-9040-dbf44ce059c7"
->DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_PermittedSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="689ca58b-e8d8-451c-bba2-c2b8f3eb61c6"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -45631,12 +45519,10 @@
 >
 <Actions>
 <Action
- Guid="4d570b0f-4cec-4d23-92b7-935189c3f0ae"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="0c9e9e7a-3cab-4044-acd1-ac9ecd8b7c52"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="219101ea-a07e-47e8-b453-27a5f52cd052"
->DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="88803e0b-fc0f-4b49-9c5d-fd397b1c2380"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -46440,12 +46326,10 @@
 >
 <Actions>
 <Action
- Guid="0617cb51-3c78-44a1-b2c3-c459ea9cf8d1"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="1e3ea2f4-0bd2-4b7c-8efb-ed3053fab4c2"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="b471df3e-3371-45dd-81ce-700841c31a37"
->DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_RadioNetworkRegistrationFailed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="d2ebbb95-ff61-4fbf-ae68-9d0f19a3104f"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -47249,12 +47133,10 @@
 >
 <Actions>
 <Action
- Guid="6775d415-ab6e-4d66-94be-b9acf8bade01"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="1959ee44-5bfd-4f8e-8885-143a99b399c3"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="2dfe652f-0839-4e51-968f-535a4ca56d84"
->DMI.MasterDMI().Out_RBCContactInformation.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_RBCContactInformation.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="3c441ea9-f07e-4135-b7e7-004140dd4c20"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -48058,12 +47940,10 @@
 >
 <Actions>
 <Action
- Guid="98a94cd8-1f4c-4489-9536-b6b3aa536ae4"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="fe8c1048-5f5b-4b21-89bc-d6849b3f5183"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="a8415554-d68e-4d4f-b492-b3fe51452981"
->DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="f78bcd4e-9792-4856-91c1-c8bc948ce104"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -48867,12 +48747,10 @@
 >
 <Actions>
 <Action
- Guid="d169b369-6663-499d-8595-dd78f9cbd925"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="08263b56-c489-4905-a574-9b097c244cb6"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="75e0f858-4d34-49c7-877b-53db7f48ca98"
->DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="eabfb0bc-b121-42c5-b192-e3b32487b83c"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -49676,12 +49554,10 @@
 >
 <Actions>
 <Action
- Guid="6d6d0196-3a51-4257-8d11-dc7c89f6bc16"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="27995ae2-cbf7-430f-98a9-871a406a5810"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="e2a16417-1c24-4b25-a74c-3d70a8624b84"
->DMI.MasterDMI().Out_RouteUnsuitabilities.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_RouteUnsuitabilities.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="582458f1-54d5-4285-b3b1-6d22814aa2c9"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -50485,12 +50361,10 @@
 >
 <Actions>
 <Action
- Guid="78988cf9-6126-45dc-994d-e6522a3a3411"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="c5272a7f-4aaa-4e5b-ad60-e4db9c662e50"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="4a1877dd-d866-4236-a282-c149cea44058"
->DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_SafeRadioConnectionIndication.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="74bc18a1-3175-44cc-8464-3585bf8cef63"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -51294,12 +51168,10 @@
 >
 <Actions>
 <Action
- Guid="79fc1090-03a9-4c59-a07c-a62a6f1b72c6"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="cd8a8411-7208-413f-ada9-49beebd64d8d"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="b370078b-edd7-40d9-ae1e-7feb043abefb"
->DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_SBI.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="d34a8066-4796-4c11-a0ee-28aa550b644a"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -52103,12 +51975,10 @@
 >
 <Actions>
 <Action
- Guid="0adf1ba0-6730-4598-8ebd-33a8137eb1e8"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="6b9c61bf-ea35-42ae-97e5-643937210a2f"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="08faccb3-42e5-4db9-b751-130b5a106637"
->DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="e5d8a2e1-46c9-42aa-ab1c-2c2996186d7a"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -52912,12 +52782,10 @@
 >
 <Actions>
 <Action
- Guid="446fab2a-d85c-44de-b84d-c4d7b2cfbbc8"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="bdb7b5df-87a5-4f27-9610-af1e5614782b"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="38adc097-04d9-4de9-a685-48286bee8263"
->DMI.MasterDMI().Out_ShuntingRequestNotAnsweredByRbc.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_ShuntingRequestNotAnsweredByRbc.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="24e3de6e-d2ca-4ad0-b9d0-b7d906ea3b94"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -53721,12 +53589,10 @@
 >
 <Actions>
 <Action
- Guid="1bf68149-6aad-4a1e-a125-9d9fd89feca2"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="87d63ebf-9325-4470-9d49-6398dac4cebd"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="770ebb62-797e-4d13-92e5-7a5d92237436"
->DMI.MasterDMI().Out_SpeedAndDistanceMonitoringSupervisionStatus.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_SpeedAndDistanceMonitoringSupervisionStatus.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="05ff7d5b-de8a-4965-aab8-0ce861ba840b"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -54530,12 +54396,10 @@
 >
 <Actions>
 <Action
- Guid="3980f492-3747-4746-b2f5-083fa733d7dd"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="bfe761df-9d19-4fae-b840-72efd3eb1dba"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="aad9ecc9-e489-406a-8b1c-da094b613a6c"
->DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="dbb06cb2-923e-4aeb-9a3f-04f6cf2a1c99"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -55339,12 +55203,10 @@
 >
 <Actions>
 <Action
- Guid="d0e87495-fa5d-4110-903f-c9fef32b94aa"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="639ae90f-a718-471f-ba55-fb752c048f52"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="f63e076b-3046-40ba-a492-1877cfdb265a"
->DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="d823de4e-8ec9-49d5-8b05-dbc93fafa618"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -56148,12 +56010,10 @@
 >
 <Actions>
 <Action
- Guid="68182a8c-8bb5-4bfa-bc38-06080aac70f4"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="715ada39-5729-46c0-a970-424a087146a0"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="a9569efc-a5cf-4d8a-aacb-eac002bdf74b"
->DMI.MasterDMI().Out_TrackAheadFreeRequest.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrackAheadFreeRequest.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="d95d08a6-2cdb-4b80-9df5-57527ec21f59"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -56957,12 +56817,10 @@
 >
 <Actions>
 <Action
- Guid="20534002-ff7e-48d5-a299-e84fee93eda4"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="402275d5-681a-4f05-88ec-92748891febd"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="dd026aa8-f72b-4930-88cf-e1f4e9d7306d"
->DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrackConditionsWithoutSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="f2583763-5891-4d94-8e08-de7fca42f726"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -57766,12 +57624,10 @@
 >
 <Actions>
 <Action
- Guid="b03116e3-3cbe-498d-b811-1b180bf14325"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="b3b9ef31-1516-443a-b034-76e7e573a699"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="42eb3973-2e87-4c35-8f46-ebe28ffe83be"
->DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrackConditionsWithSoundHorn.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="ce4979ec-98bd-46f4-849b-a405e8ef7aa3"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -58575,12 +58431,10 @@
 >
 <Actions>
 <Action
- Guid="da1f9b1a-2787-485c-b339-0236b678bf08"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="f3933250-e077-4808-98bc-10a42c106366"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="8388001c-0b5e-4429-ae77-4ba48dee5a44"
->DMI.MasterDMI().Out_TracksideMalfunction.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TracksideMalfunction.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="f46c6b38-24aa-48be-9eaa-fb71d013b180"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -59384,12 +59238,10 @@
 >
 <Actions>
 <Action
- Guid="e5ca6fce-5ea0-43f8-8e36-7f1e4dcbb44c"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="a7aea709-7a52-468a-b8a7-badbd1743910"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="463430ff-d4ad-4a6a-8a21-7e0469d4ee62"
->DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="320325ec-0eb2-4ab2-8d0e-8d4dcfb5eafb"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -60193,12 +60045,10 @@
 >
 <Actions>
 <Action
- Guid="ee7b8036-69a3-4620-ac3b-b4a62371ff04"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="ecbc7316-52d9-4ec1-add0-36fe1a860d80"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="4e7a76a9-d3c7-4a47-aeba-cc77f3eb8d52"
->DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrainData.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="4f59b31e-422f-4d0a-88ba-5ade5b95e993"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -61002,12 +60852,10 @@
 >
 <Actions>
 <Action
- Guid="ac77e6b6-68da-468b-b8c0-2a1d207d6bcf"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="82139752-e0f1-492d-b733-bee24ea9d2cb"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="feeaeaaf-f073-4ea2-8f6e-97bbc9aba469"
->DMI.MasterDMI().Out_TrainIsRejected.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrainIsRejected.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="b90d4ae1-d649-4f2c-84a0-937f993a9418"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -61811,12 +61659,10 @@
 >
 <Actions>
 <Action
- Guid="2d3e28a7-0663-4080-b7c3-28c09a0f8f0d"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="f578713b-8b0a-4d68-8059-9feebfffab38"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="cd549961-3238-4a8d-94c2-29be11b877f0"
->DMI.MasterDMI().Out_TrainRunningNumber.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TrainRunningNumber.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="504dbe28-e757-4bf1-95bc-9efbe5d8285b"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -62620,12 +62466,10 @@
 >
 <Actions>
 <Action
- Guid="4b0d0a5f-bc06-4746-8c1b-6a89699597ab"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="3b6b5fdd-356e-465c-a139-d882643d6de7"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="bdc2e63e-2dba-4bf9-a353-d99bcf528d5b"
->DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</Action></Actions>
+>DMI.MasterDMI().Out_TrainSpeed.OutputInformation.DisplayRequested  &lt;- False</Action><Action
+ Guid="dfee768d-1f6d-4d9d-8d81-8ed30540221b"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -63429,12 +63273,10 @@
 >
 <Actions>
 <Action
- Guid="960250bd-3af6-4f6a-917c-a481dc7772ec"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="3b49296c-d6e5-477c-87f7-56b600174b67"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="4902e279-4bfb-4966-b50d-3d872cba064c"
->DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="fc968e12-8aea-4a19-af5e-2d2617703be8"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -64238,12 +64080,10 @@
 >
 <Actions>
 <Action
- Guid="61b2cb06-7fab-4069-b0a0-04d0b486da0c"
->Kernel.Mode &lt;- Default.Mode.SH</Action><Action
- Guid="caf30a6b-a693-4619-bf16-7bb970523e7b"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="aab5bc08-8d2e-4784-9247-46f055966326"
->DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action></Actions>
+>DMI.MasterDMI().Out_VirtualBaliseCovers.OutputInformation.DisplayRequested  &lt;- True</Action><Action
+ Guid="26281661-ae00-42e3-b663-a8a43c2676cd"
+>Testing.SetSHMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

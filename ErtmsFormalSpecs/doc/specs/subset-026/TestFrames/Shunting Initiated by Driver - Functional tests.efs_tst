@@ -382,10 +382,10 @@
 >
 <Actions>
 <Action
- Guid="7e950e85-5b7e-411d-9320-d0257eaef74b"
->Kernel.Mode &lt;- Mode.SH</Action><Action
  Guid="bf5160a5-fdea-4251-9963-12eee6a9530e"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A095</Action></Actions>
+>Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A095</Action><Action
+ Guid="1df06d12-8182-46a5-84cc-72415e0e74ff"
+>Kernel.Mode &lt;- Mode.SH</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -791,13 +791,7 @@
  Guid="c99b9b1d-b21a-4ee9-a7b2-b95c25a12bce"
 >DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action><Action
  Guid="5f58df18-6dd5-4ac5-8989-3f884fb2e244"
->
-
-
-
-
-
-Testing.SetOSMode()</Action></Actions>
+>Testing.SetOSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1950,14 +1944,7 @@ Testing.SetOSMode()</Action></Actions>
  Guid="7d0128dd-0460-4989-b560-0c2de1cd4663"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="127f8a3e-2250-4dc7-aaf0-26fce6cd7c49"
->
-
-
-
-
-
-
-Testing.SetOSMode()</Action></Actions>
+>Testing.SetOSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

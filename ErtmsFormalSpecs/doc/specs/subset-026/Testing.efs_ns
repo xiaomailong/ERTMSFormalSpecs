@@ -501,6 +501,26 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Name="DMI cab open"
+ Guid="f5d70e94-38cf-4f7f-a0e0-e30819faf258"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="DMI cab open"
+ Guid="41eae1ed-741e-488a-9e47-88eb74b74dc8"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="f4d43283-1e6b-4aba-b5af-9947887e3f1b"
+>
+
+TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
  Name="No Mode Profile"
  Guid="c082e94c-47bf-4d95-898c-6e0749272cc6"
 >
@@ -620,6 +640,27 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
         Length =&gt; 4500.0
     }
 }</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="DMI cab open"
+ Guid="39eac867-dcd3-461d-b36d-f9530c651f4f"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="DMI cab open"
+ Guid="ddbc25a5-159f-42c3-8c65-752e8141e45c"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="b9b32fc6-ac98-43ce-a949-d02eb7fc3e2c"
+>
+
+
+TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -745,6 +786,28 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Name="DMI cab open"
+ Guid="978d18ac-efee-4677-816c-809d1e3350ed"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="DMI cab open"
+ Guid="c825538b-009d-4def-9d6b-8f6305916d33"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="27aea12f-886c-4047-8246-fe7e03f8fa21"
+>
+
+
+
+TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
  Name="Set the SR information"
  Guid="0abde4d6-83e1-40e6-8836-e66a2df5f0cb"
 >
@@ -769,9 +832,14 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="290"
+ Y="80"
+ Width="100"
+ Height="50"
  Name="SetOSMode"
  Guid="70057ba0-9886-4073-9e8d-8543bb873665"
 >
+<Comment>Procedure that sets the mode to OS and sets all data so maintain this mode.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -867,6 +935,28 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Name="DMI cab open"
+ Guid="a541f900-ad59-4dcd-9f65-8c1b4d53524c"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="DMI cab open"
+ Guid="9e0ceecc-0225-4be3-81ba-95d41cbe94b9"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="592f8c50-b817-4ec3-b4b8-745a2b3e6d94"
+>
+
+
+
+TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
  Name="Set OS mode profile"
  Guid="ab2d4931-04d0-44d3-9937-b60a16c8e81e"
 >
@@ -888,6 +978,153 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 Kernel.MA.ModeProfile.ModeProfileStruct{
     Distance =&gt; 0.0,
     Mode =&gt; Default.Mode.ModeProfile.OS,
+    Speed =&gt; Default.BaseTypes.Speed.UseNV,
+    Length =&gt; 4500.0,
+    AcknLength =&gt; 0.0,
+    SupervisionQualifier =&gt; Messages.Q_MAMODE.as_the_EOA__keeping_the_SvL_given_by_the_MA
+}
+]</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="SetSHMode"
+ Guid="4f5882fb-240f-446c-ac93-87449b4d3c5b"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set SH mode"
+ Guid="5c386fbf-08f4-40ae-a0d0-e31328127161"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set SH mode"
+ Guid="f80df71d-b420-4a84-992e-cea4a288f8f0"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a21fb837-38d3-4cff-bb4f-1ab8fb17fe0c"
+>Kernel.Mode &lt;- Mode.SH</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set level (if required)"
+ Guid="162e4874-bde5-4fae-94e3-1135f35eb5bc"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Level is 0 or NTC"
+ Guid="dd08f45a-c259-4510-99e0-13a0ab68ed9d"
+>
+<PreConditions>
+<PreCondition
+ Guid="d46fb86d-46d4-40d2-8ad1-b2cc9c63bb71"
+>Kernel.Level.Value.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="4b820380-18a5-45d5-8894-0e548048395a"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; LevelDataStruct{
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L1
+    },
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set gradient and SSP"
+ Guid="58b50cbe-c63b-4b03-9aa5-ed235ad94882"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No gradient or SSP"
+ Guid="ebf944db-3d31-4024-8a84-ccc2400bdea3"
+>
+<PreConditions>
+<PreCondition
+ Guid="f0bc5d08-acf9-4f97-9dc6-143eef29519f"
+>Kernel.TrackDescription.Gradient.Gradients == []
+  OR  
+Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="17495370-721d-4147-a9d5-86e77aca98c3"
+>InitializeElementsForMA()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set MA"
+ Guid="3c375211-2894-46b7-ac68-a3019c399954"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No MA"
+ Guid="099b959c-bace-4096-9d09-93d7344a6cdc"
+>
+<PreConditions>
+<PreCondition
+ Guid="c3932656-a311-48f6-8b25-2a72d0356aa8"
+>Kernel.MA.MA == EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3ec3b8ad-a6c8-4cae-abbf-200584f3de10"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 4500.0
+    }
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="DMI cab open"
+ Guid="32b1dc25-1ebf-4ade-a173-244d69b001e2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="DMI cab open"
+ Guid="05b6f3d2-7baa-497e-b7df-ff8e74a36910"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="608e9537-e900-4646-aa3a-f57e2719f064"
+>
+TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set SH mode profile"
+ Guid="355c7b3f-c821-45a0-bd67-f15551c7beed"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set LS mode profile"
+ Guid="329a488a-5014-4b7c-a965-a9782003c9f4"
+>
+<PreConditions>
+<PreCondition
+ Guid="e8c459e6-fe5d-4378-a0c0-6d3fa31446ae"
+>Kernel.MA.ModeProfile.Profile == []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5460d2df-2aba-44d4-be04-514bbcd16bca"
+>Kernel.MA.ModeProfile.Profile &lt;- 
+[
+Kernel.MA.ModeProfile.ModeProfileStruct{
+    Distance =&gt; 0.0,
+    Mode =&gt; Default.Mode.ModeProfile.SH,
     Speed =&gt; Default.BaseTypes.Speed.UseNV,
     Length =&gt; 4500.0,
     AcknLength =&gt; 0.0,
