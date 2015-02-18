@@ -515,9 +515,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 <Actions>
 <Action
  Guid="f4d43283-1e6b-4aba-b5af-9947887e3f1b"
->
-
-TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
+>TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -657,10 +655,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 <Actions>
 <Action
  Guid="b9b32fc6-ac98-43ce-a949-d02eb7fc3e2c"
->
-
-
-TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
+>TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -675,8 +670,8 @@ TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 >
 <PreConditions>
 <PreCondition
- Guid="e13baae8-2425-4495-b05f-d8a6969afe11"
->Kernel.MA.ModeProfile.Profile == []</PreCondition></PreConditions>
+ Guid="96cae18b-d8a6-4658-9bbb-4d7200549257"
+>NOT THERE_IS modeProfile IN Kernel.MA.ModeProfile.Profile | modeProfile.Mode == Default.Mode.ModeProfile.LS AND Kernel.MA.ModeProfile.DistanceIsWithinAModeProfile(modeProfile)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d4b4461f-f590-4be9-abca-0fe04cbc2a24"
@@ -800,11 +795,7 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Actions>
 <Action
  Guid="27aea12f-886c-4047-8246-fe7e03f8fa21"
->
-
-
-
-TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
+>TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -949,11 +940,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 <Actions>
 <Action
  Guid="592f8c50-b817-4ec3-b4b8-745a2b3e6d94"
->
-
-
-
-TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
+>TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -968,8 +955,8 @@ TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 >
 <PreConditions>
 <PreCondition
- Guid="a83c2aa9-79bf-45a5-b1ae-8a9a2498743b"
->Kernel.MA.ModeProfile.Profile == []</PreCondition></PreConditions>
+ Guid="91df0e7e-4671-4d12-a652-78a421a92c46"
+>NOT THERE_IS modeProfile IN Kernel.MA.ModeProfile.Profile | modeProfile.Mode == Default.Mode.ModeProfile.OS AND Kernel.MA.ModeProfile.DistanceIsWithinAModeProfile(modeProfile)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="566f5349-a4a2-4967-bd62-56451428e117"
@@ -987,6 +974,8 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Width="100"
+ Height="50"
  Name="SetSHMode"
  Guid="4f5882fb-240f-446c-ac93-87449b4d3c5b"
 >
@@ -1099,8 +1088,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 <Actions>
 <Action
  Guid="608e9537-e900-4646-aa3a-f57e2719f064"
->
-TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
+>TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1115,8 +1103,8 @@ TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 >
 <PreConditions>
 <PreCondition
- Guid="e8c459e6-fe5d-4378-a0c0-6d3fa31446ae"
->Kernel.MA.ModeProfile.Profile == []</PreCondition></PreConditions>
+ Guid="91d89649-6d39-47dc-bce5-2baf049e6630"
+>NOT THERE_IS modeProfile IN Kernel.MA.ModeProfile.Profile | modeProfile.Mode == Default.Mode.ModeProfile.SH AND Kernel.MA.ModeProfile.DistanceIsWithinAModeProfile(modeProfile)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5460d2df-2aba-44d4-be04-514bbcd16bca"
