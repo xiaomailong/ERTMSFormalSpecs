@@ -535,6 +535,24 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
  Guid="c39eb533-d302-4b9e-937b-a28026c72ea0"
 >Kernel.MA.ModeProfile.Profile &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="No Sleeping signal"
+ Guid="7f60ff5b-8ef8-4298-ac62-61a448df140e"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No Sleeping signal"
+ Guid="00a3211a-7b8d-4b88-858d-534308bd0086"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="7695ad30-ee8a-4fa2-b789-c0b1dde8699c"
+>TIU.SleepingRequested &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="290"
@@ -687,6 +705,25 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 }
 ]</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="No Sleeping signal"
+ Guid="b98f0cbb-866c-4549-adb2-e319f27ea4be"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No Sleeping signal"
+ Guid="243836cd-fd76-4d0e-9843-da3032c725b2"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="e8a5b9da-53b7-4835-a062-2c86024dd6b3"
+>
+TIU.SleepingRequested &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="180"
@@ -820,6 +857,26 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 }</Action><Action
  Guid="4597d7e8-771e-4f88-a32a-b7ac0cc7a208"
 >Kernel.TrainPosition.SRStartDistance &lt;- Odometry.NominalDistance</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="No Sleeping signal"
+ Guid="51129b99-3d9b-462f-9af4-0d13a498cddd"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No Sleeping signal"
+ Guid="5f161253-8fc9-4efd-a8aa-51086df6e488"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="394abec1-1461-4aed-8467-944b7cecbf4d"
+>
+
+TIU.SleepingRequested &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -973,6 +1030,25 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 }
 ]</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="No Sleeping signal"
+ Guid="911576d2-a077-4293-8388-1fdb9e926704"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No Sleeping signal"
+ Guid="b55e5f4b-df91-4164-a41e-13aa3176d5e4"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="1b5317d8-e17a-433b-89a9-e5b6c9dcf199"
+>
+TIU.SleepingRequested &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Width="100"
@@ -1122,6 +1198,26 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 }
 ]</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="No Sleeping signal"
+ Guid="5bd78158-18a1-4e1a-a6ca-ed611dffac34"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No Sleeping signal"
+ Guid="4a79009d-e2c9-4ce2-b42f-03824ea1b97e"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="7171b080-3c92-4249-96c9-f919cccd0443"
+>
+
+TIU.SleepingRequested &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Width="100"
@@ -1193,8 +1289,30 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
  Guid="b189c4e8-03eb-4809-b9b3-e633a9cc13b1"
 >TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="No Sleeping signal"
+ Guid="7fa11f0c-9db3-4573-8a2c-2d36e0c1707d"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No Sleeping signal"
+ Guid="f7608d81-b3e6-4563-a661-96edd7ea4aab"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="5ea7b0e9-2e50-4404-8309-787d3c461d7b"
+>
+
+TIU.SleepingRequested &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Width="100"
+ Height="50"
  Name="SetPSMode"
  Guid="20096fc8-2c56-4bc7-8980-50314f71913e"
 >
@@ -1338,6 +1456,87 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
     SupervisionQualifier =&gt; Messages.Q_MAMODE.as_the_EOA__keeping_the_SvL_given_by_the_MA
 }
 ]</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="No Sleeping signal"
+ Guid="fa9d1063-8f91-4bb5-89ee-00e92a9572f2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No Sleeping signal"
+ Guid="e2493bdc-1416-4863-95de-188d3a1ac676"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="5f2f16cc-0c5b-4921-b17a-f51a6fa94e67"
+>
+TIU.SleepingRequested &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="SetSLMode"
+ Guid="79fba746-5fc7-477b-b035-7e5199808c03"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set SL mode"
+ Guid="1872a9af-8438-43f2-a21b-9ddafaea9249"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set SL mode"
+ Guid="667855d4-d026-4f6e-b696-cfdd8e3d5985"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="260f15c2-dac7-42f8-9560-55ef35c9580a"
+>Kernel.Mode &lt;- Mode.SL</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Desks are closed"
+ Guid="e671acc3-f350-4857-b550-9826f18f1dbc"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Desks are closed"
+ Guid="a40c0f6d-b11e-40a6-b363-8cf78f9c04e7"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="dadf3201-fb98-4e92-95f1-1cceee88d894"
+>DMI.CabOfDMI(DMI.MasterDMI()).Desk1IsActive &lt;- False</Action><Action
+ Guid="81214136-398b-4598-861d-5e987523d8d1"
+>DMI.CabOfDMI(DMI.MasterDMI()).Desk2IsActive &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Sleeping input is received"
+ Guid="eb39ee34-cd41-4960-9d99-1468957a648b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Sleeping input received"
+ Guid="69c2eadf-032c-4adc-a9d7-56502a5f0a51"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="60a529ba-2faa-468e-8047-d80d5859838d"
+>TIU.SleepingRequested &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
