@@ -1902,5 +1902,53 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 >Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ X="400"
+ Y="20"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="SetSFMode"
+ Guid="d6c892e7-f049-4524-aeee-cf8201d9e93e"
+>
+<Comment>Procedure that sets the mode to FS and sets all data so maintain this mode.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set SF mode"
+ Guid="167fb6e8-2951-4a7b-a111-cfedb2ada1e6"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set SF mode"
+ Guid="9d06cd04-5cbe-40a8-a7ed-3a418bbede26"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="f985d005-afc5-4b21-8c10-33f5fefa510b"
+>Kernel.Mode &lt;- Mode.SF</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power on"
+ Guid="a5885d7a-32a7-4bf3-ac1a-ccd39312c113"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="99e37edb-b81f-4b0f-82ae-ae63a700cb80"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="fe87c0a9-9f24-456a-8a46-28a62d96530e"
+>Kernel.PowerOn &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 </NameSpace>
