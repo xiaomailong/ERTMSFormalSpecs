@@ -2056,15 +2056,13 @@
 <Actions>
 <Action
  Guid="c8d86bd0-6c8d-46a6-a3ef-90988393cd4b"
->Kernel.Mode &lt;- Mode.SN</Action><Action
+>Testing.SetSNMode()</Action><Action
  Guid="7ecbcc6e-93b9-48c1-ae0d-daa07eff1c78"
 >Odometry.EstimatedSpeed &lt;- 0.0</Action><Action
  Guid="e80311f2-b484-4cca-876e-2246146824a5"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action
  Guid="e3b9644b-0e04-4326-bd87-ceaa8dbdba57"
 >DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
- Guid="a96736fb-8d2d-426f-bab0-f593a72e2346"
->Kernel.Level.Value.Value &lt;- Level.LNTC</Action><Action
  Guid="b8bed355-a2e1-474b-a616-013d62606abb"
 >Kernel.Level.Value.NTC &lt;- 254</Action></Actions>
 <Expectations>

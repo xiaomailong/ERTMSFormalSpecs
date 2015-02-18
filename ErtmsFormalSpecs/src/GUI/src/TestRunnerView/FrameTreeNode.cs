@@ -295,7 +295,7 @@ namespace GUI.TestRunnerView
             retVal.Insert(8, new MenuItem("Execute", new EventHandler(RunHandler)));
             retVal.Insert(9, new MenuItem("Create report", new EventHandler(ReportHandler)));
             retVal.Insert(10, new MenuItem("-"));
-            retVal.Insert(11, new MenuItem("Set PT mode", new EventHandler(SetFSMode)));
+            retVal.Insert(11, new MenuItem("Set SN mode", new EventHandler(SetFSMode)));
 
             return retVal;
         }
@@ -308,7 +308,7 @@ namespace GUI.TestRunnerView
                 {
                     foreach (Step step in testCase.Steps)
                     {
-                        if (step.Name.Contains("PT"))
+                        if (step.Name.Contains("SN"))
                         {
                             SubStep subStep = step.SubSteps[0] as SubStep;
                             if (subStep != null)
@@ -327,7 +327,7 @@ namespace GUI.TestRunnerView
                                 }
 
                                 DataDictionary.Rules.Action setFS = new DataDictionary.Rules.Action();
-                                setFS.setExpression("Testing.SetPTMode()");
+                                setFS.setExpression("Testing.SetSNMode()");
 
                                 subStep.appendActions(setFS);
                             }

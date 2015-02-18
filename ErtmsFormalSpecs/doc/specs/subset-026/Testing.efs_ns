@@ -571,6 +571,24 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
  Guid="26d9ed87-d969-402d-abf2-e68fc445fe1f"
 >Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS not isolated"
+ Guid="a92ca44e-b3de-4c5f-bb5d-bae23bc1ee0b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS not isolated"
+ Guid="b3f0406a-362a-4e50-bd35-1002a6c7511a"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="69f0266a-d797-46bb-b85f-ba5cce295984"
+>TIU.ETCSIsolated &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="400"
@@ -759,6 +777,24 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
  Guid="7b730924-1fb8-43c6-bbca-81df50b5ff6e"
 >Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS not isolated"
+ Guid="b0fd5b1f-8599-43b3-8a95-9d29c938ca7b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS not isolated"
+ Guid="4d9fcf63-299b-47e5-a182-76e38743a6c2"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="bec6a6bc-9eba-456f-a2d4-e4f4b3df289a"
+>TIU.ETCSIsolated &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="290"
@@ -928,6 +964,24 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Action
  Guid="3c2209c1-ede5-4f71-840d-873765305ad4"
 >Kernel.PowerOn &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS not isolated"
+ Guid="bcb6620d-6c56-4760-9225-2198cde2bb3a"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS not isolated"
+ Guid="c8525df8-102f-4f30-95f6-336032c77fbe"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="c8d7a9f7-f34e-4a3e-ba6f-b3f132afd2db"
+>TIU.ETCSIsolated &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1117,6 +1171,24 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
  Guid="2a9e769d-9513-4509-8ede-bc6c2a610d17"
 >Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS not isolated"
+ Guid="c5f49cef-1b70-40e5-9482-3dff74b03600"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS not isolated"
+ Guid="0eca2891-288a-4b49-aa07-9a5f49404637"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="781c4dbd-bfd7-41fd-bde5-0f680379eee7"
+>TIU.ETCSIsolated &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="180"
@@ -1304,6 +1376,24 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
  Guid="5933167f-fd17-4544-aba7-f007af0b1239"
 >Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS not isolated"
+ Guid="ff742c72-d609-490e-bbc3-7ee8b5d5802c"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS not isolated"
+ Guid="4ba849d4-9fa0-4e33-a324-ce75f2ba3a30"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="2f5c980c-1fa7-4108-bbd2-5a5244f1bc4a"
+>TIU.ETCSIsolated &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="400"
@@ -1412,6 +1502,24 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Action
  Guid="a5f388b0-60d4-4d99-8cd9-f26b3a197afa"
 >Kernel.PowerOn &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS not isolated"
+ Guid="6a4a038c-7de6-4448-a240-b07aaed7a293"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS not isolated"
+ Guid="107b6bb0-2b5e-495d-a7e3-5009ade4f50b"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="b8f56ab2-7f07-48c4-afa6-92fd31415887"
+>TIU.ETCSIsolated &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1600,6 +1708,24 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
  Guid="cccd84ed-f16a-4d16-b1a5-8213f1dab690"
 >Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS not isolated"
+ Guid="af2374d7-4e5a-426f-aa30-da43169ce32f"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS not isolated"
+ Guid="216d3389-f88b-4ede-85f5-aca4858cb6d4"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="b5d40646-e86b-4f18-bf4e-9a9b101b77e5"
+>TIU.ETCSIsolated &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="400"
@@ -1683,6 +1809,24 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Action
  Guid="059906af-4c81-4f68-a327-3c64fae78c71"
 >Kernel.PowerOn &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS not isolated"
+ Guid="225ba83a-6a1a-4b4f-9c9d-d34a9232c3e1"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS not isolated"
+ Guid="b83fec0d-7a65-4444-aae8-42062a5ea638"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="2dbc2496-b52a-44a8-8748-0abd3a6e44e3"
+>TIU.ETCSIsolated &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1768,6 +1912,24 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
  Guid="bb1e4ced-352e-4eef-a7be-4db1757c6a7d"
 >Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS not isolated"
+ Guid="f20892cc-53e2-416e-8641-0cd0ea25fab7"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS not isolated"
+ Guid="744fd965-ef06-4271-b384-6f09ebb930b2"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="4ac11c8c-7f56-46b4-8fd2-605d7a1fb520"
+>TIU.ETCSIsolated &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="180"
@@ -1835,6 +1997,24 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
  Guid="f6b5ec3a-8649-4b95-9ae3-83fe9a98ff18"
 >Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS not isolated"
+ Guid="c3807a22-425b-4b05-80d6-14efd3525a9b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS not isolated"
+ Guid="681c9687-5720-4efa-bda3-810a02ee8b6e"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="705b88ad-c034-4666-a97e-148f982239d7"
+>TIU.ETCSIsolated &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="180"
@@ -1901,6 +2081,24 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
  Guid="fe016112-9e6f-4735-8cfb-2b3ebd3bd222"
 >Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS not isolated"
+ Guid="ff9bd6b2-bfb3-40ca-ab78-8c93d842b1fc"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS not isolated"
+ Guid="cf701ce4-c2a9-435b-81e7-9da02ce72a8d"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a72d831d-eced-42a2-915a-e5b728712e15"
+>TIU.ETCSIsolated &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="400"
@@ -1948,6 +2146,218 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Action
  Guid="fe87c0a9-9f24-456a-8a46-28a62d96530e"
 >Kernel.PowerOn &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS not isolated"
+ Guid="ef31f9ce-73dd-442a-97a6-87dd712ba0b4"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS not isolated"
+ Guid="e97920ad-2e66-4e0d-bd9c-2d60930c8b30"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a24e14c7-55f9-4a79-9239-b8330b42de77"
+>TIU.ETCSIsolated &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="400"
+ Y="20"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="SetISMode"
+ Guid="c4acf7e9-b54d-4df3-834a-a69a9f06488e"
+>
+<Comment>Procedure that sets the mode to IS and sets all data so maintain this mode.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set IS mode"
+ Guid="3a0f7682-7b7c-43f4-bdff-b307ea64e20a"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set IS mode"
+ Guid="bad3aa92-6e11-431d-b384-8ae9092bbe8e"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="62865b39-ba0a-4ffa-94cc-34a168fc4402"
+>Kernel.Mode &lt;- Mode.IS</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power on"
+ Guid="bac641ac-680d-43f9-8563-560d6661ac5b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="88f90654-0d8c-400d-946d-f11c93dc4691"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="e735051b-ee94-4cc0-8e21-936e3e8b71c1"
+>Kernel.PowerOn &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS isolated"
+ Guid="897539cc-5dce-4f84-a0f1-a2073dea179d"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS isolated"
+ Guid="d98aafae-4b44-4ac2-aacf-66c136819b5b"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="0466c547-0b1c-45de-9636-560da9bbea04"
+>TIU.ETCSIsolated &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="400"
+ Y="20"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="SetSNMode"
+ Guid="9abbd0bc-2bf7-4a38-bcd2-f4d4372a8e57"
+>
+<Comment>Procedure that sets the mode to SN and sets all data so maintain this mode.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set SN mode"
+ Guid="6eb7c5d0-93df-4d59-b400-1ca504d4f711"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set SN mode"
+ Guid="c10a6746-105c-4e0a-94b3-0b6db6d91c05"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="9d34974f-3bb4-4617-a3a5-ef6e992b6167"
+>Kernel.Mode &lt;- Mode.SN</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set level (if required)"
+ Guid="1d5c5cde-d8bb-405f-bc7c-f71987d02335"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Level is 0 or NTC"
+ Guid="3424be75-bae6-4e5a-82f2-e3bf115853ad"
+>
+<PreConditions>
+<PreCondition
+ Guid="ee9c5df6-2bb6-42e1-8309-b07b6b288de6"
+>Kernel.Level.Value.Value != Level.LNTC</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f452b5aa-454a-414c-9ae8-52726136f223"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; LevelDataStruct{
+        NTC =&gt; 1,
+        Value =&gt; Default.Level.LNTC
+    },
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="DMI cab open"
+ Guid="5e182b93-5345-4012-90e9-0890afeb5618"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="DMI cab open"
+ Guid="2378736c-a36f-45c8-bb18-4e4dbee9df89"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="19944189-3681-47d9-b64e-9edce792d719"
+>TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="No Sleeping signal"
+ Guid="d9283aec-be3d-4647-8c99-fd4b03bcb572"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No Sleeping signal"
+ Guid="f5f4c376-c930-46e0-95b1-ba628e5e75b1"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="f970e7e5-b23e-43ff-b422-f863da275e38"
+>TIU.SleepingRequested &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power on"
+ Guid="746034e4-f341-4725-bc4d-6b6c912490a8"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="7e3435de-4f53-481b-8ba5-fed76b3ff651"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="6d70c115-f92b-440f-92b2-79c4b552cae9"
+>Kernel.PowerOn &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS not isolated"
+ Guid="c8de433f-cfa0-412d-be5a-e3069f698010"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS not isolated"
+ Guid="f8e80048-9c47-47c9-a3c6-b6fb46fbf7b5"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="1884d7dc-d84b-44c5-9dfa-97b571e9a339"
+>TIU.ETCSIsolated &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
