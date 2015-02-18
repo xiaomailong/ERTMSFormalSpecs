@@ -1124,6 +1124,8 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Width="100"
+ Height="50"
  NeedsRequirement="FALSE"
  Name="SetUNMode"
  Guid="3e31a580-3b8b-4c84-aa91-29fa5aae9eb8"
@@ -1190,6 +1192,152 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Action
  Guid="b189c4e8-03eb-4809-b9b3-e633a9cc13b1"
 >TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="SetPSMode"
+ Guid="20096fc8-2c56-4bc7-8980-50314f71913e"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set PS mode"
+ Guid="26b32a67-025c-4081-bfb6-a08c9001ec5b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set PS mode"
+ Guid="fd27325e-8877-4158-ad8c-8a71263d4df5"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="821bbb10-7c7b-4e31-99c4-7c284a5664dd"
+>Kernel.Mode &lt;- Mode.PS</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set level (if required)"
+ Guid="e496112f-21a3-43f3-a10a-4289280feacf"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Level is 0 or NTC"
+ Guid="2ba25b9e-5916-40a7-a01b-b7cc8aaf1506"
+>
+<PreConditions>
+<PreCondition
+ Guid="8b9ed795-c110-472e-8610-d362c6031a71"
+>Kernel.Level.Value.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5613d016-18df-45c1-b93e-9d6089d9df29"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; LevelDataStruct{
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L1
+    },
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set gradient and SSP"
+ Guid="64b3778e-70fe-4c1e-94e2-14ff3ece3c43"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No gradient or SSP"
+ Guid="c3c16254-9b2e-4862-8859-03773f80e532"
+>
+<PreConditions>
+<PreCondition
+ Guid="f50cda01-e887-48ca-b016-f7dadb4e9721"
+>Kernel.TrackDescription.Gradient.Gradients == []
+  OR  
+Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3df39165-b3c8-4bb9-ad4e-94755d34f101"
+>InitializeElementsForMA()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set MA"
+ Guid="82190a90-ab2d-428a-94f6-719bb846db42"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No MA"
+ Guid="bb43f150-48c1-4a19-b018-5d1bffc0f950"
+>
+<PreConditions>
+<PreCondition
+ Guid="bf1fb960-c629-4591-8dad-b165c3f149b7"
+>Kernel.MA.MA == EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9eb67a45-67bd-4d13-9d03-7f292498db33"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 4500.0
+    }
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="DMI cab closed"
+ Guid="c8b91a12-3ab4-4db2-acd9-d019217618f8"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="DMI cab closed"
+ Guid="6d5650db-ee4b-42d7-99b8-e044e98f78fe"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="020576d4-680a-4012-a1f4-5b95d0814125"
+>TIU.CabA.Desk1IsActive &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set SH mode profile"
+ Guid="93ae8f45-caa0-4bd0-8647-a0cf64bd8032"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set LS mode profile"
+ Guid="11b056d9-7a85-4d0b-b819-e144c28a0c14"
+>
+<PreConditions>
+<PreCondition
+ Guid="79630179-277a-4503-91bc-e82516a10081"
+>NOT THERE_IS modeProfile IN Kernel.MA.ModeProfile.Profile | modeProfile.Mode == Default.Mode.ModeProfile.SH AND Kernel.MA.ModeProfile.DistanceIsWithinAModeProfile(modeProfile)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="892675a1-53dc-490e-a920-247ba98ed066"
+>Kernel.MA.ModeProfile.Profile &lt;- 
+[
+Kernel.MA.ModeProfile.ModeProfileStruct{
+    Distance =&gt; 0.0,
+    Mode =&gt; Default.Mode.ModeProfile.SH,
+    Speed =&gt; Default.BaseTypes.Speed.UseNV,
+    Length =&gt; 4500.0,
+    AcknLength =&gt; 0.0,
+    SupervisionQualifier =&gt; Messages.Q_MAMODE.as_the_EOA__keeping_the_SvL_given_by_the_MA
+}
+]</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
