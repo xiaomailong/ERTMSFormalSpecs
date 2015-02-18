@@ -827,6 +827,7 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
  Y="80"
  Width="100"
  Height="50"
+ NeedsRequirement="FALSE"
  Name="SetOSMode"
  Guid="70057ba0-9886-4073-9e8d-8543bb873665"
 >
@@ -976,6 +977,7 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </Procedure><Procedure
  Width="100"
  Height="50"
+ NeedsRequirement="FALSE"
  Name="SetSHMode"
  Guid="4f5882fb-240f-446c-ac93-87449b4d3c5b"
 >
@@ -1119,6 +1121,75 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
     SupervisionQualifier =&gt; Messages.Q_MAMODE.as_the_EOA__keeping_the_SvL_given_by_the_MA
 }
 ]</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ NeedsRequirement="FALSE"
+ Name="SetUNMode"
+ Guid="3e31a580-3b8b-4c84-aa91-29fa5aae9eb8"
+>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set UN mode"
+ Guid="ae69ef75-6d35-4ed7-aff7-527729ae842f"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set UN mode"
+ Guid="c0a1b8e5-a3e5-49f8-9cc2-a6c7ca3287ea"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="18f95083-f48c-4e85-acaa-8561f304c4e1"
+>Kernel.Mode &lt;- Mode.UN</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Set level (if required)"
+ Guid="202a290e-08a2-46fd-b01c-42d5f53849b9"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Level is not 0"
+ Guid="8adb7a46-8ec1-4ff5-9409-aeeda9770c64"
+>
+<PreConditions>
+<PreCondition
+ Guid="c0065bb4-75ca-414c-be4f-0c9fa527bd1c"
+>Kernel.Level.Value.Value != Level.L0</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="aaf5fbc0-c384-45d1-b4c4-447ab0f5b0b0"
+>Kernel.Level &lt;- Kernel.LevelData{
+    Value =&gt; LevelDataStruct{
+        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Default.Level.L0
+    },
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="DMI cab open"
+ Guid="34348e74-eb9f-4ba1-938f-738f58659dd2"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="DMI cab open"
+ Guid="81d73654-508b-4b2b-9eac-810947a28254"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="b189c4e8-03eb-4809-b9b3-e633a9cc13b1"
+>TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

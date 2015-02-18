@@ -59,15 +59,7 @@
 <Actions>
 <Action
  Guid="e7bdda2a-3c79-4365-aea6-e91556fee686"
->Kernel.Mode &lt;- Mode.UN</Action><Action
- Guid="d23bb731-2cb2-4912-8473-7ac7ef540cc4"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; LevelDataStruct{
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L0
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action><Action
+>Testing.SetUNMode()</Action><Action
  Guid="7bb8b6da-54a9-4ed4-8324-f1df1bb1e757"
 >Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 </SubStep></SubSteps>
@@ -233,18 +225,10 @@
 >
 <Actions>
 <Action
- Guid="86774937-ff49-441b-9da7-6749aa335b15"
->Kernel.Mode &lt;- Mode.UN</Action><Action
- Guid="4e62343c-fcd1-4ded-81a1-854c1595876b"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; LevelDataStruct{
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L0
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action><Action
  Guid="4a3e6816-f4f0-4c76-a279-66141401fea6"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+>Kernel.MA.MA &lt;- EMPTY</Action><Action
+ Guid="bfb513fd-9387-4e96-8678-4010886c830b"
+>Testing.SetUNMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -775,18 +759,10 @@
 >
 <Actions>
 <Action
- Guid="fcbb2a96-feea-46e5-8199-aa5317d4ef86"
->Kernel.Mode &lt;- Mode.UN</Action><Action
- Guid="419653f0-b8ef-4a49-a314-077bdec3304c"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; LevelDataStruct{
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L0
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action><Action
  Guid="6d4a56d5-a0a1-405e-9c6b-55a26f1cae93"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+>Kernel.MA.MA &lt;- EMPTY</Action><Action
+ Guid="aad3f118-1f0a-4cd7-9b0f-a616eb348c0d"
+>Testing.SetUNMode()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step3 - Train data is valid"
  Guid="8fe2eb93-b948-4f0f-9408-777ed6a65285"

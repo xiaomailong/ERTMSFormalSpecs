@@ -2118,14 +2118,14 @@
 >
 <Actions>
 <Action
- Guid="2beebd1b-2fff-4c03-be0a-de84a1af6ca1"
->Kernel.Mode &lt;- Mode.UN</Action><Action
  Guid="d67e2d29-9482-4739-bda0-1b59c27e6ccd"
 >Odometry.EstimatedSpeed &lt;- 0.0</Action><Action
  Guid="312b930b-5b48-4ba3-bcd8-259188c7a262"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.NoProcedure</Action><Action
  Guid="ea1e2251-cf2c-4bfb-a254-47f9e8d93f4a"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
+ Guid="a8928fb6-06e5-4b6e-b89b-9e97666d7a46"
+>Testing.SetUNMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
