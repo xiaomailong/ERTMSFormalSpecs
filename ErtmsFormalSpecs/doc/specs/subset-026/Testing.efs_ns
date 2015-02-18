@@ -1760,5 +1760,71 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 >Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ X="180"
+ Y="20"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="SetTRMode"
+ Guid="98d8396e-19e3-4ac3-a5cf-b48101b2f20e"
+>
+<Comment>Procedure that sets the mode to FS and sets all data so maintain this mode.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set TR mode"
+ Guid="235393ed-74c7-401c-8ddc-a131a88c708c"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set TR mode"
+ Guid="865380de-796b-4ecd-9dc5-ed0148e59663"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="8219f63f-9d53-44c0-b1e2-a11a85aad0be"
+>Kernel.Mode &lt;- Mode.TR</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="DMI cab open"
+ Guid="d5d3c088-8f74-4935-9c9b-b3815e067f29"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="DMI cab open"
+ Guid="620baa3f-ed95-475e-b23a-db98db78031c"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="69ea5596-b0be-4d1f-b5f2-459ba4f73df1"
+>TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power on"
+ Guid="f7fd8c48-28f7-4c52-b221-49d0eb8eade8"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="3e46ff5a-caae-414f-a735-0173a3f4f8ad"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="f6b5ec3a-8649-4b95-9ae3-83fe9a98ff18"
+>Kernel.PowerOn &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 </NameSpace>
