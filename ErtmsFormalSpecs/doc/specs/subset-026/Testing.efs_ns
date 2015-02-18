@@ -9,7 +9,7 @@
 <Procedures>
 <Procedure
  X="20"
- Y="20"
+ Y="190"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -397,7 +397,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="180"
+ X="400"
  Y="20"
  Width="100"
  Height="50"
@@ -573,8 +573,8 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="290"
- Y="20"
+ X="400"
+ Y="80"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -761,8 +761,8 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="180"
- Y="80"
+ X="290"
+ Y="140"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -1119,6 +1119,8 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="180"
+ Y="80"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -1304,6 +1306,8 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="400"
+ Y="200"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -1411,8 +1415,11 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="180"
+ Y="140"
  Width="100"
  Height="50"
+ Pinned="TRUE"
  Name="SetPSMode"
  Guid="20096fc8-2c56-4bc7-8980-50314f71913e"
 >
@@ -1595,6 +1602,8 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="400"
+ Y="140"
  Width="100"
  Height="50"
  Name="SetSLMode"
@@ -1677,7 +1686,7 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="180"
+ X="290"
  Y="20"
  Width="100"
  Height="50"
@@ -1762,14 +1771,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </Rule></Rules>
 </Procedure><Procedure
  X="180"
- Y="20"
+ Y="200"
  Width="100"
  Height="50"
+ Pinned="TRUE"
  NeedsRequirement="FALSE"
  Name="SetTRMode"
  Guid="98d8396e-19e3-4ac3-a5cf-b48101b2f20e"
 >
-<Comment>Procedure that sets the mode to FS and sets all data so maintain this mode.</Comment>
+<Comment>Procedure that sets the mode to TR and sets all data so maintain this mode.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -1823,6 +1833,72 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Actions>
 <Action
  Guid="f6b5ec3a-8649-4b95-9ae3-83fe9a98ff18"
+>Kernel.PowerOn &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="180"
+ Y="20"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="SetPTMode"
+ Guid="4481c338-729d-455c-a965-dc029343633d"
+>
+<Comment>Procedure that sets the mode to PT and sets all data so maintain this mode.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set PT mode"
+ Guid="e16e88bd-0425-436f-9fa1-ee508a0dff8b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set PT mode"
+ Guid="eb97e01d-b3f6-4270-b527-717aaafcfc5b"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="1c08d3a6-3706-4b2f-888c-828ea9a1eeab"
+>Kernel.Mode &lt;- Mode.PT</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="DMI cab open"
+ Guid="5d97032f-c2d5-4884-bbac-a22fc3b508ac"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="DMI cab open"
+ Guid="9f60b841-6133-463a-9c1d-d1961863e2ab"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="945df486-63dc-4ac9-905f-3a7503bccc57"
+>TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power on"
+ Guid="d73274be-f0be-42c1-b96f-ce7c746c9c7e"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="2f050ac4-b392-4133-a11e-b140a2588f3c"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="fe016112-9e6f-4735-8cfb-2b3ebd3bd222"
 >Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
