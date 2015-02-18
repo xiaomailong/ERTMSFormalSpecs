@@ -642,7 +642,7 @@
  Guid="bf7a6186-86f0-4c18-9fbd-98432242119d"
 >Testing.InitializeTestEnvironment()</Action><Action
  Guid="d89379c2-7c06-4f5f-9420-059d6bb3a647"
->Kernel.Mode &lt;- Mode.SB</Action></Actions>
+>Testing.SetSBMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -945,7 +945,7 @@
  Guid="72880cc9-3bbf-4116-8117-8311a227a821"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.A220</Action><Action
  Guid="84f2ed3c-5286-402e-84ec-4eddcf1664bd"
->Kernel.Mode &lt;- Mode.SB</Action><Action
+>Testing.SetSBMode()</Action><Action
  Guid="0a0702b2-a388-44d9-972b-073015e1d576"
 >DMI.MasterDMI().Out_ShuntingRefusedByRbc.OutputInformation.DisplayRequested &lt;- False</Action></Actions>
 <Expectations>
@@ -2237,7 +2237,7 @@
 <Actions>
 <Action
  Guid="df39a77b-11cf-4976-b47e-cb9103c33ed1"
->Kernel.Mode &lt;- Mode.SB</Action><Action
+>Testing.SetSBMode()</Action><Action
  Guid="a3db2b1f-d631-4fa8-a56e-ec50ba752d8e"
 >Odometry.EstimatedSpeed &lt;- 0.0</Action><Action
  Guid="7cf0f4af-19f6-4990-b947-a4aecf533841"

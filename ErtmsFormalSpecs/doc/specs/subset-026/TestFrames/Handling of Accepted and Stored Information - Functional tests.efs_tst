@@ -375,7 +375,7 @@
  Guid="56de90c8-c6c9-49b2-a561-2c713976cd56"
 >Kernel.DriverId.DataState &lt;- DataState.Valid</Action><Action
  Guid="fca11e1c-c03c-4853-9296-d2277b37af54"
->Kernel.Mode &lt;- Mode.SB</Action></Actions>
+>Testing.SetSBMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -768,12 +768,10 @@
 >
 <Actions>
 <Action
- Guid="38267d65-deb8-477c-b502-606e4126112c"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="8ab53373-815b-4865-b91d-41b5e271184c"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="b6897b3d-b9b5-4138-8be9-85b687822bf7"
->Kernel.Mode &lt;- Mode.SB</Action></Actions>
+>Testing.SetSBMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1159,8 +1157,6 @@
 >
 <Actions>
 <Action
- Guid="74e807af-c233-4f92-8d2d-ba6da8785d45"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="ae21bf79-cfae-4d01-94ce-21293341d141"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="adf98fc4-5f81-4f9d-8369-ec4012d36c0e"
@@ -1168,7 +1164,7 @@
  Guid="cb4831f8-116d-4dfb-888b-ccc4bef735cd"
 >Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="962525db-0c27-4f3c-854a-92a6e20b3dc7"
->Kernel.Mode &lt;- Mode.SB</Action></Actions>
+>Testing.SetSBMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1561,12 +1557,10 @@
 >
 <Actions>
 <Action
- Guid="d3ec873a-12c0-4781-9b20-5ede8dc73000"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="574de8b3-b180-4d7b-ba68-fa3c4f8bce6b"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="460e9cc5-17d8-4deb-a48e-4b7a68f4c790"
->Kernel.Mode &lt;- Mode.SB</Action></Actions>
+>Testing.SetSBMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1952,8 +1946,6 @@
 >
 <Actions>
 <Action
- Guid="f00c0ec1-bbac-421b-a5a3-5477c48c26c9"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="a954b929-9a83-467e-9d82-2b2095091670"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="e44e58c5-2bb2-42ba-8f2c-147946421410"
@@ -1961,7 +1953,7 @@
  Guid="208e9536-f93b-42b1-a6ff-c84fd9da82a6"
 >DMI.MasterDMI().DisplayLanguage.DataState &lt;- DataState.Valid</Action><Action
  Guid="9e032855-ed65-44fe-ab68-a1608aede67c"
->Kernel.Mode &lt;- Mode.SB</Action></Actions>
+>Testing.SetSBMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2354,12 +2346,10 @@
 >
 <Actions>
 <Action
- Guid="c5003891-cd73-4f54-8749-0790cac4e42b"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="ccc5f985-d12b-49e7-b25a-668c7e3e002d"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="0ca926dc-4645-4bee-894f-2f1f82f6fc3f"
->Kernel.Mode &lt;- Mode.SB</Action></Actions>
+>Testing.SetSBMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2745,8 +2735,6 @@
 >
 <Actions>
 <Action
- Guid="ad7e4fce-4f3c-4b97-a4e6-6ae3f50224ae"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="e5c0a371-a31e-44b0-b910-8bb56718f235"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="cb077d21-e9f8-4a84-aa8e-2d77f9c02fa1"
@@ -2833,7 +2821,7 @@
  Guid="ee2a417d-1016-416c-92cc-17d40a613fa0"
 >Kernel.NationalValues.ApplicableNationalValues.Value.WeightingFactorForAvailableWheelRailAdhesion &lt;- 0.0</Action><Action
  Guid="5819f3ae-cb99-4566-b795-1573057007c7"
->Kernel.Mode &lt;- Mode.SB</Action><Action
+>Testing.SetSBMode()</Action><Action
  Guid="4b60734c-31ed-4e81-a3da-2298645cfcc2"
 >Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain &lt;- Kernel.NationalValues.KvIntValueSet_FreightTrainStruct
 {
@@ -3358,14 +3346,12 @@
 >
 <Actions>
 <Action
- Guid="3eda8556-861e-41af-ad42-ff658319ff52"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="6ad343c8-7de2-4d46-acbf-53ac7111b2c2"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="bac93d8b-e9d2-4e24-87ab-d81a5cc86f86"
 >Kernel.NationalValues.NotApplicableNationalValues.DataState &lt;- DataState.Valid</Action><Action
  Guid="7b99df78-5f7e-4edf-8309-2d6d7da5d8b5"
->Kernel.Mode &lt;- Mode.SB</Action></Actions>
+>Testing.SetSBMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3756,8 +3742,6 @@
 >
 <Actions>
 <Action
- Guid="6b313913-348e-4cae-b49f-885785860812"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="c2126f5a-c6ee-4ba5-b495-be5a3af646f8"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="c74cc1a6-159c-49e5-ae1e-9d9263a8241f"
@@ -3765,7 +3749,7 @@
  Guid="d7a5ea84-8d0b-431e-83e1-136f86b9cff1"
 >Kernel.OperatedSystemVersion.DataState &lt;- DataState.Valid</Action><Action
  Guid="6c69efc3-6672-4d50-a53b-88b74a0fe2c4"
->Kernel.Mode &lt;- Mode.SB</Action></Actions>
+>Testing.SetSBMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4159,12 +4143,10 @@
 >
 <Actions>
 <Action
- Guid="4d2947b2-09e6-4a75-9047-59138cbc7d50"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="e2ee2a93-02fa-4eee-8c84-1580fe538de5"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="792eb7da-f041-41ab-a7e7-b7ff33487be5"
->Kernel.Mode &lt;- Mode.SB</Action><Action
+>Testing.SetSBMode()</Action><Action
  Guid="e442141a-e85e-4c9a-a0dc-fe23e7313ff1"
 >EURORADIO.PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action><Action
  Guid="b3eac350-e3ed-44bd-b6e8-bb0537e523c8"
@@ -4580,12 +4562,10 @@
 >
 <Actions>
 <Action
- Guid="b88a1237-de56-4bdc-b6e8-15002415aa43"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="e2132c47-b495-4843-a0b3-056034fc653f"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="0ffd51b6-1232-4587-a38b-e9b649e47d99"
->Kernel.Mode &lt;- Mode.SB</Action><Action
+>Testing.SetSBMode()</Action><Action
  Guid="a11fcdb3-9502-4bb1-9dee-11b9484dbec5"
 >EURORADIO.CurrentTerminal().NetworkId &lt;- &apos;Network_Id&apos;</Action><Action
  Guid="23f770dd-03ac-45fe-8192-c29a2bea7f9d"
@@ -4983,12 +4963,10 @@
 >
 <Actions>
 <Action
- Guid="580097b5-39e5-4723-bd40-dae9d9ddc0f6"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="528af199-d7dc-4b15-ab4b-05aec5686ee4"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="a6e4c548-fc30-4a48-a867-de290faef848"
->Kernel.Mode &lt;- Mode.SB</Action><Action
+>Testing.SetSBMode()</Action><Action
  Guid="a32d366e-a009-43ce-afdb-bf822b7a5b75"
 >EURORADIO.CurrentRBCConnection().ContactData.Id.Id &lt;- 1414</Action><Action
  Guid="49a02fa7-609c-4f27-9220-e024a7262cbd"
@@ -5391,12 +5369,10 @@
 >
 <Actions>
 <Action
- Guid="3527e67b-4f04-42a6-b610-06b8eaf0dfa7"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="ab85f5cd-d943-4bdb-85dc-56b444fd97ab"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="8510dc2a-8eff-4669-9057-3069e1b20408"
->Kernel.Mode &lt;- Mode.SB</Action><Action
+>Testing.SetSBMode()</Action><Action
  Guid="1e22f75b-d368-4b15-b575-88fc0576e081"
 >EURORADIO.CurrentRBCConnection().SessionManagementData.SystemVersion.Value &lt;- EURORADIO.SystemVersionEnum.Version1_1</Action><Action
  Guid="14cac277-5ad6-4ee2-8a87-dd8e96c8ad71"
@@ -5793,12 +5769,10 @@
 >
 <Actions>
 <Action
- Guid="a53ac41f-cf81-49bc-bbd9-583986b49e17"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="ad6ee0f5-516b-413b-ac16-9657c4bcceaa"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="1c35b339-7b5b-4b9d-9680-6930969ba53e"
->Kernel.Mode &lt;- Mode.SB</Action></Actions>
+>Testing.SetSBMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6183,12 +6157,10 @@
 >
 <Actions>
 <Action
- Guid="7c22e1c4-13c6-4cc0-b418-b8a3d5a891e6"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="263a7aea-7fe5-45ec-9ee9-0bceb8371d63"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="c67c9f50-f864-4066-8de3-6433f32410a5"
->Kernel.Mode &lt;- Mode.SB</Action></Actions>
+>Testing.SetSBMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6573,8 +6545,6 @@
 >
 <Actions>
 <Action
- Guid="50306733-a9f2-4d96-8a81-3a5b4c1a61b6"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="ef4746b6-afa6-4777-a019-f3c1f2336761"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="d2b6ec02-5cc0-4d57-b1bd-ada89b45ce43"
@@ -6582,7 +6552,7 @@
  Guid="b3862ce0-6aaa-4042-a5b6-97f6fbf934e4"
 >Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action
  Guid="4faa61d0-9255-4695-92e9-63c95ae18133"
->Kernel.Mode &lt;- Mode.SB</Action></Actions>
+>Testing.SetSBMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -6977,12 +6947,10 @@
 >
 <Actions>
 <Action
- Guid="bfe35193-df85-47a2-8156-de899a14c394"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="d6b346d6-2d3b-465c-9347-ae5b5f4ae760"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="16881335-c0c2-4191-a863-e7ab9ce9db7a"
->Kernel.Mode &lt;- Mode.SB</Action><Action
+>Testing.SetSBMode()</Action><Action
  Guid="39d9115e-7fa8-486c-9b11-783a77e16689"
 >Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPosition {
   DataState =&gt; DataState.Valid,
@@ -7391,8 +7359,6 @@
 >
 <Actions>
 <Action
- Guid="530ee014-db9c-400f-acec-31d2d60a2a32"
->DMI.CabOfDMI ( DMI.DMI1 ).Desk1IsActive &lt;- True</Action><Action
  Guid="0bc017c2-bd3e-4bc3-b1d8-1c815473b927"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission</Action><Action
  Guid="f3d6b4d9-007e-4df4-b3ac-1f64bf1af919"
@@ -7400,7 +7366,7 @@
  Guid="3aa3885d-1d40-46cb-a278-387710112cca"
 >Kernel.TrainRunningNumber.DataState &lt;- DataState.Valid</Action><Action
  Guid="39079f09-a232-45f3-8154-a8500006a192"
->Kernel.Mode &lt;- Mode.SB</Action></Actions>
+>Testing.SetSBMode()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

@@ -553,6 +553,24 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
  Guid="7695ad30-ee8a-4fa2-b789-c0b1dde8699c"
 >TIU.SleepingRequested &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power on"
+ Guid="ff94fbaa-a0f1-4b53-80d2-59506427b0b3"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="fff6b40a-b81d-4a21-9aae-bc14a08e02c0"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="26d9ed87-d969-402d-abf2-e68fc445fe1f"
+>Kernel.PowerOn &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  X="290"
@@ -721,8 +739,25 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Actions>
 <Action
  Guid="e8a5b9da-53b7-4835-a062-2c86024dd6b3"
+>TIU.SleepingRequested &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power on"
+ Guid="e9ff175d-ee3d-4c12-b290-86dd7139ca1b"
 >
-TIU.SleepingRequested &lt;- False</Action></Actions>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="290770fb-d79b-428e-a960-1a3eabfaa4c3"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="7b730924-1fb8-43c6-bbca-81df50b5ff6e"
+>Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -734,7 +769,7 @@ TIU.SleepingRequested &lt;- False</Action></Actions>
  Name="SetSRMode"
  Guid="85e02aac-468a-4ad5-a199-7ed7a4201f73"
 >
-<Comment>Procedure that sets the mode to FS and sets all data so maintain this mode.</Comment>
+<Comment>Procedure that sets the mode to SR and sets all data so maintain this mode.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -874,9 +909,25 @@ TIU.SleepingRequested &lt;- False</Action></Actions>
 <Actions>
 <Action
  Guid="394abec1-1461-4aed-8467-944b7cecbf4d"
+>TIU.SleepingRequested &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power on"
+ Guid="1d9928c1-0e2e-4b96-8351-8d0a947242dd"
 >
-
-TIU.SleepingRequested &lt;- False</Action></Actions>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="6d177c1a-ed55-433e-963f-2930cb50bf24"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="3c2209c1-ede5-4f71-840d-873765305ad4"
+>Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1046,8 +1097,25 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Actions>
 <Action
  Guid="1b5317d8-e17a-433b-89a9-e5b6c9dcf199"
+>TIU.SleepingRequested &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power on"
+ Guid="af372fb1-c24c-4954-bf92-1c48ca0d0470"
 >
-TIU.SleepingRequested &lt;- False</Action></Actions>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="4ff617cd-192f-4a71-981f-0fc185916e10"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="2a9e769d-9513-4509-8ede-bc6c2a610d17"
+>Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1214,9 +1282,25 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Actions>
 <Action
  Guid="7171b080-3c92-4249-96c9-f919cccd0443"
+>TIU.SleepingRequested &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power on"
+ Guid="42733203-65f3-4791-b79c-64d55462ee25"
 >
-
-TIU.SleepingRequested &lt;- False</Action></Actions>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="74d94239-16dc-4bdb-993c-3fb8a52ce094"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="5933167f-fd17-4544-aba7-f007af0b1239"
+>Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1305,9 +1389,25 @@ TIU.SleepingRequested &lt;- False</Action></Actions>
 <Actions>
 <Action
  Guid="5ea7b0e9-2e50-4404-8309-787d3c461d7b"
+>TIU.SleepingRequested &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power on"
+ Guid="dd5c7941-ae17-4045-8f10-8a37bd0ef6ce"
 >
-
-TIU.SleepingRequested &lt;- False</Action></Actions>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="089d03f9-7f00-4e93-b401-946905c2804a"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a5f388b0-60d4-4d99-8cd9-f26b3a197afa"
+>Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1473,11 +1573,30 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Actions>
 <Action
  Guid="5f2f16cc-0c5b-4921-b17a-f51a6fa94e67"
+>TIU.SleepingRequested &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power on"
+ Guid="87a6596c-b45f-4e7e-894f-8db194ea8f23"
 >
-TIU.SleepingRequested &lt;- False</Action></Actions>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="0f4c08a0-e198-4026-90d0-86bea28a84f3"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="cccd84ed-f16a-4d16-b1a5-8213f1dab690"
+>Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Width="100"
+ Height="50"
  Name="SetSLMode"
  Guid="79fba746-5fc7-477b-b035-7e5199808c03"
 >
@@ -1537,6 +1656,108 @@ TIU.SleepingRequested &lt;- False</Action></Actions>
 <Action
  Guid="60a529ba-2faa-468e-8047-d80d5859838d"
 >TIU.SleepingRequested &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power on"
+ Guid="24a938e6-99ef-4b90-b838-53cd43acaff6"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="9258583b-73ae-4a5b-ae4c-925fe2dde33b"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="059906af-4c81-4f68-a327-3c64fae78c71"
+>Kernel.PowerOn &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="180"
+ Y="20"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="SetSBMode"
+ Guid="d58d68ec-85fa-47da-ae6a-d78365fffc5e"
+>
+<Comment>Procedure that sets the mode to SB and sets all data so maintain this mode.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set SB mode"
+ Guid="ce2e06f3-cc23-4810-9065-13bcaf90717a"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set mode"
+ Guid="49adfced-6e3e-4410-bfb6-8352833f0a20"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="e5a6f115-262c-493b-84c3-e72f2f98c850"
+>Kernel.Mode &lt;- Default.Mode.SB</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="No MA on-board"
+ Guid="95e1ac18-0768-43df-9446-42ee00741fe1"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No MA on-board"
+ Guid="89c68c60-f085-47ae-9bca-378da10c1b8d"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="30e93051-c20f-43b3-b3a8-1ec8f5e2de9a"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="No Sleeping signal"
+ Guid="fd80a8aa-e6c4-463f-9134-b36050cfa408"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="No Sleeping signal"
+ Guid="a60aecc2-317a-40b2-b9f3-bb1563e93e70"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="eb3c34bd-e182-4c6e-8601-5a699d77e5e0"
+>TIU.SleepingRequested &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power on"
+ Guid="5f1353f6-fc3a-4254-aa7f-02c8627d8ee5"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="cdc09dbe-0f2d-440d-bb87-01a2396b2d7b"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="bb1e4ced-352e-4eef-a7be-4db1757c6a7d"
+>Kernel.PowerOn &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
