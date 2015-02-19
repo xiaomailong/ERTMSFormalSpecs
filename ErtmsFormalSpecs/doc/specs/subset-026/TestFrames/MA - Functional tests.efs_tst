@@ -85,14 +85,6 @@
 >Testing.SetOSMode()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
- Guid="8254375b-a829-4a96-8138-f881096667b6"
->
-<Actions>
-<Action
- Guid="609bf5d2-b7dd-4a10-a8ce-fb12493762b3"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step3"
  Guid="4fee872b-e11e-489c-a3cf-c063d7bc944d"
 >
 <Expectations>
@@ -100,11 +92,15 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b50b0e37-52e9-487b-81d7-d3fff6d7a597"
->Kernel.MA.MA == EMPTY</Expectation><Expectation
+>Kernel.MA.MA != EMPTY</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="97c9e324-a095-47c9-a3f7-4524b33b01f2"
->Kernel.Infill.Data == EMPTY</Expectation></Expectations>
+>Kernel.Infill.Data == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="eae317a6-7ae5-45d6-923f-8fb33979158d"
+>Kernel.MA.MA.EndSection.Length == 4500.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -210,16 +206,20 @@ BTM.Linking.Linkings</Action></Actions>
 <Expectation
  Kind="Instantaneous"
  DeadLine="1"
- Guid="9a3591fe-7262-4f9d-947d-63e15da02898"
->Kernel.MA.MA == EMPTY</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
  Guid="78dd55fc-9f8c-4d19-bc83-f2dd53b29f4d"
 >Kernel.Mode == Default.Mode.OS</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="848ccabd-2c2e-471d-8a40-7efae5620ca4"
->Kernel.Infill.Data == EMPTY</Expectation></Expectations>
+>Kernel.Infill.Data == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="23c2c07d-7c7b-4680-a27a-cdb03382926c"
+>Kernel.MA.MA != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="330e7ab5-ef11-461b-b281-2b84e9917d42"
+>Kernel.MA.MA.EndSection.Length == 4500.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4303,14 +4303,6 @@ BTM.Linking.Linkings</Action><Action
 >Testing.SetOSMode()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
- Guid="0d71a32a-d982-46b8-b2b5-585136f1dc90"
->
-<Actions>
-<Action
- Guid="146d54f2-fef5-4353-ba31-8bd3c2c557fd"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step3"
  Guid="920f0b9b-d4ce-4d50-be26-88fb5606a432"
 >
 <Expectations>
@@ -4318,11 +4310,15 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="70ff0427-d071-42a5-a322-630fe596a833"
->Kernel.MA.MA == EMPTY</Expectation><Expectation
+>Kernel.MA.MA.Sections == []</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="1d745bc0-21e7-4db7-9667-35f04b88b8da"
->Kernel.Infill.Data == EMPTY</Expectation></Expectations>
+>Kernel.Infill.Data == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="9d28c9b3-a791-481d-aa0f-836cb208dbce"
+>Kernel.MA.MA.EndSection.Length == 4500.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4802,7 +4798,9 @@ BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="ff795c92-bec8-49aa-93b1-7e989a2dc607"
->Testing.InitializeElementsForMA()</Action></Actions>
+>Testing.InitializeElementsForMA()</Action><Action
+ Guid="48c42840-c63b-47ba-97af-b50360201698"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4829,14 +4827,6 @@ BTM.Linking.Linkings</Action><Action
 >Testing.SetOSMode()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
- Guid="6ab4210b-aadc-4c55-b54c-da0fe11c993d"
->
-<Actions>
-<Action
- Guid="e84974d8-8a82-4055-82bf-da0b1d0c4ba6"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step3"
  Guid="f558725c-15da-4b4e-a486-f458bb0fead4"
 >
 <Expectations>
@@ -4844,11 +4834,15 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f2cad2a8-af41-48aa-a71b-8077556cb5d2"
->Kernel.MA.MA == EMPTY</Expectation><Expectation
+>Kernel.MA.MA.Sections == []</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="db49fde4-cd8d-4e42-9a34-63a6f4d01b86"
->Kernel.Infill.Data == EMPTY</Expectation></Expectations>
+>Kernel.Infill.Data == EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="785b851d-ac96-4c7f-9086-7f0041166107"
+>Kernel.MA.MA.EndSection.Length == 4500.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -5262,7 +5256,9 @@ BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="3a289672-5f51-4d70-b3c9-dac48c0c64cf"
->Testing.InitializeElementsForMA()</Action></Actions>
+>Testing.InitializeElementsForMA()</Action><Action
+ Guid="4de1432b-c7a6-48e1-abb4-a1a2a70454a8"
+>Kernel.MA.MA &lt;- EMPTY</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -5289,14 +5285,6 @@ BTM.Linking.Linkings</Action><Action
 >Testing.SetOSMode()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
- Guid="5dda5265-1513-4bd4-8a82-260d397dccbf"
->
-<Actions>
-<Action
- Guid="e4034b1b-9aac-4fcf-8055-6f149ba6ca62"
->Kernel.MA.MA &lt;- EMPTY</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step3"
  Guid="3e42d02a-4b28-40fa-adfd-dd497e0a0ea8"
 >
 <Expectations>
@@ -5308,7 +5296,11 @@ BTM.Linking.Linkings</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="2ceed9ce-edc3-4853-9cea-9ce817a41d14"
->Kernel.MA.MA == EMPTY</Expectation></Expectations>
+>Kernel.MA.MA != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="6e6868de-b208-47eb-acd2-17e7abfcebb0"
+>Kernel.MA.MA.EndSection.Length == 4500.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

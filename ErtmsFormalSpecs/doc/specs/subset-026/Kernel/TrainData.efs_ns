@@ -1498,6 +1498,24 @@
  Guid="4d6003d8-6380-41b4-a175-a0fcbc9eeae4"
 >TrainData.BrakingParameters.Initialize()</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="BNS"
+ Guid="7f325cd7-fc5e-4b96-a831-2c9f6a3af9df"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="BNS"
+ Guid="0d77b94f-090e-4a5b-b5ea-b877804672f7"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="cee30602-7806-4cce-a5a2-d6fd6b303a79"
+>InitializeBNS()</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
  Width="100"

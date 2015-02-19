@@ -274,10 +274,9 @@ DecelerationCurves.EBD_TargetForSpeed(
 X1 =&gt; DecelerationCurves.EBD_Target(
     Distance =&gt; Dmaxsafefrontend + 
         Default.BaseTypes.SpeedToMS( Odometry.TrainSpeed() ) * T_bs2 + 
-        DecelerationCurves.Dbe_display ( Vest =&gt; Odometry.TrainSpeed(), NoA_est =&gt; NoA_est) - 
-        (DecelerationCurves.Vdelta0() + DecelerationCurves.Vdelta1(NoA_est) + DecelerationCurves.Vdelta2(NoA_est)),
+        DecelerationCurves.Dbe_display ( Vest =&gt; Odometry.TrainSpeed(), NoA_est =&gt; NoA_est),
     aTarget =&gt; TargetSpeedMonitoring.MRDT()
-),
+) - (DecelerationCurves.Vdelta0() + DecelerationCurves.Vdelta1(NoA_est) + DecelerationCurves.Vdelta2(NoA_est)),
 X2=&gt; Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)
 )</Expression>
 </Case></Cases>
@@ -307,16 +306,27 @@ X2=&gt; Vtarget + CeilingSpeedMonitoring.dV_sbi(Vtarget)
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="No EOA - SR mode"
+ Guid="7424996a-cdd7-43b6-8c51-b28c9be8120e"
+>
+<PreConditions>
+<PreCondition
+ Guid="fb31b0d5-2e2e-4497-9d5b-424486a3731d"
+>Kernel.Mode == Mode.SR</PreCondition><PreCondition
+ Guid="7c22b3ae-26dd-4a92-9147-16b66f97b53b"
+>NOT Available(Kernel.MA.MA)</PreCondition></PreConditions>
+<Expression>BaseTypes.Speed.Infinity</Expression>
+</Case><Case
  Name="Before EOA"
  Guid="d4be67a0-0946-485f-9fe2-e631a9aabcfd"
 >
 <PreConditions>
 <PreCondition
  Guid="bde98596-9ac7-46ec-90e4-42cd4ac651a0"
->Destfront + BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs1 &lt; MA.ClosestEOA().Location</PreCondition></PreConditions>
+>Destfront + Default.BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs1 &lt; MA.ClosestEOA().Location</PreCondition></PreConditions>
 <Expression>DecelerationCurves.SBD_Target(
-    Distance =&gt; Destfront + BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs1,
-    aTarget =&gt; MRDT()
+    Distance =&gt; Destfront + Default.BaseTypes.SpeedToMS(Odometry.TrainSpeed() ) * T_bs1,
+    aTarget =&gt; MA.ClosestEOA()
 )</Expression>
 </Case><Case
  Name="After EOA"
@@ -672,7 +682,7 @@ MRDT().Speed == 0.0</PreCondition></PreConditions>
 USING X IN
     MinTarget ( X1 =&gt; X, X2 =&gt; RESULT )
 INITIAL_VALUE
-    MA.ClosestEOA()</Expression>
+    MovementEnd()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
@@ -919,7 +929,7 @@ V_P_EBD_Target(
  Guid="8ccbaeff-7580-487f-bed3-10470968e535"
 >DecelerationCurves.SBD_Target(
     Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
-    aTarget =&gt; MRDT()
+    aTarget =&gt; MA.ClosestEOA()
 ) == Default.BaseTypes.Speed.NA</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
@@ -931,7 +941,7 @@ V_P_EBD_Target(
  Guid="9e1abeb5-4d09-483c-8f53-24d85fe1e9da"
 >DecelerationCurves.SBD_TargetForSpeed(
     Vest =&gt; Vest,
-    aTarget =&gt; MRDT()
+    aTarget =&gt; MA.ClosestEOA()
 ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case><Case
@@ -940,7 +950,7 @@ V_P_EBD_Target(
 >
 <Expression>DecelerationCurves.SBD_TargetForSpeed(
     Vest =&gt; Vest,
-    aTarget =&gt; MRDT()
+    aTarget =&gt;MA.ClosestEOA()
 )  - Default.BaseTypes.SpeedToMS ( Vest ) * T_bs1</Expression>
 </Case></Cases>
 </Function><Function
@@ -1546,6 +1556,50 @@ This protection is used in the case where V_SBI_DMI is calculated but the train 
  Guid="a4044a21-12b3-43ad-a351-8d08bc843b0d"
 >
 <Expression>Default.BaseTypes.Distance.Infinity</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Target"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="MovementEnd"
+ Guid="c93b9854-e057-45c5-bbb9-61c77642a1d7"
+>
+<Comment>Returns the EOA, if applicable. Otherwise returns the end of SR or a target at infinity.</Comment>
+<Cases>
+<Case
+ Name="EOA"
+ Guid="c9c02e80-82f9-4ad7-a563-1ac844cdeb9c"
+>
+<PreConditions>
+<PreCondition
+ Guid="d2ab17a1-be70-4209-b080-7b9b79663551"
+>Available(MA.MA)</PreCondition></PreConditions>
+<Expression>MA.ClosestEOA()</Expression>
+</Case><Case
+ Name="SR distance"
+ Guid="4300d783-67d7-435e-bef2-930fbc546b85"
+>
+<PreConditions>
+<PreCondition
+ Guid="d7ba719f-1746-439b-a044-d8afca29cefb"
+>Mode == Mode.SR</PreCondition></PreConditions>
+<Expression>Target{
+    Location =&gt; StaffResponsible.SREndLocation(),
+    Speed =&gt; 0.0,
+    Length =&gt; 0.0
+}</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="7ef2beef-6af6-4e22-9ddb-b9729db49aae"
+>
+<Expression>Target{
+    Location =&gt; BaseTypes.Distance.Infinity,
+    Speed =&gt; 0.0,
+    Length =&gt; 0.0
+}</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

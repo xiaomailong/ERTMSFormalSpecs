@@ -2969,7 +2969,13 @@
  Guid="e276d1d8-2571-4ac9-8a93-d5923d2dcad1"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Action><Action
  Guid="03e40870-5617-4c11-bd59-9bfd0bbf0575"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{}</Action><Action
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 1000.0
+    }
+}</Action><Action
  Guid="f1633f5f-68a3-4200-91c1-332113abe3e5"
 >Kernel.MA.ModeProfile.Profile &lt;- []</Action><Action
  Guid="ee474002-9079-44d1-8f2a-c5d91c734ef6"
@@ -3225,13 +3231,21 @@
     Kernel.MA.ModeProfile.ModeProfileStruct
     {
         AcknLength =&gt; 0.0,
-        Distance =&gt; 0.0,
+        Distance =&gt; 120.0,
         Length =&gt; 1000.0,
         Mode =&gt; Mode.ModeProfile.OS,
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action></Actions>
+]</Action><Action
+ Guid="2a8310c4-398f-4c7a-89aa-c48786268dfc"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 1000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3266,13 +3280,22 @@
     Kernel.MA.ModeProfile.ModeProfileStruct
     {
         AcknLength =&gt; 0.0,
-        Distance =&gt; 0.0,
+        Distance =&gt; 120.0,
         Length =&gt; 1000.0,
         Mode =&gt; Mode.ModeProfile.LS,
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action></Actions>
+]</Action><Action
+ Guid="a15948be-7d44-486d-ac1e-e0a3e426cd73"
+>
+Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 1000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -3307,13 +3330,22 @@
     Kernel.MA.ModeProfile.ModeProfileStruct
     {
         AcknLength =&gt; 0.0,
-        Distance =&gt; 0.0,
+        Distance =&gt; 120.0,
         Length =&gt; 1000.0,
         Mode =&gt; Mode.ModeProfile.SH,
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action></Actions>
+]</Action><Action
+ Guid="5c0e8a37-4561-46ab-a809-504cd78aa261"
+>
+Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 1000.0
+    }
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

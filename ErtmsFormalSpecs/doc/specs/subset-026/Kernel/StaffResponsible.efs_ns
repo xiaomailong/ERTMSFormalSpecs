@@ -273,6 +273,31 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 >
 <Expression>NationalValues.DefaultValues.MaxPermDistToRunInStaffResponsibleMode</Expression>
 </Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Default=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SREndLocation"
+ Guid="04c61721-f426-4486-8ca0-c2614035535b"
+>
+<Comment>Provides the distance at the end of the permitted distance to run in SR mode.</Comment>
+<Cases>
+<Case
+ Name="In SR"
+ Guid="d7f9e96d-a00c-480c-898d-4f04d3eacf2b"
+>
+<PreConditions>
+<PreCondition
+ Guid="5be1ab52-7de5-4475-b907-4648223d1b23"
+>Kernel.Mode == Mode.SR</PreCondition></PreConditions>
+<Expression>DistanceToRun() + TrainPosition.SRStartDistance - BTM.LRBG.Position.Position</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="55dd5d9a-44eb-43f1-b716-9b763e45eb74"
+>
+<Expression>BaseTypes.Distance.Infinity</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure

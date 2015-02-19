@@ -2549,9 +2549,9 @@
 <PreConditions>
 <PreCondition
  Guid="3c8e6d4c-7d8f-4e62-833e-dcbdb643906f"
->Distance &lt; ApplicableNationalValues.ApplicableDistance</PreCondition><PreCondition
+>Distance &gt; ApplicableNationalValues.ApplicableDistance</PreCondition><PreCondition
  Guid="0cb8f8e9-a841-4bff-bbb0-a534c9774614"
->StaffResponsible.DistanceToRun() &lt;= Distance</PreCondition><PreCondition
+>StaffResponsible.SREndLocation() &lt;= Distance</PreCondition><PreCondition
  Guid="085f5adc-b43b-426c-90bb-1e23251bbef5"
 >Mode == Default.Mode.SR</PreCondition></PreConditions>
 <Expression>0.0</Expression>

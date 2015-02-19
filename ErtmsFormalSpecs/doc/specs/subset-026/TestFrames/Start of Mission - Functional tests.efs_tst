@@ -8807,7 +8807,13 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="5b830ab0-09b1-4c9f-84d8-4fe2d21c65b1"
 >Kernel.StaffResponsible.SRAuthorisation &lt;- EMPTY</Action><Action
  Guid="09c76990-0410-4879-b280-c9c6d12c1025"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{}</Action><Action
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 1000.0
+    }
+}</Action><Action
  Guid="d357ba1b-a023-4f7d-b7c3-fb4be2997864"
 >Kernel.MA.ModeProfile.Profile &lt;- []</Action></Actions>
 <Expectations>
@@ -9682,29 +9688,45 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Action
  Guid="9154db33-844d-4b05-9f29-48d3281e7b57"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S25</Action><Action
+ Guid="0f490d9d-15fe-48f2-a866-5809da287d1e"
+>Testing.SetSBMode()</Action></Actions>
+<Expectations>
+<Expectation
+ Kind="Instantaneous"
+ Guid="92f3f003-0416-4878-ae38-1498ccea42dc"
+>Kernel.MissionIsOnGoing == False</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2 - provide MA + mode profile"
+ Guid="a6caef6c-b91c-4979-8497-7310744cf715"
+>
+<Actions>
+<Action
+ Guid="5c79f87f-5c35-4885-9925-7f3e06fcc7bd"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 1000.0
+    }
+}</Action><Action
  Guid="c0fcaad4-b868-45cb-9e99-c545f0ba5cd8"
 >Kernel.MA.ModeProfile.Profile &lt;- 
 [
     Kernel.MA.ModeProfile.ModeProfileStruct
     {
         AcknLength =&gt; 0.0,
-        Distance =&gt; 0.0,
+        Distance =&gt; 120.0,
         Length =&gt; 1000.0,
         Mode =&gt; Mode.ModeProfile.OS,
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action><Action
- Guid="0f490d9d-15fe-48f2-a866-5809da287d1e"
->Testing.SetSBMode()</Action></Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="43a19f27-3050-4ef5-be3e-e0bbd2cebb06"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
- Kind="Instantaneous"
- Guid="92f3f003-0416-4878-ae38-1498ccea42dc"
->Kernel.MissionIsOnGoing == False</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -9784,23 +9806,37 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Action
  Guid="6d666c62-086b-45cc-bb10-8d32ff28c999"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S25</Action><Action
+ Guid="afc73856-6cfa-4d9b-976c-48f6d00b2bf8"
+>Testing.SetSBMode()</Action><Action
+ Guid="325062a4-3131-4f43-b775-469282329817"
+>Kernel.MissionIsOnGoing &lt;- False</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="34596b09-8244-4417-98a9-fa2e1dc1d05e"
+>
+<Actions>
+<Action
+ Guid="49430ad3-aea1-4e0e-be15-8102ef464486"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 1000.0
+    }
+}</Action><Action
  Guid="2e5e3f6e-ebbe-48f7-b232-cdbb867ccbbe"
 >Kernel.MA.ModeProfile.Profile &lt;- 
 [
     Kernel.MA.ModeProfile.ModeProfileStruct
     {
         AcknLength =&gt; 0.0,
-        Distance =&gt; 0.0,
+        Distance =&gt; 120.0,
         Length =&gt; 1000.0,
         Mode =&gt; Mode.ModeProfile.LS,
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action><Action
- Guid="afc73856-6cfa-4d9b-976c-48f6d00b2bf8"
->Testing.SetSBMode()</Action><Action
- Guid="325062a4-3131-4f43-b775-469282329817"
->Kernel.MissionIsOnGoing &lt;- False</Action></Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -9886,6 +9922,24 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Action
  Guid="3edfc4b7-4128-4ef9-a262-be906a5d7573"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S25</Action><Action
+ Guid="b28efcd1-e2d7-459f-b920-908c8edfe314"
+>Testing.SetSBMode()</Action><Action
+ Guid="630d26b8-a808-4273-af4a-9a34e6397e15"
+>Kernel.MissionIsOnGoing &lt;- False</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="1517e3d9-a1f6-4ac4-8490-4b929df2315d"
+>
+<Actions>
+<Action
+ Guid="cf90c26f-ef57-4098-ba58-ca68bc45fb09"
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+    TargetSpeed =&gt; 0.0,
+    Sections =&gt; [],
+    EndSection =&gt; Kernel.MA.EndSection{
+        Length =&gt; 1000.0
+    }
+}</Action><Action
  Guid="f623a752-b051-47e8-957f-70425d81176b"
 >Kernel.MA.ModeProfile.Profile &lt;- 
 [
@@ -9898,11 +9952,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
-]</Action><Action
- Guid="b28efcd1-e2d7-459f-b920-908c8edfe314"
->Testing.SetSBMode()</Action><Action
- Guid="630d26b8-a808-4273-af4a-9a34e6397e15"
->Kernel.MissionIsOnGoing &lt;- False</Action></Actions>
+]</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
