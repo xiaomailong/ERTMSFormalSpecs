@@ -2770,11 +2770,11 @@
  Guid="16b8f5a1-f002-415c-978d-78f91b72f0d4"
 >Kernel.NationalValues.ApplicableNationalValues.Value.LimitedSupervisionModeSpeedLimit &lt;- 70.0</Action><Action
  Guid="41f51878-d7f6-426a-ba46-2a7306d9cc72"
->Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain &lt;- Kernel.NationalValues.KvIntValueSet_PassengerTrain
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain &lt;- Kernel.NationalValues.KvIntValueSet_PassengerTrainStruct
 {
     A_NVP12 =&gt; 10.0,
     A_NVP23 =&gt; 45.0,
-    Val0 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain
+    Val0 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct
     {
         SpeedStep =&gt; 14.0,
         ValueA =&gt; 0.15,
@@ -2818,9 +2818,9 @@
  Guid="3fd79b8a-a8b7-4cce-8190-a76c42069f1d"
 >Kernel.NationalValues.ApplicableNationalValues.Value.SystemReactionIfRadioChannelMonitoringTimeLimitExpires &lt;- Messages.M_NVCONTACT.No_Reaction</Action><Action
  Guid="42749da1-1fc4-4a7d-bd4a-fc787d3831e9"
->Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt &lt;- Kernel.NationalValues.KrIntValueSet
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt &lt;- Kernel.NationalValues.KrIntValueSetStruct
 {
-    Val0 =&gt; Kernel.NationalValues.KrIntValue
+    Val0 =&gt; Kernel.NationalValues.KrIntValueStruct
     {
         Value =&gt; 12.4,
         LengthStep =&gt; 0.0
@@ -2835,11 +2835,11 @@
  Guid="5819f3ae-cb99-4566-b795-1573057007c7"
 >Kernel.Mode &lt;- Mode.SB</Action><Action
  Guid="4b60734c-31ed-4e81-a3da-2298645cfcc2"
->Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain &lt;- Kernel.NationalValues.KvIntValueSet_FreightTrain
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain &lt;- Kernel.NationalValues.KvIntValueSet_FreightTrainStruct
 {
     A_NVP12 =&gt; 15.0,
     A_NVP23 =&gt; 64.0,
-    Val0 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain
+    Val0 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct
     {
         SpeedStep =&gt; 17.0,
         Value =&gt; 0.21

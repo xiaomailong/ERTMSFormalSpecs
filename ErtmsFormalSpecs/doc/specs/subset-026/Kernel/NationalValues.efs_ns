@@ -97,7 +97,7 @@
  Pinned="TRUE"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="NationalValues"
+ Name="NationalValuesStruct"
  Guid="8f837377-bd01-4939-acc2-92b09fa72f1a"
 >
 <ReqRef
@@ -115,7 +115,7 @@
  Guid="c8177008-4dec-4299-88ff-3c86cf909031"
 >
 </StructureElement><StructureElement
- TypeName="NationalDefaultData"
+ TypeName="NationalDefaultDataStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -159,7 +159,7 @@
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="NationalDefaultData"
+ Name="NationalDefaultDataStruct"
  Guid="26269253-e818-4d28-b655-4a02aaf52e18"
 >
 <ReqRef
@@ -866,7 +866,7 @@
  Guid="68d3c747-bad8-4e49-88bd-a732db3ccc6a"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="KrIntValueSet"
+ TypeName="KrIntValueSetStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -894,7 +894,7 @@
  Guid="d1f1ca27-c707-4f46-b5e4-176dca58b7fb"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="KvIntValueSet_FreightTrain"
+ TypeName="KvIntValueSet_FreightTrainStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -962,7 +962,7 @@
  Guid="8ea67b74-f21c-41ed-aa90-6ac54ab88773"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="KvIntValueSet_PassengerTrain"
+ TypeName="KvIntValueSet_PassengerTrainStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1038,7 +1038,7 @@
  Pinned="TRUE"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="KrIntValue"
+ Name="KrIntValueStruct"
  Guid="c31d7ee3-3af1-4ae0-b186-feafcd48f1b7"
 >
 <StructureElement
@@ -1085,7 +1085,7 @@
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="KrIntValueSet"
+ Name="KrIntValueSetStruct"
  Guid="9a5b95ab-10d8-49e1-8ccb-83113970a44b"
 >
 <ReqRef
@@ -1104,8 +1104,8 @@
  Guid="29afc98c-9444-4d34-bc61-4a0968a7719c"
 >
 </ReqRef><StructureElement
- TypeName="KrIntValue"
- Default="Kernel.NationalValues.KrIntValue { LengthStep =&gt; 0.0 }"
+ TypeName="KrIntValueStruct"
+ Default="KrIntValueStruct { LengthStep =&gt; 0.0 }"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1113,7 +1113,7 @@
  Guid="7ef8d393-cc5f-4bb0-947d-f184d16c29d2"
 >
 </StructureElement><StructureElement
- TypeName="KrIntValue"
+ TypeName="KrIntValueStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1122,7 +1122,7 @@
  Guid="2909821e-15d5-4ed1-8806-1ea57b07a1bb"
 >
 </StructureElement><StructureElement
- TypeName="KrIntValue"
+ TypeName="KrIntValueStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1131,7 +1131,7 @@
  Guid="9e6497ed-2530-4d75-a79d-7e59df9f0358"
 >
 </StructureElement><StructureElement
- TypeName="KrIntValue"
+ TypeName="KrIntValueStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1140,7 +1140,7 @@
  Guid="fb5fed5e-0767-445d-aa03-40874a51c170"
 >
 </StructureElement><StructureElement
- TypeName="KrIntValue"
+ TypeName="KrIntValueStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1157,7 +1157,7 @@
  Pinned="TRUE"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="KvIntValue_FreightTrain"
+ Name="KvIntValue_FreightTrainStruct"
  Guid="7a395039-a722-45e9-a085-1b919d698dc3"
 >
 <ReqRef
@@ -1204,7 +1204,7 @@
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="KvIntValueSet_PassengerTrain"
+ Name="KvIntValueSet_PassengerTrainStruct"
  Guid="ca191328-3e2c-4b63-81a6-dd6fb753ce61"
 >
 <ReqRef
@@ -1228,8 +1228,8 @@
  Guid="1b6ca6d9-af29-41fb-8884-16691ab512e2"
 >
 </ReqRef><StructureElement
- TypeName="KvIntValue_PassengerTrain"
- Default="Kernel.NationalValues.KvIntValue_PassengerTrain { SpeedStep =&gt; 0.0 }"
+ TypeName="KvIntValue_PassengerTrainStruct"
+ Default="KvIntValue_PassengerTrainStruct { SpeedStep =&gt; 0.0 }"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1237,7 +1237,7 @@
  Guid="32e7fed3-82c9-4a30-9723-7ddb812e1a54"
 >
 </StructureElement><StructureElement
- TypeName="KvIntValue_PassengerTrain"
+ TypeName="KvIntValue_PassengerTrainStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1246,7 +1246,7 @@
  Guid="d0bed2e7-0357-46b6-b1df-3887b953a918"
 >
 </StructureElement><StructureElement
- TypeName="KvIntValue_PassengerTrain"
+ TypeName="KvIntValue_PassengerTrainStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1255,7 +1255,7 @@
  Guid="784af310-64db-45ea-8945-9debe85398e9"
 >
 </StructureElement><StructureElement
- TypeName="KvIntValue_PassengerTrain"
+ TypeName="KvIntValue_PassengerTrainStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1264,7 +1264,7 @@
  Guid="b6f84fc9-f2fd-4b2a-bdf4-f8bb288f005f"
 >
 </StructureElement><StructureElement
- TypeName="KvIntValue_PassengerTrain"
+ TypeName="KvIntValue_PassengerTrainStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1306,7 +1306,7 @@
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="KvIntValue_PassengerTrain"
+ Name="KvIntValue_PassengerTrainStruct"
  Guid="0277029c-9d4b-48b4-8f68-a2c4c7d8b291"
 >
 <ReqRef
@@ -1381,7 +1381,7 @@
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="KvIntValueSet_FreightTrain"
+ Name="KvIntValueSet_FreightTrainStruct"
  Guid="b8cee096-cde5-458a-9707-d1c73314a3c3"
 >
 <ReqRef
@@ -1400,8 +1400,8 @@
  Guid="8a0c46cd-284a-4aa7-89d7-6eace2642d2a"
 >
 </ReqRef><StructureElement
- TypeName="KvIntValue_FreightTrain"
- Default="Kernel.NationalValues.KvIntValue_FreightTrain { SpeedStep =&gt; 0.0 }"
+ TypeName="KvIntValue_FreightTrainStruct"
+ Default="KvIntValue_FreightTrainStruct { SpeedStep =&gt; 0.0 }"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1409,7 +1409,7 @@
  Guid="a60cb805-d9e9-4372-a55b-ce8a0d497687"
 >
 </StructureElement><StructureElement
- TypeName="KvIntValue_FreightTrain"
+ TypeName="KvIntValue_FreightTrainStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1418,7 +1418,7 @@
  Guid="33f08a11-2a39-4d31-bd5e-1ad84fd30640"
 >
 </StructureElement><StructureElement
- TypeName="KvIntValue_FreightTrain"
+ TypeName="KvIntValue_FreightTrainStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1427,7 +1427,7 @@
  Guid="d6aff7bf-fc34-4004-bbe1-5f38a14b3c1f"
 >
 </StructureElement><StructureElement
- TypeName="KvIntValue_FreightTrain"
+ TypeName="KvIntValue_FreightTrainStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1436,7 +1436,7 @@
  Guid="4e29ebd9-6b3c-4411-9190-483564a11c6c"
 >
 </StructureElement><StructureElement
- TypeName="KvIntValue_FreightTrain"
+ TypeName="KvIntValue_FreightTrainStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -1473,7 +1473,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Functions>
 <Function
- Type="Kernel.NationalValues.NationalValues"
+ Type="Kernel.NationalValues.NationalValuesStruct"
  Default=""
  X="30"
  Y="300"
@@ -1672,12 +1672,12 @@
  Name="Value"
  Guid="aeac79be-36aa-4c26-8c2f-cd1ed795aee9"
 >
-<Expression>Kernel.NationalValues.NationalValues
+<Expression>Kernel.NationalValues.NationalValuesStruct
 {
     DataState =&gt; Default.DataState.Valid,
     ApplicableDistance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_VALIDNV, scale =&gt; Packet.Q_SCALE ),
     NID_C =&gt; NID_C,
-    Value =&gt; Kernel.NationalValues.NationalDefaultData
+    Value =&gt; Kernel.NationalValues.NationalDefaultDataStruct
     {
         ModificationOfAdhesionFactorByDriver =&gt; Packet.Q_NVDRIVER_ADHES,
         ShuntingModeSpeedLimit =&gt; Default.MessageTypes.SpeedResolution ( Packet.V_NVSHUNT, 5.0 ),
@@ -2072,7 +2072,7 @@
 >
 </ReqRef><Parameters>
 <Parameter
- Type="Kernel.NationalValues.KrIntValueSet"
+ Type="Kernel.NationalValues.KrIntValueSetStruct"
  Name="aKr_int"
  Guid="11dc3fba-3e8a-4661-a871-92eb53ccdd9e"
 >
@@ -2161,7 +2161,7 @@
 >
 </ReqRef><Parameters>
 <Parameter
- Type="Kernel.NationalValues.KvIntValueSet_FreightTrain"
+ Type="Kernel.NationalValues.KvIntValueSet_FreightTrainStruct"
  Name="aKv_int"
  Guid="8937d5bf-fea1-4f6b-8062-3fd01d6dce55"
 >
@@ -2255,7 +2255,7 @@
 >
 </ReqRef><Parameters>
 <Parameter
- Type="Kernel.NationalValues.KvIntValueSet_PassengerTrain"
+ Type="Kernel.NationalValues.KvIntValueSet_PassengerTrainStruct"
  Name="aKv_int"
  Guid="987b3fdd-4cf7-4e18-b912-70b13b27aa83"
 >
@@ -2983,7 +2983,7 @@
  Guid="9d08d313-e77f-45c6-acdc-04caa6b05b61"
 >
 </Parameter><Parameter
- Type="Kernel.NationalValues.NationalDefaultData"
+ Type="Kernel.NationalValues.NationalDefaultDataStruct"
  Name="NV"
  Guid="7ba74d48-4879-44a7-83a5-ec6dfae93e0f"
 >
@@ -3071,7 +3071,7 @@
  Guid="faa7f9c1-70c0-4e34-a12f-c01b6dab8ad7"
 >
 </Parameter><Parameter
- Type="Kernel.NationalValues.NationalDefaultData"
+ Type="Kernel.NationalValues.NationalDefaultDataStruct"
  Name="NV"
  Guid="a143a52f-ff7f-4dde-8f0e-79938dc3c4be"
 >
@@ -3162,7 +3162,7 @@
  Guid="deec40c1-9f33-42e6-81af-03f1498fe670"
 >
 </Parameter><Parameter
- Type="Kernel.NationalValues.NationalDefaultData"
+ Type="Kernel.NationalValues.NationalDefaultDataStruct"
  Name="NV"
  Guid="bd582510-8859-40dd-ac5b-90cdd3e07b36"
 >
@@ -3215,7 +3215,7 @@
  Guid="f152b83e-d894-4017-8836-beb77865bd25"
 >
 </Parameter><Parameter
- Type="Kernel.NationalValues.KrIntValueSet"
+ Type="Kernel.NationalValues.KrIntValueSetStruct"
  Name="KrInt"
  Guid="5b564ccd-1a47-4c55-a7f6-caad9af5bcfb"
 >
@@ -3313,7 +3313,7 @@
  Guid="bc7f4837-0193-49e9-85fe-ef6a49d94878"
 >
 </Parameter><Parameter
- Type="Kernel.NationalValues.KvIntValueSet_FreightTrain"
+ Type="Kernel.NationalValues.KvIntValueSet_FreightTrainStruct"
  Name="KvInt"
  Guid="6dcb0279-a53e-4c43-a096-c9815c3d8ce4"
 >
@@ -3412,7 +3412,7 @@
  Guid="45903244-9b5e-40e6-b7ff-ca917ef60781"
 >
 </Parameter><Parameter
- Type="Kernel.NationalValues.KvIntValueSet_PassengerTrain"
+ Type="Kernel.NationalValues.KvIntValueSet_PassengerTrainStruct"
  Name="KvInt"
  Guid="95dbbc80-2905-4e9b-84e3-910fdbd4e6ef"
 >
@@ -3551,7 +3551,7 @@
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="Kernel.NationalValues.NationalValues"
+ Type="Kernel.NationalValues.NationalValuesStruct"
  DefaultValue=""
  VariableMode="Internal"
  X="100"
@@ -3585,7 +3585,7 @@
 >
 </Variable></SubVariables>
 </Variable><Variable
- Type="Kernel.NationalValues.NationalValues"
+ Type="Kernel.NationalValues.NationalValuesStruct"
  DefaultValue=""
  VariableMode="Internal"
  X="100"
@@ -3619,7 +3619,7 @@
 >
 </ReqRef><Comment>Represents the national values currenty applicable on the train.</Comment>
 </Variable><Variable
- Type="Kernel.NationalValues.NationalDefaultData"
+ Type="Kernel.NationalValues.NationalDefaultDataStruct"
  DefaultValue=""
  VariableMode="Internal"
  X="480"

@@ -73,9 +73,9 @@
     V_ura =&gt; 4.0
 }</Action><Action
  Guid="bd734bba-7180-4645-8a9f-65a04f59889f"
->Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues{
+>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValuesStruct{
     DataState =&gt; Default.DataState.Invalid,
-    Value =&gt; Kernel.NationalValues.NationalDefaultData{
+    Value =&gt; Kernel.NationalValues.NationalDefaultDataStruct{
         ModificationOfAdhesionFactorByDriver =&gt; Messages.Q_NVDRIVER_ADHES.Not_allowed,
         PermToUseTheServiceBrakeFeedback =&gt; Messages.Q_NVSBFBPERM.No,
         DefaultLocationAccuracyOfABaliseGroup =&gt; 3,
@@ -105,74 +105,74 @@
         MaxPermDistToRunInStaffResponsibleMode =&gt; Default.BaseTypes.Distance.Infinity,
         WeightingFactorForAvailableWheelRailAdhesion =&gt; 0.0,
         ConfLevelForEmergBrakeSafeDecelerationOnDryRails =&gt; Messages.M_NVEBCL.Confidence_level___99_9999999,
-        IntegratedCorrectionFactorKrInt =&gt; Kernel.NationalValues.KrIntValueSet{
-            Val0 =&gt; Kernel.NationalValues.KrIntValue{
+        IntegratedCorrectionFactorKrInt =&gt; Kernel.NationalValues.KrIntValueSetStruct{
+            Val0 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; Default.BaseTypes.Length.Infinity,
                 Value =&gt; 0.9
             },
-            Val1 =&gt; Kernel.NationalValues.KrIntValue{
+            Val1 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; Default.BaseTypes.Length.Infinity,
                 Value =&gt; 0.9
             },
-            Val2 =&gt; Kernel.NationalValues.KrIntValue{
+            Val2 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; Default.BaseTypes.Length.Infinity,
                 Value =&gt; 0.9
             },
-            Val3 =&gt; Kernel.NationalValues.KrIntValue{
+            Val3 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; Default.BaseTypes.Length.Infinity,
                 Value =&gt; 0.9
             },
-            Val4 =&gt; Kernel.NationalValues.KrIntValue{
+            Val4 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; Default.BaseTypes.Length.Infinity,
                 Value =&gt; 0.9
             }
         },
-        IntegratedCorrectionFactorKvInt_FreightTrain =&gt; Kernel.NationalValues.KvIntValueSet_FreightTrain{
-            Val0 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+        IntegratedCorrectionFactorKvInt_FreightTrain =&gt; Kernel.NationalValues.KvIntValueSet_FreightTrainStruct{
+            Val0 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
                 SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
                 Value =&gt; 0.7
             },
-            Val1 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+            Val1 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
                 SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
                 Value =&gt; 0.7
             },
-            Val2 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+            Val2 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
                 SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
                 Value =&gt; 0.7
             },
-            Val3 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+            Val3 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
                 SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
                 Value =&gt; 0.7
             },
-            Val4 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+            Val4 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
                 SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
                 Value =&gt; 0.7
             },
             A_NVP12 =&gt; Default.BaseTypes.Acceleration.NA,
             A_NVP23 =&gt; Default.BaseTypes.Acceleration.NA
         },
-        IntegratedCorrectionFactorKvInt_PassengerTrain =&gt; Kernel.NationalValues.KvIntValueSet_PassengerTrain{
-            Val0 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+        IntegratedCorrectionFactorKvInt_PassengerTrain =&gt; Kernel.NationalValues.KvIntValueSet_PassengerTrainStruct{
+            Val0 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
                 SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
                 ValueA =&gt; 0.7,
                 ValueB =&gt; 0.7
             },
-            Val1 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+            Val1 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
                 SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
                 ValueA =&gt; 0.7,
                 ValueB =&gt; 0.7
             },
-            Val2 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+            Val2 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
                 SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
                 ValueA =&gt; 0.7,
                 ValueB =&gt; 0.7
             },
-            Val3 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+            Val3 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
                 SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
                 ValueA =&gt; 0.7,
                 ValueB =&gt; 0.7
             },
-            Val4 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+            Val4 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
                 SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
                 ValueA =&gt; 0.7,
                 ValueB =&gt; 0.7
@@ -1172,12 +1172,12 @@ Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Dbec ( Vest =&gt; 75.0, Vta
  Guid="56b91c11-59ca-4800-8392-243239527215"
 >Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 150.0</Action><Action
  Guid="a7d0249a-c02e-41f9-81c8-96c8a8bf1d6e"
->Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues
+>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValuesStruct
 {
     DataState =&gt; DataState.Valid,
     NID_C =&gt; 42,
     ApplicableDistance =&gt; 0.0,
-    Value =&gt; Kernel.NationalValues.NationalDefaultData
+    Value =&gt; Kernel.NationalValues.NationalDefaultDataStruct
     {
         ConfLevelForEmergBrakeSafeDecelerationOnDryRails =&gt; Messages.M_NVEBCL.Confidence_level___99_99,
         MaxDecelValueUnderReducedAdhesionCond1 =&gt; 2.2,

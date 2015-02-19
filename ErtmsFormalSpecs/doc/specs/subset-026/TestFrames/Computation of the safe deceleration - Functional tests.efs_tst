@@ -1195,82 +1195,82 @@
  Guid="decbeb2c-b29b-4e95-b4a2-1734da84d5a3"
 >Kernel.TrainData.TrainData.Value.TrainLength &lt;- 600.0</Action><Action
  Guid="17967b1d-d475-4987-99b2-d3b40abbc515"
->Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues
+>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValuesStruct
 {
     DataState =&gt; DataState.Valid,
-    Value =&gt; Kernel.NationalValues.NationalDefaultData
+    Value =&gt; Kernel.NationalValues.NationalDefaultDataStruct
     {
         IntegratedCorrectionFactorForBrakeBuildUpTime =&gt; 1.1,
-        IntegratedCorrectionFactorKrInt =&gt; Kernel.NationalValues.KrIntValueSet
+        IntegratedCorrectionFactorKrInt =&gt; Kernel.NationalValues.KrIntValueSetStruct
         {
-            Val0 =&gt; Kernel.NationalValues.KrIntValue{
+            Val0 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; 0.0,
                 Value =&gt; 0.4
             },
-            Val1 =&gt; Kernel.NationalValues.KrIntValue{
+            Val1 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; 200.0,
                 Value =&gt; 0.7
             },
-            Val2 =&gt; Kernel.NationalValues.KrIntValue{
+            Val2 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; 400.0,
                 Value =&gt; 0.9
             },
-            Val3 =&gt; Kernel.NationalValues.KrIntValue{
+            Val3 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; 600.0,
                 Value =&gt; 1.1
             },
-            Val4 =&gt; Kernel.NationalValues.KrIntValue{
+            Val4 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; 800.0,
                 Value =&gt; 1.2
             }
         },
-        IntegratedCorrectionFactorKvInt_FreightTrain =&gt; Kernel.NationalValues.KvIntValueSet_FreightTrain
+        IntegratedCorrectionFactorKvInt_FreightTrain =&gt; Kernel.NationalValues.KvIntValueSet_FreightTrainStruct
         {
-            Val0 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+            Val0 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
                 SpeedStep =&gt; 0.0,
                 Value =&gt; 0.2
             },
-            Val1 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+            Val1 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
                 SpeedStep =&gt;25.0,
                 Value =&gt; 0.41
             },
-            Val2 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+            Val2 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
                 SpeedStep =&gt; 70.0,
                 Value =&gt; 0.48
             },
-            Val3 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+            Val3 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
                 SpeedStep =&gt; 120.0,
                 Value =&gt; 0.51
             },
-            Val4 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+            Val4 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
                 SpeedStep =&gt; 180.0,
                 Value =&gt; 0.73
             },
             A_NVP12 =&gt;Default.BaseTypes.Acceleration.NA,
             A_NVP23 =&gt; Default.BaseTypes.Acceleration.NA
         },
-        IntegratedCorrectionFactorKvInt_PassengerTrain =&gt; Kernel.NationalValues.KvIntValueSet_PassengerTrain{
-            Val0 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+        IntegratedCorrectionFactorKvInt_PassengerTrain =&gt; Kernel.NationalValues.KvIntValueSet_PassengerTrainStruct{
+            Val0 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
                 SpeedStep =&gt; 0.0,
                 ValueA =&gt; 0.22,
                 ValueB =&gt; 0.28
             },
-            Val1 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+            Val1 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
                 SpeedStep =&gt; 40.0,
                 ValueA =&gt; 0.34,
                 ValueB =&gt; 0.47
             },
-            Val2 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+            Val2 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
                 SpeedStep =&gt; 100.0,
                 ValueA =&gt; 0.4,
                 ValueB =&gt; 0.58
             },
-            Val3 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+            Val3 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
                 SpeedStep =&gt; 150.0,
                 ValueA =&gt; 0.61,
                 ValueB =&gt; 0.78
             },
-            Val4 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+            Val4 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
                 SpeedStep =&gt; 200.0,
                 ValueA =&gt; 0.83,
                 ValueB =&gt; 0.97
@@ -1390,12 +1390,12 @@
 <Actions>
 <Action
  Guid="b2633278-90a1-4de7-aaa5-0ebbd87470e4"
->Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues
+>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValuesStruct
 {
     DataState =&gt; DataState.Valid,
     NID_C =&gt; 42,
     ApplicableDistance =&gt; 0.0,
-    Value =&gt; Kernel.NationalValues.NationalDefaultData
+    Value =&gt; Kernel.NationalValues.NationalDefaultDataStruct
     {
         MaxDecelValueUnderReducedAdhesionCond1 =&gt; 0.2,
         MaxDecelValueUnderReducedAdhesionCond2 =&gt; 0.4,
@@ -1627,12 +1627,12 @@
  Guid="e3c2755f-62c0-4163-9762-f75808015667"
 >Kernel.TrainData.TrainData.Value.EddyCurrentBrakeInterface &lt;- Kernel.TrainData.BrakingParameters.BrakeInterfaceStatus.Both</Action><Action
  Guid="123c6c66-2412-4962-bc4b-5cd2660008c0"
->Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues
+>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValuesStruct
 {
     DataState =&gt; DataState.Valid,
     NID_C =&gt; 42,
     ApplicableDistance =&gt; 0.0,
-    Value =&gt; Kernel.NationalValues.NationalDefaultData
+    Value =&gt; Kernel.NationalValues.NationalDefaultDataStruct
     {
         ConfLevelForEmergBrakeSafeDecelerationOnDryRails =&gt; Messages.M_NVEBCL.Confidence_level___99_99,
         MaxDecelValueUnderReducedAdhesionCond1 =&gt; 0.2,
@@ -2187,12 +2187,12 @@
 <Actions>
 <Action
  Guid="43a115d5-70aa-4797-82c1-db9a3034768a"
->Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues
+>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValuesStruct
 {
     DataState =&gt; DataState.Valid,
     NID_C =&gt; 42,
     ApplicableDistance =&gt; 0.0,
-    Value =&gt; Kernel.NationalValues.NationalDefaultData
+    Value =&gt; Kernel.NationalValues.NationalDefaultDataStruct
     {
         ConfLevelForEmergBrakeSafeDecelerationOnDryRails =&gt; Messages.M_NVEBCL.Confidence_level___99_99,
         MaxDecelValueUnderReducedAdhesionCond1 =&gt; 0.001,
@@ -2779,31 +2779,31 @@
  Guid="2e0b037f-75f5-473b-96ce-16ec7fb8d35d"
 >Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action><Action
  Guid="52eac943-537c-4e1d-9031-139fe2ee4ef7"
->Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues
+>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValuesStruct
 {
     DataState =&gt; DataState.Valid,
-    Value =&gt; Kernel.NationalValues.NationalDefaultData
+    Value =&gt; Kernel.NationalValues.NationalDefaultDataStruct
     {
         IntegratedCorrectionFactorForBrakeBuildUpTime =&gt; 1.1,
-        IntegratedCorrectionFactorKrInt =&gt; Kernel.NationalValues.KrIntValueSet
+        IntegratedCorrectionFactorKrInt =&gt; Kernel.NationalValues.KrIntValueSetStruct
         {
-            Val0 =&gt; Kernel.NationalValues.KrIntValue{
+            Val0 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; 0.0,
                 Value =&gt; 0.4
             },
-            Val1 =&gt; Kernel.NationalValues.KrIntValue{
+            Val1 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; 200.0,
                 Value =&gt; 0.7
             },
-            Val2 =&gt; Kernel.NationalValues.KrIntValue{
+            Val2 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; 400.0,
                 Value =&gt; 0.9
             },
-            Val3 =&gt; Kernel.NationalValues.KrIntValue{
+            Val3 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; 600.0,
                 Value =&gt; 1.1
             },
-            Val4 =&gt; Kernel.NationalValues.KrIntValue{
+            Val4 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; 800.0,
                 Value =&gt; 1.2
             }
@@ -3032,82 +3032,82 @@
  Guid="94049385-1bf2-4932-8ad9-dafa415ee29b"
 >Kernel.TrainData.TrainData.Value.BrakePosition &lt;- Kernel.TrainData.BrakingParameters.BrakePositions.PassengerTrainInP</Action><Action
  Guid="68ded695-b2ea-4a4a-be15-3374d73f345a"
->Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValues
+>Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValuesStruct
 {
     DataState =&gt; DataState.Valid,
-    Value =&gt; Kernel.NationalValues.NationalDefaultData
+    Value =&gt; Kernel.NationalValues.NationalDefaultDataStruct
     {
         IntegratedCorrectionFactorForBrakeBuildUpTime =&gt; 1.1,
-        IntegratedCorrectionFactorKrInt =&gt; Kernel.NationalValues.KrIntValueSet
+        IntegratedCorrectionFactorKrInt =&gt; Kernel.NationalValues.KrIntValueSetStruct
         {
-            Val0 =&gt; Kernel.NationalValues.KrIntValue{
+            Val0 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; 0.0,
                 Value =&gt; 0.9
             },
-            Val1 =&gt; Kernel.NationalValues.KrIntValue{
+            Val1 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; Default.BaseTypes.Length.Infinity,
                 Value =&gt; 0.9
             },
-            Val2 =&gt; Kernel.NationalValues.KrIntValue{
+            Val2 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; Default.BaseTypes.Length.Infinity,
                 Value =&gt; 0.9
             },
-            Val3 =&gt; Kernel.NationalValues.KrIntValue{
+            Val3 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; Default.BaseTypes.Length.Infinity,
                 Value =&gt; 0.9
             },
-            Val4 =&gt; Kernel.NationalValues.KrIntValue{
+            Val4 =&gt; Kernel.NationalValues.KrIntValueStruct{
                 LengthStep =&gt; Default.BaseTypes.Length.Infinity,
                 Value =&gt; 0.9
             }
         },
-        IntegratedCorrectionFactorKvInt_FreightTrain =&gt; Kernel.NationalValues.KvIntValueSet_FreightTrain
+        IntegratedCorrectionFactorKvInt_FreightTrain =&gt; Kernel.NationalValues.KvIntValueSet_FreightTrainStruct
         {
-            Val0 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+            Val0 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
                 SpeedStep =&gt; 0.0,
                 Value =&gt; 0.2
             },
-            Val1 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+            Val1 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
                 SpeedStep =&gt;25.0,
                 Value =&gt; 0.41
             },
-            Val2 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+            Val2 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
                 SpeedStep =&gt; 70.0,
                 Value =&gt; 0.48
             },
-            Val3 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+            Val3 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
                 SpeedStep =&gt; 120.0,
                 Value =&gt; 0.51
             },
-            Val4 =&gt; Kernel.NationalValues.KvIntValue_FreightTrain{
+            Val4 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
                 SpeedStep =&gt; 180.0,
                 Value =&gt; 0.73
             },
             A_NVP12 =&gt;Default.BaseTypes.Acceleration.NA,
             A_NVP23 =&gt; Default.BaseTypes.Acceleration.NA
         },
-        IntegratedCorrectionFactorKvInt_PassengerTrain =&gt; Kernel.NationalValues.KvIntValueSet_PassengerTrain{
-            Val0 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+        IntegratedCorrectionFactorKvInt_PassengerTrain =&gt; Kernel.NationalValues.KvIntValueSet_PassengerTrainStruct{
+            Val0 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
                 SpeedStep =&gt; 0.0,
                 ValueA =&gt; 0.22,
                 ValueB =&gt; 0.28
             },
-            Val1 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+            Val1 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
                 SpeedStep =&gt; 40.0,
                 ValueA =&gt; 0.34,
                 ValueB =&gt; 0.47
             },
-            Val2 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+            Val2 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
                 SpeedStep =&gt; 100.0,
                 ValueA =&gt; 0.4,
                 ValueB =&gt; 0.58
             },
-            Val3 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+            Val3 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
                 SpeedStep =&gt; 150.0,
                 ValueA =&gt; 0.61,
                 ValueB =&gt; 0.78
             },
-            Val4 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrain{
+            Val4 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
                 SpeedStep =&gt; 200.0,
                 ValueA =&gt; 0.83,
                 ValueB =&gt; 0.97
