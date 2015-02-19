@@ -727,7 +727,7 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
     Location =&gt; aLX.Location
   }
 ) &gt;= aLX.Speed</PreCondition></PreConditions>
-<Expression>(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_P_Target(
+<Expression>(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P(
     aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
     {
       Speed =&gt; 0.0,
@@ -762,7 +762,7 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
     Location =&gt; aLX.Location
   }
 ) &lt; aLX.Speed</PreCondition></PreConditions>
-<Expression>(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_P_Target(
+<Expression>(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P(
     aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
     {
       Speed =&gt; 0.0,
@@ -779,7 +779,7 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
 <PreCondition
  Guid="88fcab7b-3381-463b-8e1b-a944094cd598"
 >SBI1IsMostRestrictive( aLX )</PreCondition></PreConditions>
-<Expression>(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_P_Target(
+<Expression>(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P(
     aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
     {
       Speed =&gt; 0.0,
@@ -792,7 +792,7 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
  Name="Value for SBI2"
  Guid="c43828b7-0d92-4b13-8d55-8c4ef789fb76"
 >
-<Expression>(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_P_Target(
+<Expression>(SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P(
     aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
     {
       Speed =&gt; 0.0,
@@ -835,7 +835,7 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
  Name="Value"
  Guid="773759e4-0a94-4d5e-b184-a527d0ac9227"
 >
-<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_SBI1_Target
+<Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1_Target
 (
   Vest =&gt; aLX.Speed,
   aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target

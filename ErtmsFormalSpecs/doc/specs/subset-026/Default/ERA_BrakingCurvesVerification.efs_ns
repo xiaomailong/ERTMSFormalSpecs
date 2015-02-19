@@ -263,7 +263,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2(
 >
 <Expression>aTarget.Location
  - 
-Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_W_Target(
+Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_W(
     Vest =&gt; aSpeed,
     aTarget =&gt; aTarget
 )</Expression>
@@ -301,7 +301,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_W_Ta
 >aSpeed &lt; Kernel.MRSP.V_MRSP()</PreCondition><PreCondition
  Guid="57b2b0f2-b029-4556-810e-052994de28ac"
 >aSpeed &gt; aTarget.Speed</PreCondition></PreConditions>
-<Expression>aTarget.Location - Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_P_Target
+<Expression>aTarget.Location - Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P
 (
   Vest =&gt; aSpeed,
   aTarget =&gt; aTarget,
@@ -315,7 +315,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_W_Ta
 <PreCondition
  Guid="b67f82fb-2a12-461a-9f29-7e0b52b61945"
 >aSpeed &gt; aTarget.Speed</PreCondition></PreConditions>
-<Expression>aTarget.Location - Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_P_Target
+<Expression>aTarget.Location - Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_P
 (
   Vest =&gt; Kernel.MRSP.V_MRSP(),
   aTarget =&gt; aTarget,
@@ -361,7 +361,7 @@ aTarget.Location</Expression>
 <PreCondition
  Guid="9264fc0e-60e8-498d-aee4-0ec5a0e02d16"
 >aSpeed &lt; Kernel.MRSP.V_MRSP()</PreCondition></PreConditions>
-<Expression>aTarget.Location - Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_I_Target(
+<Expression>aTarget.Location - Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_I(
     Vest =&gt; aSpeed,
     aTarget =&gt; aTarget
 )</Expression>
@@ -369,7 +369,7 @@ aTarget.Location</Expression>
  Name="In CSM"
  Guid="ed1bcb2f-4429-465d-8bce-f8c28737612e"
 >
-<Expression>aTarget.Location - Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SupervisionStatus.d_I_Target(
+<Expression>aTarget.Location - Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_I(
     Vest =&gt; Kernel.MRSP.V_MRSP(),
     aTarget =&gt; aTarget
 )</Expression>

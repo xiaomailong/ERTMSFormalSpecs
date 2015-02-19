@@ -245,6 +245,11 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="21b6984b-caea-49f8-a958-ea932d14972a"
 >
+</ReqRef><ReqRef
+ Id="45963a73-6286-4c23-8f87-9e18d78e5e28"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a4847d63-939d-4219-a186-c9692209c76d"
+>
 </ReqRef><Comment>Returns the permitted distance to run in SR mode.</Comment>
 <Cases>
 <Case
@@ -276,6 +281,8 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 </Function><Function
  Type="BaseTypes.Distance"
  Default=""
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="SREndLocation"

@@ -955,301 +955,6 @@ V_P_EBD_Target(
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
- Cacheable="TRUE"
- Default=""
- X="600"
- Y="280"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="d_I"
- Guid="04b0e355-ce9e-4713-b048-1d187f455a95"
->
-<ReqRef
- Id="9d47bdf0-6549-4af1-8d8a-a36c0d505ec3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="626bfb9b-6070-43cd-a4c8-4d3f45326e0f"
->
-</ReqRef><ReqRef
- Id="1251578c-995d-485e-8833-f418b93e1471"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="20edc06d-cf41-406a-80a3-13f7a5960d8a"
->
-</ReqRef><ReqRef
- Id="fcfd3391-2ee8-4a16-8cdb-470f53e81f60"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4d3f5aca-65f5-4e6c-8850-8b2ce04d79b5"
->
-</ReqRef><ReqRef
- Id="c8774e4f-d138-4cf7-9fda-5f6a29c50cf9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9c9e3472-8615-4dec-a6df-ca8ff4a65310"
->
-</ReqRef><ReqRef
- Id="b10067eb-6ad7-4c8c-9aab-ef1740ef0e13"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3bf9e65e-8343-4e8d-b3ad-45ba28019117"
->
-</ReqRef><Comment>Provide the distance d_I.</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Speed"
- Name="Vest"
- Guid="915bcb8e-511c-42f9-b9d9-cdc0925f0c5b"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Below P"
- Guid="ac470df6-405d-48ad-9cb2-a8db544d6e46"
->
-<PreConditions>
-<PreCondition
- Guid="b4b68ec6-cf44-41c5-b78d-2b39ad896f98"
->Vest &lt;= CeilingSpeedMonitoring.P ( InterventionValue ( Vest ) )
-  OR  
-d_P(Vest, False) == BaseTypes.Distance.Infinity</PreCondition></PreConditions>
-<Expression>InterventionValue ( Vest )</Expression>
-</Case><Case
- Name="Above P"
- Guid="877d9731-6bca-451c-84b9-8f9445c63e6d"
->
-<Expression>IntersectAt ( FunctionA =&gt; CeilingSpeedMonitoring.P, FunctionB =&gt; InterventionValue )</Expression>
-</Case></Cases>
-</Function><Function
- Type="Default.BaseTypes.Distance"
- Cacheable="TRUE"
- Default=""
- X="380"
- Y="280"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="d_P"
- Guid="0606aabb-af6c-453f-9aee-2d0d0819c67f"
->
-<ReqRef
- Id="10386bb3-4703-4007-bc8f-0d0904eb986f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a7cd70be-d5e8-4df5-8bee-8667aefd5497"
->
-</ReqRef><ReqRef
- Id="1251578c-995d-485e-8833-f418b93e1471"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4b9417d3-cbd3-4d90-86f9-31aff1d1633b"
->
-</ReqRef><ReqRef
- Id="fcfd3391-2ee8-4a16-8cdb-470f53e81f60"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1d3cc71b-8da9-4758-afc3-e28c65bd9df0"
->
-</ReqRef><ReqRef
- Id="c8774e4f-d138-4cf7-9fda-5f6a29c50cf9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="85dd09da-3bb0-444c-9c12-68404f4fcd19"
->
-</ReqRef><ReqRef
- Id="2c11a715-c52a-4168-b8fb-64484d1fd6d5"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="52d2d9d2-2610-41f6-b713-3d948f282d57"
->
-</ReqRef><ReqRef
- Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="527ec1ff-97c8-433c-a532-28a0f58bc38b"
->
-</ReqRef><ReqRef
- Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c02d6320-3a99-457f-843e-92d85d7673f1"
->
-</ReqRef><ReqRef
- Id="4a6a5396-38cf-4784-bd94-ba5c844bb58c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5122854e-3d17-40d6-9541-124e78420d91"
->
-</ReqRef><Comment>Provide the distance d_P.</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Speed"
- Name="Vest"
- Guid="b0ddad8a-03b6-45df-acfa-70519d5c72c0"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="NoA_est"
- Guid="83551c0f-01b9-41a3-85d4-28028c0d6894"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Target is EOA, SBI1 unknown"
- Guid="d252b6d9-d7d8-4066-9fe4-35a95c6f25f8"
->
-<PreConditions>
-<PreCondition
- Guid="8a9bb99e-e31d-4a5b-b950-a5d567a162f2"
->d_SBI1(Vest) == BaseTypes.Distance.Unknown</PreCondition><PreCondition
- Guid="cf597bcc-a37d-44c6-89af-62f6770a89cb"
->MA.IsEOA(MRDT())</PreCondition></PreConditions>
-<Expression>BaseTypes.Distance.Infinity</Expression>
-</Case><Case
- Name="EBD based target, distance unknown"
- Guid="ed76b401-c261-4369-afc2-9eac91c9d698"
->
-<PreConditions>
-<PreCondition
- Guid="4e23c2e8-5e27-4f47-b33a-cda6e1b051fc"
->EBDTargetsList() != []
-
-  AND  
-
-d_SBI2_MREBDT(Vest, NoA_est) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
-<Expression>BaseTypes.Distance.Infinity</Expression>
-</Case><Case
- Name="GUI inhibited, target is EOA"
- Guid="bc1cd155-ba13-42c9-ad91-23841c16a0d6"
->
-<PreConditions>
-<PreCondition
- Guid="70659c39-2759-4cb5-b0d4-fd30a601fc38"
->NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition><PreCondition
- Guid="3bec59ce-8eb8-400e-9082-c1c388aff52b"
->MA.IsEOA(MRDT())</PreCondition></PreConditions>
-<Expression>d_SBI1(Vest) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver</Expression>
-</Case><Case
- Name="GUI inhibited, EBD based target"
- Guid="67ad0b11-b263-492d-9c49-9312340e4b07"
->
-<PreConditions>
-<PreCondition
- Guid="83e9d303-ca77-4dae-9723-1116a0bcd743"
->NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
-<Expression>d_SBI2_MREBDT(Vest, NoA_est) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver</Expression>
-</Case><Case
- Name="GUI enabled, target is EOA"
- Guid="a2617cac-24b8-462a-b50f-024412f2faa6"
->
-<PreConditions>
-<PreCondition
- Guid="a7bc345d-8d50-4c6a-8832-5dd65bdf1241"
->MA.IsEOA(MRDT())</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.MinDistance (
-    X1 =&gt; d_SBI1 ( Vest ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver,
-    X2 =&gt; DistanceForSpeed ( Function =&gt; DecelerationCurves.Display.GUI, Speed =&gt; Vest ) )</Expression>
-</Case><Case
- Name="GUI enabled, EBD based target"
- Guid="1d474c90-b426-47ae-9aa9-f0992244d9b7"
->
-<Expression>Default.BaseTypes.MinDistance (
-    X1 =&gt; d_SBI2_MREBDT ( Vest, NoA_est ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver,
-    X2 =&gt; DistanceForSpeed ( Function =&gt; DecelerationCurves.Display.GUI, Speed =&gt; Vest ) )</Expression>
-</Case></Cases>
-</Function><Function
- Type="Default.BaseTypes.Distance"
- Cacheable="TRUE"
- Default=""
- X="490"
- Y="280"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="d_W"
- Guid="0ee7721f-a288-498b-8262-14d7025c07ac"
->
-<ReqRef
- Id="489ea7da-1016-4fd4-8a89-0ce129ff23a5"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1206c647-42cd-452b-b995-fce4061bf055"
->
-</ReqRef><ReqRef
- Id="1251578c-995d-485e-8833-f418b93e1471"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a7d917f8-0587-4d68-9bd7-828934f8c90b"
->
-</ReqRef><ReqRef
- Id="fcfd3391-2ee8-4a16-8cdb-470f53e81f60"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e191b376-c940-4485-800a-ee1f77d1b2a4"
->
-</ReqRef><ReqRef
- Id="c8774e4f-d138-4cf7-9fda-5f6a29c50cf9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ed9d7a91-02c5-415c-9fa1-39e235020479"
->
-</ReqRef><ReqRef
- Id="d7b72e8e-080e-4419-87c9-e54ecdfed0ef"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bbb6775e-8b13-465b-a2fa-f1ccce521c69"
->
-</ReqRef><ReqRef
- Id="9e5b33ae-9b18-4cc2-a313-bbacf0e3cf57"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b600af38-89b2-4e8a-83ef-f8b6efabc4f3"
->
-</ReqRef><Comment>Provide the distance d_W.</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Speed"
- Name="Vest"
- Guid="3388cfb7-6f33-483f-bff4-8a173a1775fa"
->
-</Parameter><Parameter
- Type="Boolean"
- Name="NoA_est"
- Guid="473a1c9b-1cdd-4a8d-9619-e307d2a462db"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Supervised target is the EOA"
- Guid="38379bd3-9c98-460e-ae6a-6e0ad0dae502"
->
-<PreConditions>
-<PreCondition
- Guid="f00aced6-9aec-41aa-ba5c-a1f314c5c26c"
->MA.IsEOA(MRDT())</PreCondition></PreConditions>
-<Expression>d_SBI1(Vest) - BaseTypes.SpeedToMS ( Vest ) * T_warning</Expression>
-</Case><Case
- Name="Supervised target is an EBD based target"
- Guid="1fdc7a88-028a-4814-b78c-5309fb73739c"
->
-<Expression>d_SBI2_MREBDT(Vest,NoA_est) - BaseTypes.SpeedToMS ( Vest ) * T_warning</Expression>
-</Case></Cases>
-</Function><Function
- Type="Default.BaseTypes.Distance"
- Cacheable="TRUE"
- Default=""
- X="600"
- Y="350"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="InterventionValue"
- Guid="d5766119-e66c-4e9e-8d2a-2334fc12fd9e"
->
-<ReqRef
- Id="9d47bdf0-6549-4af1-8d8a-a36c0d505ec3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6c8f1f29-0284-4bf8-8607-b73cf6da6603"
->
-</ReqRef><Comment>Provides the location corresponding to the intervention location for the provided speed.</Comment>
-<Parameters>
-<Parameter
- Type="Default.BaseTypes.Speed"
- Name="V"
- Guid="7fc15dfb-aba7-4285-9126-e258ace2c074"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="Value"
- Guid="d216bbc6-a6ca-42c4-bba6-68c13b80c42c"
->
-<Expression>d_P ( V, False ) - BaseTypes.SpeedToMS ( V ) * DecelerationCurves.T_indication ()</Expression>
-</Case></Cases>
-</Function><Function
- Type="Default.BaseTypes.Distance"
  Default=""
  X="490"
  Y="350"
@@ -1451,8 +1156,12 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()
   OR  
 ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.MaxDistance(
-    X1=&gt; d_P(MRDT().Speed, True)-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max),
-    X2=&gt;0.0
+    X1 =&gt; d_P(
+        aTarget =&gt; MRDT(),
+        Vest =&gt; MRDT().Speed,
+        NoA_est =&gt; True
+)-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max),
+    X2 =&gt; 0.0
 )</Expression>
 </Case><Case
  Name="No train speed speed supervision"
@@ -1600,6 +1309,347 @@ This protection is used in the case where V_SBI_DMI is calculated but the train 
     Speed =&gt; 0.0,
     Length =&gt; 0.0
 }</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ X="110"
+ Y="200"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="d_I"
+ Guid="38af83dd-4335-4ecf-97a6-7ee63ed47cb7"
+>
+<ReqRef
+ Id="1251578c-995d-485e-8833-f418b93e1471"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1e55787a-fe5d-4ecd-8905-8a3e214547f4"
+>
+</ReqRef><ReqRef
+ Id="fcfd3391-2ee8-4a16-8cdb-470f53e81f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3a50a6b4-e50a-40c2-91d5-0c9f068e8ac2"
+>
+</ReqRef><ReqRef
+ Id="9d47bdf0-6549-4af1-8d8a-a36c0d505ec3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a818eebb-918c-4958-ad25-c8ca03cd70ad"
+>
+</ReqRef><ReqRef
+ Id="c8774e4f-d138-4cf7-9fda-5f6a29c50cf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ff0e00f4-7eb3-4ed3-8942-36155137286a"
+>
+</ReqRef><Comment>Provides the distance d_I for a given target and for the current MRSP speed.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vest"
+ Guid="a679d79b-6b64-4bad-8798-bde3ea65acb4"
+>
+</Parameter><Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="a5d96bf6-4309-4789-9c0f-1b38496becaf"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="d_P is at infinity"
+ Guid="3080afa9-2915-4de5-ae6c-5e4ba19bb439"
+>
+<PreConditions>
+<PreCondition
+ Guid="a633f1b8-f45e-4269-a8fc-4d6a528e587c"
+>d_P( aTarget =&gt; aTarget, Vest =&gt; Vest, NoA_est =&gt; False ) == Default.BaseTypes.Distance.Infinity</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Infinity</Expression>
+</Case><Case
+ Name="Below P"
+ Guid="7f0f2991-3d1c-4e65-b84b-a0f40ec183d1"
+>
+<PreConditions>
+<PreCondition
+ Guid="75e42f83-db8f-4d4a-b665-78c3f4d685f3"
+>Vest &lt;= CeilingSpeedMonitoring.P ( InterventionValue_Target( aTarget =&gt; aTarget, Vest =&gt; Vest ) )</PreCondition></PreConditions>
+<Expression>d_P ( aTarget =&gt; aTarget, Vest =&gt; Vest, NoA_est =&gt; False ) - Default.BaseTypes.SpeedToMS ( Vest ) * DecelerationCurves.T_indication ()</Expression>
+</Case><Case
+ Name="Above P"
+ Guid="c3779180-f639-4e07-bece-71f219661b84"
+>
+<Expression>InterventionValue_Target(
+    aTarget =&gt; aTarget,
+    Vest =&gt; Vest )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ Y="200"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="d_P"
+ Guid="187628d7-1f8a-47f4-8cf0-1989afffce5d"
+>
+<ReqRef
+ Id="c8774e4f-d138-4cf7-9fda-5f6a29c50cf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c682b272-9537-479d-83af-da5eeb3f6618"
+>
+</ReqRef><ReqRef
+ Id="1251578c-995d-485e-8833-f418b93e1471"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f7b23b91-4c41-4a40-b4f2-a086b6886ba9"
+>
+</ReqRef><ReqRef
+ Id="fcfd3391-2ee8-4a16-8cdb-470f53e81f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae572195-5cd3-435d-a414-c01e34262f5e"
+>
+</ReqRef><ReqRef
+ Id="b1bf47d0-d27a-404a-af99-2117b6bd616b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ac7ab7c9-11d9-4be8-bdd4-8d02cfad1daf"
+>
+</ReqRef><ReqRef
+ Id="0c5eaae4-4be7-4f73-ba4d-93cbbc028872"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ae1e67a8-cbcf-4e20-b8cf-c1c31bb2746d"
+>
+</ReqRef><Comment>Provide the distance d_P fore the given target at the current MRSP speed.</Comment>
+<Parameters>
+<Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="b58b45bb-a4c8-495c-9a62-6b4931d211f9"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vest"
+ Guid="bc46c78e-bd91-4056-be71-83dc179d5819"
+>
+</Parameter><Parameter
+ Type="Boolean"
+ Name="NoA_est"
+ Guid="f27462b2-a2b0-4db5-b8f7-ef4ae1d3d98e"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Target is EOA, SBI1 unknown"
+ Guid="01ed4180-15c2-4b52-9992-e2da50549afc"
+>
+<PreConditions>
+<PreCondition
+ Guid="57ec7043-b3d1-4a71-83da-5e50c589ce94"
+>MA.IsEOA(aTarget)</PreCondition><PreCondition
+ Guid="33092ea4-1ff1-4fd2-8dc7-edac24989de3"
+>d_SBI1(Vest) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Infinity</Expression>
+</Case><Case
+ Name="EBD based target, distance unknown"
+ Guid="2282fd97-9b10-467b-82da-c856cfbb0f92"
+>
+<PreConditions>
+<PreCondition
+ Guid="13250617-f02f-44c1-afbf-b1bcac4bd983"
+>d_SBI2(
+    Vest =&gt; Vest,
+    aTarget =&gt; aTarget,
+    NoA_est =&gt; NoA_est
+) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Infinity</Expression>
+</Case><Case
+ Name="GUI inhibited, target is EOA"
+ Guid="e10687c2-894c-4b95-a293-4ff0b2eda62d"
+>
+<PreConditions>
+<PreCondition
+ Guid="7bbfaff1-7776-42b9-b431-29088d9c7eb3"
+>MA.IsEOA(aTarget)</PreCondition><PreCondition
+ Guid="57b898c1-dc92-4e49-9bfa-1e4d65ba059b"
+>NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
+<Expression>d_SBI1(Vest) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver</Expression>
+</Case><Case
+ Name="GUI inhibited, EBD based target"
+ Guid="0cb556fd-fe05-402a-8018-62a77936af8d"
+>
+<PreConditions>
+<PreCondition
+ Guid="fd0ca0dd-2692-4e25-af6e-b9997a25cd2a"
+>NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
+<Expression>d_SBI2
+(
+    Vest =&gt; Vest,
+    aTarget =&gt; aTarget,
+    NoA_est =&gt; NoA_est
+) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver</Expression>
+</Case><Case
+ Name="GUI enabled, target is EOA"
+ Guid="1a97b839-c0ea-49d7-9973-e4f7d632d92a"
+>
+<PreConditions>
+<PreCondition
+ Guid="478855f8-d95e-4998-8962-0cd6698978e9"
+>MA.IsEOA(aTarget)</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.MinDistance (
+    X1 =&gt; d_SBI1 ( Vest ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver,
+    X2 =&gt; DistanceForSpeed ( Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; DecelerationCurves.GUI_Target ( Distance =&gt; d, aTarget =&gt; aTarget ), Speed =&gt; Vest ) )</Expression>
+</Case><Case
+ Name="GUI enabled, EBD based target"
+ Guid="3dbf0857-8f60-4d22-855c-44f3c0dff430"
+>
+<Expression>Default.BaseTypes.MinDistance (
+    X1 =&gt; d_SBI2 ( aTarget =&gt; aTarget, Vest =&gt; Vest, NoA_est =&gt; NoA_est ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_driver,
+    X2 =&gt; DistanceForSpeed ( Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; DecelerationCurves.GUI_Target ( Distance =&gt; d, aTarget =&gt; aTarget ), Speed =&gt; Vest ) )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Default=""
+ X="440"
+ Y="200"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="d_SBI1_Target"
+ Guid="be105d94-67b3-40ff-a55a-a2ea097308fe"
+>
+<Comment>Provides the distance d_SBI1 for the provided target.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vest"
+ Guid="b6ae4883-4a43-4eb6-8b24-168c2b7c4558"
+>
+</Parameter><Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="592d6c81-6feb-4883-8746-b8a936ff31b4"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="5cb998eb-2b28-4a53-a05f-c44196407571"
+>
+<Expression>DistanceForSpeed ( Function =&gt; FUNCTION d : Default.BaseTypes.Distance =&gt; DecelerationCurves.SBD_Target(
+    Distance =&gt; d,
+    aTarget =&gt; aTarget
+), Speed =&gt; Vest )  - Default.BaseTypes.SpeedToMS ( Vest ) * T_bs1</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ X="330"
+ Y="200"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="d_W"
+ Guid="36d7c7f7-b625-4f05-8c1b-3828081ae828"
+>
+<ReqRef
+ Id="c8774e4f-d138-4cf7-9fda-5f6a29c50cf9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2878e479-f90b-49e9-b83a-8b8722ac9594"
+>
+</ReqRef><ReqRef
+ Id="1251578c-995d-485e-8833-f418b93e1471"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="793e0d7b-6063-4092-a105-e59137b4c3ed"
+>
+</ReqRef><ReqRef
+ Id="fcfd3391-2ee8-4a16-8cdb-470f53e81f60"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aa78e1fa-957a-4642-8f6a-f8e962c7aeff"
+>
+</ReqRef><ReqRef
+ Id="489ea7da-1016-4fd4-8a89-0ce129ff23a5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="85d22f0a-301a-41f0-afbf-e87182a36bcf"
+>
+</ReqRef><Comment>Provide the distance d_W for the given target.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vest"
+ Guid="858de658-9932-4f69-bf0c-a532d954bb11"
+>
+</Parameter><Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="b411cfd0-85d0-4d65-8c4f-51a05f00f016"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Supervised target is the EOA"
+ Guid="56f5504f-4623-45f1-a42e-25eaf3e5ec0d"
+>
+<PreConditions>
+<PreCondition
+ Guid="b85276fe-720f-482b-8dab-dd3ab55633c9"
+>MA.IsEOA(aTarget)</PreCondition></PreConditions>
+<Expression>d_SBI1( Vest ) - Default.BaseTypes.SpeedToMS ( Vest ) * T_warning</Expression>
+</Case><Case
+ Name="Supervised target is an EBD based target"
+ Guid="b013cd22-029f-4431-b065-367593d90bc6"
+>
+<Expression>d_SBI2 (
+    Vest =&gt; Vest,
+    aTarget =&gt; aTarget,
+    NoA_est =&gt; False
+) - Default.BaseTypes.SpeedToMS ( Vest ) * T_warning</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Cacheable="TRUE"
+ Default=""
+ X="220"
+ Y="200"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="InterventionValue_Target"
+ Guid="9ccc86b6-ab05-4408-ae56-905406d3841e"
+>
+<ReqRef
+ Id="9d47bdf0-6549-4af1-8d8a-a36c0d505ec3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5b3ddc6c-aa1f-48e5-92b9-b31117e97a30"
+>
+</ReqRef><Comment>Provides the location corresponding to the intervention location for the provided speed and target.</Comment>
+<Parameters>
+<Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="c02d7eed-d37a-432d-8aae-271c683cfd82"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vest"
+ Guid="b50aac75-365c-443a-96f9-ea95ded78096"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Target at infinity"
+ Guid="cbc9271d-e266-4dbe-a4a9-01035e5f3123"
+>
+<PreConditions>
+<PreCondition
+ Guid="bb26ef79-e698-4367-9275-57b268328826"
+>aTarget.Location == Default.BaseTypes.Distance.Infinity</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Infinity</Expression>
+</Case><Case
+ Name="Value"
+ Guid="0a1cc5d7-b391-4c01-9afc-d402128dcef7"
+>
+<Expression>d_P ( aTarget =&gt; aTarget, Vest =&gt; Vest, NoA_est =&gt; False ) - Default.BaseTypes.SpeedToMS ( Vest ) * DecelerationCurves.T_indication ()</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
