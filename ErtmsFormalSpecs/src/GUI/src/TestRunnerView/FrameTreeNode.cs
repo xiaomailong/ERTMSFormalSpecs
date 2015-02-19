@@ -294,47 +294,8 @@ namespace GUI.TestRunnerView
             retVal.Insert(7, new MenuItem("-"));
             retVal.Insert(8, new MenuItem("Execute", new EventHandler(RunHandler)));
             retVal.Insert(9, new MenuItem("Create report", new EventHandler(ReportHandler)));
-            retVal.Insert(10, new MenuItem("-"));
-            retVal.Insert(11, new MenuItem("Set SN mode", new EventHandler(SetFSMode)));
 
             return retVal;
-        }
-
-        private void SetFSMode(object sender, EventArgs args)
-        {
-            foreach (SubSequence subSequence in Item.SubSequences)
-            {
-                foreach (TestCase testCase in subSequence.TestCases)
-                {
-                    foreach (Step step in testCase.Steps)
-                    {
-                        if (step.Name.Contains("SN"))
-                        {
-                            SubStep subStep = step.SubSteps[0] as SubStep;
-                            if (subStep != null)
-                            {
-                                ArrayList tempActions = new ArrayList();
-                                tempActions = subStep.Actions.Clone() as ArrayList;
-                                subStep.Actions.Clear();
-
-                                foreach (DataDictionary.Rules.Action action in tempActions)
-                                {
-                                    if (action.ExpressionText.Contains("InputInformation") ||
-                                        action.ExpressionText.Contains("OutputInformation"))
-                                    {
-                                        subStep.appendActions(action);
-                                    }
-                                }
-
-                                DataDictionary.Rules.Action setFS = new DataDictionary.Rules.Action();
-                                setFS.setExpression("Testing.SetSNMode()");
-
-                                subStep.appendActions(setFS);
-                            }
-                        }
-                    }
-                }
-            }
         }
 
         /// <summary>

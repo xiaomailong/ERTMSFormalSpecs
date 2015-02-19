@@ -2109,7 +2109,7 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
  Name="SetSFMode"
  Guid="d6c892e7-f049-4524-aeee-cf8201d9e93e"
 >
-<Comment>Procedure that sets the mode to FS and sets all data so maintain this mode.</Comment>
+<Comment>Procedure that sets the mode to SF and sets all data so maintain this mode.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -2357,6 +2357,258 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Actions>
 <Action
  Guid="1884d7dc-d84b-44c5-9dfa-97b571e9a339"
+>TIU.ETCSIsolated &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="400"
+ Y="20"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="SetNPMode"
+ Guid="4ddcaaab-20ca-4199-9a5f-07a1ca5d7e3b"
+>
+<Comment>Procedure that sets the mode to NP and sets all data so maintain this mode.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set NP mode"
+ Guid="e7e28a4e-3b6a-4add-9a8c-2e90c2e223b3"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set NP mode"
+ Guid="4f58283d-433b-48a0-85a0-87053ff0ba14"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="ef9fc55f-d1cf-4975-b093-fb771f8614f2"
+>Kernel.Mode &lt;- Mode.NP</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power off"
+ Guid="f786e85c-b3a0-44e5-9e1e-f3d9dcfb6d15"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="e8942ff7-264d-4af7-8822-d1fc343319f0"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="5659c98f-6a31-4223-acc9-a2b28a50e1e1"
+>Kernel.PowerOn &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS not isolated"
+ Guid="e877f8b4-15f2-4b7b-b03a-f72159d6da6b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS not isolated"
+ Guid="13315b3d-52d0-4862-bfe2-4bfa9ec43953"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="f0fb213d-8f70-4981-a54d-3c2b7841a476"
+>TIU.ETCSIsolated &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="400"
+ Y="20"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="SetNLMode"
+ Guid="eb11bfd5-3fb4-4a6d-8247-04a423f4b5ad"
+>
+<Comment>Procedure that sets the mode to NL and sets all data so maintain this mode.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set NL mode"
+ Guid="09c02121-9785-48b5-afb1-9a7deef051ba"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set NL mode"
+ Guid="19fb8c13-eb91-4180-afcb-93d52f70f694"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="796568d9-37bb-419b-bde8-5367fe92cc4d"
+>Kernel.Mode &lt;- Default.Mode.NL</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="DMI cab open"
+ Guid="48e4e92e-3529-4f4e-9228-ea46545e2646"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="DMI cab open"
+ Guid="7763bee5-4fef-4302-9c3f-6fb230f1e553"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="60a90a3e-b49e-4876-a997-18f1cb68f1ec"
+>TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power on"
+ Guid="88ae30fb-9747-4849-886a-76ee6042a99a"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="7ec912b2-10c3-4413-b81a-095f3e7096cd"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="4eb4c8ad-e14d-48d2-aa09-08c4c65f2921"
+>Kernel.PowerOn &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS not isolated"
+ Guid="5790dd9f-a506-4fa7-993b-44c6dbd42e79"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS not isolated"
+ Guid="041e8386-3e02-4da1-b60d-6940342fef7b"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="db8c326d-5adb-4d33-bbfa-51355cf89d08"
+>TIU.ETCSIsolated &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Non leading input"
+ Guid="5423fbef-ddad-401a-bde8-67b06786ca3f"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Non leading input"
+ Guid="5221386e-dba5-43dd-b0fc-a8daefbadbc2"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="8f711aa7-7203-4de4-95f1-4c43c1a6254d"
+>TIU.NonLeadingPermitted &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="400"
+ Y="20"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="SetRVMode"
+ Guid="0a9100cb-5bfa-4a3f-85d9-ab268296567a"
+>
+<Comment>Procedure that sets the mode to RV and sets all data so maintain this mode.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Set RV mode"
+ Guid="959d81fd-867a-4685-9808-15597a47e56b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Set RV mode"
+ Guid="285dc887-b11e-4e77-8f13-822c95ec5214"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="6c4a7ad9-00c5-48f2-9ca2-4d0cc16a9deb"
+>Kernel.Mode &lt;- Mode.RV</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="DMI cab open"
+ Guid="01280127-f0fe-4cab-a005-1ce07f15072b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="DMI cab open"
+ Guid="c441e90c-ec38-43e0-ad8d-d04340745b85"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="30c16573-0a8a-4093-a480-d76056c79823"
+>TIU.CabA.Desk1IsActive &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Power on"
+ Guid="ff560e13-5ba8-43fe-8a70-31edb838bfe1"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Power on"
+ Guid="05db15ba-90d1-40a2-bcff-7d402937b6d9"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="a9ff126d-9fa5-4f08-959e-81c6ed75d7c9"
+>Kernel.PowerOn &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="ETCS not isolated"
+ Guid="a8cc5ea0-768f-451c-8512-74e94138890c"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="ETCS not isolated"
+ Guid="193f8ab5-8d3e-459a-b98b-a1ebe9326e1d"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="355c3c92-27b6-439a-a783-9b331301f219"
 >TIU.ETCSIsolated &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
