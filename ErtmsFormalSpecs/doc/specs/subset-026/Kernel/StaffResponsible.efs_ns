@@ -18,7 +18,7 @@
  Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="SR"
+ Name="SRStruct"
  Guid="af07327a-791d-48c5-9e30-e854d9591207"
 >
 <ReqRef
@@ -217,7 +217,7 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
  Type="Default.BaseTypes.Distance"
  Default=""
  X="20"
- Y="290"
+ Y="270"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -281,6 +281,8 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 </Function><Function
  Type="BaseTypes.Distance"
  Default=""
+ X="130"
+ Y="270"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -363,7 +365,7 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 <Actions>
 <Action
  Guid="342b18cc-bb34-4c17-8157-1bebc9fb9941"
->SRAuthorisation &lt;- Kernel.StaffResponsible.SR
+>SRAuthorisation &lt;- Kernel.StaffResponsible.SRStruct
 {
     Distance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SR, scale =&gt; Packet.Q_SCALE ),
     BGs =&gt; CreateBaliseGroups ( BaliseGroups =&gt; Packet.Sequence1 ),
@@ -480,7 +482,7 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="Kernel.StaffResponsible.SR"
+ Type="Kernel.StaffResponsible.SRStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="310"
