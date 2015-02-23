@@ -1608,7 +1608,7 @@ NOT
  Name="Value"
  Guid="6648ca8c-27e7-484f-b532-c80efeaf4c48"
 >
-<Expression>THERE_IS Message IN CurrentBaliseGroup | NOT Messages.EUROBALISE.CheckMessageValues(Message.Telegram)</Expression>
+<Expression>THERE_IS Message IN CurrentBaliseGroup | NOT Messages.EUROBALISE.MessageValuesCorrect(Message.Telegram)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1936,7 +1936,7 @@ StoredBaliseStruct{
  Guid="7eb5830f-91b5-438b-b3b1-c9c98a7860e7"
 >Balise.Sequence1 != []
   AND  
-THERE_IS X IN Balise.Sequence1 | (Messages.PACKET.TRACK_TO_TRAIN.GetPacketQ_Dir(X.TRACK_TO_TRAIN) == Messages.Q_DIR.Nominal  OR  Messages.PACKET.TRACK_TO_TRAIN.GetPacketQ_Dir(X.TRACK_TO_TRAIN) == Messages.Q_DIR.Reverse)
+THERE_IS X IN Balise.Sequence1 | (Messages.PACKET.TRACK_TO_TRAIN.GetQ_DIR(X.TRACK_TO_TRAIN) == Messages.Q_DIR.Nominal  OR  Messages.PACKET.TRACK_TO_TRAIN.GetQ_DIR(X.TRACK_TO_TRAIN) == Messages.Q_DIR.Reverse)
   AND  
 BaliseGroupOrientation() != Default.Orientation.Unknown</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -1949,7 +1949,7 @@ BaliseGroupOrientation() != Default.Orientation.Unknown</PreCondition></PreCondi
  Guid="7da6c3c5-4e47-49e8-9df7-23241484e700"
 >Balise.Sequence1 != []
   AND  
-FORALL X IN Balise.Sequence1 | (Messages.PACKET.TRACK_TO_TRAIN.GetPacketQ_Dir(X.TRACK_TO_TRAIN) == Messages.Q_DIR.Both_directions)</PreCondition></PreConditions>
+FORALL X IN Balise.Sequence1 | (Messages.PACKET.TRACK_TO_TRAIN.GetQ_DIR(X.TRACK_TO_TRAIN) == Messages.Q_DIR.Both_directions)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="No directional info, nor info for both directions"
@@ -1962,11 +1962,11 @@ FORALL X IN Balise.Sequence1 | (Messages.PACKET.TRACK_TO_TRAIN.GetPacketQ_Dir(X.
   OR  
 FORALL X IN Balise.Sequence1 | 
   (
-  Messages.PACKET.TRACK_TO_TRAIN.GetPacketQ_Dir(X.TRACK_TO_TRAIN) != Messages.Q_DIR.Both_directions
+  Messages.PACKET.TRACK_TO_TRAIN.GetQ_DIR(X.TRACK_TO_TRAIN) != Messages.Q_DIR.Both_directions
    AND 
-  Messages.PACKET.TRACK_TO_TRAIN.GetPacketQ_Dir(X.TRACK_TO_TRAIN) != Messages.Q_DIR.Nominal
+  Messages.PACKET.TRACK_TO_TRAIN.GetQ_DIR(X.TRACK_TO_TRAIN) != Messages.Q_DIR.Nominal
    AND 
-  Messages.PACKET.TRACK_TO_TRAIN.GetPacketQ_Dir(X.TRACK_TO_TRAIN) != Messages.Q_DIR.Reverse
+  Messages.PACKET.TRACK_TO_TRAIN.GetQ_DIR(X.TRACK_TO_TRAIN) != Messages.Q_DIR.Reverse
   )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
@@ -1993,7 +1993,7 @@ FORALL X IN Balise.Sequence1 |
   (
   Available(X.TRACK_TO_TRAIN.DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM)
    OR 
-  Messages.PACKET.TRACK_TO_TRAIN.GetPacketQ_Dir(X.TRACK_TO_TRAIN) != Messages.Q_DIR.Both_directions
+  Messages.PACKET.TRACK_TO_TRAIN.GetQ_DIR(X.TRACK_TO_TRAIN) != Messages.Q_DIR.Both_directions
   )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case

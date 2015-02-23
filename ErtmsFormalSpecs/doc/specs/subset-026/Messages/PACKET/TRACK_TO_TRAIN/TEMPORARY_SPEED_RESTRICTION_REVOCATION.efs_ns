@@ -53,7 +53,7 @@
  Guid="04cb9e64-422a-4247-b0c7-544d74203ee2"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -83,76 +83,76 @@
 <Function
  Type="Boolean"
  Default=""
- Name="CheckMessageValues"
- Guid="96106bcd-2e7b-4d66-857c-7a2999d37c63"
+ Name="MessageValuesCorrect"
+ Guid="d3a19bc2-f94c-4c52-82b4-d8a0dde758fb"
 >
 <Comment>Checks the values in a structure of type TEMPORARY_SPEED_RESTRICTION_REVOCATION.Message</Comment>
 <Parameters>
 <Parameter
- Type="Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.Message"
+ Type="TEMPORARY_SPEED_RESTRICTION_REVOCATION.Message"
  Name="struct"
- Guid="2aa0d2b1-5ae7-4740-bf67-a158eaf9c8ec"
+ Guid="f41edf4d-6c2c-4f79-8229-1e9b1a3178fd"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="a15066bf-b51b-4597-9302-bf1405db9e97"
+ Guid="19a43f09-ef80-4ba5-9ca6-1124b4ebe766"
 >
 <PreConditions>
 <PreCondition
- Guid="42aa070c-d584-4da6-9a97-6fe215a7bdeb"
+ Guid="1ffd6190-35b8-478c-a56a-3052f42c7364"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_PACKET invalid"
- Guid="3a0edeb0-1306-41a9-b887-869fbb9a8c8d"
+ Guid="d46a1961-9a85-4af4-9bf8-7ff867b1b862"
 >
 <PreConditions>
 <PreCondition
- Guid="d801ddcf-b190-49e7-b47c-f2bf4fc61830"
->struct.NID_PACKET &lt; 0
-  AND  
-struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+ Guid="3b268b30-5203-43b8-851d-7bfa93bf9b83"
+>struct.NID_PACKET &lt; 0</PreCondition><PreCondition
+ Guid="9dfb52ea-13d0-4a51-8bea-08f040f3cb01"
+>struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_DIR invalid"
- Guid="c8d4d6a1-7235-4f0c-9c80-e76c32806a3d"
+ Guid="85dbbcc4-a7f2-4107-8567-5ad0a384b21a"
 >
 <PreConditions>
 <PreCondition
- Guid="866313b5-df69-4d1a-8dbf-7203ae7785b8"
->struct.Q_DIR &lt; 0
-  AND  
-struct.Q_DIR &gt;= 4
-  AND  
-struct.Q_DIR != 3</PreCondition></PreConditions>
+ Guid="087ed1da-b373-4baf-b283-3d13b35e69aa"
+>struct.Q_DIR &lt; 0</PreCondition><PreCondition
+ Guid="c1c22f5f-a077-4eb4-9c76-a90cad2fddea"
+>struct.Q_DIR &gt;= 4</PreCondition><PreCondition
+ Guid="efb7920a-d543-45fa-947e-c91eb346b4c3"
+>struct.Q_DIR != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_PACKET invalid"
- Guid="58221f64-6ef3-42a3-99c6-b4170fa07dd3"
+ Guid="d9dd2ddd-0260-495b-a64b-6dca7c06d11a"
 >
 <PreConditions>
 <PreCondition
- Guid="1b711234-dd02-44a1-bfda-ce001d5ed3a0"
->struct.L_PACKET &lt; 0
-  AND  
-struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+ Guid="755d00f1-ee26-47f9-a4f4-814af30db146"
+>struct.L_PACKET &lt; 0</PreCondition><PreCondition
+ Guid="001feb48-a873-4778-85c9-198d9ddf3a64"
+>struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NID_TSR invalid"
- Guid="935b53ab-e6a9-4a8e-a089-43ef3f4bb2ac"
+ Guid="5a8cb0a7-b4c4-4349-8d0b-5c89a6a4ec04"
 >
 <PreConditions>
 <PreCondition
- Guid="412a72c6-6b07-4aaf-b29b-162d2c8ab2a9"
->struct.NID_TSR &lt; 0
-  AND  
-struct.NID_TSR &gt;= 256</PreCondition></PreConditions>
+ Guid="27255f41-87f2-4399-88d0-26b208b6e63f"
+>struct.NID_TSR &lt; 0</PreCondition><PreCondition
+ Guid="482ca9aa-9b2d-471b-bc33-966cce1d0ffa"
+>struct.NID_TSR &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="bd558d86-084d-4b59-a823-df1ad8344b8a"
+ Guid="25611a1a-4ec1-48f4-8af7-c3b6498df7ff"
 >
 <Expression>True</Expression>
 </Case></Cases>

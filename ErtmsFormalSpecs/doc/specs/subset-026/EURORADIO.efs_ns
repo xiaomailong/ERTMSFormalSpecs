@@ -2049,7 +2049,7 @@ THERE_IS X IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <PreConditions>
 <PreCondition
  Guid="245ec692-046d-4757-843f-49f2e48f25c7"
->T_TRAIN &lt;= SupervisedTimeStamp()</PreCondition></PreConditions>
+>MessageTypes.TimeResolution( Messages.MESSAGE.TRACK_TO_TRAIN.GetT_TRAIN(MessageIn) ) &lt;= SupervisedTimeStamp()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="95355091-2753-43eb-95fe-5a8b30aa9dc6"
@@ -2061,7 +2061,7 @@ THERE_IS X IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <PreConditions>
 <PreCondition
  Guid="98306646-e14d-4b2e-9e5d-c3a1e9925634"
->T_TRAIN &gt; SupervisedTimeStamp() + Kernel.NationalValues.ApplicableNationalValues.Value.MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram</PreCondition></PreConditions>
+>MessageTypes.TimeResolution( Messages.MESSAGE.TRACK_TO_TRAIN.GetT_TRAIN(MessageIn) ) &gt; SupervisedTimeStamp() + Kernel.NationalValues.ApplicableNationalValues.Value.MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b84883d3-141d-4ba7-a064-851451e9f964"
@@ -2088,6 +2088,7 @@ THERE_IS X IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Name="Check contents"
  Guid="680ff15b-e304-43a8-9786-0221d77eda72"
 >
+<Comment>Uses the generated MessageValuesCorrect function to check the values of the variables in the incoming message.</Comment>
 <PreConditions>
 <PreCondition
  Guid="3800aa4e-2d89-455e-9f94-ecd5a220d52a"
@@ -2095,7 +2096,7 @@ THERE_IS X IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 <Actions>
 <Action
  Guid="38c10080-f985-43c9-b3ae-415d616b4c0e"
->IncomingMessageInconsistent &lt;- False</Action></Actions>
+>IncomingMessageInconsistent &lt;- NOT Messages.MESSAGE.TRACK_TO_TRAIN.MessageValuesCorrect(MessageIn)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -6134,6 +6135,8 @@ Kernel.Mode not in [Default.Mode.SH, Default.Mode.PS]</Expression>
 </Function><Function
  Type="BaseTypes.Time"
  Default=""
+ X="330"
+ Y="720"
  Width="100"
  Height="50"
  Name="SupervisedTimeStamp"

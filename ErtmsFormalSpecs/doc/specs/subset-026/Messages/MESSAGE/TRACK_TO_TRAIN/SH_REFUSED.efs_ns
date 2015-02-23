@@ -32,7 +32,7 @@
  Guid="0d664534-5485-44ec-b82a-817b26b646b7"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -45,7 +45,7 @@
  Guid="37f1f0c7-d839-417a-9b62-65c4c4336e44"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Time"
+ TypeName="MessageTypes.Time"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
@@ -84,7 +84,7 @@
  Guid="1a40febe-f616-4e89-9d18-d144469e2ab5"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Time"
+ TypeName="MessageTypes.Time"
  Default=""
  Mode="InOut"
  Implemented="TRUE"
@@ -97,4 +97,80 @@
  Guid="d05ef44f-76c3-4e83-81cc-33980703e7cd"
 >
 </ReqRef></StructureElement></Structure></Structures>
+<Functions>
+<Function
+ Type="Boolean"
+ Default=""
+ Name="MessageValuesCorrect"
+ Guid="669ea875-1f70-444d-96bc-8dac671016f0"
+>
+<Comment>Checks the values in a structure of type SH_REFUSED.Message</Comment>
+<Parameters>
+<Parameter
+ Type="SH_REFUSED.Message"
+ Name="struct"
+ Guid="b42116b4-a45c-44b4-8483-7c8a9aff692e"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Message empty"
+ Guid="99fce56a-29d8-4c04-9f09-0ad36102c69b"
+>
+<PreConditions>
+<PreCondition
+ Guid="ce8ecc96-177c-4658-9e50-078c3d36906e"
+>NOT Available(struct)</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="struct.NID_MESSAGE invalid"
+ Guid="8eb60f7c-c581-4f8d-959c-fad8c734e658"
+>
+<PreConditions>
+<PreCondition
+ Guid="6e7c5055-89ab-4c11-a09b-c13d8f954fdd"
+>struct.NID_MESSAGE &lt; 0</PreCondition><PreCondition
+ Guid="55e2960a-89fe-4060-8f19-55bebf118772"
+>struct.NID_MESSAGE &gt;= 256</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.L_MESSAGE invalid"
+ Guid="af90fcc0-3fe8-414d-9823-ae07df4554f9"
+>
+<PreConditions>
+<PreCondition
+ Guid="da315b0c-ba3e-4525-8f7a-faf3c85151e2"
+>struct.L_MESSAGE &lt; 0</PreCondition><PreCondition
+ Guid="092b5296-3b5a-4fdd-a291-e739237e0030"
+>struct.L_MESSAGE &gt;= 1024</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.M_ACK invalid"
+ Guid="e327423c-4213-4779-9c7d-851d23a67e24"
+>
+<PreConditions>
+<PreCondition
+ Guid="d21ebfaf-a27e-48c7-81a9-ed8be1b8a027"
+>struct.M_ACK &lt; 0</PreCondition><PreCondition
+ Guid="047fac9a-08ab-4b07-9356-dd1cd313a742"
+>struct.M_ACK &gt;= 2</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="struct.NID_LRBG invalid"
+ Guid="0004f20f-6362-4415-a630-5df3c516298c"
+>
+<PreConditions>
+<PreCondition
+ Guid="a7e8d28b-9ac0-4b0c-88df-c674b017de83"
+>struct.NID_LRBG &lt; 0</PreCondition><PreCondition
+ Guid="ec55ae17-4104-43d6-9fde-6eb22d1e8123"
+>struct.NID_LRBG &gt;= 16777216</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="7d32ebe0-1b39-4be5-aa4a-2fc5f63b9060"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function></Functions>
 </NameSpace>

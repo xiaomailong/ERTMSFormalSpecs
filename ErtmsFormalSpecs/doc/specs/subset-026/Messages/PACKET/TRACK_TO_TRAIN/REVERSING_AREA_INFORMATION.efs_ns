@@ -53,7 +53,7 @@
  Guid="b132ad42-aedb-4c2b-b0a0-b6ffa912a177"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -79,7 +79,7 @@
  Guid="02af6c43-1d57-4979-a1ed-2627efaa4e72"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Distance"
+ TypeName="MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -92,7 +92,7 @@
  Guid="16432100-8a3a-47a1-90bf-149bfa3d707b"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="Default.MessageTypes.Length"
+ TypeName="MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -109,100 +109,100 @@
 <Function
  Type="Boolean"
  Default=""
- Name="CheckMessageValues"
- Guid="c6d925e8-928e-42bb-9827-aeb1cd874214"
+ Name="MessageValuesCorrect"
+ Guid="984ec541-06bc-435a-a863-c90fe597b119"
 >
 <Comment>Checks the values in a structure of type REVERSING_AREA_INFORMATION.Message</Comment>
 <Parameters>
 <Parameter
- Type="Messages.PACKET.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.Message"
+ Type="REVERSING_AREA_INFORMATION.Message"
  Name="struct"
- Guid="c85ac4a5-ff84-4dfb-bf94-c1ebe2e1ffce"
+ Guid="8c98d958-ada0-450f-acca-3c0837fe2c71"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="5a59e53d-4d9f-4dbc-bd72-d582c2ac0d5b"
+ Guid="fea0abb6-5dd9-4130-ac6b-20fc4b02be34"
 >
 <PreConditions>
 <PreCondition
- Guid="d504e7d0-acb1-40fb-b987-1c4a6fcd9450"
+ Guid="9d99f878-bb8e-4871-951e-3582fefac3f3"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_PACKET invalid"
- Guid="6d760fe5-f6a3-4c42-ab7d-087d0f745090"
+ Guid="75777f87-db8b-47b3-98fc-fa3c02b21fb1"
 >
 <PreConditions>
 <PreCondition
- Guid="ef2b50a5-df55-4945-a60b-9bb11947164d"
->struct.NID_PACKET &lt; 0
-  AND  
-struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
+ Guid="6451a1f0-4c97-408d-9cb6-b6e60ed97923"
+>struct.NID_PACKET &lt; 0</PreCondition><PreCondition
+ Guid="6333ba89-7a95-4f1d-80cf-d9eb223bab3f"
+>struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_DIR invalid"
- Guid="5025bd28-4381-4d1e-bf64-540b6a95f193"
+ Guid="d3964346-e704-4795-a9b8-c3ef20dc56bf"
 >
 <PreConditions>
 <PreCondition
- Guid="9c696ace-c15b-4a5d-9878-311f636004f6"
->struct.Q_DIR &lt; 0
-  AND  
-struct.Q_DIR &gt;= 4
-  AND  
-struct.Q_DIR != 3</PreCondition></PreConditions>
+ Guid="0a50bd6e-880c-449d-961a-44d4f2eefd8a"
+>struct.Q_DIR &lt; 0</PreCondition><PreCondition
+ Guid="b32ce9c5-f806-481b-adc0-9b03d40a2b1a"
+>struct.Q_DIR &gt;= 4</PreCondition><PreCondition
+ Guid="b72854d2-b0e2-41ff-8d50-05df2d83c4d4"
+>struct.Q_DIR != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_PACKET invalid"
- Guid="8f1f0f30-dcf4-45a7-a2a1-e5697e644aca"
+ Guid="fd92b3b2-b617-4b54-bdec-11249a70c420"
 >
 <PreConditions>
 <PreCondition
- Guid="10a2e3a9-8953-4961-ac3c-34edcb35162f"
->struct.L_PACKET &lt; 0
-  AND  
-struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
+ Guid="d57df96e-0c51-47a2-b70f-dff3c5ce4b93"
+>struct.L_PACKET &lt; 0</PreCondition><PreCondition
+ Guid="61d7ab43-92c9-4845-baf4-ec648c8611ad"
+>struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_SCALE invalid"
- Guid="d7af6c9d-c3d3-47f9-9223-f10f64fbe1b4"
+ Guid="61e567cc-94d1-482c-affe-81e1ecd1d0c5"
 >
 <PreConditions>
 <PreCondition
- Guid="04159785-40c4-4938-8ac4-f2209d76f8a4"
->struct.Q_SCALE &lt; 0
-  AND  
-struct.Q_SCALE &gt;= 4
-  AND  
-struct.Q_SCALE != 3</PreCondition></PreConditions>
+ Guid="30b01b9c-22b1-4e68-ba2a-9365c2ea8ccb"
+>struct.Q_SCALE &lt; 0</PreCondition><PreCondition
+ Guid="0e4debf3-b374-4599-9175-5ffa4ae12674"
+>struct.Q_SCALE &gt;= 4</PreCondition><PreCondition
+ Guid="632f638b-7429-44c9-93a3-dcd5b4e1eb0d"
+>struct.Q_SCALE != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.D_STARTREVERSE invalid"
- Guid="ece45acc-4782-40e5-b59f-a7174db7d1f3"
+ Guid="705c978d-cc2a-419a-9aa7-d4013cf5654a"
 >
 <PreConditions>
 <PreCondition
- Guid="a67689e9-9239-4472-933f-5666c921868d"
->struct.D_STARTREVERSE &lt; 0
-  AND  
-struct.D_STARTREVERSE &gt;= 32768</PreCondition></PreConditions>
+ Guid="645e3ba1-a5b3-4ed3-b084-320e9626697b"
+>struct.D_STARTREVERSE &lt; 0</PreCondition><PreCondition
+ Guid="8a6efefc-1bc2-4ecc-b031-d80d5964a243"
+>struct.D_STARTREVERSE &gt;= 32768</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_REVERSEAREA invalid"
- Guid="a74ad4a2-40e2-404d-88c0-84694b5d56d6"
+ Guid="405a5fa6-7ac5-4e57-afe7-67b78c140470"
 >
 <PreConditions>
 <PreCondition
- Guid="e6324933-b828-421e-8048-36c455e90fc3"
->struct.L_REVERSEAREA &lt; 0
-  AND  
-struct.L_REVERSEAREA &gt;= 32768</PreCondition></PreConditions>
+ Guid="a5ac2e36-2f84-4ec7-92a0-935c2a1bb48e"
+>struct.L_REVERSEAREA &lt; 0</PreCondition><PreCondition
+ Guid="9e7c1d36-dc79-4a6f-9f82-a3cd30aa160f"
+>struct.L_REVERSEAREA &gt;= 32768</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="e8391bce-b497-4cd6-a75a-ce1fb69a5eb3"
+ Guid="d836f806-6f45-45d8-bd3e-51a5ab799e8a"
 >
 <Expression>True</Expression>
 </Case></Cases>
