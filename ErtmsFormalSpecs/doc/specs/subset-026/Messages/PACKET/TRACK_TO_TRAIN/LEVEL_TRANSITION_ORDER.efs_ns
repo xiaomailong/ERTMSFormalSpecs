@@ -55,7 +55,7 @@
  Guid="c36b31b1-18ff-4246-a408-b5cf1302338f"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="Default.MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -81,7 +81,7 @@
  Guid="932c3932-587e-4af2-9c8b-ee6ff7a16331"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="Default.MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -115,7 +115,7 @@
  Guid="d04381ba-baab-440e-9020-05d614fbae27"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="Default.MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -189,7 +189,7 @@
  Guid="fd6a5da3-b53a-489c-96a5-249209e8196f"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="Default.MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -204,7 +204,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="SubStructure1"
+ TypeName="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.SubStructure1"
  Default="[]"
  Y="60"
  Width="100"
@@ -229,7 +229,7 @@
 <Comment>Checks the values in a structure of type LEVEL_TRANSITION_ORDER.Message</Comment>
 <Parameters>
 <Parameter
- Type="LEVEL_TRANSITION_ORDER.Message"
+ Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.Message"
  Name="struct"
  Guid="95e7903a-fa23-4c48-910f-f8c7309cc5d5"
 >
@@ -375,7 +375,7 @@ struct.N_ITER &gt;= 32</PreCondition></PreConditions>
 <Comment>Checks the values in a structure of type LEVEL_TRANSITION_ORDER.SubStructure1</Comment>
 <Parameters>
 <Parameter
- Type="LEVEL_TRANSITION_ORDER.SubStructure1"
+ Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.SubStructure1"
  Name="struct"
  Guid="0a499804-cbc7-4952-a343-37778f65b35b"
 >

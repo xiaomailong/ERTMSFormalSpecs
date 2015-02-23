@@ -55,7 +55,7 @@
  Guid="eafa0025-0136-4ca1-b3aa-af2ac09cf2b7"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="Default.MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -115,7 +115,7 @@
  Guid="1b084a64-1ec7-45de-afea-1313257946cb"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="Default.MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -228,7 +228,7 @@
  Guid="64809b88-535f-4f5c-85fd-092e74a49feb"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="Default.MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -269,7 +269,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="SubStructure1"
+ TypeName="Messages.PACKET.TRACK_TO_TRAIN.GEOGRAPHICAL_POSITION_INFORMATION.SubStructure1"
  Default="[]"
  Y="60"
  Width="100"
@@ -294,7 +294,7 @@
 <Comment>Checks the values in a structure of type GEOGRAPHICAL_POSITION_INFORMATION.Message</Comment>
 <Parameters>
 <Parameter
- Type="GEOGRAPHICAL_POSITION_INFORMATION.Message"
+ Type="Messages.PACKET.TRACK_TO_TRAIN.GEOGRAPHICAL_POSITION_INFORMATION.Message"
  Name="struct"
  Guid="170e49a3-0afc-460f-b29f-95702d9bda88"
 >
@@ -458,7 +458,7 @@ struct.N_ITER &gt;= 32</PreCondition></PreConditions>
 <Comment>Checks the values in a structure of type GEOGRAPHICAL_POSITION_INFORMATION.SubStructure1</Comment>
 <Parameters>
 <Parameter
- Type="GEOGRAPHICAL_POSITION_INFORMATION.SubStructure1"
+ Type="Messages.PACKET.TRACK_TO_TRAIN.GEOGRAPHICAL_POSITION_INFORMATION.SubStructure1"
  Name="struct"
  Guid="642daf5f-9445-4030-9d35-62579b0e6ebf"
 >

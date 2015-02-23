@@ -53,7 +53,7 @@
  Guid="775896c0-a6b4-4897-b9d7-cac61ca7183e"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="Default.MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -139,7 +139,7 @@
  Guid="d9e4e2bc-bc7a-4df6-bbb6-c9bebf03c736"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="Default.MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -223,7 +223,7 @@
  Guid="311afd8c-b550-4669-a1db-2bc98346baf9"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="Default.MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -238,7 +238,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="SubStructure1"
+ TypeName="Messages.PACKET.TRACK_TO_TRAIN.STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP.SubStructure1"
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
@@ -260,7 +260,7 @@
 <Comment>Checks the values in a structure of type STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP.Message</Comment>
 <Parameters>
 <Parameter
- Type="STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP.Message"
+ Type="Messages.PACKET.TRACK_TO_TRAIN.STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP.Message"
  Name="struct"
  Guid="1b268c3e-f4aa-4c5e-84f9-e8f08c08436f"
 >
@@ -380,7 +380,7 @@ struct.N_ITER &gt;= 32</PreCondition></PreConditions>
 <Comment>Checks the values in a structure of type STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP.SubStructure1</Comment>
 <Parameters>
 <Parameter
- Type="STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP.SubStructure1"
+ Type="Messages.PACKET.TRACK_TO_TRAIN.STAFF_RESPONSIBLE_DISTANCE_INFORMATION_FROM_LOOP.SubStructure1"
  Name="struct"
  Guid="461a5631-25eb-4f22-8baa-37fdb43f7d34"
 >

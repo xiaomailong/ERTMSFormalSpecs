@@ -53,7 +53,7 @@
  Guid="014a6145-44c8-4fb1-be7d-59d97d32e42c"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="Default.MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -92,7 +92,7 @@
  Guid="25aeb58c-7941-455a-a8e7-8b9c4bfe2f4d"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="Default.MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -100,7 +100,7 @@
  Guid="816ea548-e351-4b35-9ebc-737ecf0467cd"
 >
 </StructureElement><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="Default.MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -175,7 +175,7 @@
  Guid="e58205ab-a8f7-4dc5-aa43-601e470050ca"
 >
 </ReqRef><StructureElement
- TypeName="MessageTypes.Distance"
+ TypeName="Default.MessageTypes.Distance"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -225,7 +225,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="SubStructure1"
+ TypeName="Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.SubStructure1"
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
@@ -247,7 +247,7 @@
 <Comment>Checks the values in a structure of type ROUTE_SUITABILITY_DATA.Message</Comment>
 <Parameters>
 <Parameter
- Type="ROUTE_SUITABILITY_DATA.Message"
+ Type="Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message"
  Name="struct"
  Guid="b015cdb6-8737-46f8-8960-6e8c56720ff8"
 >
@@ -451,7 +451,7 @@ struct.N_ITER &gt;= 32</PreCondition></PreConditions>
 <Comment>Checks the values in a structure of type ROUTE_SUITABILITY_DATA.SubStructure1</Comment>
 <Parameters>
 <Parameter
- Type="ROUTE_SUITABILITY_DATA.SubStructure1"
+ Type="Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.SubStructure1"
  Name="struct"
  Guid="1cd9b130-3435-4c08-bb8a-804c954b0025"
 >

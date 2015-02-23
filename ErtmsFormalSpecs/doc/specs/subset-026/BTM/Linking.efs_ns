@@ -528,7 +528,7 @@ BaliseGroupOrientation() == CurrentLinking().Orientation</Expression>
 <Expression>Default.BaseTypes.Distance.Unknown</Expression>
 </Case></Cases>
 </Function><Function
- Type="LinkingReaction"
+ Type="BTM.Linking.LinkingReaction"
  Default=""
  X="670"
  Y="320"
@@ -2613,7 +2613,7 @@ IN Kernel.EmergencyStops</Action></Actions>
 >
 <Comment>Used to determine whether the current Balise message has been rejected due to linking or VBC.</Comment>
 </Variable><Variable
- Type="RAMSSupervisionStruct"
+ Type="BTM.Linking.RAMSSupervisionStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="340"
@@ -2631,7 +2631,7 @@ IN Kernel.EmergencyStops</Action></Actions>
 >
 </ReqRef><Comment>The currently supervised BG for the RAMS (EMPTY unless the previous linked BG was not found before the end of its expectation window).</Comment>
 </Variable><Variable
- Type="RAMSSupervisionStruct"
+ Type="BTM.Linking.RAMSSupervisionStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="450"

@@ -616,7 +616,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <Expression>FIRST X IN Profile | NOT DistanceIsWithinAModeProfile ( X ) AND (X.Mode != Mode)</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Cacheable="TRUE"
  Default=""
  X="150"
@@ -640,7 +640,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 </ReqRef><Comment>Converts the speed received in a Mode Profile packet to EFS speed, accounting for the special value.</Comment>
 <Parameters>
 <Parameter
- Type="MessageTypes.Speed"
+ Type="Default.MessageTypes.Speed"
  Name="V_MAMODE"
  Guid="b0e5bacb-91e5-4022-ab6f-46a554c924cc"
 >

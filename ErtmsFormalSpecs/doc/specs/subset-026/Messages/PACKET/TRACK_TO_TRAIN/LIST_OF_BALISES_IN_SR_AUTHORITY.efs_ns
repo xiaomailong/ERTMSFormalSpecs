@@ -53,7 +53,7 @@
  Guid="c03cc5a3-dbda-4401-b4ea-67faf13f0771"
 >
 </ReqRef></StructureElement><StructureElement
- TypeName="MessageTypes.Length"
+ TypeName="Default.MessageTypes.Length"
  Default="0"
  Mode="InOut"
  Implemented="TRUE"
@@ -139,7 +139,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="SubStructure1"
+ TypeName="Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_IN_SR_AUTHORITY.SubStructure1"
  Default="[]"
  Implemented="TRUE"
  Name="Collection1"
@@ -161,7 +161,7 @@
 <Comment>Checks the values in a structure of type LIST_OF_BALISES_IN_SR_AUTHORITY.Message</Comment>
 <Parameters>
 <Parameter
- Type="LIST_OF_BALISES_IN_SR_AUTHORITY.Message"
+ Type="Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_IN_SR_AUTHORITY.Message"
  Name="struct"
  Guid="3db05e16-b1a7-46f2-8f08-5d3c3207cfb9"
 >
@@ -246,7 +246,7 @@ struct.N_ITER &gt;= 32</PreCondition></PreConditions>
 <Comment>Checks the values in a structure of type LIST_OF_BALISES_IN_SR_AUTHORITY.SubStructure1</Comment>
 <Parameters>
 <Parameter
- Type="LIST_OF_BALISES_IN_SR_AUTHORITY.SubStructure1"
+ Type="Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_IN_SR_AUTHORITY.SubStructure1"
  Name="struct"
  Guid="343190b3-b6c2-4595-80d5-a029e696ce3b"
 >
