@@ -763,6 +763,7 @@ SituationM()</Expression>
 <Actions>
 </Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the third category"
  Guid="c1206e20-394d-4ea9-81dd-439988c950b6"
 >
@@ -771,13 +772,20 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="63cdb084-a888-4b14-a6b3-c23371993470"
 >
+</ReqRef><ReqRef
+ Id="bd7dbc99-064a-49f3-95c7-877b33ac0533"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3fdce414-bc21-40a5-9c37-ee121ff05773"
+>
 </ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="aa2daec1-cce7-4580-ac2f-723099182263"
 >ThirdCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="033b782e-920a-4f7c-b814-61816e417ba2"
+>MA.MA &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1223,6 +1231,7 @@ SituationM()</Expression>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Handle List of balises for SH area"
  Guid="d32ec0a1-3bba-479a-bdbf-ec9ad4ade821"
@@ -1231,6 +1240,7 @@ SituationM()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the first category"
  Guid="ff7e0da7-1513-40e1-be7e-a5bebc8b8c78"
 >
@@ -1245,8 +1255,15 @@ SituationM()</Expression>
  Guid="5cc60423-8764-4a2e-9ca8-d9a0973d3192"
 >FirstCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="c6a0763b-caa1-4cf5-9ea4-f7d18f7339c0"
+>Shunting.BaliseGroupsForShArea &lt;- Shunting.ExpectedBGstruct
+{
+    ListReceived =&gt; Boolean.False,
+    BGs =&gt; []
+}</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the second category"
  Guid="839463ba-ea68-4d35-a51a-19bb2e6f3047"
 >
@@ -1255,14 +1272,28 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="54af5eab-bd0b-414a-b776-aee9a05a04ea"
 >
+</ReqRef><ReqRef
+ Id="df6cd30a-9d55-48f5-b123-eb1fb96728c1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2fc197d1-f008-4680-b122-1a949b0b54fb"
+>
 </ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="54a581c8-9453-4a98-abb2-a38d0175d49f"
->SecondCategory()</PreCondition></PreConditions>
+>SecondCategory()</PreCondition><PreCondition
+ Guid="12004d15-1268-471a-b418-1b9b14fe97fb"
+>Mode == Mode.SH</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="a4215b44-ec02-4184-9987-8045f7187215"
+>Shunting.BaliseGroupsForShArea &lt;- Shunting.ExpectedBGstruct
+{
+    ListReceived =&gt; Boolean.False,
+    BGs =&gt; []
+}</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the third category"
  Guid="5e50b5ff-0820-4f35-8d2e-928b71d027f6"
 >
@@ -1271,13 +1302,24 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="68f4949a-6d59-4717-a3a0-c018c5225447"
 >
+</ReqRef><ReqRef
+ Id="bd7dbc99-064a-49f3-95c7-877b33ac0533"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7fcf64c4-7e90-4c3e-89f3-182af4bd83ad"
+>
 </ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="6d3ff10e-244a-471d-b619-2b71b1c06f18"
 >ThirdCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="55b45f22-e654-4653-9fcb-a156800f2ae1"
+>Shunting.BaliseGroupsForShArea &lt;- Shunting.ExpectedBGstruct
+{
+    ListReceived =&gt; Boolean.False,
+    BGs =&gt; []
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1413,22 +1455,6 @@ SituationM()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
- Name="Situations of the third category"
- Guid="f54a2194-9e7c-41bd-9df0-b3a993138a46"
->
-<ReqRef
- Id="936e895f-502d-4feb-adcf-ecd47ef3067c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="9025cd68-fcb2-4420-b787-98ebd16752ff"
->
-</ReqRef><Comment>Handles the information for the situation k.</Comment>
-<PreConditions>
-<PreCondition
- Guid="9645c1c9-0be2-446c-8cdf-ff1b1aeb834e"
->ThirdCategory()</PreCondition></PreConditions>
-<Actions>
-</Actions>
-</RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the first category"
  Guid="2ac65975-d849-4aca-9043-c638c5cad4eb"
@@ -1462,6 +1488,32 @@ SituationM()</Expression>
 >SecondCategory()</PreCondition></PreConditions>
 <Actions>
 </Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Situations of the third category"
+ Guid="f54a2194-9e7c-41bd-9df0-b3a993138a46"
+>
+<ReqRef
+ Id="936e895f-502d-4feb-adcf-ecd47ef3067c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9025cd68-fcb2-4420-b787-98ebd16752ff"
+>
+</ReqRef><ReqRef
+ Id="bd7dbc99-064a-49f3-95c7-877b33ac0533"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e5f63e1d-d7bb-4fe6-8310-03551f534451"
+>
+</ReqRef><Comment>Handles the information for the situation k.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="9645c1c9-0be2-446c-8cdf-ff1b1aeb834e"
+>ThirdCategory()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d1e99967-1092-4551-b20e-3fa6aa4a901a"
+>ModeRelatedSpeedLimits.TracksideModeRelatedSpeedRestrictions.RV &lt;- BaseTypes.Speed.NA</Action><Action
+ Guid="f1c062d6-2544-4ed5-b326-0a79d2e787d0"
+>StaffResponsible.SRAuthorisation &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2071,7 +2123,12 @@ SituationM()</Expression>
  Name="Handle Mode Profile"
  Guid="839744e0-9554-4c10-8334-4f0e771bb40d"
 >
-<Comment>Handles Mode Profile in specific situations.</Comment>
+<ReqRef
+ Id="bd7dbc99-064a-49f3-95c7-877b33ac0533"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="55ef0f31-e75d-47a0-bae8-08e48fe36fb0"
+>
+</ReqRef><Comment>Handles Mode Profile in specific situations.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2107,6 +2164,7 @@ SituationM()</Expression>
 <Actions>
 </Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the third category"
  Guid="f6467721-6ce6-4fac-a055-1388abed76ae"
 >
@@ -2121,7 +2179,9 @@ SituationM()</Expression>
  Guid="b364d015-7195-4f78-9136-a54ee902750e"
 >ThirdCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="f330f7ab-981c-4a2e-a574-3c792aa14e6d"
+>MA.ModeProfile.Profile &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
