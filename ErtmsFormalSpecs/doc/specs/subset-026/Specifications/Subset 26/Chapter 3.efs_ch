@@ -36066,11 +36066,12 @@ only data to be used by applications outside ERTMS/ETCS together with other info
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="d1808800-4007-475a-803d-f7e37f00e391"
->Checks performed by Euroradio protocol have been passed (see Subset-037)<RequirementSets>
+><Comment>Subset-037 is outside the scope of EFS.</Comment>
+Checks performed by Euroradio protocol have been passed (see Subset-037)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="f796dde6-e168-4748-acc9-c9fe45a72e4f"
@@ -36286,21 +36287,17 @@ only data to be used by applications outside ERTMS/ETCS together with other info
 >Time stamping<Sub>
 <Paragraph
  id="3.16.3.2.1"
- type="REQUIREMENT"
+ type="NOTE"
  scope="FLAGS"
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="219d49ed-6a4c-456f-b826-47da7a03ae19"
 >The trackside shall always transmit its information with reference to the train time.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="b3dd6f28-87f4-48a3-9c50-02d4b46d53e2"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="8e709233-bbc6-4f82-8461-016b208be1c3"
 >
@@ -36312,17 +36309,13 @@ only data to be used by applications outside ERTMS/ETCS together with other info
  bl=""
  name=""
  reviewed="TRUE"
- status="NA"
+ status="NotImplementable"
  version="3.0.0"
  Name=""
  Guid="28522aac-2862-45d7-8a33-7f91f3a742a2"
 >To time-stamp its messages, the trackside shall make a safe estimation of the onboard time, based on the time-stamp of the received messages and the internal processing times.
 The estimation shall be made in such a way that the on-board time estimated by the trackside shall not be in advance of the real on-board time.<RequirementSets>
 <RequirementSetReference
- RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
- Guid="3760fb04-3420-444b-aa68-8a6431ab15ad"
->
-</RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="2e34e6fc-4ebd-4b6e-8978-d97cabc6998b"
 >
