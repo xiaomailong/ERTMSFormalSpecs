@@ -823,11 +823,15 @@
 <Actions>
 <Action
  Guid="941e58ff-e954-4a73-9d2b-a7451989e4ec"
->EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- EURORADIO.InMessageStruct
+{
+    Message =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     SOM_POSITION_REPORT_CONFIRMED_BY_RBC =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.SOM_POSITION_REPORT_CONFIRMED_BY_RBC.Message
     {
     }
+},
+    Priority =&gt; EURORADIO.MessagePriorityEnum.Normal
 }</Action><Action
  Guid="d47aadd1-d6d9-46d2-926a-10e03496f741"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34.WaitForRBCResponse</Action></Actions>
@@ -855,11 +859,15 @@
 <Actions>
 <Action
  Guid="c87ed0aa-0eeb-430a-ba41-b2539dd0328d"
->EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- EURORADIO.InMessageStruct
+{
+    Message =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     TRAIN_ACCEPTED =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.TRAIN_ACCEPTED.Message
     {
     }
+},
+    Priority =&gt; EURORADIO.MessagePriorityEnum.Normal
 }</Action><Action
  Guid="a45b50cc-0c78-4dac-bfb9-de942ca08916"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34.WaitForRBCResponse</Action></Actions>
@@ -887,11 +895,15 @@
 <Actions>
 <Action
  Guid="c499d2a0-826d-45c2-913f-02de6d3a4db7"
->EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- EURORADIO.InMessageStruct
+{
+    Message =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     TRAIN_REJECTED =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.TRAIN_REJECTED.Message
     {
     }
+},
+    Priority =&gt; EURORADIO.MessagePriorityEnum.Normal
 }</Action><Action
  Guid="91379d78-e0cd-4c50-b373-8a82bb94e80e"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A34.WaitForRBCResponse</Action></Actions>
@@ -990,12 +1002,16 @@
  Guid="baa5e5a7-95fb-4f9b-8694-4832a9c76a3e"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.A35</Action><Action
  Guid="34b7b911-d049-456d-b7f8-45b8fd3331ed"
->EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- EURORADIO.InMessageStruct
+{
+    Message =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     SOM_POSITION_REPORT_CONFIRMED_BY_RBC =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.SOM_POSITION_REPORT_CONFIRMED_BY_RBC.Message
     {
     
     }
+},
+    Priority =&gt; EURORADIO.MessagePriorityEnum.Normal
 }</Action><Action
  Guid="ed2c21a4-27a1-4895-92d8-c74ec425c855"
 >Kernel.TrainPosition.Position.DataState &lt;- DataState.Invalid</Action></Actions>
@@ -7071,7 +7087,9 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="90a0339b-cf11-48de-8062-ca16309f1d54"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S11.TrainDataSent</Action><Action
  Guid="ed281433-4f69-4f14-a086-c125373993f9"
->EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- EURORADIO.InMessageStruct
+{
+    Message =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     ACKNOWLEDGEMENT_OF_TRAIN_DATA =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.ACKNOWLEDGEMENT_OF_TRAIN_DATA.Message
     {
@@ -7082,6 +7100,8 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
         T_TRAIN_0 =&gt; 0,
         T_TRAIN_1 =&gt; 0
     }
+},
+    Priority =&gt; EURORADIO.MessagePriorityEnum.Normal
 }</Action></Actions>
 <Expectations>
 <Expectation

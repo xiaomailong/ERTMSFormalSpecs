@@ -500,8 +500,9 @@
 <Actions>
 <Action
  Guid="be6791b5-c9ac-4251-aa18-28b7d29a5ed6"
->EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
-
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- 
+EURORADIO.InMessageStruct{
+Message =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     MOVEMENT_AUTHORITY =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.Message
     {
@@ -565,9 +566,11 @@
                    V_MAMODE=&gt;1,
                    Sequence1=&gt;[] 
                 }
-}
-]
-}
+          }
+        ]
+    }
+},
+Priority =&gt; EURORADIO.MessagePriorityEnum.Normal
 }</Action></Actions>
 <Expectations>
 <Expectation

@@ -2225,7 +2225,9 @@
  Guid="96cac230-63c8-4f61-b156-15cce70efd41"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S120</Action><Action
  Guid="ed5bb7e3-d500-496d-b622-f69330b62cf8"
->EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- EURORADIO.InMessageStruct
+{
+    Message =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     RECOGNITION_OF_EXIT_FROM_TRIP_MODE =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.RECOGNITION_OF_EXIT_FROM_TRIP_MODE.Message
     {
@@ -2235,6 +2237,8 @@
         NID_MESSAGE =&gt; 6,
         T_TRAIN =&gt; 200
     }
+},
+    Priority =&gt; EURORADIO.MessagePriorityEnum.Normal
 }</Action></Actions>
 <Expectations>
 <Expectation

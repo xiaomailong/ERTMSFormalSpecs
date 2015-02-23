@@ -213,6 +213,31 @@
  Guid="582d1927-ae02-4bbf-b7c2-2c10234069af"
 >
 </EnumValue></Values>
+</Enum><Enum
+ Default="MessagePriorityEnum.Normal"
+ Implemented="TRUE"
+ Name="MessagePriorityEnum"
+ Guid="7134f161-125c-4cd8-808c-a1dc59c80b36"
+>
+<ReqRef
+ Id="e700d18e-d4e8-422a-990c-f149f477ef14"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1409df03-653c-45d0-bf82-b13c4e413e42"
+>
+</ReqRef><Comment>Indicates the priority of a track to train RBC message.
+Only emergency stop orders can be high priority.</Comment>
+<Values>
+<EnumValue
+ Value=""
+ Name="Normal"
+ Guid="bcdb1687-7cd4-4611-8154-52174ea7b29f"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="High"
+ Guid="d4ac1c7d-2687-45ac-9eb4-942b3b5b1ce8"
+>
+</EnumValue></Values>
 </Enum></Enumerations>
 <Structures>
 <Structure
@@ -274,6 +299,78 @@
 <Action
  Guid="a88d3410-4254-4ea2-b4be-62c09e71fb63"
 >MessageOut &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Verification"
+ Name="Supervise max time between received messages"
+ Guid="c5d62060-3b89-489b-be3b-b0b8944f4282"
+>
+<ReqRef
+ Id="a3ae1dd4-1e9a-44e2-85d0-b0ebc947ebc1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="73849776-b2c8-4e81-94f4-f6a3976c2bb0"
+>
+</ReqRef><ReqRef
+ Id="6950f2b1-0c72-4e10-9f34-e93e44498694"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bf640674-13b2-49ad-bbb2-fe0aa0a5c49f"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Supervise max time between received messages"
+ Guid="517f696f-ec26-45ed-b7b3-ca89f3d42492"
+>
+<PreConditions>
+<PreCondition
+ Guid="1927d6d3-b902-49fb-8659-ba192ce507d3"
+>Kernel.DateAndTime.CurrentTime &gt; OnboardReference_MessageTimer + Kernel.NationalValues.ApplicableNationalValues.Value.MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Apply reaction"
+ Guid="9fee50da-35cb-4fef-9b9b-9c3ed89b0277"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Train trip"
+ Guid="8c1f6e2e-18b0-4317-971b-15b80b2396e4"
+>
+<PreConditions>
+<PreCondition
+ Guid="e1ae4709-9dd0-404c-a5fe-fd8e2afddc56"
+>Kernel.NationalValues.ApplicableNationalValues.Value.SystemReactionIfRadioChannelMonitoringTimeLimitExpires == Messages.M_NVCONTACT.Train_trip</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="35c7ae19-379e-4fe1-9f80-bbfeed7fb8e3"
+>TrainTripDueToMaxTimeBetweenMessagesExceeded &lt;- True</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Apply service brake"
+ Guid="d5e4d836-372a-40d6-a902-d33f8de1ee2a"
+>
+<PreConditions>
+<PreCondition
+ Guid="2a983f3f-e8df-4254-962a-27e521c59306"
+>Kernel.NationalValues.ApplicableNationalValues.Value.SystemReactionIfRadioChannelMonitoringTimeLimitExpires == Messages.M_NVCONTACT.Apply_service_brake</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f97da9de-0e29-4726-9112-51860fdea0f0"
+>Kernel.AddSBCommand(Kernel.BrakeReason.RadioSequenceError)</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="No reaction"
+ Guid="bfa2c3ea-f5bf-49a4-b810-b364e15e60ba"
+>
+<PreConditions>
+<PreCondition
+ Guid="2b1d39cb-0822-457d-8275-eb81b7828733"
+>Kernel.NationalValues.ApplicableNationalValues.Value.SystemReactionIfRadioChannelMonitoringTimeLimitExpires == Messages.M_NVCONTACT.No_Reaction</PreCondition></PreConditions>
+<Actions>
+</Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -1512,6 +1609,11 @@ ConnectionState in ConnectionStateSM.Terminating</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3ce70874-1784-4303-8bc6-c9c2fa9bf503"
 >
+</ReqRef><ReqRef
+ Id="3460bc0e-8803-4236-bb1b-7b9af5863703"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="453f7d4a-8183-47b2-9ccc-4888875b989d"
+>
 </ReqRef><Comment>Messages from RBC received after sending of Termination of communication session message will be ignored, with the exception of the acknowledgement.</Comment>
 <Rules>
 <Rule
@@ -1545,11 +1647,13 @@ ConnectionState in ConnectionStateSM.Terminating</PreCondition></PreConditions>
  Guid="e865f160-465a-4fa6-bbdf-5c4aa595c910"
 >ConnectionState not in ConnectionStateSM.Terminating</PreCondition><PreCondition
  Guid="3609f99b-b750-45f6-867f-aa05ae489fbd"
->IsMainConnection</PreCondition></PreConditions>
+>IsMainConnection</PreCondition><PreCondition
+ Guid="17ba976d-ce42-46dc-bde1-e8c9dab8a0e3"
+>IncomingMessageIsConsistent(MessageIn.Message)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7ffe8131-5392-4ec9-a32e-1ad7d3cb2dcd"
->ProcessIncomingMessages ( MessageIn )</Action></Actions>
+>ProcessIncomingMessages(MessageIn.Message)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Handle acknowledgement of termination of a communication session"
@@ -1569,13 +1673,16 @@ ConnectionState in ConnectionStateSM.Terminating</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="ced76e36-5c43-4286-9d04-213366e1c8a1"
->Available ( MessageIn.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION )</PreCondition><PreCondition
+>Available ( MessageIn.Message.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION )
+</PreCondition><PreCondition
  Guid="13c1cfb4-786f-44c7-ab3b-d1905d1357a7"
->IsMainConnection</PreCondition></PreConditions>
+>IsMainConnection</PreCondition><PreCondition
+ Guid="124fea1a-3ab9-46f0-8558-fed84187bc70"
+>IncomingMessageIsConsistent(MessageIn.Message)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="757ae52c-3581-4ad8-bd4d-bdc6a6dad180"
->HandleAcknowledgementOfTerminationOfACommunicationSession ( aMessage =&gt; MessageIn.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION )</Action></Actions>
+>HandleAcknowledgementOfTerminationOfACommunicationSession ( aMessage =&gt; MessageIn.Message.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1602,11 +1709,13 @@ ConnectionState in ConnectionStateSM.Terminating</PreCondition></PreConditions>
  Guid="463e0b98-b0fb-4545-a160-7e6de88c2d9d"
 >Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; Default.DistanceInterval.Max ) &lt; PositionReport.RBCTransitionLocation</PreCondition><PreCondition
  Guid="91826cfb-7c30-4aa3-b40e-60bf92efdbca"
->NOT IsMainConnection</PreCondition></PreConditions>
+>NOT IsMainConnection</PreCondition><PreCondition
+ Guid="885cc8be-6c21-4bda-af80-c9e89caad95a"
+>IncomingMessageIsConsistent(MessageIn.Message)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9e032a8e-c56d-4362-b6ed-8d69f6620598"
->INSERT MessageIn IN MessagesToHandle</Action></Actions>
+>INSERT MessageIn.Message IN MessagesToHandle</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -1625,11 +1734,11 @@ ConnectionState in ConnectionStateSM.Terminating</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="1ca3c59e-b767-47ad-8622-1b9ce4436495"
->Available ( Element =&gt; MessageIn.ACKNOWLEDGEMENT_OF_TRAIN_DATA )</PreCondition></PreConditions>
+>Available ( Element =&gt; MessageIn.Message.ACKNOWLEDGEMENT_OF_TRAIN_DATA )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7e16bf07-3f0a-476e-a107-bf3d03af299e"
->HandleAcknowledgementOfTrainData ( aMessage =&gt; MessageIn.ACKNOWLEDGEMENT_OF_TRAIN_DATA )</Action></Actions>
+>HandleAcknowledgementOfTrainData ( aMessage =&gt; MessageIn.Message.ACKNOWLEDGEMENT_OF_TRAIN_DATA )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
@@ -1646,7 +1755,9 @@ ConnectionState in ConnectionStateSM.Terminating</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="98ea9a9c-2ee4-4e8e-a1df-abd25b493ec0"
->NOT IsMainConnection</PreCondition></PreConditions>
+>NOT IsMainConnection</PreCondition><PreCondition
+ Guid="560e0917-ea2b-4726-bb4f-913cb848a16e"
+>IncomingMessageIsConsistent(MessageIn.Message)</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -1668,9 +1779,9 @@ ConnectionState in ConnectionStateSM.Terminating</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="786fa238-2b10-4508-9829-45e25ef541e2"
->Available ( MessageIn.MOVEMENT_AUTHORITY )
+>Available ( MessageIn.Message.MOVEMENT_AUTHORITY )
   AND
-THERE_IS X IN MessageIn.MOVEMENT_AUTHORITY.Sequence1 | Available
+THERE_IS X IN MessageIn.Message.MOVEMENT_AUTHORITY.Sequence1 | Available
 (
     Element =&gt; X.SESSION_MANAGEMENT
 )</PreCondition></PreConditions>
@@ -1679,7 +1790,7 @@ THERE_IS X IN MessageIn.MOVEMENT_AUTHORITY.Sequence1 | Available
  Guid="7db46596-2bec-4dca-b309-8c30a034a2a6"
 >TracksideOrderedSessionReceived
 (
-    Packet =&gt; ( FIRST X IN MessageIn.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.SESSION_MANAGEMENT ) ).SESSION_MANAGEMENT
+    Packet =&gt; ( FIRST X IN MessageIn.Message.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.SESSION_MANAGEMENT ) ).SESSION_MANAGEMENT
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -1690,9 +1801,9 @@ THERE_IS X IN MessageIn.MOVEMENT_AUTHORITY.Sequence1 | Available
 <PreConditions>
 <PreCondition
  Guid="8df7c3e8-4f00-4b37-a191-70653e26c0cb"
->Available ( MessageIn.GENERAL_MESSAGE )
+>Available ( MessageIn.Message.GENERAL_MESSAGE )
   AND
-THERE_IS X IN MessageIn.GENERAL_MESSAGE.Sequence1 | Available
+THERE_IS X IN MessageIn.Message.GENERAL_MESSAGE.Sequence1 | Available
 (
     Element =&gt; X.SESSION_MANAGEMENT
 )</PreCondition></PreConditions>
@@ -1701,7 +1812,7 @@ THERE_IS X IN MessageIn.GENERAL_MESSAGE.Sequence1 | Available
  Guid="14902768-9399-4452-99ff-ce813a430af4"
 >TracksideOrderedSessionReceived
 (
-    Packet =&gt; ( FIRST X IN MessageIn.GENERAL_MESSAGE.Sequence1 | Available ( X.SESSION_MANAGEMENT ) ).SESSION_MANAGEMENT
+    Packet =&gt; ( FIRST X IN MessageIn.Message.GENERAL_MESSAGE.Sequence1 | Available ( X.SESSION_MANAGEMENT ) ).SESSION_MANAGEMENT
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -1712,9 +1823,9 @@ THERE_IS X IN MessageIn.GENERAL_MESSAGE.Sequence1 | Available
 <PreConditions>
 <PreCondition
  Guid="63d1690a-2f49-4ed2-b728-5a1d0b746001"
->Available ( MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE )
+>Available ( MessageIn.Message.MA_WITH_SHIFTED_LOCATION_REFERENCE )
   AND
-THERE_IS X IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
+THERE_IS X IN MessageIn.Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 (
     Element =&gt; X.SESSION_MANAGEMENT
 )</PreCondition></PreConditions>
@@ -1723,7 +1834,7 @@ THERE_IS X IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Guid="84c889be-4150-4fb0-a74e-cd11567c7278"
 >TracksideOrderedSessionReceived
 (
-    Packet =&gt; ( FIRST X IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.SESSION_MANAGEMENT ) ).SESSION_MANAGEMENT
+    Packet =&gt; ( FIRST X IN MessageIn.Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.SESSION_MANAGEMENT ) ).SESSION_MANAGEMENT
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
@@ -2030,98 +2141,9 @@ THERE_IS X IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</Procedure><Procedure
- Name="CheckMessageConsistency"
- Guid="6ef1e48c-cb86-4db3-96ed-1b38bd3c1135"
->
-<Rules>
-<Rule
- Priority="Processing"
- Name="Check time stamp"
- Guid="d637b6d2-9275-49f0-aea5-2ea28c7d19f6"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Time stamp before previous message"
- Guid="f5fdcf76-cee9-4d40-b260-0868371ba9d2"
->
-<PreConditions>
-<PreCondition
- Guid="245ec692-046d-4757-843f-49f2e48f25c7"
->MessageTypes.TimeResolution( Messages.MESSAGE.TRACK_TO_TRAIN.GetT_TRAIN(MessageIn) ) &lt;= SupervisedTimeStamp()</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="95355091-2753-43eb-95fe-5a8b30aa9dc6"
->IncomingMessageInconsistent &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Name="Time stamp too late"
- Guid="16126682-0d01-4fa3-b72a-a4b0bd4907e7"
->
-<PreConditions>
-<PreCondition
- Guid="98306646-e14d-4b2e-9e5d-c3a1e9925634"
->MessageTypes.TimeResolution( Messages.MESSAGE.TRACK_TO_TRAIN.GetT_TRAIN(MessageIn) ) &gt; SupervisedTimeStamp() + Kernel.NationalValues.ApplicableNationalValues.Value.MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="b84883d3-141d-4ba7-a064-851451e9f964"
->IncomingMessageInconsistent &lt;- True</Action></Actions>
-</RuleCondition><RuleCondition
- Name="Time stamp correct"
- Guid="9354d4d4-0b2a-4ac3-9e6f-31099aa8bd24"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="bfd45eb5-dba9-40a1-b9a5-2abe8d05d0de"
->IncomingMessageInconsistent &lt;- False</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="Check variable values"
- Guid="33c10e05-4440-4fd0-a134-90d14d3d49f8"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Check contents"
- Guid="680ff15b-e304-43a8-9786-0221d77eda72"
->
-<Comment>Uses the generated MessageValuesCorrect function to check the values of the variables in the incoming message.</Comment>
-<PreConditions>
-<PreCondition
- Guid="3800aa4e-2d89-455e-9f94-ecd5a220d52a"
->NOT IncomingMessageInconsistent</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="38c10080-f985-43c9-b3ae-415d616b4c0e"
->IncomingMessageInconsistent &lt;- NOT Messages.MESSAGE.TRACK_TO_TRAIN.MessageValuesCorrect(MessageIn)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Name="Process message"
- Guid="2a42c586-2957-499e-9352-512d3c694c40"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Process message"
- Guid="d8c1be2c-8bb1-4ce4-962e-9db66dc69a97"
->
-<PreConditions>
-<PreCondition
- Guid="6fd6be07-a9d7-462b-9d1a-f0d8eec558a6"
->NOT IncomingMessageInconsistent</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="336ea2f4-3299-4d43-8d5f-9685bda346d7"
->ProcessIncomingMessages(MessageIn)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
- TypeName="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
+ TypeName="InMessageStruct"
  Default="EMPTY"
  Mode="InOut"
  Implemented="TRUE"
@@ -2271,6 +2293,13 @@ THERE_IS X IN MessageIn.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available
  Mode="Internal"
  Name="IncomingMessageInconsistent"
  Guid="f73074f0-25ab-49df-9c4a-bcf88b6d518c"
+>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Time"
+ Default="BaseTypes.Time.NA"
+ Mode="Internal"
+ Name="OnboardReference_MessageTimer"
+ Guid="04f1ba30-9faf-4c6f-a81d-5a49dfd07edd"
 >
 </StructureElement><StateMachines>
 <StateMachine
@@ -5126,6 +5155,38 @@ After that, if an order to contact an Accepting RBC was received, it will be han
  Guid="1d98ef8a-fbe4-4fe6-affb-c0d0d99bb986"
 >
 <Comment>The data state of the system version.</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ Name="InMessageStruct"
+ Guid="50bcfd9e-6f3f-4379-ab59-2422ddb04376"
+>
+<ReqRef
+ Id="e700d18e-d4e8-422a-990c-f149f477ef14"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c35e52dd-9991-457a-87d1-8f328bd6baa8"
+>
+</ReqRef><ReqRef
+ Id="e9f7415c-2605-40c6-82c5-5211a7679d76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a18ed17-db40-4963-a719-8b347db75333"
+>
+</ReqRef><Comment>Structure containing the message received from the RBC with its priority.</Comment>
+<StructureElement
+ TypeName="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
+ Default=""
+ Mode="InOut"
+ Name="Message"
+ Guid="ab984d43-c965-4d4c-b120-1489694e3ccd"
+>
+<Comment>The message received from trackside.</Comment>
+</StructureElement><StructureElement
+ TypeName="MessagePriorityEnum"
+ Default=""
+ Mode="Incoming"
+ Name="Priority"
+ Guid="0b2e7125-3440-427c-b7ba-4c8917135d86"
+>
+<Comment>The priority of the received message.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -6133,16 +6194,129 @@ Kernel.Mode not in [Default.Mode.SH, Default.Mode.PS]</Expression>
 <Expression>Terminal2</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Time"
+ Type="Boolean"
  Default=""
- X="330"
- Y="720"
+ Y="60"
  Width="100"
  Height="50"
- Name="SupervisedTimeStamp"
- Guid="d233a0e6-2320-4888-a319-7f43d3662f2f"
+ Name="IncomingMessageIsConsistent"
+ Guid="63c5c7c9-161e-4294-80b5-fbf6fdea21e2"
 >
-<Cases></Cases>
+<ReqRef
+ Id="3460bc0e-8803-4236-bb1b-7b9af5863703"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="960a91af-75af-42eb-bc19-dc03e554ed93"
+>
+</ReqRef><ReqRef
+ Id="9e7a0583-df92-4eab-8868-236ab7137663"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ccda8532-e676-4060-8996-a384268bd8c4"
+>
+</ReqRef><ReqRef
+ Id="6950f2b1-0c72-4e10-9f34-e93e44498694"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5f9d4979-95a3-4f4f-8288-cad47a883d5d"
+>
+</ReqRef><ReqRef
+ Id="a3ae1dd4-1e9a-44e2-85d0-b0ebc947ebc1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bbc5b274-6fe7-4a0d-b8e8-3e72690802b7"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
+ Name="Message"
+ Guid="9aecef0e-5917-4b84-bc32-f8a2ee82362c"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="No message"
+ Guid="8b462b2c-e728-4afd-ba13-d1513f3070ed"
+>
+<PreConditions>
+<PreCondition
+ Guid="2f5d5aef-f2c0-4e0b-958e-3b4a3769699b"
+>NOT Available(Message)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Time stamp invalid"
+ Guid="bca5e06a-c381-424a-aa56-2f45d71ca6bf"
+>
+<PreConditions>
+<PreCondition
+ Guid="1839697c-2ced-42ac-aff4-5a06c01cf486"
+>NOT TimeStampValid(Message)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Invalid variables"
+ Guid="90d481bc-88f3-49cb-a726-6ae26e4970f5"
+>
+<PreConditions>
+<PreCondition
+ Guid="7befe0e8-1643-451e-8870-89975f347dd9"
+>NOT Messages.MESSAGE.TRACK_TO_TRAIN.MessageValuesCorrect(Message)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="93ee79d0-2ce6-4bf9-abad-31156f78bc90"
+>
+<Expression>True</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="110"
+ Y="60"
+ Width="100"
+ Height="50"
+ Name="TimeStampValid"
+ Guid="ab1354d0-c1c6-4395-9d6f-4aa038d4932f"
+>
+<ReqRef
+ Id="a3ae1dd4-1e9a-44e2-85d0-b0ebc947ebc1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5af76d55-8d3b-46ec-971c-039ac3abd467"
+>
+</ReqRef><ReqRef
+ Id="6950f2b1-0c72-4e10-9f34-e93e44498694"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fea717a2-c7d1-4240-9569-47be6997c55a"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
+ Name="Message"
+ Guid="abb59365-0111-4635-b2fb-5aefbd5f9bfe"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Time stamp unknown at initiation of communication"
+ Guid="202591f0-e7d7-4e7e-b5fe-6abfd9152eeb"
+>
+<PreConditions>
+<PreCondition
+ Guid="de53a423-8147-46b1-b35d-5aed01bd6f32"
+>Available(Message.INITIATION_OF_A_COMMUNICATION_SESSION)</PreCondition><PreCondition
+ Guid="08fc2b71-0f15-44e3-95cd-d0cf5aebbace"
+>CurrentRBCConnection().OnboardReference_MessageTimer == BaseTypes.Time.NA</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Time stamp before previous message"
+ Guid="9347d978-64df-4223-8fbf-b2e58eedb111"
+>
+<PreConditions>
+<PreCondition
+ Guid="908af580-db95-473f-b35b-3a52e7234b45"
+>MessageTypes.TimeResolution( Messages.MESSAGE.TRACK_TO_TRAIN.GetT_TRAIN(Message) ) &lt;= CurrentRBCConnection().OnboardReference_MessageTimer</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="Time stamp correct"
+ Guid="da2ff5e4-26b5-402e-b578-045d3514c8f0"
+>
+<Expression>True</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -10455,6 +10629,16 @@ But at the end of the cycle the conditions required for sending of position repo
  Guid="88e78b40-3606-492a-9021-fd45199aaf6a"
 >
 </ReqRef><Comment>If the first attempt to contact the RBC failed, the corresponding contact order is stored in order to retry contacting the RBC.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="False"
+ VariableMode="Internal"
+ Width="100"
+ Height="50"
+ Name="TrainTripDueToMaxTimeBetweenMessagesExceeded"
+ Guid="fe8566a0-95b5-4c55-958a-f88709890ec8"
+>
+<Comment>Indicates that the </Comment>
 </Variable></Variables>
 <Rules>
 <Rule

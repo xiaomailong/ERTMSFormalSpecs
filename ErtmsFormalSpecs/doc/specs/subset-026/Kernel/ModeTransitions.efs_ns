@@ -1784,6 +1784,7 @@ HandleModeChange not in HandleModeChangeSM.Override</Expression>
  Y="840"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Condition41"
  Guid="b171927f-060b-468d-8c8e-8241fd9aac51"
 >
@@ -1792,12 +1793,28 @@ HandleModeChange not in HandleModeChangeSM.Override</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2c41ef96-2fc4-4f45-b1d0-70aeb02d43be"
 >
+</ReqRef><ReqRef
+ Id="60e39a2f-4380-44e7-bf85-7142748b200f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="91e8810f-2d9c-42b2-9e26-2cb5e2d0df70"
+>
+</ReqRef><ReqRef
+ Id="3d4a4bc1-0bca-4a3b-9856-b6e42e4c9d03"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bb6cfba7-d3d6-4551-a9d1-5e8efc3badb8"
+>
+</ReqRef><ReqRef
+ Id="4aafaa1d-6dad-4116-9c76-919faa0a29e7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="75cba4ae-5f9d-4247-8501-b567a286b8e1"
+>
 </ReqRef><Cases>
 <Case
  Name="Value"
  Guid="0eaca326-aecc-458d-aff0-ebbe0a856138"
 >
-<Expression>False</Expression>
+<Expression>EURORADIO.TrainTripDueToMaxTimeBetweenMessagesExceeded
+</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"

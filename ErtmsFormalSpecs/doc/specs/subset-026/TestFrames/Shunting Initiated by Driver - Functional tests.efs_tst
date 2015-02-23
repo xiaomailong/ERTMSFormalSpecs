@@ -2368,7 +2368,9 @@
  Guid="8001092a-741a-4e3e-b489-86d1eb13ffda"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.S050</Action><Action
  Guid="31f2f172-b4e6-435e-8fed-e196ab8a6be1"
->EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- EURORADIO.InMessageStruct
+{
+    Message =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     SH_AUTHORISED =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.SH_AUTHORISED.Message
     {
@@ -2380,6 +2382,8 @@
         T_TRAIN_1 =&gt; 18,
         Sequence1 =&gt; []
     }
+},
+    Priority =&gt; EURORADIO.MessagePriorityEnum.Normal
 }</Action><Action
  Guid="932f8466-8efb-4f4a-bca2-23e6aade4ef3"
 >Kernel.Shunting.BaliseGroupsForShArea &lt;- Kernel.Shunting.ExpectedBGstruct{
@@ -2489,7 +2493,9 @@
     }
 ]</Action><Action
  Guid="bf3a353a-33a2-431f-921d-382773e99196"
->EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- EURORADIO.InMessageStruct
+{
+    Message =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     SH_AUTHORISED =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.SH_AUTHORISED.Message
     {
@@ -2528,6 +2534,8 @@
             }
         ]
     }
+},
+    Priority =&gt; EURORADIO.MessagePriorityEnum.Normal
 }</Action></Actions>
 <Expectations>
 <Expectation
@@ -2594,7 +2602,9 @@
  Guid="331fe43e-a7f4-477b-8cdc-658c29d9996c"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.S050</Action><Action
  Guid="a1dc89b8-de03-4b4a-b954-a7928fc9c80e"
->EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- EURORADIO.InMessageStruct
+{
+    Message =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     SH_REFUSED =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.SH_REFUSED.Message
     {
@@ -2605,6 +2615,8 @@
         NID_LRBG =&gt; 3090,
         T_TRAIN_1 =&gt; 18
     }
+},
+    Priority =&gt; EURORADIO.MessagePriorityEnum.Normal
 }</Action></Actions>
 <Expectations>
 <Expectation
@@ -2711,7 +2723,9 @@
 <Actions>
 <Action
  Guid="5992c6be-0ff3-4def-8e69-61787ba2c858"
->EURORADIO.CurrentRBCConnection().MessageIn &lt;- Messages.MESSAGE.TRACK_TO_TRAIN.Message
+>EURORADIO.CurrentRBCConnection().MessageIn &lt;- EURORADIO.InMessageStruct
+{
+    Message =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
     ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION.Message
     {
@@ -2721,6 +2735,8 @@
         M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
         NID_LRBG =&gt; 3090
     }
+},
+    Priority =&gt; EURORADIO.MessagePriorityEnum.Normal
 }</Action><Action
  Guid="acb7646f-f1a4-40a3-904d-dcc6dd6aad26"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.ShuntingInitiatedByDriver.S100</Action></Actions>

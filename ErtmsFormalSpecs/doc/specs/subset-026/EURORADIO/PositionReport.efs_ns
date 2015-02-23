@@ -927,7 +927,9 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
     PositionReport.SendReportDueToLRBGCompliantBGPassed() OR 
     PositionReport.SendReportDueToPositionReportDistanceReached() OR 
     PositionReport.SendReportDueToPositionReportSpecialLocationReached() OR
-    PositionReport.SendReportDueToPositionReportTimeReached()
+    PositionReport.SendReportDueToPositionReportTimeReached()  OR 
+    PositionReport.SendReportDueToNotConsistentMessageReceived()
+
 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -1290,6 +1292,29 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
  Guid="11ec8272-ab63-4022-aa13-66802b914a9b"
 >
 <Expression>Default.MessageTypes.UnScaleDistance ( Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom), Messages.Q_SCALE._1_m_scaleC )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="SendReportDueToNotConsistentMessageReceived"
+ Guid="de36ad35-d4cb-4f6f-a365-d7845868da6f"
+>
+<ReqRef
+ Id="9f9eccce-90aa-4339-8dff-74915b041b83"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="246d55b2-87fc-4d8c-aad2-2ec971429fa5"
+>
+</ReqRef><ReqRef
+ Id="df574230-e054-4feb-b440-4055c7334854"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b5b775ec-ba53-4d9c-9cf8-55e3a244904d"
+>
+</ReqRef><Cases>
+<Case
+ Name="Value"
+ Guid="9e926855-f14e-49a7-8354-bc1e6d3c0db5"
+>
+<Expression>NOT IncomingMessageIsConsistent(CurrentRBCConnection().MessageIn.Message)</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
