@@ -3189,6 +3189,7 @@ SituationM()</Expression>
 <Actions>
 </Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the second category"
  Guid="96cbaf03-9cb3-4e15-8f14-fdbcfc16f7b9"
 >
@@ -3197,14 +3198,22 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="399dd053-ae82-4fc5-a53a-da065e9486cc"
 >
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dd9e0c60-2d1a-441f-8e44-8cbe40ac2caf"
+>
 </ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="e2bcd049-469e-4900-8ee6-50ecd0b9e48d"
 >SecondCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="bfaa3eea-9481-406c-b0d0-c9eb5a989ae3"
+>TrackDescription.ReversingArea.DeleteReversingAreaFromLocation ( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the third category"
  Guid="7b18c75c-f776-40b9-93d6-1cdc80858287"
 >
@@ -3219,7 +3228,9 @@ SituationM()</Expression>
  Guid="f0a20753-bbf6-4c00-8161-ffd95b33608e"
 >ThirdCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="c077d02d-4722-4d20-99dd-4b6ccf2096ff"
+>TrackDescription.ReversingArea.ReversingAreaProfile &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3231,6 +3242,7 @@ SituationM()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the third category"
  Guid="d59ea236-83c8-4e11-9b90-e83cede23436"
 >
@@ -3243,9 +3255,15 @@ SituationM()</Expression>
 <PreConditions>
 <PreCondition
  Guid="0680c6a5-a9ea-4116-9402-3d734f1c81e4"
->ThirdCategory()</PreCondition></PreConditions>
+>ThirdCategory()</PreCondition><PreCondition
+ Guid="d4b214a5-89a9-4e6b-a04d-e20e2f5b16b3"
+>TrackDescription.ReversingArea.ReversingAreaProfile != EMPTY</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="8aed77ee-e5b8-46c8-a4c6-b9ebe023131f"
+>TrackDescription.ReversingArea.ReversingAreaProfile.Speed &lt;- BaseTypes.Speed.NA</Action><Action
+ Guid="dfa0d6fd-7e3c-4ae5-a3b9-0fbedfb8b753"
+>TrackDescription.ReversingArea.ReversingAreaProfile.MaxDistance &lt;- BaseTypes.Distance.Unknown</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the first category"

@@ -15,7 +15,7 @@
  Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="ReversingAreaInformation"
+ Name="ReversingAreaStruct"
  Guid="c3674828-e194-402c-a734-a3f29b2ff94d"
 >
 <ReqRef
@@ -277,7 +277,7 @@
 <Actions>
 <Action
  Guid="c9a4ad75-65e9-41d9-8526-ceb6c810d342"
->ReversingAreaProfile &lt;- ReversingAreaInformation
+>ReversingAreaProfile &lt;- Kernel.TrackDescription.ReversingArea.ReversingAreaStruct
 {
     Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; RVAreaPacket.D_STARTREVERSE, scale =&gt; RVAreaPacket.Q_SCALE ),
     Length =&gt; MessageTypes.QScaleLength ( length =&gt; RVAreaPacket.L_REVERSEAREA, scale =&gt; RVAreaPacket.Q_SCALE ),
@@ -286,10 +286,58 @@
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="DeleteReversingAreaFromLocation"
+ Guid="69d23a05-abc3-46db-8b51-5385b7137ffc"
+>
+<ReqRef
+ Id="90495c82-f890-47b7-9b0f-0c7d08603ea7"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="420740d2-9bda-4f6b-b563-942e9e6485fb"
+>
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7d05d059-fbce-4f2e-9035-74207bfafdcd"
+>
+</ReqRef><Comment>Deletes the reversing area profile beyond the provided location.</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="aLocation"
+ Guid="b468f5cd-d0e4-4601-8d33-43bd462ac941"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Delete reversing area from the given location"
+ Guid="c0a2db0c-fb17-471f-804f-d69076e7345e"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Delete reversing area from the given location"
+ Guid="dd89a391-d6db-4bac-a852-25eeb6eee4bc"
+>
+<PreConditions>
+<PreCondition
+ Guid="7a7f772f-391c-46ae-b299-32807d8f04a7"
+>ReversingAreaProfile != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="605cb642-b824-4661-af62-7896b4c53420"
+>ReversingAreaProfile.Length &lt;- BaseTypes.DistanceToLength(aLocation - ReversingAreaProfile.Distance)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="Kernel.TrackDescription.ReversingArea.ReversingAreaInformation"
+ Type="Kernel.TrackDescription.ReversingArea.ReversingAreaStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  Y="60"
