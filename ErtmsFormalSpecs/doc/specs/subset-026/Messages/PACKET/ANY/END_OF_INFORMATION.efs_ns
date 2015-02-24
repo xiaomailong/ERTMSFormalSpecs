@@ -43,40 +43,40 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="3d01dcbf-dc74-4c07-bae6-120ddea2cdeb"
+ Guid="6084fd06-abc8-4e69-891d-9532889aac1e"
 >
 <Comment>Checks the values in a structure of type END_OF_INFORMATION.Message</Comment>
 <Parameters>
 <Parameter
  Type="END_OF_INFORMATION.Message"
  Name="struct"
- Guid="97883915-e548-4c59-83df-be42f0f2a83a"
+ Guid="c13d8bf5-9962-47f0-96ee-662cd07f60a9"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="90dd7435-34f7-4a2d-8621-218cb9c38f33"
+ Guid="1178eb59-ee56-4d17-b69e-f29e4e7cf9e8"
 >
 <PreConditions>
 <PreCondition
- Guid="e146fbb7-2655-4b8f-ace9-d075e3898ed6"
+ Guid="94b8fc50-4ee7-4e3f-84d1-330778faffa9"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_PACKET invalid"
- Guid="73fea1a9-725c-4b13-a687-da25f735290b"
+ Guid="ba13f8aa-8028-439e-ad1d-c45341f32246"
 >
 <PreConditions>
 <PreCondition
- Guid="fb387205-2355-4160-9d4e-87fcce5cc182"
+ Guid="fae70515-f46a-473c-8ad5-739449971602"
 >struct.NID_PACKET &lt; 0</PreCondition><PreCondition
- Guid="8f2ab5dc-ed6b-441b-ab5a-dcc19edc0ee0"
+ Guid="38333071-dfb9-48af-b815-46d4bae517f0"
 >struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="ae136e0e-8a80-40cd-a3b6-923f47b7d978"
+ Guid="6a4ef06d-3630-4b48-af98-b62c07b6141d"
 >
 <Expression>True</Expression>
 </Case></Cases>

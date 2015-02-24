@@ -263,156 +263,156 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="01714388-78e7-41ce-9b1b-57b5839bdf7a"
+ Guid="2c6371d7-7c41-469a-8443-1eec110e6d12"
 >
 <Comment>Checks the values in a structure of type EUROBALISE.Message</Comment>
 <Parameters>
 <Parameter
  Type="EUROBALISE.Message"
  Name="struct"
- Guid="c496bf0d-04f2-4a3c-b3b4-458b85eb08fc"
+ Guid="17202480-0641-418c-95fc-e9de65070ecd"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="8240af4e-7e34-48f5-a96d-deae17576553"
+ Guid="96a64be8-4f69-4ca0-875a-e3ccd86c19a2"
 >
 <PreConditions>
 <PreCondition
- Guid="1844755e-48cb-48cd-841f-22e27ff9812d"
+ Guid="d30b7b1f-04a9-4906-994b-e338b69e7e4f"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.Q_UPDOWN invalid"
- Guid="c418290f-dcbb-4db5-868e-c0722ea360ab"
+ Guid="0ae57cc8-0b43-4cb4-acb8-105c2887d560"
 >
 <PreConditions>
 <PreCondition
- Guid="f28ad885-080b-4516-8aab-f14582160b97"
+ Guid="0f07ce57-9715-499c-b5ac-5a8d25918e43"
 >struct.Q_UPDOWN &lt; 0</PreCondition><PreCondition
- Guid="a5964ea2-01c0-4cdd-8dd5-c9d0d2e0276d"
+ Guid="09314037-a879-4e35-83f9-9272bd5c2b65"
 >struct.Q_UPDOWN &gt;= 2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.M_VERSION invalid"
- Guid="8ef20a78-6437-4ffe-9737-61a83ba0d570"
+ Guid="b9c59b44-333f-4a30-ae95-80404373c9ca"
 >
 <PreConditions>
 <PreCondition
- Guid="4bd914b1-dfd3-4e98-9901-5ee6a0a7ab9e"
+ Guid="6dafaec3-1112-4740-8eaa-6b270ecb45d8"
 >struct.M_VERSION &lt; 0</PreCondition><PreCondition
- Guid="2c63ac4d-584f-41d5-a3ce-a0efef04421b"
+ Guid="883775b8-740b-42a3-a004-a8c1fb7b7d93"
 >struct.M_VERSION &gt;= 128</PreCondition><PreCondition
- Guid="ccda5a16-5f58-4b97-aef9-312c2ce4848b"
+ Guid="5d6ca147-358b-4888-a025-059bc47e4ff7"
 >struct.M_VERSION &lt; 18
   AND  
 struct.M_VERSION &gt; 31</PreCondition><PreCondition
- Guid="d49ea833-4366-468e-90f9-1d1a022840fd"
+ Guid="3a404ef0-0b85-48b3-9177-81f9ea4c24a7"
 >struct.M_VERSION != 32</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_MEDIA invalid"
- Guid="71e1ead1-8bfd-4eff-bcdb-809f81bfd855"
+ Guid="f732feed-2404-4f02-abdd-d646e1e30552"
 >
 <PreConditions>
 <PreCondition
- Guid="350741a1-c90f-4838-ab5b-19e7e7befdb7"
+ Guid="3a3a1b3a-330a-44a2-9b6c-4a0e057d250c"
 >struct.Q_MEDIA &lt; 0</PreCondition><PreCondition
- Guid="9e85fd46-73bb-4b92-8391-f52951beba17"
+ Guid="21cf13d1-505a-47b6-9aa8-3d5a60a14a8a"
 >struct.Q_MEDIA &gt;= 2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.N_PIG invalid"
- Guid="25ee245f-b0f4-4172-bb6f-98369aa45240"
+ Guid="28802e2a-c89a-4875-b7a2-8576946abae5"
 >
 <PreConditions>
 <PreCondition
- Guid="479878d7-f81b-486d-a0f3-8533c075ac3b"
+ Guid="8f511395-e9fb-4264-a2ad-a243f24ec944"
 >struct.N_PIG &lt; 0</PreCondition><PreCondition
- Guid="913966e2-513b-4a6f-a286-bcf9b30841dd"
+ Guid="b6ef0d49-4903-4734-8e19-9697ccc3f414"
 >struct.N_PIG &gt;= 8</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.N_TOTAL invalid"
- Guid="e3a404ec-cedb-4e51-98ae-5474c4fd65ba"
+ Guid="3302b57e-ecc6-4fd7-afa1-2cef7a81773c"
 >
 <PreConditions>
 <PreCondition
- Guid="c863fe40-cfe0-4cb0-8cdf-8bafc91f7cba"
+ Guid="f29a4b86-20ed-4619-b96a-997e975d8c69"
 >struct.N_TOTAL &lt; 0</PreCondition><PreCondition
- Guid="0ffb7088-2787-4f91-81c2-583c47247f88"
+ Guid="4d81fb98-a349-4892-a840-eaa6cf692160"
 >struct.N_TOTAL &gt;= 8</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.M_DUP invalid"
- Guid="41d0145e-509a-49ab-94d5-99c71293522a"
+ Guid="4c5171b4-05c7-49aa-861f-2cba1707ad64"
 >
 <PreConditions>
 <PreCondition
- Guid="4e2d59dc-9629-4d57-83bd-7d9443daf059"
+ Guid="fcb12772-f510-450a-a1b2-5f3531b87e8c"
 >struct.M_DUP &lt; 0</PreCondition><PreCondition
- Guid="13ac649e-f68c-41b2-ab3a-cf6170fbb302"
+ Guid="31fe00d2-92b7-4ef2-bee7-61ee0e656711"
 >struct.M_DUP &gt;= 4</PreCondition><PreCondition
- Guid="88dd2bf7-3530-4486-b0e7-aaa0b53a770b"
+ Guid="54ef748c-e2dd-43b3-bfff-ed7eaf59f424"
 >struct.M_DUP != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.M_MCOUNT invalid"
- Guid="674c252d-19dd-4c01-96c2-3cc13e80aec2"
+ Guid="913a8243-f4e6-4a1e-8f2e-2138e024169e"
 >
 <PreConditions>
 <PreCondition
- Guid="d05541d9-10c1-4579-bb02-f8168df86571"
+ Guid="103e7943-8451-4ccb-a167-2ab475817037"
 >struct.M_MCOUNT &lt; 0</PreCondition><PreCondition
- Guid="d79fd924-47ee-4610-8dd4-8d7ad6ab54ce"
+ Guid="95b40d3d-7a0b-46a1-8be2-2b7a127d6e99"
 >struct.M_MCOUNT &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NID_C invalid"
- Guid="ad7378c3-aba1-4dea-8a22-ac8f9c35edf0"
+ Guid="21927297-cf96-4a38-9d7a-eaaf36c49b36"
 >
 <PreConditions>
 <PreCondition
- Guid="f181dc54-69a8-4701-9384-6598a7e6891f"
+ Guid="9c8b0a3b-ca73-4efe-b216-d69726c4b959"
 >struct.NID_C &lt; 0</PreCondition><PreCondition
- Guid="41113cd5-81fe-4eea-b92a-0c19754cf0d8"
+ Guid="6e53470f-a631-4210-95a9-dc87be28a208"
 >struct.NID_C &gt;= 1024</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NID_BG invalid"
- Guid="4ca159cf-8bfb-4c0c-aa8e-fd1866aeb0a1"
+ Guid="d2b8c066-d477-48c3-a3e8-d52b4dd6ae77"
 >
 <PreConditions>
 <PreCondition
- Guid="dd67213f-1e89-4fcd-ab28-687e282e3b43"
+ Guid="80bda62d-7b96-40e2-a199-c31a0c191dc0"
 >struct.NID_BG &lt; 0</PreCondition><PreCondition
- Guid="7df66245-9801-44fb-900f-58ee9b33c3d2"
+ Guid="64abe22c-0ff8-43e9-9850-247c7b0db13a"
 >struct.NID_BG &gt;= 16384</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_LINK invalid"
- Guid="398ae5cf-4683-43a2-9e22-84bcbb9fc69f"
+ Guid="3ba4cbd1-61e6-4b38-aab7-8b96b08e665f"
 >
 <PreConditions>
 <PreCondition
- Guid="6459556f-94a9-4258-9ee6-7d57c1c27911"
+ Guid="2604d805-6886-40fb-a8b4-6455298ed249"
 >struct.Q_LINK &lt; 0</PreCondition><PreCondition
- Guid="cf79de59-8148-4e50-b71c-1d568c760ae0"
+ Guid="04c3cfc2-48e1-45ee-a51e-4d3a60e345ae"
 >struct.Q_LINK &gt;= 2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Sequence1 invalid"
- Guid="61d3af93-1a80-4140-a481-ca0512971ef4"
+ Guid="dd979f69-ec27-4999-bae3-1e886d4600ce"
 >
 <PreConditions>
 <PreCondition
- Guid="01675716-43c4-4f7f-ae1b-20a4dcd593bf"
+ Guid="c7fb8989-b72b-4f0d-a9c3-b51569804f50"
 >THERE_IS X IN struct.Sequence1 | NOT EUROBALISE.SubStructure1ValuesCorrect(X)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="5df68831-c7c3-407d-b31a-d15435c33c2e"
+ Guid="b14e1187-c8d1-4234-8566-9addbe590e91"
 >
 <Expression>True</Expression>
 </Case></Cases>
@@ -420,38 +420,38 @@ struct.M_VERSION &gt; 31</PreCondition><PreCondition
  Type="Boolean"
  Default=""
  Name="SubStructure1ValuesCorrect"
- Guid="b7a50d76-7cc2-4841-a9ff-3e5d52d291c7"
+ Guid="c4da16cc-515f-4b85-9ac2-9e985771bc3d"
 >
 <Comment>Checks the values in a structure of type EUROBALISE.SubStructure1</Comment>
 <Parameters>
 <Parameter
  Type="EUROBALISE.SubStructure1"
  Name="struct"
- Guid="e8e43d7b-83c2-4222-8a2b-43adb3505f87"
+ Guid="1afd167a-4130-42b4-a1d0-9f86c65ec8f9"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SubStructure1 empty"
- Guid="34e9eda9-77c3-48f8-a7ae-b68fba5c0223"
+ Guid="64ebb790-3ed0-4a35-a975-fbfa5a6897f1"
 >
 <PreConditions>
 <PreCondition
- Guid="3c363c2a-cfdd-4433-923b-525c3e49aa6e"
+ Guid="03356b33-65b3-4986-9e4d-4afc4526742f"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="TRACK_TO_TRAIN invalid"
- Guid="57ce925e-3687-47dd-b730-de6583500129"
+ Guid="2a59ba94-043b-477e-83fe-fc4b811c3d3f"
 >
 <PreConditions>
 <PreCondition
- Guid="bff5addc-b70e-4c08-85bd-8a570d4b2f6e"
+ Guid="e56a11b7-f1a5-4b54-85c7-a0ce9b833da6"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.MessageValuesCorrect(struct.TRACK_TO_TRAIN)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="9c893187-21b6-4e82-84ba-2dce24feb8f5"
+ Guid="c75b30e6-83a1-436e-9942-236800aeca1a"
 >
 <Expression>True</Expression>
 </Case></Cases>

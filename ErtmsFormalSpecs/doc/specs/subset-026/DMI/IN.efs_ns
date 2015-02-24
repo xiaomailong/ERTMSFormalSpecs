@@ -101,10 +101,8 @@
 >THIS.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="751d7670-6993-472a-85fc-cb7e0ad32257"
->Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="3e042315-ce85-4d07-bdd0-fbd05fa15ce1"
->Kernel.Level.Value &lt;- Level</Action><Action
+>Kernel.SetLevel(Level)</Action><Action
  Guid="5d557402-1c5e-4bba-9303-13987824e53f"
 >THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
 </RuleCondition></Conditions>

@@ -151,132 +151,132 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="ce122282-b157-4e32-855a-27802617576d"
+ Guid="24716584-8d30-4381-8aa2-249d2ab73453"
 >
 <Comment>Checks the values in a structure of type EOLM_PACKET.Message</Comment>
 <Parameters>
 <Parameter
  Type="EOLM_PACKET.Message"
  Name="struct"
- Guid="29f94594-6b63-4dd1-94f7-c60c233afbb6"
+ Guid="669cf1c9-7589-4bf5-b083-3c905ef3fcd6"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="862058a6-48e0-4377-a040-0d1ec6194f92"
+ Guid="3ceb7809-faeb-4bb8-bc98-a09529353c2d"
 >
 <PreConditions>
 <PreCondition
- Guid="6293f883-fcaf-46d8-ac4a-83f0a59297fc"
+ Guid="dd7b1b8a-d2cd-4028-b2bb-5a532639ec99"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_PACKET invalid"
- Guid="5e99cdaf-cf23-42e5-874d-99e378bd6cda"
+ Guid="425b1ae1-84b3-4c38-88af-c02d6ed3a9f0"
 >
 <PreConditions>
 <PreCondition
- Guid="0750039d-6f15-40b9-bbac-a5281a4474a7"
+ Guid="bbf41f16-e66a-4073-81bb-d29755a94ce9"
 >struct.NID_PACKET &lt; 0</PreCondition><PreCondition
- Guid="62e4a0a3-f725-46ec-a324-98e5f51e3146"
+ Guid="98ae0a93-fc0b-4d85-b0b7-184ef1ea81f8"
 >struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_DIR invalid"
- Guid="9bb5dac9-ecf0-4351-a9ed-bde63f4577d4"
+ Guid="36d55c6d-8eed-4011-b654-f78be430d01b"
 >
 <PreConditions>
 <PreCondition
- Guid="1bdc2c44-9bc4-4993-aa18-a69c2d295eb3"
+ Guid="49c24801-c97b-499d-8727-2657bc86f9b9"
 >struct.Q_DIR &lt; 0</PreCondition><PreCondition
- Guid="0f7b20c9-cea6-41dd-990b-c4542fe1d2bd"
+ Guid="a68549af-25dd-41e0-9d8b-ddab4da3588d"
 >struct.Q_DIR &gt;= 4</PreCondition><PreCondition
- Guid="c1f72ecf-80c0-4d0d-b401-7f9a9ca92c75"
+ Guid="b1325e55-0c57-4d3d-b143-4ea27bb62de0"
 >struct.Q_DIR != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_PACKET invalid"
- Guid="ee6d3c9a-2487-4287-9ce4-979212339471"
+ Guid="2321effa-7e42-4471-bb3a-46e4c8611108"
 >
 <PreConditions>
 <PreCondition
- Guid="7a16c05d-57d3-4222-b1e3-34b4d5893993"
+ Guid="aa265d36-6c7d-4df6-80a5-57925ab2e124"
 >struct.L_PACKET &lt; 0</PreCondition><PreCondition
- Guid="34f31452-f6c1-4fb0-a6f5-ec5f42b06d26"
+ Guid="0f6c6a4a-d517-42ad-9dbd-c5696f28d975"
 >struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_SCALE invalid"
- Guid="999372cf-1000-48bf-a724-d4df77dd66d5"
+ Guid="0b0d457b-802c-40b2-889b-771ba9be4b28"
 >
 <PreConditions>
 <PreCondition
- Guid="10ac8b82-303a-4311-a183-766dd8f794ac"
+ Guid="798c8743-3d92-4ee8-ac0b-8a25c76f4793"
 >struct.Q_SCALE &lt; 0</PreCondition><PreCondition
- Guid="6f09f4eb-e8bb-48e9-ba8b-0fa264cc01b4"
+ Guid="65d07e6b-ee03-4282-90bc-b63472270df5"
 >struct.Q_SCALE &gt;= 4</PreCondition><PreCondition
- Guid="6d0c89b6-6dda-4106-81b8-9e404bc78520"
+ Guid="220e9266-f865-407a-b16e-ff056f011e6f"
 >struct.Q_SCALE != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NID_LOOP invalid"
- Guid="72eaa40f-ba7d-4765-88ad-6064cd569d4a"
+ Guid="7b6b1cec-cf3d-494a-9f7e-7ca2939666f0"
 >
 <PreConditions>
 <PreCondition
- Guid="e1f7f909-75f8-486c-a6ec-4f63c38c4418"
+ Guid="f9f030a5-cca1-41ab-9129-e08208f99c8f"
 >struct.NID_LOOP &lt; 0</PreCondition><PreCondition
- Guid="685faf63-37e5-40ab-8438-0ef18c5a9901"
+ Guid="61757013-e514-4728-952c-c2a2afdb3b8f"
 >struct.NID_LOOP &gt;= 16384</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.D_LOOP invalid"
- Guid="8b4781b7-327d-4ca3-a494-d70f7cef7e9d"
+ Guid="92c7fb14-92dd-438f-b67f-a0954612e22c"
 >
 <PreConditions>
 <PreCondition
- Guid="7d676225-1190-4870-aa26-8cba66da3f11"
+ Guid="afc186c1-73ab-4920-8a95-e20e6c9d703c"
 >struct.D_LOOP &lt; 0</PreCondition><PreCondition
- Guid="47108b98-c075-4809-a865-5b06f720baf0"
+ Guid="e62c1701-e8da-41d0-a161-0e0ebee45840"
 >struct.D_LOOP &gt;= 32768</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_LOOP invalid"
- Guid="c87cffdb-0517-412c-9b2c-afb7cab84c2a"
+ Guid="7e78a36a-afdb-4cc8-9ed2-96b680bde34e"
 >
 <PreConditions>
 <PreCondition
- Guid="1627010c-c77f-4067-b653-5493511e83bd"
+ Guid="b4181971-7561-470e-a888-0f2cac4f20ea"
 >struct.L_LOOP &lt; 0</PreCondition><PreCondition
- Guid="cdc9ada0-27f2-4c0f-9465-bf5748f5724a"
+ Guid="b2aa89ed-f116-4106-b24d-c44dd2fce44b"
 >struct.L_LOOP &gt;= 32768</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_LOOPDIR invalid"
- Guid="c2458a63-f627-48c9-bb71-a6fee1d30ece"
+ Guid="5661ae19-14aa-4e26-9e49-f7e8100e2200"
 >
 <PreConditions>
 <PreCondition
- Guid="b8f9ddaf-8e3d-4458-82ae-0bd123a55032"
+ Guid="f20331e4-27f1-4769-8a40-0461d122ae84"
 >struct.Q_LOOPDIR &lt; 0</PreCondition><PreCondition
- Guid="369bc179-5265-47cd-b60d-cbe0f37c580f"
+ Guid="9ae47937-0b8b-4764-ac0d-945bb9307d73"
 >struct.Q_LOOPDIR &gt;= 2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_SSCODE invalid"
- Guid="3bc31409-7d6b-4223-9900-62cad9283872"
+ Guid="5214fac1-49c7-4abc-9c24-c4637d6e50d3"
 >
 <PreConditions>
 <PreCondition
- Guid="c02070a3-7be6-47e0-8c8b-bf93ee1bc532"
+ Guid="0684834a-6bc6-4165-8d9c-95d5b8282918"
 >struct.Q_SSCODE &lt; 0</PreCondition><PreCondition
- Guid="dc268920-3153-44ce-b7a1-0b1703525417"
+ Guid="27aceb88-29be-4ba4-abf1-b66fd315d428"
 >struct.Q_SSCODE &gt;= 16</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="dc6987a4-a167-40d0-94cc-45ac68c0e08f"
+ Guid="d81c21f9-df77-487c-a8de-28749f1ee042"
 >
 <Expression>True</Expression>
 </Case></Cases>
