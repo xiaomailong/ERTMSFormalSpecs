@@ -455,13 +455,11 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 <Actions>
 <Action
  Guid="8fcea4c8-c27d-4f60-9427-0db970b3911b"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; LevelDataStruct{
+>Kernel.SetLevel(LevelDataStruct{
         NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
         Value =&gt; Default.Level.L1
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action></Actions>
+    }
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -675,14 +673,12 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 >Kernel.Level.Value.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="c23b5fc5-f7d9-43d6-be8d-8b1aa6c8bad0"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; LevelDataStruct{
+ Guid="446c01f7-8dd4-4df3-99a4-e2df71f6a00a"
+>Kernel.SetLevel(LevelDataStruct{
         NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
         Value =&gt; Default.Level.L1
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action></Actions>
+    }
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -908,14 +904,12 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 >Kernel.Level.Value.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="c1336c53-104c-4179-b106-61e11e9798e1"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; LevelDataStruct{
+ Guid="da425322-69a6-4027-8ca8-31a3e9c3feaf"
+>Kernel.SetLevel(LevelDataStruct{
         NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
         Value =&gt; Default.Level.L1
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action></Actions>
+    }
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1123,14 +1117,12 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 >Kernel.Level.Value.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="e962e589-4561-4633-9d18-f6cdedbb891d"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; LevelDataStruct{
+ Guid="878f7216-f2de-4656-864d-450091487cfd"
+>Kernel.SetLevel(LevelDataStruct{
         NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
         Value =&gt; Default.Level.L1
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action></Actions>
+    }
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1356,14 +1348,12 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 >Kernel.Level.Value.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="4b820380-18a5-45d5-8894-0e548048395a"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; LevelDataStruct{
+ Guid="43230c0f-05d2-4aaf-9515-863807313f64"
+>Kernel.SetLevel(LevelDataStruct{
         NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
         Value =&gt; Default.Level.L1
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action></Actions>
+    }
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1589,14 +1579,12 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 >Kernel.Level.Value.Value != Level.L0</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="aaf5fbc0-c384-45d1-b4c4-447ab0f5b0b0"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; LevelDataStruct{
+ Guid="769b79ad-da69-49bd-8eb7-41deb2ac1ead"
+>Kernel.SetLevel(LevelDataStruct{
         NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
         Value =&gt; Default.Level.L0
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action></Actions>
+    }
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1736,14 +1724,12 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 >Kernel.Level.Value.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="5613d016-18df-45c1-b93e-9d6089d9df29"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; LevelDataStruct{
+ Guid="94685606-5d4a-4db4-8b38-3d5e64bd1781"
+>Kernel.SetLevel(LevelDataStruct{
         NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
         Value =&gt; Default.Level.L1
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action></Actions>
+    }
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2548,14 +2534,12 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 >Kernel.Level.Value.Value != Level.LNTC</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="f452b5aa-454a-414c-9ae8-52726136f223"
->Kernel.Level &lt;- Kernel.LevelData{
-    Value =&gt; LevelDataStruct{
+ Guid="ceee01fd-03ce-46ee-8d88-9cfe43ee6cc1"
+>Kernel.SetLevel(LevelDataStruct{
         NTC =&gt; 1,
         Value =&gt; Default.Level.LNTC
-    },
-    DataState =&gt; Default.DataState.Valid
-}</Action></Actions>
+    }
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

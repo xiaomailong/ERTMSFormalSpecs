@@ -1602,6 +1602,16 @@ NOT
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="568def3c-1745-40f9-a486-2b01b6c5244a"
 >
+</ReqRef><ReqRef
+ Id="2acfcc15-b52e-4162-a72e-a4ff1e9f43e1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b43825ac-ede4-4cfb-894b-24bc74886dc6"
+>
+</ReqRef><ReqRef
+ Id="da9f0886-9eda-4e06-91e4-41094a7a488f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="49268431-7e68-45c1-8abc-d59a62754742"
+>
 </ReqRef><Comment>Checks whether any of the variables in the message contain incorrect or spare values.</Comment>
 <Cases>
 <Case
@@ -4907,6 +4917,16 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="de8c089e-8198-48d5-b244-6f74e528d741"
 >
+</ReqRef><ReqRef
+ Id="2acfcc15-b52e-4162-a72e-a4ff1e9f43e1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="da5f50fe-5158-4042-86fa-f252ed1468a6"
+>
+</ReqRef><ReqRef
+ Id="da9f0886-9eda-4e06-91e4-41094a7a488f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d84588ba-98c7-4879-94ab-21a2ef019cbb"
+>
 </ReqRef><Comment>Check the contents of the message before the contents are handled by the on-board.</Comment>
 <Parameters>
 <Parameter
@@ -5081,6 +5101,117 @@ ON CurrentBaliseGroup | BaliseTelegramToBeHandled ( X )</Action></Actions>
 <Action
  Guid="dcc88356-9b44-4c14-908e-20a1f05c099c"
 >Kernel.HandlingOfAcceptedAndStoredInformation.LinkingReactionAppliedServiceBrake &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Report error to the RBC"
+ Guid="cf3d4157-a6f6-4ed5-9b82-07997153d298"
+>
+<ReqRef
+ Id="4aa64d47-8749-4bf5-b24e-7831ff609718"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8c15ceb3-2d33-4c9b-85e5-149c146ea5e2"
+>
+</ReqRef><ReqRef
+ Id="a3885eb8-93e0-4d9c-8084-7fb3d864615a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c4598a32-0452-4045-b9bf-ceb43a8e1aa9"
+>
+</ReqRef><Comment>Report the consistency error to the RBC, if there is a connection.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Send position report with error information"
+ Guid="812b290e-0841-41bd-97e2-01729a2763f7"
+>
+<PreConditions>
+<PreCondition
+ Guid="1ab6b030-5011-4880-9827-8285d95422cf"
+>EURORADIO.CurrentRBCConnection().ConnectionState in EURORADIO.CurrentRBCConnection().ConnectionStateSM.Connected</PreCondition><PreCondition
+ Guid="e9f371b8-3016-4d71-afad-73cc64ced5e8"
+>(FIRST X IN CurrentBaliseGroup).Telegram.Q_LINK == Messages.Q_LINK.Unlinked
+  OR  
+LinkingUsed</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Initialize position report"
+ Guid="eb237159-2237-4fdb-989b-f6e2296cac0e"
+>
+<Comment>First, initialize the position report that will contain the error report.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Initialize position report"
+ Guid="59ad9973-7bce-4aca-b622-813ffc610397"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="cd4fe6d9-0eee-4641-b59c-89f956bf7b03"
+>EURORADIO.CurrentRBCConnection().SendPositionReport()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Add error report"
+ Guid="56333c3f-2592-43a6-ac62-8d7284716de7"
+>
+<Comment>Add the error report to the position report.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Linked BG"
+ Guid="65d44a0f-99db-4d1b-923f-f4c158dfe2c1"
+>
+<Comment>Linked BG.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="1b712eb9-748d-46bf-8c8d-c27d38cd9233"
+>(FIRST X IN CurrentBaliseGroup).Telegram.Q_LINK == Messages.Q_LINK.Linked</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a799a8d5-87d6-44ca-89ee-51fdaf8c1bda"
+>INSERT Messages.MESSAGE.TRAIN_TO_TRACK.TRAIN_POSITION_REPORT.SubStructure1{
+    ERROR_REPORTING =&gt; Messages.PACKET.TRAIN_TO_TRACK.ERROR_REPORTING.Message{
+        NID_PACKET =&gt; 4,
+        L_PACKET =&gt; 0,
+        M_ERROR =&gt; Messages.M_ERROR.Linked_balise_group__message_consistency_error_ref__3_16_2_4_1_4
+    }
+}
+ IN EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.Sequence1</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Unlinked BG"
+ Guid="4daecb81-7538-4b24-adeb-8ef97d3f5496"
+>
+<Comment>Unlinked BG.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="65edcb1c-73ff-444e-a73a-95910c623c13"
+>(FIRST X IN CurrentBaliseGroup).Telegram.Q_LINK == Messages.Q_LINK.Unlinked</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="799a57f6-ac42-4626-a3a5-fd1e9fba2324"
+>
+INSERT Messages.MESSAGE.TRAIN_TO_TRACK.TRAIN_POSITION_REPORT.SubStructure1{
+    ERROR_REPORTING =&gt; Messages.PACKET.TRAIN_TO_TRACK.ERROR_REPORTING.Message{
+        NID_PACKET =&gt; 4,
+        L_PACKET =&gt; 0,
+        M_ERROR =&gt; Messages.M_ERROR.Unlinked_balise_group__message_consistency_error__ref__3_16_2_5
+    }
+}
+ IN EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.Sequence1</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition

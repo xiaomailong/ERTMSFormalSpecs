@@ -1133,7 +1133,7 @@ Packet.Sequence1</Action></Actions>
 <Actions>
 <Action
  Guid="097a357d-a5c2-47af-a6ac-050fe94ed1ed"
->Kernel.Level.Value &lt;- LevelTransitionToProcess.TRLevel</Action><Action
+>Kernel.SetLevel(LevelTransitionToProcess.TRLevel)</Action><Action
  Guid="0ddeb99e-7c2c-4f4c-a6c4-63b006cbc5e0"
 >EURORADIO.PositionReport.PositionReportEventsTracker.Level &lt;- LevelTransitionOrder.CurrentLevel.Value</Action></Actions>
 </RuleCondition></Conditions>

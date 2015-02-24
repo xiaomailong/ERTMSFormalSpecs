@@ -1296,6 +1296,9 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
 </Function><Function
  Type="Boolean"
  Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
  Name="SendReportDueToNotConsistentMessageReceived"
  Guid="de36ad35-d4cb-4f6f-a365-d7845868da6f"
 >
@@ -1309,12 +1312,13 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b5b775ec-ba53-4d9c-9cf8-55e3a244904d"
 >
-</ReqRef><Cases>
+</ReqRef><Comment>Indicates if a position report has to be sent due to a not consistent message being received from the RBC.</Comment>
+<Cases>
 <Case
  Name="Value"
  Guid="9e926855-f14e-49a7-8354-bc1e6d3c0db5"
 >
-<Expression>NOT IncomingMessageIsConsistent(CurrentRBCConnection().MessageIn.Message)</Expression>
+<Expression>NOT IncomingMessageIsConsistent(CurrentRBCConnection().MessageIn)</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>

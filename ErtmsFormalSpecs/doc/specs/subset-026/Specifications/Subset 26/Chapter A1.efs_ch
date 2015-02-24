@@ -1828,6 +1828,29 @@ The non-matching elements defined in Subset-027 are:
  Guid="cce000dd-7997-493f-83ba-75d8a8d10ac8"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.21.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="Implemented"
+ version="3.0.0"
+ Name=""
+ Guid="02322d02-1657-4293-b17b-850ddc3cdbf7"
+>Paragraph 3.16.3.5.3 states that &quot;The acknowledgement message shall refer to the identity of the concerned message sent by the RBC.&quot;
+The only field in an Acknowledgement message as defined in 8.6.7 is the second T_TRAIN.
+Since the value of T_TRAIN must increase (3.16.3.3.3) every time a message is sent to the train, we assume that the identification of the acknowledged message is done only with the T_TRAIN field.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="0a6e62d7-4d50-40b4-a8c2-613ef13d0136"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="b72fd384-4f9f-4bae-9766-65fd880588c3"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference

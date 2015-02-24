@@ -217,6 +217,11 @@
  Name="RadioMessageConsistencyError"
  Guid="bf743a0f-d096-463c-a36a-658f55eab25f"
 >
+</EnumValue><EnumValue
+ Value=""
+ Name="NoRadioMessageInDueTime"
+ Guid="25562908-959f-403c-8c52-1eaa49012735"
+>
 </EnumValue></Values>
 </Enum></Enumerations>
 <Structures>
@@ -11749,6 +11754,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Y="90"
  Width="100"
  Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="AddSBCommand"
  Guid="5a495d62-a2ef-479c-a3b7-11df30c8c67c"
 >
@@ -11762,12 +11769,14 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Add if not present"
  Guid="ec11b3ba-2c81-42d4-9855-519dca1f21cd"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Add if not present"
  Guid="5884d6e5-3bb9-42f2-8e7c-fd5b7d5f55be"
 >
@@ -11926,6 +11935,83 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 <Action
  Guid="70a4411a-1087-4c86-b65c-3de7854e4391"
 >HandleModeChange &lt;- HandleModeChangeSM.NoProcedure</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="140"
+ Y="30"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SetLevel"
+ Guid="dbac2605-aa9d-42dd-b61e-19e58d0287ad"
+>
+<ReqRef
+ Id="42342bff-4561-490e-beae-73b88476afe8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b63c25c1-1154-4f2d-a4fd-9706b0d1959b"
+>
+</ReqRef><ReqRef
+ Id="60e39a2f-4380-44e7-bf85-7142748b200f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="215e7df6-6218-4933-9f84-37dc8e75d2a2"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="LevelDataStruct"
+ Name="aLevel"
+ Guid="de7a8125-2f80-45ef-9ff1-b7e2a5595ddc"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Set level"
+ Guid="98ff2195-8db0-4998-9699-9d135760690d"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Set level"
+ Guid="0b3d3afe-a8d9-422f-9db8-718f8c1048cb"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="e438255e-3eeb-464f-959f-703a2a268a8f"
+>Level.Value &lt;- aLevel</Action><Action
+ Guid="508ecb41-3187-4b72-8619-867d2e337566"
+>Level &lt;- LevelData{
+    Value =&gt; aLevel,
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Keep time for RBC"
+ Guid="cd823a0a-8066-4898-8c6a-d57b4509d03c"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Keep time for RBC"
+ Guid="e12810e9-3ea4-4892-b5c5-32b51cb2c2b0"
+>
+<PreConditions>
+<PreCondition
+ Guid="ebe9fcf2-d790-42ff-ac5a-5f40c6b79e63"
+>EURORADIO.CurrentRBCConnection().ConnectionState not in EURORADIO.CurrentRBCConnection().ConnectionStateSM.Connected</PreCondition><PreCondition
+ Guid="62e62821-0008-42f2-8610-1ac69bb9d51c"
+>aLevel.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="402e6d77-6da8-4bb4-8707-384237982f18"
+>EURORADIO.CurrentRBCConnection().OnboardReference_MessageTimer &lt;- DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
