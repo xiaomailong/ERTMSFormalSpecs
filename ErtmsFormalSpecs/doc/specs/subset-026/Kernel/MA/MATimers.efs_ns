@@ -260,6 +260,10 @@ X.TimeOut.TimerStart + X.TimeOut.TimeOut &lt; DateAndTime.CurrentTime)</PreCondi
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="130"
+ Y="310"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="HandleTimers"
@@ -294,6 +298,8 @@ X.TimeOut.TimerStart + X.TimeOut.TimeOut &lt; DateAndTime.CurrentTime)</PreCondi
 <PreCondition
  Guid="e2bcedd1-3423-45d1-99d3-ad82884d61fb"
 >MA != EMPTY
+  AND
+MA.TargetSpeed != 0.0
   AND
 LOATimerStart + MA.TargetSpeedTimeOut &lt;= DateAndTime.CurrentTime</PreCondition></PreConditions>
 <Actions>

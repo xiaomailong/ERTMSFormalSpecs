@@ -11,6 +11,7 @@
 <Structures>
 <Structure
  Default=""
+ X="220"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -75,7 +76,7 @@
 <Comment>The collection of axle load speed restrictions.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="220"
+ X="610"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -118,8 +119,8 @@
 >
 </ReqRef></StructureElement></Structure><Structure
  Default=""
- X="110"
- Y="60"
+ X="440"
+ Y="100"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -217,8 +218,7 @@
  TypeName="Kernel.TrackDescription.AxleLoad.AxleLoadValue"
  MaxSize="20"
  Default="[]"
- X="220"
- Y="60"
+ X="440"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -235,7 +235,8 @@
  TypeName="Kernel.TrackDescription.AxleLoad.AxleLoad"
  MaxSize="30"
  Default="[]"
- X="110"
+ X="220"
+ Y="100"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -466,8 +467,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="440"
- Y="180"
+ X="220"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -578,8 +579,8 @@ USING X IN
 </Function><Function
  Type="Default.BaseTypes.Length"
  Default=""
- X="660"
- Y="180"
+ X="110"
+ Y="240"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -623,7 +624,7 @@ USING X IN
 </Function></Functions>
 <Procedures>
 <Procedure
- Y="300"
+ Y="350"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -713,7 +714,7 @@ USING X IN
 </Rule></Rules>
 </Procedure><Procedure
  X="110"
- Y="300"
+ Y="350"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -770,7 +771,7 @@ IN
 </Rule></Rules>
 </Procedure><Procedure
  X="220"
- Y="300"
+ Y="350"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -903,6 +904,8 @@ ON
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ X="330"
+ Y="350"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -971,7 +974,6 @@ ON
     ALs =&gt; []
 }"
  VariableMode="Internal"
- Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -998,7 +1000,7 @@ ON
 <Rules>
 <Rule
  Priority="Processing"
- Y="360"
+ Y="450"
  Width="100"
  Height="50"
  Implemented="TRUE"
