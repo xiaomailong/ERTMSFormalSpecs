@@ -22,6 +22,7 @@ using DataDictionary.Variables;
 using GUI.DataDictionaryView;
 using Utils;
 using WeifenLuo.WinFormsUI.Docking;
+using System.Collections.Generic;
 
 namespace GUI.TestRunnerView
 {
@@ -44,11 +45,6 @@ namespace GUI.TestRunnerView
             public ExplainTreeNode(ExplanationPart explanation)
             {
                 Explanation = explanation;
-
-                if (explanation != null)
-                {
-                    Text = explanation.Message;
-                }
             }
 
             /// <summary>
@@ -75,6 +71,42 @@ namespace GUI.TestRunnerView
                     }
                     ExplainBox.explainRichTextBox.Instance = Explanation;
                     ExplainBox.explainRichTextBox.Text = Explanation.Message;
+                }
+            }
+
+            /// <summary>
+            /// Updates the node text according to the explanation
+            /// </summary>
+            public void UpdateText()
+            {
+                if (Explanation != null)
+                {
+                    Text = Explanation.Message;
+                }
+            }
+
+            /// <summary>
+            /// Expands the tree nodes which correspond to the path provided
+            /// </summary>
+            /// <param name="path"></param>
+            /// <param name="index">The current position in the path</param>
+            public void ShowPath(List<ExplanationPart> path, int index)
+            {
+                if (index < path.Count)
+                {
+                    if (Explanation == path[index])
+                    {
+                        Expand();
+                        foreach (ExplainTreeNode subNode in Nodes)
+                        {
+                            subNode.ShowPath(path, index + 1);
+                        }
+
+                        if (index == path.Count - 1)
+                        {
+                            TreeView.SelectedNode = this;
+                        }
+                    }
                 }
             }
         }
@@ -120,53 +152,28 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Indicates that all nodes have been built in the tree view
-        /// </summary>
-        private bool AllNodesAreBuilt{ get; set; }
-
-        /// <summary>
-        /// Builds all nodes of the treeview
-        /// </summary>
-        private void BuildAllNodes()
-        {
-            if (!AllNodesAreBuilt)
-            {
-                explainTreeView.Nodes.Clear();
-                if (Explanation != null)
-                {
-                    ExplainTreeNode node = new ExplainTreeNode(Explanation);
-                    innerSetExplanation(Explanation, node, -1);
-                    explainTreeView.Nodes.Add(node);
-                }
-
-                AllNodesAreBuilt = true;
-            }
-        }
-
-        /// <summary>
         /// Inner primitive to expand nodes, based on a tree node
         /// </summary>
-        /// <param name="node"></param>
+        /// <param name="explanation"></param>
         /// <param name="variable"></param>
-        private void InnerExpandAndShowVariable(ExplainTreeNode node, Variable variable)
+        /// <param name="path"></param>
+        private void InnerExpandAndShowVariable(ExplanationPart explanation, Variable variable, List<ExplanationPart> path)
         {
-            Change change = node.Explanation.Change;
+            path.Add(explanation);
+            Change change = explanation.Change;
             if (change != null && change.ImpactVariable(variable))
             {
-                explainTreeView.SelectedNode = node;
-
-                TreeNode current = node;
-                while (current != null)
+                foreach (ExplainTreeNode node in explainTreeView.Nodes)
                 {
-                    current.Expand();
-                    current = current.Parent;
+                    node.ShowPath(path, 0);
                 }
             }
 
-            foreach (ExplainTreeNode subNode in node.Nodes)
+            foreach (ExplanationPart subExplanation in explanation.SubExplanations)
             {
-                InnerExpandAndShowVariable(subNode, variable);
+                InnerExpandAndShowVariable(subExplanation, variable, path);
             }
+            path.Remove(explanation);
         }
 
         /// <summary>
@@ -176,28 +183,27 @@ namespace GUI.TestRunnerView
         private void ExpandAndShowVariable(Variable variable)
         {
             // Build the complete tree
-            BuildAllNodes();
             explainTreeView.CollapseAll();
 
-            // Expand the node which need be
-            foreach (ExplainTreeNode node in explainTreeView.Nodes)
-            {
-                InnerExpandAndShowVariable(node, variable);
-            }
+            List<ExplanationPart> path = new List<ExplanationPart>();
+            InnerExpandAndShowVariable(Explanation, variable, path);
 
             explainTreeView.Focus();
         }
 
         private void explainTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
-            if (!AllNodesAreBuilt)
+            ExplainTreeNode node = e.Node as ExplainTreeNode;
+
+            foreach (ExplainTreeNode subNode in node.Nodes)
             {
-                ExplainTreeNode node = e.Node as ExplainTreeNode;
-                foreach (ExplainTreeNode subNode in node.Nodes)
-                {
-                    subNode.Nodes.Clear();
-                    innerSetExplanation(subNode.Explanation, subNode, 1);
-                }
+                subNode.Nodes.Clear();
+                innerSetExplanation(subNode.Explanation, subNode, 1);
+            }
+
+            foreach (ExplainTreeNode subNode in node.Nodes)
+            {
+                subNode.UpdateText();
             }
         }
 
@@ -209,7 +215,7 @@ namespace GUI.TestRunnerView
         /// <param param name="level">the level in which the explanation is inserted</param>
         private void innerSetExplanation(ExplanationPart part, ExplainTreeNode node, int level)
         {
-            if (part != null && !AllNodesAreBuilt)
+            if (part != null)
             {
                 foreach (ExplanationPart subPart in part.SubExplanations)
                 {
@@ -236,12 +242,12 @@ namespace GUI.TestRunnerView
         public void setExplanation(ExplanationPart explanation)
         {
             Explanation = explanation;
-            AllNodesAreBuilt = false;
 
             explainTreeView.Nodes.Clear();
             if (explanation != null)
             {
                 ExplainTreeNode node = new ExplainTreeNode(explanation);
+                node.UpdateText();
                 innerSetExplanation(explanation, node, 0);
                 explainTreeView.Nodes.Add(node);
             }
