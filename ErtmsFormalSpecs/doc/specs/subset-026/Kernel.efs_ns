@@ -11111,6 +11111,29 @@ BTM.Linking.RAMSWindowPassed()
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Handle MA timers"
+ Guid="50883614-0cc0-4f35-a55f-6c9be035414a"
+>
+<Comment>Handles the timers associated to the movement authority.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Handle MA timers"
+ Guid="bbd93fcf-a609-4936-aca3-29405481185a"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="fdfd0993-2721-4e15-8d2b-ee308ec43d08"
+>MA.MATimers.HandleTimers()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="Update EOA"
  Guid="930bec6a-53b0-4496-b3b9-1d82d5aafcfc"
 >
