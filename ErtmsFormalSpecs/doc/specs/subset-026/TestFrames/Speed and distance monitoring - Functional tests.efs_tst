@@ -1226,34 +1226,42 @@
  Guid="200bd2bd-6cf6-4771-96d2-6d949ce145f2"
 >Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- 0.0</Action><Action
  Guid="ebd93453-6c79-41e0-8212-f0726c10fb28"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct
+{
     TargetSpeed =&gt; 0.0,
     Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection{
-        EndSectionTimeOut =&gt; Kernel.MA.MATimers.TimeOut{
-            TimeOut =&gt; 0.0,
+    EndSection =&gt; Kernel.MA.EndSection
+    {
+        EndSectionTimeOut =&gt; Kernel.MA.MATimers.TimeOut
+        {
+            TimeOut =&gt; 1000.0,
             Distance =&gt; 0.0
         },
-        TimeOut =&gt; Kernel.MA.MATimers.TimeOut{
-            TimeOut =&gt; 0.0,
+        TimeOut =&gt; Kernel.MA.MATimers.TimeOut
+        {
+            TimeOut =&gt; 800.0,
             Distance =&gt; 0.0
         },
         Length =&gt; 0.0,
-        DangerPoint =&gt; Kernel.MA.DangerPoint{
+        DangerPoint =&gt; Kernel.MA.DangerPoint
+        {
             Distance =&gt; 0.0,
             ReleaseSpeed =&gt; 0.0
         },
-        Overlap =&gt; Kernel.MA.Overlap{
+        Overlap =&gt; Kernel.MA.Overlap
+        {
             Distance =&gt; 0.0,
             TimerDistance =&gt; 0.0,
             ReleaseSpeed =&gt; 0.0,
-            TimeOut =&gt; 0.0
+            TimeOut =&gt; 500.0
         }
     },
-    TargetSpeedTimeOut =&gt; 0.0
+    TargetSpeedTimeOut =&gt; 900.0
 }</Action><Action
  Guid="542062ed-ae88-4673-a98e-df14017d309b"
->Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 180.0</Action></Actions>
+>Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 180.0</Action><Action
+ Guid="6a67b27e-8f87-4115-a0b8-ffadf10c45fb"
+>Odometry.EstimatedSpeed &lt;- 40.0</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
