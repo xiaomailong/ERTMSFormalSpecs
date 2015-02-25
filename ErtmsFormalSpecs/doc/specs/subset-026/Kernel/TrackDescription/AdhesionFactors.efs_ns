@@ -10,6 +10,8 @@
 <Structures>
 <Structure
  Default=""
+ X="220"
+ Y="100"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -80,7 +82,7 @@
 <Collection
  TypeName="Kernel.TrackDescription.AdhesionFactors.AdhesionFactor"
  Default="[]"
- Y="120"
+ Y="100"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -97,7 +99,7 @@
 <Function
  Type="Default.BaseTypes.Length"
  Default=""
- Y="420"
+ Y="200"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -126,7 +128,8 @@
 </Function><Function
  Type="Boolean"
  Default=""
- Y="480"
+ X="110"
+ Y="200"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -163,7 +166,8 @@
 </Function></Functions>
 <Procedures>
 <Procedure
- Y="600"
+ X="220"
+ Y="200"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -225,7 +229,7 @@
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- Y="660"
+ Y="290"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -336,7 +340,7 @@ IN
  Type="AdhesionFactors"
  DefaultValue=""
  VariableMode="Internal"
- Y="240"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -378,7 +382,8 @@ IN
  Type="Messages.M_ADHESION"
  DefaultValue="Messages.M_ADHESION.Non_slippery_rail"
  VariableMode="Internal"
- Y="300"
+ X="320"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -410,7 +415,7 @@ IN
 <Rules>
 <Rule
  Priority="CleanUp"
- Y="780"
+ Y="380"
  Width="100"
  Height="50"
  Implemented="TRUE"
