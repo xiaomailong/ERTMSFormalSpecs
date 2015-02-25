@@ -6738,6 +6738,15 @@ The checks performed in EFS are:
 </Parameter></Parameters>
 <Cases>
 <Case
+ Name="Do not perform the check"
+ Guid="be17402f-5b8f-4a88-b12d-7aff2a69e4ae"
+>
+<PreConditions>
+<PreCondition
+ Guid="c3f96aa5-6fe3-4df7-bd6e-985bf2062c2f"
+>NOT CheckMessageTimeStamps</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
  Name="Time stamp unknown at initiation of communication"
  Guid="202591f0-e7d7-4e7e-b5fe-6abfd9152eeb"
 >
@@ -11217,7 +11226,8 @@ But at the end of the cycle the conditions required for sending of position repo
  Type="BaseTypes.Time"
  DefaultValue="60.0"
  VariableMode="Constant"
- X="110"
+ X="730"
+ Y="430"
  Width="100"
  Height="50"
  Name="DelayToDisconnect"
@@ -11229,6 +11239,17 @@ But at the end of the cycle the conditions required for sending of position repo
  Guid="ec8b8c72-983c-4056-97ad-5046cead56ac"
 >
 </ReqRef><Comment>Delay from the application of the M_NVCONTACT reaction (applied when the onboard does not receive any new consistent messages from the RBC after a period T_NVCONTACT) to release of the safe radio connection.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="True"
+ VariableMode="Constant"
+ Width="100"
+ Height="50"
+ NeedsRequirement="FALSE"
+ Name="CheckMessageTimeStamps"
+ Guid="80f94470-f39e-44f1-8045-5bb6c1e0771d"
+>
+<Comment>Indicates whether the check on message time stamps needs to be performed (default is True, is only False for debugging Subset-076 tests).</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
