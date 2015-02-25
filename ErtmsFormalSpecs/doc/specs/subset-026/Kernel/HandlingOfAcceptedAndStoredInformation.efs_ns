@@ -515,6 +515,37 @@ SituationM()</Expression>
 >
 <Expression>SituationK()</Expression>
 </Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Default=""
+ Implemented="TRUE"
+ Name="SpecialCase1Location"
+ Guid="e0fd5d08-87bf-4e4e-a6bf-dbd6d6daa761"
+>
+<ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="925e028d-bf98-48f4-92cc-ae8282c4db40"
+>
+</ReqRef><Comment>Provides the location defined in Paragraph 3.A3.4.1.3.2:
+- in case of the situation A: the stop location of the emergency stop
+- otherwise: the location of the new SvL.</Comment>
+<Cases>
+<Case
+ Name="Situation A"
+ Guid="cd781c8f-4bd2-46cb-b974-ff523bc613a2"
+>
+<PreConditions>
+<PreCondition
+ Guid="3600c3ab-9812-4b99-b79a-33f537fa4169"
+>SituationA()</PreCondition></PreConditions>
+<Expression>(FIRST ES IN EmergencyStops | ES.IsConditional).StopLocation</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="3f7e4011-7228-4928-8234-f689bb722c1d"
+>
+<Expression>MA.SvL().Location</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -797,6 +828,7 @@ SituationM()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the first category"
  Guid="1a99a4f5-ccf0-40fb-951b-f58c969fc81b"
 >
@@ -805,13 +837,20 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c4ca9336-db7b-4dba-8039-fc38576dd78e"
 >
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c5655ac-23ab-4cf9-86bd-20b715e533fc"
+>
 </ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="572616f7-537b-4c23-9060-c39357fd0206"
 >FirstCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="b6312bf7-36fa-443c-8884-72237c8a6fc1"
+>TrackDescription.Gradient.DeleteGradientsFromLocation( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the second category"
@@ -861,6 +900,7 @@ SituationM()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the first category"
  Guid="9a67fc2f-0b72-4143-9606-23f7e352337e"
 >
@@ -869,13 +909,20 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0d1b91c2-a9ca-4173-87b2-b4f7ebd1262a"
 >
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9b3fd930-d9f1-4776-a1b4-3e2980292c4c"
+>
 </ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="ce365c5a-3336-469b-bd79-ae5578376028"
 >FirstCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="46f63396-c71a-4b30-81a2-5381e233f3b3"
+>TrackDescription.StaticSpeedProfile.DeleteSSPFromLocation ( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the second category"
@@ -925,6 +972,7 @@ SituationM()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the first category"
  Guid="27120cf8-8cb9-4c36-bf3f-4d79486b4654"
 >
@@ -939,8 +987,11 @@ SituationM()</Expression>
  Guid="52f9a01a-ab6d-41ae-b6e3-ba5e8eec822d"
 >FirstCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="24b1b109-9608-42c9-a201-87e3e8256330"
+>TrackDescription.AxleLoad.DeleteAxleLoadProfileFromLocation ( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the second category"
  Guid="8188f4f0-a81c-4c46-9caa-baf7578b3486"
 >
@@ -955,8 +1006,11 @@ SituationM()</Expression>
  Guid="f8c4d8d5-2a1b-4d8a-86ef-e443c1678a30"
 >SecondCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="5951c404-37c6-42f9-b6ff-351a91213e14"
+>TrackDescription.AxleLoad.DeleteAxleLoadProfileFromLocation ( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the third category"
  Guid="a6c00a11-c8e9-4a1d-98c4-15a70a194db9"
 >
@@ -971,7 +1025,14 @@ SituationM()</Expression>
  Guid="a65a0266-e006-4f80-b165-7255fd5efb19"
 >ThirdCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="e510577d-d359-45cc-a8ba-2784d98d9582"
+>TrackDescription.AxleLoad.ASP &lt;- TrackDescription.AxleLoad.AxleLoadProfile
+{
+    EmptyProfileDistance =&gt; 0.0,
+    InitialState =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow,
+    ALs =&gt; []
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3173,6 +3234,7 @@ SituationM()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the first category"
  Guid="ec021cf5-a258-4eb4-9108-561edf8c8c38"
 >
@@ -3181,13 +3243,20 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c4d84555-c722-40c5-95b3-93107ba10874"
 >
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9f0198de-1f33-47a4-8851-9bd47bdfe454"
+>
 </ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="f20c81e6-f258-4b01-ba55-474f716b9839"
 >FirstCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="b13f068f-b695-4642-9c61-7faf239bc490"
+>TrackDescription.ReversingArea.DeleteReversingAreaFromLocation ( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the second category"

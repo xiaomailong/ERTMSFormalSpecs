@@ -902,6 +902,64 @@ ON
     Packet.Sequence3</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DeleteAxleLoadProfileFromLocation"
+ Guid="61c93ae1-fee2-40da-aaf2-92b65320c256"
+>
+<ReqRef
+ Id="4585105d-95cd-4519-ab5e-229f4787bb09"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="eaa31a82-e83a-4a35-9bef-b8d9fe45b15f"
+>
+</ReqRef><ReqRef
+ Id="b58f3369-1b6f-45ce-be93-13bcfac8db78"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a1784b2-8d62-4d5b-b49c-98bed6240f19"
+>
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="24a8056c-7b52-4775-bda6-c14f7212ef63"
+>
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dab6336a-a983-4075-a559-a6f6df7c3878"
+>
+</ReqRef><Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="aLocation"
+ Guid="45868c36-045c-494e-a801-a9e70d9a4400"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Delete axle load speed profile from the given location"
+ Guid="30d45a96-4513-43ad-aebd-607cd0fdcd22"
+>
+<Comment>Deletes the axlo load speed profile beyond the provided location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Delete axle load speed profile from the given location"
+ Guid="6bea3d51-e33c-4574-afbe-398d11c78816"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="921e65af-92b9-49b6-99f6-fa3e57b3f59e"
+>ASP.ALs &lt;- MAP ASP.ALs | X.Distance &lt;= aLocation USING X IN X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable

@@ -287,6 +287,8 @@
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="DeleteReversingAreaFromLocation"
  Guid="69d23a05-abc3-46db-8b51-5385b7137ffc"
@@ -327,7 +329,9 @@
 <PreConditions>
 <PreCondition
  Guid="7a7f772f-391c-46ae-b299-32807d8f04a7"
->ReversingAreaProfile != EMPTY</PreCondition></PreConditions>
+>ReversingAreaProfile != EMPTY</PreCondition><PreCondition
+ Guid="ddaf9e33-1bce-41a4-8818-1ad6d5f1c885"
+>ReversingAreaProfile.Distance + ReversingAreaProfile.Length &gt; aLocation</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="605cb642-b824-4661-af62-7896b4c53420"

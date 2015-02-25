@@ -1359,6 +1359,16 @@ ON Packet.Sequence1</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="818ec905-eb73-40e1-b18d-c870f73d26c1"
 >
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8d81e181-32fa-4594-a5a4-c11b3a2310ea"
+>
+</ReqRef><ReqRef
+ Id="b6ad5c5c-2d47-4688-8e04-159a0f0f3c2b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4f0aab1a-f088-409d-a07e-3f736dffd821"
+>
 </ReqRef><Comment>Deletes the gradient profile information beyond the provided location.</Comment>
 <Parameters>
 <Parameter
@@ -1386,7 +1396,7 @@ ON Packet.Sequence1</Action></Actions>
 <Actions>
 <Action
  Guid="a45aa091-11f4-4232-acc7-4d23db35c4bb"
->Gradients &lt;- MAP Gradients | X.Distance &gt;= aLocation USING X IN X</Action></Actions>
+>Gradients &lt;- MAP Gradients | X.Distance &lt;= aLocation USING X IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
