@@ -4812,7 +4812,9 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 </ReqRef><PreConditions>
 <PreCondition
  Guid="e174bb1b-121a-49c0-94b2-fe0469288e7a"
->Available ( EURORADIO.CurrentRBCConnection().MessageIn.Message.SOM_POSITION_REPORT_CONFIRMED_BY_RBC )</PreCondition></PreConditions>
+>Available ( EURORADIO.CurrentRBCConnection().MessageIn.Message)
+  AND  
+Available ( EURORADIO.CurrentRBCConnection().MessageIn.Message.SOM_POSITION_REPORT_CONFIRMED_BY_RBC )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ee978564-2709-449b-ab4b-8943f2e8d7c5"
@@ -4830,7 +4832,9 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 </ReqRef><PreConditions>
 <PreCondition
  Guid="7e3d4f3c-1ecf-4e97-94e5-b4b1b5f9d602"
->Available ( EURORADIO.CurrentRBCConnection().MessageIn.Message.TRAIN_ACCEPTED )</PreCondition></PreConditions>
+>Available ( EURORADIO.CurrentRBCConnection().MessageIn.Message)
+  AND  
+Available ( EURORADIO.CurrentRBCConnection().MessageIn.Message.TRAIN_ACCEPTED )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5e2b1e6f-8c5b-403f-8c90-3806f64b7cfb"
