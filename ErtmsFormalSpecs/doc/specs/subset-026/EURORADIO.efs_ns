@@ -612,7 +612,7 @@ Available(MessageIn)
     NID_ENGINE =&gt; Kernel.NidEngine,
     NID_MESSAGE =&gt; 136,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport(),
-    Sequence1 =&gt; EMPTY,
+    Sequence1 =&gt; [],
     T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime)
 }</Action></Actions>
 <SubRules>
@@ -2105,7 +2105,9 @@ NOT IncomingMessageIsConsistent(MessageIn)</PreCondition></PreConditions>
  Guid="2c8d40a3-c5ca-4352-adaa-bbbe23e16494"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="e2742dfc-99b4-4a3e-aacf-41d5f195ccf0"
+>Available(MessageOut.TRAIN_POSITION_REPORT)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="fde6857a-8e77-4276-8985-1fb52d774b29"

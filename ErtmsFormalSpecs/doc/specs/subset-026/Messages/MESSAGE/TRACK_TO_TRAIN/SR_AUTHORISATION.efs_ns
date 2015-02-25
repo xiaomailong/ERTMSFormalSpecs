@@ -172,117 +172,117 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="0d97ad50-1ad3-4882-87fb-509d9eff680e"
+ Guid="b1a0cb97-4b07-4915-9cb5-f3af427fc9bb"
 >
 <Comment>Checks the values in a structure of type SR_AUTHORISATION.Message</Comment>
 <Parameters>
 <Parameter
  Type="SR_AUTHORISATION.Message"
  Name="struct"
- Guid="82b59282-08f4-4b0c-a2ea-8e7bf9d1a94e"
+ Guid="43c640d9-e566-4373-a8b7-11308fcdb8d0"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="192b4041-7726-4893-abeb-deaf9c6ebad0"
+ Guid="84283d78-221f-4551-bc91-807c63370186"
 >
 <PreConditions>
 <PreCondition
- Guid="595cea11-413c-4b1b-b5ce-31d5b7fb7532"
+ Guid="7ec832ef-77be-4ad2-835b-c463e63426ce"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_MESSAGE invalid"
- Guid="6c51cc09-8a16-4916-8a25-c946e171aaa9"
+ Guid="9704cde6-6286-4941-87d7-b42ed86c2a09"
 >
 <PreConditions>
 <PreCondition
- Guid="0f85abc9-6c35-48d8-81c9-258dd0e17fa8"
+ Guid="7b0e291a-7de0-469b-8e25-3e568bed54b4"
 >struct.NID_MESSAGE &lt; 0</PreCondition><PreCondition
- Guid="429259d0-37e5-4d3c-8814-1d28d5edd0ba"
+ Guid="6ade8f9e-8fa8-46af-9672-a074759b0a09"
 >struct.NID_MESSAGE &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_MESSAGE invalid"
- Guid="63cf754c-46ae-4cc5-9d3d-e241ebd42d44"
+ Guid="b7ef542b-1181-4bbd-b925-084111be7349"
 >
 <PreConditions>
 <PreCondition
- Guid="4f51f3d3-bbdb-4782-9471-a02666bbe4a0"
+ Guid="1b088544-72e2-4fbf-92b0-20fa75a886f6"
 >struct.L_MESSAGE &lt; 0</PreCondition><PreCondition
- Guid="223653ac-9478-401d-9a93-03021869174d"
+ Guid="e3df9431-d2d1-4683-b02d-ed32a6c113ac"
 >struct.L_MESSAGE &gt;= 1024</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.T_TRAIN invalid"
- Guid="dc11eec0-2c01-4267-b709-1e4c0e7db00b"
+ Guid="aa429374-9d84-4a49-a280-e12e1165522f"
 >
 <PreConditions>
 <PreCondition
- Guid="7a4aef21-6422-4e7f-931f-6ae976416acb"
+ Guid="f2c035f1-2359-4f0a-a11b-6122c04b071d"
 >struct.T_TRAIN &lt; 0</PreCondition><PreCondition
- Guid="40df3ec2-5d70-478f-a32f-47ef3a9a8f0a"
+ Guid="ad45e3ae-d06d-489a-a7b5-7733c0f07371"
 >struct.T_TRAIN &gt;= 4294967296</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.M_ACK invalid"
- Guid="a062fa5e-064d-41a6-a6c8-35e3c7237f55"
+ Guid="6d8db763-9b2f-4449-99db-5d265ab0f7f3"
 >
 <PreConditions>
 <PreCondition
- Guid="477b8530-4a71-4015-b9c4-a47f65a51daf"
+ Guid="1c18c7c8-60bd-4ec6-9019-9df485018a16"
 >struct.M_ACK &lt; 0</PreCondition><PreCondition
- Guid="681fce44-3ea8-42a1-9f03-42c2ca4c9086"
+ Guid="cbc37e57-922d-46c0-bf60-9cc1ba94fcd0"
 >struct.M_ACK &gt;= 2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NID_LRBG invalid"
- Guid="04a319b7-1c80-435b-958a-e64fda68c2d9"
+ Guid="f39da8a8-f0b3-44f8-8647-9bff0aeb505e"
 >
 <PreConditions>
 <PreCondition
- Guid="b910b0df-3dfc-4958-bab9-f2866441814e"
+ Guid="da3698ac-81c1-49b7-b7ad-1c573a7d7f73"
 >struct.NID_LRBG &lt; 0</PreCondition><PreCondition
- Guid="35f2d948-b43e-46cd-891a-c3ea029eaf5a"
+ Guid="5c8cf5f7-da81-4289-83d6-f9856ed17872"
 >struct.NID_LRBG &gt;= 16777216</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_SCALE invalid"
- Guid="792b8129-c68c-49e4-a07a-53a2c7863e58"
+ Guid="20ed8e3a-c567-4712-874c-8ce6c38c67ab"
 >
 <PreConditions>
 <PreCondition
- Guid="4eff3a88-d759-407d-ad44-2c2f063bde48"
+ Guid="b5d99a49-4fd1-4a0a-ae21-8935a84e0dce"
 >struct.Q_SCALE &lt; 0</PreCondition><PreCondition
- Guid="f16af3d1-349b-4bdb-9915-fb338222be2a"
+ Guid="5e8d0ce8-8bb7-4763-8181-090f9b001831"
 >struct.Q_SCALE &gt;= 4</PreCondition><PreCondition
- Guid="863c0bde-1f71-4656-9b45-85720883da4a"
+ Guid="c9495c4c-6925-46ec-a0e3-fe9a3f33fdb1"
 >struct.Q_SCALE != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.D_SR invalid"
- Guid="4eba8874-9da6-4c08-bb88-765344aa8fc5"
+ Guid="8f92d343-9ced-480c-9e04-70379aa7cb66"
 >
 <PreConditions>
 <PreCondition
- Guid="40c7700d-bdde-4ffc-9fb8-e70aa367ce93"
+ Guid="478a4efc-ec52-469a-a2c4-fda0e5c25c83"
 >struct.D_SR &lt; 0</PreCondition><PreCondition
- Guid="fd0795ab-b11e-4906-8bbe-c50fc8563199"
+ Guid="29463843-f42b-4c68-bf52-d631fe474519"
 >struct.D_SR &gt;= 32768</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Sequence1 invalid"
- Guid="3856b3f6-3b2c-4b7e-a4ee-9a8134161da6"
+ Guid="0c8bcb0f-6da0-4789-b79e-12b326a44d7f"
 >
 <PreConditions>
 <PreCondition
- Guid="6302866e-3128-4c16-aa0e-bae669e32541"
+ Guid="e2cb77ed-246c-4b16-b630-ff1a5b0334cc"
 >THERE_IS X IN struct.Sequence1 | NOT SR_AUTHORISATION.SubStructure1ValuesCorrect(X)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="2160674f-c2d0-4fb3-88b4-22312389d9e6"
+ Guid="9529b0b1-cb46-4928-bf14-e4bd78733636"
 >
 <Expression>True</Expression>
 </Case></Cases>
@@ -290,38 +290,38 @@
  Type="Boolean"
  Default=""
  Name="SubStructure1ValuesCorrect"
- Guid="876bfba4-39d0-4f8a-bd55-dd0d7b996532"
+ Guid="67ed32b6-fb83-4c6a-b867-da643a53b5b1"
 >
 <Comment>Checks the values in a structure of type SR_AUTHORISATION.SubStructure1</Comment>
 <Parameters>
 <Parameter
  Type="SR_AUTHORISATION.SubStructure1"
  Name="struct"
- Guid="b1da2101-01f7-4298-ae6f-694291193068"
+ Guid="da845ca3-ec79-41e1-ac3a-d9b49ecbba27"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SubStructure1 empty"
- Guid="5a669c59-88e2-481d-b6b6-1753dfd2e5b7"
+ Guid="4ee920d1-4103-482e-a0e4-a0036e4d2204"
 >
 <PreConditions>
 <PreCondition
- Guid="df7df75d-9541-4488-a7c7-ff8c023cfa54"
+ Guid="168ede8b-0696-4ecf-9c88-7cd7c52220f0"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="LIST_OF_BALISES_IN_SR_AUTHORITY invalid"
- Guid="49332942-02e8-4471-b45b-34f99844c2d0"
+ Guid="a884f4c1-9398-403e-9a5d-ef1692660a37"
 >
 <PreConditions>
 <PreCondition
- Guid="a53c276b-1992-4fed-b512-071c21078cf6"
+ Guid="7b81561b-dfe8-408b-8ce5-9d7e439a0bb6"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.LIST_OF_BALISES_IN_SR_AUTHORITY.MessageValuesCorrect(struct.LIST_OF_BALISES_IN_SR_AUTHORITY)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="32183eab-5a66-4b3a-9b97-b88ccf38d04e"
+ Guid="1f1fd7bf-df39-4e54-b1ec-bd646d24a799"
 >
 <Expression>True</Expression>
 </Case></Cases>

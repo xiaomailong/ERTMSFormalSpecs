@@ -395,132 +395,132 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="45397221-c705-4af1-badd-826cc9fa4e41"
+ Guid="47eef507-6116-429c-afe7-6959985d2938"
 >
 <Comment>Checks the values in a structure of type INTERNATIONAL_STATIC_SPEED_PROFILE.Message</Comment>
 <Parameters>
 <Parameter
  Type="INTERNATIONAL_STATIC_SPEED_PROFILE.Message"
  Name="struct"
- Guid="fecbac85-d554-42dc-b366-035c073584da"
+ Guid="9d3bdf4d-13cf-4746-a221-1a506a4deada"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="627c568c-ff50-4bb0-b9e2-4980b8e16abe"
+ Guid="2e587d04-fbdf-4c7b-9040-565e2e82a0cf"
 >
 <PreConditions>
 <PreCondition
- Guid="81798202-92f9-4b4f-be10-7884ff8c332b"
+ Guid="9a9c1e7c-c894-4f97-b7b6-20cf8086b223"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_PACKET invalid"
- Guid="423205a4-cd7d-4ea1-94f0-3866c2b3eb1e"
+ Guid="30171c41-3f5f-4832-b642-3449214e05d0"
 >
 <PreConditions>
 <PreCondition
- Guid="562db196-79b9-4c19-82be-27846c96a63c"
+ Guid="f76ece0d-2f13-42ee-9164-8eebccc28b16"
 >struct.NID_PACKET &lt; 0</PreCondition><PreCondition
- Guid="76f0e1ea-b799-4014-9ccc-356378d196bb"
+ Guid="9e650fcd-9b14-4beb-bd60-5849eeaae68b"
 >struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_DIR invalid"
- Guid="9876500b-e311-4832-b17d-ff706664145f"
+ Guid="87a9836c-84f0-4bcd-9755-10730b600ae8"
 >
 <PreConditions>
 <PreCondition
- Guid="8976ac0d-0d28-462d-8bd2-ffd60a7feab4"
+ Guid="193805e6-4cc9-4fef-99d3-75ad05b733eb"
 >struct.Q_DIR &lt; 0</PreCondition><PreCondition
- Guid="2564a59e-54a7-40fc-b610-7baf038a6aa4"
+ Guid="acee06d2-7d37-4c94-b644-42a430d13dfa"
 >struct.Q_DIR &gt;= 4</PreCondition><PreCondition
- Guid="f2941540-40e5-4718-b37f-efcb54b596a7"
+ Guid="9845d088-7c6e-4226-a892-27dbf8e8f707"
 >struct.Q_DIR != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_PACKET invalid"
- Guid="84b4bbe0-8e5e-4c3e-9813-690a86f0dc4b"
+ Guid="beaa6749-c9b4-478a-9d7b-2772c2ed51be"
 >
 <PreConditions>
 <PreCondition
- Guid="f73d09d0-ca68-400f-a664-64a62cae5d01"
+ Guid="7794f657-b9c4-4c1a-ae1d-a2c87a0af745"
 >struct.L_PACKET &lt; 0</PreCondition><PreCondition
- Guid="deb2f30f-e0e5-4a1c-9cbe-fdb3cefcd8c3"
+ Guid="636cbfe8-d87c-4efd-bc9a-96df1d5facc7"
 >struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_SCALE invalid"
- Guid="802a8e32-d3a1-4cec-8f40-a628c826456c"
+ Guid="84acb4fb-9809-4712-88a3-9c19f8182eb9"
 >
 <PreConditions>
 <PreCondition
- Guid="912d8b9a-5ee2-4200-904e-8ba849c812b8"
+ Guid="22f86de7-6751-4536-b573-fe14715b5530"
 >struct.Q_SCALE &lt; 0</PreCondition><PreCondition
- Guid="0aad7e65-8530-4422-abf6-d45673f60e30"
+ Guid="414161c3-9b3d-44d8-845c-96da3ebe208b"
 >struct.Q_SCALE &gt;= 4</PreCondition><PreCondition
- Guid="d5ac89a2-d0cb-4cf0-9655-d15e3726bdf4"
+ Guid="cab73d45-1a09-4b57-a535-842a8ac22845"
 >struct.Q_SCALE != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.D_STATIC invalid"
- Guid="9ee73a79-5c15-4231-bfb3-57fe7d6c2552"
+ Guid="e6c41b8f-a0bf-40ca-827c-9e095461a473"
 >
 <PreConditions>
 <PreCondition
- Guid="856cfa30-73e7-4714-afc6-cc94c6930ed2"
+ Guid="c4a72ee3-4d7d-41f2-9b0a-639c97a228e5"
 >struct.D_STATIC &lt; 0</PreCondition><PreCondition
- Guid="724d7c6b-8b06-49ca-828f-93c531296037"
+ Guid="9ea43c17-20f8-4b60-b515-9a96466364a1"
 >struct.D_STATIC &gt;= 32768</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.V_STATIC invalid"
- Guid="c09adcc8-6e5d-47b1-b008-e065d0bb7c25"
+ Guid="073b09af-bb14-4ce8-a5fc-1bff79aac7b5"
 >
 <PreConditions>
 <PreCondition
- Guid="e33c2415-8e64-43f2-818d-487343d469b6"
+ Guid="f9e924b9-420c-4b6e-99ac-695892769b09"
 >struct.V_STATIC &lt; 0</PreCondition><PreCondition
- Guid="8e5792ed-4a0f-4ffd-965b-50e2861d0dbf"
+ Guid="d9a86385-597b-4033-a140-c0b37a64dfa0"
 >struct.V_STATIC &gt;= 128</PreCondition><PreCondition
- Guid="7ac20a9d-9a94-41be-a64c-48ab24452820"
+ Guid="da0f097c-64fa-4d00-9ca1-749688fd56dc"
 >struct.V_STATIC &lt; 121
   AND  
 struct.V_STATIC &gt; 126</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_FRONT invalid"
- Guid="a3d092d8-68a8-4ea8-87da-d0f08a7bedfd"
+ Guid="e697ca96-f346-4bc7-be49-7994b6e58e0b"
 >
 <PreConditions>
 <PreCondition
- Guid="a47567fb-b12f-43eb-ae3a-4ff8f141e9ce"
+ Guid="1b786109-1305-4dea-9d3d-2e025b9d1b8d"
 >struct.Q_FRONT &lt; 0</PreCondition><PreCondition
- Guid="69728df6-d25d-40cd-bec9-60c4c7b4f5ef"
+ Guid="1ac33eee-0bbe-4ac2-8bbe-cc0093c41449"
 >struct.Q_FRONT &gt;= 2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Sequence1 invalid"
- Guid="bdbf1c8f-3ced-49ee-a8f7-b12f8635b055"
+ Guid="75e88572-b7d0-4009-bd4e-d668907ce4ce"
 >
 <PreConditions>
 <PreCondition
- Guid="cbab5b04-de35-4b24-bd52-fa09c7046aeb"
+ Guid="be52753e-7d22-4ccb-8b3f-13967684f1b7"
 >THERE_IS X IN struct.Sequence1 | NOT INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1ValuesCorrect(X)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Sequence3 invalid"
- Guid="da7c4b77-1887-4e6d-aa40-aa9440d1564d"
+ Guid="8882b621-71ac-4d79-b727-68de0d3488d5"
 >
 <PreConditions>
 <PreCondition
- Guid="0a7c6dd6-9c8c-4a83-b867-801b5bd4987b"
+ Guid="b153fd22-56d7-4ce8-88cc-200fd30df9bb"
 >THERE_IS X IN struct.Sequence3 | NOT INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2ValuesCorrect(X)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="11b01a2b-94f8-49a9-bf40-b23a17ae94cc"
+ Guid="8bf76876-228a-4659-848c-4948c4e8535b"
 >
 <Expression>True</Expression>
 </Case></Cases>
@@ -528,81 +528,81 @@ struct.V_STATIC &gt; 126</PreCondition></PreConditions>
  Type="Boolean"
  Default=""
  Name="SubStructure1ValuesCorrect"
- Guid="28467f7a-3d10-4f04-a365-811edf8ee06b"
+ Guid="417bd43a-b81b-42c7-89d3-53bcbee01b7f"
 >
 <Comment>Checks the values in a structure of type INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1</Comment>
 <Parameters>
 <Parameter
  Type="INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure1"
  Name="struct"
- Guid="5e8c7ade-e36b-4aaa-a204-a09bce8120f5"
+ Guid="37f451bb-06ba-4572-8697-cbc71b08ce10"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SubStructure1 empty"
- Guid="d89e2fc0-a48d-4508-a83a-905db9973716"
+ Guid="75fba5d2-59e8-4949-b5c4-b138feef4411"
 >
 <PreConditions>
 <PreCondition
- Guid="13d69857-da5d-4ece-8617-613cec1b2665"
+ Guid="516b0062-d903-45a4-9bda-b339850fa777"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.Q_DIFF invalid"
- Guid="37495818-70e7-4b78-b833-118ea57132fc"
+ Guid="63cec149-50ee-4319-b640-e6c84be86507"
 >
 <PreConditions>
 <PreCondition
- Guid="8127b60d-1c75-487c-a516-ba245b41db42"
+ Guid="1a3185a5-612a-456a-aa1e-abc2376dca16"
 >struct.Q_DIFF &lt; 0</PreCondition><PreCondition
- Guid="97e5d448-be04-4f2c-996b-1bcba3297afd"
+ Guid="b5f18cdd-659d-4024-9528-2eafb4dcb86f"
 >struct.Q_DIFF &gt;= 4</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NC_CDDIFF invalid"
- Guid="7a5a719e-dc92-43a4-8eb7-3bab84c7b4dd"
+ Guid="752a12a8-5d80-44e3-b27d-34861278ad23"
 >
 <PreConditions>
 <PreCondition
- Guid="148d046e-6639-41cb-8a3b-637291181b35"
+ Guid="dd27b699-da1f-4bd4-bb48-43bc2ee683a3"
 >struct.NC_CDDIFF &lt; 0</PreCondition><PreCondition
- Guid="689d0fe3-c705-41cd-b92a-679caf467b7f"
+ Guid="02e322b7-a12d-4f2f-9fb9-74a64b0b01dc"
 >struct.NC_CDDIFF &gt;= 16</PreCondition><PreCondition
- Guid="597e5cd5-ae4e-49b6-a3ea-0dd03e3e3575"
+ Guid="3835500b-ad88-4782-bbb0-eca4cbae0950"
 >struct.NC_CDDIFF &lt; 11
   AND  
 struct.NC_CDDIFF &gt; 15</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NC_DIFF invalid"
- Guid="f6760da3-2319-432e-8012-60f8b94801c3"
+ Guid="7004bbde-01dd-456c-8ede-9e6c0ccd3472"
 >
 <PreConditions>
 <PreCondition
- Guid="f9912094-4d30-416c-a6b4-6936294a3a25"
+ Guid="8cb77857-b19f-48cf-bb22-895433836acf"
 >struct.NC_DIFF &lt; 0</PreCondition><PreCondition
- Guid="010d7caa-c1b8-4ea4-8aa0-d0f5a1d04821"
+ Guid="d8b40a0e-4186-4b98-83ff-865386d5192f"
 >struct.NC_DIFF &gt;= 16</PreCondition><PreCondition
- Guid="02878d8d-8c9c-49e4-811c-c47058521ddf"
+ Guid="afde9f3a-0e7e-4d3b-99bf-1944ff326ee3"
 >struct.NC_DIFF &lt; 3
   AND  
 struct.NC_DIFF &gt; 15</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.V_DIFF invalid"
- Guid="b5abc345-8312-4fd5-8ea1-05f8cf3c9ecd"
+ Guid="5ffb5c62-d25b-4ea3-b8c1-5651b4dc2fde"
 >
 <PreConditions>
 <PreCondition
- Guid="b69cf8bb-377e-4387-af46-b229d17cad35"
+ Guid="0168b95e-63e5-467d-bfa9-22f967a8411f"
 >struct.V_DIFF &lt; 0</PreCondition><PreCondition
- Guid="85301a4e-a637-456a-8672-980e80ffedb0"
+ Guid="331865d5-6392-4b44-a15f-51ea01b0046e"
 >struct.V_DIFF &gt;= 128</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="4102c850-15c5-4561-a9f0-1561958c8c40"
+ Guid="8c923284-4005-46f7-b179-bcfbb5ecd70c"
 >
 <Expression>True</Expression>
 </Case></Cases>
@@ -610,86 +610,86 @@ struct.NC_DIFF &gt; 15</PreCondition></PreConditions>
  Type="Boolean"
  Default=""
  Name="SubStructure2ValuesCorrect"
- Guid="64cd35e3-34c1-4312-94ba-0442ff2d6133"
+ Guid="d0e95657-2690-4fc7-ac8f-bac761d9ea2f"
 >
 <Comment>Checks the values in a structure of type INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2</Comment>
 <Parameters>
 <Parameter
  Type="INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure2"
  Name="struct"
- Guid="998e0f38-b732-4760-a6d2-5876758de4f2"
+ Guid="dbbb0540-1999-467c-9fe7-d85a8b200647"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SubStructure2 empty"
- Guid="b149efcc-c332-424e-beae-51250127cbd1"
+ Guid="13915d2c-c195-4946-af32-9cf59e4dd7e7"
 >
 <PreConditions>
 <PreCondition
- Guid="43d6e1d0-da5f-4d58-9ed2-8c6965968d90"
+ Guid="d153e305-3522-4fc5-9218-90f6b8c0bf79"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.D_STATIC invalid"
- Guid="16aac53f-9e9b-4dfe-808d-9263a7a2f6c3"
+ Guid="3e6022e8-321f-42b4-b954-3583f30023f0"
 >
 <PreConditions>
 <PreCondition
- Guid="d6438893-9e95-43a7-9206-6518f5872eb0"
+ Guid="b47a8ccb-e61b-40aa-ac88-4812d4133ac4"
 >struct.D_STATIC &lt; 0</PreCondition><PreCondition
- Guid="3a01cfe5-b58a-48e7-9f3c-bf43fd7cd271"
+ Guid="3e8a7954-260b-4310-b528-17d7a4e6b72a"
 >struct.D_STATIC &gt;= 32768</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.V_STATIC invalid"
- Guid="1b8c48b9-8b45-4e98-944d-3e73d4aea022"
+ Guid="a16df08a-4f16-424a-92a3-1913b30d7b16"
 >
 <PreConditions>
 <PreCondition
- Guid="4dde7c78-a379-4a27-8a87-1a80b61f3053"
+ Guid="53605ea5-c465-4927-a50b-fae7869fdd42"
 >struct.V_STATIC &lt; 0</PreCondition><PreCondition
- Guid="6cc09fe1-dbf6-40b7-afbd-3cd3296a0cf7"
+ Guid="38819db2-4c1a-4ab0-a016-f9b6d33a8dc8"
 >struct.V_STATIC &gt;= 128</PreCondition><PreCondition
- Guid="a4920016-5bce-4a16-98cb-376b60217a75"
+ Guid="671d5ee3-d3f1-473b-b917-e1d93f3c8f8e"
 >struct.V_STATIC &lt; 121
   AND  
 struct.V_STATIC &gt; 126</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_FRONT invalid"
- Guid="435d3b38-4d4f-4ce0-8d17-12cecc715019"
+ Guid="75c0820e-996e-45ea-a124-de2b8bf3b174"
 >
 <PreConditions>
 <PreCondition
- Guid="b6bf7e80-e90b-482f-bf08-554d06d4f306"
+ Guid="21e83ce5-8fb4-4ab0-8090-c106ca4c23be"
 >struct.Q_FRONT &lt; 0</PreCondition><PreCondition
- Guid="6d9b7570-8334-4f0e-b567-43b7b7a4bfe4"
+ Guid="0aae1429-78ab-447b-bbc7-0a75280ea629"
 >struct.Q_FRONT &gt;= 2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.N_ITER invalid"
- Guid="8edcb04f-3ff9-4557-89ce-3d542236ca5f"
+ Guid="39390457-30a6-451b-aac4-c489a5c642de"
 >
 <PreConditions>
 <PreCondition
- Guid="2de7e798-5a40-4070-adad-d6b18b91afe5"
+ Guid="f296acc1-f196-4317-b3a9-bb2bdb47b5f6"
 >struct.N_ITER &lt; 0</PreCondition><PreCondition
- Guid="5f967ca4-4d54-4117-a3df-67c910cfb97d"
+ Guid="6efa1123-8989-434f-9cd2-7bb625c0ecf2"
 >struct.N_ITER &gt;= 32</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Sequence2 invalid"
- Guid="8dd4413b-14e9-4a95-92d8-dc635cae325f"
+ Guid="2aaf9086-b4a0-426a-9ac1-6214cb83c193"
 >
 <PreConditions>
 <PreCondition
- Guid="1975945e-dcea-4d60-85ce-fc74e13bbffb"
+ Guid="bda500dd-3c93-445a-95b4-6dad7c552e44"
 >THERE_IS X IN struct.Sequence2 | NOT INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3ValuesCorrect(X)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="039c5e14-2411-4bfb-819c-79cccd3cfbc7"
+ Guid="472457fc-77d4-42c4-9a8c-6fe7ef23fbcf"
 >
 <Expression>True</Expression>
 </Case></Cases>
@@ -697,81 +697,81 @@ struct.V_STATIC &gt; 126</PreCondition></PreConditions>
  Type="Boolean"
  Default=""
  Name="SubStructure3ValuesCorrect"
- Guid="7e9540d3-ca3a-4e6f-b15e-754977622420"
+ Guid="b3e48f25-f987-478f-bef0-7901c47df718"
 >
 <Comment>Checks the values in a structure of type INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3</Comment>
 <Parameters>
 <Parameter
  Type="INTERNATIONAL_STATIC_SPEED_PROFILE.SubStructure3"
  Name="struct"
- Guid="2a564fb7-e7ab-4034-ba28-cbfd32e3611c"
+ Guid="c748ae04-17dd-4fc7-8ba9-522ea0480955"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SubStructure3 empty"
- Guid="aab6cc38-cd34-496d-854f-6ce7ef6776af"
+ Guid="5fcf366c-3247-4949-ac35-606abf1d7f37"
 >
 <PreConditions>
 <PreCondition
- Guid="3fbf15ff-10fa-4472-be79-79a2aff65ee3"
+ Guid="3cf73e93-f466-4b34-9394-fdac20f2533f"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.Q_DIFF invalid"
- Guid="a75ce3da-7068-46de-9b69-c21469d0b427"
+ Guid="a3ba823e-739e-44ea-99fa-71cff9108d79"
 >
 <PreConditions>
 <PreCondition
- Guid="3dd04df6-a1c4-469b-b373-ba0e495c92b4"
+ Guid="eb5fab32-7978-4e23-a82a-8aa08bf11d23"
 >struct.Q_DIFF &lt; 0</PreCondition><PreCondition
- Guid="1dde3ec1-da92-4909-8e3e-68dabcfcfb0b"
+ Guid="afc94e64-5297-4b52-bbb3-e9e2e26a3158"
 >struct.Q_DIFF &gt;= 4</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NC_CDDIFF invalid"
- Guid="ca4ee64d-cbd1-4af0-abb9-291b0b49916a"
+ Guid="b6038009-aac6-4994-9d20-15db6cb4f092"
 >
 <PreConditions>
 <PreCondition
- Guid="f0ac84d4-3ef1-47aa-9df9-4b3412640e64"
+ Guid="376078f0-5ec8-4d9a-b8b3-e845f0b200e9"
 >struct.NC_CDDIFF &lt; 0</PreCondition><PreCondition
- Guid="8883eb5c-8be8-4313-a8e3-5ce9c8675447"
+ Guid="29f99705-3422-4f02-b5fc-b5849ea5ace2"
 >struct.NC_CDDIFF &gt;= 16</PreCondition><PreCondition
- Guid="9825415e-4eeb-44b6-870f-246c5f3f65c9"
+ Guid="7878fa3f-5790-4f74-b9dd-e4274571e126"
 >struct.NC_CDDIFF &lt; 11
   AND  
 struct.NC_CDDIFF &gt; 15</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NC_DIFF invalid"
- Guid="100aa4fa-31c7-473a-8bff-fb34769a32d8"
+ Guid="15eed686-26c2-4334-b1b4-4f81b48da310"
 >
 <PreConditions>
 <PreCondition
- Guid="5e14925a-85fa-4124-810a-2bfd16da04e4"
+ Guid="0b8b1cff-b131-4aef-9feb-0d36a76354b3"
 >struct.NC_DIFF &lt; 0</PreCondition><PreCondition
- Guid="d6c22c2f-7162-494e-be40-8481cc33aaeb"
+ Guid="270c2a33-0dfc-4efc-bc8a-24de99851ad6"
 >struct.NC_DIFF &gt;= 16</PreCondition><PreCondition
- Guid="316c8d15-1544-4536-9525-a759ca17e11d"
+ Guid="ce017e1a-9588-4031-9c32-87b0253e0b2a"
 >struct.NC_DIFF &lt; 3
   AND  
 struct.NC_DIFF &gt; 15</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.V_DIFF invalid"
- Guid="bcffc931-6bab-43e1-b61d-c6703a73cf43"
+ Guid="738ae33e-4479-4cbf-a59d-b29477722489"
 >
 <PreConditions>
 <PreCondition
- Guid="7a0a0472-fc57-465c-a621-ad78076e9f24"
+ Guid="861c23de-9a34-4073-8d1b-b02e4ae70871"
 >struct.V_DIFF &lt; 0</PreCondition><PreCondition
- Guid="e477db2b-98a8-4921-801b-8641b2b041cf"
+ Guid="474f7f49-409f-436f-a4f1-7f51e4b36e0c"
 >struct.V_DIFF &gt;= 128</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="b99a78e9-dd5d-4021-b30c-043529b49476"
+ Guid="83820b55-206a-4a8f-ae27-394696c3de45"
 >
 <Expression>True</Expression>
 </Case></Cases>

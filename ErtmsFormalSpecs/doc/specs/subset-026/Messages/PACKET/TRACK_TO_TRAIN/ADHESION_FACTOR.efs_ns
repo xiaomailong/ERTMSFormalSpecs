@@ -123,110 +123,110 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="8f921a84-5107-4128-bf4b-e9dc5b0d2b13"
+ Guid="04eca250-ee8f-4873-b46c-5d9961beb113"
 >
 <Comment>Checks the values in a structure of type ADHESION_FACTOR.Message</Comment>
 <Parameters>
 <Parameter
  Type="ADHESION_FACTOR.Message"
  Name="struct"
- Guid="8ce28625-a853-4835-b286-5d671930d5da"
+ Guid="4b958160-353b-498e-8a29-c7e9f398a783"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="0146ebbe-1662-43a7-9728-32b6da47c2df"
+ Guid="ce27f76d-efcc-4b7e-b3bc-329ea040afda"
 >
 <PreConditions>
 <PreCondition
- Guid="a531c8af-75fc-4437-ab50-b73df133218b"
+ Guid="36f13968-f89b-4b70-a9a3-ecebf0b06c48"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_PACKET invalid"
- Guid="037d938d-08fa-4660-97fa-84db41f586b9"
+ Guid="00f697bd-3355-4f32-9cf2-c8f22fee909f"
 >
 <PreConditions>
 <PreCondition
- Guid="a129eb40-b37f-4d98-a2a2-810c6ad8a6ed"
+ Guid="8e438885-336c-4eda-a652-772a6e304807"
 >struct.NID_PACKET &lt; 0</PreCondition><PreCondition
- Guid="0672858a-eef1-4d16-8de1-3ff7a5eb47b8"
+ Guid="5ec45310-bec5-45d6-9ecd-17ef2123da66"
 >struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_DIR invalid"
- Guid="7db35735-bb85-45ff-9de9-e6f75f2a7d0e"
+ Guid="76f999c2-00ea-4f67-89ef-01a4e73613ff"
 >
 <PreConditions>
 <PreCondition
- Guid="679b6078-6d67-4b60-ac2d-7c859732eb18"
+ Guid="3355abea-9e9c-4781-8902-a7cdaf9de036"
 >struct.Q_DIR &lt; 0</PreCondition><PreCondition
- Guid="3586ca3f-f8a7-48ee-92e2-dc5ad713cf9f"
+ Guid="b9e4d897-1313-4b0f-8e40-6484b2bfba71"
 >struct.Q_DIR &gt;= 4</PreCondition><PreCondition
- Guid="b64ee7a3-d869-478e-add7-a4d5756afac6"
+ Guid="ff0b75a8-4435-47f2-b39c-17777b59c997"
 >struct.Q_DIR != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_PACKET invalid"
- Guid="50b5c5df-b694-4caa-831a-d4750f831f0e"
+ Guid="46b9dfa0-b8b6-4ae8-95fa-f5099338830d"
 >
 <PreConditions>
 <PreCondition
- Guid="1686520f-9e31-4ea8-9c02-0ab66dab21b0"
+ Guid="b1bbae97-294a-4ae2-b054-2fc2c0c0d842"
 >struct.L_PACKET &lt; 0</PreCondition><PreCondition
- Guid="2a008c4b-591a-441f-a830-8de59d2f5236"
+ Guid="582cadce-6f99-456d-9835-aaf81c0dc256"
 >struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_SCALE invalid"
- Guid="a122898f-96b8-4fe3-a43d-865e15638e16"
+ Guid="7cc02643-d02a-42cc-b203-3df9f387b310"
 >
 <PreConditions>
 <PreCondition
- Guid="dbad4646-af13-406e-9c4c-f82b1ce7901c"
+ Guid="a29a5427-1920-4ed1-be2a-4e661380fcfe"
 >struct.Q_SCALE &lt; 0</PreCondition><PreCondition
- Guid="60dec9b8-b945-4cc7-b09b-ad50500bc464"
+ Guid="5d6d8acc-9a51-48c9-909d-52b19a44151d"
 >struct.Q_SCALE &gt;= 4</PreCondition><PreCondition
- Guid="54888a03-cc7f-4312-b7a6-2b88bbef9754"
+ Guid="74bfb259-179b-4dab-99e8-28a2e800c40f"
 >struct.Q_SCALE != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.D_ADHESION invalid"
- Guid="cd4433ed-25b1-4f4c-93f3-173346f97353"
+ Guid="63ae8135-5a83-4d1d-b91d-9a8d2a1a6e30"
 >
 <PreConditions>
 <PreCondition
- Guid="66092546-8553-4346-b64e-619f08a293d9"
+ Guid="b663e6df-4afb-4056-93db-91027687edaf"
 >struct.D_ADHESION &lt; 0</PreCondition><PreCondition
- Guid="8e1dd8f8-a972-4799-b6b5-6a5cd49426af"
+ Guid="212d8858-520e-4933-86c6-636fafd1230a"
 >struct.D_ADHESION &gt;= 32768</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_ADHESION invalid"
- Guid="b5e38ea8-d89e-4530-b4ff-b3ae733689f1"
+ Guid="c8a0d923-d8a8-4cf7-bf0f-4e877805fd3f"
 >
 <PreConditions>
 <PreCondition
- Guid="9d46887c-eba3-4550-b4c8-d17ba02fcc27"
+ Guid="0872052f-cd4a-465e-b146-c1e2453398cb"
 >struct.L_ADHESION &lt; 0</PreCondition><PreCondition
- Guid="0c36ec59-7c20-4898-9672-95d42e2abd8f"
+ Guid="f97576d8-5dde-48a9-a54a-6b9b585f3ae3"
 >struct.L_ADHESION &gt;= 32768</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.M_ADHESION invalid"
- Guid="d73dd26b-a73b-4474-8250-f6031a86b34c"
+ Guid="5f5b05d2-7a50-4aca-b1dc-74aa6dd3e001"
 >
 <PreConditions>
 <PreCondition
- Guid="87f891cd-bd6c-48dd-aa96-f28d480d0e87"
+ Guid="2d8bdc84-3e82-4969-9dae-f23c0097f68f"
 >struct.M_ADHESION &lt; 0</PreCondition><PreCondition
- Guid="345bd12f-3e76-4ace-b94f-21ac6c051367"
+ Guid="b9e60fb2-14f3-4878-9e23-ac10ac42d5b3"
 >struct.M_ADHESION &gt;= 2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="0ec30c0f-cde9-412c-967c-49268503abe4"
+ Guid="7d6065e3-ddf9-41f6-8357-a2de04b80389"
 >
 <Expression>True</Expression>
 </Case></Cases>

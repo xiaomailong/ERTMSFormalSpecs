@@ -444,93 +444,93 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="c246c12e-6830-49b7-9485-9cdb9f12d1fd"
+ Guid="99c65dea-9f4b-438e-9064-995f7891fea3"
 >
 <Comment>Checks the values in a structure of type GENERAL_MESSAGE.Message</Comment>
 <Parameters>
 <Parameter
  Type="GENERAL_MESSAGE.Message"
  Name="struct"
- Guid="3ce88d5d-35a1-48fc-bd66-2b7687c4b05e"
+ Guid="badb72e2-e61c-49c1-b32d-77dd5982a71b"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="fc6129c5-f8e2-4b9f-a432-707920cc8866"
+ Guid="682bbeb5-e567-4517-859a-96721d8d4877"
 >
 <PreConditions>
 <PreCondition
- Guid="edbdec71-b5ee-4011-973b-c19f462d2ede"
+ Guid="d0a21c1a-0be7-4609-b51f-63233fd5ed99"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_MESSAGE invalid"
- Guid="e7d31d0c-a23f-4263-9614-6797a64e32d3"
+ Guid="ae8396a8-3f6f-41c8-9b3d-260d98fa4e33"
 >
 <PreConditions>
 <PreCondition
- Guid="97a416b0-350e-4e1b-af93-cc30051deeea"
+ Guid="80630317-d4bc-4b8f-875b-639a67210fcc"
 >struct.NID_MESSAGE &lt; 0</PreCondition><PreCondition
- Guid="a4c1a6fc-207b-4a30-a2c0-cf6f542a6698"
+ Guid="a785080c-6a67-443c-bee2-40d8d42d6a72"
 >struct.NID_MESSAGE &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_MESSAGE invalid"
- Guid="3d6f6625-1e63-436a-8fba-287532f4a701"
+ Guid="cfe4b278-bc72-4764-8bc2-25a79b4668cd"
 >
 <PreConditions>
 <PreCondition
- Guid="4af6e215-1045-4578-b586-4541589373ed"
+ Guid="968626cb-ea0d-4e08-bce2-076fb100e93a"
 >struct.L_MESSAGE &lt; 0</PreCondition><PreCondition
- Guid="88ed158b-9493-4129-ba1a-309e43860f7d"
+ Guid="1a297ee6-37a4-4b99-8f57-0d1d359a5964"
 >struct.L_MESSAGE &gt;= 1024</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.T_TRAIN invalid"
- Guid="3eb36ce4-b281-4d60-adb2-f790d0d2d360"
+ Guid="6a3d4c50-c555-433b-afe8-57fbf839d48f"
 >
 <PreConditions>
 <PreCondition
- Guid="33c9bbf0-2f68-4fc1-beea-77b5390930a6"
+ Guid="d4789556-9f80-450c-bb03-a5de5dd7b980"
 >struct.T_TRAIN &lt; 0</PreCondition><PreCondition
- Guid="919852e8-8e1c-4d9b-b35f-81ef6c9d20ec"
+ Guid="606c376c-d4bc-4fb8-aae9-63e8267b63fa"
 >struct.T_TRAIN &gt;= 4294967296</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.M_ACK invalid"
- Guid="e55903ca-c11f-4b1a-8756-2210241c433c"
+ Guid="7b44ffb4-7540-4ad5-9687-8f44a778c7a7"
 >
 <PreConditions>
 <PreCondition
- Guid="abd9f18f-3ad4-4695-a026-6e736a0193ad"
+ Guid="f27959dd-e936-4d4d-a860-0a2d7465fc7f"
 >struct.M_ACK &lt; 0</PreCondition><PreCondition
- Guid="651af356-0c75-4164-86a8-1ccb4fe90d09"
+ Guid="305417bc-6206-4817-ae12-2072a1a54793"
 >struct.M_ACK &gt;= 2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NID_LRBG invalid"
- Guid="e39ba02b-2b49-4c7d-9ddd-4f055de0d961"
+ Guid="59bfb765-e588-4ee3-a797-23d3211f0a39"
 >
 <PreConditions>
 <PreCondition
- Guid="4d963d5b-cbbb-45ed-bc24-64106ebc0b91"
+ Guid="cfa49c04-fbdc-46f4-8be0-cbbdf9214b40"
 >struct.NID_LRBG &lt; 0</PreCondition><PreCondition
- Guid="7c4b28dc-94f9-4be6-8bd3-87babe27df6c"
+ Guid="1a32aa2d-17ed-4540-bdfd-b1e64b91803c"
 >struct.NID_LRBG &gt;= 16777216</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Sequence1 invalid"
- Guid="fe203a0f-9c5d-4c4b-8cf5-510d60ddff74"
+ Guid="6b2c00ac-9c21-40e6-8b9d-19a97b3ac079"
 >
 <PreConditions>
 <PreCondition
- Guid="fd6bcdae-a0e5-4263-b14c-0b32091faa78"
+ Guid="a6349e3c-0787-4f3c-a771-3c540ca22946"
 >THERE_IS X IN struct.Sequence1 | NOT GENERAL_MESSAGE.SubStructure1ValuesCorrect(X)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="4db49bce-993f-4bd5-8e82-5a179a23d1ee"
+ Guid="553d4c67-70f9-433a-87d6-8af64b40bf21"
 >
 <Expression>True</Expression>
 </Case></Cases>
@@ -538,254 +538,254 @@
  Type="Boolean"
  Default=""
  Name="SubStructure1ValuesCorrect"
- Guid="2574846d-4655-47b6-afc5-4f6e8c5cad18"
+ Guid="ff8335c0-973d-45a1-857a-604577430d2f"
 >
 <Comment>Checks the values in a structure of type GENERAL_MESSAGE.SubStructure1</Comment>
 <Parameters>
 <Parameter
  Type="GENERAL_MESSAGE.SubStructure1"
  Name="struct"
- Guid="946699a1-f8c5-4baa-9524-6c7f1c1f1b70"
+ Guid="6de99232-bbed-4bb1-af76-bab751a6a7c4"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SubStructure1 empty"
- Guid="7eb1a10b-3a9a-4e80-9505-10fa6e8eca27"
+ Guid="20597fdc-a032-46c8-a219-046df8212a8c"
 >
 <PreConditions>
 <PreCondition
- Guid="d875a355-7c5e-48cd-abae-2cd17e3ef1ab"
+ Guid="d7b69084-c1de-426a-893f-d2b443b7bdea"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="GRADIENT_PROFILE invalid"
- Guid="4a6a2f82-4872-4a43-a951-efd1615e3ed4"
+ Guid="5779bd10-3a04-41f6-910e-969ac7f6cf1b"
 >
 <PreConditions>
 <PreCondition
- Guid="2977510b-65a2-470b-a700-7440f32f8820"
+ Guid="2d6f3a5a-877c-4245-9d8f-7e9771908ed2"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.GRADIENT_PROFILE.MessageValuesCorrect(struct.GRADIENT_PROFILE)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="INTERNATIONAL_STATIC_SPEED_PROFILE invalid"
- Guid="03c256f7-fe8d-49fb-90a4-b32acb3ff677"
+ Guid="947bafc7-0838-4838-9967-4143a53597c4"
 >
 <PreConditions>
 <PreCondition
- Guid="0c3c9943-7a18-49d2-b509-0470166e5f20"
+ Guid="44019f87-4cd5-41be-8bfb-1881f939683e"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.INTERNATIONAL_STATIC_SPEED_PROFILE.MessageValuesCorrect(struct.INTERNATIONAL_STATIC_SPEED_PROFILE)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="SESSION_MANAGEMENT_WITH_NEIGHBOURING_RADIO_INFILL_UNIT invalid"
- Guid="71c1da17-894d-4604-b496-564eb18b3236"
+ Guid="f20b221a-ea11-4d62-b953-5392f2a01522"
 >
 <PreConditions>
 <PreCondition
- Guid="fd9a01a3-913a-4f99-93b9-389b57f198c7"
+ Guid="ccf45fd9-2463-4ba5-ba31-cd069c225efa"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT_WITH_NEIGHBOURING_RADIO_INFILL_UNIT.MessageValuesCorrect(struct.SESSION_MANAGEMENT_WITH_NEIGHBOURING_RADIO_INFILL_UNIT)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="NATIONAL_VALUES invalid"
- Guid="84b361cb-ebc5-413b-9823-e570dc11ab41"
+ Guid="b52e520c-3b00-4aee-a142-3f8160364a96"
 >
 <PreConditions>
 <PreCondition
- Guid="cec8c5d7-6225-477c-988a-98ba349fc962"
+ Guid="bc136cbe-609f-436e-80c6-9c73a6d8a269"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.NATIONAL_VALUES.MessageValuesCorrect(struct.NATIONAL_VALUES)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="LINKING invalid"
- Guid="d9cc64ac-1060-4a87-a147-eebf6a3b82cd"
+ Guid="477062ba-f939-45b4-ad2b-3f55c21a220e"
 >
 <PreConditions>
 <PreCondition
- Guid="5dafd859-608c-4136-8fe0-13353fd188a7"
+ Guid="19516269-1f7a-4ee8-afa7-0259017c08b1"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.LINKING.MessageValuesCorrect(struct.LINKING)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM invalid"
- Guid="32970a2b-7740-4138-ab28-544decac0e01"
+ Guid="b19b81a7-8f60-4fe2-83e8-7a5dbfb0d935"
 >
 <PreConditions>
 <PreCondition
- Guid="dfa3f0fb-bd6d-419d-a1f8-258a337e9c30"
+ Guid="ac963633-995f-48da-a81b-d96ecaebb4ae"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM.MessageValuesCorrect(struct.TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="AXLE_LOAD_SPEED_PROFILE invalid"
- Guid="31f696a9-fac4-4b68-9ca5-806b929e4739"
+ Guid="65db7f37-3a91-4610-80f4-1be7a2325e0f"
 >
 <PreConditions>
 <PreCondition
- Guid="0baa1187-ef27-42bc-819d-2299facfa2f9"
+ Guid="45e9e124-2b28-40c8-ada4-e2dccd4af877"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.MessageValuesCorrect(struct.AXLE_LOAD_SPEED_PROFILE)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="LEVEL_TRANSITION_ORDER invalid"
- Guid="8dd8ee8c-b4f6-4af5-879d-399077c22973"
+ Guid="34835da0-c6c1-42fb-8ec1-27d03bba6a9d"
 >
 <PreConditions>
 <PreCondition
- Guid="c7c97009-d655-4cf7-bd04-2b363a4e6ed0"
+ Guid="560c7126-6035-4713-9bce-d27838587860"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.MessageValuesCorrect(struct.LEVEL_TRANSITION_ORDER)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="SESSION_MANAGEMENT invalid"
- Guid="cd71cfcc-b329-499b-9b03-50920a0395f7"
+ Guid="68fa30c4-8de8-4adc-a5fc-8558edb516d9"
 >
 <PreConditions>
 <PreCondition
- Guid="120e3c69-d892-42ec-99f4-85ea10d027d4"
+ Guid="ee19e781-b539-47de-be3c-5ccf36ca7950"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT.MessageValuesCorrect(struct.SESSION_MANAGEMENT)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="RADIO_NETWORK_REGISTRATION invalid"
- Guid="e66de808-4c0d-4b16-85b5-7c62483f5892"
+ Guid="91c81561-a239-461b-8d99-caa6d5b63c7c"
 >
 <PreConditions>
 <PreCondition
- Guid="d4a1832c-2076-40d9-9604-8c6c8cbdada0"
+ Guid="860d6b31-7010-4b66-a54f-46b967626be2"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.RADIO_NETWORK_REGISTRATION.MessageValuesCorrect(struct.RADIO_NETWORK_REGISTRATION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="MOVEMENT_AUTHORITY_REQUEST_PARAMETERS invalid"
- Guid="9e0473ae-7832-4e4e-8953-b8bb730a6f7a"
+ Guid="a9c0b0ab-ceea-4df9-88c7-be48994ff614"
 >
 <PreConditions>
 <PreCondition
- Guid="cecb327d-71cb-4a3f-9649-44ae945ed661"
+ Guid="23a7b582-ba84-4be3-83ea-652768811e55"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS.MessageValuesCorrect(struct.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="POSITION_REPORT_PARAMETERS invalid"
- Guid="eb39d848-f1d9-4226-aa85-6a491baf262b"
+ Guid="960931de-b06b-4447-a791-de474b51a840"
 >
 <PreConditions>
 <PreCondition
- Guid="2ad51d56-5fe0-4a29-9710-89f4366be202"
+ Guid="6d995be1-2ed6-4cee-b563-2fbc26c3a3b3"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.POSITION_REPORT_PARAMETERS.MessageValuesCorrect(struct.POSITION_REPORT_PARAMETERS)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="TEMPORARY_SPEED_RESTRICTION invalid"
- Guid="edc9b046-b721-4294-8cdc-c9be0a535710"
+ Guid="a6aec434-4eeb-4b6c-9406-d71c91819f5f"
 >
 <PreConditions>
 <PreCondition
- Guid="1d6bcfd1-b817-45e8-b613-666f0de8fbc4"
+ Guid="98268c09-5bfa-4583-9360-1afed88d8cc5"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.MessageValuesCorrect(struct.TEMPORARY_SPEED_RESTRICTION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="TEMPORARY_SPEED_RESTRICTION_REVOCATION invalid"
- Guid="027eec49-682a-448a-84e3-91f3b3d031a1"
+ Guid="194d25ef-bdab-4f78-935d-a2920f2202b4"
 >
 <PreConditions>
 <PreCondition
- Guid="3df044eb-6520-4b9a-b9ec-40876d91ed0b"
+ Guid="6a97e0d0-8b0d-4ddf-94e1-d15c9cc3cb67"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.MessageValuesCorrect(struct.TEMPORARY_SPEED_RESTRICTION_REVOCATION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="TRACK_CONDITION invalid"
- Guid="a4aa2559-aaff-420d-bed5-f3211dd92c99"
+ Guid="8d9b41aa-9291-476b-bd09-40f42fc404b9"
 >
 <PreConditions>
 <PreCondition
- Guid="e42196b6-e6ac-4eb4-b1ee-cde8d97854de"
+ Guid="afd9898e-d207-42e0-98e6-36b0d61f1ad5"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION.MessageValuesCorrect(struct.TRACK_CONDITION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="ROUTE_SUITABILITY_DATA invalid"
- Guid="050bcd36-cc94-4393-8d1b-d09dd61f412c"
+ Guid="d80643c4-7512-4367-8604-fecb45007fab"
 >
 <PreConditions>
 <PreCondition
- Guid="65f4a8e0-6c12-4e61-af6e-f6c58b95c3ce"
+ Guid="938b2b98-96ee-4da7-9244-e77826f69694"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.MessageValuesCorrect(struct.ROUTE_SUITABILITY_DATA)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="ADHESION_FACTOR invalid"
- Guid="96fc356e-fe82-40bb-b069-cb9bb2dcce82"
+ Guid="db1e076a-d711-49aa-acb7-7c66f1a3ba6e"
 >
 <PreConditions>
 <PreCondition
- Guid="2cf86be7-5995-4738-b3ec-a372d797fbb4"
+ Guid="edd74c21-ad9c-463d-b9e5-c5b9ed34a9cf"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.ADHESION_FACTOR.MessageValuesCorrect(struct.ADHESION_FACTOR)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES invalid"
- Guid="4df276ec-0d55-4bbd-bd18-feffb86d5e67"
+ Guid="3abfc2f3-f248-45fc-8409-002a057435bd"
 >
 <PreConditions>
 <PreCondition
- Guid="56dd7e22-a918-453e-877b-e4697b11d12e"
+ Guid="9c053ffc-cb2c-4370-a050-253ae9d0e426"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES.MessageValuesCorrect(struct.PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES invalid"
- Guid="f4c981f2-6115-4a6a-9108-910901bf10ea"
+ Guid="fefebdc6-6bc0-4b0a-a693-878f5a1e0982"
 >
 <PreConditions>
 <PreCondition
- Guid="1ba5b3c4-0dfe-43d9-8c0c-da5afb8b2add"
+ Guid="8a4886ec-7116-4640-9b28-ec26dbbb1860"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES.MessageValuesCorrect(struct.PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="GEOGRAPHICAL_POSITION_INFORMATION invalid"
- Guid="ca1fdde6-8b19-4980-9a2f-ad5d47574782"
+ Guid="d37720e6-29d6-4426-99fc-85f625505f2a"
 >
 <PreConditions>
 <PreCondition
- Guid="6fc3429e-3cd1-4680-9be2-74f8271f9d5d"
+ Guid="172963c6-2652-4049-b49a-62745e0d5703"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.GEOGRAPHICAL_POSITION_INFORMATION.MessageValuesCorrect(struct.GEOGRAPHICAL_POSITION_INFORMATION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="RBC_TRANSITION_ORDER invalid"
- Guid="26ee455c-3121-44e6-933d-26dc30d59136"
+ Guid="a8a5e987-9f30-4f91-b469-9b43eb24e379"
 >
 <PreConditions>
 <PreCondition
- Guid="3838fe60-5fbe-4768-ad4f-4db24dcf4a1b"
+ Guid="d900990e-abf1-4942-97c2-9cd61e99444b"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.RBC_TRANSITION_ORDER.MessageValuesCorrect(struct.RBC_TRANSITION_ORDER)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="REVERSING_AREA_INFORMATION invalid"
- Guid="95d2b4f6-58d7-4f94-85b7-6a39aa81c4b9"
+ Guid="d99083cf-c420-4626-96b9-f54aa49eb63b"
 >
 <PreConditions>
 <PreCondition
- Guid="f4999efb-51cd-4d28-bf0f-4a36b75fd6a0"
+ Guid="94c99020-7436-47cd-bbb4-d9876b8613a6"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.MessageValuesCorrect(struct.REVERSING_AREA_INFORMATION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="REVERSING_SUPERVISION_INFORMATION invalid"
- Guid="bd8d660c-03b4-49fc-af46-85dbfdc6e884"
+ Guid="4195e736-e3e1-4115-a788-d42c793ae230"
 >
 <PreConditions>
 <PreCondition
- Guid="e2df125b-e5d8-495c-905f-df8651cf81ff"
+ Guid="d9d090be-de9e-4fb1-b3dc-98fba0cff4f5"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.MessageValuesCorrect(struct.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="TRAIN_RUNNING_NUMBER_FROM_RBC invalid"
- Guid="46618ab0-305a-4334-95d6-3aaa397eb71c"
+ Guid="25cefdc0-89ed-4207-8caa-25c6c3176922"
 >
 <PreConditions>
 <PreCondition
- Guid="938ff04b-250f-4810-8d1b-f135baba25a7"
+ Guid="9e9f5358-2d82-4003-b20d-baad6e09cf25"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.TRAIN_RUNNING_NUMBER_FROM_RBC.MessageValuesCorrect(struct.TRAIN_RUNNING_NUMBER_FROM_RBC)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="LSSMA_DISPLAY_TOGGLE_ORDER invalid"
- Guid="01ec96ff-9cb2-4475-8433-d64f9b0ce729"
+ Guid="b9516abc-bdb1-456b-af75-a2360246f3e7"
 >
 <PreConditions>
 <PreCondition
- Guid="1ab9e9a0-0adf-4b6d-aa80-be7d5823cf1e"
+ Guid="b13ec8ba-edc2-4339-b94d-314bc1ac3710"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.LSSMA_DISPLAY_TOGGLE_ORDER.MessageValuesCorrect(struct.LSSMA_DISPLAY_TOGGLE_ORDER)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="a0752c17-8bd3-4c5f-96c8-24ce20ea6a45"
+ Guid="a8de8a2b-2c1c-4dbd-975d-44553dcac11a"
 >
 <Expression>True</Expression>
 </Case></Cases>

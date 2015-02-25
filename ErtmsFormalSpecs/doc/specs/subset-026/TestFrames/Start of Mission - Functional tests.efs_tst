@@ -827,9 +827,13 @@
 {
     Message =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
-    SOM_POSITION_REPORT_CONFIRMED_BY_RBC =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.SOM_POSITION_REPORT_CONFIRMED_BY_RBC.Message
-    {
-    }
+    SOM_POSITION_REPORT_CONFIRMED_BY_RBC =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.SOM_POSITION_REPORT_CONFIRMED_BY_RBC.Message{
+    NID_MESSAGE =&gt; 43,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; 120,
+    M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
+    NID_LRBG =&gt; Messages.NID_LRBG.Unknown
+}
 },
     Priority =&gt; EURORADIO.MessagePriorityEnum.Normal
 }</Action><Action
@@ -863,9 +867,13 @@
 {
     Message =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
-    TRAIN_ACCEPTED =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.TRAIN_ACCEPTED.Message
-    {
-    }
+    TRAIN_ACCEPTED =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.TRAIN_ACCEPTED.Message{
+    NID_MESSAGE =&gt; 41,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; 1540,
+    M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
+    NID_LRBG =&gt; Messages.NID_LRBG.Unknown
+}
 },
     Priority =&gt; EURORADIO.MessagePriorityEnum.Normal
 }</Action><Action
@@ -899,9 +907,13 @@
 {
     Message =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.Message
 {
-    TRAIN_REJECTED =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.TRAIN_REJECTED.Message
-    {
-    }
+    TRAIN_REJECTED =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.TRAIN_REJECTED.Message{
+    NID_MESSAGE =&gt; 40,
+    L_MESSAGE =&gt; 0,
+    T_TRAIN =&gt; 2000,
+    M_ACK =&gt; Messages.M_ACK.No_acknowledgement_required,
+    NID_LRBG =&gt; Messages.NID_LRBG.Unknown
+}
 },
     Priority =&gt; EURORADIO.MessagePriorityEnum.Normal
 }</Action><Action

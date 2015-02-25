@@ -276,6 +276,25 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Name="Current time"
+ Guid="e4e31af2-df86-4cb9-a9ff-56610527c5fd"
+>
+<Comment>Set the CurrentTime to 0.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Current time"
+ Guid="829af87a-cae0-4ae8-add5-a7aabaa30622"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="d23792e6-e5e1-4eb5-90ea-66a30f0be03d"
+>Kernel.DateAndTime.CurrentTime &lt;- 0.0</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
  NeedsRequirement="FALSE"
  Name="Euroradio"
  Guid="ae16712e-1456-4e46-aee5-dee11cbe20a3"
