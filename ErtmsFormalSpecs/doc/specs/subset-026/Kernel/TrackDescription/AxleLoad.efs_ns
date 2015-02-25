@@ -932,7 +932,8 @@ ON
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="dab6336a-a983-4075-a559-a6f6df7c3878"
 >
-</ReqRef><Parameters>
+</ReqRef><Comment>Deletes the axle load profile information beyond the provided location.</Comment>
+<Parameters>
 <Parameter
  Type="BaseTypes.Distance"
  Name="aLocation"
@@ -956,11 +957,57 @@ ON
  Guid="6bea3d51-e33c-4574-afbe-398d11c78816"
 >
 <PreConditions>
+<PreCondition
+ Guid="f39a3c58-7fce-44ba-bc79-81e60925fcf8"
+>ASP.ALs != []</PreCondition><PreCondition
+ Guid="474d2b8c-225f-458b-ab6b-e27f1a74a7f3"
+>(LAST X IN ASP.ALs).Distance + (LAST X IN ASP.ALs).Length &gt; aLocation</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove elements beyond the given location"
+ Guid="e100a0b7-208f-4527-ae7a-d2ba598dfda3"
+>
+<Comment>First, remove all the axle load elements that are beyond the provided location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove elements beyond the given location"
+ Guid="0b09f01e-10e9-425a-b0aa-7b70b341dc58"
+>
+<PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="921e65af-92b9-49b6-99f6-fa3e57b3f59e"
 >ASP.ALs &lt;- MAP ASP.ALs | X.Distance &lt;= aLocation USING X IN X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update the length of the last element"
+ Guid="d74cfad9-8913-49a3-97cd-7d8902ad0edd"
+>
+<Comment>Then, update the length of the last axle load element in order for it to end at aLocation.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update the length of the last element"
+ Guid="939f739f-f106-4e5f-bcff-3b741b6f7ef6"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="c434b2e7-ef58-4e81-8c69-bb00823638aa"
+>(LAST X IN ASP.ALs).Length &lt;- aLocation - (LAST X IN ASP.ALs).Distance</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

@@ -13,7 +13,7 @@
  MaxValue="10"
  Precision="DoublePrecision"
  Default="0.0"
- X="550"
+ X="440"
  Y="220"
  Width="100"
  Height="50"
@@ -35,7 +35,7 @@
  Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="GradientInfo"
+ Name="GradientStruct"
  Guid="b67f932e-9aa3-44c2-82dd-63dbcb515caa"
 >
 <ReqRef
@@ -83,7 +83,7 @@
 >
 </StructureElement></Structure><Structure
  Default=""
- X="330"
+ X="280"
  Y="220"
  Width="100"
  Height="50"
@@ -112,7 +112,7 @@
 >
 </StructureElement></Structure><Structure
  Default=""
- X="330"
+ X="280"
  Y="120"
  Width="100"
  Height="50"
@@ -174,7 +174,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.TrackDescription.Gradient.GradientInfo"
+ TypeName="Kernel.TrackDescription.Gradient.GradientStruct"
  MaxSize="50"
  Default="[]"
  Y="120"
@@ -259,7 +259,7 @@
 2. Gradient value is different from 255 =&gt; the gradient end will be infinite</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.Gradient.GradientInfo"
+ Type="Kernel.TrackDescription.Gradient.GradientStruct"
  Name="Current"
  Guid="4dd83776-79ca-421c-802b-3e29e7a80c14"
 >
@@ -320,7 +320,7 @@ INITIAL_VALUE
 Outside the distances provided by the gradient, the gradient value is defined as Indefinite The gradient value is not compensated by the nominal rotating mass (used for computation of A_normal_service(V, d)).</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.Gradient.GradientInfo"
+ Type="Kernel.TrackDescription.Gradient.GradientStruct"
  Name="GradientInfo"
  Guid="8b5413f1-a3af-4611-afaa-ee7ff5415f08"
 >
@@ -742,7 +742,7 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 Outside the distances provided by the gradient, the gradient value is defined as Indefinite</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.Gradient.GradientInfo"
+ Type="Kernel.TrackDescription.Gradient.GradientStruct"
  Name="GradientInfo"
  Guid="e306ed33-b31a-405c-bcf7-b88ed5725021"
 >
@@ -1055,7 +1055,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Expression>CorrectionFactorFunction ( aCorrectionFactor =&gt; KnMin, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.Gradient.GradientInfo"
+ Type="Kernel.TrackDescription.Gradient.GradientStruct"
  Default=""
  X="550"
  Y="300"
@@ -1066,7 +1066,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 >
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.Gradient.GradientInfo"
+ Type="Kernel.TrackDescription.Gradient.GradientStruct"
  Name="aGradient"
  Guid="31c5c86b-208b-4776-8d65-cfb429e2f3af"
 >
@@ -1076,7 +1076,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="Value"
  Guid="6d7ed6e7-c960-4fcd-8285-ba5f72e50a28"
 >
-<Expression>GradientInfo{
+<Expression>Kernel.TrackDescription.Gradient.GradientStruct{
     Distance =&gt; aGradient.Distance - TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     Gradient =&gt; aGradient.Gradient
 }</Expression>
@@ -1210,7 +1210,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Action
  Guid="7036cebd-f595-4bb8-be2e-2bb5ce2840bc"
 >StoreSingleProfileInfo ( 
-  GradientInfo {
+  Kernel.TrackDescription.Gradient.GradientStruct {
     Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT, scale =&gt; Packet.Q_SCALE ),
     Gradient =&gt; CreateGradient ( Q_GDIR =&gt; Packet.Q_GDIR, G_A =&gt; Packet.G_A )
   }
@@ -1241,7 +1241,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 >APPLY  
   StoreSingleProfileInfo
   ( 
-    GradientInfo
+    Kernel.TrackDescription.Gradient.GradientStruct
     {
       Distance =&gt; AbsoluteDistance ( Gradients =&gt; Packet.Sequence1, Gradient =&gt; X, Scale =&gt; Packet.Q_SCALE ) + MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT,  scale =&gt; Packet.Q_SCALE ),
       Gradient =&gt; CreateGradient ( Q_GDIR =&gt; X.Q_GDIR, G_A =&gt; X.G_A )
@@ -1262,7 +1262,7 @@ ON Packet.Sequence1</Action></Actions>
 >
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.Gradient.GradientInfo"
+ Type="Kernel.TrackDescription.Gradient.GradientStruct"
  Name="Info"
  Guid="392cab3e-0003-43de-be28-1b310b5b924f"
 >
@@ -1389,15 +1389,38 @@ ON Packet.Sequence1</Action></Actions>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Delete gradients from the given location"
+ Name="Delete gradients beyond the given location"
  Guid="49af429f-abb5-4a0e-842e-7f6171bc1ed4"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Delete gradients from the given location"
+ Name="Delete gradients beyond the given location"
  Guid="34050a5d-e23b-4051-a69e-5c88b49c8ace"
+>
+<PreConditions>
+<PreCondition
+ Guid="6c1c6ff8-f1ae-44e3-92d2-5667386d9132"
+>Gradients != []
+  AND
+(LAST X IN Gradients).Distance &gt; aLocation</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove elements beyond the given location"
+ Guid="03a9c11c-fda1-4a2d-964e-4afe6490e825"
+>
+<Comment>First, remove all the gradient elements that are beyond the provided location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove elements beyond the given location"
+ Guid="8c910e16-ba1b-4df5-a91e-420f474e8427"
 >
 <PreConditions>
 </PreConditions>
@@ -1405,6 +1428,36 @@ ON Packet.Sequence1</Action></Actions>
 <Action
  Guid="a45aa091-11f4-4232-acc7-4d23db35c4bb"
 >Gradients &lt;- MAP Gradients | X.Distance &lt;= aLocation USING X IN X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Add the last element"
+ Guid="5d51c9a9-fc33-4a26-b946-faa528be6af7"
+>
+<Comment>Then, create the final gradient element indicating that the gradient profile ends at aLocation.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Add the last element"
+ Guid="604fb3fe-095c-427c-b9c6-500569951bc3"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="593d352d-8a9a-48a3-9b69-029248148f09"
+>INSERT
+  GradientStruct
+  {
+    Distance =&gt; aLocation,
+    Gradient =&gt; BaseTypes.Gradient.GradientEnd
+  }
+IN
+  Gradients</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

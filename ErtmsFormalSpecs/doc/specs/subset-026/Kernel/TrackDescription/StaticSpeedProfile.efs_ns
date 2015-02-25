@@ -17,7 +17,7 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="StaticSpeedRestriction"
+ Name="StaticSpeedRestrictionStruct"
  Guid="cb90d3f3-a659-44e2-90dc-850a8fa9cf8c"
 >
 <ReqRef
@@ -201,7 +201,7 @@
 >
 <Comment>A collection of speed restrictions for train categories, received from the trackside.</Comment>
 </Collection><Collection
- TypeName="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
+ TypeName="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
  MaxSize="50"
  Default="[]"
  X="220"
@@ -248,7 +248,7 @@
 </ReqRef><Comment>Provides the length of a static speed restriction together with the train&apos;s length, if needed.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
  Name="aSSP"
  Guid="737d63a4-ba8a-431b-83b0-d1a93b352e6a"
 >
@@ -298,7 +298,7 @@
 </ReqRef><Comment>Provides the highest Cant Deficiency value below the value of the train&apos;s &quot;Cant Deficiency&quot; train category.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
  Name="aSSR"
  Guid="b801973a-5099-4ab2-b810-01ca1067e7fd"
 >
@@ -393,7 +393,7 @@ INITIAL_VALUE
 </ReqRef><Comment>Provides the speed restriction for Cant Deficiency train category. If no speed restriction for Cant Deficiency categories were provided by the trackside, the function returns the basic speed associated to the current static speed restriction.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
  Name="aSSR"
  Guid="342a3b79-f226-4427-906f-5e0144fc557b"
 >
@@ -415,7 +415,7 @@ INITIAL_VALUE
 <Expression>(FIRST X IN aSSR.Categories | X.Qualifier == Messages.Q_DIFF.Cant_Deficiency_specific_category AND X.CantDeficiency == SelectCantDeficiencyCategory(aSSR)).Speed</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
  Default=""
  X="440"
  Y="180"
@@ -474,7 +474,7 @@ INITIAL_VALUE
  Name="Value"
  Guid="911f9e12-9e9e-444b-9f69-eb1556d30683"
 >
-<Expression>StaticSpeedRestriction
+<Expression>Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
 {
     Distance =&gt; Distance,
     BasicSpeed =&gt; BasicSpeed,
@@ -639,7 +639,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </ReqRef><Comment>Provides the speed profile due to a static speed restriction.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
  Name="aSSP"
  Guid="56feb81c-ddb2-42c4-a6fb-d5925061bfd2"
 >
@@ -710,7 +710,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </ReqRef><Comment>Provides the end of the current static speed restriction.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
  Name="Current"
  Guid="1f758756-d147-4b5d-a37d-377031c83a6f"
 >
@@ -755,7 +755,7 @@ INITIAL_VALUE
 </ReqRef><Comment>Provides the speed value associated to the current static speed restrition, according to train categories values.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
  Name="aSSP"
  Guid="9723b4d6-987f-461d-a853-76ef74a11e00"
 >
@@ -841,7 +841,7 @@ INITIAL_VALUE
 </ReqRef><Comment>Provides the most restrictive speed restrictions associated to Other Specific train categories provided by the trackside mathing the Other International categories of the train.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction"
+ Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
  Name="aSSP"
  Guid="07940cee-c6c5-43dd-9cad-a38350866b44"
 >
@@ -1200,7 +1200,7 @@ ON
 <Action
  Guid="368e58a1-239c-4e8a-bd8b-37f1d4c829d8"
 >INSERT
-    StaticSpeedRestriction
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Distance =&gt; Distance,
         BasicSpeed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; aSSP.V_STATIC, resolution =&gt; 5.0 ),
@@ -1225,7 +1225,7 @@ IN
 <Action
  Guid="65d681d5-c87b-4c85-b562-87d5fcd83f47"
 >INSERT
-    StaticSpeedRestriction
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Distance =&gt; Distance,
         BasicSpeed =&gt; BaseTypes.Speed.Infinity,
@@ -1278,11 +1278,64 @@ IN
  Guid="f2f3600e-8606-44c2-9f22-95071495c0a1"
 >
 <PreConditions>
+<PreCondition
+ Guid="d5f64758-35a8-4aef-bdd9-15409a0ae309"
+>SSP != []
+  AND
+(LAST X IN SSP).Distance &gt; aLocation</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove elements beyond the given location"
+ Guid="80ab1292-0c84-4015-bd8e-c4b94c68be37"
+>
+<Comment>First, remove all the SSP elements that are beyond the provided location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove elements beyond the given location"
+ Guid="426b95bc-baef-4f7a-9c0e-707f4c14d63b"
+>
+<PreConditions>
 </PreConditions>
 <Actions>
 <Action
  Guid="cc46a7b4-f4fe-4c91-ba39-baf6f39aa177"
 >SSP &lt;- MAP SSP | X.Distance &lt;= aLocation USING X IN X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Add the last element"
+ Guid="a0827398-5e0c-4856-9c34-aebfb49decdc"
+>
+<Comment>Then, create the final SSP element indicating that the SSP ends at aLocation.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Add the last element"
+ Guid="c1c87825-d10f-46c4-879b-27ed753c23af"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="75ac58c7-6446-4952-a952-988f80156c00"
+>INSERT
+  StaticSpeedRestrictionStruct
+  {
+    Distance =&gt; aLocation,
+    BasicSpeed =&gt; BaseTypes.Speed.Infinity
+  }
+IN
+  SSP</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

@@ -3286,7 +3286,7 @@ Kernel.TrackDescription.AxleLoad.ASP.ALs != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8b54a180-6453-4856-bc6e-1d0e953f63a0"
->Kernel.TrackDescription.Gradient.Gradients &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING X IN Kernel.TrackDescription.Gradient.GradientInfo{
+>Kernel.TrackDescription.Gradient.Gradients &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING X IN Kernel.TrackDescription.Gradient.GradientStruct{
     Distance =&gt; X.Distance - DistanceFromLRBG,
     Gradient =&gt; X.Gradient
 }</Action></Actions>
@@ -3403,7 +3403,7 @@ Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items != []</Pr
 <Actions>
 <Action
  Guid="8bb2f7b7-e5ec-4f3b-8166-f68ba0fd7f42"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- MAP Kernel.TrackDescription.StaticSpeedProfile.SSP USING X IN Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction{
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- MAP Kernel.TrackDescription.StaticSpeedProfile.SSP USING X IN Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct{
     Distance =&gt; X.Distance - DistanceFromLRBG,
     BasicSpeed =&gt; X.BasicSpeed,
     TrainLengthDelay =&gt; X.TrainLengthDelay,

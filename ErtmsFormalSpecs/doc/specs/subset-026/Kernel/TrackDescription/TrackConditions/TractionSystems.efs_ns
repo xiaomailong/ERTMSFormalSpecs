@@ -11,6 +11,7 @@
 <Structures>
 <Structure
  Default=""
+ X="220"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -53,7 +54,8 @@
 </ReqRef><Comment>Traction system to be used</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="110"
+ X="220"
+ Y="90"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -115,7 +117,7 @@
  TypeName="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformation"
  MaxSize="20"
  Default="[]"
- Y="60"
+ Y="90"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -248,6 +250,8 @@
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum"
  Default=""
+ X="330"
+ Y="180"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -321,6 +325,8 @@
 </Function><Function
  Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn"
  Default=""
+ X="440"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -352,7 +358,7 @@
 </Function></Functions>
 <Procedures>
 <Procedure
- Y="240"
+ Y="270"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -565,7 +571,6 @@ IN General.TCDisplay.Announcements</Action></Actions>
  Type="TractionSystems"
  DefaultValue=""
  VariableMode="Internal"
- Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
