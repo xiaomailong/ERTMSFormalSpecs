@@ -63,7 +63,7 @@
 <Actions>
 <Action
  Guid="914f3dc5-6db7-4309-84ec-796ffe8172ba"
->INSERT BTM.Linking.LinkingData{
+>INSERT BTM.Linking.LinkingDataStruct{
     LocationAccuracy =&gt; 5.0,
     Orientation =&gt; Default.Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
@@ -325,25 +325,25 @@ IN BTM.Linking.Linkings</Action><Action
  Guid="95798d76-0d20-4d7f-a438-3cff5b6fc873"
 >Odometry.EstimatedSpeed &lt;- 10.0</Action><Action
  Guid="62663a29-c9f4-4fc5-acd8-d75ede92e5b1"
->BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingData{
+>BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingDataStruct{
     LocationAccuracy =&gt; 5.0,
     Orientation =&gt; Default.Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 150.0,
     BaliseGroupIdentifier =&gt; 2100
-},BTM.Linking.LinkingData{
+},BTM.Linking.LinkingDataStruct{
     LocationAccuracy =&gt; 5.0,
     Orientation =&gt; Default.Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 100.0,
     BaliseGroupIdentifier =&gt; 2120
-},BTM.Linking.LinkingData{
+},BTM.Linking.LinkingDataStruct{
     LocationAccuracy =&gt; 5.0,
     Orientation =&gt; Default.Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 150.0,
     BaliseGroupIdentifier =&gt; 2142
-},BTM.Linking.LinkingData{
+},BTM.Linking.LinkingDataStruct{
     LocationAccuracy =&gt; 5.0,
     Orientation =&gt; Default.Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
