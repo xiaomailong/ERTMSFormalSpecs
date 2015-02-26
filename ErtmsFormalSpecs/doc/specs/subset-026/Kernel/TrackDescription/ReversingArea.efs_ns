@@ -293,7 +293,7 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="DeleteReversingAreaFromLocation"
+ Name="DeleteReversingAreaBeyondLocation"
  Guid="69d23a05-abc3-46db-8b51-5385b7137ffc"
 >
 <ReqRef
@@ -305,6 +305,11 @@
  Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7d05d059-fbce-4f2e-9035-74207bfafdcd"
+>
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6fe12e18-8c66-4e2d-8fa1-92e22a2680cc"
 >
 </ReqRef><Comment>Deletes the reversing area profile beyond the provided location.</Comment>
 <Parameters>
@@ -319,14 +324,14 @@
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Delete reversing area from the given location"
+ Name="Delete reversing area beyond the given location"
  Guid="c0a2db0c-fb17-471f-804f-d69076e7345e"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Delete reversing area from the given location"
+ Name="Delete reversing area beyond the given location"
  Guid="dd89a391-d6db-4bac-a852-25eeb6eee4bc"
 >
 <PreConditions>

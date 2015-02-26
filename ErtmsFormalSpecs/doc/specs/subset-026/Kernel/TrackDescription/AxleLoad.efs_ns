@@ -909,7 +909,7 @@ ON
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="DeleteAxleLoadProfileFromLocation"
+ Name="DeleteAxleLoadProfileBeyondLocation"
  Guid="61c93ae1-fee2-40da-aaf2-92b65320c256"
 >
 <ReqRef
@@ -945,7 +945,7 @@ ON
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Delete axle load speed profile from the given location"
+ Name="Delete axle load speed profile beyond the given location"
  Guid="30d45a96-4513-43ad-aebd-607cd0fdcd22"
 >
 <Comment>Deletes the axlo load speed profile beyond the provided location.</Comment>
@@ -953,15 +953,15 @@ ON
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Delete axle load speed profile from the given location"
+ Name="Delete axle load speed profile beyond the given location"
  Guid="6bea3d51-e33c-4574-afbe-398d11c78816"
 >
 <PreConditions>
 <PreCondition
- Guid="f39a3c58-7fce-44ba-bc79-81e60925fcf8"
->ASP.ALs != []</PreCondition><PreCondition
  Guid="474d2b8c-225f-458b-ab6b-e27f1a74a7f3"
->(LAST X IN ASP.ALs).Distance + (LAST X IN ASP.ALs).Length &gt; aLocation</PreCondition></PreConditions>
+>ASP.ALs != []
+  AND
+(LAST X IN ASP.ALs).Distance + (LAST X IN ASP.ALs).Length &gt; aLocation</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>

@@ -12,8 +12,8 @@
 <Enumerations>
 <Enum
  Default="LinkingReaction.NoReaction"
- X="340"
- Y="510"
+ X="230"
+ Y="10"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -47,8 +47,8 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="LinkingErrorEnum.NoError"
- X="200"
- Y="510"
+ X="790"
+ Y="100"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -102,13 +102,13 @@
 <Structures>
 <Structure
  Default=""
- X="500"
- Y="510"
+ X="230"
+ Y="100"
  Width="100"
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="LinkingData"
+ Name="LinkingDataStruct"
  Guid="039faab4-39ea-4dfc-864e-e17bf3ad51d8"
 >
 <ReqRef
@@ -216,8 +216,8 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 </ReqRef><Comment>Identifier of the linked balise group.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="680"
- Y="420"
+ X="400"
+ Y="100"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -251,11 +251,11 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="BTM.Linking.LinkingData"
+ TypeName="BTM.Linking.LinkingDataStruct"
  MaxSize="30"
  Default="[]"
- X="500"
- Y="420"
+ X="10"
+ Y="100"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -273,10 +273,10 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 </Collection></Collections>
 <Functions>
 <Function
- Type="BTM.Linking.LinkingData"
+ Type="BTM.Linking.LinkingDataStruct"
  Default=""
- X="170"
- Y="210"
+ X="560"
+ Y="320"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -324,7 +324,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  Name="Value"
  Guid="26c7601d-ea48-4264-a247-cbc27a17b8af"
 >
-<Expression>BTM.Linking.LinkingData {
+<Expression>BTM.Linking.LinkingDataStruct {
   Distance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; D_LINK, scale =&gt; Q_SCALE ),
   BaliseGroupIdentifier =&gt; NID_BG,
   Orientation =&gt; Default.LinkingOrientationConverter ( Q_LINKORIENTATION ),
@@ -335,8 +335,8 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 </Function><Function
  Type="Boolean"
  Default=""
- X="170"
- Y="30"
+ X="340"
+ Y="200"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -390,10 +390,10 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 <Expression>BGinExpectationWindow( FIRST X IN Linkings )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.Linking.LinkingData"
+ Type="BTM.Linking.LinkingDataStruct"
  Default=""
- X="60"
- Y="30"
+ X="120"
+ Y="200"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -418,8 +418,8 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 </Function><Function
  Type="Boolean"
  Default=""
- X="280"
- Y="30"
+ X="560"
+ Y="200"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -492,8 +492,8 @@ BaliseGroupOrientation() == CurrentLinking().Orientation</Expression>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="60"
- Y="90"
+ X="670"
+ Y="260"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -530,8 +530,8 @@ BaliseGroupOrientation() == CurrentLinking().Orientation</Expression>
 </Function><Function
  Type="LinkingReaction"
  Default=""
- X="60"
- Y="210"
+ X="670"
+ Y="320"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -584,8 +584,8 @@ BaliseGroupOrientation() == CurrentLinking().Orientation</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
- X="170"
- Y="90"
+ X="10"
+ Y="200"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -620,8 +620,8 @@ Justification: This simple function can be used here since the update of availab
 </Function><Function
  Type="Boolean"
  Default=""
- X="280"
- Y="150"
+ X="450"
+ Y="200"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -648,8 +648,8 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 </Function><Function
  Type="Boolean"
  Default=""
- X="170"
- Y="150"
+ X="670"
+ Y="200"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -675,8 +675,8 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 </Function><Function
  Type="Boolean"
  Default=""
- X="280"
- Y="90"
+ X="340"
+ Y="260"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -724,8 +724,8 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 </Function><Function
  Type="Boolean"
  Default=""
- X="60"
- Y="150"
+ X="10"
+ Y="260"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -756,8 +756,8 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 </Function><Function
  Type="BTM.Linking.LinkingErrorEnum"
  Default=""
- X="280"
- Y="210"
+ X="230"
+ Y="260"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -850,8 +850,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
- X="390"
- Y="30"
+ X="10"
+ Y="320"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -879,8 +879,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
- X="390"
- Y="90"
+ X="340"
+ Y="320"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -928,8 +928,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
- X="390"
- Y="150"
+ X="450"
+ Y="260"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -972,10 +972,10 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
   BGIsUnknownWithRepositioningPacketValidForDirection() )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.Linking.LinkingData"
+ Type="BTM.Linking.LinkingDataStruct"
  Default=""
- X="640"
- Y="180"
+ X="230"
+ Y="200"
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
@@ -988,7 +988,7 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
  Name="Value"
  Guid="973e721c-5881-4502-b5ba-5956531d9a1d"
 >
-<Expression>BTM.Linking.LinkingData{
+<Expression>BTM.Linking.LinkingDataStruct{
     LocationAccuracy =&gt; (FIRST X IN Linkings | X != (FIRST X IN Linkings)).LocationAccuracy,
     Orientation =&gt; (FIRST X IN Linkings | X != (FIRST X IN Linkings)).Orientation,
     Reaction =&gt; (FIRST X IN Linkings | X != (FIRST X IN Linkings)).Reaction,
@@ -997,10 +997,10 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.Linking.LinkingData"
+ Type="BTM.Linking.LinkingDataStruct"
  Default=""
- X="640"
- Y="240"
+ X="450"
+ Y="320"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1028,8 +1028,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
- X="750"
- Y="180"
+ X="560"
+ Y="260"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1061,8 +1061,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
- X="860"
- Y="180"
+ X="120"
+ Y="260"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1087,7 +1087,7 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </ReqRef><Comment>Checks whether the linked BG was found inside its expectation window</Comment>
 <Parameters>
 <Parameter
- Type="BTM.Linking.LinkingData"
+ Type="BTM.Linking.LinkingDataStruct"
  Name="LinkedBG"
  Guid="a5522054-89ca-44b5-b236-35449029ff8e"
 >
@@ -1123,8 +1123,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
- X="60"
- Y="270"
+ X="230"
+ Y="320"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1147,8 +1147,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function><Function
  Type="Boolean"
  Default=""
- X="390"
- Y="210"
+ X="120"
+ Y="320"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1180,7 +1180,8 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </Function></Functions>
 <Procedures>
 <Procedure
- X="640"
+ X="10"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1321,7 +1322,8 @@ IN Linkings</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="750"
+ X="120"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1378,7 +1380,8 @@ IN Linkings</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="860"
+ X="230"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1461,8 +1464,8 @@ This function is called whenever it is appropriate, so it does not need any prec
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="640"
- Y="60"
+ X="340"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -1643,8 +1646,8 @@ Activate the service brake if a second linked BG in a row is missed.</Comment>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="860"
- Y="60"
+ X="670"
+ Y="420"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -2218,8 +2221,8 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="750"
- Y="60"
+ X="560"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -2332,8 +2335,8 @@ As the first part of this procedure deletes the first (inconsistent) BG from the
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="640"
- Y="120"
+ X="450"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -2484,14 +2487,78 @@ IN Kernel.EmergencyStops</Action><Action
 IN Kernel.EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ X="780"
+ Y="420"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DeleteLinkingBeyondLocation"
+ Guid="373f9f50-1c59-4348-ab54-f19f99f60f6d"
+>
+<ReqRef
+ Id="26e0365b-cab0-4bc2-865d-9286d662833c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8c21cf35-8565-48fb-a404-0aa6a8def8d5"
+>
+</ReqRef><ReqRef
+ Id="9445d064-40bf-43c4-bb12-67ac01e3e541"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="28665687-506b-4a5d-a602-51fccb9dbc75"
+>
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1c54dfe6-aa5a-49ff-99de-75bf6e5d0d3a"
+>
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4526ff09-3e15-4e0f-b47b-2c9967efebb6"
+>
+</ReqRef><Comment>Deletes the linking information beyond the provided location.</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="aLocation"
+ Guid="5ca1491d-789e-42f9-a622-728c9bb3eba4"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Delete linking beyond the given location"
+ Guid="1d892567-f444-41c0-b54d-b14155967418"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Delete linking beyond the given location"
+ Guid="73565ceb-37b3-4b9b-be18-969fcda91e6b"
+>
+<PreConditions>
+<PreCondition
+ Guid="506a2644-bec8-45d9-8999-6a0355be0ee3"
+>Linkings != []
+  AND
+(LAST X IN Linkings).Distance &gt; aLocation</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a80aee1b-084e-449b-af7b-529212487248"
+>Linkings &lt;- MAP Linkings | X.Distance &lt;= aLocation USING X IN X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
- X="380"
- Y="320"
+ X="670"
+ Y="10"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -2509,8 +2576,8 @@ IN Kernel.EmergencyStops</Action></Actions>
  Type="Linkings"
  DefaultValue="[]"
  VariableMode="Internal"
- X="500"
- Y="320"
+ X="10"
+ Y="10"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -2534,10 +2601,11 @@ IN Kernel.EmergencyStops</Action></Actions>
  Type="Boolean"
  DefaultValue="True"
  VariableMode="Internal"
- X="260"
- Y="320"
+ X="560"
+ Y="10"
  Width="100"
  Height="50"
+ Pinned="TRUE"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="MessageRejected"
@@ -2548,8 +2616,8 @@ IN Kernel.EmergencyStops</Action></Actions>
  Type="RAMSSupervisionStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
- X="620"
- Y="320"
+ X="340"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -2566,8 +2634,8 @@ IN Kernel.EmergencyStops</Action></Actions>
  Type="RAMSSupervisionStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
- X="740"
- Y="320"
+ X="450"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -2584,8 +2652,8 @@ IN Kernel.EmergencyStops</Action></Actions>
 <Rules>
 <Rule
  Priority="CleanUp"
- X="60"
- Y="360"
+ X="120"
+ Y="520"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -2612,8 +2680,8 @@ IN Kernel.EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
- X="60"
- Y="420"
+ X="10"
+ Y="520"
  Width="100"
  Height="50"
  Implemented="TRUE"

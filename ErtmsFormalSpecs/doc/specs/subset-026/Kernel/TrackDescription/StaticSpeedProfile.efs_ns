@@ -1242,7 +1242,7 @@ IN
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="DeleteSSPFromLocation"
+ Name="DeleteSSPBeyondLocation"
  Guid="441952f2-c0b8-427f-961e-1cef74d38580"
 >
 <ReqRef
@@ -1254,6 +1254,11 @@ IN
  Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b02e120e-fa6c-4fd1-bb9c-8c09ff3dcf13"
+>
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="61c82126-ec18-4f87-ae1d-1df2784fc527"
 >
 </ReqRef><Comment>Deletes the static speed profile information beyond the provided location.</Comment>
 <Parameters>
@@ -1267,14 +1272,14 @@ IN
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Delete SSP from the given location"
+ Name="Delete SSP beyond the given location"
  Guid="07a9aee7-731a-450d-bec1-c45f6b597106"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Delete SSP from the given location"
+ Name="Delete SSP beyond the given location"
  Guid="f2f3600e-8606-44c2-9f22-95071495c0a1"
 >
 <PreConditions>

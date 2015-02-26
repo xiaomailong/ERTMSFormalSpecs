@@ -695,6 +695,7 @@ SituationM()</Expression>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Handle Linking"
  Guid="b2ac01c2-023f-472d-bab4-2fbc93f18189"
@@ -703,6 +704,7 @@ SituationM()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the first category"
  Guid="99e125df-4a98-459a-af3f-b98b9d1fce16"
 >
@@ -711,14 +713,22 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0c3ada7d-56bb-4d66-bf99-9ce466b608ec"
 >
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb294958-963a-431a-969c-cff9a9843db2"
+>
 </ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="498b78ab-b1de-4802-afef-19570248512a"
 >FirstCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="b285c5a2-06e1-4818-915d-6a547a0f3cff"
+>BTM.Linking.DeleteLinkingBeyondLocation ( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the second category"
  Guid="714f0d21-71f3-4d65-b6ee-baa6e06f4a96"
 >
@@ -727,13 +737,20 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="1e8c62fc-e752-4acd-b119-058e336f3e62"
 >
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7e8c0f35-a74d-4056-ade0-4176fa72d354"
+>
 </ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="8777746a-3e4e-4f24-82c3-b9d558147e8a"
 >SecondCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="d080d6d0-3017-423b-9af9-d854392da594"
+>BTM.Linking.DeleteLinkingBeyondLocation ( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the third category"
@@ -852,7 +869,7 @@ SituationM()</Expression>
 <Actions>
 <Action
  Guid="b6312bf7-36fa-443c-8884-72237c8a6fc1"
->TrackDescription.Gradient.DeleteGradientsFromLocation( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
+>TrackDescription.Gradient.DeleteGradientsBeyondLocation( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the second category"
@@ -863,6 +880,11 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e934c1c7-d386-4a32-89fe-6e6528721e41"
 >
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b28948e2-9c62-4eaf-81be-be49f6a0272c"
+>
 </ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
@@ -871,7 +893,7 @@ SituationM()</Expression>
 <Actions>
 <Action
  Guid="dde2f655-d696-4e14-ba39-372609509136"
->TrackDescription.Gradient.DeleteGradientsFromLocation( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
+>TrackDescription.Gradient.DeleteGradientsBeyondLocation( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the third category"
@@ -924,7 +946,7 @@ SituationM()</Expression>
 <Actions>
 <Action
  Guid="46f63396-c71a-4b30-81a2-5381e233f3b3"
->TrackDescription.StaticSpeedProfile.DeleteSSPFromLocation ( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
+>TrackDescription.StaticSpeedProfile.DeleteSSPBeyondLocation ( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the second category"
@@ -935,6 +957,11 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2f0c8f8f-3e86-4daf-8d39-64b726f8b0a6"
 >
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d7cf61f0-749f-48d1-9b87-1dcdbe1e25d6"
+>
 </ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
@@ -943,7 +970,7 @@ SituationM()</Expression>
 <Actions>
 <Action
  Guid="17e9704b-59b0-427c-ad0f-2dea0c54c8ec"
->TrackDescription.StaticSpeedProfile.DeleteSSPFromLocation ( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
+>TrackDescription.StaticSpeedProfile.DeleteSSPBeyondLocation ( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the third category"
@@ -983,6 +1010,11 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f1b725c2-5d66-4f37-9467-2ef3ead4ee1e"
 >
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dd0df66a-7ea3-4bf9-98fb-a83d8d19ee39"
+>
 </ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
@@ -991,7 +1023,7 @@ SituationM()</Expression>
 <Actions>
 <Action
  Guid="24b1b109-9608-42c9-a201-87e3e8256330"
->TrackDescription.AxleLoad.DeleteAxleLoadProfileFromLocation ( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
+>TrackDescription.AxleLoad.DeleteAxleLoadProfileBeyondLocation ( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the second category"
@@ -1002,6 +1034,11 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="81e3a940-b280-487f-85cc-0615d3bb72b2"
 >
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="78d32175-fe29-4dc6-8ea4-69d8b4fb60e5"
+>
 </ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
@@ -1010,7 +1047,7 @@ SituationM()</Expression>
 <Actions>
 <Action
  Guid="5951c404-37c6-42f9-b6ff-351a91213e14"
->TrackDescription.AxleLoad.DeleteAxleLoadProfileFromLocation ( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
+>TrackDescription.AxleLoad.DeleteAxleLoadProfileBeyondLocation ( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the third category"
@@ -3258,7 +3295,7 @@ SituationM()</Expression>
 <Actions>
 <Action
  Guid="b13f068f-b695-4642-9c61-7faf239bc490"
->TrackDescription.ReversingArea.DeleteReversingAreaFromLocation ( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
+>TrackDescription.ReversingArea.DeleteReversingAreaBeyondLocation ( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the second category"
@@ -3282,7 +3319,7 @@ SituationM()</Expression>
 <Actions>
 <Action
  Guid="bfaa3eea-9481-406c-b0d0-c9eb5a989ae3"
->TrackDescription.ReversingArea.DeleteReversingAreaFromLocation ( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
+>TrackDescription.ReversingArea.DeleteReversingAreaBeyondLocation ( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the third category"
