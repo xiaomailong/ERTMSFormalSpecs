@@ -11,12 +11,11 @@
 <Structures>
 <Structure
  Default=""
- X="590"
- Y="50"
+ X="220"
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="StationPlatform"
+ Name="StationPlatformStruct"
  Guid="1d309980-5fef-4858-8509-9698eac509ae"
 >
 <ReqRef
@@ -66,15 +65,15 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="431ded76-3f19-4adb-bceb-ccce887ebffb"
 >
-</ReqRef><Comment>Is True if the train needs to account for platform information</Comment>
+</ReqRef><Comment>Is True if the train needs to account for platform information.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="400"
- Y="50"
+ X="220"
+ Y="90"
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="StationPlatformInformation"
+ Name="StationPlatformInformationStruct"
  Guid="11a0f7bd-dbea-4a8c-b7af-4671a9a9da53"
 >
 <ReqRef
@@ -108,7 +107,7 @@
 >
 </ReqRef><Comment>Start location of the track condition</Comment>
 </StructureElement><StructureElement
- TypeName="StationPlatform"
+ TypeName="StationPlatformStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -134,11 +133,10 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformation"
+ TypeName="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformationStruct"
  MaxSize="20"
  Default="[]"
- X="200"
- Y="50"
+ Y="90"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -154,9 +152,8 @@
 </Collection></Collections>
 <Functions>
 <Function
- Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformation"
+ Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformationStruct"
  Default=""
- X="30"
  Y="180"
  Width="100"
  Height="50"
@@ -197,7 +194,7 @@
 <PreCondition
  Guid="7d07a912-fc3b-43b2-8ea2-e825af1ec19b"
 >EndOfSection</PreCondition></PreConditions>
-<Expression>StationPlatformInformation{
+<Expression>Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformationStruct{
     Distance =&gt; Distance,
     Value =&gt;  SPAtDistance(Distance)
 }</Expression>
@@ -205,9 +202,9 @@
  Name="Start of section"
  Guid="6d2b0839-738c-46ee-8f64-861bc5226af8"
 >
-<Expression>StationPlatformInformation{
+<Expression>Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformationStruct{
     Distance =&gt; Distance,
-    Value =&gt; StationPlatform{
+    Value =&gt; Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformStruct{
         Side =&gt; Side,
         Height =&gt; Height,
         Enabled =&gt; True
@@ -217,7 +214,7 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="140"
+ X="110"
  Y="180"
  Width="100"
  Height="50"
@@ -262,9 +259,9 @@
 <Expression>Distance + Default.BaseTypes.LengthToDistance(Length) + Default.BaseTypes.LengthToDistance(Kernel.TrainData.TrainData.Value.TrainLength)</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatform"
+ Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformStruct"
  Default=""
- X="250"
+ X="220"
  Y="180"
  Width="100"
  Height="50"
@@ -303,12 +300,12 @@
  Guid="570cdb8c-639b-4935-b08a-7b1c6548fedb"
 >
 <Comment>There are no track conditions that apply before the requested distance</Comment>
-<Expression>StationPlatform { }</Expression>
+<Expression>Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformStruct { }</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatform"
+ Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformStruct"
  Default=""
- X="360"
+ X="330"
  Y="180"
  Width="100"
  Height="50"
@@ -343,7 +340,7 @@ SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)).Enabl
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="470"
+ X="440"
  Y="180"
  Width="100"
  Height="50"
@@ -375,8 +372,7 @@ SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)).Enabl
 </Function></Functions>
 <Procedures>
 <Procedure
- X="30"
- Y="290"
+ Y="270"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -444,12 +440,12 @@ SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)).Enabl
 IN
     TCStationPlatforms</Action><Action
  Guid="b803cea3-2661-496d-8f0e-61206f6bed58"
->INSERT StationPlatformInformation{
+>INSERT Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformationStruct{
     Distance =&gt; Default.MessageTypes.QScaleDistance(
         distance=&gt;Packet.D_TRACKINIT,
         scale=&gt;Packet.Q_SCALE
         ),
-    Value =&gt; StationPlatform{
+    Value =&gt; Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformStruct{
         Enabled =&gt; Boolean.False
     }
 }
@@ -473,8 +469,8 @@ IN
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="140"
- Y="290"
+ X="110"
+ Y="270"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -584,8 +580,8 @@ ON
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="250"
- Y="290"
+ X="220"
+ Y="270"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -684,14 +680,128 @@ IN
     TCStationPlatforms</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ X="330"
+ Y="270"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DeleteTrackConditionsBeyondLocation"
+ Guid="f1ea5515-7ebc-4443-8359-4d602b878850"
+>
+<ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a8206188-190e-43d0-ac18-024397eb248f"
+>
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="791afc64-47a8-442c-a631-597e231d7eea"
+>
+</ReqRef><ReqRef
+ Id="2c2f3d46-b62b-44a6-a8ab-393ec946e9dd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3edcd525-fecd-4332-b521-3f777c16e682"
+>
+</ReqRef><ReqRef
+ Id="d7f09170-28ec-4015-8c03-8e1612c5ccc4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2ea97db7-5f20-40e9-8c56-eb0ac5e7e804"
+>
+</ReqRef><Comment>Deletes the track conditions station platforms beyond the provided location.</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="aLocation"
+ Guid="c90cad0d-e52b-434d-9d6a-a1a23b4e41d7"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Delete track conditions beyond the given location"
+ Guid="bce50ea3-ec06-4de3-91af-3eafd297d5f0"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Delete track conditions beyond the given location"
+ Guid="799d6ebd-65ed-448f-b332-82c1becd6526"
+>
+<PreConditions>
+<PreCondition
+ Guid="d838de66-f4e8-4b18-bc95-796d31f3ac51"
+>TCStationPlatforms != []</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove the elements beyond the given location"
+ Guid="1fcf5b4e-54ee-4220-9723-3272edc41baf"
+>
+<Comment>First, remove all the track conditions station platforms that are beyond the provided location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove the elements beyond the given location"
+ Guid="c0b9369c-ca11-4cc9-945b-88463c47cf87"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="56b7217d-8752-45d7-94fa-d4a60d6c20d8"
+>TCStationPlatforms &lt;- MAP TCStationPlatforms | X.Distance &lt;= aLocation USING X IN X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle the last element"
+ Guid="81cec0a6-4867-4404-bc77-35703b271e7a"
+>
+<Comment>Then, create the final element, with Value set to False (only if the current last element has Value set to True).</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle the last element"
+ Guid="4c6a415c-5cde-422e-bcae-c37c25068fc1"
+>
+<PreConditions>
+<PreCondition
+ Guid="504633ab-7486-4484-9c62-ea1addbc63cb"
+>(LAST TC IN TCStationPlatforms).Value.Enabled != False</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8e864c9f-6f4f-4115-bc47-85e3bf7c7cd8"
+>INSERT
+  StationPlatformInformationStruct
+  {
+    Distance =&gt; aLocation,
+    Value =&gt; StationPlatformStruct
+    {
+      Enabled =&gt; Boolean.False
+    }
+  }
+IN
+  TCStationPlatforms</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
  Type="StationPlatforms"
  DefaultValue=""
  VariableMode="Internal"
- X="20"
- Y="50"
  Width="100"
  Height="50"
  Implemented="TRUE"

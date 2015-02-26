@@ -2463,6 +2463,7 @@ SituationM()</Expression>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Handle Track Conditions excluding big metal masses"
  Guid="28297d0e-c3d8-4378-a5a8-f72a55fe697a"
@@ -2471,6 +2472,7 @@ SituationM()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the first category"
  Guid="c452d77a-d79c-4e88-92a3-0ea98c8235d1"
 >
@@ -2479,14 +2481,28 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="8a001d63-9559-4c29-acf1-7920d961aab7"
 >
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3614dac8-0332-4a6a-b23a-6d23ee4840a4"
+>
 </ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="71f6bd48-b11a-41e2-870c-9221d5c249b7"
 >FirstCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="e04933bb-c329-4fd5-820a-75a705e35524"
+>TrackDescription.TrackConditions.General.DeleteTrackConditionsBeyondLocation( aLocation =&gt; SpecialCase1Location() )</Action><Action
+ Guid="f286414a-c286-41f5-abfc-620399f5f00d"
+>TrackDescription.TrackConditions.StationPlatform.DeleteTrackConditionsBeyondLocation( aLocation =&gt; SpecialCase1Location() )</Action><Action
+ Guid="2e438522-c27d-4e0b-8204-d76b47ac2eb9"
+>TrackDescription.TrackConditions.CurrentConsumption.DeleteTrackConditionsBeyondLocation( aLocation =&gt; SpecialCase1Location() )</Action><Action
+ Guid="b7329349-4964-47a6-b865-e6d9b1248618"
+>TrackDescription.TrackConditions.TractionSystems.DeleteTrackConditionsBeyondLocation( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the second category"
  Guid="995e28b2-21c9-4e2a-b3ea-1b7be9daa48c"
 >
@@ -2495,14 +2511,28 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9b84b9ed-2e77-46e9-b09d-5d469078c98f"
 >
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bcff58a1-e8e9-4af5-955f-9e05b926de54"
+>
 </ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="305b4758-2eda-446f-81ea-8a457f9e4cac"
 >SecondCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="f9968c73-696e-458e-9280-2446f5344f2a"
+>TrackDescription.TrackConditions.General.DeleteTrackConditionsBeyondLocation( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action><Action
+ Guid="d1d41bf2-5c32-4c2b-9bca-9209344a17ad"
+>TrackDescription.TrackConditions.StationPlatform.DeleteTrackConditionsBeyondLocation( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action><Action
+ Guid="4435cd11-1a19-4762-8cec-0900c741cb97"
+>TrackDescription.TrackConditions.CurrentConsumption.DeleteTrackConditionsBeyondLocation( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action><Action
+ Guid="dc07f3d2-2cfa-4182-8a42-2389c61b21aa"
+>TrackDescription.TrackConditions.TractionSystems.DeleteTrackConditionsBeyondLocation( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the third category"
  Guid="d589ca70-d9f1-4f0b-b684-75270920b970"
 >
@@ -2517,10 +2547,19 @@ SituationM()</Expression>
  Guid="83159a8c-077e-4ae1-98cf-d600e48373af"
 >ThirdCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="338d93b3-6381-46f2-8eff-26efe8e41bb1"
+>TrackDescription.TrackConditions.General.TCProfile &lt;- []</Action><Action
+ Guid="18260e88-e899-4862-b3c7-a4e8736e0f36"
+>TrackDescription.TrackConditions.StationPlatform.TCStationPlatforms &lt;- []</Action><Action
+ Guid="d6d73974-52a8-4144-94a1-4315a7a19573"
+>TrackDescription.TrackConditions.CurrentConsumption.TCCurrentConsumption &lt;- []</Action><Action
+ Guid="5eda2d0c-6391-4a89-88c9-e3d0d2dc0103"
+>TrackDescription.TrackConditions.TractionSystems.TCTractionSystems &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Handle Track condition big metal masses"
  Guid="951e28c0-45a2-4896-a3ed-ccbd5ecd92ca"
@@ -2529,6 +2568,7 @@ SituationM()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the first category"
  Guid="b6d210c5-bd34-4b65-8167-16914aa42a9e"
 >
@@ -2537,14 +2577,22 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="623ea0cb-1c5e-4f21-840c-c31b22ee2393"
 >
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="69584d38-0445-4bc6-a1c2-9f3399a4b19a"
+>
 </ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="c72eb393-b70b-4c97-b3ae-a954824c7cb1"
 >FirstCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="78280f3c-0669-41b9-a360-99bb2ed43a17"
+>TrackDescription.TrackConditions.BigMetalMasses.DeleteTrackConditionsBeyondLocation( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the second category"
  Guid="9bb6bd5e-33fb-4f11-8472-3ae6b54e8789"
 >
@@ -2553,14 +2601,22 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="a3f7d754-694d-4ade-87cd-9cce9ed80a4f"
 >
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="266784a9-d93b-4421-a0c9-e0ed97972531"
+>
 </ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="8ad7cd04-c7d8-4d18-95c9-5d34a884aa5a"
 >SecondCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="602cb250-658f-4f5b-86fe-19f17044b7a1"
+>TrackDescription.TrackConditions.BigMetalMasses.DeleteTrackConditionsBeyondLocation( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the third category"
  Guid="110223a8-1ebc-4388-8cee-3b4a19743023"
 >
@@ -2575,7 +2631,9 @@ SituationM()</Expression>
  Guid="201a4ede-4c60-4321-b510-68d69cbe147f"
 >ThirdCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="dc91aacd-d2e6-4f5f-88af-707c10c09628"
+>TrackDescription.TrackConditions.BigMetalMasses.TCBigMetalMasses &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

@@ -15,7 +15,7 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="TractionSystem"
+ Name="TractionSystemStruct"
  Guid="44d803d3-4953-4340-b09a-f47f0ee996ef"
 >
 <ReqRef
@@ -59,7 +59,7 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="TractionSystemInformation"
+ Name="TractionSystemInformationStruct"
  Guid="5881ab92-0757-408b-aece-398ffeb03a16"
 >
 <ReqRef
@@ -79,7 +79,7 @@
 >
 </ReqRef><Comment>Contains traction system track condition information with its start location</Comment>
 <StructureElement
- TypeName="TractionSystem"
+ TypeName="TractionSystemStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -114,7 +114,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformation"
+ TypeName="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformationStruct"
  MaxSize="20"
  Default="[]"
  Y="90"
@@ -133,7 +133,7 @@
 </Collection></Collections>
 <Functions>
 <Function
- Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystem"
+ Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemStruct"
  Default=""
  Y="180"
  Width="100"
@@ -159,7 +159,7 @@
 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystem"
+ Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemStruct"
  Default=""
  X="110"
  Y="180"
@@ -210,7 +210,7 @@
  Guid="30b40833-011c-494f-bd47-713f9a91c456"
 >
 <Comment>Case created just to make the model work</Comment>
-<Expression>TractionSystem{
+<Expression>Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemStruct{
     CountryIdentifier =&gt; Messages.NID_CTRACTION((FIRST X IN TrainData.TrainData.Value.TractionSystems).Country),
     SystemType =&gt; (FIRST X IN TrainData.TrainData.Value.TractionSystems).Voltage
 }</Expression>
@@ -337,7 +337,7 @@
 <Comment>Takes a change of traction system information and provides it as DMI information</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformation"
+ Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformationStruct"
  Name="TractionSystem"
  Guid="0c0a19c4-86c3-4674-b1d0-68c1838d55fd"
 >
@@ -444,12 +444,12 @@
 <Actions>
 <Action
  Guid="999301d6-e625-436c-b54d-0a413831fb96"
->INSERT TractionSystemInformation{
+>INSERT Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformationStruct{
     Distance =&gt; Default.MessageTypes.QScaleDistance(
         distance=&gt;Packet.D_TRACTION,
         scale=&gt;Packet.Q_SCALE
     ),
-    Value =&gt; TractionSystem{
+    Value =&gt; Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemStruct{
         CountryIdentifier =&gt; Packet.NID_CTRACTION,
         SystemType =&gt; Packet.M_VOLTAGE
     }
@@ -516,7 +516,7 @@ IN
 >INSERT General.TCDisplay.NewAnnouncement(
     TCType=&gt; PacketToAnnouncement(Packet.M_VOLTAGE),
     Distance=&gt; General.TCDisplay.AnnouncementLocation(
-        TrackCondition =&gt; General.TrackCondition{},
+        TrackCondition =&gt; Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct{},
         Distance=&gt;Default.MessageTypes.QScaleDistance(
             distance=&gt;Packet.D_TRACTION,
             scale=&gt;Packet.Q_SCALE)
@@ -524,7 +524,7 @@ IN
     Length=&gt; Default.BaseTypes.DistanceToLength(
                  Default.MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACTION, scale=&gt;Packet.Q_SCALE) -
                  General.TCDisplay.AnnouncementLocation(
-                     TrackCondition =&gt; General.TrackCondition{},
+                     TrackCondition =&gt; Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct{},
                      Distance=&gt;Default.MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACTION, scale=&gt;Packet.Q_SCALE)
                  )
         ),
@@ -561,6 +561,122 @@ IN General.TCDisplay.Announcements</Action></Actions>
     Announcement =&gt; False
 )
 IN General.TCDisplay.Announcements</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="110"
+ Y="270"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DeleteTrackConditionsBeyondLocation"
+ Guid="8aa33e8f-ddaf-409b-9271-705f41a91e02"
+>
+<ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="15fa378e-08df-468e-948e-1a4316c71d21"
+>
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="da1e432c-c978-4dd5-9854-21a453c068f3"
+>
+</ReqRef><ReqRef
+ Id="2c2f3d46-b62b-44a6-a8ab-393ec946e9dd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7bcd84dd-410a-4e9c-b21b-5bdfb1289808"
+>
+</ReqRef><ReqRef
+ Id="d7f09170-28ec-4015-8c03-8e1612c5ccc4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f8d3d800-0516-4619-80fb-f329d10886a9"
+>
+</ReqRef><Comment>Deletes the track conditions traction systems beyond the provided location.</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="aLocation"
+ Guid="f4e16be9-6a88-48dd-9d10-dff5de3fc4b1"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Delete track conditions beyond the given location"
+ Guid="e4022ff6-8aa1-4596-b52b-6ef3c4097c24"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Delete track conditions beyond the given location"
+ Guid="eaadbc0e-30fa-4958-be3e-feed0c5dc9b8"
+>
+<PreConditions>
+<PreCondition
+ Guid="c8cca78d-3f1e-4cfb-b744-c3cc5b9cf0d8"
+>TCTractionSystems != []</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove the elements beyond the given location"
+ Guid="66497988-a7ca-488e-aceb-8eb8c0bfd83b"
+>
+<Comment>First, remove all the track conditions traction systems that are beyond the provided location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove the elements beyond the given location"
+ Guid="58f0a1ca-6fa2-41a9-a739-5ed57fa8fd5f"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="39035454-d8da-40aa-bec8-ff4986512bbc"
+>TCTractionSystems &lt;- MAP TCTractionSystems | X.Distance &lt;= aLocation USING X IN X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle the last element"
+ Guid="ca4aa774-2b9b-4286-9e27-513f4a031400"
+>
+<Comment>Then, create the final element, with Value set to its default value (only if the current last element has Value different from its default value).</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle the last element"
+ Guid="80e7c410-8a09-4600-adee-330078f391b0"
+>
+<PreConditions>
+<PreCondition
+ Guid="fdca6523-2a30-42f9-9aad-1bbae8a3071c"
+>(LAST TC IN TCTractionSystems).Value.SystemType != Messages.M_VOLTAGE.Line_not_fitted_with_any_traction_system</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c3cc9273-3eb9-4532-9c8c-393d6397bf33"
+>INSERT
+  TractionSystemInformationStruct
+  {
+    Distance =&gt; aLocation,
+    Value =&gt; TractionSystemStruct
+    {
+      SystemType =&gt; Messages.M_VOLTAGE.Line_not_fitted_with_any_traction_system
+    }
+  }
+IN
+  TCTractionSystems</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

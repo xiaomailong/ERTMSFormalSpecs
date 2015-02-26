@@ -11,12 +11,12 @@
 <Structures>
 <Structure
  Default=""
- X="440"
- Y="60"
+ X="220"
+ Y="90"
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="BigMetalMassesInformation"
+ Name="BigMetalMassesInformationStruct"
  Guid="20f0007f-dcf5-4b3c-b52e-1de6cffe79d6"
 >
 <ReqRef
@@ -61,11 +61,10 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.TrackDescription.TrackConditions.BigMetalMasses.BigMetalMassesInformation"
+ TypeName="Kernel.TrackDescription.TrackConditions.BigMetalMasses.BigMetalMassesInformationStruct"
  MaxSize="20"
  Default="[]"
- X="270"
- Y="60"
+ Y="90"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -83,7 +82,6 @@
 <Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="20"
  Y="180"
  Width="100"
  Height="50"
@@ -125,7 +123,7 @@
 </Function><Function
  Type="Boolean"
  Default=""
- X="130"
+ X="110"
  Y="180"
  Width="100"
  Height="50"
@@ -169,7 +167,7 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="240"
+ X="220"
  Y="180"
  Width="100"
  Height="50"
@@ -201,7 +199,7 @@
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="350"
+ X="330"
  Y="180"
  Width="100"
  Height="50"
@@ -243,7 +241,7 @@
 </Function><Function
  Type="Boolean"
  Default=""
- X="460"
+ X="440"
  Y="180"
  Width="100"
  Height="50"
@@ -275,8 +273,7 @@ BMMAtDistance(Distance=&gt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;D
 </Function></Functions>
 <Procedures>
 <Procedure
- X="20"
- Y="300"
+ Y="270"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -399,8 +396,8 @@ ON
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="130"
- Y="300"
+ X="110"
+ Y="270"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -452,7 +449,7 @@ ON
 <Action
  Guid="f41e0e6b-f4f6-4efa-a83b-26fce22c0fa3"
 ><Comment>EndSectionDistance provides the end location (in terms of the front end of the train) of the section</Comment>
-INSERT BigMetalMassesInformation{
+INSERT Kernel.TrackDescription.TrackConditions.BigMetalMasses.BigMetalMassesInformationStruct{
     Distance=&gt;BMMSectionEnd(
         Distance=&gt;Distance,
         Length=&gt;Length
@@ -483,12 +480,125 @@ The train is considered to be in the section starting from when the max antenna 
 <Actions>
 <Action
  Guid="260a89f3-ee3a-4960-a54b-8bb92247e287"
->INSERT BigMetalMassesInformation {
+>INSERT Kernel.TrackDescription.TrackConditions.BigMetalMasses.BigMetalMassesInformationStruct {
     Distance=&gt;Distance - BTM.ActiveAntennaPosition,
     Value=&gt;True
     }
 IN
     TCBigMetalMasses</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="220"
+ Y="270"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DeleteTrackConditionsBeyondLocation"
+ Guid="3aedb8ab-8739-4f7b-961b-f63f658a8bf5"
+>
+<ReqRef
+ Id="de3fda91-880c-46f8-8a7b-46ff210c7694"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fb9c35da-e873-4b5e-8095-16c8863e89a9"
+>
+</ReqRef><ReqRef
+ Id="d8472c20-d663-4018-8dde-35613b7d9391"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="86259bb6-56b9-4420-a7e3-0ccda1e403a1"
+>
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d37bde6a-f0b7-4502-ba17-ef119e274c8e"
+>
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="723db98d-41fe-4967-81a7-036eb3d6caba"
+>
+</ReqRef><Comment>Deletes the track conditions big metal masses beyond the provided location.</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="aLocation"
+ Guid="a397566a-ad24-4035-b1b7-641615d3c18f"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Delete track conditions beyond the given location"
+ Guid="fc5fd3a6-3705-4897-847d-3e60ef3d82ce"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Delete track conditions beyond the given location"
+ Guid="b7c53a2a-4faa-4a66-8e71-37fe397ac478"
+>
+<PreConditions>
+<PreCondition
+ Guid="cafd3b9e-60d9-4049-91f3-4f351a96c334"
+>TCBigMetalMasses != []</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove the elements beyond the given location"
+ Guid="0c63f3b7-201a-4b10-ae6c-52d805390f3f"
+>
+<Comment>First, remove all the track conditions big metal masses that are beyond the provided location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove the elements beyond the given location"
+ Guid="51066e9f-2a71-4196-9d45-a69b3e3d2d9a"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="debd6cb5-8702-4dd7-97dc-064ddbb821b9"
+>TCBigMetalMasses &lt;- MAP TCBigMetalMasses | X.Distance &lt;= aLocation USING X IN X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle the last element"
+ Guid="b6cc3f99-165a-4fa3-926a-2469406d8d64"
+>
+<Comment>Then, create the final element, with Value set to False (only if the current last element has Value set to True).</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle the last element"
+ Guid="f3a543df-417c-48a7-99e7-358fbf743787"
+>
+<PreConditions>
+<PreCondition
+ Guid="c258bfc5-ed72-459f-81ae-55c313a1cdf1"
+>(LAST TC IN TCBigMetalMasses).Value == True</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="517b4dd1-15dd-4bd9-b45a-8d45242d6cdb"
+>INSERT
+  BigMetalMassesInformationStruct
+  {
+    Distance =&gt; aLocation,
+    Value =&gt; Boolean.False
+  }
+IN
+  TCBigMetalMasses</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -497,8 +607,6 @@ IN
  Type="BigMetalMasses"
  DefaultValue=""
  VariableMode="Internal"
- X="100"
- Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"

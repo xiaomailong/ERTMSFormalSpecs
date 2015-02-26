@@ -3477,7 +3477,7 @@ Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items != []</Pr
 <Actions>
 <Action
  Guid="56b280f3-d732-44db-bec8-8860b3143772"
->Kernel.TrackDescription.TrackConditions.General.TCProfile &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING X IN Kernel.TrackDescription.TrackConditions.General.TrackConditionInformation{
+>Kernel.TrackDescription.TrackConditions.General.TCProfile &lt;- MAP Kernel.TrackDescription.TrackConditions.General.TCProfile USING X IN Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct{
     Distance =&gt; X.Distance - DistanceFromLRBG,
     Value =&gt; X.Value
 }</Action></Actions>
@@ -3532,7 +3532,7 @@ Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items != []</Pr
 <Actions>
 <Action
  Guid="9d9fef57-643a-4b84-b837-ad28e39b6281"
->Kernel.TrackDescription.TrackConditions.BigMetalMasses.TCBigMetalMasses &lt;- MAP Kernel.TrackDescription.TrackConditions.BigMetalMasses.TCBigMetalMasses USING X IN Kernel.TrackDescription.TrackConditions.BigMetalMasses.BigMetalMassesInformation{
+>Kernel.TrackDescription.TrackConditions.BigMetalMasses.TCBigMetalMasses &lt;- MAP Kernel.TrackDescription.TrackConditions.BigMetalMasses.TCBigMetalMasses USING X IN Kernel.TrackDescription.TrackConditions.BigMetalMasses.BigMetalMassesInformationStruct{
     Distance =&gt; X.Distance - DistanceFromLRBG,
     Value =&gt; X.Value
 }</Action></Actions>
@@ -3558,7 +3558,7 @@ Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items != []</Pr
 <Actions>
 <Action
  Guid="258441de-c699-470f-9917-e55505621d5b"
->Kernel.TrackDescription.TrackConditions.TractionSystems.TCTractionSystems &lt;- MAP Kernel.TrackDescription.TrackConditions.TractionSystems.TCTractionSystems USING X IN Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformation{
+>Kernel.TrackDescription.TrackConditions.TractionSystems.TCTractionSystems &lt;- MAP Kernel.TrackDescription.TrackConditions.TractionSystems.TCTractionSystems USING X IN Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformationStruct{
     Value =&gt; X.Value,
     Distance =&gt; X.Distance - DistanceFromLRBG
 }</Action></Actions>
@@ -3584,7 +3584,7 @@ Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items != []</Pr
 <Actions>
 <Action
  Guid="da1176e3-6902-43c5-b859-107b862032f8"
->Kernel.TrackDescription.TrackConditions.CurrentConsumption.TCCurrentConsumption &lt;- MAP  Kernel.TrackDescription.TrackConditions.CurrentConsumption.TCCurrentConsumption USING X IN Kernel.TrackDescription.TrackConditions.CurrentConsumption.CurrentConsumptionInformation{
+>Kernel.TrackDescription.TrackConditions.CurrentConsumption.TCCurrentConsumption &lt;- MAP  Kernel.TrackDescription.TrackConditions.CurrentConsumption.TCCurrentConsumption USING X IN Kernel.TrackDescription.TrackConditions.CurrentConsumption.CurrentConsumptionInformationStruct{
     Value =&gt; X.Value,
     Distance =&gt; X.Distance - DistanceFromLRBG
 }</Action></Actions>
@@ -3610,7 +3610,7 @@ Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items != []</Pr
 <Actions>
 <Action
  Guid="0f8acd4b-a756-4258-8ade-9df77a5f3e38"
->Kernel.TrackDescription.TrackConditions.StationPlatform.TCStationPlatforms &lt;- MAP Kernel.TrackDescription.TrackConditions.StationPlatform.TCStationPlatforms USING X IN Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformation{
+>Kernel.TrackDescription.TrackConditions.StationPlatform.TCStationPlatforms &lt;- MAP Kernel.TrackDescription.TrackConditions.StationPlatform.TCStationPlatforms USING X IN Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformationStruct{
     Distance =&gt; X.Distance - DistanceFromLRBG,
     Value =&gt; X.Value
 }</Action></Actions>
