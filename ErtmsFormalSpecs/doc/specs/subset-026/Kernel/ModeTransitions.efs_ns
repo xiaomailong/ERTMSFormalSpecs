@@ -575,9 +575,10 @@ DMI.MasterDMI().In_AcknOfSRMode.InputInformation.DriverAnswered</Expression>
  Name="Value"
  Guid="f5577155-da2c-443e-bcea-b556fd2b327c"
 >
+<Comment>The condition &quot;driver selects Shunting&quot; is satisfied by the state machine HandleModeChange being in the state ShuntingInitiatedByDriver, since it is only possible to enter that state if the driver selects shunting.</Comment>
 <Expression>HandleModeChange in HandleModeChangeSM.ShuntingInitiatedByDriver.D020
   AND
-DMI.MasterDMI().In_ShuntingRequest.InputInformation.DriverAnswered</Expression>
+Level.Value.Value in [Default.Level.L0, Default.Level.LNTC, Default.Level.L1]</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -614,8 +615,12 @@ DMI.MasterDMI().In_ShuntingRequest.InputInformation.DriverAnswered</Expression>
  Name="Value"
  Guid="cb64da1f-7c0d-47cf-b062-b536626b8bce"
 >
+<Comment>The condition &quot;driver selects Shunting&quot; is satisfied by the state machine HandleModeChange being in the state ShuntingInitiatedByDriver, since it is only possible to enter that state if the driver selects shunting.
+</Comment>
 <Expression>HandleModeChange in HandleModeChangeSM.ShuntingInitiatedByDriver.S050
   AND
+Level.Value.Value in [Default.Level.L2, Default.Level.L3]
+  AND  
 Available ( EURORADIO.CurrentRBCConnection().MessageIn.SH_AUTHORISED )</Expression>
 </Case></Cases>
 </Function><Function
