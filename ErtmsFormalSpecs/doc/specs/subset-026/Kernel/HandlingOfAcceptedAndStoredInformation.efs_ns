@@ -3539,6 +3539,7 @@ SituationM()</Expression>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Handle Permitted Braking Distance Information"
  Guid="482d24fa-7c72-4c71-bd15-6d84292139d8"
@@ -3547,6 +3548,7 @@ SituationM()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the first category"
  Guid="3ab83088-d140-4f55-8d5d-3a18c4104f80"
 >
@@ -3555,14 +3557,22 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="25b93c3c-a9fd-4288-ac10-67375713259c"
 >
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e9b532aa-6fd9-47a7-9629-3566daaae0e4"
+>
 </ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="837336dc-9065-4505-945b-7cd7571a02bb"
 >FirstCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="15f00310-308b-44f8-b691-3322d20c54c7"
+>TrackDescription.PermittedBrakingDistance.DeletePBDProfileBeyondLocation( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the second category"
  Guid="a6002ec0-a11a-4e10-a112-e6a8817a262c"
 >
@@ -3571,14 +3581,22 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="634a5b6e-ae00-4f63-8a84-ded9d0a327e4"
 >
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="25fd207e-52f9-4e66-9947-ebae74c92b80"
+>
 </ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="e0ce1b6a-7b21-4101-a6e7-4db390267585"
 >SecondCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="2b73a7a0-e0ed-47ea-9781-216f7dcbe4c4"
+>TrackDescription.PermittedBrakingDistance.DeletePBDProfileBeyondLocation( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the third category"
  Guid="2e2446ff-42d6-4805-a541-daa9f1b51451"
 >
@@ -3593,7 +3611,9 @@ SituationM()</Expression>
  Guid="99f17489-8078-40c5-b678-a0753aa3009a"
 >ThirdCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="517c51ce-bdb7-4ea8-8744-3ebc17b2aeb1"
+>TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

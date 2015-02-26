@@ -3316,7 +3316,7 @@ Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedR
  Guid="c600d873-49dc-44dd-8a1a-0bbd72c7bab8"
 >Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.EmptyProfileDistance &lt;- Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.EmptyProfileDistance - DistanceFromLRBG</Action><Action
  Guid="bb71241b-e532-4f32-913e-0e64a7e53c01"
->Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions &lt;- MAP Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions USING X IN Kernel.TrackDescription.PermittedBrakingDistance.SRPB{
+>Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions &lt;- MAP Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions USING X IN Kernel.TrackDescription.PermittedBrakingDistance.SRPBDStruct{
     Location =&gt; X.Location - DistanceFromLRBG,
     Length =&gt; X.Length,
     Speed =&gt; X.Speed,

@@ -16,7 +16,7 @@
  Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="SRPB"
+ Name="SRPBDStruct"
  Guid="a3778cf9-457b-4cab-b6de-40b9c7dae434"
 >
 <ReqRef
@@ -116,7 +116,7 @@
  Width="100"
  Height="50"
  NeedsRequirement="FALSE"
- Name="SRPBProfile"
+ Name="SRPBDProfileStruct"
  Guid="2995ce6b-ecff-4aef-b477-4b3d72c29141"
 >
 <Comment>Represents the speed restrictions to ensure permitted braking distance.</Comment>
@@ -158,7 +158,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
+ TypeName="Kernel.TrackDescription.PermittedBrakingDistance.SRPBDStruct"
  MaxSize="20"
  Default="[]"
  X="230"
@@ -178,7 +178,7 @@
 </Collection></Collections>
 <Functions>
 <Function
- Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
+ Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPBDStruct"
  Default=""
  X="450"
  Y="250"
@@ -246,7 +246,7 @@
  Name="Value"
  Guid="58a6586b-b703-4c7f-a7ab-c0a008b09195"
 >
-<Expression>SRPB
+<Expression>Kernel.TrackDescription.PermittedBrakingDistance.SRPBDStruct
 {
     BrakingDistance =&gt; PermittedBrakingDistance,
     BrakeType =&gt; BrakeType,
@@ -935,7 +935,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 <Comment>Provides the speed restriction for a certain request to calculate a speed restriction which ensures that the train stops within a given permitted braking distance.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
+ Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPBDStruct"
  Name="aSRPB"
  Guid="ada73484-df4f-465a-9111-63fb7a01cdf8"
 >
@@ -1947,7 +1947,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 </ReqRef><Comment>If any of the inputs for the calculation of the speed restrictions change, recalculate the speed restrictions due to permitted braking distances</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPB"
+ Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPBDStruct"
  Name="aSRPB"
  Guid="3dcc62ba-b312-4a75-8474-65219553e4e0"
 >
@@ -1976,11 +1976,113 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 >aSRPB.Speed &lt;- ComputePermittedSpeed ( PermittedBrakingDistance =&gt; aSRPB.BrakingDistance, Gradient =&gt; aSRPB.Gradient, BrakeType =&gt; aSRPB.BrakeType )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="DeletePBDProfileBeyondLocation"
+ Guid="42e5f8a6-b0d4-4187-b7b7-a8923f5826d1"
+>
+<ReqRef
+ Id="272fe976-efae-4c77-8efc-d232472a532b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f3ec381b-51f8-44d2-81a9-1a6bad616ca7"
+>
+</ReqRef><ReqRef
+ Id="983096f7-b75d-42d2-be5a-fd2be9f8db6f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a692ca22-6837-4709-8dda-6d2e028968c9"
+>
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4dc8f36c-13a3-4068-ac25-24fd3d6a0f3f"
+>
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="df890dac-e7d3-40f3-95cf-d632102ec0a5"
+>
+</ReqRef><Comment>Deletes the PBD profile information beyond the provided location.</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="aLocation"
+ Guid="4fae866a-ade5-47ab-b348-0f6a648243cf"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Delete PBD profile beyond the given location"
+ Guid="cacbef1c-49cb-4295-b25d-58d0496c8400"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Delete PBD profile beyond the given location"
+ Guid="3e621b35-02ef-480b-af74-8dfb9a9d63b7"
+>
+<PreConditions>
+<PreCondition
+ Guid="7e08dd15-4fbd-4e10-bf1b-b5518fa3be25"
+>SpeedRestrictionsProfile.SpeedRestrictions != []
+  AND
+(LAST X IN SpeedRestrictionsProfile.SpeedRestrictions).Location + (LAST X IN SpeedRestrictionsProfile.SpeedRestrictions).Length &gt; aLocation</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove elements beyond the given location"
+ Guid="d09ac2fb-812f-45aa-a02b-9ef5e5d251aa"
+>
+<Comment>First, remove all the PBD elements that are beyond the provided location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove elements beyond the given location"
+ Guid="e440f7a1-214c-4094-b058-714f0e00b6ab"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="d074c1e7-493d-4cc0-8f90-e9a8ecd8bece"
+>SpeedRestrictionsProfile.SpeedRestrictions &lt;- MAP SpeedRestrictionsProfile.SpeedRestrictions | X.Location &lt;= aLocation USING X IN X</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update the length of the last element"
+ Guid="de1fed2c-e113-4064-badf-3a075449c76c"
+>
+<Comment>Then, update the length of the last PBD element in order for it to end at aLocation.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update the length of the last element"
+ Guid="4b68b186-b2b2-4e06-93a7-696d94aca789"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="2a15c293-9048-4c8c-a66b-287ae23687cc"
+>(LAST X IN SpeedRestrictionsProfile.SpeedRestrictions).Length &lt;- aLocation - (LAST X IN SpeedRestrictionsProfile.SpeedRestrictions).Location</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPBProfile"
- DefaultValue="Kernel.TrackDescription.PermittedBrakingDistance.SRPBProfile
+ Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPBDProfileStruct"
+ DefaultValue="Kernel.TrackDescription.PermittedBrakingDistance.SRPBDProfileStruct
 {
     InitialState =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow, 
     EmptyProfileDistance =&gt; 0.0, 
