@@ -240,7 +240,7 @@ Odometry.TrainIsAtStandstill()</Expression>
  Name="Value"
  Guid="2449a365-c01d-4827-bdf0-d5610c5e93ee"
 >
-<Expression>SafeRadioConnectionSupervisionAppliedServiceBrake
+<Expression>THERE_IS X IN ServiceBrakeCommands | X == BrakeReason.NoRadioMessageInDueTime
   AND  
 Odometry.TrainIsAtStandstill()</Expression>
 </Case></Cases>
@@ -558,7 +558,8 @@ SituationN()</Expression>
 </Function></Functions>
 <Procedures>
 <Procedure
- Y="490"
+ X="690"
+ Y="140"
  Width="100"
  Height="50"
  Name="HandleInformation"
@@ -4453,27 +4454,6 @@ SituationN()</Expression>
  Guid="4215eaac-6f12-4a92-9cf3-4bb5b4e54e41"
 >
 </ReqRef><Comment>Indicates if the RAMS supervision function led to the appliaction of the service brake.</Comment>
-</Variable><Variable
- Type="Boolean"
- DefaultValue="False"
- VariableMode="Internal"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="SafeRadioConnectionSupervisionAppliedServiceBrake"
- Guid="a0c87fdb-a396-4cf1-a323-2d1efa650ecf"
->
-<ReqRef
- Id="3fb26b04-e85c-4943-a152-64ddc3eac289"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4e149373-ae4d-467d-aaf9-8a089f25cdd8"
->
-</ReqRef><ReqRef
- Id="4c72e2f8-34a5-4066-86d2-067ebbdb7465"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0d713d05-cc10-4bce-84a1-291beb2b98aa"
->
-</ReqRef><Comment>Indicates if the safe radio connection supervision has applied the service brake because the time since the last consistent radio message has exceeded the waiting time.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule

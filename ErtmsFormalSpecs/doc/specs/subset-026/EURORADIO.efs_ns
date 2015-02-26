@@ -435,9 +435,7 @@ Keep the reason for it to be displayed to the driver.</Comment>
 <Actions>
 <Action
  Guid="f97da9de-0e29-4726-9112-51860fdea0f0"
->Kernel.AddSBCommand(Kernel.BrakeReason.NoRadioMessageInDueTime)</Action><Action
- Guid="a8c299b4-194b-474c-ae8f-284dbeb96b3c"
->Kernel.HandlingOfAcceptedAndStoredInformation.SafeRadioConnectionSupervisionAppliedServiceBrake &lt;- True</Action></Actions>
+>Kernel.AddSBCommand(Kernel.BrakeReason.NoRadioMessageInDueTime)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No reaction"
@@ -488,9 +486,7 @@ Available(MessageIn)
 <Actions>
 <Action
  Guid="ec756cc9-1422-4ce1-9f0c-f25195a8d5c9"
->Kernel.RemoveSBCommand(Kernel.BrakeReason.NoRadioMessageInDueTime)</Action><Action
- Guid="ee76b5c6-a6f1-4ba6-8de2-afbe9b4d7141"
->Kernel.HandlingOfAcceptedAndStoredInformation.SafeRadioConnectionSupervisionAppliedServiceBrake &lt;- False</Action></Actions>
+>Kernel.RemoveSBCommand(Kernel.BrakeReason.NoRadioMessageInDueTime)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Verification"
