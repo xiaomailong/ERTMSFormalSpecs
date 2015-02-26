@@ -1700,7 +1700,7 @@ NOT
  Name="There are two different message counters"
  Guid="4a4aad7b-16a2-4058-b14a-8f29471350c7"
 >
-<Expression>THERE_IS Message IN CurrentBaliseGroup | Message.Telegram.M_MCOUNT != CurrentBGM_MCOUNT()</Expression>
+<Expression>THERE_IS Message IN CurrentBaliseGroup | Message.Telegram.M_MCOUNT != CurrentBGM_MCOUNT() AND Message.Telegram.M_MCOUNT != Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group</Expression>
 </Case></Cases>
 </Function><Function
  Type="BTM.StoredBaliseStruct"
