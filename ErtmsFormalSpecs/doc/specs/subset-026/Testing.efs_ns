@@ -136,12 +136,17 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Level and Mode"
  Guid="23241729-77da-4af7-95bc-a581e75caa00"
 >
+<Comment>Set NP mode and level 0.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Level and Mode"
  Guid="2832e592-a77a-420d-b930-d88d251d8e13"
 >
@@ -410,12 +415,15 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set FS mode"
  Guid="371c612d-f47d-4ada-8516-5497c6e7b793"
 >
+<Comment>Set the mode to FS.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set FS mode"
  Guid="6eb404d9-c163-43d0-8582-8c12e44b7d70"
 >
@@ -428,12 +436,15 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set level (if required)"
  Guid="1fb5fcb7-4432-4efe-9fdc-396ff358a4f2"
 >
+<Comment>Set the level if the current level would cause a mode change.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Level is 0 or NTC"
  Guid="87a769a4-72eb-4416-b715-1d586fc6dd77"
 >
@@ -454,12 +465,15 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set gradient and SSP"
  Guid="760f0db1-906b-4ed8-9864-d8a23f61c0ba"
 >
+<Comment>Set the gradient and SSP.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No gradient or SSP"
  Guid="8c6fc49c-2185-4d06-912f-26c0a2314e69"
 >
@@ -476,12 +490,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set MA"
  Guid="213ea090-b589-46c5-b55c-e2979c5f5cd1"
 >
+<Comment>Set the MA.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No MA"
  Guid="47994e99-a7a6-49f9-afd3-efe13aa2f324"
 >
@@ -502,12 +519,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="f5d70e94-38cf-4f7f-a0e0-e30819faf258"
 >
+<Comment>Open the DMI cab.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="41eae1ed-741e-488a-9e47-88eb74b74dc8"
 >
@@ -520,12 +540,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="No Mode Profile"
  Guid="c082e94c-47bf-4d95-898c-6e0749272cc6"
 >
+<Comment>Delete any mode profiles.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No Mode Profile"
  Guid="5b82daa9-9aec-4968-aab8-d57682e5f381"
 >
@@ -538,12 +561,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="7f60ff5b-8ef8-4298-ac62-61a448df140e"
 >
+<Comment>Remove the sleeping signal.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="00a3211a-7b8d-4b88-858d-534308bd0086"
 >
@@ -556,12 +582,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="ff94fbaa-a0f1-4b53-80d2-59506427b0b3"
 >
+<Comment>Switch power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="fff6b40a-b81d-4a21-9aae-bc14a08e02c0"
 >
@@ -574,12 +603,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="a92ca44e-b3de-4c5f-bb5d-bae23bc1ee0b"
 >
+<Comment>Un-isolate the ETCS from the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="b3f0406a-362a-4e50-bd35-1002a6c7511a"
 >
@@ -604,12 +636,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set LS mode"
  Guid="675162e4-02d3-472f-8960-71ab1500ee0c"
 >
+<Comment>Set the mode to LS.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set LS mode"
  Guid="772e227e-93a3-4a31-8401-f343b2798987"
 >
@@ -622,12 +657,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set level (if required)"
  Guid="03787445-aafb-4da2-9944-f87e05e0cf94"
 >
+<Comment>Set the level if the current level would cause the mode ot change.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Level is 0 or NTC"
  Guid="b2f6292f-1382-4352-bcb5-b7def687e60d"
 >
@@ -648,12 +686,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set gradient and SSP"
  Guid="59cbd8bb-f239-4b67-a591-ee1b1db25aed"
 >
+<Comment>Set the SSP and gradient.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No gradient or SSP"
  Guid="96a8b6a3-d53f-49a4-b842-a77c4b5fa6e6"
 >
@@ -670,12 +711,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set MA"
  Guid="46054fd8-dd97-4c90-b6c3-94f63075e04e"
 >
+<Comment>Set the MA.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No MA"
  Guid="6167554b-b2df-49e7-bd5b-a41b69724d68"
 >
@@ -696,12 +740,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="39eac867-dcd3-461d-b36d-f9530c651f4f"
 >
+<Comment>Open the DMI cab.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="ddbc25a5-159f-42c3-8c65-752e8141e45c"
 >
@@ -714,12 +761,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set LS mode profile"
  Guid="9bf9f375-c3a0-4994-a177-fa1629b59ffb"
 >
+<Comment>Set a LS mode profile applicable at the train&apos;s position.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set LS mode profile"
  Guid="bee4a01e-c52b-4272-9c2c-46d136690011"
 >
@@ -744,12 +794,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="b98f0cbb-866c-4549-adb2-e319f27ea4be"
 >
+<Comment>Remove the sleeping signal.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="243836cd-fd76-4d0e-9843-da3032c725b2"
 >
@@ -762,12 +815,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="e9ff175d-ee3d-4c12-b290-86dd7139ca1b"
 >
+<Comment>Switch the power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="290770fb-d79b-428e-a960-1a3eabfaa4c3"
 >
@@ -780,12 +836,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="b0fd5b1f-8599-43b3-8a95-9d29c938ca7b"
 >
+<Comment>Un-isolate the ETCS from the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="4d9fcf63-299b-47e5-a182-76e38743a6c2"
 >
@@ -810,12 +869,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set SR mode"
  Guid="df9b0350-3626-4781-8c03-3b3457920b1f"
 >
+<Comment>Set the mode to SR.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set SR mode"
  Guid="e1ad8f4a-82ab-4a90-bfb7-efc319198d1b"
 >
@@ -828,12 +890,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set level (if required)"
  Guid="1e67dc91-cbf0-4e7b-8a09-d2957471e2fe"
 >
+<Comment>Set hte level if the current level would cause the mode to change.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Level is 0 or NTC"
  Guid="d1472685-a3ed-412d-bd76-2f35b2125972"
 >
@@ -854,12 +919,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Delete the MA"
  Guid="258f00dd-ebc4-47c8-b82f-4df206ef6e06"
 >
+<Comment>Delete the MA.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Delete the MA"
  Guid="2df7e86c-3162-4bbc-b91e-f83e97b1794d"
 >
@@ -872,12 +940,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Empty the mode profile"
  Guid="0b688d7f-db41-48cc-8f9d-725a46a5689b"
 >
+<Comment>Delete the mode profile.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Empty the mode profile"
  Guid="bcbe415d-cad2-4143-a3e1-8e3435e6809a"
 >
@@ -890,12 +961,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="978d18ac-efee-4677-816c-809d1e3350ed"
 >
+<Comment>Open the DMI cab.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="c825538b-009d-4def-9d6b-8f6305916d33"
 >
@@ -908,12 +982,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set the SR information"
  Guid="0abde4d6-83e1-40e6-8836-e66a2df5f0cb"
 >
+<Comment>Set the SR authorisation information (distance to run in SR and list of expected balises in SR mode).</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set the SR information"
  Guid="c0eb75d7-e692-4313-8df8-bc3d0f2ab670"
 >
@@ -932,12 +1009,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="51129b99-3d9b-462f-9af4-0d13a498cddd"
 >
+<Comment>Remove the sleeping signal.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="5f161253-8fc9-4efd-a8aa-51086df6e488"
 >
@@ -950,12 +1030,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="1d9928c1-0e2e-4b96-8351-8d0a947242dd"
 >
+<Comment>Turn the power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="6d177c1a-ed55-433e-963f-2930cb50bf24"
 >
@@ -968,12 +1051,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="bcb6620d-6c56-4760-9225-2198cde2bb3a"
 >
+<Comment>Un-isolate the ETCS from the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="c8525df8-102f-4f30-95f6-336032c77fbe"
 >
@@ -998,12 +1084,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set OS mode"
  Guid="399d52b3-5029-4a01-b432-7f71f0b3030f"
 >
+<Comment>Set the mode to OS.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set OS mode"
  Guid="4c754b26-623c-479a-9949-eb0a77eae594"
 >
@@ -1016,12 +1105,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set level (if required)"
  Guid="4805dbc8-42ee-422f-95bb-27ca928b9ac0"
 >
+<Comment>Set the level if the current level would cause the mode to change.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Level is 0 or NTC"
  Guid="518d706c-d6ed-4793-9221-c8354b500300"
 >
@@ -1042,12 +1134,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set gradient and SSP"
  Guid="9b0b7b26-3dae-4240-833e-32520ada053d"
 >
+<Comment>Set the SSP and Gradient.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No gradient or SSP"
  Guid="38019a22-8337-4071-9196-8e0a9072a8df"
 >
@@ -1064,12 +1159,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set MA"
  Guid="07869aeb-5b0c-48e5-a0be-0534c2e86f6f"
 >
+<Comment>Set the MA.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No MA"
  Guid="04f5cc49-902b-4b52-9192-510661156271"
 >
@@ -1090,12 +1188,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="a541f900-ad59-4dcd-9f65-8c1b4d53524c"
 >
+<Comment>Open the DMI cab.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="9e0ceecc-0225-4be3-81ba-95d41cbe94b9"
 >
@@ -1108,12 +1209,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set OS mode profile"
  Guid="ab2d4931-04d0-44d3-9937-b60a16c8e81e"
 >
+<Comment>Set a OS mode profile applicable at the train&apos;s current position.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set LS mode profile"
  Guid="1dc3e362-4992-4fc9-bf45-eb0fa59f1182"
 >
@@ -1138,12 +1242,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="911576d2-a077-4293-8388-1fdb9e926704"
 >
+<Comment>Turn off the sleeping signal.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="b55e5f4b-df91-4164-a41e-13aa3176d5e4"
 >
@@ -1156,12 +1263,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="af372fb1-c24c-4954-bf92-1c48ca0d0470"
 >
+<Comment>Turn the power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="4ff617cd-192f-4a71-981f-0fc185916e10"
 >
@@ -1174,12 +1284,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="c5f49cef-1b70-40e5-9482-3dff74b03600"
 >
+<Comment>Un-isolate the ETCS from the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="0eca2891-288a-4b49-aa07-9a5f49404637"
 >
@@ -1204,12 +1317,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set SH mode"
  Guid="5c386fbf-08f4-40ae-a0d0-e31328127161"
 >
+<Comment>Set the mode to SH.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set SH mode"
  Guid="f80df71d-b420-4a84-992e-cea4a288f8f0"
 >
@@ -1222,12 +1338,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set level (if required)"
  Guid="162e4874-bde5-4fae-94e3-1135f35eb5bc"
 >
+<Comment>Set the level if the current level would cause the mode to change.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Level is 0 or NTC"
  Guid="dd08f45a-c259-4510-99e0-13a0ab68ed9d"
 >
@@ -1248,12 +1367,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set gradient and SSP"
  Guid="58b50cbe-c63b-4b03-9aa5-ed235ad94882"
 >
+<Comment>Set the SSP and gradient.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No gradient or SSP"
  Guid="ebf944db-3d31-4024-8a84-ccc2400bdea3"
 >
@@ -1270,12 +1392,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set MA"
  Guid="3c375211-2894-46b7-ac68-a3019c399954"
 >
+<Comment>Set the MA.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No MA"
  Guid="099b959c-bace-4096-9d09-93d7344a6cdc"
 >
@@ -1296,12 +1421,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="32b1dc25-1ebf-4ade-a173-244d69b001e2"
 >
+<Comment>Open the DMI cab.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="05b6f3d2-7baa-497e-b7df-ff8e74a36910"
 >
@@ -1314,12 +1442,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set SH mode profile"
  Guid="355c7b3f-c821-45a0-bd67-f15551c7beed"
 >
+<Comment>Set a SH mode profile applicable at the train&apos;s current location.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set LS mode profile"
  Guid="329a488a-5014-4b7c-a965-a9782003c9f4"
 >
@@ -1344,12 +1475,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="5bd78158-18a1-4e1a-a6ca-ed611dffac34"
 >
+<Comment>Remove the sleeping signal.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="4a79009d-e2c9-4ce2-b42f-03824ea1b97e"
 >
@@ -1362,12 +1496,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="42733203-65f3-4791-b79c-64d55462ee25"
 >
+<Comment>Turn the power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="74d94239-16dc-4bdb-993c-3fb8a52ce094"
 >
@@ -1380,12 +1517,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="ff742c72-d609-490e-bbc3-7ee8b5d5802c"
 >
+<Comment>Un-isolate the ETCS from the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="4ba849d4-9fa0-4e33-a324-ce75f2ba3a30"
 >
@@ -1410,12 +1550,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set UN mode"
  Guid="ae69ef75-6d35-4ed7-aff7-527729ae842f"
 >
+<Comment>Set the mode to UN.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set UN mode"
  Guid="c0a1b8e5-a3e5-49f8-9cc2-a6c7ca3287ea"
 >
@@ -1428,12 +1571,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set level (if required)"
  Guid="202a290e-08a2-46fd-b01c-42d5f53849b9"
 >
+<Comment>Set the level to 0 if it is not already 0.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Level is not 0"
  Guid="8adb7a46-8ec1-4ff5-9409-aeeda9770c64"
 >
@@ -1454,12 +1600,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="34348e74-eb9f-4ba1-938f-738f58659dd2"
 >
+<Comment>Open the DMI cab.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="81d73654-508b-4b2b-9eac-810947a28254"
 >
@@ -1472,12 +1621,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="7fa11f0c-9db3-4573-8a2c-2d36e0c1707d"
 >
+<Comment>Remove the sleeping signal.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="f7608d81-b3e6-4563-a661-96edd7ea4aab"
 >
@@ -1490,12 +1642,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="dd5c7941-ae17-4045-8f10-8a37bd0ef6ce"
 >
+<Comment>Turn the power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="089d03f9-7f00-4e93-b401-946905c2804a"
 >
@@ -1508,12 +1663,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="6a4a038c-7de6-4448-a240-b07aaed7a293"
 >
+<Comment>Un-isolate the ETCS from the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="107b6bb0-2b5e-495d-a7e3-5009ade4f50b"
 >
@@ -1539,12 +1697,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set PS mode"
  Guid="26b32a67-025c-4081-bfb6-a08c9001ec5b"
 >
+<Comment>Set the mode to PS.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set PS mode"
  Guid="fd27325e-8877-4158-ad8c-8a71263d4df5"
 >
@@ -1557,12 +1718,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set level (if required)"
  Guid="e496112f-21a3-43f3-a10a-4289280feacf"
 >
+<Comment>Set the level if the current level would cause the mode to change.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Level is 0 or NTC"
  Guid="2ba25b9e-5916-40a7-a01b-b7cc8aaf1506"
 >
@@ -1583,12 +1747,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set gradient and SSP"
  Guid="64b3778e-70fe-4c1e-94e2-14ff3ece3c43"
 >
+<Comment>Set the SSP and gradient.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No gradient or SSP"
  Guid="c3c16254-9b2e-4862-8859-03773f80e532"
 >
@@ -1605,12 +1772,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set MA"
  Guid="82190a90-ab2d-428a-94f6-719bb846db42"
 >
+<Comment>Set the MA.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No MA"
  Guid="bb43f150-48c1-4a19-b018-5d1bffc0f950"
 >
@@ -1631,12 +1801,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="DMI cab closed"
  Guid="c8b91a12-3ab4-4db2-acd9-d019217618f8"
 >
+<Comment>Close the DMI cab.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="DMI cab closed"
  Guid="6d5650db-ee4b-42d7-99b8-e044e98f78fe"
 >
@@ -1649,12 +1822,15 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set SH mode profile"
  Guid="93ae8f45-caa0-4bd0-8647-a0cf64bd8032"
 >
+<Comment>Set a SH moe profile applicable at the train&apos;s current position.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set LS mode profile"
  Guid="11b056d9-7a85-4d0b-b819-e144c28a0c14"
 >
@@ -1679,12 +1855,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="fa9d1063-8f91-4bb5-89ee-00e92a9572f2"
 >
+<Comment>Turn off the sleeping signal.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="e2493bdc-1416-4863-95de-188d3a1ac676"
 >
@@ -1697,12 +1876,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="87a6596c-b45f-4e7e-894f-8db194ea8f23"
 >
+<Comment>Turn the power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="0f4c08a0-e198-4026-90d0-86bea28a84f3"
 >
@@ -1715,12 +1897,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="af2374d7-4e5a-426f-aa30-da43169ce32f"
 >
+<Comment>Un-isolate the ETCS from the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="216d3389-f88b-4ede-85f5-aca4858cb6d4"
 >
@@ -1745,12 +1930,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set SL mode"
  Guid="1872a9af-8438-43f2-a21b-9ddafaea9249"
 >
+<Comment>Set the mode to SL.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set SL mode"
  Guid="667855d4-d026-4f6e-b696-cfdd8e3d5985"
 >
@@ -1763,12 +1951,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Desks are closed"
  Guid="e671acc3-f350-4857-b550-9826f18f1dbc"
 >
+<Comment>Close the desks.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Desks are closed"
  Guid="a40c0f6d-b11e-40a6-b363-8cf78f9c04e7"
 >
@@ -1783,12 +1974,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Sleeping input is received"
  Guid="eb39ee34-cd41-4960-9d99-1468957a648b"
 >
+<Comment>Send a sleeping intput.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Sleeping input received"
  Guid="69c2eadf-032c-4adc-a9d7-56502a5f0a51"
 >
@@ -1801,12 +1995,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="24a938e6-99ef-4b90-b838-53cd43acaff6"
 >
+<Comment>Turn on the power.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="9258583b-73ae-4a5b-ae4c-925fe2dde33b"
 >
@@ -1819,12 +2016,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="225ba83a-6a1a-4b4f-9c9d-d34a9232c3e1"
 >
+<Comment>Un-isolate the ETCS from the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="b83fec0d-7a65-4444-aae8-42062a5ea638"
 >
@@ -1849,12 +2049,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set SB mode"
  Guid="ce2e06f3-cc23-4810-9065-13bcaf90717a"
 >
+<Comment>Set the mode to SB.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set mode"
  Guid="49adfced-6e3e-4410-bfb6-8352833f0a20"
 >
@@ -1867,12 +2070,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="No MA on-board"
  Guid="95e1ac18-0768-43df-9446-42ee00741fe1"
 >
+<Comment>Remove the MA.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No MA on-board"
  Guid="89c68c60-f085-47ae-9bca-378da10c1b8d"
 >
@@ -1885,12 +2091,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="fd80a8aa-e6c4-463f-9134-b36050cfa408"
 >
+<Comment>Remove the sleeping signal.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="a60aecc2-317a-40b2-b9f3-bb1563e93e70"
 >
@@ -1903,12 +2112,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="5f1353f6-fc3a-4254-aa7f-02c8627d8ee5"
 >
+<Comment>Trun the power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="cdc09dbe-0f2d-440d-bb87-01a2396b2d7b"
 >
@@ -1921,12 +2133,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="f20892cc-53e2-416e-8641-0cd0ea25fab7"
 >
+<Comment>Un-isolate the ETCS from the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="744fd965-ef06-4271-b384-6f09ebb930b2"
 >
@@ -1952,12 +2167,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set TR mode"
  Guid="235393ed-74c7-401c-8ddc-a131a88c708c"
 >
+<Comment>Set the mode to TR.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set TR mode"
  Guid="865380de-796b-4ecd-9dc5-ed0148e59663"
 >
@@ -1970,12 +2188,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="d5d3c088-8f74-4935-9c9b-b3815e067f29"
 >
+<Comment>Open the DMI cab.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="620baa3f-ed95-475e-b23a-db98db78031c"
 >
@@ -1988,12 +2209,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="f7fd8c48-28f7-4c52-b221-49d0eb8eade8"
 >
+<Comment>Turn the power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="3e46ff5a-caae-414f-a735-0173a3f4f8ad"
 >
@@ -2006,12 +2230,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="c3807a22-425b-4b05-80d6-14efd3525a9b"
 >
+<Comment>Un-isolate the ETCS from the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="681c9687-5720-4efa-bda3-810a02ee8b6e"
 >
@@ -2036,12 +2263,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set PT mode"
  Guid="e16e88bd-0425-436f-9fa1-ee508a0dff8b"
 >
+<Comment>Set the mode to PT.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set PT mode"
  Guid="eb97e01d-b3f6-4270-b527-717aaafcfc5b"
 >
@@ -2054,12 +2284,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="5d97032f-c2d5-4884-bbac-a22fc3b508ac"
 >
+<Comment>Open the DMI cab.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="9f60b841-6133-463a-9c1d-d1961863e2ab"
 >
@@ -2072,12 +2305,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="d73274be-f0be-42c1-b96f-ce7c746c9c7e"
 >
+<Comment>Turn the power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="2f050ac4-b392-4133-a11e-b140a2588f3c"
 >
@@ -2090,12 +2326,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="ff9bd6b2-bfb3-40ca-ab78-8c93d842b1fc"
 >
+<Comment>Un-isolate the ETCS from the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="cf701ce4-c2a9-435b-81e7-9da02ce72a8d"
 >
@@ -2120,12 +2359,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set SF mode"
  Guid="167fb6e8-2951-4a7b-a111-cfedb2ada1e6"
 >
+<Comment>Set the mode to SF.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set SF mode"
  Guid="9d06cd04-5cbe-40a8-a7ed-3a418bbede26"
 >
@@ -2138,12 +2380,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="a5885d7a-32a7-4bf3-ac1a-ccd39312c113"
 >
+<Comment>Turn the power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="99e37edb-b81f-4b0f-82ae-ae63a700cb80"
 >
@@ -2156,12 +2401,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="ef31f9ce-73dd-442a-97a6-87dd712ba0b4"
 >
+<Comment>Un-isolate the ETCS from the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="e97920ad-2e66-4e0d-bd9c-2d60930c8b30"
 >
@@ -2186,12 +2434,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set IS mode"
  Guid="3a0f7682-7b7c-43f4-bdff-b307ea64e20a"
 >
+<Comment>Set the mode to IS.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set IS mode"
  Guid="bad3aa92-6e11-431d-b384-8ae9092bbe8e"
 >
@@ -2204,12 +2455,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="bac641ac-680d-43f9-8563-560d6661ac5b"
 >
+<Comment>Switch the power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="88f90654-0d8c-400d-946d-f11c93dc4691"
 >
@@ -2222,12 +2476,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS isolated"
  Guid="897539cc-5dce-4f84-a0f1-a2073dea179d"
 >
+<Comment>Isolate the ETCS.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS isolated"
  Guid="d98aafae-4b44-4ac2-aacf-66c136819b5b"
 >
@@ -2252,12 +2509,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set SN mode"
  Guid="6eb7c5d0-93df-4d59-b400-1ca504d4f711"
 >
+<Comment>Set the mode to SN.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set SN mode"
  Guid="c10a6746-105c-4e0a-94b3-0b6db6d91c05"
 >
@@ -2270,12 +2530,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set level (if required)"
  Guid="1d5c5cde-d8bb-405f-bc7c-f71987d02335"
 >
+<Comment>Set the level to NTC, if it is not currently NTC.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Level is 0 or NTC"
  Guid="3424be75-bae6-4e5a-82f2-e3bf115853ad"
 >
@@ -2296,12 +2559,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="5e182b93-5345-4012-90e9-0890afeb5618"
 >
+<Comment>Open the DMI cab.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="2378736c-a36f-45c8-bb18-4e4dbee9df89"
 >
@@ -2314,12 +2580,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="d9283aec-be3d-4647-8c99-fd4b03bcb572"
 >
+<Comment>Remove the sleeping signal.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="No Sleeping signal"
  Guid="f5f4c376-c930-46e0-95b1-ba628e5e75b1"
 >
@@ -2332,12 +2601,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="746034e4-f341-4725-bc4d-6b6c912490a8"
 >
+<Comment>Turn the power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="7e3435de-4f53-481b-8ba5-fed76b3ff651"
 >
@@ -2350,12 +2622,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="c8de433f-cfa0-412d-be5a-e3069f698010"
 >
+<Comment>Un-isolate the ETCS from the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="f8e80048-9c47-47c9-a3c6-b6fb46fbf7b5"
 >
@@ -2380,12 +2655,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set NP mode"
  Guid="e7e28a4e-3b6a-4add-9a8c-2e90c2e223b3"
 >
+<Comment>Set the mode to NP.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set NP mode"
  Guid="4f58283d-433b-48a0-85a0-87053ff0ba14"
 >
@@ -2398,12 +2676,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power off"
  Guid="f786e85c-b3a0-44e5-9e1e-f3d9dcfb6d15"
 >
+<Comment>Turn the power off.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="e8942ff7-264d-4af7-8822-d1fc343319f0"
 >
@@ -2416,12 +2697,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="e877f8b4-15f2-4b7b-b03a-f72159d6da6b"
 >
+<Comment>Un-isolate the ETCS from the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="13315b3d-52d0-4862-bfe2-4bfa9ec43953"
 >
@@ -2446,12 +2730,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set NL mode"
  Guid="09c02121-9785-48b5-afb1-9a7deef051ba"
 >
+<Comment>Set the mode to NL.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set NL mode"
  Guid="19fb8c13-eb91-4180-afcb-93d52f70f694"
 >
@@ -2464,12 +2751,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="48e4e92e-3529-4f4e-9228-ea46545e2646"
 >
+<Comment>Open the DMI cab.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="7763bee5-4fef-4302-9c3f-6fb230f1e553"
 >
@@ -2482,12 +2772,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="88ae30fb-9747-4849-886a-76ee6042a99a"
 >
+<Comment>Switch the power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="7ec912b2-10c3-4413-b81a-095f3e7096cd"
 >
@@ -2500,12 +2793,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="5790dd9f-a506-4fa7-993b-44c6dbd42e79"
 >
+<Comment>Un-isolate the ETCS from the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="041e8386-3e02-4da1-b60d-6940342fef7b"
 >
@@ -2518,12 +2814,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Non leading input"
  Guid="5423fbef-ddad-401a-bde8-67b06786ca3f"
 >
+<Comment>Set the non-leading input.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Non leading input"
  Guid="5221386e-dba5-43dd-b0fc-a8daefbadbc2"
 >
@@ -2548,12 +2847,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Rules>
 <Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Set RV mode"
  Guid="959d81fd-867a-4685-9808-15597a47e56b"
 >
+<Comment>Set the mode to RV.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Set RV mode"
  Guid="285dc887-b11e-4e77-8f13-822c95ec5214"
 >
@@ -2566,12 +2868,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="01280127-f0fe-4cab-a005-1ce07f15072b"
 >
+<Comment>Open the DMI cab.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="DMI cab open"
  Guid="c441e90c-ec38-43e0-ad8d-d04340745b85"
 >
@@ -2584,12 +2889,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="ff560e13-5ba8-43fe-8a70-31edb838bfe1"
 >
+<Comment>Turn the power on.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="Power on"
  Guid="05db15ba-90d1-40a2-bcff-7d402937b6d9"
 >
@@ -2602,12 +2910,15 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="a8cc5ea0-768f-451c-8512-74e94138890c"
 >
+<Comment>Un-isomate the ETCS from the train.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ NeedsRequirement="FALSE"
  Name="ETCS not isolated"
  Guid="193f8ab5-8d3e-459a-b98b-a1ebe9326e1d"
 >

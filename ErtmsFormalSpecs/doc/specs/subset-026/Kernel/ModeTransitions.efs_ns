@@ -615,8 +615,7 @@ Level.Value.Value in [Default.Level.L0, Default.Level.LNTC, Default.Level.L1]</E
  Name="Value"
  Guid="cb64da1f-7c0d-47cf-b062-b536626b8bce"
 >
-<Comment>The condition &quot;driver selects Shunting&quot; is satisfied by the state machine HandleModeChange being in the state ShuntingInitiatedByDriver, since it is only possible to enter that state if the driver selects shunting.
-</Comment>
+<Comment>The condition &quot;driver selects Shunting&quot; is satisfied by the state machine HandleModeChange being in the state ShuntingInitiatedByDriver, since it is only possible to enter that state if the driver selects shunting.</Comment>
 <Expression>HandleModeChange in HandleModeChangeSM.ShuntingInitiatedByDriver.S050
   AND
 Level.Value.Value in [Default.Level.L2, Default.Level.L3]
