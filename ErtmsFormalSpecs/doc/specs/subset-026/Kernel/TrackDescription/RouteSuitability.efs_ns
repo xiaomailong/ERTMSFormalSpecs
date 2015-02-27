@@ -1012,6 +1012,79 @@ IN
     Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ X="350"
+ Y="280"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DeleteRouteSuitabilitiesBeyondLocation"
+ Guid="4f5722dd-eb11-4850-8a64-0c09fc5ccf2e"
+>
+<ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6df14436-f111-47a4-9e2b-fdd927838f97"
+>
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f4fb08bc-f317-42a6-81bc-85c5409678fe"
+>
+</ReqRef><ReqRef
+ Id="78751c70-72e3-4e43-9e03-32e66b7c02f4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="509bad78-61df-40c7-a3b2-4895526ee016"
+>
+</ReqRef><ReqRef
+ Id="5f651283-7b34-4b40-bd6d-48a0668dd71f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="71e883aa-2fce-42a0-84e2-1cdf956f7f13"
+>
+</ReqRef><Comment>Deletes the axle load profile information beyond the provided location.</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Distance"
+ Name="aLocation"
+ Guid="5f00fd8a-97f2-49e0-9c12-ea21058bc160"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Delete route suitabilities beyond the given location"
+ Guid="12468fdc-7971-4187-8cdc-966eea4ae32d"
+>
+<Comment>Deletes the route suitabilities profile beyond the provided location by removing the elements beyond this location and resuming the initial states at the location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Delete route suitabilities beyond the given location"
+ Guid="6f303911-b236-4e50-bca0-482f0b5d99fe"
+>
+<PreConditions>
+<PreCondition
+ Guid="f217ebc6-90f3-4b06-b121-9472c9799c71"
+>RouteSuitabilityProfile.Items != []
+  AND
+(
+  RouteSuitabilityProfile.InitialState == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow
+    OR
+  RouteSuitabilityProfile.EmptyProfileDistance &gt; aLocation
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b0e4f1d5-5500-4619-a2eb-c5d1fb22032b"
+>RouteSuitabilityProfile.Items &lt;- MAP RouteSuitabilityProfile.Items | X.Distance &lt;= aLocation USING X IN X</Action><Action
+ Guid="32d3048c-8f49-48a5-a549-768907796364"
+>RouteSuitabilityProfile.EmptyProfileDistance &lt;- aLocation</Action><Action
+ Guid="dea25859-669e-4b52-ad0b-b13698635e80"
+>RouteSuitabilityProfile.InitialState &lt;- Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
