@@ -559,6 +559,38 @@ Location stores the previous End of Movement Authority location.</Comment>
  Guid="18c808fe-83c5-4bd0-86bd-a48d90be00d7"
 >
 <Comment>Records whether the previous MA was supervising a SvL or has a LOA</Comment>
+</StructureElement></Structure><Structure
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SignallingRelatedSRStruct"
+ Guid="0c84b253-952d-4564-a54b-1b1ab882ae29"
+>
+<ReqRef
+ Id="5d3380ae-3cb4-4f42-a7ba-d37280d33119"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="45f287e9-67df-4d6b-b1d4-173ccab6e473"
+>
+</ReqRef><Comment>Represents the signalling related speed restriction.</Comment>
+<StructureElement
+ TypeName="BaseTypes.Speed"
+ Default="BaseTypes.Speed.MaxSpeed"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="Value"
+ Guid="e6b96b03-f514-4e9d-8824-7b18c46f21a1"
+>
+<Comment>The value of the signalling related speed restriction.</Comment>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Distance"
+ Default="BaseTypes.Distance.Unknown"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="End"
+ Guid="5eda04d0-93e3-4567-a9e6-994f3d6d565f"
+>
+<Comment>The distance until which the signalling related speed restriction is valid, if any.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -969,8 +1001,12 @@ INITIAL_VALUE CreateTarget (
 <PreConditions>
 <PreCondition
  Guid="882879c9-2057-45f9-afa8-3b11d5abd62a"
->Kernel.Level.Value.Value == Level.L1</PreCondition></PreConditions>
-<Expression>SignallingRelatedSpeedRestriction</Expression>
+>Kernel.Level.Value.Value == Level.L1</PreCondition><PreCondition
+ Guid="10848d71-717a-4061-bb58-ba05a566ffb4"
+>SignallingRelatedSpeedRestriction.End == BaseTypes.Distance.Unknown
+  OR
+d &lt; SignallingRelatedSpeedRestriction.End</PreCondition></PreConditions>
+<Expression>SignallingRelatedSpeedRestriction.Value</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="b5339113-60a7-4cec-9e60-c156ca255ef5"
@@ -2312,7 +2348,7 @@ Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreCond
     SectionStartTimer =&gt; MATimers.CurrentBGTimeOfPassage
 )</Action><Action
  Guid="f8a42f47-6bf7-4155-9ad4-52eb896fbff6"
->SignallingRelatedSpeedRestriction &lt;- Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_MAIN, resolution =&gt; 5.0 )</Action><Action
+>SignallingRelatedSpeedRestriction.Value &lt;- Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_MAIN, resolution =&gt; 5.0 )</Action><Action
  Guid="80edc04f-5273-4997-8bd5-e5b012a9c650"
 ><Comment>Current BG time of passage becomes section timer start</Comment>
 MATimers.LOATimerStart &lt;- MATimers.CurrentBGTimeOfPassage</Action><Action
@@ -4355,8 +4391,8 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 >
 </ReqRef><Comment>Represents the Movement Authority.</Comment>
 </Variable><Variable
- Type="Default.BaseTypes.Speed"
- DefaultValue="Default.BaseTypes.Speed.MaxSpeed"
+ Type="SignallingRelatedSRStruct"
+ DefaultValue=""
  VariableMode="Internal"
  X="740"
  Y="510"

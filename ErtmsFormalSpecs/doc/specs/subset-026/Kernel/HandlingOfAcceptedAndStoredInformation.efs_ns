@@ -1805,6 +1805,7 @@ SituationM()</Expression>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Handle Signalling related Speed Restriction"
  Guid="05f7260f-0c62-40c1-97bb-544e6bf146a8"
@@ -1813,6 +1814,7 @@ SituationM()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the first category"
  Guid="dd79ac35-cedf-47e7-8dd9-def9529eaa0a"
 >
@@ -1821,14 +1823,22 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f385e106-ca99-4eb0-97f9-0a8f4324839a"
 >
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="64555fc7-590b-4f38-b87a-5794e6b19e95"
+>
 </ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="46c3583f-0cb7-4143-930d-75f9393e3c0d"
 >FirstCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="c22eb905-8b87-4394-b699-586650ede642"
+>MA.SignallingRelatedSpeedRestriction.End &lt;- SpecialCase1Location()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the second category"
  Guid="369a2881-4284-46dd-8750-516c2c6d86e2"
 >
@@ -1837,14 +1847,22 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ad0bd45f-f54b-4265-808a-6602805448c4"
 >
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1676d2de-56ae-49d6-b4cf-780e9198b1b6"
+>
 </ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="b2f67685-6b99-4167-a8b3-b4e5fafd1103"
 >SecondCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="737f10f5-9410-4f04-8f5e-45db4fa02d5a"
+>MA.SignallingRelatedSpeedRestriction.End &lt;- TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the third category"
  Guid="94f431fe-dd2b-468b-9cb2-21ad2896459a"
 >
@@ -1853,13 +1871,24 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="92031031-35d4-4be2-a468-32d88e805662"
 >
+</ReqRef><ReqRef
+ Id="bd7dbc99-064a-49f3-95c7-877b33ac0533"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="00392ba8-1954-4d02-95e6-9ce86095e1dd"
+>
 </ReqRef><Comment>Handles the information for the situation k.</Comment>
 <PreConditions>
 <PreCondition
  Guid="778e8157-5067-430e-95c5-dc3d091f3349"
 >ThirdCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="7e0c243c-8af8-4af5-9528-052c202de507"
+>MA.SignallingRelatedSpeedRestriction &lt;- MA.SignallingRelatedSRStruct
+{
+  Value =&gt; BaseTypes.Speed.MaxSpeed,
+  End =&gt; BaseTypes.Distance.Unknown
+}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
