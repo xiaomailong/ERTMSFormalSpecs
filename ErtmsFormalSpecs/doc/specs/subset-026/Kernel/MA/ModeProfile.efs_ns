@@ -337,7 +337,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="ProfileForInfill"
+ Name="KeepTheProfileAccordingToLocation"
  Guid="00b092f7-ea4d-4143-b544-b7d57cb8871b"
 >
 <ReqRef
@@ -345,10 +345,10 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6b4a5586-cd43-444e-a590-2a9f7b29caa2"
 >
-</ReqRef><Comment>Indicates if the given mode profile should be deleted or not when an infill information is received. There are three possible cases:
-1. If the profile is before the infill location, it should be kept (the whole profile is returned).
-2. If the profile is after the infill location, it should be deleted (EMPTY is returned).
-3. If the infill location is inside the profile, the latter is shortened until the infill location.</Comment>
+</ReqRef><Comment>Indicates for the given mode profile element if it will be kept or not according to the given location. There are three possible cases:
+1. If the mode profile element is before the given location, it should be kept (the whole mode profile element is returned).
+2. If the mode profile element is after the given location, it will be deleted (EMPTY is returned).
+3. If the given location is inside the mode profile element, the latter is shortened until the given location.</Comment>
 <Parameters>
 <Parameter
  Type="Kernel.MA.ModeProfile.ModeProfileStruct"
@@ -357,7 +357,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Distance"
- Name="InfillDistance"
+ Name="aLocation"
  Guid="93793903-c8a7-4a12-a92c-12c9a0ed3fe5"
 >
 </Parameter></Parameters>
@@ -369,7 +369,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <PreConditions>
 <PreCondition
  Guid="24609d85-64ee-4f58-81e9-da0bd36e1703"
->aProfile.Distance + BaseTypes.LengthToDistance ( aProfile.Length ) &lt;= InfillDistance</PreCondition></PreConditions>
+>aProfile.Distance + BaseTypes.LengthToDistance ( aProfile.Length ) &lt;= aLocation</PreCondition></PreConditions>
 <Expression>aProfile</Expression>
 </Case><Case
  Name="Infill location after profile"
@@ -378,7 +378,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <PreConditions>
 <PreCondition
  Guid="11207bb5-7d97-4421-baaa-83868e35318a"
->InfillDistance &lt;= aProfile.Distance</PreCondition></PreConditions>
+>aLocation &lt;= aProfile.Distance</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case><Case
  Name="Infill location inside profile"
@@ -388,7 +388,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 {
     AcknLength =&gt; aProfile.AcknLength,
     Distance =&gt; aProfile.Distance,
-    Length =&gt; InfillDistance - aProfile.Distance,
+    Length =&gt; aLocation - aProfile.Distance,
     Mode =&gt; aProfile.Mode,
     Speed =&gt; aProfile.Speed,
     SupervisionQualifier =&gt; aProfile.SupervisionQualifier
@@ -769,11 +769,6 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Guid="f67fc4c1-e794-4df9-a90f-774f072c842b"
 >
 </ReqRef><ReqRef
- Id="4744429f-fce3-4833-817a-c0cd74ffcd7f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ae7783f2-1204-4946-931b-b76ec9c981af"
->
-</ReqRef><ReqRef
  Id="e6b9b34b-5183-45ec-96a2-8eef4909b34c"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="22aa3dca-996b-4319-8f09-592b9a3bba56"
@@ -782,6 +777,11 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Id="85399986-8b1a-4ee5-ba62-20eb7ca0a3b9"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3cf46ce2-be5c-4575-b83a-0ca3ff590a76"
+>
+</ReqRef><ReqRef
+ Id="6f370d19-a99b-404b-9718-80331a17d9d4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="80310539-d9d7-4787-bad6-4d1f5cd69f16"
 >
 </ReqRef><Comment>Handles the reception of the mode profile.</Comment>
 <Parameters>
@@ -1147,7 +1147,7 @@ IN
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="ClearModeProfile"
+ Name="DeleteModeProfileBeyondLocation"
  Guid="eb6ef3c0-69da-430b-8e73-9be421757bd6"
 >
 <ReqRef
@@ -1155,12 +1155,17 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9912c05b-a2ff-4b0d-a17e-fb4d35f5215f"
 >
-</ReqRef><Comment>Clears the previously stored mode profile on the reception of a new MA. If the MA is received by infill, the mode profile is deleted only beyond the reference location of the infill information.</Comment>
+</ReqRef><ReqRef
+ Id="413303d1-7e96-41b7-a03e-3a9d6380e93a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="492c520d-3a50-4d8c-9311-5eaa02884428"
+>
+</ReqRef><Comment>Removes the mode profile elements situated beyond the given location.</Comment>
 <Parameters>
 <Parameter
- Type="Messages.PACKET.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.Message"
- Name="InfillPacket"
- Guid="3c5d7e25-1a58-47af-81ff-022219c483f5"
+ Type="BaseTypes.Distance"
+ Name="aLocation"
+ Guid="4ba7841a-3c00-4427-99b9-5d572de530c9"
 >
 </Parameter></Parameters>
 <Rules>
@@ -1168,42 +1173,27 @@ IN
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Clear previous Mode Profile"
+ Name="Remove mode profile beyond the given location"
  Guid="3fb32f5c-bb35-4b94-86f8-eac502c00085"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Infill available"
+ Name="Remove mode profile beyond the given location"
  Guid="e2d9057b-6d4c-4f1c-a2fe-0eec006d8a77"
 >
-<ReqRef
- Id="2a495f6e-680c-4def-a6b5-d8bcd1f41a9d"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="27fb3b75-ccad-4b93-9962-454d310035cf"
->
-</ReqRef><Comment>If the MA is received by infill, the mode profile is deleted only beyond the reference location of the infill information.</Comment>
-<PreConditions>
-<PreCondition
- Guid="acbdd6b9-884b-450b-bdcc-17b491c78147"
->InfillPacket != EMPTY</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ca7c34df-e127-4393-a18b-a4fac6c5288e"
->ModeProfile.Profile &lt;- MAP ModeProfile.Profile USING X IN ModeProfile.ProfileForInfill ( aProfile =&gt; X, InfillDistance =&gt; BTM.Linking.DistanceToBaliseGroup ( InfillPacket.NID_BG ) )</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="No infill available"
- Guid="43da712d-cb6e-47bf-a0ca-fd7fd8c8ecee"
->
-<Comment>If no infill is available, the mode profile is removed.</Comment>
+<Comment>If the MA is received by infill, the mode profile is deleted only beyond the reference location of the infill information.</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="a27373f3-39f3-4957-914e-db3d443351e0"
->ModeProfile.Profile &lt;- []</Action></Actions>
+ Guid="ca7c34df-e127-4393-a18b-a4fac6c5288e"
+>ModeProfile.Profile &lt;- MAP ModeProfile.Profile USING X IN KeepTheProfileAccordingToLocation
+(
+  aProfile =&gt; X,
+  aLocation =&gt; aLocation
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1382,6 +1372,45 @@ IN
 <Action
  Guid="bef1dd94-9db8-4d2d-86e9-aa0a15bb0913"
 >REMOVE ALL RemoveModeProfile ( X ) IN  Profile</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle empty mode profile"
+ Guid="1669f661-c10a-4748-9ec0-66040b928a77"
+>
+<ReqRef
+ Id="69d11b6a-6ae6-4d77-8ddf-bdb543c96261"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="585744cb-0a32-4042-851d-abe0b2829880"
+>
+</ReqRef><ReqRef
+ Id="3e329bf5-959c-4332-a482-b1816ce364d2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4896f376-ceba-4690-b4bf-6363380bd4e4"
+>
+</ReqRef><Comment>If the mode profile was deleted while the acknowledgement was displayed, the display is disabled</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle empty mode profile"
+ Guid="6726e1c2-af63-4d29-bbb8-4106e2518ea5"
+>
+<PreConditions>
+<PreCondition
+ Guid="6f1387c7-891c-49ac-bed0-c4d6ff0b5630"
+>Profile == []</PreCondition><PreCondition
+ Guid="5810b961-7635-4460-affe-9b88971ee93b"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5056e99b-35a2-4c79-8490-c8e3cfaedfc8"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
+ Guid="928751e5-f9bd-4621-96da-1d140c49a57c"
+>DriverAckTimer &lt;- Default.BaseTypes.Time.NA</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

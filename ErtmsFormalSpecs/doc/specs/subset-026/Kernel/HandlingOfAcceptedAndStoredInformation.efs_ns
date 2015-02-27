@@ -2219,6 +2219,7 @@ SituationM()</Expression>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Handle Mode Profile"
  Guid="839744e0-9554-4c10-8334-4f0e771bb40d"
@@ -2232,6 +2233,7 @@ SituationM()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the first category"
  Guid="014d11b7-7df6-447a-9d5b-0a2b19cc3733"
 >
@@ -2240,14 +2242,32 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="fc93fbbf-de9b-4f3b-8686-4b3f25f225bc"
 >
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4b8297ca-ad11-4aeb-9320-e0d252092989"
+>
+</ReqRef><ReqRef
+ Id="69d11b6a-6ae6-4d77-8ddf-bdb543c96261"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2eb5d154-1851-402f-8c2f-0d76ae1c616d"
+>
+</ReqRef><ReqRef
+ Id="413303d1-7e96-41b7-a03e-3a9d6380e93a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="029682a9-90cd-4e38-9bd5-87d20c97e93b"
+>
 </ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="0088112f-69c0-41e2-8a27-e739575c7f30"
 >FirstCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="be974c22-55a8-45d7-a15b-e522dbb5aa08"
+>MA.ModeProfile.DeleteModeProfileBeyondLocation ( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the second category"
  Guid="c1dd8de2-ddde-4746-bfdb-e79322ae72c4"
 >
@@ -2256,13 +2276,25 @@ SituationM()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c80236a3-0d3f-4e56-b002-99fa9a1dc6b7"
 >
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="41eebe2d-f7ca-422e-9938-8ce0f194ef7a"
+>
+</ReqRef><ReqRef
+ Id="3e329bf5-959c-4332-a482-b1816ce364d2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a29a414f-37c1-4f05-8004-cc762c7e5e88"
+>
 </ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="41605fbd-eac0-4381-9732-e043614a0dae"
 >SecondCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="315c9cd8-260c-4193-8560-f99ff57af1fd"
+>MA.ModeProfile.DeleteModeProfileBeyondLocation ( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the third category"

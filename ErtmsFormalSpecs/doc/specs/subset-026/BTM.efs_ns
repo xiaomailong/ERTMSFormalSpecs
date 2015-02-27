@@ -3917,6 +3917,11 @@ The list is updated in case two LRBGs provide the same MRSP, this should count a
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b862888b-2f98-4b53-aefc-fddd796395f3"
 >
+</ReqRef><ReqRef
+ Id="413303d1-7e96-41b7-a03e-3a9d6380e93a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="73e1bed3-4929-4685-8b11-0443395b7727"
+>
 </ReqRef><Comment>If the infill information is available, then the mode profil has to be deleted only beyond the reference location of the infill information. Otherwise, the entire mode profile is deleted.</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -3940,7 +3945,18 @@ The list is updated in case two LRBGs provide the same MRSP, this should count a
 <Actions>
 <Action
  Guid="840d737c-0711-45fa-aa7c-6d7614ac52b5"
->Kernel.MA.ModeProfile.ClearModeProfile ( InfillPacket =&gt; ( FIRST X IN Message.Sequence1 | Available ( X.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE ) ).TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE )</Action></Actions>
+>Kernel.MA.ModeProfile.DeleteModeProfileBeyondLocation 
+(
+  aLocation =&gt; Linking.DistanceToBaliseGroup
+  (
+    (
+      FIRST X IN Message.Sequence1 | Available
+        (
+          X.TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE
+        )
+    ).TRACK_TO_TRAIN.INFILL_LOCATION_REFERENCE.NID_BG
+  )
+)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Infill available, after MA"
@@ -3954,7 +3970,7 @@ The list is updated in case two LRBGs provide the same MRSP, this should count a
 <Actions>
 <Action
  Guid="43a9100d-2063-4f03-968c-58d689ab3e26"
->Kernel.MA.ModeProfile.ClearModeProfile ( InfillPacket =&gt; EMPTY )</Action></Actions>
+>Kernel.MA.ModeProfile.Profile &lt;- []</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No infill available"
@@ -3966,7 +3982,7 @@ The list is updated in case two LRBGs provide the same MRSP, this should count a
 <Actions>
 <Action
  Guid="53fff272-02d3-4959-ab47-d2fcffd42bb3"
->Kernel.MA.ModeProfile.ClearModeProfile ( InfillPacket =&gt; EMPTY )</Action></Actions>
+>Kernel.MA.ModeProfile.Profile &lt;- []</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
