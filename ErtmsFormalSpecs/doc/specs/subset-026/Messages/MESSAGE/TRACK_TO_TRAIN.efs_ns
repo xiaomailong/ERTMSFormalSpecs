@@ -388,218 +388,218 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="ea4103d9-479c-4184-9bc5-d00cb1f4ea7d"
+ Guid="eb8326d7-5997-4d59-a59e-87d26a2a2945"
 >
 <Comment>Checks the values in a structure of type TRACK_TO_TRAIN.Message</Comment>
 <Parameters>
 <Parameter
  Type="TRACK_TO_TRAIN.Message"
  Name="struct"
- Guid="f329f4f2-a468-4657-8aaf-cdb30f94600e"
+ Guid="530ee136-84a4-43fb-b9bb-fabdd29d605b"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="87624d98-a88d-420f-ace3-1acc79b00eb1"
+ Guid="eb9a83d1-daf1-495a-adba-b6a83f135f0d"
 >
 <PreConditions>
 <PreCondition
- Guid="99cb908f-c285-4e6d-97cd-90808d3e9ec2"
+ Guid="d2988004-37f3-4ef6-ba6c-aaa36cb450cf"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="SR_AUTHORISATION invalid"
- Guid="133badf9-5e14-4833-8e01-84f735d6f02e"
+ Guid="f5b7972a-2883-4289-95da-5b4432d651d4"
 >
 <PreConditions>
 <PreCondition
- Guid="3fad6b5c-59f1-487f-a760-dc5c374abc7e"
+ Guid="7d5dca62-9ab8-4b04-bd25-58618fea59cb"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.SR_AUTHORISATION.MessageValuesCorrect(struct.SR_AUTHORISATION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="MOVEMENT_AUTHORITY invalid"
- Guid="30166ff5-3f0a-4ef8-a17e-54825467cd90"
+ Guid="315bf51c-b817-4d61-b2d5-0279cae31308"
 >
 <PreConditions>
 <PreCondition
- Guid="28a30f41-c4f0-4755-8328-a2e70e40abf7"
+ Guid="479be43d-94eb-4df5-a39c-a30ff925a85b"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY.MessageValuesCorrect(struct.MOVEMENT_AUTHORITY)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="RECOGNITION_OF_EXIT_FROM_TRIP_MODE invalid"
- Guid="982b30a7-4050-4a08-9247-6e5fc1dbe184"
+ Guid="0749d01f-c213-44c3-89b3-1679090dc79d"
 >
 <PreConditions>
 <PreCondition
- Guid="7f67e614-8039-460e-b38e-f85363f6ae13"
+ Guid="b5cf588d-0527-427d-8c4d-2966438e617c"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.RECOGNITION_OF_EXIT_FROM_TRIP_MODE.MessageValuesCorrect(struct.RECOGNITION_OF_EXIT_FROM_TRIP_MODE)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="ACKNOWLEDGEMENT_OF_TRAIN_DATA invalid"
- Guid="73d7c149-f8f6-4413-9c10-1ed60d84429a"
+ Guid="6d1b9a38-0969-4b25-8f32-55790e363df0"
 >
 <PreConditions>
 <PreCondition
- Guid="6e423d50-3761-40b1-a67f-9b0919f08234"
+ Guid="9041a0b2-1531-45f1-9f84-dbdfad8e1103"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.ACKNOWLEDGEMENT_OF_TRAIN_DATA.MessageValuesCorrect(struct.ACKNOWLEDGEMENT_OF_TRAIN_DATA)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="REQUEST_TO_SHORTEN_MA invalid"
- Guid="b846e687-57d9-4ffa-85ce-ead33605cd01"
+ Guid="f38bd4f0-75d0-4f4b-ad50-06c05210d5ac"
 >
 <PreConditions>
 <PreCondition
- Guid="443ee8c1-fedf-4b90-8f38-677fa3b2f049"
+ Guid="cc36f3f3-8963-4cd0-8bb0-89f213fa383f"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.REQUEST_TO_SHORTEN_MA.MessageValuesCorrect(struct.REQUEST_TO_SHORTEN_MA)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="CONDITIONAL_EMERGENCY_STOP invalid"
- Guid="7dd8706c-ad4d-4b02-b6bb-f7198b901f99"
+ Guid="d7e4ee81-42e8-4b12-90d0-7bde45f58292"
 >
 <PreConditions>
 <PreCondition
- Guid="2f44a4d1-b69c-4b7b-819b-84cae7a9890a"
+ Guid="60720a87-ed9c-4a0c-ba87-e85a7f9d445d"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.CONDITIONAL_EMERGENCY_STOP.MessageValuesCorrect(struct.CONDITIONAL_EMERGENCY_STOP)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="UNCONDITIONAL_EMERGENCY_STOP invalid"
- Guid="b0b2b71e-c09f-45f4-be27-3e2c60356a77"
+ Guid="94f347a8-0e16-442e-a213-3f386365e1de"
 >
 <PreConditions>
 <PreCondition
- Guid="b65a7a06-3a60-4191-96a6-eda966849cfb"
+ Guid="ffa7a146-c911-4e72-bd71-b3b779483e99"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.UNCONDITIONAL_EMERGENCY_STOP.MessageValuesCorrect(struct.UNCONDITIONAL_EMERGENCY_STOP)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="REVOCATION_OF_EMERGENCY_STOP invalid"
- Guid="023c4984-e61a-42ab-be48-d2157df240b7"
+ Guid="42500332-3526-4257-8c53-b9379c3de75f"
 >
 <PreConditions>
 <PreCondition
- Guid="dd17ee44-25c4-4c3c-8c51-ad2444050ff2"
+ Guid="b6a53ce3-2154-4117-8509-81e159822bc2"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.REVOCATION_OF_EMERGENCY_STOP.MessageValuesCorrect(struct.REVOCATION_OF_EMERGENCY_STOP)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="GENERAL_MESSAGE invalid"
- Guid="72da82d5-31a4-46d2-8aa4-931e16d95b6c"
+ Guid="b739cfc4-ea46-4ff3-aa8b-a0a4cb37b7f1"
 >
 <PreConditions>
 <PreCondition
- Guid="9b0bd09f-ed21-4e32-808a-8d9c3bb069dd"
+ Guid="1087a98e-c4f4-47fe-b970-739170f372ac"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.GENERAL_MESSAGE.MessageValuesCorrect(struct.GENERAL_MESSAGE)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="SH_REFUSED invalid"
- Guid="60e01be3-26ed-42c2-b159-08ca83f8d3d2"
+ Guid="1534c81d-afe7-4949-9b8e-0246d9f52df4"
 >
 <PreConditions>
 <PreCondition
- Guid="cb140d2d-7831-492b-ade6-f24e7ac2fe2b"
+ Guid="54cf6977-a3e2-4d99-a8b6-e1ba11b9d9e1"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.SH_REFUSED.MessageValuesCorrect(struct.SH_REFUSED)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="SH_AUTHORISED invalid"
- Guid="b9557ae4-765f-4293-9975-5cd99f00e14b"
+ Guid="c3878a30-3800-471d-814d-1f02fc75ef88"
 >
 <PreConditions>
 <PreCondition
- Guid="e0599051-9bf6-4e12-a004-1b0efe0b3907"
+ Guid="dc7034c3-e5c6-4ccf-abbd-9dd11f39bd13"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.SH_AUTHORISED.MessageValuesCorrect(struct.SH_AUTHORISED)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="MA_WITH_SHIFTED_LOCATION_REFERENCE invalid"
- Guid="2a2ca1b5-0818-4141-8a3a-578ba73ad578"
+ Guid="a80e25e5-9cc4-4361-b118-cdddd917f950"
 >
 <PreConditions>
 <PreCondition
- Guid="a6de1c92-518f-45cb-8202-d49f0453256b"
+ Guid="28f832a3-d848-42f7-9d94-b1dba5a17bcd"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.MA_WITH_SHIFTED_LOCATION_REFERENCE.MessageValuesCorrect(struct.MA_WITH_SHIFTED_LOCATION_REFERENCE)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="TRACK_AHEAD_FREE_REQUEST invalid"
- Guid="2e6ce2b6-41a8-4633-b50d-3530d74858f0"
+ Guid="d64e7dbc-c671-4f54-8f35-9645ef403c99"
 >
 <PreConditions>
 <PreCondition
- Guid="d4408aa6-ca1d-49ce-8526-5c8b6b23c592"
+ Guid="c33e34cb-a458-4a8e-9def-32f0f618fd15"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.TRACK_AHEAD_FREE_REQUEST.MessageValuesCorrect(struct.TRACK_AHEAD_FREE_REQUEST)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="INFILL_MA invalid"
- Guid="2a5710a1-3274-447a-bdb2-af0a91df41cc"
+ Guid="824a76ff-b612-49d8-9d80-8266dd5f2b2d"
 >
 <PreConditions>
 <PreCondition
- Guid="a55a704a-44e7-4ab3-a498-a89a8e7afd56"
+ Guid="0317ff7c-722e-408c-9e74-bed435941718"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.INFILL_MA.MessageValuesCorrect(struct.INFILL_MA)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="TRAIN_REJECTED invalid"
- Guid="a9bea00d-d4aa-4d30-bf5c-70ba436f2608"
+ Guid="3f3a6db6-3001-4963-911e-7157315d94c2"
 >
 <PreConditions>
 <PreCondition
- Guid="54df2c80-a46a-4414-a097-3d9d72d5df31"
+ Guid="f202d26f-8e97-4bd0-90b1-ad21c031a563"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.TRAIN_REJECTED.MessageValuesCorrect(struct.TRAIN_REJECTED)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="RIU_SYSTEM_VERSION invalid"
- Guid="5dae01fa-929b-4683-8291-48a4aa3010f1"
+ Guid="960081c6-8218-4879-bb5e-c4532b4241be"
 >
 <PreConditions>
 <PreCondition
- Guid="1d77a903-254d-4571-9347-c31f0982609c"
+ Guid="5041a89f-239e-4566-b429-bae24d417ae5"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.RBC.RIU_SYSTEM_VERSION.MessageValuesCorrect(struct.RIU_SYSTEM_VERSION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="INITIATION_OF_A_COMMUNICATION_SESSION invalid"
- Guid="cb371763-cd47-4655-87d7-c69b0f8a88aa"
+ Guid="b18f2c00-735d-48e3-a070-ad52e7ea320c"
 >
 <PreConditions>
 <PreCondition
- Guid="50740326-9159-4f02-a926-162a9a25654d"
+ Guid="cad8b736-4c93-460d-abc2-579c4dfc32e4"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.INITIATION_OF_A_COMMUNICATION_SESSION.MessageValuesCorrect(struct.INITIATION_OF_A_COMMUNICATION_SESSION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION invalid"
- Guid="ea2b2373-7ddb-47e6-a2cb-b795f0619815"
+ Guid="b1e0df71-c0a6-46e0-814b-d6152736a383"
 >
 <PreConditions>
 <PreCondition
- Guid="f1b23110-5dc5-4ed8-a382-96bd27a25ea6"
+ Guid="08522ac8-0e0c-40aa-bef2-0e01771d8e2f"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION.MessageValuesCorrect(struct.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="TRAIN_ACCEPTED invalid"
- Guid="42795587-d98f-4cae-a7e2-13afcc626de7"
+ Guid="ec619d7d-595c-48dd-affa-7a8b4569e67d"
 >
 <PreConditions>
 <PreCondition
- Guid="6c5aae46-0fe3-467f-b8a2-8384f258f87c"
+ Guid="99a6330a-a107-419b-8d17-114469e52481"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.TRAIN_ACCEPTED.MessageValuesCorrect(struct.TRAIN_ACCEPTED)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="SOM_POSITION_REPORT_CONFIRMED_BY_RBC invalid"
- Guid="ad00485c-217f-4056-980a-78992a906cf1"
+ Guid="31799dfc-4d88-4b83-a6af-16846a644617"
 >
 <PreConditions>
 <PreCondition
- Guid="de73f864-4528-43a6-9342-90deba48138b"
+ Guid="e5b9a11a-9af4-4fe9-8c03-b18f82fbb5cc"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.SOM_POSITION_REPORT_CONFIRMED_BY_RBC.MessageValuesCorrect(struct.SOM_POSITION_REPORT_CONFIRMED_BY_RBC)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="ASSIGNMENT_OF_COORDINATE_SYSTEM invalid"
- Guid="332e9f68-ebfb-45b3-a8a8-52b15460401f"
+ Guid="2b0ee4e1-cd74-4373-9ac4-d4a239450438"
 >
 <PreConditions>
 <PreCondition
- Guid="2dba08a3-711b-496e-9fad-3c3a706b7f7e"
+ Guid="91a2bbc4-e559-47ca-b0e4-adafa701cbdd"
 >NOT Messages.MESSAGE.TRACK_TO_TRAIN.ASSIGNMENT_OF_COORDINATE_SYSTEM.MessageValuesCorrect(struct.ASSIGNMENT_OF_COORDINATE_SYSTEM)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="5964040b-e246-4c41-b2f3-32706606bf8a"
+ Guid="e3e25ce0-24d3-4cb3-8ec8-24f822167da0"
 >
 <Expression>True</Expression>
 </Case></Cases>
@@ -607,204 +607,204 @@
  Type="Default.MessageTypes.Time"
  Default=""
  Name="GetT_TRAIN"
- Guid="1b899f0d-fc0f-4862-b2ea-5f44ad1d3895"
+ Guid="dbb7d616-8c2b-4933-ab59-f8765f462482"
 >
 <Comment>Retrieves the value of T_TRAIN from a generic Messages.MESSAGE.TRACK_TO_TRAIN.Message.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
  Name="Message"
- Guid="65131e8a-6668-4443-ab8f-4b6f8e20e1c4"
+ Guid="1107f166-c4d6-433f-b674-471a06471c3f"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SR_AUTHORISATION"
- Guid="a4eb1c3b-76f9-4676-9524-93311d0c46ba"
+ Guid="06946bbe-a3be-4eaa-b3c6-4cb0dbc2c4db"
 >
 <PreConditions>
 <PreCondition
- Guid="5a9f83f3-ba73-420b-a7a8-4475f484e9eb"
+ Guid="83fbf056-bf1c-49d4-b972-64f68934b007"
 >Available(Message.SR_AUTHORISATION)</PreCondition></PreConditions>
 <Expression>Message.SR_AUTHORISATION.T_TRAIN</Expression>
 </Case><Case
  Name="MOVEMENT_AUTHORITY"
- Guid="c02449ba-2c6e-4bb5-b81b-5b6b852a52f5"
+ Guid="d254fc20-79c0-4621-bb36-4c90f4f86977"
 >
 <PreConditions>
 <PreCondition
- Guid="4289c50a-e3df-490c-bb64-5337eaa51a08"
+ Guid="7729e348-c2cc-464f-8570-081121c08769"
 >Available(Message.MOVEMENT_AUTHORITY)</PreCondition></PreConditions>
 <Expression>Message.MOVEMENT_AUTHORITY.T_TRAIN</Expression>
 </Case><Case
  Name="RECOGNITION_OF_EXIT_FROM_TRIP_MODE"
- Guid="bab2e3ae-d6f4-49de-a431-7ee4ef90eca6"
+ Guid="8b804aa8-b87c-4e1c-ae07-e2fabe4c63d5"
 >
 <PreConditions>
 <PreCondition
- Guid="f1979dec-9e5d-45a7-9d1d-a1615afe416e"
+ Guid="c945f24e-eaf4-4ff6-b6fe-bc15de31b229"
 >Available(Message.RECOGNITION_OF_EXIT_FROM_TRIP_MODE)</PreCondition></PreConditions>
 <Expression>Message.RECOGNITION_OF_EXIT_FROM_TRIP_MODE.T_TRAIN</Expression>
 </Case><Case
  Name="ACKNOWLEDGEMENT_OF_TRAIN_DATA"
- Guid="697e4a65-c7ab-42af-88cb-0da86d14c38a"
+ Guid="1b21ce7f-7fe9-4de2-b0f2-35362495926d"
 >
 <PreConditions>
 <PreCondition
- Guid="583cae5a-2b1d-49d1-b20f-1161b1fa912d"
+ Guid="e0826650-6d06-44d6-a4c3-8eee7391bfba"
 >Available(Message.ACKNOWLEDGEMENT_OF_TRAIN_DATA)</PreCondition></PreConditions>
 <Expression>Message.ACKNOWLEDGEMENT_OF_TRAIN_DATA.T_TRAIN_0</Expression>
 </Case><Case
  Name="REQUEST_TO_SHORTEN_MA"
- Guid="bed4c5a7-12ec-436f-9918-687524bbe5f4"
+ Guid="daec5d37-4b41-4dd2-b272-c1526c41258e"
 >
 <PreConditions>
 <PreCondition
- Guid="3c7e5fc2-2ab4-48b6-8675-fa141074261e"
+ Guid="683eb781-0cc9-46be-8183-56a7c320709e"
 >Available(Message.REQUEST_TO_SHORTEN_MA)</PreCondition></PreConditions>
 <Expression>Message.REQUEST_TO_SHORTEN_MA.T_TRAIN</Expression>
 </Case><Case
  Name="CONDITIONAL_EMERGENCY_STOP"
- Guid="c9faf893-a0a3-4111-98da-b52cc8682b80"
+ Guid="391cf729-2d3d-475b-91e3-ac2820bb7d63"
 >
 <PreConditions>
 <PreCondition
- Guid="60d7778e-1bda-4ffb-985c-402d584daf3c"
+ Guid="a41be76b-4e45-49d0-ad46-98649c435285"
 >Available(Message.CONDITIONAL_EMERGENCY_STOP)</PreCondition></PreConditions>
 <Expression>Message.CONDITIONAL_EMERGENCY_STOP.T_TRAIN</Expression>
 </Case><Case
  Name="UNCONDITIONAL_EMERGENCY_STOP"
- Guid="1345afee-722e-42fe-af7a-b8c5efe2952c"
+ Guid="4a4f2501-a525-4806-bfe4-8a96042d5da6"
 >
 <PreConditions>
 <PreCondition
- Guid="4bea0d5c-4521-48f0-a30a-4af4b486e7b6"
+ Guid="e6bf3c28-b53d-43ae-b0f6-3e6fe7d433ef"
 >Available(Message.UNCONDITIONAL_EMERGENCY_STOP)</PreCondition></PreConditions>
 <Expression>Message.UNCONDITIONAL_EMERGENCY_STOP.T_TRAIN</Expression>
 </Case><Case
  Name="REVOCATION_OF_EMERGENCY_STOP"
- Guid="c2b67c59-85b9-4d48-b093-b67ca62ff985"
+ Guid="1b86239f-6037-415c-933e-3b39f770844f"
 >
 <PreConditions>
 <PreCondition
- Guid="7f88284b-09b3-46e1-9a1e-917e4fc52ec8"
+ Guid="ee76e96f-1c5d-415f-8fc8-026404eb1234"
 >Available(Message.REVOCATION_OF_EMERGENCY_STOP)</PreCondition></PreConditions>
 <Expression>Message.REVOCATION_OF_EMERGENCY_STOP.T_TRAIN</Expression>
 </Case><Case
  Name="GENERAL_MESSAGE"
- Guid="4f238016-1439-49e2-b5be-911692a798bf"
+ Guid="fd34b339-19ac-45c2-828a-f99fe4da215b"
 >
 <PreConditions>
 <PreCondition
- Guid="3cbb2288-10fc-462d-996b-2bc8f756be29"
+ Guid="99f00474-4a83-4700-a752-e9efd8154781"
 >Available(Message.GENERAL_MESSAGE)</PreCondition></PreConditions>
 <Expression>Message.GENERAL_MESSAGE.T_TRAIN</Expression>
 </Case><Case
  Name="SH_REFUSED"
- Guid="96f623dd-8078-4d61-a891-9b16068dcb99"
+ Guid="10172951-8153-483e-b0ed-fa0504079c4b"
 >
 <PreConditions>
 <PreCondition
- Guid="10ec2791-f702-4838-a813-4f1f8832b90c"
+ Guid="4a06d8ad-6841-4a88-8ac3-2339fe0d61ea"
 >Available(Message.SH_REFUSED)</PreCondition></PreConditions>
 <Expression>Message.SH_REFUSED.T_TRAIN_0</Expression>
 </Case><Case
  Name="SH_AUTHORISED"
- Guid="9f2e0222-4325-455a-b982-0e7e5ba21c69"
+ Guid="7b151f11-7bf6-4312-8bc5-8939c4975960"
 >
 <PreConditions>
 <PreCondition
- Guid="f87690de-57b5-4300-9b0b-a5d096bf0664"
+ Guid="a2a7d107-d1c5-463e-9e3b-519689944538"
 >Available(Message.SH_AUTHORISED)</PreCondition></PreConditions>
 <Expression>Message.SH_AUTHORISED.T_TRAIN_0</Expression>
 </Case><Case
  Name="MA_WITH_SHIFTED_LOCATION_REFERENCE"
- Guid="b0b6ab29-90ed-46b1-9843-6f0a07c633b7"
+ Guid="a4cdba05-3434-4f2e-8d88-608b9a786670"
 >
 <PreConditions>
 <PreCondition
- Guid="fb083fe4-3e9f-40c2-8e45-445132d8ebc6"
+ Guid="d7cd8a9c-4566-4919-8d99-1344c5fb20b6"
 >Available(Message.MA_WITH_SHIFTED_LOCATION_REFERENCE)</PreCondition></PreConditions>
 <Expression>Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.T_TRAIN</Expression>
 </Case><Case
  Name="TRACK_AHEAD_FREE_REQUEST"
- Guid="ee3b8bda-1eb8-4edd-a18c-cc038adb587b"
+ Guid="ce4508ca-e697-4a93-9e02-1b8ea33e0c20"
 >
 <PreConditions>
 <PreCondition
- Guid="a2ea33ff-1165-4042-9c7d-647a8efea18a"
+ Guid="97205064-010c-4b79-bddc-e11325b2c0eb"
 >Available(Message.TRACK_AHEAD_FREE_REQUEST)</PreCondition></PreConditions>
 <Expression>Message.TRACK_AHEAD_FREE_REQUEST.T_TRAIN</Expression>
 </Case><Case
  Name="INFILL_MA"
- Guid="81dab633-450f-4bb5-bb3e-3564a34f5b8e"
+ Guid="b05d027f-9f57-44b5-85f2-b3ef0fada624"
 >
 <PreConditions>
 <PreCondition
- Guid="50e89100-3ecf-43e2-977c-e680d6466cc8"
+ Guid="3c3610a9-b06b-4a3d-a63b-6c9a0cd7c834"
 >Available(Message.INFILL_MA)</PreCondition></PreConditions>
 <Expression>Message.INFILL_MA.T_TRAIN</Expression>
 </Case><Case
  Name="TRAIN_REJECTED"
- Guid="8b027534-09b0-4e3c-8df6-cb2e8ec0f932"
+ Guid="7033f0a9-f690-4f82-9bb4-620e2b41547d"
 >
 <PreConditions>
 <PreCondition
- Guid="ef4cedb3-4dc2-419a-b9dc-af04c0bbc0e3"
+ Guid="288080a6-10c2-4d73-b0c8-f58ecd67f4fd"
 >Available(Message.TRAIN_REJECTED)</PreCondition></PreConditions>
 <Expression>Message.TRAIN_REJECTED.T_TRAIN</Expression>
 </Case><Case
  Name="RIU_SYSTEM_VERSION"
- Guid="80688a06-f03c-4592-bcf5-e10a09ed0bc0"
+ Guid="20e32e8c-3c5f-45c5-89ac-8b32e3e735ff"
 >
 <PreConditions>
 <PreCondition
- Guid="fbfe0339-6996-4131-b8f1-46a9dec7171b"
+ Guid="a4a294eb-3f44-4c38-8b56-498456ae6f7e"
 >Available(Message.RIU_SYSTEM_VERSION)</PreCondition></PreConditions>
 <Expression>Message.RIU_SYSTEM_VERSION.T_TRAIN</Expression>
 </Case><Case
  Name="INITIATION_OF_A_COMMUNICATION_SESSION"
- Guid="864858db-50d6-4790-bdce-d12c8a940d6c"
+ Guid="d3fd9a67-a7a0-4a1b-a6b6-d2637d66ce37"
 >
 <PreConditions>
 <PreCondition
- Guid="d43e394b-0799-442d-bcd6-0c79cdca290c"
+ Guid="0e17b781-77f1-4228-b306-8ddd09330dbe"
 >Available(Message.INITIATION_OF_A_COMMUNICATION_SESSION)</PreCondition></PreConditions>
 <Expression>Message.INITIATION_OF_A_COMMUNICATION_SESSION.T_TRAIN</Expression>
 </Case><Case
  Name="ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION"
- Guid="61bd404a-9e2b-4868-97ba-90568112073f"
+ Guid="ddb0195a-f028-4633-90d7-60be175d3b3f"
 >
 <PreConditions>
 <PreCondition
- Guid="ef8ad288-d456-4b7c-959e-ac858eb5afa4"
+ Guid="4a0b990f-7aea-4c09-8cf7-028e84b4eeb3"
 >Available(Message.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION)</PreCondition></PreConditions>
 <Expression>Message.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION.T_TRAIN</Expression>
 </Case><Case
  Name="TRAIN_ACCEPTED"
- Guid="45f58115-e381-4df3-8250-beafcd7cee5d"
+ Guid="59390663-5bbe-406f-815c-0133a36f339a"
 >
 <PreConditions>
 <PreCondition
- Guid="e2e1e37e-d1bd-4f07-8e9c-d7a03e4f8816"
+ Guid="1df8515d-2772-42cf-af9a-fe2e6615d1c9"
 >Available(Message.TRAIN_ACCEPTED)</PreCondition></PreConditions>
 <Expression>Message.TRAIN_ACCEPTED.T_TRAIN</Expression>
 </Case><Case
  Name="SOM_POSITION_REPORT_CONFIRMED_BY_RBC"
- Guid="8ca6f3b4-bb36-4353-abd1-d16c521c0283"
+ Guid="f3f43958-ce51-41ce-8adf-5e6503d5703f"
 >
 <PreConditions>
 <PreCondition
- Guid="ef7d1407-3c81-4dbc-b98b-6e9781753ebb"
+ Guid="c095b5c0-c86f-4fb0-adce-24c4bb79d952"
 >Available(Message.SOM_POSITION_REPORT_CONFIRMED_BY_RBC)</PreCondition></PreConditions>
 <Expression>Message.SOM_POSITION_REPORT_CONFIRMED_BY_RBC.T_TRAIN</Expression>
 </Case><Case
  Name="ASSIGNMENT_OF_COORDINATE_SYSTEM"
- Guid="27f0d875-f84d-41cd-8795-1a8d8dd09edf"
+ Guid="2677fef7-ca8f-411f-ab9f-1238bdcf5c28"
 >
 <PreConditions>
 <PreCondition
- Guid="7b6468ba-3d9c-490f-b4ca-c45ce0512985"
+ Guid="61e71e79-0617-42c4-9e51-901a4efd9683"
 >Available(Message.ASSIGNMENT_OF_COORDINATE_SYSTEM)</PreCondition></PreConditions>
 <Expression>Message.ASSIGNMENT_OF_COORDINATE_SYSTEM.T_TRAIN</Expression>
 </Case></Cases>
@@ -812,204 +812,204 @@
  Type="Messages.M_ACK"
  Default=""
  Name="GetM_ACK"
- Guid="adcc010b-f07f-4ba9-932b-b63b86b64173"
+ Guid="81801031-4f46-484a-b4c1-3b3cebcf7625"
 >
 <Comment>Retrieves the value of M_ACK from a generic Messages.MESSAGE.TRACK_TO_TRAIN.Message.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"
  Name="Message"
- Guid="46bce8cf-6834-4aa7-98e9-5ef38aacb5a4"
+ Guid="747628fa-ae26-4efc-87f0-a999a2889e79"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SR_AUTHORISATION"
- Guid="2e97520b-79d1-4077-aae4-0f0b6f0df211"
+ Guid="a8e95e2e-d1ad-4093-ad48-7fe83a897a7a"
 >
 <PreConditions>
 <PreCondition
- Guid="2ae2bce5-83bb-45ca-9746-ed1943e6e49a"
+ Guid="11206a33-ff91-47f4-a30d-baebe4c3ba62"
 >Available(Message.SR_AUTHORISATION)</PreCondition></PreConditions>
 <Expression>Message.SR_AUTHORISATION.M_ACK</Expression>
 </Case><Case
  Name="MOVEMENT_AUTHORITY"
- Guid="4e7b7965-9600-4f14-b743-2c0954925a31"
+ Guid="796d1beb-34e6-41e3-9459-ed95bab7fcbd"
 >
 <PreConditions>
 <PreCondition
- Guid="ffb62cd9-7dab-423c-8b1e-ebabe03b5c14"
+ Guid="3e8fa8cf-042d-4565-bd7f-7df58bd05c26"
 >Available(Message.MOVEMENT_AUTHORITY)</PreCondition></PreConditions>
 <Expression>Message.MOVEMENT_AUTHORITY.M_ACK</Expression>
 </Case><Case
  Name="RECOGNITION_OF_EXIT_FROM_TRIP_MODE"
- Guid="b5945d7d-ca5f-46d4-8cfe-3e183359eac8"
+ Guid="6b26c251-6cf6-482a-8f38-de4c7a64c884"
 >
 <PreConditions>
 <PreCondition
- Guid="595346b2-c819-428a-903a-9f7d03a9f5fd"
+ Guid="1aa5d039-e4da-4381-a140-7a8379946d05"
 >Available(Message.RECOGNITION_OF_EXIT_FROM_TRIP_MODE)</PreCondition></PreConditions>
 <Expression>Message.RECOGNITION_OF_EXIT_FROM_TRIP_MODE.M_ACK</Expression>
 </Case><Case
  Name="ACKNOWLEDGEMENT_OF_TRAIN_DATA"
- Guid="43ccb6dc-737e-43e8-b941-a30e04593940"
+ Guid="013cff89-c44e-47fb-b882-e7bcf537f6f3"
 >
 <PreConditions>
 <PreCondition
- Guid="24882433-fbe7-4a9f-b130-79003117bbb6"
+ Guid="5f3c8732-6b3a-4b32-8419-e19fbe5be26a"
 >Available(Message.ACKNOWLEDGEMENT_OF_TRAIN_DATA)</PreCondition></PreConditions>
 <Expression>Message.ACKNOWLEDGEMENT_OF_TRAIN_DATA.M_ACK</Expression>
 </Case><Case
  Name="REQUEST_TO_SHORTEN_MA"
- Guid="11aa9b37-da7f-4e38-ab9a-9547e62a7c2d"
+ Guid="75503bdd-f8f5-4b96-ae32-161ad2609a1e"
 >
 <PreConditions>
 <PreCondition
- Guid="eb9086e3-2b11-4782-9789-5e857252d5f5"
+ Guid="ea27df17-cdce-4142-a2b1-122f7657dc03"
 >Available(Message.REQUEST_TO_SHORTEN_MA)</PreCondition></PreConditions>
 <Expression>Message.REQUEST_TO_SHORTEN_MA.M_ACK</Expression>
 </Case><Case
  Name="CONDITIONAL_EMERGENCY_STOP"
- Guid="cb79a802-0f3d-46e0-9b36-db48ce70278e"
+ Guid="8253b9c4-7003-4ce9-bae1-356f83a7156f"
 >
 <PreConditions>
 <PreCondition
- Guid="fdc516ea-9f3e-476b-8d91-f5d5793b2f66"
+ Guid="4e5f8915-44ef-4d01-bba9-efda09d3757b"
 >Available(Message.CONDITIONAL_EMERGENCY_STOP)</PreCondition></PreConditions>
 <Expression>Message.CONDITIONAL_EMERGENCY_STOP.M_ACK</Expression>
 </Case><Case
  Name="UNCONDITIONAL_EMERGENCY_STOP"
- Guid="2476a04c-52d2-4c78-9133-0ef481c3a1a4"
+ Guid="fe0f94f1-8df1-43db-adff-ddadaa50c65b"
 >
 <PreConditions>
 <PreCondition
- Guid="6eaf7ab7-ee8d-4c68-a253-4524361c8da0"
+ Guid="825bdc43-a67a-4cce-b805-9af79139db9b"
 >Available(Message.UNCONDITIONAL_EMERGENCY_STOP)</PreCondition></PreConditions>
 <Expression>Message.UNCONDITIONAL_EMERGENCY_STOP.M_ACK</Expression>
 </Case><Case
  Name="REVOCATION_OF_EMERGENCY_STOP"
- Guid="0068cb53-4fc7-4a5d-b619-9fb1e3b9b1c7"
+ Guid="43e5cffd-f37d-49a4-8f94-7ea1c7dd73d1"
 >
 <PreConditions>
 <PreCondition
- Guid="ec80c8de-15f6-407f-a5e3-85f71c71abee"
+ Guid="7fb321c9-de8a-411a-8157-f4da5081a7ff"
 >Available(Message.REVOCATION_OF_EMERGENCY_STOP)</PreCondition></PreConditions>
 <Expression>Message.REVOCATION_OF_EMERGENCY_STOP.M_ACK</Expression>
 </Case><Case
  Name="GENERAL_MESSAGE"
- Guid="d21cd24c-8b1e-480b-bead-6d4ae053b246"
+ Guid="1a1ee1ad-e3a2-4c9e-b6dd-b25c56ce6187"
 >
 <PreConditions>
 <PreCondition
- Guid="5bf88ea5-e63b-40e1-8a19-98f6de4e8fc9"
+ Guid="437e5eed-2281-4f59-a854-7b3de35a242d"
 >Available(Message.GENERAL_MESSAGE)</PreCondition></PreConditions>
 <Expression>Message.GENERAL_MESSAGE.M_ACK</Expression>
 </Case><Case
  Name="SH_REFUSED"
- Guid="66ed5fa4-8414-4fab-a3b3-48cdbfd233b3"
+ Guid="af8cf071-1691-4014-84c1-c77ea9404658"
 >
 <PreConditions>
 <PreCondition
- Guid="0b666e08-d5a6-458a-b0f9-dd6b250fd909"
+ Guid="ba142102-177e-4dbc-aa1f-5496b3d7ae5f"
 >Available(Message.SH_REFUSED)</PreCondition></PreConditions>
 <Expression>Message.SH_REFUSED.M_ACK</Expression>
 </Case><Case
  Name="SH_AUTHORISED"
- Guid="05660ff9-3d9a-49a5-95bd-c65a5e2389a2"
+ Guid="9393b8b5-37d1-4f8a-a01e-a2de184acc83"
 >
 <PreConditions>
 <PreCondition
- Guid="c5b0ba20-f8f1-4609-9830-e9a5bec60885"
+ Guid="3f451aec-a276-4b0c-b09b-74714a48a19d"
 >Available(Message.SH_AUTHORISED)</PreCondition></PreConditions>
 <Expression>Message.SH_AUTHORISED.M_ACK</Expression>
 </Case><Case
  Name="MA_WITH_SHIFTED_LOCATION_REFERENCE"
- Guid="fb05c146-5de7-4ddd-9841-eb7820941ab3"
+ Guid="2611dabb-9d68-415d-8abf-413b5e46ec88"
 >
 <PreConditions>
 <PreCondition
- Guid="3e2a6ef9-dbba-4c99-89ee-6b17d9f8cf47"
+ Guid="ccb3e85e-b910-42fc-b255-471cf87c1a6f"
 >Available(Message.MA_WITH_SHIFTED_LOCATION_REFERENCE)</PreCondition></PreConditions>
 <Expression>Message.MA_WITH_SHIFTED_LOCATION_REFERENCE.M_ACK</Expression>
 </Case><Case
  Name="TRACK_AHEAD_FREE_REQUEST"
- Guid="4c274b08-62a5-42ff-90b7-5f875fe65a1f"
+ Guid="f904e653-fa7f-4c8d-9c59-60a88e23f4f3"
 >
 <PreConditions>
 <PreCondition
- Guid="73a8d277-4614-4d97-92c6-7ffed4bb4b90"
+ Guid="e5d3a0e8-e6fc-4b62-bcad-c3d68f0e5634"
 >Available(Message.TRACK_AHEAD_FREE_REQUEST)</PreCondition></PreConditions>
 <Expression>Message.TRACK_AHEAD_FREE_REQUEST.M_ACK</Expression>
 </Case><Case
  Name="INFILL_MA"
- Guid="bb363095-b3e3-4e5e-a0fd-a754184eb452"
+ Guid="79ce1a20-c108-4626-b6d0-e561e0587203"
 >
 <PreConditions>
 <PreCondition
- Guid="d5343320-49b7-4fb1-8b68-a0351712b3a6"
+ Guid="d7418ee1-9706-40cb-ba02-dc8ad6fb3eb1"
 >Available(Message.INFILL_MA)</PreCondition></PreConditions>
 <Expression>Message.INFILL_MA.M_ACK</Expression>
 </Case><Case
  Name="TRAIN_REJECTED"
- Guid="962f9788-8cc6-4f56-847a-cbdd73a03bf6"
+ Guid="bce7cbd8-6f8e-4854-aba0-e7b574af255d"
 >
 <PreConditions>
 <PreCondition
- Guid="dfda0d05-ebe9-4f0b-a565-32afaab7efb2"
+ Guid="0f82eaa4-279a-4d3a-a0c7-01af2eeb294d"
 >Available(Message.TRAIN_REJECTED)</PreCondition></PreConditions>
 <Expression>Message.TRAIN_REJECTED.M_ACK</Expression>
 </Case><Case
  Name="RIU_SYSTEM_VERSION"
- Guid="d61bc0a2-1974-416b-a6d0-2ec64511db71"
+ Guid="1695bb63-963b-4704-96e7-19884daa91c5"
 >
 <PreConditions>
 <PreCondition
- Guid="52c2182d-84ff-4e2f-afb8-7ec6a7106718"
+ Guid="3fbac790-603d-466c-b746-df73ada2f01b"
 >Available(Message.RIU_SYSTEM_VERSION)</PreCondition></PreConditions>
 <Expression>Message.RIU_SYSTEM_VERSION.M_ACK</Expression>
 </Case><Case
  Name="INITIATION_OF_A_COMMUNICATION_SESSION"
- Guid="f88f8f9d-3882-4b71-94c4-bc4f4456158f"
+ Guid="c0908d75-e9f6-44b3-b147-6674343d9ffa"
 >
 <PreConditions>
 <PreCondition
- Guid="f1e0fc89-80df-42cc-af06-f7c2287642f2"
+ Guid="dc33b3a3-9257-4444-be3d-76685e0338ce"
 >Available(Message.INITIATION_OF_A_COMMUNICATION_SESSION)</PreCondition></PreConditions>
 <Expression>Message.INITIATION_OF_A_COMMUNICATION_SESSION.M_ACK</Expression>
 </Case><Case
  Name="ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION"
- Guid="086dc3ca-5e63-4984-af64-f76dc0f058aa"
+ Guid="e8030400-0e2d-4fa3-bce4-c478af30f9bb"
 >
 <PreConditions>
 <PreCondition
- Guid="a04bd298-41ac-4573-b918-0b4b19a9cadf"
+ Guid="f2578b9b-4d18-49ff-9f08-5ca3f99b5f2c"
 >Available(Message.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION)</PreCondition></PreConditions>
 <Expression>Message.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION.M_ACK</Expression>
 </Case><Case
  Name="TRAIN_ACCEPTED"
- Guid="a3921a01-cf9f-44f7-bbef-dbc497bea455"
+ Guid="00676823-9024-4591-bcfe-65f9801dcc9d"
 >
 <PreConditions>
 <PreCondition
- Guid="d932d297-61ab-4789-b636-fae3c7bcf9b0"
+ Guid="67bc3f90-9158-4ee7-946a-3e6a4ba9b241"
 >Available(Message.TRAIN_ACCEPTED)</PreCondition></PreConditions>
 <Expression>Message.TRAIN_ACCEPTED.M_ACK</Expression>
 </Case><Case
  Name="SOM_POSITION_REPORT_CONFIRMED_BY_RBC"
- Guid="94123933-a681-40fe-916e-0d6fef02a7c4"
+ Guid="f36d1549-4421-4a5c-bc8c-c46e74f0fd0a"
 >
 <PreConditions>
 <PreCondition
- Guid="19fad9a3-b75e-4315-bca2-2171f0612644"
+ Guid="1a275cdb-2fad-4712-89bd-fb03121731dc"
 >Available(Message.SOM_POSITION_REPORT_CONFIRMED_BY_RBC)</PreCondition></PreConditions>
 <Expression>Message.SOM_POSITION_REPORT_CONFIRMED_BY_RBC.M_ACK</Expression>
 </Case><Case
  Name="ASSIGNMENT_OF_COORDINATE_SYSTEM"
- Guid="6be4b4a1-7964-4218-bd3d-57cbe3132ec7"
+ Guid="914b03df-8f69-43a3-be09-a5540ddbda6c"
 >
 <PreConditions>
 <PreCondition
- Guid="14c5b3e0-1f68-4ec7-96fc-c326de180c68"
+ Guid="df98a39b-d850-4ee3-ac3b-c8e51e59044e"
 >Available(Message.ASSIGNMENT_OF_COORDINATE_SYSTEM)</PreCondition></PreConditions>
 <Expression>Message.ASSIGNMENT_OF_COORDINATE_SYSTEM.M_ACK</Expression>
 </Case></Cases>

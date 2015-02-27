@@ -93,86 +93,86 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="b3cd3d97-62e0-42e0-b2e4-b7ce06f65a44"
+ Guid="1af55e6f-6b83-43ea-94d7-75f2f110ce28"
 >
 <Comment>Checks the values in a structure of type LSSMA_DISPLAY_TOGGLE_ORDER.Message</Comment>
 <Parameters>
 <Parameter
  Type="LSSMA_DISPLAY_TOGGLE_ORDER.Message"
  Name="struct"
- Guid="79fb72a9-ba20-417b-a45d-715a84fe5e77"
+ Guid="19384558-4c2c-4b18-a980-b3a3d7dfdd38"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="dcf9fbc9-2444-4204-800d-04b5c1882849"
+ Guid="89f9b177-9d85-4964-838f-8babf63cd348"
 >
 <PreConditions>
 <PreCondition
- Guid="5b77743a-ecc7-4617-b103-8c77b8bb908d"
+ Guid="30f919cf-bcb2-4c83-a33a-f1f0d8307001"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_PACKET invalid"
- Guid="b1159d11-3bc5-46d0-8994-42dbac338b08"
+ Guid="82a3c328-af2b-4dd3-8bf9-aefcb23e1a40"
 >
 <PreConditions>
 <PreCondition
- Guid="de496ef2-c712-4ffb-8936-811ab455188c"
+ Guid="a2f57899-ba3a-46e9-96ce-3329aafefc38"
 >struct.NID_PACKET &lt; 0</PreCondition><PreCondition
- Guid="8b32360e-09ac-499f-9ab4-dbe1e80b3da1"
+ Guid="4c00e3af-bfee-4a90-9331-551b305d6c45"
 >struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_DIR invalid"
- Guid="8610403f-86e0-4c40-b57f-ea80e6c65314"
+ Guid="18f39f97-401b-43e8-84aa-63c8eea46e09"
 >
 <PreConditions>
 <PreCondition
- Guid="a3233cd5-f8e4-442d-9ae7-d62cf55d08bf"
+ Guid="d8bec8ff-0595-4bf6-828e-9b67d0cc3420"
 >struct.Q_DIR &lt; 0</PreCondition><PreCondition
- Guid="1e52ca9e-8d48-48f0-860d-302c94d61f7e"
+ Guid="0b1f7127-87e9-4287-b0a2-d5898b8a486d"
 >struct.Q_DIR &gt;= 4</PreCondition><PreCondition
- Guid="5499ffd4-a605-4d70-a0df-b3a6dfa38cea"
+ Guid="da1471e2-f364-40ed-a297-b4836866c362"
 >struct.Q_DIR != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_PACKET invalid"
- Guid="63df8373-0dbd-4410-bfa4-3c311696d884"
+ Guid="c31965da-16a9-4ab3-b271-e87c0cbbf10e"
 >
 <PreConditions>
 <PreCondition
- Guid="ff7e765b-96c4-4146-801e-5e627b8e2348"
+ Guid="cf8b0b4b-3cfe-438c-a4b4-478ded4a2805"
 >struct.L_PACKET &lt; 0</PreCondition><PreCondition
- Guid="45ea45ca-facd-44d3-9e45-8d28942f9db9"
+ Guid="ab6e0f1a-c616-4ebb-97f7-fa095408597d"
 >struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_LSSMA invalid"
- Guid="893b5ac7-84a1-41bd-8a44-bb4b211c1c28"
+ Guid="bd56068d-f165-4fbc-bf2c-34a60aba0e30"
 >
 <PreConditions>
 <PreCondition
- Guid="ebd081ab-c7b6-467e-9c34-38eaaab1d766"
+ Guid="1c29daeb-6fc1-4681-9574-1c011755a547"
 >struct.Q_LSSMA &lt; 0</PreCondition><PreCondition
- Guid="170ca568-27f3-44ab-892a-a3173c311581"
+ Guid="7790046e-17a8-4b5d-b93a-d47b7c6da7d9"
 >struct.Q_LSSMA &gt;= 2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.T_LSSMA invalid"
- Guid="44b5af63-dc2e-4cb5-ad39-7fd878ccfe9a"
+ Guid="33377e75-ec96-431b-b203-b32c48e51fcc"
 >
 <PreConditions>
 <PreCondition
- Guid="47d75dd9-f898-4ee3-9e2d-27b696a1ad97"
+ Guid="32c43637-7221-45b4-bf7b-a76dca73fad3"
 >struct.T_LSSMA &lt; 0</PreCondition><PreCondition
- Guid="81c9df04-6e9b-440e-bb78-b0bbc5e1eae0"
+ Guid="5715e0cd-3c96-41e9-ad86-debe5c43b919"
 >struct.T_LSSMA &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="cf1b88a5-30c6-4583-a23c-471634b71d80"
+ Guid="fce6fbf0-fb3b-40db-bb30-458b257d0984"
 >
 <Expression>True</Expression>
 </Case></Cases>

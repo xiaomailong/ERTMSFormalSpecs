@@ -110,97 +110,97 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="1a10fb0c-1711-4d05-a64c-b4cb838db4c6"
+ Guid="4ef544b0-ed6b-4a64-93df-a90f7e274e1d"
 >
 <Comment>Checks the values in a structure of type MOVEMENT_AUTHORITY_REQUEST_PARAMETERS.Message</Comment>
 <Parameters>
 <Parameter
  Type="MOVEMENT_AUTHORITY_REQUEST_PARAMETERS.Message"
  Name="struct"
- Guid="f02e38b2-703f-4f42-bfa5-af1d79082b9d"
+ Guid="e3a5a8fb-4eb5-4b9d-896a-d984b48b7c60"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="ca149a34-1f0e-4eaa-9fe0-581322aaa794"
+ Guid="8a8cb517-d12a-4ec9-b27d-ba7481d8c7f6"
 >
 <PreConditions>
 <PreCondition
- Guid="8094390d-70d0-4b7a-8eee-ebbd224aa918"
+ Guid="2f31f489-be3e-497e-95dc-0c928cdfe86c"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_PACKET invalid"
- Guid="e836e9b7-b3ab-4113-a31e-779fdc651c9f"
+ Guid="2e9883f5-add3-47c8-979e-dcc6c90a8501"
 >
 <PreConditions>
 <PreCondition
- Guid="60d83160-1a4b-4b85-937d-6fdbb7badfb3"
+ Guid="73206644-f2f1-4503-918b-ba3ab1af16a4"
 >struct.NID_PACKET &lt; 0</PreCondition><PreCondition
- Guid="fa95494c-6bf0-445a-b5a6-e2b117d43c43"
+ Guid="53d027be-4c9c-448f-94f8-8048b2e408dd"
 >struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_DIR invalid"
- Guid="d88d8f31-7b4f-4360-8cab-67b4a3d4a17a"
+ Guid="a2099a88-d76a-4194-8f82-46d85d3f8664"
 >
 <PreConditions>
 <PreCondition
- Guid="3bf4e25a-4749-4a8c-9568-616f6358a301"
+ Guid="c0d0e2c9-f068-4b9d-b158-c1fb70a35455"
 >struct.Q_DIR &lt; 0</PreCondition><PreCondition
- Guid="b51e393e-b4e8-468b-a0ba-9d85f3cbc6dd"
+ Guid="c8eb1c1b-3b3f-4a81-b438-3105afd3061a"
 >struct.Q_DIR &gt;= 4</PreCondition><PreCondition
- Guid="3ad0a967-05e4-4e5f-b791-58c6e7500c8e"
+ Guid="9f6ff492-fcdc-4d9d-9ee6-73be6791c05a"
 >struct.Q_DIR != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_PACKET invalid"
- Guid="6ce343d4-e320-472b-8b0f-e4b4118f306d"
+ Guid="fea5eebb-4280-49fe-8d4c-11b5640e6d44"
 >
 <PreConditions>
 <PreCondition
- Guid="8c9ad040-ec14-4f46-aab4-b0a0e700f439"
+ Guid="27dc9184-352d-484d-8fe3-ff9a9c0b5b04"
 >struct.L_PACKET &lt; 0</PreCondition><PreCondition
- Guid="c017fa60-114c-4436-a035-6b6bb48f5721"
+ Guid="37287359-b60f-4809-8087-dfa8d4bc8998"
 >struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.T_MAR invalid"
- Guid="f5296b5f-acda-4298-9f45-0aed5ee5ad9b"
+ Guid="df0e67ba-abeb-4b2b-9078-bc1a5931035b"
 >
 <PreConditions>
 <PreCondition
- Guid="8b7e979a-fde2-46c0-b862-34873d87fdea"
+ Guid="bb77e053-b7be-4d08-9d0f-673f8b8f439c"
 >struct.T_MAR &lt; 0</PreCondition><PreCondition
- Guid="c10ae38b-9680-473d-938b-62b36493bac8"
+ Guid="faa1862c-471d-4541-a10a-984f4b3f57f6"
 >struct.T_MAR &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.T_TIMEOUTRQST invalid"
- Guid="00d0b731-c7ab-409f-84f6-3fcb9d355189"
+ Guid="bb5ca59c-3149-451a-833b-f9fc8bff0add"
 >
 <PreConditions>
 <PreCondition
- Guid="882476dc-7adb-4d9a-95ac-fab7f4c8c374"
+ Guid="58b73e84-6df8-4937-b9ae-8037bf47cc97"
 >struct.T_TIMEOUTRQST &lt; 0</PreCondition><PreCondition
- Guid="7fac440f-3686-4fa1-9a4e-951b1c47c6fd"
+ Guid="120db81d-3361-411c-8463-1ccc59c56639"
 >struct.T_TIMEOUTRQST &gt;= 1024</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.T_CYCRQST invalid"
- Guid="a50817e5-fad2-4afc-8fbd-2162de689595"
+ Guid="34abe877-c967-470c-bcc6-437adf825e55"
 >
 <PreConditions>
 <PreCondition
- Guid="82ca436d-4516-4153-be86-a33d9e2f5f3e"
+ Guid="20af1e5c-1e12-4cd3-b78b-2e5b1a9fd64c"
 >struct.T_CYCRQST &lt; 0</PreCondition><PreCondition
- Guid="b0e8d92c-1c2f-4e80-9ca9-d2f34a3e8595"
+ Guid="6a350007-f313-4413-8462-b7ac91747c35"
 >struct.T_CYCRQST &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="33c5d204-9556-414e-b575-5c9a5eccf970"
+ Guid="de8dd51f-63ce-4192-ab48-4a496e7a6c96"
 >
 <Expression>True</Expression>
 </Case></Cases>

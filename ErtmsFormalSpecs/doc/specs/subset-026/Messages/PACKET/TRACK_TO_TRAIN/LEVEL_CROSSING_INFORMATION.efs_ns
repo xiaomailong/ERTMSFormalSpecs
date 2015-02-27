@@ -161,154 +161,154 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="88f1ee26-f1e1-46e3-8fa7-046368183593"
+ Guid="6ce8048b-1daf-4fc6-ba1d-d51c6442cf01"
 >
 <Comment>Checks the values in a structure of type LEVEL_CROSSING_INFORMATION.Message</Comment>
 <Parameters>
 <Parameter
  Type="LEVEL_CROSSING_INFORMATION.Message"
  Name="struct"
- Guid="aeb56ea5-0593-4721-aeea-65fbb3d30d5d"
+ Guid="57844331-c736-4931-b2d6-c13b0e235291"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="c83eb445-8429-4c54-937f-ee663fa83675"
+ Guid="9fcf901f-e21e-4b0a-9bbd-44e0de05f4c6"
 >
 <PreConditions>
 <PreCondition
- Guid="146b8066-0c5e-42a2-a827-90ee88ac49e3"
+ Guid="a81821e5-5d5f-4448-a26a-60d7b1c764a4"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_PACKET invalid"
- Guid="830a2c96-1b4d-4f4c-9bd5-ca31ae468617"
+ Guid="aaa41f31-724f-4478-9c35-28ad8c683912"
 >
 <PreConditions>
 <PreCondition
- Guid="be10ccf2-95cb-456c-b97e-ec539d2180f4"
+ Guid="77ec3ca5-c7f7-4f9b-a6e2-dab40920ab67"
 >struct.NID_PACKET &lt; 0</PreCondition><PreCondition
- Guid="dccbd131-4551-4dcd-a754-e9426ff0bdf2"
+ Guid="cefd9c92-0040-4ee7-8d1f-b356b759d784"
 >struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_DIR invalid"
- Guid="0ee421b4-bc0b-4896-b3c0-d26d85fee588"
+ Guid="bbf3256c-1c50-43f0-a079-9f94d8378561"
 >
 <PreConditions>
 <PreCondition
- Guid="1c82ea6b-2156-439f-a628-f03c8282f5b9"
+ Guid="746c30ad-5e00-4991-905a-cc1baae5fa59"
 >struct.Q_DIR &lt; 0</PreCondition><PreCondition
- Guid="3e337950-3e70-485e-82f0-544ddb8d4a09"
+ Guid="621ceb5f-037c-48cf-9354-425be76f0c2c"
 >struct.Q_DIR &gt;= 4</PreCondition><PreCondition
- Guid="cefedf04-a836-4f46-bc67-bcbd250fb717"
+ Guid="0d3825c7-cc77-4965-b7b3-b37714fbcb67"
 >struct.Q_DIR != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_PACKET invalid"
- Guid="774c8fbb-94f3-4521-a562-27b68d403379"
+ Guid="ef14dc73-3016-4a1f-97ac-2b50a3cec178"
 >
 <PreConditions>
 <PreCondition
- Guid="3d49b0ca-245b-47ea-a055-f0b5c60c798b"
+ Guid="7a73f3bd-b824-4945-991f-53c69ead230e"
 >struct.L_PACKET &lt; 0</PreCondition><PreCondition
- Guid="541f1fd9-47d2-4927-a818-07670eb3697b"
+ Guid="aa9e10f3-df1a-4f89-9ce4-f9f4055a5d6d"
 >struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_SCALE invalid"
- Guid="ba169e01-b63b-4193-b5a8-1c436dffccc1"
+ Guid="72729092-b1b7-43e0-bf9f-e6fee3233f98"
 >
 <PreConditions>
 <PreCondition
- Guid="2ed90b40-d1c7-466c-a87a-da823522b576"
+ Guid="ad3a3a7b-456d-4d02-b756-82c5de00b1db"
 >struct.Q_SCALE &lt; 0</PreCondition><PreCondition
- Guid="d5332a57-c9aa-4c36-b94b-ccbe1a64f4c9"
+ Guid="c70ca23b-fa77-44ef-a56e-299d6075a63f"
 >struct.Q_SCALE &gt;= 4</PreCondition><PreCondition
- Guid="85192f61-6119-415c-b38b-f27867b255c8"
+ Guid="c48ca301-b061-444c-aa7b-fa736c507565"
 >struct.Q_SCALE != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NID_LX invalid"
- Guid="15e9f18c-8006-4e6d-8835-3256af9d3825"
+ Guid="b953d915-1294-4ab8-8f9b-c3602554b2ea"
 >
 <PreConditions>
 <PreCondition
- Guid="be3afb68-4986-46f8-aedb-9569fdc1e686"
+ Guid="c1f8d287-1619-4774-8b11-d3fc0972d95b"
 >struct.NID_LX &lt; 0</PreCondition><PreCondition
- Guid="e5bf434f-09d4-4ce9-ab30-4adcaab35930"
+ Guid="2a458c81-920a-43d1-ade2-cc8c57f937e0"
 >struct.NID_LX &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.D_LX invalid"
- Guid="0f1253cc-296f-4a8d-a9e0-6fe5d68d8ae0"
+ Guid="4f66f9bd-a820-445b-adad-bc59ce79f221"
 >
 <PreConditions>
 <PreCondition
- Guid="d9eed6cd-29a7-44c7-b327-36a99360d939"
+ Guid="cf2b848e-28fb-451b-8bd1-2d68a2cd1f84"
 >struct.D_LX &lt; 0</PreCondition><PreCondition
- Guid="f5c7d771-81cb-444f-9cba-06af056fce31"
+ Guid="29d636b2-23f6-4a7e-b5f2-d68ffde0f02d"
 >struct.D_LX &gt;= 32768</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_LX invalid"
- Guid="c5982dc0-7b6b-4c38-ba97-7744ddcabaf9"
+ Guid="c63f08ad-641e-45c8-8b24-e87f74f2d761"
 >
 <PreConditions>
 <PreCondition
- Guid="4f003549-e02f-4511-8869-5f8c86ca3fa2"
+ Guid="7bd0b36f-7e09-4dd6-8f75-0be205f4f461"
 >struct.L_LX &lt; 0</PreCondition><PreCondition
- Guid="3f6092b5-a068-4b1f-8e3b-403f9cf7a3a2"
+ Guid="d55697eb-6071-42b9-a995-af606b5ea013"
 >struct.L_LX &gt;= 32768</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_LXSTATUS invalid"
- Guid="32686634-26ad-4b58-8387-356f90f60a25"
+ Guid="6e4fb148-9765-4bc5-b0b7-bab7c9a375ef"
 >
 <PreConditions>
 <PreCondition
- Guid="01ecb3e2-51c1-41fe-bf96-afbdd5dc4df0"
+ Guid="c89ce34f-6c84-4335-a8a1-2e8dcca28435"
 >struct.Q_LXSTATUS &lt; 0</PreCondition><PreCondition
- Guid="5ca6fd1c-802f-404a-96db-9a6888b84261"
+ Guid="6aefb503-edef-44b4-b3fc-dd397e597275"
 >struct.Q_LXSTATUS &gt;= 2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.V_LX invalid"
- Guid="93fcfe81-7ea1-4ed0-9cbc-e1f13c596f6c"
+ Guid="9cc785d4-c566-4e4d-96f5-f92f83f55cee"
 >
 <PreConditions>
 <PreCondition
- Guid="4b3f454d-ac91-4809-a590-d981dd8cf458"
+ Guid="0c90f43f-bc60-42bb-b404-46d9e52d8f92"
 >struct.V_LX &lt; 0</PreCondition><PreCondition
- Guid="e9fd27b5-0bda-4ed5-b56a-036c7e1c6501"
+ Guid="4fb9394c-b34f-4a62-b388-7831cf4483d2"
 >struct.V_LX &gt;= 128</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_STOPLX invalid"
- Guid="28ed156b-3a87-4722-80d1-9e01020e29af"
+ Guid="99348124-0e48-44ef-9f83-c34a785d9ecb"
 >
 <PreConditions>
 <PreCondition
- Guid="a899d3bc-f523-4faf-ac84-90fac9570528"
+ Guid="5db4d3b5-3161-466f-a2ae-4ba819a87c25"
 >struct.Q_STOPLX &lt; 0</PreCondition><PreCondition
- Guid="7a985806-5333-4dc2-a5b7-5522c750ba13"
+ Guid="4e3aece8-611d-4755-ad2c-644d5ff91aa0"
 >struct.Q_STOPLX &gt;= 2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_STOPLX invalid"
- Guid="b8a5eb0f-7da4-497d-9bc4-6969d18f4301"
+ Guid="40d0f199-ae9f-4265-bfc9-88ae52b13974"
 >
 <PreConditions>
 <PreCondition
- Guid="e429c58a-fdca-4be9-89c8-94d131d526a4"
+ Guid="49b5d912-b216-4811-9dc4-65c5df551ad3"
 >struct.L_STOPLX &lt; 0</PreCondition><PreCondition
- Guid="6bc6121c-61b8-480d-84d7-95088fd969a5"
+ Guid="82f6b8fc-6f1d-4478-b2fa-e1caf705a722"
 >struct.L_STOPLX &gt;= 32768</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="368719c9-d750-47bf-84fa-d3256e660a8e"
+ Guid="64774d75-9ac8-4ec0-94e1-dab223ada51b"
 >
 <Expression>True</Expression>
 </Case></Cases>

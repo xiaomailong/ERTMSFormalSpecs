@@ -213,130 +213,130 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="753ee255-99de-4009-b7b7-536d8e010b9b"
+ Guid="1ee4d730-f5ff-481d-b948-3ec35d15b055"
 >
 <Comment>Checks the values in a structure of type GRADIENT_PROFILE.Message</Comment>
 <Parameters>
 <Parameter
  Type="GRADIENT_PROFILE.Message"
  Name="struct"
- Guid="d8b5be3b-c27b-4899-abe6-777357f5c811"
+ Guid="04a4534c-9528-4dd6-94ae-8e3d671509d8"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="168f1561-df57-4b4b-a553-1182ed3a94b6"
+ Guid="e4c87412-e1d4-4e9a-bdd3-1b80300a400f"
 >
 <PreConditions>
 <PreCondition
- Guid="16349972-21f7-4e82-b841-956e3aacb205"
+ Guid="b8b54832-87f2-47f4-9e93-ce27ddd63a21"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_PACKET invalid"
- Guid="682c6eb7-0fb0-4056-b8b0-ea6db2a77ca1"
+ Guid="5f86c36a-ab25-4d43-9272-e8103b8a3239"
 >
 <PreConditions>
 <PreCondition
- Guid="e9423ef2-f03d-4f43-914c-b4a3b2fcd277"
+ Guid="50e72ce5-8b81-4793-819e-79d9b2ff4393"
 >struct.NID_PACKET &lt; 0</PreCondition><PreCondition
- Guid="d25f6faf-d27b-48ff-9542-4d6ddc4ceb24"
+ Guid="b3f7db05-38fd-4dfd-a3b6-0b3663dc9399"
 >struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_DIR invalid"
- Guid="8326a8a4-9e5f-4147-9345-cc8150e7f95d"
+ Guid="3041e17d-693a-4c25-8604-90f4f466afcb"
 >
 <PreConditions>
 <PreCondition
- Guid="777b62fa-e823-4f53-bd25-c714f0c4d481"
+ Guid="ccf8b4f8-4b03-4835-a49f-664a19205d56"
 >struct.Q_DIR &lt; 0</PreCondition><PreCondition
- Guid="b2b90a7c-c1e3-4d0c-9587-a9673a5e7124"
+ Guid="c217c538-2b35-4e49-9205-67a5fb97df50"
 >struct.Q_DIR &gt;= 4</PreCondition><PreCondition
- Guid="2ba5e6df-9043-4a80-bfbb-65615da2c3b8"
+ Guid="88f152a6-4776-4a3c-8f35-d6fc6ab10137"
 >struct.Q_DIR != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_PACKET invalid"
- Guid="275c87f8-7ff4-457a-a945-8030aa1ca165"
+ Guid="786f1989-a5fc-4669-a918-ca5693c3777b"
 >
 <PreConditions>
 <PreCondition
- Guid="ba6903e8-23a4-4003-bc65-584475e96292"
+ Guid="6d6c9c8d-3cc7-4a58-94b5-a29b0c644cd3"
 >struct.L_PACKET &lt; 0</PreCondition><PreCondition
- Guid="d9788b3c-74a7-49fe-aa13-637472398148"
+ Guid="efd23362-edb2-44b7-93af-ca4931befdb0"
 >struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_SCALE invalid"
- Guid="fe684d4b-15bf-46a8-ae5d-ff637788ff7b"
+ Guid="e450e9fb-d21c-47ef-a6b2-59352d85e568"
 >
 <PreConditions>
 <PreCondition
- Guid="b1ac2b89-6054-40b9-9597-6cc3c847f8ae"
+ Guid="cb8c8cf0-10a4-4767-9bb0-c9a45e738c11"
 >struct.Q_SCALE &lt; 0</PreCondition><PreCondition
- Guid="d85ac32d-911d-48ab-8436-0df2bb5f8102"
+ Guid="da3f7cd2-3020-498b-a35d-bbb1dec9afaa"
 >struct.Q_SCALE &gt;= 4</PreCondition><PreCondition
- Guid="4b5fbe24-8e2a-4991-880d-2d467a8b774c"
+ Guid="ac74f27c-ce8b-438b-b4db-17b4dbedd973"
 >struct.Q_SCALE != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.D_GRADIENT invalid"
- Guid="1f2a6b35-117b-4342-a096-5541b2dacb5b"
+ Guid="a5108445-aa7e-40e1-9eff-04f4af28687c"
 >
 <PreConditions>
 <PreCondition
- Guid="fde8992b-f1fc-4e35-960f-2eebb03b97d3"
+ Guid="5df0bbdf-f77f-460a-a526-f916ff8d8c0a"
 >struct.D_GRADIENT &lt; 0</PreCondition><PreCondition
- Guid="18b14982-24bc-4b1b-81ed-20cffdd73487"
+ Guid="0a0c0281-fa9c-4d48-8e81-5d3017d0563c"
 >struct.D_GRADIENT &gt;= 32768</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_GDIR invalid"
- Guid="907ddea0-9726-4bdd-ad06-fd160112d302"
+ Guid="425ede26-d623-42b5-b5c1-6471435dbc84"
 >
 <PreConditions>
 <PreCondition
- Guid="dac75fb3-9895-4d43-9464-276bf18cfea0"
+ Guid="df4131ea-25ac-4d0d-b555-f9cddcb42b73"
 >struct.Q_GDIR &lt; 0</PreCondition><PreCondition
- Guid="de9cc2ce-a1bd-496e-ae89-401e8aee8f5c"
+ Guid="aad48398-7e39-43af-8093-86c1c3abd130"
 >struct.Q_GDIR &gt;= 2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.G_A invalid"
- Guid="ba9fb544-a9a1-4204-9a44-0638cbe3541d"
+ Guid="dc4be88d-e0ae-4eaf-884e-109f4ac90012"
 >
 <PreConditions>
 <PreCondition
- Guid="d60e459d-b0aa-44d9-9bca-2d7bfe3e9284"
+ Guid="78c6e191-ed25-4328-ac03-81bb7b9a7c8d"
 >struct.G_A &lt; 0</PreCondition><PreCondition
- Guid="4cd982f1-a306-4670-9d88-17c3677b0654"
+ Guid="02a3bd7f-11be-44b8-a777-d6a4e5f53144"
 >struct.G_A &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.N_ITER invalid"
- Guid="d0c80a7e-10a4-45a6-be99-7de81d9a38bb"
+ Guid="f1de3834-1884-4210-afed-3207b405f212"
 >
 <PreConditions>
 <PreCondition
- Guid="5c1219c6-48f8-4ed2-b379-a6da696fd466"
+ Guid="43eaf586-4ed9-442b-a23e-92f5a02fb25b"
 >struct.N_ITER &lt; 0</PreCondition><PreCondition
- Guid="61af19bd-4496-42fe-882b-e2b36cf141c8"
+ Guid="8b1e33f9-420e-497d-9c1c-534b15f9260e"
 >struct.N_ITER &gt;= 32</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Sequence1 invalid"
- Guid="482aebc8-bb35-4c30-afda-794578620bef"
+ Guid="4d230eec-144a-4ce4-a691-aa5ae03aa033"
 >
 <PreConditions>
 <PreCondition
- Guid="2c39f91d-4203-4e0e-a828-e246de9e91f3"
+ Guid="3834570d-b316-4fc9-b472-de02f38f2323"
 >THERE_IS X IN struct.Sequence1 | NOT GRADIENT_PROFILE.SubStructure1ValuesCorrect(X)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="4bf7da76-4161-448d-b3c9-2cdb3e3d6050"
+ Guid="536197ec-51d1-4f51-b3aa-c89c904e599b"
 >
 <Expression>True</Expression>
 </Case></Cases>
@@ -344,62 +344,62 @@
  Type="Boolean"
  Default=""
  Name="SubStructure1ValuesCorrect"
- Guid="dd8912ba-640f-4fb3-bf73-bda267661243"
+ Guid="39d89742-17af-47ab-9a82-f359b4f99cb2"
 >
 <Comment>Checks the values in a structure of type GRADIENT_PROFILE.SubStructure1</Comment>
 <Parameters>
 <Parameter
  Type="GRADIENT_PROFILE.SubStructure1"
  Name="struct"
- Guid="c5029581-1835-45e7-8bc9-b81c5179a512"
+ Guid="cfe4f958-0fdf-4d53-9843-8b04886b6a9d"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SubStructure1 empty"
- Guid="2eccedcd-9134-455d-b36d-75ea5b76b14e"
+ Guid="4f582605-ada9-4c3c-a72f-239cabb7cd19"
 >
 <PreConditions>
 <PreCondition
- Guid="453be084-6156-4f65-8fe6-3866567700e0"
+ Guid="826f837f-78db-4450-af1a-319929165325"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.D_GRADIENT invalid"
- Guid="07b34909-6a44-4739-a7c5-ef698f8ba0c6"
+ Guid="dc6cc303-4594-4ed4-acc3-622f0193151a"
 >
 <PreConditions>
 <PreCondition
- Guid="b6c86d29-a9e2-431e-8312-45ea2aae726f"
+ Guid="2499722c-e5e7-4e8e-bbeb-bf6b833136b7"
 >struct.D_GRADIENT &lt; 0</PreCondition><PreCondition
- Guid="0b5c095b-a530-401d-b0f4-8bb7fb39d87e"
+ Guid="679e1a00-5e67-4f8f-8c77-446583d25448"
 >struct.D_GRADIENT &gt;= 32768</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_GDIR invalid"
- Guid="e7347cd2-16ae-4922-95ba-a02a4805418d"
+ Guid="8a7c42c5-0d4f-4f71-85c4-973b484fbc62"
 >
 <PreConditions>
 <PreCondition
- Guid="d86ab579-0e8d-4250-b190-3f5189f14d87"
+ Guid="736894ec-9940-45fe-a262-7b0bf5deac7f"
 >struct.Q_GDIR &lt; 0</PreCondition><PreCondition
- Guid="3fc9e130-bb20-4de3-b9e1-50bec4bcbe5a"
+ Guid="61a480ce-aff3-473a-81e9-e16ef533fd55"
 >struct.Q_GDIR &gt;= 2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.G_A invalid"
- Guid="d3f76156-cb55-44d9-99fe-56440b25eebe"
+ Guid="43f98c01-16e9-44af-a410-8d73f0f4095b"
 >
 <PreConditions>
 <PreCondition
- Guid="50b95451-d31d-42c2-ad93-a5c52a89d54f"
+ Guid="bbe14d22-b265-483a-8753-b00178ce7ad0"
 >struct.G_A &lt; 0</PreCondition><PreCondition
- Guid="00e28a8e-3934-44e9-9654-f92ea775a558"
+ Guid="dac3eb8a-8d9e-40bc-a653-4423a6aa7737"
 >struct.G_A &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="889f6285-252a-469f-be18-7de8ef17d795"
+ Guid="0e5f8d14-ca80-43b0-a5e3-433c57107e4f"
 >
 <Expression>True</Expression>
 </Case></Cases>
