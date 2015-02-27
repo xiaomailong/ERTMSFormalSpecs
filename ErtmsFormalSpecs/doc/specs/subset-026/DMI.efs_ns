@@ -1923,12 +1923,17 @@ MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | Ker
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Clear old reasons"
  Guid="fa4ada3d-9790-4479-ae91-fe79309e270b"
 >
+<Comment>Clear the previous emergency brakes in the DMI struct.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Clear reasons"
  Guid="631aac4d-925a-4220-a649-23394e7f165d"
 >
