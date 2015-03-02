@@ -70,11 +70,11 @@ namespace DataDictionary.Functions.PredefinedFunctions
             int token = context.LocalScope.PushContext();
             AssignParameters(context, actuals);
 
-            string number = context.findOnStack(Number).Value.ToString();
+            StringValue number = context.findOnStack(Number).Value as StringValue;
 
-            if (number != "")
+            if (number != null && number.Val != "")
             {
-                char[] tmp = number.ToCharArray();
+                char[] tmp = number.Val.ToCharArray();
 
                 // Each character in the string is checked. The expected format is
                 // #########FFFFF
