@@ -107,97 +107,97 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="127b3d23-4190-414c-8bb1-33456cfb2ccb"
+ Guid="84421852-7ff1-4d58-8f79-499f8818bdda"
 >
 <Comment>Checks the values in a structure of type INFILL_LOCATION_REFERENCE.Message</Comment>
 <Parameters>
 <Parameter
  Type="INFILL_LOCATION_REFERENCE.Message"
  Name="struct"
- Guid="59f2d254-8198-40a2-97e2-4f19097987ee"
+ Guid="5df19e4e-be09-4175-8bfd-c4bd9f84261b"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="2495510c-b922-4cd1-8254-7ab96c53953d"
+ Guid="5f0763b0-4d00-441b-9f2f-882957e2530e"
 >
 <PreConditions>
 <PreCondition
- Guid="73b2e40b-d90b-4f3d-916d-ab66256ee60c"
+ Guid="167c4bf1-8527-4a17-91fa-887b4eb8a19c"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_PACKET invalid"
- Guid="0c94b4ae-1fcb-4d1b-ad91-02ac98db3df5"
+ Guid="8559145e-20e8-4f4e-a42b-df6209811b9d"
 >
 <PreConditions>
 <PreCondition
- Guid="2001ade0-937e-4035-8c53-5a3f3bd4d62b"
+ Guid="b740fd42-ca7b-4f63-a438-a1fefc985b64"
 >struct.NID_PACKET &lt; 0</PreCondition><PreCondition
- Guid="5548533b-3e40-477c-b586-5611d2bb3572"
+ Guid="095a4205-a71d-4043-a48c-aad7a40e3e50"
 >struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_DIR invalid"
- Guid="f51e9c63-8622-4d36-b474-625bdcb4d9fd"
+ Guid="6f8b9bb6-6f46-4614-a742-57ecad25112a"
 >
 <PreConditions>
 <PreCondition
- Guid="91715ad8-2303-4c54-ac06-733e52ebd02b"
+ Guid="27b2d476-0156-4e55-9baa-dfc4e9bff079"
 >struct.Q_DIR &lt; 0</PreCondition><PreCondition
- Guid="0423b623-9ea5-4f59-bde1-799c78cb9dd5"
+ Guid="1a3c0db7-bf46-41d0-9156-84b6edcf8b18"
 >struct.Q_DIR &gt;= 4</PreCondition><PreCondition
- Guid="c4e6844c-0bdb-4495-a615-669ac58e553b"
+ Guid="954f2f2d-692e-4a16-9ed5-9363e47f4411"
 >struct.Q_DIR != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_PACKET invalid"
- Guid="b3778a8a-a004-4e04-a243-3372e32fb2c6"
+ Guid="2e7e2135-e8da-41d4-8c96-e6e1491b4299"
 >
 <PreConditions>
 <PreCondition
- Guid="7c739dbd-a052-46ed-8da4-4bc90636ab3e"
+ Guid="67bf5e0f-7878-4f7e-9a86-b3273a7f48f6"
 >struct.L_PACKET &lt; 0</PreCondition><PreCondition
- Guid="f0f5942c-8ec9-4e70-9dcd-71ffce42c943"
+ Guid="ecd7647b-b452-4bc6-962d-13169ff41c23"
 >struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_NEWCOUNTRY invalid"
- Guid="cedca993-3005-4d54-872c-4ad470c79d83"
+ Guid="dd2af2d2-d817-4656-9ee6-bc63a18fd0d5"
 >
 <PreConditions>
 <PreCondition
- Guid="6bc18daf-9792-4c11-afda-fe4504db059b"
+ Guid="f5ccb7fa-9fea-4c0f-bf8f-2e3379a54a6f"
 >struct.Q_NEWCOUNTRY &lt; 0</PreCondition><PreCondition
- Guid="a5717c3b-4501-4051-b43f-f20ae4d049e1"
+ Guid="c1f5f1f8-38d8-4558-abae-68e3c47b32d2"
 >struct.Q_NEWCOUNTRY &gt;= 2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NID_C invalid"
- Guid="447b2940-8dce-4326-ab52-2f4eb563d8ad"
+ Guid="f872bcb6-e329-4153-ba2f-23edb4dd55ea"
 >
 <PreConditions>
 <PreCondition
- Guid="6fe8d763-c8ea-4a2e-8a83-bb1c51443bcb"
+ Guid="41a3886e-226b-41f2-94b9-aea279bc02a9"
 >struct.NID_C &lt; 0</PreCondition><PreCondition
- Guid="ffbd31c5-554f-4a72-815a-217308a89ba3"
+ Guid="db874208-81ac-4fa7-a3cd-c8b6fcde4f55"
 >struct.NID_C &gt;= 1024</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NID_BG invalid"
- Guid="64c4b724-f84c-46f2-a3f3-e49d61d56ac3"
+ Guid="8ce804af-7f4e-4eaa-bc54-cb56ff35183d"
 >
 <PreConditions>
 <PreCondition
- Guid="4db391af-b6da-44e7-88b2-dfc4585907fd"
+ Guid="c979c157-8136-4b04-b610-ddcdf8527238"
 >struct.NID_BG &lt; 0</PreCondition><PreCondition
- Guid="b19e3599-b698-41b9-a53f-c5701d8c9e02"
+ Guid="8a6c2b65-d516-401a-9dc6-34d83d1d8346"
 >struct.NID_BG &gt;= 16384</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="2ce38d6e-ad6c-4d4c-92ef-fa4cfff2bc98"
+ Guid="20e91a2c-faac-45f8-a725-d75b39cc4108"
 >
 <Expression>True</Expression>
 </Case></Cases>

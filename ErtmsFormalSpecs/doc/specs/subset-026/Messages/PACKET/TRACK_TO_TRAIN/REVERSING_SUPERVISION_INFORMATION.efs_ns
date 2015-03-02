@@ -110,99 +110,99 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="81e41c1d-5746-4b3e-be57-d73b66f4dc1b"
+ Guid="833b96ba-c0e5-42f9-8eee-1595e76b2291"
 >
 <Comment>Checks the values in a structure of type REVERSING_SUPERVISION_INFORMATION.Message</Comment>
 <Parameters>
 <Parameter
  Type="REVERSING_SUPERVISION_INFORMATION.Message"
  Name="struct"
- Guid="97b2c4fb-eaf8-4eb0-ade4-cd111990c788"
+ Guid="71d51c7c-7b59-47fe-ac9a-96519b7d6bd8"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="ad0366c4-751e-4a7a-b592-97a8fd3705d7"
+ Guid="106e4a75-22d0-4fab-90b5-389023f15cfb"
 >
 <PreConditions>
 <PreCondition
- Guid="12c40183-cb7c-4b26-af08-7b699489e8af"
+ Guid="df3037ad-cb32-4ac1-be06-da1dd1f6eae3"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_PACKET invalid"
- Guid="6cc976a4-978e-4a3a-996f-014c36eb678b"
+ Guid="ddf4bee2-1264-415b-854e-96b07368a58a"
 >
 <PreConditions>
 <PreCondition
- Guid="cc95fad6-5ba7-490d-b2d6-f8bd908c5fc0"
+ Guid="5a4e3db1-87bd-4f52-8d6c-6dc597a12003"
 >struct.NID_PACKET &lt; 0</PreCondition><PreCondition
- Guid="793d867d-1801-46fc-83ab-ec72434cafbc"
+ Guid="7ce93696-27ff-4ada-a370-f50979efcd93"
 >struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_DIR invalid"
- Guid="2c17cf8c-6a2d-4514-a72a-9132bdfd2cfd"
+ Guid="65ca5ca1-3208-4433-8c14-a1a48a1f5ce1"
 >
 <PreConditions>
 <PreCondition
- Guid="c14e4791-ce66-4785-8043-fa7acd2dfd97"
+ Guid="151418d7-e9f7-462e-89ec-f16d7f49a5ce"
 >struct.Q_DIR &lt; 0</PreCondition><PreCondition
- Guid="65d5c581-25f3-4841-9102-d152e39160c1"
+ Guid="413d1ac2-01fa-404e-bb6d-23c1e52cdc5c"
 >struct.Q_DIR &gt;= 4</PreCondition><PreCondition
- Guid="bae5bc7f-fc10-41f1-ba2f-3095ff85c56d"
+ Guid="bc847397-0844-470f-bb73-f251a89616e6"
 >struct.Q_DIR != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_PACKET invalid"
- Guid="01d5d396-fc69-4b69-8779-6d269e58c26d"
+ Guid="604e5da5-e4ad-48c6-b730-a11bf2a6d6e9"
 >
 <PreConditions>
 <PreCondition
- Guid="47f0d9d3-a699-4c66-8878-17c18e218f33"
+ Guid="2d9903a8-8b6b-4cb2-ae44-8af2e3c41cdc"
 >struct.L_PACKET &lt; 0</PreCondition><PreCondition
- Guid="54a0fc50-1968-4eeb-a88e-afdb5c1385df"
+ Guid="5dcf7ace-9f6c-4804-91f0-497ebc09e346"
 >struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_SCALE invalid"
- Guid="cbb2ed21-99ae-4e8d-ac7e-4bfccbef8570"
+ Guid="6ac8d215-4399-45ad-99c4-c1545df84c64"
 >
 <PreConditions>
 <PreCondition
- Guid="cf7d5be7-a470-41a1-97c5-3c9a9da73787"
+ Guid="336ce373-22cd-4de1-b1c8-bebb341bea72"
 >struct.Q_SCALE &lt; 0</PreCondition><PreCondition
- Guid="b54a1e26-3a9a-4048-9890-e3d51373d61b"
+ Guid="1beb3ece-2ade-47eb-a30d-c5ba912fdf76"
 >struct.Q_SCALE &gt;= 4</PreCondition><PreCondition
- Guid="cd69462c-ceae-4349-940c-cfc72adac9aa"
+ Guid="35029883-94dd-4302-b62a-1c4e14be068c"
 >struct.Q_SCALE != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.D_REVERSE invalid"
- Guid="cc1c0998-be24-4539-9290-a730b36d1a07"
+ Guid="2718eeaa-13ed-4613-9952-500766cf503c"
 >
 <PreConditions>
 <PreCondition
- Guid="6e0eb48e-4a9f-4b9d-a808-098192455e84"
+ Guid="c4102d68-ff8d-428d-861b-bb3dda08ba42"
 >struct.D_REVERSE &lt; 0</PreCondition><PreCondition
- Guid="8fc7eef1-e378-4e17-bef6-ae848c15fd3b"
+ Guid="70d2a5b2-d2b5-43ca-a247-2968c345115e"
 >struct.D_REVERSE &gt;= 32768</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.V_REVERSE invalid"
- Guid="894a01ab-10a9-4cea-b6bb-ce8a2befd407"
+ Guid="33cde4b8-d256-4e5a-8fc7-cf2ae0167c2a"
 >
 <PreConditions>
 <PreCondition
- Guid="0372ff08-f2f7-45cb-8ad0-8a6dd1eb80f1"
+ Guid="653612a0-fee3-4f23-afb5-cd6a8492fdd7"
 >struct.V_REVERSE &lt; 0</PreCondition><PreCondition
- Guid="80d3a1c1-c1cd-4d18-82e8-4917bce7d40f"
+ Guid="831ebc12-d916-44e3-8791-fa31ad287946"
 >struct.V_REVERSE &gt;= 128</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="b93f41bd-f0e8-4613-b563-721075fae0e8"
+ Guid="cc4f299f-e912-444b-9cb8-c31adddcc44d"
 >
 <Expression>True</Expression>
 </Case></Cases>

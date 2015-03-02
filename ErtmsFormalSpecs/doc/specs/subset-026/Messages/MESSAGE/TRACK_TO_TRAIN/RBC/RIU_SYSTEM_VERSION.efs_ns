@@ -96,101 +96,101 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="ad40ab76-62d4-497a-85a1-5bdfa9052cbc"
+ Guid="1838cee9-bdc7-42eb-8e1f-070f904dd750"
 >
 <Comment>Checks the values in a structure of type RIU_SYSTEM_VERSION.Message</Comment>
 <Parameters>
 <Parameter
  Type="RIU_SYSTEM_VERSION.Message"
  Name="struct"
- Guid="b9add385-9c58-4e5c-86f9-cf0730cef96c"
+ Guid="68db660b-fb2e-4351-b800-05f2b178ff0d"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="673544b8-cde8-45a5-80d2-76f95b2a4f40"
+ Guid="546ac682-fdf5-4f76-97be-189453d25659"
 >
 <PreConditions>
 <PreCondition
- Guid="bd99b2a6-ffea-417f-903a-5d46d05f56d6"
+ Guid="7b10a667-265a-4656-b8b1-f617ae7e0d62"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_MESSAGE invalid"
- Guid="858f7226-87f6-4d12-b1fa-ccfeedd3e1ef"
+ Guid="57fecdb1-47e0-4c7b-a1c0-c0fa170a72ca"
 >
 <PreConditions>
 <PreCondition
- Guid="b294ac93-4e70-4bdc-9e75-68e241e3437b"
+ Guid="97f45c55-c4a1-42d3-9c39-2992732803a9"
 >struct.NID_MESSAGE &lt; 0</PreCondition><PreCondition
- Guid="185047df-f57b-426e-b0ff-9664530f81f0"
+ Guid="c10ed719-285f-4bc2-a3d0-4cc959e03a51"
 >struct.NID_MESSAGE &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_MESSAGE invalid"
- Guid="ccb5c380-663f-4e97-b1fd-b39c2dc5cf13"
+ Guid="e745318d-e778-4d14-8a49-a0813a809ebd"
 >
 <PreConditions>
 <PreCondition
- Guid="c4ac1ec8-2db5-4012-a187-463e1a8d8527"
+ Guid="938542ad-ddbe-4b0a-932e-6deb2d826078"
 >struct.L_MESSAGE &lt; 0</PreCondition><PreCondition
- Guid="b779a21f-69d1-480d-a7dc-b48d14e76c09"
+ Guid="5db327d9-b738-4b36-8c20-63d9fdb7e899"
 >struct.L_MESSAGE &gt;= 1024</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.T_TRAIN invalid"
- Guid="22a3a3da-f6e1-4556-9fab-959109a9e1d2"
+ Guid="ff606cb4-2bce-4af9-b185-a85588f31a56"
 >
 <PreConditions>
 <PreCondition
- Guid="22586f2d-9968-480f-befa-70a741d631a3"
+ Guid="3d78a0f9-f0e4-40b7-95c2-1cc2ac0b3387"
 >struct.T_TRAIN &lt; 0</PreCondition><PreCondition
- Guid="4b603cc8-65b9-4b88-a9c4-b97e641d4da5"
+ Guid="d55143de-cdc7-4319-9879-0799b395077b"
 >struct.T_TRAIN &gt;= 4294967296</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.M_ACK invalid"
- Guid="a068db6a-35bb-4221-82bf-7ca688f10fba"
+ Guid="81b03494-2335-43c1-96be-870543b59593"
 >
 <PreConditions>
 <PreCondition
- Guid="bb13360f-2de5-42c3-bc9f-43aaed6359d5"
+ Guid="5f9eada7-bb48-4722-ab46-65632cdf0f79"
 >struct.M_ACK &lt; 0</PreCondition><PreCondition
- Guid="061fe756-c9af-4409-93fe-cc1ed05233c1"
+ Guid="9da05d97-d5d5-406c-9988-f68e77d6abaa"
 >struct.M_ACK &gt;= 2</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NID_LRBG invalid"
- Guid="3fc84236-8b22-49f5-a9eb-ef9566641c75"
+ Guid="2f0d2426-56ac-4b3c-b0bf-9b78d06a9c10"
 >
 <PreConditions>
 <PreCondition
- Guid="ec495e4f-212a-4c14-bd61-47cc98b15d24"
+ Guid="38646363-2efb-4d39-af4c-fcff6540ac4c"
 >struct.NID_LRBG &lt; 0</PreCondition><PreCondition
- Guid="65a119fe-7b89-4864-95ff-1db98c548c0a"
+ Guid="212e91ab-faa0-4e97-afe7-e140f6ed3fad"
 >struct.NID_LRBG &gt;= 16777216</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.M_VERSION invalid"
- Guid="643d2641-aa73-4064-9fc7-edb45a753df6"
+ Guid="c438e1b7-e3f7-4825-a13c-6fd61437073f"
 >
 <PreConditions>
 <PreCondition
- Guid="020e2920-bbcd-4648-908c-f205786e5eb9"
+ Guid="077db3c4-6581-4062-a68e-96093d31d036"
 >struct.M_VERSION &lt; 0</PreCondition><PreCondition
- Guid="c128fd6a-d86d-473d-8c36-2ceb2f0cf78c"
+ Guid="4c5cf337-d4d0-40f5-bb7e-839052fcb442"
 >struct.M_VERSION &gt;= 128</PreCondition><PreCondition
- Guid="43d5b4fc-cd37-4b58-bcb0-3d003573be67"
+ Guid="dd2371b3-d499-4a5e-9f98-edc3c2cb2026"
 >struct.M_VERSION &lt; 18
   AND  
 struct.M_VERSION &gt; 31</PreCondition><PreCondition
- Guid="dc40dabc-2efb-4d1e-ae1f-d719fcfe7b58"
+ Guid="f241cc06-a57e-438c-abe5-7b73e42d9627"
 >struct.M_VERSION != 32</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="d2a744d8-1076-4234-a0d1-917a8c0e2f42"
+ Guid="feb579cc-9ce2-45cb-b4a7-aac85f98b520"
 >
 <Expression>True</Expression>
 </Case></Cases>

@@ -143,95 +143,95 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="dd304e18-8020-42f3-ac1d-5ba0da119a3c"
+ Guid="63b76584-6c4c-4dcd-9a81-145c0585802c"
 >
 <Comment>Checks the values in a structure of type DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM.Message</Comment>
 <Parameters>
 <Parameter
  Type="DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM.Message"
  Name="struct"
- Guid="f5f9459c-48e9-445f-a23f-8b4d28d44d42"
+ Guid="248b46db-8165-4f80-961f-7eaa9596228d"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="dff5fa39-3330-4a5e-9e74-18c67d69cc4a"
+ Guid="0933a9c5-5281-4a3a-88db-9b0905fd5d98"
 >
 <PreConditions>
 <PreCondition
- Guid="d4cf6d90-d1d9-4aca-a8f8-d346d8a7ea17"
+ Guid="b209163b-c39d-4b4a-939d-6f1a7a3b7792"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_PACKET invalid"
- Guid="66fbcbc1-7829-4306-8950-448f01212b0a"
+ Guid="30f00bf7-276d-43c2-81f6-bcc3c620e0f6"
 >
 <PreConditions>
 <PreCondition
- Guid="f4680c83-9e49-4437-829c-9c794aaddff2"
+ Guid="144a5027-84b2-4a29-9e1e-4ace5eb81570"
 >struct.NID_PACKET &lt; 0</PreCondition><PreCondition
- Guid="8b403ac2-2301-4a50-902e-7995362cc79d"
+ Guid="9d31b733-41c7-4ca2-9b1d-c90d3dade4c2"
 >struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_DIR invalid"
- Guid="2557caf2-c579-41d8-8c3a-0f7ef8a35b1e"
+ Guid="501c031f-9702-4976-8027-a8ecdcf2d55f"
 >
 <PreConditions>
 <PreCondition
- Guid="1ec29f5d-5afa-45d0-8f37-2169410590a6"
+ Guid="7bc3cdfb-9df5-4e09-8273-ccda8cce62b8"
 >struct.Q_DIR &lt; 0</PreCondition><PreCondition
- Guid="3d205b85-6a09-4791-aca1-d0ea406676f1"
+ Guid="461b1520-d534-4e81-9fce-18a6519905c6"
 >struct.Q_DIR &gt;= 4</PreCondition><PreCondition
- Guid="f9593451-0e7d-4c90-b508-34c6d0ea0699"
+ Guid="9d90bd69-afcf-47d3-b685-9452afbee578"
 >struct.Q_DIR != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_PACKET invalid"
- Guid="76d68363-67b5-4d2b-9c77-a12ab2e9be4a"
+ Guid="f840e61f-5f8b-4649-b048-56223469a2d8"
 >
 <PreConditions>
 <PreCondition
- Guid="7e966030-985d-48f0-9778-c545e00e50c2"
+ Guid="7b9715a2-a192-40a7-a251-8e6985eee853"
 >struct.L_PACKET &lt; 0</PreCondition><PreCondition
- Guid="90b89236-4d6a-41df-ad9f-11cdfcec6261"
+ Guid="cf846393-836a-4ae9-af15-269b70568692"
 >struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NID_XUSER invalid"
- Guid="85cf1400-3f4f-4681-9bf2-ff04e0a8d66d"
+ Guid="5230ce02-4207-4de3-81aa-6e39f7ff965d"
 >
 <PreConditions>
 <PreCondition
- Guid="1574f3e4-ffe8-4edf-828e-9e0b60f33aa6"
+ Guid="b3dc71e7-af6d-4f39-98e7-94e2065502b3"
 >struct.NID_XUSER &lt; 0</PreCondition><PreCondition
- Guid="32f2cf9d-33b3-411a-bcaf-3abbbcf97338"
+ Guid="fb0b8809-cb2f-43b0-b9b1-66d2537e5187"
 >struct.NID_XUSER &gt;= 512</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NID_NTC invalid"
- Guid="b8f5c404-f991-4a03-bb7b-bdb8bc72fe65"
+ Guid="b81a5eea-d7ef-43ef-bf48-cd8cbd25c15a"
 >
 <PreConditions>
 <PreCondition
- Guid="4e0e530c-edca-45a1-a1e0-30486f0101d1"
+ Guid="8f75cfae-6457-427e-a436-001eec5287d6"
 >struct.NID_NTC &lt; 0</PreCondition><PreCondition
- Guid="dd4e1906-475b-4c4c-a94b-fb00545420c3"
+ Guid="39612bf7-2f4b-41b4-993e-35c7a48092ce"
 >struct.NID_NTC &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Sequence1 invalid"
- Guid="a31cef64-15f6-4288-8741-496d33c70acf"
+ Guid="8059c9cd-98d6-475d-afe9-9c52b790644f"
 >
 <PreConditions>
 <PreCondition
- Guid="7cf2abaa-2afa-4617-a855-d20a215a4ab7"
+ Guid="b35bd834-b402-40cf-9b13-308702ac65b3"
 >THERE_IS X IN struct.Sequence1 | NOT DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM.SubStructure1ValuesCorrect(X)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="e246d9d8-7092-4f43-b760-1f0612162c1b"
+ Guid="db54aba1-34ae-416d-bc69-a233e2df5930"
 >
 <Expression>True</Expression>
 </Case></Cases>
@@ -239,40 +239,40 @@
  Type="Boolean"
  Default=""
  Name="SubStructure1ValuesCorrect"
- Guid="4cc8096c-e136-427e-a135-be2aab8d5c39"
+ Guid="fb5530d0-6e18-46e1-b61e-509810b9170a"
 >
 <Comment>Checks the values in a structure of type DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM.SubStructure1</Comment>
 <Parameters>
 <Parameter
  Type="DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM.SubStructure1"
  Name="struct"
- Guid="c3587cd0-84bf-4309-bbed-04dad1dc0ace"
+ Guid="b6a20277-5e73-4972-ba87-053e6df521de"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="SubStructure1 empty"
- Guid="69dd71be-51fd-457c-a627-19f4a4c53a34"
+ Guid="54fe14db-38b6-4c32-8a96-a16d7bd499d5"
 >
 <PreConditions>
 <PreCondition
- Guid="13b3e26b-9c73-4066-b355-d868cd9ba071"
+ Guid="8596c4b9-d62e-4ef9-af61-da1d1e15c77d"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_XUSER invalid"
- Guid="5b7427ea-d0fc-430e-85c1-09d84f29f5c9"
+ Guid="ae18cea6-c297-4a81-98ff-124514b8255c"
 >
 <PreConditions>
 <PreCondition
- Guid="370638f3-cf20-448c-9edf-81c49766673c"
+ Guid="8e4cf700-6396-4413-a65d-cfafeae2c0b9"
 >struct.NID_XUSER &lt; 0</PreCondition><PreCondition
- Guid="004c4b30-485f-4fd1-b5ed-14ba78c5f74d"
+ Guid="aa4a70e6-ffd1-4510-95f4-5925504f0e41"
 >struct.NID_XUSER &gt;= 512</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="11579dbf-8251-4cc4-88ad-e500c35704ca"
+ Guid="4cbab733-e374-4dd5-b7d8-0903afd68756"
 >
 <Expression>True</Expression>
 </Case></Cases>

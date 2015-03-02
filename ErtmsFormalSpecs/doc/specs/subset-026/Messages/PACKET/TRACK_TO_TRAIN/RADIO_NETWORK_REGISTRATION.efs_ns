@@ -85,75 +85,75 @@
  Type="Boolean"
  Default=""
  Name="MessageValuesCorrect"
- Guid="a39e8752-40c8-4495-9e15-b55f938560ed"
+ Guid="54573faa-aeec-470a-878e-2b38751881a2"
 >
 <Comment>Checks the values in a structure of type RADIO_NETWORK_REGISTRATION.Message</Comment>
 <Parameters>
 <Parameter
  Type="RADIO_NETWORK_REGISTRATION.Message"
  Name="struct"
- Guid="1e5f3531-bf8d-4078-ac3e-0072b2cb6c61"
+ Guid="89545940-3840-43f8-b349-bce691ca7e7a"
 >
 </Parameter></Parameters>
 <Cases>
 <Case
  Name="Message empty"
- Guid="577417e3-454d-49c5-b955-4e213fca5fd4"
+ Guid="d6cff5ba-2273-4baf-b4ae-34dabe66e75d"
 >
 <PreConditions>
 <PreCondition
- Guid="c898d2aa-1769-4d83-bb5c-cd2fa4900c18"
+ Guid="e645c805-5b54-42fd-8a3f-47d20a56962a"
 >NOT Available(struct)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="struct.NID_PACKET invalid"
- Guid="e8a42b78-76f1-43d0-840a-31d0a9679552"
+ Guid="d42a626c-d4d9-4754-a13a-4a3bf8299d21"
 >
 <PreConditions>
 <PreCondition
- Guid="a6424b1f-7a25-4617-8a7a-b46179df22a7"
+ Guid="9bf3c2b4-84cf-47bb-9c3c-a045fcfa79ad"
 >struct.NID_PACKET &lt; 0</PreCondition><PreCondition
- Guid="c5890b9c-f362-4a0b-833a-9144e074bd7b"
+ Guid="54e67f2d-a127-45bb-8298-7341d0e0340c"
 >struct.NID_PACKET &gt;= 256</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.Q_DIR invalid"
- Guid="7dcb1bd3-6529-45a7-92b2-3eca5ff9be96"
+ Guid="5d51548f-3127-42f2-9d4b-809572fe4a32"
 >
 <PreConditions>
 <PreCondition
- Guid="948031c1-22c1-4135-93be-410373920308"
+ Guid="8dd17fee-6958-45cd-b87e-05780ad6892c"
 >struct.Q_DIR &lt; 0</PreCondition><PreCondition
- Guid="bbf3a698-7272-4659-b2c7-5275d4ef0bee"
+ Guid="36365dbb-9470-40df-9629-e07269211085"
 >struct.Q_DIR &gt;= 4</PreCondition><PreCondition
- Guid="4a5daaf0-d7bd-4c0a-bdb3-6828cc9acf57"
+ Guid="9840fa56-1bc7-4d90-a2dc-f3664e39023e"
 >struct.Q_DIR != 3</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.L_PACKET invalid"
- Guid="df3ed074-1bfa-40cd-aff3-57800daab125"
+ Guid="89e4b6b5-be0f-40e3-8fa5-f8aa71847809"
 >
 <PreConditions>
 <PreCondition
- Guid="7c561b6b-96fa-46bf-9f2c-6ead8412f6e7"
+ Guid="af7c7c67-a85c-4fed-a8ed-8fa47cd9cfb0"
 >struct.L_PACKET &lt; 0</PreCondition><PreCondition
- Guid="bc063203-02e0-4593-9c7a-673019c120ce"
+ Guid="1ab73468-a701-40f1-8421-e5aa1937b1b9"
 >struct.L_PACKET &gt;= 8192</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="struct.NID_MN invalid"
- Guid="81b5332c-b09f-4e3c-af91-d2966c705b37"
+ Guid="47f6da96-1e7a-4ab8-bfaf-b8f350132983"
 >
 <PreConditions>
 <PreCondition
- Guid="77460bd8-663a-4697-966c-5346471bb0d7"
->struct.NID_MN != &apos;&apos;</PreCondition><PreCondition
- Guid="311548a2-c02d-4365-bd0b-30ba9143d17c"
->CheckNumber(struct.NID_MN)</PreCondition></PreConditions>
+ Guid="2654f175-0a61-4694-b8fa-afcbf3635b95"
+>struct.NID_MN == &apos;&apos;
+  OR  
+NOT CheckNumber(struct.NID_MN)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="e2f070d0-9fef-447f-9ced-72958de2b401"
+ Guid="d642f655-f5e0-41a3-a177-7bf4baae4ad7"
 >
 <Expression>True</Expression>
 </Case></Cases>
