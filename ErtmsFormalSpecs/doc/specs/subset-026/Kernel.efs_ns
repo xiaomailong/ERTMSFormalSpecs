@@ -354,7 +354,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Height="50"
  Pinned="TRUE"
  Implemented="TRUE"
- Name="EmergencyStop"
+ Name="EmergencyStopStruct"
  Guid="7b0227c8-823b-44f7-9095-f54804077a15"
 >
 <ReqRef
@@ -617,7 +617,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.EmergencyStop"
+ TypeName="Kernel.EmergencyStopStruct"
  Default="[]"
  X="600"
  Y="90"
@@ -10558,7 +10558,7 @@ OverrideSupervision.FormerSRDistance &lt; TrainPosition.FrontEndPosition(Distanc
 </StateMachine></StateMachines>
 <Functions>
 <Function
- Type="Kernel.EmergencyStop"
+ Type="Kernel.EmergencyStopStruct"
  Default=""
  X="270"
  Y="90"
@@ -10597,7 +10597,7 @@ OverrideSupervision.FormerSRDistance &lt; TrainPosition.FrontEndPosition(Distanc
  Name="Value"
  Guid="d21e63ba-bec7-41f2-a0f1-e5ad05e4c49a"
 >
-<Expression>Kernel.EmergencyStop
+<Expression>Kernel.EmergencyStopStruct
  {
     Reason =&gt; BrakeReason.OrderFromRBC,
     IsConditional =&gt; aIsConditional,
@@ -10606,7 +10606,7 @@ OverrideSupervision.FormerSRDistance &lt; TrainPosition.FrontEndPosition(Distanc
  }</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.EmergencyStop"
+ Type="Kernel.EmergencyStopStruct"
  Default=""
  X="270"
  Y="150"
@@ -10637,13 +10637,13 @@ OverrideSupervision.FormerSRDistance &lt; TrainPosition.FrontEndPosition(Distanc
 >
 <Expression>REDUCE aESCol | ( X.Reason == BrakeReason.OrderFromRBC AND X.IsConditional )
     USING X IN MinEmergencyStopDistance( EmergencyStop1 =&gt; X, EmergencyStop2 =&gt; RESULT )
-INITIAL_VALUE Kernel.EmergencyStop
+INITIAL_VALUE Kernel.EmergencyStopStruct
                             {
                                 StopLocation =&gt; Default.BaseTypes.Distance.Infinity
                             }</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.EmergencyStop"
+ Type="Kernel.EmergencyStopStruct"
  Default=""
  X="270"
  Y="210"
@@ -10658,12 +10658,12 @@ INITIAL_VALUE Kernel.EmergencyStop
 <Comment>Returns the EmergencyStop item with the closest StopLocation, chosen amongst the conditional emergency stops received from the RBC</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.EmergencyStop"
+ Type="Kernel.EmergencyStopStruct"
  Name="EmergencyStop1"
  Guid="9e4b6b95-8fc6-4c63-82ae-6cb3353e472b"
 >
 </Parameter><Parameter
- Type="Kernel.EmergencyStop"
+ Type="Kernel.EmergencyStopStruct"
  Name="EmergencyStop2"
  Guid="96fac747-08ca-4dbf-b46c-6a0b449f934c"
 >
@@ -11332,7 +11332,7 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP()</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d622edaf-ffd8-40b0-b71c-b535341b6463"
 >
-</ReqRef><Comment>Adds an emergency stop item to the list from a conditional emergency stop message or from an unconditional emergency stop message</Comment>
+</ReqRef><Comment>Adds an emergency stop item to the list from a conditional emergency stop message or from an unconditional emergency stop message.</Comment>
 <Parameters>
 <Parameter
  Type="Messages.MESSAGE.TRACK_TO_TRAIN.Message"

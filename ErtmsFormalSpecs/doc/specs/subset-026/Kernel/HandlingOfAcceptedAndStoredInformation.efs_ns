@@ -2753,6 +2753,7 @@ SituationN()</Expression>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Handle Unconditional Emergency Stop"
  Guid="3fe12d83-9147-41f5-bb19-2e26fcae7de8"
@@ -2761,6 +2762,7 @@ SituationN()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the third category"
  Guid="920dfe80-f7ca-4ea9-857c-5b1657154705"
 >
@@ -2775,7 +2777,9 @@ SituationN()</Expression>
  Guid="d7498e91-c0cf-40c6-bd1c-c7b961b97f9c"
 >ThirdCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="0784c2ed-f324-42d7-9bd4-521fff65505e"
+>EmergencyStops &lt;- MAP EmergencyStops | X.IsConditional == True USING X IN X</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the first category"
@@ -2813,6 +2817,7 @@ SituationN()</Expression>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Handle Conditional Emergency Stop"
  Guid="56782289-7716-43a5-bb07-34c406fff745"
@@ -2821,6 +2826,7 @@ SituationN()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the third category"
  Guid="8b5773db-c886-483d-b56f-ebd45760f049"
 >
@@ -2835,7 +2841,9 @@ SituationN()</Expression>
  Guid="9e8233aa-56a6-4761-88a1-3daeff76260d"
 >ThirdCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="48be1006-ef93-4bf2-8a2c-fe5478962fa2"
+>EmergencyStops &lt;- MAP EmergencyStops | X.IsConditional == False USING X IN X</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the first category"
