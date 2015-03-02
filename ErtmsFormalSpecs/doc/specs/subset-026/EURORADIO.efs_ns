@@ -4155,6 +4155,30 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
  Guid="d966b111-ad3c-4937-9f9c-18b07bd04154"
 >
 </ReqRef><Comment>Indicates whether the order applies also to Sleeping units.</Comment>
+</StructureElement><StructureElement
+ TypeName="BaseTypes.Distance"
+ Default="BaseTypes.Distance.Unknown"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="EndOfValidityLocation"
+ Guid="2f3c33db-f3fd-4da4-8bd3-cdc3386b1053"
+>
+<ReqRef
+ Id="8fa3c468-ff7b-4fa4-9f9c-790f481b3f5c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8c8fd01a-48f2-42f7-b374-40e507f915ec"
+>
+</ReqRef><ReqRef
+ Id="bb662eea-95fc-427d-8968-9c64c70423fa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d0340bb1-189e-4eac-ac5a-c60f5b47b906"
+>
+</ReqRef><ReqRef
+ Id="3cf876e9-fd29-41a4-a3d3-154e60b988e0"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="259996a2-b33e-4503-b2c4-95db21aac9cc"
+>
+</ReqRef><Comment>Indicates the location where the contact order has to be removed.</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="10"
@@ -5982,6 +6006,35 @@ CurrentRBCConnection().ContactData.DataState == DataState.Unknown</PreCondition>
 <Expression>Kernel.ActiveFunctions.ManageCommunicationSession()
   AND  
 Kernel.Mode not in [Mode.SH, Mode.PS]</Expression>
+</Case></Cases>
+</Function><Function
+ Type="EURORADIO.TerminalStruct"
+ Default=""
+ X="330"
+ Y="720"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="SecondaryTerminal"
+ Guid="844d4dfe-8658-4309-a26a-3711661d3127"
+>
+<Comment>Provides the secondary terminal (for the accepting RBC).</Comment>
+<Cases>
+<Case
+ Name="Terminal 1"
+ Guid="2bdfbf19-8183-4aef-ab24-51d07be5739c"
+>
+<PreConditions>
+<PreCondition
+ Guid="88f2d542-cfca-4d41-8d1f-74771f9e6d33"
+>CurrentTerminal() == Terminal2</PreCondition></PreConditions>
+<Expression>Terminal1</Expression>
+</Case><Case
+ Name="Terminal 2"
+ Guid="e9ac46b6-3db7-4f01-bb9e-70510c2ca4d4"
+>
+<Expression>Terminal2</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -10334,7 +10387,7 @@ But at the end of the cycle the conditions required for sending of position repo
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- X="850"
+ X="790"
  Y="730"
  Width="100"
  Height="50"
@@ -10363,6 +10416,46 @@ But at the end of the cycle the conditions required for sending of position repo
 <Action
  Guid="b5fbfee4-ca84-4128-9ab3-2edd2f4447ef"
 >ContactRBC( anOrder =&gt; RBCContactOrderToRepeat )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ X="900"
+ Y="730"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Contact order validity location passed"
+ Guid="90cebb27-1c6a-42b1-aae8-6edf816c2f9f"
+>
+<ReqRef
+ Id="8fa3c468-ff7b-4fa4-9f9c-790f481b3f5c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="90a40aa4-daae-4b7b-bfee-53556acccd53"
+>
+</ReqRef><ReqRef
+ Id="bb662eea-95fc-427d-8968-9c64c70423fa"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9e18daa1-7283-4c1e-ac0e-62b01adb5211"
+>
+</ReqRef><Comment>If the train passed the location where the RBC transition order has to be removed =&gt; remove the RBC transition order.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Contact order validity location passed"
+ Guid="ffe16740-dbae-484f-8674-78dad5e81adb"
+>
+<PreConditions>
+<PreCondition
+ Guid="fbbf50ac-5249-404e-b0c9-37d0b6c10c28"
+>Kernel.TrainPosition.FrontEndPosition( PointOfInterest =&gt; Default.DistanceInterval.Nom ) &gt;= SecondaryTerminal().AcceptingRBCContactOrder.EndOfValidityLocation</PreCondition><PreCondition
+ Guid="8159a3b5-93ba-4abf-b8a6-c47c500d081c"
+>SecondaryTerminal().AcceptingRBCContactOrder != EMPTY</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2754ef6d-2232-4088-8ba2-11d0dd9c37dd"
+>SecondaryTerminal().AcceptingRBCContactOrder &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>

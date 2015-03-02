@@ -2377,6 +2377,7 @@ SituationN()</Expression>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Handle RBC Transition Order"
  Guid="8610d7db-5964-4dd8-917a-0df5a870acf8"
@@ -2385,6 +2386,7 @@ SituationN()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the first category"
  Guid="bafcf114-a2eb-456b-a3d9-3efc71c1df16"
 >
@@ -2393,14 +2395,24 @@ SituationN()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="55b69988-099b-4d63-ae95-30a31d1374d1"
 >
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2f4f68c4-4e44-4774-8a65-75f112e20ba5"
+>
 </ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="25cb1a15-22e5-4ddd-a81e-f665c7ec380d"
->FirstCategory()</PreCondition></PreConditions>
+>FirstCategory()</PreCondition><PreCondition
+ Guid="4457c877-af8d-4250-9f69-8beaa5ffa303"
+>EURORADIO.SecondaryTerminal().AcceptingRBCContactOrder != EMPTY</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="a6dd73b6-cb67-46a8-bbb5-c2671ecbf6f9"
+>EURORADIO.SecondaryTerminal().AcceptingRBCContactOrder.EndOfValidityLocation &lt;- SpecialCase1Location()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the second category"
  Guid="b075b53d-5f29-40d4-b288-cd8ba2416ce0"
 >
@@ -2409,14 +2421,24 @@ SituationN()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="37e07677-f457-4aaa-9e78-6b2dbd758750"
 >
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8f8e47e8-9bba-4213-8fe7-39f583f3b0e7"
+>
 </ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="4b93ffcc-8b1d-4e86-b857-31b079717a72"
->SecondCategory()</PreCondition></PreConditions>
+>SecondCategory()</PreCondition><PreCondition
+ Guid="1c0d3736-beb9-4bdc-9518-c39d03e8ad5d"
+>EURORADIO.SecondaryTerminal().AcceptingRBCContactOrder != EMPTY</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="f73e5b0b-8979-4bc7-83ce-b10ec8590560"
+>EURORADIO.SecondaryTerminal().AcceptingRBCContactOrder.EndOfValidityLocation &lt;- TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the third category"
  Guid="1c779892-a7c8-4de4-81af-2fc96253d178"
 >
@@ -2431,7 +2453,9 @@ SituationN()</Expression>
  Guid="0b82d6f8-7d29-4a94-8ae7-18c62bbdf3ca"
 >ThirdCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="7da45d4f-31ef-40ae-a0c0-6f6a230e7889"
+>EURORADIO.SecondaryTerminal().AcceptingRBCContactOrder &lt;- EMPTY</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
