@@ -520,6 +520,44 @@ The confidence level (K) is defined as a level of probability that the true posi
 >
 <Expression>BaseTypes.Acceleration.NA</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Acceleration"
+ Default=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CalculateAcceleration"
+ Guid="57ef3aff-1079-4ac9-a50c-34ce9aac93bf"
+>
+<Comment>Calculates the acceleration between the current and previous odometry messages.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Time"
+ Name="Time"
+ Guid="a24b1e8e-acaf-4142-86d4-0d6d49e97ad6"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Speed"
+ Guid="8f3e5032-5baf-4ce5-be0f-115553a4630a"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Same time as previous message"
+ Guid="f18e1d97-d561-4cf5-b394-7e8ae20da300"
+>
+<PreConditions>
+<PreCondition
+ Guid="cb14fdd7-7558-4c05-9095-43e89d65bea3"
+>Time == PreviousTime</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="7d017393-59e8-4165-a841-3b7a83a3ddd7"
+>
+<Expression>Default.BaseTypes.Acceleration ( Speed
+-  PreviousSpeed ) / Default.BaseTypes.Acceleration (  Time - PreviousTime)</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -570,10 +608,12 @@ The confidence level (K) is defined as a level of probability that the true posi
  Guid="77e6e519-84b4-4ee9-9090-7bfe385d539a"
 >Odometry.Accuracy.D_ora &lt;- Default.BaseTypes.DistanceToLength(Message.D_NOM - Message.D_MIN)</Action><Action
  Guid="63cfd51a-a706-4c38-bf84-6496ef309c84"
->Odometry.EstimatedSpeed &lt;- Message.V_NOM</Action><Action
+>EstimatedSpeed &lt;- Message.V_NOM</Action><Action
  Guid="24d8010e-c271-4470-96c1-5303813aaafe"
->Odometry.EstimatedAcceleration &lt;- Default.BaseTypes.Acceleration ( Message.V_NOM
--  Odometry.PreviousSpeed ) / Default.BaseTypes.Acceleration (  Message.T_ODO - PreviousTime)</Action><Action
+>Odometry.EstimatedAcceleration &lt;- CalculateAcceleration(
+    Time =&gt; Message.T_ODO,
+    Speed =&gt; Message.V_NOM
+)</Action><Action
  Guid="be1750f6-f121-4bb4-9192-25785d00bc32"
 >Odometry.Accuracy.V_ora &lt;- Message.V_NOM - Message.V_MIN</Action><Action
  Guid="7a4376a7-9f06-403b-87a3-14f47c6b2890"
