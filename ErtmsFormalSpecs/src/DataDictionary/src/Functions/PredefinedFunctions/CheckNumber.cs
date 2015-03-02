@@ -56,7 +56,8 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Provides the value of the function
+        /// Provides the value of the function.
+        /// The function returns true if the string passes the check.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
