@@ -3082,7 +3082,7 @@ FORALL X IN Balise.Sequence1 |
 <Actions>
 <Action
  Guid="64a5b203-43ab-41ec-b698-757a66aa1143"
->Kernel.EmergencyStops &lt;- MAP Kernel.EmergencyStops USING X IN Kernel.EmergencyStop{
+>Kernel.EmergencyStops &lt;- MAP Kernel.EmergencyStops USING X IN Kernel.EmergencyStopStruct{
     IsConditional =&gt; X.IsConditional,
     Id =&gt; X.Id,
     StopLocation =&gt; X.StopLocation - DistanceFromLRBG,
