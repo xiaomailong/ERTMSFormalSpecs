@@ -125,11 +125,11 @@
 >
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
- Default=""
+ Default="BaseTypes.Speed.NA"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="ApplicableDistance"
+ Name="ApplicableStartLocation"
  Guid="72b44e00-1465-4d49-bb11-3a9b278ca11f"
 >
 <ReqRef
@@ -137,7 +137,7 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7e80beae-d8aa-4c51-988c-2a87ecef3abd"
 >
-</ReqRef><Comment>Distance from where the National values become applicable.</Comment>
+</ReqRef><Comment>Distance from where the National Values become applicable.</Comment>
 </StructureElement><StructureElement
  TypeName="Messages.NID_C"
  Default=""
@@ -151,7 +151,26 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d86f6885-fb00-477a-8793-f89d20740808"
 >
-</ReqRef></StructureElement></Structure><Structure
+</ReqRef></StructureElement><StructureElement
+ TypeName="BaseTypes.Distance"
+ Default="BaseTypes.Speed.NA"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="ApplicableStopLocation"
+ Guid="9b6d3787-e544-4bb3-95b6-71bdc22e54c2"
+>
+<ReqRef
+ Id="ce2482be-3fca-44a2-adcb-7540c2a92ccf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e5362da0-ee6f-40b5-be6b-7db72381e664"
+>
+</ReqRef><ReqRef
+ Id="11238548-39f5-440e-8186-26815a500c0f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6c473d77-5756-4158-8de9-f6428f0b64de"
+>
+</ReqRef><Comment>Distance where the National Values have to be deleted.</Comment>
+</StructureElement></Structure><Structure
  Default=""
  X="480"
  Y="470"
@@ -1675,7 +1694,7 @@
 <Expression>Kernel.NationalValues.NationalValuesStruct
 {
     DataState =&gt; Default.DataState.Valid,
-    ApplicableDistance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_VALIDNV, scale =&gt; Packet.Q_SCALE ),
+    ApplicableStartLocation =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_VALIDNV, scale =&gt; Packet.Q_SCALE ),
     NID_C =&gt; NID_C,
     Value =&gt; Kernel.NationalValues.NationalDefaultDataStruct
     {
@@ -2549,7 +2568,7 @@
 <PreConditions>
 <PreCondition
  Guid="3c8e6d4c-7d8f-4e62-833e-dcbdb643906f"
->Distance &gt; ApplicableNationalValues.ApplicableDistance</PreCondition><PreCondition
+>Distance &gt; ApplicableNationalValues.ApplicableStartLocation</PreCondition><PreCondition
  Guid="0cb8f8e9-a841-4bff-bbb0-a534c9774614"
 >StaffResponsible.SREndLocation() &lt;= Distance</PreCondition><PreCondition
  Guid="085f5adc-b43b-426c-90bb-1e23251bbef5"
@@ -3579,6 +3598,7 @@
  Type="Default.BaseTypes.Distance"
  DefaultValue=""
  VariableMode="Internal"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="RemainingDistance"
  Guid="1e9652c0-d0c7-4d8e-98b6-04e07a7b5338"
@@ -3645,7 +3665,7 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="NVBecomeApplicable"
+ Name="Handle not applicable National Values"
  Guid="9f5dee4e-50f1-492d-94da-64278acc22f3"
 >
 <ReqRef
@@ -3653,18 +3673,36 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6344e292-f74f-4630-9844-ee60a555fd12"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Handles the applicability of not yet applicable National Values.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
+ Name="Not applicable values have to be deleted"
+ Guid="ba24fb6c-8e31-4d4a-b454-8cefa59aa953"
+>
+<Comment>If the train reached the location where the National Values have to be deleted, their data state is set to invalid.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="7e45de5e-66de-4df6-b95a-f34fd63cfab1"
+>Kernel.TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Nom ) &gt;= NotApplicableNationalValues.ApplicableStopLocation</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d4d252df-e8b1-4358-8386-899d255eaa97"
+>NotApplicableNationalValues.DataState &lt;- DataState.Invalid</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="NVBecomeApplicable"
+ Name="Not applicable values become applicable"
  Guid="aa5f2558-8c2c-4eee-9675-3e120221f113"
 >
+<Comment>If the train reached the start location of the applicability of not yet applicable National Values, they become applicable:
+- the value of not yet applicable National Values is copied to the value of applicable National Values
+- the data state of not yet applicable National Values is set to invalid.</Comment>
 <PreConditions>
 <PreCondition
  Guid="36a832ac-f673-4b9f-8989-1a9304523d0c"
->Odometry.NominalDistance == NotApplicableNationalValues.ApplicableDistance</PreCondition><PreCondition
+>Kernel.TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Nom ) &gt;= NotApplicableNationalValues.ApplicableStartLocation</PreCondition><PreCondition
  Guid="3d66c648-74f2-4bdc-8264-633197a17194"
 >NotApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
 <Actions>
@@ -3676,7 +3714,7 @@
  Guid="5d002dba-0fe8-4a51-ad39-d6fe34e76e3a"
 >ApplicableNationalValues.Value &lt;- NotApplicableNationalValues.Value</Action><Action
  Guid="adc91ac5-b5ab-4419-ace6-47b0b51d178d"
->ApplicableNationalValues.ApplicableDistance &lt;- NotApplicableNationalValues.ApplicableDistance</Action><Action
+>ApplicableNationalValues.ApplicableStartLocation &lt;- NotApplicableNationalValues.ApplicableStartLocation</Action><Action
  Guid="53f5c8f6-af1f-4c8e-aba4-051e9cf0fb58"
 >ApplicableNationalValues.NID_C &lt;- NotApplicableNationalValues.NID_C</Action></Actions>
 </RuleCondition></Conditions>

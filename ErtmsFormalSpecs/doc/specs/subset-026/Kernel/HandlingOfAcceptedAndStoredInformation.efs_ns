@@ -626,6 +626,7 @@ SituationN()</Expression>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Handle not yet applicable National Values"
  Guid="185f7948-2ee2-4e7f-b639-42f38039bd8a"
@@ -634,6 +635,7 @@ SituationN()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the first category"
  Guid="09647109-d200-4483-858c-2a5e1acefbe2"
 >
@@ -642,14 +644,22 @@ SituationN()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b487e614-7444-4f15-a6d8-11ca6e2bb9bb"
 >
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="36f7102d-4f8b-41ce-aba5-fbfe2a9b7321"
+>
 </ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="6d6419f1-6121-4d23-937f-404c55ba2086"
 >FirstCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="80476ca8-4d7e-4592-986d-43033dbafccb"
+>NationalValues.NotApplicableNationalValues.ApplicableStopLocation &lt;- SpecialCase1Location()</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the second category"
  Guid="b863334e-4868-4693-a050-5f2f2fd395e8"
 >
@@ -658,13 +668,20 @@ SituationN()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2b459d25-71ef-406a-92e7-5bab028e57b6"
 >
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="51b6cf3e-7ede-48d9-8eb7-94235b5e5864"
+>
 </ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="066ecbf7-966e-4884-b477-1836b85f2be6"
 >SecondCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="f373f34a-f8f5-4b44-b19f-837050d9c809"
+>NationalValues.NotApplicableNationalValues.ApplicableStopLocation &lt;- TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the third category"
