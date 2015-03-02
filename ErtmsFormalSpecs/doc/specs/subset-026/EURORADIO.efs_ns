@@ -411,7 +411,7 @@ Keep the reason for it to be displayed to the driver.</Comment>
  Guid="35c7ae19-379e-4fe1-9f80-bbfeed7fb8e3"
 >TrainTripDueToMaxTimeBetweenMessagesExceeded &lt;- True</Action><Action
  Guid="df2fb773-415b-49bc-8066-df20f0a0c275"
->INSERT Kernel.EmergencyStop{
+>INSERT Kernel.EmergencyStopStruct{
     IsConditional =&gt; False,
     Id =&gt; 0,
     StopLocation =&gt; 0.0,
@@ -11390,7 +11390,7 @@ But at the end of the cycle the conditions required for sending of position repo
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
-  X="900"
+ X="900"
  Y="730"
  Width="100"
  Height="50"
