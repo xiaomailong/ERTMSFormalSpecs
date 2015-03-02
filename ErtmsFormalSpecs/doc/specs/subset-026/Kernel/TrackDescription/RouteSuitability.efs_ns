@@ -1068,7 +1068,9 @@ IN
 <PreConditions>
 <PreCondition
  Guid="f217ebc6-90f3-4b06-b121-9472c9799c71"
->RouteSuitabilityProfile.Items != []
+>RouteSuitabilityProfile != EMPTY
+  AND
+RouteSuitabilityProfile.Items != []
   AND
 (
   RouteSuitabilityProfile.InitialState == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow
