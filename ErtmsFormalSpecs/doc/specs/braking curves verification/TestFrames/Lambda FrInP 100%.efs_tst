@@ -150,10 +150,13 @@
  Guid="754163a4-ccfd-405f-9699-560cf5b8fdd3"
 >TIU.CabA.IsFittedWithSingleDesk &lt;- Boolean.True</Action><Action
  Guid="490a43b5-400f-4297-9b14-b0c2bf9b0cd0"
->Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action><Action
+>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- Kernel.MA.SignallingRelatedSRStruct{
+    Value =&gt; 160.0,
+    End =&gt; 8000.0
+}</Action><Action
  Guid="4a4da1ee-2731-428d-8d9a-e8f05ccf821c"
 >INSERT
-    Kernel.TrackDescription.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientStruct
     {
         Distance =&gt; 0.0,
         Gradient =&gt; 0.0
@@ -241,25 +244,25 @@ IN
 <Actions>
 <Action
  Guid="03ed37b7-d6ea-433e-9bac-12f7cb440af7"
->Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val0 &lt;- Kernel.NationalValues.KrIntValue
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val0 &lt;- Kernel.NationalValues.KrIntValueStruct
 {
     LengthStep =&gt; 0.0,
     Value =&gt; 1.0
 }</Action><Action
  Guid="8bd2b43f-6caa-4360-886f-c8a03b2b06e8"
->Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val1 &lt;- Kernel.NationalValues.KrIntValue
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val1 &lt;- Kernel.NationalValues.KrIntValueStruct
 {
     LengthStep =&gt; Default.BaseTypes.Length.Infinity,
     Value =&gt; 1.0
 }</Action><Action
  Guid="b7eeb6f7-9548-4c8c-ba2e-95750b91a657"
->Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val0 &lt;- Kernel.NationalValues.KvIntValue_FreightTrain
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val0 &lt;- Kernel.NationalValues.KvIntValue_FreightTrainStruct
 {
     SpeedStep =&gt; 0.0,
     Value =&gt; 0.97
 }</Action><Action
  Guid="1ca9503e-cec8-48e4-850f-a818c7781d37"
->Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val1 &lt;- Kernel.NationalValues.KvIntValue_FreightTrain
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_FreightTrain.Val1 &lt;- Kernel.NationalValues.KvIntValue_FreightTrainStruct
 {
     SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
     Value =&gt; 0.97

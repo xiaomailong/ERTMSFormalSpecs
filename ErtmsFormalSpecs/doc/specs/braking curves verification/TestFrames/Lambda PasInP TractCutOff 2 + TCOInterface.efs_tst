@@ -150,10 +150,13 @@
  Guid="d0f2dc62-10ec-475b-947a-4875c2373c36"
 >TIU.CabA.IsFittedWithSingleDesk &lt;- Boolean.True</Action><Action
  Guid="e409d08c-f881-4a60-a814-b591766b03af"
->Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action><Action
+>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- Kernel.MA.SignallingRelatedSRStruct{
+    Value =&gt; 160.0,
+    End =&gt; 8000.0
+}</Action><Action
  Guid="1ad3885d-4c65-4ba1-9f59-b82e33be6472"
 >INSERT
-    Kernel.TrackDescription.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientStruct
     {
         Distance =&gt; 0.0,
         Gradient =&gt; 0.0
@@ -162,7 +165,7 @@ IN
     Kernel.TrackDescription.Gradient.Gradients</Action><Action
  Guid="d78a19cf-6a2e-4122-85d5-7fd40f9ad596"
 >INSERT
-    Kernel.TrackDescription.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientStruct
     {
         Distance =&gt; 4000.0,
         Gradient =&gt; 2.0
@@ -171,7 +174,7 @@ IN
     Kernel.TrackDescription.Gradient.Gradients</Action><Action
  Guid="7bddb46d-a6f6-4511-8339-e512699bbcf3"
 >INSERT
-    Kernel.TrackDescription.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientStruct
     {
         Distance =&gt; 6000.0,
         Gradient =&gt; -1.0
@@ -180,7 +183,7 @@ IN
     Kernel.TrackDescription.Gradient.Gradients</Action><Action
  Guid="92869cdc-8dc0-45af-81f4-84a75701f376"
 >INSERT
-    Kernel.TrackDescription.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientStruct
     {
         Distance =&gt; 6500.0,
         Gradient =&gt; -2.0
@@ -268,26 +271,26 @@ IN
 <Actions>
 <Action
  Guid="c649e42f-9b33-4c94-b98f-96b591977274"
->Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val0 &lt;- Kernel.NationalValues.KrIntValue
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val0 &lt;- Kernel.NationalValues.KrIntValueStruct
 {
     LengthStep =&gt; 0.0,
     Value =&gt; 1.0
 }</Action><Action
  Guid="e0b0916e-3e42-485c-9387-1a500b347f44"
->Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val1 &lt;- Kernel.NationalValues.KrIntValue
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKrInt.Val1 &lt;- Kernel.NationalValues.KrIntValueStruct
 {
     LengthStep =&gt; Default.BaseTypes.Length.Infinity,
     Value =&gt; 1.0
 }</Action><Action
  Guid="a2919de0-a107-4496-9721-91774cfbc506"
->Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0 &lt;- Kernel.NationalValues.KvIntValue_PassengerTrain
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0 &lt;- Kernel.NationalValues.KvIntValue_PassengerTrainStruct
 {
     SpeedStep =&gt; 0.0,
     ValueA =&gt; 1.0,
     ValueB =&gt; 1.0
 }</Action><Action
  Guid="4717b7ea-44c7-4a33-8111-286c7dc917ad"
->Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val1 &lt;- Kernel.NationalValues.KvIntValue_PassengerTrain
+>Kernel.NationalValues.ApplicableNationalValues.Value.IntegratedCorrectionFactorKvInt_PassengerTrain.Val1 &lt;- Kernel.NationalValues.KvIntValue_PassengerTrainStruct
 {
     SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
     ValueA =&gt; 1.0,

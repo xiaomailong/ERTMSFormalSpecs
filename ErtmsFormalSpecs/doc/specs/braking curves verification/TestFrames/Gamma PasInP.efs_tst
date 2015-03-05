@@ -147,10 +147,13 @@
  Guid="1f5a0375-36f0-4682-9951-0ffcfd1ba5b9"
 >TIU.CabA.IsFittedWithSingleDesk &lt;- Boolean.True</Action><Action
  Guid="909242e8-5423-4618-a2f6-431e54f25aff"
->Kernel.MA.SignallingRelatedSpeedRestriction &lt;- 160.0</Action><Action
+>Kernel.MA.SignallingRelatedSpeedRestriction &lt;- Kernel.MA.SignallingRelatedSRStruct{
+    Value =&gt; 160.0,
+    End =&gt; 8000.0
+}</Action><Action
  Guid="48f61419-1568-4df2-aa85-1ed0e2fea962"
 >INSERT
-    Kernel.TrackDescription.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientStruct
     {
         Distance =&gt; 0.0,
         Gradient =&gt; 0.0
@@ -159,7 +162,7 @@ IN
     Kernel.TrackDescription.Gradient.Gradients</Action><Action
  Guid="a13df122-5806-4f02-b732-f9566bd89dd8"
 >INSERT
-    Kernel.TrackDescription.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientStruct
     {
         Distance =&gt; 4000.0,
         Gradient =&gt; 2.0
@@ -168,7 +171,7 @@ IN
     Kernel.TrackDescription.Gradient.Gradients</Action><Action
  Guid="45998135-fbee-4e97-bb06-34e65390e199"
 >INSERT
-    Kernel.TrackDescription.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientStruct
     {
         Distance =&gt; 6000.0,
         Gradient =&gt; -1.0
@@ -177,7 +180,7 @@ IN
     Kernel.TrackDescription.Gradient.Gradients</Action><Action
  Guid="8d91dedb-2993-4c85-bb9a-a143f55c709d"
 >INSERT
-    Kernel.TrackDescription.Gradient.GradientInfo
+    Kernel.TrackDescription.Gradient.GradientStruct
     {
         Distance =&gt; 6500.0,
         Gradient =&gt; -2.0
