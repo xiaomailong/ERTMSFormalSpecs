@@ -4294,11 +4294,6 @@ IN MRSP</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="25676bff-a7f1-47af-96e9-5377e75399eb"
 >
-</ReqRef><ReqRef
- Id="ce563fea-92a3-4267-bf81-1a5cc5fd548b"
- SpecId="7976a642-eab5-431b-a656-44fc19d26d62"
- Guid="38e6388a-0e31-402f-b490-0956db249c2f"
->
 </ReqRef><Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
 <SubRules></SubRules>
 <Conditions>
@@ -4310,26 +4305,11 @@ IN MRSP</Action></Actions>
 >
 <Comment>The indistaion location should only be displayed when the speed and distance monitoring is in Ceiling Speed Monitoring or and the start of Target Speed Monitoring (PIM)</Comment>
 <PreConditions>
-<PreCondition
- Guid="6e65a2c2-85fa-4312-9e7d-1843726e27b7"
->NOT OutputInformation.DisplayRequested</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
 <Action
  Guid="4383da9f-ab69-4fe3-84cf-1b0c583c86e3"
 >Display()</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Hide when in wrong monitoring types"
- Guid="7989786c-a6c8-4293-895c-a857c4c914a8"
->
-<Comment>When the speed and distance monitoring is in TSM or RSM, the indication location should not be displayed</Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="37b1dbea-580c-4478-b8f1-7dc089611c49"
->THIS.OutputInformation.DoNotDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
