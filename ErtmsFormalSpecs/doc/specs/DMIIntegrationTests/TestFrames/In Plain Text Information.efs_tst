@@ -32,18 +32,6 @@
  Name="Initialize Environment"
  Guid="f4f6b29b-803d-4ec5-8bda-587a697f920f"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="29365f79-42ee-4ff7-b2ee-572e223835b5"
->
-<Actions>
-<Action
- Guid="7cd9266b-25ef-464e-aa38-76ab427053c8"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="4ce54d33-5539-45db-8c3a-e54c15f68576"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -53,18 +41,6 @@
  Name="Set the plain text information"
  Guid="7255d5e7-5613-447c-ae41-f0c58cd65fea"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="d337f756-d74b-4bfd-aef8-16fdf8aa75de"
->
-<Actions>
-<Action
- Guid="8d848c3f-6ed2-4d60-b442-826a0cd58500"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.InputInformation.DisplayRequested &lt;- True</Action><Action
- Guid="ef2d9df9-0bb2-4093-86b6-514a72a9abc5"
->DMI.MasterDMI().In_AcknOfPlainTextInformation.Text &lt;- &apos;Plain Text Information&apos;</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>

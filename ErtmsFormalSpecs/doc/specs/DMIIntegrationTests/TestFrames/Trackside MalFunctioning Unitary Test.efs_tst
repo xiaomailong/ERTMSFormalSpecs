@@ -32,28 +32,6 @@
  Name="Initialize Environment"
  Guid="0a0bb6a2-8afb-4813-98e0-7be95f23d620"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="5a915dad-e6e6-4fb0-bf62-3e695c754086"
->
-<Actions>
-<Action
- Guid="af7b85e1-5920-4100-a43b-2b3e81d0fe08"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="f56a5112-e168-4365-b26c-b6accb83eac3"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="f2403813-cc31-4412-8693-e5ea9477201c"
->Kernel.Level.Value == Level.L0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="9c87ecb3-e084-4d3e-aa66-be8444e13c3f"
->Kernel.Mode != Mode.SB</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -63,16 +41,6 @@
  Name="Step2"
  Guid="5c64b185-46af-4233-88c8-d22a36eee4a3"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="579a27b0-1374-4559-b73b-1c14f51cb07f"
->
-<Actions>
-<Action
- Guid="3b0ea37d-eef5-4a26-acd7-557228f1586d"
->DMI.MasterDMI().Out_TracksideMalfunction.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>

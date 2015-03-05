@@ -32,27 +32,6 @@
  Name="Initialize Environment"
  Guid="66d93565-2047-40ba-a57b-72a07fec8e62"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="16428c52-828e-43e4-8fa6-733f6902a504"
->
-<Actions>
-<Action
- Guid="c65b9387-be1c-4f11-91b3-63cf89426f14"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="3ca2daba-1677-4b7a-9c32-db9b3b2a7e70"
-><Comment></Comment>
-Kernel.Mode &lt;- Default.Mode.OS</Action><Action
- Guid="c82d0dde-7c3e-4212-9941-e7f79d11408d"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="5bccf1de-2fad-48a6-b946-f2820ee9cc0b"
->Kernel.Level.Value == Level.L1</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -62,22 +41,6 @@ Kernel.Mode &lt;- Default.Mode.OS</Action><Action
  Name="Is Trakc Ahead Free"
  Guid="824800c9-3bc8-48f7-b994-767265a3657e"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="a946f8c9-71e3-4ba3-b279-414f9cfada39"
->
-<Actions>
-<Action
- Guid="9d22bf72-3552-4aa8-8d96-5575df2998ec"
->DMI.MasterDMI().Out_TrackAheadFreeRequest.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="42e03c01-26ef-48be-9a96-2ffbfc914dc3"
->DMI.MasterDMI().Out_TrackAheadFreeRequest.OutputInformation.DisplayRequested == Boolean.True</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence><SubSequence
@@ -108,27 +71,6 @@ Kernel.Mode &lt;- Default.Mode.OS</Action><Action
  Name="Initialize Environment"
  Guid="f2457fa6-1562-4c57-a3d8-9ca074445ebe"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="94d5e6da-c460-4129-9386-1c901d070f19"
->
-<Actions>
-<Action
- Guid="7640b5df-adb0-425b-9adc-3a84109791fb"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="a606bf2f-292e-47ef-8eb3-91e0ad267a72"
-><Comment></Comment>
-Kernel.Mode &lt;- Default.Mode.OS</Action><Action
- Guid="d55e8d92-d023-4bcc-9b2e-b3fb1feb269e"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="dcaf51ec-8266-4dc3-aad7-ad1ad5890b7c"
->Kernel.Level.Value == Level.L1</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -138,22 +80,6 @@ Kernel.Mode &lt;- Default.Mode.OS</Action><Action
  Name="Is Trakc Ahead Free"
  Guid="105d77b6-409d-4411-b5cc-cb7e445313ab"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="56d0d3ba-d2de-4b06-a9cd-45031519a425"
->
-<Actions>
-<Action
- Guid="45dee109-4164-48cd-bc1b-042b562e7d6b"
->DMI.MasterDMI().In_TrackAheadFree.InputInformation.DisplayRequested &lt;- True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="be00a21e-61d8-4ba4-a5f7-1cea2ea52788"
->DMI.MasterDMI().In_TrackAheadFree.InputInformation.DisplayRequested == Boolean.True</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>

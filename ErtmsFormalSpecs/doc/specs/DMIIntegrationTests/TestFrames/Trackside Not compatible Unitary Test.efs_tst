@@ -32,28 +32,6 @@
  Name="Initialize Environment"
  Guid="eb98daef-a339-48c5-b6f8-9204aa1c1070"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="0792f20d-62aa-4971-b56c-b19e676f1cdd"
->
-<Actions>
-<Action
- Guid="27e914e2-209f-4005-9164-6ae5ffed04b6"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="561a9adc-2213-4a2d-bcf6-bccc89dacc53"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="0d55eb31-62f1-4d4c-a555-420e39ca4e00"
->Kernel.Level.Value == Level.L0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="46cdd086-ace8-495b-8bb0-3d22741ffc3d"
->Kernel.Mode != Mode.SB</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -63,16 +41,6 @@
  Name="Set TrackSide Not Compatible"
  Guid="b4e2618e-d95f-48f8-adbb-104024c8a009"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="60c350e8-2d38-40ff-a83f-2fc489edbd20"
->
-<Actions>
-<Action
- Guid="b9961ed7-9b59-4c64-87e6-9ad2fa14cb73"
->DMI.MasterDMI().Out_TracksideNotCompatible.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>

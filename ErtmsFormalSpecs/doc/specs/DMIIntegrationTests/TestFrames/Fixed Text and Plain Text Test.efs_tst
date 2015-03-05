@@ -32,28 +32,6 @@
  Name="Initialize Environment"
  Guid="cb685bbb-3e0a-47fe-923e-e1fe7d1ce393"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="2654cb04-bc42-442d-9b46-90a11e23b9c1"
->
-<Actions>
-<Action
- Guid="5199c782-5699-4ec0-94d1-6d6d02800a57"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="76e0d6d0-993d-4e5b-b4e4-4227b74fdfb0"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="fd6f4783-9d6b-4dca-ac84-a01b064de115"
->Kernel.Level.Value == Level.L0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="ad820e0f-74c6-4027-bf37-6d496a07b334"
->Kernel.Mode != Mode.SB</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -63,19 +41,6 @@
  Name="Plain text Information"
  Guid="c1131008-346a-44b1-94a4-2738b8b6a596"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="ab0cde7a-abb5-4703-9e22-d64b16c212d8"
->
-<Actions>
-<Action
- Guid="b8dc47fb-0136-4d0b-ba50-ed473a6a59a9"
-><Comment></Comment>
-DMI.MasterDMI().Out_PlainTextInformation.Text &lt;- &apos;L36&apos;</Action><Action
- Guid="60802ac0-bbd5-4042-8473-242f3caf8369"
->DMI.MasterDMI().Out_PlainTextInformation.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -85,17 +50,6 @@ DMI.MasterDMI().Out_PlainTextInformation.Text &lt;- &apos;L36&apos;</Action><Act
  Name="Disable Display Requested in Plain Text Messages"
  Guid="8912ac30-288c-4e1c-82c8-3362eaebee64"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="c0c50ff7-a7db-43d9-9153-0aac343cd1a8"
->
-<Actions>
-<Action
- Guid="45fe0366-179c-47e0-861e-44db59138719"
-><Comment></Comment>
-DMI.MasterDMI().Out_FixedTextInformation.OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence><SubSequence
@@ -126,28 +80,6 @@ DMI.MasterDMI().Out_FixedTextInformation.OutputInformation.DisplayRequested &lt;
  Name="Initialize Environment"
  Guid="6d84c262-ddf9-4a86-b37d-1e47424b98e4"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="aee6ae6e-2b6f-4b2a-bc39-17a50fa6da09"
->
-<Actions>
-<Action
- Guid="eacede0a-1dba-44a0-af3d-ca1f5530c7b2"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="729c366d-753d-4487-805b-f36ee66e4f8a"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="ec1c9099-f53a-4e5d-ac62-08278c76fb35"
->Kernel.Level.Value == Level.L0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="79e5eeab-9f21-4f10-a054-3ecccb7da036"
->Kernel.Mode != Mode.SB</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -157,20 +89,6 @@ DMI.MasterDMI().Out_FixedTextInformation.OutputInformation.DisplayRequested &lt;
  Name="Fixed Text Messages"
  Guid="2949ea99-21d8-45aa-a1bd-55c5639dedaa"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="3d5d6039-aeb1-44a7-89ba-0263ac206209"
->
-<Actions>
-<Action
- Guid="22109fbf-42fa-4eb3-8e4b-ec583c0927ba"
-><Comment></Comment>
-DMI.MasterDMI().Out_FixedTextInformation.OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
- Guid="c75d2c59-05e3-4283-bb6b-4f00353d419c"
-><Comment></Comment>
-DMI.MasterDMI().Out_FixedTextInformation.Text &lt;- &apos;L37&apos;</Action></Actions>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -180,17 +98,6 @@ DMI.MasterDMI().Out_FixedTextInformation.Text &lt;- &apos;L37&apos;</Action></Ac
  Name="Disable Display Requested in Fixed Text Messages"
  Guid="f0473eb5-50bb-4c22-86e5-0faca0531bcd"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="ed6871d6-7a23-4b77-87db-942417d6d6f4"
->
-<Actions>
-<Action
- Guid="6301406c-3218-4ecc-a61d-c3361b9476cc"
-><Comment></Comment>
-DMI.MasterDMI().Out_FixedTextInformation.OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>

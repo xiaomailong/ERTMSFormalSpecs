@@ -32,28 +32,6 @@
  Name="Initialize Environment"
  Guid="5be54c14-7d23-46ae-a486-d53c365ec2c1"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="f12b8e76-73b8-4510-9fb9-720d55e0e408"
->
-<Actions>
-<Action
- Guid="cde7cedd-6cdf-4bbb-8bc6-651530aa6340"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="02ad3e1b-c842-4d18-82a4-d14d65735a42"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="cbf326d8-53b5-497c-8013-4717db425932"
->Kernel.Level.Value == Level.L0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="ff57d74a-630d-44e8-8fdc-ba2a03f128f3"
->Kernel.Mode != Mode.SB</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -63,19 +41,6 @@
  Name="Establish the value for the Adhesion Factor"
  Guid="ebc6a862-f7e8-4db5-8f61-e980e4f5ed3f"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="abb433a4-8590-41f8-b98e-ee6fdbe38f9f"
->
-<Actions>
-<Action
- Guid="5ba0db33-ca0d-4554-a90a-e94fff9bb683"
->DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.AdhFactor &lt;- Messages.M_ADHESION.Slippery_rail</Action><Action
- Guid="5d94221a-0367-4fe5-9152-b48e5e011930"
-><Comment></Comment>
-DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence><SubSequence
@@ -106,28 +71,6 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  Name="Initialize Environment"
  Guid="9748e27b-f113-4e34-9f9a-c69038407bcf"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="ffbd3983-11f9-456c-ad51-f6bc575c023d"
->
-<Actions>
-<Action
- Guid="e8104afe-9ea7-4ae1-aefe-9d27f875d72e"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="ac548d23-189f-4539-973a-40398607e3ea"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="85a2d5e8-465d-4671-a1e4-f5c8547609be"
->Kernel.Level.Value == Level.L0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="00bd331f-a026-4bc7-9997-2743cf5ed3cf"
->Kernel.Mode != Mode.SB</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -137,16 +80,6 @@ DMI.MasterDMI().Out_AdhesionFactorSlipperyRail.OutputInformation.DisplayRequeste
  Name="Establish the value for the Adhesion Factor"
  Guid="681b826a-5a57-409b-bfcc-b4ec5a1a97d0"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="d31f159a-5021-4c68-ad20-e5ded6f975d9"
->
-<Actions>
-<Action
- Guid="9a6cf3fe-4cfd-46ec-98c4-016559424c6f"
->DMI.MasterDMI().In_TrackAdhesionFactor.InputInformation.DisplayRequested &lt;- True</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>

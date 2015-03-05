@@ -32,18 +32,6 @@
  Name="Initialize Environment"
  Guid="58374ffe-88a4-4840-b198-057919f0a21d"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="a8ee28cb-01e0-4082-bca3-f68d63a65703"
->
-<Actions>
-<Action
- Guid="9673c3bf-dbf4-4b53-b629-4ea9b05fe0a1"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="7d7b7555-9505-46a8-903c-d2106d0bb7f8"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -53,16 +41,6 @@
  Name="Activate DisplayRequested"
  Guid="c92c9b7a-e36a-4980-b826-c748b670784f"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="992d2798-deff-442a-b63e-62afe52a3a7e"
->
-<Actions>
-<Action
- Guid="0d22bffb-9df9-43dd-871d-b416709bdcc3"
->DMI.MasterDMI().In_AcknOfTrainDataChangeFromOtherSource.InputInformation.DisplayRequested &lt;- True</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>

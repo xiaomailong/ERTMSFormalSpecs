@@ -32,28 +32,6 @@
  Name="Initialize Environment"
  Guid="11f33ac5-6c67-41d9-9ec5-54d6fe0dab82"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="bb86b8a7-dcaa-4a23-91d1-a5dff70d9f2e"
->
-<Actions>
-<Action
- Guid="bfe36dc4-31a3-400c-9d22-0bda3d2acbc7"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="0ac64cc4-95d7-4f12-b8bc-e93bcfacd49f"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="ca4e03ce-0df8-418d-a515-624129a9660d"
->Kernel.Level.Value == Level.L0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="656b8b59-ec97-4e4b-91ae-ccbb23c3ccbf"
->Kernel.Mode != Mode.SB</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -63,18 +41,6 @@
  Name="Set Train Trip Reason"
  Guid="6c2e1079-3ab2-4ceb-a703-a258a1de81f0"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="6351ca52-a159-47a9-944d-b13db5162964"
->
-<Actions>
-<Action
- Guid="ab01afe6-ebc9-4978-88ef-f8987f4d56be"
->DMI.MasterDMI().Out_TripReason.OutputInformation.DisplayRequested &lt;- Boolean.True</Action><Action
- Guid="6ed55634-5ca7-49d5-b7c3-293a3303776b"
->DMI.MasterDMI().Out_TripReason.Reason &lt;- &apos;Distance Exceeded&apos;</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>

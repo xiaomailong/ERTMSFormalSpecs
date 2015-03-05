@@ -32,18 +32,6 @@
  Name="Initialize Environment"
  Guid="4d74e592-72fc-4692-9c5b-378162820c0d"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="9966d947-ca54-4067-a337-a5246217915c"
->
-<Actions>
-<Action
- Guid="ad830d35-b4d7-44a2-9a88-5b529ee5348f"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="0bbdea22-fb79-4bb4-89fb-b60f3d1075cd"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -53,18 +41,6 @@
  Name="Set Display requested and IsActive"
  Guid="614d35a0-f7da-41cf-861c-42ace3604e3e"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="aac333a0-8e00-446d-8070-cd32bc454070"
->
-<Actions>
-<Action
- Guid="c501850b-2b6a-46c9-bdd6-27773dc396b1"
->DMI.MasterDMI().In_AcknForRollAwayProtection.InputInformation.DisplayRequested &lt;- True</Action><Action
- Guid="6ef99f65-7958-487b-854f-25597a8aad08"
->DMI.MasterDMI().In_AcknForRollAwayProtection.IsActive &lt;- True</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>

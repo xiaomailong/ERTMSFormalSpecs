@@ -32,30 +32,6 @@
  Name="Initialize Environment"
  Guid="7c2256b5-d72b-4bf0-9ad5-24f8993230e4"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="a9c302fd-a93f-4ce1-b7fa-e56264a4d258"
->
-<Actions>
-<Action
- Guid="5766a1a6-3de0-40f0-aa84-0e2b938bb2b1"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="d8ef749f-d440-4469-b39b-b2fc6e955f8c"
->Kernel.Level.Value &lt;- Level.L1</Action><Action
- Guid="05cf559f-d080-4255-8df1-792dd692e7ce"
->Kernel.Mode &lt;- Mode.FS</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="572941a3-f27a-47d7-8e5a-c807a83a1b3c"
->Kernel.Level.Value == Level.L1</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="1f7c8026-6d97-427a-9b20-6163f2f9add7"
->Kernel.Mode == Mode.FS</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -65,21 +41,6 @@
  Name="Step2"
  Guid="7dec2aac-d2db-4bcc-b5f1-f0bc351fe687"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="100bafc3-6f74-4756-acab-4fd7b2b0e893"
->
-<Comment></Comment>
-<Actions>
-<Action
- Guid="ac4d97ec-e3be-4c3a-9170-986c5972c030"
-><Comment></Comment>
-Kernel.TargetDistance &lt;- 1000.0</Action><Action
- Guid="868196a7-a58c-4299-a991-6483b01194a2"
-><Comment></Comment>
-DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>

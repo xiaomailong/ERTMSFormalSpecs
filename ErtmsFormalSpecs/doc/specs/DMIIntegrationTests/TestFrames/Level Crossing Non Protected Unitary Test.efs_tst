@@ -32,28 +32,6 @@
  Name="Initialize Environment"
  Guid="f02a9dd6-211f-480e-996e-634094c48117"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="4b959c08-a473-47d6-84b9-ad84e9258b15"
->
-<Actions>
-<Action
- Guid="725bfb46-7e8b-4b9b-a998-146efb16175c"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="cc64dbb2-cede-42ed-92bb-f594ed9b7b25"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="733c6fbc-26f2-4529-9eb8-abf17aa8e926"
->Kernel.Level.Value == Level.L0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="583becf4-8c7e-4994-9fee-81fe32c4efe2"
->Kernel.Mode != Mode.SB</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -63,16 +41,6 @@
  Name="Announcement of Level Crossing Non Protected set up"
  Guid="2acc5ed6-6351-4616-b91a-14c96f0f284f"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="b496fd05-c5fb-4edc-8069-e6986554fd42"
->
-<Actions>
-<Action
- Guid="c6ff123f-f8e9-4834-b612-06c894b33c75"
->DMI.MasterDMI().Out_LXStatusNotProtected.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>

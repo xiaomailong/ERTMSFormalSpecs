@@ -32,27 +32,6 @@
  Name="Initialize Environment"
  Guid="e80198e4-b627-4c98-9377-2bcc41d854d3"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="a0b7c632-3d6f-4a84-8cbd-333eca628b73"
->
-<Actions>
-<Action
- Guid="b7688e4b-b4dd-4ed9-81cb-1c8f2aa6e19e"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="f24d1bfe-e75c-4899-ae56-e1616486f92c"
-><Comment></Comment>
-Kernel.Mode &lt;- Default.Mode.UN</Action><Action
- Guid="b34e7f01-fd2a-4ddd-9fdc-b1e64b8a1af3"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="1edf5e7a-5572-4dd6-9db5-516acbf1d115"
->Kernel.Level.Value == Level.L0</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -62,19 +41,6 @@ Kernel.Mode &lt;- Default.Mode.UN</Action><Action
  Name="Change Level"
  Guid="2c1f72ba-5b1c-4e5b-b5c1-e0adb3fe7d11"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="1c8734ea-efb1-4eab-ac30-ebf3aeb8c092"
->
-<Comment></Comment>
-<Actions>
-<Action
- Guid="b89851f7-c63f-425f-a9b7-70c7f88a2bed"
->DMI.MasterDMI().Out_BrakeReason.Reason &lt;- Kernel.BrakeReason.DriverAckTimeOut</Action><Action
- Guid="1c2e1bd1-76d5-4bce-90bd-f8a11526b325"
->DMI.MasterDMI().Out_BrakeReason.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -84,16 +50,6 @@ Kernel.Mode &lt;- Default.Mode.UN</Action><Action
  Name="Disable Display Requested"
  Guid="0283938c-c52d-419a-97d0-922155cd1605"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="66c0f068-6fd4-4b03-a1c3-dafc95c4c8cc"
->
-<Actions>
-<Action
- Guid="3dd179a2-9378-41a1-aaa2-cc3c5489c975"
->DMI.MasterDMI().Out_BrakeReason.OutputInformation.DisplayRequested &lt;- Boolean.False</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>

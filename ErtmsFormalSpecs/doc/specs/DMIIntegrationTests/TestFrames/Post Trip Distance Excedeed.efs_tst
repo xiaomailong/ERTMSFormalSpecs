@@ -32,21 +32,6 @@
  Name="Initialize Environment"
  Guid="c0185bcc-fd71-471b-b695-d593618d006b"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="9943942c-9c97-4fdf-b328-a4c08770ae8b"
->
-<Actions>
-<Action
- Guid="228adbbc-c074-4479-a379-33d10ab30c30"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="888db725-b45e-4599-8334-871b713a0bcc"
-><Comment></Comment>
-Kernel.Mode &lt;- Default.Mode.FS</Action><Action
- Guid="d6559931-e12b-4bc0-9beb-ed6f873d2631"
->Kernel.Level.Value &lt;- Default.Level.L1</Action></Actions>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -56,18 +41,6 @@ Kernel.Mode &lt;- Default.Mode.FS</Action><Action
  Name="Set IsActive In Post Trip Distance Exceded"
  Guid="4448bbf2-1051-4fef-81f7-927354379b81"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="ef0fdb21-f0bc-46c2-be54-9bef2fb6ace9"
->
-<Actions>
-<Action
- Guid="ca550f64-5d5a-4873-826c-f0e5857a0d38"
->DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.DisplayRequested &lt;- True</Action><Action
- Guid="713d487f-4157-4a82-bb15-16d5585417af"
->DMI.MasterDMI().In_AcknForPostTripDistanceExceeded.IsActive &lt;- True</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>

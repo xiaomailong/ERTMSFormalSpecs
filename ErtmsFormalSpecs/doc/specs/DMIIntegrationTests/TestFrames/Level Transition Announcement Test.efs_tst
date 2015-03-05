@@ -32,28 +32,6 @@
  Name="Initialize Environment"
  Guid="24fce8f1-9ff6-41ea-ab70-09f2c703fdb4"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="cfa03f67-a8eb-49d3-bf3e-b71be02f0554"
->
-<Actions>
-<Action
- Guid="428ac6b1-40ea-4cdf-b8ed-cd89c7552d9b"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="1172b6dc-47fa-4e9a-b11b-98ba83b13a76"
->Kernel.Level.Value &lt;- Default.Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="4c7382e7-6013-470b-901a-be792af1e110"
->Kernel.Level.Value == Level.L0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="8ab7f328-e0fe-4803-aeb2-7fdda197e02d"
->Kernel.Mode != Mode.SB</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -63,18 +41,6 @@
  Name="Set the Input Level Trnasition Announcment"
  Guid="a12df6e7-66c1-4d80-868a-bb74b9768e92"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="61604e24-d15d-4ad0-8113-3df6b171d861"
->
-<Actions>
-<Action
- Guid="eb10ebe5-43ba-4e9f-a388-e75f71412e19"
->DMI.MasterDMI().In_AcknOfLevelTransition.Level &lt;- Default.Level.L1</Action><Action
- Guid="20119017-9289-4396-8cd4-296c759d3f07"
->DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence><SubSequence
@@ -95,7 +61,6 @@
  Name="Set Output Parameters for Level Transition Announcement"
  Guid="b3b127cd-ab11-4b10-96cf-75f591193a11"
 >
-<Comment></Comment>
 <Steps>
 <Step
  IO="NA"
@@ -106,28 +71,6 @@
  Name="Initialize Environment"
  Guid="47eb7dd4-42d0-45aa-9a13-88d9d058134a"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="4882455e-4551-476e-9f51-c65920b82a02"
->
-<Actions>
-<Action
- Guid="2e2a293f-b92d-4451-9cc8-d050ddef99cf"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="e2e6698b-9421-4eda-a21e-5df56adc1035"
->Kernel.Level.Value &lt;- Default.Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="1f595ac2-ea27-4e47-8cbb-79ea515f7f48"
->Kernel.Level.Value == Level.L0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="0a2f8997-d10d-452a-81b6-ee96af524faa"
->Kernel.Mode != Mode.SB</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -137,18 +80,6 @@
  Name="Set the Output Level Trnasition Announcment"
  Guid="711a41c1-7167-4a7d-bf7f-b22a215fab42"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="acb09c30-c646-425e-8764-d4a2f5d6b226"
->
-<Actions>
-<Action
- Guid="5f0d0e05-d9f5-4f1e-bd3f-ac7f78a3cd4c"
->DMI.MasterDMI().Out_LevelTransitionAnnouncement.Level &lt;- Default.Level.L1</Action><Action
- Guid="afcc99f0-ac01-43f0-9337-96fbb1a65777"
->DMI.MasterDMI().Out_LevelTransitionAnnouncement.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>

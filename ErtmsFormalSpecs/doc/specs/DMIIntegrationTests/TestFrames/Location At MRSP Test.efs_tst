@@ -32,20 +32,6 @@
  Name="Initialize Environment"
  Guid="a0ed4673-ef60-4d20-ad9b-995869ac8999"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="182c9cc2-9025-413a-968b-3591c7e43e65"
->
-<Actions>
-<Action
- Guid="3007b826-e64e-4eda-9d4d-9bf5326bb72d"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="3f367f67-d1d1-42a5-bbe1-4c01d8c26eb1"
->Kernel.Level.Value &lt;- Default.Level.L1</Action><Action
- Guid="00676d94-c2ea-4cdd-9930-6ede4ce5633c"
->Kernel.Mode &lt;- Default.Mode.FS</Action></Actions>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -55,25 +41,6 @@
  Name="Set Location for the MRSP"
  Guid="83398793-d893-476f-b649-ae41b4930e8b"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="f76def67-4d8a-4566-be64-0cdbcd73c994"
->
-<Actions>
-<Action
- Guid="8679fb52-9689-4342-aaca-b134cbc91dfc"
->Kernel.IndicationLocationAtMrspSpeed &lt;- 1500.0</Action><Action
- Guid="4f588754-5939-4152-ae59-d14f8a7952f8"
-><Comment></Comment>
-DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="f1022477-2dec-4f84-93c5-2830f62e828b"
->DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.Location == 1500.0</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>

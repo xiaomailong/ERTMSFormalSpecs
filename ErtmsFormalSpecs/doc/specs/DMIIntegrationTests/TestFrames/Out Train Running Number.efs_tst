@@ -32,28 +32,6 @@
  Name="Initialize Environment"
  Guid="79ba8b25-d215-4fed-a73a-d5f66bb14e92"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="6152d976-282b-4c03-ae26-ab4e42453a64"
->
-<Actions>
-<Action
- Guid="92797af3-c3cd-4251-a635-4a077d4a1248"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="cc5f722a-2322-4683-adc0-4b2284b2db7f"
->Kernel.Level.Value &lt;- Level.L0</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="06dce0cb-ad3a-4756-98b8-4107d8ffdc4a"
->Kernel.Level.Value == Level.L0</Expectation><Expectation
- Kind="Instantaneous"
- DeadLine="1"
- Guid="fd0e36fe-285b-45a2-8790-f05dda365e7e"
->Kernel.Mode != Mode.SB</Expectation></Expectations>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -63,16 +41,6 @@
  Name="Set Train Running Number Requested"
  Guid="058f00e4-5952-486b-900d-dc88d0834463"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="92a00252-58df-48c9-b7cc-cf8d92bf13b1"
->
-<Actions>
-<Action
- Guid="05abc5d5-0f0c-4fff-a89c-1f1786dd5634"
->DMI.MasterDMI().Out_TrainRunningNumber.OutputInformation.DisplayRequested &lt;- Boolean.True</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>

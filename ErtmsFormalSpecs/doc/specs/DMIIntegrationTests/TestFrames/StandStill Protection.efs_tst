@@ -32,18 +32,6 @@
  Name="Initialize Environment"
  Guid="c2284ed0-0adc-4e5e-a01c-81b7e6fd2d68"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="6d2e8c86-5148-4474-9a21-f0f924eb53fe"
->
-<Actions>
-<Action
- Guid="674b0b17-b5e5-4df9-bd9b-a3bd838aaaaf"
->Kernel.InitializeTestEnvironment()</Action><Action
- Guid="faaf4818-8ed4-4d59-8731-7ce3f7d3ddf6"
->Kernel.Level.Value &lt;- Level.L1</Action></Actions>
-</SubStep></SubSteps>
 </Step><Step
  IO="NA"
  LevelIN="NA"
@@ -53,18 +41,6 @@
  Name="Set Display Requested and IsActive"
  Guid="e2cac6e1-dc6d-450d-92d2-fbe869e4ff6f"
 >
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="203e9be8-a199-470d-8743-e08b88794cca"
->
-<Actions>
-<Action
- Guid="3598534e-0aa8-418e-bce3-b04d252a3db2"
->DMI.MasterDMI().In_AcknForStandstillSupervision.IsActive &lt;- True</Action><Action
- Guid="e1403dc2-7cc6-40e5-9c83-3aefe7db3a08"
->DMI.MasterDMI().In_AcknForStandstillSupervision.InputInformation.DisplayRequested &lt;- True</Action></Actions>
-</SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
 </SubSequence></SubSequences>
