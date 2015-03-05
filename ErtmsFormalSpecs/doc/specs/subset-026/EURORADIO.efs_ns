@@ -8743,7 +8743,12 @@ Kernel.MA.MATimers.LOATimerStart &lt;- Default.MessageTypes.TimeResolution( time
  Name="Train has not reached stop location"
  Guid="906d528d-1a88-4d5d-8ab4-4532dd386338"
 >
-<Comment>If the train has not yet reached the stop location defined in the message, the stop location is the new EOA and SvL</Comment>
+<ReqRef
+ Id="f40c3edb-de6e-4b83-98fc-97be15c1f7a3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b566403b-039c-48c5-a295-e471c0eb7220"
+>
+</ReqRef><Comment>If the train has not yet reached the stop location defined in the message, the stop location is the new EOA and SvL</Comment>
 <PreConditions>
 <PreCondition
  Guid="b45902ce-1ad5-4544-b07a-efd3ce8b7857"
@@ -8755,7 +8760,9 @@ Default.MessageTypes.QScaleDistance(
 <Actions>
 <Action
  Guid="13e508f8-8fd5-4eab-af3b-ebd073c96e70"
->Kernel.AddEmergencyStop( aMessage )</Action></Actions>
+>Kernel.AddEmergencyStop( aMessage )</Action><Action
+ Guid="0c732be4-110b-4fc8-97df-216421d855ca"
+>Kernel.HandlingOfAcceptedAndStoredInformation.ConditionalEmergencyStopExecuted &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Train has passed stop location"

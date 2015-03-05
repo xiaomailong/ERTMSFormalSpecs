@@ -15,6 +15,7 @@
  Default=""
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="SituationA"
  Guid="1f3852ca-e3cf-49bb-9019-cbaadf53f105"
 >
@@ -29,7 +30,7 @@
  Name="Value"
  Guid="2a16ff07-f029-4e9d-91ba-f246870e03a5"
 >
-<Expression>False</Expression>
+<Expression>ConditionalEmergencyStopExecuted</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -184,8 +185,7 @@ Odometry.TrainIsAtStandstill()</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
- X="360"
- Y="80"
+ Y="60"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -558,8 +558,7 @@ SituationN()</Expression>
 </Function></Functions>
 <Procedures>
 <Procedure
- X="690"
- Y="140"
+ Y="490"
  Width="100"
  Height="50"
  Name="HandleInformation"
@@ -4454,6 +4453,24 @@ SituationN()</Expression>
  Guid="4215eaac-6f12-4a92-9cf3-4bb5b4e54e41"
 >
 </ReqRef><Comment>Indicates if the RAMS supervision function led to the appliaction of the service brake.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue=""
+ VariableMode="Internal"
+ X="550"
+ Y="350"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="ConditionalEmergencyStopExecuted"
+ Guid="52690da7-f8a6-40cc-bb11-0821a474dd9e"
+>
+<ReqRef
+ Id="f40c3edb-de6e-4b83-98fc-97be15c1f7a3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a81a37df-2563-4e4c-bb81-daf6e65c6b20"
+>
+</ReqRef><Comment>Indicates if a conditional emergency stop was executed.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -4525,7 +4542,19 @@ SituationN()</Expression>
  Guid="a4f7b2c0-61dc-4d2e-be64-f3684558c166"
 >SvLShiftedDueToOverlapTimeout &lt;- False</Action><Action
  Guid="bf009d04-a2a8-4914-a446-bca8f239ca0f"
->DeskClosedDuringSoM &lt;- False</Action></Actions>
+>DeskClosedDuringSoM &lt;- False</Action><Action
+ Guid="4d99b600-56bd-4b0b-989d-d1944327dc9d"
+>ConditionalEmergencyStopExecuted &lt;- False</Action><Action
+ Guid="85896615-37b4-4870-acc2-7fccf947ee9d"
+>EndSectionTimeOutShortensMA &lt;- False</Action><Action
+ Guid="d420b051-cde5-4f8c-b71c-e31e54b98704"
+>LinkedBGInconsistency_NoLinking &lt;- False</Action><Action
+ Guid="c7e4f4c5-2044-4654-bdea-5f654871b2f5"
+>RAMSSupervisionFunctionLedToServiceBrake &lt;- False</Action><Action
+ Guid="8f35ab3a-1717-4e8b-a52f-6fb50682552d"
+>SectionTimeOutShortensMA &lt;- False</Action><Action
+ Guid="6bef8ff1-3031-429b-9857-dfc77494f571"
+>UnlinkedBGInconsistency &lt;- False</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
