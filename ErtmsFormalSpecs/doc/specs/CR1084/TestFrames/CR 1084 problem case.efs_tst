@@ -41,7 +41,7 @@
 <Actions>
 <Action
  Guid="48efc257-ab1a-41c0-bced-60f4221fd096"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements for MA"
  Guid="76e85bd1-94fa-4516-812d-2a48473d8c44"
@@ -49,7 +49,7 @@
 <Actions>
 <Action
  Guid="7d59b900-fa6b-46b1-b564-41ae3828cd61"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Testing.InitializeElementsForMA()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step3 - Set LRBG at 0 distance"
  Guid="30ca4676-9b3f-4bbc-b737-8dc36cd7654e"
@@ -81,7 +81,7 @@
  Guid="3706d470-9a99-4cd5-9c56-9f5a00bf2e67"
 >Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
 [
-    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Distance =&gt; 0.0,
         BasicSpeed =&gt; 70.0,
@@ -90,7 +90,7 @@
         [
             
         ]
-    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Distance =&gt; 950.0,
         BasicSpeed =&gt; 50.0,
@@ -99,7 +99,7 @@
         [
             
         ]
-    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Distance =&gt; 1190.0,
         BasicSpeed =&gt; 30.0,
@@ -108,7 +108,7 @@
         [
             
         ]
-    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Distance =&gt; 2550.0,
         BasicSpeed =&gt; 70.0,
@@ -293,7 +293,7 @@
 <Actions>
 <Action
  Guid="5d33009f-811e-464f-85fb-5bd6f9dead9e"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements for MA"
  Guid="b27e333e-f9f7-42fa-adf4-a8ce326028f6"
@@ -301,7 +301,7 @@
 <Actions>
 <Action
  Guid="cf2c5af1-a99a-4eee-8cce-f192cbd790b4"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Testing.InitializeElementsForMA()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step3 - Set LRBG at 0 distance"
  Guid="8b90b454-4b8f-4934-9c60-e9b6780cf1ec"
@@ -349,7 +349,7 @@
  Guid="f7000ca8-6f0a-4227-aea1-09a76e72f3f1"
 >Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
 [
-    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Distance =&gt; 0.0,
         BasicSpeed =&gt; 200.0,
@@ -358,7 +358,7 @@
         [
             
         ]
-    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Distance =&gt; 2000.0,
         BasicSpeed =&gt; 160.0,
@@ -367,7 +367,7 @@
         [
             
         ]
-    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Distance =&gt; 2820.0,
         BasicSpeed =&gt; 90.0,
@@ -376,7 +376,7 @@
         [
             
         ]
-    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Distance =&gt; 5500.0,
         BasicSpeed =&gt; 200.0,
@@ -500,7 +500,7 @@
 <Actions>
 <Action
  Guid="1747548e-fb06-4ff4-841a-d60d81234f47"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements for MA"
  Guid="204494a8-8a9f-469b-a25d-61a8019ae0f3"
@@ -508,7 +508,7 @@
 <Actions>
 <Action
  Guid="5a8b90eb-20e9-4902-ba6d-d48c2445a352"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Testing.InitializeElementsForMA()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step3 - Set LRBG at 0 distance"
  Guid="be78d4a2-05ea-4698-a5ef-dc5401b32aec"
@@ -556,7 +556,7 @@
  Guid="81d91c30-de48-41f9-9fd0-8964a3e8fd93"
 >Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
 [
-    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Distance =&gt; 0.0,
         BasicSpeed =&gt; 200.0,
@@ -565,7 +565,7 @@
         [
             
         ]
-    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Distance =&gt; 3000.0,
         BasicSpeed =&gt; 60.0,
@@ -574,7 +574,7 @@
         [
             
         ]
-    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Distance =&gt; 6200.0,
         BasicSpeed =&gt; 200.0,
@@ -749,7 +749,7 @@
 <Actions>
 <Action
  Guid="79315133-c52c-4c2f-9fe0-4b914ec5136c"
->Kernel.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements for MA"
  Guid="4fb12348-5f7a-47c8-bcc9-8aef67e8078f"
@@ -757,7 +757,7 @@
 <Actions>
 <Action
  Guid="a8c2c8c0-c5ee-4aaf-80b8-15ef6aeca7ee"
->Kernel.MA.InitializeElementsForMA()</Action></Actions>
+>Testing.InitializeElementsForMA()</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step3 - Set LRBG at 0 distance"
  Guid="9303c7a7-fea0-4c69-b302-1696dbdabf88"
@@ -805,7 +805,7 @@
  Guid="557310ba-ed0f-4b77-9f9e-5042a2cbb654"
 >Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
 [
-    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Distance =&gt; 0.0,
         BasicSpeed =&gt; 200.0,
@@ -814,7 +814,7 @@
         [
             
         ]
-    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Distance =&gt; 3000.0,
         BasicSpeed =&gt; 60.0,
@@ -823,7 +823,7 @@
         [
             
         ]
-    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestriction
+    }, Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Distance =&gt; 6200.0,
         BasicSpeed =&gt; 200.0,
