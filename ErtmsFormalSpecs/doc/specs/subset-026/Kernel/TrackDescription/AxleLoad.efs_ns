@@ -1001,7 +1001,11 @@ ON
  Guid="939f739f-f106-4e5f-bcff-3b741b6f7ef6"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="1f34840e-6563-4de4-86f3-302807088bf7"
+>ASP != EMPTY
+  AND
+ASP.ALs != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c434b2e7-ef58-4e81-8c69-bb00823638aa"

@@ -2073,7 +2073,11 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
  Guid="4b68b186-b2b2-4e06-93a7-696d94aca789"
 >
 <PreConditions>
-</PreConditions>
+<PreCondition
+ Guid="b074177f-4a78-4787-b2aa-ca5cb98bede6"
+>SpeedRestrictionsProfile != EMPTY
+  AND
+SpeedRestrictionsProfile.SpeedRestrictions != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2a15c293-9048-4c8c-a66b-287ae23687cc"
