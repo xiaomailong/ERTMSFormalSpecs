@@ -796,6 +796,7 @@ SituationN()</Expression>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Handle Movement Authority"
  Guid="d5c1e5c8-ab2f-4fa1-8192-c47a1c73efc4"
@@ -804,6 +805,7 @@ SituationN()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the first category"
  Guid="e79aa5e9-2f9e-4d67-80a8-854b0838bd96"
 >
@@ -812,14 +814,31 @@ SituationN()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6847c58a-6e07-41dc-b3a2-8f2397bcc4b8"
 >
+</ReqRef><ReqRef
+ Id="8cd5d7d8-c20a-4927-9990-dacc4a577a3e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2166c31c-73d1-4137-906b-f98f5de950d3"
+>
+</ReqRef><ReqRef
+ Id="30be4546-3cd9-4150-b449-11c892121279"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9e99ddf4-8b67-4571-b4f9-4665179d1de2"
+>
 </ReqRef><Comment>Handles the information for the situations a, b, c, d, f and n.</Comment>
 <PreConditions>
 <PreCondition
  Guid="6dac0017-b57a-4c43-9f8d-40a4329ab633"
->FirstCategory()</PreCondition></PreConditions>
+>FirstCategory()</PreCondition><PreCondition
+ Guid="8dd50c78-9ee9-4287-a462-927914abfb8f"
+>MA.MA != EMPTY</PreCondition><PreCondition
+ Guid="17f2aee3-5be7-4e3d-b762-b92cc5ff2a0e"
+>MA.EndOfMA() &gt; SpecialCase1Location()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="0aa87062-5427-463d-8171-61d1920b9ef8"
+>MA.DeleteMABeyondLocation( aLocation =&gt; SpecialCase1Location() )</Action></Actions>
 </RuleCondition><RuleCondition
+ Implemented="TRUE"
  Name="Situations of the second category"
  Guid="23f9318a-4ff1-4127-b2f9-250059f4979d"
 >
@@ -828,13 +847,29 @@ SituationN()</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="140ea095-3e10-450b-b608-2df1b2ed1e99"
 >
+</ReqRef><ReqRef
+ Id="69c41e0d-de0a-4c0e-9b6d-32a32fdf13e2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="646ec16c-5b79-47f8-9172-e162a8b7042a"
+>
+</ReqRef><ReqRef
+ Id="9c58f727-8611-4480-b6d9-449cb2d8c602"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5ee66fd8-89b6-4a3b-a20c-c576c0f34da6"
+>
 </ReqRef><Comment>Handles the information for the situations e, g, h, i, j, l and m.</Comment>
 <PreConditions>
 <PreCondition
  Guid="eb0e8d31-241f-4e35-8fb1-648d95ff1436"
->SecondCategory()</PreCondition></PreConditions>
+>SecondCategory()</PreCondition><PreCondition
+ Guid="7af0b354-43e5-4c8a-b072-ee193cbd1973"
+>MA.MA != EMPTY</PreCondition><PreCondition
+ Guid="b6dac431-6fe2-4257-9485-3b893a13f227"
+>MA.EndOfMA() &gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max )</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="4aade0b0-f264-4a1c-b3e0-aea1c4beba3d"
+>MA.DeleteMABeyondLocation( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the third category"
@@ -1166,6 +1201,7 @@ SituationN()</Expression>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Handle STM system speed/distance"
  Guid="eef12547-09eb-4494-854f-a881db765676"
@@ -1174,6 +1210,7 @@ SituationN()</Expression>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Situations of the third category"
  Guid="3401ed43-da5e-4ca6-9bd5-69c344708b05"
 >
@@ -1188,7 +1225,13 @@ SituationN()</Expression>
  Guid="e9624e8a-1e32-48d3-a3c2-cff075c1a0e6"
 >ThirdCategory()</PreCondition></PreConditions>
 <Actions>
-</Actions>
+<Action
+ Guid="7bd8fd41-3448-4666-8497-1a1a275530ef"
+>STM.SystemSpeed.HasToBeSupervised &lt;- False</Action><Action
+ Guid="f4ab0943-edf8-4734-8123-26ba49b7a2cf"
+>STM.SystemSpeed.Distance &lt;- BaseTypes.Distance.Unknown</Action><Action
+ Guid="783969ee-ffe9-410a-909e-4e05a01eaadf"
+>STM.SystemSpeed.Speed &lt;- BaseTypes.Speed.NA</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the first category"
