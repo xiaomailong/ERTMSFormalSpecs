@@ -84,7 +84,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Functions>
 <Function
- Type="Kernel.MA.Section"
+ Type="Kernel.MA.SectionStruct"
  Default=""
  X="130"
  Y="200"
@@ -154,7 +154,7 @@ X.TimeOut.TimerStart + X.TimeOut.TimeOut &lt; DateAndTime.CurrentTime)</PreCondi
 )</PreCondition><PreCondition
  Guid="eb1eb2c2-ee01-4da8-95fb-684a3c9d0fcd"
 >Kernel.Level.Value.Value != Default.Level.L3</PreCondition></PreConditions>
-<Expression>Kernel.MA.Section{
+<Expression>Kernel.MA.SectionStruct{
     Length =&gt; MA.EndSection.Length,
     TimeOut =&gt; MA.EndSection.TimeOut
 }</Expression>

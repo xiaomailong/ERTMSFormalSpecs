@@ -464,7 +464,7 @@ IN Kernel.MA.ModeProfile.Profile</Action><Action
 {
     TargetSpeed =&gt; 0.0,
     Sections =&gt; [],
-    EndSection =&gt;Kernel.MA.EndSection
+    EndSection =&gt;Kernel.MA.EndSectionStruct
 {
         EndSectionTimeOut =&gt; Kernel.MA.MATimers.TimeOut
        {
@@ -477,12 +477,12 @@ IN Kernel.MA.ModeProfile.Profile</Action><Action
             Distance =&gt; 1000.0
         },
         Length =&gt; 1000.0,
-        DangerPoint =&gt; Kernel.MA.DangerPoint
+        DangerPoint =&gt; Kernel.MA.DangerPointStruct
         {
             Distance =&gt;10.0,
             ReleaseSpeed =&gt; 0.0
         },
-        Overlap =&gt; Kernel.MA.Overlap
+        Overlap =&gt; Kernel.MA.OverlapStruct
       {
             Distance =&gt; 0.0,
             TimerDistance =&gt; 0.0,

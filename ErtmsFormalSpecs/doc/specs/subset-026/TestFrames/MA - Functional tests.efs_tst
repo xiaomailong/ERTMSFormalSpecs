@@ -3388,7 +3388,7 @@ IN BTM.Linking.Linkings</Action></Actions>
     TargetSpeed =&gt; 30.0,
     TargetSpeedTimeOut =&gt; 200.0,
     Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection
+    EndSection =&gt; Kernel.MA.EndSectionStruct
     {
         EndSectionTimeOut =&gt; EMPTY,
         TimeOut =&gt; EMPTY,
@@ -3549,7 +3549,7 @@ IN BTM.Linking.Linkings</Action></Actions>
  Name="Step 3 - Receive a new MA from a balise with a closer SvL"
  Guid="831428fd-839d-4dc3-a352-c4f5e4c4e29c"
 >
-<Comment>Get a closer SvL from this new MA -&gt; test 3.8.5.1.3</Comment>
+<Comment>Get a closer SvL from this new MA -&gt; test 3.8.5.1.3.</Comment>
 <Description></Description>
 <SubSteps>
 <SubStep
@@ -3878,7 +3878,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 {
     TargetSpeed =&gt; 0.0,
     Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSection
+    EndSection =&gt; Kernel.MA.EndSectionStruct
     {
         EndSectionTimeOut =&gt; EMPTY,
         TimeOut =&gt; EMPTY,
@@ -4180,13 +4180,13 @@ BTM.Linking.Linkings</Action><Action
     TargetSpeed =&gt; 0.0,
 
     Sections =&gt; [
-        Kernel.MA.Section{
+        Kernel.MA.SectionStruct{
             Length =&gt; 400.0,
             TimeOut =&gt; EMPTY
          }
      ],
 
-    EndSection =&gt; Kernel.MA.EndSection{
+    EndSection =&gt; Kernel.MA.EndSectionStruct{
         EndSectionTimeOut =&gt; EMPTY,
         TimeOut =&gt; EMPTY,
         Length =&gt; 600.0,
