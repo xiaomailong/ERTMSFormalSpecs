@@ -869,7 +869,9 @@ SituationN()</Expression>
 <Actions>
 <Action
  Guid="4aade0b0-f264-4a1c-b3e0-aea1c4beba3d"
->MA.DeleteMABeyondLocation( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action></Actions>
+>MA.DeleteMABeyondLocation( aLocation =&gt; TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Max ) )</Action><Action
+ Guid="fec71c5e-4c7f-4c92-a955-f2af3f8e76c5"
+>MA.ConsiderFrontEndAsSvL &lt;- True</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Situations of the third category"

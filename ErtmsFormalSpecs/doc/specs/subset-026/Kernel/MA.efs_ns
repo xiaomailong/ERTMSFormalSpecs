@@ -3500,7 +3500,7 @@ IN
  Name="Wipe the old EOAs"
  Guid="d1dfb0e0-0c44-4739-ad7b-cfd327d528fc"
 >
-<Comment>The end of authority remains in application for as long as the conditions defining it remain, so the EOAs should be recalculated every cycle to ensure that they remain up-to date</Comment>
+<Comment>The end of authority remains in application for as long as the conditions defining it remain, so the EOAs should be recalculated every cycle to ensure that they remain up-to date.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3536,7 +3536,7 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4c91cf00-bd66-4e90-b320-7d489ff22b5d"
 >
-</ReqRef><Comment>If the route suitability conditions define an EOA, add it to the list &apos;EOAs&apos;</Comment>
+</ReqRef><Comment>If the route suitability conditions define an EOA, add it to the list &apos;EOAs&apos;.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3593,7 +3593,7 @@ IN EOAs</Action></Actions>
  Name="Mode profile EOA defined"
  Guid="1b9338c9-b013-49b9-9a10-c9bbbc7e933f"
 >
-<Comment>If the mode profile defines an EOA, it is added to the list</Comment>
+<Comment>If the mode profile defines an EOA, it is added to the list.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3627,7 +3627,7 @@ IN EOAs</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="970a020b-66a9-4606-9914-f20f74a55162"
 >
-</ReqRef><Comment>The start location of  a non protected level crossing with no stopping area shall be considered as both EOA and SvL until the train brakes to the LX permitted speed</Comment>
+</ReqRef><Comment>The start location of  a non protected level crossing with no stopping area shall be considered as both EOA and SvL until the train brakes to the LX permitted speed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3684,7 +3684,7 @@ ON
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="f485d1f4-cc12-44d2-b9f9-4cf8f01fbb58"
 >
-</ReqRef><Comment>If a section timer reaches the time-out vale, the EOA is withdrawn to the entry point of the revoked section</Comment>
+</ReqRef><Comment>If a section timer reaches the time-out vale, the EOA is withdrawn to the entry point of the revoked section.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3741,7 +3741,7 @@ IN EOAs</Action><Action
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="7b706042-9769-4d9c-98d4-7b90528a099e"
 >
-</ReqRef><Comment>If the end section timer vlue becomes greater than the time-out value</Comment>
+</ReqRef><Comment>If the end section timer vlue becomes greater than the time-out value.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3776,7 +3776,7 @@ IN EOAs</Action><Action
  Name="Sections are defined in the MA"
  Guid="64e84d24-7541-455b-b8bf-c6234f657b89"
 >
-<Comment>Standard EOA in the case when the MA has multiple sections</Comment>
+<Comment>Standard EOA in the case when the MA has multiple sections.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3807,7 +3807,7 @@ IN EOAs</Action></Actions>
  Name="No sections are defined in the MA"
  Guid="7777f16f-e92e-4374-9647-86584bd158e1"
 >
-<Comment>Standard EOA in the case where the MA only has one section</Comment>
+<Comment>Standard EOA in the case where the MA only has one section.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3834,10 +3834,44 @@ IN EOAs</Action></Actions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="Front end is considered as EOA"
+ Guid="fd78be9f-5ac6-41d2-b500-62e427e71e26"
+>
+<ReqRef
+ Id="9c58f727-8611-4480-b6d9-449cb2d8c602"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="426f05a7-47fe-4d12-8af1-75a84a6e655a"
+>
+</ReqRef><Comment>If the max estimated front end of the train is considered as an EOA, add it to the list.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Front end is considered as EOA"
+ Guid="882a04da-1ff9-4552-9843-401683b2e0fa"
+>
+<PreConditions>
+<PreCondition
+ Guid="ed6d4fe8-c935-48ee-835b-64ea1a9556ef"
+>ConsiderFrontEndAsSvL</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0ca8c3ac-eb32-4587-950a-61a181a36d35"
+>INSERT CreateTarget
+(
+    aSpeed =&gt; 0.0,
+    aLocation =&gt; TrainPosition.FrontEndPosition(PointOfInterest =&gt; DistanceInterval.Nom),
+    aLength =&gt; Default.BaseTypes.Length.Infinity
+ )
+IN EOAs</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="No EOA received"
  Guid="ae6b3e38-8dd5-460c-8ad5-2b102ea9030a"
 >
-<Comment>If there are no EOAs defined on-board, generate a virtual one at infinity</Comment>
+<Comment>If there are no EOAs defined on-board, generate a virtual one at infinity.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3912,7 +3946,7 @@ IN EOAs</Action></Actions>
  Name="Wipe the old SvLs"
  Guid="9fb13f00-bc38-439d-8cf4-92fc814ccce5"
 >
-<Comment>Deletes the previous SvLs. The location of the previous SvL has been saved in ShorteningHandler for comparison</Comment>
+<Comment>Deletes the previous SvLs. The location of the previous SvL has been saved in ShorteningHandler for comparison.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3933,7 +3967,7 @@ IN EOAs</Action></Actions>
  Name="MakeSvLs"
  Guid="c99a0d2f-7892-4169-a275-6b01cb25ef22"
 >
-<Comment>Put all the different SvLs into the collection</Comment>
+<Comment>Put all the different SvLs into the collection.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3952,7 +3986,7 @@ IN EOAs</Action></Actions>
  Name="Route suitability SvL defined"
  Guid="61e6b7c2-b5bf-4299-9feb-a6acf9331eb0"
 >
-<Comment>If the route suitability conditions define a SvL, add it to the list</Comment>
+<Comment>If the route suitability conditions define a SvL, add it to the list.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -3986,7 +4020,7 @@ IN SvLs</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="14339948-605f-42f8-8b4a-84039382f4ae"
 >
-</ReqRef><Comment>If there is an overlap without danger point, that is the SvL</Comment>
+</ReqRef><Comment>If there is an overlap without danger point, that is the SvL.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4016,7 +4050,7 @@ IN SvLs</Action></Actions>
  Name="Mode Profile SvL defined"
  Guid="2f7536e1-df41-45eb-b4e0-eb52f6bd8bfe"
 >
-<Comment>If the mode profile defines a SvL, add it to the list</Comment>
+<Comment>If the mode profile defines a SvL, add it to the list.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4050,7 +4084,7 @@ IN SvLs</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="2788831c-f6fa-4e98-8072-426c4fe4f606"
 >
-</ReqRef><Comment>If a section timer reaches the time-out vale, the SvL is withdrawn to the entry point of the revoked section</Comment>
+</ReqRef><Comment>If a section timer reaches the time-out vale, the SvL is withdrawn to the entry point of the revoked section.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4088,7 +4122,7 @@ IN SvLs</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="016b2cee-fc07-4e2c-908e-707833067147"
 >
-</ReqRef><Comment>The start location of  a non protected level crossing with no stopping area shall be considered as both EOA and SvL until the train brakes to the LX permitted speed</Comment>
+</ReqRef><Comment>The start location of  a non protected level crossing with no stopping area shall be considered as both EOA and SvL until the train brakes to the LX permitted speed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4130,7 +4164,7 @@ ON
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="b69c8549-e51a-4267-8d61-3c044ef01a8e"
 >
-</ReqRef><Comment>If the MA includes a danger point, that is the SvL</Comment>
+</ReqRef><Comment>If the MA includes a danger point, that is the SvL.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4173,7 +4207,7 @@ IN SvLs</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="984f8361-e08f-4f3f-b4a1-d30484c137b2"
 >
-</ReqRef><Comment>If the MA has an end of authority, that it the SvL</Comment>
+</ReqRef><Comment>If the MA has an end of authority, that it the SvL.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -4195,6 +4229,40 @@ IN SvLs</Action></Actions>
  Guid="3bf7458d-7f9b-4188-94f9-8c6a0c847b12"
 >INSERT CreateTarget(
     aLocation =&gt; ClosestEOA().Location,
+    aSpeed =&gt; 0.0,
+    aLength =&gt; BaseTypes.Length.Infinity
+)
+IN SvLs</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Max front end is considered as SvL"
+ Guid="4c7f5ec1-20db-472f-9206-902da544414b"
+>
+<ReqRef
+ Id="9c58f727-8611-4480-b6d9-449cb2d8c602"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a1b37a11-a3f5-43a1-b1e7-faa544f048db"
+>
+</ReqRef><Comment>If the max safe front end of the train is considered as an SvL, add it to the list.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Max front end is considered as SvL"
+ Guid="f7bdd28f-8002-462f-9f3c-c0bba0e19d6f"
+>
+<PreConditions>
+<PreCondition
+ Guid="05b6ef3d-3aa7-4d5b-884d-f00e35cace43"
+>ConsiderFrontEndAsSvL</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="e2daa208-d946-48f2-847f-7b8520a169b7"
+>INSERT CreateTarget
+(
+    aLocation =&gt; TrainPosition.FrontEndPosition(PointOfInterest =&gt; DistanceInterval.Max)
     aSpeed =&gt; 0.0,
     aLength =&gt; BaseTypes.Length.Infinity
 )
@@ -4666,6 +4734,22 @@ IN MA.Sections</Action><Action
  Guid="ff3b50f9-1e06-4425-947f-9193f2285c92"
 >
 </ReqRef><Comment>Indicates if the MA was accepted. Used to determine if the corresponding mode profile can be accepted.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue=""
+ VariableMode="Internal"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="ConsiderFrontEndAsSvL"
+ Guid="4f532e74-1578-447a-926d-a16efee86575"
+>
+<ReqRef
+ Id="9c58f727-8611-4480-b6d9-449cb2d8c602"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5fc6bf05-3c91-4a93-a067-e93103f0e193"
+>
+</ReqRef><Comment>Indicates if the current estimated front end and max safe front end positions of the train are considered as the EOA and SvL respectively, with no release speed.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
