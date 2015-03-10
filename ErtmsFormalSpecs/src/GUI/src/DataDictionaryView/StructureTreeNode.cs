@@ -16,6 +16,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary.Types;
 
@@ -32,6 +33,16 @@ namespace GUI.DataDictionaryView
                 : base()
             {
             }
+
+            /// <summary>
+            /// Indicates that the req related item does not need to be attached to a requirement
+            /// </summary>
+            [Category("Description")]
+            public bool IsAbstract
+            {
+                get { return Item.IsAbstract; }
+                set { Item.IsAbstract = value; }
+            }
         }
 
         private NameSpaceTreeNode types
@@ -39,10 +50,12 @@ namespace GUI.DataDictionaryView
             get { return Parent.Parent as NameSpaceTreeNode; }
         }
 
-        private RulesTreeNode rules;
+        private InterfacesTreeNode interfaces;
         private StructureElementsTreeNode elements;
-        private StructureStateMachinesTreeNode stateMachines;
         private StructureProceduresTreeNode procedures;
+        private StructureStateMachinesTreeNode stateMachines;
+        private RulesTreeNode rules;
+        
 
         /// <summary>
         /// Constructor
@@ -72,13 +85,16 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            rules = new RulesTreeNode(Item, buildSubNodes);
+            interfaces = new InterfacesTreeNode(Item, buildSubNodes);
             elements = new StructureElementsTreeNode(Item, buildSubNodes);
             procedures = new StructureProceduresTreeNode(Item, buildSubNodes);
             stateMachines = new StructureStateMachinesTreeNode(Item, buildSubNodes);
+            rules = new RulesTreeNode(Item, buildSubNodes);
+            
+            Nodes.Add(interfaces);
+            Nodes.Add(elements);
             Nodes.Add(procedures);
             Nodes.Add(stateMachines);
-            Nodes.Add(elements);
             Nodes.Add(rules);
         }
 
@@ -91,9 +107,20 @@ namespace GUI.DataDictionaryView
             return new ItemEditor();
         }
 
-        public void AddStructureElement(StructureElement element)
+        private void AddInterfaceHandler(object sender, EventArgs args)
         {
-            elements.AddElement(element);
+            if (interfaces != null)
+            {
+                interfaces.AddHandler(sender, args);
+            }
+        }
+
+        private void AddStructureElementHandler(object sender, EventArgs args)
+        {
+            if (elements != null)
+            {
+                elements.AddHandler(sender, args);
+            }
         }
 
         private void AddProcedureHandler(object sender, EventArgs args)
@@ -104,11 +131,11 @@ namespace GUI.DataDictionaryView
             }
         }
 
-        private void AddStructureElementHandler(object sender, EventArgs args)
+        private void AddStateMachineHandler(object sender, EventArgs args)
         {
-            if (elements != null)
+            if (stateMachines != null)
             {
-                elements.AddStructureElementHandler(sender, args);
+                stateMachines.AddHandler(sender, args);
             }
         }
 
@@ -121,8 +148,10 @@ namespace GUI.DataDictionaryView
             List<MenuItem> retVal = new List<MenuItem>();
 
             MenuItem newItem = new MenuItem("Add...");
-            newItem.MenuItems.Add(new MenuItem("Procedure", new EventHandler(AddProcedureHandler)));
+            newItem.MenuItems.Add(new MenuItem("Interface", new EventHandler(AddInterfaceHandler)));
             newItem.MenuItems.Add(new MenuItem("Structure element", new EventHandler(AddStructureElementHandler)));
+            newItem.MenuItems.Add(new MenuItem("Procedure", new EventHandler(AddProcedureHandler)));
+            newItem.MenuItems.Add(new MenuItem("State machine", new EventHandler(AddStateMachineHandler)));
             retVal.Add(newItem);
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
             retVal.AddRange(base.GetMenuItems());

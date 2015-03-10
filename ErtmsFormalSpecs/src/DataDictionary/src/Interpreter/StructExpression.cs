@@ -186,6 +186,10 @@ namespace DataDictionary.Interpreter
             Structure structureType = Structure.GetExpressionType() as Structure;
             if (structureType != null)
             {
+                if(structureType.IsAbstract)
+                {
+                    AddError("Instantiation of abstract types is forbidden");
+                }
                 foreach (KeyValuePair<Designator, Expression> pair in Associations)
                 {
                     Designator name = pair.Key;
@@ -214,6 +218,10 @@ namespace DataDictionary.Interpreter
                         else
                         {
                             AddError("Expression " + expression.ToString() + " type cannot be found");
+                        }
+                        if(type.IsAbstract)
+                        {
+                            AddError("Instantiation of abstract types is forbidden");
                         }
                     }
                     else

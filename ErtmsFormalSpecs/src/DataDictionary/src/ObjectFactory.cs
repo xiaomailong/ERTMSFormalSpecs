@@ -377,6 +377,15 @@ namespace DataDictionary
             return retVal;
         }
 
+        public override StructureRef createStructureRef()
+        {
+            StructureRef retVal = new Types.StructureRef();
+
+            DefaultValueSetter.visit(retVal);
+
+            return retVal;
+        }
+
         public override Collection createCollection()
         {
             Collection retVal = new Types.Collection();

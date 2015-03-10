@@ -438,6 +438,10 @@ namespace DataDictionary
                                 variable.AddWarning("Invalid mode for " + element.Name);
                             }
                         }
+                        if(structure.IsAbstract)
+                        {
+                            variable.AddError("Instantiation of abstract types is forbidden");
+                        }
                     }
                 }
                 if (Utils.Utils.isEmpty(variable.Comment) && variable.Type != null && Utils.Utils.isEmpty(variable.Type.Comment))
@@ -480,6 +484,10 @@ namespace DataDictionary
                                 element.AddWarning("Invalid mode for " + subElement.Name);
                             }
                         }
+                        if (elementType.IsAbstract)
+                        {
+                            element.AddError("Instantiation of abstract types is forbidden");
+                        }
                     }
                     if (!Utils.Utils.isEmpty(element.getDefault()))
                     {
@@ -514,6 +522,29 @@ namespace DataDictionary
                 {
                     subElements.Add(element.Name, element);
                 }
+            }
+        }
+
+        public override void visit(Generated.StructureRef obj, bool visitSubNodes)
+        {
+            bool errorDetected = true;
+
+            Structure enclosingStructure = obj.Enclosing as Structure;
+            if (enclosingStructure != null)
+            {
+                Structure structure = Dictionary.EFSSystem.findType(enclosingStructure.NameSpace, obj.Name) as Structure;
+                if (structure != null)
+                {
+                    if (structure.IsAbstract)
+                    {
+                        errorDetected = false;
+                    }
+                }
+            }
+
+            if(errorDetected)
+            {
+                obj.AddError("Referenced interface not found");
             }
         }
 

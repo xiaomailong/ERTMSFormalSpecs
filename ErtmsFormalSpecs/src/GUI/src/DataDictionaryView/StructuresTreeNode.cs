@@ -97,71 +97,6 @@ namespace GUI.DataDictionaryView
             return retVal;
         }
 
-        public void AddCustomHandler(object sender, EventArgs args)
-        {
-            CustomProcedure customProcedure = new CustomProcedure("Structure", CreateCustomStructure);
-            customProcedure.ShowDialog();
-        }
-
-        public void CreateCustomStructure(CustomProcedure.DMIProcedureConfig aConfig)
-        {
-            switch (aConfig.Type)
-            {
-                case (CustomProcedure.CustomProcedureType.DMI_In):
-                {
-                    AddDMIInStructure(aConfig);
-                    break;
-                }
-                case (CustomProcedure.CustomProcedureType.DMI_Out):
-                {
-                    AddDMIOutStructure(aConfig);
-                    break;
-                }
-                default:
-                {
-                    break;
-                }
-            }
-        }
-
-
-        private void AddDMIInStructure(CustomProcedure.DMIProcedureConfig aConfig)
-        {
-            Structure aStructure = (Structure) acceptor.getFactory().createStructure();
-            aStructure.Name = aConfig.ProcedureName;
-            aStructure.NeedsRequirement = true;
-            Item.appendStructures(aStructure);
-            StructureTreeNode aStructureTreeNode = new StructureTreeNode(aStructure, true);
-            Nodes.Add(aStructureTreeNode);
-
-            StructureElement structElemIn = (StructureElement) acceptor.getFactory().createStructureElement();
-            structElemIn.Name = "InputInformation";
-            structElemIn.TypeName = "DMI.InputInformation";
-            structElemIn.Mode = acceptor.VariableModeEnumType.aIncoming;
-            aStructureTreeNode.AddStructureElement(structElemIn);
-
-            SortSubNodes();
-        }
-
-
-        private void AddDMIOutStructure(CustomProcedure.DMIProcedureConfig aConfig)
-        {
-            Structure aStructure = (Structure) acceptor.getFactory().createStructure();
-            aStructure.Name = aConfig.ProcedureName;
-            aStructure.NeedsRequirement = true;
-            Item.appendStructures(aStructure);
-            StructureTreeNode aStructureTreeNode = new StructureTreeNode(aStructure, true);
-            Nodes.Add(aStructureTreeNode);
-
-            StructureElement structElemIn = (StructureElement) acceptor.getFactory().createStructureElement();
-            structElemIn.Name = "OutputInformation";
-            structElemIn.TypeName = "DMI.OutputInformation";
-            structElemIn.Mode = acceptor.VariableModeEnumType.aIncoming;
-            aStructureTreeNode.AddStructureElement(structElemIn);
-
-            SortSubNodes();
-        }
-
         /// <summary>
         /// The menu items for this tree node
         /// </summary>
@@ -171,7 +106,6 @@ namespace GUI.DataDictionaryView
             List<MenuItem> retVal = new List<MenuItem>();
 
             retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
-            retVal.Add(new MenuItem("Add custom...", new EventHandler(AddCustomHandler)));
 
             return retVal;
         }

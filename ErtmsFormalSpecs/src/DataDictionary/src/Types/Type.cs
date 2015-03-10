@@ -111,6 +111,23 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        /// Indicates if the type is abstract
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool IsAbstract
+        {
+            get { return false; }
+            set
+            {
+                Structure aStructure = this as Structure;
+                if(aStructure != null)
+                {
+                    aStructure.IsAbstract = value;
+                }
+            }
+        }
+
+        /// <summary>
         /// Gets a value based on its image
         /// </summary>
         /// <param name="image"></param>
@@ -467,14 +484,30 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public virtual bool Match(Type otherType)
         {
+            bool result = false;
+
             if (otherType is AnyType)
             {
-                return true;
+                result = true;
             }
             else
             {
-                return this == otherType;
+                Structure structure = otherType as Structure;
+                if (structure != null)
+                {
+                    Structure currentStructure = this as Structure;
+                    if (currentStructure != null)
+                    {
+                        result = structure.ImplementedStructures.Contains(currentStructure);
+                    }
+                }
+                else
+                {
+                    result = this == otherType;
+                }
             }
+
+            return result;
         }
 
         /// <summary>

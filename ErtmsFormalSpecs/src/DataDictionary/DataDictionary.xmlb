@@ -430,7 +430,12 @@
       <FIELD NAME="Procedures"    REFTYPE="Procedure"/>
       <FIELD NAME="StateMachines" REFTYPE="StateMachine"/>
       <FIELD NAME="Rules"         REFTYPE="Rule"/>
+      <FIELD NAME="Interfaces"    REFTYPE="StructureRef"/>
+      <FIELD NAME="IsAbstract"    TYPE="BOOLEAN" />
     </FIELDS>
+    <ATTRIBUTES>
+      <ATTR NAME="IsAbstract" TARGET="IsAbstract" OPTIONAL="TRUE" DEFAULT="FALSE" />
+    </ATTRIBUTES>
     <FORMULA>
       <CONCAT>
         <ENCLOSED NAME="Rules" OPTIONAL="TRUE">
@@ -451,8 +456,19 @@
             <ELEMENTREF NAME="StateMachine" />
           </REPEAT>
         </ENCLOSED>
+        <ENCLOSED NAME="Interfaces" OPTIONAL="TRUE">
+          <REPEAT TARGET="Interfaces">
+            <ELEMENTREF NAME="StructureRef" />
+          </REPEAT>
+        </ENCLOSED>
       </CONCAT>
     </FORMULA>
+  </ELEMENT>
+
+  <!-- ------------------- -->
+  <!-- Structure Reference -->
+  <!-- ------------------- -->
+  <ELEMENT NAME="StructureRef" BASEELEMENT="Namable" BASECLASS="DataDictionary.Namable">
   </ELEMENT>
 
   <!-- ----------------- -->

@@ -80,6 +80,65 @@ namespace DataDictionary.Types
             }
         }
 
+        /// <summary>
+        /// Indicates if the structure is abstract
+        /// </summary>
+        public override bool IsAbstract
+        {
+            get { return getIsAbstract(); }
+            set { setIsAbstract(value); }
+        }
+
+        /// <summary>
+        /// Provides the list of implemented interfaces (not recursive)
+        /// </summary>
+        public List<Structure> Interfaces
+        {
+            get
+            {
+                List<Structure> result = new List<Structure>();
+                foreach (StructureRef structureRef in allInterfaces())
+                {
+                    result.Add(structureRef.ReferencedStructure);
+                }
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// Provides the list of implemented interfaces (not recursive)
+        /// </summary>
+        public List<StructureRef> InterfaceRefs
+        {
+            get
+            {
+                List<StructureRef> result = new List<StructureRef>();
+                foreach (StructureRef structureRef in allInterfaces())
+                {
+                    result.Add(structureRef);
+                }
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// Provides the recursive list of the interfaces implemented by the structure,
+        /// together with the structure itself
+        /// </summary>
+        public List<Structure> ImplementedStructures
+        {
+            get
+            {
+                List<Structure> result = new List<Structure>();
+                result.Add(this);
+                foreach(StructureRef structureRef in allInterfaces())
+                {
+                    result.AddRange(structureRef.ImplementedStructures);
+                }
+                return result;
+            }
+        }
+
         public void ClearCache()
         {
         }

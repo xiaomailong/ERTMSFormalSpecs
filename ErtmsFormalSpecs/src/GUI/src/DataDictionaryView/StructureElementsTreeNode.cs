@@ -64,7 +64,7 @@ namespace GUI.DataDictionaryView
             SortSubNodes();
         }
 
-        private void AddStructureElementHandler(object sender, EventArgs args)
+        public void AddHandler(object sender, EventArgs args)
         {
             StructureElement element = (StructureElement) acceptor.getFactory().createStructureElement();
             element.Name = "<Element" + (GetNodeCount(false) + 1) + ">";
@@ -79,7 +79,7 @@ namespace GUI.DataDictionaryView
         {
             List<MenuItem> retVal = new List<MenuItem>();
 
-            retVal.Add(new MenuItem("Add", new EventHandler(AddStructureElementHandler)));
+            retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
 
             return retVal;
         }
