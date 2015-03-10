@@ -139,6 +139,13 @@ namespace GUI.DataDictionaryView
             }
         }
 
+        private void GenerateInheritedFieldsHandler(object sender, EventArgs args)
+        {
+            Item.GenerateInheritedFields();
+            interfaces.Nodes.Clear();
+            interfaces.BuildSubNodes(false);
+        }
+
         /// <summary>
         /// The menu items for this tree node
         /// </summary>
@@ -154,6 +161,10 @@ namespace GUI.DataDictionaryView
             newItem.MenuItems.Add(new MenuItem("State machine", new EventHandler(AddStateMachineHandler)));
             retVal.Add(newItem);
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            if (Item.Interfaces.Count > 0)
+            {
+                retVal.Add(new MenuItem("Generate inherited fields", new EventHandler(GenerateInheritedFieldsHandler)));
+            }
             retVal.AddRange(base.GetMenuItems());
 
             return retVal;

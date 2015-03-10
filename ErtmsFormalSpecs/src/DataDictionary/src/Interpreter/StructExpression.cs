@@ -78,7 +78,7 @@ namespace DataDictionary.Interpreter
                 {
                     if (structureType != null)
                     {
-                        pair.Key.Ref = structureType.findStructureElement(pair.Key.Image);
+                        pair.Key.Ref = structureType.FindStructureElement(pair.Key.Image);
                         StaticUsage.AddUsage(pair.Key.Ref, Root, Usage.ModeEnum.Parameter);
                     }
 

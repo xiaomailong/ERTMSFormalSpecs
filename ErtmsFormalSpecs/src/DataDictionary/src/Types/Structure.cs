@@ -200,7 +200,7 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public StructureElement findStructureElement(string name)
+        public StructureElement FindStructureElement(string name)
         {
             return (StructureElement) INamableUtils.findByName(name, Elements);
         }
@@ -230,6 +230,13 @@ namespace DataDictionary.Types
         public override void AddModelElement(IModelElement element)
         {
             {
+                StructureRef item = element as StructureRef;
+                if (item != null)
+                {
+                    appendInterfaces(item);
+                }
+            }
+            {
                 StructureElement item = element as StructureElement;
                 if (item != null)
                 {
@@ -244,17 +251,17 @@ namespace DataDictionary.Types
                 }
             }
             {
-                Rule item = element as Rule;
-                if (item != null)
-                {
-                    appendRules(item);
-                }
-            }
-            {
                 StateMachine item = element as StateMachine;
                 if (item != null)
                 {
                     appendStateMachines(item);
+                }
+            }
+            {
+                Rule item = element as Rule;
+                if (item != null)
+                {
+                    appendRules(item);
                 }
             }
 
@@ -367,6 +374,39 @@ namespace DataDictionary.Types
         public override string getExplain()
         {
             return getExplain(0);
+        }
+
+        /// <summary>
+        /// Generates the fields from the interited interfaces, if they are missing
+        /// </summary>
+        public void GenerateInheritedFields()
+        {
+            foreach(Structure inheritedStructure in Interfaces)
+            {
+                foreach(StructureElement inheritedElement in inheritedStructure.Elements)
+                {
+                    StructureElement correspondingElement = null;
+                    foreach(StructureElement element in Elements)
+                    {
+                        if(element.Name.Equals(inheritedElement.Name))
+                        {
+                            correspondingElement = element;
+                            break;
+                        }
+                    }
+                    if(correspondingElement == null) // no correspondance found => create that element
+                    {
+                        appendElements(inheritedElement);
+                    }
+                    else  // correspondace found => update that element
+                    {
+                        correspondingElement.Type = inheritedElement.Type;
+                        correspondingElement.Mode = inheritedElement.Mode;
+                        correspondingElement.Default = inheritedElement.Default;
+                        correspondingElement.Comment = inheritedElement.Comment;
+                    }
+                }
+            }
         }
     }
 }

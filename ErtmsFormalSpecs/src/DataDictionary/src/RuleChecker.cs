@@ -494,6 +494,33 @@ namespace DataDictionary
                         checkExpression(element, element.getDefault());
                     }
                 }
+                foreach(Types.Structure implementedStructure in structure.Interfaces)
+                {
+                    foreach(Types.StructureElement implementedElement in implementedStructure.Elements)
+                    {
+                        bool elementFound = false;
+                        foreach(Types.StructureElement element in structure.Elements)
+                        {
+                            if(element.Name.Equals(implementedElement.Name))
+                            {
+                                elementFound = true;
+                                if(element.Type != implementedElement.Type)
+                                {
+                                    structure.AddError("The type of element " + element.Name + " (" + element.TypeName + ") does not correspond to the type of the implemented element (" + implementedElement.TypeName + ")");
+                                }
+                                if(element.Mode != implementedElement.Mode)
+                                {
+                                    structure.AddError("The mode of element " + element.Name + " (" + element.Mode + ") does not correspond to the type of the implemented element (" + implementedElement.Mode + ")");
+                                }
+                                break;
+                            }
+                        }
+                        if(elementFound == false)
+                        {
+                            structure.AddError("Inherited member " + implementedElement.Name + " from interface " + implementedStructure.Name + " is not implemented");
+                        }
+                    }
+                }
             }
 
             checkSubElementNames(structure);
