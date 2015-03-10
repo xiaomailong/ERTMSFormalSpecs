@@ -82,7 +82,7 @@ namespace GUI.IPCInterface.Values
 
                 foreach (KeyValuePair<string, Value> pair in Value)
                 {
-                    StructureElement element = structureType.findStructureElement(pair.Key);
+                    StructureElement element = structureType.FindStructureElement(pair.Key);
                     if (element != null)
                     {
                         Variable variable = (Variable) acceptor.getFactory().createVariable();

@@ -191,7 +191,7 @@ namespace DataDictionary.Values
         /// <param name="val"></param>
         public void set(IVariable variable)
         {
-            StructureElement element = Structure.findStructureElement(variable.Name);
+            StructureElement element = Structure.FindStructureElement(variable.Name);
 
             if (element != null)
             {
