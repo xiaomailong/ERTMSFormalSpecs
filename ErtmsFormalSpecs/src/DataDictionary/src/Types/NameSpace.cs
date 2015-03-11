@@ -584,7 +584,7 @@ namespace DataDictionary.Types
         {
             string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
-            retVal += TextualExplainUtilities.Pad("{{\\b NAMESPACE} " + Name, indentLevel);
+            retVal += TextualExplainUtilities.Pad("{\\b NAMESPACE} " + Name, indentLevel);
 
             return retVal;
         }

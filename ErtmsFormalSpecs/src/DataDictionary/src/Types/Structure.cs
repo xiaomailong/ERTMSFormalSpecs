@@ -334,22 +334,73 @@ namespace DataDictionary.Types
         {
             string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
-            retVal += TextualExplainUtilities.Pad("{\\b STRUCTURE }" + Name + " \\par ", indentLevel);
+            if (!IsAbstract)
+            {
+                retVal += TextualExplainUtilities.Pad("{\\b STRUCTURE }" + Name + " \\par ", indentLevel);
+            }
+            else
+            {
+                retVal += TextualExplainUtilities.Pad("{\\b INTERFACE }" + Name + " \\par ", indentLevel);
+            }
             foreach (StructureElement element in Elements)
             {
-                retVal += element.getExplain(indentLevel + 2) + "\\par ";
+                if (StructureElementIsInherited(element))
+                {
+                    retVal += "\\i" + element.getExplain(indentLevel + 2) + "\\i0\\par ";
+                }
+                else
+                {
+                    retVal += element.getExplain(indentLevel + 2) + "\\par ";
+                }
             }
 
             retVal += "\\par ";
             retVal += TextualExplainUtilities.Comment("-------------------", indentLevel + 2);
-            retVal += TextualExplainUtilities.Comment("Procedures", indentLevel + 2);
+            retVal += TextualExplainUtilities.Comment("Implemented interfaces", indentLevel + 2);
             retVal += TextualExplainUtilities.Comment("-------------------", indentLevel + 2);
-            foreach (Procedure procedure in Procedures)
+            foreach (Structure structure in Interfaces)
             {
-                retVal += procedure.getExplain(indentLevel + 2, false) + "\\par ";
+                retVal += structure.Name + "\\par ";
                 retVal += "\\par ";
             }
-            retVal += TextualExplainUtilities.Pad("{\\b END STRUCTURE }", indentLevel);
+
+            if (!IsAbstract)
+            {
+                retVal += "\\par ";
+                retVal += TextualExplainUtilities.Comment("-------------------", indentLevel + 2);
+                retVal += TextualExplainUtilities.Comment("Procedures", indentLevel + 2);
+                retVal += TextualExplainUtilities.Comment("-------------------", indentLevel + 2);
+                foreach (Procedure procedure in Procedures)
+                {
+                    retVal += procedure.getExplain(indentLevel + 2, false) + "\\par ";
+                    retVal += "\\par ";
+                }
+
+                retVal += "\\par ";
+                retVal += TextualExplainUtilities.Comment("-------------------", indentLevel + 2);
+                retVal += TextualExplainUtilities.Comment("State machines", indentLevel + 2);
+                retVal += TextualExplainUtilities.Comment("-------------------", indentLevel + 2);
+                foreach (StateMachine stateMachine in StateMachines)
+                {
+                    retVal += stateMachine.Name + "\\par ";
+                    retVal += "\\par ";
+                }
+
+                retVal += "\\par ";
+                retVal += TextualExplainUtilities.Comment("-------------------", indentLevel + 2);
+                retVal += TextualExplainUtilities.Comment("Rules", indentLevel + 2);
+                retVal += TextualExplainUtilities.Comment("-------------------", indentLevel + 2);
+                foreach (Rule rule in Rules)
+                {
+                    retVal += rule.getExplain(indentLevel + 2, false) + "\\par ";
+                    retVal += "\\par ";
+                }
+                retVal += TextualExplainUtilities.Pad("{\\b END STRUCTURE }", indentLevel);
+            }
+            else
+            {
+                retVal += TextualExplainUtilities.Pad("{\\b END INTERFACE }", indentLevel);
+            }
 
             return retVal;
         }
@@ -400,13 +451,37 @@ namespace DataDictionary.Types
                     }
                     else  // correspondace found => update that element
                     {
-                        correspondingElement.Type = inheritedElement.Type;
+                        correspondingElement.TypeName = inheritedElement.TypeName;
                         correspondingElement.Mode = inheritedElement.Mode;
                         correspondingElement.Default = inheritedElement.Default;
                         correspondingElement.Comment = inheritedElement.Comment;
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Indicates if the given structure element is inherited from an interface or not
+        /// </summary>
+        /// <param name="anElement"></param>
+        /// <returns></returns>
+        public bool StructureElementIsInherited(StructureElement anElement)
+        {
+            bool retVal = false;
+
+            foreach(Structure inheritedStructure in Interfaces)
+            {
+                foreach(StructureElement inheritedElement in inheritedStructure.Elements)
+                {
+                    if(anElement.Name.Equals(inheritedElement.Name))
+                    {
+                        retVal = true;
+                        break;
+                    }
+                }
+            }
+
+            return retVal;
         }
     }
 }
