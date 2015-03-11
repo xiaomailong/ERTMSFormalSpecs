@@ -159,7 +159,14 @@ namespace GUI.ModelDiagram
             Structure structure = model as Structure;
             if (structure != null)
             {
-                retVal = new StructureModelControl(structure);
+                if (structure.IsAbstract)
+                {
+                    retVal = new InterfaceModelControl(structure);
+                }
+                else
+                {
+                    retVal = new StructureModelControl(structure);
+                }
             }
 
             Rule rule = model as Rule;
@@ -263,12 +270,20 @@ namespace GUI.ModelDiagram
                 {
                     foreach (StructureElement element in structure.Elements)
                     {
-                        if (element.Type != null)
+                        if (element.Type != null && !structure.StructureElementIsInherited(element))
                         {
                             if (boxes.Contains(element.Type))
                             {
                                 retVal.Add(new ModelArrow(structure, element.Type, element.Name, element));
                             }
+                        }
+                    }
+
+                    foreach(Structure inheritedStructure in structure.Interfaces)
+                    {
+                        if(boxes.Contains(inheritedStructure))
+                        {
+                            retVal.Add(new ModelArrow(structure, inheritedStructure, "implements", inheritedStructure));
                         }
                     }
                 }
