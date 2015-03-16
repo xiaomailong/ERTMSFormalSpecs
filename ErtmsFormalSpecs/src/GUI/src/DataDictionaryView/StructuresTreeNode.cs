@@ -27,7 +27,7 @@ using StructureElement = DataDictionary.Types.StructureElement;
 
 namespace GUI.DataDictionaryView
 {
-    public class StructuresTreeNode : ModelElementTreeNode<NameSpace>
+    public class InterfacesTreeNode : ModelElementTreeNode<NameSpace>
     {
         private class ItemEditor : NamedEditor
         {
@@ -45,8 +45,20 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public StructuresTreeNode(NameSpace item, bool buildSubNodes)
-            : base(item, buildSubNodes, "Structures", true)
+        public InterfacesTreeNode(NameSpace item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Interfaces", true)
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="buildSubNodes"></param>
+        /// <param name="name"></param>
+        /// <param name="isFolder"></param>
+        public InterfacesTreeNode(NameSpace item, bool buildSubNodes, string name, bool isFolder)
+            : base(item, buildSubNodes, name, isFolder)
         {
         }
 
@@ -60,8 +72,12 @@ namespace GUI.DataDictionaryView
 
             foreach (Structure structure in Item.Structures)
             {
-                Nodes.Add(new StructureTreeNode(structure, buildSubNodes));
+                if (structure.IsAbstract)
+                {
+                    Nodes.Add(new InterfaceTreeNode(structure, buildSubNodes));
+                }
             }
+
             SortSubNodes();
         }
 
@@ -74,10 +90,16 @@ namespace GUI.DataDictionaryView
             return new ItemEditor();
         }
 
-        public void AddHandler(object sender, EventArgs args)
+        /// <summary>
+        /// Adds an interface
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public virtual void AddHandler(object sender, EventArgs args)
         {
-            Structure structure = (Structure) acceptor.getFactory().createStructure();
-            structure.Name = "<Structure" + (GetNodeCount(false) + 1) + ">";
+            Structure structure = (Structure)acceptor.getFactory().createStructure();
+            structure.Name = "<Interface" + (GetNodeCount(false) + 1) + ">";
+            structure.IsAbstract = true;
             AddStructure(structure);
         }
 
@@ -108,6 +130,103 @@ namespace GUI.DataDictionaryView
             retVal.Add(new MenuItem("Add", new EventHandler(AddHandler)));
 
             return retVal;
+        }
+
+
+        /// <summary>
+        /// Accepts drop of a tree node, in a drag & drop operation
+        /// </summary>
+        /// <param name="SourceNode"></param>
+        public override void AcceptDrop(BaseTreeNode SourceNode)
+        {
+            base.AcceptDrop(SourceNode);
+
+            if (SourceNode is InterfaceTreeNode)
+            {
+                InterfaceTreeNode interfaceTreeNode = SourceNode as InterfaceTreeNode;
+                Structure structure = interfaceTreeNode.Item;
+
+                interfaceTreeNode.Delete();
+                AddStructure(structure);
+            }
+        }
+
+        /// <summary>
+        /// Update counts according to the selected folder
+        /// </summary>
+        /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
+        public override void SelectionChanged(bool displayStatistics)
+        {
+            base.SelectionChanged(false);
+
+            GUIUtils.MDIWindow.SetStatus(Item.Structures.Count + (Item.Structures.Count > 1 ? " interfaces " : " interface ") + "selected.");
+        }
+    }
+
+
+
+    public class StructuresTreeNode : InterfacesTreeNode
+    {
+        private class ItemEditor : NamedEditor
+        {
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            public ItemEditor()
+                : base()
+            {
+            }
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="name"></param>
+        public StructuresTreeNode(NameSpace item, bool buildSubNodes)
+            : base(item, buildSubNodes, "Structures", true)
+        {
+        }
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
+        {
+            base.BuildSubNodes(buildSubNodes);
+            Nodes.Clear();
+
+            foreach (Structure structure in Item.Structures)
+            {
+                if (!structure.IsAbstract)
+                {
+                    Nodes.Add(new StructureTreeNode(structure, buildSubNodes));
+                }
+            }
+
+            SortSubNodes();
+        }
+
+        /// <summary>
+        /// Creates the editor for this tree node
+        /// </summary>
+        /// <returns></returns>
+        protected override Editor createEditor()
+        {
+            return new ItemEditor();
+        }
+
+        /// <summary>
+        /// Adds a structure
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public override void AddHandler(object sender, EventArgs args)
+        {
+            Structure structure = (Structure) acceptor.getFactory().createStructure();
+            structure.Name = "<Structure" + (GetNodeCount(false) + 1) + ">";
+            AddStructure(structure);
         }
 
 

@@ -17,6 +17,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Drawing;
 using DataDictionary.Generated;
 using GUI.SpecificationView;
 using Paragraph = DataDictionary.Specification.Paragraph;
@@ -47,7 +48,12 @@ namespace GUI.DataDictionaryView
 
             foreach (StructureElement structureElement in Item.Elements)
             {
-                Nodes.Add(new StructureElementTreeNode(structureElement, buildSubNodes));
+                StructureElementTreeNode aNode = new StructureElementTreeNode(structureElement, buildSubNodes);
+                if(Item.StructureElementIsInherited(structureElement))
+                {
+                    aNode.NodeFont = new Font("Arial", 8, FontStyle.Italic);
+                }
+                Nodes.Add(aNode);
             }
             SortSubNodes();
             SubNodesBuilt = true;

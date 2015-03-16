@@ -27,7 +27,7 @@ using StructureElement = DataDictionary.Types.StructureElement;
 
 namespace GUI.DataDictionaryView
 {
-    public class InterfacesTreeNode : ModelElementTreeNode<Structure>
+    public class StructureInterfacesTreeNode : ModelElementTreeNode<Structure>
     {
         private class ItemEditor : NamedEditor
         {
@@ -45,7 +45,7 @@ namespace GUI.DataDictionaryView
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
-        public InterfacesTreeNode(Structure item, bool buildSubNodes)
+        public StructureInterfacesTreeNode(Structure item, bool buildSubNodes)
             : base(item, buildSubNodes, "Interfaces", true)
         {
         }

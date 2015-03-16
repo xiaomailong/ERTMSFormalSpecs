@@ -438,10 +438,10 @@ namespace DataDictionary
                                 variable.AddWarning("Invalid mode for " + element.Name);
                             }
                         }
-                        if(structure.IsAbstract)
-                        {
-                            variable.AddError("Instantiation of abstract types is forbidden");
-                        }
+                    }
+                    if(variable.Type.IsAbstract)
+                    {
+                        variable.AddError("Instantiation of abstract types is forbidden");
                     }
                 }
                 if (Utils.Utils.isEmpty(variable.Comment) && variable.Type != null && Utils.Utils.isEmpty(variable.Type.Comment))
@@ -484,10 +484,10 @@ namespace DataDictionary
                                 element.AddWarning("Invalid mode for " + subElement.Name);
                             }
                         }
-                        if (elementType.IsAbstract)
-                        {
-                            element.AddError("Instantiation of abstract types is forbidden");
-                        }
+                    }
+                    if (element.Type != null && element.Type.IsAbstract)
+                    {
+                        element.AddError("Instantiation of abstract types is forbidden");
                     }
                     if (!Utils.Utils.isEmpty(element.getDefault()))
                     {
@@ -507,10 +507,6 @@ namespace DataDictionary
                                 if(element.Type != implementedElement.Type)
                                 {
                                     structure.AddError("The type of element " + element.Name + " (" + element.TypeName + ") does not correspond to the type of the implemented element (" + implementedElement.TypeName + ")");
-                                }
-                                if(element.Mode != implementedElement.Mode)
-                                {
-                                    structure.AddError("The mode of element " + element.Name + " (" + element.Mode + ") does not correspond to the type of the implemented element (" + implementedElement.Mode + ")");
                                 }
                                 break;
                             }

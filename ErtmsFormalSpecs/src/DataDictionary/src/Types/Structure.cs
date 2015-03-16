@@ -447,14 +447,11 @@ namespace DataDictionary.Types
                     }
                     if(correspondingElement == null) // no correspondance found => create that element
                     {
-                        appendElements(inheritedElement);
+                        appendElements(inheritedElement.Duplicate()as StructureElement);
                     }
                     else  // correspondace found => update that element
                     {
                         correspondingElement.TypeName = inheritedElement.TypeName;
-                        correspondingElement.Mode = inheritedElement.Mode;
-                        correspondingElement.Default = inheritedElement.Default;
-                        correspondingElement.Comment = inheritedElement.Comment;
                     }
                 }
             }

@@ -38,6 +38,7 @@ namespace GUI.DataDictionaryView
         private NameSpaceSubNameSpacesTreeNode subNameSpaces;
         private RangesTreeNode ranges;
         private EnumerationsTreeNode enumerations;
+        private InterfacesTreeNode interfaces;
         private StructuresTreeNode structures;
         private CollectionsTreeNode collections;
         private StateMachinesTreeNode stateMachines;
@@ -69,6 +70,7 @@ namespace GUI.DataDictionaryView
             subNameSpaces = new NameSpaceSubNameSpacesTreeNode(Item, buildSubNodes);
             ranges = new RangesTreeNode(Item, buildSubNodes);
             enumerations = new EnumerationsTreeNode(Item, buildSubNodes);
+            interfaces = new InterfacesTreeNode(Item, buildSubNodes);
             structures = new StructuresTreeNode(Item, buildSubNodes);
             collections = new CollectionsTreeNode(Item, buildSubNodes);
             stateMachines = new StateMachinesTreeNode(Item, buildSubNodes);
@@ -80,6 +82,7 @@ namespace GUI.DataDictionaryView
             Nodes.Add(subNameSpaces);
             Nodes.Add(ranges);
             Nodes.Add(enumerations);
+            Nodes.Add(interfaces);
             Nodes.Add(structures);
             Nodes.Add(collections);
             Nodes.Add(stateMachines);
@@ -122,6 +125,11 @@ namespace GUI.DataDictionaryView
         private void AddEnumerationHandler(object sender, EventArgs args)
         {
             enumerations.AddHandler(sender, args);
+        }
+
+        private void AddInterfaceHandler(object sender, EventArgs args)
+        {
+            interfaces.AddHandler(sender, args);
         }
 
         private void AddStructureHandler(object sender, EventArgs args)
@@ -194,6 +202,7 @@ namespace GUI.DataDictionaryView
             newItem.MenuItems.Add(new MenuItem("Namespace", new EventHandler(AddNamespaceHandler)));
             newItem.MenuItems.Add(new MenuItem("Range", new EventHandler(AddRangeHandler)));
             newItem.MenuItems.Add(new MenuItem("Enumeration", new EventHandler(AddEnumerationHandler)));
+            newItem.MenuItems.Add(new MenuItem("Interface", new EventHandler(AddInterfaceHandler)));
             newItem.MenuItems.Add(new MenuItem("Structure", new EventHandler(AddStructureHandler)));
             newItem.MenuItems.Add(new MenuItem("Collection", new EventHandler(AddCollectionHandler)));
             newItem.MenuItems.Add(new MenuItem("State machine", new EventHandler(AddStateMachineHandler)));
@@ -236,6 +245,10 @@ namespace GUI.DataDictionaryView
                 else if (SourceNode is RuleTreeNode)
                 {
                     rules.AcceptDrop(SourceNode);
+                }
+                else if (SourceNode is InterfaceTreeNode)
+                {
+                    interfaces.AcceptDrop(SourceNode);
                 }
                 else if (SourceNode is StructureTreeNode)
                 {

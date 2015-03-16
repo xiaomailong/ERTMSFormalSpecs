@@ -22,7 +22,7 @@ using DataDictionary.Types;
 
 namespace GUI.DataDictionaryView
 {
-    public class StructureTreeNode : TypeTreeNode<Structure>
+    public class InterfaceTreeNode : TypeTreeNode<Structure>
     {
         private class ItemEditor : TypeEditor
         {
@@ -33,16 +33,6 @@ namespace GUI.DataDictionaryView
                 : base()
             {
             }
-
-            /// <summary>
-            /// Indicates that the req related item does not need to be attached to a requirement
-            /// </summary>
-            [Category("Description")]
-            public bool IsAbstract
-            {
-                get { return Item.IsAbstract; }
-                set { Item.IsAbstract = value; }
-            }
         }
 
         private NameSpaceTreeNode types
@@ -50,8 +40,88 @@ namespace GUI.DataDictionaryView
             get { return Parent.Parent as NameSpaceTreeNode; }
         }
 
-        private InterfacesTreeNode interfaces;
-        private StructureElementsTreeNode elements;
+
+        public StructureElementsTreeNode Elements;
+
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="item"></param>
+        public InterfaceTreeNode(Structure item, bool buildSubNodes)
+            : base(item, buildSubNodes)
+        {
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="item"></param>
+        public InterfaceTreeNode(Structure item, bool buildSubNodes, string name, bool isFolder, bool addRequirements)
+            : base(item, buildSubNodes, name, isFolder, addRequirements)
+        {
+        }
+
+        /// <summary>
+        /// Builds the subnodes of this node
+        /// </summary>
+        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        public override void BuildSubNodes(bool buildSubNodes)
+        {
+            base.BuildSubNodes(buildSubNodes);
+
+            Elements = new StructureElementsTreeNode(Item, buildSubNodes);
+
+            Nodes.Add(Elements);
+        }
+
+        /// <summary>
+        /// Creates the editor for this tree node
+        /// </summary>
+        /// <returns></returns>
+        protected override Editor createEditor()
+        {
+            return new ItemEditor();
+        }
+
+        public void AddStructureElementHandler(object sender, EventArgs args)
+        {
+            if (Elements != null)
+            {
+                Elements.AddHandler(sender, args);
+            }
+        }
+
+        /// <summary>
+        /// The menu items for this tree node
+        /// </summary>
+        /// <returns></returns>
+        protected override List<MenuItem> GetMenuItems()
+        {
+            List<MenuItem> retVal = new List<MenuItem>();
+
+            if (Item.IsAbstract) // this is an interface, otherwise it is a structure
+            {
+                retVal.Add(new MenuItem("Add an element", new EventHandler(AddStructureElementHandler)));
+            }
+
+            retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
+            retVal.AddRange(base.GetMenuItems());
+
+            return retVal;
+        }
+    }
+
+    public class StructureTreeNode : InterfaceTreeNode
+    {
+        private NameSpaceTreeNode types
+        {
+            get { return Parent.Parent as NameSpaceTreeNode; }
+        }
+
+        private StructureInterfacesTreeNode interfaces;
         private StructureProceduresTreeNode procedures;
         private StructureStateMachinesTreeNode stateMachines;
         private RulesTreeNode rules;
@@ -85,41 +155,23 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            interfaces = new InterfacesTreeNode(Item, buildSubNodes);
-            elements = new StructureElementsTreeNode(Item, buildSubNodes);
+            interfaces = new StructureInterfacesTreeNode(Item, buildSubNodes);
             procedures = new StructureProceduresTreeNode(Item, buildSubNodes);
             stateMachines = new StructureStateMachinesTreeNode(Item, buildSubNodes);
             rules = new RulesTreeNode(Item, buildSubNodes);
             
             Nodes.Add(interfaces);
-            Nodes.Add(elements);
             Nodes.Add(procedures);
             Nodes.Add(stateMachines);
             Nodes.Add(rules);
         }
 
-        /// <summary>
-        /// Creates the editor for this tree node
-        /// </summary>
-        /// <returns></returns>
-        protected override Editor createEditor()
-        {
-            return new ItemEditor();
-        }
 
         private void AddInterfaceHandler(object sender, EventArgs args)
         {
             if (interfaces != null)
             {
                 interfaces.AddHandler(sender, args);
-            }
-        }
-
-        private void AddStructureElementHandler(object sender, EventArgs args)
-        {
-            if (elements != null)
-            {
-                elements.AddHandler(sender, args);
             }
         }
 

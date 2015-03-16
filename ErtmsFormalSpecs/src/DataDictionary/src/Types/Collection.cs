@@ -167,6 +167,31 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        /// Indicates if the type is abstract
+        /// </summary>
+        public override bool IsAbstract
+        {
+            get
+            {
+                bool result = false;
+                Collection collection = Type as Collection;
+                if(collection != null)
+                {
+                    result = collection.IsAbstract;
+                }
+                else
+                {
+                    Structure structure = Type as Structure;
+                    if(structure != null)
+                    {
+                        result = structure.IsAbstract;
+                    }
+                }
+                return result;
+            }
+        }
+
+        /// <summary>
         /// Parses the image and provides the corresponding value
         /// </summary>
         /// <param name="image"></param>
