@@ -349,10 +349,13 @@ namespace GUI.IPCInterface
                     {
                         try
                         {
-                            Runner.ExecuteOnePriority(convertStep2Priority(LastStep));
-                            if (LastStep == Step.CleanUp)
+                            if (!AllListeners)
                             {
-                                GUIUtils.MDIWindow.Invoke((MethodInvoker) delegate { GUIUtils.MDIWindow.RefreshAfterStep(); });
+                                Runner.ExecuteOnePriority(convertStep2Priority(LastStep));
+                                if (LastStep == Step.CleanUp)
+                                {
+                                    GUIUtils.MDIWindow.Invoke((MethodInvoker)delegate { GUIUtils.MDIWindow.RefreshAfterStep(); });
+                                }
                             }
                         }
                         catch (Exception)
@@ -477,22 +480,34 @@ namespace GUI.IPCInterface
             {
                 EFSSystem efsSystem = EFSSystem.INSTANCE;
 
-                bool allListeners = true;
-                foreach (ConnectionStatus status in Connections)
-                {
-                    if (status.Active && !status.Listener)
-                    {
-                        allListeners = false;
-                        break;
-                    }
-                }
-
-                if (efsSystem.Runner == null && !allListeners)
+                if (efsSystem.Runner == null && !AllListeners)
                 {
                     EFSSystem.INSTANCE.Runner = new Runner(Explain, LogEvents, CycleDuration, KeepEventCount);
                 }
 
                 return efsSystem.Runner;
+            }
+        }
+
+        /// <summary>
+        /// Indicates that all connections are listeners
+        /// </summary>
+        /// <returns></returns>
+        private bool AllListeners
+        {
+            get
+            {
+                bool retVal = true;
+                foreach (ConnectionStatus status in Connections)
+                {
+                    if (status.Active && !status.Listener)
+                    {
+                        retVal = false;
+                        break;
+                    }
+                }
+
+                return retVal;
             }
         }
 
