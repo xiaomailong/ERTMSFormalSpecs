@@ -57,12 +57,14 @@ namespace DataDictionary.Interpreter
             GREATER_OR_EQUAL,
             AND,
             OR,
-            UNDEF
+            UNDEF,
+            IS,
+            AS
         };
 
-        public static OPERATOR[] OperatorsLevel0 = {OPERATOR.OR,};
-        public static OPERATOR[] OperatorsLevel1 = {OPERATOR.AND,};
-        public static OPERATOR[] OperatorsLevel2 = {OPERATOR.EQUAL, OPERATOR.NOT_EQUAL, OPERATOR.IN, OPERATOR.NOT_IN, OPERATOR.LESS_OR_EQUAL, OPERATOR.GREATER_OR_EQUAL, OPERATOR.LESS, OPERATOR.GREATER,};
+        public static OPERATOR[] OperatorsLevel0 = {OPERATOR.OR};
+        public static OPERATOR[] OperatorsLevel1 = {OPERATOR.AND};
+        public static OPERATOR[] OperatorsLevel2 = {OPERATOR.EQUAL, OPERATOR.NOT_EQUAL, OPERATOR.IN, OPERATOR.NOT_IN, OPERATOR.LESS_OR_EQUAL, OPERATOR.GREATER_OR_EQUAL, OPERATOR.LESS, OPERATOR.GREATER, OPERATOR.IS, OPERATOR.AS};
         public static OPERATOR[] OperatorsLevel3 = {OPERATOR.ADD, OPERATOR.SUB};
         public static OPERATOR[] OperatorsLevel4 = {OPERATOR.MULT, OPERATOR.DIV};
         public static OPERATOR[] OperatorsLevel5 = {OPERATOR.EXP};
@@ -74,7 +76,7 @@ namespace DataDictionary.Interpreter
         public static OPERATOR[] Operators =
         {
             OPERATOR.OR, OPERATOR.AND,
-            OPERATOR.EQUAL, OPERATOR.NOT_EQUAL, OPERATOR.IN, OPERATOR.NOT_IN, OPERATOR.LESS_OR_EQUAL, OPERATOR.GREATER_OR_EQUAL, OPERATOR.LESS, OPERATOR.GREATER,
+            OPERATOR.EQUAL, OPERATOR.NOT_EQUAL, OPERATOR.IN, OPERATOR.NOT_IN, OPERATOR.LESS_OR_EQUAL, OPERATOR.GREATER_OR_EQUAL, OPERATOR.LESS, OPERATOR.GREATER, OPERATOR.IS, OPERATOR.AS,
             OPERATOR.ADD, OPERATOR.SUB,
             OPERATOR.MULT, OPERATOR.DIV,
             OPERATOR.EXP
@@ -86,7 +88,7 @@ namespace DataDictionary.Interpreter
         public static string[] OperatorsImages =
         {
             "OR", "AND",
-            "==", "!=", "in", "not in", "<=", ">=", "<", ">",
+            "==", "!=", "in", "not in", "<=", ">=", "<", ">", "is", "as",
             "+", "-",
             "*", "/",
             "^",
@@ -139,8 +141,16 @@ namespace DataDictionary.Interpreter
                 StaticUsage.AddUsages(Left.StaticUsage, Usage.ModeEnum.Read);
 
                 // Right
-                Right.SemanticAnalysis(instance, IsRightSide.INSTANCE);
-                StaticUsage.AddUsages(Right.StaticUsage, Usage.ModeEnum.Read);
+                if (Operation == OPERATOR.IS || Operation == OPERATOR.AS)
+                {
+                    Right.SemanticAnalysis(instance, IsType.INSTANCE);
+                    StaticUsage.AddUsages(Right.StaticUsage, Usage.ModeEnum.Type);
+                }
+                else
+                {
+                    Right.SemanticAnalysis(instance, IsRightSide.INSTANCE);
+                    StaticUsage.AddUsages(Right.StaticUsage, Usage.ModeEnum.Read);
+                }
             }
 
             return retVal;
@@ -256,84 +266,97 @@ namespace DataDictionary.Interpreter
             }
             else
             {
-                Type rightType = Right.GetExpressionType();
-                if (rightType == null)
+                if (Operation == OPERATOR.IS)
                 {
-                    AddError("Cannot determine expression type (2) for " + Right.ToString());
+                    retVal = EFSSystem.INSTANCE.BoolType;
+                }
+                else if (Operation == OPERATOR.AS)
+                {
+                    retVal = Right.Ref as Types.Structure;
                 }
                 else
                 {
-                    switch (Operation)
+                    Type rightType = Right.GetExpressionType();
+                    if (rightType == null)
                     {
-                        case OPERATOR.EXP:
-                        case OPERATOR.MULT:
-                        case OPERATOR.DIV:
-                        case OPERATOR.ADD:
-                        case OPERATOR.SUB:
-                            if (leftType.Match(rightType))
-                            {
-                                if (leftType is IntegerType || leftType is DoubleType)
+                        AddError("Cannot determine expression type (2) for " + Right.ToString());
+                    }
+                    else
+                    {
+                        switch (Operation)
+                        {
+                            case OPERATOR.EXP:
+                            case OPERATOR.MULT:
+                            case OPERATOR.DIV:
+                            case OPERATOR.ADD:
+                            case OPERATOR.SUB:
+                                if (leftType.Match(rightType))
                                 {
-                                    retVal = rightType;
+                                    if (leftType is IntegerType || leftType is DoubleType)
+                                    {
+                                        retVal = rightType;
+                                    }
+                                    else
+                                    {
+                                        retVal = leftType;
+                                    }
                                 }
                                 else
                                 {
-                                    retVal = leftType;
+                                    retVal = leftType.CombineType(rightType, Operation);
                                 }
-                            }
-                            else
-                            {
-                                retVal = leftType.CombineType(rightType, Operation);
-                            }
 
-                            break;
+                                break;
 
-                        case OPERATOR.AND:
-                        case OPERATOR.OR:
-                            if (leftType == EFSSystem.BoolType && rightType == EFSSystem.BoolType)
-                            {
-                                retVal = EFSSystem.BoolType;
-                            }
-                            break;
-
-                        case OPERATOR.EQUAL:
-                        case OPERATOR.NOT_EQUAL:
-                        case OPERATOR.LESS:
-                        case OPERATOR.LESS_OR_EQUAL:
-                        case OPERATOR.GREATER:
-                        case OPERATOR.GREATER_OR_EQUAL:
-                            if (leftType.Match(rightType) || rightType.Match(leftType))
-                            {
-                                retVal = EFSSystem.BoolType;
-                            }
-                            break;
-
-                        case OPERATOR.IN:
-                        case OPERATOR.NOT_IN:
-                            Collection collection = rightType as Collection;
-                            if (collection != null)
-                            {
-                                if (collection.Type == null)
+                            case OPERATOR.AND:
+                            case OPERATOR.OR:
+                                if (leftType == EFSSystem.BoolType && rightType == EFSSystem.BoolType)
                                 {
                                     retVal = EFSSystem.BoolType;
                                 }
-                                else if (collection.Type == leftType)
-                                {
-                                    retVal = EFSSystem.BoolType;
-                                }
-                            }
-                            else
-                            {
-                                StateMachine stateMachine = rightType as StateMachine;
-                                if (stateMachine != null && leftType.Match(stateMachine))
-                                {
-                                    retVal = EFSSystem.BoolType;
-                                }
-                            }
-                            break;
+                                break;
 
-                        case OPERATOR.UNDEF:
-                            break;
+                            case OPERATOR.EQUAL:
+                            case OPERATOR.NOT_EQUAL:
+                            case OPERATOR.LESS:
+                            case OPERATOR.LESS_OR_EQUAL:
+                            case OPERATOR.GREATER:
+                            case OPERATOR.GREATER_OR_EQUAL:
+                            case OPERATOR.IS:
+                            case OPERATOR.AS:
+                                if (leftType.Match(rightType) || rightType.Match(leftType))
+                                {
+                                    retVal = EFSSystem.BoolType;
+                                }
+                                break;
+
+                            case OPERATOR.IN:
+                            case OPERATOR.NOT_IN:
+                                Collection collection = rightType as Collection;
+                                if (collection != null)
+                                {
+                                    if (collection.Type == null)
+                                    {
+                                        retVal = EFSSystem.BoolType;
+                                    }
+                                    else if (collection.Type == leftType)
+                                    {
+                                        retVal = EFSSystem.BoolType;
+                                    }
+                                }
+                                else
+                                {
+                                    StateMachine stateMachine = rightType as StateMachine;
+                                    if (stateMachine != null && leftType.Match(stateMachine))
+                                    {
+                                        retVal = EFSSystem.BoolType;
+                                    }
+                                }
+                                break;
+
+                            case OPERATOR.UNDEF:
+                                break;
+                        }
                     }
                 }
             }
@@ -573,6 +596,65 @@ namespace DataDictionary.Interpreter
                             else
                             {
                                 AddError("Error while computing value for " + Right.ToString());
+                            }
+                        }
+                            break;
+
+                        case OPERATOR.IS:
+                        {
+                            leftValue = Left.GetValue(context, binaryExpressionExplanation);
+                            retVal = EFSSystem.GetBoolean(false);
+                            if (leftValue != null)
+                            {
+                                Types.Structure rightStructure = Right.Ref as Types.Structure;
+                                if (rightStructure != null)
+                                {
+                                    if (leftValue.Type is Types.Structure)
+                                    {
+                                        Types.Structure leftStructure = leftValue.Type as Types.Structure;
+                                        if (rightStructure.ImplementedStructures.Contains(leftStructure))
+                                        {
+                                            retVal = EFSSystem.GetBoolean(true);
+                                        }
+                                        else
+                                        {
+                                            AddError("Incompatible types for operator is");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        AddError("The operator is can only be applied on structures");
+                                    }
+                                }
+                                else
+                                {
+                                    AddError("The right part of is operator should be a structure");
+                                }
+                            }
+                            else
+                            {
+                                AddError("Error while computing value for " + Left.ToString());
+                            }
+                        }
+                            break;
+
+                        case OPERATOR.AS:
+                        {
+                            leftValue = Left.GetValue(context, binaryExpressionExplanation);
+                            if(leftValue != null)
+                            { 
+                                if(leftValue.Type == Right.GetExpressionType())
+                                {
+                                    retVal = leftValue;
+                                }
+                                else
+                                {
+                                    AddError("Incompatible types for operator as");
+                                }
+                            }
+                            else
+                            {
+                                AddError("Error while computing value for " + Left.ToString());
                             }
                         }
                             break;
@@ -1088,27 +1170,53 @@ namespace DataDictionary.Interpreter
             Type leftType = Left.GetExpressionType();
             if (leftType != null)
             {
-                Type rightType = Right.GetExpressionType();
-                if (rightType != null)
+                if (Operation == OPERATOR.IS || (Operation == OPERATOR.AS))
                 {
-                    if (!leftType.ValidBinaryOperation(Operation, rightType)
-                        && !rightType.ValidBinaryOperation(Operation, leftType))
+                    Types.Structure leftStructure = leftType as Types.Structure;
+                    if ( leftStructure != null )
                     {
-                        AddError("Cannot perform " + Operation + " operation between " + Left + "(" + leftType.Name + ") and " + Right + "(" + rightType.Name + ")");
-                    }
-
-                    if (Operation == OPERATOR.EQUAL)
-                    {
-                        if (leftType is StateMachine && rightType is StateMachine)
+                        Types.Structure rightStructure = Right.Ref as Types.Structure;
+                        if ( rightStructure != null )
                         {
-                            AddWarning("IN operator should be used instead of == between " + Left.ToString() + " and " + Right.ToString());
+                            if ( !rightStructure.ImplementedStructures.Contains(leftStructure))
+                            {
+                                AddError("No inheritance from " + Right + " to " + Left);
+                            }
+                        }
+                        else
+                        {
+                            AddError("Right part of "+ Operation +" operation should be a structure, found " + Right.Ref);
+                        }
+                    }
+                    else
+                    {
+                        AddError("Left expression type of "+ Operation +" operation should be a structure, found " + leftType);
+                    }
+                }
+                else
+                {
+                    Type rightType = Right.GetExpressionType();
+                    if (rightType != null)
+                    {
+                        if (!leftType.ValidBinaryOperation(Operation, rightType)
+                            && !rightType.ValidBinaryOperation(Operation, leftType))
+                        {
+                            AddError("Cannot perform " + Operation + " operation between " + Left + "(" + leftType.Name + ") and " + Right + "(" + rightType.Name + ")");
                         }
 
-                        if (Right.Ref == EFSSystem.EmptyValue)
+                        if (Operation == OPERATOR.EQUAL)
                         {
-                            if (leftType is Collection)
+                            if (leftType is StateMachine && rightType is StateMachine)
                             {
-                                AddError("Cannot compare collections with " + Right.Ref.Name + ". Use [] instead");
+                                AddWarning("IN operator should be used instead of == between " + Left.ToString() + " and " + Right.ToString());
+                            }
+
+                            if (Right.Ref == EFSSystem.EmptyValue)
+                            {
+                                if (leftType is Collection)
+                                {
+                                    AddError("Cannot compare collections with " + Right.Ref.Name + ". Use [] instead");
+                                }
                             }
                         }
                     }
