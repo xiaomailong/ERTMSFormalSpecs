@@ -127,6 +127,15 @@ namespace GUI.TestRunnerView
             explainTreeView.BeforeExpand += new TreeViewCancelEventHandler(explainTreeView_BeforeExpand);
             explainTreeView.DragEnter += new DragEventHandler(explainTreeView_DragEnter);
             explainTreeView.DragDrop += new DragEventHandler(explainTreeView_DragDrop);
+            searchTextBox.KeyPress += searchTextBox_KeyPress;
+        }
+
+        void searchTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                ExpandAndShowVariable(new VariableSelector(searchTextBox.Text, caseSensitiveCheckBox.Checked));
+            }
         }
 
         void explainTreeView_DragEnter(object sender, DragEventArgs e)
@@ -145,23 +154,129 @@ namespace GUI.TestRunnerView
                     VariableTreeNode variableTreeNode = sourceNode as VariableTreeNode;
                     if (variableTreeNode != null)
                     {
-                        ExpandAndShowVariable(variableTreeNode.Item);
+                        ExpandAndShowVariable(new VariableSelector(variableTreeNode.Item));
                     }
                 }
             } 
         }
 
+        private class VariableSelector
+        {
+            /// <summary>
+            /// Part of the variable name
+            /// </summary>
+            private string VariablePartName { get; set; }
+
+            /// <summary>
+            /// Performs a case sensitive search 
+            /// </summary>
+            private bool CaseSensitive { get; set; }
+
+            /// <summary>
+            /// The variable to find
+            /// </summary>
+            private IVariable Variable { get; set; }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="variable"></param>
+            public VariableSelector(IVariable variable)
+            {
+                Variable = variable;
+                VariablePartName = null;
+            }
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="variablePartName"></param>
+            /// <param name="caseSensitive"></param>
+            public VariableSelector(string variablePartName, bool caseSensitive)
+            {
+                Variable = null;
+                VariablePartName = variablePartName;
+                CaseSensitive = caseSensitive;
+                if ( !CaseSensitive )
+                {
+                    VariablePartName = VariablePartName.ToUpper();
+                }
+            }
+
+            /// <summary>
+            /// Indicates whether the string matches using the parameters provided in this VariableSelector
+            /// </summary>
+            /// <param name="text"></param>
+            /// <returns></returns>
+            private bool MatchName(string text)
+            {
+                bool retVal = false;
+
+                if ( !CaseSensitive )
+                {
+                    text = text.ToUpper();
+                }
+
+                retVal = text.Contains(VariablePartName);
+
+                return retVal;
+            }
+
+            /// <summary>
+            /// Indicates whether the explanation part is related to the variable
+            /// </summary>
+            /// <param name="explanationPart"></param>
+            /// <returns></returns>
+            public bool Match (ExplanationPart explanationPart)
+            {
+                bool retVal = false;
+
+                Change change = explanationPart.Change;
+                if (change != null)
+                {
+                    if (Variable != null)
+                    {
+                        retVal = retVal || change.ImpactVariable(Variable);
+                    }
+                    if (VariablePartName != null)
+                    {
+                        retVal = retVal || (change.Variable != null && MatchName(change.Variable.FullName));
+                    }
+                }
+
+                Expression expression = explanationPart.Expression;
+                if ( expression != null )
+                {
+                    if ( VariablePartName != null )
+                    {
+                        retVal = retVal || MatchName(expression.FullName);
+                    }
+                }
+
+                ModelElement element = explanationPart.Element;
+                if (element != null)
+                {
+                    if (VariablePartName != null)
+                    {
+                        retVal = retVal || MatchName(element.FullName);
+                    }
+                }
+
+                return retVal;
+            }
+        }
+
+
         /// <summary>
         /// Inner primitive to expand nodes, based on a tree node
         /// </summary>
         /// <param name="explanation"></param>
-        /// <param name="variable"></param>
+        /// <param name="variableSelector"></param>
         /// <param name="path"></param>
-        private void InnerExpandAndShowVariable(ExplanationPart explanation, Variable variable, List<ExplanationPart> path)
+        private void InnerExpandAndShowVariable(ExplanationPart explanation, VariableSelector variableSelector, List<ExplanationPart> path)
         {
             path.Add(explanation);
-            Change change = explanation.Change;
-            if (change != null && change.ImpactVariable(variable))
+            if (variableSelector.Match(explanation))
             {
                 foreach (ExplainTreeNode node in explainTreeView.Nodes)
                 {
@@ -171,7 +286,7 @@ namespace GUI.TestRunnerView
 
             foreach (ExplanationPart subExplanation in explanation.SubExplanations)
             {
-                InnerExpandAndShowVariable(subExplanation, variable, path);
+                InnerExpandAndShowVariable(subExplanation, variableSelector, path);
             }
             path.Remove(explanation);
         }
@@ -179,14 +294,14 @@ namespace GUI.TestRunnerView
         /// <summary>
         /// Expands all pathes which lead to the selected variable
         /// </summary>
-        /// <param name="variable"></param>
-        private void ExpandAndShowVariable(Variable variable)
+        /// <param name="variableSelector"></param>
+        private void ExpandAndShowVariable(VariableSelector variableSelector)
         {
             // Build the complete tree
             explainTreeView.CollapseAll();
 
             List<ExplanationPart> path = new List<ExplanationPart>();
-            InnerExpandAndShowVariable(Explanation, variable, path);
+            InnerExpandAndShowVariable(Explanation, variableSelector, path);
 
             explainTreeView.Focus();
         }
@@ -265,6 +380,11 @@ namespace GUI.TestRunnerView
             {
                 node.SelectModel(ModifierKeys == Keys.Control);
             }
+        }
+
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+            ExpandAndShowVariable(new VariableSelector(searchTextBox.Text, caseSensitiveCheckBox.Checked));
         }
     }
 }

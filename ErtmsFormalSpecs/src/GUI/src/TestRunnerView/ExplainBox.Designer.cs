@@ -45,11 +45,20 @@ namespace GUI.TestRunnerView
         {
             this.explainTreeView = new System.Windows.Forms.TreeView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
             this.explainRichTextBox = new GUI.EditorTextBox();
+            this.caseSensitiveCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // explainTreeView
@@ -58,7 +67,7 @@ namespace GUI.TestRunnerView
             this.explainTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.explainTreeView.Location = new System.Drawing.Point(0, 0);
             this.explainTreeView.Name = "explainTreeView";
-            this.explainTreeView.Size = new System.Drawing.Size(819, 250);
+            this.explainTreeView.Size = new System.Drawing.Size(819, 212);
             this.explainTreeView.TabIndex = 1;
             // 
             // splitContainer1
@@ -70,7 +79,7 @@ namespace GUI.TestRunnerView
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.explainTreeView);
+            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
             // 
             // splitContainer1.Panel2
             // 
@@ -78,6 +87,53 @@ namespace GUI.TestRunnerView
             this.splitContainer1.Size = new System.Drawing.Size(819, 389);
             this.splitContainer1.SplitterDistance = 250;
             this.splitContainer1.TabIndex = 2;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.caseSensitiveCheckBox);
+            this.splitContainer2.Panel1.Controls.Add(this.button1);
+            this.splitContainer2.Panel1.Controls.Add(this.label1);
+            this.splitContainer2.Panel1.Controls.Add(this.searchTextBox);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.explainTreeView);
+            this.splitContainer2.Size = new System.Drawing.Size(819, 250);
+            this.splitContainer2.SplitterDistance = 34;
+            this.splitContainer2.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(686, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(21, 23);
+            this.button1.TabIndex = 4;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Search";
+            // 
+            // searchTextBox
+            // 
+            this.searchTextBox.Location = new System.Drawing.Point(60, 9);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(620, 20);
+            this.searchTextBox.TabIndex = 2;
             // 
             // explainRichTextBox
             // 
@@ -92,6 +148,16 @@ namespace GUI.TestRunnerView
     "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs17\\par\r\n}\r\n";
             this.explainRichTextBox.Size = new System.Drawing.Size(819, 135);
             this.explainRichTextBox.TabIndex = 0;
+            // 
+            // caseSensitiveCheckBox
+            // 
+            this.caseSensitiveCheckBox.AutoSize = true;
+            this.caseSensitiveCheckBox.Location = new System.Drawing.Point(713, 11);
+            this.caseSensitiveCheckBox.Name = "caseSensitiveCheckBox";
+            this.caseSensitiveCheckBox.Size = new System.Drawing.Size(94, 17);
+            this.caseSensitiveCheckBox.TabIndex = 5;
+            this.caseSensitiveCheckBox.Text = "Case sensitive";
+            this.caseSensitiveCheckBox.UseVisualStyleBackColor = true;
             // 
             // ExplainBox
             // 
@@ -108,6 +174,11 @@ namespace GUI.TestRunnerView
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -117,6 +188,11 @@ namespace GUI.TestRunnerView
         private System.Windows.Forms.TreeView explainTreeView;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private EditorTextBox explainRichTextBox;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox searchTextBox;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox caseSensitiveCheckBox;
 
     }
 }
