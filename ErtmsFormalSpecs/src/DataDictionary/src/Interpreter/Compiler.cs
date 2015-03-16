@@ -587,7 +587,7 @@ namespace DataDictionary.Interpreter
                 }
                 catch (Exception e)
                 {
-                    ((ModelElement) user).AddError("Cannot refactor this element, reason = " + e.Message);
+                    ((ModelElement) user).AddWarning("Cannot refactor this element, reason = " + e.Message);
                 }
             }
         }
