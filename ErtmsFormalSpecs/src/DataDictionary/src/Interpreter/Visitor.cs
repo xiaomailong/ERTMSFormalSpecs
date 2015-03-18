@@ -541,6 +541,10 @@ namespace DataDictionary.Interpreter
         /// <param name="replaceStatement"></param>
         protected virtual void VisitReplaceStatement(ReplaceStatement replaceStatement)
         {
+            if (replaceStatement.Value != null)
+            {
+                VisitExpression(replaceStatement.Value);
+            }
             if (replaceStatement.ListExpression != null)
             {
                 VisitExpression(replaceStatement.ListExpression);
@@ -548,10 +552,6 @@ namespace DataDictionary.Interpreter
             if (replaceStatement.Condition != null)
             {
                 VisitExpression(replaceStatement.Condition);
-            }
-            if (replaceStatement.Value != null)
-            {
-                VisitExpression(replaceStatement.Value);
             }
         }
 
@@ -589,13 +589,13 @@ namespace DataDictionary.Interpreter
         /// <param name="insertStatement"></param>
         protected virtual void VisitInsertStatement(InsertStatement insertStatement)
         {
-            if (insertStatement.ListExpression != null)
-            {
-                VisitExpression(insertStatement.ListExpression);
-            }
             if (insertStatement.Value != null)
             {
                 VisitExpression(insertStatement.Value);
+            }
+            if (insertStatement.ListExpression != null)
+            {
+                VisitExpression(insertStatement.ListExpression);
             }
             if (insertStatement.ReplaceElement != null)
             {
@@ -613,13 +613,13 @@ namespace DataDictionary.Interpreter
             {
                 VisitStatement(applyStatement.AppliedStatement);
             }
-            if (applyStatement.ConditionExpression != null)
-            {
-                VisitExpression(applyStatement.ConditionExpression);
-            }
             if (applyStatement.ListExpression != null)
             {
                 VisitExpression(applyStatement.ListExpression);
+            }
+            if (applyStatement.ConditionExpression != null)
+            {
+                VisitExpression(applyStatement.ConditionExpression);
             }
         }
 

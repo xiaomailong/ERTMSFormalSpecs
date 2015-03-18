@@ -159,7 +159,7 @@ namespace DataDictionary.Tests
         {
             bool retVal = false;
 
-            Statement tree = EFSSystem.Parser.Statement(this, expression, true);
+            Expression tree = EFSSystem.Parser.Expression(this, expression);
             retVal = tree != null;
 
             return retVal;
